@@ -1,34 +1,20 @@
 const tg = window.Telegram.WebApp;
 tg.expand();
 
-// Початкові значення
 let hp = 100;
 let pills = 0;
 let madness = 20;
 let energy = 80;
 let currentOutfit = '🩺';
 
-// --- ЛОГІКА ЗБЕРЕЖЕННЯ ТА ЗАВАНТАЖЕННЯ ---
-
 function saveProgress() {
-    const gameState = {
-        hp: hp,
-        pills: pills,
-        madness: madness,
-        energy: energy,
-        currentOutfit: currentOutfit
-    };
-    
+    const gameState = { hp, pills, madness, energy, currentOutfit };
     localStorage.setItem('palata404_save', JSON.stringify(gameState));
-
-    if (tg.CloudStorage) {
-        tg.CloudStorage.setItem('palata404_save', JSON.stringify(gameState));
-    }
+    if (tg.CloudStorage) tg.CloudStorage.setItem('palata404_save', JSON.stringify(gameState));
 }
 
 function loadProgress() {
     const savedData = localStorage.getItem('palata404_save');
-    
     if (savedData) {
         try {
             const gameState = JSON.parse(savedData);
@@ -37,33 +23,33 @@ function loadProgress() {
             madness = gameState.madness ?? 20;
             energy = gameState.energy ?? 80;
             currentOutfit = gameState.currentOutfit ?? '🩺';
-        } catch (e) {
-            console.error("Помилка зчитування збереження:", e);
-        }
+        } catch (e) { console.error(e); }
     }
     
-    // Безпечно встановлюємо іконку одягу
     const outfitEl = document.getElementById('outfit-icon');
-    if (outfitEl) {
-        outfitEl.innerText = currentOutfit;
-    }
+    if (outfitEl) outfitEl.innerText = currentOutfit;
 
-    // Оновлюємо ім'я користувача
     if (tg.initDataUnsafe && tg.initDataUnsafe.user) {
         const nameEl = document.getElementById('player-name');
         if (nameEl) nameEl.innerText = tg.initDataUnsafe.user.first_name;
     }
     
-    // Оновлюємо інтерфейс
     updateUI();
 }
 
-// --- ІГРОВІ МЕХАНІКИ ---
-
 function tapCharacter() {
+    // Якщо божевілля 100% — персонаж втрачає HP замість пошуку!
+    if (madness >= 100) {
+        hp = Math.max(0, hp - 10);
+        alert("🌀 Розум повністю затьмарено! Ти втрачаєш здоров'я (-10 HP). Поспи або прийняти ліки!");
+        updateUI();
+        saveProgress();
+        return;
+    }
+
     if (energy >= 5) {
         energy -= 5;
-        madness += 2;
+        madness += 5; // Божевілля росте трохи швидше
         pills += 1;
 
         if (madness > 100) madness = 100;
@@ -76,10 +62,10 @@ function tapCharacter() {
 }
 
 function restInBed() {
-    if (energy < 100) {
+    if (energy < 100 || madness > 0) {
         energy = Math.min(100, energy + 30);
-        madness = Math.min(100, madness + 5);
-        if (madness > 100) madness = 100;
+        // Сон заспокоює розум, якщо божевілля критичне
+        madness = Math.max(0, madness - 25);
         
         updateUI();
         saveProgress();
@@ -116,30 +102,35 @@ function setOutfit(icon, name, price) {
 }
 
 function updateUI() {
-    // Безопасні перевірки на наявність елементів у DOM
     const pillsEl = document.getElementById('pills');
     if (pillsEl) pillsEl.innerText = pills;
     
-    // 2. Здоров'я
+    // HP
     const hpBar = document.getElementById('hp-bar');
     const hpVal = document.getElementById('hp-val');
     if (hpBar) hpBar.style.width = hp + '%';
     if (hpVal) hpVal.innerText = hp + '/100';
 
-    // 3. Божевілля
+    // Madness
     const madnessBar = document.getElementById('madness-bar');
     const madnessVal = document.getElementById('madness-val');
     if (madnessBar) madnessBar.style.width = madness + '%';
     if (madnessVal) madnessVal.innerText = madness + '%';
 
-    // 4. Енергія
+    // Ефекти критичного божевілля
+    if (madness >= 100) {
+        document.body.style.filter = "sepia(0.8) hue-rotate(-50deg) contrast(1.5)";
+    } else {
+        document.body.style.filter = "none";
+    }
+
+    // Energy
     const energyBar = document.getElementById('energy-bar');
     const energyVal = document.getElementById('energy-val');
     if (energyBar) energyBar.style.width = energy + '%';
     if (energyVal) energyVal.innerText = energy + '/100';
 }
 
-// Запускаємо логіку ТІЛЬКИ після повного завантаження сторінки
 document.addEventListener('DOMContentLoaded', () => {
     loadProgress();
 });
