@@ -114,3 +114,85 @@ body {
     border-radius: 8px;
     font-weight: bold;
     cursor: pointer;
+    .divider {
+    border: 0;
+    border-top: 1px solid #333;
+    margin: 10px 0;
+}
+
+.btn-side {
+    background: #222;
+    color: #ccc;
+    border: 1px solid #444;
+    padding: 8px;
+    border-radius: 6px;
+    font-size: 11px;
+    cursor: pointer;
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+.btn-side:active {
+    background: #333;
+}
+
+.character-container {
+    position: relative;
+    cursor: pointer;
+}
+
+.character-outfit {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    font-size: 24px;
+}
+
+/* Модальне вікно */
+.modal {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+.modal.hidden {
+    display: none;
+}
+
+.modal-content {
+    background: #1a1a1a;
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid #444;
+    width: 80%;
+    max-width: 300px;
+    text-align: center;
+}
+
+.outfit-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 15px 0;
+}
+
+.outfit-options button {
+    background: #2a2a2a;
+    color: white;
+    border: 1px solid #555;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.btn-close {
+    background: #8b0000;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 6px;
+}}
