@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Палата 404</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <!-- Додаємо ?v=2, щоб збити кеш Telegram -->
-    <link rel="stylesheet" href="style.css?v=2">
+    <link rel="stylesheet" href="style.css?v=3">
 </head>
 <body>
 
@@ -21,28 +20,35 @@
 
     <main class="game-container">
         
+        <!-- Ліва панель статистики -->
         <aside class="stats-panel">
             <div class="stat-group">
-                <label>❤ Здоров'я</label>
+                <label>❤ Здоров'я: <span id="hp-val">100/100</span></label>
                 <div class="bar-bg"><div class="bar-fill hp" id="hp-bar" style="width: 100%;"></div></div>
             </div>
 
             <div class="stat-group">
-                <label>🌀 Божевілля</label>
+                <label>🌀 Божевілля: <span id="madness-val">20%</span></label>
                 <div class="bar-bg"><div class="bar-fill madness" id="madness-bar" style="width: 20%;"></div></div>
             </div>
 
             <div class="stat-group">
-                <label>⚡ Енергія</label>
+                <label>⚡ Енергія: <span id="energy-val">80/100</span></label>
                 <div class="bar-bg"><div class="bar-fill energy" id="energy-bar" style="width: 80%;"></div></div>
             </div>
+
+            <hr class="divider">
+
+            <!-- Кнопки швидких дій -->
+            <button class="btn-side" onclick="openCustomization()">🪞 Дзеркало (Стиль)</button>
+            <button class="btn-side" onclick="restInBed()">🛏 Поспати (+⚡ / +🌀)</button>
         </aside>
 
+        <!-- Центральна кімната -->
         <section class="room-view">
-            <div class="character-container">
-                <div class="character-avatar" id="character">
-                    🧑‍🦯
-                </div>
+            <div class="character-container" onclick="tapCharacter()">
+                <div class="character-avatar" id="character">🧑‍🦯</div>
+                <div class="character-outfit" id="outfit-icon">🩺</div>
             </div>
             
             <button class="btn-action" onclick="tapCharacter()">Дослідити палату</button>
@@ -50,7 +56,19 @@
 
     </main>
 
-    <!-- Додаємо ?v=2 сюди також -->
-    <script src="script.js?v=2"></script>
+    <!-- Модальне вікно кастомізації -->
+    <div id="custom-modal" class="modal hidden">
+        <div class="modal-content">
+            <h3>Гардероб Палати</h3>
+            <div class="outfit-options">
+                <button onclick="setOutfit('🩺', 'Рваха халат', 0)">🩺 Стандартний халат</button>
+                <button onclick="setOutfit('🥼', 'Смикальна сорочка', 10)">🥼 Смикальна сорочка (10💊)</button>
+                <button onclick="setOutfit('🥷', 'Маска тріщини', 25)">🥷 Маска тріщини (25💊)</button>
+            </div>
+            <button class="btn-close" onclick="closeCustomization()">Закрити</button>
+        </div>
+    </div>
+
+    <script src="script.js?v=3"></script>
 </body>
 </html>
