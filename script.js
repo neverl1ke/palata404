@@ -1,11 +1,6 @@
 const tg = window.Telegram.WebApp;
 tg.expand();
 
-// Налаштування імені
-if (tg.initDataUnsafe && tg.initDataUnsafe.user) {
-    document.getElementById('player-name').innerText = tg.initDataUnsafe.user.first_name;
-}
-
 // Початкові значення
 let hp = 100;
 let pills = 0;
@@ -35,17 +30,31 @@ function loadProgress() {
     const savedData = localStorage.getItem('palata404_save');
     
     if (savedData) {
-        const gameState = JSON.parse(savedData);
-        hp = gameState.hp ?? 100;
-        pills = gameState.pills ?? 0;
-        madness = gameState.madness ?? 20;
-        energy = gameState.energy ?? 80;
-        currentOutfit = gameState.currentOutfit ?? '🩺';
-        
-        document.getElementById('outfit-icon').innerText = currentOutfit;
+        try {
+            const gameState = JSON.parse(savedData);
+            hp = gameState.hp ?? 100;
+            pills = gameState.pills ?? 0;
+            madness = gameState.madness ?? 20;
+            energy = gameState.energy ?? 80;
+            currentOutfit = gameState.currentOutfit ?? '🩺';
+        } catch (e) {
+            console.error("Помилка зчитування збереження:", e);
+        }
     }
     
-    // Обов'язково оновлюємо весь UI після завантаження!
+    // Безпечно встановлюємо іконку одягу
+    const outfitEl = document.getElementById('outfit-icon');
+    if (outfitEl) {
+        outfitEl.innerText = currentOutfit;
+    }
+
+    // Оновлюємо ім'я користувача
+    if (tg.initDataUnsafe && tg.initDataUnsafe.user) {
+        const nameEl = document.getElementById('player-name');
+        if (nameEl) nameEl.innerText = tg.initDataUnsafe.user.first_name;
+    }
+    
+    // Оновлюємо інтерфейс
     updateUI();
 }
 
@@ -78,11 +87,13 @@ function restInBed() {
 }
 
 function openCustomization() {
-    document.getElementById('custom-modal').classList.remove('hidden');
+    const modal = document.getElementById('custom-modal');
+    if (modal) modal.classList.remove('hidden');
 }
 
 function closeCustomization() {
-    document.getElementById('custom-modal').classList.add('hidden');
+    const modal = document.getElementById('custom-modal');
+    if (modal) modal.classList.add('hidden');
 }
 
 function setOutfit(icon, name, price) {
@@ -96,28 +107,39 @@ function setOutfit(icon, name, price) {
     }
     
     currentOutfit = icon;
-    document.getElementById('outfit-icon').innerText = currentOutfit;
+    const outfitEl = document.getElementById('outfit-icon');
+    if (outfitEl) outfitEl.innerText = currentOutfit;
+
     updateUI();
     saveProgress();
     closeCustomization();
 }
 
 function updateUI() {
-    // 1. Оновлюємо лічильник пігулок
-    document.getElementById('pills').innerText = pills;
+    // Безопасні перевірки на наявність елементів у DOM
+    const pillsEl = document.getElementById('pills');
+    if (pillsEl) pillsEl.innerText = pills;
     
     // 2. Здоров'я
-    document.getElementById('hp-bar').style.width = hp + '%';
-    document.getElementById('hp-val').innerText = hp + '/100';
+    const hpBar = document.getElementById('hp-bar');
+    const hpVal = document.getElementById('hp-val');
+    if (hpBar) hpBar.style.width = hp + '%';
+    if (hpVal) hpVal.innerText = hp + '/100';
 
-    // 3. Божевілля (і смужка, і відсотки)
-    document.getElementById('madness-bar').style.width = madness + '%';
-    document.getElementById('madness-val').innerText = madness + '%';
+    // 3. Божевілля
+    const madnessBar = document.getElementById('madness-bar');
+    const madnessVal = document.getElementById('madness-val');
+    if (madnessBar) madnessBar.style.width = madness + '%';
+    if (madnessVal) madnessVal.innerText = madness + '%';
 
-    // 4. Енергія (і смужка, і значення)
-    document.getElementById('energy-bar').style.width = energy + '%';
-    document.getElementById('energy-val').innerText = energy + '/100';
+    // 4. Енергія
+    const energyBar = document.getElementById('energy-bar');
+    const energyVal = document.getElementById('energy-val');
+    if (energyBar) energyBar.style.width = energy + '%';
+    if (energyVal) energyVal.innerText = energy + '/100';
 }
 
-// Завантажуємо збережені дані при запуску
-loadProgress();
+// Запускаємо логіку ТІЛЬКИ після повного завантаження сторінки
+document.addEventListener('DOMContentLoaded', () => {
+    loadProgress();
+});
