@@ -2,148 +2,55 @@
 <html lang="uk">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Палата 404</title>
-    <!-- Підключаємо скрипт Telegram Web App -->
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <style>
-        body {
-            background-color: #121212;
-            color: #e0e0e0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-between;
-            min-height: 90vh;
-        }
-
-        .card {
-            background: #1e1e1e;
-            border: 1px solid #333;
-            border-radius: 12px;
-            padding: 20px;
-            width: 90%;
-            max-width: 400px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-            text-align: center;
-        }
-
-        h1 {
-            color: #ff4d4d;
-            font-size: 24px;
-            margin-bottom: 5px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        p.subtitle {
-            color: #888;
-            font-size: 14px;
-            margin-top: 0;
-        }
-
-        /* Шкала Божевілля */
-        .madness-container {
-            margin: 25px 0;
-            text-align: left;
-        }
-
-        .madness-label {
-            display: flex;
-            justify-content: space-between;
-            font-size: 14px;
-            margin-bottom: 8px;
-            font-weight: bold;
-        }
-
-        .progress-bar {
-            width: 100%;
-            background-color: #2a2a2a;
-            border-radius: 10px;
-            overflow: hidden;
-            height: 20px;
-            border: 1px solid #444;
-        }
-
-        .progress-fill {
-            width: 20%; /* Початковий відсоток божевілля */
-            height: 100%;
-            background: linear-gradient(90deg, #ff8800, #ff0000);
-            transition: width 0.3s ease;
-        }
-
-        /* Кнопка дії */
-        .btn-action {
-            background: #8b0000;
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            font-size: 16px;
-            font-weight: bold;
-            border-radius: 8px;
-            cursor: pointer;
-            width: 100%;
-            transition: background 0.2s;
-            box-shadow: 0 0 10px rgba(139, 0, 0, 0.4);
-        }
-
-        .btn-action:active {
-            background: #ff0000;
-            transform: scale(0.98);
-        }
-    </style>
+    <!-- Додаємо ?v=2, щоб збити кеш Telegram -->
+    <link rel="stylesheet" href="style.css?v=2">
 </head>
 <body>
 
-    <div class="card">
-        <h1>Палата 404</h1>
-        <p class="subtitle">Поверх 1: Покинута процедурна</p>
-
-        <div class="madness-container">
-            <div class="madness-label">
-                <span>Рівень Божевілля</span>
-                <span id="madness-val">20%</span>
-            </div>
-            <div class="progress-bar">
-                <div class="progress-fill" id="madness-bar"></div>
-            </div>
+    <header class="top-bar">
+        <div class="user-info">
+            <span id="player-name">Пацієнт #404</span>
         </div>
+        <div class="currency">
+            <span>💊 <strong id="pills">0</strong></span>
+        </div>
+    </header>
 
-        <p id="status-text" style="font-size: 14px; color: #aaa; min-height: 40px;">
-            У коридорі чути кроки... Що робимо?
-        </p>
+    <main class="game-container">
+        
+        <aside class="stats-panel">
+            <div class="stat-group">
+                <label>❤ Здоров'я</label>
+                <div class="bar-bg"><div class="bar-fill hp" id="hp-bar" style="width: 100%;"></div></div>
+            </div>
 
-        <button class="btn-action" onclick="doAction()">Дослідити поверх (-10 Енергії)</button>
-    </div>
+            <div class="stat-group">
+                <label>🌀 Божевілля</label>
+                <div class="bar-bg"><div class="bar-fill madness" id="madness-bar" style="width: 20%;"></div></div>
+            </div>
 
-    <script>
-        // Ініціалізація Telegram Web App
-        const tg = window.Telegram.WebApp;
-        tg.expand(); // Розгортаємо вікно на весь екран
+            <div class="stat-group">
+                <label>⚡ Енергія</label>
+                <div class="bar-bg"><div class="bar-fill energy" id="energy-bar" style="width: 80%;"></div></div>
+            </div>
+        </aside>
 
-        let madness = 20;
+        <section class="room-view">
+            <div class="character-container">
+                <div class="character-avatar" id="character">
+                    🧑‍🦯
+                </div>
+            </div>
+            
+            <button class="btn-action" onclick="tapCharacter()">Дослідити палату</button>
+        </section>
 
-        function doAction() {
-            if (madness < 100) {
-                madness += 15;
-                if (madness > 100) madness = 100;
-                
-                document.getElementById('madness-val').innerText = madness + '%';
-                document.getElementById('madness-bar').style.width = madness + '%';
+    </main>
 
-                if (madness >= 100) {
-                    document.getElementById('status-text').innerText = "УВАГА! Розум повністю затуманився... Настає ПРИСТУП!";
-                    document.getElementById('status-text').style.color = "#ff4d4d";
-                } else {
-                    document.getElementById('status-text').innerText = "Ти нишпориш по темних кутках. Божевілля зростає...";
-                }
-            } else {
-                alert("Ти в стані Приступу! Час іти в рейд на Кошмар!");
-            }
-        }
-    </script>
+    <!-- Додаємо ?v=2 сюди також -->
+    <script src="script.js?v=2"></script>
 </body>
 </html>
