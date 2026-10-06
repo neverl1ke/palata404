@@ -24,10 +24,8 @@ function saveProgress() {
         currentOutfit: currentOutfit
     };
     
-    // Зберігаємо в локальне сховище
     localStorage.setItem('palata404_save', JSON.stringify(gameState));
 
-    // Додатково зберігаємо в Telegram Cloud Storage (якщо доступно)
     if (tg.CloudStorage) {
         tg.CloudStorage.setItem('palata404_save', JSON.stringify(gameState));
     }
@@ -45,8 +43,10 @@ function loadProgress() {
         currentOutfit = gameState.currentOutfit ?? '🩺';
         
         document.getElementById('outfit-icon').innerText = currentOutfit;
-        updateUI();
     }
+    
+    // Обов'язково оновлюємо весь UI після завантаження!
+    updateUI();
 }
 
 // --- ІГРОВІ МЕХАНІКИ ---
@@ -60,7 +60,7 @@ function tapCharacter() {
         if (madness > 100) madness = 100;
 
         updateUI();
-        saveProgress(); // Зберігаємо після кліку
+        saveProgress();
     } else {
         alert("Нестача енергії! Скористайся ліжком, щоб поспати.");
     }
@@ -70,8 +70,10 @@ function restInBed() {
     if (energy < 100) {
         energy = Math.min(100, energy + 30);
         madness = Math.min(100, madness + 5);
+        if (madness > 100) madness = 100;
+        
         updateUI();
-        saveProgress(); // Зберігаємо після сну
+        saveProgress();
     }
 }
 
@@ -96,22 +98,26 @@ function setOutfit(icon, name, price) {
     currentOutfit = icon;
     document.getElementById('outfit-icon').innerText = currentOutfit;
     updateUI();
-    saveProgress(); // Зберігаємо після покупки/зміни одягу
+    saveProgress();
     closeCustomization();
 }
 
 function updateUI() {
+    // 1. Оновлюємо лічильник пігулок
     document.getElementById('pills').innerText = pills;
     
+    // 2. Здоров'я
     document.getElementById('hp-bar').style.width = hp + '%';
     document.getElementById('hp-val').innerText = hp + '/100';
 
+    // 3. Божевілля (і смужка, і відсотки)
     document.getElementById('madness-bar').style.width = madness + '%';
     document.getElementById('madness-val').innerText = madness + '%';
 
+    // 4. Енергія (і смужка, і значення)
     document.getElementById('energy-bar').style.width = energy + '%';
     document.getElementById('energy-val').innerText = energy + '/100';
 }
 
-// Автоматичне завантаження при відкритті
+// Завантажуємо збережені дані при запуску
 loadProgress();
