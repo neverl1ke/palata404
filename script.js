@@ -1,7 +1,7 @@
 const tg = window.Telegram.WebApp;
 tg.expand();
 
-let maxHp = 100; // Максимальні HP (число, не відсотки)
+let maxHp = 100;
 let hp = 100;
 let pills = 0;
 let scrap = 0;
@@ -9,7 +9,6 @@ let madness = 20;
 let energy = 80;
 let currentOutfit = '🩺';
 
-// Базові предмети з характеристиками
 const ITEM_STATS = {
     "Ніж (Базовий)": { type: "weapon", damage: 10 },
     "ПМ": { type: "weapon", damage: 25 },
@@ -32,7 +31,7 @@ let equipment = {
 let stash = ["ПМ", "Тактичний шолом", "Плитник (Бронежилет)", "Коліматорний приціл", "Стимулятор 'Морфін'"];
 
 function calculateStats() {
-    let totalDamage = ITEM_STATS[equipment.weapon]?.damage || 5;
+    let totalDamage = ITEM_STATS[equipment.weapon]?.damage || 10;
     if (equipment.attachment && ITEM_STATS[equipment.attachment]?.damageBonus) {
         totalDamage += ITEM_STATS[equipment.attachment].damageBonus;
     }
@@ -50,12 +49,13 @@ function calculateStats() {
 
 function saveProgress() {
     const gameState = { maxHp, hp, pills, scrap, madness, energy, currentOutfit, equipment, stash };
-    localStorage.setItem('palata404_save', JSON.stringify(gameState));
-    if (tg.CloudStorage) tg.CloudStorage.setItem('palata404_save', JSON.stringify(gameState));
+    localStorage.setItem('palata404_save_v12', JSON.stringify(gameState));
+    if (tg.CloudStorage) tg.CloudStorage.setItem('palata404_save_v12', JSON.stringify(gameState));
 }
 
 function loadProgress() {
-    const savedData = localStorage.getItem('palata404_save');
+    // Вживаємо новий ключ збереження v12 для скидання застарілої структури
+    const savedData = localStorage.getItem('palata404_save_v12');
     if (savedData) {
         try {
             const gameState = JSON.parse(savedData);
@@ -85,14 +85,13 @@ function loadProgress() {
 function tapCharacter() {
     if (madness >= 100) {
         const { totalArmor } = calculateStats();
-        // Броня знижує шкоду від припадку!
         let damageToTake = 15;
         if (totalArmor > 0) {
             damageToTake = Math.max(3, damageToTake - Math.floor(totalArmor / 5));
         }
 
         hp = Math.max(0, hp - damageToTake);
-        alert(`🌀 Розум затьмарено! Отримано ${damageToTake} шкоди HP (Броня поглинула частину урону). Поспи!`);
+        alert(`🌀 Розум затьмарено! Отримано ${damageToTake} шкоди HP (Броня зменшила урон). Поспи!`);
         updateUI();
         saveProgress();
         return;
@@ -106,7 +105,7 @@ function tapCharacter() {
         const rand = Math.random();
         if (rand > 0.7) {
             scrap += 1;
-        } else if (rand > 0.92) {
+        } else if (rand > 0.9) {
             const rareLoot = ["АК-74", "Глушник", "Стимулятор 'Морфін'"];
             const found = rareLoot[Math.floor(Math.random() * rareLoot.length)];
             stash.push(found);
@@ -147,7 +146,7 @@ function equipItem(itemName, index) {
     const itemData = ITEM_STATS[itemName];
 
     if (!itemData) {
-        alert(`Предмет ${itemName} поки що є компонентом.`);
+        alert(`Предмет ${itemName} поки що є ресурсом.`);
         return;
     }
 
