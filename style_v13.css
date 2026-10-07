@@ -7,8 +7,8 @@
 }
 
 body {
-    background-color: #121212;
-    color: #e0e0e0;
+    background-color: #121212 !important;
+    color: #e0e0e0 !important;
     display: flex;
     flex-direction: column;
     height: 100vh;
