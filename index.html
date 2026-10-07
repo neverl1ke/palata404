@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Палата 404</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <link rel="stylesheet" href="style.css?v=7">
+    <link rel="stylesheet" href="style.css?v=9">
 </head>
 <body>
 
@@ -15,6 +15,7 @@
         </div>
         <div class="currency">
             <span>💊 <strong id="pills">0</strong></span>
+            <span>📦 <strong id="scrap">0</strong></span>
         </div>
     </header>
 
@@ -39,9 +40,10 @@
 
             <hr class="divider">
 
-            <!-- Кнопки швидких дій -->
+            <!-- Кнопки дій -->
+            <button class="btn-side" onclick="openInventory()">🎒 Сховище (Military)</button>
             <button class="btn-side" onclick="openCustomization()">🪞 Дзеркало (Стиль)</button>
-            <button class="btn-side" onclick="restInBed()">🛏 Поспати (+⚡ / +🌀)</button>
+            <button class="btn-side" onclick="restInBed()">🛏 Поспати (+⚡ / -🌀)</button>
         </aside>
 
         <!-- Центральна кімната -->
@@ -56,6 +58,28 @@
 
     </main>
 
+    <!-- Модальне вікно Інвентарю / Сховища -->
+    <div id="inventory-modal" class="modal hidden">
+        <div class="modal-content large">
+            <h3>🎒 Сховище Пацієнта</h3>
+            
+            <div class="equipment-grid">
+                <div class="equip-slot">🪖 <span id="slot-helmet">Порожньо</span></div>
+                <div class="equip-slot">🥼 <span id="slot-armor">Порожньо</span></div>
+                <div class="equip-slot">🔫 <span id="slot-weapon">ПМ (Базовий)</span></div>
+                <div class="equip-slot">🔦 <span id="slot-attachment">Без обвісу</span></div>
+            </div>
+
+            <hr class="divider">
+            <h4>📦 Предмети у заначці:</h4>
+            <div id="stash-items" class="stash-list">
+                <!-- Сюди скрипт буде виводити предмети -->
+            </div>
+
+            <button class="btn-close" onclick="closeInventory()">Закрити</button>
+        </div>
+    </div>
+
     <!-- Модальне вікно кастомізації -->
     <div id="custom-modal" class="modal hidden">
         <div class="modal-content">
@@ -69,6 +93,6 @@
         </div>
     </div>
 
-    <script src="script.js?v=7"></script>
+    <script src="script.js?v=9"></script>
 </body>
 </html>
