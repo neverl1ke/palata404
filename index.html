@@ -4,114 +4,134 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Палата 404</title>
-    <!-- Telegram WebApp SDK -->
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <!-- Подключение стилей с параметром v=5000 для сброса кеша -->
-<link rel="stylesheet" href="style.css?v=30">
+    <link rel="stylesheet" href="style.css?v=9500">
 </head>
 <body>
 
-    <header class="top-bar">
-        <div class="user-info" onclick="changeNickname()" style="cursor: pointer;" title="Нажмите, чтобы изменить имя">
-            👤 <strong id="player-name">Загрузка...</strong> ✏️
+    <!-- Верхня панель з профілем, рівнем, досвідом і званням -->
+    <div class="top-nav">
+        <div class="user-profile-badge" onclick="changeNickname()">
+            <div class="avatar-mini">🪖</div>
+            <div class="user-text">
+                <div class="user-name-row">
+                    <strong id="player-name">Завантаження...</strong>
+                    <span class="rank-tag" id="player-rank">Новачок</span>
+                </div>
+                
+                <!-- Рівень та Смужка досвіду -->
+                <div class="exp-container">
+                    <div class="exp-label">
+                        <span>Рівень <strong id="player-lvl">1</strong></span>
+                        <span id="exp-val">0 / 100 EXP</span>
+                    </div>
+                    <div class="exp-bar-bg">
+                        <div class="exp-fill" id="exp-bar" style="width: 0%;"></div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="currency">
-            <span>💵 <strong id="money">100</strong> $</span>
-            <span>💊 <strong id="pills">0</strong></span>
-            <span>📦 <strong id="scrap">0</strong></span>
-        </div>
-    </header>
 
-    <main class="game-container">
+        <div class="compass">W . . NW . . <span>N</span> . . NE . . E</div>
+
+        <div class="top-actions">
+            <span>🔔</span>
+            <span>✉️</span>
+            <span>⚙️</span>
+        </div>
+    </div>
+
+    <!-- Основна ігрова сітка -->
+    <main class="main-layout">
         
-        <!-- Левая панель статистики -->
-        <aside class="stats-panel">
-            <div class="stat-group">
-                <label>❤ Здоровье: <span id="hp-val">100 / 100 HP</span></label>
-                <div class="bar-bg"><div class="bar-fill hp" id="hp-bar" style="width: 100%;"></div></div>
+        <!-- Ліва панель: Стати та Меню (БЕЗ ГАРЯЧИХ КЛАВІШ) -->
+        <aside class="left-panel">
+            <div class="vitals-group">
+                <div class="vital-item">
+                    <div class="vital-icon hp-icon">❤️</div>
+                    <div class="vital-info">
+                        <div class="vital-label">HP (Здоров'я) <span id="hp-val">100 / 100</span></div>
+                        <div class="bar-bg"><div class="bar-fill hp" id="hp-bar" style="width: 100%;"></div></div>
+                    </div>
+                </div>
+
+                <div class="vital-item">
+                    <div class="vital-icon madness-icon">🧠</div>
+                    <div class="vital-info">
+                        <div class="vital-label">Божевілля <span id="madness-val">0 / 100</span></div>
+                        <div class="bar-bg"><div class="bar-fill madness" id="madness-bar" style="width: 0%;"></div></div>
+                    </div>
+                </div>
+
+                <div class="vital-item">
+                    <div class="vital-icon energy-icon">⚡</div>
+                    <div class="vital-info">
+                        <div class="vital-label">Витривалість <span id="energy-val">100 / 100</span></div>
+                        <div class="bar-bg"><div class="bar-fill energy" id="energy-bar" style="width: 100%;"></div></div>
+                    </div>
+                </div>
             </div>
 
-            <div class="stat-group">
-                <label>🛡 Броня: <span id="armor-val">0</span></label>
-            </div>
-
-            <div class="stat-group">
-                <label>⚔ Урон: <span id="dmg-val">10</span></label>
-            </div>
-
-            <div class="stat-group">
-                <label>🌀 Безумие: <span id="madness-val">20%</span></label>
-                <div class="bar-bg"><div class="bar-fill madness" id="madness-bar" style="width: 20%;"></div></div>
-            </div>
-
-            <div class="stat-group">
-                <label>⚡ Энергия: <span id="energy-val">80/100</span></label>
-                <div class="bar-bg"><div class="bar-fill energy" id="energy-bar" style="width: 80%;"></div></div>
-            </div>
-
-            <hr class="divider">
-
-            <!-- Кнопки действий -->
-            <button class="btn-side" onclick="openInventory()">🎒 Хранилище (Military)</button>
-            <button class="btn-side" onclick="openCustomization()">🪞 Зеркало (Стиль)</button>
-            <button class="btn-side" onclick="restInBed()">🛏 Поспать (+⚡ / -🌀)</button>
+            <nav class="side-menu">
+                <button class="menu-btn" onclick="openInventory()">🎒 Інвентар</button>
+                <button class="menu-btn" onclick="openInventory()">📦 Сховище</button>
+                <button class="menu-btn" onclick="openCustomization()">👕 Гардероб</button>
+                <button class="menu-btn" onclick="alert('Карта в розробці')">🗺️ Карта</button>
+                <button class="menu-btn" onclick="alert('Завдання в розробці')">📋 Завдання</button>
+            </nav>
         </aside>
 
-        <!-- Центральная комната -->
-        <section class="room-view">
-            <div class="character-container" onclick="tapCharacter()">
-                <div class="character-avatar" id="character">🧑‍🦯</div>
-                <div class="character-outfit" id="outfit-icon">🩺</div>
+        <!-- Центр: Персонаж та дія -->
+        <section class="center-stage">
+            <div class="character-preview" onclick="tapCharacter()">
+                <div class="hero-avatar" id="character">🥷</div>
             </div>
-            
-            <button class="btn-action" onclick="tapCharacter()">Исследовать палату</button>
+            <button class="btn-main-action" onclick="tapCharacter()">🔍 Дослідити руїни (+EXP)</button>
         </section>
+
+        <!-- Права панель -->
+        <aside class="right-panel">
+            <div class="location-card">
+                <div class="loc-title">Поточна локація</div>
+                <div class="loc-name">Зруйноване місто</div>
+                <div class="loc-desc">Ти не один тут...</div>
+            </div>
+
+            <nav class="side-menu">
+                <button class="menu-btn" onclick="restInBed()">🔧 Відпочинок (+⚡ / -🧠)</button>
+                <button class="menu-btn" onclick="changeNickname()">👤 Змінити ім'я</button>
+                <button class="menu-btn" onclick="alert('Друзі незабаром')">👥 Друзі</button>
+            </nav>
+        </aside>
 
     </main>
 
-    <!-- Модальное окно Инвентаря / Хранилища -->
+    <!-- Нижня панель швидкого доступу -->
+    <footer class="hotbar">
+        <div class="slot active"><span>1</span> 🔫</div>
+        <div class="slot"><span>2</span> 🔪</div>
+        <div class="slot"><span>3</span> 🧪</div>
+        <div class="slot"><span>4</span></div>
+        <div class="slot"><span>5</span></div>
+    </footer>
+
+    <!-- Модальні вікна -->
     <div id="inventory-modal" class="modal hidden">
-        <div class="modal-content large">
-            <h3>🎒 Хранилище и Характеристики</h3>
-            
-            <div class="stats-summary">
-                <div>⚔ Урон оружия: <strong id="modal-dmg">10</strong></div>
-                <div>🛡 Общая Броня: <strong id="modal-armor">0</strong></div>
-                <div>❤ Макс. HP: <strong id="modal-max-hp">100 HP</strong></div>
-            </div>
-
-            <div class="equipment-grid">
-                <div class="equip-slot">🪖 Шлем: <span id="slot-helmet">Пусто</span></div>
-                <div class="equip-slot">🥼 Броник: <span id="slot-armor">Пусто</span></div>
-                <div class="equip-slot">🔫 Оружие: <span id="slot-weapon">Нож (Базовый)</span></div>
-                <div class="equip-slot">🔦 Обвес: <span id="slot-attachment">Без обвеса</span></div>
-            </div>
-
-            <hr class="divider">
-            <h4>📦 Предметы в хранилище:</h4>
-            <div id="stash-items" class="stash-list">
-                <!-- Содержимое хранилища -->
-            </div>
-
-            <button class="btn-close" onclick="closeInventory()">Закрыть</button>
+        <div class="modal-content">
+            <h3>🎒 Інвентар</h3>
+            <div id="stash-items" class="stash-list"></div>
+            <button class="btn-close" onclick="closeInventory()">Закрити</button>
         </div>
     </div>
 
-    <!-- Модальное окно Гардероба -->
     <div id="custom-modal" class="modal hidden">
-        <div class="modal-content large">
-            <h3>🪞 Гардероб Палаты</h3>
-            <p style="font-size: 12px; color: #aaa; margin-bottom: 12px;">Одежда покупается один раз и дает бонусы к характеристикам.</p>
-            
-            <div class="wardrobe-grid" id="wardrobe-container">
-                <!-- Карточки одежды -->
-            </div>
-
-            <button class="btn-close" onclick="closeCustomization()">Закрыть</button>
+        <div class="modal-content">
+            <h3>👕 Гардероб</h3>
+            <div id="wardrobe-container" class="wardrobe-grid"></div>
+            <button class="btn-close" onclick="closeCustomization()">Закрити</button>
         </div>
     </div>
 
-    <!-- Подключение JS с версией v=5000 -->
-    <script src="script.js?v=5000"></script>
+    <script src="script.js?v=9500"></script>
 </body>
 </html>

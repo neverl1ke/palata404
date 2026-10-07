@@ -40,7 +40,7 @@ function changeNickname() {
     }
 }
 
-// === Збереження та Завантаження прогресу ===
+// === Збереження та Завантаження даних ===
 const DEFAULT_STATS = {
     money: 125,
     pills: 4,
@@ -49,36 +49,32 @@ const DEFAULT_STATS = {
     maxHp: 100,
     armor: 0,
     dmg: 10,
-    madness: 45,
-    energy: 55,
-    maxEnergy: 100
+    madness: 20,
+    energy: 100,
+    maxEnergy: 100,
+    level: 1,
+    exp: 0,
+    nextLvlExp: 100
 };
 
 let stats = loadSaveData('palata404_stats', DEFAULT_STATS);
 let currentOutfit = localStorage.getItem('palata404_outfit') || 'default';
 
 let outfits = loadSaveData('palata404_outfits', {
-    'default': { name: 'Рвануватий халат', icon: '🩺', cost: 0, bonus: 'Без бонусив', purchased: true, armorBonus: 0, hpBonus: 0 },
-    'cozy': { name: 'Смикальна сорочка', icon: '🥋', cost: 50, bonus: '+10 до Броні (пасивно)', purchased: false, armorBonus: 10, hpBonus: 0 },
-    'mask': { name: 'Маска Тріщини', icon: '🎭', cost: 120, bonus: '+20 до Броні, +15 Макс. HP', purchased: false, armorBonus: 20, hpBonus: 15 }
+    'default': { name: 'Рвануватий халат', icon: '🩺', cost: 0, bonus: 'Без бонусів', purchased: true, armorBonus: 0, hpBonus: 0 },
+    'cozy': { name: 'Смикальна сорочка', icon: '🥋', cost: 50, bonus: '+10 до Броні', purchased: false, armorBonus: 10, hpBonus: 0 },
+    'mask': { name: 'Маска Тріщини', icon: '🎭', cost: 120, bonus: '+20 Броні, +15 HP', purchased: false, armorBonus: 20, hpBonus: 15 }
 });
 
 let inventory = loadSaveData('palata404_inventory', [
     { id: 'pm', name: 'ПМ', type: 'weapon', bonus: '+15 Шкоди' },
-    { id: 'helmet', name: 'Тактичний шолом', type: 'helmet', bonus: '+15 Броні' },
-    { id: 'vest', name: 'Плитник (Бронежилет)', type: 'armor', bonus: '+35 Броні' },
-    { id: 'sight', name: 'Коліматорний приціл', type: 'attachment', bonus: '+5 Шкоди' },
-    { id: 'morphine', name: 'Стимулятор \'Морфін\'', type: 'use', bonus: 'Відновлює 50 HP' }
+    { id: 'helmet', name: 'Тактичний шолом', type: 'helmet', bonus: '+15 Броні' }
 ]);
 
 function loadSaveData(key, fallback) {
     const saved = localStorage.getItem(key);
     if (!saved) return fallback;
-    try {
-        return JSON.parse(saved);
-    } catch (e) {
-        return fallback;
-    }
+    try { return JSON.parse(saved); } catch (e) { return fallback; }
 }
 
 function saveGameProgress() {
@@ -88,57 +84,76 @@ function saveGameProgress() {
     localStorage.setItem('palata404_inventory', JSON.stringify(inventory));
 }
 
-// === Оновлення Інтерфейсу ===
-function updateUI() {
-    document.getElementById('money').textContent = stats.money;
-    document.getElementById('pills').textContent = stats.pills;
-    document.getElementById('scrap').textContent = stats.scrap;
-
-    let outfitArmor = outfits[currentOutfit]?.armorBonus || 0;
-    let outfitHp = outfits[currentOutfit]?.hpBonus || 0;
-
-    let totalMaxHp = stats.maxHp + outfitHp;
-    let totalArmor = stats.armor + outfitArmor;
-
-    document.getElementById('hp-val').textContent = `${stats.hp} / ${totalMaxHp} HP`;
-    document.getElementById('armor-val').textContent = totalArmor;
-    document.getElementById('dmg-val').textContent = stats.dmg;
-    document.getElementById('madness-val').textContent = `${stats.madness}%`;
-    document.getElementById('energy-val').textContent = `${stats.energy}/${stats.maxEnergy}`;
-
-    document.getElementById('hp-bar').style.width = `${Math.min(100, Math.max(0, (stats.hp / totalMaxHp) * 100))}%`;
-    document.getElementById('madness-bar').style.width = `${Math.min(100, Math.max(0, stats.madness))}%`;
-    document.getElementById('energy-bar').style.width = `${Math.min(100, Math.max(0, stats.energy))}%`;
-
-    document.getElementById('outfit-icon').textContent = outfits[currentOutfit].icon;
-
-    updatePlayerNameDisplay();
-    saveGameProgress(); // Автоматичне збереження стану при кожному оновленні UI
+// === Розрахунок звання залежно від рівня ===
+function getPlayerRank(level) {
+    // Поки стоїть базова логіка. Коли даси свій список звань — ми просто підставимо його сюди!
+    if (level >= 20) return "Легенда Руїн";
+    if (level >= 15) return "Ветеран";
+    if (level >= 10) return "Шукач";
+    if (level >= 5) return "Виживальник";
+    return "Новачок";
 }
 
-// === Кліки та Божевілля ===
+// === Додавання досвіду ===
+function addExperience(amount) {
+    stats.exp += amount;
+    if (!stats.nextLvlExp) stats.nextLvlExp = stats.level * 100;
+
+    // Перевірка на підвищення рівня
+    while (stats.exp >= stats.nextLvlExp) {
+        stats.exp -= stats.nextLvlExp;
+        stats.level += 1;
+        stats.nextLvlExp = stats.level * 120; // Кожен новий рівень вимагає трохи більше EXP
+        stats.maxHp += 5;
+        stats.hp = stats.maxHp; // Повне лікування при новому рівні
+        alert(`🎉 Вітаємо! Ви досягли ${stats.level} рівня!\nВаше звання: ${getPlayerRank(stats.level)}`);
+    }
+}
+
+// === Оновлення Інтерфейсу ===
+function updateUI() {
+    // Вiтали
+    document.getElementById('hp-val').textContent = `${stats.hp} / ${stats.maxHp}`;
+    document.getElementById('madness-val').textContent = `${stats.madness} / 100`;
+    document.getElementById('energy-val').textContent = `${stats.energy} / ${stats.maxEnergy}`;
+
+    document.getElementById('hp-bar').style.width = `${Math.min(100, (stats.hp / stats.maxHp) * 100)}%`;
+    document.getElementById('madness-bar').style.width = `${Math.min(100, stats.madness)}%`;
+    document.getElementById('energy-bar').style.width = `${Math.min(100, (stats.energy / stats.maxEnergy) * 100)}%`;
+
+    // Рівень, Звання та Досвід
+    document.getElementById('player-lvl').textContent = stats.level;
+    document.getElementById('player-rank').textContent = getPlayerRank(stats.level);
+    document.getElementById('exp-val').textContent = `${stats.exp} / ${stats.nextLvlExp} EXP`;
+    
+    let expPercent = (stats.exp / stats.nextLvlExp) * 100;
+    document.getElementById('exp-bar').style.width = `${Math.min(100, expPercent)}%`;
+
+    updatePlayerNameDisplay();
+    saveGameProgress();
+}
+
+// === Дії ===
 function tapCharacter() {
     if (stats.energy >= 5) {
         stats.energy -= 5;
         stats.money += Math.floor(Math.random() * 5) + 2;
         
-        // Покращений набір божевілля: +3–6% за кожен клік
+        // Набір божевілля
         const madnessGain = Math.floor(Math.random() * 4) + 3;
         stats.madness = Math.min(100, stats.madness + madnessGain);
 
-        // Побочний ефект високого божевілля
-        if (stats.madness >= 80 && Math.random() > 0.5) {
-            stats.hp = Math.max(1, stats.hp - 2); // втрачає HP від галюцинацій
-        }
+        // Даємо EXP за кожну дію (+15..25 EXP)
+        addExperience(Math.floor(Math.random() * 10) + 15);
+
     } else {
-        alert("Занадто мало енергії! Потрібно поспати.");
+        alert("Занадто мало витривалості! Потрібно відпочити.");
     }
     updateUI();
 }
 
 function restInBed() {
     stats.energy = Math.min(stats.maxEnergy, stats.energy + 35);
-    // Сон зменшує божевілля
     stats.madness = Math.max(0, stats.madness - 15);
     updateUI();
 }
