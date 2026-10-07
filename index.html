@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Палата 404</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <link rel="stylesheet" href="style.css?v=9">
+    <link rel="stylesheet" href="style.css?v=11">
 </head>
 <body>
 
@@ -24,8 +24,16 @@
         <!-- Ліва панель статистики -->
         <aside class="stats-panel">
             <div class="stat-group">
-                <label>❤ Здоров'я: <span id="hp-val">100/100</span></label>
+                <label>❤ Здоров'я: <span id="hp-val">100 / 100 HP</span></label>
                 <div class="bar-bg"><div class="bar-fill hp" id="hp-bar" style="width: 100%;"></div></div>
+            </div>
+
+            <div class="stat-group">
+                <label>🛡 Броня: <span id="armor-val">0</span></label>
+            </div>
+
+            <div class="stat-group">
+                <label>⚔ Шкода (Урон): <span id="dmg-val">10</span></label>
             </div>
 
             <div class="stat-group">
@@ -61,19 +69,25 @@
     <!-- Модальне вікно Інвентарю / Сховища -->
     <div id="inventory-modal" class="modal hidden">
         <div class="modal-content large">
-            <h3>🎒 Сховище Пацієнта</h3>
+            <h3>🎒 Сховище та Бойові Хірактеристики</h3>
             
+            <div class="stats-summary" style="margin-bottom: 10px; font-size: 13px; color: #ddd;">
+                <div>⚔ Шкода зброї: <strong id="modal-dmg">10</strong></div>
+                <div>🛡 Загальна Броня: <strong id="modal-armor">0</strong></div>
+                <div>❤ Макс. HP: <strong id="modal-max-hp">100 HP</strong></div>
+            </div>
+
             <div class="equipment-grid">
-                <div class="equip-slot">🪖 <span id="slot-helmet">Порожньо</span></div>
-                <div class="equip-slot">🥼 <span id="slot-armor">Порожньо</span></div>
-                <div class="equip-slot">🔫 <span id="slot-weapon">ПМ (Базовий)</span></div>
-                <div class="equip-slot">🔦 <span id="slot-attachment">Без обвісу</span></div>
+                <div class="equip-slot">🪖 Шолом: <span id="slot-helmet">Порожньо</span></div>
+                <div class="equip-slot">🥼 Бронік: <span id="slot-armor">Порожньо</span></div>
+                <div class="equip-slot">🔫 Зброя: <span id="slot-weapon">Ніж (Базовий)</span></div>
+                <div class="equip-slot">🔦 Обвіс: <span id="slot-attachment">Без обвісу</span></div>
             </div>
 
             <hr class="divider">
-            <h4>📦 Предмети у заначці:</h4>
+            <h4>📦 Предмети та Стимулятори у заначці:</h4>
             <div id="stash-items" class="stash-list">
-                <!-- Сюди скрипт буде виводити предмети -->
+                <!-- Вміст сховища -->
             </div>
 
             <button class="btn-close" onclick="closeInventory()">Закрити</button>
@@ -93,6 +107,6 @@
         </div>
     </div>
 
-    <script src="script.js?v=9"></script>
+    <script src="script.js?v=11"></script>
 </body>
 </html>
