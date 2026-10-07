@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Палата 404</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <link rel="stylesheet" href="style.css?v=12">
+    <link rel="stylesheet" href="style_v13.css?v=13">
 </head>
 <body>
 
@@ -14,6 +14,7 @@
             <span id="player-name">Пацієнт #404</span>
         </div>
         <div class="currency">
+            <span>💵 <strong id="money">100</strong> $</span>
             <span>💊 <strong id="pills">0</strong></span>
             <span>📦 <strong id="scrap">0</strong></span>
         </div>
@@ -71,7 +72,7 @@
         <div class="modal-content large">
             <h3>🎒 Сховище та Характеристики</h3>
             
-            <div class="stats-summary" style="margin-bottom: 10px; font-size: 13px; color: #ddd; background: #222; padding: 8px; border-radius: 6px;">
+            <div class="stats-summary">
                 <div>⚔ Шкода зброї: <strong id="modal-dmg">10</strong></div>
                 <div>🛡 Загальна Броня: <strong id="modal-armor">0</strong></div>
                 <div>❤ Макс. HP: <strong id="modal-max-hp">100 HP</strong></div>
@@ -94,19 +95,20 @@
         </div>
     </div>
 
-    <!-- Модальне вікно кастомізації -->
+    <!-- Модальне вікно Гардеробу (Кастомізація) -->
     <div id="custom-modal" class="modal hidden">
-        <div class="modal-content">
-            <h3>Гардероб Палати</h3>
-            <div class="outfit-options">
-                <button onclick="setOutfit('🩺', 'Рваха халат', 0)">🩺 Стандартний халат</button>
-                <button onclick="setOutfit('🥼', 'Смикальна сорочка', 10)">🥼 Смикальна сорочка (10💊)</button>
-                <button onclick="setOutfit('🥷', 'Маска тріщини', 25)">🥷 Маска тріщини (25💊)</button>
+        <div class="modal-content large">
+            <h3>🪞 Гардероб Палати</h3>
+            <p style="font-size: 12px; color: #aaa; margin-bottom: 12px;">Одяг купується один раз і дає додаткові бонуси до характеристик.</p>
+            
+            <div class="wardrobe-grid" id="wardrobe-container">
+                <!-- Картки одягу рендеряться з JS -->
             </div>
+
             <button class="btn-close" onclick="closeCustomization()">Закрити</button>
         </div>
     </div>
 
-    <script src="script.js?v=12"></script>
+    <script src="script_v13.js?v=13"></script>
 </body>
 </html>

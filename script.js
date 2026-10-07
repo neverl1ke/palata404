@@ -1,6 +1,7 @@
 const tg = window.Telegram.WebApp;
 tg.expand();
 
+let money = 100;
 let maxHp = 100;
 let hp = 100;
 let pills = 0;
@@ -8,6 +9,38 @@ let scrap = 0;
 let madness = 20;
 let energy = 80;
 let currentOutfit = '🩺';
+
+const OUTFITS = [
+    {
+        id: "default",
+        icon: "🩺",
+        name: "Рваха халат",
+        price: 0,
+        desc: "Базовий лікарняний одяг. Без бонусів.",
+        armorBonus: 0,
+        hpBonus: 0
+    },
+    {
+        id: "straitjacket",
+        icon: "🥼",
+        name: "Смикальна сорочка",
+        price: 50,
+        desc: "+10 до Броні (пасивно)",
+        armorBonus: 10,
+        hpBonus: 0
+    },
+    {
+        id: "crack_mask",
+        icon: "🥷",
+        name: "Маска тріщини",
+        price: 120,
+        desc: "+20 до Броні, +15 Макс. HP",
+        armorBonus: 20,
+        hpBonus: 15
+    }
+];
+
+let purchasedOutfits = ["default"];
 
 const ITEM_STATS = {
     "Ніж (Базовий)": { type: "weapon", damage: 10 },
@@ -44,21 +77,26 @@ function calculateStats() {
         totalArmor += ITEM_STATS[equipment.armor].armor;
     }
 
+    const currentOutfitData = OUTFITS.find(o => o.icon === currentOutfit);
+    if (currentOutfitData) {
+        totalArmor += currentOutfitData.armorBonus;
+    }
+
     return { totalDamage, totalArmor };
 }
 
 function saveProgress() {
-    const gameState = { maxHp, hp, pills, scrap, madness, energy, currentOutfit, equipment, stash };
-    localStorage.setItem('palata404_save_v12', JSON.stringify(gameState));
-    if (tg.CloudStorage) tg.CloudStorage.setItem('palata404_save_v12', JSON.stringify(gameState));
+    const gameState = { money, maxHp, hp, pills, scrap, madness, energy, currentOutfit, equipment, stash, purchasedOutfits };
+    localStorage.setItem('palata404_save_v13', JSON.stringify(gameState));
+    if (tg.CloudStorage) tg.CloudStorage.setItem('palata404_save_v13', JSON.stringify(gameState));
 }
 
 function loadProgress() {
-    // Вживаємо новий ключ збереження v12 для скидання застарілої структури
-    const savedData = localStorage.getItem('palata404_save_v12');
+    const savedData = localStorage.getItem('palata404_save_v13');
     if (savedData) {
         try {
             const gameState = JSON.parse(savedData);
+            money = gameState.money ?? 100;
             maxHp = gameState.maxHp ?? 100;
             hp = gameState.hp ?? maxHp;
             pills = gameState.pills ?? 0;
@@ -68,6 +106,7 @@ function loadProgress() {
             currentOutfit = gameState.currentOutfit ?? '🩺';
             equipment = gameState.equipment ?? equipment;
             stash = gameState.stash ?? stash;
+            purchasedOutfits = gameState.purchasedOutfits ?? ["default"];
         } catch (e) { console.error(e); }
     }
     
@@ -91,7 +130,7 @@ function tapCharacter() {
         }
 
         hp = Math.max(0, hp - damageToTake);
-        alert(`🌀 Розум затьмарено! Отримано ${damageToTake} шкоди HP (Броня зменшила урон). Поспи!`);
+        alert(`🌀 Розум затьмарено! Отримано ${damageToTake} шкоди HP. Поспи!`);
         updateUI();
         saveProgress();
         return;
@@ -100,7 +139,9 @@ function tapCharacter() {
     if (energy >= 5) {
         energy -= 5;
         madness += 5;
-        pills += 1;
+        
+        money += Math.floor(Math.random() * 5) + 2; 
+        if (Math.random() > 0.5) pills += 1;
 
         const rand = Math.random();
         if (rand > 0.7) {
@@ -146,7 +187,7 @@ function equipItem(itemName, index) {
     const itemData = ITEM_STATS[itemName];
 
     if (!itemData) {
-        alert(`Предмет ${itemName} поки що є ресурсом.`);
+        alert(`Предмет ${itemName} є ресурсом.`);
         return;
     }
 
@@ -224,7 +265,9 @@ function renderStash() {
     }
 }
 
+/* Кастомізація / Гардероб */
 function openCustomization() {
+    renderWardrobe();
     const modal = document.getElementById('custom-modal');
     if (modal) modal.classList.remove('hidden');
 }
@@ -234,27 +277,77 @@ function closeCustomization() {
     if (modal) modal.classList.add('hidden');
 }
 
-function setOutfit(icon, name, price) {
-    if (price > pills) {
-        alert("Не вистачає пігулок!");
+function renderWardrobe() {
+    const container = document.getElementById('wardrobe-container');
+    if (!container) return;
+
+    container.innerHTML = '';
+
+    OUTFITS.forEach(outfit => {
+        const isPurchased = purchasedOutfits.includes(outfit.id);
+        const isEquipped = currentOutfit === outfit.icon;
+
+        const card = document.createElement('div');
+        card.className = `outfit-card ${isEquipped ? 'active' : ''}`;
+
+        let actionBtnHTML = '';
+        if (isEquipped) {
+            actionBtnHTML = `<button class="btn-outfit equipped">Надіто ✅</button>`;
+        } else if (isPurchased) {
+            actionBtnHTML = `<button class="btn-outfit" onclick="selectOutfit('${outfit.id}')">Вдягнути</button>`;
+        } else {
+            actionBtnHTML = `<button class="btn-outfit buy" onclick="buyOutfit('${outfit.id}')">Купити ${outfit.price}$</button>`;
+        }
+
+        card.innerHTML = `
+            <div class="outfit-info">
+                <div class="outfit-icon-large">${outfit.icon}</div>
+                <div class="outfit-details">
+                    <h4>${outfit.name}</h4>
+                    <p>${outfit.desc}</p>
+                </div>
+            </div>
+            <div>${actionBtnHTML}</div>
+        `;
+
+        container.appendChild(card);
+    });
+}
+
+function buyOutfit(outfitId) {
+    const outfit = OUTFITS.find(o => o.id === outfitId);
+    if (!outfit) return;
+
+    if (money < outfit.price) {
+        alert("Невистачає коштів!");
         return;
     }
-    
-    if (price > 0 && currentOutfit !== icon) {
-        pills -= price;
-    }
-    
-    currentOutfit = icon;
-    const outfitEl = document.getElementById('outfit-icon');
-    if (outfitEl) outfitEl.innerText = currentOutfit;
 
-    updateUI();
+    money -= outfit.price;
+    purchasedOutfits.push(outfit.id);
+    currentOutfit = outfit.icon;
+
+    alert(`Вітаємо з покупкою: ${outfit.name}!`);
     saveProgress();
-    closeCustomization();
+    updateUI();
+    renderWardrobe();
+}
+
+function selectOutfit(outfitId) {
+    const outfit = OUTFITS.find(o => o.id === outfitId);
+    if (!outfit) return;
+
+    currentOutfit = outfit.icon;
+    saveProgress();
+    updateUI();
+    renderWardrobe();
 }
 
 function updateUI() {
     const { totalDamage, totalArmor } = calculateStats();
+
+    const moneyEl = document.getElementById('money');
+    if (moneyEl) moneyEl.innerText = money;
 
     const pillsEl = document.getElementById('pills');
     if (pillsEl) pillsEl.innerText = pills;
@@ -291,6 +384,9 @@ function updateUI() {
     const energyVal = document.getElementById('energy-val');
     if (energyBar) energyBar.style.width = energy + '%';
     if (energyVal) energyVal.innerText = energy + '/100';
+
+    const outfitEl = document.getElementById('outfit-icon');
+    if (outfitEl) outfitEl.innerText = currentOutfit;
 }
 
 document.addEventListener('DOMContentLoaded', () => {
