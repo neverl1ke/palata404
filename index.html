@@ -4,14 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Палата 404</title>
+    <!-- Telegram WebApp SDK -->
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <link rel="stylesheet" href="style.css?v=1000">
+    <!-- Подключение стилей с параметром v=5000 для сброса кеша -->
+    <link rel="stylesheet" href="style.css?v=5000">
 </head>
 <body>
 
     <header class="top-bar">
-        <div class="user-info" onclick="changeNickname()" style="cursor: pointer;" title="Натисніть, щоб змінити ім'я">
-            👤 <strong id="player-name">Завантаження...</strong> ✏️
+        <div class="user-info" onclick="changeNickname()" style="cursor: pointer;" title="Нажмите, чтобы изменить имя">
+            👤 <strong id="player-name">Загрузка...</strong> ✏️
         </div>
         <div class="currency">
             <span>💵 <strong id="money">100</strong> $</span>
@@ -22,10 +24,10 @@
 
     <main class="game-container">
         
-        <!-- Ліва панель статистики -->
+        <!-- Левая панель статистики -->
         <aside class="stats-panel">
             <div class="stat-group">
-                <label>❤ Здоров'я: <span id="hp-val">100 / 100 HP</span></label>
+                <label>❤ Здоровье: <span id="hp-val">100 / 100 HP</span></label>
                 <div class="bar-bg"><div class="bar-fill hp" id="hp-bar" style="width: 100%;"></div></div>
             </div>
 
@@ -34,81 +36,82 @@
             </div>
 
             <div class="stat-group">
-                <label>⚔ Шкода: <span id="dmg-val">10</span></label>
+                <label>⚔ Урон: <span id="dmg-val">10</span></label>
             </div>
 
             <div class="stat-group">
-                <label>🌀 Божевілля: <span id="madness-val">20%</span></label>
+                <label>🌀 Безумие: <span id="madness-val">20%</span></label>
                 <div class="bar-bg"><div class="bar-fill madness" id="madness-bar" style="width: 20%;"></div></div>
             </div>
 
             <div class="stat-group">
-                <label>⚡ Енергія: <span id="energy-val">80/100</span></label>
+                <label>⚡ Энергия: <span id="energy-val">80/100</span></label>
                 <div class="bar-bg"><div class="bar-fill energy" id="energy-bar" style="width: 80%;"></div></div>
             </div>
 
             <hr class="divider">
 
-            <!-- Кнопки дій -->
-            <button class="btn-side" onclick="openInventory()">🎒 Сховище (Military)</button>
-            <button class="btn-side" onclick="openCustomization()">🪞 Дзеркало (Стиль)</button>
-            <button class="btn-side" onclick="restInBed()">🛏 Поспати (+⚡ / -🌀)</button>
+            <!-- Кнопки действий -->
+            <button class="btn-side" onclick="openInventory()">🎒 Хранилище (Military)</button>
+            <button class="btn-side" onclick="openCustomization()">🪞 Зеркало (Стиль)</button>
+            <button class="btn-side" onclick="restInBed()">🛏 Поспать (+⚡ / -🌀)</button>
         </aside>
 
-        <!-- Центральна кімната -->
+        <!-- Центральная комната -->
         <section class="room-view">
             <div class="character-container" onclick="tapCharacter()">
                 <div class="character-avatar" id="character">🧑‍🦯</div>
                 <div class="character-outfit" id="outfit-icon">🩺</div>
             </div>
             
-            <button class="btn-action" onclick="tapCharacter()">Дослідити палату</button>
+            <button class="btn-action" onclick="tapCharacter()">Исследовать палату</button>
         </section>
 
     </main>
 
-    <!-- Модальне вікно Інвентарю / Сховища -->
+    <!-- Модальное окно Инвентаря / Хранилища -->
     <div id="inventory-modal" class="modal hidden">
         <div class="modal-content large">
-            <h3>🎒 Сховище та Характеристики</h3>
+            <h3>🎒 Хранилище и Характеристики</h3>
             
             <div class="stats-summary">
-                <div>⚔ Шкода зброї: <strong id="modal-dmg">10</strong></div>
-                <div>🛡 Загальна Броня: <strong id="modal-armor">0</strong></div>
+                <div>⚔ Урон оружия: <strong id="modal-dmg">10</strong></div>
+                <div>🛡 Общая Броня: <strong id="modal-armor">0</strong></div>
                 <div>❤ Макс. HP: <strong id="modal-max-hp">100 HP</strong></div>
             </div>
 
             <div class="equipment-grid">
-                <div class="equip-slot">🪖 Шолом: <span id="slot-helmet">Порожньо</span></div>
-                <div class="equip-slot">🥼 Бронік: <span id="slot-armor">Порожньо</span></div>
-                <div class="equip-slot">🔫 Зброя: <span id="slot-weapon">Ніж (Базовий)</span></div>
-                <div class="equip-slot">🔦 Обвіс: <span id="slot-attachment">Без обвісу</span></div>
+                <div class="equip-slot">🪖 Шлем: <span id="slot-helmet">Пусто</span></div>
+                <div class="equip-slot">🥼 Броник: <span id="slot-armor">Пусто</span></div>
+                <div class="equip-slot">🔫 Оружие: <span id="slot-weapon">Нож (Базовый)</span></div>
+                <div class="equip-slot">🔦 Обвес: <span id="slot-attachment">Без обвеса</span></div>
             </div>
 
             <hr class="divider">
-            <h4>📦 Предмети у сховищі:</h4>
+            <h4>📦 Предметы в хранилище:</h4>
             <div id="stash-items" class="stash-list">
-                <!-- Вміст сховища -->
+                <!-- Содержимое хранилища -->
             </div>
 
-            <button class="btn-close" onclick="closeInventory()">Закрити</button>
+            <button class="btn-close" onclick="closeInventory()">Закрыть</button>
         </div>
     </div>
 
-    <!-- Модальне вікно Гардеробу (Кастомізація) -->
+    <!-- Модальное окно Гардероба -->
     <div id="custom-modal" class="modal hidden">
         <div class="modal-content large">
-            <h3>🪞 Гардероб Палати</h3>
-            <p style="font-size: 12px; color: #aaa; margin-bottom: 12px;">Одяг купується один раз і дає додаткові бонуси до характеристик.</p>
+            <h3>🪞 Гардероб Палаты</h3>
+            <p style="font-size: 12px; color: #aaa; margin-bottom: 12px;">Одежда покупается один раз и дает бонусы к характеристикам.</p>
             
             <div class="wardrobe-grid" id="wardrobe-container">
-                <!-- Картки одягу рендеряться з JS -->
+                <!-- Карточки одежды -->
             </div>
 
-            <button class="btn-close" onclick="closeCustomization()">Закрити</button>
+            <button class="btn-close" onclick="closeCustomization()">Закрыть</button>
         </div>
     </div>
 
-    <script src="script_v13.js?v=2000"></script>
+    <!-- Подключение JS с версией v=5000 -->
+    <script src="script.js?v=5000"></script>
 </body>
 </html>
