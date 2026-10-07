@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Палата 404</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <link rel="stylesheet" href="style.css?v=11000">
+    <link rel="stylesheet" href="style.css?v=12000">
 </head>
 <body>
 
@@ -71,7 +71,6 @@
 
             <nav class="side-menu">
                 <button class="menu-btn" onclick="openInventory()">🎒 Інвентар</button>
-                <button class="menu-btn" onclick="openInventory()">📦 Сховище</button>
                 <button class="menu-btn" onclick="openCustomization()">👕 Гардероб</button>
                 <button class="menu-btn" onclick="alert('Карта в розробці')">🗺️ Карта</button>
                 <button class="menu-btn" onclick="alert('Завдання в розробці')">📋 Завдання</button>
@@ -83,15 +82,15 @@
             <div class="character-preview" onclick="tapCharacter()">
                 <div class="hero-avatar" id="character">🥷</div>
             </div>
-            <button class="btn-main-action" onclick="tapCharacter()">🔍 Дослідити руїни (+EXP)</button>
+            <button class="btn-main-action" onclick="tapCharacter()">🔍 Дослідити палата (+EXP)</button>
         </section>
 
         <!-- Права панель -->
         <aside class="right-panel">
             <div class="location-card">
                 <div class="loc-title">Поточна локація</div>
-                <div class="loc-name">Зруйноване місто</div>
-                <div class="loc-desc">Ти не один тут...</div>
+                <div class="loc-name">Палата #404</div>
+                <div class="loc-desc">Стіни шепочуть тобі...</div>
             </div>
 
             <nav class="side-menu">
@@ -103,16 +102,7 @@
 
     </main>
 
-    <!-- Нижня панель швидких слотів -->
-    <footer class="hotbar">
-        <div class="slot active">🔫</div>
-        <div class="slot">🔪</div>
-        <div class="slot">🧪</div>
-        <div class="slot"></div>
-        <div class="slot"></div>
-    </footer>
-
-    <!-- Інвентар з фільтрами категорій -->
+    <!-- Модальне вікно Інвентаря -->
     <div id="inventory-modal" class="modal side-modal hidden">
         <div class="modal-content side-content">
             <div class="modal-header">
@@ -135,7 +125,7 @@
         </div>
     </div>
 
-    <!-- Гардероб -->
+    <!-- Модальне вікно Гардеробу -->
     <div id="custom-modal" class="modal side-modal hidden">
         <div class="modal-content side-content">
             <div class="modal-header">
@@ -146,6 +136,6 @@
         </div>
     </div>
 
-    <script src="script.js?v=11000"></script>
+    <script src="script.js?v=12000"></script>
 </body>
 </html>

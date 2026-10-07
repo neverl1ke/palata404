@@ -7,7 +7,8 @@
 }
 
 body {
-    background: #080a0c url('https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1000&auto=format&fit=crop') no-repeat center center fixed;
+    /* Мрачний психоделічний фон коридору/палати психлікарні */
+    background: #05070a url('https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?q=80&w=1200&auto=format&fit=crop') no-repeat center center fixed;
     background-size: cover;
     color: #d1d5db;
     height: 100vh;
@@ -18,11 +19,12 @@ body {
     overflow: hidden;
 }
 
+/* Темна мрачна віньєтка та затінення */
 body::before {
     content: '';
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(10, 12, 16, 0.85);
+    background: radial-gradient(circle, rgba(15, 23, 42, 0.6) 0%, rgba(5, 7, 10, 0.92) 100%);
     z-index: 0;
 }
 
@@ -36,7 +38,7 @@ div, main, aside, header, footer, nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: rgba(18, 22, 28, 0.7);
+    background: rgba(15, 18, 25, 0.85);
     backdrop-filter: blur(8px);
     padding: 8px 15px;
     border: 1px solid rgba(255, 255, 255, 0.08);
@@ -52,9 +54,10 @@ div, main, aside, header, footer, nav {
 
 .avatar-mini {
     font-size: 22px;
-    background: #1f2937;
+    background: #111827;
     padding: 6px;
     border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .user-text {
@@ -141,7 +144,7 @@ div, main, aside, header, footer, nav {
 
 /* Статистика */
 .vitals-group {
-    background: rgba(18, 22, 28, 0.6);
+    background: rgba(15, 18, 25, 0.8);
     backdrop-filter: blur(8px);
     border: 1px solid rgba(255, 255, 255, 0.05);
     padding: 12px;
@@ -188,8 +191,8 @@ div, main, aside, header, footer, nav {
 }
 
 .menu-btn {
-    background: rgba(22, 27, 34, 0.6);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: rgba(22, 27, 34, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     color: #d1d5db;
     padding: 10px 12px;
     border-radius: 6px;
@@ -202,13 +205,13 @@ div, main, aside, header, footer, nav {
 }
 
 .menu-btn:hover, .menu-btn:active {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.25);
 }
 
 /* Локація */
 .location-card {
-    background: rgba(18, 22, 28, 0.6);
+    background: rgba(15, 18, 25, 0.8);
     border: 1px solid rgba(255, 255, 255, 0.05);
     padding: 12px;
     border-radius: 8px;
@@ -218,25 +221,38 @@ div, main, aside, header, footer, nav {
 .loc-name { font-size: 14px; font-weight: bold; color: #f3f4f6; margin: 2px 0; }
 .loc-desc { font-size: 11px; color: #9ca3af; }
 
-/* Центр */
+/* Центр персонажу */
 .center-stage {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    min-height: 250px;
+}
+
+.character-preview {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, rgba(0,0,0,0) 70%);
 }
 
 .hero-avatar {
     font-size: 110px;
+    line-height: 1;
+    display: block;
     cursor: pointer;
-    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.8));
+    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.9));
     transition: transform 0.1s;
 }
 
-.hero-avatar:active { transform: scale(0.95); }
+.hero-avatar:active { transform: scale(0.92); }
 
 .btn-main-action {
-    margin-top: 20px;
+    margin-top: 25px;
     background: #2563eb;
     color: white;
     border: none;
@@ -246,35 +262,19 @@ div, main, aside, header, footer, nav {
     font-size: 14px;
     cursor: pointer;
     box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
+    transition: background 0.2s;
 }
 
-/* Хотбар */
-.hotbar {
-    display: flex;
-    justify-content: center;
-    gap: 8px;
+.btn-main-action:active {
+    background: #1d4ed8;
 }
 
-.slot {
-    width: 48px;
-    height: 48px;
-    background: rgba(18, 22, 28, 0.7);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 6px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 20px;
-}
-
-.slot.active { border-color: #3b82f6; }
-
-/* Бокові модальні вікна */
+/* Модальні вікна */
 .modal.side-modal {
     position: fixed;
     top: 60px;
     left: 10px;
-    bottom: 70px;
+    bottom: 20px;
     right: auto;
     width: 320px;
     background: transparent;
@@ -285,13 +285,13 @@ div, main, aside, header, footer, nav {
 .hidden { display: none !important; }
 
 .modal-content.side-content {
-    background: rgba(17, 24, 39, 0.94);
+    background: rgba(15, 20, 28, 0.95);
     backdrop-filter: blur(12px);
     padding: 15px;
     border-radius: 10px;
     width: 100%;
     border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.9);
     display: flex;
     flex-direction: column;
 }
@@ -320,7 +320,7 @@ div, main, aside, header, footer, nav {
     overflow-x: auto;
     padding-bottom: 8px;
     margin-bottom: 10px;
-    scrollbar-width: none; /* Сховати скроллбар */
+    scrollbar-width: none;
 }
 
 .inventory-filters::-webkit-scrollbar {
@@ -350,7 +350,7 @@ div, main, aside, header, footer, nav {
     border-color: #3b82f6;
 }
 
-/* Сітка Майнкрафт */
+/* Сітка предметів */
 .minecraft-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -363,7 +363,7 @@ div, main, aside, header, footer, nav {
 .mc-slot {
     width: 100%;
     aspect-ratio: 1;
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(0, 0, 0, 0.5);
     border: 2px solid #374151;
     border-radius: 6px;
     display: flex;

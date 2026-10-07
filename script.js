@@ -127,8 +127,9 @@ function updateUI() {
     document.getElementById('exp-bar').style.width = `${Math.min(100, expPercent)}%`;
 
     const heroElem = document.getElementById('character');
-    if (heroElem && outfits[currentOutfit]) {
-        heroElem.textContent = outfits[currentOutfit].avatar;
+    if (heroElem) {
+        const activeOutfit = outfits[currentOutfit] || outfits['default'];
+        heroElem.textContent = activeOutfit ? activeOutfit.avatar : '🥷';
     }
 
     updatePlayerNameDisplay();
@@ -157,7 +158,7 @@ function restInBed() {
     updateUI();
 }
 
-// === Майнкрафт Інвентар з фільтрацією ===
+// === Інвентар з фільтрацією ===
 function openInventory() {
     closeCustomization();
     renderMinecraftStash();
@@ -171,7 +172,6 @@ function closeInventory() {
 function setCategoryFilter(category, btnElem) {
     currentCategory = category;
     
-    // Оновлюємо активну кнопку фільтра
     document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
     if (btnElem) btnElem.classList.add('active');
 
@@ -182,12 +182,11 @@ function renderMinecraftStash() {
     const container = document.getElementById('stash-items');
     container.innerHTML = '';
 
-    // Фільтрація предметів за вибраною категорією
     const filteredItems = currentCategory === 'all' 
         ? inventory 
         : inventory.filter(item => item.category === currentCategory);
 
-    const TOTAL_SLOTS = 20; // 20 плиток
+    const TOTAL_SLOTS = 20;
     for (let i = 0; i < TOTAL_SLOTS; i++) {
         let slot = document.createElement('div');
         slot.className = 'mc-slot';
