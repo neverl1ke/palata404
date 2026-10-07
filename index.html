@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Палата 404</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <link rel="stylesheet" href="style.css?v=9600">
+    <link rel="stylesheet" href="style.css?v=11000">
 </head>
 <body>
 
-    <!-- Верхня панель з профілем, рівнем, досвідом і званням -->
+    <!-- Верхня панель -->
     <div class="top-nav">
         <div class="user-profile-badge" onclick="changeNickname()">
             <div class="avatar-mini">🪖</div>
@@ -19,7 +19,6 @@
                     <span class="rank-tag" id="player-rank">Новачок</span>
                 </div>
                 
-                <!-- Рівень та Смужка досвіду -->
                 <div class="exp-container">
                     <div class="exp-label">
                         <span>Рівень <strong id="player-lvl">1</strong></span>
@@ -32,8 +31,6 @@
             </div>
         </div>
 
-        <div class="compass">W . . NW . . <span>N</span> . . NE . . E</div>
-
         <div class="top-actions">
             <span>🔔</span>
             <span>✉️</span>
@@ -44,7 +41,7 @@
     <!-- Основна ігрова сітка -->
     <main class="main-layout">
         
-        <!-- Ліва панель: Стати та Меню (БЕЗ ГАРЯЧИХ КЛАВІШ) -->
+        <!-- Ліва панель -->
         <aside class="left-panel">
             <div class="vitals-group">
                 <div class="vital-item">
@@ -81,7 +78,7 @@
             </nav>
         </aside>
 
-        <!-- Центр: Персонаж та дія -->
+        <!-- Центр: Персонаж -->
         <section class="center-stage">
             <div class="character-preview" onclick="tapCharacter()">
                 <div class="hero-avatar" id="character">🥷</div>
@@ -106,32 +103,49 @@
 
     </main>
 
-    <!-- Нижня панель швидкого доступу -->
+    <!-- Нижня панель швидких слотів -->
     <footer class="hotbar">
-        <div class="slot active"><span>1</span> 🔫</div>
-        <div class="slot"><span>2</span> 🔪</div>
-        <div class="slot"><span>3</span> 🧪</div>
-        <div class="slot"><span>4</span></div>
-        <div class="slot"><span>5</span></div>
+        <div class="slot active">🔫</div>
+        <div class="slot">🔪</div>
+        <div class="slot">🧪</div>
+        <div class="slot"></div>
+        <div class="slot"></div>
     </footer>
 
-    <!-- Модальні вікна -->
-    <div id="inventory-modal" class="modal hidden">
-        <div class="modal-content">
-            <h3>🎒 Інвентар</h3>
-            <div id="stash-items" class="stash-list"></div>
-            <button class="btn-close" onclick="closeInventory()">Закрити</button>
+    <!-- Інвентар з фільтрами категорій -->
+    <div id="inventory-modal" class="modal side-modal hidden">
+        <div class="modal-content side-content">
+            <div class="modal-header">
+                <h3>🎒 Інвентар</h3>
+                <button class="btn-close-mini" onclick="closeInventory()">✕</button>
+            </div>
+            
+            <!-- Панель фільтрів -->
+            <div class="inventory-filters">
+                <button class="filter-btn active" onclick="setCategoryFilter('all', this)">Всі</button>
+                <button class="filter-btn" onclick="setCategoryFilter('weapon', this)">🔫 Зброя</button>
+                <button class="filter-btn" onclick="setCategoryFilter('helmet', this)">🪖 Шолом</button>
+                <button class="filter-btn" onclick="setCategoryFilter('armor', this)">🛡️ Броня</button>
+                <button class="filter-btn" onclick="setCategoryFilter('mod', this)">🧩 Модулі</button>
+                <button class="filter-btn" onclick="setCategoryFilter('meds', this)">🧪 Медикаменти</button>
+            </div>
+
+            <!-- Сітка предметів -->
+            <div id="stash-items" class="minecraft-grid"></div>
         </div>
     </div>
 
-    <div id="custom-modal" class="modal hidden">
-        <div class="modal-content">
-            <h3>👕 Гардероб</h3>
+    <!-- Гардероб -->
+    <div id="custom-modal" class="modal side-modal hidden">
+        <div class="modal-content side-content">
+            <div class="modal-header">
+                <h3>👕 Гардероб</h3>
+                <button class="btn-close-mini" onclick="closeCustomization()">✕</button>
+            </div>
             <div id="wardrobe-container" class="wardrobe-grid"></div>
-            <button class="btn-close" onclick="closeCustomization()">Закрити</button>
         </div>
     </div>
 
-    <script src="script.js?v=9600"></script>
+    <script src="script.js?v=11000"></script>
 </body>
 </html>

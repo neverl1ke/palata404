@@ -43,12 +43,8 @@ function changeNickname() {
 // === Збереження та Завантаження даних ===
 const DEFAULT_STATS = {
     money: 125,
-    pills: 4,
-    scrap: 1,
     hp: 100,
     maxHp: 100,
-    armor: 0,
-    dmg: 10,
     madness: 20,
     energy: 100,
     maxEnergy: 100,
@@ -61,15 +57,22 @@ let stats = loadSaveData('palata404_stats', DEFAULT_STATS);
 let currentOutfit = localStorage.getItem('palata404_outfit') || 'default';
 
 let outfits = loadSaveData('palata404_outfits', {
-    'default': { name: 'Рвануватий халат', icon: '🩺', cost: 0, bonus: 'Без бонусів', purchased: true, armorBonus: 0, hpBonus: 0 },
-    'cozy': { name: 'Смикальна сорочка', icon: '🥋', cost: 50, bonus: '+10 до Броні', purchased: false, armorBonus: 10, hpBonus: 0 },
-    'mask': { name: 'Маска Тріщини', icon: '🎭', cost: 120, bonus: '+20 Броні, +15 HP', purchased: false, armorBonus: 20, hpBonus: 15 }
+    'default': { name: 'Рвануватий халат', avatar: '🥷', cost: 0, purchased: true },
+    'cozy': { name: 'Смикальна сорочка', avatar: '🥋', cost: 50, purchased: false },
+    'mask': { name: 'Маска Тріщини', avatar: '🎭', cost: 120, purchased: false },
+    'armor': { name: 'Важка броня', avatar: '🪖', cost: 250, purchased: false }
 });
 
+// Інвентар з категоріями: weapon, helmet, armor, mod, meds
 let inventory = loadSaveData('palata404_inventory', [
-    { id: 'pm', name: 'ПМ', type: 'weapon', bonus: '+15 Шкоди' },
-    { id: 'helmet', name: 'Тактичний шолом', type: 'helmet', bonus: '+15 Броні' }
+    { name: 'ПМ', icon: '🔫', count: 1, category: 'weapon' },
+    { name: 'Тактичний шолом', icon: '🪖', count: 1, category: 'helmet' },
+    { name: 'Бронежилет БР-1', icon: '🛡️', count: 1, category: 'armor' },
+    { name: 'Приціл RedDot', icon: '🧩', count: 1, category: 'mod' },
+    { name: 'Аптечка', icon: '🧪', count: 3, category: 'meds' }
 ]);
+
+let currentCategory = 'all';
 
 function loadSaveData(key, fallback) {
     const saved = localStorage.getItem(key);
@@ -84,9 +87,7 @@ function saveGameProgress() {
     localStorage.setItem('palata404_inventory', JSON.stringify(inventory));
 }
 
-// === Розрахунок звання залежно від рівня ===
 function getPlayerRank(level) {
-    // Поки стоїть базова логіка. Коли даси свій список звань — ми просто підставимо його сюди!
     if (level >= 20) return "Легенда Руїн";
     if (level >= 15) return "Ветеран";
     if (level >= 10) return "Шукач";
@@ -94,25 +95,22 @@ function getPlayerRank(level) {
     return "Новачок";
 }
 
-// === Додавання досвіду ===
 function addExperience(amount) {
     stats.exp += amount;
     if (!stats.nextLvlExp) stats.nextLvlExp = stats.level * 100;
 
-    // Перевірка на підвищення рівня
     while (stats.exp >= stats.nextLvlExp) {
         stats.exp -= stats.nextLvlExp;
         stats.level += 1;
-        stats.nextLvlExp = stats.level * 120; // Кожен новий рівень вимагає трохи більше EXP
+        stats.nextLvlExp = stats.level * 120;
         stats.maxHp += 5;
-        stats.hp = stats.maxHp; // Повне лікування при новому рівні
+        stats.hp = stats.maxHp;
         alert(`🎉 Вітаємо! Ви досягли ${stats.level} рівня!\nВаше звання: ${getPlayerRank(stats.level)}`);
     }
 }
 
 // === Оновлення Інтерфейсу ===
 function updateUI() {
-    // Вiтали
     document.getElementById('hp-val').textContent = `${stats.hp} / ${stats.maxHp}`;
     document.getElementById('madness-val').textContent = `${stats.madness} / 100`;
     document.getElementById('energy-val').textContent = `${stats.energy} / ${stats.maxEnergy}`;
@@ -121,13 +119,17 @@ function updateUI() {
     document.getElementById('madness-bar').style.width = `${Math.min(100, stats.madness)}%`;
     document.getElementById('energy-bar').style.width = `${Math.min(100, (stats.energy / stats.maxEnergy) * 100)}%`;
 
-    // Рівень, Звання та Досвід
     document.getElementById('player-lvl').textContent = stats.level;
     document.getElementById('player-rank').textContent = getPlayerRank(stats.level);
     document.getElementById('exp-val').textContent = `${stats.exp} / ${stats.nextLvlExp} EXP`;
     
     let expPercent = (stats.exp / stats.nextLvlExp) * 100;
     document.getElementById('exp-bar').style.width = `${Math.min(100, expPercent)}%`;
+
+    const heroElem = document.getElementById('character');
+    if (heroElem && outfits[currentOutfit]) {
+        heroElem.textContent = outfits[currentOutfit].avatar;
+    }
 
     updatePlayerNameDisplay();
     saveGameProgress();
@@ -139,13 +141,10 @@ function tapCharacter() {
         stats.energy -= 5;
         stats.money += Math.floor(Math.random() * 5) + 2;
         
-        // Набір божевілля
         const madnessGain = Math.floor(Math.random() * 4) + 3;
         stats.madness = Math.min(100, stats.madness + madnessGain);
 
-        // Даємо EXP за кожну дію (+15..25 EXP)
         addExperience(Math.floor(Math.random() * 10) + 15);
-
     } else {
         alert("Занадто мало витривалості! Потрібно відпочити.");
     }
@@ -158,9 +157,10 @@ function restInBed() {
     updateUI();
 }
 
-// === Модальні вікна ===
+// === Майнкрафт Інвентар з фільтрацією ===
 function openInventory() {
-    renderStash();
+    closeCustomization();
+    renderMinecraftStash();
     document.getElementById('inventory-modal').classList.remove('hidden');
 }
 
@@ -168,7 +168,45 @@ function closeInventory() {
     document.getElementById('inventory-modal').classList.add('hidden');
 }
 
+function setCategoryFilter(category, btnElem) {
+    currentCategory = category;
+    
+    // Оновлюємо активну кнопку фільтра
+    document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+    if (btnElem) btnElem.classList.add('active');
+
+    renderMinecraftStash();
+}
+
+function renderMinecraftStash() {
+    const container = document.getElementById('stash-items');
+    container.innerHTML = '';
+
+    // Фільтрація предметів за вибраною категорією
+    const filteredItems = currentCategory === 'all' 
+        ? inventory 
+        : inventory.filter(item => item.category === currentCategory);
+
+    const TOTAL_SLOTS = 20; // 20 плиток
+    for (let i = 0; i < TOTAL_SLOTS; i++) {
+        let slot = document.createElement('div');
+        slot.className = 'mc-slot';
+
+        if (filteredItems[i]) {
+            let item = filteredItems[i];
+            slot.innerHTML = `
+                <span class="item-icon">${item.icon}</span>
+                ${item.count > 1 ? `<span class="item-count">${item.count}</span>` : ''}
+            `;
+            slot.onclick = () => alert(`Предмет: ${item.name}`);
+        }
+        container.appendChild(slot);
+    }
+}
+
+// === Гардероб ===
 function openCustomization() {
+    closeInventory();
     renderWardrobe();
     document.getElementById('custom-modal').classList.remove('hidden');
 }
@@ -186,18 +224,16 @@ function renderWardrobe() {
         let card = document.createElement('div');
         card.className = `outfit-card ${currentOutfit === key ? 'active' : ''}`;
 
-        let btnText = item.purchased ? (currentOutfit === key ? 'Надіто ✓' : 'Вдягти') : `Купити ${item.cost}$`;
-        let btnClass = item.purchased ? (currentOutfit === key ? 'btn-outfit equipped' : 'btn-outfit') : 'btn-outfit buy';
+        let btnText = item.purchased ? (currentOutfit === key ? 'Вдягнено' : 'Вдягти') : `Купити ${item.cost}$`;
 
         card.innerHTML = `
-            <div class="outfit-info">
-                <div class="outfit-icon-large">${item.icon}</div>
-                <div class="outfit-details">
-                    <h4>${item.name}</h4>
-                    <p>${item.bonus}</p>
+            <div style="display:flex; align-items:center; gap:10px;">
+                <span style="font-size:24px;">${item.avatar}</span>
+                <div>
+                    <h4 style="font-size:12px; color:#fff;">${item.name}</h4>
                 </div>
             </div>
-            <button class="${btnClass}" onclick="selectOutfit('${key}')">${btnText}</button>
+            <button class="btn-outfit" onclick="selectOutfit('${key}')">${btnText}</button>
         `;
         container.appendChild(card);
     }
@@ -218,33 +254,6 @@ function selectOutfit(key) {
     }
     updateUI();
     renderWardrobe();
-}
-
-function renderStash() {
-    const container = document.getElementById('stash-items');
-    container.innerHTML = '';
-
-    inventory.forEach((item, index) => {
-        let row = document.createElement('div');
-        row.className = 'stash-item';
-        row.innerHTML = `
-            <span>📦 ${item.name} <small style="color:#aaa">(${item.bonus})</small></span>
-            <button onclick="useItem(${index})">Вдягти/Ужити</button>
-        `;
-        container.appendChild(row);
-    });
-}
-
-function useItem(index) {
-    let item = inventory[index];
-    if (item.type === 'use') {
-        stats.hp = Math.min(stats.maxHp, stats.hp + 50);
-        inventory.splice(index, 1);
-    } else {
-        alert(`Предмет ${item.name} екіпіровано!`);
-    }
-    updateUI();
-    renderStash();
 }
 
 document.addEventListener('DOMContentLoaded', () => {

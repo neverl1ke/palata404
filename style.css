@@ -80,7 +80,6 @@ div, main, aside, header, footer, nav {
     font-weight: bold;
 }
 
-/* Смужка досвіду під ніком */
 .exp-container {
     display: flex;
     flex-direction: column;
@@ -110,16 +109,11 @@ div, main, aside, header, footer, nav {
     transition: width 0.3s ease;
 }
 
-.compass {
-    font-family: monospace;
-    font-size: 12px;
-    letter-spacing: 2px;
-    color: #6b7280;
-}
-
-.compass span {
-    color: #f3f4f6;
-    font-weight: bold;
+.top-actions {
+    display: flex;
+    gap: 12px;
+    font-size: 16px;
+    cursor: pointer;
 }
 
 /* Сітка */
@@ -262,57 +256,173 @@ div, main, aside, header, footer, nav {
 }
 
 .slot {
-    width: 45px;
-    height: 45px;
+    width: 48px;
+    height: 48px;
     background: rgba(18, 22, 28, 0.7);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 6px;
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative;
-    font-size: 18px;
-}
-
-.slot span {
-    position: absolute;
-    top: 2px;
-    left: 4px;
-    font-size: 9px;
-    color: #6b7280;
+    font-size: 20px;
 }
 
 .slot.active { border-color: #3b82f6; }
 
-/* Модалки */
-.modal {
+/* Бокові модальні вікна */
+.modal.side-modal {
     position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(0,0,0,0.85);
+    top: 60px;
+    left: 10px;
+    bottom: 70px;
+    right: auto;
+    width: 320px;
+    background: transparent;
     display: flex;
-    justify-content: center;
-    align-items: center;
     z-index: 100;
 }
 
 .hidden { display: none !important; }
 
-.modal-content {
-    background: #111827;
-    padding: 20px;
+.modal-content.side-content {
+    background: rgba(17, 24, 39, 0.94);
+    backdrop-filter: blur(12px);
+    padding: 15px;
     border-radius: 10px;
-    width: 90%;
-    max-width: 400px;
-    border: 1px solid #374151;
+    width: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+    display: flex;
+    flex-direction: column;
 }
 
-.btn-close {
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.btn-close-mini {
+    background: rgba(255, 255, 255, 0.1);
+    color: #aaa;
+    border: none;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* Фільтри інвентаря */
+.inventory-filters {
+    display: flex;
+    gap: 5px;
+    overflow-x: auto;
+    padding-bottom: 8px;
+    margin-bottom: 10px;
+    scrollbar-width: none; /* Сховати скроллбар */
+}
+
+.inventory-filters::-webkit-scrollbar {
+    display: none;
+}
+
+.filter-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #9ca3af;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 11px;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.filter-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+.filter-btn.active {
+    background: #2563eb;
+    color: white;
+    border-color: #3b82f6;
+}
+
+/* Сітка Майнкрафт */
+.minecraft-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    overflow-y: auto;
+    padding-right: 5px;
+    flex: 1;
+}
+
+.mc-slot {
     width: 100%;
-    margin-top: 15px;
-    background: #ef4444;
+    aspect-ratio: 1;
+    background: rgba(0, 0, 0, 0.4);
+    border: 2px solid #374151;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.15s;
+}
+
+.mc-slot:hover, .mc-slot:active {
+    border-color: #3b82f6;
+    background: rgba(59, 130, 246, 0.15);
+}
+
+.mc-slot .item-icon {
+    font-size: 24px;
+}
+
+.mc-slot .item-count {
+    position: absolute;
+    bottom: 2px;
+    right: 4px;
+    font-size: 10px;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 1px 1px 2px #000;
+}
+
+/* Гардероб карточки */
+.wardrobe-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow-y: auto;
+}
+
+.outfit-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 10px;
+    border-radius: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.outfit-card.active {
+    border-color: #10b981;
+    background: rgba(16, 185, 129, 0.1);
+}
+
+.btn-outfit {
+    background: #3b82f6;
     color: white;
     border: none;
-    padding: 8px;
-    border-radius: 6px;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 11px;
     cursor: pointer;
 }
