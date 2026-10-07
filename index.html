@@ -5,13 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Палата 404</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <link rel="stylesheet" href="style.css?v=12000">
+    <link rel="stylesheet" href="style.css?v=13000">
 </head>
 <body>
 
     <!-- Верхня панель -->
     <div class="top-nav">
-        <div class="user-profile-badge" onclick="changeNickname()">
+        <!-- Лівий блок: Профіль гравця -->
+        <div class="user-profile-badge" onclick="openSettings()">
             <div class="avatar-mini">🪖</div>
             <div class="user-text">
                 <div class="user-name-row">
@@ -31,10 +32,21 @@
             </div>
         </div>
 
+        <!-- Центральний блок: Навігація іконками -->
+        <nav class="center-nav">
+            <button class="nav-icon-btn" title="Інвентар" onclick="openInventory()">🎒</button>
+            <button class="nav-icon-btn" title="Гардероб" onclick="openCustomization()">👕</button>
+            <button class="nav-icon-btn" title="Карта" onclick="alert('Карта в розробці')">🗺️</button>
+            <button class="nav-icon-btn" title="Завдання" onclick="alert('Завдання в розробці')">📋</button>
+            <button class="nav-icon-btn" title="Рейд" onclick="alert('Рейди в розробці')">⚔️</button>
+            <button class="nav-icon-btn" title="Друзі" onclick="alert('Друзі в розробці')">👥</button>
+        </nav>
+
+        <!-- Правий блок: Системні кнопки -->
         <div class="top-actions">
-            <span>🔔</span>
-            <span>✉️</span>
-            <span>⚙️</span>
+            <button class="sys-btn" title="Сповіщення" onclick="alert('Немає нових сповіщень')">🔔</button>
+            <button class="sys-btn" title="Пошта" onclick="alert('Пошта порожня')">✉️</button>
+            <button class="sys-btn" title="Налаштування" onclick="openSettings()">⚙️</button>
         </div>
     </div>
 
@@ -43,6 +55,7 @@
         
         <!-- Ліва панель -->
         <aside class="left-panel">
+            <!-- Показники життя -->
             <div class="vitals-group">
                 <div class="vital-item">
                     <div class="vital-icon hp-icon">❤️</div>
@@ -69,12 +82,24 @@
                 </div>
             </div>
 
-            <nav class="side-menu">
-                <button class="menu-btn" onclick="openInventory()">🎒 Інвентар</button>
-                <button class="menu-btn" onclick="openCustomization()">👕 Гардероб</button>
-                <button class="menu-btn" onclick="alert('Карта в розробці')">🗺️ Карта</button>
-                <button class="menu-btn" onclick="alert('Завдання в розробці')">📋 Завдання</button>
-            </nav>
+            <!-- Блок валюти -->
+            <div class="currency-group">
+                <div class="currency-title">Гроші та Ресурси</div>
+                <div class="currency-item">
+                    <span>🪙 Срібло:</span>
+                    <strong id="silver-val">0</strong>
+                </div>
+                <div class="currency-item">
+                    <span>💊 Пігулки:</span>
+                    <strong id="pills-val">0</strong>
+                </div>
+                <div class="currency-item">
+                    <span>💵 Бакси:</span>
+                    <strong id="bucks-val">0</strong>
+                </div>
+
+                <button class="bank-btn" onclick="openBank()">🏦 Банк (Донат)</button>
+            </div>
         </aside>
 
         <!-- Центр: Персонаж -->
@@ -82,7 +107,7 @@
             <div class="character-preview" onclick="tapCharacter()">
                 <div class="hero-avatar" id="character">🥷</div>
             </div>
-            <button class="btn-main-action" onclick="tapCharacter()">🔍 Дослідити палата (+EXP)</button>
+            <button class="btn-main-action" onclick="tapCharacter()">🔍 Дослідити палату (+EXP)</button>
         </section>
 
         <!-- Права панель -->
@@ -93,14 +118,41 @@
                 <div class="loc-desc">Стіни шепочуть тобі...</div>
             </div>
 
-            <nav class="side-menu">
-                <button class="menu-btn" onclick="restInBed()">🔧 Відпочинок (+⚡ / -🧠)</button>
-                <button class="menu-btn" onclick="changeNickname()">👤 Змінити ім'я</button>
-                <button class="menu-btn" onclick="alert('Друзі незабаром')">👥 Друзі</button>
-            </nav>
+            <div class="side-menu">
+                <button class="menu-btn" onclick="restInBed()">🛏️ Відпочинок (+⚡ / -🧠)</button>
+            </div>
         </aside>
 
     </main>
+
+    <!-- Модальне вікно Налаштувань -->
+    <div id="settings-modal" class="modal center-modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>⚙️ Налаштування</h3>
+                <button class="btn-close-mini" onclick="closeSettings()">✕</button>
+            </div>
+            <div class="settings-body">
+                <button class="menu-btn" onclick="changeNickname()">👤 Змінити ім'я</button>
+                <button class="menu-btn" onclick="alert('Звук увімкнено')">🔊 Звукові ефекти</button>
+                <button class="menu-btn" onclick="alert('Версія гри: 1.0.0')">ℹ️ Про гру</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальне вікно Банку -->
+    <div id="bank-modal" class="modal center-modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>🏦 Банк</h3>
+                <button class="btn-close-mini" onclick="closeBank()">✕</button>
+            </div>
+            <div class="bank-body">
+                <p style="font-size:13px; color:#aaa; margin-bottom:15px;">Поповнення баксів та особливих бонусів.</p>
+                <button class="btn-main-action" style="width:100%;" onclick="alert('Розділ донату в розробці')">💳 Придбати бакси ($)</button>
+            </div>
+        </div>
+    </div>
 
     <!-- Модальне вікно Інвентаря -->
     <div id="inventory-modal" class="modal side-modal hidden">
@@ -110,7 +162,6 @@
                 <button class="btn-close-mini" onclick="closeInventory()">✕</button>
             </div>
             
-            <!-- Панель фільтрів -->
             <div class="inventory-filters">
                 <button class="filter-btn active" onclick="setCategoryFilter('all', this)">Всі</button>
                 <button class="filter-btn" onclick="setCategoryFilter('weapon', this)">🔫 Зброя</button>
@@ -120,7 +171,6 @@
                 <button class="filter-btn" onclick="setCategoryFilter('meds', this)">🧪 Медикаменти</button>
             </div>
 
-            <!-- Сітка предметів -->
             <div id="stash-items" class="minecraft-grid"></div>
         </div>
     </div>
@@ -136,6 +186,6 @@
         </div>
     </div>
 
-    <script src="script.js?v=12000"></script>
+    <script src="script.js?v=13000"></script>
 </body>
 </html>

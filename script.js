@@ -37,12 +37,15 @@ function changeNickname() {
         playerName = newName.trim().substring(0, 20);
         localStorage.setItem('palata404_nickname', playerName);
         updatePlayerNameDisplay();
+        closeSettings();
     }
 }
 
-// === Збереження та Завантаження даних ===
+// === Початкові дані / Валюта ===
 const DEFAULT_STATS = {
-    money: 125,
+    silver: 150,
+    pills: 5,
+    bucks: 10,
     hp: 100,
     maxHp: 100,
     madness: 20,
@@ -63,7 +66,6 @@ let outfits = loadSaveData('palata404_outfits', {
     'armor': { name: 'Важка броня', avatar: '🪖', cost: 250, purchased: false }
 });
 
-// Інвентар з категоріями: weapon, helmet, armor, mod, meds
 let inventory = loadSaveData('palata404_inventory', [
     { name: 'ПМ', icon: '🔫', count: 1, category: 'weapon' },
     { name: 'Тактичний шолом', icon: '🪖', count: 1, category: 'helmet' },
@@ -119,6 +121,12 @@ function updateUI() {
     document.getElementById('madness-bar').style.width = `${Math.min(100, stats.madness)}%`;
     document.getElementById('energy-bar').style.width = `${Math.min(100, (stats.energy / stats.maxEnergy) * 100)}%`;
 
+    // Валюта
+    document.getElementById('silver-val').textContent = stats.silver || 0;
+    document.getElementById('pills-val').textContent = stats.pills || 0;
+    document.getElementById('bucks-val').textContent = stats.bucks || 0;
+
+    // Рівень
     document.getElementById('player-lvl').textContent = stats.level;
     document.getElementById('player-rank').textContent = getPlayerRank(stats.level);
     document.getElementById('exp-val').textContent = `${stats.exp} / ${stats.nextLvlExp} EXP`;
@@ -140,7 +148,7 @@ function updateUI() {
 function tapCharacter() {
     if (stats.energy >= 5) {
         stats.energy -= 5;
-        stats.money += Math.floor(Math.random() * 5) + 2;
+        stats.silver = (stats.silver || 0) + Math.floor(Math.random() * 5) + 2;
         
         const madnessGain = Math.floor(Math.random() * 4) + 3;
         stats.madness = Math.min(100, stats.madness + madnessGain);
@@ -158,7 +166,25 @@ function restInBed() {
     updateUI();
 }
 
-// === Інвентар з фільтрацією ===
+// === Налаштування ===
+function openSettings() {
+    document.getElementById('settings-modal').classList.remove('hidden');
+}
+
+function closeSettings() {
+    document.getElementById('settings-modal').classList.add('hidden');
+}
+
+// === Банк ===
+function openBank() {
+    document.getElementById('bank-modal').classList.remove('hidden');
+}
+
+function closeBank() {
+    document.getElementById('bank-modal').classList.add('hidden');
+}
+
+// === Інвентар ===
 function openInventory() {
     closeCustomization();
     renderMinecraftStash();
@@ -171,10 +197,8 @@ function closeInventory() {
 
 function setCategoryFilter(category, btnElem) {
     currentCategory = category;
-    
     document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
     if (btnElem) btnElem.classList.add('active');
-
     renderMinecraftStash();
 }
 
@@ -223,7 +247,7 @@ function renderWardrobe() {
         let card = document.createElement('div');
         card.className = `outfit-card ${currentOutfit === key ? 'active' : ''}`;
 
-        let btnText = item.purchased ? (currentOutfit === key ? 'Вдягнено' : 'Вдягти') : `Купити ${item.cost}$`;
+        let btnText = item.purchased ? (currentOutfit === key ? 'Вдягнено' : 'Вдягти') : `Купити ${item.cost} 🪙`;
 
         card.innerHTML = `
             <div style="display:flex; align-items:center; gap:10px;">
@@ -241,12 +265,12 @@ function renderWardrobe() {
 function selectOutfit(key) {
     let item = outfits[key];
     if (!item.purchased) {
-        if (stats.money >= item.cost) {
-            stats.money -= item.cost;
+        if ((stats.silver || 0) >= item.cost) {
+            stats.silver -= item.cost;
             item.purchased = true;
             currentOutfit = key;
         } else {
-            alert("Недостатньо грошей!");
+            alert("Недостатньо срібла!");
         }
     } else {
         currentOutfit = key;

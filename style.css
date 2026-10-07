@@ -7,7 +7,6 @@
 }
 
 body {
-    /* Мрачний психоделічний фон коридору/палати психлікарні */
     background: #05070a url('https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?q=80&w=1200&auto=format&fit=crop') no-repeat center center fixed;
     background-size: cover;
     color: #d1d5db;
@@ -19,7 +18,6 @@ body {
     overflow: hidden;
 }
 
-/* Темна мрачна віньєтка та затінення */
 body::before {
     content: '';
     position: absolute;
@@ -38,24 +36,25 @@ div, main, aside, header, footer, nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: rgba(15, 18, 25, 0.85);
-    backdrop-filter: blur(8px);
+    background: rgba(15, 18, 25, 0.88);
+    backdrop-filter: blur(10px);
     padding: 8px 15px;
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 8px;
+    gap: 10px;
 }
 
 .user-profile-badge {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
     cursor: pointer;
 }
 
 .avatar-mini {
-    font-size: 22px;
+    font-size: 20px;
     background: #111827;
-    padding: 6px;
+    padding: 5px;
     border-radius: 6px;
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
@@ -68,16 +67,16 @@ div, main, aside, header, footer, nav {
 
 .user-name-row {
     display: flex;
-    gap: 8px;
+    gap: 6px;
     align-items: center;
-    font-size: 13px;
+    font-size: 12px;
 }
 
 .rank-tag {
-    font-size: 10px;
+    font-size: 9px;
     color: #f59e0b;
     background: rgba(245, 158, 11, 0.15);
-    padding: 1px 6px;
+    padding: 1px 5px;
     border-radius: 4px;
     border: 1px solid rgba(245, 158, 11, 0.3);
     font-weight: bold;
@@ -87,7 +86,6 @@ div, main, aside, header, footer, nav {
     display: flex;
     flex-direction: column;
     gap: 2px;
-    margin-top: 2px;
 }
 
 .exp-label {
@@ -95,14 +93,14 @@ div, main, aside, header, footer, nav {
     color: #9ca3af;
     display: flex;
     justify-content: space-between;
-    gap: 10px;
+    gap: 8px;
 }
 
 .exp-bar-bg {
-    width: 140px;
-    height: 5px;
+    width: 110px;
+    height: 4px;
     background: rgba(255, 255, 255, 0.1);
-    border-radius: 3px;
+    border-radius: 2px;
     overflow: hidden;
 }
 
@@ -112,11 +110,59 @@ div, main, aside, header, footer, nav {
     transition: width 0.3s ease;
 }
 
+/* Центральна навігація іконками */
+.center-nav {
+    display: flex;
+    gap: 8px;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 4px 8px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.nav-icon-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    font-size: 18px;
+    width: 36px;
+    height: 36px;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.nav-icon-btn:hover {
+    background: rgba(59, 130, 246, 0.3);
+    border-color: #3b82f6;
+    transform: translateY(-2px);
+}
+
+.nav-icon-btn:active {
+    transform: translateY(0);
+}
+
+/* Системні кнопки справа */
 .top-actions {
     display: flex;
-    gap: 12px;
+    gap: 6px;
+}
+
+.sys-btn {
+    background: transparent;
+    border: none;
     font-size: 16px;
+    width: 32px;
+    height: 32px;
     cursor: pointer;
+    border-radius: 50%;
+    transition: background 0.2s;
+}
+
+.sys-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
 }
 
 /* Сітка */
@@ -134,17 +180,19 @@ div, main, aside, header, footer, nav {
         overflow-y: auto;
     }
     .right-panel { display: none; }
+    .center-nav { gap: 4px; }
+    .nav-icon-btn { width: 32px; height: 32px; font-size: 16px; }
 }
 
 .left-panel, .right-panel {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 12px;
 }
 
 /* Статистика */
-.vitals-group {
-    background: rgba(15, 18, 25, 0.8);
+.vitals-group, .currency-group {
+    background: rgba(15, 18, 25, 0.85);
     backdrop-filter: blur(8px);
     border: 1px solid rgba(255, 255, 255, 0.05);
     padding: 12px;
@@ -183,6 +231,41 @@ div, main, aside, header, footer, nav {
 .bar-fill.madness { background: #06b6d4; }
 .bar-fill.energy { background: #eab308; }
 
+/* Блок Валюти */
+.currency-title {
+    font-size: 10px;
+    color: #6b7280;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.currency-item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: #d1d5db;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 6px 8px;
+    border-radius: 4px;
+}
+
+.bank-btn {
+    background: linear-gradient(135deg, #059669, #10b981);
+    color: white;
+    border: none;
+    padding: 8px;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 12px;
+    cursor: pointer;
+    margin-top: 5px;
+    transition: opacity 0.2s;
+}
+
+.bank-btn:hover {
+    opacity: 0.9;
+}
+
 /* Кнопки меню */
 .side-menu {
     display: flex;
@@ -204,14 +287,13 @@ div, main, aside, header, footer, nav {
     transition: all 0.2s;
 }
 
-.menu-btn:hover, .menu-btn:active {
+.menu-btn:hover {
     background: rgba(255, 255, 255, 0.12);
-    border-color: rgba(255, 255, 255, 0.25);
 }
 
 /* Локація */
 .location-card {
-    background: rgba(15, 18, 25, 0.8);
+    background: rgba(15, 18, 25, 0.85);
     border: 1px solid rgba(255, 255, 255, 0.05);
     padding: 12px;
     border-radius: 8px;
@@ -265,33 +347,40 @@ div, main, aside, header, footer, nav {
     transition: background 0.2s;
 }
 
-.btn-main-action:active {
-    background: #1d4ed8;
-}
+.btn-main-action:active { background: #1d4ed8; }
 
 /* Модальні вікна */
-.modal.side-modal {
+.modal {
     position: fixed;
-    top: 60px;
-    left: 10px;
-    bottom: 20px;
-    right: auto;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+.modal.side-modal {
+    top: 60px; left: 10px; bottom: 20px; right: auto;
     width: 320px;
     background: transparent;
-    display: flex;
-    z-index: 100;
 }
 
 .hidden { display: none !important; }
 
-.modal-content.side-content {
+.modal-content {
     background: rgba(15, 20, 28, 0.95);
     backdrop-filter: blur(12px);
     padding: 15px;
     border-radius: 10px;
-    width: 100%;
     border: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0 10px 30px rgba(0,0,0,0.9);
+    width: 280px;
+}
+
+.side-modal .modal-content {
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
 }
@@ -300,7 +389,7 @@ div, main, aside, header, footer, nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
 }
 
 .btn-close-mini {
@@ -313,6 +402,12 @@ div, main, aside, header, footer, nav {
     cursor: pointer;
 }
 
+.settings-body {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
 /* Фільтри інвентаря */
 .inventory-filters {
     display: flex;
@@ -321,10 +416,6 @@ div, main, aside, header, footer, nav {
     padding-bottom: 8px;
     margin-bottom: 10px;
     scrollbar-width: none;
-}
-
-.inventory-filters::-webkit-scrollbar {
-    display: none;
 }
 
 .filter-btn {
@@ -336,18 +427,11 @@ div, main, aside, header, footer, nav {
     font-size: 11px;
     white-space: nowrap;
     cursor: pointer;
-    transition: all 0.2s;
-}
-
-.filter-btn:hover {
-    background: rgba(255, 255, 255, 0.1);
-    color: #fff;
 }
 
 .filter-btn.active {
     background: #2563eb;
     color: white;
-    border-color: #3b82f6;
 }
 
 /* Сітка предметів */
@@ -356,7 +440,6 @@ div, main, aside, header, footer, nav {
     grid-template-columns: repeat(4, 1fr);
     gap: 8px;
     overflow-y: auto;
-    padding-right: 5px;
     flex: 1;
 }
 
@@ -367,31 +450,17 @@ div, main, aside, header, footer, nav {
     border: 2px solid #374151;
     border-radius: 6px;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     cursor: pointer;
     position: relative;
-    transition: all 0.15s;
 }
 
-.mc-slot:hover, .mc-slot:active {
-    border-color: #3b82f6;
-    background: rgba(59, 130, 246, 0.15);
-}
-
-.mc-slot .item-icon {
-    font-size: 24px;
-}
-
+.mc-slot .item-icon { font-size: 24px; }
 .mc-slot .item-count {
     position: absolute;
-    bottom: 2px;
-    right: 4px;
-    font-size: 10px;
-    font-weight: bold;
-    color: #fff;
-    text-shadow: 1px 1px 2px #000;
+    bottom: 2px; right: 4px;
+    font-size: 10px; font-weight: bold; color: #fff;
 }
 
 /* Гардероб карточки */
