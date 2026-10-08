@@ -41,7 +41,7 @@ function changeNickname() {
     }
 }
 
-// === Початкові дані / Валюта ===
+// === Початкові дані / Валюта / Персонаж ===
 const DEFAULT_STATS = {
     silver: 150,
     pills: 5,
@@ -57,14 +57,12 @@ const DEFAULT_STATS = {
 };
 
 let stats = loadSaveData('palata404_stats', DEFAULT_STATS);
-let currentOutfit = localStorage.getItem('palata404_outfit') || 'default';
 
-let outfits = loadSaveData('palata404_outfits', {
-    'default': { name: 'Рвануватий халат', avatar: '🥷', cost: 0, purchased: true },
-    'cozy': { name: 'Смикальна сорочка', avatar: '🥋', cost: 50, purchased: false },
-    'mask': { name: 'Маска Тріщини', avatar: '🎭', cost: 120, purchased: false },
-    'armor': { name: 'Важка броня', avatar: '🪖', cost: 250, purchased: false }
-});
+// Стать та вибрані елементи одягу/кастомізації
+let gender = localStorage.getItem('palata404_gender') || 'male'; // 'male' або 'female'
+let currentHair = localStorage.getItem('palata404_hair') || '';
+let currentFace = localStorage.getItem('palata404_face') || '';
+let currentClothes = localStorage.getItem('palata404_clothes') || '';
 
 let inventory = loadSaveData('palata404_inventory', [
     { name: 'ПМ', icon: '🔫', count: 1, category: 'weapon' },
@@ -75,6 +73,7 @@ let inventory = loadSaveData('palata404_inventory', [
 ]);
 
 let currentCategory = 'all';
+let currentWardrobeTab = 'body';
 
 function loadSaveData(key, fallback) {
     const saved = localStorage.getItem(key);
@@ -84,8 +83,10 @@ function loadSaveData(key, fallback) {
 
 function saveGameProgress() {
     localStorage.setItem('palata404_stats', JSON.stringify(stats));
-    localStorage.setItem('palata404_outfit', currentOutfit);
-    localStorage.setItem('palata404_outfits', JSON.stringify(outfits));
+    localStorage.setItem('palata404_gender', gender);
+    localStorage.setItem('palata404_hair', currentHair);
+    localStorage.setItem('palata404_face', currentFace);
+    localStorage.setItem('palata404_clothes', currentClothes);
     localStorage.setItem('palata404_inventory', JSON.stringify(inventory));
 }
 
@@ -108,6 +109,52 @@ function addExperience(amount) {
         stats.maxHp += 5;
         stats.hp = stats.maxHp;
         alert(`🎉 Вітаємо! Ви досягли ${stats.level} рівня!\nВаше звання: ${getPlayerRank(stats.level)}`);
+    }
+}
+
+// === Управління персонажем (Paper Doll) ===
+function setGender(selectedGender) {
+    gender = selectedGender;
+    
+    // Оновлення кнопок перемикача
+    document.getElementById('btn-gender-male').classList.toggle('active', gender === 'male');
+    document.getElementById('btn-gender-female').classList.toggle('active', gender === 'female');
+    
+    // Зміна бази тіла
+    const bodyImg = document.getElementById('layer-body');
+    if (bodyImg) {
+        bodyImg.src = gender === 'female' ? 'base_female.png' : 'base_male.png';
+    }
+
+    saveGameProgress();
+}
+
+function updateCharacterLayers() {
+    setGender(gender);
+
+    const faceImg = document.getElementById('layer-face');
+    const hairImg = document.getElementById('layer-hair');
+    const clothesImg = document.getElementById('layer-clothes');
+
+    if (currentFace) {
+        faceImg.src = currentFace;
+        faceImg.classList.remove('hidden');
+    } else {
+        faceImg.classList.add('hidden');
+    }
+
+    if (currentHair) {
+        hairImg.src = currentHair;
+        hairImg.classList.remove('hidden');
+    } else {
+        hairImg.classList.add('hidden');
+    }
+
+    if (currentClothes) {
+        clothesImg.src = currentClothes;
+        clothesImg.classList.remove('hidden');
+    } else {
+        clothesImg.classList.add('hidden');
     }
 }
 
@@ -134,12 +181,7 @@ function updateUI() {
     let expPercent = (stats.exp / stats.nextLvlExp) * 100;
     document.getElementById('exp-bar').style.width = `${Math.min(100, expPercent)}%`;
 
-    const heroElem = document.getElementById('character');
-    if (heroElem) {
-        const activeOutfit = outfits[currentOutfit] || outfits['default'];
-        heroElem.textContent = activeOutfit ? activeOutfit.avatar : '🥷';
-    }
-
+    updateCharacterLayers();
     updatePlayerNameDisplay();
     saveGameProgress();
 }
@@ -197,7 +239,7 @@ function closeInventory() {
 
 function setCategoryFilter(category, btnElem) {
     currentCategory = category;
-    document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+    btnElem.parentElement.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
     if (btnElem) btnElem.classList.add('active');
     renderMinecraftStash();
 }
@@ -227,7 +269,7 @@ function renderMinecraftStash() {
     }
 }
 
-// === Гардероб ===
+// === Гардероб / Кастомізація ===
 function openCustomization() {
     closeInventory();
     renderWardrobe();
@@ -238,45 +280,31 @@ function closeCustomization() {
     document.getElementById('custom-modal').classList.add('hidden');
 }
 
+function setWardrobeTab(tab, btnElem) {
+    currentWardrobeTab = tab;
+    btnElem.parentElement.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+    if (btnElem) btnElem.classList.add('active');
+    renderWardrobe();
+}
+
 function renderWardrobe() {
     const container = document.getElementById('wardrobe-container');
     container.innerHTML = '';
 
-    for (let key in outfits) {
-        let item = outfits[key];
-        let card = document.createElement('div');
-        card.className = `outfit-card ${currentOutfit === key ? 'active' : ''}`;
-
-        let btnText = item.purchased ? (currentOutfit === key ? 'Вдягнено' : 'Вдягти') : `Купити ${item.cost} 🪙`;
-
-        card.innerHTML = `
-            <div style="display:flex; align-items:center; gap:10px;">
-                <span style="font-size:24px;">${item.avatar}</span>
-                <div>
-                    <h4 style="font-size:12px; color:#fff;">${item.name}</h4>
-                </div>
+    if (currentWardrobeTab === 'body') {
+        container.innerHTML = `
+            <div class="outfit-card ${gender === 'male' ? 'active' : ''}">
+                <div>Чоловіче тіло</div>
+                <button class="btn-outfit" onclick="setGender('male'); renderWardrobe();">Обрати</button>
             </div>
-            <button class="btn-outfit" onclick="selectOutfit('${key}')">${btnText}</button>
+            <div class="outfit-card ${gender === 'female' ? 'active' : ''}">
+                <div>Жіноче тіло</div>
+                <button class="btn-outfit" onclick="setGender('female'); renderWardrobe();">Обрати</button>
+            </div>
         `;
-        container.appendChild(card);
-    }
-}
-
-function selectOutfit(key) {
-    let item = outfits[key];
-    if (!item.purchased) {
-        if ((stats.silver || 0) >= item.cost) {
-            stats.silver -= item.cost;
-            item.purchased = true;
-            currentOutfit = key;
-        } else {
-            alert("Недостатньо срібла!");
-        }
     } else {
-        currentOutfit = key;
+        container.innerHTML = `<p style="font-size:12px; color:#aaa; text-align:center; padding: 20px 0;">Розділ [${currentWardrobeTab.toUpperCase()}] буде заповнений при додаванні нових PNG-ассетів!</p>`;
     }
-    updateUI();
-    renderWardrobe();
 }
 
 document.addEventListener('DOMContentLoaded', () => {

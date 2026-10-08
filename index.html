@@ -102,11 +102,24 @@
             </div>
         </aside>
 
-        <!-- Центр: Персонаж -->
+        <!-- Центр: Персонаж (Paper Doll System) -->
         <section class="center-stage">
             <div class="character-preview" onclick="tapCharacter()">
-                <div class="hero-avatar" id="character">🥷</div>
+                <div id="character-container" class="character-container">
+                    <!-- Шари персонажа (накладаються один на один) -->
+                    <img id="layer-body" class="char-layer" src="base_male.png" alt="Тіло">
+                    <img id="layer-face" class="char-layer hidden" src="" alt="Обличчя">
+                    <img id="layer-hair" class="char-layer hidden" src="" alt="Зачіска">
+                    <img id="layer-clothes" class="char-layer hidden" src="" alt="Одяг">
+                </div>
             </div>
+
+            <!-- Кнопка перемикання статі під персонажем -->
+            <div class="gender-switch-bar">
+                <button class="gender-btn active" id="btn-gender-male" onclick="setGender('male')">👨 Чоловік</button>
+                <button class="gender-btn" id="btn-gender-female" onclick="setGender('female')">👩 Жінка</button>
+            </div>
+
             <button class="btn-main-action" onclick="tapCharacter()">🔍 Дослідити палату (+EXP)</button>
         </section>
 
@@ -175,13 +188,22 @@
         </div>
     </div>
 
-    <!-- Модальне вікно Гардеробу -->
+    <!-- Модальне вікно Гардеробу (Кастомізація) -->
     <div id="custom-modal" class="modal side-modal hidden">
         <div class="modal-content side-content">
             <div class="modal-header">
-                <h3>👕 Гардероб</h3>
+                <h3>👕 Кастомізація</h3>
                 <button class="btn-close-mini" onclick="closeCustomization()">✕</button>
             </div>
+
+            <!-- Вкладки кастомізації на майбутнє -->
+            <div class="inventory-filters">
+                <button class="filter-btn active" onclick="setWardrobeTab('body', this)">🧍 Тіло</button>
+                <button class="filter-btn" onclick="setWardrobeTab('hair', this)">💇 Зачіска</button>
+                <button class="filter-btn" onclick="setWardrobeTab('face', this)">👁️ Обличчя</button>
+                <button class="filter-btn" onclick="setWardrobeTab('clothes', this)">👔 Одяг</button>
+            </div>
+
             <div id="wardrobe-container" class="wardrobe-grid"></div>
         </div>
     </div>
