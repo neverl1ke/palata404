@@ -303,13 +303,15 @@ body {
 
 .character-preview {
     position: absolute !important;
-    bottom: 8cqh !important; /* Ніжки на лінії підлоги кімнати */
+    bottom: 3.5% !important; /* Фіксує ноги на підлозі кімнати у відсотках від фону */
     left: 50% !important;
     transform: translateX(-50%) !important;
-    height: 62vh !important; /* Стабільна висота відносно ігрового поля */
+    height: 70% !important; /* Прив'язує зріст до висоти ІГРОВОЇ СЦЕНИ, а не вікна браузера */
     width: auto !important;
-    min-height: 150px; /* Гарантує, що персонаж ніколи не зникне */
-    pointer-events: auto !important;
+    pointer-events: auto;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: flex-end !important;
 }
 
 .character-container {
