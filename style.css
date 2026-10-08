@@ -19,36 +19,33 @@ body {
     overflow: hidden;
 }
 
-/* Фіксована ігрова сцена з пропорційним масштабуванням */
+/* Ігрова зона: без жорсткого 16:9, заповнює увесь екран монітора */
 .game-viewport {
     position: relative !important;
-    width: 1280px !important;  /* Базова ширина гри */
-    height: 720px !important;  /* Базова висота гри (16:9) */
+    width: 100vw !important;
+    height: 100vh !important;
+    max-width: 100vw !important;
+    max-height: 100vh !important;
     background: #05070a url('background.jpg') no-repeat center center;
     background-size: cover;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 12px;
-    box-shadow: 0 0 50px rgba(0, 0, 0, 0.9);
+    padding: 1.2vh 1.2vw;
+    box-shadow: none;
     overflow: hidden !important;
-    
-    /* Дозволяє вікну стискатися/розтягуватися, зберігаючи 16:9 */
-    max-width: 100vw;
-    max-height: 56.25vw;
-    aspect-ratio: 16 / 9;
 }
 
 .game-viewport::before {
     content: '';
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
-    background: radial-gradient(circle, rgba(15, 23, 42, 0.2) 0%, rgba(5, 7, 10, 0.75) 100%);
+    background: radial-gradient(circle, rgba(15, 23, 42, 0.15) 0%, rgba(5, 7, 10, 0.65) 100%);
     z-index: 0;
     pointer-events: none;
 }
 
-/* Верхня панель (Завжди поверх усіх) */
+/* Верхня панель навігації */
 .top-nav {
     position: relative;
     z-index: 50 !important;
@@ -57,23 +54,24 @@ body {
     align-items: center;
     background: rgba(15, 18, 25, 0.88);
     backdrop-filter: blur(10px);
-    padding: 8px 15px;
+    padding: 0.6vh 1vw;
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 8px;
-    gap: 10px;
+    gap: 8px;
+    height: clamp(40px, 6vh, 60px);
 }
 
 .user-profile-badge {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
     cursor: pointer;
 }
 
 .avatar-mini {
-    font-size: 20px;
+    font-size: clamp(14px, 1.2rem, 20px);
     background: #111827;
-    padding: 5px;
+    padding: 4px;
     border-radius: 6px;
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
@@ -88,14 +86,14 @@ body {
     display: flex;
     gap: 6px;
     align-items: center;
-    font-size: 12px;
+    font-size: clamp(10px, 0.8vw, 13px);
 }
 
 .rank-tag {
-    font-size: 9px;
+    font-size: clamp(8px, 0.6vw, 10px);
     color: #f59e0b;
     background: rgba(245, 158, 11, 0.15);
-    padding: 1px 5px;
+    padding: 1px 4px;
     border-radius: 4px;
     border: 1px solid rgba(245, 158, 11, 0.3);
     font-weight: bold;
@@ -108,15 +106,15 @@ body {
 }
 
 .exp-label {
-    font-size: 9px;
+    font-size: clamp(8px, 0.6vw, 10px);
     color: #9ca3af;
     display: flex;
     justify-content: space-between;
-    gap: 8px;
+    gap: 6px;
 }
 
 .exp-bar-bg {
-    width: 110px;
+    width: clamp(70px, 7vw, 120px);
     height: 4px;
     background: rgba(255, 255, 255, 0.1);
     border-radius: 2px;
@@ -129,12 +127,12 @@ body {
     transition: width 0.3s ease;
 }
 
-/* Центральна навігація */
+/* Центральна кнопкова панель */
 .center-nav {
     display: flex;
-    gap: 8px;
+    gap: 6px;
     background: rgba(0, 0, 0, 0.3);
-    padding: 4px 8px;
+    padding: 4px 6px;
     border-radius: 8px;
     border: 1px solid rgba(255, 255, 255, 0.05);
 }
@@ -142,9 +140,9 @@ body {
 .nav-icon-btn {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.08);
-    font-size: 18px;
-    width: 36px;
-    height: 36px;
+    font-size: clamp(14px, 1.1rem, 18px);
+    width: clamp(28px, 2.5vw, 36px);
+    height: clamp(28px, 2.5vw, 36px);
     border-radius: 6px;
     cursor: pointer;
     display: flex;
@@ -161,15 +159,15 @@ body {
 
 .top-actions {
     display: flex;
-    gap: 6px;
+    gap: 4px;
 }
 
 .sys-btn {
     background: transparent;
     border: none;
-    font-size: 16px;
-    width: 32px;
-    height: 32px;
+    font-size: clamp(13px, 1rem, 16px);
+    width: clamp(26px, 2vw, 32px);
+    height: clamp(26px, 2vw, 32px);
     cursor: pointer;
     border-radius: 50%;
     transition: background 0.2s;
@@ -180,56 +178,57 @@ body {
     background: rgba(255, 255, 255, 0.1);
 }
 
-/* Сітка інтерфейсу поверх кімнати */
+/* Основне розпланування інтерфейсу */
 .main-layout {
     position: relative;
     display: flex;
     justify-content: space-between;
     flex: 1;
-    margin-top: 10px;
+    margin-top: 1vh;
     z-index: 10;
-    pointer-events: none; /* Дозволяє клікати крізь порожні зони */
+    pointer-events: none;
+    height: calc(100vh - 8vh);
 }
 
 .left-panel, .right-panel {
     pointer-events: auto;
-    width: 240px;
+    width: clamp(180px, 18vw, 260px);
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 8px;
 }
 
-/* Статистика та ресурси */
-.vitals-group, .currency-group {
-    background: rgba(15, 18, 25, 0.85);
+/* Блоки статистики та інформації */
+.vitals-group, .currency-group, .location-card {
+    background: rgba(15, 18, 25, 0.88);
     backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    padding: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: clamp(6px, 1vh, 12px);
     border-radius: 8px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 6px;
 }
 
 .vital-item {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
 }
 
-.vital-icon { font-size: 16px; }
+.vital-icon { font-size: clamp(12px, 1vw, 16px); }
 .vital-info { flex: 1; }
 
 .vital-label {
-    font-size: 11px;
+    font-size: clamp(9px, 0.75vw, 11px);
     color: #9ca3af;
     display: flex;
     justify-content: space-between;
-    margin-bottom: 4px;
+    margin-bottom: 2px;
 }
 
 .bar-bg {
-    height: 6px;
+    height: 5px;
     background: rgba(255, 255, 255, 0.1);
     border-radius: 3px;
     overflow: hidden;
@@ -241,7 +240,7 @@ body {
 .bar-fill.energy { background: #eab308; }
 
 .currency-title {
-    font-size: 10px;
+    font-size: clamp(8px, 0.65vw, 10px);
     color: #6b7280;
     text-transform: uppercase;
     font-weight: bold;
@@ -250,10 +249,10 @@ body {
 .currency-item {
     display: flex;
     justify-content: space-between;
-    font-size: 12px;
+    font-size: clamp(10px, 0.75vw, 12px);
     color: #d1d5db;
     background: rgba(255, 255, 255, 0.03);
-    padding: 6px 8px;
+    padding: 4px 6px;
     border-radius: 4px;
 }
 
@@ -261,49 +260,38 @@ body {
     background: linear-gradient(135deg, #059669, #10b981);
     color: white;
     border: none;
-    padding: 8px;
+    padding: 6px;
     border-radius: 6px;
     font-weight: bold;
-    font-size: 12px;
+    font-size: clamp(10px, 0.75vw, 12px);
     cursor: pointer;
-    margin-top: 5px;
-    transition: opacity 0.2s;
+    margin-top: 3px;
 }
 
 .side-menu {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 6px;
 }
 
 .menu-btn {
     background: rgba(22, 27, 34, 0.75);
     border: 1px solid rgba(255, 255, 255, 0.08);
     color: #d1d5db;
-    padding: 10px 12px;
+    padding: 8px 10px;
     border-radius: 6px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 13px;
+    font-size: clamp(10px, 0.8vw, 13px);
     cursor: pointer;
-    transition: all 0.2s;
 }
 
-.menu-btn:hover { background: rgba(255, 255, 255, 0.12); }
+.loc-title { font-size: clamp(8px, 0.65vw, 10px); color: #6b7280; text-transform: uppercase; }
+.loc-name { font-size: clamp(11px, 0.9vw, 14px); font-weight: bold; color: #f3f4f6; margin: 2px 0; }
+.loc-desc { font-size: clamp(9px, 0.75vw, 11px); color: #9ca3af; }
 
-.location-card {
-    background: rgba(15, 18, 25, 0.85);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    padding: 12px;
-    border-radius: 8px;
-}
-
-.loc-title { font-size: 10px; color: #6b7280; text-transform: uppercase; }
-.loc-name { font-size: 14px; font-weight: bold; color: #f3f4f6; margin: 2px 0; }
-.loc-desc { font-size: 11px; color: #9ca3af; }
-
-/* Возвращаем персонажа на центр комнаты */
+/* ПЕРСОНАЖ: Ідеальне центрування та пропорційний зріст */
 .center-stage {
     position: absolute !important;
     top: 0;
@@ -311,7 +299,7 @@ body {
     width: 100%;
     height: 100%;
     pointer-events: none;
-    z-index: 4 !important; /* Поднимаем над фоном, но под интерфейсом */
+    z-index: 4 !important;
     display: flex !important;
     justify-content: center !important;
     align-items: flex-end !important;
@@ -319,12 +307,11 @@ body {
 
 .character-preview {
     position: absolute !important;
-    bottom: 6% !important; /* Наше настроенное положение ног на полу */
+    bottom: 3vh !important; /* Ніжки на лінії підлоги */
     left: 50% !important;
     transform: translateX(-50%) !important;
-    height: 60% !important; /* Наш настроенный масштаб */
+    height: 78vh !important; /* ЗБІЛЬШЕНО ЗРІСТ (високий персонаж відносно ліжка) */
     width: auto !important;
-    min-width: 150px !important; /* Не даем картинке сжаться в 0px */
     pointer-events: auto;
     display: flex !important;
     justify-content: center !important;
@@ -354,24 +341,23 @@ body {
     background: #2563eb;
     color: white;
     border: none;
-    padding: 12px;
+    padding: clamp(8px, 1.2vh, 12px);
     border-radius: 6px;
     font-weight: bold;
-    font-size: 13px;
+    font-size: clamp(11px, 0.85vw, 13px);
     cursor: pointer;
     box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
-    transition: background 0.2s;
     width: 100%;
 }
 
 .btn-main-action:active { background: #1d4ed8; }
 
-/* Правильне позиціонування модальних вікон */
+/* Модальні вікна */
 .modal {
     position: fixed !important;
     top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(4px);
+    background: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(5px);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -387,7 +373,7 @@ body {
     border-radius: 10px;
     border: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0 10px 30px rgba(0,0,0,0.9);
-    width: 320px;
+    width: min(320px, 90vw);
     max-height: 80vh;
     display: flex;
     flex-direction: column;
@@ -416,7 +402,6 @@ body {
     gap: 8px;
 }
 
-/* Фільтри та сітки інвентаря */
 .inventory-filters {
     display: flex;
     gap: 5px;
