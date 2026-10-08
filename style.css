@@ -297,7 +297,7 @@ body {
 .loc-name { font-size: 14px; font-weight: bold; color: #f3f4f6; margin: 2px 0; }
 .loc-desc { font-size: 11px; color: #9ca3af; }
 
-/* Центр: Позиціонування Персонажа на підлозі */
+/* Возвращаем персонажа на центр комнаты */
 .center-stage {
     position: absolute !important;
     top: 0;
@@ -305,41 +305,43 @@ body {
     width: 100%;
     height: 100%;
     pointer-events: none;
-    z-index: 2;
+    z-index: 4 !important; /* Поднимаем над фоном, но под интерфейсом */
+    display: flex !important;
+    justify-content: center !important;
+    align-items: flex-end !important;
 }
 
 .character-preview {
     position: absolute !important;
-    bottom: 6% !important; /* Стопи точно на дерев'яній підлозі */
+    bottom: 6% !important; /* Наше настроенное положение ног на полу */
     left: 50% !important;
     transform: translateX(-50%) !important;
-    height: 60% !important; /* Пропорційний зріст */
+    height: 60% !important; /* Наш настроенный масштаб */
     width: auto !important;
+    min-width: 150px !important; /* Не даем картинке сжаться в 0px */
     pointer-events: auto;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: flex-end !important;
 }
 
 .character-container {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    transition: transform 0.1s ease;
-}
-
-.character-container:active {
-    transform: scale(0.97);
+    position: relative !important;
+    width: 100% !important;
+    height: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: flex-end !important;
 }
 
 .char-layer {
-    position: absolute;
-    bottom: 0;
-    height: 100%;
-    width: auto;
-    max-width: 100%;
-    object-fit: contain;
-    filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.85));
+    position: absolute !important;
+    bottom: 0 !important;
+    height: 100% !important;
+    width: auto !important;
+    max-width: 100% !important;
+    object-fit: contain !important;
+    display: block !important;
 }
 
 .btn-main-action {
