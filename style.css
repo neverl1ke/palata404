@@ -18,7 +18,7 @@ body {
 
 /* Оболонка 16:9 для збереження пропорцій кімнати */
 .game-viewport {
-    position: relative;
+    position: relative !important;
     width: 100vw;
     height: 56.25vw; /* Пропорція 16:9 */
     max-height: 100vh;
@@ -30,6 +30,7 @@ body {
     justify-content: space-between;
     padding: 12px;
     box-shadow: 0 0 50px rgba(0, 0, 0, 0.9);
+    overflow: hidden !important;
 }
 
 .game-viewport::before {
@@ -41,13 +42,10 @@ body {
     pointer-events: none;
 }
 
-div, main, aside, header, footer, nav {
-    position: relative;
-    z-index: 1;
-}
-
-/* Верхня панель */
+/* Верхня панель (Завжди поверх усіх) */
 .top-nav {
+    position: relative;
+    z-index: 50 !important;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -169,28 +167,30 @@ div, main, aside, header, footer, nav {
     cursor: pointer;
     border-radius: 50%;
     transition: background 0.2s;
+    color: #d1d5db;
 }
 
 .sys-btn:hover {
     background: rgba(255, 255, 255, 0.1);
 }
 
-/* Фіксація сітки екрана та правої панелі */
+/* Сітка інтерфейсу поверх кімнати */
 .main-layout {
-    display: grid;
-    grid-template-columns: 240px 1fr 240px;
-    gap: 15px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
     flex: 1;
     margin-top: 10px;
-    height: calc(100% - 60px);
-    position: relative;
-    z-index: 5;
+    z-index: 10;
+    pointer-events: none; /* Дозволяє клікати крізь порожні зони */
+}
 
-.right-panel {
+.left-panel, .right-panel {
+    pointer-events: auto;
+    width: 240px;
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    z-index: 10;
+    gap: 10px;
 }
 
 /* Статистика та ресурси */
@@ -299,7 +299,9 @@ div, main, aside, header, footer, nav {
 
 /* Центр: Позиціонування Персонажа на підлозі */
 .center-stage {
-    position: relative;
+    position: absolute !important;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     pointer-events: none;
@@ -307,19 +309,12 @@ div, main, aside, header, footer, nav {
 }
 
 .character-preview {
-    position: absolute;
-    bottom: 5%; /* Приземлюємо ноги на підлогу */
-    left: 50%;
-    transform: translateX(-50%);
-    
-    height: 68%; /* Збільшуємо персонажа під розмір ліжка */
-    width: auto;
-    aspect-ratio: 1 / 2;
-    
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    cursor: pointer;
+    position: absolute !important;
+    bottom: 6% !important; /* Стопи точно на дерев'яній підлозі */
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    height: 60% !important; /* Пропорційний зріст */
+    width: auto !important;
     pointer-events: auto;
 }
 
@@ -363,21 +358,16 @@ div, main, aside, header, footer, nav {
 
 .btn-main-action:active { background: #1d4ed8; }
 
-/* Модальні вікна */
+/* Правильне позиціонування модальних вікон */
 .modal {
-    position: fixed;
+    position: fixed !important;
     top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(0,0,0,0.7);
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 100;
-}
-
-.modal.side-modal {
-    top: 60px; left: 10px; bottom: 20px; right: auto;
-    width: 320px;
-    background: transparent;
+    z-index: 100 !important;
 }
 
 .hidden { display: none !important; }
@@ -389,12 +379,8 @@ div, main, aside, header, footer, nav {
     border-radius: 10px;
     border: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0 10px 30px rgba(0,0,0,0.9);
-    width: 280px;
-}
-
-.side-modal .modal-content {
-    width: 100%;
-    height: 100%;
+    width: 320px;
+    max-height: 80vh;
     display: flex;
     flex-direction: column;
 }
@@ -422,7 +408,7 @@ div, main, aside, header, footer, nav {
     gap: 8px;
 }
 
-/* Фільтри */
+/* Фільтри та сітки інвентаря */
 .inventory-filters {
     display: flex;
     gap: 5px;
@@ -507,67 +493,4 @@ div, main, aside, header, footer, nav {
     border-radius: 4px;
     font-size: 11px;
     cursor: pointer;
-}}
-/* === ГЛОБАЛЬНЕ ВИПРАВЛЕННЯ СТРУКТУРИ ТА ПАНЕЛЕЙ === */
-
-/* Переконуємося, що контейнер 16:9 обрізає все, що виходить за межі */
-.game-viewport {
-    position: relative !important;
-    overflow: hidden !important;
-}
-
-/* Перетворюємо main-layout на абсолютний оверлей поверх кімнати */
-.main-layout {
-    position: absolute !important;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    padding: 15px;
-    box-sizing: border-box;
-    display: flex !important;
-    justify-content: space-between !important;
-    pointer-events: none; /* Щоб кліки проходили до персонажа */
-    z-index: 10;
-}
-
-/* Вмикаємо клікабельність для лівої та правої панелей */
-.left-panel, .right-panel {
-    pointer-events: auto;
-    width: 240px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-/* Фіксуємо модальні вікна (Інвентар, Банк, Налаштування) Всередині кімнати */
-.modal, .modal-window, [class*="modal"] {
-    position: absolute !important;
-    top: 50% !important;
-    left: 50% !important;
-    transform: translate(-50%, -50%) !important;
-    max-width: 90% !important;
-    max-height: 85% !important;
-    z-index: 100 !important;
-}
-
-/* Корректні пропорції персонажа посередині кімнати */
-.center-stage {
-    position: absolute !important;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 2;
-}
-
-.character-preview {
-    position: absolute !important;
-    bottom: 8% !important; /* Стопи рівно на підлозі */
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    height: 58% !important; /* Нормальний зріст відносно ліжка */
-    width: auto !important;
-    pointer-events: auto;
 }
