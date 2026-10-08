@@ -508,3 +508,66 @@ div, main, aside, header, footer, nav {
     font-size: 11px;
     cursor: pointer;
 }}
+/* === ГЛОБАЛЬНЕ ВИПРАВЛЕННЯ СТРУКТУРИ ТА ПАНЕЛЕЙ === */
+
+/* Переконуємося, що контейнер 16:9 обрізає все, що виходить за межі */
+.game-viewport {
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+/* Перетворюємо main-layout на абсолютний оверлей поверх кімнати */
+.main-layout {
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 15px;
+    box-sizing: border-box;
+    display: flex !important;
+    justify-content: space-between !important;
+    pointer-events: none; /* Щоб кліки проходили до персонажа */
+    z-index: 10;
+}
+
+/* Вмикаємо клікабельність для лівої та правої панелей */
+.left-panel, .right-panel {
+    pointer-events: auto;
+    width: 240px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Фіксуємо модальні вікна (Інвентар, Банк, Налаштування) Всередині кімнати */
+.modal, .modal-window, [class*="modal"] {
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    max-width: 90% !important;
+    max-height: 85% !important;
+    z-index: 100 !important;
+}
+
+/* Корректні пропорції персонажа посередині кімнати */
+.center-stage {
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.character-preview {
+    position: absolute !important;
+    bottom: 8% !important; /* Стопи рівно на підлозі */
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    height: 58% !important; /* Нормальний зріст відносно ліжка */
+    width: auto !important;
+    pointer-events: auto;
+}
