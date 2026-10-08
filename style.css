@@ -297,23 +297,32 @@ div, main, aside, header, footer, nav {
 
 /* Центр: Позиціонування Персонажа на підлозі */
 .center-stage {
-    position: relative;
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end; /* Опускає персонажа на підлогу */
-    padding-bottom: 5vh; /* Опущено до рівня підлоги під вікном */
+    pointer-events: none; /* Щоб не перекривати кліки, де це не потрібно */
+    z-index: 2;
 }
 
 .character-preview {
+    position: absolute;
+    /* Позиціонуємо ніжки персонажа точно на підлозі кімнати */
+    bottom: 12%; 
+    left: 50%;
+    transform: translateX(-50%);
+    
+    /* Висота персонажа фіксується у % від висоти 16:9 контейнера */
+    height: 52%; 
+    width: auto;
+    aspect-ratio: 1 / 2;
+    
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    width: 260px;
-    height: 70vh;
-    position: relative;
     cursor: pointer;
+    pointer-events: auto; /* Вмикаємо кліки по персонажу */
 }
 
 .character-container {
@@ -323,20 +332,21 @@ div, main, aside, header, footer, nav {
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    transition: transform 0.1s;
+    transition: transform 0.1s ease;
 }
 
 .character-container:active {
-    transform: scale(0.98);
+    transform: scale(0.97);
 }
 
 .char-layer {
     position: absolute;
     bottom: 0;
     height: 100%;
+    width: auto;
     max-width: 100%;
     object-fit: contain;
-    filter: drop-shadow(0 12px 18px rgba(0, 0, 0, 0.9));
+    filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.85));
 }
 
 .btn-main-action {
