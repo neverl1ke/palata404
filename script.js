@@ -41,7 +41,7 @@ function changeNickname() {
     }
 }
 
-// === Початкові дані / Валюта / Персонаж ===
+// === Дані / Статистика / Персонаж ===
 const DEFAULT_STATS = {
     silver: 150,
     pills: 5,
@@ -58,8 +58,8 @@ const DEFAULT_STATS = {
 
 let stats = loadSaveData('palata404_stats', DEFAULT_STATS);
 
-// Стать та вибрані елементи одягу/кастомізації
-let gender = localStorage.getItem('palata404_gender') || 'male'; // 'male' або 'female'
+// Перемикач статі
+let gender = localStorage.getItem('palata404_gender') || 'male'; 
 let currentHair = localStorage.getItem('palata404_hair') || '';
 let currentFace = localStorage.getItem('palata404_face') || '';
 let currentClothes = localStorage.getItem('palata404_clothes') || '';
@@ -112,15 +112,9 @@ function addExperience(amount) {
     }
 }
 
-// === Управління персонажем (Paper Doll) ===
 function setGender(selectedGender) {
     gender = selectedGender;
     
-    // Оновлення кнопок перемикача
-    document.getElementById('btn-gender-male').classList.toggle('active', gender === 'male');
-    document.getElementById('btn-gender-female').classList.toggle('active', gender === 'female');
-    
-    // Зміна бази тіла
     const bodyImg = document.getElementById('layer-body');
     if (bodyImg) {
         bodyImg.src = gender === 'female' ? 'base_female.png' : 'base_male.png';
@@ -158,7 +152,6 @@ function updateCharacterLayers() {
     }
 }
 
-// === Оновлення Інтерфейсу ===
 function updateUI() {
     document.getElementById('hp-val').textContent = `${stats.hp} / ${stats.maxHp}`;
     document.getElementById('madness-val').textContent = `${stats.madness} / 100`;
@@ -168,12 +161,10 @@ function updateUI() {
     document.getElementById('madness-bar').style.width = `${Math.min(100, stats.madness)}%`;
     document.getElementById('energy-bar').style.width = `${Math.min(100, (stats.energy / stats.maxEnergy) * 100)}%`;
 
-    // Валюта
     document.getElementById('silver-val').textContent = stats.silver || 0;
     document.getElementById('pills-val').textContent = stats.pills || 0;
     document.getElementById('bucks-val').textContent = stats.bucks || 0;
 
-    // Рівень
     document.getElementById('player-lvl').textContent = stats.level;
     document.getElementById('player-rank').textContent = getPlayerRank(stats.level);
     document.getElementById('exp-val').textContent = `${stats.exp} / ${stats.nextLvlExp} EXP`;
@@ -186,7 +177,6 @@ function updateUI() {
     saveGameProgress();
 }
 
-// === Дії ===
 function tapCharacter() {
     if (stats.energy >= 5) {
         stats.energy -= 5;
@@ -208,7 +198,6 @@ function restInBed() {
     updateUI();
 }
 
-// === Налаштування ===
 function openSettings() {
     document.getElementById('settings-modal').classList.remove('hidden');
 }
@@ -217,7 +206,6 @@ function closeSettings() {
     document.getElementById('settings-modal').classList.add('hidden');
 }
 
-// === Банк ===
 function openBank() {
     document.getElementById('bank-modal').classList.remove('hidden');
 }
@@ -226,7 +214,6 @@ function closeBank() {
     document.getElementById('bank-modal').classList.add('hidden');
 }
 
-// === Інвентар ===
 function openInventory() {
     closeCustomization();
     renderMinecraftStash();
@@ -269,7 +256,6 @@ function renderMinecraftStash() {
     }
 }
 
-// === Гардероб / Кастомізація ===
 function openCustomization() {
     closeInventory();
     renderWardrobe();
@@ -294,16 +280,16 @@ function renderWardrobe() {
     if (currentWardrobeTab === 'body') {
         container.innerHTML = `
             <div class="outfit-card ${gender === 'male' ? 'active' : ''}">
-                <div>Чоловіче тіло</div>
+                <div>👨 Чоловіча стать</div>
                 <button class="btn-outfit" onclick="setGender('male'); renderWardrobe();">Обрати</button>
             </div>
             <div class="outfit-card ${gender === 'female' ? 'active' : ''}">
-                <div>Жіноче тіло</div>
+                <div>👩 Жіноча стать</div>
                 <button class="btn-outfit" onclick="setGender('female'); renderWardrobe();">Обрати</button>
             </div>
         `;
     } else {
-        container.innerHTML = `<p style="font-size:12px; color:#aaa; text-align:center; padding: 20px 0;">Розділ [${currentWardrobeTab.toUpperCase()}] буде заповнений при додаванні нових PNG-ассетів!</p>`;
+        container.innerHTML = `<p style="font-size:12px; color:#aaa; text-align:center; padding: 20px 0;">Розділ [${currentWardrobeTab.toUpperCase()}] буде заповнений при додаванні нових PNG-елементів!</p>`;
     }
 }
 

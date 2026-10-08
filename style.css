@@ -7,24 +7,38 @@
 }
 
 body {
-    /* Твій фоновий малюнок локації */
-    background: #05070a url('background.jpg') no-repeat center center fixed;
-    background-size: cover;
+    background: #020305;
     color: #d1d5db;
     height: 100vh;
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 10px;
+    justify-content: center;
+    align-items: center;
     overflow: hidden;
 }
 
-body::before {
+/* Оболонка 16:9 для збереження пропорцій кімнати */
+.game-viewport {
+    position: relative;
+    width: 100vw;
+    height: 56.25vw; /* Пропорція 16:9 */
+    max-height: 100vh;
+    max-width: 177.78vh; /* Пропорція 16:9 */
+    background: #05070a url('background.jpg') no-repeat center center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 12px;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.9);
+}
+
+.game-viewport::before {
     content: '';
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
-    background: radial-gradient(circle, rgba(15, 23, 42, 0.4) 0%, rgba(5, 7, 10, 0.85) 100%);
+    background: radial-gradient(circle, rgba(15, 23, 42, 0.2) 0%, rgba(5, 7, 10, 0.75) 100%);
     z-index: 0;
+    pointer-events: none;
 }
 
 div, main, aside, header, footer, nav {
@@ -111,7 +125,7 @@ div, main, aside, header, footer, nav {
     transition: width 0.3s ease;
 }
 
-/* Центральна навігація іконками */
+/* Центральна навігація */
 .center-nav {
     display: flex;
     gap: 8px;
@@ -141,11 +155,6 @@ div, main, aside, header, footer, nav {
     transform: translateY(-2px);
 }
 
-.nav-icon-btn:active {
-    transform: translateY(0);
-}
-
-/* Системні кнопки справа */
 .top-actions {
     display: flex;
     gap: 6px;
@@ -166,23 +175,14 @@ div, main, aside, header, footer, nav {
     background: rgba(255, 255, 255, 0.1);
 }
 
-/* Сітка */
+/* Сітка інтерфейсу */
 .main-layout {
     display: grid;
     grid-template-columns: 240px 1fr 220px;
     gap: 15px;
     flex: 1;
-    margin: 10px 0;
-}
-
-@media (max-width: 768px) {
-    .main-layout {
-        grid-template-columns: 1fr;
-        overflow-y: auto;
-    }
-    .right-panel { display: none; }
-    .center-nav { gap: 4px; }
-    .nav-icon-btn { width: 32px; height: 32px; font-size: 16px; }
+    margin-top: 10px;
+    height: calc(100% - 60px);
 }
 
 .left-panel, .right-panel {
@@ -191,7 +191,7 @@ div, main, aside, header, footer, nav {
     gap: 12px;
 }
 
-/* Статистика */
+/* Статистика та ресурси */
 .vitals-group, .currency-group {
     background: rgba(15, 18, 25, 0.85);
     backdrop-filter: blur(8px);
@@ -232,7 +232,6 @@ div, main, aside, header, footer, nav {
 .bar-fill.madness { background: #06b6d4; }
 .bar-fill.energy { background: #eab308; }
 
-/* Блок Валюти */
 .currency-title {
     font-size: 10px;
     color: #6b7280;
@@ -263,15 +262,10 @@ div, main, aside, header, footer, nav {
     transition: opacity 0.2s;
 }
 
-.bank-btn:hover {
-    opacity: 0.9;
-}
-
-/* Кнопки меню */
 .side-menu {
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 8px;
 }
 
 .menu-btn {
@@ -288,11 +282,8 @@ div, main, aside, header, footer, nav {
     transition: all 0.2s;
 }
 
-.menu-btn:hover {
-    background: rgba(255, 255, 255, 0.12);
-}
+.menu-btn:hover { background: rgba(255, 255, 255, 0.12); }
 
-/* Локація */
 .location-card {
     background: rgba(15, 18, 25, 0.85);
     border: 1px solid rgba(255, 255, 255, 0.05);
@@ -304,22 +295,23 @@ div, main, aside, header, footer, nav {
 .loc-name { font-size: 14px; font-weight: bold; color: #f3f4f6; margin: 2px 0; }
 .loc-desc { font-size: 11px; color: #9ca3af; }
 
-/* Центр персонажу (Paper Doll) */
+/* Центр: Позиціонування Персонажа на підлозі */
 .center-stage {
+    position: relative;
+    width: 100%;
+    height: 100%;
     display: flex;
-    flex-direction: column;
     justify-content: center;
-    align-items: center;
-    min-height: 280px;
+    align-items: flex-end; /* Опускає персонажа на підлогу */
+    padding-bottom: 5vh; /* Опущено до рівня підлоги під вікном */
 }
 
 .character-preview {
     display: flex;
     justify-content: center;
-    align-items: center;
-    width: 240px;
-    height: 320px;
-    background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, rgba(0,0,0,0) 75%);
+    align-items: flex-end;
+    width: 260px;
+    height: 70vh;
     position: relative;
     cursor: pointer;
 }
@@ -330,62 +322,35 @@ div, main, aside, header, footer, nav {
     height: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-end;
     transition: transform 0.1s;
 }
 
 .character-container:active {
-    transform: scale(0.96);
+    transform: scale(0.98);
 }
 
 .char-layer {
     position: absolute;
+    bottom: 0;
     height: 100%;
     max-width: 100%;
     object-fit: contain;
-    filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.85));
-}
-
-/* Кнопки перемикання статі */
-.gender-switch-bar {
-    display: flex;
-    gap: 8px;
-    margin-top: 10px;
-    background: rgba(15, 18, 25, 0.8);
-    padding: 4px;
-    border-radius: 6px;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.gender-btn {
-    background: transparent;
-    border: none;
-    color: #9ca3af;
-    padding: 6px 14px;
-    font-size: 12px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: all 0.2s;
-}
-
-.gender-btn.active {
-    background: #2563eb;
-    color: white;
-    font-weight: bold;
+    filter: drop-shadow(0 12px 18px rgba(0, 0, 0, 0.9));
 }
 
 .btn-main-action {
-    margin-top: 15px;
     background: #2563eb;
     color: white;
     border: none;
-    padding: 12px 28px;
+    padding: 12px;
     border-radius: 6px;
     font-weight: bold;
-    font-size: 14px;
+    font-size: 13px;
     cursor: pointer;
     box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
     transition: background 0.2s;
+    width: 100%;
 }
 
 .btn-main-action:active { background: #1d4ed8; }
@@ -449,7 +414,7 @@ div, main, aside, header, footer, nav {
     gap: 8px;
 }
 
-/* Фільтри інвентаря та гардеробу */
+/* Фільтри */
 .inventory-filters {
     display: flex;
     gap: 5px;
@@ -475,7 +440,6 @@ div, main, aside, header, footer, nav {
     color: white;
 }
 
-/* Сітка предметів */
 .minecraft-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -504,7 +468,6 @@ div, main, aside, header, footer, nav {
     font-size: 10px; font-weight: bold; color: #fff;
 }
 
-/* Гардероб карточки */
 .wardrobe-grid {
     display: flex;
     flex-direction: column;

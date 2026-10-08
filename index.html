@@ -5,138 +5,137 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Палата 404</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <link rel="stylesheet" href="style.css?v=13000">
+    <link rel="stylesheet" href="style.css?v=14000">
 </head>
 <body>
 
-    <!-- Верхня панель -->
-    <div class="top-nav">
-        <!-- Лівий блок: Профіль гравця -->
-        <div class="user-profile-badge" onclick="openSettings()">
-            <div class="avatar-mini">🪖</div>
-            <div class="user-text">
-                <div class="user-name-row">
-                    <strong id="player-name">Завантаження...</strong>
-                    <span class="rank-tag" id="player-rank">Новачок</span>
-                </div>
-                
-                <div class="exp-container">
-                    <div class="exp-label">
-                        <span>Рівень <strong id="player-lvl">1</strong></span>
-                        <span id="exp-val">0 / 100 EXP</span>
+    <!-- Контейнер для строгого збереження пропорцій кімнати 16:9 -->
+    <div class="game-viewport">
+
+        <!-- Верхня панель -->
+        <div class="top-nav">
+            <!-- Лівий блок: Профіль гравця -->
+            <div class="user-profile-badge" onclick="openSettings()">
+                <div class="avatar-mini">🪖</div>
+                <div class="user-text">
+                    <div class="user-name-row">
+                        <strong id="player-name">Завантаження...</strong>
+                        <span class="rank-tag" id="player-rank">Новачок</span>
                     </div>
-                    <div class="exp-bar-bg">
-                        <div class="exp-fill" id="exp-bar" style="width: 0%;"></div>
+                    
+                    <div class="exp-container">
+                        <div class="exp-label">
+                            <span>Рівень <strong id="player-lvl">1</strong></span>
+                            <span id="exp-val">0 / 100 EXP</span>
+                        </div>
+                        <div class="exp-bar-bg">
+                            <div class="exp-fill" id="exp-bar" style="width: 0%;"></div>
+                        </div>
                     </div>
                 </div>
             </div>
+
+            <!-- Центральний блок: Навігація іконками -->
+            <nav class="center-nav">
+                <button class="nav-icon-btn" title="Інвентар" onclick="openInventory()">🎒</button>
+                <button class="nav-icon-btn" title="Гардероб" onclick="openCustomization()">👕</button>
+                <button class="nav-icon-btn" title="Карта" onclick="alert('Карта в розробці')">🗺️</button>
+                <button class="nav-icon-btn" title="Завдання" onclick="alert('Завдання в розробці')">📋</button>
+                <button class="nav-icon-btn" title="Рейд" onclick="alert('Рейди в розробці')">⚔️</button>
+                <button class="nav-icon-btn" title="Друзі" onclick="alert('Друзі в розробці')">👥</button>
+            </nav>
+
+            <!-- Правий блок: Системні кнопки -->
+            <div class="top-actions">
+                <button class="sys-btn" title="Сповіщення" onclick="alert('Немає нових сповіщень')">🔔</button>
+                <button class="sys-btn" title="Пошта" onclick="alert('Пошта порожня')">✉️</button>
+                <button class="sys-btn" title="Налаштування" onclick="openSettings()">⚙️</button>
+            </div>
         </div>
 
-        <!-- Центральний блок: Навігація іконками -->
-        <nav class="center-nav">
-            <button class="nav-icon-btn" title="Інвентар" onclick="openInventory()">🎒</button>
-            <button class="nav-icon-btn" title="Гардероб" onclick="openCustomization()">👕</button>
-            <button class="nav-icon-btn" title="Карта" onclick="alert('Карта в розробці')">🗺️</button>
-            <button class="nav-icon-btn" title="Завдання" onclick="alert('Завдання в розробці')">📋</button>
-            <button class="nav-icon-btn" title="Рейд" onclick="alert('Рейди в розробці')">⚔️</button>
-            <button class="nav-icon-btn" title="Друзі" onclick="alert('Друзі в розробці')">👥</button>
-        </nav>
+        <!-- Основна ігрова сітка -->
+        <main class="main-layout">
+            
+            <!-- Ліва панель -->
+            <aside class="left-panel">
+                <!-- Показники життя -->
+                <div class="vitals-group">
+                    <div class="vital-item">
+                        <div class="vital-icon hp-icon">❤️</div>
+                        <div class="vital-info">
+                            <div class="vital-label">HP (Здоров'я) <span id="hp-val">100 / 100</span></div>
+                            <div class="bar-bg"><div class="bar-fill hp" id="hp-bar" style="width: 100%;"></div></div>
+                        </div>
+                    </div>
 
-        <!-- Правий блок: Системні кнопки -->
-        <div class="top-actions">
-            <button class="sys-btn" title="Сповіщення" onclick="alert('Немає нових сповіщень')">🔔</button>
-            <button class="sys-btn" title="Пошта" onclick="alert('Пошта порожня')">✉️</button>
-            <button class="sys-btn" title="Налаштування" onclick="openSettings()">⚙️</button>
-        </div>
+                    <div class="vital-item">
+                        <div class="vital-icon madness-icon">🧠</div>
+                        <div class="vital-info">
+                            <div class="vital-label">Божевілля <span id="madness-val">0 / 100</span></div>
+                            <div class="bar-bg"><div class="bar-fill madness" id="madness-bar" style="width: 0%;"></div></div>
+                        </div>
+                    </div>
+
+                    <div class="vital-item">
+                        <div class="vital-icon energy-icon">⚡</div>
+                        <div class="vital-info">
+                            <div class="vital-label">Витривалість <span id="energy-val">100 / 100</span></div>
+                            <div class="bar-bg"><div class="bar-fill energy" id="energy-bar" style="width: 100%;"></div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Блок валюти -->
+                <div class="currency-group">
+                    <div class="currency-title">Гроші та Ресурси</div>
+                    <div class="currency-item">
+                        <span>🪙 Срібло:</span>
+                        <strong id="silver-val">0</strong>
+                    </div>
+                    <div class="currency-item">
+                        <span>💊 Пігулки:</span>
+                        <strong id="pills-val">0</strong>
+                    </div>
+                    <div class="currency-item">
+                        <span>💵 Бакси:</span>
+                        <strong id="bucks-val">0</strong>
+                    </div>
+
+                    <button class="bank-btn" onclick="openBank()">🏦 Банк (Донат)</button>
+                </div>
+            </aside>
+
+            <!-- Центр: Сцена Кімнати та Персонаж на підлозі -->
+            <section class="center-stage">
+                <div class="character-preview" onclick="tapCharacter()">
+                    <div id="character-container" class="character-container">
+                        <!-- Шари персонажа (Paper Doll) -->
+                        <img id="layer-body" class="char-layer" src="base_male.png" alt="Тіло">
+                        <img id="layer-face" class="char-layer hidden" src="" alt="Обличчя">
+                        <img id="layer-hair" class="char-layer hidden" src="" alt="Зачіска">
+                        <img id="layer-clothes" class="char-layer hidden" src="" alt="Одяг">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Права панель -->
+            <aside class="right-panel">
+                <div class="location-card">
+                    <div class="loc-title">Поточна локація</div>
+                    <div class="loc-name">Палата #404</div>
+                    <div class="loc-desc">Стіни шепочуть тобі...</div>
+                </div>
+
+                <div class="side-menu">
+                    <!-- Кнопку дослідження перенесено сюди -->
+                    <button class="btn-main-action" onclick="tapCharacter()">🔍 Дослідити палату (+EXP)</button>
+                    <button class="menu-btn" onclick="restInBed()">🛏️ Відпочинок (+⚡ / -🧠)</button>
+                </div>
+            </aside>
+
+        </main>
+
     </div>
-
-    <!-- Основна ігрова сітка -->
-    <main class="main-layout">
-        
-        <!-- Ліва панель -->
-        <aside class="left-panel">
-            <!-- Показники життя -->
-            <div class="vitals-group">
-                <div class="vital-item">
-                    <div class="vital-icon hp-icon">❤️</div>
-                    <div class="vital-info">
-                        <div class="vital-label">HP (Здоров'я) <span id="hp-val">100 / 100</span></div>
-                        <div class="bar-bg"><div class="bar-fill hp" id="hp-bar" style="width: 100%;"></div></div>
-                    </div>
-                </div>
-
-                <div class="vital-item">
-                    <div class="vital-icon madness-icon">🧠</div>
-                    <div class="vital-info">
-                        <div class="vital-label">Божевілля <span id="madness-val">0 / 100</span></div>
-                        <div class="bar-bg"><div class="bar-fill madness" id="madness-bar" style="width: 0%;"></div></div>
-                    </div>
-                </div>
-
-                <div class="vital-item">
-                    <div class="vital-icon energy-icon">⚡</div>
-                    <div class="vital-info">
-                        <div class="vital-label">Витривалість <span id="energy-val">100 / 100</span></div>
-                        <div class="bar-bg"><div class="bar-fill energy" id="energy-bar" style="width: 100%;"></div></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Блок валюти -->
-            <div class="currency-group">
-                <div class="currency-title">Гроші та Ресурси</div>
-                <div class="currency-item">
-                    <span>🪙 Срібло:</span>
-                    <strong id="silver-val">0</strong>
-                </div>
-                <div class="currency-item">
-                    <span>💊 Пігулки:</span>
-                    <strong id="pills-val">0</strong>
-                </div>
-                <div class="currency-item">
-                    <span>💵 Бакси:</span>
-                    <strong id="bucks-val">0</strong>
-                </div>
-
-                <button class="bank-btn" onclick="openBank()">🏦 Банк (Донат)</button>
-            </div>
-        </aside>
-
-        <!-- Центр: Персонаж (Paper Doll System) -->
-        <section class="center-stage">
-            <div class="character-preview" onclick="tapCharacter()">
-                <div id="character-container" class="character-container">
-                    <!-- Шари персонажа (накладаються один на один) -->
-                    <img id="layer-body" class="char-layer" src="base_male.png" alt="Тіло">
-                    <img id="layer-face" class="char-layer hidden" src="" alt="Обличчя">
-                    <img id="layer-hair" class="char-layer hidden" src="" alt="Зачіска">
-                    <img id="layer-clothes" class="char-layer hidden" src="" alt="Одяг">
-                </div>
-            </div>
-
-            <!-- Кнопка перемикання статі під персонажем -->
-            <div class="gender-switch-bar">
-                <button class="gender-btn active" id="btn-gender-male" onclick="setGender('male')">👨 Чоловік</button>
-                <button class="gender-btn" id="btn-gender-female" onclick="setGender('female')">👩 Жінка</button>
-            </div>
-
-            <button class="btn-main-action" onclick="tapCharacter()">🔍 Дослідити палату (+EXP)</button>
-        </section>
-
-        <!-- Права панель -->
-        <aside class="right-panel">
-            <div class="location-card">
-                <div class="loc-title">Поточна локація</div>
-                <div class="loc-name">Палата #404</div>
-                <div class="loc-desc">Стіни шепочуть тобі...</div>
-            </div>
-
-            <div class="side-menu">
-                <button class="menu-btn" onclick="restInBed()">🛏️ Відпочинок (+⚡ / -🧠)</button>
-            </div>
-        </aside>
-
-    </main>
 
     <!-- Модальне вікно Налаштувань -->
     <div id="settings-modal" class="modal center-modal hidden">
@@ -192,13 +191,13 @@
     <div id="custom-modal" class="modal side-modal hidden">
         <div class="modal-content side-content">
             <div class="modal-header">
-                <h3>👕 Кастомізація</h3>
+                <h3>👕 Гардероб та Персонаж</h3>
                 <button class="btn-close-mini" onclick="closeCustomization()">✕</button>
             </div>
 
-            <!-- Вкладки кастомізації на майбутнє -->
+            <!-- Вкладки гардеробу -->
             <div class="inventory-filters">
-                <button class="filter-btn active" onclick="setWardrobeTab('body', this)">🧍 Тіло</button>
+                <button class="filter-btn active" onclick="setWardrobeTab('body', this)">🧍 Персонаж</button>
                 <button class="filter-btn" onclick="setWardrobeTab('hair', this)">💇 Зачіска</button>
                 <button class="filter-btn" onclick="setWardrobeTab('face', this)">👁️ Обличчя</button>
                 <button class="filter-btn" onclick="setWardrobeTab('clothes', this)">👔 Одяг</button>
@@ -208,6 +207,6 @@
         </div>
     </div>
 
-    <script src="script.js?v=13000"></script>
+    <script src="script.js?v=14000"></script>
 </body>
 </html>
