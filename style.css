@@ -64,22 +64,25 @@ body {
     gap: 1cqw;
 }
 
-/* ЛІВИЙ БЛОК: Ремінь із пряжкою зліва та шкірою під текст */
+/* ЛІВИЙ БЛОК: Ремінь з фіксованими пропорціями без спотворень */
 .user-profile-badge {
     position: relative;
     display: flex;
     align-items: center;
-    gap: 1cqw;
+    gap: 1.2cqw;
     cursor: pointer;
     
-    /* Розтягуємо ремінь як фон всього блоку, вирівнюючи зліва */
+    /* Фіксуємо висоту ременя за висотою контейнера, а ширину залишаємо природною або повторюваною */
     background: url('belt_hud.png') no-repeat left center;
-    background-size: 100% 100%;
+    background-size: auto 100% !important; /* Рівна висота без сплющування */
     
-    padding: 0.5cqh 2cqw 0.5cqh 1.2cqw;
+    padding: 0.5cqh 2cqw 0.5cqh 3cqw; /* Відступ зліва для бляшки */
     border-radius: 6px;
     height: 100%;
-    min-width: 22cqw;
+    
+    /* Запобігаємо розтягуванню картинки на весь екран, обмежуємо по контенту */
+    width: fit-content;
+    min-width: 25cqw;
 }
 
 /* Аватарка сідає точно у ліву зону (пряжку) */
