@@ -75,6 +75,42 @@ let inventory = loadSaveData('palata404_inventory', [
 let currentCategory = 'all';
 let currentWardrobeTab = 'body';
 
+// === Структура Даних Поверхів та Мапи ===
+const gameFloorsData = [
+    {
+        id: 10,
+        title: "10 Поверх — Блок Ізоляторів",
+        unlocked: true,
+        mapImage: "КАРТА 10 поверх.png", // Вкажи точну назву свого PNG/JPG файлу
+        nodes: [
+            { id: "sec1_collector", title: "⚙️ Збирач #1", x: 40, y: 30, type: "collector" },
+            { id: "sec2_grind", title: "🧱 Завал (Розчистити)", x: 58, y: 45, type: "grind" },
+            { id: "sec3_boss", title: "👹 Бос Поверху", x: 82, y: 28, type: "boss", locked: true }
+        ]
+    },
+    {
+        id: 9,
+        title: "9 Поверх — Психіатрична Терапія",
+        unlocked: false,
+        mapImage: "",
+        nodes: []
+    },
+    {
+        id: 8,
+        title: "8 Поверх — Процедурний Блок",
+        unlocked: false,
+        mapImage: "",
+        nodes: []
+    },
+    {
+        id: 7,
+        title: "7 Поверх — Загальна Терапія",
+        unlocked: false,
+        mapImage: "",
+        nodes: []
+    }
+];
+
 function loadSaveData(key, fallback) {
     const saved = localStorage.getItem(key);
     if (!saved) return fallback;
@@ -196,6 +232,103 @@ function restInBed() {
     stats.energy = Math.min(stats.maxEnergy, stats.energy + 35);
     stats.madness = Math.max(0, stats.madness - 15);
     updateUI();
+}
+
+// === ЛОГІКА МОДАЛЬНОГО ВІКНА МАРШРУТІВ ТА КАРТИ ===
+function toggleMapModal(show) {
+    const modal = document.getElementById('map-modal');
+    if (show) {
+        modal.classList.remove('hidden');
+        showFloorsList();
+    } else {
+        modal.classList.add('hidden');
+    }
+}
+
+function showFloorsList() {
+    document.getElementById('map-floors-view').classList.remove('hidden');
+    document.getElementById('map-single-floor-view').classList.add('hidden');
+    document.getElementById('map-title-text').innerText = "СПИСОК ПОВЕРХІВ";
+
+    const container = document.getElementById('floors-list-container');
+    container.innerHTML = '';
+
+    gameFloorsData.forEach(floor => {
+        const item = document.createElement('div');
+        item.className = `floor-card-item ${floor.unlocked ? '' : 'locked-floor'}`;
+        item.innerHTML = `
+            <div>
+                <strong>${floor.title}</strong>
+                <div style="font-size: 11px; color: #8c7a6b; margin-top: 2px;">
+                    ${floor.unlocked ? 'План евакуації знайдено' : '🔒 План відсутній (Знайдіть ключ на поверху вище)'}
+                </div>
+            </div>
+            <span>${floor.unlocked ? '🗺️ Відкрити' : '🔒'}</span>
+        `;
+        
+        if (floor.unlocked) {
+            item.onclick = () => openFloorMap(floor.id);
+        }
+        container.appendChild(item);
+    });
+}
+
+function openFloorMap(floorId) {
+    const floor = gameFloorsData.find(f => f.id === floorId);
+    if (!floor || !floor.unlocked) return;
+
+    document.getElementById('map-floors-view').classList.add('hidden');
+    document.getElementById('map-single-floor-view').classList.remove('hidden');
+    document.getElementById('map-title-text').innerText = floor.title;
+
+    document.getElementById('blueprint-img').src = floor.mapImage;
+
+    const nodesLayer = document.getElementById('blueprint-nodes-container');
+    nodesLayer.innerHTML = '';
+
+    floor.nodes.forEach(node => {
+        const btn = document.createElement('button');
+        btn.className = `map-node-pin ${node.type === 'boss' ? 'node-boss' : ''} ${node.locked ? 'node-locked' : ''}`;
+        btn.innerText = node.title;
+        btn.style.left = `${node.x}%`;
+        btn.style.top = `${node.y}%`;
+
+        btn.onclick = () => {
+            if (node.locked) {
+                alert("Цей сектор заблоковано! Спочатку розчистіть завал у коридорі.");
+            } else {
+                handleNodeClick(node, floor);
+            }
+        };
+
+        nodesLayer.appendChild(btn);
+    });
+}
+
+function handleNodeClick(node, floor) {
+    if (node.type === 'collector') {
+        alert("⚙️ Автономний Збирач #1 працює!\nЗібрано луту: +15 Срібла, +1 Пігулка.");
+        stats.silver += 15;
+        stats.pills += 1;
+        updateUI();
+    } else if (node.type === 'grind') {
+        if (stats.energy >= 10) {
+            stats.energy -= 10;
+            alert("⛏️ Ви розчистили частину завалу! Отримано 30 EXP та знайдено Ключ від Блоку Боса!");
+            addExperience(30);
+            
+            // Розблоковуємо Боса
+            const bossNode = floor.nodes.find(n => n.type === 'boss');
+            if (bossNode) bossNode.locked = false;
+            
+            openFloorMap(floor.id); // Перемальовуємо карти
+            updateUI();
+        } else {
+            alert("Недостатньо витривалості для розчищення завалу!");
+        }
+    } else if (node.type === 'boss') {
+        alert("⚔️ Бій з Босом 10-го Поверху!\nЦей функціонал розробляється для рейдового режиму.");
+    }
 }
 
 function openSettings() {

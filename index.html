@@ -39,7 +39,7 @@
             <nav class="center-nav">
                 <button class="nav-icon-btn" title="Інвентар" onclick="openInventory()">🎒</button>
                 <button class="nav-icon-btn" title="Гардероб" onclick="openCustomization()">👕</button>
-                <button class="nav-icon-btn" title="Карта" onclick="alert('Карта в розробці')">🗺️</button>
+                <button class="nav-icon-btn" title="Карта" onclick="toggleMapModal(true)">🗺️</button>
                 <button class="nav-icon-btn" title="Завдання" onclick="alert('Завдання в розробці')">📋</button>
                 <button class="nav-icon-btn" title="Рейд" onclick="alert('Рейди в розробці')">⚔️</button>
                 <button class="nav-icon-btn" title="Друзі" onclick="alert('Друзі в розробці')">👥</button>
@@ -130,6 +130,7 @@
                     <!-- Кнопку дослідження перенесено сюди -->
                     <button class="btn-main-action" onclick="tapCharacter()">🔍 Дослідити палату (+EXP)</button>
                     <button class="menu-btn" onclick="restInBed()">🛏️ Відпочинок (+⚡ / -🧠)</button>
+                    <button class="menu-btn" onclick="toggleMapModal(true)">🗺️ План евакуації</button>
                 </div>
             </aside>
 
@@ -207,6 +208,39 @@
         </div>
     </div>
 
+    <!-- МОДАЛЬНЕ ВІКНО: КАРТА ТА ПЛАНШЕТ МАРШРУТІВ -->
+    <div id="map-modal" class="map-modal-overlay hidden">
+        <div class="map-clipboard-body">
+            
+            <!-- Хедер з кнопкою закриття -->
+            <div class="map-clipboard-header">
+                <span id="map-title-text">СПИСОК ПОВЕРХІВ</span>
+                <button class="btn-close-map" onclick="toggleMapModal(false)">✕</button>
+            </div>
+
+            <!-- ЕКРАН 1: Список поверхів -->
+            <div id="map-floors-view" class="map-view-content">
+                <p class="map-subtitle">Оберіть план евакуації для проходження:</p>
+                <div id="floors-list-container" class="floors-grid">
+                    <!-- Поверхи будуть рендеритись динамічно через JS -->
+                </div>
+            </div>
+
+            <!-- ЕКРАН 2: План конкретного поверху -->
+            <div id="map-single-floor-view" class="map-view-content hidden">
+                <button class="btn-back-floors" onclick="showFloorsList()">← Назад до списку поверхів</button>
+                
+                <div class="blueprint-wrapper">
+                    <!-- Фон пожежного плану -->
+                    <img id="blueprint-img" src="" alt="План евакуації" class="blueprint-img">
+                    
+                    <!-- Контейнер для інтерактивних клікабельних вузлів поверх карти -->
+                    <div id="blueprint-nodes-container" class="blueprint-nodes-layer"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
     <script src="script.js?v=14000"></script>
 </body>
-</html>
