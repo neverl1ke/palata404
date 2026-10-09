@@ -365,12 +365,11 @@ body {
 /* Точне позиціонування шару обличчя відносно тіла */
 #layer-face {
     position: absolute !important;
-    top: 14% !important;
-    height: 33% !important;
+    top: 0% !important;
+    height: 25% !important;
     width: auto !important;
     z-index: 3 !important;
 }
-
 .btn-main-action {
     background: linear-gradient(135deg, #594333, #8c684d);
     color: #fff8e7;
