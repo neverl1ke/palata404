@@ -689,3 +689,67 @@ body {
     box-shadow: none; 
     cursor: not-allowed; 
 }
+/* Стилі для модального вікна друзів */
+.friends-body {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    font-size: 13px;
+}
+
+#friends-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 6px;
+    max-height: 150px;
+    overflow-y: auto;
+    padding-right: 2px;
+}
+
+#friend-input {
+    flex: 1;
+    background: #1a1410;
+    border: 1px solid #4a382c;
+    color: #d9c59a;
+    padding: 6px 10px;
+    border-radius: 4px;
+    outline: none;
+    font-size: 13px;
+}
+
+#friend-input:focus {
+    border-color: #8c684d;
+}
+/* Стилі для модального вікна друзів */
+.friends-body {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    font-size: 13px;
+}
+
+#friends-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 6px;
+    max-height: 150px;
+    overflow-y: auto;
+    padding-right: 2px;
+}
+
+#friend-input {
+    flex: 1;
+    background: #1a1410;
+    border: 1px solid #4a382c;
+    color: #d9c59a;
+    padding: 6px 10px;
+    border-radius: 4px;
+    outline: none;
+    font-size: 13px;
+}
+
+#friend-input:focus {
+    border-color: #8c684d;
+}

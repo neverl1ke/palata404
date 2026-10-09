@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Палата 404</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <link rel="stylesheet" href="style.css?v=36000">
+    <link rel="stylesheet" href="style.css?v=39000">
 </head>
 <body>
 
@@ -42,7 +42,7 @@
                 <button class="nav-icon-btn" title="Карта" onclick="toggleMapModal(true)">🗺️</button>
                 <button class="nav-icon-btn" title="Завдання" onclick="alert('Завдання в розробці')">📋</button>
                 <button class="nav-icon-btn" title="Рейд" onclick="alert('Рейди в розробці')">⚔️</button>
-                <button class="nav-icon-btn" title="Друзі" onclick="alert('Друзі в розробці')">👥</button>
+                <button class="nav-icon-btn" title="Друзі" onclick="openFriends()">👥</button>
             </nav>
 
             <!-- Правий блок: Системні кнопки -->
@@ -85,7 +85,7 @@
                     </div>
                 </div>
 
-                <!-- Блок валюти -->
+                <!-- Блок валюти та характеристик -->
                 <div class="currency-group">
                     <div class="currency-title">Гроші та Ресурси</div>
                     <div class="currency-item">
@@ -99,6 +99,16 @@
                     <div class="currency-item">
                         <span>💵 Бакси:</span>
                         <strong id="bucks-val">0</strong>
+                    </div>
+
+                    <div class="currency-title" style="margin-top: 6px;">Бойові стати</div>
+                    <div class="currency-item">
+                        <span>⚔️ Урон:</span>
+                        <strong id="damage-val">10</strong>
+                    </div>
+                    <div class="currency-item">
+                        <span>🛡️ Броня:</span>
+                        <strong id="armor-val">0</strong>
                     </div>
 
                     <button class="bank-btn" onclick="openBank()">🏦 Банк (Донат)</button>
@@ -173,7 +183,6 @@
                 <button class="btn-close-mini" onclick="closeInventory()">✕</button>
             </div>
             
-            <!-- Вертикальна панель фільтрів ліворуч -->
             <div class="inventory-layout-wrapper">
                 <div class="inventory-filters-column">
                     <button class="filter-btn active" title="Всі" onclick="setCategoryFilter('all', this)">📦</button>
@@ -189,6 +198,20 @@
         </div>
     </div>
 
+    <!-- Модальне вікно Інформації про предмет -->
+    <div id="item-info-modal" class="modal center-modal hidden">
+        <div class="modal-content" style="width: min(320px, 90vw);">
+            <div class="modal-header">
+                <h3 id="item-info-title">Предмет</h3>
+                <button class="btn-close-mini" onclick="closeItemInfo()">✕</button>
+            </div>
+            <div id="item-info-body" style="display: flex; flex-direction: column; gap: 10px; font-size: 13px; margin-bottom: 15px;">
+                <!-- Динамічний опис характеристик предмета -->
+            </div>
+            <button id="item-action-btn" class="btn-main-action" style="width: 100%;">Використати / Надіти</button>
+        </div>
+    </div>
+
     <!-- Модальне вікно Гардеробу -->
     <div id="custom-modal" class="modal side-modal hidden">
         <div class="modal-content side-content">
@@ -197,7 +220,6 @@
                 <button class="btn-close-mini" onclick="closeCustomization()">✕</button>
             </div>
 
-            <!-- Вертикальна панель гардеробу ліворуч -->
             <div class="inventory-layout-wrapper">
                 <div class="inventory-filters-column">
                     <button class="filter-btn active" title="Персонаж" onclick="setWardrobeTab('body', this)">🧍</button>
@@ -211,7 +233,33 @@
         </div>
     </div>
 
-    <!-- МОДАЛЬНЕ ВІКНО: КАРТА ТА ПЛАНШЕТ МАРШРУТІВ -->
+    <!-- Модальне вікно: Друзі -->
+    <div id="friends-modal" class="modal center-modal hidden">
+        <div class="modal-content" style="width: min(400px, 92vw);">
+            <div class="modal-header">
+                <h3>👥 Система друзів</h3>
+                <button class="btn-close-mini" onclick="closeFriends()">✕</button>
+            </div>
+            <div class="friends-body">
+                <div style="background: rgba(0,0,0,0.3); padding: 8px; border-radius: 6px; border: 1px solid #3d2d22;">
+                    <span style="color: #a3927d;">Ваш ігровий ідентифікатор:</span><br>
+                    <strong id="my-unique-id" style="color: #f39c12; font-size: 14px; user-select: text;">Завантаження...</strong>
+                </div>
+
+                <div style="display: flex; gap: 6px;">
+                    <input type="text" id="friend-input" placeholder="Введіть @username або ID...">
+                    <button class="btn-outfit" onclick="addFriend()">Додати</button>
+                </div>
+
+                <div style="border-top: 1px solid #3d2d22; padding-top: 8px;">
+                    <span style="color: #a3927d; font-weight: bold;">Список друзів:</span>
+                    <div id="friends-list"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальне вікно: Карта та планшет -->
     <div id="map-modal" class="map-modal-overlay hidden">
         <div class="map-clipboard-body">
             
@@ -220,13 +268,11 @@
                 <button class="btn-close-map" onclick="toggleMapModal(false)">✕</button>
             </div>
 
-            <!-- ЕКРАН 1: Список поверхів -->
             <div id="map-floors-view" class="map-view-content">
                 <p class="map-subtitle">Оберіть план евакуації для проходження:</p>
                 <div id="floors-list-container" class="floors-grid"></div>
             </div>
 
-            <!-- ЕКРАН 2: План конкретного поверху -->
             <div id="map-single-floor-view" class="map-view-content hidden">
                 <button class="btn-back-floors" onclick="showFloorsList()">← Назад до списку поверхів</button>
                 
@@ -241,6 +287,6 @@
         </div>
     </div>
 
-    <script src="script.js?v=36000"></script>
+    <script src="script.js?v=39000"></script>
 </body>
 </html>

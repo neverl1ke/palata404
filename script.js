@@ -41,6 +41,107 @@ function changeNickname() {
     }
 }
 
+// === Система ідентифікації та Друзів (Telegram + Web) ===
+function getPlayerUniqueId() {
+    if (tg && tg.initDataUnsafe && tg.initDataUnsafe.user) {
+        const user = tg.initDataUnsafe.user;
+        return {
+            type: 'telegram',
+            id: user.id.toString(),
+            name: user.username ? `@${user.username}` : (user.first_name || "Гравець")
+        };
+    }
+
+    let webId = localStorage.getItem('palata404_web_id');
+    if (!webId) {
+        webId = 'WEB-' + Math.floor(100000 + Math.random() * 900000);
+        localStorage.setItem('palata404_web_id', webId);
+    }
+    
+    return {
+        type: 'browser',
+        id: webId,
+        name: playerName
+    };
+}
+
+let friendsList = loadSaveData('palata404_friends', []);
+
+function openFriends() {
+    closeInventory();
+    closeCustomization();
+    closeSettings();
+    
+    const playerInfo = getPlayerUniqueId();
+    document.getElementById('my-unique-id').textContent = playerInfo.type === 'telegram' 
+        ? `Telegram: ${playerInfo.name} (ID: ${playerInfo.id})` 
+        : `Браузер ID: ${playerInfo.id}`;
+
+    renderFriendsList();
+    document.getElementById('friends-modal').classList.remove('hidden');
+}
+
+function closeFriends() {
+    document.getElementById('friends-modal').classList.add('hidden');
+}
+
+function addFriend() {
+    const input = document.getElementById('friend-input');
+    const val = input.value.trim();
+    
+    if (!val) {
+        alert("Введіть коректний ID або юзернейм!");
+        return;
+    }
+
+    const currentPlayer = getPlayerUniqueId();
+    if (val === currentPlayer.id || val === currentPlayer.name) {
+        alert("Ви не можете додати самого себе!");
+        return;
+    }
+
+    if (friendsList.some(f => f.identifier === val)) {
+        alert("Цей гравець уже є у вашому списку друзів!");
+        return;
+    }
+
+    friendsList.push({ identifier: val, status: 'В мережі' });
+    localStorage.setItem('palata404_friends', JSON.stringify(friendsList));
+    
+    input.value = '';
+    renderFriendsList();
+    alert("Друга успішно додано!");
+}
+
+function renderFriendsList() {
+    const container = document.getElementById('friends-list');
+    container.innerHTML = '';
+
+    if (friendsList.length === 0) {
+        container.innerHTML = `<div style="color: #7f8c8d; text-align: center; padding: 10px;">Список друзів порожній</div>`;
+        return;
+    }
+
+    friendsList.forEach((friend, index) => {
+        const item = document.createElement('div');
+        item.style.cssText = "display: flex; justify-content: space-between; align-items: center; background: #261f1a; padding: 6px 10px; border-radius: 4px; border: 1px solid #4a382c;";
+        item.innerHTML = `
+            <div>
+                <strong style="color: #fff8e7;">${friend.identifier}</strong>
+                <div style="font-size: 10px; color: #2ecc71;">● ${friend.status}</div>
+            </div>
+            <button onclick="removeFriend(${index})" style="background: none; border: none; color: #e74c3c; cursor: pointer; font-size: 14px;" title="Видалити">✕</button>
+        `;
+        container.appendChild(item);
+    });
+}
+
+function removeFriend(index) {
+    friendsList.splice(index, 1);
+    localStorage.setItem('palata404_friends', JSON.stringify(friendsList));
+    renderFriendsList();
+}
+
 // === Дані / Статистика / Персонаж ===
 const DEFAULT_STATS = {
     silver: 150,
@@ -53,17 +154,18 @@ const DEFAULT_STATS = {
     maxEnergy: 100,
     level: 1,
     exp: 0,
-    nextLvlExp: 100
+    nextLvlExp: 100,
+    damage: 10,
+    armor: 0
 };
 
 let stats = loadSaveData('palata404_stats', DEFAULT_STATS);
 
 let gender = localStorage.getItem('palata404_gender') || 'male'; 
 let currentHair = localStorage.getItem('palata404_hair') || '';
-let currentFace = localStorage.getItem('palata404_face') || 'face_1.png'; // За замовчуванням перше обличчя
+let currentFace = localStorage.getItem('palata404_face') || ''; 
 let currentClothes = localStorage.getItem('palata404_clothes') || '';
 
-// Список 6 варіантів облич (назви файлів підстав під свої, наприклад face_1.png ... face_6.png)
 const facesData = [
     { id: 'face_1.png', name: 'Обличчя #1 (Голений)' },
     { id: 'face_2.png', name: 'Обличчя #2 (Коротка стрижка)' },
@@ -74,17 +176,17 @@ const facesData = [
 ];
 
 let inventory = loadSaveData('palata404_inventory', [
-    { name: 'ПМ', icon: '🔫', count: 1, category: 'weapon' },
-    { name: 'Тактичний шолом', icon: '🪖', count: 1, category: 'helmet' },
-    { name: 'Бронежилет БР-1', icon: '🛡️', count: 1, category: 'armor' },
-    { name: 'Приціл RedDot', icon: '🧩', count: 1, category: 'mod' },
-    { name: 'Аптечка', icon: '🧪', count: 3, category: 'meds' }
+    { name: 'ПМ', icon: '🔫', count: 1, category: 'weapon', damageBonus: 15, desc: 'Стандартний пістолет Макарова. Надійний у тісних коридорах лікарні.' },
+    { name: 'Тактичний шолом', icon: '🪖', count: 1, category: 'helmet', armorBonus: 10, desc: 'Армійський шолом. Добре захищає від тупих предметів.' },
+    { name: 'Бронежилет БР-1', icon: '🛡️', count: 1, category: 'armor', armorBonus: 25, desc: 'Легкий бронежилет прихованого носіння.' },
+    { name: 'Приціл RedDot', icon: '🧩', count: 1, category: 'mod', desc: 'Коліматорний приціл для точної стрільби.' },
+    { name: 'Аптечка', icon: '🧪', count: 3, category: 'meds', healBonus: 50, desc: 'Військовий набір першої допомоги. Відновлює 50 HP.' }
 ]);
 
 let currentCategory = 'all';
 let currentWardrobeTab = 'body';
+let selectedItemForAction = null;
 
-// === Структура Даних Поверхів ===
 const gameFloorsData = [
     {
         id: 10,
@@ -173,12 +275,7 @@ function updateCharacterLayers() {
     const hairImg = document.getElementById('layer-hair');
     const clothesImg = document.getElementById('layer-clothes');
 
-    if (currentFace) {
-        faceImg.src = currentFace;
-        faceImg.classList.remove('hidden');
-    } else {
-        faceImg.classList.add('hidden');
-    }
+    faceImg.classList.add('hidden');
 
     if (currentHair) {
         hairImg.src = currentHair;
@@ -207,6 +304,9 @@ function updateUI() {
     document.getElementById('silver-val').textContent = stats.silver || 0;
     document.getElementById('pills-val').textContent = stats.pills || 0;
     document.getElementById('bucks-val').textContent = stats.bucks || 0;
+
+    document.getElementById('damage-val').textContent = stats.damage || 10;
+    document.getElementById('armor-val').textContent = stats.armor || 0;
 
     document.getElementById('player-lvl').textContent = stats.level;
     document.getElementById('player-rank').textContent = getPlayerRank(stats.level);
@@ -355,6 +455,7 @@ function closeBank() {
 
 function openInventory() {
     closeCustomization();
+    closeFriends();
     renderMinecraftStash();
     document.getElementById('inventory-modal').classList.remove('hidden');
 }
@@ -389,14 +490,78 @@ function renderMinecraftStash() {
                 <span class="item-icon">${item.icon}</span>
                 ${item.count > 1 ? `<span class="item-count">${item.count}</span>` : ''}
             `;
-            slot.onclick = () => alert(`Предмет: ${item.name}`);
+            slot.onclick = () => openItemInfo(item);
         }
         container.appendChild(slot);
     }
 }
 
+// === Система перегляду та використання предметів ===
+function openItemInfo(item) {
+    selectedItemForAction = item;
+    document.getElementById('item-info-title').textContent = `${item.icon} ${item.name}`;
+    
+    let bodyHtml = `<p style="color: #a3927d;">${item.desc || 'Немає опису предмета.'}</p>`;
+    
+    if (item.category === 'weapon') {
+        bodyHtml += `<div style="color: #e74c3c; margin-top: 5px;"><strong>⚔️ Бонус до урону:</strong> +${item.damageBonus || 0}</div>`;
+        document.getElementById('item-action-btn').textContent = "Озброїтися";
+    } else if (item.category === 'armor' || item.category === 'helmet') {
+        bodyHtml += `<div style="color: #3498db; margin-top: 5px;"><strong>🛡️ Бонус до броні:</strong> +${item.armorBonus || 0}</div>`;
+        document.getElementById('item-action-btn').textContent = "Надіти спорядження";
+    } else if (item.category === 'meds') {
+        bodyHtml += `<div style="color: #2ecc71; margin-top: 5px;"><strong>❤️ Відновлення HP:</strong> +${item.healBonus || 0}</div>`;
+        document.getElementById('item-action-btn').textContent = "Використати";
+    } else {
+        document.getElementById('item-action-btn').textContent = "Закрити";
+    }
+
+    document.getElementById('item-info-body').innerHTML = bodyHtml;
+    document.getElementById('item-info-modal').classList.remove('hidden');
+}
+
+function closeItemInfo() {
+    document.getElementById('item-info-modal').classList.add('hidden');
+    selectedItemForAction = null;
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const actionBtn = document.getElementById('item-action-btn');
+    if (actionBtn) {
+        actionBtn.onclick = () => {
+            if (!selectedItemForAction) {
+                closeItemInfo();
+                return;
+            }
+            
+            if (selectedItemForAction.category === 'weapon') {
+                stats.damage = 10 + (selectedItemForAction.damageBonus || 0);
+                alert(`Ви озброїлись: ${selectedItemForAction.name}! Урон тепер: ${stats.damage}`);
+            } else if (selectedItemForAction.category === 'armor' || selectedItemForAction.category === 'helmet') {
+                stats.armor += (selectedItemForAction.armorBonus || 0);
+                alert(`Ви наділи: ${selectedItemForAction.name}! Загальна броня: ${stats.armor}`);
+            } else if (selectedItemForAction.category === 'meds') {
+                if (selectedItemForAction.count > 0) {
+                    selectedItemForAction.count -= 1;
+                    stats.hp = Math.min(stats.maxHp, stats.hp + (selectedItemForAction.healBonus || 50));
+                    if (selectedItemForAction.count <= 0) {
+                        inventory = inventory.filter(i => i !== selectedItemForAction);
+                    }
+                    alert("Ви використали аптечку. Здоров'я відновлено!");
+                }
+            }
+
+            updateUI();
+            closeItemInfo();
+            renderMinecraftStash();
+        };
+    }
+    updateUI();
+});
+
 function openCustomization() {
     closeInventory();
+    closeFriends();
     renderWardrobe();
     document.getElementById('custom-modal').classList.remove('hidden');
 }
@@ -445,7 +610,3 @@ function renderWardrobe() {
         container.innerHTML = `<p style="font-size:12px; color:#a3927d; text-align:center; padding: 20px 0;">Розділ [${currentWardrobeTab.toUpperCase()}] буде заповнений пізніше!</p>`;
     }
 }
-
-document.addEventListener('DOMContentLoaded', () => {
-    updateUI();
-    });
