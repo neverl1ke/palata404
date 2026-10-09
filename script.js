@@ -81,7 +81,7 @@ const gameFloorsData = [
         id: 10,
         title: "10 Поверх — Блок Ізоляторів",
         unlocked: true,
-        mapImage: "КАРТА 10 поверх.png", // Вкажи точну назву свого PNG/JPG файлу
+        mapImage: "map_floor_10.png", // Вкажи точну назву свого PNG/JPG файлу
         nodes: [
             { id: "sec1_collector", title: "⚙️ Збирач #1", x: 40, y: 30, type: "collector" },
             { id: "sec2_grind", title: "🧱 Завал (Розчистити)", x: 58, y: 45, type: "grind" },
