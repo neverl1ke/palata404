@@ -47,7 +47,7 @@ body {
 }
 
 /* ------------------------------------------------------------- */
-/* ВЕРХНЯ ПАНЕЛЬ: РЕМІНЬ НА ВСЮ ШИРИНУ ЕКРАНА                   */
+/* ВЕРХНЯ ПАНЕЛЬ: ТОЧНЕ ПІДГАНЯННЯ ЕЛЕМЕНТІВ ПІД ШКІРЯНИЙ РЕМІНЬ   */
 /* ------------------------------------------------------------- */
 
 .top-nav {
@@ -57,109 +57,110 @@ body {
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    height: 10cqh; /* Фіксована пропорційна висота під товщину ременя */
     
-    /* Розтягує шкіряну текстуру від краю до краю */
+    /* Збільшуємо висоту до 13cqh, щоб ремінь був достатньо товстим */
+    height: 13cqh; 
+    
     background: url('belt_hud.png') no-repeat center center;
     background-size: 100% 100% !important;
     
-    padding: 0.4cqh 2cqw 0.4cqh 3.5cqw; /* Внутрішні відступи для зсуву елементів */
+    /* Додаємо 4.8cqw відступу зліва для посадки аватарки прямо у віконце бляшки */
+    padding: 0.2cqh 2cqw 0.2cqh 4.8cqw; 
     border: none !important;
     border-radius: 0;
     gap: 1cqw;
-    filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.9));
+    filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.9));
 }
 
 .user-profile-badge {
     display: flex;
     align-items: center;
-    gap: 0.8cqw;
+    gap: 0.6cqw;
     cursor: pointer;
-    margin-left: 0.5cqw; /* Посадка аватарки у вікно бляшки */
 }
 
-/* Аватарка всередині металевої бляшки */
+/* Компактна аватарка строго під розмір бляшки */
 .avatar-mini {
-    font-size: 1.3cqw;
+    font-size: 1.1cqw;
     background: rgba(10, 8, 6, 0.85);
-    padding: 0.3cqw 0.5cqw;
+    padding: 0.2cqw 0.4cqw;
     border-radius: 4px;
-    border: 1px solid rgba(217, 197, 154, 0.4);
-    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.9);
+    border: 1px solid rgba(217, 197, 154, 0.5);
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.9);
 }
 
 .user-text {
     display: flex;
     flex-direction: column;
-    gap: 2px;
+    gap: 1px;
 }
 
 .user-name-row {
     display: flex;
-    gap: 0.5cqw;
+    gap: 0.4cqw;
     align-items: center;
-    font-size: 0.95cqw;
-    color: #e8d7be;
-    text-shadow: 1px 1px 3px #000;
+    font-size: 0.85cqw;
+    color: #fff8e7;
+    text-shadow: 1px 1px 2px #000, 0 0 4px #000;
 }
 
 .rank-tag {
-    font-size: 0.7cqw;
-    color: #d9c59a;
-    background: rgba(30, 20, 15, 0.85);
-    padding: 1px 5px;
-    border-radius: 4px;
-    border: 1px solid #6b4e39;
+    font-size: 0.65cqw;
+    color: #f39c12;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 1px 4px;
+    border-radius: 3px;
+    border: 1px solid #8c684d;
     font-weight: bold;
 }
 
 .exp-container {
     display: flex;
     flex-direction: column;
-    gap: 2px;
+    gap: 1px;
 }
 
 .exp-label {
-    font-size: 0.7cqw;
+    font-size: 0.65cqw;
     color: #d9c59a;
     display: flex;
     justify-content: space-between;
-    gap: 0.5cqw;
-    text-shadow: 1px 1px 3px #000;
+    gap: 0.4cqw;
+    text-shadow: 1px 1px 2px #000;
 }
 
 .exp-bar-bg {
-    width: 7.5cqw;
-    height: 4px;
-    background: rgba(0, 0, 0, 0.7);
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    width: 6.5cqw;
+    height: 3px;
+    background: rgba(0, 0, 0, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 2px;
     overflow: hidden;
 }
 
 .exp-fill {
     height: 100%;
-    background: #a37a5c;
+    background: #d35400;
     transition: width 0.3s ease;
 }
 
-/* Центральне меню поверх шкіри */
+/* Компактні кнопки центральної навігації */
 .center-nav {
     display: flex;
-    gap: 0.4cqw;
-    background: rgba(15, 10, 8, 0.4);
-    padding: 0.2cqh 0.5cqw;
-    border-radius: 6px;
-    border: 1px solid rgba(140, 104, 77, 0.3);
+    gap: 0.3cqw;
+    background: rgba(0, 0, 0, 0.4);
+    padding: 0.2cqh 0.4cqw;
+    border-radius: 5px;
+    border: 1px solid rgba(140, 104, 77, 0.4);
 }
 
 .nav-icon-btn {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(217, 197, 154, 0.2);
-    font-size: 1.3cqw;
-    width: 2.3cqw;
-    height: 2.3cqw;
-    border-radius: 6px;
+    background: rgba(20, 15, 12, 0.75);
+    border: 1px solid rgba(217, 197, 154, 0.3);
+    font-size: 1.1cqw;
+    width: 1.9cqw;
+    height: 1.9cqw;
+    border-radius: 4px;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -168,33 +169,27 @@ body {
 }
 
 .nav-icon-btn:hover {
-    background: rgba(140, 104, 77, 0.7);
+    background: rgba(140, 104, 77, 0.8);
     border-color: #d9c59a;
 }
 
 .top-actions {
     display: flex;
-    gap: 0.4cqw;
+    gap: 0.3cqw;
 }
 
 .sys-btn {
-    background: rgba(15, 10, 8, 0.4);
-    border: 1px solid rgba(217, 197, 154, 0.2);
-    font-size: 1.1cqw;
-    width: 2cqw;
-    height: 2cqw;
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(217, 197, 154, 0.3);
+    font-size: 1cqw;
+    width: 1.8cqw;
+    height: 1.8cqw;
     cursor: pointer;
     border-radius: 50%;
     color: #d9c59a;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: 0.2s;
-}
-
-.sys-btn:hover {
-    background: rgba(140, 104, 77, 0.6);
-    color: #fff;
 }
 
 /* Основний макет */
