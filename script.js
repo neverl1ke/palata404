@@ -60,8 +60,18 @@ let stats = loadSaveData('palata404_stats', DEFAULT_STATS);
 
 let gender = localStorage.getItem('palata404_gender') || 'male'; 
 let currentHair = localStorage.getItem('palata404_hair') || '';
-let currentFace = localStorage.getItem('palata404_face') || '';
+let currentFace = localStorage.getItem('palata404_face') || 'face_1.png'; // За замовчуванням перше обличчя
 let currentClothes = localStorage.getItem('palata404_clothes') || '';
+
+// Список 6 варіантів облич (назви файлів підстав під свої, наприклад face_1.png ... face_6.png)
+const facesData = [
+    { id: 'face_1.png', name: 'Обличчя #1 (Голений)' },
+    { id: 'face_2.png', name: 'Обличчя #2 (Коротка стрижка)' },
+    { id: 'face_3.png', name: 'Обличчя #3 (Середнє волосся)' },
+    { id: 'face_4.png', name: 'Обличчя #4 (Довге волосся)' },
+    { id: 'face_5.png', name: 'Обличчя #5 (Андеркат)' },
+    { id: 'face_6.png', name: 'Обличчя #6 (Лисий суворий)' }
+];
 
 let inventory = loadSaveData('palata404_inventory', [
     { name: 'ПМ', icon: '🔫', count: 1, category: 'weapon' },
@@ -142,17 +152,22 @@ function addExperience(amount) {
 
 function setGender(selectedGender) {
     gender = selectedGender;
-    
+    saveGameProgress();
+    updateCharacterLayers();
+}
+
+function setFace(faceFileName) {
+    currentFace = faceFileName;
+    saveGameProgress();
+    updateCharacterLayers();
+    renderWardrobe();
+}
+
+function updateCharacterLayers() {
     const bodyImg = document.getElementById('layer-body');
     if (bodyImg) {
         bodyImg.src = gender === 'female' ? 'base_female.png' : 'base_male.png';
     }
-
-    saveGameProgress();
-}
-
-function updateCharacterLayers() {
-    setGender(gender);
 
     const faceImg = document.getElementById('layer-face');
     const hairImg = document.getElementById('layer-hair');
@@ -412,11 +427,25 @@ function renderWardrobe() {
                 <button class="btn-outfit" onclick="setGender('female'); renderWardrobe();">Обрати</button>
             </div>
         `;
+    } else if (currentWardrobeTab === 'face') {
+        facesData.forEach(face => {
+            const isActive = currentFace === face.id;
+            const card = document.createElement('div');
+            card.className = `outfit-card ${isActive ? 'active' : ''}`;
+            card.innerHTML = `
+                <div style="display:flex; align-items:center; gap:8px;">
+                    <img src="${face.id}" style="width:32px; height:32px; object-fit:cover; border-radius:4px; border:1px solid #3d2d22;" alt="Face">
+                    <span>${face.name}</span>
+                </div>
+                <button class="btn-outfit" onclick="setFace('${face.id}')">${isActive ? 'Обрано' : 'Обрати'}</button>
+            `;
+            container.appendChild(card);
+        });
     } else {
-        container.innerHTML = `<p style="font-size:12px; color:#a3927d; text-align:center; padding: 20px 0;">Розділ [${currentWardrobeTab.toUpperCase()}] буде заповнений при додаванні нових PNG-елементів!</p>`;
+        container.innerHTML = `<p style="font-size:12px; color:#a3927d; text-align:center; padding: 20px 0;">Розділ [${currentWardrobeTab.toUpperCase()}] буде заповнений пізніше!</p>`;
     }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
     updateUI();
-});
+    });
