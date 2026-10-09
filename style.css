@@ -84,18 +84,25 @@ body {
     min-width: 26cqw;
 }
 
-/* Затемнення під текстом, щоб ремінь був фоном, але текст читався ідеально */
-.user-profile-badge::before {
-    content: '';
-    position: absolute;
-    top: 4px; left: 5.5cqw; right: 4px; bottom: 4px;
-    background: rgba(15, 10, 8, 0.75);
-    border-radius: 4px;
-    z-index: 1;
-    pointer-events: none;
+/* ЛІВИЙ БЛОК: Ремінь із правильною товщиною без викривлень */
+.user-profile-badge {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 1.2cqw;
+    cursor: pointer;
+    
+    /* Використовуємо border-image, щоб розтягувалась лише серединка ременя, а краї (бляшка і хвіст) не деформувалися */
+    border-image: url('belt_hud.png') 10 30 10 30 fill stretch;
+    border-width: 12px 25px;
+    border-style: solid;
+    
+    padding: 0.2cqh 1.5cqw 0.2cqh 1cqw;
+    height: 100%;
+    min-width: 27cqw;
 }
 
-/* Аватарка лягає у ліву частину на бляшку */
+/* Аватарка у бляшці зліва */
 .avatar-mini {
     position: relative;
     z-index: 2;
@@ -107,7 +114,7 @@ body {
     box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.9);
 }
 
-/* Текст поверх затемнення на ремені */
+/* Текст та смужка досвіду на ремені */
 .user-text {
     position: relative;
     z-index: 2;
