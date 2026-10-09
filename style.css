@@ -362,11 +362,11 @@ body {
     display: block !important;
 }
 
-/* Точне позиціонування шару обличчя відносно тіла */
+/* Точне позиціонування шару обличчя поверх тіла */
 #layer-face {
     position: absolute !important;
-    top: 0% !important;
-    height: 25% !important;
+    top: -1.5% !important; /* Підіймаємо в самий верх на макушку */
+    height: 29% !important; /* Трохи збільшуємо, щоб закрити всю голову */
     width: auto !important;
     z-index: 3 !important;
 }
