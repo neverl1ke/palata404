@@ -362,6 +362,15 @@ body {
     display: block !important;
 }
 
+/* Точне позиціонування шару обличчя відносно тіла */
+#layer-face {
+    position: absolute !important;
+    top: 14% !important;
+    height: 33% !important;
+    width: auto !important;
+    z-index: 3 !important;
+}
+
 .btn-main-action {
     background: linear-gradient(135deg, #594333, #8c684d);
     color: #fff8e7;
@@ -591,7 +600,7 @@ body {
     cursor: pointer; transition: 0.2s;
 }
 
-.floor-card-item:hover:not(.locked-floor) {
+.floor-card-item.hover:not(.locked-floor) {
     background: #3d2e24; border-color: #8c684d;
 }
 
