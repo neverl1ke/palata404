@@ -7,7 +7,7 @@
 }
 
 body {
-    background: #000000; /* Чорні смуги навколо гри */
+    background: #000000;
     color: #d1d5db;
     height: 100vh;
     width: 100vw;
@@ -19,7 +19,7 @@ body {
     overflow: hidden;
 }
 
-/* Ігрова сцена: суворо тримає пропорцію 16:9 і дає чорні поля */
+/* Ігрова сцена: суворо тримає пропорцію 16:9 */
 .game-viewport {
     position: relative !important;
     aspect-ratio: 16 / 9 !important;
@@ -27,16 +27,14 @@ body {
     height: calc(100vw * 9 / 16);
     max-height: 100vh;
     max-width: calc(100vh * 16 / 9);
-    
     background: #05070a url('background.jpg') no-repeat center center;
-    background-size: contain !important; /* Картинка ніколи не обрізається */
-    
+    background-size: contain !important;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     padding: 1.5%;
     overflow: hidden !important;
-    container-type: size; /* Увімкнення контексту контейнера */
+    container-type: size;
 }
 
 .game-viewport::before {
@@ -287,10 +285,7 @@ body {
 .loc-name { font-size: 1.1cqw; font-weight: bold; color: #f3f4f6; margin: 2px 0; }
 .loc-desc { font-size: 0.85cqw; color: #9ca3af; }
 
-/* ------------------------------------------------------------- */
-/* ПЕРСОНАЖ: Позиціонування зафіксовано навколо сцени              */
-/* ------------------------------------------------------------- */
-
+/* Персонаж */
 .center-stage {
     position: absolute !important;
     top: 0 !important;
@@ -303,10 +298,10 @@ body {
 
 .character-preview {
     position: absolute !important;
-    bottom: 3.5% !important; /* Фіксує ноги на підлозі кімнати у відсотках від фону */
+    bottom: 3.5% !important;
     left: 50% !important;
     transform: translateX(-50%) !important;
-    height: 70% !important; /* Прив'язує зріст до висоти ІГРОВОЇ СЦЕНИ, а не вікна браузера */
+    height: 70% !important;
     width: auto !important;
     pointer-events: auto;
     display: flex !important;
@@ -331,8 +326,6 @@ body {
     object-fit: contain !important;
     display: block !important;
 }
-
-/* ------------------------------------------------------------- */
 
 .btn-main-action {
     background: #2563eb;
@@ -486,48 +479,58 @@ body {
 }
 
 /* ------------------------------------------------------------- */
-/* СТИЛІ МОДАЛЬНОГО ВІКНА МАРШРУТІВ ТА ПЛАНУ ЕВАКУАЦІЇ            */
+/* ОНОВЛЕНІ СТИЛІ ДЛЯ КАРТИ (ПРИБИРАЮТЬ БІЛИЙ ФОН ТА СКРОЛЛ)     */
 /* ------------------------------------------------------------- */
 
 .map-modal-overlay {
     position: fixed;
     top: 0; left: 0; width: 100vw; height: 100vh;
-    background: rgba(0, 0, 0, 0.85);
+    background: rgba(0, 0, 0, 0.88);
     display: flex; justify-content: center; align-items: center;
     z-index: 1000;
-    backdrop-filter: blur(4px);
+    backdrop-filter: blur(6px);
 }
 
 .map-clipboard-body {
-    width: 90vw; max-width: 950px;
-    height: 85vh; max-height: 650px;
-    background: #1a1512;
-    border: 4px solid #3d2d22;
-    border-radius: 8px;
-    box-shadow: 0 0 30px rgba(0,0,0,0.9);
+    width: 95vw; max-width: 1100px;
+    height: 90vh; max-height: 720px;
+    background: #140f0c;
+    border: 3px solid #3d2d22;
+    border-radius: 10px;
+    box-shadow: 0 0 35px rgba(0, 0, 0, 0.95);
     display: flex; flex-direction: column;
     padding: 15px; color: #d9c59a;
+    overflow: hidden !important; /* ПРИБИРАЄМО ПОВЗУНОК */
 }
 
 .map-clipboard-header {
     display: flex; justify-content: space-between; align-items: center;
     border-bottom: 2px solid #3d2d22; padding-bottom: 8px;
     font-weight: bold; font-size: 18px;
+    flex-shrink: 0;
 }
 
 .btn-close-map {
     background: none; border: none; color: #e74c3c;
-    font-size: 20px; cursor: pointer;
+    font-size: 22px; cursor: pointer;
 }
 
 .map-subtitle {
     font-size: 13px; color: #a3927d; margin-bottom: 12px;
 }
 
-.map-view-content { flex: 1; padding-top: 10px; overflow-y: auto; }
+.map-view-content { 
+    flex: 1; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden !important; /* ПРИБИРАЄМО СКРОЛЛ */
+    padding-top: 5px;
+}
 
 .floors-grid {
-    display: flex; flex-direction: column; gap: 10px;
+    display: flex; flex-direction: column; gap: 10px; width: 100%;
 }
 
 .floor-card-item {
@@ -546,30 +549,55 @@ body {
 }
 
 .btn-back-floors {
+    align-self: flex-start;
     background: #33261d; color: #d9c59a; border: 1px solid #594333;
-    padding: 6px 12px; cursor: pointer; margin-bottom: 10px; border-radius: 4px;
-    font-size: 12px;
+    padding: 6px 12px; cursor: pointer; margin-bottom: 8px; border-radius: 4px;
+    font-size: 12px; flex-shrink: 0;
 }
 
+/* КОНТЕЙНЕР КАРТИ: Прибираємо рамку та підганяємо під розмір */
 .blueprint-wrapper {
-    position: relative; width: 100%; height: auto;
-    border: 2px solid #2b1d14; border-radius: 4px; overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    max-height: calc(85vh - 50px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: transparent !important;
+    border: none !important;
+    overflow: hidden;
 }
 
-.blueprint-img { width: 100%; display: block; }
+/* САМ ПЛАН ЕВАКУАЦІЇ: Прибирає білі кути навколо паперу */
+.blueprint-img { 
+    max-width: 100%; 
+    max-height: 100%; 
+    object-fit: contain; 
+    display: block; 
+    mix-blend-mode: multiply; /* Робить білий фон прозорим */
+    filter: contrast(1.05) brightness(0.95);
+}
 
+/* ШАР З ІКОНКАМИ ТА КНОПКАМИ */
 .blueprint-nodes-layer {
-    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    position: absolute; 
+    top: 0; left: 0; 
+    width: 100%; height: 100%;
+    pointer-events: none;
 }
 
+/* КНОПКИ ПО ВУЗЛАХ */
 .map-node-pin {
     position: absolute; transform: translate(-50%, -50%);
-    background: rgba(28, 21, 18, 0.92); color: #2ecc71;
+    background: rgba(20, 15, 12, 0.92); color: #2ecc71;
     border: 1px solid #2ecc71; padding: 4px 8px; font-size: 11px;
     border-radius: 4px; cursor: pointer; font-weight: bold;
-    box-shadow: 0 0 8px rgba(46, 204, 113, 0.5); transition: 0.2s;
+    box-shadow: 0 0 10px rgba(46, 204, 113, 0.4); transition: 0.2s;
+    pointer-events: auto;
+    white-space: nowrap;
 }
 
-.map-node-pin:hover { transform: translate(-50%, -50%) scale(1.1); background: #2ecc71; color: #000; }
-.map-node-pin.node-boss { color: #e74c3c; border-color: #e74c3c; box-shadow: 0 0 8px rgba(231, 76, 60, 0.5); }
+.map-node-pin:hover { transform: translate(-50%, -50%) scale(1.08); background: #2ecc71; color: #000; }
+.map-node-pin.node-boss { color: #e74c3c; border-color: #e74c3c; box-shadow: 0 0 10px rgba(231, 76, 60, 0.4); }
 .map-node-pin.node-locked { color: #7f8c8d; border-color: #7f8c8d; box-shadow: none; cursor: not-allowed; }
