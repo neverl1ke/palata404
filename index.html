@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Палата 404</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <link rel="stylesheet" href="style.css?v=25000">
+    <link rel="stylesheet" href="style.css?v=30000">
 </head>
 <body>
 
@@ -127,10 +127,8 @@
                 </div>
 
                 <div class="side-menu">
-                    <!-- Кнопку дослідження перенесено сюди -->
                     <button class="btn-main-action" onclick="tapCharacter()">🔍 Дослідити палату (+EXP)</button>
                     <button class="menu-btn" onclick="restInBed()">🛏️ Відпочинок (+⚡ / -🧠)</button>
-                    <button class="menu-btn" onclick="toggleMapModal(true)">🗺️ План евакуації</button>
                 </div>
             </aside>
 
@@ -161,7 +159,7 @@
                 <button class="btn-close-mini" onclick="closeBank()">✕</button>
             </div>
             <div class="bank-body">
-                <p style="font-size:13px; color:#aaa; margin-bottom:15px;">Поповнення баксів та особливих бонусів.</p>
+                <p style="font-size:13px; color:#a3927d; margin-bottom:15px;">Поповнення баксів та особливих бонусів.</p>
                 <button class="btn-main-action" style="width:100%;" onclick="alert('Розділ донату в розробці')">💳 Придбати бакси ($)</button>
             </div>
         </div>
@@ -175,36 +173,41 @@
                 <button class="btn-close-mini" onclick="closeInventory()">✕</button>
             </div>
             
-            <div class="inventory-filters">
-                <button class="filter-btn active" onclick="setCategoryFilter('all', this)">Всі</button>
-                <button class="filter-btn" onclick="setCategoryFilter('weapon', this)">🔫 Зброя</button>
-                <button class="filter-btn" onclick="setCategoryFilter('helmet', this)">🪖 Шолом</button>
-                <button class="filter-btn" onclick="setCategoryFilter('armor', this)">🛡️ Броня</button>
-                <button class="filter-btn" onclick="setCategoryFilter('mod', this)">🧩 Модулі</button>
-                <button class="filter-btn" onclick="setCategoryFilter('meds', this)">🧪 Медикаменти</button>
-            </div>
+            <!-- Вертикальна панель фільтрів ліворуч -->
+            <div class="inventory-layout-wrapper">
+                <div class="inventory-filters-column">
+                    <button class="filter-btn active" title="Всі" onclick="setCategoryFilter('all', this)">📦</button>
+                    <button class="filter-btn" title="Зброя" onclick="setCategoryFilter('weapon', this)">🔫</button>
+                    <button class="filter-btn" title="Шолом" onclick="setCategoryFilter('helmet', this)">🪖</button>
+                    <button class="filter-btn" title="Броня" onclick="setCategoryFilter('armor', this)">🛡️</button>
+                    <button class="filter-btn" title="Модулі" onclick="setCategoryFilter('mod', this)">🧩</button>
+                    <button class="filter-btn" title="Медикаменти" onclick="setCategoryFilter('meds', this)">🧪</button>
+                </div>
 
-            <div id="stash-items" class="minecraft-grid"></div>
+                <div id="stash-items" class="minecraft-grid"></div>
+            </div>
         </div>
     </div>
 
-    <!-- Модальне вікно Гардеробу (Кастомізація) -->
+    <!-- Модальне вікно Гардеробу -->
     <div id="custom-modal" class="modal side-modal hidden">
         <div class="modal-content side-content">
             <div class="modal-header">
-                <h3>👕 Гардероб та Персонаж</h3>
+                <h3>👕 Гардероб</h3>
                 <button class="btn-close-mini" onclick="closeCustomization()">✕</button>
             </div>
 
-            <!-- Вкладки гардеробу -->
-            <div class="inventory-filters">
-                <button class="filter-btn active" onclick="setWardrobeTab('body', this)">🧍 Персонаж</button>
-                <button class="filter-btn" onclick="setWardrobeTab('hair', this)">💇 Зачіска</button>
-                <button class="filter-btn" onclick="setWardrobeTab('face', this)">👁️ Обличчя</button>
-                <button class="filter-btn" onclick="setWardrobeTab('clothes', this)">👔 Одяг</button>
-            </div>
+            <!-- Вертикальна панель гардеробу ліворуч -->
+            <div class="inventory-layout-wrapper">
+                <div class="inventory-filters-column">
+                    <button class="filter-btn active" title="Персонаж" onclick="setWardrobeTab('body', this)">🧍</button>
+                    <button class="filter-btn" title="Зачіска" onclick="setWardrobeTab('hair', this)">💇</button>
+                    <button class="filter-btn" title="Обличчя" onclick="setWardrobeTab('face', this)">👁️</button>
+                    <button class="filter-btn" title="Одяг" onclick="setWardrobeTab('clothes', this)">👔</button>
+                </div>
 
-            <div id="wardrobe-container" class="wardrobe-grid"></div>
+                <div id="wardrobe-container" class="wardrobe-grid"></div>
+            </div>
         </div>
     </div>
 
@@ -212,7 +215,6 @@
     <div id="map-modal" class="map-modal-overlay hidden">
         <div class="map-clipboard-body">
             
-            <!-- Хедер з кнопкою закриття -->
             <div class="map-clipboard-header">
                 <span id="map-title-text">СПИСОК ПОВЕРХІВ</span>
                 <button class="btn-close-map" onclick="toggleMapModal(false)">✕</button>
@@ -221,9 +223,7 @@
             <!-- ЕКРАН 1: Список поверхів -->
             <div id="map-floors-view" class="map-view-content">
                 <p class="map-subtitle">Оберіть план евакуації для проходження:</p>
-                <div id="floors-list-container" class="floors-grid">
-                    <!-- Поверхи будуть рендеритись динамічно через JS -->
-                </div>
+                <div id="floors-list-container" class="floors-grid"></div>
             </div>
 
             <!-- ЕКРАН 2: План конкретного поверху -->
@@ -231,16 +231,16 @@
                 <button class="btn-back-floors" onclick="showFloorsList()">← Назад до списку поверхів</button>
                 
                 <div class="blueprint-wrapper">
-                    <!-- Фон пожежного плану -->
-                    <img id="blueprint-img" src="" alt="План евакуації" class="blueprint-img">
-                    
-                    <!-- Контейнер для інтерактивних клікабельних вузлів поверх карти -->
-                    <div id="blueprint-nodes-container" class="blueprint-nodes-layer"></div>
+                    <div class="map-image-container">
+                        <img id="blueprint-img" src="" alt="План евакуації" class="blueprint-img">
+                        <div id="blueprint-nodes-container" class="blueprint-nodes-layer"></div>
+                    </div>
                 </div>
             </div>
 
         </div>
     </div>
 
-    <script src="script.js?v=14000"></script>
+    <script src="script.js?v=30000"></script>
 </body>
+</html>

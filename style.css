@@ -8,7 +8,7 @@
 
 body {
     background: #000000;
-    color: #d1d5db;
+    color: #d9c59a;
     height: 100vh;
     width: 100vw;
     margin: 0;
@@ -19,7 +19,7 @@ body {
     overflow: hidden;
 }
 
-/* Ігрова сцена: суворо тримає пропорцію 16:9 */
+/* Ігрова сцена 16:9 */
 .game-viewport {
     position: relative !important;
     aspect-ratio: 16 / 9 !important;
@@ -46,17 +46,17 @@ body {
     pointer-events: none;
 }
 
-/* Верхня панель навігації */
+/* Верхня панель */
 .top-nav {
     position: relative;
     z-index: 50 !important;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: rgba(15, 18, 25, 0.88);
+    background: rgba(20, 15, 12, 0.92);
     backdrop-filter: blur(10px);
     padding: 0.8cqh 1.2cqw;
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 1px solid #3d2d22;
     border-radius: 6px;
     gap: 1cqw;
     height: 8cqh;
@@ -71,10 +71,10 @@ body {
 
 .avatar-mini {
     font-size: 1.5cqw;
-    background: #111827;
+    background: #18120e;
     padding: 0.4cqw;
     border-radius: 6px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid #3d2d22;
 }
 
 .user-text {
@@ -88,15 +88,16 @@ body {
     gap: 0.5cqw;
     align-items: center;
     font-size: 1cqw;
+    color: #e8d7be;
 }
 
 .rank-tag {
     font-size: 0.75cqw;
-    color: #f59e0b;
-    background: rgba(245, 158, 11, 0.15);
+    color: #d9c59a;
+    background: rgba(140, 104, 77, 0.25);
     padding: 1px 4px;
     border-radius: 4px;
-    border: 1px solid rgba(245, 158, 11, 0.3);
+    border: 1px solid #8c684d;
     font-weight: bold;
 }
 
@@ -108,7 +109,7 @@ body {
 
 .exp-label {
     font-size: 0.75cqw;
-    color: #9ca3af;
+    color: #a3927d;
     display: flex;
     justify-content: space-between;
     gap: 0.5cqw;
@@ -117,30 +118,30 @@ body {
 .exp-bar-bg {
     width: 8cqw;
     height: 4px;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.08);
     border-radius: 2px;
     overflow: hidden;
 }
 
+/* Новий коричневий колір для смуги досвіду */
 .exp-fill {
     height: 100%;
-    background: #3b82f6;
+    background: #8c684d;
     transition: width 0.3s ease;
 }
 
-/* Центральна панель кнопок */
 .center-nav {
     display: flex;
     gap: 0.5cqw;
-    background: rgba(0, 0, 0, 0.3);
+    background: rgba(0, 0, 0, 0.4);
     padding: 0.4cqh 0.6cqw;
     border-radius: 6px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    border: 1px solid #3d2d22;
 }
 
 .nav-icon-btn {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(61, 45, 34, 0.4);
+    border: 1px solid #4a382c;
     font-size: 1.4cqw;
     width: 2.5cqw;
     height: 2.5cqw;
@@ -153,8 +154,8 @@ body {
 }
 
 .nav-icon-btn:hover {
-    background: rgba(59, 130, 246, 0.3);
-    border-color: #3b82f6;
+    background: #594333;
+    border-color: #8c684d;
 }
 
 .top-actions {
@@ -170,10 +171,10 @@ body {
     height: 2.2cqw;
     cursor: pointer;
     border-radius: 50%;
-    color: #d1d5db;
+    color: #d9c59a;
 }
 
-/* Основний макет UI */
+/* Основний макет */
 .main-layout {
     position: relative;
     display: flex;
@@ -193,11 +194,10 @@ body {
     gap: 1cqh;
 }
 
-/* Блоки статистики та інформації */
 .vitals-group, .currency-group, .location-card {
-    background: rgba(15, 18, 25, 0.88);
+    background: rgba(20, 15, 12, 0.92);
     backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 1px solid #3d2d22;
     padding: 1cqw;
     border-radius: 8px;
     display: flex;
@@ -216,7 +216,7 @@ body {
 
 .vital-label {
     font-size: 0.85cqw;
-    color: #9ca3af;
+    color: #a3927d;
     display: flex;
     justify-content: space-between;
     margin-bottom: 2px;
@@ -224,19 +224,19 @@ body {
 
 .bar-bg {
     height: 5px;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.08);
     border-radius: 3px;
     overflow: hidden;
 }
 
 .bar-fill { height: 100%; transition: width 0.3s; }
-.bar-fill.hp { background: #ef4444; }
-.bar-fill.madness { background: #06b6d4; }
-.bar-fill.energy { background: #eab308; }
+.bar-fill.hp { background: #c0392b; }
+.bar-fill.madness { background: #16a085; }
+.bar-fill.energy { background: #d35400; }
 
 .currency-title {
     font-size: 0.75cqw;
-    color: #6b7280;
+    color: #8c7a6b;
     text-transform: uppercase;
     font-weight: bold;
 }
@@ -245,14 +245,14 @@ body {
     display: flex;
     justify-content: space-between;
     font-size: 0.9cqw;
-    color: #d1d5db;
+    color: #d9c59a;
     background: rgba(255, 255, 255, 0.03);
     padding: 0.4cqh 0.6cqw;
     border-radius: 4px;
 }
 
 .bank-btn {
-    background: linear-gradient(135deg, #059669, #10b981);
+    background: linear-gradient(135deg, #27ae60, #2ecc71);
     color: white;
     border: none;
     padding: 0.6cqh;
@@ -269,9 +269,9 @@ body {
 }
 
 .menu-btn {
-    background: rgba(22, 27, 34, 0.75);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    color: #d1d5db;
+    background: rgba(38, 31, 26, 0.85);
+    border: 1px solid #4a382c;
+    color: #d9c59a;
     padding: 0.8cqh 0.8cqw;
     border-radius: 6px;
     display: flex;
@@ -281,9 +281,11 @@ body {
     cursor: pointer;
 }
 
-.loc-title { font-size: 0.75cqw; color: #6b7280; text-transform: uppercase; }
-.loc-name { font-size: 1.1cqw; font-weight: bold; color: #f3f4f6; margin: 2px 0; }
-.loc-desc { font-size: 0.85cqw; color: #9ca3af; }
+.menu-btn:hover { background: #3d2e24; }
+
+.loc-title { font-size: 0.75cqw; color: #8c7a6b; text-transform: uppercase; }
+.loc-name { font-size: 1.1cqw; font-weight: bold; color: #e8d7be; margin: 2px 0; }
+.loc-desc { font-size: 0.85cqw; color: #a3927d; }
 
 /* Персонаж */
 .center-stage {
@@ -327,26 +329,27 @@ body {
     display: block !important;
 }
 
+/* Кнопки дій у коричнево-пергаментній гамі */
 .btn-main-action {
-    background: #2563eb;
-    color: white;
-    border: none;
+    background: linear-gradient(135deg, #594333, #8c684d);
+    color: #fff8e7;
+    border: 1px solid #a37a5c;
     padding: 0.8cqh;
     border-radius: 6px;
     font-weight: bold;
     font-size: 1cqw;
     cursor: pointer;
-    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
     width: 100%;
 }
 
-.btn-main-action:active { background: #1d4ed8; }
+.btn-main-action:active { background: #3d2e24; }
 
 /* Модальні вікна */
 .modal {
     position: fixed !important;
     top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(0, 0, 0, 0.65);
+    background: rgba(0, 0, 0, 0.75);
     backdrop-filter: blur(5px);
     display: flex;
     justify-content: center;
@@ -357,16 +360,17 @@ body {
 .hidden { display: none !important; }
 
 .modal-content {
-    background: rgba(15, 20, 28, 0.95);
+    background: #140f0c;
     backdrop-filter: blur(12px);
     padding: 15px;
     border-radius: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.9);
-    width: min(320px, 90vw);
-    max-height: 80vh;
+    border: 2px solid #3d2d22;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.95);
+    width: min(360px, 92vw);
+    max-height: 85vh;
     display: flex;
     flex-direction: column;
+    color: #d9c59a;
 }
 
 .modal-header {
@@ -374,62 +378,77 @@ body {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 12px;
+    border-bottom: 1px solid #3d2d22;
+    padding-bottom: 8px;
 }
 
 .btn-close-mini {
-    background: rgba(255, 255, 255, 0.1);
-    color: #aaa;
-    border: none;
+    background: rgba(255, 255, 255, 0.05);
+    color: #e74c3c;
+    border: 1px solid #3d2d22;
     width: 26px;
     height: 26px;
     border-radius: 50%;
     cursor: pointer;
+    font-weight: bold;
 }
 
-.settings-body {
+/* Нове компонування з вертикальною колонкою категорій ліворуч */
+.inventory-layout-wrapper {
+    display: flex;
+    gap: 10px;
+    flex: 1;
+    overflow: hidden;
+}
+
+.inventory-filters-column {
     display: flex;
     flex-direction: column;
-    gap: 8px;
-}
-
-.inventory-filters {
-    display: flex;
-    gap: 5px;
-    overflow-x: auto;
-    padding-bottom: 8px;
-    margin-bottom: 10px;
-    scrollbar-width: none;
+    gap: 6px;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 5px;
+    border-radius: 6px;
+    border: 1px solid #3d2d22;
 }
 
 .filter-btn {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: #9ca3af;
-    padding: 5px 10px;
-    border-radius: 5px;
-    font-size: 11px;
-    white-space: nowrap;
+    background: #261f1a;
+    border: 1px solid #4a382c;
+    color: #d9c59a;
+    width: 38px;
+    height: 38px;
+    border-radius: 6px;
+    font-size: 18px;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.2s;
 }
 
+.filter-btn:hover { background: #3d2e24; }
+
 .filter-btn.active {
-    background: #2563eb;
+    background: #8c684d;
+    border-color: #d9c59a;
     color: white;
+    box-shadow: 0 0 8px rgba(140, 104, 77, 0.6);
 }
 
 .minecraft-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 8px;
+    gap: 6px;
     overflow-y: auto;
     flex: 1;
+    padding-right: 2px;
 }
 
 .mc-slot {
     width: 100%;
     aspect-ratio: 1;
-    background: rgba(0, 0, 0, 0.5);
-    border: 2px solid #374151;
+    background: #1a1410;
+    border: 1px solid #3d2d22;
     border-radius: 6px;
     display: flex;
     justify-content: center;
@@ -438,11 +457,12 @@ body {
     position: relative;
 }
 
-.mc-slot .item-icon { font-size: 24px; }
+.mc-slot:hover { border-color: #8c684d; background: #261f1a; }
+.mc-slot .item-icon { font-size: 20px; }
 .mc-slot .item-count {
     position: absolute;
     bottom: 2px; right: 4px;
-    font-size: 10px; font-weight: bold; color: #fff;
+    font-size: 10px; font-weight: bold; color: #d9c59a;
 }
 
 .wardrobe-grid {
@@ -454,8 +474,8 @@ body {
 }
 
 .outfit-card {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: #261f1a;
+    border: 1px solid #4a382c;
     padding: 10px;
     border-radius: 6px;
     display: flex;
@@ -464,22 +484,24 @@ body {
 }
 
 .outfit-card.active {
-    border-color: #10b981;
-    background: rgba(16, 185, 129, 0.1);
+    border-color: #8c684d;
+    background: rgba(140, 104, 77, 0.2);
 }
 
 .btn-outfit {
-    background: #3b82f6;
-    color: white;
-    border: none;
+    background: #594333;
+    color: #d9c59a;
+    border: 1px solid #8c684d;
     padding: 6px 12px;
     border-radius: 4px;
     font-size: 11px;
     cursor: pointer;
 }
 
+.btn-outfit:hover { background: #8c684d; color: white; }
+
 /* ------------------------------------------------------------- */
-/* ОНОВЛЕНІ СТИЛІ ДЛЯ КАРТИ (ПРИБИРАЮТЬ БІЛИЙ ФОН ТА СКРОЛЛ)     */
+/* КАРТА ТА ФІКСОВАНА ПРИВ'ЯЗКА ВУЗЛІВ ПО ВЕРХ PNG              */
 /* ------------------------------------------------------------- */
 
 .map-modal-overlay {
@@ -500,7 +522,7 @@ body {
     box-shadow: 0 0 35px rgba(0, 0, 0, 0.95);
     display: flex; flex-direction: column;
     padding: 15px; color: #d9c59a;
-    overflow: hidden !important; /* ПРИБИРАЄМО ПОВЗУНОК */
+    overflow: hidden !important;
 }
 
 .map-clipboard-header {
@@ -525,8 +547,9 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    overflow: hidden !important; /* ПРИБИРАЄМО СКРОЛЛ */
+    overflow: hidden !important;
     padding-top: 5px;
+    width: 100%;
 }
 
 .floors-grid {
@@ -555,7 +578,6 @@ body {
     font-size: 12px; flex-shrink: 0;
 }
 
-/* КОНТЕЙНЕР КАРТИ: світла/нейтральна підкладка для паперу */
 .blueprint-wrapper {
     position: relative;
     width: 100%;
@@ -564,24 +586,26 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: rgba(220, 205, 180, 0.05) !important;
+    background: transparent !important;
     border: none !important;
     overflow: hidden;
-    border-radius: 6px;
 }
 
-/* САМ ПЛАН ЕВАКУАЦІЇ: чіткий та яскравий без затеснення */
+.map-image-container {
+    position: relative;
+    display: inline-block;
+    max-width: 100%;
+    max-height: 100%;
+}
+
 .blueprint-img { 
     max-width: 100%; 
-    max-height: 100%; 
+    max-height: calc(85vh - 60px); 
     object-fit: contain; 
     display: block; 
-    /* Прибрали multiply, щоб зображення не темніло */
-    filter: contrast(1.05) brightness(1.02);
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-    border-radius: 4px;
+    filter: contrast(1.05) brightness(1.0);
 }
-/* ШАР З ІКОНКАМИ ТА КНОПКАМИ */
+
 .blueprint-nodes-layer {
     position: absolute; 
     top: 0; left: 0; 
@@ -589,17 +613,38 @@ body {
     pointer-events: none;
 }
 
-/* КНОПКИ ПО ВУЗЛАХ */
 .map-node-pin {
-    position: absolute; transform: translate(-50%, -50%);
-    background: rgba(20, 15, 12, 0.92); color: #2ecc71;
-    border: 1px solid #2ecc71; padding: 4px 8px; font-size: 11px;
-    border-radius: 4px; cursor: pointer; font-weight: bold;
-    box-shadow: 0 0 10px rgba(46, 204, 113, 0.4); transition: 0.2s;
+    position: absolute; 
+    transform: translate(-50%, -50%);
+    background: rgba(20, 15, 12, 0.92); 
+    color: #2ecc71;
+    border: 1px solid #2ecc71; 
+    padding: 0.35em 0.7em; 
+    font-size: clamp(8px, 1.1vw, 12px);
+    border-radius: 4px; 
+    cursor: pointer; 
+    font-weight: bold;
+    box-shadow: 0 0 10px rgba(46, 204, 113, 0.4); 
+    transition: transform 0.15s ease;
     pointer-events: auto;
     white-space: nowrap;
 }
 
-.map-node-pin:hover { transform: translate(-50%, -50%) scale(1.08); background: #2ecc71; color: #000; }
-.map-node-pin.node-boss { color: #e74c3c; border-color: #e74c3c; box-shadow: 0 0 10px rgba(231, 76, 60, 0.4); }
-.map-node-pin.node-locked { color: #7f8c8d; border-color: #7f8c8d; box-shadow: none; cursor: not-allowed; }
+.map-node-pin:hover { 
+    transform: translate(-50%, -50%) scale(1.08); 
+    background: #2ecc71; 
+    color: #000; 
+}
+
+.map-node-pin.node-boss { 
+    color: #e74c3c; 
+    border-color: #e74c3c; 
+    box-shadow: 0 0 10px rgba(231, 76, 60, 0.4); 
+}
+
+.map-node-pin.node-locked { 
+    color: #7f8c8d; 
+    border-color: #7f8c8d; 
+    box-shadow: none; 
+    cursor: not-allowed; 
+}

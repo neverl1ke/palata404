@@ -58,7 +58,6 @@ const DEFAULT_STATS = {
 
 let stats = loadSaveData('palata404_stats', DEFAULT_STATS);
 
-// Перемикач статі
 let gender = localStorage.getItem('palata404_gender') || 'male'; 
 let currentHair = localStorage.getItem('palata404_hair') || '';
 let currentFace = localStorage.getItem('palata404_face') || '';
@@ -75,17 +74,17 @@ let inventory = loadSaveData('palata404_inventory', [
 let currentCategory = 'all';
 let currentWardrobeTab = 'body';
 
-// === Структура Даних Поверхів та Мапи ===
+// === Структура Даних Поверхів ===
 const gameFloorsData = [
     {
         id: 10,
         title: "10 Поверх — Блок Ізоляторів",
         unlocked: true,
-        mapImage: "map_floor_10.png", // Вкажи точну назву свого PNG/JPG файлу
+        mapImage: "map_floor_10.png",
         nodes: [
-            { id: "sec1_collector", title: "⚙️ Збирач #1", x: 40, y: 30, type: "collector" },
-            { id: "sec2_grind", title: "🧱 Завал (Розчистити)", x: 58, y: 45, type: "grind" },
-            { id: "sec3_boss", title: "👹 Бос Поверху", x: 82, y: 28, type: "boss", locked: true }
+            { id: "sec1_collector", title: "⚙️ Збирач #1", x: 40, y: 38, type: "collector" },
+            { id: "sec2_grind", title: "🧱 Завал (Розчистити)", x: 57, y: 49, type: "grind" },
+            { id: "sec3_boss", title: "👹 Бос Поверху", x: 77, y: 38, type: "boss", locked: true }
         ]
     },
     {
@@ -98,13 +97,6 @@ const gameFloorsData = [
     {
         id: 8,
         title: "8 Поверх — Процедурний Блок",
-        unlocked: false,
-        mapImage: "",
-        nodes: []
-    },
-    {
-        id: 7,
-        title: "7 Поверх — Загальна Терапія",
         unlocked: false,
         mapImage: "",
         nodes: []
@@ -234,7 +226,7 @@ function restInBed() {
     updateUI();
 }
 
-// === ЛОГІКА МОДАЛЬНОГО ВІКНА МАРШРУТІВ ТА КАРТИ ===
+// === КАРТА ТА МАРШРУТИ ===
 function toggleMapModal(show) {
     const modal = document.getElementById('map-modal');
     if (show) {
@@ -317,11 +309,10 @@ function handleNodeClick(node, floor) {
             alert("⛏️ Ви розчистили частину завалу! Отримано 30 EXP та знайдено Ключ від Блоку Боса!");
             addExperience(30);
             
-            // Розблоковуємо Боса
             const bossNode = floor.nodes.find(n => n.type === 'boss');
             if (bossNode) bossNode.locked = false;
             
-            openFloorMap(floor.id); // Перемальовуємо карти
+            openFloorMap(floor.id);
             updateUI();
         } else {
             alert("Недостатньо витривалості для розчищення завалу!");
@@ -422,7 +413,7 @@ function renderWardrobe() {
             </div>
         `;
     } else {
-        container.innerHTML = `<p style="font-size:12px; color:#aaa; text-align:center; padding: 20px 0;">Розділ [${currentWardrobeTab.toUpperCase()}] буде заповнений при додаванні нових PNG-елементів!</p>`;
+        container.innerHTML = `<p style="font-size:12px; color:#a3927d; text-align:center; padding: 20px 0;">Розділ [${currentWardrobeTab.toUpperCase()}] буде заповнений при додаванні нових PNG-елементів!</p>`;
     }
 }
 
