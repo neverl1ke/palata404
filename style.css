@@ -64,30 +64,39 @@ body {
     gap: 1cqw;
 }
 
-/* ЛІВИЙ БЛОК: Шкіряний ремінь / картка гравця */
+/* ЛІВИЙ БЛОК: Ремінь із пряжкою зліва та шкірою під текст */
 .user-profile-badge {
+    position: relative;
     display: flex;
     align-items: center;
-    gap: 0.8cqw;
+    gap: 1cqw;
     cursor: pointer;
-    background: url('belt_hud.png') no-repeat center center;
+    
+    /* Розтягуємо ремінь як фон всього блоку, вирівнюючи зліва */
+    background: url('belt_hud.png') no-repeat left center;
     background-size: 100% 100%;
-    padding: 0.5cqh 1.5cqw;
+    
+    padding: 0.5cqh 2cqw 0.5cqh 1.2cqw;
     border-radius: 6px;
-    border: 1px solid #3d2d22;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
     height: 100%;
+    min-width: 22cqw;
 }
 
+/* Аватарка сідає точно у ліву зону (пряжку) */
 .avatar-mini {
-    font-size: 1.4cqw;
-    background: rgba(10, 8, 6, 0.85);
+    position: relative;
+    z-index: 2;
+    font-size: 1.3cqw;
+    background: rgba(10, 8, 6, 0.75);
     padding: 0.3cqw 0.5cqw;
     border-radius: 4px;
     border: 1px solid rgba(217, 197, 154, 0.4);
 }
 
+/* Текст та смужка досвіду на шкіряній частині ременя */
 .user-text {
+    position: relative;
+    z-index: 2;
     display: flex;
     flex-direction: column;
     gap: 2px;
@@ -99,16 +108,16 @@ body {
     align-items: center;
     font-size: 0.95cqw;
     color: #fff8e7;
-    text-shadow: 1px 1px 2px #000;
+    text-shadow: 1px 1px 2px #000, 0 0 3px #000;
 }
 
 .rank-tag {
     font-size: 0.7cqw;
     color: #f39c12;
-    background: rgba(30, 20, 15, 0.85);
+    background: rgba(20, 15, 12, 0.85);
     padding: 1px 4px;
     border-radius: 3px;
-    border: 1px solid #6b4e39;
+    border: 1px solid #8c684d;
     font-weight: bold;
 }
 
@@ -130,8 +139,8 @@ body {
 .exp-bar-bg {
     width: 8cqw;
     height: 4px;
-    background: rgba(0, 0, 0, 0.7);
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: rgba(0, 0, 0, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 2px;
     overflow: hidden;
 }
