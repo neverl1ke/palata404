@@ -46,20 +46,25 @@ body {
     pointer-events: none;
 }
 
-/* Верхня панель */
+/* ------------------------------------------------------------- */
+/* ВЕРХНЯ ПАНЕЛЬ: ВІЗУАЛ ШКІРЯНОГО РЕМЕНЯ З БЛЯШКОЮ             */
+/* ------------------------------------------------------------- */
+
 .top-nav {
     position: relative;
     z-index: 50 !important;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: rgba(20, 15, 12, 0.92);
-    backdrop-filter: blur(10px);
-    padding: 0.8cqh 1.2cqw;
-    border: 1px solid #3d2d22;
-    border-radius: 6px;
+    /* Використовуємо ремінь як фон панелі */
+    background: url('belt_hud.png') no-repeat center center;
+    background-size: 100% 100%;
+    padding: 0.6cqh 2.5cqw 0.6cqh 4cqw; /* Відступи для гармонійного розміщення у бляшці */
+    border: none !important;
+    border-radius: 0;
     gap: 1cqw;
-    height: 8cqh;
+    height: 9cqh;
+    filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.85));
 }
 
 .user-profile-badge {
@@ -69,12 +74,14 @@ body {
     cursor: pointer;
 }
 
+/* Аватарка всередині металевої бляшки */
 .avatar-mini {
-    font-size: 1.5cqw;
-    background: #18120e;
-    padding: 0.4cqw;
-    border-radius: 6px;
-    border: 1px solid #3d2d22;
+    font-size: 1.4cqw;
+    background: rgba(10, 8, 6, 0.75);
+    padding: 0.3cqw 0.5cqw;
+    border-radius: 4px;
+    border: 1px solid rgba(217, 197, 154, 0.3);
+    box-shadow: inset 0 0 5px rgba(0,0,0,0.8);
 }
 
 .user-text {
@@ -89,15 +96,16 @@ body {
     align-items: center;
     font-size: 1cqw;
     color: #e8d7be;
+    text-shadow: 1px 1px 2px #000;
 }
 
 .rank-tag {
     font-size: 0.75cqw;
     color: #d9c59a;
-    background: rgba(140, 104, 77, 0.25);
-    padding: 1px 4px;
+    background: rgba(40, 28, 20, 0.85);
+    padding: 1px 5px;
     border-radius: 4px;
-    border: 1px solid #8c684d;
+    border: 1px solid #6b4e39;
     font-weight: bold;
 }
 
@@ -109,39 +117,41 @@ body {
 
 .exp-label {
     font-size: 0.75cqw;
-    color: #a3927d;
+    color: #d9c59a;
     display: flex;
     justify-content: space-between;
     gap: 0.5cqw;
+    text-shadow: 1px 1px 2px #000;
 }
 
 .exp-bar-bg {
     width: 8cqw;
     height: 4px;
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 2px;
     overflow: hidden;
 }
 
-/* Новий коричневий колір для смуги досвіду */
 .exp-fill {
     height: 100%;
-    background: #8c684d;
+    background: #a37a5c;
     transition: width 0.3s ease;
 }
 
+/* Центральна навігація поверх шкіри */
 .center-nav {
     display: flex;
     gap: 0.5cqw;
-    background: rgba(0, 0, 0, 0.4);
-    padding: 0.4cqh 0.6cqw;
+    background: rgba(15, 10, 8, 0.5);
+    padding: 0.3cqh 0.5cqw;
     border-radius: 6px;
-    border: 1px solid #3d2d22;
+    border: 1px solid rgba(140, 104, 77, 0.4);
 }
 
 .nav-icon-btn {
-    background: rgba(61, 45, 34, 0.4);
-    border: 1px solid #4a382c;
+    background: rgba(30, 20, 15, 0.6);
+    border: 1px solid rgba(217, 197, 154, 0.25);
     font-size: 1.4cqw;
     width: 2.5cqw;
     height: 2.5cqw;
@@ -154,8 +164,9 @@ body {
 }
 
 .nav-icon-btn:hover {
-    background: #594333;
-    border-color: #8c684d;
+    background: rgba(140, 104, 77, 0.8);
+    border-color: #d9c59a;
+    transform: translateY(-1px);
 }
 
 .top-actions {
@@ -164,14 +175,23 @@ body {
 }
 
 .sys-btn {
-    background: transparent;
-    border: none;
-    font-size: 1.3cqw;
+    background: rgba(15, 10, 8, 0.4);
+    border: 1px solid rgba(217, 197, 154, 0.2);
+    font-size: 1.2cqw;
     width: 2.2cqw;
     height: 2.2cqw;
     cursor: pointer;
     border-radius: 50%;
     color: #d9c59a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.2s;
+}
+
+.sys-btn:hover {
+    background: rgba(140, 104, 77, 0.6);
+    color: #fff;
 }
 
 /* Основний макет */
@@ -329,7 +349,6 @@ body {
     display: block !important;
 }
 
-/* Кнопки дій у коричнево-пергаментній гамі */
 .btn-main-action {
     background: linear-gradient(135deg, #594333, #8c684d);
     color: #fff8e7;
@@ -393,7 +412,6 @@ body {
     font-weight: bold;
 }
 
-/* Нове компонування з вертикальною колонкою категорій ліворуч */
 .inventory-layout-wrapper {
     display: flex;
     gap: 10px;
@@ -500,10 +518,7 @@ body {
 
 .btn-outfit:hover { background: #8c684d; color: white; }
 
-/* ------------------------------------------------------------- */
-/* КАРТА ТА ФІКСОВАНА ПРИВ'ЯЗКА ВУЗЛІВ ПО ВЕРХ PNG              */
-/* ------------------------------------------------------------- */
-
+/* Карта та планшет */
 .map-modal-overlay {
     position: fixed;
     top: 0; left: 0; width: 100vw; height: 100vh;
