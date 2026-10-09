@@ -57,19 +57,16 @@ body {
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    height: 8.5cqh;
     
-    /* Збільшуємо висоту до 13cqh, щоб ремінь був достатньо товстим */
-    height: 13cqh; 
+    /* Солідна стилізована шкіряна плашка з облямівкою замість розтягнутої картинки */
+    background: linear-gradient(180deg, #1c1510 0%, #110c09 100%);
+    border: 2px solid #3d2d22 !important;
+    border-radius: 8px;
+    box-shadow: inset 0 1px 3px rgba(217, 197, 154, 0.15), 0 6px 12px rgba(0, 0, 0, 0.85);
     
-    background: url('belt_hud.png') no-repeat center center;
-    background-size: 100% 100% !important;
-    
-    /* Додаємо 4.8cqw відступу зліва для посадки аватарки прямо у віконце бляшки */
-    padding: 0.2cqh 2cqw 0.2cqh 4.8cqw; 
-    border: none !important;
-    border-radius: 0;
+    padding: 0 1.5cqw;
     gap: 1cqw;
-    filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.9));
 }
 
 .user-profile-badge {
