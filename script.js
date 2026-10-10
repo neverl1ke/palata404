@@ -738,7 +738,7 @@ function renderGymModal() {
     });
 }
 
-// === Система навігації по Лікувальному корпусу через клік по локації ===
+// === Система навігації по Лікувальному корпусу та Процедурному кабінету ===
 let currentRoom = {
     id: 'room_404',
     name: 'Палата #404',
@@ -778,12 +778,24 @@ function openMedicalHub() {
     closeFriends();
     closeSettings();
     closeGym();
+    closeProcedureRoom();
     renderMedicalRooms();
     document.getElementById('medical-hub-modal').classList.remove('hidden');
 }
 
 function closeMedicalHub() {
     document.getElementById('medical-hub-modal').classList.add('hidden');
+}
+
+function openProcedureRoom() {
+    closeMedicalHub();
+    const modal = document.getElementById('procedure-room-modal');
+    if (modal) modal.classList.remove('hidden');
+}
+
+function closeProcedureRoom() {
+    const modal = document.getElementById('procedure-room-modal');
+    if (modal) modal.classList.add('hidden');
 }
 
 function renderMedicalRooms() {
@@ -796,6 +808,15 @@ function renderMedicalRooms() {
         let item = document.createElement('div');
         item.style.cssText = `display: flex; justify-content: space-between; align-items: center; background: ${isCurrent ? '#3d2e24' : '#261f1a'}; padding: 10px 12px; border-radius: 6px; border: 1px solid ${isCurrent ? '#8c684d' : '#4a382c'};`;
         
+        let actionBtnHtml = '';
+        if (room.id === 'treatment_room') {
+            actionBtnHtml = `<button class="btn-outfit" onclick="openProcedureRoom()">Відкрити</button>`;
+        } else {
+            actionBtnHtml = `<button class="btn-outfit" onclick="selectRoom('${room.id}')" ${isCurrent ? 'style="background: #8c684d; color: white;"' : ''}>
+                ${isCurrent ? 'Ви тут' : 'Перейти'}
+            </button>`;
+        }
+
         item.innerHTML = `
             <div style="display: flex; align-items: center; gap: 10px;">
                 <span style="font-size: 22px;">${room.icon}</span>
@@ -804,9 +825,7 @@ function renderMedicalRooms() {
                     <div style="font-size: 11px; color: #a3927d; margin-top: 2px;">${room.desc}</div>
                 </div>
             </div>
-            <button class="btn-outfit" onclick="selectRoom('${room.id}')" ${isCurrent ? 'style="background: #8c684d; color: white;"' : ''}>
-                ${isCurrent ? 'Ви тут' : 'Перейти'}
-            </button>
+            ${actionBtnHtml}
         `;
         container.appendChild(item);
     });
@@ -823,15 +842,51 @@ function selectRoom(roomId) {
 
     if (roomId === 'gym') {
         openGym();
-    } else if (roomId === 'treatment_room') {
-        alert("💉 Процедурний кабінет порожній, але на столі знайдено +1 пігулку!");
-        stats.pills = (stats.pills || 0) + 1;
-        updateUI();
     } else if (roomId === 'corridor') {
         alert("🚪 Коридор зустрічає тебе холодним світлом ламп і кроками охорони вдалині.");
     } else {
         alert("🛏️ Ти у своїй палаті #404.");
     }
+}
+
+// === Логіка купівлі препаратів та лікування в Процедурному кабінеті ===
+function buyMedicalItem(itemType, cost, currencyType) {
+    // Перевірка наявності коштів та списання
+    if (currencyType === 'silver') {
+        if (stats.silver >= cost) {
+            stats.silver -= cost;
+        } else {
+            alert('Не вистачає срібла!');
+            return;
+        }
+    } else if (currencyType === 'bucks') {
+        if (stats.bucks >= cost) {
+            stats.bucks -= cost;
+        } else {
+            alert('Не вистачає баксів ($)!');
+            return;
+        }
+    }
+
+    // Ефекти товарів
+    if (itemType === 'madness_pills') {
+        stats.madness = Math.max(0, stats.madness - 15);
+        alert('Ви прийняли таблетки «Аміназин». Божевілля знижено на -15.');
+    } else if (itemType === 'stamina_10') {
+        stats.energy = Math.min(stats.maxEnergy, stats.energy + (stats.maxEnergy * 0.1));
+        alert('Ви випили енергетик (+10% витривалості).');
+    } else if (itemType === 'stamina_full') {
+        stats.energy = stats.maxEnergy;
+        alert('Ви повністю відновили витривалість!');
+    } else if (itemType === 'hp_10') {
+        stats.hp = Math.min(stats.maxHp, stats.hp + (stats.maxHp * 0.1));
+        alert('Здоров\'я частково відновлено (+10%).');
+    } else if (itemType === 'hp_full') {
+        stats.hp = stats.maxHp;
+        alert('Повне відновлення здоров\'я (HP) завершено.');
+    }
+
+    updateUI();
 }
 
 // === Фоновий таймер регенерації витривалості (1 стаміна = 2 хвилини) ===
@@ -872,67 +927,3 @@ function updateEnergyTimer() {
     energyTimerElem.textContent = `(+1 за ${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')})`;
 }
 setInterval(updateEnergyTimer, 1000);
-// Відкрити Процедурний кабінет
-function openMedicalHub() {
-    const modal = document.getElementById('medical-hub-modal');
-    if (modal) modal.classList.remove('hidden');
-}
-
-// Закрити Процедурний кабінет
-function closeMedicalHub() {
-    const modal = document.getElementById('medical-hub-modal');
-    if (modal) modal.classList.add('hidden');
-}
-
-// Логіка купівлі препаратів та лікування
-function buyMedicalItem(itemType, cost, currencyType) {
-    // Перевірка наявності коштів
-    if (currencyType === 'silver') {
-        if (typeof player !== 'undefined' && player.silver >= cost) {
-            player.silver -= cost;
-        } else {
-            alert('Не вистачає срібла!');
-            return;
-        }
-    } else if (currencyType === 'bucks') {
-        if (typeof player !== 'undefined' && player.bucks >= cost) {
-            player.bucks -= cost;
-        } else {
-            alert('Не вистачає баксів ($)!');
-            return;
-        }
-    }
-
-    // Застосування ефекту товару
-    if (itemType === 'madness_pills') {
-        if (typeof player !== 'undefined') {
-            player.madness = Math.max(0, player.madness - 15);
-        }
-        alert('Ви прийняли таблетки. Божевілля зменшилось.');
-    } else if (itemType === 'stamina_10') {
-        if (typeof player !== 'undefined') {
-            player.stamina = Math.min(100, player.stamina + 10);
-        }
-        alert('Ви випили енергетик (+10% витривалості).');
-    } else if (itemType === 'stamina_full') {
-        if (typeof player !== 'undefined') {
-            player.stamina = 100;
-        }
-        alert('Ви повністю відновили витривалість!');
-    } else if (itemType === 'hp_10') {
-        if (typeof player !== 'undefined') {
-            player.hp = Math.min(player.maxHp || 120, player.hp + (player.maxHp || 120) * 0.1);
-        }
-        alert('Здоров\'я частково відновлено.');
-    } else if (itemType === 'hp_full') {
-        if (typeof player !== 'undefined') {
-            player.hp = player.maxHp || 120;
-        }
-        alert('Повне відновлення здоров\'я завершено.');
-    }
-
-    // Оновлення інтерфейсу гри (якщо така функція є)
-    if (typeof updateUI === 'function') {
-        updateUI();
-    }
-}

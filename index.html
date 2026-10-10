@@ -10,14 +10,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Special+Elite&display=swap" rel="stylesheet">
     
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <link rel="stylesheet" href="style.css?v=40000">
+    <link rel="stylesheet" href="style.css?v=40001">
 </head>
 <body>
 
     <!-- Контейнер для строгого збереження пропорцій кімнати 16:9 -->
     <div class="game-viewport">
 
-<!-- Верхня панель (Єдина суцільна шапка-полоска) -->
+        <!-- Верхня панель (Єдина суцільна шапка-полоска) -->
         <div class="top-nav">
             <!-- Лівий блок: Профіль гравця -->
             <div class="user-profile-badge" onclick="openSettings()">
@@ -63,7 +63,7 @@
             
             <!-- Ліва панель -->
             <aside class="left-panel">
-           <!-- Показники життя -->
+                <!-- Показники життя -->
                 <div class="vitals-group">
                     <div class="vital-item">
                         <div class="vital-icon madness-icon">🧠</div>
@@ -121,7 +121,7 @@
 
             <!-- Центр: Сцена Кімнати та Персонаж на підлозі -->
             <section class="center-stage">
-                <div class="character-preview" onclick="tapCharacter()">
+                <div class="character-preview">
                     <div id="character-container" class="character-container">
                         <!-- Шари персонажа (Paper Doll) -->
                         <img id="layer-body" class="char-layer" src="base_male.png" alt="Тіло">
@@ -132,7 +132,7 @@
                 </div>
             </section>
 
-<<!-- Права панель (Картка поточної локації) -->
+            <!-- Права панель (Картка поточної локації) -->
             <aside class="right-panel">
                 <div class="location-card" onclick="openMedicalHub()" style="cursor: pointer;" title="Натисніть для переходу по корпусу">
                     <div class="loc-title">Поточна локація (Натисніть)</div>
@@ -152,7 +152,7 @@
                 <h3>⚙️ Налаштування</h3>
                 <button class="btn-close-mini" onclick="closeSettings()">✕</button>
             </div>
-            <div class="settings-body">
+            <div class="settings-body" style="display: flex; flex-direction: column; gap: 8px;">
                 <button class="menu-btn" onclick="changeNickname()">👤 Змінити ім'я</button>
                 <button class="menu-btn" onclick="alert('Звук увімкнено')">🔊 Звукові ефекти</button>
                 <button class="menu-btn" onclick="alert('Версія гри: 1.0.0')">ℹ️ Про гру</button>
@@ -286,7 +286,6 @@
         </div>
     </div>
 
-    <script src="script.js?v=40000"></script>
     <!-- Модальне вікно: Спортзал / Комплекс вправ -->
     <div id="gym-modal" class="modal center-modal hidden">
         <div class="modal-content" style="width: min(440px, 92vw);">
@@ -300,23 +299,8 @@
             </div>
         </div>
     </div>
-    <!-- Модальне вікно: Лікувальний корпус (Вибір кімнат у реальному світі) -->
-<div id="medical-hub-modal" class="modal center-modal hidden">
-    <div class="modal-content" style="width: min(420px, 92vw);">
-        <div class="modal-header">
-            <h3>🏥 Лікувальний корпус</h3>
-            <button class="btn-close-mini" onclick="closeMedicalHub()">✕</button>
-        </div>
-        <div style="display: flex; flex-direction: column; gap: 10px; font-size: 13px;">
-            <p style="color: #a3927d; font-size: 12px;">Оберіть сектор лікувального корпусу для переходу:</p>
-            
-            <div id="rooms-list-container" style="display: flex; flex-direction: column; gap: 8px;">
-                <!-- Динамічно заповнюється кімнатами -->
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Модальне вікно: Лікувальний корпус -->
+
+    <!-- Модальне вікно: Лікувальний корпус (Вибір секторів) -->
     <div id="medical-hub-modal" class="modal center-modal hidden">
         <div class="modal-content" style="width: min(420px, 92vw);">
             <div class="modal-header">
@@ -325,9 +309,77 @@
             </div>
             <div style="display: flex; flex-direction: column; gap: 10px; font-size: 13px;">
                 <p style="color: #a3927d; font-size: 12px;">Оберіть сектор лікувального корпусу для переходу:</p>
-                <div id="rooms-list-container" style="display: flex; flex-direction: column; gap: 8px;"></div>
+                
+                <div id="rooms-list-container" style="display: flex; flex-direction: column; gap: 8px;">
+                    <!-- Динамічно заповнюється кімнатами -->
+                </div>
             </div>
         </div>
     </div>
+
+    <!-- Модальне вікно: Процедурний кабінет (Магазин препаратів) -->
+    <div id="procedure-room-modal" class="modal center-modal hidden">
+        <div class="modal-content" style="width: min(420px, 94vw);">
+            <div class="modal-header">
+                <h3>💊 Процедурний кабінет</h3>
+                <button class="btn-close-mini" onclick="closeProcedureRoom()">✕</button>
+            </div>
+            
+            <div style="font-size: 12px; color: #a3927d; margin-bottom: 10px;">
+                Санітар видає препарати та проводить процедури. Оплата на місці.
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 8px; max-height: 60vh; overflow-y: auto;">
+                
+                <!-- Товар 1: Таблетки від божевілля -->
+                <div class="outfit-card">
+                    <div>
+                        <div style="font-weight: bold; color: #fff8e7;">🧠 Таблетки «Аміназин»</div>
+                        <div style="font-size: 11px; color: #a3927d;">Знижує божевілля на -15</div>
+                    </div>
+                    <button class="btn-outfit" onclick="buyMedicalItem('madness_pills', 50, 'silver')">50 🪙</button>
+                </div>
+
+                <!-- Товар 2: Стаміна 10% -->
+                <div class="outfit-card">
+                    <div>
+                        <div style="font-weight: bold; color: #fff8e7;">⚡ Енергетик (10%)</div>
+                        <div style="font-size: 11px; color: #a3927d;">Відновлює 10% витривалості</div>
+                    </div>
+                    <button class="btn-outfit" onclick="buyMedicalItem('stamina_10', 2, 'bucks')">$2 💵</button>
+                </div>
+
+                <!-- Товар 3: Стаміна Фул -->
+                <div class="outfit-card">
+                    <div>
+                        <div style="font-weight: bold; color: #fff8e7;">⚡ Стимулятор (Фул)</div>
+                        <div style="font-size: 11px; color: #a3927d;">Повне відновлення витривалості</div>
+                    </div>
+                    <button class="btn-outfit" onclick="buyMedicalItem('stamina_full', 10, 'bucks')">$10 💵</button>
+                </div>
+
+                <!-- Товар 4: Хілка 10% -->
+                <div class="outfit-card">
+                    <div>
+                        <div style="font-weight: bold; color: #fff8e7;">❤️ Бондаж / Зелька (10%)</div>
+                        <div style="font-size: 11px; color: #a3927d;">Відновлює 10% здоров'я (HP)</div>
+                    </div>
+                    <button class="btn-outfit" onclick="buyMedicalItem('hp_10', 30, 'silver')">30 🪙</button>
+                </div>
+
+                <!-- Товар 5: Хілка Фул -->
+                <div class="outfit-card">
+                    <div>
+                        <div style="font-weight: bold; color: #fff8e7;">❤️ Хірургічний набор (Фул)</div>
+                        <div style="font-size: 11px; color: #a3927d;">Повне відновлення здоров'я (HP)</div>
+                    </div>
+                    <button class="btn-outfit" onclick="buyMedicalItem('hp_full', 150, 'silver')">150 🪙</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js?v=40001"></script>
 </body>
 </html>
