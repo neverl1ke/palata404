@@ -739,3 +739,29 @@ body {
 #friend-input:focus {
     border-color: #8c684d;
 }
+/* Стиль для смужок-плашок верхньої панелі */
+.right-top-bar {
+    background: rgba(26, 21, 18, 0.85);
+    border: 1px solid #4a382c;
+    border-radius: 8px;
+    padding: 6px 12px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+/* Оформлення кнопок у плашках */
+.menu-btn {
+    background: #2b221b;
+    border: 1px solid #4a382c;
+    color: #fff8e7;
+    padding: 6px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.2s;
+}
+
+.menu-btn:hover {
+    background: #3d2f24;
+}

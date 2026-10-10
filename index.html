@@ -50,12 +50,12 @@
                 <button class="nav-icon-btn" title="Сусіди по блоку" onclick="openFriends()">👥</button>
             </nav>
 
-            <!-- Правий блок: Системні кнопки -->
-            <div class="top-actions">
-                <button class="sys-btn" title="Сповіщення" onclick="alert('Немає нових сповіщень')">🔔</button>
-                <button class="sys-btn" title="Пошта" onclick="alert('Пошта порожня')">✉️</button>
-                <button class="sys-btn" title="Налаштування" onclick="openSettings()">⚙️</button>
-            </div>
+            <!-- Права верхня панель (Єдина смужка-плашка для іконок) -->
+    <div style="position: absolute; top: 15px; right: 20px; display: flex; gap: 8px; background: rgba(26, 21, 18, 0.85); padding: 6px 10px; border-radius: 8px; border: 1px solid #4a382c; z-index: 100;">
+        <button class="menu-btn" onclick="alert('Немає нових сповіщень')">🔔</button>
+        <button class="menu-btn" onclick="alert('Поштова скринька порожня')">✉️</button>
+        <button class="menu-btn" onclick="openSettings()">⚙️</button>
+    </div>
         </div>
 
         <!-- Основна ігрова сітка -->
@@ -132,7 +132,7 @@
                 </div>
             </section>
 
-        <!-- Права панель -->
+       <!-- Права панель -->
             <aside class="right-panel">
                 <div class="location-card" onclick="openMedicalHub()" style="cursor: pointer;" title="Натисніть для переходу по корпусу">
                     <div class="loc-title">Поточна локація (Натисніть)</div>
@@ -142,8 +142,6 @@
             </aside>
 
                <div class="side-menu">
-    <button class="btn-main-action" onclick="openGym()">🏋️ Зал реабілітації (Спортзал)</button>
-    <button class="menu-btn" onclick="restInBed()">🛏️ Відпочинок (+⚡ / -🧠)</button>
 </div>
             </aside>
 
