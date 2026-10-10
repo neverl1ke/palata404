@@ -1131,22 +1131,23 @@ function openMedicalHub() {
     document.getElementById('medical-hub-modal').classList.remove('hidden');
 }
 // ==========================================
-// БОЙОВА СИСТЕМА: СЕСТРА КЛАРА (РЕЙД ТА ДРУЗІ)
+// БОЙОВА СИСТЕМА: СЕСТРА КЛАРА (РЕЙД, КОЛДАУН ТА MVP)
 // ==========================================
 
 let bossCurrentHp = 120;
 let bossMaxHp = 120;
-let nurseKillsCount = 0; // Лічильник усунених загроз
+let nurseKillsCount = 0;
+let playerAttackCooldown = false; // Флаг колдауну (4 секунди)
+let friendAttackInterval = null; // Автоматична атака друзів
 
-// Список учасників (гравець + друзі/сусіди)
+// Учасники рейду (тільки ті, кого покликали)
 let raidMembers = [
     { id: 'player', name: 'Пацієнт #404', damage: 0, isPlayer: true, active: true },
-    { id: 'friend_1', name: 'Сусід з палати #402 (Сліпий Микола)', damage: 0, active: false },
-    { id: 'friend_2', name: 'Пацієнтка #410 (Мері)', damage: 0, active: false },
-    { id: 'friend_3', name: 'Буйний сусіда з ізолятора', damage: 0, active: false }
+    { id: 'friend_1', name: 'Сусід з палати #402 (Сліпий Микола)', damage: 0, active: false, called: false },
+    { id: 'friend_2', name: 'Пацієнтка #410 (Мері)', damage: 0, active: false, called: false },
+    { id: 'friend_3', name: 'Буйний сусіда з ізолятора', damage: 0, active: false, called: false }
 ];
 
-// Викликається при натисканні на Процедурний кабінет на карті
 function openProcedureRoomBattle() {
     if (stats.madness < 100) {
         alert("У нормальному стані процедурний кабінет зачинений.");
@@ -1164,16 +1165,16 @@ function closeNurseDossier() {
     if (dossierModal) dossierModal.classList.add('hidden');
 }
 
-// Старт бою з досьє
+// Старт бою
 function startNurseFight() {
     closeNurseDossier();
     if (typeof toggleMapModal === 'function') {
-        toggleMapModal(false); // Закриваємо карту
+        toggleMapModal(false);
     }
     
     bossCurrentHp = bossMaxHp;
+    playerAttackCooldown = false;
 
-    // Підтягуємо твій справжній нік з профілю або глобальних змінних
     let currentName = 'Пацієнт #404';
     if (typeof playerName !== 'undefined' && playerName) {
         currentName = playerName;
@@ -1188,6 +1189,7 @@ function startNurseFight() {
             m.active = true;
         } else {
             m.active = false;
+            m.called = false;
         }
     });
     
@@ -1195,9 +1197,17 @@ function startNurseFight() {
     
     const battleModal = document.getElementById('nurse-battle-modal');
     if (battleModal) battleModal.classList.remove('hidden');
+
+    // Запускаємо фонову атаку друзів, які беруть участь у бою
+    if (friendAttackInterval) clearInterval(friendAttackInterval);
+    friendAttackInterval = setInterval(friendsAutoAttackTick, 3500);
 }
 
 function closeNurseBattle() {
+    if (friendAttackInterval) {
+        clearInterval(friendAttackInterval);
+        friendAttackInterval = null;
+    }
     const battleModal = document.getElementById('nurse-battle-modal');
     if (battleModal) battleModal.classList.add('hidden');
     
@@ -1205,7 +1215,22 @@ function closeNurseBattle() {
     if (raidPanel) raidPanel.classList.add('hidden');
 }
 
-// Вимикач компактної панелі рейду праворуч
+// Показ гарного сповіщення без браузерного alert
+function showCustomToast(message) {
+    const toast = document.getElementById('custom-toast-notification');
+    const msgElem = document.getElementById('toast-message');
+    if (!toast || !msgElem) return;
+
+    msgElem.textContent = message;
+    toast.classList.remove('hidden');
+    toast.style.opacity = '1';
+
+    setTimeout(() => {
+        toast.style.opacity = '0';
+        setTimeout(() => toast.classList.add('hidden'), 300);
+    }, 2200);
+}
+
 function toggleRaidPanel() {
     const panel = document.getElementById('battle-raid-panel');
     if (panel) {
@@ -1216,7 +1241,6 @@ function toggleRaidPanel() {
     }
 }
 
-// Відкриття вікна вибору друзів
 function openFriendInviteModal() {
     renderFriendsCheckboxList();
     document.getElementById('friend-invite-modal').classList.remove('hidden');
@@ -1237,8 +1261,8 @@ function renderFriendsCheckboxList(filterText = '') {
 
     container.innerHTML = availableFriends.map(f => `
         <label style="background: #15100c; border: 1px solid #3d2d22; padding: 10px; border-radius: 6px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; font-size: 13px;">
-            <span style="color: ${f.active ? '#27ae60' : '#f4e8d1'};">${f.name} ${f.active ? '(Вже в рейді)' : ''}</span>
-            <input type="checkbox" value="${f.id}" class="friend-checkbox" ${f.active ? 'checked' : ''} style="width: 18px; height: 18px; accent-color: #8e44ad;">
+            <span style="color: ${f.called ? '#27ae60' : '#f4e8d1'};">${f.name} ${f.called ? '(Вже покликано)' : ''}</span>
+            <input type="checkbox" value="${f.id}" class="friend-checkbox" ${f.called ? 'checked' : ''} style="width: 18px; height: 18px; accent-color: #8e44ad;">
         </label>
     `).join('');
 }
@@ -1248,15 +1272,16 @@ function filterFriendsList() {
     renderFriendsCheckboxList(query);
 }
 
-// Покликати обраних галочками
+// Покликати обраних
 function callSelectedFriends() {
     let checkboxes = document.querySelectorAll('.friend-checkbox:checked');
     let calledCount = 0;
 
     checkboxes.forEach(cb => {
         let member = raidMembers.find(m => m.id === cb.value);
-        if (member && !member.active) {
-            member.active = true;
+        if (member && !member.called) {
+            member.called = true;
+            member.active = true; // Приєднується до рейду
             calledCount++;
         }
     });
@@ -1266,30 +1291,36 @@ function callSelectedFriends() {
         updateRaidListUI();
     }
     if (calledCount > 0) {
-        alert(`📢 Успішно покликано друзів до рейду: ${calledCount}!`);
+        showCustomToast(`📢 Успішно покликано друзів: ${calledCount}!`);
     }
 }
 
-// Покликати всіх друзів однією кнопкою
+// Покликати всіх
 function callAllFriends() {
     raidMembers.forEach(m => {
-        if (!m.isPlayer) m.active = true;
+        if (!m.isPlayer) {
+            m.called = true;
+            m.active = true;
+        }
     });
 
     closeFriendInviteModal();
     if (!document.getElementById('battle-raid-panel').classList.contains('hidden')) {
         updateRaidListUI();
     }
-    alert("🔥 Усі доступні друзі приєдналися до рейду!");
+    showCustomToast("🔥 Усі доступні друзі приєдналися до рейду!");
 }
 
 function updateRaidListUI() {
     const container = document.getElementById('raid-members-container');
     if (!container) return;
 
-    container.innerHTML = raidMembers.map(m => {
+    // Показуємо гравця та тільки тих друзів, яких реально покликали
+    let activeParticipants = raidMembers.filter(m => m.isPlayer || m.called);
+
+    container.innerHTML = activeParticipants.map(m => {
         let statusColor = m.isPlayer || m.active ? '#27ae60' : '#7f8c8d';
-        let statusText = m.isPlayer ? 'Головний гравець' : (m.active ? 'Бере участь' : 'Очікує');
+        let statusText = m.isPlayer ? 'Головний гравець' : 'Бере участь';
         return `
             <div style="background: #15100c; border: 1px solid #3d2d22; padding: 6px 10px; border-radius: 6px; display: flex; justify-content: space-between; align-items: center; font-size: 11px;">
                 <div>
@@ -1304,7 +1335,7 @@ function updateRaidListUI() {
     }).join('');
 }
 
-// Сноски урону в реальному часі (Floating Combat Text)
+// Анімація сносок урону
 function showFloatingDamage(text, isPlayerHit = false, customX = null, customY = null) {
     const container = document.getElementById('damage-floating-container');
     if (!container) return;
@@ -1338,8 +1369,33 @@ function showFloatingDamage(text, isPlayerHit = false, customX = null, customY =
     }, 850);
 }
 
-// Клік по арені — Атака гравця та активних друзів
+// Автоматична атака друзів у своєму темпі
+function friendsAutoAttackTick() {
+    if (bossCurrentHp <= 0) return;
+
+    raidMembers.forEach(m => {
+        if (!m.isPlayer && m.called && m.active && bossCurrentHp > 0) {
+            let friendDmg = Math.floor(Math.random() * 8) + 4;
+            bossCurrentHp = Math.max(0, bossCurrentHp - friendDmg);
+            m.damage += friendDmg;
+            
+            showFloatingDamage(`${m.name.split(' ')[0]}: -${friendDmg}`);
+
+            if (!document.getElementById('battle-raid-panel').classList.contains('hidden')) {
+                updateRaidListUI();
+            }
+
+            if (bossCurrentHp <= 0) {
+                handleVictory();
+            }
+        }
+    });
+}
+
+// Клік по арені — Атака гравця з колдауном 4 секунди
 function performPlayerAttack(event) {
+    if (playerAttackCooldown || bossCurrentHp <= 0) return;
+
     let dmg = stats.damage || 10;
     bossCurrentHp = Math.max(0, bossCurrentHp - dmg);
 
@@ -1350,19 +1406,6 @@ function performPlayerAttack(event) {
     let clickY = event ? event.clientY : window.innerHeight / 2;
     showFloatingDamage(`-${dmg}`, false, clickX, clickY);
 
-    // Атака активних друзів у реальному часі
-    raidMembers.forEach(m => {
-        if (!m.isPlayer && m.active) {
-            let friendDmg = Math.floor(Math.random() * 8) + 4;
-            bossCurrentHp = Math.max(0, bossCurrentHp - friendDmg);
-            m.damage += friendDmg;
-            
-            setTimeout(() => {
-                showFloatingDamage(`${m.name.split(' ')[0]}: -${friendDmg}`);
-            }, 300);
-        }
-    });
-
     if (!document.getElementById('battle-raid-panel').classList.contains('hidden')) {
         updateRaidListUI();
     }
@@ -1371,6 +1414,16 @@ function performPlayerAttack(event) {
         handleVictory();
         return;
     }
+
+    // Вмикаємо колдаун на 4 секунди для гравця
+    playerAttackCooldown = true;
+    let arena = document.getElementById('battle-arena-screen');
+    if (arena) arena.style.cursor = 'not-allowed';
+
+    setTimeout(() => {
+        playerAttackCooldown = false;
+        if (arena && bossCurrentHp > 0) arena.style.cursor = 'pointer';
+    }, 4000);
 
     // Контратака медсестри
     let counter = 12;
@@ -1388,12 +1441,16 @@ function performPlayerAttack(event) {
     updateBattleUI();
 }
 
-// Перемога, визначення справжнього MVP та Халтурщиків
+// Перемога (тільки реальні учасники рейду у звіті)
 function handleVictory() {
+    if (friendAttackInterval) {
+        clearInterval(friendAttackInterval);
+        friendAttackInterval = null;
+    }
+    
     nurseKillsCount++;
     closeNurseBattle();
 
-    // Поріг для нагороди (10% від HP боса = 12 урону)
     let minThreshold = bossMaxHp * 0.10;
     let playerMember = raidMembers.find(m => m.isPlayer);
     let playerEarnedReward = playerMember.damage >= minThreshold;
@@ -1414,12 +1471,13 @@ function handleVictory() {
         }
     }
 
-    // Сортуємо учасників за найбільшим уроном, щоб знайти справжнього MVP
-    let sortedRaid = [...raidMembers].sort((a, b) => b.damage - a.damage);
+    // Фільтруємо: тільки гравець + ті, кого реально покликали
+    let activeParticipants = raidMembers.filter(m => m.isPlayer || m.called);
+    let sortedRaid = [...activeParticipants].sort((a, b) => b.damage - a.damage);
     let mvp = sortedRaid[0];
 
     let summaryHtml = `<div style="font-weight: bold; font-size: 15px; color: #f39c12; margin-bottom: 10px; text-align: center; text-shadow: 0 0 8px rgba(243,156,18,0.4);">👑 MVP РЕЙДУ: ${mvp.name} — ${mvp.damage} DMG</div>`;
-    summaryHtml += `<div style="font-size: 12px; color: #bdaea0; margin-bottom: 6px; border-bottom: 1px dashed #3d2d22; padding-bottom: 4px;">📊 Детальний внесок учасників:</div>`;
+    summaryHtml += `<div style="font-size: 12px; color: #bdaea0; margin-bottom: 6px; border-bottom: 1px dashed #3d2d22; padding-bottom: 4px;">📊 Внесок учасників рейду:</div>`;
 
     sortedRaid.forEach(m => {
         let gotReward = m.damage >= minThreshold;
@@ -1432,7 +1490,6 @@ function handleVictory() {
     updateUI();
 }
 
-// Кнопки у вікні перемоги
 function victoryContinueToMap() {
     document.getElementById('nurse-victory-modal').classList.add('hidden');
 }
@@ -1442,7 +1499,6 @@ function victoryRestartFight() {
     startNurseFight();
 }
 
-// Оновлення інтерфейсу бою
 function updateBattleUI() {
     const playerNameElem = document.getElementById('b-player-name');
     if (playerNameElem) {
