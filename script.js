@@ -1133,35 +1133,80 @@ function openMedicalHub() {
 let bossCurrentHp = 120;
 let bossMaxHp = 120;
 
-// Викликається при кліку на вузол «Процедурний кабінет» на карті під час психозу
+// Викликається при натисканні на Процедурний кабінет на карті
 function openProcedureRoomBattle() {
     if (stats.madness < 100) {
-        alert("У нормальному стані процедурний кабінет зачинений або використовується для стандартних процедур.");
+        alert("У нормальному стані процедурний кабінет працює як стандартний лазарет.");
         return;
     }
-    // Відкриваємо спочатку досьє міні-боса
-    document.getElementById('nurse-dossier-modal').classList.remove('hidden');
+    // Відкриваємо Досьє поверх карти (карта НЕ закривається)
+    const dossierModal = document.getElementById('nurse-dossier-modal');
+    if (dossierModal) dossierModal.classList.remove('hidden');
 }
 
-// Кнопка з досьє переводить на арену бою
+function closeNurseDossier() {
+    const dossierModal = document.getElementById('nurse-dossier-modal');
+    if (dossierModal) dossierModal.classList.add('hidden');
+}
+
+// Старт бою з досьє
 function startNurseFight() {
-    document.getElementById('nurse-dossier-modal').classList.add('hidden');
+    closeNurseDossier();
+    toggleMapModal(false); // Тепер закриваємо карту, оскільки починається бій
     
     bossCurrentHp = bossMaxHp;
     updateBattleUI();
     
-    document.getElementById('nurse-battle-modal').classList.remove('hidden');
+    const battleModal = document.getElementById('nurse-battle-modal');
+    if (battleModal) battleModal.classList.remove('hidden');
+}
+
+function closeNurseBattle() {
+    const battleModal = document.getElementById('nurse-battle-modal');
+    if (battleModal) battleModal.classList.add('hidden');
 }
 
 function updateBattleUI() {
-    document.getElementById('battle-p-hp').textContent = `${stats.hp}/${stats.maxHp}`;
+    // ХП Гравця
+    document.getElementById('b-player-hp').textContent = `${stats.hp}/${stats.maxHp}`;
     let pPercent = Math.max(0, (stats.hp / stats.maxHp) * 100);
-    document.getElementById('battle-p-hpbar').style.width = `${pPercent}%`;
-    document.getElementById('p-dmg-stat').textContent = stats.damage || 10;
+    document.getElementById('b-player-hpbar').style.width = `${pPercent}%`;
+    document.getElementById('b-p-dmg').textContent = stats.damage || 10;
 
-    document.getElementById('battle-boss-hp').textContent = `${bossCurrentHp}/${bossMaxHp}`;
+    // ХП Боса
+    document.getElementById('b-boss-hp').textContent = `${bossCurrentHp}/${bossMaxHp}`;
     let bPercent = Math.max(0, (bossCurrentHp / bossMaxHp) * 100);
-    document.getElementById('battle-boss-hpbar').style.width = `${bPercent}%`;
+    document.getElementById('b-boss-hpbar').style.width = `${bPercent}%`;
+
+    // Підрахунок аптечок в інвентарі
+    let smallMeds = inventory.filter(i => i.name === 'Мала аптечка' || i.category === 'meds').reduce((acc, item) => acc + (item.count || 1), 0);
+    let bigMeds = inventory.filter(i => i.name === 'Велика аптечка').reduce((acc, item) => acc + (item.count || 1), 0);
+
+    const btnSmall = document.getElementById('medkit-btn-small');
+    const countSmall = document.getElementById('medkit-count-small');
+    if (countSmall) countSmall.textContent = smallMeds;
+    if (btnSmall) {
+        if (smallMeds <= 0) {
+            btnSmall.style.opacity = '0.5';
+            btnSmall.style.cursor = 'not-allowed';
+        } else {
+            btnSmall.style.opacity = '1';
+            btnSmall.style.cursor = 'pointer';
+        }
+    }
+
+    const btnBig = document.getElementById('medkit-btn-big');
+    const countBig = document.getElementById('medkit-count-big');
+    if (countBig) countBig.textContent = bigMeds;
+    if (btnBig) {
+        if (bigMeds <= 0) {
+            btnBig.style.opacity = '0.5';
+            btnBig.style.cursor = 'not-allowed';
+        } else {
+            btnBig.style.opacity = '1';
+            btnBig.style.cursor = 'pointer';
+        }
+    }
 }
 
 function performPlayerAttack() {
@@ -1171,7 +1216,6 @@ function performPlayerAttack() {
     if (bossCurrentHp <= 0) {
         alert("🎉 Перемога над Сестрою Кларою!\nОтримано: Ключ від блоку боса та набір інструментів.");
         
-        // Видаємо квестовий ключ в інвентар
         let questKey = {
             name: 'Ключ від блоку боса',
             icon: '🔑',
@@ -1184,19 +1228,19 @@ function performPlayerAttack() {
         }
 
         addExperience(50);
-        document.getElementById('nurse-battle-modal').classList.add('hidden');
+        closeNurseBattle();
         updateUI();
         return;
     }
 
-    // Зустрічний удар медсестри
+    // Відповідь медсестри
     let counter = 12;
     stats.hp = Math.max(0, stats.hp - counter);
 
     if (stats.hp <= 0) {
-        alert("💀 Сестра Клара вколола вам важкий седативний препарат... Ви втратили свідомість і отямилися в палаті.");
+        alert("💀 Сестра Клара вколола вам седативний препарат... Ви знепритомніли.");
         stats.hp = stats.maxHp;
-        document.getElementById('nurse-battle-modal').classList.add('hidden');
+        closeNurseBattle();
         updateUI();
         return;
     }
@@ -1204,18 +1248,18 @@ function performPlayerAttack() {
     updateBattleUI();
 }
 
-function useBattleMedkit() {
-    let med = inventory.find(i => i.category === 'meds' && i.count > 0);
-    if (med) {
-        med.count--;
-        if (med.count <= 0) {
-            inventory = inventory.filter(i => i !== med);
+function useBattleMedkit(type) {
+    let medName = type === 'big' ? 'Велика аптечка' : 'Мала аптечка';
+    let medItem = inventory.find(i => i.name === medName || (type === 'small' && i.category === 'meds'));
+
+    if (medItem && medItem.count > 0) {
+        medItem.count--;
+        if (medItem.count <= 0) {
+            inventory = inventory.filter(i => i !== medItem);
         }
-        stats.hp = Math.min(stats.maxHp, stats.hp + 40);
-        alert("🧪 Ви використали аптечку під час бою (+40 HP)!");
+        let healAmount = type === 'big' ? 50 : 20;
+        stats.hp = Math.min(stats.maxHp, stats.hp + healAmount);
         updateBattleUI();
         updateUI();
-    } else {
-        alert("❌ Немає аптечок в інвентарі!");
     }
 }
