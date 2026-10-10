@@ -662,3 +662,201 @@ function renderWardrobe() {
         container.innerHTML = `<p style="font-size:12px; color:#a3927d; text-align:center; padding: 20px 0;">Розділ [${currentWardrobeTab.toUpperCase()}] буде заповнений пізніше!</p>`;
     }
 }
+// === Система комплексних тренувань у лікарні ===
+let gymComplex = loadSaveData('palata404_gym', {
+    exercises: [
+        { id: 'squats', name: 'Присідання', icon: '🦵', current: 0, target: 15, energy: 2, madness: 1, exp: 5 },
+        { id: 'pushups', name: 'Віджимання', icon: '💪', current: 0, target: 12, energy: 3, madness: 2, exp: 8 },
+        { id: 'plank', name: 'Планка', icon: '🧘', current: 0, target: 10, energy: 4, madness: 2, exp: 10 },
+        { id: 'pullups', name: 'Підтягування', icon: '🦾', current: 0, target: 8, energy: 5, madness: 3, exp: 14 },
+        { id: 'stretching', name: 'Розтяжка', icon: '🤸', current: 0, target: 10, energy: 2, madness: 1, exp: 6 },
+        { id: 'shadowbox', name: 'Бій з тінню', icon: '🥊', current: 0, target: 5, energy: 6, madness: 5, exp: 20 }
+    ],
+    completedRounds: 0
+});
+
+function openGym() {
+    closeInventory();
+    closeCustomization();
+    closeFriends();
+    closeSettings();
+    renderGymModal();
+    document.getElementById('gym-modal').classList.remove('hidden');
+}
+
+function closeGym() {
+    document.getElementById('gym-modal').classList.add('hidden');
+}
+
+function doGymExercise(exId) {
+    let ex = gymComplex.exercises.find(e => e.id === exId);
+    if (!ex) return;
+
+    if (ex.current >= ex.target) {
+        alert(`Цю вправу (${ex.name}) вже виконано до кінця в цьому циклі!`);
+        return;
+    }
+
+    if (stats.energy < ex.energy) {
+        alert("Занадто мало витривалості! Потрібно відпочити в ліжку.");
+        return;
+    }
+
+    stats.energy -= ex.energy;
+    stats.madness = Math.min(100, stats.madness + ex.madness);
+    
+    ex.current += 1;
+    addExperience(ex.exp);
+
+    checkGymComplexCompletion();
+
+    saveGymProgress();
+    updateUI();
+    renderGymModal();
+}
+
+function checkGymComplexCompletion() {
+    let allDone = gymComplex.exercises.every(e => e.current >= e.target);
+    if (allDone) {
+        gymComplex.completedRounds += 1;
+        stats.damage = (stats.damage || 10) + 3;
+        addExperience(100);
+        alert(`🏆 ВЕЛИКИЙ БАФ! Ви повністю завершили комплекс із 6 вправ!\n⚡ Базовий урон збільшено на +3!\n🎉 Отримано 100 EXP! Комплекс оновлено.`);
+
+        gymComplex.exercises.forEach(e => e.current = 0);
+    }
+}
+
+function saveGymProgress() {
+    localStorage.setItem('palata404_gym', JSON.stringify(gymComplex));
+}
+
+function renderGymModal() {
+    const container = document.getElementById('gym-exercises-list');
+    if (!container) return;
+    container.innerHTML = '';
+
+    gymComplex.exercises.forEach(ex => {
+        let isDone = ex.current >= ex.target;
+        let item = document.createElement('div');
+        item.style.cssText = "display: flex; justify-content: space-between; align-items: center; background: #261f1a; padding: 8px 12px; border-radius: 6px; border: 1px solid #4a382c;";
+        
+        item.innerHTML = `
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <span style="font-size: 20px;">${ex.icon}</span>
+                <div>
+                    <strong style="color: ${isDone ? '#2ecc71' : '#fff8e7'};">${ex.name} ${isDone ? '✓' : ''}</strong>
+                    <div style="font-size: 11px; color: #a3927d;">Прогрес: ${ex.current} / ${ex.target} | Витрата: ⚡${ex.energy}</div>
+                </div>
+            </div>
+            <button class="btn-outfit" onclick="doGymExercise('${ex.id}')" ${isDone ? 'disabled style="opacity: 0.4; cursor: not-allowed;"' : ''}>
+                ${isDone ? 'Виконано' : 'Робити'}
+            </button>
+        `;
+        container.appendChild(item);
+    });
+}
+// === Система навігації по Лікувальному корпусу (Реальний світ) ===
+let currentRoom = {
+    id: 'room_404',
+    name: 'Палата #404',
+    desc: 'Стіни шепочуть тобі... Твоє безпечне місце.'
+};
+
+const medicalRooms = [
+    { 
+        id: 'room_404', 
+        name: 'Палата #404', 
+        icon: '🛏️', 
+        desc: 'Твоя власна палата. Тут можна відпочити та заспокоїтись.',
+        actionText: 'Знаходитесь тут'
+    },
+    { 
+        id: 'gym', 
+        name: 'Зал реабілітації (Спортзал)', 
+        icon: '🏋️', 
+        desc: 'Місце для фізичних вправ. Дозволяє качати базовий урон через комплекс.',
+        actionText: 'Перейти до тренувань'
+    },
+    { 
+        id: 'treatment_room', 
+        name: 'Процедурний кабінет', 
+        icon: '💉', 
+        desc: 'Тут видають ліки. Можна отримати пігулки або пройти терапію.',
+        actionText: 'Увійти в кабінет'
+    },
+    { 
+        id: 'corridor', 
+        name: 'Коридор блоку', 
+        icon: '🚪', 
+        desc: 'Довгий сірий коридор. Можна зв\'язатися з іншими пацієнтами.',
+        actionText: 'Вийти в коридор'
+    }
+];
+
+function openMedicalHub() {
+    closeInventory();
+    closeCustomization();
+    closeFriends();
+    closeSettings();
+    closeGym();
+    
+    renderMedicalRooms();
+    document.getElementById('medical-hub-modal').classList.remove('hidden');
+}
+
+function closeMedicalHub() {
+    document.getElementById('medical-hub-modal').classList.add('hidden');
+}
+
+function renderMedicalRooms() {
+    const container = document.getElementById('rooms-list-container');
+    if (!container) return;
+    container.innerHTML = '';
+
+    medicalRooms.forEach(room => {
+        let isCurrent = currentRoom.id === room.id;
+        let item = document.createElement('div');
+        item.style.cssText = `display: flex; justify-content: space-between; align-items: center; background: ${isCurrent ? '#3d2e24' : '#261f1a'}; padding: 10px 12px; border-radius: 6px; border: 1px solid ${isCurrent ? '#8c684d' : '#4a382c'};`;
+        
+        item.innerHTML = `
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <span style="font-size: 22px;">${room.icon}</span>
+                <div>
+                    <strong style="color: ${isCurrent ? '#f39c12' : '#fff8e7'};">${room.name} ${isCurrent ? '(Тут)' : ''}</strong>
+                    <div style="font-size: 11px; color: #a3927d; margin-top: 2px;">${room.desc}</div>
+                </div>
+            </div>
+            <button class="btn-outfit" onclick="selectRoom('${room.id}')" ${isCurrent ? 'style="background: #8c684d; color: white;"' : ''}>
+                ${isCurrent ? 'Ви тут' : 'Перейти'}
+            </button>
+        `;
+        container.appendChild(item);
+    });
+}
+
+function selectRoom(roomId) {
+    let room = medicalRooms.find(r => r.id === roomId);
+    if (!room) return;
+
+    currentRoom = room;
+    
+    // Оновлюємо текст локації на правій панелі
+    document.getElementById('current-location-name').textContent = room.name;
+    document.getElementById('current-location-desc').textContent = room.desc;
+
+    closeMedicalHub();
+
+    // Якщо гравець обрав спортзал — одразу відкриваємо модальне вікно тренувань!
+    if (roomId === 'gym') {
+        openGym();
+    } else if (roomId === 'treatment_room') {
+        alert("💉 Ви зайшли у процедурний кабінет. Медсестри сьогодні немає, але на столі вдалося знайти +1 пігулку!");
+        stats.pills = (stats.pills || 0) + 1;
+        updateUI();
+    } else if (roomId === 'corridor') {
+        alert("🚪 Ви вийшли у коридор блоку. Тиша і запах хлорки... Чути далекі кроки санітарів.");
+    } else {
+        alert(`🛏️ Ви повернулися до своєї палати (#404). Тут спокійно.`);
+    }
+}

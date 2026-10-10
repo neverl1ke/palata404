@@ -135,16 +135,16 @@
 
             <!-- Права панель -->
             <aside class="right-panel">
-                <div class="location-card">
-                    <div class="loc-title">Поточна локація</div>
-                    <div class="loc-name">Палата #404</div>
-                    <div class="loc-desc">Стіни шепочуть тобі...</div>
-                </div>
+               <div class="location-card" onclick="openMedicalHub()" style="cursor: pointer;" title="Натисніть, щоб перейти до корпусу">
+    <div class="loc-title">Поточна локація (Натисніть)</div>
+    <div class="loc-name" id="current-location-name">Палата #404</div>
+    <div class="loc-desc" id="current-location-desc">Стіни шепочуть тобі... Перехід у корпус.</div>
+</div>
 
-                <div class="side-menu">
-                    <button class="btn-main-action" onclick="tapCharacter()">🔍 Дослідити палату (+EXP)</button>
-                    <button class="menu-btn" onclick="restInBed()">🛏️ Відпочинок (+⚡ / -🧠)</button>
-                </div>
+               <div class="side-menu">
+    <button class="btn-main-action" onclick="openGym()">🏋️ Зал реабілітації (Спортзал)</button>
+    <button class="menu-btn" onclick="restInBed()">🛏️ Відпочинок (+⚡ / -🧠)</button>
+</div>
             </aside>
 
         </main>
@@ -293,5 +293,34 @@
     </div>
 
     <script src="script.js?v=40000"></script>
+    <!-- Модальне вікно: Спортзал / Комплекс вправ -->
+    <div id="gym-modal" class="modal center-modal hidden">
+        <div class="modal-content" style="width: min(440px, 92vw);">
+            <div class="modal-header">
+                <h3>🏋️ Спортивний зал реабілітації</h3>
+                <button class="btn-close-mini" onclick="closeGym()">✕</button>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 10px; font-size: 13px;">
+                <p style="color: #a3927d; font-size: 12px;">Виконуйте вправи щодня. Закрийте весь комплекс із 6 вправ, щоб отримати потужний бойовий баф (+3 до урону) та досвід!</p>
+                <div id="gym-exercises-list" style="display: flex; flex-direction: column; gap: 6px; max-height: 280px; overflow-y: auto;"></div>
+            </div>
+        </div>
+    </div>
+    <!-- Модальне вікно: Лікувальний корпус (Вибір кімнат у реальному світі) -->
+<div id="medical-hub-modal" class="modal center-modal hidden">
+    <div class="modal-content" style="width: min(420px, 92vw);">
+        <div class="modal-header">
+            <h3>🏥 Лікувальний корпус</h3>
+            <button class="btn-close-mini" onclick="closeMedicalHub()">✕</button>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 10px; font-size: 13px;">
+            <p style="color: #a3927d; font-size: 12px;">Оберіть сектор лікувального корпусу для переходу:</p>
+            
+            <div id="rooms-list-container" style="display: flex; flex-direction: column; gap: 8px;">
+                <!-- Динамічно заповнюється кімнатами -->
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>
