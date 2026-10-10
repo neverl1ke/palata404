@@ -757,3 +757,102 @@ body {
     justify-content: flex-start !important;
     box-sizing: border-box !important;
 }
+/* Стилі для медичного досьє пацієнта (Аркуш паперу А4) */
+.dossier-paper {
+    background: #f4ebd0 !important;
+    color: #2c221e !important;
+    border: 2px solid #8c7a6b !important;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.9), inset 0 0 40px rgba(180, 150, 110, 0.3) !important;
+    width: min(450px, 92vw) !important;
+    font-family: 'Special Elite', cursive, monospace !important;
+    position: relative;
+}
+
+.dossier-header-stamp {
+    position: absolute;
+    top: 12px;
+    right: 50px;
+    font-size: 9px;
+    color: #c0392b;
+    border: 1px dashed #c0392b;
+    padding: 2px 6px;
+    transform: rotate(4deg);
+    letter-spacing: 1px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.dossier-body {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 13px;
+    max-height: 65vh;
+    overflow-y: auto;
+    padding-right: 4px;
+}
+
+.dossier-row-main {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.05);
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #d4c3a3;
+}
+
+.dossier-avatar-box {
+    font-size: 32px;
+    background: #e8d7be;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    border: 1px solid #a3927d;
+}
+
+.dossier-info-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    font-size: 12px;
+}
+
+.dossier-section-title {
+    font-size: 11px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #5c4a3d;
+    border-bottom: 1px solid #d4c3a3;
+    padding-bottom: 3px;
+    margin-top: 5px;
+}
+
+.dossier-stats-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.dossier-stat-item {
+    display: flex;
+    justify-content: space-between;
+    background: rgba(255, 255, 255, 0.4);
+    padding: 5px 8px;
+    border-radius: 4px;
+    border: 1px solid #e2d2b5;
+    font-size: 12px;
+}
+
+.dossier-psych-note {
+    background: rgba(192, 57, 43, 0.08);
+    border-left: 3px solid #c0392b;
+    padding: 8px;
+    font-size: 11px;
+    line-height: 1.4;
+    color: #4a2e2b;
+    border-radius: 0 4px 4px 0;
+}

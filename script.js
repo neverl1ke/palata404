@@ -428,9 +428,11 @@ function handleNodeClick(node, floor) {
     } else if (node.type === 'boss') {
         alert("⚔️ Бій з Босом 10-го Поверху!\nЦей функціонал розробляється для рейдового режиму.");
     }
-}
-
 function openSettings() {
+    closeInventory();
+    closeCustomization();
+    closeFriends();
+    closeDossier();
     document.getElementById('settings-modal').classList.remove('hidden');
 }
 
@@ -851,7 +853,6 @@ function selectRoom(roomId) {
 
 // === Логіка купівлі препаратів та лікування в Процедурному кабінеті ===
 function buyMedicalItem(itemType, cost, currencyType) {
-    // Перевірка наявності коштів та списання
     if (currencyType === 'silver') {
         if (stats.silver >= cost) {
             stats.silver -= cost;
@@ -867,6 +868,69 @@ function buyMedicalItem(itemType, cost, currencyType) {
             return;
         }
     }
+
+    let newItemData = null;
+
+    if (itemType === 'madness_pills') {
+        newItemData = {
+            name: 'Таблетки «Аміназин»',
+            icon: '💊',
+            category: 'meds',
+            effectType: 'madness',
+            effectDesc: 'Знижує божевілля на -15',
+            desc: 'Препарат стримання психіки із запасів медпункту.'
+        };
+    } else if (itemType === 'stamina_10') {
+        newItemData = {
+            name: 'Енергетик «Психо-Кола»',
+            icon: '⚡',
+            category: 'meds',
+            effectType: 'stamina_10',
+            effectDesc: 'Відновлює 10% витривалості',
+            desc: 'Тонізуючий газований напій сумнівної якості.'
+        };
+    } else if (itemType === 'stamina_full') {
+        newItemData = {
+            name: 'Стимулятор «Адреналін-Фул»',
+            icon: '💉',
+            category: 'meds',
+            effectType: 'stamina_full',
+            effectDesc: 'Повне відновлення витривалості',
+            desc: 'Армійська ін\'єкція в шприц-тюбику.'
+        };
+    } else if (itemType === 'hp_10') {
+        newItemData = {
+            name: 'Мала аптечка',
+            icon: '🧪',
+            category: 'meds',
+            effectType: 'hp_10',
+            effectDesc: 'Відновлює 10% здоров\'я (HP)',
+            desc: 'Індивідуальний пакет із антисептиком.'
+        };
+    } else if (itemType === 'hp_full') {
+        newItemData = {
+            name: 'Велика армійська аптечка',
+            icon: '🩹',
+            category: 'meds',
+            effectType: 'hp_full',
+            effectDesc: 'Повне відновлення здоров\'я (HP)',
+            desc: 'Герметичний армійський контейнер медикаментів.'
+        };
+    }
+
+    if (newItemData) {
+        let existingItem = inventory.find(i => i.name === newItemData.name);
+        if (existingItem) {
+            existingItem.count = (existingItem.count || 1) + 1;
+        } else {
+            inventory.push({ ...newItemData, count: 1 });
+        }
+        alert(`Придбано та додано до інвентаря: ${newItemData.name} (${newItemData.icon})!`);
+    }
+
+    updateUI();
+    saveGameProgress();
+}
 
     // Ефекти товарів
     if (itemType === 'madness_pills') {
@@ -926,4 +990,31 @@ function updateEnergyTimer() {
     
     energyTimerElem.textContent = `(+1 за ${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')})`;
 }
-setInterval(updateEnergyTimer, 1000);
+setInterval(updateEnergyTimer, 1000); 
+// === СИСТЕМА ДОСЬЄ ПАЦІЄНТА ===
+function openDossier() {
+    closeInventory();
+    closeCustomization();
+    closeSettings();
+    closeFriends();
+    closeGym();
+    closeMedicalHub();
+    closeProcedureRoom();
+
+    document.getElementById('dossier-name').textContent = playerName;
+    document.getElementById('dossier-rank').textContent = getPlayerRank(stats.level);
+    document.getElementById('dossier-lvl').textContent = stats.level;
+    document.getElementById('dossier-days').textContent = stats.daysInClinic || 14;
+
+    document.getElementById('dossier-madness-attacks').textContent = stats.madnessAttacks || 3;
+    document.getElementById('dossier-enemies-killed').textContent = stats.enemiesKilled || 0;
+    document.getElementById('dossier-bosses-killed').textContent = stats.bossesKilled || 0;
+    document.getElementById('dossier-pills-used').textContent = stats.pillsUsed || 5;
+    document.getElementById('dossier-gym-rounds').textContent = stats.gymRounds || 0;
+
+    document.getElementById('dossier-modal').classList.remove('hidden');
+}
+
+function closeDossier() {
+    document.getElementById('dossier-modal').classList.add('hidden');
+}

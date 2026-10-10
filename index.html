@@ -19,8 +19,8 @@
 
         <!-- Верхня панель (Єдина суцільна шапка-полоска) -->
         <div class="top-nav">
-            <!-- Лівий блок: Профіль гравця -->
-            <div class="user-profile-badge" onclick="openSettings()">
+<!-- Лівий блок: Профіль гравця (відкриває Досьє) -->
+            <div class="user-profile-badge" onclick="openDossier()" title="Натисніть для перегляду медичного досьє">
                 <div class="avatar-mini">🪖</div>
                 <div class="user-text">
                     <div class="user-name-row">
@@ -381,5 +381,42 @@
     </div>
 
     <script src="script.js?v=40001"></script>
+    <!-- Модальне вікно: Медичне Досьє пацієнта (Аркуш паперу А4) -->
+    <div id="dossier-modal" class="modal center-modal hidden">
+        <div class="modal-content dossier-paper">
+            <div class="dossier-header-stamp">АРХІВ СПЕЦБЛОКУ • ПАЛАТА 404</div>
+            <div class="modal-header" style="border-bottom-color: #5c4a3d;">
+                <h3 style="color: #2c221e; font-size: 18px;">📋 ОСОБИСТЕ ДОСЬЄ ПАЦІЄНТА</h3>
+                <button class="btn-close-mini" style="background: #2c221e; color: #fff8e7; border-color: #5c4a3d;" onclick="closeDossier()">✕</button>
+            </div>
+            
+            <div class="dossier-body">
+                <div class="dossier-row-main">
+                    <div class="dossier-avatar-box">🪖</div>
+                    <div class="dossier-info-grid">
+                        <div><strong>Ім'я:</strong> <span id="dossier-name">Пацієнт #404</span></div>
+                        <div><strong>Звання:</strong> <span id="dossier-rank">Новачок</span></div>
+                        <div><strong>Рівень допуску:</strong> <span id="dossier-lvl">1</span></div>
+                        <div><strong>Днів у клініці:</strong> <span id="dossier-days">14</span></div>
+                    </div>
+                </div>
+
+                <div class="dossier-section-title">МЕДИЧНИЙ СТАТУС ТА ІСТОРІЯ ХВОРОБИ</div>
+                
+                <div class="dossier-stats-list">
+                    <div class="dossier-stat-item"><span>🧠 Зафіксовано нападів божевілля:</span> <strong id="dossier-madness-attacks">3</strong></div>
+                    <div class="dossier-stat-item"><span>⚔️ Ліквідовано санітарів / погроз:</span> <strong id="dossier-enemies-killed">0</strong></div>
+                    <div class="dossier-stat-item"><span>👹 Знищено босів спецблоку:</span> <strong id="dossier-bosses-killed">0</strong></div>
+                    <div class="dossier-stat-item"><span>💊 Прийнято препаратів (пігулок):</span> <strong id="dossier-pills-used">5</strong></div>
+                    <div class="dossier-stat-item"><span>🏋️ Виконано комплексів вправ:</span> <strong id="dossier-gym-rounds">0</strong></div>
+                </div>
+
+                <div class="dossier-psych-note">
+                    <strong>Психіатричний висновок головлікаря:</strong><br>
+                    Пацієнт виявляє ознаки параної, проте демонструє дивну стійкість до агреміграції корпусу. Рекомендується продовжити спостереження в ізоляторі #404. Будь-які спроби втечі припиняти ізоляцією.
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
