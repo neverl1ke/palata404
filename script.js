@@ -347,6 +347,13 @@ function updateCharacterLayers() {
 
     // === ПЕРЕМИКАННЯ СТАНІВ: НОРМА vs ПСИХОЗ (100% божевілля) ===
     const mapBtn = document.getElementById('nav-map-btn');
+    if (stats.madness >= 100) {
+        // ПСИХОЗ: Кнопка карти з'являється
+        if (mapBtn) mapBtn.style.display = 'flex'; // або 'block', залежно від твого CSS
+    } else {
+        // НОРМА: Кнопка карти ПОВНІСТЮ ЗНИКАЄ
+        if (mapBtn) mapBtn.style.display = 'none'; 
+    }
     const locName = document.getElementById('current-location-name');
     const locDesc = document.getElementById('current-location-desc');
     const locTitleLabel = document.getElementById('loc-title-label');
