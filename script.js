@@ -213,9 +213,11 @@ const gameFloorsData = [
         unlocked: true,
         mapImage: "map_floor_10.png",
         nodes: [
-            { id: "sec1_collector", title: "⚙️ Збирач #1", x: 40, y: 38, type: "collector" },
-            { id: "sec2_grind", title: "🧱 Завал (Розчистити)", x: 57, y: 49, type: "grind" },
-            { id: "sec3_boss", title: "👹 Бос Поверху", x: 77, y: 38, type: "boss", locked: true }
+            { id: "sec_room404", title: "🛏️ Палата #404", x: 38, y: 31, type: "room_404" },
+            { id: "sec1_collector", title: "⚙️ Збирач #1", x: 38, y: 44, type: "collector" },
+            { id: "sec_procedure", title: "💉 Процедурний", x: 38, y: 62, type: "procedure" },
+            { id: "sec2_grind", title: "🧱 Завал (Розчистити)", x: 58, y: 50, type: "grind" },
+            { id: "sec3_boss", title: "👹 Бос Поверху", x: 82, y: 44, type: "boss", locked: true }
         ]
     },
     {
@@ -448,7 +450,12 @@ function openFloorMap(floorId) {
 }
 
 function handleNodeClick(node, floor) {
-    if (node.type === 'collector') {
+    if (node.type === 'room_404') {
+        alert("🛏️ Палата #404. Навіть у стані психозу тут віє слабким заспокійливим.");
+    } else if (node.type === 'procedure') {
+        alert("💉 Процедурний кабінет марення. Тут можна отримати дозу або знайти препарат.");
+        openProcedureRoom(); // Відкриваємо процедурне меню купівлі ліків
+    } else if (node.type === 'collector') {
         alert("⚙️ Автономний Збирач #1 працює!\nЗібрано луту: +15 Срібла, +1 Пігулка.");
         stats.silver += 15;
         stats.pills += 1;
@@ -456,7 +463,7 @@ function handleNodeClick(node, floor) {
     } else if (node.type === 'grind') {
         if (stats.energy >= 10) {
             stats.energy -= 10;
-            alert("⛏️ Ви розчистили частину завалу! Отримано 30 EXP та знайдено Ключ від Блоку Боса!");
+            alert("⛏️ Ви розчистили завал у коридорі! Отримано 30 EXP та відкрито шлях до Боса!");
             addExperience(30);
             
             const bossNode = floor.nodes.find(n => n.type === 'boss');
@@ -468,7 +475,7 @@ function handleNodeClick(node, floor) {
             alert("Недостатньо витривалості для розчищення завалу!");
         }
     } else if (node.type === 'boss') {
-        alert("⚔️ Бій з Босом 10-го Поверху!\nЦей функціонал розробляється для рейдового режиму.");
+        alert("⚔️ Бій з Босом 10-го Поверху у праці!\nГотуйте зброю та стимулятори.");
     }
 }
 
