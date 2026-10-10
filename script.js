@@ -317,7 +317,7 @@ function updateCharacterLayers() {
     }
 }
 
-function updateUI() {
+ function updateUI() {
     const hpValElem = document.getElementById('hp-val');
     if (hpValElem) hpValElem.textContent = `${stats.hp} / ${stats.maxHp}`;
 
@@ -353,15 +353,15 @@ function updateUI() {
     const locCardBox = document.getElementById('location-card-box');
 
     if (stats.madness >= 100) {
-        // СТАН ПСИХОЗУ / КОРИДОРИ МАРИННЯ
-        if (mapBtn) mapBtn.style.display = 'flex'; // Карта з'являється
+        // ПСИХОЗ: Карта з'являється, доступ до корпусу блокується
+        if (mapBtn) mapBtn.style.display = 'flex'; 
         if (locTitleLabel) locTitleLabel.textContent = "⚠️ СИСТЕМНИЙ ЗБІЙ";
         if (locName) locName.textContent = "ПОМИЛКА 404: Невідомо";
-        if (locDesc) locDesc.textContent = "Реальність втрачено. Час виходити в незвідані коридори...";
+        if (locDesc) locDesc.textContent = "Реальність втрачено. Спокійний корпус недоступний. Час виходити в коридори...";
         if (locCardBox) locCardBox.style.borderColor = "#c0392b";
     } else {
-        // НОРМАЛЬНИЙ СТАН ПАЦІЄНТА
-        if (mapBtn) mapBtn.style.display = 'none'; // Карта прихована
+        // НОРМА: Карта повністю зникає, працює лікувальний корпус
+        if (mapBtn) mapBtn.style.display = 'none'; 
         if (locTitleLabel) locTitleLabel.textContent = "Поточна локація";
         if (locName) locName.textContent = currentRoom.name || "Палата #404";
         if (locDesc) locDesc.textContent = currentRoom.desc || "Твоє безпечне місце. Лікування та процедури.";
@@ -1077,4 +1077,42 @@ function handleLocationClick() {
     } else {
         openMedicalHub();
     }
+}
+function handleLocationClick() {
+    if (stats.madness >= 100) {
+        alert("❌ Доступ до лікувального корпусу заблоковано! Розум охоплений психозом. Ідіть на Карту або прийміть таблетки «Аміназин».");
+        toggleMapModal(true);
+    } else {
+        openMedicalHub();
+    }
+}
+
+function openGym() {
+    if (stats.madness >= 100) {
+        alert("❌ Тренування неможливі в стані повного психозу! Реальність розпливається.");
+        return;
+    }
+    closeInventory();
+    closeCustomization();
+    closeFriends();
+    closeSettings();
+    closeDossier();
+    closeMedicalHub();
+    renderGymModal();
+    document.getElementById('gym-modal').classList.remove('hidden');
+}
+
+function openMedicalHub() {
+    if (stats.madness >= 100) {
+        alert("❌ Лікувальний корпус зачинений на карантин через ваш психоз!");
+        return;
+    }
+    closeInventory();
+    closeCustomization();
+    closeFriends();
+    closeSettings();
+    closeGym();
+    closeProcedureRoom();
+    renderMedicalRooms();
+    document.getElementById('medical-hub-modal').classList.remove('hidden');
 }
