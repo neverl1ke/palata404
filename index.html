@@ -426,24 +426,25 @@
         </div>
     </div>
 <!-- ДОСЬЄ МЕДСЕСТРИ (Тепер ПО ЦЕНТРУ екрана) -->
-<div id="nurse-dossier-modal" class="modal-overlay hidden" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.7); z-index: 9999; display: flex; align-items: center; justify-content: center;">
-    <div class="modal-content" style="background: #1c1511; border: 2px solid #8c3a2b; width: 480px; padding: 25px; border-radius: 8px; color: #f4e8d1; position: relative; font-family: sans-serif; box-shadow: 0 0 25px rgba(0,0,0,0.9);">
+<div id="nurse-dossier-modal" class="modal-overlay hidden" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.75); z-index: 9999; display: flex; align-items: center; justify-content: center;">
+    <div class="modal-content" style="background: #1c1511; border: 2px solid #8c3a2b; width: 500px; padding: 25px; border-radius: 8px; color: #f4e8d1; position: relative; font-family: sans-serif; box-shadow: 0 0 30px rgba(0,0,0,0.95);">
         <button onclick="closeNurseDossier()" style="position: absolute; top: 10px; right: 10px; background: none; border: none; color: #fff; font-size: 22px; cursor: pointer;">✕</button>
         
         <div style="text-align: center; border-bottom: 1px dashed #5c4033; padding-bottom: 12px; margin-bottom: 18px;">
-            <span style="background: #5c221e; color: #ffcccc; padding: 2px 8px; font-size: 11px; border-radius: 4px; text-transform: uppercase;">Особова справа №404-N</span>
-            <h2 style="margin: 8px 0 0 0; color: #e74c3c; font-size: 20px;">Сестра Клара «Шприц»</h2>
+            <span style="background: #5c221e; color: #ffcccc; padding: 2px 10px; font-size: 11px; border-radius: 4px; text-transform: uppercase; letter-spacing: 1px;">Особова справа: NURSE | 001</span>
+            <h2 style="margin: 8px 0 0 0; color: #e74c3c; font-size: 22px;">Сестра Клара «Шприц»</h2>
         </div>
 
         <div style="display: flex; gap: 18px; margin-bottom: 18px; align-items: flex-start;">
-            <div style="width: 100px; height: 120px; background: #2a1f18; border: 2px solid #5c4033; display: flex; align-items: center; justify-content: center; font-size: 50px; border-radius: 4px; flex-shrink: 0;">
-                👩‍⚕️
+            <!-- Фотокартка-досьє з рамкою -->
+            <div style="width: 120px; height: 140px; border: 2px solid #8c3a2b; border-radius: 6px; overflow: hidden; flex-shrink: 0; box-shadow: 0 0 10px rgba(0,0,0,0.8);">
+                <img src="nurse_dossier_card.png" alt="NURSE 001" style="width: 100%; height: 100%; object-fit: cover;">
             </div>
             
             <div style="font-size: 13px; line-height: 1.5; color: #d0c2ad;">
                 <p style="margin: 0 0 5px 0;"><strong>Вік:</strong> 34 роки</p>
                 <p style="margin: 0 0 5px 0;"><strong>Посада:</strong> Старша медсестра (процедурний блок)</p>
-                <p style="margin: 0 0 5px 0;"><strong style="color:#e74c3c;">Діагноз (розширений):</strong> F06.33 Ендогенний галюцинаторно-параноїдний синдром. Індукована мутація сприйняття та фізіології на фоні викиду реагентів. Патологічна агресія до всього живого.</p>
+                <p style="margin: 0 0 5px 0;"><strong style="color:#e74c3c;">Діагноз:</strong> F06.33 Ендогенний галюцинаторно-параноїдний синдром. Індукована мутація сприйняття та фізіології на фоні викиду реагентів. Патологічна агресія до всього живого.</p>
                 <p style="margin: 0;"><strong>Усунено загроз:</strong> <strong id="dossier-kills-count" style="color: #27ae60;">0</strong></p>
             </div>
         </div>
@@ -486,7 +487,7 @@
             </div>
         </div>
 
-        <!-- ПОСЕРЕДИНІ ЗЛІВА: Панель аптечок (без змін) -->
+        <!-- ПОСЕРЕДИНІ ЗЛІВА: Панель аптечок -->
         <div style="position: absolute; left: 25px; top: 50%; transform: translateY(-50%); background: rgba(20, 15, 12, 0.9); border: 1px solid #3d2d22; padding: 8px; border-radius: 8px; display: flex; flex-direction: column; gap: 8px; z-index: 5;" onclick="event.stopPropagation()">
             <div style="font-size: 9px; color: #a3927d; text-align: center; margin-bottom: 2px;">🧪 АПТЕЧКИ</div>
             
@@ -506,22 +507,22 @@
             <img src="nurse_sprite.png" alt="Медсестра" style="max-height: 800px; height: 85vh; width: auto; object-fit: contain;">
         </div>
 
-        <!-- ЗВЕРХУ СПРАВА: ВЕЛИКА панель Медсестри -->
+        <!-- ЗВЕРХУ СПРАВА: ВЕЛИКА панель Медсестри з новою аватаркою -->
         <div style="background: rgba(20, 15, 12, 0.92); border: 2px solid #c0392b; padding: 15px 18px; border-radius: 10px; width: 280px; color: #fff; display: flex; gap: 15px; align-items: center; z-index: 5; height: auto;" onclick="event.stopPropagation()">
             <div style="flex-grow: 1; text-align: right;">
-                <!-- БІЛЬШЕ ІМ'Я БОСА -->
                 <div style="font-weight: bold; font-size: 16px; color: #e74c3c; margin-bottom: 5px;">Сестра Клара</div>
                 <div style="font-size: 13px; margin-bottom: 4px;">HP: <span id="b-boss-hp">120/120</span></div>
                 <div style="background: #222; height: 8px; border-radius: 4px; overflow: hidden;">
                     <div id="b-boss-hpbar" style="background: #c0392b; width: 100%; height: 100%;"></div>
                 </div>
             </div>
-            <div style="width: 55px; height: 55px; background: #2a1f18; border: 2px solid #c0392b; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 26px; flex-shrink: 0; overflow: hidden;">
-                👩‍⚕️
+            <!-- Аватарка медсестри у криваво-червоній рамці -->
+            <div style="width: 55px; height: 55px; border: 2px solid #e74c3c; border-radius: 6px; overflow: hidden; flex-shrink: 0; box-shadow: 0 0 8px rgba(231,76,60,0.6);">
+                <img src="nurse_avatar_battle.jpg" alt="Сестра Клара" style="width: 100%; height: 100%; object-fit: cover;">
             </div>
         </div>
 
-        <!-- ЗНИЗУ ПОСЕРЕДИНІ: Кнопка Втекти (трохи більша) -->
+        <!-- ЗНИЗУ ПОСЕРЕДИНІ: Кнопка Втекти -->
         <div style="position: absolute; bottom: 25px; left: 50%; transform: translateX(-50%); z-index: 5;" onclick="event.stopPropagation()">
             <button class="btn-outfit" style="background: #7f8c8d; padding: 10px 30px; font-size: 13px; cursor: pointer; border-radius: 6px;" onclick="closeNurseBattle()">🏃 Втекти</button>
         </div>
