@@ -1131,19 +1131,19 @@ function openMedicalHub() {
     document.getElementById('medical-hub-modal').classList.remove('hidden');
 }
 // ==========================================
-// БОЙОВА СИСТЕМА: СЕСТРА КЛАРА (РЕЙД ТА MVP)
+// БОЙОВА СИСТЕМА: СЕСТРА КЛАРА (РЕЙД ТА ДРУЗІ)
 // ==========================================
 
 let bossCurrentHp = 120;
 let bossMaxHp = 120;
 let nurseKillsCount = 0; // Лічильник усунених загроз
 
-// Учасники рейду (ти + сусіди-боти)
+// Список учасників (гравець + друзі/сусіди)
 let raidMembers = [
-    { name: 'Пацієнт #404 (Ви)', damage: 0, isPlayer: true },
-    { name: 'Сусід з палати #402 (Сліпий Микола)', damage: 0, active: false },
-    { name: 'Пацієнтка #410 (Мері)', damage: 0, active: false },
-    { name: 'Буйний сусіда з ізолятора', damage: 0, active: false }
+    { id: 'player', name: 'Пацієнт #404', damage: 0, isPlayer: true, active: true },
+    { id: 'friend_1', name: 'Сусід з палати #402 (Сліпий Микола)', damage: 0, active: false },
+    { id: 'friend_2', name: 'Пацієнтка #410 (Мері)', damage: 0, active: false },
+    { id: 'friend_3', name: 'Буйний сусіда з ізолятора', damage: 0, active: false }
 ];
 
 // Викликається при натисканні на Процедурний кабінет на карті
@@ -1172,9 +1172,23 @@ function startNurseFight() {
     }
     
     bossCurrentHp = bossMaxHp;
+
+    // Підтягуємо твій справжній нік з профілю або глобальних змінних
+    let currentName = 'Пацієнт #404';
+    if (typeof playerName !== 'undefined' && playerName) {
+        currentName = playerName;
+    } else if (typeof playerProfile !== 'undefined' && playerProfile.name) {
+        currentName = playerProfile.name;
+    }
+
     raidMembers.forEach(m => {
         m.damage = 0;
-        if (!m.isPlayer) m.active = false;
+        if (m.isPlayer) {
+            m.name = currentName;
+            m.active = true;
+        } else {
+            m.active = false;
+        }
     });
     
     updateBattleUI();
@@ -1186,28 +1200,87 @@ function startNurseFight() {
 function closeNurseBattle() {
     const battleModal = document.getElementById('nurse-battle-modal');
     if (battleModal) battleModal.classList.add('hidden');
+    
+    const raidPanel = document.getElementById('battle-raid-panel');
+    if (raidPanel) raidPanel.classList.add('hidden');
 }
 
-// Кнопка: Покликати сусідів блоку
-function callNeighbors() {
-    let inactiveNeighbors = raidMembers.filter(m => !m.isPlayer && !m.active);
-    if (inactiveNeighbors.length === 0) {
-        alert("📢 Усі вільні сусіди вже приєдналися до рейду!");
-        return;
+// Вимикач компактної панелі рейду праворуч
+function toggleRaidPanel() {
+    const panel = document.getElementById('battle-raid-panel');
+    if (panel) {
+        panel.classList.toggle('hidden');
+        if (!panel.classList.contains('hidden')) {
+            updateRaidListUI();
+        }
     }
-    let neighbor = inactiveNeighbors[0];
-    neighbor.active = true;
-    alert(`📢 Ви гучно постукали в стіну! До битви приєднався: ${neighbor.name}!`);
-    updateRaidListUI();
 }
 
-function openRaidListModal() {
-    updateRaidListUI();
-    document.getElementById('raid-list-modal').classList.remove('hidden');
+// Відкриття вікна вибору друзів
+function openFriendInviteModal() {
+    renderFriendsCheckboxList();
+    document.getElementById('friend-invite-modal').classList.remove('hidden');
 }
 
-function closeRaidListModal() {
-    document.getElementById('raid-list-modal').classList.add('hidden');
+function closeFriendInviteModal() {
+    document.getElementById('friend-invite-modal').classList.add('hidden');
+}
+
+function renderFriendsCheckboxList(filterText = '') {
+    const container = document.getElementById('friends-checkbox-container');
+    if (!container) return;
+
+    let availableFriends = raidMembers.filter(m => !m.isPlayer);
+    if (filterText) {
+        availableFriends = availableFriends.filter(f => f.name.toLowerCase().includes(filterText.toLowerCase()));
+    }
+
+    container.innerHTML = availableFriends.map(f => `
+        <label style="background: #15100c; border: 1px solid #3d2d22; padding: 10px; border-radius: 6px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; font-size: 13px;">
+            <span style="color: ${f.active ? '#27ae60' : '#f4e8d1'};">${f.name} ${f.active ? '(Вже в рейді)' : ''}</span>
+            <input type="checkbox" value="${f.id}" class="friend-checkbox" ${f.active ? 'checked' : ''} style="width: 18px; height: 18px; accent-color: #8e44ad;">
+        </label>
+    `).join('');
+}
+
+function filterFriendsList() {
+    let query = document.getElementById('friend-search-input').value;
+    renderFriendsCheckboxList(query);
+}
+
+// Покликати обраних галочками
+function callSelectedFriends() {
+    let checkboxes = document.querySelectorAll('.friend-checkbox:checked');
+    let calledCount = 0;
+
+    checkboxes.forEach(cb => {
+        let member = raidMembers.find(m => m.id === cb.value);
+        if (member && !member.active) {
+            member.active = true;
+            calledCount++;
+        }
+    });
+
+    closeFriendInviteModal();
+    if (!document.getElementById('battle-raid-panel').classList.contains('hidden')) {
+        updateRaidListUI();
+    }
+    if (calledCount > 0) {
+        alert(`📢 Успішно покликано друзів до рейду: ${calledCount}!`);
+    }
+}
+
+// Покликати всіх друзів однією кнопкою
+function callAllFriends() {
+    raidMembers.forEach(m => {
+        if (!m.isPlayer) m.active = true;
+    });
+
+    closeFriendInviteModal();
+    if (!document.getElementById('battle-raid-panel').classList.contains('hidden')) {
+        updateRaidListUI();
+    }
+    alert("🔥 Усі доступні друзі приєдналися до рейду!");
 }
 
 function updateRaidListUI() {
@@ -1216,12 +1289,12 @@ function updateRaidListUI() {
 
     container.innerHTML = raidMembers.map(m => {
         let statusColor = m.isPlayer || m.active ? '#27ae60' : '#7f8c8d';
-        let statusText = m.isPlayer ? 'Ви (Головний)' : (m.active ? 'Бере участь у бійці' : 'Очікує виклику');
+        let statusText = m.isPlayer ? 'Головний гравець' : (m.active ? 'Бере участь' : 'Очікує');
         return `
-            <div style="background: #251b14; border: 1px solid #3d2d22; padding: 8px 12px; border-radius: 6px; display: flex; justify-content: space-between; align-items: center; font-size: 12px;">
+            <div style="background: #15100c; border: 1px solid #3d2d22; padding: 6px 10px; border-radius: 6px; display: flex; justify-content: space-between; align-items: center; font-size: 11px;">
                 <div>
                     <div style="font-weight: bold; color: ${m.isPlayer ? '#e67e22' : '#f4e8d1'};">${m.name}</div>
-                    <div style="font-size: 10px; color: ${statusColor};">${statusText}</div>
+                    <div style="font-size: 9px; color: ${statusColor};">${statusText}</div>
                 </div>
                 <div style="text-align: right; color: #e74c3c; font-weight: bold;">
                     ${m.damage} DMG
@@ -1265,7 +1338,7 @@ function showFloatingDamage(text, isPlayerHit = false, customX = null, customY =
     }, 850);
 }
 
-// Клік по арені — Атака гравця та сусідів
+// Клік по арені — Атака гравця та активних друзів
 function performPlayerAttack(event) {
     let dmg = stats.damage || 10;
     bossCurrentHp = Math.max(0, bossCurrentHp - dmg);
@@ -1277,18 +1350,22 @@ function performPlayerAttack(event) {
     let clickY = event ? event.clientY : window.innerHeight / 2;
     showFloatingDamage(`-${dmg}`, false, clickX, clickY);
 
-    // Атака активних сусідів-ботів
+    // Атака активних друзів у реальному часі
     raidMembers.forEach(m => {
         if (!m.isPlayer && m.active) {
-            let neighborDmg = Math.floor(Math.random() * 8) + 4;
-            bossCurrentHp = Math.max(0, bossCurrentHp - neighborDmg);
-            m.damage += neighborDmg;
+            let friendDmg = Math.floor(Math.random() * 8) + 4;
+            bossCurrentHp = Math.max(0, bossCurrentHp - friendDmg);
+            m.damage += friendDmg;
             
             setTimeout(() => {
-                showFloatingDamage(`${m.name.split(' ')[0]}: -${neighborDmg}`);
+                showFloatingDamage(`${m.name.split(' ')[0]}: -${friendDmg}`);
             }, 300);
         }
     });
+
+    if (!document.getElementById('battle-raid-panel').classList.contains('hidden')) {
+        updateRaidListUI();
+    }
 
     if (bossCurrentHp <= 0) {
         handleVictory();
@@ -1311,12 +1388,12 @@ function performPlayerAttack(event) {
     updateBattleUI();
 }
 
-// Перемога, MVP та перевірка халтурщиків
+// Перемога, визначення справжнього MVP та Халтурщиків
 function handleVictory() {
     nurseKillsCount++;
     closeNurseBattle();
 
-    // Поріг для отримання нагороди (10% від HP боса = 12 урону)
+    // Поріг для нагороди (10% від HP боса = 12 урону)
     let minThreshold = bossMaxHp * 0.10;
     let playerMember = raidMembers.find(m => m.isPlayer);
     let playerEarnedReward = playerMember.damage >= minThreshold;
@@ -1337,16 +1414,17 @@ function handleVictory() {
         }
     }
 
+    // Сортуємо учасників за найбільшим уроном, щоб знайти справжнього MVP
     let sortedRaid = [...raidMembers].sort((a, b) => b.damage - a.damage);
     let mvp = sortedRaid[0];
 
-    let summaryHtml = `<div style="font-weight: bold; color: #f39c12; margin-bottom: 6px;">👑 MVP рейду: ${mvp.name} (${mvp.damage} DMG)</div>`;
-    summaryHtml += `<div style="font-size: 11px; color: #bdaea0; margin-bottom: 4px;">📊 Внесок учасників:</div>`;
+    let summaryHtml = `<div style="font-weight: bold; font-size: 15px; color: #f39c12; margin-bottom: 10px; text-align: center; text-shadow: 0 0 8px rgba(243,156,18,0.4);">👑 MVP РЕЙДУ: ${mvp.name} — ${mvp.damage} DMG</div>`;
+    summaryHtml += `<div style="font-size: 12px; color: #bdaea0; margin-bottom: 6px; border-bottom: 1px dashed #3d2d22; padding-bottom: 4px;">📊 Детальний внесок учасників:</div>`;
 
     sortedRaid.forEach(m => {
         let gotReward = m.damage >= minThreshold;
-        let badge = gotReward ? '<span style="color:#27ae60;">[Отримав нагороду]</span>' : '<span style="color:#e74c3c;">[Халтурщик / Без нагороди]</span>';
-        summaryHtml += `<div style="display: flex; justify-content: space-between; margin-bottom: 2px;"><span>• ${m.name} (${m.damage} DMG)</span> <span>${badge}</span></div>`;
+        let badge = gotReward ? '<span style="color:#27ae60; font-weight:bold;">[Отримав нагороду]</span>' : '<span style="color:#e74c3c; font-weight:bold;">[Халтурщик / Без нагороди]</span>';
+        summaryHtml += `<div style="display: flex; justify-content: space-between; margin-bottom: 4px; font-size: 12px;"><span>• ${m.name} (${m.damage} DMG)</span> <span>${badge}</span></div>`;
     });
 
     document.getElementById('victory-raid-summary').innerHTML = summaryHtml;
