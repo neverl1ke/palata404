@@ -306,11 +306,12 @@ function updateCharacterLayers() {
 }
 
 function updateUI() {
-    document.getElementById('hp-val').textContent = `${stats.hp} / ${stats.maxHp}`;
+    const hpValElem = document.getElementById('hp-val');
+    if (hpValElem) hpValElem.textContent = `${stats.hp} / ${stats.maxHp}`;
+
     document.getElementById('madness-val').textContent = `${stats.madness} / 100`;
     document.getElementById('energy-val').textContent = `${stats.energy} / ${stats.maxEnergy}`;
 
-    document.getElementById('hp-bar').style.width = `${Math.min(100, (stats.hp / stats.maxHp) * 100)}%`;
     document.getElementById('madness-bar').style.width = `${Math.min(100, stats.madness)}%`;
     document.getElementById('energy-bar').style.width = `${Math.min(100, (stats.energy / stats.maxEnergy) * 100)}%`;
 
@@ -331,27 +332,6 @@ function updateUI() {
     updateCharacterLayers();
     updatePlayerNameDisplay();
     saveGameProgress();
-}
-
-function tapCharacter() {
-    if (stats.energy >= 5) {
-        stats.energy -= 5;
-        stats.silver = (stats.silver || 0) + Math.floor(Math.random() * 5) + 2;
-        
-        const madnessGain = Math.floor(Math.random() * 4) + 3;
-        stats.madness = Math.min(100, stats.madness + madnessGain);
-
-        addExperience(Math.floor(Math.random() * 10) + 15);
-    } else {
-        alert("Занадто мало витривалості! Потрібно відпочити.");
-    }
-    updateUI();
-}
-
-function restInBed() {
-    stats.energy = Math.min(stats.maxEnergy, stats.energy + 35);
-    stats.madness = Math.max(0, stats.madness - 15);
-    updateUI();
 }
 
 // === КАРТА ТА МАРШРУТИ ===
@@ -608,6 +588,7 @@ document.addEventListener('DOMContentLoaded', () => {
             renderMinecraftStash();
         };
     }
+    updateEnergyTimer();
     updateUI();
 });
 
@@ -662,7 +643,8 @@ function renderWardrobe() {
         container.innerHTML = `<p style="font-size:12px; color:#a3927d; text-align:center; padding: 20px 0;">Розділ [${currentWardrobeTab.toUpperCase()}] буде заповнений пізніше!</p>`;
     }
 }
-// === Система комплексних тренувань у лікарні ===
+
+// === Система комплексних тренувань у лікарні (Спортзал) ===
 let gymComplex = loadSaveData('palata404_gym', {
     exercises: [
         { id: 'squats', name: 'Присідання', icon: '🦵', current: 0, target: 15, energy: 2, madness: 1, exp: 5 },
@@ -680,6 +662,7 @@ function openGym() {
     closeCustomization();
     closeFriends();
     closeSettings();
+    closeMedicalHub();
     renderGymModal();
     document.getElementById('gym-modal').classList.remove('hidden');
 }
@@ -698,7 +681,7 @@ function doGymExercise(exId) {
     }
 
     if (stats.energy < ex.energy) {
-        alert("Занадто мало витривалості! Потрібно відпочити в ліжку.");
+        alert("Занадто мало витривалості! Вона відновлюється автоматично з часом.");
         return;
     }
 
@@ -709,7 +692,6 @@ function doGymExercise(exId) {
     addExperience(ex.exp);
 
     checkGymComplexCompletion();
-
     saveGymProgress();
     updateUI();
     renderGymModal();
@@ -722,7 +704,6 @@ function checkGymComplexCompletion() {
         stats.damage = (stats.damage || 10) + 3;
         addExperience(100);
         alert(`🏆 ВЕЛИКИЙ БАФ! Ви повністю завершили комплекс із 6 вправ!\n⚡ Базовий урон збільшено на +3!\n🎉 Отримано 100 EXP! Комплекс оновлено.`);
-
         gymComplex.exercises.forEach(e => e.current = 0);
     }
 }
@@ -756,7 +737,8 @@ function renderGymModal() {
         container.appendChild(item);
     });
 }
-// === Система навігації по Лікувальному корпусу (Реальний світ) ===
+
+// === Система навігації по Лікувальному корпусу через клік по локації ===
 let currentRoom = {
     id: 'room_404',
     name: 'Палата #404',
@@ -768,29 +750,25 @@ const medicalRooms = [
         id: 'room_404', 
         name: 'Палата #404', 
         icon: '🛏️', 
-        desc: 'Твоя власна палата. Тут можна відпочити та заспокоїтись.',
-        actionText: 'Знаходитесь тут'
+        desc: 'Твоя власна палата. Тут можна перевести дух.' 
     },
     { 
         id: 'gym', 
         name: 'Зал реабілітації (Спортзал)', 
         icon: '🏋️', 
-        desc: 'Місце для фізичних вправ. Дозволяє качати базовий урон через комплекс.',
-        actionText: 'Перейти до тренувань'
+        desc: 'Місце для комплексу фізичних вправ на базовий урон.' 
     },
     { 
         id: 'treatment_room', 
         name: 'Процедурний кабінет', 
         icon: '💉', 
-        desc: 'Тут видають ліки. Можна отримати пігулки або пройти терапію.',
-        actionText: 'Увійти в кабінет'
+        desc: 'Тут видають ліки та медикаменти.' 
     },
     { 
         id: 'corridor', 
         name: 'Коридор блоку', 
         icon: '🚪', 
-        desc: 'Довгий сірий коридор. Можна зв\'язатися з іншими пацієнтами.',
-        actionText: 'Вийти в коридор'
+        desc: 'Вихід у загальний коридор для зв\'язку з сусідами.' 
     }
 ];
 
@@ -800,7 +778,6 @@ function openMedicalHub() {
     closeFriends();
     closeSettings();
     closeGym();
-    
     renderMedicalRooms();
     document.getElementById('medical-hub-modal').classList.remove('hidden');
 }
@@ -840,23 +817,59 @@ function selectRoom(roomId) {
     if (!room) return;
 
     currentRoom = room;
-    
-    // Оновлюємо текст локації на правій панелі
     document.getElementById('current-location-name').textContent = room.name;
     document.getElementById('current-location-desc').textContent = room.desc;
-
     closeMedicalHub();
 
-    // Якщо гравець обрав спортзал — одразу відкриваємо модальне вікно тренувань!
     if (roomId === 'gym') {
         openGym();
     } else if (roomId === 'treatment_room') {
-        alert("💉 Ви зайшли у процедурний кабінет. Медсестри сьогодні немає, але на столі вдалося знайти +1 пігулку!");
+        alert("💉 Процедурний кабінет порожній, але на столі знайдено +1 пігулку!");
         stats.pills = (stats.pills || 0) + 1;
         updateUI();
     } else if (roomId === 'corridor') {
-        alert("🚪 Ви вийшли у коридор блоку. Тиша і запах хлорки... Чути далекі кроки санітарів.");
+        alert("🚪 Коридор зустрічає тебе холодним світлом ламп і кроками охорони вдалині.");
     } else {
-        alert(`🛏️ Ви повернулися до своєї палати (#404). Тут спокійно.`);
+        alert("🛏️ Ти у своїй палаті #404.");
     }
 }
+
+// === Фоновий таймер регенерації витривалості (1 стаміна = 2 хвилини) ===
+const ENERGY_REGEN_TIME_MS = 2 * 60 * 1000;
+
+function updateEnergyTimer() {
+    let energyTimerElem = document.getElementById('energy-timer');
+    if (!energyTimerElem) return;
+
+    if (stats.energy >= stats.maxEnergy) {
+        energyTimerElem.textContent = "ПОВНА";
+        return;
+    }
+
+    let lastTimeStr = localStorage.getItem('palata404_last_time');
+    if (!lastTimeStr) {
+        localStorage.setItem('palata404_last_time', Date.now().toString());
+        return;
+    }
+
+    let lastTime = parseInt(lastTimeStr, 10);
+    let now = Date.now();
+    let elapsedMs = now - lastTime;
+    let timeLeftMs = ENERGY_REGEN_TIME_MS - (elapsedMs % ENERGY_REGEN_TIME_MS);
+    
+    if (elapsedMs >= ENERGY_REGEN_TIME_MS) {
+        let added = Math.floor(elapsedMs / ENERGY_REGEN_TIME_MS);
+        stats.energy = Math.min(stats.maxEnergy, stats.energy + added);
+        let leftoverMs = elapsedMs % ENERGY_REGEN_TIME_MS;
+        localStorage.setItem('palata404_last_time', (now - leftoverMs).toString());
+        updateUI();
+    }
+
+    let totalSeconds = Math.ceil(timeLeftMs / 1000);
+    let minutes = Math.floor(totalSeconds / 60);
+    let seconds = totalSeconds % 60;
+    
+    energyTimerElem.textContent = `(+1 за ${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')})`;
+}
+
+setInterval(updateEnergyTimer, 1000);

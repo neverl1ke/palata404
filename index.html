@@ -63,16 +63,8 @@
             
             <!-- Ліва панель -->
             <aside class="left-panel">
-                <!-- Показники життя -->
+           <!-- Показники життя -->
                 <div class="vitals-group">
-                    <div class="vital-item">
-                        <div class="vital-icon hp-icon">❤️</div>
-                        <div class="vital-info">
-                            <div class="vital-label">HP (Здоров'я) <span id="hp-val">100 / 100</span></div>
-                            <div class="bar-bg"><div class="bar-fill hp" id="hp-bar" style="width: 100%;"></div></div>
-                        </div>
-                    </div>
-
                     <div class="vital-item">
                         <div class="vital-icon madness-icon">🧠</div>
                         <div class="vital-info">
@@ -84,7 +76,10 @@
                     <div class="vital-item">
                         <div class="vital-icon energy-icon">⚡</div>
                         <div class="vital-info">
-                            <div class="vital-label">Витривалість <span id="energy-val">100 / 100</span></div>
+                            <div class="vital-label">
+                                <span>Витривалість <span id="energy-val">100 / 100</span></span>
+                                <span id="energy-timer" style="font-size: 0.75cqw; color: #f39c12;"></span>
+                            </div>
                             <div class="bar-bg"><div class="bar-fill energy" id="energy-bar" style="width: 100%;"></div></div>
                         </div>
                     </div>
@@ -107,6 +102,10 @@
                     </div>
 
                     <div class="currency-title" style="margin-top: 6px;">Бойові стати</div>
+                    <div class="currency-item">
+                        <span>❤️ Здоров'я (HP):</span>
+                        <strong id="hp-val">100 / 100</strong>
+                    </div>
                     <div class="currency-item">
                         <span>⚔️ Урон:</span>
                         <strong id="damage-val">10</strong>
@@ -133,13 +132,14 @@
                 </div>
             </section>
 
-            <!-- Права панель -->
+        <!-- Права панель -->
             <aside class="right-panel">
-               <div class="location-card" onclick="openMedicalHub()" style="cursor: pointer;" title="Натисніть, щоб перейти до корпусу">
-    <div class="loc-title">Поточна локація (Натисніть)</div>
-    <div class="loc-name" id="current-location-name">Палата #404</div>
-    <div class="loc-desc" id="current-location-desc">Стіни шепочуть тобі... Перехід у корпус.</div>
-</div>
+                <div class="location-card" onclick="openMedicalHub()" style="cursor: pointer;" title="Натисніть для переходу по корпусу">
+                    <div class="loc-title">Поточна локація (Натисніть)</div>
+                    <div class="loc-name" id="current-location-name">Палата #404</div>
+                    <div class="loc-desc" id="current-location-desc">Стіни шепочуть тобі... Перехід у корпус.</div>
+                </div>
+            </aside>
 
                <div class="side-menu">
     <button class="btn-main-action" onclick="openGym()">🏋️ Зал реабілітації (Спортзал)</button>
@@ -322,5 +322,18 @@
         </div>
     </div>
 </div>
+<!-- Модальне вікно: Лікувальний корпус -->
+    <div id="medical-hub-modal" class="modal center-modal hidden">
+        <div class="modal-content" style="width: min(420px, 92vw);">
+            <div class="modal-header">
+                <h3>🏥 Лікувальний корпус</h3>
+                <button class="btn-close-mini" onclick="closeMedicalHub()">✕</button>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 10px; font-size: 13px;">
+                <p style="color: #a3927d; font-size: 12px;">Оберіть сектор лікувального корпусу для переходу:</p>
+                <div id="rooms-list-container" style="display: flex; flex-direction: column; gap: 8px;"></div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
