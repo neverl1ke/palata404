@@ -47,7 +47,7 @@ body {
 }
 
 /* ------------------------------------------------------------- */
-/* ВЕРХНЯ ПАНЕЛЬ: ЗАГАЛЬНИЙ КОНТЕЙНЕР                            */
+/* ВЕРХНЯ ПАНЕЛЬ: ЄДИНИЙ КОНТЕЙНЕР-ШАПКА                          */
 /* ------------------------------------------------------------- */
 
 .top-nav {
@@ -58,9 +58,12 @@ body {
     align-items: center;
     width: 100%;
     height: 8.5cqh;
-    background: transparent;
-    padding: 0;
-    border: none !important;
+    background: rgba(20, 15, 12, 0.92);
+    backdrop-filter: blur(8px);
+    padding: 0.5cqh 1.2cqw;
+    border-radius: 8px;
+    border: 1px solid #3d2d22;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.85);
     gap: 1cqw;
 }
 
@@ -70,12 +73,10 @@ body {
     align-items: center;
     gap: 0.8cqw;
     cursor: pointer;
-    background: rgba(20, 15, 12, 0.92);
-    backdrop-filter: blur(8px);
-    padding: 0.5cqh 1.5cqw;
-    border-radius: 6px;
-    border: 1px solid #3d2d22;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
+    background: transparent;
+    padding: 0;
+    border: none;
+    box-shadow: none;
     height: 100%;
 }
 
@@ -146,11 +147,10 @@ body {
 .center-nav {
     display: flex;
     gap: 0.5cqw;
-    background: rgba(20, 15, 12, 0.9);
-    padding: 0.4cqh 0.8cqw;
-    border-radius: 6px;
-    border: 1px solid #3d2d22;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
+    background: transparent;
+    padding: 0;
+    border: none;
+    box-shadow: none;
     height: 100%;
     align-items: center;
 }
@@ -167,22 +167,34 @@ body {
     align-items: center;
     justify-content: center;
     transition: all 0.2s;
+    color: #d9c59a;
 }
 
 .nav-icon-btn:hover {
     background: #8c684d;
     border-color: #d9c59a;
+    color: #fff;
 }
 
 /* ПРАВИЙ БЛОК СИСТЕМНИХ КНОПОК */
 .top-actions {
     display: flex;
     gap: 0.5cqw;
-    background: rgba(20, 15, 12, 0.9);
-    padding: 0.4cqh 0.8cqw;
-    border-radius: 6px;
-    border: 1px solid #3d2d22;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
+    background: transparent;
+    padding: 0;
+    border: none;
+    box-shadow: none;
+    height: 100%;
+    align-items: center;
+}
+
+.top-right-group {
+    display: flex;
+    gap: 0.5cqw;
+    background: transparent;
+    padding: 0;
+    border: none;
+    box-shadow: none;
     height: 100%;
     align-items: center;
 }
@@ -738,30 +750,4 @@ body {
 
 #friend-input:focus {
     border-color: #8c684d;
-}
-/* Стиль для смужок-плашок верхньої панелі */
-.right-top-bar {
-    background: rgba(26, 21, 18, 0.85);
-    border: 1px solid #4a382c;
-    border-radius: 8px;
-    padding: 6px 12px;
-    display: flex;
-    gap: 10px;
-    align-items: center;
-}
-
-/* Оформлення кнопок у плашках */
-.menu-btn {
-    background: #2b221b;
-    border: 1px solid #4a382c;
-    color: #fff8e7;
-    padding: 6px 10px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background 0.2s;
-}
-
-.menu-btn:hover {
-    background: #3d2f24;
 }
