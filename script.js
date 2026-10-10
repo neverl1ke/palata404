@@ -1214,12 +1214,85 @@ function updateBattleUI() {
     }
 }
 
+let nurseKillsCount = 0; // Лічильник вбивств медсестри
+
+function openProcedureRoomBattle() {
+    if (stats.madness < 100) {
+        alert("У нормальному стані процедурний кабінет зачинений.");
+        return;
+    }
+    // Оновлюємо кількість вбивств у досьє
+    const killsElem = document.getElementById('dossier-kills-count');
+    if (killsElem) killsElem.textContent = nurseKillsCount;
+
+    const dossierModal = document.getElementById('nurse-dossier-modal');
+    if (dossierModal) dossierModal.classList.remove('hidden');
+}
+
+function updateBattleUI() {
+    // 1. Підтягуємо нікнейм з лоббі/профілю
+    const playerNameElem = document.getElementById('b-player-name');
+    if (playerNameElem) {
+        if (typeof playerProfile !== 'undefined' && playerProfile.name) {
+            playerNameElem.textContent = playerProfile.name;
+        } else {
+            const lobbyNameElem = document.querySelector('.player-name, #player-name, .user-name');
+            if (lobbyNameElem && lobbyNameElem.textContent.trim()) {
+                playerNameElem.textContent = lobbyNameElem.textContent.trim();
+            }
+        }
+    }
+
+    // 2. Підтягуємо аватарку з лоббі
+    const battleAvatarBox = document.getElementById('player-battle-avatar-box');
+    const lobbyAvatar = document.querySelector('.player-avatar img, #player-avatar img, .profile-avatar img');
+    if (battleAvatarBox && lobbyAvatar) {
+        battleAvatarBox.innerHTML = `<img src="${lobbyAvatar.src}" style="width:100%; height:100%; object-fit:cover;">`;
+    }
+
+    // 3. ХП Гравця
+    document.getElementById('b-player-hp').textContent = `${stats.hp}/${stats.maxHp}`;
+    let pPercent = Math.max(0, (stats.hp / stats.maxHp) * 100);
+    document.getElementById('b-player-hpbar').style.width = `${pPercent}%`;
+
+    // 4. ХП Боса
+    document.getElementById('b-boss-hp').textContent = `${bossCurrentHp}/${bossMaxHp}`;
+    let bPercent = Math.max(0, (bossCurrentHp / bossMaxHp) * 100);
+    document.getElementById('b-boss-hpbar').style.width = `${bPercent}%`;
+
+    // 5. Аптечки
+    let smallMeds = inventory.filter(i => i.name === 'Мала аптечка' || i.category === 'meds').reduce((acc, item) => acc + (item.count || 1), 0);
+    let bigMeds = inventory.filter(i => i.name === 'Велика аптечка').reduce((acc, item) => acc + (item.count || 1), 0);
+
+    const btnSmall = document.getElementById('medkit-btn-small');
+    const countSmall = document.getElementById('medkit-count-small');
+    if (countSmall) countSmall.textContent = smallMeds;
+    if (btnSmall) {
+        btnSmall.style.opacity = smallMeds <= 0 ? '0.4' : '1';
+        btnSmall.style.cursor = smallMeds <= 0 ? 'not-allowed' : 'pointer';
+    }
+
+    const countBig = document.getElementById('medkit-count-big');
+    const btnBig = document.getElementById('medkit-count-big');
+    if (countBig) countBig.textContent = bigMeds;
+    if (btnBig) {
+        btnBig.style.opacity = bigMeds <= 0 ? '0.4' : '1';
+        btnBig.style.cursor = bigMeds <= 0 ? 'not-allowed' : 'pointer';
+    }
+}
+
 function performPlayerAttack() {
     let dmg = stats.damage || 10;
     bossCurrentHp = Math.max(0, bossCurrentHp - dmg);
 
     if (bossCurrentHp <= 0) {
-        alert("🎉 Перемога над Сестрою Кларою!\nОтримано: Ключ від блоку боса та набір інструментів.");
+        nurseKillsCount++; // Збільшуємо лічильник вбивств
+        
+        // Додаємо валюту та EXP
+        stats.silver = (stats.silver || 0) + 30;
+        addExperience(50);
+
+        alert("🎉 Перемога над Сестрою Кларою!\nОтримано: +50 EXP, +30 Срібла, Ключ від блоку боса!");
         
         let questKey = {
             name: 'Ключ від блоку боса',
@@ -1232,13 +1305,12 @@ function performPlayerAttack() {
             inventory.push(questKey);
         }
 
-        addExperience(50);
         closeNurseBattle();
         updateUI();
         return;
     }
 
-    // Відповідь медсестри
+    // Контратака медсестри
     let counter = 12;
     stats.hp = Math.max(0, stats.hp - counter);
 
