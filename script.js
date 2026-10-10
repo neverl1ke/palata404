@@ -1167,11 +1167,16 @@ function closeNurseBattle() {
 }
 
 function updateBattleUI() {
+    // Підтягуємо реальний нік гравця з головного меню/профілю
+    const playerNameElem = document.getElementById('b-player-name');
+    if (playerNameElem && typeof playerProfile !== 'undefined' && playerProfile.name) {
+        playerNameElem.textContent = playerProfile.name;
+    }
+
     // ХП Гравця
     document.getElementById('b-player-hp').textContent = `${stats.hp}/${stats.maxHp}`;
     let pPercent = Math.max(0, (stats.hp / stats.maxHp) * 100);
     document.getElementById('b-player-hpbar').style.width = `${pPercent}%`;
-    document.getElementById('b-p-dmg').textContent = stats.damage || 10;
 
     // ХП Боса
     document.getElementById('b-boss-hp').textContent = `${bossCurrentHp}/${bossMaxHp}`;
@@ -1187,7 +1192,7 @@ function updateBattleUI() {
     if (countSmall) countSmall.textContent = smallMeds;
     if (btnSmall) {
         if (smallMeds <= 0) {
-            btnSmall.style.opacity = '0.5';
+            btnSmall.style.opacity = '0.4';
             btnSmall.style.cursor = 'not-allowed';
         } else {
             btnSmall.style.opacity = '1';
@@ -1200,7 +1205,7 @@ function updateBattleUI() {
     if (countBig) countBig.textContent = bigMeds;
     if (btnBig) {
         if (bigMeds <= 0) {
-            btnBig.style.opacity = '0.5';
+            btnBig.style.opacity = '0.4';
             btnBig.style.cursor = 'not-allowed';
         } else {
             btnBig.style.opacity = '1';

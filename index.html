@@ -466,49 +466,64 @@
 <!-- ПОВНОЕКРАННА БОЙОВА СЦЕНА -->
 <div id="nurse-battle-modal" class="modal-overlay hidden" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #000; z-index: 10000; display: flex; flex-direction: column;">
     
-    <!-- АРЕНА БОЮ З ФОНОМ КАБІНЕТУ -->
-    <div id="battle-arena-screen" style="position: relative; width: 100%; height: 100%; background: url('nurse_bg.jpg') center/cover no-repeat; display: flex; justify-content: space-between; padding: 20px; box-sizing: border-box;">
+    <!-- АРЕНА БОЮ (Клік по ній тепер б'є боса) -->
+    <div id="battle-arena-screen" onclick="performPlayerAttack()" style="position: relative; width: 100%; height: 100%; background: url('nurse_bg.jpg') center/cover no-repeat; display: flex; justify-content: space-between; padding: 25px; box-sizing: border-box; cursor: pointer; user-select: none;">
         
-        <!-- ЗВЕРХУ ЗЛІВА: Інфо гравця -->
-        <div style="background: rgba(20, 15, 12, 0.85); border: 1px solid #4a382c; padding: 12px; border-radius: 8px; width: 220px; color: #fff;">
-            <div style="font-weight: bold; font-size: 14px; color: #e67e22; margin-bottom: 4px;" id="b-player-name">Пацієнт #404</div>
-            <div style="font-size: 12px; margin-bottom: 4px;">HP: <span id="b-player-hp">100/100</span></div>
-            <div style="background: #222; height: 8px; border-radius: 4px; overflow: hidden;">
-                <div id="b-player-hpbar" style="background: #27ae60; width: 100%; height: 100%;"></div>
+        <!-- ЗВЕРХУ ЗЛІВА: Інфо та аватар гравця -->
+        <div style="background: rgba(20, 15, 12, 0.9); border: 1px solid #4a382c; padding: 12px; border-radius: 8px; width: 240px; color: #fff; display: flex; gap: 10px; align-items: center; z-index: 5;" onclick="event.stopPropagation()">
+            <!-- Місце під твою аватарку/шари з головного меню -->
+            <div id="player-battle-avatar-box" style="width: 50px; height: 50px; background: #2a1f18; border: 1px solid #5c4033; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0; overflow: hidden;">
+                👤
+            </div>
+            <div style="flex-grow: 1;">
+                <div style="font-weight: bold; font-size: 13px; color: #e67e22; margin-bottom: 4px;" id="b-player-name">Пацієнт #404</div>
+                <div style="font-size: 11px; margin-bottom: 3px;">HP: <span id="b-player-hp">100/100</span></div>
+                <div style="background: #222; height: 6px; border-radius: 3px; overflow: hidden;">
+                    <div id="b-player-hpbar" style="background: #27ae60; width: 100%; height: 100%;"></div>
+                </div>
             </div>
         </div>
 
-        <!-- ПОСЕРЕДИНІ: Спрайт Медсестри -->
-        <div style="position: absolute; left: 50%; bottom: 80px; transform: translateX(-50%); text-align: center;">
-            <img src="nurse_sprite.png" alt="Медсестра" style="max-height: 480px; object-fit: contain; filter: drop-shadow(0 0 15px rgba(192, 57, 43, 0.8));">
+        <!-- ПОСЕРЕДИНІ: Велика Медсестра (як персонаж у головному меню) -->
+        <div style="position: absolute; left: 50%; bottom: 40px; transform: translateX(-50%); text-align: center; pointer-events: none;">
+            <img src="nurse_sprite.png" alt="Медсестра" style="max-height: 600px; height: 75vh; object-fit: contain; filter: drop-shadow(0 0 15px rgba(192, 57, 43, 0.8));">
         </div>
 
-        <!-- ЗВЕРХУ СПРАВА: Інфо Медсестри -->
-        <div style="background: rgba(20, 15, 12, 0.85); border: 1px solid #c0392b; padding: 12px; border-radius: 8px; width: 220px; color: #fff; text-align: right;">
-            <div style="font-weight: bold; font-size: 14px; color: #e74c3c; margin-bottom: 4px;">Сестра Клара</div>
-            <div style="font-size: 12px; margin-bottom: 4px;">HP: <span id="b-boss-hp">120/120</span></div>
-            <div style="background: #222; height: 8px; border-radius: 4px; overflow: hidden; margin-bottom: 6px;">
-                <div id="b-boss-hpbar" style="background: #c0392b; width: 100%; height: 100%;"></div>
+        <!-- ЗВЕРХУ СПРАВА: Фотокартка та інфо Медсестри -->
+        <div style="background: rgba(20, 15, 12, 0.9); border: 1px solid #c0392b; padding: 12px; border-radius: 8px; width: 240px; color: #fff; display: flex; gap: 10px; align-items: center; z-index: 5;" onclick="event.stopPropagation()">
+            <div style="flex-grow: 1; text-align: right;">
+                <div style="font-weight: bold; font-size: 13px; color: #e74c3c; margin-bottom: 4px;">Сестра Клара</div>
+                <div style="font-size: 11px; margin-bottom: 3px;">HP: <span id="b-boss-hp">120/120</span></div>
+                <div style="background: #222; height: 6px; border-radius: 3px; overflow: hidden;">
+                    <div id="b-boss-hpbar" style="background: #c0392b; width: 100%; height: 100%;"></div>
+                </div>
             </div>
-            <div style="font-size: 24px;">👩‍⚕️</div>
+            <!-- Квадратна фотокартка боса праворуч -->
+            <div style="width: 50px; height: 50px; background: #2a1f18; border: 1px solid #c0392b; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0; overflow: hidden;">
+                👩‍⚕️
+            </div>
         </div>
 
-        <!-- ЗЛІВА ПОСЕРЕДИНІ: Панель аптечок -->
-        <div style="position: absolute; left: 20px; top: 40%; transform: translateY(-50%); background: rgba(20, 15, 12, 0.85); border: 1px solid #3d2d22; padding: 10px; border-radius: 8px; width: 160px; color: #fff;">
-            <div style="font-size: 11px; color: #a3927d; margin-bottom: 8px; text-align: center;">🧪 АПТЕЧКИ</div>
+        <!-- ЗЛІВА ПОСЕРЕДИНІ: Панель аптечок (тільки стікери з кількістю) -->
+        <div style="position: absolute; left: 25px; top: 45%; transform: translateY(-50%); background: rgba(20, 15, 12, 0.9); border: 1px solid #3d2d22; padding: 10px; border-radius: 8px; display: flex; flex-direction: column; gap: 8px; z-index: 5;" onclick="event.stopPropagation()">
+            <div style="font-size: 10px; color: #a3927d; text-align: center; margin-bottom: 2px;">🧪 АПТЕЧКИ</div>
             
-            <button id="medkit-btn-small" class="btn-outfit" style="width: 100%; font-size: 11px; margin-bottom: 6px; padding: 6px; background: #27ae60;" onclick="useBattleMedkit('small')">
-                Мала (+20 HP) [<span id="medkit-count-small">0</span>]
+            <!-- Мала аптечка (стікер) -->
+            <button id="medkit-btn-small" title="Мала аптечка (+20 HP)" class="btn-outfit" style="background: #2a1f18; border: 1px solid #5c4033; width: 45px; height: 45px; border-radius: 6px; font-size: 20px; cursor: pointer; position: relative;" onclick="useBattleMedkit('small')">
+                💊
+                <span id="medkit-count-small" style="position: absolute; bottom: 2px; right: 4px; font-size: 10px; background: #c0392b; color: #fff; padding: 1px 4px; border-radius: 3px;">0</span>
             </button>
-            <button id="medkit-btn-big" class="btn-outfit" style="width: 100%; font-size: 11px; padding: 6px; background: #27ae60;" onclick="useBattleMedkit('big')">
-                Велика (+50 HP) [<span id="medkit-count-big">0</span>]
+
+            <!-- Велика аптечка (стікер) -->
+            <button id="medkit-btn-big" title="Велика аптечка (+50 HP)" class="btn-outfit" style="background: #2a1f18; border: 1px solid #5c4033; width: 45px; height: 45px; border-radius: 6px; font-size: 20px; cursor: pointer; position: relative;" onclick="useBattleMedkit('big')">
+                💉
+                <span id="medkit-count-big" style="position: absolute; bottom: 2px; right: 4px; font-size: 10px; background: #c0392b; color: #fff; padding: 1px 4px; border-radius: 3px;">0</span>
             </button>
         </div>
 
-        <!-- ЗНИЗУ ПОСЕРЕДИНІ: Кнопки дій (Атака / Втеча) -->
-        <div style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); display: flex; gap: 15px; width: 400px; z-index: 10;">
-            <button class="btn-outfit" style="flex: 2; background: #c0392b; padding: 12px; font-size: 14px; font-weight: bold; cursor: pointer;" onclick="performPlayerAttack()">⚔️ Атакувати (Урон: <span id="b-p-dmg">10</span>)</button>
-            <button class="btn-outfit" style="flex: 1; background: #7f8c8d; padding: 12px; font-size: 14px; cursor: pointer;" onclick="closeNurseBattle()">Втекти</button>
+        <!-- ЗНИЗУ ПОСЕРЕДИНІ: Кнопка Втекти -->
+        <div style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); z-index: 5;" onclick="event.stopPropagation()">
+            <button class="btn-outfit" style="background: #7f8c8d; padding: 10px 30px; font-size: 13px; cursor: pointer; border-radius: 6px;" onclick="closeNurseBattle()">🏃 Втекти</button>
         </div>
 
     </div>
