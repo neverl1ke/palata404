@@ -1214,14 +1214,14 @@ function updateBattleUI() {
     }
 }
 
-let nurseKillsCount = 0; // Лічильник вбивств медсестри
+let nurseKillsCount = 0; // Лічильник вбивств медсестри (Усунених загроз)
 
 function openProcedureRoomBattle() {
     if (stats.madness < 100) {
         alert("У нормальному стані процедурний кабінет зачинений.");
         return;
     }
-    // Оновлюємо кількість вбивств у досьє
+    // Оновлюємо лічильник Усунених загроз у досьє
     const killsElem = document.getElementById('dossier-kills-count');
     if (killsElem) killsElem.textContent = nurseKillsCount;
 
@@ -1230,22 +1230,15 @@ function openProcedureRoomBattle() {
 }
 
 function updateBattleUI() {
-    // 1. Підтягуємо нікнейм з лоббі/профілю
+    // 1. ПІДТЯГУЄМО НІКНЕЙМ ГРАВЦЯ
     const playerNameElem = document.getElementById('b-player-name');
-    if (playerNameElem) {
-        if (typeof playerProfile !== 'undefined' && playerProfile.name) {
-            playerNameElem.textContent = playerProfile.name;
-        } else {
-            const lobbyNameElem = document.querySelector('.player-name, #player-name, .user-name');
-            if (lobbyNameElem && lobbyNameElem.textContent.trim()) {
-                playerNameElem.textContent = lobbyNameElem.textContent.trim();
-            }
-        }
+    if (playerNameElem && typeof playerName !== 'undefined') {
+        playerNameElem.textContent = playerName; // Використовуємо глобальну змінну playerName
     }
 
-    // 2. Підтягуємо аватарку з лоббі
+    // 2. Підтягуємо аватарку з лоббі (якщо є)
     const battleAvatarBox = document.getElementById('player-battle-avatar-box');
-    const lobbyAvatar = document.querySelector('.player-avatar img, #player-avatar img, .profile-avatar img');
+    const lobbyAvatar = document.querySelector('.player-avatar img, #player-avatar img');
     if (battleAvatarBox && lobbyAvatar) {
         battleAvatarBox.innerHTML = `<img src="${lobbyAvatar.src}" style="width:100%; height:100%; object-fit:cover;">`;
     }
@@ -1260,7 +1253,7 @@ function updateBattleUI() {
     let bPercent = Math.max(0, (bossCurrentHp / bossMaxHp) * 100);
     document.getElementById('b-boss-hpbar').style.width = `${bPercent}%`;
 
-    // 5. Аптечки
+    // 5. Оновлення лічильників аптечок
     let smallMeds = inventory.filter(i => i.name === 'Мала аптечка' || i.category === 'meds').reduce((acc, item) => acc + (item.count || 1), 0);
     let bigMeds = inventory.filter(i => i.name === 'Велика аптечка').reduce((acc, item) => acc + (item.count || 1), 0);
 
@@ -1281,25 +1274,27 @@ function updateBattleUI() {
     }
 }
 
+// Функція атаки
 function performPlayerAttack() {
     let dmg = stats.damage || 10;
     bossCurrentHp = Math.max(0, bossCurrentHp - dmg);
 
     if (bossCurrentHp <= 0) {
-        nurseKillsCount++; // Збільшуємо лічильник вбивств
+        nurseKillsCount++; // Збільшуємо лічильник "Усунених загроз"
         
-        // Додаємо валюту та EXP
+        // Додаємо винагороду
         stats.silver = (stats.silver || 0) + 30;
         addExperience(50);
 
-        alert("🎉 Перемога над Сестрою Кларою!\nОтримано: +50 EXP, +30 Срібла, Ключ від блоку боса!");
+        alert("🎉 Успішна зачистка кабінету!\nПереможено Сестру Клару.\nОтримано: +50 EXP, +30 Срібла, Ключ від блоку боса!");
         
+        // Ключ в інвентар
         let questKey = {
             name: 'Ключ від блоку боса',
             icon: '🔑',
             category: 'quest',
             count: 1,
-            desc: 'Добутий у процедурному кабінеті після сутички з медсестрою.'
+            desc: 'Добутий після усунення медсестри.'
         };
         if (!inventory.some(i => i.name === questKey.name)) {
             inventory.push(questKey);
@@ -1310,12 +1305,12 @@ function performPlayerAttack() {
         return;
     }
 
-    // Контратака медсестри
+    // Контратака
     let counter = 12;
     stats.hp = Math.max(0, stats.hp - counter);
 
     if (stats.hp <= 0) {
-        alert("💀 Сестра Клара вколола вам седативний препарат... Ви знепритомніли.");
+        alert("💀 Сестра Клара вас здолала... Ви знепритомніли.");
         stats.hp = stats.maxHp;
         closeNurseBattle();
         updateUI();
