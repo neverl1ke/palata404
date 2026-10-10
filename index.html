@@ -425,9 +425,9 @@
             </div>
         </div>
     </div>
-<!-- ДОСЬЄ МЕДСЕСТРИ (З великим пропорційним досьє) -->
+<!-- ДОСЬЄ МЕДСЕСТРИ (З великою та читабельною карткою) -->
 <div id="nurse-dossier-modal" class="modal-overlay hidden" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.75); z-index: 9999; display: flex; align-items: center; justify-content: center;">
-    <div class="modal-content" style="background: #1c1511; border: 2px solid #8c3a2b; width: 640px; padding: 25px; border-radius: 8px; color: #f4e8d1; position: relative; font-family: sans-serif; box-shadow: 0 0 35px rgba(0,0,0,0.95);">
+    <div class="modal-content" style="background: #1c1511; border: 2px solid #8c3a2b; width: 720px; padding: 25px; border-radius: 8px; color: #f4e8d1; position: relative; font-family: sans-serif; box-shadow: 0 0 35px rgba(0,0,0,0.95);">
         <button onclick="closeNurseDossier()" style="position: absolute; top: 10px; right: 10px; background: none; border: none; color: #fff; font-size: 22px; cursor: pointer;">✕</button>
         
         <div style="text-align: center; border-bottom: 1px dashed #5c4033; padding-bottom: 12px; margin-bottom: 18px;">
@@ -435,14 +435,14 @@
             <h2 style="margin: 8px 0 0 0; color: #e74c3c; font-size: 24px;">Сестра Клара «Шприц»</h2>
         </div>
 
-        <div style="display: flex; gap: 22px; margin-bottom: 20px; align-items: flex-start;">
-            <!-- ВЕЛИКА КАРТКА ДОСЬЄ ДО НИЗУ БЛОКУ (ЗБЕРЕЖЕННЯ ПРОПОРЦІЙ) -->
-            <img src="nurse_dossier_card.png" alt="NURSE 001" style="width: 230px; height: auto; object-fit: contain; flex-shrink: 0; filter: drop-shadow(0 6px 15px rgba(0,0,0,0.9)); transform: rotate(-1deg);">
+        <div style="display: flex; gap: 25px; margin-bottom: 20px; align-items: flex-start;">
+            <!-- ВЕЛИКА КАРТКА ДОСЬЄ -->
+            <img src="nurse_dossier_card.png" alt="NURSE 001" style="width: 270px; height: auto; object-fit: contain; flex-shrink: 0; filter: drop-shadow(0 6px 15px rgba(0,0,0,0.9)); transform: rotate(-1deg);">
             
-            <div style="font-size: 13px; line-height: 1.55; color: #d0c2ad; flex-grow: 1;">
-                <p style="margin: 0 0 6px 0;"><strong>Вік:</strong> 34 роки</p>
-                <p style="margin: 0 0 6px 0;"><strong>Посада:</strong> Старша медсестра (процедурний блок)</p>
-                <p style="margin: 0 0 8px 0;"><strong style="color:#e74c3c;">Діагноз:</strong> F06.33 Ендогенний галюцинаторно-параноїдний синдром. Індукована мутація сприйняття та фізіології на фоні викиду реагентів. Патологічна агресія до всього живого.</p>
+            <div style="font-size: 13px; line-height: 1.6; color: #d0c2ad; flex-grow: 1;">
+                <p style="margin: 0 0 8px 0;"><strong>Вік:</strong> 34 роки</p>
+                <p style="margin: 0 0 8px 0;"><strong>Посада:</strong> Старша медсестра (процедурний блок)</p>
+                <p style="margin: 0 0 10px 0;"><strong style="color:#e74c3c;">Діагноз:</strong> F06.33 Ендогенний галюцинаторно-параноїдний синдром. Індукована мутація сприйняття та фізіології на фоні викиду реагентів. Патологічна агресія до всього живого.</p>
                 <p style="margin: 0; font-size: 14px;"><strong>Усунено загроз:</strong> <strong id="dossier-kills-count" style="color: #27ae60; font-size: 16px;">0</strong></p>
             </div>
         </div>
@@ -465,7 +465,7 @@
 </div>
 
 
-<!-- ПОВНОЕКРАННА БОЙОВА СЦЕНА (З великими кнопками, нікнеймами та аватарками) -->
+<!-- ПОВНОЕКРАННА БОЙОВА СЦЕНА -->
 <div id="nurse-battle-modal" class="modal-overlay hidden" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #000; z-index: 10000; display: flex; flex-direction: column;">
     
     <div id="battle-arena-screen" onclick="performPlayerAttack()" style="position: relative; width: 100%; height: 100%; background: url('nurse_bg.jpg') center/cover no-repeat; display: flex; justify-content: space-between; align-items: flex-start; padding: 35px; box-sizing: border-box; cursor: pointer; user-select: none;">
@@ -504,7 +504,7 @@
             <img src="nurse_sprite.png" alt="Медсестра" style="max-height: 800px; height: 85vh; width: auto; object-fit: contain;">
         </div>
 
-        <!-- ВЕРХ СПРАВА: ВЕЛИКА панель Медсести (з аватаркою nurse_avatar_battle.png) -->
+        <!-- ВЕРХ СПРАВА: ВЕЛИКА панель Медсестри -->
         <div style="background: rgba(20, 15, 12, 0.94); border: 2px solid #c0392b; padding: 18px 24px; border-radius: 12px; width: 380px; color: #fff; display: flex; gap: 20px; align-items: center; z-index: 5; height: auto; box-shadow: 0 6px 20px rgba(0,0,0,0.85);" onclick="event.stopPropagation()">
             <div style="flex-grow: 1; text-align: right;">
                 <div style="font-weight: bold; font-size: 20px; color: #e74c3c; margin-bottom: 6px;">Сестра Клара</div>
@@ -513,15 +513,14 @@
                     <div id="b-boss-hpbar" style="background: #c0392b; width: 100%; height: 100%;"></div>
                 </div>
             </div>
-            <!-- Великий PNG-портрет у бою -->
             <div style="width: 85px; height: 85px; border: 2px solid #e74c3c; border-radius: 10px; overflow: hidden; flex-shrink: 0; background: #2a1f18; box-shadow: 0 0 12px rgba(231,76,60,0.6);">
                 <img src="nurse_avatar_battle.png" alt="Сестра Клара" style="width: 100%; height: 100%; object-fit: cover;">
             </div>
         </div>
 
-        <!-- ЗНИЗУ ПОСЕРЕДИНІ: Кнопка Втекти -->
+        <!-- ЗНИЗУ ПОСЕРЕДИНІ: Кнопка Втекти (ПРАЦЮЄ!) -->
         <div style="position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); z-index: 5;" onclick="event.stopPropagation()">
-            <button class="btn-outfit" style="background: #7f8c8d; padding: 12px 35px; font-size: 15px; font-weight: bold; cursor: pointer; border-radius: 8px;">🏃 Втекти</button>
+            <button class="btn-outfit" style="background: #7f8c8d; padding: 12px 35px; font-size: 15px; font-weight: bold; cursor: pointer; border-radius: 8px;" onclick="closeNurseBattle()">🏃 Втекти</button>
         </div>
 
     </div>
