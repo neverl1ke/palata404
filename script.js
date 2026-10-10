@@ -71,6 +71,7 @@ function openFriends() {
     closeInventory();
     closeCustomization();
     closeSettings();
+    closeDossier();
     
     const playerInfo = getPlayerUniqueId();
     document.getElementById('my-unique-id').textContent = playerInfo.type === 'telegram' 
@@ -156,7 +157,13 @@ const DEFAULT_STATS = {
     exp: 0,
     nextLvlExp: 100,
     damage: 10,
-    armor: 0
+    armor: 0,
+    daysInClinic: 14,
+    madnessAttacks: 3,
+    enemiesKilled: 0,
+    bossesKilled: 0,
+    pillsUsed: 5,
+    gymRounds: 0
 };
 
 let stats = loadSaveData('palata404_stats', DEFAULT_STATS);
@@ -180,8 +187,7 @@ const DEFAULT_INVENTORY = [
     { name: 'ПМ (Пістолет Макарова)', icon: '🔫', count: 1, category: 'weapon', damageBonus: 18, desc: 'Табельний пістолет охорони. Потертий вороніний метал, у магазині залишилось кілька патронів.' },
     { name: 'Штурмовий АКС-74У', icon: '⚡', count: 1, category: 'weapon', damageBonus: 35, desc: 'Укорочений автомат колишньої охорони спецблоку. Засіб останньої надії проти агресивних мутантів.' },
     { name: 'Побитий шолом санітара', icon: '🪖', count: 1, category: 'helmet', armorBonus: 12, desc: 'Протиударний шолом персоналу психлікарні із залишками захисного скла. Гасить важкі удари по голові.' },
-    { name: 'Бронежилет БР-1', icon: '🛡️', count: 1, category: 'armor', armorBonus: 28, desc: 'Легкий армійський бронежилет прихованого носіння. Рятує від кульових поранень та ножів.' },
-    { name: 'Аптечка швидкої допомоги', icon: '🧪', count: 3, category: 'meds', healBonus: 50, desc: 'Герметичний армійський контейнер із сильними стимуляторами та перев’язкою. Миттєво стабілізує стан.' }
+    { name: 'Бронежилет БР-1', icon: '🛡️', count: 1, category: 'armor', armorBonus: 28, desc: 'Легкий армійський бронежилет прихованого носіння. Рятує від кульових поранень та ножів.' }
 ];
 
 let inventory = loadSaveData('palata404_inventory', DEFAULT_INVENTORY);
@@ -231,7 +237,13 @@ const gameFloorsData = [
 function loadSaveData(key, fallback) {
     const saved = localStorage.getItem(key);
     if (!saved) return fallback;
-    try { return JSON.parse(saved); } catch (e) { return fallback; }
+    try { 
+        const parsed = JSON.parse(saved);
+        if (typeof fallback === 'object' && fallback !== null && !Array.isArray(fallback)) {
+            return { ...fallback, ...parsed };
+        }
+        return parsed; 
+    } catch (e) { return fallback; }
 }
 
 function saveGameProgress() {
@@ -428,6 +440,8 @@ function handleNodeClick(node, floor) {
     } else if (node.type === 'boss') {
         alert("⚔️ Бій з Босом 10-го Поверху!\nЦей функціонал розробляється для рейдового режиму.");
     }
+}
+
 function openSettings() {
     closeInventory();
     closeCustomization();
@@ -451,6 +465,7 @@ function closeBank() {
 function openInventory() {
     closeCustomization();
     closeFriends();
+    closeDossier();
     renderMinecraftStash();
     document.getElementById('inventory-modal').classList.remove('hidden');
 }
@@ -499,7 +514,7 @@ function renderMinecraftStash() {
     }
 }
 
-// === Система перегляду та екіпіровки предметів ===
+// === Система перегляду та екіпіровки/використання предметів ===
 function openItemInfo(item) {
     selectedItemForAction = item;
     document.getElementById('item-info-title').textContent = `${item.icon} ${item.name}`;
@@ -519,7 +534,7 @@ function openItemInfo(item) {
         bodyHtml += `<div style="color: #3498db; margin-top: 5px;"><strong>🛡️ Бонус до броні:</strong> +${item.armorBonus || 0}</div>`;
         document.getElementById('item-action-btn').textContent = isEquipped ? "Зняти" : "Надіти спорядження";
     } else if (item.category === 'meds') {
-        bodyHtml += `<div style="color: #2ecc71; margin-top: 5px;"><strong>❤️ Відновлення HP:</strong> +${item.healBonus || 0}</div>`;
+        bodyHtml += `<div style="color: #2ecc71; margin-top: 5px;"><strong>⚡ Ефект препарату:</strong> ${item.effectDesc || 'Відновлює стан'}</div>`;
         document.getElementById('item-action-btn').textContent = "Використати";
     } else {
         document.getElementById('item-action-btn').textContent = "Закрити";
@@ -535,6 +550,10 @@ function closeItemInfo() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    updatePlayerNameDisplay();
+    updateUI();
+    updateEnergyTimer();
+
     const actionBtn = document.getElementById('item-action-btn');
     if (actionBtn) {
         actionBtn.onclick = () => {
@@ -576,11 +595,28 @@ document.addEventListener('DOMContentLoaded', () => {
             } else if (cat === 'meds') {
                 if (selectedItemForAction.count > 0) {
                     selectedItemForAction.count -= 1;
-                    stats.hp = Math.min(stats.maxHp, stats.hp + (selectedItemForAction.healBonus || 50));
+                    
+                    if (selectedItemForAction.effectType === 'madness') {
+                        stats.madness = Math.max(0, stats.madness - 15);
+                        stats.pillsUsed = (stats.pillsUsed || 0) + 1;
+                        alert("Ви прийняли таблетки «Аміназин». Божевілля зменшилось (-15).");
+                    } else if (selectedItemForAction.effectType === 'stamina_10') {
+                        stats.energy = Math.min(stats.maxEnergy, stats.energy + (stats.maxEnergy * 0.1));
+                        alert("Ви випили енергетик (+10% витривалості).");
+                    } else if (selectedItemForAction.effectType === 'stamina_full') {
+                        stats.energy = stats.maxEnergy;
+                        alert("Ви використали стимулятор. Витривалість повністю відновлена!");
+                    } else if (selectedItemForAction.effectType === 'hp_10') {
+                        stats.hp = Math.min(stats.maxHp, stats.hp + (stats.maxHp * 0.1));
+                        alert("Ви використали малу аптечку. Здоров'я частково відновлено (+10%).");
+                    } else if (selectedItemForAction.effectType === 'hp_full') {
+                        stats.hp = stats.maxHp;
+                        alert("Ви використали велику армійську аптечку. Здоров'я повністю відновлено!");
+                    }
+
                     if (selectedItemForAction.count <= 0) {
                         inventory = inventory.filter(i => i !== selectedItemForAction);
                     }
-                    alert("Ви використали аптечку. Здоров'я відновлено!");
                 }
             }
 
@@ -590,13 +626,12 @@ document.addEventListener('DOMContentLoaded', () => {
             renderMinecraftStash();
         };
     }
-    updateEnergyTimer();
-    updateUI();
 });
 
 function openCustomization() {
     closeInventory();
     closeFriends();
+    closeDossier();
     renderWardrobe();
     document.getElementById('custom-modal').classList.remove('hidden');
 }
@@ -664,6 +699,7 @@ function openGym() {
     closeCustomization();
     closeFriends();
     closeSettings();
+    closeDossier();
     closeMedicalHub();
     renderGymModal();
     document.getElementById('gym-modal').classList.remove('hidden');
@@ -703,6 +739,7 @@ function checkGymComplexCompletion() {
     let allDone = gymComplex.exercises.every(e => e.current >= e.target);
     if (allDone) {
         gymComplex.completedRounds += 1;
+        stats.gymRounds = (stats.gymRounds || 0) + 1;
         stats.damage = (stats.damage || 10) + 3;
         addExperience(100);
         alert(`🏆 ВЕЛИКИЙ БАФ! Ви повністю завершили комплекс із 6 вправ!\n⚡ Базовий урон збільшено на +3!\n🎉 Отримано 100 EXP! Комплекс оновлено.`);
@@ -779,6 +816,7 @@ function openMedicalHub() {
     closeCustomization();
     closeFriends();
     closeSettings();
+    closeDossier();
     closeGym();
     closeProcedureRoom();
     renderMedicalRooms();
@@ -851,7 +889,7 @@ function selectRoom(roomId) {
     }
 }
 
-// === Логіка купівлі препаратів та лікування в Процедурному кабінеті ===
+// === Логіка купівлі препаратів (додавання в інвентар) ===
 function buyMedicalItem(itemType, cost, currencyType) {
     if (currencyType === 'silver') {
         if (stats.silver >= cost) {
@@ -932,27 +970,6 @@ function buyMedicalItem(itemType, cost, currencyType) {
     saveGameProgress();
 }
 
-    // Ефекти товарів
-    if (itemType === 'madness_pills') {
-        stats.madness = Math.max(0, stats.madness - 15);
-        alert('Ви прийняли таблетки «Аміназин». Божевілля знижено на -15.');
-    } else if (itemType === 'stamina_10') {
-        stats.energy = Math.min(stats.maxEnergy, stats.energy + (stats.maxEnergy * 0.1));
-        alert('Ви випили енергетик (+10% витривалості).');
-    } else if (itemType === 'stamina_full') {
-        stats.energy = stats.maxEnergy;
-        alert('Ви повністю відновили витривалість!');
-    } else if (itemType === 'hp_10') {
-        stats.hp = Math.min(stats.maxHp, stats.hp + (stats.maxHp * 0.1));
-        alert('Здоров\'я частково відновлено (+10%).');
-    } else if (itemType === 'hp_full') {
-        stats.hp = stats.maxHp;
-        alert('Повне відновлення здоров\'я (HP) завершено.');
-    }
-
-    updateUI();
-}
-
 // === Фоновий таймер регенерації витривалості (1 стаміна = 2 хвилини) ===
 const ENERGY_REGEN_TIME_MS = 2 * 60 * 1000;
 
@@ -991,6 +1008,7 @@ function updateEnergyTimer() {
     energyTimerElem.textContent = `(+1 за ${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')})`;
 }
 setInterval(updateEnergyTimer, 1000); 
+
 // === СИСТЕМА ДОСЬЄ ПАЦІЄНТА ===
 function openDossier() {
     closeInventory();
@@ -1010,7 +1028,7 @@ function openDossier() {
     document.getElementById('dossier-enemies-killed').textContent = stats.enemiesKilled || 0;
     document.getElementById('dossier-bosses-killed').textContent = stats.bossesKilled || 0;
     document.getElementById('dossier-pills-used').textContent = stats.pillsUsed || 5;
-    document.getElementById('dossier-gym-rounds').textContent = stats.gymRounds || 0;
+    document.getElementById('dossier-gym-rounds').textContent = stats.gymRrounds || stats.gymRounds || 0;
 
     document.getElementById('dossier-modal').classList.remove('hidden');
 }
