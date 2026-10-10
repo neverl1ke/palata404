@@ -751,3 +751,9 @@ body {
 #friend-input:focus {
     border-color: #8c684d;
 }
+/* Вирівнювання кнопок у налаштуваннях */
+.modal-content .menu-btn {
+    width: 100% !important;
+    justify-content: flex-start !important;
+    box-sizing: border-box !important;
+}

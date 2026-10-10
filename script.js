@@ -871,5 +871,68 @@ function updateEnergyTimer() {
     
     energyTimerElem.textContent = `(+1 за ${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')})`;
 }
-
 setInterval(updateEnergyTimer, 1000);
+// Відкрити Процедурний кабінет
+function openMedicalHub() {
+    const modal = document.getElementById('medical-hub-modal');
+    if (modal) modal.classList.remove('hidden');
+}
+
+// Закрити Процедурний кабінет
+function closeMedicalHub() {
+    const modal = document.getElementById('medical-hub-modal');
+    if (modal) modal.classList.add('hidden');
+}
+
+// Логіка купівлі препаратів та лікування
+function buyMedicalItem(itemType, cost, currencyType) {
+    // Перевірка наявності коштів
+    if (currencyType === 'silver') {
+        if (typeof player !== 'undefined' && player.silver >= cost) {
+            player.silver -= cost;
+        } else {
+            alert('Не вистачає срібла!');
+            return;
+        }
+    } else if (currencyType === 'bucks') {
+        if (typeof player !== 'undefined' && player.bucks >= cost) {
+            player.bucks -= cost;
+        } else {
+            alert('Не вистачає баксів ($)!');
+            return;
+        }
+    }
+
+    // Застосування ефекту товару
+    if (itemType === 'madness_pills') {
+        if (typeof player !== 'undefined') {
+            player.madness = Math.max(0, player.madness - 15);
+        }
+        alert('Ви прийняли таблетки. Божевілля зменшилось.');
+    } else if (itemType === 'stamina_10') {
+        if (typeof player !== 'undefined') {
+            player.stamina = Math.min(100, player.stamina + 10);
+        }
+        alert('Ви випили енергетик (+10% витривалості).');
+    } else if (itemType === 'stamina_full') {
+        if (typeof player !== 'undefined') {
+            player.stamina = 100;
+        }
+        alert('Ви повністю відновили витривалість!');
+    } else if (itemType === 'hp_10') {
+        if (typeof player !== 'undefined') {
+            player.hp = Math.min(player.maxHp || 120, player.hp + (player.maxHp || 120) * 0.1);
+        }
+        alert('Здоров\'я частково відновлено.');
+    } else if (itemType === 'hp_full') {
+        if (typeof player !== 'undefined') {
+            player.hp = player.maxHp || 120;
+        }
+        alert('Повне відновлення здоров\'я завершено.');
+    }
+
+    // Оновлення інтерфейсу гри (якщо така функція є)
+    if (typeof updateUI === 'function') {
+        updateUI();
+    }
+}
