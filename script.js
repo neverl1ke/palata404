@@ -344,6 +344,29 @@ function updateUI() {
     updateCharacterLayers();
     updatePlayerNameDisplay();
     saveGameProgress();
+
+    // === ПЕРЕМИКАННЯ СТАНІВ: НОРМА vs ПСИХОЗ (100% божевілля) ===
+    const mapBtn = document.getElementById('nav-map-btn');
+    const locName = document.getElementById('current-location-name');
+    const locDesc = document.getElementById('current-location-desc');
+    const locTitleLabel = document.getElementById('loc-title-label');
+    const locCardBox = document.getElementById('location-card-box');
+
+    if (stats.madness >= 100) {
+        // СТАН ПСИХОЗУ / КОРИДОРИ МАРИННЯ
+        if (mapBtn) mapBtn.style.display = 'flex'; // Карта з'являється
+        if (locTitleLabel) locTitleLabel.textContent = "⚠️ СИСТЕМНИЙ ЗБІЙ";
+        if (locName) locName.textContent = "ПОМИЛКА 404: Невідомо";
+        if (locDesc) locDesc.textContent = "Реальність втрачено. Час виходити в незвідані коридори...";
+        if (locCardBox) locCardBox.style.borderColor = "#c0392b";
+    } else {
+        // НОРМАЛЬНИЙ СТАН ПАЦІЄНТА
+        if (mapBtn) mapBtn.style.display = 'none'; // Карта прихована
+        if (locTitleLabel) locTitleLabel.textContent = "Поточна локація";
+        if (locName) locName.textContent = currentRoom.name || "Палата #404";
+        if (locDesc) locDesc.textContent = currentRoom.desc || "Твоє безпечне місце. Лікування та процедури.";
+        if (locCardBox) locCardBox.style.borderColor = "#3d2d22";
+    }
 }
 
 // === КАРТА ТА МАРШРУТИ ===
@@ -1035,4 +1058,23 @@ function openDossier() {
 
 function closeDossier() {
     document.getElementById('dossier-modal').classList.add('hidden');
+}
+// === ТЕСТОВА ФУНКЦІЯ ДЛЯ РОЗРОБКИ ===
+function devSetMadness(value) {
+    stats.madness = value;
+    updateUI();
+    if (value >= 100) {
+        alert("⚠️ АКТИВОВАНО ПСИХОЗ! Розум втрачено, реальність розпалася.");
+    } else {
+        alert("🛡️ Стабілізація розуму. Повернення в нормальний корпус.");
+    }
+}
+
+function handleLocationClick() {
+    if (stats.madness >= 100) {
+        alert("⚠️ Розум повністю затуманений! Палата заблокована галюцинаціями. Відкриваються аномальні коридори (Карта).");
+        toggleMapModal(true);
+    } else {
+        openMedicalHub();
+    }
 }

@@ -72,7 +72,14 @@
                             <div class="bar-bg"><div class="bar-fill madness" id="madness-bar" style="width: 0%;"></div></div>
                         </div>
                     </div>
-
+<!-- ТЕСТОВА ПАНЕЛЬ РОЗРОБНИКА ДЛЯ ПЕРЕМИКАННЯ СТАНІВ -->
+<div style="background: rgba(192, 57, 43, 0.2); border: 1px dashed #e74c3c; padding: 6px; border-radius: 6px; margin-top: 10px; display: flex; flex-direction: column; gap: 4px;">
+    <div style="font-size: 10px; color: #e74c3c; text-align: center; font-weight: bold;">🧪 ТЕСТ РЕЖИМІВ (DEV)</div>
+    <div style="display: flex; gap: 4px;">
+        <button class="btn-outfit" style="flex:1; font-size: 10px; background: #c0392b;" onclick="devSetMadness(100)">Психоз (100%)</button>
+        <button class="btn-outfit" style="flex:1; font-size: 10px; background: #27ae60;" onclick="devSetMadness(0)">Норма (0%)</button>
+    </div>
+</div>
                     <div class="vital-item">
                         <div class="vital-icon energy-icon">⚡</div>
                         <div class="vital-info">
