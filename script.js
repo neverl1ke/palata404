@@ -41,7 +41,7 @@ function changeNickname() {
     }
 }
 
-// === Система ідентифікації та Друзів (Telegram + Web) ===
+// === Система ідентифікації та «Сусіди по блоку» (Telegram + Web) ===
 function getPlayerUniqueId() {
     if (tg && tg.initDataUnsafe && tg.initDataUnsafe.user) {
         const user = tg.initDataUnsafe.user;
@@ -96,21 +96,21 @@ function addFriend() {
 
     const currentPlayer = getPlayerUniqueId();
     if (val === currentPlayer.id || val === currentPlayer.name) {
-        alert("Ви не можете додати самого себе!");
+        alert("Ви не можете додати самого себе до пацієнтів!");
         return;
     }
 
     if (friendsList.some(f => f.identifier === val)) {
-        alert("Цей гравець уже є у вашому списку друзів!");
+        alert("Цей пацієнт уже у вашому списку зв'язку!");
         return;
     }
 
-    friendsList.push({ identifier: val, status: 'В мережі' });
+    friendsList.push({ identifier: val, status: 'На зв\'язку' });
     localStorage.setItem('palata404_friends', JSON.stringify(friendsList));
     
     input.value = '';
     renderFriendsList();
-    alert("Друга успішно додано!");
+    alert("Пацієнта успішно додано до сусідів по блоку!");
 }
 
 function renderFriendsList() {
@@ -118,7 +118,7 @@ function renderFriendsList() {
     container.innerHTML = '';
 
     if (friendsList.length === 0) {
-        container.innerHTML = `<div style="color: #7f8c8d; text-align: center; padding: 10px;">Список друзів порожній</div>`;
+        container.innerHTML = `<div style="color: #7f8c8d; text-align: center; padding: 10px;">Список сусідів порожній</div>`;
         return;
     }
 
@@ -175,13 +175,21 @@ const facesData = [
     { id: 'face_6.png', name: 'Обличчя #6 (Лисий суворий)' }
 ];
 
+// Оновлений інвентар з атмосферними назвами та розширеними описами
 let inventory = loadSaveData('palata404_inventory', [
-    { name: 'ПМ', icon: '🔫', count: 1, category: 'weapon', damageBonus: 15, desc: 'Стандартний пістолет Макарова. Надійний у тісних коридорах лікарні.' },
-    { name: 'Тактичний шолом', icon: '🪖', count: 1, category: 'helmet', armorBonus: 10, desc: 'Армійський шолом. Добре захищає від тупих предметів.' },
-    { name: 'Бронежилет БР-1', icon: '🛡️', count: 1, category: 'armor', armorBonus: 25, desc: 'Легкий бронежилет прихованого носіння.' },
-    { name: 'Приціл RedDot', icon: '🧩', count: 1, category: 'mod', desc: 'Коліматорний приціл для точної стрільби.' },
-    { name: 'Аптечка', icon: '🧪', count: 3, category: 'meds', healBonus: 50, desc: 'Військовий набір першої допомоги. Відновлює 50 HP.' }
+    { name: 'Іржавий ніж', icon: '🔪', count: 1, category: 'weapon', damageBonus: 8, desc: 'Саморобний ніж з обломка медичного шпателя. Тихий, не привертає зайвої уваги санітарів, але ефективний у тісних коридорах.' },
+    { name: 'ПМ (Пістолет Макарова)', icon: '🔫', count: 1, category: 'weapon', damageBonus: 18, desc: 'Стабельний табовий пістолет охорони. Потертий вороніний метал, у магазині залишилось кілька патронів.' },
+    { name: 'Штурмовий АКС-74У', icon: '⚡', count: 1, category: 'weapon', damageBonus: 35, desc: 'Укорочений автомат колишньої охорони спецблоку. Засіб останньої надії проти агресивних мутантів.' },
+    { name: 'Побитий шолом санітара', icon: '🪖', count: 1, category: 'helmet', armorBonus: 12, desc: 'Протиударний шолом персонажу психлікарні із залишками захисного скла. Гасить важкі удари по голові.' },
+    { name: 'Бронежилет БР-1', icon: '🛡️', count: 1, category: 'armor', armorBonus: 28, desc: 'Легкий армійський бронежилет прихованого носіння. Рятує від кульових поранень та ножів.' },
+    { name: 'Аптечка швидкої допомоги', icon: '🧪', count: 3, category: 'meds', healBonus: 50, desc: 'Герметичний армійський контейнер із сильними стимуляторами та перев’язкою. Миттєво стабілізує стан.' }
 ]);
+
+let equippedGear = loadSaveData('palata404_equipped', {
+    weapon: null,
+    helmet: null,
+    armor: null
+});
 
 let currentCategory = 'all';
 let currentWardrobeTab = 'body';
@@ -486,9 +494,18 @@ function renderMinecraftStash() {
 
         if (filteredItems[i]) {
             let item = filteredItems[i];
+            
+            // Перевіряємо, чи предмет зараз одягнений, і додаємо помітку в інвентарі
+            const isEquipped = (
+                (item.category === 'weapon' && equippedGear.weapon === item.name) ||
+                (item.category === 'helmet' && equippedGear.helmet === item.name) ||
+                (item.category === 'armor' && equippedGear.armor === item.name)
+            );
+
             slot.innerHTML = `
                 <span class="item-icon">${item.icon}</span>
                 ${item.count > 1 ? `<span class="item-count">${item.count}</span>` : ''}
+                ${isEquipped ? `<span style="position: absolute; top: 2px; left: 2px; font-size: 8px; background: #e74c3c; color: #fff; padding: 1px 3px; border-radius: 3px;">EQ</span>` : ''}
             `;
             slot.onclick = () => openItemInfo(item);
         }
@@ -496,19 +513,25 @@ function renderMinecraftStash() {
     }
 }
 
-// === Система перегляду та використання предметів ===
+// === Система перегляду та екіпіровки предметів ===
 function openItemInfo(item) {
     selectedItemForAction = item;
     document.getElementById('item-info-title').textContent = `${item.icon} ${item.name}`;
     
     let bodyHtml = `<p style="color: #a3927d;">${item.desc || 'Немає опису предмета.'}</p>`;
     
+    const isEquipped = (
+        (item.category === 'weapon' && equippedGear.weapon === item.name) ||
+        (item.category === 'helmet' && equippedGear.helmet === item.name) ||
+        (item.category === 'armor' && equippedGear.armor === item.name)
+    );
+
     if (item.category === 'weapon') {
         bodyHtml += `<div style="color: #e74c3c; margin-top: 5px;"><strong>⚔️ Бонус до урону:</strong> +${item.damageBonus || 0}</div>`;
-        document.getElementById('item-action-btn').textContent = "Озброїтися";
+        document.getElementById('item-action-btn').textContent = isEquipped ? "Зняти" : "Озброїтися";
     } else if (item.category === 'armor' || item.category === 'helmet') {
         bodyHtml += `<div style="color: #3498db; margin-top: 5px;"><strong>🛡️ Бонус до броні:</strong> +${item.armorBonus || 0}</div>`;
-        document.getElementById('item-action-btn').textContent = "Надіти спорядження";
+        document.getElementById('item-action-btn').textContent = isEquipped ? "Зняти" : "Надіти спорядження";
     } else if (item.category === 'meds') {
         bodyHtml += `<div style="color: #2ecc71; margin-top: 5px;"><strong>❤️ Відновлення HP:</strong> +${item.healBonus || 0}</div>`;
         document.getElementById('item-action-btn').textContent = "Використати";
@@ -534,13 +557,37 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
             
-            if (selectedItemForAction.category === 'weapon') {
-                stats.damage = 10 + (selectedItemForAction.damageBonus || 0);
-                alert(`Ви озброїлись: ${selectedItemForAction.name}! Урон тепер: ${stats.damage}`);
-            } else if (selectedItemForAction.category === 'armor' || selectedItemForAction.category === 'helmet') {
-                stats.armor += (selectedItemForAction.armorBonus || 0);
-                alert(`Ви наділи: ${selectedItemForAction.name}! Загальна броня: ${stats.armor}`);
-            } else if (selectedItemForAction.category === 'meds') {
+            const cat = selectedItemForAction.category;
+
+            if (cat === 'weapon') {
+                if (equippedGear.weapon === selectedItemForAction.name) {
+                    stats.damage -= (selectedItemForAction.damageBonus || 0);
+                    equippedGear.weapon = null;
+                    alert(`Ви зняли: ${selectedItemForAction.name}`);
+                } else {
+                    if (equippedGear.weapon) {
+                        const oldWp = inventory.find(i => i.name === equippedGear.weapon);
+                        if (oldWp) stats.damage -= (oldWp.damageBonus || 0);
+                    }
+                    stats.damage += (selectedItemForAction.damageBonus || 0);
+                    equippedGear.weapon = selectedItemForAction.name;
+                    alert(`Ви озброїлись: ${selectedItemForAction.name}! Урон тепер: ${stats.damage}`);
+                }
+            } else if (cat === 'armor' || cat === 'helmet') {
+                if (equippedGear[cat] === selectedItemForAction.name) {
+                    stats.armor -= (selectedItemForAction.armorBonus || 0);
+                    equippedGear[cat] = null;
+                    alert(`Ви зняли спорядження: ${selectedItemForAction.name}`);
+                } else {
+                    if (equippedGear[cat]) {
+                        const oldArmor = inventory.find(i => i.name === equippedGear[cat]);
+                        if (oldArmor) stats.armor -= (oldArmor.armorBonus || 0);
+                    }
+                    stats.armor += (selectedItemForAction.armorBonus || 0);
+                    equippedGear[cat] = selectedItemForAction.name;
+                    alert(`Ви наділи: ${selectedItemForAction.name}! Загальна броня: ${stats.armor}`);
+                }
+            } else if (cat === 'meds') {
                 if (selectedItemForAction.count > 0) {
                     selectedItemForAction.count -= 1;
                     stats.hp = Math.min(stats.maxHp, stats.hp + (selectedItemForAction.healBonus || 50));
@@ -551,6 +598,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
 
+            localStorage.setItem('palata404_equipped', JSON.stringify(equippedGear));
             updateUI();
             closeItemInfo();
             renderMinecraftStash();
