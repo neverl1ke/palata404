@@ -468,9 +468,9 @@
 <!-- ПОВНОЕКРАННА БОЙОВА СЦЕНА -->
 <div id="nurse-battle-modal" class="modal-overlay hidden" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #000; z-index: 10000; display: flex; flex-direction: column;">
     
-    <div id="battle-arena-screen" onclick="performPlayerAttack()" style="position: relative; width: 100%; height: 100%; background: url('nurse_bg.jpg') center/cover no-repeat; display: flex; justify-content: space-between; align-items: flex-start; padding: 35px; box-sizing: border-box; cursor: pointer; user-select: none;">
+    <div id="battle-arena-screen" onclick="performPlayerAttack(event)" style="position: relative; width: 100%; height: 100%; background: url('nurse_bg.jpg') center/cover no-repeat; display: flex; justify-content: space-between; align-items: flex-start; padding: 35px; box-sizing: border-box; cursor: pointer; user-select: none;">
         
-        <!-- ВЕРХ ЗЛІВА: ВЕЛИКА панель гравця -->
+        <!-- ВЕРХ ЗЛІВА: Панель гравця -->
         <div style="background: rgba(20, 15, 12, 0.94); border: 2px solid #5c4033; padding: 18px 24px; border-radius: 12px; width: 380px; color: #fff; display: flex; gap: 20px; align-items: center; z-index: 5; box-shadow: 0 6px 20px rgba(0,0,0,0.85);" onclick="event.stopPropagation()">
             <div id="player-battle-avatar-box" style="width: 85px; height: 85px; background: #2a1f18; border: 2px solid #8c5842; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 38px; flex-shrink: 0; overflow: hidden;">
                 👤
@@ -484,8 +484,8 @@
             </div>
         </div>
 
-        <!-- ЗЛІВА ПОСЕРЕДИНІ: Аптечки -->
-        <div style="position: absolute; left: 35px; top: 50%; transform: translateY(-50%); background: rgba(20, 15, 12, 0.9); border: 1px solid #3d2d22; padding: 12px; border-radius: 10px; display: flex; flex-direction: column; gap: 10px; z-index: 5;" onclick="event.stopPropagation()">
+        <!-- ЗЛІВА ПОСЕРЕДИНІ: Аптечки та нові кнопки рейду -->
+        <div style="position: absolute; left: 35px; top: 50%; transform: translateY(-50%); background: rgba(20, 15, 12, 0.92); border: 1px solid #3d2d22; padding: 12px; border-radius: 10px; display: flex; flex-direction: column; gap: 10px; z-index: 5;" onclick="event.stopPropagation()">
             <div style="font-size: 11px; color: #a3927d; text-align: center; margin-bottom: 2px; font-weight: bold;">🧪 АПТЕЧКИ</div>
             
             <button id="medkit-btn-small" title="Мала аптечка (+20 HP)" class="btn-outfit" style="background: #2a1f18; border: 1px solid #5c4033; width: 52px; height: 52px; border-radius: 8px; font-size: 24px; cursor: pointer; position: relative;" onclick="useBattleMedkit('small')">
@@ -497,11 +497,19 @@
                 💉
                 <span id="medkit-count-big" style="position: absolute; bottom: 3px; right: 3px; font-size: 11px; background: #c0392b; color: #fff; padding: 1px 4px; border-radius: 4px; font-weight: bold;">0</span>
             </button>
+
+            <hr style="border-color: #443225; margin: 4px 0;">
+
+            <!-- Кнопка #1: Покликати сусідів -->
+            <button class="btn-outfit" style="background: #8e44ad; padding: 8px 10px; font-size: 11px; font-weight: bold; cursor: pointer; border-radius: 6px; color: #fff;" onclick="callNeighbors()">📢 Покликати сусідів</button>
+            
+            <!-- Кнопка #2: Список учасників -->
+            <button class="btn-outfit" style="background: #2980b9; padding: 8px 10px; font-size: 11px; font-weight: bold; cursor: pointer; border-radius: 6px; color: #fff;" onclick="openRaidListModal()">👥 Список рейду</button>
         </div>
 
-        <!-- ПОСЕРЕДИНІ: Медсестра в кабінеті -->
-        <div style="position: absolute; left: 50%; bottom: 6vh; transform: translateX(-50%); text-align: center; pointer-events: none; z-index: 2;">
-            <img src="nurse_sprite.png" alt="Медсестра" style="max-height: 800px; height: 85vh; width: auto; object-fit: contain;">
+        <!-- ПОСЕРЕДИНІ: Медсестра в кабінеті + контейнер для сносок урону -->
+        <div id="damage-floating-container" style="position: absolute; left: 50%; top: 0; width: 100%; height: 100%; pointer-events: none; z-index: 15;">
+            <img src="nurse_sprite.png" alt="Медсестра" style="position: absolute; left: 50%; bottom: 6vh; transform: translateX(-50%); max-height: 800px; height: 85vh; width: auto; object-fit: contain;">
         </div>
 
         <!-- ВЕРХ СПРАВА: ВЕЛИКА панель Медсестри -->
@@ -518,11 +526,60 @@
             </div>
         </div>
 
-        <!-- ЗНИЗУ ПОСЕРЕДИНІ: Кнопка Втекти (ПРАЦЮЄ!) -->
+        <!-- ЗНИЗУ ПОСЕРЕДИНІ: Кнопка Втекти -->
         <div style="position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); z-index: 5;" onclick="event.stopPropagation()">
             <button class="btn-outfit" style="background: #7f8c8d; padding: 12px 35px; font-size: 15px; font-weight: bold; cursor: pointer; border-radius: 8px;" onclick="closeNurseBattle()">🏃 Втекти</button>
         </div>
 
+    </div>
+</div>
+
+
+<!-- СТИЛІЗОВАНЕ МОДАЛЬНЕ ВІКНО ПЕРЕМОГИ (З ЗАБЛЮРЕНИМ ФОНОМ) -->
+<div id="nurse-victory-modal" class="modal-overlay hidden" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(10, 8, 6, 0.75); backdrop-filter: blur(8px); z-index: 20000; display: flex; align-items: center; justify-content: center;">
+    <div style="background: #1c1511; border: 2px solid #27ae60; width: 520px; padding: 30px; border-radius: 12px; color: #f4e8d1; text-align: center; font-family: sans-serif; box-shadow: 0 0 40px rgba(39,174,96,0.4);">
+        
+        <div style="font-size: 45px; margin-bottom: 10px;">🎉</div>
+        <h2 style="color: #27ae60; margin: 0 0 10px 0; font-size: 26px;">Успішна зачистка кабінету!</h2>
+        <p style="color: #bdaea0; font-size: 14px; margin-bottom: 20px;">Сестра Клара нейтралізована. Доступ до внутрішніх приміщень відкрито.</p>
+
+        <!-- Блок здобичі -->
+        <div style="background: #15100c; border: 1px solid #3d2d22; padding: 15px; border-radius: 8px; margin-bottom: 20px; text-align: left;">
+            <div style="font-size: 13px; color: #f39c12; font-weight: bold; margin-bottom: 8px;">📦 ЗДОБИЧ ТА НАГОРОДИ:</div>
+            <div style="font-size: 13px; margin-bottom: 4px; color: #fff;">✨ Досвід: <strong>+50 EXP</strong></div>
+            <div style="font-size: 13px; margin-bottom: 4px; color: #fff;">🪙 Срібло: <strong>+30 Срібла</strong></div>
+            <div style="font-size: 13px; color: #fff;">🔑 Квестовий предмет: <strong>Ключ від блоку боса</strong></div>
+        </div>
+
+        <!-- MVP та Халтурщики підсумок -->
+        <div id="victory-raid-summary" style="background: #120e0b; border: 1px solid #5c4033; padding: 12px; border-radius: 8px; margin-bottom: 25px; text-align: left; font-size: 12px; max-height: 140px; overflow-y: auto;">
+            <!-- Динамічно заповнюється -->
+        </div>
+
+        <!-- Кнопки керування в кінці бою -->
+        <div style="display: flex; gap: 15px;">
+            <button class="btn-outfit" style="flex: 1; background: #27ae60; padding: 12px; font-weight: bold; font-size: 14px; cursor: pointer; border-radius: 6px; color: #fff;" onclick="victoryContinueToMap()">🗺️ Продовжити (На карту)</button>
+            <button class="btn-outfit" style="flex: 1; background: #c0392b; padding: 12px; font-weight: bold; font-size: 14px; cursor: pointer; border-radius: 6px; color: #fff;" onclick="victoryRestartFight()">🔄 Повторити бій</button>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- МОДАЛЬНЕ ВІКНО: СПИСОК РЕЙДУ ТА УЧАСНИКІВ -->
+<div id="raid-list-modal" class="modal-overlay hidden" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.7); z-index: 15000; display: flex; align-items: center; justify-content: center;">
+    <div style="background: #1c1511; border: 2px solid #2980b9; width: 440px; padding: 25px; border-radius: 10px; color: #f4e8d1; font-family: sans-serif; position: relative; box-shadow: 0 0 25px rgba(41,128,185,0.4);">
+        <button onclick="closeRaidListModal()" style="position: absolute; top: 10px; right: 10px; background: none; border: none; color: #fff; font-size: 20px; cursor: pointer;">✕</button>
+        
+        <h3 style="color: #3498db; margin-top: 0; text-align: center; border-bottom: 1px dashed #3d2d22; padding-bottom: 10px;">👥 Учасники Рейду Блоку</h3>
+        
+        <div id="raid-members-container" style="max-height: 250px; overflow-y: auto; display: flex; flex-direction: column; gap: 8px; margin-bottom: 15px;">
+            <!-- Список учасників -->
+        </div>
+
+        <div style="font-size: 11px; color: #a3927d; text-align: center; line-height: 1.4;">
+            <em>Сусіди б'ються автоматично щоразу, коли ви атакуєте боса. Для нагороди потрібно нанести мінімум 10% від загального HP боса (12 урону).</em>
+        </div>
     </div>
 </div>
 </body>

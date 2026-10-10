@@ -1130,16 +1130,31 @@ function openMedicalHub() {
     renderMedicalRooms();
     document.getElementById('medical-hub-modal').classList.remove('hidden');
 }
+// ==========================================
+// БОЙОВА СИСТЕМА: СЕСТРА КЛАРА (РЕЙД ТА MVP)
+// ==========================================
+
 let bossCurrentHp = 120;
 let bossMaxHp = 120;
+let nurseKillsCount = 0; // Лічильник усунених загроз
+
+// Учасники рейду (ти + сусіди-боти)
+let raidMembers = [
+    { name: 'Пацієнт #404 (Ви)', damage: 0, isPlayer: true },
+    { name: 'Сусід з палати #402 (Сліпий Микола)', damage: 0, active: false },
+    { name: 'Пацієнтка #410 (Мері)', damage: 0, active: false },
+    { name: 'Буйний сусіда з ізолятора', damage: 0, active: false }
+];
 
 // Викликається при натисканні на Процедурний кабінет на карті
 function openProcedureRoomBattle() {
     if (stats.madness < 100) {
-        alert("У нормальному стані процедурний кабінет працює як стандартний лазарет.");
+        alert("У нормальному стані процедурний кабінет зачинений.");
         return;
     }
-    // Відкриваємо Досьє поверх карти (карта НЕ закривається)
+    const killsElem = document.getElementById('dossier-kills-count');
+    if (killsElem) killsElem.textContent = nurseKillsCount;
+
     const dossierModal = document.getElementById('nurse-dossier-modal');
     if (dossierModal) dossierModal.classList.remove('hidden');
 }
@@ -1152,9 +1167,16 @@ function closeNurseDossier() {
 // Старт бою з досьє
 function startNurseFight() {
     closeNurseDossier();
-    toggleMapModal(false); // Тепер закриваємо карту, оскільки починається бій
+    if (typeof toggleMapModal === 'function') {
+        toggleMapModal(false); // Закриваємо карту
+    }
     
     bossCurrentHp = bossMaxHp;
+    raidMembers.forEach(m => {
+        m.damage = 0;
+        if (!m.isPlayer) m.active = false;
+    });
+    
     updateBattleUI();
     
     const battleModal = document.getElementById('nurse-battle-modal');
@@ -1166,94 +1188,207 @@ function closeNurseBattle() {
     if (battleModal) battleModal.classList.add('hidden');
 }
 
-function updateBattleUI() {
-    // Підтягуємо реальний нік гравця з головного меню/профілю
-    const playerNameElem = document.getElementById('b-player-name');
-    if (playerNameElem && typeof playerProfile !== 'undefined' && playerProfile.name) {
-        playerNameElem.textContent = playerProfile.name;
-    }
-
-    // ХП Гравця
-    document.getElementById('b-player-hp').textContent = `${stats.hp}/${stats.maxHp}`;
-    let pPercent = Math.max(0, (stats.hp / stats.maxHp) * 100);
-    document.getElementById('b-player-hpbar').style.width = `${pPercent}%`;
-
-    // ХП Боса
-    document.getElementById('b-boss-hp').textContent = `${bossCurrentHp}/${bossMaxHp}`;
-    let bPercent = Math.max(0, (bossCurrentHp / bossMaxHp) * 100);
-    document.getElementById('b-boss-hpbar').style.width = `${bPercent}%`;
-
-    // Підрахунок аптечок в інвентарі
-    let smallMeds = inventory.filter(i => i.name === 'Мала аптечка' || i.category === 'meds').reduce((acc, item) => acc + (item.count || 1), 0);
-    let bigMeds = inventory.filter(i => i.name === 'Велика аптечка').reduce((acc, item) => acc + (item.count || 1), 0);
-
-    const btnSmall = document.getElementById('medkit-btn-small');
-    const countSmall = document.getElementById('medkit-count-small');
-    if (countSmall) countSmall.textContent = smallMeds;
-    if (btnSmall) {
-        if (smallMeds <= 0) {
-            btnSmall.style.opacity = '0.4';
-            btnSmall.style.cursor = 'not-allowed';
-        } else {
-            btnSmall.style.opacity = '1';
-            btnSmall.style.cursor = 'pointer';
-        }
-    }
-
-    const btnBig = document.getElementById('medkit-btn-big');
-    const countBig = document.getElementById('medkit-count-big');
-    if (countBig) countBig.textContent = bigMeds;
-    if (btnBig) {
-        if (bigMeds <= 0) {
-            btnBig.style.opacity = '0.4';
-            btnBig.style.cursor = 'not-allowed';
-        } else {
-            btnBig.style.opacity = '1';
-            btnBig.style.cursor = 'pointer';
-        }
-    }
-}
-
-let nurseKillsCount = 0; // Лічильник вбивств медсестри (Усунених загроз)
-
-function openProcedureRoomBattle() {
-    if (stats.madness < 100) {
-        alert("У нормальному стані процедурний кабінет зачинений.");
+// Кнопка: Покликати сусідів блоку
+function callNeighbors() {
+    let inactiveNeighbors = raidMembers.filter(m => !m.isPlayer && !m.active);
+    if (inactiveNeighbors.length === 0) {
+        alert("📢 Усі вільні сусіди вже приєдналися до рейду!");
         return;
     }
-    // Оновлюємо лічильник Усунених загроз у досьє
-    const killsElem = document.getElementById('dossier-kills-count');
-    if (killsElem) killsElem.textContent = nurseKillsCount;
-
-    const dossierModal = document.getElementById('nurse-dossier-modal');
-    if (dossierModal) dossierModal.classList.remove('hidden');
+    let neighbor = inactiveNeighbors[0];
+    neighbor.active = true;
+    alert(`📢 Ви гучно постукали в стіну! До битви приєднався: ${neighbor.name}!`);
+    updateRaidListUI();
 }
 
-function updateBattleUI() {
-    // 1. ПІДТЯГУЄМО НІКНЕЙМ ГРАВЦЯ
-    const playerNameElem = document.getElementById('b-player-name');
-    if (playerNameElem && typeof playerName !== 'undefined') {
-        playerNameElem.textContent = playerName; // Використовуємо глобальну змінну playerName
+function openRaidListModal() {
+    updateRaidListUI();
+    document.getElementById('raid-list-modal').classList.remove('hidden');
+}
+
+function closeRaidListModal() {
+    document.getElementById('raid-list-modal').classList.add('hidden');
+}
+
+function updateRaidListUI() {
+    const container = document.getElementById('raid-members-container');
+    if (!container) return;
+
+    container.innerHTML = raidMembers.map(m => {
+        let statusColor = m.isPlayer || m.active ? '#27ae60' : '#7f8c8d';
+        let statusText = m.isPlayer ? 'Ви (Головний)' : (m.active ? 'Бере участь у бійці' : 'Очікує виклику');
+        return `
+            <div style="background: #251b14; border: 1px solid #3d2d22; padding: 8px 12px; border-radius: 6px; display: flex; justify-content: space-between; align-items: center; font-size: 12px;">
+                <div>
+                    <div style="font-weight: bold; color: ${m.isPlayer ? '#e67e22' : '#f4e8d1'};">${m.name}</div>
+                    <div style="font-size: 10px; color: ${statusColor};">${statusText}</div>
+                </div>
+                <div style="text-align: right; color: #e74c3c; font-weight: bold;">
+                    ${m.damage} DMG
+                </div>
+            </div>
+        `;
+    }).join('');
+}
+
+// Сноски урону в реальному часі (Floating Combat Text)
+function showFloatingDamage(text, isPlayerHit = false, customX = null, customY = null) {
+    const container = document.getElementById('damage-floating-container');
+    if (!container) return;
+
+    const el = document.createElement('div');
+    el.textContent = text;
+    
+    let randomX = customX !== null ? customX : (window.innerWidth / 2 + (Math.random() * 100 - 50));
+    let randomY = customY !== null ? customY : (window.innerHeight / 2 - (Math.random() * 60));
+
+    el.style.position = 'fixed';
+    el.style.left = `${randomX}px`;
+    el.style.top = `${randomY}px`;
+    el.style.color = isPlayerHit ? '#e74c3c' : '#f39c12';
+    el.style.fontSize = '24px';
+    el.style.fontWeight = 'bold';
+    el.style.textShadow = '0 0 4px #000, 0 0 8px #000';
+    el.style.zIndex = '99999';
+    el.style.pointerEvents = 'none';
+    el.style.transition = 'all 0.8s ease-out';
+    
+    container.appendChild(el);
+
+    setTimeout(() => {
+        el.style.transform = 'translateY(-60px) scale(1.2)';
+        el.style.opacity = '0';
+    }, 50);
+
+    setTimeout(() => {
+        el.remove();
+    }, 850);
+}
+
+// Клік по арені — Атака гравця та сусідів
+function performPlayerAttack(event) {
+    let dmg = stats.damage || 10;
+    bossCurrentHp = Math.max(0, bossCurrentHp - dmg);
+
+    let playerMember = raidMembers.find(m => m.isPlayer);
+    if (playerMember) playerMember.damage += dmg;
+
+    let clickX = event ? event.clientX : window.innerWidth / 2;
+    let clickY = event ? event.clientY : window.innerHeight / 2;
+    showFloatingDamage(`-${dmg}`, false, clickX, clickY);
+
+    // Атака активних сусідів-ботів
+    raidMembers.forEach(m => {
+        if (!m.isPlayer && m.active) {
+            let neighborDmg = Math.floor(Math.random() * 8) + 4;
+            bossCurrentHp = Math.max(0, bossCurrentHp - neighborDmg);
+            m.damage += neighborDmg;
+            
+            setTimeout(() => {
+                showFloatingDamage(`${m.name.split(' ')[0]}: -${neighborDmg}`);
+            }, 300);
+        }
+    });
+
+    if (bossCurrentHp <= 0) {
+        handleVictory();
+        return;
     }
 
-    // 2. Підтягуємо аватарку з лоббі (якщо є)
+    // Контратака медсестри
+    let counter = 12;
+    stats.hp = Math.max(0, stats.hp - counter);
+    showFloatingDamage(`-${counter} HP`, true, window.innerWidth / 4, window.innerHeight / 3);
+
+    if (stats.hp <= 0) {
+        alert("💀 Сестра Клара вас здолала... Ви знепритомніли.");
+        stats.hp = stats.maxHp;
+        closeNurseBattle();
+        updateUI();
+        return;
+    }
+
+    updateBattleUI();
+}
+
+// Перемога, MVP та перевірка халтурщиків
+function handleVictory() {
+    nurseKillsCount++;
+    closeNurseBattle();
+
+    // Поріг для отримання нагороди (10% від HP боса = 12 урону)
+    let minThreshold = bossMaxHp * 0.10;
+    let playerMember = raidMembers.find(m => m.isPlayer);
+    let playerEarnedReward = playerMember.damage >= minThreshold;
+
+    if (playerEarnedReward) {
+        stats.silver = (stats.silver || 0) + 30;
+        addExperience(50);
+
+        let questKey = {
+            name: 'Ключ від блоку боса',
+            icon: '🔑',
+            category: 'quest',
+            count: 1,
+            desc: 'Добутий після усунення медсестри.'
+        };
+        if (!inventory.some(i => i.name === questKey.name)) {
+            inventory.push(questKey);
+        }
+    }
+
+    let sortedRaid = [...raidMembers].sort((a, b) => b.damage - a.damage);
+    let mvp = sortedRaid[0];
+
+    let summaryHtml = `<div style="font-weight: bold; color: #f39c12; margin-bottom: 6px;">👑 MVP рейду: ${mvp.name} (${mvp.damage} DMG)</div>`;
+    summaryHtml += `<div style="font-size: 11px; color: #bdaea0; margin-bottom: 4px;">📊 Внесок учасників:</div>`;
+
+    sortedRaid.forEach(m => {
+        let gotReward = m.damage >= minThreshold;
+        let badge = gotReward ? '<span style="color:#27ae60;">[Отримав нагороду]</span>' : '<span style="color:#e74c3c;">[Халтурщик / Без нагороди]</span>';
+        summaryHtml += `<div style="display: flex; justify-content: space-between; margin-bottom: 2px;"><span>• ${m.name} (${m.damage} DMG)</span> <span>${badge}</span></div>`;
+    });
+
+    document.getElementById('victory-raid-summary').innerHTML = summaryHtml;
+    document.getElementById('nurse-victory-modal').classList.remove('hidden');
+    updateUI();
+}
+
+// Кнопки у вікні перемоги
+function victoryContinueToMap() {
+    document.getElementById('nurse-victory-modal').classList.add('hidden');
+}
+
+function victoryRestartFight() {
+    document.getElementById('nurse-victory-modal').classList.add('hidden');
+    startNurseFight();
+}
+
+// Оновлення інтерфейсу бою
+function updateBattleUI() {
+    const playerNameElem = document.getElementById('b-player-name');
+    if (playerNameElem) {
+        if (typeof playerName !== 'undefined' && playerName) {
+            playerNameElem.textContent = playerName;
+        } else if (typeof playerProfile !== 'undefined' && playerProfile.name) {
+            playerNameElem.textContent = playerProfile.name;
+        }
+    }
+
     const battleAvatarBox = document.getElementById('player-battle-avatar-box');
     const lobbyAvatar = document.querySelector('.player-avatar img, #player-avatar img');
     if (battleAvatarBox && lobbyAvatar) {
         battleAvatarBox.innerHTML = `<img src="${lobbyAvatar.src}" style="width:100%; height:100%; object-fit:cover;">`;
     }
 
-    // 3. ХП Гравця
     document.getElementById('b-player-hp').textContent = `${stats.hp}/${stats.maxHp}`;
     let pPercent = Math.max(0, (stats.hp / stats.maxHp) * 100);
     document.getElementById('b-player-hpbar').style.width = `${pPercent}%`;
 
-    // 4. ХП Боса
     document.getElementById('b-boss-hp').textContent = `${bossCurrentHp}/${bossMaxHp}`;
     let bPercent = Math.max(0, (bossCurrentHp / bossMaxHp) * 100);
     document.getElementById('b-boss-hpbar').style.width = `${bPercent}%`;
 
-    // 5. Оновлення лічильників аптечок
     let smallMeds = inventory.filter(i => i.name === 'Мала аптечка' || i.category === 'meds').reduce((acc, item) => acc + (item.count || 1), 0);
     let bigMeds = inventory.filter(i => i.name === 'Велика аптечка').reduce((acc, item) => acc + (item.count || 1), 0);
 
@@ -1265,59 +1400,13 @@ function updateBattleUI() {
         btnSmall.style.cursor = smallMeds <= 0 ? 'not-allowed' : 'pointer';
     }
 
+    const btnBig = document.getElementById('medkit-btn-big');
     const countBig = document.getElementById('medkit-count-big');
-    const btnBig = document.getElementById('medkit-count-big');
     if (countBig) countBig.textContent = bigMeds;
     if (btnBig) {
         btnBig.style.opacity = bigMeds <= 0 ? '0.4' : '1';
         btnBig.style.cursor = bigMeds <= 0 ? 'not-allowed' : 'pointer';
     }
-}
-
-// Функція атаки
-function performPlayerAttack() {
-    let dmg = stats.damage || 10;
-    bossCurrentHp = Math.max(0, bossCurrentHp - dmg);
-
-    if (bossCurrentHp <= 0) {
-        nurseKillsCount++; // Збільшуємо лічильник "Усунених загроз"
-        
-        // Додаємо винагороду
-        stats.silver = (stats.silver || 0) + 30;
-        addExperience(50);
-
-        alert("🎉 Успішна зачистка кабінету!\nПереможено Сестру Клару.\nОтримано: +50 EXP, +30 Срібла, Ключ від блоку боса!");
-        
-        // Ключ в інвентар
-        let questKey = {
-            name: 'Ключ від блоку боса',
-            icon: '🔑',
-            category: 'quest',
-            count: 1,
-            desc: 'Добутий після усунення медсестри.'
-        };
-        if (!inventory.some(i => i.name === questKey.name)) {
-            inventory.push(questKey);
-        }
-
-        closeNurseBattle();
-        updateUI();
-        return;
-    }
-
-    // Контратака
-    let counter = 12;
-    stats.hp = Math.max(0, stats.hp - counter);
-
-    if (stats.hp <= 0) {
-        alert("💀 Сестра Клара вас здолала... Ви знепритомніли.");
-        stats.hp = stats.maxHp;
-        closeNurseBattle();
-        updateUI();
-        return;
-    }
-
-    updateBattleUI();
 }
 
 function useBattleMedkit(type) {
@@ -1331,6 +1420,7 @@ function useBattleMedkit(type) {
         }
         let healAmount = type === 'big' ? 50 : 20;
         stats.hp = Math.min(stats.maxHp, stats.hp + healAmount);
+        showFloatingDamage(`+${healAmount} HP`, false, window.innerWidth / 4, window.innerHeight / 3);
         updateBattleUI();
         updateUI();
     }
