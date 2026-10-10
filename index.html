@@ -4,8 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Палата 404</title>
+    <!-- Підключення атмосферних шрифтів Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Special+Elite&display=swap" rel="stylesheet">
+    
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <link rel="stylesheet" href="style.css?v=39000">
+    <link rel="stylesheet" href="style.css?v=40000">
 </head>
 <body>
 
@@ -42,7 +47,7 @@
                 <button class="nav-icon-btn" title="Карта" onclick="toggleMapModal(true)">🗺️</button>
                 <button class="nav-icon-btn" title="Завдання" onclick="alert('Завдання в розробці')">📋</button>
                 <button class="nav-icon-btn" title="Рейд" onclick="alert('Рейди в розробці')">⚔️</button>
-                <button class="nav-icon-btn" title="Друзі" onclick="openFriends()">👥</button>
+                <button class="nav-icon-btn" title="Сусіди по блоку" onclick="openFriends()">👥</button>
             </nav>
 
             <!-- Правий блок: Системні кнопки -->
@@ -233,11 +238,11 @@
         </div>
     </div>
 
-    <!-- Модальне вікно: Друзі -->
+    <!-- Модальне вікно: Сусіди по блоку -->
     <div id="friends-modal" class="modal center-modal hidden">
         <div class="modal-content" style="width: min(400px, 92vw);">
             <div class="modal-header">
-                <h3>👥 Система друзів</h3>
+                <h3>👥 Сусіди по блоку</h3>
                 <button class="btn-close-mini" onclick="closeFriends()">✕</button>
             </div>
             <div class="friends-body">
@@ -252,7 +257,7 @@
                 </div>
 
                 <div style="border-top: 1px solid #3d2d22; padding-top: 8px;">
-                    <span style="color: #a3927d; font-weight: bold;">Список друзів:</span>
+                    <span style="color: #a3927d; font-weight: bold;">Список сусідів:</span>
                     <div id="friends-list"></div>
                 </div>
             </div>
@@ -287,6 +292,6 @@
         </div>
     </div>
 
-    <script src="script.js?v=39000"></script>
+    <script src="script.js?v=40000"></script>
 </body>
 </html>

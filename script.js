@@ -175,15 +175,20 @@ const facesData = [
     { id: 'face_6.png', name: 'Обличчя #6 (Лисий суворий)' }
 ];
 
-// Оновлений інвентар з атмосферними назвами та розширеними описами
-let inventory = loadSaveData('palata404_inventory', [
+const DEFAULT_INVENTORY = [
     { name: 'Іржавий ніж', icon: '🔪', count: 1, category: 'weapon', damageBonus: 8, desc: 'Саморобний ніж з обломка медичного шпателя. Тихий, не привертає зайвої уваги санітарів, але ефективний у тісних коридорах.' },
-    { name: 'ПМ (Пістолет Макарова)', icon: '🔫', count: 1, category: 'weapon', damageBonus: 18, desc: 'Стабельний табовий пістолет охорони. Потертий вороніний метал, у магазині залишилось кілька патронів.' },
+    { name: 'ПМ (Пістолет Макарова)', icon: '🔫', count: 1, category: 'weapon', damageBonus: 18, desc: 'Табельний пістолет охорони. Потертий вороніний метал, у магазині залишилось кілька патронів.' },
     { name: 'Штурмовий АКС-74У', icon: '⚡', count: 1, category: 'weapon', damageBonus: 35, desc: 'Укорочений автомат колишньої охорони спецблоку. Засіб останньої надії проти агресивних мутантів.' },
-    { name: 'Побитий шолом санітара', icon: '🪖', count: 1, category: 'helmet', armorBonus: 12, desc: 'Протиударний шолом персонажу психлікарні із залишками захисного скла. Гасить важкі удари по голові.' },
+    { name: 'Побитий шолом санітара', icon: '🪖', count: 1, category: 'helmet', armorBonus: 12, desc: 'Протиударний шолом персоналу психлікарні із залишками захисного скла. Гасить важкі удари по голові.' },
     { name: 'Бронежилет БР-1', icon: '🛡️', count: 1, category: 'armor', armorBonus: 28, desc: 'Легкий армійський бронежилет прихованого носіння. Рятує від кульових поранень та ножів.' },
     { name: 'Аптечка швидкої допомоги', icon: '🧪', count: 3, category: 'meds', healBonus: 50, desc: 'Герметичний армійський контейнер із сильними стимуляторами та перев’язкою. Миттєво стабілізує стан.' }
-]);
+];
+
+let inventory = loadSaveData('palata404_inventory', DEFAULT_INVENTORY);
+inventory = inventory.map(item => {
+    const freshItem = DEFAULT_INVENTORY.find(d => d.icon === item.icon || d.name === item.name);
+    return freshItem ? { ...freshItem, count: item.count } : item;
+});
 
 let equippedGear = loadSaveData('palata404_equipped', {
     weapon: null,
@@ -495,7 +500,6 @@ function renderMinecraftStash() {
         if (filteredItems[i]) {
             let item = filteredItems[i];
             
-            // Перевіряємо, чи предмет зараз одягнений, і додаємо помітку в інвентарі
             const isEquipped = (
                 (item.category === 'weapon' && equippedGear.weapon === item.name) ||
                 (item.category === 'helmet' && equippedGear.helmet === item.name) ||

@@ -2,7 +2,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+    font-family: 'Share Tech Mono', monospace;
     user-select: none;
 }
 
@@ -317,7 +317,13 @@ body {
 .menu-btn:hover { background: #3d2e24; }
 
 .loc-title { font-size: 0.75cqw; color: #8c7a6b; text-transform: uppercase; }
-.loc-name { font-size: 1.1cqw; font-weight: bold; color: #e8d7be; margin: 2px 0; }
+.loc-name { 
+    font-size: 1.1cqw; 
+    font-weight: bold; 
+    color: #e8d7be; 
+    margin: 2px 0; 
+    font-family: 'Special Elite', cursive;
+}
 .loc-desc { font-size: 0.85cqw; color: #a3927d; }
 
 /* Персонаж */
@@ -362,14 +368,14 @@ body {
     display: block !important;
 }
 
-/* Точне позиціонування шару обличчя поверх тіла */
 #layer-face {
     position: absolute !important;
-    top: -1.5% !important; /* Підіймаємо в самий верх на макушку */
-    height: 29% !important; /* Трохи збільшуємо, щоб закрити всю голову */
+    top: -1.5% !important;
+    height: 29% !important;
     width: auto !important;
     z-index: 3 !important;
 }
+
 .btn-main-action {
     background: linear-gradient(135deg, #594333, #8c684d);
     color: #fff8e7;
@@ -420,6 +426,11 @@ body {
     margin-bottom: 12px;
     border-bottom: 1px solid #3d2d22;
     padding-bottom: 8px;
+}
+
+.modal-header h3 {
+    font-family: 'Special Elite', cursive;
+    letter-spacing: 1px;
 }
 
 .btn-close-mini {
@@ -539,7 +550,7 @@ body {
 
 .btn-outfit:hover { background: #8c684d; color: white; }
 
-/* Карта та планшет (ВИПРАВЛЕНО ОБРІЗАННЯ ЗНИЗУ) */
+/* Карта та планшет */
 .map-modal-overlay {
     position: fixed;
     top: 0; left: 0; width: 100vw; height: 100vh;
@@ -566,6 +577,10 @@ body {
     border-bottom: 2px solid #3d2d22; padding-bottom: 8px;
     font-weight: bold; font-size: 18px;
     flex-shrink: 0;
+}
+
+.map-clipboard-header span {
+    font-family: 'Special Elite', cursive;
 }
 
 .btn-close-map {
@@ -599,7 +614,7 @@ body {
     cursor: pointer; transition: 0.2s;
 }
 
-.floor-card-item.hover:not(.locked-floor) {
+.floor-card-item:hover:not(.locked-floor) {
     background: #3d2e24; border-color: #8c684d;
 }
 
@@ -689,39 +704,8 @@ body {
     box-shadow: none; 
     cursor: not-allowed; 
 }
-/* Стилі для модального вікна друзів */
-.friends-body {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    font-size: 13px;
-}
 
-#friends-list {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    margin-top: 6px;
-    max-height: 150px;
-    overflow-y: auto;
-    padding-right: 2px;
-}
-
-#friend-input {
-    flex: 1;
-    background: #1a1410;
-    border: 1px solid #4a382c;
-    color: #d9c59a;
-    padding: 6px 10px;
-    border-radius: 4px;
-    outline: none;
-    font-size: 13px;
-}
-
-#friend-input:focus {
-    border-color: #8c684d;
-}
-/* Стилі для модального вікна друзів */
+/* Стилі для модального вікна сусідів по блоку */
 .friends-body {
     display: flex;
     flex-direction: column;
