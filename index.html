@@ -425,9 +425,9 @@
             </div>
         </div>
     </div>
-<!-- ДОСЬЄ МЕДСЕСТРИ (З природним виглядом картки) -->
+<!-- ДОСЬЄ МЕДСЕСТРИ (З великою, читабельною карткою) -->
 <div id="nurse-dossier-modal" class="modal-overlay hidden" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.75); z-index: 9999; display: flex; align-items: center; justify-content: center;">
-    <div class="modal-content" style="background: #1c1511; border: 2px solid #8c3a2b; width: 520px; padding: 25px; border-radius: 8px; color: #f4e8d1; position: relative; font-family: sans-serif; box-shadow: 0 0 30px rgba(0,0,0,0.95);">
+    <div class="modal-content" style="background: #1c1511; border: 2px solid #8c3a2b; width: 560px; padding: 25px; border-radius: 8px; color: #f4e8d1; position: relative; font-family: sans-serif; box-shadow: 0 0 30px rgba(0,0,0,0.95);">
         <button onclick="closeNurseDossier()" style="position: absolute; top: 10px; right: 10px; background: none; border: none; color: #fff; font-size: 22px; cursor: pointer;">✕</button>
         
         <div style="text-align: center; border-bottom: 1px dashed #5c4033; padding-bottom: 12px; margin-bottom: 18px;">
@@ -436,8 +436,8 @@
         </div>
 
         <div style="display: flex; gap: 20px; margin-bottom: 18px; align-items: flex-start;">
-            <!-- Натуральна картка без примусового обрізання в рамку -->
-            <img src="nurse_dossier_card.png" alt="NURSE 001" style="width: 140px; height: auto; max-height: 180px; object-fit: contain; flex-shrink: 0; filter: drop-shadow(0 4px 10px rgba(0,0,0,0.7)); transform: rotate(-1.5deg);">
+            <!-- ЗБІЛЬШЕНА КАРТКА ДОСЬЄ (ТЕПЕР ДОБРЕ ЧИТАБЕЛЬНА) -->
+            <img src="nurse_dossier_card.png" alt="NURSE 001" style="width: 180px; height: auto; object-fit: contain; flex-shrink: 0; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.85)); transform: rotate(-1deg);">
             
             <div style="font-size: 13px; line-height: 1.5; color: #d0c2ad;">
                 <p style="margin: 0 0 5px 0;"><strong>Вік:</strong> 34 роки</p>
@@ -465,37 +465,37 @@
 </div>
 
 
-<!-- ПОВНОЕКРАННА БОЙОВА СЦЕНА -->
+<!-- ПОВНОЕКРАННА БОЙОВА СЦЕНА (З великими панелями зверху) -->
 <div id="nurse-battle-modal" class="modal-overlay hidden" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #000; z-index: 10000; display: flex; flex-direction: column;">
     
-    <div id="battle-arena-screen" onclick="performPlayerAttack()" style="position: relative; width: 100%; height: 100%; background: url('nurse_bg.jpg') center/cover no-repeat; display: flex; justify-content: space-between; align-items: flex-start; padding: 30px; box-sizing: border-box; cursor: pointer; user-select: none;">
+    <div id="battle-arena-screen" onclick="performPlayerAttack()" style="position: relative; width: 100%; height: 100%; background: url('nurse_bg.jpg') center/cover no-repeat; display: flex; justify-content: space-between; align-items: flex-start; padding: 35px; box-sizing: border-box; cursor: pointer; user-select: none;">
         
-        <!-- ВЕРХ ЗЛІВА: Панель гравця -->
-        <div style="background: rgba(20, 15, 12, 0.92); border: 2px solid #4a382c; padding: 15px 18px; border-radius: 10px; width: 280px; color: #fff; display: flex; gap: 15px; align-items: center; z-index: 5;" onclick="event.stopPropagation()">
-            <div id="player-battle-avatar-box" style="width: 55px; height: 55px; background: #2a1f18; border: 2px solid #5c4033; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 26px; flex-shrink: 0; overflow: hidden;">
+        <!-- ВЕРХ ЗЛІВА: ЗБІЛЬШЕНА панель гравця -->
+        <div style="background: rgba(20, 15, 12, 0.94); border: 2px solid #5c4033; padding: 18px 22px; border-radius: 12px; width: 340px; color: #fff; display: flex; gap: 18px; align-items: center; z-index: 5; box-shadow: 0 4px 15px rgba(0,0,0,0.8);" onclick="event.stopPropagation()">
+            <div id="player-battle-avatar-box" style="width: 70px; height: 70px; background: #2a1f18; border: 2px solid #8c5842; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 32px; flex-shrink: 0; overflow: hidden;">
                 👤
             </div>
             <div style="flex-grow: 1;">
-                <div style="font-weight: bold; font-size: 16px; color: #e67e22; margin-bottom: 5px;" id="b-player-name">Пацієнт #404</div>
-                <div style="font-size: 13px; margin-bottom: 4px;">HP: <span id="b-player-hp">100/100</span></div>
-                <div style="background: #222; height: 8px; border-radius: 4px; overflow: hidden;">
+                <div style="font-weight: bold; font-size: 18px; color: #e67e22; margin-bottom: 6px;" id="b-player-name">Пацієнт #404</div>
+                <div style="font-size: 14px; margin-bottom: 5px; font-weight: bold;">HP: <span id="b-player-hp">100/100</span></div>
+                <div style="background: #222; height: 12px; border-radius: 6px; overflow: hidden; border: 1px solid #444;">
                     <div id="b-player-hpbar" style="background: #27ae60; width: 100%; height: 100%;"></div>
                 </div>
             </div>
         </div>
 
         <!-- ЗЛІВА ПОСЕРЕДИНІ: Аптечки -->
-        <div style="position: absolute; left: 25px; top: 50%; transform: translateY(-50%); background: rgba(20, 15, 12, 0.9); border: 1px solid #3d2d22; padding: 8px; border-radius: 8px; display: flex; flex-direction: column; gap: 8px; z-index: 5;" onclick="event.stopPropagation()">
-            <div style="font-size: 9px; color: #a3927d; text-align: center; margin-bottom: 2px;">🧪 АПТЕЧКИ</div>
+        <div style="position: absolute; left: 35px; top: 50%; transform: translateY(-50%); background: rgba(20, 15, 12, 0.9); border: 1px solid #3d2d22; padding: 10px; border-radius: 10px; display: flex; flex-direction: column; gap: 10px; z-index: 5;" onclick="event.stopPropagation()">
+            <div style="font-size: 10px; color: #a3927d; text-align: center; margin-bottom: 2px; font-weight: bold;">🧪 АПТЕЧКИ</div>
             
-            <button id="medkit-btn-small" title="Мала аптечка (+20 HP)" class="btn-outfit" style="background: #2a1f18; border: 1px solid #5c4033; width: 42px; height: 42px; border-radius: 6px; font-size: 18px; cursor: pointer; position: relative;" onclick="useBattleMedkit('small')">
+            <button id="medkit-btn-small" title="Мала аптечка (+20 HP)" class="btn-outfit" style="background: #2a1f18; border: 1px solid #5c4033; width: 48px; height: 48px; border-radius: 8px; font-size: 22px; cursor: pointer; position: relative;" onclick="useBattleMedkit('small')">
                 💊
-                <span id="medkit-count-small" style="position: absolute; bottom: 2px; right: 2px; font-size: 9px; background: #c0392b; color: #fff; padding: 1px 3px; border-radius: 3px;">0</span>
+                <span id="medkit-count-small" style="position: absolute; bottom: 2px; right: 2px; font-size: 11px; background: #c0392b; color: #fff; padding: 1px 4px; border-radius: 4px; font-weight: bold;">0</span>
             </button>
 
-            <button id="medkit-btn-big" title="Велика аптечка (+50 HP)" class="btn-outfit" style="background: #2a1f18; border: 1px solid #5c4033; width: 42px; height: 42px; border-radius: 6px; font-size: 18px; cursor: pointer; position: relative;" onclick="useBattleMedkit('big')">
+            <button id="medkit-btn-big" title="Велика аптечка (+50 HP)" class="btn-outfit" style="background: #2a1f18; border: 1px solid #5c4033; width: 48px; height: 48px; border-radius: 8px; font-size: 22px; cursor: pointer; position: relative;" onclick="useBattleMedkit('big')">
                 💉
-                <span id="medkit-count-big" style="position: absolute; bottom: 2px; right: 2px; font-size: 9px; background: #c0392b; color: #fff; padding: 1px 3px; border-radius: 3px;">0</span>
+                <span id="medkit-count-big" style="position: absolute; bottom: 2px; right: 2px; font-size: 11px; background: #c0392b; color: #fff; padding: 1px 4px; border-radius: 4px; font-weight: bold;">0</span>
             </button>
         </div>
 
@@ -504,24 +504,24 @@
             <img src="nurse_sprite.png" alt="Медсестра" style="max-height: 800px; height: 85vh; width: auto; object-fit: contain;">
         </div>
 
-        <!-- ВЕРХ СПРАВА: Панель Медсестри -->
-        <div style="background: rgba(20, 15, 12, 0.92); border: 2px solid #c0392b; padding: 15px 18px; border-radius: 10px; width: 280px; color: #fff; display: flex; gap: 15px; align-items: center; z-index: 5; height: auto;" onclick="event.stopPropagation()">
+        <!-- ВЕРХ СПРАВА: ЗБІЛЬШЕНА панель Медсестри -->
+        <div style="background: rgba(20, 15, 12, 0.94); border: 2px solid #c0392b; padding: 18px 22px; border-radius: 12px; width: 340px; color: #fff; display: flex; gap: 18px; align-items: center; z-index: 5; height: auto; box-shadow: 0 4px 15px rgba(0,0,0,0.8);" onclick="event.stopPropagation()">
             <div style="flex-grow: 1; text-align: right;">
-                <div style="font-weight: bold; font-size: 16px; color: #e74c3c; margin-bottom: 5px;">Сестра Клара</div>
-                <div style="font-size: 13px; margin-bottom: 4px;">HP: <span id="b-boss-hp">120/120</span></div>
-                <div style="background: #222; height: 8px; border-radius: 4px; overflow: hidden;">
+                <div style="font-weight: bold; font-size: 18px; color: #e74c3c; margin-bottom: 6px;">Сестра Клара</div>
+                <div style="font-size: 14px; margin-bottom: 5px; font-weight: bold;">HP: <span id="b-boss-hp">120/120</span></div>
+                <div style="background: #222; height: 12px; border-radius: 6px; overflow: hidden; border: 1px solid #444;">
                     <div id="b-boss-hpbar" style="background: #c0392b; width: 100%; height: 100%;"></div>
                 </div>
             </div>
-            <!-- Аватарка медсестри у бою (акуратний квадрат 55x55) -->
-            <div style="width: 55px; height: 55px; border: 2px solid #e74c3c; border-radius: 6px; overflow: hidden; flex-shrink: 0; background: #2a1f18;">
-                <img src="nurse_avatar_battle.png" alt="Сестра Клара" style="width: 100%; height: 100%; object-fit: cover;">
+            <!-- Велика аватарка медсестри у бою -->
+            <div style="width: 70px; height: 70px; border: 2px solid #e74c3c; border-radius: 8px; overflow: hidden; flex-shrink: 0; background: #2a1f18; box-shadow: 0 0 10px rgba(231,76,60,0.6);">
+                <img src="nurse_avatar_battle.jpg" alt="Сестра Клара" style="width: 100%; height: 100%; object-fit: cover;">
             </div>
         </div>
 
         <!-- ЗНИЗУ ПОСЕРЕДИНІ: Кнопка Втекти -->
-        <div style="position: absolute; bottom: 25px; left: 50%; transform: translateX(-50%); z-index: 5;" onclick="event.stopPropagation()">
-            <button class="btn-outfit" style="background: #7f8c8d; padding: 10px 30px; font-size: 13px; cursor: pointer; border-radius: 6px;" onclick="closeNurseBattle()">🏃 Втекти</button>
+        <div style="position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); z-index: 5;" onclick="event.stopPropagation()">
+            <button class="btn-outfit" style="background: #7f8c8d; padding: 12px 35px; font-size: 14px; font-weight: bold; cursor: pointer; border-radius: 8px;">🏃 Втекти</button>
         </div>
 
     </div>
