@@ -74,20 +74,26 @@ function openFriends() {
     closeDossier();
     
     const playerInfo = getPlayerUniqueId();
-    document.getElementById('my-unique-id').textContent = playerInfo.type === 'telegram' 
-        ? `Telegram: ${playerInfo.name} (ID: ${playerInfo.id})` 
-        : `Браузер ID: ${playerInfo.id}`;
+    const uniqueIdElem = document.getElementById('my-unique-id');
+    if (uniqueIdElem) {
+        uniqueIdElem.textContent = playerInfo.type === 'telegram' 
+            ? `Telegram: ${playerInfo.name} (ID: ${playerInfo.id})` 
+            : `Браузер ID: ${playerInfo.id}`;
+    }
 
     renderFriendsList();
-    document.getElementById('friends-modal').classList.remove('hidden');
+    const friendsModal = document.getElementById('friends-modal');
+    if (friendsModal) friendsModal.classList.remove('hidden');
 }
 
 function closeFriends() {
-    document.getElementById('friends-modal').classList.add('hidden');
+    const friendsModal = document.getElementById('friends-modal');
+    if (friendsModal) friendsModal.classList.add('hidden');
 }
 
 function addFriend() {
     const input = document.getElementById('friend-input');
+    if (!input) return;
     const val = input.value.trim();
     
     if (!val) {
@@ -1091,7 +1097,6 @@ function closeNurseDossier() {
     if (dossierModal) dossierModal.classList.add('hidden');
 }
 
-// Стабільний запуск штурму кабінету (без викидання в лобі)
 function startNurseFight() {
     closeNurseDossier();
     closeProcedureRoom();
@@ -1100,7 +1105,6 @@ function startNurseFight() {
         toggleMapModal(false);
     }
     
-    // Повне відновлення ХП перед початком рейду
     stats.hp = stats.maxHp;
     if (typeof updateUI === 'function') updateUI();
 
@@ -1112,8 +1116,6 @@ function startNurseFight() {
     let currentName = 'Пацієнт #404';
     if (typeof playerName !== 'undefined' && playerName) {
         currentName = playerName;
-    } else if (typeof playerProfile !== 'undefined' && playerProfile.name) {
-        currentName = playerProfile.name;
     }
 
     raidMembers.forEach(m => {
@@ -1129,7 +1131,6 @@ function startNurseFight() {
     
     updateBattleUI();
     
-    // Примусове розгортання бойової арени
     const battleModal = document.getElementById('nurse-battle-modal');
     if (battleModal) {
         battleModal.classList.remove('hidden');
@@ -1156,11 +1157,21 @@ function closeNurseBattle() {
     updateLobbyRaidWidget();
 }
 
-function reopenNurseBattle() {
-    if (!isBattleActive) {
-        alert("Наразі немає активного бою.");
-        return;
+function minimizeNurseBattle() {
+    const battleModal = document.getElementById('nurse-battle-modal');
+    if (battleModal) {
+        battleModal.classList.add('hidden');
+        battleModal.style.display = 'none';
     }
+    
+    const raidPanel = document.getElementById('battle-raid-panel');
+    if (raidPanel) raidPanel.classList.add('hidden');
+
+    updateLobbyRaidWidget();
+}
+
+function reopenNurseBattle() {
+    if (!isBattleActive) return;
     updateBattleUI();
     const battleModal = document.getElementById('nurse-battle-modal');
     if (battleModal) {
@@ -1199,7 +1210,7 @@ function updateLobbyRaidWidget(timeStr = '') {
             subTimer.style.cssText = 'font-size:10px; color:#e74c3c; font-weight:bold; text-align:center; margin-top:2px;';
             raidBtn.appendChild(subTimer);
         }
-        subTimer.textContent = timeStr || 'В БОЮ';
+        subTimer.textContent = timeStr || 'В БОЮ (Натисніть)';
         raidBtn.onclick = reopenNurseBattle;
     } else {
         if (subTimer) subTimer.remove();
@@ -1288,7 +1299,8 @@ function callSelectedFriends() {
     });
 
     closeFriendInviteModal();
-    if (!document.getElementById('battle-raid-panel').classList.contains('hidden')) {
+    const panel = document.getElementById('battle-raid-panel');
+    if (panel && !panel.classList.contains('hidden')) {
         updateRaidListUI();
     }
     if (calledCount > 0) {
@@ -1305,7 +1317,8 @@ function callAllFriends() {
     });
 
     closeFriendInviteModal();
-    if (!document.getElementById('battle-raid-panel').classList.contains('hidden')) {
+    const panel = document.getElementById('battle-raid-panel');
+    if (panel && !panel.classList.contains('hidden')) {
         updateRaidListUI();
     }
     showCustomToast("🔥 Усі доступні друзі приєдналися до рейду!");
@@ -1367,29 +1380,31 @@ function showFloatingDamage(text, isPlayerHit = false, customX = null, customY =
     }, 850);
 }
 
+// Ефектний удар Медсестри з наближенням та струсом екрана
 function triggerBossAttackAnimation() {
-    const sprite = document.getElementById('nurse-boss-sprite');
-    if (!sprite) return;
+    const bossSprite = document.getElementById('nurse-boss-sprite');
+    const arenaScreen = document.getElementById('battle-arena-screen');
 
-    sprite.classList.remove('boss-lunging');
-    void sprite.offsetWidth;
-    sprite.classList.add('boss-lunging');
-}
-// === Згортання бою у фоновий режим (можна повернутися з лоббі) ===
-function minimizeNurseBattle() {
-    const battleModal = document.getElementById('nurse-battle-modal');
-    if (battleModal) {
-        battleModal.classList.add('hidden');
-        battleModal.style.display = 'none';
+    if (bossSprite) {
+        bossSprite.classList.remove('boss-attacking');
+        void bossSprite.offsetWidth; 
+        bossSprite.classList.add('boss-attacking');
+
+        setTimeout(() => {
+            if (arenaScreen) {
+                arenaScreen.classList.remove('shake-effect');
+                void arenaScreen.offsetWidth;
+                arenaScreen.classList.add('shake-effect');
+            }
+        }, 200);
+
+        setTimeout(() => {
+            bossSprite.classList.remove('boss-attacking');
+            if (arenaScreen) arenaScreen.classList.remove('shake-effect');
+        }, 550);
     }
-    
-    const raidPanel = document.getElementById('battle-raid-panel');
-    if (raidPanel) raidPanel.classList.add('hidden');
-
-    updateLobbyRaidWidget();
 }
 
-// === Відкриття красивого ігрового модального вікна втечі (замість confirm) ===
 function openFleeConfirmModal() {
     let modal = document.getElementById('flee-confirm-modal');
     if (!modal) {
@@ -1442,35 +1457,6 @@ function confirmFleeBattle() {
 
     if (typeof showCustomToast === 'function') {
         showCustomToast("💨 Ви втекли з поля бою (Штраф: -20 срібла)");
-    }
-}
-
-function reopenNurseBattle() {
-    if (!isBattleActive) return;
-    updateBattleUI();
-    const battleModal = document.getElementById('nurse-battle-modal');
-    if (battleModal) {
-        battleModal.classList.remove('hidden');
-        battleModal.style.display = 'flex';
-    }
-}
-
-function updateLobbyRaidWidget(timeStr = '') {
-    const raidBtn = document.querySelector('.raid-btn, #raid-menu-btn');
-    if (!raidBtn) return;
-
-    let subTimer = document.getElementById('lobby-raid-subtimer');
-    if (isBattleActive) {
-        if (!subTimer) {
-            subTimer = document.createElement('div');
-            subTimer.id = 'lobby-raid-subtimer';
-            subTimer.style.cssText = 'font-size:10px; color:#e74c3c; font-weight:bold; text-align:center; margin-top:2px;';
-            raidBtn.appendChild(subTimer);
-        }
-        subTimer.textContent = timeStr || 'В БОЮ (Натисніть)';
-        raidBtn.onclick = reopenNurseBattle;
-    } else {
-        if (subTimer) subTimer.remove();
     }
 }
 
@@ -1663,147 +1649,5 @@ function useBattleMedkit(type) {
         stats.hp = Math.min(stats.maxHp, stats.hp + healAmount);
         updateBattleUI();
         updateUI();
-    }
-}
-// === ЛОГІКА ДЛЯ ВІКНА "СУСІДИ ПО БЛОКУ" ===
-
-// Генерація або отримання унікального браузерного ID
-let myBrowserId = localStorage.getItem('game_browser_id');
-if (!myBrowserId) {
-    myBrowserId = 'WEB-' + Math.floor(10000 + Math.random() * 90000);
-    localStorage.setItem('game_browser_id', myBrowserId);
-}
-
-// Список сусідів (друзів)
-let blockNeighbors = JSON.parse(localStorage.getItem('game_neighbors_list')) || [];
-
-// Функція оновлення ID на екрані при відкритті вікна
-function updateNeighborsModalUI() {
-    const idContainer = document.querySelector('#neighbors-modal-id, .neighbor-id-display, [id*="WEB-"]'); // шукаємо елемент з ID
-    // Якщо у тебе є точний id для виведення, наприклад id="my-browser-id", використай його:
-    const idDisplay = document.getElementById('my-browser-id') || document.querySelector('.browser-id-text');
-    if (idDisplay) {
-        idDisplay.textContent = `Браузер ID: ${myBrowserId}`;
-    }
-
-    renderNeighborsList();
-}
-
-// Рендер списку сусідів у вікні
-function renderNeighborsList() {
-    // Шукаємо контейнер для списку (під текстом "Список сусідів:")
-    let container = document.getElementById('neighbors-list-container');
-    if (!container) {
-        // Якщо контейнера немає в HTML, створюємо його динамічно під заголовком списку
-        const listTitle = Array.from(document.querySelectorAll('div, p')).find(el => el.textContent.includes('Список сусідів:'));
-        if (listTitle && !listTitle.nextElementSibling?.id === 'neighbors-list-container') {
-            container = document.createElement('div');
-            container.id = 'neighbors-list-container';
-            container.style.cssText = "margin-top: 10px; display: flex; flex-direction: column; gap: 6px; max-height: 180px; overflow-y: auto;";
-            listTitle.parentNode.insertBefore(container, listTitle.nextSibling);
-        }
-    }
-
-    if (!container) return;
-    container.innerHTML = '';
-
-    if (blockNeighbors.length === 0) {
-        // Якщо список порожній, залишаємо стандартний напис або оновлюємо
-        return; 
-    }
-
-    blockNeighbors.forEach((neighbor, index) => {
-        const item = document.createElement('div');
-        item.style.cssText = "background: rgba(0,0,0,0.4); border: 1px solid #5c4033; border-radius: 6px; padding: 8px 12px; display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: #f4e8d1;";
-        item.innerHTML = `
-            <div>
-                <strong style="color: #e67e22;">${neighbor.name}</strong> 
-                <span style="font-size: 11px; color: #a3927d;">(${neighbor.id})</span>
-            </div>
-            <button onclick="removeNeighbor(${index})" style="background: none; border: none; color: #e74c3c; cursor: pointer; font-size: 14px;" title="Видалити">✕</button>
-        `;
-        container.appendChild(item);
-    });
-}
-
-// Додавання сусіда за введенко ID або username
-function addNeighbor() {
-    // Знаходимо інпут у цьому модальному вікні
-    const input = document.querySelector('#neighbors-modal input, input[placeholder*="ID"], input[placeholder*="username"]');
-    if (!input) return;
-
-    let val = input.value.trim();
-    if (!val) {
-        if (typeof showCustomToast === 'function') showCustomToast("⚠️ Введіть ID або username!");
-        return;
-    }
-
-    if (val === myBrowserId) {
-        if (typeof showCustomToast === 'function') showCustomToast("❌ Не можна додати самого себе!");
-        return;
-    }
-
-    // Перевірка на дублікати
-    if (blockNeighbors.some(n => n.id === val || n.name === val)) {
-        if (typeof showCustomToast === 'function') showCustomToast("⚠️ Цей користувач вже у вашому списку!");
-        return;
-    }
-
-    // Додаємо нового сусіда
-    const newNeighbor = {
-        id: val.startsWith('WEB-') ? val : 'WEB-' + Math.floor(10000 + Math.random() * 90000),
-        name: val.startsWith('WEB-') ? `Сусід_${val.replace('WEB-', '')}` : val
-    };
-
-    blockNeighbors.push(newNeighbor);
-    localStorage.setItem('game_neighbors_list', JSON.stringify(blockNeighbors));
-
-    input.value = '';
-    renderNeighborsList();
-
-    if (typeof showCustomToast === 'function') {
-        showCustomToast(`✅ ${newNeighbor.name} успішно додано до сусідів!`);
-    }
-}
-
-// Видалення сусіда
-function removeNeighbor(index) {
-    blockNeighbors.splice(index, 1);
-    localStorage.setItem('game_neighbors_list', JSON.stringify(blockNeighbors));
-    renderNeighborsList();
-}
-
-// Повісити клік на кнопку "Додати" у цьому модальному вікні
-document.addEventListener('DOMContentLoaded', () => {
-    const addBtn = Array.from(document.querySelectorAll('button')).find(el => el.textContent.trim() === 'Додати');
-    if (addBtn) {
-        addBtn.setAttribute('onclick', 'addNeighbor()');
-    }
-    updateNeighborsModalUI();
-});
-// Функція ефектного удару Медсестри
-function executeBossAttackAnimation() {
-    const bossSprite = document.getElementById('nurse-boss-sprite');
-    const arenaScreen = document.getElementById('battle-arena-screen');
-
-    if (bossSprite) {
-        bossSprite.classList.remove('boss-attacking');
-        void bossSprite.offsetWidth; // перезапуск анімації
-        bossSprite.classList.add('boss-attacking');
-
-        // Момент удару (через 200мс) — струшуємо екран
-        setTimeout(() => {
-            if (arenaScreen) {
-                arenaScreen.classList.remove('shake-effect');
-                void arenaScreen.offsetWidth;
-                arenaScreen.classList.add('shake-effect');
-            }
-        }, 200);
-
-        // Очищення після анімації
-        setTimeout(() => {
-            bossSprite.classList.remove('boss-attacking');
-            if (arenaScreen) arenaScreen.classList.remove('shake-effect');
-        }, 550);
     }
 }
