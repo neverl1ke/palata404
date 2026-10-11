@@ -479,11 +479,11 @@
 }
 </style>
 
-<!-- ПОВНОЕКРАННА БОЙОВА СЦЕНА -->
-<div id="nurse-battle-modal" class="modal-overlay hidden" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #000; z-index: 10000; display: flex; align-items: center; justify-content: center;">
+<!-- ПОВНОЕКРАННА БОЙОВА СЦЕНА (ПРОПОРЦІЙНО МАСШТАБОВАНА ПІД ФОН) -->
+<div id="nurse-battle-modal" class="modal-overlay hidden" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #000; z-index: 10000; display: flex; align-items: center; justify-content: center; overflow: hidden;">
     
-    <!-- ФОНОВА АРЕНА НА 100% ВІКНА -->
-    <div id="battle-arena-screen" onclick="performPlayerAttack(event)" style="position: relative; width: 100vw; height: 100vh; background: url('nurse_bg.jpg') center/cover no-repeat; display: flex; justify-content: space-between; align-items: flex-start; padding: 35px; box-sizing: border-box; cursor: pointer; user-select: none;">
+    <!-- ФОНОВА АРЕНА (Жорсткий базовий розмір 1200x700, який масштабується як єдине ціле) -->
+    <div id="battle-arena-screen" onclick="performPlayerAttack(event)" style="position: relative; width: 1200px; height: 700px; background: url('nurse_bg.jpg') center/cover no-repeat; display: flex; justify-content: space-between; align-items: flex-start; padding: 35px; box-sizing: border-box; cursor: pointer; user-select: none; transform-origin: center center; max-width: 100vw; max-height: 100vh;">
         
         <!-- ВЕРХ ЗЛІВА: Панель гравця -->
         <div style="display: flex; flex-direction: column; gap: 10px; z-index: 5;" onclick="event.stopPropagation()">
@@ -526,8 +526,8 @@
         </div>
 
         <!-- ПОСЕРЕДИНІ: Медсестра СТРОГО ПО ЦЕНТРУ + контейнер сносок урону -->
-        <div id="damage-floating-container" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 15;">
-            <img id="nurse-boss-sprite" src="nurse_sprite.png" alt="Медсестра" style="position: absolute; left: 50%; bottom: 6vh; transform: translateX(-50%); max-height: 800px; height: 85vh; width: auto; object-fit: contain;">
+        <div id="damage-floating-container" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 15;">
+            <img id="nurse-boss-sprite" src="nurse_sprite.png" alt="Медсестра" style="position: absolute; left: 50%; bottom: 6vh; transform: translateX(-50%); max-height: 800px; height: 75%; width: auto; object-fit: contain;">
         </div>
 
         <!-- СПРАВА ПОСЕРЕДИНІ: Кнопки виклику друзів та рейду -->
@@ -560,6 +560,32 @@
     </div>
 </div>
 
+<!-- Додаємо невеликий скрипт автоматичного пропорційного масштабування арени під екран -->
+<script>
+function autoScaleBattleArena() {
+    const arena = document.getElementById('battle-arena-screen');
+    if (!arena) return;
+    const windowWidth = window.innerWidth;
+    const windowHeight = window.innerHeight;
+    
+    // Базові розміри арени
+    const baseWidth = 1200;
+    const baseHeight = 700;
+
+    let scaleX = windowWidth / baseWidth;
+    let scaleY = windowHeight / baseHeight;
+    let scale = Math.min(scaleX, scaleY, 1); // Масштабуємо тільки на зменшення, зберігаючи пропорції
+
+    if (windowWidth < baseWidth || windowHeight < baseHeight) {
+        arena.style.transform = `scale(${scale})`;
+    } else {
+        arena.style.transform = 'scale(1)';
+    }
+}
+window.addEventListener('resize', autoScaleBattleArena);
+// Викликаємо під час відкриття бою
+document.addEventListener('DOMContentLoaded', autoScaleBattleArena);
+</script>
 
 <!-- МОДАЛЬНЕ ВІКНО: ВИБІР ДРУЗІВ ДЛЯ РЕЙДУ -->
 <div id="friend-invite-modal" class="modal-overlay hidden" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.75); z-index: 25000; display: flex; align-items: center; justify-content: center;">
