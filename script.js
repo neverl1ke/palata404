@@ -1169,14 +1169,17 @@ function closeNurseDossier() {
     if (dossierModal) dossierModal.classList.add('hidden');
 }
 
-// Початок нового бою з повним лікуванням
+// Початок нового бою з повним лікуванням (ВИПРАВЛЕНО)
 function startNurseFight() {
-    closeNurseDossier();
+    // 1. Закриваємо досьє та карту
+    const dossierModal = document.getElementById('nurse-dossier-modal');
+    if (dossierModal) dossierModal.classList.add('hidden');
+
     if (typeof toggleMapModal === 'function') {
         toggleMapModal(false);
     }
     
-    // ВІДНОВЛЮЄМО ХП ГРАВЦЯ ДО 100% ПРИ СТАРТІ БОЮ
+    // 2. Відновлюємо ХП гравця до 100%
     stats.hp = stats.maxHp;
     if (typeof updateUI === 'function') updateUI();
 
@@ -1205,10 +1208,14 @@ function startNurseFight() {
     
     updateBattleUI();
     
+    // 3. ЖОРСТКО ВІДКРИВАЄМО БОЙОВУ АРЕНУ (і гарантовано перевіряємо, щоб вона не була hidden)
     const battleModal = document.getElementById('nurse-battle-modal');
-    if (battleModal) battleModal.classList.remove('hidden');
+    if (battleModal) {
+        battleModal.classList.remove('hidden');
+        battleModal.style.display = 'flex'; // Примусово вмикаємо флекс-дисплей
+    }
 
-    // Запускаємо глобальний таймер бою
+    // Запускаємо таймер бою
     if (raidTimerInterval) clearInterval(raidTimerInterval);
     raidTimerInterval = setInterval(updateRaidTimerTick, 1000);
 
