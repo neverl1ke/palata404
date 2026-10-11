@@ -1665,3 +1665,145 @@ function useBattleMedkit(type) {
         updateUI();
     }
 }
+// === ЛОГІКА ДЛЯ ВІКНА "СУСІДИ ПО БЛОКУ" ===
+
+// Генерація або отримання унікального браузерного ID
+let myBrowserId = localStorage.getItem('game_browser_id');
+if (!myBrowserId) {
+    myBrowserId = 'WEB-' + Math.floor(10000 + Math.random() * 90000);
+    localStorage.setItem('game_browser_id', myBrowserId);
+}
+
+// Список сусідів (друзів)
+let blockNeighbors = JSON.parse(localStorage.getItem('game_neighbors_list')) || [];
+
+// Функція оновлення ID на екрані при відкритті вікна
+function updateNeighborsModalUI() {
+    const idContainer = document.querySelector('#neighbors-modal-id, .neighbor-id-display, [id*="WEB-"]'); // шукаємо елемент з ID
+    // Якщо у тебе є точний id для виведення, наприклад id="my-browser-id", використай його:
+    const idDisplay = document.getElementById('my-browser-id') || document.querySelector('.browser-id-text');
+    if (idDisplay) {
+        idDisplay.textContent = `Браузер ID: ${myBrowserId}`;
+    }
+
+    renderNeighborsList();
+}
+
+// Рендер списку сусідів у вікні
+function renderNeighborsList() {
+    // Шукаємо контейнер для списку (під текстом "Список сусідів:")
+    let container = document.getElementById('neighbors-list-container');
+    if (!container) {
+        // Якщо контейнера немає в HTML, створюємо його динамічно під заголовком списку
+        const listTitle = Array.from(document.querySelectorAll('div, p')).find(el => el.textContent.includes('Список сусідів:'));
+        if (listTitle && !listTitle.nextElementSibling?.id === 'neighbors-list-container') {
+            container = document.createElement('div');
+            container.id = 'neighbors-list-container';
+            container.style.cssText = "margin-top: 10px; display: flex; flex-direction: column; gap: 6px; max-height: 180px; overflow-y: auto;";
+            listTitle.parentNode.insertBefore(container, listTitle.nextSibling);
+        }
+    }
+
+    if (!container) return;
+    container.innerHTML = '';
+
+    if (blockNeighbors.length === 0) {
+        // Якщо список порожній, залишаємо стандартний напис або оновлюємо
+        return; 
+    }
+
+    blockNeighbors.forEach((neighbor, index) => {
+        const item = document.createElement('div');
+        item.style.cssText = "background: rgba(0,0,0,0.4); border: 1px solid #5c4033; border-radius: 6px; padding: 8px 12px; display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: #f4e8d1;";
+        item.innerHTML = `
+            <div>
+                <strong style="color: #e67e22;">${neighbor.name}</strong> 
+                <span style="font-size: 11px; color: #a3927d;">(${neighbor.id})</span>
+            </div>
+            <button onclick="removeNeighbor(${index})" style="background: none; border: none; color: #e74c3c; cursor: pointer; font-size: 14px;" title="Видалити">✕</button>
+        `;
+        container.appendChild(item);
+    });
+}
+
+// Додавання сусіда за введенко ID або username
+function addNeighbor() {
+    // Знаходимо інпут у цьому модальному вікні
+    const input = document.querySelector('#neighbors-modal input, input[placeholder*="ID"], input[placeholder*="username"]');
+    if (!input) return;
+
+    let val = input.value.trim();
+    if (!val) {
+        if (typeof showCustomToast === 'function') showCustomToast("⚠️ Введіть ID або username!");
+        return;
+    }
+
+    if (val === myBrowserId) {
+        if (typeof showCustomToast === 'function') showCustomToast("❌ Не можна додати самого себе!");
+        return;
+    }
+
+    // Перевірка на дублікати
+    if (blockNeighbors.some(n => n.id === val || n.name === val)) {
+        if (typeof showCustomToast === 'function') showCustomToast("⚠️ Цей користувач вже у вашому списку!");
+        return;
+    }
+
+    // Додаємо нового сусіда
+    const newNeighbor = {
+        id: val.startsWith('WEB-') ? val : 'WEB-' + Math.floor(10000 + Math.random() * 90000),
+        name: val.startsWith('WEB-') ? `Сусід_${val.replace('WEB-', '')}` : val
+    };
+
+    blockNeighbors.push(newNeighbor);
+    localStorage.setItem('game_neighbors_list', JSON.stringify(blockNeighbors));
+
+    input.value = '';
+    renderNeighborsList();
+
+    if (typeof showCustomToast === 'function') {
+        showCustomToast(`✅ ${newNeighbor.name} успішно додано до сусідів!`);
+    }
+}
+
+// Видалення сусіда
+function removeNeighbor(index) {
+    blockNeighbors.splice(index, 1);
+    localStorage.setItem('game_neighbors_list', JSON.stringify(blockNeighbors));
+    renderNeighborsList();
+}
+
+// Повісити клік на кнопку "Додати" у цьому модальному вікні
+document.addEventListener('DOMContentLoaded', () => {
+    const addBtn = Array.from(document.querySelectorAll('button')).find(el => el.textContent.trim() === 'Додати');
+    if (addBtn) {
+        addBtn.setAttribute('onclick', 'addNeighbor()');
+    }
+    updateNeighborsModalUI();
+});
+// Функція ефектного удару Медсестри
+function executeBossAttackAnimation() {
+    const bossSprite = document.getElementById('nurse-boss-sprite');
+    const arenaScreen = document.getElementById('battle-arena-screen');
+
+    if (bossSprite) {
+        bossSprite.classList.remove('boss-attacking');
+        void bossSprite.offsetWidth; // перезапуск анімації
+        bossSprite.classList.add('boss-attacking');
+
+        // Момент удару (через 200мс) — струшуємо екран
+        setTimeout(() => {
+            if (arenaScreen) {
+                arenaScreen.classList.remove('shake-effect');
+                void arenaScreen.offsetWidth;
+                arenaScreen.classList.add('shake-effect');
+            }
+        }, 200);
+
+        // Очищення після анімації
+        setTimeout(() => {
+            bossSprite.classList.remove('boss-attacking');
+            if (arenaScreen) arenaScreen.classList.remove('shake-effect');
+        }, 550);
+    }
+}

@@ -856,3 +856,39 @@ body {
     color: #4a2e2b;
     border-radius: 0 4px 4px 0;
 }
+/* Потужний ривок медсестри вперед з наближенням */
+@keyframes bossAggressiveAttack {
+    0% {
+        transform: translateX(-50%) scale(1);
+    }
+    20% {
+        transform: translateX(-50%) translateY(20px) scale(0.95);
+    }
+    45% {
+        transform: translateX(-65%) translateY(-40px) scale(1.35) rotate(-5deg);
+    }
+    60% {
+        transform: translateX(-60%) translateY(-20px) scale(1.25);
+    }
+    100% {
+        transform: translateX(-50%) translateY(0) scale(1) rotate(0deg);
+    }
+}
+
+.boss-attacking {
+    animation: bossAggressiveAttack 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.27) !important;
+}
+
+/* Струс всього екрана під час удару */
+@keyframes screenShake {
+    0% { transform: translate(0, 0); }
+    20% { transform: translate(-8px, 6px); }
+    40% { transform: translate(8px, -6px); }
+    60% { transform: translate(-5px, 4px); }
+    80% { transform: translate(5px, -3px); }
+    100% { transform: translate(0, 0); }
+}
+
+.shake-effect {
+    animation: screenShake 0.3s ease-in-out !important;
+}
