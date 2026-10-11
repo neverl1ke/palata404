@@ -1651,3 +1651,39 @@ function useBattleMedkit(type) {
         updateUI();
     }
 }
+// === КЕРУВАННЯ КНОПКОЮ ТА ВІДЖЕТОМ РЕЙДУ У ЛОБІ ===
+
+// Дія при натисканні на кнопку рейду у верхній панелі
+function handleRaidButtonAction() {
+    if (typeof isBattleActive !== 'undefined' && isBattleActive) {
+        reopenNurseBattle(); // Якщо бій йде — повертаємося до нього
+    } else {
+        alert("Зараз немає активних рейдів. Перейдіть на карту до процедурного кабінету, щоб почати штурм.");
+    }
+}
+
+// Оновлення віджета рейду та таймера під кнопкою
+function updateLobbyRaidWidget(timeStr = '') {
+    const raidBtn = document.getElementById('nav-raid-btn');
+    if (!raidBtn) return;
+
+    let subTimer = document.getElementById('lobby-raid-subtimer');
+
+    if (typeof isBattleActive !== 'undefined' && isBattleActive) {
+        raidBtn.style.borderColor = '#e74c3c';
+        raidBtn.style.background = 'rgba(192, 57, 43, 0.3)';
+        
+        if (!subTimer) {
+            subTimer = document.createElement('div');
+            subTimer.id = 'lobby-raid-subtimer';
+            subTimer.style.cssText = 'position: absolute; bottom: -14px; left: 50%; transform: translateX(-50%); font-size: 9px; color: #e74c3c; font-weight: bold; white-space: nowrap; background: rgba(0,0,0,0.8); padding: 1px 4px; border-radius: 3px; pointer-events: none;';
+            raidBtn.style.position = 'relative';
+            raidBtn.appendChild(subTimer);
+        }
+        subTimer.textContent = timeStr || '05:00';
+    } else {
+        raidBtn.style.borderColor = '';
+        raidBtn.style.background = '';
+        if (subTimer) subTimer.remove();
+    }
+}
