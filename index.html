@@ -479,11 +479,11 @@
 }
 </style>
 
-<!-- ПОВНОЕКРАННА БОЙОВА СЦЕНА (ПОВНИЙ ЕКРАН) -->
+<!-- ПОВНОЕКРАННА БОЙОВА СЦЕНА -->
 <div id="nurse-battle-modal" class="modal-overlay hidden" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #000; z-index: 10000; display: flex; align-items: center; justify-content: center; overflow: hidden;">
     
-    <!-- ФОНОВА АРЕНА НА ВЕСЬ ЕКРАН З ПРАВИЛЬНИМ ЗБЕРЕЖЕННЯМ ПРОПОРЦІЙ -->
-    <div id="battle-arena-screen" onclick="performPlayerAttack(event)" style="position: relative; width: 100vw; height: 100vh; max-width: 100vh; aspect-ratio: 16 / 9; background: url('nurse_bg.jpg') center/cover no-repeat; display: flex; justify-content: space-between; align-items: flex-start; padding: 2.5%; box-sizing: border-box; cursor: pointer; user-select: none;">
+    <!-- ФОНОВА АРЕНА (Жорсткі пропорції 16:9, що вписуються в будь-який екран) -->
+    <div id="battle-arena-screen" onclick="performPlayerAttack(event)" style="position: relative; width: 100vw; height: 56.25vw; max-height: 100vh; max-width: 177.78vh; background: url('nurse_bg.jpg') center/cover no-repeat; display: flex; justify-content: space-between; align-items: flex-start; padding: 2.5%; box-sizing: border-box; cursor: pointer; user-select: none;">
         
         <!-- ВЕРХ ЗЛІВА: Панель гравця -->
         <div style="display: flex; flex-direction: column; gap: 10px; z-index: 5;" onclick="event.stopPropagation()">
