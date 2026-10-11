@@ -1098,6 +1098,18 @@ function closeNurseDossier() {
 }
 
 function startNurseFight() {
+    // Якщо бій ВЖЕ активний, ми не створюємо новий, а просто повертаємось у нього!
+    if (isBattleActive) {
+        closeNurseDossier();
+        closeProcedureRoom();
+        closeMedicalHub();
+        if (typeof toggleMapModal === 'function') {
+            toggleMapModal(false);
+        }
+        reopenNurseBattle();
+        return;
+    }
+
     closeNurseDossier();
     closeProcedureRoom();
     closeMedicalHub();
@@ -1105,6 +1117,7 @@ function startNurseFight() {
         toggleMapModal(false);
     }
     
+    // Повне відновлення ХП перед початком рейду
     stats.hp = stats.maxHp;
     if (typeof updateUI === 'function') updateUI();
 
@@ -1142,6 +1155,9 @@ function startNurseFight() {
 
     if (friendAttackInterval) clearInterval(friendAttackInterval);
     friendAttackInterval = setInterval(friendsAutoAttackTick, 3500);
+
+    // Оновлюємо віджет у лобі одразу при стартові
+    updateLobbyRaidWidget();
 }
 
 function closeNurseBattle() {
