@@ -1375,6 +1375,104 @@ function triggerBossAttackAnimation() {
     void sprite.offsetWidth;
     sprite.classList.add('boss-lunging');
 }
+// === Згортання бою у фоновий режим (можна повернутися з лоббі) ===
+function minimizeNurseBattle() {
+    const battleModal = document.getElementById('nurse-battle-modal');
+    if (battleModal) {
+        battleModal.classList.add('hidden');
+        battleModal.style.display = 'none';
+    }
+    
+    const raidPanel = document.getElementById('battle-raid-panel');
+    if (raidPanel) raidPanel.classList.add('hidden');
+
+    updateLobbyRaidWidget();
+}
+
+// === Відкриття красивого ігрового модального вікна втечі (замість confirm) ===
+function openFleeConfirmModal() {
+    let modal = document.getElementById('flee-confirm-modal');
+    if (!modal) {
+        modal = document.createElement('div');
+        modal.id = 'flee-confirm-modal';
+        modal.style.cssText = "position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.8); z-index: 50000; display: flex; align-items: center; justify-content: center;";
+        modal.innerHTML = `
+            <div style="background: #1c1511; border: 2px solid #e74c3c; width: 400px; padding: 25px; border-radius: 12px; color: #f4e8d1; text-align: center; font-family: sans-serif; box-shadow: 0 0 30px rgba(231,76,60,0.4);">
+                <div style="font-size: 35px; margin-bottom: 10px;">⚠️</div>
+                <h3 style="color: #e74c3c; margin: 0 0 10px 0;">Втеча з бою</h3>
+                <p style="font-size: 13px; color: #bdaea0; margin-bottom: 20px;">Ви дійсно хочете втекти? Це коштуватиме вам штрафу у <strong>20 срібла</strong>, а рейд буде провалено.</p>
+                <div style="display: flex; gap: 12px;">
+                    <button class="btn-outfit" style="flex: 1; background: #e74c3c; padding: 10px; font-weight: bold; cursor: pointer; border-radius: 6px; color: #fff;" onclick="confirmFleeBattle()">Втекти (-20 🪙)</button>
+                    <button class="btn-outfit" style="flex: 1; background: #7f8c8d; padding: 10px; font-weight: bold; cursor: pointer; border-radius: 6px; color: #fff;" onclick="closeFleeConfirmModal()">Залишитись</button>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(modal);
+    } else {
+        modal.style.display = 'flex';
+    }
+}
+
+function closeFleeConfirmModal() {
+    const modal = document.getElementById('flee-confirm-modal');
+    if (modal) modal.style.display = 'none';
+}
+
+function confirmFleeBattle() {
+    closeFleeConfirmModal();
+
+    stats.silver = Math.max(0, (stats.silver || 0) - 20);
+    if (typeof updateUI === 'function') updateUI();
+
+    isBattleActive = false;
+    if (raidTimerInterval) clearInterval(raidTimerInterval);
+    if (friendAttackInterval) clearInterval(friendAttackInterval);
+
+    const battleModal = document.getElementById('nurse-battle-modal');
+    if (battleModal) {
+        battleModal.classList.add('hidden');
+        battleModal.style.display = 'none';
+    }
+    
+    const raidPanel = document.getElementById('battle-raid-panel');
+    if (raidPanel) raidPanel.classList.add('hidden');
+
+    const subTimer = document.getElementById('lobby-raid-subtimer');
+    if (subTimer) subTimer.remove();
+
+    if (typeof showCustomToast === 'function') {
+        showCustomToast("💨 Ви втекли з поля бою (Штраф: -20 срібла)");
+    }
+}
+
+function reopenNurseBattle() {
+    if (!isBattleActive) return;
+    updateBattleUI();
+    const battleModal = document.getElementById('nurse-battle-modal');
+    if (battleModal) {
+        battleModal.classList.remove('hidden');
+        battleModal.style.display = 'flex';
+    }
+}
+
+function updateLobbyRaidWidget(timeStr = '') {
+    const raidBtn = document.querySelector('.raid-btn, #raid-menu-btn');
+    if (!raidBtn) return;
+
+    let subTimer = document.getElementById('lobby-raid-subtimer');
+    if (isBattleActive) {
+        if (!subTimer) {
+            subTimer = document.createElement('div');
+            subTimer.id = 'lobby-raid-subtimer';
+            subTimer.style.cssText = 'font-size:10px; color:#e74c3c; font-weight:bold; text-align:center; margin-top:2px;';
+            raidBtn.appendChild(subTimer);
+        }
+        subTimer.textContent = timeStr || 'В БОЮ (Натисніть)';
+        raidBtn.onclick = reopenNurseBattle;
+    } else {
+        if (subTimer) subTimer.remove();
+    }
+}
 
 function performPlayerAttack(event) {
     if (playerAttackCooldown || bossCurrentHp <= 0 || !isBattleActive) return;
