@@ -960,21 +960,18 @@ const bossesDatabase = {
         key: 'nurse',
         name: "Сестра Клара «Шприц»",
         hp: 120,
-        maxHp: 120,
         damage: 12,
         expReward: 50,
         silverReward: 30,
-        questItem: { name: "Ключ від процедурної" },
         dossier: {
             code: "001",
-            subtitle: "ПРОЦЕДУРНИЙ БЛОК • 10 ПОВЕРХ",
-            callsign: "«ПРОЦЕДУРНА»",
             threat: "ЗАГРОЗА: ВИСОКА",
-            cardImg: "nurse.png",
+            callsign: "«ПРОЦЕДУРНА»",
+            cardImg: "dossier/nurse_dossier_card.png", // <--- ТОЧНА НАЗВА ФАЙЛУ
             role: "Старша медсестра",
             status: "Патологічна агресія",
             location: "Процедурний блок, 10-й поверх",
-            deviations: "Після катастрофи втратила розум. Демонструє ендогенний галюцинаторно-параноїдний синдром. Вважає зачистку пацієнтів та ін'єкції невідомих речовин єдиним способом «вилікувати» спецблок.",
+            deviations: "Після катастрофи втратила розум. Демонструє ендогенний галюцинаторно-параноїдний синдром.",
             rewardsText: "+50 EXP • +30 Срібла • Ключ від процедурної"
         }
     },
@@ -982,21 +979,18 @@ const bossesDatabase = {
         key: 'doctor',
         name: "Черговий лікар",
         hp: 250,
-        maxHp: 250,
         damage: 25,
         expReward: 120,
         silverReward: 80,
-        questItem: { name: "Ключ від ізолятора" },
         dossier: {
             code: "002",
-            subtitle: "АРХІВ ІЗОЛЯТОРА • 10 ПОВЕРХ",
-            callsign: "«НАБЛЮДАЧ»",
             threat: "ЗАГРОЗА: КРИТИЧНА",
-            cardImg: "doctor.png",
+            callsign: "«НАБЛЮДАЧ»",
+            cardImg: "dossier/doctor_dossier_card.png", // <--- ТОЧНА НАЗВА ФАЙЛУ
             role: "Старший черговий лікар",
             status: "Зв'язок втрачено / Мутація",
             location: "Кабінет спостереження, 10-й поверх",
-            deviations: "Внаслідок аномальної трансформації суб'єкт набув додаткових кінцівок. Здатний одночасно блокувати проходи та атакувати з різних напрямків. Демонструє нав'язливу потребу контролювати всі виходи.",
+            deviations: "Внаслідок аномальної трансформації суб'єкт набув додаткових кінцівок.",
             rewardsText: "+120 EXP • +80 Срібла • Ключ від ізолятора"
         }
     }
@@ -1440,18 +1434,7 @@ function openBossDossier(bossKey) {
         setTxt('universal-dossier-callsign', `ПОЗИВНИЙ: ${d.callsign || '«НЕВІДОМО»'}`);
 
 // --- ФОТОГРАФІЯ ---
-const imgElem = document.getElementById('universal-dossier-img');
-if (imgElem) {
-    // Якщо у базі є шлях — беремо його, якщо ні — примусово формуємо з папки dossier
-    let imgSrc = d.cardImg || `dossier/${bossKey}.png`;
-    
-    // Якщо шлях випадково не містить папки dossier/ і не починається з http, додаємо його
-    if (!imgSrc.includes('dossier/') && !imgSrc.startsWith('http')) {
-        imgSrc = `dossier/${imgSrc}`;
-    }
-    
-    imgElem.src = imgSrc;
-}
+document.getElementById('universal-dossier-img').src = `dossier/${bossKey}_dossier_card.png`;
 
         // Відомості та відхилення
         setHTML('universal-dossier-role', `<strong>Посада:</strong> ${d.role || '-'}`);
