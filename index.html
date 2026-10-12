@@ -443,18 +443,18 @@
 
         <button onclick="closeUniversalDossier()" style="position: absolute; top: 12px; right: 12px; background: none; border: none; color: #2c221e; font-size: 22px; cursor: pointer; font-weight: bold; z-index: 10;">✕</button>
 
-<!-- Блок Фото зверху, а під ним Назва та Службові відомості -->
-        <div style="display: flex; flex-direction: column; align-items: center; margin-bottom: 14px; text-align: center;">
-            <div style="width: 100%; max-width: 280px; margin-bottom: 12px;">
-                <img id="universal-dossier-img" src="" alt="Арт боса" style="width: 100%; height: auto; object-fit: contain; filter: drop-shadow(4px 6px 12px rgba(0,0,0,0.45)); border-radius: 4px; display: block;">
+<!-- Блок Фото зліва (велике), а текст праворуч -->
+        <div style="display: flex; gap: 18px; margin-bottom: 14px; align-items: flex-start;">
+            <div style="flex-shrink: 0; width: 220px;">
+                <img id="universal-dossier-img" src="" alt="Арт боса" style="width: 220px; height: auto; max-height: 280px; object-fit: contain; filter: drop-shadow(4px 6px 12px rgba(0,0,0,0.45)); border-radius: 4px; display: block;">
             </div>
             
-            <div style="width: 100%;">
-                <h2 id="universal-dossier-name" style="margin: 0 0 2px 0; color: #8c2b2b; font-size: 24px; font-family: 'Special Elite', cursive; line-height: 1.1;">Назва боса</h2>
+            <div style="flex-grow: 1; text-align: left;">
+                <h2 id="universal-dossier-name" style="margin: 0 0 2px 0; color: #8c2b2b; font-size: 22px; font-family: 'Special Elite', cursive; line-height: 1.1;">Назва боса</h2>
                 <div id="universal-dossier-callsign" style="font-size: 11px; color: #7f6e5d; margin-bottom: 10px; font-weight: bold;">ПОЗИВНИЙ: «-»</div>
                 
-                <div style="font-size: 12px; line-height: 1.5; color: #3d2d22; background: rgba(0,0,0,0.04); padding: 10px; border-radius: 5px; border: 1px solid #d4c5b9; text-align: left;">
-                    <div style="font-weight: bold; color: #8c2b2b; font-size: 10px; text-transform: uppercase; margin-bottom: 4px; text-align: center;">СЛУЖБОВІ ВІДОМОСТІ</div>
+                <div style="font-size: 12px; line-height: 1.5; color: #3d2d22; background: rgba(0,0,0,0.04); padding: 10px; border-radius: 5px; border: 1px solid #d4c5b9;">
+                    <div style="font-weight: bold; color: #8c2b2b; font-size: 10px; text-transform: uppercase; margin-bottom: 4px;">СЛУЖБОВІ ВІДОМОСТІ</div>
                     <p id="universal-dossier-role" style="margin: 0 0 4px 0;"><strong>Посада:</strong> -</p>
                     <p id="universal-dossier-status" style="margin: 0 0 4px 0;"><strong>Статус:</strong> -</p>
                     <p id="universal-dossier-location" style="margin: 0;"><strong>Локація:</strong> -</p>
