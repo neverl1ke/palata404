@@ -1097,31 +1097,43 @@ function closeNurseDossier() {
     if (dossierModal) dossierModal.classList.add('hidden');
 }
 
+// Запуск бою з Сестрою Кларою
 function startNurseFight() {
-    // Якщо бій ВЖЕ активний, ми не створюємо новий, а просто повертаємось у нього!
     if (isBattleActive) {
         closeNurseDossier();
-        closeProcedureRoom();
-        closeMedicalHub();
-        if (typeof toggleMapModal === 'function') {
-            toggleMapModal(false);
-        }
+        if (typeof toggleMapModal === 'function') toggleMapModal(false);
         reopenNurseBattle();
         return;
     }
 
     closeNurseDossier();
-    closeProcedureRoom();
-    closeMedicalHub();
-    if (typeof toggleMapModal === 'function') {
-        toggleMapModal(false);
-    }
+    if (typeof toggleMapModal === 'function') toggleMapModal(false);
+
+    // Жорстко задаємо параметри для Сестри Клари
+    bossCurrentHp = 120;
+    bossMaxHp = 120;
     
-    // Повне відновлення ХП перед початком рейду
+    // ПРИМУСОВО повертаємо спрайт та фон Сестри Клари
+    const bossSprite = document.getElementById('nurse-boss-sprite');
+    if (bossSprite) bossSprite.src = 'nurse_sprite.png';
+
+    const arenaScreen = document.getElementById('battle-arena-screen');
+    if (arenaScreen) arenaScreen.style.backgroundImage = "url('nurse_bg.jpg')";
+
+    // Оновлюємо ім'я та аватар спеціально для Сестри Клари
+    const bossNameElem = document.querySelector('#nurse-battle-modal h3, .boss-name-display');
+    if (bossNameElem) bossNameElem.textContent = "Сестра Клара «Шприц»";
+
+    const bossAvatar = document.querySelector('#nurse-battle-modal img[alt="Сестра Клара"], #nurse-battle-modal > div > div:nth-child(5) img');
+    if (bossAvatar) {
+        bossAvatar.src = 'nurse_avatar_battle.png';
+        bossAvatar.alt = 'Сестра Клара';
+    }
+
+    // Старт рейду
     stats.hp = stats.maxHp;
     if (typeof updateUI === 'function') updateUI();
 
-    bossCurrentHp = bossMaxHp;
     playerAttackCooldown = false;
     isBattleActive = true;
     raidTimeRemaining = 300;
@@ -1156,7 +1168,6 @@ function startNurseFight() {
     if (friendAttackInterval) clearInterval(friendAttackInterval);
     friendAttackInterval = setInterval(friendsAutoAttackTick, 3500);
 
-    // Оновлюємо віджет у лобі одразу при стартові
     updateLobbyRaidWidget();
 }
 
@@ -1742,7 +1753,7 @@ function startDoctorFight() {
     // Надійніший пошук контейнера аватара боса у верхній правій панелі:
     const bossBattleAvatarBox = document.querySelector('#nurse-battle-modal > div > div:nth-child(5) img') || document.querySelector('#nurse-battle-modal img[alt="Сестра Клара"]');
     if (bossBattleAvatarBox) {
-        bossBattleAvatarBox.src = 'doctor_avatar_battle.png';
+        bossBattleAvatarBox.src = 'doctor_avatar_battle.jpg';
         bossBattleAvatarBox.alt = 'Черговий лікар';
     }
 
