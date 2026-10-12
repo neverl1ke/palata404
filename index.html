@@ -425,73 +425,68 @@
             </div>
         </div>
     </div>
-<!-- УНІВЕРСАЛЬНЕ ДОСЬЄ БОСА (Повна назва лікарні + збільшене, зсунуте вліво фото) -->
+<!-- УНІВЕРСАЛЬНЕ ДОСЬЄ БОСА (Нова структура з відхиленнями та службовими відомостями) -->
 <div id="universal-dossier-modal" class="modal-overlay hidden" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.88); z-index: 9999; display: flex; align-items: center; justify-content: center;">
     <div class="modal-content dossier-paper" style="width: min(540px, 95vw); max-height: 94vh; overflow-y: auto; padding: 24px; position: relative; box-sizing: border-box; box-shadow: 0 10px 30px rgba(0,0,0,0.7);">
         
-        <!-- Верхній заголовок установи з повною назвою + Статус загрози -->
-        <div style="display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 1px solid #c8b9a6; padding-bottom: 12px; margin-bottom: 16px;">
-            <div style="padding-right: 10px;">
-                <div style="font-size: 9.5px; color: #7f6e5d; letter-spacing: 0.5px; font-weight: bold; text-transform: uppercase; line-height: 1.3;">ЦЕНТР ІНТЕНСИВНОГО ЛІКУВАННЯ ПСИХІЧНИХ РОЗЛАДІВ № 404</div>
-                <h3 id="universal-dossier-code" style="margin: 4px 0 0 0; color: #8c2b2b; font-size: 15px; font-family: 'Special Elite', cursive;">ОСОБОВА СПРАВА № 001</h3>
+        <!-- Шапка -->
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 1px solid #c8b9a6; padding-bottom: 10px; margin-bottom: 14px;">
+            <div>
+                <div style="font-size: 9.5px; color: #7f6e5d; font-weight: bold; text-transform: uppercase;">ЦЕНТР ІНТЕНСИВНОГО ЛІКУВАННЯ ПСИХІЧНИХ РОЗЛАДІВ № 404</div>
+                <h3 id="universal-dossier-code" style="margin: 3px 0 0 0; color: #8c2b2b; font-size: 15px; font-family: 'Special Elite', cursive;">ОСОБОВА СПРАВА № 001</h3>
                 <div style="font-size: 10px; color: #8c7a6b; margin-top: 2px;">ФОРМА 04-Б • ДОСТУП ОБМЕЖЕНО</div>
             </div>
-            <div style="border: 2px solid #8c2b2b; color: #8c2b2b; padding: 4px 8px; font-size: 10px; font-weight: bold; letter-spacing: 1px; transform: rotate(2deg); background: rgba(140,43,43,0.05); border-radius: 3px; flex-shrink: 0;">
-                НЕБЕЗПЕЧНО
+            <div id="universal-dossier-threat" style="border: 2px solid #8c2b2b; color: #8c2b2b; padding: 4px 8px; font-size: 10px; font-weight: bold; letter-spacing: 0.5px; transform: rotate(1deg); background: rgba(140,43,43,0.05); border-radius: 3px; flex-shrink: 0;">
+                ЗАГРОЗА: ВИСОКА
             </div>
         </div>
 
-        <button onclick="closeUniversalDossier()" style="position: absolute; top: 14px; right: 14px; background: none; border: none; color: #2c221e; font-size: 22px; cursor: pointer; font-weight: bold; z-index: 10;">✕</button>
+        <button onclick="closeUniversalDossier()" style="position: absolute; top: 12px; right: 12px; background: none; border: none; color: #2c221e; font-size: 22px; cursor: pointer; font-weight: bold; z-index: 10;">✕</button>
 
-        <!-- Головна секція: Збільшене фото зліва (зсунуте) + Основні дані справа -->
-        <div style="display: flex; gap: 18px; margin-bottom: 16px; align-items: flex-start;">
-            <div style="flex-shrink: 0; width: 195px; margin-left: -4px;">
-                <img id="universal-dossier-img" src="" alt="Арт боса" style="width: 195px; height: auto; max-height: 250px; object-fit: contain; filter: drop-shadow(5px 8px 14px rgba(0,0,0,0.45)); border-radius: 4px; display: block;">
+        <!-- Блок Фото + Назва та Позивний -->
+        <div style="display: flex; gap: 18px; margin-bottom: 14px; align-items: flex-start;">
+            <div style="flex-shrink: 0; width: 180px;">
+                <img id="universal-dossier-img" src="" alt="Арт боса" style="width: 180px; height: auto; max-height: 230px; object-fit: contain; filter: drop-shadow(4px 6px 12px rgba(0,0,0,0.45)); border-radius: 4px; display: block;">
             </div>
             
             <div style="flex-grow: 1;">
-                <h2 id="universal-dossier-name" style="margin: 0 0 4px 0; color: #8c2b2b; font-size: 22px; font-family: 'Special Elite', cursive; line-height: 1.2;">Назва боса</h2>
-                <div id="universal-dossier-subtitle" style="font-size: 11px; color: #7f6e5d; margin-bottom: 8px; text-transform: uppercase; font-weight: bold;">ПРОЦЕДУРНИЙ БЛОК</div>
+                <h2 id="universal-dossier-name" style="margin: 0 0 2px 0; color: #8c2b2b; font-size: 22px; font-family: 'Special Elite', cursive; line-height: 1.1;">Назва боса</h2>
+                <div id="universal-dossier-callsign" style="font-size: 11px; color: #7f6e5d; margin-bottom: 10px; font-weight: bold;">ПОЗИВНИЙ: «-»</div>
                 
-                <div style="font-size: 12.5px; line-height: 1.5; color: #3d2d22;">
-                    <p id="universal-dossier-role" style="margin: 0 0 6px 0;"><strong>Посада:</strong> -</p>
-                    <p style="margin: 0 0 6px 0;"><strong>Рівень загрози:</strong> <span style="color: #c0392b; font-weight: bold;">Високий</span></p>
-                    <p style="margin: 0;"><strong>Знищено вами:</strong> <strong id="universal-dossier-kills" style="color: #27ae60; font-size: 14px;">0</strong></p>
+                <div style="font-size: 12px; line-height: 1.5; color: #3d2d22; background: rgba(0,0,0,0.04); padding: 10px; border-radius: 5px; border: 1px solid #d4c5b9;">
+                    <div style="font-weight: bold; color: #8c2b2b; font-size: 10px; text-transform: uppercase; margin-bottom: 4px;">СЛУЖБОВІ ВІДОМОСТІ</div>
+                    <p id="universal-dossier-role" style="margin: 0 0 4px 0;"><strong>Посада:</strong> -</p>
+                    <p id="universal-dossier-status" style="margin: 0 0 4px 0;"><strong>Статус:</strong> -</p>
+                    <p id="universal-dossier-location" style="margin: 0;"><strong>Локація:</strong> -</p>
                 </div>
             </div>
         </div>
 
-        <!-- Блок: Медичні відомості -->
-        <div style="background: rgba(0,0,0,0.04); padding: 12px 14px; border-radius: 6px; border: 1px solid #d4c5b9; margin-bottom: 14px; font-size: 12.5px; line-height: 1.5; color: #3d2d22;">
-            <div style="font-weight: bold; color: #8c2b2b; margin-bottom: 4px; font-size: 11px; letter-spacing: 0.5px; text-transform: uppercase;">МЕДИЧНІ ВІДОМОСТІ</div>
-            <p id="universal-dossier-diagnosis" style="margin: 0;">-</p>
+        <!-- Зафіксовані відхилення -->
+        <div style="background: rgba(0,0,0,0.03); padding: 12px 14px; border-radius: 5px; border-left: 3px solid #8c2b2b; margin-bottom: 14px; font-size: 12px; line-height: 1.5; color: #3d2d22;">
+            <div style="font-weight: bold; color: #8c2b2b; margin-bottom: 4px; font-size: 10.5px; letter-spacing: 0.5px; text-transform: uppercase;">ЗАФІКСОВАНІ ВІДХИЛЕННЯ</div>
+            <p id="universal-dossier-deviations" style="margin: 0;">-</p>
         </div>
 
-        <!-- Блок: Запис із справи -->
-        <div style="background: rgba(0,0,0,0.03); padding: 10px 14px; border-radius: 6px; border-left: 3px solid #8c2b2b; font-size: 12px; margin-bottom: 14px; color: #4a382c; line-height: 1.5; font-style: italic;">
-            <div style="font-weight: bold; color: #7f6e5d; font-style: normal; margin-bottom: 3px; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.5px;">ЗАПИС ІЗ СПРАВИ</div>
-            <span id="universal-dossier-quote">«...»</span>
-        </div>
-
-        <!-- Блок: Нагорода -->
-        <div id="universal-dossier-rewards" style="background: rgba(243, 156, 18, 0.12); padding: 10px 14px; border-radius: 6px; border: 1px solid #d4a359; font-size: 12px; margin-bottom: 14px; color: #7f5200; font-weight: bold;">
-            🎁 <strong>Нагорода за знешкодження:</strong> -
+        <!-- Винагорода -->
+        <div id="universal-dossier-rewards" style="background: rgba(243, 156, 18, 0.12); padding: 10px 14px; border-radius: 5px; border: 1px solid #d4a359; font-size: 12px; margin-bottom: 14px; color: #7f5200; font-weight: bold;">
+            🎁 <strong>Винагорода за знешкодження:</strong> -
         </div>
 
         <!-- Характеристики -->
-        <div style="display: flex; gap: 10px; margin-bottom: 16px;">
-            <div style="flex: 1; background: rgba(0,0,0,0.05); padding: 10px; border-radius: 6px; text-align: center; border: 1px solid #c8b9a6;">
-                <div style="font-size: 10px; color: #7f6e5d; text-transform: uppercase; font-weight: bold;">Здоров'я</div>
-                <div id="universal-dossier-hp" style="color: #8c2b2b; font-size: 18px; font-weight: bold; font-family: 'Special Elite', cursive;">0 HP</div>
+        <div style="display: flex; gap: 10px; margin-bottom: 14px;">
+            <div style="flex: 1; background: rgba(0,0,0,0.05); padding: 8px; border-radius: 5px; text-align: center; border: 1px solid #c8b9a6;">
+                <div style="font-size: 9.5px; color: #7f6e5d; text-transform: uppercase; font-weight: bold;">Здоров'я</div>
+                <div id="universal-dossier-hp" style="color: #8c2b2b; font-size: 17px; font-weight: bold; font-family: 'Special Elite', cursive;">0 HP</div>
             </div>
-            <div style="flex: 1; background: rgba(0,0,0,0.05); padding: 10px; border-radius: 6px; text-align: center; border: 1px solid #c8b9a6;">
-                <div style="font-size: 10px; color: #7f6e5d; text-transform: uppercase; font-weight: bold;">Шкода</div>
-                <div id="universal-dossier-dmg" style="color: #8c2b2b; font-size: 18px; font-weight: bold; font-family: 'Special Elite', cursive;">0 DMG</div>
+            <div style="flex: 1; background: rgba(0,0,0,0.05); padding: 8px; border-radius: 5px; text-align: center; border: 1px solid #c8b9a6;">
+                <div style="font-size: 9.5px; color: #7f6e5d; text-transform: uppercase; font-weight: bold;">Шкода</div>
+                <div id="universal-dossier-dmg" style="color: #8c2b2b; font-size: 17px; font-weight: bold; font-family: 'Special Elite', cursive;">0 DMG</div>
             </div>
         </div>
 
-        <!-- Кнопка штурму -->
-        <button id="universal-dossier-start-btn" class="btn-outfit" style="width: 100%; background: #8c2b2b; color: #f4ebd0; padding: 13px; font-weight: bold; font-size: 15px; cursor: pointer; border-radius: 6px; border: 1px solid #5c1e1e; box-shadow: 0 4px 10px rgba(0,0,0,0.3); text-transform: uppercase; letter-spacing: 0.5px;">⚔️ Штурмувати кабінет</button>
+        <!-- Кнопка -->
+        <button id="universal-dossier-start-btn" class="btn-outfit" style="width: 100%; background: #8c2b2b; color: #f4ebd0; padding: 12px; font-weight: bold; font-size: 14px; cursor: pointer; border-radius: 5px; border: 1px solid #5c1e1e; text-transform: uppercase; letter-spacing: 0.5px;">⚔️ Штурмувати кабінет</button>
     </div>
 </div>
 
