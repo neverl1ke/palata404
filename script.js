@@ -1439,11 +1439,16 @@ function openBossDossier(bossKey) {
         setTxt('universal-dossier-name', boss.name || "Невідомий об'єкт");
         setTxt('universal-dossier-callsign', `ПОЗИВНИЙ: ${d.callsign || '«НЕВІДОМО»'}`);
 
-        // Зображення боса
-        const imgElem = document.getElementById('universal-dossier-img');
-        if (imgElem) {
-            imgElem.src = d.cardImg || `images/bosses/${bossKey}.png`;
-        }
+       // --- ФОТОГРАФІЯ (Захищений пошук у папці dossier) ---
+const imgElem = document.getElementById('universal-dossier-img');
+if (imgElem) {
+    // Якщо в базі вказано шлях — беремо його, інакше примусово шукаємо в папці dossier/
+    let imgSrc = d.cardImg || d.src || d.img;
+    if (!imgSrc || imgSrc === `nurse.png` || !imgSrc.includes('/')) {
+        imgSrc = `dossier/${bossKey}.png`;
+    }
+    imgElem.src = imgSrc;
+}
 
         // Відомості та відхилення
         setHTML('universal-dossier-role', `<strong>Посада:</strong> ${d.role || '-'}`);
