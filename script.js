@@ -970,7 +970,7 @@ const bossesDatabase = {
             subtitle: "ПРОЦЕДУРНИЙ БЛОК • 10 ПОВЕРХ",
             callsign: "«ПРОЦЕДУРНА»",
             threat: "ЗАГРОЗА: ВИСОКА",
-            cardImg: "images/bosses/nurse.png", // Перевір цей шлях до файлу!
+            cardImg: "dossier/nurse.png", // Перевір цей шлях до файлу!
             role: "Старша медсестра",
             status: "Патологічна агресія",
             location: "Процедурний блок, 10-й поверх",
@@ -992,7 +992,7 @@ const bossesDatabase = {
             subtitle: "АРХІВ ІЗОЛЯТОРА • 10 ПОВЕРХ",
             callsign: "«НАБЛЮДАЧ»",
             threat: "ЗАГРОЗА: КРИТИЧНА",
-            cardImg: "images/bosses/doctor.png", // Перевір цей шлях до файлу!
+            cardImg: "dossier/doctor.png", // Перевір цей шлях до файлу!
             role: "Старший черговий лікар",
             status: "Зв'язок втрачено / Мутація",
             location: "Кабінет спостереження, 10-й поверх",
