@@ -1434,7 +1434,7 @@ function openBossDossier(bossKey) {
         setTxt('universal-dossier-callsign', `ПОЗИВНИЙ: ${d.callsign || '«НЕВІДОМО»'}`);
 
 // --- ФОТОГРАФІЯ ---
-document.getElementById('universal-dossier-img').src = `dossier/${bossKey}_dossier_card.png`;
+document.getElementById('universal-dossier-img').src = `${bossKey}_dossier_card.png`;
 
         // Відомості та відхилення
         setHTML('universal-dossier-role', `<strong>Посада:</strong> ${d.role || '-'}`);
