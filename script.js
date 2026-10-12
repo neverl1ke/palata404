@@ -968,7 +968,17 @@ const bossesDatabase = {
         avatar: "nurse_avatar_battle.png",
         expReward: 50,
         silverReward: 30,
-        questItem: { name: 'Ключ від блоку боса', icon: '🔑', category: 'quest', count: 1, desc: 'Добутий після усунення медсестри.' }
+        questItem: { name: 'Ключ від блоку боса', icon: '🔑', category: 'quest', count: 1, desc: 'Добутий після усунення медсестри.' },
+        // Дані для досьє:
+        dossier: {
+            code: "NURSE | 001",
+            subtitle: "АРХІВ СПЕЦБЛОКУ • 9 ПОВЕРХ",
+            age: "34 роки",
+            role: "Старша медсестра (процедурний блок)",
+            diagnosis: "Ендогенний галюцинаторно-параноїдний синдром. Патологічна агресія до пацієнтів.",
+            quote: "«Колишній зразковий співробітник. Після аварії втратила розум, вважаючи себе єдиною, хто може \"вилікувати\" світ.»",
+            cardImg: "nurse_dossier_card.png"
+        }
     },
     doctor: {
         key: 'doctor',
@@ -980,7 +990,17 @@ const bossesDatabase = {
         avatar: "doctor_avatar_battle.png",
         expReward: 120,
         silverReward: 80,
-        questItem: { name: 'Ключ від 9-го Поверху', icon: '🔑', category: 'quest', count: 1, desc: 'Відкриває доступ до терапії.' }
+        questItem: { name: 'Ключ від 9-го Поверху', icon: '🔑', category: 'quest', count: 1, desc: 'Відкриває доступ до терапії.' },
+        // Дані для досьє:
+        dossier: {
+            code: "ON-DUTY | 002",
+            subtitle: "ОСОБЛИВО НЕБЕЗПЕЧНО • 10 ПОВЕРХ",
+            age: "45 років",
+            role: "Старший черговий лікар ізолятора спецблоку",
+            diagnosis: "Мутував, отримавши додаткові кінцівки для утримання пацієнтів у кабінеті.",
+            quote: "«Його робота — слідкувати, щоб ніхто не вийшов. Перетворився на жахливого тюремника власного блоку.»",
+            cardImg: "doctor_dossier_card.png"
+        }
     }
 };
 
@@ -1387,4 +1407,52 @@ function devSetMadness(val) {
     stats.madness = val;
     updateUI();
     showCustomToast(val >= 100 ? "⚠️ Режим Психозу!" : "🟢 Режим Норма!");
+}
+// === УНІВЕРСАЛЬНЕ ВІДКРИТТЯ ДОСЬЄ БОСА ===
+function openBossDossier(bossKey) {
+    const boss = bossesDatabase[bossKey];
+    if (!boss || !boss.dossier) return;
+
+    // Закриваємо інші вікна на всякий випадок
+    closeInventory();
+    closeCustomization();
+    closeSettings();
+    closeFriends();
+    toggleMapModal(false);
+
+    // Заповнюємо дані у єдине модальне вікно досьє
+    const d = boss.dossier;
+    
+    document.getElementById('universal-dossier-code').textContent = `Особова справа: ${d.code}`;
+    document.getElementById('universal-dossier-subtitle').textContent = d.subtitle;
+    document.getElementById('universal-dossier-name').textContent = boss.name;
+    document.getElementById('universal-dossier-img').src = d.cardImg;
+    document.getElementById('universal-dossier-role').innerHTML = `<strong>Посада/Статус:</strong> ${d.role}`;
+    document.getElementById('universal-dossier-diagnosis').innerHTML = `<strong style="color:#8c2b2b;">Діагноз / Особливості:</strong> ${d.diagnosis}`;
+    document.getElementById('universal-dossier-quote').textContent = d.quote;
+    document.getElementById('universal-dossier-rewards').innerHTML = `🎁 <strong>Винагорода за зачистку:</strong> +${boss.expReward} EXP, +${boss.silverReward} Срібла, ${boss.questItem.name}.`;
+    document.getElementById('universal-dossier-hp').textContent = `${boss.hp} HP`;
+    document.getElementById('universal-dossier-dmg').textContent = `${boss.damage} DMG`;
+    
+    // Кількість вбивств
+    const killsElem = document.getElementById('universal-dossier-kills');
+    if (killsElem) killsElem.textContent = bossKillsCount[bossKey] || 0;
+
+    // Кнопка штурму тепер динамічно викликає бій саме з цим босом
+    const startBtn = document.getElementById('universal-dossier-start-btn');
+    if (startBtn) {
+        startBtn.onclick = () => {
+            closeUniversalDossier();
+            startBossFight(bossKey);
+        };
+    }
+
+    // Показуємо універсальне вікно
+    const modal = document.getElementById('universal-dossier-modal');
+    if (modal) modal.classList.remove('hidden');
+}
+
+function closeUniversalDossier() {
+    const modal = document.getElementById('universal-dossier-modal');
+    if (modal) modal.classList.add('hidden');
 }

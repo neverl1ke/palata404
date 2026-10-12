@@ -892,3 +892,32 @@ body {
 .shake-effect {
     animation: screenShake 0.3s ease-in-out !important;
 }
+/* ==========================================
+   СТИЛІ ДЛЯ УНІВЕРСАЛЬНОГО ДОСЬЄ (ПАПІР ТА ШТАМП)
+   ========================================== */
+
+/* Аутентичний фон пожовклого медичного паперу */
+.dossier-paper {
+    background: #f4ebd0 !important;
+    color: #2c221e !important;
+    border: 2px solid #8c7a6b !important;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.9), inset 0 0 50px rgba(180, 150, 110, 0.35) !important;
+    background-image: radial-gradient(circle, rgba(0,0,0,0.02) 0%, rgba(120, 85, 50, 0.12) 100%) !important;
+    font-family: 'Special Elite', cursive, monospace !important;
+}
+
+/* Червоний кутовий штамп секретності */
+.dossier-stamp-red {
+    position: absolute;
+    top: 12px;
+    right: 40px;
+    font-size: 10px;
+    color: #c0392b;
+    border: 2px dashed #c0392b;
+    padding: 2px 8px;
+    transform: rotate(4deg);
+    letter-spacing: 1px;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-family: 'Share Tech Mono', monospace;
+}
