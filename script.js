@@ -219,13 +219,13 @@ const gameFloorsData = [
         title: "10 Поверх — Блок Ізоляторів",
         unlocked: true,
         mapImage: "map_floor_10.png",
-        nodes: [
-            { id: "sec_room404", title: "🛏️ Палата #404", x: 38, y: 31, type: "room_404" },
-            { id: "sec1_collector", title: "⚙️ Збирач #1", x: 38, y: 44, type: "collector" },
-            { id: "sec_procedure", title: "💉 Процедурний", x: 38, y: 62, type: "procedure" },
-            { id: "sec2_grind", title: "🧱 Завал (Розчистити)", x: 58, y: 50, type: "grind" },
-            { id: "sec3_boss", title: "👹 Бос Поверху", x: 82, y: 44, type: "boss", locked: true }
-        ]
+       nodes: [
+    { id: "sec_room404", title: "🛏️ Палата 404", x: 38, y: 31, type: "room_404" },
+    { id: "sec1_collector", title: "⚙️ Ординаторська", x: 38, y: 44, type: "collector" },
+    { id: "sec_procedure", title: "💉 Медпункт", x: 38, y: 62, type: "procedure" },
+    { id: "sec2_grind", title: "🧱 Завал", x: 58, y: 50, type: "grind" },
+    { id: "sec3_boss", title: "👹 Черговий лікар", x: 82, y: 44, type: "boss", locked: true }
+]
     },
     {
         id: 9,
@@ -497,8 +497,8 @@ function handleNodeClick(node, floor) {
         } else {
             alert("Недостатньо витривалості для розчищення завалу!");
         }
-    } else if (node.type === 'boss') {
-        alert("⚔️ Бій з Босом 10-го Поверху у праці!\nГотуйте зброю та стимулятори.");
+  } else if (node.type === 'boss') {
+        openDoctorDossier();
     }
 }
 
@@ -1701,5 +1701,97 @@ function updateLobbyRaidWidget(timeStr = '') {
         raidBtn.style.borderColor = '';
         raidBtn.style.background = '';
         if (subTimer) subTimer.remove();
+    }
+}
+// === ЛОГІКА ДЛЯ ЧЕРГОВОГО ЛІКАРЯ (БОС 10 ПОВЕРХУ) ===
+
+function openDoctorDossier() {
+    const modal = document.getElementById('doctor-dossier-modal');
+    if (modal) modal.classList.remove('hidden');
+}
+
+function closeDoctorDossier() {
+    const modal = document.getElementById('doctor-dossier-modal');
+    if (modal) modal.classList.add('hidden');
+}
+
+function startDoctorFight() {
+    if (isBattleActive) {
+        closeDoctorDossier();
+        if (typeof toggleMapModal === 'function') toggleMapModal(false);
+        reopenNurseBattle();
+        return;
+    }
+
+    closeDoctorDossier();
+    if (typeof toggleMapModal === 'function') toggleMapModal(false);
+
+    // Характеристики Чергового лікаря (250 HP, 25 урон)
+    bossCurrentHp = 250;
+    bossMaxHp = 250;
+    
+    // Підставляємо унікальні зображення для Чергового лікаря
+    const bossSprite = document.getElementById('nurse-boss-sprite');
+    if (bossSprite) bossSprite.src = 'doctor_sprite.png';
+
+    const arenaScreen = document.getElementById('battle-arena-screen');
+    if (arenaScreen) arenaScreen.style.backgroundImage = "url('doctor_bg.jpg')";
+
+    // Змінюємо аватар боса на верхній правій панелі бою
+    const bossAvatarImg = document.querySelector('#nurse-battle-modal .modal-content div img, [alt="Сестра Клара"], [alt="Черговий лікар"]');
+    // Надійніший пошук контейнера аватара боса у верхній правій панелі:
+    const bossBattleAvatarBox = document.querySelector('#nurse-battle-modal > div > div:nth-child(5) img') || document.querySelector('#nurse-battle-modal img[alt="Сестра Клара"]');
+    if (bossBattleAvatarBox) {
+        bossBattleAvatarBox.src = 'doctor_avatar_battle.png';
+        bossBattleAvatarBox.alt = 'Черговий лікар';
+    }
+
+    // Повне відновлення перед штурмом
+    stats.hp = stats.maxHp;
+    if (typeof updateUI === 'function') updateUI();
+
+    playerAttackCooldown = false;
+    isBattleActive = true;
+    raidTimeRemaining = 300;
+
+    let currentName = 'Пацієнт #404';
+    if (typeof playerName !== 'undefined' && playerName) {
+        currentName = playerName;
+    }
+
+    raidMembers.forEach(m => {
+        m.damage = 0;
+        if (m.isPlayer) {
+            m.name = currentName;
+            m.active = true;
+        } else {
+            m.active = false;
+            m.called = false;
+        }
+    });
+    
+    updateBattleUI();
+    
+    const battleModal = document.getElementById('nurse-battle-modal');
+    if (battleModal) {
+        battleModal.classList.remove('hidden');
+        battleModal.style.display = 'flex';
+    }
+
+    if (raidTimerInterval) clearInterval(raidTimerInterval);
+    raidTimerInterval = setInterval(updateRaidTimerTick, 1000);
+
+    if (friendAttackInterval) clearInterval(friendAttackInterval);
+    friendAttackInterval = setInterval(friendsAutoAttackTick, 3500);
+
+    updateLobbyRaidWidget();
+}
+
+// === ПОЛАГОДЖЕННЯ DEV-ПАНЕЛІ (ПСИХОЗ / НОРМА) ===
+function devSetMadness(val) {
+    stats.madness = val;
+    updateUI();
+    if (typeof showCustomToast === 'function') {
+        showCustomToast(val >= 100 ? "⚠️ Режим Психозу (100%) увімкнено!" : "🟢 Режим Норма (0%) увімкнено!");
     }
 }

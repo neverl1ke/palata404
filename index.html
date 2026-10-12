@@ -463,7 +463,43 @@
         <button class="btn-outfit" style="width: 100%; background: #c0392b; padding: 12px; font-weight: bold; font-size: 15px; cursor: pointer; border-radius: 6px;" onclick="startNurseFight()">⚔️ Штурм кабінету</button>
     </div>
 </div>
+<!-- ДОСЬЄ ЧЕРГОВОГО ЛІКАРЯ (ГОЛОВНИЙ БОС 10-ГО ПОВЕРХУ) -->
+<div id="doctor-dossier-modal" class="modal-overlay hidden" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.85); z-index: 10000; display: flex; align-items: center; justify-content: center;">
+    <div class="modal-content" style="background: #1c1511; border: 2px solid #8c3a2b; width: 720px; padding: 25px; border-radius: 8px; color: #f4e8d1; position: relative; font-family: sans-serif; box-shadow: 0 0 35px rgba(0,0,0,0.95);">
+        <button onclick="closeDoctorDossier()" style="position: absolute; top: 10px; right: 10px; background: none; border: none; color: #fff; font-size: 22px; cursor: pointer;">✕</button>
+        
+        <div style="text-align: center; border-bottom: 1px dashed #5c4033; padding-bottom: 12px; margin-bottom: 18px;">
+            <span style="background: #5c221e; color: #ffcccc; padding: 3px 12px; font-size: 11px; border-radius: 4px; text-transform: uppercase; letter-spacing: 1px; font-weight: bold;">Особова справа: ON-DUTY | 002</span>
+            <h2 style="margin: 8px 0 0 0; color: #e74c3c; font-size: 24px;">Черговий лікар</h2>
+        </div>
 
+        <div style="display: flex; gap: 25px; margin-bottom: 20px; align-items: flex-start;">
+            <!-- КАРТКА ДОСЬЄ БОСА -->
+            <img src="doctor_dossier_card.jpg" alt="Черговий лікар" style="width: 270px; height: auto; object-fit: contain; flex-shrink: 0; filter: drop-shadow(0 6px 15px rgba(0,0,0,0.9)); transform: rotate(-1deg);">
+            
+            <div style="font-size: 13px; line-height: 1.6; color: #d0c2ad; flex-grow: 1;">
+                <p style="margin: 0 0 8px 0;"><strong>Посада:</strong> Старший черговий лікар ізолятора спецблоку</p>
+                <p style="margin: 0 0 10px 0;"><strong style="color:#e74c3c;">Особливості:</strong> Контролює режим ізолятора. Під дією аномальних витоків мутував, отримавши шість рук для жорсткого примусового "лікування" та утримання пацієнтів у кабінеті.</p>
+                <p style="margin: 0; font-size: 14px;"><strong>Знищено босів:</strong> <strong id="doctor-kills-count" style="color: #27ae60; font-size: 16px;">0</strong></p>
+            </div>
+        </div>
+
+        <div style="background: #15100c; padding: 12px; border-radius: 4px; border: 1px solid #3d2d22; font-size: 12px; margin-bottom: 15px; color: #bdaea0; line-height: 1.5;">
+            <em>«Його робота — слідкувати, щоб ніхто не вийшов. Тепер він перетворився на жахливого тюремника власних пацієнтів.»</em>
+        </div>
+
+        <div style="background: #221a14; padding: 10px 15px; border-radius: 4px; border: 1px solid #4a382c; font-size: 12px; margin-bottom: 18px; color: #f39c12;">
+            🎁 <strong>Винагорода за зачистку:</strong> +120 EXP, +80 Срібла, Ключ від 9-го Поверху.
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; background: #261c14; padding: 10px 15px; border-radius: 4px; margin-bottom: 18px; font-size: 14px;">
+            <span>Здоров'я: <strong style="color: #e74c3c; font-size: 15px;">250 HP</strong></span>
+            <span>Урон: <strong style="color: #e74c3c; font-size: 15px;">25 DMG</strong></span>
+        </div>
+
+        <button class="btn-outfit" style="width: 100%; background: #c0392b; padding: 12px; font-weight: bold; font-size: 15px; cursor: pointer; border-radius: 6px;" onclick="startDoctorFight()">⚔️ Штурм кабінету чергового лікаря</button>
+    </div>
+</div>
 
 <style>
 /* Анімація випаду боса вперед під час атаки */
