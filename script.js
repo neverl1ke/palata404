@@ -1406,7 +1406,7 @@ function devSetMadness(val) {
     updateUI();
     showCustomToast(val >= 100 ? "⚠️ Режим Психозу!" : "🟢 Режим Норма!");
 }
-// === УНІВЕРСАЛЬНЕ ВІДКРИТТЯ ДОСЬЄ БОСА ===
+// === УНІВЕРСАЛЬНЕ ВІДКРИТТЯ ДОСЬЄ БОСА (Виправлений пошук зображення) ===
 function openBossDossier(bossKey) {
     const boss = bossesDatabase[bossKey];
     if (!boss || !boss.dossier) return;
@@ -1433,43 +1433,51 @@ function openBossDossier(bossKey) {
     const callsignElem = document.getElementById('universal-dossier-callsign');
     if (callsignElem) callsignElem.textContent = `ПОЗИВНИЙ: ${d.callsign || '«НЕВІДОМО»'}`;
 
-    // Фотографія
+    // --- ФОТОГРАФІЯ (ПОШУК ЗОБРАЖЕННЯ З ТВОЄЇ БАЗИ) ---
     const imgElem = document.getElementById('universal-dossier-img');
-    if (imgElem) imgElem.src = d.cardImg || `images/bosses/${bossKey}.png`;
+    if (imgElem) {
+        // Ми шукаємо шлях у поле 'cardImg' (твоє старе), 'src' або 'img',
+        // інакше використовуємо стандартний шлях.
+        const imgSrc = d.cardImg || d.src || d.img || `images/bosses/${bossKey}.png`;
+        imgElem.src = imgSrc;
+    }
+    // --------------------------------------------------
 
     // Службові відомості
     const roleElem = document.getElementById('universal-dossier-role');
     if (roleElem) roleElem.innerHTML = `<strong>Посада:</strong> ${d.role || '-'}`;
 
     const statusElem = document.getElementById('universal-dossier-status');
-    if (statusElem) statusElem.innerHTML = `<strong>Статус:</strong> ${d.status || d.diagnosis || '-'}`;
+    if (statusElem) statusElem.innerHTML = `<strong>Статус:</strong> ${d.status || d.diagnosis || d.behavior || '-'}`;
 
     const locationElem = document.getElementById('universal-dossier-location');
     if (locationElem) locationElem.innerHTML = `<strong>Локація:</strong> ${d.location || d.subtitle || '-'}`;
 
     // Зафіксовані відхилення
     const deviationsElem = document.getElementById('universal-dossier-deviations');
-    if (deviationsElem) deviationsElem.textContent = d.deviations || d.diagnosis || "Відомості відсутні.";
+    // Ми також перевіряємо твої старі поля 'diagnosis' та 'behavior'
+    const deviationsText = d.deviations || d.diagnosis || d.behavior || d.deviations || "Відомості відсутні.";
+    if (deviationsElem) deviationsElem.textContent = deviationsText;
 
     // Винагорода
     const rewardText = d.rewardsText || `+${boss.expReward || boss.exp || 0} EXP, +${boss.silverReward || boss.silver || 0} Срібла${boss.questItem ? ', ' + boss.questItem.name : ''}`;
     const rewardsElem = document.getElementById('universal-dossier-rewards');
-    if (rewardsElem) rewardsElem.innerHTML = `🎁 <strong>Винагорода за знешкодження:</strong> ${rewardText}`;
+    if (rewardsElem) rewardsElem.innerHTML = `🎁 <strong>Нагорода за знешкодження:</strong> ${rewardText}`;
 
     // Стати
     const hpElem = document.getElementById('universal-dossier-hp');
-    if (hpElem) hpElem.textContent = `${boss.hp} HP`;
+    if (hpElem) hpElem.textContent = `${boss.hp || boss.maxHp || 0} HP`;
 
     const dmgElem = document.getElementById('universal-dossier-dmg');
-    if (dmgElem) dmgElem.textContent = `${boss.damage} DMG`;
+    if (dmgElem) dmgElem.textContent = `${boss.damage || boss.dmg || 0} DMG`;
 
-    // Кількість вбивств (якщо є елемент)
+    // Лічильник вбивств
     const killsElem = document.getElementById('universal-dossier-kills');
     if (killsElem && typeof bossKillsCount !== 'undefined') {
         killsElem.textContent = bossKillsCount[bossKey] || 0;
     }
 
-    // Прив'язка кнопки Штурму (викликає саме ТВОЮ функцію startBossFight)
+    // Кнопка штурму
     const startBtn = document.getElementById('universal-dossier-start-btn');
     if (startBtn) {
         startBtn.onclick = () => {
@@ -1485,9 +1493,4 @@ function openBossDossier(bossKey) {
     // Показуємо універсальне вікно
     const modal = document.getElementById('universal-dossier-modal');
     if (modal) modal.classList.remove('hidden');
-}
-
-function closeUniversalDossier() {
-    const modal = document.getElementById('universal-dossier-modal');
-    if (modal) modal.classList.add('hidden');
 }
