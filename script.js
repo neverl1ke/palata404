@@ -1409,34 +1409,85 @@ function devSetMadness(val) {
 // === УНІВЕРСАЛЬНЕ ВІДКРИТТЯ ДОСЬЄ БОСА ===
 function openBossDossier(bossKey) {
     const boss = bossesDatabase[bossKey];
-    if (!boss) return;
+    if (!boss || !boss.dossier) return;
 
-    const modal = document.getElementById('universal-dossier-modal');
-    if (!modal) return;
+    // Закриваємо інші вікна
+    if (typeof closeInventory === 'function') closeInventory();
+    if (typeof closeCustomization === 'function') closeCustomization();
+    if (typeof closeSettings === 'function') closeSettings();
+    if (typeof closeFriends === 'function') closeFriends();
+    if (typeof toggleMapModal === 'function') toggleMapModal(false);
 
     const d = boss.dossier;
 
-    document.getElementById('universal-dossier-code').innerText = d.code || "ОСОБОВА СПРАВА";
-    document.getElementById('universal-dossier-threat').innerText = d.threat || "ЗАГРОЗА: НЕВІДОМО";
-    document.getElementById('universal-dossier-name').innerText = boss.name;
-    document.getElementById('universal-dossier-callsign').innerText = `ПОЗИВНИЙ: ${d.callsign || '«НЕВІДОМО»'}`;
-    document.getElementById('universal-dossier-img').src = `images/bosses/${bossKey}.png`;
+    // Заповнення заголовка та коду
+    const codeElem = document.getElementById('universal-dossier-code');
+    if (codeElem) codeElem.textContent = d.code || `ОСОБОВА СПРАВА № ${bossKey}`;
 
-    document.getElementById('universal-dossier-role').innerHTML = `<strong>Посада:</strong> ${d.role || '-'}`;
-    document.getElementById('universal-dossier-status').innerHTML = `<strong>Статус:</strong> ${d.status || '-'}`;
-    document.getElementById('universal-dossier-location').innerHTML = `<strong>Локація:</strong> ${d.location || '-'}`;
-    
-    document.getElementById('universal-dossier-deviations').innerText = d.deviations || "Відомості відсутні.";
-    document.getElementById('universal-dossier-rewards').innerHTML = `🎁 <strong>Винагорода за знешкодження:</strong> ${d.rewardsText || '-'}`;
+    const threatElem = document.getElementById('universal-dossier-threat');
+    if (threatElem) threatElem.textContent = d.threat || "ЗАГРОЗА: ВИСОКА";
 
-    document.getElementById('universal-dossier-hp').innerText = `${boss.hp} HP`;
-    document.getElementById('universal-dossier-dmg').innerText = `${boss.damage} DMG`;
+    const nameElem = document.getElementById('universal-dossier-name');
+    if (nameElem) nameElem.textContent = boss.name;
 
+    const callsignElem = document.getElementById('universal-dossier-callsign');
+    if (callsignElem) callsignElem.textContent = `ПОЗИВНИЙ: ${d.callsign || '«НЕВІДОМО»'}`;
+
+    // Фотографія
+    const imgElem = document.getElementById('universal-dossier-img');
+    if (imgElem) imgElem.src = d.cardImg || `images/bosses/${bossKey}.png`;
+
+    // Службові відомості
+    const roleElem = document.getElementById('universal-dossier-role');
+    if (roleElem) roleElem.innerHTML = `<strong>Посада:</strong> ${d.role || '-'}`;
+
+    const statusElem = document.getElementById('universal-dossier-status');
+    if (statusElem) statusElem.innerHTML = `<strong>Статус:</strong> ${d.status || d.diagnosis || '-'}`;
+
+    const locationElem = document.getElementById('universal-dossier-location');
+    if (locationElem) locationElem.innerHTML = `<strong>Локація:</strong> ${d.location || d.subtitle || '-'}`;
+
+    // Зафіксовані відхилення
+    const deviationsElem = document.getElementById('universal-dossier-deviations');
+    if (deviationsElem) deviationsElem.textContent = d.deviations || d.diagnosis || "Відомості відсутні.";
+
+    // Винагорода
+    const rewardText = d.rewardsText || `+${boss.expReward || boss.exp || 0} EXP, +${boss.silverReward || boss.silver || 0} Срібла${boss.questItem ? ', ' + boss.questItem.name : ''}`;
+    const rewardsElem = document.getElementById('universal-dossier-rewards');
+    if (rewardsElem) rewardsElem.innerHTML = `🎁 <strong>Винагорода за знешкодження:</strong> ${rewardText}`;
+
+    // Стати
+    const hpElem = document.getElementById('universal-dossier-hp');
+    if (hpElem) hpElem.textContent = `${boss.hp} HP`;
+
+    const dmgElem = document.getElementById('universal-dossier-dmg');
+    if (dmgElem) dmgElem.textContent = `${boss.damage} DMG`;
+
+    // Кількість вбивств (якщо є елемент)
+    const killsElem = document.getElementById('universal-dossier-kills');
+    if (killsElem && typeof bossKillsCount !== 'undefined') {
+        killsElem.textContent = bossKillsCount[bossKey] || 0;
+    }
+
+    // Прив'язка кнопки Штурму (викликає саме ТВОЮ функцію startBossFight)
     const startBtn = document.getElementById('universal-dossier-start-btn');
-    startBtn.onclick = () => {
-        closeUniversalDossier();
-        startBossBattle(bossKey);
-    };
+    if (startBtn) {
+        startBtn.onclick = () => {
+            closeUniversalDossier();
+            if (typeof startBossFight === 'function') {
+                startBossFight(bossKey);
+            } else if (typeof startBossBattle === 'function') {
+                startBossBattle(bossKey);
+            }
+        };
+    }
 
-    modal.classList.remove('hidden');
+    // Показуємо універсальне вікно
+    const modal = document.getElementById('universal-dossier-modal');
+    if (modal) modal.classList.remove('hidden');
+}
+
+function closeUniversalDossier() {
+    const modal = document.getElementById('universal-dossier-modal');
+    if (modal) modal.classList.add('hidden');
 }
