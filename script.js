@@ -190,11 +190,11 @@ const facesData = [
 ];
 
 const DEFAULT_INVENTORY = [
-    { name: 'Іржавий ніж', icon: '🔪', count: 1, category: 'weapon', damageBonus: 8, desc: 'Саморобний ніж з обломка медичного шпателя. Тихий, не привертає зайвої уваги санітарів, але ефективний у тісних коридорах.' },
-    { name: 'ПМ (Пістолет Макарова)', icon: '🔫', count: 1, category: 'weapon', damageBonus: 18, desc: 'Табельний пістолет охорони. Потертий вороніний метал, у магазині залишилось кілька патронів.' },
-    { name: 'Штурмовий АКС-74У', icon: '⚡', count: 1, category: 'weapon', damageBonus: 35, desc: 'Укорочений автомат колишньої охорони спецблоку. Засіб останньої надії проти агресивних мутантів.' },
-    { name: 'Побитий шолом санітара', icon: '🪖', count: 1, category: 'helmet', armorBonus: 12, desc: 'Протиударний шолом персоналу психлікарні із залишками захисного скла. Гасить важкі удари по голові.' },
-    { name: 'Бронежилет БР-1', icon: '🛡️', count: 1, category: 'armor', armorBonus: 28, desc: 'Легкий армійський бронежилет прихованого носіння. Рятує від кульових поранень та ножів.' }
+    { name: 'Іржавий ніж', icon: '🔪', count: 1, category: 'weapon', damageBonus: 8, desc: 'Саморобний ніж з обломка медичного шпателя.' },
+    { name: 'ПМ (Пістолет Макарова)', icon: '🔫', count: 1, category: 'weapon', damageBonus: 18, desc: 'Табельний пістолет охорони.' },
+    { name: 'Штурмовий АКС-74У', icon: '⚡', count: 1, category: 'weapon', damageBonus: 35, desc: 'Укорочений автомат колишньої охорони.' },
+    { name: 'Побитий шолом санітара', icon: '🪖', count: 1, category: 'helmet', armorBonus: 12, desc: 'Протиударний шолом персоналу.' },
+    { name: 'Бронежилет БР-1', icon: '🛡️', count: 1, category: 'armor', armorBonus: 28, desc: 'Легкий армійський бронежилет.' }
 ];
 
 let inventory = loadSaveData('palata404_inventory', DEFAULT_INVENTORY);
@@ -219,24 +219,17 @@ const gameFloorsData = [
         title: "10 Поверх — Блок Ізоляторів",
         unlocked: true,
         mapImage: "map_floor_10.png",
-       nodes: [
-    { id: "sec_room404", title: "🛏️ Палата 404", x: 38, y: 31, type: "room_404" },
-    { id: "sec1_collector", title: "⚙️ Ординаторська", x: 38, y: 44, type: "collector" },
-    { id: "sec_procedure", title: "💉 Медпункт", x: 38, y: 62, type: "procedure" },
-    { id: "sec2_grind", title: "🧱 Завал", x: 58, y: 50, type: "grind" },
-    { id: "sec3_boss", title: "👹 Черговий лікар", x: 82, y: 44, type: "boss", locked: true }
-]
+        nodes: [
+            { id: "sec_room404", title: "🛏️ Палата 404", x: 38, y: 31, type: "room_404" },
+            { id: "sec1_collector", title: "⚙️ Ординаторська", x: 38, y: 44, type: "collector" },
+            { id: "sec_procedure", title: "💉 Медпункт", x: 38, y: 62, type: "procedure" },
+            { id: "sec2_grind", title: "🧱 Завал", x: 58, y: 50, type: "grind" },
+            { id: "sec3_boss", title: "👹 Черговий лікар", x: 82, y: 44, type: "boss", bossKey: "doctor", locked: true }
+        ]
     },
     {
         id: 9,
         title: "9 Поверх — Психіатрична Терапія",
-        unlocked: false,
-        mapImage: "",
-        nodes: []
-    },
-    {
-        id: 8,
-        title: "8 Поверх — Процедурний Блок",
         unlocked: false,
         mapImage: "",
         nodes: []
@@ -388,13 +381,13 @@ function updateUI() {
         if (mapBtn) mapBtn.style.display = 'flex'; 
         if (locTitleLabel) locTitleLabel.textContent = "⚠️ СИСТЕМНИЙ ЗБІЙ";
         if (locName) locName.textContent = "ПОМИЛКА 404: Невідомо";
-        if (locDesc) locDesc.textContent = "Реальність втрачено. Спокійний корпус недоступний. Час виходити в коридори...";
+        if (locDesc) locDesc.textContent = "Реальність втрачено. Спокійний корпус недоступний...";
         if (locCardBox) locCardBox.style.borderColor = "#c0392b";
     } else {
         if (mapBtn) mapBtn.style.display = 'none'; 
         if (locTitleLabel) locTitleLabel.textContent = "Поточна локація";
         if (locName) locName.textContent = currentRoom.name || "Палата #404";
-        if (locDesc) locDesc.textContent = currentRoom.desc || "Твоє безпечне місце. Лікування та процедури.";
+        if (locDesc) locDesc.textContent = currentRoom.desc || "Твоє безпечне місце.";
         if (locCardBox) locCardBox.style.borderColor = "#3d2d22";
     }
 }
@@ -427,7 +420,7 @@ function showFloorsList() {
             <div>
                 <strong>${floor.title}</strong>
                 <div style="font-size: 11px; color: #8c7a6b; margin-top: 2px;">
-                    ${floor.unlocked ? 'План евакуації знайдено' : '🔒 План відсутній (Знайдіть ключ на поверху вище)'}
+                    ${floor.unlocked ? 'План евакуації знайдено' : '🔒 План відсутній'}
                 </div>
             </div>
             <span>${floor.unlocked ? '🗺️ Відкрити' : '🔒'}</span>
@@ -475,7 +468,7 @@ function openFloorMap(floorId) {
 
 function handleNodeClick(node, floor) {
     if (node.type === 'room_404') {
-        alert("🛏️ Палата #404. Навіть у стані психозу тут віє слабким заспокійливим.");
+        alert("🛏️ Палата #404. Твоє безпечне місце.");
     } else if (node.type === 'procedure') {
         openProcedureRoomBattle();
     } else if (node.type === 'collector') {
@@ -497,8 +490,12 @@ function handleNodeClick(node, floor) {
         } else {
             alert("Недостатньо витривалості для розчищення завалу!");
         }
-  } else if (node.type === 'boss') {
-        openDoctorDossier();
+    } else if (node.type === 'boss') {
+        if (node.bossKey === 'doctor') {
+            openDoctorDossier();
+        } else {
+            openProcedureRoomBattle();
+        }
     }
 }
 
@@ -643,7 +640,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (equippedGear.weapon === selectedItemForAction.name) {
                     stats.damage -= (selectedItemForAction.damageBonus || 0);
                     equippedGear.weapon = null;
-                    alert(`Ви зняли: ${selectedItemForAction.name}`);
                 } else {
                     if (equippedGear.weapon) {
                         const oldWp = inventory.find(i => i.name === equippedGear.weapon);
@@ -651,13 +647,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                     stats.damage += (selectedItemForAction.damageBonus || 0);
                     equippedGear.weapon = selectedItemForAction.name;
-                    alert(`Ви озброїлись: ${selectedItemForAction.name}! Урон тепер: ${stats.damage}`);
                 }
             } else if (cat === 'armor' || cat === 'helmet') {
                 if (equippedGear[cat] === selectedItemForAction.name) {
                     stats.armor -= (selectedItemForAction.armorBonus || 0);
                     equippedGear[cat] = null;
-                    alert(`Ви зняли спорядження: ${selectedItemForAction.name}`);
                 } else {
                     if (equippedGear[cat]) {
                         const oldArmor = inventory.find(i => i.name === equippedGear[cat]);
@@ -665,7 +659,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                     stats.armor += (selectedItemForAction.armorBonus || 0);
                     equippedGear[cat] = selectedItemForAction.name;
-                    alert(`Ви наділи: ${selectedItemForAction.name}! Загальна броня: ${stats.armor}`);
                 }
             } else if (cat === 'meds') {
                 if (selectedItemForAction.count > 0) {
@@ -673,20 +666,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     
                     if (selectedItemForAction.effectType === 'madness') {
                         stats.madness = Math.max(0, stats.madness - 15);
-                        stats.pillsUsed = (stats.pillsUsed || 0) + 1;
-                        alert("Ви прийняли таблетки «Аміназин». Божевілля зменшилось (-15).");
                     } else if (selectedItemForAction.effectType === 'stamina_10') {
                         stats.energy = Math.min(stats.maxEnergy, stats.energy + (stats.maxEnergy * 0.1));
-                        alert("Ви випили енергетик (+10% витривалості).");
                     } else if (selectedItemForAction.effectType === 'stamina_full') {
                         stats.energy = stats.maxEnergy;
-                        alert("Ви використали стимулятор. Витривалість повністю відновлена!");
                     } else if (selectedItemForAction.effectType === 'hp_10') {
                         stats.hp = Math.min(stats.maxHp, stats.hp + (stats.maxHp * 0.1));
-                        alert("Ви використали малу аптечку. Здоров'я частково відновлено (+10%).");
                     } else if (selectedItemForAction.effectType === 'hp_full') {
                         stats.hp = stats.maxHp;
-                        alert("Ви використали велику армійську аптечку. Здоров'я повністю відновлено!");
                     }
 
                     if (selectedItemForAction.count <= 0) {
@@ -757,11 +744,11 @@ function renderWardrobe() {
             container.appendChild(card);
         });
     } else {
-        container.innerHTML = `<p style="font-size:12px; color:#a3927d; text-align:center; padding: 20px 0;">Розділ [${currentWardrobeTab.toUpperCase()}] буде заповнений пізніше!</p>`;
+        container.innerHTML = `<p style="font-size:12px; color:#a3927d; text-align:center; padding: 20px 0;">Розділ у розробці</p>`;
     }
 }
 
-// === Система комплексних тренувань у лікарні (Спортзал) ===
+// === Спортзал ===
 let gymComplex = loadSaveData('palata404_gym', {
     exercises: [
         { id: 'squats', name: 'Присідання', icon: '🦵', current: 0, target: 15, energy: 2, madness: 1, exp: 5 },
@@ -776,7 +763,7 @@ let gymComplex = loadSaveData('palata404_gym', {
 
 function openGym() {
     if (stats.madness >= 100) {
-        alert("❌ Тренування неможливі в стані повного психозу! Реальність розпливається.");
+        alert("❌ Тренування неможливі в стані повного психозу!");
         return;
     }
     closeInventory();
@@ -797,40 +784,26 @@ function closeGym() {
 
 function doGymExercise(exId) {
     let ex = gymComplex.exercises.find(e => e.id === exId);
-    if (!ex) return;
-
-    if (ex.current >= ex.target) {
-        alert(`Цю вправу (${ex.name}) вже виконано до кінця в цьому циклі!`);
-        return;
-    }
-
-    if (stats.energy < ex.energy) {
-        alert("Занадто мало витривалості! Вона відновлюється автоматично з часом.");
-        return;
-    }
+    if (!ex || ex.current >= ex.target || stats.energy < ex.energy) return;
 
     stats.energy -= ex.energy;
     stats.madness = Math.min(100, stats.madness + ex.madness);
-    
     ex.current += 1;
     addExperience(ex.exp);
 
-    checkGymComplexCompletion();
-    saveGymProgress();
-    updateUI();
-    renderGymModal();
-}
-
-function checkGymComplexCompletion() {
     let allDone = gymComplex.exercises.every(e => e.current >= e.target);
     if (allDone) {
         gymComplex.completedRounds += 1;
         stats.gymRounds = (stats.gymRounds || 0) + 1;
         stats.damage = (stats.damage || 10) + 3;
         addExperience(100);
-        alert(`🏆 ВЕЛИКИЙ БАФ! Ви повністю завершили комплекс із 6 вправ!\n⚡ Базовий урон збільшено на +3!\n🎉 Отримано 100 EXP! Комплекс оновлено.`);
+        alert(`🏆 ВЕЛИКИЙ БАФ! Урон збільшено на +3!`);
         gymComplex.exercises.forEach(e => e.current = 0);
     }
+
+    saveGymProgress();
+    updateUI();
+    renderGymModal();
 }
 
 function renderGymModal() {
@@ -842,42 +815,31 @@ function renderGymModal() {
         let isDone = ex.current >= ex.target;
         let item = document.createElement('div');
         item.style.cssText = "display: flex; justify-content: space-between; align-items: center; background: #261f1a; padding: 8px 12px; border-radius: 6px; border: 1px solid #4a382c;";
-        
         item.innerHTML = `
             <div style="display: flex; align-items: center; gap: 10px;">
                 <span style="font-size: 20px;">${ex.icon}</span>
                 <div>
                     <strong style="color: ${isDone ? '#2ecc71' : '#fff8e7'};">${ex.name} ${isDone ? '✓' : ''}</strong>
-                    <div style="font-size: 11px; color: #a3927d;">Прогрес: ${ex.current} / ${ex.target} | Витрата: ⚡${ex.energy}</div>
+                    <div style="font-size: 11px; color: #a3927d;">Прогрес: ${ex.current} / ${ex.target}</div>
                 </div>
             </div>
-            <button class="btn-outfit" onclick="doGymExercise('${ex.id}')" ${isDone ? 'disabled style="opacity: 0.4; cursor: not-allowed;"' : ''}>
-                ${isDone ? 'Виконано' : 'Робити'}
-            </button>
+            <button class="btn-outfit" onclick="doGymExercise('${ex.id}')" ${isDone ? 'disabled style="opacity: 0.4;"' : ''}>${isDone ? 'Виконано' : 'Робити'}</button>
         `;
         container.appendChild(item);
     });
 }
 
-// === Система навігації по Лікувальному корпусу та Процедурному кабінету ===
-let currentRoom = {
-    id: 'room_404',
-    name: 'Палата #404',
-    desc: 'Стіни шепочуть тобі... Твоє безпечне місце.'
-};
-
+// === Лікувальний корпус ===
+let currentRoom = { id: 'room_404', name: 'Палата #404', desc: 'Стіни шепочуть тобі...' };
 const medicalRooms = [
-    { id: 'room_404', name: 'Палата #404', icon: '🛏️', desc: 'Твоя власна палата. Тут можна перевести дух.' },
-    { id: 'gym', name: 'Зал реабілітації (Спортзал)', icon: '🏋️', desc: 'Місце для комплексу фізичних вправ на базовий урон.' },
-    { id: 'treatment_room', name: 'Процедурний кабінет', icon: '💉', desc: 'Тут видають ліки та медикаменти.' },
-    { id: 'corridor', name: 'Коридор блоку', icon: '🚪', desc: 'Вихід у загальний коридор для зв\'язку з сусідами.' }
+    { id: 'room_404', name: 'Палата #404', icon: '🛏️', desc: 'Твоя власна палата.' },
+    { id: 'gym', name: 'Зал реабілітації', icon: '🏋️', desc: 'Спортзал для вправ.' },
+    { id: 'treatment_room', name: 'Процедурний кабінет', icon: '💉', desc: 'Видача ліків.' },
+    { id: 'corridor', name: 'Коридор блоку', icon: '🚪', desc: 'Вихід у коридор.' }
 ];
 
 function openMedicalHub() {
-    if (stats.madness >= 100) {
-        alert("❌ Лікувальний корпус зачинений на карантин через ваш психоз!");
-        return;
-    }
+    if (stats.madness >= 100) return;
     closeInventory();
     closeCustomization();
     closeFriends();
@@ -885,24 +847,20 @@ function openMedicalHub() {
     closeGym();
     closeProcedureRoom();
     renderMedicalRooms();
-    const modal = document.getElementById('medical-hub-modal');
-    if (modal) modal.classList.remove('hidden');
+    document.getElementById('medical-hub-modal').classList.remove('hidden');
 }
 
 function closeMedicalHub() {
-    const modal = document.getElementById('medical-hub-modal');
-    if (modal) modal.classList.add('hidden');
+    document.getElementById('medical-hub-modal').classList.add('hidden');
 }
 
 function openProcedureRoom() {
     closeMedicalHub();
-    const modal = document.getElementById('procedure-room-modal');
-    if (modal) modal.classList.remove('hidden');
+    document.getElementById('procedure-room-modal').classList.remove('hidden');
 }
 
 function closeProcedureRoom() {
-    const modal = document.getElementById('procedure-room-modal');
-    if (modal) modal.classList.add('hidden');
+    document.getElementById('procedure-room-modal').classList.add('hidden');
 }
 
 function renderMedicalRooms() {
@@ -913,21 +871,17 @@ function renderMedicalRooms() {
     medicalRooms.forEach(room => {
         let isCurrent = currentRoom.id === room.id;
         let item = document.createElement('div');
-        item.style.cssText = `display: flex; justify-content: space-between; align-items: center; background: ${isCurrent ? '#3d2e24' : '#261f1a'}; padding: 10px 12px; border-radius: 6px; border: 1px solid ${isCurrent ? '#8c684d' : '#4a382c'};`;
-        
-        let actionBtnHtml = room.id === 'treatment_room' 
+        item.style.cssText = `display: flex; justify-content: space-between; align-items: center; background: ${isCurrent ? '#3d2e24' : '#261f1a'}; padding: 10px 12px; border-radius: 6px; border: 1px solid #4a382c;`;
+        let btnHtml = room.id === 'treatment_room' 
             ? `<button class="btn-outfit" onclick="openProcedureRoom()">Відкрити</button>`
-            : `<button class="btn-outfit" onclick="selectRoom('${room.id}')" ${isCurrent ? 'style="background: #8c684d; color: white;"' : ''}>${isCurrent ? 'Ви тут' : 'Перейти'}</button>`;
+            : `<button class="btn-outfit" onclick="selectRoom('${room.id}')">${isCurrent ? 'Ви тут' : 'Перейти'}</button>`;
 
         item.innerHTML = `
             <div style="display: flex; align-items: center; gap: 10px;">
                 <span style="font-size: 22px;">${room.icon}</span>
-                <div>
-                    <strong style="color: ${isCurrent ? '#f39c12' : '#fff8e7'};">${room.name} ${isCurrent ? '(Тут)' : ''}</strong>
-                    <div style="font-size: 11px; color: #a3927d; margin-top: 2px;">${room.desc}</div>
-                </div>
+                <div><strong style="color: #fff8e7;">${room.name}</strong></div>
             </div>
-            ${actionBtnHtml}
+            ${btnHtml}
         `;
         container.appendChild(item);
     });
@@ -936,96 +890,46 @@ function renderMedicalRooms() {
 function selectRoom(roomId) {
     let room = medicalRooms.find(r => r.id === roomId);
     if (!room) return;
-
     currentRoom = room;
-    const nameElem = document.getElementById('current-location-name');
-    const descElem = document.getElementById('current-location-desc');
-    if (nameElem) nameElem.textContent = room.name;
-    if (descElem) descElem.textContent = room.desc;
     closeMedicalHub();
-
-    if (roomId === 'gym') {
-        openGym();
-    } else if (roomId === 'corridor') {
-        alert("🚪 Коридор зустрічає тебе холодним світлом ламп і кроками охорони вдалині.");
-    } else {
-        alert("🛏️ Ти у своїй палаті #404.");
-    }
+    if (roomId === 'gym') openGym();
 }
 
 function buyMedicalItem(itemType, cost, currencyType) {
     if (currencyType === 'silver') {
-        if (stats.silver >= cost) stats.silver -= cost;
-        else { alert('Не вистачає срібла!'); return; }
-    } else if (currencyType === 'bucks') {
-        if (stats.bucks >= cost) stats.bucks -= cost;
-        else { alert('Не вистачає баксів ($)!'); return; }
+        if (stats.silver >= cost) stats.silver -= cost; else { alert('Мало срібла!'); return; }
+    } else {
+        if (stats.bucks >= cost) stats.bucks -= cost; else { alert('Мало баксів!'); return; }
     }
 
-    let newItemData = null;
-    if (itemType === 'madness_pills') {
-        newItemData = { name: 'Таблетки «Аміназин»', icon: '💊', category: 'meds', effectType: 'madness', effectDesc: 'Знижує божевілля на -15', desc: 'Препарат стримання психіки із запасів медпункту.' };
-    } else if (itemType === 'stamina_10') {
-        newItemData = { name: 'Енергетик «Психо-Кола»', icon: '⚡', category: 'meds', effectType: 'stamina_10', effectDesc: 'Відновлює 10% витривалості', desc: 'Тонізуючий газований напій.' };
-    } else if (itemType === 'stamina_full') {
-        newItemData = { name: 'Стимулятор «Адреналін-Фул»', icon: '💉', category: 'meds', effectType: 'stamina_full', effectDesc: 'Повне відновлення витривалості', desc: 'Армійська ін\'єкція.' };
-    } else if (itemType === 'hp_10') {
-        newItemData = { name: 'Мала аптечка', icon: '🧪', category: 'meds', effectType: 'hp_10', effectDesc: 'Відновлює 10% здоров\'я (HP)', desc: 'Індивідуальний пакет.' };
-    } else if (itemType === 'hp_full') {
-        newItemData = { name: 'Велика армійська аптечка', icon: '🩹', category: 'meds', effectType: 'hp_full', effectDesc: 'Повне відновлення здоров\'я (HP)', desc: 'Герметичний армійський контейнер.' };
-    }
+    let newItem = null;
+    if (itemType === 'madness_pills') newItem = { name: 'Таблетки «Аміназин»', icon: '💊', category: 'meds', effectType: 'madness' };
+    else if (itemType === 'stamina_10') newItem = { name: 'Енергетик', icon: '⚡', category: 'meds', effectType: 'stamina_10' };
+    else if (itemType === 'hp_10') newItem = { name: 'Мала аптечка', icon: '🧪', category: 'meds', effectType: 'hp_10' };
+    else if (itemType === 'hp_full') newItem = { name: 'Велика армійська аптечка', icon: '🩹', category: 'meds', effectType: 'hp_full' };
 
-    if (newItemData) {
-        let existingItem = inventory.find(i => i.name === newItemData.name);
-        if (existingItem) {
-            existingItem.count = (existingItem.count || 1) + 1;
-        } else {
-            inventory.push({ ...newItemData, count: 1 });
-        }
-        alert(`Придбано та додано до інвентаря: ${newItemData.name} (${newItemData.icon})!`);
+    if (newItem) {
+        let ex = inventory.find(i => i.name === newItem.name);
+        if (ex) ex.count = (ex.count || 1) + 1;
+        else inventory.push({ ...newItem, count: 1 });
     }
-
     updateUI();
     saveGameProgress();
 }
 
 const ENERGY_REGEN_TIME_MS = 2 * 60 * 1000;
-
 function updateEnergyTimer() {
-    let energyTimerElem = document.getElementById('energy-timer');
-    if (!energyTimerElem) return;
-
-    if (stats.energy >= stats.maxEnergy) {
-        energyTimerElem.textContent = "ПОВНА";
-        return;
-    }
-
-    let lastTimeStr = localStorage.getItem('palata404_last_time');
-    if (!lastTimeStr) {
+    let tElem = document.getElementById('energy-timer');
+    if (!tElem || stats.energy >= stats.maxEnergy) return;
+    let last = parseInt(localStorage.getItem('palata404_last_time') || Date.now(), 10);
+    let diff = Date.now() - last;
+    if (diff >= ENERGY_REGEN_TIME_MS) {
+        stats.energy = Math.min(stats.maxEnergy, stats.energy + Math.floor(diff / ENERGY_REGEN_TIME_MS));
         localStorage.setItem('palata404_last_time', Date.now().toString());
-        return;
-    }
-
-    let lastTime = parseInt(lastTimeStr, 10);
-    let now = Date.now();
-    let elapsedMs = now - lastTime;
-    let timeLeftMs = ENERGY_REGEN_TIME_MS - (elapsedMs % ENERGY_REGEN_TIME_MS);
-    
-    if (elapsedMs >= ENERGY_REGEN_TIME_MS) {
-        let added = Math.floor(elapsedMs / ENERGY_REGEN_TIME_MS);
-        stats.energy = Math.min(stats.maxEnergy, stats.energy + added);
-        let leftoverMs = elapsedMs % ENERGY_REGEN_TIME_MS;
-        localStorage.setItem('palata404_last_time', (now - leftoverMs).toString());
         updateUI();
     }
-
-    let totalSeconds = Math.ceil(timeLeftMs / 1000);
-    let minutes = Math.floor(totalSeconds / 60);
-    let seconds = totalSeconds % 60;
-    
-    energyTimerElem.textContent = `(+1 за ${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')})`;
 }
-setInterval(updateEnergyTimer, 1000); 
+setInterval(updateEnergyTimer, 1000);
 
 function openDossier() {
     closeInventory();
@@ -1035,49 +939,67 @@ function openDossier() {
     closeGym();
     closeMedicalHub();
     closeProcedureRoom();
-
-    const nameElem = document.getElementById('dossier-name');
-    if (nameElem) nameElem.textContent = playerName;
-
-    const modal = document.getElementById('dossier-modal');
-    if (modal) modal.classList.remove('hidden');
+    document.getElementById('dossier-name').textContent = playerName;
+    document.getElementById('dossier-modal').classList.remove('hidden');
 }
 
 function closeDossier() {
-    const modal = document.getElementById('dossier-modal');
-    if (modal) modal.classList.add('hidden');
+    document.getElementById('dossier-modal').classList.add('hidden');
 }
 
 function handleLocationClick() {
-    if (stats.madness >= 100) {
-        alert("❌ Доступ до лікувального корпусу заблоковано! Розум охоплений психозом. Ідіть на Карту або прийміть таблетки «Аміназин».");
-        toggleMapModal(true);
-    } else {
-        openMedicalHub();
-    }
+    if (stats.madness >= 100) toggleMapModal(true);
+    else openMedicalHub();
 }
 
 
 // ==========================================
-// БОЙОВА СИСТЕМА: СЕСТРА КЛАРА (ПОВНА ТА СТАБІЛЬНА)
+// УНІВЕРСАЛЬНА БАЗА ДАНИХ БОСІВ (СКАЛЬОВАНА АРХІТЕКТУРА)
 // ==========================================
 
+const bossesDatabase = {
+    nurse: {
+        key: 'nurse',
+        name: "Сестра Клара «Шприц»",
+        hp: 120,
+        damage: 12,
+        sprite: "nurse_sprite.png",
+        bg: "nurse_bg.jpg",
+        avatar: "nurse_avatar_battle.png",
+        expReward: 50,
+        silverReward: 30,
+        questItem: { name: 'Ключ від блоку боса', icon: '🔑', category: 'quest', count: 1, desc: 'Добутий після усунення медсестри.' }
+    },
+    doctor: {
+        key: 'doctor',
+        name: "Черговий лікар",
+        hp: 250,
+        damage: 25,
+        sprite: "doctor_sprite.png",
+        bg: "doctor_bg.jpg",
+        avatar: "doctor_avatar_battle.png",
+        expReward: 120,
+        silverReward: 80,
+        questItem: { name: 'Ключ від 9-го Поверху', icon: '🔑', category: 'quest', count: 1, desc: 'Відкриває доступ до терапії.' }
+    }
+};
+
+let currentBossKey = 'nurse';
 let bossCurrentHp = 120;
 let bossMaxHp = 120;
-let nurseKillsCount = 0;
+let bossKillsCount = {};
 
 let isBattleActive = false;
 let raidTimeRemaining = 300;
 let raidTimerInterval = null;
-
 let playerAttackCooldown = false;
 let friendAttackInterval = null;
 
 let raidMembers = [
     { id: 'player', name: 'Пацієнт #404', damage: 0, isPlayer: true, active: true },
-    { id: 'friend_1', name: 'Сусід з палати #402 (Сліпий Микола)', damage: 0, active: false, called: false },
-    { id: 'friend_2', name: 'Пацієнтка #410 (Мері)', damage: 0, active: false, called: false },
-    { id: 'friend_3', name: 'Буйний сусіда з ізолятора', damage: 0, active: false, called: false }
+    { id: 'friend_1', name: 'Сліпий Микола', damage: 0, active: false, called: false },
+    { id: 'friend_2', name: 'Мері', damage: 0, active: false, called: false },
+    { id: 'friend_3', name: 'Буйний сусіда', damage: 0, active: false, called: false }
 ];
 
 function openProcedureRoomBattle() {
@@ -1086,67 +1008,60 @@ function openProcedureRoomBattle() {
         return;
     }
     const killsElem = document.getElementById('dossier-kills-count');
-    if (killsElem) killsElem.textContent = nurseKillsCount;
-
-    const dossierModal = document.getElementById('nurse-dossier-modal');
-    if (dossierModal) dossierModal.classList.remove('hidden');
+    if (killsElem) killsElem.textContent = bossKillsCount['nurse'] || 0;
+    document.getElementById('nurse-dossier-modal').classList.remove('hidden');
 }
 
 function closeNurseDossier() {
-    const dossierModal = document.getElementById('nurse-dossier-modal');
-    if (dossierModal) dossierModal.classList.add('hidden');
+    document.getElementById('nurse-dossier-modal').classList.add('hidden');
 }
 
-// Запуск бою з Сестрою Кларою
-function startNurseFight() {
+function openDoctorDossier() {
+    document.getElementById('doctor-dossier-modal').classList.remove('hidden');
+}
+
+function closeDoctorDossier() {
+    document.getElementById('doctor-dossier-modal').classList.add('hidden');
+}
+
+// === УНІВЕРСАЛЬНИЙ ЗАПУСК БОЮ ===
+function startBossFight(bossKey) {
+    const boss = bossesDatabase[bossKey];
+    if (!boss) return;
+
     if (isBattleActive) {
         closeNurseDossier();
-        if (typeof toggleMapModal === 'function') toggleMapModal(false);
+        closeDoctorDossier();
+        toggleMapModal(false);
         reopenNurseBattle();
         return;
     }
 
     closeNurseDossier();
-    if (typeof toggleMapModal === 'function') toggleMapModal(false);
+    closeDoctorDossier();
+    toggleMapModal(false);
 
-    // Жорстко задаємо параметри для Сестри Клари
-    bossCurrentHp = 120;
-    bossMaxHp = 120;
+    currentBossKey = bossKey;
+    bossCurrentHp = boss.hp;
+    bossMaxHp = boss.hp;
     
-    // ПРИМУСОВО повертаємо спрайт та фон Сестри Клари
-    const bossSprite = document.getElementById('nurse-boss-sprite');
-    if (bossSprite) bossSprite.src = 'nurse_sprite.png';
+    document.getElementById('nurse-boss-sprite').src = boss.sprite;
+    document.getElementById('battle-arena-screen').style.backgroundImage = `url('${boss.bg}')`;
+    document.getElementById('battle-boss-name').textContent = boss.name;
+    document.getElementById('battle-boss-avatar').src = boss.avatar;
+    document.getElementById('battle-boss-avatar').alt = boss.name;
 
-    const arenaScreen = document.getElementById('battle-arena-screen');
-    if (arenaScreen) arenaScreen.style.backgroundImage = "url('nurse_bg.jpg')";
-
-    // Оновлюємо ім'я та аватар спеціально для Сестри Клари
-    const bossNameElem = document.querySelector('#nurse-battle-modal h3, .boss-name-display');
-    if (bossNameElem) bossNameElem.textContent = "Сестра Клара «Шприц»";
-
-    const bossAvatar = document.querySelector('#nurse-battle-modal img[alt="Сестра Клара"], #nurse-battle-modal > div > div:nth-child(5) img');
-    if (bossAvatar) {
-        bossAvatar.src = 'nurse_avatar_battle.png';
-        bossAvatar.alt = 'Сестра Клара';
-    }
-
-    // Старт рейду
     stats.hp = stats.maxHp;
-    if (typeof updateUI === 'function') updateUI();
+    updateUI();
 
     playerAttackCooldown = false;
     isBattleActive = true;
     raidTimeRemaining = 300;
 
-    let currentName = 'Пацієнт #404';
-    if (typeof playerName !== 'undefined' && playerName) {
-        currentName = playerName;
-    }
-
     raidMembers.forEach(m => {
         m.damage = 0;
         if (m.isPlayer) {
-            m.name = currentName;
+            m.name = playerName;
             m.active = true;
         } else {
             m.active = false;
@@ -1155,12 +1070,8 @@ function startNurseFight() {
     });
     
     updateBattleUI();
-    
-    const battleModal = document.getElementById('nurse-battle-modal');
-    if (battleModal) {
-        battleModal.classList.remove('hidden');
-        battleModal.style.display = 'flex';
-    }
+    document.getElementById('nurse-battle-modal').classList.remove('hidden');
+    document.getElementById('nurse-battle-modal').style.display = 'flex';
 
     if (raidTimerInterval) clearInterval(raidTimerInterval);
     raidTimerInterval = setInterval(updateRaidTimerTick, 1000);
@@ -1171,98 +1082,86 @@ function startNurseFight() {
     updateLobbyRaidWidget();
 }
 
+// Сумісність зі старими викликами
+function startNurseFight() { startBossFight('nurse'); }
+function startDoctorFight() { startBossFight('doctor'); }
+
 function closeNurseBattle() {
-    const battleModal = document.getElementById('nurse-battle-modal');
-    if (battleModal) {
-        battleModal.classList.add('hidden');
-        battleModal.style.display = 'none';
+    const modal = document.getElementById('nurse-battle-modal');
+    if (modal) {
+        modal.classList.add('hidden');
+        modal.style.display = 'none';
     }
-    
-    const raidPanel = document.getElementById('battle-raid-panel');
-    if (raidPanel) raidPanel.classList.add('hidden');
-
+    document.getElementById('battle-raid-panel')?.classList.add('hidden');
     updateLobbyRaidWidget();
 }
 
-function minimizeNurseBattle() {
-    const battleModal = document.getElementById('nurse-battle-modal');
-    if (battleModal) {
-        battleModal.classList.add('hidden');
-        battleModal.style.display = 'none';
-    }
-    
-    const raidPanel = document.getElementById('battle-raid-panel');
-    if (raidPanel) raidPanel.classList.add('hidden');
-
-    updateLobbyRaidWidget();
-}
+function minimizeNurseBattle() { closeNurseBattle(); }
 
 function reopenNurseBattle() {
     if (!isBattleActive) return;
     updateBattleUI();
-    const battleModal = document.getElementById('nurse-battle-modal');
-    if (battleModal) {
-        battleModal.classList.remove('hidden');
-        battleModal.style.display = 'flex';
+    const modal = document.getElementById('nurse-battle-modal');
+    if (modal) {
+        modal.classList.remove('hidden');
+        modal.style.display = 'flex';
     }
 }
 
 function updateRaidTimerTick() {
     if (!isBattleActive) return;
-
     raidTimeRemaining--;
     let mins = Math.floor(raidTimeRemaining / 60);
     let secs = raidTimeRemaining % 60;
     let timeStr = `${mins < 10 ? '0' : ''}${mins}:${secs < 10 ? '0' : ''}${secs}`;
 
-    const arenaTimerElem = document.getElementById('battle-timer-display');
-    if (arenaTimerElem) arenaTimerElem.textContent = timeStr;
-
+    const timerElem = document.getElementById('battle-timer-display');
+    if (timerElem) timerElem.textContent = timeStr;
     updateLobbyRaidWidget(timeStr);
 
-    if (raidTimeRemaining <= 0) {
-        handleRaidTimeOut();
-    }
+    if (raidTimeRemaining <= 0) handleRaidTimeOut();
 }
 
 function updateLobbyRaidWidget(timeStr = '') {
-    const raidBtn = document.querySelector('.raid-btn, #raid-menu-btn');
+    const raidBtn = document.getElementById('nav-raid-btn');
     if (!raidBtn) return;
-
     let subTimer = document.getElementById('lobby-raid-subtimer');
+
     if (isBattleActive) {
+        raidBtn.style.borderColor = '#e74c3c';
+        raidBtn.style.background = 'rgba(192, 57, 43, 0.3)';
         if (!subTimer) {
             subTimer = document.createElement('div');
             subTimer.id = 'lobby-raid-subtimer';
-            subTimer.style.cssText = 'font-size:10px; color:#e74c3c; font-weight:bold; text-align:center; margin-top:2px;';
+            subTimer.style.cssText = 'position: absolute; bottom: -14px; left: 50%; transform: translateX(-50%); font-size: 9px; color: #e74c3c; font-weight: bold; white-space: nowrap; background: rgba(0,0,0,0.8); padding: 1px 4px; border-radius: 3px;';
+            raidBtn.style.position = 'relative';
             raidBtn.appendChild(subTimer);
         }
-        subTimer.textContent = timeStr || 'В БОЮ (Натисніть)';
+        subTimer.textContent = timeStr || '05:00';
         raidBtn.onclick = reopenNurseBattle;
     } else {
+        raidBtn.style.borderColor = '';
+        raidBtn.style.background = '';
         if (subTimer) subTimer.remove();
+        raidBtn.onclick = handleRaidButtonAction;
     }
 }
 
 function handleRaidTimeOut() {
     isBattleActive = false;
-    if (raidTimerInterval) clearInterval(raidTimerInterval);
-    if (friendAttackInterval) clearInterval(friendAttackInterval);
-
+    clearInterval(raidTimerInterval);
+    clearInterval(friendAttackInterval);
     closeNurseBattle();
     alert("⏱️ Час рейду вичерпано!");
     updateLobbyRaidWidget();
 }
 
-function showCustomToast(message) {
+function showCustomToast(msg) {
     const toast = document.getElementById('custom-toast-notification');
     const msgElem = document.getElementById('toast-message');
     if (!toast || !msgElem) return;
-
-    msgElem.textContent = message;
+    msgElem.textContent = msg;
     toast.classList.remove('hidden');
-    toast.style.opacity = '1';
-
     setTimeout(() => {
         toast.style.opacity = '0';
         setTimeout(() => toast.classList.add('hidden'), 300);
@@ -1273,217 +1172,95 @@ function toggleRaidPanel() {
     const panel = document.getElementById('battle-raid-panel');
     if (panel) {
         panel.classList.toggle('hidden');
-        if (!panel.classList.contains('hidden')) {
-            updateRaidListUI();
-        }
+        if (!panel.classList.contains('hidden')) updateRaidListUI();
     }
 }
 
 function openFriendInviteModal() {
     renderFriendsCheckboxList();
-    const modal = document.getElementById('friend-invite-modal');
-    if (modal) modal.classList.remove('hidden');
+    document.getElementById('friend-invite-modal').classList.remove('hidden');
 }
 
 function closeFriendInviteModal() {
-    const modal = document.getElementById('friend-invite-modal');
-    if (modal) modal.classList.add('hidden');
+    document.getElementById('friend-invite-modal').classList.add('hidden');
 }
 
 function renderFriendsCheckboxList(filterText = '') {
     const container = document.getElementById('friends-checkbox-container');
     if (!container) return;
+    let list = raidMembers.filter(m => !m.isPlayer);
+    if (filterText) list = list.filter(f => f.name.toLowerCase().includes(filterText.toLowerCase()));
 
-    let availableFriends = raidMembers.filter(m => !m.isPlayer);
-    if (filterText) {
-        availableFriends = availableFriends.filter(f => f.name.toLowerCase().includes(filterText.toLowerCase()));
-    }
-
-    container.innerHTML = availableFriends.map(f => `
+    container.innerHTML = list.map(f => `
         <label style="background: #15100c; border: 1px solid #3d2d22; padding: 10px; border-radius: 6px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; font-size: 13px;">
-            <span style="color: ${f.called ? '#27ae60' : '#f4e8d1'};">${f.name} ${f.called ? '(Вже покликано)' : ''}</span>
-            <input type="checkbox" value="${f.id}" class="friend-checkbox" ${f.called ? 'checked' : ''} style="width: 18px; height: 18px; accent-color: #8e44ad;">
+            <span style="color: ${f.called ? '#27ae60' : '#f4e8d1'};">${f.name}</span>
+            <input type="checkbox" value="${f.id}" class="friend-checkbox" ${f.called ? 'checked' : ''} style="width: 18px; height: 18px;">
         </label>
     `).join('');
 }
 
 function filterFriendsList() {
-    const input = document.getElementById('friend-search-input');
-    if (input) renderFriendsCheckboxList(input.value);
+    renderFriendsCheckboxList(document.getElementById('friend-search-input')?.value || '');
 }
 
 function callSelectedFriends() {
-    let checkboxes = document.querySelectorAll('.friend-checkbox:checked');
-    let calledCount = 0;
-
-    checkboxes.forEach(cb => {
-        let member = raidMembers.find(m => m.id === cb.value);
-        if (member && !member.called) {
-            member.called = true;
-            member.active = true;
-            calledCount++;
-        }
+    document.querySelectorAll('.friend-checkbox:checked').forEach(cb => {
+        let m = raidMembers.find(x => x.id === cb.value);
+        if (m) { m.called = true; m.active = true; }
     });
-
     closeFriendInviteModal();
-    const panel = document.getElementById('battle-raid-panel');
-    if (panel && !panel.classList.contains('hidden')) {
-        updateRaidListUI();
-    }
-    if (calledCount > 0) {
-        showCustomToast(`📢 Успішно покликано друзів: ${calledCount}!`);
-    }
+    if (!document.getElementById('battle-raid-panel').classList.contains('hidden')) updateRaidListUI();
+    showCustomToast("📢 Друзі приєдналися до рейду!");
 }
 
 function callAllFriends() {
-    raidMembers.forEach(m => {
-        if (!m.isPlayer) {
-            m.called = true;
-            m.active = true;
-        }
-    });
-
+    raidMembers.forEach(m => { if (!m.isPlayer) { m.called = true; m.active = true; } });
     closeFriendInviteModal();
-    const panel = document.getElementById('battle-raid-panel');
-    if (panel && !panel.classList.contains('hidden')) {
-        updateRaidListUI();
-    }
-    showCustomToast("🔥 Усі доступні друзі приєдналися до рейду!");
+    if (!document.getElementById('battle-raid-panel').classList.contains('hidden')) updateRaidListUI();
+    showCustomToast("🔥 Усі друзі приєдналися!");
 }
 
 function updateRaidListUI() {
     const container = document.getElementById('raid-members-container');
     if (!container) return;
-
-    let activeParticipants = raidMembers.filter(m => m.isPlayer || m.called);
-
-    container.innerHTML = activeParticipants.map(m => {
-        let statusColor = m.isPlayer || m.active ? '#27ae60' : '#7f8c8d';
-        let statusText = m.isPlayer ? 'Головний гравець' : 'Бере участь';
-        return `
-            <div style="background: #15100c; border: 1px solid #3d2d22; padding: 6px 10px; border-radius: 6px; display: flex; justify-content: space-between; align-items: center; font-size: 11px;">
-                <div>
-                    <div style="font-weight: bold; color: ${m.isPlayer ? '#e67e22' : '#f4e8d1'};">${m.name}</div>
-                    <div style="font-size: 9px; color: ${statusColor};">${statusText}</div>
-                </div>
-                <div style="text-align: right; color: #e74c3c; font-weight: bold;">
-                    ${m.damage} DMG
-                </div>
-            </div>
-        `;
-    }).join('');
+    container.innerHTML = raidMembers.filter(m => m.isPlayer || m.called).map(m => `
+        <div style="background: #15100c; border: 1px solid #3d2d22; padding: 6px 10px; border-radius: 6px; display: flex; justify-content: space-between; font-size: 11px;">
+            <div><strong>${m.name}</strong></div>
+            <div style="color: #e74c3c; font-weight: bold;">${m.damage} DMG</div>
+        </div>
+    `).join('');
 }
 
-function showFloatingDamage(text, isPlayerHit = false, customX = null, customY = null) {
+function showFloatingDamage(text, isHit = false, x = null, y = null) {
     const container = document.getElementById('damage-floating-container');
     if (!container) return;
-
     const el = document.createElement('div');
     el.textContent = text;
-    
-    let randomX = customX !== null ? customX : (window.innerWidth / 2 + (Math.random() * 100 - 50));
-    let randomY = customY !== null ? customY : (window.innerHeight / 2 - (Math.random() * 60));
-
-    el.style.position = 'fixed';
-    el.style.left = `${randomX}px`;
-    el.style.top = `${randomY}px`;
-    el.style.color = isPlayerHit ? '#e74c3c' : '#f39c12';
-    el.style.fontSize = '24px';
-    el.style.fontWeight = 'bold';
-    el.style.textShadow = '0 0 4px #000, 0 0 8px #000';
-    el.style.zIndex = '99999';
-    el.style.pointerEvents = 'none';
-    el.style.transition = 'all 0.8s ease-out';
-    
+    el.style.cssText = `position: fixed; left: ${x || window.innerWidth/2}px; top: ${y || window.innerHeight/2}px; color: ${isHit ? '#e74c3c' : '#f39c12'}; font-size: 24px; font-weight: bold; z-index: 99999; pointer-events: none; transition: all 0.8s ease-out;`;
     container.appendChild(el);
-
-    setTimeout(() => {
-        el.style.transform = 'translateY(-60px) scale(1.2)';
-        el.style.opacity = '0';
-    }, 50);
-
-    setTimeout(() => {
-        el.remove();
-    }, 850);
+    setTimeout(() => { el.style.transform = 'translateY(-60px) scale(1.2)'; el.style.opacity = '0'; }, 50);
+    setTimeout(() => el.remove(), 850);
 }
 
-// Ефектний удар Медсестри з наближенням та струсом екрана
 function triggerBossAttackAnimation() {
-    const bossSprite = document.getElementById('nurse-boss-sprite');
-    const arenaScreen = document.getElementById('battle-arena-screen');
-
-    if (bossSprite) {
-        bossSprite.classList.remove('boss-attacking');
-        void bossSprite.offsetWidth; 
-        bossSprite.classList.add('boss-attacking');
-
-        setTimeout(() => {
-            if (arenaScreen) {
-                arenaScreen.classList.remove('shake-effect');
-                void arenaScreen.offsetWidth;
-                arenaScreen.classList.add('shake-effect');
-            }
-        }, 200);
-
-        setTimeout(() => {
-            bossSprite.classList.remove('boss-attacking');
-            if (arenaScreen) arenaScreen.classList.remove('shake-effect');
-        }, 550);
+    const sprite = document.getElementById('nurse-boss-sprite');
+    if (sprite) {
+        sprite.classList.remove('boss-attacking');
+        void sprite.offsetWidth;
+        sprite.classList.add('boss-attacking');
+        setTimeout(() => sprite.classList.remove('boss-attacking'), 550);
     }
 }
 
 function openFleeConfirmModal() {
-    let modal = document.getElementById('flee-confirm-modal');
-    if (!modal) {
-        modal = document.createElement('div');
-        modal.id = 'flee-confirm-modal';
-        modal.style.cssText = "position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.8); z-index: 50000; display: flex; align-items: center; justify-content: center;";
-        modal.innerHTML = `
-            <div style="background: #1c1511; border: 2px solid #e74c3c; width: 400px; padding: 25px; border-radius: 12px; color: #f4e8d1; text-align: center; font-family: sans-serif; box-shadow: 0 0 30px rgba(231,76,60,0.4);">
-                <div style="font-size: 35px; margin-bottom: 10px;">⚠️</div>
-                <h3 style="color: #e74c3c; margin: 0 0 10px 0;">Втеча з бою</h3>
-                <p style="font-size: 13px; color: #bdaea0; margin-bottom: 20px;">Ви дійсно хочете втекти? Це коштуватиме вам штрафу у <strong>20 срібла</strong>, а рейд буде провалено.</p>
-                <div style="display: flex; gap: 12px;">
-                    <button class="btn-outfit" style="flex: 1; background: #e74c3c; padding: 10px; font-weight: bold; cursor: pointer; border-radius: 6px; color: #fff;" onclick="confirmFleeBattle()">Втекти (-20 🪙)</button>
-                    <button class="btn-outfit" style="flex: 1; background: #7f8c8d; padding: 10px; font-weight: bold; cursor: pointer; border-radius: 6px; color: #fff;" onclick="closeFleeConfirmModal()">Залишитись</button>
-                </div>
-            </div>
-        `;
-        document.body.appendChild(modal);
-    } else {
-        modal.style.display = 'flex';
-    }
-}
-
-function closeFleeConfirmModal() {
-    const modal = document.getElementById('flee-confirm-modal');
-    if (modal) modal.style.display = 'none';
-}
-
-function confirmFleeBattle() {
-    closeFleeConfirmModal();
-
-    stats.silver = Math.max(0, (stats.silver || 0) - 20);
-    if (typeof updateUI === 'function') updateUI();
-
-    isBattleActive = false;
-    if (raidTimerInterval) clearInterval(raidTimerInterval);
-    if (friendAttackInterval) clearInterval(friendAttackInterval);
-
-    const battleModal = document.getElementById('nurse-battle-modal');
-    if (battleModal) {
-        battleModal.classList.add('hidden');
-        battleModal.style.display = 'none';
-    }
-    
-    const raidPanel = document.getElementById('battle-raid-panel');
-    if (raidPanel) raidPanel.classList.add('hidden');
-
-    const subTimer = document.getElementById('lobby-raid-subtimer');
-    if (subTimer) subTimer.remove();
-
-    if (typeof showCustomToast === 'function') {
-        showCustomToast("💨 Ви втекли з поля бою (Штраф: -20 срібла)");
+    if (confirm("Втекти з бою? Це коштуватиме 20 срібла.")) {
+        stats.silver = Math.max(0, stats.silver - 20);
+        updateUI();
+        isBattleActive = false;
+        clearInterval(raidTimerInterval);
+        clearInterval(friendAttackInterval);
+        closeNurseBattle();
+        showCustomToast("💨 Ви втекли з бою (-20 🪙)");
     }
 }
 
@@ -1492,19 +1269,11 @@ function performPlayerAttack(event) {
 
     let dmg = stats.damage || 10;
     bossCurrentHp = Math.max(0, bossCurrentHp - dmg);
+    let p = raidMembers.find(m => m.isPlayer);
+    if (p) p.damage += dmg;
 
-    let playerMember = raidMembers.find(m => m.isPlayer);
-    if (playerMember) playerMember.damage += dmg;
-
-    let clickX = event ? event.clientX : window.innerWidth / 2;
-    let clickY = event ? event.clientY : window.innerHeight / 2;
-    
-    showFloatingDamage(`-${dmg}`, false, clickX, clickY);
-
-    const panel = document.getElementById('battle-raid-panel');
-    if (panel && !panel.classList.contains('hidden')) {
-        updateRaidListUI();
-    }
+    showFloatingDamage(`-${dmg}`, false, event?.clientX, event?.clientY);
+    updateRaidListUI();
 
     if (bossCurrentHp <= 0) {
         handleVictory();
@@ -1512,297 +1281,110 @@ function performPlayerAttack(event) {
     }
 
     playerAttackCooldown = true;
-    let arena = document.getElementById('battle-arena-screen');
-    if (arena) arena.style.cursor = 'not-allowed';
-
-    setTimeout(() => {
-        playerAttackCooldown = false;
-        if (arena && bossCurrentHp > 0) arena.style.cursor = 'pointer';
-    }, 4000);
+    setTimeout(() => playerAttackCooldown = false, 4000);
 
     setTimeout(() => {
         if (bossCurrentHp <= 0 || !isBattleActive) return;
-
         triggerBossAttackAnimation();
 
-        let counter = 12;
+        let activeBoss = bossesDatabase[currentBossKey];
+        let counter = activeBoss ? activeBoss.damage : 15;
         stats.hp = Math.max(0, stats.hp - counter);
 
-        showFloatingDamage(`-${counter} HP`, true, window.innerWidth / 2, window.innerHeight / 2 - 80);
+        showFloatingDamage(`-${counter} HP`, true);
 
         if (stats.hp <= 0) {
             isBattleActive = false;
-            alert("💀 Сестра Клара вас здолала...");
+            alert("💀 Бос вас здолав...");
             stats.hp = stats.maxHp;
             closeNurseBattle();
             updateUI();
             updateLobbyRaidWidget();
             return;
         }
-
         updateBattleUI();
     }, 500);
 }
 
 function friendsAutoAttackTick() {
     if (bossCurrentHp <= 0 || !isBattleActive) return;
-
     raidMembers.forEach(m => {
         if (!m.isPlayer && m.called && m.active && bossCurrentHp > 0) {
-            let friendDmg = Math.floor(Math.random() * 8) + 4;
-            bossCurrentHp = Math.max(0, bossCurrentHp - friendDmg);
-            m.damage += friendDmg;
-            
-            showFloatingDamage(`${m.name.split(' ')[0]}: -${friendDmg}`, false, window.innerWidth / 2 + (Math.random() * 80 - 40), window.innerHeight / 2);
-
-            const panel = document.getElementById('battle-raid-panel');
-            if (panel && !panel.classList.contains('hidden')) {
-                updateRaidListUI();
-            }
-
-            if (bossCurrentHp <= 0) {
-                handleVictory();
-            }
+            let fDmg = Math.floor(Math.random() * 8) + 4;
+            bossCurrentHp = Math.max(0, bossCurrentHp - fDmg);
+            m.damage += fDmg;
+            showFloatingDamage(`${m.name}: -${fDmg}`, false);
+            updateRaidListUI();
+            if (bossCurrentHp <= 0) handleVictory();
         }
     });
 }
 
 function handleVictory() {
     isBattleActive = false;
-    if (raidTimerInterval) clearInterval(raidTimerInterval);
-    if (friendAttackInterval) clearInterval(friendAttackInterval);
+    clearInterval(raidTimerInterval);
+    clearInterval(friendAttackInterval);
     
-    nurseKillsCount++;
+    bossKillsCount[currentBossKey] = (bossKillsCount[currentBossKey] || 0) + 1;
     closeNurseBattle();
     updateLobbyRaidWidget();
 
-    let minThreshold = bossMaxHp * 0.10;
-    let playerMember = raidMembers.find(m => m.isPlayer);
-    let playerEarnedReward = playerMember && playerMember.damage >= minThreshold;
-
-    if (playerEarnedReward) {
-        stats.silver = (stats.silver || 0) + 30;
-        addExperience(50);
-
-        let questKey = {
-            name: 'Ключ від блоку боса',
-            icon: '🔑',
-            category: 'quest',
-            count: 1,
-            desc: 'Добутий після усунення медсестри.'
-        };
-        if (!inventory.some(i => i.name === questKey.name)) {
-            inventory.push(questKey);
+    let activeBoss = bossesDatabase[currentBossKey];
+    let p = raidMembers.find(m => m.isPlayer);
+    if (p && p.damage >= bossMaxHp * 0.10 && activeBoss) {
+        stats.silver += activeBoss.silverReward;
+        addExperience(activeBoss.expReward);
+        if (!inventory.some(i => i.name === activeBoss.questItem.name)) {
+            inventory.push(activeBoss.questItem);
         }
     }
 
-    let activeParticipants = raidMembers.filter(m => m.isPlayer || m.called);
-    let sortedRaid = [...activeParticipants].sort((a, b) => b.damage - a.damage);
-    let mvp = sortedRaid[0];
+    let sorted = [...raidMembers.filter(m => m.isPlayer || m.called)].sort((a, b) => b.damage - a.damage);
+    document.getElementById('victory-raid-summary').innerHTML = `
+        <div style="font-weight: bold; color: #f39c12; margin-bottom: 8px;">👑 MVP: ${sorted[0].name} — ${sorted[0].damage} DMG</div>
+        ${sorted.map(m => `<div style="font-size: 12px;">• ${m.name}:${m.damage} DMG</div>`).join('')}
+    `;
 
-    let summaryHtml = `<div style="font-weight: bold; font-size: 15px; color: #f39c12; margin-bottom: 10px; text-align: center;">👑 MVP РЕЙДУ: ${mvp.name} — ${mvp.damage} DMG</div>`;
-    sortedRaid.forEach(m => {
-        let gotReward = m.damage >= minThreshold;
-        let badge = gotReward ? '<span style="color:#27ae60;">[Отримав нагороду]</span>' : '<span style="color:#e74c3c;">[Халтурщик]</span>';
-        summaryHtml += `<div style="display: flex; justify-content: space-between; margin-bottom: 4px; font-size: 12px;"><span>• ${m.name} (${m.damage} DMG)</span> <span>${badge}</span></div>`;
-    });
-
-    const summaryElem = document.getElementById('victory-raid-summary');
-    if (summaryElem) summaryElem.innerHTML = summaryHtml;
-
-    const victoryModal = document.getElementById('nurse-victory-modal');
-    if (victoryModal) victoryModal.classList.remove('hidden');
-    
+    document.getElementById('nurse-victory-modal').classList.remove('hidden');
     updateUI();
 }
 
 function victoryContinueToMap() {
-    const modal = document.getElementById('nurse-victory-modal');
-    if (modal) modal.classList.add('hidden');
+    document.getElementById('nurse-victory-modal').classList.add('hidden');
 }
 
 function victoryRestartFight() {
-    const modal = document.getElementById('nurse-victory-modal');
-    if (modal) modal.classList.add('hidden');
-    startNurseFight();
+    document.getElementById('nurse-victory-modal').classList.add('hidden');
+    startBossFight(currentBossKey);
 }
 
 function updateBattleUI() {
-    const playerNameElem = document.getElementById('b-player-name');
-    if (playerNameElem) {
-        playerNameElem.textContent = playerName;
-    }
-
-    const battleAvatarBox = document.getElementById('player-battle-avatar-box');
-    const lobbyAvatar = document.querySelector('.player-avatar img, #player-avatar img');
-    if (battleAvatarBox && lobbyAvatar) {
-        battleAvatarBox.innerHTML = `<img src="${lobbyAvatar.src}" style="width:100%; height:100%; object-fit:cover;">`;
-    }
-
-    const pHpElem = document.getElementById('b-player-hp');
-    if (pHpElem) pHpElem.textContent = `${stats.hp}/${stats.maxHp}`;
-    
-    let pPercent = Math.max(0, (stats.hp / stats.maxHp) * 100);
-    const pHpBar = document.getElementById('b-player-hpbar');
-    if (pHpBar) pHpBar.style.width = `${pPercent}%`;
-
-    const bHpElem = document.getElementById('b-boss-hp');
-    if (bHpElem) bHpElem.textContent = `${bossCurrentHp}/${bossMaxHp}`;
-    
-    let bPercent = Math.max(0, (bossCurrentHp / bossMaxHp) * 100);
-    const bHpBar = document.getElementById('b-boss-hpbar');
-    if (bHpBar) bHpBar.style.width = `${bPercent}%`;
-
-    let smallMeds = inventory.filter(i => i.name === 'Мала аптечка' || i.category === 'meds').reduce((acc, item) => acc + (item.count || 1), 0);
-    let bigMeds = inventory.filter(i => i.name === 'Велика армійська аптечка' || i.name === 'Велика аптечка').reduce((acc, item) => acc + (item.count || 1), 0);
-
-    const countSmall = document.getElementById('medkit-count-small');
-    if (countSmall) countSmall.textContent = smallMeds;
-
-    const countBig = document.getElementById('medkit-count-big');
-    if (countBig) countBig.textContent = bigMeds;
+    document.getElementById('b-player-name').textContent = playerName;
+    document.getElementById('b-player-hp').textContent = `${stats.hp}/${stats.maxHp}`;
+    document.getElementById('b-player-hpbar').style.width = `${Math.max(0, (stats.hp / stats.maxHp) * 100)}%`;
+    document.getElementById('b-boss-hp').textContent = `${bossCurrentHp}/${bossMaxHp}`;
+    document.getElementById('b-boss-hpbar').style.width = `${Math.max(0, (bossCurrentHp / bossMaxHp) * 100)}%`;
 }
 
 function useBattleMedkit(type) {
-    let medName = type === 'big' ? 'Велика армійська аптечка' : 'Мала аптечка';
-    let medItem = inventory.find(i => i.name === medName || (type === 'small' && i.category === 'meds'));
-
-    if (medItem && medItem.count > 0) {
-        medItem.count--;
-        if (medItem.count <= 0) {
-            inventory = inventory.filter(i => i !== medItem);
-        }
-        let healAmount = type === 'big' ? 50 : 20;
-        stats.hp = Math.min(stats.maxHp, stats.hp + healAmount);
+    let name = type === 'big' ? 'Велика армійська аптечка' : 'Мала аптечка';
+    let item = inventory.find(i => i.name === name || i.category === 'meds');
+    if (item && item.count > 0) {
+        item.count--;
+        if (item.count <= 0) inventory = inventory.filter(i => i !== item);
+        stats.hp = Math.min(stats.maxHp, stats.hp + (type === 'big' ? 50 : 20));
         updateBattleUI();
         updateUI();
     }
 }
-// === КЕРУВАННЯ КНОПКОЮ ТА ВІДЖЕТОМ РЕЙДУ У ЛОБІ ===
 
-// Дія при натисканні на кнопку рейду у верхній панелі
 function handleRaidButtonAction() {
-    if (typeof isBattleActive !== 'undefined' && isBattleActive) {
-        reopenNurseBattle(); // Якщо бій йде — повертаємося до нього
-    } else {
-        alert("Зараз немає активних рейдів. Перейдіть на карту до процедурного кабінету, щоб почати штурм.");
-    }
+    if (isBattleActive) reopenNurseBattle();
+    else alert("Зараз немає активних рейдів.");
 }
 
-// Оновлення віджета рейду та таймера під кнопкою
-function updateLobbyRaidWidget(timeStr = '') {
-    const raidBtn = document.getElementById('nav-raid-btn');
-    if (!raidBtn) return;
-
-    let subTimer = document.getElementById('lobby-raid-subtimer');
-
-    if (typeof isBattleActive !== 'undefined' && isBattleActive) {
-        raidBtn.style.borderColor = '#e74c3c';
-        raidBtn.style.background = 'rgba(192, 57, 43, 0.3)';
-        
-        if (!subTimer) {
-            subTimer = document.createElement('div');
-            subTimer.id = 'lobby-raid-subtimer';
-            subTimer.style.cssText = 'position: absolute; bottom: -14px; left: 50%; transform: translateX(-50%); font-size: 9px; color: #e74c3c; font-weight: bold; white-space: nowrap; background: rgba(0,0,0,0.8); padding: 1px 4px; border-radius: 3px; pointer-events: none;';
-            raidBtn.style.position = 'relative';
-            raidBtn.appendChild(subTimer);
-        }
-        subTimer.textContent = timeStr || '05:00';
-    } else {
-        raidBtn.style.borderColor = '';
-        raidBtn.style.background = '';
-        if (subTimer) subTimer.remove();
-    }
-}
-// === ЛОГІКА ДЛЯ ЧЕРГОВОГО ЛІКАРЯ (БОС 10 ПОВЕРХУ) ===
-
-function openDoctorDossier() {
-    const modal = document.getElementById('doctor-dossier-modal');
-    if (modal) modal.classList.remove('hidden');
-}
-
-function closeDoctorDossier() {
-    const modal = document.getElementById('doctor-dossier-modal');
-    if (modal) modal.classList.add('hidden');
-}
-
-function startDoctorFight() {
-    if (isBattleActive) {
-        closeDoctorDossier();
-        if (typeof toggleMapModal === 'function') toggleMapModal(false);
-        reopenNurseBattle();
-        return;
-    }
-
-    closeDoctorDossier();
-    if (typeof toggleMapModal === 'function') toggleMapModal(false);
-
-    // Характеристики Чергового лікаря (250 HP, 25 урон)
-    bossCurrentHp = 250;
-    bossMaxHp = 250;
-    
-    // Підставляємо унікальні зображення для Чергового лікаря
-    const bossSprite = document.getElementById('nurse-boss-sprite');
-    if (bossSprite) bossSprite.src = 'doctor_sprite.png';
-
-    const arenaScreen = document.getElementById('battle-arena-screen');
-    if (arenaScreen) arenaScreen.style.backgroundImage = "url('doctor_bg.jpg')";
-
-    // Змінюємо аватар боса на верхній правій панелі бою
-    const bossAvatarImg = document.querySelector('#nurse-battle-modal .modal-content div img, [alt="Сестра Клара"], [alt="Черговий лікар"]');
-    // Надійніший пошук контейнера аватара боса у верхній правій панелі:
-    const bossBattleAvatarBox = document.querySelector('#nurse-battle-modal > div > div:nth-child(5) img') || document.querySelector('#nurse-battle-modal img[alt="Сестра Клара"]');
-    if (bossBattleAvatarBox) {
-        bossBattleAvatarBox.src = 'doctor_avatar_battle.jpg';
-        bossBattleAvatarBox.alt = 'Черговий лікар';
-    }
-
-    // Повне відновлення перед штурмом
-    stats.hp = stats.maxHp;
-    if (typeof updateUI === 'function') updateUI();
-
-    playerAttackCooldown = false;
-    isBattleActive = true;
-    raidTimeRemaining = 300;
-
-    let currentName = 'Пацієнт #404';
-    if (typeof playerName !== 'undefined' && playerName) {
-        currentName = playerName;
-    }
-
-    raidMembers.forEach(m => {
-        m.damage = 0;
-        if (m.isPlayer) {
-            m.name = currentName;
-            m.active = true;
-        } else {
-            m.active = false;
-            m.called = false;
-        }
-    });
-    
-    updateBattleUI();
-    
-    const battleModal = document.getElementById('nurse-battle-modal');
-    if (battleModal) {
-        battleModal.classList.remove('hidden');
-        battleModal.style.display = 'flex';
-    }
-
-    if (raidTimerInterval) clearInterval(raidTimerInterval);
-    raidTimerInterval = setInterval(updateRaidTimerTick, 1000);
-
-    if (friendAttackInterval) clearInterval(friendAttackInterval);
-    friendAttackInterval = setInterval(friendsAutoAttackTick, 3500);
-
-    updateLobbyRaidWidget();
-}
-
-// === ПОЛАГОДЖЕННЯ DEV-ПАНЕЛІ (ПСИХОЗ / НОРМА) ===
 function devSetMadness(val) {
     stats.madness = val;
     updateUI();
-    if (typeof showCustomToast === 'function') {
-        showCustomToast(val >= 100 ? "⚠️ Режим Психозу (100%) увімкнено!" : "🟢 Режим Норма (0%) увімкнено!");
-    }
+    showCustomToast(val >= 100 ? "⚠️ Режим Психозу!" : "🟢 Режим Норма!");
 }
