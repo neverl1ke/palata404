@@ -222,7 +222,7 @@ const gameFloorsData = [
         nodes: [
             { id: "sec_room404", title: "🛏️ Палата 404", x: 38, y: 31, type: "room_404" },
             { id: "sec1_collector", title: "⚙️ Ординаторська", x: 38, y: 44, type: "collector" },
-            { id: "sec_procedure", title: "💉 Медпункт", x: 38, y: 62, type: "procedure" },
+            { id: "sec_procedure", title: "💉 Медпункт", x: 38, y: 62, type: "procedure", bossKey: "nurse" },
             { id: "sec2_grind", title: "🧱 Завал", x: 58, y: 50, type: "grind" },
             { id: "sec3_boss", title: "👹 Черговий лікар", x: 82, y: 44, type: "boss", bossKey: "doctor", locked: true }
         ]
@@ -470,7 +470,7 @@ function handleNodeClick(node, floor) {
     if (node.type === 'room_404') {
         alert("🛏️ Палата #404. Твоє безпечне місце.");
     } else if (node.type === 'procedure') {
-        openProcedureRoomBattle();
+        openBossDossier(node.bossKey || 'nurse');
     } else if (node.type === 'collector') {
         alert("⚙️ Автономний Збирач #1 працює!\nЗібрано луту: +15 Срібла, +1 Пігулка.");
         stats.silver += 15;
@@ -491,10 +491,8 @@ function handleNodeClick(node, floor) {
             alert("Недостатньо витривалості для розчищення завалу!");
         }
     } else if (node.type === 'boss') {
-        if (node.bossKey === 'doctor') {
-            openDoctorDossier();
-        } else {
-            openProcedureRoomBattle();
+        if (node.bossKey) {
+            openBossDossier(node.bossKey);
         }
     }
 }
