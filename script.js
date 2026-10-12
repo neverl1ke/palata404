@@ -958,41 +958,41 @@ function handleLocationClick() {
 const bossesDatabase = {
     nurse: {
         key: 'nurse',
-        name: 'Сестра Клара «Шприц»',
+        name: "Сестра Клара «Шприц»",
         hp: 120,
         maxHp: 120,
         damage: 12,
-        exp: 50,
-        silver: 30,
-        keyReward: 'Ключ від процедурного блоку',
+        expReward: 50,
+        silverReward: 30,
+        questItem: { name: "Ключ від процедурної" },
         dossier: {
-            code: "ОСОБОВА СПРАВА № 001",
+            code: "001",
             subtitle: "ПРОЦЕДУРНИЙ БЛОК • 10 ПОВЕРХ",
             callsign: "«ПРОЦЕДУРНА»",
             threat: "ЗАГРОЗА: ВИСОКА",
-            threatClass: "high",
+            cardImg: "images/bosses/nurse.png", // Перевір цей шлях до файлу!
             role: "Старша медсестра",
             status: "Патологічна агресія",
-            location: "Кабінет процедур, 10-й поверх",
+            location: "Процедурний блок, 10-й поверх",
             deviations: "Після катастрофи втратила розум. Демонструє ендогенний галюцинаторно-параноїдний синдром. Вважає зачистку пацієнтів та ін'єкції невідомих речовин єдиним способом «вилікувати» спецблок.",
             rewardsText: "+50 EXP • +30 Срібла • Ключ від процедурної"
         }
     },
     doctor: {
         key: 'doctor',
-        name: 'Черговий лікар',
+        name: "Черговий лікар",
         hp: 250,
         maxHp: 250,
         damage: 25,
-        exp: 120,
-        silver: 80,
-        keyReward: 'Ключ від ізолятора',
+        expReward: 120,
+        silverReward: 80,
+        questItem: { name: "Ключ від ізолятора" },
         dossier: {
-            code: "ОСОБОВА СПРАВА № 002",
+            code: "002",
             subtitle: "АРХІВ ІЗОЛЯТОРА • 10 ПОВЕРХ",
             callsign: "«НАБЛЮДАЧ»",
             threat: "ЗАГРОЗА: КРИТИЧНА",
-            threatClass: "critical",
+            cardImg: "images/bosses/doctor.png", // Перевір цей шлях до файлу!
             role: "Старший черговий лікар",
             status: "Зв'язок втрачено / Мутація",
             location: "Кабінет спостереження, 10-й поверх",
@@ -1406,91 +1406,82 @@ function devSetMadness(val) {
     updateUI();
     showCustomToast(val >= 100 ? "⚠️ Режим Психозу!" : "🟢 Режим Норма!");
 }
-// === УНІВЕРСАЛЬНЕ ВІДКРИТТЯ ДОСЬЄ БОСА (Виправлений пошук зображення) ===
+// === УНІВЕРСАЛЬНЕ ВІДКРИТТЯ ДОСЬЄ БОСА ===
 function openBossDossier(bossKey) {
-    const boss = bossesDatabase[bossKey];
-    if (!boss || !boss.dossier) return;
+    try {
+        const boss = bossesDatabase[bossKey];
+        if (!boss) {
+            console.error("Бос не знайдений у bossesDatabase:", bossKey);
+            return;
+        }
 
-    // Закриваємо інші вікна
-    if (typeof closeInventory === 'function') closeInventory();
-    if (typeof closeCustomization === 'function') closeCustomization();
-    if (typeof closeSettings === 'function') closeSettings();
-    if (typeof closeFriends === 'function') closeFriends();
-    if (typeof toggleMapModal === 'function') toggleMapModal(false);
+        // Закриваємо модалки (за наявності функцій)
+        if (typeof closeInventory === 'function') closeInventory();
+        if (typeof closeCustomization === 'function') closeCustomization();
+        if (typeof closeSettings === 'function') closeSettings();
+        if (typeof closeFriends === 'function') closeFriends();
+        if (typeof toggleMapModal === 'function') toggleMapModal(false);
 
-    const d = boss.dossier;
+        const d = boss.dossier || {};
 
-    // Заповнення заголовка та коду
-    const codeElem = document.getElementById('universal-dossier-code');
-    if (codeElem) codeElem.textContent = d.code || `ОСОБОВА СПРАВА № ${bossKey}`;
-
-    const threatElem = document.getElementById('universal-dossier-threat');
-    if (threatElem) threatElem.textContent = d.threat || "ЗАГРОЗА: ВИСОКА";
-
-    const nameElem = document.getElementById('universal-dossier-name');
-    if (nameElem) nameElem.textContent = boss.name;
-
-    const callsignElem = document.getElementById('universal-dossier-callsign');
-    if (callsignElem) callsignElem.textContent = `ПОЗИВНИЙ: ${d.callsign || '«НЕВІДОМО»'}`;
-
-    // --- ФОТОГРАФІЯ (ПОШУК ЗОБРАЖЕННЯ З ТВОЄЇ БАЗИ) ---
-    const imgElem = document.getElementById('universal-dossier-img');
-    if (imgElem) {
-        // Ми шукаємо шлях у поле 'cardImg' (твоє старе), 'src' або 'img',
-        // інакше використовуємо стандартний шлях.
-        const imgSrc = d.cardImg || d.src || d.img || `images/bosses/${bossKey}.png`;
-        imgElem.src = imgSrc;
-    }
-    // --------------------------------------------------
-
-    // Службові відомості
-    const roleElem = document.getElementById('universal-dossier-role');
-    if (roleElem) roleElem.innerHTML = `<strong>Посада:</strong> ${d.role || '-'}`;
-
-    const statusElem = document.getElementById('universal-dossier-status');
-    if (statusElem) statusElem.innerHTML = `<strong>Статус:</strong> ${d.status || d.diagnosis || d.behavior || '-'}`;
-
-    const locationElem = document.getElementById('universal-dossier-location');
-    if (locationElem) locationElem.innerHTML = `<strong>Локація:</strong> ${d.location || d.subtitle || '-'}`;
-
-    // Зафіксовані відхилення
-    const deviationsElem = document.getElementById('universal-dossier-deviations');
-    // Ми також перевіряємо твої старі поля 'diagnosis' та 'behavior'
-    const deviationsText = d.deviations || d.diagnosis || d.behavior || d.deviations || "Відомості відсутні.";
-    if (deviationsElem) deviationsElem.textContent = deviationsText;
-
-    // Винагорода
-    const rewardText = d.rewardsText || `+${boss.expReward || boss.exp || 0} EXP, +${boss.silverReward || boss.silver || 0} Срібла${boss.questItem ? ', ' + boss.questItem.name : ''}`;
-    const rewardsElem = document.getElementById('universal-dossier-rewards');
-    if (rewardsElem) rewardsElem.innerHTML = `🎁 <strong>Нагорода за знешкодження:</strong> ${rewardText}`;
-
-    // Стати
-    const hpElem = document.getElementById('universal-dossier-hp');
-    if (hpElem) hpElem.textContent = `${boss.hp || boss.maxHp || 0} HP`;
-
-    const dmgElem = document.getElementById('universal-dossier-dmg');
-    if (dmgElem) dmgElem.textContent = `${boss.damage || boss.dmg || 0} DMG`;
-
-    // Лічильник вбивств
-    const killsElem = document.getElementById('universal-dossier-kills');
-    if (killsElem && typeof bossKillsCount !== 'undefined') {
-        killsElem.textContent = bossKillsCount[bossKey] || 0;
-    }
-
-    // Кнопка штурму
-    const startBtn = document.getElementById('universal-dossier-start-btn');
-    if (startBtn) {
-        startBtn.onclick = () => {
-            closeUniversalDossier();
-            if (typeof startBossFight === 'function') {
-                startBossFight(bossKey);
-            } else if (typeof startBossBattle === 'function') {
-                startBossBattle(bossKey);
-            }
+        // Заповнюємо базові текстові елементи, якщо вони є в HTML
+        const setTxt = (id, txt) => {
+            const el = document.getElementById(id);
+            if (el) el.textContent = txt;
         };
-    }
+        const setHTML = (id, html) => {
+            const el = document.getElementById(id);
+            if (el) el.innerHTML = html;
+        };
 
-    // Показуємо універсальне вікно
+        setTxt('universal-dossier-code', d.code ? `ОСОБОВА СПРАВА № ${d.code}` : `ОСОБОВА СПРАВА`);
+        setTxt('universal-dossier-threat', d.threat || "ЗАГРОЗА: ВИСОКА");
+        setTxt('universal-dossier-name', boss.name || "Невідомий об'єкт");
+        setTxt('universal-dossier-callsign', `ПОЗИВНИЙ: ${d.callsign || '«НЕВІДОМО»'}`);
+
+        // Зображення боса
+        const imgElem = document.getElementById('universal-dossier-img');
+        if (imgElem) {
+            imgElem.src = d.cardImg || `images/bosses/${bossKey}.png`;
+        }
+
+        // Відомості та відхилення
+        setHTML('universal-dossier-role', `<strong>Посада:</strong> ${d.role || '-'}`);
+        setHTML('universal-dossier-status', `<strong>Статус:</strong> ${d.status || d.diagnosis || '-'}`);
+        setHTML('universal-dossier-location', `<strong>Локація:</strong> ${d.location || d.subtitle || '-'}`);
+        setTxt('universal-dossier-deviations', d.deviations || d.diagnosis || "Відомості відсутні.");
+
+        // Нагорода
+        const rew = d.rewardsText || `+${boss.expReward || 0} EXP, +${boss.silverReward || 0} Срібла`;
+        setHTML('universal-dossier-rewards', `🎁 <strong>Винагорода за знешкодження:</strong> ${rew}`);
+
+        // Характеристики
+        setTxt('universal-dossier-hp', `${boss.hp || 0} HP`);
+        setTxt('universal-dossier-dmg', `${boss.damage || 0} DMG`);
+
+        // Кнопка штурму
+        const startBtn = document.getElementById('universal-dossier-start-btn');
+        if (startBtn) {
+            startBtn.onclick = function() {
+                closeUniversalDossier();
+                if (typeof startBossFight === 'function') {
+                    startBossFight(bossKey);
+                } else if (typeof startBossBattle === 'function') {
+                    startBossBattle(bossKey);
+                }
+            };
+        }
+
+        // Відображаємо модальне вікно
+        const modal = document.getElementById('universal-dossier-modal');
+        if (modal) modal.classList.remove('hidden');
+
+    } catch (err) {
+        console.error("Помилка відкриття досьє:", err);
+    }
+}
+
+function closeUniversalDossier() {
     const modal = document.getElementById('universal-dossier-modal');
-    if (modal) modal.classList.remove('hidden');
+    if (modal) modal.classList.add('hidden');
 }
