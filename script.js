@@ -1,5 +1,16 @@
 // === Telegram Web App та Нікнейм ===
 const tg = window.Telegram?.WebApp;
+
+// Treat player-controlled and saved text as text when placing it in HTML templates.
+function escapeHTML(value) {
+    return String(value ?? '').replace(/[&<>"']/g, character => ({
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#39;'
+    })[character]);
+}
 if (tg) {
     try {
         tg.ready();
@@ -135,8 +146,8 @@ function renderFriendsList() {
         item.style.cssText = "display: flex; justify-content: space-between; align-items: center; background: #261f1a; padding: 6px 10px; border-radius: 4px; border: 1px solid #4a382c;";
         item.innerHTML = `
             <div>
-                <strong style="color: #fff8e7;">${friend.identifier}</strong>
-                <div style="font-size: 10px; color: #2ecc71;">● ${friend.status}</div>
+                <strong style="color: #fff8e7;">${escapeHTML(friend.identifier)}</strong>
+                <div style="font-size: 10px; color: #2ecc71;">● ${escapeHTML(friend.status)}</div>
             </div>
             <button onclick="removeFriend(${index})" style="background: none; border: none; color: #e74c3c; cursor: pointer; font-size: 14px;" title="Видалити">✕</button>
         `;
@@ -1264,8 +1275,8 @@ function renderFriendsCheckboxList(filterText = '') {
 
     container.innerHTML = list.map(f => `
         <label style="background: #15100c; border: 1px solid #3d2d22; padding: 10px; border-radius: 6px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; font-size: 13px;">
-            <span style="color: ${f.called ? '#27ae60' : '#f4e8d1'};">${f.name}</span>
-            <input type="checkbox" value="${f.id}" class="friend-checkbox" ${f.called ? 'checked' : ''} style="width: 18px; height: 18px;">
+            <span style="color: ${f.called ? '#27ae60' : '#f4e8d1'};">${escapeHTML(f.name)}</span>
+            <input type="checkbox" value="${escapeHTML(f.id)}" class="friend-checkbox" ${f.called ? 'checked' : ''} style="width: 18px; height: 18px;">
         </label>
     `).join('');
 }
@@ -1296,7 +1307,7 @@ function updateRaidListUI() {
     if (!container) return;
     container.innerHTML = raidMembers.filter(m => m.isPlayer || m.called).map(m => `
         <div style="background: #15100c; border: 1px solid #3d2d22; padding: 6px 10px; border-radius: 6px; display: flex; justify-content: space-between; font-size: 11px;">
-            <div><strong>${m.name}</strong></div>
+            <div><strong>${escapeHTML(m.name)}</strong></div>
             <div style="color: #e74c3c; font-weight: bold;">${m.damage} DMG</div>
         </div>
     `).join('');
@@ -1418,9 +1429,9 @@ function handleVictory() {
     const summaryElem = document.getElementById('victory-raid-summary');
     if (summaryElem && activeBoss) {
         summaryElem.innerHTML = `
-            <div style="font-weight: bold; color: #f39c12; margin-bottom: 8px;">👑 MVP: ${sorted[0].name} — ${sorted[0].damage} DMG</div>
+            <div style="font-weight: bold; color: #f39c12; margin-bottom: 8px;">👑 MVP: ${escapeHTML(sorted[0].name)} — ${sorted[0].damage} DMG</div>
             <div style="font-size: 13px; color: #27ae60; margin-bottom: 6px;">🎁 Винагорода: +${activeBoss.expReward} EXP, +${activeBoss.silverReward} Срібла</div>
-            ${sorted.map(m => `<div style="font-size: 12px;">• ${m.name}:${m.damage} DMG</div>`).join('')}
+            ${sorted.map(m => `<div style="font-size: 12px;">• ${escapeHTML(m.name)}:${m.damage} DMG</div>`).join('')}
         `;
     }
 
