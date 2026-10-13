@@ -222,7 +222,14 @@ inventory = inventory
         const freshItem = DEFAULT_INVENTORY.find(d => d.icon === item.icon || d.name === item.name);
         const rawCount = Number(item.count);
         const count = Number.isFinite(rawCount) && rawCount >= 0 ? Math.floor(rawCount) : 1;
-        return freshItem ? { ...freshItem, count } : { ...item, count };
+        const normalizedItem = freshItem ? { ...freshItem, count } : { ...item, count };
+        ['damageBonus', 'armorBonus'].forEach(field => {
+            if (normalizedItem[field] !== undefined) {
+                const value = Number(normalizedItem[field]);
+                normalizedItem[field] = Number.isFinite(value) && value >= 0 ? value : 0;
+            }
+        });
+        return normalizedItem;
     });
 
 let equippedGear = loadSaveData('palata404_equipped', {
@@ -305,6 +312,7 @@ function normalizeStats(savedStats) {
     normalized.maxEnergy = Math.max(1, normalized.maxEnergy);
     normalized.level = Math.max(1, normalized.level);
     normalized.nextLvlExp = Math.max(1, normalized.nextLvlExp);
+    normalized.exp = Math.min(normalized.exp, normalized.nextLvlExp - 1);
     normalized.hp = Math.min(normalized.hp, normalized.maxHp);
     normalized.energy = Math.min(normalized.energy, normalized.maxEnergy);
     normalized.madness = Math.min(normalized.madness, 100);
