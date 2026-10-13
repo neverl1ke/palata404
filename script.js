@@ -1059,17 +1059,26 @@ function openProcedureRoomBattle() {
     if (killsElem) killsElem.textContent = bossKillsCount['nurse'] || 0;
     document.getElementById('nurse-dossier-modal').classList.remove('hidden');
 }
-
-function closeNurseDossier() {
-    document.getElementById('nurse-dossier-modal').classList.add('hidden');
+function openNurseDossier() {
+    if (typeof openBossDossier === 'function') {
+        openBossDossier('nurse');
+    }
 }
-
+function closeNurseDossier() {
+    const modal = document.getElementById('nurse-dossier-modal');
+    if (modal) {
+        modal.classList.add('hidden');
+    }
+}
 function openDoctorDossier() {
     document.getElementById('doctor-dossier-modal').classList.remove('hidden');
 }
 
 function closeDoctorDossier() {
-    document.getElementById('doctor-dossier-modal').classList.add('hidden');
+    const modal = document.getElementById('doctor-dossier-modal');
+    if (modal) {
+        modal.classList.add('hidden');
+    }
 }
 
 // === УНІВЕРСАЛЬНИЙ ЗАПУСК БОЮ ===
