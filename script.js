@@ -77,6 +77,13 @@ function getPlayerUniqueId() {
 }
 
 let friendsList = loadSaveData('palata404_friends', []);
+friendsList = friendsList
+    .filter(friend => friend && typeof friend === 'object' && !Array.isArray(friend)
+        && (typeof friend.identifier === 'string' || typeof friend.identifier === 'number'))
+    .map(friend => ({
+        identifier: String(friend.identifier),
+        status: typeof friend.status === 'string' ? friend.status : "На зв'язку"
+    }));
 
 function openFriends() {
     closeInventory();
@@ -184,7 +191,7 @@ const DEFAULT_STATS = {
     gymRounds: 0
 };
 
-let stats = loadSaveData('palata404_stats', DEFAULT_STATS);
+let stats = normalizeStats(loadSaveData('palata404_stats', DEFAULT_STATS));
 
 let gender = localStorage.getItem('palata404_gender') || 'male'; 
 let currentHair = localStorage.getItem('palata404_hair') || '';
@@ -209,15 +216,22 @@ const DEFAULT_INVENTORY = [
 ];
 
 let inventory = loadSaveData('palata404_inventory', DEFAULT_INVENTORY);
-inventory = inventory.map(item => {
-    const freshItem = DEFAULT_INVENTORY.find(d => d.icon === item.icon || d.name === item.name);
-    return freshItem ? { ...freshItem, count: item.count } : item;
-});
+inventory = inventory
+    .filter(item => item && typeof item === 'object' && !Array.isArray(item))
+    .map(item => {
+        const freshItem = DEFAULT_INVENTORY.find(d => d.icon === item.icon || d.name === item.name);
+        const rawCount = Number(item.count);
+        const count = Number.isFinite(rawCount) && rawCount >= 0 ? Math.floor(rawCount) : 1;
+        return freshItem ? { ...freshItem, count } : { ...item, count };
+    });
 
 let equippedGear = loadSaveData('palata404_equipped', {
     weapon: null,
     helmet: null,
     armor: null
+});
+['weapon', 'helmet', 'armor'].forEach(slot => {
+    if (equippedGear[slot] !== null && typeof equippedGear[slot] !== 'string') equippedGear[slot] = null;
 });
 
 let currentCategory = 'all';
@@ -248,15 +262,53 @@ const gameFloorsData = [
 ];
 
 function loadSaveData(key, fallback) {
-    const saved = localStorage.getItem(key);
+    let saved;
+    try {
+        saved = localStorage.getItem(key);
+    } catch (e) {
+        return fallback;
+    }
     if (!saved) return fallback;
-    try { 
+
+    try {
         const parsed = JSON.parse(saved);
-        if (typeof fallback === 'object' && fallback !== null && !Array.isArray(fallback)) {
+        if (Array.isArray(fallback)) {
+            return Array.isArray(parsed) ? parsed : fallback;
+        }
+        if (typeof fallback === 'object' && fallback !== null) {
+            if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) return fallback;
             return { ...fallback, ...parsed };
         }
-        return parsed; 
-    } catch (e) { return fallback; }
+        return parsed;
+    } catch (e) {
+        return fallback;
+    }
+}
+
+function normalizeStats(savedStats) {
+    const normalized = { ...DEFAULT_STATS };
+    Object.keys(DEFAULT_STATS).forEach(key => {
+        const value = savedStats?.[key];
+        if (typeof value === 'number' && Number.isFinite(value)) normalized[key] = value;
+    });
+
+    const wholeNumberFields = [
+        'silver', 'pills', 'bucks', 'hp', 'maxHp', 'madness', 'energy', 'maxEnergy',
+        'level', 'exp', 'nextLvlExp', 'damage', 'armor', 'daysInClinic',
+        'madnessAttacks', 'enemiesKilled', 'bossesKilled', 'pillsUsed', 'gymRounds'
+    ];
+    wholeNumberFields.forEach(key => {
+        normalized[key] = Math.max(0, Math.floor(normalized[key]));
+    });
+
+    normalized.maxHp = Math.max(1, normalized.maxHp);
+    normalized.maxEnergy = Math.max(1, normalized.maxEnergy);
+    normalized.level = Math.max(1, normalized.level);
+    normalized.nextLvlExp = Math.max(1, normalized.nextLvlExp);
+    normalized.hp = Math.min(normalized.hp, normalized.maxHp);
+    normalized.energy = Math.min(normalized.energy, normalized.maxEnergy);
+    normalized.madness = Math.min(normalized.madness, 100);
+    return normalized;
 }
 
 function saveGameProgress() {
@@ -579,7 +631,7 @@ function renderMinecraftStash() {
             );
 
             slot.innerHTML = `
-                <span class="item-icon">${item.icon}</span>
+                <span class="item-icon">${escapeHTML(item.icon)}</span>
                 ${item.count > 1 ? `<span class="item-count">${item.count}</span>` : ''}
                 ${isEquipped ? `<span style="position: absolute; top: 2px; left: 2px; font-size: 8px; background: #e74c3c; color: #fff; padding: 1px 3px; border-radius: 3px;">EQ</span>` : ''}
             `;
@@ -594,7 +646,7 @@ function openItemInfo(item) {
     const titleElem = document.getElementById('item-info-title');
     if (titleElem) titleElem.textContent = `${item.icon} ${item.name}`;
     
-    let bodyHtml = `<p style="color: #a3927d;">${item.desc || 'Немає опису предмета.'}</p>`;
+    let bodyHtml = `<p style="color: #a3927d;">${escapeHTML(item.desc || 'Немає опису предмета.')}</p>`;
     
     const isEquipped = (
         (item.category === 'weapon' && equippedGear.weapon === item.name) ||
@@ -605,13 +657,13 @@ function openItemInfo(item) {
     const actionBtn = document.getElementById('item-action-btn');
 
     if (item.category === 'weapon') {
-        bodyHtml += `<div style="color: #e74c3c; margin-top: 5px;"><strong>⚔️ Бонус до урону:</strong> +${item.damageBonus || 0}</div>`;
+        bodyHtml += `<div style="color: #e74c3c; margin-top: 5px;"><strong>⚔️ Бонус до урону:</strong> +${escapeHTML(item.damageBonus || 0)}</div>`;
         if (actionBtn) actionBtn.textContent = isEquipped ? "Зняти" : "Озброїтися";
     } else if (item.category === 'armor' || item.category === 'helmet') {
-        bodyHtml += `<div style="color: #3498db; margin-top: 5px;"><strong>🛡️ Бонус до броні:</strong> +${item.armorBonus || 0}</div>`;
+        bodyHtml += `<div style="color: #3498db; margin-top: 5px;"><strong>🛡️ Бонус до броні:</strong> +${escapeHTML(item.armorBonus || 0)}</div>`;
         if (actionBtn) actionBtn.textContent = isEquipped ? "Зняти" : "Надіти спорядження";
     } else if (item.category === 'meds') {
-        bodyHtml += `<div style="color: #2ecc71; margin-top: 5px;"><strong>⚡ Ефект препарату:</strong> ${item.effectDesc || 'Відновлює стан'}</div>`;
+        bodyHtml += `<div style="color: #2ecc71; margin-top: 5px;"><strong>⚡ Ефект препарату:</strong> ${escapeHTML(item.effectDesc || 'Відновлює стан')}</div>`;
         if (actionBtn) actionBtn.textContent = "Використати";
     } else {
         if (actionBtn) actionBtn.textContent = "Закрити";
@@ -758,17 +810,33 @@ function renderWardrobe() {
 }
 
 // === Спортзал та збереження прогресу ===
+const DEFAULT_GYM_EXERCISES = [
+    { id: 'squats', name: 'Присідання', icon: '🦵', current: 0, target: 15, energy: 2, madness: 1, exp: 5 },
+    { id: 'pushups', name: 'Віджимання', icon: '💪', current: 0, target: 12, energy: 3, madness: 2, exp: 8 },
+    { id: 'plank', name: 'Планка', icon: '🧘', current: 0, target: 10, energy: 4, madness: 2, exp: 10 },
+    { id: 'pullups', name: 'Підтягування', icon: '🦾', current: 0, target: 8, energy: 5, madness: 3, exp: 14 },
+    { id: 'stretching', name: 'Розтяжка', icon: '🤸', current: 0, target: 10, energy: 2, madness: 1, exp: 6 },
+    { id: 'shadowbox', name: 'Бій з тінню', icon: '🥊', current: 0, target: 5, energy: 6, madness: 5, exp: 20 }
+];
+
 let gymComplex = loadSaveData('palata404_gym', {
-    exercises: [
-        { id: 'squats', name: 'Присідання', icon: '🦵', current: 0, target: 15, energy: 2, madness: 1, exp: 5 },
-        { id: 'pushups', name: 'Віджимання', icon: '💪', current: 0, target: 12, energy: 3, madness: 2, exp: 8 },
-        { id: 'plank', name: 'Планка', icon: '🧘', current: 0, target: 10, energy: 4, madness: 2, exp: 10 },
-        { id: 'pullups', name: 'Підтягування', icon: '🦾', current: 0, target: 8, energy: 5, madness: 3, exp: 14 },
-        { id: 'stretching', name: 'Розтяжка', icon: '🤸', current: 0, target: 10, energy: 2, madness: 1, exp: 6 },
-        { id: 'shadowbox', name: 'Бій з тінню', icon: '🥊', current: 0, target: 5, energy: 6, madness: 5, exp: 20 }
-    ],
+    exercises: DEFAULT_GYM_EXERCISES,
     completedRounds: 0
 });
+const savedGymExercises = Array.isArray(gymComplex.exercises) ? gymComplex.exercises : [];
+gymComplex.exercises = DEFAULT_GYM_EXERCISES.map(defaultExercise => {
+    const savedExercise = savedGymExercises.find(exercise => exercise && typeof exercise === 'object'
+        && exercise.id === defaultExercise.id);
+    const rawCurrent = savedExercise?.current;
+    const current = typeof rawCurrent === 'number' && Number.isFinite(rawCurrent)
+        ? Math.min(defaultExercise.target, Math.max(0, Math.floor(rawCurrent)))
+        : defaultExercise.current;
+    return { ...defaultExercise, current };
+});
+gymComplex.completedRounds = typeof gymComplex.completedRounds === 'number'
+    && Number.isFinite(gymComplex.completedRounds)
+    ? Math.max(0, Math.floor(gymComplex.completedRounds))
+    : 0;
 
 function saveGymProgress() {
     localStorage.setItem('palata404_gym', JSON.stringify(gymComplex));
