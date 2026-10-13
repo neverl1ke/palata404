@@ -10,11 +10,26 @@ from pathlib import Path
 import re
 import threading
 import unittest
+import xml.etree.ElementTree as ET
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 
 from playwright.sync_api import sync_playwright
 
 ROOT = Path(__file__).resolve().parents[1]
+
+
+class IconAssetTests(unittest.TestCase):
+    def test_svg_assets_are_self_contained_and_valid(self):
+        paths = sorted((ROOT / 'assets' / 'icons').glob('*.svg'))
+        self.assertGreater(len(paths), 50)
+        for path in paths:
+            with self.subTest(icon=path.name):
+                svg = ET.parse(path).getroot()
+                self.assertEqual(svg.tag, '{http://www.w3.org/2000/svg}svg')
+                self.assertEqual(svg.attrib['viewBox'], '0 0 64 64')
+                for node in svg.iter():
+                    self.assertNotIn(node.tag.split('}')[-1], ['script', 'text', 'foreignObject', 'image'])
+                    self.assertFalse(any('href' in key for key in node.attrib))
 
 
 class QuietHandler(SimpleHTTPRequestHandler):
@@ -306,6 +321,43 @@ class GameTests(unittest.TestCase):
             page.screenshot(path=str(results / 'mobile-lobby.png'), full_page=True)
         finally:
             context.close()
+
+    def test_local_icons_render_in_static_and_dynamic_views(self):
+        self.load()
+        self.assertGreater(self.page.locator('.game-icon').count(), 60)
+        self.page.evaluate('openInventory()')
+        self.assertEqual(self.page.locator('#stash-items .game-icon').count(), 5)
+        self.assertEqual(self.page.locator('#stash-items .game-icon').nth(2).get_attribute('src'),
+                         'assets/icons/rifle.svg')
+        for action, selector in [
+                ('openGym()', '#gym-exercises-list'),
+                ('openMedicalHub()', '#rooms-list-container'),
+                ('toggleMapModal(true); openFloorMap(10)', '#blueprint-nodes-container'),
+                ('openCustomization()', '#wardrobe-container')]:
+            self.page.evaluate(action)
+            self.assertGreater(self.page.locator(selector + ' img.game-icon').count(), 0)
+            # Every actual dynamic illustration uses a whitelisted local image.
+            self.assertTrue(self.page.evaluate('''selector => [...document.querySelectorAll(selector+' img.game-icon')]
+                .every(img => img.getAttribute('src').startsWith('assets/icons/'))''', selector))
+        self.page.evaluate('showCustomToast("⚠️ Тест повідомлення")')
+        self.assertEqual(self.page.locator('#toast-message .game-icon').get_attribute('src'),
+                         'assets/icons/warning.svg')
+        self.assertNotIn('⚠', self.page.locator('#toast-message').inner_text())
+        self.page.wait_for_function('''() => [...document.querySelectorAll('img.game-icon')]
+            .every(img => img.complete && img.naturalWidth > 0)''')
+
+    def test_legacy_item_icons_and_untrusted_icon_urls(self):
+        self.load({'palata404_inventory': json.dumps([
+            {'name':'Старий ключ','icon':'🗝️','category':'quest','count':3},
+            {'name':'Невідомий предмет','icon':'https://example.org/track.svg','category':'mod','count':2}
+        ])})
+        self.page.evaluate('openInventory()')
+        icons = self.page.locator('#stash-items .game-icon')
+        self.assertEqual(icons.nth(0).get_attribute('src'), 'assets/icons/key.svg')
+        self.assertEqual(icons.nth(1).get_attribute('src'), 'assets/icons/box.svg')
+        self.assertEqual(self.page.locator('#stash-items .item-count').first.inner_text(), '3')
+        self.page.reload(wait_until='networkidle')
+        self.assertEqual(self.page.evaluate('inventory[0].count'), 3)
 
 
 if __name__ == '__main__':

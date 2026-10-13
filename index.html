@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Special+Elite&display=swap" rel="stylesheet">
 
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <link rel="stylesheet" href="style.css?v=40002">
+    <link rel="stylesheet" href="style.css?v=40003">
 </head>
 <body>
 
@@ -21,7 +21,7 @@
         <div class="top-nav">
 <!-- Лівий блок: Профіль гравця (відкриває Досьє) -->
             <div class="user-profile-badge" role="button" tabindex="0" aria-label="Відкрити особисте досьє" onclick="openDossier()" title="Натисніть для перегляду медичного досьє">
-                <div class="avatar-mini">🪖</div>
+                <div class="avatar-mini"><img class="game-icon" src="assets/icons/helmet.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"></div>
                 <div class="user-text">
                     <div class="user-name-row">
                         <strong id="player-name">Завантаження...</strong>
@@ -42,19 +42,19 @@
 
             <!-- Центральний блок: Навігація іконками -->
             <nav class="center-nav" aria-label="Ігрове меню">
-                <button class="nav-icon-btn" title="Інвентар" onclick="openInventory()" aria-label="Інвентар">🎒</button>
-                <button class="nav-icon-btn" title="Гардероб" onclick="openCustomization()" aria-label="Гардероб">👕</button>
-<button id="nav-map-btn" title="Карта" class="nav-icon-btn" style="display: none;" onclick="toggleMapModal(true)" aria-label="Карта">🗺️</button>
-                <button class="nav-icon-btn" title="Завдання" onclick="alert('Завдання в розробці')" aria-label="Завдання">📋</button>
-<button id="nav-raid-btn" class="nav-icon-btn" title="Рейд" onclick="handleRaidButtonAction()" aria-label="Рейд">⚔️</button>
-                <button class="nav-icon-btn" title="Сусіди по блоку" onclick="openFriends()" aria-label="Сусіди по блоку">👥</button>
+                <button class="nav-icon-btn" title="Інвентар" onclick="openInventory()" aria-label="Інвентар"><img class="game-icon" src="assets/icons/bag.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"></button>
+                <button class="nav-icon-btn" title="Гардероб" onclick="openCustomization()" aria-label="Гардероб"><img class="game-icon" src="assets/icons/coat.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"></button>
+<button id="nav-map-btn" title="Карта" class="nav-icon-btn" style="display: none;" onclick="toggleMapModal(true)" aria-label="Карта"><img class="game-icon" src="assets/icons/map.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"></button>
+                <button class="nav-icon-btn" title="Завдання" onclick="alert('Завдання в розробці')" aria-label="Завдання"><img class="game-icon" src="assets/icons/clipboard.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"></button>
+<button id="nav-raid-btn" class="nav-icon-btn" title="Рейд" onclick="handleRaidButtonAction()" aria-label="Рейд"><img class="game-icon" src="assets/icons/swords.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"></button>
+                <button class="nav-icon-btn" title="Сусіди по блоку" onclick="openFriends()" aria-label="Сусіди по блоку"><img class="game-icon" src="assets/icons/people.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"></button>
             </nav>
 
             <!-- Правий блок: Дзвінок, пошта, налаштування в єдиному стилі -->
             <div class="top-right-group" style="display: flex; gap: 6px; align-items: center;">
-                <button class="nav-icon-btn" onclick="alert('Немає нових сповіщень')" title="Сповіщення" aria-label="Сповіщення">🔔</button>
-                <button class="nav-icon-btn" onclick="alert('Поштова скринька порожня')" title="Пошта" aria-label="Пошта">✉️</button>
-                <button class="nav-icon-btn" onclick="openSettings()" title="Налаштування" aria-label="Налаштування">⚙️</button>
+                <button class="nav-icon-btn" onclick="alert('Немає нових сповіщень')" title="Сповіщення" aria-label="Сповіщення"><img class="game-icon" src="assets/icons/bell.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"></button>
+                <button class="nav-icon-btn" onclick="alert('Поштова скринька порожня')" title="Пошта" aria-label="Пошта"><img class="game-icon" src="assets/icons/mail.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"></button>
+                <button class="nav-icon-btn" onclick="openSettings()" title="Налаштування" aria-label="Налаштування"><img class="game-icon" src="assets/icons/gear.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"></button>
             </div>
         </div>
 
@@ -66,7 +66,7 @@
                 <!-- Показники життя -->
                 <div class="vitals-group">
                     <div class="vital-item">
-                        <div class="vital-icon madness-icon">🧠</div>
+                        <div class="vital-icon madness-icon"><img class="game-icon" src="assets/icons/brain.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"></div>
                         <div class="vital-info">
                             <div class="vital-label">Божевілля <span id="madness-val">0 / 100</span></div>
                             <div class="bar-bg"><div class="bar-fill madness" id="madness-bar" style="width: 0%;"></div></div>
@@ -74,14 +74,14 @@
                     </div>
 <!-- ТЕСТОВА ПАНЕЛЬ РОЗРОБНИКА ДЛЯ ПЕРЕМИКАННЯ СТАНІВ -->
 <div id="developer-tools" class="hidden" style="background: rgba(192, 57, 43, 0.2); border: 1px dashed #e74c3c; padding: 6px; border-radius: 6px; margin-top: 10px; display: flex; flex-direction: column; gap: 4px;">
-    <div style="font-size: 10px; color: #e74c3c; text-align: center; font-weight: bold;">🧪 ТЕСТ РЕЖИМІВ (DEV)</div>
+    <div style="font-size: 10px; color: #e74c3c; text-align: center; font-weight: bold;"><img class="game-icon" src="assets/icons/flask.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"> ТЕСТ РЕЖИМІВ (DEV)</div>
     <div style="display: flex; gap: 4px;">
         <button class="btn-outfit" style="flex:1; font-size: 10px; background: #c0392b;" onclick="devSetMadness(100)">Психоз (100%)</button>
         <button class="btn-outfit" style="flex:1; font-size: 10px; background: #27ae60;" onclick="devSetMadness(0)">Норма (0%)</button>
     </div>
 </div>
                     <div class="vital-item">
-                        <div class="vital-icon energy-icon">⚡</div>
+                        <div class="vital-icon energy-icon"><img class="game-icon" src="assets/icons/lightning.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"></div>
                         <div class="vital-info">
                             <div class="vital-label">
                                 <span>Витривалість <span id="energy-val">100 / 100</span></span>
@@ -96,33 +96,33 @@
                 <div class="currency-group">
                     <div class="currency-title">Гроші та Ресурси</div>
                     <div class="currency-item">
-                        <span>🪙 Срібло:</span>
+                        <span><img class="game-icon" src="assets/icons/coin.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"> Срібло:</span>
                         <strong id="silver-val">0</strong>
                     </div>
                     <div class="currency-item">
-                        <span>💊 Пігулки:</span>
+                        <span><img class="game-icon" src="assets/icons/pills.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"> Пігулки:</span>
                         <strong id="pills-val">0</strong>
                     </div>
                     <div class="currency-item">
-                        <span>💵 Бакси:</span>
+                        <span><img class="game-icon" src="assets/icons/cash.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"> Бакси:</span>
                         <strong id="bucks-val">0</strong>
                     </div>
 
                     <div class="currency-title" style="margin-top: 6px;">Бойові стати</div>
                     <div class="currency-item">
-                        <span>❤️ Здоров'я (HP):</span>
+                        <span><img class="game-icon" src="assets/icons/heart.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"> Здоров'я (HP):</span>
                         <strong id="hp-val">100 / 100</strong>
                     </div>
                     <div class="currency-item">
-                        <span>⚔️ Шкода:</span>
+                        <span><img class="game-icon" src="assets/icons/swords.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"> Шкода:</span>
                         <strong id="damage-val">10</strong>
                     </div>
                     <div class="currency-item">
-                        <span>🛡️ Броня:</span>
+                        <span><img class="game-icon" src="assets/icons/shield.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"> Броня:</span>
                         <strong id="armor-val">0</strong>
                     </div>
 
-                    <button class="bank-btn" onclick="openBank()">🏦 Банк (Донат)</button>
+                    <button class="bank-btn" onclick="openBank()"><img class="game-icon" src="assets/icons/bank.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"> Банк (Донат)</button>
                 </div>
             </aside>
 
@@ -156,13 +156,13 @@
     <div id="settings-modal" role="dialog" aria-modal="true" aria-label="Налаштування" class="modal center-modal hidden">
         <div class="modal-content">
             <div class="modal-header">
-                <h3>⚙️ Налаштування</h3>
+                <h3><img class="game-icon" src="assets/icons/gear.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"> Налаштування</h3>
                 <button class="btn-close-mini" onclick="closeSettings()" aria-label="Закрити вікно">✕</button>
             </div>
             <div class="settings-body" style="display: flex; flex-direction: column; gap: 8px;">
-                <button class="menu-btn" onclick="changeNickname()">👤 Змінити ім'я</button>
-                <button class="menu-btn" onclick="alert('Звукові ефекти в розробці')">🔊 Звукові ефекти</button>
-                <button class="menu-btn" onclick="alert('Версія гри: 1.0.0')">ℹ️ Про гру</button>
+                <button class="menu-btn" onclick="changeNickname()"><img class="game-icon" src="assets/icons/user.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"> Змінити ім'я</button>
+                <button class="menu-btn" onclick="alert('Звукові ефекти в розробці')"><img class="game-icon" src="assets/icons/speaker.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"> Звукові ефекти</button>
+                <button class="menu-btn" onclick="alert('Версія гри: 1.0.0')"><img class="game-icon" src="assets/icons/info.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"> Про гру</button>
             </div>
         </div>
     </div>
@@ -171,12 +171,12 @@
     <div id="bank-modal" role="dialog" aria-modal="true" aria-label="Банк" class="modal center-modal hidden">
         <div class="modal-content">
             <div class="modal-header">
-                <h3>🏦 Банк</h3>
+                <h3><img class="game-icon" src="assets/icons/bank.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"> Банк</h3>
                 <button class="btn-close-mini" onclick="closeBank()" aria-label="Закрити вікно">✕</button>
             </div>
             <div class="bank-body">
                 <p style="font-size:13px; color:#a3927d; margin-bottom:15px;">Поповнення баксів та особливих бонусів.</p>
-                <button class="btn-main-action" style="width:100%;" onclick="alert('Розділ донату в розробці')">💳 Придбати бакси ($)</button>
+                <button class="btn-main-action" style="width:100%;" onclick="alert('Розділ донату в розробці')"><img class="game-icon" src="assets/icons/card.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"> Придбати бакси ($)</button>
             </div>
         </div>
     </div>
@@ -185,18 +185,18 @@
     <div id="inventory-modal" role="dialog" aria-modal="true" aria-label="Інвентар" class="modal side-modal hidden">
         <div class="modal-content side-content">
             <div class="modal-header">
-                <h3>🎒 Інвентар</h3>
+                <h3><img class="game-icon" src="assets/icons/bag.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"> Інвентар</h3>
                 <button class="btn-close-mini" onclick="closeInventory()" aria-label="Закрити вікно">✕</button>
             </div>
 
             <div class="inventory-layout-wrapper">
                 <div class="inventory-filters-column">
-                    <button class="filter-btn active" title="Всі" onclick="setCategoryFilter('all', this)" aria-label="Всі">📦</button>
-                    <button class="filter-btn" title="Зброя" onclick="setCategoryFilter('weapon', this)" aria-label="Зброя">🔫</button>
-                    <button class="filter-btn" title="Шолом" onclick="setCategoryFilter('helmet', this)" aria-label="Шолом">🪖</button>
-                    <button class="filter-btn" title="Броня" onclick="setCategoryFilter('armor', this)" aria-label="Броня">🛡️</button>
-                    <button class="filter-btn" title="Модулі" onclick="setCategoryFilter('mod', this)" aria-label="Модулі">🧩</button>
-                    <button class="filter-btn" title="Медикаменти" onclick="setCategoryFilter('meds', this)" aria-label="Медикаменти">🧪</button>
+                    <button class="filter-btn active" title="Всі" onclick="setCategoryFilter('all', this)" aria-label="Всі"><img class="game-icon" src="assets/icons/box.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"></button>
+                    <button class="filter-btn" title="Зброя" onclick="setCategoryFilter('weapon', this)" aria-label="Зброя"><img class="game-icon" src="assets/icons/pistol.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"></button>
+                    <button class="filter-btn" title="Шолом" onclick="setCategoryFilter('helmet', this)" aria-label="Шолом"><img class="game-icon" src="assets/icons/helmet.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"></button>
+                    <button class="filter-btn" title="Броня" onclick="setCategoryFilter('armor', this)" aria-label="Броня"><img class="game-icon" src="assets/icons/shield.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"></button>
+                    <button class="filter-btn" title="Модулі" onclick="setCategoryFilter('mod', this)" aria-label="Модулі"><img class="game-icon" src="assets/icons/puzzle.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"></button>
+                    <button class="filter-btn" title="Медикаменти" onclick="setCategoryFilter('meds', this)" aria-label="Медикаменти"><img class="game-icon" src="assets/icons/flask.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"></button>
                 </div>
 
                 <div id="stash-items" class="minecraft-grid"></div>
@@ -222,16 +222,16 @@
     <div id="custom-modal" role="dialog" aria-modal="true" aria-label="Гардероб" class="modal side-modal hidden">
         <div class="modal-content side-content">
             <div class="modal-header">
-                <h3>👕 Гардероб</h3>
+                <h3><img class="game-icon" src="assets/icons/coat.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"> Гардероб</h3>
                 <button class="btn-close-mini" onclick="closeCustomization()" aria-label="Закрити вікно">✕</button>
             </div>
 
             <div class="inventory-layout-wrapper">
                 <div class="inventory-filters-column">
-                    <button class="filter-btn active" title="Персонаж" onclick="setWardrobeTab('body', this)" aria-label="Персонаж">🧍</button>
-                    <button class="filter-btn" title="Зачіска" onclick="setWardrobeTab('hair', this)" aria-label="Зачіска">💇</button>
-                    <button class="filter-btn" title="Обличчя" onclick="setWardrobeTab('face', this)" aria-label="Обличчя">👁️</button>
-                    <button class="filter-btn" title="Одяг" onclick="setWardrobeTab('clothes', this)" aria-label="Одяг">👔</button>
+                    <button class="filter-btn active" title="Персонаж" onclick="setWardrobeTab('body', this)" aria-label="Персонаж"><img class="game-icon" src="assets/icons/user.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"></button>
+                    <button class="filter-btn" title="Зачіска" onclick="setWardrobeTab('hair', this)" aria-label="Зачіска"><img class="game-icon" src="assets/icons/scissors.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"></button>
+                    <button class="filter-btn" title="Обличчя" onclick="setWardrobeTab('face', this)" aria-label="Обличчя"><img class="game-icon" src="assets/icons/eye.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"></button>
+                    <button class="filter-btn" title="Одяг" onclick="setWardrobeTab('clothes', this)" aria-label="Одяг"><img class="game-icon" src="assets/icons/shirt.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"></button>
                 </div>
 
                 <div id="wardrobe-container" class="wardrobe-grid"></div>
@@ -243,7 +243,7 @@
     <div id="friends-modal" role="dialog" aria-modal="true" aria-label="Сусіди по блоку" class="modal center-modal hidden">
         <div class="modal-content" style="width: min(400px, 92vw);">
             <div class="modal-header">
-                <h3>👥 Сусіди по блоку</h3>
+                <h3><img class="game-icon" src="assets/icons/people.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"> Сусіди по блоку</h3>
                 <button class="btn-close-mini" onclick="closeFriends()" aria-label="Закрити вікно">✕</button>
             </div>
             <div class="friends-body">
@@ -297,7 +297,7 @@
     <div id="gym-modal" role="dialog" aria-modal="true" aria-label="Спортивний зал" class="modal center-modal hidden">
         <div class="modal-content" style="width: min(460px, 92vw); background: rgba(20, 15, 12, 0.96); border: 2px solid #5c4033; box-shadow: 0 15px 35px rgba(0,0,0,0.9);">
             <div class="modal-header" style="border-bottom: 1px solid #3d2d22;">
-                <h3 style="color: #e8d7be; font-family: 'Special Elite', cursive; font-size: 17px;">🏋️ Спортивний зал реабілітації</h3>
+                <h3 style="color: #e8d7be; font-family: 'Special Elite', cursive; font-size: 17px;"><img class="game-icon" src="assets/icons/dumbbell.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"> Спортивний зал реабілітації</h3>
                 <button class="btn-close-mini" onclick="closeGym()" aria-label="Закрити вікно">✕</button>
             </div>
             <div style="display: flex; flex-direction: column; gap: 10px; font-size: 13px;">
@@ -311,7 +311,7 @@
     <div id="medical-hub-modal" role="dialog" aria-modal="true" aria-label="Лікувальний корпус" class="modal center-modal hidden">
         <div class="modal-content" style="width: min(440px, 92vw); background: rgba(20, 15, 12, 0.96); border: 2px solid #5c4033; box-shadow: 0 15px 35px rgba(0,0,0,0.9);">
             <div class="modal-header" style="border-bottom: 1px solid #3d2d22;">
-                <h3 style="color: #e8d7be; font-family: 'Special Elite', cursive; font-size: 17px;">🏥 Лікувальний корпус</h3>
+                <h3 style="color: #e8d7be; font-family: 'Special Elite', cursive; font-size: 17px;"><img class="game-icon" src="assets/icons/hospital.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"> Лікувальний корпус</h3>
                 <button class="btn-close-mini" onclick="closeMedicalHub()" aria-label="Закрити вікно">✕</button>
             </div>
             <div style="display: flex; flex-direction: column; gap: 10px; font-size: 13px; padding-top: 4px;">
@@ -325,7 +325,7 @@
     <div id="procedure-room-modal" role="dialog" aria-modal="true" aria-label="Процедурний кабінет" class="modal center-modal hidden">
         <div class="modal-content" style="width: min(420px, 94vw);">
             <div class="modal-header">
-                <h3>💊 Процедурний кабінет</h3>
+                <h3><img class="game-icon" src="assets/icons/pills.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"> Процедурний кабінет</h3>
                 <button class="btn-close-mini" onclick="closeProcedureRoom()" aria-label="Закрити вікно">✕</button>
             </div>
 
@@ -338,65 +338,66 @@
                 <!-- Товар 1: Таблетки від божевілля -->
                 <div class="outfit-card">
                     <div>
-                        <div style="font-weight: bold; color: #fff8e7;">🧠 Таблетки «Аміназин»</div>
+                        <div style="font-weight: bold; color: #fff8e7;"><img class="game-icon" src="assets/icons/brain.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"> Таблетки «Аміназин»</div>
                         <div style="font-size: 11px; color: #a3927d;">Знижує божевілля на 15</div>
                     </div>
-                    <button class="btn-outfit" onclick="buyMedicalItem('madness_pills', 50, 'silver')">50 🪙</button>
+                    <button class="btn-outfit" onclick="buyMedicalItem('madness_pills', 50, 'silver')">50 <img class="game-icon" src="assets/icons/coin.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"></button>
                 </div>
 
                 <!-- Товар 2: Стаміна 10% -->
                 <div class="outfit-card">
                     <div>
-                        <div style="font-weight: bold; color: #fff8e7;">⚡ Енергетик (10%)</div>
+                        <div style="font-weight: bold; color: #fff8e7;"><img class="game-icon" src="assets/icons/lightning.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"> Енергетик (10%)</div>
                         <div style="font-size: 11px; color: #a3927d;">Відновлює 10% витривалості</div>
                     </div>
-                    <button class="btn-outfit" onclick="buyMedicalItem('stamina_10', 2, 'bucks')">$2 💵</button>
+                    <button class="btn-outfit" onclick="buyMedicalItem('stamina_10', 2, 'bucks')">$2 <img class="game-icon" src="assets/icons/cash.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"></button>
                 </div>
 
                 <!-- Товар 3: Стаміна Фул -->
                 <div class="outfit-card">
                     <div>
-                        <div style="font-weight: bold; color: #fff8e7;">⚡ Стимулятор (100%)</div>
+                        <div style="font-weight: bold; color: #fff8e7;"><img class="game-icon" src="assets/icons/lightning.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"> Стимулятор (100%)</div>
                         <div style="font-size: 11px; color: #a3927d;">Повне відновлення витривалості</div>
                     </div>
-                    <button class="btn-outfit" onclick="buyMedicalItem('stamina_full', 10, 'bucks')">$10 💵</button>
+                    <button class="btn-outfit" onclick="buyMedicalItem('stamina_full', 10, 'bucks')">$10 <img class="game-icon" src="assets/icons/cash.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"></button>
                 </div>
 
                 <!-- Товар 4: Хілка 10% -->
                 <div class="outfit-card">
                     <div>
-                        <div style="font-weight: bold; color: #fff8e7;">❤️ Мала аптечка (10%)</div>
+                        <div style="font-weight: bold; color: #fff8e7;"><img class="game-icon" src="assets/icons/heart.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"> Мала аптечка (10%)</div>
                         <div style="font-size: 11px; color: #a3927d;">Відновлює 10% здоров'я (HP)</div>
                     </div>
-                    <button class="btn-outfit" onclick="buyMedicalItem('hp_10', 30, 'silver')">30 🪙</button>
+                    <button class="btn-outfit" onclick="buyMedicalItem('hp_10', 30, 'silver')">30 <img class="game-icon" src="assets/icons/coin.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"></button>
                 </div>
 
                 <!-- Товар 5: Хілка Фул -->
                 <div class="outfit-card">
                     <div>
-                        <div style="font-weight: bold; color: #fff8e7;">❤️ Хірургічний набір (100%)</div>
+                        <div style="font-weight: bold; color: #fff8e7;"><img class="game-icon" src="assets/icons/heart.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"> Хірургічний набір (100%)</div>
                         <div style="font-size: 11px; color: #a3927d;">Повне відновлення здоров'я (HP)</div>
                     </div>
-                    <button class="btn-outfit" onclick="buyMedicalItem('hp_full', 150, 'silver')">150 🪙</button>
+                    <button class="btn-outfit" onclick="buyMedicalItem('hp_full', 150, 'silver')">150 <img class="game-icon" src="assets/icons/coin.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"></button>
                 </div>
 
             </div>
         </div>
     </div>
 
-    <script src="script.js?v=40002" defer></script>
+    <script src="icons.js?v=40003" defer></script>
+    <script src="script.js?v=40003" defer></script>
     <!-- Модальне вікно: Медичне Досьє пацієнта (Аркуш паперу А4) -->
     <div id="dossier-modal" role="dialog" aria-modal="true" aria-label="Особисте досьє" class="modal center-modal hidden">
         <div class="modal-content dossier-paper">
             <div class="dossier-header-stamp">АРХІВ СПЕЦБЛОКУ • ПАЛАТА 404</div>
             <div class="modal-header" style="border-bottom-color: #5c4a3d;">
-                <h3 style="color: #2c221e; font-size: 18px;">📋 ОСОБИСТЕ ДОСЬЄ ПАЦІЄНТА</h3>
+                <h3 style="color: #2c221e; font-size: 18px;"><img class="game-icon" src="assets/icons/clipboard.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"> ОСОБИСТЕ ДОСЬЄ ПАЦІЄНТА</h3>
                 <button class="btn-close-mini" style="background: #2c221e; color: #fff8e7; border-color: #5c4a3d;" onclick="closeDossier()" aria-label="Закрити вікно">✕</button>
             </div>
 
             <div class="dossier-body">
                 <div class="dossier-row-main">
-                    <div class="dossier-avatar-box">🪖</div>
+                    <div class="dossier-avatar-box"><img class="game-icon" src="assets/icons/helmet.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"></div>
                     <div class="dossier-info-grid">
                         <div><strong>Ім'я:</strong> <span id="dossier-name">Пацієнт #404</span></div>
                         <div><strong>Звання:</strong> <span id="dossier-rank">Новачок</span></div>
@@ -408,11 +409,11 @@
                 <div class="dossier-section-title">МЕДИЧНИЙ СТАТУС ТА ІСТОРІЯ ХВОРОБИ</div>
 
                 <div class="dossier-stats-list">
-                    <div class="dossier-stat-item"><span>🧠 Зафіксовано нападів божевілля:</span> <strong id="dossier-madness-attacks">3</strong></div>
-                    <div class="dossier-stat-item"><span>⚔️ Ліквідовано санітарів / погроз:</span> <strong id="dossier-enemies-killed">0</strong></div>
-                    <div class="dossier-stat-item"><span>👹 Знищено босів спецблоку:</span> <strong id="dossier-bosses-killed">0</strong></div>
-                    <div class="dossier-stat-item"><span>💊 Прийнято препаратів (пігулок):</span> <strong id="dossier-pills-used">5</strong></div>
-                    <div class="dossier-stat-item"><span>🏋️ Виконано комплексів вправ:</span> <strong id="dossier-gym-rounds">0</strong></div>
+                    <div class="dossier-stat-item"><span><img class="game-icon" src="assets/icons/brain.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"> Зафіксовано нападів божевілля:</span> <strong id="dossier-madness-attacks">3</strong></div>
+                    <div class="dossier-stat-item"><span><img class="game-icon" src="assets/icons/swords.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"> Ліквідовано санітарів / погроз:</span> <strong id="dossier-enemies-killed">0</strong></div>
+                    <div class="dossier-stat-item"><span><img class="game-icon" src="assets/icons/boss.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"> Знищено босів спецблоку:</span> <strong id="dossier-bosses-killed">0</strong></div>
+                    <div class="dossier-stat-item"><span><img class="game-icon" src="assets/icons/pills.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"> Прийнято препаратів (пігулок):</span> <strong id="dossier-pills-used">5</strong></div>
+                    <div class="dossier-stat-item"><span><img class="game-icon" src="assets/icons/dumbbell.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"> Виконано комплексів вправ:</span> <strong id="dossier-gym-rounds">0</strong></div>
                 </div>
 
                 <div class="dossier-psych-note">
@@ -467,7 +468,7 @@
 
         <!-- Винагорода -->
         <div id="universal-dossier-rewards" style="background: rgba(243, 156, 18, 0.12); padding: 10px 14px; border-radius: 5px; border: 1px solid #d4a359; font-size: 12px; margin-bottom: 14px; color: #7f5200; font-weight: bold;">
-            🎁 <strong>Винагорода за знешкодження:</strong> -
+            <img class="game-icon" src="assets/icons/gift.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"> <strong>Винагорода за знешкодження:</strong> -
         </div>
 
         <!-- Характеристики -->
@@ -484,7 +485,7 @@
 
         <!-- Кнопка -->
   <!-- Кнопка штурму -->
-<button id="universal-dossier-start-btn" class="btn-outfit" style="width: 100%; background: #8c2b2b; color: #f4ebd0; padding: 12px; font-weight: bold; font-size: 14px; cursor: pointer; border-radius: 5px; border: 1px solid #5c1e1e; text-transform: uppercase; letter-spacing: 0.5px;">⚔️ Штурмувати кабінет</button>
+<button id="universal-dossier-start-btn" class="btn-outfit" style="width: 100%; background: #8c2b2b; color: #f4ebd0; padding: 12px; font-weight: bold; font-size: 14px; cursor: pointer; border-radius: 5px; border: 1px solid #5c1e1e; text-transform: uppercase; letter-spacing: 0.5px;"><img class="game-icon" src="assets/icons/swords.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"> Штурмувати кабінет</button>
     </div>
 </div>
 
@@ -501,7 +502,7 @@
         <div style="display: flex; flex-direction: column; gap: 10px; z-index: 5;" onclick="event.stopPropagation()">
             <div style="background: rgba(20, 15, 12, 0.94); border: 2px solid #5c4033; padding: 14px 18px; border-radius: 12px; width: 320px; color: #fff; display: flex; gap: 15px; align-items: center; box-shadow: 0 6px 20px rgba(0,0,0,0.85);">
                 <div id="player-battle-avatar-box" style="width: 70px; height: 70px; background: #2a1f18; border: 2px solid #8c5842; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 32px; flex-shrink: 0; overflow: hidden;">
-                    👤
+                    <img class="game-icon" src="assets/icons/user.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64">
                 </div>
                 <div style="flex-grow: 1;">
                     <div style="font-weight: bold; font-size: 18px; color: #e67e22; margin-bottom: 4px;" id="b-player-name">Пацієнт #404</div>
@@ -515,22 +516,22 @@
 
         <!-- ВЕРХ ПОСЕРЕДИНІ: Таймер рейду + Кнопка згортання та втечі -->
         <div style="position: absolute; left: 50%; top: 20px; transform: translateX(-50%); background: rgba(20, 15, 12, 0.95); border: 2px solid #e74c3c; padding: 6px 16px; border-radius: 20px; color: #e74c3c; font-weight: bold; font-size: 15px; z-index: 5; display: flex; align-items: center; gap: 10px; box-shadow: 0 0 15px rgba(231,76,60,0.4);" onclick="event.stopPropagation()">
-            <button title="Згорнути бій у лобі" style="background: none; border: none; color: #27ae60; font-size: 16px; cursor: pointer; padding: 0; font-weight: bold;" onclick="minimizeNurseBattle()" aria-label="Згорнути бій у лобі">⬅</button>
-            <span>⏱️ Час рейду: <span id="battle-timer-display">05:00</span></span>
-            <button title="Втекти з бою (Штраф)" style="background: none; border: none; color: #e74c3c; font-size: 15px; cursor: pointer; padding: 0; font-weight: bold; margin-left: 5px;" onclick="openFleeConfirmModal()" aria-label="Втекти з бою (Штраф)">🚪</button>
+            <button title="Згорнути бій у лобі" style="background: none; border: none; color: #27ae60; font-size: 16px; cursor: pointer; padding: 0; font-weight: bold;" onclick="minimizeNurseBattle()" aria-label="Згорнути бій у лобі"><img class="game-icon" src="assets/icons/back.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"></button>
+            <span><img class="game-icon" src="assets/icons/clock.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"> Час рейду: <span id="battle-timer-display">05:00</span></span>
+            <button title="Втекти з бою (Штраф)" style="background: none; border: none; color: #e74c3c; font-size: 15px; cursor: pointer; padding: 0; font-weight: bold; margin-left: 5px;" onclick="openFleeConfirmModal()" aria-label="Втекти з бою (Штраф)"><img class="game-icon" src="assets/icons/door.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"></button>
         </div>
 
         <!-- ЗЛІВА ПОСЕРЕДИНІ: Аптечки -->
         <div style="position: absolute; left: 25px; top: 55%; transform: translateY(-50%); background: rgba(20, 15, 12, 0.92); border: 1px solid #3d2d22; padding: 10px; border-radius: 10px; display: flex; flex-direction: column; gap: 8px; z-index: 5;" onclick="event.stopPropagation()">
-            <div style="font-size: 10px; color: #a3927d; text-align: center; margin-bottom: 2px; font-weight: bold;">🧪 АПТЕЧКИ</div>
+            <div style="font-size: 10px; color: #a3927d; text-align: center; margin-bottom: 2px; font-weight: bold;"><img class="game-icon" src="assets/icons/flask.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"> АПТЕЧКИ</div>
 
             <button id="medkit-btn-small" title="Мала аптечка (+10% HP)" class="btn-outfit" style="background: #2a1f18; border: 1px solid #5c4033; width: 44px; height: 44px; border-radius: 8px; font-size: 20px; cursor: pointer; position: relative;" onclick="useBattleMedkit('small')" aria-label="Мала аптечка (+10% HP)">
-                💊
+                <img class="game-icon" src="assets/icons/pills.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64">
                 <span id="medkit-count-small" style="position: absolute; bottom: 2px; right: 2px; font-size: 10px; background: #c0392b; color: #fff; padding: 1px 3px; border-radius: 3px; font-weight: bold;">0</span>
             </button>
 
             <button id="medkit-btn-big" title="Велика аптечка (повне відновлення HP)" class="btn-outfit" style="background: #2a1f18; border: 1px solid #5c4033; width: 44px; height: 44px; border-radius: 8px; font-size: 20px; cursor: pointer; position: relative;" onclick="useBattleMedkit('big')" aria-label="Велика аптечка (повне відновлення HP)">
-                💉
+                <img class="game-icon" src="assets/icons/syringe.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64">
                 <span id="medkit-count-big" style="position: absolute; bottom: 2px; right: 2px; font-size: 10px; background: #c0392b; color: #fff; padding: 1px 3px; border-radius: 3px; font-weight: bold;">0</span>
             </button>
         </div>
@@ -542,13 +543,13 @@
 
         <!-- СПРАВА ПОСЕРЕДИНІ: Кнопки виклику друзів та рейду -->
         <div style="position: absolute; right: 25px; top: 40%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 8px; z-index: 25;" onclick="event.stopPropagation()">
-            <button class="btn-outfit" style="background: #8e44ad; padding: 8px 14px; font-size: 11px; font-weight: bold; cursor: pointer; border-radius: 8px; color: #fff; box-shadow: 0 4px 12px rgba(0,0,0,0.6);" onclick="openFriendInviteModal()">📢 Покликати друзів</button>
-            <button class="btn-outfit" style="background: #2980b9; padding: 8px 14px; font-size: 11px; font-weight: bold; cursor: pointer; border-radius: 8px; color: #fff; box-shadow: 0 4px 12px rgba(0,0,0,0.6);" onclick="toggleRaidPanel()">👥 Список рейду</button>
+            <button class="btn-outfit" style="background: #8e44ad; padding: 8px 14px; font-size: 11px; font-weight: bold; cursor: pointer; border-radius: 8px; color: #fff; box-shadow: 0 4px 12px rgba(0,0,0,0.6);" onclick="openFriendInviteModal()"><img class="game-icon" src="assets/icons/megaphone.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"> Покликати друзів</button>
+            <button class="btn-outfit" style="background: #2980b9; padding: 8px 14px; font-size: 11px; font-weight: bold; cursor: pointer; border-radius: 8px; color: #fff; box-shadow: 0 4px 12px rgba(0,0,0,0.6);" onclick="toggleRaidPanel()"><img class="game-icon" src="assets/icons/people.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"> Список рейду</button>
         </div>
 
         <!-- КОМПАКТНА ПАНЕЛЬ СПИСКУ РЕЙДУ -->
         <div id="battle-raid-panel" class="hidden" style="position: absolute; right: 25px; top: 50%; width: 250px; background: rgba(20, 15, 12, 0.95); border: 1px solid #2980b9; padding: 10px; border-radius: 10px; z-index: 25; box-shadow: 0 6px 20px rgba(0,0,0,0.8);" onclick="event.stopPropagation()">
-            <div style="font-weight: bold; font-size: 12px; color: #3498db; margin-bottom: 6px; text-align: center; border-bottom: 1px dashed #3d2d22; padding-bottom: 4px;">👥 Учасники Рейду</div>
+            <div style="font-weight: bold; font-size: 12px; color: #3498db; margin-bottom: 6px; text-align: center; border-bottom: 1px dashed #3d2d22; padding-bottom: 4px;"><img class="game-icon" src="assets/icons/people.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"> Учасники Рейду</div>
             <div id="raid-members-container" style="max-height: 160px; overflow-y: auto; display: flex; flex-direction: column; gap: 4px;">
             </div>
         </div>
@@ -578,10 +579,10 @@
     <div style="background: #1c1511; border: 2px solid #8e44ad; width: 440px; padding: 25px; border-radius: 12px; color: #f4e8d1; font-family: sans-serif; position: relative; box-shadow: 0 0 30px rgba(142,68,173,0.5);">
         <button onclick="closeFriendInviteModal()" style="position: absolute; top: 12px; right: 12px; background: none; border: none; color: #fff; font-size: 22px; cursor: pointer;" aria-label="Закрити вікно">✕</button>
 
-        <h3 style="color: #9b59b6; margin-top: 0; text-align: center; border-bottom: 1px dashed #3d2d22; padding-bottom: 12px;">📢 Запросити друзів до рейду</h3>
+        <h3 style="color: #9b59b6; margin-top: 0; text-align: center; border-bottom: 1px dashed #3d2d22; padding-bottom: 12px;"><img class="game-icon" src="assets/icons/megaphone.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"> Запросити друзів до рейду</h3>
 
         <!-- Пошук друзів -->
-        <input type="text" id="friend-search-input" aria-label="Пошук друга для рейду" autocomplete="off" placeholder="🔍 Пошук друга..." oninput="filterFriendsList()" style="width: 100%; padding: 10px; background: #120e0b; border: 1px solid #5c4033; color: #fff; border-radius: 6px; box-sizing: border-box; margin-bottom: 15px; font-size: 13px;">
+        <input type="text" id="friend-search-input" aria-label="Пошук друга для рейду" autocomplete="off" placeholder="Пошук друга..." oninput="filterFriendsList()" style="width: 100%; padding: 10px; background: #120e0b; border: 1px solid #5c4033; color: #fff; border-radius: 6px; box-sizing: border-box; margin-bottom: 15px; font-size: 13px;">
 
         <!-- Список друзів з галочками -->
         <div id="friends-checkbox-container" style="max-height: 220px; overflow-y: auto; display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px;">
@@ -590,8 +591,8 @@
 
         <!-- Кнопки керування викликом -->
         <div style="display: flex; gap: 12px;">
-            <button class="btn-outfit" style="flex: 1; background: #8e44ad; padding: 10px; font-weight: bold; font-size: 13px; cursor: pointer; border-radius: 6px; color: #fff;" onclick="callSelectedFriends()">✅ Покликати обраних</button>
-            <button class="btn-outfit" style="flex: 1; background: #27ae60; padding: 10px; font-weight: bold; font-size: 13px; cursor: pointer; border-radius: 6px; color: #fff;" onclick="callAllFriends()">🔥 Покликати всіх</button>
+            <button class="btn-outfit" style="flex: 1; background: #8e44ad; padding: 10px; font-weight: bold; font-size: 13px; cursor: pointer; border-radius: 6px; color: #fff;" onclick="callSelectedFriends()"><img class="game-icon" src="assets/icons/check.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"> Покликати обраних</button>
+            <button class="btn-outfit" style="flex: 1; background: #27ae60; padding: 10px; font-weight: bold; font-size: 13px; cursor: pointer; border-radius: 6px; color: #fff;" onclick="callAllFriends()"><img class="game-icon" src="assets/icons/flame.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"> Покликати всіх</button>
         </div>
     </div>
 </div>
@@ -606,16 +607,16 @@
 <div id="nurse-victory-modal" role="dialog" aria-modal="true" aria-label="Результат бою" class="modal-overlay hidden" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(10, 8, 6, 0.75); backdrop-filter: blur(8px); z-index: 30000; display: flex; align-items: center; justify-content: center;">
     <div style="background: #1c1511; border: 2px solid #27ae60; width: 540px; padding: 30px; border-radius: 12px; color: #f4e8d1; text-align: center; font-family: sans-serif; box-shadow: 0 0 40px rgba(39,174,96,0.4);">
 
-        <div style="font-size: 45px; margin-bottom: 10px;">🎉</div>
+        <div style="font-size: 45px; margin-bottom: 10px;"><img class="game-icon" src="assets/icons/trophy.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"></div>
         <h2 style="color: #27ae60; margin: 0 0 10px 0; font-size: 26px;">Успішна зачистка кабінету!</h2>
         <p style="color: #bdaea0; font-size: 14px; margin-bottom: 20px;">Сестра Клара нейтралізована. Доступ до внутрішніх приміщень відкрито.</p>
 
         <!-- Здобич -->
         <div style="background: #15100c; border: 1px solid #3d2d22; padding: 15px; border-radius: 8px; margin-bottom: 18px; text-align: left;">
-            <div style="font-size: 13px; color: #f39c12; font-weight: bold; margin-bottom: 8px;">📦 ЗДОБИЧ ТА НАГОРОДИ:</div>
-            <div style="font-size: 13px; margin-bottom: 4px; color: #fff;">✨ Досвід: <strong>+50 EXP</strong></div>
-            <div style="font-size: 13px; margin-bottom: 4px; color: #fff;">🪙 Срібло: <strong>+30 Срібла</strong></div>
-            <div style="font-size: 13px; color: #fff;">🔑 Квестовий предмет: <strong>Ключ від блоку боса</strong></div>
+            <div style="font-size: 13px; color: #f39c12; font-weight: bold; margin-bottom: 8px;"><img class="game-icon" src="assets/icons/box.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"> ЗДОБИЧ ТА НАГОРОДИ:</div>
+            <div style="font-size: 13px; margin-bottom: 4px; color: #fff;"><img class="game-icon" src="assets/icons/star.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"> Досвід: <strong>+50 EXP</strong></div>
+            <div style="font-size: 13px; margin-bottom: 4px; color: #fff;"><img class="game-icon" src="assets/icons/coin.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"> Срібло: <strong>+30 Срібла</strong></div>
+            <div style="font-size: 13px; color: #fff;"><img class="game-icon" src="assets/icons/key.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"> Квестовий предмет: <strong>Ключ від блоку боса</strong></div>
         </div>
 
         <!-- Яскраво виділений MVP та звіт -->
@@ -624,8 +625,8 @@
         </div>
 
         <div style="display: flex; gap: 15px;">
-            <button class="btn-outfit" style="flex: 1; background: #27ae60; padding: 12px; font-weight: bold; font-size: 14px; cursor: pointer; border-radius: 6px; color: #fff;" onclick="victoryContinueToMap()">🗺️ Продовжити (На карту)</button>
-            <button class="btn-outfit" style="flex: 1; background: #c0392b; padding: 12px; font-weight: bold; font-size: 14px; cursor: pointer; border-radius: 6px; color: #fff;" onclick="victoryRestartFight()">🔄 Повторити бій</button>
+            <button class="btn-outfit" style="flex: 1; background: #27ae60; padding: 12px; font-weight: bold; font-size: 14px; cursor: pointer; border-radius: 6px; color: #fff;" onclick="victoryContinueToMap()"><img class="game-icon" src="assets/icons/map.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"> Продовжити (На карту)</button>
+            <button class="btn-outfit" style="flex: 1; background: #c0392b; padding: 12px; font-weight: bold; font-size: 14px; cursor: pointer; border-radius: 6px; color: #fff;" onclick="victoryRestartFight()"><img class="game-icon" src="assets/icons/repeat.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"> Повторити бій</button>
         </div>
 
     </div>

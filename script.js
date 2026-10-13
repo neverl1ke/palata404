@@ -228,19 +228,19 @@ const facesData = [
 ];
 
 const MEDICAL_ITEMS = Object.freeze({
-    madness_pills: { name: 'Таблетки «Аміназин»', icon: '💊', category: 'meds', effectType: 'madness', effectDesc: 'Знижує божевілля на 15', cost: 50, currency: 'silver' },
-    stamina_10: { name: 'Енергетик', icon: '🧃', category: 'meds', effectType: 'stamina_10', effectDesc: 'Відновлює 10% витривалості', cost: 2, currency: 'bucks' },
-    stamina_full: { name: 'Стимулятор', icon: '⚡', category: 'meds', effectType: 'stamina_full', effectDesc: 'Повністю відновлює витривалість', cost: 10, currency: 'bucks' },
-    hp_10: { name: 'Мала аптечка', icon: '🧪', category: 'meds', effectType: 'hp_10', effectDesc: 'Відновлює 10% здоров’я', cost: 30, currency: 'silver' },
-    hp_full: { name: 'Велика армійська аптечка', icon: '🩹', category: 'meds', effectType: 'hp_full', effectDesc: 'Повністю відновлює здоров’я', cost: 150, currency: 'silver' }
+    madness_pills: { name: 'Таблетки «Аміназин»', icon: 'pills', category: 'meds', effectType: 'madness', effectDesc: 'Знижує божевілля на 15', cost: 50, currency: 'silver' },
+    stamina_10: { name: 'Енергетик', icon: 'drink', category: 'meds', effectType: 'stamina_10', effectDesc: 'Відновлює 10% витривалості', cost: 2, currency: 'bucks' },
+    stamina_full: { name: 'Стимулятор', icon: 'lightning', category: 'meds', effectType: 'stamina_full', effectDesc: 'Повністю відновлює витривалість', cost: 10, currency: 'bucks' },
+    hp_10: { name: 'Мала аптечка', icon: 'medkit', category: 'meds', effectType: 'hp_10', effectDesc: 'Відновлює 10% здоров’я', cost: 30, currency: 'silver' },
+    hp_full: { name: 'Велика армійська аптечка', icon: 'surgery', category: 'meds', effectType: 'hp_full', effectDesc: 'Повністю відновлює здоров’я', cost: 150, currency: 'silver' }
 });
 
 const DEFAULT_INVENTORY = [
-    { name: 'Іржавий ніж', icon: '🔪', count: 1, category: 'weapon', damageBonus: 8, desc: 'Саморобний ніж з обломка медичного шпателя.' },
-    { name: 'ПМ (Пістолет Макарова)', icon: '🔫', count: 1, category: 'weapon', damageBonus: 18, desc: 'Табельний пістолет охорони.' },
-    { name: 'Штурмовий АКС-74У', icon: '⚡', count: 1, category: 'weapon', damageBonus: 35, desc: 'Укорочений автомат колишньої охорони.' },
-    { name: 'Побитий шолом санітара', icon: '🪖', count: 1, category: 'helmet', armorBonus: 12, desc: 'Протиударний шолом персоналу.' },
-    { name: 'Бронежилет БР-1', icon: '🛡️', count: 1, category: 'armor', armorBonus: 28, desc: 'Легкий армійський бронежилет.' }
+    { name: 'Іржавий ніж', icon: 'knife', count: 1, category: 'weapon', damageBonus: 8, desc: 'Саморобний ніж з обломка медичного шпателя.' },
+    { name: 'ПМ (Пістолет Макарова)', icon: 'pistol', count: 1, category: 'weapon', damageBonus: 18, desc: 'Табельний пістолет охорони.' },
+    { name: 'Штурмовий АКС-74У', icon: 'rifle', count: 1, category: 'weapon', damageBonus: 35, desc: 'Укорочений автомат колишньої охорони.' },
+    { name: 'Побитий шолом санітара', icon: 'helmet', count: 1, category: 'helmet', armorBonus: 12, desc: 'Протиударний шолом персоналу.' },
+    { name: 'Бронежилет БР-1', icon: 'shield', count: 1, category: 'armor', armorBonus: 28, desc: 'Легкий армійський бронежилет.' }
 ];
 
 let inventory = loadSaveData('palata404_inventory', DEFAULT_INVENTORY);
@@ -315,11 +315,11 @@ const gameFloorsData = [
         unlocked: true,
         mapImage: "map_floor_10.png",
         nodes: [
-            { id: "sec_room404", title: "🛏️ Палата 404", x: 38, y: 31, type: "room_404" },
-            { id: "sec1_collector", title: "⚙️ Ординаторська", x: 38, y: 44, type: "collector" },
-            { id: "sec_procedure", title: "💉 Медпункт", x: 38, y: 62, type: "procedure", bossKey: "nurse" },
-            { id: "sec2_grind", title: "🧱 Завал", x: 58, y: 50, type: "grind" },
-            { id: "sec3_boss", title: "👹 Черговий лікар", x: 82, y: 44, type: "boss", bossKey: "doctor", locked: true }
+            { id: "sec_room404", icon: "bed", title: "Палата 404", x: 38, y: 31, type: "room_404" },
+            { id: "sec1_collector", icon: "gear", title: "Ординаторська", x: 38, y: 44, type: "collector" },
+            { id: "sec_procedure", icon: "syringe", title: "Медпункт", x: 38, y: 62, type: "procedure", bossKey: "nurse" },
+            { id: "sec2_grind", icon: "rubble", title: "Завал", x: 58, y: 50, type: "grind" },
+            { id: "sec3_boss", icon: "boss", title: "Черговий лікар", x: 82, y: 44, type: "boss", bossKey: "doctor", locked: true }
         ]
     },
     {
@@ -426,7 +426,7 @@ function addExperience(amount) {
         stats.nextLvlExp = stats.level * 120;
         stats.maxHp += 5;
         stats.hp = stats.maxHp;
-        alert(`🎉 Вітаємо! Ви досягли ${stats.level} рівня!\nВаше звання: ${getPlayerRank(stats.level)}`);
+        alert(`Вітаємо! Ви досягли ${stats.level} рівня!\nВаше звання: ${getPlayerRank(stats.level)}`);
     }
 }
 
@@ -557,7 +557,7 @@ function updateUI() {
 
     if (stats.madness >= 100) {
         if (mapBtn) mapBtn.style.display = 'flex';
-        if (locTitleLabel) locTitleLabel.textContent = "⚠️ СИСТЕМНИЙ ЗБІЙ";
+        if (locTitleLabel) locTitleLabel.innerHTML = `${iconHTML("warning")} СИСТЕМНИЙ ЗБІЙ`;
         if (locName) locName.textContent = "ПОМИЛКА 404: Невідомо";
         if (locDesc) locDesc.textContent = "Реальність втрачено. Спокійний корпус недоступний...";
         if (locCardBox) locCardBox.style.borderColor = "#c0392b";
@@ -599,10 +599,10 @@ function showFloorsList() {
             <div>
                 <strong>${floor.title}</strong>
                 <div style="font-size: 11px; color: #8c7a6b; margin-top: 2px;">
-                    ${floor.unlocked ? 'План евакуації знайдено' : '🔒 План відсутній'}
+                    ${floor.unlocked ? 'План евакуації знайдено' : 'План відсутній'}
                 </div>
             </div>
-            <span>${floor.unlocked ? '🗺️ Відкрити' : '🔒'}</span>
+            <span>${iconHTML(floor.unlocked ? 'map' : 'lock')} ${floor.unlocked ? 'Відкрити' : 'Зачинено'}</span>
         `;
 
         if (floor.unlocked) {
@@ -629,7 +629,7 @@ function openFloorMap(floorId) {
     floor.nodes.forEach(node => {
         const btn = document.createElement('button');
         btn.className = `map-node-pin ${node.type === 'boss' ? 'node-boss' : ''} ${node.locked ? 'node-locked' : ''}`;
-        btn.innerText = node.title;
+        btn.innerHTML = `${iconHTML(node.icon)} ${escapeHTML(node.title)}`;
         btn.style.left = `${node.x}%`;
         btn.style.top = `${node.y}%`;
 
@@ -647,11 +647,11 @@ function openFloorMap(floorId) {
 
 function handleNodeClick(node, floor) {
     if (node.type === 'room_404') {
-        alert("🛏️ Палата #404. Твоє безпечне місце.");
+        alert("Палата #404. Твоє безпечне місце.");
     } else if (node.type === 'procedure') {
         openBossDossier(node.bossKey || 'nurse');
     } else if (node.type === 'collector') {
-        alert("⚙️ Автономний Збирач #1 працює!\nЗібрано луту: +15 Срібла, +1 Пігулка.");
+        alert("Автономний Збирач #1 працює!\nЗібрано луту: +15 Срібла, +1 Пігулка.");
         stats.silver += 15;
         stats.pills += 1;
         updateUI();
@@ -663,7 +663,7 @@ function handleNodeClick(node, floor) {
         }
         if (stats.energy >= 10) {
             stats.energy -= 10;
-            alert("⛏️ Ви розчистили завал у коридорі! Отримано 30 EXP та відкрито шлях до Боса!");
+            alert("Ви розчистили завал у коридорі! Отримано 30 EXP та відкрито шлях до Боса!");
             addExperience(30);
 
             gameProgress.rubbleCleared = true;
@@ -757,7 +757,7 @@ function renderMinecraftStash() {
             );
 
             slot.innerHTML = `
-                <span class="item-icon">${escapeHTML(item.icon)}</span>
+                <span class="item-icon">${iconHTML(item.icon)}</span>
                 ${item.count > 1 ? `<span class="item-count">${item.count}</span>` : ''}
                 ${isEquipped ? `<span style="position: absolute; top: 2px; left: 2px; font-size: 8px; background: #e74c3c; color: #fff; padding: 1px 3px; border-radius: 3px;">EQ</span>` : ''}
             `;
@@ -773,7 +773,7 @@ function renderMinecraftStash() {
 function openItemInfo(item) {
     selectedItemForAction = item;
     const titleElem = document.getElementById('item-info-title');
-    if (titleElem) titleElem.textContent = `${item.icon} ${item.name}`;
+    if (titleElem) titleElem.innerHTML = `${iconHTML(item.icon)} ${escapeHTML(item.name)}`;
 
     let bodyHtml = `<p style="color: #a3927d;">${escapeHTML(item.desc || 'Немає опису предмета.')}</p>`;
 
@@ -786,13 +786,13 @@ function openItemInfo(item) {
     const actionBtn = document.getElementById('item-action-btn');
 
     if (item.category === 'weapon') {
-        bodyHtml += `<div style="color: #e74c3c; margin-top: 5px;"><strong>⚔️ Бонус до урону:</strong> +${escapeHTML(item.damageBonus || 0)}</div>`;
+        bodyHtml += `<div style="color: #e74c3c; margin-top: 5px;"><strong>${iconHTML('swords')} Бонус до урону:</strong> +${escapeHTML(item.damageBonus || 0)}</div>`;
         if (actionBtn) actionBtn.textContent = isEquipped ? "Зняти" : "Озброїтися";
     } else if (item.category === 'armor' || item.category === 'helmet') {
-        bodyHtml += `<div style="color: #3498db; margin-top: 5px;"><strong>🛡️ Бонус до броні:</strong> +${escapeHTML(item.armorBonus || 0)}</div>`;
+        bodyHtml += `<div style="color: #3498db; margin-top: 5px;"><strong>${iconHTML('shield')} Бонус до броні:</strong> +${escapeHTML(item.armorBonus || 0)}</div>`;
         if (actionBtn) actionBtn.textContent = isEquipped ? "Зняти" : "Надіти спорядження";
     } else if (item.category === 'meds') {
-        bodyHtml += `<div style="color: #2ecc71; margin-top: 5px;"><strong>⚡ Ефект препарату:</strong> ${escapeHTML(item.effectDesc || 'Відновлює стан')}</div>`;
+        bodyHtml += `<div style="color: #2ecc71; margin-top: 5px;"><strong>${iconHTML('lightning')} Ефект препарату:</strong> ${escapeHTML(item.effectDesc || 'Відновлює стан')}</div>`;
         if (actionBtn) actionBtn.textContent = "Використати";
     } else {
         if (actionBtn) actionBtn.textContent = "Закрити";
@@ -891,11 +891,11 @@ function renderWardrobe() {
     if (currentWardrobeTab === 'body') {
         container.innerHTML = `
             <div class="outfit-card ${gender === 'male' ? 'active' : ''}">
-                <div>👨 Чоловіча стать</div>
+                <div>${iconHTML('male')} Чоловіча стать</div>
                 <button class="btn-outfit" onclick="setGender('male'); renderWardrobe();">Обрати</button>
             </div>
             <div class="outfit-card ${gender === 'female' ? 'active' : ''}">
-                <div>👩 Жіноча стать</div>
+                <div>${iconHTML('female')} Жіноча стать</div>
                 <button class="btn-outfit" onclick="setGender('female'); renderWardrobe();">Обрати</button>
             </div>
         `;
@@ -920,12 +920,12 @@ function renderWardrobe() {
 
 // === Спортзал та збереження прогресу ===
 const DEFAULT_GYM_EXERCISES = [
-    { id: 'squats', name: 'Присідання', icon: '🦵', current: 0, target: 15, energy: 2, madness: 1, exp: 5 },
-    { id: 'pushups', name: 'Віджимання', icon: '💪', current: 0, target: 12, energy: 3, madness: 2, exp: 8 },
-    { id: 'plank', name: 'Планка', icon: '🧘', current: 0, target: 10, energy: 4, madness: 2, exp: 10 },
-    { id: 'pullups', name: 'Підтягування', icon: '🦾', current: 0, target: 8, energy: 5, madness: 3, exp: 14 },
-    { id: 'stretching', name: 'Розтяжка', icon: '🤸', current: 0, target: 10, energy: 2, madness: 1, exp: 6 },
-    { id: 'shadowbox', name: 'Бій з тінню', icon: '🥊', current: 0, target: 5, energy: 6, madness: 5, exp: 20 }
+    { id: 'squats', name: 'Присідання', icon: 'squats', current: 0, target: 15, energy: 2, madness: 1, exp: 5 },
+    { id: 'pushups', name: 'Віджимання', icon: 'pushups', current: 0, target: 12, energy: 3, madness: 2, exp: 8 },
+    { id: 'plank', name: 'Планка', icon: 'plank', current: 0, target: 10, energy: 4, madness: 2, exp: 10 },
+    { id: 'pullups', name: 'Підтягування', icon: 'pullups', current: 0, target: 8, energy: 5, madness: 3, exp: 14 },
+    { id: 'stretching', name: 'Розтяжка', icon: 'stretch', current: 0, target: 10, energy: 2, madness: 1, exp: 6 },
+    { id: 'shadowbox', name: 'Бій з тінню', icon: 'boxing', current: 0, target: 5, energy: 6, madness: 5, exp: 20 }
 ];
 
 let gymComplex = loadSaveData('palata404_gym', {
@@ -1036,7 +1036,7 @@ function renderGymModal() {
         `;
         item.innerHTML = `
             <div style="display: flex; align-items: center; gap: 12px;">
-                <span style="font-size: 24px; background: rgba(0,0,0,0.3); padding: 6px; border-radius: 6px; border: 1px solid #3d2d22;">${ex.icon}</span>
+                <span style="font-size: 24px; background: rgba(0,0,0,0.3); padding: 6px; border-radius: 6px; border: 1px solid #3d2d22;">${iconHTML(ex.icon, 'large')}</span>
                 <div>
                     <strong style="color: ${isDone ? '#2ecc71' : '#fff8e7'}; font-size: 14px;">${ex.name} ${isDone ? '✓' : ''}</strong>
                     <div style="font-size: 11px; color: ${isDone ? '#27ae60' : '#a3927d'}; margin-top: 2px;">Прогрес: ${ex.current} / ${ex.target}</div>
@@ -1050,10 +1050,10 @@ function renderGymModal() {
 // === Лікувальний корпус ===
 let currentRoom = { id: 'room_404', name: 'Палата #404', desc: 'Стіни шепочуть тобі...' };
 const medicalRooms = [
-    { id: 'room_404', name: 'Палата #404', icon: '🛏️', desc: 'Твоя власна палата.' },
-    { id: 'gym', name: 'Зал реабілітації', icon: '🏋️', desc: 'Спортзал для вправ.' },
-    { id: 'treatment_room', name: 'Процедурний кабінет', icon: '💉', desc: 'Видача ліків.' },
-    { id: 'corridor', name: 'Коридор блоку', icon: '🚪', desc: 'Вихід у коридор.' }
+    { id: 'room_404', name: 'Палата #404', icon: 'bed', desc: 'Твоя власна палата.' },
+    { id: 'gym', name: 'Зал реабілітації', icon: 'dumbbell', desc: 'Спортзал для вправ.' },
+    { id: 'treatment_room', name: 'Процедурний кабінет', icon: 'syringe', desc: 'Видача ліків.' },
+    { id: 'corridor', name: 'Коридор блоку', icon: 'door', desc: 'Вихід у коридор.' }
 ];
 
 const savedRoomId = safeStorageGet('palata404_room');
@@ -1118,7 +1118,7 @@ function renderMedicalRooms() {
 
         item.innerHTML = `
             <div style="display: flex; align-items: center; gap: 12px;">
-                <span style="font-size: 24px; background: rgba(0,0,0,0.3); padding: 6px; border-radius: 6px; border: 1px solid #3d2d22;">${room.icon}</span>
+                <span style="font-size: 24px; background: rgba(0,0,0,0.3); padding: 6px; border-radius: 6px; border: 1px solid #3d2d22;">${iconHTML(room.icon, 'large')}</span>
                 <div>
                     <strong style="color: ${isCurrent ? '#f39c12' : '#fff8e7'}; font-size: 14px;">${room.name}</strong>
                     <div style="font-size: 11px; color: #a3927d; margin-top: 2px;">${room.desc}</div>
@@ -1296,7 +1296,7 @@ const bossesDatabase = {
         sprite: "nurse_sprite.png",
         bg: "nurse_bg.jpg",
         avatar: "nurse_avatar_battle.png",
-        questItem: { name: 'Ключ від блоку боса', icon: '🔑', category: 'quest', desc: 'Відкриває заблоковані двері спецблоку.' },
+        questItem: { name: 'Ключ від блоку боса', icon: 'key', category: 'quest', desc: 'Відкриває заблоковані двері спецблоку.' },
         dossier: {
             code: "001",
             threat: "ЗАГРОЗА: ВИСОКА",
@@ -1319,7 +1319,7 @@ const bossesDatabase = {
         sprite: "doctor_sprite.png",
         bg: "doctor_bg.jpg",
         avatar: "doctor_avatar_battle.jpg",
-        questItem: { name: 'Ключ від ізолятора', icon: '🗝️', category: 'quest', desc: 'Відкриває вихід із 10 поверху.' },
+        questItem: { name: 'Ключ від ізолятора', icon: 'key', category: 'quest', desc: 'Відкриває вихід із 10 поверху.' },
         dossier: {
             code: "002",
             threat: "ЗАГРОЗА: КРИТИЧНА",
@@ -1556,7 +1556,7 @@ function handleRaidTimeOut() {
     stopBattleTimers();
     closeNurseBattle();
     closeFriendInviteModal();
-    alert("⏱️ Час рейду вичерпано!");
+    alert("Час рейду вичерпано!");
     updateLobbyRaidWidget();
 }
 
@@ -1566,7 +1566,10 @@ function showCustomToast(msg) {
     if (!toast || !msgElem) return;
     clearTimeout(toastFadeTimeout);
     clearTimeout(toastHideTimeout);
-    msgElem.textContent = msg;
+    const message = String(msg ?? '');
+    const prefix = Object.keys(LEGACY_ICON_KEYS).find(marker => message.startsWith(marker));
+    const text = prefix ? message.slice(prefix.length).trimStart() : message;
+    msgElem.innerHTML = `${iconHTML(prefix || 'info')} ${escapeHTML(text)}`;
     toast.style.opacity = '1';
     toast.classList.remove('hidden');
     toastFadeTimeout = setTimeout(() => {
@@ -1671,7 +1674,7 @@ function openFleeConfirmModal() {
         stopBattleTimers();
         closeNurseBattle();
         closeFriendInviteModal();
-        showCustomToast("💨 Ви втекли з бою (-20 🪙)");
+        showCustomToast("💨 Ви втекли з бою (-20 срібла)");
     }
 }
 
@@ -1712,7 +1715,7 @@ function performPlayerAttack(event) {
             isBattleActive = false;
             stopBattleTimers();
             closeFriendInviteModal();
-            alert('💀 Бос вас здолав...');
+            alert('Бос вас здолав...');
             stats.hp = stats.maxHp;
             closeNurseBattle();
             updateUI();
@@ -1770,8 +1773,8 @@ function handleVictory() {
     const summaryElem = document.getElementById('victory-raid-summary');
     if (summaryElem && activeBoss) {
         summaryElem.innerHTML = `
-            <div style="font-weight: bold; color: #f39c12; margin-bottom: 8px;">👑 MVP: ${escapeHTML(sorted[0].name)} — ${sorted[0].damage} DMG</div>
-            <div style="font-size: 13px; color: #27ae60; margin-bottom: 6px;">🎁 Винагорода: +${activeBoss.expReward} EXP, +${activeBoss.silverReward} Срібла</div>
+            <div style="font-weight: bold; color: #f39c12; margin-bottom: 8px;">${iconHTML('crown')} MVP: ${escapeHTML(sorted[0].name)} — ${sorted[0].damage} DMG</div>
+            <div style="font-size: 13px; color: #27ae60; margin-bottom: 6px;">${iconHTML('gift')} Винагорода: +${activeBoss.expReward} EXP, +${activeBoss.silverReward} Срібла</div>
             ${sorted.map(m => `<div style="font-size: 12px;">• ${escapeHTML(m.name)}:${m.damage} DMG</div>`).join('')}
         `;
     }
@@ -1879,7 +1882,7 @@ const dossierImage = document.getElementById('universal-dossier-img');
 
         // Нагорода
         const rew = d.rewardsText || `+${boss.expReward || 0} EXP, +${boss.silverReward || 0} Срібла`;
-        setHTML('universal-dossier-rewards', `🎁 <strong>Винагорода за знешкодження:</strong> ${escapeHTML(rew)}`);
+        setHTML('universal-dossier-rewards', `${iconHTML('gift')} <strong>Винагорода за знешкодження:</strong> ${escapeHTML(rew)}`);
 
         // Характеристики
         setTxt('universal-dossier-hp', `${boss.hp || 0} HP`);

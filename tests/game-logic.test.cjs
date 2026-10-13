@@ -72,6 +72,7 @@ function game(saves = {}, deniedStorage = false) {
         setTimeout(callback, delay) { const id = ++sequence; timers.set(id, { at: now + delay, callback }); return id; },
         clearTimeout(id) { timers.delete(id); },
     });
+    vm.runInContext(fs.readFileSync(path.join(root, 'icons.js'), 'utf8'), context, { filename: 'icons.js' });
     vm.runInContext(source, context, { filename: 'script.js' });
     const run = code => vm.runInContext(code, context);
     for (const callback of listeners.get('DOMContentLoaded') || []) callback();
@@ -211,4 +212,29 @@ test('text escape and repeated toast remain safe and visible', () => {
     g.advance(2600);
     g.run('showCustomToast("second")');
     assert.equal(g.elements.get('custom-toast-notification').style.opacity, '1');
+});
+
+test('icon images accept only registered assets and preserve legacy emoji saves', () => {
+    const g = game();
+    assert.equal(g.run('resolveIconKey("🗝️")'), 'key');
+    assert.equal(g.run('resolveIconKey("__proto__")'), 'box');
+    assert.equal(g.run('resolveIconKey("https://example.org/track.svg")'), 'box');
+    assert.equal(g.run('resolveIconKey("<img src=x onerror=bad>")'), 'box');
+    assert.match(g.run('iconHTML("🔫")'), /src="assets\/icons\/pistol\.svg"/);
+    assert.doesNotMatch(g.run(`iconHTML(${JSON.stringify('<img onerror=bad>')}, ${JSON.stringify('" onerror=bad')})`), /onerror/);
+    for (const value of g.run('Object.values(GAME_ICONS)')) {
+        assert.ok(fs.existsSync(path.join(root, value)), value);
+        assert.doesNotMatch(fs.readFileSync(path.join(root, value), 'utf8'), /<script|<text|https?:\/\/(?!www.w3.org\/2000\/svg)/);
+    }
+});
+
+test('item names and notifications stay escaped next to decorative images', () => {
+    const g = game({
+        palata404_inventory: JSON.stringify([{ name: '<img onerror=bad>', icon: '<script>bad</script>', category: 'mod', count: 3 }]),
+    });
+    g.run('openItemInfo(inventory[0]); showCustomToast("<img onerror=bad>");');
+    assert.match(g.elements.get('item-info-title').innerHTML, /&lt;img onerror=bad&gt;/);
+    assert.match(g.elements.get('item-info-title').innerHTML, /assets\/icons\/box.svg/);
+    assert.match(g.elements.get('toast-message').innerHTML, /&lt;img onerror=bad&gt;/);
+    assert.equal(g.run('inventory[0].count'), 3);
 });
