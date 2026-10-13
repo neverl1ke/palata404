@@ -401,7 +401,15 @@ function updateCharacterLayers() {
     const hairImg = document.getElementById('layer-hair');
     const clothesImg = document.getElementById('layer-clothes');
 
-    if (faceImg) faceImg.classList.add('hidden');
+    if (faceImg) {
+        const selectedFace = facesData.find(face => face.id === currentFace);
+        if (selectedFace) {
+            faceImg.src = selectedFace.id;
+            faceImg.classList.remove('hidden');
+        } else {
+            faceImg.classList.add('hidden');
+        }
+    }
 
     if (hairImg) {
         if (currentHair) {
