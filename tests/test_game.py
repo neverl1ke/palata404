@@ -135,6 +135,7 @@ class GameTests(unittest.TestCase):
         self.load()
         self.page.evaluate('openCustomization(); setGender("female"); setFace("face_3.png");')
         self.assertEqual(self.page.locator('#layer-face').get_attribute('src'), 'face_3.png')
+        self.page.locator('#layer-face').wait_for(state='visible')
         self.assertTrue(self.page.locator('#layer-face').is_visible())
         self.page.reload(wait_until='networkidle')
         self.assertEqual(self.page.locator('#layer-body').get_attribute('src'), 'base_female.png')
@@ -293,8 +294,13 @@ class GameTests(unittest.TestCase):
             results = ROOT / 'test-results'
             results.mkdir(exist_ok=True)
             page.screenshot(path=str(results / 'mobile-battle.png'), full_page=True)
-            # The portrait arena is rotated: tap a visible target, not unrotated coordinates.
-            page.locator('#nurse-boss-sprite').tap()
+            # Decorative sprites don't receive pointer events; the arena underneath does.
+            target = page.locator('#nurse-boss-sprite').bounding_box()
+            x = target['x'] + target['width'] / 2
+            y = target['y'] + target['height'] / 2
+            self.assertTrue(page.evaluate('''({x,y}) => Boolean(
+                document.elementFromPoint(x,y)?.closest('#battle-arena-screen'))''', {'x': x, 'y': y}))
+            page.touchscreen.tap(x, y)
             self.assertEqual(page.evaluate('bossCurrentHp'), 110)
             page.evaluate('openFleeConfirmModal()')
             page.screenshot(path=str(results / 'mobile-lobby.png'), full_page=True)
