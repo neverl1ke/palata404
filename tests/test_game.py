@@ -290,11 +290,12 @@ class GameTests(unittest.TestCase):
             self.assertGreaterEqual(box['y'], -1)
             self.assertLessEqual(box['x'] + box['width'], 391)
             self.assertLessEqual(box['y'] + box['height'], 845)
-            page.locator('#battle-arena-screen').tap(position={'x': 400, 'y': 200})
-            self.assertEqual(page.evaluate('bossCurrentHp'), 110)
             results = ROOT / 'test-results'
             results.mkdir(exist_ok=True)
             page.screenshot(path=str(results / 'mobile-battle.png'), full_page=True)
+            # The portrait arena is rotated: tap a visible target, not unrotated coordinates.
+            page.locator('#nurse-boss-sprite').tap()
+            self.assertEqual(page.evaluate('bossCurrentHp'), 110)
             page.evaluate('openFleeConfirmModal()')
             page.screenshot(path=str(results / 'mobile-lobby.png'), full_page=True)
         finally:

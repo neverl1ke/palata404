@@ -943,9 +943,14 @@ gymComplex.exercises = DEFAULT_GYM_EXERCISES.map(defaultExercise => {
     return { ...defaultExercise, current };
 });
 gymComplex.completedRounds = typeof gymComplex.completedRounds === 'number'
-    && Number.isFinite(gymComplex.completedRounds)
+    && Number.isSafeInteger(gymComplex.completedRounds)
     ? Math.max(0, Math.floor(gymComplex.completedRounds))
     : 0;
+// Older versions recorded rounds in the gym save but not in the personal dossier.
+gymComplex.completedRounds = Math.max(gymComplex.completedRounds, stats.gymRounds);
+stats.gymRounds = gymComplex.completedRounds;
+stats.baseDamage = Math.max(stats.baseDamage, DEFAULT_STATS.damage + stats.gymRounds * 3);
+recalculateEquipmentStats();
 
 function saveGymProgress() {
     safeStorageSet('palata404_gym', JSON.stringify(gymComplex));
@@ -957,10 +962,6 @@ function openGym() {
         return;
     }
     closeOtherModals(['gym-modal']);
-    if (stats.madness >= 100) {
-        showCustomToast("❌ Тренування неможливі в стані повного психозу!");
-        return;
-    }
     closeInventory();
     closeCustomization();
     closeFriends();

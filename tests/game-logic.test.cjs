@@ -127,6 +127,20 @@ test('all five shop products can be purchased, invalid price does not spend fund
     assert.equal(g.run('inventory.filter(i=>i.category==="meds").length'), 5);
 });
 
+test('legacy gym rounds populate dossier and preserve permanent damage', () => {
+    const g = game({
+        palata404_gym: JSON.stringify({ completedRounds: 4 }),
+        palata404_stats: JSON.stringify({ gymRounds: 0, damage: 22 }),
+    });
+    g.run('openDossier()');
+    assert.equal(g.run('stats.gymRounds'), 4);
+    assert.equal(g.elements.get('dossier-gym-rounds').textContent, 4);
+    assert.equal(g.run('stats.damage'), 22);
+    const reload = game(Object.fromEntries(g.storage));
+    assert.equal(reload.run('stats.gymRounds'), 4);
+    assert.equal(reload.run('stats.damage'), 22);
+});
+
 test('medkits have consistent effects in battle and no charge at full health', () => {
     const g = game({ palata404_stats: '{"silver":1000}' });
     g.run('buyMedicalItem("hp_10",30,"silver"); buyMedicalItem("hp_full",150,"silver"); startBossFight("nurse");');
