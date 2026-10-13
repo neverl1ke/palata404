@@ -192,6 +192,7 @@ const DEFAULT_STATS = {
 };
 
 let stats = normalizeStats(loadSaveData('palata404_stats', DEFAULT_STATS));
+let lastKnownEnergy = stats.energy;
 
 let gender = localStorage.getItem('palata404_gender') || 'male'; 
 let currentHair = localStorage.getItem('palata404_hair') || '';
@@ -268,6 +269,14 @@ const gameFloorsData = [
     }
 ];
 
+let gameProgress = loadSaveData('palata404_progress', { rubbleCleared: false });
+gameProgress = { rubbleCleared: gameProgress.rubbleCleared === true };
+if (gameProgress.rubbleCleared) {
+    const mainFloor = gameFloorsData.find(floor => floor.id === 10);
+    const bossNode = mainFloor?.nodes.find(node => node.type === 'boss');
+    if (bossNode) bossNode.locked = false;
+}
+
 function loadSaveData(key, fallback) {
     let saved;
     try {
@@ -326,6 +335,8 @@ function saveGameProgress() {
     localStorage.setItem('palata404_face', currentFace);
     localStorage.setItem('palata404_clothes', currentClothes);
     localStorage.setItem('palata404_inventory', JSON.stringify(inventory));
+    localStorage.setItem('palata404_progress', JSON.stringify(gameProgress));
+    localStorage.setItem('palata404_boss_kills', JSON.stringify(bossKillsCount));
 }
 
 function getPlayerRank(level) {
@@ -395,6 +406,13 @@ function updateCharacterLayers() {
 }
 
 function updateUI() {
+    const wasAtMaxEnergy = lastKnownEnergy >= stats.maxEnergy;
+    const isAtMaxEnergy = stats.energy >= stats.maxEnergy;
+    if (wasAtMaxEnergy !== isAtMaxEnergy) {
+        localStorage.setItem('palata404_last_time', Date.now().toString());
+    }
+    lastKnownEnergy = stats.energy;
+
     const hpValElem = document.getElementById('hp-val');
     if (hpValElem) hpValElem.textContent = `${stats.hp} / ${stats.maxHp}`;
 
@@ -549,11 +567,16 @@ function handleNodeClick(node, floor) {
         stats.pills += 1;
         updateUI();
     } else if (node.type === 'grind') {
+        if (gameProgress.rubbleCleared) {
+            showCustomToast("Завал уже розчищено.");
+            return;
+        }
         if (stats.energy >= 10) {
             stats.energy -= 10;
             alert("⛏️ Ви розчистили завал у коридорі! Отримано 30 EXP та відкрито шлях до Боса!");
             addExperience(30);
             
+            gameProgress.rubbleCleared = true;
             const bossNode = floor.nodes.find(n => n.type === 'boss');
             if (bossNode) bossNode.locked = false;
             
@@ -1032,16 +1055,45 @@ function buyMedicalItem(itemType, cost, currencyType) {
 }
 
 const ENERGY_REGEN_TIME_MS = 2 * 60 * 1000;
+if (stats.energy >= stats.maxEnergy) {
+    localStorage.setItem('palata404_last_time', Date.now().toString());
+}
+
 function updateEnergyTimer() {
-    let tElem = document.getElementById('energy-timer');
-    if (!tElem || stats.energy >= stats.maxEnergy) return;
-    let last = parseInt(localStorage.getItem('palata404_last_time') || Date.now(), 10);
-    let diff = Date.now() - last;
-    if (diff >= ENERGY_REGEN_TIME_MS) {
-        stats.energy = Math.min(stats.maxEnergy, stats.energy + Math.floor(diff / ENERGY_REGEN_TIME_MS));
-        localStorage.setItem('palata404_last_time', Date.now().toString());
+    const timerElem = document.getElementById('energy-timer');
+    if (!timerElem) return;
+
+    const now = Date.now();
+    const storedTime = Number(localStorage.getItem('palata404_last_time') || now);
+    let lastTime = Number.isFinite(storedTime) && storedTime <= now ? storedTime : now;
+    if (lastTime !== storedTime) {
+        localStorage.setItem('palata404_last_time', lastTime.toString());
+    }
+
+    if (stats.energy >= stats.maxEnergy) {
+        timerElem.textContent = '';
+        return;
+    }
+
+    const elapsed = Math.max(0, now - lastTime);
+    const recovered = Math.floor(elapsed / ENERGY_REGEN_TIME_MS);
+    if (recovered > 0) {
+        stats.energy = Math.min(stats.maxEnergy, stats.energy + recovered);
+        lastTime += recovered * ENERGY_REGEN_TIME_MS;
+        if (stats.energy >= stats.maxEnergy) lastTime = now;
+        localStorage.setItem('palata404_last_time', lastTime.toString());
         updateUI();
     }
+
+    if (stats.energy >= stats.maxEnergy) {
+        timerElem.textContent = '';
+        return;
+    }
+
+    const remaining = Math.max(0, ENERGY_REGEN_TIME_MS - (now - lastTime));
+    const minutes = Math.floor(remaining / 60000);
+    const seconds = Math.floor((remaining % 60000) / 1000);
+    timerElem.textContent = `+1 через ${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
 }
 setInterval(updateEnergyTimer, 1000);
 
@@ -1123,7 +1175,11 @@ const bossesDatabase = {
 let currentBossKey = 'nurse';
 let bossCurrentHp = 120;
 let bossMaxHp = 120;
-let bossKillsCount = {};
+let bossKillsCount = loadSaveData('palata404_boss_kills', {});
+Object.keys(bossesDatabase).forEach(key => {
+    const count = bossKillsCount[key];
+    bossKillsCount[key] = Number.isSafeInteger(count) && count >= 0 ? count : 0;
+});
 
 let isBattleActive = false;
 let raidTimeRemaining = 300;
@@ -1170,6 +1226,13 @@ function closeDoctorDossier() {
 }
 
 // === УНІВЕРСАЛЬНИЙ ЗАПУСК БОЮ ===
+function stopBattleTimers() {
+    if (raidTimerInterval) clearInterval(raidTimerInterval);
+    if (friendAttackInterval) clearInterval(friendAttackInterval);
+    raidTimerInterval = null;
+    friendAttackInterval = null;
+}
+
 function startBossFight(bossKey) {
     const boss = bossesDatabase[bossKey];
     if (!boss) return;
@@ -1232,10 +1295,8 @@ function startBossFight(bossKey) {
         battleModal.style.display = 'flex';
     }
 
-    if (raidTimerInterval) clearInterval(raidTimerInterval);
+    stopBattleTimers();
     raidTimerInterval = setInterval(updateRaidTimerTick, 1000);
-
-    if (friendAttackInterval) clearInterval(friendAttackInterval);
     friendAttackInterval = setInterval(friendsAutoAttackTick, 3500);
 
     updateLobbyRaidWidget();
@@ -1308,8 +1369,7 @@ function updateLobbyRaidWidget(timeStr = '') {
 
 function handleRaidTimeOut() {
     isBattleActive = false;
-    clearInterval(raidTimerInterval);
-    clearInterval(friendAttackInterval);
+    stopBattleTimers();
     closeNurseBattle();
     alert("⏱️ Час рейду вичерпано!");
     updateLobbyRaidWidget();
@@ -1416,8 +1476,7 @@ function openFleeConfirmModal() {
         stats.silver = Math.max(0, stats.silver - 20);
         updateUI();
         isBattleActive = false;
-        clearInterval(raidTimerInterval);
-        clearInterval(friendAttackInterval);
+        stopBattleTimers();
         closeNurseBattle();
         showCustomToast("💨 Ви втекли з бою (-20 🪙)");
     }
@@ -1454,6 +1513,7 @@ function performPlayerAttack(event) {
 
         if (stats.hp <= 0) {
             isBattleActive = false;
+            stopBattleTimers();
             alert("💀 Бос вас здолав...");
             stats.hp = stats.maxHp;
             closeNurseBattle();
@@ -1481,10 +1541,10 @@ function friendsAutoAttackTick() {
 
 function handleVictory() {
     isBattleActive = false;
-    clearInterval(raidTimerInterval);
-    clearInterval(friendAttackInterval);
+    stopBattleTimers();
     
     bossKillsCount[currentBossKey] = (bossKillsCount[currentBossKey] || 0) + 1;
+    stats.bossesKilled += 1;
     closeNurseBattle();
     updateLobbyRaidWidget();
 
