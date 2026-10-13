@@ -293,33 +293,30 @@
         </div>
     </div>
 
-    <!-- Модальне вікно: Спортзал / Комплекс вправ -->
+<!-- Модальне вікно: Спортзал / Комплекс вправ -->
     <div id="gym-modal" class="modal center-modal hidden">
-        <div class="modal-content" style="width: min(440px, 92vw);">
-            <div class="modal-header">
-                <h3>🏋️ Спортивний зал реабілітації</h3>
+        <div class="modal-content" style="width: min(460px, 92vw); background: rgba(20, 15, 12, 0.96); border: 2px solid #5c4033; box-shadow: 0 15px 35px rgba(0,0,0,0.9);">
+            <div class="modal-header" style="border-bottom: 1px solid #3d2d22;">
+                <h3 style="color: #e8d7be; font-family: 'Special Elite', cursive; font-size: 17px;">🏋️ Спортивний зал реабілітації</h3>
                 <button class="btn-close-mini" onclick="closeGym()">✕</button>
             </div>
             <div style="display: flex; flex-direction: column; gap: 10px; font-size: 13px;">
-                <p style="color: #a3927d; font-size: 12px;">Виконуйте вправи щодня. Закрийте весь комплекс із 6 вправ, щоб отримати потужний бойовий баф (+3 до урону) та досвід!</p>
-                <div id="gym-exercises-list" style="display: flex; flex-direction: column; gap: 6px; max-height: 280px; overflow-y: auto;"></div>
+                <p style="color: #a3927d; font-size: 12px; line-height: 1.4;">Виконуйте вправи щодня. Закрийте весь комплекс із 6 вправ, щоб отримати потужний бойовий баф (<strong style="color: #f39c12;">+3 до урону</strong>) та досвід!</p>
+                <div id="gym-exercises-list" style="display: flex; flex-direction: column; gap: 8px; max-height: 290px; overflow-y: auto; padding-right: 4px;"></div>
             </div>
         </div>
     </div>
 
-    <!-- Модальне вікно: Лікувальний корпус (Вибір секторів) -->
+ <!-- Модальне вікно: Лікувальний корпус (Вибір секторів) -->
     <div id="medical-hub-modal" class="modal center-modal hidden">
-        <div class="modal-content" style="width: min(420px, 92vw);">
-            <div class="modal-header">
-                <h3>🏥 Лікувальний корпус</h3>
+        <div class="modal-content" style="width: min(440px, 92vw); background: rgba(20, 15, 12, 0.96); border: 2px solid #5c4033; box-shadow: 0 15px 35px rgba(0,0,0,0.9);">
+            <div class="modal-header" style="border-bottom: 1px solid #3d2d22;">
+                <h3 style="color: #e8d7be; font-family: 'Special Elite', cursive; font-size: 17px;">🏥 Лікувальний корпус</h3>
                 <button class="btn-close-mini" onclick="closeMedicalHub()">✕</button>
             </div>
-            <div style="display: flex; flex-direction: column; gap: 10px; font-size: 13px;">
-                <p style="color: #a3927d; font-size: 12px;">Оберіть сектор лікувального корпусу для переходу:</p>
-                
-                <div id="rooms-list-container" style="display: flex; flex-direction: column; gap: 8px;">
-                    <!-- Динамічно заповнюється кімнатами -->
-                </div>
+            <div style="display: flex; flex-direction: column; gap: 10px; font-size: 13px; padding-top: 4px;">
+                <p style="color: #a3927d; font-size: 12px; margin-bottom: 4px;">Оберіть сектор лікувального корпусу для переходу:</p>
+                <div id="rooms-list-container" style="display: flex; flex-direction: column; gap: 8px;"></div>
             </div>
         </div>
     </div>

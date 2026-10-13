@@ -921,3 +921,18 @@ body {
     text-transform: uppercase;
     font-family: 'Share Tech Mono', monospace;
 }
+/* Стильні темні скролбари для модальних вікон */
+::-webkit-scrollbar {
+    width: 6px;
+}
+::-webkit-scrollbar-track {
+    background: rgba(15, 11, 8, 0.6);
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb {
+    background: #4a382c;
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #8c684d;
+}

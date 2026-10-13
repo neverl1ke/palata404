@@ -746,7 +746,7 @@ function renderWardrobe() {
     }
 }
 
-// === Спортзал ===
+// === Спортзал та збереження прогресу ===
 let gymComplex = loadSaveData('palata404_gym', {
     exercises: [
         { id: 'squats', name: 'Присідання', icon: '🦵', current: 0, target: 15, energy: 2, madness: 1, exp: 5 },
@@ -759,9 +759,13 @@ let gymComplex = loadSaveData('palata404_gym', {
     completedRounds: 0
 });
 
+function saveGymProgress() {
+    localStorage.setItem('palata404_gym', JSON.stringify(gymComplex));
+}
+
 function openGym() {
     if (stats.madness >= 100) {
-        alert("❌ Тренування неможливі в стані повного психозу!");
+        showCustomToast("❌ Тренування неможливі в стані повного психозу!");
         return;
     }
     closeInventory();
@@ -782,7 +786,18 @@ function closeGym() {
 
 function doGymExercise(exId) {
     let ex = gymComplex.exercises.find(e => e.id === exId);
-    if (!ex || ex.current >= ex.target || stats.energy < ex.energy) return;
+    if (!ex) {
+        console.error("Вправу не знайдено:", exId);
+        return;
+    }
+    if (ex.current >= ex.target) {
+        showCustomToast("⚠️ Цю вправу вже виконано на сьогодні!");
+        return;
+    }
+    if (stats.energy < ex.energy) {
+        showCustomToast("⚡ Недостатньо витривалості для цієї вправи!");
+        return;
+    }
 
     stats.energy -= ex.energy;
     stats.madness = Math.min(100, stats.madness + ex.madness);
@@ -795,7 +810,7 @@ function doGymExercise(exId) {
         stats.gymRounds = (stats.gymRounds || 0) + 1;
         stats.damage = (stats.damage || 10) + 3;
         addExperience(100);
-        alert(`🏆 ВЕЛИКИЙ БАФ! Урон збільшено на +3!`);
+        showCustomToast("🏆 ВЕЛИКИЙ БАФ! Урон збільшено на +3!");
         gymComplex.exercises.forEach(e => e.current = 0);
     }
 
@@ -812,21 +827,25 @@ function renderGymModal() {
     gymComplex.exercises.forEach(ex => {
         let isDone = ex.current >= ex.target;
         let item = document.createElement('div');
-        item.style.cssText = "display: flex; justify-content: space-between; align-items: center; background: #261f1a; padding: 8px 12px; border-radius: 6px; border: 1px solid #4a382c;";
+        item.style.cssText = `
+            display: flex; justify-content: space-between; align-items: center; 
+            background: ${isDone ? 'rgba(39, 174, 96, 0.08)' : 'rgba(30, 23, 18, 0.85)'}; 
+            padding: 10px 14px; border-radius: 8px; 
+            border: 1px solid ${isDone ? 'rgba(39, 174, 96, 0.4)' : '#3d2d22'};
+        `;
         item.innerHTML = `
-            <div style="display: flex; align-items: center; gap: 10px;">
-                <span style="font-size: 20px;">${ex.icon}</span>
+            <div style="display: flex; align-items: center; gap: 12px;">
+                <span style="font-size: 24px; background: rgba(0,0,0,0.3); padding: 6px; border-radius: 6px; border: 1px solid #3d2d22;">${ex.icon}</span>
                 <div>
-                    <strong style="color: ${isDone ? '#2ecc71' : '#fff8e7'};">${ex.name} ${isDone ? '✓' : ''}</strong>
-                    <div style="font-size: 11px; color: #a3927d;">Прогрес: ${ex.current} / ${ex.target}</div>
+                    <strong style="color: ${isDone ? '#2ecc71' : '#fff8e7'}; font-size: 14px;">${ex.name} ${isDone ? '✓' : ''}</strong>
+                    <div style="font-size: 11px; color: ${isDone ? '#27ae60' : '#a3927d'}; margin-top: 2px;">Прогрес: ${ex.current} / ${ex.target}</div>
                 </div>
             </div>
-            <button class="btn-outfit" onclick="doGymExercise('${ex.id}')" ${isDone ? 'disabled style="opacity: 0.4;"' : ''}>${isDone ? 'Виконано' : 'Робити'}</button>
+            <button class="btn-outfit" onclick="doGymExercise('${ex.id}')" ${isDone ? 'disabled style="background: rgba(39, 174, 96, 0.2); border-color: #27ae60; color: #2ecc71; opacity: 0.7; cursor: default;"' : 'style="background: #594333; border-color: #8c684d; padding: 6px 14px; font-weight: bold;"'}>${isDone ? 'Виконано' : 'Робити'}</button>
         `;
         container.appendChild(item);
     });
 }
-
 // === Лікувальний корпус ===
 let currentRoom = { id: 'room_404', name: 'Палата #404', desc: 'Стіни шепочуть тобі...' };
 const medicalRooms = [
@@ -869,15 +888,24 @@ function renderMedicalRooms() {
     medicalRooms.forEach(room => {
         let isCurrent = currentRoom.id === room.id;
         let item = document.createElement('div');
-        item.style.cssText = `display: flex; justify-content: space-between; align-items: center; background: ${isCurrent ? '#3d2e24' : '#261f1a'}; padding: 10px 12px; border-radius: 6px; border: 1px solid #4a382c;`;
+        item.style.cssText = `
+            display: flex; justify-content: space-between; align-items: center; 
+            background: ${isCurrent ? 'rgba(89, 67, 51, 0.35)' : 'rgba(30, 23, 18, 0.85)'}; 
+            padding: 10px 14px; border-radius: 8px; 
+            border: 1px solid ${isCurrent ? '#8c684d' : '#3d2d22'};
+            transition: all 0.2s ease;
+        `;
         let btnHtml = room.id === 'treatment_room' 
-            ? `<button class="btn-outfit" onclick="openProcedureRoom()">Відкрити</button>`
-            : `<button class="btn-outfit" onclick="selectRoom('${room.id}')">${isCurrent ? 'Ви тут' : 'Перейти'}</button>`;
+            ? `<button class="btn-outfit" style="background: #594333; border-color: #8c684d; padding: 6px 14px; font-weight: bold;" onclick="openProcedureRoom()">Відкрити</button>`
+            : `<button class="btn-outfit" style="background: ${isCurrent ? '#2c221e' : '#594333'}; border-color: ${isCurrent ? '#4a382c' : '#8c684d'}; padding: 6px 14px; font-weight: bold;" onclick="selectRoom('${room.id}')" ${isCurrent ? 'disabled style="opacity: 0.6; cursor: default;"' : ''}>${isCurrent ? 'Ви тут' : 'Перейти'}</button>`;
 
         item.innerHTML = `
-            <div style="display: flex; align-items: center; gap: 10px;">
-                <span style="font-size: 22px;">${room.icon}</span>
-                <div><strong style="color: #fff8e7;">${room.name}</strong></div>
+            <div style="display: flex; align-items: center; gap: 12px;">
+                <span style="font-size: 24px; background: rgba(0,0,0,0.3); padding: 6px; border-radius: 6px; border: 1px solid #3d2d22;">${room.icon}</span>
+                <div>
+                    <strong style="color: ${isCurrent ? '#f39c12' : '#fff8e7'}; font-size: 14px;">${room.name}</strong>
+                    <div style="font-size: 11px; color: #a3927d; margin-top: 2px;">${room.desc}</div>
+                </div>
             </div>
             ${btnHtml}
         `;
@@ -967,7 +995,7 @@ const bossesDatabase = {
             code: "001",
             threat: "ЗАГРОЗА: ВИСОКА",
             callsign: "«ПРОЦЕДУРНА»",
-            cardImg: "dossier/nurse_dossier_card.png", // <--- ТОЧНА НАЗВА ФАЙЛУ
+            cardImg: "nurse_dossier_card.png", // <--- ТОЧНА НАЗВА ФАЙЛУ
             role: "Старша медсестра",
             status: "Патологічна агресія",
             location: "Процедурний блок, 10-й поверх",
@@ -986,7 +1014,7 @@ const bossesDatabase = {
             code: "002",
             threat: "ЗАГРОЗА: КРИТИЧНА",
             callsign: "«НАБЛЮДАЧ»",
-            cardImg: "dossier/doctor_dossier_card.png", // <--- ТОЧНА НАЗВА ФАЙЛУ
+            cardImg: "doctor_dossier_card.png", // <--- ТОЧНА НАЗВА ФАЙЛУ
             role: "Старший черговий лікар",
             status: "Зв'язок втрачено / Мутація",
             location: "Кабінет спостереження, 10-й поверх",
@@ -1434,9 +1462,8 @@ function openBossDossier(bossKey) {
         setTxt('universal-dossier-callsign', `ПОЗИВНИЙ: ${d.callsign || '«НЕВІДОМО»'}`);
 
 // --- ФОТОГРАФІЯ ---
+// --- ФОТОГРАФІЯ ---
 document.getElementById('universal-dossier-img').src = `${bossKey}_dossier_card.png`;
-
-        // Відомості та відхилення
         setHTML('universal-dossier-role', `<strong>Посада:</strong> ${d.role || '-'}`);
         setHTML('universal-dossier-status', `<strong>Статус:</strong> ${d.status || d.diagnosis || '-'}`);
         setHTML('universal-dossier-location', `<strong>Локація:</strong> ${d.location || d.subtitle || '-'}`);
