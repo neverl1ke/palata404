@@ -1096,17 +1096,28 @@ function startBossFight(bossKey) {
 
     closeNurseDossier();
     closeDoctorDossier();
+    closeUniversalDossier();
     toggleMapModal(false);
 
     currentBossKey = bossKey;
     bossCurrentHp = boss.hp;
     bossMaxHp = boss.hp;
     
-    document.getElementById('nurse-boss-sprite').src = boss.sprite;
-    document.getElementById('battle-arena-screen').style.backgroundImage = `url('${boss.bg}')`;
-    document.getElementById('battle-boss-name').textContent = boss.name;
-    document.getElementById('battle-boss-avatar').src = boss.avatar;
-    document.getElementById('battle-boss-avatar').alt = boss.name;
+    // Динамическая подгрузка картинки, фона, имени и аватарки босса
+    const spriteElem = document.getElementById('nurse-boss-sprite');
+    if (spriteElem) spriteElem.src = boss.sprite;
+
+    const arenaElem = document.getElementById('battle-arena-screen');
+    if (arenaElem) arenaElem.style.backgroundImage = `url('${boss.bg}')`;
+
+    const nameElem = document.getElementById('battle-boss-name');
+    if (nameElem) nameElem.textContent = boss.name;
+
+    const avatarElem = document.getElementById('battle-boss-avatar');
+    if (avatarElem) {
+        avatarElem.src = boss.avatar;
+        avatarElem.alt = boss.name;
+    }
 
     stats.hp = stats.maxHp;
     updateUI();
@@ -1127,8 +1138,11 @@ function startBossFight(bossKey) {
     });
     
     updateBattleUI();
-    document.getElementById('nurse-battle-modal').classList.remove('hidden');
-    document.getElementById('nurse-battle-modal').style.display = 'flex';
+    const battleModal = document.getElementById('nurse-battle-modal');
+    if (battleModal) {
+        battleModal.classList.remove('hidden');
+        battleModal.style.display = 'flex';
+    }
 
     if (raidTimerInterval) clearInterval(raidTimerInterval);
     raidTimerInterval = setInterval(updateRaidTimerTick, 1000);
