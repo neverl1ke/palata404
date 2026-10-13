@@ -20,8 +20,25 @@ if (tg) {
     }
 }
 
+function safeStorageGet(key) {
+    try {
+        return window.localStorage?.getItem(key) ?? null;
+    } catch (e) {
+        return null;
+    }
+}
+
+function safeStorageSet(key, value) {
+    try {
+        window.localStorage?.setItem(key, value);
+        return true;
+    } catch (e) {
+        return false;
+    }
+}
+
 function getInitialUsername() {
-    const savedName = localStorage.getItem('palata404_nickname');
+    const savedName = safeStorageGet('palata404_nickname');
     if (savedName) return savedName;
 
     if (tg && tg.initDataUnsafe && tg.initDataUnsafe.user) {
@@ -46,7 +63,7 @@ function changeNickname() {
     const newName = prompt("Введіть ваш новий нікнейм:", playerName);
     if (newName && newName.trim() !== "") {
         playerName = newName.trim().substring(0, 20);
-        localStorage.setItem('palata404_nickname', playerName);
+        safeStorageSet('palata404_nickname', playerName);
         updatePlayerNameDisplay();
         closeSettings();
     }
@@ -63,10 +80,10 @@ function getPlayerUniqueId() {
         };
     }
 
-    let webId = localStorage.getItem('palata404_web_id');
+    let webId = safeStorageGet('palata404_web_id');
     if (!webId) {
         webId = 'WEB-' + Math.floor(100000 + Math.random() * 900000);
-        localStorage.setItem('palata404_web_id', webId);
+        safeStorageSet('palata404_web_id', webId);
     }
     
     return {
@@ -131,7 +148,7 @@ function addFriend() {
     }
 
     friendsList.push({ identifier: val, status: 'На зв\'язку' });
-    localStorage.setItem('palata404_friends', JSON.stringify(friendsList));
+    safeStorageSet('palata404_friends', JSON.stringify(friendsList));
     
     input.value = '';
     renderFriendsList();
@@ -164,7 +181,7 @@ function renderFriendsList() {
 
 function removeFriend(index) {
     friendsList.splice(index, 1);
-    localStorage.setItem('palata404_friends', JSON.stringify(friendsList));
+    safeStorageSet('palata404_friends', JSON.stringify(friendsList));
     renderFriendsList();
 }
 
@@ -194,10 +211,10 @@ const DEFAULT_STATS = {
 let stats = normalizeStats(loadSaveData('palata404_stats', DEFAULT_STATS));
 let lastKnownEnergy = stats.energy;
 
-let gender = localStorage.getItem('palata404_gender') || 'male'; 
-let currentHair = localStorage.getItem('palata404_hair') || '';
-let currentFace = localStorage.getItem('palata404_face') || ''; 
-let currentClothes = localStorage.getItem('palata404_clothes') || '';
+let gender = safeStorageGet('palata404_gender') || 'male'; 
+let currentHair = safeStorageGet('palata404_hair') || '';
+let currentFace = safeStorageGet('palata404_face') || ''; 
+let currentClothes = safeStorageGet('palata404_clothes') || '';
 
 const facesData = [
     { id: 'face_1.png', name: 'Обличчя #1 (Голений)' },
@@ -280,7 +297,7 @@ if (gameProgress.rubbleCleared) {
 function loadSaveData(key, fallback) {
     let saved;
     try {
-        saved = localStorage.getItem(key);
+        saved = safeStorageGet(key);
     } catch (e) {
         return fallback;
     }
@@ -329,14 +346,14 @@ function normalizeStats(savedStats) {
 }
 
 function saveGameProgress() {
-    localStorage.setItem('palata404_stats', JSON.stringify(stats));
-    localStorage.setItem('palata404_gender', gender);
-    localStorage.setItem('palata404_hair', currentHair);
-    localStorage.setItem('palata404_face', currentFace);
-    localStorage.setItem('palata404_clothes', currentClothes);
-    localStorage.setItem('palata404_inventory', JSON.stringify(inventory));
-    localStorage.setItem('palata404_progress', JSON.stringify(gameProgress));
-    localStorage.setItem('palata404_boss_kills', JSON.stringify(bossKillsCount));
+    safeStorageSet('palata404_stats', JSON.stringify(stats));
+    safeStorageSet('palata404_gender', gender);
+    safeStorageSet('palata404_hair', currentHair);
+    safeStorageSet('palata404_face', currentFace);
+    safeStorageSet('palata404_clothes', currentClothes);
+    safeStorageSet('palata404_inventory', JSON.stringify(inventory));
+    safeStorageSet('palata404_progress', JSON.stringify(gameProgress));
+    safeStorageSet('palata404_boss_kills', JSON.stringify(bossKillsCount));
 }
 
 function getPlayerRank(level) {
@@ -409,7 +426,7 @@ function updateUI() {
     const wasAtMaxEnergy = lastKnownEnergy >= stats.maxEnergy;
     const isAtMaxEnergy = stats.energy >= stats.maxEnergy;
     if (wasAtMaxEnergy !== isAtMaxEnergy) {
-        localStorage.setItem('palata404_last_time', Date.now().toString());
+        safeStorageSet('palata404_last_time', Date.now().toString());
     }
     lastKnownEnergy = stats.energy;
 
@@ -775,7 +792,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
 
-            localStorage.setItem('palata404_equipped', JSON.stringify(equippedGear));
+            safeStorageSet('palata404_equipped', JSON.stringify(equippedGear));
             updateUI();
             closeItemInfo();
             renderMinecraftStash();
@@ -871,7 +888,7 @@ gymComplex.completedRounds = typeof gymComplex.completedRounds === 'number'
     : 0;
 
 function saveGymProgress() {
-    localStorage.setItem('palata404_gym', JSON.stringify(gymComplex));
+    safeStorageSet('palata404_gym', JSON.stringify(gymComplex));
 }
 
 function openGym() {
@@ -1008,7 +1025,7 @@ function renderMedicalRooms() {
         `;
         let btnHtml = room.id === 'treatment_room' 
             ? `<button class="btn-outfit" style="background: #594333; border-color: #8c684d; padding: 6px 14px; font-weight: bold;" onclick="openProcedureRoom()">Відкрити</button>`
-            : `<button class="btn-outfit" style="background: ${isCurrent ? '#2c221e' : '#594333'}; border-color: ${isCurrent ? '#4a382c' : '#8c684d'}; padding: 6px 14px; font-weight: bold;" onclick="selectRoom('${room.id}')" ${isCurrent ? 'disabled style="opacity: 0.6; cursor: default;"' : ''}>${isCurrent ? 'Ви тут' : 'Перейти'}</button>`;
+            : `<button class="btn-outfit" style="background: ${isCurrent ? '#2c221e' : '#594333'}; border-color: ${isCurrent ? '#4a382c' : '#8c684d'}; padding: 6px 14px; font-weight: bold; ${isCurrent ? 'opacity: 0.6; cursor: default;' : ''}" onclick="selectRoom('${room.id}')" ${isCurrent ? 'disabled' : ''}>${isCurrent ? 'Ви тут' : 'Перейти'}</button>`;
 
         item.innerHTML = `
             <div style="display: flex; align-items: center; gap: 12px;">
@@ -1033,30 +1050,38 @@ function selectRoom(roomId) {
 }
 
 function buyMedicalItem(itemType, cost, currencyType) {
-    if (currencyType === 'silver') {
-        if (stats.silver >= cost) stats.silver -= cost; else { alert('Мало срібла!'); return; }
-    } else {
-        if (stats.bucks >= cost) stats.bucks -= cost; else { alert('Мало баксів!'); return; }
+    const shopItems = {
+        madness_pills: { name: 'Таблетки «Аміназин»', icon: '💊', category: 'meds', effectType: 'madness' },
+        stamina_10: { name: 'Енергетик', icon: '🧃', category: 'meds', effectType: 'stamina_10' },
+        hp_10: { name: 'Мала аптечка', icon: '🧪', category: 'meds', effectType: 'hp_10' },
+        hp_full: { name: 'Велика армійська аптечка', icon: '🩹', category: 'meds', effectType: 'hp_full' }
+    };
+    const newItem = shopItems[itemType];
+    const price = Number(cost);
+
+    if (!newItem || !Number.isFinite(price) || price < 0
+        || (currencyType !== 'silver' && currencyType !== 'bucks')) {
+        console.error('Некоректні параметри покупки:', itemType, cost, currencyType);
+        return;
     }
 
-    let newItem = null;
-    if (itemType === 'madness_pills') newItem = { name: 'Таблетки «Аміназин»', icon: '💊', category: 'meds', effectType: 'madness' };
-    else if (itemType === 'stamina_10') newItem = { name: 'Енергетик', icon: '🧃', category: 'meds', effectType: 'stamina_10' };
-    else if (itemType === 'hp_10') newItem = { name: 'Мала аптечка', icon: '🧪', category: 'meds', effectType: 'hp_10' };
-    else if (itemType === 'hp_full') newItem = { name: 'Велика армійська аптечка', icon: '🩹', category: 'meds', effectType: 'hp_full' };
-
-    if (newItem) {
-        let ex = inventory.find(i => i.name === newItem.name);
-        if (ex) ex.count = (ex.count || 1) + 1;
-        else inventory.push({ ...newItem, count: 1 });
+    if (stats[currencyType] < price) {
+        alert(currencyType === 'silver' ? 'Мало срібла!' : 'Мало баксів!');
+        return;
     }
+
+    stats[currencyType] -= price;
+    const existingItem = inventory.find(item => item.name === newItem.name);
+    if (existingItem) existingItem.count = (existingItem.count || 1) + 1;
+    else inventory.push({ ...newItem, count: 1 });
+
     updateUI();
     saveGameProgress();
 }
 
 const ENERGY_REGEN_TIME_MS = 2 * 60 * 1000;
 if (stats.energy >= stats.maxEnergy) {
-    localStorage.setItem('palata404_last_time', Date.now().toString());
+    safeStorageSet('palata404_last_time', Date.now().toString());
 }
 
 function updateEnergyTimer() {
@@ -1064,10 +1089,10 @@ function updateEnergyTimer() {
     if (!timerElem) return;
 
     const now = Date.now();
-    const storedTime = Number(localStorage.getItem('palata404_last_time') || now);
+    const storedTime = Number(safeStorageGet('palata404_last_time') || now);
     let lastTime = Number.isFinite(storedTime) && storedTime <= now ? storedTime : now;
     if (lastTime !== storedTime) {
-        localStorage.setItem('palata404_last_time', lastTime.toString());
+        safeStorageSet('palata404_last_time', lastTime.toString());
     }
 
     if (stats.energy >= stats.maxEnergy) {
@@ -1081,7 +1106,7 @@ function updateEnergyTimer() {
         stats.energy = Math.min(stats.maxEnergy, stats.energy + recovered);
         lastTime += recovered * ENERGY_REGEN_TIME_MS;
         if (stats.energy >= stats.maxEnergy) lastTime = now;
-        localStorage.setItem('palata404_last_time', lastTime.toString());
+        safeStorageSet('palata404_last_time', lastTime.toString());
         updateUI();
     }
 
