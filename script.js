@@ -441,6 +441,7 @@ function updateUI() {
     updateCharacterLayers();
     updatePlayerNameDisplay();
     saveGameProgress();
+    updateBattleMedkitCounts();
 
     const mapBtn = document.getElementById('nav-map-btn');
     const locName = document.getElementById('current-location-name');
@@ -1525,6 +1526,18 @@ function victoryRestartFight() {
     startBossFight(currentBossKey);
 }
 
+function updateBattleMedkitCounts() {
+    const medkits = [
+        { type: 'small', name: 'Мала аптечка' },
+        { type: 'big', name: 'Велика армійська аптечка' }
+    ];
+    medkits.forEach(medkit => {
+        const item = inventory.find(entry => entry.name === medkit.name && entry.category === 'meds');
+        const countElem = document.getElementById(`medkit-count-${medkit.type}`);
+        if (countElem) countElem.textContent = String(item?.count || 0);
+    });
+}
+
 function updateBattleUI() {
     document.getElementById('b-player-name').textContent = playerName;
     document.getElementById('b-player-hp').textContent = `${stats.hp}/${stats.maxHp}`;
@@ -1535,7 +1548,7 @@ function updateBattleUI() {
 
 function useBattleMedkit(type) {
     let name = type === 'big' ? 'Велика армійська аптечка' : 'Мала аптечка';
-    let item = inventory.find(i => i.name === name || i.category === 'meds');
+    let item = inventory.find(i => i.name === name && i.category === 'meds');
     if (item && item.count > 0) {
         item.count--;
         if (item.count <= 0) inventory = inventory.filter(i => i !== item);
