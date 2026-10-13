@@ -1016,7 +1016,7 @@ const bossesDatabase = {
         silverReward: 80,
         sprite: "doctor_sprite.png",       // (заміни на своє ім'я файла спрайта лікаря, якщо інше)
         bg: "nurse_bg.jpg",               // Можеш замінити на doctor_bg.jpg, якщо є
-        avatar: "nurse_avatar_battle.png", // Заміни на аватарку лікаря за потреби
+        avatar: "nurse_avatar_battle.jpg", // Заміни на аватарку лікаря за потреби
         questItem: { name: 'Ключ від ізолятора', icon: '🗝️', category: 'quest', desc: 'Відкриває вихід із 10 поверху.' },
         dossier: {
             code: "002",
