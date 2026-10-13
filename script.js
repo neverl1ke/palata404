@@ -991,11 +991,15 @@ const bossesDatabase = {
         damage: 12,
         expReward: 50,
         silverReward: 30,
+        sprite: "nurse_sprite.png",       // <--- Додали спрайт боса
+        bg: "nurse_bg.jpg",               // <--- Додали фон арени
+        avatar: "nurse_avatar_battle.png", // <--- Додали аватарку
+        questItem: { name: 'Ключ від блоку боса', icon: '🔑', category: 'quest', desc: 'Відкриває заблоковані двері спецблоку.' },
         dossier: {
             code: "001",
             threat: "ЗАГРОЗА: ВИСОКА",
             callsign: "«ПРОЦЕДУРНА»",
-            cardImg: "nurse_dossier_card.png", // <--- ТОЧНА НАЗВА ФАЙЛУ
+            cardImg: "nurse_dossier_card.png",
             role: "Старша медсестра",
             status: "Патологічна агресія",
             location: "Процедурний блок, 10-й поверх",
@@ -1010,11 +1014,15 @@ const bossesDatabase = {
         damage: 25,
         expReward: 120,
         silverReward: 80,
+        sprite: "doctor_sprite.png",       // (заміни на своє ім'я файла спрайта лікаря, якщо інше)
+        bg: "nurse_bg.jpg",               // Можеш замінити на doctor_bg.jpg, якщо є
+        avatar: "nurse_avatar_battle.png", // Заміни на аватарку лікаря за потреби
+        questItem: { name: 'Ключ від ізолятора', icon: '🗝️', category: 'quest', desc: 'Відкриває вихід із 10 поверху.' },
         dossier: {
             code: "002",
             threat: "ЗАГРОЗА: КРИТИЧНА",
             callsign: "«НАБЛЮДАЧ»",
-            cardImg: "doctor_dossier_card.png", // <--- ТОЧНА НАЗВА ФАЙЛУ
+            cardImg: "doctor_dossier_card.png",
             role: "Старший черговий лікар",
             status: "Зв'язок втрачено / Мутація",
             location: "Кабінет спостереження, 10-й поверх",
