@@ -930,7 +930,7 @@ function buyMedicalItem(itemType, cost, currencyType) {
 
     let newItem = null;
     if (itemType === 'madness_pills') newItem = { name: 'Таблетки «Аміназин»', icon: '💊', category: 'meds', effectType: 'madness' };
-    else if (itemType === 'stamina_10') newItem = { name: 'Енергетик', icon: '⚡', category: 'meds', effectType: 'stamina_10' };
+    else if (itemType === 'stamina_10') newItem = { name: 'Енергетик', icon: '🧃', category: 'meds', effectType: 'stamina_10' };
     else if (itemType === 'hp_10') newItem = { name: 'Мала аптечка', icon: '🧪', category: 'meds', effectType: 'hp_10' };
     else if (itemType === 'hp_full') newItem = { name: 'Велика армійська аптечка', icon: '🩹', category: 'meds', effectType: 'hp_full' };
 
@@ -1015,8 +1015,8 @@ const bossesDatabase = {
         expReward: 120,
         silverReward: 80,
         sprite: "doctor_sprite.png",       // (заміни на своє ім'я файла спрайта лікаря, якщо інше)
-        bg: "nurse_bg.jpg",               // Можеш замінити на doctor_bg.jpg, якщо є
-        avatar: "nurse_avatar_battle.jpg", // Заміни на аватарку лікаря за потреби
+        bg: "doctor_bg.jpg",               // Можеш замінити на doctor_bg.jpg, якщо є
+        avatar: "doctor_avatar_battle.jpg", // Заміни на аватарку лікаря за потреби
         questItem: { name: 'Ключ від ізолятора', icon: '🗝️', category: 'quest', desc: 'Відкриває вихід із 10 поверху.' },
         dossier: {
             code: "002",
