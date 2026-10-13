@@ -1477,18 +1477,26 @@ document.getElementById('universal-dossier-img').src = `${bossKey}_dossier_card.
         setTxt('universal-dossier-hp', `${boss.hp || 0} HP`);
         setTxt('universal-dossier-dmg', `${boss.damage || 0} DMG`);
 
-        // Кнопка штурму
-        const startBtn = document.getElementById('universal-dossier-start-btn');
-        if (startBtn) {
-            startBtn.onclick = function() {
-                closeUniversalDossier();
-                if (typeof startBossFight === 'function') {
-                    startBossFight(bossKey);
-                } else if (typeof startBossBattle === 'function') {
-                    startBossBattle(bossKey);
-                }
-            };
-        }
+// --- Кнопка штурму ---
+    const startBtn = document.getElementById('universal-dossier-start-btn');
+    if (startBtn) {
+        startBtn.onclick = function() {
+            closeUniversalDossier();
+            
+            // Викликаємо функцію штурму напряму залежно від боса
+            if (typeof startBossFight === 'function') {
+                startBossFight(bossKey);
+            } else if (bossKey === 'nurse') {
+                if (typeof startNurseFight === 'function') startNurseFight();
+                else console.error("Функція для бою з медсестрою не знайдена!");
+            } else if (bossKey === 'doctor') {
+                if (typeof startDoctorFight === 'function') startDoctorFight();
+                else console.error("Функція для бою з лікарем не знайдена!");
+            } else {
+                console.error("Невідомий ключ боса для бою:", bossKey);
+            }
+        };
+    }
 
         // Відображаємо модальне вікно
         const modal = document.getElementById('universal-dossier-modal');
