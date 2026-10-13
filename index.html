@@ -610,6 +610,7 @@ function autoScaleBattleArena() {
         : `scale(${scale})`;
 }
 window.addEventListener('resize', autoScaleBattleArena);
+window.visualViewport?.addEventListener('resize', autoScaleBattleArena);
 // Викликаємо під час відкриття бою
 document.addEventListener('DOMContentLoaded', autoScaleBattleArena);
 </script>
