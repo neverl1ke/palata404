@@ -1227,9 +1227,7 @@ function openProcedureRoomBattle() {
         alert("У нормальному стані процедурний кабінет зачинений.");
         return;
     }
-    const killsElem = document.getElementById('dossier-kills-count');
-    if (killsElem) killsElem.textContent = bossKillsCount['nurse'] || 0;
-    document.getElementById('nurse-dossier-modal').classList.remove('hidden');
+    openBossDossier('nurse');
 }
 function openNurseDossier() {
     if (typeof openBossDossier === 'function') {
@@ -1243,7 +1241,7 @@ function closeNurseDossier() {
     }
 }
 function openDoctorDossier() {
-    document.getElementById('doctor-dossier-modal').classList.remove('hidden');
+    openBossDossier('doctor');
 }
 
 function closeDoctorDossier() {
