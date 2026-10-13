@@ -1402,22 +1402,31 @@ function handleVictory() {
 
     let activeBoss = bossesDatabase[currentBossKey];
     let p = raidMembers.find(m => m.isPlayer);
-    if (p && p.damage >= bossMaxHp * 0.10 && activeBoss) {
+    
+    if (p && activeBoss) {
+        // Нараховуємо нагороди активного боса напряму
         stats.silver += activeBoss.silverReward;
         addExperience(activeBoss.expReward);
-        if (!inventory.some(i => i.name === activeBoss.questItem.name)) {
-            inventory.push(activeBoss.questItem);
+        
+        if (activeBoss.questItem && !inventory.some(i => i.name === activeBoss.questItem.name)) {
+            inventory.push({ ...activeBoss.questItem, count: 1 });
         }
     }
 
     let sorted = [...raidMembers.filter(m => m.isPlayer || m.called)].sort((a, b) => b.damage - a.damage);
-    document.getElementById('victory-raid-summary').innerHTML = `
-        <div style="font-weight: bold; color: #f39c12; margin-bottom: 8px;">👑 MVP: ${sorted[0].name} — ${sorted[0].damage} DMG</div>
-        ${sorted.map(m => `<div style="font-size: 12px;">• ${m.name}:${m.damage} DMG</div>`).join('')}
-    `;
+    
+    const summaryElem = document.getElementById('victory-raid-summary');
+    if (summaryElem && activeBoss) {
+        summaryElem.innerHTML = `
+            <div style="font-weight: bold; color: #f39c12; margin-bottom: 8px;">👑 MVP: ${sorted[0].name} — ${sorted[0].damage} DMG</div>
+            <div style="font-size: 13px; color: #27ae60; margin-bottom: 6px;">🎁 Винагорода: +${activeBoss.expReward} EXP, +${activeBoss.silverReward} Срібла</div>
+            ${sorted.map(m => `<div style="font-size: 12px;">• ${m.name}:${m.damage} DMG</div>`).join('')}
+        `;
+    }
 
     document.getElementById('nurse-victory-modal').classList.remove('hidden');
     updateUI();
+    saveGameProgress();
 }
 
 function victoryContinueToMap() {
