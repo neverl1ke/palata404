@@ -2,7 +2,7 @@
 <html lang="uk">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Палата 404</title>
     <!-- Підключення атмосферних шрифтів Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -588,22 +588,26 @@
 function autoScaleBattleArena() {
     const arena = document.getElementById('battle-arena-screen');
     if (!arena) return;
-    const windowWidth = window.innerWidth;
-    const windowHeight = window.innerHeight;
-    
-    // Базові розміри арени
+
+    const viewportWidth = window.visualViewport?.width || window.innerWidth;
+    const viewportHeight = window.visualViewport?.height || window.innerHeight;
     const baseWidth = 1200;
-    const baseHeight = 700;
+    const baseHeight = 675;
+    const isPortrait = viewportHeight > viewportWidth;
 
-    let scaleX = windowWidth / baseWidth;
-    let scaleY = windowHeight / baseHeight;
-    let scale = Math.min(scaleX, scaleY, 1); // Масштабуємо тільки на зменшення, зберігаючи пропорції
+    // У портретному режимі повертаємо арену 16:9, щоб панелі лишалися читабельними.
+    const scale = isPortrait
+        ? Math.min(viewportWidth / baseHeight, viewportHeight / baseWidth)
+        : Math.min(viewportWidth / baseWidth, viewportHeight / baseHeight);
 
-    if (windowWidth < baseWidth || windowHeight < baseHeight) {
-        arena.style.transform = `scale(${scale})`;
-    } else {
-        arena.style.transform = 'scale(1)';
-    }
+    arena.style.width = `${baseWidth}px`;
+    arena.style.height = `${baseHeight}px`;
+    arena.style.maxWidth = 'none';
+    arena.style.maxHeight = 'none';
+    arena.style.transformOrigin = 'center center';
+    arena.style.transform = isPortrait
+        ? `scale(${scale}) rotate(90deg)`
+        : `scale(${scale})`;
 }
 window.addEventListener('resize', autoScaleBattleArena);
 // Викликаємо під час відкриття бою
