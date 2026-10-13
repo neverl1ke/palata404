@@ -426,7 +426,8 @@ function updateUI() {
     const wasAtMaxEnergy = lastKnownEnergy >= stats.maxEnergy;
     const isAtMaxEnergy = stats.energy >= stats.maxEnergy;
     if (wasAtMaxEnergy !== isAtMaxEnergy) {
-        safeStorageSet('palata404_last_time', Date.now().toString());
+        energyLastTime = Date.now();
+        safeStorageSet('palata404_last_time', energyLastTime.toString());
     }
     lastKnownEnergy = stats.energy;
 
@@ -1056,7 +1057,7 @@ function buyMedicalItem(itemType, cost, currencyType) {
         hp_10: { name: 'Мала аптечка', icon: '🧪', category: 'meds', effectType: 'hp_10' },
         hp_full: { name: 'Велика армійська аптечка', icon: '🩹', category: 'meds', effectType: 'hp_full' }
     };
-    const newItem = shopItems[itemType];
+    const newItem = Object.prototype.hasOwnProperty.call(shopItems, itemType) ? shopItems[itemType] : null;
     const price = Number(cost);
 
     if (!newItem || !Number.isFinite(price) || price < 0
@@ -1083,17 +1084,18 @@ const ENERGY_REGEN_TIME_MS = 2 * 60 * 1000;
 if (stats.energy >= stats.maxEnergy) {
     safeStorageSet('palata404_last_time', Date.now().toString());
 }
+let energyLastTime = Number(safeStorageGet('palata404_last_time'));
+if (!Number.isFinite(energyLastTime) || energyLastTime <= 0 || energyLastTime > Date.now()) {
+    energyLastTime = Date.now();
+    safeStorageSet('palata404_last_time', energyLastTime.toString());
+}
 
 function updateEnergyTimer() {
     const timerElem = document.getElementById('energy-timer');
     if (!timerElem) return;
 
     const now = Date.now();
-    const storedTime = Number(safeStorageGet('palata404_last_time') || now);
-    let lastTime = Number.isFinite(storedTime) && storedTime <= now ? storedTime : now;
-    if (lastTime !== storedTime) {
-        safeStorageSet('palata404_last_time', lastTime.toString());
-    }
+    let lastTime = energyLastTime;
 
     if (stats.energy >= stats.maxEnergy) {
         timerElem.textContent = '';
@@ -1106,6 +1108,7 @@ function updateEnergyTimer() {
         stats.energy = Math.min(stats.maxEnergy, stats.energy + recovered);
         lastTime += recovered * ENERGY_REGEN_TIME_MS;
         if (stats.energy >= stats.maxEnergy) lastTime = now;
+        energyLastTime = lastTime;
         safeStorageSet('palata404_last_time', lastTime.toString());
         updateUI();
     }
