@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Special+Elite&display=swap" rel="stylesheet">
 
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <link rel="stylesheet" href="style.css?v=40006">
+    <link rel="stylesheet" href="style.css?v=40007">
 </head>
 <body>
 
@@ -48,6 +48,7 @@
                 <button class="nav-icon-btn" title="Завдання" onclick="alert('Завдання в розробці')" aria-label="Завдання"><img class="game-icon" src="assets/icons/clipboard.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"></button>
 <button id="nav-raid-btn" class="nav-icon-btn" title="Рейд" onclick="handleRaidButtonAction()" aria-label="Рейд"><img class="game-icon" src="assets/icons/swords.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"></button>
                 <button class="nav-icon-btn" title="Сусіди по блоку" onclick="openFriends()" aria-label="Сусіди по блоку"><img class="game-icon" src="assets/icons/people.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"></button>
+                <button id="nav-archive-btn" class="nav-icon-btn" title="Архів рейдів" onclick="openRaidArchive()" aria-label="Архів рейдів"><img class="game-icon" src="assets/icons/clipboard.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"></button>
             </nav>
 
             <!-- Правий блок: Дзвінок, пошта, налаштування в єдиному стилі -->
@@ -386,8 +387,9 @@
     </div>
 
     <script src="icons.js?v=40003" defer></script>
-    <script src="battle-results.js?v=40006" defer></script>
-    <script src="script.js?v=40006" defer></script>
+    <script src="battle-results.js?v=40007" defer></script>
+    <script src="raid-archive.js?v=40007" defer></script>
+    <script src="script.js?v=40007" defer></script>
     <!-- Модальне вікно: Медичне Досьє пацієнта (Аркуш паперу А4) -->
     <div id="dossier-modal" role="dialog" aria-modal="true" aria-label="Особисте досьє" class="modal center-modal hidden">
         <div class="modal-content dossier-paper">
@@ -609,7 +611,7 @@
 <div id="nurse-victory-modal" role="dialog" aria-modal="true" aria-labelledby="victory-title" class="modal-overlay hidden">
     <article class="battle-report victory-summary">
         <header class="battle-report-header">
-            <div class="report-archive-mark">СПЕЦБЛОК · ПАЛАТА 404<br><span class="report-stamp">РЕЙД ЗАВЕРШЕНО</span></div>
+            <div class="report-archive-mark report-institution">ЦЕНТР ІНТЕНСИВНОГО ЛІКУВАННЯ ПСИХІЧНИХ РОЗЛАДІВ № 404<small>Внутрішній архів спецблоку • Протокол післябойового обстеження</small><span class="report-stamp">РЕЙД ЗАВЕРШЕНО</span></div>
             <button class="report-close" type="button" aria-label="Закрити підсумок бою" onclick="closeLastBattleResult()">✕</button>
         </header>
         <div id="victory-summary-content" class="victory-summary-content" tabindex="0" role="region" aria-label="Результат бою та нагороди">
@@ -621,7 +623,7 @@
                     <p><strong id="victory-summary-exp"></strong><span>EXP</span></p>
                     <p><strong id="victory-summary-silver"></strong><span>срібла</span></p>
                 </div>
-                <p id="victory-summary-mvp" class="victory-summary-mvp hidden"></p>
+                <p id="victory-summary-mvp" class="victory-summary-mvp hidden"><strong id="victory-summary-mvp-name"></strong><span id="victory-summary-mvp-bonus" class="hidden">+5% EXP / +5% срібла</span></p>
                 <ul id="victory-summary-items" class="report-extra-rewards"></ul>
             </section>
             <dl class="victory-summary-stats" aria-label="Основні показники бою">
@@ -643,11 +645,11 @@
 <div id="battle-detail-modal" role="dialog" aria-modal="true" aria-labelledby="victory-detail-title" class="modal-overlay hidden">
     <article id="victory-detail-document" class="battle-report">
         <header class="battle-report-header">
-            <div class="report-archive-mark">АРХІВ СПЕЦБЛОКУ · ПАЛАТА 404<br>МЕДИЧНИЙ НАГЛЯД / ФОРМА ПБ-01</div>
+            <div class="report-archive-mark report-institution">ЦЕНТР ІНТЕНСИВНОГО ЛІКУВАННЯ ПСИХІЧНИХ РОЗЛАДІВ № 404<small>Внутрішній архів спецблоку • Протокол післябойового обстеження</small></div>
             <button class="report-close" type="button" aria-label="Закрити детальний звіт" onclick="closeDetailedBattleReport()">✕</button>
         </header>
         <div class="report-classification"><span>ДЛЯ СЛУЖБОВОГО КОРИСТУВАННЯ</span><span class="report-stamp">НЕ Є АКТОМ ОСТАТОЧНОЇ НЕЙТРАЛІЗАЦІЇ</span></div>
-        <h2 id="victory-detail-title">ОБ'ЄКТ ТИМЧАСОВО СТАБІЛІЗОВАНО</h2>
+        <h2 id="victory-detail-title">ДЕТАЛЬНИЙ ПРОТОКОЛ РЕЙДУ</h2>
         <p class="report-subtitle">ПРОТОКОЛ ПІСЛЯБОЙОВОГО ОБСТЕЖЕННЯ</p>
         <dl class="report-identification">
             <div><dt>Реєстраційний номер</dt><dd id="victory-boss-number"></dd></div>
@@ -697,9 +699,43 @@
             <div id="victory-detail-save-note" class="report-save-note hidden" role="status"></div>
             <button id="victory-detail-save-retry" class="report-button report-save-retry hidden" type="button" onclick="retryBattleResultSave()">Повторити збереження</button>
             <div class="report-actions">
-                <button class="report-button" type="button" onclick="closeDetailedBattleReport()">Повернутися до підсумку</button>
+                <button id="victory-detail-back" class="report-button" type="button" onclick="closeDetailedBattleReport()">Повернутися до підсумку</button>
             </div>
         </footer>
+    </article>
+</div>
+
+<div id="raid-archive-modal" role="dialog" aria-modal="true" aria-labelledby="raid-archive-title" class="modal-overlay hidden">
+    <article class="battle-report raid-archive-document">
+        <header class="battle-report-header">
+            <div class="report-archive-mark report-institution">ЦЕНТР ІНТЕНСИВНОГО ЛІКУВАННЯ ПСИХІЧНИХ РОЗЛАДІВ № 404<small>Внутрішній архів спецблоку • Протокол післябойового обстеження</small></div>
+            <button class="report-close" type="button" aria-label="Закрити архів рейдів" onclick="closeRaidArchive()">✕</button>
+        </header>
+        <div class="raid-archive-toolbar">
+            <h2 id="raid-archive-title">АРХІВ РЕЙДІВ</h2>
+            <span id="raid-archive-count"></span>
+            <button id="raid-archive-clear" class="report-detail-link" type="button" onclick="requestRaidArchiveClear()">Очистити архів</button>
+        </div>
+        <p class="report-caption">Особиста картотека цього браузера. Зберігаються останні 50 рейдів; синхронізації між пристроями немає.</p>
+        <div id="raid-archive-save-note" class="report-save-note hidden" role="status"></div>
+        <button id="raid-archive-save-retry" class="report-button report-save-retry hidden" type="button" onclick="retryRaidArchiveSave()">Повторити збереження історії</button>
+        <div id="raid-archive-empty" class="raid-archive-empty">
+            <span class="report-stamp">СПРАВИ ВІДСУТНІ</span>
+            <h3>АРХІВ ПОРОЖНІЙ</h3>
+            <p>Записів про проведені обстеження не виявлено.</p>
+        </div>
+        <ul id="raid-archive-list" class="raid-archive-list" aria-label="Збережені рейди"></ul>
+    </article>
+</div>
+
+<div id="raid-archive-confirm" role="dialog" aria-modal="true" aria-labelledby="raid-archive-confirm-title" class="modal-overlay hidden">
+    <article class="battle-report raid-archive-confirm-document">
+        <h2 id="raid-archive-confirm-title">ПІДТВЕРДЖЕННЯ ВИЛУЧЕННЯ ЗАПИСІВ</h2>
+        <p>Ви дійсно бажаєте очистити архів рейдів? Усі 50 або менше збережених записів будуть видалені з історії. Отримані нагороди, предмети та прогрес персонажа залишаться без змін.</p>
+        <div class="report-actions">
+            <button class="report-button report-button-secondary" type="button" onclick="cancelRaidArchiveClear()">Скасувати</button>
+            <button class="report-button" type="button" onclick="confirmRaidArchiveClear()">Очистити архів</button>
+        </div>
     </article>
 </div>
 

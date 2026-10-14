@@ -10,11 +10,11 @@ const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
 
 // Exercise the actual game script with controlled storage/time. Layout and input
 // handling belong to test_game.py; these stubs intentionally don't model them.
-function game(saves = {}, deniedStorage = false, failWrites = []) {
+function game(saves = {}, deniedStorage = false, failWrites = [], telegramId = null, sharedStorage = null) {
     let now = 1700000000000;
     let sequence = 0;
     const timers = new Map();
-    const storage = new Map(Object.entries(saves));
+    const storage = sharedStorage || new Map(Object.entries(saves));
     const failedKeys = new Set(failWrites);
     const elements = new Map();
     const listeners = new Map();
@@ -55,10 +55,15 @@ function game(saves = {}, deniedStorage = false, failWrites = []) {
         document, innerWidth: 390, innerHeight: 844,
         location: { search: '' }, addEventListener() {},
     };
+    if (telegramId !== null) window.Telegram = { WebApp: {
+        initDataUnsafe: { user: { id: telegramId, first_name: `Пацієнт ${telegramId}` } }, ready() {}, expand() {}
+    } };
     Object.defineProperty(window, 'localStorage', {
         get() {
             if (deniedStorage) throw new Error('storage denied');
             return {
+                get length() { return storage.size; },
+                key(index) { return [...storage.keys()][index] ?? null; },
                 getItem(key) { return storage.get(key) ?? null; },
                 setItem(key, value) {
                     if (failedKeys.has(key)) throw new Error('Simulated interrupted write');
@@ -79,6 +84,7 @@ function game(saves = {}, deniedStorage = false, failWrites = []) {
     });
     vm.runInContext(fs.readFileSync(path.join(root, 'icons.js'), 'utf8'), context, { filename: 'icons.js' });
     vm.runInContext(fs.readFileSync(path.join(root, 'battle-results.js'), 'utf8'), context, { filename: 'battle-results.js' });
+    vm.runInContext(fs.readFileSync(path.join(root, 'raid-archive.js'), 'utf8'), context, { filename: 'raid-archive.js' });
     vm.runInContext(source, context, { filename: 'script.js' });
     const run = code => vm.runInContext(code, context);
     for (const callback of listeners.get('DOMContentLoaded') || []) callback();
@@ -410,9 +416,152 @@ test('summary does not advertise a personal MVP bonus when a helper wins it', ()
         for(let i=0;i<10;i++) friendsAutoAttackTick();`);
     assert.equal(g.elements.get('victory-summary-exp').textContent, '+50');
     assert.equal(g.elements.get('victory-summary-silver').textContent, '+30');
-    assert.equal(g.elements.get('victory-summary-mvp').classList.contains('hidden'), true);
-    assert.equal(g.elements.get('victory-summary-mvp').textContent, '');
+    assert.equal(g.elements.get('victory-summary-mvp').classList.contains('hidden'), false);
+    assert.equal(g.elements.get('victory-summary-mvp-name').textContent, 'MVP: Сліпий Микола');
+    assert.equal(g.elements.get('victory-summary-mvp-bonus').classList.contains('hidden'), true);
     g.run('openDetailedBattleReport();');
     assert.match(g.elements.get('victory-statistics-body').innerHTML, /Локальний помічник/);
     assert.match(g.elements.get('victory-statistics-body').innerHTML, /Не застосовується/);
+});
+
+test('archive keeps exactly the newest 50 real raid snapshots across reloads', () => {
+    const g = game();
+    const ids = [];
+    g.run('stats.baseDamage=300; recalculateEquipmentStats();');
+    for (let i=0;i<51;i++) {
+        g.run('startBossFight("nurse"); performPlayerAttack();');
+        ids.push(g.run('lastBattleResult.battleId'));
+        g.advance(1);
+    }
+    assert.equal(g.run('readRaidArchive().length'), 50);
+    assert.equal([...g.storage.keys()].filter(key=>key.includes(':raid:')).length,50);
+    assert.equal(g.run('readRaidArchive()[0].battleId'), ids[50]);
+    assert.equal(g.run('readRaidArchive()[49].battleId'), ids[1]);
+    assert.equal(g.run('readRaidArchive().some(r=>r.battleId===lastBattleResult.battleId)'),true);
+    const before = g.run('JSON.stringify(readRaidArchive())');
+    g.run('handleVictory(); openLastBattleResult(); openDetailedBattleReport(); closeDetailedBattleReport();');
+    assert.equal(g.run('JSON.stringify(readRaidArchive())'),before);
+    const reloaded = game(Object.fromEntries(g.storage));
+    assert.equal(reloaded.run('JSON.stringify(readRaidArchive())'),before);
+});
+
+test('historical protocols retain original boss, names, MVP and rewards without changing saves', () => {
+    const g=game({palata404_nickname:'Первісний нік'});
+    g.run('stats.baseDamage=300; recalculateEquipmentStats(); startBossFight("nurse"); performPlayerAttack(); const first=readRaidArchive()[0];');
+    const original = g.run('JSON.stringify(first)');
+    g.advance(1);
+    g.run('playerName="Новий нік"; bossesDatabase.nurse.name="Змінений бос"; bossesDatabase.nurse.expReward=500; startBossFight("doctor"); performPlayerAttack();');
+    const saves=[...g.storage];
+    g.run('openDetailedBattleReport(first,"archive");');
+    assert.equal(g.elements.get('victory-mvp-name').textContent,'Первісний нік');
+    assert.equal(g.elements.get('victory-total-exp').textContent,52);
+    assert.equal(g.elements.get('victory-boss-name').textContent,JSON.parse(original).boss.name);
+    assert.equal(g.run('JSON.stringify(readRaidArchive().find(r=>r.battleId===first.battleId))'), original);
+    g.run('closeDetailedBattleReport();');
+    assert.deepEqual([...g.storage],saves);
+    assert.equal(g.elements.get('raid-archive-modal').classList.contains('hidden'),false);
+});
+
+test('clearing requires UI confirmation, retains resources and does not replay old records', () => {
+    const g=game();
+    g.run('stats.baseDamage=300; recalculateEquipmentStats(); startBossFight("nurse"); performPlayerAttack();');
+    const state=g.run('JSON.stringify({stats,inventory,bossKillsCount,gameProgress})');
+    const protectedSaves=[...g.storage].filter(([key])=>!key.startsWith('palata404_raid_archive:'));
+    g.run('openRaidArchive(); requestRaidArchiveClear(); cancelRaidArchiveClear();');
+    assert.equal(g.run('readRaidArchive().length'),1);
+    g.run('requestRaidArchiveClear(); confirmRaidArchiveClear();');
+    assert.equal(g.run('readRaidArchive().length'),0);
+    assert.equal(g.run('JSON.stringify({stats,inventory,bossKillsCount,gameProgress})'),state);
+    assert.deepEqual([...g.storage].filter(([key])=>!key.startsWith('palata404_raid_archive:')), protectedSaves);
+    g.run('handleVictory(); retryBattleResultSave(); openLastBattleResult(); appendRaidArchive(lastBattleResult);');
+    assert.equal(g.run('readRaidArchive().length'),0);
+    assert.equal(game(Object.fromEntries(g.storage)).run('readRaidArchive().length'),0);
+    // A genuinely new raid is retained even when the clock has not advanced.
+    g.run('victoryRestartFight(); performPlayerAttack();');
+    assert.equal(g.run('readRaidArchive().length'),1);
+    assert.equal(g.run('inventory.filter(i=>i.category==="quest").length'),1);
+});
+
+test('archive write failures retain the reward journal, retry once and honor clearing', () => {
+    const g=game();
+    g.run('stats.baseDamage=300; recalculateEquipmentStats(); startBossFight("nurse"); performPlayerAttack(); startBossFight("doctor");');
+    g.failedKeys.add(g.run('raidArchiveRecordKey(currentBattleSession.id)'));
+    g.run('performPlayerAttack();');
+    assert.equal(g.run('stats.silver'),265);
+    assert.equal(g.run('raidArchiveSaveFailed'),true);
+    assert.equal(g.run('readRaidArchive().length'),1);
+    assert.ok(g.storage.has('palata404_pending_battle_reward'));
+    g.run('clearRaidArchive();');
+    g.failedKeys.clear();
+    g.run('retryBattleResultSave(); handleVictory();');
+    assert.equal(g.run('stats.silver'),265);
+    assert.equal(g.run('readRaidArchive().length'),0);
+    assert.equal(g.storage.has('palata404_pending_battle_reward'),false);
+    const restored=game(Object.fromEntries(g.storage));
+    assert.equal(restored.run('readRaidArchive().length'),0);
+    assert.equal(restored.run('stats.silver'),265);
+});
+
+test('archives and pending-result access are isolated by stable identity, not nickname', () => {
+    const shared=new Map();
+    const a=game({},false,[],101,shared);
+    a.run('stats.baseDamage=300; recalculateEquipmentStats(); startBossFight("nurse"); performPlayerAttack();');
+    const aHistory=a.run('JSON.stringify(readRaidArchive())');
+    const b=game({},false,[],202,shared);
+    assert.equal(b.run('readRaidArchive().length'),0);
+    assert.equal(b.run('lastBattleResult'),null);
+    b.run('stats.baseDamage=300; recalculateEquipmentStats(); startBossFight("doctor"); performPlayerAttack(); clearRaidArchive();');
+    assert.equal(a.run('JSON.stringify(readRaidArchive())'),aHistory);
+    assert.equal(b.run('readRaidArchive().length'),0);
+    a.run('playerName="Перейменований";');
+    assert.equal(a.run('JSON.stringify(readRaidArchive())'),aHistory);
+    // A copied record for another identity is neither imported nor displayed.
+    b.run(`openDetailedBattleReport(${aHistory}[0],"archive");`);
+    assert.equal(b.elements.get('victory-report-id').textContent,'');
+});
+
+test('separate tabs keep distinct raid IDs and retries cannot overwrite a historical snapshot', () => {
+    const shared=new Map([['palata404_web_id','WEB-shared']]);
+    const a=game({},false,[],null,shared);
+    const b=game({},false,[],null,shared);
+    for (const [g,boss] of [[a,'nurse'],[b,'doctor']]) g.run(`stats.baseDamage=300; recalculateEquipmentStats(); startBossFight('${boss}'); performPlayerAttack();`);
+    assert.equal(a.run('readRaidArchive().length'),2);
+    assert.equal(b.run('readRaidArchive().length'),2);
+    const before=a.run('JSON.stringify(readRaidArchive())');
+    a.run('const changed=JSON.parse(JSON.stringify(lastBattleResult)); changed.boss.name="Не перезаписувати"; appendRaidArchive(changed);');
+    assert.equal(a.run('JSON.stringify(readRaidArchive())'),before);
+});
+
+test('medical stamps use verified inactivity, spare support actions, NPCs and unknown legacy data', () => {
+    const idle=game();
+    idle.run('startBossFight("nurse"); callAllFriends(); Math.random=()=>0; for(let i=0;i<10;i++) friendsAutoAttackTick(); openDetailedBattleReport();');
+    assert.equal((idle.elements.get('victory-statistics-body').innerHTML.match(/УХИЛЯВСЯ ВІД ПРОЦЕДУРИ/g)||[]).length,1);
+    assert.match(idle.elements.get('victory-statistics-body').innerHTML,/report-participant-stamp">MVP/);
+    for (const contribution of ['healing','turns','damageTaken']) {
+        const g=game();
+        g.run(`startBossFight("nurse"); raidMembers[0].metrics.${contribution}=1; callAllFriends(); Math.random=()=>0; for(let i=0;i<10;i++) friendsAutoAttackTick(); openDetailedBattleReport();`);
+        assert.doesNotMatch(g.elements.get('victory-statistics-body').innerHTML,/УХИЛЯВСЯ/);
+    }
+    idle.run('const legacy=JSON.parse(JSON.stringify(lastBattleResult)); legacy.participants.forEach(m=>delete m.activityStatus); renderBattleResult(legacy);');
+    assert.doesNotMatch(idle.elements.get('victory-statistics-body').innerHTML,/УХИЛЯВСЯ/);
+});
+
+test('timeout, defeat and flee create zero-reward records, while damaged archives stay usable', () => {
+    const g=game();
+    g.run('startBossFight("nurse"); handleRaidTimeOut(); handleRaidTimeOut();');
+    assert.equal(g.run('readRaidArchive().length'),1);
+    assert.equal(g.run('readRaidArchive()[0].outcome'),'timeout');
+    g.advance(1);
+    g.run('startBossFight("nurse"); openFleeConfirmModal();');
+    assert.equal(g.run('readRaidArchive()[0].outcome'),'fled');
+    g.advance(1);
+    g.run('startBossFight("nurse"); stats.hp=1; performPlayerAttack();');
+    g.advance(501);
+    assert.equal(g.run('readRaidArchive()[0].outcome'),'defeat');
+    assert.equal(g.run('readRaidArchive().length'),3);
+    assert.equal(g.run('readRaidArchive().every(r=>r.payout.exp===0 && r.payout.silver===0 && r.extraRewards.length===0)'),true);
+    assert.equal(g.run('stats.silver'),130);
+    assert.equal(g.run('stats.bossesKilled'),0);
+    g.storage.set(g.run('raidArchiveRecordKey("corrupt")'),'{bad');
+    assert.equal(g.run('readRaidArchive().length'),3);
 });

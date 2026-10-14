@@ -46,8 +46,6 @@ function safeStorageRemove(key) {
     }
 }
 
-pendingBattleReward = readPendingBattleReward();
-
 function getInitialUsername() {
     const savedName = safeStorageGet('palata404_nickname');
     if (savedName) return savedName;
@@ -103,6 +101,9 @@ function getPlayerUniqueId() {
         name: playerName
     };
 }
+
+initializeRaidArchive();
+pendingBattleReward = readPendingBattleReward();
 
 let friendsList = loadSaveData('palata404_friends', []);
 friendsList = friendsList
@@ -1401,6 +1402,7 @@ let raidMembers = [
 ];
 
 lastBattleResult = normalizeBattleResult(pendingBattleReward?.result || loadSaveData('palata404_last_battle_result', null));
+if (!ownsBattleResult(lastBattleResult)) lastBattleResult = null;
 battleResultPersisted = Boolean(lastBattleResult && !pendingBattleReward);
 
 function openProcedureRoomBattle() {
@@ -1593,6 +1595,7 @@ function updateLobbyRaidWidget(timeStr = '') {
 
 function handleRaidTimeOut() {
     if (!isBattleActive) return;
+    recordUnrewardedRaid('timeout');
     isBattleActive = false;
     stopBattleTimers();
     closeNurseBattle();
@@ -1709,6 +1712,7 @@ function triggerBossAttackAnimation() {
 function openFleeConfirmModal() {
     if (!isBattleActive) return;
     if (confirm("Втекти з бою? Це коштуватиме 20 срібла.")) {
+        recordUnrewardedRaid('fled');
         stats.silver = Math.max(0, stats.silver - 20);
         updateUI();
         isBattleActive = false;
@@ -1755,6 +1759,7 @@ function performPlayerAttack(event) {
         stats.hp = Math.max(0, stats.hp - counter);
         showFloatingDamage(`-${actualDamage} HP`, true);
         if (stats.hp <= 0) {
+            recordUnrewardedRaid('defeat');
             isBattleActive = false;
             stopBattleTimers();
             closeFriendInviteModal();
@@ -1965,7 +1970,7 @@ const MODAL_IDS = [
     'settings-modal', 'bank-modal', 'inventory-modal', 'item-info-modal', 'custom-modal',
     'friends-modal', 'map-modal', 'gym-modal', 'medical-hub-modal', 'procedure-room-modal',
     'dossier-modal', 'universal-dossier-modal', 'nurse-battle-modal', 'friend-invite-modal',
-    'nurse-victory-modal', 'battle-detail-modal'
+    'nurse-victory-modal', 'battle-detail-modal', 'raid-archive-modal', 'raid-archive-confirm'
 ];
 
 function closeOtherModals(keepIds = []) {
@@ -1994,6 +1999,7 @@ function initializeModalControls() {
         else if (modal.id === 'item-info-modal') closeItemInfo();
         else if (modal.id === 'inventory-modal') closeInventory();
         else if (modal.id === 'battle-detail-modal') closeDetailedBattleReport();
+        else if (modal.id === 'raid-archive-confirm') cancelRaidArchiveClear();
         else modal.classList.add('hidden');
     };
     const sync = () => {
