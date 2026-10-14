@@ -451,7 +451,6 @@ class GameTests(unittest.TestCase):
     def test_approved_wardrobe_background_loads_with_one_shared_floor_anchor(self):
         self.load()
         self.page.evaluate('openCustomization()')
-        self.page.wait_for_function('''()=>performance.getEntriesByType('resource').some(e=>e.name.includes('/wardrobe_background.png?v=d490c304')&&e.decodedBodySize>0)''')
         self.assertEqual(self.page.locator('.wardrobe-height-scale').count(),0)
         self.assertEqual(self.page.locator('.wardrobe-stage img:not(.char-layer)').count(),0)
         backgrounds=[]
@@ -461,7 +460,8 @@ class GameTests(unittest.TestCase):
             backgrounds.append(re.search(r'url\([^)]+\)',scene['image']).group())
             expected='wardrobe_background_v2.png?v=639ad612' if mode=='combat' else 'wardrobe_background.png?v=d490c304'
             self.assertIn(expected,scene['image'])
-            self.page.wait_for_function('src=>performance.getEntriesByType("resource").some(e=>e.name.includes(src)&&e.decodedBodySize>0)',arg=expected)
+            decoded=self.page.evaluate('''src=>new Promise((resolve,reject)=>{const image=new Image();image.onload=()=>resolve([image.naturalWidth,image.naturalHeight]);image.onerror=()=>reject(new Error('Background PNG did not load: '+src));image.src=src;})''',expected)
+            self.assertEqual(decoded,[1448,1086])
             self.assertTrue(all(value.strip()=='cover' for value in scene['size'].split(',')))
             self.assertTrue(all(value.strip()=='50% 100%' for value in scene['position'].split(',')))
             self.assertTrue(all(value.strip()=='no-repeat' for value in scene['repeat'].split(',')))

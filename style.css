@@ -778,7 +778,7 @@ body {
 .wardrobe-document { display: flex; flex-direction: column; width: min(1120px, 100%); height: min(680px, 85dvh); max-height: 85dvh; padding: 18px; overflow: hidden; color: var(--wd-ink); border-color: var(--wd-border); scrollbar-color: var(--wd-border) var(--wd-paper); background: repeating-linear-gradient(6deg, transparent 0 19px, var(--wd-grain) 20px 21px), var(--wd-paper); box-shadow: inset 0 0 55px #735b3938, 0 18px 60px #0009; }
 .wardrobe-header { display: flex; flex-shrink: 0; align-items: center; gap: 12px; border-bottom: 2px solid var(--wd-border); padding-bottom: 10px; margin-bottom: 14px; }
 .wardrobe-header > div:first-child { margin-right: auto; min-width: 0; }
-.wardrobe-header h3 { font-family: 'Special Elite', monospace; font-size: 22px; margin: 4px 0 0; }
+.wardrobe-header h3 { color: var(--wd-ink); font-family: 'Special Elite', monospace; font-size: 22px; margin: 4px 0 0; }
 .wardrobe-view-switch { display: flex; flex-shrink: 0; gap: 3px; padding: 3px; border: 1px solid var(--wd-border); background: var(--wd-switch); box-shadow: inset 0 1px 4px #49382040; }
 .wardrobe-view-switch button { min-height: 44px; padding: 6px 12px; border: 1px solid transparent; background: transparent; color: var(--wd-ink); cursor: pointer; font-size: 12px; }
 .wardrobe-view-switch button[aria-pressed="true"] { background: var(--wd-selected); border-color: var(--wd-accent); color: var(--wd-accent-ink); font-weight: bold; box-shadow: inset 0 2px var(--wd-accent), 0 1px 3px #49382040; }
