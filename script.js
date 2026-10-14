@@ -37,6 +37,17 @@ function safeStorageSet(key, value) {
     }
 }
 
+function safeStorageRemove(key) {
+    try {
+        window.localStorage?.removeItem(key);
+        return Boolean(window.localStorage);
+    } catch (error) {
+        return false;
+    }
+}
+
+pendingBattleReward = readPendingBattleReward();
+
 function getInitialUsername() {
     const savedName = safeStorageGet('palata404_nickname');
     if (savedName) return savedName;
@@ -342,7 +353,10 @@ if (gameProgress.rubbleCleared) {
 function loadSaveData(key, fallback) {
     let saved;
     try {
-        saved = safeStorageGet(key);
+        const pendingFields = { palata404_stats: 'stats', palata404_inventory: 'inventory', palata404_boss_kills: 'bossKills' };
+        const field = pendingFields[key];
+        saved = pendingBattleReward && field
+            ? JSON.stringify(pendingBattleReward.state[field]) : safeStorageGet(key);
     } catch (e) {
         return fallback;
     }
@@ -395,16 +409,22 @@ function normalizeStats(savedStats) {
 }
 
 function saveGameProgress() {
-    safeStorageSet('palata404_stats', JSON.stringify(stats));
-    safeStorageSet('palata404_gender', gender);
-    safeStorageSet('palata404_hair', currentHair);
-    safeStorageSet('palata404_face', currentFace);
-    safeStorageSet('palata404_clothes', currentClothes);
-    safeStorageSet('palata404_inventory', JSON.stringify(inventory));
-    safeStorageSet('palata404_equipped', JSON.stringify(equippedGear));
-    safeStorageSet('palata404_room', currentRoom.id);
-    safeStorageSet('palata404_progress', JSON.stringify(gameProgress));
-    safeStorageSet('palata404_boss_kills', JSON.stringify(bossKillsCount));
+    // Journal the entire reward state first. An interrupted write restores snapshots,
+    // never re-runs experience gains or increments the boss counter.
+    if (!prepareBattleRewardSave()) return false;
+    const saved = [
+        safeStorageSet('palata404_stats', JSON.stringify(stats)),
+        safeStorageSet('palata404_gender', gender),
+        safeStorageSet('palata404_hair', currentHair),
+        safeStorageSet('palata404_face', currentFace),
+        safeStorageSet('palata404_clothes', currentClothes),
+        safeStorageSet('palata404_inventory', JSON.stringify(inventory)),
+        safeStorageSet('palata404_equipped', JSON.stringify(equippedGear)),
+        safeStorageSet('palata404_room', currentRoom.id),
+        safeStorageSet('palata404_progress', JSON.stringify(gameProgress)),
+        safeStorageSet('palata404_boss_kills', JSON.stringify(bossKillsCount))
+    ].every(Boolean);
+    return finishBattleRewardSave(saved);
 }
 
 function getPlayerRank(level) {
@@ -415,8 +435,9 @@ function getPlayerRank(level) {
     return "Новачок";
 }
 
-function addExperience(amount) {
-    if (!Number.isSafeInteger(amount) || amount <= 0) return;
+function addExperience(amount, notify = true) {
+    if (!Number.isSafeInteger(amount) || amount <= 0) return [];
+    const reachedLevels = [];
     stats.exp += amount;
     if (!stats.nextLvlExp) stats.nextLvlExp = stats.level * 100;
 
@@ -425,9 +446,13 @@ function addExperience(amount) {
         stats.level += 1;
         stats.nextLvlExp = stats.level * 120;
         stats.maxHp += 5;
+        const previousHp = stats.hp;
         stats.hp = stats.maxHp;
-        alert(`Вітаємо! Ви досягли ${stats.level} рівня!\nВаше звання: ${getPlayerRank(stats.level)}`);
+        recordPlayerRecovery(stats.hp - previousHp);
+        reachedLevels.push(stats.level);
+        if (notify) alert(`Вітаємо! Ви досягли ${stats.level} рівня!\nВаше звання: ${getPlayerRank(stats.level)}`);
     }
+    return reachedLevels;
 }
 
 function setGender(selectedGender) {
@@ -542,6 +567,8 @@ function updateUI() {
     updatePlayerNameDisplay();
     saveGameProgress();
     updateBattleMedkitCounts();
+    const reportButton = document.getElementById('last-battle-result-btn');
+    if (reportButton) reportButton.disabled = !lastBattleResult;
     if (isBattleActive) updateBattleUI();
     if (stats.madness >= 100) {
         closeGym();
@@ -1166,6 +1193,7 @@ function buyMedicalItem(itemType, cost, currencyType) {
 
 function consumeMedicalItem(item) {
     if (!item || !inventory.includes(item) || item.category !== 'meds' || item.count <= 0) return false;
+    const previousHp = stats.hp;
     let changed = false;
     switch (item.effectType) {
         case 'madness':
@@ -1196,6 +1224,7 @@ function consumeMedicalItem(item) {
     }
     item.count -= 1;
     if (item.count <= 0) inventory = inventory.filter(entry => entry !== item);
+    recordPlayerRecovery(stats.hp - previousHp, true);
     return true;
 }
 
@@ -1296,6 +1325,10 @@ const bossesDatabase = {
         sprite: "nurse_sprite.png",
         bg: "nurse_bg.jpg",
         avatar: "nurse_avatar_battle.png",
+        victoryReport: {
+            caseCode: '404-KL', status: 'Об’єкт тимчасово стабілізовано',
+            conclusion: 'Повторну аномальну активність об’єкта тимчасово припинено. Документальні підтвердження остаточної нейтралізації відсутні.'
+        },
         questItem: { name: 'Ключ від блоку боса', icon: 'key', category: 'quest', desc: 'Відкриває заблоковані двері спецблоку.' },
         dossier: {
             code: "001",
@@ -1319,6 +1352,10 @@ const bossesDatabase = {
         sprite: "doctor_sprite.png",
         bg: "doctor_bg.jpg",
         avatar: "doctor_avatar_battle.jpg",
+        victoryReport: {
+            caseCode: '404-IZ', status: 'Об’єкт тимчасово стабілізовано',
+            conclusion: 'Контроль об’єкта над ізоляційним блоком тимчасово порушено. Стан запірних механізмів потребує повторної перевірки.'
+        },
         questItem: { name: 'Ключ від ізолятора', icon: 'key', category: 'quest', desc: 'Відкриває вихід із 10 поверху.' },
         dossier: {
             code: "002",
@@ -1362,6 +1399,9 @@ let raidMembers = [
     { id: 'friend_2', name: 'Мері', damage: 0, active: false, called: false },
     { id: 'friend_3', name: 'Буйний сусіда', damage: 0, active: false, called: false }
 ];
+
+lastBattleResult = normalizeBattleResult(pendingBattleReward?.result || loadSaveData('palata404_last_battle_result', null));
+battleResultPersisted = Boolean(lastBattleResult && !pendingBattleReward);
 
 function openProcedureRoomBattle() {
     if (stats.madness < 100) {
@@ -1464,6 +1504,7 @@ function startBossFight(bossKey) {
             m.called = false;
         }
     });
+    beginBattleMetrics(bossKey);
 
     updateBattleUI();
     const battleModal = document.getElementById('nurse-battle-modal');
@@ -1684,9 +1725,10 @@ function performPlayerAttack(event) {
     if (!isBattleActive || Date.now() < attackCooldownEndsAt || bossCurrentHp <= 0) return;
     const generation = battleGeneration;
     const dmg = Math.min(bossCurrentHp, stats.damage);
-    bossCurrentHp = Math.max(0, bossCurrentHp - dmg);
     const player = raidMembers.find(member => member.isPlayer);
-    if (player) player.damage += dmg;
+    const attackId = nextBattleEventId('attack');
+    if (!recordBattleEvent(attackId, player, { damage: dmg, turns: 1 })) return;
+    bossCurrentHp = Math.max(0, bossCurrentHp - dmg);
     showFloatingDamage(`-${dmg}`, false, event?.clientX, event?.clientY);
     updateRaidListUI();
     updateBattleUI();
@@ -1709,6 +1751,7 @@ function performPlayerAttack(event) {
         // Armor reduces incoming damage with diminishing returns; each hit deals at least 1 HP.
         const counter = Math.max(1, Math.ceil(activeBoss.damage * 100 / (100 + stats.armor)));
         const actualDamage = Math.min(stats.hp, counter);
+        if (!recordBattleEvent(`${attackId}:counter`, player, { damageTaken: actualDamage })) return;
         stats.hp = Math.max(0, stats.hp - counter);
         showFloatingDamage(`-${actualDamage} HP`, true);
         if (stats.hp <= 0) {
@@ -1733,8 +1776,8 @@ function friendsAutoAttackTick() {
     raidMembers.forEach(member => {
         if (!member.isPlayer && member.called && member.active && bossCurrentHp > 0 && isBattleActive) {
             const damage = Math.min(bossCurrentHp, Math.floor(Math.random() * 8) + 4);
+            if (!recordBattleEvent(nextBattleEventId('helper-attack'), member, { damage, turns: 1 })) return;
             bossCurrentHp = Math.max(0, bossCurrentHp - damage);
-            member.damage += damage;
             showFloatingDamage(`${member.name}: -${damage}`, false);
             if (bossCurrentHp <= 0) handleVictory();
         }
@@ -1744,44 +1787,39 @@ function friendsAutoAttackTick() {
 }
 
 function handleVictory() {
-    if (!isBattleActive || bossCurrentHp > 0) return;
+    if (!isBattleActive || bossCurrentHp > 0 || !currentBattleSession || currentBattleSession.finished) return;
+    if (lastBattleResult?.battleId === currentBattleSession.id) {
+        isBattleActive = false;
+        currentBattleSession.finished = true;
+        stopBattleTimers();
+        openLastBattleResult();
+        return;
+    }
+    const activeBoss = bossesDatabase[currentBattleSession.bossKey];
+    if (!activeBoss) return;
+    const result = buildBattleResult(activeBoss);
+    currentBattleSession.finished = true;
     isBattleActive = false;
     stopBattleTimers();
-
-    bossKillsCount[currentBossKey] = (bossKillsCount[currentBossKey] || 0) + 1;
+    bossKillsCount[currentBattleSession.bossKey] = (bossKillsCount[currentBattleSession.bossKey] || 0) + 1;
     stats.bossesKilled += 1;
     stats.enemiesKilled += 1;
     closeFriendInviteModal();
     closeNurseBattle();
     updateLobbyRaidWidget();
 
-    let activeBoss = bossesDatabase[currentBossKey];
-    let p = raidMembers.find(m => m.isPlayer);
-
-    if (p && activeBoss) {
-        // Нараховуємо нагороди активного боса напряму
-        stats.silver += activeBoss.silverReward;
-        addExperience(activeBoss.expReward);
-
-        if (activeBoss.questItem && !inventory.some(i => i.name === activeBoss.questItem.name)) {
-            inventory.push({ ...activeBoss.questItem, count: 1 });
-        }
+    stats.silver += result.payout.silver;
+    // Keep level-up notifications after the durable reward write.
+    const reachedLevels = addExperience(result.payout.exp, false);
+    if (activeBoss.questItem && result.extraRewards[0]?.granted) {
+        inventory.push({ ...activeBoss.questItem, count: 1 });
     }
-
-    let sorted = [...raidMembers.filter(m => m.isPlayer || m.called)].sort((a, b) => b.damage - a.damage);
-
-    const summaryElem = document.getElementById('victory-raid-summary');
-    if (summaryElem && activeBoss) {
-        summaryElem.innerHTML = `
-            <div style="font-weight: bold; color: #f39c12; margin-bottom: 8px;">${iconHTML('crown')} MVP: ${escapeHTML(sorted[0].name)} — ${sorted[0].damage} DMG</div>
-            <div style="font-size: 13px; color: #27ae60; margin-bottom: 6px;">${iconHTML('gift')} Винагорода: +${activeBoss.expReward} EXP, +${activeBoss.silverReward} Срібла</div>
-            ${sorted.map(m => `<div style="font-size: 12px;">• ${escapeHTML(m.name)}:${m.damage} DMG</div>`).join('')}
-        `;
-    }
-
-    document.getElementById('nurse-victory-modal').classList.remove('hidden');
+    lastBattleResult = result;
+    battleResultPersisted = false;
+    pendingBattleReward = { result, state: null };
     updateUI();
-    saveGameProgress();
+    openLastBattleResult();
+    reachedLevels.forEach(level => alert(`Вітаємо! Ви досягли ${level} рівня!\nВаше звання: ${getPlayerRank(level)}`));
 }
 
 function victoryContinueToMap() {
@@ -1791,7 +1829,7 @@ function victoryContinueToMap() {
 
 function victoryRestartFight() {
     document.getElementById('nurse-victory-modal').classList.add('hidden');
-    startBossFight(currentBossKey);
+    startBossFight(lastBattleResult?.boss.id || currentBossKey);
 }
 
 function updateBattleMedkitCounts() {

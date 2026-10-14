@@ -14,6 +14,7 @@ jobs:
           python-version: '3.12'
       - run: node --check script.js
       - run: node --check icons.js
+      - run: node --check battle-results.js
       - run: node --test --test-isolation=none tests/game-logic.test.cjs
       - run: pip install -r requirements-dev.txt
       - run: python -m playwright install --with-deps chromium

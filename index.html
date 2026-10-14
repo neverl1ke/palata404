@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Special+Elite&display=swap" rel="stylesheet">
 
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <link rel="stylesheet" href="style.css?v=40003">
+    <link rel="stylesheet" href="style.css?v=40004">
 </head>
 <body>
 
@@ -163,6 +163,7 @@
                 <button class="menu-btn" onclick="changeNickname()"><img class="game-icon" src="assets/icons/user.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"> Змінити ім'я</button>
                 <button class="menu-btn" onclick="alert('Звукові ефекти в розробці')"><img class="game-icon" src="assets/icons/speaker.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"> Звукові ефекти</button>
                 <button class="menu-btn" onclick="alert('Версія гри: 1.0.0')"><img class="game-icon" src="assets/icons/info.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"> Про гру</button>
+                <button id="last-battle-result-btn" class="menu-btn" onclick="openLastBattleResult()" disabled><img class="game-icon" src="assets/icons/clipboard.svg" alt="" aria-hidden="true" width="64" height="64"> Останній протокол бою</button>
             </div>
         </div>
     </div>
@@ -385,7 +386,8 @@
     </div>
 
     <script src="icons.js?v=40003" defer></script>
-    <script src="script.js?v=40003" defer></script>
+    <script src="battle-results.js?v=40004" defer></script>
+    <script src="script.js?v=40004" defer></script>
     <!-- Модальне вікно: Медичне Досьє пацієнта (Аркуш паперу А4) -->
     <div id="dossier-modal" role="dialog" aria-modal="true" aria-label="Особисте досьє" class="modal center-modal hidden">
         <div class="modal-content dossier-paper">
@@ -603,33 +605,69 @@
 </div>
 
 
-<!-- СТИЛІЗОВАНЕ ВІКНО ПЕРЕМОГИ (З ЯКРАСИВИМ MVP) -->
-<div id="nurse-victory-modal" role="dialog" aria-modal="true" aria-label="Результат бою" class="modal-overlay hidden" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(10, 8, 6, 0.75); backdrop-filter: blur(8px); z-index: 30000; display: flex; align-items: center; justify-content: center;">
-    <div style="background: #1c1511; border: 2px solid #27ae60; width: 540px; padding: 30px; border-radius: 12px; color: #f4e8d1; text-align: center; font-family: sans-serif; box-shadow: 0 0 40px rgba(39,174,96,0.4);">
-
-        <div style="font-size: 45px; margin-bottom: 10px;"><img class="game-icon" src="assets/icons/trophy.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"></div>
-        <h2 style="color: #27ae60; margin: 0 0 10px 0; font-size: 26px;">Успішна зачистка кабінету!</h2>
-        <p style="color: #bdaea0; font-size: 14px; margin-bottom: 20px;">Сестра Клара нейтралізована. Доступ до внутрішніх приміщень відкрито.</p>
-
-        <!-- Здобич -->
-        <div style="background: #15100c; border: 1px solid #3d2d22; padding: 15px; border-radius: 8px; margin-bottom: 18px; text-align: left;">
-            <div style="font-size: 13px; color: #f39c12; font-weight: bold; margin-bottom: 8px;"><img class="game-icon" src="assets/icons/box.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"> ЗДОБИЧ ТА НАГОРОДИ:</div>
-            <div style="font-size: 13px; margin-bottom: 4px; color: #fff;"><img class="game-icon" src="assets/icons/star.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"> Досвід: <strong>+50 EXP</strong></div>
-            <div style="font-size: 13px; margin-bottom: 4px; color: #fff;"><img class="game-icon" src="assets/icons/coin.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"> Срібло: <strong>+30 Срібла</strong></div>
-            <div style="font-size: 13px; color: #fff;"><img class="game-icon" src="assets/icons/key.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"> Квестовий предмет: <strong>Ключ від блоку боса</strong></div>
-        </div>
-
-        <!-- Яскраво виділений MVP та звіт -->
-        <div id="victory-raid-summary" style="background: #120e0b; border: 1px solid #f39c12; padding: 15px; border-radius: 8px; margin-bottom: 25px; text-align: left; font-size: 13px; max-height: 160px; overflow-y: auto; box-shadow: inset 0 0 10px rgba(243,156,18,0.2);">
-            <!-- Заповнюється автоматично -->
-        </div>
-
-        <div style="display: flex; gap: 15px;">
-            <button class="btn-outfit" style="flex: 1; background: #27ae60; padding: 12px; font-weight: bold; font-size: 14px; cursor: pointer; border-radius: 6px; color: #fff;" onclick="victoryContinueToMap()"><img class="game-icon" src="assets/icons/map.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"> Продовжити (На карту)</button>
-            <button class="btn-outfit" style="flex: 1; background: #c0392b; padding: 12px; font-weight: bold; font-size: 14px; cursor: pointer; border-radius: 6px; color: #fff;" onclick="victoryRestartFight()"><img class="game-icon" src="assets/icons/repeat.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"> Повторити бій</button>
-        </div>
-
-    </div>
+<!-- Один протокол для будь-якого боса; усі показники заповнюються зі збереженого результату. -->
+<div id="nurse-victory-modal" role="dialog" aria-modal="true" aria-labelledby="victory-title" class="modal-overlay hidden">
+    <article class="battle-report">
+        <header class="battle-report-header">
+            <div class="report-archive-mark">АРХІВ СПЕЦБЛОКУ · ПАЛАТА 404<br>МЕДИЧНИЙ НАГЛЯД / ФОРМА ПБ-01</div>
+            <button class="report-close" type="button" aria-label="Закрити протокол бою" onclick="closeLastBattleResult()">✕</button>
+        </header>
+        <div class="report-classification"><span>ДЛЯ СЛУЖБОВОГО КОРИСТУВАННЯ</span><span class="report-stamp">НЕ Є АКТОМ ОСТАТОЧНОЇ НЕЙТРАЛІЗАЦІЇ</span></div>
+        <h2 id="victory-title">ОБ'ЄКТ ТИМЧАСОВО СТАБІЛІЗОВАНО</h2>
+        <p class="report-subtitle">ПРОТОКОЛ ПІСЛЯБОЙОВОГО ОБСТЕЖЕННЯ</p>
+        <dl class="report-identification">
+            <div><dt>Реєстраційний номер</dt><dd id="victory-boss-number"></dd></div>
+            <div><dt>Код особової справи</dt><dd id="victory-case-code"></dd></div>
+            <div><dt>ID об'єкта</dt><dd id="victory-boss-id"></dd></div>
+            <div class="report-name-field"><dt>Обстежений об'єкт</dt><dd id="victory-boss-name"></dd></div>
+            <div><dt>Статус</dt><dd id="victory-status"></dd></div>
+        </dl>
+        <section class="report-conclusion" aria-labelledby="victory-conclusion-heading">
+            <h3 id="victory-conclusion-heading">Медичний висновок</h3>
+            <p id="victory-conclusion"></p>
+            <span class="report-hand-note">Спостереження не припиняти. Повторну активність не виключено.</span>
+        </section>
+        <section id="victory-rewards" class="report-section" aria-labelledby="victory-rewards-heading">
+            <h3 id="victory-rewards-heading">01 / Особисті нагороди за рейд</h3>
+            <p class="report-caption">Відзначений учасник (MVP): <strong id="victory-mvp-name"></strong></p>
+            <table class="report-rewards-table">
+                <caption class="sr-only">Основна нагорода, додатковий бонус MVP та підсумок для вашого персонажа</caption>
+                <thead><tr><th scope="col">Нарахування</th><th scope="col">Досвід</th><th scope="col">Срібло</th></tr></thead>
+                <tbody>
+                    <tr><th scope="row">Основна нагорода</th><td id="victory-base-exp"></td><td id="victory-base-silver"></td></tr>
+                    <tr><th scope="row">Додатковий бонус MVP (5%)</th><td id="victory-bonus-exp"></td><td id="victory-bonus-silver"></td></tr>
+                </tbody>
+                <tfoot><tr><th scope="row">Разом нараховано</th><td id="victory-total-exp"></td><td id="victory-total-silver"></td></tr></tfoot>
+            </table>
+            <p id="victory-bonus-note" class="report-caption"></p>
+            <ul id="victory-extra-rewards" class="report-extra-rewards"></ul>
+        </section>
+        <section class="report-section" aria-labelledby="victory-statistics-heading">
+            <h3 id="victory-statistics-heading">02 / Результати післябойового обстеження</h3>
+            <div class="report-table-scroll" role="region" aria-label="Статистика учасників; таблицю можна прокручувати горизонтально" tabindex="0">
+                <table class="report-statistics-table">
+                    <caption class="sr-only">Фактичні показники кожного учасника рейду</caption>
+                    <thead><tr><th scope="col">Учасник / статус</th><th scope="col">Завдана шкода</th><th scope="col">Отримана шкода</th><th scope="col">Відновлено здоров'я</th><th scope="col">Ходи</th><th scope="col">Божевілля: початок → кінець (зміна)</th><th scope="col">Частка шкоди</th><th scope="col">Особиста нагорода</th></tr></thead>
+                    <tbody id="victory-statistics-body"></tbody>
+                </table>
+            </div>
+            <p class="report-caption">Хід — успішна атака або застосування препарату. Враховано лише фактично відновлене здоров'я.</p>
+            <p class="report-caption">Локальні помічники не мають власних показників здоров'я, божевілля та рахунків нагород; для них ці поля не застосовуються.</p>
+        </section>
+        <footer class="report-footer">
+            <dl class="report-record-details">
+                <div><dt>Час завершення</dt><dd id="victory-report-date"></dd></div>
+                <div><dt>Тривалість рейду</dt><dd id="victory-duration"></dd></div>
+                <div class="report-record-id"><dt>Номер протоколу</dt><dd id="victory-report-id"></dd></div>
+            </dl>
+            <div id="victory-save-note" class="report-save-note hidden" role="status"></div>
+            <button id="victory-save-retry" class="report-button report-save-retry hidden" type="button" onclick="retryBattleResultSave()">Повторити збереження</button>
+            <div class="report-actions">
+                <button class="report-button" type="button" onclick="victoryContinueToMap()"><img class="game-icon" src="assets/icons/map.svg" alt="" aria-hidden="true" width="64" height="64">Повернутися на карту</button>
+                <button class="report-button report-button-secondary" type="button" onclick="victoryRestartFight()"><img class="game-icon" src="assets/icons/repeat.svg" alt="" aria-hidden="true" width="64" height="64">Повторити обстеження</button>
+            </div>
+        </footer>
+    </article>
 </div>
 
 </body>

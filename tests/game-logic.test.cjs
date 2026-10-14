@@ -10,11 +10,12 @@ const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
 
 // Exercise the actual game script with controlled storage/time. Layout and input
 // handling belong to test_game.py; these stubs intentionally don't model them.
-function game(saves = {}, deniedStorage = false) {
+function game(saves = {}, deniedStorage = false, failWrites = []) {
     let now = 1700000000000;
     let sequence = 0;
     const timers = new Map();
     const storage = new Map(Object.entries(saves));
+    const failedKeys = new Set(failWrites);
     const elements = new Map();
     const listeners = new Map();
     function element(id = '') {
@@ -59,7 +60,11 @@ function game(saves = {}, deniedStorage = false) {
             if (deniedStorage) throw new Error('storage denied');
             return {
                 getItem(key) { return storage.get(key) ?? null; },
-                setItem(key, value) { storage.set(key, String(value)); },
+                setItem(key, value) {
+                    if (failedKeys.has(key)) throw new Error('Simulated interrupted write');
+                    storage.set(key, String(value));
+                },
+                removeItem(key) { storage.delete(key); },
             };
         }
     });
@@ -73,11 +78,12 @@ function game(saves = {}, deniedStorage = false) {
         clearTimeout(id) { timers.delete(id); },
     });
     vm.runInContext(fs.readFileSync(path.join(root, 'icons.js'), 'utf8'), context, { filename: 'icons.js' });
+    vm.runInContext(fs.readFileSync(path.join(root, 'battle-results.js'), 'utf8'), context, { filename: 'battle-results.js' });
     vm.runInContext(source, context, { filename: 'script.js' });
     const run = code => vm.runInContext(code, context);
     for (const callback of listeners.get('DOMContentLoaded') || []) callback();
     return {
-        run, storage, elements,
+        run, storage, elements, failedKeys,
         advance(ms) {
             const target = now + ms;
             while (true) {
@@ -237,4 +243,139 @@ test('item names and notifications stay escaped next to decorative images', () =
     assert.match(g.elements.get('item-info-title').innerHTML, /assets\/icons\/box.svg/);
     assert.match(g.elements.get('toast-message').innerHTML, /&lt;img onerror=bad&gt;/);
     assert.equal(g.run('inventory[0].count'), 3);
+});
+
+test('both bosses produce their own registry identity and one MVP-adjusted reward', () => {
+    for (const [key, code, exp, silver] of [['nurse','404-KL',52,31],['doctor','404-IZ',126,84]]) {
+        const g = game();
+        g.run(`stats.baseDamage=300; recalculateEquipmentStats(); startBossFight('${key}'); performPlayerAttack();`);
+        assert.equal(g.run('lastBattleResult.boss.id'), key);
+        assert.equal(g.run('lastBattleResult.boss.caseCode'), code);
+        assert.equal(g.run('lastBattleResult.boss.name'), g.run(`bossesDatabase.${key}.name`));
+        assert.equal(g.run('lastBattleResult.boss.conclusion'), g.run(`bossesDatabase.${key}.victoryReport.conclusion`));
+        assert.equal(g.run('lastBattleResult.payout.exp'), exp);
+        assert.equal(g.run('lastBattleResult.payout.silver'), silver);
+        assert.equal(g.run('stats.silver'), 150+silver);
+        g.run('handleVictory(); openLastBattleResult(); closeLastBattleResult(); openLastBattleResult();');
+        assert.equal(g.run('stats.silver'), 150+silver);
+        assert.equal(g.run('stats.bossesKilled'), 1);
+        assert.equal(g.run('inventory.filter(i=>i.category==="quest").length'), 1);
+        const reload = game(Object.fromEntries(g.storage));
+        reload.run('openLastBattleResult(); handleVictory();');
+        assert.equal(reload.run('stats.silver'), 150+silver);
+        assert.equal(reload.run('stats.bossesKilled'), 1);
+        assert.equal(reload.run('lastBattleResult.battleId'), g.run('lastBattleResult.battleId'));
+    }
+});
+
+test('a future configured boss needs no result-screen logic and MVP adds exactly five percent', () => {
+    const g = game();
+    g.run(`bossesDatabase.archive = {...bossesDatabase.nurse, key:'archive', name:'Архівний об’єкт',
+        expReward:100, silverReward:200, dossier:{code:'003'},
+        victoryReport:{caseCode:'404-AR',status:'Стабілізовано',conclusion:'Новий медичний висновок.'}};
+        stats.baseDamage=300; recalculateEquipmentStats(); startBossFight('archive'); performPlayerAttack();`);
+    assert.equal(g.run('lastBattleResult.payout.bonusExp'), 5);
+    assert.equal(g.run('lastBattleResult.payout.bonusSilver'), 10);
+    assert.equal(g.run('lastBattleResult.payout.exp'), 105);
+    assert.equal(g.run('lastBattleResult.payout.silver'), 210);
+    assert.equal(g.elements.get('victory-case-code').textContent, '404-AR');
+    assert.equal(g.elements.get('victory-boss-number').textContent, '№003');
+    assert.equal(g.run('stats.level'), 2);
+    assert.equal(g.run('stats.exp'), 5);
+});
+
+test('effective healing, armor damage, medicine actions and madness track real events', () => {
+    const g = game({palata404_stats:'{"silver":1000}'});
+    g.run(`buyMedicalItem('hp_full',150,'silver'); buyMedicalItem('hp_full',150,'silver');
+        buyMedicalItem('madness_pills',50,'silver');
+        stats.baseArmor=40; stats.baseDamage=45; recalculateEquipmentStats(); startBossFight('nurse'); performPlayerAttack();`);
+    g.advance(501);
+    assert.equal(g.run('raidMembers[0].metrics.damageTaken'), 9);
+    g.run('useBattleMedkit("big"); useBattleMedkit("big");');
+    assert.equal(g.run('raidMembers[0].metrics.healing'), 9);
+    assert.equal(g.run('raidMembers[0].metrics.turns'), 2);
+    assert.equal(g.run('inventory.find(i=>i.name==="Велика армійська аптечка").count'), 1);
+    g.run('openItemInfo(inventory.find(i=>i.effectType==="madness")); document.getElementById("item-action-btn").onclick();');
+    g.advance(4000); g.run('performPlayerAttack()'); g.advance(501);
+    g.advance(4000); g.run('performPlayerAttack()');
+    assert.equal(g.run('lastBattleResult.participants[0].damage'), 120);
+    assert.equal(g.run('lastBattleResult.participants[0].damageTaken'), 18);
+    assert.equal(g.run('lastBattleResult.participants[0].healing'), 9);
+    assert.equal(g.run('lastBattleResult.participants[0].turns'), 5);
+    assert.equal(g.run('lastBattleResult.participants[0].madnessStart'), 20);
+    assert.equal(g.run('lastBattleResult.participants[0].madnessEnd'), 5);
+    assert.equal(g.run('lastBattleResult.participants[0].madnessDelta'), -15);
+    assert.equal(g.run('lastBattleResult.participants[0].damageShare'), 100);
+});
+
+test('local helper MVP retains base player payout and unavailable fields are not fabricated', () => {
+    const g = game();
+    g.run(`startBossFight('nurse'); raidMembers[1].status='Халтурив'; callAllFriends(); Math.random=()=>0;
+        for(let i=0;i<10;i++) friendsAutoAttackTick();`);
+    assert.equal(g.run('lastBattleResult.mvpId'), 'friend_1');
+    assert.equal(g.run('lastBattleResult.payout.exp'), 50);
+    assert.equal(g.run('lastBattleResult.payout.silver'), 30);
+    assert.equal(g.run('lastBattleResult.participants[0].specialStatus'), 'Халтурив');
+    for (const member of g.run('lastBattleResult.participants.filter(m=>!m.isPlayer)')) {
+        assert.equal(member.damage, 40);
+        assert.equal(member.turns, 10);
+        assert.equal(member.damageTaken, null);
+        assert.equal(member.healing, null);
+        assert.equal(member.madnessStart, null);
+        assert.equal(member.rewards, null);
+    }
+    assert.equal(g.run('lastBattleResult.participants.find(m=>m.isPlayer).turns'), 0);
+});
+
+test('new raid resets metrics and duplicate event identifiers do not increment them', () => {
+    const g = game();
+    g.run(`startBossFight('nurse'); const id=nextBattleEventId('test');
+        recordBattleEvent(id,raidMembers[0],{damage:4,turns:1});
+        recordBattleEvent(id,raidMembers[0],{damage:4,turns:1});`);
+    assert.equal(g.run('raidMembers[0].damage'), 4);
+    assert.equal(g.run('raidMembers[0].metrics.turns'), 1);
+    const oldId = g.run('currentBattleSession.id');
+    g.run('openFleeConfirmModal(); startBossFight("doctor");');
+    assert.notEqual(g.run('currentBattleSession.id'), oldId);
+    assert.equal(g.run('raidMembers[0].damage'), 0);
+    assert.equal(g.run('raidMembers[0].metrics.turns'), 0);
+    assert.equal(g.run('raidMembers[0].metrics.healing'), 0);
+});
+
+test('interrupted reward writes recover snapshots exactly once without replaying gains', () => {
+    const g = game({palata404_stats:'{"silver":150}'},false,['palata404_stats']);
+    g.run('stats.baseDamage=150; recalculateEquipmentStats(); startBossFight("nurse"); performPlayerAttack();');
+    assert.equal(JSON.parse(g.storage.get('palata404_stats')).silver,150);
+    assert.ok(g.storage.has('palata404_pending_battle_reward'));
+    assert.equal(g.run('battleResultPersisted'),false);
+    const restored = game(Object.fromEntries(g.storage));
+    assert.equal(restored.run('stats.silver'),181);
+    assert.equal(restored.run('stats.exp'),52);
+    assert.equal(restored.run('stats.bossesKilled'),1);
+    assert.equal(restored.run('bossKillsCount.nurse'),1);
+    assert.equal(restored.run('inventory.filter(i=>i.category==="quest").length'),1);
+    assert.equal(restored.storage.has('palata404_pending_battle_reward'),false);
+    restored.run('openLastBattleResult(); retryBattleResultSave(); handleVictory();');
+    assert.equal(restored.run('stats.silver'),181);
+});
+
+test('failed journal persistence leaves a visible retry and cannot award twice on retry', () => {
+    const g = game({},false,['palata404_pending_battle_reward']);
+    g.run('stats.baseDamage=150; recalculateEquipmentStats(); startBossFight("nurse"); performPlayerAttack();');
+    assert.equal(g.run('battleResultPersisted'),false);
+    assert.equal(g.elements.get('victory-save-retry').classList.contains('hidden'),false);
+    g.failedKeys.clear();
+    g.run('retryBattleResultSave(); retryBattleResultSave(); handleVictory();');
+    assert.equal(g.run('battleResultPersisted'),true);
+    assert.equal(g.run('stats.silver'),181);
+    assert.equal(g.run('stats.bossesKilled'),1);
+});
+
+test('participant text is escaped in the protocol and malformed saved reports are rejected', () => {
+    const g = game({palata404_nickname:'<img src=x onerror=bad>'});
+    g.run('stats.baseDamage=150; recalculateEquipmentStats(); startBossFight("nurse"); performPlayerAttack();');
+    assert.match(g.elements.get('victory-statistics-body').innerHTML,/&lt;img src=x onerror=bad&gt;/);
+    assert.doesNotMatch(g.elements.get('victory-statistics-body').innerHTML,/<img src=x/);
+    assert.equal(g.run('normalizeBattleResult({schemaVersion:1})'),null);
+    assert.equal(game({palata404_last_battle_result:'{bad'}).run('lastBattleResult'),null);
 });

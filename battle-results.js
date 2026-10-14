@@ -1,0 +1,240 @@
+// Post-battle accounting and presentation. Combat rules stay in script.js.
+let currentBattleSession = null;
+let lastBattleResult = null;
+let pendingBattleReward = null;
+let battleResultPersisted = false;
+let battleSessionSequence = 0;
+
+function readPendingBattleReward() {
+    try {
+        const pending = JSON.parse(safeStorageGet('palata404_pending_battle_reward'));
+        const result = normalizeBattleResult(pending?.result);
+        const state = pending?.state;
+        if (!result || !state || !state.stats || typeof state.stats !== 'object' || Array.isArray(state.stats)
+            || !Array.isArray(state.inventory) || !state.bossKills
+            || typeof state.bossKills !== 'object' || Array.isArray(state.bossKills)) return null;
+        return { result, state };
+    } catch (error) {
+        return null;
+    }
+}
+
+function prepareBattleRewardSave() {
+    if (!pendingBattleReward) return true;
+    pendingBattleReward.state = { stats, inventory, bossKills: bossKillsCount };
+    const saved = safeStorageSet('palata404_pending_battle_reward', JSON.stringify(pendingBattleReward));
+    if (!saved) battleResultPersisted = false;
+    return saved;
+}
+
+function finishBattleRewardSave(saved) {
+    if (!pendingBattleReward) return saved;
+    if (!saved || !safeStorageSet('palata404_last_battle_result', JSON.stringify(pendingBattleReward.result))) {
+        battleResultPersisted = false;
+        return false;
+    }
+    battleResultPersisted = true;
+    if (safeStorageRemove('palata404_pending_battle_reward')) pendingBattleReward = null;
+    return true;
+}
+
+function beginBattleMetrics(bossKey) {
+    const uniquePart = window.crypto?.randomUUID?.()
+        || `${Date.now().toString(36)}-${++battleSessionSequence}-${Math.random().toString(36).slice(2, 10)}`;
+    currentBattleSession = {
+        id: `raid-${uniquePart}`, bossKey, startedAt: Date.now(), finished: false,
+        serial: 0, events: new Set()
+    };
+    raidMembers.forEach(member => {
+        member.metrics = {
+            damageTaken: member.isPlayer ? 0 : null,
+            healing: member.isPlayer ? 0 : null,
+            turns: 0,
+            madnessStart: member.isPlayer ? stats.madness : null
+        };
+    });
+}
+
+function nextBattleEventId(type) {
+    return currentBattleSession && !currentBattleSession.finished ? `${currentBattleSession.id}:${++currentBattleSession.serial}:${type}` : null;
+}
+
+function recordBattleEvent(id, member, delta) {
+    const battle = currentBattleSession;
+    if (!id || !isBattleActive || !battle || battle.finished || !member?.metrics || battle.events.has(id)) return false;
+    battle.events.add(id);
+    if (Number.isFinite(delta.damage) && delta.damage >= 0) member.damage += delta.damage;
+    ['damageTaken', 'healing', 'turns'].forEach(field => {
+        if (member.metrics[field] !== null && Number.isFinite(delta[field]) && delta[field] >= 0) {
+            member.metrics[field] += delta[field];
+        }
+    });
+    return true;
+}
+
+function recordPlayerRecovery(healing, usedMedicine = false) {
+    const player = raidMembers.find(member => member.isPlayer);
+    recordBattleEvent(nextBattleEventId('recovery'), player, {
+        healing: Math.max(0, healing), turns: usedMedicine ? 1 : 0
+    });
+}
+
+function buildBattleResult(boss) {
+    const battle = currentBattleSession;
+    const members = raidMembers.filter(member => member.isPlayer || member.called);
+    // Stable sorting retains the existing player-first tie rule.
+    const sorted = [...members].sort((a, b) => b.damage - a.damage);
+    const totalDamage = members.reduce((sum, member) => sum + member.damage, 0);
+    const mvpId = sorted[0]?.damage > 0 ? sorted[0].id : null;
+    const baseExp = boss.expReward;
+    const baseSilver = boss.silverReward;
+    const playerIsMvp = sorted.find(member => member.id === mvpId)?.isPlayer === true;
+    // Saved currencies and experience use whole numbers; round the 5% addition down.
+    const bonusExp = playerIsMvp ? Math.floor(baseExp * 5 / 100) : 0;
+    const bonusSilver = playerIsMvp ? Math.floor(baseSilver * 5 / 100) : 0;
+    const report = boss.victoryReport || {};
+    return {
+        schemaVersion: 1,
+        battleId: battle.id,
+        startedAt: battle.startedAt,
+        endedAt: Date.now(),
+        boss: {
+            id: battle.bossKey, name: boss.name,
+            registrationNumber: boss.dossier?.code || report.registrationNumber || battle.bossKey,
+            caseCode: report.caseCode || 'Не зазначено',
+            status: report.status || 'Тимчасова стабілізація',
+            conclusion: report.conclusion || 'Післябойовий стан об’єкта зафіксовано. Медичний висновок потребує уточнення.'
+        },
+        mvpId,
+        totalDamage,
+        payout: { baseExp, baseSilver, bonusExp, bonusSilver, exp: baseExp + bonusExp, silver: baseSilver + bonusSilver },
+        participants: sorted.map(member => ({
+            id: member.id, name: member.isPlayer ? playerName : member.name,
+            isPlayer: member.isPlayer === true,
+            damage: member.damage,
+            damageTaken: member.metrics.damageTaken,
+            healing: member.metrics.healing,
+            turns: member.metrics.turns,
+            madnessStart: member.metrics.madnessStart,
+            madnessEnd: member.isPlayer ? stats.madness : null,
+            madnessDelta: member.isPlayer ? stats.madness - member.metrics.madnessStart : null,
+            damageShare: totalDamage > 0 ? member.damage / totalDamage * 100 : 0,
+            isMvp: member.id === mvpId,
+            specialStatus: typeof member.status === 'string' ? member.status : null,
+            rewards: member.isPlayer ? { exp: baseExp + bonusExp, silver: baseSilver + bonusSilver } : null
+        })),
+        extraRewards: boss.questItem ? [{
+            type: 'item', name: boss.questItem.name, icon: resolveIconKey(boss.questItem.icon),
+            granted: !inventory.some(item => item.name === boss.questItem.name)
+        }] : []
+    };
+}
+
+function normalizeBattleResult(value) {
+    const object = data => data && typeof data === 'object' && !Array.isArray(data);
+    const number = data => Number.isSafeInteger(data) && data >= 0;
+    const nullableNumber = data => data === null || number(data);
+    if (!object(value) || value.schemaVersion !== 1 || typeof value.battleId !== 'string'
+        || !object(value.boss) || !object(value.payout) || !Array.isArray(value.participants)
+        || !value.participants.length || !Array.isArray(value.extraRewards)
+        || !number(value.startedAt) || !number(value.endedAt) || value.endedAt < value.startedAt
+        || !number(value.totalDamage)) return null;
+    if (!['id', 'name', 'registrationNumber', 'caseCode', 'status', 'conclusion']
+        .every(field => typeof value.boss[field] === 'string')) return null;
+    if (!['baseExp', 'baseSilver', 'bonusExp', 'bonusSilver', 'exp', 'silver'].every(field => number(value.payout[field]))) return null;
+    if (value.payout.exp !== value.payout.baseExp + value.payout.bonusExp
+        || value.payout.silver !== value.payout.baseSilver + value.payout.bonusSilver) return null;
+    if (!value.participants.every(member => object(member) && typeof member.id === 'string'
+        && typeof member.name === 'string' && typeof member.isPlayer === 'boolean'
+        && typeof member.isMvp === 'boolean' && number(member.damage) && number(member.turns)
+        && nullableNumber(member.damageTaken) && nullableNumber(member.healing)
+        && nullableNumber(member.madnessStart) && nullableNumber(member.madnessEnd)
+        && (member.madnessDelta === null || Number.isSafeInteger(member.madnessDelta))
+        && Number.isFinite(member.damageShare) && member.damageShare >= 0 && member.damageShare <= 100
+        && (member.rewards === null || (object(member.rewards) && number(member.rewards.exp) && number(member.rewards.silver))))) return null;
+    if (!value.extraRewards.every(reward => object(reward) && typeof reward.name === 'string'
+        && typeof reward.icon === 'string' && typeof reward.granted === 'boolean')) return null;
+    return value;
+}
+
+function formatReportNumber(value) {
+    return value === null ? 'Не застосовується' : String(value);
+}
+
+function renderBattleResult(result) {
+    const setText = (id, value) => {
+        const element = document.getElementById(id);
+        if (element) element.textContent = value;
+    };
+    setText('victory-boss-id', result.boss.id);
+    setText('victory-boss-number', `№${result.boss.registrationNumber}`);
+    setText('victory-boss-name', result.boss.name);
+    setText('victory-case-code', result.boss.caseCode);
+    setText('victory-status', result.boss.status);
+    setText('victory-conclusion', result.boss.conclusion);
+    setText('victory-report-id', result.battleId);
+    setText('victory-report-date', new Date(result.endedAt).toLocaleString('uk-UA'));
+    const seconds = Math.floor((result.endedAt - result.startedAt) / 1000);
+    setText('victory-duration', `${Math.floor(seconds / 60)} хв ${seconds % 60} с`);
+    const mvp = result.participants.find(member => member.isMvp);
+    setText('victory-mvp-name', mvp ? mvp.name : 'Не визначено');
+    setText('victory-base-exp', result.payout.baseExp);
+    setText('victory-base-silver', result.payout.baseSilver);
+    setText('victory-bonus-exp', result.payout.bonusExp);
+    setText('victory-bonus-silver', result.payout.bonusSilver);
+    setText('victory-total-exp', result.payout.exp);
+    setText('victory-total-silver', result.payout.silver);
+    const playerIsMvp = result.participants.some(member => member.isPlayer && member.isMvp);
+    setText('victory-bonus-note', playerIsMvp
+        ? 'Бонус MVP: 5% від основної нагороди, округлено вниз до цілого.'
+        : 'Бонус MVP до вашої нагороди не застосовується.');
+    const rows = result.participants.map(member => {
+        const madness = member.madnessStart === null ? 'Не застосовується'
+            : `${member.madnessStart} → ${member.madnessEnd} (${member.madnessDelta > 0 ? '+' : ''}${member.madnessDelta})`;
+        // The personal payout is printed once, in the shared reward section.
+        const reward = member.rewards ? '<a href="#victory-rewards">Див. підсумок нагород</a>' : 'Не застосовується';
+        const status = [member.isMvp ? 'MVP' : '', member.specialStatus || '', !member.isPlayer ? 'Локальний помічник' : '']
+            .filter(Boolean).map(escapeHTML).join(' · ');
+        return `<tr class="${member.isMvp ? 'report-mvp-row' : ''}">
+            <th scope="row">${escapeHTML(member.name)}${status ? `<small>${status}</small>` : ''}</th>
+            <td>${member.damage}</td><td>${formatReportNumber(member.damageTaken)}</td>
+            <td>${formatReportNumber(member.healing)}</td><td>${member.turns}</td>
+            <td>${madness}</td><td>${member.damageShare.toFixed(1)}%</td><td>${reward}</td>
+        </tr>`;
+    }).join('');
+    const table = document.getElementById('victory-statistics-body');
+    if (table) table.innerHTML = rows;
+    const additional = document.getElementById('victory-extra-rewards');
+    if (additional) additional.innerHTML = result.extraRewards.length ? result.extraRewards.map(reward =>
+        `<li>${iconHTML(reward.icon)} <strong>${escapeHTML(reward.name)}</strong> — ${reward.granted ? 'отримано' : 'вже є в інвентарі'}</li>`
+    ).join('') : '<li>Додаткових предметів не видано.</li>';
+    updateBattleResultSaveNotice();
+}
+
+function updateBattleResultSaveNotice() {
+    const note = document.getElementById('victory-save-note');
+    if (!note) return;
+    note.classList.toggle('hidden', battleResultPersisted);
+    note.textContent = battleResultPersisted ? ''
+        : 'Протокол і нагороди поки не вдалося зберегти. Не закривайте сторінку; спробуйте зберегти ще раз.';
+    document.getElementById('victory-save-retry')?.classList.toggle('hidden', battleResultPersisted);
+}
+
+function openLastBattleResult() {
+    if (!lastBattleResult) {
+        showCustomToast('Збереженого протоколу бою ще немає.');
+        return;
+    }
+    closeOtherModals(['nurse-victory-modal']);
+    renderBattleResult(lastBattleResult);
+    document.getElementById('nurse-victory-modal')?.classList.remove('hidden');
+}
+
+function retryBattleResultSave() {
+    saveGameProgress();
+    updateBattleResultSaveNotice();
+}
+
+function closeLastBattleResult() {
+    document.getElementById('nurse-victory-modal')?.classList.add('hidden');
+}

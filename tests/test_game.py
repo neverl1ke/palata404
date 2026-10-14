@@ -363,6 +363,93 @@ class GameTests(unittest.TestCase):
         self.page.reload(wait_until='networkidle')
         self.assertEqual(self.page.evaluate('inventory[0].count'), 3)
 
+    def test_victory_protocol_identity_rewards_and_archive_reopen(self):
+        self.load()
+        previous_id = None
+        for key, code, number, exp, silver in [('nurse','404-KL','№001',52,31), ('doctor','404-IZ','№002',126,84)]:
+            with self.subTest(boss=key):
+                before = self.state()['silver']
+                self.page.evaluate('''key => {
+                    stats.baseDamage=300; recalculateEquipmentStats();
+                    startBossFight(key); performPlayerAttack();
+                }''', key)
+                self.assertTrue(self.page.locator('#nurse-victory-modal').is_visible())
+                self.assertEqual(self.page.locator('#victory-boss-id').inner_text(), key)
+                self.assertEqual(self.page.locator('#victory-case-code').inner_text(), code)
+                self.assertEqual(self.page.locator('#victory-boss-number').inner_text(), number)
+                self.assertEqual(self.page.locator('#victory-total-exp').inner_text(), str(exp))
+                self.assertEqual(self.page.locator('#victory-total-silver').inner_text(), str(silver))
+                self.assertEqual(self.state()['silver'], before+silver)
+                current_id = self.page.locator('#victory-report-id').inner_text()
+                self.assertNotEqual(current_id, previous_id)
+                previous_id = current_id
+                self.page.evaluate('handleVictory(); closeLastBattleResult(); openLastBattleResult();')
+                self.assertEqual(self.state()['silver'], before+silver)
+                self.assertEqual(self.page.locator('#victory-statistics-body tr').count(), 1)
+                self.assertEqual(self.page.locator('#victory-rewards').count(), 1)
+        after = self.state()
+        self.page.reload(wait_until='networkidle')
+        self.page.evaluate('openSettings()')
+        self.page.get_by_role('button', name='Останній протокол бою', exact=True).click()
+        self.assertEqual(self.page.locator('#victory-case-code').inner_text(), '404-IZ')
+        self.assertEqual(self.state()['silver'], after['silver'])
+        self.assertEqual(self.state()['bossesKilled'], after['bossesKilled'])
+
+    def test_victory_protocol_mobile_scroll_and_controls(self):
+        self.load()
+        self.page.evaluate('stats.baseDamage=300; recalculateEquipmentStats(); startBossFight("doctor"); performPlayerAttack();')
+        results = ROOT / 'test-results'
+        results.mkdir(exist_ok=True)
+        for width, height in [(320,568),(390,844),(844,390),(1280,800)]:
+            with self.subTest(viewport=(width,height)):
+                self.page.set_viewport_size({'width':width,'height':height})
+                self.page.evaluate('openLastBattleResult()')
+                report = self.page.locator('.battle-report')
+                box = report.bounding_box()
+                self.assertGreaterEqual(box['x'], 0)
+                self.assertGreaterEqual(box['y'], 0)
+                self.assertLessEqual(box['x']+box['width'], width+1)
+                self.assertLessEqual(box['y']+box['height'], height+1)
+                self.assertLessEqual(self.page.evaluate('document.documentElement.scrollWidth'), width)
+                if width < 900:
+                    self.assertTrue(self.page.locator('.report-table-scroll').evaluate('e=>e.scrollWidth>e.clientWidth'))
+                for button in self.page.locator('.report-actions button').all():
+                    button.scroll_into_view_if_needed()
+                    action = button.bounding_box()
+                    self.assertGreaterEqual(action['x'], 0)
+                    self.assertLessEqual(action['x']+action['width'], width+1)
+                    self.assertGreaterEqual(action['height'], 44)
+                report.evaluate('e=>e.scrollTop=0')
+                self.page.screenshot(path=str(results/f'victory-{width}x{height}.png'))
+                self.page.get_by_role('button', name='Закрити протокол бою', exact=True).click()
+                self.assertFalse(self.page.locator('#nurse-victory-modal').is_visible())
+
+    def test_partial_reward_save_recovers_without_duplicate_credit(self):
+        self.context.add_init_script('''
+            window.blockRewardSave=false;
+            const originalSet=Storage.prototype.setItem;
+            Storage.prototype.setItem=function(key,value) {
+                if(window.blockRewardSave && key==='palata404_stats') throw new DOMException('Interrupted', 'QuotaExceededError');
+                return originalSet.call(this,key,value);
+            };
+        ''')
+        self.load()
+        self.page.evaluate('''() => {
+            stats.baseDamage=300; recalculateEquipmentStats(); startBossFight('nurse');
+            window.blockRewardSave=true; performPlayerAttack();
+        }''')
+        self.assertEqual(self.state()['silver'], 181)
+        self.assertTrue(self.page.locator('#victory-save-note').is_visible())
+        self.assertEqual(self.page.evaluate('JSON.parse(localStorage.getItem("palata404_stats")).silver'),150)
+        self.page.reload(wait_until='networkidle')
+        self.assertEqual(self.state()['silver'],181)
+        self.assertEqual(self.state()['exp'],52)
+        self.assertEqual(self.state()['bossesKilled'],1)
+        self.assertIsNone(self.page.evaluate('localStorage.getItem("palata404_pending_battle_reward")'))
+        self.page.evaluate('openLastBattleResult(); handleVictory(); retryBattleResultSave();')
+        self.assertEqual(self.state()['silver'],181)
+        self.assertFalse(self.page.locator('#victory-save-note').is_visible())
+
 
 if __name__ == '__main__':
     unittest.main()
