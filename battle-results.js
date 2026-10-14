@@ -13,7 +13,7 @@ function readPendingBattleReward() {
         if (!result || !ownsBattleResult(result) || !state || !state.stats || typeof state.stats !== 'object' || Array.isArray(state.stats)
             || !Array.isArray(state.inventory) || !state.bossKills
             || typeof state.bossKills !== 'object' || Array.isArray(state.bossKills)) return null;
-        return { result, state };
+        return { result, state, staffArchive: normalizeStaffArchive(pending?.staffArchive) };
     } catch (error) {
         return null;
     }
@@ -22,6 +22,7 @@ function readPendingBattleReward() {
 function prepareBattleRewardSave() {
     if (!pendingBattleReward) return true;
     pendingBattleReward.state = { stats, inventory, bossKills: bossKillsCount };
+    pendingBattleReward.staffArchive = staffArchiveState;
     const saved = safeStorageSet('palata404_pending_battle_reward', JSON.stringify(pendingBattleReward));
     if (!saved) battleResultPersisted = false;
     return saved;

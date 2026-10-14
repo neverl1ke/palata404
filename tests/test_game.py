@@ -61,6 +61,7 @@ class GameTests(unittest.TestCase):
 
     def setUp(self):
         self.context = self.browser.new_context(viewport={'width': 1280, 'height': 800})
+        self.context.add_init_script('Math.random=()=>0.5;')
         self.context.route('https://**/*', lambda route: route.abort())
         self.errors = []
         self.page = self.context.new_page()
@@ -686,6 +687,135 @@ class GameTests(unittest.TestCase):
         self.page.reload(wait_until='networkidle')
         self.page.evaluate('openRaidArchive()')
         self.assertEqual(self.page.locator('.raid-archive-card').first.locator('.raid-card-personal-stamp').count(), 0)
+
+    def test_staff_archive_unknown_cases_first_contact_and_details(self):
+        self.load()
+        self.page.get_by_role('button', name='Архів персоналу', exact=True).click()
+        archive = self.page.locator('#staff-archive-modal')
+        self.assertEqual(archive.locator('.staff-case-button').count(), 2)
+        self.assertEqual(archive.get_by_text('ОСОБУ НЕ ВСТАНОВЛЕНО', exact=True).count(), 3)
+        self.assertEqual(archive.locator('img[src*="dossier_card"]').count(), 0)
+        self.assertNotIn('Черговий лікар', archive.inner_text())
+        self.assertNotIn('Сестра Клара', archive.inner_text())
+        self.assertNotIn('Копія наказу', archive.inner_text())
+        self.page.evaluate('openBossDossier("doctor")')
+        self.page.get_by_role('button', name='ДЕТАЛЬНІ ВІДОМОСТІ', exact=True).click()
+        self.assertIn('№002', self.page.locator('#staff-case-sheet').inner_text())
+        self.assertIn('ОСОБУ НЕ ВСТАНОВЛЕНО', self.page.locator('#staff-case-sheet').inner_text())
+        self.assertEqual(self.page.evaluate('Object.keys(staffArchiveState.cases).length'), 0)
+        self.page.evaluate('startBossFight("doctor"); stats.hp=1; performPlayerAttack();')
+        self.page.wait_for_function('!isBattleActive')
+        self.page.evaluate('openStaffArchive("doctor")')
+        self.assertIn('Черговий лікар', self.page.locator('#staff-case-sheet').inner_text())
+        image = self.page.locator('.staff-dossier-image')
+        self.assertEqual(image.get_attribute('src'), 'doctor_dossier_card.png')
+        self.page.get_by_role('button', name='Архівні документи', exact=True).click()
+        sheet = self.page.locator('#staff-case-sheet')
+        self.assertIn('ДОКУМЕНТ №002-03 — ЗАСЕКРЕЧЕНО', sheet.inner_text())
+        self.assertNotIn('Незаповнена графа наказу', sheet.inner_text())
+        self.assertNotIn('Копія наказу головного лікаря', sheet.inner_text())
+        sheet.get_by_role('button', name='Читати документ', exact=True).first.click()
+        self.assertIn('Об’єкт №002 відомий', sheet.inner_text())
+        self.page.reload(wait_until='networkidle')
+        self.page.evaluate('openStaffArchive("doctor")')
+        self.assertIn('Черговий лікар', self.page.locator('#staff-case-sheet').inner_text())
+        self.assertEqual(self.page.evaluate('staffCaseProgress("doctor").opened'), 2)
+
+    def test_staff_pity_rewards_and_clear_preserve_collection(self):
+        self.load()
+        self.page.evaluate('''() => {
+            stats.baseDamage=300; recalculateEquipmentStats(); Math.random=()=>0.5;
+            for(let i=0;i<29;i++) { startBossFight('doctor'); performPlayerAttack(); }
+        }''')
+        self.assertEqual(self.page.evaluate('staffArchiveState.cases.doctor.misses'), 29)
+        self.page.reload(wait_until='networkidle')
+        self.page.evaluate('stats.baseDamage=300; recalculateEquipmentStats(); startBossFight("doctor"); performPlayerAttack();')
+        self.assertEqual(self.page.evaluate('staffArchiveState.cases.doctor.misses'), 0)
+        self.assertEqual(self.page.evaluate('lastBattleResult.extraRewards.filter(r=>r.type==="document").length'), 1)
+        self.page.evaluate('''() => {
+            Math.random=()=>0; startBossFight('doctor'); performPlayerAttack(); openStaffArchive('doctor'); changeStaffArchiveTab('rewards');
+        }''')
+        self.assertEqual(self.page.evaluate('staffCaseProgress("doctor").complete'), True)
+        before = self.state()['silver']
+        buttons = self.page.locator('.staff-claim-button')
+        self.assertEqual(buttons.count(), 2)
+        buttons.first.click()
+        self.assertEqual(self.state()['silver'], before+1)
+        self.page.locator('.staff-claim-button').click()
+        self.assertEqual(self.state()['silver'], before+2)
+        self.assertEqual(self.page.locator('.staff-claim-button').count(), 0)
+        profile = self.page.evaluate('JSON.stringify(staffArchiveState)')
+        self.page.evaluate('openRaidArchive(); requestRaidArchiveClear();')
+        self.page.locator('#raid-archive-confirm').get_by_role('button', name='Очистити архів', exact=True).click()
+        self.assertEqual(self.page.evaluate('readRaidArchive().length'), 0)
+        self.assertEqual(self.page.evaluate('JSON.stringify(staffArchiveState)'), profile)
+        self.page.reload(wait_until='networkidle')
+        self.page.evaluate('openStaffArchive("doctor"); changeStaffArchiveTab("rewards");')
+        self.assertEqual(self.state()['silver'], before+2)
+        self.assertEqual(self.page.locator('.staff-claim-button').count(), 0)
+
+    def test_staff_archive_and_enlarged_dossiers_mobile_bounds(self):
+        self.load()
+        self.page.evaluate('stats.baseDamage=300; recalculateEquipmentStats(); startBossFight("doctor"); performPlayerAttack(); startBossFight("nurse"); performPlayerAttack(); openStaffArchive("nurse");')
+        results = ROOT / 'test-results'
+        results.mkdir(exist_ok=True)
+        for width, height in [(1280,800),(1024,768),(768,1024),(320,568),(390,844),(844,390)]:
+            with self.subTest(viewport=(width,height)):
+                self.page.set_viewport_size({'width':width,'height':height})
+                self.page.evaluate('openStaffArchive("nurse")')
+                paper = self.page.locator('.staff-archive-document')
+                box = paper.bounding_box()
+                self.assertGreaterEqual(box['x'], 0)
+                self.assertGreaterEqual(box['y'], 0)
+                self.assertLessEqual(box['x']+box['width'], width+1)
+                self.assertLessEqual(box['y']+box['height'], height+1)
+                self.assertLessEqual(self.page.evaluate('document.documentElement.scrollWidth'), width)
+                for name in ['Архівні документи','Службові спостереження','Винагороди та колекції','Анкетні відомості']:
+                    self.page.get_by_role('button', name=name, exact=True).click()
+                self.page.screenshot(path=str(results/f'staff-archive-{width}x{height}.png'))
+                self.page.evaluate('openBossDossier("doctor")')
+                photo = self.page.locator('#universal-dossier-img')
+                self.assertEqual(photo.get_attribute('src'), 'doctor_dossier_card.png')
+                if width >= 1024:
+                    self.assertGreaterEqual(photo.bounding_box()['width'], 290)
+                self.page.get_by_role('button', name='ДЕТАЛЬНІ ВІДОМОСТІ', exact=True).click()
+                self.assertIn('Черговий лікар', self.page.locator('#staff-case-sheet').inner_text())
+                self.page.evaluate('openRaidArchive()')
+                image = self.page.locator('.raid-card-dossier-image').first
+                image.scroll_into_view_if_needed()
+                self.page.wait_for_function('()=>[...document.querySelectorAll(".raid-card-dossier-image")].some(e=>e.complete&&e.naturalWidth>0)')
+                if width >= 1024:
+                    self.assertGreaterEqual(image.bounding_box()['width'], 315)
+                    text = self.page.locator('.raid-card-details').first.bounding_box()
+                    self.assertAlmostEqual(image.bounding_box()['y'], text['y'], delta=6)
+                self.assertTrue(image.evaluate('e=>Math.abs(e.clientWidth/e.clientHeight-e.naturalWidth/e.naturalHeight)<0.02'))
+                self.page.screenshot(path=str(results/f'raid-enlarged-{width}x{height}.png'))
+                self.page.keyboard.press('Escape')
+                self.assertFalse(self.page.locator('#raid-archive-modal').is_visible())
+
+    def test_staff_collection_interrupted_claim_recovers_once(self):
+        self.context.add_init_script('''
+            const nativeSet=Storage.prototype.setItem;
+            Storage.prototype.setItem=function(key,value) {
+                if(window.blockStaffClaim && key==='palata404_stats') throw new DOMException('Interrupted','QuotaExceededError');
+                return nativeSet.call(this,key,value);
+            };
+        ''')
+        self.load()
+        self.page.evaluate('''() => {
+            stats.baseDamage=300; recalculateEquipmentStats(); Math.random=()=>0;
+            for(let i=0;i<5;i++) { startBossFight('doctor'); performPlayerAttack(); }
+            openStaffArchive('doctor'); changeStaffArchiveTab('rewards'); window.blockStaffClaim=true;
+        }''')
+        before = self.state()['silver']
+        self.page.locator('.staff-claim-button').first.click()
+        self.assertEqual(self.state()['silver'], before+1)
+        self.assertTrue(self.page.locator('#staff-save-note').is_visible())
+        self.page.reload(wait_until='networkidle')
+        self.assertEqual(self.state()['silver'], before+1)
+        self.page.evaluate('openStaffArchive("doctor"); changeStaffArchiveTab("rewards");')
+        self.assertEqual(self.page.locator('.staff-claim-button').count(), 1)
+        self.assertFalse(self.page.locator('#staff-save-note').is_visible())
 
     def test_partial_reward_save_recovers_without_duplicate_credit(self):
         self.context.add_init_script('''

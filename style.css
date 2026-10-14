@@ -55,7 +55,7 @@
 .map-node-pin .game-icon { width: 18px; height: 18px; }
 
 /* Post-battle archive protocol: worn paper, ink stamps, no neon battle styling. */
-#nurse-victory-modal, #battle-detail-modal, #raid-archive-modal, #raid-archive-confirm {
+#nurse-victory-modal, #battle-detail-modal, #raid-archive-modal, #raid-archive-confirm, #staff-archive-modal {
     position: fixed;
     inset: 0;
     display: flex;
@@ -192,10 +192,10 @@
 .raid-archive-toolbar .report-detail-link { margin-left: auto; }
 #raid-archive-count { font-size: 12px; color: #66513d; }
 .raid-archive-list { list-style: none; padding: 0; display: grid; gap: 10px; margin-top: 14px; }
-.raid-archive-card { display: grid; grid-template-columns: 220px minmax(0, 1fr); align-items: center; gap: 14px; width: 100%; text-align: left; padding: 12px 14px; color: #30261e; border: 1px solid #947556; border-left: 4px solid #704237; background: rgba(241, 229, 200, 0.45); cursor: pointer; overflow-wrap: anywhere; }
+.raid-archive-card { display: grid; grid-template-columns: 330px minmax(0, 1fr); align-items: start; gap: 16px; width: 100%; text-align: left; padding: 12px 14px; color: #30261e; border: 1px solid #947556; border-left: 4px solid #704237; background: rgba(241, 229, 200, 0.45); cursor: pointer; overflow-wrap: anywhere; }
 .raid-archive-card:hover { background: rgba(241, 229, 200, 0.8); }
 .raid-archive-card:focus-visible { outline: 2px solid #743b37; outline-offset: 2px; }
-.raid-card-visual { display: block; min-width: 0; }
+.raid-card-visual { display: block; min-width: 0; padding: 4px; border: 1px solid rgba(116, 87, 56, 0.55); background: rgba(203, 181, 143, 0.2); box-shadow: 2px 3px 7px rgba(48, 38, 30, 0.15), inset 0 0 8px rgba(116, 87, 56, 0.1); }
 .raid-card-dossier-image { display: block; width: 100%; height: auto; aspect-ratio: auto 1376 / 768; object-fit: contain; filter: drop-shadow(2px 3px 4px rgba(48, 38, 30, 0.3)); }
 .raid-card-no-dossier { display: flex; min-height: 100px; gap: 8px; align-items: center; justify-content: center; flex-direction: column; color: #66513d; font-size: 11px; border: 1px dashed #947556; }
 .raid-card-details { display: block; min-width: 0; }
@@ -210,13 +210,57 @@
 .raid-archive-empty { padding: 30px 10px; text-align: center; font-size: 13px; }
 .raid-archive-empty h3 { margin-top: 16px; }
 .raid-archive-confirm-document { width: min(560px, 100%); font-size: 14px; }
+.staff-archive-document { width: min(1120px, 100%); }
+.staff-archive-toolbar { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 12px; margin: 14px 0; }
+.staff-archive-toolbar h2 { margin: 0 auto 0 0; }
+.staff-archive-toolbar label { font-size: 12px; }
+.staff-archive-toolbar select { max-width: 100%; min-height: 44px; background: #d4c09b; color: #30261e; border: 1px solid #947556; padding: 6px; }
+.staff-archive-layout { display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 16px; height: 520px; }
+.staff-index { min-width: 0; overflow-y: auto; border-right: 1px solid #947556; padding-right: 10px; }
+#staff-case-list { list-style: none; display: grid; gap: 8px; }
+.staff-case-button { display: flex; align-items: center; gap: 8px; width: 100%; min-height: 98px; padding: 8px; border: 1px solid #947556; background: #cbb68f; color: #30261e; cursor: pointer; text-align: left; }
+.staff-case-button.selected { border: 2px solid #743b37; background: #e0d0ae; }
+.staff-case-button img { width: 86px; height: auto; object-fit: contain; }
+.staff-case-button > span { min-width: 0; }
+.staff-case-button strong, .staff-case-button small { display: block; overflow-wrap: anywhere; }
+.staff-case-button strong { font-size: 12px; }
+.staff-case-button small { font-size: 10px; margin-top: 4px; }
+.staff-case-button .report-stamp { display: inline-block; font-size: 9px; padding: 2px 3px; margin-top: 6px; }
+.staff-silhouette { display: flex; flex-shrink: 0; align-items: center; justify-content: center; width: 74px; height: 74px; background: #b7a27e; border: 1px solid #80644b; }
+.staff-silhouette .game-icon { width: 56px; height: 56px; margin: 0; filter: brightness(0); }
+.staff-silhouette-large { width: 160px; height: 160px; margin-bottom: 14px; }
+.staff-silhouette-large .game-icon { width: 120px; height: 120px; }
+.staff-case-content { display: flex; flex-direction: column; min-width: 0; min-height: 0; }
+.staff-tabs { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 10px; flex-shrink: 0; }
+.staff-tabs button { flex: 1 1 130px; min-height: 44px; padding: 6px; font-size: 11px; color: #30261e; background: #cbb68f; border: 1px solid #947556; cursor: pointer; }
+.staff-tabs button[aria-pressed="true"] { background: #e7d8b7; border-bottom: 3px solid #743b37; }
+.staff-case-sheet { flex: 1; min-height: 0; overflow-y: auto; border: 1px solid #947556; padding: 14px; background: rgba(241, 229, 200, 0.45); font-size: 13px; overflow-wrap: anywhere; }
+.staff-case-sheet p { margin: 8px 0; }
+.staff-case-progress { border-bottom: 1px dashed #947556; padding-bottom: 10px; color: #66513d; font-size: 12px; }
+.staff-identity { display: flex; align-items: flex-start; gap: 12px; flex-wrap: wrap; }
+.staff-dossier-image { width: min(320px, 100%); height: auto; object-fit: contain; }
+.staff-identity > div { flex: 1 1 180px; }
+.staff-document-list { list-style: none; display: grid; gap: 10px; }
+.staff-document-item { padding: 10px; background: rgba(185, 158, 115, 0.15); border: 1px solid #a88d65; }
+.staff-document-item > strong, .staff-document-item > span { display: block; }
+.staff-document-reading, .staff-collection { margin-top: 14px; border-top: 1px dashed #947556; padding-top: 12px; }
+.staff-claim-button { margin: 8px 0; }
+
+@media (min-width: 601px) and (max-width: 1000px) {
+    .raid-archive-card { grid-template-columns: 270px minmax(0, 1fr); }
+}
+@media (max-width: 700px) {
+    .staff-archive-layout { display: block; height: auto; }
+    .staff-index { max-height: 180px; border-right: 0; border-bottom: 1px solid #947556; padding: 0 0 10px; margin-bottom: 12px; }
+    .staff-case-sheet { min-height: 280px; max-height: 440px; flex: none; }
+}
 
 @media (max-width: 600px) {
-    #nurse-victory-modal, #battle-detail-modal, #raid-archive-modal, #raid-archive-confirm { padding: 8px !important; }
+    #nurse-victory-modal, #battle-detail-modal, #raid-archive-modal, #raid-archive-confirm, #staff-archive-modal { padding: 8px !important; }
     .battle-report { padding: 18px 16px; max-height: calc(100dvh - 16px); }
     .battle-report.victory-summary { padding: 12px; }
     .raid-archive-card { grid-template-columns: 1fr; gap: 8px; padding: 10px; }
-    .raid-card-visual { width: min(240px, 100%); justify-self: center; }
+    .raid-card-visual { width: min(330px, 100%); justify-self: center; }
     .victory-summary-actions .report-button { font-size: 12px; padding: 9px 6px; }
     .victory-summary-rewards { padding: 9px 10px; }
     .report-identification { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
@@ -1062,7 +1106,7 @@ body {
 }
 
 #universal-dossier-modal .dossier-paper {
-    width: min(540px, calc(100vw - 24px)) !important;
+    width: min(760px, calc(100vw - 24px)) !important;
 }
 
 .boss-dossier-profile {
@@ -1073,9 +1117,9 @@ body {
 }
 
 .boss-dossier-art {
-    flex: 0 0 40%;
+    flex: 0 0 44%;
     min-width: 0;
-    max-width: 200px;
+    max-width: 320px;
 }
 
 #universal-dossier-img {
@@ -1502,7 +1546,7 @@ body.modal-open {
     }
 
     .boss-dossier-art {
-        width: min(200px, 100%);
+        width: min(320px, 100%);
         align-self: center;
     }
 }

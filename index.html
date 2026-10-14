@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Special+Elite&display=swap" rel="stylesheet">
 
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <link rel="stylesheet" href="style.css?v=40008">
+    <link rel="stylesheet" href="style.css?v=40009">
 </head>
 <body>
 
@@ -49,6 +49,7 @@
 <button id="nav-raid-btn" class="nav-icon-btn" title="Рейд" onclick="handleRaidButtonAction()" aria-label="Рейд"><img class="game-icon" src="assets/icons/swords.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"></button>
                 <button class="nav-icon-btn" title="Сусіди по блоку" onclick="openFriends()" aria-label="Сусіди по блоку"><img class="game-icon" src="assets/icons/people.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"></button>
                 <button id="nav-archive-btn" class="nav-icon-btn" title="Архів рейдів" onclick="openRaidArchive()" aria-label="Архів рейдів"><img class="game-icon" src="assets/icons/clipboard.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"></button>
+                <button id="nav-staff-btn" class="nav-icon-btn" title="Архів персоналу" onclick="openStaffArchive()" aria-label="Архів персоналу"><img class="game-icon" src="assets/icons/card.svg" alt="" aria-hidden="true" width="64" height="64"></button>
             </nav>
 
             <!-- Правий блок: Дзвінок, пошта, налаштування в єдиному стилі -->
@@ -387,9 +388,11 @@
     </div>
 
     <script src="icons.js?v=40003" defer></script>
-    <script src="battle-results.js?v=40008" defer></script>
+    <script src="staff-archive-data.js?v=40009" defer></script>
+    <script src="battle-results.js?v=40009" defer></script>
     <script src="raid-archive.js?v=40008" defer></script>
-    <script src="script.js?v=40007" defer></script>
+    <script src="staff-archive.js?v=40009" defer></script>
+    <script src="script.js?v=40009" defer></script>
     <!-- Модальне вікно: Медичне Досьє пацієнта (Аркуш паперу А4) -->
     <div id="dossier-modal" role="dialog" aria-modal="true" aria-label="Особисте досьє" class="modal center-modal hidden">
         <div class="modal-content dossier-paper">
@@ -448,7 +451,7 @@
 <!-- Блок Фото зліва (велике, на всю ширину колонки) та текст праворуч -->
         <div class="boss-dossier-profile">
             <div class="boss-dossier-art">
-                <img id="universal-dossier-img" alt="Арт боса" style="width: 200px; height: auto; object-fit: contain; filter: drop-shadow(4px 6px 12px rgba(0,0,0,0.45)); border-radius: 4px; display: block;">
+                <img id="universal-dossier-img" alt="Досьє боса" style="height: auto; object-fit: contain; filter: drop-shadow(4px 6px 12px rgba(0,0,0,0.45)); border-radius: 4px; display: block;">
             </div>
 
             <div style="flex-grow: 1; text-align: left; min-width: 0;">
@@ -490,6 +493,7 @@
         <!-- Кнопка -->
   <!-- Кнопка штурму -->
 <button id="universal-dossier-start-btn" class="btn-outfit" style="width: 100%; background: #8c2b2b; color: #f4ebd0; padding: 12px; font-weight: bold; font-size: 14px; cursor: pointer; border-radius: 5px; border: 1px solid #5c1e1e; text-transform: uppercase; letter-spacing: 0.5px;"><img class="game-icon" src="assets/icons/swords.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"> Штурмувати кабінет</button>
+<button id="universal-dossier-details-btn" class="report-detail-link" type="button">ДЕТАЛЬНІ ВІДОМОСТІ</button>
     </div>
 </div>
 
@@ -735,6 +739,34 @@
         <div class="report-actions">
             <button class="report-button report-button-secondary" type="button" onclick="cancelRaidArchiveClear()">Скасувати</button>
             <button class="report-button" type="button" onclick="confirmRaidArchiveClear()">Очистити архів</button>
+        </div>
+    </article>
+</div>
+
+<div id="staff-archive-modal" role="dialog" aria-modal="true" aria-labelledby="staff-archive-title" class="modal-overlay hidden">
+    <article class="battle-report staff-archive-document">
+        <header class="battle-report-header">
+            <div class="report-archive-mark report-institution">ЦЕНТР ІНТЕНСИВНОГО ЛІКУВАННЯ ПСИХІЧНИХ РОЗЛАДІВ № 404<small>Засекречена картотека персоналу • Внутрішні особові справи</small></div>
+            <button class="report-close" type="button" aria-label="Закрити архів персоналу" onclick="closeStaffArchive()">✕</button>
+        </header>
+        <div class="staff-archive-toolbar">
+            <h2 id="staff-archive-title">АРХІВ ПЕРСОНАЛУ</h2>
+            <label for="staff-department-filter">Відділення</label>
+            <select id="staff-department-filter" onchange="renderStaffArchive()"><option value="">Усі відділення</option></select>
+        </div>
+        <div id="staff-save-note" class="report-save-note hidden" role="status"></div>
+        <button id="staff-save-retry" class="report-button report-save-retry hidden" type="button" onclick="retryStaffArchiveSave()">Повторити збереження прогресу</button>
+        <div class="staff-archive-layout">
+            <aside class="staff-index" aria-label="Картотека персоналу"><ul id="staff-case-list"></ul></aside>
+            <section class="staff-case-content" aria-label="Вибрана особова справа">
+                <nav class="staff-tabs" aria-label="Розділи справи">
+                    <button type="button" data-staff-tab="identity" onclick="changeStaffArchiveTab('identity')">Анкетні відомості</button>
+                    <button type="button" data-staff-tab="observations" onclick="changeStaffArchiveTab('observations')">Службові спостереження</button>
+                    <button type="button" data-staff-tab="documents" onclick="changeStaffArchiveTab('documents')">Архівні документи</button>
+                    <button type="button" data-staff-tab="rewards" onclick="changeStaffArchiveTab('rewards')">Винагороди та колекції</button>
+                </nav>
+                <div id="staff-case-sheet" class="staff-case-sheet" tabindex="0" role="region" aria-label="Матеріали особової справи"></div>
+            </section>
         </div>
     </article>
 </div>

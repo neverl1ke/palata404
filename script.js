@@ -104,6 +104,7 @@ function getPlayerUniqueId() {
 
 initializeRaidArchive();
 pendingBattleReward = readPendingBattleReward();
+initializeStaffArchive();
 
 let friendsList = loadSaveData('palata404_friends', []);
 friendsList = friendsList
@@ -356,8 +357,9 @@ function loadSaveData(key, fallback) {
     try {
         const pendingFields = { palata404_stats: 'stats', palata404_inventory: 'inventory', palata404_boss_kills: 'bossKills' };
         const field = pendingFields[key];
-        saved = pendingBattleReward && field
-            ? JSON.stringify(pendingBattleReward.state[field]) : safeStorageGet(key);
+        const pendingState = pendingBattleReward?.state || pendingStaffReward?.state;
+        saved = pendingState && field && pendingState[field] !== undefined
+            ? JSON.stringify(pendingState[field]) : safeStorageGet(key);
     } catch (e) {
         return fallback;
     }
@@ -412,7 +414,7 @@ function normalizeStats(savedStats) {
 function saveGameProgress() {
     // Journal the entire reward state first. An interrupted write restores snapshots,
     // never re-runs experience gains or increments the boss counter.
-    if (!prepareBattleRewardSave()) return false;
+    if (!prepareBattleRewardSave() || !prepareStaffRewardSave()) return false;
     const saved = [
         safeStorageSet('palata404_stats', JSON.stringify(stats)),
         safeStorageSet('palata404_gender', gender),
@@ -425,7 +427,8 @@ function saveGameProgress() {
         safeStorageSet('palata404_progress', JSON.stringify(gameProgress)),
         safeStorageSet('palata404_boss_kills', JSON.stringify(bossKillsCount))
     ].every(Boolean);
-    return finishBattleRewardSave(saved);
+    const staffSaved = saved && saveStaffArchiveState();
+    return finishStaffRewardSave(finishBattleRewardSave(staffSaved));
 }
 
 function getPlayerRank(level) {
@@ -695,6 +698,7 @@ function handleNodeClick(node, floor) {
             addExperience(30);
 
             gameProgress.rubbleCleared = true;
+            grantStaffQuestMilestones();
             const bossNode = floor.nodes.find(n => n.type === 'boss');
             if (bossNode) bossNode.locked = false;
 
@@ -1326,6 +1330,7 @@ const bossesDatabase = {
         sprite: "nurse_sprite.png",
         bg: "nurse_bg.jpg",
         avatar: "nurse_avatar_battle.png",
+        staffArchive: STAFF_ARCHIVE_CASES.nurse,
         victoryReport: {
             caseCode: '404-KL', status: 'Об’єкт тимчасово стабілізовано',
             conclusion: 'Повторну аномальну активність об’єкта тимчасово припинено. Документальні підтвердження остаточної нейтралізації відсутні.'
@@ -1353,6 +1358,7 @@ const bossesDatabase = {
         sprite: "doctor_sprite.png",
         bg: "doctor_bg.jpg",
         avatar: "doctor_avatar_battle.jpg",
+        staffArchive: STAFF_ARCHIVE_CASES.doctor,
         victoryReport: {
             caseCode: '404-IZ', status: 'Об’єкт тимчасово стабілізовано',
             conclusion: 'Контроль об’єкта над ізоляційним блоком тимчасово порушено. Стан запірних механізмів потребує повторної перевірки.'
@@ -1364,9 +1370,9 @@ const bossesDatabase = {
             callsign: "«НАБЛЮДАЧ»",
             cardImg: "doctor_dossier_card.png",
             role: "Старший черговий лікар",
-            status: "Зв'язок втрачено / Мутація",
+            status: "Зв'язок втрачено / Аномальні прояви не підтверджено",
             location: "Кабінет спостереження, 10-й поверх",
-            deviations: "Внаслідок аномальної трансформації суб'єкт набув додаткових кінцівок.",
+            deviations: "Свідки суперечливо описують кількість і рухи кінцівок. Природу цих проявів не встановлено; незалежної перевірки немає.",
             rewardsText: "+120 EXP • +80 Срібла • Ключ від ізолятора"
         }
     }
@@ -1404,6 +1410,7 @@ let raidMembers = [
 lastBattleResult = normalizeBattleResult(pendingBattleReward?.result || loadSaveData('palata404_last_battle_result', null));
 if (!ownsBattleResult(lastBattleResult)) lastBattleResult = null;
 battleResultPersisted = Boolean(lastBattleResult && !pendingBattleReward);
+restoreStaffEncountersFromHistory();
 
 function openProcedureRoomBattle() {
     if (stats.madness < 100) {
@@ -1507,6 +1514,7 @@ function startBossFight(bossKey) {
         }
     });
     beginBattleMetrics(bossKey);
+    encounterStaffBoss(bossKey);
 
     updateBattleUI();
     const battleModal = document.getElementById('nurse-battle-modal');
@@ -1803,6 +1811,7 @@ function handleVictory() {
     const activeBoss = bossesDatabase[currentBattleSession.bossKey];
     if (!activeBoss) return;
     const result = buildBattleResult(activeBoss);
+    processStaffRaid(result);
     currentBattleSession.finished = true;
     isBattleActive = false;
     stopBattleTimers();
@@ -1930,6 +1939,8 @@ const dossierImage = document.getElementById('universal-dossier-img');
         // Характеристики
         setTxt('universal-dossier-hp', `${boss.hp || 0} HP`);
         setTxt('universal-dossier-dmg', `${boss.damage || 0} DMG`);
+        const detailsBtn = document.getElementById('universal-dossier-details-btn');
+        if (detailsBtn) detailsBtn.onclick = () => openStaffArchive(bossKey);
 
 // --- Кнопка штурму ---
     const startBtn = document.getElementById('universal-dossier-start-btn');
@@ -1970,7 +1981,7 @@ const MODAL_IDS = [
     'settings-modal', 'bank-modal', 'inventory-modal', 'item-info-modal', 'custom-modal',
     'friends-modal', 'map-modal', 'gym-modal', 'medical-hub-modal', 'procedure-room-modal',
     'dossier-modal', 'universal-dossier-modal', 'nurse-battle-modal', 'friend-invite-modal',
-    'nurse-victory-modal', 'battle-detail-modal', 'raid-archive-modal', 'raid-archive-confirm'
+    'nurse-victory-modal', 'battle-detail-modal', 'raid-archive-modal', 'raid-archive-confirm', 'staff-archive-modal'
 ];
 
 function closeOtherModals(keepIds = []) {

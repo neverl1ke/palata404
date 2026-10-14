@@ -7,6 +7,7 @@ const vm = require('node:vm');
 const root = path.join(__dirname, '..');
 const source = fs.readFileSync(path.join(root, 'script.js'), 'utf8');
 const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
+let fixtureRaidSequence = 0;
 
 // Exercise the actual game script with controlled storage/time. Layout and input
 // handling belong to test_game.py; these stubs intentionally don't model them.
@@ -54,6 +55,7 @@ function game(saves = {}, deniedStorage = false, failWrites = [], telegramId = n
     const window = {
         document, innerWidth: 390, innerHeight: 844,
         location: { search: '' }, addEventListener() {},
+        crypto: { randomUUID: () => `fixture-${++fixtureRaidSequence}` },
     };
     if (telegramId !== null) window.Telegram = { WebApp: {
         initDataUnsafe: { user: { id: telegramId, first_name: `Пацієнт ${telegramId}` } }, ready() {}, expand() {}
@@ -82,9 +84,12 @@ function game(saves = {}, deniedStorage = false, failWrites = [], telegramId = n
         setTimeout(callback, delay) { const id = ++sequence; timers.set(id, { at: now + delay, callback }); return id; },
         clearTimeout(id) { timers.delete(id); },
     });
+    vm.runInContext('Math.random=()=>0.5;', context);
     vm.runInContext(fs.readFileSync(path.join(root, 'icons.js'), 'utf8'), context, { filename: 'icons.js' });
+    vm.runInContext(fs.readFileSync(path.join(root, 'staff-archive-data.js'), 'utf8'), context, { filename: 'staff-archive-data.js' });
     vm.runInContext(fs.readFileSync(path.join(root, 'battle-results.js'), 'utf8'), context, { filename: 'battle-results.js' });
     vm.runInContext(fs.readFileSync(path.join(root, 'raid-archive.js'), 'utf8'), context, { filename: 'raid-archive.js' });
+    vm.runInContext(fs.readFileSync(path.join(root, 'staff-archive.js'), 'utf8'), context, { filename: 'staff-archive.js' });
     vm.runInContext(source, context, { filename: 'script.js' });
     const run = code => vm.runInContext(code, context);
     for (const callback of listeners.get('DOMContentLoaded') || []) callback();
@@ -601,4 +606,130 @@ test('archive personal stamps describe only the owner, not an MVP helper or usef
     assert.doesNotMatch(support.elements.get('raid-archive-list').innerHTML,/raid-card-personal-stamp/);
     assert.match(support.elements.get('raid-archive-list').innerHTML,/MVP: Сліпий Микола/);
     assert.equal(support.run('lastBattleResult.payout.exp'),50);
+});
+
+test('staff identities stay sealed until actual combat and survive defeat, repeats and reload', () => {
+    const g=game();
+    g.run('openStaffArchive(); openBossDossier("doctor"); openStaffArchive("doctor");');
+    assert.equal(g.run('Object.keys(staffArchiveState.cases).length'),0);
+    assert.match(g.elements.get('staff-case-list').innerHTML,/ОСОБУ НЕ ВСТАНОВЛЕНО/);
+    assert.doesNotMatch(g.elements.get('staff-case-list').innerHTML,/doctor_dossier|nurse_dossier|Черговий|Клара/);
+    assert.doesNotMatch(g.elements.get('staff-case-sheet').innerHTML,/Незаповнена графа|наказ|Черговий/);
+    g.run('startBossFight("doctor"); stats.hp=1; performPlayerAttack();'); g.advance(501);
+    assert.ok(g.run('staffArchiveState.cases.doctor'));
+    assert.equal(g.run('Object.keys(staffArchiveState.cases.doctor.documents).length'),2);
+    g.run('startBossFight("doctor"); openFleeConfirmModal();');
+    assert.equal(g.run('Object.keys(staffArchiveState.cases.doctor.documents).length'),2);
+    const restored=game(Object.fromEntries(g.storage));
+    assert.equal(restored.run('staffCaseProgress("doctor").opened'),2);
+    assert.equal(restored.run('staffArchiveState.cases.nurse'),undefined);
+});
+
+test('staff drop threshold is five percent; only new raid documents roll and reset misses', () => {
+    const g=game();
+    g.run('stats.baseDamage=300; recalculateEquipmentStats(); Math.random=()=>0.05; startBossFight("doctor"); performPlayerAttack();');
+    assert.equal(g.run('staffArchiveState.cases.doctor.misses'),1);
+    assert.equal(g.run('lastBattleResult.extraRewards.filter(r=>r.type==="document").length'),0);
+    g.run('Math.random=()=>0.049; startBossFight("doctor"); performPlayerAttack();');
+    assert.equal(g.run('staffArchiveState.cases.doctor.misses'),0);
+    assert.equal(g.run('lastBattleResult.extraRewards.filter(r=>r.type==="document").length'),1);
+    assert.equal(g.run('staffArchiveState.cases.doctor.documents["002-02"]!==undefined'),true);
+    g.run('startBossFight("doctor"); performPlayerAttack();');
+    assert.equal(g.run('staffArchiveState.cases.doctor.documents["002-03"]!==undefined'),true);
+    g.run('Math.random=()=>0.5; startBossFight("doctor"); performPlayerAttack();');
+    assert.equal(g.run('staffArchiveState.cases.doctor.misses'),0);
+    assert.equal(g.run('lastBattleResult.extraRewards.filter(r=>r.type==="document").length'),0);
+    assert.equal(g.run('staffArchiveState.cases.doctor.documents["002-04"]'),undefined);
+});
+
+test('pity gives a new eligible document on exactly the thirtieth unsuccessful winning raid', () => {
+    let g=game();
+    g.run('stats.baseDamage=300; recalculateEquipmentStats(); Math.random=()=>0.5;');
+    for(let i=0;i<29;i++) g.run('startBossFight("doctor"); performPlayerAttack();');
+    assert.equal(g.run('staffArchiveState.cases.doctor.misses'),29);
+    assert.equal(g.run('staffCaseProgress("doctor").opened'),3); // initial two + five-victory achievement
+    g=game(Object.fromEntries(g.storage));
+    g.run('stats.baseDamage=300; recalculateEquipmentStats(); Math.random=()=>0.5; startBossFight("doctor"); performPlayerAttack();');
+    assert.equal(g.run('staffArchiveState.cases.doctor.misses'),0);
+    assert.equal(g.run('lastBattleResult.extraRewards.filter(r=>r.type==="document").length'),1);
+    const opened=g.run('staffCaseProgress("doctor").opened');
+    g.run('handleVictory(); openLastBattleResult(); openDetailedBattleReport(); processStaffRaid(lastBattleResult);');
+    assert.equal(g.run('staffCaseProgress("doctor").opened'),opened);
+    for(let i=0;i<30;i++) g.run('startBossFight("doctor"); performPlayerAttack();');
+    assert.equal(g.run('staffCaseProgress("doctor").complete'),true);
+    assert.equal(g.run('staffArchiveState.cases.doctor.misses'),0);
+});
+
+test('quest document follows the existing rubble milestone and never joins the random pool', () => {
+    const g=game();
+    g.run('stats.baseDamage=300; recalculateEquipmentStats(); Math.random=()=>0; startBossFight("nurse"); performPlayerAttack(); startBossFight("nurse"); performPlayerAttack();');
+    assert.equal(g.run('staffArchiveState.cases.nurse.documents["001-05"]'),undefined);
+    assert.equal(g.run('staffArchiveState.cases.nurse.misses'),0);
+    g.run('const floor=gameFloorsData.find(f=>f.id===10); handleNodeClick(floor.nodes.find(n=>n.type==="grind"),floor);');
+    assert.equal(g.run('staffArchiveState.cases.nurse.documents["001-05"]!==undefined'),true);
+    assert.equal(g.run('lastBattleResult.extraRewards.some(r=>r.id==="001-05")'),false);
+});
+
+test('staff collection rewards journal exactly once; raid-history clear cannot remove documents or claims', () => {
+    const g=game();
+    g.run('stats.baseDamage=300; recalculateEquipmentStats(); Math.random=()=>0; for(let i=0;i<5;i++){startBossFight("doctor"); performPlayerAttack();}');
+    assert.equal(g.run('staffCaseProgress("doctor").complete'),true);
+    const before=g.run('stats.silver');
+    assert.equal(g.run('claimStaffReward("case-002-v1")'),true);
+    assert.equal(g.run('claimStaffReward("case-002-v1")'),false);
+    assert.equal(g.run('claimStaffReward("isolation-v1")'),true);
+    assert.equal(g.run('stats.silver'),before+2);
+    const state=g.run('JSON.stringify(staffArchiveState)');
+    g.run('clearRaidArchive(); openStaffArchive("doctor");');
+    assert.equal(g.run('JSON.stringify(staffArchiveState)'),state);
+    const restored=game(Object.fromEntries(g.storage));
+    assert.equal(restored.run('stats.silver'),before+2);
+    assert.equal(restored.run('claimStaffReward("isolation-v1")'),false);
+    restored.run('bossesDatabase.future={...bossesDatabase.nurse,key:"future"};');
+    assert.equal(restored.run('staffCollectionProgress(STAFF_ARCHIVE_COLLECTIONS[1]).complete'),true);
+});
+
+test('interrupted document and collection saves recover ready snapshots without rerolling or recrediting', () => {
+    const g=game();
+    g.run('stats.baseDamage=300; recalculateEquipmentStats(); Math.random=()=>0; startBossFight("doctor");');
+    g.failedKeys.add('palata404_stats'); g.run('performPlayerAttack();');
+    const profile=g.run('JSON.stringify(staffArchiveState)');
+    const restored=game(Object.fromEntries(g.storage));
+    assert.equal(restored.run('JSON.stringify(staffArchiveState)'),profile);
+    assert.equal(restored.run('stats.silver'),234);
+    restored.run('stats.baseDamage=300; recalculateEquipmentStats(); Math.random=()=>0; for(let i=0;i<4;i++){startBossFight("doctor"); performPlayerAttack();}');
+    const before=restored.run('stats.silver');
+    restored.failedKeys.add('palata404_stats');
+    restored.run('claimStaffReward("case-002-v1");');
+    assert.ok(restored.storage.has(restored.run('staffRewardJournalKey()')));
+    assert.equal(restored.elements.get('staff-save-note').classList.contains('hidden'),false);
+    const recovered=game(Object.fromEntries(restored.storage));
+    assert.equal(recovered.run('stats.silver'),before+1);
+    assert.equal(recovered.run('claimStaffReward("case-002-v1")'),false);
+    assert.equal(recovered.storage.has(recovered.run('staffRewardJournalKey()')),false);
+});
+
+test('staff progress is isolated per ID and only trustworthy owned history restores encounters', () => {
+    const shared=new Map();
+    const a=game({},false,[],101,shared);
+    a.run('stats.baseDamage=300; recalculateEquipmentStats(); Math.random=()=>0; startBossFight("nurse"); performPlayerAttack();');
+    const b=game({},false,[],202,shared);
+    assert.equal(b.run('Object.keys(staffArchiveState.cases).length'),0);
+    assert.equal(b.run('Object.keys(staffArchiveState.processedRaids).length'),0);
+    const key=a.run('staffArchiveKey()');
+    shared.delete(key);
+    const migrated=game({},false,[],101,shared);
+    assert.ok(migrated.run('staffArchiveState.cases.nurse'));
+    assert.equal(migrated.run('staffArchiveState.cases.nurse.documents["001-02"]'),undefined); // no retrospective random rolls
+    assert.equal(migrated.run('staffArchiveState.cases.doctor'),undefined);
+});
+
+test('data-defined future bosses need no component change and locked secret titles/content never enter DOM', () => {
+    const g=game();
+    g.run('bossesDatabase.future={...bossesDatabase.nurse,key:"future",name:"Майбутній об’єкт",staffArchive:{department:"Новий блок",rewardId:"case-003-v1",reward:null,introduction:"Вступ",documents:[{id:"003-01",title:"Картка",acquisition:"initial",content:"Перевірений контакт",secret:false}]}}; startBossFight("future"); openFleeConfirmModal(); openStaffArchive("future");');
+    assert.equal(g.run('staffCaseProgress("future").total'),1);
+    assert.equal(g.run('staffCaseProgress("future").percent'),100);
+    g.run('startBossFight("doctor"); openFleeConfirmModal(); openStaffArchive("doctor"); changeStaffArchiveTab("documents");');
+    assert.match(g.elements.get('staff-case-sheet').innerHTML,/ДОКУМЕНТ №002-03 — ЗАСЕКРЕЧЕНО/);
+    assert.doesNotMatch(g.elements.get('staff-case-sheet').innerHTML,/Незаповнена графа наказу|Копія наказу головного лікаря/);
 });
