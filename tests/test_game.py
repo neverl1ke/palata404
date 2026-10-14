@@ -408,6 +408,9 @@ class GameTests(unittest.TestCase):
                     self.page.evaluate('g=>{setGender(g);openCustomization()}',gender)
                     self.page.wait_for_function('()=>["layer-body","wardrobe-layer-body"].every(id=>document.getElementById(id).naturalWidth===941&&document.getElementById(id).naturalHeight===1672)')
                     for prefix in ['', 'wardrobe-']:
+                        # Both genders have identical dimensions; naturalWidth
+                        # can still describe the previous PNG while src changes.
+                        self.page.locator(f'#{prefix}layer-body').wait_for(state='visible')
                         self.assertTrue(self.page.locator(f'#{prefix}layer-body').is_visible())
                         self.assertFalse(self.page.locator(f'#{prefix}layer-face').is_visible())
                     self.assertEqual(self.page.locator('#layer-body').get_attribute('src'),self.page.locator('#wardrobe-layer-body').get_attribute('src'))
