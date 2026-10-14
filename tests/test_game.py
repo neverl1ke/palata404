@@ -327,6 +327,7 @@ class GameTests(unittest.TestCase):
         self.assertGreater(self.page.locator('.game-icon').count(), 60)
         self.assertEqual(self.page.locator('#medkit-btn-small img').get_attribute('src'), 'assets/icons/medkit.svg')
         self.assertEqual(self.page.locator('#medkit-btn-big img').get_attribute('src'), 'assets/icons/surgery.svg')
+        self.page.evaluate('openProcedureRoom()')
         self.assertEqual(self.page.get_by_role('button', name='Придбати малу аптечку за 30 срібла', exact=True).count(), 1)
         self.page.evaluate('openInventory()')
         self.assertEqual(self.page.locator('#stash-items .game-icon').count(), 5)
