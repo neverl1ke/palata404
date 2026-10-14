@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Special+Elite&display=swap" rel="stylesheet">
 
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <link rel="stylesheet" href="style.css?v=40018">
+    <link rel="stylesheet" href="style.css?v=40019">
 </head>
 <body>
 
@@ -240,7 +240,7 @@
     <div id="custom-modal" role="dialog" aria-modal="true" aria-label="Гардероб" class="modal wardrobe-modal hidden">
         <article class="battle-report wardrobe-document">
             <header class="wardrobe-header">
-                <div><span class="staff-section-code">ОСОБОВА КАРТОТЕКА · ОБЛІК СПОРЯДЖЕННЯ</span><h3>Гардероб</h3></div>
+                <div><span class="staff-section-code">ВІДДІЛ РЕЄСТРАЦІЇ · ОБЛІК СПОРЯДЖЕННЯ</span><h3>Гардероб</h3></div>
                 <div class="wardrobe-view-switch" role="group" aria-label="Комплект для перегляду">
                     <button type="button" data-paper-view="patient" onclick="setPaperDollView('patient')">Пацієнт</button>
                     <button type="button" data-paper-view="combat" onclick="setPaperDollView('combat')">Трип</button>
@@ -249,8 +249,24 @@
             </header>
             <div id="paper-doll-save-note" class="report-save-note hidden" role="status">Не вдалося зберегти зовнішність. <button type="button" class="report-detail-link" onclick="retryPaperDollSave()">Повторити збереження</button></div>
             <div class="wardrobe-layout">
-                <aside class="wardrobe-index"><nav id="wardrobe-categories" aria-label="Категорії гардероба"></nav><nav id="wardrobe-slots" aria-label="Слоти категорії"></nav></aside>
-                <section class="wardrobe-preview" aria-label="Попередній перегляд персонажа"><span class="staff-section-code">ПОВНОРОСТОВИЙ ЗНІМОК</span><div class="wardrobe-stage"><div id="wardrobe-paperdoll" class="character-paperdoll" role="img" aria-label="Чоловік · Пацієнт"></div></div><span class="wardrobe-preview-note">Вигляд персонажа в палаті</span></section>
+                <aside class="wardrobe-index">
+                    <span class="wardrobe-section-label">КАРТОТЕКА КОМПЛЕКТІВ</span><nav id="wardrobe-categories" aria-label="Категорії гардероба"></nav><nav id="wardrobe-slots" aria-label="Слоти категорії"></nav></aside>
+                <section id="wardrobe-registration" class="wardrobe-preview" data-view="patient" aria-label="Попередній перегляд персонажа">
+                    <span class="wardrobe-registration-title">АНТРОПОМЕТРИЧНА РЕЄСТРАЦІЯ</span>
+                    <div class="wardrobe-stage">
+                        <div class="wardrobe-height-scale" aria-hidden="true"><span>200</span><span>180</span><span>160</span><span>140</span><span>120</span><span>100</span></div>
+                        <div id="wardrobe-paperdoll" class="character-paperdoll" role="img" aria-label="Чоловік · Пацієнт"></div>
+                    </div>
+                    <div class="wardrobe-registration-plate">
+                        <strong>ОБ'ЄКТ НА ОБЛІКУ</strong>
+                        <span>Пацієнт: <b id="wardrobe-patient-name"></b></span>
+                        <span>Справа № <b id="wardrobe-patient-case"></b></span>
+                    </div>
+                    <div class="wardrobe-monitor" aria-label="Декоративний індикатор спостереження">
+                        <span class="wardrobe-monitor-light" aria-hidden="true"></span><span>МОНІТОРИНГ ОБ'ЄКТА</span>
+                        <svg class="wardrobe-monitor-trace" viewBox="0 0 120 18" aria-hidden="true" focusable="false"><path d="M0 10h25l5-3 5 3h15l4-7 5 13 5-6h15l5-2 5 2h31"/></svg>
+                    </div>
+                </section>
                 <section class="wardrobe-items" aria-labelledby="wardrobe-items-title"><h4 id="wardrobe-items-title">Базове тіло</h4><div id="wardrobe-container" class="wardrobe-item-grid"></div></section>
             </div>
         </article>
@@ -406,10 +422,10 @@
     <script src="battle-results.js?v=40009" defer></script>
     <script src="raid-archive.js?v=40012" defer></script>
     <script src="staff-archive.js?v=40013" defer></script>
-    <script src="paper-doll-data.js?v=40018" defer></script>
-    <script src="paper-doll.js?v=40018" defer></script>
-    <script src="wardrobe.js?v=40018" defer></script>
-    <script src="script.js?v=40018" defer></script>
+    <script src="paper-doll-data.js?v=40019" defer></script>
+    <script src="paper-doll.js?v=40019" defer></script>
+    <script src="wardrobe.js?v=40019" defer></script>
+    <script src="script.js?v=40019" defer></script>
     <!-- Модальне вікно: Медичне Досьє пацієнта (Аркуш паперу А4) -->
     <div id="dossier-modal" role="dialog" aria-modal="true" aria-label="Особисте досьє" class="modal center-modal hidden">
         <div class="modal-content dossier-paper">

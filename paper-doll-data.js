@@ -22,21 +22,10 @@ const PAPER_DOLL_SLOTS = {
 };
 // Hashes of the user's approved uploads invalidate previously cached bodies.
 const PAPER_DOLL_BODIES = { male: 'base_male.png?v=0dec17c1', female: 'base_female.png?v=5489c78c' };
-// Existing face PNGs are head cutouts, not full-frame layers. Their measured
-// alpha bounds place each visible face at the same head anchor on the canvas.
+// The six retired trial faces stay on disk, but are not catalog entries.
+// New approved cosmetics can use the face slot, placement and multipart layers.
+const PAPER_DOLL_RETIRED_FACES = new Set(Array.from({ length: 6 }, (_, index) => `face_${index + 1}.png`));
 const PAPER_DOLL_ITEMS = [
-    ...[
-        ['face_1.png', 'Обличчя #1 (Голений)', 174, 190, 33, 11, 109, 147],
-        ['face_2.png', 'Обличчя #2 (Коротка стрижка)', 144, 185, 19, 6, 106, 153],
-        ['face_3.png', 'Обличчя #3 (Середнє волосся)', 168, 183, 29, 4, 117, 151],
-        ['face_4.png', 'Обличчя #4 (Довге волосся)', 193, 184, 33, 4, 134, 167],
-        ['face_5.png', 'Обличчя #5 (Андеркат)', 142, 171, 17, 0, 106, 158],
-        ['face_6.png', 'Обличчя #6 (Лисий суворий)', 163, 197, 26, 13, 106, 147]
-    ].map(([id, name, width, height, x, y, alphaWidth, alphaHeight]) => {
-        const scale = PAPER_DOLL_FACE_ANCHOR.height / alphaHeight;
-        return { id, slot: 'face', name, image: id, availableByDefault: true,
-            placement: { x: PAPER_DOLL_FACE_ANCHOR.x - (x + alphaWidth / 2) * scale, y: PAPER_DOLL_FACE_ANCHOR.y - y * scale, width: width * scale, height: height * scale } };
-    }),
     { id: 'gear-knife', slot: 'weapon', name: 'Іржавий ніж', inventoryName: 'Іржавий ніж', inventoryCategory: 'weapon', image: null, icon: 'knife' },
     { id: 'gear-pm', slot: 'weapon', name: 'ПМ (Пістолет Макарова)', inventoryName: 'ПМ (Пістолет Макарова)', inventoryCategory: 'weapon', image: null, icon: 'pistol' },
     { id: 'gear-aks', slot: 'weapon', name: 'Штурмовий АКС-74У', inventoryName: 'Штурмовий АКС-74У', inventoryCategory: 'weapon', image: null, icon: 'rifle' },

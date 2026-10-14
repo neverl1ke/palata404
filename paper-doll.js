@@ -26,7 +26,7 @@ function normalizePaperDollState(value, legacy = {}) {
     if (PAPER_DOLL_ITEMS.some(item => item.id === face && item.slot === 'face' && isPaperDollItemOwned(item))) state.appearance.face = face;
     const oldFaces = valid && value.schemaVersion === 1 ? { patient: value.patientLoadout?.face, combat: value.combatLoadout?.face } : value?.legacyFaces;
     if (oldFaces && oldFaces.patient !== oldFaces.combat) {
-        state.legacyFaces = Object.fromEntries(['patient','combat'].map(key => [key, PAPER_DOLL_ITEMS.some(item => item.id === oldFaces[key] && item.slot === 'face') ? oldFaces[key] : null]));
+        state.legacyFaces = Object.fromEntries(['patient','combat'].map(key => [key, typeof oldFaces[key] === 'string' ? oldFaces[key] : null]));
     }
     if (!valid) {
         for (const item of PAPER_DOLL_ITEMS.filter(entry => entry.inventoryName && isPaperDollItemOwned(entry))) {
@@ -37,8 +37,8 @@ function normalizePaperDollState(value, legacy = {}) {
 }
 
 function isPaperDollItemOwned(item) {
-    return item?.availableByDefault === true || Boolean(item?.inventoryName && inventory.some(entry =>
-        entry.name === item.inventoryName && entry.category === item.inventoryCategory && entry.count > 0));
+    return Boolean(item && !PAPER_DOLL_RETIRED_FACES.has(item.id) && (item.availableByDefault === true ||
+        (item.inventoryName && inventory.some(entry => entry.name === item.inventoryName && entry.category === item.inventoryCategory && entry.count > 0))));
 }
 
 function selectedPaperDollItem(slot) {
@@ -175,6 +175,7 @@ function renderPaperDollControls(renderSlots = true) {
     document.querySelectorAll('[data-paper-view]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.paperView === paperDollState.activeViewMode)));
     const label = document.getElementById('paper-doll-view-label');
     if (label) label.textContent = `Комплект: ${paperDollState.activeViewMode === 'combat' ? 'Трип' : 'Пацієнт'}`;
+    renderWardrobeRegistration();
     document.querySelectorAll('[data-paper-image-item]').forEach(note => {
         const item = PAPER_DOLL_ITEMS.find(entry => entry.id === note.dataset.paperImageItem);
         const layers = item?.layers?.length ? item.layers : [item];

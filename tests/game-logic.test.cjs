@@ -774,17 +774,17 @@ test('staff floor filters use map and boss assignments while department collecti
     assert.equal(g.run('JSON.stringify(staffArchiveState)'),state);
 });
 
-test('paper doll migrates cosmetics and persists independent previews without changing combat gear', () => {
+test('paper doll retires trial faces and persists independent previews without changing combat gear', () => {
     const g = game({ palata404_gender: 'female', palata404_face: 'face_3.png' });
     assert.equal(g.run('paperDollState.selectedGender'), 'female');
-    assert.equal(g.run('paperDollState.appearance.face'), 'face_3.png');
+    assert.equal(g.run('paperDollState.appearance.face'), null);
     assert.equal(g.run('paperDollState.patientLoadout.face'), null);
     const combat = g.run('JSON.stringify({stats,inventory,equippedGear,gameProgress})');
     g.run('equipPaperDollItem("armor","gear-br1"); setPaperDollView("combat"); setFace("face_2.png"); equipPaperDollItem("weapon","gear-pm"); setGender("male");');
     assert.equal(g.run('paperDollState.patientLoadout.armor'), 'gear-br1');
     assert.equal(g.run('paperDollState.patientLoadout.weapon'), null);
     assert.equal(g.run('paperDollState.combatLoadout.armor'), null);
-    assert.equal(g.run('paperDollState.appearance.face'), 'face_2.png');
+    assert.equal(g.run('paperDollState.appearance.face'), null);
     assert.equal(g.run('JSON.stringify({stats,inventory,equippedGear,gameProgress})'), combat);
     const restored = game(Object.fromEntries(g.storage));
     assert.equal(restored.run('JSON.stringify(paperDollState)'), g.run('JSON.stringify(paperDollState)'));
@@ -812,7 +812,7 @@ test('paper doll rejects malformed saves, wrong slots and unsupported images whi
     assert.equal(g.run('JSON.stringify(paperDollState)'), before);
     assert.equal(g.run('paperDollImageCandidates({genderVariants:{female:"https://example.test/a.png",male:"face_1.png"},image:"../missing.png"},"female").join()'), 'face_1.png');
     const broken = game({ palata404_paper_doll: '{', palata404_face: 'face_4.png' });
-    assert.equal(broken.run('paperDollState.appearance.face'), 'face_4.png');
+    assert.equal(broken.run('paperDollState.appearance.face'), null);
 });
 
 test('paper doll gender fallback, missing PNG errors and stable layer order do not alter selected equipment', () => {
@@ -844,19 +844,19 @@ test('paper doll storage failures preserve in-memory choices and retry without c
     assert.equal(g.run('JSON.stringify({stats,inventory,equippedGear})'), combat);
 });
 
-test('wardrobe v1 migration shares active appearance and preserves older face choices and owned gear', () => {
+test('wardrobe v1 migration retires trial faces while preserving owned gear and inert legacy metadata', () => {
     const g = game({ palata404_paper_doll: JSON.stringify({ schemaVersion: 1, selectedGender: 'female', activeViewMode: 'combat',
         patientLoadout: { face: 'face_3.png', armor: 'sample-armor' }, combatLoadout: { face: 'face_2.png', weapon: 'sample-weapon' } }) });
     assert.equal(g.run('paperDollState.schemaVersion'),2);
-    assert.equal(g.run('paperDollState.appearance.face'),'face_2.png');
+    assert.equal(g.run('paperDollState.appearance.face'),null);
     assert.equal(g.run('paperDollState.legacyFaces.patient'),'face_3.png');
     assert.equal(g.run('paperDollState.legacyFaces.combat'),'face_2.png');
     assert.equal(g.run('paperDollState.patientLoadout.armor'),'gear-br1');
     assert.equal(g.run('paperDollState.combatLoadout.weapon'),'gear-pm');
     g.run('setPaperDollView("patient");');
-    assert.equal(g.run('currentFace'),'face_2.png');
+    assert.equal(g.run('currentFace'),'');
     g.run('setFace("face_4.png"); setPaperDollView("combat");');
-    assert.equal(g.run('currentFace'),'face_4.png');
+    assert.equal(g.run('currentFace'),'');
     const restored=game(Object.fromEntries(g.storage));
     assert.equal(restored.run('JSON.stringify(paperDollState)'),g.run('JSON.stringify(paperDollState)'));
 });
@@ -883,4 +883,42 @@ test('one paper doll renderer synchronizes both views and removes front and rear
     g.run('equipPaperDollItem("back",null);');
     assert.equal(g.elements.has('layer-back-rear'),false);
     assert.equal(g.elements.has('wardrobe-layer-back-front'),false);
+});
+
+
+test('retired faces are disabled in legacy, v1 and v2 saves without losing character data', () => {
+    for (let i=1;i<=6;i++) {
+        const id=`face_${i}.png`;
+        const sources=[{palata404_face:id}, ...[1,2].map(schemaVersion=>({palata404_paper_doll:JSON.stringify({schemaVersion,selectedGender:'female',activeViewMode:'combat',appearance:{face:id,hair:'saved-hair'},patientLoadout:{face:id,armor:'gear-br1'},combatLoadout:{face:id,weapon:'gear-pm'}})}))];
+        for (const saves of sources) {
+            const g=game(saves);
+            assert.equal(g.run('paperDollState.appearance.face'),null);
+            assert.equal(g.run('setFace('+JSON.stringify(id)+')'),undefined);
+            assert.equal(g.run('equipPaperDollItem("face",'+JSON.stringify(id)+')'),false);
+            for (const prefix of ['', 'wardrobe-']) assert.equal(g.elements.get(prefix+'layer-face').getAttribute('src'),null);
+            if(saves.palata404_paper_doll) {
+                assert.equal(g.run('paperDollState.selectedGender'),'female');
+                assert.equal(g.run('paperDollState.activeViewMode'),'combat');
+                assert.equal(g.run('paperDollState.patientLoadout.armor'),'gear-br1');
+                assert.equal(g.run('paperDollState.combatLoadout.weapon'),'gear-pm');
+            }
+            const before=g.run('JSON.stringify({stats,inventory,equippedGear,gameProgress})');
+            g.run('saveGameProgress();');
+            const restored=game(Object.fromEntries(g.storage));
+            assert.equal(restored.run('paperDollState.appearance.face'),null);
+            assert.equal(restored.run('JSON.stringify({stats,inventory,equippedGear,gameProgress})'),before);
+        }
+    }
+});
+
+test('future approved face layers remain selectable, shared and persistent', () => {
+    const g=game();
+    g.run('PAPER_DOLL_ITEMS.push({id:"approved-face",slot:"face",name:"Approved",image:"base_male.png",availableByDefault:true,placement:{x:360,y:32,width:220,height:218}});');
+    assert.equal(g.run('equipPaperDollItem("face","approved-face")'),true);
+    g.run('setPaperDollView("combat"); setGender("female");');
+    assert.equal(g.run('paperDollState.appearance.face'),'approved-face');
+    assert.equal(g.run('normalizePaperDollState(JSON.parse(safeStorageGet(PAPER_DOLL_STORAGE_KEY))).appearance.face'),'approved-face');
+    for(const prefix of ['', 'wardrobe-']) assert.equal(g.elements.get(prefix+'layer-face').getAttribute('src'),'base_male.png');
+    g.run('equipPaperDollItem("face",null);');
+    assert.equal(g.run('paperDollState.appearance.face'),null);
 });
