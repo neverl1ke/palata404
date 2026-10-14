@@ -4,6 +4,7 @@ Uses an isolated local server and browser profile; external services are blocked
 Set PALATA_BROWSER_PATH to use a system Chromium instead of Playwright's browser.
 """
 import functools
+import base64
 import json
 import os
 from pathlib import Path
@@ -487,11 +488,11 @@ class GameTests(unittest.TestCase):
             self.assertIn(expected,scene['image'])
             decoded=self.page.evaluate('''src=>new Promise((resolve,reject)=>{const image=new Image();image.onload=()=>resolve([image.naturalWidth,image.naturalHeight]);image.onerror=()=>reject(new Error('Background PNG did not load: '+src));image.src=src;})''',expected)
             self.assertEqual(decoded,[1448,1086])
-            self.assertTrue(all(value.strip()=='cover' for value in scene['size'].split(',')))
+            self.assertEqual([value.strip() for value in scene['size'].split(',')],['100% 100%','auto 100%'])
             self.assertTrue(all(value.strip()=='50% 100%' for value in scene['position'].split(',')))
             self.assertTrue(all(value.strip()=='no-repeat' for value in scene['repeat'].split(',')))
             floor_gap=self.page.locator('#wardrobe-paperdoll').evaluate('e=>parseFloat(getComputedStyle(e).marginBottom)')
-            self.assertAlmostEqual(floor_gap,scene['height']*.08,delta=1)
+            self.assertAlmostEqual(floor_gap,scene['height']*.05,delta=1)
         self.assertEqual(len(set(backgrounds)),2)
         self.assertEqual(backgrounds[0],backgrounds[1])
         self.assertEqual(backgrounds[2],backgrounds[3])
@@ -581,7 +582,7 @@ class GameTests(unittest.TestCase):
             for mode in ['patient','combat']:
                 self.page.evaluate('mode=>setPaperDollView(mode)',mode)
                 boxes=self.page.evaluate('''()=>{const scene=document.querySelector('.wardrobe-stage').getBoundingClientRect(),body=document.getElementById('wardrobe-paperdoll').getBoundingClientRect();return{scene:{y:scene.y,height:scene.height},body:{y:body.y,height:body.height}}}''')
-                self.assertGreaterEqual(boxes['body']['y']-boxes['scene']['y'],boxes['scene']['height']*.12-1)
+                self.assertGreaterEqual(boxes['body']['y']-boxes['scene']['y'],boxes['scene']['height']*.10-1)
                 self.assertLessEqual(boxes['body']['y']+boxes['body']['height'],boxes['scene']['y']+boxes['scene']['height'])
                 self.assertGreater(boxes['body']['height'],100)
                 self.assertLessEqual(self.page.evaluate('document.documentElement.scrollWidth'),width)
@@ -627,7 +628,7 @@ class GameTests(unittest.TestCase):
                     if width>=1500:
                         self.assertGreaterEqual(doc['width']/width,.80)
                         self.assertLessEqual(doc['width']/width,.85)
-                    self.assertGreaterEqual(body['y']-scene['y'],scene['height']*.12-1)
+                    self.assertGreaterEqual(body['y']-scene['y'],scene['height']*.10-1)
                     self.assertGreaterEqual(body['x']-scene['x'],scene['width']*.06-1)
                     self.assertLessEqual(body['x']+body['width'],scene['x']+scene['width']*.94+1)
                     self.assertAlmostEqual(body['width']/body['height'],941/1672,delta=.01)
@@ -684,6 +685,63 @@ class GameTests(unittest.TestCase):
         self.assertIn('Немає доступних предметів',self.page.locator('[data-wardrobe-empty]').inner_text())
         self.assertEqual(self.page.locator('[data-wardrobe-card]').count(),3)
         self.assertTrue(self.page.locator('[data-wardrobe-action]').is_disabled())
+
+    def test_wardrobe_scale_matches_room_height_and_keeps_full_layer_canvas(self):
+        self.load()
+        self.page.evaluate('openCustomization()')
+        results=ROOT/'test-results';results.mkdir(exist_ok=True)
+        metrics=[]
+        bounds={}
+        for gender in ['male','female']:
+            with Image.open(ROOT/f'base_{gender}.png') as image:
+                bounds[gender]=image.getchannel('A').point(lambda value:255 if value>=64 else 0).getbbox()
+        for width,height in [(1280,800),(1920,1080)]:
+            self.page.set_viewport_size({'width':width,'height':height})
+            for mode in ['patient','combat']:
+                for gender in ['male','female']:
+                    self.page.evaluate('''({mode,gender})=>{setPaperDollView(mode);setGender(gender)}''',{'mode':mode,'gender':gender})
+                    self.page.wait_for_function('()=>document.getElementById("wardrobe-layer-body").naturalWidth===941')
+                    boxes=self.page.evaluate('''()=>Object.fromEntries(['.wardrobe-stage','#wardrobe-paperdoll','.wardrobe-index','.wardrobe-items'].map(selector=>{const r=document.querySelector(selector).getBoundingClientRect();return[selector,{x:r.x,y:r.y,width:r.width,height:r.height}]}))''')
+                    scene,frame,left,right=[boxes[key] for key in ['.wardrobe-stage','#wardrobe-paperdoll','.wardrobe-index','.wardrobe-items']]
+                    visible_height=frame['height']*(bounds[gender][3]-bounds[gender][1])/1672/scene['height']
+                    headroom=(frame['y']+frame['height']*bounds[gender][1]/1672-scene['y'])/scene['height']
+                    feet=(frame['y']+frame['height']*bounds[gender][3]/1672-scene['y'])/scene['height']
+                    self.assertGreaterEqual(visible_height,.82)
+                    self.assertLessEqual(visible_height,.85)
+                    self.assertGreaterEqual(headroom,.10)
+                    self.assertLessEqual(headroom,.12)
+                    self.assertGreaterEqual(feet,.93)
+                    self.assertLessEqual(feet,.96)
+                    self.assertGreaterEqual(scene['width']/scene['height'],.70)
+                    self.assertLessEqual(scene['width']/scene['height'],1.05)
+                    self.assertGreaterEqual(left['width'],180)
+                    self.assertGreaterEqual(right['width'],300)
+                    self.assertAlmostEqual(frame['width']/frame['height'],941/1672,delta=.001)
+                    self.assertGreaterEqual(frame['x']-scene['x'],scene['width']*.06-1)
+                    self.assertLessEqual(frame['x']+frame['width'],scene['x']+scene['width']*.94+1)
+                    name=f'wardrobe-scale-{mode}-{gender}-{width}x{height}'
+                    self.page.screenshot(path=str(results/f'{name}.png'))
+                    metrics.append({'name':name,'scene':scene,'frame':frame,'visible_height':visible_height,'headroom':headroom,'feet':feet})
+                    # Small, unedited browser crops allow remote visual review
+                    # from job logs; the full-resolution PNGs stay in artifacts.
+                    if os.getenv('GITHUB_ACTIONS')=='true':
+                        preview=self.page.locator('.wardrobe-stage').screenshot(type='jpeg',quality=35)
+                        print('WARDROBE_SCALE_PREVIEW:'+json.dumps({'name':name,'jpeg':base64.b64encode(preview).decode()},separators=(',',':')),flush=True)
+        (results/'wardrobe-scale-metrics.json').write_text(json.dumps(metrics,ensure_ascii=False,indent=2))
+        # Existing renderer: front and rear parts share the body's entire frame.
+        self.page.evaluate('''()=>{
+            PAPER_DOLL_ITEMS.push({id:'scale-fixture',slot:'back',name:'Fixture',availableByDefault:true,
+                layers:[{id:'rear',image:'base_female.png',renderOrder:-1},{id:'front',image:'base_female.png',renderOrder:12}]});
+            equipPaperDollItem('back','scale-fixture');
+        }''')
+        for prefix in ['', 'wardrobe-']:
+            body=self.page.locator(f'#{prefix}layer-body').bounding_box()
+            for part,order in [('rear','-1'),('front','12')]:
+                layer=self.page.locator(f'#{prefix}layer-back-{part}')
+                layer.wait_for(state='visible')
+                box=layer.bounding_box()
+                for coordinate in ['x','y','width','height']:self.assertAlmostEqual(box[coordinate],body[coordinate],delta=1)
+                self.assertEqual(layer.evaluate('e=>getComputedStyle(e).zIndex'),order)
 
     def test_trial_faces_are_not_loaded_or_selectable_after_old_save_migration(self):
         requests=[]

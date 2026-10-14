@@ -797,8 +797,8 @@ body {
 .wardrobe-stage { display: grid; place-items: end center; position: relative; isolation: isolate; container-type: size; flex: 1; min-height: 0; width: 100%; border: 1px solid #53665c60; overflow: hidden; background-color: #7a8583; background-image: linear-gradient(var(--wd-scene-tint), var(--wd-scene-tint)), var(--wd-scene-image); background-position: center bottom; background-size: cover; background-repeat: no-repeat; }
 .wardrobe-stage::before { content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none; box-shadow: inset 0 0 12px #11182030; }
 /* One shared floor anchor; the body frame and both shadows resize together.
-   A small floor margin keeps the soft ellipse inside the viewport. */
-#wardrobe-paperdoll { --wardrobe-floor-gap: 8cqh; --wardrobe-head-gap: 5cqh; width: min(100cqw, calc((100cqh - var(--wardrobe-floor-gap) - var(--wardrobe-head-gap)) * var(--paper-doll-ratio, 0.562799))); height: auto; margin-bottom: var(--wardrobe-floor-gap); aspect-ratio: var(--paper-doll-aspect, 941 / 1672); }
+   The 85% frame contains about 82.6% visible body height in both approved PNGs. */
+#wardrobe-paperdoll { --wardrobe-floor-gap: 5cqh; --wardrobe-head-gap: 10cqh; width: min(88cqw, calc((100cqh - var(--wardrobe-floor-gap) - var(--wardrobe-head-gap)) * var(--paper-doll-ratio, 0.562799))); height: auto; margin-bottom: var(--wardrobe-floor-gap); aspect-ratio: var(--paper-doll-aspect, 941 / 1672); }
 .wardrobe-ground-shadow { position: absolute; left: 14%; bottom: -.5%; width: 72%; height: 4.5%; z-index: -101; pointer-events: none; }
 .wardrobe-shadow-base, .wardrobe-shadow-contact { position: absolute; display: block; left: 50%; transform: translateX(-50%); border-radius: 50%; pointer-events: none; }
 .wardrobe-shadow-base { bottom: 0; width: 100%; height: 100%; opacity: .22; background: radial-gradient(ellipse, #1b251ed9 0, #1b251e80 35%, #1b251e20 58%, transparent 73%); }
@@ -858,7 +858,9 @@ body {
 .wardrobe-header { padding-bottom: 5px; margin-bottom: 6px; }
 .wardrobe-header .staff-section-code { display: block; line-height: 1.3; }
 .wardrobe-header h3 { line-height: 1.2; }
-.wardrobe-layout { grid-template-columns: 168px minmax(0, 1fr) clamp(300px, 25%, 440px); gap: 12px; }
+/* Extra desktop width goes to the side panels, not an ever wider room.
+   The center track follows viewport height until the document's height cap. */
+.wardrobe-layout { grid-template-columns: minmax(180px, 1fr) min(43vw, 63dvh, 690px) minmax(300px, 1.45fr); gap: 12px; }
 .wardrobe-index { padding-top: 5px; }
 .wardrobe-category { font-size: 14px; padding: 10px 19px 10px 7px; border-radius: 2px 9px 2px 1px; }
 .wardrobe-category small { position: absolute; right: 5px; bottom: 4px; color: var(--wd-muted); font-size: 7px; font-weight: normal; }
@@ -868,7 +870,9 @@ body {
 .wardrobe-slot[aria-pressed="true"] { box-shadow: inset 0 -2px var(--wd-accent); }
 .wardrobe-preview { gap: 5px; padding: 6px; position: relative; }
 .wardrobe-preview::after { content: ''; position: absolute; inset: 3px; pointer-events: none; background: linear-gradient(var(--wd-stage-border),var(--wd-stage-border)) left top/12px 2px no-repeat, linear-gradient(var(--wd-stage-border),var(--wd-stage-border)) left top/2px 12px no-repeat, linear-gradient(var(--wd-stage-border),var(--wd-stage-border)) right bottom/12px 2px no-repeat, linear-gradient(var(--wd-stage-border),var(--wd-stage-border)) right bottom/2px 12px no-repeat; opacity: .65; }
-#wardrobe-paperdoll { --wardrobe-head-gap: 12cqh; width: min(88cqw, calc((100cqh - var(--wardrobe-floor-gap) - var(--wardrobe-head-gap)) * var(--paper-doll-ratio, 0.562799))); }
+/* Scale the original room by height and crop its sides; cover previously
+   enlarged the furniture when the unconstrained center track became panoramic. */
+.wardrobe-stage { background-size: 100% 100%, auto 100%; }
 .wardrobe-registration-title { font-size: 10px; padding-bottom: 3px; }
 .wardrobe-registration-footer { width: 100%; flex-shrink: 0; display: grid; grid-template-columns: minmax(0, 1fr) 150px; gap: 6px; align-items: center; }
 .wardrobe-registration-plate { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 6px; align-items: center; padding: 5px 10px; font-size: 9px; }
@@ -916,7 +920,7 @@ body {
     .wardrobe-document { width: min(82vw, 2240px); }
 }
 @media (min-width: 601px) and (max-width: 950px) {
-    .wardrobe-layout { grid-template-columns: 130px minmax(0, 1fr) 260px; gap: 9px; }
+    .wardrobe-layout { grid-template-columns: minmax(130px, 1fr) min(43vw, 63dvh, calc(100% - 408px)) minmax(260px, 1.45fr); gap: 9px; }
     .wardrobe-document { padding: 10px; }
     .wardrobe-category, .wardrobe-slot { font-size: 13px; }
     .wardrobe-registration-footer { grid-template-columns: 1fr; gap: 2px; }
@@ -941,6 +945,8 @@ body {
     #wardrobe-slots { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 4px; padding-top: 4px; }
     .wardrobe-slot { min-height: 44px; padding: 4px; font-size: 13px; gap: 3px; }
     .wardrobe-preview { padding: 4px; gap: 3px; }
+    /* Very short phone scenes may be width-limited; fill them without bars. */
+    .wardrobe-stage { background-size: 100% 100%, cover; }
     .wardrobe-registration-title { font-size: 7px; padding-bottom: 2px; }
     .wardrobe-registration-footer { grid-template-columns: 1fr; gap: 2px; }
     .wardrobe-registration-plate { grid-template-columns: 1fr; gap: 1px; font-size: 8px; padding: 3px 6px; }
