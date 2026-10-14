@@ -969,7 +969,7 @@ body {
 }
 @media (prefers-reduced-motion: reduce) {
     .wardrobe-monitor-light { animation: none !important; }
-    .wardrobe-category, .wardrobe-slot, .wardrobe-item-card { transition: none; animation: none !important; }
+    .wardrobe-category, .wardrobe-slot, .wardrobe-item-card { transition: none !important; animation: none !important; }
 }
 .btn-main-action {
     background: linear-gradient(135deg, #594333, #8c684d);
