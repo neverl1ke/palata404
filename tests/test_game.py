@@ -826,8 +826,8 @@ class GameTests(unittest.TestCase):
         self.page.evaluate('openStaffArchive("doctor")')
         options = self.page.locator('#staff-floor-filter option').all_text_contents()
         self.assertEqual(options, ['Усі поверхи','9 поверх','10 поверх'])
-        self.assertIn('Відділення: Блок ізоляторів', self.page.locator('#staff-case-sheet').inner_text())
-        self.assertIn('Локація: Кабінет спостереження, 10-й поверх', self.page.locator('#staff-case-sheet').inner_text())
+        self.assertEqual(self.page.locator('.staff-form-field').filter(has_text='Відділення:').locator('dd').inner_text(), 'Блок ізоляторів')
+        self.assertEqual(self.page.locator('.staff-form-field').filter(has_text='Локація:').locator('dd').inner_text(), 'Кабінет спостереження, 10-й поверх')
         self.page.get_by_label('Поверх', exact=True).select_option('9')
         self.assertEqual(self.page.locator('.staff-case-button').count(), 0)
         self.assertIn('На цьому поверсі справ не зареєстровано', self.page.locator('#staff-case-sheet').inner_text())
@@ -878,6 +878,63 @@ class GameTests(unittest.TestCase):
                     self.assertTrue(card.locator('.raid-card-personal-stamp').is_visible())
                 self.page.screenshot(path=str(results/f'compact-raids-{width}x{height}.png'))
         self.assertEqual(self.page.evaluate('JSON.stringify({stats,inventory,staffArchiveState,archive:readRaidArchive(),storage:{...localStorage}})'),before)
+
+    def test_staff_forms_thumbnail_scale_and_prominent_personal_raid_stamps(self):
+        self.load()
+        self.page.evaluate('stats.baseDamage=300; recalculateEquipmentStats(); startBossFight("doctor"); performPlayerAttack(); openStaffArchive("doctor");')
+        profile = self.page.evaluate('JSON.stringify({stats,staffArchiveState,storage:{...localStorage}})')
+        self.page.get_by_role('button', name='Архівні документи', exact=True).click()
+        text = self.page.locator('#staff-case-sheet').inner_text()
+        self.assertNotRegex(text, r'5%|\d+/30|гаранті|drop chance|pity')
+        self.assertIn('після успішного обстеження', text)
+        self.page.get_by_role('button', name='Анкетні відомості', exact=True).click()
+        self.assertEqual(self.page.locator('.staff-form-field dt').all_text_contents(),
+                         ['Ім’я:','Номер справи:','Код:','Посада:','Поверх:','Відділення:','Локація:','Статус / примітка:'])
+        self.assertEqual(self.page.locator('.staff-identity-note').count(),1)
+        self.assertIn('КОНТАКТ ЗАФІКСОВАНО', self.page.locator('.staff-identity-header').inner_text())
+        self.assertEqual(self.page.evaluate('JSON.stringify({stats,staffArchiveState,storage:{...localStorage}})'),profile)
+        results=ROOT/'test-results'
+        results.mkdir(exist_ok=True)
+        for width,height in [(1280,800),(1024,768),(768,1024),(844,390),(390,844),(320,568)]:
+            with self.subTest(viewport=(width,height)):
+                self.page.set_viewport_size({'width':width,'height':height})
+                self.page.evaluate('openStaffArchive("doctor")')
+                thumbnail=self.page.locator('.staff-case-photo')
+                thumbnail.scroll_into_view_if_needed()
+                self.assertGreaterEqual(thumbnail.bounding_box()['width'],69)
+                self.assertEqual(self.page.locator('.staff-case-button.selected').evaluate('e=>getComputedStyle(e).gap'),'6px')
+                self.assertLessEqual(self.page.evaluate('document.documentElement.scrollWidth'),width)
+                self.page.screenshot(path=str(results/f'personnel-form-{width}x{height}.png'))
+                self.page.evaluate('openRaidArchive()')
+                card=self.page.locator('.raid-archive-card').first
+                stamp=card.locator(':scope > .raid-card-personal-stamp')
+                self.assertEqual(stamp.count(),1)
+                self.assertEqual(stamp.inner_text(),'MVP')
+                self.assertIn('MVP: Пацієнт #404',card.inner_text())
+                self.assertGreaterEqual(stamp.evaluate('e=>parseFloat(getComputedStyle(e).fontSize)'),30)
+                self.assertGreaterEqual(stamp.evaluate('e=>parseInt(getComputedStyle(e).fontWeight)'),700)
+                badge=stamp.bounding_box()
+                if width>600:
+                    detail=card.locator('.raid-card-details').bounding_box()
+                    self.assertGreaterEqual(badge['x'],detail['x']+detail['width'])
+                else:
+                    photo=card.locator('.raid-card-visual').bounding_box()
+                    self.assertGreaterEqual(badge['x'],photo['x']+photo['width'])
+                self.assertGreaterEqual(badge['x'],0)
+                self.assertLessEqual(badge['x']+badge['width'],width+1)
+                self.page.screenshot(path=str(results/f'personal-mvp-{width}x{height}.png'))
+        self.page.evaluate('''() => {
+            startBossFight('nurse'); raidMembers[0].metrics.healing=1; callAllFriends(); Math.random=()=>0;
+            for(let i=0;i<10;i++) friendsAutoAttackTick(); openRaidArchive();
+        }''')
+        card=self.page.locator('.raid-archive-card').first
+        self.assertEqual(card.locator('.raid-card-personal-stamp').count(),0)
+        self.assertIn('MVP: Сліпий Микола',card.inner_text())
+        self.page.evaluate('startBossFight("nurse"); callAllFriends(); for(let i=0;i<10;i++) friendsAutoAttackTick(); openRaidArchive();')
+        card=self.page.locator('.raid-archive-card').first
+        self.assertEqual(card.locator('.raid-card-personal-stamp').count(),1)
+        self.assertEqual(card.locator('.raid-card-personal-stamp').inner_text(),'УХИЛЯВСЯ ВІД ПРОЦЕДУРИ')
+        self.assertEqual(card.locator('.raid-personal-mvp').count(),0)
 
     def test_partial_reward_save_recovers_without_duplicate_credit(self):
         self.context.add_init_script('''

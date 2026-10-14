@@ -175,7 +175,7 @@ function renderRaidArchive() {
         const items = result.extraRewards.filter(reward => reward.granted);
         const dossierImage = getRaidDossierImage(result);
         const personalStamp = getParticipantReportStamp(result.participants.find(member => member.isPlayer));
-        return `<li><button type="button" class="raid-archive-card" data-raid-id="${escapeHTML(result.battleId)}">
+        return `<li><button type="button" class="raid-archive-card${personalStamp ? ' raid-archive-card-with-status' : ''}" data-raid-id="${escapeHTML(result.battleId)}">
             <span class="raid-card-visual${getDossierFrameClass(dossierImage)}">
                 ${dossierImage ? `<img class="raid-card-dossier-image" src="${escapeHTML(dossierImage)}" alt="Досьє: ${escapeHTML(result.boss.name)} — №${escapeHTML(result.boss.registrationNumber)}" loading="lazy" decoding="async">` : ''}
                 <span class="raid-card-no-dossier${dossierImage ? ' hidden' : ''}">${iconHTML('clipboard', 'large')}<span>Досьє не долучено</span></span>
@@ -187,9 +187,9 @@ function renderRaidArchive() {
             <span class="raid-card-rewards">+${result.payout.exp} EXP · +${result.payout.silver} срібла${(result.outcome || 'victory') === 'victory' && result.participants.some(member => member.isPlayer && member.isMvp) ? ' · особистий бонус MVP +5%' : ''}</span>
             ${mvp ? `<span class="raid-card-mvp">MVP: ${escapeHTML(mvp.name)}</span>` : ''}
             ${items.length ? `<span class="raid-card-items">Отримано: ${items.map(reward => escapeHTML(reward.name)).join(', ')}</span>` : ''}
-            ${personalStamp ? `<span class="report-participant-stamp raid-card-personal-stamp">${personalStamp}</span>` : ''}
             <span class="raid-card-open">Детальний протокол →</span>
             </span>
+            ${personalStamp ? `<span class="report-participant-stamp ${personalStamp === 'MVP' ? 'raid-personal-mvp' : 'raid-personal-inactive'} raid-card-personal-stamp">${personalStamp}</span>` : ''}
         </button></li>`;
     }).join('');
     list.querySelectorAll('[data-raid-id]').forEach(button => button.addEventListener('click', () => {

@@ -752,8 +752,8 @@ test('staff floor filters use map and boss assignments while department collecti
     assert.match(g.elements.get('staff-floor-filter').innerHTML,/9 поверх/);
     assert.match(g.elements.get('staff-floor-filter').innerHTML,/10 поверх/);
     assert.doesNotMatch(g.elements.get('staff-floor-filter').innerHTML,/Процедурне|Блок ізоляторів/);
-    assert.match(g.elements.get('staff-case-sheet').innerHTML,/Локація: Кабінет спостереження/);
-    assert.match(g.elements.get('staff-case-sheet').innerHTML,/Відділення: Блок ізоляторів/);
+    assert.match(g.elements.get('staff-case-sheet').innerHTML,/<dt>Локація:<\/dt><dd>Кабінет спостереження/);
+    assert.match(g.elements.get('staff-case-sheet').innerHTML,/<dt>Відділення:<\/dt><dd>Блок ізоляторів/);
     const state=g.run('JSON.stringify(staffArchiveState)');
     g.elements.get('staff-floor-filter').value='9';
     g.run('renderStaffArchive();');

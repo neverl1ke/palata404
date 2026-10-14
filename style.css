@@ -195,6 +195,7 @@
 .raid-archive-card { display: grid; grid-template-columns: 185px minmax(0, 1fr); align-items: start; gap: 12px; width: 100%; text-align: left; padding: 12px 14px; color: #30261e; border: 1px solid #947556; border-left: 4px solid #704237; background: rgba(241, 229, 200, 0.45); cursor: pointer; overflow-wrap: anywhere; }
 .raid-archive-card:hover { background: rgba(241, 229, 200, 0.8); }
 .raid-archive-card:focus-visible { outline: 2px solid #743b37; outline-offset: 2px; }
+.raid-archive-card-with-status { grid-template-columns: 185px minmax(0, 1fr) 112px; }
 .raid-card-visual { display: block; min-width: 0; }
 .raid-card-dossier-image { display: block; width: 100%; height: auto; aspect-ratio: auto 1376 / 768; object-fit: contain; filter: drop-shadow(2px 3px 4px rgba(48, 38, 30, 0.3)); }
 /* Measured alpha bounds: x=312..1068, y=2..767. Clip transparent sides only. */
@@ -204,7 +205,9 @@
 .raid-card-no-dossier { display: flex; min-height: 100px; gap: 8px; align-items: center; justify-content: center; flex-direction: column; color: #66513d; font-size: 11px; border: 1px dashed #947556; }
 .raid-card-details { display: block; min-width: 0; }
 .raid-card-details > span { display: block; font-size: 12px; margin-top: 3px; }
-.raid-card-details .raid-card-personal-stamp { width: fit-content; margin-top: 8px; font-size: 10px; }
+.raid-archive-card > .raid-card-personal-stamp { align-self: center; justify-self: end; width: fit-content; max-width: 100%; margin: 0; padding: 8px; border: 3px double #743b37; font-weight: bold; text-align: center; line-height: 1.2; transform: rotate(-3deg); box-shadow: inset 0 0 5px rgba(116, 59, 55, 0.14); }
+.raid-personal-mvp { font-size: 34px; letter-spacing: 0.04em; }
+.raid-personal-inactive { font-size: 12px; }
 .raid-card-case { font-size: 11px; color: #66513d; }
 .raid-archive-card .raid-card-heading { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 4px 12px; margin: 0; }
 .raid-card-heading strong { font-size: 15px; }
@@ -222,9 +225,10 @@
 .staff-archive-layout { display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 16px; height: 520px; }
 .staff-index { min-width: 0; overflow-y: auto; border-right: 1px solid #947556; padding-right: 10px; }
 #staff-case-list { list-style: none; display: grid; gap: 8px; }
-.staff-case-button { display: flex; align-items: center; gap: 8px; width: 100%; min-height: 98px; padding: 8px; border: 1px solid #947556; background: #cbb68f; color: #30261e; cursor: pointer; text-align: left; }
+.staff-case-button { display: flex; align-items: center; gap: 6px; width: 100%; min-height: 98px; padding: 8px; border: 1px solid #947556; background: #cbb68f; color: #30261e; cursor: pointer; text-align: left; }
 .staff-case-button.selected { border: 2px solid #743b37; background: #e0d0ae; }
-.staff-case-button img { width: 86px; height: auto; object-fit: contain; }
+.staff-case-photo { display: block; flex-shrink: 0; width: 70px; }
+.staff-case-thumbnail { display: block; width: 100%; height: auto; object-fit: contain; }
 .staff-case-button > span { min-width: 0; }
 .staff-case-button strong, .staff-case-button small { display: block; overflow-wrap: anywhere; }
 .staff-case-button strong { font-size: 12px; }
@@ -241,11 +245,22 @@
 .staff-case-sheet { flex: 1; min-height: 0; overflow-y: auto; border: 1px solid #947556; padding: 14px; background: rgba(241, 229, 200, 0.45); font-size: 13px; overflow-wrap: anywhere; }
 .staff-case-sheet p { margin: 8px 0; }
 .staff-case-progress { border-bottom: 1px dashed #947556; padding-bottom: 10px; color: #66513d; font-size: 12px; }
-.staff-identity { display: grid; grid-template-columns: 185px minmax(0, 1fr); align-items: start; gap: 12px; }
+.staff-identity { display: grid; grid-template-columns: 200px minmax(0, 1fr); align-items: start; gap: 12px; padding: 12px; border: 1px solid #a48a66; background: rgba(231, 216, 183, 0.3); }
+.staff-identity-header { grid-column: 1 / -1; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; padding-bottom: 10px; border-bottom: 1px dashed #947556; color: #66513d; font-size: 10px; letter-spacing: 0.04em; }
+.staff-identity-header .report-stamp { font-size: 9px; padding: 3px 5px; }
+.staff-identity.staff-identity-no-photo { grid-template-columns: 1fr; }
 .staff-dossier-visual { display: block; min-width: 0; }
 .staff-dossier-image { display: block; width: 100%; height: auto; object-fit: contain; }
 .staff-identity-details { min-width: 0; }
-.staff-identity-details:only-child { grid-column: 1 / -1; }
+.staff-form-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 7px 12px; margin: 0; }
+.staff-form-field { min-width: 0; padding-bottom: 6px; border-bottom: 1px solid rgba(148, 117, 86, 0.35); }
+.staff-form-field-wide { grid-column: 1 / -1; }
+.staff-form-field dt { font-size: 10px; color: #735942; text-transform: uppercase; letter-spacing: 0.04em; }
+.staff-form-field dd { margin: 2px 0 0; font-size: 13px; line-height: 1.35; }
+.staff-form-field:first-child dd { font-family: 'Special Elite', monospace; font-size: 18px; font-weight: bold; color: #542d29; }
+.staff-identity-note { grid-column: 1 / -1; padding: 10px 12px; border-left: 3px solid #743b37; background: rgba(195, 174, 136, 0.18); }
+.staff-identity-note h3 { font-size: 12px; margin-bottom: 5px; }
+.staff-identity-note p { font-size: 12px; margin: 0; }
 .staff-document-list { list-style: none; display: grid; gap: 10px; }
 .staff-document-item { padding: 10px; background: rgba(185, 158, 115, 0.15); border: 1px solid #a88d65; }
 .staff-document-item > strong, .staff-document-item > span { display: block; }
@@ -266,6 +281,12 @@
     .battle-report { padding: 18px 16px; max-height: calc(100dvh - 16px); }
     .battle-report.victory-summary { padding: 12px; }
     .raid-archive-card { grid-template-columns: 1fr; gap: 8px; padding: 10px; }
+    .raid-archive-card-with-status { grid-template-columns: minmax(0, 1fr) 88px; }
+    .raid-archive-card-with-status > .raid-card-visual { grid-column: 1; grid-row: 1; }
+    .raid-archive-card-with-status > .raid-card-details { grid-column: 1 / -1; grid-row: 2; }
+    .raid-archive-card-with-status > .raid-card-personal-stamp { grid-column: 2; grid-row: 1; padding: 6px; }
+    .raid-personal-mvp { font-size: 30px; }
+    .raid-personal-inactive { font-size: 11px; }
     .raid-card-visual, .staff-dossier-visual { width: min(185px, 100%); justify-self: start; }
     .staff-identity { grid-template-columns: 1fr; gap: 10px; }
     .victory-summary-actions .report-button { font-size: 12px; padding: 9px 6px; }

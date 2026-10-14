@@ -209,13 +209,9 @@ function renderStaffDocuments(bossId, observationsOnly = false) {
     const entry = staffArchiveState.cases[bossId];
     const documents = (config?.documents || []).filter(doc => !observationsOnly || doc.acquisition !== 'initial');
     if (!documents.length) return '<p class="report-caption">Матеріали цього розділу ще не долучені.</p>';
-    const randomPool = (config?.documents || []).filter(doc => doc.acquisition === 'raid');
-    const remaining = randomPool.filter(doc => !Object.hasOwn(entry.documents, doc.id)).length;
-    const dropNote = randomPool.length ? `<p class="report-caption">${remaining
-        ? `Випадкова знахідка: 5% після перемоги. Без нової знахідки: ${entry.misses}/30; на 30-му рейді — гарантія.`
-        : 'Усі доступні випадкові матеріали зібрано.'}</p>` : '';
+    const archiveNote = '<p class="report-caption">Архівні матеріали можуть бути виявлені після успішного обстеження. Частина справ доповнюється під час службових подій.</p>';
     const selected = documents.find(doc => doc.id === selectedStaffDocumentId && Object.hasOwn(entry.documents, doc.id));
-    return `${dropNote}<ul class="staff-document-list">${documents.map((doc, index) => {
+    return `${archiveNote}<ul class="staff-document-list">${documents.map((doc, index) => {
         const unlocked = Object.hasOwn(entry.documents, doc.id);
         const title = unlocked || !doc.secret ? doc.title : `ДОКУМЕНТ №${doc.id} — ЗАСЕКРЕЧЕНО`;
         return `<li class="staff-document-item"><strong>${escapeHTML(title)}</strong>${unlocked
@@ -244,7 +240,7 @@ function renderStaffArchive() {
         const progress = staffCaseProgress(id);
         const image = known ? getRaidDossierImage({ boss: { id } }) : null;
         return `<li><button class="staff-case-button${id === selectedStaffBossId ? ' selected' : ''}" type="button" data-case-index="${index}" aria-pressed="${id === selectedStaffBossId}">
-            ${image ? `<img src="${escapeHTML(image)}" alt="Досьє ${escapeHTML(boss.name)}" loading="lazy">` : `<span class="staff-silhouette" aria-label="Засекречений силует">${iconHTML('user')}</span>`}
+            ${image ? `<span class="staff-case-photo${getDossierFrameClass(image)}"><img class="staff-case-thumbnail" src="${escapeHTML(image)}" alt="Досьє ${escapeHTML(boss.name)}" loading="lazy"></span>` : `<span class="staff-silhouette" aria-label="Засекречений силует">${iconHTML('user')}</span>`}
             <span><small>СПРАВА №${escapeHTML(boss.dossier?.code || String(all.indexOf(id)+1))}</small><strong>${known ? escapeHTML(boss.name) : 'ОСОБУ НЕ ВСТАНОВЛЕНО'}</strong><small>${progress.opened}/${progress.total} (${progress.percent}%)</small>${progress.complete ? '<span class="report-stamp">СПРАВУ ЗАВЕРШЕНО</span>' : ''}</span>
         </button></li>`;
     }).join('');
@@ -261,7 +257,18 @@ function renderStaffArchive() {
         let content = '';
         if (staffArchiveTab === 'identity') {
             const image = getRaidDossierImage({ boss: { id: selectedStaffBossId } });
-            content = `<div class="staff-identity">${image ? `<span class="staff-dossier-visual${getDossierFrameClass(image)}"><img class="staff-dossier-image" src="${escapeHTML(image)}" alt="Досьє ${escapeHTML(boss.name)}"></span>` : ''}<div class="staff-identity-details"><h3>${escapeHTML(boss.name)}</h3><p>№${escapeHTML(boss.dossier?.code || '')} · ${escapeHTML(boss.victoryReport?.caseCode || '')}</p><p>${escapeHTML(boss.dossier?.role || '')}</p>${Number.isSafeInteger(boss.floorId) ? `<p>Поверх: ${boss.floorId}</p>` : ''}${config?.department ? `<p>Відділення: ${escapeHTML(config.department)}</p>` : ''}${boss.dossier?.location ? `<p>Локація: ${escapeHTML(boss.dossier.location)}</p>` : ''}<p>${escapeHTML(config?.introduction || 'Контакт з об’єктом зафіксовано; службові матеріали ще не долучені.')}</p></div></div>`;
+            const field = (label, value, wide = false) => `<div class="staff-form-field${wide ? ' staff-form-field-wide' : ''}"><dt>${escapeHTML(label)}:</dt><dd>${escapeHTML(value)}</dd></div>`;
+            content = `<div class="staff-identity${image ? '' : ' staff-identity-no-photo'}">
+                <header class="staff-identity-header"><span>ФОРМА ОС-01 · ОБЛІК ПЕРСОНАЛУ</span><span class="report-stamp">КОНТАКТ ЗАФІКСОВАНО</span></header>
+                ${image ? `<span class="staff-dossier-visual${getDossierFrameClass(image)}"><img class="staff-dossier-image" src="${escapeHTML(image)}" alt="Досьє ${escapeHTML(boss.name)}"></span>` : ''}
+                <div class="staff-identity-details"><dl class="staff-form-fields">
+                    ${field('Ім’я', boss.name, true)}${field('Номер справи', `№${boss.dossier?.code || 'Не зазначено'}`)}${field('Код', boss.victoryReport?.caseCode || 'Не зазначено')}
+                    ${field('Посада', boss.dossier?.role || 'Не зазначено', true)}${Number.isSafeInteger(boss.floorId) ? field('Поверх', boss.floorId) : ''}
+                    ${config?.department ? field('Відділення', config.department) : ''}${boss.dossier?.location ? field('Локація', boss.dossier.location, true) : ''}
+                    ${field('Статус / примітка', boss.dossier?.status || 'Контакт зафіксовано', true)}
+                </dl></div>
+                <section class="staff-identity-note"><h3>Архівна примітка</h3><p>${escapeHTML(config?.introduction || 'Контакт з об’єктом зафіксовано; службові матеріали ще не долучені.')}</p></section>
+            </div>`;
         } else if (staffArchiveTab === 'documents' || staffArchiveTab === 'observations') content = renderStaffDocuments(selectedStaffBossId, staffArchiveTab === 'observations');
         else {
             content = `<h3>Особова справа: ${progress.opened}/${progress.total} (${progress.percent}%)</h3>${staffRewardMarkup(config?.rewardId, config?.reward, progress.complete)}`;
