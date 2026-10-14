@@ -2,6 +2,7 @@ let wardrobeCategory = 'appearance';
 let wardrobeSlot = 'baseBody';
 
 function renderWardrobeRegistration() {
+    document.getElementById('custom-modal')?.setAttribute('data-wardrobe-theme', paperDollState.activeViewMode === 'combat' ? 'trip' : 'patient');
     const panel = document.getElementById('wardrobe-registration');
     if (!panel) return;
     panel.setAttribute('data-view', paperDollState.activeViewMode);
@@ -59,8 +60,8 @@ function renderWardrobeUI() {
     container.classList.toggle('wardrobe-face-grid', wardrobeSlot === 'face');
     if (wardrobeSlot === 'baseBody') {
         container.innerHTML = ['male','female'].map(value => `<article class="wardrobe-item-card wardrobe-body-card${paperDollState.selectedGender === value ? ' selected' : ''}">
-            <img class="wardrobe-body-image" src="${PAPER_DOLL_BODIES[value]}" alt="">
-            <h4>${iconHTML(value)}${value === 'female' ? 'Жінка' : 'Чоловік'}</h4><button type="button" class="report-button" data-paper-gender="${value}" data-wardrobe-focus="gender-${value}" aria-pressed="${paperDollState.selectedGender === value}">${value === 'female' ? 'Жінка' : 'Чоловік'}</button></article>`).join('');
+            <span class="wardrobe-record-label">ОСОБОВИЙ ЗНІМОК</span><img class="wardrobe-body-image" src="${PAPER_DOLL_BODIES[value]}" alt="">
+            <h4>${iconHTML(value)}${value === 'female' ? 'Жінка' : 'Чоловік'}</h4><span class="wardrobe-item-state">${paperDollState.selectedGender === value ? 'ОБРАНО' : 'ДОСТУПНО'}</span><button type="button" class="report-button" data-paper-gender="${value}" data-wardrobe-focus="gender-${value}" aria-pressed="${paperDollState.selectedGender === value}">${value === 'female' ? 'Жінка' : 'Чоловік'}</button></article>`).join('');
     } else {
         const items = PAPER_DOLL_ITEMS.filter(item => item.slot === wardrobeSlot && !PAPER_DOLL_RETIRED_FACES.has(item.id));
         const nativeFace = wardrobeSlot === 'face' ? `<article class="wardrobe-native-face">

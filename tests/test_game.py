@@ -33,12 +33,13 @@ class IconAssetTests(unittest.TestCase):
                 bounds=alpha.point(lambda value:255 if value>=64 else 0).getbbox()
                 self.assertLess(abs((bounds[0]+bounds[2])/2-image.width/2),image.width*0.02)
 
-    def test_approved_wardrobe_background_is_a_valid_full_color_scene(self):
-        with Image.open(ROOT/'wardrobe_background.png') as image:
-            self.assertEqual(image.format,'PNG')
-            self.assertEqual(image.size,(1448,1086))
-            self.assertIn(image.mode,['RGB','RGBA'])
-            image.verify()
+    def test_approved_wardrobe_backgrounds_are_valid_matching_scenes(self):
+        for name in ['wardrobe_background.png','wardrobe_background_v2.png']:
+            with self.subTest(image=name), Image.open(ROOT/name) as image:
+                self.assertEqual(image.format,'PNG')
+                self.assertEqual(image.size,(1448,1086))
+                self.assertIn(image.mode,['RGB','RGBA'])
+                image.verify()
 
     def test_svg_assets_are_self_contained_and_valid(self):
         paths = sorted((ROOT / 'assets' / 'icons').glob('*.svg'))
@@ -450,7 +451,7 @@ class GameTests(unittest.TestCase):
     def test_approved_wardrobe_background_loads_with_one_shared_floor_anchor(self):
         self.load()
         self.page.evaluate('openCustomization()')
-        self.page.wait_for_function('''()=>performance.getEntriesByType('resource').some(e=>e.name.includes('/wardrobe_background.png?v=ac6ecfa5')&&e.decodedBodySize>0)''')
+        self.page.wait_for_function('''()=>performance.getEntriesByType('resource').some(e=>e.name.includes('/wardrobe_background.png?v=d490c304')&&e.decodedBodySize>0)''')
         self.assertEqual(self.page.locator('.wardrobe-height-scale').count(),0)
         self.assertEqual(self.page.locator('.wardrobe-stage img:not(.char-layer)').count(),0)
         backgrounds=[]
@@ -458,13 +459,17 @@ class GameTests(unittest.TestCase):
             self.page.evaluate('''({gender,mode})=>{setGender(gender);setPaperDollView(mode)}''',{'gender':gender,'mode':mode})
             scene=self.page.locator('.wardrobe-stage').evaluate('''e=>{const s=getComputedStyle(e);return{image:s.backgroundImage,size:s.backgroundSize,position:s.backgroundPosition,repeat:s.backgroundRepeat,height:e.clientHeight}}''')
             backgrounds.append(re.search(r'url\([^)]+\)',scene['image']).group())
-            self.assertIn('wardrobe_background.png?v=ac6ecfa5',scene['image'])
+            expected='wardrobe_background_v2.png?v=639ad612' if mode=='combat' else 'wardrobe_background.png?v=d490c304'
+            self.assertIn(expected,scene['image'])
+            self.page.wait_for_function('src=>performance.getEntriesByType("resource").some(e=>e.name.includes(src)&&e.decodedBodySize>0)',arg=expected)
             self.assertTrue(all(value.strip()=='cover' for value in scene['size'].split(',')))
             self.assertTrue(all(value.strip()=='50% 100%' for value in scene['position'].split(',')))
             self.assertTrue(all(value.strip()=='no-repeat' for value in scene['repeat'].split(',')))
             floor_gap=self.page.locator('#wardrobe-paperdoll').evaluate('e=>parseFloat(getComputedStyle(e).marginBottom)')
             self.assertAlmostEqual(floor_gap,scene['height']*.08,delta=1)
-        self.assertEqual(len(set(backgrounds)),1)
+        self.assertEqual(len(set(backgrounds)),2)
+        self.assertEqual(backgrounds[0],backgrounds[1])
+        self.assertEqual(backgrounds[2],backgrounds[3])
         self.assertIsNone(self.page.evaluate('paperDollState.appearance.face'))
 
     def test_ground_shadow_tracks_the_shared_frame_without_gender_or_loadout_jumps(self):
@@ -509,6 +514,52 @@ class GameTests(unittest.TestCase):
         self.assertEqual(self.page.evaluate('JSON.stringify({stats,inventory,equippedGear,gameProgress})'),before)
         self.assertIsNone(self.page.evaluate('paperDollState.appearance.face'))
         self.assertLessEqual(self.page.evaluate('document.documentElement.scrollWidth'),320)
+
+    def test_wardrobe_themes_change_all_columns_keep_contrast_and_restore_after_reload(self):
+        self.load()
+        self.page.evaluate('openCustomization()')
+        before=self.page.evaluate('JSON.stringify({stats,inventory,equippedGear,gameProgress})')
+        snapshots=[]
+        for mode,theme in [('patient','patient'),('combat','trip')]:
+            self.page.evaluate('mode=>setPaperDollView(mode)',mode)
+            self.assertEqual(self.page.locator('#custom-modal').get_attribute('data-wardrobe-theme'),theme)
+            self.assertEqual(self.page.locator('#wardrobe-registration').get_attribute('data-view'),mode)
+            snapshots.append(self.page.evaluate('''()=>Object.fromEntries(['.wardrobe-document','.wardrobe-category[aria-pressed="true"]','.wardrobe-slot[aria-pressed="true"]','.wardrobe-body-card','.wardrobe-registration-plate','.wardrobe-view-switch button[aria-pressed="true"]'].map(selector=>{const s=getComputedStyle(document.querySelector(selector));return[selector,{color:s.color,background:s.backgroundColor,image:s.backgroundImage,border:s.borderColor}]}))'''))
+            # Test the actual inherited foreground against every solid gradient
+            # endpoint (or nearest opaque ancestor), rather than only one swatch.
+            contrast=self.page.evaluate(r'''()=>{
+                const rgb=text=>{const values=text.match(/[\d.]+/g)?.map(Number);return values?.length>=3?values:null};
+                const luminance=color=>color.slice(0,3).map(v=>{v/=255;return v<=.04045?v/12.92:((v+.055)/1.055)**2.4}).reduce((sum,v,i)=>sum+v*[.2126,.7152,.0722][i],0);
+                const backgrounds=e=>{if(!e)return[];const s=getComputedStyle(e);const colors=[s.backgroundColor,...s.backgroundImage.matchAll(/rgba?\([^)]+\)/g)].map(x=>rgb(typeof x==='string'?x:x[0])).filter(x=>x&&(x[3]??1)===1);return colors.length?colors:backgrounds(e.parentElement)};
+                const selectors=['.wardrobe-header h3','.wardrobe-header .staff-section-code','.wardrobe-section-label','.wardrobe-category[aria-pressed="true"]','.wardrobe-slot[aria-pressed="true"]','.wardrobe-body-card h4','.wardrobe-body-card .wardrobe-record-label','.wardrobe-body-card .wardrobe-item-state','.wardrobe-body-card button','.wardrobe-registration-title','.wardrobe-registration-plate','.wardrobe-monitor'];
+                return selectors.flatMap(selector=>[...document.querySelectorAll(selector)].map(e=>{const f=luminance(rgb(getComputedStyle(e).color));return{selector,minimum:Math.min(...backgrounds(e).map(c=>{const b=luminance(c);return(Math.max(f,b)+.05)/(Math.min(f,b)+.05)}))}}));
+            }''')
+            for sample in contrast:
+                self.assertGreaterEqual(sample['minimum'],4.5,(theme,sample))
+        for selector in snapshots[0]:
+            self.assertNotEqual(snapshots[0][selector],snapshots[1][selector],selector)
+        self.assertEqual(self.page.evaluate('JSON.stringify({stats,inventory,equippedGear,gameProgress})'),before)
+        self.page.reload(wait_until='networkidle')
+        self.page.evaluate('openCustomization()')
+        self.assertEqual(self.page.locator('#custom-modal').get_attribute('data-wardrobe-theme'),'trip')
+        self.assertEqual(self.page.evaluate('paperDollState.activeViewMode'),'combat')
+        self.assertIsNone(self.page.evaluate('paperDollState.appearance.face'))
+        self.page.locator('[data-wardrobe-category="gear"]').click()
+        self.page.locator('[data-wardrobe-slot="armor"]').click()
+        self.page.locator('[data-wardrobe-card="gear-br1"]').get_by_role('button',name='Надягнути',exact=True).click()
+        self.assertEqual(self.page.evaluate('paperDollState.combatLoadout.armor'),'gear-br1')
+        self.page.locator('[data-wardrobe-card="gear-br1"]').get_by_role('button',name='Зняти',exact=True).click()
+        self.assertIsNone(self.page.evaluate('paperDollState.combatLoadout.armor'))
+        self.assertEqual(self.page.evaluate('JSON.stringify({stats,inventory,equippedGear,gameProgress})'),before)
+        for width,height in [(1280,800),(1024,768),(768,1024),(844,390),(390,844),(320,568)]:
+            self.page.set_viewport_size({'width':width,'height':height})
+            for mode in ['patient','combat']:
+                self.page.evaluate('mode=>setPaperDollView(mode)',mode)
+                boxes=self.page.evaluate('''()=>{const scene=document.querySelector('.wardrobe-stage').getBoundingClientRect(),body=document.getElementById('wardrobe-paperdoll').getBoundingClientRect();return{scene:{y:scene.y,height:scene.height},body:{y:body.y,height:body.height}}}''')
+                self.assertGreaterEqual(boxes['body']['y']-boxes['scene']['y'],boxes['scene']['height']*.05-1)
+                self.assertLessEqual(boxes['body']['y']+boxes['body']['height'],boxes['scene']['y']+boxes['scene']['height'])
+                self.assertGreater(boxes['body']['height'],100)
+                self.assertLessEqual(self.page.evaluate('document.documentElement.scrollWidth'),width)
 
     def test_trial_faces_are_not_loaded_or_selectable_after_old_save_migration(self):
         requests=[]
