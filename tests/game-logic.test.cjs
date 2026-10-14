@@ -36,7 +36,7 @@ function game(saves = {}, deniedStorage = false, failWrites = []) {
             remove() { elements.delete(this.id); },
             addEventListener() {}, querySelectorAll() { return []; },
             setAttribute(name, value) { this[name] = value; },
-            focus() {}, getClientRects() { return []; },
+            focus() {}, scrollTo() {}, getClientRects() { return []; },
             contains() { return false; },
         };
     }
@@ -278,6 +278,7 @@ test('a future configured boss needs no result-screen logic and MVP adds exactly
     assert.equal(g.run('lastBattleResult.payout.bonusSilver'), 10);
     assert.equal(g.run('lastBattleResult.payout.exp'), 105);
     assert.equal(g.run('lastBattleResult.payout.silver'), 210);
+    g.run('openDetailedBattleReport();');
     assert.equal(g.elements.get('victory-case-code').textContent, '404-AR');
     assert.equal(g.elements.get('victory-boss-number').textContent, '№003');
     assert.equal(g.run('stats.level'), 2);
@@ -377,8 +378,41 @@ test('failed journal persistence leaves a visible retry and cannot award twice o
 test('participant text is escaped in the protocol and malformed saved reports are rejected', () => {
     const g = game({palata404_nickname:'<img src=x onerror=bad>'});
     g.run('stats.baseDamage=150; recalculateEquipmentStats(); startBossFight("nurse"); performPlayerAttack();');
+    g.run('openDetailedBattleReport();');
     assert.match(g.elements.get('victory-statistics-body').innerHTML,/&lt;img src=x onerror=bad&gt;/);
     assert.doesNotMatch(g.elements.get('victory-statistics-body').innerHTML,/<img src=x/);
     assert.equal(g.run('normalizeBattleResult({schemaVersion:1})'),null);
     assert.equal(game({palata404_last_battle_result:'{bad'}).run('lastBattleResult'),null);
+});
+
+test('summary and repeated detailed views preserve every result and never mutate resources or storage', () => {
+    const g = game();
+    g.run('stats.baseDamage=300; recalculateEquipmentStats(); startBossFight("doctor"); performPlayerAttack();');
+    const before = g.run('JSON.stringify({stats,inventory,bossKillsCount,lastBattleResult})');
+    const saves = [...g.storage];
+    assert.equal(g.elements.get('victory-summary-exp').textContent, '+126');
+    assert.equal(g.elements.get('victory-summary-silver').textContent, '+84');
+    assert.equal(g.elements.get('victory-summary-mvp').classList.contains('hidden'), false);
+    assert.match(g.elements.get('victory-summary-items').innerHTML, /Отримано:/);
+    for (let i=0;i<3;i++) g.run('openDetailedBattleReport(); closeDetailedBattleReport();');
+    assert.equal(g.run('JSON.stringify({stats,inventory,bossKillsCount,lastBattleResult})'), before);
+    assert.deepEqual([...g.storage], saves);
+    assert.equal(g.elements.get('victory-report-id').textContent, g.run('lastBattleResult.battleId'));
+    g.run('victoryRestartFight(); performPlayerAttack();');
+    assert.match(g.elements.get('victory-summary-items').innerHTML, /Вже в інвентарі:/);
+    assert.doesNotMatch(g.elements.get('victory-summary-items').innerHTML, /Отримано:/);
+    assert.equal(g.run('inventory.filter(i=>i.category==="quest").length'), 1);
+});
+
+test('summary does not advertise a personal MVP bonus when a helper wins it', () => {
+    const g = game();
+    g.run(`startBossFight('nurse'); callAllFriends(); Math.random=()=>0;
+        for(let i=0;i<10;i++) friendsAutoAttackTick();`);
+    assert.equal(g.elements.get('victory-summary-exp').textContent, '+50');
+    assert.equal(g.elements.get('victory-summary-silver').textContent, '+30');
+    assert.equal(g.elements.get('victory-summary-mvp').classList.contains('hidden'), true);
+    assert.equal(g.elements.get('victory-summary-mvp').textContent, '');
+    g.run('openDetailedBattleReport();');
+    assert.match(g.elements.get('victory-statistics-body').innerHTML, /Локальний помічник/);
+    assert.match(g.elements.get('victory-statistics-body').innerHTML, /Не застосовується/);
 });

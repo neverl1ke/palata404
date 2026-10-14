@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Special+Elite&display=swap" rel="stylesheet">
 
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <link rel="stylesheet" href="style.css?v=40005">
+    <link rel="stylesheet" href="style.css?v=40006">
 </head>
 <body>
 
@@ -386,8 +386,8 @@
     </div>
 
     <script src="icons.js?v=40003" defer></script>
-    <script src="battle-results.js?v=40005" defer></script>
-    <script src="script.js?v=40005" defer></script>
+    <script src="battle-results.js?v=40006" defer></script>
+    <script src="script.js?v=40006" defer></script>
     <!-- Модальне вікно: Медичне Досьє пацієнта (Аркуш паперу А4) -->
     <div id="dossier-modal" role="dialog" aria-modal="true" aria-label="Особисте досьє" class="modal center-modal hidden">
         <div class="modal-content dossier-paper">
@@ -607,13 +607,47 @@
 
 <!-- Один протокол для будь-якого боса; усі показники заповнюються зі збереженого результату. -->
 <div id="nurse-victory-modal" role="dialog" aria-modal="true" aria-labelledby="victory-title" class="modal-overlay hidden">
-    <article class="battle-report">
+    <article class="battle-report victory-summary">
+        <header class="battle-report-header">
+            <div class="report-archive-mark">СПЕЦБЛОК · ПАЛАТА 404<br><span class="report-stamp">РЕЙД ЗАВЕРШЕНО</span></div>
+            <button class="report-close" type="button" aria-label="Закрити підсумок бою" onclick="closeLastBattleResult()">✕</button>
+        </header>
+        <div id="victory-summary-content" class="victory-summary-content" tabindex="0" role="region" aria-label="Результат бою та нагороди">
+            <h2 id="victory-title">ОБ'ЄКТ ТИМЧАСОВО СТАБІЛІЗОВАНО</h2>
+            <p id="victory-summary-boss" class="victory-summary-boss"></p>
+            <p class="victory-summary-case">Реєстр <span id="victory-summary-number"></span> · Справа <span id="victory-summary-case"></span></p>
+            <section class="victory-summary-rewards" aria-label="Особисті нагороди за рейд">
+                <div class="victory-reward-totals">
+                    <p><strong id="victory-summary-exp"></strong><span>EXP</span></p>
+                    <p><strong id="victory-summary-silver"></strong><span>срібла</span></p>
+                </div>
+                <p id="victory-summary-mvp" class="victory-summary-mvp hidden"></p>
+                <ul id="victory-summary-items" class="report-extra-rewards"></ul>
+            </section>
+            <dl class="victory-summary-stats" aria-label="Основні показники бою">
+                <div><dt>Завдано шкоди</dt><dd id="victory-summary-damage"></dd></div>
+                <div><dt>Отримано шкоди</dt><dd id="victory-summary-taken"></dd></div>
+                <div><dt>Час бою</dt><dd id="victory-summary-time"></dd></div>
+            </dl>
+            <button class="report-detail-link" type="button" onclick="openDetailedBattleReport()">Детальний звіт</button>
+            <div id="victory-save-note" class="report-save-note hidden" role="status"></div>
+            <button id="victory-save-retry" class="report-button report-save-retry hidden" type="button" onclick="retryBattleResultSave()">Повторити збереження</button>
+        </div>
+        <footer class="report-actions victory-summary-actions">
+            <button class="report-button" type="button" onclick="victoryContinueToMap()"><img class="game-icon" src="assets/icons/map.svg" alt="" aria-hidden="true" width="64" height="64">Повернутися на карту</button>
+            <button class="report-button report-button-secondary" type="button" onclick="victoryRestartFight()"><img class="game-icon" src="assets/icons/repeat.svg" alt="" aria-hidden="true" width="64" height="64">Повторити бій</button>
+        </footer>
+    </article>
+</div>
+
+<div id="battle-detail-modal" role="dialog" aria-modal="true" aria-labelledby="victory-detail-title" class="modal-overlay hidden">
+    <article id="victory-detail-document" class="battle-report">
         <header class="battle-report-header">
             <div class="report-archive-mark">АРХІВ СПЕЦБЛОКУ · ПАЛАТА 404<br>МЕДИЧНИЙ НАГЛЯД / ФОРМА ПБ-01</div>
-            <button class="report-close" type="button" aria-label="Закрити протокол бою" onclick="closeLastBattleResult()">✕</button>
+            <button class="report-close" type="button" aria-label="Закрити детальний звіт" onclick="closeDetailedBattleReport()">✕</button>
         </header>
         <div class="report-classification"><span>ДЛЯ СЛУЖБОВОГО КОРИСТУВАННЯ</span><span class="report-stamp">НЕ Є АКТОМ ОСТАТОЧНОЇ НЕЙТРАЛІЗАЦІЇ</span></div>
-        <h2 id="victory-title">ОБ'ЄКТ ТИМЧАСОВО СТАБІЛІЗОВАНО</h2>
+        <h2 id="victory-detail-title">ОБ'ЄКТ ТИМЧАСОВО СТАБІЛІЗОВАНО</h2>
         <p class="report-subtitle">ПРОТОКОЛ ПІСЛЯБОЙОВОГО ОБСТЕЖЕННЯ</p>
         <dl class="report-identification">
             <div><dt>Реєстраційний номер</dt><dd id="victory-boss-number"></dd></div>
@@ -660,11 +694,10 @@
                 <div><dt>Тривалість рейду</dt><dd id="victory-duration"></dd></div>
                 <div class="report-record-id"><dt>Номер протоколу</dt><dd id="victory-report-id"></dd></div>
             </dl>
-            <div id="victory-save-note" class="report-save-note hidden" role="status"></div>
-            <button id="victory-save-retry" class="report-button report-save-retry hidden" type="button" onclick="retryBattleResultSave()">Повторити збереження</button>
+            <div id="victory-detail-save-note" class="report-save-note hidden" role="status"></div>
+            <button id="victory-detail-save-retry" class="report-button report-save-retry hidden" type="button" onclick="retryBattleResultSave()">Повторити збереження</button>
             <div class="report-actions">
-                <button class="report-button" type="button" onclick="victoryContinueToMap()"><img class="game-icon" src="assets/icons/map.svg" alt="" aria-hidden="true" width="64" height="64">Повернутися на карту</button>
-                <button class="report-button report-button-secondary" type="button" onclick="victoryRestartFight()"><img class="game-icon" src="assets/icons/repeat.svg" alt="" aria-hidden="true" width="64" height="64">Повторити обстеження</button>
+                <button class="report-button" type="button" onclick="closeDetailedBattleReport()">Повернутися до підсумку</button>
             </div>
         </footer>
     </article>

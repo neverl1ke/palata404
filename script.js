@@ -1965,7 +1965,7 @@ const MODAL_IDS = [
     'settings-modal', 'bank-modal', 'inventory-modal', 'item-info-modal', 'custom-modal',
     'friends-modal', 'map-modal', 'gym-modal', 'medical-hub-modal', 'procedure-room-modal',
     'dossier-modal', 'universal-dossier-modal', 'nurse-battle-modal', 'friend-invite-modal',
-    'nurse-victory-modal'
+    'nurse-victory-modal', 'battle-detail-modal'
 ];
 
 function closeOtherModals(keepIds = []) {
@@ -1993,6 +1993,7 @@ function initializeModalControls() {
         if (modal.id === 'nurse-battle-modal') closeNurseBattle();
         else if (modal.id === 'item-info-modal') closeItemInfo();
         else if (modal.id === 'inventory-modal') closeInventory();
+        else if (modal.id === 'battle-detail-modal') closeDetailedBattleReport();
         else modal.classList.add('hidden');
     };
     const sync = () => {

@@ -374,6 +374,13 @@ class GameTests(unittest.TestCase):
                     startBossFight(key); performPlayerAttack();
                 }''', key)
                 self.assertTrue(self.page.locator('#nurse-victory-modal').is_visible())
+                self.assertEqual(self.page.locator('#victory-summary-exp').inner_text(), f'+{exp}')
+                self.assertEqual(self.page.locator('#victory-summary-silver').inner_text(), f'+{silver}')
+                self.assertEqual(self.page.locator('#victory-summary-boss').inner_text(), self.page.evaluate('lastBattleResult.boss.name'))
+                self.assertTrue(self.page.locator('#victory-summary-mvp').is_visible())
+                self.page.get_by_role('button', name='Детальний звіт', exact=True).click()
+                self.assertFalse(self.page.locator('#nurse-victory-modal').is_visible())
+                self.assertTrue(self.page.locator('#battle-detail-modal').is_visible())
                 self.assertEqual(self.page.locator('#victory-boss-id').inner_text(), key)
                 self.assertEqual(self.page.locator('#victory-case-code').inner_text(), code)
                 self.assertEqual(self.page.locator('#victory-boss-number').inner_text(), number)
@@ -383,7 +390,7 @@ class GameTests(unittest.TestCase):
                 current_id = self.page.locator('#victory-report-id').inner_text()
                 self.assertNotEqual(current_id, previous_id)
                 previous_id = current_id
-                self.page.evaluate('handleVictory(); closeLastBattleResult(); openLastBattleResult();')
+                self.page.evaluate('handleVictory(); closeDetailedBattleReport(); openDetailedBattleReport();')
                 self.assertEqual(self.state()['silver'], before+silver)
                 self.assertEqual(self.page.locator('#victory-statistics-body tr').count(), 1)
                 self.assertEqual(self.page.locator('#victory-rewards').count(), 1)
@@ -391,6 +398,7 @@ class GameTests(unittest.TestCase):
         self.page.reload(wait_until='networkidle')
         self.page.evaluate('openSettings()')
         self.page.get_by_role('button', name='Останній протокол бою', exact=True).click()
+        self.page.get_by_role('button', name='Детальний звіт', exact=True).click()
         self.assertEqual(self.page.locator('#victory-case-code').inner_text(), '404-IZ')
         self.assertEqual(self.state()['silver'], after['silver'])
         self.assertEqual(self.state()['bossesKilled'], after['bossesKilled'])
@@ -403,8 +411,8 @@ class GameTests(unittest.TestCase):
         for width, height in [(320,568),(390,844),(844,390),(1280,800)]:
             with self.subTest(viewport=(width,height)):
                 self.page.set_viewport_size({'width':width,'height':height})
-                self.page.evaluate('openLastBattleResult()')
-                report = self.page.locator('.battle-report')
+                self.page.evaluate('openDetailedBattleReport()')
+                report = self.page.locator('#victory-detail-document')
                 box = report.bounding_box()
                 self.assertGreaterEqual(box['x'], 0)
                 self.assertGreaterEqual(box['y'], 0)
@@ -413,7 +421,7 @@ class GameTests(unittest.TestCase):
                 self.assertLessEqual(self.page.evaluate('document.documentElement.scrollWidth'), width)
                 if width < 900:
                     self.assertTrue(self.page.locator('.report-table-scroll').evaluate('e=>e.scrollWidth>e.clientWidth'))
-                for button in self.page.locator('.report-actions button').all():
+                for button in self.page.locator('#battle-detail-modal .report-actions button').all():
                     button.scroll_into_view_if_needed()
                     action = button.bounding_box()
                     self.assertGreaterEqual(action['x'], 0)
@@ -421,8 +429,95 @@ class GameTests(unittest.TestCase):
                     self.assertGreaterEqual(action['height'], 44)
                 report.evaluate('e=>e.scrollTop=0')
                 self.page.screenshot(path=str(results/f'victory-{width}x{height}.png'))
-                self.page.get_by_role('button', name='Закрити протокол бою', exact=True).click()
-                self.assertFalse(self.page.locator('#nurse-victory-modal').is_visible())
+                self.page.get_by_role('button', name='Закрити детальний звіт', exact=True).click()
+                self.assertFalse(self.page.locator('#battle-detail-modal').is_visible())
+                self.assertTrue(self.page.locator('#nurse-victory-modal').is_visible())
+
+    def test_compact_victory_fits_desktop_and_keeps_mobile_actions_visible(self):
+        self.load()
+        self.page.evaluate('stats.baseDamage=300; recalculateEquipmentStats(); startBossFight("doctor"); performPlayerAttack();')
+        results = ROOT / 'test-results'
+        results.mkdir(exist_ok=True)
+        for width, height in [(1280,800),(1366,768),(1024,600),(320,568),(390,844),(844,390),(320,320)]:
+            with self.subTest(viewport=(width,height)):
+                self.page.set_viewport_size({'width':width,'height':height})
+                self.page.evaluate('openLastBattleResult()')
+                report = self.page.locator('.victory-summary')
+                box = report.bounding_box()
+                self.assertGreaterEqual(box['x'], 0)
+                self.assertGreaterEqual(box['y'], 0)
+                self.assertLessEqual(box['x']+box['width'], width+1)
+                self.assertLessEqual(box['y']+box['height'], height+1)
+                self.assertLessEqual(self.page.evaluate('document.documentElement.scrollWidth'), width)
+                if width >= 1024:
+                    for selector in ['.victory-summary', '#victory-summary-content']:
+                        self.assertTrue(self.page.locator(selector).evaluate('e=>e.scrollHeight<=e.clientHeight+1'))
+                    self.assertTrue(self.page.locator('#victory-summary-items').is_visible())
+                for button in self.page.locator('.victory-summary-actions button').all():
+                    action = button.bounding_box()
+                    self.assertGreaterEqual(action['x'], 0)
+                    self.assertGreaterEqual(action['y'], 0)
+                    self.assertLessEqual(action['x']+action['width'], width+1)
+                    self.assertLessEqual(action['y']+action['height'], height+1)
+                    self.assertGreaterEqual(action['height'], 44)
+                    self.assertTrue(button.evaluate('e=>{const r=e.getBoundingClientRect(); return e.contains(document.elementFromPoint(r.x+r.width/2,r.y+r.height/2));}'))
+                self.page.screenshot(path=str(results/f'victory-summary-{width}x{height}.png'))
+                self.page.get_by_role('button', name='Детальний звіт', exact=True).click()
+                self.assertTrue(self.page.locator('#battle-detail-modal').is_visible())
+                self.page.keyboard.press('Escape')
+                self.assertTrue(self.page.locator('#nurse-victory-modal').is_visible())
+
+    def test_compact_victory_actions_and_report_reopening_do_not_pay_again(self):
+        self.load()
+        self.page.evaluate('stats.baseDamage=300; recalculateEquipmentStats(); startBossFight("doctor"); performPlayerAttack();')
+        before = self.page.evaluate('JSON.stringify({stats,inventory,bossKillsCount,lastBattleResult,storage:{...localStorage}})')
+        for _ in range(3):
+            self.page.get_by_role('button', name='Детальний звіт', exact=True).click()
+            self.assertTrue(self.page.locator('#victory-conclusion').inner_text())
+            self.assertEqual(self.page.locator('#victory-statistics-body tr').count(), 1)
+            self.page.get_by_role('button', name='Повернутися до підсумку', exact=True).click()
+        self.assertEqual(self.page.evaluate('JSON.stringify({stats,inventory,bossKillsCount,lastBattleResult,storage:{...localStorage}})'), before)
+        self.page.get_by_role('button', name='Повернутися на карту', exact=True).click()
+        self.assertTrue(self.page.locator('#map-modal').is_visible())
+        self.assertFalse(self.page.locator('#nurse-victory-modal').is_visible())
+        self.page.evaluate('openLastBattleResult(); currentBossKey="nurse";')
+        self.page.get_by_role('button', name='Повторити бій', exact=True).click()
+        self.assertTrue(self.page.locator('#nurse-battle-modal').is_visible())
+        self.assertEqual(self.page.evaluate('currentBattleSession.bossKey'), 'doctor')
+        self.assertEqual(self.state()['silver'], 234)
+        self.page.evaluate('performPlayerAttack()')
+        self.assertEqual(self.state()['silver'], 318)
+        self.assertIn('Вже в інвентарі:', self.page.locator('#victory-summary-items').inner_text())
+        self.assertEqual(self.page.evaluate('inventory.filter(i=>i.category==="quest").length'), 1)
+
+    def test_helper_mvp_and_long_report_remain_accessible_in_compact_view(self):
+        self.load()
+        self.page.evaluate('''() => {
+            startBossFight('nurse'); callAllFriends(); Math.random=()=>0;
+            for(let i=0;i<10;i++) friendsAutoAttackTick();
+        }''')
+        self.assertFalse(self.page.locator('#victory-summary-mvp').is_visible())
+        self.assertEqual(self.page.locator('#victory-summary-exp').inner_text(), '+50')
+        self.assertEqual(self.page.locator('#victory-summary-silver').inner_text(), '+30')
+        self.page.get_by_role('button', name='Детальний звіт', exact=True).click()
+        self.assertEqual(self.page.locator('#victory-statistics-body tr').count(), 4)
+        self.assertIn('MVP', self.page.locator('#victory-statistics-body').inner_text())
+        self.assertIn('Не застосовується', self.page.locator('#victory-statistics-body').inner_text())
+        self.page.get_by_role('button', name='Повернутися до підсумку', exact=True).click()
+        self.page.set_viewport_size({'width':320,'height':320})
+        self.page.evaluate('''() => {
+            const preview=JSON.parse(JSON.stringify(lastBattleResult));
+            preview.boss.name='Довга назва об’єкта '.repeat(10);
+            preview.extraRewards=Array.from({length:12},(_,i)=>({name:'Предмет '+i,icon:'key',granted:true}));
+            renderBattleSummary(preview);
+        }''')
+        self.assertTrue(self.page.locator('#victory-summary-content').evaluate('e=>e.scrollHeight>e.clientHeight'))
+        self.page.locator('#victory-summary-items li').last.scroll_into_view_if_needed()
+        self.assertTrue(self.page.locator('#victory-summary-items li').last.is_visible())
+        for button in self.page.locator('.victory-summary-actions button').all():
+            box = button.bounding_box()
+            self.assertGreaterEqual(box['y'], 0)
+            self.assertLessEqual(box['y']+box['height'], 320)
 
     def test_partial_reward_save_recovers_without_duplicate_credit(self):
         self.context.add_init_script('''

@@ -163,6 +163,40 @@ function formatReportNumber(value) {
     return value === null ? 'Не застосовується' : String(value);
 }
 
+function formatBattleDuration(result) {
+    const seconds = Math.floor((result.endedAt - result.startedAt) / 1000);
+    return `${Math.floor(seconds / 60)} хв ${seconds % 60} с`;
+}
+
+function renderBattleSummary(result) {
+    const setText = (id, value) => {
+        const element = document.getElementById(id);
+        if (element) element.textContent = value;
+    };
+    setText('victory-summary-boss', result.boss.name);
+    setText('victory-summary-number', `№${result.boss.registrationNumber}`);
+    setText('victory-summary-case', result.boss.caseCode);
+    setText('victory-summary-exp', `+${result.payout.exp}`);
+    setText('victory-summary-silver', `+${result.payout.silver}`);
+    const player = result.participants.find(member => member.isPlayer);
+    const mvpNote = document.getElementById('victory-summary-mvp');
+    if (mvpNote) {
+        mvpNote.textContent = player?.isMvp ? 'MVP: +5% EXP / +5% срібла' : '';
+        mvpNote.classList.toggle('hidden', !player?.isMvp);
+    }
+    setText('victory-summary-damage', formatReportNumber(player?.damage ?? null));
+    setText('victory-summary-taken', formatReportNumber(player?.damageTaken ?? null));
+    setText('victory-summary-time', formatBattleDuration(result));
+    const items = document.getElementById('victory-summary-items');
+    if (items) items.innerHTML = result.extraRewards.length ? result.extraRewards.map(reward =>
+        `<li>${iconHTML(reward.icon)} ${reward.granted ? 'Отримано:' : 'Вже в інвентарі:'} <strong>${escapeHTML(reward.name)}</strong></li>`
+    ).join('') : '<li>Нових предметів немає.</li>';
+    document.getElementById('victory-summary-content')?.scrollTo(0, 0);
+    updateBattleResultSaveNotice();
+}
+
+// Render a supplied snapshot without completing a fight or changing rewards/saves.
+// This document can also be used for stored raid records in a future archive.
 function renderBattleResult(result) {
     const setText = (id, value) => {
         const element = document.getElementById(id);
@@ -176,8 +210,7 @@ function renderBattleResult(result) {
     setText('victory-conclusion', result.boss.conclusion);
     setText('victory-report-id', result.battleId);
     setText('victory-report-date', new Date(result.endedAt).toLocaleString('uk-UA'));
-    const seconds = Math.floor((result.endedAt - result.startedAt) / 1000);
-    setText('victory-duration', `${Math.floor(seconds / 60)} хв ${seconds % 60} с`);
+    setText('victory-duration', formatBattleDuration(result));
     const mvp = result.participants.find(member => member.isMvp);
     setText('victory-mvp-name', mvp ? mvp.name : 'Не визначено');
     setText('victory-base-exp', result.payout.baseExp);
@@ -214,12 +247,14 @@ function renderBattleResult(result) {
 }
 
 function updateBattleResultSaveNotice() {
-    const note = document.getElementById('victory-save-note');
-    if (!note) return;
-    note.classList.toggle('hidden', battleResultPersisted);
-    note.textContent = battleResultPersisted ? ''
-        : 'Протокол і нагороди поки не вдалося зберегти. Не закривайте сторінку; спробуйте зберегти ще раз.';
-    document.getElementById('victory-save-retry')?.classList.toggle('hidden', battleResultPersisted);
+    for (const prefix of ['victory', 'victory-detail']) {
+        const note = document.getElementById(`${prefix}-save-note`);
+        if (!note) continue;
+        note.classList.toggle('hidden', battleResultPersisted);
+        note.textContent = battleResultPersisted ? ''
+            : 'Протокол і нагороди поки не вдалося зберегти. Не закривайте сторінку; спробуйте зберегти ще раз.';
+        document.getElementById(`${prefix}-save-retry`)?.classList.toggle('hidden', battleResultPersisted);
+    }
 }
 
 function openLastBattleResult() {
@@ -228,8 +263,21 @@ function openLastBattleResult() {
         return;
     }
     closeOtherModals(['nurse-victory-modal']);
-    renderBattleResult(lastBattleResult);
+    renderBattleSummary(lastBattleResult);
     document.getElementById('nurse-victory-modal')?.classList.remove('hidden');
+}
+
+function openDetailedBattleReport() {
+    if (!lastBattleResult) return;
+    closeOtherModals(['battle-detail-modal']);
+    renderBattleResult(lastBattleResult);
+    document.getElementById('victory-detail-document')?.scrollTo(0, 0);
+    document.getElementById('battle-detail-modal')?.classList.remove('hidden');
+}
+
+function closeDetailedBattleReport() {
+    document.getElementById('battle-detail-modal')?.classList.add('hidden');
+    openLastBattleResult();
 }
 
 function retryBattleResultSave() {

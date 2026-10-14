@@ -55,7 +55,7 @@
 .map-node-pin .game-icon { width: 18px; height: 18px; }
 
 /* Post-battle archive protocol: worn paper, ink stamps, no neon battle styling. */
-#nurse-victory-modal {
+#nurse-victory-modal, #battle-detail-modal {
     position: fixed;
     inset: 0;
     display: flex;
@@ -155,9 +155,40 @@
 .report-save-retry { margin-top: 10px; flex: none; }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; }
 
+.battle-report.victory-summary {
+    display: flex;
+    flex-direction: column;
+    width: min(680px, 100%);
+    padding: 18px 22px;
+    overflow: hidden;
+}
+.victory-summary > .battle-report-header { flex-shrink: 0; margin-bottom: 10px; }
+.victory-summary .report-stamp { display: inline-block; margin-top: 5px; padding: 2px 6px; }
+.victory-summary-content { min-height: 0; overflow-y: auto; overscroll-behavior: contain; }
+.victory-summary h2 { font-size: clamp(16px, 2.2vw, 21px); margin-bottom: 6px; }
+.victory-summary-boss { font-family: 'Special Elite', monospace; font-size: clamp(23px, 3vw, 32px); line-height: 1.2; font-weight: bold; overflow-wrap: anywhere; }
+.victory-summary-case { font-size: 11px; color: #66513d; margin: 6px 0 12px; overflow-wrap: anywhere; }
+.victory-summary-rewards { padding: 10px 14px; border: 1px solid #9b805d; background: rgba(241, 229, 200, 0.45); }
+.victory-reward-totals { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.victory-reward-totals p { display: flex; align-items: baseline; flex-wrap: wrap; gap: 6px; }
+.victory-reward-totals strong { font-size: clamp(30px, 4vw, 42px); line-height: 1.1; color: #512927; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.victory-reward-totals span { font-size: 14px; }
+.victory-summary-mvp { color: #5b382a; font-size: 12px; margin-top: 7px; font-weight: bold; }
+.victory-summary .report-extra-rewards { margin-top: 6px; overflow-wrap: anywhere; }
+.victory-summary-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin-top: 12px; }
+.victory-summary-stats dt { font-size: 10px; color: #66513d; }
+.victory-summary-stats dd { font-size: 13px; margin: 0; overflow-wrap: anywhere; }
+.report-detail-link { min-height: 44px; padding: 8px 0; border: 0; background: transparent; color: #632f2b; font-size: 13px; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+.victory-summary-actions { flex-shrink: 0; border-top: 2px solid #80644b; padding-top: 12px; margin-top: 6px; gap: 10px; }
+.victory-summary-actions .report-button { flex: 1 1 0; min-width: 0; }
+.victory-summary :focus-visible { outline: 2px solid #743b37; outline-offset: -2px; }
+
 @media (max-width: 600px) {
-    #nurse-victory-modal { padding: 8px !important; }
+    #nurse-victory-modal, #battle-detail-modal { padding: 8px !important; }
     .battle-report { padding: 18px 16px; max-height: calc(100dvh - 16px); }
+    .battle-report.victory-summary { padding: 12px; }
+    .victory-summary-actions .report-button { font-size: 12px; padding: 9px 6px; }
+    .victory-summary-rewards { padding: 9px 10px; }
     .report-identification { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
     .report-name-field { grid-column: 1 / -1; }
     .report-rewards-table { font-size: 12px; }
