@@ -440,6 +440,49 @@ class GameTests(unittest.TestCase):
         self.page.keyboard.press('Escape')
         self.assertFalse(self.page.locator('#custom-modal').is_visible())
 
+    def test_ground_shadow_tracks_the_shared_frame_without_gender_or_loadout_jumps(self):
+        self.load()
+        self.page.evaluate('openCustomization()')
+        before=self.page.evaluate('JSON.stringify({stats,inventory,equippedGear,gameProgress})')
+        results=ROOT/'test-results'; results.mkdir(exist_ok=True)
+        for width,height in [(1280,800),(1024,768),(768,1024),(844,390),(390,844),(320,568)]:
+            self.page.set_viewport_size({'width':width,'height':height})
+            previous=None
+            for gender,mode,gear in [('male','patient',None),('female','patient',None),('female','combat','gear-br1'),('male','combat','gear-br1')]:
+                self.page.evaluate('''({gender,mode,gear})=>{setGender(gender);setPaperDollView(mode);equipPaperDollItem('armor',gear)}''',{'gender':gender,'mode':mode,'gear':gear})
+                self.page.wait_for_function('()=>document.getElementById("wardrobe-layer-body").naturalWidth===941')
+                data=self.page.evaluate('''()=>{
+                    const selectors=['.wardrobe-stage','#wardrobe-paperdoll','.wardrobe-ground-shadow','.wardrobe-shadow-base','.wardrobe-shadow-contact'];
+                    return Object.fromEntries(selectors.map(key=>{const e=document.querySelector(key),r=e.getBoundingClientRect(),s=getComputedStyle(e);return[key,{x:r.x,y:r.y,width:r.width,height:r.height,opacity:s.opacity,zIndex:s.zIndex,pointerEvents:s.pointerEvents,animation:s.animationName,background:s.backgroundImage}]}));
+                }''')
+                stage,frame,group,base,contact=[data[key] for key in ['.wardrobe-stage','#wardrobe-paperdoll','.wardrobe-ground-shadow','.wardrobe-shadow-base','.wardrobe-shadow-contact']]
+                self.assertEqual(self.page.locator('#wardrobe-paperdoll > .wardrobe-ground-shadow').count(),1)
+                self.assertEqual(self.page.locator('.wardrobe-ground-shadow').get_attribute('aria-hidden'),'true')
+                self.assertEqual(group['zIndex'],'-101')
+                self.assertGreater(base['width'],contact['width'])
+                self.assertGreater(base['height'],contact['height'])
+                self.assertGreater(float(contact['opacity']),float(base['opacity']))
+                for shadow in [base,contact]:
+                    self.assertEqual(shadow['pointerEvents'],'none')
+                    self.assertEqual(shadow['animation'],'none')
+                    self.assertIn('radial-gradient',shadow['background'])
+                    self.assertLess(float(shadow['opacity']),.4)
+                    self.assertAlmostEqual(shadow['x']+shadow['width']/2,frame['x']+frame['width']/2,delta=1)
+                    self.assertGreaterEqual(shadow['x'],stage['x'])
+                    self.assertGreaterEqual(shadow['y'],frame['y']+frame['height']*.94)
+                    self.assertLessEqual(shadow['y']+shadow['height'],stage['y']+stage['height'])
+                self.assertAlmostEqual(base['width']/frame['width'],.72,delta=.01)
+                self.assertAlmostEqual(contact['width']/base['width'],.58,delta=.01)
+                if previous:
+                    for key in ['#wardrobe-paperdoll','.wardrobe-ground-shadow','.wardrobe-shadow-base','.wardrobe-shadow-contact']:
+                        for coordinate in ['x','y','width','height']:
+                            self.assertAlmostEqual(previous[key][coordinate],data[key][coordinate],delta=1)
+                previous=data
+                self.page.screenshot(path=str(results/f'ground-shadow-{gender}-{mode}-{width}x{height}.png'))
+        self.assertEqual(self.page.evaluate('JSON.stringify({stats,inventory,equippedGear,gameProgress})'),before)
+        self.assertIsNone(self.page.evaluate('paperDollState.appearance.face'))
+        self.assertLessEqual(self.page.evaluate('document.documentElement.scrollWidth'),320)
+
     def test_trial_faces_are_not_loaded_or_selectable_after_old_save_migration(self):
         requests=[]
         self.page.on('request',lambda request:requests.append(request.url))
