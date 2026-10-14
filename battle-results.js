@@ -61,7 +61,9 @@ function nextBattleEventId(type) {
 
 function recordBattleEvent(id, member, delta) {
     const battle = currentBattleSession;
-    if (!id || !isBattleActive || !battle || battle.finished || !member?.metrics || battle.events.has(id)) return false;
+    if (!isBattleActive || !battle || battle.finished || typeof id !== 'string'
+        || !id.startsWith(`${battle.id}:`) || !member?.metrics || !raidMembers.includes(member)
+        || battle.events.has(id)) return false;
     battle.events.add(id);
     if (Number.isFinite(delta.damage) && delta.damage >= 0) member.damage += delta.damage;
     ['damageTaken', 'healing', 'turns'].forEach(field => {

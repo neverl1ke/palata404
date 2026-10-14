@@ -340,6 +340,9 @@ test('new raid resets metrics and duplicate event identifiers do not increment t
     assert.equal(g.run('raidMembers[0].damage'), 0);
     assert.equal(g.run('raidMembers[0].metrics.turns'), 0);
     assert.equal(g.run('raidMembers[0].metrics.healing'), 0);
+    g.run('recordBattleEvent(id,raidMembers[0],{damage:99,turns:1});');
+    assert.equal(g.run('raidMembers[0].damage'), 0);
+    assert.equal(g.run('raidMembers[0].metrics.turns'), 0);
 });
 
 test('interrupted reward writes recover snapshots exactly once without replaying gains', () => {
