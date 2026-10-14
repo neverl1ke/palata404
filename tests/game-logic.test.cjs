@@ -744,3 +744,25 @@ test('data-defined future bosses need no component change and locked secret titl
     assert.match(g.elements.get('staff-case-sheet').innerHTML,/ДОКУМЕНТ №002-03 — ЗАСЕКРЕЧЕНО/);
     assert.doesNotMatch(g.elements.get('staff-case-sheet').innerHTML,/Незаповнена графа наказу|Копія наказу головного лікаря/);
 });
+
+test('staff floor filters use map and boss assignments while department collections and progress stay intact', () => {
+    const g=game();
+    g.run('startBossFight("doctor"); openFleeConfirmModal(); openStaffArchive("doctor");');
+    assert.match(g.elements.get('staff-floor-filter').innerHTML,/Усі поверхи/);
+    assert.match(g.elements.get('staff-floor-filter').innerHTML,/9 поверх/);
+    assert.match(g.elements.get('staff-floor-filter').innerHTML,/10 поверх/);
+    assert.doesNotMatch(g.elements.get('staff-floor-filter').innerHTML,/Процедурне|Блок ізоляторів/);
+    assert.match(g.elements.get('staff-case-sheet').innerHTML,/Локація: Кабінет спостереження/);
+    assert.match(g.elements.get('staff-case-sheet').innerHTML,/Відділення: Блок ізоляторів/);
+    const state=g.run('JSON.stringify(staffArchiveState)');
+    g.elements.get('staff-floor-filter').value='9';
+    g.run('renderStaffArchive();');
+    assert.equal(g.elements.get('staff-case-list').innerHTML,'');
+    assert.match(g.elements.get('staff-case-sheet').innerHTML,/На цьому поверсі справ не зареєстровано/);
+    g.run('bossesDatabase.future={...bossesDatabase.nurse,key:"future",floorId:3}; openStaffArchive();');
+    assert.match(g.elements.get('staff-floor-filter').innerHTML,/3 поверх/);
+    g.elements.get('staff-floor-filter').value='3'; g.run('renderStaffArchive();');
+    assert.equal((g.elements.get('staff-case-list').innerHTML.match(/data-case-index=/g)||[]).length,1);
+    assert.equal(g.run('selectedStaffBossId'),'future');
+    assert.equal(g.run('JSON.stringify(staffArchiveState)'),state);
+});

@@ -224,13 +224,19 @@ function renderStaffDocuments(bossId, observationsOnly = false) {
     }).join('')}</ul>${selected ? `<section class="staff-document-reading"><h3>${escapeHTML(selected.title)}</h3><p>${escapeHTML(selected.content)}</p></section>` : '<p class="report-caption">Оберіть відкритий документ для читання.</p>'}`;
 }
 
+function getStaffFloorIds() {
+    // Combine registered map floors with explicit assignments, including future floors.
+    return [...new Set([...gameFloorsData.map(floor => floor.id), ...Object.values(bossesDatabase).map(boss => boss.floorId)])]
+        .filter(id => Number.isSafeInteger(id) && id > 0).sort((a, b) => a - b);
+}
+
 function renderStaffArchive() {
     const list = document.getElementById('staff-case-list');
     const sheet = document.getElementById('staff-case-sheet');
     if (!list || !sheet) return;
-    const filter = document.getElementById('staff-department-filter')?.value || '';
+    const filter = document.getElementById('staff-floor-filter')?.value || '';
     const all = Object.keys(bossesDatabase);
-    const ids = all.filter(id => !filter || staffCaseConfig(id)?.department === filter);
+    const ids = all.filter(id => !filter || bossesDatabase[id].floorId === Number(filter));
     if (!ids.includes(selectedStaffBossId)) selectedStaffBossId = ids[0] || null;
     list.innerHTML = ids.map((id, index) => {
         const boss = bossesDatabase[id];
@@ -249,13 +255,13 @@ function renderStaffArchive() {
     const entry = staffArchiveState.cases[selectedStaffBossId];
     const config = staffCaseConfig(selectedStaffBossId);
     const progress = staffCaseProgress(selectedStaffBossId);
-    if (!boss) sheet.innerHTML = '<p>У цьому відділенні справ не зареєстровано.</p>';
+    if (!boss) sheet.innerHTML = '<p>На цьому поверсі справ не зареєстровано.</p>';
     else if (!entry) sheet.innerHTML = `<span class="staff-silhouette staff-silhouette-large" aria-label="Засекречений силует">${iconHTML('user')}</span><h3>ОСОБУ НЕ ВСТАНОВЛЕНО</h3><p>Особова справа №${escapeHTML(boss.dossier?.code || '')} · 0%</p><span class="report-stamp">ДОСТУП ОБМЕЖЕНО</span><p class="report-caption">Початкові відомості відкриються після фактичного початку бою з об’єктом.</p>`;
     else {
         let content = '';
         if (staffArchiveTab === 'identity') {
             const image = getRaidDossierImage({ boss: { id: selectedStaffBossId } });
-            content = `<div class="staff-identity">${image ? `<img class="staff-dossier-image" src="${escapeHTML(image)}" alt="Досьє ${escapeHTML(boss.name)}">` : ''}<div><h3>${escapeHTML(boss.name)}</h3><p>№${escapeHTML(boss.dossier?.code || '')} · ${escapeHTML(boss.victoryReport?.caseCode || '')}</p><p>${escapeHTML(boss.dossier?.role || '')}</p><p>${escapeHTML(config?.introduction || 'Контакт з об’єктом зафіксовано; службові матеріали ще не долучені.')}</p></div></div>`;
+            content = `<div class="staff-identity">${image ? `<span class="staff-dossier-visual${getDossierFrameClass(image)}"><img class="staff-dossier-image" src="${escapeHTML(image)}" alt="Досьє ${escapeHTML(boss.name)}"></span>` : ''}<div class="staff-identity-details"><h3>${escapeHTML(boss.name)}</h3><p>№${escapeHTML(boss.dossier?.code || '')} · ${escapeHTML(boss.victoryReport?.caseCode || '')}</p><p>${escapeHTML(boss.dossier?.role || '')}</p>${Number.isSafeInteger(boss.floorId) ? `<p>Поверх: ${boss.floorId}</p>` : ''}${config?.department ? `<p>Відділення: ${escapeHTML(config.department)}</p>` : ''}${boss.dossier?.location ? `<p>Локація: ${escapeHTML(boss.dossier.location)}</p>` : ''}<p>${escapeHTML(config?.introduction || 'Контакт з об’єктом зафіксовано; службові матеріали ще не долучені.')}</p></div></div>`;
         } else if (staffArchiveTab === 'documents' || staffArchiveTab === 'observations') content = renderStaffDocuments(selectedStaffBossId, staffArchiveTab === 'observations');
         else {
             content = `<h3>Особова справа: ${progress.opened}/${progress.total} (${progress.percent}%)</h3>${staffRewardMarkup(config?.rewardId, config?.reward, progress.complete)}`;
@@ -296,10 +302,10 @@ function updateStaffArchiveSaveNotice() {
 function openStaffArchive(bossId = null) {
     if (bossId && Object.hasOwn(bossesDatabase, bossId)) selectedStaffBossId = bossId;
     staffArchiveTab = 'identity'; selectedStaffDocumentId = null;
-    const filter = document.getElementById('staff-department-filter');
+    const filter = document.getElementById('staff-floor-filter');
     if (filter) {
-        filter.innerHTML = '<option value="">Усі відділення</option>' + [...new Set(Object.values(bossesDatabase).map(boss => boss.staffArchive?.department).filter(Boolean))]
-            .map(name => `<option value="${escapeHTML(name)}">${escapeHTML(name)}</option>`).join('');
+        filter.innerHTML = '<option value="">Усі поверхи</option>' + getStaffFloorIds()
+            .map(id => `<option value="${id}">${id} поверх</option>`).join('');
         filter.value = '';
     }
     closeOtherModals(['staff-archive-modal']); renderStaffArchive();

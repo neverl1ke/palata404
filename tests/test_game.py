@@ -652,7 +652,7 @@ class GameTests(unittest.TestCase):
                     self.assertTrue(image.evaluate('e=>Math.abs(e.clientWidth/e.clientHeight-e.naturalWidth/e.naturalHeight)<0.02'))
                     self.assertEqual(image.evaluate('e=>getComputedStyle(e).objectFit'), 'contain')
                     self.assertEqual(card.locator('.raid-card-dossier-image').count(), 1)
-                    photo = image.bounding_box()
+                    photo = card.locator('.raid-card-visual').bounding_box()
                     text = card.locator('.raid-card-details').bounding_box()
                     if width > 600:
                         self.assertLessEqual(photo['x']+photo['width'], text['x'])
@@ -787,7 +787,9 @@ class GameTests(unittest.TestCase):
                 if width >= 1024:
                     self.assertGreaterEqual(image.bounding_box()['width'], 315)
                     text = self.page.locator('.raid-card-details').first.bounding_box()
-                    self.assertAlmostEqual(image.bounding_box()['y'], text['y'], delta=6)
+                    visual = self.page.locator('.raid-card-visual').first.bounding_box()
+                    self.assertAlmostEqual(visual['y'], text['y'], delta=2)
+                    self.assertLessEqual(text['x']-(visual['x']+visual['width']), 13)
                 self.assertTrue(image.evaluate('e=>Math.abs(e.clientWidth/e.clientHeight-e.naturalWidth/e.naturalHeight)<0.02'))
                 self.page.screenshot(path=str(results/f'raid-enlarged-{width}x{height}.png'))
                 self.page.keyboard.press('Escape')
@@ -816,6 +818,66 @@ class GameTests(unittest.TestCase):
         self.page.evaluate('openStaffArchive("doctor"); changeStaffArchiveTab("rewards");')
         self.assertEqual(self.page.locator('.staff-claim-button').count(), 1)
         self.assertFalse(self.page.locator('#staff-save-note').is_visible())
+
+    def test_compact_photo_composition_and_floor_filter_are_read_only(self):
+        self.load()
+        self.page.evaluate('stats.baseDamage=300; recalculateEquipmentStats(); startBossFight("nurse"); performPlayerAttack(); startBossFight("doctor"); performPlayerAttack();')
+        before = self.page.evaluate('JSON.stringify({stats,inventory,staffArchiveState,archive:readRaidArchive(),storage:{...localStorage}})')
+        self.page.evaluate('openStaffArchive("doctor")')
+        options = self.page.locator('#staff-floor-filter option').all_text_contents()
+        self.assertEqual(options, ['Усі поверхи','9 поверх','10 поверх'])
+        self.assertIn('Відділення: Блок ізоляторів', self.page.locator('#staff-case-sheet').inner_text())
+        self.assertIn('Локація: Кабінет спостереження, 10-й поверх', self.page.locator('#staff-case-sheet').inner_text())
+        self.page.get_by_label('Поверх', exact=True).select_option('9')
+        self.assertEqual(self.page.locator('.staff-case-button').count(), 0)
+        self.assertIn('На цьому поверсі справ не зареєстровано', self.page.locator('#staff-case-sheet').inner_text())
+        self.page.get_by_label('Поверх', exact=True).select_option('10')
+        self.assertEqual(self.page.locator('.staff-case-button').count(), 2)
+        self.page.get_by_label('Поверх', exact=True).select_option('')
+        self.assertEqual(self.page.locator('.staff-case-button').count(), 2)
+        results = ROOT / 'test-results'
+        results.mkdir(exist_ok=True)
+        for width, height in [(1280,800),(1024,768),(768,1024),(844,390),(390,844),(320,568)]:
+            with self.subTest(viewport=(width,height)):
+                self.page.set_viewport_size({'width':width,'height':height})
+                for boss in ['nurse','doctor']:
+                    self.page.evaluate('boss=>openStaffArchive(boss)',boss)
+                    visual = self.page.locator('.staff-dossier-visual')
+                    visual.scroll_into_view_if_needed()
+                    image = visual.locator('img')
+                    self.page.wait_for_function('()=>document.querySelector(".staff-dossier-image")?.naturalWidth>0')
+                    frame = visual.bounding_box()
+                    text = self.page.locator('.staff-identity-details').bounding_box()
+                    if width > 600:
+                        self.assertAlmostEqual(frame['y'],text['y'],delta=1)
+                        self.assertGreaterEqual(text['x']-frame['x']-frame['width'],9)
+                        self.assertLessEqual(text['x']-frame['x']-frame['width'],13)
+                    else:
+                        self.assertGreaterEqual(text['y'],frame['y']+frame['height'])
+                    # Project measured source alpha bounds into the CSS viewport.
+                    photo = image.bounding_box()
+                    source_width = image.evaluate('e=>e.naturalWidth')
+                    scale = photo['width']/source_width
+                    self.assertAlmostEqual(photo['x']+312*scale,frame['x'],delta=1)
+                    self.assertAlmostEqual(photo['x']+1069*scale,frame['x']+frame['width'],delta=1)
+                    self.assertGreaterEqual(photo['y']+2*scale,frame['y']-1)
+                    self.assertLessEqual(photo['y']+768*scale,frame['y']+frame['height']+1)
+                    self.assertLessEqual(self.page.evaluate('document.documentElement.scrollWidth'),width)
+                    self.page.screenshot(path=str(results/f'compact-staff-{boss}-{width}x{height}.png'))
+                self.page.evaluate('openRaidArchive()')
+                for card in self.page.locator('.raid-archive-card').all():
+                    visual = card.locator('.raid-card-visual')
+                    frame = visual.bounding_box()
+                    text = card.locator('.raid-card-details').bounding_box()
+                    self.assertEqual(visual.evaluate('e=>getComputedStyle(e).borderTopWidth'),'0px')
+                    self.assertEqual(visual.evaluate('e=>getComputedStyle(e).paddingLeft'),'0px')
+                    if width > 600:
+                        self.assertAlmostEqual(frame['y'],text['y'],delta=1)
+                        self.assertLessEqual(text['x']-frame['x']-frame['width'],13)
+                    self.assertTrue(card.locator('.raid-card-rewards').is_visible())
+                    self.assertTrue(card.locator('.raid-card-personal-stamp').is_visible())
+                self.page.screenshot(path=str(results/f'compact-raids-{width}x{height}.png'))
+        self.assertEqual(self.page.evaluate('JSON.stringify({stats,inventory,staffArchiveState,archive:readRaidArchive(),storage:{...localStorage}})'),before)
 
     def test_partial_reward_save_recovers_without_duplicate_credit(self):
         self.context.add_init_script('''

@@ -155,6 +155,14 @@ function getRaidDossierImage(result) {
         && /^(?:[A-Za-z0-9_-]+\/)*[A-Za-z0-9_-]+\.(?:png|jpe?g|webp)$/i.test(source) ? source : null;
 }
 
+function getDossierFrameClass(source) {
+    // Presentation only: these PNGs share large fully transparent side margins.
+    // CSS hides those margins while preserving every nontransparent card pixel.
+    if (source === 'nurse_dossier_card.png') return ' dossier-card-trim';
+    if (source === 'doctor_dossier_card.png') return ' dossier-card-trim dossier-card-trim-doctor';
+    return '';
+}
+
 function renderRaidArchive() {
     const list = document.getElementById('raid-archive-list');
     if (!list) return;
@@ -168,7 +176,7 @@ function renderRaidArchive() {
         const dossierImage = getRaidDossierImage(result);
         const personalStamp = getParticipantReportStamp(result.participants.find(member => member.isPlayer));
         return `<li><button type="button" class="raid-archive-card" data-raid-id="${escapeHTML(result.battleId)}">
-            <span class="raid-card-visual">
+            <span class="raid-card-visual${getDossierFrameClass(dossierImage)}">
                 ${dossierImage ? `<img class="raid-card-dossier-image" src="${escapeHTML(dossierImage)}" alt="Досьє: ${escapeHTML(result.boss.name)} — №${escapeHTML(result.boss.registrationNumber)}" loading="lazy" decoding="async">` : ''}
                 <span class="raid-card-no-dossier${dossierImage ? ' hidden' : ''}">${iconHTML('clipboard', 'large')}<span>Досьє не долучено</span></span>
             </span>

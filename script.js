@@ -1322,6 +1322,7 @@ function handleLocationClick() {
 const bossesDatabase = {
     nurse: {
         key: 'nurse',
+        floorId: 10,
         name: "Сестра Клара «Шприц»",
         hp: 120,
         damage: 12,
@@ -1350,6 +1351,7 @@ const bossesDatabase = {
     },
     doctor: {
         key: 'doctor',
+        floorId: 10,
         name: "Черговий лікар",
         hp: 250,
         damage: 25,
