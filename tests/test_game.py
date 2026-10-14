@@ -189,6 +189,16 @@ class GameTests(unittest.TestCase):
         self.assertEqual(self.page.locator('#layer-face').get_attribute('src'),'face_2.png')
         self.assertEqual(self.page.locator('#paper-doll-view-label').inner_text(),'Комплект: Спогад')
         self.assertEqual(self.page.evaluate('JSON.stringify({stats,inventory,equippedGear,gameProgress})'),before)
+        self.page.evaluate('''() => {
+            PAPER_DOLL_ITEMS.push({id:'future-face',slot:'face',name:'Архівне обличчя',image:'face_1.png'});
+            facesData.push({id:'future-face',name:'Архівне обличчя'});
+            openCustomization(); setWardrobeTab('face');
+        }''')
+        card=self.page.locator('.outfit-card').filter(has_text='Архівне обличчя')
+        self.assertEqual(card.locator('img').get_attribute('src'),'face_1.png')
+        card.get_by_role('button',name='Обрати',exact=True).click()
+        self.assertEqual(self.page.evaluate('paperDollState.combatLoadout.face'),'future-face')
+        self.assertEqual(self.page.locator('#layer-face').get_attribute('src'),'face_1.png')
 
     def test_paper_doll_layers_share_canvas_and_keep_faces_aligned_on_mobile(self):
         self.load()
@@ -201,9 +211,13 @@ class GameTests(unittest.TestCase):
                 for gender in ['male','female']:
                     self.page.evaluate('g=>{setGender(g); setFace("face_1.png")}',gender)
                     self.page.wait_for_function('()=>["layer-body","layer-face"].every(id=>document.getElementById(id).naturalWidth>0&&!document.getElementById(id).classList.contains("hidden"))')
-                    host=self.page.locator('#character-paperdoll').bounding_box()
-                    body=self.page.locator('#layer-body').bounding_box()
-                    face=self.page.locator('#layer-face').bounding_box()
+                    # Read the three boxes in one frame: responsive HUD buttons
+                    # transition during orientation changes and move the scene.
+                    boxes=self.page.evaluate('''() => Object.fromEntries(['character-paperdoll','layer-body','layer-face'].map(id=>{
+                        const r=document.getElementById(id).getBoundingClientRect();
+                        return [id,{x:r.x,y:r.y,width:r.width,height:r.height}];
+                    }))''')
+                    host,body,face=[boxes[id] for id in ['character-paperdoll','layer-body','layer-face']]
                     self.assertGreater(host['width'],30)
                     self.assertAlmostEqual(host['width']/host['height'],736/1417,delta=0.005)
                     for coordinate in ['x','y','width','height']:

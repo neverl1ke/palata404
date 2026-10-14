@@ -894,15 +894,19 @@ function renderWardrobe() {
     } else if (currentWardrobeTab === 'face') {
         facesData.forEach(face => {
             const isActive = currentFace === face.id;
+            const item = PAPER_DOLL_ITEMS.find(entry => entry.id === face.id && entry.slot === 'face');
+            const image = paperDollImageCandidates(item, gender).find(path => !failedPaperDollImages.has(path));
             const card = document.createElement('div');
             card.className = `outfit-card ${isActive ? 'active' : ''}`;
             card.innerHTML = `
                 <div style="display:flex; align-items:center; gap:8px;">
-                    <img src="${face.id}" style="width:32px; height:32px; object-fit:cover; border-radius:4px; border:1px solid #3d2d22;" alt="Face">
-                    <span>${face.name}</span>
+                    ${image ? `<img src="${escapeHTML(image)}" style="width:32px; height:32px; object-fit:cover; border-radius:4px; border:1px solid #3d2d22;" alt="">` : iconHTML('eye')}
+                    <span>${escapeHTML(face.name)}</span>
                 </div>
-                <button class="btn-outfit" onclick="setFace('${face.id}')">${isActive ? 'Обрано' : 'Обрати'}</button>
+                <button type="button" class="btn-outfit" data-face-choice="${escapeHTML(face.id)}">${isActive ? 'Обрано' : 'Обрати'}</button>
             `;
+            card.querySelectorAll('[data-face-choice]').forEach(button => button.addEventListener('click', () => setFace(button.dataset.faceChoice)));
+            card.querySelectorAll('img').forEach(thumbnail => { thumbnail.onerror = () => thumbnail.classList.add('hidden'); });
             container.appendChild(card);
         });
     } else {
