@@ -21,6 +21,19 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 class IconAssetTests(unittest.TestCase):
+    def test_first_patient_shirt_drafts_are_real_transparent_pngs(self):
+        for gender in ['male','female']:
+            with self.subTest(gender=gender),Image.open(ROOT/f'assets/wardrobe/drafts/hospital_shirt_{gender}.png') as image:
+                self.assertEqual(image.format,'PNG')
+                self.assertEqual(image.size,(941,1671))
+                self.assertEqual(image.mode,'RGBA')
+                alpha=image.getchannel('A')
+                self.assertEqual(alpha.getextrema(),(0,255))
+                self.assertGreater(alpha.histogram()[0],image.width*image.height/2)
+                bounds=alpha.point(lambda value:255 if value>=64 else 0).getbbox()
+                self.assertGreater(bounds[1],300)
+                self.assertLess(bounds[3],1200)
+
     def test_approved_body_pngs_have_real_alpha_and_match_the_new_frame(self):
         for name in ['base_male.png','base_female.png']:
             with self.subTest(image=name), Image.open(ROOT/name) as image:
@@ -745,6 +758,33 @@ class GameTests(unittest.TestCase):
                 box=layer.bounding_box()
                 for coordinate in ['x','y','width','height']:self.assertAlmostEqual(box[coordinate],body[coordinate],delta=1)
                 self.assertEqual(layer.evaluate('e=>getComputedStyle(e).zIndex'),order)
+
+    def test_patient_shirt_art_preview_uses_unchanged_bases_and_preserves_game_saves(self):
+        self.load()
+        saved=self.page.evaluate('JSON.stringify({...localStorage})')
+        self.page.goto(self.url+'art/hospital-shirt.html',wait_until='networkidle')
+        self.assertEqual(self.page.locator('article').count(),2)
+        for gender in ['male','female']:
+            article=self.page.locator(f'[data-gender="{gender}"]')
+            self.assertEqual(article.locator('.body').evaluate('e=>[e.naturalWidth,e.naturalHeight]'),[941,1672])
+            self.assertEqual(article.locator('.shirt').evaluate('e=>[e.naturalWidth,e.naturalHeight]'),[941,1671])
+            frame=article.locator('.frame').bounding_box()
+            self.assertAlmostEqual(frame['width']/frame['height'],941/1672,delta=.001)
+            self.assertEqual(article.locator('.shirt').evaluate('e=>getComputedStyle(e).objectFit'),'contain')
+        results=ROOT/'test-results';results.mkdir(exist_ok=True)
+        self.page.set_viewport_size({'width':1280,'height':1000})
+        for mode in ['patient','combat']:
+            self.page.locator(f'button[data-mode="{mode}"]').click()
+            self.assertEqual(self.page.locator('body').get_attribute('data-mode'),mode)
+            self.page.screenshot(path=str(results/f'patient-shirt-art-{mode}-1280x1000.png'))
+            if os.getenv('GITHUB_ACTIONS')=='true':
+                for gender in ['male','female']:
+                    preview=self.page.locator(f'[data-gender="{gender}"] .scene').screenshot(type='jpeg',quality=60)
+                    print('PATIENT_SHIRT_ART_PREVIEW:'+json.dumps({'name':f'patient-shirt-{gender}-{mode}','jpeg':base64.b64encode(preview).decode()},separators=(',',':')),flush=True)
+        self.assertEqual(self.page.evaluate('JSON.stringify({...localStorage})'),saved)
+        self.page.set_viewport_size({'width':390,'height':844})
+        self.assertLessEqual(self.page.evaluate('document.documentElement.scrollWidth'),390)
+        self.page.screenshot(path=str(results/'patient-shirt-art-phone.png'),full_page=True)
 
     def test_trial_faces_are_not_loaded_or_selectable_after_old_save_migration(self):
         requests=[]

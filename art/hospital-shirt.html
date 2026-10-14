@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Палата 404 — примірка першої сорочки</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; padding: 20px; background: #211f1c; color: #eadfca; font: 16px/1.5 system-ui,sans-serif; }
+    main { max-width: 1000px; margin: auto; }
+    h1 { font-size: 24px; margin: 0 0 8px; } p { margin: 0 0 14px; }
+    .switch { display: flex; gap: 8px; margin-bottom: 16px; }
+    button { min-height: 44px; padding: 8px 18px; border: 1px solid #a48a68; background: #39332f; color: #eadfca; font: inherit; cursor: pointer; }
+    button[aria-pressed="true"] { background: #ddcda9; color: #30261e; }
+    .models { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 18px; }
+    article { min-width: 0; } h2 { font-size: 18px; margin: 0 0 6px; }
+    .scene { position: relative; height: 680px; max-width: 100%; overflow: hidden; background: #7a8583 url('../wardrobe_background.png?v=d490c304') center bottom/auto 100% no-repeat; border: 1px solid #947556; }
+    body[data-mode="combat"] .scene { background-image: url('../wardrobe_background_v2.png?v=639ad612'); }
+    .frame { position: absolute; bottom: 5%; left: 50%; transform: translateX(-50%); height: 85%; aspect-ratio: 941 / 1672; }
+    .body { display: block; position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }
+    /* Only the new garment is registered. Approved bodies remain unchanged. */
+    .shirt { position: absolute; object-fit: contain; }
+    [data-gender="male"] .shirt { left: calc(125 / 941 * 100%); top: calc(-24 / 1672 * 100%); width: calc(677.52 / 941 * 100%); height: calc(1203.12 / 1672 * 100%); }
+    [data-gender="female"] .shirt { left: calc(145 / 941 * 100%); top: calc(-2 / 1672 * 100%); width: calc(639.88 / 941 * 100%); height: calc(1136.28 / 1672 * 100%); }
+    .shadow { position: absolute; bottom: -.5%; left: 14%; width: 72%; height: 4.5%; background: radial-gradient(ellipse,#1b251e55,transparent 73%); }
+    .note { font-size: 14px; color: #c9bba6; margin-top: 16px; }
+    @media (max-width: 650px) { body { padding: 12px; } .models { grid-template-columns: 1fr; } .scene { height: min(680px,125vw); } }
+  </style>
+</head>
+<body data-mode="patient">
+  <main>
+    <h1>Сорочка пацієнта — перший арт</h1>
+    <p>Примірка нових PNG на затверджених моделях. Одяг ще не додано до ігрового каталогу.</p>
+    <div class="switch" role="group" aria-label="Фон примірки">
+      <button type="button" data-mode="patient" aria-pressed="true">Пацієнт</button>
+      <button type="button" data-mode="combat" aria-pressed="false">Трип</button>
+    </div>
+    <section class="models" aria-label="Дві моделі">
+      <article data-gender="male">
+        <h2>Чоловік</h2>
+        <div class="scene"><div class="frame">
+          <span class="shadow" aria-hidden="true"></span>
+          <img class="body" src="../base_male.png?v=0dec17c1" alt="Затверджена чоловіча модель">
+          <img class="shirt" src="../assets/wardrobe/drafts/hospital_shirt_male.png" alt="Чернетка чоловічої лікарняної сорочки">
+        </div></div>
+      </article>
+      <article data-gender="female">
+        <h2>Жінка</h2>
+        <div class="scene"><div class="frame">
+          <span class="shadow" aria-hidden="true"></span>
+          <img class="body" src="../base_female.png?v=5489c78c" alt="Затверджена жіноча модель">
+          <img class="shirt" src="../assets/wardrobe/drafts/hospital_shirt_female.png" alt="Чернетка жіночої лікарняної сорочки">
+        </div></div>
+      </article>
+    </section>
+    <p class="note">Зношена бавовна, приглушена смужка, короткі рукави. Перевіряємо крій та посадку; наступні частини комплекту готуються окремими шарами.</p>
+  </main>
+  <script>
+    document.querySelectorAll('button[data-mode]').forEach(button => button.addEventListener('click', () => {
+      document.body.dataset.mode = button.dataset.mode;
+      document.querySelectorAll('button[data-mode]').forEach(entry => entry.setAttribute('aria-pressed',String(entry === button)));
+    }));
+  </script>
+</body>
+</html>
