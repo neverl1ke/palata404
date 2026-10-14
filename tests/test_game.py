@@ -25,7 +25,7 @@ class IconAssetTests(unittest.TestCase):
         for gender in ['male','female']:
             with self.subTest(gender=gender),Image.open(ROOT/f'assets/wardrobe/drafts/hospital_shirt_{gender}.png') as image:
                 self.assertEqual(image.format,'PNG')
-                self.assertEqual(image.size,(941,1671))
+                self.assertEqual(image.size,(981,1602) if gender=='male' else (941,1671))
                 self.assertEqual(image.mode,'RGBA')
                 alpha=image.getchannel('A')
                 self.assertEqual(alpha.getextrema(),(0,255))
@@ -767,15 +767,30 @@ class GameTests(unittest.TestCase):
         for gender in ['male','female']:
             article=self.page.locator(f'[data-gender="{gender}"]')
             self.assertEqual(article.locator('.body').evaluate('e=>[e.naturalWidth,e.naturalHeight]'),[941,1672])
-            self.assertEqual(article.locator('.shirt').evaluate('e=>[e.naturalWidth,e.naturalHeight]'),[941,1671])
+            self.assertEqual(article.locator('.shirt').evaluate('e=>[e.naturalWidth,e.naturalHeight]'),[981,1602] if gender=='male' else [941,1671])
             frame=article.locator('.frame').bounding_box()
             self.assertAlmostEqual(frame['width']/frame['height'],941/1672,delta=.001)
             self.assertEqual(article.locator('.shirt').evaluate('e=>getComputedStyle(e).objectFit'),'contain')
+        # Canonical points that used to show bare shoulder or rear cuff fabric.
+        # Project through the actual DOM image boxes, not a copied CSS offset.
+        coverage=self.page.locator('[data-gender="male"]').evaluate('''article=>{
+            const frame=article.querySelector('.frame').getBoundingClientRect();
+            const layers=['body','shirt'].map(name=>{const image=article.querySelector('.'+name),canvas=document.createElement('canvas');canvas.width=image.naturalWidth;canvas.height=image.naturalHeight;const context=canvas.getContext('2d');context.drawImage(image,0,0);return{rect:image.getBoundingClientRect(),context,width:image.naturalWidth,height:image.naturalHeight}});
+            const read=([x,y])=>layers.map(layer=>{const px=Math.round((frame.x+x/941*frame.width-layer.rect.x)/layer.rect.width*layer.width),py=Math.round((frame.y+y/1672*frame.height-layer.rect.y)/layer.rect.height*layer.height);return px>=0&&py>=0&&px<layer.width&&py<layer.height?layer.context.getImageData(px,py,1,1).data[3]:0});
+            return{shoulder:[[632,310],[654,320],[670,330]].map(read),cuffs:[[242,524],[258,530],[277,539],[700,531],[675,545],[660,551]].map(read)};
+        }''')
+        for body,cloth in coverage['shoulder']:
+            self.assertGreaterEqual(body,200)
+            self.assertGreaterEqual(cloth,240)
+        for body,cloth in coverage['cuffs']:
+            self.assertGreaterEqual(body,200)
+            self.assertLessEqual(cloth,5)
         results=ROOT/'test-results';results.mkdir(exist_ok=True)
         self.page.set_viewport_size({'width':1280,'height':1000})
         for mode in ['patient','combat']:
             self.page.locator(f'button[data-mode="{mode}"]').click()
             self.assertEqual(self.page.locator('body').get_attribute('data-mode'),mode)
+            self.page.evaluate('''mode=>new Promise((resolve,reject)=>{const image=new Image();image.onload=resolve;image.onerror=()=>reject(new Error('Preview background failed'));image.src=mode==='combat'?'../wardrobe_background_v2.png?v=639ad612':'../wardrobe_background.png?v=d490c304';})''',mode)
             self.page.screenshot(path=str(results/f'patient-shirt-art-{mode}-1280x1000.png'))
             if os.getenv('GITHUB_ACTIONS')=='true':
                 for gender in ['male','female']:
@@ -785,6 +800,22 @@ class GameTests(unittest.TestCase):
         self.page.set_viewport_size({'width':390,'height':844})
         self.assertLessEqual(self.page.evaluate('document.documentElement.scrollWidth'),390)
         self.page.screenshot(path=str(results/'patient-shirt-art-phone.png'),full_page=True)
+        # Inspect actual source-scale shoulder/cuff geometry, not a tiny sprite.
+        self.page.set_viewport_size({'width':1280,'height':1200})
+        self.page.evaluate('''()=>{
+            document.querySelector('.models').style.gridTemplateColumns='941px';
+            document.querySelector('[data-gender="female"]').style.display='none';
+            document.querySelector('[data-gender="male"] .scene').style.height='1968px';
+            document.querySelector('[data-gender="male"] .frame').style.height='1672px';
+        }''')
+        for mode in ['patient','combat']:
+            self.page.locator(f'button[data-mode="{mode}"]').click()
+            frame=self.page.locator('[data-gender="male"] .frame').bounding_box()
+            clip={'x':frame['x']+140,'y':frame['y']+240,'width':660,'height':340}
+            self.page.screenshot(path=str(results/f'male-shirt-fit-detail-{mode}.png'),clip=clip)
+            if os.getenv('GITHUB_ACTIONS')=='true':
+                preview=self.page.screenshot(type='jpeg',quality=85,clip=clip)
+                print('PATIENT_SHIRT_ART_DETAIL:'+json.dumps({'name':f'male-shirt-fit-detail-{mode}','jpeg':base64.b64encode(preview).decode()},separators=(',',':')),flush=True)
 
     def test_trial_faces_are_not_loaded_or_selectable_after_old_save_migration(self):
         requests=[]
