@@ -22,7 +22,7 @@ function game(saves = {}, deniedStorage = false, failWrites = [], telegramId = n
     function element(id = '') {
         const classes = new Set();
         return {
-            id, style: {}, children: [], textContent: '', innerHTML: '',
+            id, style: { setProperty(name, value) { this[name] = value; } }, children: [], textContent: '', innerHTML: '',
             classList: {
                 add(...names) { names.forEach(name => classes.add(name)); },
                 remove(...names) { names.forEach(name => classes.delete(name)); },

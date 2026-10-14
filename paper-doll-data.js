@@ -1,5 +1,6 @@
 // Visual wardrobe only. These entries do not grant inventory or combat bonuses.
-const PAPER_DOLL_FRAME = Object.freeze({ width: 736, height: 1417 });
+const PAPER_DOLL_FRAME = Object.freeze({ width: 941, height: 1672 });
+const PAPER_DOLL_FACE_ANCHOR = Object.freeze({ x: 474, y: 32, height: 218 });
 const PAPER_DOLL_LAYER_ORDER = Object.freeze([
     'baseBody', 'pants', 'footwear', 'upperBody', 'outerwear', 'armor', 'loadout',
     'gloves', 'back', 'headwear', 'face', 'weapon', 'accessory'
@@ -19,7 +20,8 @@ const PAPER_DOLL_SLOTS = {
     weapon: { label: 'Зброя', elementId: 'layer-weapon', icon: 'swords' },
     accessory: { label: 'Аксесуар', elementId: 'layer-accessory', icon: 'key' }
 };
-const PAPER_DOLL_BODIES = { male: 'base_male.png', female: 'base_female.png' };
+// Hashes of the user's approved uploads invalidate previously cached bodies.
+const PAPER_DOLL_BODIES = { male: 'base_male.png?v=0dec17c1', female: 'base_female.png?v=5489c78c' };
 // Existing face PNGs are head cutouts, not full-frame layers. Their measured
 // alpha bounds place each visible face at the same head anchor on the canvas.
 const PAPER_DOLL_ITEMS = [
@@ -31,9 +33,9 @@ const PAPER_DOLL_ITEMS = [
         ['face_5.png', 'Обличчя #5 (Андеркат)', 142, 171, 17, 0, 106, 158],
         ['face_6.png', 'Обличчя #6 (Лисий суворий)', 163, 197, 26, 13, 106, 147]
     ].map(([id, name, width, height, x, y, alphaWidth, alphaHeight]) => {
-        const scale = 177 / alphaHeight;
+        const scale = PAPER_DOLL_FACE_ANCHOR.height / alphaHeight;
         return { id, slot: 'face', name, image: id, availableByDefault: true,
-            placement: { x: 383 - (x + alphaWidth / 2) * scale, y: 25 - y * scale, width: width * scale, height: height * scale } };
+            placement: { x: PAPER_DOLL_FACE_ANCHOR.x - (x + alphaWidth / 2) * scale, y: PAPER_DOLL_FACE_ANCHOR.y - y * scale, width: width * scale, height: height * scale } };
     }),
     { id: 'gear-knife', slot: 'weapon', name: 'Іржавий ніж', inventoryName: 'Іржавий ніж', inventoryCategory: 'weapon', image: null, icon: 'knife' },
     { id: 'gear-pm', slot: 'weapon', name: 'ПМ (Пістолет Макарова)', inventoryName: 'ПМ (Пістолет Макарова)', inventoryCategory: 'weapon', image: null, icon: 'pistol' },

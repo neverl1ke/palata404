@@ -100,7 +100,7 @@ function equipPaperDollItem(slot, itemId) {
 function paperDollImageCandidates(item, selectedGender) {
     const variants = item?.genderVariants || {};
     return [...new Set([variants[selectedGender], item?.image, variants[selectedGender === 'female' ? 'male' : 'female']])]
-        .filter(path => typeof path === 'string' && /^(?:[a-zA-Z0-9_-]+\/)*[a-zA-Z0-9_.-]+\.png$/.test(path)
+        .filter(path => typeof path === 'string' && /^(?:[a-zA-Z0-9_-]+\/)*[a-zA-Z0-9_.-]+\.png(?:\?v=[a-zA-Z0-9_-]+)?$/.test(path)
             && !path.split('/').includes('..'));
 }
 
@@ -117,7 +117,9 @@ function positionPaperDollLayer(image, placement, index) {
 function renderPaperDollAt(host, prefix = '') {
     if (!host) return;
     const selectedGender = paperDollState.selectedGender;
-    host.setAttribute('aria-label', `${selectedGender === 'female' ? 'Жінка' : 'Чоловік'} · ${paperDollState.activeViewMode === 'combat' ? 'Спогад' : 'Пацієнт'}`);
+    host.style.setProperty('--paper-doll-aspect', `${PAPER_DOLL_FRAME.width} / ${PAPER_DOLL_FRAME.height}`);
+    host.style.setProperty('--paper-doll-ratio', String(PAPER_DOLL_FRAME.width / PAPER_DOLL_FRAME.height));
+    host.setAttribute('aria-label', `${selectedGender === 'female' ? 'Жінка' : 'Чоловік'} · ${paperDollState.activeViewMode === 'combat' ? 'Трип' : 'Пацієнт'}`);
     const extraLayers = new Set();
     PAPER_DOLL_LAYER_ORDER.forEach((slot, index) => {
         const definition = PAPER_DOLL_SLOTS[slot];
@@ -163,6 +165,7 @@ function renderPaperDollAt(host, prefix = '') {
 }
 
 function renderPaperDoll() {
+    document.getElementById('character-container')?.style.setProperty('--paper-doll-aspect', `${PAPER_DOLL_FRAME.width} / ${PAPER_DOLL_FRAME.height}`);
     renderPaperDollAt(document.getElementById('character-paperdoll'));
     renderPaperDollAt(document.getElementById('wardrobe-paperdoll'), 'wardrobe-');
 }
@@ -171,7 +174,7 @@ function renderPaperDollControls(renderSlots = true) {
     document.getElementById('paper-doll-save-note')?.classList.toggle('hidden', !paperDollSaveFailed);
     document.querySelectorAll('[data-paper-view]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.paperView === paperDollState.activeViewMode)));
     const label = document.getElementById('paper-doll-view-label');
-    if (label) label.textContent = `Комплект: ${paperDollState.activeViewMode === 'combat' ? 'Спогад' : 'Пацієнт'}`;
+    if (label) label.textContent = `Комплект: ${paperDollState.activeViewMode === 'combat' ? 'Трип' : 'Пацієнт'}`;
     document.querySelectorAll('[data-paper-image-item]').forEach(note => {
         const item = PAPER_DOLL_ITEMS.find(entry => entry.id === note.dataset.paperImageItem);
         const layers = item?.layers?.length ? item.layers : [item];

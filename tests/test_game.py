@@ -14,11 +14,25 @@ import xml.etree.ElementTree as ET
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 
 from playwright.sync_api import sync_playwright
+from PIL import Image
 
 ROOT = Path(__file__).resolve().parents[1]
 
 
 class IconAssetTests(unittest.TestCase):
+    def test_approved_body_pngs_have_real_alpha_and_match_the_new_frame(self):
+        for name in ['base_male.png','base_female.png']:
+            with self.subTest(image=name), Image.open(ROOT/name) as image:
+                self.assertEqual(image.size,(941,1672))
+                self.assertEqual(image.mode,'RGBA')
+                alpha=image.getchannel('A')
+                self.assertEqual(alpha.getextrema(),(0,255))
+                histogram=alpha.histogram()
+                self.assertGreater(histogram[0],image.width*image.height/2)
+                self.assertGreater(sum(histogram[240:]),image.width*image.height/4)
+                bounds=alpha.point(lambda value:255 if value>=64 else 0).getbbox()
+                self.assertLess(abs((bounds[0]+bounds[2])/2-image.width/2),image.width*0.02)
+
     def test_svg_assets_are_self_contained_and_valid(self):
         paths = sorted((ROOT / 'assets' / 'icons').glob('*.svg'))
         self.assertGreater(len(paths), 50)
@@ -122,7 +136,7 @@ class GameTests(unittest.TestCase):
             'palata404_gender': '../../missing', 'palata404_face': 'missing.png',
         })
         self.assertEqual(self.state()['hp'], 100)
-        self.assertEqual(self.page.locator('#layer-body').get_attribute('src'), 'base_male.png')
+        self.assertEqual(self.page.locator('#layer-body').get_attribute('src'), 'base_male.png?v=0dec17c1')
         self.page.evaluate('openInventory(); openGym(); openDossier();')
         self.context.add_init_script('''Object.defineProperty(window, 'localStorage', {
             get() { throw new DOMException('Storage unavailable', 'SecurityError'); }
@@ -154,7 +168,7 @@ class GameTests(unittest.TestCase):
         self.page.locator('#layer-face').wait_for(state='visible')
         self.assertTrue(self.page.locator('#layer-face').is_visible())
         self.page.reload(wait_until='networkidle')
-        self.assertEqual(self.page.locator('#layer-body').get_attribute('src'), 'base_female.png')
+        self.assertEqual(self.page.locator('#layer-body').get_attribute('src'), 'base_female.png?v=5489c78c')
         self.assertEqual(self.page.locator('#layer-face').get_attribute('src'), 'face_3.png')
 
     def test_paper_doll_ui_keeps_two_loadouts_and_shared_appearance_across_reload(self):
@@ -178,7 +192,7 @@ class GameTests(unittest.TestCase):
         card.get_by_role('button',name='Надягнути',exact=True).click()
         self.assertIn('НАДЯГНУТО',card.inner_text())
         self.assertIsNone(self.page.locator('#layer-armor').get_attribute('src'))
-        wardrobe.get_by_role('button',name='Спогад',exact=True).click()
+        wardrobe.get_by_role('button',name='Трип',exact=True).click()
         self.assertEqual(self.page.evaluate('paperDollState.appearance.face'),'face_3.png')
         self.assertEqual(self.page.evaluate('paperDollState.combatLoadout.armor'),None)
         wardrobe.locator('[data-wardrobe-category="weapons"]').click()
@@ -189,15 +203,15 @@ class GameTests(unittest.TestCase):
         wardrobe.locator('[data-wardrobe-category="gear"]').click()
         wardrobe.locator('[data-wardrobe-slot="armor"]').click()
         wardrobe.locator('[data-wardrobe-card="gear-br1"]').get_by_role('button',name='Зняти',exact=True).click()
-        wardrobe.get_by_role('button',name='Спогад',exact=True).click()
+        wardrobe.get_by_role('button',name='Трип',exact=True).click()
         self.assertEqual(self.page.evaluate('paperDollState.combatLoadout.weapon'),'gear-pm')
         state=self.page.evaluate('JSON.stringify(paperDollState)')
         self.assertEqual(self.page.evaluate('JSON.stringify({stats,inventory,equippedGear,gameProgress})'),before)
         self.page.reload(wait_until='networkidle')
         self.assertEqual(self.page.evaluate('JSON.stringify(paperDollState)'),state)
-        self.assertEqual(self.page.locator('#layer-body').get_attribute('src'),'base_female.png')
+        self.assertEqual(self.page.locator('#layer-body').get_attribute('src'),'base_female.png?v=5489c78c')
         self.assertEqual(self.page.locator('#layer-face').get_attribute('src'),'face_3.png')
-        self.assertEqual(self.page.locator('#paper-doll-view-label').inner_text(),'Комплект: Спогад')
+        self.assertEqual(self.page.locator('#paper-doll-view-label').inner_text(),'Комплект: Трип')
         self.assertEqual(self.page.evaluate('JSON.stringify({stats,inventory,equippedGear,gameProgress})'),before)
         self.page.evaluate("PAPER_DOLL_ITEMS.push({id:'future-face',slot:'face',name:'Архівне обличчя',image:'face_1.png',availableByDefault:true}); openCustomization(); setWardrobeTab('face');")
         card=wardrobe.locator('[data-wardrobe-card="future-face"]')
@@ -225,7 +239,7 @@ class GameTests(unittest.TestCase):
                     }))''')
                     host,body,face=[boxes[id] for id in ['character-paperdoll','layer-body','layer-face']]
                     self.assertGreater(host['width'],30)
-                    self.assertAlmostEqual(host['width']/host['height'],736/1417,delta=0.005)
+                    self.assertAlmostEqual(host['width']/host['height'],941/1672,delta=0.005)
                     for coordinate in ['x','y','width','height']:
                         self.assertAlmostEqual(body[coordinate],host[coordinate],delta=1)
                     self.assertGreaterEqual(face['x'],host['x'])
@@ -287,7 +301,7 @@ class GameTests(unittest.TestCase):
                 }))''')
                 host,body,face=[boxes[id] for id in ['wardrobe-paperdoll','wardrobe-layer-body','wardrobe-layer-face']]
                 self.assertGreater(host['height'],100)
-                self.assertAlmostEqual(host['width']/host['height'],736/1417,delta=0.01)
+                self.assertAlmostEqual(host['width']/host['height'],941/1672,delta=0.01)
                 for coordinate in ['x','y','width','height']:
                     self.assertAlmostEqual(body[coordinate],host[coordinate],delta=1)
                 self.assertGreaterEqual(host['y'],0)
@@ -339,6 +353,36 @@ class GameTests(unittest.TestCase):
         card.get_by_role('button',name='Зняти',exact=True).click()
         self.assertEqual(self.page.locator('[data-paper-extra]').count(),0)
         self.assertEqual(self.page.evaluate('JSON.stringify({stats,inventory,equippedGear,gameProgress})'),before)
+
+    def test_approved_avatars_show_native_faces_in_both_views_and_switch_to_trip(self):
+        self.load()
+        self.page.evaluate('equipPaperDollItem("face",null); openCustomization();')
+        before=self.page.evaluate('JSON.stringify({stats,inventory,equippedGear,gameProgress,patient:paperDollState.patientLoadout,combat:paperDollState.combatLoadout})')
+        results=ROOT/'test-results'
+        results.mkdir(exist_ok=True)
+        for width,height in [(1280,800),(1024,768),(768,1024),(844,390),(390,844),(320,568)]:
+            self.page.set_viewport_size({'width':width,'height':height})
+            for gender in ['male','female']:
+                with self.subTest(viewport=(width,height),gender=gender):
+                    self.page.evaluate('g=>{setGender(g);openCustomization()}',gender)
+                    self.page.wait_for_function('()=>["layer-body","wardrobe-layer-body"].every(id=>document.getElementById(id).naturalWidth===941&&document.getElementById(id).naturalHeight===1672)')
+                    for prefix in ['', 'wardrobe-']:
+                        self.assertTrue(self.page.locator(f'#{prefix}layer-body').is_visible())
+                        self.assertFalse(self.page.locator(f'#{prefix}layer-face').is_visible())
+                    self.assertEqual(self.page.locator('#layer-body').get_attribute('src'),self.page.locator('#wardrobe-layer-body').get_attribute('src'))
+                    self.page.screenshot(path=str(results/f'approved-{gender}-wardrobe-{width}x{height}.png'))
+                    self.page.evaluate('closeCustomization()')
+                    self.page.locator('#character-paperdoll').scroll_into_view_if_needed()
+                    self.assertTrue(self.page.locator('#layer-body').is_visible())
+                    self.page.screenshot(path=str(results/f'approved-{gender}-room-{width}x{height}.png'))
+        self.page.evaluate('openCustomization()')
+        self.assertEqual(self.page.locator('.wardrobe-view-switch button').all_text_contents(),['Пацієнт','Трип'])
+        self.page.locator('.wardrobe-view-switch').get_by_role('button',name='Трип',exact=True).click()
+        self.assertEqual(self.page.evaluate('paperDollState.activeViewMode'),'combat')
+        self.assertEqual(self.page.evaluate('JSON.stringify({stats,inventory,equippedGear,gameProgress,patient:paperDollState.patientLoadout,combat:paperDollState.combatLoadout})'),before)
+        self.page.reload(wait_until='networkidle')
+        self.assertEqual(self.page.evaluate('paperDollState.activeViewMode'),'combat')
+        self.assertIn('Трип',self.page.locator('#paper-doll-view-label').inner_text())
 
     def test_equipment_swap_reload_and_legacy_training_bonus(self):
         self.load({
