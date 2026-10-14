@@ -192,10 +192,16 @@
 .raid-archive-toolbar .report-detail-link { margin-left: auto; }
 #raid-archive-count { font-size: 12px; color: #66513d; }
 .raid-archive-list { list-style: none; padding: 0; display: grid; gap: 10px; margin-top: 14px; }
-.raid-archive-card { display: block; width: 100%; text-align: left; padding: 12px 14px; color: #30261e; border: 1px solid #947556; border-left: 4px solid #704237; background: rgba(241, 229, 200, 0.45); cursor: pointer; overflow-wrap: anywhere; }
+.raid-archive-card { display: grid; grid-template-columns: 220px minmax(0, 1fr); align-items: center; gap: 14px; width: 100%; text-align: left; padding: 12px 14px; color: #30261e; border: 1px solid #947556; border-left: 4px solid #704237; background: rgba(241, 229, 200, 0.45); cursor: pointer; overflow-wrap: anywhere; }
 .raid-archive-card:hover { background: rgba(241, 229, 200, 0.8); }
 .raid-archive-card:focus-visible { outline: 2px solid #743b37; outline-offset: 2px; }
-.raid-archive-card > span { display: block; font-size: 12px; margin-top: 3px; }
+.raid-card-visual { display: block; min-width: 0; }
+.raid-card-dossier-image { display: block; width: 100%; height: auto; aspect-ratio: auto 1376 / 768; object-fit: contain; filter: drop-shadow(2px 3px 4px rgba(48, 38, 30, 0.3)); }
+.raid-card-no-dossier { display: flex; min-height: 100px; gap: 8px; align-items: center; justify-content: center; flex-direction: column; color: #66513d; font-size: 11px; border: 1px dashed #947556; }
+.raid-card-details { display: block; min-width: 0; }
+.raid-card-details > span { display: block; font-size: 12px; margin-top: 3px; }
+.raid-card-details .raid-card-personal-stamp { width: fit-content; margin-top: 8px; font-size: 10px; }
+.raid-card-case { font-size: 11px; color: #66513d; }
 .raid-archive-card .raid-card-heading { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 4px 12px; margin: 0; }
 .raid-card-heading strong { font-size: 15px; }
 .raid-card-heading time { font-size: 11px; color: #66513d; }
@@ -209,6 +215,8 @@
     #nurse-victory-modal, #battle-detail-modal, #raid-archive-modal, #raid-archive-confirm { padding: 8px !important; }
     .battle-report { padding: 18px 16px; max-height: calc(100dvh - 16px); }
     .battle-report.victory-summary { padding: 12px; }
+    .raid-archive-card { grid-template-columns: 1fr; gap: 8px; padding: 10px; }
+    .raid-card-visual { width: min(240px, 100%); justify-self: center; }
     .victory-summary-actions .report-button { font-size: 12px; padding: 9px 6px; }
     .victory-summary-rewards { padding: 9px 10px; }
     .report-identification { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }

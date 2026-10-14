@@ -565,3 +565,40 @@ test('timeout, defeat and flee create zero-reward records, while damaged archive
     g.storage.set(g.run('raidArchiveRecordKey("corrupt")'),'{bad');
     assert.equal(g.run('readRaidArchive().length'),3);
 });
+
+test('archive dossiers reuse configured full cards and preserve their historical binding', () => {
+    const g=game();
+    g.run('stats.baseDamage=300; recalculateEquipmentStats(); startBossFight("nurse"); performPlayerAttack(); const first=readRaidArchive()[0];');
+    assert.equal(g.run('first.boss.dossierImage'),'nurse_dossier_card.png');
+    g.run('bossesDatabase.nurse.dossier.cardImg="replacement.png"; renderRaidArchive();');
+    assert.match(g.elements.get('raid-archive-list').innerHTML,/src="nurse_dossier_card.png"/);
+    assert.match(g.elements.get('raid-archive-list').innerHTML,/Справа 404-KL/);
+    g.run('startBossFight("doctor"); performPlayerAttack(); renderRaidArchive();');
+    assert.match(g.elements.get('raid-archive-list').innerHTML,/src="doctor_dossier_card.png"/);
+    assert.equal(g.run('readRaidArchive().find(r=>r.boss.id==="doctor").boss.dossierImage'),'doctor_dossier_card.png');
+    g.run('const legacy=JSON.parse(JSON.stringify(first)); delete legacy.boss.dossierImage;');
+    assert.equal(g.run('getRaidDossierImage(legacy)'),'replacement.png');
+    g.run('legacy.boss.id="unconfigured";');
+    assert.equal(g.run('getRaidDossierImage(legacy)'),null);
+    g.run('legacy.boss.dossierImage=null;');
+    assert.equal(g.run('getRaidDossierImage(legacy)'),null);
+    for (const value of ['https://example.com/card.png','../card.png','javascript:bad','card.png" onerror="bad']) {
+        g.run(`legacy.boss.dossierImage=${JSON.stringify(value)};`);
+        assert.equal(g.run('getRaidDossierImage(legacy)'),null);
+    }
+});
+
+test('archive personal stamps describe only the owner, not an MVP helper or useful teammate', () => {
+    const winner=game();
+    winner.run('stats.baseDamage=300; recalculateEquipmentStats(); startBossFight("nurse"); performPlayerAttack(); renderRaidArchive();');
+    assert.match(winner.elements.get('raid-archive-list').innerHTML,/raid-card-personal-stamp">MVP/);
+    const idle=game();
+    idle.run('startBossFight("nurse"); callAllFriends(); Math.random=()=>0; for(let i=0;i<10;i++) friendsAutoAttackTick(); renderRaidArchive();');
+    assert.match(idle.elements.get('raid-archive-list').innerHTML,/raid-card-personal-stamp">УХИЛЯВСЯ ВІД ПРОЦЕДУРИ/);
+    assert.doesNotMatch(idle.elements.get('raid-archive-list').innerHTML,/raid-card-personal-stamp">MVP/);
+    const support=game();
+    support.run('startBossFight("nurse"); raidMembers[0].metrics.healing=1; callAllFriends(); Math.random=()=>0; for(let i=0;i<10;i++) friendsAutoAttackTick(); renderRaidArchive();');
+    assert.doesNotMatch(support.elements.get('raid-archive-list').innerHTML,/raid-card-personal-stamp/);
+    assert.match(support.elements.get('raid-archive-list').innerHTML,/MVP: Сліпий Микола/);
+    assert.equal(support.run('lastBattleResult.payout.exp'),50);
+});

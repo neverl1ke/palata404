@@ -107,6 +107,7 @@ function buildBattleResult(boss, outcome = 'victory') {
         boss: {
             id: battle.bossKey, name: boss.name,
             registrationNumber: boss.dossier?.code || report.registrationNumber || battle.bossKey,
+            dossierImage: boss.dossier?.cardImg || null,
             caseCode: report.caseCode || 'Не зазначено',
             status: won ? (report.status || 'Тимчасова стабілізація') : RAID_OUTCOMES[outcome],
             conclusion: won ? (report.conclusion || 'Післябойовий стан об’єкта зафіксовано. Медичний висновок потребує уточнення.')
@@ -155,6 +156,8 @@ function normalizeBattleResult(value) {
         || (value.outcome !== undefined && !Object.hasOwn(RAID_OUTCOMES, value.outcome))) return null;
     if (!['id', 'name', 'registrationNumber', 'caseCode', 'status', 'conclusion']
         .every(field => typeof value.boss[field] === 'string')) return null;
+    if (value.boss.dossierImage !== undefined && value.boss.dossierImage !== null
+        && typeof value.boss.dossierImage !== 'string') return null;
     if (!['baseExp', 'baseSilver', 'bonusExp', 'bonusSilver', 'exp', 'silver'].every(field => number(value.payout[field]))) return null;
     if (value.payout.exp !== value.payout.baseExp + value.payout.bonusExp
         || value.payout.silver !== value.payout.baseSilver + value.payout.bonusSilver) return null;
@@ -179,6 +182,14 @@ function formatReportNumber(value) {
 function formatBattleDuration(result) {
     const seconds = Math.floor((result.endedAt - result.startedAt) / 1000);
     return `${Math.floor(seconds / 60)} хв ${seconds % 60} с`;
+}
+
+function getParticipantReportStamp(member) {
+    if (!member) return '';
+    if (member.isMvp) return 'MVP';
+    return member.isPlayer && member.activityStatus === 'inactive'
+        && member.damage === 0 && member.healing === 0 && member.turns === 0 && member.damageTaken === 0
+        ? 'УХИЛЯВСЯ ВІД ПРОЦЕДУРИ' : '';
 }
 
 function renderBattleSummary(result) {
@@ -245,9 +256,8 @@ function renderBattleResult(result) {
         const reward = member.rewards ? '<a href="#victory-rewards">Див. підсумок нагород</a>' : 'Не застосовується';
         const status = [member.specialStatus || '', !member.isPlayer ? 'Локальний помічник' : '']
             .filter(Boolean).map(escapeHTML).join(' · ');
-        const stamp = member.isMvp ? '<span class="report-participant-stamp">MVP</span>'
-            : member.isPlayer && member.activityStatus === 'inactive' && member.damage === 0 && member.healing === 0 && member.turns === 0 && member.damageTaken === 0
-                ? '<span class="report-participant-stamp">УХИЛЯВСЯ ВІД ПРОЦЕДУРИ</span>' : '';
+        const stampText = getParticipantReportStamp(member);
+        const stamp = stampText ? `<span class="report-participant-stamp">${stampText}</span>` : '';
         return `<tr class="${member.isMvp ? 'report-mvp-row' : ''}">
             <th scope="row">${escapeHTML(member.name)}${stamp}${status ? `<small>${status}</small>` : ''}</th>
             <td>${member.damage}</td><td>${formatReportNumber(member.damageTaken)}</td>

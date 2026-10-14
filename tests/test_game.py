@@ -544,7 +544,7 @@ class GameTests(unittest.TestCase):
         self.assertEqual(self.page.locator('#victory-report-id').inner_text(), first['battleId'])
         self.assertEqual(self.page.locator('#victory-mvp-name').inner_text(), 'Історичний пацієнт')
         self.assertIn(institution, self.page.locator('#battle-detail-modal .report-institution').inner_text())
-        self.assertEqual(self.page.locator('.report-participant-stamp').inner_text(), 'MVP')
+        self.assertEqual(self.page.locator('#battle-detail-modal .report-participant-stamp').inner_text(), 'MVP')
         self.page.get_by_role('button', name='Повернутися до архіву', exact=True).click()
         self.assertEqual(self.page.evaluate('JSON.stringify({stats,inventory,bossKillsCount,gameProgress,storage:{...localStorage}})'), state)
         self.page.reload(wait_until='networkidle')
@@ -605,7 +605,7 @@ class GameTests(unittest.TestCase):
                 self.page.screenshot(path=str(results/f'raid-archive-{width}x{height}.png'))
         self.page.evaluate('startBossFight("nurse"); callAllFriends(); Math.random=()=>0; for(let i=0;i<10;i++) friendsAutoAttackTick(); openDetailedBattleReport();')
         self.assertEqual(self.page.get_by_text('УХИЛЯВСЯ ВІД ПРОЦЕДУРИ', exact=True).count(), 1)
-        self.assertEqual(self.page.locator('.report-participant-stamp').count(), 2)
+        self.assertEqual(self.page.locator('#battle-detail-modal .report-participant-stamp').count(), 2)
 
     def test_raid_archive_identity_and_shared_tabs(self):
         self.load({'palata404_web_id':'WEB-archive-tabs'})
@@ -627,6 +627,65 @@ class GameTests(unittest.TestCase):
         self.page.evaluate('stats.baseDamage=300; recalculateEquipmentStats(); startBossFight("doctor"); performPlayerAttack(); clearRaidArchive();')
         self.assertEqual(other.evaluate('JSON.stringify(readRaidArchive())'), saved)
         other.close()
+
+    def test_archive_full_dossier_images_and_personal_statuses(self):
+        self.load()
+        self.page.evaluate('''() => {
+            stats.baseDamage=300; recalculateEquipmentStats();
+            startBossFight('nurse'); performPlayerAttack();
+            startBossFight('doctor'); performPlayerAttack(); openRaidArchive();
+        }''')
+        results = ROOT / 'test-results'
+        results.mkdir(exist_ok=True)
+        for width, height in [(1280,800),(320,568),(390,844),(844,390)]:
+            with self.subTest(viewport=(width,height)):
+                self.page.set_viewport_size({'width':width,'height':height})
+                for filename, case in [('nurse_dossier_card.png','404-KL'),('doctor_dossier_card.png','404-IZ')]:
+                    card = self.page.locator('.raid-archive-card').filter(has_text=case)
+                    image = card.locator('.raid-card-dossier-image')
+                    image.scroll_into_view_if_needed()
+                    self.page.wait_for_function('(src)=>[...document.querySelectorAll(".raid-card-dossier-image")].some(e=>e.getAttribute("src")===src && e.complete && e.naturalWidth>0)', arg=filename)
+                    self.assertEqual(image.get_attribute('src'), filename)
+                    self.assertFalse(card.locator('.raid-card-no-dossier').is_visible())
+                    self.assertEqual(card.locator('.raid-card-personal-stamp').inner_text(), 'MVP')
+                    self.assertTrue(image.evaluate('e=>Math.abs(e.clientWidth/e.clientHeight-e.naturalWidth/e.naturalHeight)<0.02'))
+                    self.assertEqual(image.evaluate('e=>getComputedStyle(e).objectFit'), 'contain')
+                    self.assertEqual(card.locator('.raid-card-dossier-image').count(), 1)
+                    photo = image.bounding_box()
+                    text = card.locator('.raid-card-details').bounding_box()
+                    if width > 600:
+                        self.assertLessEqual(photo['x']+photo['width'], text['x'])
+                    else:
+                        self.assertLessEqual(photo['y']+photo['height'], text['y'])
+                    box = card.bounding_box()
+                    self.assertGreaterEqual(box['x'], 0)
+                    self.assertLessEqual(box['x']+box['width'], width+1)
+                self.page.locator('.raid-archive-document').evaluate('e=>e.scrollTop=0')
+                self.page.screenshot(path=str(results/f'raid-dossiers-{width}x{height}.png'))
+        before = self.page.evaluate('JSON.stringify({stats,inventory,bossKillsCount,archive:readRaidArchive(),storage:{...localStorage}})')
+        old_card = self.page.locator('.raid-archive-card').filter(has_text='404-KL')
+        old_card.locator('.raid-card-open').click()
+        self.assertEqual(self.page.locator('#victory-case-code').inner_text(), '404-KL')
+        self.page.get_by_role('button', name='Повернутися до архіву', exact=True).click()
+        self.assertEqual(self.page.evaluate('JSON.stringify({stats,inventory,bossKillsCount,archive:readRaidArchive(),storage:{...localStorage}})'), before)
+        self.page.evaluate('''() => {
+            startBossFight('nurse'); callAllFriends(); Math.random=()=>0;
+            for(let i=0;i<10;i++) friendsAutoAttackTick(); openRaidArchive();
+        }''')
+        idle = self.page.locator('.raid-archive-card').first
+        self.assertEqual(idle.locator('.raid-card-personal-stamp').inner_text(), 'УХИЛЯВСЯ ВІД ПРОЦЕДУРИ')
+        self.assertIn('MVP: Сліпий Микола', idle.inner_text())
+        self.assertIn('+50 EXP', idle.inner_text())
+        self.page.evaluate('''() => {
+            startBossFight('nurse'); raidMembers[0].metrics.healing=1;
+            callAllFriends(); for(let i=0;i<10;i++) friendsAutoAttackTick(); openRaidArchive();
+        }''')
+        support = self.page.locator('.raid-archive-card').first
+        self.assertEqual(support.locator('.raid-card-personal-stamp').count(), 0)
+        self.assertIn('MVP: Сліпий Микола', support.inner_text())
+        self.page.reload(wait_until='networkidle')
+        self.page.evaluate('openRaidArchive()')
+        self.assertEqual(self.page.locator('.raid-archive-card').first.locator('.raid-card-personal-stamp').count(), 0)
 
     def test_partial_reward_save_recovers_without_duplicate_credit(self):
         self.context.add_init_script('''

@@ -145,6 +145,16 @@ function recordUnrewardedRaid(outcome) {
     saveRaidArchiveResult(result);
 }
 
+function getRaidDossierImage(result) {
+    // Legacy snapshots have no image field; reuse the same cardImg as the boss dossier.
+    // An explicit null in a new snapshot means no card existed at the time of the raid.
+    const source = Object.hasOwn(result.boss, 'dossierImage')
+        ? result.boss.dossierImage : bossesDatabase[result.boss.id]?.dossier?.cardImg;
+    // Historical files may be edited in browser storage. Only allow local image paths.
+    return typeof source === 'string'
+        && /^(?:[A-Za-z0-9_-]+\/)*[A-Za-z0-9_-]+\.(?:png|jpe?g|webp)$/i.test(source) ? source : null;
+}
+
 function renderRaidArchive() {
     const list = document.getElementById('raid-archive-list');
     if (!list) return;
@@ -155,19 +165,37 @@ function renderRaidArchive() {
     list.innerHTML = records.map(result => {
         const mvp = result.participants.find(member => member.id === result.mvpId);
         const items = result.extraRewards.filter(reward => reward.granted);
+        const dossierImage = getRaidDossierImage(result);
+        const personalStamp = getParticipantReportStamp(result.participants.find(member => member.isPlayer));
         return `<li><button type="button" class="raid-archive-card" data-raid-id="${escapeHTML(result.battleId)}">
+            <span class="raid-card-visual">
+                ${dossierImage ? `<img class="raid-card-dossier-image" src="${escapeHTML(dossierImage)}" alt="Досьє: ${escapeHTML(result.boss.name)} — №${escapeHTML(result.boss.registrationNumber)}" loading="lazy" decoding="async">` : ''}
+                <span class="raid-card-no-dossier${dossierImage ? ' hidden' : ''}">${iconHTML('clipboard', 'large')}<span>Досьє не долучено</span></span>
+            </span>
+            <span class="raid-card-details">
             <span class="raid-card-heading"><strong>${escapeHTML(result.boss.name)} — №${escapeHTML(result.boss.registrationNumber)}</strong><time datetime="${new Date(result.endedAt).toISOString()}">${escapeHTML(new Date(result.endedAt).toLocaleString('uk-UA'))}</time></span>
+            <span class="raid-card-case">Справа ${escapeHTML(result.boss.caseCode)}</span>
             <span class="raid-card-result">${escapeHTML(RAID_OUTCOMES[result.outcome || 'victory'])}</span>
             <span class="raid-card-rewards">+${result.payout.exp} EXP · +${result.payout.silver} срібла${(result.outcome || 'victory') === 'victory' && result.participants.some(member => member.isPlayer && member.isMvp) ? ' · особистий бонус MVP +5%' : ''}</span>
             ${mvp ? `<span class="raid-card-mvp">MVP: ${escapeHTML(mvp.name)}</span>` : ''}
             ${items.length ? `<span class="raid-card-items">Отримано: ${items.map(reward => escapeHTML(reward.name)).join(', ')}</span>` : ''}
+            ${personalStamp ? `<span class="report-participant-stamp raid-card-personal-stamp">${personalStamp}</span>` : ''}
             <span class="raid-card-open">Детальний протокол →</span>
+            </span>
         </button></li>`;
     }).join('');
     list.querySelectorAll('[data-raid-id]').forEach(button => button.addEventListener('click', () => {
         const result = readRaidArchive().find(record => record.battleId === button.dataset.raidId);
         if (result) openDetailedBattleReport(result, 'archive');
     }));
+    list.querySelectorAll('.raid-card-dossier-image').forEach(image => {
+        const showMissingDossier = () => {
+            image.classList.add('hidden');
+            image.nextElementSibling?.classList.remove('hidden');
+        };
+        image.addEventListener('error', showMissingDossier);
+        if (image.complete && !image.naturalWidth) showMissingDossier();
+    });
     updateRaidArchiveNotice();
 }
 
