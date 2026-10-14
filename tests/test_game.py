@@ -325,6 +325,8 @@ class GameTests(unittest.TestCase):
     def test_local_icons_render_in_static_and_dynamic_views(self):
         self.load()
         self.assertGreater(self.page.locator('.game-icon').count(), 60)
+        self.assertEqual(self.page.locator('#medkit-btn-small img').get_attribute('src'), 'assets/icons/medkit.svg')
+        self.assertEqual(self.page.locator('#medkit-btn-big img').get_attribute('src'), 'assets/icons/surgery.svg')
         self.page.evaluate('openInventory()')
         self.assertEqual(self.page.locator('#stash-items .game-icon').count(), 5)
         self.assertEqual(self.page.locator('#stash-items .game-icon').nth(2).get_attribute('src'),

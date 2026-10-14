@@ -338,7 +338,7 @@
                 <!-- Товар 1: Таблетки від божевілля -->
                 <div class="outfit-card">
                     <div>
-                        <div style="font-weight: bold; color: #fff8e7;"><img class="game-icon" src="assets/icons/brain.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"> Таблетки «Аміназин»</div>
+                        <div style="font-weight: bold; color: #fff8e7;"><img class="game-icon" src="assets/icons/pills.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"> Таблетки «Аміназин»</div>
                         <div style="font-size: 11px; color: #a3927d;">Знижує божевілля на 15</div>
                     </div>
                     <button class="btn-outfit" onclick="buyMedicalItem('madness_pills', 50, 'silver')">50 <img class="game-icon" src="assets/icons/coin.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"></button>
@@ -347,7 +347,7 @@
                 <!-- Товар 2: Стаміна 10% -->
                 <div class="outfit-card">
                     <div>
-                        <div style="font-weight: bold; color: #fff8e7;"><img class="game-icon" src="assets/icons/lightning.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"> Енергетик (10%)</div>
+                        <div style="font-weight: bold; color: #fff8e7;"><img class="game-icon" src="assets/icons/drink.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"> Енергетик (10%)</div>
                         <div style="font-size: 11px; color: #a3927d;">Відновлює 10% витривалості</div>
                     </div>
                     <button class="btn-outfit" onclick="buyMedicalItem('stamina_10', 2, 'bucks')">$2 <img class="game-icon" src="assets/icons/cash.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"></button>
@@ -365,7 +365,7 @@
                 <!-- Товар 4: Хілка 10% -->
                 <div class="outfit-card">
                     <div>
-                        <div style="font-weight: bold; color: #fff8e7;"><img class="game-icon" src="assets/icons/heart.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"> Мала аптечка (10%)</div>
+                        <div style="font-weight: bold; color: #fff8e7;"><img class="game-icon" src="assets/icons/medkit.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"> Мала аптечка (10%)</div>
                         <div style="font-size: 11px; color: #a3927d;">Відновлює 10% здоров'я (HP)</div>
                     </div>
                     <button class="btn-outfit" onclick="buyMedicalItem('hp_10', 30, 'silver')">30 <img class="game-icon" src="assets/icons/coin.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"></button>
@@ -374,7 +374,7 @@
                 <!-- Товар 5: Хілка Фул -->
                 <div class="outfit-card">
                     <div>
-                        <div style="font-weight: bold; color: #fff8e7;"><img class="game-icon" src="assets/icons/heart.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"> Хірургічний набір (100%)</div>
+                        <div style="font-weight: bold; color: #fff8e7;"><img class="game-icon" src="assets/icons/surgery.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"> Велика армійська аптечка (100%)</div>
                         <div style="font-size: 11px; color: #a3927d;">Повне відновлення здоров'я (HP)</div>
                     </div>
                     <button class="btn-outfit" onclick="buyMedicalItem('hp_full', 150, 'silver')">150 <img class="game-icon" src="assets/icons/coin.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"></button>
@@ -526,12 +526,12 @@
             <div style="font-size: 10px; color: #a3927d; text-align: center; margin-bottom: 2px; font-weight: bold;"><img class="game-icon" src="assets/icons/flask.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"> АПТЕЧКИ</div>
 
             <button id="medkit-btn-small" title="Мала аптечка (+10% HP)" class="btn-outfit" style="background: #2a1f18; border: 1px solid #5c4033; width: 44px; height: 44px; border-radius: 8px; font-size: 20px; cursor: pointer; position: relative;" onclick="useBattleMedkit('small')" aria-label="Мала аптечка (+10% HP)">
-                <img class="game-icon" src="assets/icons/pills.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64">
+                <img class="game-icon" src="assets/icons/medkit.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64">
                 <span id="medkit-count-small" style="position: absolute; bottom: 2px; right: 2px; font-size: 10px; background: #c0392b; color: #fff; padding: 1px 3px; border-radius: 3px; font-weight: bold;">0</span>
             </button>
 
             <button id="medkit-btn-big" title="Велика аптечка (повне відновлення HP)" class="btn-outfit" style="background: #2a1f18; border: 1px solid #5c4033; width: 44px; height: 44px; border-radius: 8px; font-size: 20px; cursor: pointer; position: relative;" onclick="useBattleMedkit('big')" aria-label="Велика аптечка (повне відновлення HP)">
-                <img class="game-icon" src="assets/icons/syringe.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64">
+                <img class="game-icon" src="assets/icons/surgery.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64">
                 <span id="medkit-count-big" style="position: absolute; bottom: 2px; right: 2px; font-size: 10px; background: #c0392b; color: #fff; padding: 1px 3px; border-radius: 3px; font-weight: bold;">0</span>
             </button>
         </div>
