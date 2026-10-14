@@ -176,10 +176,5 @@ function renderPaperDollControls(renderSlots = true) {
     const label = document.getElementById('paper-doll-view-label');
     if (label) label.textContent = `Комплект: ${paperDollState.activeViewMode === 'combat' ? 'Трип' : 'Пацієнт'}`;
     renderWardrobeRegistration();
-    document.querySelectorAll('[data-paper-image-item]').forEach(note => {
-        const item = PAPER_DOLL_ITEMS.find(entry => entry.id === note.dataset.paperImageItem);
-        const layers = item?.layers?.length ? item.layers : [item];
-        const missing = item && !layers.some(layer => paperDollImageCandidates(layer, paperDollState.selectedGender).some(path => !failedPaperDollImages.has(path)));
-        note.classList.toggle('hidden', !missing);
-    });
+    renderWardrobeImageNotes();
 }

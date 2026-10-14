@@ -56,7 +56,44 @@ function wardrobeItemImage(item) {
 }
 
 function wardrobeItemStatus(item) {
-    return selectedPaperDollItem(wardrobeSlot)?.id === item.id ? 'ЕКІПІРОВАНО' : isPaperDollItemOwned(item) ? 'Доступно' : 'Недоступно';
+    return selectedPaperDollItem(item.slot)?.id === item.id ? 'ЕКІПІРОВАНО' : isPaperDollItemOwned(item) ? 'Доступно' : 'Недоступно';
+}
+
+// Presentation only: missing graphics never change ownership or the saved outfit.
+function wardrobeImageStatus(item, detailed = false) {
+    const layered = Array.isArray(item?.layers) && item.layers.length > 0;
+    const layers = layered ? item.layers : [item];
+    const ready = layers.filter(layer => (!layered || /^[a-zA-Z0-9_-]+$/.test(layer?.id || '')) && paperDollImageCandidates(layer, paperDollState.selectedGender).some(path => !failedPaperDollImages.has(path))).length;
+    const state = ready === layers.length ? 'ready' : ready ? 'partial' : 'missing';
+    const equipped = item && selectedPaperDollItem(item.slot)?.id === item.id;
+    if (state === 'ready') return { state, text: '' };
+    if (state === 'partial') return { state, text: detailed
+        ? `${equipped ? 'Предмет екіпіровано. ' : ''}Частина PNG-шарів відсутня або не завантажилася. На персонажі ${equipped ? 'видно' : 'буде видно'} лише доступні частини.`
+        : 'PNG неповний · лише частина шарів' };
+    return { state, text: detailed
+        ? `${equipped ? 'Предмет екіпіровано в цьому комплекті, але на персонажі він не відображається. ' : ''}PNG-накладку ще не підготовлено або не вдалося завантажити.`
+        : equipped ? 'PNG відсутній · на моделі не видно' : 'Зображення не підготовлено' };
+}
+
+function renderWardrobeImageNotes() {
+    document.querySelectorAll('[data-paper-image-item]').forEach(note => {
+        const item = PAPER_DOLL_ITEMS.find(entry => entry.id === note.dataset.paperImageItem);
+        const status = wardrobeImageStatus(item, note.hasAttribute('data-paper-image-detail'));
+        note.classList.toggle('hidden', !item || status.state === 'ready');
+        note.setAttribute('data-paper-graphics', status.state);
+        note.textContent = status.text;
+    });
+}
+
+function wardrobeEmptyState(hasCatalog = false) {
+    const hospitalClothes = paperDollState.activeViewMode === 'patient' && wardrobeCategory === 'clothes';
+    const title = hasCatalog ? 'Немає доступних предметів' : hospitalClothes ? 'Лікарняний одяг ще не додано' : 'У цьому слоті поки немає предметів';
+    const description = hasCatalog
+        ? 'Записи нижче можна оглянути. Щоб надягнути річ, спочатку потрібно мати її в інвентарі.'
+        : hospitalClothes
+            ? `Тут з’явиться доступний лікарняний одяг для слота «${PAPER_DOLL_SLOTS[wardrobeSlot].label}». Поки що зберігається базовий вигляд персонажа.`
+            : 'Коли для цього слота будуть доступні речі, їх можна буде обрати тут. Зараз змінювати нічого.';
+    return `<div class="wardrobe-empty" data-wardrobe-empty>${iconHTML(PAPER_DOLL_SLOTS[wardrobeSlot].icon,'large')}<h4>${escapeHTML(title)}</h4><p>${escapeHTML(description)}</p><span class="wardrobe-item-state">${hasCatalog ? 'Доступних речей: 0' : 'Слот порожній'}</span></div>`;
 }
 
 function wardrobeItemCard(item) {
@@ -84,7 +121,7 @@ function renderWardrobeItemDetail(item) {
     panel.innerHTML = `<header><span class="wardrobe-record-label">ІНВЕНТАРНИЙ ЗАПИС</span><h4 id="wardrobe-detail-title">${escapeHTML(item.name)}</h4><span class="wardrobe-detail-slot">${escapeHTML(PAPER_DOLL_SLOTS[item.slot].label)}</span></header>
         <p class="wardrobe-detail-description">${escapeHTML(description)}</p>
         <span class="wardrobe-item-state" role="status">${wardrobeItemStatus(item)}</span>
-        <p class="wardrobe-image-note${wardrobeItemImage(item) ? ' hidden' : ''}" data-paper-image-item="${escapeHTML(item.id)}">Зображення не підготовлено</p>
+        <p class="wardrobe-image-note${wardrobeItemImage(item) ? ' hidden' : ''}" data-paper-image-item="${escapeHTML(item.id)}" data-paper-image-detail role="status"></p>
         <button type="button" class="report-button" data-wardrobe-action="${escapeHTML(item.id)}" data-wardrobe-focus="action-${escapeHTML(item.id)}"${owned ? '' : ' disabled'}>${equipped ? 'Зняти' : item.slot === 'face' ? 'Обрати' : 'Надягнути'}</button>`;
     panel.querySelectorAll('[data-wardrobe-action]').forEach(button => button.addEventListener('click', applyWardrobeItemAction));
 }
@@ -113,7 +150,8 @@ function renderWardrobeUI() {
         container.innerHTML = `<div class="wardrobe-appearance-note">${iconHTML('user','large')}<h4>Повноростова модель</h4><p>Обраний персонаж одразу відображається в центрі та у палаті.</p><span class="wardrobe-item-state">${paperDollState.selectedGender === 'female' ? 'Жінка' : 'Чоловік'}</span></div>`;
     } else {
         const nativeFace = wardrobeSlot === 'face' ? `<article class="wardrobe-native-face"><h4>Базове обличчя</h4><p>Обличчя з актуального зображення персонажа.</p><span class="wardrobe-item-state">${selectedPaperDollItem('face') ? 'ДОСТУПНЕ' : 'ВИКОРИСТОВУЄТЬСЯ'}</span>${selectedPaperDollItem('face') ? '<button type="button" class="report-button" data-wardrobe-native-face data-wardrobe-focus="native-face">Зняти накладку</button>' : ''}${items.length ? '' : '<p class="wardrobe-cosmetic-note">Нові затверджені накладки ще не долучено.</p>'}</article>` : '';
-        container.innerHTML = nativeFace + (items.length ? items.map(wardrobeItemCard).join('') : wardrobeSlot === 'face' ? '' : `<div class="wardrobe-empty">${iconHTML(PAPER_DOLL_SLOTS[wardrobeSlot].icon,'large')}<h4>Матеріали не долучено</h4><p>Для цього слота ще немає предметів і підготовлених зображень.</p></div>`);
+        const unavailable = items.length > 0 && !items.some(isPaperDollItemOwned) && wardrobeSlot !== 'face';
+        container.innerHTML = nativeFace + (unavailable ? wardrobeEmptyState(true) : '') + (items.length ? items.map(wardrobeItemCard).join('') : wardrobeSlot === 'face' ? '' : wardrobeEmptyState());
     }
     renderWardrobeItemDetail(items.find(item => item.id === wardrobeSelectedItemId));
     categoryList?.querySelectorAll('[data-wardrobe-category]').forEach(button => button.addEventListener('click', () => selectWardrobeCategory(button.dataset.wardrobeCategory)));

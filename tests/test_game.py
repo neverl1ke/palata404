@@ -209,6 +209,8 @@ class GameTests(unittest.TestCase):
         card.click()
         self.page.locator('#wardrobe-item-detail').get_by_role('button',name='Надягнути',exact=True).click()
         self.assertIn('ЕКІПІРОВАНО',card.inner_text())
+        self.assertIn('на моделі не видно',card.inner_text())
+        self.assertIn('на персонажі він не відображається',self.page.locator('#wardrobe-item-detail').inner_text())
         self.assertIsNone(self.page.locator('#layer-armor').get_attribute('src'))
         wardrobe.get_by_role('button',name='Трип',exact=True).click()
         self.assertIsNone(self.page.evaluate('paperDollState.appearance.face'))
@@ -305,7 +307,21 @@ class GameTests(unittest.TestCase):
         self.assertEqual(len(set(requests)),2)
         self.assertEqual(len(requests),count)
         self.assertTrue(self.page.locator('[data-wardrobe-card="fixture-missing"] [data-paper-image-item]').is_visible())
+        self.assertIn('на персонажі він не відображається',self.page.locator('#wardrobe-item-detail').inner_text())
         self.assertEqual(self.page.evaluate('paperDollState.patientLoadout.weapon'),'fixture-missing')
+        # A failed part must update the already open detail, even if another
+        # part loaded successfully. No outfit or inventory changes on failure.
+        self.page.evaluate('''()=>{
+            PAPER_DOLL_ITEMS.push({id:'fixture-partial',slot:'outerwear',name:'Fixture',availableByDefault:true,
+                layers:[{id:'rear',image:'base_female.png',renderOrder:-1},{id:'front',image:'paper-missing-front.png'}]});
+            selectWardrobeCategory('clothes');selectWardrobeSlot('outerwear');equipPaperDollItem('outerwear','fixture-partial');
+        }''')
+        before=self.page.evaluate('JSON.stringify({stats,inventory,equippedGear,gameProgress,paperDollState})')
+        self.page.wait_for_function('()=>document.querySelector("#wardrobe-item-detail [data-paper-graphics=partial]")')
+        self.assertIn('видно лише доступні частини',self.page.locator('#wardrobe-item-detail').inner_text())
+        self.page.locator('#wardrobe-layer-outerwear-rear').wait_for(state='visible')
+        self.assertFalse(self.page.locator('#wardrobe-layer-outerwear-front').is_visible())
+        self.assertEqual(self.page.evaluate('JSON.stringify({stats,inventory,equippedGear,gameProgress,paperDollState})'),before)
 
     def test_wide_wardrobe_keeps_preview_inside_and_scrolls_item_panel_on_mobile(self):
         self.register_face_fixtures()
@@ -596,7 +612,7 @@ class GameTests(unittest.TestCase):
         self.page.locator('#wardrobe-item-detail').get_by_role('button',name='Зняти',exact=True).click()
         self.assertIsNone(self.page.evaluate('paperDollState.patientLoadout.weapon'))
         results=ROOT/'test-results';results.mkdir(exist_ok=True)
-        for width,height in [(1440,900),(1280,800),(1024,768),(768,1024),(844,390),(390,844),(320,568)]:
+        for width,height in [(2560,1440),(1920,1080),(1440,900),(1280,800),(1024,768),(768,1024),(844,390),(390,844),(320,568)]:
             self.page.set_viewport_size({'width':width,'height':height})
             self.page.evaluate('selectWardrobeCategory("appearance")')
             for mode in ['patient','combat']:
@@ -608,6 +624,9 @@ class GameTests(unittest.TestCase):
                     self.assertLessEqual(doc['height'],height*.9+1)
                     self.assertGreaterEqual(doc['x'],0)
                     self.assertLessEqual(doc['x']+doc['width'],width)
+                    if width>=1500:
+                        self.assertGreaterEqual(doc['width']/width,.80)
+                        self.assertLessEqual(doc['width']/width,.85)
                     self.assertGreaterEqual(body['y']-scene['y'],scene['height']*.12-1)
                     self.assertGreaterEqual(body['x']-scene['x'],scene['width']*.06-1)
                     self.assertLessEqual(body['x']+body['width'],scene['x']+scene['width']*.94+1)
@@ -625,6 +644,46 @@ class GameTests(unittest.TestCase):
             self.page.screenshot(path=str(results/f'wardrobe-v3-items-{width}x{height}.png'))
         self.page.emulate_media(reduced_motion='reduce')
         self.assertEqual(self.page.locator('[data-wardrobe-card="gear-pm"]').evaluate('e=>getComputedStyle(e).transitionDuration'),'0s')
+
+    def test_wardrobe_final_ux_empty_clothes_and_functional_text_in_both_themes(self):
+        self.load()
+        self.page.evaluate('openCustomization()')
+        results=ROOT/'test-results';results.mkdir(exist_ok=True)
+        before=self.page.evaluate('JSON.stringify({stats,inventory,equippedGear,gameProgress})')
+        for width,height in [(1920,1080),(768,1024),(390,844),(320,568)]:
+            self.page.set_viewport_size({'width':width,'height':height})
+            for mode in ['patient','combat']:
+                self.page.evaluate('mode=>{setPaperDollView(mode);selectWardrobeCategory("clothes")}',mode)
+                empty=self.page.locator('[data-wardrobe-empty]')
+                self.assertTrue(empty.is_visible())
+                if mode=='patient':self.assertIn('Лікарняний одяг',empty.inner_text())
+                self.assertEqual(self.page.locator('[data-wardrobe-card]').count(),0)
+                self.assertEqual(self.page.locator('[data-wardrobe-action]').count(),0)
+                self.assertFalse(self.page.locator('#wardrobe-item-detail').is_visible())
+                self.page.screenshot(path=str(results/f'wardrobe-final-empty-{mode}-{width}x{height}.png'))
+                self.page.evaluate('selectWardrobeCategory("weapons");selectWardrobeItem("gear-pm")')
+                sizes=self.page.evaluate('''()=>Object.fromEntries(['.wardrobe-category','.wardrobe-slot','.wardrobe-item-name','.wardrobe-detail-slot','.wardrobe-detail-description','.wardrobe-item-detail .report-button','.wardrobe-item-state','.wardrobe-image-note'].map(selector=>[selector,parseFloat(getComputedStyle(document.querySelector(selector)).fontSize)]))''')
+                for selector,size in sizes.items():
+                    minimum=12 if selector in ['.wardrobe-item-state','.wardrobe-image-note'] else 13 if width<=950 or selector=='.wardrobe-detail-slot' else 14
+                    self.assertGreaterEqual(size,minimum,(width,mode,selector))
+                contrast=self.page.evaluate(r'''()=>{
+                    const rgb=t=>t.match(/[\d.]+/g).map(Number);
+                    const lum=c=>c.slice(0,3).map(v=>{v/=255;return v<=.04045?v/12.92:((v+.055)/1.055)**2.4}).reduce((s,v,i)=>s+v*[.2126,.7152,.0722][i],0);
+                    const backgrounds=e=>{const s=getComputedStyle(e),colors=[s.backgroundColor,...s.backgroundImage.matchAll(/rgba?\([^)]+\)/g)].map(x=>rgb(typeof x==='string'?x:x[0])).filter(c=>(c[3]??1)===1);return colors.length?colors:backgrounds(e.parentElement)};
+                    return ['.wardrobe-item-name','.wardrobe-item-state','.wardrobe-image-note','.wardrobe-detail-description','.wardrobe-detail-slot','.wardrobe-item-detail .report-button'].flatMap(selector=>[...document.querySelectorAll(selector)].map(e=>{const f=lum(rgb(getComputedStyle(e).color));return{selector,ratio:Math.min(...backgrounds(e).map(c=>{const b=lum(c);return(Math.max(f,b)+.05)/(Math.min(f,b)+.05)}))}}));
+                }''')
+                for sample in contrast:self.assertGreaterEqual(sample['ratio'],4.5,(mode,sample))
+                self.page.locator('[data-wardrobe-action]').scroll_into_view_if_needed()
+                action=self.page.locator('[data-wardrobe-action]').bounding_box()
+                self.assertGreaterEqual(action['height'],44)
+                self.assertGreaterEqual(action['y'],0)
+                self.assertLessEqual(action['y']+action['height'],height)
+                self.assertLessEqual(self.page.evaluate('document.documentElement.scrollWidth'),width)
+        self.assertEqual(self.page.evaluate('JSON.stringify({stats,inventory,equippedGear,gameProgress})'),before)
+        self.page.evaluate('inventory=[];renderWardrobe()')
+        self.assertIn('Немає доступних предметів',self.page.locator('[data-wardrobe-empty]').inner_text())
+        self.assertEqual(self.page.locator('[data-wardrobe-card]').count(),3)
+        self.assertTrue(self.page.locator('[data-wardrobe-action]').is_disabled())
 
     def test_trial_faces_are_not_loaded_or_selectable_after_old_save_migration(self):
         requests=[]
