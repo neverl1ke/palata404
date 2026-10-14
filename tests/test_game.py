@@ -800,7 +800,7 @@ class GameTests(unittest.TestCase):
                         return{covered,total};
                     });
                     const collar=[];
-                    if(gender==='female')for(let y=260;y<=290;y+=5)collar.push({y,body:edges(y,0),cloth:edges(y,1)});
+                    for(let y=260;y<=(gender==='male'?280:290);y+=5)collar.push({y,body:edges(y,0),cloth:edges(y,1)});
                     const shoulder=gender==='male'?[[632,310],[654,320],[670,330]]:[[293,320],[304,330],[647,320],[660,330]];
                     const cuffs=gender==='male'?[[242,524],[258,530],[277,539],[700,531],[675,545],[660,551]]:[[279,472],[308,480],[331,490],[668,472],[643,480],[639,490]];
                     return{shoulder:shoulder.map(read),cuffs:cuffs.map(read),contour,armCoverage,collar};
