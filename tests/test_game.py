@@ -5,6 +5,7 @@ Set PALATA_BROWSER_PATH to use a system Chromium instead of Playwright's browser
 """
 import functools
 import base64
+import hashlib
 import json
 import os
 from pathlib import Path
@@ -18,9 +19,33 @@ from playwright.sync_api import sync_playwright
 from PIL import Image
 
 ROOT = Path(__file__).resolve().parents[1]
+PATIENT_TUNIC_IMAGES = {
+    'male': 'assets/wardrobe/clothing/patient/patient_tunic_male.png?v=e10d4b90',
+    'female': 'assets/wardrobe/clothing/patient/patient_tunic_female.png?v=b964152e',
+}
 
 
 class IconAssetTests(unittest.TestCase):
+    def test_patient_tunic_uploads_keep_exact_bytes_and_transparency(self):
+        expected_blobs = {
+            'male': 'e10d4b9045cc64ec49b4194b8615a66d93ea5deb',
+            'female': 'b964152e4bda33dbbd7c76e48973396c61e80af8',
+        }
+        for gender, source in PATIENT_TUNIC_IMAGES.items():
+            with self.subTest(gender=gender):
+                path = ROOT / source.split('?')[0]
+                data = path.read_bytes()
+                blob = hashlib.sha1(f'blob {len(data)}\0'.encode() + data).hexdigest()
+                self.assertEqual(blob, expected_blobs[gender])
+                with Image.open(path) as image:
+                    self.assertEqual(image.format, 'PNG')
+                    self.assertEqual(image.size, (941, 1672))
+                    self.assertEqual(image.mode, 'RGBA')
+                    alpha = image.getchannel('A')
+                    self.assertEqual(alpha.getextrema(), (0, 255))
+                    self.assertIsNotNone(alpha.getbbox())
+                    self.assertGreater(alpha.histogram()[0], image.width * image.height / 2)
+
     def test_first_patient_shirt_drafts_are_real_transparent_pngs(self):
         for gender in ['male','female']:
             with self.subTest(gender=gender),Image.open(ROOT/f'assets/wardrobe/drafts/hospital_shirt_{gender}.png') as image:
@@ -255,6 +280,174 @@ class GameTests(unittest.TestCase):
         self.assertEqual(self.page.evaluate('paperDollState.appearance.face'),'future-face')
         self.assertEqual(self.page.locator('#layer-face').get_attribute('src'),'face_1.png')
 
+    def assert_patient_tunic_layers(self, gender):
+        source = PATIENT_TUNIC_IMAGES[gender]
+        self.page.wait_for_function('''source => ['layer-upper-body', 'wardrobe-layer-upper-body'].every(id => {
+            const image = document.getElementById(id);
+            return image.getAttribute('src') === source && image.naturalWidth === 941
+                && image.naturalHeight === 1672 && !image.classList.contains('hidden');
+        })''', arg=source)
+        for prefix in ['', 'wardrobe-']:
+            layer = self.page.locator(f'#{prefix}layer-upper-body')
+            self.assertTrue(layer.is_visible())
+            self.assertEqual(layer.evaluate('e=>getComputedStyle(e).objectFit'), 'contain')
+            self.assertEqual(layer.evaluate('e=>getComputedStyle(e).zIndex'), '3')
+            body = self.page.locator(f'#{prefix}layer-body')
+            self.assertEqual(body.get_attribute('src'),
+                'base_female.png?v=5489c78c' if gender == 'female' else 'base_male.png?v=0dec17c1')
+            self.assertEqual(body.evaluate('e=>[e.naturalWidth,e.naturalHeight]'), [941, 1672])
+
+    def test_patient_tunic_starter_and_independent_loadouts_survive_equip_unequip_reload(self):
+        self.load()
+        before = self.page.evaluate('JSON.stringify({stats,inventory,equippedGear,gameProgress})')
+        self.assertEqual(self.page.evaluate('paperDollState.patientLoadout.upperBody'), 'patient-tunic')
+        self.assertIsNone(self.page.evaluate('paperDollState.combatLoadout.upperBody'))
+        self.page.get_by_role('button', name='Гардероб', exact=True).click()
+        wardrobe = self.page.locator('#custom-modal')
+        wardrobe.locator('[data-wardrobe-category="clothes"]').click()
+        card = wardrobe.locator('[data-wardrobe-card="patient-tunic"]')
+        self.assertEqual(card.get_attribute('data-available'), 'true')
+        self.assertEqual(card.get_attribute('data-equipped'), 'true')
+        self.assertFalse(wardrobe.locator('[data-wardrobe-empty]').count())
+        self.assert_patient_tunic_layers('male')
+        # Inspection cannot equip, unequip, or persist any new state.
+        saved = self.page.evaluate('JSON.stringify({...localStorage})')
+        outfit = self.page.evaluate('JSON.stringify(paperDollState)')
+        card.click()
+        self.assertEqual(self.page.evaluate('JSON.stringify({...localStorage})'), saved)
+        self.assertEqual(self.page.evaluate('JSON.stringify(paperDollState)'), outfit)
+        self.wardrobe_action('patient-tunic', 'Зняти')
+        for prefix in ['', 'wardrobe-']:
+            self.assertIsNone(self.page.locator(f'#{prefix}layer-upper-body').get_attribute('src'))
+        self.page.reload(wait_until='networkidle')
+        self.assertIsNone(self.page.evaluate('paperDollState.patientLoadout.upperBody'))
+        self.assertIsNone(self.page.evaluate('paperDollState.combatLoadout.upperBody'))
+        self.page.get_by_role('button', name='Гардероб', exact=True).click()
+        wardrobe.locator('[data-wardrobe-category="clothes"]').click()
+        self.wardrobe_action('patient-tunic', 'Надягнути')
+        wardrobe.get_by_role('button', name='Трип', exact=True).click()
+        self.assertEqual(self.page.evaluate('paperDollState.patientLoadout.upperBody'), 'patient-tunic')
+        self.assertIsNone(self.page.evaluate('paperDollState.combatLoadout.upperBody'))
+        self.assertIsNone(self.page.locator('#wardrobe-layer-upper-body').get_attribute('src'))
+        self.wardrobe_action('patient-tunic', 'Надягнути')
+        wardrobe.locator('[data-wardrobe-category="appearance"]').click()
+        wardrobe.get_by_role('button', name='Жінка', exact=True).click()
+        wardrobe.locator('[data-wardrobe-category="clothes"]').click()
+        self.assert_patient_tunic_layers('female')
+        wardrobe.get_by_role('button', name='Пацієнт', exact=True).click()
+        self.wardrobe_action('patient-tunic', 'Зняти')
+        self.assertIsNone(self.page.evaluate('paperDollState.patientLoadout.upperBody'))
+        self.assertEqual(self.page.evaluate('paperDollState.combatLoadout.upperBody'), 'patient-tunic')
+        wardrobe.get_by_role('button', name='Трип', exact=True).click()
+        self.assert_patient_tunic_layers('female')
+        outfit = self.page.evaluate('JSON.stringify(paperDollState)')
+        self.page.reload(wait_until='networkidle')
+        self.assertEqual(self.page.evaluate('JSON.stringify(paperDollState)'), outfit)
+        self.page.get_by_role('button', name='Гардероб', exact=True).click()
+        self.assert_patient_tunic_layers('female')
+        self.assertEqual(self.page.evaluate('JSON.stringify({stats,inventory,equippedGear,gameProgress})'), before)
+
+    def test_patient_tunic_preserves_existing_explicitly_empty_outfits(self):
+        self.load({'palata404_paper_doll': json.dumps({
+            'schemaVersion': 2, 'selectedGender': 'female', 'activeViewMode': 'patient',
+            'appearance': {'face': None, 'hair': ''}, 'patientLoadout': {}, 'combatLoadout': {},
+        })})
+        self.page.get_by_role('button', name='Гардероб', exact=True).click()
+        wardrobe = self.page.locator('#custom-modal')
+        wardrobe.locator('[data-wardrobe-category="clothes"]').click()
+        for name in ['Пацієнт', 'Трип']:
+            wardrobe.get_by_role('button', name=name, exact=True).click()
+            self.assertEqual(wardrobe.locator('[data-wardrobe-card="patient-tunic"]').get_attribute('data-equipped'), 'false')
+            self.assertTrue(wardrobe.locator('#wardrobe-item-detail').get_by_role('button', name='Надягнути', exact=True).is_enabled())
+            for prefix in ['', 'wardrobe-']:
+                self.assertIsNone(self.page.locator(f'#{prefix}layer-upper-body').get_attribute('src'))
+        self.page.reload(wait_until='networkidle')
+        self.assertIsNone(self.page.evaluate('paperDollState.patientLoadout.upperBody'))
+        self.assertIsNone(self.page.evaluate('paperDollState.combatLoadout.upperBody'))
+
+    def test_patient_tunic_real_catalog_fit_in_both_scenes_genders_modes_and_viewports(self):
+        self.load()
+        before = self.page.evaluate('JSON.stringify({stats,inventory,equippedGear,gameProgress})')
+        bounds = {}
+        for gender, source in PATIENT_TUNIC_IMAGES.items():
+            with Image.open(ROOT / source.split('?')[0]) as image:
+                bounds[gender] = image.getchannel('A').point(lambda value: 255 if value >= 64 else 0).getbbox()
+        results = ROOT / 'test-results'
+        results.mkdir(exist_ok=True)
+        self.page.get_by_role('button', name='Гардероб', exact=True).click()
+        wardrobe = self.page.locator('#custom-modal')
+        for width, height in [(1280, 800), (1920, 1080), (390, 844), (320, 568), (844, 390)]:
+            self.page.set_viewport_size({'width': width, 'height': height})
+            for gender, gender_label in [('male', 'Чоловік'), ('female', 'Жінка')]:
+                wardrobe.locator('[data-wardrobe-category="appearance"]').click()
+                wardrobe.get_by_role('button', name=gender_label, exact=True).click()
+                wardrobe.locator('[data-wardrobe-category="clothes"]').click()
+                for mode, mode_label in [('patient', 'Пацієнт'), ('combat', 'Трип')]:
+                    with self.subTest(viewport=(width, height), gender=gender, mode=mode):
+                        wardrobe.get_by_role('button', name=mode_label, exact=True).click()
+                        self.assertEqual(wardrobe.get_attribute('data-wardrobe-theme'), 'trip' if mode == 'combat' else 'patient')
+                        self.assertEqual(wardrobe.locator('[data-wardrobe-card]').count(), 1)
+                        card = wardrobe.locator('[data-wardrobe-card="patient-tunic"]')
+                        self.assertEqual(card.get_attribute('data-available'), 'true')
+                        self.assertEqual(card.locator('img:not(.game-icon)').get_attribute('src'), PATIENT_TUNIC_IMAGES[gender])
+                        saved = self.page.evaluate('JSON.stringify({...localStorage})')
+                        card.click()
+                        self.assertEqual(self.page.evaluate('JSON.stringify({...localStorage})'), saved)
+                        action = wardrobe.locator('[data-wardrobe-action="patient-tunic"]')
+                        self.assertTrue(action.is_enabled())
+                        action.scroll_into_view_if_needed()
+                        box = action.bounding_box()
+                        self.assertGreaterEqual(box['height'], 44)
+                        self.assertGreaterEqual(box['y'], 0)
+                        self.assertLessEqual(box['y'] + box['height'], height)
+                        if action.inner_text() == 'Надягнути':
+                            action.click()
+                        self.assertEqual(wardrobe.locator('[data-wardrobe-action="patient-tunic"]').inner_text(), 'Зняти')
+                        self.assert_patient_tunic_layers(gender)
+                        self.assertEqual(card.locator('[data-paper-image-item]:visible').count(), 0)
+                        self.assertEqual(wardrobe.locator('#wardrobe-item-detail [data-paper-image-item]:visible').count(), 0)
+                        # Transparent source margins may extend outside a host.
+                        # Project only real clothing pixels through object-fit.
+                        projected = self.page.evaluate('''bounds => {
+                            const box = e => { const r=e.getBoundingClientRect(); return {x:r.x,y:r.y,width:r.width,height:r.height}; };
+                            return ['', 'wardrobe-'].map(prefix => {
+                                const image = document.getElementById(prefix+'layer-upper-body');
+                                const host = box(document.getElementById(prefix ? 'wardrobe-paperdoll' : 'character-paperdoll'));
+                                const rect = box(image), scale = Math.min(rect.width/image.naturalWidth, rect.height/image.naturalHeight);
+                                const left=rect.x+(rect.width-image.naturalWidth*scale)/2, top=rect.y+(rect.height-image.naturalHeight*scale)/2;
+                                return {host, visible:{x:left+bounds[0]*scale,y:top+bounds[1]*scale,width:(bounds[2]-bounds[0])*scale,height:(bounds[3]-bounds[1])*scale}};
+                            });
+                        }''', bounds[gender])
+                        normalized = []
+                        for entry in projected:
+                            host, garment = entry['host'], entry['visible']
+                            self.assertGreater(host['width'], 10)
+                            self.assertAlmostEqual(host['width'] / host['height'], 941 / 1672, delta=.002)
+                            self.assertGreaterEqual(garment['x'], host['x'] - 1)
+                            self.assertGreaterEqual(garment['y'], host['y'] - 1)
+                            self.assertLessEqual(garment['x'] + garment['width'], host['x'] + host['width'] + 1)
+                            self.assertLessEqual(garment['y'] + garment['height'], host['y'] + host['height'] + 1)
+                            self.assertGreater(garment['width'], host['width'] * .2)
+                            self.assertGreater(garment['height'], host['height'] * .15)
+                            normalized.append([(garment['x']-host['x'])/host['width'], (garment['y']-host['y'])/host['height'], garment['width']/host['width'], garment['height']/host['height']])
+                        for actual, expected in zip(*normalized):
+                            self.assertAlmostEqual(actual, expected, delta=.005)
+                        self.assertLessEqual(self.page.evaluate('document.documentElement.scrollWidth'), width)
+                        if width in [1280, 390]:
+                            name = f'patient-tunic-{mode}-{gender}-{width}x{height}'
+                            self.page.screenshot(path=str(results / f'{name}-wardrobe.png'))
+                            if width == 1280 and os.getenv('GITHUB_ACTIONS') == 'true':
+                                preview = wardrobe.locator('.wardrobe-stage').screenshot(type='jpeg', quality=65)
+                                print('PATIENT_TUNIC_PREVIEW:' + json.dumps({'name':name+'-wardrobe','jpeg':base64.b64encode(preview).decode()},separators=(',',':')),flush=True)
+                            wardrobe.get_by_role('button', name='Закрити гардероб', exact=True).click()
+                            self.page.locator('#character-paperdoll').scroll_into_view_if_needed()
+                            self.page.screenshot(path=str(results / f'{name}-main.png'))
+                            if width == 1280 and os.getenv('GITHUB_ACTIONS') == 'true':
+                                preview = self.page.locator('#character-paperdoll').screenshot(type='jpeg', quality=65)
+                                print('PATIENT_TUNIC_PREVIEW:' + json.dumps({'name':name+'-main','jpeg':base64.b64encode(preview).decode()},separators=(',',':')),flush=True)
+                            self.page.get_by_role('button', name='Гардероб', exact=True).click()
+        self.assertEqual(self.page.evaluate('JSON.stringify({stats,inventory,equippedGear,gameProgress})'), before)
+
     def test_paper_doll_layers_share_canvas_and_keep_faces_aligned_on_mobile(self):
         self.register_face_fixtures()
         self.load()
@@ -283,7 +476,7 @@ class GameTests(unittest.TestCase):
                     self.assertLessEqual(face['y']+face['height'],host['y']+host['height']*0.2)
                     self.assertGreaterEqual(host['x'],0)
                     self.assertLessEqual(host['x']+host['width'],width)
-                    self.assertEqual(self.page.locator('#character-paperdoll img:not(.hidden)').count(),2)
+                    self.assertEqual(self.page.locator('#character-paperdoll img:not(.hidden)').count(),3)
                     self.assertLessEqual(self.page.evaluate('document.documentElement.scrollWidth'),width)
                     self.page.screenshot(path=str(results/f'paper-doll-{gender}-{width}x{height}.png'))
         self.page.evaluate('''() => {
@@ -670,7 +863,7 @@ class GameTests(unittest.TestCase):
         for width,height in [(1920,1080),(768,1024),(390,844),(320,568)]:
             self.page.set_viewport_size({'width':width,'height':height})
             for mode in ['patient','combat']:
-                self.page.evaluate('mode=>{setPaperDollView(mode);selectWardrobeCategory("clothes")}',mode)
+                self.page.evaluate('mode=>{setPaperDollView(mode);selectWardrobeCategory("clothes");selectWardrobeSlot("outerwear")}',mode)
                 empty=self.page.locator('[data-wardrobe-empty]')
                 self.assertTrue(empty.is_visible())
                 if mode=='patient':self.assertIn('Лікарняний одяг',empty.inner_text())

@@ -947,3 +947,153 @@ test('wardrobe V3 shows unowned item details without granting equipment', () => 
     assert.equal(g.run('applyWardrobeItemAction()'),false);
     assert.equal(g.run('JSON.stringify({inventory,stats,equippedGear,paperDollState})'),before);
 });
+
+test('production patient tunic uses the exact approved uploads', () => {
+    const g = game();
+    const expectedBlobs = {
+        male: 'e10d4b9045cc64ec49b4194b8615a66d93ea5deb',
+        female: 'b964152e4bda33dbbd7c76e48973396c61e80af8',
+    };
+    for (const [gender, expected] of Object.entries(expectedBlobs)) {
+        const source = g.run(`PAPER_DOLL_ITEMS.find(item=>item.id==='patient-tunic').genderVariants.${gender}`);
+        const png = fs.readFileSync(path.join(root, source.split('?')[0]));
+        const blob = require('node:crypto').createHash('sha1')
+            .update(`blob ${png.length}\0`).update(png).digest('hex');
+        assert.equal(blob, expected, `${gender} clothing must preserve the approved PNG bytes`);
+    }
+});
+
+test('a fresh patient starts dressed while the combat outfit stays independent without inventory grants', () => {
+    const g = game({ palata404_inventory: '[]' });
+    assert.equal(g.run('paperDollState.patientLoadout.upperBody'), 'patient-tunic');
+    assert.equal(g.run('paperDollState.combatLoadout.upperBody'), null);
+    assert.equal(g.run('inventory.length'), 0);
+    assert.equal(g.run('isPaperDollItemOwned(selectedPaperDollItem("upperBody"))'), true);
+    for (const prefix of ['', 'wardrobe-']) {
+        assert.equal(g.elements.get(prefix + 'layer-upper-body').getAttribute('src'),
+            'assets/wardrobe/clothing/patient/patient_tunic_male.png?v=e10d4b90');
+    }
+    const combat = g.run('JSON.stringify({stats,inventory,equippedGear,gameProgress})');
+    g.run('setPaperDollView("combat");');
+    for (const prefix of ['', 'wardrobe-']) {
+        assert.equal(g.elements.get(prefix + 'layer-upper-body').getAttribute('src'), null);
+    }
+    assert.equal(g.run('equipPaperDollItem("upperBody","patient-tunic")'), true);
+    assert.equal(g.run('JSON.stringify({stats,inventory,equippedGear,gameProgress})'), combat);
+    assert.equal(g.run('inventory.length'), 0);
+});
+
+test('existing empty, corrupt and unsupported wardrobe records never receive a new starter outfit', () => {
+    const records = [
+        ...[1, 2].map(schemaVersion => JSON.stringify({ schemaVersion, selectedGender: 'female',
+            activeViewMode: 'combat', patientLoadout: { upperBody: null }, combatLoadout: { upperBody: null } })),
+        JSON.stringify({ schemaVersion: 2, patientLoadout: {}, combatLoadout: {} }),
+        JSON.stringify({ schemaVersion: 99, patientLoadout: {}, combatLoadout: {} }),
+        '{', 'null', '',
+    ];
+    for (const record of records) {
+        const g = game({ palata404_paper_doll: record });
+        assert.equal(g.run('paperDollState.patientLoadout.upperBody'), null, record);
+        assert.equal(g.run('paperDollState.combatLoadout.upperBody'), null, record);
+        const restored = game(Object.fromEntries(g.storage));
+        assert.equal(restored.run('paperDollState.patientLoadout.upperBody'), null, record);
+        assert.equal(restored.run('paperDollState.combatLoadout.upperBody'), null, record);
+    }
+});
+
+test('tunic removal and independent patient and combat choices survive reloads', () => {
+    let g = game();
+    const combat = g.run('JSON.stringify({stats,inventory,equippedGear,gameProgress})');
+    assert.equal(g.run('equipPaperDollItem("upperBody",null)'), true);
+    g.run('setPaperDollView("combat"); equipPaperDollItem("upperBody","patient-tunic");');
+    g = game(Object.fromEntries(g.storage));
+    assert.equal(g.run('paperDollState.patientLoadout.upperBody'), null);
+    assert.equal(g.run('paperDollState.combatLoadout.upperBody'), 'patient-tunic');
+    g.run('equipPaperDollItem("upperBody",null); setPaperDollView("patient");');
+    g = game(Object.fromEntries(g.storage));
+    assert.equal(g.run('paperDollState.patientLoadout.upperBody'), null);
+    assert.equal(g.run('paperDollState.combatLoadout.upperBody'), null);
+    for (const prefix of ['', 'wardrobe-']) {
+        assert.equal(g.elements.get(prefix + 'layer-upper-body').getAttribute('src'), null);
+    }
+    g.run('equipPaperDollItem("upperBody","patient-tunic");');
+    const restored = game(Object.fromEntries(g.storage));
+    assert.equal(restored.run('paperDollState.patientLoadout.upperBody'), 'patient-tunic');
+    assert.equal(restored.run('paperDollState.combatLoadout.upperBody'), null);
+    assert.equal(restored.run('JSON.stringify({stats,inventory,equippedGear,gameProgress})'), combat);
+});
+
+test('gender changes retain the tunic selection and use matching clothing in both character views', () => {
+    const g = game();
+    const combat = g.run('JSON.stringify({stats,inventory,equippedGear,gameProgress})');
+    g.run('setPaperDollView("combat"); equipPaperDollItem("upperBody","patient-tunic");');
+    for (const [gender, source] of [
+        ['female', 'assets/wardrobe/clothing/patient/patient_tunic_female.png?v=b964152e'],
+        ['male', 'assets/wardrobe/clothing/patient/patient_tunic_male.png?v=e10d4b90'],
+    ]) {
+        g.run(`setGender('${gender}');`);
+        assert.equal(g.run('paperDollState.patientLoadout.upperBody'), 'patient-tunic');
+        assert.equal(g.run('paperDollState.combatLoadout.upperBody'), 'patient-tunic');
+        for (const prefix of ['', 'wardrobe-']) {
+            assert.equal(g.elements.get(prefix + 'layer-upper-body').getAttribute('src'), source);
+        }
+        const restored = game(Object.fromEntries(g.storage));
+        assert.equal(restored.run('paperDollState.selectedGender'), gender);
+        assert.equal(restored.elements.get('layer-upper-body').getAttribute('src'), source);
+    }
+    assert.equal(g.run('JSON.stringify({stats,inventory,equippedGear,gameProgress})'), combat);
+});
+
+test('failed fitted clothing hides instead of substituting shared or opposite-gender art', () => {
+    const g = game();
+    const before = g.run('JSON.stringify({stats,inventory,equippedGear,gameProgress,paperDollState})');
+    g.elements.get('layer-upper-body').onerror();
+    for (const prefix of ['', 'wardrobe-']) {
+        const layer = g.elements.get(prefix + 'layer-upper-body');
+        assert.equal(layer.getAttribute('src'), null);
+        assert.equal(layer.classList.contains('hidden'), true);
+    }
+    assert.equal(g.run('JSON.stringify({stats,inventory,equippedGear,gameProgress,paperDollState})'), before);
+    // A missing current variant is also a missing image, even if the fitted
+    // garment has another gender's variant or a generic image configured.
+    assert.equal(g.run(`paperDollImageCandidates({
+        ...PAPER_DOLL_ITEMS.find(item=>item.id==='patient-tunic'),
+        genderVariants:{female:'base_female.png'}, image:'base_male.png'
+    },'male').length`), 0);
+    g.run('setGender("female");');
+    assert.equal(g.elements.get('layer-upper-body').getAttribute('src'),
+        'assets/wardrobe/clothing/patient/patient_tunic_female.png?v=b964152e');
+    g.elements.get('layer-upper-body').onerror();
+    assert.equal(g.elements.get('layer-upper-body').getAttribute('src'), null);
+    assert.equal(g.run('paperDollState.patientLoadout.upperBody'), 'patient-tunic');
+});
+
+test('fitted clothing keeps local PNG path restrictions', () => {
+    const g = game();
+    for (const source of [
+        'https://example.test/shirt.png', '//example.test/shirt.png', '../shirt.png',
+        'assets/../shirt.png', 'assets/%2e%2e/shirt.png', 'shirt.svg',
+        'shirt.png?tracking=1', 'shirt.png?v=ok&tracking=1',
+    ]) {
+        assert.equal(g.run(`paperDollImageCandidates({
+            ...PAPER_DOLL_ITEMS.find(item=>item.id==='patient-tunic'),
+            genderVariants:{male:${JSON.stringify(source)}}
+        },'male').length`), 0, source);
+    }
+});
+
+test('retrying a failed wardrobe save preserves an intentionally removed starter', () => {
+    const g = game({}, false, ['palata404_paper_doll']);
+    assert.equal(g.run('paperDollState.patientLoadout.upperBody'), 'patient-tunic');
+    const combat = g.run('JSON.stringify({stats,inventory,equippedGear,gameProgress})');
+    g.run('equipPaperDollItem("upperBody",null);');
+    assert.equal(g.run('paperDollSaveFailed'), true);
+    assert.equal(g.run('paperDollState.patientLoadout.upperBody'), null);
+    g.failedKeys.clear();
+    g.run('retryPaperDollSave();');
+    assert.equal(g.run('paperDollSaveFailed'), false);
+    const restored = game(Object.fromEntries(g.storage));
+    assert.equal(restored.run('paperDollState.patientLoadout.upperBody'), null);
+    assert.equal(restored.run('paperDollState.combatLoadout.upperBody'), null);
+    assert.equal(restored.run('JSON.stringify({stats,inventory,equippedGear,gameProgress})'), combat);
+});

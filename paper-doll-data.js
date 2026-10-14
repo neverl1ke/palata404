@@ -26,6 +26,19 @@ const PAPER_DOLL_BODIES = { male: 'base_male.png?v=0dec17c1', female: 'base_fema
 // New approved cosmetics can use the face slot, placement and multipart layers.
 const PAPER_DOLL_RETIRED_FACES = new Set(Array.from({ length: 6 }, (_, index) => `face_${index + 1}.png`));
 const PAPER_DOLL_ITEMS = [
+    {
+        id: 'patient-tunic', slot: 'upperBody', name: 'Лікарняна туніка', icon: 'shirt',
+        description: 'Легка лікарняна туніка вільного крою.',
+        availableByDefault: true, starterForPatient: true, fittedToGender: true,
+        genderVariants: {
+            male: 'assets/wardrobe/clothing/patient/patient_tunic_male.png?v=e10d4b90',
+            female: 'assets/wardrobe/clothing/patient/patient_tunic_female.png?v=b964152e'
+        },
+        placementByGender: {
+            male: { x: 180, y: 114, width: 583.42, height: 1036.64 },
+            female: { x: 180, y: 146.5, width: 588.125, height: 1045 }
+        }
+    },
     { id: 'gear-knife', slot: 'weapon', name: 'Іржавий ніж', inventoryName: 'Іржавий ніж', inventoryCategory: 'weapon', image: null, icon: 'knife' },
     { id: 'gear-pm', slot: 'weapon', name: 'ПМ (Пістолет Макарова)', inventoryName: 'ПМ (Пістолет Макарова)', inventoryCategory: 'weapon', image: null, icon: 'pistol' },
     { id: 'gear-aks', slot: 'weapon', name: 'Штурмовий АКС-74У', inventoryName: 'Штурмовий АКС-74У', inventoryCategory: 'weapon', image: null, icon: 'rifle' },

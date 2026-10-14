@@ -47,9 +47,19 @@ function selectedPaperDollItem(slot) {
 }
 
 function loadPaperDollState(legacy) {
+    const raw = safeStorageGet(PAPER_DOLL_STORAGE_KEY);
     let value = null;
-    try { value = JSON.parse(safeStorageGet(PAPER_DOLL_STORAGE_KEY) || 'null'); } catch { /* Keep old cosmetic choices. */ }
-    return normalizePaperDollState(value, legacy);
+    try { value = JSON.parse(raw || 'null'); } catch { /* Keep old cosmetic choices. */ }
+    const state = normalizePaperDollState(value, legacy);
+    // Only a new wardrobe receives the starter. Saved empty slots stay empty.
+    if (raw === null) {
+        for (const item of PAPER_DOLL_ITEMS) {
+            if (item.starterForPatient && Object.hasOwn(state.patientLoadout, item.slot) && isPaperDollItemOwned(item)) {
+                state.patientLoadout[item.slot] = item.id;
+            }
+        }
+    }
+    return state;
 }
 
 function savePaperDollState() {
@@ -99,7 +109,9 @@ function equipPaperDollItem(slot, itemId) {
 
 function paperDollImageCandidates(item, selectedGender) {
     const variants = item?.genderVariants || {};
-    return [...new Set([variants[selectedGender], item?.image, variants[selectedGender === 'female' ? 'male' : 'female']])]
+    const sources = item?.fittedToGender === true ? [variants[selectedGender]]
+        : [variants[selectedGender], item?.image, variants[selectedGender === 'female' ? 'male' : 'female']];
+    return [...new Set(sources)]
         .filter(path => typeof path === 'string' && /^(?:[a-zA-Z0-9_-]+\/)*[a-zA-Z0-9_.-]+\.png(?:\?v=[a-zA-Z0-9_-]+)?$/.test(path)
             && !path.split('/').includes('..'));
 }
@@ -140,10 +152,13 @@ function renderPaperDollAt(host, prefix = '') {
             image.setAttribute('alt', ''); image.setAttribute('aria-hidden', 'true'); host.appendChild(image);
         }
         if (layered) image.setAttribute('data-paper-extra', 'true');
-        const layer = layered ? { ...part, placement: part.placement ?? item.placement, renderOrder: part.renderOrder ?? item.renderOrder } : part;
+        const layer = layered ? { ...part, placement: part.placement ?? item.placement,
+            placementByGender: part.placementByGender ?? item.placementByGender,
+            fittedToGender: part.fittedToGender ?? item.fittedToGender,
+            renderOrder: part.renderOrder ?? item.renderOrder } : part;
         const candidates = paperDollImageCandidates(layer, selectedGender);
         const order = Number.isFinite(layer.renderOrder) ? Math.max(-100, Math.min(100, layer.renderOrder)) : index;
-        positionPaperDollLayer(image, layer.placement, order);
+        positionPaperDollLayer(image, layer.placementByGender?.[selectedGender] ?? layer.placement, order);
         const source = candidates.find(path => !failedPaperDollImages.has(path));
         if (!source) {
             image.onload = null; image.onerror = null;
