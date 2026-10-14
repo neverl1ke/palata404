@@ -25,14 +25,14 @@ class IconAssetTests(unittest.TestCase):
         for gender in ['male','female']:
             with self.subTest(gender=gender),Image.open(ROOT/f'assets/wardrobe/drafts/hospital_shirt_{gender}.png') as image:
                 self.assertEqual(image.format,'PNG')
-                self.assertEqual(image.size,(981,1602) if gender=='male' else (941,1671))
+                self.assertEqual(image.size,(982,1602) if gender=='male' else (941,1670))
                 self.assertEqual(image.mode,'RGBA')
                 alpha=image.getchannel('A')
                 self.assertEqual(alpha.getextrema(),(0,255))
                 self.assertGreater(alpha.histogram()[0],image.width*image.height/2)
                 bounds=alpha.point(lambda value:255 if value>=64 else 0).getbbox()
                 self.assertGreater(bounds[1],300)
-                self.assertLess(bounds[3],1200)
+                self.assertLess(bounds[3],1250)
 
     def test_approved_body_pngs_have_real_alpha_and_match_the_new_frame(self):
         for name in ['base_male.png','base_female.png']:
@@ -767,24 +767,68 @@ class GameTests(unittest.TestCase):
         for gender in ['male','female']:
             article=self.page.locator(f'[data-gender="{gender}"]')
             self.assertEqual(article.locator('.body').evaluate('e=>[e.naturalWidth,e.naturalHeight]'),[941,1672])
-            self.assertEqual(article.locator('.shirt').evaluate('e=>[e.naturalWidth,e.naturalHeight]'),[981,1602] if gender=='male' else [941,1671])
+            self.assertEqual(article.locator('.shirt').evaluate('e=>[e.naturalWidth,e.naturalHeight]'),[982,1602] if gender=='male' else [941,1670])
             frame=article.locator('.frame').bounding_box()
             self.assertAlmostEqual(frame['width']/frame['height'],941/1672,delta=.001)
             self.assertEqual(article.locator('.shirt').evaluate('e=>getComputedStyle(e).objectFit'),'contain')
         # Canonical points that used to show bare shoulder or rear cuff fabric.
         # Project through the actual DOM image boxes, not a copied CSS offset.
-        coverage=self.page.locator('[data-gender="male"]').evaluate('''article=>{
-            const frame=article.querySelector('.frame').getBoundingClientRect();
-            const layers=['body','shirt'].map(name=>{const image=article.querySelector('.'+name),canvas=document.createElement('canvas');canvas.width=image.naturalWidth;canvas.height=image.naturalHeight;const context=canvas.getContext('2d');context.drawImage(image,0,0);return{rect:image.getBoundingClientRect(),context,width:image.naturalWidth,height:image.naturalHeight}});
-            const read=([x,y])=>layers.map(layer=>{const px=Math.round((frame.x+x/941*frame.width-layer.rect.x)/layer.rect.width*layer.width),py=Math.round((frame.y+y/1672*frame.height-layer.rect.y)/layer.rect.height*layer.height);return px>=0&&py>=0&&px<layer.width&&py<layer.height?layer.context.getImageData(px,py,1,1).data[3]:0});
-            return{shoulder:[[632,310],[654,320],[670,330]].map(read),cuffs:[[242,524],[258,530],[277,539],[700,531],[675,545],[660,551]].map(read)};
-        }''')
-        for body,cloth in coverage['shoulder']:
-            self.assertGreaterEqual(body,200)
-            self.assertGreaterEqual(cloth,240)
-        for body,cloth in coverage['cuffs']:
-            self.assertGreaterEqual(body,200)
-            self.assertLessEqual(cloth,5)
+        for gender in ['male','female']:
+            with self.subTest(shirt_fit=gender):
+                coverage=self.page.locator(f'[data-gender="{gender}"]').evaluate('''article=>{
+                    const gender=article.dataset.gender,frame=article.querySelector('.frame').getBoundingClientRect();
+                    const layers=['body','shirt'].map(name=>{const image=article.querySelector('.'+name),canvas=document.createElement('canvas');canvas.width=image.naturalWidth;canvas.height=image.naturalHeight;const context=canvas.getContext('2d');context.drawImage(image,0,0);return{rect:image.getBoundingClientRect(),pixels:context.getImageData(0,0,canvas.width,canvas.height).data,width:image.naturalWidth,height:image.naturalHeight}});
+                    const read=([x,y])=>layers.map(layer=>{const px=Math.round((frame.x+x/941*frame.width-layer.rect.x)/layer.rect.width*layer.width),py=Math.round((frame.y+y/1672*frame.height-layer.rect.y)/layer.rect.height*layer.height);return px>=0&&py>=0&&px<layer.width&&py<layer.height?layer.pixels[(py*layer.width+px)*4+3]:0});
+                    const runs=(y,layer)=>{
+                        const result=[];let start=null;
+                        for(let x=0;x<=941;x++){
+                            const opaque=x<941&&read([x,y])[layer]>=128;
+                            if(opaque&&start===null)start=x;
+                            if(!opaque&&start!==null){if(x-start>=3)result.push([start,x-1]);start=null;}
+                        }
+                        return result;
+                    };
+                    const edges=(y,layer)=>{const row=runs(y,layer);return row.length?[row[0][0],row.at(-1)[1]]:null;};
+                    const contour=[];
+                    for(let y=gender==='male'?440:400;y<=(gender==='male'?475:430);y+=5)contour.push({y,body:edges(y,0),cloth:edges(y,1)});
+                    const armCoverage=[0,1].map(side=>{
+                        let covered=0,total=0;
+                        for(let y=gender==='male'?370:350;y<=(gender==='male'?450:410);y+=10){
+                            const body=edges(y,0),start=side===0?body[0]:body[1]-59;
+                            for(let x=start;x<start+60;x++){const [skin,cloth]=read([x,y]);if(skin>=200){total++;if(cloth>=200)covered++;}}
+                        }
+                        return{covered,total};
+                    });
+                    const collar=[];
+                    if(gender==='female')for(let y=260;y<=290;y+=5)collar.push({y,body:edges(y,0),cloth:edges(y,1)});
+                    const shoulder=gender==='male'?[[632,310],[654,320],[670,330]]:[[293,320],[304,330],[647,320],[660,330]];
+                    const cuffs=gender==='male'?[[242,524],[258,530],[277,539],[700,531],[675,545],[660,551]]:[[279,472],[308,480],[331,490],[668,472],[643,480],[639,490]];
+                    return{shoulder:shoulder.map(read),cuffs:cuffs.map(read),contour,armCoverage,collar};
+                }''')
+                for body,cloth in coverage['shoulder']:
+                    self.assertGreaterEqual(body,200)
+                    self.assertGreaterEqual(cloth,240)
+                for body,cloth in coverage['cuffs']:
+                    self.assertGreaterEqual(body,200)
+                    self.assertLessEqual(cloth,5)
+                # Constrain the entire lower sleeve edge, so wing-shaped cuffs
+                # cannot pass by merely covering a few selected arm pixels.
+                for row in coverage['contour']:
+                    self.assertIsNotNone(row['body'],row)
+                    self.assertIsNotNone(row['cloth'],row)
+                    body_left,body_right=row['body'];cloth_left,cloth_right=row['cloth']
+                    self.assertGreaterEqual(cloth_left,body_left-18,row)
+                    self.assertLessEqual(cloth_left,body_left+3,row)
+                    self.assertGreaterEqual(cloth_right,body_right-3,row)
+                    self.assertLessEqual(cloth_right,body_right+18,row)
+                for arm in coverage['armCoverage']:
+                    self.assertGreater(arm['total'],0)
+                    self.assertGreaterEqual(arm['covered']/arm['total'],.85)
+                for row in coverage['collar']:
+                    if row['cloth'] is None:
+                        continue
+                    self.assertGreaterEqual(row['cloth'][0],row['body'][0]-8,row)
+                    self.assertLessEqual(row['cloth'][1],row['body'][1]+8,row)
         results=ROOT/'test-results';results.mkdir(exist_ok=True)
         self.page.set_viewport_size({'width':1280,'height':1000})
         for mode in ['patient','combat']:
@@ -804,18 +848,24 @@ class GameTests(unittest.TestCase):
         self.page.set_viewport_size({'width':1280,'height':1200})
         self.page.evaluate('''()=>{
             document.querySelector('.models').style.gridTemplateColumns='941px';
-            document.querySelector('[data-gender="female"]').style.display='none';
-            document.querySelector('[data-gender="male"] .scene').style.height='1968px';
-            document.querySelector('[data-gender="male"] .frame').style.height='1672px';
+            document.querySelectorAll('article[data-gender]').forEach(article=>{
+                article.querySelector('.scene').style.height='1968px';
+                article.querySelector('.frame').style.height='1672px';
+            });
         }''')
-        for mode in ['patient','combat']:
-            self.page.locator(f'button[data-mode="{mode}"]').click()
-            frame=self.page.locator('[data-gender="male"] .frame').bounding_box()
-            clip={'x':frame['x']+140,'y':frame['y']+240,'width':660,'height':340}
-            self.page.screenshot(path=str(results/f'male-shirt-fit-detail-{mode}.png'),clip=clip)
-            if os.getenv('GITHUB_ACTIONS')=='true':
-                preview=self.page.screenshot(type='jpeg',quality=85,clip=clip)
-                print('PATIENT_SHIRT_ART_DETAIL:'+json.dumps({'name':f'male-shirt-fit-detail-{mode}','jpeg':base64.b64encode(preview).decode()},separators=(',',':')),flush=True)
+        for gender in ['male','female']:
+            self.page.evaluate('''gender=>document.querySelectorAll('article[data-gender]').forEach(article=>{
+                article.style.display=article.dataset.gender===gender?'':'none';
+            })''',gender)
+            for mode in ['patient','combat']:
+                self.page.locator(f'button[data-mode="{mode}"]').click()
+                self.page.evaluate('''mode=>new Promise((resolve,reject)=>{const image=new Image();image.onload=resolve;image.onerror=()=>reject(new Error('Preview background failed'));image.src=mode==='combat'?'../wardrobe_background_v2.png?v=639ad612':'../wardrobe_background.png?v=d490c304';})''',mode)
+                frame=self.page.locator(f'[data-gender="{gender}"] .frame').bounding_box()
+                clip={'x':frame['x']+140,'y':frame['y']+240,'width':660,'height':340}
+                self.page.screenshot(path=str(results/f'{gender}-shirt-fit-detail-{mode}.png'),clip=clip)
+                if os.getenv('GITHUB_ACTIONS')=='true':
+                    preview=self.page.screenshot(type='jpeg',quality=85,clip=clip)
+                    print('PATIENT_SHIRT_ART_DETAIL:'+json.dumps({'name':f'{gender}-shirt-fit-detail-{mode}','jpeg':base64.b64encode(preview).decode()},separators=(',',':')),flush=True)
 
     def test_trial_faces_are_not_loaded_or_selectable_after_old_save_migration(self):
         requests=[]
