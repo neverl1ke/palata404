@@ -49,7 +49,7 @@ function renderWardrobeUI() {
     if (wardrobeSlot === 'baseBody') {
         container.innerHTML = ['male','female'].map(value => `<article class="wardrobe-item-card wardrobe-body-card${paperDollState.selectedGender === value ? ' selected' : ''}">
             <img class="wardrobe-body-image" src="${PAPER_DOLL_BODIES[value]}" alt="">
-            <h4>${value === 'female' ? 'Жінка' : 'Чоловік'}</h4><button type="button" class="report-button" data-paper-gender="${value}" data-wardrobe-focus="gender-${value}" aria-pressed="${paperDollState.selectedGender === value}">${value === 'female' ? 'Жінка' : 'Чоловік'}</button></article>`).join('');
+            <h4>${iconHTML(value)}${value === 'female' ? 'Жінка' : 'Чоловік'}</h4><button type="button" class="report-button" data-paper-gender="${value}" data-wardrobe-focus="gender-${value}" aria-pressed="${paperDollState.selectedGender === value}">${value === 'female' ? 'Жінка' : 'Чоловік'}</button></article>`).join('');
     } else {
         const items = PAPER_DOLL_ITEMS.filter(item => item.slot === wardrobeSlot);
         container.innerHTML = items.length ? items.map(wardrobeItemCard).join('') : `<div class="wardrobe-empty">${iconHTML(PAPER_DOLL_SLOTS[wardrobeSlot].icon, 'hero')}<h4>Матеріали не долучено</h4><p>Для цього слота ще немає предметів і підготовлених зображень.</p></div>`;
@@ -61,7 +61,7 @@ function renderWardrobeUI() {
         const id = button.dataset.wardrobeItem;
         equipPaperDollItem(wardrobeSlot, selectedPaperDollItem(wardrobeSlot)?.id === id ? null : id);
     }));
-    container.querySelectorAll('.wardrobe-item-image img').forEach(thumbnail => {
+    container.querySelectorAll('.wardrobe-item-image img:not(.game-icon)').forEach(thumbnail => {
         thumbnail.onerror = () => {
             failedPaperDollImages.add(thumbnail.getAttribute('src')); thumbnail.classList.add('hidden');
             renderPaperDoll(); renderPaperDollControls(false);
