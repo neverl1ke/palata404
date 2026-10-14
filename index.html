@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Special+Elite&display=swap" rel="stylesheet">
 
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <link rel="stylesheet" href="style.css?v=40013">
+    <link rel="stylesheet" href="style.css?v=40014">
 </head>
 <body>
 
@@ -136,12 +136,24 @@
                 <div class="character-preview">
                     <div id="character-container" class="character-container">
                         <!-- Шари персонажа (Paper Doll) -->
-                        <img id="layer-body" class="char-layer" src="base_male.png" alt="Тіло">
-                        <img id="layer-face" class="char-layer hidden" alt="Обличчя">
-                        <img id="layer-hair" class="char-layer hidden" alt="Зачіска">
-                        <img id="layer-clothes" class="char-layer hidden" alt="Одяг">
+                        <div id="character-paperdoll" class="character-paperdoll" role="img" aria-label="Чоловік · Пацієнт">
+                            <img id="layer-body" class="char-layer" src="base_male.png" alt="" aria-hidden="true">
+                            <img id="layer-pants" class="char-layer hidden" alt="" aria-hidden="true">
+                            <img id="layer-footwear" class="char-layer hidden" alt="" aria-hidden="true">
+                            <img id="layer-upper-body" class="char-layer hidden" alt="" aria-hidden="true">
+                            <img id="layer-outerwear" class="char-layer hidden" alt="" aria-hidden="true">
+                            <img id="layer-armor" class="char-layer hidden" alt="" aria-hidden="true">
+                            <img id="layer-loadout" class="char-layer hidden" alt="" aria-hidden="true">
+                            <img id="layer-gloves" class="char-layer hidden" alt="" aria-hidden="true">
+                            <img id="layer-back" class="char-layer hidden" alt="" aria-hidden="true">
+                            <img id="layer-headwear" class="char-layer hidden" alt="" aria-hidden="true">
+                            <img id="layer-face" class="char-layer hidden" alt="" aria-hidden="true">
+                            <img id="layer-weapon" class="char-layer hidden" alt="" aria-hidden="true">
+                            <img id="layer-accessory" class="char-layer hidden" alt="" aria-hidden="true">
+                        </div>
                     </div>
                 </div>
+                <span id="paper-doll-view-label" class="paper-doll-view-label">Комплект: Пацієнт</span>
             </section>
 
             <!-- Права панель (Картка поточної локації) -->
@@ -232,6 +244,12 @@
                 <button class="btn-close-mini" onclick="closeCustomization()" aria-label="Закрити вікно">✕</button>
             </div>
 
+            <div class="paper-doll-controls">
+                <fieldset><legend>Персонаж</legend><button type="button" class="btn-outfit" data-paper-gender="male" onclick="setGender('male')">Чоловік</button><button type="button" class="btn-outfit" data-paper-gender="female" onclick="setGender('female')">Жінка</button></fieldset>
+                <fieldset><legend>Комплект для перегляду</legend><button type="button" class="btn-outfit" data-paper-view="patient" onclick="setPaperDollView('patient')">Пацієнт</button><button type="button" class="btn-outfit" data-paper-view="combat" onclick="setPaperDollView('combat')">Спогад</button></fieldset>
+            </div>
+            <div id="paper-doll-save-note" class="report-save-note hidden" role="status">Не вдалося зберегти зовнішність. <button type="button" class="btn-outfit" onclick="retryPaperDollSave()">Повторити збереження</button></div>
+
             <div class="inventory-layout-wrapper">
                 <div class="inventory-filters-column">
                     <button class="filter-btn active" title="Персонаж" onclick="setWardrobeTab('body', this)" aria-label="Персонаж"><img class="game-icon" src="assets/icons/user.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"></button>
@@ -242,6 +260,7 @@
 
                 <div id="wardrobe-container" class="wardrobe-grid"></div>
             </div>
+            <section class="paper-doll-equipment" aria-label="Візуальний комплект персонажа"><h4>Слоти поточного комплекту</h4><p>Предмети для відображення персонажа.</p><div id="paper-doll-slots" class="paper-doll-slots"></div></section>
         </div>
     </div>
 
@@ -395,7 +414,9 @@
     <script src="battle-results.js?v=40009" defer></script>
     <script src="raid-archive.js?v=40012" defer></script>
     <script src="staff-archive.js?v=40013" defer></script>
-    <script src="script.js?v=40013" defer></script>
+    <script src="paper-doll-data.js?v=40014" defer></script>
+    <script src="paper-doll.js?v=40014" defer></script>
+    <script src="script.js?v=40014" defer></script>
     <!-- Модальне вікно: Медичне Досьє пацієнта (Аркуш паперу А4) -->
     <div id="dossier-modal" role="dialog" aria-modal="true" aria-label="Особисте досьє" class="modal center-modal hidden">
         <div class="modal-content dossier-paper">

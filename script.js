@@ -231,14 +231,10 @@ let currentHair = safeStorageGet('palata404_hair') || '';
 let currentFace = safeStorageGet('palata404_face') || '';
 let currentClothes = safeStorageGet('palata404_clothes') || '';
 
-const facesData = [
-    { id: 'face_1.png', name: 'Обличчя #1 (Голений)' },
-    { id: 'face_2.png', name: 'Обличчя #2 (Коротка стрижка)' },
-    { id: 'face_3.png', name: 'Обличчя #3 (Середнє волосся)' },
-    { id: 'face_4.png', name: 'Обличчя #4 (Довге волосся)' },
-    { id: 'face_5.png', name: 'Обличчя #5 (Андеркат)' },
-    { id: 'face_6.png', name: 'Обличчя #6 (Лисий суворий)' }
-];
+const facesData = PAPER_DOLL_ITEMS.filter(item => item.slot === 'face').map(({ id, name }) => ({ id, name }));
+
+let paperDollState = loadPaperDollState({ gender, face: currentFace });
+syncLegacyPaperDollSelection();
 
 const MEDICAL_ITEMS = Object.freeze({
     madness_pills: { name: 'Таблетки «Аміназин»', icon: 'pills', category: 'meds', effectType: 'madness', effectDesc: 'Знижує божевілля на 15', cost: 50, currency: 'silver' },
@@ -423,6 +419,7 @@ function saveGameProgress() {
         safeStorageSet('palata404_clothes', currentClothes),
         safeStorageSet('palata404_inventory', JSON.stringify(inventory)),
         safeStorageSet('palata404_equipped', JSON.stringify(equippedGear)),
+        savePaperDollState(),
         safeStorageSet('palata404_room', currentRoom.id),
         safeStorageSet('palata404_progress', JSON.stringify(gameProgress)),
         safeStorageSet('palata404_boss_kills', JSON.stringify(bossKillsCount))
@@ -461,56 +458,18 @@ function addExperience(amount, notify = true) {
 
 function setGender(selectedGender) {
     if (selectedGender !== 'male' && selectedGender !== 'female') return;
-    gender = selectedGender;
-    saveGameProgress();
-    updateCharacterLayers();
+    paperDollState.selectedGender = selectedGender;
+    commitPaperDollSelection();
 }
 
 function setFace(faceFileName) {
     if (!facesData.some(face => face.id === faceFileName)) return;
-    currentFace = faceFileName;
-    saveGameProgress();
-    updateCharacterLayers();
-    renderWardrobe();
+    equipPaperDollItem('face', faceFileName);
 }
 
 function updateCharacterLayers() {
-    const bodyImg = document.getElementById('layer-body');
-    if (bodyImg) {
-        bodyImg.src = gender === 'female' ? 'base_female.png' : 'base_male.png';
-    }
-
-    const faceImg = document.getElementById('layer-face');
-    const hairImg = document.getElementById('layer-hair');
-    const clothesImg = document.getElementById('layer-clothes');
-
-    if (faceImg) {
-        const selectedFace = facesData.find(face => face.id === currentFace);
-        if (selectedFace) {
-            faceImg.src = selectedFace.id;
-            faceImg.classList.remove('hidden');
-        } else {
-            faceImg.classList.add('hidden');
-        }
-    }
-
-    if (hairImg) {
-        if (currentHair) {
-            hairImg.src = currentHair;
-            hairImg.classList.remove('hidden');
-        } else {
-            hairImg.classList.add('hidden');
-        }
-    }
-
-    if (clothesImg) {
-        if (currentClothes) {
-            clothesImg.src = currentClothes;
-            clothesImg.classList.remove('hidden');
-        } else {
-            clothesImg.classList.add('hidden');
-        }
-    }
+    renderPaperDoll();
+    renderPaperDollControls(false);
 }
 
 function updateUI() {
@@ -916,6 +875,7 @@ function setWardrobeTab(tab, btnElem) {
 }
 
 function renderWardrobe() {
+    renderPaperDollControls();
     const container = document.getElementById('wardrobe-container');
     if (!container) return;
     container.innerHTML = '';
@@ -946,7 +906,7 @@ function renderWardrobe() {
             container.appendChild(card);
         });
     } else {
-        container.innerHTML = `<p style="font-size:12px; color:#a3927d; text-align:center; padding: 20px 0;">Розділ у розробці</p>`;
+        container.innerHTML = `<p style="font-size:12px; color:#a3927d; text-align:center; padding: 20px 0;">${currentWardrobeTab === 'hair' ? 'Окремих зачісок поки немає. Доступні варіанти зібрано у розділі «Обличчя».' : 'Обирайте предмети у слотах поточного комплекту нижче.'}</p>`;
     }
 }
 

@@ -18,6 +18,8 @@ jobs:
       - run: node --check raid-archive.js
       - run: node --check staff-archive-data.js
       - run: node --check staff-archive.js
+      - run: node --check paper-doll-data.js
+      - run: node --check paper-doll.js
       - run: node --test --test-isolation=none tests/game-logic.test.cjs
       - run: pip install -r requirements-dev.txt
       - run: python -m playwright install --with-deps chromium

@@ -157,6 +157,100 @@ class GameTests(unittest.TestCase):
         self.assertEqual(self.page.locator('#layer-body').get_attribute('src'), 'base_female.png')
         self.assertEqual(self.page.locator('#layer-face').get_attribute('src'), 'face_3.png')
 
+    def test_paper_doll_ui_keeps_two_loadouts_and_gender_across_reload(self):
+        self.load()
+        before=self.page.evaluate('JSON.stringify({stats,inventory,equippedGear,gameProgress})')
+        self.page.get_by_role('navigation',name='Ігрове меню').get_by_role('button',name='Гардероб',exact=True).click()
+        wardrobe=self.page.locator('#custom-modal')
+        wardrobe.get_by_role('button',name='Жінка',exact=True).click()
+        self.assertEqual(wardrobe.locator('[data-paper-gender="female"]').get_attribute('aria-pressed'),'true')
+        wardrobe.locator('#paper-slot-face').select_option('face_3.png')
+        wardrobe.locator('#paper-slot-armor').select_option('sample-armor')
+        self.assertIn('поки недоступне',wardrobe.locator('[data-paper-image-status="armor"]').inner_text())
+        self.assertIsNone(self.page.locator('#layer-armor').get_attribute('src'))
+        wardrobe.get_by_role('button',name='Спогад',exact=True).click()
+        self.assertEqual(wardrobe.locator('#paper-slot-face').input_value(),'')
+        self.assertEqual(wardrobe.locator('#paper-slot-armor').input_value(),'')
+        wardrobe.locator('#paper-slot-face').select_option('face_2.png')
+        wardrobe.locator('#paper-slot-weapon').select_option('sample-weapon')
+        wardrobe.get_by_role('button',name='Пацієнт',exact=True).click()
+        self.assertEqual(wardrobe.locator('#paper-slot-face').input_value(),'face_3.png')
+        self.assertEqual(wardrobe.locator('#paper-slot-armor').input_value(),'sample-armor')
+        self.assertEqual(wardrobe.locator('#paper-slot-weapon').input_value(),'')
+        wardrobe.get_by_role('button',name='Зняти: Бронежилет',exact=True).click()
+        self.assertEqual(wardrobe.locator('#paper-slot-armor').input_value(),'')
+        wardrobe.get_by_role('button',name='Спогад',exact=True).click()
+        self.assertEqual(wardrobe.locator('#paper-slot-weapon').input_value(),'sample-weapon')
+        state=self.page.evaluate('JSON.stringify(paperDollState)')
+        self.assertEqual(self.page.evaluate('JSON.stringify({stats,inventory,equippedGear,gameProgress})'),before)
+        self.page.reload(wait_until='networkidle')
+        self.assertEqual(self.page.evaluate('JSON.stringify(paperDollState)'),state)
+        self.assertEqual(self.page.locator('#layer-body').get_attribute('src'),'base_female.png')
+        self.assertEqual(self.page.locator('#layer-face').get_attribute('src'),'face_2.png')
+        self.assertEqual(self.page.locator('#paper-doll-view-label').inner_text(),'Комплект: Спогад')
+        self.assertEqual(self.page.evaluate('JSON.stringify({stats,inventory,equippedGear,gameProgress})'),before)
+
+    def test_paper_doll_layers_share_canvas_and_keep_faces_aligned_on_mobile(self):
+        self.load()
+        self.assertEqual(self.page.locator('#character-paperdoll > img').count(),13)
+        results=ROOT/'test-results'
+        results.mkdir(exist_ok=True)
+        for width,height in [(1280,800),(1024,768),(768,1024),(844,390),(390,844),(320,568)]:
+            with self.subTest(viewport=(width,height)):
+                self.page.set_viewport_size({'width':width,'height':height})
+                for gender in ['male','female']:
+                    self.page.evaluate('g=>{setGender(g); setFace("face_1.png")}',gender)
+                    self.page.wait_for_function('()=>["layer-body","layer-face"].every(id=>document.getElementById(id).naturalWidth>0&&!document.getElementById(id).classList.contains("hidden"))')
+                    host=self.page.locator('#character-paperdoll').bounding_box()
+                    body=self.page.locator('#layer-body').bounding_box()
+                    face=self.page.locator('#layer-face').bounding_box()
+                    self.assertGreater(host['width'],30)
+                    self.assertAlmostEqual(host['width']/host['height'],736/1417,delta=0.005)
+                    for coordinate in ['x','y','width','height']:
+                        self.assertAlmostEqual(body[coordinate],host[coordinate],delta=1)
+                    self.assertGreaterEqual(face['x'],host['x'])
+                    self.assertLessEqual(face['x']+face['width'],host['x']+host['width'])
+                    self.assertLessEqual(face['y']+face['height'],host['y']+host['height']*0.2)
+                    self.assertGreaterEqual(host['x'],0)
+                    self.assertLessEqual(host['x']+host['width'],width)
+                    self.assertEqual(self.page.locator('#character-paperdoll img:not(.hidden)').count(),2)
+                    self.assertLessEqual(self.page.evaluate('document.documentElement.scrollWidth'),width)
+                    self.page.screenshot(path=str(results/f'paper-doll-{gender}-{width}x{height}.png'))
+        self.page.evaluate('''() => {
+            PAPER_DOLL_ITEMS.push({id:'fixture-pants',slot:'pants',name:'Fixture',image:'base_male.png'},
+                {id:'fixture-upper',slot:'upperBody',name:'Fixture',image:'base_male.png'});
+            equipPaperDollItem('pants','fixture-pants'); equipPaperDollItem('upperBody','fixture-upper');
+        }''')
+        self.page.wait_for_function('()=>["layer-pants","layer-upper-body"].every(id=>document.getElementById(id).naturalWidth>0)')
+        body=self.page.locator('#layer-body').bounding_box()
+        for layer,z in [('layer-pants',1),('layer-upper-body',3)]:
+            image=self.page.locator(f'#{layer}')
+            box=image.bounding_box()
+            for coordinate in ['x','y','width','height']:
+                self.assertAlmostEqual(box[coordinate],body[coordinate],delta=1)
+            self.assertEqual(image.evaluate('e=>getComputedStyle(e).zIndex'),str(z))
+        self.page.evaluate('equipPaperDollItem("pants",null); equipPaperDollItem("upperBody",null);')
+        self.assertEqual(self.page.locator('#character-paperdoll img:not(.hidden)').count(),2)
+
+    def test_paper_doll_missing_png_falls_back_or_hides_without_broken_images(self):
+        self.load()
+        requests=[]
+        self.context.route('**/paper-missing*.png',lambda route:(requests.append(route.request.url),route.fulfill(status=404,body='')))
+        self.page.evaluate('''() => {
+            PAPER_DOLL_ITEMS.push({id:'fixture-fallback',slot:'headwear',name:'Fixture',
+                genderVariants:{female:'paper-missing-female.png',male:'face_1.png'}},
+                {id:'fixture-missing',slot:'weapon',name:'Fixture',image:'paper-missing-weapon.png'});
+            setGender('female'); equipPaperDollItem('headwear','fixture-fallback'); equipPaperDollItem('weapon','fixture-missing');
+        }''')
+        self.page.wait_for_function('()=>document.getElementById("layer-headwear").getAttribute("src")==="face_1.png"&&document.getElementById("layer-headwear").naturalWidth>0')
+        self.page.wait_for_function('()=>!document.getElementById("layer-weapon").hasAttribute("src")')
+        self.assertFalse(self.page.locator('#layer-weapon').is_visible())
+        self.assertTrue(self.page.locator('#layer-body').is_visible())
+        self.page.evaluate('updateCharacterLayers(); updateCharacterLayers(); openCustomization();')
+        self.assertEqual(len(requests),2)
+        self.assertTrue(self.page.locator('[data-paper-image-status="weapon"]').is_visible())
+        self.assertEqual(self.page.evaluate('paperDollState.patientLoadout.weapon'),'fixture-missing')
+
     def test_equipment_swap_reload_and_legacy_training_bonus(self):
         self.load({
             'palata404_stats': json.dumps({'damage': 51, 'armor': 40, 'gymRounds': 2}),
