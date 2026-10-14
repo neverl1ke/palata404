@@ -157,47 +157,52 @@ class GameTests(unittest.TestCase):
         self.assertEqual(self.page.locator('#layer-body').get_attribute('src'), 'base_female.png')
         self.assertEqual(self.page.locator('#layer-face').get_attribute('src'), 'face_3.png')
 
-    def test_paper_doll_ui_keeps_two_loadouts_and_gender_across_reload(self):
+    def test_paper_doll_ui_keeps_two_loadouts_and_shared_appearance_across_reload(self):
         self.load()
         before=self.page.evaluate('JSON.stringify({stats,inventory,equippedGear,gameProgress})')
-        self.page.get_by_role('navigation',name='Ігрове меню').get_by_role('button',name='Гардероб',exact=True).click()
+        self.page.evaluate('openCustomization()')
         wardrobe=self.page.locator('#custom-modal')
+        self.assertEqual(wardrobe.locator('select').count(),0)
+        self.assertEqual(wardrobe.locator('[data-wardrobe-category]').count(),5)
         wardrobe.get_by_role('button',name='Жінка',exact=True).click()
-        self.assertEqual(wardrobe.locator('[data-paper-gender="female"]').get_attribute('aria-pressed'),'true')
-        wardrobe.locator('#paper-slot-face').select_option('face_3.png')
-        wardrobe.locator('#paper-slot-armor').select_option('sample-armor')
-        self.assertIn('поки недоступне',wardrobe.locator('[data-paper-image-status="armor"]').inner_text())
+        wardrobe.locator('[data-wardrobe-slot="face"]').click()
+        self.assertEqual(wardrobe.locator('[data-wardrobe-card]').count(),6)
+        wardrobe.locator('[data-wardrobe-card="face_3.png"]').get_by_role('button',name='Обрати',exact=True).click()
+        for prefix in ['', 'wardrobe-']:
+            self.assertEqual(self.page.locator(f'#{prefix}layer-face').get_attribute('src'),'face_3.png')
+        wardrobe.locator('[data-wardrobe-category="gear"]').click()
+        wardrobe.locator('[data-wardrobe-slot="armor"]').click()
+        card=wardrobe.locator('[data-wardrobe-card="gear-br1"]')
+        self.assertIn('Зображення не підготовлено',card.inner_text())
+        card.get_by_role('button',name='Надягнути',exact=True).click()
+        self.assertIn('НАДЯГНУТО',card.inner_text())
         self.assertIsNone(self.page.locator('#layer-armor').get_attribute('src'))
         wardrobe.get_by_role('button',name='Спогад',exact=True).click()
-        self.assertEqual(wardrobe.locator('#paper-slot-face').input_value(),'')
-        self.assertEqual(wardrobe.locator('#paper-slot-armor').input_value(),'')
-        wardrobe.locator('#paper-slot-face').select_option('face_2.png')
-        wardrobe.locator('#paper-slot-weapon').select_option('sample-weapon')
+        self.assertEqual(self.page.evaluate('paperDollState.appearance.face'),'face_3.png')
+        self.assertEqual(self.page.evaluate('paperDollState.combatLoadout.armor'),None)
+        wardrobe.locator('[data-wardrobe-category="weapons"]').click()
+        self.assertEqual(wardrobe.locator('[data-wardrobe-card]').count(),3)
+        wardrobe.locator('[data-wardrobe-card="gear-pm"]').get_by_role('button',name='Надягнути',exact=True).click()
         wardrobe.get_by_role('button',name='Пацієнт',exact=True).click()
-        self.assertEqual(wardrobe.locator('#paper-slot-face').input_value(),'face_3.png')
-        self.assertEqual(wardrobe.locator('#paper-slot-armor').input_value(),'sample-armor')
-        self.assertEqual(wardrobe.locator('#paper-slot-weapon').input_value(),'')
-        wardrobe.get_by_role('button',name='Зняти: Бронежилет',exact=True).click()
-        self.assertEqual(wardrobe.locator('#paper-slot-armor').input_value(),'')
+        self.assertEqual(self.page.evaluate('paperDollState.patientLoadout.weapon'),None)
+        wardrobe.locator('[data-wardrobe-category="gear"]').click()
+        wardrobe.locator('[data-wardrobe-slot="armor"]').click()
+        wardrobe.locator('[data-wardrobe-card="gear-br1"]').get_by_role('button',name='Зняти',exact=True).click()
         wardrobe.get_by_role('button',name='Спогад',exact=True).click()
-        self.assertEqual(wardrobe.locator('#paper-slot-weapon').input_value(),'sample-weapon')
+        self.assertEqual(self.page.evaluate('paperDollState.combatLoadout.weapon'),'gear-pm')
         state=self.page.evaluate('JSON.stringify(paperDollState)')
         self.assertEqual(self.page.evaluate('JSON.stringify({stats,inventory,equippedGear,gameProgress})'),before)
         self.page.reload(wait_until='networkidle')
         self.assertEqual(self.page.evaluate('JSON.stringify(paperDollState)'),state)
         self.assertEqual(self.page.locator('#layer-body').get_attribute('src'),'base_female.png')
-        self.assertEqual(self.page.locator('#layer-face').get_attribute('src'),'face_2.png')
+        self.assertEqual(self.page.locator('#layer-face').get_attribute('src'),'face_3.png')
         self.assertEqual(self.page.locator('#paper-doll-view-label').inner_text(),'Комплект: Спогад')
         self.assertEqual(self.page.evaluate('JSON.stringify({stats,inventory,equippedGear,gameProgress})'),before)
-        self.page.evaluate('''() => {
-            PAPER_DOLL_ITEMS.push({id:'future-face',slot:'face',name:'Архівне обличчя',image:'face_1.png'});
-            facesData.push({id:'future-face',name:'Архівне обличчя'});
-            openCustomization(); setWardrobeTab('face');
-        }''')
-        card=self.page.locator('.outfit-card').filter(has_text='Архівне обличчя')
+        self.page.evaluate("PAPER_DOLL_ITEMS.push({id:'future-face',slot:'face',name:'Архівне обличчя',image:'face_1.png',availableByDefault:true}); openCustomization(); setWardrobeTab('face');")
+        card=wardrobe.locator('[data-wardrobe-card="future-face"]')
         self.assertEqual(card.locator('img').get_attribute('src'),'face_1.png')
         card.get_by_role('button',name='Обрати',exact=True).click()
-        self.assertEqual(self.page.evaluate('paperDollState.combatLoadout.face'),'future-face')
+        self.assertEqual(self.page.evaluate('paperDollState.appearance.face'),'future-face')
         self.assertEqual(self.page.locator('#layer-face').get_attribute('src'),'face_1.png')
 
     def test_paper_doll_layers_share_canvas_and_keep_faces_aligned_on_mobile(self):
@@ -231,8 +236,8 @@ class GameTests(unittest.TestCase):
                     self.assertLessEqual(self.page.evaluate('document.documentElement.scrollWidth'),width)
                     self.page.screenshot(path=str(results/f'paper-doll-{gender}-{width}x{height}.png'))
         self.page.evaluate('''() => {
-            PAPER_DOLL_ITEMS.push({id:'fixture-pants',slot:'pants',name:'Fixture',image:'base_male.png'},
-                {id:'fixture-upper',slot:'upperBody',name:'Fixture',image:'base_male.png'});
+            PAPER_DOLL_ITEMS.push({id:'fixture-pants',slot:'pants',name:'Fixture',availableByDefault:true,image:'base_male.png'},
+                {id:'fixture-upper',slot:'upperBody',name:'Fixture',availableByDefault:true,image:'base_male.png'});
             equipPaperDollItem('pants','fixture-pants'); equipPaperDollItem('upperBody','fixture-upper');
         }''')
         self.page.wait_for_function('()=>["layer-pants","layer-upper-body"].every(id=>document.getElementById(id).naturalWidth>0)')
@@ -251,19 +256,88 @@ class GameTests(unittest.TestCase):
         requests=[]
         self.context.route('**/paper-missing*.png',lambda route:(requests.append(route.request.url),route.fulfill(status=404,body='')))
         self.page.evaluate('''() => {
-            PAPER_DOLL_ITEMS.push({id:'fixture-fallback',slot:'headwear',name:'Fixture',
+            PAPER_DOLL_ITEMS.push({id:'fixture-fallback',slot:'headwear',name:'Fixture',availableByDefault:true,
                 genderVariants:{female:'paper-missing-female.png',male:'face_1.png'}},
-                {id:'fixture-missing',slot:'weapon',name:'Fixture',image:'paper-missing-weapon.png'});
+                {id:'fixture-missing',slot:'weapon',name:'Fixture',availableByDefault:true,image:'paper-missing-weapon.png'});
             setGender('female'); equipPaperDollItem('headwear','fixture-fallback'); equipPaperDollItem('weapon','fixture-missing');
         }''')
         self.page.wait_for_function('()=>document.getElementById("layer-headwear").getAttribute("src")==="face_1.png"&&document.getElementById("layer-headwear").naturalWidth>0')
         self.page.wait_for_function('()=>!document.getElementById("layer-weapon").hasAttribute("src")')
         self.assertFalse(self.page.locator('#layer-weapon').is_visible())
         self.assertTrue(self.page.locator('#layer-body').is_visible())
-        self.page.evaluate('updateCharacterLayers(); updateCharacterLayers(); openCustomization();')
-        self.assertEqual(len(requests),2)
-        self.assertTrue(self.page.locator('[data-paper-image-status="weapon"]').is_visible())
+        count=len(requests)
+        self.page.evaluate('updateCharacterLayers(); updateCharacterLayers(); openCustomization(); selectWardrobeCategory("weapons");')
+        self.assertEqual(len(set(requests)),2)
+        self.assertEqual(len(requests),count)
+        self.assertTrue(self.page.locator('[data-paper-image-item="fixture-missing"]').is_visible())
         self.assertEqual(self.page.evaluate('paperDollState.patientLoadout.weapon'),'fixture-missing')
+
+    def test_wide_wardrobe_keeps_preview_inside_and_scrolls_item_panel_on_mobile(self):
+        self.load()
+        self.page.evaluate('openCustomization(); setFace("face_4.png"); setWardrobeTab("face");')
+        results=ROOT/'test-results'
+        results.mkdir(exist_ok=True)
+        for width,height in [(1280,800),(1024,768),(768,1024),(844,390),(390,844),(320,568)]:
+            with self.subTest(viewport=(width,height)):
+                self.page.set_viewport_size({'width':width,'height':height})
+                self.page.wait_for_function('()=>document.getElementById("wardrobe-layer-body").naturalWidth>0&&document.getElementById("wardrobe-layer-face").naturalWidth>0')
+                boxes=self.page.evaluate('''() => Object.fromEntries(['wardrobe-paperdoll','wardrobe-layer-body','wardrobe-layer-face'].map(id=>{
+                    const r=document.getElementById(id).getBoundingClientRect(); return [id,{x:r.x,y:r.y,width:r.width,height:r.height}];
+                }))''')
+                host,body,face=[boxes[id] for id in ['wardrobe-paperdoll','wardrobe-layer-body','wardrobe-layer-face']]
+                self.assertGreater(host['height'],100)
+                self.assertAlmostEqual(host['width']/host['height'],736/1417,delta=0.01)
+                for coordinate in ['x','y','width','height']:
+                    self.assertAlmostEqual(body[coordinate],host[coordinate],delta=1)
+                self.assertGreaterEqual(host['y'],0)
+                self.assertLessEqual(host['y']+host['height'],height+1)
+                self.assertGreaterEqual(host['x'],0)
+                self.assertLessEqual(host['x']+host['width'],width)
+                self.assertLessEqual(face['y']+face['height'],host['y']+host['height']*0.2)
+                document=self.page.locator('.wardrobe-document')
+                self.assertLessEqual(document.bounding_box()['height'],height*0.85+1)
+                self.assertLessEqual(document.evaluate('e=>e.scrollHeight-e.clientHeight'),1)
+                self.assertEqual(self.page.locator('[data-wardrobe-slot]').count(),2)
+                self.assertEqual(self.page.locator('#wardrobe-layer-face').get_attribute('src'),self.page.locator('#layer-face').get_attribute('src'))
+                self.assertLessEqual(self.page.evaluate('document.documentElement.scrollWidth'),width)
+                self.page.screenshot(path=str(results/f'wide-wardrobe-{width}x{height}.png'))
+        self.page.locator('[data-wardrobe-card="face_2.png"]').get_by_role('button',name='Обрати',exact=True).click()
+        self.assertEqual(self.page.evaluate('document.activeElement.dataset.wardrobeFocus'),'item-face_2.png')
+        self.page.keyboard.press('Escape')
+        self.assertFalse(self.page.locator('#custom-modal').is_visible())
+        self.assertEqual(self.page.locator('#layer-face').get_attribute('src'),'face_2.png')
+
+    def test_wardrobe_inventory_ownership_and_old_appearance_migration(self):
+        self.load({'palata404_inventory':'[]','palata404_paper_doll':json.dumps({'schemaVersion':1,'selectedGender':'female','activeViewMode':'combat',
+            'patientLoadout':{'face':'face_1.png','armor':'sample-armor'},'combatLoadout':{'face':'face_5.png','weapon':'sample-weapon'}})})
+        self.assertEqual(self.page.evaluate('paperDollState.appearance.face'),'face_5.png')
+        self.assertEqual(self.page.evaluate('paperDollState.legacyFaces.patient'),'face_1.png')
+        self.page.evaluate('openCustomization(); selectWardrobeCategory("weapons");')
+        self.assertEqual(self.page.locator('#wardrobe-container button:disabled').count(),3)
+        self.assertFalse(self.page.evaluate('equipPaperDollItem("weapon","gear-pm")'))
+        self.assertEqual(self.page.evaluate('inventory.length'),0)
+        self.page.evaluate('setPaperDollView("patient"); selectWardrobeCategory("appearance"); selectWardrobeSlot("face");')
+        self.assertEqual(self.page.locator('#wardrobe-layer-face').get_attribute('src'),'face_5.png')
+        self.assertEqual(self.page.locator('[data-wardrobe-card]').count(),6)
+
+    def test_wardrobe_complex_layers_update_both_views_and_clean_up_after_removal(self):
+        self.load()
+        self.page.evaluate('''() => {
+            PAPER_DOLL_ITEMS.push({id:'complex-fixture',slot:'back',name:'Fixture',availableByDefault:true,layers:[
+                {id:'rear',image:'base_male.png',renderOrder:-1},
+                {id:'front',image:'face_1.png',renderOrder:12,placement:PAPER_DOLL_ITEMS[0].placement}]});
+            openCustomization(); selectWardrobeCategory('gear'); selectWardrobeSlot('back');
+        }''')
+        before=self.page.evaluate('JSON.stringify({stats,inventory,equippedGear,gameProgress})')
+        card=self.page.locator('[data-wardrobe-card="complex-fixture"]')
+        card.get_by_role('button',name='Надягнути',exact=True).click()
+        for prefix in ['', 'wardrobe-']:
+            self.page.wait_for_function('p=>["rear","front"].every(part=>document.getElementById(p+"layer-back-"+part)?.naturalWidth>0)',arg=prefix)
+            self.assertEqual(self.page.locator(f'#{prefix}layer-back-rear').evaluate('e=>getComputedStyle(e).zIndex'),'-1')
+            self.assertEqual(self.page.locator(f'#{prefix}layer-back-front').evaluate('e=>getComputedStyle(e).zIndex'),'12')
+        card.get_by_role('button',name='Зняти',exact=True).click()
+        self.assertEqual(self.page.locator('[data-paper-extra]').count(),0)
+        self.assertEqual(self.page.evaluate('JSON.stringify({stats,inventory,equippedGear,gameProgress})'),before)
 
     def test_equipment_swap_reload_and_legacy_training_bonus(self):
         self.load({

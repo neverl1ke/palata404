@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Special+Elite&display=swap" rel="stylesheet">
 
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <link rel="stylesheet" href="style.css?v=40014">
+    <link rel="stylesheet" href="style.css?v=40016">
 </head>
 <body>
 
@@ -236,32 +236,24 @@
         </div>
     </div>
 
-    <!-- Модальне вікно Гардеробу -->
-    <div id="custom-modal" role="dialog" aria-modal="true" aria-label="Гардероб" class="modal side-modal hidden">
-        <div class="modal-content side-content">
-            <div class="modal-header">
-                <h3><img class="game-icon" src="assets/icons/coat.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"> Гардероб</h3>
-                <button class="btn-close-mini" onclick="closeCustomization()" aria-label="Закрити вікно">✕</button>
-            </div>
-
-            <div class="paper-doll-controls">
-                <fieldset><legend>Персонаж</legend><button type="button" class="btn-outfit" data-paper-gender="male" onclick="setGender('male')">Чоловік</button><button type="button" class="btn-outfit" data-paper-gender="female" onclick="setGender('female')">Жінка</button></fieldset>
-                <fieldset><legend>Комплект для перегляду</legend><button type="button" class="btn-outfit" data-paper-view="patient" onclick="setPaperDollView('patient')">Пацієнт</button><button type="button" class="btn-outfit" data-paper-view="combat" onclick="setPaperDollView('combat')">Спогад</button></fieldset>
-            </div>
-            <div id="paper-doll-save-note" class="report-save-note hidden" role="status">Не вдалося зберегти зовнішність. <button type="button" class="btn-outfit" onclick="retryPaperDollSave()">Повторити збереження</button></div>
-
-            <div class="inventory-layout-wrapper">
-                <div class="inventory-filters-column">
-                    <button class="filter-btn active" title="Персонаж" onclick="setWardrobeTab('body', this)" aria-label="Персонаж"><img class="game-icon" src="assets/icons/user.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"></button>
-                    <button class="filter-btn" title="Зачіска" onclick="setWardrobeTab('hair', this)" aria-label="Зачіска"><img class="game-icon" src="assets/icons/scissors.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"></button>
-                    <button class="filter-btn" title="Обличчя" onclick="setWardrobeTab('face', this)" aria-label="Обличчя"><img class="game-icon" src="assets/icons/eye.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"></button>
-                    <button class="filter-btn" title="Одяг" onclick="setWardrobeTab('clothes', this)" aria-label="Одяг"><img class="game-icon" src="assets/icons/shirt.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"></button>
+    <!-- RPG-гардероб: картотека, спільний Paper Doll, предмети інвентаря -->
+    <div id="custom-modal" role="dialog" aria-modal="true" aria-label="Гардероб" class="modal wardrobe-modal hidden">
+        <article class="battle-report wardrobe-document">
+            <header class="wardrobe-header">
+                <div><span class="staff-section-code">ОСОБОВА КАРТОТЕКА · ОБЛІК СПОРЯДЖЕННЯ</span><h3>Гардероб</h3></div>
+                <div class="wardrobe-view-switch" role="group" aria-label="Комплект для перегляду">
+                    <button type="button" data-paper-view="patient" onclick="setPaperDollView('patient')">Пацієнт</button>
+                    <button type="button" data-paper-view="combat" onclick="setPaperDollView('combat')">Спогад</button>
                 </div>
-
-                <div id="wardrobe-container" class="wardrobe-grid"></div>
+                <button type="button" class="report-close" onclick="closeCustomization()" aria-label="Закрити гардероб">✕</button>
+            </header>
+            <div id="paper-doll-save-note" class="report-save-note hidden" role="status">Не вдалося зберегти зовнішність. <button type="button" class="report-detail-link" onclick="retryPaperDollSave()">Повторити збереження</button></div>
+            <div class="wardrobe-layout">
+                <aside class="wardrobe-index"><nav id="wardrobe-categories" aria-label="Категорії гардероба"></nav><nav id="wardrobe-slots" aria-label="Слоти категорії"></nav></aside>
+                <section class="wardrobe-preview" aria-label="Попередній перегляд персонажа"><span class="staff-section-code">ПОВНОРОСТОВИЙ ЗНІМОК</span><div class="wardrobe-stage"><div id="wardrobe-paperdoll" class="character-paperdoll" role="img" aria-label="Чоловік · Пацієнт"></div></div><span class="wardrobe-preview-note">Вигляд персонажа в палаті</span></section>
+                <section class="wardrobe-items" aria-labelledby="wardrobe-items-title"><h4 id="wardrobe-items-title">Базове тіло</h4><div id="wardrobe-container" class="wardrobe-item-grid"></div></section>
             </div>
-            <section class="paper-doll-equipment" aria-label="Візуальний комплект персонажа"><h4>Слоти поточного комплекту</h4><p>Предмети для відображення персонажа.</p><div id="paper-doll-slots" class="paper-doll-slots"></div></section>
-        </div>
+        </article>
     </div>
 
     <!-- Модальне вікно: Сусіди по блоку -->
@@ -414,9 +406,10 @@
     <script src="battle-results.js?v=40009" defer></script>
     <script src="raid-archive.js?v=40012" defer></script>
     <script src="staff-archive.js?v=40013" defer></script>
-    <script src="paper-doll-data.js?v=40014" defer></script>
-    <script src="paper-doll.js?v=40014" defer></script>
-    <script src="script.js?v=40015" defer></script>
+    <script src="paper-doll-data.js?v=40016" defer></script>
+    <script src="paper-doll.js?v=40016" defer></script>
+    <script src="wardrobe.js?v=40016" defer></script>
+    <script src="script.js?v=40016" defer></script>
     <!-- Модальне вікно: Медичне Досьє пацієнта (Аркуш паперу А4) -->
     <div id="dossier-modal" role="dialog" aria-modal="true" aria-label="Особисте досьє" class="modal center-modal hidden">
         <div class="modal-content dossier-paper">

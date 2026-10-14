@@ -233,9 +233,6 @@ let currentClothes = safeStorageGet('palata404_clothes') || '';
 
 const facesData = PAPER_DOLL_ITEMS.filter(item => item.slot === 'face').map(({ id, name }) => ({ id, name }));
 
-let paperDollState = loadPaperDollState({ gender, face: currentFace });
-syncLegacyPaperDollSelection();
-
 const MEDICAL_ITEMS = Object.freeze({
     madness_pills: { name: 'Таблетки «Аміназин»', icon: 'pills', category: 'meds', effectType: 'madness', effectDesc: 'Знижує божевілля на 15', cost: 50, currency: 'silver' },
     stamina_10: { name: 'Енергетик', icon: 'drink', category: 'meds', effectType: 'stamina_10', effectDesc: 'Відновлює 10% витривалості', cost: 2, currency: 'bucks' },
@@ -277,6 +274,9 @@ stats.baseArmor = Number.isSafeInteger(stats.baseArmor) && stats.baseArmor >= 0
     : Math.max(DEFAULT_STATS.armor, stats.armor - equippedArmorBonus);
 recalculateEquipmentStats();
 
+let paperDollState = loadPaperDollState({ gender, face: currentFace, hair: currentHair });
+syncLegacyPaperDollSelection();
+
 function normalizeInventory(items) {
     const result = [];
     items.forEach(item => {
@@ -314,7 +314,6 @@ function recalculateEquipmentStats() {
 }
 
 let currentCategory = 'all';
-let currentWardrobeTab = 'body';
 let selectedItemForAction = null;
 
 const gameFloorsData = [
@@ -865,53 +864,15 @@ function closeCustomization() {
     if (modal) modal.classList.add('hidden');
 }
 
-function setWardrobeTab(tab, btnElem) {
-    currentWardrobeTab = tab;
-    if (btnElem && btnElem.parentElement) {
-        btnElem.parentElement.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-        btnElem.classList.add('active');
-    }
+function setWardrobeTab(tab) {
+    const aliases = { body: ['appearance','baseBody'], face: ['appearance','face'], hair: ['appearance','face'], clothes: ['clothes','upperBody'] };
+    if (!aliases[tab]) return;
+    [wardrobeCategory, wardrobeSlot] = aliases[tab];
     renderWardrobe();
 }
 
 function renderWardrobe() {
-    renderPaperDollControls();
-    const container = document.getElementById('wardrobe-container');
-    if (!container) return;
-    container.innerHTML = '';
-
-    if (currentWardrobeTab === 'body') {
-        container.innerHTML = `
-            <div class="outfit-card ${gender === 'male' ? 'active' : ''}">
-                <div>${iconHTML('male')} Чоловіча стать</div>
-                <button class="btn-outfit" onclick="setGender('male'); renderWardrobe();">Обрати</button>
-            </div>
-            <div class="outfit-card ${gender === 'female' ? 'active' : ''}">
-                <div>${iconHTML('female')} Жіноча стать</div>
-                <button class="btn-outfit" onclick="setGender('female'); renderWardrobe();">Обрати</button>
-            </div>
-        `;
-    } else if (currentWardrobeTab === 'face') {
-        facesData.forEach(face => {
-            const isActive = currentFace === face.id;
-            const item = PAPER_DOLL_ITEMS.find(entry => entry.id === face.id && entry.slot === 'face');
-            const image = paperDollImageCandidates(item, gender).find(path => !failedPaperDollImages.has(path));
-            const card = document.createElement('div');
-            card.className = `outfit-card ${isActive ? 'active' : ''}`;
-            card.innerHTML = `
-                <div style="display:flex; align-items:center; gap:8px;">
-                    ${image ? `<img src="${escapeHTML(image)}" style="width:32px; height:32px; object-fit:cover; border-radius:4px; border:1px solid #3d2d22;" alt="">` : iconHTML('eye')}
-                    <span>${escapeHTML(face.name)}</span>
-                </div>
-                <button type="button" class="btn-outfit" data-face-choice="${escapeHTML(face.id)}">${isActive ? 'Обрано' : 'Обрати'}</button>
-            `;
-            card.querySelectorAll('[data-face-choice]').forEach(button => button.addEventListener('click', () => setFace(button.dataset.faceChoice)));
-            card.querySelectorAll('img').forEach(thumbnail => { thumbnail.onerror = () => thumbnail.classList.add('hidden'); });
-            container.appendChild(card);
-        });
-    } else {
-        container.innerHTML = `<p style="font-size:12px; color:#a3927d; text-align:center; padding: 20px 0;">${currentWardrobeTab === 'hair' ? 'Окремих зачісок поки немає. Доступні варіанти зібрано у розділі «Обличчя».' : 'Обирайте предмети у слотах поточного комплекту нижче.'}</p>`;
-    }
+    renderWardrobeUI();
 }
 
 // === Спортзал та збереження прогресу ===

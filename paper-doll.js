@@ -7,19 +7,43 @@ function emptyPaperDollLoadout() {
 }
 
 function normalizePaperDollState(value, legacy = {}) {
-    const valid = value && typeof value === 'object' && !Array.isArray(value) && value.schemaVersion === 1;
-    const state = { schemaVersion: 1,
+    const valid = value && typeof value === 'object' && !Array.isArray(value) && [1,2].includes(value.schemaVersion);
+    const state = { schemaVersion: 2,
         selectedGender: (valid ? value.selectedGender : legacy.gender) === 'female' ? 'female' : 'male',
         activeViewMode: valid && value.activeViewMode === 'combat' ? 'combat' : 'patient',
+        appearance: { face: null, hair: valid && value.schemaVersion === 2 && typeof value.appearance?.hair === 'string' ? value.appearance.hair : legacy.hair || '' },
         patientLoadout: emptyPaperDollLoadout(), combatLoadout: emptyPaperDollLoadout() };
     for (const key of ['patientLoadout', 'combatLoadout']) {
         const source = valid && value[key] && typeof value[key] === 'object' ? value[key] : {};
         for (const slot of Object.keys(state[key])) {
-            if (PAPER_DOLL_ITEMS.some(item => item.id === source[slot] && item.slot === slot)) state[key][slot] = source[slot];
+            if (slot === 'face') continue;
+            const id = valid && value.schemaVersion === 1 ? PAPER_DOLL_LEGACY_ITEMS[source[slot]] || source[slot] : source[slot];
+            if (PAPER_DOLL_ITEMS.some(item => item.id === id && item.slot === slot && isPaperDollItemOwned(item))) state[key][slot] = id;
         }
     }
-    if (!valid && PAPER_DOLL_ITEMS.some(item => item.id === legacy.face && item.slot === 'face')) state.patientLoadout.face = legacy.face;
+    const face = valid ? value.schemaVersion === 2 ? value.appearance?.face
+        : value[state.activeViewMode === 'combat' ? 'combatLoadout' : 'patientLoadout']?.face : legacy.face;
+    if (PAPER_DOLL_ITEMS.some(item => item.id === face && item.slot === 'face' && isPaperDollItemOwned(item))) state.appearance.face = face;
+    const oldFaces = valid && value.schemaVersion === 1 ? { patient: value.patientLoadout?.face, combat: value.combatLoadout?.face } : value?.legacyFaces;
+    if (oldFaces && oldFaces.patient !== oldFaces.combat) {
+        state.legacyFaces = Object.fromEntries(['patient','combat'].map(key => [key, PAPER_DOLL_ITEMS.some(item => item.id === oldFaces[key] && item.slot === 'face') ? oldFaces[key] : null]));
+    }
+    if (!valid) {
+        for (const item of PAPER_DOLL_ITEMS.filter(entry => entry.inventoryName && isPaperDollItemOwned(entry))) {
+            if (equippedGear[item.inventoryCategory] === item.inventoryName) state.combatLoadout[item.slot] = item.id;
+        }
+    }
     return state;
+}
+
+function isPaperDollItemOwned(item) {
+    return item?.availableByDefault === true || Boolean(item?.inventoryName && inventory.some(entry =>
+        entry.name === item.inventoryName && entry.category === item.inventoryCategory && entry.count > 0));
+}
+
+function selectedPaperDollItem(slot) {
+    const id = slot === 'face' ? paperDollState.appearance.face : activePaperDollLoadout()[slot];
+    return PAPER_DOLL_ITEMS.find(item => item.id === id && item.slot === slot && isPaperDollItemOwned(item));
 }
 
 function loadPaperDollState(legacy) {
@@ -41,7 +65,8 @@ function activePaperDollLoadout() {
 
 function syncLegacyPaperDollSelection() {
     gender = paperDollState.selectedGender;
-    currentFace = activePaperDollLoadout().face || '';
+    currentFace = paperDollState.appearance.face || '';
+    currentHair = paperDollState.appearance.hair || '';
 }
 
 function commitPaperDollSelection() {
@@ -65,8 +90,9 @@ function setPaperDollView(mode) {
 
 function equipPaperDollItem(slot, itemId) {
     if (slot === 'baseBody' || !Object.hasOwn(activePaperDollLoadout(), slot)) return false;
-    if (itemId !== null && !PAPER_DOLL_ITEMS.some(item => item.id === itemId && item.slot === slot)) return false;
-    activePaperDollLoadout()[slot] = itemId;
+    if (itemId !== null && !PAPER_DOLL_ITEMS.some(item => item.id === itemId && item.slot === slot && isPaperDollItemOwned(item))) return false;
+    if (slot === 'face') paperDollState.appearance.face = itemId;
+    else activePaperDollLoadout()[slot] = itemId;
     commitPaperDollSelection();
     return true;
 }
@@ -88,23 +114,34 @@ function positionPaperDollLayer(image, placement, index) {
     image.style.zIndex = String(index);
 }
 
-function renderPaperDoll() {
-    const host = document.getElementById('character-paperdoll');
+function renderPaperDollAt(host, prefix = '') {
     if (!host) return;
     const selectedGender = paperDollState.selectedGender;
     host.setAttribute('aria-label', `${selectedGender === 'female' ? 'Жінка' : 'Чоловік'} · ${paperDollState.activeViewMode === 'combat' ? 'Спогад' : 'Пацієнт'}`);
+    const extraLayers = new Set();
     PAPER_DOLL_LAYER_ORDER.forEach((slot, index) => {
         const definition = PAPER_DOLL_SLOTS[slot];
         if (!definition) return;
-        let image = document.getElementById(definition.elementId);
+        const item = slot === 'baseBody' ? { image: PAPER_DOLL_BODIES[selectedGender] } : selectedPaperDollItem(slot);
+        const layered = Array.isArray(item?.layers) && item.layers.length > 0;
+        const parts = layered ? item.layers.filter(part => part && typeof part.id === 'string' && /^[a-zA-Z0-9_-]+$/.test(part.id)) : [item || {}];
+        if (layered) {
+            const base = document.getElementById(prefix + definition.elementId);
+            if (base) { base.onload = null; base.onerror = null; base.classList.add('hidden'); base.removeAttribute('src'); }
+        }
+        parts.forEach(part => {
+        const id = prefix + definition.elementId + (layered ? `-${part.id}` : '');
+        if (layered) extraLayers.add(id);
+        let image = document.getElementById(id);
         if (!image) {
-            image = document.createElement('img'); image.id = definition.elementId; image.className = 'char-layer hidden';
+            image = document.createElement('img'); image.id = id; image.className = 'char-layer hidden';
             image.setAttribute('alt', ''); image.setAttribute('aria-hidden', 'true'); host.appendChild(image);
         }
-        const item = slot === 'baseBody' ? { image: PAPER_DOLL_BODIES[selectedGender] }
-            : PAPER_DOLL_ITEMS.find(entry => entry.id === activePaperDollLoadout()[slot] && entry.slot === slot);
-        const candidates = paperDollImageCandidates(item, selectedGender);
-        positionPaperDollLayer(image, item?.placement, index);
+        if (layered) image.setAttribute('data-paper-extra', 'true');
+        const layer = layered ? { ...part, placement: part.placement ?? item.placement, renderOrder: part.renderOrder ?? item.renderOrder } : part;
+        const candidates = paperDollImageCandidates(layer, selectedGender);
+        const order = Number.isFinite(layer.renderOrder) ? Math.max(-100, Math.min(100, layer.renderOrder)) : index;
+        positionPaperDollLayer(image, layer.placement, order);
         const source = candidates.find(path => !failedPaperDollImages.has(path));
         if (!source) {
             image.onload = null; image.onerror = null;
@@ -118,34 +155,27 @@ function renderPaperDoll() {
         };
         if (image.getAttribute('src') !== source) image.setAttribute('src', source);
         if (image.complete && image.naturalWidth > 0) image.classList.remove('hidden');
+        });
     });
+    host.querySelectorAll('[data-paper-extra]').forEach(image => {
+        if (!extraLayers.has(image.id)) { image.onload = null; image.onerror = null; image.remove(); }
+    });
+}
+
+function renderPaperDoll() {
+    renderPaperDollAt(document.getElementById('character-paperdoll'));
+    renderPaperDollAt(document.getElementById('wardrobe-paperdoll'), 'wardrobe-');
 }
 
 function renderPaperDollControls(renderSlots = true) {
     document.getElementById('paper-doll-save-note')?.classList.toggle('hidden', !paperDollSaveFailed);
-    document.querySelectorAll('[data-paper-gender]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.paperGender === paperDollState.selectedGender)));
     document.querySelectorAll('[data-paper-view]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.paperView === paperDollState.activeViewMode)));
     const label = document.getElementById('paper-doll-view-label');
     if (label) label.textContent = `Комплект: ${paperDollState.activeViewMode === 'combat' ? 'Спогад' : 'Пацієнт'}`;
-    document.querySelectorAll('[data-paper-image-status]').forEach(note => {
-        const item = PAPER_DOLL_ITEMS.find(entry => entry.id === activePaperDollLoadout()[note.dataset.paperImageStatus]);
-        const missing = item && !paperDollImageCandidates(item, paperDollState.selectedGender).some(path => !failedPaperDollImages.has(path));
+    document.querySelectorAll('[data-paper-image-item]').forEach(note => {
+        const item = PAPER_DOLL_ITEMS.find(entry => entry.id === note.dataset.paperImageItem);
+        const layers = item?.layers?.length ? item.layers : [item];
+        const missing = item && !layers.some(layer => paperDollImageCandidates(layer, paperDollState.selectedGender).some(path => !failedPaperDollImages.has(path)));
         note.classList.toggle('hidden', !missing);
     });
-    if (!renderSlots) return;
-    const container = document.getElementById('paper-doll-slots');
-    if (!container) return;
-    container.innerHTML = PAPER_DOLL_LAYER_ORDER.filter(slot => slot !== 'baseBody').map(slot => {
-        const definition = PAPER_DOLL_SLOTS[slot];
-        const available = PAPER_DOLL_ITEMS.filter(item => item.slot === slot);
-        const selected = activePaperDollLoadout()[slot];
-        const item = available.find(entry => entry.id === selected);
-        const missingImage = item && !paperDollImageCandidates(item, paperDollState.selectedGender).some(path => !failedPaperDollImages.has(path));
-        return `<div class="paper-doll-slot"><label for="paper-slot-${slot}">${iconHTML(definition.icon)}${escapeHTML(definition.label)}</label>
-            <select id="paper-slot-${slot}" data-paper-slot="${slot}"${available.length ? '' : ' disabled'}><option value="">${available.length ? 'Порожній слот' : 'Немає предметів'}</option>${available.map(entry => `<option value="${escapeHTML(entry.id)}"${entry.id === selected ? ' selected' : ''}>${escapeHTML(entry.name)}</option>`).join('')}</select>
-            <button type="button" class="btn-outfit" data-paper-remove="${slot}" aria-label="Зняти: ${escapeHTML(definition.label)}"${selected ? '' : ' disabled'}>Зняти</button>
-            <p class="paper-doll-slot-note${missingImage ? '' : ' hidden'}" data-paper-image-status="${slot}">Зображення предмета поки недоступне.</p></div>`;
-    }).join('');
-    container.querySelectorAll('[data-paper-slot]').forEach(select => select.addEventListener('change', () => equipPaperDollItem(select.dataset.paperSlot, select.value || null)));
-    container.querySelectorAll('[data-paper-remove]').forEach(button => button.addEventListener('click', () => equipPaperDollItem(button.dataset.paperRemove, null)));
 }

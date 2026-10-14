@@ -32,13 +32,20 @@ const PAPER_DOLL_ITEMS = [
         ['face_6.png', 'Обличчя #6 (Лисий суворий)', 163, 197, 26, 13, 106, 147]
     ].map(([id, name, width, height, x, y, alphaWidth, alphaHeight]) => {
         const scale = 177 / alphaHeight;
-        return { id, slot: 'face', name, image: id,
+        return { id, slot: 'face', name, image: id, availableByDefault: true,
             placement: { x: 383 - (x + alphaWidth / 2) * scale, y: 25 - y * scale, width: width * scale, height: height * scale } };
     }),
-    { id: 'sample-upper-body', slot: 'upperBody', name: 'Зразок верхнього одягу', image: null },
-    { id: 'sample-pants', slot: 'pants', name: 'Зразок штанів', image: null },
-    { id: 'sample-footwear', slot: 'footwear', name: 'Зразок взуття', image: null },
-    { id: 'sample-headwear', slot: 'headwear', name: 'Побитий шолом санітара — зразок', image: null },
-    { id: 'sample-armor', slot: 'armor', name: 'Бронежилет БР-1 — зразок', image: null },
-    { id: 'sample-weapon', slot: 'weapon', name: 'ПМ — зразок', image: null }
+    { id: 'gear-knife', slot: 'weapon', name: 'Іржавий ніж', inventoryName: 'Іржавий ніж', inventoryCategory: 'weapon', image: null, icon: 'knife' },
+    { id: 'gear-pm', slot: 'weapon', name: 'ПМ (Пістолет Макарова)', inventoryName: 'ПМ (Пістолет Макарова)', inventoryCategory: 'weapon', image: null, icon: 'pistol' },
+    { id: 'gear-aks', slot: 'weapon', name: 'Штурмовий АКС-74У', inventoryName: 'Штурмовий АКС-74У', inventoryCategory: 'weapon', image: null, icon: 'rifle' },
+    { id: 'gear-helmet', slot: 'headwear', name: 'Побитий шолом санітара', inventoryName: 'Побитий шолом санітара', inventoryCategory: 'helmet', image: null, icon: 'helmet' },
+    { id: 'gear-br1', slot: 'armor', name: 'Бронежилет БР-1', inventoryName: 'Бронежилет БР-1', inventoryCategory: 'armor', image: null, icon: 'shield' }
 ];
+const PAPER_DOLL_LEGACY_ITEMS = { 'sample-headwear': 'gear-helmet', 'sample-armor': 'gear-br1', 'sample-weapon': 'gear-pm' };
+const WARDROBE_CATEGORIES = {
+    appearance: { label: 'Зовнішність', icon: 'user', slots: ['baseBody', 'face'] },
+    clothes: { label: 'Одяг', icon: 'shirt', slots: ['upperBody', 'outerwear', 'pants', 'footwear', 'gloves'] },
+    gear: { label: 'Броня та спорядження', icon: 'shield', slots: ['headwear', 'armor', 'loadout', 'back'] },
+    weapons: { label: 'Зброя', icon: 'swords', slots: ['weapon'] },
+    accessories: { label: 'Аксесуари', icon: 'key', slots: ['accessory'] }
+};
