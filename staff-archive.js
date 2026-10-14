@@ -198,10 +198,31 @@ function claimStaffReward(id) {
 function staffRewardMarkup(id, reward, complete) {
     if (!reward) return '<p class="report-caption">Винагороду ще не затверджено.</p>';
     const claimed = Object.hasOwn(staffArchiveState.claims, id);
-    const label = `${reward.temporary ? 'Тимчасова винагорода' : 'Винагорода'}: +${reward.silver || 0} срібла${reward.exp ? ` / +${reward.exp} EXP` : ''}`;
-    return `<p>${escapeHTML(label)}</p>${claimed ? '<span class="report-stamp">ВИНАГОРОДУ ОТРИМАНО</span>'
+    return `<div class="staff-reward-card${claimed ? ' staff-reward-claimed' : complete ? ' staff-reward-ready' : ''}">
+        <div class="staff-reward-heading"><span>${iconHTML('gift')}${reward.temporary ? 'Тимчасова винагорода' : 'Винагорода за завершення'}</span><span class="report-stamp staff-reward-status">${claimed ? 'ОТРИМАНО' : complete ? 'ДОСТУПНО' : 'НЕ ЗАВЕРШЕНО'}</span></div>
+        <div class="staff-reward-values">${reward.silver ? `<strong>${iconHTML('coin')}+${escapeHTML(reward.silver)} срібла</strong>` : ''}${reward.exp ? `<strong>${iconHTML('star')}+${escapeHTML(reward.exp)} EXP</strong>` : ''}</div>
+        ${claimed ? '<span class="report-caption">ВИНАГОРОДУ ОТРИМАНО</span>'
         : complete ? `<button class="report-button staff-claim-button" type="button" data-claim-id="${escapeHTML(id)}">Отримати винагороду</button>`
-            : '<p class="report-caption">Доступна після завершення матеріалів справи.</p>'}`;
+            : '<p class="report-caption">Наступна нагорода — після завершення матеріалів справи.</p>'}</div>`;
+}
+
+function staffProgressMarkup(progress, label) {
+    const percent = progress.total ? Math.round(progress.opened / progress.total * 100) : 0;
+    return `<div class="staff-visual-progress"><div><span>${escapeHTML(label)}: ${progress.opened}/${progress.total}</span><strong>${percent}%</strong></div><progress value="${progress.opened}" max="${progress.total || 1}" aria-label="${escapeHTML(label)}">${percent}%</progress></div>`;
+}
+
+function renderStaffRewards(bossId) {
+    const config = staffCaseConfig(bossId);
+    const progress = staffCaseProgress(bossId);
+    let content = `<section class="staff-reward-section"><header class="staff-section-heading"><span class="staff-section-code">КОМПЛЕКТ ОСОБОВОЇ СПРАВИ</span><h3>${iconHTML('card')}Особова справа боса</h3></header>${staffProgressMarkup(progress, 'Знайдено матеріалів')}${staffRewardMarkup(config?.rewardId, config?.reward, progress.complete)}</section>`;
+    const collections = STAFF_ARCHIVE_COLLECTIONS.filter(item => Object.hasOwn(item.required, bossId));
+    if (collections.length) content += `<section class="staff-reward-section"><header class="staff-section-heading"><span class="staff-section-code">ЗВЕДЕНИЙ АРХІВ ВІДДІЛЕННЯ</span><h3>${iconHTML('box')}Колекції групи</h3></header>${collections.map(collection => {
+        const collected = staffCollectionProgress(collection);
+        const cases = Object.entries(collection.required);
+        const completed = cases.filter(([id, documents]) => documents.every(documentId => Object.hasOwn(staffArchiveState.cases[id]?.documents || {}, documentId))).length;
+        return `<section class="staff-collection"><h4>${escapeHTML(collection.name)}</h4><p class="staff-collection-cases">Завершено справ: ${completed}/${cases.length}</p>${staffProgressMarkup(collected, 'Матеріали колекції')}${staffRewardMarkup(collection.id, collection.reward, collected.complete)}</section>`;
+    }).join('')}</section>`;
+    return `<div class="staff-rewards-layout">${content}</div>`;
 }
 
 function renderStaffDocuments(bossId, observationsOnly = false) {
@@ -209,15 +230,18 @@ function renderStaffDocuments(bossId, observationsOnly = false) {
     const entry = staffArchiveState.cases[bossId];
     const documents = (config?.documents || []).filter(doc => !observationsOnly || doc.acquisition !== 'initial');
     if (!documents.length) return '<p class="report-caption">Матеріали цього розділу ще не долучені.</p>';
-    const archiveNote = '<p class="report-caption">Архівні матеріали можуть бути виявлені після успішного обстеження. Частина справ доповнюється під час службових подій.</p>';
+    const archiveNote = `<header class="staff-section-heading"><span class="staff-section-code">${observationsOnly ? 'ЖУРНАЛ СО-04' : 'РЕЄСТР АРХІВНИХ МАТЕРІАЛІВ'}</span><h3>${iconHTML(observationsOnly ? 'eye' : 'clipboard')}${observationsOnly ? 'Журнал службових спостережень' : 'Документи особової справи'}</h3><p class="report-caption">Архівні матеріали можуть бути виявлені після успішного обстеження. Частина справ доповнюється під час службових подій.</p></header>`;
     const selected = documents.find(doc => doc.id === selectedStaffDocumentId && Object.hasOwn(entry.documents, doc.id));
-    return `${archiveNote}<ul class="staff-document-list">${documents.map((doc, index) => {
+    const recordTypes = { initial: 'РЕЄСТРАЦІЯ', raid: 'СВІДЧЕННЯ', achievement: 'ЗІСТАВЛЕННЯ', quest: 'СЛУЖБОВИЙ АКТ' };
+    return `${archiveNote}<ul class="staff-document-list${observationsOnly ? ' staff-observation-journal' : ''}">${documents.map((doc, index) => {
         const unlocked = Object.hasOwn(entry.documents, doc.id);
         const title = unlocked || !doc.secret ? doc.title : `ДОКУМЕНТ №${doc.id} — ЗАСЕКРЕЧЕНО`;
-        return `<li class="staff-document-item"><strong>${escapeHTML(title)}</strong>${unlocked
-            ? `<button class="report-detail-link" type="button" data-document-index="${index}">Читати документ</button>`
-            : `<span class="report-caption">${escapeHTML(doc.hint || 'Матеріал може бути знайдений після успішного обстеження.')}</span>`}</li>`;
-    }).join('')}</ul>${selected ? `<section class="staff-document-reading"><h3>${escapeHTML(selected.title)}</h3><p>${escapeHTML(selected.content)}</p></section>` : '<p class="report-caption">Оберіть відкритий документ для читання.</p>'}`;
+        return `<li class="staff-document-item${unlocked ? ' staff-record-open' : ' staff-record-locked'}">
+            <div class="staff-record-meta"><span>${iconHTML(unlocked ? observationsOnly ? 'eye' : 'clipboard' : 'lock')}№${escapeHTML(doc.id)} · ${escapeHTML(unlocked || !doc.secret ? recordTypes[doc.acquisition] || 'АРХІВНИЙ ЗАПИС' : 'ЗАКРИТИЙ ЗАПИС')}</span><span class="staff-record-status">${unlocked ? observationsOnly ? 'ЗАПИС ДОЛУЧЕНО' : 'ЗНАЙДЕНО' : doc.secret ? 'ЗАСЕКРЕЧЕНО' : 'НЕ ДОЛУЧЕНО'}</span></div>
+            <strong>${escapeHTML(title)}</strong>${unlocked
+            ? `${observationsOnly ? `<p class="staff-observation-text">${escapeHTML(String(doc.content || '').split(/(?<=[.!?])\s/)[0])}</p>` : ''}<button class="report-detail-link" type="button" data-document-index="${index}">Читати документ</button>`
+            : `<p class="report-caption">${escapeHTML(doc.hint || 'Матеріал може бути знайдений після успішного обстеження.')}</p>`}</li>`;
+    }).join('')}</ul>${selected ? `<section class="staff-document-reading"><span class="staff-section-code">КОПІЯ ДЛЯ ОЗНАЙОМЛЕННЯ · №${escapeHTML(selected.id)}</span><h3>${escapeHTML(selected.title)}</h3><p>${escapeHTML(selected.content)}</p></section>` : '<p class="report-caption">Оберіть відкритий документ для читання.</p>'}`;
 }
 
 function getStaffFloorIds() {
@@ -270,18 +294,13 @@ function renderStaffArchive() {
                 <section class="staff-identity-note"><h3>Архівна примітка</h3><p>${escapeHTML(config?.introduction || 'Контакт з об’єктом зафіксовано; службові матеріали ще не долучені.')}</p></section>
             </div>`;
         } else if (staffArchiveTab === 'documents' || staffArchiveTab === 'observations') content = renderStaffDocuments(selectedStaffBossId, staffArchiveTab === 'observations');
-        else {
-            content = `<h3>Особова справа: ${progress.opened}/${progress.total} (${progress.percent}%)</h3>${staffRewardMarkup(config?.rewardId, config?.reward, progress.complete)}`;
-            for (const collection of STAFF_ARCHIVE_COLLECTIONS.filter(item => Object.hasOwn(item.required, selectedStaffBossId))) {
-                const collected = staffCollectionProgress(collection);
-                content += `<section class="staff-collection"><h3>${escapeHTML(collection.name)}</h3><p>${collected.opened}/${collected.total} документів</p>${staffRewardMarkup(collection.id, collection.reward, collected.complete)}</section>`;
-            }
-        }
+        else content = renderStaffRewards(selectedStaffBossId);
         sheet.innerHTML = `<p class="staff-case-progress">Справа №${escapeHTML(boss.dossier?.code || '')} — ${progress.opened}/${progress.total} (${progress.percent}%)</p>${content}`;
         const documents = (config?.documents || []).filter(doc => staffArchiveTab !== 'observations' || doc.acquisition !== 'initial');
         sheet.querySelectorAll('[data-document-index]').forEach(button => button.addEventListener('click', () => {
             selectedStaffDocumentId = documents[Number(button.dataset.documentIndex)]?.id || null; renderStaffArchive();
             document.getElementById('staff-case-sheet')?.focus({ preventScroll: true });
+            sheet.querySelector('.staff-document-reading')?.scrollIntoView({ block: 'nearest' });
         }));
         sheet.querySelectorAll('[data-claim-id]').forEach(button => button.addEventListener('click', () => claimStaffReward(button.dataset.claimId)));
     }

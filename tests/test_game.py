@@ -736,14 +736,18 @@ class GameTests(unittest.TestCase):
             Math.random=()=>0; startBossFight('doctor'); performPlayerAttack(); openStaffArchive('doctor'); changeStaffArchiveTab('rewards');
         }''')
         self.assertEqual(self.page.evaluate('staffCaseProgress("doctor").complete'), True)
+        self.assertEqual(self.page.locator('.staff-reward-status').all_text_contents(), ['ДОСТУПНО','ДОСТУПНО'])
         before = self.state()['silver']
         buttons = self.page.locator('.staff-claim-button')
         self.assertEqual(buttons.count(), 2)
         buttons.first.click()
         self.assertEqual(self.state()['silver'], before+1)
+        self.assertEqual(self.page.locator('.staff-reward-status').all_text_contents(), ['ОТРИМАНО','ДОСТУПНО'])
         self.page.locator('.staff-claim-button').click()
         self.assertEqual(self.state()['silver'], before+2)
         self.assertEqual(self.page.locator('.staff-claim-button').count(), 0)
+        self.assertEqual(self.page.locator('.staff-reward-status').all_text_contents(), ['ОТРИМАНО','ОТРИМАНО'])
+        self.assertEqual(self.page.locator('.staff-visual-progress progress').evaluate_all('es=>es.map(e=>e.value/e.max)'), [1,1])
         profile = self.page.evaluate('JSON.stringify(staffArchiveState)')
         self.page.evaluate('openRaidArchive(); requestRaidArchiveClear();')
         self.page.locator('#raid-archive-confirm').get_by_role('button', name='Очистити архів', exact=True).click()
@@ -753,6 +757,90 @@ class GameTests(unittest.TestCase):
         self.page.evaluate('openStaffArchive("doctor"); changeStaffArchiveTab("rewards");')
         self.assertEqual(self.state()['silver'], before+2)
         self.assertEqual(self.page.locator('.staff-claim-button').count(), 0)
+
+    def test_staff_journal_documents_and_reward_cards_are_read_only_and_responsive(self):
+        self.load()
+        self.page.evaluate('''() => {
+            stats.baseDamage=300; recalculateEquipmentStats(); Math.random=()=>0;
+            for (const boss of ['nurse','doctor']) { startBossFight(boss); performPlayerAttack(); }
+            openStaffArchive('nurse');
+        }''')
+        before=self.page.evaluate('JSON.stringify({stats,inventory,gameProgress,staffArchiveState,storage:{...localStorage}})')
+        results=ROOT/'test-results'
+        results.mkdir(exist_ok=True)
+        for width,height in [(1280,800),(1024,768),(768,1024),(844,390),(390,844),(320,568)]:
+            with self.subTest(viewport=(width,height)):
+                self.page.set_viewport_size({'width':width,'height':height})
+                for boss in ['nurse','doctor']:
+                    self.page.evaluate('boss=>openStaffArchive(boss)',boss)
+                    for tab in ['identity','observations','documents','rewards']:
+                        self.page.locator(f'[data-staff-tab="{tab}"]').click()
+                        sheet=self.page.locator('#staff-case-sheet')
+                        if tab=='identity':
+                            self.assertEqual(sheet.locator('.staff-form-field').count(),8)
+                        elif tab in ['observations','documents']:
+                            self.assertNotRegex(sheet.inner_text(),r'5%|\d+/30|гаранті|drop rate|chance|pity')
+                            self.assertGreater(sheet.locator('.staff-record-open').count(),0)
+                            self.assertGreater(sheet.locator('.staff-record-locked').count(),0)
+                            self.assertNotIn('Фрагмент журналу експериментів' if boss=='nurse' else 'Незаповнена графа наказу',sheet.inner_text())
+                            if tab=='observations':
+                                self.assertEqual(sheet.locator('.staff-observation-journal').count(),1)
+                                self.assertGreater(sheet.locator('.staff-observation-text').count(),0)
+                            sheet.get_by_role('button',name='Читати документ',exact=True).first.click()
+                            self.assertTrue(sheet.locator('.staff-document-reading').is_visible())
+                        else:
+                            self.assertEqual(sheet.locator('.staff-reward-section').count(),2)
+                            self.assertEqual(sheet.locator('progress').count(),2)
+                            self.assertEqual(sheet.locator('.staff-reward-status').all_text_contents(),['НЕ ЗАВЕРШЕНО','НЕ ЗАВЕРШЕНО'])
+                            self.assertEqual(sheet.locator('.staff-claim-button').count(),0)
+                            progress=self.page.evaluate('boss=>staffCaseProgress(boss)',boss)
+                            self.assertEqual(sheet.locator('progress').first.get_attribute('value'),str(progress['opened']))
+                            self.assertIn('Завершено справ: 0/1',sheet.inner_text())
+                            self.assertIn('+1 срібла',sheet.inner_text())
+                        self.assertLessEqual(sheet.evaluate('e=>e.scrollWidth-e.clientWidth'),1)
+                        self.assertLessEqual(self.page.evaluate('document.documentElement.scrollWidth'),width)
+                        if width in [1280,390]:
+                            self.page.screenshot(path=str(results/f'archive-{boss}-{tab}-{width}.png'))
+        self.assertEqual(self.page.evaluate('JSON.stringify({stats,inventory,gameProgress,staffArchiveState,storage:{...localStorage}})'),before)
+
+    def test_folder_hud_navigation_active_tabs_and_mobile_bounds(self):
+        self.load()
+        self.page.evaluate('stats.madness=100; updateUI();')
+        before=self.page.evaluate('JSON.stringify({stats,inventory,staffArchiveState,storage:{...localStorage}})')
+        nav=self.page.get_by_role('navigation',name='Ігрове меню')
+        results=ROOT/'test-results'
+        results.mkdir(exist_ok=True)
+        for width,height in [(1280,800),(1024,768),(768,1024),(844,390),(390,844),(320,568)]:
+            with self.subTest(viewport=(width,height)):
+                self.page.set_viewport_size({'width':width,'height':height})
+                for button in nav.locator('.hud-folder-tab').all():
+                    box=button.bounding_box()
+                    self.assertIsNotNone(box)
+                    self.assertGreaterEqual(box['height'],44)
+                    self.assertGreaterEqual(box['x'],0)
+                    self.assertLessEqual(box['x']+box['width'],width)
+                    self.assertLessEqual(button.evaluate('e=>e.scrollWidth-e.clientWidth'),1)
+                    self.assertTrue(button.locator('span').is_visible())
+                self.assertLessEqual(self.page.evaluate('document.documentElement.scrollWidth'),width)
+                self.assertTrue(self.page.locator('#armor-val').is_visible())
+                self.page.screenshot(path=str(results/f'folder-hud-{width}x{height}.png'))
+        for name,modal in [('Інвентар','inventory-modal'),('Гардероб','custom-modal'),('Карта','map-modal'),('Сусіди по блоку','friends-modal'),('Архів рейдів','raid-archive-modal'),('Архів персоналу','staff-archive-modal')]:
+            button=nav.get_by_role('button',name=name,exact=True)
+            button.click()
+            self.assertTrue(self.page.locator(f'#{modal}').is_visible())
+            self.page.wait_for_function('name=>document.querySelector(`.center-nav [aria-label="${name}"]`).getAttribute("aria-pressed")==="true"',arg=name)
+            self.assertEqual(nav.locator('[aria-pressed="true"]').count(),1)
+            self.page.keyboard.press('Escape')
+            self.page.wait_for_function('()=>!document.querySelector(".center-nav [aria-pressed=true]")')
+        nav.get_by_role('button',name='Завдання',exact=True).click()
+        nav.get_by_role('button',name='Рейд',exact=True).click()
+        self.assertEqual(self.page.evaluate('JSON.stringify({stats,inventory,staffArchiveState,storage:{...localStorage}})'),before)
+        self.page.evaluate('startBossFight("nurse"); closeNurseBattle();')
+        nav.get_by_role('button',name='Рейд',exact=True).click()
+        self.assertTrue(self.page.locator('#nurse-battle-modal').is_visible())
+        self.assertTrue(self.page.locator('#lobby-raid-subtimer').is_visible())
+        self.assertEqual(self.page.locator('#lobby-raid-subtimer').evaluate('e=>getComputedStyle(e).position'),'static')
+        self.page.evaluate('openFleeConfirmModal()')
 
     def test_staff_archive_and_enlarged_dossiers_mobile_bounds(self):
         self.load()

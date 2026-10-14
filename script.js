@@ -1589,8 +1589,6 @@ function updateLobbyRaidWidget(timeStr = '') {
         if (!subTimer) {
             subTimer = document.createElement('div');
             subTimer.id = 'lobby-raid-subtimer';
-            subTimer.style.cssText = 'position: absolute; bottom: -14px; left: 50%; transform: translateX(-50%); font-size: 9px; color: #e74c3c; font-weight: bold; white-space: nowrap; background: rgba(0,0,0,0.8); padding: 1px 4px; border-radius: 3px;';
-            raidBtn.style.position = 'relative';
             raidBtn.appendChild(subTimer);
         }
         subTimer.textContent = timeStr || `${String(Math.floor(raidTimeRemaining / 60)).padStart(2, '0')}:${String(raidTimeRemaining % 60).padStart(2, '0')}`;
@@ -2030,6 +2028,9 @@ function initializeModalControls() {
         });
         document.body.classList.toggle('modal-open', opened.length > 0);
         const top = topModal();
+        document.querySelectorAll('.hud-folder-tab[data-nav-modal]').forEach(button => {
+            button.setAttribute('aria-pressed', String(button.dataset.navModal.split(' ').includes(top?.id)));
+        });
         if (top && (added.length > 0 || (closed.length > 0 && !top.contains(document.activeElement)))) {
             (focusable(top)[0] || top).focus({ preventScroll: true });
         } else if (!top && closed.length > 0) {
