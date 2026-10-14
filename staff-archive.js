@@ -125,8 +125,8 @@ function grantStaffQuestMilestones() {
 
 function processStaffRaid(result) {
     // Only the active local finalization can roll; historical viewing cannot use this hook.
-    if (!ownsBattleResult(result) || !isBattleActive || currentBattleSession?.finished
-        || currentBattleSession?.id !== result.battleId || result.outcome !== 'victory') return;
+    if (!normalizeBattleResult(result) || !ownsBattleResult(result) || !isBattleActive || bossCurrentHp > 0 || currentBattleSession?.finished
+        || currentBattleSession?.id !== result.battleId || currentBattleSession?.bossKey !== result.boss.id || result.outcome !== 'victory') return;
     const config = staffCaseConfig(result.boss.id);
     if (!config) return;
     openInitialStaffDocuments(result.boss.id, result.startedAt);

@@ -642,6 +642,17 @@ test('staff drop threshold is five percent; only new raid documents roll and res
     assert.equal(g.run('staffArchiveState.cases.doctor.documents["002-04"]'),undefined);
 });
 
+test('document finalization rejects premature and mismatched combat results', () => {
+    const g=game();
+    g.run('startBossFight("doctor"); Math.random=()=>0; const premature=buildBattleResult(bossesDatabase.doctor); processStaffRaid(premature);');
+    assert.equal(g.run('Object.keys(staffArchiveState.processedRaids).length'),0);
+    assert.equal(g.run('staffArchiveState.cases.doctor.misses'),0);
+    g.run('bossCurrentHp=0; const wrong=buildBattleResult(bossesDatabase.doctor); wrong.boss.id="nurse"; processStaffRaid(wrong);');
+    assert.equal(g.run('Object.keys(staffArchiveState.processedRaids).length'),0);
+    g.run('handleVictory();');
+    assert.equal(g.run('Object.keys(staffArchiveState.processedRaids).length'),1);
+});
+
 test('pity gives a new eligible document on exactly the thirtieth unsuccessful winning raid', () => {
     let g=game();
     g.run('stats.baseDamage=300; recalculateEquipmentStats(); Math.random=()=>0.5;');
