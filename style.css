@@ -773,14 +773,13 @@ body {
 .wardrobe-slot { font-size: 11px; background: #f1e5c880; border-radius: 1px; box-shadow: none; }
 .wardrobe-category[aria-pressed="true"], .wardrobe-slot[aria-pressed="true"] { border-left: 3px solid #743b37; background: #eaddbd; color: #632f2b; font-weight: bold; box-shadow: inset 3px 0 10px #743b3714, 0 2px 3px #4b392330; }
 .wardrobe-category:active, .wardrobe-slot:active { box-shadow: inset 0 2px 4px #46342150; }
-.wardrobe-preview { --room-wall: #a1aaa0; --room-lower: #788e86; --room-ink: #364742; --room-monitor: #4c6850; min-width: 0; min-height: 0; display: flex; flex-direction: column; align-items: center; gap: 7px; padding: 9px; border: 1px solid #69796c; background: #bbc1ac; box-shadow: inset 0 0 20px #33423c25, 2px 3px 8px #3a2b2330; }
+.wardrobe-preview { --room-ink: #364742; --room-monitor: #4c6850; min-width: 0; min-height: 0; display: flex; flex-direction: column; align-items: center; gap: 7px; padding: 9px; border: 1px solid #69796c; background: #bbc1ac; box-shadow: inset 0 0 20px #33423c25, 2px 3px 8px #3a2b2330; }
 .wardrobe-registration-title { flex-shrink: 0; width: 100%; font-family: 'Special Elite', monospace; font-size: 10px; line-height: 1.4; text-align: center; letter-spacing: .04em; color: var(--room-ink); padding-bottom: 5px; border-bottom: 1px solid #4c5a4b60; }
-.wardrobe-stage { display: grid; place-items: end center; position: relative; isolation: isolate; container-type: size; flex: 1; min-height: 0; width: 100%; border: 1px solid #53665c60; overflow: hidden; background: radial-gradient(ellipse at 48% 0, #edf1d88a, transparent 68%), linear-gradient(90deg, #35463a28, transparent 18%, transparent 82%, #35463a30), linear-gradient(to bottom, var(--room-wall) 0 48%, #65796b 48% 49%, var(--room-lower) 49% 96%, #858777 96%); }
-.wardrobe-stage::before { content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none; background: linear-gradient(76deg, transparent 14%, #d7dcca25 14.3% 14.6%, transparent 15%), linear-gradient(102deg, transparent 87%, #3c504333 87.2% 87.5%, transparent 88%), repeating-linear-gradient(0deg, transparent 0 33px, #35473920 34px 35px), repeating-linear-gradient(90deg, transparent 0 49px, #d4dbc926 50px 51px); background-size: 100% 100%, 100% 100%, 100% 49%, 100% 49%; background-position: top, top, bottom, bottom; background-repeat: no-repeat; box-shadow: inset 0 0 18px #26352d35; }
-.wardrobe-height-scale { position: absolute; z-index: -1; top: 4%; bottom: 12%; left: 5%; width: 24px; display: flex; flex-direction: column; justify-content: space-between; padding-left: 7px; border-left: 2px solid #344b4270; background: repeating-linear-gradient(to bottom, #344b4270 0 1px, transparent 1px 10%); color: #30483c; font-family: monospace; font-size: 8px; line-height: 1; pointer-events: none; }
+.wardrobe-stage { --wardrobe-scene-tint: rgba(113, 137, 137, .04); display: grid; place-items: end center; position: relative; isolation: isolate; container-type: size; flex: 1; min-height: 0; width: 100%; border: 1px solid #53665c60; overflow: hidden; background-color: #7a8583; background-image: linear-gradient(var(--wardrobe-scene-tint), var(--wardrobe-scene-tint)), url('wardrobe_background.png?v=ac6ecfa5'); background-position: center bottom; background-size: cover; background-repeat: no-repeat; }
+.wardrobe-stage::before { content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none; box-shadow: inset 0 0 12px #11182030; }
 /* One shared floor anchor; the body frame and both shadows resize together.
    A small floor margin keeps the soft ellipse inside the viewport. */
-#wardrobe-paperdoll { --wardrobe-floor-gap: 3cqh; width: min(100cqw, calc((100cqh - var(--wardrobe-floor-gap)) * var(--paper-doll-ratio, 0.562799))); height: auto; margin-bottom: var(--wardrobe-floor-gap); aspect-ratio: var(--paper-doll-aspect, 941 / 1672); }
+#wardrobe-paperdoll { --wardrobe-floor-gap: 8cqh; width: min(100cqw, calc((100cqh - var(--wardrobe-floor-gap)) * var(--paper-doll-ratio, 0.562799))); height: auto; margin-bottom: var(--wardrobe-floor-gap); aspect-ratio: var(--paper-doll-aspect, 941 / 1672); }
 .wardrobe-ground-shadow { position: absolute; left: 14%; bottom: -.5%; width: 72%; height: 4.5%; z-index: -101; pointer-events: none; }
 .wardrobe-shadow-base, .wardrobe-shadow-contact { position: absolute; display: block; left: 50%; transform: translateX(-50%); border-radius: 50%; pointer-events: none; }
 .wardrobe-shadow-base { bottom: 0; width: 100%; height: 100%; opacity: .22; background: radial-gradient(ellipse, #1b251ed9 0, #1b251e80 35%, #1b251e20 58%, transparent 73%); }
@@ -794,7 +793,8 @@ body {
 .wardrobe-monitor-light { flex: 0 0 5px; width: 5px; height: 5px; border-radius: 50%; background: currentColor; box-shadow: 0 0 4px #54725350; animation: wardrobe-monitor-breathe 4s ease-in-out infinite; }
 .wardrobe-monitor-trace { flex: 1; min-width: 25px; max-width: 90px; height: 18px; margin-left: auto; overflow: hidden; }
 .wardrobe-monitor-trace path { fill: none; stroke: currentColor; stroke-width: 1; }
-.wardrobe-preview[data-view="combat"] { --room-wall: #929ca0; --room-lower: #727c80; --room-ink: #633e40; --room-monitor: #7c4b49; background: #aeb6aa; border-color: #6f5c58; }
+.wardrobe-preview[data-view="combat"] { --room-ink: #633e40; --room-monitor: #7c4b49; background: #aeb6aa; border-color: #6f5c58; }
+.wardrobe-preview[data-view="combat"] .wardrobe-stage { --wardrobe-scene-tint: rgba(34, 43, 63, .14); }
 .wardrobe-preview[data-view="combat"] .wardrobe-registration-title { border-bottom-style: dashed; text-shadow: 1px 0 #7f3e3e40; }
 .wardrobe-preview[data-view="combat"] .wardrobe-monitor-light { animation-name: wardrobe-monitor-drift; animation-duration: 7s; }
 @keyframes wardrobe-monitor-breathe { 0%,100% { opacity: .65; } 50% { opacity: 1; } }
@@ -849,7 +849,6 @@ body {
     .wardrobe-slot { min-height: 44px; padding: 4px; font-size: 10px; gap: 3px; }
     .wardrobe-preview { padding: 4px; gap: 4px; }
     .wardrobe-registration-title { font-size: 7px; padding-bottom: 3px; }
-    .wardrobe-height-scale { font-size: 6px; width: 17px; left: 3%; padding-left: 4px; }
     .wardrobe-registration-plate { font-size: 8px; padding: 4px 7px; gap: 1px; }
     .wardrobe-registration-plate strong { font-size: 7px; letter-spacing: 0; }
     .wardrobe-registration-plate::before, .wardrobe-registration-plate::after { width: 2px; height: 2px; top: 5px; }

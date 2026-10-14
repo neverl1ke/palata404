@@ -33,6 +33,13 @@ class IconAssetTests(unittest.TestCase):
                 bounds=alpha.point(lambda value:255 if value>=64 else 0).getbbox()
                 self.assertLess(abs((bounds[0]+bounds[2])/2-image.width/2),image.width*0.02)
 
+    def test_approved_wardrobe_background_is_a_valid_full_color_scene(self):
+        with Image.open(ROOT/'wardrobe_background.png') as image:
+            self.assertEqual(image.format,'PNG')
+            self.assertEqual(image.size,(1448,1086))
+            self.assertIn(image.mode,['RGB','RGBA'])
+            image.verify()
+
     def test_svg_assets_are_self_contained_and_valid(self):
         paths = sorted((ROOT / 'assets' / 'icons').glob('*.svg'))
         self.assertGreater(len(paths), 50)
@@ -439,6 +446,26 @@ class GameTests(unittest.TestCase):
         self.assertLessEqual(self.page.evaluate('document.documentElement.scrollWidth'),320)
         self.page.keyboard.press('Escape')
         self.assertFalse(self.page.locator('#custom-modal').is_visible())
+
+    def test_approved_wardrobe_background_loads_with_one_shared_floor_anchor(self):
+        self.load()
+        self.page.evaluate('openCustomization()')
+        self.page.wait_for_function('''()=>performance.getEntriesByType('resource').some(e=>e.name.includes('/wardrobe_background.png?v=ac6ecfa5')&&e.decodedBodySize>0)''')
+        self.assertEqual(self.page.locator('.wardrobe-height-scale').count(),0)
+        self.assertEqual(self.page.locator('.wardrobe-stage img:not(.char-layer)').count(),0)
+        backgrounds=[]
+        for gender,mode in [('male','patient'),('female','patient'),('female','combat'),('male','combat')]:
+            self.page.evaluate('''({gender,mode})=>{setGender(gender);setPaperDollView(mode)}''',{'gender':gender,'mode':mode})
+            scene=self.page.locator('.wardrobe-stage').evaluate('''e=>{const s=getComputedStyle(e);return{image:s.backgroundImage,size:s.backgroundSize,position:s.backgroundPosition,repeat:s.backgroundRepeat,height:e.clientHeight}}''')
+            backgrounds.append(re.search(r'url\([^)]+\)',scene['image']).group())
+            self.assertIn('wardrobe_background.png?v=ac6ecfa5',scene['image'])
+            self.assertTrue(all(value.strip()=='cover' for value in scene['size'].split(',')))
+            self.assertTrue(all(value.strip()=='50% 100%' for value in scene['position'].split(',')))
+            self.assertTrue(all(value.strip()=='no-repeat' for value in scene['repeat'].split(',')))
+            floor_gap=self.page.locator('#wardrobe-paperdoll').evaluate('e=>parseFloat(getComputedStyle(e).marginBottom)')
+            self.assertAlmostEqual(floor_gap,scene['height']*.08,delta=1)
+        self.assertEqual(len(set(backgrounds)),1)
+        self.assertIsNone(self.page.evaluate('paperDollState.appearance.face'))
 
     def test_ground_shadow_tracks_the_shared_frame_without_gender_or_loadout_jumps(self):
         self.load()
