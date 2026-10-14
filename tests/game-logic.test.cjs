@@ -922,3 +922,28 @@ test('future approved face layers remain selectable, shared and persistent', () 
     g.run('equipPaperDollItem("face",null);');
     assert.equal(g.run('paperDollState.appearance.face'),null);
 });
+
+test('wardrobe V3 inspection is transient and only the action changes the visual loadout', () => {
+    const g=game();
+    const before=g.run('JSON.stringify({stats,inventory,equippedGear,gameProgress,paperDollState})');
+    const saved=JSON.stringify([...g.storage]);
+    g.run('selectWardrobeCategory("weapons");selectWardrobeItem("gear-pm");');
+    assert.equal(g.run('wardrobeSelectedItemId'),'gear-pm');
+    assert.equal(g.run('JSON.stringify({stats,inventory,equippedGear,gameProgress,paperDollState})'),before);
+    assert.equal(JSON.stringify([...g.storage]),saved);
+    assert.equal(g.run('selectWardrobeItem("gear-br1")'),false);
+    assert.equal(g.run('applyWardrobeItemAction()'),true);
+    assert.equal(g.run('paperDollState.patientLoadout.weapon'),'gear-pm');
+    assert.equal(g.run('applyWardrobeItemAction()'),true);
+    assert.equal(g.run('paperDollState.patientLoadout.weapon'),null);
+});
+
+test('wardrobe V3 shows unowned item details without granting equipment', () => {
+    const g=game({palata404_inventory:'[]'});
+    g.run('selectWardrobeCategory("weapons");selectWardrobeItem("gear-pm");');
+    assert.match(g.elements.get('wardrobe-item-detail').innerHTML,/disabled/);
+    assert.match(g.elements.get('wardrobe-item-detail').innerHTML,/Недоступно/);
+    const before=g.run('JSON.stringify({inventory,stats,equippedGear,paperDollState})');
+    assert.equal(g.run('applyWardrobeItemAction()'),false);
+    assert.equal(g.run('JSON.stringify({inventory,stats,equippedGear,paperDollState})'),before);
+});

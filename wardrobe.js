@@ -1,5 +1,7 @@
 let wardrobeCategory = 'appearance';
 let wardrobeSlot = 'baseBody';
+// Inspection is transient UI state; only the existing equip operation saves.
+let wardrobeSelectedItemId = null;
 
 function renderWardrobeRegistration() {
     document.getElementById('custom-modal')?.setAttribute('data-wardrobe-theme', paperDollState.activeViewMode === 'combat' ? 'trip' : 'patient');
@@ -12,18 +14,40 @@ function renderWardrobeRegistration() {
     if (caseId) caseId.textContent = getPlayerUniqueId().id;
 }
 
+function wardrobeVisibleItems() {
+    return PAPER_DOLL_ITEMS.filter(item => item.slot === wardrobeSlot && !PAPER_DOLL_RETIRED_FACES.has(item.id));
+}
 
 function selectWardrobeCategory(category) {
     if (!Object.hasOwn(WARDROBE_CATEGORIES, category)) return;
     wardrobeCategory = category;
     wardrobeSlot = WARDROBE_CATEGORIES[category].slots[0];
+    wardrobeSelectedItemId = null;
+    const grid = document.getElementById('wardrobe-container');
+    if (grid) grid.scrollTop = 0;
     renderWardrobe();
 }
 
 function selectWardrobeSlot(slot) {
     if (!WARDROBE_CATEGORIES[wardrobeCategory].slots.includes(slot)) return;
     wardrobeSlot = slot;
+    wardrobeSelectedItemId = null;
+    const grid = document.getElementById('wardrobe-container');
+    if (grid) grid.scrollTop = 0;
     renderWardrobe();
+}
+
+function selectWardrobeItem(id) {
+    if (!wardrobeVisibleItems().some(item => item.id === id)) return false;
+    wardrobeSelectedItemId = id;
+    renderWardrobe();
+    return true;
+}
+
+function applyWardrobeItemAction() {
+    const item = wardrobeVisibleItems().find(entry => entry.id === wardrobeSelectedItemId);
+    if (!item) return false;
+    return equipPaperDollItem(wardrobeSlot, selectedPaperDollItem(wardrobeSlot)?.id === item.id ? null : item.id);
 }
 
 function wardrobeItemImage(item) {
@@ -31,60 +55,76 @@ function wardrobeItemImage(item) {
     return parts.flatMap(part => paperDollImageCandidates(part, paperDollState.selectedGender)).find(path => !failedPaperDollImages.has(path));
 }
 
+function wardrobeItemStatus(item) {
+    return selectedPaperDollItem(wardrobeSlot)?.id === item.id ? 'ЕКІПІРОВАНО' : isPaperDollItemOwned(item) ? 'Доступно' : 'Недоступно';
+}
+
 function wardrobeItemCard(item) {
-    const selected = selectedPaperDollItem(wardrobeSlot)?.id === item.id;
-    const owned = isPaperDollItemOwned(item);
+    const equipped = selectedPaperDollItem(wardrobeSlot)?.id === item.id;
+    const inspected = wardrobeSelectedItemId === item.id;
     const source = wardrobeItemImage(item);
-    const inventoryItem = inventory.find(entry => entry.name === item.inventoryName && entry.category === item.inventoryCategory);
-    return `<article class="wardrobe-item-card${selected ? ' selected' : ''}" data-wardrobe-card="${escapeHTML(item.id)}">
+    return `<button type="button" class="wardrobe-item-card${equipped ? ' equipped' : ''}${inspected ? ' selected' : ''}" data-wardrobe-card="${escapeHTML(item.id)}" data-wardrobe-item="${escapeHTML(item.id)}" data-equipped="${equipped}" data-available="${isPaperDollItemOwned(item)}" data-wardrobe-focus="item-${escapeHTML(item.id)}" aria-pressed="${inspected}" aria-controls="wardrobe-item-detail">
         <span class="wardrobe-item-image">${iconHTML(item.icon || PAPER_DOLL_SLOTS[item.slot].icon, 'large')}${source ? `<img src="${escapeHTML(source)}" alt="" aria-hidden="true">` : ''}</span>
-        <div class="wardrobe-item-details"><span class="wardrobe-record-label">ІНВЕНТАРНИЙ ЗАПИС</span><h4>${escapeHTML(item.name)}</h4><p class="wardrobe-item-slot">${escapeHTML(PAPER_DOLL_SLOTS[item.slot].label)}</p><span class="wardrobe-item-state">${selected ? 'ЕКІПІРОВАНО' : owned ? item.slot === 'face' ? 'ЗОВНІШНІСТЬ' : 'НА СКЛАДІ' : 'НЕМАЄ В ІНВЕНТАРІ'}</span>
-        ${inventoryItem?.desc || item.description ? `<p>${escapeHTML(inventoryItem?.desc || item.description)}</p>` : ''}
-        <p class="wardrobe-image-note${source ? ' hidden' : ''}" data-paper-image-item="${escapeHTML(item.id)}">Зображення не підготовлено</p></div>
-        <button type="button" class="report-button" data-wardrobe-item="${escapeHTML(item.id)}" data-wardrobe-focus="item-${escapeHTML(item.id)}" aria-pressed="${selected}"${owned ? '' : ' disabled'}>${selected ? 'Зняти' : item.slot === 'face' ? 'Обрати' : 'Надягнути'}</button>
-    </article>`;
+        <strong class="wardrobe-item-name">${escapeHTML(item.name)}</strong>
+        <span class="wardrobe-item-state">${wardrobeItemStatus(item)}</span>
+        <span class="wardrobe-image-note${source ? ' hidden' : ''}" data-paper-image-item="${escapeHTML(item.id)}">Зображення не підготовлено</span>
+    </button>`;
+}
+
+function renderWardrobeItemDetail(item) {
+    const panel = document.getElementById('wardrobe-item-detail');
+    if (!panel) return;
+    panel.classList.toggle('hidden', !item);
+    if (!item) { panel.innerHTML = ''; return; }
+    const owned = isPaperDollItemOwned(item);
+    const equipped = selectedPaperDollItem(wardrobeSlot)?.id === item.id;
+    const reference = inventory.find(entry => entry.name === item.inventoryName && entry.category === item.inventoryCategory)
+        || DEFAULT_INVENTORY.find(entry => entry.name === item.inventoryName && entry.category === item.inventoryCategory);
+    const description = reference?.desc || item.description || PAPER_DOLL_SLOTS[item.slot].label;
+    panel.innerHTML = `<header><span class="wardrobe-record-label">ІНВЕНТАРНИЙ ЗАПИС</span><h4 id="wardrobe-detail-title">${escapeHTML(item.name)}</h4><span class="wardrobe-detail-slot">${escapeHTML(PAPER_DOLL_SLOTS[item.slot].label)}</span></header>
+        <p class="wardrobe-detail-description">${escapeHTML(description)}</p>
+        <span class="wardrobe-item-state" role="status">${wardrobeItemStatus(item)}</span>
+        <p class="wardrobe-image-note${wardrobeItemImage(item) ? ' hidden' : ''}" data-paper-image-item="${escapeHTML(item.id)}">Зображення не підготовлено</p>
+        <button type="button" class="report-button" data-wardrobe-action="${escapeHTML(item.id)}" data-wardrobe-focus="action-${escapeHTML(item.id)}"${owned ? '' : ' disabled'}>${equipped ? 'Зняти' : item.slot === 'face' ? 'Обрати' : 'Надягнути'}</button>`;
+    panel.querySelectorAll('[data-wardrobe-action]').forEach(button => button.addEventListener('click', applyWardrobeItemAction));
 }
 
 function renderWardrobeUI() {
     const container = document.getElementById('wardrobe-container');
     if (!container) return;
     const focused = document.activeElement?.getAttribute('data-wardrobe-focus');
+    const gridScroll = container.scrollTop || 0;
     const categoryList = document.getElementById('wardrobe-categories');
-    if (categoryList) categoryList.innerHTML = Object.entries(WARDROBE_CATEGORIES).map(([id, category]) =>
-        `<button type="button" class="wardrobe-category" data-wardrobe-category="${id}" data-wardrobe-focus="category-${id}" aria-pressed="${id === wardrobeCategory}">${iconHTML(category.icon)}<span>${escapeHTML(category.label)}</span></button>`).join('');
+    const categoryScroll = categoryList?.scrollLeft || 0;
+    if (categoryList) categoryList.innerHTML = Object.entries(WARDROBE_CATEGORIES).map(([id, category], index) =>
+        `<button type="button" class="wardrobe-category" data-wardrobe-category="${id}" data-wardrobe-focus="category-${id}" aria-pressed="${id === wardrobeCategory}">${iconHTML(category.icon)}<span>${escapeHTML(category.label)}</span><small aria-hidden="true">${String(index + 1).padStart(2,'0')}</small></button>`).join('');
     const slots = document.getElementById('wardrobe-slots');
     if (slots) slots.innerHTML = WARDROBE_CATEGORIES[wardrobeCategory].slots.map(slot =>
         `<button type="button" class="wardrobe-slot" data-wardrobe-slot="${slot}" data-wardrobe-focus="slot-${slot}" aria-pressed="${slot === wardrobeSlot}">${iconHTML(PAPER_DOLL_SLOTS[slot].icon)}${escapeHTML(PAPER_DOLL_SLOTS[slot].label)}</button>`).join('');
     const heading = document.getElementById('wardrobe-items-title');
     if (heading) heading.textContent = PAPER_DOLL_SLOTS[wardrobeSlot].label;
-    container.classList.toggle('wardrobe-face-grid', wardrobeSlot === 'face');
+    const genderSwitch = document.getElementById('wardrobe-gender-switch');
+    genderSwitch?.classList.toggle('hidden', wardrobeCategory !== 'appearance');
+    genderSwitch?.querySelectorAll('[data-paper-gender]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.paperGender === paperDollState.selectedGender)));
+    const items = wardrobeVisibleItems();
+    if (!items.some(item => item.id === wardrobeSelectedItemId)) wardrobeSelectedItemId = items.find(item => item.id === selectedPaperDollItem(wardrobeSlot)?.id)?.id || items[0]?.id || null;
+    container.classList.toggle('wardrobe-has-items', items.length > 0);
     if (wardrobeSlot === 'baseBody') {
-        container.innerHTML = ['male','female'].map(value => `<article class="wardrobe-item-card wardrobe-body-card${paperDollState.selectedGender === value ? ' selected' : ''}">
-            <span class="wardrobe-record-label">ОСОБОВИЙ ЗНІМОК</span><img class="wardrobe-body-image" src="${PAPER_DOLL_BODIES[value]}" alt="">
-            <h4>${iconHTML(value)}${value === 'female' ? 'Жінка' : 'Чоловік'}</h4><span class="wardrobe-item-state">${paperDollState.selectedGender === value ? 'ОБРАНО' : 'ДОСТУПНО'}</span><button type="button" class="report-button" data-paper-gender="${value}" data-wardrobe-focus="gender-${value}" aria-pressed="${paperDollState.selectedGender === value}">${value === 'female' ? 'Жінка' : 'Чоловік'}</button></article>`).join('');
+        container.innerHTML = `<div class="wardrobe-appearance-note">${iconHTML('user','large')}<h4>Повноростова модель</h4><p>Обраний персонаж одразу відображається в центрі та у палаті.</p><span class="wardrobe-item-state">${paperDollState.selectedGender === 'female' ? 'Жінка' : 'Чоловік'}</span></div>`;
     } else {
-        const items = PAPER_DOLL_ITEMS.filter(item => item.slot === wardrobeSlot && !PAPER_DOLL_RETIRED_FACES.has(item.id));
-        const nativeFace = wardrobeSlot === 'face' ? `<article class="wardrobe-native-face">
-            ${iconHTML('user', 'large')}<h4>Базове обличчя</h4><p>Обличчя з актуального зображення персонажа.</p>
-            <span class="wardrobe-item-state">${selectedPaperDollItem('face') ? 'ДОСТУПНЕ' : 'ВИКОРИСТОВУЄТЬСЯ'}</span>
-            ${selectedPaperDollItem('face') ? '<button type="button" class="report-button" data-wardrobe-native-face data-wardrobe-focus="native-face">Зняти накладку</button>' : ''}
-            ${items.length ? '' : '<p class="wardrobe-cosmetic-note">Нові затверджені накладки ще не долучено.</p>'}</article>` : '';
-        container.innerHTML = nativeFace + (items.length ? items.map(wardrobeItemCard).join('') : wardrobeSlot === 'face' ? '' : `<div class="wardrobe-empty">${iconHTML(PAPER_DOLL_SLOTS[wardrobeSlot].icon, 'hero')}<h4>Матеріали не долучено</h4><p>Для цього слота ще немає предметів і підготовлених зображень.</p></div>`);
+        const nativeFace = wardrobeSlot === 'face' ? `<article class="wardrobe-native-face"><h4>Базове обличчя</h4><p>Обличчя з актуального зображення персонажа.</p><span class="wardrobe-item-state">${selectedPaperDollItem('face') ? 'ДОСТУПНЕ' : 'ВИКОРИСТОВУЄТЬСЯ'}</span>${selectedPaperDollItem('face') ? '<button type="button" class="report-button" data-wardrobe-native-face data-wardrobe-focus="native-face">Зняти накладку</button>' : ''}${items.length ? '' : '<p class="wardrobe-cosmetic-note">Нові затверджені накладки ще не долучено.</p>'}</article>` : '';
+        container.innerHTML = nativeFace + (items.length ? items.map(wardrobeItemCard).join('') : wardrobeSlot === 'face' ? '' : `<div class="wardrobe-empty">${iconHTML(PAPER_DOLL_SLOTS[wardrobeSlot].icon,'large')}<h4>Матеріали не долучено</h4><p>Для цього слота ще немає предметів і підготовлених зображень.</p></div>`);
     }
+    renderWardrobeItemDetail(items.find(item => item.id === wardrobeSelectedItemId));
     categoryList?.querySelectorAll('[data-wardrobe-category]').forEach(button => button.addEventListener('click', () => selectWardrobeCategory(button.dataset.wardrobeCategory)));
     slots?.querySelectorAll('[data-wardrobe-slot]').forEach(button => button.addEventListener('click', () => selectWardrobeSlot(button.dataset.wardrobeSlot)));
-    container.querySelectorAll('[data-paper-gender]').forEach(button => button.addEventListener('click', () => setGender(button.dataset.paperGender)));
     container.querySelectorAll('[data-wardrobe-native-face]').forEach(button => button.addEventListener('click', () => equipPaperDollItem('face', null)));
-    container.querySelectorAll('[data-wardrobe-item]').forEach(button => button.addEventListener('click', () => {
-        const id = button.dataset.wardrobeItem;
-        equipPaperDollItem(wardrobeSlot, selectedPaperDollItem(wardrobeSlot)?.id === id ? null : id);
-    }));
+    container.querySelectorAll('[data-wardrobe-item]').forEach(button => button.addEventListener('click', () => selectWardrobeItem(button.dataset.wardrobeItem)));
     container.querySelectorAll('.wardrobe-item-image img:not(.game-icon)').forEach(thumbnail => {
-        thumbnail.onerror = () => {
-            failedPaperDollImages.add(thumbnail.getAttribute('src')); thumbnail.classList.add('hidden');
-            renderPaperDoll(); renderPaperDollControls(false);
-        };
+        thumbnail.onerror = () => { failedPaperDollImages.add(thumbnail.getAttribute('src')); thumbnail.classList.add('hidden'); renderPaperDoll(); renderPaperDollControls(false); };
     });
+    container.scrollTop = gridScroll;
+    if (categoryList) categoryList.scrollLeft = categoryScroll;
     renderPaperDoll();
     renderPaperDollControls(false);
     if (focused) document.querySelectorAll('[data-wardrobe-focus]').forEach(button => {
