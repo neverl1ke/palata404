@@ -1307,6 +1307,22 @@ class GameTests(unittest.TestCase):
                             }''',{'name':name,'title':item['name']})
                             self.page.wait_for_function('''()=>[...document.querySelectorAll('#hair-native-review img[src]')].every(image=>image.complete&&image.naturalWidth>0)''')
                             emit(name+'-head',self.page.locator('#hair-native-review'))
+                            if choice=='hair-bob':
+                                current_x={'male':350.60516025,'female':348.3386675}[gender]
+                                trial_x=item['placementByGender'][gender]['x']
+                                for version,x in [('current',current_x),('trial',trial_x)]:
+                                    self.page.evaluate('''({gender,x})=>{
+                                        PAPER_DOLL_ITEMS.find(item=>item.id==='hair-bob').placementByGender[gender].x=x;
+                                        renderPaperDoll();
+                                        const head=document.getElementById('hair-native-review');
+                                        Object.assign(head.style,{width:'800px',height:'700px',background:'#faf8f0'});
+                                        const clone=document.getElementById('wardrobe-paperdoll').cloneNode(true);
+                                        clone.removeAttribute('id');clone.querySelectorAll('[id]').forEach(node=>node.removeAttribute('id'));
+                                        Object.assign(clone.style,{position:'absolute',width:'941px',height:'1672px',maxWidth:'none',maxHeight:'none',margin:'0',bottom:'auto',left:'-550px',top:'0',transformOrigin:'top left',transform:'scale(2)'});
+                                        head.replaceChildren(clone);
+                                    }''',{'gender':gender,'x':x})
+                                    self.page.wait_for_function('''()=>[...document.querySelectorAll('#hair-native-review img[src]')].every(image=>image.complete&&image.naturalWidth>0)''')
+                                    emit(gender+'-bob-'+version+'-light-2x',self.page.locator('#hair-native-review'))
                             self.page.evaluate('document.getElementById("hair-native-review").remove()')
                         elif width==390:
                             self.page.screenshot(path=str(results/f'{gender}-{choice}-{mode}-mobile.png'))
