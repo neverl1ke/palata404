@@ -72,7 +72,7 @@ const PAPER_DOLL_ITEMS = [
         fittedToGender: true, description: 'Затверджена зачіска з другого комплекту.',
         genderVariants: { male: 'assets/wardrobe/hair/male_medium_shoulder_length.png?v=b7eb30d7', female: 'assets/wardrobe/hair/female_medium_shoulder_length.png?v=ec0dcba9' },
         placementByGender: {
-            male: { x: 327, y: 20, width: 282.15, height: 282.15 },
+            male: { x: 336.866667, y: 22.5, width: 263.34, height: 263.34 },
             female: { x: 305, y: 11, width: 338.58, height: 338.58 }
         } },
     {

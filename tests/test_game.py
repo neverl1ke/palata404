@@ -1326,6 +1326,20 @@ class GameTests(unittest.TestCase):
                             if choice in new_choices:
                                 self.page.evaluate("document.getElementById('hair-native-review').style.background='#1c2023'")
                                 emit(name+'-head-dark',self.page.locator('#hair-native-review'))
+                            if gender=='male' and choice=='hair-shoulder-length':
+                                target=dict(item['placementByGender'][gender])
+                                variants=[('fit-225',{'x':327,'y':20,'width':282.15,'height':282.15}),('fit-210',target),('fit-200',{'x':343.444444,'y':23.6,'width':250.8,'height':250.8})]
+                                for label,placement in variants:
+                                    self.page.evaluate('''placement=>{
+                                        Object.assign(PAPER_DOLL_ITEMS.find(item=>item.id==='hair-shoulder-length').placementByGender.male,placement);renderPaperDoll();
+                                        const head=document.getElementById('hair-native-review');head.style.background='#faf8f0';
+                                        const clone=document.getElementById('wardrobe-paperdoll').cloneNode(true);
+                                        clone.removeAttribute('id');clone.querySelectorAll('[id]').forEach(node=>node.removeAttribute('id'));
+                                        Object.assign(clone.style,{position:'absolute',width:'941px',height:'1672px',maxWidth:'none',maxHeight:'none',margin:'0',bottom:'auto',left:'-550px',top:'0',transformOrigin:'top left',transform:'scale(2)'});head.replaceChildren(clone);
+                                    }''',placement)
+                                    self.page.wait_for_function('''()=>[...document.querySelectorAll('#hair-native-review img[src]')].every(image=>image.complete&&image.naturalWidth>0)''')
+                                    emit(name+'-'+label,self.page.locator('#hair-native-review'))
+                                self.page.evaluate('''placement=>{Object.assign(PAPER_DOLL_ITEMS.find(item=>item.id==='hair-shoulder-length').placementByGender.male,placement);renderPaperDoll();}''',target)
                             self.page.evaluate('document.getElementById("hair-native-review").remove()')
                         elif width==390:
                             self.page.screenshot(path=str(results/f'{gender}-{choice}-{mode}-mobile.png'))
