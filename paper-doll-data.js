@@ -37,22 +37,22 @@ const PAPER_DOLL_ITEMS = [
         fittedToGender: true, description: 'Розкуйовджене волосся з першого комплекту зачісок.',
         genderVariants: { male: 'assets/wardrobe/hair/male_messy_hair.png?v=fe4c6349', female: 'assets/wardrobe/hair/female_messy_hair.png?v=e2482312' },
         placementByGender: {
-            male: { x: 344, y: -38, width: 224.4, height: 280.4 },
+            male: { x: 359.86, y: -30.32, width: 210.936, height: 263.576 },
             female: { x: 343, y: -5, width: 246.84, height: 308.44 }
         } },
     { id: 'hair-bob', slot: 'hair', name: 'Каре до підборіддя', icon: 'user', availableByDefault: true,
         fittedToGender: true, description: 'Каре до підборіддя з першого комплекту зачісок.',
         genderVariants: { male: 'assets/wardrobe/hair/male_chin_length_bob.png?v=260f8f73', female: 'assets/wardrobe/hair/female_chin_length_bob.png?v=52bb5078' },
         placementByGender: {
-            male: { x: 311.5, y: 2.5, width: 313.5, height: 313.5 },
-            female: { x: 319, y: -5, width: 300.96, height: 300.96 }
+            male: { x: 327.85, y: 11.25, width: 282.15, height: 282.15 },
+            female: { x: 329.92, y: 1.65, width: 279.8928, height: 279.8928 }
         } },
     { id: 'hair-double-buns', slot: 'hair', name: 'Два бокові пучки з локонами', icon: 'user', availableByDefault: true,
         fittedToGender: true, description: 'Два бокові пучки з локонами з першого комплекту зачісок.',
         genderVariants: { male: 'assets/wardrobe/hair/male_double_buns.png?v=bd2fdcdc', female: 'assets/wardrobe/hair/female_double_buns.png?v=40d32b64' },
         placementByGender: {
-            male: { x: 299.5, y: -5, width: 338.58, height: 338.58 },
-            female: { x: 292, y: -14, width: 351.12, height: 351.12 }
+            male: { x: 317.05, y: 4.5, width: 304.722, height: 304.722 },
+            female: { x: 306.64, y: -5.68, width: 323.0304, height: 323.0304 }
         } },
     {
         id: 'patient-tunic', slot: 'upperBody', name: 'Лікарняна туніка', icon: 'shirt',
