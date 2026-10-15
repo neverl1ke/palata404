@@ -35,17 +35,17 @@ const PAPER_DOLL_ITEMS = [
         noImageRequired: true, description: 'Початковий вигляд затвердженого аватара без накладки волосся.' },
     { id: 'hair-messy', slot: 'hair', name: 'Розкуйовджена зачіска', icon: 'user', availableByDefault: true,
         fittedToGender: true, description: 'Розкуйовджене волосся з першого комплекту зачісок.',
-        genderVariants: { male: 'assets/wardrobe/hair/male_messy_hair.png?v=e2482312', female: 'assets/wardrobe/hair/female_messy_hair.png?v=fe4c6349' },
+        genderVariants: { male: 'assets/wardrobe/hair/male_messy_hair.png?v=fe4c6349', female: 'assets/wardrobe/hair/female_messy_hair.png?v=e2482312' },
         placementByGender: {
-            male: { x: 343, y: 0, width: 246.84, height: 308.44 },
-            female: { x: 344, y: -43, width: 224.4, height: 280.4 }
+            male: { x: 344, y: -38, width: 224.4, height: 280.4 },
+            female: { x: 343, y: -5, width: 246.84, height: 308.44 }
         } },
     { id: 'hair-bob', slot: 'hair', name: 'Каре до підборіддя', icon: 'user', availableByDefault: true,
         fittedToGender: true, description: 'Каре до підборіддя з першого комплекту зачісок.',
-        genderVariants: { male: 'assets/wardrobe/hair/male_chin_length_bob.png?v=52bb5078', female: 'assets/wardrobe/hair/female_chin_length_bob.png?v=260f8f73' },
+        genderVariants: { male: 'assets/wardrobe/hair/male_chin_length_bob.png?v=260f8f73', female: 'assets/wardrobe/hair/female_chin_length_bob.png?v=52bb5078' },
         placementByGender: {
-            male: { x: 319, y: 0, width: 300.96, height: 300.96 },
-            female: { x: 311.5, y: -2.5, width: 313.5, height: 313.5 }
+            male: { x: 311.5, y: 2.5, width: 313.5, height: 313.5 },
+            female: { x: 319, y: -5, width: 300.96, height: 300.96 }
         } },
     { id: 'hair-double-buns', slot: 'hair', name: 'Два бокові пучки з локонами', icon: 'user', availableByDefault: true,
         fittedToGender: true, description: 'Два бокові пучки з локонами з першого комплекту зачісок.',

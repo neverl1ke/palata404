@@ -1,25 +1,25 @@
 {
-  "archive": "Palata404_Hairstyles_Pack_01.rar.rar",
-  "archiveSha256": "de66496f91997a889d487463d2a00d7113d23a7ed6e5e799a384ff7b23d9f587",
+  "archive": "Palata404_Hairstyles_Pack_01_v2.rar.rar",
+  "archiveSha256": "63e37409c703ea2fe9480807214dcf469e46e468ef4cd9f586b580239b6048b0",
   "files": {
     "female_chin_length_bob.png": {
-      "blob": "260f8f73f52e4f773a24ff6dea9a167d917a551c",
+      "blob": "52bb5078c679c5314facdfda15c313e6f943a98e",
       "size": [
         1254,
         1254
       ],
-      "bytes": 1334439,
+      "bytes": 1335158,
       "alpha": [
         0,
         255
       ],
       "bbox": [
-        68,
+        82,
         92,
-        1178,
-        1161
+        1186,
+        1103
       ],
-      "transparent": 998386
+      "transparent": 1040808
     },
     "female_double_buns.png": {
       "blob": "40d32b649d000e0b85cd8a22759817accb6f00d0",
@@ -40,43 +40,24 @@
       ],
       "transparent": 965290
     },
-    "female_messy_hair.png": {
-      "blob": "fe4c634939038874feb64a6ae8a381885ba9c616",
-      "size": [
-        1122,
-        1402
-      ],
-      "bytes": 1145023,
-      "alpha": [
-        0,
-        255
-      ],
-      "bbox": [
-        49,
-        256,
-        1104,
-        1150
-      ],
-      "transparent": 1092840
-    },
     "male_chin_length_bob.png": {
-      "blob": "52bb5078c679c5314facdfda15c313e6f943a98e",
+      "blob": "260f8f73f52e4f773a24ff6dea9a167d917a551c",
       "size": [
         1254,
         1254
       ],
-      "bytes": 1335158,
+      "bytes": 1334439,
       "alpha": [
         0,
         255
       ],
       "bbox": [
-        82,
+        68,
         92,
-        1186,
-        1103
+        1178,
+        1161
       ],
-      "transparent": 1040808
+      "transparent": 998386
     },
     "male_double_buns.png": {
       "blob": "bd2fdcdc9144ca56bd5505ca52b9cbf32e79c96c",
@@ -98,6 +79,25 @@
       "transparent": 1018319
     },
     "male_messy_hair.png": {
+      "blob": "fe4c634939038874feb64a6ae8a381885ba9c616",
+      "size": [
+        1122,
+        1402
+      ],
+      "bytes": 1145023,
+      "alpha": [
+        0,
+        255
+      ],
+      "bbox": [
+        49,
+        256,
+        1104,
+        1150
+      ],
+      "transparent": 1092840
+    },
+    "female_messy_hair.png": {
       "blob": "e24823126bace8392c02d0575a3def3ced9288f9",
       "size": [
         1122,
@@ -116,5 +116,8 @@
       ],
       "transparent": 890212
     }
+  },
+  "sourceNames": {
+    "female_messy_hair.png": "female_messy_tousled_hair.png"
   }
 }
