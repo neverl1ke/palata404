@@ -1294,7 +1294,7 @@ class GameTests(unittest.TestCase):
                                 const host=image.parentElement.getBoundingClientRect(),r=image.getBoundingClientRect();
                                 return {x:(r.x-host.x)/host.width*941,y:(r.y-host.y)/host.height*1672,
                                     width:r.width/host.width*941,height:r.height/host.height*1672,
-                                    scaleX:r.width/image.naturalWidth,scaleY:r.height/image.naturalHeight,
+                                    scaleX:r.width/image.naturalWidth,scaleY:r.height/image.naturalHeight,frameWidth:host.width,
                                     order:Number(getComputedStyle(image).zIndex)};
                             }''')
                             registration=item['placementByGender'][gender]
@@ -1303,7 +1303,9 @@ class GameTests(unittest.TestCase):
                             stretched=choice=='hair-messy' and gender=='male'
                             self.assertEqual(layer.evaluate('e=>getComputedStyle(e).objectFit'),'fill' if stretched else 'contain')
                             if stretched:
-                                self.assertAlmostEqual(placement['x']+placement['width'],573.4559506,delta=.15)
+                                # CSS layout rounds each percentage edge to subpixels; assess error in rendered pixels.
+                                self.assertAlmostEqual((placement['x']+placement['width'])*placement['frameWidth']/941,
+                                    573.4559506*placement['frameWidth']/941,delta=.05)
                                 self.assertAlmostEqual(placement['scaleX']/placement['scaleY'],209.373552192592/205.6309596,delta=.001)
                             else:
                                 self.assertAlmostEqual(placement['scaleX'],placement['scaleY'],delta=.001)
