@@ -4,15 +4,17 @@
 
 Додано три предмети, чотири незмінені PNG та шість незалежних реєстрацій. Усі картинки нижче — реальні браузерні скриншоти гри. Крупний план є точною DOM-копією відрендереного компонента, пропорційно збільшеного цілком до 2×; новий арт не генерувався. Загальні плани зняті зі звичайної сцени гардероба.
 
+Оновлено чотири посадки після перегляду. [Порівняння до/після та огляд чоловічої розкуйовдженої](../hairstyles-pack-02-fit2/README.md).
+
 ## Шість примірок — огляд
 
 ### Чоловік
 
-![Три чоловічі зачіски](male-hairstyles-pack-02-overview.jpg)
+![Три чоловічі зачіски](../hairstyles-pack-02-fit2/male-hairstyles-pack-02-overview.jpg)
 
 ### Жінка
 
-![Три жіночі зачіски](female-hairstyles-pack-02-overview.jpg)
+![Три жіночі зачіски](../hairstyles-pack-02-fit2/female-hairstyles-pack-02-overview.jpg)
 
 ## Загальний вигляд і крупні плани
 
@@ -20,12 +22,12 @@
 
 | Примірка | Загальний вигляд | Крупний план | Темний фон |
 | --- | --- | --- | --- |
-| Класична коротка стрижка — Чоловік | ![Загальний вигляд](male-hair-classic-short-wardrobe.jpg) | ![Голова](male-hair-classic-short-head.jpg) | [Відкрити](male-hair-classic-short-head-dark.jpg) |
-| Класична коротка стрижка — Жінка | ![Загальний вигляд](female-hair-classic-short-wardrobe.jpg) | ![Голова](female-hair-classic-short-head.jpg) | [Відкрити](female-hair-classic-short-head-dark.jpg) |
-| Коротка текстурована стрижка — Чоловік | ![Загальний вигляд](male-hair-textured-short-wardrobe.jpg) | ![Голова](male-hair-textured-short-head.jpg) | [Відкрити](male-hair-textured-short-head-dark.jpg) |
+| Класична коротка стрижка — Чоловік | ![Загальний вигляд](../hairstyles-pack-02-fit2/male-hair-classic-short-wardrobe.jpg) | ![Голова](../hairstyles-pack-02-fit2/male-hair-classic-short-head.jpg) | [Відкрити](../hairstyles-pack-02-fit2/male-hair-classic-short-head-dark.jpg) |
+| Класична коротка стрижка — Жінка | ![Загальний вигляд](../hairstyles-pack-02-fit2/female-hair-classic-short-wardrobe.jpg) | ![Голова](../hairstyles-pack-02-fit2/female-hair-classic-short-head.jpg) | [Відкрити](../hairstyles-pack-02-fit2/female-hair-classic-short-head-dark.jpg) |
+| Коротка текстурована стрижка — Чоловік | ![Загальний вигляд](../hairstyles-pack-02-fit2/male-hair-textured-short-wardrobe.jpg) | ![Голова](../hairstyles-pack-02-fit2/male-hair-textured-short-head.jpg) | [Відкрити](../hairstyles-pack-02-fit2/male-hair-textured-short-head-dark.jpg) |
 | Коротка текстурована стрижка — Жінка | ![Загальний вигляд](female-hair-textured-short-wardrobe.jpg) | ![Голова](female-hair-textured-short-head.jpg) | [Відкрити](female-hair-textured-short-head-dark.jpg) |
 | Волосся до плечей — Чоловік | ![Загальний вигляд](male-hair-shoulder-length-wardrobe.jpg) | ![Голова](male-hair-shoulder-length-head.jpg) | [Відкрити](male-hair-shoulder-length-head-dark.jpg) |
-| Волосся до плечей — Жінка | ![Загальний вигляд](female-hair-shoulder-length-wardrobe.jpg) | ![Голова](female-hair-shoulder-length-head.jpg) | [Відкрити](female-hair-shoulder-length-head-dark.jpg) |
+| Волосся до плечей — Жінка | ![Загальний вигляд](../hairstyles-pack-02-fit2/female-hair-shoulder-length-wardrobe.jpg) | ![Голова](../hairstyles-pack-02-fit2/female-hair-shoulder-length-head.jpg) | [Відкрити](../hairstyles-pack-02-fit2/female-hair-shoulder-length-head-dark.jpg) |
 
 ## Залишковий дефект чоловічого волосся до плечей
 
@@ -49,16 +51,16 @@
 
 | ID | Стать | x | y | width | height | scale |
 | --- | --- | ---: | ---: | ---: | ---: | ---: |
-| `hair-classic-short` | male | 375 | 0 | 200.64 | 200.64 | 0.16 |
-| `hair-classic-short` | female | 377 | -5 | 196.878 | 196.878 | 0.157 |
-| `hair-textured-short` | male | 361.78 | -12 | 225.72 | 225.72 | 0.18 |
+| `hair-classic-short` | male | 373 | 0 | 200.64 | 200.64 | 0.16 |
+| `hair-classic-short` | female | 375 | -5 | 196.878 | 196.878 | 0.157 |
+| `hair-textured-short` | male | 363.1766 | -10.8282 | 218.9484 | 218.9484 | 0.1746 |
 | `hair-textured-short` | female | 365 | -17 | 219.45 | 219.45 | 0.175 |
 | `hair-shoulder-length` | male | 336.866667 | 22.5 | 263.34 | 263.34 | 0.21 |
-| `hair-shoulder-length` | female | 305 | 11 | 338.58 | 338.58 | 0.27 |
+| `hair-shoulder-length` | female | 313.5 | 11.7155 | 321.651 | 321.651 | 0.2565 |
 
 ## Перевірки та межі
 
-[Браузерний прогін коду 4c5dcd1](https://github.com/neverl1ke/palata404/actions/runs/38783534284): 65 Node + 63 Python — усі **128** успішні. Серед них 8 перевірок PNG / SVG, точних байтів та альфа-каналів. Перевірено перемикання між новими й попередніми зачісками, «Без зачіски», обидві статі, «Пацієнт» / «Трип», головний HUD і гардероб, туніки, збереження вибору після перезавантаження та старі збереження. Перевірено 1280×800, 390×844 і 320×568 у Chromium; фізичний телефон не використовувався.
+[Браузерний прогін коду 501556f](https://github.com/neverl1ke/palata404/actions/runs/38788548344): 65 Node + 63 Python — усі **128** успішні. Серед них 8 перевірок PNG / SVG, точних байтів та альфа-каналів. Перевірено перемикання між новими й попередніми зачісками, «Без зачіски», обидві статі, «Пацієнт» / «Трип», головний HUD і гардероб, туніки, збереження вибору після перезавантаження та старі збереження. Перевірено 1280×800, 390×844 і 320×568 у Chromium; фізичний телефон не використовувався.
 
 Чотири джерела скопійовані без зміни байтів, усі RGBA 1254×1254 з alpha 0–255. У style B та жіночому волоссі до плечей є поодинокі кутові alpha-1 пікселі, які не видалялися. Оригінальні бази з архіву збігаються з базами проєкту; приклади примірок не використовуються як накладки. Шість попередніх PNG, їхні placements, аватари, туніки, інші предмети та схема збережень незмінні.
 
