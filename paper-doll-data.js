@@ -37,22 +37,22 @@ const PAPER_DOLL_ITEMS = [
         fittedToGender: true, description: 'Розкуйовджене волосся з першого комплекту зачісок.',
         genderVariants: { male: 'assets/wardrobe/hair/male_messy_hair.png?v=fe4c6349', female: 'assets/wardrobe/hair/female_messy_hair.png?v=e2482312' },
         placementByGender: {
-            male: { x: 359.86, y: -30.32, width: 210.936, height: 263.576 },
+            male: { x: 365.06, y: -30.32, width: 210.936, height: 263.576 },
             female: { x: 343, y: -5, width: 246.84, height: 308.44 }
         } },
     { id: 'hair-bob', slot: 'hair', name: 'Каре до підборіддя', icon: 'user', availableByDefault: true,
         fittedToGender: true, description: 'Каре до підборіддя з першого комплекту зачісок.',
         genderVariants: { male: 'assets/wardrobe/hair/male_chin_length_bob.png?v=260f8f73', female: 'assets/wardrobe/hair/female_chin_length_bob.png?v=52bb5078' },
         placementByGender: {
-            male: { x: 327.85, y: 11.25, width: 282.15, height: 282.15 },
-            female: { x: 329.92, y: 1.65, width: 279.8928, height: 279.8928 }
+            male: { x: 335.2075, y: 15.1875, width: 268.0425, height: 268.0425 },
+            female: { x: 337.174, y: 6.0675, width: 265.89816, height: 265.89816 }
         } },
     { id: 'hair-double-buns', slot: 'hair', name: 'Два бокові пучки з локонами', icon: 'user', availableByDefault: true,
         fittedToGender: true, description: 'Два бокові пучки з локонами з першого комплекту зачісок.',
         genderVariants: { male: 'assets/wardrobe/hair/male_double_buns.png?v=bd2fdcdc', female: 'assets/wardrobe/hair/female_double_buns.png?v=40d32b64' },
         placementByGender: {
             male: { x: 317.05, y: 4.5, width: 304.722, height: 304.722 },
-            female: { x: 306.64, y: -5.68, width: 323.0304, height: 323.0304 }
+            female: { x: 315.058, y: -0.896, width: 306.87888, height: 306.87888 }
         } },
     {
         id: 'patient-tunic', slot: 'upperBody', name: 'Лікарняна туніка', icon: 'shirt',

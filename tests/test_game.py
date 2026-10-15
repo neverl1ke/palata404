@@ -1285,6 +1285,9 @@ class GameTests(unittest.TestCase):
                         self.assertGreaterEqual(action.bounding_box()['height'],44)
                         if width==1280 and mode=='patient':
                             name=f'{gender}-{choice}'
+                            if os.getenv('GITHUB_ACTIONS')=='true':
+                                metrics=self.page.locator('#wardrobe-paperdoll').evaluate('e=>{const r=e.getBoundingClientRect();return {width:r.width,height:r.height,scale:r.width/941}}')
+                                print('HAIR_FIT_METRICS:'+json.dumps({'gender':gender,'choice':choice,'frame':metrics}),flush=True)
                             self.page.screenshot(path=str(results/f'{name}-game.png'))
                             emit(name+'-wardrobe',wardrobe.locator('.wardrobe-stage'))
                             # Review copies are exact clones of the actual game
