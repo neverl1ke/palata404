@@ -1254,10 +1254,10 @@ class GameTests(unittest.TestCase):
         results=ROOT/'test-results';results.mkdir(exist_ok=True)
         new_choices=['hair-classic-short','hair-textured-short','hair-shoulder-length']
         fit_review_before={
-            ('male','hair-messy'):{'x':365.824991,'y':-29.293952,'width':207.6309596,'height':256.9470636,'stretchX':True},
-            ('female','hair-shoulder-length'):{'x':327.618976,'y':12.903985568,'width':293.530982976,'height':293.530982976},
-            ('female','hair-textured-short'):{'x':365,'y':-17,'width':219.45,'height':219.45},
-            ('male','hair-shoulder-length'):{'x':336.866667,'y':22.5,'width':263.34,'height':263.34},
+            ('male','hair-messy'):{'x':362.339805814815,'y':-29.293952,'width':211.116144785185,'height':256.9470636,'stretchX':True},
+            ('female','hair-shoulder-length'):{'x':325.618976,'y':12.903985568,'width':293.530982976,'height':293.530982976},
+            ('female','hair-textured-short'):{'x':366.65,'y':-16.430375,'width':216.15825,'height':216.15825},
+            ('male','hair-shoulder-length'):{'x':340.320000325,'y':22.61025,'width':256.7565,'height':256.7565},
         }
         choices=['hair-messy','hair-bob','hair-double-buns']+new_choices
         def emit(name,locator):
@@ -1304,7 +1304,7 @@ class GameTests(unittest.TestCase):
                             self.assertEqual(layer.evaluate('e=>getComputedStyle(e).objectFit'),'fill' if stretched else 'contain')
                             if stretched:
                                 self.assertAlmostEqual(placement['x']+placement['width'],573.4559506,delta=.15)
-                                self.assertAlmostEqual(placement['scaleX']/placement['scaleY'],211.116144785185/205.6309596,delta=.001)
+                                self.assertAlmostEqual(placement['scaleX']/placement['scaleY'],209.373552192592/205.6309596,delta=.001)
                             else:
                                 self.assertAlmostEqual(placement['scaleX'],placement['scaleY'],delta=.001)
                             self.assertLess(placement['order'],self.page.locator(f'#{prefix}layer-headwear').evaluate('e=>Number(e.style.zIndex)'))
@@ -1358,22 +1358,22 @@ class GameTests(unittest.TestCase):
                                         Object.assign(clone.style,{position:'absolute',width:'941px',height:'1672px',maxWidth:'none',maxHeight:'none',margin:'0',bottom:'auto',left:'-550px',top:'0',transformOrigin:'top left',transform:'scale(2)'});head.replaceChildren(clone);
                                     }''',{'choice':choice,'placement':trial})
                                     self.page.wait_for_function('''()=>[...document.querySelectorAll('#hair-native-review img[src]')].every(image=>image.complete&&image.naturalWidth>0)''')
-                                    emit(name+'-fit7-'+label+'-head',self.page.locator('#hair-native-review'))
+                                    emit(name+'-fit8-'+label+'-head',self.page.locator('#hair-native-review'))
                                     if gender=='male' and choice=='hair-messy':
                                         frame=self.page.locator('#wardrobe-paperdoll').evaluate('e=>e.getBoundingClientRect().width')
                                         right=self.page.locator('#wardrobe-layer-hair').evaluate('e=>{const p=e.parentElement.getBoundingClientRect(),r=e.getBoundingClientRect();return(r.right-p.left)/p.width*941}')
                                         self.assertAlmostEqual(right,573.4559506,delta=.15)
                                         if label=='after':
                                             added=fit_review_before[(gender,choice)]['x']-trial['x']
-                                            self.assertAlmostEqual(added*frame/941,1,delta=.01)
+                                            self.assertAlmostEqual(added*frame/941,-.5,delta=.01)
                                         self.page.evaluate('''()=>{
                                             const head=document.getElementById('hair-native-review');Object.assign(head.style,{width:'1200px',height:'800px'});
                                             Object.assign(head.firstElementChild.style,{left:'-1300px',top:'-160px',transform:'scale(4)'});
                                         }''')
-                                        emit(name+'-fit7-'+label+'-ears-4x',self.page.locator('#hair-native-review'))
+                                        emit(name+'-fit8-'+label+'-ears-4x',self.page.locator('#hair-native-review'))
                                     if gender=='male' and choice=='hair-shoulder-length':
                                         self.page.evaluate("document.getElementById('hair-native-review').style.background='#1c2023'")
-                                        emit(name+'-fit7-'+label+'-head-dark',self.page.locator('#hair-native-review'))
+                                        emit(name+'-fit8-'+label+'-head-dark',self.page.locator('#hair-native-review'))
                                 self.page.evaluate('''({choice,placement})=>{Object.assign(PAPER_DOLL_ITEMS.find(item=>item.id===choice).placementByGender[paperDollState.selectedGender],placement);renderPaperDoll();}''',{'choice':choice,'placement':target})
                             self.page.evaluate('document.getElementById("hair-native-review").remove()')
                         elif width==390:
