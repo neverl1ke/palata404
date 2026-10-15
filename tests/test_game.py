@@ -1318,14 +1318,21 @@ class GameTests(unittest.TestCase):
                                 const scene=document.createElement('div');Object.assign(scene.style,{position:'relative',width:'304px',height:'522px',overflow:'hidden',backgroundImage:getComputedStyle(document.querySelector('.wardrobe-stage')).backgroundImage,backgroundPosition:'center bottom',backgroundSize:'auto 100%'});
                                 const full=copy();Object.assign(full.style,{left:'10px',top:'8px',transform:'scale(.30)'});scene.append(full);card.append(heading,scene);if(isNew)document.getElementById('hair-review-gallery').append(card);
                                 const head=document.createElement('div');head.id='hair-native-review';
-                                Object.assign(head.style,{position:'fixed',left:'0',top:'0',width:(400*zoom)+'px',height:(350*zoom)+'px',overflow:'hidden',background:isNew?'#faf8f0':'#b4bcb2',zIndex:'2147483647'});
+                                Object.assign(head.style,{position:'fixed',left:'0',top:'0',width:(400*zoom)+'px',height:(350*zoom)+'px',overflow:'hidden',background:zoom===2?'#faf8f0':'#b4bcb2',zIndex:'2147483647'});
                                 const native=copy();Object.assign(native.style,{left:(-275*zoom)+'px',top:'0',transform:'scale('+zoom+')'});head.append(native);document.body.append(head);
-                            }''',{'name':name,'title':item['name'],'zoom':2 if choice in new_choices else 1,'isNew':choice in new_choices})
+                            }''',{'name':name,'title':item['name'],'zoom':2 if choice in new_choices or (gender=='male' and choice=='hair-messy') else 1,'isNew':choice in new_choices})
                             self.page.wait_for_function('''()=>[...document.querySelectorAll('#hair-native-review img[src]')].every(image=>image.complete&&image.naturalWidth>0)''')
                             emit(name+'-head',self.page.locator('#hair-native-review'))
-                            if choice in new_choices:
+                            if choice in new_choices or (gender=='male' and choice=='hair-messy'):
                                 self.page.evaluate("document.getElementById('hair-native-review').style.background='#1c2023'")
                                 emit(name+'-head-dark',self.page.locator('#hair-native-review'))
+                            if gender=='male' and choice=='hair-messy':
+                                self.page.evaluate('''()=>{
+                                    const head=document.getElementById('hair-native-review');
+                                    Object.assign(head.style,{height:'360px',background:'#faf8f0'});
+                                    Object.assign(head.firstElementChild.style,{left:'-1500px',transform:'scale(4)'});
+                                }''')
+                                emit(name+'-crown-audit-4x',self.page.locator('#hair-native-review'))
                             if gender=='male' and choice=='hair-shoulder-length':
                                 target=dict(item['placementByGender'][gender])
                                 variants=[('fit-225',{'x':327,'y':20,'width':282.15,'height':282.15}),('fit-210',target),('fit-200',{'x':343.444444,'y':23.6,'width':250.8,'height':250.8})]
