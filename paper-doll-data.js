@@ -54,6 +54,27 @@ const PAPER_DOLL_ITEMS = [
             male: { x: 317.05, y: 4.5, width: 304.722, height: 304.722 },
             female: { x: 315.058, y: -0.896, width: 306.87888, height: 306.87888 }
         } },
+    { id: 'hair-classic-short', slot: 'hair', name: 'Класична коротка стрижка', icon: 'user', availableByDefault: true,
+        fittedToGender: true, description: 'Затверджена зачіска з другого комплекту.',
+        genderVariants: { male: 'assets/wardrobe/hair/classic_short_unisex_style_A.png?v=f2bb3879', female: 'assets/wardrobe/hair/classic_short_unisex_style_A.png?v=f2bb3879' },
+        placementByGender: {
+            male: { x: 375, y: 0, width: 200.64, height: 200.64 },
+            female: { x: 377, y: -5, width: 196.878, height: 196.878 }
+        } },
+    { id: 'hair-textured-short', slot: 'hair', name: 'Коротка текстурована стрижка', icon: 'user', availableByDefault: true,
+        fittedToGender: true, description: 'Затверджена зачіска з другого комплекту.',
+        genderVariants: { male: 'assets/wardrobe/hair/classic_short_unisex_style_B.png?v=6c81db91', female: 'assets/wardrobe/hair/classic_short_unisex_style_B.png?v=6c81db91' },
+        placementByGender: {
+            male: { x: 361.78, y: -12, width: 225.72, height: 225.72 },
+            female: { x: 365, y: -17, width: 219.45, height: 219.45 }
+        } },
+    { id: 'hair-shoulder-length', slot: 'hair', name: 'Волосся до плечей', icon: 'user', availableByDefault: true,
+        fittedToGender: true, description: 'Затверджена зачіска з другого комплекту.',
+        genderVariants: { male: 'assets/wardrobe/hair/male_medium_shoulder_length.png?v=b7eb30d7', female: 'assets/wardrobe/hair/female_medium_shoulder_length.png?v=ec0dcba9' },
+        placementByGender: {
+            male: { x: 327, y: 20, width: 282.15, height: 282.15 },
+            female: { x: 305, y: 11, width: 338.58, height: 338.58 }
+        } },
     {
         id: 'patient-tunic', slot: 'upperBody', name: 'Лікарняна туніка', icon: 'shirt',
         description: 'Легка лікарняна туніка вільного крою.',

@@ -1136,20 +1136,24 @@ test('the approved neckline part follows only the female tunic across modes, sav
     assert.equal(g.run('JSON.stringify({stats,inventory,equippedGear,gameProgress})'), before);
 });
 
-test('hair is shared appearance with four choices, strict gender art and persistent bald reset', () => {
+test('hair is shared appearance with seven choices, gender-fitted art and persistent bald reset', () => {
     const g=game();
     assert.equal(g.run('paperDollState.appearance.hair'),'hair-none');
     assert.equal(g.run('WARDROBE_CATEGORIES.hair.label'),'Зачіски');
-    assert.equal(g.run('PAPER_DOLL_ITEMS.filter(item=>item.slot==="hair").length'),4);
+    assert.equal(g.run('PAPER_DOLL_ITEMS.filter(item=>item.slot==="hair").length'),7);
     assert.equal(g.run('wardrobeImageStatus(selectedPaperDollItem("hair")).state'),'ready');
     const before=g.run('JSON.stringify({stats,inventory,equippedGear,gameProgress,patient:paperDollState.patientLoadout,combat:paperDollState.combatLoadout})');
-    for(const id of ['hair-messy','hair-bob','hair-double-buns']) {
+    for(const id of ['hair-messy','hair-bob','hair-double-buns','hair-classic-short','hair-textured-short','hair-shoulder-length']) {
         assert.equal(g.run(`equipPaperDollItem('hair','${id}')`),true);
         for(const gender of ['male','female']) {
             g.run(`setGender('${gender}');setPaperDollView('combat');`);
             assert.equal(g.run('paperDollState.appearance.hair'),id);
             const source=g.run('selectedPaperDollItem("hair").genderVariants[paperDollState.selectedGender]');
-            assert.match(source,new RegExp(`/hair/${gender}_`));
+            if (['hair-classic-short','hair-textured-short'].includes(id)) {
+                assert.match(source,/\/hair\/classic_short_unisex_style_[AB]\.png/);
+                assert.equal(g.run('selectedPaperDollItem("hair").genderVariants.male===selectedPaperDollItem("hair").genderVariants.female'),true);
+                assert.notEqual(g.run('JSON.stringify(selectedPaperDollItem("hair").placementByGender.male)'),g.run('JSON.stringify(selectedPaperDollItem("hair").placementByGender.female)'));
+            } else assert.match(source,new RegExp(`/hair/${gender}_`));
             for(const prefix of ['', 'wardrobe-']) assert.equal(g.elements.get(prefix+'layer-hair').getAttribute('src'),source);
             g.run('setPaperDollView("patient")');
             assert.equal(g.run('paperDollState.appearance.hair'),id);

@@ -43,6 +43,21 @@ class IconAssetTests(unittest.TestCase):
                         # They must stay unchanged; an opaque background fails.
                         self.assertLessEqual(alpha.getpixel((x,y)),1)
 
+    def test_hair_pack_02_preserves_four_supplied_overlays_and_alpha(self):
+        manifest=json.loads((ROOT/'tests/fixtures/hairstyles-pack-02.json').read_text())
+        self.assertEqual(set(manifest['files']),{'classic_short_unisex_style_A.png','classic_short_unisex_style_B.png','male_medium_shoulder_length.png','female_medium_shoulder_length.png'})
+        for name,expected in manifest['files'].items():
+            with self.subTest(name=name):
+                path=ROOT/'assets/wardrobe/hair'/name;data=path.read_bytes()
+                self.assertEqual(hashlib.sha1(f'blob {len(data)}\0'.encode()+data).hexdigest(),expected['blob'])
+                with Image.open(path) as image:
+                    self.assertEqual(image.format,'PNG');self.assertEqual(image.mode,'RGBA')
+                    self.assertEqual(list(image.size),expected['size'])
+                    alpha=image.getchannel('A');self.assertEqual(alpha.getextrema(),(0,255))
+                    self.assertGreater(alpha.histogram()[0],image.width*image.height/2)
+                    for x,y in [(0,0),(image.width-1,0),(0,image.height-1),(image.width-1,image.height-1)]:
+                        self.assertLessEqual(alpha.getpixel((x,y)),1)
+
     def test_patient_tunic_revised_release_integrity_and_transparency(self):
         expected_blobs = {
             'male': '28343fe90d876c7d785d0093d4f34fc3a5148a36',
@@ -1233,11 +1248,12 @@ class GameTests(unittest.TestCase):
         self.page.evaluate('openCustomization();setPaperDollView("combat");equipPaperDollItem("upperBody","patient-tunic");setPaperDollView("patient");')
         wardrobe=self.page.locator('#custom-modal')
         wardrobe.locator('[data-wardrobe-category="hair"]').click()
-        self.assertEqual(wardrobe.locator('[data-wardrobe-card]').count(),4)
+        self.assertEqual(wardrobe.locator('[data-wardrobe-card]').count(),7)
         self.assertEqual(self.page.evaluate('selectedPaperDollItem("hair").id'),'hair-none')
         before=self.page.evaluate('JSON.stringify({stats,inventory,equippedGear,gameProgress,patient:paperDollState.patientLoadout,combat:paperDollState.combatLoadout})')
         results=ROOT/'test-results';results.mkdir(exist_ok=True)
-        choices=['hair-messy','hair-bob','hair-double-buns']
+        new_choices=['hair-classic-short','hair-textured-short','hair-shoulder-length']
+        choices=['hair-messy','hair-bob','hair-double-buns']+new_choices
         def emit(name,locator):
             locator.screenshot(path=str(results/f'{name}.png'))
             if os.getenv('GITHUB_ACTIONS')=='true':
@@ -1292,7 +1308,7 @@ class GameTests(unittest.TestCase):
                             emit(name+'-wardrobe',wardrobe.locator('.wardrobe-stage'))
                             # Review copies are exact clones of the actual game
                             # component, enlarged as a whole, never new artwork.
-                            self.page.evaluate('''({name,title})=>{
+                            self.page.evaluate('''({name,title,zoom,isNew})=>{
                                 const source=document.getElementById('wardrobe-paperdoll');
                                 const copy=()=>{const clone=source.cloneNode(true);clone.removeAttribute('id');
                                     clone.querySelectorAll('[id]').forEach(node=>node.removeAttribute('id'));
@@ -1300,26 +1316,29 @@ class GameTests(unittest.TestCase):
                                 const card=document.createElement('article'),heading=document.createElement('h3');
                                 heading.textContent=title;Object.assign(heading.style,{font:'bold 16px/1.4 sans-serif',minHeight:'48px',margin:'0 0 8px'});
                                 const scene=document.createElement('div');Object.assign(scene.style,{position:'relative',width:'304px',height:'522px',overflow:'hidden',backgroundImage:getComputedStyle(document.querySelector('.wardrobe-stage')).backgroundImage,backgroundPosition:'center bottom',backgroundSize:'auto 100%'});
-                                const full=copy();Object.assign(full.style,{left:'10px',top:'8px',transform:'scale(.30)'});scene.append(full);card.append(heading,scene);document.getElementById('hair-review-gallery').append(card);
+                                const full=copy();Object.assign(full.style,{left:'10px',top:'8px',transform:'scale(.30)'});scene.append(full);card.append(heading,scene);if(isNew)document.getElementById('hair-review-gallery').append(card);
                                 const head=document.createElement('div');head.id='hair-native-review';
-                                Object.assign(head.style,{position:'fixed',left:'0',top:'0',width:'400px',height:'350px',overflow:'hidden',background:'#b4bcb2',zIndex:'2147483647'});
-                                const native=copy();Object.assign(native.style,{left:'-275px',top:'0',transform:'none'});head.append(native);document.body.append(head);
-                            }''',{'name':name,'title':item['name']})
+                                Object.assign(head.style,{position:'fixed',left:'0',top:'0',width:(400*zoom)+'px',height:(350*zoom)+'px',overflow:'hidden',background:isNew?'#faf8f0':'#b4bcb2',zIndex:'2147483647'});
+                                const native=copy();Object.assign(native.style,{left:(-275*zoom)+'px',top:'0',transform:'scale('+zoom+')'});head.append(native);document.body.append(head);
+                            }''',{'name':name,'title':item['name'],'zoom':2 if choice in new_choices else 1,'isNew':choice in new_choices})
                             self.page.wait_for_function('''()=>[...document.querySelectorAll('#hair-native-review img[src]')].every(image=>image.complete&&image.naturalWidth>0)''')
                             emit(name+'-head',self.page.locator('#hair-native-review'))
+                            if choice in new_choices:
+                                self.page.evaluate("document.getElementById('hair-native-review').style.background='#1c2023'")
+                                emit(name+'-head-dark',self.page.locator('#hair-native-review'))
                             self.page.evaluate('document.getElementById("hair-native-review").remove()')
                         elif width==390:
                             self.page.screenshot(path=str(results/f'{gender}-{choice}-{mode}-mobile.png'))
             self.page.set_viewport_size({'width':1280,'height':800})
             self.page.evaluate('document.getElementById("hair-review-gallery").style.display="grid"')
             self.page.wait_for_function('''()=>[...document.querySelectorAll('#hair-review-gallery img[src]')].every(image=>image.complete&&image.naturalWidth>0)''')
-            emit(gender+'-hairstyles-overview',self.page.locator('#hair-review-gallery'))
+            emit(gender+'-hairstyles-pack-02-overview',self.page.locator('#hair-review-gallery'))
             self.page.evaluate('document.getElementById("hair-review-gallery").remove()')
         self.assertEqual(self.page.evaluate('JSON.stringify({stats,inventory,equippedGear,gameProgress,patient:paperDollState.patientLoadout,combat:paperDollState.combatLoadout})'),before)
         self.page.reload(wait_until='networkidle')
-        self.assertEqual(self.page.evaluate('paperDollState.appearance.hair'),'hair-double-buns')
+        self.assertEqual(self.page.evaluate('paperDollState.appearance.hair'),'hair-shoulder-length')
         self.page.evaluate('openCustomization();selectWardrobeCategory("hair")')
-        self.assertEqual(wardrobe.locator('[data-wardrobe-card="hair-double-buns"]').get_attribute('data-equipped'),'true')
+        self.assertEqual(wardrobe.locator('[data-wardrobe-card="hair-shoulder-length"]').get_attribute('data-equipped'),'true')
         wardrobe.locator('[data-wardrobe-card="hair-none"]').click()
         wardrobe.locator('[data-wardrobe-action="hair-none"]').click()
         for prefix in ['', 'wardrobe-']:
