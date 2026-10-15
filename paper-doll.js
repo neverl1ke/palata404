@@ -3,7 +3,7 @@ const failedPaperDollImages = new Set();
 let paperDollSaveFailed = false;
 
 function emptyPaperDollLoadout() {
-    return Object.fromEntries(PAPER_DOLL_LAYER_ORDER.filter(slot => slot !== 'baseBody').map(slot => [slot, null]));
+    return Object.fromEntries(PAPER_DOLL_LAYER_ORDER.filter(slot => slot !== 'baseBody' && slot !== 'hair').map(slot => [slot, null]));
 }
 
 function normalizePaperDollState(value, legacy = {}) {
@@ -11,7 +11,7 @@ function normalizePaperDollState(value, legacy = {}) {
     const state = { schemaVersion: 2,
         selectedGender: (valid ? value.selectedGender : legacy.gender) === 'female' ? 'female' : 'male',
         activeViewMode: valid && value.activeViewMode === 'combat' ? 'combat' : 'patient',
-        appearance: { face: null, hair: valid && value.schemaVersion === 2 && typeof value.appearance?.hair === 'string' ? value.appearance.hair : legacy.hair || '' },
+        appearance: { face: null, hair: (valid && value.schemaVersion === 2 && typeof value.appearance?.hair === 'string' ? value.appearance.hair : legacy.hair) || 'hair-none' },
         patientLoadout: emptyPaperDollLoadout(), combatLoadout: emptyPaperDollLoadout() };
     for (const key of ['patientLoadout', 'combatLoadout']) {
         const source = valid && value[key] && typeof value[key] === 'object' ? value[key] : {};
@@ -42,6 +42,8 @@ function isPaperDollItemOwned(item) {
 }
 
 function selectedPaperDollItem(slot) {
+    if (slot === 'hair') return PAPER_DOLL_ITEMS.find(item => item.slot === 'hair' && item.id === paperDollState.appearance.hair && isPaperDollItemOwned(item))
+        || PAPER_DOLL_ITEMS.find(item => item.id === 'hair-none');
     const id = slot === 'face' ? paperDollState.appearance.face : activePaperDollLoadout()[slot];
     return PAPER_DOLL_ITEMS.find(item => item.id === id && item.slot === slot && isPaperDollItemOwned(item));
 }
@@ -99,9 +101,10 @@ function setPaperDollView(mode) {
 }
 
 function equipPaperDollItem(slot, itemId) {
-    if (slot === 'baseBody' || !Object.hasOwn(activePaperDollLoadout(), slot)) return false;
+    if (slot === 'baseBody' || (slot !== 'hair' && !Object.hasOwn(activePaperDollLoadout(), slot))) return false;
     if (itemId !== null && !PAPER_DOLL_ITEMS.some(item => item.id === itemId && item.slot === slot && isPaperDollItemOwned(item))) return false;
-    if (slot === 'face') paperDollState.appearance.face = itemId;
+    if (slot === 'hair') paperDollState.appearance.hair = itemId || 'hair-none';
+    else if (slot === 'face') paperDollState.appearance.face = itemId;
     else activePaperDollLoadout()[slot] = itemId;
     commitPaperDollSelection();
     return true;

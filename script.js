@@ -865,7 +865,7 @@ function closeCustomization() {
 }
 
 function setWardrobeTab(tab) {
-    const aliases = { body: ['appearance','baseBody'], face: ['appearance','face'], hair: ['appearance','face'], clothes: ['clothes','upperBody'] };
+    const aliases = { body: ['appearance','baseBody'], face: ['appearance','face'], hair: ['hair','hair'], clothes: ['clothes','upperBody'] };
     if (!aliases[tab]) return;
     [wardrobeCategory, wardrobeSlot] = aliases[tab];
     renderWardrobe();

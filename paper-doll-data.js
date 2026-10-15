@@ -3,12 +3,13 @@ const PAPER_DOLL_FRAME = Object.freeze({ width: 941, height: 1672 });
 const PAPER_DOLL_FACE_ANCHOR = Object.freeze({ x: 474, y: 32, height: 218 });
 const PAPER_DOLL_LAYER_ORDER = Object.freeze([
     'baseBody', 'pants', 'footwear', 'upperBody', 'outerwear', 'armor', 'loadout',
-    'gloves', 'back', 'headwear', 'face', 'weapon', 'accessory'
+    'gloves', 'back', 'hair', 'headwear', 'face', 'weapon', 'accessory'
 ]);
 const PAPER_DOLL_SLOTS = {
     baseBody: { label: 'Базове тіло', elementId: 'layer-body', icon: 'user' },
     headwear: { label: 'Головний убір', elementId: 'layer-headwear', icon: 'helmet' },
     face: { label: 'Обличчя', elementId: 'layer-face', icon: 'eye' },
+    hair: { label: 'Зачіски', elementId: 'layer-hair', icon: 'user' },
     upperBody: { label: 'Верхній одяг', elementId: 'layer-upper-body', icon: 'shirt' },
     outerwear: { label: 'Зовнішній одяг', elementId: 'layer-outerwear', icon: 'coat' },
     armor: { label: 'Бронежилет', elementId: 'layer-armor', icon: 'shield' },
@@ -30,6 +31,29 @@ const PAPER_DOLL_TUNIC_IMAGES = Object.freeze({
     female: 'assets/wardrobe/clothing/patient/patient_tunic_female.png?v=fa3fac64'
 });
 const PAPER_DOLL_ITEMS = [
+    { id: 'hair-none', slot: 'hair', name: 'Без зачіски', icon: 'user', availableByDefault: true,
+        noImageRequired: true, description: 'Початковий вигляд затвердженого аватара без накладки волосся.' },
+    { id: 'hair-messy', slot: 'hair', name: 'Розкуйовджена зачіска', icon: 'user', availableByDefault: true,
+        fittedToGender: true, description: 'Розкуйовджене волосся з першого комплекту зачісок.',
+        genderVariants: { male: 'assets/wardrobe/hair/male_messy_hair.png?v=e2482312', female: 'assets/wardrobe/hair/female_messy_hair.png?v=fe4c6349' },
+        placementByGender: {
+            male: { x: 343, y: 0, width: 246.84, height: 308.44 },
+            female: { x: 344, y: -43, width: 224.4, height: 280.4 }
+        } },
+    { id: 'hair-bob', slot: 'hair', name: 'Каре до підборіддя', icon: 'user', availableByDefault: true,
+        fittedToGender: true, description: 'Каре до підборіддя з першого комплекту зачісок.',
+        genderVariants: { male: 'assets/wardrobe/hair/male_chin_length_bob.png?v=52bb5078', female: 'assets/wardrobe/hair/female_chin_length_bob.png?v=260f8f73' },
+        placementByGender: {
+            male: { x: 319, y: 0, width: 300.96, height: 300.96 },
+            female: { x: 311.5, y: -2.5, width: 313.5, height: 313.5 }
+        } },
+    { id: 'hair-double-buns', slot: 'hair', name: 'Два бокові пучки з локонами', icon: 'user', availableByDefault: true,
+        fittedToGender: true, description: 'Два бокові пучки з локонами з першого комплекту зачісок.',
+        genderVariants: { male: 'assets/wardrobe/hair/male_double_buns.png?v=bd2fdcdc', female: 'assets/wardrobe/hair/female_double_buns.png?v=40d32b64' },
+        placementByGender: {
+            male: { x: 299.5, y: -5, width: 338.58, height: 338.58 },
+            female: { x: 292, y: -14, width: 351.12, height: 351.12 }
+        } },
     {
         id: 'patient-tunic', slot: 'upperBody', name: 'Лікарняна туніка', icon: 'shirt',
         description: 'Легка лікарняна туніка вільного крою.',
@@ -50,6 +74,7 @@ const PAPER_DOLL_ITEMS = [
 const PAPER_DOLL_LEGACY_ITEMS = { 'sample-headwear': 'gear-helmet', 'sample-armor': 'gear-br1', 'sample-weapon': 'gear-pm' };
 const WARDROBE_CATEGORIES = {
     appearance: { label: 'Зовнішність', icon: 'user', slots: ['baseBody', 'face'] },
+    hair: { label: 'Зачіски', icon: 'user', slots: ['hair'] },
     clothes: { label: 'Одяг', icon: 'shirt', slots: ['upperBody', 'outerwear', 'pants', 'footwear', 'gloves'] },
     gear: { label: 'Броня та спорядження', icon: 'shield', slots: ['headwear', 'armor', 'loadout', 'back'] },
     weapons: { label: 'Зброя', icon: 'swords', slots: ['weapon'] },

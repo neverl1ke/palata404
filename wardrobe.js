@@ -47,7 +47,7 @@ function selectWardrobeItem(id) {
 function applyWardrobeItemAction() {
     const item = wardrobeVisibleItems().find(entry => entry.id === wardrobeSelectedItemId);
     if (!item) return false;
-    return equipPaperDollItem(wardrobeSlot, selectedPaperDollItem(wardrobeSlot)?.id === item.id ? null : item.id);
+    return equipPaperDollItem(wardrobeSlot, wardrobeSlot !== 'hair' && selectedPaperDollItem(wardrobeSlot)?.id === item.id ? null : item.id);
 }
 
 function wardrobeItemImage(item) {
@@ -56,11 +56,12 @@ function wardrobeItemImage(item) {
 }
 
 function wardrobeItemStatus(item) {
-    return selectedPaperDollItem(item.slot)?.id === item.id ? 'ЕКІПІРОВАНО' : isPaperDollItemOwned(item) ? 'Доступно' : 'Недоступно';
+    return selectedPaperDollItem(item.slot)?.id === item.id ? item.slot === 'hair' ? 'ВИБРАНО' : 'ЕКІПІРОВАНО' : isPaperDollItemOwned(item) ? 'Доступно' : 'Недоступно';
 }
 
 // Presentation only: missing graphics never change ownership or the saved outfit.
 function wardrobeImageStatus(item, detailed = false) {
+    if (item?.noImageRequired) return { state: 'ready', text: '' };
     const layers = paperDollItemLayers(item, paperDollState.selectedGender);
     const ready = layers.filter(layer => paperDollImageCandidates(layer, paperDollState.selectedGender).some(path => !failedPaperDollImages.has(path))).length;
     const state = layers.length && ready === layers.length ? 'ready' : ready ? 'partial' : 'missing';
@@ -103,7 +104,7 @@ function wardrobeItemCard(item) {
         <span class="wardrobe-item-image">${iconHTML(item.icon || PAPER_DOLL_SLOTS[item.slot].icon, 'large')}${source ? `<img src="${escapeHTML(source)}" alt="" aria-hidden="true">` : ''}</span>
         <strong class="wardrobe-item-name">${escapeHTML(item.name)}</strong>
         <span class="wardrobe-item-state">${wardrobeItemStatus(item)}</span>
-        <span class="wardrobe-image-note${source ? ' hidden' : ''}" data-paper-image-item="${escapeHTML(item.id)}">Зображення не підготовлено</span>
+        <span class="wardrobe-image-note${source || item.noImageRequired ? ' hidden' : ''}" data-paper-image-item="${escapeHTML(item.id)}">Зображення не підготовлено</span>
     </button>`;
 }
 
@@ -121,7 +122,7 @@ function renderWardrobeItemDetail(item) {
         <p class="wardrobe-detail-description">${escapeHTML(description)}</p>
         <span class="wardrobe-item-state" role="status">${wardrobeItemStatus(item)}</span>
         <p class="wardrobe-image-note${wardrobeItemImage(item) ? ' hidden' : ''}" data-paper-image-item="${escapeHTML(item.id)}" data-paper-image-detail role="status"></p>
-        <button type="button" class="report-button" data-wardrobe-action="${escapeHTML(item.id)}" data-wardrobe-focus="action-${escapeHTML(item.id)}"${owned ? '' : ' disabled'}>${equipped ? 'Зняти' : item.slot === 'face' ? 'Обрати' : 'Надягнути'}</button>`;
+        <button type="button" class="report-button" data-wardrobe-action="${escapeHTML(item.id)}" data-wardrobe-focus="action-${escapeHTML(item.id)}"${!owned || item.slot === 'hair' && equipped ? ' disabled' : ''}>${item.slot === 'hair' ? equipped ? 'Обрано' : 'Обрати' : equipped ? 'Зняти' : item.slot === 'face' ? 'Обрати' : 'Надягнути'}</button>`;
     panel.querySelectorAll('[data-wardrobe-action]').forEach(button => button.addEventListener('click', applyWardrobeItemAction));
 }
 
@@ -140,7 +141,7 @@ function renderWardrobeUI() {
     const heading = document.getElementById('wardrobe-items-title');
     if (heading) heading.textContent = PAPER_DOLL_SLOTS[wardrobeSlot].label;
     const genderSwitch = document.getElementById('wardrobe-gender-switch');
-    genderSwitch?.classList.toggle('hidden', wardrobeCategory !== 'appearance');
+    genderSwitch?.classList.toggle('hidden', wardrobeCategory !== 'appearance' && wardrobeCategory !== 'hair');
     genderSwitch?.querySelectorAll('[data-paper-gender]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.paperGender === paperDollState.selectedGender)));
     const items = wardrobeVisibleItems();
     if (!items.some(item => item.id === wardrobeSelectedItemId)) wardrobeSelectedItemId = items.find(item => item.id === selectedPaperDollItem(wardrobeSlot)?.id)?.id || items[0]?.id || null;

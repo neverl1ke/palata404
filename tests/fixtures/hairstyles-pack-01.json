@@ -1,0 +1,120 @@
+{
+  "archive": "Palata404_Hairstyles_Pack_01.rar.rar",
+  "archiveSha256": "de66496f91997a889d487463d2a00d7113d23a7ed6e5e799a384ff7b23d9f587",
+  "files": {
+    "female_chin_length_bob.png": {
+      "blob": "260f8f73f52e4f773a24ff6dea9a167d917a551c",
+      "size": [
+        1254,
+        1254
+      ],
+      "bytes": 1334439,
+      "alpha": [
+        0,
+        255
+      ],
+      "bbox": [
+        68,
+        92,
+        1178,
+        1161
+      ],
+      "transparent": 998386
+    },
+    "female_double_buns.png": {
+      "blob": "40d32b649d000e0b85cd8a22759817accb6f00d0",
+      "size": [
+        1254,
+        1254
+      ],
+      "bytes": 1494515,
+      "alpha": [
+        0,
+        255
+      ],
+      "bbox": [
+        44,
+        52,
+        1211,
+        1237
+      ],
+      "transparent": 965290
+    },
+    "female_messy_hair.png": {
+      "blob": "fe4c634939038874feb64a6ae8a381885ba9c616",
+      "size": [
+        1122,
+        1402
+      ],
+      "bytes": 1145023,
+      "alpha": [
+        0,
+        255
+      ],
+      "bbox": [
+        49,
+        256,
+        1104,
+        1150
+      ],
+      "transparent": 1092840
+    },
+    "male_chin_length_bob.png": {
+      "blob": "52bb5078c679c5314facdfda15c313e6f943a98e",
+      "size": [
+        1254,
+        1254
+      ],
+      "bytes": 1335158,
+      "alpha": [
+        0,
+        255
+      ],
+      "bbox": [
+        82,
+        92,
+        1186,
+        1103
+      ],
+      "transparent": 1040808
+    },
+    "male_double_buns.png": {
+      "blob": "bd2fdcdc9144ca56bd5505ca52b9cbf32e79c96c",
+      "size": [
+        1254,
+        1254
+      ],
+      "bytes": 1411544,
+      "alpha": [
+        0,
+        255
+      ],
+      "bbox": [
+        92,
+        58,
+        1185,
+        1210
+      ],
+      "transparent": 1018319
+    },
+    "male_messy_hair.png": {
+      "blob": "e24823126bace8392c02d0575a3def3ced9288f9",
+      "size": [
+        1122,
+        1402
+      ],
+      "bytes": 1675946,
+      "alpha": [
+        0,
+        255
+      ],
+      "bbox": [
+        35,
+        31,
+        1112,
+        1358
+      ],
+      "transparent": 890212
+    }
+  }
+}

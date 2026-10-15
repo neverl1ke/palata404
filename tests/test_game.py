@@ -26,6 +26,23 @@ PATIENT_TUNIC_IMAGES = {
 
 
 class IconAssetTests(unittest.TestCase):
+    def test_hair_pack_pngs_preserve_supplied_bytes_dimensions_and_real_transparency(self):
+        manifest=json.loads((ROOT/'tests/fixtures/hairstyles-pack-01.json').read_text())
+        self.assertEqual(len(manifest['files']),6)
+        for name,expected in manifest['files'].items():
+            with self.subTest(name=name):
+                path=ROOT/'assets/wardrobe/hair'/name;data=path.read_bytes()
+                self.assertEqual(hashlib.sha1(f'blob {len(data)}\0'.encode()+data).hexdigest(),expected['blob'])
+                with Image.open(path) as image:
+                    self.assertEqual(image.format,'PNG');self.assertEqual(image.mode,'RGBA')
+                    self.assertEqual(list(image.size),expected['size'])
+                    alpha=image.getchannel('A');self.assertEqual(alpha.getextrema(),(0,255))
+                    self.assertGreater(alpha.histogram()[0],image.width*image.height/2)
+                    for x,y in [(0,0),(image.width-1,0),(0,image.height-1),(image.width-1,image.height-1)]:
+                        # The supplied pack has a few alpha-1 edge pixels.
+                        # They must stay unchanged; an opaque background fails.
+                        self.assertLessEqual(alpha.getpixel((x,y)),1)
+
     def test_patient_tunic_revised_release_integrity_and_transparency(self):
         expected_blobs = {
             'male': '28343fe90d876c7d785d0093d4f34fc3a5148a36',
@@ -476,7 +493,7 @@ class GameTests(unittest.TestCase):
     def test_paper_doll_layers_share_canvas_and_keep_faces_aligned_on_mobile(self):
         self.register_face_fixtures()
         self.load()
-        self.assertEqual(self.page.locator('#character-paperdoll > img:not([data-paper-extra])').count(),13)
+        self.assertEqual(self.page.locator('#character-paperdoll > img:not([data-paper-extra])').count(),14)
         results=ROOT/'test-results'
         results.mkdir(exist_ok=True)
         for width,height in [(1280,800),(1024,768),(768,1024),(844,390),(390,844),(320,568)]:
@@ -1210,6 +1227,108 @@ class GameTests(unittest.TestCase):
         self.assertLessEqual(self.page.evaluate('document.documentElement.scrollWidth'), 390)
         self.assertGreater(self.page.locator('.detail-scroll').first.evaluate('e=>e.scrollWidth-e.clientWidth'), 0)
         self.page.screenshot(path=str(results/'patient-tunic-fit-phone.png'), full_page=True)
+
+    def test_hair_pack_ui_choices_shared_persistence_mobile_and_real_render_previews(self):
+        self.load()
+        self.page.evaluate('openCustomization();setPaperDollView("combat");equipPaperDollItem("upperBody","patient-tunic");setPaperDollView("patient");')
+        wardrobe=self.page.locator('#custom-modal')
+        wardrobe.locator('[data-wardrobe-category="hair"]').click()
+        self.assertEqual(wardrobe.locator('[data-wardrobe-card]').count(),4)
+        self.assertEqual(self.page.evaluate('selectedPaperDollItem("hair").id'),'hair-none')
+        before=self.page.evaluate('JSON.stringify({stats,inventory,equippedGear,gameProgress,patient:paperDollState.patientLoadout,combat:paperDollState.combatLoadout})')
+        results=ROOT/'test-results';results.mkdir(exist_ok=True)
+        choices=['hair-messy','hair-bob','hair-double-buns']
+        def emit(name,locator):
+            locator.screenshot(path=str(results/f'{name}.png'))
+            if os.getenv('GITHUB_ACTIONS')=='true':
+                preview=locator.screenshot(type='jpeg',quality=85)
+                print('HAIR_PACK_01_PREVIEW:'+json.dumps({'name':name,'jpeg':base64.b64encode(preview).decode()},separators=(',',':')),flush=True)
+        for gender in ['male','female']:
+            self.page.set_viewport_size({'width':1280,'height':800})
+            wardrobe.get_by_role('button',name='Жінка' if gender=='female' else 'Чоловік',exact=True).click()
+            self.page.evaluate('''gender=>{
+                const gallery=document.createElement('section');gallery.id='hair-review-gallery';
+                Object.assign(gallery.style,{display:'none',position:'fixed',top:'0',left:'0',width:'984px',padding:'12px',gap:'12px',gridTemplateColumns:'repeat(3,1fr)',background:'#e7ddc8',color:'#30261e',zIndex:'2147483647',font:'16px/1.4 sans-serif'});
+                document.body.append(gallery);
+            }''',gender)
+            for width,height in [(1280,800),(390,844),(320,568)]:
+                self.page.set_viewport_size({'width':width,'height':height})
+                for mode in ['patient','combat']:
+                    wardrobe.get_by_role('button',name='Пацієнт' if mode=='patient' else 'Трип',exact=True).click()
+                    for choice in choices:
+                        card=wardrobe.locator(f'[data-wardrobe-card="{choice}"]');card.click()
+                        action=wardrobe.locator(f'[data-wardrobe-action="{choice}"]')
+                        if action.is_enabled():action.click()
+                        self.assertEqual(self.page.evaluate('paperDollState.appearance.hair'),choice)
+                        item=self.page.evaluate('id=>PAPER_DOLL_ITEMS.find(item=>item.id===id)',choice)
+                        source=item['genderVariants'][gender]
+                        self.page.wait_for_function('''source=>['layer-hair','wardrobe-layer-hair'].every(id=>{
+                            const image=document.getElementById(id);return image.src.endsWith(source)&&image.complete
+                                &&image.naturalWidth>0&&!image.classList.contains('hidden')})''',arg=source)
+                        for prefix in ['', 'wardrobe-']:
+                            layer=self.page.locator(f'#{prefix}layer-hair')
+                            self.assertEqual(layer.get_attribute('src'),source)
+                            placement=layer.evaluate('''image=>{
+                                const host=image.parentElement.getBoundingClientRect(),r=image.getBoundingClientRect();
+                                return {x:(r.x-host.x)/host.width*941,y:(r.y-host.y)/host.height*1672,
+                                    width:r.width/host.width*941,height:r.height/host.height*1672,
+                                    scaleX:r.width/image.naturalWidth,scaleY:r.height/image.naturalHeight,
+                                    order:Number(getComputedStyle(image).zIndex)};
+                            }''')
+                            for key,value in item['placementByGender'][gender].items():
+                                self.assertAlmostEqual(placement[key],value,delta=1)
+                            self.assertAlmostEqual(placement['scaleX'],placement['scaleY'],delta=.001)
+                            self.assertLess(placement['order'],self.page.locator(f'#{prefix}layer-headwear').evaluate('e=>Number(e.style.zIndex)'))
+                        self.assert_patient_tunic_layers(gender)
+                        self.assertEqual(wardrobe.locator(f'[data-paper-image-item="{choice}"]:visible').count(),0)
+                        self.assertLessEqual(self.page.evaluate('document.documentElement.scrollWidth'),width)
+                        self.assertGreaterEqual(action.bounding_box()['height'],44)
+                        if width==1280 and mode=='patient':
+                            name=f'{gender}-{choice}'
+                            self.page.screenshot(path=str(results/f'{name}-game.png'))
+                            emit(name+'-wardrobe',wardrobe.locator('.wardrobe-stage'))
+                            # Review copies are exact clones of the actual game
+                            # component, enlarged as a whole, never new artwork.
+                            self.page.evaluate('''({name,title})=>{
+                                const source=document.getElementById('wardrobe-paperdoll');
+                                const copy=()=>{const clone=source.cloneNode(true);clone.removeAttribute('id');
+                                    clone.querySelectorAll('[id]').forEach(node=>node.removeAttribute('id'));
+                                    Object.assign(clone.style,{position:'absolute',width:'941px',height:'1672px',maxWidth:'none',maxHeight:'none',margin:'0',bottom:'auto',transformOrigin:'top left'});return clone;};
+                                const card=document.createElement('article'),heading=document.createElement('h3');
+                                heading.textContent=title;Object.assign(heading.style,{font:'bold 16px/1.4 sans-serif',minHeight:'48px',margin:'0 0 8px'});
+                                const scene=document.createElement('div');Object.assign(scene.style,{position:'relative',width:'304px',height:'522px',overflow:'hidden',backgroundImage:getComputedStyle(document.querySelector('.wardrobe-stage')).backgroundImage,backgroundPosition:'center bottom',backgroundSize:'auto 100%'});
+                                const full=copy();Object.assign(full.style,{left:'10px',top:'8px',transform:'scale(.30)'});scene.append(full);card.append(heading,scene);document.getElementById('hair-review-gallery').append(card);
+                                const head=document.createElement('div');head.id='hair-native-review';
+                                Object.assign(head.style,{position:'fixed',left:'0',top:'0',width:'400px',height:'350px',overflow:'hidden',background:'#b4bcb2',zIndex:'2147483647'});
+                                const native=copy();Object.assign(native.style,{left:'-275px',top:'0',transform:'none'});head.append(native);document.body.append(head);
+                            }''',{'name':name,'title':item['name']})
+                            self.page.wait_for_function('''()=>[...document.querySelectorAll('#hair-native-review img[src]')].every(image=>image.complete&&image.naturalWidth>0)''')
+                            emit(name+'-head',self.page.locator('#hair-native-review'))
+                            self.page.evaluate('document.getElementById("hair-native-review").remove()')
+                        elif width==390:
+                            self.page.screenshot(path=str(results/f'{gender}-{choice}-{mode}-mobile.png'))
+            self.page.set_viewport_size({'width':1280,'height':800})
+            self.page.evaluate('document.getElementById("hair-review-gallery").style.display="grid"')
+            self.page.wait_for_function('''()=>[...document.querySelectorAll('#hair-review-gallery img[src]')].every(image=>image.complete&&image.naturalWidth>0)''')
+            emit(gender+'-hairstyles-overview',self.page.locator('#hair-review-gallery'))
+            self.page.evaluate('document.getElementById("hair-review-gallery").remove()')
+        self.assertEqual(self.page.evaluate('JSON.stringify({stats,inventory,equippedGear,gameProgress,patient:paperDollState.patientLoadout,combat:paperDollState.combatLoadout})'),before)
+        self.page.reload(wait_until='networkidle')
+        self.assertEqual(self.page.evaluate('paperDollState.appearance.hair'),'hair-double-buns')
+        self.page.evaluate('openCustomization();selectWardrobeCategory("hair")')
+        self.assertEqual(wardrobe.locator('[data-wardrobe-card="hair-double-buns"]').get_attribute('data-equipped'),'true')
+        wardrobe.locator('[data-wardrobe-card="hair-none"]').click()
+        wardrobe.locator('[data-wardrobe-action="hair-none"]').click()
+        for prefix in ['', 'wardrobe-']:
+            layer=self.page.locator(f'#{prefix}layer-hair')
+            self.assertIsNone(layer.get_attribute('src'));self.assertTrue(layer.evaluate('e=>e.classList.contains("hidden")'))
+        self.assert_patient_tunic_layers('female')
+        emit('female-hair-none',wardrobe.locator('.wardrobe-stage'))
+        self.page.reload(wait_until='networkidle')
+        self.assertEqual(self.page.evaluate('paperDollState.appearance.hair'),'hair-none')
+        self.page.evaluate('openCustomization();selectWardrobeCategory("hair");setGender("male")')
+        self.assertIsNone(self.page.locator('#layer-hair').get_attribute('src'))
+        emit('male-hair-none',wardrobe.locator('.wardrobe-stage'))
 
     def test_trial_faces_are_not_loaded_or_selectable_after_old_save_migration(self):
         requests=[]
