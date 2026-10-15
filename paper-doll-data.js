@@ -37,7 +37,7 @@ const PAPER_DOLL_ITEMS = [
         fittedToGender: true, description: 'Розкуйовджене волосся з першого комплекту зачісок.',
         genderVariants: { male: 'assets/wardrobe/hair/male_messy_hair.png?v=fe4c6349', female: 'assets/wardrobe/hair/female_messy_hair.png?v=e2482312' },
         placementByGender: {
-            male: { x: 367.824991, y: -29.293952, width: 205.6309596, height: 256.9470636 },
+            male: { x: 365.824991, y: -29.293952, width: 207.6309596, height: 256.9470636, stretchX: true },
             female: { x: 343, y: -5, width: 246.84, height: 308.44 }
         } },
     { id: 'hair-bob', slot: 'hair', name: 'Каре до підборіддя', icon: 'user', availableByDefault: true,

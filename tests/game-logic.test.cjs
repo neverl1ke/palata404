@@ -1154,7 +1154,10 @@ test('hair is shared appearance with seven choices, gender-fitted art and persis
                 assert.equal(g.run('selectedPaperDollItem("hair").genderVariants.male===selectedPaperDollItem("hair").genderVariants.female'),true);
                 assert.notEqual(g.run('JSON.stringify(selectedPaperDollItem("hair").placementByGender.male)'),g.run('JSON.stringify(selectedPaperDollItem("hair").placementByGender.female)'));
             } else assert.match(source,new RegExp(`/hair/${gender}_`));
-            for(const prefix of ['', 'wardrobe-']) assert.equal(g.elements.get(prefix+'layer-hair').getAttribute('src'),source);
+            for(const prefix of ['', 'wardrobe-']) {
+                assert.equal(g.elements.get(prefix+'layer-hair').getAttribute('src'),source);
+                assert.equal(g.elements.get(prefix+'layer-hair').style.objectFit,id==='hair-messy'&&gender==='male'?'fill':'');
+            }
             g.run('setPaperDollView("patient")');
             assert.equal(g.run('paperDollState.appearance.hair'),id);
             const restored=game(Object.fromEntries(g.storage));

@@ -1291,9 +1291,16 @@ class GameTests(unittest.TestCase):
                                     scaleX:r.width/image.naturalWidth,scaleY:r.height/image.naturalHeight,
                                     order:Number(getComputedStyle(image).zIndex)};
                             }''')
-                            for key,value in item['placementByGender'][gender].items():
-                                self.assertAlmostEqual(placement[key],value,delta=1)
-                            self.assertAlmostEqual(placement['scaleX'],placement['scaleY'],delta=.001)
+                            registration=item['placementByGender'][gender]
+                            for key in ['x','y','width','height']:
+                                self.assertAlmostEqual(placement[key],registration[key],delta=1)
+                            stretched=choice=='hair-messy' and gender=='male'
+                            self.assertEqual(layer.evaluate('e=>getComputedStyle(e).objectFit'),'fill' if stretched else 'contain')
+                            if stretched:
+                                self.assertAlmostEqual(placement['x']+placement['width'],573.4559506,delta=.15)
+                                self.assertAlmostEqual(placement['scaleX']/placement['scaleY'],207.6309596/205.6309596,delta=.001)
+                            else:
+                                self.assertAlmostEqual(placement['scaleX'],placement['scaleY'],delta=.001)
                             self.assertLess(placement['order'],self.page.locator(f'#{prefix}layer-headwear').evaluate('e=>Number(e.style.zIndex)'))
                         self.assert_patient_tunic_layers(gender)
                         self.assertEqual(wardrobe.locator(f'[data-paper-image-item="{choice}"]:visible').count(),0)
@@ -1333,6 +1340,32 @@ class GameTests(unittest.TestCase):
                                     Object.assign(head.firstElementChild.style,{left:'-1500px',transform:'scale(4)'});
                                 }''')
                                 emit(name+'-crown-audit-4x',self.page.locator('#hair-native-review'))
+                                # Compare baseline and both one-sided width trials using the actual renderer.
+                                target=dict(item['placementByGender'][gender])
+                                baseline={**target,'x':target['x']+2,'width':target['width']-2,'stretchX':False}
+                                for delta,label in [(0,'right-anchor-before'),(1,'right-anchor-A-1px'),(2,'right-anchor-B-2px')]:
+                                    trial={**baseline,'x':baseline['x']-delta,'width':baseline['width']+delta,'stretchX':bool(delta)}
+                                    self.page.evaluate('''placement=>{
+                                        Object.assign(PAPER_DOLL_ITEMS.find(item=>item.id==='hair-messy').placementByGender.male,placement);renderPaperDoll();
+                                    }''',trial)
+                                    for prefix in ['', 'wardrobe-']:
+                                        right=self.page.locator('#'+prefix+'layer-hair').evaluate('e=>{const p=e.parentElement.getBoundingClientRect(),r=e.getBoundingClientRect();return(r.right-p.left)/p.width*941}')
+                                        self.assertAlmostEqual(right,573.4559506,delta=.15)
+                                    self.page.evaluate('''()=>{
+                                        const head=document.getElementById('hair-native-review');
+                                        Object.assign(head.style,{width:'800px',height:'700px',background:'#faf8f0'});
+                                        const clone=document.getElementById('wardrobe-paperdoll').cloneNode(true);
+                                        clone.removeAttribute('id');clone.querySelectorAll('[id]').forEach(node=>node.removeAttribute('id'));
+                                        Object.assign(clone.style,{position:'absolute',width:'941px',height:'1672px',maxWidth:'none',maxHeight:'none',margin:'0',bottom:'auto',left:'-550px',top:'0',transformOrigin:'top left',transform:'scale(2)'});head.replaceChildren(clone);
+                                    }''')
+                                    self.page.wait_for_function('''()=>[...document.querySelectorAll('#hair-native-review img[src]')].every(image=>image.complete&&image.naturalWidth>0)''')
+                                    emit(name+'-'+label,self.page.locator('#hair-native-review'))
+                                    self.page.evaluate('''()=>{
+                                        const head=document.getElementById('hair-native-review');Object.assign(head.style,{width:'1200px',height:'800px'});
+                                        Object.assign(head.firstElementChild.style,{left:'-1300px',top:'-160px',transform:'scale(4)'});
+                                    }''')
+                                    emit(name+'-'+label+'-ears-4x',self.page.locator('#hair-native-review'))
+                                self.page.evaluate('''placement=>{Object.assign(PAPER_DOLL_ITEMS.find(item=>item.id==='hair-messy').placementByGender.male,placement);renderPaperDoll();}''',target)
                             if gender=='male' and choice=='hair-shoulder-length':
                                 target=dict(item['placementByGender'][gender])
                                 variants=[('fit-225',{'x':327,'y':20,'width':282.15,'height':282.15}),('fit-210',target),('fit-200',{'x':343.444444,'y':23.6,'width':250.8,'height':250.8})]
