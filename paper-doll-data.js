@@ -66,14 +66,14 @@ const PAPER_DOLL_ITEMS = [
         genderVariants: { male: 'assets/wardrobe/hair/classic_short_unisex_style_B.png?v=6c81db91', female: 'assets/wardrobe/hair/classic_short_unisex_style_B.png?v=6c81db91' },
         placementByGender: {
             male: { x: 369.9884556812, y: -7.8760272324, width: 201.8883785688, height: 201.8883785688 },
-            female: { x: 367.7335, y: -16.05632125, width: 213.9966675, height: 213.9966675 }
+            female: { x: 369.87883, y: -15.315694825, width: 209.71673415, height: 209.71673415 }
         } },
     { id: 'hair-shoulder-length', slot: 'hair', name: 'Волосся до плечей', icon: 'user', availableByDefault: true,
         fittedToGender: true, description: 'Затверджена зачіска з другого комплекту.',
         genderVariants: { male: 'assets/wardrobe/hair/male_medium_shoulder_length.png?v=b7eb30d7', female: 'assets/wardrobe/hair/female_medium_shoulder_length.png?v=ec0dcba9' },
         placementByGender: {
             male: { x: 341.320000325, y: 22.61025, width: 256.7565, height: 256.7565 },
-            female: { x: 323.618976, y: 12.903985568, width: 293.530982976, height: 293.530982976 }
+            female: { x: 321.618976, y: 12.903985568, width: 293.530982976, height: 293.530982976 }
         } },
     {
         id: 'patient-tunic', slot: 'upperBody', name: 'Лікарняна туніка', icon: 'shirt',
