@@ -1108,7 +1108,7 @@ test('the approved neckline part follows only the female tunic across modes, sav
         for (const prefix of ['', 'wardrobe-']) {
             const layer = g.elements.get(prefix+'layer-upper-body-neckline');
             assert.equal(layer.getAttribute('src'), neck);
-            assert.equal(layer.style.zIndex, '2.5');
+            assert.equal(layer.style.zIndex, '2');
             for (const id of ['layer-body','layer-upper-body-front','layer-upper-body-neckline']) {
                 const style = g.elements.get(prefix+id).style;
                 assert.equal(style.left, '0%'); assert.equal(style.top, '0%');

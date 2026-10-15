@@ -37,7 +37,7 @@ const PAPER_DOLL_ITEMS = [
         genderVariants: PAPER_DOLL_TUNIC_IMAGES,
         layers: [
             { id: 'front', genderVariants: PAPER_DOLL_TUNIC_IMAGES },
-            { id: 'neckline', genders: ['female'], renderOrder: 2.5,
+            { id: 'neckline', genders: ['female'], renderOrder: 2,
                 genderVariants: { female: 'assets/wardrobe/clothing/patient/female_neckline_skin_underlay.png?v=cc9a05ce' } }
         ]
     },

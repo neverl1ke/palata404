@@ -318,7 +318,7 @@ class GameTests(unittest.TestCase):
                 self.page.wait_for_function('''id=>{const image=document.getElementById(id);return image&&image.complete
                     &&image.naturalWidth===941&&!image.classList.contains('hidden')}''',arg=prefix+'layer-upper-body-neckline')
                 self.assertEqual(neckline.get_attribute('src'), 'assets/wardrobe/clothing/patient/female_neckline_skin_underlay.png?v=cc9a05ce')
-                self.assertEqual(neckline.evaluate('e=>getComputedStyle(e).zIndex'), '2.5')
+                self.assertEqual(neckline.evaluate('e=>getComputedStyle(e).zIndex'), '2')
             else:
                 self.assertEqual(neckline.count(), 0)
 
@@ -501,7 +501,9 @@ class GameTests(unittest.TestCase):
                     self.assertLessEqual(face['y']+face['height'],host['y']+host['height']*0.2)
                     self.assertGreaterEqual(host['x'],0)
                     self.assertLessEqual(host['x']+host['width'],width)
-                    self.assertEqual(self.page.locator('#character-paperdoll img:not(.hidden)').count(),3)
+                    expected_visible = 4 if gender == 'female' else 3
+                    self.page.wait_for_function('''count=>document.querySelectorAll('#character-paperdoll img:not(.hidden)').length===count''',arg=expected_visible)
+                    self.assertEqual(self.page.locator('#character-paperdoll img:not(.hidden)').count(),expected_visible)
                     self.assertLessEqual(self.page.evaluate('document.documentElement.scrollWidth'),width)
                     self.page.screenshot(path=str(results/f'paper-doll-{gender}-{width}x{height}.png'))
         self.page.evaluate('''() => {
@@ -623,7 +625,8 @@ class GameTests(unittest.TestCase):
             self.assertEqual(self.page.locator(f'#{prefix}layer-back-front').evaluate('e=>getComputedStyle(e).zIndex'),'12')
         card.click()
         self.page.locator('#wardrobe-item-detail').get_by_role('button',name='Зняти',exact=True).click()
-        self.assertEqual(self.page.locator('[data-paper-extra]').count(),0)
+        for prefix in ['', 'wardrobe-']:
+            self.assertEqual(self.page.locator(f'#{prefix}layer-back-rear, #{prefix}layer-back-front').count(),0)
         self.assertEqual(self.page.evaluate('JSON.stringify({stats,inventory,equippedGear,gameProgress})'),before)
 
     def test_approved_avatars_show_native_faces_in_both_views_and_switch_to_trip(self):
