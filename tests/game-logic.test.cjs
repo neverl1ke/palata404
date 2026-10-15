@@ -948,18 +948,18 @@ test('wardrobe V3 shows unowned item details without granting equipment', () => 
     assert.equal(g.run('JSON.stringify({inventory,stats,equippedGear,paperDollState})'),before);
 });
 
-test('production patient tunic uses the exact approved uploads', () => {
+test('production patient tunic preserves the exact approved corrected ZIP bytes', () => {
     const g = game();
     const expectedBlobs = {
-        male: 'e10d4b9045cc64ec49b4194b8615a66d93ea5deb',
-        female: 'b964152e4bda33dbbd7c76e48973396c61e80af8',
+        male: '28343fe90d876c7d785d0093d4f34fc3a5148a36',
+        female: 'fa3fac64dac856654ec4cf9eb9da72af05f1cc21',
     };
     for (const [gender, expected] of Object.entries(expectedBlobs)) {
         const source = g.run(`PAPER_DOLL_ITEMS.find(item=>item.id==='patient-tunic').genderVariants.${gender}`);
         const png = fs.readFileSync(path.join(root, source.split('?')[0]));
         const blob = require('node:crypto').createHash('sha1')
             .update(`blob ${png.length}\0`).update(png).digest('hex');
-        assert.equal(blob, expected, `${gender} clothing must preserve the approved PNG bytes`);
+        assert.equal(blob, expected, `${gender} clothing must preserve the corrected PNG bytes`);
     }
 });
 
@@ -970,13 +970,13 @@ test('a fresh patient starts dressed while the combat outfit stays independent w
     assert.equal(g.run('inventory.length'), 0);
     assert.equal(g.run('isPaperDollItemOwned(selectedPaperDollItem("upperBody"))'), true);
     for (const prefix of ['', 'wardrobe-']) {
-        assert.equal(g.elements.get(prefix + 'layer-upper-body').getAttribute('src'),
-            'assets/wardrobe/clothing/patient/patient_tunic_male.png?v=e10d4b90');
+        assert.equal(g.elements.get(prefix + 'layer-upper-body-front').getAttribute('src'),
+            'assets/wardrobe/clothing/patient/patient_tunic_male.png?v=28343fe9');
     }
     const combat = g.run('JSON.stringify({stats,inventory,equippedGear,gameProgress})');
     g.run('setPaperDollView("combat");');
     for (const prefix of ['', 'wardrobe-']) {
-        assert.equal(g.elements.get(prefix + 'layer-upper-body').getAttribute('src'), null);
+        assert.equal(g.elements.get(prefix + 'layer-upper-body-front')?.getAttribute('src') ?? null, null);
     }
     assert.equal(g.run('equipPaperDollItem("upperBody","patient-tunic")'), true);
     assert.equal(g.run('JSON.stringify({stats,inventory,equippedGear,gameProgress})'), combat);
@@ -1014,7 +1014,7 @@ test('tunic removal and independent patient and combat choices survive reloads',
     assert.equal(g.run('paperDollState.patientLoadout.upperBody'), null);
     assert.equal(g.run('paperDollState.combatLoadout.upperBody'), null);
     for (const prefix of ['', 'wardrobe-']) {
-        assert.equal(g.elements.get(prefix + 'layer-upper-body').getAttribute('src'), null);
+        assert.equal(g.elements.get(prefix + 'layer-upper-body-front')?.getAttribute('src') ?? null, null);
     }
     g.run('equipPaperDollItem("upperBody","patient-tunic");');
     const restored = game(Object.fromEntries(g.storage));
@@ -1028,18 +1028,18 @@ test('gender changes retain the tunic selection and use matching clothing in bot
     const combat = g.run('JSON.stringify({stats,inventory,equippedGear,gameProgress})');
     g.run('setPaperDollView("combat"); equipPaperDollItem("upperBody","patient-tunic");');
     for (const [gender, source] of [
-        ['female', 'assets/wardrobe/clothing/patient/patient_tunic_female.png?v=b964152e'],
-        ['male', 'assets/wardrobe/clothing/patient/patient_tunic_male.png?v=e10d4b90'],
+        ['female', 'assets/wardrobe/clothing/patient/patient_tunic_female.png?v=fa3fac64'],
+        ['male', 'assets/wardrobe/clothing/patient/patient_tunic_male.png?v=28343fe9'],
     ]) {
         g.run(`setGender('${gender}');`);
         assert.equal(g.run('paperDollState.patientLoadout.upperBody'), 'patient-tunic');
         assert.equal(g.run('paperDollState.combatLoadout.upperBody'), 'patient-tunic');
         for (const prefix of ['', 'wardrobe-']) {
-            assert.equal(g.elements.get(prefix + 'layer-upper-body').getAttribute('src'), source);
+            assert.equal(g.elements.get(prefix + 'layer-upper-body-front').getAttribute('src'), source);
         }
         const restored = game(Object.fromEntries(g.storage));
         assert.equal(restored.run('paperDollState.selectedGender'), gender);
-        assert.equal(restored.elements.get('layer-upper-body').getAttribute('src'), source);
+        assert.equal(restored.elements.get('layer-upper-body-front').getAttribute('src'), source);
     }
     assert.equal(g.run('JSON.stringify({stats,inventory,equippedGear,gameProgress})'), combat);
 });
@@ -1047,9 +1047,9 @@ test('gender changes retain the tunic selection and use matching clothing in bot
 test('failed fitted clothing hides instead of substituting shared or opposite-gender art', () => {
     const g = game();
     const before = g.run('JSON.stringify({stats,inventory,equippedGear,gameProgress,paperDollState})');
-    g.elements.get('layer-upper-body').onerror();
+    g.elements.get('layer-upper-body-front').onerror();
     for (const prefix of ['', 'wardrobe-']) {
-        const layer = g.elements.get(prefix + 'layer-upper-body');
+        const layer = g.elements.get(prefix + 'layer-upper-body-front');
         assert.equal(layer.getAttribute('src'), null);
         assert.equal(layer.classList.contains('hidden'), true);
     }
@@ -1061,10 +1061,10 @@ test('failed fitted clothing hides instead of substituting shared or opposite-ge
         genderVariants:{female:'base_female.png'}, image:'base_male.png'
     },'male').length`), 0);
     g.run('setGender("female");');
-    assert.equal(g.elements.get('layer-upper-body').getAttribute('src'),
-        'assets/wardrobe/clothing/patient/patient_tunic_female.png?v=b964152e');
-    g.elements.get('layer-upper-body').onerror();
-    assert.equal(g.elements.get('layer-upper-body').getAttribute('src'), null);
+    assert.equal(g.elements.get('layer-upper-body-front').getAttribute('src'),
+        'assets/wardrobe/clothing/patient/patient_tunic_female.png?v=fa3fac64');
+    g.elements.get('layer-upper-body-front').onerror();
+    assert.equal(g.elements.get('layer-upper-body-front').getAttribute('src'), null);
     assert.equal(g.run('paperDollState.patientLoadout.upperBody'), 'patient-tunic');
 });
 
@@ -1096,4 +1096,42 @@ test('retrying a failed wardrobe save preserves an intentionally removed starter
     assert.equal(restored.run('paperDollState.patientLoadout.upperBody'), null);
     assert.equal(restored.run('paperDollState.combatLoadout.upperBody'), null);
     assert.equal(restored.run('JSON.stringify({stats,inventory,equippedGear,gameProgress})'), combat);
+});
+
+test('the approved neckline part follows only the female tunic across modes, saves and replacements', () => {
+    const g = game();
+    const before = g.run('JSON.stringify({stats,inventory,equippedGear,gameProgress})');
+    const neck = 'assets/wardrobe/clothing/patient/female_neckline_skin_underlay.png?v=cc9a05ce';
+    for (const mode of ['patient', 'combat']) {
+        g.run(`setPaperDollView('${mode}');setGender('female');equipPaperDollItem('upperBody','patient-tunic');`);
+        assert.equal(g.run('wardrobeImageStatus(PAPER_DOLL_ITEMS.find(item=>item.id==="patient-tunic")).state'), 'ready');
+        for (const prefix of ['', 'wardrobe-']) {
+            const layer = g.elements.get(prefix+'layer-upper-body-neckline');
+            assert.equal(layer.getAttribute('src'), neck);
+            assert.equal(layer.style.zIndex, '2.5');
+            for (const id of ['layer-body','layer-upper-body-front','layer-upper-body-neckline']) {
+                const style = g.elements.get(prefix+id).style;
+                assert.equal(style.left, '0%'); assert.equal(style.top, '0%');
+                assert.equal(style.width, '100%'); assert.equal(style.height, '100%');
+            }
+        }
+        const restored = game(Object.fromEntries(g.storage));
+        assert.equal(restored.elements.get('layer-upper-body-neckline').getAttribute('src'), neck);
+        g.run('setGender("male");');
+        assert.equal(g.run('wardrobeImageStatus(PAPER_DOLL_ITEMS.find(item=>item.id==="patient-tunic")).state'), 'ready');
+        for (const prefix of ['', 'wardrobe-']) assert.equal(g.elements.has(prefix+'layer-upper-body-neckline'), false);
+        g.run('setGender("female");equipPaperDollItem("upperBody",null);');
+        for (const prefix of ['', 'wardrobe-']) {
+            assert.equal(g.elements.has(prefix+'layer-upper-body-neckline'), false);
+            assert.equal(g.elements.has(prefix+'layer-upper-body-front'), false);
+        }
+    }
+    g.run('PAPER_DOLL_ITEMS.push({id:"other-clothing",slot:"upperBody",availableByDefault:true,image:"base_female.png"});equipPaperDollItem("upperBody","patient-tunic");equipPaperDollItem("upperBody","other-clothing");');
+    for (const prefix of ['', 'wardrobe-']) assert.equal(g.elements.has(prefix+'layer-upper-body-neckline'), false);
+    g.run('equipPaperDollItem("upperBody","patient-tunic");');
+    g.elements.get('layer-upper-body-neckline').onerror();
+    assert.equal(g.run('wardrobeImageStatus(PAPER_DOLL_ITEMS.find(item=>item.id==="patient-tunic")).state'), 'partial');
+    g.run('setGender("male");');
+    assert.equal(g.run('wardrobeImageStatus(PAPER_DOLL_ITEMS.find(item=>item.id==="patient-tunic")).state'), 'ready');
+    assert.equal(g.run('JSON.stringify({stats,inventory,equippedGear,gameProgress})'), before);
 });

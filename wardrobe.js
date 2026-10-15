@@ -51,7 +51,7 @@ function applyWardrobeItemAction() {
 }
 
 function wardrobeItemImage(item) {
-    const parts = Array.isArray(item?.layers) && item.layers.length ? item.layers : [item];
+    const parts = paperDollItemLayers(item, paperDollState.selectedGender);
     return parts.flatMap(part => paperDollImageCandidates(part, paperDollState.selectedGender)).find(path => !failedPaperDollImages.has(path));
 }
 
@@ -61,10 +61,9 @@ function wardrobeItemStatus(item) {
 
 // Presentation only: missing graphics never change ownership or the saved outfit.
 function wardrobeImageStatus(item, detailed = false) {
-    const layered = Array.isArray(item?.layers) && item.layers.length > 0;
-    const layers = layered ? item.layers : [item];
-    const ready = layers.filter(layer => (!layered || /^[a-zA-Z0-9_-]+$/.test(layer?.id || '')) && paperDollImageCandidates(layer, paperDollState.selectedGender).some(path => !failedPaperDollImages.has(path))).length;
-    const state = ready === layers.length ? 'ready' : ready ? 'partial' : 'missing';
+    const layers = paperDollItemLayers(item, paperDollState.selectedGender);
+    const ready = layers.filter(layer => paperDollImageCandidates(layer, paperDollState.selectedGender).some(path => !failedPaperDollImages.has(path))).length;
+    const state = layers.length && ready === layers.length ? 'ready' : ready ? 'partial' : 'missing';
     const equipped = item && selectedPaperDollItem(item.slot)?.id === item.id;
     if (state === 'ready') return { state, text: '' };
     if (state === 'partial') return { state, text: detailed

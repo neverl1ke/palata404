@@ -126,6 +126,17 @@ function positionPaperDollLayer(image, placement, index) {
     image.style.zIndex = String(index);
 }
 
+// Resolve the same gender-specific parts for rendering and wardrobe status.
+function paperDollItemLayers(item, selectedGender) {
+    if (!Array.isArray(item?.layers) || !item.layers.length) return item ? [item] : [];
+    return item.layers.filter(part => part && typeof part.id === 'string' && /^[a-zA-Z0-9_-]+$/.test(part.id)
+        && (!Array.isArray(part.genders) || part.genders.includes(selectedGender)))
+        .map(part => ({ ...part, placement: part.placement ?? item.placement,
+            placementByGender: part.placementByGender ?? item.placementByGender,
+            fittedToGender: part.fittedToGender ?? item.fittedToGender,
+            renderOrder: part.renderOrder ?? item.renderOrder }));
+}
+
 function renderPaperDollAt(host, prefix = '') {
     if (!host) return;
     const selectedGender = paperDollState.selectedGender;
@@ -138,7 +149,7 @@ function renderPaperDollAt(host, prefix = '') {
         if (!definition) return;
         const item = slot === 'baseBody' ? { image: PAPER_DOLL_BODIES[selectedGender] } : selectedPaperDollItem(slot);
         const layered = Array.isArray(item?.layers) && item.layers.length > 0;
-        const parts = layered ? item.layers.filter(part => part && typeof part.id === 'string' && /^[a-zA-Z0-9_-]+$/.test(part.id)) : [item || {}];
+        const parts = layered ? paperDollItemLayers(item, selectedGender) : [item || {}];
         if (layered) {
             const base = document.getElementById(prefix + definition.elementId);
             if (base) { base.onload = null; base.onerror = null; base.classList.add('hidden'); base.removeAttribute('src'); }
@@ -152,10 +163,7 @@ function renderPaperDollAt(host, prefix = '') {
             image.setAttribute('alt', ''); image.setAttribute('aria-hidden', 'true'); host.appendChild(image);
         }
         if (layered) image.setAttribute('data-paper-extra', 'true');
-        const layer = layered ? { ...part, placement: part.placement ?? item.placement,
-            placementByGender: part.placementByGender ?? item.placementByGender,
-            fittedToGender: part.fittedToGender ?? item.fittedToGender,
-            renderOrder: part.renderOrder ?? item.renderOrder } : part;
+        const layer = part;
         const candidates = paperDollImageCandidates(layer, selectedGender);
         const order = Number.isFinite(layer.renderOrder) ? Math.max(-100, Math.min(100, layer.renderOrder)) : index;
         positionPaperDollLayer(image, layer.placementByGender?.[selectedGender] ?? layer.placement, order);

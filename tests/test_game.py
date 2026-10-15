@@ -20,16 +20,16 @@ from PIL import Image
 
 ROOT = Path(__file__).resolve().parents[1]
 PATIENT_TUNIC_IMAGES = {
-    'male': 'assets/wardrobe/clothing/patient/patient_tunic_male.png?v=e10d4b90',
-    'female': 'assets/wardrobe/clothing/patient/patient_tunic_female.png?v=b964152e',
+    'male': 'assets/wardrobe/clothing/patient/patient_tunic_male.png?v=28343fe9',
+    'female': 'assets/wardrobe/clothing/patient/patient_tunic_female.png?v=fa3fac64',
 }
 
 
 class IconAssetTests(unittest.TestCase):
-    def test_patient_tunic_uploads_keep_exact_bytes_and_transparency(self):
+    def test_patient_tunic_revised_release_integrity_and_transparency(self):
         expected_blobs = {
-            'male': 'e10d4b9045cc64ec49b4194b8615a66d93ea5deb',
-            'female': 'b964152e4bda33dbbd7c76e48973396c61e80af8',
+            'male': '28343fe90d876c7d785d0093d4f34fc3a5148a36',
+            'female': 'fa3fac64dac856654ec4cf9eb9da72af05f1cc21',
         }
         for gender, source in PATIENT_TUNIC_IMAGES.items():
             with self.subTest(gender=gender):
@@ -45,6 +45,21 @@ class IconAssetTests(unittest.TestCase):
                     self.assertEqual(alpha.getextrema(), (0, 255))
                     self.assertIsNotNone(alpha.getbbox())
                     self.assertGreater(alpha.histogram()[0], image.width * image.height / 2)
+
+    def test_approved_neckline_underlay_and_bases_keep_exact_bytes(self):
+        expected = {
+            'assets/wardrobe/clothing/patient/female_neckline_skin_underlay.png': 'cc9a05ce4b177122eeac62bdb3138b070904656f',
+            'base_male.png': '0dec17c1c1713c00bca182bd71ca0ecb2ca1f0e0',
+            'base_female.png': '5489c78c31011a0e87bf133e4c78d8053eff4b27',
+        }
+        for source, sha in expected.items():
+            with self.subTest(source=source):
+                data = (ROOT/source).read_bytes()
+                self.assertEqual(hashlib.sha1(f'blob {len(data)}\0'.encode()+data).hexdigest(), sha)
+                with Image.open(ROOT/source) as image:
+                    self.assertEqual(image.size, (941, 1672))
+                    self.assertEqual(image.mode, 'RGBA')
+                    self.assertEqual(image.getchannel('A').getextrema()[0], 0)
 
     def test_first_patient_shirt_drafts_are_real_transparent_pngs(self):
         for gender in ['male','female']:
@@ -282,13 +297,13 @@ class GameTests(unittest.TestCase):
 
     def assert_patient_tunic_layers(self, gender):
         source = PATIENT_TUNIC_IMAGES[gender]
-        self.page.wait_for_function('''source => ['layer-upper-body', 'wardrobe-layer-upper-body'].every(id => {
+        self.page.wait_for_function('''source => ['layer-upper-body-front', 'wardrobe-layer-upper-body-front'].every(id => {
             const image = document.getElementById(id);
             return image.getAttribute('src') === source && image.naturalWidth === 941
                 && image.naturalHeight === 1672 && !image.classList.contains('hidden');
         })''', arg=source)
         for prefix in ['', 'wardrobe-']:
-            layer = self.page.locator(f'#{prefix}layer-upper-body')
+            layer = self.page.locator(f'#{prefix}layer-upper-body-front')
             self.assertTrue(layer.is_visible())
             self.assertEqual(layer.evaluate('e=>getComputedStyle(e).objectFit'), 'contain')
             self.assertEqual(layer.evaluate('e=>getComputedStyle(e).zIndex'), '3')
@@ -296,6 +311,16 @@ class GameTests(unittest.TestCase):
             self.assertEqual(body.get_attribute('src'),
                 'base_female.png?v=5489c78c' if gender == 'female' else 'base_male.png?v=0dec17c1')
             self.assertEqual(body.evaluate('e=>[e.naturalWidth,e.naturalHeight]'), [941, 1672])
+            for node in [body, layer]:
+                self.assertEqual(node.evaluate('e=>[e.style.left,e.style.top,e.style.width,e.style.height]'), ['0%', '0%', '100%', '100%'])
+            neckline = self.page.locator(f'#{prefix}layer-upper-body-neckline')
+            if gender == 'female':
+                self.page.wait_for_function('''id=>{const image=document.getElementById(id);return image&&image.complete
+                    &&image.naturalWidth===941&&!image.classList.contains('hidden')}''',arg=prefix+'layer-upper-body-neckline')
+                self.assertEqual(neckline.get_attribute('src'), 'assets/wardrobe/clothing/patient/female_neckline_skin_underlay.png?v=cc9a05ce')
+                self.assertEqual(neckline.evaluate('e=>getComputedStyle(e).zIndex'), '2.5')
+            else:
+                self.assertEqual(neckline.count(), 0)
 
     def test_patient_tunic_starter_and_independent_loadouts_survive_equip_unequip_reload(self):
         self.load()
@@ -318,7 +343,7 @@ class GameTests(unittest.TestCase):
         self.assertEqual(self.page.evaluate('JSON.stringify(paperDollState)'), outfit)
         self.wardrobe_action('patient-tunic', 'Зняти')
         for prefix in ['', 'wardrobe-']:
-            self.assertIsNone(self.page.locator(f'#{prefix}layer-upper-body').get_attribute('src'))
+            self.assertEqual(self.page.locator(f'#{prefix}layer-upper-body-front').count(), 0)
         self.page.reload(wait_until='networkidle')
         self.assertIsNone(self.page.evaluate('paperDollState.patientLoadout.upperBody'))
         self.assertIsNone(self.page.evaluate('paperDollState.combatLoadout.upperBody'))
@@ -328,7 +353,7 @@ class GameTests(unittest.TestCase):
         wardrobe.get_by_role('button', name='Трип', exact=True).click()
         self.assertEqual(self.page.evaluate('paperDollState.patientLoadout.upperBody'), 'patient-tunic')
         self.assertIsNone(self.page.evaluate('paperDollState.combatLoadout.upperBody'))
-        self.assertIsNone(self.page.locator('#wardrobe-layer-upper-body').get_attribute('src'))
+        self.assertEqual(self.page.locator('#wardrobe-layer-upper-body-front').count(), 0)
         self.wardrobe_action('patient-tunic', 'Надягнути')
         wardrobe.locator('[data-wardrobe-category="appearance"]').click()
         wardrobe.get_by_role('button', name='Жінка', exact=True).click()
@@ -360,7 +385,7 @@ class GameTests(unittest.TestCase):
             self.assertEqual(wardrobe.locator('[data-wardrobe-card="patient-tunic"]').get_attribute('data-equipped'), 'false')
             self.assertTrue(wardrobe.locator('#wardrobe-item-detail').get_by_role('button', name='Надягнути', exact=True).is_enabled())
             for prefix in ['', 'wardrobe-']:
-                self.assertIsNone(self.page.locator(f'#{prefix}layer-upper-body').get_attribute('src'))
+                self.assertEqual(self.page.locator(f'#{prefix}layer-upper-body-front').count(), 0)
         self.page.reload(wait_until='networkidle')
         self.assertIsNone(self.page.evaluate('paperDollState.patientLoadout.upperBody'))
         self.assertIsNone(self.page.evaluate('paperDollState.combatLoadout.upperBody'))
@@ -411,7 +436,7 @@ class GameTests(unittest.TestCase):
                         projected = self.page.evaluate('''bounds => {
                             const box = e => { const r=e.getBoundingClientRect(); return {x:r.x,y:r.y,width:r.width,height:r.height}; };
                             return ['', 'wardrobe-'].map(prefix => {
-                                const image = document.getElementById(prefix+'layer-upper-body');
+                                const image = document.getElementById(prefix+'layer-upper-body-front');
                                 const host = box(document.getElementById(prefix ? 'wardrobe-paperdoll' : 'character-paperdoll'));
                                 const rect = box(image), scale = Math.min(rect.width/image.naturalWidth, rect.height/image.naturalHeight);
                                 const left=rect.x+(rect.width-image.naturalWidth*scale)/2, top=rect.y+(rect.height-image.naturalHeight*scale)/2;
@@ -451,7 +476,7 @@ class GameTests(unittest.TestCase):
     def test_paper_doll_layers_share_canvas_and_keep_faces_aligned_on_mobile(self):
         self.register_face_fixtures()
         self.load()
-        self.assertEqual(self.page.locator('#character-paperdoll > img').count(),13)
+        self.assertEqual(self.page.locator('#character-paperdoll > img:not([data-paper-extra])').count(),13)
         results=ROOT/'test-results'
         results.mkdir(exist_ok=True)
         for width,height in [(1280,800),(1024,768),(768,1024),(844,390),(390,844),(320,568)]:
@@ -1059,6 +1084,129 @@ class GameTests(unittest.TestCase):
                 if os.getenv('GITHUB_ACTIONS')=='true':
                     preview=self.page.screenshot(type='jpeg',quality=85,clip=clip)
                     print('PATIENT_SHIRT_ART_DETAIL:'+json.dumps({'name':f'{gender}-shirt-fit-detail-{mode}','jpeg':base64.b64encode(preview).decode()},separators=(',',':')),flush=True)
+
+    def test_approved_tunic_composite_matches_supplied_overlay_reference_in_both_views(self):
+        reference = json.loads((ROOT/'tests/fixtures/patient-tunic-approved.json').read_text())
+        self.load()
+        self.page.evaluate('openCustomization()')
+        for gender in ['male', 'female']:
+            self.page.evaluate('g=>setGender(g)', gender)
+            for mode in ['patient', 'combat']:
+                self.page.evaluate('mode=>{setPaperDollView(mode);equipPaperDollItem("upperBody","patient-tunic")}', mode)
+                self.assert_patient_tunic_layers(gender)
+                for prefix in ['', 'wardrobe-']:
+                    with self.subTest(gender=gender, mode=mode, view=prefix or 'main'):
+                        failures = self.page.evaluate('''({prefix,samples})=>{
+                            const host=document.getElementById(prefix?'wardrobe-paperdoll':'character-paperdoll');
+                            const box=host.getBoundingClientRect();
+                            const canvas=document.createElement('canvas');canvas.width=941;canvas.height=1672;
+                            const context=canvas.getContext('2d');
+                            const layers=[...host.querySelectorAll('img')].filter(image=>image.naturalWidth>0
+                                &&!image.classList.contains('hidden')).sort((a,b)=>Number(a.style.zIndex)-Number(b.style.zIndex));
+                            for(const image of layers){
+                                const r=image.getBoundingClientRect();
+                                if(Math.abs(r.x-box.x)>.05||Math.abs(r.y-box.y)>.05
+                                    ||Math.abs(r.width-box.width)>.05||Math.abs(r.height-box.height)>.05)
+                                    throw new Error('Approved layer lost full-frame registration: '+image.id);
+                                context.drawImage(image,0,0,941,1672);
+                            }
+                            const data=context.getImageData(0,0,941,1672).data;
+                            return samples.flatMap(([x,y,...expected])=>{
+                                const actual=Array.from(data.subarray((y*941+x)*4,(y*941+x)*4+4));
+                                return actual.some((value,i)=>Math.abs(value-expected[i])>6)?[{x,y,actual,expected}]:[];
+                            }).slice(0,12);
+                        }''', {'prefix':prefix,'samples':reference['samples'][gender]})
+                        self.assertEqual(failures, [])
+                self.page.evaluate('equipPaperDollItem("upperBody",null)')
+                for prefix in ['', 'wardrobe-']:
+                    self.assertEqual(self.page.locator(f'#{prefix}layer-upper-body-neckline').count(), 0)
+
+    def test_production_tunic_fitting_page_uses_current_catalog_without_changing_saves(self):
+        self.load()
+        saved = self.page.evaluate('JSON.stringify({...localStorage})')
+        self.context.add_init_script('''if(location.pathname.endsWith('/art/patient-tunic.html')){
+            window.previewStorageWrites=[];
+            for(const method of ['setItem','removeItem','clear']){
+                const original=Storage.prototype[method];
+                Storage.prototype[method]=function(...args){
+                    if(this===window.localStorage)window.previewStorageWrites.push(method);
+                    return original.apply(this,args);
+                };
+            }
+        }''')
+        self.page.set_viewport_size({'width':1680,'height':1100})
+        self.page.goto(self.url+'art/patient-tunic.html', wait_until='networkidle')
+        self.assertEqual(self.page.locator('#preview-status').inner_text(), '')
+        self.assertEqual(self.page.locator('#models article[data-gender]').count(), 2)
+        self.assertEqual(self.page.locator('#details .detail-panel').count(), 7)
+        self.page.wait_for_function('''()=>document.images.length===25&&[...document.images]
+            .every(image=>image.complete&&image.naturalWidth===941&&image.naturalHeight===1672)''')
+        catalog = self.page.evaluate('''()=>{
+            const item=PAPER_DOLL_ITEMS.find(entry=>entry.id==='patient-tunic');
+            return {images:item.genderVariants,bodies:PAPER_DOLL_BODIES,placements:{male:{x:0,y:0,width:941,height:1672},female:{x:0,y:0,width:941,height:1672}}};
+        }''')
+        for gender in ['male', 'female']:
+            article = self.page.locator(f'#models article[data-gender="{gender}"]')
+            details = self.page.locator(f'#details .detail-group[data-gender="{gender}"]')
+            regions = ['shoulders', 'underarms', 'slits'] + (['neck'] if gender == 'female' else [])
+            self.assertEqual(details.locator('.detail-panel').count(), len(regions))
+            for host in [article, details]:
+                for image in host.locator('img.clothing').all():
+                    self.assertEqual(image.get_attribute('src'), self.url+catalog['images'][gender])
+                for image in host.locator('img.body').all():
+                    self.assertEqual(image.get_attribute('src'), self.url+catalog['bodies'][gender])
+            downloads = article.locator('.downloads a')
+            self.assertEqual(downloads.nth(0).get_attribute('href'), self.url+catalog['images'][gender])
+            self.assertEqual(downloads.nth(1).get_attribute('href'), self.url+catalog['bodies'][gender])
+            for region in regions:
+                viewport = details.locator(f'[data-region="{region}"] .detail-viewport')
+                geometry = viewport.evaluate('''viewport=>{
+                    const box=element=>{const r=element.getBoundingClientRect();return{x:r.x,y:r.y,width:r.width,height:r.height};};
+                    return {clip:box(viewport),frame:box(viewport.querySelector('.frame')),
+                        expected:{...viewport.dataset}};
+                }''')
+                clip, frame, expected = geometry['clip'], geometry['frame'], geometry['expected']
+                self.assertAlmostEqual(clip['width'], float(expected['width']), delta=.02)
+                self.assertAlmostEqual(clip['height'], float(expected['height']), delta=.02)
+                self.assertAlmostEqual(frame['width'], 941, delta=.02)
+                self.assertAlmostEqual(frame['height'], 1672, delta=.02)
+                self.assertAlmostEqual(frame['x'], clip['x']-float(expected['x']), delta=.02)
+                self.assertAlmostEqual(frame['y'], clip['y']-float(expected['y']), delta=.02)
+                registration = viewport.evaluate('''viewport=>{
+                    const frame=viewport.querySelector('.frame').getBoundingClientRect();
+                    const image=viewport.querySelector('.clothing').getBoundingClientRect();
+                    return {x:image.x-frame.x,y:image.y-frame.y,width:image.width,height:image.height};
+                }''')
+                for key, value in catalog['placements'][gender].items():
+                    self.assertAlmostEqual(registration[key], value, delta=.03)
+        results = ROOT/'test-results'
+        results.mkdir(exist_ok=True)
+        for mode in ['patient', 'combat']:
+            self.page.locator(f'button[data-mode="{mode}"]').click()
+            self.assertEqual(self.page.locator('body').get_attribute('data-mode'), mode)
+            self.assertEqual(self.page.locator(f'button[data-mode="{mode}"]').get_attribute('aria-pressed'), 'true')
+            self.page.wait_for_load_state('networkidle')
+            for gender in ['male', 'female']:
+                self.page.locator(f'#models article[data-gender="{gender}"] .stage').screenshot(
+                    path=str(results/f'patient-tunic-fit-{gender}-full-{mode}.png'))
+                if mode == 'patient' and os.getenv('GITHUB_ACTIONS') == 'true':
+                    preview = self.page.locator(f'#models article[data-gender="{gender}"] .stage').screenshot(type='jpeg', quality=80)
+                    print('PATIENT_TUNIC_FIT_DETAIL:'+json.dumps({'name':f'{gender}-full','jpeg':base64.b64encode(preview).decode()},separators=(',',':')),flush=True)
+                regions = ['shoulders', 'underarms', 'slits'] + (['neck'] if gender == 'female' else [])
+                for region in regions:
+                    viewport = self.page.locator(f'#details [data-gender="{gender}"] [data-region="{region}"] .detail-viewport')
+                    viewport.screenshot(path=str(results/f'patient-tunic-fit-{gender}-{region}-{mode}.png'))
+                    if mode == 'patient' and os.getenv('GITHUB_ACTIONS') == 'true':
+                        preview = viewport.screenshot(type='jpeg', quality=80)
+                        print('PATIENT_TUNIC_FIT_DETAIL:'+json.dumps({
+                            'name':f'{gender}-{region}','jpeg':base64.b64encode(preview).decode()
+                        },separators=(',',':')),flush=True)
+        self.assertEqual(self.page.evaluate('JSON.stringify({...localStorage})'), saved)
+        self.assertEqual(self.page.evaluate('window.previewStorageWrites'), [])
+        self.page.set_viewport_size({'width':390,'height':844})
+        self.assertLessEqual(self.page.evaluate('document.documentElement.scrollWidth'), 390)
+        self.assertGreater(self.page.locator('.detail-scroll').first.evaluate('e=>e.scrollWidth-e.clientWidth'), 0)
+        self.page.screenshot(path=str(results/'patient-tunic-fit-phone.png'), full_page=True)
 
     def test_trial_faces_are_not_loaded_or_selectable_after_old_save_migration(self):
         requests=[]
