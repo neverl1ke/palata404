@@ -265,7 +265,7 @@ class GameTests(unittest.TestCase):
         self.page.evaluate('openCustomization()')
         wardrobe=self.page.locator('#custom-modal')
         self.assertEqual(wardrobe.locator('select').count(),0)
-        self.assertEqual(wardrobe.locator('[data-wardrobe-category]').count(),5)
+        self.assertEqual(wardrobe.locator('[data-wardrobe-category]').count(),6)
         wardrobe.get_by_role('button',name='Жінка',exact=True).click()
         wardrobe.locator('[data-wardrobe-slot="face"]').click()
         self.assertEqual(wardrobe.locator('[data-wardrobe-card]').count(),0)
