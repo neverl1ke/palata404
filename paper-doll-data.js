@@ -37,7 +37,7 @@ const PAPER_DOLL_ITEMS = [
         fittedToGender: true, description: 'Розкуйовджене волосся з першого комплекту зачісок.',
         genderVariants: { male: 'assets/wardrobe/hair/male_messy_hair.png?v=fe4c6349', female: 'assets/wardrobe/hair/female_messy_hair.png?v=e2482312' },
         placementByGender: {
-            male: { x: 368.3582, y: -26.7104, width: 204.60792, height: 255.66872 },
+            male: { x: 368.3582, y: -28.7104, width: 204.60792, height: 255.66872 },
             female: { x: 343, y: -5, width: 246.84, height: 308.44 }
         } },
     { id: 'hair-bob', slot: 'hair', name: 'Каре до підборіддя', icon: 'user', availableByDefault: true,
@@ -58,14 +58,14 @@ const PAPER_DOLL_ITEMS = [
         fittedToGender: true, description: 'Затверджена зачіска з другого комплекту.',
         genderVariants: { male: 'assets/wardrobe/hair/classic_short_unisex_style_A.png?v=f2bb3879', female: 'assets/wardrobe/hair/classic_short_unisex_style_A.png?v=f2bb3879' },
         placementByGender: {
-            male: { x: 371, y: 0, width: 200.64, height: 200.64 },
-            female: { x: 373, y: -5, width: 196.878, height: 196.878 }
+            male: { x: 370.5, y: 0, width: 200.64, height: 200.64 },
+            female: { x: 372.5, y: -5, width: 196.878, height: 196.878 }
         } },
     { id: 'hair-textured-short', slot: 'hair', name: 'Коротка текстурована стрижка', icon: 'user', availableByDefault: true,
         fittedToGender: true, description: 'Затверджена зачіска з другого комплекту.',
         genderVariants: { male: 'assets/wardrobe/hair/classic_short_unisex_style_B.png?v=6c81db91', female: 'assets/wardrobe/hair/classic_short_unisex_style_B.png?v=6c81db91' },
         placementByGender: {
-            male: { x: 364.531302, y: -9.691554, width: 212.379948, height: 212.379948 },
+            male: { x: 366.74067596, y: -8.95652292, width: 208.13234904, height: 208.13234904 },
             female: { x: 365, y: -17, width: 219.45, height: 219.45 }
         } },
     { id: 'hair-shoulder-length', slot: 'hair', name: 'Волосся до плечей', icon: 'user', availableByDefault: true,
@@ -73,7 +73,7 @@ const PAPER_DOLL_ITEMS = [
         genderVariants: { male: 'assets/wardrobe/hair/male_medium_shoulder_length.png?v=b7eb30d7', female: 'assets/wardrobe/hair/female_medium_shoulder_length.png?v=ec0dcba9' },
         placementByGender: {
             male: { x: 336.866667, y: 22.5, width: 263.34, height: 263.34 },
-            female: { x: 318.345, y: 12.123335, width: 312.00147, height: 312.00147 }
+            female: { x: 321.4781, y: 12.3870683, width: 305.7614406, height: 305.7614406 }
         } },
     {
         id: 'patient-tunic', slot: 'upperBody', name: 'Лікарняна туніка', icon: 'shirt',
