@@ -44,8 +44,8 @@ const PAPER_DOLL_ITEMS = [
         fittedToGender: true, description: 'Каре до підборіддя з першого комплекту зачісок.',
         genderVariants: { male: 'assets/wardrobe/hair/male_chin_length_bob.png?v=260f8f73', female: 'assets/wardrobe/hair/female_chin_length_bob.png?v=52bb5078' },
         placementByGender: {
-            male: { x: 351.60516025, y: 17.4574795, width: 236.60111475, height: 236.60111475 },
-            female: { x: 347.3386675, y: 6.7274324, width: 246.2881707, height: 246.2881707 }
+            male: { x: 350.60516025, y: 17.4574795, width: 236.60111475, height: 236.60111475 },
+            female: { x: 348.3386675, y: 6.7274324, width: 246.2881707, height: 246.2881707 }
         } },
     { id: 'hair-double-buns', slot: 'hair', name: 'Два бокові пучки з локонами', icon: 'user', availableByDefault: true,
         fittedToGender: true, description: 'Два бокові пучки з локонами з першого комплекту зачісок.',
