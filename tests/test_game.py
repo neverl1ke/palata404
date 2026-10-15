@@ -1308,11 +1308,15 @@ class GameTests(unittest.TestCase):
                             self.page.wait_for_function('''()=>[...document.querySelectorAll('#hair-native-review img[src]')].every(image=>image.complete&&image.naturalWidth>0)''')
                             emit(name+'-head',self.page.locator('#hair-native-review'))
                             if choice=='hair-bob':
-                                current_x={'male':350.60516025,'female':348.3386675}[gender]
-                                trial_x=item['placementByGender'][gender]['x']
-                                for version,x in [('current',current_x),('trial',trial_x)]:
-                                    self.page.evaluate('''({gender,x})=>{
-                                        PAPER_DOLL_ITEMS.find(item=>item.id==='hair-bob').placementByGender[gender].x=x;
+                                target=dict(item['placementByGender'][gender])
+                                baseline=dict(target)
+                                baseline['x']=352.60516025 if gender=='male' else 346.3386675
+                                baseline['y']=17.4574795 if gender=='male' else target['y']
+                                variants=[('before',baseline),('up1' if gender=='male' else 'left1',target)]
+                                if gender=='male':variants.append(('up2',dict(target,y=15.4574795)))
+                                for version,placement in variants:
+                                    self.page.evaluate('''({gender,placement})=>{
+                                        Object.assign(PAPER_DOLL_ITEMS.find(item=>item.id==='hair-bob').placementByGender[gender],placement);
                                         renderPaperDoll();
                                         const head=document.getElementById('hair-native-review');
                                         Object.assign(head.style,{width:'800px',height:'700px',background:'#faf8f0'});
@@ -1320,9 +1324,18 @@ class GameTests(unittest.TestCase):
                                         clone.removeAttribute('id');clone.querySelectorAll('[id]').forEach(node=>node.removeAttribute('id'));
                                         Object.assign(clone.style,{position:'absolute',width:'941px',height:'1672px',maxWidth:'none',maxHeight:'none',margin:'0',bottom:'auto',left:'-550px',top:'0',transformOrigin:'top left',transform:'scale(2)'});
                                         head.replaceChildren(clone);
-                                    }''',{'gender':gender,'x':x})
+                                    }''',{'gender':gender,'placement':placement})
                                     self.page.wait_for_function('''()=>[...document.querySelectorAll('#hair-native-review img[src]')].every(image=>image.complete&&image.naturalWidth>0)''')
-                                    emit(gender+'-bob-'+version+'-light-2x',self.page.locator('#hair-native-review'))
+                                    emit('crown-'+gender+'-'+version+'-head-2x',self.page.locator('#hair-native-review'))
+                                    if gender=='male':
+                                        self.page.evaluate('''()=>{
+                                            const head=document.getElementById('hair-native-review');head.style.height='360px';
+                                            Object.assign(head.firstElementChild.style,{left:'-1500px',transform:'scale(4)'});
+                                        }''')
+                                        emit('crown-'+gender+'-'+version+'-crown-4x',self.page.locator('#hair-native-review'))
+                                self.page.evaluate('''({gender,placement})=>{
+                                    Object.assign(PAPER_DOLL_ITEMS.find(item=>item.id==='hair-bob').placementByGender[gender],placement);renderPaperDoll();
+                                }''',{'gender':gender,'placement':target})
                             self.page.evaluate('document.getElementById("hair-native-review").remove()')
                         elif width==390:
                             self.page.screenshot(path=str(results/f'{gender}-{choice}-{mode}-mobile.png'))
