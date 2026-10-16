@@ -1225,3 +1225,61 @@ test('hair colors migrate safely and preserve pigment texture, alpha and cosmeti
         assert.deepEqual(Array.from(result.slice(16,19)),[77,88,99]);
     }
 });
+
+test('approved Asian head variants stay below hair and preserve shared cosmetics, outfits and reloads', () => {
+    const g=game();
+    assert.equal(g.run('paperDollState.appearance.face'),null);
+    const before=g.run('JSON.stringify({stats,inventory,equippedGear,patient:paperDollState.patientLoadout,combat:paperDollState.combatLoadout})');
+    const hairGeometry=g.run('JSON.stringify(PAPER_DOLL_ITEMS.filter(i=>i.slot==="hair").map(i=>i.placementByGender))');
+    for(const gender of ['male','female']) for(const hair of ['hair-none','hair-classic-short','hair-textured-short','hair-messy','hair-shoulder-length','hair-bob','hair-double-buns']) {
+        g.run(`setGender('${gender}');equipPaperDollItem('hair','${hair}');equipPaperDollItem('face','face-asian')`);
+        assert.equal(g.run('paperDollState.appearance.hair'),hair);
+        for(const prefix of ['','wardrobe-']) {
+            const face=g.elements.get(prefix+'layer-face');
+            assert.match(face.getAttribute('src'),new RegExp('/faces/'+gender+'_asian_head.png'));
+            assert.ok(Number(face.style.zIndex)>Number(g.elements.get(prefix+'layer-body').style.zIndex));
+            assert.ok(Number(face.style.zIndex)<Number(g.elements.get(prefix+'layer-hair').style.zIndex));
+        }
+        const restored=game(Object.fromEntries(g.storage));
+        assert.equal(restored.run('paperDollState.appearance.face'),'face-asian');
+        assert.equal(restored.run('paperDollState.appearance.hair'),hair);
+        g.run('equipPaperDollItem("face",null)');
+        assert.equal(g.run('paperDollState.appearance.hair'),hair);
+        assert.equal(g.elements.get('layer-face').getAttribute('src'),null);
+    }
+    g.run('equipPaperDollItem("hair","hair-none");setHairColor("blue");equipPaperDollItem("face","face-asian");setPaperDollView("combat")');
+    assert.equal(g.run('paperDollState.appearance.hairColor'),'blue');
+    assert.equal(game(Object.fromEntries(g.storage)).run('paperDollState.appearance.hairColor'),'blue');
+    assert.equal(g.run('JSON.stringify({stats,inventory,equippedGear,patient:paperDollState.patientLoadout,combat:paperDollState.combatLoadout})'),before);
+    assert.equal(g.run('JSON.stringify(PAPER_DOLL_ITEMS.filter(i=>i.slot==="hair").map(i=>i.placementByGender))'),hairGeometry);
+});
+
+test('crown clipping covers affected heads and clears on unaffected hairstyles', () => {
+    const g=game();
+    const geometry=g.run('JSON.stringify(PAPER_DOLL_ITEMS.filter(i=>i.slot==="hair").map(i=>i.placementByGender))');
+    for(const [gender,face,hair,active] of [
+        ['male','face-asian','hair-shoulder-length',true],
+        ['female','face-asian','hair-shoulder-length',true],
+        ['male','face-asian','hair-shoulder-length',true],
+        ['male','face-asian','hair-classic-short',false],
+        ['male','face-asian','hair-shoulder-length',true],
+        ['male',null,'hair-shoulder-length',true],
+        ['male','face-asian','hair-shoulder-length',true],
+        ['male','face-asian','hair-none',false],
+        ['male',null,'hair-bob',true],
+        ['female',null,'hair-bob',true],
+        ['male',null,'hair-double-buns',true],
+        ['female',null,'hair-double-buns',false],
+        ['male',null,'hair-messy',false],
+        ['male','face-asian','hair-messy',true],
+        ['female','face-asian','hair-textured-short',false]
+    ]) {
+        g.run(`setGender('${gender}');equipPaperDollItem('face',${JSON.stringify(face)});equipPaperDollItem('hair','${hair}')`);
+        for(const prefix of ['','wardrobe-']) for(const slot of ['body','face']) {
+            const clip=g.elements.get(prefix+'layer-'+slot).style.clipPath;
+            assert.equal(Boolean(clip),active);
+            if(active) assert.match(clip,/^polygon\(/);
+        }
+    }
+    assert.equal(g.run('JSON.stringify(PAPER_DOLL_ITEMS.filter(i=>i.slot==="hair").map(i=>i.placementByGender))'),geometry);
+});

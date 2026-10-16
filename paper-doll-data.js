@@ -31,6 +31,15 @@ const PAPER_DOLL_TUNIC_IMAGES = Object.freeze({
     female: 'assets/wardrobe/clothing/patient/patient_tunic_female.png?v=fa3fac64'
 });
 const PAPER_DOLL_ITEMS = [
+    { id: 'face-asian', slot: 'face', name: 'Азійський тип обличчя', icon: 'user', availableByDefault: true,
+        fittedToGender: true, description: 'Варіант голови для обраного базового аватара.',
+        // DOM image renderer: above the body (0), below clothing and hair (9).
+        renderOrder: 1,
+        genderVariants: { male: 'assets/wardrobe/faces/male_asian_head.png?v=d9eb9e54', female: 'assets/wardrobe/faces/female_asian_head.png?v=bb36d987' },
+        placementByGender: {
+            male: { x: 0, y: 0, width: 941, height: 1672 },
+            female: { x: 0, y: 0, width: 941, height: 1672 }
+        } },
     { id: 'hair-none', slot: 'hair', name: 'Без зачіски', icon: 'user', availableByDefault: true,
         noImageRequired: true, description: 'Початковий вигляд затвердженого аватара без накладки волосся.' },
     { id: 'hair-messy', slot: 'hair', name: 'Розкуйовджена зачіска', icon: 'user', availableByDefault: true,

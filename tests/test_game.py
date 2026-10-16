@@ -26,6 +26,20 @@ PATIENT_TUNIC_IMAGES = {
 
 
 class IconAssetTests(unittest.TestCase):
+    def test_asian_heads_keep_uploaded_bytes_and_opaque_inner_face(self):
+        for gender,digest in [('male','d9eb9e5445d22a2559f136acf8ed47c088dbb3b386c8699c57ab2e2ccad3c30b'),('female','bb36d987af092f4a60b5305d067bab3a3a89b963aff96af7f55d77b54ed843a7')]:
+            path=ROOT/f'assets/wardrobe/faces/{gender}_asian_head.png'
+            self.assertEqual(hashlib.sha256(path.read_bytes()).hexdigest(),digest)
+            with Image.open(path) as image:
+                self.assertEqual(image.size,(941,1672));self.assertEqual(image.mode,'RGBA')
+                alpha=image.getchannel('A');self.assertEqual(alpha.getextrema(),(0,255))
+                from PIL import ImageFilter
+                inner=alpha.point(lambda v:255 if v else 0).filter(ImageFilter.MinFilter(9))
+                self.assertTrue(all(alpha.getpixel((x,y))==255 for y in range(40,221) for x in range(380,565) if inner.getpixel((x,y))==255),gender+' has a translucent inner head')
+                for box in [(426,100,516,119),(445,174,501,197),(397,130,408,150),(538,130,548,150)]:
+                    self.assertEqual(alpha.crop(box).getextrema(),(255,255),(gender,box))
+
+
     def test_hair_pack_pngs_preserve_supplied_bytes_dimensions_and_real_transparency(self):
         manifest=json.loads((ROOT/'tests/fixtures/hairstyles-pack-01.json').read_text())
         self.assertEqual(len(manifest['files']),6)
@@ -283,8 +297,8 @@ class GameTests(unittest.TestCase):
         self.assertEqual(wardrobe.locator('[data-wardrobe-category]').count(),5)
         wardrobe.get_by_role('button',name='Жінка',exact=True).click()
         wardrobe.locator('[data-wardrobe-slot="face"]').click()
-        self.assertEqual(wardrobe.locator('[data-wardrobe-card]').count(),0)
-        self.assertIn('Базове обличчя',wardrobe.locator('#wardrobe-container').inner_text())
+        self.assertEqual(wardrobe.locator('[data-wardrobe-card]').count(),1)
+        self.assertIn('Оригінальне обличчя',wardrobe.locator('#wardrobe-container').inner_text())
         for prefix in ['', 'wardrobe-']:
             self.assertIsNone(self.page.locator(f'#{prefix}layer-face').get_attribute('src'))
         wardrobe.locator('[data-wardrobe-category="gear"]').click()
@@ -637,7 +651,7 @@ class GameTests(unittest.TestCase):
         self.assertEqual(self.page.evaluate('inventory.length'),0)
         self.page.evaluate('setPaperDollView("patient"); selectWardrobeCategory("appearance"); selectWardrobeSlot("face");')
         self.assertIsNone(self.page.locator('#wardrobe-layer-face').get_attribute('src'))
-        self.assertEqual(self.page.locator('[data-wardrobe-card]').count(),0)
+        self.assertEqual(self.page.locator('[data-wardrobe-card]').count(),1)
 
     def test_wardrobe_complex_layers_update_both_views_and_clean_up_after_removal(self):
         self.load()
@@ -1243,6 +1257,112 @@ class GameTests(unittest.TestCase):
         self.assertGreater(self.page.locator('.detail-scroll').first.evaluate('e=>e.scrollWidth-e.clientWidth'), 0)
         self.page.screenshot(path=str(results/'patient-tunic-fit-phone.png'), full_page=True)
 
+    def test_crown_mask_pixels_locality_backgrounds_and_neckline(self):
+        from io import BytesIO
+        from PIL import ImageChops
+        self.load()
+        self.page.set_viewport_size({'width':1280,'height':800})
+        self.page.evaluate('openCustomization();setGender("male");equipPaperDollItem("face","face-asian");equipPaperDollItem("hair","hair-shoulder-length");setHairColor("white")')
+        self.page.evaluate('''()=>{const host=document.createElement('div');host.id='pixel-doll';host.className='character-paperdoll';Object.assign(host.style,{position:'fixed',left:'0',top:'0',width:'941px',height:'1672px',background:'#00ff00',zIndex:'2147483647'});document.body.append(host);renderPaperDollAt(host,'pixel-')}''')
+        self.page.wait_for_function('''()=>['pixel-layer-body','pixel-layer-face','pixel-layer-hair'].every(id=>{const i=document.getElementById(id);return i.complete&&i.naturalWidth>0&&!i.classList.contains('hidden')})&&document.getElementById('pixel-layer-hair').src.startsWith('data:')''')
+        body=self.page.locator('#pixel-layer-body');face=self.page.locator('#pixel-layer-face')
+        self.assertTrue(face.evaluate('i=>getComputedStyle(i).clipPath.startsWith("polygon(")'))
+        self.assertEqual(body.evaluate('i=>i.style.clipPath'),face.evaluate('i=>i.style.clipPath'))
+        clip={'x':365,'y':20,'width':210,'height':280}
+        after=Image.open(BytesIO(self.page.screenshot(clip=clip))).convert('RGB')
+        self.page.evaluate("for(const id of ['pixel-layer-body','pixel-layer-face'])document.getElementById(id).style.clipPath='none'")
+        before=Image.open(BytesIO(self.page.screenshot(clip=clip))).convert('RGB')
+        diff=ImageChops.difference(before,after)
+        self.assertIsNotNone(diff.crop((0,0,210,70)).getbbox(),'Crown mask must remove the exposed rim')
+        self.assertIsNone(diff.crop((0,70,210,280)).getbbox(),'Pixels at y>=90 must stay identical')
+        self.page.evaluate("renderPaperDollAt(document.getElementById('pixel-doll'),'pixel-')")
+        # Inspect the actual head layer alone: opaque inner pixels must not depend on background.
+        for gender in ['male','female']:
+            self.page.evaluate('''gender=>{setGender(gender);equipPaperDollItem('hair','hair-none');renderPaperDollAt(document.getElementById('pixel-doll'),'pixel-');document.querySelectorAll('#pixel-doll .char-layer').forEach(i=>i.style.visibility=i.id==='pixel-layer-face'?'visible':'hidden')}''',gender)
+            self.page.wait_for_function('''()=>{const i=document.getElementById('pixel-layer-face');return i.complete&&i.naturalWidth===941}''')
+            reference=None
+            for bg in ['#faf7ef','#808080','#000000','#00ff00']:
+                self.page.locator('#pixel-doll').evaluate('(e,bg)=>e.style.background=bg',bg)
+                image=Image.open(BytesIO(self.page.screenshot(clip=clip))).convert('RGB')
+                if reference is None: reference=image
+                for box in [(426,100,516,119),(445,174,501,197),(397,130,408,150),(538,130,548,150)]:
+                    local=(box[0]-365,box[1]-20,box[2]-365,box[3]-20)
+                    self.assertIsNone(ImageChops.difference(reference.crop(local),image.crop(local)).getbbox(),f'{gender}: opaque brows/jaw/ear changed on {bg}')
+        self.page.locator('#pixel-doll').evaluate('e=>e.remove()')
+        # The real neckline skin underlay stays above the head but only at the lower neck.
+        self.page.evaluate('setGender("female");setPaperDollView("patient");equipPaperDollItem("upperBody","patient-tunic");equipPaperDollItem("hair","hair-shoulder-length")')
+        self.page.locator('#wardrobe-layer-upper-body-neckline').wait_for(state='visible')
+        for prefix in ['','wardrobe-']:
+            self.assertEqual(self.page.locator(f'#{prefix}layer-face').evaluate('i=>getComputedStyle(i).zIndex'),'1')
+            self.assertEqual(self.page.locator(f'#{prefix}layer-upper-body-neckline').evaluate('i=>getComputedStyle(i).zIndex'),'2')
+            self.assertTrue(self.page.locator(f'#{prefix}layer-face').evaluate('i=>getComputedStyle(i).clipPath.startsWith("polygon(")'))
+        for gender,face_id,hair,active in [('male','face-asian','hair-shoulder-length',True),('female','face-asian','hair-shoulder-length',True),('male',None,'hair-shoulder-length',True),('male','face-asian','hair-bob',True),('female',None,'hair-classic-short',False),('female',None,'hair-none',False),('male','face-asian','hair-shoulder-length',True)]:
+            self.page.evaluate('([gender,face,hair])=>{setGender(gender);equipPaperDollItem("face",face);equipPaperDollItem("hair",hair)}',[gender,face_id,hair])
+            for prefix in ['','wardrobe-']:
+                self.assertEqual(self.page.locator(f'#{prefix}layer-body').evaluate('i=>getComputedStyle(i).clipPath.startsWith("polygon(")'),active)
+                self.assertEqual(self.page.locator(f'#{prefix}layer-face').evaluate('i=>getComputedStyle(i).clipPath.startsWith("polygon(")'),active)
+        self.page.reload(wait_until='networkidle')
+        self.assertEqual(self.page.evaluate('paperDollState.appearance.face'),'face-asian')
+        self.assertEqual(self.page.evaluate('paperDollState.appearance.hair'),'hair-shoulder-length')
+        self.assertEqual(self.page.evaluate('paperDollState.appearance.hairColor'),'white')
+        self.assertTrue(self.page.locator('#layer-face').evaluate('i=>getComputedStyle(i).clipPath.startsWith("polygon(")'))
+
+    def test_asian_heads_real_css_order_hair_compatibility_and_reload(self):
+        self.load()
+        self.assertIsNone(self.page.evaluate('paperDollState.appearance.face'))
+        self.page.evaluate('openCustomization();equipPaperDollItem("hair","hair-classic-short");setHairColor("blue");selectWardrobeCategory("appearance");selectWardrobeSlot("face")')
+        self.assertEqual(self.page.locator('[data-wardrobe-card="face-asian"]').count(),1)
+        self.assertIn('Оригінальне обличчя',self.page.locator('#wardrobe-container').inner_text())
+        self.page.locator('[data-wardrobe-action="face-asian"]').click()
+        self.assertEqual(self.page.evaluate('paperDollState.appearance.hair'),'hair-classic-short')
+        self.assertEqual(self.page.evaluate('paperDollState.appearance.hairColor'),'blue')
+        original_geometry=self.page.evaluate('JSON.stringify(PAPER_DOLL_ITEMS.filter(i=>i.slot==="hair").map(i=>i.placementByGender))')
+        before=self.page.evaluate('JSON.stringify({stats,inventory,equippedGear,patient:paperDollState.patientLoadout,combat:paperDollState.combatLoadout})')
+        missing=[]
+        self.page.on('response',lambda response:missing.append(response.url) if response.status>=400 else None)
+        results=ROOT/'test-results';results.mkdir(exist_ok=True)
+        for gender in ['male','female']:
+            self.page.evaluate('gender=>setGender(gender)',gender)
+            for mode in ['patient','combat']:
+                self.page.evaluate('mode=>setPaperDollView(mode)',mode)
+                for width,height in [(1280,800),(390,844)]:
+                    self.page.set_viewport_size({'width':width,'height':height})
+                    for hair in ['hair-none','hair-classic-short','hair-textured-short','hair-messy','hair-shoulder-length','hair-bob','hair-double-buns']:
+                        self.page.evaluate('hair=>{equipPaperDollItem("hair",hair);setHairColor("original")}',hair)
+                        self.page.wait_for_function('''()=>['layer-face','wardrobe-layer-face'].every(id=>{const i=document.getElementById(id);return i.complete&&i.naturalWidth===941&&!i.classList.contains('hidden')})''')
+                        if hair!='hair-none':
+                            self.page.wait_for_function('''()=>['layer-hair','wardrobe-layer-hair'].every(id=>{const i=document.getElementById(id);return i.complete&&i.naturalWidth>0&&!i.classList.contains('hidden')})''')
+                        for prefix in ['','wardrobe-']:
+                            face=self.page.locator(f'#{prefix}layer-face')
+                            self.assertIn(f'/faces/{gender}_asian_head.png',face.get_attribute('src'))
+                            order=face.evaluate('i=>({inline:i.style.zIndex,computed:getComputedStyle(i).zIndex,x:i.style.left,y:i.style.top,w:i.style.width,h:i.style.height})')
+                            # Real CSS rejects fractional z-index; a mocked style object cannot catch this.
+                            self.assertEqual(order,{'inline':'1','computed':'1','x':'0%','y':'0%','w':'100%','h':'100%'})
+                            self.assertLess(self.page.locator(f'#{prefix}layer-body').evaluate('i=>Number(getComputedStyle(i).zIndex)'),1)
+                            self.assertGreater(self.page.locator(f'#{prefix}layer-hair').evaluate('i=>Number(getComputedStyle(i).zIndex)'),1)
+                        self.assertEqual(self.page.evaluate('paperDollState.appearance.face'),'face-asian')
+                        self.assertLessEqual(self.page.evaluate('document.documentElement.scrollWidth'),width)
+                    self.page.screenshot(path=str(results/f'asian-head-{gender}-{mode}-{width}.png'))
+            for color,hex_value in [('white','#C8C3BA'),('red','#9E3137'),('blue','#335BA6'),('turquoise','#28736F'),('lime','#748C28')]:
+                self.assertEqual(self.page.evaluate('id=>HAIR_COLORS.find(c=>c.id===id).hex',color),hex_value)
+                self.page.evaluate('color=>{equipPaperDollItem("hair","hair-shoulder-length");setHairColor(color)}',color)
+                self.page.wait_for_function('''async()=>{const i=document.getElementById('wardrobe-layer-hair');return i.getAttribute('src')===await coloredHairSource(selectedPaperDollItem('hair').genderVariants[paperDollState.selectedGender],paperDollState.appearance.hairColor)&&i.complete}''')
+                self.assertEqual(self.page.evaluate('paperDollState.appearance.face'),'face-asian')
+        self.assertEqual(self.page.evaluate('JSON.stringify(PAPER_DOLL_ITEMS.filter(i=>i.slot==="hair").map(i=>i.placementByGender))'),original_geometry)
+        self.assertEqual(self.page.evaluate('JSON.stringify({stats,inventory,equippedGear,patient:paperDollState.patientLoadout,combat:paperDollState.combatLoadout})'),before)
+        self.page.reload(wait_until='networkidle')
+        self.assertEqual(self.page.evaluate('paperDollState.appearance.face'),'face-asian')
+        self.assertEqual(self.page.evaluate('paperDollState.appearance.hair'),'hair-shoulder-length')
+        self.assertEqual(self.page.evaluate('paperDollState.appearance.hairColor'),'lime')
+        self.assertEqual(self.page.evaluate('paperDollState.selectedGender'),'female')
+        self.page.evaluate('openCustomization();selectWardrobeCategory("appearance");selectWardrobeSlot("face")')
+        self.page.locator('[data-wardrobe-native-face]').click()
+        self.assertIsNone(self.page.evaluate('paperDollState.appearance.face'))
+        self.assertEqual(self.page.evaluate('paperDollState.appearance.hair'),'hair-shoulder-length')
+        self.assertEqual(self.page.evaluate('paperDollState.appearance.hairColor'),'lime')
+        self.assertIsNone(self.page.locator('#wardrobe-layer-face').get_attribute('src'))
+        self.assertEqual(missing,[])
+
     def test_hair_palette_colors_alpha_persistence_races_and_responsive_ui(self):
         self.load({'palata404_paper_doll':json.dumps({'schemaVersion':2,'selectedGender':'female','appearance':{'hair':'hair-textured-short'},'patientLoadout':{'upperBody':'patient-tunic'},'combatLoadout':{}})})
         self.assertEqual(self.page.evaluate('paperDollState.appearance.hairColor'),'original')
@@ -1482,7 +1602,7 @@ class GameTests(unittest.TestCase):
             self.assertEqual(self.page.evaluate('paperDollState.appearance.hair'),'old-hair')
             self.assertEqual(self.page.evaluate('paperDollState.patientLoadout.armor'),'gear-br1')
             self.assertEqual(self.page.evaluate('paperDollState.combatLoadout.weapon'),'gear-pm')
-            self.assertEqual(self.page.locator('[data-wardrobe-card]').count(),0)
+            self.assertEqual(self.page.locator('[data-wardrobe-card]').count(),1)
             for prefix in ['', 'wardrobe-']:
                 self.assertIsNone(self.page.locator(f'#{prefix}layer-face').get_attribute('src'))
                 self.assertTrue(self.page.locator(f'#{prefix}layer-body').is_visible())

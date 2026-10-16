@@ -7,15 +7,15 @@ const HAIR_COLORS = Object.freeze([
         ['dark-fair','Темно-русявий','#76644E'], ['fair','Русявий','#A18B6D'],
         ['light-fair','Світло-русявий','#C0AA82'], ['blond','Блонд','#D9BD85'],
         ['platinum','Платиновий блонд','#E6DDC8'], ['ginger','Рудий','#AC522D'],
-        ['gray','Сивий','#A8A6A3'], ['white','Білий','#D8D4CC']
+        ['gray','Сивий','#A8A6A3'], ['white','Білий','#C8C3BA']
     ].map(([id,name,hex]) => Object.freeze({ id, name, hex, group: 'natural' })),
     ...[
-        ['burgundy','Бордовий','#792B40'], ['red','Яскраво-червоний','#B43A3F'],
+        ['burgundy','Бордовий','#792B40'], ['red','Яскраво-червоний','#9E3137'],
         ['pink','Рожевий','#F07BAF'], ['pastel-pink','Пастельно-рожевий','#E7B2C4'],
         ['purple','Фіолетовий','#8447B5'], ['lavender','Лавандовий','#B4A0E4'],
-        ['navy','Темно-синій','#283E8E'], ['blue','Електричний синій','#3C6CC4'],
-        ['turquoise','Бірюзовий','#2E8B87'], ['emerald','Смарагдовий','#267C55'],
-        ['lime','Кислотно-зелений','#8AA62F'], ['orange','Помаранчевий','#ED772D']
+        ['navy','Темно-синій','#283E8E'], ['blue','Електричний синій','#335BA6'],
+        ['turquoise','Бірюзовий','#28736F'], ['emerald','Смарагдовий','#267C55'],
+        ['lime','Кислотно-зелений','#748C28'], ['orange','Помаранчевий','#ED772D']
     ].map(([id,name,hex]) => Object.freeze({ id, name, hex, group: 'alternative' }))
 ]);
 const hairColorCache = new Map();
