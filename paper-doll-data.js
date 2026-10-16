@@ -37,7 +37,7 @@ const PAPER_DOLL_ITEMS = [
         fittedToGender: true, description: 'Розкуйовджене волосся з першого комплекту зачісок.',
         genderVariants: { male: 'assets/wardrobe/hair/male_messy_hair.png?v=fe4c6349', female: 'assets/wardrobe/hair/female_messy_hair.png?v=e2482312' },
         placementByGender: {
-            male: { x: 365.06, y: -30.32, width: 210.936, height: 263.576 },
+            male: { x: 364.082398407408, y: -29.293952, width: 209.373552192592, height: 256.9470636, stretchX: true },
             female: { x: 343, y: -5, width: 246.84, height: 308.44 }
         } },
     { id: 'hair-bob', slot: 'hair', name: 'Каре до підборіддя', icon: 'user', availableByDefault: true,
@@ -53,6 +53,27 @@ const PAPER_DOLL_ITEMS = [
         placementByGender: {
             male: { x: 317.05, y: 4.5, width: 304.722, height: 304.722 },
             female: { x: 315.058, y: -0.896, width: 306.87888, height: 306.87888 }
+        } },
+    { id: 'hair-classic-short', slot: 'hair', name: 'Класична коротка стрижка', icon: 'user', availableByDefault: true,
+        fittedToGender: true, description: 'Затверджена зачіска з другого комплекту.',
+        genderVariants: { male: 'assets/wardrobe/hair/classic_short_unisex_style_A.png?v=f2bb3879', female: 'assets/wardrobe/hair/classic_short_unisex_style_A.png?v=f2bb3879' },
+        placementByGender: {
+            male: { x: 370.5, y: 0, width: 200.64, height: 200.64 },
+            female: { x: 372.5, y: -5, width: 196.878, height: 196.878 }
+        } },
+    { id: 'hair-textured-short', slot: 'hair', name: 'Коротка текстурована стрижка', icon: 'user', availableByDefault: true,
+        fittedToGender: true, description: 'Затверджена зачіска з другого комплекту.',
+        genderVariants: { male: 'assets/wardrobe/hair/classic_short_unisex_style_B.png?v=6c81db91', female: 'assets/wardrobe/hair/classic_short_unisex_style_B.png?v=6c81db91' },
+        placementByGender: {
+            male: { x: 369.9884556812, y: -7.8760272324, width: 201.8883785688, height: 201.8883785688 },
+            female: { x: 372.0210235314683, y: -13.885696649022648, width: 201.45305805472074, height: 201.45305805472074 }
+        } },
+    { id: 'hair-shoulder-length', slot: 'hair', name: 'Волосся до плечей', icon: 'user', availableByDefault: true,
+        fittedToGender: true, description: 'Затверджена зачіска з другого комплекту.',
+        genderVariants: { male: 'assets/wardrobe/hair/male_medium_shoulder_length.png?v=b7eb30d7', female: 'assets/wardrobe/hair/female_medium_shoulder_length.png?v=ec0dcba9' },
+        placementByGender: {
+            male: { x: 341.320000325, y: 22.61025, width: 256.7565, height: 256.7565 },
+            female: { x: 319.19278624, y: 13.02804571232, width: 290.59567314624, height: 290.59567314624 }
         } },
     {
         id: 'patient-tunic', slot: 'upperBody', name: 'Лікарняна туніка', icon: 'shirt',

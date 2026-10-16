@@ -126,6 +126,8 @@ function positionPaperDollLayer(image, placement, index) {
     image.style.top = `${valid ? placement.y / frame.height * 100 : 0}%`;
     image.style.width = `${valid ? placement.width / frame.width * 100 : 100}%`;
     image.style.height = `${valid ? placement.height / frame.height * 100 : 100}%`;
+    // Opt-in for a registered overlay; clear on every render so it cannot leak to another item/gender.
+    image.style.objectFit = valid && placement.stretchX === true ? 'fill' : '';
     image.style.zIndex = String(index);
 }
 
