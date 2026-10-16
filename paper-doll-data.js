@@ -66,7 +66,7 @@ const PAPER_DOLL_ITEMS = [
         genderVariants: { male: 'assets/wardrobe/hair/classic_short_unisex_style_B.png?v=6c81db91', female: 'assets/wardrobe/hair/classic_short_unisex_style_B.png?v=6c81db91' },
         placementByGender: {
             male: { x: 369.9884556812, y: -7.8760272324, width: 201.8883785688, height: 201.8883785688 },
-            female: { x: 373.0210235314683, y: -13.885696649022648, width: 201.45305805472074, height: 201.45305805472074 }
+            female: { x: 372.0210235314683, y: -13.885696649022648, width: 201.45305805472074, height: 201.45305805472074 }
         } },
     { id: 'hair-shoulder-length', slot: 'hair', name: 'Волосся до плечей', icon: 'user', availableByDefault: true,
         fittedToGender: true, description: 'Затверджена зачіска з другого комплекту.',
