@@ -11,7 +11,7 @@ function normalizePaperDollState(value, legacy = {}) {
     const state = { schemaVersion: 2,
         selectedGender: (valid ? value.selectedGender : legacy.gender) === 'female' ? 'female' : 'male',
         activeViewMode: valid && value.activeViewMode === 'combat' ? 'combat' : 'patient',
-        appearance: { face: null, hair: (valid && value.schemaVersion === 2 && typeof value.appearance?.hair === 'string' ? value.appearance.hair : legacy.hair) || 'hair-none' },
+        appearance: { face: null, hairColor: normalizeHairColor(valid ? value.appearance?.hairColor : null), hair: (valid && value.schemaVersion === 2 && typeof value.appearance?.hair === 'string' ? value.appearance.hair : legacy.hair) || 'hair-none' },
         patientLoadout: emptyPaperDollLoadout(), combatLoadout: emptyPaperDollLoadout() };
     for (const key of ['patientLoadout', 'combatLoadout']) {
         const source = valid && value[key] && typeof value[key] === 'object' ? value[key] : {};
@@ -157,7 +157,7 @@ function renderPaperDollAt(host, prefix = '') {
         const parts = layered ? paperDollItemLayers(item, selectedGender) : [item || {}];
         if (layered) {
             const base = document.getElementById(prefix + definition.elementId);
-            if (base) { base.onload = null; base.onerror = null; base.classList.add('hidden'); base.removeAttribute('src'); }
+            if (base) { base.onload = null; base.onerror = null; base.paperHairRequest = null; base.classList.add('hidden'); base.removeAttribute('src'); }
         }
         parts.forEach(part => {
         const id = prefix + definition.elementId + (layered ? `-${part.id}` : '');
@@ -175,16 +175,24 @@ function renderPaperDollAt(host, prefix = '') {
         const source = candidates.find(path => !failedPaperDollImages.has(path));
         if (!source) {
             image.onload = null; image.onerror = null;
+            image.paperHairRequest = null;
             image.classList.add('hidden'); image.removeAttribute('src'); return;
         }
-        if (image.getAttribute('src') !== source) image.classList.add('hidden');
-        image.onload = () => { if (image.getAttribute('src') === source && image.naturalWidth > 0) image.classList.remove('hidden'); };
-        image.onerror = () => {
-            if (image.getAttribute('src') !== source) return;
-            failedPaperDollImages.add(source); renderPaperDoll(); renderPaperDollControls(false);
-        };
-        if (image.getAttribute('src') !== source) image.setAttribute('src', source);
-        if (image.complete && image.naturalWidth > 0) image.classList.remove('hidden');
+        const color = slot === 'hair' ? normalizeHairColor(paperDollState.appearance.hairColor) : 'original';
+        const request = `${source}|${color}`;
+        if (image.paperHairRequest !== request) {
+            image.paperHairRequest = request;
+            if (color === 'original') setPaperDollImage(image, source, source);
+            else coloredHairSource(source, color).then(colored => {
+                if (image.paperHairRequest === request) setPaperDollImage(image, colored, source);
+            }).catch(() => {
+                if (image.paperHairRequest !== request) return;
+                image.paperHairRequest = null;
+                setPaperDollImage(image, source, source);
+                document.getElementById('hair-color-error')?.classList.remove('hidden');
+            });
+        }
+
         });
     });
     host.querySelectorAll('[data-paper-extra]').forEach(image => {
@@ -205,4 +213,24 @@ function renderPaperDollControls(renderSlots = true) {
     if (label) label.textContent = `Комплект: ${paperDollState.activeViewMode === 'combat' ? 'Трип' : 'Пацієнт'}`;
     renderWardrobeRegistration();
     renderWardrobeImageNotes();
+}
+
+// Source identity stays separate from the runtime color image and its error state.
+function setPaperDollImage(image, displaySource, originalSource) {
+    if (image.getAttribute('src') !== displaySource) image.classList.add('hidden');
+    image.onload = () => { if (image.getAttribute('src') === displaySource && image.naturalWidth > 0) image.classList.remove('hidden'); };
+    image.onerror = () => {
+        if (image.getAttribute('src') !== displaySource) return;
+        if (displaySource !== originalSource) {
+            image.paperHairRequest = null;
+            setPaperDollImage(image, originalSource, originalSource);
+            document.getElementById('hair-color-error')?.classList.remove('hidden');
+            return;
+        }
+        failedPaperDollImages.add(originalSource);
+        image.paperHairRequest = null;
+        renderPaperDoll(); renderPaperDollControls(false);
+    };
+    if (image.getAttribute('src') !== displaySource) image.setAttribute('src', displaySource);
+    if (image.complete && image.naturalWidth > 0) image.classList.remove('hidden');
 }

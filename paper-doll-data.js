@@ -94,8 +94,7 @@ const PAPER_DOLL_ITEMS = [
 ];
 const PAPER_DOLL_LEGACY_ITEMS = { 'sample-headwear': 'gear-helmet', 'sample-armor': 'gear-br1', 'sample-weapon': 'gear-pm' };
 const WARDROBE_CATEGORIES = {
-    appearance: { label: 'Зовнішність', icon: 'user', slots: ['baseBody', 'face'] },
-    hair: { label: 'Зачіски', icon: 'user', slots: ['hair'] },
+    appearance: { label: 'Зовнішність', icon: 'user', slots: ['baseBody', 'face', 'hair'] },
     clothes: { label: 'Одяг', icon: 'shirt', slots: ['upperBody', 'outerwear', 'pants', 'footwear', 'gloves'] },
     gear: { label: 'Броня та спорядження', icon: 'shield', slots: ['headwear', 'armor', 'loadout', 'back'] },
     weapons: { label: 'Зброя', icon: 'swords', slots: ['weapon'] },

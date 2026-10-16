@@ -2,6 +2,7 @@ let wardrobeCategory = 'appearance';
 let wardrobeSlot = 'baseBody';
 // Inspection is transient UI state; only the existing equip operation saves.
 let wardrobeSelectedItemId = null;
+let wardrobeHairColorGroup = 'natural';
 
 function renderWardrobeRegistration() {
     document.getElementById('custom-modal')?.setAttribute('data-wardrobe-theme', paperDollState.activeViewMode === 'combat' ? 'trip' : 'patient');
@@ -19,6 +20,8 @@ function wardrobeVisibleItems() {
 }
 
 function selectWardrobeCategory(category) {
+    // Preserve existing callers while hair now belongs to Appearance.
+    if (category === 'hair') { selectWardrobeCategory('appearance'); selectWardrobeSlot('hair'); return; }
     if (!Object.hasOwn(WARDROBE_CATEGORIES, category)) return;
     wardrobeCategory = category;
     wardrobeSlot = WARDROBE_CATEGORIES[category].slots[0];
@@ -31,6 +34,7 @@ function selectWardrobeCategory(category) {
 function selectWardrobeSlot(slot) {
     if (!WARDROBE_CATEGORIES[wardrobeCategory].slots.includes(slot)) return;
     wardrobeSlot = slot;
+    if (slot === 'hair') wardrobeHairColorGroup = HAIR_COLORS.find(color => color.id === paperDollState.appearance.hairColor)?.group === 'alternative' ? 'alternative' : 'natural';
     wardrobeSelectedItemId = null;
     const grid = document.getElementById('wardrobe-container');
     if (grid) grid.scrollTop = 0;
@@ -115,6 +119,16 @@ function renderWardrobeItemDetail(item) {
     if (!item) { panel.innerHTML = ''; return; }
     const owned = isPaperDollItemOwned(item);
     const equipped = selectedPaperDollItem(wardrobeSlot)?.id === item.id;
+    if (item.slot === 'hair') {
+        panel.removeAttribute('aria-labelledby');
+        panel.setAttribute('aria-label', 'Вибір зачіски');
+        // The card already names the style; do not repeat catalog/service text.
+        panel.innerHTML = `<button type="button" class="report-button" data-wardrobe-action="${escapeHTML(item.id)}" data-wardrobe-focus="action-${escapeHTML(item.id)}" aria-label="${equipped ? 'Обрано' : 'Обрати'}: ${escapeHTML(item.name)}"${equipped ? ' disabled' : ''}>${equipped ? 'Обрано' : 'Обрати'}</button>`;
+        panel.querySelectorAll('[data-wardrobe-action]').forEach(button => button.addEventListener('click', applyWardrobeItemAction));
+        return;
+    }
+    panel.removeAttribute('aria-label');
+    panel.setAttribute('aria-labelledby', 'wardrobe-detail-title');
     const reference = inventory.find(entry => entry.name === item.inventoryName && entry.category === item.inventoryCategory)
         || DEFAULT_INVENTORY.find(entry => entry.name === item.inventoryName && entry.category === item.inventoryCategory);
     const description = reference?.desc || item.description || PAPER_DOLL_SLOTS[item.slot].label;
@@ -141,11 +155,13 @@ function renderWardrobeUI() {
     const heading = document.getElementById('wardrobe-items-title');
     if (heading) heading.textContent = PAPER_DOLL_SLOTS[wardrobeSlot].label;
     const genderSwitch = document.getElementById('wardrobe-gender-switch');
-    genderSwitch?.classList.toggle('hidden', wardrobeCategory !== 'appearance' && wardrobeCategory !== 'hair');
+    genderSwitch?.classList.toggle('hidden', wardrobeCategory !== 'appearance');
     genderSwitch?.querySelectorAll('[data-paper-gender]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.paperGender === paperDollState.selectedGender)));
     const items = wardrobeVisibleItems();
     if (!items.some(item => item.id === wardrobeSelectedItemId)) wardrobeSelectedItemId = items.find(item => item.id === selectedPaperDollItem(wardrobeSlot)?.id)?.id || items[0]?.id || null;
     container.classList.toggle('wardrobe-has-items', items.length > 0);
+    container.classList.toggle('wardrobe-hair-grid', wardrobeSlot === 'hair');
+    renderHairPalette();
     if (wardrobeSlot === 'baseBody') {
         container.innerHTML = `<div class="wardrobe-appearance-note">${iconHTML('user','large')}<h4>Повноростова модель</h4><p>Обраний персонаж одразу відображається в центрі та у палаті.</p><span class="wardrobe-item-state">${paperDollState.selectedGender === 'female' ? 'Жінка' : 'Чоловік'}</span></div>`;
     } else {
@@ -168,4 +184,22 @@ function renderWardrobeUI() {
     if (focused) document.querySelectorAll('[data-wardrobe-focus]').forEach(button => {
         if (button.getAttribute('data-wardrobe-focus') === focused && !button.disabled) button.focus({ preventScroll: true });
     });
+}
+
+function renderHairPalette() {
+    const panel=document.getElementById('wardrobe-hair-palette');
+    if (!panel) return;
+    panel.classList.toggle('hidden', wardrobeSlot !== 'hair');
+    if (wardrobeSlot !== 'hair') return;
+    const selected=HAIR_COLORS.find(color => color.id===normalizeHairColor(paperDollState.appearance.hairColor));
+    panel.innerHTML = `<header><strong>Колір волосся</strong><span role="status">${escapeHTML(selected.name)}</span></header>
+        <div class="hair-color-controls"><button type="button" class="hair-original" data-hair-color="original" data-wardrobe-focus="color-original" aria-pressed="${selected.id==='original'}">Оригінальний</button>
+        <div class="hair-color-groups" role="group" aria-label="Група кольорів">${[['natural','Природні'],['alternative','Альтернативні']].map(([id,name]) => `<button type="button" data-hair-color-group="${id}" data-wardrobe-focus="color-group-${id}" aria-pressed="${wardrobeHairColorGroup===id}">${name}</button>`).join('')}</div></div>
+        <div class="hair-color-swatches" role="group" aria-label="Відтінки волосся">${HAIR_COLORS.filter(color => color.group===wardrobeHairColorGroup).map(color => `<button type="button" data-hair-color="${color.id}" data-wardrobe-focus="color-${color.id}" aria-label="${escapeHTML(color.name)}" title="${escapeHTML(color.name)}" aria-pressed="${selected.id===color.id}" style="--hair-color:${color.hex}"><span aria-hidden="true">${selected.id===color.id ? '✓' : ''}</span></button>`).join('')}</div>
+        <p id="hair-color-error" class="hidden" role="alert">Колір не вдалося застосувати. Показано оригінал; спробуйте обрати колір знову.</p>`;
+    panel.querySelectorAll('[data-hair-color]').forEach(button => button.addEventListener('click', () => setHairColor(button.dataset.hairColor)));
+    panel.querySelectorAll('[data-hair-color-group]').forEach(button => button.addEventListener('click', () => {
+        wardrobeHairColorGroup=button.dataset.hairColorGroup;
+        renderWardrobe();
+    }));
 }

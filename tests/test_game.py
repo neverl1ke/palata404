@@ -280,7 +280,7 @@ class GameTests(unittest.TestCase):
         self.page.evaluate('openCustomization()')
         wardrobe=self.page.locator('#custom-modal')
         self.assertEqual(wardrobe.locator('select').count(),0)
-        self.assertEqual(wardrobe.locator('[data-wardrobe-category]').count(),6)
+        self.assertEqual(wardrobe.locator('[data-wardrobe-category]').count(),5)
         wardrobe.get_by_role('button',name='Жінка',exact=True).click()
         wardrobe.locator('[data-wardrobe-slot="face"]').click()
         self.assertEqual(wardrobe.locator('[data-wardrobe-card]').count(),0)
@@ -615,7 +615,7 @@ class GameTests(unittest.TestCase):
                 document=self.page.locator('.wardrobe-document')
                 self.assertLessEqual(document.bounding_box()['height'],height*.9+1)
                 self.assertLessEqual(document.evaluate('e=>e.scrollHeight-e.clientHeight'),1)
-                self.assertEqual(self.page.locator('[data-wardrobe-slot]').count(),2)
+                self.assertEqual(self.page.locator('[data-wardrobe-slot]').count(),3)
                 self.assertEqual(self.page.locator('#wardrobe-layer-face').get_attribute('src'),self.page.locator('#layer-face').get_attribute('src'))
                 self.assertLessEqual(self.page.evaluate('document.documentElement.scrollWidth'),width)
                 self.page.screenshot(path=str(results/f'wide-wardrobe-{width}x{height}.png'))
@@ -1243,11 +1243,78 @@ class GameTests(unittest.TestCase):
         self.assertGreater(self.page.locator('.detail-scroll').first.evaluate('e=>e.scrollWidth-e.clientWidth'), 0)
         self.page.screenshot(path=str(results/'patient-tunic-fit-phone.png'), full_page=True)
 
+    def test_hair_palette_colors_alpha_persistence_races_and_responsive_ui(self):
+        self.load({'palata404_paper_doll':json.dumps({'schemaVersion':2,'selectedGender':'female','appearance':{'hair':'hair-textured-short'},'patientLoadout':{'upperBody':'patient-tunic'},'combatLoadout':{}})})
+        self.assertEqual(self.page.evaluate('paperDollState.appearance.hairColor'),'original')
+        missing=[]
+        self.page.on('response',lambda response: missing.append(response.url) if response.status>=400 else None)
+        self.page.evaluate('openCustomization()')
+        self.assertEqual(self.page.locator('[data-wardrobe-category]').count(),5)
+        self.assertEqual(self.page.locator('#wardrobe-slots button').all_text_contents(),['Базове тіло','Обличчя','Зачіски'])
+        self.page.locator('[data-wardrobe-slot="hair"]').click()
+        self.assertEqual(self.page.locator('[data-wardrobe-card]').count(),7)
+        self.assertNotIn('першого комплекту',self.page.locator('.wardrobe-items').inner_text())
+        self.assertNotIn('ІНВЕНТАРНИЙ ЗАПИС',self.page.locator('#wardrobe-item-detail').inner_text())
+        self.assertEqual(self.page.locator('#wardrobe-item-detail h4').count(),0)
+        before=self.page.evaluate('JSON.stringify({stats,inventory,equippedGear,gameProgress,patient:paperDollState.patientLoadout,combat:paperDollState.combatLoadout})')
+        placements=self.page.evaluate('JSON.stringify(PAPER_DOLL_ITEMS.map(i=>[i.id,i.placementByGender]))')
+        colors=self.page.evaluate('HAIR_COLORS.map(c=>c.id)')
+        unchanged=self.page.locator('#wardrobe-paperdoll .char-layer:not(#wardrobe-layer-hair)').evaluate_all('images=>images.map(i=>[i.id,i.getAttribute("src"),i.style.cssText])')
+        async_check='''async ([source,color])=>{
+            const url=await coloredHairSource(source,color);
+            const pixels=async src=>{const i=new Image();i.src=src;await i.decode();const c=document.createElement('canvas');c.width=i.naturalWidth;c.height=i.naturalHeight;const x=c.getContext('2d',{willReadFrequently:true});x.drawImage(i,0,0);return {w:c.width,h:c.height,p:x.getImageData(0,0,c.width,c.height).data}};
+            const a=await pixels(source),b=await pixels(url);let alpha=0,changed=0;const tones=new Set();
+            for(let i=0;i<a.p.length;i+=4){if(a.p[i+3]!==b.p[i+3])alpha++;if(a.p[i+3]>192){tones.add(b.p[i]+','+b.p[i+1]+','+b.p[i+2]);if(a.p[i]!==b.p[i]||a.p[i+1]!==b.p[i+1]||a.p[i+2]!==b.p[i+2])changed++}}
+            return {alpha,changed,tones:tones.size,same:url===source,dimensions:a.w===b.w&&a.h===b.h};
+        }'''
+        source=self.page.evaluate('selectedPaperDollItem("hair").genderVariants.female')
+        for color in colors:
+            self.page.evaluate('id=>setHairColor(id)',color)
+            self.page.wait_for_function('''color=>['layer-hair','wardrobe-layer-hair'].every(id=>{const i=document.getElementById(id);return i.paperHairRequest?.endsWith('|'+color)&&i.complete&&i.naturalWidth>0&&!i.classList.contains('hidden')&&(color==='original'?!i.src.startsWith('data:'):i.src.startsWith('data:'))})''',arg=color)
+            result=self.page.evaluate(async_check,[source,color])
+            self.assertTrue(result['dimensions']);self.assertEqual(result['alpha'],0,color)
+            if color=='original': self.assertTrue(result['same'])
+            else: self.assertGreater(result['changed'],1000);self.assertGreater(result['tones'],150)
+            self.assertEqual(self.page.locator('#wardrobe-paperdoll .char-layer:not(#wardrobe-layer-hair)').evaluate_all('images=>images.map(i=>[i.id,i.getAttribute("src"),i.style.cssText])'),unchanged)
+        self.assertLessEqual(self.page.evaluate('hairColorCache.size'),24)
+        self.assertEqual(self.page.evaluate('''()=>{const s=selectedPaperDollItem('hair').genderVariants.female;return coloredHairSource(s,'orange')===coloredHairSource(s,'orange')}'''),True)
+        # Rapid requests must never overwrite the newest selection or revive removed hair.
+        self.page.evaluate('setHairColor("black");setGender("male");equipPaperDollItem("hair","hair-bob");setHairColor("blue");setGender("female");equipPaperDollItem("hair","hair-textured-short");setHairColor("pink")')
+        self.page.wait_for_function('''async()=>{const expected=await coloredHairSource(selectedPaperDollItem('hair').genderVariants.female,'pink');return ['layer-hair','wardrobe-layer-hair'].every(id=>document.getElementById(id).getAttribute('src')===expected)}''')
+        self.page.reload(wait_until='networkidle')
+        self.assertEqual(self.page.evaluate('paperDollState.appearance.hairColor'),'pink')
+        self.page.evaluate('openCustomization();selectWardrobeCategory("hair")')
+        self.page.locator('[data-hair-color="pink"][aria-pressed="true"]').wait_for()
+        for gender in ['male','female']:
+            for item in ['hair-messy','hair-bob','hair-double-buns','hair-classic-short','hair-textured-short','hair-shoulder-length']:
+                self.page.evaluate('([gender,id])=>{setGender(gender);equipPaperDollItem("hair",id);setHairColor("platinum")}',[gender,item])
+                src=self.page.evaluate('selectedPaperDollItem("hair").genderVariants[paperDollState.selectedGender]')
+                self.assertEqual(self.page.evaluate(async_check,[src,'platinum'])['alpha'],0)
+                self.page.wait_for_function('''async()=>document.getElementById('wardrobe-layer-hair').getAttribute('src')===await coloredHairSource(selectedPaperDollItem('hair').genderVariants[paperDollState.selectedGender],'platinum')''')
+        self.page.evaluate('equipPaperDollItem("hair","hair-none")')
+        self.assertIsNone(self.page.locator('#wardrobe-layer-hair').get_attribute('src'))
+        self.assertEqual(self.page.evaluate('JSON.stringify(PAPER_DOLL_ITEMS.map(i=>[i.id,i.placementByGender]))'),placements)
+        self.assertEqual(self.page.evaluate('JSON.stringify({stats,inventory,equippedGear,gameProgress,patient:paperDollState.patientLoadout,combat:paperDollState.combatLoadout})'),before)
+        results=ROOT/'test-results';results.mkdir(exist_ok=True)
+        for mode in ['patient','combat']:
+            self.page.evaluate('mode=>setPaperDollView(mode)',mode)
+            for width,height in [(1920,1080),(1280,800),(390,844),(320,568)]:
+                self.page.set_viewport_size({'width':width,'height':height})
+                self.assertLessEqual(self.page.evaluate('document.documentElement.scrollWidth'),width)
+                self.assertLessEqual(self.page.locator('.wardrobe-items').evaluate('e=>e.scrollWidth-e.clientWidth'),1)
+                self.assertTrue(self.page.locator('[data-hair-color="original"]').is_visible())
+                self.page.locator('[data-hair-color-group="natural"]').click()
+                self.page.locator('[data-hair-color="black"]').click()
+                self.assertEqual(self.page.locator('[data-hair-color="black"]').bounding_box()['height'],44)
+                self.page.screenshot(path=str(results/f'hair-palette-{mode}-{width}.png'))
+        self.assertEqual(missing,[])
+
     def test_hair_pack_ui_choices_shared_persistence_mobile_and_real_render_previews(self):
         self.load()
         self.page.evaluate('openCustomization();setPaperDollView("combat");equipPaperDollItem("upperBody","patient-tunic");setPaperDollView("patient");')
         wardrobe=self.page.locator('#custom-modal')
-        wardrobe.locator('[data-wardrobe-category="hair"]').click()
+        wardrobe.locator('[data-wardrobe-category="appearance"]').click()
+        wardrobe.locator('[data-wardrobe-slot="hair"]').click()
         self.assertEqual(wardrobe.locator('[data-wardrobe-card]').count(),7)
         self.assertEqual(self.page.evaluate('selectedPaperDollItem("hair").id'),'hair-none')
         before=self.page.evaluate('JSON.stringify({stats,inventory,equippedGear,gameProgress,patient:paperDollState.patientLoadout,combat:paperDollState.combatLoadout})')

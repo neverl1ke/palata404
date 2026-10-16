@@ -95,6 +95,7 @@ function game(saves = {}, deniedStorage = false, failWrites = [], telegramId = n
     vm.runInContext(fs.readFileSync(path.join(root, 'raid-archive.js'), 'utf8'), context, { filename: 'raid-archive.js' });
     vm.runInContext(fs.readFileSync(path.join(root, 'staff-archive.js'), 'utf8'), context, { filename: 'staff-archive.js' });
     vm.runInContext(fs.readFileSync(path.join(root, 'paper-doll-data.js'), 'utf8'), context, { filename: 'paper-doll-data.js' });
+    vm.runInContext(fs.readFileSync(path.join(root, 'hair-color.js'), 'utf8'), context, { filename: 'hair-color.js' });
     vm.runInContext(fs.readFileSync(path.join(root, 'paper-doll.js'), 'utf8'), context, { filename: 'paper-doll.js' });
     vm.runInContext(fs.readFileSync(path.join(root, 'wardrobe.js'), 'utf8'), context, { filename: 'wardrobe.js' });
     vm.runInContext(source, context, { filename: 'script.js' });
@@ -1139,7 +1140,7 @@ test('the approved neckline part follows only the female tunic across modes, sav
 test('hair is shared appearance with seven choices, gender-fitted art and persistent bald reset', () => {
     const g=game();
     assert.equal(g.run('paperDollState.appearance.hair'),'hair-none');
-    assert.equal(g.run('WARDROBE_CATEGORIES.hair.label'),'Зачіски');
+    assert.equal(g.run('PAPER_DOLL_SLOTS.hair.label'),'Зачіски');
     assert.equal(g.run('PAPER_DOLL_ITEMS.filter(item=>item.slot==="hair").length'),7);
     assert.equal(g.run('wardrobeImageStatus(selectedPaperDollItem("hair")).state'),'ready');
     const before=g.run('JSON.stringify({stats,inventory,equippedGear,gameProgress,patient:paperDollState.patientLoadout,combat:paperDollState.combatLoadout})');
@@ -1195,5 +1196,32 @@ test('hair migration retains inert legacy metadata, failed art never swaps gende
         g.run('setGender(paperDollState.selectedGender==="male"?"female":"male")');
         assert.notEqual(g.elements.get('layer-hair').getAttribute('src'),source);
         assert.notEqual(g.elements.get('layer-hair').getAttribute('src'),null);
+    }
+});
+
+test('hair colors migrate safely and preserve pigment texture, alpha and cosmetic save scope', () => {
+    const g=game();
+    assert.equal(g.run('Object.keys(WARDROBE_CATEGORIES).length'),5);
+    assert.equal(g.run('WARDROBE_CATEGORIES.appearance.slots.join(",")'),'baseBody,face,hair');
+    assert.equal(g.run('HAIR_COLORS.length'),25);
+    assert.equal(g.run('new Set(HAIR_COLORS.map(c=>c.id)).size'),25);
+    assert.equal(g.run('HAIR_COLORS.filter(c=>c.group==="natural").length'),12);
+    assert.equal(g.run('HAIR_COLORS.filter(c=>c.group==="alternative").length'),12);
+    for(const value of [null,{}, {schemaVersion:1}, {schemaVersion:2,appearance:{hairColor:'bad'}}]) {
+        assert.equal(g.run(`normalizePaperDollState(${JSON.stringify(value)}).appearance.hairColor`),'original');
+    }
+    const before=g.run('JSON.stringify({stats,inventory,equippedGear,patient:paperDollState.patientLoadout,combat:paperDollState.combatLoadout})');
+    for(const color of g.run('HAIR_COLORS.map(c=>c.id)')) {
+        assert.equal(g.run(`setHairColor(${JSON.stringify(color)})`),true);
+        assert.equal(game(Object.fromEntries(g.storage)).run('paperDollState.appearance.hairColor'),color);
+    }
+    assert.equal(g.run('setHairColor("unknown")'),false);
+    assert.equal(g.run('JSON.stringify({stats,inventory,equippedGear,patient:paperDollState.patientLoadout,combat:paperDollState.combatLoadout})'),before);
+    // Transparent and translucent edges retain exact alpha; separate strands keep contrast.
+    for(const hex of ['#201A19','#E7E4DD','#E6DDC8','#F07BAF','#2876EC']) {
+        const result=g.run(`Array.from(recolorHairPixels(new Uint8ClampedArray([22,12,8,255,80,55,35,255,150,110,70,255,80,55,35,1,77,88,99,0]),'${hex}'))`);
+        assert.deepEqual([result[3],result[7],result[11],result[15],result[19]],[255,255,255,1,0]);
+        assert.ok(result[0]<result[4] && result[4]<result[8],hex+' retains strand lighting');
+        assert.deepEqual(Array.from(result.slice(16,19)),[77,88,99]);
     }
 });
