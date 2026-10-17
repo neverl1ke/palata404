@@ -44,7 +44,7 @@ const PAPER_DOLL_ITEMS = [
         fittedToGender: true, description: 'Молодий тип обличчя, 18–20 років.',
         // DOM image renderer: above the body (0), below clothing and hair (9).
         renderOrder: 1,
-        genderVariants: { male: 'assets/wardrobe/faces/male_young_head.png?v=440186b4', female: 'assets/wardrobe/faces/female_young_head.png?v=ce4a8a2a' },
+        genderVariants: { male: 'assets/wardrobe/faces/male_young_head.png?v=fb485d56', female: 'assets/wardrobe/faces/female_young_head.png?v=726f2611' },
         bodyMaskByGender: { male: 'assets/wardrobe/faces/masks/male_young_body.png?v=ae3583dd', female: 'assets/wardrobe/faces/masks/female_young_body.png?v=7c74c044' },
         placementByGender: {
             male: { x: 0, y: 0, width: 941, height: 1672 },
@@ -54,8 +54,8 @@ const PAPER_DOLL_ITEMS = [
         fittedToGender: true, description: 'Виснажений, тривожний тип обличчя.',
         // DOM image renderer: above the body (0), below clothing and hair (9).
         renderOrder: 1,
-        genderVariants: { male: 'assets/wardrobe/faces/male_exhausted_head.png?v=2ab8724b', female: 'assets/wardrobe/faces/female_exhausted_head.png?v=17a3da32' },
-        bodyMaskByGender: { male: 'assets/wardrobe/faces/masks/male_exhausted_body.png?v=91eb3993', female: 'assets/wardrobe/faces/masks/female_exhausted_body.png?v=2f2ccc1c' },
+        genderVariants: { male: 'assets/wardrobe/faces/male_exhausted_head.png?v=fa13f69a', female: 'assets/wardrobe/faces/female_exhausted_head.png?v=aaa39875' },
+        bodyMaskByGender: { male: 'assets/wardrobe/faces/masks/male_exhausted_body.png?v=91eb3993', female: 'assets/wardrobe/faces/masks/female_exhausted_body.png?v=2b678c04' },
         placementByGender: {
             male: { x: 0, y: 0, width: 941, height: 1672 },
             female: { x: 0, y: 0, width: 941, height: 1672 }
