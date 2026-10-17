@@ -1,0 +1,55 @@
+{
+  "source_commit": "8bcf1830429008113c145e15c016a9bc709e35a1",
+  "javascript": {
+    "total": 75,
+    "passed": 75,
+    "failed": 0,
+    "log": "logs/node-75.log"
+  },
+  "python": {
+    "total": 91,
+    "passed": 91,
+    "failed": 0,
+    "shards": [
+      {
+        "shard": 0,
+        "tests": 23,
+        "exit": 0
+      },
+      {
+        "shard": 1,
+        "tests": 23,
+        "exit": 0
+      },
+      {
+        "shard": 2,
+        "tests": 22,
+        "exit": 0
+      },
+      {
+        "shard": 3,
+        "tests": 23,
+        "exit": 0
+      }
+    ]
+  },
+  "capture_before": {
+    "combinations": 90,
+    "samples": 720,
+    "backgrounds": 4,
+    "colors": 2,
+    "js_errors": 0,
+    "http_errors": 0
+  },
+  "capture_after": {
+    "combinations": 90,
+    "samples": 720,
+    "backgrounds": 4,
+    "colors": 2,
+    "js_errors": 0,
+    "http_errors": 0
+  },
+  "detail_cases_per_phase": 22,
+  "physical_mobile_device": false,
+  "artistic_approval": "Owner review of the painted RGB retouch remains separate from technical test success"
+}

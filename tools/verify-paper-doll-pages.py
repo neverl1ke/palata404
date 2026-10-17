@@ -2,10 +2,11 @@
 Python verifies HTTPS certificates; no local runtime/assets are substituted.
 """
 from playwright.sync_api import sync_playwright
-import urllib.request,json,argparse
+import urllib.request,json,argparse,re
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
-parser=argparse.ArgumentParser();parser.add_argument('--url',default='https://neverl1ke.github.io/palata404/');parser.add_argument('--output-dir',type=Path,default=ROOT/'review/paper-doll-audit-2026-10');args=parser.parse_args()
+parser=argparse.ArgumentParser();parser.add_argument('--url',default='https://neverl1ke.github.io/palata404/');parser.add_argument('--output-dir',type=Path,default=ROOT/'test-results/published-paper-doll');args=parser.parse_args()
+cache_version=re.search(r'style\.css\?v=([a-zA-Z0-9_-]+)',(ROOT/'index.html').read_text())[1]
 base=args.url.rstrip('/')+'/';out=args.output_dir;out.mkdir(parents=True,exist_ok=True);cache={};errors=[];http=[];combos=0;samples=0
 with sync_playwright() as p:
  browser=p.chromium.launch();context=browser.new_context(viewport={'width':1440,'height':1000})
@@ -18,7 +19,7 @@ with sync_playwright() as p:
   if status>=400:http.append(url)
   route.fulfill(status=status,content_type=mime,body=body)
  context.route('https://**/*',transport);page=context.new_page();page.on('pageerror',lambda e:errors.append(str(e)));page.goto(base,wait_until='networkidle',timeout=60000)
- assert 'paper-audit-1' in page.content()
+ assert cache_version in page.content()
  page.evaluate('openCustomization();setPaperDollView("combat");equipPaperDollItem("upperBody",null);selectWardrobeCategory("appearance");selectWardrobeSlot("hair")')
  def settle():
   page.wait_for_function('''async()=>{for(const i of document.getElementById('wardrobe-paperdoll').querySelectorAll('img:not(.hidden)')){const r=i.paperHairRequest;if(!r)continue;const n=r.lastIndexOf('|'),s=r.slice(0,n),c=r.slice(n+1);if(i.getAttribute('src')!==(c==='original'?s:await coloredHairSource(s,c,i.paperHairColorReference))||!i.complete||!i.naturalWidth)return false}return true}''')
@@ -45,5 +46,5 @@ with sync_playwright() as p:
  for width,height in [(320,568),(390,844),(768,844)]:
   page.set_viewport_size({'width':width,'height':height});page.locator('[data-palette-toggle]').click();page.locator('[data-hair-color-group="natural"]').click();page.locator('[data-hair-color="black"]').click();settle();page.locator('[data-palette-toggle]').click();assert page.evaluate('document.documentElement.scrollWidth<=innerWidth+1');page.screenshot(path=str(out/f'live-mobile-{width}.jpg'),type='jpeg',quality=94)
  assert combos==90 and samples==720 and not errors and not http
- result={'url':base,'combinations':combos,'background_color_checks':samples,'reload':True,'page_errors':errors,'http_errors':http,'mobile_widths':[320,390,768],'transport':'Actual published HTTPS bytes via certificate-verified urllib, Chromium renders without local substitutions','cache_version':'paper-audit-1'}
+ result={'url':base,'combinations':combos,'background_color_checks':samples,'reload':True,'page_errors':errors,'http_errors':http,'mobile_widths':[320,390,768],'transport':'Actual published HTTPS bytes via certificate-verified urllib, Chromium renders without local substitutions','cache_version':cache_version}
  (out/'live-browser.json').write_text(json.dumps(result,indent=2)+'\n');print(json.dumps(result));browser.close()

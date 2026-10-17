@@ -52,7 +52,7 @@
     {
       "path": "assets/wardrobe/faces/female_alternative_head.png",
       "before_sha256": "64da4dcbc6ff8ff03728779ec54f00de3d7325146ae546604f412299fe28eef3",
-      "sha256": "4b40230cce052db53bb74652368e04a7c048b5eb125af1875002a6265aee5a6e",
+      "sha256": "002b26500142b487eedabde6d401e7754fd437226648f10198bbe810b2c32a17",
       "size": [
         941,
         1672
@@ -70,12 +70,15 @@
         515,
         205
       ],
-      "face_rgb_sha256": "e252b729b07e9ea4063d8251dba13c9d9b0b0b22a92d81a885a11cc96baa675e"
+      "face_rgb_sha256": "04cc45b2b34fa5a282992abbc0be1b9d9aa8fb01b8ce0dbb65ba7829a17d1fcf",
+      "pre_targeted_fix_sha256": "4b40230cce052db53bb74652368e04a7c048b5eb125af1875002a6265aee5a6e",
+      "pre_targeted_fix_face_rgb_sha256": "e252b729b07e9ea4063d8251dba13c9d9b0b0b22a92d81a885a11cc96baa675e",
+      "targeted_fix_contract": "paper-doll-targeted-fix.json"
     },
     {
       "path": "assets/wardrobe/faces/female_asian_head.png",
       "before_sha256": "bb36d987af092f4a60b5305d067bab3a3a89b963aff96af7f55d77b54ed843a7",
-      "sha256": "b061f7b2012bd4e04671df738ccf9f6b0e41481370c72a49de4f18fe351f7570",
+      "sha256": "e788fe50130bd5f3236be7b9e03a1c6a63e47716fad7e3f9a761a04fbeb1e42f",
       "size": [
         941,
         1672
@@ -93,12 +96,15 @@
         515,
         205
       ],
-      "face_rgb_sha256": "3387ca9d5bad851ac5d6481bab37eb3164f8cd2df4dbed1440248852854ae292"
+      "face_rgb_sha256": "3387ca9d5bad851ac5d6481bab37eb3164f8cd2df4dbed1440248852854ae292",
+      "pre_targeted_fix_sha256": "b061f7b2012bd4e04671df738ccf9f6b0e41481370c72a49de4f18fe351f7570",
+      "pre_targeted_fix_face_rgb_sha256": "3387ca9d5bad851ac5d6481bab37eb3164f8cd2df4dbed1440248852854ae292",
+      "targeted_fix_contract": "paper-doll-targeted-fix.json"
     },
     {
       "path": "assets/wardrobe/faces/female_elder_head.png",
       "before_sha256": "20d53aaf9d8b57d808b530b8be431ad12ca53ba2c56f13acd7f171fb973de79b",
-      "sha256": "90f75a47f477b8be371f5ba8562d3c8e05125b3ba5506301e93599a1f4af9625",
+      "sha256": "53cd99eba4fdd054b21b8cc4a472401801736f2032fea76c6c5a25ef29379469",
       "size": [
         941,
         1672
@@ -116,12 +122,15 @@
         515,
         205
       ],
-      "face_rgb_sha256": "c6757e5cf8008d7bf9c37ff9e68ee07d35ebf55499127cace770a8f025fb426c"
+      "face_rgb_sha256": "c6757e5cf8008d7bf9c37ff9e68ee07d35ebf55499127cace770a8f025fb426c",
+      "pre_targeted_fix_sha256": "90f75a47f477b8be371f5ba8562d3c8e05125b3ba5506301e93599a1f4af9625",
+      "pre_targeted_fix_face_rgb_sha256": "c6757e5cf8008d7bf9c37ff9e68ee07d35ebf55499127cace770a8f025fb426c",
+      "targeted_fix_contract": "paper-doll-targeted-fix.json"
     },
     {
       "path": "assets/wardrobe/faces/female_exhausted_head.png",
       "before_sha256": "00f05b07b0888a69e70cb1536f26bf0bb849711e68c1dc2b546dc650310d220e",
-      "sha256": "9135238f1a383dc6b516b160fa4bc4e2dbcc8b765ad1acae0c6304f2514b3a20",
+      "sha256": "76ee4e8f2ee9af1947f1014e999f0e507fd3afb49153bc7efcef3807266bb6d2",
       "size": [
         941,
         1672
@@ -139,12 +148,15 @@
         515,
         205
       ],
-      "face_rgb_sha256": "87a0eac43149022bb3910d5a0b3d4ddb57f4ccd0605249cf615841fb0d03180e"
+      "face_rgb_sha256": "87a0eac43149022bb3910d5a0b3d4ddb57f4ccd0605249cf615841fb0d03180e",
+      "pre_targeted_fix_sha256": "9135238f1a383dc6b516b160fa4bc4e2dbcc8b765ad1acae0c6304f2514b3a20",
+      "pre_targeted_fix_face_rgb_sha256": "87a0eac43149022bb3910d5a0b3d4ddb57f4ccd0605249cf615841fb0d03180e",
+      "targeted_fix_contract": "paper-doll-targeted-fix.json"
     },
     {
       "path": "assets/wardrobe/faces/female_young_head.png",
       "before_sha256": "8f652b417017e6f35665a73b9d25868e8c5739d38be2e85eaf3e27f9ffe5e7de",
-      "sha256": "b69fc6e7ea936c769cdf3fdf06f1da0f822313fde7eba1be4c44c7cb785ac76d",
+      "sha256": "deba67794b0f654bd33c8bb4ff8c3de53438e2ac846fef31891f3d6968855323",
       "size": [
         941,
         1672
@@ -162,12 +174,15 @@
         515,
         205
       ],
-      "face_rgb_sha256": "af025c1aa24df4d5c4a2387782f382f637500ef3a1f8fe6e4aa8b1c17783c2ca"
+      "face_rgb_sha256": "af025c1aa24df4d5c4a2387782f382f637500ef3a1f8fe6e4aa8b1c17783c2ca",
+      "pre_targeted_fix_sha256": "b69fc6e7ea936c769cdf3fdf06f1da0f822313fde7eba1be4c44c7cb785ac76d",
+      "pre_targeted_fix_face_rgb_sha256": "af025c1aa24df4d5c4a2387782f382f637500ef3a1f8fe6e4aa8b1c17783c2ca",
+      "targeted_fix_contract": "paper-doll-targeted-fix.json"
     },
     {
       "path": "assets/wardrobe/faces/male_alternative_head.png",
       "before_sha256": "ba12c0915719ca04fad2703fc1acc8df40f8707ef038ad5c6f97696fcf0e767e",
-      "sha256": "676842d34f6d032e195c16b369ed5258b02c44a3ff0dfd8a7e7e3730eb6abe7e",
+      "sha256": "2b58bf7aeed30364a66336309591d8a20908cc620ec5487a9a3559b5546ef611",
       "size": [
         941,
         1672
@@ -185,12 +200,15 @@
         515,
         205
       ],
-      "face_rgb_sha256": "e4fc7056a06ce6b67e99b8f74545cbaac593af4128fc37e7006670e6b0a96c40"
+      "face_rgb_sha256": "213ca8c434ac1b43d996c5e2e8228cf06518b3213b278d58bb606d8f6424ccd5",
+      "pre_targeted_fix_sha256": "676842d34f6d032e195c16b369ed5258b02c44a3ff0dfd8a7e7e3730eb6abe7e",
+      "pre_targeted_fix_face_rgb_sha256": "e4fc7056a06ce6b67e99b8f74545cbaac593af4128fc37e7006670e6b0a96c40",
+      "targeted_fix_contract": "paper-doll-targeted-fix.json"
     },
     {
       "path": "assets/wardrobe/faces/male_asian_head.png",
       "before_sha256": "d9eb9e5445d22a2559f136acf8ed47c088dbb3b386c8699c57ab2e2ccad3c30b",
-      "sha256": "70b925229ed4598e0ed972b1f1d5903c1174b5d683d4bd1330b131156a860bac",
+      "sha256": "1043b5b254913364b44925acdc85b47d17e33cff1ac10240ee19af8522f152d7",
       "size": [
         941,
         1672
@@ -208,12 +226,15 @@
         515,
         205
       ],
-      "face_rgb_sha256": "bd96240926ab123568282df44f906fb9325a3556de48c5c348fd8c4246ed90f1"
+      "face_rgb_sha256": "49a20163717f407cf69808d636fd5f47a63f40dd39858070414cdce7e8cfbcfa",
+      "pre_targeted_fix_sha256": "70b925229ed4598e0ed972b1f1d5903c1174b5d683d4bd1330b131156a860bac",
+      "pre_targeted_fix_face_rgb_sha256": "bd96240926ab123568282df44f906fb9325a3556de48c5c348fd8c4246ed90f1",
+      "targeted_fix_contract": "paper-doll-targeted-fix.json"
     },
     {
       "path": "assets/wardrobe/faces/male_elder_head.png",
       "before_sha256": "ac9ec1cabdd02c1b5f5e67b47d7be4dc32988a0bfc5ff1ac29a6ec6e5ed6c50b",
-      "sha256": "c870f32335781ebae93558eb8ed27dd10435d611a3b6d6542e7a5996eebd7c65",
+      "sha256": "f6e3003cce525198d3a5ff4539d20351042e378862939a4429fba251dc2edd1c",
       "size": [
         941,
         1672
@@ -231,12 +252,15 @@
         515,
         205
       ],
-      "face_rgb_sha256": "25a1efe40ec85749198aaeff45b1a89c168734cd8ddd06c60ee95fd9225a18cd"
+      "face_rgb_sha256": "25a1efe40ec85749198aaeff45b1a89c168734cd8ddd06c60ee95fd9225a18cd",
+      "pre_targeted_fix_sha256": "c870f32335781ebae93558eb8ed27dd10435d611a3b6d6542e7a5996eebd7c65",
+      "pre_targeted_fix_face_rgb_sha256": "25a1efe40ec85749198aaeff45b1a89c168734cd8ddd06c60ee95fd9225a18cd",
+      "targeted_fix_contract": "paper-doll-targeted-fix.json"
     },
     {
       "path": "assets/wardrobe/faces/male_exhausted_head.png",
       "before_sha256": "fa13f69a7c23cdb4b025af0d397eaab172706b4ff647071616e8e294e98285ad",
-      "sha256": "82576dc07da0d86d6ec6b95d29696f108c6b2b2e2e371337553a8ab75577fabe",
+      "sha256": "5683706e6b232e08c45f8c290a642ac2791890141b25d4f7d1571c5687307f34",
       "size": [
         941,
         1672
@@ -254,12 +278,15 @@
         515,
         205
       ],
-      "face_rgb_sha256": "379b0d92a8a04377b9c7c4a3273f657e643a67e03b4306246ac45bdea3bba8e1"
+      "face_rgb_sha256": "379b0d92a8a04377b9c7c4a3273f657e643a67e03b4306246ac45bdea3bba8e1",
+      "pre_targeted_fix_sha256": "82576dc07da0d86d6ec6b95d29696f108c6b2b2e2e371337553a8ab75577fabe",
+      "pre_targeted_fix_face_rgb_sha256": "379b0d92a8a04377b9c7c4a3273f657e643a67e03b4306246ac45bdea3bba8e1",
+      "targeted_fix_contract": "paper-doll-targeted-fix.json"
     },
     {
       "path": "assets/wardrobe/faces/male_young_head.png",
       "before_sha256": "fb485d56ac9480ea96aed1c3d4820613269c6a195e8f3af99ef4e884005cfacf",
-      "sha256": "cfcefadaed898cd60fa25c1aba161294a321ce3dcfa013f2ac7331acc9a22d1b",
+      "sha256": "02729493aaecad136538e03e4c56eddc63bcb1ecb0064ffbe3ed83bb4a663fdc",
       "size": [
         941,
         1672
@@ -277,7 +304,10 @@
         515,
         205
       ],
-      "face_rgb_sha256": "0da8995eb397392e50fe6b422693c5ca814e8d95ae8f8b782fbcee1fa86a37dd"
+      "face_rgb_sha256": "0da8995eb397392e50fe6b422693c5ca814e8d95ae8f8b782fbcee1fa86a37dd",
+      "pre_targeted_fix_sha256": "cfcefadaed898cd60fa25c1aba161294a321ce3dcfa013f2ac7331acc9a22d1b",
+      "pre_targeted_fix_face_rgb_sha256": "0da8995eb397392e50fe6b422693c5ca814e8d95ae8f8b782fbcee1fa86a37dd",
+      "targeted_fix_contract": "paper-doll-targeted-fix.json"
     },
     {
       "path": "assets/wardrobe/faces/masks/female_alternative_body.png",
@@ -314,7 +344,7 @@
     {
       "path": "assets/wardrobe/faces/masks/female_exhausted_body.png",
       "before_sha256": "110a9598d4c520e59453182ed3a330dc39afa44661883f65ba1b11576e355be3",
-      "sha256": "9b96cff8ea1e77710fe8c847a8317f7631529ea33e703a4846d84e11389cfc72",
+      "sha256": "034b704365f6f10deebc3678efcc32538a134080942add7ce9c7b2a4e8cb6f6b",
       "size": [
         941,
         1672
@@ -325,7 +355,9 @@
         941,
         1672
       ],
-      "before_area128": 1311010
+      "before_area128": 1311010,
+      "pre_targeted_fix_sha256": "9b96cff8ea1e77710fe8c847a8317f7631529ea33e703a4846d84e11389cfc72",
+      "targeted_fix_contract": "paper-doll-targeted-fix.json"
     },
     {
       "path": "assets/wardrobe/faces/masks/female_young_body.png",
@@ -554,7 +586,7 @@
     {
       "path": "assets/wardrobe/hair/male_medium_shoulder_length.png",
       "before_sha256": "a443063d62d4cbd01156c6358032c71d6610ffc6a863648e8e57c3419134429b",
-      "sha256": "88350a308f9bcfd2f6c5046e535852e25db13078bba3a17c86cb6a5624fb5138",
+      "sha256": "aa3b097acfb985f0ef91fe29101c64df94374916c67192c3a99cd22c46a866be",
       "size": [
         1254,
         1254
@@ -566,13 +598,17 @@
         1193
       ],
       "before_area128": 444624,
-      "protected_alpha17_sha256": "7aa4614c9dd506b4faec378d045f28d4c51983fa99278f1e45a73889b334453f",
-      "protected_opaque_rgb_sha256": "986bdee3eee19b4af8b14b0b4fe303bac53b488056fbeddd81f1e9d80c876373"
+      "protected_alpha17_sha256": "9488aa25e50176b7fdf1dcc0d05ade5488240ea377b3516ee16f4bf6763c5687",
+      "protected_opaque_rgb_sha256": "2dbf282daf008637442c9f1f4f5fc092068a90c41d7bded4f05e117a6f29ce28",
+      "pre_targeted_fix_sha256": "88350a308f9bcfd2f6c5046e535852e25db13078bba3a17c86cb6a5624fb5138",
+      "pre_targeted_fix_protected_alpha17_sha256": "7aa4614c9dd506b4faec378d045f28d4c51983fa99278f1e45a73889b334453f",
+      "pre_targeted_fix_protected_opaque_rgb_sha256": "986bdee3eee19b4af8b14b0b4fe303bac53b488056fbeddd81f1e9d80c876373",
+      "targeted_fix_contract": "paper-doll-targeted-fix.json"
     },
     {
       "path": "assets/wardrobe/hair/male_messy_hair.png",
       "before_sha256": "b45cbd388fc9d2138c2872ad9dff46daea443ee143ff2aa0d5f8a64d7171b5f9",
-      "sha256": "df4391878257808f1da8c25e7f4250f1146e24b5eb04c2bce6b00453459c3e30",
+      "sha256": "4e890f4bbd3523f1a84bcdcfd263bdfe230a1fc37799432fc648ab96f6a99169",
       "size": [
         1122,
         1402
@@ -584,8 +620,12 @@
         1150
       ],
       "before_area128": 381234,
-      "protected_alpha17_sha256": "f454c132c1e4dc0ecc79d18dc2686444f747a3f04bee96700179df3387abe4b1",
-      "protected_opaque_rgb_sha256": "6821d6c8a51784369f551fbd35afa17893088ec978cb5550b5d7a1b4daf1b019"
+      "protected_alpha17_sha256": "cf505f9b116e869064d4fdc35aed737dce493851d2e59e5e141294481ad8410a",
+      "protected_opaque_rgb_sha256": "03ccf94df8018e0a94c31de2955a94da92b85ee367c0b76fa69db152c619058e",
+      "pre_targeted_fix_sha256": "df4391878257808f1da8c25e7f4250f1146e24b5eb04c2bce6b00453459c3e30",
+      "pre_targeted_fix_protected_alpha17_sha256": "f454c132c1e4dc0ecc79d18dc2686444f747a3f04bee96700179df3387abe4b1",
+      "pre_targeted_fix_protected_opaque_rgb_sha256": "6821d6c8a51784369f551fbd35afa17893088ec978cb5550b5d7a1b4daf1b019",
+      "targeted_fix_contract": "paper-doll-targeted-fix.json"
     },
     {
       "path": "assets/wardrobe/hair/unisex_bob_bangs.png",
@@ -608,7 +648,7 @@
     {
       "path": "base_female.png",
       "before_sha256": "c6b42d77f7c0ca1f4e9d06d31d05766e0c00c3b78d8247f684973dc0ff520bd1",
-      "sha256": "bb5010035527967e880cf75bb9e49b25fc5e6143cc6cfdc5ac9b97bfda963bed",
+      "sha256": "e76e72bea1d800fd50e65ed45f93ba8d70e79c04947a3eb4a4ffb43b9a1d8f68",
       "size": [
         941,
         1672
@@ -626,7 +666,10 @@
         515,
         205
       ],
-      "face_rgb_sha256": "2e36467eef32f40942923e3f351486e3b27d3acad6798dcdfb6113113484fdfe"
+      "face_rgb_sha256": "2e36467eef32f40942923e3f351486e3b27d3acad6798dcdfb6113113484fdfe",
+      "pre_targeted_fix_sha256": "bb5010035527967e880cf75bb9e49b25fc5e6143cc6cfdc5ac9b97bfda963bed",
+      "pre_targeted_fix_face_rgb_sha256": "2e36467eef32f40942923e3f351486e3b27d3acad6798dcdfb6113113484fdfe",
+      "targeted_fix_contract": "paper-doll-targeted-fix.json"
     },
     {
       "path": "base_male.png",

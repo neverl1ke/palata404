@@ -3,8 +3,8 @@
   "archiveSha256": "705e30b925a919beaaf246f499b614ddd1b42de0991d4e38efa5fb65c0c7198e",
   "files": {
     "male_medium_shoulder_length.png": {
-      "blob": "98ee161c8e3347534c14dc75198905b58313fa10",
-      "bytes": 1219208,
+      "blob": "96911fda1452f24f118b18066774ee3bf6fb4033",
+      "bytes": 1197967,
       "size": [
         1254,
         1254
@@ -13,14 +13,15 @@
         0,
         255
       ],
-      "transparent": 1059041,
+      "transparent": 1068692,
       "bbox": [
         93,
         46,
         1138,
         1196
       ],
-      "source_blob": "b7eb30d743eece605aeee81ef283122058576c50"
+      "source_blob": "b7eb30d743eece605aeee81ef283122058576c50",
+      "pre_targeted_fix_blob": "98ee161c8e3347534c14dc75198905b58313fa10"
     },
     "female_medium_shoulder_length.png": {
       "blob": "6e4a17a7b33bfa1fc48fb916d94a432399f086fc",

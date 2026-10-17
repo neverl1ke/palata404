@@ -83,12 +83,12 @@
       "source_blob": "bd2fdcdc9144ca56bd5505ca52b9cbf32e79c96c"
     },
     "male_messy_hair.png": {
-      "blob": "7e8a627aab6653fb14dc8171d612c606f1853744",
+      "blob": "b02628ae348c853d9c47c79e7f6e0747bf8966c3",
       "size": [
         1122,
         1402
       ],
-      "bytes": 1015942,
+      "bytes": 946006,
       "alpha": [
         0,
         255
@@ -97,10 +97,11 @@
         41,
         252,
         1110,
-        1154
+        997
       ],
-      "transparent": 1133452,
-      "source_blob": "fe4c634939038874feb64a6ae8a381885ba9c616"
+      "transparent": 1162096,
+      "source_blob": "fe4c634939038874feb64a6ae8a381885ba9c616",
+      "pre_targeted_fix_blob": "7e8a627aab6653fb14dc8171d612c606f1853744"
     },
     "female_messy_hair.png": {
       "blob": "c277bb50a16b2c4ef819e020419d9a3a5844d28d",

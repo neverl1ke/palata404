@@ -14,7 +14,7 @@ audit=module('png_audit','tools/audit-paper-doll-png.py')
 def digest(b):return hashlib.sha256(b).hexdigest()
 
 class AuditAssetTests(unittest.TestCase):
- def test_hair_preserves_every_alpha_above_16_and_opaque_strand_texture(self):
+ def test_hair_preserves_approved_strands_and_local_repair_contracts(self):
   contracts=json.loads((ROOT/'tests/fixtures/paper-doll-audit.json').read_text())
   for e in contracts['files']:
    if 'protected_alpha17_sha256' not in e:continue

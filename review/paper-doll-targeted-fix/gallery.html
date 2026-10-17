@@ -1,0 +1,248 @@
+<!doctype html><html lang="uk"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Палата 404 — цільовий фікс Paper Doll</title><style>body{max-width:1400px;margin:auto;padding:20px;background:#111820;color:#ece8df;font:16px/1.5 system-ui}a{color:#c3d9ee}img{max-width:100%;height:auto}summary{cursor:pointer;padding:12px;background:#29313b}figure{margin:10px 0 25px}.pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}@media(max-width:650px){.pair{grid-template-columns:1fr}}</style><h1>Палата 404 — цільовий фікс після аудиту</h1><p><a href="https://github.com/neverl1ke/palata404/blob/main/review/paper-doll-targeted-fix/README.md">Повний звіт українською</a> · <a href="../../index.html">Гра</a></p><p>ДО: main 8bcf183. ПІСЛЯ: цей фікс. Справжні знімки index.html у Chromium. Однакові камери та масштаб для обох фаз; білий, сірий, чорний, зелений фони. Ретушований портрет показано тільки через фактичне накладання в грі.</p>
+<figure><figcaption>Чоловіча азійська голова: масштаб і край</figcaption><a href="male-asian-head-before-after.png"><img loading="lazy" src="male-asian-head-before-after.png" alt="Чоловіча азійська голова: масштаб і край"></a></figure>
+<figure><figcaption>Чоловіча азійська голова: шия</figcaption><a href="male-asian-neck-before-after.png"><img loading="lazy" src="male-asian-neck-before-after.png" alt="Чоловіча азійська голова: шия"></a></figure>
+<figure><figcaption>Жіноча альтернативна: лівий край вуха та шиї ×4</figcaption><a href="female-alternative-ear-left-before-after.png"><img loading="lazy" src="female-alternative-ear-left-before-after.png" alt="Жіноча альтернативна: лівий край вуха та шиї ×4"></a></figure>
+<figure><figcaption>Жіноча альтернативна: правий край вуха та шиї ×4</figcaption><a href="female-alternative-ear-right-before-after.png"><img loading="lazy" src="female-alternative-ear-right-before-after.png" alt="Жіноча альтернативна: правий край вуха та шиї ×4"></a></figure>
+<figure><figcaption>Жіноча exhausted: голова</figcaption><a href="female-exhausted-head-before-after.png"><img loading="lazy" src="female-exhausted-head-before-after.png" alt="Жіноча exhausted: голова"></a></figure>
+<figure><figcaption>Жіноча exhausted: стик шиї</figcaption><a href="female-exhausted-neck-before-after.png"><img loading="lazy" src="female-exhausted-neck-before-after.png" alt="Жіноча exhausted: стик шиї"></a></figure>
+<figure><figcaption>Жіноче тіло: тон внутрішніх стегон</figcaption><a href="female-inner-thighs-before-after.png"><img loading="lazy" src="female-inner-thighs-before-after.png" alt="Жіноче тіло: тон внутрішніх стегон"></a></figure>
+<figure><figcaption>Чоловіче альтернативне: тон і мальована ретуш</figcaption><a href="male-alternative-head-before-after.png"><img loading="lazy" src="male-alternative-head-before-after.png" alt="Чоловіче альтернативне: тон і мальована ретуш"></a></figure>
+<figure><figcaption>Чоловіча messy: вуха</figcaption><a href="male-messy-before-after.png"><img loading="lazy" src="male-messy-before-after.png" alt="Чоловіча messy: вуха"></a></figure>
+<figure><figcaption>Чоловіча shoulder-length: передні та задні пасма</figcaption><a href="male-shoulder-before-after.png"><img loading="lazy" src="male-shoulder-before-after.png" alt="Чоловіча shoulder-length: передні та задні пасма"></a></figure>
+<figure><figcaption>Жіноча альтернативна: легкий тон і очищений край</figcaption><a href="female-alternative-head-before-after.png"><img loading="lazy" src="female-alternative-head-before-after.png" alt="Жіноча альтернативна: легкий тон і очищений край"></a></figure>
+<figure><figcaption>Жіноча альтернативна: шия</figcaption><a href="female-alternative-neck-before-after.png"><img loading="lazy" src="female-alternative-neck-before-after.png" alt="Жіноча альтернативна: шия"></a></figure>
+<h2>Усі 90 комбінацій</h2>
+<figure><figcaption>male · original · усі обличчя та зачіски</figcaption><a href="matrix-male-original.jpg"><img loading="lazy" src="matrix-male-original.jpg" alt="male · original · усі обличчя та зачіски"></a></figure>
+<figure><figcaption>male · white · усі обличчя та зачіски</figcaption><a href="matrix-male-white.jpg"><img loading="lazy" src="matrix-male-white.jpg" alt="male · white · усі обличчя та зачіски"></a></figure>
+<figure><figcaption>female · original · усі обличчя та зачіски</figcaption><a href="matrix-female-original.jpg"><img loading="lazy" src="matrix-female-original.jpg" alt="female · original · усі обличчя та зачіски"></a></figure>
+<figure><figcaption>female · white · усі обличчя та зачіски</figcaption><a href="matrix-female-white.jpg"><img loading="lazy" src="matrix-female-white.jpg" alt="female · white · усі обличчя та зачіски"></a></figure>
+<h2>Повні таблиці на чотирьох фонах</h2><p>Рядки: зачіски. Стовпці: білий, сірий, чорний, зелений.</p>
+<details><summary>male · native · original</summary><div class="pair">
+<figure><figcaption>ДО</figcaption><a href="before/male-native-original.jpg"><img loading="lazy" src="before/male-native-original.jpg" alt="ДО"></a></figure>
+<figure><figcaption>ПІСЛЯ</figcaption><a href="after/male-native-original.jpg"><img loading="lazy" src="after/male-native-original.jpg" alt="ПІСЛЯ"></a></figure>
+</div></details>
+<details><summary>male · native · white</summary><div class="pair">
+<figure><figcaption>ДО</figcaption><a href="before/male-native-white.jpg"><img loading="lazy" src="before/male-native-white.jpg" alt="ДО"></a></figure>
+<figure><figcaption>ПІСЛЯ</figcaption><a href="after/male-native-white.jpg"><img loading="lazy" src="after/male-native-white.jpg" alt="ПІСЛЯ"></a></figure>
+</div></details>
+<details><summary>male · face-asian · original</summary><div class="pair">
+<figure><figcaption>ДО</figcaption><a href="before/male-face-asian-original.jpg"><img loading="lazy" src="before/male-face-asian-original.jpg" alt="ДО"></a></figure>
+<figure><figcaption>ПІСЛЯ</figcaption><a href="after/male-face-asian-original.jpg"><img loading="lazy" src="after/male-face-asian-original.jpg" alt="ПІСЛЯ"></a></figure>
+</div></details>
+<details><summary>male · face-asian · white</summary><div class="pair">
+<figure><figcaption>ДО</figcaption><a href="before/male-face-asian-white.jpg"><img loading="lazy" src="before/male-face-asian-white.jpg" alt="ДО"></a></figure>
+<figure><figcaption>ПІСЛЯ</figcaption><a href="after/male-face-asian-white.jpg"><img loading="lazy" src="after/male-face-asian-white.jpg" alt="ПІСЛЯ"></a></figure>
+</div></details>
+<details><summary>male · face-young · original</summary><div class="pair">
+<figure><figcaption>ДО</figcaption><a href="before/male-face-young-original.jpg"><img loading="lazy" src="before/male-face-young-original.jpg" alt="ДО"></a></figure>
+<figure><figcaption>ПІСЛЯ</figcaption><a href="after/male-face-young-original.jpg"><img loading="lazy" src="after/male-face-young-original.jpg" alt="ПІСЛЯ"></a></figure>
+</div></details>
+<details><summary>male · face-young · white</summary><div class="pair">
+<figure><figcaption>ДО</figcaption><a href="before/male-face-young-white.jpg"><img loading="lazy" src="before/male-face-young-white.jpg" alt="ДО"></a></figure>
+<figure><figcaption>ПІСЛЯ</figcaption><a href="after/male-face-young-white.jpg"><img loading="lazy" src="after/male-face-young-white.jpg" alt="ПІСЛЯ"></a></figure>
+</div></details>
+<details><summary>male · face-exhausted · original</summary><div class="pair">
+<figure><figcaption>ДО</figcaption><a href="before/male-face-exhausted-original.jpg"><img loading="lazy" src="before/male-face-exhausted-original.jpg" alt="ДО"></a></figure>
+<figure><figcaption>ПІСЛЯ</figcaption><a href="after/male-face-exhausted-original.jpg"><img loading="lazy" src="after/male-face-exhausted-original.jpg" alt="ПІСЛЯ"></a></figure>
+</div></details>
+<details><summary>male · face-exhausted · white</summary><div class="pair">
+<figure><figcaption>ДО</figcaption><a href="before/male-face-exhausted-white.jpg"><img loading="lazy" src="before/male-face-exhausted-white.jpg" alt="ДО"></a></figure>
+<figure><figcaption>ПІСЛЯ</figcaption><a href="after/male-face-exhausted-white.jpg"><img loading="lazy" src="after/male-face-exhausted-white.jpg" alt="ПІСЛЯ"></a></figure>
+</div></details>
+<details><summary>male · face-elder · original</summary><div class="pair">
+<figure><figcaption>ДО</figcaption><a href="before/male-face-elder-original.jpg"><img loading="lazy" src="before/male-face-elder-original.jpg" alt="ДО"></a></figure>
+<figure><figcaption>ПІСЛЯ</figcaption><a href="after/male-face-elder-original.jpg"><img loading="lazy" src="after/male-face-elder-original.jpg" alt="ПІСЛЯ"></a></figure>
+</div></details>
+<details><summary>male · face-elder · white</summary><div class="pair">
+<figure><figcaption>ДО</figcaption><a href="before/male-face-elder-white.jpg"><img loading="lazy" src="before/male-face-elder-white.jpg" alt="ДО"></a></figure>
+<figure><figcaption>ПІСЛЯ</figcaption><a href="after/male-face-elder-white.jpg"><img loading="lazy" src="after/male-face-elder-white.jpg" alt="ПІСЛЯ"></a></figure>
+</div></details>
+<details><summary>male · face-alternative · original</summary><div class="pair">
+<figure><figcaption>ДО</figcaption><a href="before/male-face-alternative-original.jpg"><img loading="lazy" src="before/male-face-alternative-original.jpg" alt="ДО"></a></figure>
+<figure><figcaption>ПІСЛЯ</figcaption><a href="after/male-face-alternative-original.jpg"><img loading="lazy" src="after/male-face-alternative-original.jpg" alt="ПІСЛЯ"></a></figure>
+</div></details>
+<details><summary>male · face-alternative · white</summary><div class="pair">
+<figure><figcaption>ДО</figcaption><a href="before/male-face-alternative-white.jpg"><img loading="lazy" src="before/male-face-alternative-white.jpg" alt="ДО"></a></figure>
+<figure><figcaption>ПІСЛЯ</figcaption><a href="after/male-face-alternative-white.jpg"><img loading="lazy" src="after/male-face-alternative-white.jpg" alt="ПІСЛЯ"></a></figure>
+</div></details>
+<details><summary>female · native · original</summary><div class="pair">
+<figure><figcaption>ДО</figcaption><a href="before/female-native-original.jpg"><img loading="lazy" src="before/female-native-original.jpg" alt="ДО"></a></figure>
+<figure><figcaption>ПІСЛЯ</figcaption><a href="after/female-native-original.jpg"><img loading="lazy" src="after/female-native-original.jpg" alt="ПІСЛЯ"></a></figure>
+</div></details>
+<details><summary>female · native · white</summary><div class="pair">
+<figure><figcaption>ДО</figcaption><a href="before/female-native-white.jpg"><img loading="lazy" src="before/female-native-white.jpg" alt="ДО"></a></figure>
+<figure><figcaption>ПІСЛЯ</figcaption><a href="after/female-native-white.jpg"><img loading="lazy" src="after/female-native-white.jpg" alt="ПІСЛЯ"></a></figure>
+</div></details>
+<details><summary>female · face-asian · original</summary><div class="pair">
+<figure><figcaption>ДО</figcaption><a href="before/female-face-asian-original.jpg"><img loading="lazy" src="before/female-face-asian-original.jpg" alt="ДО"></a></figure>
+<figure><figcaption>ПІСЛЯ</figcaption><a href="after/female-face-asian-original.jpg"><img loading="lazy" src="after/female-face-asian-original.jpg" alt="ПІСЛЯ"></a></figure>
+</div></details>
+<details><summary>female · face-asian · white</summary><div class="pair">
+<figure><figcaption>ДО</figcaption><a href="before/female-face-asian-white.jpg"><img loading="lazy" src="before/female-face-asian-white.jpg" alt="ДО"></a></figure>
+<figure><figcaption>ПІСЛЯ</figcaption><a href="after/female-face-asian-white.jpg"><img loading="lazy" src="after/female-face-asian-white.jpg" alt="ПІСЛЯ"></a></figure>
+</div></details>
+<details><summary>female · face-young · original</summary><div class="pair">
+<figure><figcaption>ДО</figcaption><a href="before/female-face-young-original.jpg"><img loading="lazy" src="before/female-face-young-original.jpg" alt="ДО"></a></figure>
+<figure><figcaption>ПІСЛЯ</figcaption><a href="after/female-face-young-original.jpg"><img loading="lazy" src="after/female-face-young-original.jpg" alt="ПІСЛЯ"></a></figure>
+</div></details>
+<details><summary>female · face-young · white</summary><div class="pair">
+<figure><figcaption>ДО</figcaption><a href="before/female-face-young-white.jpg"><img loading="lazy" src="before/female-face-young-white.jpg" alt="ДО"></a></figure>
+<figure><figcaption>ПІСЛЯ</figcaption><a href="after/female-face-young-white.jpg"><img loading="lazy" src="after/female-face-young-white.jpg" alt="ПІСЛЯ"></a></figure>
+</div></details>
+<details><summary>female · face-exhausted · original</summary><div class="pair">
+<figure><figcaption>ДО</figcaption><a href="before/female-face-exhausted-original.jpg"><img loading="lazy" src="before/female-face-exhausted-original.jpg" alt="ДО"></a></figure>
+<figure><figcaption>ПІСЛЯ</figcaption><a href="after/female-face-exhausted-original.jpg"><img loading="lazy" src="after/female-face-exhausted-original.jpg" alt="ПІСЛЯ"></a></figure>
+</div></details>
+<details><summary>female · face-exhausted · white</summary><div class="pair">
+<figure><figcaption>ДО</figcaption><a href="before/female-face-exhausted-white.jpg"><img loading="lazy" src="before/female-face-exhausted-white.jpg" alt="ДО"></a></figure>
+<figure><figcaption>ПІСЛЯ</figcaption><a href="after/female-face-exhausted-white.jpg"><img loading="lazy" src="after/female-face-exhausted-white.jpg" alt="ПІСЛЯ"></a></figure>
+</div></details>
+<details><summary>female · face-elder · original</summary><div class="pair">
+<figure><figcaption>ДО</figcaption><a href="before/female-face-elder-original.jpg"><img loading="lazy" src="before/female-face-elder-original.jpg" alt="ДО"></a></figure>
+<figure><figcaption>ПІСЛЯ</figcaption><a href="after/female-face-elder-original.jpg"><img loading="lazy" src="after/female-face-elder-original.jpg" alt="ПІСЛЯ"></a></figure>
+</div></details>
+<details><summary>female · face-elder · white</summary><div class="pair">
+<figure><figcaption>ДО</figcaption><a href="before/female-face-elder-white.jpg"><img loading="lazy" src="before/female-face-elder-white.jpg" alt="ДО"></a></figure>
+<figure><figcaption>ПІСЛЯ</figcaption><a href="after/female-face-elder-white.jpg"><img loading="lazy" src="after/female-face-elder-white.jpg" alt="ПІСЛЯ"></a></figure>
+</div></details>
+<details><summary>female · face-alternative · original</summary><div class="pair">
+<figure><figcaption>ДО</figcaption><a href="before/female-face-alternative-original.jpg"><img loading="lazy" src="before/female-face-alternative-original.jpg" alt="ДО"></a></figure>
+<figure><figcaption>ПІСЛЯ</figcaption><a href="after/female-face-alternative-original.jpg"><img loading="lazy" src="after/female-face-alternative-original.jpg" alt="ПІСЛЯ"></a></figure>
+</div></details>
+<details><summary>female · face-alternative · white</summary><div class="pair">
+<figure><figcaption>ДО</figcaption><a href="before/female-face-alternative-white.jpg"><img loading="lazy" src="before/female-face-alternative-white.jpg" alt="ДО"></a></figure>
+<figure><figcaption>ПІСЛЯ</figcaption><a href="after/female-face-alternative-white.jpg"><img loading="lazy" src="after/female-face-alternative-white.jpg" alt="ПІСЛЯ"></a></figure>
+</div></details>
+<h2>Збільшені оригінальні PNG на чотирьох фонах</h2>
+<details><summary>female-alternative-ear-left-detail</summary><div class="pair">
+<figure><figcaption>ДО</figcaption><a href="before/female-alternative-ear-left-detail.png"><img loading="lazy" src="before/female-alternative-ear-left-detail.png" alt="ДО"></a></figure>
+<figure><figcaption>ПІСЛЯ</figcaption><a href="after/female-alternative-ear-left-detail.png"><img loading="lazy" src="after/female-alternative-ear-left-detail.png" alt="ПІСЛЯ"></a></figure>
+</div></details>
+<details><summary>female-alternative-ear-right-detail</summary><div class="pair">
+<figure><figcaption>ДО</figcaption><a href="before/female-alternative-ear-right-detail.png"><img loading="lazy" src="before/female-alternative-ear-right-detail.png" alt="ДО"></a></figure>
+<figure><figcaption>ПІСЛЯ</figcaption><a href="after/female-alternative-ear-right-detail.png"><img loading="lazy" src="after/female-alternative-ear-right-detail.png" alt="ПІСЛЯ"></a></figure>
+</div></details>
+<details><summary>female-alternative-head-detail</summary><div class="pair">
+<figure><figcaption>ДО</figcaption><a href="before/female-alternative-head-detail.png"><img loading="lazy" src="before/female-alternative-head-detail.png" alt="ДО"></a></figure>
+<figure><figcaption>ПІСЛЯ</figcaption><a href="after/female-alternative-head-detail.png"><img loading="lazy" src="after/female-alternative-head-detail.png" alt="ПІСЛЯ"></a></figure>
+</div></details>
+<details><summary>female-alternative-neck-detail</summary><div class="pair">
+<figure><figcaption>ДО</figcaption><a href="before/female-alternative-neck-detail.png"><img loading="lazy" src="before/female-alternative-neck-detail.png" alt="ДО"></a></figure>
+<figure><figcaption>ПІСЛЯ</figcaption><a href="after/female-alternative-neck-detail.png"><img loading="lazy" src="after/female-alternative-neck-detail.png" alt="ПІСЛЯ"></a></figure>
+</div></details>
+<details><summary>female-asian-neck-detail</summary><div class="pair">
+<figure><figcaption>ДО</figcaption><a href="before/female-asian-neck-detail.png"><img loading="lazy" src="before/female-asian-neck-detail.png" alt="ДО"></a></figure>
+<figure><figcaption>ПІСЛЯ</figcaption><a href="after/female-asian-neck-detail.png"><img loading="lazy" src="after/female-asian-neck-detail.png" alt="ПІСЛЯ"></a></figure>
+</div></details>
+<details><summary>female-base-feet-detail</summary><div class="pair">
+<figure><figcaption>ДО</figcaption><a href="before/female-base-feet-detail.png"><img loading="lazy" src="before/female-base-feet-detail.png" alt="ДО"></a></figure>
+<figure><figcaption>ПІСЛЯ</figcaption><a href="after/female-base-feet-detail.png"><img loading="lazy" src="after/female-base-feet-detail.png" alt="ПІСЛЯ"></a></figure>
+</div></details>
+<details><summary>female-base-hand-detail</summary><div class="pair">
+<figure><figcaption>ДО</figcaption><a href="before/female-base-hand-detail.png"><img loading="lazy" src="before/female-base-hand-detail.png" alt="ДО"></a></figure>
+<figure><figcaption>ПІСЛЯ</figcaption><a href="after/female-base-hand-detail.png"><img loading="lazy" src="after/female-base-hand-detail.png" alt="ПІСЛЯ"></a></figure>
+</div></details>
+<details><summary>female-base-head-detail</summary><div class="pair">
+<figure><figcaption>ДО</figcaption><a href="before/female-base-head-detail.png"><img loading="lazy" src="before/female-base-head-detail.png" alt="ДО"></a></figure>
+<figure><figcaption>ПІСЛЯ</figcaption><a href="after/female-base-head-detail.png"><img loading="lazy" src="after/female-base-head-detail.png" alt="ПІСЛЯ"></a></figure>
+</div></details>
+<details><summary>female-base-neck-detail</summary><div class="pair">
+<figure><figcaption>ДО</figcaption><a href="before/female-base-neck-detail.png"><img loading="lazy" src="before/female-base-neck-detail.png" alt="ДО"></a></figure>
+<figure><figcaption>ПІСЛЯ</figcaption><a href="after/female-base-neck-detail.png"><img loading="lazy" src="after/female-base-neck-detail.png" alt="ПІСЛЯ"></a></figure>
+</div></details>
+<details><summary>female-exhausted-head-detail</summary><div class="pair">
+<figure><figcaption>ДО</figcaption><a href="before/female-exhausted-head-detail.png"><img loading="lazy" src="before/female-exhausted-head-detail.png" alt="ДО"></a></figure>
+<figure><figcaption>ПІСЛЯ</figcaption><a href="after/female-exhausted-head-detail.png"><img loading="lazy" src="after/female-exhausted-head-detail.png" alt="ПІСЛЯ"></a></figure>
+</div></details>
+<details><summary>female-exhausted-neck-detail</summary><div class="pair">
+<figure><figcaption>ДО</figcaption><a href="before/female-exhausted-neck-detail.png"><img loading="lazy" src="before/female-exhausted-neck-detail.png" alt="ДО"></a></figure>
+<figure><figcaption>ПІСЛЯ</figcaption><a href="after/female-exhausted-neck-detail.png"><img loading="lazy" src="after/female-exhausted-neck-detail.png" alt="ПІСЛЯ"></a></figure>
+</div></details>
+<details><summary>female-inner-thighs-detail</summary><div class="pair">
+<figure><figcaption>ДО</figcaption><a href="before/female-inner-thighs-detail.png"><img loading="lazy" src="before/female-inner-thighs-detail.png" alt="ДО"></a></figure>
+<figure><figcaption>ПІСЛЯ</figcaption><a href="after/female-inner-thighs-detail.png"><img loading="lazy" src="after/female-inner-thighs-detail.png" alt="ПІСЛЯ"></a></figure>
+</div></details>
+<details><summary>male-alternative-head-detail</summary><div class="pair">
+<figure><figcaption>ДО</figcaption><a href="before/male-alternative-head-detail.png"><img loading="lazy" src="before/male-alternative-head-detail.png" alt="ДО"></a></figure>
+<figure><figcaption>ПІСЛЯ</figcaption><a href="after/male-alternative-head-detail.png"><img loading="lazy" src="after/male-alternative-head-detail.png" alt="ПІСЛЯ"></a></figure>
+</div></details>
+<details><summary>male-alternative-neck-detail</summary><div class="pair">
+<figure><figcaption>ДО</figcaption><a href="before/male-alternative-neck-detail.png"><img loading="lazy" src="before/male-alternative-neck-detail.png" alt="ДО"></a></figure>
+<figure><figcaption>ПІСЛЯ</figcaption><a href="after/male-alternative-neck-detail.png"><img loading="lazy" src="after/male-alternative-neck-detail.png" alt="ПІСЛЯ"></a></figure>
+</div></details>
+<details><summary>male-asian-head-detail</summary><div class="pair">
+<figure><figcaption>ДО</figcaption><a href="before/male-asian-head-detail.png"><img loading="lazy" src="before/male-asian-head-detail.png" alt="ДО"></a></figure>
+<figure><figcaption>ПІСЛЯ</figcaption><a href="after/male-asian-head-detail.png"><img loading="lazy" src="after/male-asian-head-detail.png" alt="ПІСЛЯ"></a></figure>
+</div></details>
+<details><summary>male-asian-neck-detail</summary><div class="pair">
+<figure><figcaption>ДО</figcaption><a href="before/male-asian-neck-detail.png"><img loading="lazy" src="before/male-asian-neck-detail.png" alt="ДО"></a></figure>
+<figure><figcaption>ПІСЛЯ</figcaption><a href="after/male-asian-neck-detail.png"><img loading="lazy" src="after/male-asian-neck-detail.png" alt="ПІСЛЯ"></a></figure>
+</div></details>
+<details><summary>male-base-feet-detail</summary><div class="pair">
+<figure><figcaption>ДО</figcaption><a href="before/male-base-feet-detail.png"><img loading="lazy" src="before/male-base-feet-detail.png" alt="ДО"></a></figure>
+<figure><figcaption>ПІСЛЯ</figcaption><a href="after/male-base-feet-detail.png"><img loading="lazy" src="after/male-base-feet-detail.png" alt="ПІСЛЯ"></a></figure>
+</div></details>
+<details><summary>male-base-hand-detail</summary><div class="pair">
+<figure><figcaption>ДО</figcaption><a href="before/male-base-hand-detail.png"><img loading="lazy" src="before/male-base-hand-detail.png" alt="ДО"></a></figure>
+<figure><figcaption>ПІСЛЯ</figcaption><a href="after/male-base-hand-detail.png"><img loading="lazy" src="after/male-base-hand-detail.png" alt="ПІСЛЯ"></a></figure>
+</div></details>
+<details><summary>male-base-head-detail</summary><div class="pair">
+<figure><figcaption>ДО</figcaption><a href="before/male-base-head-detail.png"><img loading="lazy" src="before/male-base-head-detail.png" alt="ДО"></a></figure>
+<figure><figcaption>ПІСЛЯ</figcaption><a href="after/male-base-head-detail.png"><img loading="lazy" src="after/male-base-head-detail.png" alt="ПІСЛЯ"></a></figure>
+</div></details>
+<details><summary>male-base-neck-detail</summary><div class="pair">
+<figure><figcaption>ДО</figcaption><a href="before/male-base-neck-detail.png"><img loading="lazy" src="before/male-base-neck-detail.png" alt="ДО"></a></figure>
+<figure><figcaption>ПІСЛЯ</figcaption><a href="after/male-base-neck-detail.png"><img loading="lazy" src="after/male-base-neck-detail.png" alt="ПІСЛЯ"></a></figure>
+</div></details>
+<details><summary>male-messy-detail</summary><div class="pair">
+<figure><figcaption>ДО</figcaption><a href="before/male-messy-detail.png"><img loading="lazy" src="before/male-messy-detail.png" alt="ДО"></a></figure>
+<figure><figcaption>ПІСЛЯ</figcaption><a href="after/male-messy-detail.png"><img loading="lazy" src="after/male-messy-detail.png" alt="ПІСЛЯ"></a></figure>
+</div></details>
+<details><summary>male-shoulder-detail</summary><div class="pair">
+<figure><figcaption>ДО</figcaption><a href="before/male-shoulder-detail.png"><img loading="lazy" src="before/male-shoulder-detail.png" alt="ДО"></a></figure>
+<figure><figcaption>ПІСЛЯ</figcaption><a href="after/male-shoulder-detail.png"><img loading="lazy" src="after/male-shoulder-detail.png" alt="ПІСЛЯ"></a></figure>
+</div></details>
+<h2>Гардероб і кольори</h2>
+<details><summary>female-target-palette-black</summary>
+<figure><figcaption>female-target-palette-black</figcaption><a href="after/female-target-palette-black.jpg"><img loading="lazy" src="after/female-target-palette-black.jpg" alt="female-target-palette-black"></a></figure>
+</details>
+<details><summary>female-target-palette-original</summary>
+<figure><figcaption>female-target-palette-original</figcaption><a href="after/female-target-palette-original.jpg"><img loading="lazy" src="after/female-target-palette-original.jpg" alt="female-target-palette-original"></a></figure>
+</details>
+<details><summary>female-target-palette-white</summary>
+<figure><figcaption>female-target-palette-white</figcaption><a href="after/female-target-palette-white.jpg"><img loading="lazy" src="after/female-target-palette-white.jpg" alt="female-target-palette-white"></a></figure>
+</details>
+<details><summary>male-target-palette-black</summary>
+<figure><figcaption>male-target-palette-black</figcaption><a href="after/male-target-palette-black.jpg"><img loading="lazy" src="after/male-target-palette-black.jpg" alt="male-target-palette-black"></a></figure>
+</details>
+<details><summary>male-target-palette-blue</summary>
+<figure><figcaption>male-target-palette-blue</figcaption><a href="after/male-target-palette-blue.jpg"><img loading="lazy" src="after/male-target-palette-blue.jpg" alt="male-target-palette-blue"></a></figure>
+</details>
+<details><summary>male-target-palette-original</summary>
+<figure><figcaption>male-target-palette-original</figcaption><a href="after/male-target-palette-original.jpg"><img loading="lazy" src="after/male-target-palette-original.jpg" alt="male-target-palette-original"></a></figure>
+</details>
+<details><summary>male-target-palette-red</summary>
+<figure><figcaption>male-target-palette-red</figcaption><a href="after/male-target-palette-red.jpg"><img loading="lazy" src="after/male-target-palette-red.jpg" alt="male-target-palette-red"></a></figure>
+</details>
+<details><summary>male-target-palette-white</summary>
+<figure><figcaption>male-target-palette-white</figcaption><a href="after/male-target-palette-white.jpg"><img loading="lazy" src="after/male-target-palette-white.jpg" alt="male-target-palette-white"></a></figure>
+</details>
+<details><summary>320 px</summary>
+<figure><figcaption>320 px · поточний гардероб</figcaption><a href="after/wardrobe-320-hair.jpg"><img loading="lazy" src="after/wardrobe-320-hair.jpg" alt="320 px · поточний гардероб"></a></figure>
+</details>
+<details><summary>360 px</summary>
+<figure><figcaption>360 px · поточний гардероб</figcaption><a href="after/wardrobe-360-hair.jpg"><img loading="lazy" src="after/wardrobe-360-hair.jpg" alt="360 px · поточний гардероб"></a></figure>
+</details>
+<details><summary>390 px</summary>
+<figure><figcaption>390 px · поточний гардероб</figcaption><a href="after/wardrobe-390-hair.jpg"><img loading="lazy" src="after/wardrobe-390-hair.jpg" alt="390 px · поточний гардероб"></a></figure>
+</details>
+<details><summary>430 px</summary>
+<figure><figcaption>430 px · поточний гардероб</figcaption><a href="after/wardrobe-430-hair.jpg"><img loading="lazy" src="after/wardrobe-430-hair.jpg" alt="430 px · поточний гардероб"></a></figure>
+</details>
+<details><summary>768 px</summary>
+<figure><figcaption>768 px · поточний гардероб</figcaption><a href="after/wardrobe-768-hair.jpg"><img loading="lazy" src="after/wardrobe-768-hair.jpg" alt="768 px · поточний гардероб"></a></figure>
+</details>
+<details><summary>1440 px</summary>
+<figure><figcaption>1440 px · поточний гардероб</figcaption><a href="after/wardrobe-1440-hair.jpg"><img loading="lazy" src="after/wardrobe-1440-hair.jpg" alt="1440 px · поточний гардероб"></a></figure>
+</details>
+<p>Фізичний телефон недоступний; перевірки виконано в Chromium. Природні тіні під щелепою, складки вух і проміжки між пасмами навмисно не залито.</p></html>

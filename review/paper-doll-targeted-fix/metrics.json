@@ -1,0 +1,99 @@
+{
+  "skin_tone": {
+    "male": {
+      "before_lab8": [
+        169.0,
+        17.0,
+        20.0
+      ],
+      "after_lab8": [
+        148.0,
+        14.0,
+        18.0
+      ],
+      "body_reference_lab8": [
+        144.0,
+        14.0,
+        17.0
+      ]
+    },
+    "female": {
+      "before_lab8": [
+        155.0,
+        15.0,
+        19.0
+      ],
+      "after_lab8": [
+        153.0,
+        14.0,
+        18.0
+      ],
+      "body_reference_lab8": [
+        148.0,
+        14.0,
+        18.0
+      ]
+    }
+  },
+  "feature_correlations": [
+    {
+      "box": [
+        425,
+        130,
+        458,
+        148
+      ],
+      "ncc": 0.9902238801570353
+    },
+    {
+      "box": [
+        488,
+        128,
+        521,
+        146
+      ],
+      "ncc": 0.9851834071150245
+    },
+    {
+      "box": [
+        463,
+        163,
+        487,
+        187
+      ],
+      "ncc": 0.9936544266162262
+    },
+    {
+      "box": [
+        455,
+        199,
+        495,
+        211
+      ],
+      "ncc": 0.9900458465410029
+    }
+  ],
+  "male_asian": {
+    "bbox128_width_before": 164,
+    "bbox128_width_after": 170,
+    "width_ratio": 1.0365853658536586,
+    "upper_scale": 1.035,
+    "anchor": [
+      474,
+      30
+    ],
+    "registered_frame": [
+      941,
+      1672
+    ]
+  },
+  "thighs": {
+    "rgb_changed_pixels": 9613,
+    "max_rgb_delta": [
+      14,
+      10,
+      7
+    ],
+    "alpha_equal": true
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "crop": [
+    365,
+    20,
+    585,
+    285
+  ],
+  "scale": 1.019260346366255,
+  "translation": [
+    0.9635921518742193,
+    2.6344457616091472
+  ],
+  "rotation_degrees": -0.044166910385532214,
+  "normalized_structure_error": 0.08163923379425178,
+  "source_commit": "8bcf1830429008113c145e15c016a9bc709e35a1",
+  "target": "assets/wardrobe/faces/male_alternative_head.png",
+  "style_reference": "assets/wardrobe/faces/male_young_head.png",
+  "draft": "male-alternative-repaint-draft.png",
+  "runtime_geometry": "Original full-frame alpha and facial-feature emphasis; independent edge cleanup only"
+}

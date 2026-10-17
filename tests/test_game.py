@@ -150,7 +150,7 @@ class IconAssetTests(unittest.TestCase):
         expected = {
             'assets/wardrobe/clothing/patient/female_neckline_skin_underlay.png': '95090053becfe8b001a47e3c2f1bda8f0d5321cb',
             'base_male.png': '8f52ba52a23ea2e07569b7f00d7332b0626848da',
-            'base_female.png': '14ed1a52e90e8ae651e13ba695a4eaabe3851d55',
+            'base_female.png': 'ec80fd107b3111688381c158bad813c4dc949c42',
         }
         for source, sha in expected.items():
             with self.subTest(source=source):
@@ -343,7 +343,7 @@ class GameTests(unittest.TestCase):
         self.page.locator('#layer-face').wait_for(state='visible')
         self.assertTrue(self.page.locator('#layer-face').is_visible())
         self.page.reload(wait_until='networkidle')
-        self.assertEqual(self.page.locator('#layer-body').get_attribute('src'), 'base_female.png?v=bb501003')
+        self.assertEqual(self.page.locator('#layer-body').get_attribute('src'), 'base_female.png?v=e76e72be')
         self.assertEqual(self.page.locator('#layer-face').get_attribute('src'), 'face_3.png')
 
     def test_paper_doll_ui_keeps_two_loadouts_and_shared_appearance_across_reload(self):
@@ -387,7 +387,7 @@ class GameTests(unittest.TestCase):
         self.assertEqual(self.page.evaluate('JSON.stringify({stats,inventory,equippedGear,gameProgress})'),before)
         self.page.reload(wait_until='networkidle')
         self.assertEqual(self.page.evaluate('JSON.stringify(paperDollState)'),state)
-        self.assertEqual(self.page.locator('#layer-body').get_attribute('src'),'base_female.png?v=bb501003')
+        self.assertEqual(self.page.locator('#layer-body').get_attribute('src'),'base_female.png?v=e76e72be')
         self.assertIsNone(self.page.locator('#layer-face').get_attribute('src'))
         self.assertEqual(self.page.locator('#paper-doll-view-label').inner_text(),'Комплект: Трип')
         self.assertEqual(self.page.evaluate('JSON.stringify({stats,inventory,equippedGear,gameProgress})'),before)
@@ -413,7 +413,7 @@ class GameTests(unittest.TestCase):
             self.assertEqual(layer.evaluate('e=>getComputedStyle(e).zIndex'), '3')
             body = self.page.locator(f'#{prefix}layer-body')
             self.assertEqual(body.get_attribute('src'),
-                'base_female.png?v=bb501003' if gender == 'female' else 'base_male.png?v=08da7a7f')
+                'base_female.png?v=e76e72be' if gender == 'female' else 'base_male.png?v=08da7a7f')
             self.assertEqual(body.evaluate('e=>[e.naturalWidth,e.naturalHeight]'), [941, 1672])
             for node in [body, layer]:
                 self.assertEqual(node.evaluate('e=>[e.style.left,e.style.top,e.style.width,e.style.height]'), ['0%', '0%', '100%', '100%'])

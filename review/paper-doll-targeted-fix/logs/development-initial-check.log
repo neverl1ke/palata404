@@ -1,0 +1,20 @@
+test_alternative_tones_move_toward_body_and_original_features_remain (tests.test_paper_doll_targeted.TargetedAssetTests.test_alternative_tones_move_toward_body_and_original_features_remain) ... ok
+test_asian_scale_is_small_registered_and_head_edges_have_narrow_antialiasing (tests.test_paper_doll_targeted.TargetedAssetTests.test_asian_scale_is_small_registered_and_head_edges_have_narrow_antialiasing) ... ok
+test_exhausted_neck_restores_base_without_holes_or_abrupt_side_jumps (tests.test_paper_doll_targeted.TargetedAssetTests.test_exhausted_neck_restores_base_without_holes_or_abrupt_side_jumps) ... FAIL
+test_male_ear_cuts_are_local_and_approved_placements_and_rear_stay (tests.test_paper_doll_targeted.TargetedAssetTests.test_male_ear_cuts_are_local_and_approved_placements_and_rear_stay) ... ok
+test_only_authorized_pixels_change_and_all_other_assets_remain_exact (tests.test_paper_doll_targeted.TargetedAssetTests.test_only_authorized_pixels_change_and_all_other_assets_remain_exact) ... ok
+test_thigh_correction_preserves_alpha_and_skin_texture (tests.test_paper_doll_targeted.TargetedAssetTests.test_thigh_correction_preserves_alpha_and_skin_texture) ... ok
+
+======================================================================
+FAIL: test_exhausted_neck_restores_base_without_holes_or_abrupt_side_jumps (tests.test_paper_doll_targeted.TargetedAssetTests.test_exhausted_neck_restores_base_without_holes_or_abrupt_side_jumps)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/palata404/tests/test_paper_doll_targeted.py", line 42, in test_exhausted_neck_restores_base_without_holes_or_abrupt_side_jumps
+    aa=np.array(result.getchannel('A'));self.assertTrue(np.all(aa[235:275,445:505]==255))
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: np.False_ is not true
+
+----------------------------------------------------------------------
+Ran 6 tests in 2.862s
+
+FAILED (failures=1)

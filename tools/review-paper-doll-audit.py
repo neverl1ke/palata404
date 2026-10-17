@@ -5,7 +5,7 @@ import argparse,json,sys
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'tests'))
 from test_game import GameTests,ROOT
-p=argparse.ArgumentParser();p.add_argument('--phase',required=True,choices=['before','after']);p.add_argument('--ui-only',action='store_true');a=p.parse_args();out=ROOT/'review/paper-doll-audit-2026-10'/a.phase;out.mkdir(parents=True,exist_ok=True)
+p=argparse.ArgumentParser();p.add_argument('--output-dir',type=Path,default=ROOT/'review/paper-doll-audit-2026-10');p.add_argument('--phase',required=True,choices=['before','after']);p.add_argument('--ui-only',action='store_true');a=p.parse_args();out=a.output_dir/a.phase;out.mkdir(parents=True,exist_ok=True)
 if a.phase=='before' and (out/'capture.json').exists():raise SystemExit('Historic before capture already exists; refusing to overwrite it')
 if a.ui_only and a.phase!='after':raise SystemExit('--ui-only is for after only')
 GameTests.setUpClass();t=GameTests();t.setUp();records=[];missing=[]
