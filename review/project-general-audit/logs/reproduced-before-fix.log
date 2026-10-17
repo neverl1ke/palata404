@@ -1,0 +1,98 @@
+✖ boss actions reject inherited property names without starting or corrupting combat (43.206658ms)
+✖ repeated multipart hair renders preserve the current front request and source (72.329396ms)
+✖ an evicted reference image failure cannot delete a newer retry promise (15.075504ms)
+✖ unchanged crown contours are reused without recomputation or a visual change (28.140241ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 0
+ℹ fail 4
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 339.901498
+
+✖ failing tests:
+
+test at tests/game-logic.test.cjs:1424:1
+✖ boss actions reject inherited property names without starting or corrupting combat (43.206658ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  true !== false
+  
+      at TestContext.<anonymous> (/workspace/palata404/tests/game-logic.test.cjs:1428:16)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/game-logic.test.cjs:1433:1
+✖ repeated multipart hair renders preserve the current front request and source (72.329396ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  3 !== 0
+  
+      at TestContext.<anonymous> (/workspace/palata404/tests/game-logic.test.cjs:1440:12)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 3,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/game-logic.test.cjs:1445:1
+✖ an evicted reference image failure cannot delete a newer retry promise (15.075504ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + undefined
+  - Promise {
+  -   <pending>,
+  -   Symbol(async_id_symbol): 760,
+  -   Symbol(trigger_async_id_symbol): 284
+  - }
+  
+      at TestContext.<anonymous> (/workspace/palata404/tests/game-logic.test.cjs:1452:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: [Promise],
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/game-logic.test.cjs:1455:1
+✖ unchanged crown contours are reused without recomputation or a visual change (28.140241ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  8 !== 0
+  
+      at TestContext.<anonymous> (/workspace/palata404/tests/game-logic.test.cjs:1459:12)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 8,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

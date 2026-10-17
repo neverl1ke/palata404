@@ -1,0 +1,115 @@
+{
+  "branches": [
+    {
+      "name": "feature/new-hairstyles-pack-02",
+      "sha": "0f2cd1adafcac048c09b5190978fbb7a480567a8",
+      "protected": false,
+      "main_only_commits": 15,
+      "branch_only_commits": 0,
+      "last_commit": "2026-10-16T09:03:14+03:00 neverl1ke Finalize approved hair pack and shift female textured hair left by one pixel",
+      "prs": [
+        {
+          "number": 2,
+          "state": "closed",
+          "merged_at": "2026-10-16T06:15:40Z",
+          "head": "feature/new-hairstyles-pack-02",
+          "sha": "0f2cd1adafcac048c09b5190978fbb7a480567a8",
+          "url": "https://github.com/neverl1ke/palata404/pull/2"
+        }
+      ],
+      "checked_out": true,
+      "workflow_dependency": false,
+      "decision": "keep-checked-out-worktree"
+    },
+    {
+      "name": "feature/paper-doll-avatar-face-hair-update",
+      "sha": "41bf1d15d92d09cec4fae9ecbe39fde028a78c3d",
+      "protected": false,
+      "main_only_commits": 6,
+      "branch_only_commits": 0,
+      "last_commit": "2026-10-17T17:17:00+03:00 neverl1ke Додати чорні аватари, нові обличчя та каре з чубчиком",
+      "prs": [],
+      "checked_out": false,
+      "workflow_dependency": false,
+      "decision": "delete-merged-after-backup"
+    },
+    {
+      "name": "fix-safe-user-text-rendering",
+      "sha": "c559a724d93e91b902d2a6234979f6899079c786",
+      "protected": false,
+      "main_only_commits": 96,
+      "branch_only_commits": 0,
+      "last_commit": "2026-10-14T07:53:54+03:00 neverl1ke Check purchase accessibility after opening the medicine shop",
+      "prs": [
+        {
+          "number": 1,
+          "state": "closed",
+          "merged_at": "2026-10-14T05:30:29Z",
+          "head": "fix-safe-user-text-rendering",
+          "sha": "c559a724d93e91b902d2a6234979f6899079c786",
+          "url": "https://github.com/neverl1ke/palata404/pull/1"
+        }
+      ],
+      "checked_out": false,
+      "workflow_dependency": false,
+      "decision": "delete-merged-after-backup"
+    },
+    {
+      "name": "main",
+      "sha": "6b9abb88aa99348ebd17b18bb830da1b264c074b",
+      "protected": false,
+      "main_only_commits": 0,
+      "branch_only_commits": 0,
+      "last_commit": "2026-10-17T20:59:26Z Валентин Ілляш Record targeted Paper Doll CI and published browser verification",
+      "prs": [],
+      "checked_out": true,
+      "workflow_dependency": false,
+      "decision": "keep-main"
+    },
+    {
+      "name": "preview/bob-cheek-direction",
+      "sha": "28009dc5eb6457037ff60da858b0301bcf2e27e5",
+      "protected": false,
+      "main_only_commits": 47,
+      "branch_only_commits": 4,
+      "last_commit": "2026-10-15T19:11:36+03:00 neverl1ke Publish paired crown and cheek browser previews for owner approval",
+      "prs": [],
+      "checked_out": true,
+      "workflow_dependency": false,
+      "decision": "keep-checked-out-worktree"
+    },
+    {
+      "name": "review-asian-heads-report",
+      "sha": "41718e7a2191608633df38e2dd00d02f59d5c3f4",
+      "protected": false,
+      "main_only_commits": 12,
+      "branch_only_commits": 2,
+      "last_commit": "2026-10-16T13:53:10+03:00 neverl1ke Update visual review with local crown-mask results",
+      "prs": [],
+      "checked_out": false,
+      "workflow_dependency": false,
+      "decision": "keep-unique-review-work"
+    }
+  ],
+  "rulesets": [],
+  "worktrees": "worktree /workspace/palata404\nHEAD 6b9abb88aa99348ebd17b18bb830da1b264c074b\nbranch refs/heads/main\n\nworktree /workspace/palata404-bob-preview\nHEAD 28009dc5eb6457037ff60da858b0301bcf2e27e5\nbranch refs/heads/preview/bob-cheek-direction\n\nworktree /workspace/palata404-hair-pack-02\nHEAD 0f2cd1adafcac048c09b5190978fbb7a480567a8\nbranch refs/heads/feature/new-hairstyles-pack-02\n\n",
+  "workflows_scope": "Game checks: every push/PR; Pages: main only. No branch name references in tracked workflow.",
+  "remote_deleted": [
+    "feature/paper-doll-avatar-face-hair-update",
+    "fix-safe-user-text-rendering"
+  ],
+  "local_deleted": [
+    "feature/paper-doll-avatar-face-hair-update",
+    "fix-safe-user-text-rendering"
+  ],
+  "backup_tags": {
+    "feature/paper-doll-avatar-face-hair-update": {
+      "tag": "backup/general-audit/feature-avatar-update",
+      "commit": "41bf1d15d92d09cec4fae9ecbe39fde028a78c3d"
+    },
+    "fix-safe-user-text-rendering": {
+      "tag": "backup/general-audit/fix-user-text",
+      "commit": "c559a724d93e91b902d2a6234979f6899079c786"
+    }
+  }
+}
