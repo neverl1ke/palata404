@@ -205,15 +205,15 @@ function renderPaperDollAt(host, prefix = '') {
         const order = Number.isFinite(layer.renderOrder) ? Math.max(-100, Math.min(100, layer.renderOrder)) : index;
         positionPaperDollLayer(image, layer.placementByGender?.[selectedGender] ?? layer.placement, order);
         if (slot === 'baseBody' || slot === 'face') applyPaperDollCrownMask(image, selectedGender);
-        // These full-frame heads replace the whole old skull/ear silhouette.
-        // Do not composite the old skin beneath their antialiased edge twice.
-        // The neck transition starts at y=245; the original torso remains intact.
-        if (slot === 'baseBody') {
+        // Each replacement head has its own registered under-jaw/neck occlusion.
+        // Masks restore the original body only where that head already matches it.
+        // The optional neckline skin underlay is base anatomy too, not tunic fabric.
+        if (slot === 'baseBody' || (slot === 'upperBody' && part.id === 'neckline')) {
             const face = selectedPaperDollItem('face');
-            const replacement = ['face-young', 'face-exhausted', 'face-elder'].includes(face?.id);
-            const faceSource = replacement ? face.genderVariants[selectedGender] : null;
-            const active = faceSource && !failedPaperDollImages.has(faceSource);
-            image.style.maskImage = active ? `linear-gradient(to bottom, transparent ${245 / 1672 * 100}%, #000 ${245 / 1672 * 100}%)` : '';
+            const faceSource = face?.genderVariants?.[selectedGender];
+            const mask = face?.bodyMaskByGender?.[selectedGender];
+            const active = mask && faceSource && !failedPaperDollImages.has(faceSource);
+            image.style.maskImage = active ? `url("${mask}")` : '';
             image.style.maskSize = active ? '100% 100%' : '';
             image.style.maskRepeat = active ? 'no-repeat' : '';
         }

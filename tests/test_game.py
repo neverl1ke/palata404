@@ -40,26 +40,41 @@ class IconAssetTests(unittest.TestCase):
                     self.assertEqual(alpha.crop(box).getextrema(),(255,255),(gender,box))
 
 
-    def test_face_pack_has_no_torso_and_keeps_opaque_unpainted_face_detail(self):
-        manifest=json.loads((ROOT/'tests/fixtures/face-pack-final.json').read_text())
+    def test_individual_neck_assets_preserve_faces_and_restore_the_original_torso(self):
+        from PIL import ImageChops
+        manifest=json.loads((ROOT/'tests/fixtures/face-neck-transitions.json').read_text())
+        self.assertEqual(len(manifest['files']),6)
+        self.assertEqual(len({e['mask_sha256'] for e in manifest['files']}),6)
         for entry in manifest['files']:
-            with self.subTest(gender=entry['gender']):
-                data=(ROOT/entry['output']).read_bytes()
-                self.assertEqual(hashlib.sha256(data).hexdigest(),entry['sha256'])
-                with Image.open(ROOT/entry['output']) as image:
-                    self.assertEqual(image.size,(941,1672));self.assertEqual(image.mode,'RGBA')
-                    alpha=image.getchannel('A')
-                    self.assertEqual(alpha.getextrema(),(0,255))
-                    from PIL import ImageFilter, ImageChops, ImageOps
-                    inner=alpha.point(lambda v:255 if v else 0).filter(ImageFilter.MinFilter(9))
-                    self.assertIsNone(ImageChops.multiply(ImageOps.invert(alpha),inner).crop((370,25,575,240)).getbbox(),'Translucent inner head or ear')
-                    self.assertIsNone(alpha.crop((0,263,941,1672)).getbbox(),'Chest or clothing remains')
-                    self.assertEqual(alpha.crop(entry['detail_box']).getextrema(),(255,255))
-                    detail=image.convert('RGB').crop(entry['detail_box']).tobytes()
-                    self.assertEqual(hashlib.sha256(detail).hexdigest(),entry['detail_sha256'],'Original facial RGB was modified')
-                    for y in range(245,263):
-                        row=alpha.crop((0,y,941,y+1)).getbbox()
-                        if row:self.assertLessEqual(row[2]-row[0],134 if entry['gender']=='male' else 118,'Shoulder/clavicle silhouette remains')
+            with self.subTest(kind=entry['kind'],gender=entry['gender']):
+                head=Image.open(ROOT/entry['output']).convert('RGBA')
+                mask=Image.open(ROOT/entry['mask']).convert('RGBA')
+                self.assertEqual(head.size,(941,1672));self.assertEqual(mask.size,head.size)
+                self.assertEqual(hashlib.sha256((ROOT/entry['output']).read_bytes()).hexdigest(),entry['sha256'])
+                self.assertEqual(hashlib.sha256((ROOT/entry['mask']).read_bytes()).hexdigest(),entry['mask_sha256'])
+                top=head.crop((0,0,941,entry['protected_y'])).tobytes()
+                self.assertEqual(hashlib.sha256(top).hexdigest(),entry['protected_sha256'],'Upper head changed')
+                detail=head.convert('RGB').crop(entry['detail_box']).tobytes()
+                self.assertEqual(hashlib.sha256(detail).hexdigest(),entry['detail_sha256'])
+                base=Image.open(ROOT/f"base_{entry['gender']}.png").convert('RGBA')
+                hidden=base.copy();hidden.putalpha(ImageChops.multiply(base.getchannel('A'),mask.getchannel('A')))
+                result=Image.alpha_composite(hidden,head)
+                end=entry['profile']['end_y']+entry['profile']['overlap']
+                self.assertIsNone(ImageChops.difference(result,base).crop((0,end,941,1672)).getbbox(),'Body below neck changed')
+                self.assertIsNone(head.getchannel('A').crop((0,end,941,1672)).getbbox())
+                # Approved bodies have alpha 252–254 in this region; do not alter them.
+                # The new join must not introduce more transparency than that original.
+                for yy in range(250,288):
+                    for xx in range(445,505):
+                        self.assertGreaterEqual(result.getpixel((xx,yy))[3],base.getpixel((xx,yy))[3], 'New hole in inner neck')
+                previous=None
+                for y in range(225,273):
+                    row=result.getchannel('A').crop((380,y,570,y+1)).point(lambda v:255 if v>=128 else 0).getbbox()
+                    self.assertIsNotNone(row)
+                    if previous:
+                        self.assertLessEqual(abs(row[0]-previous[0]),3,'Abrupt left neck corner')
+                        self.assertLessEqual(abs(row[2]-previous[2]),3,'Abrupt right neck corner')
+                    previous=row
 
     def test_hair_pack_pngs_preserve_supplied_bytes_dimensions_and_real_transparency(self):
         manifest=json.loads((ROOT/'tests/fixtures/hairstyles-pack-01.json').read_text())
@@ -1351,8 +1366,8 @@ class GameTests(unittest.TestCase):
                             self.assertIn(gender+'_young_head.png',self.page.locator('#'+prefix+'layer-face').get_attribute('src'))
                             self.assertEqual(self.page.locator('#'+prefix+'layer-face').evaluate('i=>getComputedStyle(i).zIndex'),'1')
                             self.assertEqual(self.page.locator('#'+prefix+'layer-hair').evaluate('i=>getComputedStyle(i).zIndex'),'9')
-                            self.assertIn('linear-gradient',self.page.locator('#'+prefix+'layer-body').evaluate('i=>getComputedStyle(i).maskImage'))
-                            self.assertNotIn('url(',self.page.locator('#'+prefix+'layer-body').evaluate('i=>getComputedStyle(i).maskImage'))
+                            self.assertIn(gender+'_young_body.png',self.page.locator('#'+prefix+'layer-body').evaluate('i=>getComputedStyle(i).maskImage'))
+                            self.assertNotIn('linear-gradient',self.page.locator('#'+prefix+'layer-body').evaluate('i=>getComputedStyle(i).maskImage'))
             self.page.reload(wait_until='networkidle')
             self.assertEqual(self.page.evaluate('paperDollState.appearance.face'),'face-young')
             self.assertEqual(self.page.evaluate('paperDollState.selectedGender'),gender)
@@ -1365,6 +1380,33 @@ class GameTests(unittest.TestCase):
                 self.assertEqual(self.page.locator('#'+prefix+'layer-body').evaluate('i=>getComputedStyle(i).maskImage'),'none')
         self.assertEqual(self.page.evaluate('JSON.stringify({stats,inventory,equippedGear})'),before)
         self.assertEqual(missing,[])
+
+    def test_neck_join_does_not_add_transparency_on_four_backgrounds_and_leaves_the_body_intact(self):
+        from io import BytesIO
+        from PIL import ImageChops
+        self.load()
+        self.page.set_viewport_size({'width':1280,'height':800})
+        self.page.evaluate("""()=>{const h=document.createElement('div');h.id='neck-pixels';h.className='character-paperdoll';Object.assign(h.style,{position:'fixed',left:'0',top:'0',width:'941px',height:'1672px',zIndex:'2147483647'});document.body.append(h)}""")
+        for entry in json.loads((ROOT/'tests/fixtures/face-neck-transitions.json').read_text())['files']:
+            for mode in ['patient','combat']:
+                self.page.evaluate("""([gender,kind,mode])=>{setGender(gender);setPaperDollView(mode);equipPaperDollItem('face','face-'+kind);equipPaperDollItem('hair','hair-none');renderPaperDollAt(document.getElementById('neck-pixels'),'neck-pixel-')}""",[entry['gender'],entry['kind'],mode])
+                self.page.evaluate("""async()=>{const i=new Image();i.src=selectedPaperDollItem('face').bodyMaskByGender[paperDollState.selectedGender];await i.decode()}""")
+                self.page.wait_for_function("""()=>['body','face'].every(slot=>{const i=document.getElementById('neck-pixel-layer-'+slot);return i.complete&&i.naturalWidth===941&&!i.classList.contains('hidden')})""")
+                reference=None
+                for bg in ['#faf7ef','#33343a','#000000','#00ff00']:
+                    self.page.locator('#neck-pixels').evaluate('(e,bg)=>e.style.background=bg',bg)
+                    image=Image.open(BytesIO(self.page.screenshot(clip={'x':445,'y':250,'width':60,'height':38}))).convert('RGB')
+                    if reference is None:reference=image
+                    # Original body alpha is 252–254: 3/255 background contribution,
+                    # plus one RGB level for Chromium compositing quantization.
+                    self.assertLessEqual(max(v[1] for v in ImageChops.difference(reference,image).getextrema()),4, f"{entry['kind']} {entry['gender']}: new translucent neck on {bg}")
+                y=entry['profile']['end_y']+entry['profile']['overlap']+2
+                clip={'x':360,'y':y,'width':230,'height':45}
+                after=self.page.screenshot(clip=clip)
+                self.page.evaluate("""()=>{equipPaperDollItem('face',null);renderPaperDollAt(document.getElementById('neck-pixels'),'neck-pixel-')}""")
+                before=self.page.screenshot(clip=clip)
+                self.assertEqual(before,after,'Face switch altered the unchanged lower body')
+        self.page.locator('#neck-pixels').evaluate('e=>e.remove()')
 
     def test_complete_face_catalog_selects_both_genders_and_restores_every_type(self):
         self.load()

@@ -44,7 +44,8 @@ const PAPER_DOLL_ITEMS = [
         fittedToGender: true, description: 'Молодий тип обличчя, 18–20 років.',
         // DOM image renderer: above the body (0), below clothing and hair (9).
         renderOrder: 1,
-        genderVariants: { male: 'assets/wardrobe/faces/male_young_head.png?v=0ac013f5', female: 'assets/wardrobe/faces/female_young_head.png?v=11a4664d' },
+        genderVariants: { male: 'assets/wardrobe/faces/male_young_head.png?v=440186b4', female: 'assets/wardrobe/faces/female_young_head.png?v=ce4a8a2a' },
+        bodyMaskByGender: { male: 'assets/wardrobe/faces/masks/male_young_body.png?v=ae3583dd', female: 'assets/wardrobe/faces/masks/female_young_body.png?v=7c74c044' },
         placementByGender: {
             male: { x: 0, y: 0, width: 941, height: 1672 },
             female: { x: 0, y: 0, width: 941, height: 1672 }
@@ -53,7 +54,8 @@ const PAPER_DOLL_ITEMS = [
         fittedToGender: true, description: 'Виснажений, тривожний тип обличчя.',
         // DOM image renderer: above the body (0), below clothing and hair (9).
         renderOrder: 1,
-        genderVariants: { male: 'assets/wardrobe/faces/male_exhausted_head.png?v=fc2f8d03', female: 'assets/wardrobe/faces/female_exhausted_head.png?v=77424399' },
+        genderVariants: { male: 'assets/wardrobe/faces/male_exhausted_head.png?v=2ab8724b', female: 'assets/wardrobe/faces/female_exhausted_head.png?v=17a3da32' },
+        bodyMaskByGender: { male: 'assets/wardrobe/faces/masks/male_exhausted_body.png?v=91eb3993', female: 'assets/wardrobe/faces/masks/female_exhausted_body.png?v=2f2ccc1c' },
         placementByGender: {
             male: { x: 0, y: 0, width: 941, height: 1672 },
             female: { x: 0, y: 0, width: 941, height: 1672 }
@@ -62,7 +64,8 @@ const PAPER_DOLL_ITEMS = [
         fittedToGender: true, description: 'Старший тип обличчя, 60+ років.',
         // DOM image renderer: above the body (0), below clothing and hair (9).
         renderOrder: 1,
-        genderVariants: { male: 'assets/wardrobe/faces/male_elder_head.png?v=95eed057', female: 'assets/wardrobe/faces/female_elder_head.png?v=c34581ca' },
+        genderVariants: { male: 'assets/wardrobe/faces/male_elder_head.png?v=ac9ec1ca', female: 'assets/wardrobe/faces/female_elder_head.png?v=3cc105a9' },
+        bodyMaskByGender: { male: 'assets/wardrobe/faces/masks/male_elder_body.png?v=6b4e8d41', female: 'assets/wardrobe/faces/masks/female_elder_body.png?v=9fc54488' },
         placementByGender: {
             male: { x: 0, y: 0, width: 941, height: 1672 },
             female: { x: 0, y: 0, width: 941, height: 1672 }

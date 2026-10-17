@@ -1294,8 +1294,8 @@ test('young face variants persist without changing approved hair, outfits or old
             const face=g.elements.get(prefix+'layer-face'),body=g.elements.get(prefix+'layer-body');
             assert.ok(face.getAttribute('src').includes(gender+'_young_head.png'));
             assert.equal(face.style.zIndex,'1');
-            assert.match(body.style.maskImage,/linear-gradient/);
-            assert.ok(!body.style.maskImage.includes('url('), 'Old scalp must not be composited under the antialiased new edge');
+            assert.ok(body.style.maskImage.includes(gender+'_young_body.png'));
+            assert.match(body.style.maskImage,/^url\(/);
             assert.match(face.style.clipPath,/^polygon/);
         }
         const restored=game(Object.fromEntries(g.storage));
@@ -1320,8 +1320,8 @@ test('all face-pack types select the correct gender, preserve saves and reset lo
         g.run(`setGender('${gender}');equipPaperDollItem('face','face-${kind}');equipPaperDollItem('hair','hair-none')`);
         assert.ok(g.elements.get('layer-face').getAttribute('src').includes(`${gender}_${kind}_head.png`));
         assert.equal(g.elements.get('layer-face').style.zIndex,'1');
-        assert.match(g.elements.get('layer-body').style.maskImage,/linear-gradient/);
-        assert.ok(!g.elements.get('layer-body').style.maskImage.includes('url('));
+        assert.ok(g.elements.get('layer-body').style.maskImage.includes(`${gender}_${kind}_body.png`));
+        assert.ok(!g.elements.get('layer-body').style.maskImage.includes('linear-gradient'));
         const restored=game(Object.fromEntries(g.storage));
         assert.equal(restored.run('paperDollState.appearance.face'),`face-${kind}`);
         g.run(`failedPaperDollImages.add(selectedPaperDollItem('face').genderVariants['${gender}']);renderPaperDoll()`);

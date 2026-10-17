@@ -1,0 +1,215 @@
+{
+  "approved_commit": "38f5ba4018284a80ba4da2df77ba4e1d5e5ef59f",
+  "files": [
+    {
+      "kind": "young",
+      "gender": "male",
+      "source_sha256": "afd0bddba7f809a53b8fd266f246147d87f883be473fd34ab58296db00661f58",
+      "approved_sha256": "0ac013f5367b608b82d15975baa84f9e6070bf2dfd154d790d62a2c185c7b470",
+      "output": "assets/wardrobe/faces/male_young_head.png",
+      "sha256": "440186b4a670637d6140c6ef9dfbbbdd25f6fcaa60c524ac4eb33acdcbedf127",
+      "mask": "assets/wardrobe/faces/masks/male_young_body.png",
+      "mask_sha256": "ae3583ddb4b79f63793c56550e851ba0eee234129856f6dcd9e9fa8f63b3354a",
+      "protected_y": 221,
+      "protected_sha256": "a4adc011bc8667073d15075948937199e7d60245a8c2aeab3301f183cc8fa324",
+      "detail_box": [
+        440,
+        85,
+        510,
+        205
+      ],
+      "detail_sha256": "9e7f2e651140d8b9336050d664d9bcee9599e01a09b764058ca02af62a5039be",
+      "profile": {
+        "center": 474,
+        "radius": 70,
+        "recovery_y": 224,
+        "start_y": 258,
+        "end_y": 282,
+        "start_arc": 26,
+        "end_arc": 22,
+        "overlap": 10
+      },
+      "bbox": [
+        388,
+        32,
+        559,
+        292
+      ]
+    },
+    {
+      "kind": "young",
+      "gender": "female",
+      "source_sha256": "0130175d62a477e0268dc8f5eae7758c33750237cc310ba9232a204baa835b0e",
+      "approved_sha256": "11a4664d3787162bdd24abed127edb4d0ce9b6e7909f0bc0b0c9a677f2f1970b",
+      "output": "assets/wardrobe/faces/female_young_head.png",
+      "sha256": "ce4a8a2ae8be56984bc162a7b84d4da01bcd3d3dd0ba363412af4d52d1746105",
+      "mask": "assets/wardrobe/faces/masks/female_young_body.png",
+      "mask_sha256": "7c74c044f29daf13bc940c3ee33638887f3e7f8c4005b08dbc909ba3a0a5578a",
+      "protected_y": 221,
+      "protected_sha256": "13f39fdc7e506246d8db53e6d8a58045acda4b0a8dfb0de70c5adbd15d448339",
+      "detail_box": [
+        440,
+        85,
+        510,
+        205
+      ],
+      "detail_sha256": "6dd3c1796c2138a35ae7c19eb0ddcd26900a67746f778495777a159ba5caded3",
+      "profile": {
+        "center": 473,
+        "radius": 65,
+        "recovery_y": 225,
+        "start_y": 248,
+        "end_y": 274,
+        "start_arc": 25,
+        "end_arc": 18,
+        "overlap": 8
+      },
+      "bbox": [
+        388,
+        28,
+        560,
+        282
+      ]
+    },
+    {
+      "kind": "exhausted",
+      "gender": "male",
+      "source_sha256": "6d1aeda458c9b84818859d5201092549c7554f9a7bd0c9acdc11e4b7003c0863",
+      "approved_sha256": "fc2f8d03109afa2a112403a4e05dd1232a272eaf3e83bf3bf4abde9349088250",
+      "output": "assets/wardrobe/faces/male_exhausted_head.png",
+      "sha256": "2ab8724b7cbe41edd6ada7d8f2babe28222aecd0c069e5b77c777a7d14387bb8",
+      "mask": "assets/wardrobe/faces/masks/male_exhausted_body.png",
+      "mask_sha256": "91eb39935ebdfda2f7c61ff218ca84b1c44c8434db04391b26a531752a4ad829",
+      "protected_y": 221,
+      "protected_sha256": "34beb8d49cd6685fd847e97d78ee21fc6a02163fbf2e7047cfdfd2feb8d0ee01",
+      "detail_box": [
+        440,
+        85,
+        510,
+        205
+      ],
+      "detail_sha256": "3adc9b84f7af2b0cdab1c3304b29ea8c8a0dc0b6638028d96e11b126567cbe3a",
+      "profile": {
+        "center": 474,
+        "radius": 69,
+        "recovery_y": 223,
+        "start_y": 261,
+        "end_y": 287,
+        "start_arc": 27,
+        "end_arc": 22,
+        "overlap": 9
+      },
+      "bbox": [
+        384,
+        32,
+        562,
+        296
+      ]
+    },
+    {
+      "kind": "exhausted",
+      "gender": "female",
+      "source_sha256": "d0e3da9f1645ea8f272fcf4f2c1266d20625b73180a66f3f60c435b615927ab0",
+      "approved_sha256": "774243994eb57c5e6225f15032122ca1486c3fb79d686dcd8ecd1c94a8105324",
+      "output": "assets/wardrobe/faces/female_exhausted_head.png",
+      "sha256": "17a3da3236af88a7b2769ff0b6624666fa80d95ba61c0e9bca0b600345895e46",
+      "mask": "assets/wardrobe/faces/masks/female_exhausted_body.png",
+      "mask_sha256": "2f2ccc1c49a9ff550ab4ea79563d030cff5bf2ac7eacf6e372102418ea5b2ec6",
+      "protected_y": 221,
+      "protected_sha256": "956b69ef94fcb07c486694183216f8c24bbcd27898ffe8a583a23ea4ae1f5749",
+      "detail_box": [
+        440,
+        85,
+        510,
+        205
+      ],
+      "detail_sha256": "1aaa9cd0fb80fc89e5ad323dbbea31eab639ed6d2f72d67106527e8a246ad8bf",
+      "profile": {
+        "center": 473,
+        "radius": 62,
+        "recovery_y": 224,
+        "start_y": 240,
+        "end_y": 272,
+        "start_arc": 13,
+        "end_arc": 14,
+        "overlap": 9
+      },
+      "bbox": [
+        393,
+        27,
+        553,
+        281
+      ]
+    },
+    {
+      "kind": "elder",
+      "gender": "male",
+      "source_sha256": "00b0ebdce23aa099704bc18c1e31f751fccb5f51d5931a316d669c86cbeb3b70",
+      "approved_sha256": "95eed0578b0f36c7765d69f6c839443d0bfb7656e77b3ac2c829c5a1a982ef97",
+      "output": "assets/wardrobe/faces/male_elder_head.png",
+      "sha256": "ac9ec1cabdd02c1b5f5e67b47d7be4dc32988a0bfc5ff1ac29a6ec6e5ed6c50b",
+      "mask": "assets/wardrobe/faces/masks/male_elder_body.png",
+      "mask_sha256": "6b4e8d417ef34d97cadf862fe9cdcb91d0a902f8eadda60476259337e59391e8",
+      "protected_y": 221,
+      "protected_sha256": "9c9f08692d1be01419fe3636b4bd55f4eb4125a7b7f850f3e864fd56da7838c2",
+      "detail_box": [
+        440,
+        85,
+        510,
+        205
+      ],
+      "detail_sha256": "2e4d70c2503be38cbf6156814e6271820d1934150df57f298ded2abc40735fa3",
+      "profile": {
+        "center": 474,
+        "radius": 71,
+        "recovery_y": 224,
+        "start_y": 257,
+        "end_y": 285,
+        "start_arc": 23,
+        "end_arc": 21,
+        "overlap": 8
+      },
+      "bbox": [
+        388,
+        32,
+        559,
+        293
+      ]
+    },
+    {
+      "kind": "elder",
+      "gender": "female",
+      "source_sha256": "5bd49e257ef0a620cd9b95fffc5d5751d5573958b614ca75f0ef9a0fdebee815",
+      "approved_sha256": "c34581cae7d2a5aaa8c4aa166bd4f17d33c271c3440a769d2c702b17ced0129f",
+      "output": "assets/wardrobe/faces/female_elder_head.png",
+      "sha256": "3cc105a9aec83c4af78e55064554828340c0c786d1ece2f1047b437718536f0f",
+      "mask": "assets/wardrobe/faces/masks/female_elder_body.png",
+      "mask_sha256": "9fc5448828973cbfe90cdce9940c1e0afb5fd033d0b855bffb213b59baff7618",
+      "protected_y": 221,
+      "protected_sha256": "34a474c7cd42d2616c024b0aac472f228ce091ebbfa35d994d77baee8c75242c",
+      "detail_box": [
+        440,
+        85,
+        510,
+        205
+      ],
+      "detail_sha256": "3209e5ffb54160d2b66d363225f862becde77c10106cc83cd04bace10e727b94",
+      "profile": {
+        "center": 474,
+        "radius": 64,
+        "recovery_y": 226,
+        "start_y": 245,
+        "end_y": 276,
+        "start_arc": 20,
+        "end_arc": 18,
+        "overlap": 7
+      },
+      "bbox": [
+        392,
+        27,
+        557,
+        283
+      ]
+    }
+  ]
+}
