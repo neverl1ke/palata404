@@ -145,3 +145,12 @@ python tools/build-targeted-review.py
 ## Публікація
 
 Підсумок комітів, GitHub Actions, Pages і перевірки реальних HTTPS-ресурсів: [publication.json](publication.json). Гра: https://neverl1ke.github.io/palata404/ .
+
+
+### Підтвердження опублікованої версії
+
+Реалізація: `e1a7b2d6fb680655d3d9d719e61650049d88592d` у `main`. [GitHub Actions](https://github.com/neverl1ke/palata404/actions/runs/39068545215) — успішно: **75 JavaScript і 91 Python/Chromium**. [GitHub Pages](https://github.com/neverl1ke/palata404/actions/runs/39068544829) — успішно.
+
+Через HTTPS перевірено 48 runtime-файлів (37 PNG): HTTP 200 і точний збіг байтів. Усі 163 початкові зображення та HTML цієї галереї також повернули HTTP 200 із точним збігом. Chromium завантажив саме опубліковані HTTPS-дані: **90 комбінацій, 720 перевірок фонів/кольорів**, reload і 320/390/768 px; жодних JS/HTTP-помилок. [Результат браузера](live-browser.json), [короткий журнал Actions](logs/github-actions-summary.log).
+
+Нові знімки опублікованої гри: [чоловік](live-male-white.jpg), [жінка](live-female-white.jpg), [320 px](live-mobile-320.jpg), [390 px](live-mobile-390.jpg), [768 px](live-mobile-768.jpg). Вони доповнюють локальні порівняння ДО/ПІСЛЯ та не замінюють історичні матеріали.

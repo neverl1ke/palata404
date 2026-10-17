@@ -1,7 +1,45 @@
 {
-  "status": "local_checks_complete_before_commit",
+  "status": "published_and_verified",
   "branch": "main",
-  "source_commit": "8bcf1830429008113c145e15c016a9bc709e35a1",
+  "implementation_commit": "e1a7b2d6fb680655d3d9d719e61650049d88592d",
   "javascript": 75,
-  "python": 91
+  "python": 91,
+  "game_checks": {
+    "id": 39068545215,
+    "status": "completed",
+    "conclusion": "success",
+    "url": "https://github.com/neverl1ke/palata404/actions/runs/39068545215",
+    "commit": "e1a7b2d6fb680655d3d9d719e61650049d88592d"
+  },
+  "pages": {
+    "run": 39068544829,
+    "conclusion": "success"
+  },
+  "https_runtime": {
+    "http": 200,
+    "files": 48,
+    "png_files": 37,
+    "bytes_match": true
+  },
+  "https_gallery": {
+    "http": 200,
+    "files": 163,
+    "bytes_match": true,
+    "gallery": "https://neverl1ke.github.io/palata404/review/paper-doll-targeted-fix/gallery.html"
+  },
+  "live_browser": {
+    "url": "https://neverl1ke.github.io/palata404/",
+    "combinations": 90,
+    "background_color_checks": 720,
+    "reload": true,
+    "page_errors": [],
+    "http_errors": [],
+    "mobile_widths": [
+      320,
+      390,
+      768
+    ],
+    "transport": "Actual published HTTPS bytes via certificate-verified urllib, Chromium renders without local substitutions",
+    "cache_version": "paper-targeted-1"
+  }
 }

@@ -1,6 +1,6 @@
 # Змінені файли
 
-Графічні параметри та пофайлові SHA наведено в repairs.json/resource-manifest.json. Нижче — повний перелік коду, тестів, джерел і контрольних знімків цього етапу.
+Повний перелік від базового коміту 8bcf183, включно з підтвердженням публікації. SHA PNG: resource-manifest.json.
 
 ```text
 README.md
@@ -177,11 +177,18 @@ review/paper-doll-targeted-fix/female-exhausted-head-before-after.png
 review/paper-doll-targeted-fix/female-exhausted-neck-before-after.png
 review/paper-doll-targeted-fix/female-inner-thighs-before-after.png
 review/paper-doll-targeted-fix/gallery.html
+review/paper-doll-targeted-fix/live-browser.json
+review/paper-doll-targeted-fix/live-female-white.jpg
+review/paper-doll-targeted-fix/live-male-white.jpg
+review/paper-doll-targeted-fix/live-mobile-320.jpg
+review/paper-doll-targeted-fix/live-mobile-390.jpg
+review/paper-doll-targeted-fix/live-mobile-768.jpg
 review/paper-doll-targeted-fix/logs/after-capture.log
 review/paper-doll-targeted-fix/logs/after-details.log
 review/paper-doll-targeted-fix/logs/before-capture.log
 review/paper-doll-targeted-fix/logs/before-details.log
 review/paper-doll-targeted-fix/logs/development-initial-check.log
+review/paper-doll-targeted-fix/logs/github-actions-summary.log
 review/paper-doll-targeted-fix/logs/node-75.log
 review/paper-doll-targeted-fix/logs/python-assets-23.log
 review/paper-doll-targeted-fix/logs/python-shard-0.log
