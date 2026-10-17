@@ -1,0 +1,54 @@
+{
+  "baseline_commit": "6b9abb88aa99348ebd17b18bb830da1b264c074b",
+  "recovery_tag": "backup/project-general-audit-20261017",
+  "removed": [
+    {
+      "path": "belt_hud.png",
+      "bytes": 390544,
+      "sha256": "55e50608bc5d73e140501d630707a56980a947abec7d10d60024965dcdc06159",
+      "git_blob": "d81bec5c89c3e95bc7242a6dd69e4431a1f1c88e",
+      "category": "runtime",
+      "reason": "Фон колишньої HUD-панелі, заміненої поточною CSS-композицією; немає в жодному чинному посиланні або динамічному каталозі, немає запитів у повному контрольному обході. Не є ресурсом legacy save чи зарезервованого контенту.",
+      "evidence": [
+        "inventory-before.json:edges",
+        "before/browser.json:requested_paths",
+        "git history style.css: historical belt_hud.png removed from active HUD"
+      ]
+    }
+  ],
+  "moved": [],
+  "retained": [
+    {
+      "paths": [
+        "face_1.png",
+        "face_2.png",
+        "face_3.png",
+        "face_4.png",
+        "face_5.png",
+        "face_6.png"
+      ],
+      "reason": "Legacy IDs, migration and fallback fixture contracts; public compatibility."
+    },
+    {
+      "paths": [
+        "assets/wardrobe/references/patient/female_approved_full.png",
+        "assets/wardrobe/references/patient/male_approved_full.png"
+      ],
+      "reason": "Approved artwork references and asset provenance; absence from game requests is expected."
+    },
+    {
+      "paths": [
+        "review/",
+        "tools/",
+        "art/"
+      ],
+      "reason": "Historical URLs, reproducing asset repairs and regression fit tests; no indiscriminate deletion."
+    }
+  ],
+  "identical_groups_retained": 64,
+  "runtime_trace": {
+    "combinations": 90,
+    "samples": 1080,
+    "http_errors": []
+  }
+}
