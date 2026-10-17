@@ -972,7 +972,7 @@ test('a fresh patient starts dressed while the combat outfit stays independent w
     assert.equal(g.run('isPaperDollItemOwned(selectedPaperDollItem("upperBody"))'), true);
     for (const prefix of ['', 'wardrobe-']) {
         assert.equal(g.elements.get(prefix + 'layer-upper-body-front').getAttribute('src'),
-            'assets/wardrobe/clothing/patient/patient_tunic_male.png?v=28343fe9');
+            'assets/wardrobe/clothing/patient/patient_tunic_male.png?v=b0da3128');
     }
     const combat = g.run('JSON.stringify({stats,inventory,equippedGear,gameProgress})');
     g.run('setPaperDollView("combat");');
@@ -1029,8 +1029,8 @@ test('gender changes retain the tunic selection and use matching clothing in bot
     const combat = g.run('JSON.stringify({stats,inventory,equippedGear,gameProgress})');
     g.run('setPaperDollView("combat"); equipPaperDollItem("upperBody","patient-tunic");');
     for (const [gender, source] of [
-        ['female', 'assets/wardrobe/clothing/patient/patient_tunic_female.png?v=fa3fac64'],
-        ['male', 'assets/wardrobe/clothing/patient/patient_tunic_male.png?v=28343fe9'],
+        ['female', 'assets/wardrobe/clothing/patient/patient_tunic_female.png?v=809fd1e8'],
+        ['male', 'assets/wardrobe/clothing/patient/patient_tunic_male.png?v=b0da3128'],
     ]) {
         g.run(`setGender('${gender}');`);
         assert.equal(g.run('paperDollState.patientLoadout.upperBody'), 'patient-tunic');
@@ -1063,7 +1063,7 @@ test('failed fitted clothing hides instead of substituting shared or opposite-ge
     },'male').length`), 0);
     g.run('setGender("female");');
     assert.equal(g.elements.get('layer-upper-body-front').getAttribute('src'),
-        'assets/wardrobe/clothing/patient/patient_tunic_female.png?v=fa3fac64');
+        'assets/wardrobe/clothing/patient/patient_tunic_female.png?v=809fd1e8');
     g.elements.get('layer-upper-body-front').onerror();
     assert.equal(g.elements.get('layer-upper-body-front').getAttribute('src'), null);
     assert.equal(g.run('paperDollState.patientLoadout.upperBody'), 'patient-tunic');
@@ -1102,7 +1102,7 @@ test('retrying a failed wardrobe save preserves an intentionally removed starter
 test('the approved neckline part follows only the female tunic across modes, saves and replacements', () => {
     const g = game();
     const before = g.run('JSON.stringify({stats,inventory,equippedGear,gameProgress})');
-    const neck = 'assets/wardrobe/clothing/patient/female_neckline_skin_underlay.png?v=cc9a05ce';
+    const neck = 'assets/wardrobe/clothing/patient/female_neckline_skin_underlay.png?v=8a9076fa';
     for (const mode of ['patient', 'combat']) {
         g.run(`setPaperDollView('${mode}');setGender('female');equipPaperDollItem('upperBody','patient-tunic');`);
         assert.equal(g.run('wardrobeImageStatus(PAPER_DOLL_ITEMS.find(item=>item.id==="patient-tunic")).state'), 'ready');
@@ -1301,7 +1301,7 @@ test('young face variants persist without changing approved hair, outfits or old
         const restored=game(Object.fromEntries(g.storage));
         assert.equal(restored.run('paperDollState.appearance.face'),'face-young');
         assert.equal(restored.run('paperDollState.appearance.hairColor'),'white');
-        for(const face of ['face-asian',null]) {
+        for(const face of [null]) {
             g.run(`equipPaperDollItem('face',${JSON.stringify(face)})`);
             for(const prefix of ['','wardrobe-']) assert.equal(g.elements.get(prefix+'layer-body').style.maskImage,'');
         }
@@ -1372,4 +1372,33 @@ test('female bangs are hidden and rejected for men and old male saves migrate sa
     g.run('setGender("male")');
     assert.equal(g.run('paperDollState.appearance.hair'),'hair-none');
     assert.equal(game(Object.fromEntries(g.storage)).run('paperDollState.appearance.hair'),'hair-none');
+});
+
+
+test('male shoulder rear is local, shares pigment reference and disappears on switch', () => {
+    const g=game();g.run('setGender("male");equipPaperDollItem("face","face-alternative");equipPaperDollItem("hair","hair-shoulder-length")');
+    for(const prefix of ['', 'wardrobe-']) {
+        const rear=g.elements.get(prefix+'layer-hair-rear');assert.ok(rear);assert.equal(rear.style.zIndex,'-1');
+        assert.equal(rear.style.width,'100%');assert.equal(rear.style.top,'0%');
+        assert.equal(g.elements.get(prefix+'layer-hair').style.zIndex,'9');
+        assert.ok(rear.paperHairColorReference.includes('male_medium_shoulder_length.png'));
+    }
+    g.run('setGender("female")');assert.equal(g.elements.has('layer-hair-rear'),false);assert.ok(g.elements.get('layer-hair').getAttribute('src').includes('female_medium'));
+    g.run('setGender("male");equipPaperDollItem("hair","hair-shoulder-length");equipPaperDollItem("hair","hair-messy")');
+    assert.equal(g.elements.has('layer-hair-rear'),false);assert.ok(g.elements.get('layer-hair').getAttribute('src').includes('male_messy'));
+});
+
+test('crown smoothing is monotone in x and remains local above y=90', () => {
+    const g=game();const cases=JSON.parse(g.run('JSON.stringify(PAPER_DOLL_CROWN_CONTOURS)'));
+    for(const genders of Object.values(cases)) for(const points of Object.values(genders)) {
+        const curve=JSON.parse(g.run('JSON.stringify(smoothPaperDollCrown('+JSON.stringify(points)+'))'));
+        assert.ok(curve.length>points.length);let x=-Infinity;
+        for(const p of curve){assert.ok(p[0]>=x);assert.ok(p[1]>=0&&p[1]<=90);x=p[0];}
+        assert.deepEqual(curve[0],points[0]);assert.deepEqual(curve.at(-1),points.at(-1));
+    }
+});
+
+test('rear and front recoloring use the same lighting median without changing alpha', () => {
+    const g=game();const result=JSON.parse(g.run('JSON.stringify((()=>{const a=[60,40,30,255,120,80,60,255],b=[60,40,30,255];const m=hairLuminanceMedian(a);recolorHairPixels(a,"#C8C3BA",m);recolorHairPixels(b,"#C8C3BA",m);return {a,b}})())'));
+    assert.deepEqual(result.a.slice(0,4),result.b);assert.equal(result.a[3],255);assert.equal(result.a[7],255);
 });

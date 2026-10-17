@@ -1,0 +1,191 @@
+{
+  "algorithm": "sha256",
+  "source_commit": "dbbcddff2f79a3393271ac6afc4d261221d9b77e",
+  "files": [
+    {
+      "path": "assets/wardrobe/clothing/patient/female_neckline_skin_underlay.png",
+      "sha256": "8a9076fa37a949f7c12c5e9663797d80b74c56fa95c17ada68f3144bfaab1d5b",
+      "before_sha256": "395d06d6b02ed3d64b88b852d7e884f02fb958d3b3a0232f78f548f738942611"
+    },
+    {
+      "path": "assets/wardrobe/clothing/patient/patient_tunic_female.png",
+      "sha256": "809fd1e8738aff77753d1caade079eb94ea7766891fd69614ea9a68fbac7274e",
+      "before_sha256": "809fd1e8738aff77753d1caade079eb94ea7766891fd69614ea9a68fbac7274e"
+    },
+    {
+      "path": "assets/wardrobe/clothing/patient/patient_tunic_male.png",
+      "sha256": "b0da31287a2ee59cb1260b17da4a381fc60d59b3fd17c41ec6a6b7d7708a7977",
+      "before_sha256": "b0da31287a2ee59cb1260b17da4a381fc60d59b3fd17c41ec6a6b7d7708a7977"
+    },
+    {
+      "path": "assets/wardrobe/faces/female_alternative_head.png",
+      "sha256": "4b40230cce052db53bb74652368e04a7c048b5eb125af1875002a6265aee5a6e",
+      "before_sha256": "64da4dcbc6ff8ff03728779ec54f00de3d7325146ae546604f412299fe28eef3"
+    },
+    {
+      "path": "assets/wardrobe/faces/female_asian_head.png",
+      "sha256": "b061f7b2012bd4e04671df738ccf9f6b0e41481370c72a49de4f18fe351f7570",
+      "before_sha256": "bb36d987af092f4a60b5305d067bab3a3a89b963aff96af7f55d77b54ed843a7"
+    },
+    {
+      "path": "assets/wardrobe/faces/female_elder_head.png",
+      "sha256": "90f75a47f477b8be371f5ba8562d3c8e05125b3ba5506301e93599a1f4af9625",
+      "before_sha256": "20d53aaf9d8b57d808b530b8be431ad12ca53ba2c56f13acd7f171fb973de79b"
+    },
+    {
+      "path": "assets/wardrobe/faces/female_exhausted_head.png",
+      "sha256": "9135238f1a383dc6b516b160fa4bc4e2dbcc8b765ad1acae0c6304f2514b3a20",
+      "before_sha256": "00f05b07b0888a69e70cb1536f26bf0bb849711e68c1dc2b546dc650310d220e"
+    },
+    {
+      "path": "assets/wardrobe/faces/female_young_head.png",
+      "sha256": "b69fc6e7ea936c769cdf3fdf06f1da0f822313fde7eba1be4c44c7cb785ac76d",
+      "before_sha256": "8f652b417017e6f35665a73b9d25868e8c5739d38be2e85eaf3e27f9ffe5e7de"
+    },
+    {
+      "path": "assets/wardrobe/faces/male_alternative_head.png",
+      "sha256": "676842d34f6d032e195c16b369ed5258b02c44a3ff0dfd8a7e7e3730eb6abe7e",
+      "before_sha256": "ba12c0915719ca04fad2703fc1acc8df40f8707ef038ad5c6f97696fcf0e767e"
+    },
+    {
+      "path": "assets/wardrobe/faces/male_asian_head.png",
+      "sha256": "70b925229ed4598e0ed972b1f1d5903c1174b5d683d4bd1330b131156a860bac",
+      "before_sha256": "d9eb9e5445d22a2559f136acf8ed47c088dbb3b386c8699c57ab2e2ccad3c30b"
+    },
+    {
+      "path": "assets/wardrobe/faces/male_elder_head.png",
+      "sha256": "c870f32335781ebae93558eb8ed27dd10435d611a3b6d6542e7a5996eebd7c65",
+      "before_sha256": "ac9ec1cabdd02c1b5f5e67b47d7be4dc32988a0bfc5ff1ac29a6ec6e5ed6c50b"
+    },
+    {
+      "path": "assets/wardrobe/faces/male_exhausted_head.png",
+      "sha256": "82576dc07da0d86d6ec6b95d29696f108c6b2b2e2e371337553a8ab75577fabe",
+      "before_sha256": "fa13f69a7c23cdb4b025af0d397eaab172706b4ff647071616e8e294e98285ad"
+    },
+    {
+      "path": "assets/wardrobe/faces/male_young_head.png",
+      "sha256": "cfcefadaed898cd60fa25c1aba161294a321ce3dcfa013f2ac7331acc9a22d1b",
+      "before_sha256": "fb485d56ac9480ea96aed1c3d4820613269c6a195e8f3af99ef4e884005cfacf"
+    },
+    {
+      "path": "assets/wardrobe/faces/masks/female_alternative_body.png",
+      "sha256": "2069e239ff59a656e140a7edaa133f04829c7c87017174c1507c46f29fb5f548",
+      "before_sha256": "b58194d2c51ee5cb6ab044578b8dbda0e3e0b27cb5e1ded08ed0a77668ecbb67"
+    },
+    {
+      "path": "assets/wardrobe/faces/masks/female_asian_body.png",
+      "sha256": "3412bd3af36387b0050e580a85cff7855951b7761701c429587b7af0a5091ac7",
+      "before_sha256": null
+    },
+    {
+      "path": "assets/wardrobe/faces/masks/female_elder_body.png",
+      "sha256": "a9f8e7b6c6f394523838c2c65aa21f03de408ae171fc7e4ee607cf194b848e3a",
+      "before_sha256": "3e5f78f596fee51bc323e0722df99267dd6a6d856786868d3e361172a8385292"
+    },
+    {
+      "path": "assets/wardrobe/faces/masks/female_exhausted_body.png",
+      "sha256": "9b96cff8ea1e77710fe8c847a8317f7631529ea33e703a4846d84e11389cfc72",
+      "before_sha256": "110a9598d4c520e59453182ed3a330dc39afa44661883f65ba1b11576e355be3"
+    },
+    {
+      "path": "assets/wardrobe/faces/masks/female_young_body.png",
+      "sha256": "3f8e960c4b689f0fb6613b7bda0ca9d6e3247eb1c1cf236df5722cd032a1eca2",
+      "before_sha256": "6da8b2d46ca152a2e771dda681cfa53fadb490541886d4aa05a824c4e61ee9df"
+    },
+    {
+      "path": "assets/wardrobe/faces/masks/male_alternative_body.png",
+      "sha256": "2778f476f1a528ddad6e6fe080295ed97cc513beff8328e792bf3e4fd85444c9",
+      "before_sha256": "bfe0a56cfad02f50b2d1742320dd6b8de254afa87b61b1d977073ad59c3a8167"
+    },
+    {
+      "path": "assets/wardrobe/faces/masks/male_asian_body.png",
+      "sha256": "b700eab75c3b79cc44f9e9d0778c091e25e2940a4897a94d833e5a268a28acce",
+      "before_sha256": null
+    },
+    {
+      "path": "assets/wardrobe/faces/masks/male_elder_body.png",
+      "sha256": "191ad94a7ab8e8b00f5a48de854e7dcf5f9adfc54d4e6aa4b81d6963fca0dcd1",
+      "before_sha256": "6b4e8d417ef34d97cadf862fe9cdcb91d0a902f8eadda60476259337e59391e8"
+    },
+    {
+      "path": "assets/wardrobe/faces/masks/male_exhausted_body.png",
+      "sha256": "95e48d488e32558ea02a9ad5b3f60dfff83e98029bfa3ce6c420c23857de482e",
+      "before_sha256": "91eb39935ebdfda2f7c61ff218ca84b1c44c8434db04391b26a531752a4ad829"
+    },
+    {
+      "path": "assets/wardrobe/faces/masks/male_young_body.png",
+      "sha256": "73bad65e54573c40589af4e1e9fa5dcd2b5e82a70829ef61f8994cbd160eab24",
+      "before_sha256": "ae3583ddb4b79f63793c56550e851ba0eee234129856f6dcd9e9fa8f63b3354a"
+    },
+    {
+      "path": "assets/wardrobe/hair/classic_short_unisex_style_A.png",
+      "sha256": "1ddab5737b909a0d42034f8815aaa0cdd0d2e355ff766bfcd1775a4ed5e34d4b",
+      "before_sha256": "f8699b60e98e71e41ba85a7246222e081e1b996de092a2d77cb8657e876e4faf"
+    },
+    {
+      "path": "assets/wardrobe/hair/classic_short_unisex_style_B.png",
+      "sha256": "9ad8b4e1b37b6d20e2c42931bbcd6828744de20a289f29990943f906ffbf8875",
+      "before_sha256": "f509090fcf9666015fe510d19cc535a11c889ac0488956d4e34e0ed9d8036f4b"
+    },
+    {
+      "path": "assets/wardrobe/hair/female_chin_length_bob.png",
+      "sha256": "b8f4295911bf39a9f6db18feb0f813f22ac7ed8cb85c4adaac88f7ee0de3db98",
+      "before_sha256": "301af67909f325b2a57447c393c5324cd67dd5b0d3bc5f223e4c6c69f0cc422f"
+    },
+    {
+      "path": "assets/wardrobe/hair/female_double_buns.png",
+      "sha256": "6290b9c90fdbd7dc7ddd8fa2e246438406b108ff9e6b687d3bbcade05a3a4917",
+      "before_sha256": "8efbffef5ea7829f720733f14cb642ba951dd6ef18a3e204c43be5a72725adb1"
+    },
+    {
+      "path": "assets/wardrobe/hair/female_medium_shoulder_length.png",
+      "sha256": "79b8f5b83a996bea9e473e7eca6aa292bcf72d7463e8f4568c1470f2b18645e2",
+      "before_sha256": "99263f7834daeff1aa76acd58f90286a035f2f6d3f059c35d918f3a3b0895a14"
+    },
+    {
+      "path": "assets/wardrobe/hair/female_messy_hair.png",
+      "sha256": "fe47846c7f21e5232c0e6364ea9d84cc37fa896f67b6781b1df871a81cbc1851",
+      "before_sha256": "75db481febd54b46b01f269962692e21d9fcf6e8620c37a48b21995295f6e002"
+    },
+    {
+      "path": "assets/wardrobe/hair/male_chin_length_bob.png",
+      "sha256": "978335df95889445ecdf9ae83ccb169da5b197b758dc4d6a2d2f0e4d0b835584",
+      "before_sha256": "9e4fcf82315dce837d87eae070d15af1a2ea32accbc34f5ae5b8bec2666015d9"
+    },
+    {
+      "path": "assets/wardrobe/hair/male_double_buns.png",
+      "sha256": "5b2aae591d33bcd2f4e3c5d8d027bd7ce0cf216694cf66c863d2f6b0d2d67b0a",
+      "before_sha256": "1aadd39f0ac48e5d228e3eeec9e198ec3b2823ff178985cca02cfcd72355a2f7"
+    },
+    {
+      "path": "assets/wardrobe/hair/male_medium_shoulder_length.png",
+      "sha256": "88350a308f9bcfd2f6c5046e535852e25db13078bba3a17c86cb6a5624fb5138",
+      "before_sha256": "a443063d62d4cbd01156c6358032c71d6610ffc6a863648e8e57c3419134429b"
+    },
+    {
+      "path": "assets/wardrobe/hair/male_medium_shoulder_length_rear.png",
+      "sha256": "895e676c29c172e237e5b0a560690a7629993d3983a67a4f2da2a95215e7faa3",
+      "before_sha256": null
+    },
+    {
+      "path": "assets/wardrobe/hair/male_messy_hair.png",
+      "sha256": "df4391878257808f1da8c25e7f4250f1146e24b5eb04c2bce6b00453459c3e30",
+      "before_sha256": "b45cbd388fc9d2138c2872ad9dff46daea443ee143ff2aa0d5f8a64d7171b5f9"
+    },
+    {
+      "path": "assets/wardrobe/hair/unisex_bob_bangs.png",
+      "sha256": "0293b69f09c5dc70d756cf060427e32188d982b845ef42d1426a189c2825829d",
+      "before_sha256": "2c598420f12009ed5213195cbc109cb1f202504d90aba6170a21b52c88b48f05"
+    },
+    {
+      "path": "base_female.png",
+      "sha256": "bb5010035527967e880cf75bb9e49b25fc5e6143cc6cfdc5ac9b97bfda963bed",
+      "before_sha256": "c6b42d77f7c0ca1f4e9d06d31d05766e0c00c3b78d8247f684973dc0ff520bd1"
+    },
+    {
+      "path": "base_male.png",
+      "sha256": "08da7a7fd8fe1ea1fd6235a2de8ac32878568381bd3e8dcc4d65a1e738f78105",
+      "before_sha256": "ee49b125ea9db6fac6e83fc99a94202c3d5b51ac55e2326f73753fff0fddfd60"
+    }
+  ]
+}

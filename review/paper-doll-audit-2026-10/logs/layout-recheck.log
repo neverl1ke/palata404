@@ -1,0 +1,8 @@
+test_wardrobe_final_ux_empty_clothes_and_functional_text_in_both_themes (tests.test_game.GameTests.test_wardrobe_final_ux_empty_clothes_and_functional_text_in_both_themes) ... ok
+test_mobile_catalog_single_scroll_targets_palette_and_player_flow (tests.test_paper_doll_audit.AuditBrowserTests.test_mobile_catalog_single_scroll_targets_palette_and_player_flow) ... ok
+test_wide_wardrobe_keeps_preview_inside_and_scrolls_item_panel_on_mobile (tests.test_game.GameTests.test_wide_wardrobe_keeps_preview_inside_and_scrolls_item_panel_on_mobile) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 50.338s
+
+OK

@@ -1,0 +1,7 @@
+test_patient_tunic_real_catalog_fit_in_both_scenes_genders_modes_and_viewports (tests.test_game.GameTests.test_patient_tunic_real_catalog_fit_in_both_scenes_genders_modes_and_viewports) ... ok
+test_mobile_catalog_single_scroll_targets_palette_and_player_flow (tests.test_paper_doll_audit.AuditBrowserTests.test_mobile_catalog_single_scroll_targets_palette_and_player_flow) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 70.981s
+
+OK

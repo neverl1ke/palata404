@@ -3,8 +3,8 @@
   "archiveSha256": "705e30b925a919beaaf246f499b614ddd1b42de0991d4e38efa5fb65c0c7198e",
   "files": {
     "male_medium_shoulder_length.png": {
-      "blob": "b7eb30d743eece605aeee81ef283122058576c50",
-      "bytes": 1303833,
+      "blob": "98ee161c8e3347534c14dc75198905b58313fa10",
+      "bytes": 1219208,
       "size": [
         1254,
         1254
@@ -13,17 +13,18 @@
         0,
         255
       ],
-      "transparent": 1033084,
+      "transparent": 1059041,
       "bbox": [
-        97,
-        47,
-        1132,
-        1193
-      ]
+        93,
+        46,
+        1138,
+        1196
+      ],
+      "source_blob": "b7eb30d743eece605aeee81ef283122058576c50"
     },
     "female_medium_shoulder_length.png": {
-      "blob": "ec0dcba92ea80c57be5f980fab2bf41609f52cf9",
-      "bytes": 1727325,
+      "blob": "6e4a17a7b33bfa1fc48fb916d94a432399f086fc",
+      "bytes": 1570613,
       "size": [
         1254,
         1254
@@ -32,17 +33,18 @@
         0,
         255
       ],
-      "transparent": 869005,
+      "transparent": 922174,
       "bbox": [
-        89,
-        53,
-        1179,
-        1192
-      ]
+        78,
+        49,
+        1185,
+        1196
+      ],
+      "source_blob": "ec0dcba92ea80c57be5f980fab2bf41609f52cf9"
     },
     "classic_short_unisex_style_B.png": {
-      "blob": "6c81db914dc71fc949411fd33bf5da1d7b45c303",
-      "bytes": 1040910,
+      "blob": "48d947e8c1769333feaa773e42db09964d61df41",
+      "bytes": 913483,
       "size": [
         1254,
         1254
@@ -51,17 +53,18 @@
         0,
         255
       ],
-      "transparent": 1182069,
+      "transparent": 1204572,
       "bbox": [
-        141,
-        217,
-        1117,
-        965
-      ]
+        138,
+        214,
+        1122,
+        968
+      ],
+      "source_blob": "6c81db914dc71fc949411fd33bf5da1d7b45c303"
     },
     "classic_short_unisex_style_A.png": {
-      "blob": "f2bb387957871f0a299d32412f5d6e3f6b25b6a7",
-      "bytes": 1412516,
+      "blob": "2830d1d12047242574e20f93e3a85273cb46072a",
+      "bytes": 1264459,
       "size": [
         1254,
         1254
@@ -70,13 +73,14 @@
         0,
         255
       ],
-      "transparent": 1045856,
+      "transparent": 1071994,
       "bbox": [
-        69,
-        125,
-        1179,
-        1003
-      ]
+        67,
+        124,
+        1182,
+        1008
+      ],
+      "source_blob": "f2bb387957871f0a299d32412f5d6e3f6b25b6a7"
     }
   }
 }

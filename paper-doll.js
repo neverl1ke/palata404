@@ -169,6 +169,24 @@ const PAPER_DOLL_CROWN_CONTOURS = {
     }
 };
 
+function smoothPaperDollCrown(points) {
+    // Sample a quadratic spline in frame coordinates. This rounds measured
+    // two-pixel stair corners without changing the clip below the crown.
+    if (!points || points.length < 3) return points;
+    const result = [points[0]];
+    for (let i=1;i<points.length-1;i++) {
+        const p=points[i],before=points[i-1],after=points[i+1];
+        const a=i===1?before:[(before[0]+p[0])/2,(before[1]+p[1])/2];
+        const b=i===points.length-2?after:[(p[0]+after[0])/2,(p[1]+after[1])/2];
+        for(let j=1;j<=4;j++) {
+            const t=j/4,u=1-t;
+            result.push([u*u*a[0]+2*u*t*p[0]+t*t*b[0],Math.min(90,u*u*a[1]+2*u*t*p[1]+t*t*b[1]+.35)]);
+        }
+    }
+    result.push(points[points.length-1]);
+    return result;
+}
+
 function applyPaperDollCrownMask(image, selectedGender) {
     const hair = selectedPaperDollItem('hair')?.id;
     const overlay = selectedPaperDollItem('face')?.slot === 'face';
@@ -181,7 +199,7 @@ function applyPaperDollCrownMask(image, selectedGender) {
     // The alternative skull has a slightly fuller cap. Hide its outermost
     // antialias seam under messy strands without moving the approved hair.
     if (crown && hair === 'hair-messy' && selectedGender === 'male' && selectedPaperDollItem('face')?.id === 'face-alternative') crown = crown.map(([x,y]) => [x,Math.min(90,y+1.2)]);
-    const outline = crown && [[0,90],[0,1672],[941,1672],[941,90],...crown.slice().reverse()];
+    const outline = crown && [[0,90],[0,1672],[941,1672],[941,90],...smoothPaperDollCrown(crown).slice().reverse()];
     image.style.clipPath = outline ? `polygon(${outline.map(([x,y]) =>
         `${x / PAPER_DOLL_FRAME.width * 100}% ${y / PAPER_DOLL_FRAME.height * 100}%`).join(',')})` : '';
 }
@@ -204,14 +222,18 @@ function renderPaperDollAt(host, prefix = '') {
             if (base) { base.onload = null; base.onerror = null; base.paperHairRequest = null; base.classList.add('hidden'); base.removeAttribute('src'); }
         }
         parts.forEach(part => {
-        const id = prefix + definition.elementId + (layered ? `-${part.id}` : '');
-        if (layered) extraLayers.add(id);
+        // Keep the stable hair-front element for saves, tests and integrations;
+        // only the optional rear strand part is an extra DOM layer.
+        const usesRoot = slot === 'hair' && part.id === 'front';
+        const id = prefix + definition.elementId + (layered && !usesRoot ? `-${part.id}` : '');
+        if (layered && !usesRoot) extraLayers.add(id);
         let image = document.getElementById(id);
         if (!image) {
             image = document.createElement('img'); image.id = id; image.className = 'char-layer hidden';
             image.setAttribute('alt', ''); image.setAttribute('aria-hidden', 'true'); host.appendChild(image);
         }
-        if (layered) image.setAttribute('data-paper-extra', 'true');
+        if (layered && !usesRoot) image.setAttribute('data-paper-extra', 'true');
+        else image.removeAttribute('data-paper-extra');
         const layer = part;
         const candidates = paperDollImageCandidates(layer, selectedGender);
         const order = Number.isFinite(layer.renderOrder) ? Math.max(-100, Math.min(100, layer.renderOrder)) : index;
@@ -236,11 +258,12 @@ function renderPaperDollAt(host, prefix = '') {
             image.classList.add('hidden'); image.removeAttribute('src'); return;
         }
         const color = slot === 'hair' ? normalizeHairColor(paperDollState.appearance.hairColor) : 'original';
+        image.paperHairColorReference = layer.colorReference;
         const request = `${source}|${color}`;
         if (image.paperHairRequest !== request) {
             image.paperHairRequest = request;
             if (color === 'original') setPaperDollImage(image, source, source);
-            else coloredHairSource(source, color).then(colored => {
+            else coloredHairSource(source, color, layer.colorReference).then(colored => {
                 if (image.paperHairRequest === request) setPaperDollImage(image, colored, source);
             }).catch(() => {
                 if (image.paperHairRequest !== request) return;

@@ -6,7 +6,7 @@
       "source": "01_female_base_black.png",
       "source_sha256": "696c0784e360631a327a96f2241f8e138d7450c1766aa7a93baba5f0ede567af",
       "output": "base_female.png",
-      "sha256": "c6b42d77f7c0ca1f4e9d06d31d05766e0c00c3b78d8247f684973dc0ff520bd1",
+      "sha256": "bb5010035527967e880cf75bb9e49b25fc5e6143cc6cfdc5ac9b97bfda963bed",
       "reference_alpha_sha256": "bf67028d57f1cbb0888f2876fd43eb310eff69c9d61ddca3ee796e972eec2c00",
       "registration": "1:1 uploaded RGB and uploaded alpha; local skin-tone transfer; no body-part warp",
       "source_size": [
@@ -17,13 +17,15 @@
       "source_alpha_extrema": [
         0,
         255
-      ]
+      ],
+      "pre_edge_audit_sha256": "c6b42d77f7c0ca1f4e9d06d31d05766e0c00c3b78d8247f684973dc0ff520bd1",
+      "integrated_alpha_sha256": "377369b0483575c0755a4b4b0bb4e028df433a74d34460c15d3bdf79cdb6b9fc"
     },
     {
       "source": "02_male_base_black.png",
       "source_sha256": "8eda64a0915178204f742aa8f71ccb6333091463056cf0609658ebf5d5d2eb06",
       "output": "base_male.png",
-      "sha256": "ee49b125ea9db6fac6e83fc99a94202c3d5b51ac55e2326f73753fff0fddfd60",
+      "sha256": "08da7a7fd8fe1ea1fd6235a2de8ac32878568381bd3e8dcc4d65a1e738f78105",
       "reference_alpha_sha256": "510774e33c0c46bef8402f814b2a4755a678388783887d85f0d92595f89ffed3",
       "registration": "1:1 uploaded RGB and uploaded alpha; local skin-tone transfer; no body-part warp",
       "source_size": [
@@ -34,15 +36,17 @@
       "source_alpha_extrema": [
         0,
         255
-      ]
+      ],
+      "pre_edge_audit_sha256": "ee49b125ea9db6fac6e83fc99a94202c3d5b51ac55e2326f73753fff0fddfd60",
+      "integrated_alpha_sha256": "40e81d70ff44517dbf8fb4017219b4f9bfde2254b11c93b74e963ca26cd98c4a"
     },
     {
       "source": "03_female_new_face.png",
       "source_sha256": "eb78a7f7bc06419042407f24853f8da6665274719feb7a5a11c4be6c2dd82b1b",
       "output": "assets/wardrobe/faces/female_alternative_head.png",
-      "sha256": "64da4dcbc6ff8ff03728779ec54f00de3d7325146ae546604f412299fe28eef3",
+      "sha256": "4b40230cce052db53bb74652368e04a7c048b5eb125af1875002a6265aee5a6e",
       "mask": "assets/wardrobe/faces/masks/female_alternative_body.png",
-      "mask_sha256": "b58194d2c51ee5cb6ab044578b8dbda0e3e0b27cb5e1ded08ed0a77668ecbb67",
+      "mask_sha256": "2069e239ff59a656e140a7edaa133f04829c7c87017174c1507c46f29fb5f548",
       "registration": {
         "scale": 1.02,
         "x": 254.7,
@@ -63,15 +67,17 @@
       "source_alpha_extrema": [
         0,
         255
-      ]
+      ],
+      "pre_edge_audit_sha256": "64da4dcbc6ff8ff03728779ec54f00de3d7325146ae546604f412299fe28eef3",
+      "integrated_alpha_sha256": "2bf0ba2e4803a1b073af85d9ecdba8e7934043462bf9bf7d5dc6d15d1cfaef40"
     },
     {
       "source": "04_male_new_face.png",
       "source_sha256": "e82e59af236bbf0dbd2bdf0cf08b61a2fdca72cc36e0a6deac7ae03d0ad24f01",
       "output": "assets/wardrobe/faces/male_alternative_head.png",
-      "sha256": "ba12c0915719ca04fad2703fc1acc8df40f8707ef038ad5c6f97696fcf0e767e",
+      "sha256": "676842d34f6d032e195c16b369ed5258b02c44a3ff0dfd8a7e7e3730eb6abe7e",
       "mask": "assets/wardrobe/faces/masks/male_alternative_body.png",
-      "mask_sha256": "bfe0a56cfad02f50b2d1742320dd6b8de254afa87b61b1d977073ad59c3a8167",
+      "mask_sha256": "2778f476f1a528ddad6e6fe080295ed97cc513beff8328e792bf3e4fd85444c9",
       "registration": {
         "scale": 0.275,
         "x": 300.5,
@@ -92,13 +98,15 @@
       "source_alpha_extrema": [
         0,
         255
-      ]
+      ],
+      "pre_edge_audit_sha256": "ba12c0915719ca04fad2703fc1acc8df40f8707ef038ad5c6f97696fcf0e767e",
+      "integrated_alpha_sha256": "a5594e3bbe7613d73fd3f8de17dece90864803f1c95f1b11900019e3939ff00e"
     },
     {
       "source": "05_unisex_bob_hair.png",
       "source_sha256": "75010820a93a043f743cdf2f14d1dab98863a38487dba3979d75c7de986b59ae",
       "output": "assets/wardrobe/hair/unisex_bob_bangs.png",
-      "sha256": "2c598420f12009ed5213195cbc109cb1f202504d90aba6170a21b52c88b48f05",
+      "sha256": "0293b69f09c5dc70d756cf060427e32188d982b845ef42d1426a189c2825829d",
       "source_alpha_sha256": "2c97616649379794688aa20b4e86e5280505aef8017ae0da2f59c5e198d01b4c",
       "original_pigment": "#704632",
       "registration": {
@@ -114,7 +122,10 @@
       "source_alpha_extrema": [
         0,
         255
-      ]
+      ],
+      "pre_edge_audit_sha256": "2c598420f12009ed5213195cbc109cb1f202504d90aba6170a21b52c88b48f05",
+      "integrated_alpha_sha256": "ccba8cff427d288160aeaaebfae6599bb4c850acf14bc4d9c6edc3e54294750d"
     }
-  ]
+  ],
+  "edge_audit_reference": "dbbcddff2f79a3393271ac6afc4d261221d9b77e"
 }

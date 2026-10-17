@@ -1,0 +1,48 @@
+{
+  "checked_at_utc": "2026-10-17 19:12 UTC",
+  "javascript": {
+    "tests": 75,
+    "passed": 75,
+    "log": "logs/node-75.log"
+  },
+  "python": {
+    "unique_tests": 85,
+    "final_passed_after_targeted_rechecks": 85,
+    "initial_full_run": {
+      "total": 85,
+      "passed_functions": 82,
+      "failed_functions": 3,
+      "reason": [
+        "Old full-body viewport assertion incompatible with deliberate portrait camera",
+        "Sticky equipment description intercepted four tunic-card clicks at 320px",
+        "New mobile slot text 12px violated existing 13px minimum"
+      ]
+    },
+    "fixes": [
+      "Updated camera test to require a clipped visible stage and identical shared layer geometry",
+      "Equipment descriptions now flow after their cards",
+      "Restored minimum slot font 13px; larger slot sets scroll horizontally"
+    ],
+    "final_recheck": "logs/final-mobile-clothes-recheck.log",
+    "portrait_recheck": "logs/portrait-recheck.log"
+  },
+  "matrix": {
+    "unique_combinations": 90,
+    "render_samples_each_phase": 720,
+    "backgrounds": [
+      "white",
+      "gray",
+      "black",
+      "green"
+    ],
+    "colors": [
+      "original",
+      "white"
+    ],
+    "page_errors": 0,
+    "http_errors": 0
+  },
+  "physical_mobile_device": false,
+  "artistic_repaint_completed": false,
+  "ci_current_commit": "Not yet pushed; see publication.json for subsequent fresh CI run"
+}

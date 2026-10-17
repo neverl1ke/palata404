@@ -3,118 +3,124 @@
   "archiveSha256": "63e37409c703ea2fe9480807214dcf469e46e468ef4cd9f586b580239b6048b0",
   "files": {
     "female_chin_length_bob.png": {
-      "blob": "52bb5078c679c5314facdfda15c313e6f943a98e",
+      "blob": "46db856008e38f0c6c4853b3cd8671e05fd33ff8",
       "size": [
         1254,
         1254
       ],
-      "bytes": 1335158,
+      "bytes": 1215054,
       "alpha": [
         0,
         255
       ],
       "bbox": [
-        82,
-        92,
+        81,
+        91,
         1186,
-        1103
+        1106
       ],
-      "transparent": 1040808
+      "transparent": 1075429,
+      "source_blob": "52bb5078c679c5314facdfda15c313e6f943a98e"
     },
     "female_double_buns.png": {
-      "blob": "40d32b649d000e0b85cd8a22759817accb6f00d0",
+      "blob": "d3024fd3e63029b4c74962f4dabdabcad05b2a6e",
       "size": [
         1254,
         1254
       ],
-      "bytes": 1494515,
+      "bytes": 1303489,
       "alpha": [
         0,
         255
       ],
       "bbox": [
-        44,
+        38,
         52,
-        1211,
-        1237
+        1212,
+        1239
       ],
-      "transparent": 965290
+      "transparent": 1043578,
+      "source_blob": "40d32b649d000e0b85cd8a22759817accb6f00d0"
     },
     "male_chin_length_bob.png": {
-      "blob": "260f8f73f52e4f773a24ff6dea9a167d917a551c",
+      "blob": "f44336724e906bc25d5e365b186f65f54255d454",
       "size": [
         1254,
         1254
       ],
-      "bytes": 1334439,
+      "bytes": 1219878,
       "alpha": [
         0,
         255
       ],
       "bbox": [
-        68,
-        92,
-        1178,
-        1161
+        67,
+        91,
+        1181,
+        1162
       ],
-      "transparent": 998386
+      "transparent": 1024326,
+      "source_blob": "260f8f73f52e4f773a24ff6dea9a167d917a551c"
     },
     "male_double_buns.png": {
-      "blob": "bd2fdcdc9144ca56bd5505ca52b9cbf32e79c96c",
+      "blob": "277b3612c8b86b0042b6c6ccbe44b2df6c8f5509",
       "size": [
         1254,
         1254
       ],
-      "bytes": 1411544,
+      "bytes": 1258054,
       "alpha": [
         0,
         255
       ],
       "bbox": [
-        92,
-        58,
+        84,
+        56,
         1185,
-        1210
+        1220
       ],
-      "transparent": 1018319
+      "transparent": 1069889,
+      "source_blob": "bd2fdcdc9144ca56bd5505ca52b9cbf32e79c96c"
     },
     "male_messy_hair.png": {
-      "blob": "fe4c634939038874feb64a6ae8a381885ba9c616",
+      "blob": "7e8a627aab6653fb14dc8171d612c606f1853744",
       "size": [
         1122,
         1402
       ],
-      "bytes": 1145023,
+      "bytes": 1015942,
       "alpha": [
         0,
         255
       ],
       "bbox": [
-        49,
-        256,
-        1104,
-        1150
+        41,
+        252,
+        1110,
+        1154
       ],
-      "transparent": 1092840
+      "transparent": 1133452,
+      "source_blob": "fe4c634939038874feb64a6ae8a381885ba9c616"
     },
     "female_messy_hair.png": {
-      "blob": "e24823126bace8392c02d0575a3def3ced9288f9",
+      "blob": "c277bb50a16b2c4ef819e020419d9a3a5844d28d",
       "size": [
         1122,
         1402
       ],
-      "bytes": 1675946,
+      "bytes": 1454176,
       "alpha": [
         0,
         255
       ],
       "bbox": [
-        35,
-        31,
-        1112,
-        1358
+        30,
+        30,
+        1115,
+        1363
       ],
-      "transparent": 890212
+      "transparent": 991840,
+      "source_blob": "e24823126bace8392c02d0575a3def3ced9288f9"
     }
   },
   "sourceNames": {

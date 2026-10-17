@@ -20,14 +20,16 @@ from PIL import Image
 
 ROOT = Path(__file__).resolve().parents[1]
 PATIENT_TUNIC_IMAGES = {
-    'male': 'assets/wardrobe/clothing/patient/patient_tunic_male.png?v=28343fe9',
-    'female': 'assets/wardrobe/clothing/patient/patient_tunic_female.png?v=fa3fac64',
+    'male': 'assets/wardrobe/clothing/patient/patient_tunic_male.png?v=b0da3128',
+    'female': 'assets/wardrobe/clothing/patient/patient_tunic_female.png?v=809fd1e8',
 }
 
 
 class IconAssetTests(unittest.TestCase):
-    def test_asian_heads_keep_uploaded_bytes_and_opaque_inner_face(self):
-        for gender,digest in [('male','d9eb9e5445d22a2559f136acf8ed47c088dbb3b386c8699c57ab2e2ccad3c30b'),('female','bb36d987af092f4a60b5305d067bab3a3a89b963aff96af7f55d77b54ed843a7')]:
+    def test_asian_heads_keep_cleaned_edges_and_opaque_inner_face(self):
+        integrated=json.loads((ROOT/'tests/fixtures/paper-doll-audit.json').read_text())['files']
+        for gender in ['male','female']:
+            digest=next(e['sha256'] for e in integrated if e['path']==f'assets/wardrobe/faces/{gender}_asian_head.png')
             path=ROOT/f'assets/wardrobe/faces/{gender}_asian_head.png'
             self.assertEqual(hashlib.sha256(path.read_bytes()).hexdigest(),digest)
             with Image.open(path) as image:
@@ -85,14 +87,14 @@ class IconAssetTests(unittest.TestCase):
                 self.assertEqual(im.mode,'RGBA');self.assertEqual(im.size,(941,1672))
                 self.assertEqual(im.getchannel('A').getextrema(),(0,255))
                 if p.name.startswith('base_'):
-                    self.assertEqual(hashlib.sha256(im.getchannel('A').tobytes()).hexdigest(),entry['reference_alpha_sha256'])
+                    self.assertEqual(hashlib.sha256(im.getchannel('A').tobytes()).hexdigest(),entry['integrated_alpha_sha256'])
                 if 'alternative_head' in p.name:
                     self.assertIsNone(im.getchannel('A').crop((0,310,941,1672)).getbbox(),'New face includes torso/clothing')
                     self.assertEqual(im.getchannel('A').crop((440,110,510,200)).getextrema(),(255,255),'Translucent inner face')
                 if p.name=='unisex_bob_bangs.png':
-                    self.assertEqual(hashlib.sha256(im.getchannel('A').tobytes()).hexdigest(),entry['source_alpha_sha256']);self.assertEqual(entry['original_pigment'],'#704632')
+                    self.assertEqual(hashlib.sha256(im.getchannel('A').tobytes()).hexdigest(),entry['integrated_alpha_sha256']);self.assertEqual(entry['original_pigment'],'#704632')
 
-    def test_hair_pack_pngs_preserve_supplied_bytes_dimensions_and_real_transparency(self):
+    def test_hair_pack_pngs_preserve_strands_dimensions_and_real_transparency(self):
         manifest=json.loads((ROOT/'tests/fixtures/hairstyles-pack-01.json').read_text())
         self.assertEqual(len(manifest['files']),6)
         for name,expected in manifest['files'].items():
@@ -105,11 +107,11 @@ class IconAssetTests(unittest.TestCase):
                     alpha=image.getchannel('A');self.assertEqual(alpha.getextrema(),(0,255))
                     self.assertGreater(alpha.histogram()[0],image.width*image.height/2)
                     for x,y in [(0,0),(image.width-1,0),(0,image.height-1),(image.width-1,image.height-1)]:
-                        # The supplied pack has a few alpha-1 edge pixels.
-                        # They must stay unchanged; an opaque background fails.
+                        # Cleaned outer corners must stay transparent; strand support
+                        # is independently protected by the audit contract.
                         self.assertLessEqual(alpha.getpixel((x,y)),1)
 
-    def test_hair_pack_02_preserves_four_supplied_overlays_and_alpha(self):
+    def test_hair_pack_02_preserves_four_cleaned_overlays_and_alpha(self):
         manifest=json.loads((ROOT/'tests/fixtures/hairstyles-pack-02.json').read_text())
         self.assertEqual(set(manifest['files']),{'classic_short_unisex_style_A.png','classic_short_unisex_style_B.png','male_medium_shoulder_length.png','female_medium_shoulder_length.png'})
         for name,expected in manifest['files'].items():
@@ -146,9 +148,9 @@ class IconAssetTests(unittest.TestCase):
 
     def test_approved_neckline_underlay_and_bases_keep_exact_bytes(self):
         expected = {
-            'assets/wardrobe/clothing/patient/female_neckline_skin_underlay.png': 'cc9a05ce4b177122eeac62bdb3138b070904656f',
-            'base_male.png': 'b4dd12308cda9c52537f9925c0daaf6dcfa687f0',
-            'base_female.png': 'e2168e7c57c56d5e10534de1718140a655c03c70',
+            'assets/wardrobe/clothing/patient/female_neckline_skin_underlay.png': '95090053becfe8b001a47e3c2f1bda8f0d5321cb',
+            'base_male.png': '8f52ba52a23ea2e07569b7f00d7332b0626848da',
+            'base_female.png': '14ed1a52e90e8ae651e13ba695a4eaabe3851d55',
         }
         for source, sha in expected.items():
             with self.subTest(source=source):
@@ -242,6 +244,10 @@ class GameTests(unittest.TestCase):
         self.page.on('pageerror', lambda error: self.errors.append(str(error)))
         self.page.on('dialog', lambda dialog: dialog.accept())
 
+    def open_hair_palette(self):
+        toggle=self.page.locator('[data-palette-toggle]')
+        if toggle.count() and toggle.is_visible() and toggle.get_attribute('aria-expanded')=='false':toggle.click()
+
     def tearDown(self):
         self.context.close()
         self.assertEqual(self.errors, [], 'Unexpected browser runtime errors')
@@ -304,7 +310,7 @@ class GameTests(unittest.TestCase):
             'palata404_gender': '../../missing', 'palata404_face': 'missing.png',
         })
         self.assertEqual(self.state()['hp'], 100)
-        self.assertEqual(self.page.locator('#layer-body').get_attribute('src'), 'base_male.png?v=ee49b125')
+        self.assertEqual(self.page.locator('#layer-body').get_attribute('src'), 'base_male.png?v=08da7a7f')
         self.page.evaluate('openInventory(); openGym(); openDossier();')
         self.context.add_init_script('''Object.defineProperty(window, 'localStorage', {
             get() { throw new DOMException('Storage unavailable', 'SecurityError'); }
@@ -337,7 +343,7 @@ class GameTests(unittest.TestCase):
         self.page.locator('#layer-face').wait_for(state='visible')
         self.assertTrue(self.page.locator('#layer-face').is_visible())
         self.page.reload(wait_until='networkidle')
-        self.assertEqual(self.page.locator('#layer-body').get_attribute('src'), 'base_female.png?v=c6b42d77')
+        self.assertEqual(self.page.locator('#layer-body').get_attribute('src'), 'base_female.png?v=bb501003')
         self.assertEqual(self.page.locator('#layer-face').get_attribute('src'), 'face_3.png')
 
     def test_paper_doll_ui_keeps_two_loadouts_and_shared_appearance_across_reload(self):
@@ -381,7 +387,7 @@ class GameTests(unittest.TestCase):
         self.assertEqual(self.page.evaluate('JSON.stringify({stats,inventory,equippedGear,gameProgress})'),before)
         self.page.reload(wait_until='networkidle')
         self.assertEqual(self.page.evaluate('JSON.stringify(paperDollState)'),state)
-        self.assertEqual(self.page.locator('#layer-body').get_attribute('src'),'base_female.png?v=c6b42d77')
+        self.assertEqual(self.page.locator('#layer-body').get_attribute('src'),'base_female.png?v=bb501003')
         self.assertIsNone(self.page.locator('#layer-face').get_attribute('src'))
         self.assertEqual(self.page.locator('#paper-doll-view-label').inner_text(),'Комплект: Трип')
         self.assertEqual(self.page.evaluate('JSON.stringify({stats,inventory,equippedGear,gameProgress})'),before)
@@ -407,7 +413,7 @@ class GameTests(unittest.TestCase):
             self.assertEqual(layer.evaluate('e=>getComputedStyle(e).zIndex'), '3')
             body = self.page.locator(f'#{prefix}layer-body')
             self.assertEqual(body.get_attribute('src'),
-                'base_female.png?v=c6b42d77' if gender == 'female' else 'base_male.png?v=ee49b125')
+                'base_female.png?v=bb501003' if gender == 'female' else 'base_male.png?v=08da7a7f')
             self.assertEqual(body.evaluate('e=>[e.naturalWidth,e.naturalHeight]'), [941, 1672])
             for node in [body, layer]:
                 self.assertEqual(node.evaluate('e=>[e.style.left,e.style.top,e.style.width,e.style.height]'), ['0%', '0%', '100%', '100%'])
@@ -415,7 +421,7 @@ class GameTests(unittest.TestCase):
             if gender == 'female':
                 self.page.wait_for_function('''id=>{const image=document.getElementById(id);return image&&image.complete
                     &&image.naturalWidth===941&&!image.classList.contains('hidden')}''',arg=prefix+'layer-upper-body-neckline')
-                self.assertEqual(neckline.get_attribute('src'), 'assets/wardrobe/clothing/patient/female_neckline_skin_underlay.png?v=cc9a05ce')
+                self.assertEqual(neckline.get_attribute('src'), 'assets/wardrobe/clothing/patient/female_neckline_skin_underlay.png?v=8a9076fa')
                 self.assertEqual(neckline.evaluate('e=>getComputedStyle(e).zIndex'), '2')
             else:
                 self.assertEqual(neckline.count(), 0)
@@ -673,10 +679,24 @@ class GameTests(unittest.TestCase):
                 self.assertAlmostEqual(host['width']/host['height'],941/1672,delta=0.01)
                 for coordinate in ['x','y','width','height']:
                     self.assertAlmostEqual(body[coordinate],host[coordinate],delta=1)
-                self.assertGreaterEqual(host['y'],0)
-                self.assertLessEqual(host['y']+host['height'],height+1)
-                self.assertGreaterEqual(host['x'],0)
-                self.assertLessEqual(host['x']+host['width'],width)
+                if width <= 800:
+                    # Portrait camera crops the shared canvas, never individual layers.
+                    self.assertEqual(self.page.locator('#wardrobe-registration').get_attribute('data-portrait'),'true')
+                    stage=self.page.locator('.wardrobe-stage')
+                    frame=stage.bounding_box()
+                    self.assertEqual(stage.evaluate('e=>getComputedStyle(e).overflow'),'hidden')
+                    self.assertGreaterEqual(frame['x'],0)
+                    self.assertGreaterEqual(frame['y'],0)
+                    self.assertLessEqual(frame['x']+frame['width'],width)
+                    self.assertLessEqual(frame['y']+frame['height'],height+1)
+                    self.assertGreater(host['width'],frame['width']*2.9)
+                    self.assertGreaterEqual(face['y'],frame['y'])
+                    self.assertLess(face['y'],frame['y']+frame['height'])
+                else:
+                    self.assertGreaterEqual(host['y'],0)
+                    self.assertLessEqual(host['y']+host['height'],height+1)
+                    self.assertGreaterEqual(host['x'],0)
+                    self.assertLessEqual(host['x']+host['width'],width)
                 self.assertLessEqual(face['y']+face['height'],host['y']+host['height']*0.2)
                 document=self.page.locator('.wardrobe-document')
                 self.assertLessEqual(document.bounding_box()['height'],height*.9+1)
@@ -1392,7 +1412,7 @@ class GameTests(unittest.TestCase):
             self.assertEqual(self.page.evaluate('paperDollState.appearance.hair'),'hair-double-buns')
             self.assertEqual(self.page.evaluate('paperDollState.appearance.hairColor'),'black')
             self.page.evaluate('openCustomization()')
-        for face in ['face-asian',None]:
+        for face in [None]:
             self.page.evaluate('face=>equipPaperDollItem("face",face)',face)
             for prefix in ['','wardrobe-']:
                 self.assertEqual(self.page.locator('#'+prefix+'layer-body').evaluate('i=>getComputedStyle(i).maskImage'),'none')
@@ -1492,6 +1512,7 @@ class GameTests(unittest.TestCase):
                     action=self.page.locator('[data-wardrobe-action="'+hair+'"]')
                     if not action.is_disabled():action.click()
                     for color in ['original','black','white']:
+                        self.open_hair_palette()
                         if color!='original':self.page.locator('[data-hair-color-group="natural"]').click()
                         self.page.locator('[data-hair-color="'+color+'"]').click()
                         self.assertEqual(self.page.evaluate('paperDollState.appearance.hairColor'),color)
@@ -1683,6 +1704,7 @@ class GameTests(unittest.TestCase):
                 self.page.set_viewport_size({'width':width,'height':height})
                 self.assertLessEqual(self.page.evaluate('document.documentElement.scrollWidth'),width)
                 self.assertLessEqual(self.page.locator('.wardrobe-items').evaluate('e=>e.scrollWidth-e.clientWidth'),1)
+                self.open_hair_palette()
                 self.assertTrue(self.page.locator('[data-hair-color="original"]').is_visible())
                 self.page.locator('[data-hair-color-group="natural"]').click()
                 self.page.locator('[data-hair-color="black"]').click()

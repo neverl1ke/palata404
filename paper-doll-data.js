@@ -22,20 +22,21 @@ const PAPER_DOLL_SLOTS = {
     accessory: { label: 'Аксесуар', elementId: 'layer-accessory', icon: 'key' }
 };
 // Hashes of the integrated bodies invalidate previously cached art.
-const PAPER_DOLL_BODIES = { male: 'base_male.png?v=ee49b125', female: 'base_female.png?v=c6b42d77' };
+const PAPER_DOLL_BODIES = { male: 'base_male.png?v=08da7a7f', female: 'base_female.png?v=bb501003' };
 // The six retired trial faces stay on disk, but are not catalog entries.
 // New approved cosmetics can use the face slot, placement and multipart layers.
 const PAPER_DOLL_RETIRED_FACES = new Set(Array.from({ length: 6 }, (_, index) => `face_${index + 1}.png`));
 const PAPER_DOLL_TUNIC_IMAGES = Object.freeze({
-    male: 'assets/wardrobe/clothing/patient/patient_tunic_male.png?v=28343fe9',
-    female: 'assets/wardrobe/clothing/patient/patient_tunic_female.png?v=fa3fac64'
+    male: 'assets/wardrobe/clothing/patient/patient_tunic_male.png?v=b0da3128',
+    female: 'assets/wardrobe/clothing/patient/patient_tunic_female.png?v=809fd1e8'
 });
 const PAPER_DOLL_ITEMS = [
     { id: 'face-asian', slot: 'face', name: 'Азійський тип обличчя', icon: 'user', availableByDefault: true,
         fittedToGender: true, description: 'Варіант голови для обраного базового аватара.',
         // DOM image renderer: above the body (0), below clothing and hair (9).
         renderOrder: 1,
-        genderVariants: { male: 'assets/wardrobe/faces/male_asian_head.png?v=d9eb9e54', female: 'assets/wardrobe/faces/female_asian_head.png?v=bb36d987' },
+        genderVariants: { male: 'assets/wardrobe/faces/male_asian_head.png?v=70b92522', female: 'assets/wardrobe/faces/female_asian_head.png?v=b061f7b2' },
+        bodyMaskByGender: { male: 'assets/wardrobe/faces/masks/male_asian_body.png?v=b700eab7', female: 'assets/wardrobe/faces/masks/female_asian_body.png?v=3412bd3a' },
         placementByGender: {
             male: { x: 0, y: 0, width: 941, height: 1672 },
             female: { x: 0, y: 0, width: 941, height: 1672 }
@@ -44,8 +45,8 @@ const PAPER_DOLL_ITEMS = [
         fittedToGender: true, description: 'Молодий тип обличчя, 18–20 років.',
         // DOM image renderer: above the body (0), below clothing and hair (9).
         renderOrder: 1,
-        genderVariants: { male: 'assets/wardrobe/faces/male_young_head.png?v=fb485d56', female: 'assets/wardrobe/faces/female_young_head.png?v=8f652b41' },
-        bodyMaskByGender: { male: 'assets/wardrobe/faces/masks/male_young_body.png?v=ae3583dd', female: 'assets/wardrobe/faces/masks/female_young_body.png?v=6da8b2d4' },
+        genderVariants: { male: 'assets/wardrobe/faces/male_young_head.png?v=cfcefada', female: 'assets/wardrobe/faces/female_young_head.png?v=b69fc6e7' },
+        bodyMaskByGender: { male: 'assets/wardrobe/faces/masks/male_young_body.png?v=73bad65e', female: 'assets/wardrobe/faces/masks/female_young_body.png?v=3f8e960c' },
         placementByGender: {
             male: { x: 0, y: 0, width: 941, height: 1672 },
             female: { x: 0, y: 0, width: 941, height: 1672 }
@@ -54,8 +55,8 @@ const PAPER_DOLL_ITEMS = [
         fittedToGender: true, description: 'Виснажений, тривожний тип обличчя.',
         // DOM image renderer: above the body (0), below clothing and hair (9).
         renderOrder: 1,
-        genderVariants: { male: 'assets/wardrobe/faces/male_exhausted_head.png?v=fa13f69a', female: 'assets/wardrobe/faces/female_exhausted_head.png?v=00f05b07' },
-        bodyMaskByGender: { male: 'assets/wardrobe/faces/masks/male_exhausted_body.png?v=91eb3993', female: 'assets/wardrobe/faces/masks/female_exhausted_body.png?v=110a9598' },
+        genderVariants: { male: 'assets/wardrobe/faces/male_exhausted_head.png?v=82576dc0', female: 'assets/wardrobe/faces/female_exhausted_head.png?v=9135238f' },
+        bodyMaskByGender: { male: 'assets/wardrobe/faces/masks/male_exhausted_body.png?v=95e48d48', female: 'assets/wardrobe/faces/masks/female_exhausted_body.png?v=9b96cff8' },
         placementByGender: {
             male: { x: 0, y: 0, width: 941, height: 1672 },
             female: { x: 0, y: 0, width: 941, height: 1672 }
@@ -64,16 +65,16 @@ const PAPER_DOLL_ITEMS = [
         fittedToGender: true, description: 'Старший тип обличчя, 60+ років.',
         // DOM image renderer: above the body (0), below clothing and hair (9).
         renderOrder: 1,
-        genderVariants: { male: 'assets/wardrobe/faces/male_elder_head.png?v=ac9ec1ca', female: 'assets/wardrobe/faces/female_elder_head.png?v=20d53aaf' },
-        bodyMaskByGender: { male: 'assets/wardrobe/faces/masks/male_elder_body.png?v=6b4e8d41', female: 'assets/wardrobe/faces/masks/female_elder_body.png?v=3e5f78f5' },
+        genderVariants: { male: 'assets/wardrobe/faces/male_elder_head.png?v=c870f323', female: 'assets/wardrobe/faces/female_elder_head.png?v=90f75a47' },
+        bodyMaskByGender: { male: 'assets/wardrobe/faces/masks/male_elder_body.png?v=191ad94a', female: 'assets/wardrobe/faces/masks/female_elder_body.png?v=a9f8e7b6' },
         placementByGender: {
             male: { x: 0, y: 0, width: 941, height: 1672 },
             female: { x: 0, y: 0, width: 941, height: 1672 }
         } },
     { id: 'face-alternative', slot: 'face', name: 'Нове обличчя', icon: 'user', availableByDefault: true,
         fittedToGender: true, description: 'Новий затверджений варіант обличчя для обраної статі.', renderOrder: 1,
-        genderVariants: { male: 'assets/wardrobe/faces/male_alternative_head.png?v=ba12c091', female: 'assets/wardrobe/faces/female_alternative_head.png?v=64da4dcb' },
-        bodyMaskByGender: { male: 'assets/wardrobe/faces/masks/male_alternative_body.png?v=bfe0a56c', female: 'assets/wardrobe/faces/masks/female_alternative_body.png?v=b58194d2' },
+        genderVariants: { male: 'assets/wardrobe/faces/male_alternative_head.png?v=676842d3', female: 'assets/wardrobe/faces/female_alternative_head.png?v=4b40230c' },
+        bodyMaskByGender: { male: 'assets/wardrobe/faces/masks/male_alternative_body.png?v=2778f476', female: 'assets/wardrobe/faces/masks/female_alternative_body.png?v=2069e239' },
         placementByGender: {
             male: { x: 0, y: 0, width: 941, height: 1672 },
             female: { x: 0, y: 0, width: 941, height: 1672 }
@@ -82,48 +83,56 @@ const PAPER_DOLL_ITEMS = [
         noImageRequired: true, description: 'Початковий вигляд затвердженого аватара без накладки волосся.' },
     { id: 'hair-bob-bangs', slot: 'hair', name: 'Каре з чубчиком', icon: 'user', availableByDefault: true,
         genders: ['female'], fittedToGender: true, description: 'Каштанове жіноче каре з чубчиком.',
-        genderVariants: { female: 'assets/wardrobe/hair/unisex_bob_bangs.png?v=2c598420' },
+        genderVariants: { female: 'assets/wardrobe/hair/unisex_bob_bangs.png?v=0293b69f' },
         placementByGender: {
             female: { x: 365.9, y: -59.9, width: 216.43, height: 384.56 }
         } },
     { id: 'hair-messy', slot: 'hair', name: 'Розкуйовджена зачіска', icon: 'user', availableByDefault: true,
         fittedToGender: true, description: 'Розкуйовджене волосся з першого комплекту зачісок.',
-        genderVariants: { male: 'assets/wardrobe/hair/male_messy_hair.png?v=fe4c6349', female: 'assets/wardrobe/hair/female_messy_hair.png?v=e2482312' },
+        genderVariants: { male: 'assets/wardrobe/hair/male_messy_hair.png?v=df439187', female: 'assets/wardrobe/hair/female_messy_hair.png?v=fe47846c' },
         placementByGender: {
             male: { x: 364.082398407408, y: -29.293952, width: 209.373552192592, height: 256.9470636, stretchX: true },
             female: { x: 343, y: -5, width: 246.84, height: 308.44 }
         } },
     { id: 'hair-bob', slot: 'hair', name: 'Каре до підборіддя', icon: 'user', availableByDefault: true,
         fittedToGender: true, description: 'Каре до підборіддя з першого комплекту зачісок.',
-        genderVariants: { male: 'assets/wardrobe/hair/male_chin_length_bob.png?v=260f8f73', female: 'assets/wardrobe/hair/female_chin_length_bob.png?v=52bb5078' },
+        genderVariants: { male: 'assets/wardrobe/hair/male_chin_length_bob.png?v=978335df', female: 'assets/wardrobe/hair/female_chin_length_bob.png?v=b8f42959' },
         placementByGender: {
             male: { x: 352.60516025, y: 14.4574795, width: 236.60111475, height: 236.60111475 },
             female: { x: 344.8386675, y: 6.7274324, width: 246.2881707, height: 246.2881707 }
         } },
     { id: 'hair-double-buns', slot: 'hair', name: 'Два бокові пучки з локонами', icon: 'user', availableByDefault: true,
         fittedToGender: true, description: 'Два бокові пучки з локонами з першого комплекту зачісок.',
-        genderVariants: { male: 'assets/wardrobe/hair/male_double_buns.png?v=bd2fdcdc', female: 'assets/wardrobe/hair/female_double_buns.png?v=40d32b64' },
+        genderVariants: { male: 'assets/wardrobe/hair/male_double_buns.png?v=5b2aae59', female: 'assets/wardrobe/hair/female_double_buns.png?v=6290b9c9' },
         placementByGender: {
             male: { x: 317.05, y: 4.5, width: 304.722, height: 304.722 },
             female: { x: 315.058, y: -0.896, width: 306.87888, height: 306.87888 }
         } },
     { id: 'hair-classic-short', slot: 'hair', name: 'Класична коротка стрижка', icon: 'user', availableByDefault: true,
         fittedToGender: true, description: 'Затверджена зачіска з другого комплекту.',
-        genderVariants: { male: 'assets/wardrobe/hair/classic_short_unisex_style_A.png?v=f2bb3879', female: 'assets/wardrobe/hair/classic_short_unisex_style_A.png?v=f2bb3879' },
+        genderVariants: { male: 'assets/wardrobe/hair/classic_short_unisex_style_A.png?v=1ddab573', female: 'assets/wardrobe/hair/classic_short_unisex_style_A.png?v=1ddab573' },
         placementByGender: {
             male: { x: 370.5, y: 0, width: 200.64, height: 200.64 },
             female: { x: 372.5, y: -5, width: 196.878, height: 196.878 }
         } },
     { id: 'hair-textured-short', slot: 'hair', name: 'Коротка текстурована стрижка', icon: 'user', availableByDefault: true,
         fittedToGender: true, description: 'Затверджена зачіска з другого комплекту.',
-        genderVariants: { male: 'assets/wardrobe/hair/classic_short_unisex_style_B.png?v=6c81db91', female: 'assets/wardrobe/hair/classic_short_unisex_style_B.png?v=6c81db91' },
+        genderVariants: { male: 'assets/wardrobe/hair/classic_short_unisex_style_B.png?v=9ad8b4e1', female: 'assets/wardrobe/hair/classic_short_unisex_style_B.png?v=9ad8b4e1' },
         placementByGender: {
             male: { x: 369.9884556812, y: -7.8760272324, width: 201.8883785688, height: 201.8883785688 },
             female: { x: 372.0210235314683, y: -13.885696649022648, width: 201.45305805472074, height: 201.45305805472074 }
         } },
     { id: 'hair-shoulder-length', slot: 'hair', name: 'Волосся до плечей', icon: 'user', availableByDefault: true,
         fittedToGender: true, description: 'Затверджена зачіска з другого комплекту.',
-        genderVariants: { male: 'assets/wardrobe/hair/male_medium_shoulder_length.png?v=b7eb30d7', female: 'assets/wardrobe/hair/female_medium_shoulder_length.png?v=ec0dcba9' },
+        genderVariants: { male: 'assets/wardrobe/hair/male_medium_shoulder_length.png?v=88350a30', female: 'assets/wardrobe/hair/female_medium_shoulder_length.png?v=79b8f5b8' },
+        layers: [
+            { id: 'rear', genders: ['male'], renderOrder: -1, fittedToGender: true,
+                genderVariants: { male: 'assets/wardrobe/hair/male_medium_shoulder_length_rear.png?v=895e676c' },
+                colorReference: 'assets/wardrobe/hair/male_medium_shoulder_length.png?v=88350a30',
+                placementByGender: { male: { x: 0, y: 0, width: 941, height: 1672 } } },
+            { id: 'front', renderOrder: 9, fittedToGender: true,
+                genderVariants: { male: 'assets/wardrobe/hair/male_medium_shoulder_length.png?v=88350a30', female: 'assets/wardrobe/hair/female_medium_shoulder_length.png?v=79b8f5b8' } }
+        ],
         placementByGender: {
             male: { x: 330.705600351, y: 21.61907, width: 277.29702, height: 277.29702 },
             female: { x: 319.19278624, y: 13.02804571232, width: 290.59567314624, height: 290.59567314624 }
@@ -136,7 +145,7 @@ const PAPER_DOLL_ITEMS = [
         layers: [
             { id: 'front', genderVariants: PAPER_DOLL_TUNIC_IMAGES },
             { id: 'neckline', genders: ['female'], renderOrder: 2,
-                genderVariants: { female: 'assets/wardrobe/clothing/patient/female_neckline_skin_underlay.png?v=cc9a05ce' } }
+                genderVariants: { female: 'assets/wardrobe/clothing/patient/female_neckline_skin_underlay.png?v=8a9076fa' } }
         ]
     },
     { id: 'gear-knife', slot: 'weapon', name: 'Іржавий ніж', inventoryName: 'Іржавий ніж', inventoryCategory: 'weapon', image: null, icon: 'knife' },

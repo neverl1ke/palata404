@@ -27,15 +27,22 @@ function normalizeHairColor(id) {
 
 // Map the original strand lighting onto the chosen pigment. Alpha is never written.
 // A histogram median makes the same color usable across differently lit source art.
-function recolorHairPixels(pixels, hex) {
-    const target = [1,3,5].map(start => parseInt(hex.slice(start,start + 2),16));
+function hairLuminanceMedian(pixels) {
     const histogram = new Uint32Array(256);
     let count = 0;
     const luminance = i => Math.round(.2126*pixels[i] + .7152*pixels[i+1] + .0722*pixels[i+2]);
     for (let i=0; i<pixels.length; i+=4) if (pixels[i+3] >= 192) { histogram[luminance(i)]++; count++; }
-    if (!count) return pixels;
+    if (!count) return null;
     let median=1, cumulative=0;
     for (; median<255; median++) { cumulative+=histogram[median]; if (cumulative>=count/2) break; }
+    return median;
+}
+
+function recolorHairPixels(pixels, hex, referenceMedian = null) {
+    const target = [1,3,5].map(start => parseInt(hex.slice(start,start + 2),16));
+    const median = referenceMedian ?? hairLuminanceMedian(pixels);
+    if (median === null) return pixels;
+    const luminance = i => Math.round(.2126*pixels[i] + .7152*pixels[i+1] + .0722*pixels[i+2]);
     for (let i=0; i<pixels.length; i+=4) {
         if (!pixels[i+3]) continue;
         const shade=Math.pow(luminance(i)/median,.85);
@@ -45,10 +52,33 @@ function recolorHairPixels(pixels, hex) {
     return pixels;
 }
 
-function coloredHairSource(source, id) {
+const hairReferenceMedians = new Map();
+function hairReferenceMedian(source) {
+    if (hairReferenceMedians.has(source)) return hairReferenceMedians.get(source);
+    const promise = new Promise((resolve,reject) => {
+        const image = new Image();
+        image.onload = () => {
+            try {
+                const canvas = document.createElement('canvas');
+                canvas.width = image.naturalWidth; canvas.height = image.naturalHeight;
+                const context = canvas.getContext('2d',{willReadFrequently:true});
+                context.drawImage(image,0,0);
+                resolve(hairLuminanceMedian(context.getImageData(0,0,canvas.width,canvas.height).data));
+            } catch (error) { reject(error); }
+        };
+        image.onerror = () => reject(new Error('Не вдалося завантажити еталон відтінку волосся'));
+        image.src = source;
+    });
+    hairReferenceMedians.set(source,promise);
+    promise.catch(() => hairReferenceMedians.delete(source));
+    while (hairReferenceMedians.size > HAIR_COLOR_CACHE_LIMIT) hairReferenceMedians.delete(hairReferenceMedians.keys().next().value);
+    return promise;
+}
+
+function coloredHairSource(source, id, referenceSource = null) {
     const color=HAIR_COLORS.find(entry => entry.id===id);
     if (!color?.hex) return Promise.resolve(source);
-    const key=`${source}|${id}`;
+    const key=`${source}|${id}${referenceSource ? '|'+referenceSource : ''}`;
     if (hairColorCache.has(key)) {
         const cached=hairColorCache.get(key);
         hairColorCache.delete(key); hairColorCache.set(key,cached);
@@ -56,14 +86,15 @@ function coloredHairSource(source, id) {
     }
     const promise=new Promise((resolve,reject) => {
         const image=new Image();
-        image.onload=() => {
+        image.onload=async () => {
             try {
                 const canvas=document.createElement('canvas');
                 canvas.width=image.naturalWidth; canvas.height=image.naturalHeight;
                 const context=canvas.getContext('2d',{willReadFrequently:true});
                 context.drawImage(image,0,0);
                 const frame=context.getImageData(0,0,canvas.width,canvas.height);
-                recolorHairPixels(frame.data,color.hex);
+                const referenceMedian = referenceSource ? await hairReferenceMedian(referenceSource) : null;
+                recolorHairPixels(frame.data,color.hex,referenceMedian);
                 context.putImageData(frame,0,0);
                 resolve(canvas.toDataURL('image/png'));
             } catch (error) { reject(error); }
