@@ -1,0 +1,39 @@
+{
+  "branch": "main",
+  "javascript": {
+    "tests": 72,
+    "passed": 72
+  },
+  "python_chromium": {
+    "unique_tests": 76,
+    "browser_tests": 65,
+    "asset_tests": 11,
+    "browser_shards": [
+      22,
+      22,
+      21
+    ],
+    "passed": 76,
+    "after_neck_rebase_rechecks": {
+      "asset_tests": 11,
+      "browser_tests": 3
+    },
+    "note": "Initial asset failures exposed old female neck compatibility. Fixed necks/masks; strict asset checks and affected browser scenarios rerun successfully."
+  },
+  "screenshots": 40,
+  "gallery_page_errors": [],
+  "mobile_viewports": [
+    [
+      320,
+      568
+    ],
+    [
+      390,
+      844
+    ],
+    [
+      768,
+      1024
+    ]
+  ]
+}

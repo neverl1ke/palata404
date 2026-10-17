@@ -1332,11 +1332,11 @@ test('all face-pack types select the correct gender, preserve saves and reset lo
     assert.equal(g.run('JSON.stringify({hair:PAPER_DOLL_ITEMS.filter(i=>i.slot==="hair"),colors:HAIR_COLORS})'),approved);
 });
 
-test('the new paired face and shared bob use real files and persist without altering old selections', () => {
+test('the paired face and female bob use real files and persist without altering loadouts', () => {
     const g=game();
     const before=g.run('JSON.stringify({stats,inventory,equippedGear,patient:paperDollState.patientLoadout,combat:paperDollState.combatLoadout})');
     for(const gender of ['male','female']) {
-        g.run(`setGender('${gender}');equipPaperDollItem('face','face-alternative');equipPaperDollItem('hair','hair-bob-bangs');`);
+        g.run(`setGender('${gender}');equipPaperDollItem('face','face-alternative');equipPaperDollItem('hair','${gender==='female'?'hair-bob-bangs':'hair-shoulder-length'}');`);
         for(const slot of ['face','hair']) {
             const source=g.run(`selectedPaperDollItem('${slot}').genderVariants['${gender}']`);
             assert.ok(fs.existsSync(path.join(root,source.split('?')[0])),source);
@@ -1350,9 +1350,26 @@ test('the new paired face and shared bob use real files and persist without alte
         assert.ok(fs.existsSync(path.join(root,mask.split('?')[0])));
         const restored=game(Object.fromEntries(g.storage));
         assert.equal(restored.run('paperDollState.appearance.face'),'face-alternative');
-        assert.equal(restored.run('paperDollState.appearance.hair'),'hair-bob-bangs');
+        assert.equal(restored.run('paperDollState.appearance.hair'),gender==='female'?'hair-bob-bangs':'hair-shoulder-length');
         assert.equal(restored.run('paperDollState.selectedGender'),gender);
     }
-    assert.equal(g.run('PAPER_DOLL_ITEMS.find(i=>i.id==="hair-bob-bangs").genderVariants.male===PAPER_DOLL_ITEMS.find(i=>i.id==="hair-bob-bangs").genderVariants.female'),true);
+    assert.equal(g.run('PAPER_DOLL_ITEMS.find(i=>i.id==="hair-bob-bangs").genderVariants.male'),undefined);
     assert.equal(g.run('JSON.stringify({stats,inventory,equippedGear,patient:paperDollState.patientLoadout,combat:paperDollState.combatLoadout})'),before);
+});
+
+
+test('female bangs are hidden and rejected for men and old male saves migrate safely', () => {
+    const old={schemaVersion:2,selectedGender:'male',appearance:{hair:'hair-bob-bangs',face:'face-young',hairColor:'black'},patientLoadout:{upperBody:'patient-tunic'},combatLoadout:{}};
+    const g=game({palata404_paper_doll:JSON.stringify(old)});
+    assert.equal(g.run('paperDollState.appearance.hair'),'hair-none');
+    assert.equal(g.run('paperDollState.appearance.face'),'face-young');
+    assert.equal(g.run('paperDollState.appearance.hairColor'),'black');
+    g.run('selectWardrobeCategory("appearance");selectWardrobeSlot("hair")');
+    assert.equal(g.run('wardrobeVisibleItems().some(i=>i.id==="hair-bob-bangs")'),false);
+    assert.equal(g.run('equipPaperDollItem("hair","hair-bob-bangs")'),false);
+    g.run('setGender("female");equipPaperDollItem("hair","hair-bob-bangs")');
+    assert.equal(g.run('selectedPaperDollItem("hair").id'),'hair-bob-bangs');
+    g.run('setGender("male")');
+    assert.equal(g.run('paperDollState.appearance.hair'),'hair-none');
+    assert.equal(game(Object.fromEntries(g.storage)).run('paperDollState.appearance.hair'),'hair-none');
 });

@@ -40,11 +40,11 @@
       "kind": "young",
       "gender": "female",
       "source_sha256": "0130175d62a477e0268dc8f5eae7758c33750237cc310ba9232a204baa835b0e",
-      "approved_sha256": "11a4664d3787162bdd24abed127edb4d0ce9b6e7909f0bc0b0c9a677f2f1970b",
+      "approved_sha256": "726f26118334ff3053c9b172f1cfed7dd2ce538a55822377fc79be2522af55a5",
       "output": "assets/wardrobe/faces/female_young_head.png",
-      "sha256": "726f26118334ff3053c9b172f1cfed7dd2ce538a55822377fc79be2522af55a5",
+      "sha256": "8f652b417017e6f35665a73b9d25868e8c5739d38be2e85eaf3e27f9ffe5e7de",
       "mask": "assets/wardrobe/faces/masks/female_young_body.png",
-      "mask_sha256": "7c74c044f29daf13bc940c3ee33638887f3e7f8c4005b08dbc909ba3a0a5578a",
+      "mask_sha256": "6da8b2d46ca152a2e771dda681cfa53fadb490541886d4aa05a824c4e61ee9df",
       "protected_y": 221,
       "protected_sha256": "644066008c6a4d50451507c1409487cc0acff51fbec7f7ac7046ab6c751b32dd",
       "detail_box": [
@@ -69,7 +69,8 @@
         28,
         560,
         282
-      ]
+      ],
+      "neck_rebase_reference_commit": "41bf1d15d92d09cec4fae9ecbe39fde028a78c3d"
     },
     {
       "kind": "exhausted",
@@ -110,11 +111,11 @@
       "kind": "exhausted",
       "gender": "female",
       "source_sha256": "d0e3da9f1645ea8f272fcf4f2c1266d20625b73180a66f3f60c435b615927ab0",
-      "approved_sha256": "774243994eb57c5e6225f15032122ca1486c3fb79d686dcd8ecd1c94a8105324",
+      "approved_sha256": "aaa398750264ebd494247f8319927f2a0c8e8ff8edba3c2b7eef5d74e55a8896",
       "output": "assets/wardrobe/faces/female_exhausted_head.png",
-      "sha256": "aaa398750264ebd494247f8319927f2a0c8e8ff8edba3c2b7eef5d74e55a8896",
+      "sha256": "00f05b07b0888a69e70cb1536f26bf0bb849711e68c1dc2b546dc650310d220e",
       "mask": "assets/wardrobe/faces/masks/female_exhausted_body.png",
-      "mask_sha256": "2b678c042e7e272d464da08d9364fb88ac8ed2999080daa03aca87cea06ca0f0",
+      "mask_sha256": "110a9598d4c520e59453182ed3a330dc39afa44661883f65ba1b11576e355be3",
       "protected_y": 221,
       "protected_sha256": "31bb5e252da218558242ac96541b9f9471609b9d616b37ae1c7649967aac4d5c",
       "detail_box": [
@@ -135,11 +136,12 @@
         "overlap": 9
       },
       "bbox": [
-        393,
+        388,
         27,
-        553,
+        558,
         281
-      ]
+      ],
+      "neck_rebase_reference_commit": "41bf1d15d92d09cec4fae9ecbe39fde028a78c3d"
     },
     {
       "kind": "elder",
@@ -180,11 +182,11 @@
       "kind": "elder",
       "gender": "female",
       "source_sha256": "5bd49e257ef0a620cd9b95fffc5d5751d5573958b614ca75f0ef9a0fdebee815",
-      "approved_sha256": "c34581cae7d2a5aaa8c4aa166bd4f17d33c271c3440a769d2c702b17ced0129f",
+      "approved_sha256": "3cc105a9aec83c4af78e55064554828340c0c786d1ece2f1047b437718536f0f",
       "output": "assets/wardrobe/faces/female_elder_head.png",
-      "sha256": "3cc105a9aec83c4af78e55064554828340c0c786d1ece2f1047b437718536f0f",
+      "sha256": "20d53aaf9d8b57d808b530b8be431ad12ca53ba2c56f13acd7f171fb973de79b",
       "mask": "assets/wardrobe/faces/masks/female_elder_body.png",
-      "mask_sha256": "9fc5448828973cbfe90cdce9940c1e0afb5fd033d0b855bffb213b59baff7618",
+      "mask_sha256": "3e5f78f596fee51bc323e0722df99267dd6a6d856786868d3e361172a8385292",
       "protected_y": 221,
       "protected_sha256": "34a474c7cd42d2616c024b0aac472f228ce091ebbfa35d994d77baee8c75242c",
       "detail_box": [
@@ -209,7 +211,8 @@
         27,
         557,
         283
-      ]
+      ],
+      "neck_rebase_reference_commit": "41bf1d15d92d09cec4fae9ecbe39fde028a78c3d"
     }
   ]
 }

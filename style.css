@@ -823,6 +823,8 @@ body {
 .wardrobe-item-image { display: grid; place-items: center; position: relative; width: 64px; max-width: 100%; height: 72px; border: 1px solid var(--wd-border); background: var(--wd-thumb); box-shadow: inset 0 0 5px #63482b20; }
 .wardrobe-item-image img { position: absolute; width: 100%; height: 100%; object-fit: contain; }
 .wardrobe-item-image:has(img:not(.game-icon):not(.hidden)) > .game-icon { visibility: hidden; }
+.wardrobe-item-image.wardrobe-face-portrait { width: 80px; height: 88px; flex: 0 0 88px; overflow: hidden; }
+.wardrobe-face-portrait img:not(.game-icon) { width: 376.4%; height: auto; max-width: none; left: -139.6%; top: -8%; }
 .wardrobe-item-details { min-width: 0; }
 .wardrobe-record-label { display: block; font-family: monospace; font-size: 8px; letter-spacing: .06em; color: var(--wd-muted); margin-bottom: 4px; }
 .wardrobe-item-card h4 { font-size: 12px; line-height: 1.4; }

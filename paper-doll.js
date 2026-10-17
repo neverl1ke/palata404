@@ -33,7 +33,13 @@ function normalizePaperDollState(value, legacy = {}) {
             if (equippedGear[item.inventoryCategory] === item.inventoryName) state.combatLoadout[item.slot] = item.id;
         }
     }
+    const savedHair = PAPER_DOLL_ITEMS.find(item => item.slot === 'hair' && item.id === state.appearance.hair);
+    if (savedHair && !paperDollItemSupportsGender(savedHair, state.selectedGender)) state.appearance.hair = 'hair-none';
     return state;
+}
+
+function paperDollItemSupportsGender(item, selectedGender = paperDollState.selectedGender) {
+    return Boolean(item && (!item.genders || item.genders.includes(selectedGender)));
 }
 
 function isPaperDollItemOwned(item) {
@@ -42,7 +48,7 @@ function isPaperDollItemOwned(item) {
 }
 
 function selectedPaperDollItem(slot) {
-    if (slot === 'hair') return PAPER_DOLL_ITEMS.find(item => item.slot === 'hair' && item.id === paperDollState.appearance.hair && isPaperDollItemOwned(item))
+    if (slot === 'hair') return PAPER_DOLL_ITEMS.find(item => item.slot === 'hair' && item.id === paperDollState.appearance.hair && isPaperDollItemOwned(item) && paperDollItemSupportsGender(item))
         || PAPER_DOLL_ITEMS.find(item => item.id === 'hair-none');
     const id = slot === 'face' ? paperDollState.appearance.face : activePaperDollLoadout()[slot];
     return PAPER_DOLL_ITEMS.find(item => item.id === id && item.slot === slot && isPaperDollItemOwned(item));
@@ -102,7 +108,7 @@ function setPaperDollView(mode) {
 
 function equipPaperDollItem(slot, itemId) {
     if (slot === 'baseBody' || (slot !== 'hair' && !Object.hasOwn(activePaperDollLoadout(), slot))) return false;
-    if (itemId !== null && !PAPER_DOLL_ITEMS.some(item => item.id === itemId && item.slot === slot && isPaperDollItemOwned(item))) return false;
+    if (itemId !== null && !PAPER_DOLL_ITEMS.some(item => item.id === itemId && item.slot === slot && isPaperDollItemOwned(item) && paperDollItemSupportsGender(item))) return false;
     if (slot === 'hair') paperDollState.appearance.hair = itemId || 'hair-none';
     else if (slot === 'face') paperDollState.appearance.face = itemId;
     else activePaperDollLoadout()[slot] = itemId;
@@ -168,7 +174,13 @@ function applyPaperDollCrownMask(image, selectedGender) {
     const overlay = selectedPaperDollItem('face')?.slot === 'face';
     const active = overlay || (selectedGender === 'male' && hair !== 'hair-messy')
         || hair === 'hair-bob';
-    const crown = active && PAPER_DOLL_CROWN_CONTOURS[hair]?.[selectedGender];
+    let crown = active && PAPER_DOLL_CROWN_CONTOURS[hair]?.[selectedGender];
+    // Shoulder-length was enlarged 8% around the crown anchor (474,35).
+    // Its occlusion envelope must follow that same transform, not the old fit.
+    if (crown && hair === 'hair-shoulder-length' && selectedGender === 'male') crown = crown.map(([x,y]) => [474+(x-474)*1.08, Math.min(90,35+(y-35)*1.08)]);
+    // The alternative skull has a slightly fuller cap. Hide its outermost
+    // antialias seam under messy strands without moving the approved hair.
+    if (crown && hair === 'hair-messy' && selectedGender === 'male' && selectedPaperDollItem('face')?.id === 'face-alternative') crown = crown.map(([x,y]) => [x,Math.min(90,y+1.2)]);
     const outline = crown && [[0,90],[0,1672],[941,1672],[941,90],...crown.slice().reverse()];
     image.style.clipPath = outline ? `polygon(${outline.map(([x,y]) =>
         `${x / PAPER_DOLL_FRAME.width * 100}% ${y / PAPER_DOLL_FRAME.height * 100}%`).join(',')})` : '';

@@ -1,0 +1,29 @@
+{
+  "reference_commit": "41bf1d15d92d09cec4fae9ecbe39fde028a78c3d",
+  "palette_unchanged": true,
+  "exact_byte_paths": [
+    "assets/wardrobe/hair/female_double_buns.png",
+    "assets/wardrobe/hair/male_messy_hair.png",
+    "assets/wardrobe/hair/female_chin_length_bob.png",
+    "assets/wardrobe/hair/female_messy_hair.png",
+    "assets/wardrobe/hair/male_double_buns.png",
+    "assets/wardrobe/hair/female_medium_shoulder_length.png",
+    "assets/wardrobe/hair/classic_short_unisex_style_A.png",
+    "assets/wardrobe/hair/male_medium_shoulder_length.png",
+    "assets/wardrobe/hair/male_chin_length_bob.png",
+    "assets/wardrobe/hair/classic_short_unisex_style_B.png",
+    "assets/wardrobe/clothing/patient/patient_tunic_male.png",
+    "assets/wardrobe/clothing/patient/patient_tunic_female.png",
+    "assets/wardrobe/clothing/patient/female_neckline_skin_underlay.png",
+    "assets/wardrobe/faces/male_asian_head.png",
+    "assets/wardrobe/faces/male_young_head.png",
+    "assets/wardrobe/faces/male_exhausted_head.png",
+    "assets/wardrobe/faces/male_elder_head.png",
+    "assets/wardrobe/faces/female_asian_head.png"
+  ],
+  "protected_upper_rows": {
+    "assets/wardrobe/faces/female_young_head.png": 221,
+    "assets/wardrobe/faces/female_exhausted_head.png": 221,
+    "assets/wardrobe/faces/female_elder_head.png": 221
+  }
+}

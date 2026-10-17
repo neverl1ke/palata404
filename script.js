@@ -458,6 +458,8 @@ function addExperience(amount, notify = true) {
 function setGender(selectedGender) {
     if (selectedGender !== 'male' && selectedGender !== 'female') return;
     paperDollState.selectedGender = selectedGender;
+    const hair = PAPER_DOLL_ITEMS.find(item => item.id === paperDollState.appearance.hair);
+    if (hair && !paperDollItemSupportsGender(hair, selectedGender)) paperDollState.appearance.hair = 'hair-none';
     commitPaperDollSelection();
 }
 

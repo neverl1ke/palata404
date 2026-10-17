@@ -16,7 +16,7 @@ function renderWardrobeRegistration() {
 }
 
 function wardrobeVisibleItems() {
-    return PAPER_DOLL_ITEMS.filter(item => item.slot === wardrobeSlot && !PAPER_DOLL_RETIRED_FACES.has(item.id));
+    return PAPER_DOLL_ITEMS.filter(item => item.slot === wardrobeSlot && !PAPER_DOLL_RETIRED_FACES.has(item.id) && paperDollItemSupportsGender(item));
 }
 
 function selectWardrobeCategory(category) {
@@ -105,7 +105,7 @@ function wardrobeItemCard(item) {
     const inspected = wardrobeSelectedItemId === item.id;
     const source = wardrobeItemImage(item);
     return `<button type="button" class="wardrobe-item-card${equipped ? ' equipped' : ''}${inspected ? ' selected' : ''}" data-wardrobe-card="${escapeHTML(item.id)}" data-wardrobe-item="${escapeHTML(item.id)}" data-equipped="${equipped}" data-available="${isPaperDollItemOwned(item)}" data-wardrobe-focus="item-${escapeHTML(item.id)}" aria-pressed="${inspected}" aria-controls="wardrobe-item-detail">
-        <span class="wardrobe-item-image">${iconHTML(item.icon || PAPER_DOLL_SLOTS[item.slot].icon, 'large')}${source ? `<img src="${escapeHTML(source)}" alt="" aria-hidden="true">` : ''}</span>
+        <span class="wardrobe-item-image${item.slot === 'face' ? ' wardrobe-face-portrait' : ''}">${iconHTML(item.icon || PAPER_DOLL_SLOTS[item.slot].icon, 'large')}${source ? `<img src="${escapeHTML(source)}" alt="" aria-hidden="true">` : ''}</span>
         <strong class="wardrobe-item-name">${escapeHTML(item.name)}</strong>
         <span class="wardrobe-item-state">${wardrobeItemStatus(item)}</span>
         <span class="wardrobe-image-note${source || item.noImageRequired ? ' hidden' : ''}" data-paper-image-item="${escapeHTML(item.id)}">Зображення не підготовлено</span>
