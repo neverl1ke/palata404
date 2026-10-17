@@ -1283,3 +1283,32 @@ test('crown clipping covers affected heads and clears on unaffected hairstyles',
     }
     assert.equal(g.run('JSON.stringify(PAPER_DOLL_ITEMS.filter(i=>i.slot==="hair").map(i=>i.placementByGender))'),geometry);
 });
+
+test('young face variants persist without changing approved hair, outfits or old-face rendering', () => {
+    const g=game();
+    const before=g.run('JSON.stringify({stats,inventory,equippedGear,patient:paperDollState.patientLoadout,combat:paperDollState.combatLoadout})');
+    const geometry=g.run('JSON.stringify(PAPER_DOLL_ITEMS.filter(i=>i.slot==="hair").map(i=>i.placementByGender))');
+    for(const gender of ['male','female']) {
+        g.run(`setGender('${gender}');equipPaperDollItem('face','face-young');equipPaperDollItem('hair','hair-bob');setHairColor('white')`);
+        for(const prefix of ['','wardrobe-']) {
+            const face=g.elements.get(prefix+'layer-face'),body=g.elements.get(prefix+'layer-body');
+            assert.ok(face.getAttribute('src').includes(gender+'_young_head.png'));
+            assert.equal(face.style.zIndex,'1');
+            assert.match(body.style.maskImage,/linear-gradient/);
+            assert.ok(body.style.maskImage.includes(gender+'_young_head.png'));
+            assert.match(face.style.clipPath,/^polygon/);
+        }
+        const restored=game(Object.fromEntries(g.storage));
+        assert.equal(restored.run('paperDollState.appearance.face'),'face-young');
+        assert.equal(restored.run('paperDollState.appearance.hairColor'),'white');
+        for(const face of ['face-asian',null]) {
+            g.run(`equipPaperDollItem('face',${JSON.stringify(face)})`);
+            for(const prefix of ['','wardrobe-']) assert.equal(g.elements.get(prefix+'layer-body').style.maskImage,'');
+        }
+    }
+    g.run("equipPaperDollItem('face','face-young');failedPaperDollImages.add(selectedPaperDollItem('face').genderVariants[paperDollState.selectedGender]);renderPaperDoll()");
+    assert.equal(g.elements.get('layer-body').style.maskImage,'');
+    assert.ok(g.elements.get('layer-face').classList.contains('hidden'));
+    assert.equal(g.run('JSON.stringify(PAPER_DOLL_ITEMS.filter(i=>i.slot==="hair").map(i=>i.placementByGender))'),geometry);
+    assert.equal(g.run('JSON.stringify({stats,inventory,equippedGear,patient:paperDollState.patientLoadout,combat:paperDollState.combatLoadout})'),before);
+});

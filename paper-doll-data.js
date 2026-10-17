@@ -40,6 +40,15 @@ const PAPER_DOLL_ITEMS = [
             male: { x: 0, y: 0, width: 941, height: 1672 },
             female: { x: 0, y: 0, width: 941, height: 1672 }
         } },
+    { id: 'face-young', slot: 'face', name: 'Молоде обличчя', icon: 'user', availableByDefault: true,
+        fittedToGender: true, description: 'Молодий тип обличчя, 18–20 років.',
+        // DOM image renderer: above the body (0), below clothing and hair (9).
+        renderOrder: 1,
+        genderVariants: { male: 'assets/wardrobe/faces/male_young_head.png?v=76fdbe2e', female: 'assets/wardrobe/faces/female_young_head.png?v=5c7665b6' },
+        placementByGender: {
+            male: { x: 0, y: 0, width: 941, height: 1672 },
+            female: { x: 0, y: 0, width: 941, height: 1672 }
+        } },
     { id: 'hair-none', slot: 'hair', name: 'Без зачіски', icon: 'user', availableByDefault: true,
         noImageRequired: true, description: 'Початковий вигляд затвердженого аватара без накладки волосся.' },
     { id: 'hair-messy', slot: 'hair', name: 'Розкуйовджена зачіска', icon: 'user', availableByDefault: true,

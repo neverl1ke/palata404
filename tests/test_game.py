@@ -40,6 +40,24 @@ class IconAssetTests(unittest.TestCase):
                     self.assertEqual(alpha.crop(box).getextrema(),(255,255),(gender,box))
 
 
+    def test_young_heads_have_no_torso_and_keep_opaque_unpainted_face_detail(self):
+        manifest=json.loads((ROOT/'tests/fixtures/young-faces.json').read_text())
+        for entry in manifest['files']:
+            with self.subTest(gender=entry['gender']):
+                data=(ROOT/entry['output']).read_bytes()
+                self.assertEqual(hashlib.sha256(data).hexdigest(),entry['sha256'])
+                with Image.open(ROOT/entry['output']) as image:
+                    self.assertEqual(image.size,(941,1672));self.assertEqual(image.mode,'RGBA')
+                    alpha=image.getchannel('A')
+                    self.assertEqual(alpha.getextrema(),(0,255))
+                    self.assertIsNone(alpha.crop((0,263,941,1672)).getbbox(),'Chest or clothing remains')
+                    self.assertEqual(alpha.crop(entry['detail_box']).getextrema(),(255,255))
+                    detail=image.convert('RGB').crop(entry['detail_box']).tobytes()
+                    self.assertEqual(hashlib.sha256(detail).hexdigest(),entry['detail_sha256'],'Original facial RGB was modified')
+                    for y in range(245,263):
+                        row=alpha.crop((0,y,941,y+1)).getbbox()
+                        if row:self.assertLessEqual(row[2]-row[0],116,'Shoulder/clavicle silhouette remains')
+
     def test_hair_pack_pngs_preserve_supplied_bytes_dimensions_and_real_transparency(self):
         manifest=json.loads((ROOT/'tests/fixtures/hairstyles-pack-01.json').read_text())
         self.assertEqual(len(manifest['files']),6)
@@ -297,7 +315,7 @@ class GameTests(unittest.TestCase):
         self.assertEqual(wardrobe.locator('[data-wardrobe-category]').count(),5)
         wardrobe.get_by_role('button',name='Жінка',exact=True).click()
         wardrobe.locator('[data-wardrobe-slot="face"]').click()
-        self.assertEqual(wardrobe.locator('[data-wardrobe-card]').count(),1)
+        self.assertEqual(wardrobe.locator('[data-wardrobe-card]').count(),2)
         self.assertIn('Оригінальне обличчя',wardrobe.locator('#wardrobe-container').inner_text())
         for prefix in ['', 'wardrobe-']:
             self.assertIsNone(self.page.locator(f'#{prefix}layer-face').get_attribute('src'))
@@ -651,7 +669,7 @@ class GameTests(unittest.TestCase):
         self.assertEqual(self.page.evaluate('inventory.length'),0)
         self.page.evaluate('setPaperDollView("patient"); selectWardrobeCategory("appearance"); selectWardrobeSlot("face");')
         self.assertIsNone(self.page.locator('#wardrobe-layer-face').get_attribute('src'))
-        self.assertEqual(self.page.locator('[data-wardrobe-card]').count(),1)
+        self.assertEqual(self.page.locator('[data-wardrobe-card]').count(),2)
 
     def test_wardrobe_complex_layers_update_both_views_and_clean_up_after_removal(self):
         self.load()
@@ -1307,6 +1325,43 @@ class GameTests(unittest.TestCase):
         self.assertEqual(self.page.evaluate('paperDollState.appearance.hairColor'),'white')
         self.assertTrue(self.page.locator('#layer-face').evaluate('i=>getComputedStyle(i).clipPath.startsWith("polygon(")'))
 
+    def test_young_faces_switch_hair_outfits_and_reload_without_leaking_body_masks(self):
+        self.load()
+        self.page.evaluate('openCustomization();selectWardrobeCategory("appearance");selectWardrobeSlot("face")')
+        self.assertEqual(self.page.locator('[data-wardrobe-card="face-young"]').count(),1)
+        self.page.locator('[data-wardrobe-card="face-young"]').click()
+        self.page.locator('[data-wardrobe-action="face-young"]').click()
+        before=self.page.evaluate('JSON.stringify({stats,inventory,equippedGear})')
+        missing=[]
+        self.page.on('response',lambda r:missing.append(r.url) if r.status>=400 else None)
+        for gender in ['male','female']:
+            self.page.evaluate('gender=>setGender(gender)',gender)
+            for mode in ['patient','combat']:
+                self.page.evaluate('mode=>setPaperDollView(mode)',mode)
+                for hair in ['hair-none','hair-classic-short','hair-bob','hair-shoulder-length','hair-double-buns']:
+                    for color in ['white','black']:
+                        self.page.evaluate('([hair,color])=>{equipPaperDollItem("hair",hair);setHairColor(color)}',[hair,color])
+                        self.page.wait_for_function("""()=>['layer-face','wardrobe-layer-face'].every(id=>{const i=document.getElementById(id);return i.complete&&i.naturalWidth===941})""")
+                        if hair!='hair-none':
+                            self.page.wait_for_function("""async()=>{const i=document.getElementById('wardrobe-layer-hair');return i.getAttribute('src')===await coloredHairSource(selectedPaperDollItem('hair').genderVariants[paperDollState.selectedGender],paperDollState.appearance.hairColor)&&i.complete&&i.naturalWidth>0}""")
+                        for prefix in ['','wardrobe-']:
+                            self.assertIn(gender+'_young_head.png',self.page.locator('#'+prefix+'layer-face').get_attribute('src'))
+                            self.assertEqual(self.page.locator('#'+prefix+'layer-face').evaluate('i=>getComputedStyle(i).zIndex'),'1')
+                            self.assertEqual(self.page.locator('#'+prefix+'layer-hair').evaluate('i=>getComputedStyle(i).zIndex'),'9')
+                            self.assertIn(gender+'_young_head.png',self.page.locator('#'+prefix+'layer-body').evaluate('i=>getComputedStyle(i).maskImage'))
+            self.page.reload(wait_until='networkidle')
+            self.assertEqual(self.page.evaluate('paperDollState.appearance.face'),'face-young')
+            self.assertEqual(self.page.evaluate('paperDollState.selectedGender'),gender)
+            self.assertEqual(self.page.evaluate('paperDollState.appearance.hair'),'hair-double-buns')
+            self.assertEqual(self.page.evaluate('paperDollState.appearance.hairColor'),'black')
+            self.page.evaluate('openCustomization()')
+        for face in ['face-asian',None]:
+            self.page.evaluate('face=>equipPaperDollItem("face",face)',face)
+            for prefix in ['','wardrobe-']:
+                self.assertEqual(self.page.locator('#'+prefix+'layer-body').evaluate('i=>getComputedStyle(i).maskImage'),'none')
+        self.assertEqual(self.page.evaluate('JSON.stringify({stats,inventory,equippedGear})'),before)
+        self.assertEqual(missing,[])
+
     def test_asian_heads_real_css_order_hair_compatibility_and_reload(self):
         self.load()
         self.assertIsNone(self.page.evaluate('paperDollState.appearance.face'))
@@ -1602,7 +1657,7 @@ class GameTests(unittest.TestCase):
             self.assertEqual(self.page.evaluate('paperDollState.appearance.hair'),'old-hair')
             self.assertEqual(self.page.evaluate('paperDollState.patientLoadout.armor'),'gear-br1')
             self.assertEqual(self.page.evaluate('paperDollState.combatLoadout.weapon'),'gear-pm')
-            self.assertEqual(self.page.locator('[data-wardrobe-card]').count(),1)
+            self.assertEqual(self.page.locator('[data-wardrobe-card]').count(),2)
             for prefix in ['', 'wardrobe-']:
                 self.assertIsNone(self.page.locator(f'#{prefix}layer-face').get_attribute('src'))
                 self.assertTrue(self.page.locator(f'#{prefix}layer-body').is_visible())
