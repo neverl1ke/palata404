@@ -1,6 +1,7 @@
 .github/workflows/checks.yml
 README.md
 art/hospital-shirt.html
+art/patient-tunic.html
 assets/wardrobe/faces/female_alternative_head.png
 assets/wardrobe/faces/female_elder_head.png
 assets/wardrobe/faces/female_exhausted_head.png
@@ -61,6 +62,7 @@ review/avatar-face-hair-final/mobile-768-combat-male-hair.jpg
 review/avatar-face-hair-final/mobile-768-patient-female-faces.jpg
 review/avatar-face-hair-final/mobile-768-patient-female-hair.jpg
 review/avatar-face-hair-final/protected-assets.json
+review/avatar-face-hair-final/publication-check.json
 review/avatar-face-hair-final/test-results.json
 review/avatar-face-hair-update/README.md
 review/avatar-face-hair-update/female-all-faces-bob.jpg

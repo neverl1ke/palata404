@@ -60,3 +60,5 @@
 - [mobile-768-patient-female-hair.jpg](mobile-768-patient-female-hair.jpg)
 
 [Список змінених файлів](changed-files.txt) · [Захищені ресурси](protected-assets.json)
+
+[Перевірка публікації гри](publication-check.json)

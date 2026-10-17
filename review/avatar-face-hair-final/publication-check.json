@@ -1,0 +1,21 @@
+{
+  "runtime_commit": "082e83e3670aaa771760b80bf34fa03eeeeb356f",
+  "pages": {
+    "pages_http": 200,
+    "runtime_png_files": 45,
+    "bytes_match": true
+  },
+  "browser": {
+    "live_selection": true,
+    "genders": 2,
+    "face_overlays": 5,
+    "male_hair_options": 7,
+    "female_hair_options": 8,
+    "reload": true,
+    "errors": [],
+    "transport": "Published HTTPS bytes, certificate-verified with Python; no asset changes"
+  },
+  "public_review_files_verified": 45,
+  "public_review_bytes_match": true,
+  "production_fitting_cache_recheck": "1 test passed"
+}

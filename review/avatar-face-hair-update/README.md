@@ -37,7 +37,7 @@
 
 - Логіка/дані: `paper-doll-data.js`, `paper-doll.js`, `script.js`, `wardrobe.js`.
 - Портретне кадрування: `style.css`.
-- Версії завантаження: `index.html`; URL баз у `art/hospital-shirt.html`.
+- Версії завантаження: `index.html`; URL баз у `art/hospital-shirt.html`; кеш каталогу актуальної примірки `art/patient-tunic.html` (оновлений окремою заключною правкою).
 - PNG: `base_male.png`, `base_female.png`; `assets/wardrobe/faces/{male,female}_alternative_head.png`; їхні `masks/{male,female}_alternative_body.png`; `assets/wardrobe/hair/unisex_bob_bangs.png`.
 - Сумісність старих жіночих ший: `assets/wardrobe/faces/female_{young,exhausted,elder}_head.png` та відповідні `masks/female_{young,exhausted,elder}_body.png`; реєстрація й верхні обличчя не змінені. Маніфест: `tests/fixtures/face-neck-transitions.json`.
 - Відтворювана обробка: `tools/prepare-avatar-update.py`, `tools/rebase-legacy-female-necks.py`; контрольна примірка: `tools/review-avatar-final.py`.
@@ -50,7 +50,7 @@
 
 - **JavaScript: 72/72 успішно.**
 - **Python/Chromium: 76/76 унікальних перевірок успішно:** 65 браузерних у трьох ізольованих процесах (22+22+21) та 11 перевірок ресурсів. Після виправлення нижніх жіночих стиків усі 11 ресурсних і три пов’язані браузерні сценарії повторно пройшли; це повторні запуски, не додаткові унікальні тести.
-- Новий сценарій каре/палітри також повторно пройшов після посилення перевірки каштанового початкового кольору.
+- Новий сценарій каре/палітри також повторно пройшов після посилення перевірки каштанового початкового кольору. Сторінка актуальної примірки повторно перевірена після оновлення її кеш-версії каталогу.
 - Синтаксис змінених JS/Python та `git diff --check` — успішно. У галереї та цільових браузерних перевірках **0 JS-помилок і 0 відсутніх ігрових PNG**.
 - **40 актуальних контрольних зображень**, зокрема повний мобільний інтерфейс і однакові за масштабом ДО/ПІСЛЯ. [Машиночитаний підсумок](../avatar-face-hair-final/test-results.json).
 
@@ -95,6 +95,14 @@ PLAYWRIGHT_BROWSERS_PATH=/workspace/.browsers python tools/review-avatar-final.p
 ![Телефон: портретні картки облич](../avatar-face-hair-final/mobile-390-patient-female-faces.jpg)
 
 [Телефон 320 px — палітра і зачіски](../avatar-face-hair-final/mobile-320-patient-female-hair.jpg) · [Трип, чоловік — 390 px](../avatar-face-hair-final/mobile-390-combat-male-hair.jpg) · [Планшет 768 px](../avatar-face-hair-final/mobile-768-patient-female-faces.jpg)
+
+## Перевірка опублікованої гри
+
+Основна інтеграція опублікована в `main` комітом `082e83e3670aaa771760b80bf34fa03eeeeb356f`. GitHub Pages повернув HTTP 200; **45 робочих JS/CSS/PNG-файлів** побайтово збігаються з перевіреною локальною версією. Окремо підтверджено HTTP 200 та точні байти 45 публічних файлів звіту й галереї.
+
+Chromium перевірив уже опубліковані HTTPS-ресурси: обидві статі, всі 5 парних накладок, 7 чоловічих / 8 жіночих варіантів волосся, порядок шарів і reload. **JS-помилок немає.** HTTPS-байти передавались браузеру через Python із перевіркою сертифіката; ресурси не підмінялись локальними файлами. [Результат перевірки публікації](../avatar-face-hair-final/publication-check.json).
+
+Заключна правка кешу `art/patient-tunic.html` зберігає ту саму перевірену графіку й каталог. [Гра](https://neverl1ke.github.io/palata404/).
 
 ## Межі перевірки та залишкові моменти
 
