@@ -1,0 +1,576 @@
+{
+  "published_url": "https://neverl1ke.github.io/palata404/",
+  "external_hosts": [
+    "fonts.googleapis.com",
+    "fonts.gstatic.com",
+    "telegram.org"
+  ],
+  "published_files_verified": [
+    "assets/icons/back.svg",
+    "assets/icons/bag.svg",
+    "assets/icons/bank.svg",
+    "assets/icons/bed.svg",
+    "assets/icons/bell.svg",
+    "assets/icons/boss.svg",
+    "assets/icons/box.svg",
+    "assets/icons/boxing.svg",
+    "assets/icons/brain.svg",
+    "assets/icons/card.svg",
+    "assets/icons/cash.svg",
+    "assets/icons/check.svg",
+    "assets/icons/clipboard.svg",
+    "assets/icons/clock.svg",
+    "assets/icons/coat.svg",
+    "assets/icons/coin.svg",
+    "assets/icons/cross.svg",
+    "assets/icons/door.svg",
+    "assets/icons/drink.svg",
+    "assets/icons/dumbbell.svg",
+    "assets/icons/eye.svg",
+    "assets/icons/flame.svg",
+    "assets/icons/flask.svg",
+    "assets/icons/gear.svg",
+    "assets/icons/gift.svg",
+    "assets/icons/heart.svg",
+    "assets/icons/helmet.svg",
+    "assets/icons/hospital.svg",
+    "assets/icons/info.svg",
+    "assets/icons/key.svg",
+    "assets/icons/knife.svg",
+    "assets/icons/lightning.svg",
+    "assets/icons/lock.svg",
+    "assets/icons/mail.svg",
+    "assets/icons/map.svg",
+    "assets/icons/medkit.svg",
+    "assets/icons/megaphone.svg",
+    "assets/icons/people.svg",
+    "assets/icons/pills.svg",
+    "assets/icons/pistol.svg",
+    "assets/icons/plank.svg",
+    "assets/icons/pullups.svg",
+    "assets/icons/pushups.svg",
+    "assets/icons/puzzle.svg",
+    "assets/icons/repeat.svg",
+    "assets/icons/rifle.svg",
+    "assets/icons/rubble.svg",
+    "assets/icons/shield.svg",
+    "assets/icons/shirt.svg",
+    "assets/icons/speaker.svg",
+    "assets/icons/squats.svg",
+    "assets/icons/stretch.svg",
+    "assets/icons/surgery.svg",
+    "assets/icons/swords.svg",
+    "assets/icons/syringe.svg",
+    "assets/icons/user.svg",
+    "assets/wardrobe/clothing/patient/female_neckline_skin_underlay.png",
+    "assets/wardrobe/clothing/patient/patient_tunic_female.png",
+    "assets/wardrobe/clothing/patient/patient_tunic_male.png",
+    "assets/wardrobe/faces/female_alternative_head.png",
+    "assets/wardrobe/faces/female_asian_head.png",
+    "assets/wardrobe/faces/female_elder_head.png",
+    "assets/wardrobe/faces/female_exhausted_head.png",
+    "assets/wardrobe/faces/female_young_head.png",
+    "assets/wardrobe/faces/male_alternative_head.png",
+    "assets/wardrobe/faces/male_asian_head.png",
+    "assets/wardrobe/faces/male_elder_head.png",
+    "assets/wardrobe/faces/male_exhausted_head.png",
+    "assets/wardrobe/faces/male_young_head.png",
+    "assets/wardrobe/faces/masks/female_alternative_body.png",
+    "assets/wardrobe/faces/masks/female_asian_body.png",
+    "assets/wardrobe/faces/masks/female_elder_body.png",
+    "assets/wardrobe/faces/masks/female_exhausted_body.png",
+    "assets/wardrobe/faces/masks/female_young_body.png",
+    "assets/wardrobe/faces/masks/male_alternative_body.png",
+    "assets/wardrobe/faces/masks/male_asian_body.png",
+    "assets/wardrobe/faces/masks/male_elder_body.png",
+    "assets/wardrobe/faces/masks/male_exhausted_body.png",
+    "assets/wardrobe/faces/masks/male_young_body.png",
+    "assets/wardrobe/hair/classic_short_unisex_style_A.png",
+    "assets/wardrobe/hair/classic_short_unisex_style_B.png",
+    "assets/wardrobe/hair/female_chin_length_bob.png",
+    "assets/wardrobe/hair/female_double_buns.png",
+    "assets/wardrobe/hair/female_medium_shoulder_length.png",
+    "assets/wardrobe/hair/female_messy_hair.png",
+    "assets/wardrobe/hair/male_chin_length_bob.png",
+    "assets/wardrobe/hair/male_double_buns.png",
+    "assets/wardrobe/hair/male_medium_shoulder_length.png",
+    "assets/wardrobe/hair/male_medium_shoulder_length_rear.png",
+    "assets/wardrobe/hair/male_messy_hair.png",
+    "assets/wardrobe/hair/unisex_bob_bangs.png",
+    "background.jpg",
+    "base_female.png",
+    "base_male.png",
+    "battle-results.js",
+    "doctor_dossier_card.png",
+    "hair-color.js",
+    "icons.js",
+    "index.html",
+    "map_floor_10.png",
+    "nurse_avatar_battle.png",
+    "nurse_bg.jpg",
+    "nurse_dossier_card.png",
+    "nurse_sprite.png",
+    "paper-doll-data.js",
+    "paper-doll.js",
+    "raid-archive.js",
+    "script.js",
+    "staff-archive-data.js",
+    "staff-archive.js",
+    "style.css",
+    "wardrobe.js",
+    "wardrobe_background.png"
+  ],
+  "transport": "Certificate-verified actual HTTPS bytes, no local substitution",
+  "startup": {
+    "navigation": [
+      {
+        "domContentLoaded": 7054.29999999702,
+        "responseEnd": 184.89999999850988,
+        "load": 8918.39999999851
+      }
+    ],
+    "resources": [
+      {
+        "url": "/palata404/style.css?v=project-audit-1",
+        "bytes": 87775,
+        "duration": 1253.5
+      },
+      {
+        "url": "/palata404/assets/icons/helmet.svg",
+        "bytes": 1169,
+        "duration": 3026.9000000059605
+      },
+      {
+        "url": "/palata404/assets/icons/bag.svg",
+        "bytes": 1227,
+        "duration": 3027.39999999851
+      },
+      {
+        "url": "/palata404/assets/icons/coat.svg",
+        "bytes": 1212,
+        "duration": 3028
+      },
+      {
+        "url": "/palata404/assets/icons/map.svg",
+        "bytes": 1213,
+        "duration": 3028.7000000029802
+      },
+      {
+        "url": "/palata404/assets/icons/clipboard.svg",
+        "bytes": 1239,
+        "duration": 3172.5
+      },
+      {
+        "url": "/palata404/assets/icons/swords.svg",
+        "bytes": 1223,
+        "duration": 3172.89999999851
+      },
+      {
+        "url": "/palata404/assets/icons/people.svg",
+        "bytes": 1212,
+        "duration": 3173.2999999970198
+      },
+      {
+        "url": "/palata404/assets/icons/card.svg",
+        "bytes": 1210,
+        "duration": 3173.5999999940395
+      },
+      {
+        "url": "/palata404/assets/icons/bell.svg",
+        "bytes": 1128,
+        "duration": 3173.7999999970198
+      },
+      {
+        "url": "/palata404/assets/icons/mail.svg",
+        "bytes": 1196,
+        "duration": 3173.9000000059605
+      },
+      {
+        "url": "/palata404/assets/icons/gear.svg",
+        "bytes": 1261,
+        "duration": 3174.3000000044703
+      },
+      {
+        "url": "/palata404/assets/icons/brain.svg",
+        "bytes": 1246,
+        "duration": 3346.5
+      },
+      {
+        "url": "/palata404/assets/icons/flask.svg",
+        "bytes": 1223,
+        "duration": 3525.89999999851
+      },
+      {
+        "url": "/palata404/assets/icons/lightning.svg",
+        "bytes": 1128,
+        "duration": 3691.7999999970198
+      },
+      {
+        "url": "/palata404/assets/icons/coin.svg",
+        "bytes": 1209,
+        "duration": 3813.8000000044703
+      },
+      {
+        "url": "/palata404/assets/icons/pills.svg",
+        "bytes": 1201,
+        "duration": 3918.7000000029802
+      },
+      {
+        "url": "/palata404/assets/icons/cash.svg",
+        "bytes": 1307,
+        "duration": 4030.10000000149
+      },
+      {
+        "url": "/palata404/assets/icons/heart.svg",
+        "bytes": 1170,
+        "duration": 4225.30000000447
+      },
+      {
+        "url": "/palata404/assets/icons/shield.svg",
+        "bytes": 1196,
+        "duration": 4293.39999999851
+      },
+      {
+        "url": "/palata404/assets/icons/bank.svg",
+        "bytes": 1203,
+        "duration": 4380.69999999553
+      },
+      {
+        "url": "/palata404/base_male.png?v=08da7a7f",
+        "bytes": 875236,
+        "duration": 2171.9000000059605
+      },
+      {
+        "url": "/palata404/assets/icons/user.svg",
+        "bytes": 1163,
+        "duration": 4589.80000000447
+      },
+      {
+        "url": "/palata404/assets/icons/speaker.svg",
+        "bytes": 1151,
+        "duration": 4735.39999999851
+      },
+      {
+        "url": "/palata404/assets/icons/info.svg",
+        "bytes": 1118,
+        "duration": 4836.29999999702
+      },
+      {
+        "url": "/palata404/assets/icons/box.svg",
+        "bytes": 1183,
+        "duration": 4919.69999999553
+      },
+      {
+        "url": "/palata404/assets/icons/pistol.svg",
+        "bytes": 1196,
+        "duration": 5158.29999999702
+      },
+      {
+        "url": "/palata404/assets/icons/puzzle.svg",
+        "bytes": 1132,
+        "duration": 5249.19999999553
+      },
+      {
+        "url": "/palata404/assets/icons/dumbbell.svg",
+        "bytes": 1232,
+        "duration": 5333.5999999940395
+      },
+      {
+        "url": "/palata404/assets/icons/hospital.svg",
+        "bytes": 1274,
+        "duration": 5458.80000000447
+      },
+      {
+        "url": "/palata404/assets/icons/drink.svg",
+        "bytes": 1215,
+        "duration": 5559.79999999702
+      },
+      {
+        "url": "/palata404/assets/icons/medkit.svg",
+        "bytes": 1216,
+        "duration": 5666.89999999851
+      },
+      {
+        "url": "/palata404/assets/icons/surgery.svg",
+        "bytes": 1229,
+        "duration": 5753.20000000298
+      },
+      {
+        "url": "/palata404/icons.js?v=40003",
+        "bytes": 5289,
+        "duration": 5843.20000000298
+      },
+      {
+        "url": "/palata404/staff-archive-data.js?v=40009",
+        "bytes": 8203,
+        "duration": 5918
+      },
+      {
+        "url": "/palata404/battle-results.js?v=project-audit-1",
+        "bytes": 18755,
+        "duration": 6017
+      },
+      {
+        "url": "/palata404/raid-archive.js?v=40012",
+        "bytes": 13405,
+        "duration": 6095.39999999851
+      },
+      {
+        "url": "/palata404/staff-archive.js?v=project-audit-1",
+        "bytes": 25151,
+        "duration": 6162.60000000149
+      },
+      {
+        "url": "/palata404/paper-doll-data.js?v=paper-targeted-1",
+        "bytes": 14396,
+        "duration": 6239.20000000298
+      },
+      {
+        "url": "/palata404/hair-color.js?v=project-audit-1",
+        "bytes": 6606,
+        "duration": 6335.70000000298
+      },
+      {
+        "url": "/palata404/paper-doll.js?v=project-audit-1",
+        "bytes": 22065,
+        "duration": 6496.10000000149
+      },
+      {
+        "url": "/palata404/wardrobe.js?v=paper-targeted-1",
+        "bytes": 19482,
+        "duration": 6560.70000000298
+      },
+      {
+        "url": "/palata404/script.js?v=project-audit-1",
+        "bytes": 83251,
+        "duration": 6822.10000000149
+      },
+      {
+        "url": "/palata404/assets/icons/boss.svg",
+        "bytes": 1235,
+        "duration": 6934.29999999702
+      },
+      {
+        "url": "/palata404/assets/icons/gift.svg",
+        "bytes": 1243,
+        "duration": 7042.5
+      },
+      {
+        "url": "/palata404/assets/icons/back.svg",
+        "bytes": 1052,
+        "duration": 7152.39999999851
+      },
+      {
+        "url": "/palata404/assets/icons/clock.svg",
+        "bytes": 1205,
+        "duration": 7236.89999999851
+      },
+      {
+        "url": "/palata404/assets/icons/door.svg",
+        "bytes": 1201,
+        "duration": 7356.5999999940395
+      },
+      {
+        "url": "/palata404/nurse_sprite.png",
+        "bytes": 110077,
+        "duration": 2280.5
+      },
+      {
+        "url": "/palata404/assets/icons/megaphone.svg",
+        "bytes": 1163,
+        "duration": 7451.60000000149
+      },
+      {
+        "url": "/palata404/nurse_avatar_battle.png",
+        "bytes": 524803,
+        "duration": 3022.10000000149
+      },
+      {
+        "url": "/palata404/assets/icons/check.svg",
+        "bytes": 1134,
+        "duration": 7536.20000000298
+      },
+      {
+        "url": "/palata404/assets/icons/flame.svg",
+        "bytes": 1181,
+        "duration": 7623.89999999851
+      },
+      {
+        "url": "/palata404/assets/icons/repeat.svg",
+        "bytes": 1157,
+        "duration": 7766
+      },
+      {
+        "url": "/palata404/assets/icons/cross.svg",
+        "bytes": 1139,
+        "duration": 7876.69999999553
+      },
+      {
+        "url": "/palata404/background.jpg",
+        "bytes": 179974,
+        "duration": 7212.79999999702
+      },
+      {
+        "url": "/palata404/assets/wardrobe/clothing/patient/patient_tunic_male.png?v=b0da3128",
+        "bytes": 967363,
+        "duration": 1853.1000000014901
+      }
+    ],
+    "heap": 10000000
+  },
+  "render_benchmark": {
+    "iterations": 700,
+    "batch": 100,
+    "samples_ms": [
+      29.900000005960464,
+      30.30000000447035,
+      30.599999994039536,
+      31,
+      35.69999999552965,
+      39.100000001490116,
+      55.70000000298023
+    ],
+    "median_ms": 31,
+    "front_src_mutations": 0,
+    "crown_calculations": 0
+  },
+  "combinations": 90,
+  "color_background_samples": 1080,
+  "widths": [
+    320,
+    360,
+    390,
+    430,
+    768,
+    1440
+  ],
+  "screens": 11,
+  "wardrobe_all_categories": true,
+  "reload": true,
+  "reward_exactly_once": true,
+  "actual_attack_and_counter": true,
+  "cooldown": true,
+  "victory_finalization": "Controlled zero-HP transition after real attack/counter",
+  "http_errors": [],
+  "js_errors": [],
+  "requested_paths": [
+    "",
+    "assets/icons/back.svg",
+    "assets/icons/bag.svg",
+    "assets/icons/bank.svg",
+    "assets/icons/bed.svg",
+    "assets/icons/bell.svg",
+    "assets/icons/boss.svg",
+    "assets/icons/box.svg",
+    "assets/icons/boxing.svg",
+    "assets/icons/brain.svg",
+    "assets/icons/card.svg",
+    "assets/icons/cash.svg",
+    "assets/icons/check.svg",
+    "assets/icons/clipboard.svg",
+    "assets/icons/clock.svg",
+    "assets/icons/coat.svg",
+    "assets/icons/coin.svg",
+    "assets/icons/cross.svg",
+    "assets/icons/door.svg",
+    "assets/icons/drink.svg",
+    "assets/icons/dumbbell.svg",
+    "assets/icons/eye.svg",
+    "assets/icons/flame.svg",
+    "assets/icons/flask.svg",
+    "assets/icons/gear.svg",
+    "assets/icons/gift.svg",
+    "assets/icons/heart.svg",
+    "assets/icons/helmet.svg",
+    "assets/icons/hospital.svg",
+    "assets/icons/info.svg",
+    "assets/icons/key.svg",
+    "assets/icons/knife.svg",
+    "assets/icons/lightning.svg",
+    "assets/icons/lock.svg",
+    "assets/icons/mail.svg",
+    "assets/icons/map.svg",
+    "assets/icons/medkit.svg",
+    "assets/icons/megaphone.svg",
+    "assets/icons/people.svg",
+    "assets/icons/pills.svg",
+    "assets/icons/pistol.svg",
+    "assets/icons/plank.svg",
+    "assets/icons/pullups.svg",
+    "assets/icons/pushups.svg",
+    "assets/icons/puzzle.svg",
+    "assets/icons/repeat.svg",
+    "assets/icons/rifle.svg",
+    "assets/icons/rubble.svg",
+    "assets/icons/shield.svg",
+    "assets/icons/shirt.svg",
+    "assets/icons/speaker.svg",
+    "assets/icons/squats.svg",
+    "assets/icons/stretch.svg",
+    "assets/icons/surgery.svg",
+    "assets/icons/swords.svg",
+    "assets/icons/syringe.svg",
+    "assets/icons/user.svg",
+    "assets/wardrobe/clothing/patient/female_neckline_skin_underlay.png?v=8a9076fa",
+    "assets/wardrobe/clothing/patient/patient_tunic_female.png?v=809fd1e8",
+    "assets/wardrobe/clothing/patient/patient_tunic_male.png?v=b0da3128",
+    "assets/wardrobe/faces/female_alternative_head.png?v=002b2650",
+    "assets/wardrobe/faces/female_asian_head.png?v=e788fe50",
+    "assets/wardrobe/faces/female_elder_head.png?v=53cd99eb",
+    "assets/wardrobe/faces/female_exhausted_head.png?v=76ee4e8f",
+    "assets/wardrobe/faces/female_young_head.png?v=deba6779",
+    "assets/wardrobe/faces/male_alternative_head.png?v=2b58bf7a",
+    "assets/wardrobe/faces/male_asian_head.png?v=1043b5b2",
+    "assets/wardrobe/faces/male_elder_head.png?v=f6e3003c",
+    "assets/wardrobe/faces/male_exhausted_head.png?v=5683706e",
+    "assets/wardrobe/faces/male_young_head.png?v=02729493",
+    "assets/wardrobe/faces/masks/female_alternative_body.png?v=2069e239",
+    "assets/wardrobe/faces/masks/female_asian_body.png?v=3412bd3a",
+    "assets/wardrobe/faces/masks/female_elder_body.png?v=a9f8e7b6",
+    "assets/wardrobe/faces/masks/female_exhausted_body.png?v=034b7043",
+    "assets/wardrobe/faces/masks/female_young_body.png?v=3f8e960c",
+    "assets/wardrobe/faces/masks/male_alternative_body.png?v=2778f476",
+    "assets/wardrobe/faces/masks/male_asian_body.png?v=dbaab2c9",
+    "assets/wardrobe/faces/masks/male_elder_body.png?v=191ad94a",
+    "assets/wardrobe/faces/masks/male_exhausted_body.png?v=95e48d48",
+    "assets/wardrobe/faces/masks/male_young_body.png?v=73bad65e",
+    "assets/wardrobe/hair/classic_short_unisex_style_A.png?v=1ddab573",
+    "assets/wardrobe/hair/classic_short_unisex_style_B.png?v=9ad8b4e1",
+    "assets/wardrobe/hair/female_chin_length_bob.png?v=b8f42959",
+    "assets/wardrobe/hair/female_double_buns.png?v=6290b9c9",
+    "assets/wardrobe/hair/female_medium_shoulder_length.png?v=79b8f5b8",
+    "assets/wardrobe/hair/female_messy_hair.png?v=fe47846c",
+    "assets/wardrobe/hair/male_chin_length_bob.png?v=978335df",
+    "assets/wardrobe/hair/male_double_buns.png?v=5b2aae59",
+    "assets/wardrobe/hair/male_medium_shoulder_length.png?v=aa3b097a",
+    "assets/wardrobe/hair/male_medium_shoulder_length_rear.png?v=895e676c",
+    "assets/wardrobe/hair/male_messy_hair.png?v=4e890f4b",
+    "assets/wardrobe/hair/unisex_bob_bangs.png?v=0293b69f",
+    "background.jpg",
+    "base_female.png?v=e76e72be",
+    "base_male.png?v=08da7a7f",
+    "battle-results.js?v=project-audit-1",
+    "doctor_dossier_card.png",
+    "hair-color.js?v=project-audit-1",
+    "icons.js?v=40003",
+    "map_floor_10.png",
+    "nurse_avatar_battle.png",
+    "nurse_bg.jpg",
+    "nurse_dossier_card.png",
+    "nurse_sprite.png",
+    "paper-doll-data.js?v=paper-targeted-1",
+    "paper-doll.js?v=project-audit-1",
+    "raid-archive.js?v=40012",
+    "script.js?v=project-audit-1",
+    "staff-archive-data.js?v=40009",
+    "staff-archive.js?v=project-audit-1",
+    "style.css?v=project-audit-1",
+    "wardrobe.js?v=paper-targeted-1",
+    "wardrobe_background.png?v=d490c304"
+  ],
+  "base_png_hashes": {
+    "base_female.png": "e76e72bea1d800fd50e65ed45f93ba8d70e79c04947a3eb4a4ffb43b9a1d8f68",
+    "base_male.png": "08da7a7fd8fe1ea1fd6235a2de8ac32878568381bd3e8dcc4d65a1e738f78105"
+  },
+  "external_services": "Published Google Fonts and Telegram SDK allowed"
+}

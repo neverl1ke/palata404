@@ -1,0 +1,2944 @@
+{
+  "scope": "Ignored non-versioned artifacts, inspected at end of revision; separate from 917 baseline tracked files",
+  "files": [
+    {
+      "path": "test-results/approved-female-room-1024x768.png",
+      "bytes": 673057
+    },
+    {
+      "path": "test-results/approved-female-room-1280x800.png",
+      "bytes": 1018927
+    },
+    {
+      "path": "test-results/approved-female-room-320x568.png",
+      "bytes": 154985
+    },
+    {
+      "path": "test-results/approved-female-room-390x844.png",
+      "bytes": 260489
+    },
+    {
+      "path": "test-results/approved-female-room-768x1024.png",
+      "bytes": 539055
+    },
+    {
+      "path": "test-results/approved-female-room-844x390.png",
+      "bytes": 352843
+    },
+    {
+      "path": "test-results/approved-female-wardrobe-1024x768.png",
+      "bytes": 508236
+    },
+    {
+      "path": "test-results/approved-female-wardrobe-1280x800.png",
+      "bytes": 664433
+    },
+    {
+      "path": "test-results/approved-female-wardrobe-320x568.png",
+      "bytes": 92942
+    },
+    {
+      "path": "test-results/approved-female-wardrobe-390x844.png",
+      "bytes": 162837
+    },
+    {
+      "path": "test-results/approved-female-wardrobe-768x1024.png",
+      "bytes": 374317
+    },
+    {
+      "path": "test-results/approved-female-wardrobe-844x390.png",
+      "bytes": 183988
+    },
+    {
+      "path": "test-results/approved-male-room-1024x768.png",
+      "bytes": 673550
+    },
+    {
+      "path": "test-results/approved-male-room-1280x800.png",
+      "bytes": 1020240
+    },
+    {
+      "path": "test-results/approved-male-room-320x568.png",
+      "bytes": 155247
+    },
+    {
+      "path": "test-results/approved-male-room-390x844.png",
+      "bytes": 261170
+    },
+    {
+      "path": "test-results/approved-male-room-768x1024.png",
+      "bytes": 540408
+    },
+    {
+      "path": "test-results/approved-male-room-844x390.png",
+      "bytes": 353001
+    },
+    {
+      "path": "test-results/approved-male-wardrobe-1024x768.png",
+      "bytes": 511544
+    },
+    {
+      "path": "test-results/approved-male-wardrobe-1280x800.png",
+      "bytes": 667178
+    },
+    {
+      "path": "test-results/approved-male-wardrobe-320x568.png",
+      "bytes": 91802
+    },
+    {
+      "path": "test-results/approved-male-wardrobe-390x844.png",
+      "bytes": 162612
+    },
+    {
+      "path": "test-results/approved-male-wardrobe-768x1024.png",
+      "bytes": 375528
+    },
+    {
+      "path": "test-results/approved-male-wardrobe-844x390.png",
+      "bytes": 184620
+    },
+    {
+      "path": "test-results/approved-tunic-first-previews/female-full.jpg",
+      "bytes": 68551
+    },
+    {
+      "path": "test-results/approved-tunic-first-previews/female-neck.jpg",
+      "bytes": 11305
+    },
+    {
+      "path": "test-results/approved-tunic-first-previews/female-shoulders.jpg",
+      "bytes": 23661
+    },
+    {
+      "path": "test-results/approved-tunic-first-previews/female-slits.jpg",
+      "bytes": 14340
+    },
+    {
+      "path": "test-results/approved-tunic-first-previews/female-underarms.jpg",
+      "bytes": 19412
+    },
+    {
+      "path": "test-results/approved-tunic-first-previews/male-full.jpg",
+      "bytes": 70011
+    },
+    {
+      "path": "test-results/approved-tunic-first-previews/male-shoulders.jpg",
+      "bytes": 26597
+    },
+    {
+      "path": "test-results/approved-tunic-first-previews/male-slits.jpg",
+      "bytes": 15644
+    },
+    {
+      "path": "test-results/approved-tunic-first-previews/male-underarms.jpg",
+      "bytes": 20760
+    },
+    {
+      "path": "test-results/approved-tunic-previews/female-full.jpg",
+      "bytes": 68551
+    },
+    {
+      "path": "test-results/approved-tunic-previews/female-neck.jpg",
+      "bytes": 11305
+    },
+    {
+      "path": "test-results/approved-tunic-previews/female-shoulders.jpg",
+      "bytes": 23661
+    },
+    {
+      "path": "test-results/approved-tunic-previews/female-slits.jpg",
+      "bytes": 14340
+    },
+    {
+      "path": "test-results/approved-tunic-previews/female-underarms.jpg",
+      "bytes": 19412
+    },
+    {
+      "path": "test-results/approved-tunic-previews/male-full.jpg",
+      "bytes": 70011
+    },
+    {
+      "path": "test-results/approved-tunic-previews/male-shoulders.jpg",
+      "bytes": 26597
+    },
+    {
+      "path": "test-results/approved-tunic-previews/male-slits.jpg",
+      "bytes": 15644
+    },
+    {
+      "path": "test-results/approved-tunic-previews/male-underarms.jpg",
+      "bytes": 20760
+    },
+    {
+      "path": "test-results/approved-tunic-previews/patient-tunic-combat-female-1280x800-main.jpg",
+      "bytes": 15106
+    },
+    {
+      "path": "test-results/approved-tunic-previews/patient-tunic-combat-female-1280x800-wardrobe.jpg",
+      "bytes": 39626
+    },
+    {
+      "path": "test-results/approved-tunic-previews/patient-tunic-combat-male-1280x800-main.jpg",
+      "bytes": 14939
+    },
+    {
+      "path": "test-results/approved-tunic-previews/patient-tunic-combat-male-1280x800-wardrobe.jpg",
+      "bytes": 39870
+    },
+    {
+      "path": "test-results/approved-tunic-previews/patient-tunic-patient-female-1280x800-main.jpg",
+      "bytes": 15114
+    },
+    {
+      "path": "test-results/approved-tunic-previews/patient-tunic-patient-female-1280x800-wardrobe.jpg",
+      "bytes": 28999
+    },
+    {
+      "path": "test-results/approved-tunic-previews/patient-tunic-patient-male-1280x800-main.jpg",
+      "bytes": 14936
+    },
+    {
+      "path": "test-results/approved-tunic-previews/patient-tunic-patient-male-1280x800-wardrobe.jpg",
+      "bytes": 29808
+    },
+    {
+      "path": "test-results/approved-tunic-zip/ALL_COMPARISONS.jpg",
+      "bytes": 395109
+    },
+    {
+      "path": "test-results/approved-tunic-zip/EDIT_AUDIT.json",
+      "bytes": 305
+    },
+    {
+      "path": "test-results/approved-tunic-zip/PALETTA_404_TUNIC_FIT_REVIEW.pdf",
+      "bytes": 2005661
+    },
+    {
+      "path": "test-results/approved-tunic-zip/README_УКР.txt",
+      "bytes": 2113
+    },
+    {
+      "path": "test-results/approved-tunic-zip/female_DETAIL_1.png",
+      "bytes": 45927
+    },
+    {
+      "path": "test-results/approved-tunic-zip/female_DETAIL_2.png",
+      "bytes": 49167
+    },
+    {
+      "path": "test-results/approved-tunic-zip/female_THREE_WAY_COMPARISON.png",
+      "bytes": 538916
+    },
+    {
+      "path": "test-results/approved-tunic-zip/female_after_overlay.png",
+      "bytes": 903460
+    },
+    {
+      "path": "test-results/approved-tunic-zip/female_approved_full_unchanged.png",
+      "bytes": 1034414
+    },
+    {
+      "path": "test-results/approved-tunic-zip/female_base_unchanged.png",
+      "bytes": 950535
+    },
+    {
+      "path": "test-results/approved-tunic-zip/female_before_overlay.png",
+      "bytes": 903602
+    },
+    {
+      "path": "test-results/approved-tunic-zip/female_before_preview.jpg",
+      "bytes": 183539
+    },
+    {
+      "path": "test-results/approved-tunic-zip/female_corrected_preview.jpg",
+      "bytes": 183381
+    },
+    {
+      "path": "test-results/approved-tunic-zip/female_neckline_skin_underlay_UNCHANGED.png",
+      "bytes": 907123
+    },
+    {
+      "path": "test-results/approved-tunic-zip/male_DETAIL_1.png",
+      "bytes": 24771
+    },
+    {
+      "path": "test-results/approved-tunic-zip/male_THREE_WAY_COMPARISON.png",
+      "bytes": 491535
+    },
+    {
+      "path": "test-results/approved-tunic-zip/male_after_overlay.png",
+      "bytes": 990366
+    },
+    {
+      "path": "test-results/approved-tunic-zip/male_approved_full_unchanged.png",
+      "bytes": 1241371
+    },
+    {
+      "path": "test-results/approved-tunic-zip/male_base_unchanged.png",
+      "bytes": 1012856
+    },
+    {
+      "path": "test-results/approved-tunic-zip/male_before_overlay.png",
+      "bytes": 990445
+    },
+    {
+      "path": "test-results/approved-tunic-zip/male_before_preview.jpg",
+      "bytes": 203813
+    },
+    {
+      "path": "test-results/approved-tunic-zip/male_corrected_preview.jpg",
+      "bytes": 203816
+    },
+    {
+      "path": "test-results/approved-tunic-zip/patient_tunic_female_corrected.png",
+      "bytes": 899760
+    },
+    {
+      "path": "test-results/approved-tunic-zip/patient_tunic_male_corrected.png",
+      "bytes": 967063
+    },
+    {
+      "path": "test-results/archive-doctor-documents-1280.png",
+      "bytes": 406345
+    },
+    {
+      "path": "test-results/archive-doctor-documents-390.png",
+      "bytes": 181756
+    },
+    {
+      "path": "test-results/archive-doctor-identity-1280.png",
+      "bytes": 428135
+    },
+    {
+      "path": "test-results/archive-doctor-identity-390.png",
+      "bytes": 168562
+    },
+    {
+      "path": "test-results/archive-doctor-observations-1280.png",
+      "bytes": 391447
+    },
+    {
+      "path": "test-results/archive-doctor-observations-390.png",
+      "bytes": 171323
+    },
+    {
+      "path": "test-results/archive-doctor-rewards-1280.png",
+      "bytes": 346255
+    },
+    {
+      "path": "test-results/archive-doctor-rewards-390.png",
+      "bytes": 158294
+    },
+    {
+      "path": "test-results/archive-nurse-documents-1280.png",
+      "bytes": 384998
+    },
+    {
+      "path": "test-results/archive-nurse-documents-390.png",
+      "bytes": 171958
+    },
+    {
+      "path": "test-results/archive-nurse-identity-1280.png",
+      "bytes": 423903
+    },
+    {
+      "path": "test-results/archive-nurse-identity-390.png",
+      "bytes": 182650
+    },
+    {
+      "path": "test-results/archive-nurse-observations-1280.png",
+      "bytes": 385214
+    },
+    {
+      "path": "test-results/archive-nurse-observations-390.png",
+      "bytes": 175429
+    },
+    {
+      "path": "test-results/archive-nurse-rewards-1280.png",
+      "bytes": 346715
+    },
+    {
+      "path": "test-results/archive-nurse-rewards-390.png",
+      "bytes": 158791
+    },
+    {
+      "path": "test-results/asian-head-female-combat-1280.png",
+      "bytes": 773814
+    },
+    {
+      "path": "test-results/asian-head-female-combat-390.png",
+      "bytes": 182722
+    },
+    {
+      "path": "test-results/asian-head-female-patient-1280.png",
+      "bytes": 704491
+    },
+    {
+      "path": "test-results/asian-head-female-patient-390.png",
+      "bytes": 186006
+    },
+    {
+      "path": "test-results/asian-head-male-combat-1280.png",
+      "bytes": 777176
+    },
+    {
+      "path": "test-results/asian-head-male-combat-390.png",
+      "bytes": 184724
+    },
+    {
+      "path": "test-results/asian-head-male-patient-1280.png",
+      "bytes": 707594
+    },
+    {
+      "path": "test-results/asian-head-male-patient-390.png",
+      "bytes": 185414
+    },
+    {
+      "path": "test-results/audit-mobile-320-combat.png",
+      "bytes": 81678
+    },
+    {
+      "path": "test-results/audit-mobile-320-patient.png",
+      "bytes": 82277
+    },
+    {
+      "path": "test-results/audit-mobile-360-combat.png",
+      "bytes": 115532
+    },
+    {
+      "path": "test-results/audit-mobile-360-patient.png",
+      "bytes": 116450
+    },
+    {
+      "path": "test-results/audit-mobile-390-combat.png",
+      "bytes": 193406
+    },
+    {
+      "path": "test-results/audit-mobile-390-patient.png",
+      "bytes": 195985
+    },
+    {
+      "path": "test-results/audit-mobile-430-combat.png",
+      "bytes": 208232
+    },
+    {
+      "path": "test-results/audit-mobile-430-patient.png",
+      "bytes": 209421
+    },
+    {
+      "path": "test-results/audit-mobile-768-combat.png",
+      "bytes": 379630
+    },
+    {
+      "path": "test-results/audit-mobile-768-patient.png",
+      "bytes": 377006
+    },
+    {
+      "path": "test-results/bob-direction-preview/female-bob-current-light-2x.jpg",
+      "bytes": 51422
+    },
+    {
+      "path": "test-results/bob-direction-preview/female-bob-trial-light-2x.jpg",
+      "bytes": 51419
+    },
+    {
+      "path": "test-results/bob-direction-preview/female-hair-bob-head.jpg",
+      "bytes": 18302
+    },
+    {
+      "path": "test-results/bob-direction-preview/female-hair-bob-wardrobe.jpg",
+      "bytes": 50653
+    },
+    {
+      "path": "test-results/bob-direction-preview/female-hair-double-buns-head.jpg",
+      "bytes": 22452
+    },
+    {
+      "path": "test-results/bob-direction-preview/female-hair-double-buns-wardrobe.jpg",
+      "bytes": 51125
+    },
+    {
+      "path": "test-results/bob-direction-preview/female-hair-messy-head.jpg",
+      "bytes": 21330
+    },
+    {
+      "path": "test-results/bob-direction-preview/female-hair-messy-wardrobe.jpg",
+      "bytes": 50981
+    },
+    {
+      "path": "test-results/bob-direction-preview/female-hair-none.jpg",
+      "bytes": 69103
+    },
+    {
+      "path": "test-results/bob-direction-preview/female-hairstyles-overview.jpg",
+      "bytes": 98141
+    },
+    {
+      "path": "test-results/bob-direction-preview/male-bob-current-light-2x.jpg",
+      "bytes": 52586
+    },
+    {
+      "path": "test-results/bob-direction-preview/male-bob-trial-light-2x.jpg",
+      "bytes": 52560
+    },
+    {
+      "path": "test-results/bob-direction-preview/male-hair-bob-head.jpg",
+      "bytes": 18986
+    },
+    {
+      "path": "test-results/bob-direction-preview/male-hair-bob-wardrobe.jpg",
+      "bytes": 51875
+    },
+    {
+      "path": "test-results/bob-direction-preview/male-hair-double-buns-head.jpg",
+      "bytes": 21970
+    },
+    {
+      "path": "test-results/bob-direction-preview/male-hair-double-buns-wardrobe.jpg",
+      "bytes": 52249
+    },
+    {
+      "path": "test-results/bob-direction-preview/male-hair-messy-head.jpg",
+      "bytes": 18497
+    },
+    {
+      "path": "test-results/bob-direction-preview/male-hair-messy-wardrobe.jpg",
+      "bytes": 51840
+    },
+    {
+      "path": "test-results/bob-direction-preview/male-hair-none.jpg",
+      "bytes": 69494
+    },
+    {
+      "path": "test-results/bob-direction-preview/male-hairstyles-overview.jpg",
+      "bytes": 101906
+    },
+    {
+      "path": "test-results/bob-main-final/female-hair-bob-head.jpg",
+      "bytes": 18289
+    },
+    {
+      "path": "test-results/bob-main-final/female-hair-bob-wardrobe.jpg",
+      "bytes": 50653
+    },
+    {
+      "path": "test-results/bob-main-final/male-hair-bob-head.jpg",
+      "bytes": 19033
+    },
+    {
+      "path": "test-results/bob-main-final/male-hair-bob-wardrobe.jpg",
+      "bytes": 51877
+    },
+    {
+      "path": "test-results/compact-raids-1024x768.png",
+      "bytes": 408311
+    },
+    {
+      "path": "test-results/compact-raids-1280x800.png",
+      "bytes": 508872
+    },
+    {
+      "path": "test-results/compact-raids-320x568.png",
+      "bytes": 157056
+    },
+    {
+      "path": "test-results/compact-raids-390x844.png",
+      "bytes": 282986
+    },
+    {
+      "path": "test-results/compact-raids-768x1024.png",
+      "bytes": 475122
+    },
+    {
+      "path": "test-results/compact-raids-844x390.png",
+      "bytes": 214001
+    },
+    {
+      "path": "test-results/compact-staff-doctor-1024x768.png",
+      "bytes": 361997
+    },
+    {
+      "path": "test-results/compact-staff-doctor-1280x800.png",
+      "bytes": 427925
+    },
+    {
+      "path": "test-results/compact-staff-doctor-320x568.png",
+      "bytes": 148143
+    },
+    {
+      "path": "test-results/compact-staff-doctor-390x844.png",
+      "bytes": 209805
+    },
+    {
+      "path": "test-results/compact-staff-doctor-768x1024.png",
+      "bytes": 379656
+    },
+    {
+      "path": "test-results/compact-staff-doctor-844x390.png",
+      "bytes": 176321
+    },
+    {
+      "path": "test-results/compact-staff-nurse-1024x768.png",
+      "bytes": 360306
+    },
+    {
+      "path": "test-results/compact-staff-nurse-1280x800.png",
+      "bytes": 423760
+    },
+    {
+      "path": "test-results/compact-staff-nurse-320x568.png",
+      "bytes": 146122
+    },
+    {
+      "path": "test-results/compact-staff-nurse-390x844.png",
+      "bytes": 207854
+    },
+    {
+      "path": "test-results/compact-staff-nurse-768x1024.png",
+      "bytes": 377744
+    },
+    {
+      "path": "test-results/compact-staff-nurse-844x390.png",
+      "bytes": 174829
+    },
+    {
+      "path": "test-results/female-hair-bob-combat-mobile.png",
+      "bytes": 209763
+    },
+    {
+      "path": "test-results/female-hair-bob-game.png",
+      "bytes": 733087
+    },
+    {
+      "path": "test-results/female-hair-bob-head.png",
+      "bytes": 121905
+    },
+    {
+      "path": "test-results/female-hair-bob-patient-mobile.png",
+      "bytes": 209612
+    },
+    {
+      "path": "test-results/female-hair-bob-wardrobe.png",
+      "bytes": 433878
+    },
+    {
+      "path": "test-results/female-hair-classic-short-combat-mobile.png",
+      "bytes": 198940
+    },
+    {
+      "path": "test-results/female-hair-classic-short-game.png",
+      "bytes": 732867
+    },
+    {
+      "path": "test-results/female-hair-classic-short-head-dark.png",
+      "bytes": 329006
+    },
+    {
+      "path": "test-results/female-hair-classic-short-head.png",
+      "bytes": 337958
+    },
+    {
+      "path": "test-results/female-hair-classic-short-patient-mobile.png",
+      "bytes": 198497
+    },
+    {
+      "path": "test-results/female-hair-classic-short-wardrobe.png",
+      "bytes": 433721
+    },
+    {
+      "path": "test-results/female-hair-double-buns-combat-mobile.png",
+      "bytes": 203563
+    },
+    {
+      "path": "test-results/female-hair-double-buns-game.png",
+      "bytes": 735446
+    },
+    {
+      "path": "test-results/female-hair-double-buns-head.png",
+      "bytes": 148051
+    },
+    {
+      "path": "test-results/female-hair-double-buns-patient-mobile.png",
+      "bytes": 204695
+    },
+    {
+      "path": "test-results/female-hair-double-buns-wardrobe.png",
+      "bytes": 435785
+    },
+    {
+      "path": "test-results/female-hair-messy-combat-mobile.png",
+      "bytes": 210616
+    },
+    {
+      "path": "test-results/female-hair-messy-game.png",
+      "bytes": 734841
+    },
+    {
+      "path": "test-results/female-hair-messy-head.png",
+      "bytes": 138947
+    },
+    {
+      "path": "test-results/female-hair-messy-patient-mobile.png",
+      "bytes": 203455
+    },
+    {
+      "path": "test-results/female-hair-messy-wardrobe.png",
+      "bytes": 435416
+    },
+    {
+      "path": "test-results/female-hair-none.png",
+      "bytes": 509204
+    },
+    {
+      "path": "test-results/female-hair-shoulder-length-combat-mobile.png",
+      "bytes": 203112
+    },
+    {
+      "path": "test-results/female-hair-shoulder-length-fit8-after-head.png",
+      "bytes": 461309
+    },
+    {
+      "path": "test-results/female-hair-shoulder-length-fit8-before-head.png",
+      "bytes": 464727
+    },
+    {
+      "path": "test-results/female-hair-shoulder-length-game.png",
+      "bytes": 730827
+    },
+    {
+      "path": "test-results/female-hair-shoulder-length-head-dark.png",
+      "bytes": 438230
+    },
+    {
+      "path": "test-results/female-hair-shoulder-length-head.png",
+      "bytes": 461309
+    },
+    {
+      "path": "test-results/female-hair-shoulder-length-patient-mobile.png",
+      "bytes": 203406
+    },
+    {
+      "path": "test-results/female-hair-shoulder-length-wardrobe.png",
+      "bytes": 435099
+    },
+    {
+      "path": "test-results/female-hair-textured-short-combat-mobile.png",
+      "bytes": 195397
+    },
+    {
+      "path": "test-results/female-hair-textured-short-fit8-after-head.png",
+      "bytes": 319147
+    },
+    {
+      "path": "test-results/female-hair-textured-short-fit8-before-head.png",
+      "bytes": 326429
+    },
+    {
+      "path": "test-results/female-hair-textured-short-game.png",
+      "bytes": 729124
+    },
+    {
+      "path": "test-results/female-hair-textured-short-head-dark.png",
+      "bytes": 310232
+    },
+    {
+      "path": "test-results/female-hair-textured-short-head.png",
+      "bytes": 319147
+    },
+    {
+      "path": "test-results/female-hair-textured-short-patient-mobile.png",
+      "bytes": 194394
+    },
+    {
+      "path": "test-results/female-hair-textured-short-wardrobe.png",
+      "bytes": 433349
+    },
+    {
+      "path": "test-results/female-hairstyles-pack-02-overview.png",
+      "bytes": 451886
+    },
+    {
+      "path": "test-results/female-shirt-fit-detail-combat.png",
+      "bytes": 324003
+    },
+    {
+      "path": "test-results/female-shirt-fit-detail-patient.png",
+      "bytes": 297121
+    },
+    {
+      "path": "test-results/final-mobile-320-combat-female-faces.png",
+      "bytes": 85523
+    },
+    {
+      "path": "test-results/final-mobile-320-combat-female-hair.png",
+      "bytes": 81385
+    },
+    {
+      "path": "test-results/final-mobile-320-combat-male-faces.png",
+      "bytes": 85116
+    },
+    {
+      "path": "test-results/final-mobile-320-combat-male-hair.png",
+      "bytes": 84705
+    },
+    {
+      "path": "test-results/final-mobile-320-patient-female-faces.png",
+      "bytes": 86205
+    },
+    {
+      "path": "test-results/final-mobile-320-patient-female-hair.png",
+      "bytes": 81850
+    },
+    {
+      "path": "test-results/final-mobile-320-patient-male-faces.png",
+      "bytes": 86124
+    },
+    {
+      "path": "test-results/final-mobile-320-patient-male-hair.png",
+      "bytes": 85432
+    },
+    {
+      "path": "test-results/final-mobile-390-combat-female-faces.png",
+      "bytes": 198536
+    },
+    {
+      "path": "test-results/final-mobile-390-combat-female-hair.png",
+      "bytes": 179428
+    },
+    {
+      "path": "test-results/final-mobile-390-combat-male-faces.png",
+      "bytes": 198432
+    },
+    {
+      "path": "test-results/final-mobile-390-combat-male-hair.png",
+      "bytes": 182468
+    },
+    {
+      "path": "test-results/final-mobile-390-patient-female-faces.png",
+      "bytes": 201104
+    },
+    {
+      "path": "test-results/final-mobile-390-patient-female-hair.png",
+      "bytes": 180815
+    },
+    {
+      "path": "test-results/final-mobile-390-patient-male-faces.png",
+      "bytes": 199743
+    },
+    {
+      "path": "test-results/final-mobile-390-patient-male-hair.png",
+      "bytes": 181087
+    },
+    {
+      "path": "test-results/final-mobile-768-combat-female-faces.png",
+      "bytes": 462630
+    },
+    {
+      "path": "test-results/final-mobile-768-combat-female-hair.png",
+      "bytes": 433265
+    },
+    {
+      "path": "test-results/final-mobile-768-combat-male-faces.png",
+      "bytes": 447962
+    },
+    {
+      "path": "test-results/final-mobile-768-combat-male-hair.png",
+      "bytes": 451007
+    },
+    {
+      "path": "test-results/final-mobile-768-patient-female-faces.png",
+      "bytes": 461693
+    },
+    {
+      "path": "test-results/final-mobile-768-patient-female-hair.png",
+      "bytes": 428439
+    },
+    {
+      "path": "test-results/final-mobile-768-patient-male-faces.png",
+      "bytes": 444087
+    },
+    {
+      "path": "test-results/final-mobile-768-patient-male-hair.png",
+      "bytes": 449706
+    },
+    {
+      "path": "test-results/folder-hud-1024x768.png",
+      "bytes": 664555
+    },
+    {
+      "path": "test-results/folder-hud-1280x800.png",
+      "bytes": 1021692
+    },
+    {
+      "path": "test-results/folder-hud-320x568.png",
+      "bytes": 115567
+    },
+    {
+      "path": "test-results/folder-hud-390x844.png",
+      "bytes": 232627
+    },
+    {
+      "path": "test-results/folder-hud-768x1024.png",
+      "bytes": 535742
+    },
+    {
+      "path": "test-results/folder-hud-844x390.png",
+      "bytes": 356454
+    },
+    {
+      "path": "test-results/ground-shadow-female-combat-1024x768.png",
+      "bytes": 557779
+    },
+    {
+      "path": "test-results/ground-shadow-female-combat-1280x800.png",
+      "bytes": 740119
+    },
+    {
+      "path": "test-results/ground-shadow-female-combat-320x568.png",
+      "bytes": 91278
+    },
+    {
+      "path": "test-results/ground-shadow-female-combat-390x844.png",
+      "bytes": 181583
+    },
+    {
+      "path": "test-results/ground-shadow-female-combat-768x1024.png",
+      "bytes": 408618
+    },
+    {
+      "path": "test-results/ground-shadow-female-combat-844x390.png",
+      "bytes": 191373
+    },
+    {
+      "path": "test-results/ground-shadow-female-patient-1024x768.png",
+      "bytes": 508253
+    },
+    {
+      "path": "test-results/ground-shadow-female-patient-1280x800.png",
+      "bytes": 664408
+    },
+    {
+      "path": "test-results/ground-shadow-female-patient-320x568.png",
+      "bytes": 89283
+    },
+    {
+      "path": "test-results/ground-shadow-female-patient-390x844.png",
+      "bytes": 162079
+    },
+    {
+      "path": "test-results/ground-shadow-female-patient-768x1024.png",
+      "bytes": 373771
+    },
+    {
+      "path": "test-results/ground-shadow-female-patient-844x390.png",
+      "bytes": 183882
+    },
+    {
+      "path": "test-results/ground-shadow-male-combat-1024x768.png",
+      "bytes": 560569
+    },
+    {
+      "path": "test-results/ground-shadow-male-combat-1280x800.png",
+      "bytes": 743045
+    },
+    {
+      "path": "test-results/ground-shadow-male-combat-320x568.png",
+      "bytes": 91403
+    },
+    {
+      "path": "test-results/ground-shadow-male-combat-390x844.png",
+      "bytes": 182039
+    },
+    {
+      "path": "test-results/ground-shadow-male-combat-768x1024.png",
+      "bytes": 409959
+    },
+    {
+      "path": "test-results/ground-shadow-male-combat-844x390.png",
+      "bytes": 192012
+    },
+    {
+      "path": "test-results/ground-shadow-male-patient-1024x768.png",
+      "bytes": 511256
+    },
+    {
+      "path": "test-results/ground-shadow-male-patient-1280x800.png",
+      "bytes": 666977
+    },
+    {
+      "path": "test-results/ground-shadow-male-patient-320x568.png",
+      "bytes": 89324
+    },
+    {
+      "path": "test-results/ground-shadow-male-patient-390x844.png",
+      "bytes": 162218
+    },
+    {
+      "path": "test-results/ground-shadow-male-patient-768x1024.png",
+      "bytes": 375891
+    },
+    {
+      "path": "test-results/ground-shadow-male-patient-844x390.png",
+      "bytes": 184182
+    },
+    {
+      "path": "test-results/hair-fit-3-previews/female-hair-bob-head.jpg",
+      "bytes": 20223
+    },
+    {
+      "path": "test-results/hair-fit-3-previews/female-hair-bob-wardrobe.jpg",
+      "bytes": 50911
+    },
+    {
+      "path": "test-results/hair-fit-3-previews/female-hair-double-buns-head.jpg",
+      "bytes": 25223
+    },
+    {
+      "path": "test-results/hair-fit-3-previews/female-hair-double-buns-wardrobe.jpg",
+      "bytes": 51203
+    },
+    {
+      "path": "test-results/hair-fit-3-previews/female-hair-messy-head.jpg",
+      "bytes": 21330
+    },
+    {
+      "path": "test-results/hair-fit-3-previews/female-hair-messy-wardrobe.jpg",
+      "bytes": 50981
+    },
+    {
+      "path": "test-results/hair-fit-3-previews/female-hair-none.jpg",
+      "bytes": 69103
+    },
+    {
+      "path": "test-results/hair-fit-3-previews/female-hairstyles-overview.jpg",
+      "bytes": 98517
+    },
+    {
+      "path": "test-results/hair-fit-3-previews/male-hair-bob-head.jpg",
+      "bytes": 21192
+    },
+    {
+      "path": "test-results/hair-fit-3-previews/male-hair-bob-wardrobe.jpg",
+      "bytes": 52130
+    },
+    {
+      "path": "test-results/hair-fit-3-previews/male-hair-double-buns-head.jpg",
+      "bytes": 21970
+    },
+    {
+      "path": "test-results/hair-fit-3-previews/male-hair-double-buns-wardrobe.jpg",
+      "bytes": 52249
+    },
+    {
+      "path": "test-results/hair-fit-3-previews/male-hair-messy-head.jpg",
+      "bytes": 18438
+    },
+    {
+      "path": "test-results/hair-fit-3-previews/male-hair-messy-wardrobe.jpg",
+      "bytes": 51862
+    },
+    {
+      "path": "test-results/hair-fit-3-previews/male-hair-none.jpg",
+      "bytes": 69494
+    },
+    {
+      "path": "test-results/hair-fit-3-previews/male-hairstyles-overview.jpg",
+      "bytes": 102168
+    },
+    {
+      "path": "test-results/hair-fit-4-comparison.html",
+      "bytes": 2694
+    },
+    {
+      "path": "test-results/hair-fit-4-previews/female-hair-bob-head.jpg",
+      "bytes": 19394
+    },
+    {
+      "path": "test-results/hair-fit-4-previews/female-hair-bob-wardrobe.jpg",
+      "bytes": 50692
+    },
+    {
+      "path": "test-results/hair-fit-4-previews/female-hair-double-buns-head.jpg",
+      "bytes": 22452
+    },
+    {
+      "path": "test-results/hair-fit-4-previews/female-hair-double-buns-wardrobe.jpg",
+      "bytes": 51125
+    },
+    {
+      "path": "test-results/hair-fit-4-previews/female-hair-messy-head.jpg",
+      "bytes": 21330
+    },
+    {
+      "path": "test-results/hair-fit-4-previews/female-hair-messy-wardrobe.jpg",
+      "bytes": 50981
+    },
+    {
+      "path": "test-results/hair-fit-4-previews/female-hair-none.jpg",
+      "bytes": 69103
+    },
+    {
+      "path": "test-results/hair-fit-4-previews/female-hairstyles-overview.jpg",
+      "bytes": 98340
+    },
+    {
+      "path": "test-results/hair-fit-4-previews/male-hair-bob-head.jpg",
+      "bytes": 20462
+    },
+    {
+      "path": "test-results/hair-fit-4-previews/male-hair-bob-wardrobe.jpg",
+      "bytes": 51880
+    },
+    {
+      "path": "test-results/hair-fit-4-previews/male-hair-double-buns-head.jpg",
+      "bytes": 21970
+    },
+    {
+      "path": "test-results/hair-fit-4-previews/male-hair-double-buns-wardrobe.jpg",
+      "bytes": 52249
+    },
+    {
+      "path": "test-results/hair-fit-4-previews/male-hair-messy-head.jpg",
+      "bytes": 18497
+    },
+    {
+      "path": "test-results/hair-fit-4-previews/male-hair-messy-wardrobe.jpg",
+      "bytes": 51840
+    },
+    {
+      "path": "test-results/hair-fit-4-previews/male-hair-none.jpg",
+      "bytes": 69494
+    },
+    {
+      "path": "test-results/hair-fit-4-previews/male-hairstyles-overview.jpg",
+      "bytes": 102133
+    },
+    {
+      "path": "test-results/hair-fit-5-previews/female-hair-bob-head.jpg",
+      "bytes": 18673
+    },
+    {
+      "path": "test-results/hair-fit-5-previews/female-hair-bob-wardrobe.jpg",
+      "bytes": 50666
+    },
+    {
+      "path": "test-results/hair-fit-5-previews/female-hair-double-buns-head.jpg",
+      "bytes": 22452
+    },
+    {
+      "path": "test-results/hair-fit-5-previews/female-hair-double-buns-wardrobe.jpg",
+      "bytes": 51125
+    },
+    {
+      "path": "test-results/hair-fit-5-previews/female-hair-messy-head.jpg",
+      "bytes": 21330
+    },
+    {
+      "path": "test-results/hair-fit-5-previews/female-hair-messy-wardrobe.jpg",
+      "bytes": 50981
+    },
+    {
+      "path": "test-results/hair-fit-5-previews/female-hair-none.jpg",
+      "bytes": 69103
+    },
+    {
+      "path": "test-results/hair-fit-5-previews/female-hairstyles-overview.jpg",
+      "bytes": 98167
+    },
+    {
+      "path": "test-results/hair-fit-5-previews/male-hair-bob-head.jpg",
+      "bytes": 19400
+    },
+    {
+      "path": "test-results/hair-fit-5-previews/male-hair-bob-wardrobe.jpg",
+      "bytes": 51876
+    },
+    {
+      "path": "test-results/hair-fit-5-previews/male-hair-double-buns-head.jpg",
+      "bytes": 21970
+    },
+    {
+      "path": "test-results/hair-fit-5-previews/male-hair-double-buns-wardrobe.jpg",
+      "bytes": 52249
+    },
+    {
+      "path": "test-results/hair-fit-5-previews/male-hair-messy-head.jpg",
+      "bytes": 18497
+    },
+    {
+      "path": "test-results/hair-fit-5-previews/male-hair-messy-wardrobe.jpg",
+      "bytes": 51840
+    },
+    {
+      "path": "test-results/hair-fit-5-previews/male-hair-none.jpg",
+      "bytes": 69494
+    },
+    {
+      "path": "test-results/hair-fit-5-previews/male-hairstyles-overview.jpg",
+      "bytes": 101917
+    },
+    {
+      "path": "test-results/hair-fit-6-previews/female-hair-bob-head.jpg",
+      "bytes": 18345
+    },
+    {
+      "path": "test-results/hair-fit-6-previews/female-hair-bob-wardrobe.jpg",
+      "bytes": 50653
+    },
+    {
+      "path": "test-results/hair-fit-6-previews/female-hair-double-buns-head.jpg",
+      "bytes": 22452
+    },
+    {
+      "path": "test-results/hair-fit-6-previews/female-hair-double-buns-wardrobe.jpg",
+      "bytes": 51125
+    },
+    {
+      "path": "test-results/hair-fit-6-previews/female-hair-messy-head.jpg",
+      "bytes": 21330
+    },
+    {
+      "path": "test-results/hair-fit-6-previews/female-hair-messy-wardrobe.jpg",
+      "bytes": 50981
+    },
+    {
+      "path": "test-results/hair-fit-6-previews/female-hair-none.jpg",
+      "bytes": 69103
+    },
+    {
+      "path": "test-results/hair-fit-6-previews/female-hairstyles-overview.jpg",
+      "bytes": 98167
+    },
+    {
+      "path": "test-results/hair-fit-6-previews/male-hair-bob-head.jpg",
+      "bytes": 18977
+    },
+    {
+      "path": "test-results/hair-fit-6-previews/male-hair-bob-wardrobe.jpg",
+      "bytes": 51875
+    },
+    {
+      "path": "test-results/hair-fit-6-previews/male-hair-double-buns-head.jpg",
+      "bytes": 21970
+    },
+    {
+      "path": "test-results/hair-fit-6-previews/male-hair-double-buns-wardrobe.jpg",
+      "bytes": 52249
+    },
+    {
+      "path": "test-results/hair-fit-6-previews/male-hair-messy-head.jpg",
+      "bytes": 18497
+    },
+    {
+      "path": "test-results/hair-fit-6-previews/male-hair-messy-wardrobe.jpg",
+      "bytes": 51840
+    },
+    {
+      "path": "test-results/hair-fit-6-previews/male-hair-none.jpg",
+      "bytes": 69494
+    },
+    {
+      "path": "test-results/hair-fit-6-previews/male-hairstyles-overview.jpg",
+      "bytes": 101912
+    },
+    {
+      "path": "test-results/hair-fit-7-previews/female-hair-bob-head.jpg",
+      "bytes": 18409
+    },
+    {
+      "path": "test-results/hair-fit-7-previews/female-hair-bob-wardrobe.jpg",
+      "bytes": 50660
+    },
+    {
+      "path": "test-results/hair-fit-7-previews/female-hair-double-buns-head.jpg",
+      "bytes": 22452
+    },
+    {
+      "path": "test-results/hair-fit-7-previews/female-hair-double-buns-wardrobe.jpg",
+      "bytes": 51125
+    },
+    {
+      "path": "test-results/hair-fit-7-previews/female-hair-messy-head.jpg",
+      "bytes": 21330
+    },
+    {
+      "path": "test-results/hair-fit-7-previews/female-hair-messy-wardrobe.jpg",
+      "bytes": 50981
+    },
+    {
+      "path": "test-results/hair-fit-7-previews/female-hair-none.jpg",
+      "bytes": 69103
+    },
+    {
+      "path": "test-results/hair-fit-7-previews/female-hairstyles-overview.jpg",
+      "bytes": 98152
+    },
+    {
+      "path": "test-results/hair-fit-7-previews/male-hair-bob-head.jpg",
+      "bytes": 18905
+    },
+    {
+      "path": "test-results/hair-fit-7-previews/male-hair-bob-wardrobe.jpg",
+      "bytes": 51875
+    },
+    {
+      "path": "test-results/hair-fit-7-previews/male-hair-double-buns-head.jpg",
+      "bytes": 21970
+    },
+    {
+      "path": "test-results/hair-fit-7-previews/male-hair-double-buns-wardrobe.jpg",
+      "bytes": 52249
+    },
+    {
+      "path": "test-results/hair-fit-7-previews/male-hair-messy-head.jpg",
+      "bytes": 18497
+    },
+    {
+      "path": "test-results/hair-fit-7-previews/male-hair-messy-wardrobe.jpg",
+      "bytes": 51840
+    },
+    {
+      "path": "test-results/hair-fit-7-previews/male-hair-none.jpg",
+      "bytes": 69494
+    },
+    {
+      "path": "test-results/hair-fit-7-previews/male-hairstyles-overview.jpg",
+      "bytes": 101871
+    },
+    {
+      "path": "test-results/hair-pack-01-previews/female-hair-bob-head.jpg",
+      "bytes": 23531
+    },
+    {
+      "path": "test-results/hair-pack-01-previews/female-hair-bob-wardrobe.jpg",
+      "bytes": 51146
+    },
+    {
+      "path": "test-results/hair-pack-01-previews/female-hair-double-buns-head.jpg",
+      "bytes": 26659
+    },
+    {
+      "path": "test-results/hair-pack-01-previews/female-hair-double-buns-wardrobe.jpg",
+      "bytes": 51365
+    },
+    {
+      "path": "test-results/hair-pack-01-previews/female-hair-messy-head.jpg",
+      "bytes": 18674
+    },
+    {
+      "path": "test-results/hair-pack-01-previews/female-hair-messy-wardrobe.jpg",
+      "bytes": 50749
+    },
+    {
+      "path": "test-results/hair-pack-01-previews/female-hair-none.jpg",
+      "bytes": 69103
+    },
+    {
+      "path": "test-results/hair-pack-01-previews/female-hairstyles-overview.jpg",
+      "bytes": 98676
+    },
+    {
+      "path": "test-results/hair-pack-01-previews/male-hair-bob-head.jpg",
+      "bytes": 21422
+    },
+    {
+      "path": "test-results/hair-pack-01-previews/male-hair-bob-wardrobe.jpg",
+      "bytes": 52141
+    },
+    {
+      "path": "test-results/hair-pack-01-previews/male-hair-double-buns-head.jpg",
+      "bytes": 25680
+    },
+    {
+      "path": "test-results/hair-pack-01-previews/male-hair-double-buns-wardrobe.jpg",
+      "bytes": 52467
+    },
+    {
+      "path": "test-results/hair-pack-01-previews/male-hair-messy-head.jpg",
+      "bytes": 21416
+    },
+    {
+      "path": "test-results/hair-pack-01-previews/male-hair-messy-wardrobe.jpg",
+      "bytes": 52109
+    },
+    {
+      "path": "test-results/hair-pack-01-previews/male-hair-none.jpg",
+      "bytes": 69494
+    },
+    {
+      "path": "test-results/hair-pack-01-previews/male-hairstyles-overview.jpg",
+      "bytes": 102509
+    },
+    {
+      "path": "test-results/hair-pack-01-v2-previews/female-hair-bob-head.jpg",
+      "bytes": 21250
+    },
+    {
+      "path": "test-results/hair-pack-01-v2-previews/female-hair-bob-wardrobe.jpg",
+      "bytes": 51024
+    },
+    {
+      "path": "test-results/hair-pack-01-v2-previews/female-hair-double-buns-head.jpg",
+      "bytes": 26659
+    },
+    {
+      "path": "test-results/hair-pack-01-v2-previews/female-hair-double-buns-wardrobe.jpg",
+      "bytes": 51365
+    },
+    {
+      "path": "test-results/hair-pack-01-v2-previews/female-hair-messy-head.jpg",
+      "bytes": 21330
+    },
+    {
+      "path": "test-results/hair-pack-01-v2-previews/female-hair-messy-wardrobe.jpg",
+      "bytes": 50981
+    },
+    {
+      "path": "test-results/hair-pack-01-v2-previews/female-hair-none.jpg",
+      "bytes": 69103
+    },
+    {
+      "path": "test-results/hair-pack-01-v2-previews/female-hairstyles-overview.jpg",
+      "bytes": 98747
+    },
+    {
+      "path": "test-results/hair-pack-01-v2-previews/male-hair-bob-head.jpg",
+      "bytes": 24322
+    },
+    {
+      "path": "test-results/hair-pack-01-v2-previews/male-hair-bob-wardrobe.jpg",
+      "bytes": 52270
+    },
+    {
+      "path": "test-results/hair-pack-01-v2-previews/male-hair-double-buns-head.jpg",
+      "bytes": 25680
+    },
+    {
+      "path": "test-results/hair-pack-01-v2-previews/male-hair-double-buns-wardrobe.jpg",
+      "bytes": 52467
+    },
+    {
+      "path": "test-results/hair-pack-01-v2-previews/male-hair-messy-head.jpg",
+      "bytes": 19094
+    },
+    {
+      "path": "test-results/hair-pack-01-v2-previews/male-hair-messy-wardrobe.jpg",
+      "bytes": 51877
+    },
+    {
+      "path": "test-results/hair-pack-01-v2-previews/male-hair-none.jpg",
+      "bytes": 69494
+    },
+    {
+      "path": "test-results/hair-pack-01-v2-previews/male-hairstyles-overview.jpg",
+      "bytes": 102460
+    },
+    {
+      "path": "test-results/hair-pack-01-v2/female_chin_length_bob.png",
+      "bytes": 1335158
+    },
+    {
+      "path": "test-results/hair-pack-01-v2/female_double_buns.png",
+      "bytes": 1494515
+    },
+    {
+      "path": "test-results/hair-pack-01-v2/female_messy_tousled_hair.png",
+      "bytes": 1675946
+    },
+    {
+      "path": "test-results/hair-pack-01-v2/male_chin_length_bob.png",
+      "bytes": 1334439
+    },
+    {
+      "path": "test-results/hair-pack-01-v2/male_double_buns.png",
+      "bytes": 1411544
+    },
+    {
+      "path": "test-results/hair-pack-01-v2/male_messy_hair.png",
+      "bytes": 1145023
+    },
+    {
+      "path": "test-results/hair-pack-01-v2/manifest.json",
+      "bytes": 2131
+    },
+    {
+      "path": "test-results/hair-pack-01/female_chin_length_bob.png",
+      "bytes": 1334439
+    },
+    {
+      "path": "test-results/hair-pack-01/female_double_buns.png",
+      "bytes": 1494515
+    },
+    {
+      "path": "test-results/hair-pack-01/female_messy_hair.png",
+      "bytes": 1145023
+    },
+    {
+      "path": "test-results/hair-pack-01/male_chin_length_bob.png",
+      "bytes": 1335158
+    },
+    {
+      "path": "test-results/hair-pack-01/male_double_buns.png",
+      "bytes": 1411544
+    },
+    {
+      "path": "test-results/hair-pack-01/male_messy_hair.png",
+      "bytes": 1675946
+    },
+    {
+      "path": "test-results/hair-pack-01/manifest.json",
+      "bytes": 1734
+    },
+    {
+      "path": "test-results/hair-pack-02-source/classic_short_unisex/fittings/style_A_generated_on_female_avatar.png",
+      "bytes": 1078877
+    },
+    {
+      "path": "test-results/hair-pack-02-source/classic_short_unisex/fittings/style_A_tryon_on_male_original_avatar.png",
+      "bytes": 1100351
+    },
+    {
+      "path": "test-results/hair-pack-02-source/classic_short_unisex/fittings/style_B_generated_on_male_avatar.png",
+      "bytes": 1108961
+    },
+    {
+      "path": "test-results/hair-pack-02-source/classic_short_unisex/fittings/style_B_tryon_on_female_original_avatar.png",
+      "bytes": 1055590
+    },
+    {
+      "path": "test-results/hair-pack-02-source/classic_short_unisex/hairstyle_pngs/classic_short_unisex_style_A.png",
+      "bytes": 1412516
+    },
+    {
+      "path": "test-results/hair-pack-02-source/classic_short_unisex/hairstyle_pngs/classic_short_unisex_style_B.png",
+      "bytes": 1040910
+    },
+    {
+      "path": "test-results/hair-pack-02-source/manifest.json",
+      "bytes": 1512
+    },
+    {
+      "path": "test-results/hair-pack-02-source/medium_shoulder_length/generated_on_avatar/female_medium_shoulder_length_generated_on_avatar.png",
+      "bytes": 1442457
+    },
+    {
+      "path": "test-results/hair-pack-02-source/medium_shoulder_length/generated_on_avatar/male_medium_shoulder_length_generated_on_avatar.png",
+      "bytes": 1451784
+    },
+    {
+      "path": "test-results/hair-pack-02-source/medium_shoulder_length/hairstyle_pngs/female_medium_shoulder_length.png",
+      "bytes": 1727325
+    },
+    {
+      "path": "test-results/hair-pack-02-source/medium_shoulder_length/hairstyle_pngs/male_medium_shoulder_length.png",
+      "bytes": 1303833
+    },
+    {
+      "path": "test-results/hair-pack-02-source/medium_shoulder_length/tryon_on_original_avatar/female_medium_shoulder_length_tryon_on_original_avatar.png",
+      "bytes": 1021914
+    },
+    {
+      "path": "test-results/hair-pack-02-source/medium_shoulder_length/tryon_on_original_avatar/male_medium_shoulder_length_tryon_on_original_avatar.png",
+      "bytes": 1025314
+    },
+    {
+      "path": "test-results/hair-pack-02-source/original_avatars/female_original_avatar.png",
+      "bytes": 950535
+    },
+    {
+      "path": "test-results/hair-pack-02-source/original_avatars/male_original_avatar.png",
+      "bytes": 1012856
+    },
+    {
+      "path": "test-results/hair-palette-combat-1280.png",
+      "bytes": 801541
+    },
+    {
+      "path": "test-results/hair-palette-combat-1920.png",
+      "bytes": 1373085
+    },
+    {
+      "path": "test-results/hair-palette-combat-320.png",
+      "bytes": 80582
+    },
+    {
+      "path": "test-results/hair-palette-combat-390.png",
+      "bytes": 178243
+    },
+    {
+      "path": "test-results/hair-palette-patient-1280.png",
+      "bytes": 733943
+    },
+    {
+      "path": "test-results/hair-palette-patient-1920.png",
+      "bytes": 1267663
+    },
+    {
+      "path": "test-results/hair-palette-patient-320.png",
+      "bytes": 80760
+    },
+    {
+      "path": "test-results/hair-palette-patient-390.png",
+      "bytes": 179264
+    },
+    {
+      "path": "test-results/male-hair-bob-combat-mobile.png",
+      "bytes": 209124
+    },
+    {
+      "path": "test-results/male-hair-bob-game.png",
+      "bytes": 734436
+    },
+    {
+      "path": "test-results/male-hair-bob-head.png",
+      "bytes": 121680
+    },
+    {
+      "path": "test-results/male-hair-bob-patient-mobile.png",
+      "bytes": 209750
+    },
+    {
+      "path": "test-results/male-hair-bob-wardrobe.png",
+      "bytes": 435460
+    },
+    {
+      "path": "test-results/male-hair-classic-short-combat-mobile.png",
+      "bytes": 197484
+    },
+    {
+      "path": "test-results/male-hair-classic-short-game.png",
+      "bytes": 730556
+    },
+    {
+      "path": "test-results/male-hair-classic-short-head-dark.png",
+      "bytes": 327739
+    },
+    {
+      "path": "test-results/male-hair-classic-short-head.png",
+      "bytes": 338172
+    },
+    {
+      "path": "test-results/male-hair-classic-short-patient-mobile.png",
+      "bytes": 197942
+    },
+    {
+      "path": "test-results/male-hair-classic-short-wardrobe.png",
+      "bytes": 435455
+    },
+    {
+      "path": "test-results/male-hair-double-buns-combat-mobile.png",
+      "bytes": 202403
+    },
+    {
+      "path": "test-results/male-hair-double-buns-game.png",
+      "bytes": 736190
+    },
+    {
+      "path": "test-results/male-hair-double-buns-head.png",
+      "bytes": 140527
+    },
+    {
+      "path": "test-results/male-hair-double-buns-patient-mobile.png",
+      "bytes": 203716
+    },
+    {
+      "path": "test-results/male-hair-double-buns-wardrobe.png",
+      "bytes": 437179
+    },
+    {
+      "path": "test-results/male-hair-messy-combat-mobile.png",
+      "bytes": 209378
+    },
+    {
+      "path": "test-results/male-hair-messy-crown-audit-4x.png",
+      "bytes": 256282
+    },
+    {
+      "path": "test-results/male-hair-messy-fit8-after-ears-4x.png",
+      "bytes": 652527
+    },
+    {
+      "path": "test-results/male-hair-messy-fit8-after-head.png",
+      "bytes": 336534
+    },
+    {
+      "path": "test-results/male-hair-messy-fit8-before-ears-4x.png",
+      "bytes": 655616
+    },
+    {
+      "path": "test-results/male-hair-messy-fit8-before-head.png",
+      "bytes": 337208
+    },
+    {
+      "path": "test-results/male-hair-messy-game.png",
+      "bytes": 733903
+    },
+    {
+      "path": "test-results/male-hair-messy-head-dark.png",
+      "bytes": 321395
+    },
+    {
+      "path": "test-results/male-hair-messy-head.png",
+      "bytes": 336534
+    },
+    {
+      "path": "test-results/male-hair-messy-patient-mobile.png",
+      "bytes": 207984
+    },
+    {
+      "path": "test-results/male-hair-messy-wardrobe.png",
+      "bytes": 435541
+    },
+    {
+      "path": "test-results/male-hair-none.png",
+      "bytes": 509690
+    },
+    {
+      "path": "test-results/male-hair-shoulder-length-combat-mobile.png",
+      "bytes": 202323
+    },
+    {
+      "path": "test-results/male-hair-shoulder-length-fit8-after-head-dark.png",
+      "bytes": 386338
+    },
+    {
+      "path": "test-results/male-hair-shoulder-length-fit8-after-head.png",
+      "bytes": 404046
+    },
+    {
+      "path": "test-results/male-hair-shoulder-length-fit8-before-head-dark.png",
+      "bytes": 365497
+    },
+    {
+      "path": "test-results/male-hair-shoulder-length-fit8-before-head.png",
+      "bytes": 382574
+    },
+    {
+      "path": "test-results/male-hair-shoulder-length-game.png",
+      "bytes": 719464
+    },
+    {
+      "path": "test-results/male-hair-shoulder-length-head-dark.png",
+      "bytes": 386338
+    },
+    {
+      "path": "test-results/male-hair-shoulder-length-head.png",
+      "bytes": 404046
+    },
+    {
+      "path": "test-results/male-hair-shoulder-length-patient-mobile.png",
+      "bytes": 202906
+    },
+    {
+      "path": "test-results/male-hair-shoulder-length-wardrobe.png",
+      "bytes": 436387
+    },
+    {
+      "path": "test-results/male-hair-textured-short-combat-mobile.png",
+      "bytes": 193374
+    },
+    {
+      "path": "test-results/male-hair-textured-short-game.png",
+      "bytes": 730717
+    },
+    {
+      "path": "test-results/male-hair-textured-short-head-dark.png",
+      "bytes": 306203
+    },
+    {
+      "path": "test-results/male-hair-textured-short-head.png",
+      "bytes": 316174
+    },
+    {
+      "path": "test-results/male-hair-textured-short-patient-mobile.png",
+      "bytes": 193191
+    },
+    {
+      "path": "test-results/male-hair-textured-short-wardrobe.png",
+      "bytes": 435066
+    },
+    {
+      "path": "test-results/male-hairstyles-pack-02-overview.png",
+      "bytes": 445472
+    },
+    {
+      "path": "test-results/male-shirt-fit-detail-combat.png",
+      "bytes": 319766
+    },
+    {
+      "path": "test-results/male-shirt-fit-detail-patient.png",
+      "bytes": 296861
+    },
+    {
+      "path": "test-results/mobile-battle.png",
+      "bytes": 3121963
+    },
+    {
+      "path": "test-results/mobile-lobby.png",
+      "bytes": 1905717
+    },
+    {
+      "path": "test-results/paper-doll-female-1024x768.png",
+      "bytes": 673096
+    },
+    {
+      "path": "test-results/paper-doll-female-1280x800.png",
+      "bytes": 1019380
+    },
+    {
+      "path": "test-results/paper-doll-female-320x568.png",
+      "bytes": 115576
+    },
+    {
+      "path": "test-results/paper-doll-female-390x844.png",
+      "bytes": 236143
+    },
+    {
+      "path": "test-results/paper-doll-female-768x1024.png",
+      "bytes": 536826
+    },
+    {
+      "path": "test-results/paper-doll-female-844x390.png",
+      "bytes": 352950
+    },
+    {
+      "path": "test-results/paper-doll-male-1024x768.png",
+      "bytes": 673522
+    },
+    {
+      "path": "test-results/paper-doll-male-1280x800.png",
+      "bytes": 1020652
+    },
+    {
+      "path": "test-results/paper-doll-male-320x568.png",
+      "bytes": 115576
+    },
+    {
+      "path": "test-results/paper-doll-male-390x844.png",
+      "bytes": 236159
+    },
+    {
+      "path": "test-results/paper-doll-male-768x1024.png",
+      "bytes": 538096
+    },
+    {
+      "path": "test-results/paper-doll-male-844x390.png",
+      "bytes": 355776
+    },
+    {
+      "path": "test-results/patient-shirt-art-combat-1280x1000.png",
+      "bytes": 807986
+    },
+    {
+      "path": "test-results/patient-shirt-art-patient-1280x1000.png",
+      "bytes": 707530
+    },
+    {
+      "path": "test-results/patient-shirt-art-phone.png",
+      "bytes": 639440
+    },
+    {
+      "path": "test-results/patient-tunic-combat-female-1280x800-main.png",
+      "bytes": 1020443
+    },
+    {
+      "path": "test-results/patient-tunic-combat-female-1280x800-wardrobe.png",
+      "bytes": 733932
+    },
+    {
+      "path": "test-results/patient-tunic-combat-female-390x844-main.png",
+      "bytes": 260385
+    },
+    {
+      "path": "test-results/patient-tunic-combat-female-390x844-wardrobe.png",
+      "bytes": 180948
+    },
+    {
+      "path": "test-results/patient-tunic-combat-male-1280x800-main.png",
+      "bytes": 1020308
+    },
+    {
+      "path": "test-results/patient-tunic-combat-male-1280x800-wardrobe.png",
+      "bytes": 735302
+    },
+    {
+      "path": "test-results/patient-tunic-combat-male-390x844-main.png",
+      "bytes": 261057
+    },
+    {
+      "path": "test-results/patient-tunic-combat-male-390x844-wardrobe.png",
+      "bytes": 180686
+    },
+    {
+      "path": "test-results/patient-tunic-fit-female-full-combat.png",
+      "bytes": 842015
+    },
+    {
+      "path": "test-results/patient-tunic-fit-female-full-patient.png",
+      "bytes": 707526
+    },
+    {
+      "path": "test-results/patient-tunic-fit-female-neck-combat.png",
+      "bytes": 96725
+    },
+    {
+      "path": "test-results/patient-tunic-fit-female-neck-patient.png",
+      "bytes": 96725
+    },
+    {
+      "path": "test-results/patient-tunic-fit-female-shoulders-combat.png",
+      "bytes": 210382
+    },
+    {
+      "path": "test-results/patient-tunic-fit-female-shoulders-patient.png",
+      "bytes": 210382
+    },
+    {
+      "path": "test-results/patient-tunic-fit-female-slits-combat.png",
+      "bytes": 129492
+    },
+    {
+      "path": "test-results/patient-tunic-fit-female-slits-patient.png",
+      "bytes": 129492
+    },
+    {
+      "path": "test-results/patient-tunic-fit-female-underarms-combat.png",
+      "bytes": 173376
+    },
+    {
+      "path": "test-results/patient-tunic-fit-female-underarms-patient.png",
+      "bytes": 173376
+    },
+    {
+      "path": "test-results/patient-tunic-fit-male-full-combat.png",
+      "bytes": 841928
+    },
+    {
+      "path": "test-results/patient-tunic-fit-male-full-patient.png",
+      "bytes": 710831
+    },
+    {
+      "path": "test-results/patient-tunic-fit-male-shoulders-combat.png",
+      "bytes": 231323
+    },
+    {
+      "path": "test-results/patient-tunic-fit-male-shoulders-patient.png",
+      "bytes": 231323
+    },
+    {
+      "path": "test-results/patient-tunic-fit-male-slits-combat.png",
+      "bytes": 133534
+    },
+    {
+      "path": "test-results/patient-tunic-fit-male-slits-patient.png",
+      "bytes": 133534
+    },
+    {
+      "path": "test-results/patient-tunic-fit-male-underarms-combat.png",
+      "bytes": 187085
+    },
+    {
+      "path": "test-results/patient-tunic-fit-male-underarms-patient.png",
+      "bytes": 187085
+    },
+    {
+      "path": "test-results/patient-tunic-fit-phone.png",
+      "bytes": 1557253
+    },
+    {
+      "path": "test-results/patient-tunic-patient-female-1280x800-main.png",
+      "bytes": 1020445
+    },
+    {
+      "path": "test-results/patient-tunic-patient-female-1280x800-wardrobe.png",
+      "bytes": 653688
+    },
+    {
+      "path": "test-results/patient-tunic-patient-female-390x844-main.png",
+      "bytes": 260392
+    },
+    {
+      "path": "test-results/patient-tunic-patient-female-390x844-wardrobe.png",
+      "bytes": 161266
+    },
+    {
+      "path": "test-results/patient-tunic-patient-male-1280x800-main.png",
+      "bytes": 1020239
+    },
+    {
+      "path": "test-results/patient-tunic-patient-male-1280x800-wardrobe.png",
+      "bytes": 656957
+    },
+    {
+      "path": "test-results/patient-tunic-patient-male-390x844-main.png",
+      "bytes": 261074
+    },
+    {
+      "path": "test-results/patient-tunic-patient-male-390x844-wardrobe.png",
+      "bytes": 160153
+    },
+    {
+      "path": "test-results/personal-mvp-1024x768.png",
+      "bytes": 325988
+    },
+    {
+      "path": "test-results/personal-mvp-1280x800.png",
+      "bytes": 457756
+    },
+    {
+      "path": "test-results/personal-mvp-320x568.png",
+      "bytes": 156729
+    },
+    {
+      "path": "test-results/personal-mvp-390x844.png",
+      "bytes": 248238
+    },
+    {
+      "path": "test-results/personal-mvp-768x1024.png",
+      "bytes": 394499
+    },
+    {
+      "path": "test-results/personal-mvp-844x390.png",
+      "bytes": 200813
+    },
+    {
+      "path": "test-results/personnel-form-1024x768.png",
+      "bytes": 351330
+    },
+    {
+      "path": "test-results/personnel-form-1280x800.png",
+      "bytes": 417153
+    },
+    {
+      "path": "test-results/personnel-form-320x568.png",
+      "bytes": 102173
+    },
+    {
+      "path": "test-results/personnel-form-390x844.png",
+      "bytes": 212952
+    },
+    {
+      "path": "test-results/personnel-form-768x1024.png",
+      "bytes": 370302
+    },
+    {
+      "path": "test-results/personnel-form-844x390.png",
+      "bytes": 156351
+    },
+    {
+      "path": "test-results/previous-tunic-work/patient-tunic.before-approved-zip.html",
+      "bytes": 13238
+    },
+    {
+      "path": "test-results/previous-tunic-work/test_game.before-approved-zip.py",
+      "bytes": 163354
+    },
+    {
+      "path": "test-results/raid-archive-1280x800.png",
+      "bytes": 555578
+    },
+    {
+      "path": "test-results/raid-archive-320x568.png",
+      "bytes": 147401
+    },
+    {
+      "path": "test-results/raid-archive-390x844.png",
+      "bytes": 275261
+    },
+    {
+      "path": "test-results/raid-archive-844x390.png",
+      "bytes": 196984
+    },
+    {
+      "path": "test-results/raid-dossiers-1280x800.png",
+      "bytes": 509255
+    },
+    {
+      "path": "test-results/raid-dossiers-320x568.png",
+      "bytes": 157023
+    },
+    {
+      "path": "test-results/raid-dossiers-390x844.png",
+      "bytes": 283237
+    },
+    {
+      "path": "test-results/raid-dossiers-844x390.png",
+      "bytes": 214271
+    },
+    {
+      "path": "test-results/raid-enlarged-1024x768.png",
+      "bytes": 389450
+    },
+    {
+      "path": "test-results/raid-enlarged-1280x800.png",
+      "bytes": 490110
+    },
+    {
+      "path": "test-results/raid-enlarged-320x568.png",
+      "bytes": 147463
+    },
+    {
+      "path": "test-results/raid-enlarged-390x844.png",
+      "bytes": 276588
+    },
+    {
+      "path": "test-results/raid-enlarged-768x1024.png",
+      "bytes": 476373
+    },
+    {
+      "path": "test-results/raid-enlarged-844x390.png",
+      "bytes": 204345
+    },
+    {
+      "path": "test-results/registration-combat-female-1024x768.png",
+      "bytes": 557865
+    },
+    {
+      "path": "test-results/registration-combat-female-1280x800.png",
+      "bytes": 740341
+    },
+    {
+      "path": "test-results/registration-combat-female-320x568.png",
+      "bytes": 90864
+    },
+    {
+      "path": "test-results/registration-combat-female-390x844.png",
+      "bytes": 179535
+    },
+    {
+      "path": "test-results/registration-combat-female-768x1024.png",
+      "bytes": 410699
+    },
+    {
+      "path": "test-results/registration-combat-female-844x390.png",
+      "bytes": 191403
+    },
+    {
+      "path": "test-results/registration-combat-male-1024x768.png",
+      "bytes": 560530
+    },
+    {
+      "path": "test-results/registration-combat-male-1280x800.png",
+      "bytes": 743162
+    },
+    {
+      "path": "test-results/registration-combat-male-320x568.png",
+      "bytes": 91118
+    },
+    {
+      "path": "test-results/registration-combat-male-390x844.png",
+      "bytes": 180124
+    },
+    {
+      "path": "test-results/registration-combat-male-768x1024.png",
+      "bytes": 412733
+    },
+    {
+      "path": "test-results/registration-combat-male-844x390.png",
+      "bytes": 192209
+    },
+    {
+      "path": "test-results/registration-patient-female-1024x768.png",
+      "bytes": 508363
+    },
+    {
+      "path": "test-results/registration-patient-female-1280x800.png",
+      "bytes": 664060
+    },
+    {
+      "path": "test-results/registration-patient-female-320x568.png",
+      "bytes": 88583
+    },
+    {
+      "path": "test-results/registration-patient-female-390x844.png",
+      "bytes": 161307
+    },
+    {
+      "path": "test-results/registration-patient-female-768x1024.png",
+      "bytes": 376418
+    },
+    {
+      "path": "test-results/registration-patient-female-844x390.png",
+      "bytes": 183921
+    },
+    {
+      "path": "test-results/registration-patient-male-1024x768.png",
+      "bytes": 511532
+    },
+    {
+      "path": "test-results/registration-patient-male-1280x800.png",
+      "bytes": 666822
+    },
+    {
+      "path": "test-results/registration-patient-male-320x568.png",
+      "bytes": 88773
+    },
+    {
+      "path": "test-results/registration-patient-male-390x844.png",
+      "bytes": 161539
+    },
+    {
+      "path": "test-results/registration-patient-male-768x1024.png",
+      "bytes": 378112
+    },
+    {
+      "path": "test-results/registration-patient-male-844x390.png",
+      "bytes": 184449
+    },
+    {
+      "path": "test-results/scale-previews/wardrobe-scale-combat-female-1280x800.jpg",
+      "bytes": 23202
+    },
+    {
+      "path": "test-results/scale-previews/wardrobe-scale-combat-female-1920x1080.jpg",
+      "bytes": 35771
+    },
+    {
+      "path": "test-results/scale-previews/wardrobe-scale-combat-male-1280x800.jpg",
+      "bytes": 23453
+    },
+    {
+      "path": "test-results/scale-previews/wardrobe-scale-combat-male-1920x1080.jpg",
+      "bytes": 36045
+    },
+    {
+      "path": "test-results/scale-previews/wardrobe-scale-patient-female-1280x800.jpg",
+      "bytes": 17343
+    },
+    {
+      "path": "test-results/scale-previews/wardrobe-scale-patient-female-1920x1080.jpg",
+      "bytes": 26637
+    },
+    {
+      "path": "test-results/scale-previews/wardrobe-scale-patient-male-1280x800.jpg",
+      "bytes": 17988
+    },
+    {
+      "path": "test-results/scale-previews/wardrobe-scale-patient-male-1920x1080.jpg",
+      "bytes": 27400
+    },
+    {
+      "path": "test-results/shirt-previews/female-shirt-fit-detail-combat.jpg",
+      "bytes": 41792
+    },
+    {
+      "path": "test-results/shirt-previews/female-shirt-fit-detail-patient.jpg",
+      "bytes": 36201
+    },
+    {
+      "path": "test-results/shirt-previews/male-shirt-fit-detail-combat-before-armpit.jpg",
+      "bytes": 42475
+    },
+    {
+      "path": "test-results/shirt-previews/male-shirt-fit-detail-combat.jpg",
+      "bytes": 42074
+    },
+    {
+      "path": "test-results/shirt-previews/male-shirt-fit-detail-patient-before-armpit.jpg",
+      "bytes": 37845
+    },
+    {
+      "path": "test-results/shirt-previews/male-shirt-fit-detail-patient.jpg",
+      "bytes": 37427
+    },
+    {
+      "path": "test-results/shirt-previews/patient-shirt-female-combat.jpg",
+      "bytes": 44194
+    },
+    {
+      "path": "test-results/shirt-previews/patient-shirt-female-patient.jpg",
+      "bytes": 30286
+    },
+    {
+      "path": "test-results/shirt-previews/patient-shirt-male-combat-before-armpit.jpg",
+      "bytes": 44744
+    },
+    {
+      "path": "test-results/shirt-previews/patient-shirt-male-combat.jpg",
+      "bytes": 44939
+    },
+    {
+      "path": "test-results/shirt-previews/patient-shirt-male-patient-before-armpit.jpg",
+      "bytes": 31655
+    },
+    {
+      "path": "test-results/shirt-previews/patient-shirt-male-patient.jpg",
+      "bytes": 31809
+    },
+    {
+      "path": "test-results/staff-archive-1024x768.png",
+      "bytes": 360263
+    },
+    {
+      "path": "test-results/staff-archive-1280x800.png",
+      "bytes": 423777
+    },
+    {
+      "path": "test-results/staff-archive-320x568.png",
+      "bytes": 111249
+    },
+    {
+      "path": "test-results/staff-archive-390x844.png",
+      "bytes": 220429
+    },
+    {
+      "path": "test-results/staff-archive-768x1024.png",
+      "bytes": 377785
+    },
+    {
+      "path": "test-results/staff-archive-844x390.png",
+      "bytes": 167756
+    },
+    {
+      "path": "test-results/tunic-fit-originals/patient_tunic_female.png",
+      "bytes": 1677969
+    },
+    {
+      "path": "test-results/tunic-fit-originals/patient_tunic_male.png",
+      "bytes": 1686750
+    },
+    {
+      "path": "test-results/tunic-previews/patient-tunic-combat-female-1280x800-main.jpg",
+      "bytes": 15230
+    },
+    {
+      "path": "test-results/tunic-previews/patient-tunic-combat-female-1280x800-wardrobe.jpg",
+      "bytes": 39518
+    },
+    {
+      "path": "test-results/tunic-previews/patient-tunic-combat-male-1280x800-main.jpg",
+      "bytes": 15419
+    },
+    {
+      "path": "test-results/tunic-previews/patient-tunic-combat-male-1280x800-wardrobe.jpg",
+      "bytes": 39952
+    },
+    {
+      "path": "test-results/tunic-previews/patient-tunic-patient-female-1280x800-main.jpg",
+      "bytes": 15236
+    },
+    {
+      "path": "test-results/tunic-previews/patient-tunic-patient-female-1280x800-wardrobe.jpg",
+      "bytes": 28769
+    },
+    {
+      "path": "test-results/tunic-previews/patient-tunic-patient-male-1280x800-main.jpg",
+      "bytes": 15431
+    },
+    {
+      "path": "test-results/tunic-previews/patient-tunic-patient-male-1280x800-wardrobe.jpg",
+      "bytes": 29827
+    },
+    {
+      "path": "test-results/victory-1280x800.png",
+      "bytes": 394601
+    },
+    {
+      "path": "test-results/victory-320x568.png",
+      "bytes": 111621
+    },
+    {
+      "path": "test-results/victory-390x844.png",
+      "bytes": 190007
+    },
+    {
+      "path": "test-results/victory-844x390.png",
+      "bytes": 148591
+    },
+    {
+      "path": "test-results/victory-summary-1024x600.png",
+      "bytes": 263007
+    },
+    {
+      "path": "test-results/victory-summary-1280x800.png",
+      "bytes": 382879
+    },
+    {
+      "path": "test-results/victory-summary-1366x768.png",
+      "bytes": 415044
+    },
+    {
+      "path": "test-results/victory-summary-320x320.png",
+      "bytes": 62492
+    },
+    {
+      "path": "test-results/victory-summary-320x568.png",
+      "bytes": 113921
+    },
+    {
+      "path": "test-results/victory-summary-390x844.png",
+      "bytes": 179255
+    },
+    {
+      "path": "test-results/victory-summary-844x390.png",
+      "bytes": 135577
+    },
+    {
+      "path": "test-results/wardrobe-final-empty-combat-1920x1080.png",
+      "bytes": 1269550
+    },
+    {
+      "path": "test-results/wardrobe-final-empty-combat-320x568.png",
+      "bytes": 95115
+    },
+    {
+      "path": "test-results/wardrobe-final-empty-combat-390x844.png",
+      "bytes": 185226
+    },
+    {
+      "path": "test-results/wardrobe-final-empty-combat-768x1024.png",
+      "bytes": 410552
+    },
+    {
+      "path": "test-results/wardrobe-final-empty-patient-1920x1080.png",
+      "bytes": 1157798
+    },
+    {
+      "path": "test-results/wardrobe-final-empty-patient-320x568.png",
+      "bytes": 91260
+    },
+    {
+      "path": "test-results/wardrobe-final-empty-patient-390x844.png",
+      "bytes": 165570
+    },
+    {
+      "path": "test-results/wardrobe-final-empty-patient-768x1024.png",
+      "bytes": 377444
+    },
+    {
+      "path": "test-results/wardrobe-scale-combat-female-1280x800.png",
+      "bytes": 740306
+    },
+    {
+      "path": "test-results/wardrobe-scale-combat-female-1920x1080.png",
+      "bytes": 1275620
+    },
+    {
+      "path": "test-results/wardrobe-scale-combat-male-1280x800.png",
+      "bytes": 742863
+    },
+    {
+      "path": "test-results/wardrobe-scale-combat-male-1920x1080.png",
+      "bytes": 1277714
+    },
+    {
+      "path": "test-results/wardrobe-scale-metrics.json",
+      "bytes": 3190
+    },
+    {
+      "path": "test-results/wardrobe-scale-patient-female-1280x800.png",
+      "bytes": 664426
+    },
+    {
+      "path": "test-results/wardrobe-scale-patient-female-1920x1080.png",
+      "bytes": 1163297
+    },
+    {
+      "path": "test-results/wardrobe-scale-patient-male-1280x800.png",
+      "bytes": 667172
+    },
+    {
+      "path": "test-results/wardrobe-scale-patient-male-1920x1080.png",
+      "bytes": 1167119
+    },
+    {
+      "path": "test-results/wardrobe-v3-combat-female-1024x768.png",
+      "bytes": 558140
+    },
+    {
+      "path": "test-results/wardrobe-v3-combat-female-1280x800.png",
+      "bytes": 740186
+    },
+    {
+      "path": "test-results/wardrobe-v3-combat-female-1440x900.png",
+      "bytes": 938105
+    },
+    {
+      "path": "test-results/wardrobe-v3-combat-female-1920x1080.png",
+      "bytes": 1275589
+    },
+    {
+      "path": "test-results/wardrobe-v3-combat-female-2560x1440.png",
+      "bytes": 1592254
+    },
+    {
+      "path": "test-results/wardrobe-v3-combat-female-320x568.png",
+      "bytes": 91314
+    },
+    {
+      "path": "test-results/wardrobe-v3-combat-female-390x844.png",
+      "bytes": 181643
+    },
+    {
+      "path": "test-results/wardrobe-v3-combat-female-768x1024.png",
+      "bytes": 409085
+    },
+    {
+      "path": "test-results/wardrobe-v3-combat-female-844x390.png",
+      "bytes": 191449
+    },
+    {
+      "path": "test-results/wardrobe-v3-combat-male-1024x768.png",
+      "bytes": 560415
+    },
+    {
+      "path": "test-results/wardrobe-v3-combat-male-1280x800.png",
+      "bytes": 742828
+    },
+    {
+      "path": "test-results/wardrobe-v3-combat-male-1440x900.png",
+      "bytes": 939728
+    },
+    {
+      "path": "test-results/wardrobe-v3-combat-male-1920x1080.png",
+      "bytes": 1277976
+    },
+    {
+      "path": "test-results/wardrobe-v3-combat-male-2560x1440.png",
+      "bytes": 1594086
+    },
+    {
+      "path": "test-results/wardrobe-v3-combat-male-320x568.png",
+      "bytes": 91368
+    },
+    {
+      "path": "test-results/wardrobe-v3-combat-male-390x844.png",
+      "bytes": 181854
+    },
+    {
+      "path": "test-results/wardrobe-v3-combat-male-768x1024.png",
+      "bytes": 409885
+    },
+    {
+      "path": "test-results/wardrobe-v3-combat-male-844x390.png",
+      "bytes": 191463
+    },
+    {
+      "path": "test-results/wardrobe-v3-items-1024x768.png",
+      "bytes": 602134
+    },
+    {
+      "path": "test-results/wardrobe-v3-items-1280x800.png",
+      "bytes": 801539
+    },
+    {
+      "path": "test-results/wardrobe-v3-items-1440x900.png",
+      "bytes": 1000137
+    },
+    {
+      "path": "test-results/wardrobe-v3-items-1920x1080.png",
+      "bytes": 1341731
+    },
+    {
+      "path": "test-results/wardrobe-v3-items-2560x1440.png",
+      "bytes": 1678719
+    },
+    {
+      "path": "test-results/wardrobe-v3-items-320x568.png",
+      "bytes": 88811
+    },
+    {
+      "path": "test-results/wardrobe-v3-items-390x844.png",
+      "bytes": 201861
+    },
+    {
+      "path": "test-results/wardrobe-v3-items-768x1024.png",
+      "bytes": 464038
+    },
+    {
+      "path": "test-results/wardrobe-v3-items-844x390.png",
+      "bytes": 193768
+    },
+    {
+      "path": "test-results/wardrobe-v3-patient-female-1024x768.png",
+      "bytes": 508283
+    },
+    {
+      "path": "test-results/wardrobe-v3-patient-female-1280x800.png",
+      "bytes": 664217
+    },
+    {
+      "path": "test-results/wardrobe-v3-patient-female-1440x900.png",
+      "bytes": 841842
+    },
+    {
+      "path": "test-results/wardrobe-v3-patient-female-1920x1080.png",
+      "bytes": 1163325
+    },
+    {
+      "path": "test-results/wardrobe-v3-patient-female-2560x1440.png",
+      "bytes": 1481425
+    },
+    {
+      "path": "test-results/wardrobe-v3-patient-female-320x568.png",
+      "bytes": 89146
+    },
+    {
+      "path": "test-results/wardrobe-v3-patient-female-390x844.png",
+      "bytes": 162151
+    },
+    {
+      "path": "test-results/wardrobe-v3-patient-female-768x1024.png",
+      "bytes": 374759
+    },
+    {
+      "path": "test-results/wardrobe-v3-patient-female-844x390.png",
+      "bytes": 183997
+    },
+    {
+      "path": "test-results/wardrobe-v3-patient-male-1024x768.png",
+      "bytes": 511537
+    },
+    {
+      "path": "test-results/wardrobe-v3-patient-male-1280x800.png",
+      "bytes": 667169
+    },
+    {
+      "path": "test-results/wardrobe-v3-patient-male-1440x900.png",
+      "bytes": 845463
+    },
+    {
+      "path": "test-results/wardrobe-v3-patient-male-1920x1080.png",
+      "bytes": 1167704
+    },
+    {
+      "path": "test-results/wardrobe-v3-patient-male-2560x1440.png",
+      "bytes": 1486314
+    },
+    {
+      "path": "test-results/wardrobe-v3-patient-male-320x568.png",
+      "bytes": 89179
+    },
+    {
+      "path": "test-results/wardrobe-v3-patient-male-390x844.png",
+      "bytes": 162253
+    },
+    {
+      "path": "test-results/wardrobe-v3-patient-male-768x1024.png",
+      "bytes": 375448
+    },
+    {
+      "path": "test-results/wardrobe-v3-patient-male-844x390.png",
+      "bytes": 184501
+    },
+    {
+      "path": "test-results/wide-wardrobe-1024x768.png",
+      "bytes": 536071
+    },
+    {
+      "path": "test-results/wide-wardrobe-1280x800.png",
+      "bytes": 710497
+    },
+    {
+      "path": "test-results/wide-wardrobe-320x568.png",
+      "bytes": 82647
+    },
+    {
+      "path": "test-results/wide-wardrobe-390x844.png",
+      "bytes": 198411
+    },
+    {
+      "path": "test-results/wide-wardrobe-768x1024.png",
+      "bytes": 449265
+    },
+    {
+      "path": "test-results/wide-wardrobe-844x390.png",
+      "bytes": 184985
+    },
+    {
+      "path": "tests/__pycache__/__init__.cpython-312.pyc",
+      "bytes": 224
+    },
+    {
+      "path": "tests/__pycache__/test_game.cpython-312.pyc",
+      "bytes": 330353
+    },
+    {
+      "path": "tests/__pycache__/test_paper_doll_audit.cpython-312.pyc",
+      "bytes": 27461
+    },
+    {
+      "path": "tests/__pycache__/test_paper_doll_targeted.cpython-312.pyc",
+      "bytes": 18479
+    },
+    {
+      "path": "tests/__pycache__/test_project_audit.cpython-312.pyc",
+      "bytes": 10668
+    },
+    {
+      "path": "tools/__pycache__/audit-paper-doll-png.cpython-312.pyc",
+      "bytes": 7486
+    },
+    {
+      "path": "tools/__pycache__/audit-project.cpython-312.pyc",
+      "bytes": 14106
+    },
+    {
+      "path": "tools/__pycache__/benchmark-paper-doll.cpython-312.pyc",
+      "bytes": 4323
+    },
+    {
+      "path": "tools/__pycache__/build-targeted-review.cpython-312.pyc",
+      "bytes": 9292
+    },
+    {
+      "path": "tools/__pycache__/build_icons.cpython-312.pyc",
+      "bytes": 19162
+    },
+    {
+      "path": "tools/__pycache__/capture-paper-doll-details.cpython-312.pyc",
+      "bytes": 7503
+    },
+    {
+      "path": "tools/__pycache__/capture-project-geometry.cpython-312.pyc",
+      "bytes": 2546
+    },
+    {
+      "path": "tools/__pycache__/check-project-browser.cpython-312.pyc",
+      "bytes": 14949
+    },
+    {
+      "path": "tools/__pycache__/clean-paper-doll-edges.cpython-312.pyc",
+      "bytes": 18027
+    },
+    {
+      "path": "tools/__pycache__/prepare-avatar-update.cpython-312.pyc",
+      "bytes": 22729
+    },
+    {
+      "path": "tools/__pycache__/prepare-face-pack.cpython-312.pyc",
+      "bytes": 7185
+    },
+    {
+      "path": "tools/__pycache__/prepare-young-faces.cpython-312.pyc",
+      "bytes": 5114
+    },
+    {
+      "path": "tools/__pycache__/rebase-legacy-female-necks.cpython-312.pyc",
+      "bytes": 3073
+    },
+    {
+      "path": "tools/__pycache__/refine-face-details.cpython-312.pyc",
+      "bytes": 9737
+    },
+    {
+      "path": "tools/__pycache__/refine-paper-doll-targeted.cpython-312.pyc",
+      "bytes": 25428
+    },
+    {
+      "path": "tools/__pycache__/refresh-paper-doll-audit.cpython-312.pyc",
+      "bytes": 9564
+    },
+    {
+      "path": "tools/__pycache__/refresh-targeted-paper-doll.cpython-312.pyc",
+      "bytes": 16253
+    },
+    {
+      "path": "tools/__pycache__/register-painted-head.cpython-312.pyc",
+      "bytes": 6664
+    },
+    {
+      "path": "tools/__pycache__/repair-face-necks.cpython-312.pyc",
+      "bytes": 13993
+    },
+    {
+      "path": "tools/__pycache__/review-avatar-final.cpython-312.pyc",
+      "bytes": 11973
+    },
+    {
+      "path": "tools/__pycache__/review-avatar-update.cpython-312.pyc",
+      "bytes": 9414
+    },
+    {
+      "path": "tools/__pycache__/review-paper-doll-audit.cpython-312.pyc",
+      "bytes": 10850
+    },
+    {
+      "path": "tools/__pycache__/run-python-tests.cpython-312.pyc",
+      "bytes": 5307
+    },
+    {
+      "path": "tools/__pycache__/verify-paper-doll-pages.cpython-312.pyc",
+      "bytes": 8973
+    }
+  ],
+  "total_files": 690,
+  "total_bytes": 232919795,
+  "cache_files_removed": [
+    {
+      "path": "tools/__pycache__/capture-paper-doll-details.cpython-312.pyc",
+      "sha256": "6571dc465790aed285c5385c93bbd8b176ac615ed24788288ef206f39b338060",
+      "bytes": 7503,
+      "reason": "Derived Python bytecode; regenerate with python -m compileall -q tools tests. Not source, progress or public asset."
+    },
+    {
+      "path": "tools/__pycache__/review-avatar-final.cpython-312.pyc",
+      "sha256": "352a51c52f1610001b4d5af838c31773d14519e4c6f0ab49fa6234bd548e17fc",
+      "bytes": 11973,
+      "reason": "Derived Python bytecode; regenerate with python -m compileall -q tools tests. Not source, progress or public asset."
+    },
+    {
+      "path": "tools/__pycache__/review-paper-doll-audit.cpython-312.pyc",
+      "sha256": "18ebbf84319cb0753eaa3689e5ae95a90c93d74e9324840ac3de385ca82ea9f5",
+      "bytes": 10850,
+      "reason": "Derived Python bytecode; regenerate with python -m compileall -q tools tests. Not source, progress or public asset."
+    },
+    {
+      "path": "tools/__pycache__/check-project-browser.cpython-312.pyc",
+      "sha256": "1d1e63cdbc109dcb435ee8e9d5791962939e2605902f03c6e4057318a85fd3a0",
+      "bytes": 14949,
+      "reason": "Derived Python bytecode; regenerate with python -m compileall -q tools tests. Not source, progress or public asset."
+    },
+    {
+      "path": "tools/__pycache__/capture-project-geometry.cpython-312.pyc",
+      "sha256": "12f1def2354812cfa44b4fb364edeeda42e1b516bf311023c6b915af19eabfef",
+      "bytes": 2546,
+      "reason": "Derived Python bytecode; regenerate with python -m compileall -q tools tests. Not source, progress or public asset."
+    },
+    {
+      "path": "tools/__pycache__/review-avatar-update.cpython-312.pyc",
+      "sha256": "7c5dae52e1b978e5a719514cbcd2c3196478f9309e89e145bfd1b3dbd7d5dc5a",
+      "bytes": 9414,
+      "reason": "Derived Python bytecode; regenerate with python -m compileall -q tools tests. Not source, progress or public asset."
+    },
+    {
+      "path": "tools/__pycache__/refine-face-details.cpython-312.pyc",
+      "sha256": "0f390c96b442aea7aeabd70fd67c5fd8af13dca50df2e4de9d952b05d3736b84",
+      "bytes": 9737,
+      "reason": "Derived Python bytecode; regenerate with python -m compileall -q tools tests. Not source, progress or public asset."
+    },
+    {
+      "path": "tools/__pycache__/run-python-tests.cpython-312.pyc",
+      "sha256": "7ed233e328e25560b02520fef71110352f37bc334a29393036bf3fc8725f4bb8",
+      "bytes": 5307,
+      "reason": "Derived Python bytecode; regenerate with python -m compileall -q tools tests. Not source, progress or public asset."
+    },
+    {
+      "path": "tools/__pycache__/audit-paper-doll-png.cpython-312.pyc",
+      "sha256": "4b8caf8040a02ead063408bd2725442e0af443607e39128201017e695f6d9bcc",
+      "bytes": 7486,
+      "reason": "Derived Python bytecode; regenerate with python -m compileall -q tools tests. Not source, progress or public asset."
+    },
+    {
+      "path": "tools/__pycache__/repair-face-necks.cpython-312.pyc",
+      "sha256": "c9ac9acb963d7a17ad48b7b63551a130cea4409ef87f5a607c749e28c3f6cbfa",
+      "bytes": 13993,
+      "reason": "Derived Python bytecode; regenerate with python -m compileall -q tools tests. Not source, progress or public asset."
+    },
+    {
+      "path": "tools/__pycache__/refine-paper-doll-targeted.cpython-312.pyc",
+      "sha256": "3fa9655db5481b97d1a9c9d389a59d1358da1b01bfe51654e2bea1a6e8f2bca1",
+      "bytes": 25428,
+      "reason": "Derived Python bytecode; regenerate with python -m compileall -q tools tests. Not source, progress or public asset."
+    },
+    {
+      "path": "tools/__pycache__/prepare-face-pack.cpython-312.pyc",
+      "sha256": "8cb27a67d2acbdcb6efdd2cb42b4cee485e73016c4b66cde04d37514e266cd6f",
+      "bytes": 7185,
+      "reason": "Derived Python bytecode; regenerate with python -m compileall -q tools tests. Not source, progress or public asset."
+    },
+    {
+      "path": "tools/__pycache__/audit-project.cpython-312.pyc",
+      "sha256": "00943e28b89c51d0bcec34562b2b06a696812a2c3dd25073ffc13a3bdb53b5ca",
+      "bytes": 14106,
+      "reason": "Derived Python bytecode; regenerate with python -m compileall -q tools tests. Not source, progress or public asset."
+    },
+    {
+      "path": "tools/__pycache__/build_icons.cpython-312.pyc",
+      "sha256": "47133450ebcc56fcfae82a784326a6dfb76b020826592bc1148fd038dab24588",
+      "bytes": 19162,
+      "reason": "Derived Python bytecode; regenerate with python -m compileall -q tools tests. Not source, progress or public asset."
+    },
+    {
+      "path": "tools/__pycache__/refresh-paper-doll-audit.cpython-312.pyc",
+      "sha256": "6cfe400288528e9c0f94ca53e6ef57fa309e8801f2dee0ab1f7413890126218c",
+      "bytes": 9564,
+      "reason": "Derived Python bytecode; regenerate with python -m compileall -q tools tests. Not source, progress or public asset."
+    },
+    {
+      "path": "tools/__pycache__/clean-paper-doll-edges.cpython-312.pyc",
+      "sha256": "2537d747d00866e7865decb0a6e9cf87cd92eb559d7d7d06a6b0a39dc503ddb2",
+      "bytes": 18027,
+      "reason": "Derived Python bytecode; regenerate with python -m compileall -q tools tests. Not source, progress or public asset."
+    },
+    {
+      "path": "tools/__pycache__/benchmark-paper-doll.cpython-312.pyc",
+      "sha256": "1be15a7a9aad2bdbe290975b984d49b9db60374ae1f1b1063216df9f1ec1bd8e",
+      "bytes": 4323,
+      "reason": "Derived Python bytecode; regenerate with python -m compileall -q tools tests. Not source, progress or public asset."
+    },
+    {
+      "path": "tools/__pycache__/prepare-young-faces.cpython-312.pyc",
+      "sha256": "74835d588dc9340c2b237e029489f692392cf7945a4fad070e38fb2b40754763",
+      "bytes": 5114,
+      "reason": "Derived Python bytecode; regenerate with python -m compileall -q tools tests. Not source, progress or public asset."
+    },
+    {
+      "path": "tools/__pycache__/refresh-targeted-paper-doll.cpython-312.pyc",
+      "sha256": "277434990a792bfdaf03c793c91c5ada2b3328ec966d018a350a7ebc2d74a345",
+      "bytes": 16253,
+      "reason": "Derived Python bytecode; regenerate with python -m compileall -q tools tests. Not source, progress or public asset."
+    },
+    {
+      "path": "tools/__pycache__/prepare-avatar-update.cpython-312.pyc",
+      "sha256": "86496d28016c36a44c4bb8237e2fbc3cf89c8f6ba01bef010700d053ed1c9202",
+      "bytes": 22729,
+      "reason": "Derived Python bytecode; regenerate with python -m compileall -q tools tests. Not source, progress or public asset."
+    },
+    {
+      "path": "tools/__pycache__/register-painted-head.cpython-312.pyc",
+      "sha256": "177ba99fe625475f586837f62fd19ffd228210e688b29789d3a9fa985712670f",
+      "bytes": 6664,
+      "reason": "Derived Python bytecode; regenerate with python -m compileall -q tools tests. Not source, progress or public asset."
+    },
+    {
+      "path": "tools/__pycache__/build-targeted-review.cpython-312.pyc",
+      "sha256": "f5b981f201f3bb0ebd3f81469827baf1c50557313e7201dbd54583a432c2c15d",
+      "bytes": 9292,
+      "reason": "Derived Python bytecode; regenerate with python -m compileall -q tools tests. Not source, progress or public asset."
+    },
+    {
+      "path": "tools/__pycache__/rebase-legacy-female-necks.cpython-312.pyc",
+      "sha256": "abea034bc9b7c5d3b9fc926d0b2d852e3f47f0636a4a299a507c4fe8ab0e628e",
+      "bytes": 3073,
+      "reason": "Derived Python bytecode; regenerate with python -m compileall -q tools tests. Not source, progress or public asset."
+    },
+    {
+      "path": "tools/__pycache__/verify-paper-doll-pages.cpython-312.pyc",
+      "sha256": "912f97ccc84873e61a5746afb59f8f618925040d05b030539bee44284d691ec3",
+      "bytes": 8973,
+      "reason": "Derived Python bytecode; regenerate with python -m compileall -q tools tests. Not source, progress or public asset."
+    },
+    {
+      "path": "tests/__pycache__/test_paper_doll_audit.cpython-312.pyc",
+      "sha256": "7507645c165b1244ca70f097f94691549b8555317b2d4c479b8e1fc7b1a7b4d5",
+      "bytes": 27461,
+      "reason": "Derived Python bytecode; regenerate with python -m compileall -q tools tests. Not source, progress or public asset."
+    },
+    {
+      "path": "tests/__pycache__/__init__.cpython-312.pyc",
+      "sha256": "ede932ff577c16272060c78f217923e803034c23c096a359b706e5fc3a189db3",
+      "bytes": 224,
+      "reason": "Derived Python bytecode; regenerate with python -m compileall -q tools tests. Not source, progress or public asset."
+    },
+    {
+      "path": "tests/__pycache__/test_project_audit.cpython-312.pyc",
+      "sha256": "6f33af2f054dd9452f58b557b70e2968e541b4f9232896a82e216b84e00a49b3",
+      "bytes": 10668,
+      "reason": "Derived Python bytecode; regenerate with python -m compileall -q tools tests. Not source, progress or public asset."
+    },
+    {
+      "path": "tests/__pycache__/test_paper_doll_targeted.cpython-312.pyc",
+      "sha256": "dd3d58f625bc66567e58a7f7bfd523c285a86f3cd4bfe88c9647e065b0930a6d",
+      "bytes": 18479,
+      "reason": "Derived Python bytecode; regenerate with python -m compileall -q tools tests. Not source, progress or public asset."
+    },
+    {
+      "path": "tests/__pycache__/test_game.cpython-312.pyc",
+      "sha256": "9cef0375fb87da43fb059a4404cab964a716fc2e3b06af7ceb6212d8e64ba770",
+      "bytes": 330353,
+      "reason": "Derived Python bytecode; regenerate with python -m compileall -q tools tests. Not source, progress or public asset."
+    }
+  ],
+  "retained_reason": "Recent test-results are reproducible evidence; installed dependencies and uncertain ignored files are retained. No ignored player save data was read."
+}

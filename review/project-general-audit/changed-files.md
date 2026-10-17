@@ -1,12 +1,13 @@
 # Змінені файли
 
-Повний перелік від 6b9abb8. Видалений ресурс та його pre-change хеш — cleanup-manifest.json. PNG Paper Doll не змінені.
+Повний перелік від 6b9abb8, включно з підтвердженням HTTPS-публікації. Видалено тільки belt_hud.png; pre-change SHA у cleanup-manifest.json. Активні PNG не змінені.
 
 ```text
 .github/workflows/checks.yml
 README.md
 battle-results.js
 belt_hud.png
+docs/paper-doll.md
 docs/project-architecture.md
 hair-color.js
 index.html
@@ -59,6 +60,7 @@ review/project-general-audit/final-state.json
 review/project-general-audit/gallery.html
 review/project-general-audit/geometry-after.json
 review/project-general-audit/geometry-before.json
+review/project-general-audit/ignored-artifacts.json
 review/project-general-audit/invariants.json
 review/project-general-audit/inventory-after.json
 review/project-general-audit/inventory-before.json
@@ -73,10 +75,32 @@ review/project-general-audit/logs/full-after/shard-1.log
 review/project-general-audit/logs/full-after/shard-2.log
 review/project-general-audit/logs/full-after/shard-3.log
 review/project-general-audit/logs/full-after/summary.json
+review/project-general-audit/logs/github-actions-summary.log
 review/project-general-audit/logs/new-contracts-final.log
 review/project-general-audit/logs/reproduced-before-fix.log
 review/project-general-audit/performance.json
 review/project-general-audit/publication.json
+review/project-general-audit/published/battle-1440.jpg
+review/project-general-audit/published/browser.json
+review/project-general-audit/published/dossier-1440.jpg
+review/project-general-audit/published/dossier-320.jpg
+review/project-general-audit/published/dossier-390.jpg
+review/project-general-audit/published/dossier-768.jpg
+review/project-general-audit/published/female-white.jpg
+review/project-general-audit/published/inventory-1440.jpg
+review/project-general-audit/published/inventory-320.jpg
+review/project-general-audit/published/inventory-390.jpg
+review/project-general-audit/published/inventory-768.jpg
+review/project-general-audit/published/male-white.jpg
+review/project-general-audit/published/staff-1440.jpg
+review/project-general-audit/published/staff-320.jpg
+review/project-general-audit/published/staff-390.jpg
+review/project-general-audit/published/staff-768.jpg
+review/project-general-audit/published/wardrobe-1440.jpg
+review/project-general-audit/published/wardrobe-320.jpg
+review/project-general-audit/published/wardrobe-390.jpg
+review/project-general-audit/published/wardrobe-768.jpg
+review/project-general-audit/source-diagnostics.json
 script.js
 staff-archive.js
 tests/__init__.py

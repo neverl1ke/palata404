@@ -50,5 +50,11 @@
     "combinations": 90,
     "samples": 1080,
     "http_errors": []
+  },
+  "ignored_cleanup": {
+    "manifest": "ignored-artifacts.json",
+    "removed_compiled_cache_files": 29,
+    "bytes": 650836,
+    "tracked_file_count_impact": 0
   }
 }

@@ -1,6 +1,54 @@
 {
-  "status": "local_regression_complete_awaiting_publication",
+  "status": "published_and_verified",
   "branch": "main",
+  "implementation_commit": "aece63143c32995511c4956805c5cd543c0610c0",
+  "commits": [
+    "a0ebc86",
+    "4c3fa3e",
+    "aece631"
+  ],
+  "game_checks": {
+    "id": 39073942402,
+    "status": "completed",
+    "conclusion": "success",
+    "commit": "aece63143c32995511c4956805c5cd543c0610c0",
+    "url": "https://github.com/neverl1ke/palata404/actions/runs/39073942402"
+  },
   "javascript": 80,
-  "python": 97
+  "python": 97,
+  "pages": {
+    "id": 39073942107,
+    "conclusion": "success",
+    "url": "https://github.com/neverl1ke/palata404/actions/runs/39073942107"
+  },
+  "runtime_https": {
+    "http": 200,
+    "files": 48,
+    "registered_pngs": 37,
+    "bytes_match": true
+  },
+  "initial_gallery_https": {
+    "http": 200,
+    "files": 37,
+    "bytes_match": true,
+    "gallery": "https://neverl1ke.github.io/palata404/review/project-general-audit/gallery.html"
+  },
+  "published_walkthrough": {
+    "source": "published/browser.json",
+    "files_bytes_verified": 113,
+    "combinations": 90,
+    "color_background_cases": 1080,
+    "actual_attack_and_counter": true,
+    "cooldown": true,
+    "reward_exactly_once": true,
+    "reload": true,
+    "external_hosts": [
+      "fonts.googleapis.com",
+      "fonts.gstatic.com",
+      "telegram.org"
+    ],
+    "js_errors": [],
+    "http_errors": []
+  },
+  "note": "This evidence commit adds only documentation/screenshots. The implementation, tests, runtime and approved assets remain identical to the verified source commit."
 }

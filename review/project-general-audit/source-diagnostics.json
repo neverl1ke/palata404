@@ -1,0 +1,91 @@
+{
+  "modules": [
+    {
+      "path": "battle-results.js",
+      "lines": 323,
+      "syntax": "passed",
+      "column_zero_declaration_candidates": 26,
+      "timers": 0,
+      "event_registrations": 0
+    },
+    {
+      "path": "hair-color.js",
+      "lines": 117,
+      "syntax": "passed",
+      "column_zero_declaration_candidates": 10,
+      "timers": 0,
+      "event_registrations": 0
+    },
+    {
+      "path": "icons.js",
+      "lines": 153,
+      "syntax": "passed",
+      "column_zero_declaration_candidates": 4,
+      "timers": 0,
+      "event_registrations": 0
+    },
+    {
+      "path": "paper-doll-data.js",
+      "lines": 164,
+      "syntax": "passed",
+      "column_zero_declaration_candidates": 10,
+      "timers": 0,
+      "event_registrations": 0
+    },
+    {
+      "path": "paper-doll.js",
+      "lines": 327,
+      "syntax": "passed",
+      "column_zero_declaration_candidates": 27,
+      "timers": 0,
+      "event_registrations": 0
+    },
+    {
+      "path": "raid-archive.js",
+      "lines": 266,
+      "syntax": "passed",
+      "column_zero_declaration_candidates": 31,
+      "timers": 0,
+      "event_registrations": 3
+    },
+    {
+      "path": "script.js",
+      "lines": 2017,
+      "syntax": "passed",
+      "column_zero_declaration_candidates": 154,
+      "timers": 10,
+      "event_registrations": 7
+    },
+    {
+      "path": "staff-archive-data.js",
+      "lines": 46,
+      "syntax": "passed",
+      "column_zero_declaration_candidates": 2,
+      "timers": 0,
+      "event_registrations": 0
+    },
+    {
+      "path": "staff-archive.js",
+      "lines": 341,
+      "syntax": "passed",
+      "column_zero_declaration_candidates": 37,
+      "timers": 0,
+      "event_registrations": 3
+    },
+    {
+      "path": "wardrobe.js",
+      "lines": 222,
+      "syntax": "passed",
+      "column_zero_declaration_candidates": 20,
+      "timers": 0,
+      "event_registrations": 9
+    }
+  ],
+  "duplicate_column_zero_declaration_candidates": {},
+  "html_id_count": 194,
+  "duplicate_html_ids": [],
+  "css_leaf_blocks": 704,
+  "exact_css_duplicate_candidates": [],
+  "css_note": "Candidates include cascade restatement; matching declarations are not proof that a later block can be removed. Media and keyframe contexts are preserved.",
+  "storage_format_changed": false
+}

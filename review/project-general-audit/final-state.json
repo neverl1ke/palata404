@@ -1,13 +1,15 @@
 {
-  "status": "local_checks_complete",
+  "status": "published_and_verified",
   "before_tracked_files": 917,
   "removed_existing_files": 1,
   "moved_existing_files": 0,
   "source_commit": "6b9abb88aa99348ebd17b18bb830da1b264c074b",
   "active_pngs_changed": 0,
-  "after_tracked_files": 990,
-  "added_files": 74,
+  "after_tracked_files": 1013,
+  "added_files": 97,
   "root_runtime_before": 33,
   "root_runtime_after": 32,
-  "note": "Includes new audit evidence, tests and tooling; inventory-after excludes its own newly generated JSON. Publication evidence may add files in a subsequent commit."
+  "note": "Final count includes new inventory, regression tests, logs, before/after and published screenshots. Root runtime count decreased by one; historical resources retained.",
+  "removed_ignored_cache_files": 29,
+  "removed_ignored_cache_bytes": 650836
 }
