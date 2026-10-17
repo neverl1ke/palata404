@@ -165,7 +165,7 @@ const PAPER_DOLL_CROWN_CONTOURS = {
 
 function applyPaperDollCrownMask(image, selectedGender) {
     const hair = selectedPaperDollItem('hair')?.id;
-    const overlay = ['face-asian', 'face-young'].includes(selectedPaperDollItem('face')?.id);
+    const overlay = ['face-asian', 'face-young', 'face-exhausted', 'face-elder'].includes(selectedPaperDollItem('face')?.id);
     const active = overlay || (selectedGender === 'male' && hair !== 'hair-messy')
         || hair === 'hair-bob';
     const crown = active && PAPER_DOLL_CROWN_CONTOURS[hair]?.[selectedGender];
@@ -205,15 +205,17 @@ function renderPaperDollAt(host, prefix = '') {
         const order = Number.isFinite(layer.renderOrder) ? Math.max(-100, Math.min(100, layer.renderOrder)) : index;
         positionPaperDollLayer(image, layer.placementByGender?.[selectedGender] ?? layer.placement, order);
         if (slot === 'baseBody' || slot === 'face') applyPaperDollCrownMask(image, selectedGender);
-        // Young heads have their own ear/skull silhouette; do not retain the old
-        // outline underneath. Keep the original body/neck fully visible from y=245.
+        // These full-frame heads replace the whole old skull/ear silhouette.
+        // Do not composite the old skin beneath their antialiased edge twice.
+        // The neck transition starts at y=245; the original torso remains intact.
         if (slot === 'baseBody') {
             const face = selectedPaperDollItem('face');
-            const source = face?.id === 'face-young' ? face.genderVariants[selectedGender] : null;
-            const mask = source && !failedPaperDollImages.has(source) ? source : null;
-            image.style.maskImage = mask ? `linear-gradient(to bottom, transparent ${245 / 1672 * 100}%, #000 ${245 / 1672 * 100}%), url("${mask}")` : '';
-            image.style.maskSize = mask ? '100% 100%' : '';
-            image.style.maskRepeat = mask ? 'no-repeat' : '';
+            const replacement = ['face-young', 'face-exhausted', 'face-elder'].includes(face?.id);
+            const faceSource = replacement ? face.genderVariants[selectedGender] : null;
+            const active = faceSource && !failedPaperDollImages.has(faceSource);
+            image.style.maskImage = active ? `linear-gradient(to bottom, transparent ${245 / 1672 * 100}%, #000 ${245 / 1672 * 100}%)` : '';
+            image.style.maskSize = active ? '100% 100%' : '';
+            image.style.maskRepeat = active ? 'no-repeat' : '';
         }
         const source = candidates.find(path => !failedPaperDollImages.has(path));
         if (!source) {

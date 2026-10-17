@@ -44,7 +44,25 @@ const PAPER_DOLL_ITEMS = [
         fittedToGender: true, description: 'Молодий тип обличчя, 18–20 років.',
         // DOM image renderer: above the body (0), below clothing and hair (9).
         renderOrder: 1,
-        genderVariants: { male: 'assets/wardrobe/faces/male_young_head.png?v=76fdbe2e', female: 'assets/wardrobe/faces/female_young_head.png?v=5c7665b6' },
+        genderVariants: { male: 'assets/wardrobe/faces/male_young_head.png?v=0ac013f5', female: 'assets/wardrobe/faces/female_young_head.png?v=11a4664d' },
+        placementByGender: {
+            male: { x: 0, y: 0, width: 941, height: 1672 },
+            female: { x: 0, y: 0, width: 941, height: 1672 }
+        } },
+    { id: 'face-exhausted', slot: 'face', name: 'Виснажене обличчя', icon: 'user', availableByDefault: true,
+        fittedToGender: true, description: 'Виснажений, тривожний тип обличчя.',
+        // DOM image renderer: above the body (0), below clothing and hair (9).
+        renderOrder: 1,
+        genderVariants: { male: 'assets/wardrobe/faces/male_exhausted_head.png?v=fc2f8d03', female: 'assets/wardrobe/faces/female_exhausted_head.png?v=77424399' },
+        placementByGender: {
+            male: { x: 0, y: 0, width: 941, height: 1672 },
+            female: { x: 0, y: 0, width: 941, height: 1672 }
+        } },
+    { id: 'face-elder', slot: 'face', name: 'Старше обличчя', icon: 'user', availableByDefault: true,
+        fittedToGender: true, description: 'Старший тип обличчя, 60+ років.',
+        // DOM image renderer: above the body (0), below clothing and hair (9).
+        renderOrder: 1,
+        genderVariants: { male: 'assets/wardrobe/faces/male_elder_head.png?v=95eed057', female: 'assets/wardrobe/faces/female_elder_head.png?v=c34581ca' },
         placementByGender: {
             male: { x: 0, y: 0, width: 941, height: 1672 },
             female: { x: 0, y: 0, width: 941, height: 1672 }

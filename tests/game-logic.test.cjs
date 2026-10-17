@@ -1295,7 +1295,7 @@ test('young face variants persist without changing approved hair, outfits or old
             assert.ok(face.getAttribute('src').includes(gender+'_young_head.png'));
             assert.equal(face.style.zIndex,'1');
             assert.match(body.style.maskImage,/linear-gradient/);
-            assert.ok(body.style.maskImage.includes(gender+'_young_head.png'));
+            assert.ok(!body.style.maskImage.includes('url('), 'Old scalp must not be composited under the antialiased new edge');
             assert.match(face.style.clipPath,/^polygon/);
         }
         const restored=game(Object.fromEntries(g.storage));
@@ -1311,4 +1311,23 @@ test('young face variants persist without changing approved hair, outfits or old
     assert.ok(g.elements.get('layer-face').classList.contains('hidden'));
     assert.equal(g.run('JSON.stringify(PAPER_DOLL_ITEMS.filter(i=>i.slot==="hair").map(i=>i.placementByGender))'),geometry);
     assert.equal(g.run('JSON.stringify({stats,inventory,equippedGear,patient:paperDollState.patientLoadout,combat:paperDollState.combatLoadout})'),before);
+});
+
+test('all face-pack types select the correct gender, preserve saves and reset local masks', () => {
+    const g=game();
+    const approved=g.run('JSON.stringify({hair:PAPER_DOLL_ITEMS.filter(i=>i.slot==="hair"),colors:HAIR_COLORS})');
+    for(const gender of ['male','female']) for(const kind of ['young','exhausted','elder']) {
+        g.run(`setGender('${gender}');equipPaperDollItem('face','face-${kind}');equipPaperDollItem('hair','hair-none')`);
+        assert.ok(g.elements.get('layer-face').getAttribute('src').includes(`${gender}_${kind}_head.png`));
+        assert.equal(g.elements.get('layer-face').style.zIndex,'1');
+        assert.match(g.elements.get('layer-body').style.maskImage,/linear-gradient/);
+        assert.ok(!g.elements.get('layer-body').style.maskImage.includes('url('));
+        const restored=game(Object.fromEntries(g.storage));
+        assert.equal(restored.run('paperDollState.appearance.face'),`face-${kind}`);
+        g.run(`failedPaperDollImages.add(selectedPaperDollItem('face').genderVariants['${gender}']);renderPaperDoll()`);
+        assert.equal(g.elements.get('layer-body').style.maskImage,'');
+        g.run('equipPaperDollItem("face",null)');
+        assert.equal(g.elements.get('layer-body').style.maskImage,'');
+    }
+    assert.equal(g.run('JSON.stringify({hair:PAPER_DOLL_ITEMS.filter(i=>i.slot==="hair"),colors:HAIR_COLORS})'),approved);
 });

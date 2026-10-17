@@ -1,4 +1,5 @@
-"""Clean the supplied young head/neck overlays; never synthesize face pixels.
+"""Історичний перший етап (4f48ec8); фінальна обробка — prepare-face-pack.py.
+Clean the supplied young head/neck overlays; never synthesize face pixels.
 Usage: python tools/prepare-young-faces.py /path/to/palata404_young_faces_preview.zip
 Dependencies: Pillow, numpy, scipy. Full source canvas and RGB detail are preserved.
 """
