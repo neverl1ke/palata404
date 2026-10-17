@@ -46,25 +46,29 @@ def audit():
    for previous in runtime_scripts[:i]:
     if previous in known:edges.append({'source':path,'target':previous,'kind':'classic-script-order'})
  referenced={e['target'] for e in edges};candidates=[f['path'] for f in files if f['path'] not in referenced and f['category'] not in {'review','.github','tests','tools','docs','config/docs'} and f['path']!='index.html']
+ tokens={path:collections.Counter(re.findall(r'\b[A-Za-z_$][\w$]*',text)) for path,text in texts.items()}
  declarations=[]
  for path,text in texts.items():
   if path.endswith('.js') and '/' not in path:
    for m in re.finditer(r'^(?:async\s+)?function\s+(\w+)\s*\(',text,re.M):
-    name=m[1];uses=[p for p,t in texts.items() if re.search(r'\b'+re.escape(name)+r'\b',t)]
-    declarations.append({'name':name,'source':path,'line':text.count('\n',0,m.start())+1,'references_in':uses,'runtime_occurrences':sum(len(re.findall(r'\b'+re.escape(name)+r'\b',texts[p])) for p in runtime_scripts+['index.html'] if p in texts)})
+    name=m[1];uses=[p for p,words in tokens.items() if name in words]
+    declarations.append({'name':name,'source':path,'line':text.count('\n',0,m.start())+1,'references_in':uses,'runtime_occurrences':sum(tokens[p][name] for p in runtime_scripts+['index.html'] if p in texts)})
  owners={}
  for path,text in texts.items():
   if path.endswith('.js') and '/' not in path:
    for name in re.findall(r'^(?:function|const|let)\s+(\w+)',text,re.M):owners.setdefault(name,[]).append(path)
  for path in runtime_scripts+['index.html']:
   if path not in texts:continue
-  for name in set(re.findall(r'\b[A-Za-z_$][\w$]*\b',texts[path])):
+  for name in tokens[path]:
    for owner in owners.get(name,[]):
     if owner!=path:edges.append({'source':path,'target':owner,'kind':'global-symbol:'+name})
  code="const fs=require('fs'),vm=require('vm');console.log(vm.runInNewContext(fs.readFileSync('paper-doll-data.js','utf8')+';JSON.stringify({frame:PAPER_DOLL_FRAME,bodies:PAPER_DOLL_BODIES,items:PAPER_DOLL_ITEMS})'))"
  catalog=json.loads(subprocess.check_output(['node','-e',code],cwd=ROOT))
  active_pngs=sorted(set(re.findall(r'[A-Za-z0-9_./-]+\.png',json.dumps(catalog))))
  for png in active_pngs:link('paper-doll-data.js',png,'evaluated-catalog',True)
- return {'paper_doll':{'frame':catalog['frame'],'registered_pngs':active_pngs,'faces':len([i for i in catalog['items'] if i['slot']=='face']),'hairstyles':len([i for i in catalog['items'] if i['slot']=='hair'])},'schema':1,'commit':subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),'tracked_files':len(files),'bytes':sum(f['bytes'] for f in files),'categories':dict(collections.Counter(f['category'] for f in files)),'files':files,'edges':list({(e['source'],e['target'],e['kind']):e for e in edges}.values()),'missing_static_references':missing,'dynamic_paths_requiring_runtime_check':dynamic,'unreferenced_candidates_not_safe_to_delete':candidates,'identical_file_groups':[{'sha256':k,'paths':v} for k,v in hashes.items() if len(v)>1],'classic_scripts':runtime_scripts,'functions':declarations,'limitations':['Static candidates include dynamic and legacy resources; runtime traces and historical documentation must be checked before deletion.','Tool input/output paths and template expressions are evidence, not a complete call graph.']}
+ return {'paper_doll':{'frame':catalog['frame'],'registered_pngs':active_pngs,'faces':len([i for i in catalog['items'] if i['slot']=='face']),'hairstyles':len([i for i in catalog['items'] if i['slot']=='hair'])},'schema':1,'working_tree_status':subprocess.check_output(['git','status','--short'],cwd=ROOT,text=True).splitlines(),'commit':subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),'tracked_files':len(files),'bytes':sum(f['bytes'] for f in files),'categories':dict(collections.Counter(f['category'] for f in files)),'files':files,'edges':list({(e['source'],e['target'],e['kind']):e for e in edges}.values()),'missing_static_references':missing,'dynamic_paths_requiring_runtime_check':dynamic,'unreferenced_candidates_not_safe_to_delete':candidates,'identical_file_groups':[{'sha256':k,'paths':v} for k,v in hashes.items() if len(v)>1],'classic_scripts':runtime_scripts,'functions':declarations,'limitations':['Static candidates include dynamic and legacy resources; runtime traces and historical documentation must be checked before deletion.','Tool input/output paths and template expressions are evidence, not a complete call graph.']}
 if __name__=='__main__':
- parser=argparse.ArgumentParser();parser.add_argument('--output',type=Path,default=ROOT/'test-results/project-inventory.json');args=parser.parse_args();r=audit();args.output.parent.mkdir(parents=True,exist_ok=True);args.output.write_text(json.dumps(r,ensure_ascii=False,indent=2)+'\n');print(json.dumps({k:r[k] for k in ['commit','tracked_files','bytes','categories','unreferenced_candidates_not_safe_to_delete']},ensure_ascii=False))
+ parser=argparse.ArgumentParser();parser.add_argument('--check',action='store_true');parser.add_argument('--output',type=Path,default=ROOT/'test-results/project-inventory.json');args=parser.parse_args();r=audit();args.output.parent.mkdir(parents=True,exist_ok=True);args.output.write_text(json.dumps(r,ensure_ascii=False,indent=2)+'\n');print(json.dumps({k:r[k] for k in ['commit','tracked_files','bytes','categories','unreferenced_candidates_not_safe_to_delete']},ensure_ascii=False))
+
+ if args.check and r['missing_static_references']:
+  print(json.dumps(r['missing_static_references'],ensure_ascii=False));raise SystemExit(1)

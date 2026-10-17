@@ -1,0 +1,12 @@
+{
+  "DEFAULT_STATS": true,
+  "MEDICAL_ITEMS": true,
+  "DEFAULT_INVENTORY": true,
+  "DEFAULT_GYM_EXERCISES": true,
+  "bossesDatabase": true,
+  "paper_doll_catalog": true,
+  "staff_archive_data": true,
+  "CSS": true,
+  "wardrobe_UI": true,
+  "all_90_layer_styles_and_sources_identical": true
+}

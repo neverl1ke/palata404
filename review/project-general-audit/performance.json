@@ -1,0 +1,42 @@
+{
+  "before": {
+    "iterations": 700,
+    "batch": 100,
+    "samples_ms": [
+      194.10000000149012,
+      150,
+      124.20000000298023,
+      159.59999999403954,
+      174,
+      231.70000000298023,
+      179.20000000298023
+    ],
+    "median_ms": 174,
+    "front_src_mutations": 1400,
+    "crown_calculations": 2800
+  },
+  "after": {
+    "iterations": 700,
+    "batch": 100,
+    "samples_ms": [
+      116.19999999552965,
+      63,
+      34.70000000298023,
+      31.19999999552965,
+      94.90000000596046,
+      98.19999999552965,
+      64.20000000298023
+    ],
+    "median_ms": 64.20000000298023,
+    "front_src_mutations": 0,
+    "crown_calculations": 0
+  },
+  "conditions": {
+    "source": "backup/project-general-audit-20261017",
+    "same_browser": true,
+    "same_pngs": true,
+    "network": "local",
+    "scope": "Synthetic synchronous render benchmark; not end-to-end FPS or physical phone measurements"
+  },
+  "median_reduction_percent": 63.10344827414929
+}

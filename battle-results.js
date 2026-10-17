@@ -193,27 +193,28 @@ function getParticipantReportStamp(member) {
         ? 'УХИЛЯВСЯ ВІД ПРОЦЕДУРИ' : '';
 }
 
+function setBattleReportText(id, value) {
+    const element = document.getElementById(id);
+    if (element) element.textContent = value;
+}
+
 function renderBattleSummary(result) {
-    const setText = (id, value) => {
-        const element = document.getElementById(id);
-        if (element) element.textContent = value;
-    };
-    setText('victory-summary-boss', result.boss.name);
-    setText('victory-summary-number', `№${result.boss.registrationNumber}`);
-    setText('victory-summary-case', result.boss.caseCode);
-    setText('victory-summary-exp', `+${result.payout.exp}`);
-    setText('victory-summary-silver', `+${result.payout.silver}`);
+    setBattleReportText('victory-summary-boss', result.boss.name);
+    setBattleReportText('victory-summary-number', `№${result.boss.registrationNumber}`);
+    setBattleReportText('victory-summary-case', result.boss.caseCode);
+    setBattleReportText('victory-summary-exp', `+${result.payout.exp}`);
+    setBattleReportText('victory-summary-silver', `+${result.payout.silver}`);
     const player = result.participants.find(member => member.isPlayer);
     const mvp = result.participants.find(member => member.id === result.mvpId);
     const mvpNote = document.getElementById('victory-summary-mvp');
     if (mvpNote) {
         mvpNote.classList.toggle('hidden', !mvp);
     }
-    setText('victory-summary-mvp-name', mvp ? `MVP: ${mvp.name}` : '');
+    setBattleReportText('victory-summary-mvp-name', mvp ? `MVP: ${mvp.name}` : '');
     document.getElementById('victory-summary-mvp-bonus')?.classList.toggle('hidden', !player?.isMvp);
-    setText('victory-summary-damage', formatReportNumber(player?.damage ?? null));
-    setText('victory-summary-taken', formatReportNumber(player?.damageTaken ?? null));
-    setText('victory-summary-time', formatBattleDuration(result));
+    setBattleReportText('victory-summary-damage', formatReportNumber(player?.damage ?? null));
+    setBattleReportText('victory-summary-taken', formatReportNumber(player?.damageTaken ?? null));
+    setBattleReportText('victory-summary-time', formatBattleDuration(result));
     const items = document.getElementById('victory-summary-items');
     if (items) items.innerHTML = result.extraRewards.length ? result.extraRewards.map(reward =>
         `<li>${iconHTML(reward.icon)} ${reward.granted ? 'Отримано:' : 'Вже в інвентарі:'} <strong>${escapeHTML(reward.name)}</strong></li>`
@@ -225,29 +226,25 @@ function renderBattleSummary(result) {
 // Render a supplied snapshot without completing a fight or changing rewards/saves.
 // This document can also be used for stored raid records in a future archive.
 function renderBattleResult(result) {
-    const setText = (id, value) => {
-        const element = document.getElementById(id);
-        if (element) element.textContent = value;
-    };
-    setText('victory-boss-id', result.boss.id);
-    setText('victory-boss-number', `№${result.boss.registrationNumber}`);
-    setText('victory-boss-name', result.boss.name);
-    setText('victory-case-code', result.boss.caseCode);
-    setText('victory-status', result.boss.status);
-    setText('victory-conclusion', result.boss.conclusion);
-    setText('victory-report-id', result.battleId);
-    setText('victory-report-date', new Date(result.endedAt).toLocaleString('uk-UA'));
-    setText('victory-duration', formatBattleDuration(result));
+    setBattleReportText('victory-boss-id', result.boss.id);
+    setBattleReportText('victory-boss-number', `№${result.boss.registrationNumber}`);
+    setBattleReportText('victory-boss-name', result.boss.name);
+    setBattleReportText('victory-case-code', result.boss.caseCode);
+    setBattleReportText('victory-status', result.boss.status);
+    setBattleReportText('victory-conclusion', result.boss.conclusion);
+    setBattleReportText('victory-report-id', result.battleId);
+    setBattleReportText('victory-report-date', new Date(result.endedAt).toLocaleString('uk-UA'));
+    setBattleReportText('victory-duration', formatBattleDuration(result));
     const mvp = result.participants.find(member => member.id === result.mvpId);
-    setText('victory-mvp-name', mvp ? mvp.name : 'Не визначено');
-    setText('victory-base-exp', result.payout.baseExp);
-    setText('victory-base-silver', result.payout.baseSilver);
-    setText('victory-bonus-exp', result.payout.bonusExp);
-    setText('victory-bonus-silver', result.payout.bonusSilver);
-    setText('victory-total-exp', result.payout.exp);
-    setText('victory-total-silver', result.payout.silver);
+    setBattleReportText('victory-mvp-name', mvp ? mvp.name : 'Не визначено');
+    setBattleReportText('victory-base-exp', result.payout.baseExp);
+    setBattleReportText('victory-base-silver', result.payout.baseSilver);
+    setBattleReportText('victory-bonus-exp', result.payout.bonusExp);
+    setBattleReportText('victory-bonus-silver', result.payout.bonusSilver);
+    setBattleReportText('victory-total-exp', result.payout.exp);
+    setBattleReportText('victory-total-silver', result.payout.silver);
     const playerIsMvp = result.participants.some(member => member.isPlayer && member.isMvp);
-    setText('victory-bonus-note', playerIsMvp
+    setBattleReportText('victory-bonus-note', playerIsMvp
         ? 'Бонус MVP: 5% від основної нагороди, округлено вниз до цілого.'
         : 'Бонус MVP до вашої нагороди не застосовується.');
     const rows = result.participants.map(member => {

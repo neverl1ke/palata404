@@ -64,7 +64,7 @@ function finishStaffRewardSave(saved) {
 
 function retryStaffArchiveSave() { saveGameProgress(); renderStaffArchive(); }
 
-function staffCaseConfig(bossId) { return bossesDatabase[bossId]?.staffArchive; }
+function staffCaseConfig(bossId) { return getBossDefinition(bossId)?.staffArchive; }
 function staffCaseProgress(bossId) {
     const config = staffCaseConfig(bossId);
     const documents = config?.documents || [];

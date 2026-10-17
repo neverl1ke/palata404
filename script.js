@@ -1024,7 +1024,6 @@ function openMedicalHub() {
         return;
     }
     closeOtherModals(['medical-hub-modal']);
-    if (stats.madness >= 100) return;
     closeInventory();
     closeCustomization();
     closeFriends();
@@ -1045,7 +1044,6 @@ function openProcedureRoom() {
         return;
     }
     closeOtherModals(['procedure-room-modal']);
-    if (stats.madness >= 100) return;
     currentRoom = medicalRooms.find(room => room.id === 'treatment_room');
     updateUI();
     closeMedicalHub();
@@ -1307,6 +1305,11 @@ const bossesDatabase = {
     }
 };
 
+// Saved/legacy IDs must resolve only to actual catalog entries, never Object.prototype.
+function getBossDefinition(key) {
+    return typeof key === 'string' && Object.hasOwn(bossesDatabase, key) ? bossesDatabase[key] : null;
+}
+
 let currentBossKey = 'nurse';
 let bossCurrentHp = 120;
 let bossMaxHp = 120;
@@ -1387,7 +1390,7 @@ function stopBattleTimers() {
 }
 
 function startBossFight(bossKey) {
-    const boss = bossesDatabase[bossKey];
+    const boss = getBossDefinition(bossKey);
     if (!boss) return;
 
     if (isBattleActive) {
@@ -1817,7 +1820,7 @@ function devSetMadness(val) {
 // === УНІВЕРСАЛЬНЕ ВІДКРИТТЯ ДОСЬЄ БОСА ===
 function openBossDossier(bossKey) {
     try {
-        const boss = bossesDatabase[bossKey];
+        const boss = getBossDefinition(bossKey);
         if (!boss) {
             console.error("Бос не знайдений у bossesDatabase:", bossKey);
             return;
@@ -1875,18 +1878,7 @@ const dossierImage = document.getElementById('universal-dossier-img');
         startBtn.onclick = function() {
             closeUniversalDossier();
 
-            // Викликаємо функцію штурму напряму залежно від боса
-            if (typeof startBossFight === 'function') {
-                startBossFight(bossKey);
-            } else if (bossKey === 'nurse') {
-                if (typeof startNurseFight === 'function') startNurseFight();
-                else console.error("Функція для бою з медсестрою не знайдена!");
-            } else if (bossKey === 'doctor') {
-                if (typeof startDoctorFight === 'function') startDoctorFight();
-                else console.error("Функція для бою з лікарем не знайдена!");
-            } else {
-                console.error("Невідомий ключ боса для бою:", bossKey);
-            }
+            startBossFight(bossKey);
         };
     }
 

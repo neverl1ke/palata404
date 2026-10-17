@@ -1,12 +1,29 @@
 """Actual index.html regression walkthrough, requests, layouts and repeatable render benchmark."""
-import argparse,json,sys,hashlib
+import argparse,json,sys,hashlib,urllib.request
+from urllib.parse import urlsplit,unquote
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
 import tests.test_game as support
 ROOT=support.ROOT
 
-def run(output):
- output.mkdir(parents=True,exist_ok=True);support.GameTests.setUpClass();case=support.GameTests();case.setUp();page=case.page;requests=set();http=[]
+def run(output,url=None):
+ output.mkdir(parents=True,exist_ok=True);support.GameTests.setUpClass()
+ if url:support.GameTests.url=url.rstrip('/')+'/'
+ case=support.GameTests();case.setUp();page=case.page;requests=set();http=[];transport_cache={};verified=set();external_hosts=set()
+ if url:
+  def transport(route):
+   source=route.request.url;base=support.GameTests.url
+   host=urlsplit(source).hostname;own=source.startswith(base)
+   if not own and host not in {'fonts.googleapis.com','fonts.gstatic.com','telegram.org'}:route.abort();return
+   if not own:external_hosts.add(host)
+   if source not in transport_cache:
+    with urllib.request.urlopen(source,timeout=60) as response:transport_cache[source]=(response.status,dict(response.headers),response.read())
+   status,headers,data=transport_cache[source]
+   if own:
+    relative=unquote(urlsplit(source[len(base):]).path) or 'index.html';local=ROOT/relative
+    if local.is_file():assert data==local.read_bytes(),f'Published bytes differ: {relative}';verified.add(relative)
+   route.fulfill(status=status,headers=headers,body=data)
+  case.context.route('https://**/*',transport)
  page.on('request',lambda r:requests.add(r.url.split(support.GameTests.url)[-1]) if r.url.startswith(support.GameTests.url) else None)
  page.on('response',lambda r:http.append({'url':r.url,'status':r.status}) if r.status>=400 else None)
  try:
@@ -26,7 +43,7 @@ def run(output):
     for slot in slots:
      page.evaluate('s=>selectWardrobeSlot(s)',slot)
      assert page.evaluate('document.documentElement.scrollWidth<=innerWidth+1'),(width,category,slot)
-  page.set_viewport_size({'width':1440,'height':1000});combos=0;samples=0;geometry=[]
+  page.set_viewport_size({'width':1440,'height':1000});combos=0;samples=0
   for gender in ['male','female']:
    page.evaluate('g=>{setGender(g);selectWardrobeCategory("appearance");selectWardrobeSlot("hair")}',gender)
    styles=page.evaluate('wardrobeVisibleItems().map(i=>i.id)');assert len(styles)==(7 if gender=='male' else 8)
@@ -34,7 +51,6 @@ def run(output):
     page.evaluate('f=>equipPaperDollItem("face",f)',face)
     for hair in styles:
      page.evaluate('h=>equipPaperDollItem("hair",h)',hair);combos+=1
-     geometry.append(page.evaluate("({gender,face,hair})=>({gender,face,hair,layers:[...document.querySelectorAll('#wardrobe-paperdoll .char-layer')].map(i=>({id:i.id,style:i.getAttribute('style'),src:i.paperHairRequest}))})",{'gender':gender,'face':face,'hair':hair}))
      for color in ['original','black','white']:
       page.evaluate('c=>setHairColor(c)',color)
       page.wait_for_function('''async()=>{for(const i of document.getElementById('wardrobe-paperdoll').querySelectorAll('img:not(.hidden)')){const r=i.paperHairRequest;if(!r)continue;const n=r.lastIndexOf('|'),s=r.slice(0,n),c=r.slice(n+1);if(i.getAttribute('src')!==(c==='original'?s:await coloredHairSource(s,c,i.paperHairColorReference))||!i.complete||!i.naturalWidth)return false}return true}''')
@@ -44,13 +60,20 @@ def run(output):
   page.evaluate('setPaperDollView("combat");equipPaperDollItem("weapon","gear-pm");setPaperDollView("patient");equipPaperDollItem("upperBody",null)')
   appearance=page.evaluate('JSON.stringify(paperDollState)');page.reload(wait_until='networkidle');assert page.evaluate('JSON.stringify(paperDollState)')==appearance
   # Real victory finalization + duplicate guard, archive opening and reload.
-  before=page.evaluate('stats.silver');page.evaluate('startBossFight("nurse");bossCurrentHp=0;handleVictory();handleVictory()');result=page.evaluate('lastBattleResult');assert page.evaluate('stats.silver')==before+result['payout']['silver']
+  before=page.evaluate('stats.silver');page.evaluate('startBossFight("nurse")')
+  hp=page.evaluate('bossCurrentHp');damage=page.evaluate('stats.damage')
+  page.locator('#battle-arena-screen').click(position={'x':500,'y':300})
+  assert page.evaluate('bossCurrentHp')==hp-damage
+  page.locator('#battle-arena-screen').click(position={'x':500,'y':300})
+  assert page.evaluate('bossCurrentHp')==hp-damage,'Attack cooldown bypass'
+  page.wait_for_timeout(600);assert page.evaluate('stats.hp')<page.evaluate('stats.maxHp')
+  page.screenshot(path=str(output/'battle-1440.jpg'),type='jpeg',quality=88)
+  page.evaluate('bossCurrentHp=0;handleVictory();handleVictory()');result=page.evaluate('lastBattleResult');assert page.evaluate('stats.silver')==before+result['payout']['silver']
   silver=page.evaluate('stats.silver');page.evaluate('openLastBattleResult();openDetailedBattleReport();openRaidArchive();saveGameProgress()');page.reload(wait_until='networkidle');assert page.evaluate('stats.silver')==silver;assert page.evaluate('readRaidArchive().length')==1
   assert combos==90 and samples==1080 and not case.errors and not http
   pngs={p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in ROOT.glob('base_*.png')}
-  result={'startup':startup,'render_benchmark':benchmark,'combinations':combos,'color_background_samples':samples,'widths':[320,360,390,430,768,1440],'screens':11,'wardrobe_all_categories':True,'reload':True,'reward_exactly_once':True,'http_errors':http,'js_errors':case.errors,'requested_paths':sorted(requests),'base_png_hashes':pngs,'external_services':'Blocked for reproducible local tests; no physical phone'}
-  (output/'geometry.json').write_text(json.dumps(geometry,ensure_ascii=False,indent=2)+'\n')
+  result={'published_url':url,'external_hosts':sorted(external_hosts),'published_files_verified':sorted(verified),'transport':'Certificate-verified actual HTTPS bytes, no local substitution' if url else 'Local isolated HTTP server','startup':startup,'render_benchmark':benchmark,'combinations':combos,'color_background_samples':samples,'widths':[320,360,390,430,768,1440],'screens':11,'wardrobe_all_categories':True,'reload':True,'reward_exactly_once':True,'actual_attack_and_counter':True,'cooldown':True,'victory_finalization':'Controlled zero-HP transition after real attack/counter','http_errors':http,'js_errors':case.errors,'requested_paths':sorted(requests),'base_png_hashes':pngs,'external_services':'Published Google Fonts and Telegram SDK allowed' if url else 'Blocked for reproducible local tests; no physical phone'}
   (output/'browser.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n');print(json.dumps({k:result[k] for k in ['render_benchmark','combinations','color_background_samples','http_errors','js_errors']}))
  finally:case.tearDown();support.GameTests.tearDownClass()
 if __name__=='__main__':
- parser=argparse.ArgumentParser();parser.add_argument('--output',type=Path,required=True);args=parser.parse_args();run(args.output)
+ parser=argparse.ArgumentParser();parser.add_argument('--output',type=Path,required=True);parser.add_argument('--url');args=parser.parse_args();run(args.output,args.url)

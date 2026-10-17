@@ -70,7 +70,7 @@ function hairReferenceMedian(source) {
         image.src = source;
     });
     hairReferenceMedians.set(source,promise);
-    promise.catch(() => hairReferenceMedians.delete(source));
+    promise.catch(() => { if (hairReferenceMedians.get(source) === promise) hairReferenceMedians.delete(source); });
     while (hairReferenceMedians.size > HAIR_COLOR_CACHE_LIMIT) hairReferenceMedians.delete(hairReferenceMedians.keys().next().value);
     return promise;
 }

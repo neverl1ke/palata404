@@ -187,21 +187,30 @@ function smoothPaperDollCrown(points) {
     return result;
 }
 
+// Contours are registered catalog geometry. A new array gets a new cache entry;
+// variants preserve the existing shoulder transform and alternative-head seam.
+const paperDollCrownClipCache = new WeakMap();
 function applyPaperDollCrownMask(image, selectedGender) {
     const hair = selectedPaperDollItem('hair')?.id;
-    const overlay = selectedPaperDollItem('face')?.slot === 'face';
-    const active = overlay || (selectedGender === 'male' && hair !== 'hair-messy')
-        || hair === 'hair-bob';
-    let crown = active && PAPER_DOLL_CROWN_CONTOURS[hair]?.[selectedGender];
-    // Shoulder-length was enlarged 8% around the crown anchor (474,35).
-    // Its occlusion envelope must follow that same transform, not the old fit.
-    if (crown && hair === 'hair-shoulder-length' && selectedGender === 'male') crown = crown.map(([x,y]) => [474+(x-474)*1.08, Math.min(90,35+(y-35)*1.08)]);
-    // The alternative skull has a slightly fuller cap. Hide its outermost
-    // antialias seam under messy strands without moving the approved hair.
-    if (crown && hair === 'hair-messy' && selectedGender === 'male' && selectedPaperDollItem('face')?.id === 'face-alternative') crown = crown.map(([x,y]) => [x,Math.min(90,y+1.2)]);
-    const outline = crown && [[0,90],[0,1672],[941,1672],[941,90],...smoothPaperDollCrown(crown).slice().reverse()];
-    image.style.clipPath = outline ? `polygon(${outline.map(([x,y]) =>
-        `${x / PAPER_DOLL_FRAME.width * 100}% ${y / PAPER_DOLL_FRAME.height * 100}%`).join(',')})` : '';
+    const face = selectedPaperDollItem('face');
+    const active = face?.slot === 'face' || (selectedGender === 'male' && hair !== 'hair-messy') || hair === 'hair-bob';
+    const source = active && PAPER_DOLL_CROWN_CONTOURS[hair]?.[selectedGender];
+    if (!source) { image.style.clipPath = ''; return; }
+    const shoulder = hair === 'hair-shoulder-length' && selectedGender === 'male';
+    const alternativeMessy = hair === 'hair-messy' && selectedGender === 'male' && face?.id === 'face-alternative';
+    const variant = shoulder ? 'shoulder' : alternativeMessy ? 'alternative-messy' : 'default';
+    let paths = paperDollCrownClipCache.get(source);
+    if (!paths) { paths = new Map(); paperDollCrownClipCache.set(source, paths); }
+    if (!paths.has(variant)) {
+        let crown = source;
+        // Same approved 8% shoulder envelope around (474,35).
+        if (shoulder) crown = crown.map(([x,y]) => [474+(x-474)*1.08, Math.min(90,35+(y-35)*1.08)]);
+        if (alternativeMessy) crown = crown.map(([x,y]) => [x,Math.min(90,y+1.2)]);
+        const outline = [[0,90],[0,1672],[941,1672],[941,90],...smoothPaperDollCrown(crown).slice().reverse()];
+        paths.set(variant, `polygon(${outline.map(([x,y]) =>
+            `${x / PAPER_DOLL_FRAME.width * 100}% ${y / PAPER_DOLL_FRAME.height * 100}%`).join(',')})`);
+    }
+    image.style.clipPath = paths.get(variant);
 }
 
 function renderPaperDollAt(host, prefix = '') {
@@ -217,7 +226,9 @@ function renderPaperDollAt(host, prefix = '') {
         const item = slot === 'baseBody' ? { image: PAPER_DOLL_BODIES[selectedGender] } : selectedPaperDollItem(slot);
         const layered = Array.isArray(item?.layers) && item.layers.length > 0;
         const parts = layered ? paperDollItemLayers(item, selectedGender) : [item || {}];
-        if (layered) {
+        // A multipart hair front reuses this stable root. Clearing it here would
+        // reset its request and src on every HP/energy update.
+        if (layered && !(slot === 'hair' && parts.some(part => part.id === 'front'))) {
             const base = document.getElementById(prefix + definition.elementId);
             if (base) { base.onload = null; base.onerror = null; base.paperHairRequest = null; base.classList.add('hidden'); base.removeAttribute('src'); }
         }

@@ -13,7 +13,7 @@ if __name__=='__main__':
     if phase=='before':
      for name in ['paper-doll.js','hair-color.js']:
       data=subprocess.check_output(['git','show',a.before+':'+name],cwd=ROOT)
-      c.context.route('**/'+name+'?*',lambda route,data=data:route.fulfill(content_type='application/javascript',body=data))
+      c.context.route('**/'+name+'?*',lambda route,request,data=data:route.fulfill(content_type='application/javascript',body=data))
     c.load();c.page.evaluate('openCustomization();setGender("male");equipPaperDollItem("face","face-alternative");equipPaperDollItem("hair","hair-shoulder-length")');c.page.wait_for_timeout(200)
     results[phase]=c.page.evaluate('''()=>{const observer=new MutationObserver(()=>{});observer.observe(document.getElementById('wardrobe-paperdoll'),{subtree:true,attributes:true,attributeFilter:['src']});let calls=0;const original=smoothPaperDollCrown;smoothPaperDollCrown=(...a)=>{calls++;return original(...a)};const samples=[];for(let n=0;n<7;n++){const t=performance.now();for(let i=0;i<100;i++)renderPaperDoll();samples.push(performance.now()-t)}smoothPaperDollCrown=original;const mutations=observer.takeRecords().filter(r=>r.target.id==='wardrobe-layer-hair').length;observer.disconnect();return{iterations:700,batch:100,samples_ms:samples,median_ms:[...samples].sort((a,b)=>a-b)[3],front_src_mutations:mutations,crown_calculations:calls}}''')
    finally:c.tearDown()

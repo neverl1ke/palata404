@@ -1402,3 +1402,61 @@ test('rear and front recoloring use the same lighting median without changing al
     const g=game();const result=JSON.parse(g.run('JSON.stringify((()=>{const a=[60,40,30,255,120,80,60,255],b=[60,40,30,255];const m=hairLuminanceMedian(a);recolorHairPixels(a,"#C8C3BA",m);recolorHairPixels(b,"#C8C3BA",m);return {a,b}})())'));
     assert.deepEqual(result.a.slice(0,4),result.b);assert.equal(result.a[3],255);assert.equal(result.a[7],255);
 });
+
+test('all historical and malformed save shapes retain valid progression and boot safely', () => {
+    for (const malformed of ['null','[]','true','17','"text"','{broken','{"schemaVersion":999}']) {
+        const savedStats = { ...JSON.parse(JSON.stringify({silver:1234,level:7,exp:42,nextLvlExp:840,baseDamage:31,baseArmor:6,gymRounds:2})) };
+        const g=game({palata404_stats:JSON.stringify(savedStats),palata404_inventory:malformed,
+            palata404_equipped:malformed,palata404_gym:malformed,palata404_paper_doll:malformed,
+            palata404_friends:malformed,palata404_progress:malformed});
+        assert.equal(g.run('stats.silver'),1234);
+        assert.equal(g.run('stats.level'),7);
+        assert.equal(g.run('stats.exp'),42);
+        assert.equal(g.run('stats.baseDamage'),31);
+        assert.equal(g.run('stats.baseArmor'),6);
+        const again=game(Object.fromEntries(g.storage));
+        assert.equal(again.run('stats.silver'),1234);
+        assert.equal(again.run('stats.level'),7);
+        assert.equal(again.run('stats.baseDamage'),31);
+    }
+});
+
+test('boss actions reject inherited property names without starting or corrupting combat', () => {
+    const g=game();const before=g.run('JSON.stringify({stats,inventory,gameProgress})');
+    for (const name of ['constructor','toString','__proto__','missing']) {
+        g.run(`startBossFight(${JSON.stringify(name)});openBossDossier(${JSON.stringify(name)})`);
+        assert.equal(g.run('isBattleActive'),false);
+        assert.equal(g.run('JSON.stringify({stats,inventory,gameProgress})'),before);
+    }
+});
+
+test('repeated multipart hair renders preserve the current front request and source', () => {
+    const g=game();g.run('setGender("male");equipPaperDollItem("hair","hair-shoulder-length")');
+    const hair=g.elements.get('wardrobe-layer-hair');let removals=0;
+    const remove=hair.removeAttribute.bind(hair);
+    hair.removeAttribute=name=>{if(name==='src')removals++;remove(name);};
+    const request=hair.paperHairRequest;
+    g.run('renderPaperDoll();renderPaperDoll();updateUI()');
+    assert.equal(removals,0);
+    assert.equal(hair.paperHairRequest,request);
+    assert.ok(hair.getAttribute('src').includes('male_medium_shoulder_length'));
+});
+
+test('an evicted reference image failure cannot delete a newer retry promise', async () => {
+    const g=game();g.run('globalThis.images=[];globalThis.Image=class {constructor(){images.push(this)}}');
+    const failed=g.run('hairReferenceMedian("retry.png")');
+    for(let i=0;i<25;i++)g.run(`hairReferenceMedian("filler-${i}.png")`);
+    const retry=g.run('hairReferenceMedian("retry.png")');
+    g.run('images[0].onerror()');await assert.rejects(failed);
+    await Promise.resolve();
+    assert.equal(g.run('hairReferenceMedians.get("retry.png")'),retry);
+});
+
+test('unchanged crown contours are reused without recomputation or a visual change', () => {
+    const g=game();g.run('setGender("male");equipPaperDollItem("face","face-alternative");equipPaperDollItem("hair","hair-messy")');
+    const clip=g.elements.get('wardrobe-layer-face').style.clipPath;
+    g.run('globalThis.crownCalls=0;globalThis.originalCrown=smoothPaperDollCrown;smoothPaperDollCrown=(...args)=>{crownCalls++;return originalCrown(...args)};renderPaperDoll();updateUI()');
+    assert.equal(g.run('crownCalls'),0);
+    assert.equal(g.elements.get('wardrobe-layer-face').style.clipPath,clip);
+    assert.ok(clip.startsWith('polygon('));
+});

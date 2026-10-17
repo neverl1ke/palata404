@@ -1,0 +1,11 @@
+test_approved_graphics_remain_byte_identical (tests.test_project_audit.GeneralAssetTests.test_approved_graphics_remain_byte_identical) ... ok
+test_baseline_dependency_map_has_no_broken_local_links (tests.test_project_audit.GeneralAssetTests.test_baseline_dependency_map_has_no_broken_local_links) ... ok
+test_deleted_files_have_pre_audit_hash_and_runtime_evidence (tests.test_project_audit.GeneralAssetTests.test_deleted_files_have_pre_audit_hash_and_runtime_evidence) ... ok
+test_registered_paper_doll_assets_and_paths_match_case (tests.test_project_audit.GeneralAssetTests.test_registered_paper_doll_assets_and_paths_match_case) ... ok
+test_invalid_boss_names_do_not_mutate_a_saved_character (tests.test_project_audit.GeneralBrowserTests.test_invalid_boss_names_do_not_mutate_a_saved_character) ... ok
+test_repeated_render_retains_colored_front_and_rear_after_reload (tests.test_project_audit.GeneralBrowserTests.test_repeated_render_retains_colored_front_and_rear_after_reload) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 6.915s
+
+OK
