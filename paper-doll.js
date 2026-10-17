@@ -165,7 +165,7 @@ const PAPER_DOLL_CROWN_CONTOURS = {
 
 function applyPaperDollCrownMask(image, selectedGender) {
     const hair = selectedPaperDollItem('hair')?.id;
-    const overlay = ['face-asian', 'face-young', 'face-exhausted', 'face-elder'].includes(selectedPaperDollItem('face')?.id);
+    const overlay = selectedPaperDollItem('face')?.slot === 'face';
     const active = overlay || (selectedGender === 'male' && hair !== 'hair-messy')
         || hair === 'hair-bob';
     const crown = active && PAPER_DOLL_CROWN_CONTOURS[hair]?.[selectedGender];

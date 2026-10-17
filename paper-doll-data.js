@@ -22,7 +22,7 @@ const PAPER_DOLL_SLOTS = {
     accessory: { label: 'Аксесуар', elementId: 'layer-accessory', icon: 'key' }
 };
 // Hashes of the user's approved uploads invalidate previously cached bodies.
-const PAPER_DOLL_BODIES = { male: 'base_male.png?v=0dec17c1', female: 'base_female.png?v=5489c78c' };
+const PAPER_DOLL_BODIES = { male: 'base_male.png?v=5a122d13', female: 'base_female.png?v=afa21fd8' };
 // The six retired trial faces stay on disk, but are not catalog entries.
 // New approved cosmetics can use the face slot, placement and multipart layers.
 const PAPER_DOLL_RETIRED_FACES = new Set(Array.from({ length: 6 }, (_, index) => `face_${index + 1}.png`));
@@ -70,8 +70,23 @@ const PAPER_DOLL_ITEMS = [
             male: { x: 0, y: 0, width: 941, height: 1672 },
             female: { x: 0, y: 0, width: 941, height: 1672 }
         } },
+    { id: 'face-alternative', slot: 'face', name: 'Нове обличчя', icon: 'user', availableByDefault: true,
+        fittedToGender: true, description: 'Новий затверджений варіант обличчя для обраної статі.', renderOrder: 1,
+        genderVariants: { male: 'assets/wardrobe/faces/male_alternative_head.png?v=ce6bc095', female: 'assets/wardrobe/faces/female_alternative_head.png?v=55442d2b' },
+        bodyMaskByGender: { male: 'assets/wardrobe/faces/masks/male_alternative_body.png?v=a55e9980', female: 'assets/wardrobe/faces/masks/female_alternative_body.png?v=262a5c0b' },
+        placementByGender: {
+            male: { x: 0, y: 0, width: 941, height: 1672 },
+            female: { x: 0, y: 0, width: 941, height: 1672 }
+        } },
     { id: 'hair-none', slot: 'hair', name: 'Без зачіски', icon: 'user', availableByDefault: true,
         noImageRequired: true, description: 'Початковий вигляд затвердженого аватара без накладки волосся.' },
+    { id: 'hair-bob-bangs', slot: 'hair', name: 'Каре з чубчиком', icon: 'user', availableByDefault: true,
+        fittedToGender: true, description: 'Чорне каре з чубчиком; спільний PNG для обох статей.',
+        genderVariants: { male: 'assets/wardrobe/hair/unisex_bob_bangs.png?v=75010820', female: 'assets/wardrobe/hair/unisex_bob_bangs.png?v=75010820' },
+        placementByGender: {
+            male: { x: 365.9, y: -59.9, width: 216.43, height: 384.56 },
+            female: { x: 365.9, y: -59.9, width: 216.43, height: 384.56 }
+        } },
     { id: 'hair-messy', slot: 'hair', name: 'Розкуйовджена зачіска', icon: 'user', availableByDefault: true,
         fittedToGender: true, description: 'Розкуйовджене волосся з першого комплекту зачісок.',
         genderVariants: { male: 'assets/wardrobe/hair/male_messy_hair.png?v=fe4c6349', female: 'assets/wardrobe/hair/female_messy_hair.png?v=e2482312' },

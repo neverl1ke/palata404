@@ -1,0 +1,118 @@
+{
+  "source_archive": "palata404_assets_fixedd.zip",
+  "reference_commit": "a85ccb4390dab37fa373b18d8515fbb803e31842",
+  "files": [
+    {
+      "source": "01_female_base_black.png",
+      "source_sha256": "696c0784e360631a327a96f2241f8e138d7450c1766aa7a93baba5f0ede567af",
+      "output": "base_female.png",
+      "sha256": "afa21fd88bece04c216b83bc1cbd701ebff21bc6f2fe9c771f192d4419779ff0",
+      "reference_alpha_sha256": "3056e27efbe1cfa3be08f2042241d93d064db73ec8ec2693503e2f71781f2b89",
+      "registration": "1:1 frame; approved alpha contour; local skin-tone transfer, no body-part warp",
+      "source_size": [
+        941,
+        1672
+      ],
+      "source_mode": "RGBA",
+      "source_alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "source": "02_male_base_black.png",
+      "source_sha256": "8eda64a0915178204f742aa8f71ccb6333091463056cf0609658ebf5d5d2eb06",
+      "output": "base_male.png",
+      "sha256": "5a122d134f2ef469c9c1cac04dae402e5dd847b4c66c077940a5939d7bd0a2df",
+      "reference_alpha_sha256": "950bcf5289ccc150657f7cc7469fca7d10bd6f6d7a0d87341b0e6377e332cc69",
+      "registration": "1:1 frame; approved alpha contour; local skin-tone transfer, no body-part warp",
+      "source_size": [
+        941,
+        1672
+      ],
+      "source_mode": "RGBA",
+      "source_alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "source": "03_female_new_face.png",
+      "source_sha256": "eb78a7f7bc06419042407f24853f8da6665274719feb7a5a11c4be6c2dd82b1b",
+      "output": "assets/wardrobe/faces/female_alternative_head.png",
+      "sha256": "55442d2b02359a867261cb1c6b9c9cfe21fc94a4973d4d69d3fcc974488a5f96",
+      "mask": "assets/wardrobe/faces/masks/female_alternative_body.png",
+      "mask_sha256": "262a5c0b5eb3f00d8abf4df4472d03b9deaff93c848ce80ae65d308bdc691e15",
+      "registration": {
+        "scale": 1.02,
+        "x": 254.7,
+        "y": 17
+      },
+      "profile": [
+        474,
+        65,
+        245,
+        278,
+        22
+      ],
+      "source_size": [
+        431,
+        384
+      ],
+      "source_mode": "RGBA",
+      "source_alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "source": "04_male_new_face.png",
+      "source_sha256": "e82e59af236bbf0dbd2bdf0cf08b61a2fdca72cc36e0a6deac7ae03d0ad24f01",
+      "output": "assets/wardrobe/faces/male_alternative_head.png",
+      "sha256": "ce6bc09579c8023f6cf89564d92dcf36ebc9636870d983c3ecc83c6b6bb99b3a",
+      "mask": "assets/wardrobe/faces/masks/male_alternative_body.png",
+      "mask_sha256": "a55e9980549dd188150166cb2cad7ed0ffa52f85ae34977731d7bd664afad555",
+      "registration": {
+        "scale": 0.275,
+        "x": 300.5,
+        "y": 8
+      },
+      "profile": [
+        474,
+        72,
+        258,
+        288,
+        23
+      ],
+      "source_size": [
+        1261,
+        1247
+      ],
+      "source_mode": "RGBA",
+      "source_alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "source": "05_unisex_bob_hair.png",
+      "source_sha256": "75010820a93a043f743cdf2f14d1dab98863a38487dba3979d75c7de986b59ae",
+      "output": "assets/wardrobe/hair/unisex_bob_bangs.png",
+      "sha256": "75010820a93a043f743cdf2f14d1dab98863a38487dba3979d75c7de986b59ae",
+      "registration": {
+        "scale": 0.23,
+        "x": 365.9,
+        "y": -59.9
+      },
+      "source_size": [
+        941,
+        1672
+      ],
+      "source_mode": "RGBA",
+      "source_alpha_extrema": [
+        0,
+        255
+      ]
+    }
+  ]
+}
