@@ -1,0 +1,15 @@
+{
+  "url": "https://neverl1ke.github.io/palata404/",
+  "combinations": 90,
+  "background_color_checks": 720,
+  "reload": true,
+  "page_errors": [],
+  "http_errors": [],
+  "mobile_widths": [
+    320,
+    390,
+    768
+  ],
+  "transport": "Actual published HTTPS bytes via certificate-verified urllib, Chromium renders without local substitutions",
+  "cache_version": "paper-audit-1"
+}

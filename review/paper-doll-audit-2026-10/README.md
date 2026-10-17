@@ -47,7 +47,7 @@
 
 ## Які PNG змінено
 
-**32 наявні ресурси очищено/узгоджено, 3 додано; перевірено 37 активних PNG.** Повний пофайловий список, SHA-256 ДО/ПІСЛЯ, кількість змінених альфа-пікселів і RGB-корекцій: [edge-repairs.json](edge-repairs.json). Маніфест усіх активних ресурсів: [resource-manifest.json](resource-manifest.json).
+**32 наявні ресурси очищено/узгоджено, 3 додано; перевірено 37 активних PNG.** Повний пофайловий список, SHA-256 ДО/ПІСЛЯ, кількість змінених альфа-пікселів і RGB-корекцій (поля `final_*` враховують також остаточний neck join; початкові `alpha_changed`/`edge_rgb_corrected` описують крайовий прохід): [edge-repairs.json](edge-repairs.json). Маніфест усіх активних ресурсів: [resource-manifest.json](resource-manifest.json).
 
 - `base_male.png`, `base_female.png`: альфа-край і окремі RGB-пікселі matte; без зміни полотна, пози або анатомії.
 - Усі 10 накладок у `assets/wardrobe/faces/`: крайова обробка, спільний neck join із відповідною маскою. Внутрішній RGB контрольної області обличчя `(435,90)–(515,205)` збережено побайтно.
@@ -119,6 +119,7 @@ python tools/audit-paper-doll-png.py --output test-results/png-quality.json
 - `tools/refresh-paper-doll-audit.py --snapshot DIR` — хеші, cache query та контракти, з окремим збереженням джерельних хешів.
 - `tools/review-paper-doll-audit.py --phase after` — браузерна матриця.
 - `tools/capture-paper-doll-details.py --phase after` — збільшені контрольні PNG.
+- `tools/verify-paper-doll-pages.py` — повторна перевірка 90 комбінацій у фактичній опублікованій HTTPS-грі.
 
 Точний перелік змінених файлів і призначення груп: [changed-files.md](changed-files.md).
 
@@ -131,5 +132,10 @@ python tools/audit-paper-doll-png.py --output test-results/png-quality.json
 Фізичний сенсорний пристрій не перевірявся. Автоматичний аналіз знаходить підозрілі краї, але не замінює художній перегляд.
 
 ## Публікація
+
+Код і ресурси: [`9d5691f`](https://github.com/neverl1ke/palata404/commit/9d5691f3dedb94c002a21fc33209be1f320dcd15). На опублікованій HTTPS-грі повторно перевірено **90 комбінацій / 720 перевірок фону й кольору**, reload та мобільні 320/390/768 px, без JS errors і 404: [live-browser.json](live-browser.json). Опубліковані 48 runtime-файлів, включно з 37 PNG, побайтно збіглися з локальним результатом.
+
+
+**GitHub Actions для `9d5691f`: success — 75/75 JS і 85/85 Python/Chromium (442.278 с).** [Запуск](https://github.com/neverl1ke/palata404/actions/runs/39061447098), [витяг журналу](logs/ci-9d5691f-summary.log). [GitHub Pages: success](https://github.com/neverl1ke/palata404/actions/runs/39061446879). Звітування та додані знімки HTTPS-перевірки йдуть окремим наступним комітом, без зміни runtime/PNG.
 
 Статус комітів, GitHub Actions та перевірки фактичних HTTPS-ресурсів GitHub Pages наведено в [publication.json](publication.json). Посилання на гру: https://neverl1ke.github.io/palata404/ .

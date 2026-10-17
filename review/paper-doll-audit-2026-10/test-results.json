@@ -44,5 +44,16 @@
   },
   "physical_mobile_device": false,
   "artistic_repaint_completed": false,
-  "ci_current_commit": "Not yet pushed; see publication.json for subsequent fresh CI run"
+  "ci_current_commit": {
+    "runtime_commit": "9d5691f3dedb94c002a21fc33209be1f320dcd15",
+    "url": "https://github.com/neverl1ke/palata404/actions/runs/39061447098"
+  },
+  "github_actions": {
+    "sha": "9d5691f3dedb94c002a21fc33209be1f320dcd15",
+    "url": "https://github.com/neverl1ke/palata404/actions/runs/39061447098",
+    "conclusion": "success",
+    "javascript": 75,
+    "python": 85,
+    "python_seconds": 442.278
+  }
 }

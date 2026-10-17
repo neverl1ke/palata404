@@ -10,7 +10,7 @@ test_legacy_item_icons_and_untrusted_icon_urls (tests.test_game.GameTests.test_l
 test_map_unlock_is_persistent_and_locked_floor_stays_closed (tests.test_game.GameTests.test_map_unlock_is_persistent_and_locked_floor_stays_closed) ... ok
 test_paper_doll_layers_share_canvas_and_keep_faces_aligned_on_mobile (tests.test_game.GameTests.test_paper_doll_layers_share_canvas_and_keep_faces_aligned_on_mobile) ... ok
 test_partial_reward_save_recovers_without_duplicate_credit (tests.test_game.GameTests.test_partial_reward_save_recovers_without_duplicate_credit) ... ok
-test_patient_tunic_real_catalog_fit_in_both_scenes_genders_modes_and_viewports (tests.test_game.GameTests.test_patient_tunic_real_catalog_fit_in_both_scenes_genders_modes_and_viewports) ... 
+test_patient_tunic_real_catalog_fit_in_both_scenes_genders_modes_and_viewports (tests.test_game.GameTests.test_patient_tunic_real_catalog_fit_in_both_scenes_genders_modes_and_viewports) ...
   test_patient_tunic_real_catalog_fit_in_both_scenes_genders_modes_and_viewports (tests.test_game.GameTests.test_patient_tunic_real_catalog_fit_in_both_scenes_genders_modes_and_viewports) (viewport=(320, 568), gender='male', mode='patient') ... ERROR
   test_patient_tunic_real_catalog_fit_in_both_scenes_genders_modes_and_viewports (tests.test_game.GameTests.test_patient_tunic_real_catalog_fit_in_both_scenes_genders_modes_and_viewports) (viewport=(320, 568), gender='male', mode='combat') ... ERROR
   test_patient_tunic_real_catalog_fit_in_both_scenes_genders_modes_and_viewports (tests.test_game.GameTests.test_patient_tunic_real_catalog_fit_in_both_scenes_genders_modes_and_viewports) (viewport=(320, 568), gender='female', mode='patient') ... ERROR

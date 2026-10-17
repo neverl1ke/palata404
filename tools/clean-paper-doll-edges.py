@@ -100,4 +100,11 @@ if __name__=='__main__':
     if r['path']==rel:r['sha256']=sha(ROOT/rel)
    records.append(dict(path=mp,before_sha256=sha(a.snapshot/mp) if (a.snapshot/mp).exists() else None,sha256=sha(ROOT/mp),kind='joint-mask'))
  bp=create_rear_layer();records.append(dict(path=str(bp.relative_to(ROOT)),sha256=sha(bp),kind='rear-strands',source='male_medium_shoulder_length.png',render_order=-1))
+ for entry in records:
+  source=a.snapshot/entry['path'];final=np.array(Image.open(ROOT/entry['path']).convert('RGBA'))
+  entry['final_nonzero_alpha_pixels']=int((final[:,:,3]>0).sum())
+  if source.exists():
+   original=np.array(Image.open(source).convert('RGBA'))
+   entry['final_alpha_changed']=int((original[:,:,3]!=final[:,:,3]).sum())
+   entry['final_rgb_changed']=int(np.any(original[:,:,:3]!=final[:,:,:3],axis=2).sum())
  output=ROOT/'review/paper-doll-audit-2026-10/edge-repairs.json';output.write_text(json.dumps({'source_commit':'dbbcddff2f79a3393271ac6afc4d261221d9b77e','files':records},indent=2)+'\n');print('Processed',len(records),'resources')

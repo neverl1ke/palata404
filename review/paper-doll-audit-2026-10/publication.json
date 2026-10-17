@@ -1,4 +1,32 @@
 {
-  "status": "Prepared locally; publication verification will be appended after commit and push",
-  "baseline": "dbbcddff2f79a3393271ac6afc4d261221d9b77e"
+  "runtime_commit": "9d5691f3dedb94c002a21fc33209be1f320dcd15",
+  "branch": "main",
+  "pages": {
+    "status": "completed",
+    "conclusion": "success",
+    "url": "https://github.com/neverl1ke/palata404/actions/runs/39061446879"
+  },
+  "game_checks": {
+    "status": "completed",
+    "url": "https://github.com/neverl1ke/palata404/actions/runs/39061447098",
+    "conclusion": "success",
+    "javascript_passed": 75,
+    "python_passed": 85,
+    "python_seconds": 442.278,
+    "summary_log": "logs/ci-9d5691f-summary.log"
+  },
+  "https_runtime_bytes": {
+    "files": 48,
+    "png_files": 37,
+    "exact_match": true
+  },
+  "live_browser": "live-browser.json",
+  "gallery_http": {
+    "files": 140,
+    "exact_match": true,
+    "source_commit": "9d5691f3dedb94c002a21fc33209be1f320dcd15"
+  },
+  "url": "https://neverl1ke.github.io/palata404/",
+  "gallery_url": "https://neverl1ke.github.io/palata404/review/paper-doll-audit-2026-10/gallery.html",
+  "verified_at_utc": "2026-10-17 19:21 UTC"
 }

@@ -8,7 +8,10 @@
       "kind": "underlay",
       "weak_pixels_removed": 6171,
       "edge_rgb_corrected": 5,
-      "alpha_changed": 6920
+      "alpha_changed": 6920,
+      "final_nonzero_alpha_pixels": 53082,
+      "final_alpha_changed": 6920,
+      "final_rgb_changed": 443015
     },
     {
       "path": "assets/wardrobe/faces/female_alternative_head.png",
@@ -17,7 +20,10 @@
       "kind": "head",
       "weak_pixels_removed": 6,
       "edge_rgb_corrected": 222,
-      "alpha_changed": 1137
+      "alpha_changed": 1137,
+      "final_nonzero_alpha_pixels": 32078,
+      "final_alpha_changed": 1328,
+      "final_rgb_changed": 312
     },
     {
       "path": "assets/wardrobe/faces/female_asian_head.png",
@@ -26,7 +32,10 @@
       "kind": "head",
       "weak_pixels_removed": 149,
       "edge_rgb_corrected": 950,
-      "alpha_changed": 1504
+      "alpha_changed": 1504,
+      "final_nonzero_alpha_pixels": 29319,
+      "final_alpha_changed": 4231,
+      "final_rgb_changed": 5247
     },
     {
       "path": "assets/wardrobe/faces/female_elder_head.png",
@@ -35,7 +44,10 @@
       "kind": "head",
       "weak_pixels_removed": 0,
       "edge_rgb_corrected": 399,
-      "alpha_changed": 1194
+      "alpha_changed": 1194,
+      "final_nonzero_alpha_pixels": 31194,
+      "final_alpha_changed": 1462,
+      "final_rgb_changed": 530
     },
     {
       "path": "assets/wardrobe/faces/female_exhausted_head.png",
@@ -44,7 +56,10 @@
       "kind": "head",
       "weak_pixels_removed": 0,
       "edge_rgb_corrected": 109,
-      "alpha_changed": 1199
+      "alpha_changed": 1199,
+      "final_nonzero_alpha_pixels": 32029,
+      "final_alpha_changed": 1509,
+      "final_rgb_changed": 253
     },
     {
       "path": "assets/wardrobe/faces/female_young_head.png",
@@ -53,7 +68,10 @@
       "kind": "head",
       "weak_pixels_removed": 0,
       "edge_rgb_corrected": 402,
-      "alpha_changed": 1215
+      "alpha_changed": 1215,
+      "final_nonzero_alpha_pixels": 32542,
+      "final_alpha_changed": 1532,
+      "final_rgb_changed": 584
     },
     {
       "path": "assets/wardrobe/faces/male_alternative_head.png",
@@ -62,7 +80,10 @@
       "kind": "head",
       "weak_pixels_removed": 27,
       "edge_rgb_corrected": 276,
-      "alpha_changed": 1281
+      "alpha_changed": 1281,
+      "final_nonzero_alpha_pixels": 37093,
+      "final_alpha_changed": 1531,
+      "final_rgb_changed": 396
     },
     {
       "path": "assets/wardrobe/faces/male_asian_head.png",
@@ -71,7 +92,10 @@
       "kind": "head",
       "weak_pixels_removed": 183,
       "edge_rgb_corrected": 996,
-      "alpha_changed": 1528
+      "alpha_changed": 1528,
+      "final_nonzero_alpha_pixels": 30018,
+      "final_alpha_changed": 4704,
+      "final_rgb_changed": 6054
     },
     {
       "path": "assets/wardrobe/faces/male_elder_head.png",
@@ -80,7 +104,10 @@
       "kind": "head",
       "weak_pixels_removed": 0,
       "edge_rgb_corrected": 383,
-      "alpha_changed": 1172
+      "alpha_changed": 1172,
+      "final_nonzero_alpha_pixels": 33569,
+      "final_alpha_changed": 1376,
+      "final_rgb_changed": 426
     },
     {
       "path": "assets/wardrobe/faces/male_exhausted_head.png",
@@ -89,7 +116,10 @@
       "kind": "head",
       "weak_pixels_removed": 0,
       "edge_rgb_corrected": 385,
-      "alpha_changed": 1146
+      "alpha_changed": 1146,
+      "final_nonzero_alpha_pixels": 34361,
+      "final_alpha_changed": 1423,
+      "final_rgb_changed": 489
     },
     {
       "path": "assets/wardrobe/faces/male_young_head.png",
@@ -98,7 +128,10 @@
       "kind": "head",
       "weak_pixels_removed": 0,
       "edge_rgb_corrected": 391,
-      "alpha_changed": 1153
+      "alpha_changed": 1153,
+      "final_nonzero_alpha_pixels": 34385,
+      "final_alpha_changed": 1416,
+      "final_rgb_changed": 495
     },
     {
       "path": "assets/wardrobe/hair/classic_short_unisex_style_A.png",
@@ -107,7 +140,10 @@
       "kind": "hair",
       "weak_pixels_removed": 26138,
       "edge_rgb_corrected": 1175,
-      "alpha_changed": 29992
+      "alpha_changed": 29992,
+      "final_nonzero_alpha_pixels": 500522,
+      "final_alpha_changed": 29992,
+      "final_rgb_changed": 9883
     },
     {
       "path": "assets/wardrobe/hair/classic_short_unisex_style_B.png",
@@ -116,7 +152,10 @@
       "kind": "hair",
       "weak_pixels_removed": 22503,
       "edge_rgb_corrected": 444,
-      "alpha_changed": 25293
+      "alpha_changed": 25293,
+      "final_nonzero_alpha_pixels": 367944,
+      "final_alpha_changed": 25293,
+      "final_rgb_changed": 8016
     },
     {
       "path": "assets/wardrobe/hair/female_chin_length_bob.png",
@@ -125,7 +164,10 @@
       "kind": "hair",
       "weak_pixels_removed": 34621,
       "edge_rgb_corrected": 906,
-      "alpha_changed": 39768
+      "alpha_changed": 39768,
+      "final_nonzero_alpha_pixels": 497087,
+      "final_alpha_changed": 39768,
+      "final_rgb_changed": 11994
     },
     {
       "path": "assets/wardrobe/hair/female_double_buns.png",
@@ -134,7 +176,10 @@
       "kind": "hair",
       "weak_pixels_removed": 78288,
       "edge_rgb_corrected": 240,
-      "alpha_changed": 88472
+      "alpha_changed": 88472,
+      "final_nonzero_alpha_pixels": 528938,
+      "final_alpha_changed": 88472,
+      "final_rgb_changed": 30325
     },
     {
       "path": "assets/wardrobe/hair/female_medium_shoulder_length.png",
@@ -143,7 +188,10 @@
       "kind": "hair",
       "weak_pixels_removed": 53169,
       "edge_rgb_corrected": 1072,
-      "alpha_changed": 60287
+      "alpha_changed": 60287,
+      "final_nonzero_alpha_pixels": 650342,
+      "final_alpha_changed": 60287,
+      "final_rgb_changed": 18082
     },
     {
       "path": "assets/wardrobe/hair/female_messy_hair.png",
@@ -152,7 +200,10 @@
       "kind": "hair",
       "weak_pixels_removed": 101628,
       "edge_rgb_corrected": 63,
-      "alpha_changed": 113181
+      "alpha_changed": 113181,
+      "final_nonzero_alpha_pixels": 581204,
+      "final_alpha_changed": 113181,
+      "final_rgb_changed": 35981
     },
     {
       "path": "assets/wardrobe/hair/male_chin_length_bob.png",
@@ -161,7 +212,10 @@
       "kind": "hair",
       "weak_pixels_removed": 25940,
       "edge_rgb_corrected": 358,
-      "alpha_changed": 30866
+      "alpha_changed": 30866,
+      "final_nonzero_alpha_pixels": 548190,
+      "final_alpha_changed": 30866,
+      "final_rgb_changed": 8697
     },
     {
       "path": "assets/wardrobe/hair/male_double_buns.png",
@@ -170,7 +224,10 @@
       "kind": "hair",
       "weak_pixels_removed": 51570,
       "edge_rgb_corrected": 1025,
-      "alpha_changed": 57935
+      "alpha_changed": 57935,
+      "final_nonzero_alpha_pixels": 502627,
+      "final_alpha_changed": 57935,
+      "final_rgb_changed": 16763
     },
     {
       "path": "assets/wardrobe/hair/male_medium_shoulder_length.png",
@@ -179,7 +236,10 @@
       "kind": "hair",
       "weak_pixels_removed": 25957,
       "edge_rgb_corrected": 404,
-      "alpha_changed": 30448
+      "alpha_changed": 30448,
+      "final_nonzero_alpha_pixels": 513475,
+      "final_alpha_changed": 30448,
+      "final_rgb_changed": 7494
     },
     {
       "path": "assets/wardrobe/hair/male_messy_hair.png",
@@ -188,7 +248,10 @@
       "kind": "hair",
       "weak_pixels_removed": 40612,
       "edge_rgb_corrected": 882,
-      "alpha_changed": 45840
+      "alpha_changed": 45840,
+      "final_nonzero_alpha_pixels": 439592,
+      "final_alpha_changed": 45840,
+      "final_rgb_changed": 7785
     },
     {
       "path": "assets/wardrobe/hair/unisex_bob_bangs.png",
@@ -197,7 +260,10 @@
       "kind": "hair",
       "weak_pixels_removed": 18631,
       "edge_rgb_corrected": 432,
-      "alpha_changed": 21946
+      "alpha_changed": 21946,
+      "final_nonzero_alpha_pixels": 535996,
+      "final_alpha_changed": 21946,
+      "final_rgb_changed": 2625
     },
     {
       "path": "base_female.png",
@@ -206,7 +272,10 @@
       "kind": "body",
       "weak_pixels_removed": 6815,
       "edge_rgb_corrected": 1456,
-      "alpha_changed": 26937
+      "alpha_changed": 26937,
+      "final_nonzero_alpha_pixels": 486373,
+      "final_alpha_changed": 26937,
+      "final_rgb_changed": 8271
     },
     {
       "path": "base_male.png",
@@ -215,74 +284,104 @@
       "kind": "body",
       "weak_pixels_removed": 6704,
       "edge_rgb_corrected": 1633,
-      "alpha_changed": 26008
+      "alpha_changed": 26008,
+      "final_nonzero_alpha_pixels": 502014,
+      "final_alpha_changed": 26008,
+      "final_rgb_changed": 8335
     },
     {
       "path": "assets/wardrobe/faces/masks/male_asian_body.png",
       "before_sha256": null,
       "sha256": "b700eab75c3b79cc44f9e9d0778c091e25e2940a4897a94d833e5a268a28acce",
-      "kind": "joint-mask"
+      "kind": "joint-mask",
+      "final_nonzero_alpha_pixels": 1328250
     },
     {
       "path": "assets/wardrobe/faces/masks/female_asian_body.png",
       "before_sha256": null,
       "sha256": "3412bd3af36387b0050e580a85cff7855951b7761701c429587b7af0a5091ac7",
-      "kind": "joint-mask"
+      "kind": "joint-mask",
+      "final_nonzero_alpha_pixels": 1328050
     },
     {
       "path": "assets/wardrobe/faces/masks/male_young_body.png",
       "before_sha256": "ae3583ddb4b79f63793c56550e851ba0eee234129856f6dcd9e9fa8f63b3354a",
       "sha256": "73bad65e54573c40589af4e1e9fa5dcd2b5e82a70829ef61f8994cbd160eab24",
-      "kind": "joint-mask"
+      "kind": "joint-mask",
+      "final_nonzero_alpha_pixels": 1302551,
+      "final_alpha_changed": 794,
+      "final_rgb_changed": 0
     },
     {
       "path": "assets/wardrobe/faces/masks/female_young_body.png",
       "before_sha256": "6da8b2d46ca152a2e771dda681cfa53fadb490541886d4aa05a824c4e61ee9df",
       "sha256": "3f8e960c4b689f0fb6613b7bda0ca9d6e3247eb1c1cf236df5722cd032a1eca2",
-      "kind": "joint-mask"
+      "kind": "joint-mask",
+      "final_nonzero_alpha_pixels": 1310386,
+      "final_alpha_changed": 607,
+      "final_rgb_changed": 0
     },
     {
       "path": "assets/wardrobe/faces/masks/male_exhausted_body.png",
       "before_sha256": "91eb39935ebdfda2f7c61ff218ca84b1c44c8434db04391b26a531752a4ad829",
       "sha256": "95e48d488e32558ea02a9ad5b3f60dfff83e98029bfa3ce6c420c23857de482e",
-      "kind": "joint-mask"
+      "kind": "joint-mask",
+      "final_nonzero_alpha_pixels": 1299041,
+      "final_alpha_changed": 741,
+      "final_rgb_changed": 0
     },
     {
       "path": "assets/wardrobe/faces/masks/female_exhausted_body.png",
       "before_sha256": "110a9598d4c520e59453182ed3a330dc39afa44661883f65ba1b11576e355be3",
       "sha256": "9b96cff8ea1e77710fe8c847a8317f7631529ea33e703a4846d84e11389cfc72",
-      "kind": "joint-mask"
+      "kind": "joint-mask",
+      "final_nonzero_alpha_pixels": 1311139,
+      "final_alpha_changed": 581,
+      "final_rgb_changed": 0
     },
     {
       "path": "assets/wardrobe/faces/masks/male_elder_body.png",
       "before_sha256": "6b4e8d417ef34d97cadf862fe9cdcb91d0a902f8eadda60476259337e59391e8",
       "sha256": "191ad94a7ab8e8b00f5a48de854e7dcf5f9adfc54d4e6aa4b81d6963fca0dcd1",
-      "kind": "joint-mask"
+      "kind": "joint-mask",
+      "final_nonzero_alpha_pixels": 1301408,
+      "final_alpha_changed": 664,
+      "final_rgb_changed": 0
     },
     {
       "path": "assets/wardrobe/faces/masks/female_elder_body.png",
       "before_sha256": "3e5f78f596fee51bc323e0722df99267dd6a6d856786868d3e361172a8385292",
       "sha256": "a9f8e7b6c6f394523838c2c65aa21f03de408ae171fc7e4ee607cf194b848e3a",
-      "kind": "joint-mask"
+      "kind": "joint-mask",
+      "final_nonzero_alpha_pixels": 1309466,
+      "final_alpha_changed": 580,
+      "final_rgb_changed": 0
     },
     {
       "path": "assets/wardrobe/faces/masks/male_alternative_body.png",
       "before_sha256": "bfe0a56cfad02f50b2d1742320dd6b8de254afa87b61b1d977073ad59c3a8167",
       "sha256": "2778f476f1a528ddad6e6fe080295ed97cc513beff8328e792bf3e4fd85444c9",
-      "kind": "joint-mask"
+      "kind": "joint-mask",
+      "final_nonzero_alpha_pixels": 1297241,
+      "final_alpha_changed": 582,
+      "final_rgb_changed": 0
     },
     {
       "path": "assets/wardrobe/faces/masks/female_alternative_body.png",
       "before_sha256": "b58194d2c51ee5cb6ab044578b8dbda0e3e0b27cb5e1ded08ed0a77668ecbb67",
       "sha256": "2069e239ff59a656e140a7edaa133f04829c7c87017174c1507c46f29fb5f548",
-      "kind": "joint-mask"
+      "kind": "joint-mask",
+      "final_nonzero_alpha_pixels": 1312071,
+      "final_alpha_changed": 630,
+      "final_rgb_changed": 0
     },
     {
       "path": "assets/wardrobe/hair/male_medium_shoulder_length_rear.png",
       "sha256": "895e676c29c172e237e5b0a560690a7629993d3983a67a4f2da2a95215e7faa3",
       "kind": "rear-strands",
       "source": "male_medium_shoulder_length.png",
-      "render_order": -1
+      "render_order": -1,
+      "final_nonzero_alpha_pixels": 5680
     }
   ]
 }
