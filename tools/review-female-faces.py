@@ -41,7 +41,12 @@ def capture(phase, destination, url=None, source=None):
                     'genderVariants':{'female':'female-import-'+kind+'-head.png'},
                     'bodyMaskByGender':{'female':'female-import-'+kind+'-mask.png'},
                     'placementByGender':{'female':{'x':0,'y':0,'width':941,'height':1672}}})
-            page.evaluate('es=>PAPER_DOLL_ITEMS.push(...es)',entries)
+            # Re-running this diagnostic on the integrated main must still use
+            # the supplied raw images, not the first existing ID in the catalog.
+            page.evaluate('''es=>{for(const entry of es){
+                const index=PAPER_DOLL_ITEMS.findIndex(i=>i.id===entry.id);
+                if(index<0)PAPER_DOLL_ITEMS.push(entry);else PAPER_DOLL_ITEMS[index]=entry;
+            }}''',entries)
         page.on('response', lambda r: errors.append({'url': r.url, 'status': r.status}) if r.status >= 400 else None)
         page.evaluate('setGender("female");setPaperDollView("combat");openCustomization();selectWardrobeCategory("appearance");selectWardrobeSlot("face")')
         faces = page.evaluate('PAPER_DOLL_ITEMS.filter(i=>i.slot==="face"&&paperDollItemSupportsGender(i,"female")).map(i=>i.id)')

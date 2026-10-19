@@ -152,8 +152,8 @@
       "path": "review/female-faces-integration/README_UA.md",
       "status": "added",
       "before_sha256": null,
-      "sha256": "b146d1216382780bcc57aaaf3571c3cbe9fc77551af0d06e6fdc0d0f135a5207",
-      "bytes": 21540
+      "sha256": "131ecfbabaa04fe7f3148f8e1410221456ba337b66b262c532d9de7a8bc060ca",
+      "bytes": 22233
     },
     {
       "path": "review/female-faces-integration/after/capture.json",
@@ -1171,6 +1171,13 @@
       "bytes": 5922
     },
     {
+      "path": "review/female-faces-integration/source-reproduction.json",
+      "status": "added",
+      "before_sha256": null,
+      "sha256": "a04dddab774253edea17c31cb02865832f1d6165a7f0afe206c3fdadb4c5ddfb",
+      "bytes": 283
+    },
+    {
       "path": "review/female-faces-integration/sources/female_alternative_approved_source.png",
       "status": "added",
       "before_sha256": null,
@@ -1398,8 +1405,8 @@
       "path": "tools/review-female-faces.py",
       "status": "added",
       "before_sha256": null,
-      "sha256": "42b20ea98d8157afd20f03eeceb63307fabcacc0c6a9d292090a4aeb4ce195b5",
-      "bytes": 7737
+      "sha256": "a7e8971ca5ba044023d4b707907bd8b82f875f2cfae36543af56c147a514c479",
+      "bytes": 8080
     },
     {
       "path": "tools/run-python-tests.py",
