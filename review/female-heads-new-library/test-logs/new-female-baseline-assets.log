@@ -1,0 +1,13 @@
+test_all_3375_combinations_have_unique_real_lossless_screenshots (tests.test_male_head_library.MaleLibraryAssetTests.test_all_3375_combinations_have_unique_real_lossless_screenshots) ... ok
+test_current_complementary_masks_hide_old_skull_and_restore_the_new_torso (tests.test_male_head_library.MaleLibraryAssetTests.test_current_complementary_masks_hide_old_skull_and_restore_the_new_torso) ... ok
+test_every_combination_is_restored_by_an_actual_browser_reload (tests.test_male_head_library.MaleLibraryAssetTests.test_every_combination_is_restored_by_an_actual_browser_reload) ... ok
+test_every_new_resource_is_registered_with_its_actual_hash (tests.test_male_head_library.MaleLibraryAssetTests.test_every_new_resource_is_registered_with_its_actual_hash) ... ok
+test_female_assets_hair_palette_clothing_and_renderer_remain_unchanged (tests.test_male_head_library.MaleLibraryAssetTests.test_female_assets_hair_palette_clothing_and_renderer_remain_unchanged) ... ok
+test_new_body_is_the_exact_supplied_resource_and_sources_are_retained (tests.test_male_head_library.MaleLibraryAssetTests.test_new_body_is_the_exact_supplied_resource_and_sources_are_retained) ... ok
+test_new_portraits_are_uniformly_registered_without_rgb_repaint (tests.test_male_head_library.MaleLibraryAssetTests.test_new_portraits_are_uniformly_registered_without_rgb_repaint) ... ok
+test_offline_gallery_does_not_depend_on_external_services (tests.test_male_head_library.MaleLibraryAssetTests.test_offline_gallery_does_not_depend_on_external_services) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 14.606s
+
+OK

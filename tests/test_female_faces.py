@@ -114,7 +114,7 @@ class FemaleFacesBrowserTests(unittest.TestCase):
     def test_eight_female_choices_and_reload_preserve_each_appearance_and_loadout(self):
         self.p.evaluate('openCustomization();setGender("female");selectWardrobeSlot("face")')
         ids=[e['id'] for e in manifest()['files']]
-        self.assertEqual(self.p.locator('[data-wardrobe-card]').count(),8)
+        self.assertEqual(self.p.locator('[data-wardrobe-card]').count(),16)
         protected=self.p.evaluate('JSON.stringify({stats,inventory,equippedGear,patient:paperDollState.patientLoadout,combat:paperDollState.combatLoadout})')
         for face in ids:
             self.p.locator('[data-wardrobe-card="'+face+'"]').click()

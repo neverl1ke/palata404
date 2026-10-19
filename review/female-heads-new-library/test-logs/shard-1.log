@@ -1,0 +1,145 @@
+test_female_only_faces_do_not_leak_to_male_or_bad_saved_state (tests.test_female_faces.FemaleFacesBrowserTests.test_female_only_faces_do_not_leak_to_male_or_bad_saved_state) ... ok
+test_mobile_last_face_is_selectable_and_patient_trip_outfits_survive (tests.test_female_faces.FemaleFacesBrowserTests.test_mobile_last_face_is_selectable_and_patient_trip_outfits_survive) ... ok
+test_approved_avatars_show_native_faces_in_both_views_and_switch_to_trip (tests.test_game.GameTests.test_approved_avatars_show_native_faces_in_both_views_and_switch_to_trip) ... ok
+test_approved_wardrobe_background_loads_with_one_shared_floor_anchor (tests.test_game.GameTests.test_approved_wardrobe_background_loads_with_one_shared_floor_anchor) ... ok
+test_asian_heads_real_css_order_hair_compatibility_and_reload (tests.test_game.GameTests.test_asian_heads_real_css_order_hair_compatibility_and_reload) ... ok
+test_compact_photo_composition_and_floor_filter_are_read_only (tests.test_game.GameTests.test_compact_photo_composition_and_floor_filter_are_read_only) ... ok
+test_compact_victory_fits_desktop_and_keeps_mobile_actions_visible (tests.test_game.GameTests.test_compact_victory_fits_desktop_and_keeps_mobile_actions_visible) ... ok
+test_corrupt_saves_and_denied_storage_do_not_break_boot (tests.test_game.GameTests.test_corrupt_saves_and_denied_storage_do_not_break_boot) ... ok
+test_energy_regeneration_after_offline_time (tests.test_game.GameTests.test_energy_regeneration_after_offline_time) ... ok
+test_female_bangs_migrate_male_saves_and_palette_preserves_alpha (tests.test_game.GameTests.test_female_bangs_migrate_male_saves_and_palette_preserves_alpha) ... ok
+test_folder_hud_navigation_active_tabs_and_mobile_bounds (tests.test_game.GameTests.test_folder_hud_navigation_active_tabs_and_mobile_bounds) ... ok
+test_ground_shadow_tracks_the_shared_frame_without_gender_or_loadout_jumps (tests.test_game.GameTests.test_ground_shadow_tracks_the_shared_frame_without_gender_or_loadout_jumps) ... ok
+test_hair_pack_ui_choices_shared_persistence_mobile_and_real_render_previews (tests.test_game.GameTests.test_hair_pack_ui_choices_shared_persistence_mobile_and_real_render_previews) ... ok
+test_helper_mvp_and_long_report_remain_accessible_in_compact_view (tests.test_game.GameTests.test_helper_mvp_and_long_report_remain_accessible_in_compact_view) ... ok
+test_legacy_item_icons_and_untrusted_icon_urls (tests.test_game.GameTests.test_legacy_item_icons_and_untrusted_icon_urls) ... ok
+test_local_resources_markup_and_event_handlers (tests.test_game.GameTests.test_local_resources_markup_and_event_handlers) ... ok
+test_neck_join_does_not_add_transparency_on_four_backgrounds_and_leaves_the_body_intact (tests.test_game.GameTests.test_neck_join_does_not_add_transparency_on_four_backgrounds_and_leaves_the_body_intact) ... ok
+test_paper_doll_layers_share_canvas_and_keep_faces_aligned_on_mobile (tests.test_game.GameTests.test_paper_doll_layers_share_canvas_and_keep_faces_aligned_on_mobile) ... ok
+test_paper_doll_ui_keeps_two_loadouts_and_shared_appearance_across_reload (tests.test_game.GameTests.test_paper_doll_ui_keeps_two_loadouts_and_shared_appearance_across_reload) ... FAIL
+test_patient_shirt_art_preview_uses_unchanged_bases_and_preserves_game_saves (tests.test_game.GameTests.test_patient_shirt_art_preview_uses_unchanged_bases_and_preserves_game_saves) ... ok
+test_patient_tunic_real_catalog_fit_in_both_scenes_genders_modes_and_viewports (tests.test_game.GameTests.test_patient_tunic_real_catalog_fit_in_both_scenes_genders_modes_and_viewports) ... ok
+test_phone_layout_dialogs_rotation_and_keyboard (tests.test_game.GameTests.test_phone_layout_dialogs_rotation_and_keyboard) ... ok
+test_raid_archive_hud_snapshots_and_clear_confirmation (tests.test_game.GameTests.test_raid_archive_hud_snapshots_and_clear_confirmation) ... ok
+test_raid_archive_limit_mobile_bounds_and_stamps (tests.test_game.GameTests.test_raid_archive_limit_mobile_bounds_and_stamps) ... ok
+test_shop_and_medicine_effects_match_in_and_out_of_battle (tests.test_game.GameTests.test_shop_and_medicine_effects_match_in_and_out_of_battle) ... ok
+test_staff_archive_unknown_cases_first_contact_and_details (tests.test_game.GameTests.test_staff_archive_unknown_cases_first_contact_and_details) ... ok
+test_staff_forms_thumbnail_scale_and_prominent_personal_raid_stamps (tests.test_game.GameTests.test_staff_forms_thumbnail_scale_and_prominent_personal_raid_stamps) ... ok
+test_staff_pity_rewards_and_clear_preserve_collection (tests.test_game.GameTests.test_staff_pity_rewards_and_clear_preserve_collection) ... ok
+test_trial_faces_are_not_loaded_or_selectable_after_old_save_migration (tests.test_game.GameTests.test_trial_faces_are_not_loaded_or_selectable_after_old_save_migration) ... FAIL
+test_victory_protocol_identity_rewards_and_archive_reopen (tests.test_game.GameTests.test_victory_protocol_identity_rewards_and_archive_reopen) ... ok
+test_wardrobe_complex_layers_update_both_views_and_clean_up_after_removal (tests.test_game.GameTests.test_wardrobe_complex_layers_update_both_views_and_clean_up_after_removal) ... ok
+test_wardrobe_inventory_ownership_and_old_appearance_migration (tests.test_game.GameTests.test_wardrobe_inventory_ownership_and_old_appearance_migration) ... FAIL
+test_wardrobe_themes_change_all_columns_keep_contrast_and_restore_after_reload (tests.test_game.GameTests.test_wardrobe_themes_change_all_columns_keep_contrast_and_restore_after_reload) ... ok
+test_wide_wardrobe_keeps_preview_inside_and_scrolls_item_panel_on_mobile (tests.test_game.GameTests.test_wide_wardrobe_keeps_preview_inside_and_scrolls_item_panel_on_mobile) ... ok
+test_new_male_catalog_and_tunic_render_on_every_head (tests.test_male_head_library.MaleLibraryBrowserTests.test_new_male_catalog_and_tunic_render_on_every_head) ... ok
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 59460)
+Traceback (most recent call last):
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/http/server.py", line 676, in __init__
+    super().__init__(*args, **kwargs)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/socketserver.py", line 766, in __init__
+    self.handle()
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/http/server.py", line 440, in handle
+    self.handle_one_request()
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/http/server.py", line 428, in handle_one_request
+    method()
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/http/server.py", line 683, in do_GET
+    self.copyfile(f, self.wfile)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/http/server.py", line 882, in copyfile
+    shutil.copyfileobj(source, outputfile)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/shutil.py", line 204, in copyfileobj
+    fdst_write(buf)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/socketserver.py", line 845, in write
+    self._sock.sendall(b)
+ConnectionResetError: [Errno 104] Connection reset by peer
+----------------------------------------
+test_each_new_face_reloads_with_hair_colour_and_separate_loadouts (tests.test_new_female_heads.NewFemaleHeadsBrowserTests.test_each_new_face_reloads_with_hair_colour_and_separate_loadouts) ... ----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 35656)
+Traceback (most recent call last):
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/http/server.py", line 676, in __init__
+    super().__init__(*args, **kwargs)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/socketserver.py", line 766, in __init__
+    self.handle()
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/http/server.py", line 440, in handle
+    self.handle_one_request()
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/http/server.py", line 428, in handle_one_request
+    method()
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/http/server.py", line 683, in do_GET
+    self.copyfile(f, self.wfile)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/http/server.py", line 882, in copyfile
+    shutil.copyfileobj(source, outputfile)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/shutil.py", line 204, in copyfileobj
+    fdst_write(buf)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/socketserver.py", line 845, in write
+    self._sock.sendall(b)
+BrokenPipeError: [Errno 32] Broken pipe
+----------------------------------------
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 37014)
+ok
+Traceback (most recent call last):
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/http/server.py", line 676, in __init__
+    super().__init__(*args, **kwargs)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/socketserver.py", line 766, in __init__
+    self.handle()
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/http/server.py", line 440, in handle
+    self.handle_one_request()
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/http/server.py", line 428, in handle_one_request
+    method()
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/http/server.py", line 683, in do_GET
+    self.copyfile(f, self.wfile)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/http/server.py", line 882, in copyfile
+    shutil.copyfileobj(source, outputfile)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/shutil.py", line 204, in copyfileobj
+    fdst_write(buf)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/socketserver.py", line 845, in write
+    self._sock.sendall(b)
+ConnectionResetError: [Errno 104] Connection reset by peer
+----------------------------------------
+test_all_90_combinations_layers_backgrounds_and_reload (tests.test_paper_doll_audit.AuditBrowserTests.test_all_90_combinations_layers_backgrounds_and_reload) ... ok
+test_rear_and_front_palette_preserve_alpha_for_five_colors (tests.test_paper_doll_audit.AuditBrowserTests.test_rear_and_front_palette_preserve_alpha_for_five_colors) ... ok
+test_repeated_render_retains_colored_front_and_rear_after_reload (tests.test_project_audit.GeneralBrowserTests.test_repeated_render_retains_colored_front_and_rear_after_reload) ... ok
+
+======================================================================
+FAIL: test_paper_doll_ui_keeps_two_loadouts_and_shared_appearance_across_reload (tests.test_game.GameTests.test_paper_doll_ui_keeps_two_loadouts_and_shared_appearance_across_reload)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/palata404/tests/test_game.py", line 362, in test_paper_doll_ui_keeps_two_loadouts_and_shared_appearance_across_reload
+    self.assertEqual(wardrobe.locator('[data-wardrobe-card]').count(),8)
+AssertionError: 16 != 8
+
+======================================================================
+FAIL: test_trial_faces_are_not_loaded_or_selectable_after_old_save_migration (tests.test_game.GameTests.test_trial_faces_are_not_loaded_or_selectable_after_old_save_migration)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/palata404/tests/test_game.py", line 1899, in test_trial_faces_are_not_loaded_or_selectable_after_old_save_migration
+    self.assertEqual(self.page.locator('[data-wardrobe-card]').count(),16)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 16 != 8
+
+======================================================================
+FAIL: test_wardrobe_inventory_ownership_and_old_appearance_migration (tests.test_game.GameTests.test_wardrobe_inventory_ownership_and_old_appearance_migration)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/palata404/tests/test_game.py", line 730, in test_wardrobe_inventory_ownership_and_old_appearance_migration
+    self.assertEqual(self.page.locator('[data-wardrobe-card]').count(),16)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 16 != 8
+
+----------------------------------------------------------------------
+Ran 39 tests in 1057.867s
+
+FAILED (failures=3)

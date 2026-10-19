@@ -1,0 +1,6 @@
+test_paper_doll_ui_keeps_two_loadouts_and_shared_appearance_across_reload (tests.test_game.GameTests.test_paper_doll_ui_keeps_two_loadouts_and_shared_appearance_across_reload) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 29.190s
+
+OK

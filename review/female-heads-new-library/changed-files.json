@@ -1,0 +1,3576 @@
+{
+  "relative_to_commit": "cbe74df",
+  "files": [
+    {
+      "path": "README.md",
+      "sha256": "eda055042b00f19d7c3482ce89521ba552ae6dc7a041d131c2eb0657d134d669",
+      "purpose": "tests, reproducible tooling or documentation"
+    },
+    {
+      "path": "assets/wardrobe/faces/female_new_almond_eyes_head.png",
+      "sha256": "02fc4e4f15e14b117735030394ed8678de9e96214ab4a025003efa198f3585a5",
+      "purpose": "new active face or mask"
+    },
+    {
+      "path": "assets/wardrobe/faces/female_new_blue_gaze_head.png",
+      "sha256": "2c0321a2dc163d368ed76e2b5943d55d112f7b26487e8e25037d0eec3a141aaa",
+      "purpose": "new active face or mask"
+    },
+    {
+      "path": "assets/wardrobe/faces/female_new_defined_brows_head.png",
+      "sha256": "6c4669d59829c8e359de9e57a0b1e9b397e7e39708cab34b66984f84cdbf8681",
+      "purpose": "new active face or mask"
+    },
+    {
+      "path": "assets/wardrobe/faces/female_new_freckled_head.png",
+      "sha256": "96411367fe83a77fb6be8db1738fa4095689777f582e726f8631621840bd5e7b",
+      "purpose": "new active face or mask"
+    },
+    {
+      "path": "assets/wardrobe/faces/female_new_light_eyes_head.png",
+      "sha256": "ec9f7c38c5a57baebc53e96ea199758cc4eeb575ac28b5267d7d86074b62f5aa",
+      "purpose": "new active face or mask"
+    },
+    {
+      "path": "assets/wardrobe/faces/female_new_mature_head.png",
+      "sha256": "a03633f91073b3c352a97d42da370e46b9ecc19635ac1d4df89139e8bcd134fa",
+      "purpose": "new active face or mask"
+    },
+    {
+      "path": "assets/wardrobe/faces/female_new_pierced_head.png",
+      "sha256": "ad2755035d70615dd50d796a30b57990de42b35c22a84615f559ce8c95ca3944",
+      "purpose": "new active face or mask"
+    },
+    {
+      "path": "assets/wardrobe/faces/female_new_soft_gaze_head.png",
+      "sha256": "d9a95fad298b2bd10592a353e08ab286ad6f416d057777fa3bd1a3c4dffba074",
+      "purpose": "new active face or mask"
+    },
+    {
+      "path": "assets/wardrobe/faces/masks/female_new_almond_eyes_body.png",
+      "sha256": "311e8257955431c2b9bbe32acc9d570bc425ab46a80d5146538bd1318eace28e",
+      "purpose": "new active face or mask"
+    },
+    {
+      "path": "assets/wardrobe/faces/masks/female_new_blue_gaze_body.png",
+      "sha256": "311e8257955431c2b9bbe32acc9d570bc425ab46a80d5146538bd1318eace28e",
+      "purpose": "new active face or mask"
+    },
+    {
+      "path": "assets/wardrobe/faces/masks/female_new_defined_brows_body.png",
+      "sha256": "311e8257955431c2b9bbe32acc9d570bc425ab46a80d5146538bd1318eace28e",
+      "purpose": "new active face or mask"
+    },
+    {
+      "path": "assets/wardrobe/faces/masks/female_new_freckled_body.png",
+      "sha256": "311e8257955431c2b9bbe32acc9d570bc425ab46a80d5146538bd1318eace28e",
+      "purpose": "new active face or mask"
+    },
+    {
+      "path": "assets/wardrobe/faces/masks/female_new_light_eyes_body.png",
+      "sha256": "311e8257955431c2b9bbe32acc9d570bc425ab46a80d5146538bd1318eace28e",
+      "purpose": "new active face or mask"
+    },
+    {
+      "path": "assets/wardrobe/faces/masks/female_new_mature_body.png",
+      "sha256": "311e8257955431c2b9bbe32acc9d570bc425ab46a80d5146538bd1318eace28e",
+      "purpose": "new active face or mask"
+    },
+    {
+      "path": "assets/wardrobe/faces/masks/female_new_pierced_body.png",
+      "sha256": "311e8257955431c2b9bbe32acc9d570bc425ab46a80d5146538bd1318eace28e",
+      "purpose": "new active face or mask"
+    },
+    {
+      "path": "assets/wardrobe/faces/masks/female_new_soft_gaze_body.png",
+      "sha256": "311e8257955431c2b9bbe32acc9d570bc425ab46a80d5146538bd1318eace28e",
+      "purpose": "new active face or mask"
+    },
+    {
+      "path": "docs/paper-doll.md",
+      "sha256": "77e4a01214a2cab2f2f457af9ce850785b5001d1df34fb6357c11624015cf9b1",
+      "purpose": "tests, reproducible tooling or documentation"
+    },
+    {
+      "path": "index.html",
+      "sha256": "28af2b48bc39e922d302b8c9d716cbfcbd83ad725ef29baabe8e5c579723cd80",
+      "purpose": "game catalog/cache version"
+    },
+    {
+      "path": "paper-doll-data.js",
+      "sha256": "3440ad90f4468ac9c9f4ae3c97278cd8ffa9d908377ed9d143363ddc9b5eebaf",
+      "purpose": "game catalog/cache version"
+    },
+    {
+      "path": "review/female-heads-new-library/GALLERY.md",
+      "sha256": "b20ee9219bf1c8a96b254eefe0e6977cffaca17bb3338acb554e0514f615d818",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/README.md",
+      "sha256": "afd405335d775d3c877b760afb7a382748d1b12ac79d9c92601ef7bce6ca984a",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/SOURCE_MAPPING.md",
+      "sha256": "21481c3a2e3b14f105c86447cc1dac25d54a8ac791a7f508015470946ad2e85f",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/all-new-faces.webp",
+      "sha256": "ee7e4837f74ae35761141e52d0d9ca60cd91e74b948837c301a1e9882ba2f0ef",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/almond_eyes.html",
+      "sha256": "245481cf26cc2f8d56f64324ba9de61398913c7895aeb49dd640ca60f8002d39",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/attempts/geometry-missing-browser.json",
+      "sha256": "6ec7c180cef202cbba21113206151be5f82c1dc95738cc38593bea5c4acb06c7",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/attempts/targeted-first-pass.log",
+      "sha256": "7ba6508c132ac26a5677f28a627fa0b1dbe40a4c459266ba81ef1ec9c461457d",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/before-tone-join/almond_eyes.png",
+      "sha256": "1b9a26a4dfec35140b6dcffdf88b1b6f57ecf88f2128aff6301827475a016c36",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/before-tone-join/blue_gaze.png",
+      "sha256": "2934e14491e9adf561b0c077aeec2540710a9dd0c7604c61ebf655edbf6b7135",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/before-tone-join/defined_brows.png",
+      "sha256": "d31d53f1e070a9f424ec6988066ffb46ffa0e693851ec95cc6951dc05e25717a",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/before-tone-join/freckled.png",
+      "sha256": "41823eda0ff56e526e187432c8ebc969d24ca074f4d1b694ac946133f2057afe",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/before-tone-join/light_eyes.png",
+      "sha256": "bfb30a1f65345a526c3461ac70c04f052dc7e0881d208ca4373b39cd0ba05227",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/before-tone-join/mature.png",
+      "sha256": "38f303f70d08e8a31d43ca629e8799e226e754f7635e35c1f2a1b4bb8dd83290",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/before-tone-join/pierced.png",
+      "sha256": "296ad1fdeddf3fede72457b2f9e3abb10490c3d068226673097401760f5ce935",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/before-tone-join/soft_gaze.png",
+      "sha256": "50a00c93820e43b0c8166b2d9ac7d7cbc79be361dda05642802fa82f0d9f6f12",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/blue_gaze.html",
+      "sha256": "a6c76d665eaaf6d190f28cb11b2924355811eec42a6d3fb75547cb222b519e2a",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-almond-eyes/full.webp",
+      "sha256": "b6d19e3b6c99eb5d9d1868b314f762ab66b516dd3949bd71e549ffa9a141d647",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-almond-eyes/hair-bob-bangs/black.webp",
+      "sha256": "ad90fb5463eb92d579d5d6ef26ff26fbb68171d69589a3bb03079fe1bbda6537",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-almond-eyes/hair-bob-bangs/original.webp",
+      "sha256": "3e56b1109752ac1ab232a9740f8b0f72b1372922c565b2812d8f09b0f1bc6dd8",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-almond-eyes/hair-bob-bangs/white.webp",
+      "sha256": "1e056ce51a5c7c6eb2490159a596bbc4ea3df09c981a68275eb5963d8967ddf3",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-almond-eyes/hair-bob/black.webp",
+      "sha256": "83d26255cd565aaffbfb61c19b98616a38b8069080d6bd645e655563ce99ab9f",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-almond-eyes/hair-bob/original.webp",
+      "sha256": "61f90728952e0e70c51512677ed0525dfe1807a262dc9430280db0a72eb47e6f",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-almond-eyes/hair-bob/white.webp",
+      "sha256": "72b78985b9a5956281c06fa45ce3ecf003036f03e998a9e61f8e5d0f968c360a",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-almond-eyes/hair-classic-short/black.webp",
+      "sha256": "58a5a76c43b416016ba7b5f7002ba2b48c26ba0bc0644e371243c15597a695ab",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-almond-eyes/hair-classic-short/original.webp",
+      "sha256": "357bb34e84474deff63b2b66dd91c4aa08b8fcf0cdccb174b944169c55aa47e2",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-almond-eyes/hair-classic-short/white.webp",
+      "sha256": "1d602d4b04b8b74bf80d8fa23a1758254a5982d6c24088d863891b27414697bc",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-almond-eyes/hair-double-buns/black.webp",
+      "sha256": "0f7673c943541540528e1b17ee435652a2c0b3e16427da4250948c71acf75690",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-almond-eyes/hair-double-buns/original.webp",
+      "sha256": "1f4218fbec9c374a6edad2f6efb456f90e994d612a1a1aea36f4cd825a687059",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-almond-eyes/hair-double-buns/white.webp",
+      "sha256": "d49ac641e2dfa11f4ed84a066bf1e1167f2dee5c494a4e2ffb9122a24128a2cc",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-almond-eyes/hair-messy/black.webp",
+      "sha256": "31a2234c704d78a3d4f5c3f5865c8adb90b0c7457f9e4a4fb55aa3f1911f7c03",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-almond-eyes/hair-messy/original.webp",
+      "sha256": "a04d9dced859f3c7d89aa04d724ed6714452544b36fe59f00b103cf30228913c",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-almond-eyes/hair-messy/white.webp",
+      "sha256": "dac376a98582ad3e9fbd28e19eda7a9004abbac816d3201ed2c6d2d88976657c",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-almond-eyes/hair-none/black.webp",
+      "sha256": "d3d30b8f69b946e14e4835ca1f979a59147e20d4c3d51d19779fffbf7bcc5383",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-almond-eyes/hair-none/original.webp",
+      "sha256": "d3d30b8f69b946e14e4835ca1f979a59147e20d4c3d51d19779fffbf7bcc5383",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-almond-eyes/hair-none/white.webp",
+      "sha256": "d3d30b8f69b946e14e4835ca1f979a59147e20d4c3d51d19779fffbf7bcc5383",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-almond-eyes/hair-shoulder-length/black.webp",
+      "sha256": "2fa26105840cfd7e8a569bff4e16ba6db9dd4fad2b9ce8a002607c3bc21d1299",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-almond-eyes/hair-shoulder-length/original.webp",
+      "sha256": "357728273f4a6f08279684f1f1d89e6b2383793e5d26e428e2a8eff933900f8a",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-almond-eyes/hair-shoulder-length/white.webp",
+      "sha256": "145f786ea71d6a8d96ea9e0a8f4959f8badcdf71b5564d663c12ba3821cc7a1d",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-almond-eyes/hair-textured-short/black.webp",
+      "sha256": "9848237153d4135cf7ada72ff3b270540d5b266162046925302f77fa39d95ca9",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-almond-eyes/hair-textured-short/original.webp",
+      "sha256": "84b41f5f30bc55b089b2dd020025d3a063aab1230373196235ab7fb607087ff5",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-almond-eyes/hair-textured-short/white.webp",
+      "sha256": "c292b54242382b927cd617d72dcb817d8545e0db1f487e112888c45725903082",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-blue-gaze/full.webp",
+      "sha256": "da3ebc74cc045d435cf44500aa44c0408ef3ccd54a5f909e57a965868f96dbf0",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-blue-gaze/hair-bob-bangs/black.webp",
+      "sha256": "96c17a1bfd647038014633905de22fc31a3206c40b2dbdcb5b5b8ca0997d30c8",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-blue-gaze/hair-bob-bangs/original.webp",
+      "sha256": "23f64d4be383a81dffba8ae590557403b43c38ff39385df41c8b4b3147a9242f",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-blue-gaze/hair-bob-bangs/white.webp",
+      "sha256": "69c1a74e5614c061fd0e1b2d3f7f7445674cbd148ca9ae0a4a1e9057dde6f7e5",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-blue-gaze/hair-bob/black.webp",
+      "sha256": "109eae2f30fe6295bfc3852116170c9a0496d072b7f3e3ea2601357678a4b646",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-blue-gaze/hair-bob/original.webp",
+      "sha256": "29be5afbe735187bd7882b896177d61df685e27e86e76629ca1dd5e9e44bf685",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-blue-gaze/hair-bob/white.webp",
+      "sha256": "c8ce2d7e769257553b863c7e534c30f6e073961c0dccb16a7a88a0c49af5bc38",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-blue-gaze/hair-classic-short/black.webp",
+      "sha256": "72e2cc532c6a6f350aa7d5dbf96653129b28a4fa52bc01c4418deebf984deb62",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-blue-gaze/hair-classic-short/original.webp",
+      "sha256": "dd1238c6ab2a29251d3a62a264708b864ada680761ff74fcd788b3a5ec23ca1a",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-blue-gaze/hair-classic-short/white.webp",
+      "sha256": "6fae7b89562e9330d7897eef7344ffc5db820f22c58f86a009e1ac28a7f7f762",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-blue-gaze/hair-double-buns/black.webp",
+      "sha256": "7c24caa172102df7d2d7b8263484e61e361fc417da5a3136b1573ede24e0cbe9",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-blue-gaze/hair-double-buns/original.webp",
+      "sha256": "e81311078bf18614003082ac20fb02b4dbaf64c76673b5d38ac58abc91240850",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-blue-gaze/hair-double-buns/white.webp",
+      "sha256": "94853c5a207ed64b830338f7f010ba1a0a7f15e07c644ed9a43fca31a7ed81cd",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-blue-gaze/hair-messy/black.webp",
+      "sha256": "fd75ca01fa1283ebdf3e82e7def4b3c07676ee344b15f67aebbc9257c9522bf3",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-blue-gaze/hair-messy/original.webp",
+      "sha256": "e670c21d7336dd72ebc97606a3b0498e5ea427dc0f6a02ab8b813f1e6eb529fe",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-blue-gaze/hair-messy/white.webp",
+      "sha256": "9999c44e0dcb59b2ebd2c7c360334fc03efa03ec085f45336d7ac525ab5e8ea1",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-blue-gaze/hair-none/black.webp",
+      "sha256": "6b8be2e2d3ecaa1e4441cfaf3a3a1e8275bf1063c7533c68474c62205e770edb",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-blue-gaze/hair-none/original.webp",
+      "sha256": "6b8be2e2d3ecaa1e4441cfaf3a3a1e8275bf1063c7533c68474c62205e770edb",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-blue-gaze/hair-none/white.webp",
+      "sha256": "6b8be2e2d3ecaa1e4441cfaf3a3a1e8275bf1063c7533c68474c62205e770edb",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-blue-gaze/hair-shoulder-length/black.webp",
+      "sha256": "3a2a2472f893803073cb75853a2b09e7abe6a228f5c7231a795505d53216ca92",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-blue-gaze/hair-shoulder-length/original.webp",
+      "sha256": "0ef79b10a3be8fac4b586f1daa8c02785c118be2edac6c0e78d14594ab1be6d5",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-blue-gaze/hair-shoulder-length/white.webp",
+      "sha256": "d67b7ebfcacd433a2b4844bfc087e760f254025efbf71b67e301680cce7b2780",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-blue-gaze/hair-textured-short/black.webp",
+      "sha256": "fc6e60347f7d806f25317ff3dcb516d9ccdd2ba9583032818a5217a583d32fb4",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-blue-gaze/hair-textured-short/original.webp",
+      "sha256": "5138986cb598b5b783a588175f1eb6a7641435a2d762edd622437d28ad105d39",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-blue-gaze/hair-textured-short/white.webp",
+      "sha256": "fd2b0a57684ae424dc12b0cc3f25ed2c848a5dbcd2fcc2176b073e81e2ac1019",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-defined-brows/full.webp",
+      "sha256": "cb525616a7901fab890e6974b0ad2633b028284f15d2562b1e2ecdca01e6c78d",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-defined-brows/hair-bob-bangs/black.webp",
+      "sha256": "790cf289a2a817d685a7d446e8e989e3a5965e13fb2b4597d0637ad997afbab9",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-defined-brows/hair-bob-bangs/original.webp",
+      "sha256": "0ad98d5ebf46797eb93d7ba89cd30bd313b0f2095d4df375051b517c6c5353d3",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-defined-brows/hair-bob-bangs/white.webp",
+      "sha256": "5a2d143f3225b68b179a4f5d8c61cbd8d6ab9571fb496cc811e66d7bbab73148",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-defined-brows/hair-bob/black.webp",
+      "sha256": "fe2db0c1a7b08bcfebf86d2b59cb3cc265c39b33312f20d96c40e20f625b32b7",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-defined-brows/hair-bob/original.webp",
+      "sha256": "05af0f56a17938195ce1ef90671d44a0a386ff8582742a7144381ff8bc4458a2",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-defined-brows/hair-bob/white.webp",
+      "sha256": "8d0aef69bde01da90135ef928a931d206052307406a97e8fcc4e97fbccbd4c60",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-defined-brows/hair-classic-short/black.webp",
+      "sha256": "ba1fb1a9334ccc3da9f8a64b22b0beef882f14248c2eefb759c4c0b74a3bfdf3",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-defined-brows/hair-classic-short/original.webp",
+      "sha256": "2b7f2e16a5e4c70384f57ea660c532a23e296ac8a82931fd901e96f7dd62cf0f",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-defined-brows/hair-classic-short/white.webp",
+      "sha256": "e38bbb330a97e0a6f6a64e0d285d278d2311bfb9dbb17e79f7938c68ba6e5c59",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-defined-brows/hair-double-buns/black.webp",
+      "sha256": "d403bdd22c0f599166c8cbb8f1df3b3f71d43e1555a3c984565cb096d44cb1d5",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-defined-brows/hair-double-buns/original.webp",
+      "sha256": "f1f78cec8401d72366990ca42d985bf2fb5ce9f8b49e67f39e00e9229ad3df95",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-defined-brows/hair-double-buns/white.webp",
+      "sha256": "448a1ba49743264c406835b33e3ec144c6ef093e8eea001dab17b53a7d3e2c50",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-defined-brows/hair-messy/black.webp",
+      "sha256": "832df66a79a8ba2e75f80e257b0595738aaff6135e2e6680010774c73ec2f6ea",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-defined-brows/hair-messy/original.webp",
+      "sha256": "9ba7ad5f9874c92e8fda73fa6669d29a62968183716e03a989646e78c25dc30e",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-defined-brows/hair-messy/white.webp",
+      "sha256": "34e03937b2317e6c660d4e17c07101d4d1f03fdffd9dd0db3964aad1b10a051b",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-defined-brows/hair-none/black.webp",
+      "sha256": "f7195aac1500eab66754b2c3638459dff98612bf0cc3a4cb713d2b18e12bf8bb",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-defined-brows/hair-none/original.webp",
+      "sha256": "f7195aac1500eab66754b2c3638459dff98612bf0cc3a4cb713d2b18e12bf8bb",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-defined-brows/hair-none/white.webp",
+      "sha256": "f7195aac1500eab66754b2c3638459dff98612bf0cc3a4cb713d2b18e12bf8bb",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-defined-brows/hair-shoulder-length/black.webp",
+      "sha256": "9548bd9377fe1358a14aea2464fc2f6353840fb0a6bbd4bb3763009763235589",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-defined-brows/hair-shoulder-length/original.webp",
+      "sha256": "6c0d4de1daee79dc79825eebcc4612cf71533fb86221783103527e17b9fb42b4",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-defined-brows/hair-shoulder-length/white.webp",
+      "sha256": "bdcbd6334977e8329d812d0fa9fad570f30b4801d80421262001a7e147ad093c",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-defined-brows/hair-textured-short/black.webp",
+      "sha256": "4ac37e84eed75aecb3626a659aebd69bae76630652996d17b580b185e7d7bea2",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-defined-brows/hair-textured-short/original.webp",
+      "sha256": "cbdfa1b4d5da3a0cb12ca04b905d204c8610e7b33344893530152c7b4511f566",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-defined-brows/hair-textured-short/white.webp",
+      "sha256": "e6cbcc2c511ea5b23f2357faa1b48d33ea977918573bd6aee84f1d82909e2a3e",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-freckled/full.webp",
+      "sha256": "24e219e045ec51c963e6ad23da47d6a4bd152eaf6bae6ab73241f8f2e505bc9f",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-freckled/hair-bob-bangs/black.webp",
+      "sha256": "6d21b4f13d0f58057436c6fc4859a8f9793bd177ca92e22b9f088bc41ecd9cfc",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-freckled/hair-bob-bangs/original.webp",
+      "sha256": "cd2d289c1dd8c672df6432cb8c7d47af7f1897dccfea476855cddaecbaafc298",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-freckled/hair-bob-bangs/white.webp",
+      "sha256": "ba1b721932f78a8ecb147f3ab0649f8d89fb4db6164ff48e02659a3067746d47",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-freckled/hair-bob/black.webp",
+      "sha256": "2ed52c2dc4a0c872c62202c4907e83e6a00351a67de14caf1d2ca1acf4dfd2a2",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-freckled/hair-bob/original.webp",
+      "sha256": "5059a906f034a43dc4681811d00e8207b2d273dba5332fc87ab386b46fe56821",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-freckled/hair-bob/white.webp",
+      "sha256": "b528dfac4b5f8c89a540a6e0f97441db4c50dfe05c51cf668cc94a2e58f1a6de",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-freckled/hair-classic-short/black.webp",
+      "sha256": "74ad323fc7198b803d77c003f31be8c6643addd9625d46057f80d997313b1760",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-freckled/hair-classic-short/original.webp",
+      "sha256": "b174d971f0e9e55e1322436cba17d206d3f270d947fefb84f9f0df740c07c146",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-freckled/hair-classic-short/white.webp",
+      "sha256": "93b1a3394f3a43dff017f3431a7b70812763c93726dac6b85ef779e797dd1241",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-freckled/hair-double-buns/black.webp",
+      "sha256": "77d2247813faabbb3bd5defbca318118fa83264e4d2b6ecf30bb752ef0a95bfe",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-freckled/hair-double-buns/original.webp",
+      "sha256": "fe2fdf11127c606f78b1314b96eb39b372412d10e5ed203210ecb88cf27cd09d",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-freckled/hair-double-buns/white.webp",
+      "sha256": "d2c9c2a0d0cf0fef0cc58fd87e7eab4c34ac556167dcde1ed28995d28a7c6c1a",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-freckled/hair-messy/black.webp",
+      "sha256": "4b6123a063cccf0551a20c696a8e64f79488ea8eebbe0c01bfaab8dee2edc29d",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-freckled/hair-messy/original.webp",
+      "sha256": "2a3a1dace47f4c3776d6b58c44f730d8e6a463e52d95bb9187b66d5587065509",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-freckled/hair-messy/white.webp",
+      "sha256": "145a4bfd6f50e682ffe15411b1576e34acc5f8ab43ecd9f6fb47a351e2a13c49",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-freckled/hair-none/black.webp",
+      "sha256": "717c242c3d5e28a575775725e312a86717b3fcc6de09cc8cc0ca70ee088d44fd",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-freckled/hair-none/original.webp",
+      "sha256": "717c242c3d5e28a575775725e312a86717b3fcc6de09cc8cc0ca70ee088d44fd",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-freckled/hair-none/white.webp",
+      "sha256": "717c242c3d5e28a575775725e312a86717b3fcc6de09cc8cc0ca70ee088d44fd",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-freckled/hair-shoulder-length/black.webp",
+      "sha256": "08092629555ca89461e0aaa2d5b5115ef869e47c100b83f4e289b90eca595d5a",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-freckled/hair-shoulder-length/original.webp",
+      "sha256": "abb24f45d1b832a6249a011beb506ed0ad6bc809c295a66d5f1a4068c77e8cf5",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-freckled/hair-shoulder-length/white.webp",
+      "sha256": "6949ad01e199e468412af6a3a80d070451f7526945319b49c3a7a7f5387a9597",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-freckled/hair-textured-short/black.webp",
+      "sha256": "dc8ec6c706c6f402fd67d813905195f6b0306177cc8f1cc5392bd918bbae7d19",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-freckled/hair-textured-short/original.webp",
+      "sha256": "6d8926d63256ba0366cdc111adb0edef1eb7d389b6b55a0d2d8fe777c35d5923",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-freckled/hair-textured-short/white.webp",
+      "sha256": "5fbec7461e377d56195e830576779f9a35b82c48350b5e2fbcc1512c57a61ce6",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-light-eyes/full.webp",
+      "sha256": "7759c25c02730ac9dd07e2805fddac582821a85d7a9b4a2c1b8b36dcde059999",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-light-eyes/hair-bob-bangs/black.webp",
+      "sha256": "ae006fb9dacadd4f950164d31e58986f737236a19c02c4ca0cde3aec581c8ab0",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-light-eyes/hair-bob-bangs/original.webp",
+      "sha256": "7cf64e79de2ebe3ec5df51be01baa1c2ad1b301a24a521578b69e14a61fcf7ae",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-light-eyes/hair-bob-bangs/white.webp",
+      "sha256": "436cfc59d1d518b3f17d4fcc7254f506f1a9619af419f03a76364a26270a915c",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-light-eyes/hair-bob/black.webp",
+      "sha256": "bd08c602d0bd66b8efa0a0563323c72ec5c61d4a1347fc9f60a4dd4af6a5869f",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-light-eyes/hair-bob/original.webp",
+      "sha256": "96a64d1cb25b572ad46a3f45bdb3e11ffb0908dde2f9362b8d3b76b6d149e1f4",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-light-eyes/hair-bob/white.webp",
+      "sha256": "7dbad7f803052b1989bfcbd3ff02ba89c76fecb9ff512ca48556ae49c8bbd2eb",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-light-eyes/hair-classic-short/black.webp",
+      "sha256": "89f59b140f22cd4c7957d3800b1f73a204e607ec81955ca63bc48eac585f4c99",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-light-eyes/hair-classic-short/original.webp",
+      "sha256": "c26eba9b290d79b3d01676298345364faaea0c7825ea32ba0c3f6ff815998973",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-light-eyes/hair-classic-short/white.webp",
+      "sha256": "b7263b3d29355999e13ee4773db1a0ae67d398c9521b54fbcde419ea8b96a075",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-light-eyes/hair-double-buns/black.webp",
+      "sha256": "f7dc856936e25c4bb36ee67d6cf76b211088e9cb04ce8e2b4ce361dd059ea839",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-light-eyes/hair-double-buns/original.webp",
+      "sha256": "2b7a6e303ff8e87aa48e866c916fcce925fa16d22411d091b4a3c8856d9a1aef",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-light-eyes/hair-double-buns/white.webp",
+      "sha256": "e7ff3b1376b60a1c2000d8edc70ab8382f572d9e52ea5041cebb3b5c315fd2f1",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-light-eyes/hair-messy/black.webp",
+      "sha256": "21942523f063d467c8936ee7f3a2f5f615da49cd904412c49720fd2ee36c219e",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-light-eyes/hair-messy/original.webp",
+      "sha256": "bf51f0f6a9c6003acbeede2f4578d2c094c28ce311f50b0e08d9024115a3191a",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-light-eyes/hair-messy/white.webp",
+      "sha256": "2da559a8df8ce640bb25c10d22bd2566ac861d630e8587ef2fc9f16116067b64",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-light-eyes/hair-none/black.webp",
+      "sha256": "dff5658a57de5f79af34b89619570b5e2577c674943b027daf40f6faddbf57be",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-light-eyes/hair-none/original.webp",
+      "sha256": "dff5658a57de5f79af34b89619570b5e2577c674943b027daf40f6faddbf57be",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-light-eyes/hair-none/white.webp",
+      "sha256": "dff5658a57de5f79af34b89619570b5e2577c674943b027daf40f6faddbf57be",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-light-eyes/hair-shoulder-length/black.webp",
+      "sha256": "bd98406198e81343a1523c5ffa74e14797f3a4c1adc2aff3ef926ef5aa7bde74",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-light-eyes/hair-shoulder-length/original.webp",
+      "sha256": "6f82910f80ebba1a136b70ead3a3db9858cdbde51ab5d8f0cac4371f8ba05f30",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-light-eyes/hair-shoulder-length/white.webp",
+      "sha256": "06f5e014c42e118dc26338a1e8791b82df1b80888f2c1560eb78e6240383d0b2",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-light-eyes/hair-textured-short/black.webp",
+      "sha256": "075daae551b97c1cf6295fee8bf622a270709ef06449ea101cb6c34417062172",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-light-eyes/hair-textured-short/original.webp",
+      "sha256": "d5659bc11fcb821e9c53637e0c3482f78b4e0f80ddacdac86e039190517b52ce",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-light-eyes/hair-textured-short/white.webp",
+      "sha256": "dfd9fe98fba642dd40873001f6a6fe220d4467bcad669b75e87f3173c24b59ca",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-mature/full.webp",
+      "sha256": "fa57b1d3b58efc702eb90f60249fc92512632e0c2fad0bd046ef701ac8fdaf1a",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-mature/hair-bob-bangs/black.webp",
+      "sha256": "3e6a44596b2bd4463b00f7312bd507a1bb564c1a3eb58359ae3714f4cfbac99d",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-mature/hair-bob-bangs/original.webp",
+      "sha256": "e76d65043ec8f199ef7647c2da0aec094a5a5ecfebe311c4d3e589c9338dc8f5",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-mature/hair-bob-bangs/white.webp",
+      "sha256": "fb52b1671027600d0d6c0203e789ff037f3aef23a3e3a895046df68b457bc883",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-mature/hair-bob/black.webp",
+      "sha256": "628c5878156bb4877745a0d3307d3ed4aef2337e766e192a8cad7c3e40d4d29d",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-mature/hair-bob/original.webp",
+      "sha256": "c211bea7174b66f891f7b3aa37bc6b4041c58564c1cd9f6e044d5c3bb7660f01",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-mature/hair-bob/white.webp",
+      "sha256": "867b057e50621524c4a15a4028c55fd14258a694241fbc1884436fc69f069ba9",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-mature/hair-classic-short/black.webp",
+      "sha256": "8a819cbd6e9382fcfa474119737bc985675e7b917654ba98fd010313148ad4f1",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-mature/hair-classic-short/original.webp",
+      "sha256": "693e55bb29ec50a01ceed0979534569689cbb9bdd2bf3a1e6fa7ac3ac5080d15",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-mature/hair-classic-short/white.webp",
+      "sha256": "2bad515f84a5786c27487bd1061c4db8f0c1bd1765780978ffa46a3f5fd4f3f0",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-mature/hair-double-buns/black.webp",
+      "sha256": "afb25fbeaa3e109e07a1d860a18df098b0e6cc2e5b2761fd2956fd48804f4627",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-mature/hair-double-buns/original.webp",
+      "sha256": "3d340f57f475aab3be65fd4952a0fd7ab4524cc10a6e5763e82adce96f989284",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-mature/hair-double-buns/white.webp",
+      "sha256": "8b6734e344b4d25d122a09d9374b530c9e94f5ae0d05c1fcc3670545bb927df4",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-mature/hair-messy/black.webp",
+      "sha256": "1e157771b1dc8cac9facb8a60f06919259fd3f478750b3bc88fb0b6bbfe61e7c",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-mature/hair-messy/original.webp",
+      "sha256": "5e9a8c12bb21b9f9254e32a4089b567c092783c615fddac0f070b0f562fe5e65",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-mature/hair-messy/white.webp",
+      "sha256": "37306f408a5a8ec61a8a8e492f01bc78abaabb29d016cfcad85570625c2d583a",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-mature/hair-none/black.webp",
+      "sha256": "27aad44e1b63479be7ebb248489c7c0e01dd4375fa22937418ba45b3448e3440",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-mature/hair-none/original.webp",
+      "sha256": "27aad44e1b63479be7ebb248489c7c0e01dd4375fa22937418ba45b3448e3440",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-mature/hair-none/white.webp",
+      "sha256": "27aad44e1b63479be7ebb248489c7c0e01dd4375fa22937418ba45b3448e3440",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-mature/hair-shoulder-length/black.webp",
+      "sha256": "ea88a2309521dfde162b147e60b735ba053fe0e4872a9f52c58642228ca54663",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-mature/hair-shoulder-length/original.webp",
+      "sha256": "7d1b96f6aab7d4935964e680908e4fe02a72dd0fd4a8502628e6887b182982ea",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-mature/hair-shoulder-length/white.webp",
+      "sha256": "2fd08fe636b269b4ef4575ad6ae0af607e4b2beee3c0c620577a939a5bd25e13",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-mature/hair-textured-short/black.webp",
+      "sha256": "4428116c32b0d6c1f7def8aaa373ec42ba354e8299a9162a9e80e0ce33d4bda4",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-mature/hair-textured-short/original.webp",
+      "sha256": "bd2280560e46d0e7faaa75e71ecef563e3c1e5ebcb32cd29f36ff293a49dd4d2",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-mature/hair-textured-short/white.webp",
+      "sha256": "d2f83fb150c1e8463ae679d57b00ed2d8589ad08616cee224247fbaa5574d7ea",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-pierced/full.webp",
+      "sha256": "428af0efb8c5c32b9b5688de9768d0115be9d405824db669c4de01e99bdf61f2",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-pierced/hair-bob-bangs/black.webp",
+      "sha256": "a14df1faaf88e9935e1c00de6847bf86418bd149122daad164a09d2f53967466",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-pierced/hair-bob-bangs/original.webp",
+      "sha256": "2504745655412b737d09983630ba0b7a33922af4e35a7d0ddc16e0321f303773",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-pierced/hair-bob-bangs/white.webp",
+      "sha256": "f3b9cd1a74a1caf13748a8027c67a1b62e5f8d83c39ee355026ff855f9289d2c",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-pierced/hair-bob/black.webp",
+      "sha256": "d55ba572ee54b4b96a94170cb427d47529ed548d0df61a0250a94dd71e76204d",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-pierced/hair-bob/original.webp",
+      "sha256": "222f53720b04ba4c0c3a19792c659fda4c0292b2cbf4139f83cd37457260e79f",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-pierced/hair-bob/white.webp",
+      "sha256": "df5a6d61cec986e9115d69a907e5d30f7c09f2471bd65631a0b7efd6b4c66ecb",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-pierced/hair-classic-short/black.webp",
+      "sha256": "dd5e2fa83b3094186ded85be0b8a233394185d3e88dd6d3113a0df5ff1295f87",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-pierced/hair-classic-short/original.webp",
+      "sha256": "34f14866283ccc35aa98f97b61c510fe9dd5b2074592dafe23f3e137a1ca08be",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-pierced/hair-classic-short/white.webp",
+      "sha256": "651506e9115db1e3c425d1b10d05d965d9b497c292212f3219b0e78afdaf95ff",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-pierced/hair-double-buns/black.webp",
+      "sha256": "fd1997d204e225ec8a43d4012d26f54b13b44c360c28fbeced8d1d95703a83be",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-pierced/hair-double-buns/original.webp",
+      "sha256": "974d81e152bf826fed8a50db1278ab5f0ad0f30a57975f1cb6416419dfd0fa73",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-pierced/hair-double-buns/white.webp",
+      "sha256": "e88aca747a3c6c73f63ad6119315d0a974842a58efca3324b7a6bf2d08fc90bd",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-pierced/hair-messy/black.webp",
+      "sha256": "54eb00c0d0d10569c9ddec5150a01f881e0a6c7917a9b7fa822035c65da7380a",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-pierced/hair-messy/original.webp",
+      "sha256": "f4c6163f42c49d59b273aab4ae4a604827ebdba09c05fbd7ff266c9da1a8b9fc",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-pierced/hair-messy/white.webp",
+      "sha256": "bb3e54fa241e500e95b2567aa253aaee1cc3ec2ff1fd2de28628a64e0658d0f4",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-pierced/hair-none/black.webp",
+      "sha256": "74e9f1a6ef3abd831844d2e9e8e430d5a7d5e1ca09dfb23b414d52e9460d8634",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-pierced/hair-none/original.webp",
+      "sha256": "74e9f1a6ef3abd831844d2e9e8e430d5a7d5e1ca09dfb23b414d52e9460d8634",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-pierced/hair-none/white.webp",
+      "sha256": "74e9f1a6ef3abd831844d2e9e8e430d5a7d5e1ca09dfb23b414d52e9460d8634",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-pierced/hair-shoulder-length/black.webp",
+      "sha256": "c55998f49b0d8e9756594bb3bbda3fd9e219cd5dc3d4d551874402eeb9fffb0c",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-pierced/hair-shoulder-length/original.webp",
+      "sha256": "9dcbd1ee3110c142f58b86e088250770066221e4d882f7ab92d59666d090d62d",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-pierced/hair-shoulder-length/white.webp",
+      "sha256": "071284fbc7e4c87b6ea91bec809716645c4f290ec8a21bcd8abf59e6944ccc4a",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-pierced/hair-textured-short/black.webp",
+      "sha256": "4ed18b1b00245a55bf96475a02fdfe1041888592a06878f981433ab1db410284",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-pierced/hair-textured-short/original.webp",
+      "sha256": "be4862bf351cc08843cde9c0ba41417d2b384a50158780b31564d22566575b93",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-pierced/hair-textured-short/white.webp",
+      "sha256": "8925b05be5ce6e7b79303dda6e4c03d3084dde8b03608cd5d2e786b208d4f199",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-soft-gaze/full.webp",
+      "sha256": "144cf5c3a93c774e33d59f70cdf082f82ffac4d3be08d19c0af7b465568e0b34",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-soft-gaze/hair-bob-bangs/black.webp",
+      "sha256": "7909aa43d522b76f9ef89ccff8e9bd4eebf87e82fe922b8cac19ce5f1e9aa25d",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-soft-gaze/hair-bob-bangs/original.webp",
+      "sha256": "ae0603fa1950227965f391c101f491d3caa125cd1366468c318dcf7883795ce0",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-soft-gaze/hair-bob-bangs/white.webp",
+      "sha256": "04c0f06069b807393cfe6f09785c9c6e632c4a909602031654709a40648ca07d",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-soft-gaze/hair-bob/black.webp",
+      "sha256": "61194f620f726cb52c56fae70e23086715046a8da2c41738b7374aba62c50fa0",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-soft-gaze/hair-bob/original.webp",
+      "sha256": "96222b166ed4adf9f980cae33498575367fa373a98078fcefb7df02542c76de2",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-soft-gaze/hair-bob/white.webp",
+      "sha256": "9114e8bfac731eb0d2f94d76c131e831e5f6158c3c1de0d273f015a7a69bb890",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-soft-gaze/hair-classic-short/black.webp",
+      "sha256": "cd29a717dce4c830fdc0b3d7ed17ffea697ae74a10fbf9ec09df48d1baa23062",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-soft-gaze/hair-classic-short/original.webp",
+      "sha256": "583ca8d22c9359f25940eebf788bc4eb2c2878e3897d2c8e629bc3c12ed01f2d",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-soft-gaze/hair-classic-short/white.webp",
+      "sha256": "d6f3b93c0c5d160de5c1ee0a18e1080dd94488c990b11fe583346f33ad2f22f7",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-soft-gaze/hair-double-buns/black.webp",
+      "sha256": "401b2fd57da9dab906824a2af10102daea3491a08a8cbd2bfc98f8e6eb88c003",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-soft-gaze/hair-double-buns/original.webp",
+      "sha256": "3c4e87c5ee9188f94ec788f3d48f977c727b05fe3a5b93950e6914c0d67e098e",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-soft-gaze/hair-double-buns/white.webp",
+      "sha256": "eff98fdbdb32ecac46147e630a0f2ccce13580b0076dfae9b7fe11b115ad2b87",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-soft-gaze/hair-messy/black.webp",
+      "sha256": "dd50003853cca2b921b7b91bfe499b1c4cb3b8b240a560573b4e8530b18ab0dc",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-soft-gaze/hair-messy/original.webp",
+      "sha256": "4742adb717b79420826b3a7f5a852c39c1e91dae182baf3ea9b1a5af1fce77d3",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-soft-gaze/hair-messy/white.webp",
+      "sha256": "22390da47eda9791f1008a438c9732bddaff71b55f16b79688ed68e8934384ee",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-soft-gaze/hair-none/black.webp",
+      "sha256": "1cae667ce6968f7be5211de0846552a53566e9b846be9467415f0753cc9a35ed",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-soft-gaze/hair-none/original.webp",
+      "sha256": "1cae667ce6968f7be5211de0846552a53566e9b846be9467415f0753cc9a35ed",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-soft-gaze/hair-none/white.webp",
+      "sha256": "1cae667ce6968f7be5211de0846552a53566e9b846be9467415f0753cc9a35ed",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-soft-gaze/hair-shoulder-length/black.webp",
+      "sha256": "d15974e03d35b6cfd9f33ea14808e4a3140816eb5e9bef649b6c5ea8e3a3b0bd",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-soft-gaze/hair-shoulder-length/original.webp",
+      "sha256": "3d874d6cb4ba95a936d701957ee0514856b804779b570f78ef802e135eae385b",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-soft-gaze/hair-shoulder-length/white.webp",
+      "sha256": "44bcf979a8309360c8f2ddeca32ca71f0b3678757c577f98bd0abee7bdd3ac06",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-soft-gaze/hair-textured-short/black.webp",
+      "sha256": "62ee9a6889e665b1bedfc46710c06ff7594c589ff6435710098229d52d33bbec",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-soft-gaze/hair-textured-short/original.webp",
+      "sha256": "589f3a482938efd4262354c07c353660ab43fa3fc63ac1a452513aecbd892ca0",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/female/face-female-new-soft-gaze/hair-textured-short/white.webp",
+      "sha256": "c19fde08b15dda9f7834238d6b1386f42ad2afb9b9043d6edaa15155ccca40c2",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/inputs.json",
+      "sha256": "102f07f786daac8e370a373eebea57a7d29d02422a924adda2ae1873af387630",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/records.jsonl",
+      "sha256": "a81060f86b14c2e1b907c56b8eb5fc97f13b5724aa28aa495af9cb4760026071",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/captures/result.json",
+      "sha256": "02fe961c52869dda6b73212850a8d03f85daf59f2b54b2b901999d93b8d0b0c9",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/defined_brows.html",
+      "sha256": "38c2acc87045bd4cf2c6b679581e3196cbfe4aee829cc4d73fb7647679c2a748",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/ear-neck-details.webp",
+      "sha256": "38d84a04085d6677e6b696f5525313a3194cd1b742a28950abfae11f463365f9",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/freckled.html",
+      "sha256": "217fb6da8380d44baecc2e6eca67f8bf40723889b032554d590283cda44d753a",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/gallery-1440.webp",
+      "sha256": "a31a420bd98674221c799fdfb3797fed693c0655ec32f1e073778422c657c515",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/gallery-390.webp",
+      "sha256": "63deeebda40df76324f0662fbdb16a71b72bb0e3859b8b2a0243add057792522",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/gallery-validation.json",
+      "sha256": "5371dde1be403f9a476fd60bba3502ee00022e5d79676a27c43ee0b83cb10a5a",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/base/full.webp",
+      "sha256": "b5cacff5e8bcb1c03696854c4fc2377c86c22a92a4177aaca0bbf04d40cb1a52",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/base/hair-bob-bangs/original.webp",
+      "sha256": "60172a8b4720f3f3e207402bd5cffea2ea0ab81c4fee3e0beef61775dd785fe7",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/base/hair-bob/original.webp",
+      "sha256": "797cb8c49adbca1cce6f5c10be637a7a76b28cdd2a7da6ae14f87cb957384db7",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/base/hair-classic-short/original.webp",
+      "sha256": "d49f81576a7912452208b314b3c2c05f7a0eaec4e34fcd8de30af052073d503d",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/base/hair-double-buns/original.webp",
+      "sha256": "42904c8df394e6b17ad822f5a00803a19eae79ff5f605242548a1f2300ca4678",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/base/hair-messy/original.webp",
+      "sha256": "5820e8559b2b2d2a435d7e5c385150f7f6b5566ab1384d2b1e0c94335d5fba99",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/base/hair-none/original.webp",
+      "sha256": "7fcd35dd57ff84ee33f354e43cd220078427884a7d6647160a1ba29c0dfd4b15",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/base/hair-shoulder-length/original.webp",
+      "sha256": "66cdacd37fbea334ab436204afbac854570ef30218d970269a67e9036e21c7a0",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/base/hair-textured-short/original.webp",
+      "sha256": "254b4d62f514ae38593ae39e28faadea5712bd887d5c1f4ced2a7f20ea057698",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-alternative/full.webp",
+      "sha256": "5a3fc5d11d32769123273239efbf94eb664f47e6934aa23b1518d6141c631a87",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-alternative/hair-bob-bangs/original.webp",
+      "sha256": "2ad39e7438a939f4116b207d637f3dc013bd82d10fd700473d665e91166c7782",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-alternative/hair-bob/original.webp",
+      "sha256": "79a9709bafd8ef2d0ae965bc496dc5218560cb2d204f5a29bef797a77e1ce4d3",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-alternative/hair-classic-short/original.webp",
+      "sha256": "a5775a17e20fc0f5b2ebba16a2d6045b44ce32617f935ef0c85a915c82b684e3",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-alternative/hair-double-buns/original.webp",
+      "sha256": "0797d48dbe6590ff672e977b745f621121c3feaab3cbc36010a90d95807f9359",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-alternative/hair-messy/original.webp",
+      "sha256": "e27c14db3824897e22b7144eddd858efcaec1b24da47fc45fc1efff62fa9d8f8",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-alternative/hair-none/original.webp",
+      "sha256": "4c8c52b7c85d22b9f0d1bdd42050275327e0aaf8dfea40ffdf8c4ece3db597b4",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-alternative/hair-shoulder-length/original.webp",
+      "sha256": "7b97999ef87b437a0bae5f65d3f8fe132ebbd7372d454555fb4e7da3ef073245",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-alternative/hair-textured-short/original.webp",
+      "sha256": "a56572a5bfcc8dc901912d7832fea3b0dac8cc91ab1bf100e0f8dadb726efafa",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-asian/full.webp",
+      "sha256": "bb193260c40caae101ab2de62b2f7949857920b246f5f02880dbb87e7df1b491",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-asian/hair-bob-bangs/original.webp",
+      "sha256": "c532e723164da2d5c9843031fb81b91309f256aecb6c3c7690ba6a2662d12571",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-asian/hair-bob/original.webp",
+      "sha256": "149d601fee2dfed42e8b30af5784593a13a86ae327ca7ca0e0a7fb25784983df",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-asian/hair-classic-short/original.webp",
+      "sha256": "332478e4b8beb5af8c1888a600b2d997b4f69fad9f8accf4d84ce764169cd35a",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-asian/hair-double-buns/original.webp",
+      "sha256": "494c01a4830c374a98e4f76d8245b1df7376bef891c455d7239fa3ebdcedccc7",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-asian/hair-messy/original.webp",
+      "sha256": "11290c1ff8d6a01b44446f854ec227b0e389882a5358362b1f9d81d5459081c5",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-asian/hair-none/original.webp",
+      "sha256": "caf7d41f9b9bccfb077b37f68eab85fd840950671d31e9f70194674a3cc920e7",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-asian/hair-shoulder-length/original.webp",
+      "sha256": "9d60e7b3e1df5a357451bda6580111419dd4b66bdde5e2f36c1bc3cc8216793b",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-asian/hair-textured-short/original.webp",
+      "sha256": "934ee854166078551dcf483aaa05d8df94350c21cb242a65e47bc064433aa261",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-elder/full.webp",
+      "sha256": "303ca244643fe5ef17c075f155c2c8efa9c666b4967ebf4ff77898cb08c81b9f",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-elder/hair-bob-bangs/original.webp",
+      "sha256": "4e4fe596fc2dfab521a84a903286d11833fc724c1f6b631dc5e2f1cbd09e1d6a",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-elder/hair-bob/original.webp",
+      "sha256": "fa18545ec8dd85b43d98aea9a22b9fcb5b257fb42d59a2d7b8969a66997e29e3",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-elder/hair-classic-short/original.webp",
+      "sha256": "7618c0c6348ab5fc01b7da29e4f02f3592fc1e01b044cfb73466e0b102866554",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-elder/hair-double-buns/original.webp",
+      "sha256": "bc78046c5c364fb41aabb149107a42ca8d56ff952e5622759e6288ef5fca0d44",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-elder/hair-messy/original.webp",
+      "sha256": "bd44581d0d139a15bef81a658e892001fa98629019b3583355a27122434c056f",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-elder/hair-none/original.webp",
+      "sha256": "b9ef9a0948497cb2413c35a12ad34f3c01983695abaeb47bdbfdb8d16f6a9486",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-elder/hair-shoulder-length/original.webp",
+      "sha256": "ffa9ac30ddf1f1d386c79f49d594235eeacd38751b55556f6ac773a8d5f81b56",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-elder/hair-textured-short/original.webp",
+      "sha256": "eed778c66eea68783e210e6568febaee4f080a21ef596fedee0b88e3f71bbf7e",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-exhausted/full.webp",
+      "sha256": "9568580b35e1cc02c4cc0195f795fe655529a7a7c3bb16d0f7a28e0583fe9212",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-exhausted/hair-bob-bangs/original.webp",
+      "sha256": "970b4828caf23da37827a5d85ee4b784b1f630d3d2053e216fb83a474c1e7ba4",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-exhausted/hair-bob/original.webp",
+      "sha256": "3ba96ff5820ee2fd9dc00f7d49a3bd79383155a94f142e8d6b5f0427c5335e07",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-exhausted/hair-classic-short/original.webp",
+      "sha256": "a947cf38ef97bdb45666d34075723424c068a790e75aa9ea01780722afbc2678",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-exhausted/hair-double-buns/original.webp",
+      "sha256": "cd272537e72faa04201549810690f38e58f8bf41fb82fece3bdabb6c7d066e5a",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-exhausted/hair-messy/original.webp",
+      "sha256": "7dbfb6207447265e2121b2aeb018b41a6c05c9eee4a764632c8397797d925e24",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-exhausted/hair-none/original.webp",
+      "sha256": "1274ff28bd1ce1ea79092cf66bc9ee062a490eb88037d6229fcad796715aefbd",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-exhausted/hair-shoulder-length/original.webp",
+      "sha256": "e09271f8572e668deb93fbf2d3804bc4335bdd4d1c2d6b2eb9741669d8b46798",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-exhausted/hair-textured-short/original.webp",
+      "sha256": "9f9c4b98602480a79757bf2dd8d78bab202ddf9bf68989a3a30ebcfcc03c37d8",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-female-new-almond-eyes/full.webp",
+      "sha256": "b6d19e3b6c99eb5d9d1868b314f762ab66b516dd3949bd71e549ffa9a141d647",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-female-new-almond-eyes/hair-bob-bangs/original.webp",
+      "sha256": "3e56b1109752ac1ab232a9740f8b0f72b1372922c565b2812d8f09b0f1bc6dd8",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-female-new-almond-eyes/hair-bob/original.webp",
+      "sha256": "61f90728952e0e70c51512677ed0525dfe1807a262dc9430280db0a72eb47e6f",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-female-new-almond-eyes/hair-classic-short/original.webp",
+      "sha256": "357bb34e84474deff63b2b66dd91c4aa08b8fcf0cdccb174b944169c55aa47e2",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-female-new-almond-eyes/hair-double-buns/original.webp",
+      "sha256": "1f4218fbec9c374a6edad2f6efb456f90e994d612a1a1aea36f4cd825a687059",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-female-new-almond-eyes/hair-messy/original.webp",
+      "sha256": "a04d9dced859f3c7d89aa04d724ed6714452544b36fe59f00b103cf30228913c",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-female-new-almond-eyes/hair-none/original.webp",
+      "sha256": "d3d30b8f69b946e14e4835ca1f979a59147e20d4c3d51d19779fffbf7bcc5383",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-female-new-almond-eyes/hair-shoulder-length/original.webp",
+      "sha256": "357728273f4a6f08279684f1f1d89e6b2383793e5d26e428e2a8eff933900f8a",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-female-new-almond-eyes/hair-textured-short/original.webp",
+      "sha256": "84b41f5f30bc55b089b2dd020025d3a063aab1230373196235ab7fb607087ff5",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-female-new-blue-gaze/full.webp",
+      "sha256": "da3ebc74cc045d435cf44500aa44c0408ef3ccd54a5f909e57a965868f96dbf0",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-female-new-blue-gaze/hair-bob-bangs/original.webp",
+      "sha256": "23f64d4be383a81dffba8ae590557403b43c38ff39385df41c8b4b3147a9242f",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-female-new-blue-gaze/hair-bob/original.webp",
+      "sha256": "29be5afbe735187bd7882b896177d61df685e27e86e76629ca1dd5e9e44bf685",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-female-new-blue-gaze/hair-classic-short/original.webp",
+      "sha256": "dd1238c6ab2a29251d3a62a264708b864ada680761ff74fcd788b3a5ec23ca1a",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-female-new-blue-gaze/hair-double-buns/original.webp",
+      "sha256": "e81311078bf18614003082ac20fb02b4dbaf64c76673b5d38ac58abc91240850",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-female-new-blue-gaze/hair-messy/original.webp",
+      "sha256": "e670c21d7336dd72ebc97606a3b0498e5ea427dc0f6a02ab8b813f1e6eb529fe",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-female-new-blue-gaze/hair-none/original.webp",
+      "sha256": "6b8be2e2d3ecaa1e4441cfaf3a3a1e8275bf1063c7533c68474c62205e770edb",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-female-new-blue-gaze/hair-shoulder-length/original.webp",
+      "sha256": "0ef79b10a3be8fac4b586f1daa8c02785c118be2edac6c0e78d14594ab1be6d5",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-female-new-blue-gaze/hair-textured-short/original.webp",
+      "sha256": "5138986cb598b5b783a588175f1eb6a7641435a2d762edd622437d28ad105d39",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-female-new-defined-brows/full.webp",
+      "sha256": "cb525616a7901fab890e6974b0ad2633b028284f15d2562b1e2ecdca01e6c78d",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-female-new-defined-brows/hair-bob-bangs/original.webp",
+      "sha256": "0ad98d5ebf46797eb93d7ba89cd30bd313b0f2095d4df375051b517c6c5353d3",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-female-new-defined-brows/hair-bob/original.webp",
+      "sha256": "05af0f56a17938195ce1ef90671d44a0a386ff8582742a7144381ff8bc4458a2",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-female-new-defined-brows/hair-classic-short/original.webp",
+      "sha256": "2b7f2e16a5e4c70384f57ea660c532a23e296ac8a82931fd901e96f7dd62cf0f",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-female-new-defined-brows/hair-double-buns/original.webp",
+      "sha256": "f1f78cec8401d72366990ca42d985bf2fb5ce9f8b49e67f39e00e9229ad3df95",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-female-new-defined-brows/hair-messy/original.webp",
+      "sha256": "9ba7ad5f9874c92e8fda73fa6669d29a62968183716e03a989646e78c25dc30e",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-female-new-defined-brows/hair-none/original.webp",
+      "sha256": "f7195aac1500eab66754b2c3638459dff98612bf0cc3a4cb713d2b18e12bf8bb",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-female-new-defined-brows/hair-shoulder-length/original.webp",
+      "sha256": "6c0d4de1daee79dc79825eebcc4612cf71533fb86221783103527e17b9fb42b4",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-female-new-defined-brows/hair-textured-short/original.webp",
+      "sha256": "cbdfa1b4d5da3a0cb12ca04b905d204c8610e7b33344893530152c7b4511f566",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-female-new-freckled/full.webp",
+      "sha256": "24e219e045ec51c963e6ad23da47d6a4bd152eaf6bae6ab73241f8f2e505bc9f",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-female-new-freckled/hair-bob-bangs/original.webp",
+      "sha256": "cd2d289c1dd8c672df6432cb8c7d47af7f1897dccfea476855cddaecbaafc298",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-female-new-freckled/hair-bob/original.webp",
+      "sha256": "5059a906f034a43dc4681811d00e8207b2d273dba5332fc87ab386b46fe56821",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-female-new-freckled/hair-classic-short/original.webp",
+      "sha256": "b174d971f0e9e55e1322436cba17d206d3f270d947fefb84f9f0df740c07c146",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-female-new-freckled/hair-double-buns/original.webp",
+      "sha256": "fe2fdf11127c606f78b1314b96eb39b372412d10e5ed203210ecb88cf27cd09d",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-female-new-freckled/hair-messy/original.webp",
+      "sha256": "2a3a1dace47f4c3776d6b58c44f730d8e6a463e52d95bb9187b66d5587065509",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-female-new-freckled/hair-none/original.webp",
+      "sha256": "717c242c3d5e28a575775725e312a86717b3fcc6de09cc8cc0ca70ee088d44fd",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-female-new-freckled/hair-shoulder-length/original.webp",
+      "sha256": "abb24f45d1b832a6249a011beb506ed0ad6bc809c295a66d5f1a4068c77e8cf5",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-female-new-freckled/hair-textured-short/original.webp",
+      "sha256": "6d8926d63256ba0366cdc111adb0edef1eb7d389b6b55a0d2d8fe777c35d5923",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-female-new-light-eyes/full.webp",
+      "sha256": "7759c25c02730ac9dd07e2805fddac582821a85d7a9b4a2c1b8b36dcde059999",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-female-new-light-eyes/hair-bob-bangs/original.webp",
+      "sha256": "7cf64e79de2ebe3ec5df51be01baa1c2ad1b301a24a521578b69e14a61fcf7ae",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-female-new-light-eyes/hair-bob/original.webp",
+      "sha256": "96a64d1cb25b572ad46a3f45bdb3e11ffb0908dde2f9362b8d3b76b6d149e1f4",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-female-new-light-eyes/hair-classic-short/original.webp",
+      "sha256": "c26eba9b290d79b3d01676298345364faaea0c7825ea32ba0c3f6ff815998973",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-female-new-light-eyes/hair-double-buns/original.webp",
+      "sha256": "2b7a6e303ff8e87aa48e866c916fcce925fa16d22411d091b4a3c8856d9a1aef",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-female-new-light-eyes/hair-messy/original.webp",
+      "sha256": "bf51f0f6a9c6003acbeede2f4578d2c094c28ce311f50b0e08d9024115a3191a",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-female-new-light-eyes/hair-none/original.webp",
+      "sha256": "dff5658a57de5f79af34b89619570b5e2577c674943b027daf40f6faddbf57be",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-female-new-light-eyes/hair-shoulder-length/original.webp",
+      "sha256": "6f82910f80ebba1a136b70ead3a3db9858cdbde51ab5d8f0cac4371f8ba05f30",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-female-new-light-eyes/hair-textured-short/original.webp",
+      "sha256": "d5659bc11fcb821e9c53637e0c3482f78b4e0f80ddacdac86e039190517b52ce",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-female-new-mature/full.webp",
+      "sha256": "fa57b1d3b58efc702eb90f60249fc92512632e0c2fad0bd046ef701ac8fdaf1a",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-female-new-mature/hair-bob-bangs/original.webp",
+      "sha256": "e76d65043ec8f199ef7647c2da0aec094a5a5ecfebe311c4d3e589c9338dc8f5",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-female-new-mature/hair-bob/original.webp",
+      "sha256": "c211bea7174b66f891f7b3aa37bc6b4041c58564c1cd9f6e044d5c3bb7660f01",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-female-new-mature/hair-classic-short/original.webp",
+      "sha256": "693e55bb29ec50a01ceed0979534569689cbb9bdd2bf3a1e6fa7ac3ac5080d15",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-female-new-mature/hair-double-buns/original.webp",
+      "sha256": "3d340f57f475aab3be65fd4952a0fd7ab4524cc10a6e5763e82adce96f989284",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-female-new-mature/hair-messy/original.webp",
+      "sha256": "5e9a8c12bb21b9f9254e32a4089b567c092783c615fddac0f070b0f562fe5e65",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-female-new-mature/hair-none/original.webp",
+      "sha256": "27aad44e1b63479be7ebb248489c7c0e01dd4375fa22937418ba45b3448e3440",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-female-new-mature/hair-shoulder-length/original.webp",
+      "sha256": "7d1b96f6aab7d4935964e680908e4fe02a72dd0fd4a8502628e6887b182982ea",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-female-new-mature/hair-textured-short/original.webp",
+      "sha256": "bd2280560e46d0e7faaa75e71ecef563e3c1e5ebcb32cd29f36ff293a49dd4d2",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-female-new-pierced/full.webp",
+      "sha256": "428af0efb8c5c32b9b5688de9768d0115be9d405824db669c4de01e99bdf61f2",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-female-new-pierced/hair-bob-bangs/original.webp",
+      "sha256": "2504745655412b737d09983630ba0b7a33922af4e35a7d0ddc16e0321f303773",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-female-new-pierced/hair-bob/original.webp",
+      "sha256": "222f53720b04ba4c0c3a19792c659fda4c0292b2cbf4139f83cd37457260e79f",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-female-new-pierced/hair-classic-short/original.webp",
+      "sha256": "34f14866283ccc35aa98f97b61c510fe9dd5b2074592dafe23f3e137a1ca08be",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-female-new-pierced/hair-double-buns/original.webp",
+      "sha256": "974d81e152bf826fed8a50db1278ab5f0ad0f30a57975f1cb6416419dfd0fa73",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-female-new-pierced/hair-messy/original.webp",
+      "sha256": "f4c6163f42c49d59b273aab4ae4a604827ebdba09c05fbd7ff266c9da1a8b9fc",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-female-new-pierced/hair-none/original.webp",
+      "sha256": "74e9f1a6ef3abd831844d2e9e8e430d5a7d5e1ca09dfb23b414d52e9460d8634",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-female-new-pierced/hair-shoulder-length/original.webp",
+      "sha256": "9dcbd1ee3110c142f58b86e088250770066221e4d882f7ab92d59666d090d62d",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-female-new-pierced/hair-textured-short/original.webp",
+      "sha256": "be4862bf351cc08843cde9c0ba41417d2b384a50158780b31564d22566575b93",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-female-new-soft-gaze/full.webp",
+      "sha256": "144cf5c3a93c774e33d59f70cdf082f82ffac4d3be08d19c0af7b465568e0b34",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-female-new-soft-gaze/hair-bob-bangs/original.webp",
+      "sha256": "ae0603fa1950227965f391c101f491d3caa125cd1366468c318dcf7883795ce0",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-female-new-soft-gaze/hair-bob/original.webp",
+      "sha256": "96222b166ed4adf9f980cae33498575367fa373a98078fcefb7df02542c76de2",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-female-new-soft-gaze/hair-classic-short/original.webp",
+      "sha256": "583ca8d22c9359f25940eebf788bc4eb2c2878e3897d2c8e629bc3c12ed01f2d",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-female-new-soft-gaze/hair-double-buns/original.webp",
+      "sha256": "3c4e87c5ee9188f94ec788f3d48f977c727b05fe3a5b93950e6914c0d67e098e",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-female-new-soft-gaze/hair-messy/original.webp",
+      "sha256": "4742adb717b79420826b3a7f5a852c39c1e91dae182baf3ea9b1a5af1fce77d3",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-female-new-soft-gaze/hair-none/original.webp",
+      "sha256": "1cae667ce6968f7be5211de0846552a53566e9b846be9467415f0753cc9a35ed",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-female-new-soft-gaze/hair-shoulder-length/original.webp",
+      "sha256": "3d874d6cb4ba95a936d701957ee0514856b804779b570f78ef802e135eae385b",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-female-new-soft-gaze/hair-textured-short/original.webp",
+      "sha256": "589f3a482938efd4262354c07c353660ab43fa3fc63ac1a452513aecbd892ca0",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-ginger-soft/full.webp",
+      "sha256": "e630c51312097acb6d17e76e52e1fb2a01d668c8810bbe1cb722235846eb4bea",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-ginger-soft/hair-bob-bangs/original.webp",
+      "sha256": "bfb39db943fa2bc884b0fbb0dede76279cdbd3fe495a4598c55b644aa9763fcc",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-ginger-soft/hair-bob/original.webp",
+      "sha256": "b9a0a613ad2de214e9ccac6a59934c24739a7760fa51bca64ea2ba481ac406da",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-ginger-soft/hair-classic-short/original.webp",
+      "sha256": "2b35464359c5f5a332cd82413ee7b362ab0b2a41648e891b2e7c8c64af8626b8",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-ginger-soft/hair-double-buns/original.webp",
+      "sha256": "2dcb4f1f0695c3ebea331aac5d331392482ee8c15bfc1fb605d2e25ca20e8506",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-ginger-soft/hair-messy/original.webp",
+      "sha256": "c4aa58a3c4216a16bc47b8029c88e37a2713f165041688ae35e7a64ebba082ca",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-ginger-soft/hair-none/original.webp",
+      "sha256": "452941a8775e192445f2f3b19996035e69ff74b610b74de82d9ac7e25d4bbfb8",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-ginger-soft/hair-shoulder-length/original.webp",
+      "sha256": "959f716cd6f65de866b6a8e38fd1fff3c69edbf1cec2364e419354c53fc67f78",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-ginger-soft/hair-textured-short/original.webp",
+      "sha256": "fe154ed0e294622ea19ee7dc3c1fd29454b29537adc6d227e98960da6c9fe8b3",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-goth-black-lips/full.webp",
+      "sha256": "2b4a7a14bafe73f4555cccef4ec091286be5273b422c3538940619b1f368a572",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-goth-black-lips/hair-bob-bangs/original.webp",
+      "sha256": "73794fa132e0bf0ed73cbaa6c1b84e2c71252debd87588fb95944c3fbf508d2b",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-goth-black-lips/hair-bob/original.webp",
+      "sha256": "63e06da9d5adafde4abf00b11de331c397c210b19c8d9e0996e3776ca9c9ef65",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-goth-black-lips/hair-classic-short/original.webp",
+      "sha256": "65cd5248d43717be70ed2c563cfefd9b7589a2535cc9f112be5a4cc296dcbecd",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-goth-black-lips/hair-double-buns/original.webp",
+      "sha256": "eacdb2f4981357885e453e681a81db5effe403b022872968b8dd891c5ed77002",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-goth-black-lips/hair-messy/original.webp",
+      "sha256": "4782b73d4027bfc0a0f1adec1e9a61b8233e53b5e37b8f9f272b6c37b72da7e1",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-goth-black-lips/hair-none/original.webp",
+      "sha256": "05f61690304fa6a60f68844ebd2335aff0e2e64bc23af1b30d4b00eb38c1661d",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-goth-black-lips/hair-shoulder-length/original.webp",
+      "sha256": "c5ded035c53eeed8691286574a21b2ef7fe427d81798c85e59ba9567a13cbee2",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-goth-black-lips/hair-textured-short/original.webp",
+      "sha256": "33573ebe245ee4ebb7d86a97e209431b1249a0c0dcdd564ba5faa2e0c391c530",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-goth-septum/full.webp",
+      "sha256": "867ab15394aedf94c8c7fcc5002621ab05106ac6b2fca79877a456d3262505f1",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-goth-septum/hair-bob-bangs/original.webp",
+      "sha256": "ceb2fc2c9827e9756879d9a1e7e81b3fce94a1f62b3fcf4d9bca653330461507",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-goth-septum/hair-bob/original.webp",
+      "sha256": "2cde62f3cb47c18d448f210c78777530a27136efc1c71b0e5a6d7d4528ca9853",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-goth-septum/hair-classic-short/original.webp",
+      "sha256": "80c27fed21472dad62a579b4ce76c6fc1eee5729cbaa41b509eb7561c3b25dcf",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-goth-septum/hair-double-buns/original.webp",
+      "sha256": "f2937b2dd9bdbfad67c3fc21ca9d1a7a1d2f81202d400f48df3b6296b78d91c9",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-goth-septum/hair-messy/original.webp",
+      "sha256": "c736fabeaf332e897e4c83e281fc9b7482467d99daa4f4935eb2b97800263adf",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-goth-septum/hair-none/original.webp",
+      "sha256": "4626a63f4fd7aec4166d9e782397ae71221d17247ad26ea698936ec9cce1fd13",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-goth-septum/hair-shoulder-length/original.webp",
+      "sha256": "89c7ae2828f710e03079be9bb371a21f83b9075152cc4516310bbf7b5d6c6935",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-goth-septum/hair-textured-short/original.webp",
+      "sha256": "4c6458da7c0aa0148efcba3e6cf087ddc2071d2362d07aba033cd8237323fd29",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-young/full.webp",
+      "sha256": "79ace474ba170b0a61bcf581f41765968746ae86dc4723e93464a914c1d0e95c",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-young/hair-bob-bangs/original.webp",
+      "sha256": "464eb0d3b39a3798425e6f7008bcb09f0c08ae778f98c64f2f6648967e906f23",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-young/hair-bob/original.webp",
+      "sha256": "1059ec0af2f0f701a6998d0056eaf2b3812d03f879b860e44f97e5c115334139",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-young/hair-classic-short/original.webp",
+      "sha256": "725a2f6d7c97fccbbcce9879d77e3eeed382ce35ad2bf8a3b5e5e31edaba89d3",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-young/hair-double-buns/original.webp",
+      "sha256": "c8b5cb6d7bbc749b74e0e2b085263c57a4a1390941781309f3244a5fa234a330",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-young/hair-messy/original.webp",
+      "sha256": "01f7ddd992bc1d27ea68f016af8f9f60dd8afe39dbd96de5ba66c907bd3d8879",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-young/hair-none/original.webp",
+      "sha256": "ce88a4532fe1b111c7b507e92b7d045c21185459c27787ce0a9564cbe3995ebe",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-young/hair-shoulder-length/original.webp",
+      "sha256": "a2be540045ae9daf1fb96aa023fd4e959558b2bea70d3cbe09fb4ed4fbabd354",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/female/face-young/hair-textured-short/original.webp",
+      "sha256": "c18ded079fa5b3059e54d2b5934c8702b1c74608699b6c3de3d2e1e7ed4cc292",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/inputs.json",
+      "sha256": "102f07f786daac8e370a373eebea57a7d29d02422a924adda2ae1873af387630",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/male/base/full.webp",
+      "sha256": "55d10f694547aa58ae8a7670e2deff1651837cea9b27c20f3931f777dbe46426",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/male/base/hair-bob/original.webp",
+      "sha256": "e4da6171fe5df69508caa557c399a9c8f66a604515cfc3dc0a6ab750c3dfa0b6",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/male/base/hair-classic-short/original.webp",
+      "sha256": "a52585c8149ae5a53096c3840f3273822bec0ba573cce2d9ab0327da2dfec746",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/male/base/hair-double-buns/original.webp",
+      "sha256": "63afbfa02ee98e6af75ee829444a07d8870ae7a6c4b8fefe77e155521a307bbc",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/male/base/hair-messy/original.webp",
+      "sha256": "f9515bc5b0b763da7c1159fa95576e28555367e7effe0f5e2bd1cec9f609fe32",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/male/base/hair-none/original.webp",
+      "sha256": "2d04eb44ad987f9969926087a080905f519e02202713ca63f68964aff5716dae",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/male/base/hair-shoulder-length/original.webp",
+      "sha256": "aca48e12e633aea49504c7f49877e67ebaacfb9844ad8ca171ff3dbf9d451ae2",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/male/base/hair-textured-short/original.webp",
+      "sha256": "5ac0def56d91a6db093552f6190f747be7518658010beefa29ba7d315da85f9c",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/male/face-alternative/full.webp",
+      "sha256": "294449857d144a6348519e236e9caa859fe3c8db0044f287007aef43e0c08e78",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/male/face-alternative/hair-bob/original.webp",
+      "sha256": "c9ed0d35c91ba8b6692db2d6b9d479949785f59b53938bc9bee00e912380ddad",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/male/face-alternative/hair-classic-short/original.webp",
+      "sha256": "1e37a7150957c1cb1a3d4d6bd09e2af07c01001a8252627eed378915f3bd90a6",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/male/face-alternative/hair-double-buns/original.webp",
+      "sha256": "14f54ed19d8d5cc9869f6b82669a8cb9f5b133e81a9cf7ffe42711f32982782c",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/male/face-alternative/hair-messy/original.webp",
+      "sha256": "3b30e39747b7762d025c621ceac82562b0f84208421714699e79c056aeb1b2d4",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/male/face-alternative/hair-none/original.webp",
+      "sha256": "d0d9848a14410848bc9d656c9425396a1e88aa0aef789eee40ae6ab838a4becd",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/male/face-alternative/hair-shoulder-length/original.webp",
+      "sha256": "1f6dec082e06136dbe88bfa2938e13a27518c9afe2947c1be28dae8b2aa883cf",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/male/face-alternative/hair-textured-short/original.webp",
+      "sha256": "87e45064ab72e70503234e1841e8f19fa45fd305ffcdaa3cc6ec8d658c054b4c",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/male/face-asian/full.webp",
+      "sha256": "dcd1d39f1951a3233c0f149f6333dac63723899582e73629759d8a68e60b8af8",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/male/face-asian/hair-bob/original.webp",
+      "sha256": "8b2c0a46e5d397384a9fc1ed1a6371e4c8f937bacd31e463a700f5cf05a730cd",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/male/face-asian/hair-classic-short/original.webp",
+      "sha256": "b8fb123b07fa9a206e211a937789a1431e18493162cc659de6fc419c4f4403ba",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/male/face-asian/hair-double-buns/original.webp",
+      "sha256": "bbb349812e93fd96ab96070de2b70561982b595251043868d8afaf89868c44bf",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/male/face-asian/hair-messy/original.webp",
+      "sha256": "328e391d9edb94e31c1d3b04a518a5f79f5cf4ff3f01eef591b67f9a30e6213d",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/male/face-asian/hair-none/original.webp",
+      "sha256": "ad40f80a08388aa90c29f65e9bb8f3c1c1118dbbafaac619b508e290d6da9b84",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/male/face-asian/hair-shoulder-length/original.webp",
+      "sha256": "28f79666fe136097099121b55d1a8c105d131cb39cd2fa63c1360b4ed791d953",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/male/face-asian/hair-textured-short/original.webp",
+      "sha256": "c26568244f2b5123ae47ef8e25f2560ae2b88e7bdb031093d816193584f2b675",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/male/face-elder/full.webp",
+      "sha256": "d72028138b6c380779889c5b3429a83350530caa30de47ce93c9ac9a53aa3703",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/male/face-elder/hair-bob/original.webp",
+      "sha256": "301f3a0153f0ae193190536e6a0652ce3b2896a88657a766f0b9c47b6cb32488",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/male/face-elder/hair-classic-short/original.webp",
+      "sha256": "187a4f785ad2a3c86ede70d6f6345701c1e5786f427499dd5443d2c6a6617c3a",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/male/face-elder/hair-double-buns/original.webp",
+      "sha256": "9ef74918d55bbf0bc01dd026747e928ec462dd59e2bf83a4839af0614dc08625",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/male/face-elder/hair-messy/original.webp",
+      "sha256": "d48a43d0bf9f221a483f7cee6257c30e6d22b4b3d952894365066f0c7e98626a",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/male/face-elder/hair-none/original.webp",
+      "sha256": "73fc1e5f4855714ff52bef496478962684dca9cd32713e8e7c85b13d5f444d0a",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/male/face-elder/hair-shoulder-length/original.webp",
+      "sha256": "0f2b4c951d98f2d1d7395962d2b55a448191b46663773e87cf60e393ec386a22",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/male/face-elder/hair-textured-short/original.webp",
+      "sha256": "8093c2a430f94068fa718d551b53c662443010bd56650aaca10ea63efa7a143d",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/male/face-exhausted/full.webp",
+      "sha256": "6c4c3b46ae0ebce958b8a329ab13607e9551db4fedfef2a9aabcfd6a5226147d",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/male/face-exhausted/hair-bob/original.webp",
+      "sha256": "c53322614631684144781cff562aa41de9fce78a0403c83213a9b30d7f264ff5",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/male/face-exhausted/hair-classic-short/original.webp",
+      "sha256": "4adbae25f2dd1f8725dc80294597c9622c9b69237c49ec095c959f2ea7b6a5e7",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/male/face-exhausted/hair-double-buns/original.webp",
+      "sha256": "474723cc8c22d748b867d5f982f643d2afd126b15464462904e235d88dfd7118",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/male/face-exhausted/hair-messy/original.webp",
+      "sha256": "cb2018e6e7a32ff29f6e88e3ecae20dbad41176ed757851dfb42b0525c5f8296",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/male/face-exhausted/hair-none/original.webp",
+      "sha256": "8d117acfa4d4c3f2178c436bc9c8a49ebf8ad981a742af6c0b436347643c1306",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/male/face-exhausted/hair-shoulder-length/original.webp",
+      "sha256": "c8ede70284398915862b0cdcc4ff412509169b4c876636607c15310efa097479",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/male/face-exhausted/hair-textured-short/original.webp",
+      "sha256": "d5113e5b1ba578b61ee5c88b110775b019d53260b29a4d2db647286bad1dc1f4",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/male/face-male-blue-eyes/full.webp",
+      "sha256": "d9fd9c62504eab701dc269220446c84a0e5e36aae9a52138a970a83ed0342144",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/male/face-male-blue-eyes/hair-bob/original.webp",
+      "sha256": "d4f53ff14719df45ec6f0d3c47654a98dc62ae91f5790facf15a964fd589f684",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/male/face-male-blue-eyes/hair-classic-short/original.webp",
+      "sha256": "0cb4a15fa4cb0eeea31670d92b0741a35cfc4447788fcfaa82ccda2cf176ffae",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/male/face-male-blue-eyes/hair-double-buns/original.webp",
+      "sha256": "86b83aa610d677b7a29e9fb12e8de8c2d60317a27ce1864a9a3bdf83c2f2ee34",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/male/face-male-blue-eyes/hair-messy/original.webp",
+      "sha256": "6f783f1958efe42fe099d70d2443f3e97801b70c0dcf6601bfab7706fb55603d",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/male/face-male-blue-eyes/hair-none/original.webp",
+      "sha256": "a654a86183a3b36f92626c9a763525a3ed08472f64a4d1067a8f0def75767fe4",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/male/face-male-blue-eyes/hair-shoulder-length/original.webp",
+      "sha256": "52a542599df3b7e4e11137bc3aae4cecdd5b4da07672d3b305417f0f5a3e07e8",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/male/face-male-blue-eyes/hair-textured-short/original.webp",
+      "sha256": "f2cfaac6317036791e65de22f501a60499370e9ebbf8072dc7f8d161c69e5333",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/male/face-male-freckled/full.webp",
+      "sha256": "6f52f0599d2c01c64ff05a1fcbabf37f1310070cde1cba05d58230b66b322f5b",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/male/face-male-freckled/hair-bob/original.webp",
+      "sha256": "51a4078c96f62017c6830ee3f903391c06c5faf2808b467a751f4ca0190bb734",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/male/face-male-freckled/hair-classic-short/original.webp",
+      "sha256": "b3901b4c12306648da838c45efdec0ea6f76465b9a73fabf1360465ff917ee02",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/male/face-male-freckled/hair-double-buns/original.webp",
+      "sha256": "cddeaebf296781a40384a63b13a21e70db7102ece7bc25ef37ef4714a4c3a87e",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/male/face-male-freckled/hair-messy/original.webp",
+      "sha256": "1d7db38090bae03759b14785e16a254ba7c75201bb887866edb913d3aedf75c3",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/male/face-male-freckled/hair-none/original.webp",
+      "sha256": "159770e36501db4e7e1ddf1d448c873e760fa277e2c31b32358afb3e65df0902",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/male/face-male-freckled/hair-shoulder-length/original.webp",
+      "sha256": "0de46ad960d36b43288a1049cadbfabb8d79632787d93115f0e199c9e668d079",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/male/face-male-freckled/hair-textured-short/original.webp",
+      "sha256": "8168e0126fcf75de679a5cd608e96b1b2ab41e60bb132d8475adf47d5aceedc8",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/male/face-male-goth-pierced/full.webp",
+      "sha256": "86c800b484a6db1e4120ea059d45766db84b451ea5ef91e44dd176de8f9d04e1",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/male/face-male-goth-pierced/hair-bob/original.webp",
+      "sha256": "75e40e9915afba13f3ae6c0092ea3df8a18204da63a380b9cf6d6ef7df05ed52",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/male/face-male-goth-pierced/hair-classic-short/original.webp",
+      "sha256": "2053b33fdb5bab5b23e9cc534625175c0d9bf744536145779b9529043a69e113",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/male/face-male-goth-pierced/hair-double-buns/original.webp",
+      "sha256": "de2fe5eea7e50a923501995aaceafb36ac1cacc288e322c0daf760f0805001fc",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/male/face-male-goth-pierced/hair-messy/original.webp",
+      "sha256": "84b88ca66bac8735a75921d7d18868c3997d040f510ce6b18dd10002ef8dbbc5",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/male/face-male-goth-pierced/hair-none/original.webp",
+      "sha256": "f1711e1805ee66db0fc53b751e601f0c307e237fc75024c4e3ae0117a124b35f",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/male/face-male-goth-pierced/hair-shoulder-length/original.webp",
+      "sha256": "36a408f425386487af08734c4d51a4459528274270caeb7c38359e44e73df448",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/male/face-male-goth-pierced/hair-textured-short/original.webp",
+      "sha256": "9321ba771b5582fe791c602bc58cdf085530c8f7f388f22d43c9911706e26dc1",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/male/face-young/full.webp",
+      "sha256": "3b68e13ccec16a456691ce2913556beaa4bac1ebc94843e28651d66495399c38",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/male/face-young/hair-bob/original.webp",
+      "sha256": "1059941ae4d3ffaf26467dad032eee9cebd5544c9f65851346ba96b8f9cde922",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/male/face-young/hair-classic-short/original.webp",
+      "sha256": "973e433169fa7e749e8c29c6164184f278d43e3e66bc9c71772938243586839b",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/male/face-young/hair-double-buns/original.webp",
+      "sha256": "f45924b413637d1c119193d79ff1300318fcfd38f751529e22193b8739e11997",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/male/face-young/hair-messy/original.webp",
+      "sha256": "5a9f2a364320356fe6cdd66237f499e6c0642d99ef0e0e09713ec08ec52cb913",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/male/face-young/hair-none/original.webp",
+      "sha256": "5f8233dff9ffeb866c35da8b8c7b0ca0c011fb9fb1baca55466d6fe118bce428",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/male/face-young/hair-shoulder-length/original.webp",
+      "sha256": "2af141ce6e674859f2c85f70d96114e15b97f9e12563632ce13405b18a333190",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/male/face-young/hair-textured-short/original.webp",
+      "sha256": "91f3ba385e8b4a7a40d509b5a2a88ee9004464a77c73bdac79f3d8126cef413d",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/records.jsonl",
+      "sha256": "8f06942f5e65c469e82265400de087e237515f4992cb1d76b12114eaac3bbd53",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/geometry/result.json",
+      "sha256": "fe7f544379a2f34abe31cb9e49b32c3988b29db4324f011d7d73cdd5391f8ac1",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/index.html",
+      "sha256": "7a0dc9411e7076bd6a07d175ba1def8ee39c9fd590594e181de88ad83a225698",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/integration-manifest.json",
+      "sha256": "cc9d6679e160e13967c7b0f6e13f5d0c0152fd3857846611e2eb88f6553b3550",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/issues.json",
+      "sha256": "bcef3e3bd6bdd55748b9cf5f385ed791c22ee367e16ea5537549318d5c5c94c7",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/light_eyes.html",
+      "sha256": "595b877bbf4d5b7943ee82b06dc73890d602c1bd1715860113c32449140caa67",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/mature.html",
+      "sha256": "e457b58be3c8b520d40bd865e494d16d87a149782925a039353de808c5082e5d",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/overviews/almond_eyes-hairstyles.webp",
+      "sha256": "b5ac7167eadc3624dfdc0175a57fefaba4c6e508100cc1ced3246b9b1df26083",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/overviews/blue_gaze-hairstyles.webp",
+      "sha256": "ceb8ab0007d12ba86ee5c3fcf3ab11b0bbca48180564cf254819d62a9fb8c455",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/overviews/defined_brows-hairstyles.webp",
+      "sha256": "b56ac39c75b66d922309ce630ce68408085cd52097782c470771e3cacc885059",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/overviews/freckled-hairstyles.webp",
+      "sha256": "5a3227e9725deb0bc0d574817378ce757a5cfea7957af4db83b5757dc653a861",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/overviews/light_eyes-hairstyles.webp",
+      "sha256": "3d99b0490373a117ded4aed0ce63b2505d73d41180d96994ad6167aa246b1a22",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/overviews/mature-hairstyles.webp",
+      "sha256": "808dca3c92a4691814ed54e7be1f8ced93b62a08afc48e26f8430a59f20f379a",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/overviews/pierced-hairstyles.webp",
+      "sha256": "e37f06bf03d67ccc8834d2521145cc8bfd1974ce9d74dd95115c49e252850e6e",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/overviews/soft_gaze-hairstyles.webp",
+      "sha256": "4b50a29bc602713c237d286a97beb172b3d04f12eed8d60cf70fce0da409b1a3",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/pierced.html",
+      "sha256": "e4cd8feefadafa37fe9794584a2cda353aaccc02a3df51fc5ca2692a0c582511",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/png-quality.json",
+      "sha256": "3a704dcd93c8e05746310af30eb526afaaa0314232dbf0d0106eba303af29b54",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/registration.json",
+      "sha256": "c3051ee89d41747ba419e34d9be0cefcccddfe2e044dbf0be8ca5358b26e4205",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/almond_eyes-comparison.webp",
+      "sha256": "c16da99183365cd9c6b8a71df0252f12ee13facd5f1d7771a04858564df740cd",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/almond_eyes/after.webp",
+      "sha256": "9f3b3d6c544daa7278946e5296cfd1933ec9f8e2679b3df070f44c04fa55eb23",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/almond_eyes/before.webp",
+      "sha256": "9eab9d70d0bf379f63f7a1a6db64353fa909748628fe635f7d3e00182cefac69",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/almond_eyes/black-hair-bob-bangs.webp",
+      "sha256": "666376d198a6b134931104cedfa1dd2ea56105afea2ef54f1de2d2558ca2b71c",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/almond_eyes/black-hair-messy.webp",
+      "sha256": "040d9dfe83b2aedc744c210e35795c0ccaf667965ce17bb8b2fcc0d811c32567",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/almond_eyes/black-hair-none.webp",
+      "sha256": "267ab82ff865bf2c23620eaaf316e6992e3dc205fb99ce368e573c2c935d2d36",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/almond_eyes/black-hair-shoulder-length.webp",
+      "sha256": "58366d5b7d78b7c7426bc0fd6272469a4976cb5234e2d563848ea9cb0605bb23",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/almond_eyes/full.webp",
+      "sha256": "250c0fc810c2479c07be16966f66a5954d0e74f04d59030bebde7802d3f9e4fc",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/almond_eyes/gray-hair-bob-bangs.webp",
+      "sha256": "b4aea83515eeb3f79a0907559a3ff1c370f8d212ab1dc309857d4a7306bdbf96",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/almond_eyes/gray-hair-messy.webp",
+      "sha256": "a35798d528f6ea0ede6e9c1b353c06feb5dd8d37ce137641433826454cdada1e",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/almond_eyes/gray-hair-none.webp",
+      "sha256": "878ca928ed9602c9f5b30853a4ec2c554d61c644e7c1120ce533def374c8414a",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/almond_eyes/gray-hair-shoulder-length.webp",
+      "sha256": "98c5b84c96bc50e38053a8895f0a027a058dba8d435ee4ab3d9e69eca8d2ac20",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/almond_eyes/green-hair-bob-bangs.webp",
+      "sha256": "d5b58264b61ec3741727f7e6ff63e412c3487ed3dc8333f9fc1c9421cb25b389",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/almond_eyes/green-hair-messy.webp",
+      "sha256": "f2f88b36b8e0a2dedf1da89831ea0114d1687d77d1157e59c59c79d5541893ad",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/almond_eyes/green-hair-none.webp",
+      "sha256": "f209f08bcc4e3267ef4de5426ce2a1dfea47ec9985e6e4daf145205e6f798947",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/almond_eyes/green-hair-shoulder-length.webp",
+      "sha256": "d28b141972e95436bb517096c792fa2154db9f2b1474dafb2cfb00f60275d774",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/almond_eyes/tunic-black.webp",
+      "sha256": "bc0fe0af4ad95474fb4a75f222505e0a3601935dd32b295c31090f99cf482c83",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/almond_eyes/tunic-original.webp",
+      "sha256": "676644fd16089987857582ab638b66dfee57c20a9c39b623d44735da7dc2e301",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/almond_eyes/white-hair-bob-bangs.webp",
+      "sha256": "ecfc25445953d65e22a16aa6b6b33df92e617fe2a571a2cd261d87dd72465d98",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/almond_eyes/white-hair-messy.webp",
+      "sha256": "62aba822bb7d25a6fa2316afebc42b100cd294d76f5f72bdeaa80aa9c189be59",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/almond_eyes/white-hair-none.webp",
+      "sha256": "9f3b3d6c544daa7278946e5296cfd1933ec9f8e2679b3df070f44c04fa55eb23",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/almond_eyes/white-hair-shoulder-length.webp",
+      "sha256": "307554d2056adab7aaf4eb7b598db2577e3bd257591adcd1402069bbf1eefeec",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/blue_gaze-comparison.webp",
+      "sha256": "4dfadaed3a17df7d904454ecd62741597adf1d91ce667bb103a9e63e05e1090c",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/blue_gaze/after.webp",
+      "sha256": "348789006d2f1f56ae5f8a8e4b5c6a90486b0d15f94197ea59f7e5025b64fef9",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/blue_gaze/before.webp",
+      "sha256": "e7baf0101c5d57dcbdab03e0d06729289c87ed44773372627f1a2efa3d6bef83",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/blue_gaze/black-hair-bob-bangs.webp",
+      "sha256": "cadfbaa733d60cff90fc1e1ae25e48e58118f79bb4d1749666bab4d6d1a23477",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/blue_gaze/black-hair-messy.webp",
+      "sha256": "f0bbed808c1bb79fca5a32adfb65dad14d83087604768eafd7d7b90af753c0b3",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/blue_gaze/black-hair-none.webp",
+      "sha256": "7698cfe769304990d8fe0f04d4fd6cb99964be42b8547afe66641215423a6240",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/blue_gaze/black-hair-shoulder-length.webp",
+      "sha256": "9287b5321de78fb5fa1a7ff40a0acc8a1161dfc2f49875cb5ca545140d2d5814",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/blue_gaze/full.webp",
+      "sha256": "36f1c5a866e935b21f70fd0f6bc2336538fb61ecd3057f6874579766074d443a",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/blue_gaze/gray-hair-bob-bangs.webp",
+      "sha256": "cfd9c907ed49b6bee9ca311160656073f8dab2e1bf07d60fca5c05aaaeefc538",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/blue_gaze/gray-hair-messy.webp",
+      "sha256": "df133efefdb814c745dc788c0c79d964e0138ce439031e4924280d0e20fc2dd2",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/blue_gaze/gray-hair-none.webp",
+      "sha256": "7cb733c9eda0c3259a7184cecd29896313d07ebfa7b9fa0665396836ce2c85a7",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/blue_gaze/gray-hair-shoulder-length.webp",
+      "sha256": "7e82c78fedf8ffb282d7acfab50d56df84346ce38b79a44c84c8d317df244633",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/blue_gaze/green-hair-bob-bangs.webp",
+      "sha256": "90d8ef9cb4a3775f2243b450ee8e6dddeb58836a6fe1be927e96587c37828b15",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/blue_gaze/green-hair-messy.webp",
+      "sha256": "e567186538158838e8096aa79010ce6c51a9548098f7d2dc4e7415a16f8a3757",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/blue_gaze/green-hair-none.webp",
+      "sha256": "5aaf99fecc04da9bd8a2507c5ae26d77652b73549db19f84aef1682b66a2bb0c",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/blue_gaze/green-hair-shoulder-length.webp",
+      "sha256": "3472666acd2dc7cbda0e79531bbf142f71e73ddba5ea305d64ce8b70a647ded9",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/blue_gaze/tunic-black.webp",
+      "sha256": "b2a4912b6002fde818c0c72c859219c3a98d6fbb8cb3e160a1b1fa516f8ef1c8",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/blue_gaze/tunic-original.webp",
+      "sha256": "46a9864117289ecb60318fcc83b5f7d9524ca3092ff31075ed463534a6949b12",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/blue_gaze/white-hair-bob-bangs.webp",
+      "sha256": "c823f0d7ffd16b51ae3f9bc9e53c8655f3002c8f47b8bcf0c980b5261b677027",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/blue_gaze/white-hair-messy.webp",
+      "sha256": "bfd18ac6f72548b7452ca833bfed69906a5ec142a38c7df8571cdeb06cbf40e6",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/blue_gaze/white-hair-none.webp",
+      "sha256": "348789006d2f1f56ae5f8a8e4b5c6a90486b0d15f94197ea59f7e5025b64fef9",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/blue_gaze/white-hair-shoulder-length.webp",
+      "sha256": "08e821f41071b46f8140b1d48107a5dc552f97af370ec9ac467129c4c4616fab",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/defined_brows-comparison.webp",
+      "sha256": "905c102e26e3afad2c165fdac30ddf751870151644248de769bb2c48bc0bd908",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/defined_brows/after.webp",
+      "sha256": "15cf699761609aa310cce3212846dd31bc6f7415b3089b6af41799700696cee3",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/defined_brows/before.webp",
+      "sha256": "12f682afcb29eb09534e422dde2c70525ed5bdd2e9d45eca064f7c38b92e74e4",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/defined_brows/black-hair-bob-bangs.webp",
+      "sha256": "4a9201d0776390c8f67c39857fc667c7f97bf4f91e3420b6c5d14d20c35d99ba",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/defined_brows/black-hair-messy.webp",
+      "sha256": "2488ab0b179a4d31729c4bf8219b947547ee900b116dc6b1a2b80f6df204a0f5",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/defined_brows/black-hair-none.webp",
+      "sha256": "403376c6f62c0193616e07441153ad58ed58937b95ae2c486d2e0f1bd3c76476",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/defined_brows/black-hair-shoulder-length.webp",
+      "sha256": "bcd4b7ceb8cc413c1b283ec1944fcec3b3f7d27d5b3e9c8722519e5632b0d819",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/defined_brows/full.webp",
+      "sha256": "97592f4f03c77669b99b55bfdb557c3ab3752510623fb0e48e954bec9f1a4a53",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/defined_brows/gray-hair-bob-bangs.webp",
+      "sha256": "04ab6759040dc8e9e07d2416ccf0ba8350ab68deb1a778b3b83898b0bf8cf971",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/defined_brows/gray-hair-messy.webp",
+      "sha256": "49071080e9081122122029cf0541e8f69f79b8d36e2e2818e195d36ed755c7c2",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/defined_brows/gray-hair-none.webp",
+      "sha256": "7b92198a798f2827120770a115282cd6ace63dfdd1b28da2997c9efab58e3029",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/defined_brows/gray-hair-shoulder-length.webp",
+      "sha256": "ab396fa2559655c4feec6e84d807cd61af43b7f8fa40bd5b90b0b8775e588a63",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/defined_brows/green-hair-bob-bangs.webp",
+      "sha256": "276dfdc604b529cc00a2074567a89547526e0beb6f6edf84a6051078cd7b47bf",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/defined_brows/green-hair-messy.webp",
+      "sha256": "1c17475b796b72cf776a85068d0e3d79dba3e6a76a272bb73d4fc316b525c276",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/defined_brows/green-hair-none.webp",
+      "sha256": "723ed12a91b92c77c69099ed2f22f69498457dc705c4762d3d32c177e91ecaea",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/defined_brows/green-hair-shoulder-length.webp",
+      "sha256": "5026180af469a00b041bb87a82fbc9599c08255da24ea10f3a6e822c745bef4a",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/defined_brows/tunic-black.webp",
+      "sha256": "3bd5db96a5bfff45eaa20aa4fd1d3e54ac3b9b07bcd9b470bfecb48bcb1fed09",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/defined_brows/tunic-original.webp",
+      "sha256": "50598ff851a28901239631a3619bee446da4d538c6631f3de09b6790c4935fe7",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/defined_brows/white-hair-bob-bangs.webp",
+      "sha256": "3c272e6cb5a15adc6e100f43c1f96b9464c08d6476719896b9bfc3bfbc17688c",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/defined_brows/white-hair-messy.webp",
+      "sha256": "ba226ac7f5d1131abbea3941932050266fef2c6c263c405df6fad8454bd93996",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/defined_brows/white-hair-none.webp",
+      "sha256": "15cf699761609aa310cce3212846dd31bc6f7415b3089b6af41799700696cee3",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/defined_brows/white-hair-shoulder-length.webp",
+      "sha256": "3484caa7b2f4f166b2c29b16d5b9c09ee73262f6749d81d3b08f2e3fa255024e",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/desktop-wardrobe.webp",
+      "sha256": "cfc8ccf939a7bf65df834006e099943849114eb22238c31d9ebc62ffd713b321",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/freckled-comparison.webp",
+      "sha256": "49645d710c6ef33ab897fb4a72ecd8c3684ea0ef9adc46654a5f73c7af66e38a",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/freckled/after.webp",
+      "sha256": "1e1f58b90d325bc36e8dc41e25e4c9dfd4dffd1f8b9b6364633882eedf91505e",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/freckled/before.webp",
+      "sha256": "6030ca64c7ff70c9391b0f5fa519b0d1565ec485aa3f909d73b83f1516bf7988",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/freckled/black-hair-bob-bangs.webp",
+      "sha256": "6e8341b35ed05763499d79b1d10d21d7cf2e3593180d21a857262c5006d49b54",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/freckled/black-hair-messy.webp",
+      "sha256": "ecae1067d7dc84d796af0ffe49dc3bff913119357c5b90340d23c81760268618",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/freckled/black-hair-none.webp",
+      "sha256": "9f229ff86da1510398efcff5dfe7eb2d194c374e59b37654e3c01a4ac199d11a",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/freckled/black-hair-shoulder-length.webp",
+      "sha256": "72dd82449e1b39d6392f5e054481605a143c942285f2a39567fe5201894d0e38",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/freckled/full.webp",
+      "sha256": "a97463c7e96033961c13f5c07dea1bc41480a867d22abcad832d3744bafc67ac",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/freckled/gray-hair-bob-bangs.webp",
+      "sha256": "ffa8647dfc883324b16b685e0b32308a2ef7b6a416a7e41162c8533afa0a99e4",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/freckled/gray-hair-messy.webp",
+      "sha256": "a5002fb4ce3981e831f3e914862602258040a4dc691d9ea422ac0ffa06989d15",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/freckled/gray-hair-none.webp",
+      "sha256": "72f2a5f17362a1aa3be0a7b9d3392274a1bd8fe7787f3a62ced5b0c474ca9972",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/freckled/gray-hair-shoulder-length.webp",
+      "sha256": "04e288887b76b4da8a8b9b51579f7b993c002aa96dddf573d8cbbf6596f4e26a",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/freckled/green-hair-bob-bangs.webp",
+      "sha256": "c26bb5ee31626bf0f6bb0518dd9ddbd06060298cda300835139beaaa34c58709",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/freckled/green-hair-messy.webp",
+      "sha256": "599c7d1ac13f1fa192996d0ef3abc3dcfa68a5d1a36498fffde1089fef7e0f59",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/freckled/green-hair-none.webp",
+      "sha256": "cff371b04839ae26cc63e387111a0d3396d4fe136242593e7a2b23e9339491ba",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/freckled/green-hair-shoulder-length.webp",
+      "sha256": "63c73c4f4d6fab6caea8d04943dde18a0793cc778277de3db0a871ff3cf461d5",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/freckled/tunic-black.webp",
+      "sha256": "84a5eb78be377e3b96b87910b93fed7619a802fbab1432fcc0383c331dbfb387",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/freckled/tunic-original.webp",
+      "sha256": "82248c90db1e898c6e1c13c1d6486bf0e130f1bb70fa3883f9a86d598ca1a590",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/freckled/white-hair-bob-bangs.webp",
+      "sha256": "5953e8b7cc7ceb96d1b25d4221365d807c5cb43031e8ba4b3f5a568ea323d9e0",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/freckled/white-hair-messy.webp",
+      "sha256": "0e985f81c75c0c0a5a3d4fb4b947bf4f28319dbd8ee48ad953fc2dda11888c38",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/freckled/white-hair-none.webp",
+      "sha256": "1e1f58b90d325bc36e8dc41e25e4c9dfd4dffd1f8b9b6364633882eedf91505e",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/freckled/white-hair-shoulder-length.webp",
+      "sha256": "9f9dbe842012dbe05c6723cb1cafede4b0bcbc6052cafe0c8efbd0392500c0f8",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/light_eyes-comparison.webp",
+      "sha256": "7ce213cd6c88976e5a490a345910ed6cedce83a23cd2ced8b813430594b90472",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/light_eyes/after.webp",
+      "sha256": "de5536c2220f61515abd2e562f160e5762c09e5255cd40c8a1bf4a967d2e5efd",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/light_eyes/before.webp",
+      "sha256": "9f2dc9daf541679844e6ad1515d3d8de72338c603244cf675f2db5a64e82d777",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/light_eyes/black-hair-bob-bangs.webp",
+      "sha256": "e06cd4c03fd1c489bcbf7c1a002424d2a153fe3ba1a6b9f06ed01c387481671a",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/light_eyes/black-hair-messy.webp",
+      "sha256": "bce02325326447689088337e8993ed851b10e6dac24dc3d6bc6598c5e8d337ff",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/light_eyes/black-hair-none.webp",
+      "sha256": "e81364d5eb3eca81b152b800fb1f07300122099ef6840f4db5b8924b76e4cc13",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/light_eyes/black-hair-shoulder-length.webp",
+      "sha256": "7df93b0bb7a717cee34ed60d2501f777370c32b70a4e0cabe7ee246227699ada",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/light_eyes/full.webp",
+      "sha256": "ffdbf157585b244f7b0a925cd8dd0333559106c12707a99c3f6765f346e137e6",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/light_eyes/gray-hair-bob-bangs.webp",
+      "sha256": "bb4f2d969d74f3d89c2e406c2da51ed56ff1e42a07856461ae924999b98a2a31",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/light_eyes/gray-hair-messy.webp",
+      "sha256": "f455075241f1f58d11a51a8d6bbc79dccc12f6f434e44cc394052839615e88c4",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/light_eyes/gray-hair-none.webp",
+      "sha256": "ea953e064f2ee5eebb852fc5bb2a0f754952114bde2939028829a57002ec5c08",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/light_eyes/gray-hair-shoulder-length.webp",
+      "sha256": "614140f54d2590e2ddf2c038db6a5fcbf078d3f7761b0c071a8ad675161cf26c",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/light_eyes/green-hair-bob-bangs.webp",
+      "sha256": "216496b6cccb853343f3a10f91c412b00d7eda84f633f38879e6ea8ba880665e",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/light_eyes/green-hair-messy.webp",
+      "sha256": "d59fc357b1bb427a1aef4db8968bb8d7a46cf635760ec70c3160248bebd21aee",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/light_eyes/green-hair-none.webp",
+      "sha256": "6be972d17bc5544f6cfb4f49efecdcc32c536631af9d24c32be9d4d0a53ae6d5",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/light_eyes/green-hair-shoulder-length.webp",
+      "sha256": "38d2de0e0e62480201f296a2f24f57f3d6715437d5486d6a024d3ce2369f5910",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/light_eyes/tunic-black.webp",
+      "sha256": "f9e5bdfb92e3cadb2943b4a775ed30f46e2ad958458f1dada296f3502a2c6c0a",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/light_eyes/tunic-original.webp",
+      "sha256": "3e2f94e4f89d8d1de541b187fc19970d853ad11a4006af8c173c2dc2ded68c4b",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/light_eyes/white-hair-bob-bangs.webp",
+      "sha256": "f9a2f5f75ad16a07b0f800665b27162df9430f4b81ef08d1d77fc47e6da2f6a4",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/light_eyes/white-hair-messy.webp",
+      "sha256": "58538111be60697f65cba407df5a737ec60043d5196623fdfdcd3474501bf940",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/light_eyes/white-hair-none.webp",
+      "sha256": "de5536c2220f61515abd2e562f160e5762c09e5255cd40c8a1bf4a967d2e5efd",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/light_eyes/white-hair-shoulder-length.webp",
+      "sha256": "81831b0c550ecae112b2668e3defc008c39a4ba8d0adec8e342ee4ba77488287",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/mature-comparison.webp",
+      "sha256": "74eb8253db4de1fc9a15458c9b3091ab711a7a33bcc2995a9740c236377eeba7",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/mature/after.webp",
+      "sha256": "03a8837984bfae967213a40197826dd4466a4f447495ca164700540294d84a04",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/mature/before.webp",
+      "sha256": "0c9e6ad3eb520d92f43fb3955287f03bf1c34fd00927ea1717709e6001827e88",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/mature/black-hair-bob-bangs.webp",
+      "sha256": "486b5ed1847a83e0175d69142dcb8c734d646ebae1d677dd53ac7b24984cc1dd",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/mature/black-hair-messy.webp",
+      "sha256": "273af12589d68143c1c85103149ec3ca86609234d2e0ed43c8fd9bdf83e89531",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/mature/black-hair-none.webp",
+      "sha256": "3cdff4133e1ccb960a823023b9891c6892b7747187a80ea1558864dc3a0851ab",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/mature/black-hair-shoulder-length.webp",
+      "sha256": "15b0128fa25652f5040cfa873b3cb9b30b01ba88563c850cc0ada6ce5539471e",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/mature/full.webp",
+      "sha256": "95262d00412bbe2d6fe8128e9bcdfafccbfd12e504677923e48034ba393f30b2",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/mature/gray-hair-bob-bangs.webp",
+      "sha256": "ffba048590596f274010f68354b9423423acfa101001526c802b4e8f8f652955",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/mature/gray-hair-messy.webp",
+      "sha256": "af0780d195907458cd603bc311c4b6ad7aca79d3c683312c1f3c01295c51a5cc",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/mature/gray-hair-none.webp",
+      "sha256": "2fe6307505d6e513c4a4549702a7211d2bb6fcc6c5ab7ab1cc025902be2fb8e7",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/mature/gray-hair-shoulder-length.webp",
+      "sha256": "bff66659341d399e270085ab3a6051f699e0cdf70b4fc3ce423c9129b9b5c9d5",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/mature/green-hair-bob-bangs.webp",
+      "sha256": "d308c00c527836c3c2967cb0ace6577bfea59f3e0b2e13ff7ee8c485b2b65c4d",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/mature/green-hair-messy.webp",
+      "sha256": "1f01627d9ce73e81b619d9f1e49ba8d025606f5759257d33b169d230477c44e7",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/mature/green-hair-none.webp",
+      "sha256": "5decf1d12d6720fa69bc2536b89b440a9e9a44df0f1a86977e8e16e2e82df810",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/mature/green-hair-shoulder-length.webp",
+      "sha256": "170cc902907e4a29ac094962de8ac1b6165cb5d9de93c7b9a44c4472babde25f",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/mature/tunic-black.webp",
+      "sha256": "73f7834c4dee409b63d7bad8bfef13471489213814fe6e3aaf86ef781fed7507",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/mature/tunic-original.webp",
+      "sha256": "17caafda521c2e90c9914cc30bdd6e7dc95ed3022c64d5059b03251802d700ae",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/mature/white-hair-bob-bangs.webp",
+      "sha256": "04c0619ed21a844b55842ada09d265f5842c053408df053acb3a8e23ab812489",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/mature/white-hair-messy.webp",
+      "sha256": "8d7466296420a8e9cf886d29c63f7ba0d13fc77a5fe4da875a0f9dff7724d55d",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/mature/white-hair-none.webp",
+      "sha256": "03a8837984bfae967213a40197826dd4466a4f447495ca164700540294d84a04",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/mature/white-hair-shoulder-length.webp",
+      "sha256": "18196ddb2fe1eca88be3799c273c5d3b58f67a1d9fd1e109ef81f7f4a8529921",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/mobile-320-faces.webp",
+      "sha256": "43564317af3783213b62313039c55d7ac248aa39fb7bf07db383491b6d847a12",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/mobile-320-hair.webp",
+      "sha256": "9d1df64dcf1a84812677d842af2642bde327b89574902e900b98febb47e7e52a",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/mobile-360-faces.webp",
+      "sha256": "ab2a6145d266ce18e71ef0e27d8367cc587fb4c6e2fc007d37b51b43fbda4369",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/mobile-360-hair.webp",
+      "sha256": "abe5d720d5cd5b106c029eca9d90c50a332e1cce7dfb0ecc409b0e8aa43d1287",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/mobile-390-faces.webp",
+      "sha256": "505435a60ff0fc755be588ee1cf0a1596c542b7c916e97639daf60d10496a6cb",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/mobile-390-hair.webp",
+      "sha256": "83c3ec5730012041184c2c8a23661edb9209100633e711644d4325fc39eaf8bb",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/mobile-430-faces.webp",
+      "sha256": "5095a6cc35099ab49e6722541779637e6275c82706aa4906083511a9d2a2b001",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/mobile-430-hair.webp",
+      "sha256": "0953ade326d3e7cfede7813e29251103671880eebbe3f2988ed8acf1e5e44ad2",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/mobile-768-faces.webp",
+      "sha256": "14264cfbae1f3f0b4ff1af2dc042271392dd958e20f78a2480b187eb2242fc0e",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/mobile-768-hair.webp",
+      "sha256": "2ad9e619a7a83f255be691becebe5a13f1213d961f2a22b8aafd0578067a9975",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/pierced-comparison.webp",
+      "sha256": "a00731ecb75d12c68b13069b72fa03fb245d11c0d883370d6147324fc2e3ecae",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/pierced/after.webp",
+      "sha256": "baee8f9be06395bc3ae48264239198749d759033800afd50f3c31aced4a82a40",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/pierced/before.webp",
+      "sha256": "dedf43954c7ab33e98cdfcc77b0b3d709be9f8b0dc3d1411cbfc3610c064686c",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/pierced/black-hair-bob-bangs.webp",
+      "sha256": "a1a44a8367c08bf1493745b2cd7a6170d304e3d9c409b2364870f69dcab9ed71",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/pierced/black-hair-messy.webp",
+      "sha256": "19d2d4105fcbc912e1ea35ac015a4aa1b8e5139d98581e16335a2544d888c368",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/pierced/black-hair-none.webp",
+      "sha256": "6eb4a7cd41e995eb17822b09b077bd83e9b802720a674a8f00859a1cd0070f59",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/pierced/black-hair-shoulder-length.webp",
+      "sha256": "9ba5661930cc4e026e41b63b3ce18aa50a4a119fa88117be579dcbd21c991f7f",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/pierced/full.webp",
+      "sha256": "96403e40fbd9eda322122e5557905c5c764ee256e3696b27231578598c7ff0cd",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/pierced/gray-hair-bob-bangs.webp",
+      "sha256": "d3af9ae34dc4f39ffd525221f8b78c44a6480b735cdb02e0b407e1e836fe7de5",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/pierced/gray-hair-messy.webp",
+      "sha256": "0126f1bbf1f776d7367cdb6e0c044cd30bf45b71414275540a16c78559c53d2b",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/pierced/gray-hair-none.webp",
+      "sha256": "7477520176d0f28d2615a24c2d6efa33fc3e7635439bdec605bbd7268f045291",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/pierced/gray-hair-shoulder-length.webp",
+      "sha256": "e424d9fe1501f5a9f463442e6c7f546223688972faeb3db336aa6923ff972b1a",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/pierced/green-hair-bob-bangs.webp",
+      "sha256": "a6b389afbc4189a02657dc7df3f8c57e7b6f4d9da020896fd84d86e5f752a12f",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/pierced/green-hair-messy.webp",
+      "sha256": "afe7988075ac47c8ba708becf41916714f7d0c6d1df82b66f43b7f6ccf937c73",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/pierced/green-hair-none.webp",
+      "sha256": "babfa38232be0e6af28a6715ed2efdd78363bcc85c0cbba665248dcfe2fd8bad",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/pierced/green-hair-shoulder-length.webp",
+      "sha256": "e5595083eb50f2e8b448dd27c86daa8e2518da203bbccf33a893daf2720da112",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/pierced/tunic-black.webp",
+      "sha256": "a3bfce082214d97c86a914912f3ae9c1dfd8ef0d34496f657404ec65b725d0bf",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/pierced/tunic-original.webp",
+      "sha256": "e82814e8dd343190926752063b43169580922da9adf56c4daabd11d5091ea302",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/pierced/white-hair-bob-bangs.webp",
+      "sha256": "1e5b5589e9b96fbc9b0220bed484499537d834fb3574fc02c0f757774268188e",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/pierced/white-hair-messy.webp",
+      "sha256": "304821a67d2a3ce876b49c4910a20fa3ce55b3b9541d27b67be19fcb18a77311",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/pierced/white-hair-none.webp",
+      "sha256": "baee8f9be06395bc3ae48264239198749d759033800afd50f3c31aced4a82a40",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/pierced/white-hair-shoulder-length.webp",
+      "sha256": "2f9dd4d1c78ea1ca7d75f1f8c805bd394591edd1ba3b80585b3bf0b78038ed39",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/result.json",
+      "sha256": "50a5d7aa0ce1053594c90b3a92efb173a20df8811e8043ccdc49e5a650a66e3a",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/soft_gaze-comparison.webp",
+      "sha256": "a00af5c9e633c813e9ce5219bc252fe3576bb1929ac6b204502805017836c978",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/soft_gaze/after.webp",
+      "sha256": "5f19e9159d2a5c757367899133170d771a9a25e5f4213f1ca094e0afa46279e9",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/soft_gaze/before.webp",
+      "sha256": "fcb2f3ae96e7dcadfef4ef9bb21e48d20b01d979971e39a726b21c4dd78a8db3",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/soft_gaze/black-hair-bob-bangs.webp",
+      "sha256": "49264a5a86f6d0f61972228dcde9b8e7e8e6e220bceaa0e2f662d66353a287ac",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/soft_gaze/black-hair-messy.webp",
+      "sha256": "cbc02b444456abf38f8d03ec02f1607ebb689d2492da34b13f1a8391a05be8a6",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/soft_gaze/black-hair-none.webp",
+      "sha256": "c6e755eca560618edc2d226e6a3d559182db86846ccaf6ae8cb2cc2e52abfdfa",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/soft_gaze/black-hair-shoulder-length.webp",
+      "sha256": "24ab9ea3de54d988c76ae1b9b62f30137040a46cb76bf941867030f1124ad6a0",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/soft_gaze/full.webp",
+      "sha256": "742c3abefb4bbb3006ce6fa479a67bf160c1f7f7353ea49cb7df8c5ceea4c325",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/soft_gaze/gray-hair-bob-bangs.webp",
+      "sha256": "03ae16255ed30237e739707cf55abc24bd9626ef4a0701e5b2b6ba4b92c724f4",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/soft_gaze/gray-hair-messy.webp",
+      "sha256": "b463e60f6f0d7cd8745397420ac53a1ccc309fa21a8fd605577796b265656fd9",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/soft_gaze/gray-hair-none.webp",
+      "sha256": "bfd60ba28798bc05c2ecef945f30c56f9493d18344182f255a8887d7eeab8f90",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/soft_gaze/gray-hair-shoulder-length.webp",
+      "sha256": "22405dd75a0e7a028865d89650671fc7bf4975f64ae98de13ada3fe292007b39",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/soft_gaze/green-hair-bob-bangs.webp",
+      "sha256": "11bdd6efef6cc55a47df002f6d0f51756461fe30a5fed1bf3efaa16ac1344f4d",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/soft_gaze/green-hair-messy.webp",
+      "sha256": "06c81933f1e137b54947685f864d2a58b973afc34d21d69c23c7c88b56a80d06",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/soft_gaze/green-hair-none.webp",
+      "sha256": "a6c00caf99110d8fd92b8863aa2acb3742aadaf19ef1e89a91a332aba611f2a3",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/soft_gaze/green-hair-shoulder-length.webp",
+      "sha256": "cc9baaf648f5230838eee9bdf157082909ad093e4ff2c125e70c903269b45a1a",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/soft_gaze/tunic-black.webp",
+      "sha256": "c38bc44942701764a2fb2a70b2ba1baa24d491a4e82403a078e8d221a348dbeb",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/soft_gaze/tunic-original.webp",
+      "sha256": "937e2e6d440f49e670b5975fcb0a3f8d78f19f0020315bf97b74910724f48a64",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/soft_gaze/white-hair-bob-bangs.webp",
+      "sha256": "a6677ef93b313b502bae952f53ff4a339b1a8706982a108c4e7e377cc214ab4d",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/soft_gaze/white-hair-messy.webp",
+      "sha256": "4e55646c9443f665bd792235d666b9c5de2009693a5c63b3cbdb35fdee781f53",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/soft_gaze/white-hair-none.webp",
+      "sha256": "5f19e9159d2a5c757367899133170d771a9a25e5f4213f1ca094e0afa46279e9",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/review-captures/soft_gaze/white-hair-shoulder-length.webp",
+      "sha256": "e2a9947a9e5bd2267c353341d7f80eab6ab5b110b732cb59f537bf9f25bf002d",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/soft_gaze.html",
+      "sha256": "2edc03ada4b4807ab02204fbd883740bc1d2f1e842a8d7c845358ad96afc0d8c",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/source-contact.webp",
+      "sha256": "6c68313596fd12a06f802d7b8a4e98ffb855ddbbdd316df54d513212e9103d2e",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/sources/download.png",
+      "sha256": "104aae191d81393f7be5a0e0750771484265af4563dad2baaeb2b898fa9a0668",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/sources/Зображення ChatGPT 19 жовт. 2026 р., 19_04_35.png",
+      "sha256": "abbca1e57b5c9604ab1172b88d3ea0c85e05e4cd80c42e16d3233ba619d98747",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/sources/Зображення ChatGPT 19 жовт. 2026 р., 19_04_41.png",
+      "sha256": "d2ead52948a2ec6a13160cddf526e4b03112c649b0c2336813195b6f7ae7c28a",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/sources/Лисий портрет воїтельки.png",
+      "sha256": "9f9e01e6de2e2586829ca2c2b00da0c03b0e68ec416df22e6210ef3ef32529ef",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/sources/Лисий портрет із пірсингом taamatut.png",
+      "sha256": "e550fe5e64dab86ebba2a231208c3801807e48d69c58de69159dd45620f3cc3c",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/sources/Реалістичний портрет лисої героїні.png",
+      "sha256": "e98b340ba19efce073cb262b764b375f4e91b3e301a89e304ec54495727a5af0",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/sources/Реалістичний портрет лисої дівчини.png",
+      "sha256": "8835d13de047ffa5ca1f15084aab4bc9b668a38a4a6e0b6ab5b045672bcd6131",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/sources/ввв.png",
+      "sha256": "dfbc846c8ad3a6fb13abf221c031c3b5aff5c176813423ab9743c37be6f4337e",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/test-logs/new-female-baseline-assets.log",
+      "sha256": "cea1140de22a983bb6d9b211ef8074ce74436f227bfbf8f1fdc4349567e39383",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/test-logs/new-female-baseline-js.log",
+      "sha256": "afeab6eb4713e795f9cb88676fb775205c7d69f78e513df1b23220626950db8b",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/test-logs/new-female-count-regressions.log",
+      "sha256": "e5e0d6e31eec93b7ab852e76bfa22828144205ef37a15f68ee7222970bb9d256",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/test-logs/new-female-gallery-validation.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/test-logs/new-female-js.log",
+      "sha256": "d9f0f17c004a1d2be26e0ba6172ffee4e94f7c34172c8c01be245bfdcee6cfed",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/test-logs/new-female-legacy-ui-regression.log",
+      "sha256": "3079e322d9be5e4ecfd1344114a3fb0a77e79766c4685257091ae6b09de65925",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/test-logs/new-female-old-save-regressions.log",
+      "sha256": "af6f399caecec9b352922b5a25d44d37971c7fe3210b3aa2abf6c6c4e527b5c5",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/test-logs/new-female-resource-paths-test.log",
+      "sha256": "33663dc7af01caca7a2983c245da4807c2b6af08dbb3737c96bb00f711c703ca",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/test-logs/new-female-targeted-ui.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/test-logs/raw-runner-summary.json",
+      "sha256": "e9ba99e87105963aad47042a9283fa8661d93eed2d5002e4e2d6397fb31ef638",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/test-logs/reproducibility-tests.log",
+      "sha256": "9c764056f41bd72a8b79bbc685c07c6627022f77a1fd4dd44e1040b282bbea7e",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/test-logs/shard-0.log",
+      "sha256": "dd1d4b43b9f842b3e458ffde66aed55a8241d6ec9c0e7ad9b38b1eadb866b359",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/test-logs/shard-1.log",
+      "sha256": "40d869b3356d1257f81a35c5fb2e19e731a94163f0addf89fc92122810f0b196",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/test-logs/shard-2.log",
+      "sha256": "43cd87e9a5e6b51d5422e6978d0180a414a3cfde66e6e2ead9681b28d134ba44",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "review/female-heads-new-library/test-results.json",
+      "sha256": "7bb78fdcf5638d5ac0b25552eb97753c01a80a15792ad90e2e028725a6b7f68f",
+      "purpose": "source, evidence or review documentation"
+    },
+    {
+      "path": "tests/game-logic.test.cjs",
+      "sha256": "a882f5a735d37c8fc5fdba79022fb91b8422b6d3cea56ded50c78062ed1921c4",
+      "purpose": "tests, reproducible tooling or documentation"
+    },
+    {
+      "path": "tests/test_female_faces.py",
+      "sha256": "cabe1fec39b50e91c84dfc8b69e4425733c53cf32bc8a85cf56d2eaf4f7b0335",
+      "purpose": "tests, reproducible tooling or documentation"
+    },
+    {
+      "path": "tests/test_game.py",
+      "sha256": "339fe246c606418fd84dea0b83e9aaf801a9a699634d9fd962315ad4b526b18a",
+      "purpose": "tests, reproducible tooling or documentation"
+    },
+    {
+      "path": "tests/test_new_female_heads.py",
+      "sha256": "92c6c1172f9d8932d437cd4720a36ad1f0bc854df27307851ca9ba16b087fa87",
+      "purpose": "tests, reproducible tooling or documentation"
+    },
+    {
+      "path": "tests/test_paper_doll_audit.py",
+      "sha256": "6a6840f4b9b6062527a3afb0b16f30342267fc98084dfe9b7d4cb7aab9687592",
+      "purpose": "tests, reproducible tooling or documentation"
+    },
+    {
+      "path": "tests/test_project_audit.py",
+      "sha256": "b09062e2f6bd8aac6263946a10e464a6eaaee267444e46e419309e874ed640c8",
+      "purpose": "tests, reproducible tooling or documentation"
+    },
+    {
+      "path": "tools/build-new-female-gallery.py",
+      "sha256": "5fd3802536a7fe09e5f8143b5cfd3025a02220363a2b384080d2dcad3fb7a90b",
+      "purpose": "tests, reproducible tooling or documentation"
+    },
+    {
+      "path": "tools/capture-avatar-library.py",
+      "sha256": "4c105fc54be99b70b195beebc05407e08b2af5bc3a5ece4217552b980166cc07",
+      "purpose": "tests, reproducible tooling or documentation"
+    },
+    {
+      "path": "tools/capture-new-female-review.py",
+      "sha256": "24053ca7bf5369bc1c14cc5458245f4b4f45bcb8528dbe5e4060bd51d27c570a",
+      "purpose": "tests, reproducible tooling or documentation"
+    },
+    {
+      "path": "tools/prepare-new-female-heads.py",
+      "sha256": "2e93ce87324449601924e13bb499a3812183d8846a802dbbadaef12498a635e2",
+      "purpose": "tests, reproducible tooling or documentation"
+    },
+    {
+      "path": "tools/run-python-tests.py",
+      "sha256": "07d74982c445f57b327dc11cef75db1901d07b7791c637606aa4e85b124b39ea",
+      "purpose": "tests, reproducible tooling or documentation"
+    },
+    {
+      "path": "tools/verify-new-female-gallery.py",
+      "sha256": "1588c251c56f8aca3b04aeb72052d4454d9439a8f5cd056f1a68dcc78b47c076",
+      "purpose": "tests, reproducible tooling or documentation"
+    }
+  ],
+  "note": "This inventory does not hash itself; the Git commit records the inventory and all final bytes."
+}

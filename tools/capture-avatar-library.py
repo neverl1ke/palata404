@@ -1,7 +1,8 @@
 """Exhaustive, resumable photographs from the production index.html renderer.
 
-Every face/hair/color state gets its own lossless screenshot. No generated
-stand-ins, no sampled palette, no alternate portrait compositing implementation.
+By default every face/hair/color state gets its own lossless screenshot.
+--screenshot-colors retains verification of every state, photographing only the
+selected colors. No generated stand-ins or alternate portrait compositor.
 """
 import argparse
 import functools
@@ -20,7 +21,7 @@ ROOT=Path(__file__).resolve().parents[1]
 REPORT=ROOT/'review/male-heads-full-library'
 
 
-def capture(quick=False,geometry=False):
+def capture(quick=False,geometry=False,genders=None,face_prefix=None,screenshot_colors=None):
     output=REPORT/('geometry' if geometry else 'quick' if quick else 'captures');output.mkdir(exist_ok=True)
     if (output/'result.json').exists():raise SystemExit('Completed evidence already exists')
     paths=[ROOT/p for p in ['base_male.png','base_female.png','index.html','script.js','style.css',
@@ -64,9 +65,10 @@ def capture(quick=False,geometry=False):
                   return true;}''')
             expected=0;gender_info={}
             with journal.open('a') as log:
-                for gender in ['male','female']:
+                for gender in (genders or ['male','female']):
                     page.evaluate('g=>{setGender(g);setPaperDollView("combat");equipPaperDollItem("upperBody",null)}',gender)
                     faces=page.evaluate('g=>[null,...PAPER_DOLL_ITEMS.filter(i=>i.slot==="face"&&paperDollItemSupportsGender(i,g)).map(i=>i.id)]',gender)
+                    if face_prefix:faces=[f for f in faces if f and f.startswith(face_prefix)]
                     hairs=page.evaluate('g=>PAPER_DOLL_ITEMS.filter(i=>i.slot==="hair"&&paperDollItemSupportsGender(i,g)).map(i=>i.id)',gender)
                     colors=[c['id'] for c in catalog['colors']]
                     if quick:
@@ -82,14 +84,20 @@ def capture(quick=False,geometry=False):
                         for color in colors:
                             for face in faces:
                                 key='/'.join([gender,face or 'base',hair,color]);file=output/(key+'.webp');file.parent.mkdir(parents=True,exist_ok=True)
-                                if key in previous and file.exists() and hashlib.sha256(file.read_bytes()).hexdigest()==previous[key]['sha256']:
-                                    records.append(previous[key]);continue
+                                if key in previous:
+                                    old=previous[key]
+                                    image_ok=old.get('path') and file.exists() and hashlib.sha256(file.read_bytes()).hexdigest()==old['sha256']
+                                    state_only_ok=screenshot_colors and color not in screenshot_colors and old.get('path') is None
+                                    if image_ok or state_only_ok:
+                                        records.append(old);continue
                                 page.evaluate('([f,h,c])=>{equipPaperDollItem("face",f);equipPaperDollItem("hair",h);setHairColor(c)}',[face,hair,color]);board()
-                                raw=page.locator('#library-board').screenshot();im=Image.open(io.BytesIO(raw)).convert('RGB');im.save(file,format='WEBP',lossless=True,method=4)
-                                assert Image.open(file).convert('RGB').tobytes()==im.tobytes()
+                                photographed=not screenshot_colors or color in screenshot_colors
+                                if photographed:
+                                    raw=page.locator('#library-board').screenshot();im=Image.open(io.BytesIO(raw)).convert('RGB');im.save(file,format='WEBP',lossless=True,method=4)
+                                    assert Image.open(file).convert('RGB').tobytes()==im.tobytes()
                                 state=page.evaluate('paperDollState.appearance');assert state=={'face':face,'hair':hair,'hairColor':color},state
-                                r={'key':key,'gender':gender,'face':face,'hair':hair,'color':color,'path':str(file.relative_to(REPORT)),
-                                   'sha256':hashlib.sha256(file.read_bytes()).hexdigest(),'width':400,'height':400,
+                                r={'key':key,'gender':gender,'face':face,'hair':hair,'color':color,'path':str(file.relative_to(REPORT)) if photographed else None,
+                                   'sha256':hashlib.sha256(file.read_bytes()).hexdigest() if photographed else None,'width':400 if photographed else None,'height':400 if photographed else None,
                                    'technical':'OK','status':'REVIEW','issues':[]}
                                 records.append(r);log.write(json.dumps(r,ensure_ascii=False)+'\n');log.flush()
                                 if len(records)%100==0:print('Captured',len(records),'/',expected,flush=True)
@@ -105,7 +113,8 @@ def capture(quick=False,geometry=False):
             assert page.evaluate('[...failedPaperDollImages]')==[]
             result={'engine':'chromium','version':browser.version,'catalog':catalog,'genders':gender_info,'expected':expected,'captured':len(records),
                     'full_body':full,'reloads':reloads,'page_errors':errors,'http_errors':http,'seconds':round(time.monotonic()-start,2),
-                    'capture':'Production renderPaperDollAt in actual index.html; 400x400 native pixels; full-body 50%; lossless WebP',
+                    'screenshots':sum(bool(r['path']) for r in records),'screenshot_colors':screenshot_colors,
+                    'capture':'Production renderPaperDollAt in actual index.html; all states decoded and verified, selected screenshots 400x400 native pixels; full-body 50%; lossless WebP',
                     'visual_status_note':'REVIEW until explicit visual assessment; technical OK does not certify artistic fit.'}
             (output/'result.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n');browser.close()
     except Exception as e:
@@ -115,4 +124,5 @@ def capture(quick=False,geometry=False):
 
 if __name__=='__main__':
     parser=argparse.ArgumentParser();parser.add_argument('--quick',action='store_true');parser.add_argument('--geometry',action='store_true');parser.add_argument('--report',type=Path,default=REPORT)
-    args=parser.parse_args();assert not(args.quick and args.geometry);REPORT=args.report.resolve();capture(args.quick,args.geometry)
+    parser.add_argument('--gender',choices=['male','female']);parser.add_argument('--face-prefix');parser.add_argument('--screenshot-colors',nargs='+')
+    args=parser.parse_args();assert not(args.quick and args.geometry);REPORT=args.report.resolve();capture(args.quick,args.geometry,[args.gender] if args.gender else None,args.face_prefix,args.screenshot_colors)

@@ -1254,9 +1254,9 @@ test('approved Asian head variants stay below hair and preserve shared cosmetics
     assert.equal(g.run('JSON.stringify(PAPER_DOLL_ITEMS.filter(i=>i.slot==="hair").map(i=>i.placementByGender))'),hairGeometry);
 });
 
-test('eight female faces keep legacy IDs and add female-only catalog choices', () => {
+test('female face packs keep legacy IDs and add female-only catalog choices', () => {
     const g=game();
-    assert.equal(g.run('PAPER_DOLL_ITEMS.filter(i=>i.slot==="face"&&paperDollItemSupportsGender(i,"female")).length'),8);
+    assert.equal(g.run('PAPER_DOLL_ITEMS.filter(i=>i.slot==="face"&&paperDollItemSupportsGender(i,"female")).length'),16);
     assert.equal(g.run('PAPER_DOLL_ITEMS.filter(i=>i.slot==="face"&&paperDollItemSupportsGender(i,"male")).length'),8);
     for(const id of ['face-asian','face-young','face-exhausted','face-elder','face-alternative']) {
         for(const gender of ['male','female']) {
@@ -1549,4 +1549,33 @@ test('legacy shared face IDs and save schema remain valid after male pack replac
         restored.run('setGender("female")');
         assert.equal(restored.run('paperDollState.appearance.face'),id);
     }
+});
+
+test('new female portraits retain separate loadouts, colour and appearance across reload', () => {
+    const ids=game().run('PAPER_DOLL_ITEMS.filter(i=>i.id.startsWith("face-female-new-")).map(i=>i.id)');
+    assert.equal(ids.length,8);
+    for(const id of ids) {
+        const g=game();const protectedState=g.run('JSON.stringify({stats,inventory,equippedGear})');
+        g.run('setGender("female");setPaperDollView("patient");equipPaperDollItem("upperBody","patient-tunic");setPaperDollView("combat");equipPaperDollItem("upperBody",null);equipPaperDollItem("hair","hair-bob-bangs");setHairColor("white")');
+        assert.equal(g.run(`equipPaperDollItem('face','${id}')`),true);
+        const restored=game(Object.fromEntries(g.storage));
+        assert.equal(restored.run('paperDollState.appearance.face'),id);
+        assert.equal(restored.run('paperDollState.appearance.hairColor'),'white');
+        assert.equal(restored.run('paperDollState.patientLoadout.upperBody'),'patient-tunic');
+        assert.equal(restored.run('paperDollState.combatLoadout.upperBody'),null);
+        assert.equal(restored.run('JSON.stringify({stats,inventory,equippedGear})'),protectedState);
+        restored.run('setGender("male")');assert.equal(restored.run('paperDollState.appearance.face'),null);
+        assert.equal(restored.run(`equipPaperDollItem('face','${id}')`),false);
+    }
+});
+
+test('new female catalog adds eight exclusive variants without replacing existing choices', () => {
+    const g=game();
+    assert.equal(g.run('PAPER_DOLL_ITEMS.filter(i=>i.slot==="face"&&paperDollItemSupportsGender(i,"female")).length'),16);
+    assert.equal(g.run('PAPER_DOLL_ITEMS.filter(i=>i.slot==="face"&&paperDollItemSupportsGender(i,"male")).length'),8);
+    for(const id of ['face-asian','face-young','face-exhausted','face-elder','face-alternative','face-ginger-soft','face-goth-septum','face-goth-black-lips']) {
+        g.run(`setGender('female');equipPaperDollItem('face','${id}')`);
+        assert.equal(g.run('paperDollState.appearance.face'),id);
+    }
+    g.run('equipPaperDollItem("face",null)');assert.equal(g.run('paperDollState.appearance.face'),null);
 });

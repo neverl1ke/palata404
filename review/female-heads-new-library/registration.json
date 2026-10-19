@@ -1,0 +1,363 @@
+{
+  "baseline": "cbe74dfce837ccea36164e638871467c446c8710",
+  "source_archive": "Голова 2.rar",
+  "base_sha256": "a27b499c03fc15c4788ae3a651483a36463f28b1f034178feccdaa852e7e50f9",
+  "heads": [
+    {
+      "kind": "defined_brows",
+      "id": "face-female-new-defined-brows",
+      "name": "Чіткі брови",
+      "original_name": "download.png",
+      "source": "sources/download.png",
+      "source_sha256": "104aae191d81393f7be5a0e0750771484265af4563dad2baaeb2b898fa9a0668",
+      "source_size": [
+        1122,
+        1402
+      ],
+      "landmarks": {
+        "crown_y": 61,
+        "ear_row_y": 431,
+        "ear_width": 611,
+        "ear_center_x": 552.0
+      },
+      "registration": {
+        "scale": 0.27823240589198034,
+        "x": 317.91571194762685,
+        "y": 6.0278232405892
+      },
+      "placement": {
+        "x": 0,
+        "y": 0,
+        "width": 941,
+        "height": 1672
+      },
+      "neck": {
+        "center_x": 472,
+        "radius": 62,
+        "start_center_y": 222,
+        "start_side_y": 207,
+        "end_center_y": 271,
+        "end_side_y": 250
+      }
+    },
+    {
+      "kind": "blue_gaze",
+      "id": "face-female-new-blue-gaze",
+      "name": "Блакитний погляд",
+      "original_name": "ввв.png",
+      "source": "sources/ввв.png",
+      "source_sha256": "dfbc846c8ad3a6fb13abf221c031c3b5aff5c176813423ab9743c37be6f4337e",
+      "source_size": [
+        1024,
+        1536
+      ],
+      "landmarks": {
+        "crown_y": 103,
+        "ear_row_y": 508,
+        "ear_width": 659,
+        "ear_center_x": 514.0
+      },
+      "registration": {
+        "scale": 0.25796661608497723,
+        "x": 338.9051593323217,
+        "y": -3.570561456752653
+      },
+      "placement": {
+        "x": 0,
+        "y": 0,
+        "width": 941,
+        "height": 1672
+      },
+      "neck": {
+        "center_x": 472,
+        "radius": 62,
+        "start_center_y": 222,
+        "start_side_y": 207,
+        "end_center_y": 271,
+        "end_side_y": 250
+      }
+    },
+    {
+      "kind": "freckled",
+      "id": "face-female-new-freckled",
+      "name": "Веснянки",
+      "original_name": "Зображення ChatGPT 19 жовт. 2026 р., 19_04_35.png",
+      "source": "sources/Зображення ChatGPT 19 жовт. 2026 р., 19_04_35.png",
+      "source_sha256": "abbca1e57b5c9604ab1172b88d3ea0c85e05e4cd80c42e16d3233ba619d98747",
+      "source_size": [
+        941,
+        1672
+      ],
+      "landmarks": {
+        "crown_y": 239,
+        "ear_row_y": 619,
+        "ear_width": 639,
+        "ear_center_x": 470.0
+      },
+      "registration": {
+        "scale": 0.26604068857589985,
+        "x": 346.4608763693271,
+        "y": -40.58372456964006
+      },
+      "placement": {
+        "x": 0,
+        "y": 0,
+        "width": 941,
+        "height": 1672
+      },
+      "neck": {
+        "center_x": 472,
+        "radius": 62,
+        "start_center_y": 222,
+        "start_side_y": 207,
+        "end_center_y": 271,
+        "end_side_y": 250
+      }
+    },
+    {
+      "kind": "mature",
+      "id": "face-female-new-mature",
+      "name": "Зріле обличчя",
+      "original_name": "Зображення ChatGPT 19 жовт. 2026 р., 19_04_41.png",
+      "source": "sources/Зображення ChatGPT 19 жовт. 2026 р., 19_04_41.png",
+      "source_sha256": "d2ead52948a2ec6a13160cddf526e4b03112c649b0c2336813195b6f7ae7c28a",
+      "source_size": [
+        941,
+        1672
+      ],
+      "landmarks": {
+        "crown_y": 270,
+        "ear_row_y": 638,
+        "ear_width": 603,
+        "ear_center_x": 470.0
+      },
+      "registration": {
+        "scale": 0.28192371475953565,
+        "x": 338.9958540630182,
+        "y": -53.11940298507463
+      },
+      "placement": {
+        "x": 0,
+        "y": 0,
+        "width": 941,
+        "height": 1672
+      },
+      "neck": {
+        "center_x": 472,
+        "radius": 62,
+        "start_center_y": 222,
+        "start_side_y": 207,
+        "end_center_y": 271,
+        "end_side_y": 250
+      }
+    },
+    {
+      "kind": "light_eyes",
+      "id": "face-female-new-light-eyes",
+      "name": "Світлі очі",
+      "original_name": "Лисий портрет воїтельки.png",
+      "source": "sources/Лисий портрет воїтельки.png",
+      "source_sha256": "9f9e01e6de2e2586829ca2c2b00da0c03b0e68ec416df22e6210ef3ef32529ef",
+      "source_size": [
+        1024,
+        1536
+      ],
+      "landmarks": {
+        "crown_y": 164,
+        "ear_row_y": 547,
+        "ear_width": 655,
+        "ear_center_x": 513.0
+      },
+      "registration": {
+        "scale": 0.2595419847328244,
+        "x": 338.35496183206106,
+        "y": -19.5648854961832
+      },
+      "placement": {
+        "x": 0,
+        "y": 0,
+        "width": 941,
+        "height": 1672
+      },
+      "neck": {
+        "center_x": 472,
+        "radius": 62,
+        "start_center_y": 222,
+        "start_side_y": 207,
+        "end_center_y": 271,
+        "end_side_y": 250
+      }
+    },
+    {
+      "kind": "pierced",
+      "id": "face-female-new-pierced",
+      "name": "Обличчя з пірсингом",
+      "original_name": "Лисий портрет із пірсингом taamatut.png",
+      "source": "sources/Лисий портрет із пірсингом taamatut.png",
+      "source_sha256": "e550fe5e64dab86ebba2a231208c3801807e48d69c58de69159dd45620f3cc3c",
+      "source_size": [
+        941,
+        1672
+      ],
+      "landmarks": {
+        "crown_y": 302,
+        "ear_row_y": 678,
+        "ear_width": 620,
+        "ear_center_x": 469.5
+      },
+      "registration": {
+        "scale": 0.27419354838709675,
+        "x": 342.76612903225805,
+        "y": -59.80645161290322
+      },
+      "placement": {
+        "x": 0,
+        "y": 0,
+        "width": 941,
+        "height": 1672
+      },
+      "neck": {
+        "center_x": 472,
+        "radius": 62,
+        "start_center_y": 222,
+        "start_side_y": 207,
+        "end_center_y": 271,
+        "end_side_y": 250
+      }
+    },
+    {
+      "kind": "soft_gaze",
+      "id": "face-female-new-soft-gaze",
+      "name": "М’який погляд",
+      "original_name": "Реалістичний портрет лисої героїні.png",
+      "source": "sources/Реалістичний портрет лисої героїні.png",
+      "source_sha256": "e98b340ba19efce073cb262b764b375f4e91b3e301a89e304ec54495727a5af0",
+      "source_size": [
+        1122,
+        1402
+      ],
+      "landmarks": {
+        "crown_y": 66,
+        "ear_row_y": 461,
+        "ear_width": 666,
+        "ear_center_x": 565.5
+      },
+      "registration": {
+        "scale": 0.2552552552552553,
+        "x": 327.15315315315314,
+        "y": 6.153153153153152
+      },
+      "placement": {
+        "x": 0,
+        "y": 0,
+        "width": 941,
+        "height": 1672
+      },
+      "neck": {
+        "center_x": 472,
+        "radius": 62,
+        "start_center_y": 222,
+        "start_side_y": 207,
+        "end_center_y": 271,
+        "end_side_y": 250
+      }
+    },
+    {
+      "kind": "almond_eyes",
+      "id": "face-female-new-almond-eyes",
+      "name": "Мигдалеподібні очі",
+      "original_name": "Реалістичний портрет лисої дівчини.png",
+      "source": "sources/Реалістичний портрет лисої дівчини.png",
+      "source_sha256": "8835d13de047ffa5ca1f15084aab4bc9b668a38a4a6e0b6ab5b045672bcd6131",
+      "source_size": [
+        1086,
+        1448
+      ],
+      "landmarks": {
+        "crown_y": 114,
+        "ear_row_y": 507,
+        "ear_width": 623,
+        "ear_center_x": 536.0
+      },
+      "registration": {
+        "scale": 0.27287319422150885,
+        "x": 325.23996789727124,
+        "y": -8.10754414125201
+      },
+      "placement": {
+        "x": 0,
+        "y": 0,
+        "width": 941,
+        "height": 1672
+      },
+      "neck": {
+        "center_x": 472,
+        "radius": 62,
+        "start_center_y": 222,
+        "start_side_y": 207,
+        "end_center_y": 271,
+        "end_side_y": 250
+      }
+    }
+  ],
+  "protected_sha256": {
+    "base_female.png": "a27b499c03fc15c4788ae3a651483a36463f28b1f034178feccdaa852e7e50f9",
+    "base_male.png": "b40a31b26dcf9aeea1dad02091228377330c9bb3af3a4b9669cfcc67247fc41d",
+    "paper-doll.js": "803cae8b6678e8d714162f2a97a83bcc341666643e62eb2c6af36447b9b4d908",
+    "wardrobe.js": "dc97922f0aef5d58a636f8a0f244c3ed157275770e6b953e8132ba0f78628452",
+    "hair-color.js": "ac8eb8268db4c86eb39f5bc9b7511b558eb8bf61edfcf34cd21baaa4492badfc",
+    "style.css": "ad38c78d010cfce7b64170a350b261e788aa33f9df933c71dcc35405f05c873e",
+    "assets/wardrobe/drafts/hospital_shirt_male.png": "73bef31d05970be528a0616cbd3ff6369636e6c4b048edc11d847b88cb444b4d",
+    "assets/wardrobe/drafts/hospital_shirt_female.png": "8f19d6a845d6af0744a57c115c74e66cd3c55668eade9234d3059fb68a6cb3fc",
+    "assets/wardrobe/hair/female_double_buns.png": "6290b9c90fdbd7dc7ddd8fa2e246438406b108ff9e6b687d3bbcade05a3a4917",
+    "assets/wardrobe/hair/unisex_bob_bangs.png": "0293b69f09c5dc70d756cf060427e32188d982b845ef42d1426a189c2825829d",
+    "assets/wardrobe/hair/male_messy_hair.png": "4e890f4bbd3523f1a84bcdcfd263bdfe230a1fc37799432fc648ab96f6a99169",
+    "assets/wardrobe/hair/female_chin_length_bob.png": "b8f4295911bf39a9f6db18feb0f813f22ac7ed8cb85c4adaac88f7ee0de3db98",
+    "assets/wardrobe/hair/female_messy_hair.png": "fe47846c7f21e5232c0e6364ea9d84cc37fa896f67b6781b1df871a81cbc1851",
+    "assets/wardrobe/hair/male_medium_shoulder_length_rear.png": "895e676c29c172e237e5b0a560690a7629993d3983a67a4f2da2a95215e7faa3",
+    "assets/wardrobe/hair/male_double_buns.png": "5b2aae591d33bcd2f4e3c5d8d027bd7ce0cf216694cf66c863d2f6b0d2d67b0a",
+    "assets/wardrobe/hair/female_medium_shoulder_length.png": "79b8f5b83a996bea9e473e7eca6aa292bcf72d7463e8f4568c1470f2b18645e2",
+    "assets/wardrobe/hair/classic_short_unisex_style_A.png": "1ddab5737b909a0d42034f8815aaa0cdd0d2e355ff766bfcd1775a4ed5e34d4b",
+    "assets/wardrobe/hair/male_medium_shoulder_length.png": "aa3b097acfb985f0ef91fe29101c64df94374916c67192c3a99cd22c46a866be",
+    "assets/wardrobe/hair/male_chin_length_bob.png": "978335df95889445ecdf9ae83ccb169da5b197b758dc4d6a2d2f0e4d0b835584",
+    "assets/wardrobe/hair/classic_short_unisex_style_B.png": "9ad8b4e1b37b6d20e2c42931bbcd6828744de20a289f29990943f906ffbf8875",
+    "assets/wardrobe/faces/male_alternative_head.png": "82a9642a9fc70e6ff72ff708381b00ca82bd68d3fe64d15329736b1bc3eec6f1",
+    "assets/wardrobe/faces/female_goth_septum_head.png": "1923e9b40f9d31ca483b2d7b946b5b7f0715223c43e6e85953acc81cc00f1e56",
+    "assets/wardrobe/faces/male_freckled_head.png": "6154c4832f3b18a13b7d845617ff8df8ee4ed409a030771cdf6f88e1850415b7",
+    "assets/wardrobe/faces/female_alternative_head.png": "e752b2b01ef387816ae594ddfd23af6f945fb36b21bd39c22c0fd8bc476faeae",
+    "assets/wardrobe/faces/male_asian_head.png": "eedab3fa56060f692ea8efab484f6e8c987c7e4d5db8d3c50b48f4330a76d422",
+    "assets/wardrobe/faces/female_exhausted_head.png": "9251f606b434be554d9e727668298da10b48cfee17fedf142669271ef04273df",
+    "assets/wardrobe/faces/male_young_head.png": "524934e71ca1b962e80252d21bdccccad3287f31ad8c0a7fd0f55592e7e5335d",
+    "assets/wardrobe/faces/female_elder_head.png": "8362bed44fc4ec2fc930ebcf4f1ec365ac4280328f62ccbe13ec1fedbc07a54c",
+    "assets/wardrobe/faces/female_goth_black_lips_head.png": "0df58ed999bda4ead4a86fdc948c59a0560772611884285369a223e83420cc78",
+    "assets/wardrobe/faces/female_asian_head.png": "8b9e4f6dc5a1a3bb86d5cb9aa7450c46354c0c62f11a421647dc27873b2a2ed8",
+    "assets/wardrobe/faces/female_young_head.png": "d7e2c1da556c0056dc466343afe99f46deb55fb40915de1e34a52649a0db0efa",
+    "assets/wardrobe/faces/male_blue_eyes_head.png": "06898e53e2d69bc4d575cfc5fc07d19ace248793d9756901fe8df21d175e9284",
+    "assets/wardrobe/faces/male_elder_head.png": "bb0d89be8b6239796c3a02fe91add4aa7416316c02ac336d54cb1d0602df72c4",
+    "assets/wardrobe/faces/male_exhausted_head.png": "b95851000f12c06f614a8e4aac4655712add0b6800608143c16ef4dfa34119c4",
+    "assets/wardrobe/faces/male_goth_pierced_head.png": "88db1cc90a199a37690af92bc4df242fe7b930e81b6614869da07b9e4c4d5ce9",
+    "assets/wardrobe/faces/female_ginger_soft_head.png": "07eb9f2cc4f84ce8b170f8d5969119beceb04f422836d69b4e84f5f97ea19d45",
+    "assets/wardrobe/clothing/patient/patient_tunic_male.png": "b0da31287a2ee59cb1260b17da4a381fc60d59b3fd17c41ec6a6b7d7708a7977",
+    "assets/wardrobe/clothing/patient/patient_tunic_female.png": "809fd1e8738aff77753d1caade079eb94ea7766891fd69614ea9a68fbac7274e",
+    "assets/wardrobe/clothing/patient/female_neckline_skin_underlay.png": "8a9076fa37a949f7c12c5e9663797d80b74c56fa95c17ada68f3144bfaab1d5b",
+    "assets/wardrobe/faces/masks/male_exhausted_body.png": "c68b5fb040caad9080da94aff594d4275ed65103e2cc938f2eab5a9b0eb1320e",
+    "assets/wardrobe/faces/masks/male_freckled_body.png": "48d0d1b4ddc46653c3b67f3e7fd4de99bdce5a2f9939d719a75a53424cdfc374",
+    "assets/wardrobe/faces/masks/female_ginger_soft_body.png": "b0d7db9fa095a6c8f8c6a6f9c7f1a40747ecbb355380943f1953dfdd9f59a711",
+    "assets/wardrobe/faces/masks/female_elder_body.png": "261962e4bf662ba64062f7c3069551eb228ef7f18a3916090ce8a818a31b69a5",
+    "assets/wardrobe/faces/masks/female_exhausted_body.png": "261962e4bf662ba64062f7c3069551eb228ef7f18a3916090ce8a818a31b69a5",
+    "assets/wardrobe/faces/masks/male_alternative_body.png": "98c9826b92b69f9fee279999c606f566771215bd148b4107ce3a2252b9825db5",
+    "assets/wardrobe/faces/masks/male_asian_body.png": "d7dceaa532da1a14e728a17703af840267a56c257f30918fee3aa523ce9e6e83",
+    "assets/wardrobe/faces/masks/male_blue_eyes_body.png": "df217f5830166d5b0a620a3ace7884d576d09420b1184c898c5e7a5071d48c99",
+    "assets/wardrobe/faces/masks/female_asian_body.png": "261962e4bf662ba64062f7c3069551eb228ef7f18a3916090ce8a818a31b69a5",
+    "assets/wardrobe/faces/masks/female_young_body.png": "261962e4bf662ba64062f7c3069551eb228ef7f18a3916090ce8a818a31b69a5",
+    "assets/wardrobe/faces/masks/male_goth_pierced_body.png": "273804ef1c3903e2ed73d02137121b425348cf0af782480363f167bc46272b9b",
+    "assets/wardrobe/faces/masks/male_elder_body.png": "97381503c8a9aa05244a29f6171af0cadb28e20fa44ba42278bab27078a1adca",
+    "assets/wardrobe/faces/masks/female_alternative_body.png": "261962e4bf662ba64062f7c3069551eb228ef7f18a3916090ce8a818a31b69a5",
+    "assets/wardrobe/faces/masks/female_goth_septum_body.png": "b0d7db9fa095a6c8f8c6a6f9c7f1a40747ecbb355380943f1953dfdd9f59a711",
+    "assets/wardrobe/faces/masks/male_young_body.png": "7823245443f46750b6b1a5147838973b1cd16626cb2e4ff0380961f88d772729",
+    "assets/wardrobe/faces/masks/female_goth_black_lips_body.png": "b0d7db9fa095a6c8f8c6a6f9c7f1a40747ecbb355380943f1953dfdd9f59a711",
+    "assets/wardrobe/references/patient/female_approved_full.png": "04ec0929ef46ba843f39a6d9b4a67310565fb6758078bc8d2f6cce41b41021e8",
+    "assets/wardrobe/references/patient/male_approved_full.png": "c300f064138a7bfe7471b393239d52c48cc6b37113394ac53dc6cc1920a069c7"
+  },
+  "source_archive_sha256": "8e4f96a4508b5085738ce2ecf2bfaac51b8186f639668be900982eaac20306c0"
+}

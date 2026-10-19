@@ -1,0 +1,120 @@
+[
+  {
+    "id": "SOURCE-defined_brows",
+    "file": "sources/download.png",
+    "problem": "Вихідне полотно й масштаб не збігаються з ігровою жіночою базою; шийний тон потребує узгодження.",
+    "evidence": [
+      "registration.json",
+      "review-captures/defined_brows-comparison.webp"
+    ],
+    "priority": "P1",
+    "fix": "Індивідуальна рівномірна реєстрація, селективний RGB gain та плавний шийний стик із базою.",
+    "status": "IMPLEMENTED_FOR_REVIEW"
+  },
+  {
+    "id": "SOURCE-blue_gaze",
+    "file": "sources/ввв.png",
+    "problem": "Вихідне полотно й масштаб не збігаються з ігровою жіночою базою; шийний тон потребує узгодження.",
+    "evidence": [
+      "registration.json",
+      "review-captures/blue_gaze-comparison.webp"
+    ],
+    "priority": "P1",
+    "fix": "Індивідуальна рівномірна реєстрація, селективний RGB gain та плавний шийний стик із базою.",
+    "status": "IMPLEMENTED_FOR_REVIEW"
+  },
+  {
+    "id": "SOURCE-freckled",
+    "file": "sources/Зображення ChatGPT 19 жовт. 2026 р., 19_04_35.png",
+    "problem": "Вихідне полотно й масштаб не збігаються з ігровою жіночою базою; шийний тон потребує узгодження.",
+    "evidence": [
+      "registration.json",
+      "review-captures/freckled-comparison.webp"
+    ],
+    "priority": "P1",
+    "fix": "Індивідуальна рівномірна реєстрація, селективний RGB gain та плавний шийний стик із базою.",
+    "status": "IMPLEMENTED_FOR_REVIEW"
+  },
+  {
+    "id": "SOURCE-mature",
+    "file": "sources/Зображення ChatGPT 19 жовт. 2026 р., 19_04_41.png",
+    "problem": "Вихідне полотно й масштаб не збігаються з ігровою жіночою базою; шийний тон потребує узгодження.",
+    "evidence": [
+      "registration.json",
+      "review-captures/mature-comparison.webp"
+    ],
+    "priority": "P1",
+    "fix": "Індивідуальна рівномірна реєстрація, селективний RGB gain та плавний шийний стик із базою.",
+    "status": "IMPLEMENTED_FOR_REVIEW"
+  },
+  {
+    "id": "SOURCE-light_eyes",
+    "file": "sources/Лисий портрет воїтельки.png",
+    "problem": "Вихідне полотно й масштаб не збігаються з ігровою жіночою базою; шийний тон потребує узгодження.",
+    "evidence": [
+      "registration.json",
+      "review-captures/light_eyes-comparison.webp"
+    ],
+    "priority": "P1",
+    "fix": "Індивідуальна рівномірна реєстрація, селективний RGB gain та плавний шийний стик із базою.",
+    "status": "IMPLEMENTED_FOR_REVIEW"
+  },
+  {
+    "id": "SOURCE-pierced",
+    "file": "sources/Лисий портрет із пірсингом taamatut.png",
+    "problem": "Вихідне полотно й масштаб не збігаються з ігровою жіночою базою; шийний тон потребує узгодження.",
+    "evidence": [
+      "registration.json",
+      "review-captures/pierced-comparison.webp"
+    ],
+    "priority": "P1",
+    "fix": "Індивідуальна рівномірна реєстрація, селективний RGB gain та плавний шийний стик із базою.",
+    "status": "IMPLEMENTED_FOR_REVIEW"
+  },
+  {
+    "id": "SOURCE-soft_gaze",
+    "file": "sources/Реалістичний портрет лисої героїні.png",
+    "problem": "Вихідне полотно й масштаб не збігаються з ігровою жіночою базою; шийний тон потребує узгодження.",
+    "evidence": [
+      "registration.json",
+      "review-captures/soft_gaze-comparison.webp"
+    ],
+    "priority": "P1",
+    "fix": "Індивідуальна рівномірна реєстрація, селективний RGB gain та плавний шийний стик із базою.",
+    "status": "IMPLEMENTED_FOR_REVIEW"
+  },
+  {
+    "id": "SOURCE-almond_eyes",
+    "file": "sources/Реалістичний портрет лисої дівчини.png",
+    "problem": "Вихідне полотно й масштаб не збігаються з ігровою жіночою базою; шийний тон потребує узгодження.",
+    "evidence": [
+      "registration.json",
+      "review-captures/almond_eyes-comparison.webp"
+    ],
+    "priority": "P1",
+    "fix": "Індивідуальна рівномірна реєстрація, селективний RGB gain та плавний шийний стик із базою.",
+    "status": "IMPLEMENTED_FOR_REVIEW"
+  },
+  {
+    "id": "MALE-BASE-ALPHA",
+    "file": "base_male.png",
+    "problem": "4234 віддалені пікселі alpha≤16 у незміненому чоловічому джерелі.",
+    "evidence": [
+      "../male-heads-full-library/issues.json"
+    ],
+    "priority": "P2",
+    "fix": "Окрема локальна альфа-правка після погодження власника; не входить у жіночу інтеграцію.",
+    "status": "KNOWN_UNCHANGED"
+  },
+  {
+    "id": "HEADWEAR-UNAVAILABLE",
+    "file": "paper-doll-data.js",
+    "problem": "gear-helmet не має PNG, тому візуальна примірка недоступна.",
+    "evidence": [
+      "review-captures/result.json"
+    ],
+    "priority": "P3",
+    "fix": "Перевірити після надання реального ресурсу.",
+    "status": "NOT_TESTABLE"
+  }
+]

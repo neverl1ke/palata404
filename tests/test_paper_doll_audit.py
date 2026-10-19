@@ -55,7 +55,7 @@ class AuditAssetTests(unittest.TestCase):
     self.assertEqual(ndi.label(aa>=128,np.ones((3,3)))[1],1,(item['id'],g,'Disconnected silhouette'))
     self.assertTrue(np.all(aa[250:288,445:505]>=np.array(base.getchannel('A'))[250:288,445:505]),(item['id'],g,'Neck hole'))
     self.assertIsNone(ImageChops.difference(result,base).crop((0,310,941,1672)).getbbox())
-  self.assertEqual(count,16)  # Eight male plus eight unchanged female overlays.
+  self.assertEqual(count,24)  # Eight male, eight approved female, eight new female overlays.
 
  def test_rear_texture_closes_inner_ear_openings_without_covering_face(self):
   item=next(i for i in audit.catalog()['items'] if i['id']=='hair-shoulder-length');a=np.array(Image.open(ROOT/item['layers'][0]['genderVariants']['male'].split('?')[0]))

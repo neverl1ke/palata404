@@ -359,7 +359,7 @@ class GameTests(unittest.TestCase):
         self.assertEqual(wardrobe.locator('[data-wardrobe-category]').count(),5)
         wardrobe.get_by_role('button',name='Жінка',exact=True).click()
         wardrobe.locator('[data-wardrobe-slot="face"]').click()
-        self.assertEqual(wardrobe.locator('[data-wardrobe-card]').count(),8)
+        self.assertEqual(wardrobe.locator('[data-wardrobe-card]').count(),16)
         self.assertIn('Оригінальне обличчя',wardrobe.locator('#wardrobe-container').inner_text())
         for prefix in ['', 'wardrobe-']:
             self.assertIsNone(self.page.locator(f'#{prefix}layer-face').get_attribute('src'))
@@ -727,7 +727,7 @@ class GameTests(unittest.TestCase):
         self.assertEqual(self.page.evaluate('inventory.length'),0)
         self.page.evaluate('setPaperDollView("patient"); selectWardrobeCategory("appearance"); selectWardrobeSlot("face");')
         self.assertIsNone(self.page.locator('#wardrobe-layer-face').get_attribute('src'))
-        self.assertEqual(self.page.locator('[data-wardrobe-card]').count(),8)
+        self.assertEqual(self.page.locator('[data-wardrobe-card]').count(),16)
 
     def test_wardrobe_complex_layers_update_both_views_and_clean_up_after_removal(self):
         self.load()
@@ -1896,7 +1896,7 @@ class GameTests(unittest.TestCase):
             self.assertEqual(self.page.evaluate('paperDollState.appearance.hair'),'old-hair')
             self.assertEqual(self.page.evaluate('paperDollState.patientLoadout.armor'),'gear-br1')
             self.assertEqual(self.page.evaluate('paperDollState.combatLoadout.weapon'),'gear-pm')
-            self.assertEqual(self.page.locator('[data-wardrobe-card]').count(),8)
+            self.assertEqual(self.page.locator('[data-wardrobe-card]').count(),16)
             for prefix in ['', 'wardrobe-']:
                 self.assertIsNone(self.page.locator(f'#{prefix}layer-face').get_attribute('src'))
                 self.assertTrue(self.page.locator(f'#{prefix}layer-body').is_visible())

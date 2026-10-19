@@ -14,7 +14,7 @@ if __name__=='__main__':
  sys.path.insert(0,str(ROOT));os.chdir(ROOT)
  tests=list(flatten(unittest.defaultTestLoader.discover(str(ROOT/'tests'),top_level_dir=str(ROOT))))
  ids=[t.id() for t in tests];assert len(ids)==len(set(ids)),'Duplicate discovered test IDs'
- browser=[i for i in ids if any('.'+name+'.' in i for name in ['GameTests','AuditBrowserTests','GeneralBrowserTests','FemaleFacesBrowserTests','MaleLibraryBrowserTests'])];assets=[i for i in ids if i not in browser]
+ browser=[i for i in ids if any('.'+name+'.' in i for name in ['GameTests','AuditBrowserTests','GeneralBrowserTests','FemaleFacesBrowserTests','MaleLibraryBrowserTests','NewFemaleHeadsBrowserTests'])];assets=[i for i in ids if i not in browser]
  shards=[browser[i::a.jobs] for i in range(a.jobs)]+[assets];a.output.mkdir(parents=True,exist_ok=True)
  def run(pair):
   i,ids=pair;start=time.monotonic()
