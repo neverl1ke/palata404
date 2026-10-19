@@ -7,6 +7,7 @@ from pathlib import Path
 import numpy as np
 from PIL import Image, ImageChops
 from scipy import ndimage as ndi
+from tests.asset_history import approved_current_hash
 
 ROOT = Path(__file__).resolve().parents[1]
 REPORT = ROOT/'review/female-base-replacement'
@@ -88,7 +89,7 @@ class FemaleBaseReplacementTests(unittest.TestCase):
         self.assertIn('base_male.png',manifest['protected_sha256'])
         self.assertIn('assets/wardrobe/faces/male_asian_head.png',manifest['protected_sha256'])
         for path,digest in manifest['protected_sha256'].items():
-            self.assertEqual(hashlib.sha256((ROOT/path).read_bytes()).hexdigest(),digest,path)
+            self.assertEqual(hashlib.sha256((ROOT/path).read_bytes()).hexdigest(),approved_current_hash(path,digest),path)
 
 
 if __name__ == '__main__': unittest.main()

@@ -131,7 +131,7 @@ class FemaleFacesBrowserTests(unittest.TestCase):
         for kind in ['ginger-soft','goth-septum','goth-black-lips']:
             self.p.evaluate('f=>{setGender("female");equipPaperDollItem("face",f);setGender("male");openCustomization();selectWardrobeSlot("face")}','face-'+kind)
             self.assertIsNone(self.p.evaluate('paperDollState.appearance.face'))
-            self.assertEqual(self.p.locator('[data-wardrobe-card]').count(),5)
+            self.assertEqual(self.p.locator('[data-wardrobe-card]').count(),8)
             self.assertFalse(self.p.evaluate('f=>equipPaperDollItem("face",f)','face-'+kind))
             self.assertTrue(self.p.locator('#layer-face').evaluate('i=>i.classList.contains("hidden")'))
 

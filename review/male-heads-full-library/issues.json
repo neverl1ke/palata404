@@ -1,0 +1,98 @@
+[
+  {
+    "id": "M-ALPHA",
+    "type": "source_alpha_noise",
+    "priority": "P2",
+    "asset_status": "ERROR",
+    "visual_status": "REVIEW",
+    "asset": "base_male.png",
+    "source": "sources/male_base_source.png",
+    "source_interior_alpha_samples": {
+      "474,120": 253,
+      "474,500": 253,
+      "400,900": 253
+    },
+    "description": "У наданому тілі підтверджено 559 відокремлених компонентів з максимальною alpha≤16 і 4234 віддалені слабкі пікселі за суворим порогом чинного тесту. Видимість у звичайному масштабі слабка; це дефект вихідної альфи, а не збій завантаження. Оригінал інтегровано побайтно без змін, тому перевірка чистоти альфи лишається невдалою. Очищення — лише після огляду власника.",
+    "scope": {
+      "gender": "male",
+      "faces": "all",
+      "hairs": "all",
+      "colors": "all"
+    },
+    "evidence": [
+      "png-quality.json",
+      "sources/male_base_source.png",
+      "test-results.json"
+    ]
+  },
+  {
+    "id": "F-GINGER",
+    "type": "existing_approved_shape_and_tone",
+    "priority": "P3",
+    "asset_status": "UNCHANGED",
+    "visual_status": "REVIEW",
+    "asset": "assets/wardrobe/faces/female_ginger_soft_head.png",
+    "description": "Наявний затверджений жіночий портрет вужчий і рожевіший за інші. Перехід під підборіддям контрастніший, а біля щоки з довгими зачісками проміжок до пасом помітніший. Жіночий PNG, маска та placement не змінювались; це матеріал для художнього рішення, не новий дефект інтеграції чоловічих голів.",
+    "scope": {
+      "gender": "female",
+      "face": "face-ginger-soft",
+      "hairs": "all",
+      "colors": "all"
+    },
+    "evidence": [
+      "geometry/female-face-ginger-soft-overview.webp"
+    ]
+  },
+  {
+    "id": "M-PIERCING",
+    "type": "ear_jewellery_occlusion_review",
+    "priority": "P3",
+    "asset_status": "EXPECTED_LAYER_ORDER",
+    "visual_status": "REVIEW",
+    "asset": "assets/wardrobe/faces/male_goth_pierced_head.png",
+    "description": "У готичного чоловічого портрета довгі пасма частково перекривають вушний пірсинг. За чинним порядком шарів пірсинг є частиною голови під волоссям; це природне перекриття, яке варто окремо погодити. Носовий пірсинг збережено. Волосся й порядок шарів не змінювалися.",
+    "scope": {
+      "gender": "male",
+      "face": "face-male-goth-pierced",
+      "hairs": [
+        "hair-bob",
+        "hair-double-buns",
+        "hair-shoulder-length"
+      ],
+      "colors": "all"
+    },
+    "evidence": [
+      "geometry/male-face-male-goth-pierced-overview.webp"
+    ]
+  },
+  {
+    "id": "M-MASK-TRACE",
+    "type": "faint_neck_mask_trace",
+    "priority": "P3",
+    "asset_status": "ERROR",
+    "visual_status": "REVIEW",
+    "assets": [
+      "assets/wardrobe/faces/male_alternative_head.png",
+      "assets/wardrobe/faces/male_asian_head.png",
+      "assets/wardrobe/faces/male_elder_head.png",
+      "assets/wardrobe/faces/male_exhausted_head.png",
+      "assets/wardrobe/faces/male_goth_pierced_head.png"
+    ],
+    "description": "Аналіз готових накладок виявив поодинокі сліди alpha 1–2 біля нижнього стику (y=263…267), у тому числі 8 відокремлених пікселів у чотирьох накладках. Вони поза портретними рисами, слабо помітні у звичайному масштабі. Це залишок комплементарного маскування на тлі нечистої альфи наданої бази. Не видається за чистий контур; локальне альфа-очищення запропоновано наступним кроком після огляду, без зміни RGB.",
+    "scope": {
+      "gender": "male",
+      "faces": [
+        "face-alternative",
+        "face-asian",
+        "face-elder",
+        "face-exhausted",
+        "face-male-goth-pierced"
+      ],
+      "hairs": "all",
+      "colors": "all"
+    },
+    "evidence": [
+      "png-quality.json"
+    ]
+  }
+]

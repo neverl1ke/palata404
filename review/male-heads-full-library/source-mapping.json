@@ -1,0 +1,74 @@
+[
+  {
+    "original_file": "Изображение ChatGPT 19 окт. 2026 г., 13_37_31.png",
+    "retained_source": "sources/male_base_source.png",
+    "new_name": "base_male.png",
+    "type": "male_base",
+    "game_id": "baseBody/male",
+    "sha256": "b40a31b26dcf9aeea1dad02091228377330c9bb3af3a4b9669cfcc67247fc41d"
+  },
+  {
+    "original_file": "Втомлений портрет лисого чоловіка.png",
+    "retained_source": "sources/male_exhausted_source.png",
+    "new_name": "assets/wardrobe/faces/male_exhausted_head.png",
+    "type": "male_head_overlay",
+    "game_id": "face-exhausted",
+    "source_sha256": "1599fbaf06278cc9bdf8cb94aab053cd3e7188d89d7f2a5513babf9c3f2f129d"
+  },
+  {
+    "original_file": "Готичний портрет із пірсингом(2).png",
+    "retained_source": "sources/male_goth_pierced_source.png",
+    "new_name": "assets/wardrobe/faces/male_goth_pierced_head.png",
+    "type": "male_head_overlay",
+    "game_id": "face-male-goth-pierced",
+    "source_sha256": "7e9c1f5829e6f1d791b2b1e83d821be56ffc65de1e66ce24c95bec2951347975"
+  },
+  {
+    "original_file": "Лисий воїн із суворим поглядом.png",
+    "retained_source": "sources/male_young_source.png",
+    "new_name": "assets/wardrobe/faces/male_young_head.png",
+    "type": "male_head_overlay",
+    "game_id": "face-young",
+    "source_sha256": "4b4add50342b68386a8c45cc29e586d1aa21ab3a5750a051419baf010823761f"
+  },
+  {
+    "original_file": "Реалістичний портрет лисого чоловіка.png",
+    "retained_source": "sources/male_freckled_source.png",
+    "new_name": "assets/wardrobe/faces/male_freckled_head.png",
+    "type": "male_head_overlay",
+    "game_id": "face-male-freckled",
+    "source_sha256": "a96a80b943cd91ed96236709f76b307d5cd33d9490472986f02dc7336a5bcb17"
+  },
+  {
+    "original_file": "Суворий лисий портрет персонажа на прозорому тлі.png",
+    "retained_source": "sources/male_alternative_source.png",
+    "new_name": "assets/wardrobe/faces/male_alternative_head.png",
+    "type": "male_head_overlay",
+    "game_id": "face-alternative",
+    "source_sha256": "09bb6199593ee0684d12423364045ce162647621f68194ab5ad310ec84f80764"
+  },
+  {
+    "original_file": "Суворий портрет літнього чоловіка.png",
+    "retained_source": "sources/male_elder_source.png",
+    "new_name": "assets/wardrobe/faces/male_elder_head.png",
+    "type": "male_head_overlay",
+    "game_id": "face-elder",
+    "source_sha256": "3b168898e46812a5351e3503652d25f2ead775014225ecaf6eb0cc7c4494fd38"
+  },
+  {
+    "original_file": "Фотореалістичний портрет лисого чоловіка.png",
+    "retained_source": "sources/male_blue_eyes_source.png",
+    "new_name": "assets/wardrobe/faces/male_blue_eyes_head.png",
+    "type": "male_head_overlay",
+    "game_id": "face-male-blue-eyes",
+    "source_sha256": "fc2c6101df17aee1b71a9526b7acafdb714301693508a38287e2225d9374775d"
+  },
+  {
+    "original_file": "Изображение ChatGPT 19 окт. 2026 г., 13_37_19.png",
+    "retained_source": "sources/male_asian_source.png",
+    "new_name": "assets/wardrobe/faces/male_asian_head.png",
+    "type": "male_head_overlay",
+    "game_id": "face-asian",
+    "source_sha256": "2bdc3246443aafc96ba1a043ec3b35a932d6f05e70394719ee817abaed67553b"
+  }
+]

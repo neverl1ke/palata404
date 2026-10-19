@@ -22,7 +22,7 @@ const PAPER_DOLL_SLOTS = {
     accessory: { label: 'Аксесуар', elementId: 'layer-accessory', icon: 'key' }
 };
 // Hashes of the integrated bodies invalidate previously cached art.
-const PAPER_DOLL_BODIES = { male: 'base_male.png?v=08da7a7f', female: 'base_female.png?v=a27b499c' };
+const PAPER_DOLL_BODIES = { male: 'base_male.png?v=b40a31b2', female: 'base_female.png?v=a27b499c' };
 // The six retired trial faces stay on disk, but are not catalog entries.
 // New approved cosmetics can use the face slot, placement and multipart layers.
 const PAPER_DOLL_RETIRED_FACES = new Set(Array.from({ length: 6 }, (_, index) => `face_${index + 1}.png`));
@@ -35,8 +35,8 @@ const PAPER_DOLL_ITEMS = [
         fittedToGender: true, description: 'Варіант голови для обраного базового аватара.',
         // DOM image renderer: above the body (0), below clothing and hair (9).
         renderOrder: 1,
-        genderVariants: { male: 'assets/wardrobe/faces/male_asian_head.png?v=1043b5b2', female: 'assets/wardrobe/faces/female_asian_head.png?v=8b9e4f6d' },
-        bodyMaskByGender: { male: 'assets/wardrobe/faces/masks/male_asian_body.png?v=dbaab2c9', female: 'assets/wardrobe/faces/masks/female_asian_body.png?v=261962e4' },
+        genderVariants: { male: 'assets/wardrobe/faces/male_asian_head.png?v=eedab3fa', female: 'assets/wardrobe/faces/female_asian_head.png?v=8b9e4f6d' },
+        bodyMaskByGender: { male: 'assets/wardrobe/faces/masks/male_asian_body.png?v=d7dceaa5', female: 'assets/wardrobe/faces/masks/female_asian_body.png?v=261962e4' },
         placementByGender: {
             male: { x: 0, y: 0, width: 941, height: 1672 },
             female: { x: 0, y: 0, width: 941, height: 1672 }
@@ -45,8 +45,8 @@ const PAPER_DOLL_ITEMS = [
         fittedToGender: true, description: 'Молодий тип обличчя, 18–20 років.',
         // DOM image renderer: above the body (0), below clothing and hair (9).
         renderOrder: 1,
-        genderVariants: { male: 'assets/wardrobe/faces/male_young_head.png?v=02729493', female: 'assets/wardrobe/faces/female_young_head.png?v=d7e2c1da' },
-        bodyMaskByGender: { male: 'assets/wardrobe/faces/masks/male_young_body.png?v=73bad65e', female: 'assets/wardrobe/faces/masks/female_young_body.png?v=261962e4' },
+        genderVariants: { male: 'assets/wardrobe/faces/male_young_head.png?v=524934e7', female: 'assets/wardrobe/faces/female_young_head.png?v=d7e2c1da' },
+        bodyMaskByGender: { male: 'assets/wardrobe/faces/masks/male_young_body.png?v=78232454', female: 'assets/wardrobe/faces/masks/female_young_body.png?v=261962e4' },
         placementByGender: {
             male: { x: 0, y: 0, width: 941, height: 1672 },
             female: { x: 0, y: 0, width: 941, height: 1672 }
@@ -55,8 +55,8 @@ const PAPER_DOLL_ITEMS = [
         fittedToGender: true, description: 'Виснажений, тривожний тип обличчя.',
         // DOM image renderer: above the body (0), below clothing and hair (9).
         renderOrder: 1,
-        genderVariants: { male: 'assets/wardrobe/faces/male_exhausted_head.png?v=5683706e', female: 'assets/wardrobe/faces/female_exhausted_head.png?v=9251f606' },
-        bodyMaskByGender: { male: 'assets/wardrobe/faces/masks/male_exhausted_body.png?v=95e48d48', female: 'assets/wardrobe/faces/masks/female_exhausted_body.png?v=261962e4' },
+        genderVariants: { male: 'assets/wardrobe/faces/male_exhausted_head.png?v=b9585100', female: 'assets/wardrobe/faces/female_exhausted_head.png?v=9251f606' },
+        bodyMaskByGender: { male: 'assets/wardrobe/faces/masks/male_exhausted_body.png?v=c68b5fb0', female: 'assets/wardrobe/faces/masks/female_exhausted_body.png?v=261962e4' },
         placementByGender: {
             male: { x: 0, y: 0, width: 941, height: 1672 },
             female: { x: 0, y: 0, width: 941, height: 1672 }
@@ -65,16 +65,16 @@ const PAPER_DOLL_ITEMS = [
         fittedToGender: true, description: 'Старший тип обличчя, 60+ років.',
         // DOM image renderer: above the body (0), below clothing and hair (9).
         renderOrder: 1,
-        genderVariants: { male: 'assets/wardrobe/faces/male_elder_head.png?v=f6e3003c', female: 'assets/wardrobe/faces/female_elder_head.png?v=8362bed4' },
-        bodyMaskByGender: { male: 'assets/wardrobe/faces/masks/male_elder_body.png?v=191ad94a', female: 'assets/wardrobe/faces/masks/female_elder_body.png?v=261962e4' },
+        genderVariants: { male: 'assets/wardrobe/faces/male_elder_head.png?v=bb0d89be', female: 'assets/wardrobe/faces/female_elder_head.png?v=8362bed4' },
+        bodyMaskByGender: { male: 'assets/wardrobe/faces/masks/male_elder_body.png?v=97381503', female: 'assets/wardrobe/faces/masks/female_elder_body.png?v=261962e4' },
         placementByGender: {
             male: { x: 0, y: 0, width: 941, height: 1672 },
             female: { x: 0, y: 0, width: 941, height: 1672 }
         } },
     { id: 'face-alternative', slot: 'face', name: 'Нове обличчя', icon: 'user', availableByDefault: true,
         fittedToGender: true, description: 'Новий затверджений варіант обличчя для обраної статі.', renderOrder: 1,
-        genderVariants: { male: 'assets/wardrobe/faces/male_alternative_head.png?v=2b58bf7a', female: 'assets/wardrobe/faces/female_alternative_head.png?v=e752b2b0' },
-        bodyMaskByGender: { male: 'assets/wardrobe/faces/masks/male_alternative_body.png?v=2778f476', female: 'assets/wardrobe/faces/masks/female_alternative_body.png?v=261962e4' },
+        genderVariants: { male: 'assets/wardrobe/faces/male_alternative_head.png?v=82a9642a', female: 'assets/wardrobe/faces/female_alternative_head.png?v=e752b2b0' },
+        bodyMaskByGender: { male: 'assets/wardrobe/faces/masks/male_alternative_body.png?v=98c9826b', female: 'assets/wardrobe/faces/masks/female_alternative_body.png?v=261962e4' },
         placementByGender: {
             male: { x: 0, y: 0, width: 941, height: 1672 },
             female: { x: 0, y: 0, width: 941, height: 1672 }
@@ -94,6 +94,21 @@ const PAPER_DOLL_ITEMS = [
         genderVariants: { female: 'assets/wardrobe/faces/female_goth_black_lips_head.png?v=0df58ed9' },
         bodyMaskByGender: { female: 'assets/wardrobe/faces/masks/female_goth_black_lips_body.png?v=b0d7db9f' },
         placementByGender: { female: { x: 0, y: 0, width: 941, height: 1672 } } },
+    { id: 'face-male-goth-pierced', slot: 'face', name: 'Готичне обличчя з пірсингом', icon: 'user', availableByDefault: true,
+        genders: ['male'], fittedToGender: true, description: 'Чоловічий портрет із погодженого комплекту.', renderOrder: 1,
+        genderVariants: { male: 'assets/wardrobe/faces/male_goth_pierced_head.png?v=88db1cc9' },
+        bodyMaskByGender: { male: 'assets/wardrobe/faces/masks/male_goth_pierced_body.png?v=273804ef' },
+        placementByGender: { male: { x: 0, y: 0, width: 941, height: 1672 } } },
+    { id: 'face-male-freckled', slot: 'face', name: 'Обличчя з веснянками', icon: 'user', availableByDefault: true,
+        genders: ['male'], fittedToGender: true, description: 'Чоловічий портрет із погодженого комплекту.', renderOrder: 1,
+        genderVariants: { male: 'assets/wardrobe/faces/male_freckled_head.png?v=6154c483' },
+        bodyMaskByGender: { male: 'assets/wardrobe/faces/masks/male_freckled_body.png?v=48d0d1b4' },
+        placementByGender: { male: { x: 0, y: 0, width: 941, height: 1672 } } },
+    { id: 'face-male-blue-eyes', slot: 'face', name: 'Світлооке обличчя', icon: 'user', availableByDefault: true,
+        genders: ['male'], fittedToGender: true, description: 'Чоловічий портрет із погодженого комплекту.', renderOrder: 1,
+        genderVariants: { male: 'assets/wardrobe/faces/male_blue_eyes_head.png?v=06898e53' },
+        bodyMaskByGender: { male: 'assets/wardrobe/faces/masks/male_blue_eyes_body.png?v=df217f58' },
+        placementByGender: { male: { x: 0, y: 0, width: 941, height: 1672 } } },
     { id: 'hair-none', slot: 'hair', name: 'Без зачіски', icon: 'user', availableByDefault: true,
         noImageRequired: true, description: 'Початковий вигляд затвердженого аватара без накладки волосся.' },
     { id: 'hair-bob-bangs', slot: 'hair', name: 'Каре з чубчиком', icon: 'user', availableByDefault: true,

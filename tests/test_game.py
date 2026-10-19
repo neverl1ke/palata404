@@ -314,7 +314,7 @@ class GameTests(unittest.TestCase):
             'palata404_gender': '../../missing', 'palata404_face': 'missing.png',
         })
         self.assertEqual(self.state()['hp'], 100)
-        self.assertEqual(self.page.locator('#layer-body').get_attribute('src'), 'base_male.png?v=08da7a7f')
+        self.assertEqual(self.page.locator('#layer-body').get_attribute('src'), 'base_male.png?v=b40a31b2')
         self.page.evaluate('openInventory(); openGym(); openDossier();')
         self.context.add_init_script('''Object.defineProperty(window, 'localStorage', {
             get() { throw new DOMException('Storage unavailable', 'SecurityError'); }
@@ -417,7 +417,7 @@ class GameTests(unittest.TestCase):
             self.assertEqual(layer.evaluate('e=>getComputedStyle(e).zIndex'), '3')
             body = self.page.locator(f'#{prefix}layer-body')
             self.assertEqual(body.get_attribute('src'),
-                'base_female.png?v=a27b499c' if gender == 'female' else 'base_male.png?v=08da7a7f')
+                'base_female.png?v=a27b499c' if gender == 'female' else 'base_male.png?v=b40a31b2')
             self.assertEqual(body.evaluate('e=>[e.naturalWidth,e.naturalHeight]'), [941, 1672])
             for node in [body, layer]:
                 self.assertEqual(node.evaluate('e=>[e.style.left,e.style.top,e.style.width,e.style.height]'), ['0%', '0%', '100%', '100%'])
@@ -1573,7 +1573,7 @@ class GameTests(unittest.TestCase):
     def test_complete_face_catalog_selects_both_genders_and_restores_every_type(self):
         self.load()
         self.page.evaluate('openCustomization();selectWardrobeCategory("appearance");selectWardrobeSlot("face")')
-        self.assertEqual(self.page.locator('[data-wardrobe-card]').count(),5)
+        self.assertEqual(self.page.locator('[data-wardrobe-card]').count(),8)
         original=self.page.evaluate('JSON.stringify({stats,inventory,equippedGear,hair:PAPER_DOLL_ITEMS.filter(i=>i.slot==="hair"),colors:HAIR_COLORS})')
         for gender in ['male','female']:
             self.page.evaluate('gender=>setGender(gender)',gender)

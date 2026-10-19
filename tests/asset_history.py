@@ -11,6 +11,13 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 
 
+def male_release_asset(relative):
+    relative=Path(relative)
+    if relative.is_absolute():relative=relative.relative_to(ROOT)
+    old=ROOT/'review/male-heads-full-library/before-assets'/relative
+    return old if old.is_file() else ROOT/relative
+
+
 def female_independent_asset(relative):
     """Exact b00712b assets for the historical independent neck repair tests.
 
@@ -20,7 +27,7 @@ def female_independent_asset(relative):
     relative = Path(relative)
     if relative.is_absolute(): relative = relative.relative_to(ROOT)
     old = ROOT/'review/female-base-replacement/before-assets'/relative
-    return old if old.is_file() else ROOT/relative
+    return old if old.is_file() else male_release_asset(relative)
 
 
 def historical_asset(relative):
@@ -39,6 +46,17 @@ def historical_asset(relative):
 
 def approved_current_hash(relative, old_hash):
     """No broad exemption: only the explicit user-approved replacement list."""
+    male=ROOT/'review/male-heads-full-library/integration-manifest.json'
+    if male.exists():
+        data=json.loads(male.read_text())
+        if relative=='base_male.png':
+            assert hashlib.sha256(male_release_asset(relative).read_bytes()).hexdigest()==old_hash
+            return data['base_sha256']
+        for e in data['files']:
+            for key,h in [('output','sha256'),('mask','mask_sha256')]:
+                if e[key]==relative:
+                    assert hashlib.sha256(male_release_asset(relative).read_bytes()).hexdigest()==old_hash
+                    return e[h]
     replacement = ROOT/'review/female-base-replacement/replacement-manifest.json'
     if replacement.exists():
         for e in json.loads(replacement.read_text())['files']:

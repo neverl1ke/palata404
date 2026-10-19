@@ -1,0 +1,1127 @@
+{
+  "male/base/hair-none": {
+    "status": "REVIEW",
+    "issues": [
+      "M-ALPHA"
+    ],
+    "geometry_inspected": true,
+    "evidence": "geometry/male-base-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "male/base/hair-messy": {
+    "status": "REVIEW",
+    "issues": [
+      "M-ALPHA"
+    ],
+    "geometry_inspected": true,
+    "evidence": "geometry/male-base-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "male/base/hair-bob": {
+    "status": "REVIEW",
+    "issues": [
+      "M-ALPHA"
+    ],
+    "geometry_inspected": true,
+    "evidence": "geometry/male-base-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "male/base/hair-double-buns": {
+    "status": "REVIEW",
+    "issues": [
+      "M-ALPHA"
+    ],
+    "geometry_inspected": true,
+    "evidence": "geometry/male-base-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "male/base/hair-classic-short": {
+    "status": "REVIEW",
+    "issues": [
+      "M-ALPHA"
+    ],
+    "geometry_inspected": true,
+    "evidence": "geometry/male-base-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "male/base/hair-textured-short": {
+    "status": "REVIEW",
+    "issues": [
+      "M-ALPHA"
+    ],
+    "geometry_inspected": true,
+    "evidence": "geometry/male-base-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "male/base/hair-shoulder-length": {
+    "status": "REVIEW",
+    "issues": [
+      "M-ALPHA"
+    ],
+    "geometry_inspected": true,
+    "evidence": "geometry/male-base-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "male/face-asian/hair-none": {
+    "status": "REVIEW",
+    "issues": [
+      "M-ALPHA",
+      "M-MASK-TRACE"
+    ],
+    "geometry_inspected": true,
+    "evidence": "geometry/male-face-asian-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "male/face-asian/hair-messy": {
+    "status": "REVIEW",
+    "issues": [
+      "M-ALPHA",
+      "M-MASK-TRACE"
+    ],
+    "geometry_inspected": true,
+    "evidence": "geometry/male-face-asian-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "male/face-asian/hair-bob": {
+    "status": "REVIEW",
+    "issues": [
+      "M-ALPHA",
+      "M-MASK-TRACE"
+    ],
+    "geometry_inspected": true,
+    "evidence": "geometry/male-face-asian-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "male/face-asian/hair-double-buns": {
+    "status": "REVIEW",
+    "issues": [
+      "M-ALPHA",
+      "M-MASK-TRACE"
+    ],
+    "geometry_inspected": true,
+    "evidence": "geometry/male-face-asian-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "male/face-asian/hair-classic-short": {
+    "status": "REVIEW",
+    "issues": [
+      "M-ALPHA",
+      "M-MASK-TRACE"
+    ],
+    "geometry_inspected": true,
+    "evidence": "geometry/male-face-asian-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "male/face-asian/hair-textured-short": {
+    "status": "REVIEW",
+    "issues": [
+      "M-ALPHA",
+      "M-MASK-TRACE"
+    ],
+    "geometry_inspected": true,
+    "evidence": "geometry/male-face-asian-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "male/face-asian/hair-shoulder-length": {
+    "status": "REVIEW",
+    "issues": [
+      "M-ALPHA",
+      "M-MASK-TRACE"
+    ],
+    "geometry_inspected": true,
+    "evidence": "geometry/male-face-asian-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "male/face-young/hair-none": {
+    "status": "REVIEW",
+    "issues": [
+      "M-ALPHA"
+    ],
+    "geometry_inspected": true,
+    "evidence": "geometry/male-face-young-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "male/face-young/hair-messy": {
+    "status": "REVIEW",
+    "issues": [
+      "M-ALPHA"
+    ],
+    "geometry_inspected": true,
+    "evidence": "geometry/male-face-young-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "male/face-young/hair-bob": {
+    "status": "REVIEW",
+    "issues": [
+      "M-ALPHA"
+    ],
+    "geometry_inspected": true,
+    "evidence": "geometry/male-face-young-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "male/face-young/hair-double-buns": {
+    "status": "REVIEW",
+    "issues": [
+      "M-ALPHA"
+    ],
+    "geometry_inspected": true,
+    "evidence": "geometry/male-face-young-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "male/face-young/hair-classic-short": {
+    "status": "REVIEW",
+    "issues": [
+      "M-ALPHA"
+    ],
+    "geometry_inspected": true,
+    "evidence": "geometry/male-face-young-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "male/face-young/hair-textured-short": {
+    "status": "REVIEW",
+    "issues": [
+      "M-ALPHA"
+    ],
+    "geometry_inspected": true,
+    "evidence": "geometry/male-face-young-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "male/face-young/hair-shoulder-length": {
+    "status": "REVIEW",
+    "issues": [
+      "M-ALPHA"
+    ],
+    "geometry_inspected": true,
+    "evidence": "geometry/male-face-young-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "male/face-exhausted/hair-none": {
+    "status": "REVIEW",
+    "issues": [
+      "M-ALPHA",
+      "M-MASK-TRACE"
+    ],
+    "geometry_inspected": true,
+    "evidence": "geometry/male-face-exhausted-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "male/face-exhausted/hair-messy": {
+    "status": "REVIEW",
+    "issues": [
+      "M-ALPHA",
+      "M-MASK-TRACE"
+    ],
+    "geometry_inspected": true,
+    "evidence": "geometry/male-face-exhausted-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "male/face-exhausted/hair-bob": {
+    "status": "REVIEW",
+    "issues": [
+      "M-ALPHA",
+      "M-MASK-TRACE"
+    ],
+    "geometry_inspected": true,
+    "evidence": "geometry/male-face-exhausted-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "male/face-exhausted/hair-double-buns": {
+    "status": "REVIEW",
+    "issues": [
+      "M-ALPHA",
+      "M-MASK-TRACE"
+    ],
+    "geometry_inspected": true,
+    "evidence": "geometry/male-face-exhausted-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "male/face-exhausted/hair-classic-short": {
+    "status": "REVIEW",
+    "issues": [
+      "M-ALPHA",
+      "M-MASK-TRACE"
+    ],
+    "geometry_inspected": true,
+    "evidence": "geometry/male-face-exhausted-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "male/face-exhausted/hair-textured-short": {
+    "status": "REVIEW",
+    "issues": [
+      "M-ALPHA",
+      "M-MASK-TRACE"
+    ],
+    "geometry_inspected": true,
+    "evidence": "geometry/male-face-exhausted-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "male/face-exhausted/hair-shoulder-length": {
+    "status": "REVIEW",
+    "issues": [
+      "M-ALPHA",
+      "M-MASK-TRACE"
+    ],
+    "geometry_inspected": true,
+    "evidence": "geometry/male-face-exhausted-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "male/face-elder/hair-none": {
+    "status": "REVIEW",
+    "issues": [
+      "M-ALPHA",
+      "M-MASK-TRACE"
+    ],
+    "geometry_inspected": true,
+    "evidence": "geometry/male-face-elder-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "male/face-elder/hair-messy": {
+    "status": "REVIEW",
+    "issues": [
+      "M-ALPHA",
+      "M-MASK-TRACE"
+    ],
+    "geometry_inspected": true,
+    "evidence": "geometry/male-face-elder-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "male/face-elder/hair-bob": {
+    "status": "REVIEW",
+    "issues": [
+      "M-ALPHA",
+      "M-MASK-TRACE"
+    ],
+    "geometry_inspected": true,
+    "evidence": "geometry/male-face-elder-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "male/face-elder/hair-double-buns": {
+    "status": "REVIEW",
+    "issues": [
+      "M-ALPHA",
+      "M-MASK-TRACE"
+    ],
+    "geometry_inspected": true,
+    "evidence": "geometry/male-face-elder-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "male/face-elder/hair-classic-short": {
+    "status": "REVIEW",
+    "issues": [
+      "M-ALPHA",
+      "M-MASK-TRACE"
+    ],
+    "geometry_inspected": true,
+    "evidence": "geometry/male-face-elder-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "male/face-elder/hair-textured-short": {
+    "status": "REVIEW",
+    "issues": [
+      "M-ALPHA",
+      "M-MASK-TRACE"
+    ],
+    "geometry_inspected": true,
+    "evidence": "geometry/male-face-elder-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "male/face-elder/hair-shoulder-length": {
+    "status": "REVIEW",
+    "issues": [
+      "M-ALPHA",
+      "M-MASK-TRACE"
+    ],
+    "geometry_inspected": true,
+    "evidence": "geometry/male-face-elder-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "male/face-alternative/hair-none": {
+    "status": "REVIEW",
+    "issues": [
+      "M-ALPHA",
+      "M-MASK-TRACE"
+    ],
+    "geometry_inspected": true,
+    "evidence": "geometry/male-face-alternative-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "male/face-alternative/hair-messy": {
+    "status": "REVIEW",
+    "issues": [
+      "M-ALPHA",
+      "M-MASK-TRACE"
+    ],
+    "geometry_inspected": true,
+    "evidence": "geometry/male-face-alternative-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "male/face-alternative/hair-bob": {
+    "status": "REVIEW",
+    "issues": [
+      "M-ALPHA",
+      "M-MASK-TRACE"
+    ],
+    "geometry_inspected": true,
+    "evidence": "geometry/male-face-alternative-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "male/face-alternative/hair-double-buns": {
+    "status": "REVIEW",
+    "issues": [
+      "M-ALPHA",
+      "M-MASK-TRACE"
+    ],
+    "geometry_inspected": true,
+    "evidence": "geometry/male-face-alternative-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "male/face-alternative/hair-classic-short": {
+    "status": "REVIEW",
+    "issues": [
+      "M-ALPHA",
+      "M-MASK-TRACE"
+    ],
+    "geometry_inspected": true,
+    "evidence": "geometry/male-face-alternative-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "male/face-alternative/hair-textured-short": {
+    "status": "REVIEW",
+    "issues": [
+      "M-ALPHA",
+      "M-MASK-TRACE"
+    ],
+    "geometry_inspected": true,
+    "evidence": "geometry/male-face-alternative-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "male/face-alternative/hair-shoulder-length": {
+    "status": "REVIEW",
+    "issues": [
+      "M-ALPHA",
+      "M-MASK-TRACE"
+    ],
+    "geometry_inspected": true,
+    "evidence": "geometry/male-face-alternative-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "male/face-male-goth-pierced/hair-none": {
+    "status": "REVIEW",
+    "issues": [
+      "M-ALPHA",
+      "M-MASK-TRACE"
+    ],
+    "geometry_inspected": true,
+    "evidence": "geometry/male-face-male-goth-pierced-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "male/face-male-goth-pierced/hair-messy": {
+    "status": "REVIEW",
+    "issues": [
+      "M-ALPHA",
+      "M-MASK-TRACE"
+    ],
+    "geometry_inspected": true,
+    "evidence": "geometry/male-face-male-goth-pierced-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "male/face-male-goth-pierced/hair-bob": {
+    "status": "REVIEW",
+    "issues": [
+      "M-ALPHA",
+      "M-PIERCING",
+      "M-MASK-TRACE"
+    ],
+    "geometry_inspected": true,
+    "evidence": "geometry/male-face-male-goth-pierced-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "male/face-male-goth-pierced/hair-double-buns": {
+    "status": "REVIEW",
+    "issues": [
+      "M-ALPHA",
+      "M-PIERCING",
+      "M-MASK-TRACE"
+    ],
+    "geometry_inspected": true,
+    "evidence": "geometry/male-face-male-goth-pierced-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "male/face-male-goth-pierced/hair-classic-short": {
+    "status": "REVIEW",
+    "issues": [
+      "M-ALPHA",
+      "M-MASK-TRACE"
+    ],
+    "geometry_inspected": true,
+    "evidence": "geometry/male-face-male-goth-pierced-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "male/face-male-goth-pierced/hair-textured-short": {
+    "status": "REVIEW",
+    "issues": [
+      "M-ALPHA",
+      "M-MASK-TRACE"
+    ],
+    "geometry_inspected": true,
+    "evidence": "geometry/male-face-male-goth-pierced-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "male/face-male-goth-pierced/hair-shoulder-length": {
+    "status": "REVIEW",
+    "issues": [
+      "M-ALPHA",
+      "M-PIERCING",
+      "M-MASK-TRACE"
+    ],
+    "geometry_inspected": true,
+    "evidence": "geometry/male-face-male-goth-pierced-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "male/face-male-freckled/hair-none": {
+    "status": "REVIEW",
+    "issues": [
+      "M-ALPHA"
+    ],
+    "geometry_inspected": true,
+    "evidence": "geometry/male-face-male-freckled-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "male/face-male-freckled/hair-messy": {
+    "status": "REVIEW",
+    "issues": [
+      "M-ALPHA"
+    ],
+    "geometry_inspected": true,
+    "evidence": "geometry/male-face-male-freckled-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "male/face-male-freckled/hair-bob": {
+    "status": "REVIEW",
+    "issues": [
+      "M-ALPHA"
+    ],
+    "geometry_inspected": true,
+    "evidence": "geometry/male-face-male-freckled-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "male/face-male-freckled/hair-double-buns": {
+    "status": "REVIEW",
+    "issues": [
+      "M-ALPHA"
+    ],
+    "geometry_inspected": true,
+    "evidence": "geometry/male-face-male-freckled-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "male/face-male-freckled/hair-classic-short": {
+    "status": "REVIEW",
+    "issues": [
+      "M-ALPHA"
+    ],
+    "geometry_inspected": true,
+    "evidence": "geometry/male-face-male-freckled-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "male/face-male-freckled/hair-textured-short": {
+    "status": "REVIEW",
+    "issues": [
+      "M-ALPHA"
+    ],
+    "geometry_inspected": true,
+    "evidence": "geometry/male-face-male-freckled-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "male/face-male-freckled/hair-shoulder-length": {
+    "status": "REVIEW",
+    "issues": [
+      "M-ALPHA"
+    ],
+    "geometry_inspected": true,
+    "evidence": "geometry/male-face-male-freckled-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "male/face-male-blue-eyes/hair-none": {
+    "status": "REVIEW",
+    "issues": [
+      "M-ALPHA"
+    ],
+    "geometry_inspected": true,
+    "evidence": "geometry/male-face-male-blue-eyes-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "male/face-male-blue-eyes/hair-messy": {
+    "status": "REVIEW",
+    "issues": [
+      "M-ALPHA"
+    ],
+    "geometry_inspected": true,
+    "evidence": "geometry/male-face-male-blue-eyes-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "male/face-male-blue-eyes/hair-bob": {
+    "status": "REVIEW",
+    "issues": [
+      "M-ALPHA"
+    ],
+    "geometry_inspected": true,
+    "evidence": "geometry/male-face-male-blue-eyes-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "male/face-male-blue-eyes/hair-double-buns": {
+    "status": "REVIEW",
+    "issues": [
+      "M-ALPHA"
+    ],
+    "geometry_inspected": true,
+    "evidence": "geometry/male-face-male-blue-eyes-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "male/face-male-blue-eyes/hair-classic-short": {
+    "status": "REVIEW",
+    "issues": [
+      "M-ALPHA"
+    ],
+    "geometry_inspected": true,
+    "evidence": "geometry/male-face-male-blue-eyes-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "male/face-male-blue-eyes/hair-textured-short": {
+    "status": "REVIEW",
+    "issues": [
+      "M-ALPHA"
+    ],
+    "geometry_inspected": true,
+    "evidence": "geometry/male-face-male-blue-eyes-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "male/face-male-blue-eyes/hair-shoulder-length": {
+    "status": "REVIEW",
+    "issues": [
+      "M-ALPHA"
+    ],
+    "geometry_inspected": true,
+    "evidence": "geometry/male-face-male-blue-eyes-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "female/base/hair-none": {
+    "status": "OK",
+    "issues": [],
+    "geometry_inspected": true,
+    "evidence": "geometry/female-base-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "female/base/hair-bob-bangs": {
+    "status": "OK",
+    "issues": [],
+    "geometry_inspected": true,
+    "evidence": "geometry/female-base-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "female/base/hair-messy": {
+    "status": "OK",
+    "issues": [],
+    "geometry_inspected": true,
+    "evidence": "geometry/female-base-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "female/base/hair-bob": {
+    "status": "OK",
+    "issues": [],
+    "geometry_inspected": true,
+    "evidence": "geometry/female-base-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "female/base/hair-double-buns": {
+    "status": "OK",
+    "issues": [],
+    "geometry_inspected": true,
+    "evidence": "geometry/female-base-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "female/base/hair-classic-short": {
+    "status": "OK",
+    "issues": [],
+    "geometry_inspected": true,
+    "evidence": "geometry/female-base-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "female/base/hair-textured-short": {
+    "status": "OK",
+    "issues": [],
+    "geometry_inspected": true,
+    "evidence": "geometry/female-base-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "female/base/hair-shoulder-length": {
+    "status": "OK",
+    "issues": [],
+    "geometry_inspected": true,
+    "evidence": "geometry/female-base-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "female/face-asian/hair-none": {
+    "status": "OK",
+    "issues": [],
+    "geometry_inspected": true,
+    "evidence": "geometry/female-face-asian-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "female/face-asian/hair-bob-bangs": {
+    "status": "OK",
+    "issues": [],
+    "geometry_inspected": true,
+    "evidence": "geometry/female-face-asian-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "female/face-asian/hair-messy": {
+    "status": "OK",
+    "issues": [],
+    "geometry_inspected": true,
+    "evidence": "geometry/female-face-asian-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "female/face-asian/hair-bob": {
+    "status": "OK",
+    "issues": [],
+    "geometry_inspected": true,
+    "evidence": "geometry/female-face-asian-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "female/face-asian/hair-double-buns": {
+    "status": "OK",
+    "issues": [],
+    "geometry_inspected": true,
+    "evidence": "geometry/female-face-asian-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "female/face-asian/hair-classic-short": {
+    "status": "OK",
+    "issues": [],
+    "geometry_inspected": true,
+    "evidence": "geometry/female-face-asian-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "female/face-asian/hair-textured-short": {
+    "status": "OK",
+    "issues": [],
+    "geometry_inspected": true,
+    "evidence": "geometry/female-face-asian-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "female/face-asian/hair-shoulder-length": {
+    "status": "OK",
+    "issues": [],
+    "geometry_inspected": true,
+    "evidence": "geometry/female-face-asian-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "female/face-young/hair-none": {
+    "status": "OK",
+    "issues": [],
+    "geometry_inspected": true,
+    "evidence": "geometry/female-face-young-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "female/face-young/hair-bob-bangs": {
+    "status": "OK",
+    "issues": [],
+    "geometry_inspected": true,
+    "evidence": "geometry/female-face-young-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "female/face-young/hair-messy": {
+    "status": "OK",
+    "issues": [],
+    "geometry_inspected": true,
+    "evidence": "geometry/female-face-young-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "female/face-young/hair-bob": {
+    "status": "OK",
+    "issues": [],
+    "geometry_inspected": true,
+    "evidence": "geometry/female-face-young-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "female/face-young/hair-double-buns": {
+    "status": "OK",
+    "issues": [],
+    "geometry_inspected": true,
+    "evidence": "geometry/female-face-young-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "female/face-young/hair-classic-short": {
+    "status": "OK",
+    "issues": [],
+    "geometry_inspected": true,
+    "evidence": "geometry/female-face-young-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "female/face-young/hair-textured-short": {
+    "status": "OK",
+    "issues": [],
+    "geometry_inspected": true,
+    "evidence": "geometry/female-face-young-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "female/face-young/hair-shoulder-length": {
+    "status": "OK",
+    "issues": [],
+    "geometry_inspected": true,
+    "evidence": "geometry/female-face-young-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "female/face-exhausted/hair-none": {
+    "status": "OK",
+    "issues": [],
+    "geometry_inspected": true,
+    "evidence": "geometry/female-face-exhausted-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "female/face-exhausted/hair-bob-bangs": {
+    "status": "OK",
+    "issues": [],
+    "geometry_inspected": true,
+    "evidence": "geometry/female-face-exhausted-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "female/face-exhausted/hair-messy": {
+    "status": "OK",
+    "issues": [],
+    "geometry_inspected": true,
+    "evidence": "geometry/female-face-exhausted-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "female/face-exhausted/hair-bob": {
+    "status": "OK",
+    "issues": [],
+    "geometry_inspected": true,
+    "evidence": "geometry/female-face-exhausted-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "female/face-exhausted/hair-double-buns": {
+    "status": "OK",
+    "issues": [],
+    "geometry_inspected": true,
+    "evidence": "geometry/female-face-exhausted-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "female/face-exhausted/hair-classic-short": {
+    "status": "OK",
+    "issues": [],
+    "geometry_inspected": true,
+    "evidence": "geometry/female-face-exhausted-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "female/face-exhausted/hair-textured-short": {
+    "status": "OK",
+    "issues": [],
+    "geometry_inspected": true,
+    "evidence": "geometry/female-face-exhausted-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "female/face-exhausted/hair-shoulder-length": {
+    "status": "OK",
+    "issues": [],
+    "geometry_inspected": true,
+    "evidence": "geometry/female-face-exhausted-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "female/face-elder/hair-none": {
+    "status": "OK",
+    "issues": [],
+    "geometry_inspected": true,
+    "evidence": "geometry/female-face-elder-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "female/face-elder/hair-bob-bangs": {
+    "status": "OK",
+    "issues": [],
+    "geometry_inspected": true,
+    "evidence": "geometry/female-face-elder-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "female/face-elder/hair-messy": {
+    "status": "OK",
+    "issues": [],
+    "geometry_inspected": true,
+    "evidence": "geometry/female-face-elder-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "female/face-elder/hair-bob": {
+    "status": "OK",
+    "issues": [],
+    "geometry_inspected": true,
+    "evidence": "geometry/female-face-elder-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "female/face-elder/hair-double-buns": {
+    "status": "OK",
+    "issues": [],
+    "geometry_inspected": true,
+    "evidence": "geometry/female-face-elder-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "female/face-elder/hair-classic-short": {
+    "status": "OK",
+    "issues": [],
+    "geometry_inspected": true,
+    "evidence": "geometry/female-face-elder-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "female/face-elder/hair-textured-short": {
+    "status": "OK",
+    "issues": [],
+    "geometry_inspected": true,
+    "evidence": "geometry/female-face-elder-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "female/face-elder/hair-shoulder-length": {
+    "status": "OK",
+    "issues": [],
+    "geometry_inspected": true,
+    "evidence": "geometry/female-face-elder-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "female/face-alternative/hair-none": {
+    "status": "OK",
+    "issues": [],
+    "geometry_inspected": true,
+    "evidence": "geometry/female-face-alternative-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "female/face-alternative/hair-bob-bangs": {
+    "status": "OK",
+    "issues": [],
+    "geometry_inspected": true,
+    "evidence": "geometry/female-face-alternative-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "female/face-alternative/hair-messy": {
+    "status": "OK",
+    "issues": [],
+    "geometry_inspected": true,
+    "evidence": "geometry/female-face-alternative-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "female/face-alternative/hair-bob": {
+    "status": "OK",
+    "issues": [],
+    "geometry_inspected": true,
+    "evidence": "geometry/female-face-alternative-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "female/face-alternative/hair-double-buns": {
+    "status": "OK",
+    "issues": [],
+    "geometry_inspected": true,
+    "evidence": "geometry/female-face-alternative-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "female/face-alternative/hair-classic-short": {
+    "status": "OK",
+    "issues": [],
+    "geometry_inspected": true,
+    "evidence": "geometry/female-face-alternative-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "female/face-alternative/hair-textured-short": {
+    "status": "OK",
+    "issues": [],
+    "geometry_inspected": true,
+    "evidence": "geometry/female-face-alternative-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "female/face-alternative/hair-shoulder-length": {
+    "status": "OK",
+    "issues": [],
+    "geometry_inspected": true,
+    "evidence": "geometry/female-face-alternative-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "female/face-ginger-soft/hair-none": {
+    "status": "REVIEW",
+    "issues": [
+      "F-GINGER"
+    ],
+    "geometry_inspected": true,
+    "evidence": "geometry/female-face-ginger-soft-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "female/face-ginger-soft/hair-bob-bangs": {
+    "status": "REVIEW",
+    "issues": [
+      "F-GINGER"
+    ],
+    "geometry_inspected": true,
+    "evidence": "geometry/female-face-ginger-soft-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "female/face-ginger-soft/hair-messy": {
+    "status": "REVIEW",
+    "issues": [
+      "F-GINGER"
+    ],
+    "geometry_inspected": true,
+    "evidence": "geometry/female-face-ginger-soft-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "female/face-ginger-soft/hair-bob": {
+    "status": "REVIEW",
+    "issues": [
+      "F-GINGER"
+    ],
+    "geometry_inspected": true,
+    "evidence": "geometry/female-face-ginger-soft-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "female/face-ginger-soft/hair-double-buns": {
+    "status": "REVIEW",
+    "issues": [
+      "F-GINGER"
+    ],
+    "geometry_inspected": true,
+    "evidence": "geometry/female-face-ginger-soft-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "female/face-ginger-soft/hair-classic-short": {
+    "status": "REVIEW",
+    "issues": [
+      "F-GINGER"
+    ],
+    "geometry_inspected": true,
+    "evidence": "geometry/female-face-ginger-soft-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "female/face-ginger-soft/hair-textured-short": {
+    "status": "REVIEW",
+    "issues": [
+      "F-GINGER"
+    ],
+    "geometry_inspected": true,
+    "evidence": "geometry/female-face-ginger-soft-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "female/face-ginger-soft/hair-shoulder-length": {
+    "status": "REVIEW",
+    "issues": [
+      "F-GINGER"
+    ],
+    "geometry_inspected": true,
+    "evidence": "geometry/female-face-ginger-soft-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "female/face-goth-septum/hair-none": {
+    "status": "OK",
+    "issues": [],
+    "geometry_inspected": true,
+    "evidence": "geometry/female-face-goth-septum-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "female/face-goth-septum/hair-bob-bangs": {
+    "status": "OK",
+    "issues": [],
+    "geometry_inspected": true,
+    "evidence": "geometry/female-face-goth-septum-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "female/face-goth-septum/hair-messy": {
+    "status": "OK",
+    "issues": [],
+    "geometry_inspected": true,
+    "evidence": "geometry/female-face-goth-septum-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "female/face-goth-septum/hair-bob": {
+    "status": "OK",
+    "issues": [],
+    "geometry_inspected": true,
+    "evidence": "geometry/female-face-goth-septum-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "female/face-goth-septum/hair-double-buns": {
+    "status": "OK",
+    "issues": [],
+    "geometry_inspected": true,
+    "evidence": "geometry/female-face-goth-septum-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "female/face-goth-septum/hair-classic-short": {
+    "status": "OK",
+    "issues": [],
+    "geometry_inspected": true,
+    "evidence": "geometry/female-face-goth-septum-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "female/face-goth-septum/hair-textured-short": {
+    "status": "OK",
+    "issues": [],
+    "geometry_inspected": true,
+    "evidence": "geometry/female-face-goth-septum-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "female/face-goth-septum/hair-shoulder-length": {
+    "status": "OK",
+    "issues": [],
+    "geometry_inspected": true,
+    "evidence": "geometry/female-face-goth-septum-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "female/face-goth-black-lips/hair-none": {
+    "status": "OK",
+    "issues": [],
+    "geometry_inspected": true,
+    "evidence": "geometry/female-face-goth-black-lips-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "female/face-goth-black-lips/hair-bob-bangs": {
+    "status": "OK",
+    "issues": [],
+    "geometry_inspected": true,
+    "evidence": "geometry/female-face-goth-black-lips-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "female/face-goth-black-lips/hair-messy": {
+    "status": "OK",
+    "issues": [],
+    "geometry_inspected": true,
+    "evidence": "geometry/female-face-goth-black-lips-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "female/face-goth-black-lips/hair-bob": {
+    "status": "OK",
+    "issues": [],
+    "geometry_inspected": true,
+    "evidence": "geometry/female-face-goth-black-lips-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "female/face-goth-black-lips/hair-double-buns": {
+    "status": "OK",
+    "issues": [],
+    "geometry_inspected": true,
+    "evidence": "geometry/female-face-goth-black-lips-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "female/face-goth-black-lips/hair-classic-short": {
+    "status": "OK",
+    "issues": [],
+    "geometry_inspected": true,
+    "evidence": "geometry/female-face-goth-black-lips-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "female/face-goth-black-lips/hair-textured-short": {
+    "status": "OK",
+    "issues": [],
+    "geometry_inspected": true,
+    "evidence": "geometry/female-face-goth-black-lips-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  },
+  "female/face-goth-black-lips/hair-shoulder-length": {
+    "status": "OK",
+    "issues": [],
+    "geometry_inspected": true,
+    "evidence": "geometry/female-face-goth-black-lips-overview.webp",
+    "scope": "Native original-color geometry overview. Recolored variants retain geometry and receive separate technical capture checks."
+  }
+}

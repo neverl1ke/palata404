@@ -25,7 +25,7 @@ class TargetedAssetTests(unittest.TestCase):
      self.assertEqual(digest(a[:,:,c][~allowed].tobytes()),e['outside_'+field+'_sha256'],field)
     if 'core_rgb_sha256' in e:self.assertEqual(digest(a[90:205,435:515,:3].tobytes()),e['core_rgb_sha256'])
  def test_historical_asian_scale_is_small_registered_and_head_edges_have_narrow_antialiasing(self):
-  before=reference('male','asian');a=read(ROOT/'assets/wardrobe/faces/male_asian_head.png')
+  before=reference('male','asian');a=read(historical_asset('assets/wardrobe/faces/male_asian_head.png'))
   def width(z):
    yy,xx=np.where(z[30:218,:,3]>=128);return int(xx.max()-xx.min()+1)
   ratio=width(a)/width(before);self.assertGreater(ratio,1.02);self.assertLess(ratio,1.055)
@@ -50,7 +50,7 @@ class TargetedAssetTests(unittest.TestCase):
    old=reference(g,'alternative');new=read(historical_asset(f'assets/wardrobe/faces/{g}_alternative_head.png'));body=read(historical_asset(f'base_{g}.png'));target=refine.skin_median(body);oldlab=refine.skin_median(old);newlab=refine.skin_median(new)
    scale=np.array([100/255,1,1]);self.assertLess(np.linalg.norm((newlab-target)*scale),np.linalg.norm((oldlab-target)*scale),g)
    if g=='female':self.assertLess(np.linalg.norm((newlab-oldlab)*scale),3)
-  old=reference('male','alternative');new=read(ROOT/'assets/wardrobe/faces/male_alternative_head.png')
+  old=reference('male','alternative');new=read(historical_asset('assets/wardrobe/faces/male_alternative_head.png'))
   for box in [(425,130,458,148),(488,128,521,146),(463,163,487,187),(455,199,495,211)]:
    x0,y0,x1,y1=box;a=old[y0:y1,x0:x1,:3]@np.array([.2126,.7152,.0722]);b=new[y0:y1,x0:x1,:3]@np.array([.2126,.7152,.0722]);self.assertGreater(np.corrcoef(a.ravel(),b.ravel())[0,1],.90,box)
  def test_thigh_correction_preserves_alpha_and_skin_texture(self):

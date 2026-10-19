@@ -1,0 +1,60 @@
+{
+  "expected": {
+    "key": "male/base/hair-none/black",
+    "gender": "male",
+    "face": null,
+    "hair": "hair-none",
+    "color": "black",
+    "path": "captures/male/base/hair-none/black.webp",
+    "sha256": "2d04eb44ad987f9969926087a080905f519e02202713ca63f68964aff5716dae",
+    "width": 400,
+    "height": 400,
+    "technical": "OK",
+    "status": "REVIEW",
+    "issues": []
+  },
+  "actual": {
+    "ready": "complete",
+    "state": {
+      "schemaVersion": 2,
+      "selectedGender": "male",
+      "activeViewMode": "combat",
+      "appearance": {
+        "face": null,
+        "hairColor": "black",
+        "hair": "hair-none"
+      },
+      "patientLoadout": {
+        "pants": null,
+        "footwear": null,
+        "upperBody": "patient-tunic",
+        "outerwear": null,
+        "armor": null,
+        "loadout": null,
+        "gloves": null,
+        "back": null,
+        "headwear": null,
+        "face": null,
+        "weapon": null,
+        "accessory": null
+      },
+      "combatLoadout": {
+        "pants": null,
+        "footwear": null,
+        "upperBody": null,
+        "outerwear": null,
+        "armor": null,
+        "loadout": null,
+        "gloves": null,
+        "back": null,
+        "headwear": null,
+        "face": null,
+        "weapon": null,
+        "accessory": null
+      }
+    },
+    "saved": "{\"schemaVersion\":2,\"selectedGender\":\"male\",\"activeViewMode\":\"combat\",\"appearance\":{\"face\":null,\"hairColor\":\"black\",\"hair\":\"hair-none\"},\"patientLoadout\":{\"pants\":null,\"footwear\":null,\"upperBody\":\"patient-tunic\",\"outerwear\":null,\"armor\":null,\"loadout\":null,\"gloves\":null,\"back\":null,\"headwear\":null,\"face\":null,\"weapon\":null,\"accessory\":null},\"combatLoadout\":{\"pants\":null,\"footwear\":null,\"upperBody\":null,\"outerwear\":null,\"armor\":null,\"loadout\":null,\"gloves\":null,\"back\":null,\"headwear\":null,\"face\":null,\"weapon\":null,\"accessory\":null}}"
+  },
+  "page_errors": [],
+  "http_errors": []
+}

@@ -1257,7 +1257,7 @@ test('approved Asian head variants stay below hair and preserve shared cosmetics
 test('eight female faces keep legacy IDs and add female-only catalog choices', () => {
     const g=game();
     assert.equal(g.run('PAPER_DOLL_ITEMS.filter(i=>i.slot==="face"&&paperDollItemSupportsGender(i,"female")).length'),8);
-    assert.equal(g.run('PAPER_DOLL_ITEMS.filter(i=>i.slot==="face"&&paperDollItemSupportsGender(i,"male")).length'),5);
+    assert.equal(g.run('PAPER_DOLL_ITEMS.filter(i=>i.slot==="face"&&paperDollItemSupportsGender(i,"male")).length'),8);
     for(const id of ['face-asian','face-young','face-exhausted','face-elder','face-alternative']) {
         for(const gender of ['male','female']) {
             g.run(`setGender('${gender}')`);
@@ -1520,4 +1520,33 @@ test('unchanged crown contours are reused without recomputation or a visual chan
     assert.equal(g.run('crownCalls'),0);
     assert.equal(g.elements.get('wardrobe-layer-face').style.clipPath,clip);
     assert.ok(clip.startsWith('polygon('));
+});
+
+test('new male-only portraits survive saves and reject unsupported female states', () => {
+    for(const id of ['face-male-goth-pierced','face-male-freckled','face-male-blue-eyes']) {
+        const g=game();
+        const before=g.run('JSON.stringify({stats,inventory,equippedGear})');
+        g.run('setGender("male");setPaperDollView("patient");equipPaperDollItem("upperBody","patient-tunic");setPaperDollView("combat");equipPaperDollItem("upperBody",null);equipPaperDollItem("hair","hair-messy");setHairColor("white")');
+        assert.equal(g.run(`equipPaperDollItem('face','${id}')`),true);
+        const restored=game(Object.fromEntries(g.storage));
+        assert.equal(restored.run('paperDollState.appearance.face'),id);
+        assert.equal(restored.run('paperDollState.patientLoadout.upperBody'),'patient-tunic');
+        assert.equal(restored.run('paperDollState.combatLoadout.upperBody'),null);
+        assert.equal(restored.run('JSON.stringify({stats,inventory,equippedGear})'),before);
+        restored.run('setGender("female")');
+        assert.equal(restored.run('paperDollState.appearance.face'),null);
+        assert.equal(restored.run(`equipPaperDollItem('face','${id}')`),false);
+    }
+});
+
+test('legacy shared face IDs and save schema remain valid after male pack replacement', () => {
+    const g=game();
+    for(const id of ['face-asian','face-young','face-exhausted','face-elder','face-alternative']) {
+        g.run(`setGender('male');equipPaperDollItem('face','${id}');saveGameProgress()`);
+        const restored=game(Object.fromEntries(g.storage));
+        assert.equal(restored.run('paperDollState.schemaVersion'),2);
+        assert.equal(restored.run('paperDollState.appearance.face'),id);
+        restored.run('setGender("female")');
+        assert.equal(restored.run('paperDollState.appearance.face'),id);
+    }
 });

@@ -1,0 +1,102 @@
+{
+  "baseline": "03a4b98c8440d6fa37d3c6b43db937ce19890315",
+  "branch": "review/male-heads-full-library",
+  "javascript": {
+    "tests": 86,
+    "passed": 86,
+    "failed": 0,
+    "log": "test-logs/javascript-final.log.gz"
+  },
+  "python": {
+    "tests": 126,
+    "passed": 125,
+    "failed": 1,
+    "failures": {
+      "tests.test_paper_doll_audit.AuditAssetTests.test_no_remote_faint_haze_or_detached_low_alpha_specks": "FAIL"
+    },
+    "failure_detail": "4234 remote weak-alpha pixels in the supplied, byte-identical base_male.png",
+    "core_tests": 116,
+    "new_tests": 10,
+    "updated_count_tests_rerun": [
+      "tests.test_female_faces.FemaleFacesBrowserTests.test_female_only_faces_do_not_leak_to_male_or_bad_saved_state",
+      "tests.test_game.GameTests.test_complete_face_catalog_selects_both_genders_and_restores_every_type"
+    ],
+    "logs": [
+      "test-logs/core-python.log.gz",
+      "test-logs/final-additions-and-updated-counts.log.gz"
+    ]
+  },
+  "screenshots": {
+    "details": 3375,
+    "full_body": 18,
+    "game_ui": 16,
+    "overview_sheets": 36
+  },
+  "reloads": {
+    "tests": 3375,
+    "passed": 3375,
+    "page_errors": [],
+    "http_errors": []
+  },
+  "offline_gallery": [
+    {
+      "engine": "chromium",
+      "version": "151.0.7922.34",
+      "protocol": "file://",
+      "widths": [
+        320,
+        360,
+        390,
+        430,
+        768,
+        1440
+      ],
+      "filters": true,
+      "zoom": [
+        1,
+        2,
+        4
+      ],
+      "fullbody": true,
+      "errors": []
+    },
+    {
+      "engine": "firefox",
+      "version": "153.0",
+      "protocol": "file://",
+      "widths": [
+        320,
+        360,
+        390,
+        430,
+        768,
+        1440
+      ],
+      "filters": true,
+      "zoom": [
+        1,
+        2,
+        4
+      ],
+      "fullbody": true,
+      "errors": []
+    }
+  ],
+  "game_ui_engines": [
+    {
+      "engine": "chromium",
+      "version": "151.0.7922.34",
+      "screenshots": 8
+    },
+    {
+      "engine": "firefox",
+      "version": "153.0",
+      "screenshots": 8
+    }
+  ],
+  "publication": {
+    "main_changed": false,
+    "push": false,
+    "pages_updated": false
+  }
+}

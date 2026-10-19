@@ -1,0 +1,12 @@
+{
+  "groups": 135,
+  "combinations": 3375,
+  "stable_face_rectangle": [
+    190,
+    205,
+    212,
+    230
+  ],
+  "failures": [],
+  "criteria": "All 25 colors preserve the central nose/mouth rectangle; no-hair frames are identical; every allowed color yields a distinct haired image."
+}

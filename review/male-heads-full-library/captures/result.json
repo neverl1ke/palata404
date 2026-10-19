@@ -1,0 +1,512 @@
+{
+  "engine": "chromium",
+  "version": "151.0.7922.34",
+  "catalog": {
+    "colors": [
+      {
+        "id": "original",
+        "name": "Оригінальний",
+        "group": "original",
+        "hex": null
+      },
+      {
+        "id": "black",
+        "name": "Чорний",
+        "hex": "#201A19",
+        "group": "natural"
+      },
+      {
+        "id": "dark-brown",
+        "name": "Темно-каштановий",
+        "hex": "#402A22",
+        "group": "natural"
+      },
+      {
+        "id": "brown",
+        "name": "Каштановий",
+        "hex": "#704632",
+        "group": "natural"
+      },
+      {
+        "id": "light-brown",
+        "name": "Світло-каштановий",
+        "hex": "#996A4B",
+        "group": "natural"
+      },
+      {
+        "id": "dark-fair",
+        "name": "Темно-русявий",
+        "hex": "#76644E",
+        "group": "natural"
+      },
+      {
+        "id": "fair",
+        "name": "Русявий",
+        "hex": "#A18B6D",
+        "group": "natural"
+      },
+      {
+        "id": "light-fair",
+        "name": "Світло-русявий",
+        "hex": "#C0AA82",
+        "group": "natural"
+      },
+      {
+        "id": "blond",
+        "name": "Блонд",
+        "hex": "#D9BD85",
+        "group": "natural"
+      },
+      {
+        "id": "platinum",
+        "name": "Платиновий блонд",
+        "hex": "#E6DDC8",
+        "group": "natural"
+      },
+      {
+        "id": "ginger",
+        "name": "Рудий",
+        "hex": "#AC522D",
+        "group": "natural"
+      },
+      {
+        "id": "gray",
+        "name": "Сивий",
+        "hex": "#A8A6A3",
+        "group": "natural"
+      },
+      {
+        "id": "white",
+        "name": "Білий",
+        "hex": "#C8C3BA",
+        "group": "natural"
+      },
+      {
+        "id": "burgundy",
+        "name": "Бордовий",
+        "hex": "#792B40",
+        "group": "alternative"
+      },
+      {
+        "id": "red",
+        "name": "Яскраво-червоний",
+        "hex": "#9E3137",
+        "group": "alternative"
+      },
+      {
+        "id": "pink",
+        "name": "Рожевий",
+        "hex": "#F07BAF",
+        "group": "alternative"
+      },
+      {
+        "id": "pastel-pink",
+        "name": "Пастельно-рожевий",
+        "hex": "#E7B2C4",
+        "group": "alternative"
+      },
+      {
+        "id": "purple",
+        "name": "Фіолетовий",
+        "hex": "#8447B5",
+        "group": "alternative"
+      },
+      {
+        "id": "lavender",
+        "name": "Лавандовий",
+        "hex": "#B4A0E4",
+        "group": "alternative"
+      },
+      {
+        "id": "navy",
+        "name": "Темно-синій",
+        "hex": "#283E8E",
+        "group": "alternative"
+      },
+      {
+        "id": "blue",
+        "name": "Електричний синій",
+        "hex": "#335BA6",
+        "group": "alternative"
+      },
+      {
+        "id": "turquoise",
+        "name": "Бірюзовий",
+        "hex": "#28736F",
+        "group": "alternative"
+      },
+      {
+        "id": "emerald",
+        "name": "Смарагдовий",
+        "hex": "#267C55",
+        "group": "alternative"
+      },
+      {
+        "id": "lime",
+        "name": "Кислотно-зелений",
+        "hex": "#748C28",
+        "group": "alternative"
+      },
+      {
+        "id": "orange",
+        "name": "Помаранчевий",
+        "hex": "#ED772D",
+        "group": "alternative"
+      }
+    ],
+    "faces": [
+      {
+        "id": "face-asian",
+        "name": "Азійський тип обличчя"
+      },
+      {
+        "id": "face-young",
+        "name": "Молоде обличчя"
+      },
+      {
+        "id": "face-exhausted",
+        "name": "Виснажене обличчя"
+      },
+      {
+        "id": "face-elder",
+        "name": "Старше обличчя"
+      },
+      {
+        "id": "face-alternative",
+        "name": "Нове обличчя"
+      },
+      {
+        "id": "face-ginger-soft",
+        "name": "Світле ніжне обличчя"
+      },
+      {
+        "id": "face-goth-septum",
+        "name": "Готичне обличчя із септумом"
+      },
+      {
+        "id": "face-goth-black-lips",
+        "name": "Готичне обличчя з чорними губами"
+      },
+      {
+        "id": "face-male-goth-pierced",
+        "name": "Готичне обличчя з пірсингом"
+      },
+      {
+        "id": "face-male-freckled",
+        "name": "Обличчя з веснянками"
+      },
+      {
+        "id": "face-male-blue-eyes",
+        "name": "Світлооке обличчя"
+      }
+    ],
+    "hairs": [
+      {
+        "id": "hair-none",
+        "name": "Без зачіски"
+      },
+      {
+        "id": "hair-bob-bangs",
+        "name": "Каре з чубчиком"
+      },
+      {
+        "id": "hair-messy",
+        "name": "Розкуйовджена зачіска"
+      },
+      {
+        "id": "hair-bob",
+        "name": "Каре до підборіддя"
+      },
+      {
+        "id": "hair-double-buns",
+        "name": "Два бокові пучки з локонами"
+      },
+      {
+        "id": "hair-classic-short",
+        "name": "Класична коротка стрижка"
+      },
+      {
+        "id": "hair-textured-short",
+        "name": "Коротка текстурована стрижка"
+      },
+      {
+        "id": "hair-shoulder-length",
+        "name": "Волосся до плечей"
+      }
+    ]
+  },
+  "genders": {
+    "male": {
+      "faces": [
+        null,
+        "face-asian",
+        "face-young",
+        "face-exhausted",
+        "face-elder",
+        "face-alternative",
+        "face-male-goth-pierced",
+        "face-male-freckled",
+        "face-male-blue-eyes"
+      ],
+      "hairs": [
+        "hair-none",
+        "hair-messy",
+        "hair-bob",
+        "hair-double-buns",
+        "hair-classic-short",
+        "hair-textured-short",
+        "hair-shoulder-length"
+      ],
+      "colors": [
+        "original",
+        "black",
+        "dark-brown",
+        "brown",
+        "light-brown",
+        "dark-fair",
+        "fair",
+        "light-fair",
+        "blond",
+        "platinum",
+        "ginger",
+        "gray",
+        "white",
+        "burgundy",
+        "red",
+        "pink",
+        "pastel-pink",
+        "purple",
+        "lavender",
+        "navy",
+        "blue",
+        "turquoise",
+        "emerald",
+        "lime",
+        "orange"
+      ]
+    },
+    "female": {
+      "faces": [
+        null,
+        "face-asian",
+        "face-young",
+        "face-exhausted",
+        "face-elder",
+        "face-alternative",
+        "face-ginger-soft",
+        "face-goth-septum",
+        "face-goth-black-lips"
+      ],
+      "hairs": [
+        "hair-none",
+        "hair-bob-bangs",
+        "hair-messy",
+        "hair-bob",
+        "hair-double-buns",
+        "hair-classic-short",
+        "hair-textured-short",
+        "hair-shoulder-length"
+      ],
+      "colors": [
+        "original",
+        "black",
+        "dark-brown",
+        "brown",
+        "light-brown",
+        "dark-fair",
+        "fair",
+        "light-fair",
+        "blond",
+        "platinum",
+        "ginger",
+        "gray",
+        "white",
+        "burgundy",
+        "red",
+        "pink",
+        "pastel-pink",
+        "purple",
+        "lavender",
+        "navy",
+        "blue",
+        "turquoise",
+        "emerald",
+        "lime",
+        "orange"
+      ]
+    }
+  },
+  "expected": 3375,
+  "captured": 3375,
+  "full_body": [
+    {
+      "gender": "male",
+      "face": null,
+      "path": "captures/male/base/full.webp"
+    },
+    {
+      "gender": "male",
+      "face": "face-asian",
+      "path": "captures/male/face-asian/full.webp"
+    },
+    {
+      "gender": "male",
+      "face": "face-young",
+      "path": "captures/male/face-young/full.webp"
+    },
+    {
+      "gender": "male",
+      "face": "face-exhausted",
+      "path": "captures/male/face-exhausted/full.webp"
+    },
+    {
+      "gender": "male",
+      "face": "face-elder",
+      "path": "captures/male/face-elder/full.webp"
+    },
+    {
+      "gender": "male",
+      "face": "face-alternative",
+      "path": "captures/male/face-alternative/full.webp"
+    },
+    {
+      "gender": "male",
+      "face": "face-male-goth-pierced",
+      "path": "captures/male/face-male-goth-pierced/full.webp"
+    },
+    {
+      "gender": "male",
+      "face": "face-male-freckled",
+      "path": "captures/male/face-male-freckled/full.webp"
+    },
+    {
+      "gender": "male",
+      "face": "face-male-blue-eyes",
+      "path": "captures/male/face-male-blue-eyes/full.webp"
+    },
+    {
+      "gender": "female",
+      "face": null,
+      "path": "captures/female/base/full.webp"
+    },
+    {
+      "gender": "female",
+      "face": "face-asian",
+      "path": "captures/female/face-asian/full.webp"
+    },
+    {
+      "gender": "female",
+      "face": "face-young",
+      "path": "captures/female/face-young/full.webp"
+    },
+    {
+      "gender": "female",
+      "face": "face-exhausted",
+      "path": "captures/female/face-exhausted/full.webp"
+    },
+    {
+      "gender": "female",
+      "face": "face-elder",
+      "path": "captures/female/face-elder/full.webp"
+    },
+    {
+      "gender": "female",
+      "face": "face-alternative",
+      "path": "captures/female/face-alternative/full.webp"
+    },
+    {
+      "gender": "female",
+      "face": "face-ginger-soft",
+      "path": "captures/female/face-ginger-soft/full.webp"
+    },
+    {
+      "gender": "female",
+      "face": "face-goth-septum",
+      "path": "captures/female/face-goth-septum/full.webp"
+    },
+    {
+      "gender": "female",
+      "face": "face-goth-black-lips",
+      "path": "captures/female/face-goth-black-lips/full.webp"
+    }
+  ],
+  "reloads": [
+    [
+      "male",
+      null
+    ],
+    [
+      "male",
+      "face-asian"
+    ],
+    [
+      "male",
+      "face-young"
+    ],
+    [
+      "male",
+      "face-exhausted"
+    ],
+    [
+      "male",
+      "face-elder"
+    ],
+    [
+      "male",
+      "face-alternative"
+    ],
+    [
+      "male",
+      "face-male-goth-pierced"
+    ],
+    [
+      "male",
+      "face-male-freckled"
+    ],
+    [
+      "male",
+      "face-male-blue-eyes"
+    ],
+    [
+      "female",
+      null
+    ],
+    [
+      "female",
+      "face-asian"
+    ],
+    [
+      "female",
+      "face-young"
+    ],
+    [
+      "female",
+      "face-exhausted"
+    ],
+    [
+      "female",
+      "face-elder"
+    ],
+    [
+      "female",
+      "face-alternative"
+    ],
+    [
+      "female",
+      "face-ginger-soft"
+    ],
+    [
+      "female",
+      "face-goth-septum"
+    ],
+    [
+      "female",
+      "face-goth-black-lips"
+    ]
+  ],
+  "page_errors": [],
+  "http_errors": [],
+  "seconds": 1958.57,
+  "capture": "Production renderPaperDollAt in actual index.html; 400x400 native pixels; full-body 50%; lossless WebP",
+  "visual_status_note": "REVIEW until explicit visual assessment; technical OK does not certify artistic fit."
+}

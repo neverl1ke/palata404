@@ -1,0 +1,10 @@
+{
+  "selectors": [
+    "tests.test_male_head_library",
+    "tests.test_female_faces.FemaleFacesBrowserTests.test_female_only_faces_do_not_leak_to_male_or_bad_saved_state",
+    "tests.test_game.GameTests.test_complete_face_catalog_selects_both_genders_and_restores_every_type"
+  ],
+  "expected_tests": 12,
+  "exit": 0,
+  "seconds": 66.63736659800634
+}

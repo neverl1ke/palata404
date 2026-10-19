@@ -1,0 +1,80 @@
+{
+  "engine": "firefox",
+  "version": "153.0",
+  "records": [
+    {
+      "gender": "male",
+      "face": "face-male-goth-pierced",
+      "hair": "hair-messy",
+      "color": "white",
+      "width": 1440,
+      "height": 1000,
+      "path": "game-ui-firefox/male-1440.png"
+    },
+    {
+      "gender": "male",
+      "face": "face-male-goth-pierced",
+      "hair": "hair-messy",
+      "color": "white",
+      "width": 320,
+      "height": 568,
+      "path": "game-ui-firefox/male-320.png"
+    },
+    {
+      "gender": "male",
+      "face": "face-male-goth-pierced",
+      "hair": "hair-messy",
+      "color": "white",
+      "width": 390,
+      "height": 844,
+      "path": "game-ui-firefox/male-390.png"
+    },
+    {
+      "gender": "male",
+      "face": "face-male-goth-pierced",
+      "hair": "hair-messy",
+      "color": "white",
+      "width": 768,
+      "height": 1024,
+      "path": "game-ui-firefox/male-768.png"
+    },
+    {
+      "gender": "female",
+      "face": "face-goth-septum",
+      "hair": "hair-messy",
+      "color": "white",
+      "width": 1440,
+      "height": 1000,
+      "path": "game-ui-firefox/female-1440.png"
+    },
+    {
+      "gender": "female",
+      "face": "face-goth-septum",
+      "hair": "hair-messy",
+      "color": "white",
+      "width": 320,
+      "height": 568,
+      "path": "game-ui-firefox/female-320.png"
+    },
+    {
+      "gender": "female",
+      "face": "face-goth-septum",
+      "hair": "hair-messy",
+      "color": "white",
+      "width": 390,
+      "height": 844,
+      "path": "game-ui-firefox/female-390.png"
+    },
+    {
+      "gender": "female",
+      "face": "face-goth-septum",
+      "hair": "hair-messy",
+      "color": "white",
+      "width": 768,
+      "height": 1024,
+      "path": "game-ui-firefox/female-768.png"
+    }
+  ],
+  "page_errors": [],
+  "http_errors": []
+}
