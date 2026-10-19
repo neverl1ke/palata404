@@ -1,0 +1,2183 @@
+{
+  "engine": "chromium",
+  "version": "151.0.7922.34",
+  "phase": "after",
+  "hairs": [
+    "hair-none",
+    "hair-bob-bangs",
+    "hair-messy",
+    "hair-bob",
+    "hair-double-buns",
+    "hair-classic-short",
+    "hair-textured-short",
+    "hair-shoulder-length"
+  ],
+  "matrix_records": [
+    {
+      "face": "face-asian",
+      "hair": "hair-none",
+      "color": "original",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-asian",
+      "hair": "hair-bob-bangs",
+      "color": "original",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-asian",
+      "hair": "hair-messy",
+      "color": "original",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-asian",
+      "hair": "hair-bob",
+      "color": "original",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-asian",
+      "hair": "hair-double-buns",
+      "color": "original",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-asian",
+      "hair": "hair-classic-short",
+      "color": "original",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-asian",
+      "hair": "hair-textured-short",
+      "color": "original",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-asian",
+      "hair": "hair-shoulder-length",
+      "color": "original",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-asian",
+      "hair": "hair-none",
+      "color": "black",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-asian",
+      "hair": "hair-bob-bangs",
+      "color": "black",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-asian",
+      "hair": "hair-messy",
+      "color": "black",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-asian",
+      "hair": "hair-bob",
+      "color": "black",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-asian",
+      "hair": "hair-double-buns",
+      "color": "black",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-asian",
+      "hair": "hair-classic-short",
+      "color": "black",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-asian",
+      "hair": "hair-textured-short",
+      "color": "black",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-asian",
+      "hair": "hair-shoulder-length",
+      "color": "black",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-asian",
+      "hair": "hair-none",
+      "color": "white",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-asian",
+      "hair": "hair-bob-bangs",
+      "color": "white",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-asian",
+      "hair": "hair-messy",
+      "color": "white",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-asian",
+      "hair": "hair-bob",
+      "color": "white",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-asian",
+      "hair": "hair-double-buns",
+      "color": "white",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-asian",
+      "hair": "hair-classic-short",
+      "color": "white",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-asian",
+      "hair": "hair-textured-short",
+      "color": "white",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-asian",
+      "hair": "hair-shoulder-length",
+      "color": "white",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-young",
+      "hair": "hair-none",
+      "color": "original",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-young",
+      "hair": "hair-bob-bangs",
+      "color": "original",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-young",
+      "hair": "hair-messy",
+      "color": "original",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-young",
+      "hair": "hair-bob",
+      "color": "original",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-young",
+      "hair": "hair-double-buns",
+      "color": "original",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-young",
+      "hair": "hair-classic-short",
+      "color": "original",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-young",
+      "hair": "hair-textured-short",
+      "color": "original",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-young",
+      "hair": "hair-shoulder-length",
+      "color": "original",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-young",
+      "hair": "hair-none",
+      "color": "black",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-young",
+      "hair": "hair-bob-bangs",
+      "color": "black",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-young",
+      "hair": "hair-messy",
+      "color": "black",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-young",
+      "hair": "hair-bob",
+      "color": "black",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-young",
+      "hair": "hair-double-buns",
+      "color": "black",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-young",
+      "hair": "hair-classic-short",
+      "color": "black",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-young",
+      "hair": "hair-textured-short",
+      "color": "black",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-young",
+      "hair": "hair-shoulder-length",
+      "color": "black",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-young",
+      "hair": "hair-none",
+      "color": "white",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-young",
+      "hair": "hair-bob-bangs",
+      "color": "white",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-young",
+      "hair": "hair-messy",
+      "color": "white",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-young",
+      "hair": "hair-bob",
+      "color": "white",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-young",
+      "hair": "hair-double-buns",
+      "color": "white",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-young",
+      "hair": "hair-classic-short",
+      "color": "white",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-young",
+      "hair": "hair-textured-short",
+      "color": "white",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-young",
+      "hair": "hair-shoulder-length",
+      "color": "white",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-exhausted",
+      "hair": "hair-none",
+      "color": "original",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-exhausted",
+      "hair": "hair-bob-bangs",
+      "color": "original",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-exhausted",
+      "hair": "hair-messy",
+      "color": "original",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-exhausted",
+      "hair": "hair-bob",
+      "color": "original",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-exhausted",
+      "hair": "hair-double-buns",
+      "color": "original",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-exhausted",
+      "hair": "hair-classic-short",
+      "color": "original",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-exhausted",
+      "hair": "hair-textured-short",
+      "color": "original",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-exhausted",
+      "hair": "hair-shoulder-length",
+      "color": "original",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-exhausted",
+      "hair": "hair-none",
+      "color": "black",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-exhausted",
+      "hair": "hair-bob-bangs",
+      "color": "black",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-exhausted",
+      "hair": "hair-messy",
+      "color": "black",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-exhausted",
+      "hair": "hair-bob",
+      "color": "black",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-exhausted",
+      "hair": "hair-double-buns",
+      "color": "black",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-exhausted",
+      "hair": "hair-classic-short",
+      "color": "black",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-exhausted",
+      "hair": "hair-textured-short",
+      "color": "black",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-exhausted",
+      "hair": "hair-shoulder-length",
+      "color": "black",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-exhausted",
+      "hair": "hair-none",
+      "color": "white",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-exhausted",
+      "hair": "hair-bob-bangs",
+      "color": "white",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-exhausted",
+      "hair": "hair-messy",
+      "color": "white",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-exhausted",
+      "hair": "hair-bob",
+      "color": "white",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-exhausted",
+      "hair": "hair-double-buns",
+      "color": "white",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-exhausted",
+      "hair": "hair-classic-short",
+      "color": "white",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-exhausted",
+      "hair": "hair-textured-short",
+      "color": "white",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-exhausted",
+      "hair": "hair-shoulder-length",
+      "color": "white",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-elder",
+      "hair": "hair-none",
+      "color": "original",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-elder",
+      "hair": "hair-bob-bangs",
+      "color": "original",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-elder",
+      "hair": "hair-messy",
+      "color": "original",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-elder",
+      "hair": "hair-bob",
+      "color": "original",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-elder",
+      "hair": "hair-double-buns",
+      "color": "original",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-elder",
+      "hair": "hair-classic-short",
+      "color": "original",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-elder",
+      "hair": "hair-textured-short",
+      "color": "original",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-elder",
+      "hair": "hair-shoulder-length",
+      "color": "original",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-elder",
+      "hair": "hair-none",
+      "color": "black",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-elder",
+      "hair": "hair-bob-bangs",
+      "color": "black",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-elder",
+      "hair": "hair-messy",
+      "color": "black",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-elder",
+      "hair": "hair-bob",
+      "color": "black",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-elder",
+      "hair": "hair-double-buns",
+      "color": "black",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-elder",
+      "hair": "hair-classic-short",
+      "color": "black",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-elder",
+      "hair": "hair-textured-short",
+      "color": "black",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-elder",
+      "hair": "hair-shoulder-length",
+      "color": "black",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-elder",
+      "hair": "hair-none",
+      "color": "white",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-elder",
+      "hair": "hair-bob-bangs",
+      "color": "white",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-elder",
+      "hair": "hair-messy",
+      "color": "white",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-elder",
+      "hair": "hair-bob",
+      "color": "white",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-elder",
+      "hair": "hair-double-buns",
+      "color": "white",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-elder",
+      "hair": "hair-classic-short",
+      "color": "white",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-elder",
+      "hair": "hair-textured-short",
+      "color": "white",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-elder",
+      "hair": "hair-shoulder-length",
+      "color": "white",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-alternative",
+      "hair": "hair-none",
+      "color": "original",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-alternative",
+      "hair": "hair-bob-bangs",
+      "color": "original",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-alternative",
+      "hair": "hair-messy",
+      "color": "original",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-alternative",
+      "hair": "hair-bob",
+      "color": "original",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-alternative",
+      "hair": "hair-double-buns",
+      "color": "original",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-alternative",
+      "hair": "hair-classic-short",
+      "color": "original",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-alternative",
+      "hair": "hair-textured-short",
+      "color": "original",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-alternative",
+      "hair": "hair-shoulder-length",
+      "color": "original",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-alternative",
+      "hair": "hair-none",
+      "color": "black",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-alternative",
+      "hair": "hair-bob-bangs",
+      "color": "black",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-alternative",
+      "hair": "hair-messy",
+      "color": "black",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-alternative",
+      "hair": "hair-bob",
+      "color": "black",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-alternative",
+      "hair": "hair-double-buns",
+      "color": "black",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-alternative",
+      "hair": "hair-classic-short",
+      "color": "black",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-alternative",
+      "hair": "hair-textured-short",
+      "color": "black",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-alternative",
+      "hair": "hair-shoulder-length",
+      "color": "black",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-alternative",
+      "hair": "hair-none",
+      "color": "white",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-alternative",
+      "hair": "hair-bob-bangs",
+      "color": "white",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-alternative",
+      "hair": "hair-messy",
+      "color": "white",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-alternative",
+      "hair": "hair-bob",
+      "color": "white",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-alternative",
+      "hair": "hair-double-buns",
+      "color": "white",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-alternative",
+      "hair": "hair-classic-short",
+      "color": "white",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-alternative",
+      "hair": "hair-textured-short",
+      "color": "white",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-alternative",
+      "hair": "hair-shoulder-length",
+      "color": "white",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-ginger-soft",
+      "hair": "hair-none",
+      "color": "original",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-ginger-soft",
+      "hair": "hair-bob-bangs",
+      "color": "original",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-ginger-soft",
+      "hair": "hair-messy",
+      "color": "original",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-ginger-soft",
+      "hair": "hair-bob",
+      "color": "original",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-ginger-soft",
+      "hair": "hair-double-buns",
+      "color": "original",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-ginger-soft",
+      "hair": "hair-classic-short",
+      "color": "original",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-ginger-soft",
+      "hair": "hair-textured-short",
+      "color": "original",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-ginger-soft",
+      "hair": "hair-shoulder-length",
+      "color": "original",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-ginger-soft",
+      "hair": "hair-none",
+      "color": "black",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-ginger-soft",
+      "hair": "hair-bob-bangs",
+      "color": "black",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-ginger-soft",
+      "hair": "hair-messy",
+      "color": "black",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-ginger-soft",
+      "hair": "hair-bob",
+      "color": "black",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-ginger-soft",
+      "hair": "hair-double-buns",
+      "color": "black",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-ginger-soft",
+      "hair": "hair-classic-short",
+      "color": "black",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-ginger-soft",
+      "hair": "hair-textured-short",
+      "color": "black",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-ginger-soft",
+      "hair": "hair-shoulder-length",
+      "color": "black",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-ginger-soft",
+      "hair": "hair-none",
+      "color": "white",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-ginger-soft",
+      "hair": "hair-bob-bangs",
+      "color": "white",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-ginger-soft",
+      "hair": "hair-messy",
+      "color": "white",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-ginger-soft",
+      "hair": "hair-bob",
+      "color": "white",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-ginger-soft",
+      "hair": "hair-double-buns",
+      "color": "white",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-ginger-soft",
+      "hair": "hair-classic-short",
+      "color": "white",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-ginger-soft",
+      "hair": "hair-textured-short",
+      "color": "white",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-ginger-soft",
+      "hair": "hair-shoulder-length",
+      "color": "white",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-goth-septum",
+      "hair": "hair-none",
+      "color": "original",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-goth-septum",
+      "hair": "hair-bob-bangs",
+      "color": "original",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-goth-septum",
+      "hair": "hair-messy",
+      "color": "original",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-goth-septum",
+      "hair": "hair-bob",
+      "color": "original",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-goth-septum",
+      "hair": "hair-double-buns",
+      "color": "original",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-goth-septum",
+      "hair": "hair-classic-short",
+      "color": "original",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-goth-septum",
+      "hair": "hair-textured-short",
+      "color": "original",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-goth-septum",
+      "hair": "hair-shoulder-length",
+      "color": "original",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-goth-septum",
+      "hair": "hair-none",
+      "color": "black",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-goth-septum",
+      "hair": "hair-bob-bangs",
+      "color": "black",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-goth-septum",
+      "hair": "hair-messy",
+      "color": "black",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-goth-septum",
+      "hair": "hair-bob",
+      "color": "black",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-goth-septum",
+      "hair": "hair-double-buns",
+      "color": "black",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-goth-septum",
+      "hair": "hair-classic-short",
+      "color": "black",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-goth-septum",
+      "hair": "hair-textured-short",
+      "color": "black",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-goth-septum",
+      "hair": "hair-shoulder-length",
+      "color": "black",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-goth-septum",
+      "hair": "hair-none",
+      "color": "white",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-goth-septum",
+      "hair": "hair-bob-bangs",
+      "color": "white",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-goth-septum",
+      "hair": "hair-messy",
+      "color": "white",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-goth-septum",
+      "hair": "hair-bob",
+      "color": "white",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-goth-septum",
+      "hair": "hair-double-buns",
+      "color": "white",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-goth-septum",
+      "hair": "hair-classic-short",
+      "color": "white",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-goth-septum",
+      "hair": "hair-textured-short",
+      "color": "white",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-goth-septum",
+      "hair": "hair-shoulder-length",
+      "color": "white",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-goth-black-lips",
+      "hair": "hair-none",
+      "color": "original",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-goth-black-lips",
+      "hair": "hair-bob-bangs",
+      "color": "original",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-goth-black-lips",
+      "hair": "hair-messy",
+      "color": "original",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-goth-black-lips",
+      "hair": "hair-bob",
+      "color": "original",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-goth-black-lips",
+      "hair": "hair-double-buns",
+      "color": "original",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-goth-black-lips",
+      "hair": "hair-classic-short",
+      "color": "original",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-goth-black-lips",
+      "hair": "hair-textured-short",
+      "color": "original",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-goth-black-lips",
+      "hair": "hair-shoulder-length",
+      "color": "original",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-goth-black-lips",
+      "hair": "hair-none",
+      "color": "black",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-goth-black-lips",
+      "hair": "hair-bob-bangs",
+      "color": "black",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-goth-black-lips",
+      "hair": "hair-messy",
+      "color": "black",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-goth-black-lips",
+      "hair": "hair-bob",
+      "color": "black",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-goth-black-lips",
+      "hair": "hair-double-buns",
+      "color": "black",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-goth-black-lips",
+      "hair": "hair-classic-short",
+      "color": "black",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-goth-black-lips",
+      "hair": "hair-textured-short",
+      "color": "black",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-goth-black-lips",
+      "hair": "hair-shoulder-length",
+      "color": "black",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-goth-black-lips",
+      "hair": "hair-none",
+      "color": "white",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-goth-black-lips",
+      "hair": "hair-bob-bangs",
+      "color": "white",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-goth-black-lips",
+      "hair": "hair-messy",
+      "color": "white",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-goth-black-lips",
+      "hair": "hair-bob",
+      "color": "white",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-goth-black-lips",
+      "hair": "hair-double-buns",
+      "color": "white",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-goth-black-lips",
+      "hair": "hair-classic-short",
+      "color": "white",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-goth-black-lips",
+      "hair": "hair-textured-short",
+      "color": "white",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    },
+    {
+      "face": "face-goth-black-lips",
+      "hair": "hair-shoulder-length",
+      "color": "white",
+      "backgrounds": [
+        "#ffffff",
+        "#555555",
+        "#000000",
+        "#00ff00"
+      ]
+    }
+  ],
+  "combinations": 192,
+  "background_samples": 768,
+  "reloaded_faces": [
+    "face-asian",
+    "face-young",
+    "face-exhausted",
+    "face-elder",
+    "face-alternative",
+    "face-ginger-soft",
+    "face-goth-septum",
+    "face-goth-black-lips"
+  ],
+  "ui_viewports": [
+    {
+      "width": 320,
+      "height": 568,
+      "last_card_clicked": true,
+      "horizontal_overflow": false
+    },
+    {
+      "width": 360,
+      "height": 640,
+      "last_card_clicked": true,
+      "horizontal_overflow": false
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "last_card_clicked": true,
+      "horizontal_overflow": false
+    },
+    {
+      "width": 430,
+      "height": 844,
+      "last_card_clicked": true,
+      "horizontal_overflow": false
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "last_card_clicked": true,
+      "horizontal_overflow": false
+    },
+    {
+      "width": 1440,
+      "height": 1000,
+      "last_card_clicked": true,
+      "horizontal_overflow": false
+    }
+  ],
+  "page_errors": [],
+  "http_errors": [],
+  "capture": "production compositor in actual index.html, native 1:1 Paper Doll pixels",
+  "device": "desktop browser with emulated viewport, no physical mobile device"
+}

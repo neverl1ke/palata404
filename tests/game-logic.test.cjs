@@ -1288,6 +1288,33 @@ test('female-only faces reset safely on gender changes and unsupported male save
     }
 });
 
+test('independent face audit rejects malformed and retired face IDs without changing progress or outfits', () => {
+    const valid=game();
+    valid.run('setGender("female");setPaperDollView("combat");equipPaperDollItem("upperBody",null);setPaperDollView("patient");equipPaperDollItem("upperBody","patient-tunic")');
+    const saved=Object.fromEntries(valid.storage);
+    const expected=valid.run('JSON.stringify({stats,inventory,equippedGear,gameProgress,patient:paperDollState.patientLoadout,combat:paperDollState.combatLoadout})');
+    for(const face of ['face_1.png','missing-face','',42,[],{},null]) {
+        const doll=JSON.parse(saved.palata404_paper_doll);doll.appearance.face=face;
+        const g=game({...saved,palata404_paper_doll:JSON.stringify(doll)});
+        assert.equal(g.run('paperDollState.appearance.face'),null);
+        assert.equal(g.run('JSON.stringify({stats,inventory,equippedGear,gameProgress,patient:paperDollState.patientLoadout,combat:paperDollState.combatLoadout})'),expected);
+        const reloaded=game(Object.fromEntries(g.storage));
+        assert.equal(reloaded.run('paperDollState.appearance.face'),null);
+    }
+});
+
+test('independent face audit migrates v1 selected mode and keeps old paired IDs across gender changes', () => {
+    for(const id of ['face-asian','face-young','face-exhausted','face-elder','face-alternative']) {
+        const g=game({palata404_paper_doll:JSON.stringify({schemaVersion:1,selectedGender:'female',activeViewMode:'combat',
+            patientLoadout:{face:'face-young',upperBody:'patient-tunic'},combatLoadout:{face:id}})});
+        assert.equal(g.run('paperDollState.appearance.face'),id);
+        g.run('setGender("male")');assert.equal(g.run('paperDollState.appearance.face'),id);
+        assert.equal(game(Object.fromEntries(g.storage)).run('paperDollState.appearance.face'),id);
+        assert.equal(g.run('paperDollState.patientLoadout.upperBody'),'patient-tunic');
+        assert.equal(g.run('paperDollState.combatLoadout.upperBody'),null);
+    }
+});
+
 test('crown clipping covers affected heads and clears on unaffected hairstyles', () => {
     const g=game();
     const geometry=g.run('JSON.stringify(PAPER_DOLL_ITEMS.filter(i=>i.slot==="hair").map(i=>i.placementByGender))');

@@ -1,0 +1,10 @@
+test_all_neck_silhouettes_have_no_abrupt_join_steps (tests.test_female_faces_independent.IndependentFemaleFaceTests.test_all_neck_silhouettes_have_no_abrupt_join_steps) ... ok
+test_each_actual_mask_preserves_solid_neck_and_lower_body (tests.test_female_faces_independent.IndependentFemaleFaceTests.test_each_actual_mask_preserves_solid_neck_and_lower_body) ... ok
+test_neck_detector_rejects_the_real_pre_fix_regression (tests.test_female_faces_independent.IndependentFemaleFaceTests.test_neck_detector_rejects_the_real_pre_fix_regression) ... ok
+test_repaired_necks_do_not_have_a_second_alpha_rim (tests.test_female_faces_independent.IndependentFemaleFaceTests.test_repaired_necks_do_not_have_a_second_alpha_rim) ... ok
+test_repairs_preserve_approved_portraits_and_all_protected_assets (tests.test_female_faces_independent.IndependentFemaleFaceTests.test_repairs_preserve_approved_portraits_and_all_protected_assets) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 2.250s
+
+OK

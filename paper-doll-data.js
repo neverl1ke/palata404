@@ -35,7 +35,7 @@ const PAPER_DOLL_ITEMS = [
         fittedToGender: true, description: 'Варіант голови для обраного базового аватара.',
         // DOM image renderer: above the body (0), below clothing and hair (9).
         renderOrder: 1,
-        genderVariants: { male: 'assets/wardrobe/faces/male_asian_head.png?v=1043b5b2', female: 'assets/wardrobe/faces/female_asian_head.png?v=2a699e33' },
+        genderVariants: { male: 'assets/wardrobe/faces/male_asian_head.png?v=1043b5b2', female: 'assets/wardrobe/faces/female_asian_head.png?v=cf29ee83' },
         bodyMaskByGender: { male: 'assets/wardrobe/faces/masks/male_asian_body.png?v=dbaab2c9', female: 'assets/wardrobe/faces/masks/female_asian_body.png?v=4ce39715' },
         placementByGender: {
             male: { x: 0, y: 0, width: 941, height: 1672 },
@@ -45,7 +45,7 @@ const PAPER_DOLL_ITEMS = [
         fittedToGender: true, description: 'Молодий тип обличчя, 18–20 років.',
         // DOM image renderer: above the body (0), below clothing and hair (9).
         renderOrder: 1,
-        genderVariants: { male: 'assets/wardrobe/faces/male_young_head.png?v=02729493', female: 'assets/wardrobe/faces/female_young_head.png?v=a2a80060' },
+        genderVariants: { male: 'assets/wardrobe/faces/male_young_head.png?v=02729493', female: 'assets/wardrobe/faces/female_young_head.png?v=8feabbfb' },
         bodyMaskByGender: { male: 'assets/wardrobe/faces/masks/male_young_body.png?v=73bad65e', female: 'assets/wardrobe/faces/masks/female_young_body.png?v=4ce39715' },
         placementByGender: {
             male: { x: 0, y: 0, width: 941, height: 1672 },
@@ -55,7 +55,7 @@ const PAPER_DOLL_ITEMS = [
         fittedToGender: true, description: 'Виснажений, тривожний тип обличчя.',
         // DOM image renderer: above the body (0), below clothing and hair (9).
         renderOrder: 1,
-        genderVariants: { male: 'assets/wardrobe/faces/male_exhausted_head.png?v=5683706e', female: 'assets/wardrobe/faces/female_exhausted_head.png?v=df4352bc' },
+        genderVariants: { male: 'assets/wardrobe/faces/male_exhausted_head.png?v=5683706e', female: 'assets/wardrobe/faces/female_exhausted_head.png?v=877804b3' },
         bodyMaskByGender: { male: 'assets/wardrobe/faces/masks/male_exhausted_body.png?v=95e48d48', female: 'assets/wardrobe/faces/masks/female_exhausted_body.png?v=4ce39715' },
         placementByGender: {
             male: { x: 0, y: 0, width: 941, height: 1672 },
@@ -65,7 +65,7 @@ const PAPER_DOLL_ITEMS = [
         fittedToGender: true, description: 'Старший тип обличчя, 60+ років.',
         // DOM image renderer: above the body (0), below clothing and hair (9).
         renderOrder: 1,
-        genderVariants: { male: 'assets/wardrobe/faces/male_elder_head.png?v=f6e3003c', female: 'assets/wardrobe/faces/female_elder_head.png?v=95f088e8' },
+        genderVariants: { male: 'assets/wardrobe/faces/male_elder_head.png?v=f6e3003c', female: 'assets/wardrobe/faces/female_elder_head.png?v=9547a763' },
         bodyMaskByGender: { male: 'assets/wardrobe/faces/masks/male_elder_body.png?v=191ad94a', female: 'assets/wardrobe/faces/masks/female_elder_body.png?v=4ce39715' },
         placementByGender: {
             male: { x: 0, y: 0, width: 941, height: 1672 },
@@ -73,7 +73,7 @@ const PAPER_DOLL_ITEMS = [
         } },
     { id: 'face-alternative', slot: 'face', name: 'Нове обличчя', icon: 'user', availableByDefault: true,
         fittedToGender: true, description: 'Новий затверджений варіант обличчя для обраної статі.', renderOrder: 1,
-        genderVariants: { male: 'assets/wardrobe/faces/male_alternative_head.png?v=2b58bf7a', female: 'assets/wardrobe/faces/female_alternative_head.png?v=d198d941' },
+        genderVariants: { male: 'assets/wardrobe/faces/male_alternative_head.png?v=2b58bf7a', female: 'assets/wardrobe/faces/female_alternative_head.png?v=ece9a9c4' },
         bodyMaskByGender: { male: 'assets/wardrobe/faces/masks/male_alternative_body.png?v=2778f476', female: 'assets/wardrobe/faces/masks/female_alternative_body.png?v=4ce39715' },
         placementByGender: {
             male: { x: 0, y: 0, width: 941, height: 1672 },
@@ -81,17 +81,17 @@ const PAPER_DOLL_ITEMS = [
         } },
     { id: 'face-ginger-soft', slot: 'face', name: 'Світле ніжне обличчя', icon: 'user', availableByDefault: true,
         genders: ['female'], fittedToGender: true, description: 'Світлий жіночий портрет із ніжними рисами.', renderOrder: 1,
-        genderVariants: { female: 'assets/wardrobe/faces/female_ginger_soft_head.png?v=cb0bcc4c' },
+        genderVariants: { female: 'assets/wardrobe/faces/female_ginger_soft_head.png?v=5bdd230b' },
         bodyMaskByGender: { female: 'assets/wardrobe/faces/masks/female_ginger_soft_body.png?v=e3d160bd' },
         placementByGender: { female: { x: 0, y: 0, width: 941, height: 1672 } } },
     { id: 'face-goth-septum', slot: 'face', name: 'Готичне обличчя із септумом', icon: 'user', availableByDefault: true,
         genders: ['female'], fittedToGender: true, description: 'Жіночий портрет із готичним макіяжем і септумом.', renderOrder: 1,
-        genderVariants: { female: 'assets/wardrobe/faces/female_goth_septum_head.png?v=08abb844' },
+        genderVariants: { female: 'assets/wardrobe/faces/female_goth_septum_head.png?v=4b9aa067' },
         bodyMaskByGender: { female: 'assets/wardrobe/faces/masks/female_goth_septum_body.png?v=e3d160bd' },
         placementByGender: { female: { x: 0, y: 0, width: 941, height: 1672 } } },
     { id: 'face-goth-black-lips', slot: 'face', name: 'Готичне обличчя з чорними губами', icon: 'user', availableByDefault: true,
         genders: ['female'], fittedToGender: true, description: 'Жіночий портрет із чорними губами та пірсингом.', renderOrder: 1,
-        genderVariants: { female: 'assets/wardrobe/faces/female_goth_black_lips_head.png?v=28b118d0' },
+        genderVariants: { female: 'assets/wardrobe/faces/female_goth_black_lips_head.png?v=d158e029' },
         bodyMaskByGender: { female: 'assets/wardrobe/faces/masks/female_goth_black_lips_body.png?v=e3d160bd' },
         placementByGender: { female: { x: 0, y: 0, width: 941, height: 1672 } } },
     { id: 'hair-none', slot: 'hair', name: 'Без зачіски', icon: 'user', availableByDefault: true,

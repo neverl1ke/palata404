@@ -1,0 +1,50 @@
+[
+  {
+    "path": "review/female-faces-integration/after/face-alternative-original.png",
+    "png_bytes": 2009579,
+    "lossless_webp_bytes": 2043174,
+    "pixels_equal": true
+  },
+  {
+    "path": "review/female-faces-integration/after/face-asian-original.png",
+    "png_bytes": 2023299,
+    "lossless_webp_bytes": 2035816,
+    "pixels_equal": true
+  },
+  {
+    "path": "review/female-faces-integration/after/face-elder-original.png",
+    "png_bytes": 2048067,
+    "lossless_webp_bytes": 2061700,
+    "pixels_equal": true
+  },
+  {
+    "path": "review/female-faces-integration/after/face-exhausted-original.png",
+    "png_bytes": 2042142,
+    "lossless_webp_bytes": 2059260,
+    "pixels_equal": true
+  },
+  {
+    "path": "review/female-faces-integration/after/face-ginger-soft-original.png",
+    "png_bytes": 2069221,
+    "lossless_webp_bytes": 2034824,
+    "pixels_equal": true
+  },
+  {
+    "path": "review/female-faces-integration/after/face-goth-black-lips-original.png",
+    "png_bytes": 2000075,
+    "lossless_webp_bytes": 1977202,
+    "pixels_equal": true
+  },
+  {
+    "path": "review/female-faces-integration/after/face-goth-septum-original.png",
+    "png_bytes": 2009037,
+    "lossless_webp_bytes": 2039802,
+    "pixels_equal": true
+  },
+  {
+    "path": "review/female-faces-integration/after/face-young-original.png",
+    "png_bytes": 2015527,
+    "lossless_webp_bytes": 2031936,
+    "pixels_equal": true
+  }
+]

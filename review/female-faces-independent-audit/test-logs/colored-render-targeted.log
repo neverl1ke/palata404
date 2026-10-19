@@ -1,0 +1,6 @@
+test_repeated_render_retains_colored_front_and_rear_after_reload (tests.test_project_audit.GeneralBrowserTests.test_repeated_render_retains_colored_front_and_rear_after_reload) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 9.938s
+
+OK

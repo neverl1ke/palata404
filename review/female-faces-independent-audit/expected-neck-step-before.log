@@ -1,0 +1,14 @@
+test_all_neck_silhouettes_have_no_abrupt_join_steps (tests.test_female_faces_independent.IndependentFemaleFaceTests.test_all_neck_silhouettes_have_no_abrupt_join_steps) ... FAIL
+
+======================================================================
+FAIL: test_all_neck_silhouettes_have_no_abrupt_join_steps (tests.test_female_faces_independent.IndependentFemaleFaceTests.test_all_neck_silhouettes_have_no_abrupt_join_steps)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/palata404/tests/test_female_faces_independent.py", line 64, in test_all_neck_silhouettes_have_no_abrupt_join_steps
+    self.assertLessEqual(neck_steps(composite(kind)[:,:,3]),3,kind)
+AssertionError: 9 not less than or equal to 3 : asian
+
+----------------------------------------------------------------------
+Ran 1 test in 0.097s
+
+FAILED (failures=1)

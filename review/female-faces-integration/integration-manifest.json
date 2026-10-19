@@ -41,7 +41,7 @@
         "height": 1672
       },
       "output": "assets/wardrobe/faces/female_asian_head.png",
-      "sha256": "2a699e33fc9b173e1aeaa642ddb982e6a929810fcd09dcc42c773261c1c71bf4",
+      "sha256": "cf29ee83765fd44c746513ad48add79fef83c45e3aa70f87d1a6fb469ca8bcb1",
       "mask": "assets/wardrobe/faces/masks/female_asian_body.png",
       "mask_sha256": "4ce397159a390c5b6b631149bd3a5e336aab283664e7a4ed88791426c9c14f9b",
       "detail_box": [
@@ -94,7 +94,7 @@
         "height": 1672
       },
       "output": "assets/wardrobe/faces/female_young_head.png",
-      "sha256": "a2a80060e174e613a0a3d8c77285ffa4be5757d0ad09093124ee4764d0e3e593",
+      "sha256": "8feabbfb2a845239e75bb1127c78e36513acec96171d774540ddb34f406c722a",
       "mask": "assets/wardrobe/faces/masks/female_young_body.png",
       "mask_sha256": "4ce397159a390c5b6b631149bd3a5e336aab283664e7a4ed88791426c9c14f9b",
       "detail_box": [
@@ -147,7 +147,7 @@
         "height": 1672
       },
       "output": "assets/wardrobe/faces/female_exhausted_head.png",
-      "sha256": "df4352bc5b1600d17f387f60a39cf2a39fc275c90591c826f633f17e0c75803c",
+      "sha256": "877804b3f73ca443d0ad106acc05957c682b98ef555998610cc5a7fa74ecdc3d",
       "mask": "assets/wardrobe/faces/masks/female_exhausted_body.png",
       "mask_sha256": "4ce397159a390c5b6b631149bd3a5e336aab283664e7a4ed88791426c9c14f9b",
       "detail_box": [
@@ -200,7 +200,7 @@
         "height": 1672
       },
       "output": "assets/wardrobe/faces/female_elder_head.png",
-      "sha256": "95f088e85cf8c1ec3010f51a8efa0e2663b8d0978e0541fdad70e8f5855633cc",
+      "sha256": "9547a7637b82f64053198926382fce61e00edacf67394148533e8e01ca110733",
       "mask": "assets/wardrobe/faces/masks/female_elder_body.png",
       "mask_sha256": "4ce397159a390c5b6b631149bd3a5e336aab283664e7a4ed88791426c9c14f9b",
       "detail_box": [
@@ -253,7 +253,7 @@
         "height": 1672
       },
       "output": "assets/wardrobe/faces/female_alternative_head.png",
-      "sha256": "d198d941e1f5f3a459d7c1dcb595137e40e73a7099d9f0f7ee9b8d056ba2d916",
+      "sha256": "ece9a9c4af542cb0930c8a9bf172c856991c1b3e72063f6b342655f4452e532d",
       "mask": "assets/wardrobe/faces/masks/female_alternative_body.png",
       "mask_sha256": "4ce397159a390c5b6b631149bd3a5e336aab283664e7a4ed88791426c9c14f9b",
       "detail_box": [
@@ -306,7 +306,7 @@
         "height": 1672
       },
       "output": "assets/wardrobe/faces/female_ginger_soft_head.png",
-      "sha256": "cb0bcc4caf4cc71e78f7b55ac0ef9434dd8e29306b1ce02e6e7200d662e7db19",
+      "sha256": "5bdd230b16eff50f2b9d286946c52feb91b6ac6daf0df657f5678fc9eeefa244",
       "mask": "assets/wardrobe/faces/masks/female_ginger_soft_body.png",
       "mask_sha256": "e3d160bd6c3a884d33b5a489eb08fbcf3c421fd68ef90f2c2f98021f08a0e0ac",
       "detail_box": [
@@ -359,7 +359,7 @@
         "height": 1672
       },
       "output": "assets/wardrobe/faces/female_goth_septum_head.png",
-      "sha256": "08abb844180666a64f288beb860cb115d1d12b824964c8d3f8126a1c1681fda3",
+      "sha256": "4b9aa067cec1ad18bcd1cb6b10632fb8de81982104a3a2979ea4cc33b3d74d0f",
       "mask": "assets/wardrobe/faces/masks/female_goth_septum_body.png",
       "mask_sha256": "e3d160bd6c3a884d33b5a489eb08fbcf3c421fd68ef90f2c2f98021f08a0e0ac",
       "detail_box": [
@@ -412,7 +412,7 @@
         "height": 1672
       },
       "output": "assets/wardrobe/faces/female_goth_black_lips_head.png",
-      "sha256": "28b118d061263d75802d0f1ab46d86b84fcce7ed242351131a9efd866526f533",
+      "sha256": "d158e029a0ad81b59a692c43d6392cbc2150715f89ca9d9dda97ed7df435900b",
       "mask": "assets/wardrobe/faces/masks/female_goth_black_lips_body.png",
       "mask_sha256": "e3d160bd6c3a884d33b5a489eb08fbcf3c421fd68ef90f2c2f98021f08a0e0ac",
       "detail_box": [
@@ -738,5 +738,10 @@
       "elder",
       "alternative"
     ]
+  },
+  "independent_repairs": {
+    "baseline": "6bac151e53e8723f69b21b1a62dd52d02b444cd5",
+    "manifest": "../female-faces-independent-audit/repair-manifest.json",
+    "note": "Current SHA of eight neck-only alpha repairs; baseline portrait bytes in independent before-assets. Registration, visible source RGB and masks unchanged."
   }
 }

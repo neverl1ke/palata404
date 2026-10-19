@@ -1,0 +1,17 @@
+test_each_actual_mask_preserves_solid_neck_and_lower_body (tests.test_female_faces_independent.IndependentFemaleFaceTests.test_each_actual_mask_preserves_solid_neck_and_lower_body) ... FAIL
+test_neck_detector_rejects_the_real_pre_fix_regression (tests.test_female_faces_independent.IndependentFemaleFaceTests.test_neck_detector_rejects_the_real_pre_fix_regression) ... ok
+test_repaired_necks_do_not_have_a_second_alpha_rim (tests.test_female_faces_independent.IndependentFemaleFaceTests.test_repaired_necks_do_not_have_a_second_alpha_rim) ... ok
+test_repairs_preserve_approved_portraits_and_all_protected_assets (tests.test_female_faces_independent.IndependentFemaleFaceTests.test_repairs_preserve_approved_portraits_and_all_protected_assets) ... ok
+
+======================================================================
+FAIL: test_each_actual_mask_preserves_solid_neck_and_lower_body (tests.test_female_faces_independent.IndependentFemaleFaceTests.test_each_actual_mask_preserves_solid_neck_and_lower_body)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/palata404/tests/test_female_faces_independent.py", line 61, in test_each_actual_mask_preserves_solid_neck_and_lower_body
+    self.assertTrue(np.all(a[225:270,450:500,3]==255),kind)
+AssertionError: np.False_ is not true : ginger_soft
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.780s
+
+FAILED (failures=1)

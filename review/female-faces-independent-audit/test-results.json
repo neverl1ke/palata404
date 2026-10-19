@@ -1,0 +1,154 @@
+{
+  "baseline": {
+    "javascript": 82,
+    "python": 106,
+    "all_passed": true
+  },
+  "intermediate_fringe_only": {
+    "javascript": 84,
+    "python": 110,
+    "all_passed": true,
+    "note": "Further visual review found the neck-step bug F13 despite these passes."
+  },
+  "stress_before_color_test_readiness_fix": {
+    "tests_run": 111,
+    "individual_passes": 110,
+    "failures": 1,
+    "skips": 0,
+    "note": "Raw runner reports only fully passing shard tests (86); its failing shard also has 24 individually successful tests. Original summary and logs retained."
+  },
+  "final_clean": {
+    "javascript": 84,
+    "python": 111,
+    "all_passed": true,
+    "skips": 0,
+    "python_summary": "test-logs/final-python.json",
+    "javascript_log": "test-logs/final-javascript.log"
+  },
+  "browsers": {
+    "chromium": {
+      "version": "151.0.7922.34",
+      "combinations": 192,
+      "background_samples": 768,
+      "reloaded_faces": [
+        "face-asian",
+        "face-young",
+        "face-exhausted",
+        "face-elder",
+        "face-alternative",
+        "face-ginger-soft",
+        "face-goth-septum",
+        "face-goth-black-lips"
+      ],
+      "ui_viewports": [
+        {
+          "width": 320,
+          "height": 568,
+          "last_card_clicked": true,
+          "horizontal_overflow": false
+        },
+        {
+          "width": 360,
+          "height": 640,
+          "last_card_clicked": true,
+          "horizontal_overflow": false
+        },
+        {
+          "width": 390,
+          "height": 844,
+          "last_card_clicked": true,
+          "horizontal_overflow": false
+        },
+        {
+          "width": 430,
+          "height": 844,
+          "last_card_clicked": true,
+          "horizontal_overflow": false
+        },
+        {
+          "width": 768,
+          "height": 1024,
+          "last_card_clicked": true,
+          "horizontal_overflow": false
+        },
+        {
+          "width": 1440,
+          "height": 1000,
+          "last_card_clicked": true,
+          "horizontal_overflow": false
+        }
+      ],
+      "page_errors": [],
+      "http_errors": []
+    },
+    "firefox": {
+      "version": "153.0",
+      "combinations": 192,
+      "background_samples": 768,
+      "reloaded_faces": [
+        "face-asian",
+        "face-young",
+        "face-exhausted",
+        "face-elder",
+        "face-alternative",
+        "face-ginger-soft",
+        "face-goth-septum",
+        "face-goth-black-lips"
+      ],
+      "ui_viewports": [
+        {
+          "width": 320,
+          "height": 568,
+          "last_card_clicked": true,
+          "horizontal_overflow": false
+        },
+        {
+          "width": 360,
+          "height": 640,
+          "last_card_clicked": true,
+          "horizontal_overflow": false
+        },
+        {
+          "width": 390,
+          "height": 844,
+          "last_card_clicked": true,
+          "horizontal_overflow": false
+        },
+        {
+          "width": 430,
+          "height": 844,
+          "last_card_clicked": true,
+          "horizontal_overflow": false
+        },
+        {
+          "width": 768,
+          "height": 1024,
+          "last_card_clicked": true,
+          "horizontal_overflow": false
+        },
+        {
+          "width": 1440,
+          "height": 1000,
+          "last_card_clicked": true,
+          "horizontal_overflow": false
+        }
+      ],
+      "page_errors": [],
+      "http_errors": []
+    }
+  },
+  "gallery": {
+    "images": 42,
+    "links": 128,
+    "missing_local_links": [],
+    "http_errors": [],
+    "page_errors": []
+  },
+  "limits": [
+    "No physical mobile device",
+    "WebKit missing system libraries",
+    "Active headwear has no PNG",
+    "Approved immutable base has alpha253 in part of neck",
+    "Artistic tone/proportion decisions remain with owner"
+  ]
+}

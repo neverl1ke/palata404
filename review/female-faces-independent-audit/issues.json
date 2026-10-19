@@ -1,0 +1,132 @@
+{
+  "baseline": "6bac151e53e8723f69b21b1a62dd52d02b444cd5",
+  "audited_range": "4046cac..6bac151",
+  "issues": [
+    {
+      "id": "F01",
+      "file": "assets/wardrobe/faces/female_goth_septum_head.png",
+      "problem": "Паралельна альфа-смужка праворуч шиї",
+      "evidence": "before-analysis.json: 28 альфа-реверсів; 9 spur-кандидатів x=518,y=239..247; details/face-goth-septum-neck-defect.png",
+      "priority": "P1",
+      "fix": "Прибрати повторний зовнішній підйом альфи лише на простому контурі шиї перед його продовженням; зберегти RGB та верхній портрет",
+      "status": "fixed-and-clean-regression-passed"
+    },
+    {
+      "id": "F02",
+      "file": "assets/wardrobe/faces/female_ginger_soft_head.png",
+      "problem": "Паралельна альфа-смужка праворуч шиї",
+      "evidence": "before-analysis.json: 27 альфа-реверсів; 5 spur-кандидатів x=515,y=240..244; details/face-ginger-soft-neck-defect.png",
+      "priority": "P1",
+      "fix": "Те саме локальне очищення; без зміни художнього тону, форми голови, вух або маски",
+      "status": "fixed-and-clean-regression-passed"
+    },
+    {
+      "id": "F03",
+      "file": "tests/test_female_faces.py; tests/asset_history.py",
+      "problem": "Відтворення алгоритму та історичні SHA не доводять якість поточного краю",
+      "evidence": "Старий набір не знаходив F01/F02; expected-regression-before.log відтворює дефект новим критерієм",
+      "priority": "P1",
+      "fix": "Додати незалежний тест композитної альфи, справжній негативний контроль на старих PNG та перевірку локальності правки; зберегти старі тести",
+      "status": "fixed-and-clean-regression-passed"
+    },
+    {
+      "id": "F04",
+      "file": "assets/wardrobe/faces/female_ginger_soft_head.png",
+      "problem": "Помітна художня відмінність світлого рожевого обличчя від темнішої шиї та тіла",
+      "evidence": "details/face-ginger-soft-4x.png; попереднє затверджене джерело збережене в sources/ історичної інтеграції",
+      "priority": "P2",
+      "fix": "Лише після рішення власника: ручне художнє узгодження тону; в цьому проході колір не змінювати",
+      "status": "confirmed-artistic-difference-preserved-for-owner-decision"
+    },
+    {
+      "id": "F05",
+      "file": "assets/wardrobe/faces/masks/female_*_body.png",
+      "problem": "П'ять масок мають один хеш, три інші — другий; ризик надмірного спільного припущення",
+      "evidence": "before-analysis.json та after-analysis.json: кожен композит окремо перевірено на непрозорість шиї, приховування старої голови й тотожність нижнього тіла",
+      "priority": "P2",
+      "fix": "Не створювати штучно різні маски; перевіряти фактичний композит кожної пари",
+      "status": "checked-no-confirmed-mask-defect"
+    },
+    {
+      "id": "F06",
+      "file": "assets/wardrobe/faces/female_ginger_soft_head.png; female_goth_septum_head.png",
+      "problem": "Залишкові spur-кандидати не всі є дефектами",
+      "evidence": "ginger: (547,120) — верхній край вуха; (420,257)/(527,257) — поріг альфи переходу; septum: ті самі дві точки переходу",
+      "priority": "P3",
+      "fix": "Зберегти вухо та плавний перехід; не застосовувати глобальну морфологію",
+      "status": "classified-preserved"
+    },
+    {
+      "id": "F07",
+      "file": "assets/wardrobe/faces/female_goth_black_lips_head.png",
+      "problem": "Один малий альфа-реверс шиї через некоректне поле відстані",
+      "evidence": "before-analysis.json: neck_alpha_reversals=1; details/face-goth-black-lips-4x.png",
+      "priority": "P3",
+      "fix": "Виправлення distance field нижнього стику прибрало реверс без зміни верхнього портрета",
+      "status": "fixed-and-clean-regression-passed"
+    },
+    {
+      "id": "F08",
+      "file": "review/female-faces-integration/",
+      "problem": "75 786 522 байти доказів; ризик небезпечного видалення або невигідного перекодування",
+      "evidence": "historical-inventory.json: 170 файлів, 0 точних дублікатів; compression-benchmark.json",
+      "priority": "P3",
+      "fix": "Зберегти історичні URL, джерела та тестові входи; нову галерею завантажувати ліниво, великі матриці відкривати посиланнями; формат обирати за фактичним розміром без втрат",
+      "status": "inventory-complete-no-deletions"
+    },
+    {
+      "id": "F09",
+      "file": "paper-doll-data.js: gear-helmet",
+      "problem": "Чинний головний убір не має PNG, тому художнє перекриття нового пірсингу реальним шоломом перевірити неможливо",
+      "evidence": "image:null у каталозі; тести перевіряють контракт renderOrder, а не відсутній малюнок",
+      "priority": "P3",
+      "fix": "Перевірити художнє перекриття після появи затвердженого PNG головного убору",
+      "status": "verification-limitation"
+    },
+    {
+      "id": "F10",
+      "file": "Chromium / Firefox / WebKit verification",
+      "problem": "Немає фізичного мобільного пристрою; WebKit не запускається без системних бібліотек",
+      "evidence": "browser-limitations.log; after-chromium/result.json; after-firefox/result.json",
+      "priority": "P3",
+      "fix": "Надати чесні результати двох доступних рушіїв та емуляції viewport; Safari/iOS перевірити окремо",
+      "status": "verification-limitation"
+    },
+    {
+      "id": "F11",
+      "file": "assets/wardrobe/faces/female_ginger_soft_head.png",
+      "problem": "Вужчий художній силует ніжного рудого портрета: 158 px проти 166–177 px інших накладок вище y210",
+      "evidence": "before-analysis.json; details/face-ginger-soft-4x.png; затверджене джерело вже має цей силует, runtime scale=1",
+      "priority": "P2",
+      "fix": "Залишити для рішення власника; не змінювати затверджені пропорції автоматично",
+      "status": "potential-artistic-proportion-difference-preserved"
+    },
+    {
+      "id": "F12",
+      "file": "base_female.png (незмінений)",
+      "problem": "Затверджена база має alpha=253 у частині шиї від y259; абсолютна непрозорість всього композиту не гарантована самою базою",
+      "evidence": "Наприклад (450,259),(474,259),(474,265),(499,269) мають alpha253; test-definition-correction.log",
+      "priority": "P3",
+      "fix": "Не редагувати заборонену базу; перевіряти відсутність додаткової прозорості від накладок, окремо від непрозорої верхньої шиї",
+      "status": "pre-existing-protected-asset-limitation"
+    },
+    {
+      "id": "F13",
+      "file": "tools/prepare-female-faces.py; assets/wardrobe/faces/female_*_head.png",
+      "problem": "Різкий нижній стик шиї: кроки 5..15px у шести портретів через помилкове застосування дробової alpha253 до внутрішнього distance field бази",
+      "evidence": "before-analysis.json / after-analysis.json: max_neck_step; expected-neck-step-before.log; details/face-*-join-defect.png",
+      "priority": "P1",
+      "fix": "Дробову альфу використовувати лише біля справжнього силуету (abs(distance)<=1), зберігати внутрішню геометричну відстань; не змінювати маски, RGB портретів або базу",
+      "status": "fixed-and-clean-regression-passed"
+    },
+    {
+      "id": "F14",
+      "file": "tests/test_project_audit.py: test_repeated_render_retains_colored_front_and_rear_after_reload",
+      "problem": "У стрес-прогоні тест порівняв ще оригінальний URL із пізнішим перефарбованим результатом; очікування не вимагало саме обраного white",
+      "evidence": "test-logs/stress-shard-1.log.gz: 1 failure; test-logs/colored-render-targeted.log; test-logs/final-python.json",
+      "priority": "P2",
+      "fix": "Очікувати актуальний white для обох шарів; перевіряти обидва src і 30 повторних рендерів в одному JS-такті; після reload також чекати фактичний white. Код рендерера не змінювати без доведеної причини.",
+      "status": "test-strengthened-targeted-and-clean-full-suite-passed"
+    }
+  ]
+}

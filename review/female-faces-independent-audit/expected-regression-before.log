@@ -1,0 +1,14 @@
+test_repaired_necks_do_not_have_a_second_alpha_rim (tests.test_female_faces_independent.IndependentFemaleFaceTests.test_repaired_necks_do_not_have_a_second_alpha_rim) ... FAIL
+
+======================================================================
+FAIL: test_repaired_necks_do_not_have_a_second_alpha_rim (tests.test_female_faces_independent.IndependentFemaleFaceTests.test_repaired_necks_do_not_have_a_second_alpha_rim)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/palata404/tests/test_female_faces_independent.py", line 43, in test_repaired_necks_do_not_have_a_second_alpha_rim
+    self.assertEqual(neck_reversals(composite(kind)[:,:,3]),0,kind)
+AssertionError: 27 != 0 : ginger_soft
+
+----------------------------------------------------------------------
+Ran 1 test in 0.519s
+
+FAILED (failures=1)

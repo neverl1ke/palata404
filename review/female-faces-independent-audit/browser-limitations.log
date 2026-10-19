@@ -1,0 +1,50 @@
+Downloading WebKit 26.5 (playwright webkit v2336)[2m from https://cdn.playwright.dev/dbazure/download/playwright/builds/webkit/2336/webkit-debian-13.zip[22m
+|                                                                                |   0% of 95.6 MiB
+|■■■■■■■■                                                                        |  10% of 95.6 MiB
+|■■■■■■■■■■■■■■■■                                                                |  20% of 95.6 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■                                                        |  30% of 95.6 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                                |  40% of 95.6 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                        |  50% of 95.6 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                |  60% of 95.6 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                        |  70% of 95.6 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                |  80% of 95.6 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■        |  90% of 95.6 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■| 100% of 95.6 MiB
+WebKit 26.5 (playwright webkit v2336) downloaded to /workspace/.browsers/webkit-2336
+Playwright Host validation warning:
+╔══════════════════════════════════════════════════════╗
+║ Host system is missing dependencies to run browsers. ║
+║ Missing libraries:                                   ║
+║     libgtk-4.so.1                                    ║
+║     libgraphene-1.0.so.0                             ║
+║     libharfbuzz-icu.so.0                             ║
+║     libmanette-0.2.so.0                              ║
+║     libhyphen.so.0                                   ║
+║     libGLESv2.so.2                                   ║
+╚══════════════════════════════════════════════════════╝
+    at validateDependenciesLinux (/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/driver/package/lib/coreBundle.js:31846:9)
+    at async Registry._validateHostRequirements (/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/driver/package/lib/coreBundle.js:33280:18)
+    at async Registry._validateHostRequirementsForExecutableIfNeeded (/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/driver/package/lib/coreBundle.js:33402:11)
+    at async Registry.validateHostRequirementsForExecutablesIfNeeded (/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/driver/package/lib/coreBundle.js:33391:11)
+    at async installBrowsers (/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/driver/package/lib/coreBundle.js:69417:5)
+    at async _Command.<anonymous> (/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/driver/package/lib/coreBundle.js:72930:7)
+
+SYSTEM DEPENDENCY INSTALL ATTEMPT
+Installing dependencies...
+Switching to root user to install dependencies...
+Password: su: Authentication failure
+Failed to install browser dependencies
+Error: Installation process exited with code: 1
+
+USER-SPACE PACKAGE DISCOVERY ATTEMPT
+W: Unable to read /etc/apt/apt.conf.d/80-applied-apt-retries - open (13: Permission denied)
+E: Unable to locate package libgtk-4-1
+E: Unable to locate package libgraphene-1.0-0
+E: Couldn't find any package by glob 'libgraphene-1.0-0'
+E: Couldn't find any package by regex 'libgraphene-1.0-0'
+E: Unable to locate package libharfbuzz-icu0
+E: Unable to locate package libmanette-0.2-0
+E: Couldn't find any package by glob 'libmanette-0.2-0'
+E: Couldn't find any package by regex 'libmanette-0.2-0'
+E: Unable to locate package libhyphen0
+E: Unable to locate package libgles2

@@ -1,0 +1,60 @@
+{
+  "engine": "chromium",
+  "version": "151.0.7922.34",
+  "phase": "before",
+  "matrix_records": [],
+  "combinations": 0,
+  "background_samples": 0,
+  "reloaded_faces": [
+    "face-asian",
+    "face-young",
+    "face-exhausted",
+    "face-elder",
+    "face-alternative",
+    "face-ginger-soft",
+    "face-goth-septum",
+    "face-goth-black-lips"
+  ],
+  "ui_viewports": [
+    {
+      "width": 320,
+      "height": 568,
+      "last_card_clicked": true,
+      "horizontal_overflow": false
+    },
+    {
+      "width": 360,
+      "height": 640,
+      "last_card_clicked": true,
+      "horizontal_overflow": false
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "last_card_clicked": true,
+      "horizontal_overflow": false
+    },
+    {
+      "width": 430,
+      "height": 844,
+      "last_card_clicked": true,
+      "horizontal_overflow": false
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "last_card_clicked": true,
+      "horizontal_overflow": false
+    },
+    {
+      "width": 1440,
+      "height": 1000,
+      "last_card_clicked": true,
+      "horizontal_overflow": false
+    }
+  ],
+  "page_errors": [],
+  "http_errors": [],
+  "capture": "production compositor in actual index.html, native 1:1 Paper Doll pixels",
+  "device": "desktop browser with emulated viewport, no physical mobile device"
+}

@@ -40,7 +40,11 @@ def smooth(t):
 def distance(alpha):
     m = alpha >= .5
     d = ndi.distance_transform_edt(m) - ndi.distance_transform_edt(~m)
-    edge = (alpha > 0) & (alpha < 1)
+    # Fractional alpha is an edge correction only next to the silhouette.
+    # The approved body contains alpha=253 throughout solid skin; replacing its
+    # full interior distance by 253/255-.5 flattened the distance field and
+    # caused 5..15px neck jumps when the interpolation crossed a row threshold.
+    edge = (alpha > 0) & (alpha < 1) & (np.abs(d) <= 1)
     d[edge] = alpha[edge] - .5
     return d
 
@@ -77,12 +81,21 @@ def clean_edge(a):
                  'interior_opacity_restored': int(filled.sum())}
 
 
-def neck_pair(head, base, short_export=False):
+def neck_pair(head, base, short_export=False, clean_neck_fringe=False):
     """Morph only the under-jaw silhouette into the exact existing body neck.
 
     A curved transition is below the chin; complementary mask avoids AA double
     edges and restores every original body pixel below the local join.
     """
+    if clean_neck_fringe:
+        # The ginger/septum exports contain a second low-alpha line just outside
+        # the right neck edge. Continuing row 235 used to extend that line into
+        # a visible vertical spur. Only the plain neck below the jaw is eligible:
+        # no ears, jewellery, facial features or source RGB are changed.
+        head = head.copy()
+        for row in head[218:236, :, 3]:
+            row[474:] = np.minimum.accumulate(row[474:])
+            row[:475] = np.minimum.accumulate(row[:475][::-1])[::-1]
     y, x = np.mgrid[:head.shape[0], :941]
     arc = np.minimum(((x-474)/65)**2, 1)
     start, end = 242-24*arc, 278-20*arc
@@ -169,7 +182,8 @@ def prepare(source, report, target=ROOT):
                 (sx/scale,0,-tx*sx/scale,0,sy/scale,-ty*sy/scale),Image.Resampling.BICUBIC)
         a, cleanup = clean_edge(np.array(registered)[:340])
         short_export = kind in ['ginger_soft','goth_septum','goth_black_lips']
-        head, mask = neck_pair(a, base, short_export)
+        head, mask = neck_pair(a, base, short_export,
+            clean_neck_fringe=kind in ['ginger_soft', 'goth_septum'])
         full = np.zeros((1672,941,4),dtype='uint8');full[:340] = head
         fullmask = np.full((1672,941,4),255,dtype='uint8');fullmask[:340] = mask
         hpath = f'assets/wardrobe/faces/female_{kind}_head.png'

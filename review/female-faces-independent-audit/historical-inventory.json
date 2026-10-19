@@ -1,0 +1,1201 @@
+{
+  "baseline": "6bac151e53e8723f69b21b1a62dd52d02b444cd5",
+  "files": [
+    {
+      "path": "review/female-faces-integration/README_UA.md",
+      "bytes": 22233,
+      "sha256": "131ecfbabaa04fe7f3148f8e1410221456ba337b66b262c532d9de7a8bc060ca",
+      "category": "gallery-documentation-and-manifests",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/after/capture.json",
+      "bytes": 119799,
+      "sha256": "8efd2686a377b5095269b0440542980d2a060f608307d87b3f96f596749b533e",
+      "category": "full-matrix-and-current-release-evidence",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/after/face-alternative-bare.png",
+      "bytes": 154318,
+      "sha256": "beeb4baab27e587c310ca1e6c649a1b8dbf8cdd806196eb97c4aa75070678802",
+      "category": "full-matrix-and-current-release-evidence",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/after/face-alternative-black.png",
+      "bytes": 1918736,
+      "sha256": "3559a233828a29a15b5817ddd6d8e4564455f22679f46ad950c5b8333f4f086c",
+      "category": "full-matrix-and-current-release-evidence",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/after/face-alternative-full.png",
+      "bytes": 237566,
+      "sha256": "07e0a982b84de598ed1e7e13f802b3f1ca41b13f1374ec991c2d6823c4bed972",
+      "category": "full-matrix-and-current-release-evidence",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/after/face-alternative-original.png",
+      "bytes": 2009579,
+      "sha256": "dd5fac16e56ba81cb50a5d74b18b7175fbf115310a9ba17253b71e6a55f3bb5f",
+      "category": "full-matrix-and-current-release-evidence",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/after/face-alternative-white.png",
+      "bytes": 1987146,
+      "sha256": "c843df38c1b94ef1d4366b5a95ed21c9e9bf33b9b6c06d76db1c2474b48c91e6",
+      "category": "full-matrix-and-current-release-evidence",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/after/face-asian-bare.png",
+      "bytes": 148170,
+      "sha256": "4a85bbd061e5ad9d05919bdccd4a87ba0bfbf6abea777aa44df96a6cab2abddd",
+      "category": "full-matrix-and-current-release-evidence",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/after/face-asian-black.png",
+      "bytes": 1928151,
+      "sha256": "cdec55da5b2f94200318c41375722d71319acc6004296b47197b53023431f8d4",
+      "category": "full-matrix-and-current-release-evidence",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/after/face-asian-full.png",
+      "bytes": 231555,
+      "sha256": "22c0c339fda275acebae7e3d2ecd5357be10eae140e5d449e7c25bd7e14c98b7",
+      "category": "full-matrix-and-current-release-evidence",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/after/face-asian-original.png",
+      "bytes": 2023299,
+      "sha256": "b74ee8a61755bd50cb489d6a54302645260ecc8500850b7259f731a1520e192c",
+      "category": "full-matrix-and-current-release-evidence",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/after/face-asian-white.png",
+      "bytes": 1998761,
+      "sha256": "2d78948c7d59411e57e591bcdbf50ad6874ad79c34ad35a8f683854b75d11f8c",
+      "category": "full-matrix-and-current-release-evidence",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/after/face-elder-bare.png",
+      "bytes": 152153,
+      "sha256": "d5c3ae8bdc05f07f685f6b15461ecd49ae9a033d912627f6fac90ce75d4bd27e",
+      "category": "full-matrix-and-current-release-evidence",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/after/face-elder-black.png",
+      "bytes": 1952505,
+      "sha256": "f1ee454b2afe50a8224f2dbd61bd4ded15d8066e28cfa17e9883ac5825fdb8c2",
+      "category": "full-matrix-and-current-release-evidence",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/after/face-elder-full.png",
+      "bytes": 234342,
+      "sha256": "8036d46c503e9e8fcda8738cf35ac0741416d15ee7f628636ea1d61aa24fc46a",
+      "category": "full-matrix-and-current-release-evidence",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/after/face-elder-original.png",
+      "bytes": 2048067,
+      "sha256": "fd5dc392fa66176e47342b891b14d3ce8aa53504f5fb61dbdd3c50fa9690d0d3",
+      "category": "full-matrix-and-current-release-evidence",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/after/face-elder-white.png",
+      "bytes": 2023835,
+      "sha256": "ec3c92b04fa0033804bdfb8ee240d5af491b42a9b70fe31a56b531c67365f96a",
+      "category": "full-matrix-and-current-release-evidence",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/after/face-exhausted-bare.png",
+      "bytes": 153871,
+      "sha256": "d895b9ad533c0d5e3bf3e875f27ddfa29e9c0197bd1f71efb2802276e8810ffc",
+      "category": "full-matrix-and-current-release-evidence",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/after/face-exhausted-black.png",
+      "bytes": 1946574,
+      "sha256": "c0cfc7ae731f17f6030511b068e3659c2defff2c5d1b04d9a734aada4ddb7e57",
+      "category": "full-matrix-and-current-release-evidence",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/after/face-exhausted-full.png",
+      "bytes": 235463,
+      "sha256": "c005d0e91c51532c93fe5edee54c1ae395f9df4040293b1ab1120e65acdd60e5",
+      "category": "full-matrix-and-current-release-evidence",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/after/face-exhausted-original.png",
+      "bytes": 2042142,
+      "sha256": "66742173d4aeea64e12d390866817909048dbb5e201989aeda99a267e3ae63ea",
+      "category": "full-matrix-and-current-release-evidence",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/after/face-exhausted-white.png",
+      "bytes": 2016197,
+      "sha256": "dd4e3ac17ae391d981e65c6dfaa7b060ed81f628141aab7ee71e7cae080b2bb4",
+      "category": "full-matrix-and-current-release-evidence",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/after/face-ginger-soft-bare.png",
+      "bytes": 143579,
+      "sha256": "3936aff6e8040a255cc9d10ce19722cd647fb4b1f9540031fb1c86e715aec824",
+      "category": "full-matrix-and-current-release-evidence",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/after/face-ginger-soft-black.png",
+      "bytes": 1967917,
+      "sha256": "11ad1e150e64423d3be580f9e75092973b9281ce579840079b95d3c9dfa0d1e6",
+      "category": "full-matrix-and-current-release-evidence",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/after/face-ginger-soft-full.png",
+      "bytes": 223681,
+      "sha256": "475ca486c350e6d53704260d061830e2fd7de7a0f4fc4c0c911002726146529f",
+      "category": "full-matrix-and-current-release-evidence",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/after/face-ginger-soft-original.png",
+      "bytes": 2069221,
+      "sha256": "01dc99fd0f6ca111ed82ada687405a67a7f2fd9ad03b164998251139a5912ce5",
+      "category": "full-matrix-and-current-release-evidence",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/after/face-ginger-soft-white.png",
+      "bytes": 2039034,
+      "sha256": "1b91328e2bde03404adbc37b38d185af061d10bfc7aa57a79b2c7dbd733a74be",
+      "category": "full-matrix-and-current-release-evidence",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/after/face-goth-black-lips-bare.png",
+      "bytes": 155968,
+      "sha256": "8888480247db39f2af85d48e43797a078ba8cd1ac471a6469d019954941253c7",
+      "category": "full-matrix-and-current-release-evidence",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/after/face-goth-black-lips-black.png",
+      "bytes": 1909428,
+      "sha256": "b5da8adf1e2e7009c33e220220c1413e85d40365f551be7ad4183c3697b639e6",
+      "category": "full-matrix-and-current-release-evidence",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/after/face-goth-black-lips-full.png",
+      "bytes": 236048,
+      "sha256": "586b7b8b37449c265a6d779cd1ca7a4bde0006b34855c04068b86bf4c126b1c2",
+      "category": "full-matrix-and-current-release-evidence",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/after/face-goth-black-lips-original.png",
+      "bytes": 2000075,
+      "sha256": "168d81535b07801642e0cf8e7699da03615d83eaeebe1496cc4a4f931c862360",
+      "category": "full-matrix-and-current-release-evidence",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/after/face-goth-black-lips-white.png",
+      "bytes": 1978858,
+      "sha256": "f09d2ca38a63bc8f218c55d42d3bc288daf071fab92318bf6f812631bc4173e4",
+      "category": "full-matrix-and-current-release-evidence",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/after/face-goth-septum-bare.png",
+      "bytes": 152483,
+      "sha256": "8495af348287c2e9b5903e43d93dff4f89edd8dbf32c2823b835a67f510ca15d",
+      "category": "full-matrix-and-current-release-evidence",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/after/face-goth-septum-black.png",
+      "bytes": 1915759,
+      "sha256": "e00ffd4a3094eb473e6cdc09dfef7c3e2306e71eb4bb69f0fa9e63494972ef65",
+      "category": "full-matrix-and-current-release-evidence",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/after/face-goth-septum-full.png",
+      "bytes": 231456,
+      "sha256": "b0294f0075a3f998d32461ee3e4914b81d8e5f79ceb50cf5e597e91200d97483",
+      "category": "full-matrix-and-current-release-evidence",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/after/face-goth-septum-original.png",
+      "bytes": 2009037,
+      "sha256": "39da9e2adce88d10a0eec2dec8d8a5c1d248eee1809dfeaf19da6ca6a22447cf",
+      "category": "full-matrix-and-current-release-evidence",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/after/face-goth-septum-white.png",
+      "bytes": 1983967,
+      "sha256": "2a9dadaf3f0609c565f1f9b80b8e0bc44aef3f2a828b7606bd618619d1fa34a7",
+      "category": "full-matrix-and-current-release-evidence",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/after/face-young-bare.png",
+      "bytes": 151200,
+      "sha256": "253e4664be8a1ac36630b92ca5570bbb5ebba7c56e807d979a8b75129ff85e4c",
+      "category": "full-matrix-and-current-release-evidence",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/after/face-young-black.png",
+      "bytes": 1924371,
+      "sha256": "0a3bc5163a4dc0773c614e9330e5a398e165c5ecead2af55ba6fb6b83f5f56b8",
+      "category": "full-matrix-and-current-release-evidence",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/after/face-young-full.png",
+      "bytes": 234548,
+      "sha256": "c7f1d2d6d79bc1f916703ef03e8ab8843d6bcd5728a123cfec39b52bed28823b",
+      "category": "full-matrix-and-current-release-evidence",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/after/face-young-original.png",
+      "bytes": 2015527,
+      "sha256": "76b94c791c01088c8808936660b0c664a24c8a15c2855ed4dde5cdf7879d10e2",
+      "category": "full-matrix-and-current-release-evidence",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/after/face-young-white.png",
+      "bytes": 1994530,
+      "sha256": "5d1073e53cc110b0715e2422eade34ebd0faf8b16138d14273bebbd6b3cc93d1",
+      "category": "full-matrix-and-current-release-evidence",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/after/wardrobe-1440.png",
+      "bytes": 1014031,
+      "sha256": "d3835e4e4ae83d5368c400ff6316912b2e19fafc7c3775d160db504975dc3c4c",
+      "category": "full-matrix-and-current-release-evidence",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/after/wardrobe-320.png",
+      "bytes": 85916,
+      "sha256": "4f82e95b3dca36f9a939c0b0a47d0c1ddfd6980af531c7fed936d0dde558bce4",
+      "category": "full-matrix-and-current-release-evidence",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/after/wardrobe-390.png",
+      "bytes": 195516,
+      "sha256": "d2dcd18de5bf6cfba7d9652ee56e883fe2acb249ab257c3c6dc10b1fbe1db7a8",
+      "category": "full-matrix-and-current-release-evidence",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/after/wardrobe-768.png",
+      "bytes": 447743,
+      "sha256": "7aad456c0eb645874f6c74adef57253ec2166e8db4290fc03c2b16723bf7fb00",
+      "category": "full-matrix-and-current-release-evidence",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/before/assets/assets/wardrobe/faces/female_alternative_head.png",
+      "bytes": 70294,
+      "sha256": "002b26500142b487eedabde6d401e7754fd437226648f10198bbe810b2c32a17",
+      "category": "historical-evidence-and-test-inputs",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/before/assets/assets/wardrobe/faces/female_asian_head.png",
+      "bytes": 64436,
+      "sha256": "e788fe50130bd5f3236be7b9e03a1c6a63e47716fad7e3f9a761a04fbeb1e42f",
+      "category": "historical-evidence-and-test-inputs",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/before/assets/assets/wardrobe/faces/female_elder_head.png",
+      "bytes": 75126,
+      "sha256": "53cd99eba4fdd054b21b8cc4a472401801736f2032fea76c6c5a25ef29379469",
+      "category": "historical-evidence-and-test-inputs",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/before/assets/assets/wardrobe/faces/female_exhausted_head.png",
+      "bytes": 64825,
+      "sha256": "76ee4e8f2ee9af1947f1014e999f0e507fd3afb49153bc7efcef3807266bb6d2",
+      "category": "historical-evidence-and-test-inputs",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/before/assets/assets/wardrobe/faces/female_young_head.png",
+      "bytes": 69084,
+      "sha256": "deba67794b0f654bd33c8bb4ff8c3de53438e2ac846fef31891f3d6968855323",
+      "category": "historical-evidence-and-test-inputs",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/before/assets/assets/wardrobe/faces/masks/female_alternative_body.png",
+      "bytes": 9752,
+      "sha256": "2069e239ff59a656e140a7edaa133f04829c7c87017174c1507c46f29fb5f548",
+      "category": "historical-evidence-and-test-inputs",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/before/assets/assets/wardrobe/faces/masks/female_asian_body.png",
+      "bytes": 9047,
+      "sha256": "3412bd3af36387b0050e580a85cff7855951b7761701c429587b7af0a5091ac7",
+      "category": "historical-evidence-and-test-inputs",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/before/assets/assets/wardrobe/faces/masks/female_elder_body.png",
+      "bytes": 10005,
+      "sha256": "a9f8e7b6c6f394523838c2c65aa21f03de408ae171fc7e4ee607cf194b848e3a",
+      "category": "historical-evidence-and-test-inputs",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/before/assets/assets/wardrobe/faces/masks/female_exhausted_body.png",
+      "bytes": 9022,
+      "sha256": "034b704365f6f10deebc3678efcc32538a134080942add7ce9c7b2a4e8cb6f6b",
+      "category": "historical-evidence-and-test-inputs",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/before/assets/assets/wardrobe/faces/masks/female_young_body.png",
+      "bytes": 9871,
+      "sha256": "3f8e960c4b689f0fb6613b7bda0ca9d6e3247eb1c1cf236df5722cd032a1eca2",
+      "category": "historical-evidence-and-test-inputs",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/before/capture.json",
+      "bytes": 439,
+      "sha256": "cac636bc79a3fbbd22da25ed314a263cb253e546b1475da4658e8c469bbf2b83",
+      "category": "historical-evidence-and-test-inputs",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/before/face-alternative-bare.png",
+      "bytes": 144299,
+      "sha256": "e788086b95c89224a6bac66815e5cb71b5b3ea0f401445f58325f5a2784a8b0f",
+      "category": "historical-evidence-and-test-inputs",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/before/face-alternative-full.png",
+      "bytes": 229367,
+      "sha256": "97307128856941f9915be5aff4ea45b75b62b6e0c4beba4d43df2b713e5cb113",
+      "category": "historical-evidence-and-test-inputs",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/before/face-asian-bare.png",
+      "bytes": 140454,
+      "sha256": "4f195ae5038417d7bdf7b4df4c5f423551f731feabecb813ec99112755df6222",
+      "category": "historical-evidence-and-test-inputs",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/before/face-asian-full.png",
+      "bytes": 226703,
+      "sha256": "3f1d33262048a1d4cc74e90dcbc59c1a9fc5e1fc2a71f938a28f0fe936020cd3",
+      "category": "historical-evidence-and-test-inputs",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/before/face-elder-bare.png",
+      "bytes": 145089,
+      "sha256": "4c38b48165027ef9106014c92ff9d845bed54f0a3f13d86856a0f768307fbf60",
+      "category": "historical-evidence-and-test-inputs",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/before/face-elder-full.png",
+      "bytes": 231349,
+      "sha256": "cd376f543857fc4fd4ae36ceb2278b853bcea90a634173943a7ef400dd59b803",
+      "category": "historical-evidence-and-test-inputs",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/before/face-exhausted-bare.png",
+      "bytes": 142075,
+      "sha256": "52b5708bf459cab2ca789cf253e342cf4abaec96d41cf5a1a83d816d1f10b48b",
+      "category": "historical-evidence-and-test-inputs",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/before/face-exhausted-full.png",
+      "bytes": 227539,
+      "sha256": "bf5dc4a3fd10ce7f2452a6124dda2546139dc1fac699ad272e79248e1b4ead86",
+      "category": "historical-evidence-and-test-inputs",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/before/face-young-bare.png",
+      "bytes": 141113,
+      "sha256": "878ec420dc33a950c4264a56a8e9191c5493009779a089fcb2fa2f5813880134",
+      "category": "historical-evidence-and-test-inputs",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/before/face-young-full.png",
+      "bytes": 228601,
+      "sha256": "8034b4f5b5d67215b6435969af6215819eab75984bce6a779a146a373af4647e",
+      "category": "historical-evidence-and-test-inputs",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/before/wardrobe-1440.png",
+      "bytes": 993575,
+      "sha256": "f646fbd9317657c54315028ad89de87bb451cdcd77cf0d21fba566bf9e48697b",
+      "category": "historical-evidence-and-test-inputs",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/before/wardrobe-320.png",
+      "bytes": 84508,
+      "sha256": "a136947b2ce44bb97cde9855c853a09a92602f94551e588962ae6426798a081f",
+      "category": "historical-evidence-and-test-inputs",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/before/wardrobe-390.png",
+      "bytes": 197724,
+      "sha256": "3e060d1411f714957ac62b820c43a88ac3387c8e3c6b9f4e78e3345e35d5b94e",
+      "category": "historical-evidence-and-test-inputs",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/before/wardrobe-768.png",
+      "bytes": 442875,
+      "sha256": "07d6f006905503b9a4a7446aac860a8a91bb014ae1d1732f27705f065b7d01a0",
+      "category": "historical-evidence-and-test-inputs",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/changed-files.json",
+      "bytes": 52341,
+      "sha256": "e9bf570a15d52a5ed561e842fee6f4b422c726a584db4c619ba2e5dfd4efb1c4",
+      "category": "gallery-documentation-and-manifests",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/details/face-alternative-left-ear.png",
+      "bytes": 31984,
+      "sha256": "8fedae79af2eda07f54c967035160bfae0a1a53003daa5a2e0ab8216db489d9d",
+      "category": "derived-gallery-close-ups",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/details/face-alternative-neck.png",
+      "bytes": 62263,
+      "sha256": "29994687a55badc6f6cdc65555ab081b7aa49d264ceabe83672561824470d479",
+      "category": "derived-gallery-close-ups",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/details/face-alternative-portrait.png",
+      "bytes": 200411,
+      "sha256": "380033cbd24d63e5f2851df88dc6db5f7966476f17242e0e5cde3b7631f6e0f7",
+      "category": "derived-gallery-close-ups",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/details/face-alternative-right-ear.png",
+      "bytes": 29840,
+      "sha256": "df1e2c0812cf6d45337577544e2a49e74cd32b8529ed9f575de68123d4a545e7",
+      "category": "derived-gallery-close-ups",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/details/face-alternative-source.jpg",
+      "bytes": 39182,
+      "sha256": "2909adc340f74ab944f69ec0d53ac1b281b011407351018cd4590a98d76d7d72",
+      "category": "derived-gallery-close-ups",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/details/face-asian-left-ear.png",
+      "bytes": 27980,
+      "sha256": "38e1e71febffdec22a336b84c763a5faf05139ba23d9f08f3b66741c9acf186e",
+      "category": "derived-gallery-close-ups",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/details/face-asian-neck.png",
+      "bytes": 59315,
+      "sha256": "68dff25b869b924746c73ff6304909847f7250f73d0302cab2638df9f33137ba",
+      "category": "derived-gallery-close-ups",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/details/face-asian-portrait.png",
+      "bytes": 188902,
+      "sha256": "f94b5b4b75d2a4c9fd7f4fbbafcbe04bf4eeabdef0f0cbc5ce1d9cc4f3a2f2e0",
+      "category": "derived-gallery-close-ups",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/details/face-asian-right-ear.png",
+      "bytes": 27607,
+      "sha256": "650022d3375fedbf79384f02d8113081112d6319d13852479557ddc1ea0cb4bc",
+      "category": "derived-gallery-close-ups",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/details/face-asian-source.jpg",
+      "bytes": 38047,
+      "sha256": "3c64def83bd6875c0522e421a3ce7a7fad973921eec6169dc183bd59ea34f135",
+      "category": "derived-gallery-close-ups",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/details/face-elder-left-ear.png",
+      "bytes": 28230,
+      "sha256": "af4f8e5bac1d108a6bd8468eee1722b9ad4a29d4fdeb8c961b0e7f059be9d3db",
+      "category": "derived-gallery-close-ups",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/details/face-elder-neck.png",
+      "bytes": 62280,
+      "sha256": "6d9005290ec8ad894d4d1088b21b205a5e3919945120891b5e575717a0df2b6a",
+      "category": "derived-gallery-close-ups",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/details/face-elder-portrait.png",
+      "bytes": 198854,
+      "sha256": "f11deedbb1c94b9beff77a49d6caa63e2fceff7872f3e8e5069c61b731d5d23d",
+      "category": "derived-gallery-close-ups",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/details/face-elder-right-ear.png",
+      "bytes": 30353,
+      "sha256": "5f4273b9de494d746319e2789fd80a2ee633c46473433a17c83a3e697f28c94f",
+      "category": "derived-gallery-close-ups",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/details/face-elder-source.jpg",
+      "bytes": 39857,
+      "sha256": "00d9ee16bdbaee5d9f2afe2ff8a33ebfa1f0bb80b2bfc90458f17e0621d4bd6f",
+      "category": "derived-gallery-close-ups",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/details/face-exhausted-left-ear.png",
+      "bytes": 29676,
+      "sha256": "8bffed93a3e460290dcaeab23bb0338610953914081c53344b9d12c009e1a107",
+      "category": "derived-gallery-close-ups",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/details/face-exhausted-neck.png",
+      "bytes": 61081,
+      "sha256": "45824f8b2f26ff4fd0ca14a9bbe13ff9084ccb4dae9dee34840589f21c3ea613",
+      "category": "derived-gallery-close-ups",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/details/face-exhausted-portrait.png",
+      "bytes": 193090,
+      "sha256": "1b94ce468a8b998fe7260c1d74120fd99362f5329d12c1c7ee17f0f4a3d48384",
+      "category": "derived-gallery-close-ups",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/details/face-exhausted-right-ear.png",
+      "bytes": 28984,
+      "sha256": "4f192ed887e590d59df92c3a375291835b479dee0227605ef586f615824ea627",
+      "category": "derived-gallery-close-ups",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/details/face-exhausted-source.jpg",
+      "bytes": 38859,
+      "sha256": "9babda49105d0f12980afd3cad5b09b69f77fe7d2c9421dad3c6d648137a95b4",
+      "category": "derived-gallery-close-ups",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/details/face-ginger-soft-left-ear.png",
+      "bytes": 19121,
+      "sha256": "e465f5c60eea34f23299160b30bf6047ef3f5777fb6492902f3c25a2da1901d2",
+      "category": "derived-gallery-close-ups",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/details/face-ginger-soft-neck.png",
+      "bytes": 49927,
+      "sha256": "85a33f281ce6e511699c7a3c7147dec4e0c1a27317a4fbea42f0f6a46f8a7861",
+      "category": "derived-gallery-close-ups",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/details/face-ginger-soft-portrait.png",
+      "bytes": 135970,
+      "sha256": "3704f0c2853c77eceeaf20b1b55b36450d01f76055ccc0dca07060f1b4d4fc54",
+      "category": "derived-gallery-close-ups",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/details/face-ginger-soft-right-ear.png",
+      "bytes": 17133,
+      "sha256": "8caa5a5bcfd218924ac30a97720c163980a11feb1c3d555f52ba54b0264190d1",
+      "category": "derived-gallery-close-ups",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/details/face-ginger-soft-source.jpg",
+      "bytes": 14576,
+      "sha256": "7bd3a410fc6d706e32ae6da2620da3f870023d23e728d34fddd2c2b9a845670f",
+      "category": "derived-gallery-close-ups",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/details/face-goth-black-lips-left-ear.png",
+      "bytes": 21715,
+      "sha256": "c17b17adb1aab031e6f6df19b7c3e3240ef16afee7e1577a9c2a4a66136c18bb",
+      "category": "derived-gallery-close-ups",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/details/face-goth-black-lips-neck.png",
+      "bytes": 50764,
+      "sha256": "dedd93ce25d47b27f2f1dc8bb4e3a6fec51f879a790ff1029bd083158df95996",
+      "category": "derived-gallery-close-ups",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/details/face-goth-black-lips-portrait.png",
+      "bytes": 142586,
+      "sha256": "fe944b0178c91239aa8d1c48c49fee47ac255ed929390627f815ee6b692014af",
+      "category": "derived-gallery-close-ups",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/details/face-goth-black-lips-right-ear.png",
+      "bytes": 21852,
+      "sha256": "9a81bf469bbb67da6e77901ab77e9bc4d774730d3b7401aec4b187681cba4f1b",
+      "category": "derived-gallery-close-ups",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/details/face-goth-black-lips-source.jpg",
+      "bytes": 16260,
+      "sha256": "e3a8fd09273e8fb6b9a0690be6a33be459ee9732ef36c4495a9dd353a8f9c630",
+      "category": "derived-gallery-close-ups",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/details/face-goth-septum-left-ear.png",
+      "bytes": 23536,
+      "sha256": "8df8ec0f4c85655296317602310bbe2a0e262b435b628613b08bff5d5518c480",
+      "category": "derived-gallery-close-ups",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/details/face-goth-septum-neck.png",
+      "bytes": 51236,
+      "sha256": "7dc5874b6ebd0b2f6e99843d573d3b99109b1c8a1fe126e12da51b753f61b2c2",
+      "category": "derived-gallery-close-ups",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/details/face-goth-septum-portrait.png",
+      "bytes": 145061,
+      "sha256": "8179dc58cd5dfde60125eca8327c0277b45cda9b15995e6a442fb08d7e578be0",
+      "category": "derived-gallery-close-ups",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/details/face-goth-septum-right-ear.png",
+      "bytes": 21051,
+      "sha256": "41e361c3dc6f4e25ed5f0a2e55bfcac8187cbefce12af649fbb46c7f1ec11e1b",
+      "category": "derived-gallery-close-ups",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/details/face-goth-septum-source.jpg",
+      "bytes": 16095,
+      "sha256": "bf335a1ccc83062966caf6cc0797d2b486e152d94828616bc0f60a7c42b0933f",
+      "category": "derived-gallery-close-ups",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/details/face-young-left-ear.png",
+      "bytes": 30109,
+      "sha256": "bd218154d4e27ee08d9b9e09184349d09438a508d179d5567229b9bacf12ec07",
+      "category": "derived-gallery-close-ups",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/details/face-young-neck.png",
+      "bytes": 62605,
+      "sha256": "f165ee5220f972cdea08e46ff97a29dd74586fc4bc25b1533487eac79243b062",
+      "category": "derived-gallery-close-ups",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/details/face-young-portrait.png",
+      "bytes": 194091,
+      "sha256": "86d455dde615d0d1ae3d33be3ea6f9afad968b4d061980291bc64626666c28d3",
+      "category": "derived-gallery-close-ups",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/details/face-young-right-ear.png",
+      "bytes": 30243,
+      "sha256": "014effa9679cf4237a5b8af1eded90c466012a6a9def5451566837309d7d2693",
+      "category": "derived-gallery-close-ups",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/details/face-young-source.jpg",
+      "bytes": 38833,
+      "sha256": "aef1c9a0ce73edb5633794324886798f418fe9413cd32e9ca3e960fdc29c8856",
+      "category": "derived-gallery-close-ups",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/gallery-check.json",
+      "bytes": 109,
+      "sha256": "004f9e9030ac693e812c1a0e6dca580044ada14cca5187395d6a062e5e1c1dc8",
+      "category": "gallery-documentation-and-manifests",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/gallery.html",
+      "bytes": 29600,
+      "sha256": "aebf7495256908de80778eb6ab933ca418899c241dbf46a4db206fa0f0b58d89",
+      "category": "gallery-documentation-and-manifests",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/inputs/capture.json",
+      "bytes": 415,
+      "sha256": "88f1a3de90f8ae28980ebf6e1aacb2f10da59f62e5db74a1cff34349a80d79f2",
+      "category": "original-source-render-evidence",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/inputs/face-ginger-soft-bare.png",
+      "bytes": 171876,
+      "sha256": "3dea02b38c7fca91f3f72cfae25f6eb709adb8421e0a9ad14dcafb1eb6fd90e5",
+      "category": "original-source-render-evidence",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/inputs/face-ginger-soft-full.png",
+      "bytes": 224543,
+      "sha256": "4e735d0c02e5e19fac47edae58368a8793b22e00e53f9efd5ca84bd258124280",
+      "category": "original-source-render-evidence",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/inputs/face-goth-black-lips-bare.png",
+      "bytes": 176084,
+      "sha256": "4a098dc9498778b34e31d73d5986e1a062d931277c7158d2299b5c97285d1864",
+      "category": "original-source-render-evidence",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/inputs/face-goth-black-lips-full.png",
+      "bytes": 237493,
+      "sha256": "c13a0442a445a05e233123a1b8a8a2af9932d1205a099080cd52b640599d285c",
+      "category": "original-source-render-evidence",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/inputs/face-goth-septum-bare.png",
+      "bytes": 178884,
+      "sha256": "28e8f7546468ec0277ffc7ffe1dcbd94fb2a92daa2eb065e08f2f6eb14e9c487",
+      "category": "original-source-render-evidence",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/inputs/face-goth-septum-full.png",
+      "bytes": 232225,
+      "sha256": "41bb5d3fca6609d247fc8ced8389b6b8c0e63d6e261b4978c707a932f4126a07",
+      "category": "original-source-render-evidence",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/inputs/wardrobe-1440.png",
+      "bytes": 1011857,
+      "sha256": "59c710af7454d45d8691871b183feaac689bbbbf9723a3e2df57c9c206cf8711",
+      "category": "original-source-render-evidence",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/inputs/wardrobe-320.png",
+      "bytes": 85793,
+      "sha256": "9576168089744fa0bf2ac74244f7b29d892822bb59534f515f9fd5a2e5fa8b6f",
+      "category": "original-source-render-evidence",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/inputs/wardrobe-390.png",
+      "bytes": 197641,
+      "sha256": "6385bcd083730bfd719f3d4e6a3be00010d6443a55b7fb2528b56d1970da4484",
+      "category": "original-source-render-evidence",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/inputs/wardrobe-768.png",
+      "bytes": 441589,
+      "sha256": "06dd18903c24ac8585cacbc88c44fdf5b766bd815bf3f04895c8023624b79985",
+      "category": "original-source-render-evidence",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/integration-manifest.json",
+      "bytes": 25526,
+      "sha256": "f3eb8bd4e3491b7ab81efadfb3b7d97ecc309d8ddd5d1c231b5e2ac0505d71b0",
+      "category": "gallery-documentation-and-manifests",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/matrix-black.jpg",
+      "bytes": 1379864,
+      "sha256": "3ced208e459e8c0d85b002ca3484b51627e9c80c29587187f9db8c5602322d86",
+      "category": "gallery-documentation-and-manifests",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/matrix-original.jpg",
+      "bytes": 1441194,
+      "sha256": "61d945c960ae0b0f7fe497a9bb8588c3f112898df005ea07a76de1a0148d8508",
+      "category": "gallery-documentation-and-manifests",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/matrix-white.jpg",
+      "bytes": 1357385,
+      "sha256": "47d9fdf686e3e02a3e340fc9e9bc212269c5a5562e290f93f783b330dabd3398",
+      "category": "gallery-documentation-and-manifests",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/png-quality.json",
+      "bytes": 181753,
+      "sha256": "d5ee6faec70917491847c9749d27ec026da48355be9441dc7df1a605354dde34",
+      "category": "gallery-documentation-and-manifests",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/published/ci-test-summary.log",
+      "bytes": 253,
+      "sha256": "d2fe274af2f0321b4b992e626bd692fb6414f2aa3be0d98abdb95a396a57e544",
+      "category": "historical-HTTPS-verification",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/published/face-alternative.png",
+      "bytes": 132014,
+      "sha256": "663bd90985c6ac835965d84c3b3b216ea88c283025fc8c68cc6c40f6f7b16575",
+      "category": "historical-HTTPS-verification",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/published/face-asian.png",
+      "bytes": 131652,
+      "sha256": "91a78ed62f67e7b3b245adff6ddda6434efba95d6e2311f0deccf5ebea7f1c08",
+      "category": "historical-HTTPS-verification",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/published/face-elder.png",
+      "bytes": 131861,
+      "sha256": "32980c670482eee100e04af7099b472a1a5b1efc8d4d09859231628a91d7609e",
+      "category": "historical-HTTPS-verification",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/published/face-exhausted.png",
+      "bytes": 131863,
+      "sha256": "1b5dda8ba8921835e3227c2c3de5cf45acbaab308418c290f8d3252c1d3637a3",
+      "category": "historical-HTTPS-verification",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/published/face-ginger-soft.png",
+      "bytes": 130620,
+      "sha256": "ffebfa5db3534e56854936abf97be64bc7356c5af0e9c25826f3fe6c3856dfcb",
+      "category": "historical-HTTPS-verification",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/published/face-goth-black-lips.png",
+      "bytes": 132193,
+      "sha256": "0f6df05d2b9a9ddc884a531c766fddb3df9b7737d99ed203f0afb1b7a59eadf2",
+      "category": "historical-HTTPS-verification",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/published/face-goth-septum.png",
+      "bytes": 131472,
+      "sha256": "626780f573c7f3c50d9ee161d0900f16efa47dbc5c0da091876591a8cd4e7644",
+      "category": "historical-HTTPS-verification",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/published/face-young.png",
+      "bytes": 131885,
+      "sha256": "4ba6d2fc214d1a1cef454d6cf4eb3b33c342d04342b3750407e0278cb88b1496",
+      "category": "historical-HTTPS-verification",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/published/gallery-files.json",
+      "bytes": 25128,
+      "sha256": "ff1e78aa1d46f0b5449aa08ca2d3d53a1e301c64501102022109400c28e21b00",
+      "category": "historical-HTTPS-verification",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/published/live-browser.json",
+      "bytes": 4650,
+      "sha256": "5f383f2244dc6383cea7ea0acc26bf96fcb02a52449333a49d91004c7aafaf10",
+      "category": "historical-HTTPS-verification",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/published/live-female-white.jpg",
+      "bytes": 202965,
+      "sha256": "75c78be002768adfb49674be06f058242bb53706123c9d228daddf4c8de28db4",
+      "category": "historical-HTTPS-verification",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/published/live-male-white.jpg",
+      "bytes": 200679,
+      "sha256": "eaa424404a5b84646aed19de506b2b238d661c03d1c03d2553225dae7c85cc61",
+      "category": "historical-HTTPS-verification",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/published/live-mobile-320.jpg",
+      "bytes": 51104,
+      "sha256": "adfe3e08f40ee9fed5cd0795b827e0f499ff13bbea40862f1d063a1f5aee9452",
+      "category": "historical-HTTPS-verification",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/published/live-mobile-390.jpg",
+      "bytes": 87179,
+      "sha256": "65d0b1a75b665d9ed9bd5fe082b0aadd4863a911b2e0f40a8a8b99d60fb7d442",
+      "category": "historical-HTTPS-verification",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/published/live-mobile-768.jpg",
+      "bytes": 137888,
+      "sha256": "c43e3bcb896f2f0df34fd6f151c373886fb477ee63130fa238437f6f63b2413e",
+      "category": "historical-HTTPS-verification",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/published/verification.json",
+      "bytes": 5922,
+      "sha256": "089dacbcd6a2552be6855686617edaafab13c4dcc6030ea98d6a111aeb6f5494",
+      "category": "historical-HTTPS-verification",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/source-reproduction.json",
+      "bytes": 283,
+      "sha256": "a04dddab774253edea17c31cb02865832f1d6165a7f0afe206c3fdadb4c5ddfb",
+      "category": "gallery-documentation-and-manifests",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/sources/female_alternative_approved_source.png",
+      "bytes": 1258063,
+      "sha256": "f1134cc50d2a91d8abb9116663d14dbf7c5656e647b6a5724227ffedd99bba22",
+      "category": "approved-immutable-art-sources",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/sources/female_asian_approved_source.png",
+      "bytes": 1027178,
+      "sha256": "4dc5ad954cded2ead944bb578aad66bd1ef3b53db056cc4f756cd6c756bf1422",
+      "category": "approved-immutable-art-sources",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/sources/female_elder_approved_source.png",
+      "bytes": 1081376,
+      "sha256": "0fbff8cb406b96a332f28a26e995ae1fb5202137fd6e5c345cae008953eb4992",
+      "category": "approved-immutable-art-sources",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/sources/female_exhausted_approved_source.png",
+      "bytes": 1107475,
+      "sha256": "aad41a3425f31bdfb9df2adf9de00a8bf1bf85e796e164a0fe21013c8b1bbab6",
+      "category": "approved-immutable-art-sources",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/sources/female_ginger_soft_head.png",
+      "bytes": 810073,
+      "sha256": "3cb7d000cf1513ac4f5374d11841efbe2d336e8cd9fa785398494e1af89507cd",
+      "category": "approved-immutable-art-sources",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/sources/female_goth_black_lips_head.png",
+      "bytes": 73941,
+      "sha256": "6deb610cc96756ba7ab48cc82c4098717e8632b510659d076f9172c7202a8f3e",
+      "category": "approved-immutable-art-sources",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/sources/female_goth_septum_head.png",
+      "bytes": 817324,
+      "sha256": "f16c9767ecd69d71a884d02cdf15f65fd8a40b47ed55f0f91c983d99c8829158",
+      "category": "approved-immutable-art-sources",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/sources/female_young_approved_source.png",
+      "bytes": 1178219,
+      "sha256": "75ea0e6daa1be4773d3f840efc080b245ef1eec8a1b5d448e503d7b749e3f424",
+      "category": "approved-immutable-art-sources",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/test-logs/baseline-javascript.log",
+      "bytes": 8372,
+      "sha256": "0085369e2102f0d6781a3c02e5421a66e35ed4a60802e54c0a579336c5e4ee4d",
+      "category": "historical-success-and-failure-logs",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/test-logs/baseline-python.json",
+      "bytes": 10680,
+      "sha256": "7ee647a8888412c1d762d2c2d539819b3a4b52ad0ea3b116da392cff3da160fc",
+      "category": "historical-success-and-failure-logs",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/test-logs/female-faces-assets-final.log",
+      "bytes": 5751,
+      "sha256": "e1022c8544dd933b2466bd5c0c7fe87650a514b94c5fc2f89ad6d765297f1a83",
+      "category": "historical-success-and-failure-logs",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/test-logs/female-faces-compatibility-final.log",
+      "bytes": 4272,
+      "sha256": "4097e1863e636b79318d66a148ee2acb81df072426f859a3cc205e0d740f7a4d",
+      "category": "historical-success-and-failure-logs",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/test-logs/female-faces-neck-browser-final.log",
+      "bytes": 308,
+      "sha256": "849faac350adc2234bc3042f8dadc409d237bb80abf3b75ce0d0bb9a70762e7c",
+      "category": "historical-success-and-failure-logs",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/test-logs/female-faces-no-history.log",
+      "bytes": 276,
+      "sha256": "539d8a855f9c8193003875c487c279aa22752bf91e3a96e112ee2d48f0e9044d",
+      "category": "historical-success-and-failure-logs",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/test-logs/female-faces-opacity-final.log",
+      "bytes": 264,
+      "sha256": "2cc6e56ecd968d2ed3dbd1fd95a5be122ea7910568f397e14a0bc03aab96ddd5",
+      "category": "historical-success-and-failure-logs",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/test-logs/initial-python-summary.json",
+      "bytes": 11819,
+      "sha256": "c8ea9b87fee723bca99fd64ccb61d3f5b83ed4e963d9f338546b6da3bcd4ea15",
+      "category": "historical-success-and-failure-logs",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/test-logs/initial-shard-0.log",
+      "bytes": 6339,
+      "sha256": "1761b085e2d348fd9f212907ca6372bd579273c7aad06d02e50f48f09006d5b2",
+      "category": "historical-success-and-failure-logs",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/test-logs/initial-shard-1.log",
+      "bytes": 6469,
+      "sha256": "557e029d26d03531012380bdf4a2e42fd89088721fdb8371fcc7e9beebf6a38e",
+      "category": "historical-success-and-failure-logs",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/test-logs/initial-shard-2.log",
+      "bytes": 4039,
+      "sha256": "3a43c3ee61c2ed7ffa93e3fc1ec2247c7df9c5545fd96887563ab45fbe6e9f05",
+      "category": "historical-success-and-failure-logs",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/test-logs/initial-shard-3.log",
+      "bytes": 6505,
+      "sha256": "2e9ba72b3f91285c6b871b56c13bc2aa5c7e38eba1e95eddc6a1254e201b2053",
+      "category": "historical-success-and-failure-logs",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/test-logs/javascript.log",
+      "bytes": 8592,
+      "sha256": "25e7dd092dbcc9cfce1a5c5686f9beac9aeb344759b138f6d858b93b14a67a05",
+      "category": "historical-success-and-failure-logs",
+      "decision": "retain"
+    },
+    {
+      "path": "review/female-faces-integration/test-results.json",
+      "bytes": 12318,
+      "sha256": "4a1d95db36aaeff198e0ff93b3ea6d664d1a671a76b6b525e6d6c8612aaf8867",
+      "category": "gallery-documentation-and-manifests",
+      "decision": "retain"
+    }
+  ],
+  "total_files": 170,
+  "total_bytes": 75786522,
+  "exact_duplicate_groups": [],
+  "deleted": [],
+  "reason": "Sources, test fixtures and linked historical evidence retained. No exact duplicates.",
+  "optimization": "Use lossless WebP for new review matrices; keep historical URLs and source bytes. Bulk format migration needs a URL compatibility plan."
+}
