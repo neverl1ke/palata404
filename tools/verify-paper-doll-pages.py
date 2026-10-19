@@ -44,12 +44,15 @@ with sync_playwright() as p:
       page.locator('.wardrobe-stage').evaluate('(e,bg)=>{e.style.background=bg}',bg);samples+=1
       if face=='face-alternative' and hair in ['hair-shoulder-length','hair-bob-bangs'] and color=='white' and bg=='#fff':page.screenshot(path=str(out/f'live-{gender}-white.jpg'),type='jpeg',quality=94)
  page.reload(wait_until='networkidle');assert page.evaluate('paperDollState.appearance.face')==faces[-1];assert page.evaluate('paperDollState.appearance.hair')=='hair-shoulder-length';assert page.evaluate('paperDollState.appearance.hairColor')=='white'
+ page.evaluate('setPaperDollView("patient");equipPaperDollItem("upperBody","patient-tunic")')
  for face in faces[1:]:
   page.evaluate('f=>{openCustomization();selectWardrobeSlot("face");equipPaperDollItem("face",f);equipPaperDollItem("hair","hair-none");setHairColor("original")}',face)
   page.reload(wait_until='networkidle');assert page.evaluate('paperDollState.appearance.face')==face
   page.evaluate('openCustomization();selectWardrobeSlot("face")');page.locator('.wardrobe-stage').evaluate('e=>{e.style.backgroundImage="none";e.style.backgroundColor="#fff"}')
-  page.wait_for_function('()=>{const i=document.getElementById("wardrobe-layer-face");return i.complete&&i.naturalWidth===941}')
+  page.wait_for_function('()=>[...document.querySelectorAll("#wardrobe-paperdoll img:not(.hidden)")].every(i=>i.complete&&i.naturalWidth>0)')
   page.locator('.wardrobe-stage').screenshot(path=str(out/(face+'.png')))
+ page.evaluate('setPaperDollView("combat")');assert page.evaluate('activePaperDollLoadout().upperBody') is None
+ page.evaluate('setPaperDollView("patient")');assert page.evaluate('activePaperDollLoadout().upperBody')=='patient-tunic'
  page.evaluate('openCustomization();selectWardrobeCategory("appearance");selectWardrobeSlot("hair");equipPaperDollItem("hair","hair-bob-bangs")')
  for width,height in [(320,568),(390,844),(768,844)]:
   page.set_viewport_size({'width':width,'height':height});page.locator('[data-palette-toggle]').click();page.locator('[data-hair-color-group="natural"]').click();page.locator('[data-hair-color="black"]').click();settle();page.locator('[data-palette-toggle]').click();assert page.evaluate('document.documentElement.scrollWidth<=innerWidth+1');page.screenshot(path=str(out/f'live-mobile-{width}.jpg'),type='jpeg',quality=94)
@@ -60,5 +63,5 @@ with sync_playwright() as p:
    assert hashlib.sha256(body).hexdigest()==hashlib.sha256(path.read_bytes()).hexdigest(),rel+' differs from local release'
    verified.append(rel or 'index.html')
  assert combos==114 and samples==1710 and not errors and not http
- result={'url':base,'combinations':combos,'background_color_checks':samples,'all_eight_female_reload':True,'published_files_byte_verified':sorted(set(verified)),'reload':True,'page_errors':errors,'http_errors':http,'mobile_widths':[320,390,768],'transport':'Actual published HTTPS bytes via certificate-verified urllib, Chromium renders without local substitutions','cache_version':cache_version}
+ result={'url':base,'combinations':combos,'background_color_checks':samples,'all_eight_female_reload':True,'patient_trip_outfits':True,'published_files_byte_verified':sorted(set(verified)),'reload':True,'page_errors':errors,'http_errors':http,'mobile_widths':[320,390,768],'transport':'Actual published HTTPS bytes via certificate-verified urllib, Chromium renders without local substitutions','style_cache_version':cache_version,'runtime_cache_version':'female-faces-8-1'}
  (out/'live-browser.json').write_text(json.dumps(result,indent=2)+'\n');print(json.dumps(result));browser.close()

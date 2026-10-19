@@ -152,8 +152,8 @@
       "path": "review/female-faces-integration/README_UA.md",
       "status": "added",
       "before_sha256": null,
-      "sha256": "071baa9b2b3f60cad17c2b7567d8077c7a94d8bb7b548aad5e9eae68a9eaf329",
-      "bytes": 18359
+      "sha256": "b146d1216382780bcc57aaaf3571c3cbe9fc77551af0d06e6fdc0d0f135a5207",
+      "bytes": 21540
     },
     {
       "path": "review/female-faces-integration/after/capture.json",
@@ -1052,6 +1052,125 @@
       "bytes": 181753
     },
     {
+      "path": "review/female-faces-integration/published/ci-test-summary.log",
+      "status": "added",
+      "before_sha256": null,
+      "sha256": "d2fe274af2f0321b4b992e626bd692fb6414f2aa3be0d98abdb95a396a57e544",
+      "bytes": 253
+    },
+    {
+      "path": "review/female-faces-integration/published/face-alternative.png",
+      "status": "added",
+      "before_sha256": null,
+      "sha256": "663bd90985c6ac835965d84c3b3b216ea88c283025fc8c68cc6c40f6f7b16575",
+      "bytes": 132014
+    },
+    {
+      "path": "review/female-faces-integration/published/face-asian.png",
+      "status": "added",
+      "before_sha256": null,
+      "sha256": "91a78ed62f67e7b3b245adff6ddda6434efba95d6e2311f0deccf5ebea7f1c08",
+      "bytes": 131652
+    },
+    {
+      "path": "review/female-faces-integration/published/face-elder.png",
+      "status": "added",
+      "before_sha256": null,
+      "sha256": "32980c670482eee100e04af7099b472a1a5b1efc8d4d09859231628a91d7609e",
+      "bytes": 131861
+    },
+    {
+      "path": "review/female-faces-integration/published/face-exhausted.png",
+      "status": "added",
+      "before_sha256": null,
+      "sha256": "1b5dda8ba8921835e3227c2c3de5cf45acbaab308418c290f8d3252c1d3637a3",
+      "bytes": 131863
+    },
+    {
+      "path": "review/female-faces-integration/published/face-ginger-soft.png",
+      "status": "added",
+      "before_sha256": null,
+      "sha256": "ffebfa5db3534e56854936abf97be64bc7356c5af0e9c25826f3fe6c3856dfcb",
+      "bytes": 130620
+    },
+    {
+      "path": "review/female-faces-integration/published/face-goth-black-lips.png",
+      "status": "added",
+      "before_sha256": null,
+      "sha256": "0f6df05d2b9a9ddc884a531c766fddb3df9b7737d99ed203f0afb1b7a59eadf2",
+      "bytes": 132193
+    },
+    {
+      "path": "review/female-faces-integration/published/face-goth-septum.png",
+      "status": "added",
+      "before_sha256": null,
+      "sha256": "626780f573c7f3c50d9ee161d0900f16efa47dbc5c0da091876591a8cd4e7644",
+      "bytes": 131472
+    },
+    {
+      "path": "review/female-faces-integration/published/face-young.png",
+      "status": "added",
+      "before_sha256": null,
+      "sha256": "4ba6d2fc214d1a1cef454d6cf4eb3b33c342d04342b3750407e0278cb88b1496",
+      "bytes": 131885
+    },
+    {
+      "path": "review/female-faces-integration/published/gallery-files.json",
+      "status": "added",
+      "before_sha256": null,
+      "sha256": "ff1e78aa1d46f0b5449aa08ca2d3d53a1e301c64501102022109400c28e21b00",
+      "bytes": 25128
+    },
+    {
+      "path": "review/female-faces-integration/published/live-browser.json",
+      "status": "added",
+      "before_sha256": null,
+      "sha256": "5f383f2244dc6383cea7ea0acc26bf96fcb02a52449333a49d91004c7aafaf10",
+      "bytes": 4650
+    },
+    {
+      "path": "review/female-faces-integration/published/live-female-white.jpg",
+      "status": "added",
+      "before_sha256": null,
+      "sha256": "75c78be002768adfb49674be06f058242bb53706123c9d228daddf4c8de28db4",
+      "bytes": 202965
+    },
+    {
+      "path": "review/female-faces-integration/published/live-male-white.jpg",
+      "status": "added",
+      "before_sha256": null,
+      "sha256": "eaa424404a5b84646aed19de506b2b238d661c03d1c03d2553225dae7c85cc61",
+      "bytes": 200679
+    },
+    {
+      "path": "review/female-faces-integration/published/live-mobile-320.jpg",
+      "status": "added",
+      "before_sha256": null,
+      "sha256": "adfe3e08f40ee9fed5cd0795b827e0f499ff13bbea40862f1d063a1f5aee9452",
+      "bytes": 51104
+    },
+    {
+      "path": "review/female-faces-integration/published/live-mobile-390.jpg",
+      "status": "added",
+      "before_sha256": null,
+      "sha256": "65d0b1a75b665d9ed9bd5fe082b0aadd4863a911b2e0f40a8a8b99d60fb7d442",
+      "bytes": 87179
+    },
+    {
+      "path": "review/female-faces-integration/published/live-mobile-768.jpg",
+      "status": "added",
+      "before_sha256": null,
+      "sha256": "c43e3bcb896f2f0df34fd6f151c373886fb477ee63130fa238437f6f63b2413e",
+      "bytes": 137888
+    },
+    {
+      "path": "review/female-faces-integration/published/verification.json",
+      "status": "added",
+      "before_sha256": null,
+      "sha256": "089dacbcd6a2552be6855686617edaafab13c4dcc6030ea98d6a111aeb6f5494",
+      "bytes": 5922
+    },
+    {
       "path": "review/female-faces-integration/sources/female_alternative_approved_source.png",
       "status": "added",
       "before_sha256": null,
@@ -1202,8 +1321,8 @@
       "path": "review/female-faces-integration/test-results.json",
       "status": "added",
       "before_sha256": null,
-      "sha256": "2d186e290e84c3df6f3343f609432298a60639a23d1eeebf0234912a269b7ab9",
-      "bytes": 7020
+      "sha256": "4a1d95db36aaeff198e0ff93b3ea6d664d1a671a76b6b525e6d6c8612aaf8867",
+      "bytes": 12318
     },
     {
       "path": "script.js",
@@ -1293,8 +1412,8 @@
       "path": "tools/verify-paper-doll-pages.py",
       "status": "modified",
       "before_sha256": "81e8d85baaef780d917aa88d2b9a10710f48c62767ec363e16bf6c0078c1db0e",
-      "sha256": "f41e290be0a5e7bce3f5d0d11a9fddbbc2eb37d32405e49f4a5b892125f7a454",
-      "bytes": 6145
+      "sha256": "30e1f11afa8734d13582e805bff6d2499b06b2c13ae0b168022534688eb8ab64",
+      "bytes": 6563
     }
   ],
   "self_excluded": "changed-files.json has no recursive self hash"
