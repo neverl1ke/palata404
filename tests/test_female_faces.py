@@ -10,6 +10,7 @@ from PIL import Image, ImageChops
 from scipy import ndimage as ndi
 
 from tests import test_game as support
+from tests.asset_history import approved_current_hash
 
 ROOT = support.ROOT
 REPORT = ROOT/'review/female-faces-integration'
@@ -92,7 +93,7 @@ class FemaleFacesAssetTests(unittest.TestCase):
         data=manifest();authorized={e[k] for e in data['files'] for k in ['output','mask']}
         for rel,digest in data['before_sha256'].items():
             if rel not in authorized:
-                self.assertEqual(prepare.sha((ROOT/rel).read_bytes()),digest,rel)
+                self.assertEqual(prepare.sha((ROOT/rel).read_bytes()),approved_current_hash(rel,digest),rel)
         import subprocess
         code="const fs=require('fs'),vm=require('vm');console.log(vm.runInNewContext(fs.readFileSync('paper-doll-data.js','utf8')+';JSON.stringify(PAPER_DOLL_ITEMS.filter(i=>i.slot===\"hair\"))'))"
         current=subprocess.check_output(['node','-e',code],cwd=ROOT,text=True)

@@ -2,6 +2,9 @@
 
 These tests cannot certify artistic anatomy. They detect a confirmed neck-fringe
 regression, incomplete compositing and accidental edits outside the repair ROI.
+The b00712b repair is tested against its preserved release assets after the
+subsequent authorised body replacement; current resources have separate checks
+in test_female_base_replacement and test_female_faces.
 """
 import hashlib
 import json
@@ -11,6 +14,7 @@ from pathlib import Path
 import numpy as np
 from PIL import Image, ImageChops
 from scipy import ndimage as ndi
+from tests.asset_history import female_independent_asset as released_asset
 
 ROOT = Path(__file__).resolve().parents[1]
 KINDS = ['asian','young','exhausted','elder','alternative',
@@ -18,9 +22,9 @@ KINDS = ['asian','young','exhausted','elder','alternative',
 
 
 def composite(kind):
-    base=Image.open(ROOT/'base_female.png').convert('RGBA')
-    head=Image.open(ROOT/f'assets/wardrobe/faces/female_{kind}_head.png').convert('RGBA')
-    mask=Image.open(ROOT/f'assets/wardrobe/faces/masks/female_{kind}_body.png').getchannel('A')
+    base=Image.open(released_asset('base_female.png')).convert('RGBA')
+    head=Image.open(released_asset(f'assets/wardrobe/faces/female_{kind}_head.png')).convert('RGBA')
+    mask=Image.open(released_asset(f'assets/wardrobe/faces/masks/female_{kind}_body.png')).getchannel('A')
     body=base.copy()
     body.putalpha(ImageChops.multiply(base.getchannel('A'),mask))
     return np.array(Image.alpha_composite(body,head))
@@ -50,10 +54,10 @@ class IndependentFemaleFaceTests(unittest.TestCase):
     def test_neck_detector_rejects_the_real_pre_fix_regression(self):
         # Real old bytes, not a generated fake tailored to the cleanup code.
         root=ROOT/'review/female-faces-independent-audit/before-assets'
-        base=Image.open(ROOT/'base_female.png').convert('RGBA')
+        base=Image.open(released_asset('base_female.png')).convert('RGBA')
         for kind in ['ginger_soft','goth_septum']:
             head=Image.open(root/f'female_{kind}_head.png').convert('RGBA')
-            mask=Image.open(ROOT/f'assets/wardrobe/faces/masks/female_{kind}_body.png').getchannel('A')
+            mask=Image.open(released_asset(f'assets/wardrobe/faces/masks/female_{kind}_body.png')).getchannel('A')
             body=base.copy();body.putalpha(ImageChops.multiply(base.getchannel('A'),mask))
             self.assertGreater(neck_reversals(np.array(Image.alpha_composite(body,head))[:,:,3]),20)
 
@@ -63,15 +67,15 @@ class IndependentFemaleFaceTests(unittest.TestCase):
         for kind in KINDS:
             self.assertLessEqual(neck_steps(composite(kind)[:,:,3]),3,kind)
         root=ROOT/'review/female-faces-independent-audit/before-assets'
-        base=Image.open(ROOT/'base_female.png').convert('RGBA')
+        base=Image.open(released_asset('base_female.png')).convert('RGBA')
         for kind in ['asian','young','exhausted','elder','alternative','ginger_soft']:
             head=Image.open(root/f'female_{kind}_head.png').convert('RGBA')
-            mask=Image.open(ROOT/f'assets/wardrobe/faces/masks/female_{kind}_body.png').getchannel('A')
+            mask=Image.open(released_asset(f'assets/wardrobe/faces/masks/female_{kind}_body.png')).getchannel('A')
             body=base.copy();body.putalpha(ImageChops.multiply(base.getchannel('A'),mask))
             self.assertGreater(neck_steps(np.array(Image.alpha_composite(body,head))[:,:,3]),3,kind)
 
     def test_each_actual_mask_preserves_solid_neck_and_lower_body(self):
-        base=np.array(Image.open(ROOT/'base_female.png').convert('RGBA'))
+        base=np.array(Image.open(released_asset('base_female.png')).convert('RGBA'))
         for kind in KINDS:
             a=composite(kind)
             self.assertTrue(np.array_equal(a[286:],base[286:]),kind)
@@ -91,7 +95,7 @@ class IndependentFemaleFaceTests(unittest.TestCase):
         changes=json.loads((report/'repair-manifest.json').read_text())
         for entry in changes['repairs']:
             old=np.array(Image.open(report/entry['before']))
-            current=np.array(Image.open(ROOT/entry['path']))
+            current=np.array(Image.open(released_asset(entry['path'])))
             changed=np.any(old!=current,axis=2)
             allowed=np.zeros(changed.shape,bool);allowed[218:286,405:541]=True
             self.assertFalse(np.any(changed&~allowed),entry['path'])
@@ -99,7 +103,7 @@ class IndependentFemaleFaceTests(unittest.TestCase):
             self.assertTrue(np.array_equal(old[:,:,:3][common],current[:,:,:3][common]),entry['path'])
             self.assertTrue(np.array_equal(old[:218],current[:218]),entry['path'])
         for path,digest in changes['protected_sha256'].items():
-            self.assertEqual(hashlib.sha256((ROOT/path).read_bytes()).hexdigest(),digest,path)
+            self.assertEqual(hashlib.sha256(released_asset(path).read_bytes()).hexdigest(),digest,path)
 
 
 if __name__=='__main__': unittest.main()

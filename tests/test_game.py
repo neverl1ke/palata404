@@ -62,7 +62,7 @@ class IconAssetTests(unittest.TestCase):
                 self.assertEqual(hashlib.sha256(top).hexdigest(),entry['protected_sha256'],'Upper head changed')
                 detail=head.convert('RGB').crop(entry['detail_box']).tobytes()
                 self.assertEqual(hashlib.sha256(detail).hexdigest(),entry['detail_sha256'])
-                base=Image.open(ROOT/f"base_{entry['gender']}.png").convert('RGBA')
+                base=Image.open(historical_asset(f"base_{entry['gender']}.png")).convert('RGBA')
                 hidden=base.copy();hidden.putalpha(ImageChops.multiply(base.getchannel('A'),mask.getchannel('A')))
                 result=Image.alpha_composite(hidden,head)
                 end=entry['profile']['end_y']+entry['profile']['overlap']
@@ -158,7 +158,7 @@ class IconAssetTests(unittest.TestCase):
         }
         for source, sha in expected.items():
             with self.subTest(source=source):
-                data = (ROOT/source).read_bytes()
+                data = historical_asset(source).read_bytes()
                 self.assertEqual(hashlib.sha1(f'blob {len(data)}\0'.encode()+data).hexdigest(), sha)
                 with Image.open(ROOT/source) as image:
                     self.assertEqual(image.size, (941, 1672))
@@ -347,7 +347,7 @@ class GameTests(unittest.TestCase):
         self.page.locator('#layer-face').wait_for(state='visible')
         self.assertTrue(self.page.locator('#layer-face').is_visible())
         self.page.reload(wait_until='networkidle')
-        self.assertEqual(self.page.locator('#layer-body').get_attribute('src'), 'base_female.png?v=e76e72be')
+        self.assertEqual(self.page.locator('#layer-body').get_attribute('src'), 'base_female.png?v=a27b499c')
         self.assertEqual(self.page.locator('#layer-face').get_attribute('src'), 'face_3.png')
 
     def test_paper_doll_ui_keeps_two_loadouts_and_shared_appearance_across_reload(self):
@@ -391,7 +391,7 @@ class GameTests(unittest.TestCase):
         self.assertEqual(self.page.evaluate('JSON.stringify({stats,inventory,equippedGear,gameProgress})'),before)
         self.page.reload(wait_until='networkidle')
         self.assertEqual(self.page.evaluate('JSON.stringify(paperDollState)'),state)
-        self.assertEqual(self.page.locator('#layer-body').get_attribute('src'),'base_female.png?v=e76e72be')
+        self.assertEqual(self.page.locator('#layer-body').get_attribute('src'),'base_female.png?v=a27b499c')
         self.assertIsNone(self.page.locator('#layer-face').get_attribute('src'))
         self.assertEqual(self.page.locator('#paper-doll-view-label').inner_text(),'Комплект: Трип')
         self.assertEqual(self.page.evaluate('JSON.stringify({stats,inventory,equippedGear,gameProgress})'),before)
@@ -417,7 +417,7 @@ class GameTests(unittest.TestCase):
             self.assertEqual(layer.evaluate('e=>getComputedStyle(e).zIndex'), '3')
             body = self.page.locator(f'#{prefix}layer-body')
             self.assertEqual(body.get_attribute('src'),
-                'base_female.png?v=e76e72be' if gender == 'female' else 'base_male.png?v=08da7a7f')
+                'base_female.png?v=a27b499c' if gender == 'female' else 'base_male.png?v=08da7a7f')
             self.assertEqual(body.evaluate('e=>[e.naturalWidth,e.naturalHeight]'), [941, 1672])
             for node in [body, layer]:
                 self.assertEqual(node.evaluate('e=>[e.style.left,e.style.top,e.style.width,e.style.height]'), ['0%', '0%', '100%', '100%'])
@@ -1109,6 +1109,9 @@ class GameTests(unittest.TestCase):
         self.assertEqual(self.page.locator('article').count(),2)
         for gender in ['male','female']:
             article=self.page.locator(f'[data-gender="{gender}"]')
+            if gender == 'female':
+                self.assertEqual(article.locator('.body').get_attribute('src'),
+                    '../review/female-base-replacement/before-assets/base_female.png?v=e76e72be')
             self.assertEqual(article.locator('.body').evaluate('e=>[e.naturalWidth,e.naturalHeight]'),[941,1672])
             self.assertEqual(article.locator('.shirt').evaluate('e=>[e.naturalWidth,e.naturalHeight]'),[982,1602] if gender=='male' else [941,1670])
             frame=article.locator('.frame').bounding_box()

@@ -1,0 +1,50 @@
+{
+  "status": "complete_local_regression",
+  "javascript": {
+    "tests": 84,
+    "passed": 84,
+    "failed": 0,
+    "skipped": 0
+  },
+  "python": {
+    "distinct_tests": 116,
+    "passed_after_targeted_fixes": 116,
+    "assets_final": {
+      "tests": 42,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "success": true
+    },
+    "browser_full_run": {
+      "tests": 74,
+      "initial_failed_tests": 1,
+      "initial_failure": "historical draft-shirt preview accidentally used newly replaced body",
+      "corrected_test_rerun": {
+        "tests": 1,
+        "passed": 1,
+        "thresholds_weakened": false
+      }
+    },
+    "note": "Initial 116-test run retained. Historical asset cohort rerun: 42/42. Historical preview correction rerun: 1/1. Other 73 browser tests passed in the full run."
+  },
+  "browser_captures": {
+    "chromium_heads_background_samples": 768,
+    "chromium_native_after_background_samples": 96,
+    "chromium_native_before_background_samples": 96,
+    "firefox_faces_reloaded": 8,
+    "clothing_faces": 9,
+    "page_errors": 0,
+    "http_errors": 0
+  },
+  "gallery": {
+    "images_loaded": 22,
+    "verified_files": 51,
+    "page_errors": 0
+  },
+  "limitations": [
+    "No physical mobile device",
+    "No WebKit run",
+    "Approved narrow/pink ginger portrait retained"
+  ]
+}

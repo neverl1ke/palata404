@@ -41,9 +41,9 @@
         "height": 1672
       },
       "output": "assets/wardrobe/faces/female_asian_head.png",
-      "sha256": "cf29ee83765fd44c746513ad48add79fef83c45e3aa70f87d1a6fb469ca8bcb1",
+      "sha256": "8b9e4f6dc5a1a3bb86d5cb9aa7450c46354c0c62f11a421647dc27873b2a2ed8",
       "mask": "assets/wardrobe/faces/masks/female_asian_body.png",
-      "mask_sha256": "4ce397159a390c5b6b631149bd3a5e336aab283664e7a4ed88791426c9c14f9b",
+      "mask_sha256": "261962e4bf662ba64062f7c3069551eb228ef7f18a3916090ce8a818a31b69a5",
       "detail_box": [
         425,
         80,
@@ -94,9 +94,9 @@
         "height": 1672
       },
       "output": "assets/wardrobe/faces/female_young_head.png",
-      "sha256": "8feabbfb2a845239e75bb1127c78e36513acec96171d774540ddb34f406c722a",
+      "sha256": "d7e2c1da556c0056dc466343afe99f46deb55fb40915de1e34a52649a0db0efa",
       "mask": "assets/wardrobe/faces/masks/female_young_body.png",
-      "mask_sha256": "4ce397159a390c5b6b631149bd3a5e336aab283664e7a4ed88791426c9c14f9b",
+      "mask_sha256": "261962e4bf662ba64062f7c3069551eb228ef7f18a3916090ce8a818a31b69a5",
       "detail_box": [
         425,
         80,
@@ -147,9 +147,9 @@
         "height": 1672
       },
       "output": "assets/wardrobe/faces/female_exhausted_head.png",
-      "sha256": "877804b3f73ca443d0ad106acc05957c682b98ef555998610cc5a7fa74ecdc3d",
+      "sha256": "9251f606b434be554d9e727668298da10b48cfee17fedf142669271ef04273df",
       "mask": "assets/wardrobe/faces/masks/female_exhausted_body.png",
-      "mask_sha256": "4ce397159a390c5b6b631149bd3a5e336aab283664e7a4ed88791426c9c14f9b",
+      "mask_sha256": "261962e4bf662ba64062f7c3069551eb228ef7f18a3916090ce8a818a31b69a5",
       "detail_box": [
         425,
         80,
@@ -200,9 +200,9 @@
         "height": 1672
       },
       "output": "assets/wardrobe/faces/female_elder_head.png",
-      "sha256": "9547a7637b82f64053198926382fce61e00edacf67394148533e8e01ca110733",
+      "sha256": "8362bed44fc4ec2fc930ebcf4f1ec365ac4280328f62ccbe13ec1fedbc07a54c",
       "mask": "assets/wardrobe/faces/masks/female_elder_body.png",
-      "mask_sha256": "4ce397159a390c5b6b631149bd3a5e336aab283664e7a4ed88791426c9c14f9b",
+      "mask_sha256": "261962e4bf662ba64062f7c3069551eb228ef7f18a3916090ce8a818a31b69a5",
       "detail_box": [
         425,
         80,
@@ -253,9 +253,9 @@
         "height": 1672
       },
       "output": "assets/wardrobe/faces/female_alternative_head.png",
-      "sha256": "ece9a9c4af542cb0930c8a9bf172c856991c1b3e72063f6b342655f4452e532d",
+      "sha256": "e752b2b01ef387816ae594ddfd23af6f945fb36b21bd39c22c0fd8bc476faeae",
       "mask": "assets/wardrobe/faces/masks/female_alternative_body.png",
-      "mask_sha256": "4ce397159a390c5b6b631149bd3a5e336aab283664e7a4ed88791426c9c14f9b",
+      "mask_sha256": "261962e4bf662ba64062f7c3069551eb228ef7f18a3916090ce8a818a31b69a5",
       "detail_box": [
         425,
         80,
@@ -306,9 +306,9 @@
         "height": 1672
       },
       "output": "assets/wardrobe/faces/female_ginger_soft_head.png",
-      "sha256": "5bdd230b16eff50f2b9d286946c52feb91b6ac6daf0df657f5678fc9eeefa244",
+      "sha256": "07eb9f2cc4f84ce8b170f8d5969119beceb04f422836d69b4e84f5f97ea19d45",
       "mask": "assets/wardrobe/faces/masks/female_ginger_soft_body.png",
-      "mask_sha256": "e3d160bd6c3a884d33b5a489eb08fbcf3c421fd68ef90f2c2f98021f08a0e0ac",
+      "mask_sha256": "b0d7db9fa095a6c8f8c6a6f9c7f1a40747ecbb355380943f1953dfdd9f59a711",
       "detail_box": [
         425,
         80,
@@ -359,9 +359,9 @@
         "height": 1672
       },
       "output": "assets/wardrobe/faces/female_goth_septum_head.png",
-      "sha256": "4b9aa067cec1ad18bcd1cb6b10632fb8de81982104a3a2979ea4cc33b3d74d0f",
+      "sha256": "1923e9b40f9d31ca483b2d7b946b5b7f0715223c43e6e85953acc81cc00f1e56",
       "mask": "assets/wardrobe/faces/masks/female_goth_septum_body.png",
-      "mask_sha256": "e3d160bd6c3a884d33b5a489eb08fbcf3c421fd68ef90f2c2f98021f08a0e0ac",
+      "mask_sha256": "b0d7db9fa095a6c8f8c6a6f9c7f1a40747ecbb355380943f1953dfdd9f59a711",
       "detail_box": [
         425,
         80,
@@ -412,9 +412,9 @@
         "height": 1672
       },
       "output": "assets/wardrobe/faces/female_goth_black_lips_head.png",
-      "sha256": "d158e029a0ad81b59a692c43d6392cbc2150715f89ca9d9dda97ed7df435900b",
+      "sha256": "0df58ed999bda4ead4a86fdc948c59a0560772611884285369a223e83420cc78",
       "mask": "assets/wardrobe/faces/masks/female_goth_black_lips_body.png",
-      "mask_sha256": "e3d160bd6c3a884d33b5a489eb08fbcf3c421fd68ef90f2c2f98021f08a0e0ac",
+      "mask_sha256": "b0d7db9fa095a6c8f8c6a6f9c7f1a40747ecbb355380943f1953dfdd9f59a711",
       "detail_box": [
         425,
         80,
@@ -743,5 +743,6 @@
     "baseline": "6bac151e53e8723f69b21b1a62dd52d02b444cd5",
     "manifest": "../female-faces-independent-audit/repair-manifest.json",
     "note": "Current SHA of eight neck-only alpha repairs; baseline portrait bytes in independent before-assets. Registration, visible source RGB and masks unchanged."
-  }
+  },
+  "female_base_replacement": "../female-base-replacement/replacement-manifest.json"
 }

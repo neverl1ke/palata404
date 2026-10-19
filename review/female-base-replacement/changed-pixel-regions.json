@@ -1,0 +1,172 @@
+[
+  {
+    "path": "base_female.png",
+    "changed_rgba_pixels": 495931,
+    "bbox": [
+      178,
+      21,
+      775,
+      1654
+    ]
+  },
+  {
+    "path": "assets/wardrobe/faces/female_asian_head.png",
+    "changed_rgba_pixels": 4437,
+    "bbox": [
+      406,
+      232,
+      542,
+      286
+    ]
+  },
+  {
+    "path": "assets/wardrobe/faces/masks/female_asian_body.png",
+    "changed_rgba_pixels": 395,
+    "bbox": [
+      367,
+      260,
+      591,
+      286
+    ]
+  },
+  {
+    "path": "assets/wardrobe/faces/female_young_head.png",
+    "changed_rgba_pixels": 4463,
+    "bbox": [
+      406,
+      229,
+      542,
+      286
+    ]
+  },
+  {
+    "path": "assets/wardrobe/faces/masks/female_young_body.png",
+    "changed_rgba_pixels": 395,
+    "bbox": [
+      367,
+      260,
+      591,
+      286
+    ]
+  },
+  {
+    "path": "assets/wardrobe/faces/female_exhausted_head.png",
+    "changed_rgba_pixels": 4424,
+    "bbox": [
+      406,
+      230,
+      542,
+      286
+    ]
+  },
+  {
+    "path": "assets/wardrobe/faces/masks/female_exhausted_body.png",
+    "changed_rgba_pixels": 395,
+    "bbox": [
+      367,
+      260,
+      591,
+      286
+    ]
+  },
+  {
+    "path": "assets/wardrobe/faces/female_elder_head.png",
+    "changed_rgba_pixels": 4428,
+    "bbox": [
+      406,
+      232,
+      542,
+      286
+    ]
+  },
+  {
+    "path": "assets/wardrobe/faces/masks/female_elder_body.png",
+    "changed_rgba_pixels": 395,
+    "bbox": [
+      367,
+      260,
+      591,
+      286
+    ]
+  },
+  {
+    "path": "assets/wardrobe/faces/female_alternative_head.png",
+    "changed_rgba_pixels": 4444,
+    "bbox": [
+      406,
+      229,
+      542,
+      286
+    ]
+  },
+  {
+    "path": "assets/wardrobe/faces/masks/female_alternative_body.png",
+    "changed_rgba_pixels": 395,
+    "bbox": [
+      367,
+      260,
+      591,
+      286
+    ]
+  },
+  {
+    "path": "assets/wardrobe/faces/female_ginger_soft_head.png",
+    "changed_rgba_pixels": 3739,
+    "bbox": [
+      415,
+      223,
+      534,
+      268
+    ]
+  },
+  {
+    "path": "assets/wardrobe/faces/masks/female_ginger_soft_body.png",
+    "changed_rgba_pixels": 432,
+    "bbox": [
+      367,
+      253,
+      591,
+      286
+    ]
+  },
+  {
+    "path": "assets/wardrobe/faces/female_goth_septum_head.png",
+    "changed_rgba_pixels": 3824,
+    "bbox": [
+      415,
+      224,
+      534,
+      268
+    ]
+  },
+  {
+    "path": "assets/wardrobe/faces/masks/female_goth_septum_body.png",
+    "changed_rgba_pixels": 432,
+    "bbox": [
+      367,
+      253,
+      591,
+      286
+    ]
+  },
+  {
+    "path": "assets/wardrobe/faces/female_goth_black_lips_head.png",
+    "changed_rgba_pixels": 3818,
+    "bbox": [
+      415,
+      224,
+      534,
+      268
+    ]
+  },
+  {
+    "path": "assets/wardrobe/faces/masks/female_goth_black_lips_body.png",
+    "changed_rgba_pixels": 432,
+    "bbox": [
+      367,
+      253,
+      591,
+      286
+    ]
+  }
+]

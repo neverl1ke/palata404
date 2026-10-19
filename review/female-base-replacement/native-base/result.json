@@ -1,0 +1,300 @@
+{
+  "engine": "chromium",
+  "version": "151.0.7922.34",
+  "combinations": 48,
+  "background_samples": 192,
+  "records": [
+    {
+      "phase": "before",
+      "hair": "hair-none",
+      "color": "original",
+      "backgrounds": 4
+    },
+    {
+      "phase": "before",
+      "hair": "hair-bob-bangs",
+      "color": "original",
+      "backgrounds": 4
+    },
+    {
+      "phase": "before",
+      "hair": "hair-messy",
+      "color": "original",
+      "backgrounds": 4
+    },
+    {
+      "phase": "before",
+      "hair": "hair-bob",
+      "color": "original",
+      "backgrounds": 4
+    },
+    {
+      "phase": "before",
+      "hair": "hair-double-buns",
+      "color": "original",
+      "backgrounds": 4
+    },
+    {
+      "phase": "before",
+      "hair": "hair-classic-short",
+      "color": "original",
+      "backgrounds": 4
+    },
+    {
+      "phase": "before",
+      "hair": "hair-textured-short",
+      "color": "original",
+      "backgrounds": 4
+    },
+    {
+      "phase": "before",
+      "hair": "hair-shoulder-length",
+      "color": "original",
+      "backgrounds": 4
+    },
+    {
+      "phase": "before",
+      "hair": "hair-none",
+      "color": "black",
+      "backgrounds": 4
+    },
+    {
+      "phase": "before",
+      "hair": "hair-bob-bangs",
+      "color": "black",
+      "backgrounds": 4
+    },
+    {
+      "phase": "before",
+      "hair": "hair-messy",
+      "color": "black",
+      "backgrounds": 4
+    },
+    {
+      "phase": "before",
+      "hair": "hair-bob",
+      "color": "black",
+      "backgrounds": 4
+    },
+    {
+      "phase": "before",
+      "hair": "hair-double-buns",
+      "color": "black",
+      "backgrounds": 4
+    },
+    {
+      "phase": "before",
+      "hair": "hair-classic-short",
+      "color": "black",
+      "backgrounds": 4
+    },
+    {
+      "phase": "before",
+      "hair": "hair-textured-short",
+      "color": "black",
+      "backgrounds": 4
+    },
+    {
+      "phase": "before",
+      "hair": "hair-shoulder-length",
+      "color": "black",
+      "backgrounds": 4
+    },
+    {
+      "phase": "before",
+      "hair": "hair-none",
+      "color": "white",
+      "backgrounds": 4
+    },
+    {
+      "phase": "before",
+      "hair": "hair-bob-bangs",
+      "color": "white",
+      "backgrounds": 4
+    },
+    {
+      "phase": "before",
+      "hair": "hair-messy",
+      "color": "white",
+      "backgrounds": 4
+    },
+    {
+      "phase": "before",
+      "hair": "hair-bob",
+      "color": "white",
+      "backgrounds": 4
+    },
+    {
+      "phase": "before",
+      "hair": "hair-double-buns",
+      "color": "white",
+      "backgrounds": 4
+    },
+    {
+      "phase": "before",
+      "hair": "hair-classic-short",
+      "color": "white",
+      "backgrounds": 4
+    },
+    {
+      "phase": "before",
+      "hair": "hair-textured-short",
+      "color": "white",
+      "backgrounds": 4
+    },
+    {
+      "phase": "before",
+      "hair": "hair-shoulder-length",
+      "color": "white",
+      "backgrounds": 4
+    },
+    {
+      "phase": "after",
+      "hair": "hair-none",
+      "color": "original",
+      "backgrounds": 4
+    },
+    {
+      "phase": "after",
+      "hair": "hair-bob-bangs",
+      "color": "original",
+      "backgrounds": 4
+    },
+    {
+      "phase": "after",
+      "hair": "hair-messy",
+      "color": "original",
+      "backgrounds": 4
+    },
+    {
+      "phase": "after",
+      "hair": "hair-bob",
+      "color": "original",
+      "backgrounds": 4
+    },
+    {
+      "phase": "after",
+      "hair": "hair-double-buns",
+      "color": "original",
+      "backgrounds": 4
+    },
+    {
+      "phase": "after",
+      "hair": "hair-classic-short",
+      "color": "original",
+      "backgrounds": 4
+    },
+    {
+      "phase": "after",
+      "hair": "hair-textured-short",
+      "color": "original",
+      "backgrounds": 4
+    },
+    {
+      "phase": "after",
+      "hair": "hair-shoulder-length",
+      "color": "original",
+      "backgrounds": 4
+    },
+    {
+      "phase": "after",
+      "hair": "hair-none",
+      "color": "black",
+      "backgrounds": 4
+    },
+    {
+      "phase": "after",
+      "hair": "hair-bob-bangs",
+      "color": "black",
+      "backgrounds": 4
+    },
+    {
+      "phase": "after",
+      "hair": "hair-messy",
+      "color": "black",
+      "backgrounds": 4
+    },
+    {
+      "phase": "after",
+      "hair": "hair-bob",
+      "color": "black",
+      "backgrounds": 4
+    },
+    {
+      "phase": "after",
+      "hair": "hair-double-buns",
+      "color": "black",
+      "backgrounds": 4
+    },
+    {
+      "phase": "after",
+      "hair": "hair-classic-short",
+      "color": "black",
+      "backgrounds": 4
+    },
+    {
+      "phase": "after",
+      "hair": "hair-textured-short",
+      "color": "black",
+      "backgrounds": 4
+    },
+    {
+      "phase": "after",
+      "hair": "hair-shoulder-length",
+      "color": "black",
+      "backgrounds": 4
+    },
+    {
+      "phase": "after",
+      "hair": "hair-none",
+      "color": "white",
+      "backgrounds": 4
+    },
+    {
+      "phase": "after",
+      "hair": "hair-bob-bangs",
+      "color": "white",
+      "backgrounds": 4
+    },
+    {
+      "phase": "after",
+      "hair": "hair-messy",
+      "color": "white",
+      "backgrounds": 4
+    },
+    {
+      "phase": "after",
+      "hair": "hair-bob",
+      "color": "white",
+      "backgrounds": 4
+    },
+    {
+      "phase": "after",
+      "hair": "hair-double-buns",
+      "color": "white",
+      "backgrounds": 4
+    },
+    {
+      "phase": "after",
+      "hair": "hair-classic-short",
+      "color": "white",
+      "backgrounds": 4
+    },
+    {
+      "phase": "after",
+      "hair": "hair-textured-short",
+      "color": "white",
+      "backgrounds": 4
+    },
+    {
+      "phase": "after",
+      "hair": "hair-shoulder-length",
+      "color": "white",
+      "backgrounds": 4
+    }
+  ],
+  "page_errors": [],
+  "http_errors": [],
+  "before": "production index.html compositor with exact b00712b art intercepted from preserved before-assets",
+  "after": "unmodified current index.html renderer and current files"
+}

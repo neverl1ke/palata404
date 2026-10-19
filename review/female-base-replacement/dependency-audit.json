@@ -1,0 +1,21 @@
+{
+  "commit": "b00712bffcac1117f3fdba85f0a81f57b58592ba",
+  "tracked_files": 1574,
+  "bytes": 503841686,
+  "categories": {
+    "config/docs": 6,
+    ".github": 1,
+    "art": 2,
+    "assets": 110,
+    "runtime": 32,
+    "docs": 10,
+    "review": 1355,
+    "tests": 25,
+    "tools": 33
+  },
+  "missing_static_references": [],
+  "unreferenced_candidates_not_safe_to_delete": [],
+  "command": "python tools/audit-project.py --check",
+  "exit_code": 0,
+  "scope": "Staged final work tree before this generated summary and changed-files manifest; full dependency graph is reproducible with the command."
+}

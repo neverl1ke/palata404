@@ -1,0 +1,1260 @@
+{
+  "baseline": "b00712b",
+  "files": [
+    {
+      "path": "README.md",
+      "sha256": "cf023bed08564ff4e506d1b7aa121fdf96fcf67a90e6e66e4a034bce1b02cf95",
+      "size": 16535,
+      "before_git_blob": "166ba98a197022b9dc590d9ba368b9be978f4469"
+    },
+    {
+      "path": "art/hospital-shirt.html",
+      "sha256": "2736b76d229808423a1be08ef43ba02b9a58f376279018fba9452fc22f8a952c",
+      "size": 4903,
+      "before_git_blob": "227dff907bb26a39ec0e30e09b3dba66a27f9443"
+    },
+    {
+      "path": "assets/wardrobe/faces/female_alternative_head.png",
+      "sha256": "e752b2b01ef387816ae594ddfd23af6f945fb36b21bd39c22c0fd8bc476faeae",
+      "size": 80314,
+      "before_git_blob": "6feb2329225fbeadf385b4ab41f80527be5d603f"
+    },
+    {
+      "path": "assets/wardrobe/faces/female_asian_head.png",
+      "sha256": "8b9e4f6dc5a1a3bb86d5cb9aa7450c46354c0c62f11a421647dc27873b2a2ed8",
+      "size": 77187,
+      "before_git_blob": "80407b9f61e423757f81cd811e3c6b2002825bc2"
+    },
+    {
+      "path": "assets/wardrobe/faces/female_elder_head.png",
+      "sha256": "8362bed44fc4ec2fc930ebcf4f1ec365ac4280328f62ccbe13ec1fedbc07a54c",
+      "size": 79300,
+      "before_git_blob": "0f37927abe1a3a83722e9fb01e847d4380e9d8c0"
+    },
+    {
+      "path": "assets/wardrobe/faces/female_exhausted_head.png",
+      "sha256": "9251f606b434be554d9e727668298da10b48cfee17fedf142669271ef04273df",
+      "size": 79471,
+      "before_git_blob": "304e33a7170c6ce391c4c0dd1ac7b71f867e048d"
+    },
+    {
+      "path": "assets/wardrobe/faces/female_ginger_soft_head.png",
+      "sha256": "07eb9f2cc4f84ce8b170f8d5969119beceb04f422836d69b4e84f5f97ea19d45",
+      "size": 65024,
+      "before_git_blob": "0e388997cf78437b64b3721da9347e1aaee7f53e"
+    },
+    {
+      "path": "assets/wardrobe/faces/female_goth_black_lips_head.png",
+      "sha256": "0df58ed999bda4ead4a86fdc948c59a0560772611884285369a223e83420cc78",
+      "size": 75267,
+      "before_git_blob": "4a170b0ac6d378dbd90a65e5dca6c71cecafe7c3"
+    },
+    {
+      "path": "assets/wardrobe/faces/female_goth_septum_head.png",
+      "sha256": "1923e9b40f9d31ca483b2d7b946b5b7f0715223c43e6e85953acc81cc00f1e56",
+      "size": 73020,
+      "before_git_blob": "4b7228ae9bbb305ccb4a4fdadaa9e60b7d7bae70"
+    },
+    {
+      "path": "assets/wardrobe/faces/female_young_head.png",
+      "sha256": "d7e2c1da556c0056dc466343afe99f46deb55fb40915de1e34a52649a0db0efa",
+      "size": 79216,
+      "before_git_blob": "302367dfd4acb7a2d32e6718c66459cc345a4d54"
+    },
+    {
+      "path": "assets/wardrobe/faces/masks/female_alternative_body.png",
+      "sha256": "261962e4bf662ba64062f7c3069551eb228ef7f18a3916090ce8a818a31b69a5",
+      "size": 9650,
+      "before_git_blob": "9a928164f7f8048762626b9820ee1482ab1237bb"
+    },
+    {
+      "path": "assets/wardrobe/faces/masks/female_asian_body.png",
+      "sha256": "261962e4bf662ba64062f7c3069551eb228ef7f18a3916090ce8a818a31b69a5",
+      "size": 9650,
+      "before_git_blob": "9a928164f7f8048762626b9820ee1482ab1237bb"
+    },
+    {
+      "path": "assets/wardrobe/faces/masks/female_elder_body.png",
+      "sha256": "261962e4bf662ba64062f7c3069551eb228ef7f18a3916090ce8a818a31b69a5",
+      "size": 9650,
+      "before_git_blob": "9a928164f7f8048762626b9820ee1482ab1237bb"
+    },
+    {
+      "path": "assets/wardrobe/faces/masks/female_exhausted_body.png",
+      "sha256": "261962e4bf662ba64062f7c3069551eb228ef7f18a3916090ce8a818a31b69a5",
+      "size": 9650,
+      "before_git_blob": "9a928164f7f8048762626b9820ee1482ab1237bb"
+    },
+    {
+      "path": "assets/wardrobe/faces/masks/female_ginger_soft_body.png",
+      "sha256": "b0d7db9fa095a6c8f8c6a6f9c7f1a40747ecbb355380943f1953dfdd9f59a711",
+      "size": 9439,
+      "before_git_blob": "0c7366992f236da55b9a52428b4817d7c6570df2"
+    },
+    {
+      "path": "assets/wardrobe/faces/masks/female_goth_black_lips_body.png",
+      "sha256": "b0d7db9fa095a6c8f8c6a6f9c7f1a40747ecbb355380943f1953dfdd9f59a711",
+      "size": 9439,
+      "before_git_blob": "0c7366992f236da55b9a52428b4817d7c6570df2"
+    },
+    {
+      "path": "assets/wardrobe/faces/masks/female_goth_septum_body.png",
+      "sha256": "b0d7db9fa095a6c8f8c6a6f9c7f1a40747ecbb355380943f1953dfdd9f59a711",
+      "size": 9439,
+      "before_git_blob": "0c7366992f236da55b9a52428b4817d7c6570df2"
+    },
+    {
+      "path": "assets/wardrobe/faces/masks/female_young_body.png",
+      "sha256": "261962e4bf662ba64062f7c3069551eb228ef7f18a3916090ce8a818a31b69a5",
+      "size": 9650,
+      "before_git_blob": "9a928164f7f8048762626b9820ee1482ab1237bb"
+    },
+    {
+      "path": "base_female.png",
+      "sha256": "a27b499c03fc15c4788ae3a651483a36463f28b1f034178feccdaa852e7e50f9",
+      "size": 838098,
+      "before_git_blob": "ec80fd107b3111688381c158bad813c4dc949c42"
+    },
+    {
+      "path": "docs/paper-doll.md",
+      "sha256": "0157c9fa551af829a2293a49e821a6b89173a5c4ffc4b828c259c2eb0dfb92c4",
+      "size": 50931,
+      "before_git_blob": "b478d74926db2701f4895fc1f34639bffc6222f2"
+    },
+    {
+      "path": "docs/patient-clothing-art.md",
+      "sha256": "04bae18993545086660d44f37a897ab300ed039eaef2e6723955606b5f6261d9",
+      "size": 8476,
+      "before_git_blob": "f6b054beebcc81e7b176605656d5bac65517cc14"
+    },
+    {
+      "path": "index.html",
+      "sha256": "9f64bda71cedf448ac4deaff3a69bcdefbf9461912d9c5cf6f3c59a8f67c02b4",
+      "size": 76876,
+      "before_git_blob": "fd466990396eb1fcee8c0bcad3b79cd0a06023f5"
+    },
+    {
+      "path": "paper-doll-data.js",
+      "sha256": "ff31dabbb01d53824392e70e60f27d4a45ef67126f2150342ecb612435694f49",
+      "size": 15918,
+      "before_git_blob": "64828bb8d9324e22b466532d32837555cd9a8173"
+    },
+    {
+      "path": "review/README.md",
+      "sha256": "9aba4fa047856684e61d553f307ea8ff06a6b37d9cc23bf5f8b8563340342ddf",
+      "size": 6248,
+      "before_git_blob": "715c5cab20521da6fc77f9100356a93a92146a3f"
+    },
+    {
+      "path": "review/female-base-replacement/README.md",
+      "sha256": "86d5d359a20b1f90e6241006852a06f2fd41b2a84085eba43397ceca28530bcb",
+      "size": 12346,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/after-chromium/face-alternative-bare.png",
+      "sha256": "ef4aab6dca32279bf3e96f59a42345ab253956392a41c8746d8cb013c3db8c41",
+      "size": 103888,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/after-chromium/face-alternative-black.webp",
+      "sha256": "84d89150b43eb0c6a12fcd3d1b45b33e13550ad56c3308948b8d1dc5a6a239bd",
+      "size": 1103116,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/after-chromium/face-alternative-game.png",
+      "sha256": "77de3d0a9529b2d8662f96da377c10a31ed16884fdf86fe8d5701b555d2b166c",
+      "size": 339268,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/after-chromium/face-alternative-original.png",
+      "sha256": "3b9b30abdee03a70e30a4986b0f13860a91d4022e3274349aaabc8ccc116ab76",
+      "size": 1234383,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/after-chromium/face-alternative-white.webp",
+      "sha256": "cee61aaf708977435fcf4cce4ef640fd7c67e99c25358a32baecf3ed9160924e",
+      "size": 1177356,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/after-chromium/face-asian-bare.png",
+      "sha256": "d49a231fdf59702560b6243b178ac2ca023873f3b33fcad28c7de0713dbfccad",
+      "size": 98541,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/after-chromium/face-asian-black.webp",
+      "sha256": "42944ffef40c17641dc21f992300352e9bd7800c40c0a3d5b4152f66b0342848",
+      "size": 1076778,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/after-chromium/face-asian-game.png",
+      "sha256": "b8b62492068724466c245aa3ece51ebe0efce3ad046159330ec29a43161bb470",
+      "size": 339345,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/after-chromium/face-asian-original.png",
+      "sha256": "07b33324e1baa87b1d6e1add54a5c84d3d8971af90c212f8c879d3389d066fc0",
+      "size": 1235289,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/after-chromium/face-asian-white.webp",
+      "sha256": "1f384f703755d7d17d3864215a2bb5fc5e846ff416d9df1d7c95b18696b94b87",
+      "size": 1157886,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/after-chromium/face-elder-bare.png",
+      "sha256": "4d7f3749eb403003bbfc636e965c94b9acbd14724e90ceacdc13e3652da54f00",
+      "size": 101202,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/after-chromium/face-elder-black.webp",
+      "sha256": "4435e2a3c7231438db8106da3b100fdc44e2bcda7db70c97b07964702fca33f9",
+      "size": 1097056,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/after-chromium/face-elder-game.png",
+      "sha256": "5213c09833c2daeae564d1f4ade67cfc80283de40451c240fce16d18f3ed1d07",
+      "size": 339434,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/after-chromium/face-elder-original.png",
+      "sha256": "5f45367fd4572d0e40481e9446678e44adf271a3212ac2d07baef158d994793d",
+      "size": 1250276,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/after-chromium/face-elder-white.webp",
+      "sha256": "0a75a9d9cd9716bffa33e905f753228018e99f25ea7e3969ec1689fc357e009a",
+      "size": 1169106,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/after-chromium/face-exhausted-bare.png",
+      "sha256": "e349b0375169ea0482e7610697fbfc1b6699bf1bcea5cab9c04f4705e059b375",
+      "size": 103004,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/after-chromium/face-exhausted-black.webp",
+      "sha256": "5ceedec396425482f1cf74fcde0baa0b4e64bdc70b8ccda99ba81bb4614ca7a0",
+      "size": 1102020,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/after-chromium/face-exhausted-game.png",
+      "sha256": "c235a85d7626a4997a917181781aeaccb22df5a68b969990e56c1f179738cf6a",
+      "size": 339413,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/after-chromium/face-exhausted-original.png",
+      "sha256": "81ea3b2173bc48b807e2855cdc1635c2f13e4db4bc2994c19f1b37aad00d4ab0",
+      "size": 1248327,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/after-chromium/face-exhausted-white.webp",
+      "sha256": "704a2021fe646cfbe4d2c2a509546f246ba57fadc089c7233b0d186b9163d0df",
+      "size": 1176130,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/after-chromium/face-ginger-soft-bare.png",
+      "sha256": "42b1b57220bb75e9fa5c54ba67ddd2b4156408c35af7ea793e57f70133a1968b",
+      "size": 94141,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/after-chromium/face-ginger-soft-black.webp",
+      "sha256": "d8587739a3db7b514a878bc0da66abbafde8961ca3ed295d6999f22aefd2f8fa",
+      "size": 1060440,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/after-chromium/face-ginger-soft-game.png",
+      "sha256": "ab32d1141380bd22fc6058b791bb8fa7ac2861e3989ea5b7ec1bc149681047a9",
+      "size": 339164,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/after-chromium/face-ginger-soft-original.webp",
+      "sha256": "9d86d8e3da73807e5727840d6f401ac8561e8a1795c5b434f2bb6f04d0228979",
+      "size": 1247160,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/after-chromium/face-ginger-soft-white.webp",
+      "sha256": "a4ced8ae99dc3e23e839cc5681aa11c8d6f996c5d674f73cae96bb7e68bc4da9",
+      "size": 1151496,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/after-chromium/face-goth-black-lips-bare.png",
+      "sha256": "c7f52596dc865f16b78ca929537e6f4c8df9e6cfc7885a169934d1ee902a5e6d",
+      "size": 104852,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/after-chromium/face-goth-black-lips-black.webp",
+      "sha256": "a74d5b019aa7dc0b7ffda99449a5dff33647d3b2618786a17df5d4bfa3779d5b",
+      "size": 1047548,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/after-chromium/face-goth-black-lips-game.png",
+      "sha256": "4e64e11e7fc5fdc6da2e9ce274ff3c237dd2367b28de841b5b6528f66b46e883",
+      "size": 339353,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/after-chromium/face-goth-black-lips-original.webp",
+      "sha256": "653658885f1401e883831f079ba3086e3bc57a3016aea967469f6aae2f272f85",
+      "size": 1203692,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/after-chromium/face-goth-black-lips-white.webp",
+      "sha256": "b619d10413a5365e19e2bb070c4ab99a76e5609bdd463717556742e40fd83236",
+      "size": 1122808,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/after-chromium/face-goth-septum-bare.png",
+      "sha256": "d2b507ea6212a1c301ba1411a77d250e3fa32cd03642eb973a8f759f1f014031",
+      "size": 101969,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/after-chromium/face-goth-septum-black.webp",
+      "sha256": "bba53a4e73752592b414e371d7f4547632f0ca87de80972b91847db6b1f3cb3a",
+      "size": 1073990,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/after-chromium/face-goth-septum-game.png",
+      "sha256": "2d49b10e6668606b28b8c89a52348301697c2fd768d2347da663f5f1c2c5abd2",
+      "size": 339188,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/after-chromium/face-goth-septum-original.webp",
+      "sha256": "6cf08b4eef0cb45da37240f2d0d9b4d941c88625396d371f3911813608f2eab9",
+      "size": 1236614,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/after-chromium/face-goth-septum-white.webp",
+      "sha256": "8acbbe9ad053d4d9df3e8da88ea9b66b71765c078483e3e85f8d08628614db9a",
+      "size": 1139624,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/after-chromium/face-young-bare.png",
+      "sha256": "c1e7c43fd67ebfc10a7a6319dc7981b87a6f34edfa7bdf3aa611bc5185d71ad0",
+      "size": 100331,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/after-chromium/face-young-black.webp",
+      "sha256": "ac75d36546caefb7e3d89c2a02352c8e327869b1b8d23828ca6bc95e0f42c25e",
+      "size": 1125262,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/after-chromium/face-young-game.png",
+      "sha256": "7fec670e16d003fc7784854acb15bbc108defd1ed134ad57e95fb400809606e4",
+      "size": 339482,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/after-chromium/face-young-original.png",
+      "sha256": "82b305b340c6cead1dd706d71b96bf5c9d35be91d4d79fd15e14b6cc3034ccce",
+      "size": 1233328,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/after-chromium/face-young-white.webp",
+      "sha256": "d5feb4652bee374ef2885c6d167d7cdd7c8f29a2a2aa6f216f27a942d7b64bdb",
+      "size": 1179900,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/after-chromium/result.json",
+      "sha256": "c994887d664094a2dc9a73f95f491307e8fc693a82627f8f612aacbc26fc14c1",
+      "size": 41507,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/after-chromium/wardrobe-1440.png",
+      "sha256": "6235a4439a4e76e49b7e7c85194a2aec23b6ed1110d52b0ce9439e5a77f76813",
+      "size": 1009380,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/after-chromium/wardrobe-320.png",
+      "sha256": "a02ca735250a8f91ca0fcfa2340ff52f5c4572adfe51fe44c5b023247ce199fa",
+      "size": 87798,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/after-chromium/wardrobe-360.png",
+      "sha256": "d305917bc8bc4e4ad7ad6b8795739987f5dbbd851080e62b9fe07b1601727e81",
+      "size": 119860,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/after-chromium/wardrobe-390.png",
+      "sha256": "4d920a8393f179233673b6e7712cdd135633a55d605e857c7da934ba2770aab3",
+      "size": 205937,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/after-chromium/wardrobe-430.png",
+      "sha256": "c2c27236138d48db6589bfd43cad43d8464aa9b1b1dc7f0de9971f7d897ead3e",
+      "size": 219784,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/after-chromium/wardrobe-768.png",
+      "sha256": "247ada069adad790ebe253ff5b77441d5ff6194cbdcb1a95aebe9775309483e9",
+      "size": 473609,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/after-firefox/face-alternative-bare.png",
+      "sha256": "42ffb53c8224b8e72b1b5b3f2b9953bcd3240a6b36d8ea01a27f932b5feb8088",
+      "size": 126959,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/after-firefox/face-alternative-game.png",
+      "sha256": "5ce7f37bd141454021a434c31b64b7abf9d1859c565a4b31e9062b3a286c57ec",
+      "size": 401732,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/after-firefox/face-asian-bare.png",
+      "sha256": "616f4053b468001bdff7f4f9ed63912c6878b91bcd5c56efdfa31ba89338edcf",
+      "size": 122058,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/after-firefox/face-asian-game.png",
+      "sha256": "08a985f67a278d4d47499bc75218a64b104ad069ce7c826a517037518ba547fd",
+      "size": 401852,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/after-firefox/face-elder-bare.png",
+      "sha256": "b8d56464c4d939c48f186e54a46443a0ed89f1236e0edcb4d0bdb174fdf39906",
+      "size": 125148,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/after-firefox/face-elder-game.png",
+      "sha256": "a625dfbb3fad59a44b336436bd7f31cb8f5429b47c5e456b17d208ff9388abef",
+      "size": 401980,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/after-firefox/face-exhausted-bare.png",
+      "sha256": "0cd1f3013235444c56822bf1f20e1900d7d0fbe4186e531ce1921228ec38bf2c",
+      "size": 126440,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/after-firefox/face-exhausted-game.png",
+      "sha256": "53601844b9ac731fea9bb1ca37ef364eaae679e72f7921e7feb58f16c10eb816",
+      "size": 401852,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/after-firefox/face-ginger-soft-bare.png",
+      "sha256": "8069bfe34888d8e5dbc813a2d06e6dad0317078e77c667d46bee055756c12b48",
+      "size": 116149,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/after-firefox/face-ginger-soft-game.png",
+      "sha256": "33db5e6fcbdd8b83168f7dbe4571414c6aae41c36b3694814b1ae17548e258f2",
+      "size": 401626,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/after-firefox/face-goth-black-lips-bare.png",
+      "sha256": "88bb4c74d4e1c9b5d7504005028b25fe575ffceb70154ff9aedc6e1ab6f201cf",
+      "size": 130058,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/after-firefox/face-goth-black-lips-game.png",
+      "sha256": "aa01db42d5e5759f747f3e7bf924b8e82fa5befa72870dd0a8d386085a96226a",
+      "size": 401750,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/after-firefox/face-goth-septum-bare.png",
+      "sha256": "eee3341625958fccc611fc776c878fb117c82d326f4bc8af5a54eae22c8b8dec",
+      "size": 125320,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/after-firefox/face-goth-septum-game.png",
+      "sha256": "efe8c4f13287820b50b99a0c54634c71eb60efbc732b15b25be5dcd0e037f388",
+      "size": 401533,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/after-firefox/face-young-bare.png",
+      "sha256": "cbff36330e978fef1154ad33107026778d5c28c39b52b8ebbdcfdbb60bfdaf47",
+      "size": 122795,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/after-firefox/face-young-game.png",
+      "sha256": "e2cd10a94efbf66def9c62903fd33838b5deb2d56d9794553ff3cec9bcb38b6e",
+      "size": 401915,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/after-firefox/result.json",
+      "sha256": "c6e728272aeb52f5466cb1b8d4b829ef97903f28600005f9100323357fdf47c2",
+      "size": 1508,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/after-firefox/wardrobe-1440.png",
+      "sha256": "af305855aca0d2752cda6b40fc048dd9a38d03f091b7dc85192cb498988325ed",
+      "size": 1129206,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/after-firefox/wardrobe-320.png",
+      "sha256": "b13f6828b462c767a5cc6a30ec516d813ae8af33c066ce846aa279aefe1fc21d",
+      "size": 111402,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/after-firefox/wardrobe-360.png",
+      "sha256": "a251cc983c95553d8c54da9b62c4984b1d7edb4c7396b67f4076c7460a3ef5c3",
+      "size": 158263,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/after-firefox/wardrobe-390.png",
+      "sha256": "a45eb674a793106be968a920fa42e264baf39290f3ef919e42ed528be81edde4",
+      "size": 264284,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/after-firefox/wardrobe-430.png",
+      "sha256": "f5dc98700056c0493fc0404ee65292b595623217611797cc40d94dba4e8d08cc",
+      "size": 287018,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/after-firefox/wardrobe-768.png",
+      "sha256": "1b6ae6a512eaa0f9648359221d77f8415466c47c6a2b3f2459cc67eb4d18b751",
+      "size": 566785,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/before-assets/assets/wardrobe/faces/female_alternative_head.png",
+      "sha256": "ece9a9c4af542cb0930c8a9bf172c856991c1b3e72063f6b342655f4452e532d",
+      "size": 80452,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/before-assets/assets/wardrobe/faces/female_asian_head.png",
+      "sha256": "cf29ee83765fd44c746513ad48add79fef83c45e3aa70f87d1a6fb469ca8bcb1",
+      "size": 77322,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/before-assets/assets/wardrobe/faces/female_elder_head.png",
+      "sha256": "9547a7637b82f64053198926382fce61e00edacf67394148533e8e01ca110733",
+      "size": 79368,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/before-assets/assets/wardrobe/faces/female_exhausted_head.png",
+      "sha256": "877804b3f73ca443d0ad106acc05957c682b98ef555998610cc5a7fa74ecdc3d",
+      "size": 79601,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/before-assets/assets/wardrobe/faces/female_ginger_soft_head.png",
+      "sha256": "5bdd230b16eff50f2b9d286946c52feb91b6ac6daf0df657f5678fc9eeefa244",
+      "size": 64977,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/before-assets/assets/wardrobe/faces/female_goth_black_lips_head.png",
+      "sha256": "d158e029a0ad81b59a692c43d6392cbc2150715f89ca9d9dda97ed7df435900b",
+      "size": 75364,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/before-assets/assets/wardrobe/faces/female_goth_septum_head.png",
+      "sha256": "4b9aa067cec1ad18bcd1cb6b10632fb8de81982104a3a2979ea4cc33b3d74d0f",
+      "size": 73061,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/before-assets/assets/wardrobe/faces/female_young_head.png",
+      "sha256": "8feabbfb2a845239e75bb1127c78e36513acec96171d774540ddb34f406c722a",
+      "size": 79317,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/before-assets/assets/wardrobe/faces/masks/female_alternative_body.png",
+      "sha256": "4ce397159a390c5b6b631149bd3a5e336aab283664e7a4ed88791426c9c14f9b",
+      "size": 9631,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/before-assets/assets/wardrobe/faces/masks/female_asian_body.png",
+      "sha256": "4ce397159a390c5b6b631149bd3a5e336aab283664e7a4ed88791426c9c14f9b",
+      "size": 9631,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/before-assets/assets/wardrobe/faces/masks/female_elder_body.png",
+      "sha256": "4ce397159a390c5b6b631149bd3a5e336aab283664e7a4ed88791426c9c14f9b",
+      "size": 9631,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/before-assets/assets/wardrobe/faces/masks/female_exhausted_body.png",
+      "sha256": "4ce397159a390c5b6b631149bd3a5e336aab283664e7a4ed88791426c9c14f9b",
+      "size": 9631,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/before-assets/assets/wardrobe/faces/masks/female_ginger_soft_body.png",
+      "sha256": "e3d160bd6c3a884d33b5a489eb08fbcf3c421fd68ef90f2c2f98021f08a0e0ac",
+      "size": 9431,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/before-assets/assets/wardrobe/faces/masks/female_goth_black_lips_body.png",
+      "sha256": "e3d160bd6c3a884d33b5a489eb08fbcf3c421fd68ef90f2c2f98021f08a0e0ac",
+      "size": 9431,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/before-assets/assets/wardrobe/faces/masks/female_goth_septum_body.png",
+      "sha256": "e3d160bd6c3a884d33b5a489eb08fbcf3c421fd68ef90f2c2f98021f08a0e0ac",
+      "size": 9431,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/before-assets/assets/wardrobe/faces/masks/female_young_body.png",
+      "sha256": "4ce397159a390c5b6b631149bd3a5e336aab283664e7a4ed88791426c9c14f9b",
+      "size": 9631,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/before-assets/base_female.png",
+      "sha256": "e76e72bea1d800fd50e65ed45f93ba8d70e79c04947a3eb4a4ffb43b9a1d8f68",
+      "size": 879928,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/before-chromium/face-alternative-bare.png",
+      "sha256": "f2467bc2c9450d435a8fb6f115b88bb6dd404e99709637249421a36fb0fa2852",
+      "size": 104456,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/before-chromium/face-alternative-game.png",
+      "sha256": "acaf489d80e2541b3a65d2bcfbe328beb571d0656ac5be548e6e57a488cb9f81",
+      "size": 339875,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/before-chromium/face-asian-bare.png",
+      "sha256": "6605781e9cdd8027c98582b91a50233e5c74b072a8fae8331435deaab64a54cb",
+      "size": 99197,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/before-chromium/face-asian-game.png",
+      "sha256": "9da27aeed987fa2d12749d077e85cb326c9f338705b5310e40a5455914bb5293",
+      "size": 339916,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/before-chromium/face-elder-bare.png",
+      "sha256": "bcf77cc5b754a95581925d7790cc8e4e7701bd28096763291cff04485d5b2f1f",
+      "size": 101656,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/before-chromium/face-elder-game.png",
+      "sha256": "eecdd1bb9836da33322a3ce5da884a2884e63cd43b07b70315063c8520923599",
+      "size": 340028,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/before-chromium/face-exhausted-bare.png",
+      "sha256": "469a1bad1a859635dce2fcc72257d97229b3365ffba97962becb6849ca6ce778",
+      "size": 103558,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/before-chromium/face-exhausted-game.png",
+      "sha256": "4e2437aaa668befebfc70d719a9fbec45ac9189b4db76173583feb4209f1d894",
+      "size": 340006,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/before-chromium/face-ginger-soft-bare.png",
+      "sha256": "0914f04cfce4a6a8e633eb340a7c0c6bae8a683c30f565e6d214d6d8bfd3d251",
+      "size": 94647,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/before-chromium/face-ginger-soft-game.png",
+      "sha256": "9eebc303bde44e4fd70633969bae7b5649bb2fedffc47421542c87dd762121d3",
+      "size": 339773,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/before-chromium/face-goth-black-lips-bare.png",
+      "sha256": "f7da90e5074737e8d8aa3a637f805236786a4f1561816275a9b890becb9f4e33",
+      "size": 105215,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/before-chromium/face-goth-black-lips-game.png",
+      "sha256": "c38f9cdb6f28727eeabec515d50cf152fb3aa03df3dbfcdada93668b4d3d9092",
+      "size": 339981,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/before-chromium/face-goth-septum-bare.png",
+      "sha256": "da3403d3e4e81ca43001f88bc7b21e9d5a1e18a25af5709b43a3fa2d17d6b9d5",
+      "size": 102300,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/before-chromium/face-goth-septum-game.png",
+      "sha256": "a5ee3b9a0ca402d7752110dcb09b923d61d6d82aeab66dea477006b11d49d02a",
+      "size": 339795,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/before-chromium/face-young-bare.png",
+      "sha256": "d702260182862fabdfc618cc7bd7621854084cd79b99672ebb6e5d7a5ef7c0bf",
+      "size": 100872,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/before-chromium/face-young-game.png",
+      "sha256": "d53c224b20e69eb3d8ce54370c5086988a5602a9a5c50122c2409939e86f3d84",
+      "size": 340045,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/before-chromium/result.json",
+      "sha256": "fad42edd0cb805ecad9f805fd5f5f31fa219a977551179886029cfae25e43dd6",
+      "size": 1518,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/before-chromium/wardrobe-1440.png",
+      "sha256": "659205de0f6ce2c052153a73171be71dfea56cb5bfe4c544aac3589f87ac7e2f",
+      "size": 1019944,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/before-chromium/wardrobe-320.png",
+      "sha256": "dfd2c4d15792e3ac38852f6c0b24aa958e5bdaa2f4575e11c297f30ff60c0815",
+      "size": 84003,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/before-chromium/wardrobe-360.png",
+      "sha256": "ef4ddeb797601ff5b90f4bb5706ee83b51fcc6c352e12aed5db6cf96a52a2198",
+      "size": 118682,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/before-chromium/wardrobe-390.png",
+      "sha256": "880e97f84e6a5c38e14c8665dbf658f0c262dbd98f07a31ae1b8b7e7f3a3544f",
+      "size": 204439,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/before-chromium/wardrobe-430.png",
+      "sha256": "9f6ff6a76e6d89d51437e05c79e3989180ba3cc9e3983a00b88dbd642431a4fd",
+      "size": 217897,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/before-chromium/wardrobe-768.png",
+      "sha256": "fdc77d17716224183370f7351a4ef6e6a48bb3d9716c9662ce671807b49d696c",
+      "size": 467296,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/catalog-compatibility.json",
+      "sha256": "ed50d28166e7f7cb9df82e96a72c8e064dcfdd086ea83297d839e5459b0b85b4",
+      "size": 211,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/changed-pixel-regions.json",
+      "sha256": "f93d3ee676d6b58f4e0e2f769c062dde4cab1460bdcbc64bd9578530179a52da",
+      "size": 2869,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/clothing/base-patient.png",
+      "sha256": "d19fdb13ee576a0c70f714bfcdf6fb62d1e9901c0d8967171e681a165d54656a",
+      "size": 209343,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/clothing/face-alternative-patient.png",
+      "sha256": "8310da165e86d2dee85172a966d63b6020704c3ac95cd36129f1c060ec5bb89a",
+      "size": 209307,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/clothing/face-asian-patient.png",
+      "sha256": "515c3c0e3c8a97af1059ae9edf2a43e6eff960de069303ac48e6152a7666a20d",
+      "size": 209333,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/clothing/face-elder-patient.png",
+      "sha256": "ae885c87765649c63d4fbd3fad69537483afd50831adabc0cf613890e4379b1c",
+      "size": 209596,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/clothing/face-exhausted-patient.png",
+      "sha256": "7e6b1a63b769d2b03f0a59b865e855924f4314859d96af23afa08f46f523d951",
+      "size": 209462,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/clothing/face-ginger-soft-patient.png",
+      "sha256": "62d2255ebeb8d08ae8bad03face22400d104dc3297e7c00c74d7b4456dfe6607",
+      "size": 208856,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/clothing/face-goth-black-lips-patient.png",
+      "sha256": "f2e43c4486d4681b8c88537e39aec7addc106e6ec0a125dc0f35f7211f566cc8",
+      "size": 209452,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/clothing/face-goth-septum-patient.png",
+      "sha256": "32d75a397bcfe0590ef5c941f40aba78dee76d58a265589423b3eaa7ca440773",
+      "size": 209068,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/clothing/face-young-patient.png",
+      "sha256": "4e6af976574ad8a6cd376279fc691dadf282952e21bc1ea922cc1f6e11c2c153",
+      "size": 209441,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/clothing/result.json",
+      "sha256": "d31710b00fe43d5a197e8ec22ba83c55a0b3cdd9deb2b9e618749310044e0d14",
+      "size": 320,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/dependency-audit.json",
+      "sha256": "596b1c1cf0fb2769374ea7b165aa99614d76b458f71021aa0b1eb104b2c7e407",
+      "size": 600,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/details/base-full.png",
+      "sha256": "4184d763dd46c385661d9ece2e0d83d571f4617a824c2b4722aa4a1497b08919",
+      "size": 408280,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/details/base-head.png",
+      "sha256": "ab07498f6f593d15328286013c77f5088bd36de364f5e8637997897eeba51d04",
+      "size": 213905,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/details/face-alternative-ears.png",
+      "sha256": "940f2c7a036614f7f98a1238bc821080cb1f3bc6465a13ea619fbf099be5bd05",
+      "size": 260936,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/details/face-alternative-join.png",
+      "sha256": "24cbd6aef6315722059719011473202c237008905af10b98fdf6844336b86ad9",
+      "size": 134491,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/details/face-asian-ears.png",
+      "sha256": "2fb7e3f266d781af34c01b5da8c8557d3f36500ff7867f53540347a7eac392cb",
+      "size": 257586,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/details/face-asian-join.png",
+      "sha256": "ae724f84cb1b706fb9a09fb0fc61808354de75d77dbec27db5869ee653aa5031",
+      "size": 129885,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/details/face-elder-ears.png",
+      "sha256": "d7655aa6c19b03933e8e45f4f2b3c6f1ddad8d190ddb5b8d8634115a20c7a96d",
+      "size": 258930,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/details/face-elder-join.png",
+      "sha256": "1da55cdf1056cc059f06ec2e33ac363db51b414a3cf432815efc4eb90c7cac02",
+      "size": 131974,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/details/face-exhausted-ears.png",
+      "sha256": "83c8a60b17f78d632127d1cda0121fcb49ff5f4800c432341db1da632eb82bf8",
+      "size": 262062,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/details/face-exhausted-join.png",
+      "sha256": "17ddbcb41fd5f8f7dca398e363d83e1c7a9a3e2920b1a330983971a180de85e1",
+      "size": 133388,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/details/face-ginger-soft-ears.png",
+      "sha256": "9e2cb7b13ebece6ae25f89d5ba878beb09b594fb56e71d918b1afe8e9aabeb73",
+      "size": 257610,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/details/face-ginger-soft-join.png",
+      "sha256": "2fdb93352e8c8e2aa2849c3b58e55b5d5855518a681eea027d7d3852fa9ed9bc",
+      "size": 127971,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/details/face-goth-black-lips-ears.png",
+      "sha256": "afad3cdf7993e3aac84bc941ffdbed0cb4dacaf5612f8d7313ad46f41975c0ba",
+      "size": 259644,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/details/face-goth-black-lips-join.png",
+      "sha256": "a6905e49d03258c124e3fdcbc5adfe266f9c06673169e5c1ce4e5efda1f4dcdb",
+      "size": 137620,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/details/face-goth-septum-ears.png",
+      "sha256": "33ecfeaa8bdcaea7df6443b5c932e495d8d5dd8296665ece2d43de2a9d736edb",
+      "size": 262644,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/details/face-goth-septum-join.png",
+      "sha256": "63093ec3f08be301b2a238708b5e73afda7d1824a5f2743a6543d242f614a280",
+      "size": 136700,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/details/face-young-ears.png",
+      "sha256": "88b039b53fb6b881df9ce40f56e375d879f21354ad76b03eba1c17cdaa77c0f2",
+      "size": 257128,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/details/face-young-join.png",
+      "sha256": "749b4fc925b3226a9e801f8c9b3898702505e9c48b34de0ea6bda82fd5c87b4e",
+      "size": 131694,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/gallery-desktop.png",
+      "sha256": "1040c6e02f2825be021dec952c0c0b55127e5aa1460091de46bcf9801118977c",
+      "size": 365309,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/gallery-local-check.json",
+      "sha256": "0ecd1a0f9c04e8d3ed10572f2ed4766ca94a4d8814ee214f32bc206ae7a10ed7",
+      "size": 8707,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/gallery.html",
+      "sha256": "46aefe3d7c740f2caf0e23c1a105d5852bb317d72d8ead873db631fd68fd1ac6",
+      "size": 9830,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/head-geometry.json",
+      "sha256": "6c30b95f124faf52b4d63a75ac3a7f56e916f9255c20c60992323cc2c0d69974",
+      "size": 1475,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/native-base/after-bare.png",
+      "sha256": "958b33efa1102552c855c4fe9757446ec704831e020e7aeb05b30a2443c01470",
+      "size": 106978,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/native-base/after-black.webp",
+      "sha256": "9b73180ac9e2200528a752b814192d50d8564b5c8da5991826918d8b171e25b1",
+      "size": 1136618,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/native-base/after-full.png",
+      "sha256": "baea68d7c753b2b136d4a7dd9ae9878dafbfc26d75880f03da34638c4eca1e0a",
+      "size": 208138,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/native-base/after-original.webp",
+      "sha256": "3faeb0af321ef9cac5489b2979e786655862f5a590a75defac0880561b80f3b6",
+      "size": 1276866,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/native-base/after-white.webp",
+      "sha256": "93b4aa99be54db71a2e6119aee1c813bf1468aa8878af1ff0fb9450bc07e1c14",
+      "size": 1216698,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/native-base/before-bare.png",
+      "sha256": "b20fa2372d6d9fcb1bc49da9395b4a6c74b83a295cdd28a8768b2b0c73e03427",
+      "size": 106757,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/native-base/before-black.webp",
+      "sha256": "8a5e7c697d1efbff6b97ad70b9b9ce98425ea17801acde2105c096acb4fe1458",
+      "size": 1129788,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/native-base/before-full.png",
+      "sha256": "77c4840f171da12a53af2ad50346ed5ef9a29786aabccb62a253d0fee9306dea",
+      "size": 217515,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/native-base/before-original.webp",
+      "sha256": "d619fcba17a546775954db553973ed9e6b1d0443d053ceb1acc6c9166a68aa3e",
+      "size": 1279628,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/native-base/before-white.webp",
+      "sha256": "cefe95a9d5d2127e2406a6beddc92ef35ff7525ff508d5c994ac8d9af5fcde38",
+      "size": 1211960,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/native-base/result.json",
+      "sha256": "63fbfee64bb64b10ad41975dda76d5fff2bfdee764e5bceaeb842dd76fdc9ca9",
+      "size": 6004,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/png-quality.json",
+      "sha256": "621be62d2cc4a9684fd988fe2fec13f68c316413a1ae848ffa19fe6aab111155",
+      "size": 181909,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/replacement-manifest.json",
+      "sha256": "91656b7004b6760be30a13eb176310ec9f3691d591864dcc4116a64232cb7b54",
+      "size": 9808,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/source/approved-base.png",
+      "sha256": "9d4fda6cb00ca911d7dc6a29fe10204b7ba44012ffc7b5734a2c63e6c0eed0ae",
+      "size": 932767,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/test-logs/archival-preview-final.log.gz",
+      "sha256": "9a8d322bb39ac54309db31a0e6911bfd35365ae04d0c067348978699c62298e9",
+      "size": 140,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/test-logs/assets-final.log.gz",
+      "sha256": "eeff44716c2da2cc2ce9a0be97131f3db898fa133129dfcb1d20b8c1b9dbbd11",
+      "size": 1541,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/test-logs/historical-neck-correction.log.gz",
+      "sha256": "310a5e9913577ae9e2b199862e223f5345e185d35b837927a799d383977c18bd",
+      "size": 144,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/test-logs/initial-clothing-import-error.log.gz",
+      "sha256": "d36ceedd38cd38d0c1c98ba7b0388a5de5e174b3d95d4839438e5de5d02d7e13",
+      "size": 406,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/test-logs/initial-failures.log",
+      "sha256": "73109e1ed6bf6b2b10fa867a9e6420002396bff91443caccfabad82833cdaa96",
+      "size": 8294,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/test-logs/initial-historical-mixed-base-failure.log.gz",
+      "sha256": "e1e4fe4e6985d8578324ee5e2f183dd841f50692775eb19aad585891d231314b",
+      "size": 1887,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/test-logs/initial-protected-count-failure.log.gz",
+      "sha256": "0b518a48b9af017813a625bb5c6e4178b362c8fdc57c2a96b65c373bf7fa094a",
+      "size": 1383,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/test-logs/initial-regression-shard-0.log.gz",
+      "sha256": "25350681233229bc8cb39ad3670447ed2df6adbf642d8ba473d36281ace19d98",
+      "size": 1269,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/test-logs/initial-regression-shard-1.log.gz",
+      "sha256": "92785217aeaa38f813c1e8345bad213f8109344e98fb96a21ef0ef6e1aecb3ee",
+      "size": 992,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/test-logs/initial-regression-shard-2.log.gz",
+      "sha256": "1a1844215dc0b2258bf5de25ec5b4426056ee9815b8d7bf68a1a44a0f65a8aa8",
+      "size": 989,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/test-logs/initial-regression-shard-3.log.gz",
+      "sha256": "e1e4fe4e6985d8578324ee5e2f183dd841f50692775eb19aad585891d231314b",
+      "size": 1887,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/test-logs/initial-regression-summary.json",
+      "sha256": "2e3343d5cb6c1ed2876f67479d414470c5ef4fd3d06f2a4c3e244aec7d13b0a9",
+      "size": 13171,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/test-logs/javascript-final.log.gz",
+      "sha256": "01aa73346c7079200cad0f6c440ae5dc04bea0376541d34a275e1b1fa1eb348b",
+      "size": 3849,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-base-replacement/test-results.json",
+      "sha256": "39ab31eba762e2fe625b61cda884ba6beb44080da0d87f288ad0fa5a762cc937",
+      "size": 1327,
+      "before_git_blob": null
+    },
+    {
+      "path": "review/female-faces-independent-audit/README.md",
+      "sha256": "dcb287ef747c67f1b1c598a245285dad6f3f036763b4ecd21c3e45867a9c07b7",
+      "size": 35609,
+      "before_git_blob": "8f6891ceec1e199e1df2475bb9ecce686320e7b7"
+    },
+    {
+      "path": "review/female-faces-integration/integration-manifest.json",
+      "sha256": "89bb705a540ae47b4e0a7c9267e6e32c6e2daa67200c801e447ab164d638fedb",
+      "size": 25945,
+      "before_git_blob": "9243a4a325625052c24d42bbb4ec7c2a5f19d8c8"
+    },
+    {
+      "path": "tests/asset_history.py",
+      "sha256": "ce2514a661628b54f551f5ad21eeee21c48dc650c8f4909c86bc584e2682d3fb",
+      "size": 2890,
+      "before_git_blob": "9c46bdf6810156532d5956cf8694bc7531166b44"
+    },
+    {
+      "path": "tests/test_female_base_replacement.py",
+      "sha256": "ec23fecb9e86ee4eac042238945d0fcc36be8d4415fb4d8ebb74daf10147cebc",
+      "size": 4989,
+      "before_git_blob": null
+    },
+    {
+      "path": "tests/test_female_faces.py",
+      "sha256": "459bb6de96693438f781fd6bac892d26c7b6e56d4affe9abac41b9e6543c6cf2",
+      "size": 11434,
+      "before_git_blob": "ccd0b087f0d9425777a3f1a0b3f1fe5238c7ee2a"
+    },
+    {
+      "path": "tests/test_female_faces_independent.py",
+      "sha256": "54f39a998ff65e9555f82a51cd7bcfae5b892effecd3ced2097b570ef1d609a2",
+      "size": 5955,
+      "before_git_blob": "81eed778d093e2cfb5adc666b1c32b474983edb0"
+    },
+    {
+      "path": "tests/test_game.py",
+      "sha256": "af6895eec7ac856f6ac3d4cc07d9dcecc047b46bf42ae1897980c8ea73cb2f00",
+      "size": 224925,
+      "before_git_blob": "ba5c632d4cc4cab12a9211eed85ccbc18fa2eb15"
+    },
+    {
+      "path": "tests/test_paper_doll_targeted.py",
+      "sha256": "ec6907264c00d2f4642a470962951a715eac4858036393dd29483ea6326ff8c1",
+      "size": 6581,
+      "before_git_blob": "d6bd1b415a06bac7f05b8558e2337ee9ca81897b"
+    },
+    {
+      "path": "tools/build-female-base-gallery.py",
+      "sha256": "edf5cededab54a8a75951b853ec5fd2c1ce452b1f8786b601096c86e3f836840",
+      "size": 7007,
+      "before_git_blob": null
+    },
+    {
+      "path": "tools/replace-female-base.py",
+      "sha256": "63d77c9c55fca7453f17a6215544f292300c9413bab491ae7f34de725cf8ce26",
+      "size": 5564,
+      "before_git_blob": null
+    },
+    {
+      "path": "tools/review-female-base.py",
+      "sha256": "96f32c306fcc709d6798d578f0d340b5d8d7278a48425e8bc17ad78c78b6111e",
+      "size": 7878,
+      "before_git_blob": null
+    }
+  ],
+  "note": "This manifest excludes its own file to avoid a circular digest."
+}

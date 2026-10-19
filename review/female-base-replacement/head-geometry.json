@@ -1,0 +1,90 @@
+[
+  {
+    "face": "face-asian",
+    "width_at_alpha128": 166,
+    "height_above_y218": 189,
+    "top": 29,
+    "placement": {
+      "x": 0,
+      "y": 0,
+      "scale": 1
+    }
+  },
+  {
+    "face": "face-young",
+    "width_at_alpha128": 176,
+    "height_above_y218": 185,
+    "top": 33,
+    "placement": {
+      "x": 0,
+      "y": 0,
+      "scale": 1
+    }
+  },
+  {
+    "face": "face-exhausted",
+    "width_at_alpha128": 174,
+    "height_above_y218": 187,
+    "top": 31,
+    "placement": {
+      "x": 0,
+      "y": 0,
+      "scale": 1
+    }
+  },
+  {
+    "face": "face-elder",
+    "width_at_alpha128": 169,
+    "height_above_y218": 189,
+    "top": 29,
+    "placement": {
+      "x": 0,
+      "y": 0,
+      "scale": 1
+    }
+  },
+  {
+    "face": "face-alternative",
+    "width_at_alpha128": 176,
+    "height_above_y218": 190,
+    "top": 28,
+    "placement": {
+      "x": 0,
+      "y": 0,
+      "scale": 1
+    }
+  },
+  {
+    "face": "face-ginger-soft",
+    "width_at_alpha128": 158,
+    "height_above_y218": 182,
+    "top": 36,
+    "placement": {
+      "x": 0,
+      "y": 0,
+      "scale": 1
+    }
+  },
+  {
+    "face": "face-goth-septum",
+    "width_at_alpha128": 177,
+    "height_above_y218": 192,
+    "top": 26,
+    "placement": {
+      "x": 0,
+      "y": 0,
+      "scale": 1
+    }
+  },
+  {
+    "face": "face-goth-black-lips",
+    "width_at_alpha128": 175,
+    "height_above_y218": 196,
+    "top": 22,
+    "placement": {
+      "x": 0,
+      "y": 0,
+      "scale": 1
+    }
+  }
+]
