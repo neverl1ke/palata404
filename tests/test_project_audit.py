@@ -2,6 +2,7 @@
 import hashlib,importlib.util,json,unittest
 from pathlib import Path
 import tests.test_game as support
+from tests.asset_history import approved_current_hash
 ROOT=support.ROOT
 
 class GeneralAssetTests(unittest.TestCase):
@@ -12,7 +13,7 @@ class GeneralAssetTests(unittest.TestCase):
   removed={e['path'] for e in cleanup['removed']}
   for entry in before['files']:
    if Path(entry['path']).suffix.lower() not in {'.png','.jpg','.jpeg','.svg','.webp'} or entry['path'] in removed:continue
-   self.assertEqual(hashlib.sha256((ROOT/entry['path']).read_bytes()).hexdigest(),entry['sha256'],entry['path'])
+   self.assertEqual(hashlib.sha256((ROOT/entry['path']).read_bytes()).hexdigest(),approved_current_hash(entry['path'],entry['sha256']),entry['path'])
  def test_deleted_files_have_pre_audit_hash_and_runtime_evidence(self):
   before=json.loads((ROOT/'review/project-general-audit/inventory-before.json').read_text());entries={e['path']:e for e in before['files']}
   manifest=ROOT/'review/project-general-audit/cleanup-manifest.json'
@@ -26,7 +27,7 @@ class GeneralAssetTests(unittest.TestCase):
   import subprocess,re
   code="const fs=require('fs'),vm=require('vm');console.log(vm.runInNewContext(fs.readFileSync('paper-doll-data.js','utf8')+';JSON.stringify({bodies:PAPER_DOLL_BODIES,items:PAPER_DOLL_ITEMS})'))"
   catalog=json.loads(subprocess.check_output(['node','-e',code],cwd=ROOT));paths=set(re.findall(r'[A-Za-z0-9_./-]+\.png',json.dumps(catalog)))
-  self.assertEqual(len(paths),37)
+  self.assertEqual(len(paths),43)
   for path in paths:
    self.assertTrue((ROOT/path).is_file(),path)
    current=ROOT

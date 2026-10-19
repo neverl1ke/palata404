@@ -1,0 +1,23 @@
+{
+  "phase": "inputs",
+  "faces": [
+    "face-ginger-soft",
+    "face-goth-septum",
+    "face-goth-black-lips"
+  ],
+  "hairs": [
+    "hair-none",
+    "hair-bob-bangs",
+    "hair-messy",
+    "hair-bob",
+    "hair-double-buns",
+    "hair-classic-short",
+    "hair-textured-short",
+    "hair-shoulder-length"
+  ],
+  "samples": 0,
+  "unique_combinations": 0,
+  "records": [],
+  "page_errors": [],
+  "http_errors": []
+}

@@ -1,0 +1,132 @@
+{
+  "baseline": {
+    "javascript_passed": 80,
+    "python_passed": 97
+  },
+  "javascript": {
+    "total": 82,
+    "passed": 82,
+    "failed": 0,
+    "log": "test-logs/javascript.log"
+  },
+  "python": {
+    "total": 106,
+    "passed": 106,
+    "failed": 0,
+    "initial_passed": 101,
+    "initial_failed": [
+      "tests.test_game.GameTests.test_neck_join_does_not_add_transparency_on_four_backgrounds_and_leaves_the_body_intact",
+      "tests.test_game.GameTests.test_paper_doll_ui_keeps_two_loadouts_and_shared_appearance_across_reload",
+      "tests.test_game.GameTests.test_trial_faces_are_not_loaded_or_selectable_after_old_save_migration",
+      "tests.test_game.GameTests.test_wardrobe_inventory_ownership_and_old_appearance_migration",
+      "tests.test_paper_doll_audit.AuditAssetTests.test_no_remote_faint_haze_or_detached_low_alpha_specks"
+    ],
+    "resolution": "Full discovered suite plus targeted reruns after correcting three obsolete catalog counts, an obsolete neck-end assumption, and ROI component classification. Raw initial failures are preserved. No tests were removed.",
+    "reruns": [
+      {
+        "log": "test-logs/female-faces-assets-final.log",
+        "passed": 32,
+        "test_ids": [
+          "tests.test_female_faces.FemaleFacesAssetTests.test_all_other_approved_art_and_hair_placements_are_unchanged",
+          "tests.test_female_faces.FemaleFacesAssetTests.test_all_sources_and_final_resources_are_exact_and_versioned",
+          "tests.test_female_faces.FemaleFacesAssetTests.test_complementary_masks_have_no_old_skull_holes_or_body_changes",
+          "tests.test_female_faces.FemaleFacesAssetTests.test_no_remote_alpha_noise_and_complete_head_silhouette",
+          "tests.test_female_faces.FemaleFacesAssetTests.test_registered_approved_portrait_features_and_piercings_are_preserved",
+          "tests.test_game.IconAssetTests.test_approved_body_pngs_have_real_alpha_and_match_the_new_frame",
+          "tests.test_game.IconAssetTests.test_approved_neckline_underlay_and_bases_keep_exact_bytes",
+          "tests.test_game.IconAssetTests.test_approved_wardrobe_backgrounds_are_valid_matching_scenes",
+          "tests.test_game.IconAssetTests.test_asian_heads_keep_cleaned_edges_and_opaque_inner_face",
+          "tests.test_game.IconAssetTests.test_avatar_pack_assets_keep_shared_hair_source_and_approved_body_geometry",
+          "tests.test_game.IconAssetTests.test_first_patient_shirt_drafts_are_real_transparent_pngs",
+          "tests.test_game.IconAssetTests.test_hair_pack_02_preserves_four_cleaned_overlays_and_alpha",
+          "tests.test_game.IconAssetTests.test_hair_pack_pngs_preserve_strands_dimensions_and_real_transparency",
+          "tests.test_game.IconAssetTests.test_individual_neck_assets_preserve_faces_and_restore_the_original_torso",
+          "tests.test_game.IconAssetTests.test_patient_tunic_revised_release_integrity_and_transparency",
+          "tests.test_game.IconAssetTests.test_svg_assets_are_self_contained_and_valid",
+          "tests.test_paper_doll_audit.AuditAssetTests.test_all_head_masks_hide_old_skull_and_join_without_holes",
+          "tests.test_paper_doll_audit.AuditAssetTests.test_analyzer_detects_connected_alpha_one_noise_and_preserves_real_strands",
+          "tests.test_paper_doll_audit.AuditAssetTests.test_face_identity_and_body_registration_are_protected",
+          "tests.test_paper_doll_audit.AuditAssetTests.test_hair_preserves_approved_strands_and_local_repair_contracts",
+          "tests.test_paper_doll_audit.AuditAssetTests.test_no_remote_faint_haze_or_detached_low_alpha_specks",
+          "tests.test_paper_doll_audit.AuditAssetTests.test_rear_texture_closes_inner_ear_openings_without_covering_face",
+          "tests.test_paper_doll_targeted.TargetedAssetTests.test_historical_alternative_tones_move_toward_body_and_original_features_remain",
+          "tests.test_paper_doll_targeted.TargetedAssetTests.test_historical_asian_scale_is_small_registered_and_head_edges_have_narrow_antialiasing",
+          "tests.test_paper_doll_targeted.TargetedAssetTests.test_historical_exhausted_neck_restores_base_without_holes_or_abrupt_side_jumps",
+          "tests.test_paper_doll_targeted.TargetedAssetTests.test_male_ear_cuts_are_local_and_approved_placements_and_rear_stay",
+          "tests.test_paper_doll_targeted.TargetedAssetTests.test_only_authorized_pixels_change_and_all_other_assets_remain_exact",
+          "tests.test_paper_doll_targeted.TargetedAssetTests.test_thigh_correction_preserves_alpha_and_skin_texture",
+          "tests.test_project_audit.GeneralAssetTests.test_approved_graphics_remain_byte_identical",
+          "tests.test_project_audit.GeneralAssetTests.test_baseline_dependency_map_has_no_broken_local_links",
+          "tests.test_project_audit.GeneralAssetTests.test_deleted_files_have_pre_audit_hash_and_runtime_evidence",
+          "tests.test_project_audit.GeneralAssetTests.test_registered_paper_doll_assets_and_paths_match_case"
+        ]
+      },
+      {
+        "log": "test-logs/female-faces-compatibility-final.log",
+        "passed": 3,
+        "test_ids": [
+          "tests.test_game.GameTests.test_paper_doll_ui_keeps_two_loadouts_and_shared_appearance_across_reload",
+          "tests.test_game.GameTests.test_trial_faces_are_not_loaded_or_selectable_after_old_save_migration",
+          "tests.test_game.GameTests.test_wardrobe_inventory_ownership_and_old_appearance_migration"
+        ]
+      },
+      {
+        "log": "test-logs/female-faces-neck-browser-final.log",
+        "passed": 1,
+        "test_ids": [
+          "tests.test_game.GameTests.test_neck_join_does_not_add_transparency_on_four_backgrounds_and_leaves_the_body_intact"
+        ]
+      },
+      {
+        "log": "test-logs/female-faces-opacity-final.log",
+        "passed": 1,
+        "test_ids": [
+          "tests.test_female_faces.FemaleFacesAssetTests.test_no_remote_alpha_noise_and_complete_head_silhouette"
+        ]
+      },
+      {
+        "log": "test-logs/female-faces-no-history.log",
+        "passed": 1,
+        "test_ids": [
+          "tests.test_female_faces.FemaleFacesAssetTests.test_all_other_approved_art_and_hair_placements_are_unchanged"
+        ]
+      }
+    ]
+  },
+  "browser_gallery": {
+    "phase": "after",
+    "faces": [
+      "face-asian",
+      "face-young",
+      "face-exhausted",
+      "face-elder",
+      "face-alternative",
+      "face-ginger-soft",
+      "face-goth-septum",
+      "face-goth-black-lips"
+    ],
+    "hairs": [
+      "hair-none",
+      "hair-bob-bangs",
+      "hair-messy",
+      "hair-bob",
+      "hair-double-buns",
+      "hair-classic-short",
+      "hair-textured-short",
+      "hair-shoulder-length"
+    ],
+    "samples": 960,
+    "unique_combinations": 64,
+    "records": "See after/capture.json",
+    "page_errors": [],
+    "http_errors": []
+  },
+  "gallery_check": {
+    "images_loaded": 79,
+    "sections": 8,
+    "color_selector": true,
+    "http_errors": [],
+    "js_errors": []
+  },
+  "ci_and_pages": "Pending publication verification"
+}

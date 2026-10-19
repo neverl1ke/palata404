@@ -460,6 +460,8 @@ function setGender(selectedGender) {
     paperDollState.selectedGender = selectedGender;
     const hair = PAPER_DOLL_ITEMS.find(item => item.id === paperDollState.appearance.hair);
     if (hair && !paperDollItemSupportsGender(hair, selectedGender)) paperDollState.appearance.hair = 'hair-none';
+    const face = PAPER_DOLL_ITEMS.find(item => item.id === paperDollState.appearance.face);
+    if (face && !paperDollItemSupportsGender(face, selectedGender)) paperDollState.appearance.face = null;
     commitPaperDollSelection();
 }
 

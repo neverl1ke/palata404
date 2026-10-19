@@ -1,0 +1,6 @@
+test_neck_join_does_not_add_transparency_on_four_backgrounds_and_leaves_the_body_intact (tests.test_game.GameTests.test_neck_join_does_not_add_transparency_on_four_backgrounds_and_leaves_the_body_intact) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 6.154s
+
+OK

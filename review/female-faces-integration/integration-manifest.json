@@ -1,0 +1,742 @@
+{
+  "baseline_commit": "4046cac744394faf8b1096d845d8a5e1463aeaf5",
+  "archive_discrepancies": [
+    {
+      "path": "legacy_five/approved_visual_sources/female_young_approved_source.png",
+      "declared_sha256": "9bffa9bf23bd8f5c8089381b07f39fd626010e557ec2c9a07a271decf7d3ec25",
+      "actual_sha256": "75ea0e6daa1be4773d3f840efc080b245ef1eec8a1b5d448e503d7b749e3f424"
+    },
+    {
+      "path": "legacy_five/previous_game_canvas_candidates/female_alternative_previous_game_canvas.png",
+      "declared_sha256": "53cf631522bdc053b95605130c8645c360174bc716d7eb9a42b38955f56b186a",
+      "actual_sha256": null
+    },
+    {
+      "path": "legacy_five/previous_game_canvas_candidates/female_asian_previous_game_canvas.png",
+      "declared_sha256": "168a70411b0db1dee0606ac3e0c3034fa0f23e2844b9310af7ab59c89d7ef328",
+      "actual_sha256": null
+    }
+  ],
+  "files": [
+    {
+      "kind": "asian",
+      "id": "face-asian",
+      "source": "sources/female_asian_approved_source.png",
+      "source_archive_path": "legacy_five/approved_visual_sources/female_asian_approved_source.png",
+      "source_sha256": "4dc5ad954cded2ead944bb578aad66bd1ef3b53db056cc4f756cd6c756bf1422",
+      "source_size": [
+        981,
+        1602
+      ],
+      "registration": {
+        "scale": 0.20635531247733335,
+        "x": 369.18125819498874,
+        "y": -13.94950105476596,
+        "rotation": 0
+      },
+      "placement": {
+        "x": 0,
+        "y": 0,
+        "width": 941,
+        "height": 1672
+      },
+      "output": "assets/wardrobe/faces/female_asian_head.png",
+      "sha256": "2a699e33fc9b173e1aeaa642ddb982e6a929810fcd09dcc42c773261c1c71bf4",
+      "mask": "assets/wardrobe/faces/masks/female_asian_body.png",
+      "mask_sha256": "4ce397159a390c5b6b631149bd3a5e336aab283664e7a4ed88791426c9c14f9b",
+      "detail_box": [
+        425,
+        80,
+        525,
+        210
+      ],
+      "detail_sha256": "9419397751cd8d47256fa0af054d5b021ecc27745539a88f1a1cd1df6b2f4753",
+      "bbox": [
+        388,
+        26,
+        556,
+        286
+      ],
+      "cleanup": {
+        "remote_weak_removed": 14,
+        "edge_rgb_corrected": 381,
+        "interior_opacity_restored": 26713
+      },
+      "neck": {
+        "start_center": 242,
+        "end_center": 278,
+        "start_arc": 24,
+        "end_arc": 20,
+        "overlap": 8,
+        "body_restored_y": 286
+      }
+    },
+    {
+      "kind": "young",
+      "id": "face-young",
+      "source": "sources/female_young_approved_source.png",
+      "source_archive_path": "legacy_five/approved_visual_sources/female_young_approved_source.png",
+      "source_sha256": "75ea0e6daa1be4773d3f840efc080b245ef1eec8a1b5d448e503d7b749e3f424",
+      "source_size": [
+        982,
+        1602
+      ],
+      "registration": {
+        "scale": 0.2128263884899065,
+        "x": 368.3721829337334,
+        "y": -2.7329903707657195,
+        "rotation": 0
+      },
+      "placement": {
+        "x": 0,
+        "y": 0,
+        "width": 941,
+        "height": 1672
+      },
+      "output": "assets/wardrobe/faces/female_young_head.png",
+      "sha256": "a2a80060e174e613a0a3d8c77285ffa4be5757d0ad09093124ee4764d0e3e593",
+      "mask": "assets/wardrobe/faces/masks/female_young_body.png",
+      "mask_sha256": "4ce397159a390c5b6b631149bd3a5e336aab283664e7a4ed88791426c9c14f9b",
+      "detail_box": [
+        425,
+        80,
+        525,
+        210
+      ],
+      "detail_sha256": "8c157a980e75fb4f121e9aa9124208750f4921dedae8b1ab3b17faab2bce83e0",
+      "bbox": [
+        383,
+        32,
+        562,
+        286
+      ],
+      "cleanup": {
+        "remote_weak_removed": 28,
+        "edge_rgb_corrected": 444,
+        "interior_opacity_restored": 29765
+      },
+      "neck": {
+        "start_center": 242,
+        "end_center": 278,
+        "start_arc": 24,
+        "end_arc": 20,
+        "overlap": 8,
+        "body_restored_y": 286
+      }
+    },
+    {
+      "kind": "exhausted",
+      "id": "face-exhausted",
+      "source": "sources/female_exhausted_approved_source.png",
+      "source_archive_path": "legacy_five/approved_visual_sources/female_exhausted_approved_source.png",
+      "source_sha256": "aad41a3425f31bdfb9df2adf9de00a8bf1bf85e796e164a0fe21013c8b1bbab6",
+      "source_size": [
+        941,
+        1672
+      ],
+      "registration": {
+        "scale": 0.22221260535537626,
+        "x": 366.8699832143986,
+        "y": -21.230951954867436,
+        "rotation": 0
+      },
+      "placement": {
+        "x": 0,
+        "y": 0,
+        "width": 941,
+        "height": 1672
+      },
+      "output": "assets/wardrobe/faces/female_exhausted_head.png",
+      "sha256": "df4352bc5b1600d17f387f60a39cf2a39fc275c90591c826f633f17e0c75803c",
+      "mask": "assets/wardrobe/faces/masks/female_exhausted_body.png",
+      "mask_sha256": "4ce397159a390c5b6b631149bd3a5e336aab283664e7a4ed88791426c9c14f9b",
+      "detail_box": [
+        425,
+        80,
+        525,
+        210
+      ],
+      "detail_sha256": "394a58e29385dd0ccbd85e8c81c6c0da52e466e81dd03ceae31e6d6d5fe4bab7",
+      "bbox": [
+        383,
+        30,
+        561,
+        286
+      ],
+      "cleanup": {
+        "remote_weak_removed": 206,
+        "edge_rgb_corrected": 487,
+        "interior_opacity_restored": 29390
+      },
+      "neck": {
+        "start_center": 242,
+        "end_center": 278,
+        "start_arc": 24,
+        "end_arc": 20,
+        "overlap": 8,
+        "body_restored_y": 286
+      }
+    },
+    {
+      "kind": "elder",
+      "id": "face-elder",
+      "source": "sources/female_elder_approved_source.png",
+      "source_archive_path": "legacy_five/approved_visual_sources/female_elder_approved_source.png",
+      "source_sha256": "0fbff8cb406b96a332f28a26e995ae1fb5202137fd6e5c345cae008953eb4992",
+      "source_size": [
+        941,
+        1672
+      ],
+      "registration": {
+        "scale": 0.21937465097775488,
+        "x": 370.970948727176,
+        "y": -23.405364613156536,
+        "rotation": 0
+      },
+      "placement": {
+        "x": 0,
+        "y": 0,
+        "width": 941,
+        "height": 1672
+      },
+      "output": "assets/wardrobe/faces/female_elder_head.png",
+      "sha256": "95f088e85cf8c1ec3010f51a8efa0e2663b8d0978e0541fdad70e8f5855633cc",
+      "mask": "assets/wardrobe/faces/masks/female_elder_body.png",
+      "mask_sha256": "4ce397159a390c5b6b631149bd3a5e336aab283664e7a4ed88791426c9c14f9b",
+      "detail_box": [
+        425,
+        80,
+        525,
+        210
+      ],
+      "detail_sha256": "4a5e389e97dffce382a3d30d551eabdc14fde40e04bd1454f4b27e5c2f9b705c",
+      "bbox": [
+        388,
+        28,
+        560,
+        286
+      ],
+      "cleanup": {
+        "remote_weak_removed": 36,
+        "edge_rgb_corrected": 374,
+        "interior_opacity_restored": 28563
+      },
+      "neck": {
+        "start_center": 242,
+        "end_center": 278,
+        "start_arc": 24,
+        "end_arc": 20,
+        "overlap": 8,
+        "body_restored_y": 286
+      }
+    },
+    {
+      "kind": "alternative",
+      "id": "face-alternative",
+      "source": "sources/female_alternative_approved_source.png",
+      "source_archive_path": "legacy_five/approved_visual_sources/female_alternative_approved_source.png",
+      "source_sha256": "f1134cc50d2a91d8abb9116663d14dbf7c5656e647b6a5724227ffedd99bba22",
+      "source_size": [
+        941,
+        1672
+      ],
+      "registration": {
+        "scale": 0.22709844865961248,
+        "x": 362.73518569057444,
+        "y": -25.02171544057299,
+        "rotation": 0
+      },
+      "placement": {
+        "x": 0,
+        "y": 0,
+        "width": 941,
+        "height": 1672
+      },
+      "output": "assets/wardrobe/faces/female_alternative_head.png",
+      "sha256": "d198d941e1f5f3a459d7c1dcb595137e40e73a7099d9f0f7ee9b8d056ba2d916",
+      "mask": "assets/wardrobe/faces/masks/female_alternative_body.png",
+      "mask_sha256": "4ce397159a390c5b6b631149bd3a5e336aab283664e7a4ed88791426c9c14f9b",
+      "detail_box": [
+        425,
+        80,
+        525,
+        210
+      ],
+      "detail_sha256": "da64c25db4b4168f6de844b147ffa8a4c7372f6a4e6c9368c18edbac6b780bcc",
+      "bbox": [
+        381,
+        26,
+        560,
+        286
+      ],
+      "cleanup": {
+        "remote_weak_removed": 165,
+        "edge_rgb_corrected": 597,
+        "interior_opacity_restored": 34793
+      },
+      "neck": {
+        "start_center": 242,
+        "end_center": 278,
+        "start_arc": 24,
+        "end_arc": 20,
+        "overlap": 8,
+        "body_restored_y": 286
+      }
+    },
+    {
+      "kind": "ginger_soft",
+      "id": "face-ginger-soft",
+      "source": "sources/female_ginger_soft_head.png",
+      "source_archive_path": "new_three/heads_and_masks/female_ginger_soft_head.png",
+      "source_sha256": "3cb7d000cf1513ac4f5374d11841efbe2d336e8cd9fa785398494e1af89507cd",
+      "source_size": [
+        941,
+        1672
+      ],
+      "registration": {
+        "scale": 1.0,
+        "x": 0.0,
+        "y": 0.0,
+        "rotation": 0
+      },
+      "placement": {
+        "x": 0,
+        "y": 0,
+        "width": 941,
+        "height": 1672
+      },
+      "output": "assets/wardrobe/faces/female_ginger_soft_head.png",
+      "sha256": "cb0bcc4caf4cc71e78f7b55ac0ef9434dd8e29306b1ce02e6e7200d662e7db19",
+      "mask": "assets/wardrobe/faces/masks/female_ginger_soft_body.png",
+      "mask_sha256": "e3d160bd6c3a884d33b5a489eb08fbcf3c421fd68ef90f2c2f98021f08a0e0ac",
+      "detail_box": [
+        425,
+        80,
+        525,
+        210
+      ],
+      "detail_sha256": "b954bb04ee036aa1e559044fd173b6728e28253007ef0c94f22df52582e6ddc3",
+      "bbox": [
+        389,
+        34,
+        553,
+        268
+      ],
+      "cleanup": {
+        "remote_weak_removed": 163,
+        "edge_rgb_corrected": 366,
+        "interior_opacity_restored": 22924
+      },
+      "neck": {
+        "start_center": 226,
+        "end_center": 260,
+        "start_arc": 8,
+        "end_arc": 10,
+        "overlap": 8,
+        "body_restored_y": 286
+      }
+    },
+    {
+      "kind": "goth_septum",
+      "id": "face-goth-septum",
+      "source": "sources/female_goth_septum_head.png",
+      "source_archive_path": "new_three/heads_and_masks/female_goth_septum_head.png",
+      "source_sha256": "f16c9767ecd69d71a884d02cdf15f65fd8a40b47ed55f0f91c983d99c8829158",
+      "source_size": [
+        941,
+        1672
+      ],
+      "registration": {
+        "scale": 1.0,
+        "x": 0.0,
+        "y": 0.0,
+        "rotation": 0
+      },
+      "placement": {
+        "x": 0,
+        "y": 0,
+        "width": 941,
+        "height": 1672
+      },
+      "output": "assets/wardrobe/faces/female_goth_septum_head.png",
+      "sha256": "08abb844180666a64f288beb860cb115d1d12b824964c8d3f8126a1c1681fda3",
+      "mask": "assets/wardrobe/faces/masks/female_goth_septum_body.png",
+      "mask_sha256": "e3d160bd6c3a884d33b5a489eb08fbcf3c421fd68ef90f2c2f98021f08a0e0ac",
+      "detail_box": [
+        425,
+        80,
+        525,
+        210
+      ],
+      "detail_sha256": "7fcee32ecc0594fe9a0bdbec83054e7868d42067c749eec74b5fd1efd845a349",
+      "bbox": [
+        380,
+        23,
+        562,
+        268
+      ],
+      "cleanup": {
+        "remote_weak_removed": 136,
+        "edge_rgb_corrected": 313,
+        "interior_opacity_restored": 26790
+      },
+      "neck": {
+        "start_center": 226,
+        "end_center": 260,
+        "start_arc": 8,
+        "end_arc": 10,
+        "overlap": 8,
+        "body_restored_y": 286
+      }
+    },
+    {
+      "kind": "goth_black_lips",
+      "id": "face-goth-black-lips",
+      "source": "sources/female_goth_black_lips_head.png",
+      "source_archive_path": "new_three/heads_and_masks/female_goth_black_lips_head.png",
+      "source_sha256": "6deb610cc96756ba7ab48cc82c4098717e8632b510659d076f9172c7202a8f3e",
+      "source_size": [
+        941,
+        1672
+      ],
+      "registration": {
+        "scale": 1.0,
+        "x": 0.0,
+        "y": 0.0,
+        "rotation": 0
+      },
+      "placement": {
+        "x": 0,
+        "y": 0,
+        "width": 941,
+        "height": 1672
+      },
+      "output": "assets/wardrobe/faces/female_goth_black_lips_head.png",
+      "sha256": "28b118d061263d75802d0f1ab46d86b84fcce7ed242351131a9efd866526f533",
+      "mask": "assets/wardrobe/faces/masks/female_goth_black_lips_body.png",
+      "mask_sha256": "e3d160bd6c3a884d33b5a489eb08fbcf3c421fd68ef90f2c2f98021f08a0e0ac",
+      "detail_box": [
+        425,
+        80,
+        525,
+        210
+      ],
+      "detail_sha256": "b52e1541305097e3833377bd345cffd8ad97176a8823b096d0de5af6e5222795",
+      "bbox": [
+        385,
+        22,
+        562,
+        268
+      ],
+      "cleanup": {
+        "remote_weak_removed": 100,
+        "edge_rgb_corrected": 9,
+        "interior_opacity_restored": 5437
+      },
+      "neck": {
+        "start_center": 226,
+        "end_center": 260,
+        "start_arc": 8,
+        "end_arc": 10,
+        "overlap": 8,
+        "body_restored_y": 286
+      }
+    }
+  ],
+  "before_sha256": {
+    "base_male.png": "08da7a7fd8fe1ea1fd6235a2de8ac32878568381bd3e8dcc4d65a1e738f78105",
+    "base_female.png": "e76e72bea1d800fd50e65ed45f93ba8d70e79c04947a3eb4a4ffb43b9a1d8f68",
+    "assets/wardrobe/clothing/patient/female_neckline_skin_underlay.png": "8a9076fa37a949f7c12c5e9663797d80b74c56fa95c17ada68f3144bfaab1d5b",
+    "assets/wardrobe/clothing/patient/patient_tunic_female.png": "809fd1e8738aff77753d1caade079eb94ea7766891fd69614ea9a68fbac7274e",
+    "assets/wardrobe/clothing/patient/patient_tunic_male.png": "b0da31287a2ee59cb1260b17da4a381fc60d59b3fd17c41ec6a6b7d7708a7977",
+    "assets/wardrobe/drafts/hospital_shirt_female.png": "8f19d6a845d6af0744a57c115c74e66cd3c55668eade9234d3059fb68a6cb3fc",
+    "assets/wardrobe/drafts/hospital_shirt_male.png": "73bef31d05970be528a0616cbd3ff6369636e6c4b048edc11d847b88cb444b4d",
+    "assets/wardrobe/faces/female_alternative_head.png": "002b26500142b487eedabde6d401e7754fd437226648f10198bbe810b2c32a17",
+    "assets/wardrobe/faces/female_asian_head.png": "e788fe50130bd5f3236be7b9e03a1c6a63e47716fad7e3f9a761a04fbeb1e42f",
+    "assets/wardrobe/faces/female_elder_head.png": "53cd99eba4fdd054b21b8cc4a472401801736f2032fea76c6c5a25ef29379469",
+    "assets/wardrobe/faces/female_exhausted_head.png": "76ee4e8f2ee9af1947f1014e999f0e507fd3afb49153bc7efcef3807266bb6d2",
+    "assets/wardrobe/faces/female_young_head.png": "deba67794b0f654bd33c8bb4ff8c3de53438e2ac846fef31891f3d6968855323",
+    "assets/wardrobe/faces/male_alternative_head.png": "2b58bf7aeed30364a66336309591d8a20908cc620ec5487a9a3559b5546ef611",
+    "assets/wardrobe/faces/male_asian_head.png": "1043b5b254913364b44925acdc85b47d17e33cff1ac10240ee19af8522f152d7",
+    "assets/wardrobe/faces/male_elder_head.png": "f6e3003cce525198d3a5ff4539d20351042e378862939a4429fba251dc2edd1c",
+    "assets/wardrobe/faces/male_exhausted_head.png": "5683706e6b232e08c45f8c290a642ac2791890141b25d4f7d1571c5687307f34",
+    "assets/wardrobe/faces/male_young_head.png": "02729493aaecad136538e03e4c56eddc63bcb1ecb0064ffbe3ed83bb4a663fdc",
+    "assets/wardrobe/faces/masks/female_alternative_body.png": "2069e239ff59a656e140a7edaa133f04829c7c87017174c1507c46f29fb5f548",
+    "assets/wardrobe/faces/masks/female_asian_body.png": "3412bd3af36387b0050e580a85cff7855951b7761701c429587b7af0a5091ac7",
+    "assets/wardrobe/faces/masks/female_elder_body.png": "a9f8e7b6c6f394523838c2c65aa21f03de408ae171fc7e4ee607cf194b848e3a",
+    "assets/wardrobe/faces/masks/female_exhausted_body.png": "034b704365f6f10deebc3678efcc32538a134080942add7ce9c7b2a4e8cb6f6b",
+    "assets/wardrobe/faces/masks/female_young_body.png": "3f8e960c4b689f0fb6613b7bda0ca9d6e3247eb1c1cf236df5722cd032a1eca2",
+    "assets/wardrobe/faces/masks/male_alternative_body.png": "2778f476f1a528ddad6e6fe080295ed97cc513beff8328e792bf3e4fd85444c9",
+    "assets/wardrobe/faces/masks/male_asian_body.png": "dbaab2c9d7f638c5bf3a9632458c1565f5869eb2c9251d44cae984bdfdabb4a1",
+    "assets/wardrobe/faces/masks/male_elder_body.png": "191ad94a7ab8e8b00f5a48de854e7dcf5f9adfc54d4e6aa4b81d6963fca0dcd1",
+    "assets/wardrobe/faces/masks/male_exhausted_body.png": "95e48d488e32558ea02a9ad5b3f60dfff83e98029bfa3ce6c420c23857de482e",
+    "assets/wardrobe/faces/masks/male_young_body.png": "73bad65e54573c40589af4e1e9fa5dcd2b5e82a70829ef61f8994cbd160eab24",
+    "assets/wardrobe/hair/classic_short_unisex_style_A.png": "1ddab5737b909a0d42034f8815aaa0cdd0d2e355ff766bfcd1775a4ed5e34d4b",
+    "assets/wardrobe/hair/classic_short_unisex_style_B.png": "9ad8b4e1b37b6d20e2c42931bbcd6828744de20a289f29990943f906ffbf8875",
+    "assets/wardrobe/hair/female_chin_length_bob.png": "b8f4295911bf39a9f6db18feb0f813f22ac7ed8cb85c4adaac88f7ee0de3db98",
+    "assets/wardrobe/hair/female_double_buns.png": "6290b9c90fdbd7dc7ddd8fa2e246438406b108ff9e6b687d3bbcade05a3a4917",
+    "assets/wardrobe/hair/female_medium_shoulder_length.png": "79b8f5b83a996bea9e473e7eca6aa292bcf72d7463e8f4568c1470f2b18645e2",
+    "assets/wardrobe/hair/female_messy_hair.png": "fe47846c7f21e5232c0e6364ea9d84cc37fa896f67b6781b1df871a81cbc1851",
+    "assets/wardrobe/hair/male_chin_length_bob.png": "978335df95889445ecdf9ae83ccb169da5b197b758dc4d6a2d2f0e4d0b835584",
+    "assets/wardrobe/hair/male_double_buns.png": "5b2aae591d33bcd2f4e3c5d8d027bd7ce0cf216694cf66c863d2f6b0d2d67b0a",
+    "assets/wardrobe/hair/male_medium_shoulder_length.png": "aa3b097acfb985f0ef91fe29101c64df94374916c67192c3a99cd22c46a866be",
+    "assets/wardrobe/hair/male_medium_shoulder_length_rear.png": "895e676c29c172e237e5b0a560690a7629993d3983a67a4f2da2a95215e7faa3",
+    "assets/wardrobe/hair/male_messy_hair.png": "4e890f4bbd3523f1a84bcdcfd263bdfe230a1fc37799432fc648ab96f6a99169",
+    "assets/wardrobe/hair/unisex_bob_bangs.png": "0293b69f09c5dc70d756cf060427e32188d982b845ef42d1426a189c2825829d",
+    "assets/wardrobe/references/patient/female_approved_full.png": "04ec0929ef46ba843f39a6d9b4a67310565fb6758078bc8d2f6cce41b41021e8",
+    "assets/wardrobe/references/patient/male_approved_full.png": "c300f064138a7bfe7471b393239d52c48cc6b37113394ac53dc6cc1920a069c7"
+  },
+  "method": "Uniform registration of approved pixels; local edge RGB cleanup; curved complementary neck masks; no generation",
+  "hair_items_before": [
+    {
+      "id": "hair-none",
+      "slot": "hair",
+      "name": "Без зачіски",
+      "icon": "user",
+      "availableByDefault": true,
+      "noImageRequired": true,
+      "description": "Початковий вигляд затвердженого аватара без накладки волосся."
+    },
+    {
+      "id": "hair-bob-bangs",
+      "slot": "hair",
+      "name": "Каре з чубчиком",
+      "icon": "user",
+      "availableByDefault": true,
+      "genders": [
+        "female"
+      ],
+      "fittedToGender": true,
+      "description": "Каштанове жіноче каре з чубчиком.",
+      "genderVariants": {
+        "female": "assets/wardrobe/hair/unisex_bob_bangs.png?v=0293b69f"
+      },
+      "placementByGender": {
+        "female": {
+          "x": 365.9,
+          "y": -59.9,
+          "width": 216.43,
+          "height": 384.56
+        }
+      }
+    },
+    {
+      "id": "hair-messy",
+      "slot": "hair",
+      "name": "Розкуйовджена зачіска",
+      "icon": "user",
+      "availableByDefault": true,
+      "fittedToGender": true,
+      "description": "Розкуйовджене волосся з першого комплекту зачісок.",
+      "genderVariants": {
+        "male": "assets/wardrobe/hair/male_messy_hair.png?v=4e890f4b",
+        "female": "assets/wardrobe/hair/female_messy_hair.png?v=fe47846c"
+      },
+      "placementByGender": {
+        "male": {
+          "x": 364.082398407408,
+          "y": -29.293952,
+          "width": 209.373552192592,
+          "height": 256.9470636,
+          "stretchX": true
+        },
+        "female": {
+          "x": 343,
+          "y": -5,
+          "width": 246.84,
+          "height": 308.44
+        }
+      }
+    },
+    {
+      "id": "hair-bob",
+      "slot": "hair",
+      "name": "Каре до підборіддя",
+      "icon": "user",
+      "availableByDefault": true,
+      "fittedToGender": true,
+      "description": "Каре до підборіддя з першого комплекту зачісок.",
+      "genderVariants": {
+        "male": "assets/wardrobe/hair/male_chin_length_bob.png?v=978335df",
+        "female": "assets/wardrobe/hair/female_chin_length_bob.png?v=b8f42959"
+      },
+      "placementByGender": {
+        "male": {
+          "x": 352.60516025,
+          "y": 14.4574795,
+          "width": 236.60111475,
+          "height": 236.60111475
+        },
+        "female": {
+          "x": 344.8386675,
+          "y": 6.7274324,
+          "width": 246.2881707,
+          "height": 246.2881707
+        }
+      }
+    },
+    {
+      "id": "hair-double-buns",
+      "slot": "hair",
+      "name": "Два бокові пучки з локонами",
+      "icon": "user",
+      "availableByDefault": true,
+      "fittedToGender": true,
+      "description": "Два бокові пучки з локонами з першого комплекту зачісок.",
+      "genderVariants": {
+        "male": "assets/wardrobe/hair/male_double_buns.png?v=5b2aae59",
+        "female": "assets/wardrobe/hair/female_double_buns.png?v=6290b9c9"
+      },
+      "placementByGender": {
+        "male": {
+          "x": 317.05,
+          "y": 4.5,
+          "width": 304.722,
+          "height": 304.722
+        },
+        "female": {
+          "x": 315.058,
+          "y": -0.896,
+          "width": 306.87888,
+          "height": 306.87888
+        }
+      }
+    },
+    {
+      "id": "hair-classic-short",
+      "slot": "hair",
+      "name": "Класична коротка стрижка",
+      "icon": "user",
+      "availableByDefault": true,
+      "fittedToGender": true,
+      "description": "Затверджена зачіска з другого комплекту.",
+      "genderVariants": {
+        "male": "assets/wardrobe/hair/classic_short_unisex_style_A.png?v=1ddab573",
+        "female": "assets/wardrobe/hair/classic_short_unisex_style_A.png?v=1ddab573"
+      },
+      "placementByGender": {
+        "male": {
+          "x": 370.5,
+          "y": 0,
+          "width": 200.64,
+          "height": 200.64
+        },
+        "female": {
+          "x": 372.5,
+          "y": -5,
+          "width": 196.878,
+          "height": 196.878
+        }
+      }
+    },
+    {
+      "id": "hair-textured-short",
+      "slot": "hair",
+      "name": "Коротка текстурована стрижка",
+      "icon": "user",
+      "availableByDefault": true,
+      "fittedToGender": true,
+      "description": "Затверджена зачіска з другого комплекту.",
+      "genderVariants": {
+        "male": "assets/wardrobe/hair/classic_short_unisex_style_B.png?v=9ad8b4e1",
+        "female": "assets/wardrobe/hair/classic_short_unisex_style_B.png?v=9ad8b4e1"
+      },
+      "placementByGender": {
+        "male": {
+          "x": 369.9884556812,
+          "y": -7.8760272324,
+          "width": 201.8883785688,
+          "height": 201.8883785688
+        },
+        "female": {
+          "x": 372.0210235314683,
+          "y": -13.885696649022648,
+          "width": 201.45305805472074,
+          "height": 201.45305805472074
+        }
+      }
+    },
+    {
+      "id": "hair-shoulder-length",
+      "slot": "hair",
+      "name": "Волосся до плечей",
+      "icon": "user",
+      "availableByDefault": true,
+      "fittedToGender": true,
+      "description": "Затверджена зачіска з другого комплекту.",
+      "genderVariants": {
+        "male": "assets/wardrobe/hair/male_medium_shoulder_length.png?v=aa3b097a",
+        "female": "assets/wardrobe/hair/female_medium_shoulder_length.png?v=79b8f5b8"
+      },
+      "layers": [
+        {
+          "id": "rear",
+          "genders": [
+            "male"
+          ],
+          "renderOrder": -1,
+          "fittedToGender": true,
+          "genderVariants": {
+            "male": "assets/wardrobe/hair/male_medium_shoulder_length_rear.png?v=895e676c"
+          },
+          "colorReference": "assets/wardrobe/hair/male_medium_shoulder_length.png?v=aa3b097a",
+          "placementByGender": {
+            "male": {
+              "x": 0,
+              "y": 0,
+              "width": 941,
+              "height": 1672
+            }
+          }
+        },
+        {
+          "id": "front",
+          "renderOrder": 9,
+          "fittedToGender": true,
+          "genderVariants": {
+            "male": "assets/wardrobe/hair/male_medium_shoulder_length.png?v=aa3b097a",
+            "female": "assets/wardrobe/hair/female_medium_shoulder_length.png?v=79b8f5b8"
+          }
+        }
+      ],
+      "placementByGender": {
+        "male": {
+          "x": 330.705600351,
+          "y": 21.61907,
+          "width": 277.29702,
+          "height": 277.29702
+        },
+        "female": {
+          "x": 319.19278624,
+          "y": 13.02804571232,
+          "width": 290.59567314624,
+          "height": 290.59567314624
+        }
+      }
+    }
+  ],
+  "registration_measurements": {
+    "method": "SIFT correspondence + RANSAC followed by uniform scale/translation least squares; no rotation or feature warp",
+    "inlier_counts": [
+      66,
+      33,
+      15,
+      20,
+      21
+    ],
+    "rms_pixels": [
+      0.454377,
+      0.534721,
+      0.693029,
+      0.774335,
+      0.496902
+    ],
+    "order": [
+      "asian",
+      "young",
+      "exhausted",
+      "elder",
+      "alternative"
+    ]
+  }
+}

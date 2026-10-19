@@ -1254,6 +1254,40 @@ test('approved Asian head variants stay below hair and preserve shared cosmetics
     assert.equal(g.run('JSON.stringify(PAPER_DOLL_ITEMS.filter(i=>i.slot==="hair").map(i=>i.placementByGender))'),hairGeometry);
 });
 
+test('eight female faces keep legacy IDs and add female-only catalog choices', () => {
+    const g=game();
+    assert.equal(g.run('PAPER_DOLL_ITEMS.filter(i=>i.slot==="face"&&paperDollItemSupportsGender(i,"female")).length'),8);
+    assert.equal(g.run('PAPER_DOLL_ITEMS.filter(i=>i.slot==="face"&&paperDollItemSupportsGender(i,"male")).length'),5);
+    for(const id of ['face-asian','face-young','face-exhausted','face-elder','face-alternative']) {
+        for(const gender of ['male','female']) {
+            g.run(`setGender('${gender}')`);
+            assert.equal(g.run(`equipPaperDollItem('face','${id}')`),true);
+            assert.equal(game(Object.fromEntries(g.storage)).run('paperDollState.appearance.face'),id);
+        }
+    }
+});
+
+test('female-only faces reset safely on gender changes and unsupported male saves', () => {
+    const g=game();
+    const before=g.run('JSON.stringify({stats,inventory,equippedGear,patient:paperDollState.patientLoadout,combat:paperDollState.combatLoadout})');
+    for(const id of ['face-ginger-soft','face-goth-septum','face-goth-black-lips']) {
+        g.run('setGender("female");equipPaperDollItem("hair","hair-messy");setHairColor("white")');
+        assert.equal(g.run(`equipPaperDollItem('face','${id}')`),true);
+        const saved=JSON.parse(g.storage.get('palata404_paper_doll'));
+        assert.equal(game(Object.fromEntries(g.storage)).run('paperDollState.appearance.face'),id);
+        saved.selectedGender='male';
+        const migrated=game({...Object.fromEntries(g.storage),palata404_paper_doll:JSON.stringify(saved)});
+        assert.equal(migrated.run('paperDollState.appearance.face'),null);
+        assert.equal(migrated.run('paperDollState.appearance.hair'),'hair-messy');
+        assert.equal(migrated.run('paperDollState.appearance.hairColor'),'white');
+        g.run('setGender("male")');
+        assert.equal(g.run('paperDollState.appearance.face'),null);
+        assert.equal(g.run(`equipPaperDollItem('face','${id}')`),false);
+        for(const prefix of ['','wardrobe-']) assert.equal(g.elements.get(prefix+'layer-face').getAttribute('src'),null);
+        assert.equal(g.run('JSON.stringify({stats,inventory,equippedGear,patient:paperDollState.patientLoadout,combat:paperDollState.combatLoadout})'),before);
+    }
+});
+
 test('crown clipping covers affected heads and clears on unaffected hairstyles', () => {
     const g=game();
     const geometry=g.run('JSON.stringify(PAPER_DOLL_ITEMS.filter(i=>i.slot==="hair").map(i=>i.placementByGender))');

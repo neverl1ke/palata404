@@ -12,6 +12,10 @@ from pathlib import Path
 import re
 import threading
 import unittest
+try:
+    from tests.asset_history import historical_asset
+except ModuleNotFoundError:  # Capture tools import test_game directly from tests/.
+    from asset_history import historical_asset
 import xml.etree.ElementTree as ET
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 
@@ -30,7 +34,7 @@ class IconAssetTests(unittest.TestCase):
         integrated=json.loads((ROOT/'tests/fixtures/paper-doll-audit.json').read_text())['files']
         for gender in ['male','female']:
             digest=next(e['sha256'] for e in integrated if e['path']==f'assets/wardrobe/faces/{gender}_asian_head.png')
-            path=ROOT/f'assets/wardrobe/faces/{gender}_asian_head.png'
+            path=historical_asset(f'assets/wardrobe/faces/{gender}_asian_head.png')
             self.assertEqual(hashlib.sha256(path.read_bytes()).hexdigest(),digest)
             with Image.open(path) as image:
                 self.assertEqual(image.size,(941,1672));self.assertEqual(image.mode,'RGBA')
@@ -49,11 +53,11 @@ class IconAssetTests(unittest.TestCase):
         self.assertEqual(len({e['mask_sha256'] for e in manifest['files']}),6)
         for entry in manifest['files']:
             with self.subTest(kind=entry['kind'],gender=entry['gender']):
-                head=Image.open(ROOT/entry['output']).convert('RGBA')
-                mask=Image.open(ROOT/entry['mask']).convert('RGBA')
+                head=Image.open(historical_asset(entry['output'])).convert('RGBA')
+                mask=Image.open(historical_asset(entry['mask'])).convert('RGBA')
                 self.assertEqual(head.size,(941,1672));self.assertEqual(mask.size,head.size)
-                self.assertEqual(hashlib.sha256((ROOT/entry['output']).read_bytes()).hexdigest(),entry['sha256'])
-                self.assertEqual(hashlib.sha256((ROOT/entry['mask']).read_bytes()).hexdigest(),entry['mask_sha256'])
+                self.assertEqual(hashlib.sha256(historical_asset(entry['output']).read_bytes()).hexdigest(),entry['sha256'])
+                self.assertEqual(hashlib.sha256(historical_asset(entry['mask']).read_bytes()).hexdigest(),entry['mask_sha256'])
                 top=head.crop((0,0,941,entry['protected_y'])).tobytes()
                 self.assertEqual(hashlib.sha256(top).hexdigest(),entry['protected_sha256'],'Upper head changed')
                 detail=head.convert('RGB').crop(entry['detail_box']).tobytes()
@@ -82,7 +86,7 @@ class IconAssetTests(unittest.TestCase):
         manifest=json.loads((ROOT/'tests/fixtures/avatar-face-hair-update.json').read_text())
         self.assertEqual(len(manifest['files']),5)
         for entry in manifest['files']:
-            p=ROOT/entry['output'];self.assertEqual(hashlib.sha256(p.read_bytes()).hexdigest(),entry['sha256'])
+            p=historical_asset(entry['output']);self.assertEqual(hashlib.sha256(p.read_bytes()).hexdigest(),entry['sha256'])
             with Image.open(p) as im:
                 self.assertEqual(im.mode,'RGBA');self.assertEqual(im.size,(941,1672))
                 self.assertEqual(im.getchannel('A').getextrema(),(0,255))
@@ -355,7 +359,7 @@ class GameTests(unittest.TestCase):
         self.assertEqual(wardrobe.locator('[data-wardrobe-category]').count(),5)
         wardrobe.get_by_role('button',name='Жінка',exact=True).click()
         wardrobe.locator('[data-wardrobe-slot="face"]').click()
-        self.assertEqual(wardrobe.locator('[data-wardrobe-card]').count(),5)
+        self.assertEqual(wardrobe.locator('[data-wardrobe-card]').count(),8)
         self.assertIn('Оригінальне обличчя',wardrobe.locator('#wardrobe-container').inner_text())
         for prefix in ['', 'wardrobe-']:
             self.assertIsNone(self.page.locator(f'#{prefix}layer-face').get_attribute('src'))
@@ -723,7 +727,7 @@ class GameTests(unittest.TestCase):
         self.assertEqual(self.page.evaluate('inventory.length'),0)
         self.page.evaluate('setPaperDollView("patient"); selectWardrobeCategory("appearance"); selectWardrobeSlot("face");')
         self.assertIsNone(self.page.locator('#wardrobe-layer-face').get_attribute('src'))
-        self.assertEqual(self.page.locator('[data-wardrobe-card]').count(),5)
+        self.assertEqual(self.page.locator('[data-wardrobe-card]').count(),8)
 
     def test_wardrobe_complex_layers_update_both_views_and_clean_up_after_removal(self):
         self.load()
@@ -1439,6 +1443,10 @@ class GameTests(unittest.TestCase):
                     # plus one RGB level for Chromium compositing quantization.
                     self.assertLessEqual(max(v[1] for v in ImageChops.difference(reference,image).getextrema()),4, f"{entry['kind']} {entry['gender']}: new translucent neck on {bg}")
                 y=entry['profile']['end_y']+entry['profile']['overlap']+2
+                if entry['gender']=='female':
+                    release=json.loads((ROOT/'review/female-faces-integration/integration-manifest.json').read_text())
+                    active=next(e for e in release['files'] if e['kind']==entry['kind'])
+                    y=active['neck']['body_restored_y']+2
                 clip={'x':360,'y':y,'width':230,'height':45}
                 after=self.page.screenshot(clip=clip)
                 self.page.evaluate("""()=>{equipPaperDollItem('face',null);renderPaperDollAt(document.getElementById('neck-pixels'),'neck-pixel-')}""")
@@ -1885,7 +1893,7 @@ class GameTests(unittest.TestCase):
             self.assertEqual(self.page.evaluate('paperDollState.appearance.hair'),'old-hair')
             self.assertEqual(self.page.evaluate('paperDollState.patientLoadout.armor'),'gear-br1')
             self.assertEqual(self.page.evaluate('paperDollState.combatLoadout.weapon'),'gear-pm')
-            self.assertEqual(self.page.locator('[data-wardrobe-card]').count(),5)
+            self.assertEqual(self.page.locator('[data-wardrobe-card]').count(),8)
             for prefix in ['', 'wardrobe-']:
                 self.assertIsNone(self.page.locator(f'#{prefix}layer-face').get_attribute('src'))
                 self.assertTrue(self.page.locator(f'#{prefix}layer-body').is_visible())

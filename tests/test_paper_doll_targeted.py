@@ -5,6 +5,7 @@ import numpy as np
 from PIL import Image,ImageChops
 from scipy import ndimage as ndi
 import tests.test_paper_doll_audit as support
+from tests.asset_history import historical_asset
 ROOT=support.ROOT
 spec=importlib.util.spec_from_file_location('targeted_refine',ROOT/'tools/refine-paper-doll-targeted.py');refine=importlib.util.module_from_spec(spec);spec.loader.exec_module(refine)
 def read(p):return np.array(Image.open(p).convert('RGBA'))
@@ -16,14 +17,14 @@ class TargetedAssetTests(unittest.TestCase):
   fixture=json.loads((ROOT/'tests/fixtures/paper-doll-targeted-fix.json').read_text());self.assertEqual(len(fixture['files']),37)
   for e in fixture['files']:
    with self.subTest(path=e['path']):
-    a=read(ROOT/e['path']);self.assertEqual([a.shape[1],a.shape[0]],e['size']);self.assertEqual(digest((ROOT/e['path']).read_bytes()),e['sha256'])
+    p=historical_asset(e['path']);a=read(p);self.assertEqual([a.shape[1],a.shape[0]],e['size']);self.assertEqual(digest(p.read_bytes()),e['sha256'])
     if not e['changed']:self.assertEqual(e['before_sha256'],e['sha256'])
     for field,c in [('alpha',3),('rgb',slice(0,3))]:
      allowed=np.zeros(a.shape[:2],bool)
      for y,l,r in e['allowed_'+field+'_runs']:allowed[y,l:r]=True
      self.assertEqual(digest(a[:,:,c][~allowed].tobytes()),e['outside_'+field+'_sha256'],field)
     if 'core_rgb_sha256' in e:self.assertEqual(digest(a[90:205,435:515,:3].tobytes()),e['core_rgb_sha256'])
- def test_asian_scale_is_small_registered_and_head_edges_have_narrow_antialiasing(self):
+ def test_historical_asian_scale_is_small_registered_and_head_edges_have_narrow_antialiasing(self):
   before=reference('male','asian');a=read(ROOT/'assets/wardrobe/faces/male_asian_head.png')
   def width(z):
    yy,xx=np.where(z[30:218,:,3]>=128);return int(xx.max()-xx.min()+1)
@@ -31,22 +32,22 @@ class TargetedAssetTests(unittest.TestCase):
   top=lambda z:int(np.where(z[:,:,3]>=128)[0].min());self.assertLessEqual(abs(top(a)-top(before)),1)
   for g in ['male','female']:
    for kind in ['asian','young','exhausted','elder','alternative']:
-    z=read(ROOT/f'assets/wardrobe/faces/{g}_{kind}_head.png')[:,:,3]
+    z=read(historical_asset(f'assets/wardrobe/faces/{g}_{kind}_head.png'))[:,:,3]
     for y in range(90,211):
      xs=np.where(z[y]>=128)[0]
      for x in [xs[0],xs[-1]]:
       band=z[y,max(0,x-4):x+5];self.assertLessEqual(int(((band>16)&(band<240)).sum()),2,(g,kind,y))
- def test_exhausted_neck_restores_base_without_holes_or_abrupt_side_jumps(self):
-  base=Image.open(ROOT/'base_female.png').convert('RGBA');mask=Image.open(ROOT/'assets/wardrobe/faces/masks/female_exhausted_body.png').getchannel('A');body=base.copy();body.putalpha(ImageChops.multiply(base.getchannel('A'),mask));head=Image.open(ROOT/'assets/wardrobe/faces/female_exhausted_head.png').convert('RGBA');result=Image.alpha_composite(body,head)
+ def test_historical_exhausted_neck_restores_base_without_holes_or_abrupt_side_jumps(self):
+  base=Image.open(ROOT/'base_female.png').convert('RGBA');mask=Image.open(historical_asset('assets/wardrobe/faces/masks/female_exhausted_body.png')).getchannel('A');body=base.copy();body.putalpha(ImageChops.multiply(base.getchannel('A'),mask));head=Image.open(historical_asset('assets/wardrobe/faces/female_exhausted_head.png')).convert('RGBA');result=Image.alpha_composite(body,head)
   self.assertIsNone(ImageChops.difference(result,base).crop((0,272,941,1672)).getbbox())
   aa=np.array(result.getchannel('A'));self.assertTrue(np.all(aa[225:288,445:505]>=np.array(base.getchannel('A'))[225:288,445:505]))
   edges=[]
   for y in range(225,265):
    row=aa[y]/255;xs=np.where(row>=.5)[0];l,r=xs[0],xs[-1];edges.append([l-1+(.5-row[l-1])/(row[l]-row[l-1]),r+(.5-row[r])/(row[r+1]-row[r])])
   self.assertLess(np.abs(np.diff(np.array(edges),axis=0)).max(),2.5)
- def test_alternative_tones_move_toward_body_and_original_features_remain(self):
+ def test_historical_alternative_tones_move_toward_body_and_original_features_remain(self):
   for g in ['male','female']:
-   old=reference(g,'alternative');new=read(ROOT/f'assets/wardrobe/faces/{g}_alternative_head.png');body=read(ROOT/f'base_{g}.png');target=refine.skin_median(body);oldlab=refine.skin_median(old);newlab=refine.skin_median(new)
+   old=reference(g,'alternative');new=read(historical_asset(f'assets/wardrobe/faces/{g}_alternative_head.png'));body=read(ROOT/f'base_{g}.png');target=refine.skin_median(body);oldlab=refine.skin_median(old);newlab=refine.skin_median(new)
    scale=np.array([100/255,1,1]);self.assertLess(np.linalg.norm((newlab-target)*scale),np.linalg.norm((oldlab-target)*scale),g)
    if g=='female':self.assertLess(np.linalg.norm((newlab-oldlab)*scale),3)
   old=reference('male','alternative');new=read(ROOT/'assets/wardrobe/faces/male_alternative_head.png')

@@ -35,6 +35,8 @@ function normalizePaperDollState(value, legacy = {}) {
     }
     const savedHair = PAPER_DOLL_ITEMS.find(item => item.slot === 'hair' && item.id === state.appearance.hair);
     if (savedHair && !paperDollItemSupportsGender(savedHair, state.selectedGender)) state.appearance.hair = 'hair-none';
+    const savedFace = PAPER_DOLL_ITEMS.find(item => item.slot === 'face' && item.id === state.appearance.face);
+    if (savedFace && !paperDollItemSupportsGender(savedFace, state.selectedGender)) state.appearance.face = null;
     return state;
 }
 
@@ -51,7 +53,7 @@ function selectedPaperDollItem(slot) {
     if (slot === 'hair') return PAPER_DOLL_ITEMS.find(item => item.slot === 'hair' && item.id === paperDollState.appearance.hair && isPaperDollItemOwned(item) && paperDollItemSupportsGender(item))
         || PAPER_DOLL_ITEMS.find(item => item.id === 'hair-none');
     const id = slot === 'face' ? paperDollState.appearance.face : activePaperDollLoadout()[slot];
-    return PAPER_DOLL_ITEMS.find(item => item.id === id && item.slot === slot && isPaperDollItemOwned(item));
+    return PAPER_DOLL_ITEMS.find(item => item.id === id && item.slot === slot && isPaperDollItemOwned(item) && paperDollItemSupportsGender(item));
 }
 
 function loadPaperDollState(legacy) {

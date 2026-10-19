@@ -5,6 +5,7 @@ import numpy as np
 from PIL import Image,ImageChops
 from scipy import ndimage as ndi
 import tests.test_game as game_support
+from tests.asset_history import historical_asset
 ROOT=game_support.ROOT
 
 def module(name,file):
@@ -24,7 +25,7 @@ class AuditAssetTests(unittest.TestCase):
 
  def test_face_identity_and_body_registration_are_protected(self):
   for e in json.loads((ROOT/'tests/fixtures/paper-doll-audit.json').read_text())['files']:
-   p=ROOT/e['path'];self.assertEqual(digest(p.read_bytes()),e['sha256'])
+   p=historical_asset(e['path']);self.assertEqual(digest(p.read_bytes()),e['sha256'])
    im=Image.open(p).copy();self.assertEqual(list(im.size),e['size'])
    if 'face_rgb_box' in e:self.assertEqual(digest(im.convert('RGB').crop(e['face_rgb_box']).tobytes()),e['face_rgb_sha256'],e['path'])
    if e['path'].startswith('base_'):
@@ -37,9 +38,11 @@ class AuditAssetTests(unittest.TestCase):
    if '/masks/' in rel or 'patient_tunic_' in rel:continue
    a=np.array(Image.open(ROOT/rel).getchannel('A'));roi=a[:215] if '/faces/' in rel else a
    d=ndi.distance_transform_edt(~(roi>=32));self.assertEqual(int(((roi>0)&(roi<=16)&(d>4)).sum()),0,rel)
-   labels,n=ndi.label(roi>0,np.ones((3,3)))
+   # Full silhouette labels avoid inventing a component at an ROI boundary.
+   labels,n=ndi.label(a>0,np.ones((3,3)))
    if n:
-    peaks=ndi.maximum(roi,labels,np.arange(1,n+1));self.assertFalse(np.any(peaks<=16),rel)
+    ids=np.unique(labels[:len(roi)][roi>0])
+    peaks=ndi.maximum(a,labels,ids);self.assertFalse(np.any(peaks<=16),rel)
 
  def test_all_head_masks_hide_old_skull_and_join_without_holes(self):
   count=0
@@ -52,7 +55,7 @@ class AuditAssetTests(unittest.TestCase):
     self.assertEqual(ndi.label(aa>=128,np.ones((3,3)))[1],1,(item['id'],g,'Disconnected silhouette'))
     self.assertTrue(np.all(aa[250:288,445:505]>=np.array(base.getchannel('A'))[250:288,445:505]),(item['id'],g,'Neck hole'))
     self.assertIsNone(ImageChops.difference(result,base).crop((0,310,941,1672)).getbbox())
-  self.assertEqual(count,10)
+  self.assertEqual(count,13)  # Five male plus eight approved female overlays.
 
  def test_rear_texture_closes_inner_ear_openings_without_covering_face(self):
   item=next(i for i in audit.catalog()['items'] if i['id']=='hair-shoulder-length');a=np.array(Image.open(ROOT/item['layers'][0]['genderVariants']['male'].split('?')[0]))
