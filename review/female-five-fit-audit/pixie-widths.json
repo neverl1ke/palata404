@@ -1,0 +1,106 @@
+[
+  {
+    "y": 85,
+    "before": [
+      392,
+      548
+    ],
+    "after": [
+      392,
+      549
+    ],
+    "width_before": 157,
+    "width_after": 158
+  },
+  {
+    "y": 95,
+    "before": [
+      397,
+      546
+    ],
+    "after": [
+      394,
+      551
+    ],
+    "width_before": 150,
+    "width_after": 158
+  },
+  {
+    "y": 105,
+    "before": [
+      395,
+      545
+    ],
+    "after": [
+      394,
+      551
+    ],
+    "width_before": 151,
+    "width_after": 158
+  },
+  {
+    "y": 115,
+    "before": [
+      400,
+      543
+    ],
+    "after": [
+      394,
+      551
+    ],
+    "width_before": 144,
+    "width_after": 158
+  },
+  {
+    "y": 125,
+    "before": [
+      404,
+      535
+    ],
+    "after": [
+      395,
+      550
+    ],
+    "width_before": 132,
+    "width_after": 156
+  },
+  {
+    "y": 135,
+    "before": [
+      411,
+      536
+    ],
+    "after": [
+      397,
+      549
+    ],
+    "width_before": 126,
+    "width_after": 153
+  },
+  {
+    "y": 145,
+    "before": [
+      415,
+      528
+    ],
+    "after": [
+      402,
+      544
+    ],
+    "width_before": 114,
+    "width_after": 143
+  },
+  {
+    "y": 155,
+    "before": [
+      419,
+      524
+    ],
+    "after": [
+      406,
+      540
+    ],
+    "width_before": 106,
+    "width_after": 135
+  }
+]

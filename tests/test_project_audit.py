@@ -27,7 +27,7 @@ class GeneralAssetTests(unittest.TestCase):
   import subprocess,re
   code="const fs=require('fs'),vm=require('vm');console.log(vm.runInNewContext(fs.readFileSync('paper-doll-data.js','utf8')+';JSON.stringify({bodies:PAPER_DOLL_BODIES,items:PAPER_DOLL_ITEMS,nativeHeads:PAPER_DOLL_NATIVE_HEADS})'))"
   catalog=json.loads(subprocess.check_output(['node','-e',code],cwd=ROOT));paths=set(re.findall(r'[A-Za-z0-9_./-]+\.png',json.dumps(catalog)))
-  self.assertEqual(len(paths),67+int('assets/wardrobe/hair/trial/female_braided_curls.png' in paths))  # Male pack plus eight additional female heads and masks.
+  self.assertEqual(len(paths),67+int('assets/wardrobe/hair/trial/female_braided_curls.png' in paths)+5)  # Male pack plus eight additional female heads and masks.
   for path in paths:
    self.assertTrue((ROOT/path).is_file(),path)
    current=ROOT

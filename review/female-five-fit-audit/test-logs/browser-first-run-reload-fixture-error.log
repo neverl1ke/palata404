@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/workspace/palata404/tools/review-female-five-hairstyles.py", line 58, in <module>
+    if __name__=='__main__':run()
+                            ^^^^^
+  File "/workspace/palata404/tools/review-female-five-hairstyles.py", line 47, in run
+    page.evaluate('document.getElementById("five-board").remove();setHairColor("original");setPaperDollView("patient");equipPaperDollItem("upperBody","patient-tunic")');settle();page.reload(wait_until='networkidle');assert page.evaluate('paperDollState.appearance.hair')==sid;assert page.evaluate('paperDollState.appearance.face')=='face-young';assert page.evaluate('paperDollState.appearance.hairColor')=='original';assert page.evaluate('paperDollState.patientLoadout.upperBody')=='patient-tunic';assert page.evaluate('paperDollState.combatLoadout.upperBody') is None
+                                                                                                                                                                                                                                                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

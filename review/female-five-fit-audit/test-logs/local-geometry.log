@@ -1,0 +1,17 @@
+test_pixie_temples_cover_skull_landmarks_without_moving_crown_or_center (tests.test_female_five_hairstyles.FemaleFitAuditTests.test_pixie_temples_cover_skull_landmarks_without_moving_crown_or_center) ... FAIL
+test_long_waves_clear_iris_without_touching_lower_hair_or_right_side (tests.test_female_five_hairstyles.FemaleFitAuditTests.test_long_waves_clear_iris_without_touching_lower_hair_or_right_side) ... ok
+test_three_styles_without_confirmed_deformation_stay_byte_identical (tests.test_female_five_hairstyles.FemaleFitAuditTests.test_three_styles_without_confirmed_deformation_stay_byte_identical) ... ok
+
+======================================================================
+FAIL: test_pixie_temples_cover_skull_landmarks_without_moving_crown_or_center (tests.test_female_five_hairstyles.FemaleFitAuditTests.test_pixie_temples_cover_skull_landmarks_without_moving_crown_or_center)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/palata404/tests/test_female_five_hairstyles.py", line 42, in test_pixie_temples_cover_skull_landmarks_without_moving_crown_or_center
+    xx=np.flatnonzero(after[y,:,3]>=128);self.assertLessEqual(xx[0],left);self.assertGreaterEqual(xx[-1],right)
+                                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: np.int64(543) not greater than or equal to 548
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.107s
+
+FAILED (failures=1)

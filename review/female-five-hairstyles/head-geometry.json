@@ -1,0 +1,257 @@
+[
+  {
+    "id": "native-female-head",
+    "path": "assets/wardrobe/faces/standardized/female_native_head.png",
+    "size": [
+      941,
+      1672
+    ],
+    "top_y": 33,
+    "ear_region_widest_row": [
+      176,
+      385,
+      560,
+      148
+    ]
+  },
+  {
+    "id": "face-asian",
+    "path": "assets/wardrobe/faces/standardized/female_asian_head.png",
+    "size": [
+      941,
+      1672
+    ],
+    "top_y": 33,
+    "ear_region_widest_row": [
+      176,
+      385,
+      560,
+      147
+    ]
+  },
+  {
+    "id": "face-young",
+    "path": "assets/wardrobe/faces/female_young_head.png",
+    "size": [
+      941,
+      1672
+    ],
+    "top_y": 33,
+    "ear_region_widest_row": [
+      176,
+      385,
+      560,
+      140
+    ]
+  },
+  {
+    "id": "face-exhausted",
+    "path": "assets/wardrobe/faces/standardized/female_exhausted_head.png",
+    "size": [
+      941,
+      1672
+    ],
+    "top_y": 33,
+    "ear_region_widest_row": [
+      176,
+      385,
+      560,
+      141
+    ]
+  },
+  {
+    "id": "face-elder",
+    "path": "assets/wardrobe/faces/standardized/female_elder_head.png",
+    "size": [
+      941,
+      1672
+    ],
+    "top_y": 33,
+    "ear_region_widest_row": [
+      176,
+      385,
+      560,
+      147
+    ]
+  },
+  {
+    "id": "face-alternative",
+    "path": "assets/wardrobe/faces/standardized/female_alternative_head.png",
+    "size": [
+      941,
+      1672
+    ],
+    "top_y": 33,
+    "ear_region_widest_row": [
+      176,
+      385,
+      560,
+      143
+    ]
+  },
+  {
+    "id": "face-ginger-soft",
+    "path": "assets/wardrobe/faces/standardized/female_ginger_soft_head.png",
+    "size": [
+      941,
+      1672
+    ],
+    "top_y": 33,
+    "ear_region_widest_row": [
+      176,
+      385,
+      560,
+      142
+    ]
+  },
+  {
+    "id": "face-goth-septum",
+    "path": "assets/wardrobe/faces/standardized/female_goth_septum_head.png",
+    "size": [
+      941,
+      1672
+    ],
+    "top_y": 33,
+    "ear_region_widest_row": [
+      176,
+      385,
+      560,
+      139
+    ]
+  },
+  {
+    "id": "face-goth-black-lips",
+    "path": "assets/wardrobe/faces/standardized/female_goth_black_lips_head.png",
+    "size": [
+      941,
+      1672
+    ],
+    "top_y": 33,
+    "ear_region_widest_row": [
+      176,
+      385,
+      560,
+      150
+    ]
+  },
+  {
+    "id": "face-female-new-defined-brows",
+    "path": "assets/wardrobe/faces/standardized/female_new_defined_brows_head.png",
+    "size": [
+      941,
+      1672
+    ],
+    "top_y": 33,
+    "ear_region_widest_row": [
+      176,
+      385,
+      560,
+      145
+    ]
+  },
+  {
+    "id": "face-female-new-blue-gaze",
+    "path": "assets/wardrobe/faces/standardized/female_new_blue_gaze_head.png",
+    "size": [
+      941,
+      1672
+    ],
+    "top_y": 33,
+    "ear_region_widest_row": [
+      176,
+      385,
+      560,
+      143
+    ]
+  },
+  {
+    "id": "face-female-new-freckled",
+    "path": "assets/wardrobe/faces/standardized/female_new_freckled_head.png",
+    "size": [
+      941,
+      1672
+    ],
+    "top_y": 33,
+    "ear_region_widest_row": [
+      176,
+      385,
+      560,
+      141
+    ]
+  },
+  {
+    "id": "face-female-new-mature",
+    "path": "assets/wardrobe/faces/standardized/female_new_mature_head.png",
+    "size": [
+      941,
+      1672
+    ],
+    "top_y": 33,
+    "ear_region_widest_row": [
+      176,
+      385,
+      560,
+      148
+    ]
+  },
+  {
+    "id": "face-female-new-light-eyes",
+    "path": "assets/wardrobe/faces/standardized/female_new_light_eyes_head.png",
+    "size": [
+      941,
+      1672
+    ],
+    "top_y": 33,
+    "ear_region_widest_row": [
+      176,
+      385,
+      560,
+      142
+    ]
+  },
+  {
+    "id": "face-female-new-pierced",
+    "path": "assets/wardrobe/faces/standardized/female_new_pierced_head.png",
+    "size": [
+      941,
+      1672
+    ],
+    "top_y": 33,
+    "ear_region_widest_row": [
+      176,
+      385,
+      560,
+      142
+    ]
+  },
+  {
+    "id": "face-female-new-soft-gaze",
+    "path": "assets/wardrobe/faces/standardized/female_new_soft_gaze_head.png",
+    "size": [
+      941,
+      1672
+    ],
+    "top_y": 33,
+    "ear_region_widest_row": [
+      176,
+      385,
+      560,
+      143
+    ]
+  },
+  {
+    "id": "face-female-new-almond-eyes",
+    "path": "assets/wardrobe/faces/standardized/female_new_almond_eyes_head.png",
+    "size": [
+      941,
+      1672
+    ],
+    "top_y": 33,
+    "ear_region_widest_row": [
+      176,
+      385,
+      560,
+      148
+    ]
+  }
+]

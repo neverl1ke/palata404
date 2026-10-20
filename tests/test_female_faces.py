@@ -100,7 +100,7 @@ class FemaleFacesAssetTests(unittest.TestCase):
         code="const fs=require('fs'),vm=require('vm');console.log(vm.runInNewContext(fs.readFileSync('paper-doll-data.js','utf8')+';JSON.stringify(PAPER_DOLL_ITEMS.filter(i=>i.slot===\"hair\"))'))"
         current=subprocess.check_output(['node','-e',code],cwd=ROOT,text=True)
         # The removable trial is tested separately; every approved entry stays exact.
-        self.assertEqual([i for i in json.loads(current) if i['id']!='hair-trial-braided-curls'],data['hair_items_before'])
+        self.assertEqual([i for i in json.loads(current) if i['id'] not in ['hair-trial-braided-curls', 'hair-f5-pixie', 'hair-f5-jaw-bob', 'hair-f5-long-waves', 'hair-f5-high-ponytail', 'hair-f5-braided-updo']],data['hair_items_before'])
 
 
 class FemaleFacesBrowserTests(unittest.TestCase):
@@ -142,7 +142,7 @@ class FemaleFacesBrowserTests(unittest.TestCase):
         self.p.evaluate('setGender("female");setPaperDollView("combat");openCustomization();selectWardrobeSlot("hair")')
         protected=self.p.evaluate('JSON.stringify({stats,inventory,equippedGear})')
         hairs=self.p.evaluate('wardrobeVisibleItems().map(i=>i.id)')
-        self.assertEqual(len(hairs),8+int('hair-trial-braided-curls' in hairs))
+        self.assertEqual(len(hairs),8+int('hair-trial-braided-curls' in hairs)+5)
         count=0
         for e in manifest()['files']:
             e=next(x for x in json.loads((ROOT/'review/female-head-standard/manifest.json').read_text())['heads'] if x['id']==e['id'])

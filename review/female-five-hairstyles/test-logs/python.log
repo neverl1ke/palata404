@@ -1,0 +1,10 @@
+test_all_active_female_heads_share_measured_registration (test_female_five_hairstyles.FiveFemaleHairstyleTests.test_all_active_female_heads_share_measured_registration) ... ok
+test_browser_evidence_exercises_every_face_style_and_current_bytes (test_female_five_hairstyles.FiveFemaleHairstyleTests.test_browser_evidence_exercises_every_face_style_and_current_bytes) ... ok
+test_existing_catalog_renderer_and_art_preserved (test_female_five_hairstyles.FiveFemaleHairstyleTests.test_existing_catalog_renderer_and_art_preserved) ... ok
+test_five_exact_female_only_independently_registered_entries (test_female_five_hairstyles.FiveFemaleHairstyleTests.test_five_exact_female_only_independently_registered_entries) ... ok
+test_full_canvas_safe_edges_alpha_and_open_central_face (test_female_five_hairstyles.FiveFemaleHairstyleTests.test_full_canvas_safe_edges_alpha_and_open_central_face) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.672s
+
+OK

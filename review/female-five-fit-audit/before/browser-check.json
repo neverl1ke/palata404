@@ -1,0 +1,447 @@
+{
+  "browser": "Chromium 151.0.7922.34",
+  "entry": "index.html",
+  "faces": [
+    {
+      "id": null,
+      "name": "Базове обличчя"
+    },
+    {
+      "id": "face-asian",
+      "name": "Азійський тип обличчя"
+    },
+    {
+      "id": "face-young",
+      "name": "Молоде обличчя"
+    },
+    {
+      "id": "face-exhausted",
+      "name": "Виснажене обличчя"
+    },
+    {
+      "id": "face-elder",
+      "name": "Старше обличчя"
+    },
+    {
+      "id": "face-alternative",
+      "name": "Нове обличчя"
+    },
+    {
+      "id": "face-ginger-soft",
+      "name": "Світле ніжне обличчя"
+    },
+    {
+      "id": "face-goth-septum",
+      "name": "Готичне обличчя із септумом"
+    },
+    {
+      "id": "face-goth-black-lips",
+      "name": "Готичне обличчя з чорними губами"
+    },
+    {
+      "id": "face-female-new-defined-brows",
+      "name": "Чіткі брови"
+    },
+    {
+      "id": "face-female-new-blue-gaze",
+      "name": "Блакитний погляд"
+    },
+    {
+      "id": "face-female-new-freckled",
+      "name": "Веснянки"
+    },
+    {
+      "id": "face-female-new-mature",
+      "name": "Зріле обличчя"
+    },
+    {
+      "id": "face-female-new-light-eyes",
+      "name": "Світлі очі"
+    },
+    {
+      "id": "face-female-new-pierced",
+      "name": "Обличчя з пірсингом"
+    },
+    {
+      "id": "face-female-new-soft-gaze",
+      "name": "М’який погляд"
+    },
+    {
+      "id": "face-female-new-almond-eyes",
+      "name": "Мигдалеподібні очі"
+    }
+  ],
+  "combinations": [
+    {
+      "hair": "hair-f5-pixie",
+      "face": null
+    },
+    {
+      "hair": "hair-f5-pixie",
+      "face": "face-asian"
+    },
+    {
+      "hair": "hair-f5-pixie",
+      "face": "face-young"
+    },
+    {
+      "hair": "hair-f5-pixie",
+      "face": "face-exhausted"
+    },
+    {
+      "hair": "hair-f5-pixie",
+      "face": "face-elder"
+    },
+    {
+      "hair": "hair-f5-pixie",
+      "face": "face-alternative"
+    },
+    {
+      "hair": "hair-f5-pixie",
+      "face": "face-ginger-soft"
+    },
+    {
+      "hair": "hair-f5-pixie",
+      "face": "face-goth-septum"
+    },
+    {
+      "hair": "hair-f5-pixie",
+      "face": "face-goth-black-lips"
+    },
+    {
+      "hair": "hair-f5-pixie",
+      "face": "face-female-new-defined-brows"
+    },
+    {
+      "hair": "hair-f5-pixie",
+      "face": "face-female-new-blue-gaze"
+    },
+    {
+      "hair": "hair-f5-pixie",
+      "face": "face-female-new-freckled"
+    },
+    {
+      "hair": "hair-f5-pixie",
+      "face": "face-female-new-mature"
+    },
+    {
+      "hair": "hair-f5-pixie",
+      "face": "face-female-new-light-eyes"
+    },
+    {
+      "hair": "hair-f5-pixie",
+      "face": "face-female-new-pierced"
+    },
+    {
+      "hair": "hair-f5-pixie",
+      "face": "face-female-new-soft-gaze"
+    },
+    {
+      "hair": "hair-f5-pixie",
+      "face": "face-female-new-almond-eyes"
+    },
+    {
+      "hair": "hair-f5-jaw-bob",
+      "face": null
+    },
+    {
+      "hair": "hair-f5-jaw-bob",
+      "face": "face-asian"
+    },
+    {
+      "hair": "hair-f5-jaw-bob",
+      "face": "face-young"
+    },
+    {
+      "hair": "hair-f5-jaw-bob",
+      "face": "face-exhausted"
+    },
+    {
+      "hair": "hair-f5-jaw-bob",
+      "face": "face-elder"
+    },
+    {
+      "hair": "hair-f5-jaw-bob",
+      "face": "face-alternative"
+    },
+    {
+      "hair": "hair-f5-jaw-bob",
+      "face": "face-ginger-soft"
+    },
+    {
+      "hair": "hair-f5-jaw-bob",
+      "face": "face-goth-septum"
+    },
+    {
+      "hair": "hair-f5-jaw-bob",
+      "face": "face-goth-black-lips"
+    },
+    {
+      "hair": "hair-f5-jaw-bob",
+      "face": "face-female-new-defined-brows"
+    },
+    {
+      "hair": "hair-f5-jaw-bob",
+      "face": "face-female-new-blue-gaze"
+    },
+    {
+      "hair": "hair-f5-jaw-bob",
+      "face": "face-female-new-freckled"
+    },
+    {
+      "hair": "hair-f5-jaw-bob",
+      "face": "face-female-new-mature"
+    },
+    {
+      "hair": "hair-f5-jaw-bob",
+      "face": "face-female-new-light-eyes"
+    },
+    {
+      "hair": "hair-f5-jaw-bob",
+      "face": "face-female-new-pierced"
+    },
+    {
+      "hair": "hair-f5-jaw-bob",
+      "face": "face-female-new-soft-gaze"
+    },
+    {
+      "hair": "hair-f5-jaw-bob",
+      "face": "face-female-new-almond-eyes"
+    },
+    {
+      "hair": "hair-f5-long-waves",
+      "face": null
+    },
+    {
+      "hair": "hair-f5-long-waves",
+      "face": "face-asian"
+    },
+    {
+      "hair": "hair-f5-long-waves",
+      "face": "face-young"
+    },
+    {
+      "hair": "hair-f5-long-waves",
+      "face": "face-exhausted"
+    },
+    {
+      "hair": "hair-f5-long-waves",
+      "face": "face-elder"
+    },
+    {
+      "hair": "hair-f5-long-waves",
+      "face": "face-alternative"
+    },
+    {
+      "hair": "hair-f5-long-waves",
+      "face": "face-ginger-soft"
+    },
+    {
+      "hair": "hair-f5-long-waves",
+      "face": "face-goth-septum"
+    },
+    {
+      "hair": "hair-f5-long-waves",
+      "face": "face-goth-black-lips"
+    },
+    {
+      "hair": "hair-f5-long-waves",
+      "face": "face-female-new-defined-brows"
+    },
+    {
+      "hair": "hair-f5-long-waves",
+      "face": "face-female-new-blue-gaze"
+    },
+    {
+      "hair": "hair-f5-long-waves",
+      "face": "face-female-new-freckled"
+    },
+    {
+      "hair": "hair-f5-long-waves",
+      "face": "face-female-new-mature"
+    },
+    {
+      "hair": "hair-f5-long-waves",
+      "face": "face-female-new-light-eyes"
+    },
+    {
+      "hair": "hair-f5-long-waves",
+      "face": "face-female-new-pierced"
+    },
+    {
+      "hair": "hair-f5-long-waves",
+      "face": "face-female-new-soft-gaze"
+    },
+    {
+      "hair": "hair-f5-long-waves",
+      "face": "face-female-new-almond-eyes"
+    },
+    {
+      "hair": "hair-f5-high-ponytail",
+      "face": null
+    },
+    {
+      "hair": "hair-f5-high-ponytail",
+      "face": "face-asian"
+    },
+    {
+      "hair": "hair-f5-high-ponytail",
+      "face": "face-young"
+    },
+    {
+      "hair": "hair-f5-high-ponytail",
+      "face": "face-exhausted"
+    },
+    {
+      "hair": "hair-f5-high-ponytail",
+      "face": "face-elder"
+    },
+    {
+      "hair": "hair-f5-high-ponytail",
+      "face": "face-alternative"
+    },
+    {
+      "hair": "hair-f5-high-ponytail",
+      "face": "face-ginger-soft"
+    },
+    {
+      "hair": "hair-f5-high-ponytail",
+      "face": "face-goth-septum"
+    },
+    {
+      "hair": "hair-f5-high-ponytail",
+      "face": "face-goth-black-lips"
+    },
+    {
+      "hair": "hair-f5-high-ponytail",
+      "face": "face-female-new-defined-brows"
+    },
+    {
+      "hair": "hair-f5-high-ponytail",
+      "face": "face-female-new-blue-gaze"
+    },
+    {
+      "hair": "hair-f5-high-ponytail",
+      "face": "face-female-new-freckled"
+    },
+    {
+      "hair": "hair-f5-high-ponytail",
+      "face": "face-female-new-mature"
+    },
+    {
+      "hair": "hair-f5-high-ponytail",
+      "face": "face-female-new-light-eyes"
+    },
+    {
+      "hair": "hair-f5-high-ponytail",
+      "face": "face-female-new-pierced"
+    },
+    {
+      "hair": "hair-f5-high-ponytail",
+      "face": "face-female-new-soft-gaze"
+    },
+    {
+      "hair": "hair-f5-high-ponytail",
+      "face": "face-female-new-almond-eyes"
+    },
+    {
+      "hair": "hair-f5-braided-updo",
+      "face": null
+    },
+    {
+      "hair": "hair-f5-braided-updo",
+      "face": "face-asian"
+    },
+    {
+      "hair": "hair-f5-braided-updo",
+      "face": "face-young"
+    },
+    {
+      "hair": "hair-f5-braided-updo",
+      "face": "face-exhausted"
+    },
+    {
+      "hair": "hair-f5-braided-updo",
+      "face": "face-elder"
+    },
+    {
+      "hair": "hair-f5-braided-updo",
+      "face": "face-alternative"
+    },
+    {
+      "hair": "hair-f5-braided-updo",
+      "face": "face-ginger-soft"
+    },
+    {
+      "hair": "hair-f5-braided-updo",
+      "face": "face-goth-septum"
+    },
+    {
+      "hair": "hair-f5-braided-updo",
+      "face": "face-goth-black-lips"
+    },
+    {
+      "hair": "hair-f5-braided-updo",
+      "face": "face-female-new-defined-brows"
+    },
+    {
+      "hair": "hair-f5-braided-updo",
+      "face": "face-female-new-blue-gaze"
+    },
+    {
+      "hair": "hair-f5-braided-updo",
+      "face": "face-female-new-freckled"
+    },
+    {
+      "hair": "hair-f5-braided-updo",
+      "face": "face-female-new-mature"
+    },
+    {
+      "hair": "hair-f5-braided-updo",
+      "face": "face-female-new-light-eyes"
+    },
+    {
+      "hair": "hair-f5-braided-updo",
+      "face": "face-female-new-pierced"
+    },
+    {
+      "hair": "hair-f5-braided-updo",
+      "face": "face-female-new-soft-gaze"
+    },
+    {
+      "hair": "hair-f5-braided-updo",
+      "face": "face-female-new-almond-eyes"
+    }
+  ],
+  "combination_count": 85,
+  "palette": [
+    "original",
+    "black",
+    "white"
+  ],
+  "backgrounds": [
+    "light",
+    "gray",
+    "black",
+    "green"
+  ],
+  "ui_selection": true,
+  "reload_each_style": true,
+  "patient_trip_independent": true,
+  "male_exclusion": true,
+  "unequip": true,
+  "protected_state_unchanged": true,
+  "mobile_emulation": [
+    320,
+    390
+  ],
+  "js_errors": [],
+  "http_errors": [],
+  "runtime_sha256": {
+    "assets/wardrobe/hair/female-five/pixie.png": "09ef771a40d523352b8b299a0dbec688175c9ccbaa73b95ab08c80f4b5798eda",
+    "assets/wardrobe/hair/female-five/jaw-bob.png": "43462409eabb0d6d8e9cb1ed5f95f0aee932fdce7f7933e925571f712accc816",
+    "assets/wardrobe/hair/female-five/long-waves.png": "57d23806d4174e57101b59ab0a68d865ee89d43a2621f470e7d16e89e8ee1d34",
+    "assets/wardrobe/hair/female-five/high-ponytail.png": "6861cfa03005791ff8147aaac28cd2475ce54fdb761b169b0363a39bbfaf2a5c",
+    "assets/wardrobe/hair/female-five/braided-updo.png": "f40e455afde22ed1d871a7bd7fcad4e734bf8c2f8b63455b617f8a1e64dedf10"
+  }
+}

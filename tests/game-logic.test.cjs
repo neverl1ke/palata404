@@ -1141,7 +1141,7 @@ test('approved hair remains shared appearance with eight choices, gender-fitted 
     const g=game();
     assert.equal(g.run('paperDollState.appearance.hair'),'hair-none');
     assert.equal(g.run('PAPER_DOLL_SLOTS.hair.label'),'Зачіски');
-    assert.equal(g.run('PAPER_DOLL_ITEMS.filter(item=>item.slot==="hair"&&item.id!=="hair-trial-braided-curls").length'),8);
+    assert.equal(g.run('PAPER_DOLL_ITEMS.filter(item=>item.slot==="hair"&&item.id!=="hair-trial-braided-curls"&&![\"hair-f5-pixie\", \"hair-f5-jaw-bob\", \"hair-f5-long-waves\", \"hair-f5-high-ponytail\", \"hair-f5-braided-updo\"].includes(item.id)).length'),8);
     assert.equal(g.run('wardrobeImageStatus(selectedPaperDollItem("hair")).state'),'ready');
     const before=g.run('JSON.stringify({stats,inventory,equippedGear,gameProgress,patient:paperDollState.patientLoadout,combat:paperDollState.combatLoadout})');
     for(const id of ['hair-messy','hair-bob','hair-double-buns','hair-classic-short','hair-textured-short','hair-shoulder-length']) {
@@ -1612,3 +1612,26 @@ test('trial braided curls stay female-only, use the full frame, persist and have
     assert.equal(g.run('selectedPaperDollItem("hair").id'),'hair-none');
     assert.equal(g.elements.get('layer-hair').getAttribute('src'),null);
 });
+
+for (const key of ['pixie','jaw-bob','long-waves','high-ponytail','braided-updo']) {
+    test(`new female ${key}: catalog, shared appearance, reload and individual removal`, () => {
+        const g=game(),id='hair-f5-'+key;
+        const before=g.run('JSON.stringify({stats,inventory,equippedGear,gameProgress})');
+        assert.equal(g.run(`equipPaperDollItem('hair','${id}')`),false);
+        g.run('setGender("female");equipPaperDollItem("face","face-young")');
+        assert.equal(g.run(`equipPaperDollItem('hair','${id}')`),true);
+        assert.equal(g.run('JSON.stringify(selectedPaperDollItem("hair").placementByGender.female)'),JSON.stringify({x:0,y:0,width:941,height:1672}));
+        assert.equal(g.run('paperDollState.appearance.hairColor'),'original');
+        assert.equal(g.elements.get('layer-hair').style.zIndex,'9');
+        g.run('setHairColor("black");setPaperDollView("patient");setPaperDollView("combat")');
+        const reload=game(Object.fromEntries(g.storage));
+        assert.equal(reload.run('paperDollState.appearance.hair'),id);
+        assert.equal(reload.run('paperDollState.appearance.hairColor'),'black');
+        assert.equal(reload.run('paperDollState.appearance.face'),'face-young');
+        assert.equal(g.run('JSON.stringify({stats,inventory,equippedGear,gameProgress})'),before);
+        g.run(`PAPER_DOLL_ITEMS.splice(PAPER_DOLL_ITEMS.findIndex(i=>i.id==='${id}'),1);renderPaperDoll()`);
+        assert.equal(g.run('selectedPaperDollItem("hair").id'),'hair-none');
+        assert.equal(g.elements.get('layer-hair').getAttribute('src'),null);
+        assert.equal(g.run('PAPER_DOLL_ITEMS.filter(i=>i.id.startsWith("hair-f5-")).length'),4);
+    });
+}

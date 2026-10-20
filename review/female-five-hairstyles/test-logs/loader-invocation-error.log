@@ -1,0 +1,33 @@
+test_project_audit (unittest.loader._FailedTest.test_project_audit) ... ERROR
+test_paper_doll_audit (unittest.loader._FailedTest.test_paper_doll_audit) ... ERROR
+
+======================================================================
+ERROR: test_project_audit (unittest.loader._FailedTest.test_project_audit)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_project_audit
+Traceback (most recent call last):
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/loader.py", line 137, in loadTestsFromName
+    module = __import__(module_name)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/palata404/tests/test_project_audit.py", line 4, in <module>
+    import tests.test_game as support
+ModuleNotFoundError: No module named 'tests'
+
+
+======================================================================
+ERROR: test_paper_doll_audit (unittest.loader._FailedTest.test_paper_doll_audit)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_paper_doll_audit
+Traceback (most recent call last):
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/loader.py", line 137, in loadTestsFromName
+    module = __import__(module_name)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/palata404/tests/test_paper_doll_audit.py", line 7, in <module>
+    import tests.test_game as game_support
+ModuleNotFoundError: No module named 'tests'
+
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.000s
+
+FAILED (errors=2)

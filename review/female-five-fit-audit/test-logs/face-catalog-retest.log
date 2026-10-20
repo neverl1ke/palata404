@@ -1,0 +1,6 @@
+test_complete_face_catalog_selects_both_genders_and_restores_every_type (tests.test_game.GameTests.test_complete_face_catalog_selects_both_genders_and_restores_every_type) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 76.086s
+
+OK

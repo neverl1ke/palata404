@@ -1,0 +1,6 @@
+{
+  "protected_files": 125,
+  "excluded_generated_test_outputs": 458,
+  "reason": "test-results is gitignored generated browser output; it changes on regression runs and is absent on clean CI. All 125 existing tracked source/resource checksums are retained unchanged.",
+  "original_snapshot": "before/protected-including-test-output.json"
+}

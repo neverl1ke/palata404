@@ -1,0 +1,10 @@
+{
+  "file": "base_male.png",
+  "origin_main_commit": "adffd71b26de3e6873534c9e78b963f236b14028",
+  "unchanged_from_origin_main": true,
+  "sha256": "b40a31b26dcf9aeea1dad02091228377330c9bb3af3a4b9669cfcc67247fc41d",
+  "remote_weak_alpha_pixels": 4234,
+  "noise_mask_sha256": "57fad37ebe8e62937d0ea5f10146dcc1419e81be698860b8f03a58d06a6ee410",
+  "test": "tests.test_paper_doll_audit.AuditAssetTests.test_no_remote_faint_haze_or_detached_low_alpha_specks",
+  "decision": "Preserve approved male avatar and strict test; disclose this pre-existing failure, do not relax the PNG criterion."
+}

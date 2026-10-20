@@ -1,0 +1,14 @@
+test_all_other_approved_art_and_hair_placements_are_unchanged (test_female_faces.FemaleFacesAssetTests.test_all_other_approved_art_and_hair_placements_are_unchanged) ... ok
+test_all_sources_and_final_resources_are_exact_and_versioned (test_female_faces.FemaleFacesAssetTests.test_all_sources_and_final_resources_are_exact_and_versioned) ... ok
+test_complementary_masks_have_no_old_skull_holes_or_body_changes (test_female_faces.FemaleFacesAssetTests.test_complementary_masks_have_no_old_skull_holes_or_body_changes) ... ok
+test_no_remote_alpha_noise_and_complete_head_silhouette (test_female_faces.FemaleFacesAssetTests.test_no_remote_alpha_noise_and_complete_head_silhouette) ... ok
+test_registered_approved_portrait_features_and_piercings_are_preserved (test_female_faces.FemaleFacesAssetTests.test_registered_approved_portrait_features_and_piercings_are_preserved) ... ok
+test_eight_female_choices_and_reload_preserve_each_appearance_and_loadout (test_female_faces.FemaleFacesBrowserTests.test_eight_female_choices_and_reload_preserve_each_appearance_and_loadout) ... ok
+test_female_only_faces_do_not_leak_to_male_or_bad_saved_state (test_female_faces.FemaleFacesBrowserTests.test_female_only_faces_do_not_leak_to_male_or_bad_saved_state) ... ok
+test_full_female_face_hair_matrix_has_correct_layers_and_palette (test_female_faces.FemaleFacesBrowserTests.test_full_female_face_hair_matrix_has_correct_layers_and_palette) ... ok
+test_mobile_last_face_is_selectable_and_patient_trip_outfits_survive (test_female_faces.FemaleFacesBrowserTests.test_mobile_last_face_is_selectable_and_patient_trip_outfits_survive) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 133.809s
+
+OK

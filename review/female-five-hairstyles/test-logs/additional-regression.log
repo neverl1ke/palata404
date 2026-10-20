@@ -1,0 +1,7 @@
+test_registered_paper_doll_assets_and_paths_match_case (tests.test_project_audit.GeneralAssetTests.test_registered_paper_doll_assets_and_paths_match_case) ... ok
+test_all_90_combinations_layers_backgrounds_and_reload (tests.test_paper_doll_audit.AuditBrowserTests.test_all_90_combinations_layers_backgrounds_and_reload) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 118.169s
+
+OK

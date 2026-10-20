@@ -1,0 +1,118 @@
+[
+  {
+    "key": "pixie",
+    "path": "assets/wardrobe/hair/female-five/pixie.png",
+    "before_sha256": "09ef771a40d523352b8b299a0dbec688175c9ccbaa73b95ab08c80f4b5798eda",
+    "after_sha256": "2a7a0356dd52ae15a162479e99bc19562b514d70d7bcd554ad9963815f8c5f2f",
+    "changed_pixels": 4872,
+    "resampled_weak_alpha_removed": 3,
+    "geometry": {
+      "rows": [
+        78,
+        85,
+        95,
+        105,
+        115,
+        125,
+        135,
+        145,
+        155,
+        164
+      ],
+      "left_outward_px": [
+        0,
+        0,
+        3,
+        1,
+        6,
+        9,
+        14,
+        13,
+        13,
+        13
+      ],
+      "right_outward_px": [
+        0,
+        1,
+        5,
+        6,
+        8,
+        15,
+        13,
+        16,
+        16,
+        16
+      ],
+      "fixed_central_x": [
+        438,
+        507
+      ],
+      "unchanged_crown_y_max": 78,
+      "rationale": "head row125 x399..546 vs hair x404..535; add natural temple volume while keeping crown and central fringe fixed"
+    }
+  },
+  {
+    "key": "jaw-bob",
+    "path": "assets/wardrobe/hair/female-five/jaw-bob.png",
+    "before_sha256": "43462409eabb0d6d8e9cb1ed5f95f0aee932fdce7f7933e925571f712accc816",
+    "after_sha256": "43462409eabb0d6d8e9cb1ed5f95f0aee932fdce7f7933e925571f712accc816",
+    "changed_pixels": 0,
+    "resampled_weak_alpha_removed": 0,
+    "geometry": {}
+  },
+  {
+    "key": "long-waves",
+    "path": "assets/wardrobe/hair/female-five/long-waves.png",
+    "before_sha256": "57d23806d4174e57101b59ab0a68d865ee89d43a2621f470e7d16e89e8ee1d34",
+    "after_sha256": "71773bf120cd23dabbf08044412326d5dbb4e0a12f765da736d975793e3e28d2",
+    "changed_pixels": 3522,
+    "resampled_weak_alpha_removed": 2,
+    "geometry": {
+      "rows": [
+        110,
+        120,
+        130,
+        135,
+        142,
+        148,
+        155,
+        170,
+        185
+      ],
+      "left_outward_px": [
+        0,
+        4,
+        12,
+        16,
+        17,
+        15,
+        9,
+        3,
+        0
+      ],
+      "affected_x": [
+        400,
+        479
+      ],
+      "rationale": "original alpha151 at left iris (445,142); move crossing foreground strand outward while retaining lower tresses and neck framing"
+    }
+  },
+  {
+    "key": "high-ponytail",
+    "path": "assets/wardrobe/hair/female-five/high-ponytail.png",
+    "before_sha256": "6861cfa03005791ff8147aaac28cd2475ce54fdb761b169b0363a39bbfaf2a5c",
+    "after_sha256": "6861cfa03005791ff8147aaac28cd2475ce54fdb761b169b0363a39bbfaf2a5c",
+    "changed_pixels": 0,
+    "resampled_weak_alpha_removed": 0,
+    "geometry": {}
+  },
+  {
+    "key": "braided-updo",
+    "path": "assets/wardrobe/hair/female-five/braided-updo.png",
+    "before_sha256": "f40e455afde22ed1d871a7bd7fcad4e734bf8c2f8b63455b617f8a1e64dedf10",
+    "after_sha256": "f40e455afde22ed1d871a7bd7fcad4e734bf8c2f8b63455b617f8a1e64dedf10",
+    "changed_pixels": 0,
+    "resampled_weak_alpha_removed": 0,
+    "geometry": {}
+  }
+]

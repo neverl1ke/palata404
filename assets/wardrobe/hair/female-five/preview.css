@@ -1,0 +1,5 @@
+/* Portrait crop in cards only. Equipped sprites retain their full 941x1672 canvas. */
+[data-wardrobe-card^="hair-f5-"] .wardrobe-item-image { overflow: hidden; }
+[data-wardrobe-card^="hair-f5-"] .wardrobe-item-image > img:not(.game-icon) {
+    width: 400%; height: 400%; max-width: none; max-height: none; left: -150%; top: 0;
+}

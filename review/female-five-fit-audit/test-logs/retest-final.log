@@ -1,0 +1,26 @@
+test_every_palette_color_preserves_alpha_and_is_exercised_on_every_head (tests.test_female_five_hairstyles.FemaleFitAuditTests.test_every_palette_color_preserves_alpha_and_is_exercised_on_every_head) ... ok
+test_long_waves_clear_iris_without_touching_lower_hair_or_right_side (tests.test_female_five_hairstyles.FemaleFitAuditTests.test_long_waves_clear_iris_without_touching_lower_hair_or_right_side) ... ok
+test_pixie_temples_cover_skull_landmarks_without_moving_crown_or_center (tests.test_female_five_hairstyles.FemaleFitAuditTests.test_pixie_temples_cover_skull_landmarks_without_moving_crown_or_center) ... ok
+test_three_styles_without_confirmed_deformation_stay_byte_identical (tests.test_female_five_hairstyles.FemaleFitAuditTests.test_three_styles_without_confirmed_deformation_stay_byte_identical) ... ok
+test_all_active_female_heads_share_measured_registration (tests.test_female_five_hairstyles.FiveFemaleHairstyleTests.test_all_active_female_heads_share_measured_registration) ... ok
+test_browser_evidence_exercises_every_face_style_and_current_bytes (tests.test_female_five_hairstyles.FiveFemaleHairstyleTests.test_browser_evidence_exercises_every_face_style_and_current_bytes) ... ok
+test_existing_catalog_renderer_and_art_preserved (tests.test_female_five_hairstyles.FiveFemaleHairstyleTests.test_existing_catalog_renderer_and_art_preserved) ... ok
+test_five_exact_female_only_independently_registered_entries (tests.test_female_five_hairstyles.FiveFemaleHairstyleTests.test_five_exact_female_only_independently_registered_entries) ... ok
+test_full_canvas_safe_edges_alpha_and_open_central_face (tests.test_female_five_hairstyles.FiveFemaleHairstyleTests.test_full_canvas_safe_edges_alpha_and_open_central_face) ... ok
+test_hair_palette_colors_alpha_persistence_races_and_responsive_ui (tests.test_game.GameTests.test_hair_palette_colors_alpha_persistence_races_and_responsive_ui) ... ok
+test_no_remote_faint_haze_or_detached_low_alpha_specks (tests.test_paper_doll_audit.AuditAssetTests.test_no_remote_faint_haze_or_detached_low_alpha_specks) ... FAIL
+test_male_ear_cuts_are_local_and_approved_placements_and_rear_stay (tests.test_paper_doll_targeted.TargetedAssetTests.test_male_ear_cuts_are_local_and_approved_placements_and_rear_stay) ... ok
+
+======================================================================
+FAIL: test_no_remote_faint_haze_or_detached_low_alpha_specks (tests.test_paper_doll_audit.AuditAssetTests.test_no_remote_faint_haze_or_detached_low_alpha_specks)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/palata404/tests/test_paper_doll_audit.py", line 40, in test_no_remote_faint_haze_or_detached_low_alpha_specks
+    d=ndi.distance_transform_edt(~(roi>=32));self.assertEqual(int(((roi>0)&(roi<=16)&(d>4)).sum()),0,rel)
+                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 4234 != 0 : base_male.png
+
+----------------------------------------------------------------------
+Ran 12 tests in 33.414s
+
+FAILED (failures=1)
