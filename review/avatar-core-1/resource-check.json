@@ -1,0 +1,7 @@
+{
+  "command": "python tools/audit-project.py --check",
+  "exit_code": 0,
+  "tracked_files_at_check": 7336,
+  "missing_static_references": [],
+  "note": "Static audit; runtime evidence is separate in browser-check.json"
+}

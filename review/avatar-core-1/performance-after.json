@@ -1,0 +1,42 @@
+[
+  {
+    "frames": 100,
+    "meanMs": 39.82800000000745,
+    "p95Ms": 62.600000001490116,
+    "display": {
+      "dpr": 1,
+      "scale": 0.5562068278427205,
+      "backingWidth": 523,
+      "backingHeight": 930
+    },
+    "skinBatching": true,
+    "gender": "male",
+    "pose": "rifle",
+    "viewport": [
+      1440,
+      1100
+    ],
+    "browser": "Chromium 151.0.7922.34",
+    "note": "Headless shared execution host; not a physical mobile benchmark"
+  },
+  {
+    "frames": 100,
+    "meanMs": 19.535,
+    "p95Ms": 25.900000002235174,
+    "display": {
+      "dpr": 1,
+      "scale": 0.5562068278427205,
+      "backingWidth": 523,
+      "backingHeight": 930
+    },
+    "skinBatching": true,
+    "gender": "female",
+    "pose": "rifle",
+    "viewport": [
+      1440,
+      1100
+    ],
+    "browser": "Chromium 151.0.7922.34",
+    "note": "Headless shared execution host; not a physical mobile benchmark"
+  }
+]

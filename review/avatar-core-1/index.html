@@ -1,0 +1,302 @@
+<!doctype html><html lang="uk"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Палата 404 · Avatar Core 1.0 · перегляд</title><style>body{background:#151c1d;color:#d9d6ca;font:17px/1.55 system-ui;max-width:1500px;margin:auto;padding:24px}a{color:#9dd7d9}img{display:block;width:100%;height:auto;margin:16px 0;background:#d3cfc6}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}section{border-top:1px solid #59625b;margin-top:32px;padding-top:20px}.notice{padding:16px;border:1px solid #ae8763;background:#352e26}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#222c2c;padding:16px}h1{font:36px Georgia,serif}@media(max-width:600px){body{padding:14px}.grid{grid-template-columns:minmax(0,1fr)}h1{font-size:28px}}</style><h1>Avatar Core 1.0 · чоловічий і жіночий риги</h1><p class="notice">Механічний прототип для перегляду. Не готовий до гри: на сильних згинах рук залишаються кутові фрагменти та різкі текстурні стики; пальці не утворюють природного хвату. У main не інтегровано.</p><p>Кадри реального Avatar Lab, вихідне полотно 941×1672. Оригінальні PNG не перезаписані, надані приклади поз не використовуються як ігрові зображення. Зброя — окремі схематичні тестові ресурси.</p><p><a href="../../avatar-lab/">Відкрити Avatar Lab на локальному сервері</a> · <a href="README.md">Технічний звіт</a></p><section><h2>Фактичні результати перевірок</h2><ul><li>JavaScript: 12/12 тестів нового рушія і 95/95 чинних тестів гри пройшли (107/107).</li><li>Повний Python/Chromium-прогін: 176/177 успішно, 1 падіння, 828,797 с. Нові 17 тестів Avatar Core пройшли.</li><li>Єдине падіння: 4234 слабкопрозорі пікселі в оригінальному base_male.png. Окремий запуск у незміненому main відтворив проблему.</li><li>200 вихідних runtime/art файлів залишилися незмінними; дев’ять сегментів відновлюють кожен видимий піксель джерела.</li><li>40 реальних контрольних зображень. Автономний Lab перевірено в ізольованій папці: немає мережевих запитів, сусідніх файлів або JavaScript-помилок.</li><li>Перевірки мобільних розмірів — емуляція Chromium, не фізичні пристрої. Стабільні60FPS і художнє приймання не підтверджені.</li><li>Main, deployment і збереження гравців не змінювалися. GitHub Actions не запускався: push не виконувався.</li></ul><p>Кутові фрагменти рук і неправильний хват залишаються відкритими дефектами, незалежно від результатів автоматичних тестів.</p></section><section><h2>01 · Спокій</h2><div class="grid"><img src="male-idle.png" alt="Чоловік · 01 · Спокій"><img src="female-idle.png" alt="Жінка · 01 · Спокій"></div></section><section><h2>02 · Ніж</h2><div class="grid"><img src="male-melee.png" alt="Чоловік · 02 · Ніж"><img src="female-melee.png" alt="Жінка · 02 · Ніж"></div></section><section><h2>03 · Пістолет · поза з референсу</h2><div class="grid"><img src="male-pistol.png" alt="Чоловік · 03 · Пістолет · поза з референсу"><img src="female-pistol.png" alt="Жінка · 03 · Пістолет · поза з референсу"></div></section><section><h2>04 · Автомат</h2><div class="grid"><img src="male-rifle.png" alt="Чоловік · 04 · Автомат"><img src="female-rifle.png" alt="Жінка · 04 · Автомат"></div></section><section><h2>Додаткова підтримка пістолета другою рукою</h2><div class="grid"><img src="male-pistol-supported.png" alt="Чоловік · Додаткова підтримка пістолета другою рукою"><img src="female-pistol-supported.png" alt="Жінка · Додаткова підтримка пістолета другою рукою"></div></section><section><h2>Дихання · 4000 мс · 25 справжніх кадрів</h2><div class="grid"><img src="male-breathing.webp" alt="Чоловік · Дихання · 4000 мс · 25 справжніх кадрів"><img src="female-breathing.webp" alt="Жінка · Дихання · 4000 мс · 25 справжніх кадрів"></div></section><section><h2>Скелети та точки хвату</h2><div class="grid"><img src="male-skeleton.png" alt="Чоловік · Скелети та точки хвату"><img src="female-skeleton.png" alt="Жінка · Скелети та точки хвату"></div></section><section><h2>Оригінали й модульні тіла · однаковий масштаб</h2><img src="male-original-vs-rig.webp" alt="Оригінал та риг · чоловік"><img src="female-original-vs-rig.webp" alt="Оригінал та риг · жінка"></section><section><h2>Вдих / видих</h2><p>Чоловік, потім жінка. Ступні та обличчя не зсуваються.</p><div class="grid"><img src="male-inhale.png" alt="male inhale"><img src="male-exhale.png" alt="male exhale"><img src="female-inhale.png" alt="female inhale"><img src="female-exhale.png" alt="female exhale"></div></section><section><h2>Плечі · 300%</h2><p>right — анатомічна права рука (зліва на зображенні). Не видаємо ці крупні плани за затверджений арт.</p><div class="grid"><img src="male-right-shoulder-300.webp" alt="male right shoulder"><img src="male-left-shoulder-300.webp" alt="male left shoulder"><img src="female-right-shoulder-300.webp" alt="female right shoulder"><img src="female-left-shoulder-300.webp" alt="female left shoulder"></div></section><section><h2>Лікті · 300%</h2><p>right — анатомічна права рука (зліва на зображенні). Не видаємо ці крупні плани за затверджений арт.</p><div class="grid"><img src="male-right-elbow-300.webp" alt="male right elbow"><img src="male-left-elbow-300.webp" alt="male left elbow"><img src="female-right-elbow-300.webp" alt="female right elbow"><img src="female-left-elbow-300.webp" alt="female left elbow"></div></section><section><h2>Кисті та зброя · 300%</h2><p>right — анатомічна права рука (зліва на зображенні). Не видаємо ці крупні плани за затверджений арт.</p><div class="grid"><img src="male-right-grip-300.webp" alt="male right grip"><img src="male-left-grip-300.webp" alt="male left grip"><img src="female-right-grip-300.webp" alt="female right grip"><img src="female-left-grip-300.webp" alt="female left grip"></div></section><section><h2>Тестові накладки через Equipment Binding API</h2><div class="grid"><img src="male-test-sleeves.png" alt="Чоловік · Тестові накладки через Equipment Binding API"><img src="female-test-sleeves.png" alt="Жінка · Тестові накладки через Equipment Binding API"></div></section><section><h2>Чинні обличчя · 9 чоловічих і 17 жіночих</h2><div class="grid"><img src="male-all-current-faces.webp" alt="Чоловік · Чинні обличчя · 9 чоловічих і 17 жіночих"><img src="female-all-current-faces.webp" alt="Жінка · Чинні обличчя · 9 чоловічих і 17 жіночих"></div></section><section><h2>Інтерфейс лабораторії</h2><img src="lab-desktop.png" alt="Десктопний Avatar Lab"><div class="grid"><img src="lab-mobile-320.png" alt="320 px · емуляція"><img src="lab-mobile-390.png" alt="390 px · емуляція"><img src="lab-mobile-768.png" alt="768 px · емуляція"></div></section><section id="parameters"><h2>Виміряні координати двох ригів</h2><pre>{
+  &quot;male&quot;: {
+    &quot;landmarks&quot;: {
+      &quot;head&quot;: [
+        474,
+        150
+      ],
+      &quot;neck&quot;: [
+        474,
+        285
+      ],
+      &quot;chest&quot;: [
+        474,
+        480
+      ],
+      &quot;pelvis&quot;: [
+        474,
+        800
+      ]
+    },
+    &quot;arms&quot;: {
+      &quot;right&quot;: {
+        &quot;shoulder&quot;: [
+          287,
+          382
+        ],
+        &quot;elbow&quot;: [
+          250,
+          615
+        ],
+        &quot;wrist&quot;: [
+          207,
+          847
+        ],
+        &quot;grip&quot;: [
+          217,
+          920
+        ],
+        &quot;inner&quot;: [
+          [
+            283,
+            311
+          ],
+          [
+            321,
+            333
+          ],
+          [
+            334,
+            369
+          ],
+          [
+            329,
+            409
+          ],
+          [
+            318,
+            443
+          ],
+          [
+            329,
+            502
+          ],
+          [
+            333,
+            550
+          ],
+          [
+            331,
+            610
+          ],
+          [
+            310,
+            730
+          ],
+          [
+            282,
+            850
+          ],
+          [
+            283,
+            1030
+          ]
+        ]
+      },
+      &quot;left&quot;: {
+        &quot;shoulder&quot;: [
+          657,
+          381
+        ],
+        &quot;elbow&quot;: [
+          697,
+          615
+        ],
+        &quot;wrist&quot;: [
+          747,
+          847
+        ],
+        &quot;grip&quot;: [
+          738,
+          920
+        ],
+        &quot;inner&quot;: [
+          [
+            662,
+            311
+          ],
+          [
+            624,
+            333
+          ],
+          [
+            612,
+            370
+          ],
+          [
+            618,
+            411
+          ],
+          [
+            629,
+            445
+          ],
+          [
+            618,
+            502
+          ],
+          [
+            612,
+            551
+          ],
+          [
+            614,
+            610
+          ],
+          [
+            635,
+            730
+          ],
+          [
+            663,
+            850
+          ],
+          [
+            662,
+            1030
+          ]
+        ]
+      }
+    }
+  },
+  &quot;female&quot;: {
+    &quot;landmarks&quot;: {
+      &quot;head&quot;: [
+        472.5,
+        144
+      ],
+      &quot;neck&quot;: [
+        472.5,
+        280
+      ],
+      &quot;chest&quot;: [
+        472.5,
+        465
+      ],
+      &quot;pelvis&quot;: [
+        472.5,
+        795
+      ]
+    },
+    &quot;arms&quot;: {
+      &quot;right&quot;: {
+        &quot;shoulder&quot;: [
+          306,
+          367
+        ],
+        &quot;elbow&quot;: [
+          278,
+          584
+        ],
+        &quot;wrist&quot;: [
+          215,
+          825
+        ],
+        &quot;grip&quot;: [
+          222,
+          890
+        ],
+        &quot;inner&quot;: [
+          [
+            318,
+            300
+          ],
+          [
+            333,
+            324
+          ],
+          [
+            342,
+            355
+          ],
+          [
+            344,
+            400
+          ],
+          [
+            345,
+            440
+          ],
+          [
+            350,
+            477
+          ],
+          [
+            342,
+            530
+          ],
+          [
+            330,
+            600
+          ],
+          [
+            299,
+            715
+          ],
+          [
+            265,
+            820
+          ],
+          [
+            263,
+            991
+          ]
+        ]
+      },
+      &quot;left&quot;: {
+        &quot;shoulder&quot;: [
+          639,
+          368
+        ],
+        &quot;elbow&quot;: [
+          669,
+          585
+        ],
+        &quot;wrist&quot;: [
+          730,
+          825
+        ],
+        &quot;grip&quot;: [
+          724,
+          891
+        ],
+        &quot;inner&quot;: [
+          [
+            626,
+            301
+          ],
+          [
+            612,
+            325
+          ],
+          [
+            603,
+            356
+          ],
+          [
+            601,
+            400
+          ],
+          [
+            600,
+            440
+          ],
+          [
+            595,
+            477
+          ],
+          [
+            604,
+            531
+          ],
+          [
+            616,
+            601
+          ],
+          [
+            645,
+            716
+          ],
+          [
+            680,
+            820
+          ],
+          [
+            682,
+            991
+          ]
+        ]
+      }
+    }
+  }
+}</pre></section></html>

@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="uk">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <title>Палата 404 · Avatar Lab 1.0</title>
+        <link rel="stylesheet" href="lab.css" />
+    </head>
+    <body>
+        <header>
+            <span>ПАЛАТА 404 / ДОСЛІДНА СИСТЕМА</span>
+            <h1>Avatar Lab <small>1.0</small></h1>
+            <p>Два незалежні риги · одна система анімації · оригінальні PNG</p>
+        </header>
+        <main>
+            <aside>
+                <fieldset>
+                    <legend>Персонаж</legend>
+                    <div class="buttons" id="gender">
+                        <button data-gender="male" aria-pressed="true">
+                            Чоловік</button
+                        ><button data-gender="female" aria-pressed="false">
+                            Жінка
+                        </button>
+                    </div>
+                    <label
+                        >Перегляд<select id="view">
+                            <option value="rig">Модульний риг</option>
+                            <option value="original">Оригінальний PNG</option>
+                            <option value="compare">
+                                Накладка оригіналу 35%
+                            </option>
+                        </select></label
+                    ><label
+                        >Фон<select id="background">
+                            <option value="#d3cfc6">Світлий</option>
+                            <option value="#777777">Сірий</option>
+                            <option value="#101418">Чорний</option>
+                            <option value="#00ff00">Зелений</option>
+                        </select></label
+                    >
+                </fieldset>
+                <fieldset>
+                    <legend>Поза та зброя</legend>
+                    <div class="poses" id="poses">
+                        <button data-pose="idle" aria-pressed="true">
+                            01 · Спокій</button
+                        ><button data-pose="melee">02 · Холодна зброя</button
+                        ><button data-pose="pistol">03 · Пістолет</button
+                        ><button data-pose="rifle">04 · Автомат</button>
+                    </div>
+                    <label class="check"
+                        ><input type="checkbox" id="pistol-support" /> Пістолет:
+                        підтримка другою рукою</label
+                    >
+                    <p class="note">
+                        Зброя — схематичні тестові PNG. Пальці джерела
+                        розслаблені; хват потребує окремого художнього
+                        погодження.
+                    </p>
+                </fieldset>
+                <fieldset>
+                    <legend>Анімація</legend>
+                    <label class="check"
+                        ><input id="breathing" type="checkbox" checked />
+                        Дихання</label
+                    ><label
+                        >Цикл, мс <output id="cycle-value">4000</output
+                        ><input
+                            id="cycle"
+                            type="range"
+                            min="1000"
+                            max="8000"
+                            step="100"
+                            value="4000" /></label
+                    ><label
+                        >Амплітуда <output id="amplitude-value">1</output
+                        ><input
+                            id="amplitude"
+                            type="range"
+                            min="0"
+                            max="2"
+                            step="0.1"
+                            value="1" /></label
+                    ><label
+                        >Похитування зброї, px <output id="sway-value">2</output
+                        ><input
+                            id="sway"
+                            type="range"
+                            min="0"
+                            max="4"
+                            step="0.25"
+                            value="2" /></label
+                    ><label
+                        >Перехід, мс <output id="transition-value">320</output
+                        ><input
+                            id="transition"
+                            type="range"
+                            min="0"
+                            max="1000"
+                            step="10"
+                            value="320"
+                    /></label>
+                    <div class="buttons">
+                        <button id="pause">Пауза</button
+                        ><button id="step">Крок 1/60 с</button
+                        ><button id="reset">Початок циклу</button>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend>Зовнішність · без зміни сейву</legend>
+                    <label>Обличчя<select id="face"></select></label
+                    ><label>Зачіска<select id="hair"></select></label
+                    ><label>Колір<select id="color"></select></label
+                    ><button id="read-save">
+                        Зчитати зовнішність із сейву
+                    </button>
+                    <p id="save-status" class="note">
+                        Лабораторія нічого не записує в localStorage.
+                    </p>
+                </fieldset>
+                <fieldset>
+                    <legend>Налагодження та кріплення</legend>
+                    <label class="check"
+                        ><input type="checkbox" id="pivots" /> Скелет і pivot
+                        points</label
+                    ><label class="check"
+                        ><input type="checkbox" id="bounds" /> Межі
+                        сегментів</label
+                    ><label class="check"
+                        ><input type="checkbox" id="grips" /> Точки хвату</label
+                    ><label class="check"
+                        ><input type="checkbox" id="sleeves" /> Тестові рукави ·
+                        Binding API</label
+                    >
+                    <details>
+                        <summary>Видимість сегментів</summary>
+                        <div id="layers"></div>
+                    </details>
+                    <p class="note">
+                        Основний гардероб і гра не замінені. Старі суцільні
+                        рукави не можна автоматично згинати без сегментованих
+                        ресурсів.
+                    </p>
+                </fieldset>
+            </aside>
+            <section class="stage">
+                <div class="stage-top">
+                    <span id="rig-name">Завантаження…</span
+                    ><span id="metrics">—</span>
+                </div>
+                <canvas
+                    id="avatar"
+                    width="941"
+                    height="1672"
+                    aria-label="Повноростовий аватар"
+                ></canvas>
+                <p id="status" role="status">Підготовка рига…</p>
+                <details>
+                    <summary>Обмеження джерел</summary>
+                    <p>
+                        Сегменти збережені з вихідного PNG без генерації.
+                        Коригувальні диски суглобів повторно використовують
+                        видиму шкіру: вони не відновлюють приховану анатомію. На
+                        сильних згинах можливі видимі стики, а вихідні кисті не
+                        мають спеціальної пози стискання рукоятки.
+                    </p>
+                </details>
+            </section>
+        </main>
+        <script src="../paper-doll-data.js"></script>
+        <script src="../hair-color.js"></script>
+        <script src="../paper-doll.js"></script>
+        <script src="catalog-bridge.js"></script>
+        <script type="module" src="lab.mjs"></script>
+    </body>
+</html>

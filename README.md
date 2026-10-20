@@ -116,3 +116,7 @@ python tools/check-project-browser.py --output test-results/project-browser
 Інвентаризатор не видаляє файли автоматично. Історичні галереї та tools відтворення ресурсів залишаються частиною provenance проєкту.
 
 Остання правка жіночих зачісок біля вух: [галерея до/після](https://neverl1ke.github.io/palata404/review/female-ear-fit/) · [технічний звіт](review/female-ear-fit/README.md). Піксі й каре збережені; уточнено хвилі, хвіст та зібрану косу.
+
+## Експериментальний Avatar Core 1.0
+
+У гілці `feature/avatar-core-1` підготовлено окремий [Avatar Lab](avatar-lab/index.html), спільний Canvas-рушій для двох ригів та [звіт](review/avatar-core-1/README.md). Це механічний прототип з відкритими художніми питаннями кистей і суглобів; основна гра його не імпортує. [Запуск і API](docs/avatar-core.md).

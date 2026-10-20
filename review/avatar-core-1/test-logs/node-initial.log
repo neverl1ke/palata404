@@ -1,0 +1,43 @@
+✔ male rest skeleton retains shoulder/elbow/wrist/grip source registration (1.26542ms)
+✔ male four poses use fixed bone lengths, independent hand rotations and exact primary attachment (0.795729ms)
+✔ male support grip stays on the rifle through a full breathing cycle (1.147466ms)
+✔ male skin weights are bounded and final hand texture shares weapon attachment (4.938612ms)
+✔ female rest skeleton retains shoulder/elbow/wrist/grip source registration (0.150652ms)
+✔ female four poses use fixed bone lengths, independent hand rotations and exact primary attachment (0.128928ms)
+✔ female support grip stays on the rifle through a full breathing cycle (0.558424ms)
+✔ female skin weights are bounded and final hand texture shares weapon attachment (1.228615ms)
+✔ female and male coordinates are independently registered, not a reused rig (4.249875ms)
+✔ angle interpolation follows shortest rotation and endpoint continuity (0.340143ms)
+✖ unreachable/degenerate targets are finite and explicitly marked (3.328945ms)
+✔ weapon controller supports none and rejects unknown classes (2.490882ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 11
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 110.564061
+
+✖ failing tests:
+
+test at tests/avatar-core.test.mjs:15:1
+✖ unreachable/degenerate targets are finite and explicitly marked (3.328945ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+  false !== true
+
+      at TestContext.<anonymous> (file:///workspace/palata404-avatar-core/tests/avatar-core.test.mjs:15:189)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

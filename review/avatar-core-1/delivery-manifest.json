@@ -1,0 +1,894 @@
+{
+  "base_commit": "f70b7e5be63f6b85d895c6d5b259adbc30577b86",
+  "branch": "feature/avatar-core-1",
+  "production_ready": false,
+  "files": [
+    {
+      "path": ".github/workflows/checks.yml",
+      "bytes": 1338,
+      "sha256": "880f2bf5b1e87ca782e8d6521afea3d75b65e203ff6e4428999a2209f59254e2",
+      "previous_git_blob": "064829e0bc5174392e132c08a7577e389a4ad771"
+    },
+    {
+      "path": "README.md",
+      "bytes": 19200,
+      "sha256": "de72e7a4a780a0a46817e0c1a269aca91ef5e2470b2ff02c6c9fc58437f6ccfa",
+      "previous_git_blob": "3632661c0212f7f0bf9176c21123baebb97401c0"
+    },
+    {
+      "path": "avatar-core/assets/female/head.png",
+      "bytes": 73975,
+      "sha256": "2a54e2466fc4b94e4de330d6f7bf37ca190a0a0d755702efb84279cd3f30625f",
+      "previous_git_blob": null
+    },
+    {
+      "path": "avatar-core/assets/female/leftArmSkin.png",
+      "bytes": 84537,
+      "sha256": "df04f12367fdc0f14bdd7c6513b0803ad1d5c086f646ca7af26ac9c5fc52244e",
+      "previous_git_blob": null
+    },
+    {
+      "path": "avatar-core/assets/female/leftFore.png",
+      "bytes": 28923,
+      "sha256": "76e1db6ee7537352d841ebb95f1ca5f2fc040248de469bf8c4f024dc3b6a8986",
+      "previous_git_blob": null
+    },
+    {
+      "path": "avatar-core/assets/female/leftForeSleeve.png",
+      "bytes": 6661,
+      "sha256": "dfb6b0ab68d3e892b15f0e37a153bbdae9b91a36abf216195fa57de406ce65bc",
+      "previous_git_blob": null
+    },
+    {
+      "path": "avatar-core/assets/female/leftHand.png",
+      "bytes": 20040,
+      "sha256": "51952fb89e990470ef92e257982bd3fb9c91c783a57dee449521b8b6e97759fa",
+      "previous_git_blob": null
+    },
+    {
+      "path": "avatar-core/assets/female/leftHandSkin.png",
+      "bytes": 22083,
+      "sha256": "47ca55af436d6be6827f91ce50c0cf2228c1d5cb54784b7c3e869358a0255d1b",
+      "previous_git_blob": null
+    },
+    {
+      "path": "avatar-core/assets/female/leftUpper.png",
+      "bytes": 33152,
+      "sha256": "442a09535038999e217716e39f3f9da6fb8fb20274484cf11b58ea9743cee6a7",
+      "previous_git_blob": null
+    },
+    {
+      "path": "avatar-core/assets/female/leftUpperSleeve.png",
+      "bytes": 5720,
+      "sha256": "435fd148e2c843469af71d506fdebdf606f4e47d03c8d9e3576bbde85b18aca6",
+      "previous_git_blob": null
+    },
+    {
+      "path": "avatar-core/assets/female/lower.png",
+      "bytes": 361715,
+      "sha256": "f2994b53fa9f24926c3357355fcb2681e155c6fccdd9d80caeb34fdd435a0447",
+      "previous_git_blob": null
+    },
+    {
+      "path": "avatar-core/assets/female/rightArmSkin.png",
+      "bytes": 85907,
+      "sha256": "5acf056bd7f53198724333aaec95b98c3b0d930173b293e544c28b37ace83855",
+      "previous_git_blob": null
+    },
+    {
+      "path": "avatar-core/assets/female/rightFore.png",
+      "bytes": 29986,
+      "sha256": "086960883d4ca3b623acb66a592a47939ebcc5cbb41ad00b13359f354a784bb6",
+      "previous_git_blob": null
+    },
+    {
+      "path": "avatar-core/assets/female/rightForeSleeve.png",
+      "bytes": 6745,
+      "sha256": "6bbe46b6d664344ee2097dafb34ce975acd0f2c3bbaad60e5935668326c4783d",
+      "previous_git_blob": null
+    },
+    {
+      "path": "avatar-core/assets/female/rightHand.png",
+      "bytes": 20247,
+      "sha256": "bf06e7b0d254e9a7faaf98cafc0b5c2adaa2c0461b1a699b0d8f564bd2844d41",
+      "previous_git_blob": null
+    },
+    {
+      "path": "avatar-core/assets/female/rightHandSkin.png",
+      "bytes": 22600,
+      "sha256": "5379fd0df745541d89de1c9dafd4722364b2da737114b88be00b1ed4298ca537",
+      "previous_git_blob": null
+    },
+    {
+      "path": "avatar-core/assets/female/rightUpper.png",
+      "bytes": 33276,
+      "sha256": "6ba9e2b7a5f2303a9f75bbf4b3aef2a89365c2b65ed7da048a8db492b25b9a67",
+      "previous_git_blob": null
+    },
+    {
+      "path": "avatar-core/assets/female/rightUpperSleeve.png",
+      "bytes": 5646,
+      "sha256": "82fb767e78000c08d6804c555ab0efa5947ed63e175780a5632d35c2e606bee8",
+      "previous_git_blob": null
+    },
+    {
+      "path": "avatar-core/assets/female/torso.png",
+      "bytes": 194351,
+      "sha256": "6a49d91583351e5c1fce753f9c123ddf88c386ad4ad1e8c764c9300eb8d0d2ba",
+      "previous_git_blob": null
+    },
+    {
+      "path": "avatar-core/assets/male/head.png",
+      "bytes": 82899,
+      "sha256": "88006d6e7be23368d6ca8cfbdb54da1d9672eab37411530f8debdb24fc47c9d0",
+      "previous_git_blob": null
+    },
+    {
+      "path": "avatar-core/assets/male/leftArmSkin.png",
+      "bytes": 110266,
+      "sha256": "7672888bb59cfbec3cca3dcc7be824bda4390450bd9af69df05d1601949f5ab4",
+      "previous_git_blob": null
+    },
+    {
+      "path": "avatar-core/assets/male/leftFore.png",
+      "bytes": 34478,
+      "sha256": "c8dfcf69053098c81774709bcccea24c944d39cc92f8d298790cc02bab3d2723",
+      "previous_git_blob": null
+    },
+    {
+      "path": "avatar-core/assets/male/leftForeSleeve.png",
+      "bytes": 6240,
+      "sha256": "924dda85a6bb7ad5bdf28ad2a5f6c4eea1c0efbb4b635a6badf53d7856d5eeca",
+      "previous_git_blob": null
+    },
+    {
+      "path": "avatar-core/assets/male/leftHand.png",
+      "bytes": 28087,
+      "sha256": "92ead03371e9bd8b78379d57e7d3bb26d887b52b673db26c514d3c99ba5111f6",
+      "previous_git_blob": null
+    },
+    {
+      "path": "avatar-core/assets/male/leftHandSkin.png",
+      "bytes": 30943,
+      "sha256": "9dc61008165e0ef3d6d3e5149c6d7508765f3b6078a5e5cdfcc01a5c62ebcde4",
+      "previous_git_blob": null
+    },
+    {
+      "path": "avatar-core/assets/male/leftUpper.png",
+      "bytes": 43217,
+      "sha256": "36802602013630eff9a7710c32a2f930aae467d8f44d8f7c3ace82355e7fb12f",
+      "previous_git_blob": null
+    },
+    {
+      "path": "avatar-core/assets/male/leftUpperSleeve.png",
+      "bytes": 6668,
+      "sha256": "c4621b22317bc1c1f98d6775c95f9fc4314c25f7b763cac4f11b4fece11db8b8",
+      "previous_git_blob": null
+    },
+    {
+      "path": "avatar-core/assets/male/lower.png",
+      "bytes": 376735,
+      "sha256": "7e69f0a714d6a9dd55662cd0cb4bf1cdbb9fd54df2653ff308e055b9e0049917",
+      "previous_git_blob": null
+    },
+    {
+      "path": "avatar-core/assets/male/rightArmSkin.png",
+      "bytes": 107142,
+      "sha256": "55a84fbeb23719a12a071c66d96c82c6ee6037fb51229f2874ed12f3148b9dec",
+      "previous_git_blob": null
+    },
+    {
+      "path": "avatar-core/assets/male/rightFore.png",
+      "bytes": 34547,
+      "sha256": "745fb362cbdcb4f24b78ce3afbc44d695645edae94ee398e2e53068bd55f0743",
+      "previous_git_blob": null
+    },
+    {
+      "path": "avatar-core/assets/male/rightForeSleeve.png",
+      "bytes": 6331,
+      "sha256": "267e1d039288139e7ac43e649e0cd7b9c2981f016b0910d2ad5d30b7c9533c00",
+      "previous_git_blob": null
+    },
+    {
+      "path": "avatar-core/assets/male/rightHand.png",
+      "bytes": 26660,
+      "sha256": "821a8267199c4bce993f3834a9b5fda6942803d2b0b21c75d86fe93f5d4936e0",
+      "previous_git_blob": null
+    },
+    {
+      "path": "avatar-core/assets/male/rightHandSkin.png",
+      "bytes": 30275,
+      "sha256": "4ab05ca66d694565318fb298d8579051e45d482f083b9f6807d5d41cc4b7f21b",
+      "previous_git_blob": null
+    },
+    {
+      "path": "avatar-core/assets/male/rightUpper.png",
+      "bytes": 41985,
+      "sha256": "30db32f532833277edaec333a24241f4ce5a9551709a769dfcfc71c86c836b7c",
+      "previous_git_blob": null
+    },
+    {
+      "path": "avatar-core/assets/male/rightUpperSleeve.png",
+      "bytes": 6463,
+      "sha256": "89770e34f5e47d0047dc3c3b3c7b6cc178d0ee115a305b9c82632427deaa661a",
+      "previous_git_blob": null
+    },
+    {
+      "path": "avatar-core/assets/male/torso.png",
+      "bytes": 204553,
+      "sha256": "dd6e76f800e8fa88ff06e90961bf54a7a573e372790d0de7d1e437d47f912882",
+      "previous_git_blob": null
+    },
+    {
+      "path": "avatar-core/assets/weapons/melee.png",
+      "bytes": 1112,
+      "sha256": "ed2e0be5cb2537f4cbb1bfeab6fe5c70b79a80963914d5e7bee80430803a4969",
+      "previous_git_blob": null
+    },
+    {
+      "path": "avatar-core/assets/weapons/pistol.png",
+      "bytes": 834,
+      "sha256": "63ac9db1f6f3303ca6fe80f58c5393b1710c36cd723dac669ff1e4ddd00c0ee9",
+      "previous_git_blob": null
+    },
+    {
+      "path": "avatar-core/assets/weapons/rifle.png",
+      "bytes": 1218,
+      "sha256": "1c92af029315b66c411f0e2673dd457550b6586d94e76ed938fcb7dd62c390d0",
+      "previous_git_blob": null
+    },
+    {
+      "path": "avatar-core/engine.mjs",
+      "bytes": 31336,
+      "sha256": "5b7194ba48813096178bd5e1ffbb3e4e131d6f9951a4b4699a91fb6ff864e515",
+      "previous_git_blob": null
+    },
+    {
+      "path": "avatar-core/manifest.json",
+      "bytes": 1485,
+      "sha256": "99d240d3ed07b8a673b130243a1b92aa533f72240d919366ef0c34731dd3896e",
+      "previous_git_blob": null
+    },
+    {
+      "path": "avatar-core/math.mjs",
+      "bytes": 3372,
+      "sha256": "45c9a0600b2d9e4cfaf4888bfa8cc88e2e1eea2e65866cdb2dab8fdda544ee31",
+      "previous_git_blob": null
+    },
+    {
+      "path": "avatar-core/rigs/female_rig.json",
+      "bytes": 309823,
+      "sha256": "1b229a6a5139e0f7e0dfc220a38d3335cb30a1bf23d9b1cc974c6a7aae624abd",
+      "previous_git_blob": null
+    },
+    {
+      "path": "avatar-core/rigs/male_rig.json",
+      "bytes": 462101,
+      "sha256": "b07112e05a05518644ec21875efb4df06febef84e94e9ff4f77060be0390faba",
+      "previous_git_blob": null
+    },
+    {
+      "path": "avatar-core/skin.mjs",
+      "bytes": 5117,
+      "sha256": "ee89d51a061f4ed74f8b9fa7d7ee3db6f77d1244269e0e1a197614b9815f083d",
+      "previous_git_blob": null
+    },
+    {
+      "path": "avatar-core/weapon-controller.mjs",
+      "bytes": 1564,
+      "sha256": "6953ed1dc14a8559a6d0c83d3e7c99885ddc850cd574d2666470a39b745ca53a",
+      "previous_git_blob": null
+    },
+    {
+      "path": "avatar-core/weapons.json",
+      "bytes": 1104,
+      "sha256": "d72f61ef07871c3f4d6ba9e39166a76fb52fa1c3f9a76e7acbab44396696327c",
+      "previous_git_blob": null
+    },
+    {
+      "path": "avatar-lab/catalog-bridge.js",
+      "bytes": 5161,
+      "sha256": "9be542e4a5ff7986110d939d84be14563e4b0b5e866772968f033bc2c10a5b16",
+      "previous_git_blob": null
+    },
+    {
+      "path": "avatar-lab/index.html",
+      "bytes": 8920,
+      "sha256": "fbbf29d9d78ce3fab95e68460c5aa3e22b827576b77e306a12c1ce86d29f083e",
+      "previous_git_blob": null
+    },
+    {
+      "path": "avatar-lab/lab.css",
+      "bytes": 3586,
+      "sha256": "b996b2082f033519a98bcdcc77faeea9335e6d5ed20b2b0f84eb2b6ac931220a",
+      "previous_git_blob": null
+    },
+    {
+      "path": "avatar-lab/lab.mjs",
+      "bytes": 7057,
+      "sha256": "0edf39ead2216100c3a214d944a38fbde1f32f7eb0185e54b36bf789b976aba6",
+      "previous_git_blob": null
+    },
+    {
+      "path": "docs/avatar-core.md",
+      "bytes": 12113,
+      "sha256": "f4cb78c0cd3c288dea1a8ed697a82cbe81f94dd694df8294238dc9f52538ca05",
+      "previous_git_blob": null
+    },
+    {
+      "path": "docs/paper-doll.md",
+      "bytes": 56630,
+      "sha256": "7d2f8c3320d512c523e179a26be1daf80924e4fbcb48b508276bdf3af8422883",
+      "previous_git_blob": "a73d413b24107fcf3ca72f45f540d74bda15a44d"
+    },
+    {
+      "path": "review/avatar-core-1/.gitignore",
+      "bytes": 118,
+      "sha256": "afae3ea61147fbafdefc8ef29efac0dadeef789645096f683181311743cecbe0",
+      "previous_git_blob": null
+    },
+    {
+      "path": "review/avatar-core-1/README.md",
+      "bytes": 18641,
+      "sha256": "29a1d79e67b8759aa9d746123ba2bd7c9b0380ab40d14f8fb221056b9fd4a798",
+      "previous_git_blob": null
+    },
+    {
+      "path": "review/avatar-core-1/appearance-comparison.json",
+      "bytes": 207,
+      "sha256": "a312c50cc79086f0981bd673802d3a432771a4225c69f34bcaeb78a4816e204a",
+      "previous_git_blob": null
+    },
+    {
+      "path": "review/avatar-core-1/art-fix-brief.md",
+      "bytes": 2917,
+      "sha256": "98ced219f93a74fdf7f808698a81c4be3790d0ca4589fffb3662c59816f58ea9",
+      "previous_git_blob": null
+    },
+    {
+      "path": "review/avatar-core-1/browser-check.json",
+      "bytes": 37225,
+      "sha256": "19f5ba88ebadb65433e1b33daeba03d0dcdc9f1a1d5b345981f0e1e121327db4",
+      "previous_git_blob": null
+    },
+    {
+      "path": "review/avatar-core-1/browser-initial.json",
+      "bytes": 36670,
+      "sha256": "06b1cb729978a6750a603588bde3a81b616636f0343568227d430ce737da6921",
+      "previous_git_blob": null
+    },
+    {
+      "path": "review/avatar-core-1/cosmetic-check.json",
+      "bytes": 18830,
+      "sha256": "fb3665dae407aaffd925b756d947ae75e72452081665f84030500aac54239fec",
+      "previous_git_blob": null
+    },
+    {
+      "path": "review/avatar-core-1/female-all-current-faces.webp",
+      "bytes": 913864,
+      "sha256": "4724132cf3ceee7d4bff1cbb8da8add502f825017e7426aba11269f5c9963ae3",
+      "previous_git_blob": null
+    },
+    {
+      "path": "review/avatar-core-1/female-appearance-diff.png",
+      "bytes": 4655,
+      "sha256": "4c0c7c9d0e0250c6cde2e03ba681b187ef00106a8174ef27229cd366703b9b7d",
+      "previous_git_blob": null
+    },
+    {
+      "path": "review/avatar-core-1/female-appearance-game.png",
+      "bytes": 875694,
+      "sha256": "93722332d42e21c747630f6a46ec9b8aadd3b2a8ca5d5d4fb95bfe07145d70cb",
+      "previous_git_blob": null
+    },
+    {
+      "path": "review/avatar-core-1/female-appearance-lab.png",
+      "bytes": 875694,
+      "sha256": "93722332d42e21c747630f6a46ec9b8aadd3b2a8ca5d5d4fb95bfe07145d70cb",
+      "previous_git_blob": null
+    },
+    {
+      "path": "review/avatar-core-1/female-breathing.webp",
+      "bytes": 1928820,
+      "sha256": "1375d2ee4e537f5fa5d73cdd3e5477361abb73c4b5479fc74112424fa98244bf",
+      "previous_git_blob": null
+    },
+    {
+      "path": "review/avatar-core-1/female-exhale.png",
+      "bytes": 698802,
+      "sha256": "11354b96d64a7eae6fcc0c2f9407daa80057487478a3beb9001cae08629f6530",
+      "previous_git_blob": null
+    },
+    {
+      "path": "review/avatar-core-1/female-idle.png",
+      "bytes": 743560,
+      "sha256": "3f77eacce0c168deec4d1fb2712b1c958d00fd32c3a7321abe6d044483f7562e",
+      "previous_git_blob": null
+    },
+    {
+      "path": "review/avatar-core-1/female-inhale.png",
+      "bytes": 701752,
+      "sha256": "6995a47efee5fe15af664ca5b5b6adc9dc8b7f0ca404923f1a556be486bc9267",
+      "previous_git_blob": null
+    },
+    {
+      "path": "review/avatar-core-1/female-landmarks.png",
+      "bytes": 809323,
+      "sha256": "34235364ccc7969770cff7fdc7add60384153a0b0841137bffada42fdb3a13ec",
+      "previous_git_blob": null
+    },
+    {
+      "path": "review/avatar-core-1/female-left-elbow-300.webp",
+      "bytes": 69228,
+      "sha256": "ca481f807546e59acc721398fbfffbf8e57bec3a48c3551ea6ee43ca19b5c915",
+      "previous_git_blob": null
+    },
+    {
+      "path": "review/avatar-core-1/female-left-grip-300.webp",
+      "bytes": 127326,
+      "sha256": "114499e5ca60ed9ec1b37b864f027018c9b2f07b3cc81ce33991709b97f7c116",
+      "previous_git_blob": null
+    },
+    {
+      "path": "review/avatar-core-1/female-left-shoulder-300.webp",
+      "bytes": 117994,
+      "sha256": "bdf3874c7f68d33265d579615c96a1924714832acd6d1ac9895d9c6c2833b863",
+      "previous_git_blob": null
+    },
+    {
+      "path": "review/avatar-core-1/female-melee.png",
+      "bytes": 748055,
+      "sha256": "e931516160f9309096051c14f7763120cde3166873fd700dda2f129b14ff6099",
+      "previous_git_blob": null
+    },
+    {
+      "path": "review/avatar-core-1/female-original-vs-rig.webp",
+      "bytes": 817370,
+      "sha256": "836d1fd23efc0c15f79a77225b25a090ce002da32ef79b87e05b1ca778f02d72",
+      "previous_git_blob": null
+    },
+    {
+      "path": "review/avatar-core-1/female-original.png",
+      "bytes": 743560,
+      "sha256": "3f77eacce0c168deec4d1fb2712b1c958d00fd32c3a7321abe6d044483f7562e",
+      "previous_git_blob": null
+    },
+    {
+      "path": "review/avatar-core-1/female-pistol-supported.png",
+      "bytes": 674656,
+      "sha256": "3287cd9478dc49a704e962b599d2435ba5a6d5df5f2d12b8f931ae24dbb7e6a0",
+      "previous_git_blob": null
+    },
+    {
+      "path": "review/avatar-core-1/female-pistol.png",
+      "bytes": 721292,
+      "sha256": "6f8b2daba66936882d32f9c8537979401b54fe4cfd7b00b968d8c64ac06d684d",
+      "previous_git_blob": null
+    },
+    {
+      "path": "review/avatar-core-1/female-rifle.png",
+      "bytes": 712140,
+      "sha256": "49b10981ef25eda5a6b7ccf3ff7d5e8c75ea93d4a233984f648cc8997c13a908",
+      "previous_git_blob": null
+    },
+    {
+      "path": "review/avatar-core-1/female-right-elbow-300.webp",
+      "bytes": 50540,
+      "sha256": "ab79cd2433f3fe59f5e9b93fb1d5c74332aaf0028cbc45a910c6b9b043ad4a39",
+      "previous_git_blob": null
+    },
+    {
+      "path": "review/avatar-core-1/female-right-grip-300.webp",
+      "bytes": 141428,
+      "sha256": "d9f7f15cafb2b52fd31c85fa8414c6bee7e18da230e692caa9f986ed19a637c2",
+      "previous_git_blob": null
+    },
+    {
+      "path": "review/avatar-core-1/female-right-shoulder-300.webp",
+      "bytes": 95300,
+      "sha256": "8106bb5193ccc3c9c3892995a1a8aa5585cfbf3f9ee4314281a3cde8437a0d3f",
+      "previous_git_blob": null
+    },
+    {
+      "path": "review/avatar-core-1/female-skeleton.png",
+      "bytes": 721718,
+      "sha256": "8e38def22b36e626dd1db4e9f3f29e037cb39a15a74b5ceab8ae4479002d3d5a",
+      "previous_git_blob": null
+    },
+    {
+      "path": "review/avatar-core-1/female-test-sleeves.png",
+      "bytes": 331023,
+      "sha256": "3b1702f3e7e2a6140096f8f3f1ca25b4411df6fa2ca7071e2f5bdb9ea518df42",
+      "previous_git_blob": null
+    },
+    {
+      "path": "review/avatar-core-1/index.html",
+      "bytes": 13485,
+      "sha256": "1885a19672a483344fb45a08e2041e48b5178b0f8f39e60700bc8f364c8056d5",
+      "previous_git_blob": null
+    },
+    {
+      "path": "review/avatar-core-1/initial/browser-initial.json",
+      "bytes": 39455,
+      "sha256": "6ddffe94cd626ad30018bcf5f59a1e5b91db37eb1afd080e1500fd538d5ef527",
+      "previous_git_blob": null
+    },
+    {
+      "path": "review/avatar-core-1/initial/female-idle.png",
+      "bytes": 244656,
+      "sha256": "a45aec686f3ba5784ff1b8e1083bda1ed7ae1a48cd080dd65046e93a2f14cf89",
+      "previous_git_blob": null
+    },
+    {
+      "path": "review/avatar-core-1/initial/female-melee.png",
+      "bytes": 246436,
+      "sha256": "ba2fb28c19affb448b3fef08d47a5f74ecb914d5bf5e88088e15604918bccffe",
+      "previous_git_blob": null
+    },
+    {
+      "path": "review/avatar-core-1/initial/female-pistol.png",
+      "bytes": 225719,
+      "sha256": "14b39df19fc0550caca2ff6bcd2aa8c6f144281c330a0792330955c683e1e22e",
+      "previous_git_blob": null
+    },
+    {
+      "path": "review/avatar-core-1/initial/female-rifle.png",
+      "bytes": 225172,
+      "sha256": "05533e2971a75dbfed9e1fa1a25eae7842e40201a241199199af2202b3e4b1b8",
+      "previous_git_blob": null
+    },
+    {
+      "path": "review/avatar-core-1/initial/male-idle.png",
+      "bytes": 258398,
+      "sha256": "902d670ed7a5f7b4f96ca061f90d242bb86363bd51cbd24135e630f37c53bb09",
+      "previous_git_blob": null
+    },
+    {
+      "path": "review/avatar-core-1/initial/male-melee.png",
+      "bytes": 261901,
+      "sha256": "bc97ad843122bece5196d1c7149d6b0a31ce2e563edc34acab9973158041580e",
+      "previous_git_blob": null
+    },
+    {
+      "path": "review/avatar-core-1/initial/male-pistol.png",
+      "bytes": 236316,
+      "sha256": "373b959aefc3298eab04929a38814c8391be269a103de860e3bb64e6c1441f3f",
+      "previous_git_blob": null
+    },
+    {
+      "path": "review/avatar-core-1/initial/male-rifle.png",
+      "bytes": 234593,
+      "sha256": "83f7b4c8a7beed87fb4f54a422cf4cb8af4583f4a7165b20c9b54286caf16552",
+      "previous_git_blob": null
+    },
+    {
+      "path": "review/avatar-core-1/lab-desktop.png",
+      "bytes": 505431,
+      "sha256": "5bbae8d5a9c67a1d5d8283b1265539eab19ad2e555f2030016942ad70b63efd2",
+      "previous_git_blob": null
+    },
+    {
+      "path": "review/avatar-core-1/lab-mobile-320.png",
+      "bytes": 183319,
+      "sha256": "ea055be5fbc5ab71dea231edaeff27b04282c783797159ce7670b806925a3c2b",
+      "previous_git_blob": null
+    },
+    {
+      "path": "review/avatar-core-1/lab-mobile-390.png",
+      "bytes": 184803,
+      "sha256": "bb2461269ee2720d281cdd938ba1f23f2a33ff3da7f2090edc0714d39a774249",
+      "previous_git_blob": null
+    },
+    {
+      "path": "review/avatar-core-1/lab-mobile-768.png",
+      "bytes": 242883,
+      "sha256": "ed3034406aac6b2ffa0c09c5368eb0d41ec34fc22d681567ecea1bee556fd130",
+      "previous_git_blob": null
+    },
+    {
+      "path": "review/avatar-core-1/male-all-current-faces.webp",
+      "bytes": 498220,
+      "sha256": "6cc252db60ffae62466ad1ad669638f6a16e03c6f0376e8b44d346cf2606055a",
+      "previous_git_blob": null
+    },
+    {
+      "path": "review/avatar-core-1/male-appearance-diff.png",
+      "bytes": 48717,
+      "sha256": "d3cb0bd56199bc7adc3976d995514a3b3dbe725bfaf8721c6feba112f84a8670",
+      "previous_git_blob": null
+    },
+    {
+      "path": "review/avatar-core-1/male-appearance-game.png",
+      "bytes": 884872,
+      "sha256": "fb5aefa4c01322d39e028c67a1296f287f921f979ac55fca1dd57c687d714a64",
+      "previous_git_blob": null
+    },
+    {
+      "path": "review/avatar-core-1/male-appearance-lab.png",
+      "bytes": 885080,
+      "sha256": "11a00bcbdc498b845ba2f4e5e8261fe51f13efba3602d4ec3de857c3a2264f83",
+      "previous_git_blob": null
+    },
+    {
+      "path": "review/avatar-core-1/male-breathing.webp",
+      "bytes": 2279342,
+      "sha256": "ac12fd8632153f9ea7a6bcb15044143ed0330fb169ae9fcf2f138c3a867b5c9f",
+      "previous_git_blob": null
+    },
+    {
+      "path": "review/avatar-core-1/male-exhale.png",
+      "bytes": 713695,
+      "sha256": "3c61ffab8b02b1a5c1606af446bfc4cfef7683ef787fca5bcf60c4d64f854cd6",
+      "previous_git_blob": null
+    },
+    {
+      "path": "review/avatar-core-1/male-idle.png",
+      "bytes": 774575,
+      "sha256": "fce4666927335ce5ba31c34bb18eadf0c2cf7373ecb494e723eac63930801822",
+      "previous_git_blob": null
+    },
+    {
+      "path": "review/avatar-core-1/male-inhale.png",
+      "bytes": 715780,
+      "sha256": "1cb094314e040b76200af2600f4bad8c177419cd1de21aea44b4f1bc11fe48ac",
+      "previous_git_blob": null
+    },
+    {
+      "path": "review/avatar-core-1/male-landmarks.png",
+      "bytes": 847782,
+      "sha256": "a4e6a16b72fd33707630e0576b218c71e7c0dc3de0a1bbe74f587c77f7c2da30",
+      "previous_git_blob": null
+    },
+    {
+      "path": "review/avatar-core-1/male-left-elbow-300.webp",
+      "bytes": 81148,
+      "sha256": "1d8223e4f1a334abb58f2feb9a6bcb9b8a6e1f670e32f35c7f38cbaf30b94cfc",
+      "previous_git_blob": null
+    },
+    {
+      "path": "review/avatar-core-1/male-left-grip-300.webp",
+      "bytes": 142828,
+      "sha256": "c55266eb2c4367b9ed763cb8ab9de99983bfdc0c29211a3af786838069600dd8",
+      "previous_git_blob": null
+    },
+    {
+      "path": "review/avatar-core-1/male-left-shoulder-300.webp",
+      "bytes": 112716,
+      "sha256": "f9b64286b4777890a578cf67adf709b6151133c6a752c239297248ec555d79cc",
+      "previous_git_blob": null
+    },
+    {
+      "path": "review/avatar-core-1/male-melee.png",
+      "bytes": 781107,
+      "sha256": "2dfd63609c1f8cc8d0ddfd1453e92de23522d91146d6fc9255ab2ecc05c61879",
+      "previous_git_blob": null
+    },
+    {
+      "path": "review/avatar-core-1/male-original-vs-rig.webp",
+      "bytes": 834832,
+      "sha256": "2332d424e1e2d14baedcd4c8bdf19b5074f4858fb345ce4f98e5a42ffad9aea9",
+      "previous_git_blob": null
+    },
+    {
+      "path": "review/avatar-core-1/male-original.png",
+      "bytes": 774575,
+      "sha256": "fce4666927335ce5ba31c34bb18eadf0c2cf7373ecb494e723eac63930801822",
+      "previous_git_blob": null
+    },
+    {
+      "path": "review/avatar-core-1/male-pistol-supported.png",
+      "bytes": 680039,
+      "sha256": "84e67d941ff6b78574e947652fbc0129b5bb789e21c3e873086c9437160490bd",
+      "previous_git_blob": null
+    },
+    {
+      "path": "review/avatar-core-1/male-pistol.png",
+      "bytes": 760659,
+      "sha256": "e6ccf842dbed4a69ab38b14106399d92acc6a920c72d65c1953856fa70146243",
+      "previous_git_blob": null
+    },
+    {
+      "path": "review/avatar-core-1/male-rifle.png",
+      "bytes": 727453,
+      "sha256": "2ff0b18342748a1f3e87e91ad69c3167541b4cad53d9887796c4740a75df994f",
+      "previous_git_blob": null
+    },
+    {
+      "path": "review/avatar-core-1/male-right-elbow-300.webp",
+      "bytes": 61056,
+      "sha256": "2897c39711575a7e32a691eae262309394d6920abecc34a8c1d062edf8e352c6",
+      "previous_git_blob": null
+    },
+    {
+      "path": "review/avatar-core-1/male-right-grip-300.webp",
+      "bytes": 132586,
+      "sha256": "ce3cddf2186a65760b59d1334406307416560c30780f6aaecead770352702ef2",
+      "previous_git_blob": null
+    },
+    {
+      "path": "review/avatar-core-1/male-right-shoulder-300.webp",
+      "bytes": 91308,
+      "sha256": "1c13de8f046cbb3ba3c67520a031d1c41b2691ae06338a12c52c5b6d8511cbba",
+      "previous_git_blob": null
+    },
+    {
+      "path": "review/avatar-core-1/male-skeleton.png",
+      "bytes": 737214,
+      "sha256": "b3bd9f3fa250cab25a5eb9538d4f3087d8a899911778b36b1e12757aad236a21",
+      "previous_git_blob": null
+    },
+    {
+      "path": "review/avatar-core-1/male-test-sleeves.png",
+      "bytes": 341604,
+      "sha256": "91f6b2e86009c8c1ceddaef5e4c123a8f8c9b3f936d246bd8885e086bd8fd6cb",
+      "previous_git_blob": null
+    },
+    {
+      "path": "review/avatar-core-1/offline-report-check.json",
+      "bytes": 120,
+      "sha256": "d3ac4b1053d44095bb5633c000d43ecd510ae8aabc093cf453a0224d9f5e645e",
+      "previous_git_blob": null
+    },
+    {
+      "path": "review/avatar-core-1/original-layout-check.json",
+      "bytes": 8300,
+      "sha256": "d26c3cfa09995814ff80a832614df282a5bae4d91ad3c365f59e3302dbab5c81",
+      "previous_git_blob": null
+    },
+    {
+      "path": "review/avatar-core-1/package-check.json",
+      "bytes": 283,
+      "sha256": "c0c87401f67a43fea4f2f624660ff30e4d31346412b3db2a5b4600ee99ed04b4",
+      "previous_git_blob": null
+    },
+    {
+      "path": "review/avatar-core-1/performance-after.json",
+      "bytes": 912,
+      "sha256": "589b9595940eb646a544ab0c63ff7a0405b8acfd856464e426ca48bded8f7fb0",
+      "previous_git_blob": null
+    },
+    {
+      "path": "review/avatar-core-1/performance-before.json",
+      "bytes": 922,
+      "sha256": "a73f2809a6fd8c327d96c3d702a6ba9ce9ed5ff04d58b9c6da35d5cf9919ff06",
+      "previous_git_blob": null
+    },
+    {
+      "path": "review/avatar-core-1/protected-originals.json",
+      "bytes": 18170,
+      "sha256": "acdec1847d95114d195d2c7be617022c91bebb27716935fe6a1efc009834afee",
+      "previous_git_blob": null
+    },
+    {
+      "path": "review/avatar-core-1/resource-check.json",
+      "bytes": 222,
+      "sha256": "3a231d901ad7e3b5f0dd8f1a10c2931bc9a10aae857f369ebdc69fc9170f86e6",
+      "previous_git_blob": null
+    },
+    {
+      "path": "review/avatar-core-1/source-audit.json",
+      "bytes": 1485,
+      "sha256": "99d240d3ed07b8a673b130243a1b92aa533f72240d919366ef0c34731dd3896e",
+      "previous_git_blob": null
+    },
+    {
+      "path": "review/avatar-core-1/test-logs/appearance-initial-raster-criterion.log",
+      "bytes": 3653,
+      "sha256": "cfbf07a338950a0265be5d9d2548a6afa65c60218a908deb763370aa50635a14",
+      "previous_git_blob": null
+    },
+    {
+      "path": "review/avatar-core-1/test-logs/baseline-main-alpha.log",
+      "bytes": 1002,
+      "sha256": "d99267823c44568fb1e7eee678bd53bafd8bb9288515519f87f62f343087d432",
+      "previous_git_blob": null
+    },
+    {
+      "path": "review/avatar-core-1/test-logs/baseline-main-gallery.log",
+      "bytes": 275,
+      "sha256": "772b8458780954d47e15e04996aa915bd37941586ee08338bb889aa6b094db96",
+      "previous_git_blob": null
+    },
+    {
+      "path": "review/avatar-core-1/test-logs/capture-final.log",
+      "bytes": 233,
+      "sha256": "1c6f7dbc567a0e26280bcafdff00086bcf01fc980932a978bc47001f436b2dfc",
+      "previous_git_blob": null
+    },
+    {
+      "path": "review/avatar-core-1/test-logs/existing-js.log",
+      "bytes": 9895,
+      "sha256": "8b0b46eaa05775b5a22aa58866a37aa5bf7c2695d960b200b96c785e65ead916",
+      "previous_git_blob": null
+    },
+    {
+      "path": "review/avatar-core-1/test-logs/node-final.log",
+      "bytes": 1227,
+      "sha256": "a3aad3731b5d3bb3c5dd39d51349589a8c90e763bc84357ff8d726f653d93644",
+      "previous_git_blob": null
+    },
+    {
+      "path": "review/avatar-core-1/test-logs/node-initial.log",
+      "bytes": 2113,
+      "sha256": "7234d9a903b9cda5956da32f50112ead95b10423cdefc1193acb384f63cafb96",
+      "previous_git_blob": null
+    },
+    {
+      "path": "review/avatar-core-1/test-logs/python-final.log",
+      "bytes": 3064,
+      "sha256": "640ae2760514d2d469c604d49fa6675749ee6c2782ec35348419444765d3e64e",
+      "previous_git_blob": null
+    },
+    {
+      "path": "review/avatar-core-1/test-logs/python-full.log",
+      "bytes": 30775,
+      "sha256": "d0476f9fe09b07f3b706de535a31749de987dd609c3793b83422a0061a1f438c",
+      "previous_git_blob": null
+    },
+    {
+      "path": "review/avatar-core-1/validation-summary.json",
+      "bytes": 1734,
+      "sha256": "c5758d50441aa95cfc084f6a7de278ec884ec10337e39a4bfd8d2141ebd39153",
+      "previous_git_blob": null
+    },
+    {
+      "path": "tests/avatar-core.test.mjs",
+      "bytes": 6455,
+      "sha256": "1e0ec3e86a011457e1471c74f78c1f8091297d9b9227f58dae6012e82b0dd754",
+      "previous_git_blob": null
+    },
+    {
+      "path": "tests/test_avatar_core.py",
+      "bytes": 16688,
+      "sha256": "525e605a24ce3afa942e62f422e526f414c8034c3cfdb61c3273664853a6be1c",
+      "previous_git_blob": null
+    },
+    {
+      "path": "tools/benchmark-avatar-core.py",
+      "bytes": 1976,
+      "sha256": "5391f06ce10ae2c40cfa048626c1a2342943e0da99ed6cfb5b3a5eb135592787",
+      "previous_git_blob": null
+    },
+    {
+      "path": "tools/build-avatar-core-gallery.py",
+      "bytes": 6369,
+      "sha256": "c78f546e68c52319bd6cd0a0a7a4df1734fa5ecd5a043047ac09e298e830099e",
+      "previous_git_blob": null
+    },
+    {
+      "path": "tools/bundle-avatar-lab.py",
+      "bytes": 3454,
+      "sha256": "dad05c07fa33f658aaaef4af613d89cdd8e233950b44ca555e3c949a256e25b8",
+      "previous_git_blob": null
+    },
+    {
+      "path": "tools/prepare-avatar-core.py",
+      "bytes": 10367,
+      "sha256": "fab85605ccf4377427789eb1f29b2b791a0f26f1d25ed9576817cce33025e19a",
+      "previous_git_blob": null
+    },
+    {
+      "path": "tools/review-avatar-core.py",
+      "bytes": 6436,
+      "sha256": "b5994e41d6735ba489784f7886616c0b28be641949103333eaa991d3889ac750",
+      "previous_git_blob": null
+    }
+  ],
+  "offline_artifacts": [
+    {
+      "name": "avatar-lab-offline.html",
+      "bytes": 27553438,
+      "sha256": "9c96e8c80cf434c32be84ed9ca55a67617fe77f839cad2edf0d3579fc46ed821",
+      "tracked": false,
+      "reproducible_by": "tools/bundle-avatar-lab.py"
+    },
+    {
+      "name": "avatar-report-offline.html",
+      "bytes": 22948910,
+      "sha256": "3d62a44260bbfb5d93e117061edb91ed165aa50a326e5aa745d631019ba18f34",
+      "tracked": false,
+      "reproducible_by": "tools/build-avatar-core-gallery.py"
+    }
+  ],
+  "note": "Manifest excludes itself; baseline original files are separately protected in protected-originals.json."
+}

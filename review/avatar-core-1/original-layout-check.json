@@ -1,0 +1,306 @@
+{
+  "entry": "index.html",
+  "measurements": [
+    {
+      "viewport": [
+        1440,
+        1000
+      ],
+      "gender": "male",
+      "lobby": {
+        "character-paperdoll": {
+          "rect": {
+            "x": 587.984375,
+            "y": 390.8125,
+            "width": 264.03125,
+            "height": 469.140625
+          },
+          "transform": "none",
+          "cssWidth": "264.031px",
+          "cssHeight": "469.141px",
+          "source": "",
+          "naturalWidth": null,
+          "naturalHeight": null,
+          "scaleX": 0.2805858129649309,
+          "scaleY": 0.2805864982057416
+        },
+        "layer-body": {
+          "rect": {
+            "x": 587.984375,
+            "y": 390.8125,
+            "width": 264.03125,
+            "height": 469.140625
+          },
+          "transform": "none",
+          "cssWidth": "264.031px",
+          "cssHeight": "469.141px",
+          "source": "base_male.png?v=b40a31b2",
+          "naturalWidth": 941,
+          "naturalHeight": 1672,
+          "scaleX": 0.2805858129649309,
+          "scaleY": 0.2805864982057416
+        }
+      },
+      "wardrobe": {
+        "wardrobe-paperdoll": {
+          "rect": {
+            "x": 496.15625,
+            "y": 255.484375,
+            "width": 327.390625,
+            "height": 581.703125
+          },
+          "transform": "none",
+          "cssWidth": "327.391px",
+          "cssHeight": "581.703px",
+          "source": "",
+          "naturalWidth": null,
+          "naturalHeight": null,
+          "scaleX": 0.34791777364505844,
+          "scaleY": 0.34790856758373206
+        },
+        "wardrobe-layer-body": {
+          "rect": {
+            "x": 496.15625,
+            "y": 255.484375,
+            "width": 327.390625,
+            "height": 581.703125
+          },
+          "transform": "none",
+          "cssWidth": "327.391px",
+          "cssHeight": "581.703px",
+          "source": "base_male.png?v=b40a31b2",
+          "naturalWidth": 941,
+          "naturalHeight": 1672,
+          "scaleX": 0.34791777364505844,
+          "scaleY": 0.34790856758373206
+        }
+      }
+    },
+    {
+      "viewport": [
+        1440,
+        1000
+      ],
+      "gender": "female",
+      "lobby": {
+        "character-paperdoll": {
+          "rect": {
+            "x": 587.984375,
+            "y": 390.8125,
+            "width": 264.03125,
+            "height": 469.140625
+          },
+          "transform": "none",
+          "cssWidth": "264.031px",
+          "cssHeight": "469.141px",
+          "source": "",
+          "naturalWidth": null,
+          "naturalHeight": null,
+          "scaleX": 0.2805858129649309,
+          "scaleY": 0.2805864982057416
+        },
+        "layer-body": {
+          "rect": {
+            "x": 587.984375,
+            "y": 390.8125,
+            "width": 264.03125,
+            "height": 469.140625
+          },
+          "transform": "none",
+          "cssWidth": "264.031px",
+          "cssHeight": "469.141px",
+          "source": "base_female.png?v=a27b499c",
+          "naturalWidth": 941,
+          "naturalHeight": 1672,
+          "scaleX": 0.2805858129649309,
+          "scaleY": 0.2805864982057416
+        }
+      },
+      "wardrobe": {
+        "wardrobe-paperdoll": {
+          "rect": {
+            "x": 496.15625,
+            "y": 255.484375,
+            "width": 327.390625,
+            "height": 581.703125
+          },
+          "transform": "none",
+          "cssWidth": "327.391px",
+          "cssHeight": "581.703px",
+          "source": "",
+          "naturalWidth": null,
+          "naturalHeight": null,
+          "scaleX": 0.34791777364505844,
+          "scaleY": 0.34790856758373206
+        },
+        "wardrobe-layer-body": {
+          "rect": {
+            "x": 496.15625,
+            "y": 255.484375,
+            "width": 327.390625,
+            "height": 581.703125
+          },
+          "transform": "none",
+          "cssWidth": "327.391px",
+          "cssHeight": "581.703px",
+          "source": "base_female.png?v=a27b499c",
+          "naturalWidth": 941,
+          "naturalHeight": 1672,
+          "scaleX": 0.34791777364505844,
+          "scaleY": 0.34790856758373206
+        }
+      }
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "gender": "male",
+      "lobby": {
+        "character-paperdoll": {
+          "rect": {
+            "x": 131.828125,
+            "y": 724.359375,
+            "width": 126.34375,
+            "height": 224.5
+          },
+          "transform": "none",
+          "cssWidth": "126.344px",
+          "cssHeight": "224.5px",
+          "source": "",
+          "naturalWidth": null,
+          "naturalHeight": null,
+          "scaleX": 0.13426540913921362,
+          "scaleY": 0.13427033492822968
+        },
+        "layer-body": {
+          "rect": {
+            "x": 131.828125,
+            "y": 724.359375,
+            "width": 126.34375,
+            "height": 224.5
+          },
+          "transform": "none",
+          "cssWidth": "126.344px",
+          "cssHeight": "224.5px",
+          "source": "base_male.png?v=b40a31b2",
+          "naturalWidth": 941,
+          "naturalHeight": 1672,
+          "scaleX": 0.13426540913921362,
+          "scaleY": 0.13427033492822968
+        }
+      },
+      "wardrobe": {
+        "wardrobe-paperdoll": {
+          "rect": {
+            "x": 34.046875,
+            "y": 523.109375,
+            "width": 103.46875,
+            "height": 183.84375
+          },
+          "transform": "none",
+          "cssWidth": "103.469px",
+          "cssHeight": "183.844px",
+          "source": "",
+          "naturalWidth": null,
+          "naturalHeight": null,
+          "scaleX": 0.10995616365568545,
+          "scaleY": 0.10995439593301436
+        },
+        "wardrobe-layer-body": {
+          "rect": {
+            "x": 34.046875,
+            "y": 523.109375,
+            "width": 103.46875,
+            "height": 183.84375
+          },
+          "transform": "none",
+          "cssWidth": "103.469px",
+          "cssHeight": "183.844px",
+          "source": "base_male.png?v=b40a31b2",
+          "naturalWidth": 941,
+          "naturalHeight": 1672,
+          "scaleX": 0.10995616365568545,
+          "scaleY": 0.10995439593301436
+        }
+      }
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "gender": "female",
+      "lobby": {
+        "character-paperdoll": {
+          "rect": {
+            "x": 131.828125,
+            "y": 724.359375,
+            "width": 126.34375,
+            "height": 224.5
+          },
+          "transform": "none",
+          "cssWidth": "126.344px",
+          "cssHeight": "224.5px",
+          "source": "",
+          "naturalWidth": null,
+          "naturalHeight": null,
+          "scaleX": 0.13426540913921362,
+          "scaleY": 0.13427033492822968
+        },
+        "layer-body": {
+          "rect": {
+            "x": 131.828125,
+            "y": 724.359375,
+            "width": 126.34375,
+            "height": 224.5
+          },
+          "transform": "none",
+          "cssWidth": "126.344px",
+          "cssHeight": "224.5px",
+          "source": "base_female.png?v=a27b499c",
+          "naturalWidth": 941,
+          "naturalHeight": 1672,
+          "scaleX": 0.13426540913921362,
+          "scaleY": 0.13427033492822968
+        }
+      },
+      "wardrobe": {
+        "wardrobe-paperdoll": {
+          "rect": {
+            "x": 34.046875,
+            "y": 523.109375,
+            "width": 103.46875,
+            "height": 183.84375
+          },
+          "transform": "none",
+          "cssWidth": "103.469px",
+          "cssHeight": "183.844px",
+          "source": "",
+          "naturalWidth": null,
+          "naturalHeight": null,
+          "scaleX": 0.10995616365568545,
+          "scaleY": 0.10995439593301436
+        },
+        "wardrobe-layer-body": {
+          "rect": {
+            "x": 34.046875,
+            "y": 523.109375,
+            "width": 103.46875,
+            "height": 183.84375
+          },
+          "transform": "none",
+          "cssWidth": "103.469px",
+          "cssHeight": "183.844px",
+          "source": "base_female.png?v=a27b499c",
+          "naturalWidth": 941,
+          "naturalHeight": 1672,
+          "scaleX": 0.10995616365568545,
+          "scaleY": 0.10995439593301436
+        }
+      }
+    }
+  ],
+  "errors": []
+}
