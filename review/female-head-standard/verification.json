@@ -1,0 +1,70 @@
+{
+  "date": "2026-10-20",
+  "reference": "face-young",
+  "female_variants": 17,
+  "male_pixel_identical_combinations": 63,
+  "reference_unchanged": true,
+  "source_and_hair_unchanged": true,
+  "javascript": {
+    "passed": 89,
+    "total": 89
+  },
+  "python_final": {
+    "total": 142,
+    "passed": 141,
+    "failed_test_methods": [
+      "tests.test_paper_doll_audit.AuditAssetTests.test_no_remote_faint_haze_or_detached_low_alpha_specks"
+    ],
+    "note": "Passed counts individual methods; repeated failing subtests count once. Raw runner summary counts wholly green shards only.",
+    "logs": "verification/final/"
+  },
+  "published": "not yet published at the time of this record",
+  "gallery": {
+    "browser": "151.0.7922.34",
+    "images_decoded": 223,
+    "widths": [
+      320,
+      390,
+      768,
+      1280
+    ],
+    "js_errors": [],
+    "http_errors": [],
+    "zip_test": "OK",
+    "zip_files": 8
+  },
+  "geometry_inputs": {
+    "files": 108,
+    "sha256_mismatches": 0
+  },
+  "known_preexisting_issue": "Strict alpha test: base_male.png has 4234 remote alpha<=16 pixels; unchanged from fd20bc3; test not weakened.",
+  "checks_notes": [
+    "Eight obsolete source-release/native-render contracts were updated; all passed targeted reruns and the final suite. No graphic threshold was weakened.",
+    "One known preexisting failure remains on unchanged base_male.png (4234 remote faint pixels).",
+    "Old pre-stage dependency audit was interrupted because it cannot recognize untracked assets. A complete staged audit is recorded separately."
+  ],
+  "python_initial": {
+    "total": 141,
+    "passed": 132,
+    "failed_test_methods": [
+      "tests.test_female_base_replacement.FemaleBaseReplacementTests.test_released_masks_and_heads_are_versioned_and_other_art_is_unchanged",
+      "tests.test_female_faces.FemaleFacesAssetTests.test_all_sources_and_final_resources_are_exact_and_versioned",
+      "tests.test_game.GameTests.test_approved_avatars_show_native_faces_in_both_views_and_switch_to_trip",
+      "tests.test_game.GameTests.test_asian_heads_real_css_order_hair_compatibility_and_reload",
+      "tests.test_game.GameTests.test_complete_face_catalog_selects_both_genders_and_restores_every_type",
+      "tests.test_game.GameTests.test_crown_mask_pixels_locality_backgrounds_and_neckline",
+      "tests.test_game.GameTests.test_neck_join_does_not_add_transparency_on_four_backgrounds_and_leaves_the_body_intact",
+      "tests.test_game.GameTests.test_young_faces_switch_hair_outfits_and_reload_without_leaking_body_masks",
+      "tests.test_paper_doll_audit.AuditAssetTests.test_no_remote_faint_haze_or_detached_low_alpha_specks"
+    ],
+    "note": "Passed counts individual methods; repeated failing subtests count once. Raw runner summary counts wholly green shards only.",
+    "logs": "verification/initial/"
+  },
+  "template_zip_sha256": "1d349d369f25586ba53d6757c3234ceb4efe33adbe1b12216c35a4c89e4ec62f",
+  "dependency_check": {
+    "state": "complete staged snapshot before commit",
+    "tracked_files": 6684,
+    "missing_static_references": [],
+    "registered_pngs": 67
+  }
+}

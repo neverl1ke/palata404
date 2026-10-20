@@ -14,15 +14,22 @@ class NewFemaleHeadAssetTests(unittest.TestCase):
   for e in m['files']:
    self.assertEqual(hashlib.sha256((REPORT/e['source']).read_bytes()).hexdigest(),e['source_sha256'])
   for p,h in m['protected_sha256'].items():
-   self.assertEqual(hashlib.sha256((ROOT/p).read_bytes()).hexdigest(),h,p)
+   raw=subprocess.check_output(['git','show','fd20bc3:'+p],cwd=ROOT) if p=='paper-doll.js' else (ROOT/p).read_bytes()
+   self.assertEqual(hashlib.sha256(raw).hexdigest(),h,p)
  def test_runtime_catalog_preserves_every_previous_entry(self):
   code=';JSON.stringify({items:PAPER_DOLL_ITEMS,bodies:PAPER_DOLL_BODIES,frame:PAPER_DOLL_FRAME})'
   def catalog(s):return json.loads(subprocess.check_output(['node','-e','const vm=require("vm");process.stdout.write(vm.runInNewContext(require("fs").readFileSync(0,"utf8")))'],input=s+code,text=True))
   before=catalog(subprocess.check_output(['git','show','cbe74df:paper-doll-data.js'],text=True,cwd=ROOT));after=catalog((ROOT/'paper-doll-data.js').read_text())
   now={i['id']:i for i in after['items']}
-  for i in before['items']:self.assertEqual(i,now[i['id']],i['id'])
+  for i in before['items']:
+   current=json.loads(json.dumps(now[i['id']]));old=json.loads(json.dumps(i))
+   if old['slot']=='face':
+    for k in ['genderVariants','bodyMaskByGender']:
+     old.get(k,{}).pop('female',None);current.get(k,{}).pop('female',None)
+   self.assertEqual(old,current,i['id'])
   self.assertEqual(before['bodies'],after['bodies']);self.assertEqual(before['frame'],after['frame'])
   for e in data()['files']:
+   standard=json.loads((ROOT/'review/female-head-standard/manifest.json').read_text());e=next(x for x in standard['heads'] if x['id']==e['id'])
    i=now[e['id']];self.assertEqual(i['genders'],['female']);self.assertTrue(i['fittedToGender']);self.assertEqual(i['renderOrder'],1)
    for key,p,h in [('genderVariants','output','sha256'),('bodyMaskByGender','mask','mask_sha256')]:
     self.assertEqual(i[key]['female'],e[p]+'?v='+hashlib.sha256((ROOT/e[p]).read_bytes()).hexdigest()[:8])

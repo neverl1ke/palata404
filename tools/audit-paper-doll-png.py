@@ -9,7 +9,7 @@ from PIL import Image
 from scipy import ndimage as ndi
 ROOT=Path(__file__).resolve().parents[1]
 def catalog():
- code="const fs=require('fs'),vm=require('vm');process.stdout.write(vm.runInNewContext(fs.readFileSync('paper-doll-data.js','utf8')+';JSON.stringify({bodies:PAPER_DOLL_BODIES,items:PAPER_DOLL_ITEMS})'))"
+ code="const fs=require('fs'),vm=require('vm');process.stdout.write(vm.runInNewContext(fs.readFileSync('paper-doll-data.js','utf8')+';JSON.stringify({bodies:PAPER_DOLL_BODIES,items:PAPER_DOLL_ITEMS,nativeHeads:typeof PAPER_DOLL_NATIVE_HEADS===typeof {}?PAPER_DOLL_NATIVE_HEADS:{}})'))"
  return json.loads(subprocess.check_output(['node','-e',code],cwd=ROOT))
 def resources():
  return sorted(set(re.findall(r'[A-Za-z0-9_./-]+\.png',json.dumps(catalog()))))

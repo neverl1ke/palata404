@@ -56,6 +56,13 @@ function selectedPaperDollItem(slot) {
     return PAPER_DOLL_ITEMS.find(item => item.id === id && item.slot === slot && isPaperDollItemOwned(item) && paperDollItemSupportsGender(item));
 }
 
+// Null remains the original face in saves and in the wardrobe. The normalized
+// native female head is a render-only overlay; male rendering is unchanged.
+function paperDollRenderedFace(selectedGender = paperDollState.selectedGender) {
+    return selectedPaperDollItem('face') ||
+        (typeof PAPER_DOLL_NATIVE_HEADS === 'object' ? PAPER_DOLL_NATIVE_HEADS[selectedGender] : undefined);
+}
+
 function loadPaperDollState(legacy) {
     const raw = safeStorageGet(PAPER_DOLL_STORAGE_KEY);
     let value = null;
@@ -194,7 +201,7 @@ function smoothPaperDollCrown(points) {
 const paperDollCrownClipCache = new WeakMap();
 function applyPaperDollCrownMask(image, selectedGender) {
     const hair = selectedPaperDollItem('hair')?.id;
-    const face = selectedPaperDollItem('face');
+    const face = paperDollRenderedFace(selectedGender);
     const active = face?.slot === 'face' || (selectedGender === 'male' && hair !== 'hair-messy') || hair === 'hair-bob';
     const source = active && PAPER_DOLL_CROWN_CONTOURS[hair]?.[selectedGender];
     if (!source) { image.style.clipPath = ''; return; }
@@ -225,7 +232,7 @@ function renderPaperDollAt(host, prefix = '') {
     PAPER_DOLL_LAYER_ORDER.forEach((slot, index) => {
         const definition = PAPER_DOLL_SLOTS[slot];
         if (!definition) return;
-        const item = slot === 'baseBody' ? { image: PAPER_DOLL_BODIES[selectedGender] } : selectedPaperDollItem(slot);
+        const item = slot === 'baseBody' ? { image: PAPER_DOLL_BODIES[selectedGender] } : slot === 'face' ? paperDollRenderedFace(selectedGender) : selectedPaperDollItem(slot);
         const layered = Array.isArray(item?.layers) && item.layers.length > 0;
         const parts = layered ? paperDollItemLayers(item, selectedGender) : [item || {}];
         // A multipart hair front reuses this stable root. Clearing it here would
@@ -256,7 +263,7 @@ function renderPaperDollAt(host, prefix = '') {
         // Masks restore the original body only where that head already matches it.
         // The optional neckline skin underlay is base anatomy too, not tunic fabric.
         if (slot === 'baseBody' || (slot === 'upperBody' && part.id === 'neckline')) {
-            const face = selectedPaperDollItem('face');
+            const face = paperDollRenderedFace(selectedGender);
             const faceSource = face?.genderVariants?.[selectedGender];
             const mask = face?.bodyMaskByGender?.[selectedGender];
             const active = mask && faceSource && !failedPaperDollImages.has(faceSource);

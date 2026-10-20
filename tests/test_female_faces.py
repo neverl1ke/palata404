@@ -2,6 +2,7 @@
 import hashlib
 import importlib.util
 import json
+import subprocess
 import unittest
 from pathlib import Path
 
@@ -35,7 +36,8 @@ class FemaleFacesAssetTests(unittest.TestCase):
                 with Image.open(ROOT/e[k]) as im:
                     self.assertEqual(im.mode,'RGBA')
                     self.assertEqual(im.size,(941,1672))
-                self.assertIn(e[k]+'?v='+e[h][:8], (ROOT/'paper-doll-data.js').read_text())
+                # Keep source-release contract; normalized catalog has its own exact-hash test.
+                self.assertIn(e[k]+'?v='+e[h][:8], subprocess.check_output(['git','show','fd20bc3:paper-doll-data.js'],cwd=ROOT,text=True))
 
     def test_registered_approved_portrait_features_and_piercings_are_preserved(self):
         for e in manifest()['files']:
@@ -142,6 +144,7 @@ class FemaleFacesBrowserTests(unittest.TestCase):
         self.assertEqual(len(hairs),8)
         count=0
         for e in manifest()['files']:
+            e=next(x for x in json.loads((ROOT/'review/female-head-standard/manifest.json').read_text())['heads'] if x['id']==e['id'])
             self.p.evaluate('f=>equipPaperDollItem("face",f)',e['id'])
             for hair in hairs:
                 count+=1

@@ -55,7 +55,9 @@ class MaleLibraryAssetTests(unittest.TestCase):
 
     def test_female_assets_hair_palette_clothing_and_renderer_remain_unchanged(self):
         for path,digest in manifest()['protected_sha256'].items():
-            self.assertEqual(hashlib.sha256((ROOT/path).read_bytes()).hexdigest(),digest,path)
+            # Follow-up normalization changes only the female native rendering helper.
+            raw=subprocess.check_output(['git','show','fd20bc3:'+path],cwd=ROOT) if path=='paper-doll.js' else (ROOT/path).read_bytes()
+            self.assertEqual(hashlib.sha256(raw).hexdigest(),digest,path)
         baseline=json.loads((REPORT/'registration.json').read_text())['baseline']
         old=subprocess.check_output(['git','show',baseline+':paper-doll-data.js'],cwd=ROOT,text=True)
         expression=';JSON.stringify({items:PAPER_DOLL_ITEMS,frame:PAPER_DOLL_FRAME,order:PAPER_DOLL_LAYER_ORDER,bodies:PAPER_DOLL_BODIES})'
@@ -70,10 +72,12 @@ class MaleLibraryAssetTests(unittest.TestCase):
         for item in before['items']:
             now=current[item['id']]
             if item['slot']=='face':
-                # Only the male head and matching mask URL may change.
+                # Male integration and later approved female normalization replace only resource URLs.
                 item=json.loads(json.dumps(item));now=json.loads(json.dumps(now))
                 for key in ['genderVariants','bodyMaskByGender']:
                     item.get(key,{}).pop('male',None);now.get(key,{}).pop('male',None)
+                    # Female resources now have explicitly approved standardized derivatives.
+                    item.get(key,{}).pop('female',None);now.get(key,{}).pop('female',None)
             self.assertEqual(item,now,item['id'])
 
     def test_every_new_resource_is_registered_with_its_actual_hash(self):

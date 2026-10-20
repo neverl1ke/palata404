@@ -1,0 +1,32 @@
+test_eight_female_choices_and_reload_preserve_each_appearance_and_loadout (tests.test_female_faces.FemaleFacesBrowserTests.test_eight_female_choices_and_reload_preserve_each_appearance_and_loadout) ... ok
+test_mobile_last_face_is_selectable_and_patient_trip_outfits_survive (tests.test_female_faces.FemaleFacesBrowserTests.test_mobile_last_face_is_selectable_and_patient_trip_outfits_survive) ... ok
+test_alternative_heads_real_composite_on_four_backgrounds (tests.test_game.GameTests.test_alternative_heads_real_composite_on_four_backgrounds) ... ok
+test_approved_wardrobe_background_loads_with_one_shared_floor_anchor (tests.test_game.GameTests.test_approved_wardrobe_background_loads_with_one_shared_floor_anchor) ... ok
+test_battle_damage_armor_victory_and_single_reward (tests.test_game.GameTests.test_battle_damage_armor_victory_and_single_reward) ... ok
+test_compact_victory_fits_desktop_and_keeps_mobile_actions_visible (tests.test_game.GameTests.test_compact_victory_fits_desktop_and_keeps_mobile_actions_visible) ... ok
+test_crown_mask_pixels_locality_backgrounds_and_neckline (tests.test_game.GameTests.test_crown_mask_pixels_locality_backgrounds_and_neckline) ... ok
+test_female_bangs_migrate_male_saves_and_palette_preserves_alpha (tests.test_game.GameTests.test_female_bangs_migrate_male_saves_and_palette_preserves_alpha) ... ok
+test_future_approved_face_survives_reload (tests.test_game.GameTests.test_future_approved_face_survives_reload) ... ok
+test_hair_pack_ui_choices_shared_persistence_mobile_and_real_render_previews (tests.test_game.GameTests.test_hair_pack_ui_choices_shared_persistence_mobile_and_real_render_previews) ... ok
+test_invalid_purchase_and_full_health_do_not_spend_resources (tests.test_game.GameTests.test_invalid_purchase_and_full_health_do_not_spend_resources) ... ok
+test_local_resources_markup_and_event_handlers (tests.test_game.GameTests.test_local_resources_markup_and_event_handlers) ... ok
+test_new_avatar_face_and_bangs_share_layers_and_persist_in_both_modes (tests.test_game.GameTests.test_new_avatar_face_and_bangs_share_layers_and_persist_in_both_modes) ... ok
+test_paper_doll_ui_keeps_two_loadouts_and_shared_appearance_across_reload (tests.test_game.GameTests.test_paper_doll_ui_keeps_two_loadouts_and_shared_appearance_across_reload) ... ok
+test_patient_tunic_preserves_existing_explicitly_empty_outfits (tests.test_game.GameTests.test_patient_tunic_preserves_existing_explicitly_empty_outfits) ... ok
+test_phone_layout_dialogs_rotation_and_keyboard (tests.test_game.GameTests.test_phone_layout_dialogs_rotation_and_keyboard) ... ok
+test_raid_archive_identity_and_shared_tabs (tests.test_game.GameTests.test_raid_archive_identity_and_shared_tabs) ... ok
+test_shop_and_medicine_effects_match_in_and_out_of_battle (tests.test_game.GameTests.test_shop_and_medicine_effects_match_in_and_out_of_battle) ... ok
+test_staff_collection_interrupted_claim_recovers_once (tests.test_game.GameTests.test_staff_collection_interrupted_claim_recovers_once) ... ok
+test_staff_pity_rewards_and_clear_preserve_collection (tests.test_game.GameTests.test_staff_pity_rewards_and_clear_preserve_collection) ... ok
+test_untrusted_text_stays_text (tests.test_game.GameTests.test_untrusted_text_stays_text) ... ok
+test_wardrobe_complex_layers_update_both_views_and_clean_up_after_removal (tests.test_game.GameTests.test_wardrobe_complex_layers_update_both_views_and_clean_up_after_removal) ... ok
+test_wardrobe_scale_matches_room_height_and_keeps_full_layer_canvas (tests.test_game.GameTests.test_wardrobe_scale_matches_room_height_and_keeps_full_layer_canvas) ... ok
+test_wide_wardrobe_keeps_preview_inside_and_scrolls_item_panel_on_mobile (tests.test_game.GameTests.test_wide_wardrobe_keeps_preview_inside_and_scrolls_item_panel_on_mobile) ... ok
+test_offline_gallery_filters_modal_zoom_and_mobile_layout (tests.test_male_head_library.MaleLibraryBrowserTests.test_offline_gallery_filters_modal_zoom_and_mobile_layout) ... ok
+test_all_90_combinations_layers_backgrounds_and_reload (tests.test_paper_doll_audit.AuditBrowserTests.test_all_90_combinations_layers_backgrounds_and_reload) ... ok
+test_invalid_boss_names_do_not_mutate_a_saved_character (tests.test_project_audit.GeneralBrowserTests.test_invalid_boss_names_do_not_mutate_a_saved_character) ... ok
+
+----------------------------------------------------------------------
+Ran 27 tests in 671.614s
+
+OK

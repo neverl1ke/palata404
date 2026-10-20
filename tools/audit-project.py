@@ -62,7 +62,7 @@ def audit():
   for name in tokens[path]:
    for owner in owners.get(name,[]):
     if owner!=path:edges.append({'source':path,'target':owner,'kind':'global-symbol:'+name})
- code="const fs=require('fs'),vm=require('vm');console.log(vm.runInNewContext(fs.readFileSync('paper-doll-data.js','utf8')+';JSON.stringify({frame:PAPER_DOLL_FRAME,bodies:PAPER_DOLL_BODIES,items:PAPER_DOLL_ITEMS})'))"
+ code="const fs=require('fs'),vm=require('vm');console.log(vm.runInNewContext(fs.readFileSync('paper-doll-data.js','utf8')+';JSON.stringify({frame:PAPER_DOLL_FRAME,bodies:PAPER_DOLL_BODIES,items:PAPER_DOLL_ITEMS,nativeHeads:typeof PAPER_DOLL_NATIVE_HEADS===typeof {}?PAPER_DOLL_NATIVE_HEADS:{}})'))"
  catalog=json.loads(subprocess.check_output(['node','-e',code],cwd=ROOT))
  active_pngs=sorted(set(re.findall(r'[A-Za-z0-9_./-]+\.png',json.dumps(catalog))))
  for png in active_pngs:link('paper-doll-data.js',png,'evaluated-catalog',True)

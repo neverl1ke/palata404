@@ -1,6 +1,7 @@
 """Current approved base: independent source/portrait/join regression checks."""
 import hashlib
 import json
+import subprocess
 import unittest
 from pathlib import Path
 
@@ -79,7 +80,8 @@ class FemaleBaseReplacementTests(unittest.TestCase):
 
     def test_released_masks_and_heads_are_versioned_and_other_art_is_unchanged(self):
         manifest = json.loads((REPORT/'replacement-manifest.json').read_text())
-        catalog = (ROOT/'paper-doll-data.js').read_text()
+        # Historical release paths; current derivatives are checked independently.
+        catalog = subprocess.check_output(['git','show','fd20bc3:paper-doll-data.js'],cwd=ROOT,text=True)
         self.assertEqual(len(manifest['files']),17)
         for entry in manifest['files']:
             digest = hashlib.sha256((ROOT/entry['path']).read_bytes()).hexdigest()

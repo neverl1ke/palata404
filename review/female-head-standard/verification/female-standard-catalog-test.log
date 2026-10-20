@@ -1,0 +1,6 @@
+test_all_seventeen_catalog_resources_and_cache_hashes_are_registered (tests.test_female_head_standard.FemaleStandardAssetTests.test_all_seventeen_catalog_resources_and_cache_hashes_are_registered) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.203s
+
+OK

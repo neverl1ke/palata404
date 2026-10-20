@@ -1,0 +1,72 @@
+test_full_female_face_hair_matrix_has_correct_layers_and_palette (tests.test_female_faces.FemaleFacesBrowserTests.test_full_female_face_hair_matrix_has_correct_layers_and_palette) ... ok
+test_native_head_is_rendered_but_stays_null_in_saves_and_clears_on_male (tests.test_female_head_standard.FemaleStandardBrowserTests.test_native_head_is_rendered_but_stays_null_in_saves_and_clears_on_male) ... ok
+test_approved_tunic_composite_matches_supplied_overlay_reference_in_both_views (tests.test_game.GameTests.test_approved_tunic_composite_matches_supplied_overlay_reference_in_both_views) ... ok
+test_asian_heads_real_css_order_hair_compatibility_and_reload (tests.test_game.GameTests.test_asian_heads_real_css_order_hair_compatibility_and_reload) ... FAIL
+test_compact_victory_actions_and_report_reopening_do_not_pay_again (tests.test_game.GameTests.test_compact_victory_actions_and_report_reopening_do_not_pay_again) ... ok
+test_corrupt_saves_and_denied_storage_do_not_break_boot (tests.test_game.GameTests.test_corrupt_saves_and_denied_storage_do_not_break_boot) ... ok
+test_equipment_swap_reload_and_legacy_training_bonus (tests.test_game.GameTests.test_equipment_swap_reload_and_legacy_training_bonus) ... ok
+test_folder_hud_navigation_active_tabs_and_mobile_bounds (tests.test_game.GameTests.test_folder_hud_navigation_active_tabs_and_mobile_bounds) ... ok
+test_gym_energy_psychosis_and_dossier_refresh (tests.test_game.GameTests.test_gym_energy_psychosis_and_dossier_refresh) ... ok
+test_helper_mvp_and_long_report_remain_accessible_in_compact_view (tests.test_game.GameTests.test_helper_mvp_and_long_report_remain_accessible_in_compact_view) ... ok
+test_local_icons_render_in_static_and_dynamic_views (tests.test_game.GameTests.test_local_icons_render_in_static_and_dynamic_views) ... ok
+test_neck_join_does_not_add_transparency_on_four_backgrounds_and_leaves_the_body_intact (tests.test_game.GameTests.test_neck_join_does_not_add_transparency_on_four_backgrounds_and_leaves_the_body_intact) ... FAIL
+test_paper_doll_missing_png_falls_back_or_hides_without_broken_images (tests.test_game.GameTests.test_paper_doll_missing_png_falls_back_or_hides_without_broken_images) ... ok
+test_patient_shirt_art_preview_uses_unchanged_bases_and_preserves_game_saves (tests.test_game.GameTests.test_patient_shirt_art_preview_uses_unchanged_bases_and_preserves_game_saves) ... ok
+test_patient_tunic_starter_and_independent_loadouts_survive_equip_unequip_reload (tests.test_game.GameTests.test_patient_tunic_starter_and_independent_loadouts_survive_equip_unequip_reload) ... ok
+test_raid_archive_hud_snapshots_and_clear_confirmation (tests.test_game.GameTests.test_raid_archive_hud_snapshots_and_clear_confirmation) ... ok
+test_registration_room_identity_modes_monitor_and_mobile_geometry (tests.test_game.GameTests.test_registration_room_identity_modes_monitor_and_mobile_geometry) ... ok
+test_staff_archive_unknown_cases_first_contact_and_details (tests.test_game.GameTests.test_staff_archive_unknown_cases_first_contact_and_details) ... ok
+test_staff_journal_documents_and_reward_cards_are_read_only_and_responsive (tests.test_game.GameTests.test_staff_journal_documents_and_reward_cards_are_read_only_and_responsive) ... ok
+test_trial_faces_are_not_loaded_or_selectable_after_old_save_migration (tests.test_game.GameTests.test_trial_faces_are_not_loaded_or_selectable_after_old_save_migration) ... ok
+test_victory_protocol_mobile_scroll_and_controls (tests.test_game.GameTests.test_victory_protocol_mobile_scroll_and_controls) ... ok
+test_wardrobe_inventory_ownership_and_old_appearance_migration (tests.test_game.GameTests.test_wardrobe_inventory_ownership_and_old_appearance_migration) ... ok
+test_wardrobe_v3_has_a_large_stage_compact_gender_switch_and_independent_inspection (tests.test_game.GameTests.test_wardrobe_v3_has_a_large_stage_compact_gender_switch_and_independent_inspection) ... ok
+test_new_male_catalog_and_tunic_render_on_every_head (tests.test_male_head_library.MaleLibraryBrowserTests.test_new_male_catalog_and_tunic_render_on_every_head) ... ok
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 59344)
+Traceback (most recent call last):
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/http/server.py", line 676, in __init__
+    super().__init__(*args, **kwargs)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/socketserver.py", line 766, in __init__
+    self.handle()
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/http/server.py", line 440, in handle
+    self.handle_one_request()
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/http/server.py", line 428, in handle_one_request
+    method()
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/http/server.py", line 683, in do_GET
+    self.copyfile(f, self.wfile)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/http/server.py", line 882, in copyfile
+    shutil.copyfileobj(source, outputfile)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/shutil.py", line 204, in copyfileobj
+    fdst_write(buf)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/socketserver.py", line 845, in write
+    self._sock.sendall(b)
+ConnectionResetError: [Errno 104] Connection reset by peer
+----------------------------------------
+test_female_cards_are_available_and_never_leak_to_male_catalog (tests.test_new_female_heads.NewFemaleHeadsBrowserTests.test_female_cards_are_available_and_never_leak_to_male_catalog) ... ok
+test_rear_and_front_palette_preserve_alpha_for_five_colors (tests.test_paper_doll_audit.AuditBrowserTests.test_rear_and_front_palette_preserve_alpha_for_five_colors) ... ok
+
+======================================================================
+FAIL: test_asian_heads_real_css_order_hair_compatibility_and_reload (tests.test_game.GameTests.test_asian_heads_real_css_order_hair_compatibility_and_reload)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/palata404/tests/test_game.py", line 1634, in test_asian_heads_real_css_order_hair_compatibility_and_reload
+    self.assertIn(f'/faces/{gender}_asian_head.png',face.get_attribute('src'))
+AssertionError: '/faces/female_asian_head.png' not found in 'assets/wardrobe/faces/standardized/female_asian_head.png?v=52c4d4c9'
+
+======================================================================
+FAIL: test_neck_join_does_not_add_transparency_on_four_backgrounds_and_leaves_the_body_intact (tests.test_game.GameTests.test_neck_join_does_not_add_transparency_on_four_backgrounds_and_leaves_the_body_intact)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/palata404/tests/test_game.py", line 1461, in test_neck_join_does_not_add_transparency_on_four_backgrounds_and_leaves_the_body_intact
+    self.assertEqual(before,after,'Face switch altered the unchanged lower body')
+AssertionError: b'\x8[114 chars]x9cD}i\x8fe\xc9q]f\xde\xf5-\xb5\xf5\xbe\xcc\xb[47918 chars]\x82' != b'\x8[114 chars]x9cD}Y\xcfe\xc7u]U\x9d\xf1\x0e\xdf\xd4#\xbb\x9[47913 chars]\x82' : Face switch altered the unchanged lower body
+
+----------------------------------------------------------------------
+Ran 26 tests in 496.103s
+
+FAILED (failures=2)

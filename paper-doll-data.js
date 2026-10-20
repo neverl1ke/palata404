@@ -23,6 +23,15 @@ const PAPER_DOLL_SLOTS = {
 };
 // Hashes of the integrated bodies invalidate previously cached art.
 const PAPER_DOLL_BODIES = { male: 'base_male.png?v=b40a31b2', female: 'base_female.png?v=a27b499c' };
+
+// Rendering-only native female head; the approved body and null save choice stay unchanged.
+const PAPER_DOLL_NATIVE_HEADS = Object.freeze({
+    female: { id: 'native-female-head', slot: 'face', renderOrder: 1, fittedToGender: true,
+        genderVariants: { female: 'assets/wardrobe/faces/standardized/female_native_head.png?v=637a5c39' },
+        bodyMaskByGender: { female: 'assets/wardrobe/faces/masks/standardized/female_native_body.png?v=ad13fbe5' },
+        placementByGender: { female: { x: 0, y: 0, width: 941, height: 1672 } } }
+});
+
 // The six retired trial faces stay on disk, but are not catalog entries.
 // New approved cosmetics can use the face slot, placement and multipart layers.
 const PAPER_DOLL_RETIRED_FACES = new Set(Array.from({ length: 6 }, (_, index) => `face_${index + 1}.png`));
@@ -35,8 +44,8 @@ const PAPER_DOLL_ITEMS = [
         fittedToGender: true, description: 'Варіант голови для обраного базового аватара.',
         // DOM image renderer: above the body (0), below clothing and hair (9).
         renderOrder: 1,
-        genderVariants: { male: 'assets/wardrobe/faces/male_asian_head.png?v=eedab3fa', female: 'assets/wardrobe/faces/female_asian_head.png?v=8b9e4f6d' },
-        bodyMaskByGender: { male: 'assets/wardrobe/faces/masks/male_asian_body.png?v=d7dceaa5', female: 'assets/wardrobe/faces/masks/female_asian_body.png?v=261962e4' },
+        genderVariants: { male: 'assets/wardrobe/faces/male_asian_head.png?v=eedab3fa', female: 'assets/wardrobe/faces/standardized/female_asian_head.png?v=52c4d4c9' },
+        bodyMaskByGender: { male: 'assets/wardrobe/faces/masks/male_asian_body.png?v=d7dceaa5', female: 'assets/wardrobe/faces/masks/standardized/female_asian_body.png?v=3758d982' },
         placementByGender: {
             male: { x: 0, y: 0, width: 941, height: 1672 },
             female: { x: 0, y: 0, width: 941, height: 1672 }
@@ -55,8 +64,8 @@ const PAPER_DOLL_ITEMS = [
         fittedToGender: true, description: 'Виснажений, тривожний тип обличчя.',
         // DOM image renderer: above the body (0), below clothing and hair (9).
         renderOrder: 1,
-        genderVariants: { male: 'assets/wardrobe/faces/male_exhausted_head.png?v=b9585100', female: 'assets/wardrobe/faces/female_exhausted_head.png?v=9251f606' },
-        bodyMaskByGender: { male: 'assets/wardrobe/faces/masks/male_exhausted_body.png?v=c68b5fb0', female: 'assets/wardrobe/faces/masks/female_exhausted_body.png?v=261962e4' },
+        genderVariants: { male: 'assets/wardrobe/faces/male_exhausted_head.png?v=b9585100', female: 'assets/wardrobe/faces/standardized/female_exhausted_head.png?v=ce67809c' },
+        bodyMaskByGender: { male: 'assets/wardrobe/faces/masks/male_exhausted_body.png?v=c68b5fb0', female: 'assets/wardrobe/faces/masks/standardized/female_exhausted_body.png?v=afd339da' },
         placementByGender: {
             male: { x: 0, y: 0, width: 941, height: 1672 },
             female: { x: 0, y: 0, width: 941, height: 1672 }
@@ -65,74 +74,74 @@ const PAPER_DOLL_ITEMS = [
         fittedToGender: true, description: 'Старший тип обличчя, 60+ років.',
         // DOM image renderer: above the body (0), below clothing and hair (9).
         renderOrder: 1,
-        genderVariants: { male: 'assets/wardrobe/faces/male_elder_head.png?v=bb0d89be', female: 'assets/wardrobe/faces/female_elder_head.png?v=8362bed4' },
-        bodyMaskByGender: { male: 'assets/wardrobe/faces/masks/male_elder_body.png?v=97381503', female: 'assets/wardrobe/faces/masks/female_elder_body.png?v=261962e4' },
+        genderVariants: { male: 'assets/wardrobe/faces/male_elder_head.png?v=bb0d89be', female: 'assets/wardrobe/faces/standardized/female_elder_head.png?v=87261a6b' },
+        bodyMaskByGender: { male: 'assets/wardrobe/faces/masks/male_elder_body.png?v=97381503', female: 'assets/wardrobe/faces/masks/standardized/female_elder_body.png?v=b4ed9fbc' },
         placementByGender: {
             male: { x: 0, y: 0, width: 941, height: 1672 },
             female: { x: 0, y: 0, width: 941, height: 1672 }
         } },
     { id: 'face-alternative', slot: 'face', name: 'Нове обличчя', icon: 'user', availableByDefault: true,
         fittedToGender: true, description: 'Новий затверджений варіант обличчя для обраної статі.', renderOrder: 1,
-        genderVariants: { male: 'assets/wardrobe/faces/male_alternative_head.png?v=82a9642a', female: 'assets/wardrobe/faces/female_alternative_head.png?v=e752b2b0' },
-        bodyMaskByGender: { male: 'assets/wardrobe/faces/masks/male_alternative_body.png?v=98c9826b', female: 'assets/wardrobe/faces/masks/female_alternative_body.png?v=261962e4' },
+        genderVariants: { male: 'assets/wardrobe/faces/male_alternative_head.png?v=82a9642a', female: 'assets/wardrobe/faces/standardized/female_alternative_head.png?v=196abd67' },
+        bodyMaskByGender: { male: 'assets/wardrobe/faces/masks/male_alternative_body.png?v=98c9826b', female: 'assets/wardrobe/faces/masks/standardized/female_alternative_body.png?v=20760cdf' },
         placementByGender: {
             male: { x: 0, y: 0, width: 941, height: 1672 },
             female: { x: 0, y: 0, width: 941, height: 1672 }
         } },
     { id: 'face-ginger-soft', slot: 'face', name: 'Світле ніжне обличчя', icon: 'user', availableByDefault: true,
         genders: ['female'], fittedToGender: true, description: 'Світлий жіночий портрет із ніжними рисами.', renderOrder: 1,
-        genderVariants: { female: 'assets/wardrobe/faces/female_ginger_soft_head.png?v=07eb9f2c' },
-        bodyMaskByGender: { female: 'assets/wardrobe/faces/masks/female_ginger_soft_body.png?v=b0d7db9f' },
+        genderVariants: { female: 'assets/wardrobe/faces/standardized/female_ginger_soft_head.png?v=cf0fbb3a' },
+        bodyMaskByGender: { female: 'assets/wardrobe/faces/masks/standardized/female_ginger_soft_body.png?v=305568ba' },
         placementByGender: { female: { x: 0, y: 0, width: 941, height: 1672 } } },
     { id: 'face-goth-septum', slot: 'face', name: 'Готичне обличчя із септумом', icon: 'user', availableByDefault: true,
         genders: ['female'], fittedToGender: true, description: 'Жіночий портрет із готичним макіяжем і септумом.', renderOrder: 1,
-        genderVariants: { female: 'assets/wardrobe/faces/female_goth_septum_head.png?v=1923e9b4' },
-        bodyMaskByGender: { female: 'assets/wardrobe/faces/masks/female_goth_septum_body.png?v=b0d7db9f' },
+        genderVariants: { female: 'assets/wardrobe/faces/standardized/female_goth_septum_head.png?v=5bf67cbf' },
+        bodyMaskByGender: { female: 'assets/wardrobe/faces/masks/standardized/female_goth_septum_body.png?v=85fc7166' },
         placementByGender: { female: { x: 0, y: 0, width: 941, height: 1672 } } },
     { id: 'face-goth-black-lips', slot: 'face', name: 'Готичне обличчя з чорними губами', icon: 'user', availableByDefault: true,
         genders: ['female'], fittedToGender: true, description: 'Жіночий портрет із чорними губами та пірсингом.', renderOrder: 1,
-        genderVariants: { female: 'assets/wardrobe/faces/female_goth_black_lips_head.png?v=0df58ed9' },
-        bodyMaskByGender: { female: 'assets/wardrobe/faces/masks/female_goth_black_lips_body.png?v=b0d7db9f' },
+        genderVariants: { female: 'assets/wardrobe/faces/standardized/female_goth_black_lips_head.png?v=a66a1beb' },
+        bodyMaskByGender: { female: 'assets/wardrobe/faces/masks/standardized/female_goth_black_lips_body.png?v=36289728' },
         placementByGender: { female: { x: 0, y: 0, width: 941, height: 1672 } } },
     { id: 'face-female-new-defined-brows', slot: 'face', name: 'Чіткі брови', icon: 'user', availableByDefault: true,
         genders: ['female'], fittedToGender: true, description: 'Новий жіночий портрет із наданого комплекту.', renderOrder: 1,
-        genderVariants: { female: 'assets/wardrobe/faces/female_new_defined_brows_head.png?v=6c4669d5' },
-        bodyMaskByGender: { female: 'assets/wardrobe/faces/masks/female_new_defined_brows_body.png?v=311e8257' },
+        genderVariants: { female: 'assets/wardrobe/faces/standardized/female_new_defined_brows_head.png?v=a54f63a4' },
+        bodyMaskByGender: { female: 'assets/wardrobe/faces/masks/standardized/female_new_defined_brows_body.png?v=190b5a79' },
         placementByGender: { female: { x: 0, y: 0, width: 941, height: 1672 } } },
     { id: 'face-female-new-blue-gaze', slot: 'face', name: 'Блакитний погляд', icon: 'user', availableByDefault: true,
         genders: ['female'], fittedToGender: true, description: 'Новий жіночий портрет із наданого комплекту.', renderOrder: 1,
-        genderVariants: { female: 'assets/wardrobe/faces/female_new_blue_gaze_head.png?v=2c0321a2' },
-        bodyMaskByGender: { female: 'assets/wardrobe/faces/masks/female_new_blue_gaze_body.png?v=311e8257' },
+        genderVariants: { female: 'assets/wardrobe/faces/standardized/female_new_blue_gaze_head.png?v=f8e73361' },
+        bodyMaskByGender: { female: 'assets/wardrobe/faces/masks/standardized/female_new_blue_gaze_body.png?v=677c5e54' },
         placementByGender: { female: { x: 0, y: 0, width: 941, height: 1672 } } },
     { id: 'face-female-new-freckled', slot: 'face', name: 'Веснянки', icon: 'user', availableByDefault: true,
         genders: ['female'], fittedToGender: true, description: 'Новий жіночий портрет із наданого комплекту.', renderOrder: 1,
-        genderVariants: { female: 'assets/wardrobe/faces/female_new_freckled_head.png?v=96411367' },
-        bodyMaskByGender: { female: 'assets/wardrobe/faces/masks/female_new_freckled_body.png?v=311e8257' },
+        genderVariants: { female: 'assets/wardrobe/faces/standardized/female_new_freckled_head.png?v=de5cbf25' },
+        bodyMaskByGender: { female: 'assets/wardrobe/faces/masks/standardized/female_new_freckled_body.png?v=c3c9d8fc' },
         placementByGender: { female: { x: 0, y: 0, width: 941, height: 1672 } } },
     { id: 'face-female-new-mature', slot: 'face', name: 'Зріле обличчя', icon: 'user', availableByDefault: true,
         genders: ['female'], fittedToGender: true, description: 'Новий жіночий портрет із наданого комплекту.', renderOrder: 1,
-        genderVariants: { female: 'assets/wardrobe/faces/female_new_mature_head.png?v=a03633f9' },
-        bodyMaskByGender: { female: 'assets/wardrobe/faces/masks/female_new_mature_body.png?v=311e8257' },
+        genderVariants: { female: 'assets/wardrobe/faces/standardized/female_new_mature_head.png?v=a7b8664b' },
+        bodyMaskByGender: { female: 'assets/wardrobe/faces/masks/standardized/female_new_mature_body.png?v=11af201f' },
         placementByGender: { female: { x: 0, y: 0, width: 941, height: 1672 } } },
     { id: 'face-female-new-light-eyes', slot: 'face', name: 'Світлі очі', icon: 'user', availableByDefault: true,
         genders: ['female'], fittedToGender: true, description: 'Новий жіночий портрет із наданого комплекту.', renderOrder: 1,
-        genderVariants: { female: 'assets/wardrobe/faces/female_new_light_eyes_head.png?v=ec9f7c38' },
-        bodyMaskByGender: { female: 'assets/wardrobe/faces/masks/female_new_light_eyes_body.png?v=311e8257' },
+        genderVariants: { female: 'assets/wardrobe/faces/standardized/female_new_light_eyes_head.png?v=1e9f11b0' },
+        bodyMaskByGender: { female: 'assets/wardrobe/faces/masks/standardized/female_new_light_eyes_body.png?v=581b479d' },
         placementByGender: { female: { x: 0, y: 0, width: 941, height: 1672 } } },
     { id: 'face-female-new-pierced', slot: 'face', name: 'Обличчя з пірсингом', icon: 'user', availableByDefault: true,
         genders: ['female'], fittedToGender: true, description: 'Новий жіночий портрет із наданого комплекту.', renderOrder: 1,
-        genderVariants: { female: 'assets/wardrobe/faces/female_new_pierced_head.png?v=ad275503' },
-        bodyMaskByGender: { female: 'assets/wardrobe/faces/masks/female_new_pierced_body.png?v=311e8257' },
+        genderVariants: { female: 'assets/wardrobe/faces/standardized/female_new_pierced_head.png?v=d4eaac3f' },
+        bodyMaskByGender: { female: 'assets/wardrobe/faces/masks/standardized/female_new_pierced_body.png?v=ae9ea9ef' },
         placementByGender: { female: { x: 0, y: 0, width: 941, height: 1672 } } },
     { id: 'face-female-new-soft-gaze', slot: 'face', name: 'М’який погляд', icon: 'user', availableByDefault: true,
         genders: ['female'], fittedToGender: true, description: 'Новий жіночий портрет із наданого комплекту.', renderOrder: 1,
-        genderVariants: { female: 'assets/wardrobe/faces/female_new_soft_gaze_head.png?v=d9a95fad' },
-        bodyMaskByGender: { female: 'assets/wardrobe/faces/masks/female_new_soft_gaze_body.png?v=311e8257' },
+        genderVariants: { female: 'assets/wardrobe/faces/standardized/female_new_soft_gaze_head.png?v=244a08d9' },
+        bodyMaskByGender: { female: 'assets/wardrobe/faces/masks/standardized/female_new_soft_gaze_body.png?v=626f6476' },
         placementByGender: { female: { x: 0, y: 0, width: 941, height: 1672 } } },
     { id: 'face-female-new-almond-eyes', slot: 'face', name: 'Мигдалеподібні очі', icon: 'user', availableByDefault: true,
         genders: ['female'], fittedToGender: true, description: 'Новий жіночий портрет із наданого комплекту.', renderOrder: 1,
-        genderVariants: { female: 'assets/wardrobe/faces/female_new_almond_eyes_head.png?v=02fc4e4f' },
-        bodyMaskByGender: { female: 'assets/wardrobe/faces/masks/female_new_almond_eyes_body.png?v=311e8257' },
+        genderVariants: { female: 'assets/wardrobe/faces/standardized/female_new_almond_eyes_head.png?v=288f4b4f' },
+        bodyMaskByGender: { female: 'assets/wardrobe/faces/masks/standardized/female_new_almond_eyes_body.png?v=905daa9b' },
         placementByGender: { female: { x: 0, y: 0, width: 941, height: 1672 } } },
     { id: 'face-male-goth-pierced', slot: 'face', name: 'Готичне обличчя з пірсингом', icon: 'user', availableByDefault: true,
         genders: ['male'], fittedToGender: true, description: 'Чоловічий портрет із погодженого комплекту.', renderOrder: 1,

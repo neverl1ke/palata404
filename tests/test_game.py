@@ -248,6 +248,10 @@ class GameTests(unittest.TestCase):
         self.page.on('pageerror', lambda error: self.errors.append(str(error)))
         self.page.on('dialog', lambda dialog: dialog.accept())
 
+    def native_head_source(self):
+        # The normalized female original is a rendering-only head, not a saved face ID.
+        return self.page.evaluate('paperDollState.selectedGender==="female" ? PAPER_DOLL_NATIVE_HEADS.female.genderVariants.female : null')
+
     def open_hair_palette(self):
         toggle=self.page.locator('[data-palette-toggle]')
         if toggle.count() and toggle.is_visible() and toggle.get_attribute('aria-expanded')=='false':toggle.click()
@@ -362,7 +366,7 @@ class GameTests(unittest.TestCase):
         self.assertEqual(wardrobe.locator('[data-wardrobe-card]').count(),16)
         self.assertIn('Оригінальне обличчя',wardrobe.locator('#wardrobe-container').inner_text())
         for prefix in ['', 'wardrobe-']:
-            self.assertIsNone(self.page.locator(f'#{prefix}layer-face').get_attribute('src'))
+            self.assertEqual(self.page.locator(f'#{prefix}layer-face').get_attribute('src'),self.native_head_source())
         wardrobe.locator('[data-wardrobe-category="gear"]').click()
         wardrobe.locator('[data-wardrobe-slot="armor"]').click()
         card=wardrobe.locator('[data-wardrobe-card="gear-br1"]')
@@ -392,7 +396,7 @@ class GameTests(unittest.TestCase):
         self.page.reload(wait_until='networkidle')
         self.assertEqual(self.page.evaluate('JSON.stringify(paperDollState)'),state)
         self.assertEqual(self.page.locator('#layer-body').get_attribute('src'),'base_female.png?v=a27b499c')
-        self.assertIsNone(self.page.locator('#layer-face').get_attribute('src'))
+        self.assertEqual(self.page.locator('#layer-face').get_attribute('src'),self.native_head_source())
         self.assertEqual(self.page.locator('#paper-doll-view-label').inner_text(),'Комплект: Трип')
         self.assertEqual(self.page.evaluate('JSON.stringify({stats,inventory,equippedGear,gameProgress})'),before)
         self.page.evaluate("PAPER_DOLL_ITEMS.push({id:'future-face',slot:'face',name:'Архівне обличчя',image:'face_1.png',availableByDefault:true}); openCustomization(); setWardrobeTab('face');")
@@ -726,7 +730,7 @@ class GameTests(unittest.TestCase):
         self.assertFalse(self.page.evaluate('equipPaperDollItem("weapon","gear-pm")'))
         self.assertEqual(self.page.evaluate('inventory.length'),0)
         self.page.evaluate('setPaperDollView("patient"); selectWardrobeCategory("appearance"); selectWardrobeSlot("face");')
-        self.assertIsNone(self.page.locator('#wardrobe-layer-face').get_attribute('src'))
+        self.assertEqual(self.page.locator('#wardrobe-layer-face').get_attribute('src'),self.native_head_source())
         self.assertEqual(self.page.locator('[data-wardrobe-card]').count(),16)
 
     def test_wardrobe_complex_layers_update_both_views_and_clean_up_after_removal(self):
@@ -768,7 +772,7 @@ class GameTests(unittest.TestCase):
                         # can still describe the previous PNG while src changes.
                         self.page.locator(f'#{prefix}layer-body').wait_for(state='visible')
                         self.assertTrue(self.page.locator(f'#{prefix}layer-body').is_visible())
-                        self.assertFalse(self.page.locator(f'#{prefix}layer-face').is_visible())
+                        self.assertEqual(self.page.locator(f'#{prefix}layer-face').is_visible(), gender == 'female')
                     self.assertEqual(self.page.locator('#layer-body').get_attribute('src'),self.page.locator('#wardrobe-layer-body').get_attribute('src'))
                     self.page.screenshot(path=str(results/f'approved-{gender}-wardrobe-{width}x{height}.png'))
                     self.page.evaluate('closeCustomization()')
@@ -1366,7 +1370,10 @@ class GameTests(unittest.TestCase):
                 self.page.locator('#pixel-doll').evaluate('(e,bg)=>e.style.background=bg',bg)
                 image=Image.open(BytesIO(self.page.screenshot(clip=clip))).convert('RGB')
                 if reference is None: reference=image
-                for box in [(426,100,516,119),(445,174,501,197),(397,130,408,150),(538,130,548,150)]:
+                # Normalized female ears sit lower; sample the actual opaque interior,
+                # not the former exterior position. RGB must still match exactly.
+                ears = [(398,140,408,150),(538,140,547,150)] if gender == 'female' else [(397,130,408,150),(538,130,548,150)]
+                for box in [(426,100,516,119),(445,174,501,197),*ears]:
                     local=(box[0]-365,box[1]-20,box[2]-365,box[3]-20)
                     self.assertIsNone(ImageChops.difference(reference.crop(local),image.crop(local)).getbbox(),f'{gender}: opaque brows/jaw/ear changed on {bg}')
         self.page.locator('#pixel-doll').evaluate('e=>e.remove()')
@@ -1422,7 +1429,8 @@ class GameTests(unittest.TestCase):
         for face in [None]:
             self.page.evaluate('face=>equipPaperDollItem("face",face)',face)
             for prefix in ['','wardrobe-']:
-                self.assertEqual(self.page.locator('#'+prefix+'layer-body').evaluate('i=>getComputedStyle(i).maskImage'),'none')
+                mask=self.page.locator('#'+prefix+'layer-body').evaluate('i=>getComputedStyle(i).maskImage')
+                self.assertIn('standardized/female_native_body.png',mask)
         self.assertEqual(self.page.evaluate('JSON.stringify({stats,inventory,equippedGear})'),before)
         self.assertEqual(missing,[])
 
@@ -1447,9 +1455,10 @@ class GameTests(unittest.TestCase):
                     self.assertLessEqual(max(v[1] for v in ImageChops.difference(reference,image).getextrema()),4, f"{entry['kind']} {entry['gender']}: new translucent neck on {bg}")
                 y=entry['profile']['end_y']+entry['profile']['overlap']+2
                 if entry['gender']=='female':
-                    release=json.loads((ROOT/'review/female-faces-integration/integration-manifest.json').read_text())
-                    active=next(e for e in release['files'] if e['kind']==entry['kind'])
-                    y=active['neck']['body_restored_y']+2
+                    release=json.loads((ROOT/'review/female-head-standard/manifest.json').read_text())
+                    # Both normalized native and selected female heads restore
+                    # the unchanged body at y=300; compare below that join.
+                    y=release['neck']['body_restored_y']+2
                 clip={'x':360,'y':y,'width':230,'height':45}
                 after=self.page.screenshot(clip=clip)
                 self.page.evaluate("""()=>{equipPaperDollItem('face',null);renderPaperDollAt(document.getElementById('neck-pixels'),'neck-pixel-')}""")
@@ -1597,7 +1606,9 @@ class GameTests(unittest.TestCase):
                 self.page.evaluate('openCustomization();selectWardrobeCategory("appearance");selectWardrobeSlot("face")')
             self.page.locator('[data-wardrobe-native-face]').click()
             self.assertIsNone(self.page.evaluate('paperDollState.appearance.face'))
-            self.assertEqual(self.page.locator('#wardrobe-layer-body').evaluate('i=>getComputedStyle(i).maskImage'),'none')
+            mask=self.page.locator('#wardrobe-layer-body').evaluate('i=>getComputedStyle(i).maskImage')
+            if gender == 'female': self.assertIn('standardized/female_native_body.png', mask)
+            else: self.assertEqual(mask,'none')
         self.assertEqual(self.page.evaluate('JSON.stringify({stats,inventory,equippedGear,hair:PAPER_DOLL_ITEMS.filter(i=>i.slot==="hair"),colors:HAIR_COLORS})'),original)
 
     def test_asian_heads_real_css_order_hair_compatibility_and_reload(self):
@@ -1627,7 +1638,8 @@ class GameTests(unittest.TestCase):
                             self.page.wait_for_function('''()=>['layer-hair','wardrobe-layer-hair'].every(id=>{const i=document.getElementById(id);return i.complete&&i.naturalWidth>0&&!i.classList.contains('hidden')})''')
                         for prefix in ['','wardrobe-']:
                             face=self.page.locator(f'#{prefix}layer-face')
-                            self.assertIn(f'/faces/{gender}_asian_head.png',face.get_attribute('src'))
+                            expected_path=f'/faces/{"standardized/" if gender == "female" else ""}{gender}_asian_head.png'
+                            self.assertIn(expected_path,face.get_attribute('src'))
                             order=face.evaluate('i=>({inline:i.style.zIndex,computed:getComputedStyle(i).zIndex,x:i.style.left,y:i.style.top,w:i.style.width,h:i.style.height})')
                             # Real CSS rejects fractional z-index; a mocked style object cannot catch this.
                             self.assertEqual(order,{'inline':'1','computed':'1','x':'0%','y':'0%','w':'100%','h':'100%'})
@@ -1653,7 +1665,7 @@ class GameTests(unittest.TestCase):
         self.assertIsNone(self.page.evaluate('paperDollState.appearance.face'))
         self.assertEqual(self.page.evaluate('paperDollState.appearance.hair'),'hair-shoulder-length')
         self.assertEqual(self.page.evaluate('paperDollState.appearance.hairColor'),'lime')
-        self.assertIsNone(self.page.locator('#wardrobe-layer-face').get_attribute('src'))
+        self.assertEqual(self.page.locator('#wardrobe-layer-face').get_attribute('src'),self.native_head_source())
         self.assertEqual(missing,[])
 
     def test_hair_palette_colors_alpha_persistence_races_and_responsive_ui(self):
@@ -1898,7 +1910,7 @@ class GameTests(unittest.TestCase):
             self.assertEqual(self.page.evaluate('paperDollState.combatLoadout.weapon'),'gear-pm')
             self.assertEqual(self.page.locator('[data-wardrobe-card]').count(),16)
             for prefix in ['', 'wardrobe-']:
-                self.assertIsNone(self.page.locator(f'#{prefix}layer-face').get_attribute('src'))
+                self.assertEqual(self.page.locator(f'#{prefix}layer-face').get_attribute('src'),self.native_head_source())
                 self.assertTrue(self.page.locator(f'#{prefix}layer-body').is_visible())
         self.assertFalse(any(re.search(r'/face_[1-6]\.png',url) for url in requests))
 

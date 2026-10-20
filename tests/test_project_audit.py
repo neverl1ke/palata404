@@ -25,9 +25,9 @@ class GeneralAssetTests(unittest.TestCase):
    self.assertNotIn(entry['path'],[p.split('?')[0] for p in requests]);self.assertTrue(entry['reason']);self.assertFalse(any(e['target']==entry['path'] for e in before['edges']))
  def test_registered_paper_doll_assets_and_paths_match_case(self):
   import subprocess,re
-  code="const fs=require('fs'),vm=require('vm');console.log(vm.runInNewContext(fs.readFileSync('paper-doll-data.js','utf8')+';JSON.stringify({bodies:PAPER_DOLL_BODIES,items:PAPER_DOLL_ITEMS})'))"
+  code="const fs=require('fs'),vm=require('vm');console.log(vm.runInNewContext(fs.readFileSync('paper-doll-data.js','utf8')+';JSON.stringify({bodies:PAPER_DOLL_BODIES,items:PAPER_DOLL_ITEMS,nativeHeads:PAPER_DOLL_NATIVE_HEADS})'))"
   catalog=json.loads(subprocess.check_output(['node','-e',code],cwd=ROOT));paths=set(re.findall(r'[A-Za-z0-9_./-]+\.png',json.dumps(catalog)))
-  self.assertEqual(len(paths),65)  # Male pack plus eight additional female heads and masks.
+  self.assertEqual(len(paths),67)  # Male pack plus eight additional female heads and masks.
   for path in paths:
    self.assertTrue((ROOT/path).is_file(),path)
    current=ROOT

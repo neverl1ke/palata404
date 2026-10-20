@@ -1,0 +1,8 @@
+test_asian_heads_real_css_order_hair_compatibility_and_reload (tests.test_game.GameTests.test_asian_heads_real_css_order_hair_compatibility_and_reload) ... ok
+test_neck_join_does_not_add_transparency_on_four_backgrounds_and_leaves_the_body_intact (tests.test_game.GameTests.test_neck_join_does_not_add_transparency_on_four_backgrounds_and_leaves_the_body_intact) ... ok
+test_young_faces_switch_hair_outfits_and_reload_without_leaking_body_masks (tests.test_game.GameTests.test_young_faces_switch_hair_outfits_and_reload_without_leaking_body_masks) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 120.430s
+
+OK

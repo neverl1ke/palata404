@@ -1,0 +1,10 @@
+test_crown_mask_pixels_locality_backgrounds_and_neckline (tests.test_game.GameTests.test_crown_mask_pixels_locality_backgrounds_and_neckline) ... ok
+test_approved_avatars_show_native_faces_in_both_views_and_switch_to_trip (tests.test_game.GameTests.test_approved_avatars_show_native_faces_in_both_views_and_switch_to_trip) ... ok
+test_complete_face_catalog_selects_both_genders_and_restores_every_type (tests.test_game.GameTests.test_complete_face_catalog_selects_both_genders_and_restores_every_type) ... ok
+test_released_masks_and_heads_are_versioned_and_other_art_is_unchanged (tests.test_female_base_replacement.FemaleBaseReplacementTests.test_released_masks_and_heads_are_versioned_and_other_art_is_unchanged) ... ok
+test_all_sources_and_final_resources_are_exact_and_versioned (tests.test_female_faces.FemaleFacesAssetTests.test_all_sources_and_final_resources_are_exact_and_versioned) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 164.195s
+
+OK

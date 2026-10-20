@@ -1,0 +1,559 @@
+{
+  "reference_id": "face-young",
+  "reference_png": "reference-head.png",
+  "units": "natural Paper Doll pixels, not screen CSS pixels",
+  "frame": {
+    "width": 941,
+    "height": 1672,
+    "origin": "top-left",
+    "format": "RGBA PNG, transparent background"
+  },
+  "head_mount": {
+    "left_x": 385,
+    "right_x": 560,
+    "width": 176,
+    "crown_y": 33,
+    "center_x": 472.5,
+    "threshold_alpha": 128
+  },
+  "reference_scalp_above_ears": {
+    "rows": [
+      {
+        "y": 33,
+        "left": 468,
+        "right": 478
+      },
+      {
+        "y": 34,
+        "left": 462,
+        "right": 484
+      },
+      {
+        "y": 35,
+        "left": 457,
+        "right": 490
+      },
+      {
+        "y": 36,
+        "left": 453,
+        "right": 493
+      },
+      {
+        "y": 37,
+        "left": 450,
+        "right": 496
+      },
+      {
+        "y": 38,
+        "left": 447,
+        "right": 499
+      },
+      {
+        "y": 39,
+        "left": 445,
+        "right": 502
+      },
+      {
+        "y": 40,
+        "left": 442,
+        "right": 504
+      },
+      {
+        "y": 41,
+        "left": 440,
+        "right": 506
+      },
+      {
+        "y": 42,
+        "left": 438,
+        "right": 508
+      },
+      {
+        "y": 43,
+        "left": 437,
+        "right": 510
+      },
+      {
+        "y": 44,
+        "left": 435,
+        "right": 511
+      },
+      {
+        "y": 45,
+        "left": 433,
+        "right": 513
+      },
+      {
+        "y": 46,
+        "left": 432,
+        "right": 515
+      },
+      {
+        "y": 47,
+        "left": 430,
+        "right": 516
+      },
+      {
+        "y": 48,
+        "left": 429,
+        "right": 517
+      },
+      {
+        "y": 49,
+        "left": 428,
+        "right": 519
+      },
+      {
+        "y": 50,
+        "left": 426,
+        "right": 520
+      },
+      {
+        "y": 51,
+        "left": 425,
+        "right": 521
+      },
+      {
+        "y": 52,
+        "left": 424,
+        "right": 522
+      },
+      {
+        "y": 53,
+        "left": 423,
+        "right": 524
+      },
+      {
+        "y": 54,
+        "left": 422,
+        "right": 525
+      },
+      {
+        "y": 55,
+        "left": 421,
+        "right": 526
+      },
+      {
+        "y": 56,
+        "left": 420,
+        "right": 527
+      },
+      {
+        "y": 57,
+        "left": 419,
+        "right": 528
+      },
+      {
+        "y": 58,
+        "left": 418,
+        "right": 529
+      },
+      {
+        "y": 59,
+        "left": 417,
+        "right": 529
+      },
+      {
+        "y": 60,
+        "left": 416,
+        "right": 530
+      },
+      {
+        "y": 61,
+        "left": 415,
+        "right": 531
+      },
+      {
+        "y": 62,
+        "left": 414,
+        "right": 532
+      },
+      {
+        "y": 63,
+        "left": 413,
+        "right": 533
+      },
+      {
+        "y": 64,
+        "left": 413,
+        "right": 533
+      },
+      {
+        "y": 65,
+        "left": 412,
+        "right": 534
+      },
+      {
+        "y": 66,
+        "left": 411,
+        "right": 535
+      },
+      {
+        "y": 67,
+        "left": 410,
+        "right": 535
+      },
+      {
+        "y": 68,
+        "left": 410,
+        "right": 536
+      },
+      {
+        "y": 69,
+        "left": 409,
+        "right": 537
+      },
+      {
+        "y": 70,
+        "left": 408,
+        "right": 537
+      },
+      {
+        "y": 71,
+        "left": 408,
+        "right": 538
+      },
+      {
+        "y": 72,
+        "left": 407,
+        "right": 538
+      },
+      {
+        "y": 73,
+        "left": 406,
+        "right": 539
+      },
+      {
+        "y": 74,
+        "left": 406,
+        "right": 539
+      },
+      {
+        "y": 75,
+        "left": 405,
+        "right": 540
+      },
+      {
+        "y": 76,
+        "left": 405,
+        "right": 540
+      },
+      {
+        "y": 77,
+        "left": 404,
+        "right": 541
+      },
+      {
+        "y": 78,
+        "left": 404,
+        "right": 541
+      },
+      {
+        "y": 79,
+        "left": 403,
+        "right": 542
+      },
+      {
+        "y": 80,
+        "left": 403,
+        "right": 542
+      },
+      {
+        "y": 81,
+        "left": 403,
+        "right": 542
+      },
+      {
+        "y": 82,
+        "left": 402,
+        "right": 543
+      },
+      {
+        "y": 83,
+        "left": 402,
+        "right": 543
+      },
+      {
+        "y": 84,
+        "left": 402,
+        "right": 543
+      },
+      {
+        "y": 85,
+        "left": 402,
+        "right": 543
+      },
+      {
+        "y": 86,
+        "left": 401,
+        "right": 544
+      },
+      {
+        "y": 87,
+        "left": 401,
+        "right": 544
+      },
+      {
+        "y": 88,
+        "left": 401,
+        "right": 544
+      },
+      {
+        "y": 89,
+        "left": 400,
+        "right": 545
+      },
+      {
+        "y": 90,
+        "left": 400,
+        "right": 545
+      },
+      {
+        "y": 91,
+        "left": 400,
+        "right": 545
+      },
+      {
+        "y": 92,
+        "left": 400,
+        "right": 545
+      },
+      {
+        "y": 93,
+        "left": 400,
+        "right": 546
+      },
+      {
+        "y": 94,
+        "left": 399,
+        "right": 546
+      },
+      {
+        "y": 95,
+        "left": 399,
+        "right": 546
+      },
+      {
+        "y": 96,
+        "left": 399,
+        "right": 546
+      },
+      {
+        "y": 97,
+        "left": 399,
+        "right": 546
+      },
+      {
+        "y": 98,
+        "left": 399,
+        "right": 546
+      },
+      {
+        "y": 99,
+        "left": 399,
+        "right": 546
+      },
+      {
+        "y": 100,
+        "left": 398,
+        "right": 547
+      },
+      {
+        "y": 101,
+        "left": 398,
+        "right": 547
+      },
+      {
+        "y": 102,
+        "left": 398,
+        "right": 547
+      },
+      {
+        "y": 103,
+        "left": 398,
+        "right": 547
+      },
+      {
+        "y": 104,
+        "left": 398,
+        "right": 547
+      },
+      {
+        "y": 105,
+        "left": 398,
+        "right": 547
+      },
+      {
+        "y": 106,
+        "left": 398,
+        "right": 547
+      },
+      {
+        "y": 107,
+        "left": 398,
+        "right": 547
+      },
+      {
+        "y": 108,
+        "left": 398,
+        "right": 547
+      },
+      {
+        "y": 109,
+        "left": 398,
+        "right": 547
+      },
+      {
+        "y": 110,
+        "left": 398,
+        "right": 547
+      },
+      {
+        "y": 111,
+        "left": 398,
+        "right": 547
+      },
+      {
+        "y": 112,
+        "left": 398,
+        "right": 547
+      },
+      {
+        "y": 113,
+        "left": 398,
+        "right": 547
+      },
+      {
+        "y": 114,
+        "left": 398,
+        "right": 547
+      },
+      {
+        "y": 115,
+        "left": 398,
+        "right": 547
+      },
+      {
+        "y": 116,
+        "left": 398,
+        "right": 546
+      },
+      {
+        "y": 117,
+        "left": 398,
+        "right": 546
+      },
+      {
+        "y": 118,
+        "left": 398,
+        "right": 546
+      },
+      {
+        "y": 119,
+        "left": 398,
+        "right": 546
+      },
+      {
+        "y": 120,
+        "left": 398,
+        "right": 546
+      },
+      {
+        "y": 121,
+        "left": 398,
+        "right": 546
+      },
+      {
+        "y": 122,
+        "left": 399,
+        "right": 546
+      },
+      {
+        "y": 123,
+        "left": 399,
+        "right": 546
+      },
+      {
+        "y": 124,
+        "left": 399,
+        "right": 546
+      }
+    ],
+    "bounds": {
+      "left": 398,
+      "right": 547,
+      "top": 33,
+      "bottom": 124
+    }
+  },
+  "common_upper_scalp_envelope": {
+    "left": 394,
+    "top": 33,
+    "right": 549,
+    "bottom": 124,
+    "width": 156,
+    "height": 92
+  },
+  "landmarks_reference_visual_approximate": {
+    "left_eye": [
+      438,
+      141
+    ],
+    "right_eye": [
+      508,
+      141
+    ],
+    "chin": [
+      474,
+      240
+    ],
+    "left_temple": [
+      400,
+      120
+    ],
+    "right_temple": [
+      546,
+      120
+    ],
+    "left_ear_box": [
+      385,
+      124,
+      415,
+      185
+    ],
+    "right_ear_box": [
+      530,
+      124,
+      561,
+      185
+    ]
+  },
+  "rendering": {
+    "fittedToGender": true,
+    "x": 0,
+    "y": 0,
+    "width": 941,
+    "height": 1672,
+    "scale": 1,
+    "front_z": 9,
+    "optional_rear_z": -1
+  },
+  "high_resolution_crop": {
+    "x": 340,
+    "y": 0,
+    "width": 270,
+    "height": 420,
+    "magnification": 4,
+    "export_width": 1080,
+    "export_height": 1680,
+    "return_scale": 0.25,
+    "return_x": 340,
+    "return_y": 0
+  },
+  "limits": [
+    "All female heads share the mounting width, crown height and horizontal centre; facial shape, ear anatomy and jaw length remain individual.",
+    "A single uniform scale preserves identity; ear maximum-width rows still differ between portraits.",
+    "For short hair, cover the common upper-scalp envelope with a small natural strand overlap; the reference silhouette alone does not prove compatibility.",
+    "AI generation must be followed by real overlay verification; pixel coordinates in a prompt alone cannot guarantee exact placement."
+  ]
+}
