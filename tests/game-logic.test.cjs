@@ -1137,11 +1137,11 @@ test('the approved neckline part follows only the female tunic across modes, sav
     assert.equal(g.run('JSON.stringify({stats,inventory,equippedGear,gameProgress})'), before);
 });
 
-test('hair is shared appearance with eight choices, gender-fitted art and persistent bald reset', () => {
+test('approved hair remains shared appearance with eight choices, gender-fitted art and persistent bald reset', () => {
     const g=game();
     assert.equal(g.run('paperDollState.appearance.hair'),'hair-none');
     assert.equal(g.run('PAPER_DOLL_SLOTS.hair.label'),'Зачіски');
-    assert.equal(g.run('PAPER_DOLL_ITEMS.filter(item=>item.slot==="hair").length'),8);
+    assert.equal(g.run('PAPER_DOLL_ITEMS.filter(item=>item.slot==="hair"&&item.id!=="hair-trial-braided-curls").length'),8);
     assert.equal(g.run('wardrobeImageStatus(selectedPaperDollItem("hair")).state'),'ready');
     const before=g.run('JSON.stringify({stats,inventory,equippedGear,gameProgress,patient:paperDollState.patientLoadout,combat:paperDollState.combatLoadout})');
     for(const id of ['hair-messy','hair-bob','hair-double-buns','hair-classic-short','hair-textured-short','hair-shoulder-length']) {
@@ -1594,4 +1594,21 @@ test('female native head normalization is render-only and never becomes a saved 
     restored.run('setGender("male")');assert.equal(restored.elements.get('layer-face').getAttribute('src'),null);
     assert.equal(restored.elements.get('layer-body').style.maskImage,'');
     assert.equal(restored.run('JSON.stringify({stats,inventory,equippedGear,gameProgress})'),protectedState);
+});
+
+
+test('trial braided curls stay female-only, use the full frame, persist and have a safe missing-item fallback', () => {
+    const g=game();
+    assert.equal(g.run('equipPaperDollItem("hair","hair-trial-braided-curls")'),false);
+    g.run('setGender("female")');
+    const before=g.run('JSON.stringify({stats,inventory,equippedGear,gameProgress,patient:paperDollState.patientLoadout,combat:paperDollState.combatLoadout})');
+    assert.equal(g.run('equipPaperDollItem("hair","hair-trial-braided-curls")'),true);
+    assert.equal(g.run('JSON.stringify(selectedPaperDollItem("hair").placementByGender.female)'),JSON.stringify({x:0,y:0,width:941,height:1672}));
+    assert.match(g.elements.get('layer-hair').getAttribute('src'),/hair\/trial\/female_braided_curls.png\?v=[a-f0-9]{8}$/);
+    assert.equal(g.elements.get('layer-hair').style.zIndex,'9');
+    assert.equal(game(Object.fromEntries(g.storage)).run('paperDollState.appearance.hair'),'hair-trial-braided-curls');
+    assert.equal(g.run('JSON.stringify({stats,inventory,equippedGear,gameProgress,patient:paperDollState.patientLoadout,combat:paperDollState.combatLoadout})'),before);
+    g.run('PAPER_DOLL_ITEMS.splice(PAPER_DOLL_ITEMS.findIndex(i=>i.id==="hair-trial-braided-curls"),1);renderPaperDoll()');
+    assert.equal(g.run('selectedPaperDollItem("hair").id'),'hair-none');
+    assert.equal(g.elements.get('layer-hair').getAttribute('src'),null);
 });

@@ -1,0 +1,42 @@
+{
+  "source": "review/trial-braided-curls/generated-source.png",
+  "source_sha256": "9265bdcb3f167a621fb17bfb335499ea372659dff8a14e6da66d071f8c17b8ca",
+  "source_size": [
+    979,
+    1606
+  ],
+  "working_reference": {
+    "crop": [
+      300,
+      0,
+      660,
+      560
+    ],
+    "magnification": 3,
+    "size": [
+      1080,
+      1680
+    ]
+  },
+  "source_registration": {
+    "scale": 0.3,
+    "x": 325.5,
+    "y": -6,
+    "part_axis_x": 490
+  },
+  "output": "assets/wardrobe/hair/trial/female_braided_curls.png",
+  "sha256": "1e8cf70edd0ba0f054b9bc330f9ecdf7ac6577ce2dda526991b57e1b11c14144",
+  "canvas": [
+    941,
+    1672
+  ],
+  "placement": {
+    "x": 0,
+    "y": 0,
+    "width": 941,
+    "height": 1672
+  },
+  "remote_alpha_pixels_removed": 6,
+  "female_only": true,
+  "generated_with": "image_gen; photo design + game screenshot + reference avatar; no avatar generated or replaced"
+}

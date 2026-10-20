@@ -160,6 +160,12 @@ const PAPER_DOLL_ITEMS = [
         placementByGender: { male: { x: 0, y: 0, width: 941, height: 1672 } } },
     { id: 'hair-none', slot: 'hair', name: 'Без зачіски', icon: 'user', availableByDefault: true,
         noImageRequired: true, description: 'Початковий вигляд затвердженого аватара без накладки волосся.' },
+    // Removable single experimental female style; approved hair entries stay unchanged.
+    { id: 'hair-trial-braided-curls', slot: 'hair', name: 'Коси з локонами — пробна', icon: 'user', availableByDefault: true,
+        genders: ['female'], fittedToGender: true, renderOrder: 9,
+        description: 'Пробний варіант: довге волосся, бічні косички, локони та зірочки.',
+        genderVariants: { female: 'assets/wardrobe/hair/trial/female_braided_curls.png?v=1e8cf70e' },
+        placementByGender: { female: { x: 0, y: 0, width: 941, height: 1672 } } },
     { id: 'hair-bob-bangs', slot: 'hair', name: 'Каре з чубчиком', icon: 'user', availableByDefault: true,
         genders: ['female'], fittedToGender: true, description: 'Каштанове жіноче каре з чубчиком.',
         genderVariants: { female: 'assets/wardrobe/hair/unisex_bob_bangs.png?v=0293b69f' },

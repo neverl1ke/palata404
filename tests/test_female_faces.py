@@ -99,7 +99,8 @@ class FemaleFacesAssetTests(unittest.TestCase):
         import subprocess
         code="const fs=require('fs'),vm=require('vm');console.log(vm.runInNewContext(fs.readFileSync('paper-doll-data.js','utf8')+';JSON.stringify(PAPER_DOLL_ITEMS.filter(i=>i.slot===\"hair\"))'))"
         current=subprocess.check_output(['node','-e',code],cwd=ROOT,text=True)
-        self.assertEqual(json.loads(current),data['hair_items_before'])
+        # The removable trial is tested separately; every approved entry stays exact.
+        self.assertEqual([i for i in json.loads(current) if i['id']!='hair-trial-braided-curls'],data['hair_items_before'])
 
 
 class FemaleFacesBrowserTests(unittest.TestCase):
@@ -141,7 +142,7 @@ class FemaleFacesBrowserTests(unittest.TestCase):
         self.p.evaluate('setGender("female");setPaperDollView("combat");openCustomization();selectWardrobeSlot("hair")')
         protected=self.p.evaluate('JSON.stringify({stats,inventory,equippedGear})')
         hairs=self.p.evaluate('wardrobeVisibleItems().map(i=>i.id)')
-        self.assertEqual(len(hairs),8)
+        self.assertEqual(len(hairs),8+int('hair-trial-braided-curls' in hairs))
         count=0
         for e in manifest()['files']:
             e=next(x for x in json.loads((ROOT/'review/female-head-standard/manifest.json').read_text())['heads'] if x['id']==e['id'])
@@ -162,7 +163,7 @@ class FemaleFacesBrowserTests(unittest.TestCase):
                         self.assertIn(e['output'],self.p.locator('#'+prefix+'layer-face').get_attribute('src'))
                         self.assertIn(e['mask'],self.p.locator('#'+prefix+'layer-body').evaluate('i=>i.style.maskImage'))
                         if hair!='hair-none':self.assertEqual(self.p.locator('#'+prefix+'layer-hair').evaluate('i=>+getComputedStyle(i).zIndex'),9)
-        self.assertEqual(count,64)
+        self.assertEqual(count,len(manifest()['files'])*len(hairs))
         self.assertEqual(self.p.evaluate('JSON.stringify({stats,inventory,equippedGear})'),protected)
         self.assertEqual(self.p.evaluate('[...failedPaperDollImages]'),[])
 

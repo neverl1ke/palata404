@@ -1,0 +1,7 @@
+test_full_female_face_hair_matrix_has_correct_layers_and_palette (tests.test_female_faces.FemaleFacesBrowserTests.test_full_female_face_hair_matrix_has_correct_layers_and_palette) ... ok
+test_all_90_combinations_layers_backgrounds_and_reload (tests.test_paper_doll_audit.AuditBrowserTests.test_all_90_combinations_layers_backgrounds_and_reload) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 131.999s
+
+OK

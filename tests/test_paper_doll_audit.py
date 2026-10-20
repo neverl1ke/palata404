@@ -85,7 +85,7 @@ class AuditBrowserTests(unittest.TestCase):
   self.p.evaluate('openCustomization();setPaperDollView("combat");selectWardrobeCategory("appearance");selectWardrobeSlot("hair")');count=0
   before=self.p.evaluate('JSON.stringify({stats,inventory,equippedGear})')
   for gender in ['male','female']:
-   self.p.evaluate('g=>setGender(g)',gender);styles=self.p.evaluate('wardrobeVisibleItems().map(i=>i.id)');self.assertEqual(len(styles),7 if gender=='male' else 8)
+   self.p.evaluate('g=>setGender(g)',gender);styles=self.p.evaluate('wardrobeVisibleItems().map(i=>i.id)');self.assertEqual(len(styles),7 if gender=='male' else 8+int('hair-trial-braided-curls' in styles))
    for face in [None,'face-asian','face-young','face-exhausted','face-elder','face-alternative']:
     self.p.evaluate('f=>equipPaperDollItem("face",f)',face)
     for hair in styles:
@@ -99,7 +99,7 @@ class AuditBrowserTests(unittest.TestCase):
        if hair!='hair-none':self.assertEqual(self.p.locator('#wardrobe-layer-hair').evaluate('i=>+getComputedStyle(i).zIndex'),9)
        rear=self.p.locator('#wardrobe-layer-hair-rear');self.assertEqual(rear.count(),1 if gender=='male' and hair=='hair-shoulder-length' else 0)
        if rear.count():self.assertEqual(rear.evaluate('i=>+getComputedStyle(i).zIndex'),-1)
-  self.assertEqual(count,90);self.assertEqual(self.p.evaluate('JSON.stringify({stats,inventory,equippedGear})'),before)
+  self.assertEqual(count,90+6*int(any(i['id']=='hair-trial-braided-curls' for i in self.p.evaluate('PAPER_DOLL_ITEMS'))));self.assertEqual(self.p.evaluate('JSON.stringify({stats,inventory,equippedGear})'),before)
   self.p.reload(wait_until='networkidle');self.assertEqual(self.p.evaluate('paperDollState.appearance.face'),'face-alternative');self.assertEqual(self.p.evaluate('paperDollState.appearance.hair'),'hair-shoulder-length');self.assertEqual(self.p.evaluate('paperDollState.appearance.hairColor'),'white')
 
  def test_rear_and_front_palette_preserve_alpha_for_five_colors(self):

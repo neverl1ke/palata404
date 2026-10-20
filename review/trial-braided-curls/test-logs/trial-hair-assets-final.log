@@ -1,0 +1,11 @@
+test_alpha_margin_and_reference_eyes_are_clear (tests.test_trial_braided_curls.TrialBraidedCurlsTests.test_alpha_margin_and_reference_eyes_are_clear) ... ok
+test_existing_catalog_and_approved_art_are_unchanged (tests.test_trial_braided_curls.TrialBraidedCurlsTests.test_existing_catalog_and_approved_art_are_unchanged) ... ok
+test_saved_browser_evidence_covers_all_female_heads (tests.test_trial_braided_curls.TrialBraidedCurlsTests.test_saved_browser_evidence_covers_all_female_heads) ... ok
+test_trial_is_female_only_full_canvas_and_cache_version_matches_bytes (tests.test_trial_braided_curls.TrialBraidedCurlsTests.test_trial_is_female_only_full_canvas_and_cache_version_matches_bytes) ... ok
+test_all_other_approved_art_and_hair_placements_are_unchanged (tests.test_female_faces.FemaleFacesAssetTests.test_all_other_approved_art_and_hair_placements_are_unchanged) ... ok
+test_registered_paper_doll_assets_and_paths_match_case (tests.test_project_audit.GeneralAssetTests.test_registered_paper_doll_assets_and_paths_match_case) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.531s
+
+OK
