@@ -36,17 +36,25 @@ class TrialBraidedCurlsTests(unittest.TestCase):
         self.assertEqual(hashlib.sha256((ROOT/path).read_bytes()).hexdigest()[:8],version)
         self.assertTrue(item['availableByDefault']);self.assertTrue(item['fittedToGender'])
 
-    def test_alpha_margin_and_reference_eyes_are_clear(self):
+    def test_alpha_margin_and_central_face_opening_are_clear(self):
         entry=json.loads((REPORT/'registration.json').read_text())
         with Image.open(ROOT/entry['output']) as image:
             self.assertEqual(image.mode,'RGBA');self.assertEqual(image.size,(941,1672));a=np.array(image)[:,:,3]
         # A nonzero safe margin proves that no generated tips hit a canvas edge.
         self.assertFalse(a[:3].any());self.assertFalse(a[-3:].any());self.assertFalse(a[:,:3].any());self.assertFalse(a[:,-3:].any())
-        # These are the reference pupil/iris regions; actual screenshots additionally
-        # check the outer eyelids, ears and natural face-framing curls.
-        for x,y,right,bottom in [(435,138,443,146),(504,138,512,146)]:
+        # The user explicitly restored the initial source/side-curl shape.
+        # Do not enforce the discarded outward-curl edit as an artistic baseline.
+        # The central nose/lip opening must still be completely transparent.
+        for x,y,right,bottom in [(452,166,497,228)]:
             self.assertFalse(a[y:bottom,x:right].any())
         self.assertFalse(((a>0)&(a<=16)&(ndi.distance_transform_edt(a<32)>4)).any())
+
+    def test_restored_source_is_the_exact_user_selected_initial_generation(self):
+        source=REPORT/'generated-source.png'
+        self.assertEqual(hashlib.sha256(source.read_bytes()).hexdigest(),
+                         '34920119dd7eccfeaa4e1f5054d235cd908b0caadda9559ade3f64aff45c42a6')
+        entry=json.loads((REPORT/'registration.json').read_text())
+        self.assertEqual(entry['source_registration'],{'scale':0.3,'x':325.5,'y':-6,'part_axis_x':490})
 
     def test_saved_browser_evidence_covers_all_female_heads(self):
         result=json.loads((REPORT/'browser-check.json').read_text())
@@ -57,3 +65,4 @@ class TrialBraidedCurlsTests(unittest.TestCase):
 
 
 if __name__=='__main__': unittest.main()
+

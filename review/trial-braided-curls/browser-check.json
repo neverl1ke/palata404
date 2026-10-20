@@ -43,6 +43,7 @@
   ],
   "js_errors": [],
   "http_errors": [],
-  "resource_sha256": "1e8cf70edd0ba0f054b9bc330f9ecdf7ac6577ce2dda526991b57e1b11c14144",
-  "note": "Final generated sprite and registration; source/canvas fit unchanged during the final card-preview CSS check."
+  "resource_sha256": "ae84dba11d2f40d89595c5ae1e6b4426860a558de5ee60f94144e679b45f181f",
+  "selected_source_sha256": "34920119dd7eccfeaa4e1f5054d235cd908b0caadda9559ade3f64aff45c42a6",
+  "current_primary_preview_color": "original"
 }

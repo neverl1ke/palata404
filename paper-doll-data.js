@@ -164,7 +164,7 @@ const PAPER_DOLL_ITEMS = [
     { id: 'hair-trial-braided-curls', slot: 'hair', name: 'Коси з локонами — пробна', icon: 'user', availableByDefault: true,
         genders: ['female'], fittedToGender: true, renderOrder: 9,
         description: 'Пробний варіант: довге волосся, бічні косички, локони та зірочки.',
-        genderVariants: { female: 'assets/wardrobe/hair/trial/female_braided_curls.png?v=1e8cf70e' },
+        genderVariants: { female: 'assets/wardrobe/hair/trial/female_braided_curls.png?v=ae84dba1' },
         placementByGender: { female: { x: 0, y: 0, width: 941, height: 1672 } } },
     { id: 'hair-bob-bangs', slot: 'hair', name: 'Каре з чубчиком', icon: 'user', availableByDefault: true,
         genders: ['female'], fittedToGender: true, description: 'Каштанове жіноче каре з чубчиком.',
