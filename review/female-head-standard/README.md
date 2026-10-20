@@ -82,3 +82,7 @@
 Каталог/рендер/кеш: `paper-doll-data.js`, `paper-doll.js`, `index.html`. Нові 16 голів +16 масок у підкаталогах `standardized/`. Інструменти: `tools/standardize-female-heads.py`, `tools/build-female-hair-template.py`, `tools/review-female-head-standard.py`, `tools/build-female-head-standard-report.py`; два аудитори враховують внутрішню native-накладку. Регресійні тести й runner доповнено; історичні перевірки незмінних оригіналів збережено, старі URL-контракти прив'язані до історичного `fd20bc3`, поточні похідні перевіряються окремо точними хешами. Навігацію README й документацію актуалізовано.
 
 Фінальний запуск: **89/89 JavaScript; 141/142 Python/Chromium**. Єдиний збій — описаний вище незмінний чоловічий PNG. Сирі журнали збережено у `verification/final/`, початкові невдалі очікування — у `verification/initial/`; повторні запуски не підміняють початкових результатів.
+
+## Підтверджена HTTPS-публікація
+
+Функціональний коміт `bb065a7` у main: [GitHub Pages](https://github.com/neverl1ke/palata404/actions/runs/39420728654) — success. У [реальній опублікованій грі](https://neverl1ke.github.io/palata404/) перевірено 133 файли за SHA-256, 95 станів і 26 перезавантажень, 0 JS errors / HTTP errors. Перевірено також URL галереї, ZIP, еталонного PNG та JSON. [Машинний результат](verification/published-https.json) · [Мобільний знімок опублікованої гри](captures/published-mobile-390.png). Повний Game checks на момент запису ще триває; успіх CI не заявляється. Наступний коміт додає тільки цю документацію й докази, без змін runtime.

@@ -18,7 +18,21 @@
     "note": "Passed counts individual methods; repeated failing subtests count once. Raw runner summary counts wholly green shards only.",
     "logs": "verification/final/"
   },
-  "published": "not yet published at the time of this record",
+  "published": {
+    "functional_commit": "bb065a77320ad0c392ecadd6a8fed12a77f3931e",
+    "checked_at_utc": "2026-10-20T12:19:23.666296+00:00",
+    "pages": "success",
+    "pages_run": "https://github.com/neverl1ke/palata404/actions/runs/39420728654",
+    "url": "https://neverl1ke.github.io/palata404/",
+    "verified_files": 133,
+    "states": 95,
+    "reloads": 26,
+    "js_errors": [],
+    "http_errors": [],
+    "details": "verification/published-https.json",
+    "game_checks_workflow": "in_progress at the time of this publication record; no green result claimed",
+    "follow_up_commit": "Documentation/evidence only; production JS, CSS and PNG unchanged."
+  },
   "gallery": {
     "browser": "151.0.7922.34",
     "images_decoded": 223,
