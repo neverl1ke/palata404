@@ -1,0 +1,79 @@
+{
+  "browser": "Chromium 151.0.7922.34",
+  "method": "Actual ZIP extracted to a new empty temporary directory; file://, no neighboring repo/server/CDN",
+  "crc_ok": true,
+  "actual_lab_cases": [
+    {
+      "gender": "male",
+      "pose": "idle",
+      "face": "face-male-blue-eyes",
+      "hair": "hair-shoulder-length",
+      "color": "black"
+    },
+    {
+      "gender": "male",
+      "pose": "melee",
+      "face": "face-male-blue-eyes",
+      "hair": "hair-shoulder-length",
+      "color": "black"
+    },
+    {
+      "gender": "male",
+      "pose": "pistol",
+      "face": "face-male-blue-eyes",
+      "hair": "hair-shoulder-length",
+      "color": "black"
+    },
+    {
+      "gender": "male",
+      "pose": "rifle",
+      "face": "face-male-blue-eyes",
+      "hair": "hair-shoulder-length",
+      "color": "black"
+    },
+    {
+      "gender": "female",
+      "pose": "idle",
+      "face": "face-female-new-almond-eyes",
+      "hair": "hair-shoulder-length",
+      "color": "black"
+    },
+    {
+      "gender": "female",
+      "pose": "melee",
+      "face": "face-female-new-almond-eyes",
+      "hair": "hair-shoulder-length",
+      "color": "black"
+    },
+    {
+      "gender": "female",
+      "pose": "pistol",
+      "face": "face-female-new-almond-eyes",
+      "hair": "hair-shoulder-length",
+      "color": "black"
+    },
+    {
+      "gender": "female",
+      "pose": "rifle",
+      "face": "face-female-new-almond-eyes",
+      "hair": "hair-shoulder-length",
+      "color": "black"
+    }
+  ],
+  "report_images_loaded": 52,
+  "viewport_widths": [
+    320,
+    390,
+    768
+  ],
+  "physical_device": false,
+  "external_http_requests": [],
+  "js_errors": [],
+  "local_storage_byte_unchanged": true,
+  "html_sha256": {
+    "Avatar-Lab.html": "d6efff1f98042427b0c25ee5de5a3ec0cea0ec11daf76ad5df87b9316d278bf5",
+    "Report.html": "5e7c5c3c6f6aa1710299acc67a684e3741f83ed2bbed5817a6540373d94e55d2",
+    "Technical-report.html": "4ca349abec13f92d7ed53cde02c083b9df974ecd55fcfa2cf1ab4438847152ae",
+    "API.html": "3aab1c0807fc54c2245213513c111ea3e22959d2b7d27858cebb235d36fa2d7c"
+  }
+}

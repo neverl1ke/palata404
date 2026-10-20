@@ -6,10 +6,10 @@ import numpy as np
 from PIL import Image
 from scipy import ndimage as ndi
 from playwright.sync_api import sync_playwright
-ROOT=Path(__file__).resolve().parents[1];R=ROOT/'review/avatar-core-1';CORE=ROOT/'avatar-core'
+ROOT=Path(__file__).resolve().parents[1];R=ROOT/'review/avatar-core-polish';R.mkdir(parents=True,exist_ok=True);CORE=ROOT/'avatar-core'
 class AvatarCoreSourceTests(unittest.TestCase):
  def test_approved_runtime_and_all_original_assets_are_unchanged(self):
-  for path,expected in json.loads((R/'protected-originals.json').read_text())['git_blobs'].items():
+  for path,expected in json.loads((ROOT/'review/avatar-core-1/protected-originals.json').read_text())['git_blobs'].items():
    b=(ROOT/path).read_bytes();self.assertEqual(hashlib.sha1(('blob '+str(len(b))+'\0').encode()+b).hexdigest(),expected,path)
  def test_nine_disjoint_source_partitions_reconstruct_every_visible_pixel(self):
   for gender in ['male','female']:
@@ -116,6 +116,7 @@ class AvatarCoreBrowserTests(unittest.TestCase):
   self.page.evaluate('''async()=>{const {AvatarEngine}=await import('../avatar-core/engine.mjs');const c=document.createElement('canvas');Object.assign(c.style,{width:'200px',height:'355px'});document.body.append(c);const second=await AvatarEngine.create(c,{gender:'female'});second.setOptions({transitionMs:0});second.setPose('rifle');window.avatarLab.second=second;}''')
   self.assertEqual(self.page.evaluate('avatarLab.engine.gender'),'male');self.assertEqual(self.page.evaluate('avatarLab.engine.pose'),'idle');self.assertEqual(self.page.evaluate('avatarLab.second.gender'),'female');self.assertEqual(self.page.evaluate('avatarLab.second.pose'),'rifle');self.page.evaluate('avatarLab.second.destroy()')
  def test_offline_lab_has_no_network_dependencies(self):
-  if not (R/'avatar-lab-offline.html').is_file():subprocess.run(['python',str(ROOT/'tools/bundle-avatar-lab.py')],cwd=ROOT,check=True,capture_output=True)
-  p=self.context.new_page();network=[];p.route('http**://**/*',lambda r:(network.append(r.request.url),r.abort()));p.goto((R/'avatar-lab-offline.html').as_uri());p.wait_for_function('window.avatarLab?.ready',timeout=45000);p.evaluate('avatarLab.engine.pause()');p.locator('[data-gender="female"]').click();p.wait_for_function('avatarLab.engine.gender==="female"&&document.getElementById("status").textContent.startsWith("Готово")');p.locator('[data-pose="rifle"]').click();self.assertEqual(network,[]);p.close()
+  offline=ROOT/'test-results/avatar-core-offline-current.html'
+  subprocess.run(['python',str(ROOT/'tools/bundle-avatar-lab.py'),'--output',str(offline)],cwd=ROOT,check=True,capture_output=True)
+  p=self.context.new_page();network=[];p.route('http**://**/*',lambda r:(network.append(r.request.url),r.abort()));p.goto(offline.as_uri());p.wait_for_function('window.avatarLab?.ready',timeout=45000);p.evaluate('avatarLab.engine.pause()');p.locator('[data-gender="female"]').click();p.wait_for_function('avatarLab.engine.gender==="female"&&document.getElementById("status").textContent.startsWith("Готово")');p.locator('[data-pose="rifle"]').click();self.assertEqual(network,[]);p.close()
 if __name__=='__main__':unittest.main()

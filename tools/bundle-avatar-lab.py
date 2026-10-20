@@ -2,8 +2,9 @@
 No screenshots substitute for the interactive rig; file:// needs no server or CDN.
 """
 from pathlib import Path
-import json,base64,mimetypes,re,subprocess
-ROOT=Path(__file__).resolve().parents[1];CORE=ROOT/'avatar-core';LAB=ROOT/'avatar-lab';OUT=ROOT/'review/avatar-core-1/avatar-lab-offline.html'
+import json,base64,mimetypes,re,subprocess,argparse
+ROOT=Path(__file__).resolve().parents[1];CORE=ROOT/'avatar-core';LAB=ROOT/'avatar-lab'
+parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--output',default='review/avatar-core-1/avatar-lab-offline.html');args=parser.parse_args();OUT=ROOT/args.output;OUT.parent.mkdir(parents=True,exist_ok=True)
 def data(p):return 'data:'+mimetypes.guess_type(p.name)[0]+';base64,'+base64.b64encode(p.read_bytes()).decode()
 resources={'json':{},'images':{},'catalogImages':{}}
 for p in CORE.rglob('*.json'):resources['json'][str(p.relative_to(CORE))]=json.loads(p.read_text())

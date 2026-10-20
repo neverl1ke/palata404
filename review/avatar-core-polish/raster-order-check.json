@@ -1,0 +1,194 @@
+[
+  {
+    "gender": "male",
+    "pose": "melee",
+    "side": "right",
+    "joint": "elbow",
+    "mean": 0.0,
+    "p99": 0.0
+  },
+  {
+    "gender": "male",
+    "pose": "melee",
+    "side": "right",
+    "joint": "wrist",
+    "mean": 0.026334026334026334,
+    "p99": 1.0
+  },
+  {
+    "gender": "male",
+    "pose": "melee",
+    "side": "left",
+    "joint": "elbow",
+    "mean": 0.0,
+    "p99": 0.0
+  },
+  {
+    "gender": "male",
+    "pose": "melee",
+    "side": "left",
+    "joint": "wrist",
+    "mean": 0.0,
+    "p99": 0.0
+  },
+  {
+    "gender": "male",
+    "pose": "pistol",
+    "side": "right",
+    "joint": "elbow",
+    "mean": 0.0,
+    "p99": 0.0
+  },
+  {
+    "gender": "male",
+    "pose": "pistol",
+    "side": "right",
+    "joint": "wrist",
+    "mean": 0.010953795956417876,
+    "p99": 1.0
+  },
+  {
+    "gender": "male",
+    "pose": "pistol",
+    "side": "left",
+    "joint": "elbow",
+    "mean": 0.0,
+    "p99": 0.0
+  },
+  {
+    "gender": "male",
+    "pose": "pistol",
+    "side": "left",
+    "joint": "wrist",
+    "mean": 0.017813711956878985,
+    "p99": 1.0
+  },
+  {
+    "gender": "male",
+    "pose": "rifle",
+    "side": "right",
+    "joint": "elbow",
+    "mean": 0.0,
+    "p99": 0.0
+  },
+  {
+    "gender": "male",
+    "pose": "rifle",
+    "side": "right",
+    "joint": "wrist",
+    "mean": 0.023926940639269405,
+    "p99": 1.0
+  },
+  {
+    "gender": "male",
+    "pose": "rifle",
+    "side": "left",
+    "joint": "elbow",
+    "mean": 0.0,
+    "p99": 0.0
+  },
+  {
+    "gender": "male",
+    "pose": "rifle",
+    "side": "left",
+    "joint": "wrist",
+    "mean": 0.0256148238980857,
+    "p99": 1.0
+  },
+  {
+    "gender": "female",
+    "pose": "melee",
+    "side": "right",
+    "joint": "elbow",
+    "mean": 0.0,
+    "p99": 0.0
+  },
+  {
+    "gender": "female",
+    "pose": "melee",
+    "side": "right",
+    "joint": "wrist",
+    "mean": 0.02104810996563574,
+    "p99": 1.0
+  },
+  {
+    "gender": "female",
+    "pose": "melee",
+    "side": "left",
+    "joint": "elbow",
+    "mean": 0.0,
+    "p99": 0.0
+  },
+  {
+    "gender": "female",
+    "pose": "melee",
+    "side": "left",
+    "joint": "wrist",
+    "mean": 0.0016386726751331422,
+    "p99": 0.0
+  },
+  {
+    "gender": "female",
+    "pose": "pistol",
+    "side": "right",
+    "joint": "elbow",
+    "mean": 0.0,
+    "p99": 0.0
+  },
+  {
+    "gender": "female",
+    "pose": "pistol",
+    "side": "right",
+    "joint": "wrist",
+    "mean": 0.01825514752706432,
+    "p99": 1.0
+  },
+  {
+    "gender": "female",
+    "pose": "pistol",
+    "side": "left",
+    "joint": "elbow",
+    "mean": 0.0,
+    "p99": 0.0
+  },
+  {
+    "gender": "female",
+    "pose": "pistol",
+    "side": "left",
+    "joint": "wrist",
+    "mean": 0.018434832508428377,
+    "p99": 1.0
+  },
+  {
+    "gender": "female",
+    "pose": "rifle",
+    "side": "right",
+    "joint": "elbow",
+    "mean": 0.0,
+    "p99": 0.0
+  },
+  {
+    "gender": "female",
+    "pose": "rifle",
+    "side": "right",
+    "joint": "wrist",
+    "mean": 0.023456235011990408,
+    "p99": 1.0
+  },
+  {
+    "gender": "female",
+    "pose": "rifle",
+    "side": "left",
+    "joint": "elbow",
+    "mean": 0.0,
+    "p99": 0.0
+  },
+  {
+    "gender": "female",
+    "pose": "rifle",
+    "side": "left",
+    "joint": "wrist",
+    "mean": 0.02599914052428019,
+    "p99": 1.0
+  }
+]

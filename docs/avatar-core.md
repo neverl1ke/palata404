@@ -45,23 +45,23 @@ python tools/build-avatar-core-gallery.py
 ## API
 
 ```js
-import { AvatarEngine } from './avatar-core/engine.mjs';
-const avatar = await AvatarEngine.create(canvas, { gender: 'female' });
-avatar.setPose('rifle'); // idle / melee / pistol / rifle
-avatar.setWeapon('none'); // також melee / pistol / rifle
+import { AvatarEngine } from "./avatar-core/engine.mjs";
+const avatar = await AvatarEngine.create(canvas, { gender: "female" });
+avatar.setPose("rifle"); // idle / melee / pistol / rifle
+avatar.setWeapon("none"); // також melee / pistol / rifle
 avatar.setOptions({
-  breathing: true,
-  cycleMs: 4000,
-  amplitude: 1,
-  weaponSwayPx: 2, // CSS px при поточному масштабі, не backing pixels Retina
-  transitionMs: 320,
-  pistolSupport: false
+    breathing: true,
+    cycleMs: 4000,
+    amplitude: 1,
+    weaponSwayPx: 2, // CSS px при поточному масштабі, не backing pixels Retina
+    transitionMs: 320,
+    pistolSupport: true,
 });
 avatar.pause(false);
-await avatar.setGender('male');
+await avatar.setGender("male");
 avatar.pause(true);
 avatar.step(1000 / 60);
-avatar.setLayerVisible('weapon', false);
+avatar.setLayerVisible("weapon", false);
 avatar.destroy();
 ```
 
@@ -71,20 +71,20 @@ avatar.destroy();
 
 ```js
 await avatar.bindEquipment({
-  id: 'sleeve-r-upper',
-  segment: 'rightUpper',
-  sourceByGender: {
-    male: '/assets/my-male-sleeve.png',
-    female: '/assets/my-female-sleeve.png'
-  },
-  placementByGender: {
-    male: { x: 240, y: 330, width: 100, height: 285 },
-    female: { x: 270, y: 325, width: 85, height: 260 }
-  },
-  skinned: true,
-  order: 1
+    id: "sleeve-r-upper",
+    segment: "rightUpper",
+    sourceByGender: {
+        male: "/assets/my-male-sleeve.png",
+        female: "/assets/my-female-sleeve.png",
+    },
+    placementByGender: {
+        male: { x: 240, y: 330, width: 100, height: 285 },
+        female: { x: 270, y: 325, width: 85, height: 260 },
+    },
+    skinned: true,
+    order: 1,
 });
-avatar.unbindEquipment('sleeve-r-upper');
+avatar.unbindEquipment("sleeve-r-upper");
 ```
 
 Наведені числа для рукава — **приклад контракту**, не затверджена посадка одягу. Тестові реальні накладки лабораторії беруть точні `bounds` із відповідного рига. Доступні сегменти: `head`, `torso`, `lower`, `rightUpper`, `rightFore`, `rightHand`, `leftUpper`, `leftFore`, `leftHand`. Для звичайного жорсткого кріплення `skinned` можна не задавати. Вибір джерела/розташування за статтю виконується після зміни рига; предмети з `genders` приховуються для іншої статі. Збій завантаження не залишає pending-предмет.
@@ -97,8 +97,22 @@ avatar.unbindEquipment('sleeve-r-upper');
 
 Старі суцільні PNG одягу з намальованими рукавами не стають анімованими автоматично. Вони залишаються у чинній грі; для Avatar Core потрібні зареєстровані сегменти одягу. На цьому етапі перевірено лише API та прості тестові рукави, не створено новий повноцінний гардероб.
 
+## Цільовий polish після1331a91
+
+Поточний стан і порівняння з замороженим прототипом — [окремий звіт](../review/avatar-core-polish/README.md). Основна гра цей рушій не імпортує.
+
+Пози мають локальні `handCorrections` у двох rig JSON: melee/right, pistol/right+left, rifle/right+left. Idle показує незмінні джерельні кисті. Нові ресурси зареєстровані за вихідним зап’ястям, мають власний grip; вони композитяться в ту саму UV-сітку, що й передпліччя. Локальна маска прибирає старі дистальні пальці. `wristProfiles` вимірюються на відповідному джерелі, `sourceSkinBounds` зберігає вихідне обрізання текстур. Доповнені прозорими полями копії текстур мають нові PNG-шляхи: прототипні файли не перезаписані.
+
+`handCorrections[pose][side].wristPatch` — необов’язкова локальна ретуш у тих самих UV: лише смуга −40…+35 px від вихідного зап’ястя. Реєстрація збережена в окремому звіті; обличчя/тіло не домальовувались. Ресурс завантажується разом із кистю, замінює колір та альфу тільки всередині своїх bounds. Дистальні пальці та grip лишаються поза смугою.
+
+Кеш малювання зберігає порядок вихідних трикутників. Об’єднувати дозволено лише послідовні непрозорі клітинки; ділянки з частковою альфою малюються окремо. Це перевіряється порівнянням фактичного растра двох режимів, а не лише станом скелета. Порожні UV-комірки пропускаються за сумарною таблицею альфи; розширення anti-aliasing виконується у джерельних UV. Кеші залежать від конкретної текстури й очищаються після звільнення посилань.
+
+Основна pistol тепер підтримується лівою рукою. Зняття прапорця підтримки залишає стару допоміжну одноручну конфігурацію; її художнє приймання окремо не заявляється. Мікродихання зберігає4000мс і приблизно2CSS px амплітуди зброї; невелика фазова поправка не додає підстрибування.
+
+Відтворення підготовки: спочатку `python tools/prepare-avatar-core.py`, потім `python tools/prepare-avatar-polish.py` і `python tools/prepare-avatar-wrist-patches.py` (збережені атласи й reference з попереднього рендера). Для поточного автономного файла: `python tools/bundle-avatar-lab.py --output review/avatar-core-polish/Avatar-Lab.html`. Знімки: `python tools/capture-avatar-prototype.py`, потім `python tools/review-avatar-polish.py --capture`. Великі автономні HTML відтворюються й не додаються в Git.
+
 ## Межі готовності
 
-Вихідні плоскі PNG не містять прихованих поверхонь суглобів, перспективно скорочених передпліч і стиснутих пальців. Незмінні довжини кісток не дають точно відтворити перспективу референсів. Skinning підтримує зв’язність, але на сильних згинах залишаються кутові фрагменти, різкі текстурні межі й самоперекриття сітки: це підтверджені незакриті дефекти прототипу. Він не створює нового рисунка ліктя чи кисті. Програмне потрапляння точки хвату не доводить художньо правильний хват.
+У нових стиснутих кистях немає висячих старих пальців, але на деяких крупних планах зап’ястя ще читається тоновий/контурний перехід. Візуальний polish не вважається остаточно прийнятим до його усунення. Локальні передпліччя лишилися вихідними, анатомію та довжини кісток не підганяли масштабуванням.
 
-Для приймання потрібен локальний художній прохід: окремі стиснуті/опорні кисті обох моделей та коригувальні поверхні сильних згинів ліктів, зі збереженням pivots і реєстрації. До цього основну гру не переводити на новий рушій. Критичні місця показані у крупних планах звіту.
+Ресурси кистей — локальні домальовки, не генерація нових персонажів. Для завершення достатньо точкової ретуші конкретного стику й перевірки хвата на затвердженій фінальній зброї. Пози пальців перемикаються окремими спрайтами, нова анімація згинання пальців не розроблялася. Справжнього бічного ракурсу у фронтальних2D джерелах немає. Основну гру й main не переводити на цю версію без окремого погодження.

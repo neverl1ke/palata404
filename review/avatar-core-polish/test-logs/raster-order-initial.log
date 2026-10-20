@@ -1,0 +1,19 @@
+test_cached_skin_preserves_the_uncached_paint_order (tests.test_avatar_polish.PolishBrowserTests.test_cached_skin_preserves_the_uncached_paint_order) ... FAIL
+test_hiding_corrective_hands_removes_them_and_old_fingertips_are_absent (tests.test_avatar_polish.PolishBrowserTests.test_hiding_corrective_hands_removes_them_and_old_fingertips_are_absent) ... ok
+test_supported_pistol_and_combat_wrists_do_not_fold_backwards (tests.test_avatar_polish.PolishBrowserTests.test_supported_pistol_and_combat_wrists_do_not_fold_backwards) ... ok
+test_corrective_hands_have_single_clean_silhouette_and_fit_uv_bounds (tests.test_avatar_polish.PolishSourceTests.test_corrective_hands_have_single_clean_silhouette_and_fit_uv_bounds) ... ok
+test_every_prototype_png_is_still_byte_identical (tests.test_avatar_polish.PolishSourceTests.test_every_prototype_png_is_still_byte_identical) ... ok
+test_registration_is_reproducible_without_moving_sources (tests.test_avatar_polish.PolishSourceTests.test_registration_is_reproducible_without_moving_sources) ... ok
+
+======================================================================
+FAIL: test_cached_skin_preserves_the_uncached_paint_order (tests.test_avatar_polish.PolishBrowserTests.test_cached_skin_preserves_the_uncached_paint_order)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/palata404-avatar-core/tests/test_avatar_polish.py", line 67, in test_cached_skin_preserves_the_uncached_paint_order
+    self.assertLessEqual(p99,2,(g,pose,side,joint))
+AssertionError: 9.0 not less than or equal to 2 : ('male', 'pistol', 'left', 'wrist')
+
+----------------------------------------------------------------------
+Ran 6 tests in 9.266s
+
+FAILED (failures=1)

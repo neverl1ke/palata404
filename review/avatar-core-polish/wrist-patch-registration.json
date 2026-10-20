@@ -1,0 +1,205 @@
+{
+  "patches": [
+    {
+      "gender": "male",
+      "pose": "melee",
+      "side": "right",
+      "image": "assets/male/hands/melee-right-wrist-patch.png",
+      "bounds": [
+        82,
+        807,
+        335,
+        882
+      ],
+      "sha256": "5be5ab57fc482149de46a5784419522c7998a88a15149e21e6965956e737b1bd",
+      "source_band": [
+        -40,
+        -20,
+        15,
+        35
+      ],
+      "source_atlas": "sources/male-wrist-edited.png"
+    },
+    {
+      "gender": "male",
+      "pose": "pistol",
+      "side": "right",
+      "image": "assets/male/hands/pistol-right-wrist-patch.png",
+      "bounds": [
+        82,
+        807,
+        335,
+        882
+      ],
+      "sha256": "04f10a3056c4031c9e9f5c679161520182147f41f57c95ee4e378eb52d329f86",
+      "source_band": [
+        -40,
+        -20,
+        15,
+        35
+      ],
+      "source_atlas": "sources/male-wrist-edited.png"
+    },
+    {
+      "gender": "male",
+      "pose": "rifle",
+      "side": "right",
+      "image": "assets/male/hands/rifle-right-wrist-patch.png",
+      "bounds": [
+        82,
+        807,
+        335,
+        882
+      ],
+      "sha256": "1808fce79625ab32d20ea0ebb7228c053b16fa8a8246383241ec0c0294687bec",
+      "source_band": [
+        -40,
+        -20,
+        15,
+        35
+      ],
+      "source_atlas": "sources/male-wrist-edited.png"
+    },
+    {
+      "gender": "male",
+      "pose": "pistol",
+      "side": "left",
+      "image": "assets/male/hands/pistol-left-wrist-patch.png",
+      "bounds": [
+        612,
+        807,
+        903,
+        882
+      ],
+      "sha256": "8ae5a8eb09b012f7747e6c698613b3165e87f4edb1a1e062c2f060b4278446b1",
+      "source_band": [
+        -40,
+        -20,
+        15,
+        35
+      ],
+      "source_atlas": "sources/male-wrist-edited.png"
+    },
+    {
+      "gender": "male",
+      "pose": "rifle",
+      "side": "left",
+      "image": "assets/male/hands/rifle-left-wrist-patch.png",
+      "bounds": [
+        612,
+        807,
+        903,
+        882
+      ],
+      "sha256": "39ec379c87d798068bda75d79680293c61935f6655e0ad8d62bd24427b7f7d75",
+      "source_band": [
+        -40,
+        -20,
+        15,
+        35
+      ],
+      "source_atlas": "sources/male-wrist-edited.png"
+    },
+    {
+      "gender": "female",
+      "pose": "melee",
+      "side": "right",
+      "image": "assets/female/hands/melee-right-wrist-patch.png",
+      "bounds": [
+        165,
+        785,
+        351,
+        860
+      ],
+      "sha256": "2bd03899309eeee890597b1390a8fb67acbdd437e11754aae47f4a5cd0f6a063",
+      "source_band": [
+        -40,
+        -20,
+        15,
+        35
+      ],
+      "source_atlas": "sources/female-wrist-edited.png"
+    },
+    {
+      "gender": "female",
+      "pose": "pistol",
+      "side": "right",
+      "image": "assets/female/hands/pistol-right-wrist-patch.png",
+      "bounds": [
+        165,
+        785,
+        351,
+        860
+      ],
+      "sha256": "2f42cc715d98e9cbb6e95b39cb70ff440d34b21dc49ed9a6e4cc6e6bf344a12a",
+      "source_band": [
+        -40,
+        -20,
+        15,
+        35
+      ],
+      "source_atlas": "sources/female-wrist-edited.png"
+    },
+    {
+      "gender": "female",
+      "pose": "rifle",
+      "side": "right",
+      "image": "assets/female/hands/rifle-right-wrist-patch.png",
+      "bounds": [
+        165,
+        785,
+        351,
+        860
+      ],
+      "sha256": "d6a84cd099477927a1cea3d2a71b1b14b6152db1bd95eccca2c2770cb1b89bb0",
+      "source_band": [
+        -40,
+        -20,
+        15,
+        35
+      ],
+      "source_atlas": "sources/female-wrist-edited.png"
+    },
+    {
+      "gender": "female",
+      "pose": "pistol",
+      "side": "left",
+      "image": "assets/female/hands/pistol-left-wrist-patch.png",
+      "bounds": [
+        595,
+        785,
+        783,
+        860
+      ],
+      "sha256": "4840aa8c38f7348ba161d9ae33cef4e36b3844df075e03e0cf31f1f14e230071",
+      "source_band": [
+        -40,
+        -20,
+        15,
+        35
+      ],
+      "source_atlas": "sources/female-wrist-edited.png"
+    },
+    {
+      "gender": "female",
+      "pose": "rifle",
+      "side": "left",
+      "image": "assets/female/hands/rifle-left-wrist-patch.png",
+      "bounds": [
+        595,
+        785,
+        783,
+        860
+      ],
+      "sha256": "fd71d956fbfe6b517464e6370c5e86e932b9e63b88f2b9736890b1e7ab937f86",
+      "source_band": [
+        -40,
+        -20,
+        15,
+        35
+      ],
+      "source_atlas": "sources/female-wrist-edited.png"
+    }
+  ],
+  "method": "Actual pose render -> local wrist edit -> inverse piecewise affine UV bake; only the source wrist band changes."
+}

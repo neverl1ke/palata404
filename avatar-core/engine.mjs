@@ -80,7 +80,7 @@ export class AvatarEngine {
             debugGrips: false,
             testSleeves: false,
             skinBatching: true,
-            pistolSupport: false,
+            pistolSupport: true,
             view: 'rig',
             background: '#d3cfc6',
             ...Object.fromEntries(
@@ -147,6 +147,19 @@ export class AvatarEngine {
                 rig.skinMeshes[side].handImage,
             );
         }
+        await Promise.all(
+            Object.entries(rig.handCorrections || {}).flatMap(([pose, hands]) =>
+                Object.entries(hands).map(async ([side, part]) => {
+                    assets['hand-' + pose + '-' + side] = await this.image(
+                        part.image,
+                    );
+                    if (part.wristPatch)
+                        assets['wrist-' + pose + '-' + side] = await this.image(
+                            part.wristPatch.image,
+                        );
+                }),
+            ),
+        );
         const original = await this.image(rig.source);
         await Promise.all(
             Object.entries(weapons).map(
@@ -273,6 +286,9 @@ export class AvatarEngine {
             this.bitmaps[k] = c;
         }
         this.skins = {};
+        this.skinsWithoutHands = {};
+        this.poseSkins = {};
+        this.poseHandSkins = {};
         for (const side of ['right', 'left']) {
             const mesh = this.rig.skinMeshes[side],
                 [x, y, x1, y1] = mesh.bounds,
@@ -300,6 +316,113 @@ export class AvatarEngine {
                 )
                     ? this.assets[side + 'ArmSkin']
                     : c;
+            // Keep the proximal wrist overlap, remove ALL old distal fingers.
+            // The authored closed grip is drawn exactly once after the weapon.
+            const noHand = surface(x1 - x, y1 - y),
+                nx = noHand.getContext('2d');
+            const arm = this.rig.arms[side];
+            nx.translate(arm.wrist[0] - x, arm.wrist[1] - y);
+            nx.rotate(
+                Math.atan2(
+                    arm.wrist[1] - arm.elbow[1],
+                    arm.wrist[0] - arm.elbow[0],
+                ),
+            );
+            const half = this.rig.wristProfiles?.[side]?.halfWidth || 30;
+            nx.beginPath();
+            nx.moveTo(-2000, -2000);
+            nx.lineTo(-10, -2000);
+            nx.lineTo(-10, -half);
+            nx.bezierCurveTo(20, -half, 20, half, -10, half);
+            nx.lineTo(-10, 2000);
+            nx.lineTo(-2000, 2000);
+            nx.closePath();
+            nx.clip();
+            nx.setTransform(1, 0, 0, 1, 0, 0);
+            nx.drawImage(this.skins[side], 0, 0);
+            this.skinsWithoutHands[side] = noHand;
+            for (const [pose, hands] of Object.entries(
+                this.rig.handCorrections || {},
+            )) {
+                const correction = hands[side];
+                if (!correction) continue;
+                const closed = surface(x1 - x, y1 - y),
+                    cc = closed.getContext('2d');
+                if (this.visible.get(side + 'Hand') !== false)
+                    cc.drawImage(
+                        this.assets['hand-' + pose + '-' + side],
+                        correction.bounds[0] - x,
+                        correction.bounds[1] - y,
+                    );
+                const blended = surface(x1 - x, y1 - y),
+                    bc = blended.getContext('2d');
+                const union = surface(x1 - x, y1 - y),
+                    ux = union.getContext('2d');
+                ux.fillStyle = '#fff';
+                ux.fillRect(0, 0, x1 - x, arm.wrist[1] - y + 12);
+                ux.drawImage(closed, 0, 0);
+                bc.drawImage(noHand, 0, 0);
+                bc.globalCompositeOperation = 'destination-in';
+                bc.drawImage(union, 0, 0);
+                bc.globalCompositeOperation = 'source-over';
+                bc.drawImage(closed, 0, 0);
+                if (
+                    correction.wristPatch &&
+                    this.visible.get(side + 'Hand') !== false
+                ) {
+                    // The pose-local retouch was inverse-baked into these UVs.
+                    // It replaces alpha as well as color, removing old cut-outs.
+                    const patch = correction.wristPatch,
+                        [px, py, px1, py1] = patch.bounds;
+                    const pw = px1 - px,
+                        ph = py1 - py,
+                        image = this.assets['wrist-' + pose + '-' + side];
+                    bc.clearRect(px - x, py - y, pw, ph);
+                    bc.drawImage(image, px - x, py - y);
+                    const front = surface(pw, ph),
+                        fx = front.getContext('2d');
+                    fx.drawImage(image, 0, 0);
+                    fx.globalCompositeOperation = 'destination-in';
+                    const gradient = fx.createLinearGradient(
+                        0,
+                        arm.wrist[1] - py,
+                        0,
+                        arm.wrist[1] + 10 - py,
+                    );
+                    gradient.addColorStop(0, 'rgba(255,255,255,0)');
+                    gradient.addColorStop(1, '#fff');
+                    fx.fillStyle = gradient;
+                    fx.fillRect(0, 0, pw, ph);
+                    cc.clearRect(px - x, py - y, pw, ph);
+                    cc.drawImage(front, px - x, py - y);
+                    // Existing diagnostic bindings are restored once in the
+                    // replaced band; this does not introduce new garment art.
+                    for (const target of [bc, cc]) {
+                        target.save();
+                        target.beginPath();
+                        target.rect(px - x, py - y, pw, ph);
+                        target.clip();
+                        for (const e of this.skinBindings(side)) {
+                            if (target === cc && !e.segment.endsWith('Hand'))
+                                continue;
+                            const p =
+                                e.placementByGender?.[this.gender] ||
+                                e.placement;
+                            target.drawImage(
+                                e.bitmap,
+                                p.x - x,
+                                p.y - y,
+                                p.width,
+                                p.height,
+                            );
+                        }
+                        target.restore();
+                    }
+                }
+                this.poseSkins[pose + '-' + side] = blended;
+                this.poseHandSkins[pose + '-' + side] = closed;
+            }
+
             this.handSkins ??= {};
             const hc = surface(x1 - x, y1 - y),
                 hx = hc.getContext('2d');
@@ -437,19 +560,27 @@ export class AvatarEngine {
     compute() {
         if (!this.rig) return null;
         const rig = this.rig,
+            phase = (this.time / this.options.cycleMs) * Math.PI * 2,
             b = this.options.breathing
-                ? Math.sin((this.time / this.options.cycleMs) * Math.PI * 2) *
+                ? Math.sin(phase + 0.08 * Math.sin(2 * phase)) *
                   this.options.amplitude
                 : 0;
+        const arms = Object.fromEntries(
+            ['right', 'left'].map((side) => [
+                side,
+                {
+                    ...rig.arms[side],
+                    grip:
+                        this.handCorrection(side)?.grip || rig.arms[side].grip,
+                },
+            ]),
+        );
         const sx = 1 + rig.breathing.chestX * b,
             sy = 1 + rig.breathing.chestY * b,
             [px, py] = rig.landmarks.pelvis,
             torso = [sx, 0, 0, sy, px * (1 - sx), py * (1 - sy)];
         const shoulders = Object.fromEntries(
-            ['right', 'left'].map((s) => [
-                s,
-                point(torso, rig.arms[s].shoulder),
-            ]),
+            ['right', 'left'].map((s) => [s, point(torso, arms[s].shoulder)]),
         );
         const scale = (this.canvas.getBoundingClientRect().width || 400) / 941;
         let angles = {},
@@ -463,18 +594,8 @@ export class AvatarEngine {
                   )
                 : 1;
         let pose = rig.poses[this.pose];
-        if (this.pose === 'pistol' && this.options.pistolSupport)
-            pose = {
-                ...pose,
-                right: [rig.landmarks.chest[0], rig.landmarks.chest[1] - 25],
-                left: [
-                    rig.landmarks.chest[0] + 18,
-                    rig.landmarks.chest[1] - 14,
-                ],
-                angle: -5,
-                handAngles: { right: -55, left: 45 },
-                bend: { right: 1, left: -1 },
-            };
+        if (this.pose === 'pistol' && !this.options.pistolSupport)
+            pose = rig.pistolOneHand || pose;
         const bob =
             this.pose === 'idle' ? 0 : (b * this.options.weaponSwayPx) / scale;
         if (this.pose === 'idle')
@@ -488,7 +609,7 @@ export class AvatarEngine {
             }
         else
             angles.right = solveArm(
-                rig.arms.right,
+                arms.right,
                 shoulders.right,
                 [pose.right[0] + b * 0.7, pose.right[1] + bob],
                 pose.bend.right,
@@ -515,11 +636,7 @@ export class AvatarEngine {
                   }
                 : target;
         angles.right = blend('right', angles.right);
-        matrices.right = armMatrices(
-            rig.arms.right,
-            shoulders.right,
-            angles.right,
-        );
+        matrices.right = armMatrices(arms.right, shoulders.right, angles.right);
         let weapon = null;
         if (pose) {
             weapon = this.weaponController.attach(
@@ -539,7 +656,7 @@ export class AvatarEngine {
                 (this.pose === 'pistol' && !this.options.pistolSupport)
                     ? { upper: 0, fore: 0, hand: 0 }
                     : solveArm(
-                          rig.arms.left,
+                          arms.left,
                           shoulders.left,
                           target,
                           pose.bend.left,
@@ -547,7 +664,7 @@ export class AvatarEngine {
                       );
         }
         angles.left = blend('left', angles.left);
-        matrices.left = armMatrices(rig.arms.left, shoulders.left, angles.left);
+        matrices.left = armMatrices(arms.left, shoulders.left, angles.left);
         this.currentAngles = angles;
         if (transition && t >= 1) this.transition = null;
         const transforms = { torso, head: I, lower: I };
@@ -641,7 +758,9 @@ export class AvatarEngine {
             if (!neutral)
                 drawSkin(
                     cx,
-                    this.skins[side],
+                    this.handCorrection(side)
+                        ? this.poseSkins[this.pose + '-' + side]
+                        : this.skins[side],
                     mesh,
                     meshVertices[side],
                     false,
@@ -666,18 +785,32 @@ export class AvatarEngine {
                 this.transition ? f.transitionProgress : 1,
             );
         }
-        for (const side of ['right', 'left']) {
-            if (!neutral && this.visible.get(side + 'Hand') !== false)
-                drawSkin(
-                    cx,
-                    this.handSkins[side],
-                    this.rig.skinMeshes[side],
-                    meshVertices[side],
-                    true,
-                    this.options.skinBatching
-                        ? { ...f.arms[side], torso: f.transforms.torso }
-                        : null,
-                );
+        for (const side of ['left', 'right']) {
+            if (!neutral && this.visible.get(side + 'Hand') !== false) {
+                const correction = this.handCorrection(side);
+                if (correction)
+                    drawSkin(
+                        cx,
+                        this.poseHandSkins[this.pose + '-' + side],
+                        this.rig.skinMeshes[side],
+                        meshVertices[side],
+                        true,
+                        this.options.skinBatching
+                            ? { ...f.arms[side], torso: f.transforms.torso }
+                            : null,
+                    );
+                else
+                    drawSkin(
+                        cx,
+                        this.handSkins[side],
+                        this.rig.skinMeshes[side],
+                        meshVertices[side],
+                        true,
+                        this.options.skinBatching
+                            ? { ...f.arms[side], torso: f.transforms.torso }
+                            : null,
+                    );
+            }
             this.drawEquipment(side + 'Hand', f.arms[side].hand);
         }
         if (this.options.view === 'compare') {
@@ -693,6 +826,15 @@ export class AvatarEngine {
             backingWidth: w,
             backingHeight: h,
         };
+    }
+    handCorrection(side) {
+        if (
+            this.pose === 'pistol' &&
+            side === 'left' &&
+            !this.options.pistolSupport
+        )
+            return null;
+        return this.rig.handCorrections?.[this.pose]?.[side] || null;
     }
     skinBindings(side) {
         return [...this.equipment.values()]
@@ -885,5 +1027,8 @@ export class AvatarEngine {
         this.restLayer = null;
         this.skins = {};
         this.handSkins = {};
+        this.poseSkins = {};
+        this.poseHandSkins = {};
+        this.skinsWithoutHands = {};
     }
 }

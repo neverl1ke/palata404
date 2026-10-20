@@ -1,0 +1,123 @@
+{
+  "date_utc": "2026-10-20T21:56:29.515650+00:00",
+  "branch": "feature/avatar-core-1",
+  "prototype_commit": "1331a91",
+  "main_untouched": "f70b7e5",
+  "final_javascript": {
+    "tests": 107,
+    "passed": 107
+  },
+  "final_targeted_python_chromium": {
+    "tests": 25,
+    "passed": 25,
+    "seconds": 88.501
+  },
+  "broader_python_before_last_local_wrist_edits": {
+    "tests": 184,
+    "passed": 183,
+    "failures": 1,
+    "seconds": 1104.029,
+    "failure": "4234 existing faint remote alpha pixels in base_male.png; identical failure independently reproduced on untouched main"
+  },
+  "overlap_note": "The broad and targeted suites overlap; totals must not be added as distinct tests. The new UV-band A/B test was added after the broad run.",
+  "statements": [
+    "Фінальна перевірка:107/107 JavaScript і25/25 Python/Chromium.",
+    "Ширший прогін до останньої локальної UV-ретуші:183/184; одне старе падіння альфа-аудиту base_male.png, незалежно відтворене на main.",
+    "200 вихідних runtime/art файлів та37 PNG прототипу не змінені; head/feet/прогрес збережено.",
+    "На крупних планах залишаються виступи біля окремих зап’ясть і жорстка кривизна жіночого плеча в rifle. Це не фінально прийнятий художній результат.",
+    "Chromium, емуляція320/390/768 px; фізичний телефон і справжній бічний ракурс не перевірялися.",
+    "Main, push і публікацію не змінювали."
+  ],
+  "project_reference_check": {
+    "passed": true,
+    "missing_static_references": 0,
+    "note": "Tracked-file inventory check; dynamic Lab paths separately exercised in Chromium."
+  },
+  "performance": {
+    "measurement": "Same current engine, opaque-cell cache off/on;100 rAF intervals each gender, sequential runs on shared headless host; not physical-device measurements.",
+    "before": [
+      {
+        "frames": 100,
+        "meanMs": 83.915,
+        "p95Ms": 106.09999999403954,
+        "display": {
+          "dpr": 1,
+          "scale": 0.5562068278427205,
+          "backingWidth": 523,
+          "backingHeight": 930
+        },
+        "skinBatching": false,
+        "gender": "male",
+        "pose": "rifle",
+        "viewport": [
+          1440,
+          1100
+        ],
+        "browser": "Chromium 151.0.7922.34",
+        "note": "Headless shared execution host; not a physical mobile benchmark"
+      },
+      {
+        "frames": 100,
+        "meanMs": 83.34599999994039,
+        "p95Ms": 162.5,
+        "display": {
+          "dpr": 1,
+          "scale": 0.5562068278427205,
+          "backingWidth": 523,
+          "backingHeight": 930
+        },
+        "skinBatching": false,
+        "gender": "female",
+        "pose": "rifle",
+        "viewport": [
+          1440,
+          1100
+        ],
+        "browser": "Chromium 151.0.7922.34",
+        "note": "Headless shared execution host; not a physical mobile benchmark"
+      }
+    ],
+    "after": [
+      {
+        "frames": 100,
+        "meanMs": 37.9960000000149,
+        "p95Ms": 44.899999998509884,
+        "display": {
+          "dpr": 1,
+          "scale": 0.5562068278427205,
+          "backingWidth": 523,
+          "backingHeight": 930
+        },
+        "skinBatching": true,
+        "gender": "male",
+        "pose": "rifle",
+        "viewport": [
+          1440,
+          1100
+        ],
+        "browser": "Chromium 151.0.7922.34",
+        "note": "Headless shared execution host; not a physical mobile benchmark"
+      },
+      {
+        "frames": 100,
+        "meanMs": 32.57599999994039,
+        "p95Ms": 40,
+        "display": {
+          "dpr": 1,
+          "scale": 0.5562068278427205,
+          "backingWidth": 523,
+          "backingHeight": 930
+        },
+        "skinBatching": true,
+        "gender": "female",
+        "pose": "rifle",
+        "viewport": [
+          1440,
+          1100
+        ],
+        "browser": "Chromium 151.0.7922.34",
+        "note": "Headless shared execution host; not a physical mobile benchmark"
+      }
+    ]
+  }
+}

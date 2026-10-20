@@ -1,0 +1,132 @@
+[
+  {
+    "gender": "male",
+    "pose": "melee",
+    "side": "right",
+    "changed": 4209,
+    "outside": 0,
+    "alpha": 255,
+    "band": [
+      -40,
+      35
+    ],
+    "gripBelowBand": true
+  },
+  {
+    "gender": "male",
+    "pose": "pistol",
+    "side": "right",
+    "changed": 4743,
+    "outside": 0,
+    "alpha": 255,
+    "band": [
+      -40,
+      35
+    ],
+    "gripBelowBand": true
+  },
+  {
+    "gender": "male",
+    "pose": "pistol",
+    "side": "left",
+    "changed": 4860,
+    "outside": 0,
+    "alpha": 255,
+    "band": [
+      -40,
+      35
+    ],
+    "gripBelowBand": true
+  },
+  {
+    "gender": "male",
+    "pose": "rifle",
+    "side": "right",
+    "changed": 5092,
+    "outside": 0,
+    "alpha": 255,
+    "band": [
+      -40,
+      35
+    ],
+    "gripBelowBand": true
+  },
+  {
+    "gender": "male",
+    "pose": "rifle",
+    "side": "left",
+    "changed": 5209,
+    "outside": 0,
+    "alpha": 255,
+    "band": [
+      -40,
+      35
+    ],
+    "gripBelowBand": true
+  },
+  {
+    "gender": "female",
+    "pose": "melee",
+    "side": "right",
+    "changed": 3691,
+    "outside": 0,
+    "alpha": 255,
+    "band": [
+      -40,
+      35
+    ],
+    "gripBelowBand": true
+  },
+  {
+    "gender": "female",
+    "pose": "pistol",
+    "side": "right",
+    "changed": 4043,
+    "outside": 0,
+    "alpha": 255,
+    "band": [
+      -40,
+      35
+    ],
+    "gripBelowBand": true
+  },
+  {
+    "gender": "female",
+    "pose": "pistol",
+    "side": "left",
+    "changed": 4421,
+    "outside": 0,
+    "alpha": 255,
+    "band": [
+      -40,
+      35
+    ],
+    "gripBelowBand": true
+  },
+  {
+    "gender": "female",
+    "pose": "rifle",
+    "side": "right",
+    "changed": 4386,
+    "outside": 0,
+    "alpha": 255,
+    "band": [
+      -40,
+      35
+    ],
+    "gripBelowBand": true
+  },
+  {
+    "gender": "female",
+    "pose": "rifle",
+    "side": "left",
+    "changed": 4446,
+    "outside": 0,
+    "alpha": 255,
+    "band": [
+      -40,
+      35
+    ],
+    "gripBelowBand": true
+  }
+]

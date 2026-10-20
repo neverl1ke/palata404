@@ -120,3 +120,5 @@ python tools/check-project-browser.py --output test-results/project-browser
 ## Експериментальний Avatar Core 1.0
 
 У гілці `feature/avatar-core-1` підготовлено окремий [Avatar Lab](avatar-lab/index.html), спільний Canvas-рушій для двох ригів та [звіт](review/avatar-core-1/README.md). Це механічний прототип з відкритими художніми питаннями кистей і суглобів; основна гра його не імпортує. [Запуск і API](docs/avatar-core.md).
+
+Після прототипу1331a91 підготовлено [цільовий polish-прохід Avatar Core](review/avatar-core-polish/README.md): виправлення порядку малювання, позові кисті, локальні маски зап’ясть і нові ДО/ПІСЛЯ. Є помітний прогрес, але остаточне художнє приймання стиків ще не завершене. Це залишається ізольованою лабораторією, не заміною аватарів у main.

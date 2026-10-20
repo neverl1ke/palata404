@@ -14,16 +14,83 @@ export function skinVertices(mesh, arm, torso, rest) {
     });
 }
 const plans = new WeakMap();
-function plan(mesh, hand) {
-    let cache = plans.get(mesh);
+const alphaTables = new WeakMap();
+function opaqueSampler(bitmap) {
+    let table = alphaTables.get(bitmap);
+    if (!table) {
+        const width = bitmap.naturalWidth || bitmap.width,
+            height = bitmap.naturalHeight || bitmap.height;
+        const canvas = document.createElement('canvas');
+        canvas.width = width;
+        canvas.height = height;
+        const cx = canvas.getContext('2d', { willReadFrequently: true });
+        cx.drawImage(bitmap, 0, 0);
+        const rgba = cx.getImageData(0, 0, width, height).data,
+            stride = width + 1;
+        const sums = new Uint32Array((height + 1) * stride),
+            visible = new Uint32Array((height + 1) * stride);
+        for (let y = 0; y < height; y++) {
+            let row = 0,
+                live = 0;
+            for (let x = 0; x < width; x++) {
+                row += rgba[(y * width + x) * 4 + 3] !== 255;
+                live += rgba[(y * width + x) * 4 + 3] > 0;
+                visible[(y + 1) * stride + x + 1] =
+                    visible[y * stride + x + 1] + live;
+                sums[(y + 1) * stride + x + 1] = sums[y * stride + x + 1] + row;
+            }
+        }
+        table = { width, height, stride, sums, visible };
+        alphaTables.set(bitmap, table);
+    }
+    return (ps) => {
+        const { width, height, stride, sums, visible } = table;
+        const xs = ps.map((p) => p[0]),
+            ys = ps.map((p) => p[1]);
+        const raw = [
+            Math.floor(Math.min(...xs)) - 3,
+            Math.floor(Math.min(...ys)) - 3,
+            Math.ceil(Math.max(...xs)) + 3,
+            Math.ceil(Math.max(...ys)) + 3,
+        ];
+        const [x0, y0, x1, y1] = [
+            Math.max(0, raw[0]),
+            Math.max(0, raw[1]),
+            Math.min(width, raw[2]),
+            Math.min(height, raw[3]),
+        ];
+        if (x1 <= x0 || y1 <= y0) return { opaque: false, empty: true };
+        const count = (t) =>
+            t[y1 * stride + x1] -
+            t[y0 * stride + x1] -
+            t[y1 * stride + x0] +
+            t[y0 * stride + x0];
+        return {
+            opaque:
+                raw[0] >= 0 &&
+                raw[1] >= 0 &&
+                raw[2] <= width &&
+                raw[3] <= height &&
+                count(sums) === 0,
+            empty: count(visible) === 0,
+        };
+    };
+}
+function plan(mesh, hand, bitmap) {
+    let textures = plans.get(mesh);
+    if (!textures) {
+        textures = new WeakMap();
+        plans.set(mesh, textures);
+    }
+    let cache = textures.get(bitmap);
     if (!cache) {
         cache = {};
-        plans.set(mesh, cache);
+        textures.set(bitmap, cache);
     }
     const key = hand ? 'hand' : 'full';
     if (cache[key]) return cache[key];
-    const groups = {},
-        flexible = [],
+    const opaque = opaqueSampler(bitmap);
+    const operations = [],
         triangles = hand ? mesh.handTriangles : mesh.triangles,
         [bx, by] = mesh.bounds;
     for (const tri of triangles) {
@@ -35,12 +102,6 @@ function plan(mesh, hand) {
             bone = 'upper';
         else if (vs.every((v) => v[2] === 1 && v[3] === 1 && v[4] === 0))
             bone = 'fore';
-        if (!bone) {
-            flexible.push(tri);
-            continue;
-        }
-        groups[bone] ??= new Path2D();
-        const path = groups[bone];
         const ps = vs.map((v) => [v[0] - bx, v[1] - by]),
             lengths = [
                 Math.hypot(ps[1][0] - ps[2][0], ps[1][1] - ps[2][1]),
@@ -57,6 +118,28 @@ function plan(mesh, hand) {
                     (ps[2][0] - ps[0][0]) * (ps[1][1] - ps[0][1]),
             ),
             expand = 1 + 1.5 / (area / sum);
+        // A merged path paints translucent texels only once, unlike individual
+        // triangles. Keep those cells separate: alpha compositing is ordered.
+        const coverage = opaque(
+            ps.map((p) => [
+                center[0] + (p[0] - center[0]) * expand,
+                center[1] + (p[1] - center[1]) * expand,
+            ]),
+        );
+        if (coverage.empty) continue;
+        if (bone && !coverage.opaque) bone = null;
+        if (!bone) {
+            const last = operations.at(-1);
+            if (last && !last.bone) last.triangles.push(tri);
+            else operations.push({ triangles: [tri] });
+            continue;
+        }
+        let operation = operations.at(-1);
+        if (operation?.bone !== bone) {
+            operation = { bone, path: new Path2D() };
+            operations.push(operation);
+        }
+        const path = operation.path;
         ps.forEach((p, i) => {
             const x = center[0] + (p[0] - center[0]) * expand,
                 y = center[1] + (p[1] - center[1]) * expand;
@@ -64,7 +147,7 @@ function plan(mesh, hand) {
         });
         path.closePath();
     }
-    return (cache[key] = { groups, flexible });
+    return (cache[key] = operations);
 }
 export function drawSkin(
     ctx,
@@ -75,60 +158,70 @@ export function drawSkin(
     bones = null,
 ) {
     const [bx, by] = mesh.bounds;
-    let triangles = hand ? mesh.handTriangles : mesh.triangles;
-    if (bones) {
-        const p = plan(mesh, hand);
-        triangles = p.flexible;
-        for (const [bone, path] of Object.entries(p.groups)) {
+    const operations = bones
+        ? plan(mesh, hand, bitmap)
+        : [{ triangles: hand ? mesh.handTriangles : mesh.triangles }];
+    for (const operation of operations) {
+        if (operation.bone) {
             ctx.save();
-            ctx.transform(...bones[bone]);
+            ctx.transform(...bones[operation.bone]);
             ctx.translate(bx, by);
-            ctx.clip(path);
+            ctx.clip(operation.path);
+            ctx.drawImage(bitmap, 0, 0);
+            ctx.restore();
+            continue;
+        }
+        const triangles = operation.triangles;
+        for (const tri of triangles) {
+            const src = tri.map((i) => [
+                    mesh.vertices[i][0] - bx,
+                    mesh.vertices[i][1] - by,
+                ]),
+                dst = tri.map((i) => vertices[i]),
+                [[u0, v0], [u1, v1], [u2, v2]] = src,
+                [[x0, y0], [x1, y1], [x2, y2]] = dst;
+            const den = (u1 - u0) * (v2 - v0) - (u2 - u0) * (v1 - v0);
+            if (Math.abs(den) < 1e-7) continue;
+            const a = ((x1 - x0) * (v2 - v0) - (x2 - x0) * (v1 - v0)) / den,
+                c = ((x2 - x0) * (u1 - u0) - (x1 - x0) * (u2 - u0)) / den;
+            const b = ((y1 - y0) * (v2 - v0) - (y2 - y0) * (v1 - v0)) / den,
+                d = ((y2 - y0) * (u1 - u0) - (y1 - y0) * (u2 - u0)) / den;
+            const area = (x1 - x0) * (y2 - y0) - (y1 - y0) * (x2 - x0);
+            if (Math.abs(area) < 0.01 || area * den < 0) continue;
+            ctx.save();
+            // Bound antialias overlap in source UV space. Expanding a collapsed
+            // destination triangle borrowed distant texels and created wedges.
+            ctx.transform(
+                a,
+                b,
+                c,
+                d,
+                x0 - a * u0 - c * v0,
+                y0 - b * u0 - d * v0,
+            );
+            const edges = [
+                Math.hypot(u1 - u2, v1 - v2),
+                Math.hypot(u0 - u2, v0 - v2),
+                Math.hypot(u0 - u1, v0 - v1),
+            ];
+            const perimeter = edges.reduce((a, b) => a + b),
+                center = [
+                    (u0 * edges[0] + u1 * edges[1] + u2 * edges[2]) / perimeter,
+                    (v0 * edges[0] + v1 * edges[1] + v2 * edges[2]) / perimeter,
+                ];
+            const expand = 1 + 1.5 / (Math.abs(den) / perimeter);
+            ctx.beginPath();
+            src.forEach((p, i) => {
+                const q = [
+                    center[0] + (p[0] - center[0]) * expand,
+                    center[1] + (p[1] - center[1]) * expand,
+                ];
+                i ? ctx.lineTo(...q) : ctx.moveTo(...q);
+            });
+            ctx.closePath();
+            ctx.clip();
             ctx.drawImage(bitmap, 0, 0);
             ctx.restore();
         }
-    }
-    for (const tri of triangles) {
-        const src = tri.map((i) => [
-                mesh.vertices[i][0] - bx,
-                mesh.vertices[i][1] - by,
-            ]),
-            dst = tri.map((i) => vertices[i]),
-            [[u0, v0], [u1, v1], [u2, v2]] = src,
-            [[x0, y0], [x1, y1], [x2, y2]] = dst;
-        const den = (u1 - u0) * (v2 - v0) - (u2 - u0) * (v1 - v0);
-        if (Math.abs(den) < 1e-7) continue;
-        const a = ((x1 - x0) * (v2 - v0) - (x2 - x0) * (v1 - v0)) / den,
-            c = ((x2 - x0) * (u1 - u0) - (x1 - x0) * (u2 - u0)) / den;
-        const b = ((y1 - y0) * (v2 - v0) - (y2 - y0) * (v1 - v0)) / den,
-            d = ((y2 - y0) * (u1 - u0) - (y1 - y0) * (u2 - u0)) / den;
-        const area = (x1 - x0) * (y2 - y0) - (y1 - y0) * (x2 - x0);
-        if (Math.abs(area) < 0.01 || area * den < 0) continue;
-        ctx.save();
-        const edges = [
-                Math.hypot(x1 - x2, y1 - y2),
-                Math.hypot(x0 - x2, y0 - y2),
-                Math.hypot(x0 - x1, y0 - y1),
-            ],
-            perimeter = edges.reduce((a, b) => a + b),
-            center = [
-                (x0 * edges[0] + x1 * edges[1] + x2 * edges[2]) / perimeter,
-                (y0 * edges[0] + y1 * edges[1] + y2 * edges[2]) / perimeter,
-            ],
-            radius = Math.abs(area) / perimeter,
-            expand = Math.min(3, 1 + 1.5 / Math.max(0.1, radius));
-        ctx.beginPath();
-        dst.forEach((p, i) => {
-            const q = [
-                center[0] + (p[0] - center[0]) * expand,
-                center[1] + (p[1] - center[1]) * expand,
-            ];
-            i ? ctx.lineTo(...q) : ctx.moveTo(...q);
-        });
-        ctx.closePath();
-        ctx.clip();
-        ctx.transform(a, b, c, d, x0 - a * u0 - c * v0, y0 - b * u0 - d * v0);
-        ctx.drawImage(bitmap, 0, 0);
-        ctx.restore();
     }
 }

@@ -1,0 +1,218 @@
+{
+  "baseline_commit": "1331a91",
+  "full_frame": [
+    941,
+    1672
+  ],
+  "note": "Full stance uses unchanged camera. Detail panels centre each actual joint separately, at identical3x zoom. Pose calibration differs intentionally.",
+  "crops": [
+    {
+      "file": "male-right-shoulder-before-after.webp",
+      "source_pixels": 170,
+      "display_zoom": 3,
+      "before_center": [
+        287,
+        382
+      ],
+      "after_center": [
+        287,
+        382
+      ]
+    },
+    {
+      "file": "male-right-elbow-before-after.webp",
+      "source_pixels": 170,
+      "display_zoom": 3,
+      "before_center": [
+        152.29957433350205,
+        575.68478341177
+      ],
+      "after_center": [
+        194.01334579695532,
+        598.8213138511144
+      ]
+    },
+    {
+      "file": "male-right-wrist-before-after.webp",
+      "source_pixels": 170,
+      "display_zoom": 3,
+      "before_center": [
+        387.9822372493719,
+        564.4294557450853
+      ],
+      "after_center": [
+        429.5650537849608,
+        612.5469418488915
+      ]
+    },
+    {
+      "file": "male-right-grip-before-after.webp",
+      "source_pixels": 170,
+      "display_zoom": 3,
+      "before_center": [
+        459.99999999999983,
+        579.9999999999999
+      ],
+      "after_center": [
+        464.9999999999998,
+        590.0000000000003
+      ]
+    },
+    {
+      "file": "male-left-shoulder-before-after.webp",
+      "source_pixels": 170,
+      "display_zoom": 3,
+      "before_center": [
+        657,
+        381
+      ],
+      "after_center": [
+        657,
+        381
+      ]
+    },
+    {
+      "file": "male-left-elbow-before-after.webp",
+      "source_pixels": 170,
+      "display_zoom": 3,
+      "before_center": [
+        824.1310624518271,
+        549.5918383662847
+      ],
+      "after_center": [
+        866.9026341623346,
+        491.89131693560626
+      ]
+    },
+    {
+      "file": "male-left-wrist-before-after.webp",
+      "source_pixels": 170,
+      "display_zoom": 3,
+      "before_center": [
+        647.4285799176168,
+        708.0223678302966
+      ],
+      "after_center": [
+        653.1637918951385,
+        595.0402738197097
+      ]
+    },
+    {
+      "file": "male-left-grip-before-after.webp",
+      "source_pixels": 170,
+      "display_zoom": 3,
+      "before_center": [
+        643.6155327250408,
+        634.568568261403
+      ],
+      "after_center": [
+        619.254772461989,
+        619.8228967858583
+      ]
+    },
+    {
+      "file": "female-right-shoulder-before-after.webp",
+      "source_pixels": 170,
+      "display_zoom": 3,
+      "before_center": [
+        306,
+        367
+      ],
+      "after_center": [
+        306,
+        367
+      ]
+    },
+    {
+      "file": "female-right-elbow-before-after.webp",
+      "source_pixels": 170,
+      "display_zoom": 3,
+      "before_center": [
+        139.88970955342558,
+        509.4091689736116
+      ],
+      "after_center": [
+        178.4598467341264,
+        544.7821962540611
+      ]
+    },
+    {
+      "file": "female-right-wrist-before-after.webp",
+      "source_pixels": 170,
+      "display_zoom": 3,
+      "before_center": [
+        386.52583864563616,
+        544.3465390293327
+      ],
+      "after_center": [
+        422.505328000951,
+        594.7001596865159
+      ]
+    },
+    {
+      "file": "female-right-grip-before-after.webp",
+      "source_pixels": 170,
+      "display_zoom": 3,
+      "before_center": [
+        449.9999999999999,
+        559.9999999999998
+      ],
+      "after_center": [
+        454.9999999999999,
+        575
+      ]
+    },
+    {
+      "file": "female-left-shoulder-before-after.webp",
+      "source_pixels": 170,
+      "display_zoom": 3,
+      "before_center": [
+        639,
+        368
+      ],
+      "after_center": [
+        639,
+        368
+      ]
+    },
+    {
+      "file": "female-left-elbow-before-after.webp",
+      "source_pixels": 170,
+      "display_zoom": 3,
+      "before_center": [
+        811.6103455854859,
+        502.88761469037524
+      ],
+      "after_center": [
+        844.7537262504402,
+        443.1957720490913
+      ]
+    },
+    {
+      "file": "female-left-wrist-before-after.webp",
+      "source_pixels": 170,
+      "display_zoom": 3,
+      "before_center": [
+        639.1674659329847,
+        680.6077690262103
+      ],
+      "after_center": [
+        640.3216506974237,
+        582.9402763599435
+      ]
+    },
+    {
+      "file": "female-left-grip-before-after.webp",
+      "source_pixels": 170,
+      "display_zoom": 3,
+      "before_center": [
+        633.6155327250406,
+        614.5685682614031
+      ],
+      "after_center": [
+        609.254772461989,
+        604.8228967858586
+      ]
+    }
+  ]
+}

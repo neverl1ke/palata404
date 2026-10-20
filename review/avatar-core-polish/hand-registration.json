@@ -1,0 +1,305 @@
+{
+  "hands": [
+    {
+      "gender": "male",
+      "pose": "melee",
+      "side": "right",
+      "image": "assets/male/hands/melee-right.png",
+      "bounds": [
+        173,
+        848,
+        253,
+        948
+      ],
+      "pivot": [
+        207.0,
+        847.0
+      ],
+      "grip": [
+        207.0,
+        889.0
+      ],
+      "atlas_to_rest_rotation_deg": 165.17810638927088,
+      "scale": 0.3195787465175725,
+      "tone_delta_rgb": [
+        22.0,
+        22.0,
+        22.0
+      ],
+      "sha256": "3d58e102ec6dcc20bf31d3fcec540f6856dc5be2d066ddee95bc09c4bdbc2e11",
+      "source": "review/avatar-core-polish/sources/male-hands-generated.png",
+      "source_sha256": "5a02c77d4f3ec86d89193353ebf5d2d842b7441aeeb3e6b6a8bf9006d6eb1c73"
+    },
+    {
+      "gender": "male",
+      "pose": "pistol",
+      "side": "right",
+      "image": "assets/male/hands/pistol-right.png",
+      "bounds": [
+        166,
+        848,
+        244,
+        953
+      ],
+      "pivot": [
+        207.0,
+        847.0
+      ],
+      "grip": [
+        207.0,
+        889.0
+      ],
+      "atlas_to_rest_rotation_deg": 166.37712546786017,
+      "scale": 0.3107843454377991,
+      "tone_delta_rgb": [
+        22.0,
+        22.0,
+        22.0
+      ],
+      "sha256": "6b63011fd2b9bf56938b54a0b81eb30d0670d24851e480e1afbacec2d76f2274",
+      "source": "review/avatar-core-polish/sources/male-hands-generated.png",
+      "source_sha256": "5a02c77d4f3ec86d89193353ebf5d2d842b7441aeeb3e6b6a8bf9006d6eb1c73"
+    },
+    {
+      "gender": "male",
+      "pose": "rifle",
+      "side": "right",
+      "image": "assets/male/hands/rifle-right.png",
+      "bounds": [
+        155,
+        848,
+        250,
+        946
+      ],
+      "pivot": [
+        207.0,
+        847.0
+      ],
+      "grip": [
+        207.0,
+        889.0
+      ],
+      "atlas_to_rest_rotation_deg": 167.46823516564078,
+      "scale": 0.3330846229263508,
+      "tone_delta_rgb": [
+        22.0,
+        22.0,
+        22.0
+      ],
+      "sha256": "6bc0ff32a749105c4bcbcad2514f1a8c511b112c0a2196d65f87510c4ff06170",
+      "source": "review/avatar-core-polish/sources/male-hands-generated.png",
+      "source_sha256": "5a02c77d4f3ec86d89193353ebf5d2d842b7441aeeb3e6b6a8bf9006d6eb1c73"
+    },
+    {
+      "gender": "male",
+      "pose": "pistol",
+      "side": "left",
+      "image": "assets/male/hands/pistol-left.png",
+      "bounds": [
+        700,
+        848,
+        794,
+        951
+      ],
+      "pivot": [
+        747.0,
+        847.0
+      ],
+      "grip": [
+        747.0,
+        889.0
+      ],
+      "atlas_to_rest_rotation_deg": 193.90899041894474,
+      "scale": 0.29137012967693443,
+      "tone_delta_rgb": [
+        22.0,
+        22.0,
+        22.0
+      ],
+      "sha256": "350aa0f74c0f3d9d3750012f83a03810a02679ef7d61ceef1d647a43c6284240",
+      "source": "review/avatar-core-polish/sources/male-hands-generated.png",
+      "source_sha256": "5a02c77d4f3ec86d89193353ebf5d2d842b7441aeeb3e6b6a8bf9006d6eb1c73"
+    },
+    {
+      "gender": "male",
+      "pose": "rifle",
+      "side": "left",
+      "image": "assets/male/hands/rifle-left.png",
+      "bounds": [
+        693,
+        848,
+        801,
+        936
+      ],
+      "pivot": [
+        747.0,
+        847.0
+      ],
+      "grip": [
+        747.0,
+        889.0
+      ],
+      "atlas_to_rest_rotation_deg": 196.1614400791518,
+      "scale": 0.31587355413268237,
+      "tone_delta_rgb": [
+        22.0,
+        22.0,
+        22.0
+      ],
+      "sha256": "fae889c7d583ffbc26808f888499e4bdd1f9fd364bc6436ae16cc07e2ed2ed2d",
+      "source": "review/avatar-core-polish/sources/male-hands-generated.png",
+      "source_sha256": "5a02c77d4f3ec86d89193353ebf5d2d842b7441aeeb3e6b6a8bf9006d6eb1c73"
+    },
+    {
+      "gender": "female",
+      "pose": "melee",
+      "side": "right",
+      "image": "assets/female/hands/melee-right.png",
+      "bounds": [
+        185,
+        826,
+        258,
+        916
+      ],
+      "pivot": [
+        215.0,
+        825.0
+      ],
+      "grip": [
+        215.0,
+        863.0
+      ],
+      "atlas_to_rest_rotation_deg": 163.35096630923638,
+      "scale": 0.2737570779938702,
+      "tone_delta_rgb": [
+        11.0,
+        22.0,
+        22.0
+      ],
+      "sha256": "f11fe37a8c4377e4dd08050722c23c3fc27fc5ee2e1aaa75d42ba2cb8ae5ded2",
+      "source": "review/avatar-core-polish/sources/female-hands-generated.png",
+      "source_sha256": "1ae67ae1f26b28a1e8fbfb68bc8589db925df9a412fecec08ec4dd8a7fc4bc70"
+    },
+    {
+      "gender": "female",
+      "pose": "pistol",
+      "side": "right",
+      "image": "assets/female/hands/pistol-right.png",
+      "bounds": [
+        176,
+        826,
+        249,
+        922
+      ],
+      "pivot": [
+        215.0,
+        825.0
+      ],
+      "grip": [
+        215.0,
+        863.0
+      ],
+      "atlas_to_rest_rotation_deg": 164.8418104860459,
+      "scale": 0.26653504447197274,
+      "tone_delta_rgb": [
+        20.0,
+        22.0,
+        22.0
+      ],
+      "sha256": "1e9e67debffb537cc42def36d1fc19689fc1fcfb5f5268745d829588825bbab5",
+      "source": "review/avatar-core-polish/sources/female-hands-generated.png",
+      "source_sha256": "1ae67ae1f26b28a1e8fbfb68bc8589db925df9a412fecec08ec4dd8a7fc4bc70"
+    },
+    {
+      "gender": "female",
+      "pose": "rifle",
+      "side": "right",
+      "image": "assets/female/hands/rifle-right.png",
+      "bounds": [
+        167,
+        826,
+        254,
+        915
+      ],
+      "pivot": [
+        215.0,
+        825.0
+      ],
+      "grip": [
+        215.0,
+        863.0
+      ],
+      "atlas_to_rest_rotation_deg": 166.22667986976293,
+      "scale": 0.2853070456690892,
+      "tone_delta_rgb": [
+        22.0,
+        22.0,
+        22.0
+      ],
+      "sha256": "f09563277d63c695035639460ee70873f07291eb88748ece22935a594ad389eb",
+      "source": "review/avatar-core-polish/sources/female-hands-generated.png",
+      "source_sha256": "1ae67ae1f26b28a1e8fbfb68bc8589db925df9a412fecec08ec4dd8a7fc4bc70"
+    },
+    {
+      "gender": "female",
+      "pose": "pistol",
+      "side": "left",
+      "image": "assets/female/hands/pistol-left.png",
+      "bounds": [
+        687,
+        826,
+        771,
+        920
+      ],
+      "pivot": [
+        730.0,
+        825.0
+      ],
+      "grip": [
+        730.0,
+        863.0
+      ],
+      "atlas_to_rest_rotation_deg": 196.60481877284852,
+      "scale": 0.2584298109468576,
+      "tone_delta_rgb": [
+        22.0,
+        22.0,
+        22.0
+      ],
+      "sha256": "e5ff5abd8d55bcdb7d4b7f3e1494ef7f974015575bfa1a324adb5362cc192d5b",
+      "source": "review/avatar-core-polish/sources/female-hands-generated.png",
+      "source_sha256": "1ae67ae1f26b28a1e8fbfb68bc8589db925df9a412fecec08ec4dd8a7fc4bc70"
+    },
+    {
+      "gender": "female",
+      "pose": "rifle",
+      "side": "left",
+      "image": "assets/female/hands/rifle-left.png",
+      "bounds": [
+        679,
+        826,
+        781,
+        907
+      ],
+      "pivot": [
+        730.0,
+        825.0
+      ],
+      "grip": [
+        730.0,
+        863.0
+      ],
+      "atlas_to_rest_rotation_deg": 195.15977091980622,
+      "scale": 0.28498533957346567,
+      "tone_delta_rgb": [
+        22.0,
+        22.0,
+        22.0
+      ],
+      "sha256": "031dc9b01689a44c827f563dfbee92ae9b2f83e78f527520b709e5a39d132573",
+      "source": "review/avatar-core-polish/sources/female-hands-generated.png",
+      "source_sha256": "1ae67ae1f26b28a1e8fbfb68bc8589db925df9a412fecec08ec4dd8a7fc4bc70"
+    }
+  ],
+  "note": "Local corrective hand sprites only. Original base/face PNGs untouched."
+}
