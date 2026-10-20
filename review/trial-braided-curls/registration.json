@@ -1,6 +1,6 @@
 {
   "source": "review/trial-braided-curls/generated-source.png",
-  "source_sha256": "34920119dd7eccfeaa4e1f5054d235cd908b0caadda9559ade3f64aff45c42a6",
+  "source_sha256": "0e91ba9ceba6393858301575d09921790e97336463ab0e0c8bdeaaac39e6d8a1",
   "source_size": [
     979,
     1606
@@ -25,7 +25,7 @@
     "part_axis_x": 490
   },
   "output": "assets/wardrobe/hair/trial/female_braided_curls.png",
-  "sha256": "ae84dba11d2f40d89595c5ae1e6b4426860a558de5ee60f94144e679b45f181f",
+  "sha256": "5ff9a973a1481b3434105a7ec88ade07d73e80699a86a2d8e0b24e8370a005cb",
   "canvas": [
     941,
     1672
@@ -36,7 +36,23 @@
     "width": 941,
     "height": 1672
   },
-  "remote_alpha_pixels_removed": 247,
+  "remote_alpha_pixels_removed": 248,
   "female_only": true,
-  "generated_with": "image_gen; photo design + game screenshot + reference avatar; no avatar generated or replaced"
+  "generated_with": "image_gen; photo design + game screenshot + reference avatar; no avatar generated or replaced",
+  "local_edit": {
+    "scope": "jaw curls and ear coverage only",
+    "approved_base": "review/trial-braided-curls/approved-texture-source.png",
+    "patch": "review/trial-braided-curls/local-jaw-ear-edit.png",
+    "mask": "review/trial-braided-curls/local-edit-mask.png",
+    "rebuild": "bash tools/apply-trial-local-edit.sh",
+    "mix": "straight RGBA; preserves exact original pixels where mask=0"
+  },
+  "contour_edit": {
+    "base": "review/trial-braided-curls/before-contour-source.png",
+    "base_sha256": "a0062ee02c64f2ce4f0151bd30128a2c3c666c5aeb8e85d73c1f606f102ff3ea",
+    "patch": "review/trial-braided-curls/contour-edit-source.png",
+    "mask": "review/trial-braided-curls/contour-edit-mask.png",
+    "rebuild": "bash tools/apply-trial-contour-edit.sh",
+    "scope": "inner side mass and foreground strand separation; cap, ears and lower tresses retained from previous source"
+  }
 }

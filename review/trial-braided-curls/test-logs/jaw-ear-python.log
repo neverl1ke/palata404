@@ -1,0 +1,10 @@
+test_alpha_margin_and_central_face_opening_are_clear (test_trial_braided_curls.TrialBraidedCurlsTests.test_alpha_margin_and_central_face_opening_are_clear) ... ok
+test_existing_catalog_and_approved_art_are_unchanged (test_trial_braided_curls.TrialBraidedCurlsTests.test_existing_catalog_and_approved_art_are_unchanged) ... ok
+test_local_edit_preserves_approved_texture_outside_explicit_mask (test_trial_braided_curls.TrialBraidedCurlsTests.test_local_edit_preserves_approved_texture_outside_explicit_mask) ... ok
+test_saved_browser_evidence_covers_all_female_heads (test_trial_braided_curls.TrialBraidedCurlsTests.test_saved_browser_evidence_covers_all_female_heads) ... ok
+test_trial_is_female_only_full_canvas_and_cache_version_matches_bytes (test_trial_braided_curls.TrialBraidedCurlsTests.test_trial_is_female_only_full_canvas_and_cache_version_matches_bytes) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.379s
+
+OK

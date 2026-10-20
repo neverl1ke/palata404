@@ -1,0 +1,46 @@
+{
+  "browser": "Chromium 151.0.7922.34",
+  "entry": "index.html",
+  "female_faces_checked": [
+    null,
+    "face-asian",
+    "face-young",
+    "face-exhausted",
+    "face-elder",
+    "face-alternative",
+    "face-ginger-soft",
+    "face-goth-septum",
+    "face-goth-black-lips",
+    "face-female-new-defined-brows",
+    "face-female-new-blue-gaze",
+    "face-female-new-freckled",
+    "face-female-new-mature",
+    "face-female-new-light-eyes",
+    "face-female-new-pierced",
+    "face-female-new-soft-gaze",
+    "face-female-new-almond-eyes"
+  ],
+  "palette": [
+    "original",
+    "black",
+    "white"
+  ],
+  "backgrounds": [
+    "light",
+    "gray",
+    "black",
+    "green"
+  ],
+  "real_ui_selection": true,
+  "reload": true,
+  "male_exclusion": true,
+  "unequip": true,
+  "patient_trip_independent": true,
+  "protected_game_state_unchanged": true,
+  "mobile_emulation_widths": [
+    320,
+    390
+  ],
+  "js_errors": [],
+  "http_errors": []
+}

@@ -22,7 +22,7 @@ class TrialBraidedCurlsTests(unittest.TestCase):
     def test_existing_catalog_and_approved_art_are_unchanged(self):
         before = catalog(subprocess.check_output(['git','show','adffd71:paper-doll-data.js'],text=True,cwd=ROOT))
         after = catalog((ROOT/'paper-doll-data.js').read_text())
-        self.assertEqual([i for i in after if i['id']!=TRIAL],before)
+        self.assertEqual([i for i in after if i['id'] not in [TRIAL,'hair-f5-pixie','hair-f5-jaw-bob','hair-f5-long-waves','hair-f5-high-ponytail','hair-f5-braided-updo']],before)
         protected=json.loads((ROOT/'review/female-head-standard/manifest.json').read_text())['protected_sha256']
         for path,digest in protected.items():
             self.assertEqual(hashlib.sha256((ROOT/path).read_bytes()).hexdigest(),digest,path)
@@ -49,12 +49,28 @@ class TrialBraidedCurlsTests(unittest.TestCase):
             self.assertFalse(a[y:bottom,x:right].any())
         self.assertFalse(((a>0)&(a<=16)&(ndi.distance_transform_edt(a<32)>4)).any())
 
-    def test_restored_source_is_the_exact_user_selected_initial_generation(self):
-        source=REPORT/'generated-source.png'
+    def test_local_edit_preserves_approved_texture_outside_explicit_mask(self):
+        source=REPORT/'approved-texture-source.png'
         self.assertEqual(hashlib.sha256(source.read_bytes()).hexdigest(),
                          '34920119dd7eccfeaa4e1f5054d235cd908b0caadda9559ade3f64aff45c42a6')
+        approved=np.array(Image.open(source).convert('RGBA'))
+        corrected=np.array(Image.open(REPORT/'generated-source.png').convert('RGBA'))
+        mask=np.array(Image.open(REPORT/'local-edit-mask.png').convert('L'))
+        self.assertEqual(approved.shape,corrected.shape)
+        self.assertTrue(np.array_equal(approved[mask==0],corrected[mask==0]))
+        self.assertGreater(np.count_nonzero(np.any(approved!=corrected,axis=2)),1000)
         entry=json.loads((REPORT/'registration.json').read_text())
         self.assertEqual(entry['source_registration'],{'scale':0.3,'x':325.5,'y':-6,'part_axis_x':490})
+
+    def test_contour_edit_preserves_canvas_lower_tresses_and_all_pixels_outside_roi(self):
+        before=np.array(Image.open(REPORT/'before-contour-source.png').convert('RGBA'))
+        after=np.array(Image.open(REPORT/'generated-source.png').convert('RGBA'))
+        mask=np.array(Image.open(REPORT/'contour-edit-mask.png').convert('L'))
+        self.assertEqual(before.shape,after.shape)
+        self.assertTrue(np.array_equal(before[mask==0],after[mask==0]))
+        self.assertTrue(np.array_equal(before[:570],after[:570]))
+        self.assertTrue(np.array_equal(before[1120:],after[1120:]))
+        self.assertGreater(np.count_nonzero(np.any(before!=after,axis=2)),1000)
 
     def test_saved_browser_evidence_covers_all_female_heads(self):
         result=json.loads((REPORT/'browser-check.json').read_text())
