@@ -46163,21 +46163,22 @@
         ],
         "sha256": "3d58e102ec6dcc20bf31d3fcec540f6856dc5be2d066ddee95bc09c4bdbc2e11",
         "wristPatch": {
-          "image": "assets/male/hands/melee-right-wrist-patch.png",
+          "image": "assets/male/hands/melee-right-wrist-clean.png",
           "bounds": [
             82,
             807,
             335,
             882
           ],
-          "sha256": "5be5ab57fc482149de46a5784419522c7998a88a15149e21e6965956e737b1bd",
+          "sha256": "55d33ae4dccde4668b48d662bc1c30c32bb73b25eb1dec0c5ef5f4495824ff93",
           "source_band": [
             -40,
             -20,
             15,
             35
           ],
-          "source_atlas": "sources/male-wrist-edited.png"
+          "source_atlas": "review/avatar-core-polish/sources/male-wrist-edited.png",
+          "edge_method": "signed-distance contour interpolation; exact original coverage at band limits"
         }
       }
     },
@@ -46207,21 +46208,22 @@
         ],
         "sha256": "6b63011fd2b9bf56938b54a0b81eb30d0670d24851e480e1afbacec2d76f2274",
         "wristPatch": {
-          "image": "assets/male/hands/pistol-right-wrist-patch.png",
+          "image": "assets/male/hands/pistol-right-wrist-clean.png",
           "bounds": [
             82,
             807,
             335,
             882
           ],
-          "sha256": "04f10a3056c4031c9e9f5c679161520182147f41f57c95ee4e378eb52d329f86",
+          "sha256": "47419dcdd8f386e9edb9a4d29c09acd94044d3e41ee745a4a07436796952d233",
           "source_band": [
             -40,
             -20,
             15,
             35
           ],
-          "source_atlas": "sources/male-wrist-edited.png"
+          "source_atlas": "review/avatar-core-polish/sources/male-wrist-edited.png",
+          "edge_method": "signed-distance contour interpolation; exact original coverage at band limits"
         }
       },
       "left": {
@@ -46249,21 +46251,22 @@
         ],
         "sha256": "350aa0f74c0f3d9d3750012f83a03810a02679ef7d61ceef1d647a43c6284240",
         "wristPatch": {
-          "image": "assets/male/hands/pistol-left-wrist-patch.png",
+          "image": "assets/male/hands/pistol-left-wrist-clean.png",
           "bounds": [
             612,
             807,
             903,
             882
           ],
-          "sha256": "8ae5a8eb09b012f7747e6c698613b3165e87f4edb1a1e062c2f060b4278446b1",
+          "sha256": "c0f3ca69aeb471f522032f3cd9a607dc3a42a0042a6e90fe8f12026d2d4b39c7",
           "source_band": [
             -40,
             -20,
             15,
             35
           ],
-          "source_atlas": "sources/male-wrist-edited.png"
+          "source_atlas": "review/avatar-core-polish/sources/male-wrist-edited.png",
+          "edge_method": "signed-distance contour interpolation; exact original coverage at band limits"
         }
       }
     },
@@ -46293,21 +46296,22 @@
         ],
         "sha256": "6bc0ff32a749105c4bcbcad2514f1a8c511b112c0a2196d65f87510c4ff06170",
         "wristPatch": {
-          "image": "assets/male/hands/rifle-right-wrist-patch.png",
+          "image": "assets/male/hands/rifle-right-wrist-clean.png",
           "bounds": [
             82,
             807,
             335,
             882
           ],
-          "sha256": "1808fce79625ab32d20ea0ebb7228c053b16fa8a8246383241ec0c0294687bec",
+          "sha256": "f5920ed80aa310fe0053576d4636cb87ba8b569b9ed8ea25115e87f9c18b2a84",
           "source_band": [
             -40,
             -20,
             15,
             35
           ],
-          "source_atlas": "sources/male-wrist-edited.png"
+          "source_atlas": "review/avatar-core-polish/sources/male-wrist-edited.png",
+          "edge_method": "signed-distance contour interpolation; exact original coverage at band limits"
         }
       },
       "left": {
@@ -46335,21 +46339,22 @@
         ],
         "sha256": "fae889c7d583ffbc26808f888499e4bdd1f9fd364bc6436ae16cc07e2ed2ed2d",
         "wristPatch": {
-          "image": "assets/male/hands/rifle-left-wrist-patch.png",
+          "image": "assets/male/hands/rifle-left-wrist-clean.png",
           "bounds": [
             612,
             807,
             903,
             882
           ],
-          "sha256": "39ec379c87d798068bda75d79680293c61935f6655e0ad8d62bd24427b7f7d75",
+          "sha256": "81053f99fb26f7a7b8329605b7f07ca879e2cf20d9108950e3888f8e5ae1d0e1",
           "source_band": [
             -40,
             -20,
             15,
             35
           ],
-          "source_atlas": "sources/male-wrist-edited.png"
+          "source_atlas": "review/avatar-core-polish/sources/male-wrist-edited.png",
+          "edge_method": "signed-distance contour interpolation; exact original coverage at band limits"
         }
       }
     }

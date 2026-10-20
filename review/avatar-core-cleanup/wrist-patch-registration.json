@@ -1,0 +1,215 @@
+{
+  "patches": [
+    {
+      "gender": "male",
+      "pose": "melee",
+      "side": "right",
+      "image": "assets/male/hands/melee-right-wrist-clean.png",
+      "bounds": [
+        82,
+        807,
+        335,
+        882
+      ],
+      "sha256": "55d33ae4dccde4668b48d662bc1c30c32bb73b25eb1dec0c5ef5f4495824ff93",
+      "source_band": [
+        -40,
+        -20,
+        15,
+        35
+      ],
+      "source_atlas": "review/avatar-core-polish/sources/male-wrist-edited.png",
+      "edge_method": "signed-distance contour interpolation; exact original coverage at band limits"
+    },
+    {
+      "gender": "male",
+      "pose": "pistol",
+      "side": "right",
+      "image": "assets/male/hands/pistol-right-wrist-clean.png",
+      "bounds": [
+        82,
+        807,
+        335,
+        882
+      ],
+      "sha256": "47419dcdd8f386e9edb9a4d29c09acd94044d3e41ee745a4a07436796952d233",
+      "source_band": [
+        -40,
+        -20,
+        15,
+        35
+      ],
+      "source_atlas": "review/avatar-core-polish/sources/male-wrist-edited.png",
+      "edge_method": "signed-distance contour interpolation; exact original coverage at band limits"
+    },
+    {
+      "gender": "male",
+      "pose": "rifle",
+      "side": "right",
+      "image": "assets/male/hands/rifle-right-wrist-clean.png",
+      "bounds": [
+        82,
+        807,
+        335,
+        882
+      ],
+      "sha256": "f5920ed80aa310fe0053576d4636cb87ba8b569b9ed8ea25115e87f9c18b2a84",
+      "source_band": [
+        -40,
+        -20,
+        15,
+        35
+      ],
+      "source_atlas": "review/avatar-core-polish/sources/male-wrist-edited.png",
+      "edge_method": "signed-distance contour interpolation; exact original coverage at band limits"
+    },
+    {
+      "gender": "male",
+      "pose": "pistol",
+      "side": "left",
+      "image": "assets/male/hands/pistol-left-wrist-clean.png",
+      "bounds": [
+        612,
+        807,
+        903,
+        882
+      ],
+      "sha256": "c0f3ca69aeb471f522032f3cd9a607dc3a42a0042a6e90fe8f12026d2d4b39c7",
+      "source_band": [
+        -40,
+        -20,
+        15,
+        35
+      ],
+      "source_atlas": "review/avatar-core-polish/sources/male-wrist-edited.png",
+      "edge_method": "signed-distance contour interpolation; exact original coverage at band limits"
+    },
+    {
+      "gender": "male",
+      "pose": "rifle",
+      "side": "left",
+      "image": "assets/male/hands/rifle-left-wrist-clean.png",
+      "bounds": [
+        612,
+        807,
+        903,
+        882
+      ],
+      "sha256": "81053f99fb26f7a7b8329605b7f07ca879e2cf20d9108950e3888f8e5ae1d0e1",
+      "source_band": [
+        -40,
+        -20,
+        15,
+        35
+      ],
+      "source_atlas": "review/avatar-core-polish/sources/male-wrist-edited.png",
+      "edge_method": "signed-distance contour interpolation; exact original coverage at band limits"
+    },
+    {
+      "gender": "female",
+      "pose": "melee",
+      "side": "right",
+      "image": "assets/female/hands/melee-right-wrist-clean.png",
+      "bounds": [
+        165,
+        785,
+        351,
+        860
+      ],
+      "sha256": "d97003b9b8e0c4db4e5018d2484f406e1d50aae62af7816d4c19dbbd8a77d3c3",
+      "source_band": [
+        -40,
+        -20,
+        15,
+        35
+      ],
+      "source_atlas": "review/avatar-core-polish/sources/female-wrist-edited.png",
+      "edge_method": "signed-distance contour interpolation; exact original coverage at band limits"
+    },
+    {
+      "gender": "female",
+      "pose": "pistol",
+      "side": "right",
+      "image": "assets/female/hands/pistol-right-wrist-clean.png",
+      "bounds": [
+        165,
+        785,
+        351,
+        860
+      ],
+      "sha256": "484427ecf0921cb70e091a493f193711f9e9ed5d3f6803ae1ac9a1cba0946f6e",
+      "source_band": [
+        -40,
+        -20,
+        15,
+        35
+      ],
+      "source_atlas": "review/avatar-core-polish/sources/female-wrist-edited.png",
+      "edge_method": "signed-distance contour interpolation; exact original coverage at band limits"
+    },
+    {
+      "gender": "female",
+      "pose": "rifle",
+      "side": "right",
+      "image": "assets/female/hands/rifle-right-wrist-clean.png",
+      "bounds": [
+        165,
+        785,
+        351,
+        860
+      ],
+      "sha256": "2208b1b6591c595ef651bbb1738a70d8eed9fd2d044f08d0a170feb8662dc394",
+      "source_band": [
+        -40,
+        -20,
+        15,
+        35
+      ],
+      "source_atlas": "review/avatar-core-polish/sources/female-wrist-edited.png",
+      "edge_method": "signed-distance contour interpolation; exact original coverage at band limits"
+    },
+    {
+      "gender": "female",
+      "pose": "pistol",
+      "side": "left",
+      "image": "assets/female/hands/pistol-left-wrist-clean.png",
+      "bounds": [
+        595,
+        785,
+        783,
+        860
+      ],
+      "sha256": "b7df164c3fb219a6760090c7ac5682aa605d89291c9bc693867887dba0b4f07a",
+      "source_band": [
+        -40,
+        -20,
+        15,
+        35
+      ],
+      "source_atlas": "review/avatar-core-polish/sources/female-wrist-edited.png",
+      "edge_method": "signed-distance contour interpolation; exact original coverage at band limits"
+    },
+    {
+      "gender": "female",
+      "pose": "rifle",
+      "side": "left",
+      "image": "assets/female/hands/rifle-left-wrist-clean.png",
+      "bounds": [
+        595,
+        785,
+        783,
+        860
+      ],
+      "sha256": "0f0c282bb8fce54d5ae9b8c53dfa839bdfae4e0aa17aad7f8b729d7d0cae242b",
+      "source_band": [
+        -40,
+        -20,
+        15,
+        35
+      ],
+      "source_atlas": "review/avatar-core-polish/sources/female-wrist-edited.png",
+      "edge_method": "signed-distance contour interpolation; exact original coverage at band limits"
+    }
+  ],
+  "method": "Actual pose render -> local wrist edit -> inverse piecewise affine UV bake; only the source wrist band changes."
+}

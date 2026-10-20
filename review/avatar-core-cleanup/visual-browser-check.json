@@ -1,0 +1,170 @@
+{
+  "browser": "Chromium 151.0.7922.34",
+  "real_entry": "avatar-lab/index.html",
+  "background_cases": [
+    {
+      "gender": "male",
+      "pose": "idle",
+      "background": "#fff"
+    },
+    {
+      "gender": "male",
+      "pose": "melee",
+      "background": "#fff"
+    },
+    {
+      "gender": "male",
+      "pose": "pistol",
+      "background": "#fff"
+    },
+    {
+      "gender": "male",
+      "pose": "rifle",
+      "background": "#fff"
+    },
+    {
+      "gender": "male",
+      "pose": "idle",
+      "background": "#777"
+    },
+    {
+      "gender": "male",
+      "pose": "melee",
+      "background": "#777"
+    },
+    {
+      "gender": "male",
+      "pose": "pistol",
+      "background": "#777"
+    },
+    {
+      "gender": "male",
+      "pose": "rifle",
+      "background": "#777"
+    },
+    {
+      "gender": "male",
+      "pose": "idle",
+      "background": "#000"
+    },
+    {
+      "gender": "male",
+      "pose": "melee",
+      "background": "#000"
+    },
+    {
+      "gender": "male",
+      "pose": "pistol",
+      "background": "#000"
+    },
+    {
+      "gender": "male",
+      "pose": "rifle",
+      "background": "#000"
+    },
+    {
+      "gender": "male",
+      "pose": "idle",
+      "background": "#00ff00"
+    },
+    {
+      "gender": "male",
+      "pose": "melee",
+      "background": "#00ff00"
+    },
+    {
+      "gender": "male",
+      "pose": "pistol",
+      "background": "#00ff00"
+    },
+    {
+      "gender": "male",
+      "pose": "rifle",
+      "background": "#00ff00"
+    },
+    {
+      "gender": "female",
+      "pose": "idle",
+      "background": "#fff"
+    },
+    {
+      "gender": "female",
+      "pose": "melee",
+      "background": "#fff"
+    },
+    {
+      "gender": "female",
+      "pose": "pistol",
+      "background": "#fff"
+    },
+    {
+      "gender": "female",
+      "pose": "rifle",
+      "background": "#fff"
+    },
+    {
+      "gender": "female",
+      "pose": "idle",
+      "background": "#777"
+    },
+    {
+      "gender": "female",
+      "pose": "melee",
+      "background": "#777"
+    },
+    {
+      "gender": "female",
+      "pose": "pistol",
+      "background": "#777"
+    },
+    {
+      "gender": "female",
+      "pose": "rifle",
+      "background": "#777"
+    },
+    {
+      "gender": "female",
+      "pose": "idle",
+      "background": "#000"
+    },
+    {
+      "gender": "female",
+      "pose": "melee",
+      "background": "#000"
+    },
+    {
+      "gender": "female",
+      "pose": "pistol",
+      "background": "#000"
+    },
+    {
+      "gender": "female",
+      "pose": "rifle",
+      "background": "#000"
+    },
+    {
+      "gender": "female",
+      "pose": "idle",
+      "background": "#00ff00"
+    },
+    {
+      "gender": "female",
+      "pose": "melee",
+      "background": "#00ff00"
+    },
+    {
+      "gender": "female",
+      "pose": "pistol",
+      "background": "#00ff00"
+    },
+    {
+      "gender": "female",
+      "pose": "rifle",
+      "background": "#00ff00"
+    }
+  ],
+  "transition_frames_per_gender": 52,
+  "js_errors": [],
+  "http_errors": [],
+  "physical_device": false
+}

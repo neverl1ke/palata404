@@ -10,7 +10,8 @@ from PIL import Image
 from scipy import ndimage as ndi
 
 ROOT=Path(__file__).resolve().parents[1];CORE=ROOT/'avatar-core'
-OUT=ROOT/'review/avatar-core-polish';SOURCES=OUT/'sources'
+OUT=ROOT/'review/avatar-core-cleanup';OUT.mkdir(parents=True,exist_ok=True)
+SOURCES=ROOT/'review/avatar-core-polish/sources'
 reference=json.loads(gzip.open(SOURCES/'wrist-reference.json.gz','rt').read())
 rigs={g:json.loads((CORE/'rigs'/f'{g}_rig.json').read_text()) for g in ['male','female']}
 atlases={g:Image.open(SOURCES/f'{g}-wrist-edited.png').convert('RGBA') for g in rigs}
@@ -31,6 +32,12 @@ def sample(a,x,y):
         xx=ix+dx;yy=iy+dy;valid=(xx>=0)&(yy>=0)&(xx<a.shape[1])&(yy<a.shape[0])
         result[valid]+=a[yy[valid],xx[valid]]*w[valid,None]
     return result
+
+def signed_edge(alpha):
+    """Distance to the silhouette, not a union of two translucent outlines."""
+    inside=alpha>=.5
+    return np.where(inside,ndi.distance_transform_edt(inside)-.5,
+                    .5-ndi.distance_transform_edt(~inside))
 
 for record in reference['records']:
     g,pose,side=record['gender'],record['pose'],record['side'];rig=rigs[g]
@@ -70,13 +77,23 @@ for record in reference['records']:
     base=premultiply(base.crop((0,top-y0,x1-x0,bottom-y0)))
     weight=smooth((qy-(wy-40))/20)*smooth(((wy+35)-qy)/20)
     mixed=base*(1-weight[...,None])+edited*weight[...,None]
-    alpha=mixed[:,:,3];rgb=np.divide(mixed[:,:,:3],alpha[:,:,None],out=np.zeros_like(mixed[:,:,:3]),where=alpha[:,:,None]>1e-8)
+    coverage=mixed[:,:,3]
+    rgb=np.divide(mixed[:,:,:3],coverage[:,:,None],out=np.zeros_like(mixed[:,:,:3]),where=coverage[:,:,None]>1e-8)
+    # Blending coverage formed an alpha union: the old cuff's protruding edge
+    # survived beside the retouched wrist. Interpolate the contour instead.
+    edge=signed_edge(base[:,:,3])*(1-weight)+signed_edge(edited[:,:,3])*weight
+    alpha=np.clip(edge+.5,0,1)
+    alpha=np.where(weight<1e-7,base[:,:,3],np.where(weight>1-1e-7,edited[:,:,3],alpha))
+    # The UV texture is wider than the wrist and contains faint original remote
+    # pixels. Those are not this cleanup's subject; preserve their coverage.
+    alpha=np.where(abs(qx-rig['arms'][side]['wrist'][0])<75,alpha,coverage)
     rgba=np.rint(np.clip(np.dstack([rgb,alpha]),0,1)*255).astype('uint8')
     remote=(rgba[:,:,3]>0)&(rgba[:,:,3]<=16)&(ndi.distance_transform_edt(rgba[:,:,3]<32)>4)
     rgba[remote]=0;rgba[rgba[:,:,3]==0]=0
-    path=f'assets/{g}/hands/{pose}-{side}-wrist-patch.png';Image.fromarray(rgba).save(CORE/path)
+    path=f'assets/{g}/hands/{pose}-{side}-wrist-clean.png';Image.fromarray(rgba).save(CORE/path)
     entry={'image':path,'bounds':[x0,top,x1,bottom],'sha256':hashlib.sha256((CORE/path).read_bytes()).hexdigest(),
-           'source_band':[-40,-20,15,35],'source_atlas':f'sources/{g}-wrist-edited.png'}
+           'source_band':[-40,-20,15,35],'source_atlas':f'review/avatar-core-polish/sources/{g}-wrist-edited.png',
+           'edge_method':'signed-distance contour interpolation; exact original coverage at band limits'}
     rig['handCorrections'][pose][side]['wristPatch']=entry
     records.append({'gender':g,'pose':pose,'side':side,**entry})
 

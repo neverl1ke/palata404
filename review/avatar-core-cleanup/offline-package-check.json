@@ -1,0 +1,78 @@
+{
+  "browser": "Chromium 151.0.7922.34",
+  "method": "Actual ZIP extracted to a new empty temporary directory; file://, no neighboring repo/server/CDN",
+  "crc_ok": true,
+  "actual_lab_cases": [
+    {
+      "gender": "male",
+      "pose": "idle",
+      "face": "face-male-blue-eyes",
+      "hair": "hair-shoulder-length",
+      "color": "black"
+    },
+    {
+      "gender": "male",
+      "pose": "melee",
+      "face": "face-male-blue-eyes",
+      "hair": "hair-shoulder-length",
+      "color": "black"
+    },
+    {
+      "gender": "male",
+      "pose": "pistol",
+      "face": "face-male-blue-eyes",
+      "hair": "hair-shoulder-length",
+      "color": "black"
+    },
+    {
+      "gender": "male",
+      "pose": "rifle",
+      "face": "face-male-blue-eyes",
+      "hair": "hair-shoulder-length",
+      "color": "black"
+    },
+    {
+      "gender": "female",
+      "pose": "idle",
+      "face": "face-female-new-almond-eyes",
+      "hair": "hair-shoulder-length",
+      "color": "black"
+    },
+    {
+      "gender": "female",
+      "pose": "melee",
+      "face": "face-female-new-almond-eyes",
+      "hair": "hair-shoulder-length",
+      "color": "black"
+    },
+    {
+      "gender": "female",
+      "pose": "pistol",
+      "face": "face-female-new-almond-eyes",
+      "hair": "hair-shoulder-length",
+      "color": "black"
+    },
+    {
+      "gender": "female",
+      "pose": "rifle",
+      "face": "face-female-new-almond-eyes",
+      "hair": "hair-shoulder-length",
+      "color": "black"
+    }
+  ],
+  "report_images_loaded": 26,
+  "viewport_widths": [
+    320,
+    390,
+    768
+  ],
+  "physical_device": false,
+  "external_http_requests": [],
+  "js_errors": [],
+  "local_storage_byte_unchanged": true,
+  "html_sha256": {
+    "Avatar-Lab.html": "c5647069b08ef136d0fdecf5a23b9823bbb0e9f818308ef58b1899632d831cc5",
+    "Report.html": "e0e8e4d70752cc1371f3cd9a54ea4dbfce47c57487400428fc83ef5acd7d1b56",
+    "Technical-report.html": "0971e0fba9021a1e752d66943deb24773741ccda9c1d82d75728abfe345d2a12"
+  }
+}

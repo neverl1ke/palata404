@@ -8,7 +8,7 @@ import tests.test_avatar_core as core_support
 ROOT=core_support.ROOT
 CORE=core_support.CORE
 
-REVIEW=ROOT/'review/avatar-core-polish'
+REVIEW=ROOT/'review/avatar-core-cleanup'
 
 class PolishSourceTests(unittest.TestCase):
     def test_every_prototype_png_is_still_byte_identical(self):
@@ -41,8 +41,7 @@ class PolishSourceTests(unittest.TestCase):
         paths=list((CORE/'assets').rglob('*.png'))+list((CORE/'rigs').glob('*.json'))+[CORE/'weapons.json']
         before={p:hashlib.sha256(p.read_bytes()).hexdigest() for p in paths}
         subprocess.run(['python',str(ROOT/'tools/prepare-avatar-polish.py')],cwd=ROOT,check=True,capture_output=True)
-        if (REVIEW/'sources/wrist-reference.json.gz').exists():
-            subprocess.run(['python',str(ROOT/'tools/prepare-avatar-wrist-patches.py')],cwd=ROOT,check=True,capture_output=True)
+        subprocess.run(['python',str(ROOT/'tools/prepare-avatar-cleanup.py')],cwd=ROOT,check=True,capture_output=True)
         self.assertEqual(before,{p:hashlib.sha256(p.read_bytes()).hexdigest() for p in paths})
 
 class PolishBrowserTests(unittest.TestCase):

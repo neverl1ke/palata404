@@ -1,0 +1,15 @@
+{
+  "commit": "4f46b15",
+  "source": "Actual Lab captures preserved from accepted polish; runtime unchanged since these captures",
+  "files": {
+    "before/browser-check.json": "7b2dd44157834a61ffbce920f991edce98a5a278b3ab517f4509be58112e8076",
+    "before/female-idle.png": "2243994884af8704ac52af144da5b976d0b98f58b852dc29475cdb05995f96ce",
+    "before/female-melee.png": "62d0af110080bec7ffecb9eac9c128c8f573a2dd21b948d30110cd0cabbe5dbc",
+    "before/female-pistol.png": "86add9e456fa4fa279aeebde6a7182104291a3b09e44b921667049b27183466b",
+    "before/female-rifle.png": "040abf9aa6e34fe143432ec24171de4c8bb2c0c433b49318200ce8d7e406fac9",
+    "before/male-idle.png": "683caa734dd6cd260f225a3c4ddbb785f7d7e85ea29668ca9e4de0263a90959a",
+    "before/male-melee.png": "9aaeedb198c337b38f987c44cfe52743a497ea75ef2d70cc919e4655268de121",
+    "before/male-pistol.png": "6b1d795d37bfed8046400b08929e34b8bb4695dd1618d662034a9ef61a659414",
+    "before/male-rifle.png": "c4ee1a05617d531a811130ceb9d584a3bf3582e6e0006325795e36727fcd0d2c"
+  }
+}

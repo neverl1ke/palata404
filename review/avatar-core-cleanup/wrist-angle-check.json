@@ -1,0 +1,282 @@
+[
+  {
+    "gender": "male",
+    "pose": "melee",
+    "side": "right",
+    "time": 0,
+    "angle_degrees": 23.589844462459727
+  },
+  {
+    "gender": "male",
+    "pose": "melee",
+    "side": "right",
+    "time": 1000,
+    "angle_degrees": 22.764725849702526
+  },
+  {
+    "gender": "male",
+    "pose": "melee",
+    "side": "right",
+    "time": 3000,
+    "angle_degrees": 24.33329847970149
+  },
+  {
+    "gender": "male",
+    "pose": "melee",
+    "side": "right",
+    "time": 4000,
+    "angle_degrees": 23.589844462459727
+  },
+  {
+    "gender": "male",
+    "pose": "pistol",
+    "side": "right",
+    "time": 0,
+    "angle_degrees": 23.663264333530233
+  },
+  {
+    "gender": "male",
+    "pose": "pistol",
+    "side": "left",
+    "time": 0,
+    "angle_degrees": 31.383459222898765
+  },
+  {
+    "gender": "male",
+    "pose": "pistol",
+    "side": "right",
+    "time": 1000,
+    "angle_degrees": 24.128492625331845
+  },
+  {
+    "gender": "male",
+    "pose": "pistol",
+    "side": "left",
+    "time": 1000,
+    "angle_degrees": 32.226358301914544
+  },
+  {
+    "gender": "male",
+    "pose": "pistol",
+    "side": "right",
+    "time": 3000,
+    "angle_degrees": 23.193635495426065
+  },
+  {
+    "gender": "male",
+    "pose": "pistol",
+    "side": "left",
+    "time": 3000,
+    "angle_degrees": 30.53435491585616
+  },
+  {
+    "gender": "male",
+    "pose": "pistol",
+    "side": "right",
+    "time": 4000,
+    "angle_degrees": 23.663264333530233
+  },
+  {
+    "gender": "male",
+    "pose": "pistol",
+    "side": "left",
+    "time": 4000,
+    "angle_degrees": 31.383459222898765
+  },
+  {
+    "gender": "male",
+    "pose": "rifle",
+    "side": "right",
+    "time": 0,
+    "angle_degrees": 35.80309653535009
+  },
+  {
+    "gender": "male",
+    "pose": "rifle",
+    "side": "left",
+    "time": 0,
+    "angle_degrees": 10.399789680768187
+  },
+  {
+    "gender": "male",
+    "pose": "rifle",
+    "side": "right",
+    "time": 1000,
+    "angle_degrees": 36.145428321746095
+  },
+  {
+    "gender": "male",
+    "pose": "rifle",
+    "side": "left",
+    "time": 1000,
+    "angle_degrees": 9.812872602932561
+  },
+  {
+    "gender": "male",
+    "pose": "rifle",
+    "side": "right",
+    "time": 3000,
+    "angle_degrees": 35.46134185813316
+  },
+  {
+    "gender": "male",
+    "pose": "rifle",
+    "side": "left",
+    "time": 3000,
+    "angle_degrees": 10.987588353877362
+  },
+  {
+    "gender": "male",
+    "pose": "rifle",
+    "side": "right",
+    "time": 4000,
+    "angle_degrees": 35.80309653535009
+  },
+  {
+    "gender": "male",
+    "pose": "rifle",
+    "side": "left",
+    "time": 4000,
+    "angle_degrees": 10.399789680768187
+  },
+  {
+    "gender": "female",
+    "pose": "melee",
+    "side": "right",
+    "time": 0,
+    "angle_degrees": 22.669218620670833
+  },
+  {
+    "gender": "female",
+    "pose": "melee",
+    "side": "right",
+    "time": 1000,
+    "angle_degrees": 21.95546463929723
+  },
+  {
+    "gender": "female",
+    "pose": "melee",
+    "side": "right",
+    "time": 3000,
+    "angle_degrees": 23.312168388134964
+  },
+  {
+    "gender": "female",
+    "pose": "melee",
+    "side": "right",
+    "time": 4000,
+    "angle_degrees": 22.669218620670833
+  },
+  {
+    "gender": "female",
+    "pose": "pistol",
+    "side": "right",
+    "time": 0,
+    "angle_degrees": 32.35739562289923
+  },
+  {
+    "gender": "female",
+    "pose": "pistol",
+    "side": "left",
+    "time": 0,
+    "angle_degrees": 38.322483435515636
+  },
+  {
+    "gender": "female",
+    "pose": "pistol",
+    "side": "right",
+    "time": 1000,
+    "angle_degrees": 32.67791682572311
+  },
+  {
+    "gender": "female",
+    "pose": "pistol",
+    "side": "left",
+    "time": 1000,
+    "angle_degrees": 39.08282856339708
+  },
+  {
+    "gender": "female",
+    "pose": "pistol",
+    "side": "right",
+    "time": 3000,
+    "angle_degrees": 32.03501587436418
+  },
+  {
+    "gender": "female",
+    "pose": "pistol",
+    "side": "left",
+    "time": 3000,
+    "angle_degrees": 37.556454481002035
+  },
+  {
+    "gender": "female",
+    "pose": "pistol",
+    "side": "right",
+    "time": 4000,
+    "angle_degrees": 32.35739562289923
+  },
+  {
+    "gender": "female",
+    "pose": "pistol",
+    "side": "left",
+    "time": 4000,
+    "angle_degrees": 38.322483435515636
+  },
+  {
+    "gender": "female",
+    "pose": "rifle",
+    "side": "right",
+    "time": 0,
+    "angle_degrees": 42.7867136604979
+  },
+  {
+    "gender": "female",
+    "pose": "rifle",
+    "side": "left",
+    "time": 0,
+    "angle_degrees": 0.8042645714991683
+  },
+  {
+    "gender": "female",
+    "pose": "rifle",
+    "side": "right",
+    "time": 1000,
+    "angle_degrees": 43.005191711954765
+  },
+  {
+    "gender": "female",
+    "pose": "rifle",
+    "side": "left",
+    "time": 1000,
+    "angle_degrees": 0.31508386343140476
+  },
+  {
+    "gender": "female",
+    "pose": "rifle",
+    "side": "right",
+    "time": 3000,
+    "angle_degrees": 42.570191692981105
+  },
+  {
+    "gender": "female",
+    "pose": "rifle",
+    "side": "left",
+    "time": 3000,
+    "angle_degrees": 1.292046806396993
+  },
+  {
+    "gender": "female",
+    "pose": "rifle",
+    "side": "right",
+    "time": 4000,
+    "angle_degrees": 42.7867136604979
+  },
+  {
+    "gender": "female",
+    "pose": "rifle",
+    "side": "left",
+    "time": 4000,
+    "angle_degrees": 0.8042645714991683
+  }
+]

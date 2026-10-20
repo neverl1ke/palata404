@@ -6,7 +6,7 @@ import numpy as np
 from PIL import Image
 from scipy import ndimage as ndi
 from playwright.sync_api import sync_playwright
-ROOT=Path(__file__).resolve().parents[1];R=ROOT/'review/avatar-core-polish';R.mkdir(parents=True,exist_ok=True);CORE=ROOT/'avatar-core'
+ROOT=Path(__file__).resolve().parents[1];R=ROOT/'review/avatar-core-cleanup';R.mkdir(parents=True,exist_ok=True);CORE=ROOT/'avatar-core'
 class AvatarCoreSourceTests(unittest.TestCase):
  def test_approved_runtime_and_all_original_assets_are_unchanged(self):
   for path,expected in json.loads((ROOT/'review/avatar-core-1/protected-originals.json').read_text())['git_blobs'].items():

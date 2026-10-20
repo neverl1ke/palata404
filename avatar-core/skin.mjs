@@ -1,16 +1,80 @@
 import { point, lerp } from './math.mjs';
 /** Continuous source-pixel skinning at shoulder, elbow and wrist. No new anatomy. */
 export function skinVertices(mesh, arm, torso, rest) {
+    const correction = mesh.shoulderArcBlend;
+    const angle = Math.atan2(arm.upper[1], arm.upper[0]);
+    const smooth = (v) => {
+        const t = Math.max(0, Math.min(1, v));
+        return t * t * (3 - 2 * t);
+    };
+    const activation = correction
+        ? smooth(
+              (-angle - correction.startAngle) /
+                  (correction.fullAngle - correction.startAngle),
+          )
+        : 0;
+    const pivot = activation ? point(torso, rest.shoulder) : null;
     return mesh.vertices.map(([x, y, shoulder, elbow, wrist]) => {
         const p = [x, y],
             u = point(arm.upper, p),
             f = point(arm.fore, p),
             h = point(arm.hand, p),
             t = point(torso, p);
-        return [
+        const result = [
             lerp(t[0], lerp(lerp(u[0], f[0], elbow), h[0], wrist), shoulder),
             lerp(t[1], lerp(lerp(u[1], f[1], elbow), h[1], wrist), shoulder),
         ];
+        if (
+            activation &&
+            shoulder > 0 &&
+            shoulder < 1 &&
+            elbow < 1e-8 &&
+            wrist < 1e-8
+        ) {
+            // A local shoulder arc, not a new arm pose. Linear matrix blending
+            // pinched the raised deltoid into a corner. Interpolate rotation
+            // only within this source shoulder region; joints remain fixed.
+            const outer =
+                1 -
+                smooth(
+                    (x - correction.fadeOuterX[0]) /
+                        (correction.fadeOuterX[1] - correction.fadeOuterX[0]),
+                );
+            const local =
+                activation *
+                outer *
+                (1 -
+                    smooth(
+                        (y - rest.shoulder[1] - correction.fadeStart) /
+                            (correction.fadeEnd - correction.fadeStart),
+                    ));
+            const a = angle * shoulder,
+                c = Math.cos(a),
+                s = Math.sin(a);
+            const dx = (x - rest.shoulder[0]) * lerp(torso[0], 1, shoulder);
+            const dy = (y - rest.shoulder[1]) * lerp(torso[3], 1, shoulder);
+            const arc = [
+                pivot[0] + dx * c - dy * s,
+                pivot[1] + dx * s + dy * c,
+            ];
+            result[0] = lerp(result[0], arc[0], local);
+            result[1] = lerp(result[1], arc[1], local);
+            if (correction.contourLift) {
+                const { centre, radius, pixels } = correction.contourLift;
+                const r2 =
+                    ((x - centre[0]) / radius[0]) ** 2 +
+                    ((y - centre[1]) / radius[1]) ** 2;
+                const support = Math.max(0, 1 - r2) ** 3;
+                result[1] -=
+                    activation *
+                    pixels *
+                    support *
+                    16 *
+                    shoulder ** 2 *
+                    (1 - shoulder) ** 2;
+            }
+        }
+        return result;
     });
 }
 const plans = new WeakMap();

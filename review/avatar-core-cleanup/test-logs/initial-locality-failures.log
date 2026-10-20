@@ -1,0 +1,25 @@
+test_actual_render_changes_only_at_wrists_and_female_rifle_shoulder (tests.test_avatar_cleanup.CleanupBrowserTests.test_actual_render_changes_only_at_wrists_and_female_rifle_shoulder) ... FAIL
+test_shoulder_surface_is_local_continuous_and_never_changes_skeleton (tests.test_avatar_cleanup.CleanupBrowserTests.test_shoulder_surface_is_local_continuous_and_never_changes_skeleton) ... FAIL
+test_all_65_precleanup_pngs_are_byte_identical (tests.test_avatar_cleanup.CleanupSourceTests.test_all_65_precleanup_pngs_are_byte_identical) ... ok
+test_new_transition_edges_have_no_faint_projection_away_from_the_silhouette (tests.test_avatar_cleanup.CleanupSourceTests.test_new_transition_edges_have_no_faint_projection_away_from_the_silhouette) ... ok
+
+======================================================================
+FAIL: test_actual_render_changes_only_at_wrists_and_female_rifle_shoulder (tests.test_avatar_cleanup.CleanupBrowserTests.test_actual_render_changes_only_at_wrists_and_female_rifle_shoulder)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/palata404-avatar-core/tests/test_avatar_cleanup.py", line 73, in test_actual_render_changes_only_at_wrists_and_female_rifle_shoulder
+    self.assertEqual(int((changed&~allowed).sum()),0,(gender,pose,'edit escaped local area'))
+AssertionError: 6 != 0 : ('male', 'melee', 'edit escaped local area')
+
+======================================================================
+FAIL: test_shoulder_surface_is_local_continuous_and_never_changes_skeleton (tests.test_avatar_cleanup.CleanupBrowserTests.test_shoulder_surface_is_local_continuous_and_never_changes_skeleton)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/palata404-avatar-core/tests/test_avatar_cleanup.py", line 102, in test_shoulder_surface_is_local_continuous_and_never_changes_skeleton
+    self.assertLess(result['maxOffset'],25)
+AssertionError: 29.745553625128988 not less than 25
+
+----------------------------------------------------------------------
+Ran 4 tests in 2.422s
+
+FAILED (failures=2)
