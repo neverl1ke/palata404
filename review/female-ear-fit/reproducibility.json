@@ -1,0 +1,11 @@
+{
+  "command": "python tools/prepare-female-five-hairstyles.py",
+  "all_five_sha256_identical_after_rebuild": true,
+  "sha256": {
+    "pixie": "2a7a0356dd52ae15a162479e99bc19562b514d70d7bcd554ad9963815f8c5f2f",
+    "jaw-bob": "43462409eabb0d6d8e9cb1ed5f95f0aee932fdce7f7933e925571f712accc816",
+    "long-waves": "3fbd66e31df5f0ed1cdc80adbddabd2ffa382618f9978f56ae51b771e6c6e40d",
+    "high-ponytail": "867d1086dd51c9c0220e9f0947df0c256ed5ce6428147882e1cd434a31f5e4d3",
+    "braided-updo": "6cda953f51ad0a3d852ba2c5572d5b7587f06ddb8e3da88c4c8c7405ae690df6"
+  }
+}

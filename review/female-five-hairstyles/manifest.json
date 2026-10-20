@@ -1,37 +1,38 @@
 {
   "branch": "main",
   "publication": "main integration; live status verified separately",
-  "commit_created_for_this_pack": false,
+  "commit_created_for_this_pack": true,
   "new_style_count": 5,
   "supported_female_heads": 17,
   "new_combinations_checked": 85,
   "tests": {
     "javascript": 95,
-    "fit_module": 9,
+    "fit_module": 12,
     "targeted_retest_passed": 11,
     "targeted_retest_run": 12,
-    "known_failure": "base_male.png alpha noise unchanged from origin/main"
+    "known_failure": "base_male.png alpha noise unchanged from origin/main",
+    "ear_fit_local_passed": 113
   },
   "files": {
     "README.md": {
-      "sha256": "903ed0d390448e70d05c8f811e70e89078b83d2ae8b1109842f8119d341ffdf2",
-      "bytes": 18330
+      "sha256": "9d4e867cad496e7639cc203bf00e4fef3830c515eebe4801c7d8c1b5fe0b04b3",
+      "bytes": 18681
     },
     "assets/wardrobe/hair/female-five/braided-updo.png": {
-      "sha256": "f40e455afde22ed1d871a7bd7fcad4e734bf8c2f8b63455b617f8a1e64dedf10",
-      "bytes": 81847
+      "sha256": "6cda953f51ad0a3d852ba2c5572d5b7587f06ddb8e3da88c4c8c7405ae690df6",
+      "bytes": 60495
     },
     "assets/wardrobe/hair/female-five/high-ponytail.png": {
-      "sha256": "6861cfa03005791ff8147aaac28cd2475ce54fdb761b169b0363a39bbfaf2a5c",
-      "bytes": 97673
+      "sha256": "867d1086dd51c9c0220e9f0947df0c256ed5ce6428147882e1cd434a31f5e4d3",
+      "bytes": 97393
     },
     "assets/wardrobe/hair/female-five/jaw-bob.png": {
       "sha256": "43462409eabb0d6d8e9cb1ed5f95f0aee932fdce7f7933e925571f712accc816",
       "bytes": 73475
     },
     "assets/wardrobe/hair/female-five/long-waves.png": {
-      "sha256": "71773bf120cd23dabbf08044412326d5dbb4e0a12f765da736d975793e3e28d2",
-      "bytes": 151035
+      "sha256": "3fbd66e31df5f0ed1cdc80adbddabd2ffa382618f9978f56ae51b771e6c6e40d",
+      "bytes": 160964
     },
     "assets/wardrobe/hair/female-five/pixie.png": {
       "sha256": "2a7a0356dd52ae15a162479e99bc19562b514d70d7bcd554ad9963815f8c5f2f",
@@ -46,11 +47,11 @@
       "bytes": 56191
     },
     "index.html": {
-      "sha256": "77067f1ac7b3f09dfb82f57de9ba7305590b09308d1950da25afe2e2f5bdae44",
-      "bytes": 77049
+      "sha256": "f4846bef4a8e32f0ad49b3eb738a0e5523bb69e6ff05e9cb1b4f9bde052d7ef1",
+      "bytes": 77042
     },
     "paper-doll-data.js": {
-      "sha256": "b2e5a586ac1a1f8e65969b29caf1e5ac24097d7025bca32a581d46addd8a3fb9",
+      "sha256": "0da56cc16540cfb1278ec00bfad873df1b56b2ee578b8ee9752155b9f84917d5",
       "bytes": 25889
     },
     "review/female-five-hairstyles/README.md": {
@@ -62,256 +63,256 @@
       "bytes": 26754
     },
     "review/female-five-hairstyles/braided-updo-all-heads.webp": {
-      "sha256": "02e20522ddd187da845cd2b9ba22815ec3567e7077b1282397cf152b17b69e53",
-      "bytes": 406498
+      "sha256": "70b6a4dd43639d08867b13cbcc9a0392771c2e26d8ff36a1aebd6289fb258cf1",
+      "bytes": 383654
     },
     "review/female-five-hairstyles/braided-updo.png": {
-      "sha256": "e45499f58ea11336110ab9cf20f1144a4cc9333ab1f8fdf2e06f18bfbcb6e8fb",
-      "bytes": 209304
+      "sha256": "fb39201ca4ba14a3173280d13d9937d8380abe6ba0a05cd1559f8be2b5d57266",
+      "bytes": 192524
     },
     "review/female-five-hairstyles/browser-check.json": {
-      "sha256": "c2d97414a22fbffa33639c0c1d7f72e503ed4210c6247d99a06b29bfddf0ae18",
-      "bytes": 242816
+      "sha256": "f1be1c3fea5b078d611b8ea28237fa13fac40d68d8ebf9c38b364d579e60bf60",
+      "bytes": 242737
     },
     "review/female-five-hairstyles/captures/braided-updo-black-black.webp": {
-      "sha256": "dd67ee28fe5c82a6428c9c524ff21c53cd9e1a201f8bc44de428045645dddeba",
-      "bytes": 135228
+      "sha256": "1a841b780cf857a308fc03af3de2e3525b04287076863e60f41c08834d1d67ed",
+      "bytes": 128518
     },
     "review/female-five-hairstyles/captures/braided-updo-black-gray.webp": {
-      "sha256": "ce65e38922161b89518996f765af771f09c8afead5476fcf5273146ed73ff1b4",
-      "bytes": 136460
+      "sha256": "dce441ca475ded96293e51c2ef806428005289fce7ad107d7dc66ab7e4256728",
+      "bytes": 129244
     },
     "review/female-five-hairstyles/captures/braided-updo-black-green.webp": {
-      "sha256": "eb35f5686ed527c8be1ebf6be42ad43a7ae44f9f9974c7dbc8b482b8dee7f8a0",
-      "bytes": 145024
+      "sha256": "9ae5f55eee1c75082cb44e9714f09f703131e937db61e3a01543ac9326278d3a",
+      "bytes": 135120
     },
     "review/female-five-hairstyles/captures/braided-updo-black-light.webp": {
-      "sha256": "5b6f1f7e2d818b2c820f5e57d5c0ebec6623736656bf11629ce40b91bd812660",
-      "bytes": 138552
+      "sha256": "3cab00c9decb0de54d0c579044c80fd4d5da371eee4d6bfc2bd3e303de2f2158",
+      "bytes": 130746
     },
     "review/female-five-hairstyles/captures/braided-updo-face-alternative.webp": {
-      "sha256": "bb7a75ab48cc0d03f218ebdcfa3070bba87bc9b7de2756a6b58e43bacf2f0631",
-      "bytes": 144282
+      "sha256": "9e8d6951d9a6e7936563a61eb9e5d32f0ff6c684151889cf9eccaa21f5c6e1a7",
+      "bytes": 133302
     },
     "review/female-five-hairstyles/captures/braided-updo-face-asian.webp": {
-      "sha256": "54cb9392c56ffbdba1555c8c462aebb8fb4901863960d903168bfb479c83c2be",
-      "bytes": 144056
+      "sha256": "791cb9dda1922695a466fec308aa25d1481ed0368e6b792077394477c75b685f",
+      "bytes": 133052
     },
     "review/female-five-hairstyles/captures/braided-updo-face-elder.webp": {
-      "sha256": "95f93dd97906ff63443b0559d40efc83e91a8e09b6064fe996c2d5cf547c58a6",
-      "bytes": 144776
+      "sha256": "2cd63ccb7d197385fa36b7e5a46ae542805d926a59ab99a9ca1bfe658179218d",
+      "bytes": 134052
     },
     "review/female-five-hairstyles/captures/braided-updo-face-exhausted.webp": {
-      "sha256": "a4c46b30d233ed65b44e70f956425775039bd2dd425d547d6e1bf464e8006806",
-      "bytes": 143928
+      "sha256": "f54195f69730b24cd7004819642798cabfa8e3db0c87e9a10d7f541d92208b79",
+      "bytes": 133470
     },
     "review/female-five-hairstyles/captures/braided-updo-face-female-new-almond-eyes.webp": {
-      "sha256": "fbf6048add747c05a5794b0a203dbc5807610bf2b200e8a6d46ff9cffc65425f",
-      "bytes": 142528
+      "sha256": "a9611feba330056691d1b8cffb293aa8ae69148841f0b8d408fcd165e8a11d9f",
+      "bytes": 131542
     },
     "review/female-five-hairstyles/captures/braided-updo-face-female-new-blue-gaze.webp": {
-      "sha256": "de2b72bb6a909465910fbaca75d3a48de487751f42715f415a940ab1c3af1ac9",
-      "bytes": 144182
+      "sha256": "ce718bad4569b9ed68611900ef24827099a5036820914eeb4ed2a60d569439e4",
+      "bytes": 133250
     },
     "review/female-five-hairstyles/captures/braided-updo-face-female-new-defined-brows.webp": {
-      "sha256": "4f697fe4020e257e351b1e33bfbb6ab2bb5d2229c7367f025c1b027dfcdf7928",
-      "bytes": 143292
+      "sha256": "2b472ef08587fe8c751c4770092e4212b092ee8ed718781837fc3a89006eca61",
+      "bytes": 132432
     },
     "review/female-five-hairstyles/captures/braided-updo-face-female-new-freckled.webp": {
-      "sha256": "2eb4a6f8cd1c298259a454afd12fe7c3eb6028e7f02e9a30db0b2701cff63ed0",
-      "bytes": 145184
+      "sha256": "cd8931c8b9481aac755ef14a2b6a0f882e27d263e2d629554259afb2c3e15ab5",
+      "bytes": 134532
     },
     "review/female-five-hairstyles/captures/braided-updo-face-female-new-light-eyes.webp": {
-      "sha256": "ae8ffc3cafdddf20fc1a9b8f7808e2c17617378c6b3acdbc03cf6900b0193798",
-      "bytes": 144110
+      "sha256": "c154fe457ee020bf4fa67498b0d58808135a69cb046020f9125bff1baef86d4c",
+      "bytes": 133330
     },
     "review/female-five-hairstyles/captures/braided-updo-face-female-new-mature.webp": {
-      "sha256": "df4d5c332af04d3c575bbf073cb07c4dcffa2d8fdea2d36aa4640a226a74316d",
-      "bytes": 143974
+      "sha256": "29bfd2b47c02a506cf5c897247c74514b35154ea20e4d213a6e70bf909379f74",
+      "bytes": 133032
     },
     "review/female-five-hairstyles/captures/braided-updo-face-female-new-pierced.webp": {
-      "sha256": "80fdf89c205dceb720fc31c3943512d84f36257c32809af63da376606dfdc298",
-      "bytes": 145176
+      "sha256": "ac953eae3cea9ee610d2c2077832b7cdfdafa8dd1dfedd1c1423a31df609d3b6",
+      "bytes": 134128
     },
     "review/female-five-hairstyles/captures/braided-updo-face-female-new-soft-gaze.webp": {
-      "sha256": "98f55d590d6319ce47b9696bf90fcdc6535e2be4318edf7050ae0a3f946b7120",
-      "bytes": 144848
+      "sha256": "7a5a4b601c703507a847cddaf6c40bc9414ee7aae6cb88d3346917b1d19a5dd2",
+      "bytes": 133962
     },
     "review/female-five-hairstyles/captures/braided-updo-face-ginger-soft.webp": {
-      "sha256": "81490aa9aec407bbbe3f57d527c3c0ddfa2fa268f48a25172eea0093c2ad1cc9",
-      "bytes": 142632
+      "sha256": "8df9fa86b206b10c93d77cda7a98b8f3dd990a5d2691f545e99e60e548f94d25",
+      "bytes": 131686
     },
     "review/female-five-hairstyles/captures/braided-updo-face-goth-black-lips.webp": {
-      "sha256": "df55f6946ade745a9e005df84811c9b12aaa711cfcdff3dc4f56ae6dbf3cbf53",
-      "bytes": 143640
+      "sha256": "3233005e4268a98247a5a25fc527deba5d57e0a26b77b5c48f3408aacc81e6b2",
+      "bytes": 132848
     },
     "review/female-five-hairstyles/captures/braided-updo-face-goth-septum.webp": {
-      "sha256": "807065b131c73f481177d86d97cb4e6499d9eb7c5d3a0ce169676eb7eccbf5cc",
-      "bytes": 143122
+      "sha256": "81e35cb7d5abfd5745606dd4a57bec336f2862b7b26f2cc5478e3a998c0eaf65",
+      "bytes": 132212
     },
     "review/female-five-hairstyles/captures/braided-updo-face-young.webp": {
-      "sha256": "b453eaede3a34fa90fd6b5de4ca7ad3975ca5fac95e6d87189083c71852908c1",
-      "bytes": 143414
+      "sha256": "cd17d564649065e1d1037335616c9d6727bfa1dd86a96980e0c602c5c8f69893",
+      "bytes": 132692
     },
     "review/female-five-hairstyles/captures/braided-updo-native.webp": {
-      "sha256": "98e927dea6e48cb0952237ae9e9937259d8cdd88045856793825f15e15b087dc",
-      "bytes": 143438
+      "sha256": "161c89486dd2255c3857c525d8e61708eac92d9ce87154f725cda909e6b7235b",
+      "bytes": 132314
     },
     "review/female-five-hairstyles/captures/braided-updo-original-black.webp": {
-      "sha256": "cd24d9bc82b42d3a5677f054de8f7fd50da8b48f27df32b1b631833971d2a0c1",
-      "bytes": 140608
+      "sha256": "690a9da101590570d4b1f335e4fee49b00092df8e84db066abbd76f9d34a8ede",
+      "bytes": 130670
     },
     "review/female-five-hairstyles/captures/braided-updo-original-gray.webp": {
-      "sha256": "1a0f7ecf0338fe6b5267b0b4adc80df5e239d048e7849552052639ee53656163",
-      "bytes": 142482
+      "sha256": "ce3c1132cac91d10216f9765e85baacb6486f44f7f3c697131d7120a051b805e",
+      "bytes": 131752
     },
     "review/female-five-hairstyles/captures/braided-updo-original-green.webp": {
-      "sha256": "5ce15bf4b5f76f2a978314136e5870c933eecd0130e9f7b7f6cf959721ed955f",
-      "bytes": 148714
+      "sha256": "86e28beb4250ac9f91bed7566aec31f2dae80bd983068ae1a73777722f109cb8",
+      "bytes": 136770
     },
     "review/female-five-hairstyles/captures/braided-updo-original-light.webp": {
-      "sha256": "b453eaede3a34fa90fd6b5de4ca7ad3975ca5fac95e6d87189083c71852908c1",
-      "bytes": 143414
+      "sha256": "cd17d564649065e1d1037335616c9d6727bfa1dd86a96980e0c602c5c8f69893",
+      "bytes": 132692
     },
     "review/female-five-hairstyles/captures/braided-updo-white-black.webp": {
-      "sha256": "af6a96fff57a30d7cdff76c16c78662b3eca759120235eb86ea8c54f8fe7d9aa",
-      "bytes": 140202
+      "sha256": "1fba8fd265f6631baf69449647947792f6473e7f1c2b37acb7826fc89c32a33c",
+      "bytes": 131536
     },
     "review/female-five-hairstyles/captures/braided-updo-white-gray.webp": {
-      "sha256": "36d4e52b3df39e17bd6ff7ba0770a5d0c49a0b498567861aadfa302ae197ff37",
-      "bytes": 139376
+      "sha256": "be6f09cb653931a39cfb7fea781deef60f82e211e2be7c92512788ce0fcbcf3d",
+      "bytes": 130866
     },
     "review/female-five-hairstyles/captures/braided-updo-white-green.webp": {
-      "sha256": "b8c8e47986ce3f1500c19fcf095af8983401db0a3d9b926f72e8b2f515898de4",
-      "bytes": 148034
+      "sha256": "ddf9d989a9f14fa671de7fac6f37bacb50eadb2c93bd80d2d3b9b7d86abe1909",
+      "bytes": 137414
     },
     "review/female-five-hairstyles/captures/braided-updo-white-light.webp": {
-      "sha256": "f755d2203138f33d918b67ff618f5e24ec2babb951870018375b99953e05ee39",
-      "bytes": 139206
+      "sha256": "cbe81b20fff737d080a35306e85b9f585cff8628516fd464594c42aafb81759a",
+      "bytes": 131190
     },
     "review/female-five-hairstyles/captures/braided-updo-young.webp": {
-      "sha256": "b453eaede3a34fa90fd6b5de4ca7ad3975ca5fac95e6d87189083c71852908c1",
-      "bytes": 143414
+      "sha256": "cd17d564649065e1d1037335616c9d6727bfa1dd86a96980e0c602c5c8f69893",
+      "bytes": 132692
     },
     "review/female-five-hairstyles/captures/high-ponytail-black-black.webp": {
-      "sha256": "2d53fbae353108d9c762b4f5692f6c13f4ee4404143eeaf72fd5574b7636eed6",
-      "bytes": 141838
+      "sha256": "985f5667e5fb52cbe7a21175326e5f1361e44bd00de75eee7538dd48ce433f9f",
+      "bytes": 142318
     },
     "review/female-five-hairstyles/captures/high-ponytail-black-gray.webp": {
-      "sha256": "d08a5ae8cf8409af74ec4f6079ed9ea9802b018c8e8e432b83b10c90ff6f4d68",
-      "bytes": 142884
+      "sha256": "2c3c9a7d61178daf079538d6cd8296060f42f09f9c989924821c50ebc5175ee9",
+      "bytes": 143458
     },
     "review/female-five-hairstyles/captures/high-ponytail-black-green.webp": {
-      "sha256": "444ea53ea76cac4a12a1eba2d2ec0947599eab4590e6515fc655542774c4bbf3",
-      "bytes": 150762
+      "sha256": "767cb50850cd1f12c8baf100270e0f2ab5232233ac836049e3311058c070b63d",
+      "bytes": 151518
     },
     "review/female-five-hairstyles/captures/high-ponytail-black-light.webp": {
-      "sha256": "b51bca06958f3fd572096888d6e3dc6297dcdf92699a8e9d4c979356abd0ca6f",
-      "bytes": 144660
+      "sha256": "2c0ba09212067db618911915cec30507e46d8169544ca10dde3aea7930041cbb",
+      "bytes": 145248
     },
     "review/female-five-hairstyles/captures/high-ponytail-face-alternative.webp": {
-      "sha256": "3b162b47d9b68fd798c9f9172ed2448e2f0d6e55f64ec4e7df70454dc5c8ea02",
-      "bytes": 148974
+      "sha256": "c86ec5a6dc7329089cb41108cd0da7d50ddf42d1778403fc2f17d554a706518f",
+      "bytes": 149296
     },
     "review/female-five-hairstyles/captures/high-ponytail-face-asian.webp": {
-      "sha256": "2957e344abfdc6eb264f842764954bb9d486fa2d45dd6d35cfd0c51fb3bbc557",
-      "bytes": 148796
+      "sha256": "9b5694b718bc89a763f2d01b137ee6e21269db18f28b1494bff7f770b7bbb799",
+      "bytes": 149012
     },
     "review/female-five-hairstyles/captures/high-ponytail-face-elder.webp": {
-      "sha256": "b49f9f74f5f82157cfce9440e32b47a3ffd7306b4ab1f9cc6524f25d8a8d8dd3",
-      "bytes": 149902
+      "sha256": "0415c56e01ce98bb5d9b7f244e192d2839c44c1e78b77ef8b0be548499ce4dc2",
+      "bytes": 150218
     },
     "review/female-five-hairstyles/captures/high-ponytail-face-exhausted.webp": {
-      "sha256": "3d17fe19705089a4651c15da24b6479cca093f03898559190a4450c903538e18",
-      "bytes": 149316
+      "sha256": "1a16c41be698c2ff6a021fdc00c47776c9a85ff7681390c010e21b6809275ef3",
+      "bytes": 149560
     },
     "review/female-five-hairstyles/captures/high-ponytail-face-female-new-almond-eyes.webp": {
-      "sha256": "b65daa6485829aefd2b70dbe572049a31de0897be02585ad0aa5221b79bf85fc",
-      "bytes": 147286
+      "sha256": "47aac951ad5eb3e15461704021bcf031ba11eab676e57f0852bd1e5815bccb15",
+      "bytes": 147548
     },
     "review/female-five-hairstyles/captures/high-ponytail-face-female-new-blue-gaze.webp": {
-      "sha256": "30b5634319cf47dee540f99627955627496bdba50ba01d96f6f90d6e63ae0d8d",
-      "bytes": 149250
+      "sha256": "b76336fb868c3521697b1203592b4fc38673378aed25b8681787ecc52263291e",
+      "bytes": 149562
     },
     "review/female-five-hairstyles/captures/high-ponytail-face-female-new-defined-brows.webp": {
-      "sha256": "00b6755f56641f6a4764bfef9bf4ea257f183ee2a1c2e9b746db7e616fdf5e03",
-      "bytes": 148118
+      "sha256": "72de324be39c3b5bc08b577ebb48fb31c4cee3c0fb3cd95dae9f7f286d1b98cb",
+      "bytes": 148348
     },
     "review/female-five-hairstyles/captures/high-ponytail-face-female-new-freckled.webp": {
-      "sha256": "d770dc772082ed2064896ae3200a592e6eac6a75de8756adda44657ede09df93",
-      "bytes": 150548
+      "sha256": "74b90d1ff21082d266af790363a7cd029cfe3f46a2fb13e5453bfed1ae8b6544",
+      "bytes": 150714
     },
     "review/female-five-hairstyles/captures/high-ponytail-face-female-new-light-eyes.webp": {
-      "sha256": "3ddbaefae1fef6b656eef2ff41ec7b261e43737e3f05aa94b3a3a7633e6df573",
-      "bytes": 149302
+      "sha256": "a882c0837cab6fc6f7cf07df95c466b448e4b2efbecb0643165f3e306b636900",
+      "bytes": 149562
     },
     "review/female-five-hairstyles/captures/high-ponytail-face-female-new-mature.webp": {
-      "sha256": "89a24047d87c11f2044c28d7406c0c8d02b2f4329f773158fec3f5b1851d895f",
-      "bytes": 148988
+      "sha256": "bdfa0745c619b02f4ded2bc302df42932bf673cf064071a0624d43eea6ee0a07",
+      "bytes": 149208
     },
     "review/female-five-hairstyles/captures/high-ponytail-face-female-new-pierced.webp": {
-      "sha256": "7c56af72e942ef7dde37994fda459f7abcd1c6b02c1ee3e659cabfdfcba20c5c",
-      "bytes": 150222
+      "sha256": "4d4b8999a381605001c545db94dabcaee15dd86463019a8a7879ec8c72b20897",
+      "bytes": 150538
     },
     "review/female-five-hairstyles/captures/high-ponytail-face-female-new-soft-gaze.webp": {
-      "sha256": "5122bac65e78f8e2ef7c9eae29c0705efbd75ff8f2bf48c893ca02a29c6d4d4c",
-      "bytes": 149666
+      "sha256": "82dd9ee9055e28c19031316f02652ae892731308f4b71214267bb8b68182b411",
+      "bytes": 149900
     },
     "review/female-five-hairstyles/captures/high-ponytail-face-ginger-soft.webp": {
-      "sha256": "08e53d387a591c5bba569750f9fb2af44601fbbf0842febd0682f84fbeddb135",
-      "bytes": 147530
+      "sha256": "c517446f3d5a0d3871e8191c29dbd020719ee36aa1a0a8f2517040a6baab0804",
+      "bytes": 147458
     },
     "review/female-five-hairstyles/captures/high-ponytail-face-goth-black-lips.webp": {
-      "sha256": "7ee7961a72e262937b24277edfe9d0778a0cc8d24fe44e8cd465bf64242a39dc",
-      "bytes": 148848
+      "sha256": "183ea371cec6e6e1d5b948991f6a230694d14ab2cf0b52b82a79ea254bba2649",
+      "bytes": 148724
     },
     "review/female-five-hairstyles/captures/high-ponytail-face-goth-septum.webp": {
-      "sha256": "30fb85a0eb8702aa7b660284f49561197d9eeac429aa6a8557944dd8f4ab40d6",
-      "bytes": 147806
+      "sha256": "f860977f6620148e84fecbf9cadb4c83ecf039073560da82eb05ee662c4fcabc",
+      "bytes": 148006
     },
     "review/female-five-hairstyles/captures/high-ponytail-face-young.webp": {
-      "sha256": "e546dd6f4ebbc85312d704f5b9da6d4fb124ec6c1c7d879f198434d6b26a4ef9",
-      "bytes": 148314
+      "sha256": "09bdc950a4b70f251dfb948088fdeda5c1170e6606cf0bd196f513c32a5065d1",
+      "bytes": 148492
     },
     "review/female-five-hairstyles/captures/high-ponytail-native.webp": {
-      "sha256": "21f5f45563e39e05d1a0e870c65d27ee3f7ca9182acd7043575855eab286c743",
-      "bytes": 148050
+      "sha256": "8deebd1a4b4c82a0b30c83e3a6bb8d6fd0e3e741a6ce56704951f4325388aa1a",
+      "bytes": 148132
     },
     "review/female-five-hairstyles/captures/high-ponytail-original-black.webp": {
-      "sha256": "7c934f2c581da46ebc4f90219e1e993651878ecad873757966070565d0c3f9df",
-      "bytes": 145468
+      "sha256": "ff218f07625e81281895c63df961f83d581348a416391564374d91b9cab887e8",
+      "bytes": 145688
     },
     "review/female-five-hairstyles/captures/high-ponytail-original-gray.webp": {
-      "sha256": "f30232a30557717955df74705ed0ca3f53617d5df68edc86db04df0884da7df8",
-      "bytes": 147174
+      "sha256": "a1f5060f6468a1bdd16842cda219005adde702f4ff125bfd63f643da40540e7f",
+      "bytes": 147274
     },
     "review/female-five-hairstyles/captures/high-ponytail-original-green.webp": {
-      "sha256": "77525815267cfc536baf93a5e21845ed188516ebb4579d0a83c9dab596c292ef",
-      "bytes": 153170
+      "sha256": "367d658687f6697851ff74a87dda637053727e9b47a6b48f08f270c6257620a9",
+      "bytes": 153600
     },
     "review/female-five-hairstyles/captures/high-ponytail-original-light.webp": {
-      "sha256": "e546dd6f4ebbc85312d704f5b9da6d4fb124ec6c1c7d879f198434d6b26a4ef9",
-      "bytes": 148314
+      "sha256": "09bdc950a4b70f251dfb948088fdeda5c1170e6606cf0bd196f513c32a5065d1",
+      "bytes": 148492
     },
     "review/female-five-hairstyles/captures/high-ponytail-white-black.webp": {
-      "sha256": "88c3b86a55d7133b680d928a3e4d99dc969aa279f5158a3eb4e47d24ca8d4811",
-      "bytes": 146332
+      "sha256": "1870c36f711ab19185d6bd82b03aaf2580ee60eb6aa0f815dde03e27e9604220",
+      "bytes": 146876
     },
     "review/female-five-hairstyles/captures/high-ponytail-white-gray.webp": {
-      "sha256": "16804f03233a57caa86122eb5151b1ab19b5a00df0ddf6e9fba10827794a1da5",
-      "bytes": 145782
+      "sha256": "2ea98fdd15e3a4b556034a52bca5a7db49e2e93efc3ab057a888e16555742f4b",
+      "bytes": 146246
     },
     "review/female-five-hairstyles/captures/high-ponytail-white-green.webp": {
-      "sha256": "a5ccd3faaf0240c81d0f2b0f1fa145ebf77f6e2b3d72f8101f23a1c83a79124d",
-      "bytes": 154242
+      "sha256": "3ab772f53cf9666c8e96ac961b625069260b02b9af91aa19fd7fbbbfec01e007",
+      "bytes": 154684
     },
     "review/female-five-hairstyles/captures/high-ponytail-white-light.webp": {
-      "sha256": "2f7bdd095ad7f535dff99496587f1c10ee0328a4860f68cb0bc55c9bac0e09fb",
-      "bytes": 145308
+      "sha256": "d2321bb57055b8eb65d8f566bbaa44ed2d19de7093b95f401a084b26a62df7ee",
+      "bytes": 145804
     },
     "review/female-five-hairstyles/captures/high-ponytail-young.webp": {
-      "sha256": "e546dd6f4ebbc85312d704f5b9da6d4fb124ec6c1c7d879f198434d6b26a4ef9",
-      "bytes": 148314
+      "sha256": "09bdc950a4b70f251dfb948088fdeda5c1170e6606cf0bd196f513c32a5065d1",
+      "bytes": 148492
     },
     "review/female-five-hairstyles/captures/jaw-bob-black-black.webp": {
       "sha256": "094aa69a806d997faf2470ed4ef9ed0dc5879becd0e77a17a99990af5cbd9da7",
@@ -434,124 +435,124 @@
       "bytes": 137096
     },
     "review/female-five-hairstyles/captures/long-waves-black-black.webp": {
-      "sha256": "37802b3f49b1fb46d5d6c452e03e130d95314384cb21a4ab5fb60410e6ede30c",
-      "bytes": 141080
+      "sha256": "5c73f3b13d304d430873fc8efd4d4dc17f38c987cc8ddefcbe5549950aecdca3",
+      "bytes": 143612
     },
     "review/female-five-hairstyles/captures/long-waves-black-gray.webp": {
-      "sha256": "942e52a91dbe2bc4d0234c99cfb624fefbf6576ae21df626d3778771448782d8",
-      "bytes": 141654
+      "sha256": "fc068fe02fbff999b8a03dc988091cf0d30cebb1e0cd236c0ac00afeb7d79fd7",
+      "bytes": 144522
     },
     "review/female-five-hairstyles/captures/long-waves-black-green.webp": {
-      "sha256": "19df510e471a8559cf4ae3ccd688c96e913ec2e43502a4d4e9d1cd31904c9536",
-      "bytes": 150066
+      "sha256": "3024fd20a4f5493671e1adec7bf424831e462871df99936f3faa3fd75c352055",
+      "bytes": 153636
     },
     "review/female-five-hairstyles/captures/long-waves-black-light.webp": {
-      "sha256": "1b4bdc71041bc567aed7bc642030846bc665ab0328fc13722ffc7370c8a73e9a",
-      "bytes": 143704
+      "sha256": "02c79ff77bd69b764bbc520b7c03f27e13f5801f924d8ffc6c09304ff1b64511",
+      "bytes": 146742
     },
     "review/female-five-hairstyles/captures/long-waves-face-alternative.webp": {
-      "sha256": "015aacc72edb9ece8c3779d1d51def00bde9f66d9cf0999f6fe441b5af361cf9",
-      "bytes": 152434
+      "sha256": "497101fb2279904694fd01905d8fc95467fe6dc23aa582f3aacdd2cb2052926e",
+      "bytes": 155412
     },
     "review/female-five-hairstyles/captures/long-waves-face-asian.webp": {
-      "sha256": "422e05c3ded53297ab03df16afe990d5be1cd39e47a5bc389decb5dc85d2dbef",
-      "bytes": 152130
+      "sha256": "0c6f038212fb17f363a6f77cbb9816c5797f44c863abb0453df66d356bae2457",
+      "bytes": 155102
     },
     "review/female-five-hairstyles/captures/long-waves-face-elder.webp": {
-      "sha256": "e22529a2069dbf29c7361a1286717fe3f154006c6ef232e701ff5085506bc360",
-      "bytes": 152810
+      "sha256": "7a8f0b8ff406f629ae1fb054890302126622eead55092daf6c861be28481cb53",
+      "bytes": 155998
     },
     "review/female-five-hairstyles/captures/long-waves-face-exhausted.webp": {
-      "sha256": "03a19716e21620c764351a7f39b272ba2dc34904809c09ebaf44dda57de0d99d",
-      "bytes": 152412
+      "sha256": "9da8769a63690a0e4bdc9a50ee7a86139f89068eb066e9643e418be30a997369",
+      "bytes": 155456
     },
     "review/female-five-hairstyles/captures/long-waves-face-female-new-almond-eyes.webp": {
-      "sha256": "9c32d39e06e7e4c3924bb176e61ae26c1cd6532e8b35486b39809e92570ba686",
-      "bytes": 150924
+      "sha256": "b405144835dc75ac38ef02d113f1812d986a819a097bfd5d6d01f2e0cad80cbc",
+      "bytes": 153894
     },
     "review/female-five-hairstyles/captures/long-waves-face-female-new-blue-gaze.webp": {
-      "sha256": "bdb559f2c339cc99ee4bc8366c1cbdb39ea80c89d4881a7bae3135f938708fb1",
-      "bytes": 152494
+      "sha256": "f760ca4cf1dc3cc1b4d0fea095b1e883205fee2519f920b32c680a537872adbc",
+      "bytes": 155702
     },
     "review/female-five-hairstyles/captures/long-waves-face-female-new-defined-brows.webp": {
-      "sha256": "36bd59968c28d6481f2b55f81095d1a7edb2f48c24ca30eaabc4fed5c9a3bb09",
-      "bytes": 151238
+      "sha256": "e167f4ca6fb0158356562e83a70f7b8507f71119b315aff512019819f5a95e38",
+      "bytes": 154380
     },
     "review/female-five-hairstyles/captures/long-waves-face-female-new-freckled.webp": {
-      "sha256": "db4e9fa9ad169b84734f9aa2af07b32315e4b4a0efba03cfa02e903c1480a9f5",
-      "bytes": 153474
+      "sha256": "02ee65e4da04c66d7ab120fe1df2ca27a9a7a111d5313f9dd35ccf2290c15958",
+      "bytes": 156524
     },
     "review/female-five-hairstyles/captures/long-waves-face-female-new-light-eyes.webp": {
-      "sha256": "e400b8e93a21de3baf727bb7bbe39093c53e6730661911cde7b5e0a779d09b58",
-      "bytes": 152688
+      "sha256": "3e4ee21e70c4aa96364a9d87548e1fd922da3bd4b644414401b30a2c9bd9d8ea",
+      "bytes": 155648
     },
     "review/female-five-hairstyles/captures/long-waves-face-female-new-mature.webp": {
-      "sha256": "98f685199e9f604df08b6356cdbf6a3a0a9c725af3bca679597311c954c0f15a",
-      "bytes": 152100
+      "sha256": "8f8b2d0915ee924e146cff9bd170776d253da59072997b61ec0046b6539077c2",
+      "bytes": 155118
     },
     "review/female-five-hairstyles/captures/long-waves-face-female-new-pierced.webp": {
-      "sha256": "cc63f7965e642a84c1534d00af321633e5e2ab1b5699316a33dbc7037772a87e",
-      "bytes": 153282
+      "sha256": "b20c08be65fb2acc250ba65db4da0057299c7e58be7f1151838cb8bb7f66670a",
+      "bytes": 156390
     },
     "review/female-five-hairstyles/captures/long-waves-face-female-new-soft-gaze.webp": {
-      "sha256": "b090a9b9b5dbf0a66568b7c33af705e79455fea131bbf329c771242481c357a8",
-      "bytes": 153000
+      "sha256": "f116db198081384e9958dd39f4b9278f0da7679cd1bd8d0af524284b6981235e",
+      "bytes": 156034
     },
     "review/female-five-hairstyles/captures/long-waves-face-ginger-soft.webp": {
-      "sha256": "023f6f58f4f45a3ec89972c4ab5af5115bbe8a0315252c8e7234d010c780efd1",
-      "bytes": 151080
+      "sha256": "12cbd43de18bdbabd5b47275f415389fcb3a781165fee11ddaae2038839ff150",
+      "bytes": 154112
     },
     "review/female-five-hairstyles/captures/long-waves-face-goth-black-lips.webp": {
-      "sha256": "e4a71b04de7e1d9eb59d4305237f3dbcde600a39a82a7a61005c6696ebc49019",
-      "bytes": 152016
+      "sha256": "49f4cfbfc5d14a5f3e6350d4bede554cb7647d5e65294ac0ea710cb2e3fe9eed",
+      "bytes": 154944
     },
     "review/female-five-hairstyles/captures/long-waves-face-goth-septum.webp": {
-      "sha256": "eb004dfe2328101c1d3f021835e936da52c59399989497e15dafac8759efaf90",
-      "bytes": 151638
+      "sha256": "7b34ff5dc126cfd11e861993e0f4dd3547c0243537bf734f8e6ff106217d7dd0",
+      "bytes": 154272
     },
     "review/female-five-hairstyles/captures/long-waves-face-young.webp": {
-      "sha256": "e417c69f62e80915525ff3be2cfd3db8b8b32e9651eefc2077c274f5c3161514",
-      "bytes": 151790
+      "sha256": "ce268ff84dbc1288611db525943f35570f37f8569baaf13fba260e2f1ebebf75",
+      "bytes": 154662
     },
     "review/female-five-hairstyles/captures/long-waves-native.webp": {
-      "sha256": "41d52322065b12b9100852244fbd96dfd46abd45c57d96f31b4aad6125273280",
-      "bytes": 151198
+      "sha256": "25d66c9ca33c3f112fb1c0233b4e14edc46675dc012f01ab74d905eadf2fbb16",
+      "bytes": 154346
     },
     "review/female-five-hairstyles/captures/long-waves-original-black.webp": {
-      "sha256": "15dc7df84c3e8f580f9901c846f542eaf1bb53b194b94d4745ced7aaab230911",
-      "bytes": 149506
+      "sha256": "f3cc654d1dfb0376838d26122ceb7d44fde7587b25976b6e0ade67c1aa25896b",
+      "bytes": 152106
     },
     "review/female-five-hairstyles/captures/long-waves-original-gray.webp": {
-      "sha256": "b6d9ba6bf1b2687f1f459f9dd743ef378959ae4697f9d3d251e8aafa85e70e99",
-      "bytes": 150752
+      "sha256": "16b7183ef55e58812e5fb41219824158db81b0ead864ac8ad2d8670bcf0216b9",
+      "bytes": 153278
     },
     "review/female-five-hairstyles/captures/long-waves-original-green.webp": {
-      "sha256": "fd273d5dcb6f1c26517235b413e92a360cf0151e63c3e9f3e149d005fca233c9",
-      "bytes": 156548
+      "sha256": "6deb907be6ef7476581b7bbe368e57fd7d934581dfc3cee86d2436867f8a74ec",
+      "bytes": 159540
     },
     "review/female-five-hairstyles/captures/long-waves-original-light.webp": {
-      "sha256": "e417c69f62e80915525ff3be2cfd3db8b8b32e9651eefc2077c274f5c3161514",
-      "bytes": 151790
+      "sha256": "ce268ff84dbc1288611db525943f35570f37f8569baaf13fba260e2f1ebebf75",
+      "bytes": 154662
     },
     "review/female-five-hairstyles/captures/long-waves-white-black.webp": {
-      "sha256": "71657e0636d97cda28919b071a957cd154daa0467579b78c868a216e903d2ceb",
-      "bytes": 147334
+      "sha256": "b1ad85f9b8984b047285f6981c1b3111904c8a8ccdd86daf67ee0e449979b5bd",
+      "bytes": 150594
     },
     "review/female-five-hairstyles/captures/long-waves-white-gray.webp": {
-      "sha256": "48c4d1324dddf19772d3f592dafe610c1dc9f181568a71fae9e04429d6ce0759",
-      "bytes": 146242
+      "sha256": "053af6cdfd69afc4076229e5f4b91795bd820aa515de002fc9ce93c263c99eab",
+      "bytes": 149132
     },
     "review/female-five-hairstyles/captures/long-waves-white-green.webp": {
-      "sha256": "a013843e7438003628e1c57e35cd1e7afa9261ec636020616cfa98b3f1782e6e",
-      "bytes": 154156
+      "sha256": "c825cea5abcb863f20f551edec30daaf0a06571f5fe94ae8c3e38767226b489b",
+      "bytes": 158886
     },
     "review/female-five-hairstyles/captures/long-waves-white-light.webp": {
-      "sha256": "7bd19407d841350865eaefa1c5f466ac2bd119dc458a48d813254624029e5d6a",
-      "bytes": 145476
+      "sha256": "1fa4f1ab6d58ed37eb4659b7846570782e20f8a409cb861616f2a19df7e7582e",
+      "bytes": 148382
     },
     "review/female-five-hairstyles/captures/long-waves-young.webp": {
-      "sha256": "e417c69f62e80915525ff3be2cfd3db8b8b32e9651eefc2077c274f5c3161514",
-      "bytes": 151790
+      "sha256": "ce268ff84dbc1288611db525943f35570f37f8569baaf13fba260e2f1ebebf75",
+      "bytes": 154662
     },
     "review/female-five-hairstyles/captures/pixie-black-black.webp": {
       "sha256": "7525ff961bbf3a1d6debf26c52f55c9a59031618357219f1381bddfa55d9a79e",
@@ -674,8 +675,8 @@
       "bytes": 134060
     },
     "review/female-five-hairstyles/five-comparison.png": {
-      "sha256": "86ef06a68e4c2273dfcd7ee5976fd16eedde7fcf3081fbfe8d261e9f8c534069",
-      "bytes": 219615
+      "sha256": "a5ea9c021e4d8cb053f667ca886b769dcde14ff4f81f5baceea35bc9964c25b0",
+      "bytes": 215830
     },
     "review/female-five-hairstyles/five-details.png": {
       "sha256": "e2e80b8a5bd9f1c7fa4efde5ca502310848a8a7c226dd840f0b1479569f37e3d",
@@ -686,12 +687,12 @@
       "bytes": 4414
     },
     "review/female-five-hairstyles/high-ponytail-all-heads.webp": {
-      "sha256": "1ef7a436fed4a105402d4b6460be5e9abc78d13fa3979e81d0a0c9ca51c6423a",
-      "bytes": 430072
+      "sha256": "fee026c2bf60d170d147a8dbe2dc3fadaec7ce8e2be4b5c23f8b726ed973ac9f",
+      "bytes": 432684
     },
     "review/female-five-hairstyles/high-ponytail.png": {
-      "sha256": "2269870baa9b12e11180fe82e73f30b8fb4e1c8110bd4a17552414b34f91b58c",
-      "bytes": 220230
+      "sha256": "703cc90cd815945c767e89a499c92d7ca7aeb89d08d2bd38bb4b70451e3aae53",
+      "bytes": 220515
     },
     "review/female-five-hairstyles/index.html": {
       "sha256": "e0efb8c41b2c7be1f25f443bbfd35a008699f512e6a761034cb4daa5b7534306",
@@ -706,12 +707,12 @@
       "bytes": 202146
     },
     "review/female-five-hairstyles/long-waves-all-heads.webp": {
-      "sha256": "1b97d4b67da9f6dc4174cafa7ee8ca4864051d8e9a3cadf81b4093fb3554a3e6",
-      "bytes": 467526
+      "sha256": "f02ba905f5774e328d8d9e4a30e9ed94a4dbd5ed3ed600197d1ce45f72fb899b",
+      "bytes": 474350
     },
     "review/female-five-hairstyles/long-waves.png": {
-      "sha256": "e4e6492a43191c834196a304705b1b0a55d6dbfb6044c78fc887b7d97c7cce5c",
-      "bytes": 228828
+      "sha256": "69c618f68d9bd761244bf69073cc9a37c92f859d62be59a4d41d0f280a4a6583",
+      "bytes": 234495
     },
     "review/female-five-hairstyles/pixie-all-heads.webp": {
       "sha256": "d1ce5e07a404c7e57c797eb17b317da755a8a7d5905bb10ba0b4a5a7f115b2fa",
@@ -730,12 +731,12 @@
       "bytes": 15434
     },
     "review/female-five-hairstyles/registration.json": {
-      "sha256": "1945b02d404a1e8df6230de055c4efc9ba546f7595e6990bdedc2af936320d0a",
-      "bytes": 5055
+      "sha256": "501d4a85ecb4bdbad1bf9239094db224fcc376d8a8c5239543bd27d6a7e28d11",
+      "bytes": 6745
     },
     "review/female-five-hairstyles/room-desktop.png": {
-      "sha256": "f313d90785bc9e9d2f5e05d6592844ab7bf014fd17e1ae38fce1ff013f92130a",
-      "bytes": 1202184
+      "sha256": "2c2c09442631fbf77089ab84380a4c531ceb9dc1db96dda821838fa71c04c96f",
+      "bytes": 1202078
     },
     "review/female-five-hairstyles/sources/braided-updo.png": {
       "sha256": "e213f3abf12e236f8d63d0fca913d7769289d6faab6b219a47195c4dc467c6c0",
@@ -786,16 +787,16 @@
       "bytes": 1178
     },
     "review/female-five-hairstyles/wardrobe-desktop.png": {
-      "sha256": "97422263a525a190f4f800c1f866d73b43af860ad14e6600b4b70fdfe945d176",
-      "bytes": 1104830
+      "sha256": "6f546cb4e8ba9248eabdf6a465b0c1550d50e5983873b4602fe0c5d307ef9627",
+      "bytes": 1104641
     },
     "review/female-five-hairstyles/wardrobe-mobile-320.png": {
-      "sha256": "772ced2b1bdb8ec3f0c893e44aff4180542a90fee6b314a60bd12cabb3fd69ed",
-      "bytes": 205578
+      "sha256": "912db3f8ec16ea42dc777efbc3d4519e407ff9451412afb313983002dbbe4c7c",
+      "bytes": 208349
     },
     "review/female-five-hairstyles/wardrobe-mobile-390.png": {
-      "sha256": "27bc63126ce53b2aa6cf07e3c5756f8edc43a3d71e7879fbaad50c0a9a934fd4",
-      "bytes": 269865
+      "sha256": "b94a13c8ed6b16f96e1e8b06badd5cd73815087503c433f6e7eab1c1b26e82c7",
+      "bytes": 281153
     },
     "tests/game-logic.test.cjs": {
       "sha256": "3a71229a7fa3f3edd608c078d130ef0482115d7f3725180c66bce696e01ab257",
@@ -806,8 +807,8 @@
       "bytes": 12061
     },
     "tests/test_female_five_hairstyles.py": {
-      "sha256": "6c771f9dbb16b1abe57daa3e8e29a5240736f43dabf7371211bb0f2b9253ca9f",
-      "bytes": 5431
+      "sha256": "9663ba15b6cf84698272677f4112dfc7c264c771cc388c960b9af75cd5c87428",
+      "bytes": 7830
     },
     "tests/test_paper_doll_audit.py": {
       "sha256": "c7f07a0959f2e65ab4b936717471c934af47898122e71c10644cc258a97c24ec",
@@ -822,12 +823,13 @@
       "bytes": 5204
     },
     "tools/prepare-female-five-hairstyles.py": {
-      "sha256": "1a9f3a34b52d6409b21908ebfed5ca6a5460eceef6d5e7bf44e9a0f5aaf79b95",
-      "bytes": 2609
+      "sha256": "0b173e0b9c1f4e06dea08441ed5c647df9a7ad720b85c4a990df77bb041f87c5",
+      "bytes": 2869
     },
     "tools/review-female-five-hairstyles.py": {
       "sha256": "09b11e4ce58a4e1173e1412ea12b4ec2671691424413e23e8e0fe32d8ea5f564",
       "bytes": 10169
     }
-  }
+  },
+  "latest_fit_report": "review/female-ear-fit/README.md"
 }

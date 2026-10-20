@@ -114,3 +114,5 @@ python tools/check-project-browser.py --output test-results/project-browser
 ```
 
 Інвентаризатор не видаляє файли автоматично. Історичні галереї та tools відтворення ресурсів залишаються частиною provenance проєкту.
+
+Остання правка жіночих зачісок біля вух: [галерея до/після](https://neverl1ke.github.io/palata404/review/female-ear-fit/) · [технічний звіт](review/female-ear-fit/README.md). Піксі й каре збережені; уточнено хвилі, хвіст та зібрану косу.

@@ -1,0 +1,30 @@
+{
+  "browser": "151.0.7922.34",
+  "results": [
+    {
+      "file": "index.html",
+      "width": 390,
+      "loaded_images": 25,
+      "overflow": false
+    },
+    {
+      "file": "index.html",
+      "width": 1440,
+      "loaded_images": 25,
+      "overflow": false
+    },
+    {
+      "file": "standalone.html",
+      "width": 390,
+      "loaded_images": 25,
+      "overflow": false
+    },
+    {
+      "file": "standalone.html",
+      "width": 1440,
+      "loaded_images": 25,
+      "overflow": false
+    }
+  ],
+  "js_errors": []
+}

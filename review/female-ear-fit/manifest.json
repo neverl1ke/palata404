@@ -1,0 +1,170 @@
+{
+  "baseline_commit": "236e222ca9df9d623544d99faff198812d483d6b",
+  "branch": "main",
+  "files": {
+    "assets/wardrobe/hair/female-five/braided-updo.png": {
+      "sha256": "6cda953f51ad0a3d852ba2c5572d5b7587f06ddb8e3da88c4c8c7405ae690df6",
+      "bytes": 60495
+    },
+    "assets/wardrobe/hair/female-five/high-ponytail.png": {
+      "sha256": "867d1086dd51c9c0220e9f0947df0c256ed5ce6428147882e1cd434a31f5e4d3",
+      "bytes": 97393
+    },
+    "assets/wardrobe/hair/female-five/jaw-bob.png": {
+      "sha256": "43462409eabb0d6d8e9cb1ed5f95f0aee932fdce7f7933e925571f712accc816",
+      "bytes": 73475
+    },
+    "assets/wardrobe/hair/female-five/long-waves.png": {
+      "sha256": "3fbd66e31df5f0ed1cdc80adbddabd2ffa382618f9978f56ae51b771e6c6e40d",
+      "bytes": 160964
+    },
+    "assets/wardrobe/hair/female-five/pixie.png": {
+      "sha256": "2a7a0356dd52ae15a162479e99bc19562b514d70d7bcd554ad9963815f8c5f2f",
+      "bytes": 51460
+    },
+    "index.html": {
+      "sha256": "f4846bef4a8e32f0ad49b3eb738a0e5523bb69e6ff05e9cb1b4f9bde052d7ef1",
+      "bytes": 77042
+    },
+    "paper-doll-data.js": {
+      "sha256": "0da56cc16540cfb1278ec00bfad873df1b56b2ee578b8ee9752155b9f84917d5",
+      "bytes": 25889
+    },
+    "review/female-ear-fit/README.md": {
+      "sha256": "4e38c18f60fa45def4a2112e4220347780ae4357adad5f3db281614f3da24804",
+      "bytes": 10734
+    },
+    "review/female-ear-fit/before/assets/braided-updo.png": {
+      "sha256": "f40e455afde22ed1d871a7bd7fcad4e734bf8c2f8b63455b617f8a1e64dedf10",
+      "bytes": 81847
+    },
+    "review/female-ear-fit/before/assets/high-ponytail.png": {
+      "sha256": "6861cfa03005791ff8147aaac28cd2475ce54fdb761b169b0363a39bbfaf2a5c",
+      "bytes": 97673
+    },
+    "review/female-ear-fit/before/assets/jaw-bob.png": {
+      "sha256": "43462409eabb0d6d8e9cb1ed5f95f0aee932fdce7f7933e925571f712accc816",
+      "bytes": 73475
+    },
+    "review/female-ear-fit/before/assets/long-waves.png": {
+      "sha256": "71773bf120cd23dabbf08044412326d5dbb4e0a12f765da736d975793e3e28d2",
+      "bytes": 151035
+    },
+    "review/female-ear-fit/before/assets/pixie.png": {
+      "sha256": "2a7a0356dd52ae15a162479e99bc19562b514d70d7bcd554ad9963815f8c5f2f",
+      "bytes": 51460
+    },
+    "review/female-ear-fit/before/braided-updo.png": {
+      "sha256": "e45499f58ea11336110ab9cf20f1144a4cc9333ab1f8fdf2e06f18bfbcb6e8fb",
+      "bytes": 209304
+    },
+    "review/female-ear-fit/before/browser-check.json": {
+      "sha256": "c2d97414a22fbffa33639c0c1d7f72e503ed4210c6247d99a06b29bfddf0ae18",
+      "bytes": 242816
+    },
+    "review/female-ear-fit/before/five-comparison.png": {
+      "sha256": "86ef06a68e4c2273dfcd7ee5976fd16eedde7fcf3081fbfe8d261e9f8c534069",
+      "bytes": 219615
+    },
+    "review/female-ear-fit/before/high-ponytail.png": {
+      "sha256": "2269870baa9b12e11180fe82e73f30b8fb4e1c8110bd4a17552414b34f91b58c",
+      "bytes": 220230
+    },
+    "review/female-ear-fit/before/jaw-bob.png": {
+      "sha256": "a3c6c28b41851de5002cb35b5a41dea7b1611d015ba73a3cfe4ac3a7e3846ad0",
+      "bytes": 202146
+    },
+    "review/female-ear-fit/before/long-waves.png": {
+      "sha256": "e4e6492a43191c834196a304705b1b0a55d6dbfb6044c78fc887b7d97c7cce5c",
+      "bytes": 228828
+    },
+    "review/female-ear-fit/before/pixie.png": {
+      "sha256": "6a1fd5d27ea1e9ea81f45da155cc276b77240b95c99265e6a2ed4e5faf431cfb",
+      "bytes": 194849
+    },
+    "review/female-ear-fit/before/registration.json": {
+      "sha256": "1945b02d404a1e8df6230de055c4efc9ba546f7595e6990bdedc2af936320d0a",
+      "bytes": 5055
+    },
+    "review/female-ear-fit/braided-updo-before-after.webp": {
+      "sha256": "fd1096727b092d6dff02b5f77c85b9e5274b38a7aa8e44c358bbcb4fac27719d",
+      "bytes": 244166
+    },
+    "review/female-ear-fit/braided-updo-ears-detail.webp": {
+      "sha256": "2fc7065b2c32303c64c359f3a2f199da8f675023b7ec4abe85f1bd51476938d3",
+      "bytes": 364302
+    },
+    "review/female-ear-fit/corrections.json": {
+      "sha256": "575047e430e039b7228f87dc13d57fe4ea2a6f8740072d58221b5f7ab281b254",
+      "bytes": 2784
+    },
+    "review/female-ear-fit/gallery-check.json": {
+      "sha256": "d63ea4f0360fd20609fddceb988f857fe9cd9994fd8d374fa7ca9364b788eb12",
+      "bytes": 531
+    },
+    "review/female-ear-fit/high-ponytail-before-after.webp": {
+      "sha256": "04e174ec70af15251d41ef304b1c39bdfa7e4cd6a29497eb79f9b61c8cb11b40",
+      "bytes": 254846
+    },
+    "review/female-ear-fit/high-ponytail-ears-detail.webp": {
+      "sha256": "c6c5aae6926d1b1791e5805b40502b2d2206e8d9aeae1a62ed1e268cad44fc6b",
+      "bytes": 347574
+    },
+    "review/female-ear-fit/index.html": {
+      "sha256": "9a24b6d00a392ea5002b35c05bfb10ef43b53ff077e36ded44b160a721365bfb",
+      "bytes": 8335
+    },
+    "review/female-ear-fit/long-waves-before-after.webp": {
+      "sha256": "2a28942dc64158837bb17de7043340bf8b2f24ca61679ab6e6647c9c3672e4b6",
+      "bytes": 285754
+    },
+    "review/female-ear-fit/long-waves-ears-detail.webp": {
+      "sha256": "a6b924df00e96699c5108c2456f556019f261ca263fbd3c589deea6c666caf33",
+      "bytes": 471440
+    },
+    "review/female-ear-fit/png-quality.json": {
+      "sha256": "759f0c14f7a5daf45396307bf7bf381a8f92bccc194d9a3244f431246f0aafd1",
+      "bytes": 12953
+    },
+    "review/female-ear-fit/reproducibility.json": {
+      "sha256": "26cf5e4e6760b0c9cf8b83e05ecdbb6a08dd7b0e581364f42f34d49810c45ce2",
+      "bytes": 562
+    },
+    "review/female-ear-fit/standalone.html": {
+      "sha256": "f1594418a3ec85de6f6ff2a07e19a68fc85319c9ec2b8d0552f55e3bfd47af2d",
+      "bytes": 9886210
+    },
+    "review/female-ear-fit/test-logs/approved-trial.log": {
+      "sha256": "dce7b6a50d75fc0850044389a97256cdce0c0f3884e554319c74077613eb10d2",
+      "bytes": 1214
+    },
+    "review/female-ear-fit/test-logs/browser.log": {
+      "sha256": "5bbe315a3f5ddece9aab176ff8f1603625d7a0ccf92bf6b5a8dc2179dc40a942",
+      "bytes": 549
+    },
+    "review/female-ear-fit/test-logs/javascript.log": {
+      "sha256": "a415971f831fa528d82bca63bdcba3711c8b9b6b386dcdf1184170eaf8e57764",
+      "bytes": 9933
+    },
+    "review/female-ear-fit/test-logs/python-fit.log": {
+      "sha256": "b52a556adad1c8e3f80592e93cf1ae3d038c0971265997f9db51d7813d5e2809",
+      "bytes": 2362
+    },
+    "tests/test_female_five_hairstyles.py": {
+      "sha256": "9663ba15b6cf84698272677f4112dfc7c264c771cc388c960b9af75cd5c87428",
+      "bytes": 7830
+    },
+    "tools/build-female-ear-fit-gallery.py": {
+      "sha256": "23d951c1d12e439bf4a59770428ae77257ea515079865333f326875c8e3cd474",
+      "bytes": 4440
+    },
+    "tools/refine-female-ear-fit.py": {
+      "sha256": "3d9c910e3366901ffbd6ca39299b7d8f1bc599882a9dbb5cd2714c013f276b78",
+      "bytes": 4482
+    },
+    "review/female-ear-fit/test-logs/project-audit.log": {
+      "sha256": "c087a5c593a6ecdd2ecd7e9f2d6562e57663ea5809cb2178d2960e974fd4270b",
+      "bytes": 291
+    }
+  }
+}

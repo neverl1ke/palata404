@@ -40,17 +40,50 @@ class FemaleFitAuditTests(unittest.TestCase):
   # Measured head contours at rows115/125 are [398,547] and [399,546].
   for y,left,right in [(115,395,550),(125,396,549),(135,398,548)]:
    xx=np.flatnonzero(after[y,:,3]>=128);self.assertLessEqual(xx[0],left);self.assertGreaterEqual(xx[-1],right)
- def test_long_waves_clear_iris_without_touching_lower_hair_or_right_side(self):
+ def test_long_waves_keep_iris_clear_after_user_requested_ear_widening(self):
   before=np.array(Image.open(ROOT/'review/female-five-fit-audit/before/assets/long-waves.png'));after=np.array(Image.open(ROOT/'assets/wardrobe/hair/female-five/long-waves.png'))
   self.assertGreater(before[142,445,3],128);self.assertLessEqual(after[142,445,3],16)
-  self.assertTrue(np.array_equal(before[185:],after[185:]));self.assertTrue(np.array_equal(before[:111],after[:111]));self.assertTrue(np.array_equal(before[:,480:],after[:,480:]))
- def test_three_styles_without_confirmed_deformation_stay_byte_identical(self):
-  for key in ['jaw-bob','high-ponytail','braided-updo']:self.assertEqual((ROOT/f'review/female-five-fit-audit/before/assets/{key}.png').read_bytes(),(ROOT/f'assets/wardrobe/hair/female-five/{key}.png').read_bytes())
+  # The subsequent user explicitly requested wider waves; old right-side identity
+  # is no longer the contract. Length and face visibility still are.
+  self.assertEqual(Image.fromarray(after[:,:,3]).getbbox()[1::2],Image.fromarray(before[:,:,3]).getbbox()[1::2])
+ def test_user_approved_pixie_and_jaw_bob_are_byte_identical_to_pre_ear_pass(self):
+  for key in ['pixie','jaw-bob']:self.assertEqual((ROOT/f'review/female-ear-fit/before/assets/{key}.png').read_bytes(),(ROOT/f'assets/wardrobe/hair/female-five/{key}.png').read_bytes())
  def test_every_palette_color_preserves_alpha_and_is_exercised_on_every_head(self):
   d=json.loads((R/'browser-check.json').read_text());self.assertEqual(d['all_color_head_combinations'],5*17*25)
   records={(x['hair'],x['face'],x['color']) for x in d['color_combinations']};self.assertEqual(len(records),2125)
   for hair in IDS:
    self.assertEqual(len({x[2] for x in records if x[0]==hair}),25)
    for f in d['faces']:self.assertEqual(len([x for x in records if x[0]==hair and x[1]==f['id']]),25)
+
+
+class FemaleEarFitTests(unittest.TestCase):
+ def test_long_waves_enclose_ear_span_on_every_registered_head(self):
+  a=np.array(Image.open(ROOT/'assets/wardrobe/hair/female-five/long-waves.png'))[:,:,3]
+  for h in json.loads((R/'head-geometry.json').read_text()):
+   head=np.array(Image.open(ROOT/h['path']))[:,:,3]
+   for y in [130,140,150,160,170]:
+    ear=np.flatnonzero(head[y]>=128);hair=np.flatnonzero(a[y]>=128)
+    # Real opaque strands extend beyond both ear contours, not only alpha haze.
+    self.assertLessEqual(hair[0],ear[0]-4,(h['id'],y));self.assertGreaterEqual(hair[-1],ear[-1]+4,(h['id'],y))
+ def test_ponytail_reveals_actual_ear_and_preserves_crown_left_and_tail(self):
+  before=np.array(Image.open(ROOT/'review/female-ear-fit/before/assets/high-ponytail.png'));after=np.array(Image.open(ROOT/'assets/wardrobe/hair/female-five/high-ponytail.png'))
+  self.assertTrue(np.array_equal(before[:101],after[:101]));self.assertTrue(np.array_equal(before[230:],after[230:]));self.assertTrue(np.array_equal(before[:,:501],after[:,:501]));self.assertTrue(np.array_equal(before[:,620:],after[:,620:]))
+  # Landmarks lie within the real young head's right ear, formerly covered by hair.
+  head=np.array(Image.open(ROOT/'assets/wardrobe/faces/female_young_head.png'))[:,:,3]
+  for x,y in [(554,140),(552,150),(549,160),(545,170)]:
+   self.assertGreaterEqual(head[y,x],128);self.assertLessEqual(after[y,x,3],16)
+ def test_updo_is_compact_and_side_knot_is_near_ear(self):
+  a=np.array(Image.open(ROOT/'assets/wardrobe/hair/female-five/braided-updo.png'))[:,:,3]
+  before=Image.open(ROOT/'review/female-ear-fit/before/assets/braided-updo.png').getchannel('A').getbbox();after=Image.fromarray(a).getbbox()
+  self.assertLess(after[2]-after[0],.9*(before[2]-before[0]));self.assertLess(after[3],before[3]-25)
+  # Main side knot now occupies x<=576 and ends by y218, next to the ear,
+  # instead of hanging to x594 and below y240. Fine loose tendrils are excluded.
+  yy,xx=np.where(a[175:230,530:610]>=128);self.assertTrue(len(xx)>100)
+  self.assertLessEqual(int(xx.max())+530,576)
+  dense_rows=[]
+  for y in range(175,243):
+   v=a[y,530:610]>=128;edges=np.diff(np.r_[False,v,False].astype(int));runs=np.where(edges==-1)[0]-np.where(edges==1)[0]
+   if len(runs) and runs.max()>=8:dense_rows.append(y)
+  self.assertLessEqual(max(dense_rows),218)
 
 if __name__=='__main__':unittest.main()

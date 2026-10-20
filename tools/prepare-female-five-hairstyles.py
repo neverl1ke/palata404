@@ -39,3 +39,8 @@ for key,name in STYLES:
 if (ROOT/"review/female-five-fit-audit/corrections.json").exists():
     import subprocess,sys
     subprocess.run([sys.executable,str(ROOT/"tools/refine-female-five-fit.py")],check=True)
+
+# Later user-approved ear registration runs last, preserving approved pixie/bob.
+if (ROOT/"review/female-ear-fit/corrections.json").exists():
+    import subprocess,sys
+    subprocess.run([sys.executable,str(ROOT/"tools/refine-female-ear-fit.py")],check=True)
