@@ -6,8 +6,8 @@
   "all_color_combinations": 2125,
   "files": {
     "README.md": {
-      "sha256": "1c7f1fe11709abc5ab000006edae4a612ab44aa5e6d007f22055228f4c8f3688",
-      "bytes": 16430
+      "sha256": "5ec1cdedab0013c82a0d03d12e97fb19d42d3d503b69b9fbf22e45bf7fea4516",
+      "bytes": 18982
     },
     "before/assets/braided-updo.png": {
       "sha256": "f40e455afde22ed1d871a7bd7fcad4e734bf8c2f8b63455b617f8a1e64dedf10",
@@ -264,6 +264,12 @@
     "test-logs/trial-retest.log": {
       "sha256": "f367d273850e047ee24f751426d7a169ee10d1bec039c0d6fd53d6e01f4dab70",
       "bytes": 1178
+    },
+    "published-verification.json": {
+      "sha256": "fb7a43bfd6bb704dbadf9bdfde978e213289b48683257ae49ee4ad4795c1bb1e",
+      "bytes": 12813
     }
-  }
+  },
+  "code_commit": "0e77d7e870919436f3be7cbbea1fec4570c20614",
+  "published_verification": "published-verification.json"
 }
