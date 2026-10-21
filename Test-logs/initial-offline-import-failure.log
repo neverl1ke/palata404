@@ -1,0 +1,61 @@
+test_all_current_faces_four_poses_and_shared_hair_palette (tests.test_avatar_core.AvatarCoreBrowserTests.test_all_current_faces_four_poses_and_shared_hair_palette) ... ok
+test_all_eight_poses_preserve_face_feet_and_grips_across_breathing (tests.test_avatar_core.AvatarCoreBrowserTests.test_all_eight_poses_preserve_face_feet_and_grips_across_breathing) ... ok
+test_binding_api_sleeves_follow_each_rig_and_can_be_removed (tests.test_avatar_core.AvatarCoreBrowserTests.test_binding_api_sleeves_follow_each_rig_and_can_be_removed) ... ok
+test_canvas_appearance_matches_actual_game_renderer (tests.test_avatar_core.AvatarCoreBrowserTests.test_canvas_appearance_matches_actual_game_renderer) ... appearance comparison male 0.04813767040052067 0
+appearance comparison female 0.0 0
+ok
+test_existing_saves_and_both_loadouts_remain_byte_unchanged (tests.test_avatar_core.AvatarCoreBrowserTests.test_existing_saves_and_both_loadouts_remain_byte_unchanged) ... ok
+test_hidden_tab_stops_and_resume_does_not_catch_up_hidden_time (tests.test_avatar_core.AvatarCoreBrowserTests.test_hidden_tab_stops_and_resume_does_not_catch_up_hidden_time) ... ok
+test_idle_render_matches_original_for_both_bases (tests.test_avatar_core.AvatarCoreBrowserTests.test_idle_render_matches_original_for_both_bases) ... ok
+test_interrupted_transitions_have_no_joint_jump (tests.test_avatar_core.AvatarCoreBrowserTests.test_interrupted_transitions_have_no_joint_jump) ... ok
+test_mobile_and_high_dpi_layout (tests.test_avatar_core.AvatarCoreBrowserTests.test_mobile_and_high_dpi_layout) ... ok
+test_moving_joints_remain_opaque_and_main_body_connected (tests.test_avatar_core.AvatarCoreBrowserTests.test_moving_joints_remain_opaque_and_main_body_connected) ... ok
+test_offline_lab_has_no_network_dependencies (tests.test_avatar_core.AvatarCoreBrowserTests.test_offline_lab_has_no_network_dependencies) ... ERROR
+test_rapid_gender_switch_is_atomic_and_image_cache_bounded (tests.test_avatar_core.AvatarCoreBrowserTests.test_rapid_gender_switch_is_atomic_and_image_cache_bounded) ... ok
+test_two_handed_pistol_variant_keeps_support_hand_attached (tests.test_avatar_core.AvatarCoreBrowserTests.test_two_handed_pistol_variant_keeps_support_hand_attached) ... ok
+test_two_instances_render_different_genders_without_shared_pose_state (tests.test_avatar_core.AvatarCoreBrowserTests.test_two_instances_render_different_genders_without_shared_pose_state) ... ok
+test_approved_runtime_and_all_original_assets_are_unchanged (tests.test_avatar_core.AvatarCoreSourceTests.test_approved_runtime_and_all_original_assets_are_unchanged) ... ok
+test_nine_disjoint_source_partitions_reconstruct_every_visible_pixel (tests.test_avatar_core.AvatarCoreSourceTests.test_nine_disjoint_source_partitions_reconstruct_every_visible_pixel) ... ok
+test_pivots_are_inside_actual_source_skin_and_assets_match_hashes (tests.test_avatar_core.AvatarCoreSourceTests.test_pivots_are_inside_actual_source_skin_and_assets_match_hashes) ... ok
+test_all_pose_transitions_keep_joints_continuous_and_wrists_within_range (tests.test_avatar_polish.PolishBrowserTests.test_all_pose_transitions_keep_joints_continuous_and_wrists_within_range) ... ok
+test_cached_skin_preserves_the_uncached_paint_order (tests.test_avatar_polish.PolishBrowserTests.test_cached_skin_preserves_the_uncached_paint_order) ... ok
+test_hiding_corrective_hands_removes_them_and_old_fingertips_are_absent (tests.test_avatar_polish.PolishBrowserTests.test_hiding_corrective_hands_removes_them_and_old_fingertips_are_absent) ... ok
+test_supported_pistol_and_combat_wrists_do_not_fold_backwards (tests.test_avatar_polish.PolishBrowserTests.test_supported_pistol_and_combat_wrists_do_not_fold_backwards) ... ok
+test_wrist_retouch_is_applied_only_inside_declared_source_band (tests.test_avatar_polish.PolishBrowserTests.test_wrist_retouch_is_applied_only_inside_declared_source_band)
+Runtime A/B, not a comparison against newly approved image hashes. ... ok
+test_corrective_hands_have_single_clean_silhouette_and_fit_uv_bounds (tests.test_avatar_polish.PolishSourceTests.test_corrective_hands_have_single_clean_silhouette_and_fit_uv_bounds) ... ok
+test_every_prototype_png_is_still_byte_identical (tests.test_avatar_polish.PolishSourceTests.test_every_prototype_png_is_still_byte_identical) ... ok
+test_registration_is_reproducible_without_moving_sources (tests.test_avatar_polish.PolishSourceTests.test_registration_is_reproducible_without_moving_sources) ... ok
+test_actual_render_changes_only_at_wrists_and_female_rifle_shoulder (tests.test_avatar_cleanup.CleanupBrowserTests.test_actual_render_changes_only_at_wrists_and_female_rifle_shoulder) ... ok
+test_shoulder_surface_is_local_continuous_and_never_changes_skeleton (tests.test_avatar_cleanup.CleanupBrowserTests.test_shoulder_surface_is_local_continuous_and_never_changes_skeleton) ... ok
+test_all_65_precleanup_pngs_are_byte_identical (tests.test_avatar_cleanup.CleanupSourceTests.test_all_65_precleanup_pngs_are_byte_identical) ... ok
+test_new_transition_edges_have_no_faint_projection_away_from_the_silhouette (tests.test_avatar_cleanup.CleanupSourceTests.test_new_transition_edges_have_no_faint_projection_away_from_the_silhouette) ... ok
+
+======================================================================
+ERROR: test_offline_lab_has_no_network_dependencies (tests.test_avatar_core.AvatarCoreBrowserTests.test_offline_lab_has_no_network_dependencies)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/palata404-avatar-core/tests/test_avatar_core.py", line 121, in test_offline_lab_has_no_network_dependencies
+    p=self.context.new_page();network=[];p.route('http**://**/*',lambda r:(network.append(r.request.url),r.abort()));p.goto(offline.as_uri());p.wait_for_function('window.avatarLab?.ready',timeout=45000);p.evaluate('avatarLab.engine.pause()');p.locator('[data-gender="female"]').click();p.wait_for_function('avatarLab.engine.gender==="female"&&document.getElementById("status").textContent.startsWith("Готово")');p.locator('[data-pose="rifle"]').click();self.assertEqual(network,[]);p.close()
+                                                                                                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/sync_api/_generated.py", line 12761, in wait_for_function
+    self._sync(
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/_impl/_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/_impl/_page.py", line 1151, in wait_for_function
+    return await self._main_frame.wait_for_function(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/_impl/_frame.py", line 940, in wait_for_function
+    await self._channel.send("waitForFunction", self._timeout, params)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/_impl/_connection.py", line 76, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/_impl/_connection.py", line 632, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Page.wait_for_function: Timeout 45000ms exceeded.
+
+----------------------------------------------------------------------
+Ran 29 tests in 135.404s
+
+FAILED (errors=1)

@@ -1,0 +1,141 @@
+{
+  "baseline_commit": "4f46b15",
+  "capture_frame": [
+    941,
+    1672
+  ],
+  "pairs": [
+    {
+      "file": "male-melee-right-wrist-before-after.webp",
+      "source_box": [
+        161,
+        759,
+        311,
+        909
+      ],
+      "zoom": 4,
+      "same_camera_and_joint": true
+    },
+    {
+      "file": "male-pistol-right-wrist-before-after.webp",
+      "source_box": [
+        358,
+        458,
+        508,
+        608
+      ],
+      "zoom": 4,
+      "same_camera_and_joint": true
+    },
+    {
+      "file": "male-pistol-left-wrist-before-after.webp",
+      "source_box": [
+        455,
+        478,
+        605,
+        628
+      ],
+      "zoom": 4,
+      "same_camera_and_joint": true
+    },
+    {
+      "file": "male-rifle-right-wrist-before-after.webp",
+      "source_box": [
+        355,
+        538,
+        505,
+        688
+      ],
+      "zoom": 4,
+      "same_camera_and_joint": true
+    },
+    {
+      "file": "male-rifle-left-wrist-before-after.webp",
+      "source_box": [
+        578,
+        520,
+        728,
+        670
+      ],
+      "zoom": 4,
+      "same_camera_and_joint": true
+    },
+    {
+      "file": "female-melee-right-wrist-before-after.webp",
+      "source_box": [
+        166,
+        739,
+        316,
+        889
+      ],
+      "zoom": 4,
+      "same_camera_and_joint": true
+    },
+    {
+      "file": "female-pistol-right-wrist-before-after.webp",
+      "source_box": [
+        361,
+        444,
+        511,
+        594
+      ],
+      "zoom": 4,
+      "same_camera_and_joint": true
+    },
+    {
+      "file": "female-pistol-left-wrist-before-after.webp",
+      "source_box": [
+        453,
+        464,
+        603,
+        614
+      ],
+      "zoom": 4,
+      "same_camera_and_joint": true
+    },
+    {
+      "file": "female-rifle-right-wrist-before-after.webp",
+      "source_box": [
+        348,
+        520,
+        498,
+        670
+      ],
+      "zoom": 4,
+      "same_camera_and_joint": true
+    },
+    {
+      "file": "female-rifle-left-wrist-before-after.webp",
+      "source_box": [
+        565,
+        508,
+        715,
+        658
+      ],
+      "zoom": 4,
+      "same_camera_and_joint": true
+    },
+    {
+      "file": "female-rifle-shoulder-before-after.webp",
+      "source_box": [
+        590,
+        290,
+        800,
+        510
+      ],
+      "zoom": 3,
+      "same_camera_and_joint": true
+    },
+    {
+      "file": "female-rifle-upper-arm-before-after.webp",
+      "source_box": [
+        540,
+        280,
+        900,
+        580
+      ],
+      "zoom": 2,
+      "same_camera_and_joint": true
+    }
+  ]
+}

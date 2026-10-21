@@ -1,0 +1,77 @@
+{
+  "melee": {
+    "size": [
+      140,
+      300
+    ],
+    "primary": [
+      67,
+      240
+    ],
+    "support": null,
+    "id": "test-melee",
+    "class": "melee",
+    "pose": "melee",
+    "image": "assets/weapons/melee.png",
+    "scale": 0.8,
+    "offset": [
+      0,
+      0
+    ],
+    "angle": 0,
+    "order": 30,
+    "test_resource": true
+  },
+  "pistol": {
+    "size": [
+      210,
+      150
+    ],
+    "primary": [
+      45,
+      110
+    ],
+    "support": [
+      83,
+      118
+    ],
+    "id": "test-pistol",
+    "class": "pistol",
+    "pose": "pistol",
+    "image": "assets/weapons/pistol.png",
+    "scale": 1,
+    "offset": [
+      0,
+      0
+    ],
+    "angle": 0,
+    "order": 30,
+    "test_resource": true
+  },
+  "rifle": {
+    "size": [
+      480,
+      160
+    ],
+    "primary": [
+      175,
+      120
+    ],
+    "support": [
+      285,
+      82
+    ],
+    "id": "test-rifle",
+    "class": "rifle",
+    "pose": "rifle",
+    "image": "assets/weapons/rifle.png",
+    "scale": 1.35,
+    "offset": [
+      0,
+      0
+    ],
+    "angle": 0,
+    "order": 30,
+    "test_resource": true
+  }
+}

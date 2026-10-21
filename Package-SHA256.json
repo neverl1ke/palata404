@@ -1,0 +1,157 @@
+[
+  {
+    "path": "Avatar-Lab.html",
+    "bytes": 28775714,
+    "sha256": "c5647069b08ef136d0fdecf5a23b9823bbb0e9f818308ef58b1899632d831cc5"
+  },
+  {
+    "path": "Parameters/appearance-comparison.json",
+    "bytes": 207,
+    "sha256": "a312c50cc79086f0981bd673802d3a432771a4225c69f34bcaeb78a4816e204a"
+  },
+  {
+    "path": "Parameters/baseline.json",
+    "bytes": 1034,
+    "sha256": "128c0d19a813e1fb9a9bce6197240465b4f330f687d3ed65672c0a20bea13974"
+  },
+  {
+    "path": "Parameters/browser-check.json",
+    "bytes": 39298,
+    "sha256": "7b2dd44157834a61ffbce920f991edce98a5a278b3ab517f4509be58112e8076"
+  },
+  {
+    "path": "Parameters/change-manifest.json",
+    "bytes": 29510,
+    "sha256": "99354457dd2e66820560eb7dc3da2990adb861bfdbceab5153a85e076f9b50f5"
+  },
+  {
+    "path": "Parameters/comparison-registration.json",
+    "bytes": 2577,
+    "sha256": "6b43bfb215dc46d23d6192323f56ca5ed3b06dafe6bd805f870574762630f4d8"
+  },
+  {
+    "path": "Parameters/cosmetic-check.json",
+    "bytes": 18830,
+    "sha256": "fb3665dae407aaffd925b756d947ae75e72452081665f84030500aac54239fec"
+  },
+  {
+    "path": "Parameters/edge-fringe-check.json",
+    "bytes": 1138,
+    "sha256": "f731d78fb3fcbcfa2efad5e5a2cfb857194633c48e362172d3ed96c9967a5905"
+  },
+  {
+    "path": "Parameters/female_rig.json",
+    "bytes": 429482,
+    "sha256": "06046069b5d4d08f9325f7a950de249bdb431e7e167777357faefe133d8d62e6"
+  },
+  {
+    "path": "Parameters/male_rig.json",
+    "bytes": 647008,
+    "sha256": "5cb14e7ec8cc50d697cc00d9731cdaf36584561499eafe3fe40101c5d3382805"
+  },
+  {
+    "path": "Parameters/offline-package-check.json",
+    "bytes": 2005,
+    "sha256": "bf692b9e26d2fe933f312fb3a27ff3d959c4fe0c2ad48af533b97a7228494f2e"
+  },
+  {
+    "path": "Parameters/raster-order-check.json",
+    "bytes": 3259,
+    "sha256": "84488346702f41aeb87e8cd18f1217aa880906a9d0c462d30f167fa76fd9c751"
+  },
+  {
+    "path": "Parameters/render-scope-check.json",
+    "bytes": 1180,
+    "sha256": "5095066f66c909ee708a22ad9773c2e06cea622994af71b9edf59ee125d8a45f"
+  },
+  {
+    "path": "Parameters/shoulder-continuity-check.json",
+    "bytes": 109,
+    "sha256": "769a88c2ba3654c8cd220417a0e79c4bf94bd53d3dc4069d60ee02429e529dbd"
+  },
+  {
+    "path": "Parameters/validation-summary.json",
+    "bytes": 1760,
+    "sha256": "57ea37c592cf2725f8b014d4496df465bd877a4810a2b08e2e2e1aa3473c8049"
+  },
+  {
+    "path": "Parameters/visual-browser-check.json",
+    "bytes": 3057,
+    "sha256": "8e7f236a5082714e033a485f6738cf732ccead5d0309a822a13efd264effe2b3"
+  },
+  {
+    "path": "Parameters/weapons.json",
+    "bytes": 1104,
+    "sha256": "cdc942fe6147e8f3410178dab3dbf06f530330ae9ca11a83fb56fd4876d66263"
+  },
+  {
+    "path": "Parameters/wrist-angle-check.json",
+    "bytes": 5237,
+    "sha256": "2e8e93637d4ecd5d392f5365e77af6a1a63ee49b6156d9c20e9f7c9b1ecfb7bd"
+  },
+  {
+    "path": "Parameters/wrist-patch-registration.json",
+    "bytes": 5896,
+    "sha256": "1929a46087deabb340c1ade50e1aafbb60d4e06f822a6e60a82115c01629f452"
+  },
+  {
+    "path": "Parameters/wrist-patch-scope-check.json",
+    "bytes": 1983,
+    "sha256": "d024d5745f92697a3b98acd73b9e6713383559fc9044d37421f63137f3de41f1"
+  },
+  {
+    "path": "Report.html",
+    "bytes": 15897371,
+    "sha256": "e0e8e4d70752cc1371f3cd9a54ea4dbfce47c57487400428fc83ef5acd7d1b56"
+  },
+  {
+    "path": "Revision.txt",
+    "bytes": 119,
+    "sha256": "ecde8226652cefd71c7ab0850824141e9be1b4b9a15fbbcf2ae6b23c8fbe2c30"
+  },
+  {
+    "path": "Technical-report.html",
+    "bytes": 14732,
+    "sha256": "0971e0fba9021a1e752d66943deb24773741ccda9c1d82d75728abfe345d2a12"
+  },
+  {
+    "path": "Technical-report.md",
+    "bytes": 13299,
+    "sha256": "17878ad03b1f3485fbb2b773d677ce3f5f65353730860a32bdf9720898dd83dc"
+  },
+  {
+    "path": "Test-logs/final-javascript.log",
+    "bytes": 11010,
+    "sha256": "7ab5adc0f37473516175262f6deb7aec24a8c94d21b1134a68ebc90af5178b2b"
+  },
+  {
+    "path": "Test-logs/final-python.log",
+    "bytes": 5285,
+    "sha256": "f32c6c8abe2781eb54f4037dc94aff3eaca7247f607a1709dc75ac4aad756a4e"
+  },
+  {
+    "path": "Test-logs/initial-locality-failures.log",
+    "bytes": 2161,
+    "sha256": "b138b0c49b7b55cac1e34d76bc53a1dda3b6c6d0700cd5ce1d6d777ed82e7a88"
+  },
+  {
+    "path": "Test-logs/initial-offline-import-failure.log",
+    "bytes": 7966,
+    "sha256": "1be5066222fe2c71203b0b96ae6713ac5b48af0ed8b57fc19e723c7790160b20"
+  },
+  {
+    "path": "Test-logs/offline-package-check.log",
+    "bytes": 2005,
+    "sha256": "bf692b9e26d2fe933f312fb3a27ff3d959c4fe0c2ad48af533b97a7228494f2e"
+  },
+  {
+    "path": "Test-logs/reference-check.log",
+    "bytes": 2636,
+    "sha256": "5e593b72689ecc6677532fdf4ecbc518e1b95d10a9faf276e5c93c172c253b93"
+  },
+  {
+    "path": "ВІДКРИЙ_СПОЧАТКУ.txt",
+    "bytes": 775,
+    "sha256": "0872d42441970ccb667bc559d51e69c9ccea9be0b09ce2deeb668a9fcffe8ab0"
+  }
+]

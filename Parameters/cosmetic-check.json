@@ -1,0 +1,882 @@
+{
+  "combinations": [
+    {
+      "gender": "male",
+      "face": "native",
+      "hair": "hair-shoulder-length",
+      "pose": "idle"
+    },
+    {
+      "gender": "male",
+      "face": "native",
+      "hair": "hair-shoulder-length",
+      "pose": "melee"
+    },
+    {
+      "gender": "male",
+      "face": "native",
+      "hair": "hair-shoulder-length",
+      "pose": "pistol"
+    },
+    {
+      "gender": "male",
+      "face": "native",
+      "hair": "hair-shoulder-length",
+      "pose": "rifle"
+    },
+    {
+      "gender": "male",
+      "face": "face-asian",
+      "hair": "hair-shoulder-length",
+      "pose": "idle"
+    },
+    {
+      "gender": "male",
+      "face": "face-asian",
+      "hair": "hair-shoulder-length",
+      "pose": "melee"
+    },
+    {
+      "gender": "male",
+      "face": "face-asian",
+      "hair": "hair-shoulder-length",
+      "pose": "pistol"
+    },
+    {
+      "gender": "male",
+      "face": "face-asian",
+      "hair": "hair-shoulder-length",
+      "pose": "rifle"
+    },
+    {
+      "gender": "male",
+      "face": "face-young",
+      "hair": "hair-shoulder-length",
+      "pose": "idle"
+    },
+    {
+      "gender": "male",
+      "face": "face-young",
+      "hair": "hair-shoulder-length",
+      "pose": "melee"
+    },
+    {
+      "gender": "male",
+      "face": "face-young",
+      "hair": "hair-shoulder-length",
+      "pose": "pistol"
+    },
+    {
+      "gender": "male",
+      "face": "face-young",
+      "hair": "hair-shoulder-length",
+      "pose": "rifle"
+    },
+    {
+      "gender": "male",
+      "face": "face-exhausted",
+      "hair": "hair-shoulder-length",
+      "pose": "idle"
+    },
+    {
+      "gender": "male",
+      "face": "face-exhausted",
+      "hair": "hair-shoulder-length",
+      "pose": "melee"
+    },
+    {
+      "gender": "male",
+      "face": "face-exhausted",
+      "hair": "hair-shoulder-length",
+      "pose": "pistol"
+    },
+    {
+      "gender": "male",
+      "face": "face-exhausted",
+      "hair": "hair-shoulder-length",
+      "pose": "rifle"
+    },
+    {
+      "gender": "male",
+      "face": "face-elder",
+      "hair": "hair-shoulder-length",
+      "pose": "idle"
+    },
+    {
+      "gender": "male",
+      "face": "face-elder",
+      "hair": "hair-shoulder-length",
+      "pose": "melee"
+    },
+    {
+      "gender": "male",
+      "face": "face-elder",
+      "hair": "hair-shoulder-length",
+      "pose": "pistol"
+    },
+    {
+      "gender": "male",
+      "face": "face-elder",
+      "hair": "hair-shoulder-length",
+      "pose": "rifle"
+    },
+    {
+      "gender": "male",
+      "face": "face-alternative",
+      "hair": "hair-shoulder-length",
+      "pose": "idle"
+    },
+    {
+      "gender": "male",
+      "face": "face-alternative",
+      "hair": "hair-shoulder-length",
+      "pose": "melee"
+    },
+    {
+      "gender": "male",
+      "face": "face-alternative",
+      "hair": "hair-shoulder-length",
+      "pose": "pistol"
+    },
+    {
+      "gender": "male",
+      "face": "face-alternative",
+      "hair": "hair-shoulder-length",
+      "pose": "rifle"
+    },
+    {
+      "gender": "male",
+      "face": "face-male-goth-pierced",
+      "hair": "hair-shoulder-length",
+      "pose": "idle"
+    },
+    {
+      "gender": "male",
+      "face": "face-male-goth-pierced",
+      "hair": "hair-shoulder-length",
+      "pose": "melee"
+    },
+    {
+      "gender": "male",
+      "face": "face-male-goth-pierced",
+      "hair": "hair-shoulder-length",
+      "pose": "pistol"
+    },
+    {
+      "gender": "male",
+      "face": "face-male-goth-pierced",
+      "hair": "hair-shoulder-length",
+      "pose": "rifle"
+    },
+    {
+      "gender": "male",
+      "face": "face-male-freckled",
+      "hair": "hair-shoulder-length",
+      "pose": "idle"
+    },
+    {
+      "gender": "male",
+      "face": "face-male-freckled",
+      "hair": "hair-shoulder-length",
+      "pose": "melee"
+    },
+    {
+      "gender": "male",
+      "face": "face-male-freckled",
+      "hair": "hair-shoulder-length",
+      "pose": "pistol"
+    },
+    {
+      "gender": "male",
+      "face": "face-male-freckled",
+      "hair": "hair-shoulder-length",
+      "pose": "rifle"
+    },
+    {
+      "gender": "male",
+      "face": "face-male-blue-eyes",
+      "hair": "hair-shoulder-length",
+      "pose": "idle"
+    },
+    {
+      "gender": "male",
+      "face": "face-male-blue-eyes",
+      "hair": "hair-shoulder-length",
+      "pose": "melee"
+    },
+    {
+      "gender": "male",
+      "face": "face-male-blue-eyes",
+      "hair": "hair-shoulder-length",
+      "pose": "pistol"
+    },
+    {
+      "gender": "male",
+      "face": "face-male-blue-eyes",
+      "hair": "hair-shoulder-length",
+      "pose": "rifle"
+    },
+    {
+      "gender": "female",
+      "face": "native",
+      "hair": "hair-f5-long-waves",
+      "pose": "idle"
+    },
+    {
+      "gender": "female",
+      "face": "native",
+      "hair": "hair-f5-long-waves",
+      "pose": "melee"
+    },
+    {
+      "gender": "female",
+      "face": "native",
+      "hair": "hair-f5-long-waves",
+      "pose": "pistol"
+    },
+    {
+      "gender": "female",
+      "face": "native",
+      "hair": "hair-f5-long-waves",
+      "pose": "rifle"
+    },
+    {
+      "gender": "female",
+      "face": "face-asian",
+      "hair": "hair-f5-long-waves",
+      "pose": "idle"
+    },
+    {
+      "gender": "female",
+      "face": "face-asian",
+      "hair": "hair-f5-long-waves",
+      "pose": "melee"
+    },
+    {
+      "gender": "female",
+      "face": "face-asian",
+      "hair": "hair-f5-long-waves",
+      "pose": "pistol"
+    },
+    {
+      "gender": "female",
+      "face": "face-asian",
+      "hair": "hair-f5-long-waves",
+      "pose": "rifle"
+    },
+    {
+      "gender": "female",
+      "face": "face-young",
+      "hair": "hair-f5-long-waves",
+      "pose": "idle"
+    },
+    {
+      "gender": "female",
+      "face": "face-young",
+      "hair": "hair-f5-long-waves",
+      "pose": "melee"
+    },
+    {
+      "gender": "female",
+      "face": "face-young",
+      "hair": "hair-f5-long-waves",
+      "pose": "pistol"
+    },
+    {
+      "gender": "female",
+      "face": "face-young",
+      "hair": "hair-f5-long-waves",
+      "pose": "rifle"
+    },
+    {
+      "gender": "female",
+      "face": "face-exhausted",
+      "hair": "hair-f5-long-waves",
+      "pose": "idle"
+    },
+    {
+      "gender": "female",
+      "face": "face-exhausted",
+      "hair": "hair-f5-long-waves",
+      "pose": "melee"
+    },
+    {
+      "gender": "female",
+      "face": "face-exhausted",
+      "hair": "hair-f5-long-waves",
+      "pose": "pistol"
+    },
+    {
+      "gender": "female",
+      "face": "face-exhausted",
+      "hair": "hair-f5-long-waves",
+      "pose": "rifle"
+    },
+    {
+      "gender": "female",
+      "face": "face-elder",
+      "hair": "hair-f5-long-waves",
+      "pose": "idle"
+    },
+    {
+      "gender": "female",
+      "face": "face-elder",
+      "hair": "hair-f5-long-waves",
+      "pose": "melee"
+    },
+    {
+      "gender": "female",
+      "face": "face-elder",
+      "hair": "hair-f5-long-waves",
+      "pose": "pistol"
+    },
+    {
+      "gender": "female",
+      "face": "face-elder",
+      "hair": "hair-f5-long-waves",
+      "pose": "rifle"
+    },
+    {
+      "gender": "female",
+      "face": "face-alternative",
+      "hair": "hair-f5-long-waves",
+      "pose": "idle"
+    },
+    {
+      "gender": "female",
+      "face": "face-alternative",
+      "hair": "hair-f5-long-waves",
+      "pose": "melee"
+    },
+    {
+      "gender": "female",
+      "face": "face-alternative",
+      "hair": "hair-f5-long-waves",
+      "pose": "pistol"
+    },
+    {
+      "gender": "female",
+      "face": "face-alternative",
+      "hair": "hair-f5-long-waves",
+      "pose": "rifle"
+    },
+    {
+      "gender": "female",
+      "face": "face-ginger-soft",
+      "hair": "hair-f5-long-waves",
+      "pose": "idle"
+    },
+    {
+      "gender": "female",
+      "face": "face-ginger-soft",
+      "hair": "hair-f5-long-waves",
+      "pose": "melee"
+    },
+    {
+      "gender": "female",
+      "face": "face-ginger-soft",
+      "hair": "hair-f5-long-waves",
+      "pose": "pistol"
+    },
+    {
+      "gender": "female",
+      "face": "face-ginger-soft",
+      "hair": "hair-f5-long-waves",
+      "pose": "rifle"
+    },
+    {
+      "gender": "female",
+      "face": "face-goth-septum",
+      "hair": "hair-f5-long-waves",
+      "pose": "idle"
+    },
+    {
+      "gender": "female",
+      "face": "face-goth-septum",
+      "hair": "hair-f5-long-waves",
+      "pose": "melee"
+    },
+    {
+      "gender": "female",
+      "face": "face-goth-septum",
+      "hair": "hair-f5-long-waves",
+      "pose": "pistol"
+    },
+    {
+      "gender": "female",
+      "face": "face-goth-septum",
+      "hair": "hair-f5-long-waves",
+      "pose": "rifle"
+    },
+    {
+      "gender": "female",
+      "face": "face-goth-black-lips",
+      "hair": "hair-f5-long-waves",
+      "pose": "idle"
+    },
+    {
+      "gender": "female",
+      "face": "face-goth-black-lips",
+      "hair": "hair-f5-long-waves",
+      "pose": "melee"
+    },
+    {
+      "gender": "female",
+      "face": "face-goth-black-lips",
+      "hair": "hair-f5-long-waves",
+      "pose": "pistol"
+    },
+    {
+      "gender": "female",
+      "face": "face-goth-black-lips",
+      "hair": "hair-f5-long-waves",
+      "pose": "rifle"
+    },
+    {
+      "gender": "female",
+      "face": "face-female-new-defined-brows",
+      "hair": "hair-f5-long-waves",
+      "pose": "idle"
+    },
+    {
+      "gender": "female",
+      "face": "face-female-new-defined-brows",
+      "hair": "hair-f5-long-waves",
+      "pose": "melee"
+    },
+    {
+      "gender": "female",
+      "face": "face-female-new-defined-brows",
+      "hair": "hair-f5-long-waves",
+      "pose": "pistol"
+    },
+    {
+      "gender": "female",
+      "face": "face-female-new-defined-brows",
+      "hair": "hair-f5-long-waves",
+      "pose": "rifle"
+    },
+    {
+      "gender": "female",
+      "face": "face-female-new-blue-gaze",
+      "hair": "hair-f5-long-waves",
+      "pose": "idle"
+    },
+    {
+      "gender": "female",
+      "face": "face-female-new-blue-gaze",
+      "hair": "hair-f5-long-waves",
+      "pose": "melee"
+    },
+    {
+      "gender": "female",
+      "face": "face-female-new-blue-gaze",
+      "hair": "hair-f5-long-waves",
+      "pose": "pistol"
+    },
+    {
+      "gender": "female",
+      "face": "face-female-new-blue-gaze",
+      "hair": "hair-f5-long-waves",
+      "pose": "rifle"
+    },
+    {
+      "gender": "female",
+      "face": "face-female-new-freckled",
+      "hair": "hair-f5-long-waves",
+      "pose": "idle"
+    },
+    {
+      "gender": "female",
+      "face": "face-female-new-freckled",
+      "hair": "hair-f5-long-waves",
+      "pose": "melee"
+    },
+    {
+      "gender": "female",
+      "face": "face-female-new-freckled",
+      "hair": "hair-f5-long-waves",
+      "pose": "pistol"
+    },
+    {
+      "gender": "female",
+      "face": "face-female-new-freckled",
+      "hair": "hair-f5-long-waves",
+      "pose": "rifle"
+    },
+    {
+      "gender": "female",
+      "face": "face-female-new-mature",
+      "hair": "hair-f5-long-waves",
+      "pose": "idle"
+    },
+    {
+      "gender": "female",
+      "face": "face-female-new-mature",
+      "hair": "hair-f5-long-waves",
+      "pose": "melee"
+    },
+    {
+      "gender": "female",
+      "face": "face-female-new-mature",
+      "hair": "hair-f5-long-waves",
+      "pose": "pistol"
+    },
+    {
+      "gender": "female",
+      "face": "face-female-new-mature",
+      "hair": "hair-f5-long-waves",
+      "pose": "rifle"
+    },
+    {
+      "gender": "female",
+      "face": "face-female-new-light-eyes",
+      "hair": "hair-f5-long-waves",
+      "pose": "idle"
+    },
+    {
+      "gender": "female",
+      "face": "face-female-new-light-eyes",
+      "hair": "hair-f5-long-waves",
+      "pose": "melee"
+    },
+    {
+      "gender": "female",
+      "face": "face-female-new-light-eyes",
+      "hair": "hair-f5-long-waves",
+      "pose": "pistol"
+    },
+    {
+      "gender": "female",
+      "face": "face-female-new-light-eyes",
+      "hair": "hair-f5-long-waves",
+      "pose": "rifle"
+    },
+    {
+      "gender": "female",
+      "face": "face-female-new-pierced",
+      "hair": "hair-f5-long-waves",
+      "pose": "idle"
+    },
+    {
+      "gender": "female",
+      "face": "face-female-new-pierced",
+      "hair": "hair-f5-long-waves",
+      "pose": "melee"
+    },
+    {
+      "gender": "female",
+      "face": "face-female-new-pierced",
+      "hair": "hair-f5-long-waves",
+      "pose": "pistol"
+    },
+    {
+      "gender": "female",
+      "face": "face-female-new-pierced",
+      "hair": "hair-f5-long-waves",
+      "pose": "rifle"
+    },
+    {
+      "gender": "female",
+      "face": "face-female-new-soft-gaze",
+      "hair": "hair-f5-long-waves",
+      "pose": "idle"
+    },
+    {
+      "gender": "female",
+      "face": "face-female-new-soft-gaze",
+      "hair": "hair-f5-long-waves",
+      "pose": "melee"
+    },
+    {
+      "gender": "female",
+      "face": "face-female-new-soft-gaze",
+      "hair": "hair-f5-long-waves",
+      "pose": "pistol"
+    },
+    {
+      "gender": "female",
+      "face": "face-female-new-soft-gaze",
+      "hair": "hair-f5-long-waves",
+      "pose": "rifle"
+    },
+    {
+      "gender": "female",
+      "face": "face-female-new-almond-eyes",
+      "hair": "hair-f5-long-waves",
+      "pose": "idle"
+    },
+    {
+      "gender": "female",
+      "face": "face-female-new-almond-eyes",
+      "hair": "hair-f5-long-waves",
+      "pose": "melee"
+    },
+    {
+      "gender": "female",
+      "face": "face-female-new-almond-eyes",
+      "hair": "hair-f5-long-waves",
+      "pose": "pistol"
+    },
+    {
+      "gender": "female",
+      "face": "face-female-new-almond-eyes",
+      "hair": "hair-f5-long-waves",
+      "pose": "rifle"
+    }
+  ],
+  "palette": [
+    {
+      "gender": "male",
+      "hair": "hair-shoulder-length",
+      "color": "original"
+    },
+    {
+      "gender": "male",
+      "hair": "hair-shoulder-length",
+      "color": "black"
+    },
+    {
+      "gender": "male",
+      "hair": "hair-shoulder-length",
+      "color": "dark-brown"
+    },
+    {
+      "gender": "male",
+      "hair": "hair-shoulder-length",
+      "color": "brown"
+    },
+    {
+      "gender": "male",
+      "hair": "hair-shoulder-length",
+      "color": "light-brown"
+    },
+    {
+      "gender": "male",
+      "hair": "hair-shoulder-length",
+      "color": "dark-fair"
+    },
+    {
+      "gender": "male",
+      "hair": "hair-shoulder-length",
+      "color": "fair"
+    },
+    {
+      "gender": "male",
+      "hair": "hair-shoulder-length",
+      "color": "light-fair"
+    },
+    {
+      "gender": "male",
+      "hair": "hair-shoulder-length",
+      "color": "blond"
+    },
+    {
+      "gender": "male",
+      "hair": "hair-shoulder-length",
+      "color": "platinum"
+    },
+    {
+      "gender": "male",
+      "hair": "hair-shoulder-length",
+      "color": "ginger"
+    },
+    {
+      "gender": "male",
+      "hair": "hair-shoulder-length",
+      "color": "gray"
+    },
+    {
+      "gender": "male",
+      "hair": "hair-shoulder-length",
+      "color": "white"
+    },
+    {
+      "gender": "male",
+      "hair": "hair-shoulder-length",
+      "color": "burgundy"
+    },
+    {
+      "gender": "male",
+      "hair": "hair-shoulder-length",
+      "color": "red"
+    },
+    {
+      "gender": "male",
+      "hair": "hair-shoulder-length",
+      "color": "pink"
+    },
+    {
+      "gender": "male",
+      "hair": "hair-shoulder-length",
+      "color": "pastel-pink"
+    },
+    {
+      "gender": "male",
+      "hair": "hair-shoulder-length",
+      "color": "purple"
+    },
+    {
+      "gender": "male",
+      "hair": "hair-shoulder-length",
+      "color": "lavender"
+    },
+    {
+      "gender": "male",
+      "hair": "hair-shoulder-length",
+      "color": "navy"
+    },
+    {
+      "gender": "male",
+      "hair": "hair-shoulder-length",
+      "color": "blue"
+    },
+    {
+      "gender": "male",
+      "hair": "hair-shoulder-length",
+      "color": "turquoise"
+    },
+    {
+      "gender": "male",
+      "hair": "hair-shoulder-length",
+      "color": "emerald"
+    },
+    {
+      "gender": "male",
+      "hair": "hair-shoulder-length",
+      "color": "lime"
+    },
+    {
+      "gender": "male",
+      "hair": "hair-shoulder-length",
+      "color": "orange"
+    },
+    {
+      "gender": "female",
+      "hair": "hair-f5-long-waves",
+      "color": "original"
+    },
+    {
+      "gender": "female",
+      "hair": "hair-f5-long-waves",
+      "color": "black"
+    },
+    {
+      "gender": "female",
+      "hair": "hair-f5-long-waves",
+      "color": "dark-brown"
+    },
+    {
+      "gender": "female",
+      "hair": "hair-f5-long-waves",
+      "color": "brown"
+    },
+    {
+      "gender": "female",
+      "hair": "hair-f5-long-waves",
+      "color": "light-brown"
+    },
+    {
+      "gender": "female",
+      "hair": "hair-f5-long-waves",
+      "color": "dark-fair"
+    },
+    {
+      "gender": "female",
+      "hair": "hair-f5-long-waves",
+      "color": "fair"
+    },
+    {
+      "gender": "female",
+      "hair": "hair-f5-long-waves",
+      "color": "light-fair"
+    },
+    {
+      "gender": "female",
+      "hair": "hair-f5-long-waves",
+      "color": "blond"
+    },
+    {
+      "gender": "female",
+      "hair": "hair-f5-long-waves",
+      "color": "platinum"
+    },
+    {
+      "gender": "female",
+      "hair": "hair-f5-long-waves",
+      "color": "ginger"
+    },
+    {
+      "gender": "female",
+      "hair": "hair-f5-long-waves",
+      "color": "gray"
+    },
+    {
+      "gender": "female",
+      "hair": "hair-f5-long-waves",
+      "color": "white"
+    },
+    {
+      "gender": "female",
+      "hair": "hair-f5-long-waves",
+      "color": "burgundy"
+    },
+    {
+      "gender": "female",
+      "hair": "hair-f5-long-waves",
+      "color": "red"
+    },
+    {
+      "gender": "female",
+      "hair": "hair-f5-long-waves",
+      "color": "pink"
+    },
+    {
+      "gender": "female",
+      "hair": "hair-f5-long-waves",
+      "color": "pastel-pink"
+    },
+    {
+      "gender": "female",
+      "hair": "hair-f5-long-waves",
+      "color": "purple"
+    },
+    {
+      "gender": "female",
+      "hair": "hair-f5-long-waves",
+      "color": "lavender"
+    },
+    {
+      "gender": "female",
+      "hair": "hair-f5-long-waves",
+      "color": "navy"
+    },
+    {
+      "gender": "female",
+      "hair": "hair-f5-long-waves",
+      "color": "blue"
+    },
+    {
+      "gender": "female",
+      "hair": "hair-f5-long-waves",
+      "color": "turquoise"
+    },
+    {
+      "gender": "female",
+      "hair": "hair-f5-long-waves",
+      "color": "emerald"
+    },
+    {
+      "gender": "female",
+      "hair": "hair-f5-long-waves",
+      "color": "lime"
+    },
+    {
+      "gender": "female",
+      "hair": "hair-f5-long-waves",
+      "color": "orange"
+    }
+  ],
+  "head_frames_identical_across_poses": true,
+  "save_writes": false
+}

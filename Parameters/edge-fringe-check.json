@@ -1,0 +1,62 @@
+[
+  {
+    "gender": "male",
+    "pose": "melee",
+    "side": "right",
+    "max_fringe_distance_pixels": 1.4142135623730951
+  },
+  {
+    "gender": "male",
+    "pose": "pistol",
+    "side": "right",
+    "max_fringe_distance_pixels": 1.0
+  },
+  {
+    "gender": "male",
+    "pose": "pistol",
+    "side": "left",
+    "max_fringe_distance_pixels": 1.0
+  },
+  {
+    "gender": "male",
+    "pose": "rifle",
+    "side": "right",
+    "max_fringe_distance_pixels": 1.0
+  },
+  {
+    "gender": "male",
+    "pose": "rifle",
+    "side": "left",
+    "max_fringe_distance_pixels": 1.0
+  },
+  {
+    "gender": "female",
+    "pose": "melee",
+    "side": "right",
+    "max_fringe_distance_pixels": 1.0
+  },
+  {
+    "gender": "female",
+    "pose": "pistol",
+    "side": "right",
+    "max_fringe_distance_pixels": 1.0
+  },
+  {
+    "gender": "female",
+    "pose": "pistol",
+    "side": "left",
+    "max_fringe_distance_pixels": 1.0
+  },
+  {
+    "gender": "female",
+    "pose": "rifle",
+    "side": "right",
+    "max_fringe_distance_pixels": 1.0
+  },
+  {
+    "gender": "female",
+    "pose": "rifle",
+    "side": "left",
+    "max_fringe_distance_pixels": 1.0
+  }
+]

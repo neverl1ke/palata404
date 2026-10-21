@@ -1,0 +1,46 @@
+{
+  "review_date_local": "2026-10-21",
+  "timezone": "Europe/Kyiv",
+  "baseline_commit": "4f46b15",
+  "branch": "feature/avatar-core-1",
+  "main_changed": false,
+  "javascript": {
+    "tests": 107,
+    "passed": 107,
+    "failures": 0
+  },
+  "python_chromium": {
+    "tests": 29,
+    "passed": 29,
+    "failures": 0,
+    "seconds": 106.912
+  },
+  "broader_python_suite_rerun": false,
+  "statements": [
+    "Цільова регресія:107/107 JavaScript і29/29 Python/Chromium.",
+    "65 PNG попереднього Avatar Core та200 початкових runtime/art файлів збережені байт у байт.",
+    "У8 контрольних рендерах немає змінених пікселів поза зап’ястями та жіночим плечем rifle; стійка та точки хвату збережені.",
+    "Обидва аватари, всі бойові пози, переходи, збереження, палітра, шари й інструменти Lab перевірені.",
+    "Main і публікацію не змінювали. Мобільна перевірка — емуляція Chromium, не фізичний телефон."
+  ],
+  "known_existing_limitations": [
+    "Original base_male alpha noise untouched; broad PNG audit has an independently confirmed historical failure.",
+    "Front-view2D prototype and schematic weapons; this pass is not integration into the main game."
+  ],
+  "offline_package": {
+    "passed": true,
+    "images": 26,
+    "external_http_requests": 0,
+    "js_errors": 0,
+    "file_protocol": true,
+    "viewport_widths": [
+      320,
+      390,
+      768
+    ]
+  },
+  "static_reference_check": {
+    "passed": true,
+    "missing_references": 0
+  }
+}
