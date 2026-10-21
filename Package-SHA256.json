@@ -1,0 +1,457 @@
+[
+  {
+    "path": "Avatar-Lab.html",
+    "bytes": 45971574,
+    "sha256": "076bb33d502444c294762231e444c57ad1ac73a23b0f4573ae4f614d094a2b6a"
+  },
+  {
+    "path": "Gallery/appearance-0.webp",
+    "bytes": 100852,
+    "sha256": "7ff294cc3525125d05a4d164151334eb1bc35b9a3cb178e61309b485637131cb"
+  },
+  {
+    "path": "Gallery/appearance-1.webp",
+    "bytes": 100852,
+    "sha256": "7ff294cc3525125d05a4d164151334eb1bc35b9a3cb178e61309b485637131cb"
+  },
+  {
+    "path": "Gallery/appearance-2.webp",
+    "bytes": 107042,
+    "sha256": "76daba287a648e639b6020ea540eb10a0f610b02156296ff7c7bf10eb41ca272"
+  },
+  {
+    "path": "Gallery/appearance-3.webp",
+    "bytes": 106372,
+    "sha256": "a594e96bfad9c555f0d5592dc6f2023735fea17a7449151f9238810a0ef3cb56"
+  },
+  {
+    "path": "Gallery/appearance-4.webp",
+    "bytes": 105190,
+    "sha256": "8ca8558b7c34facb7e47539334d6ef371266e636c3e2be47ceb1af0acf0495ba"
+  },
+  {
+    "path": "Gallery/appearance-5.webp",
+    "bytes": 109090,
+    "sha256": "193b42fc997c4ad45657294c8cf28fd1e19e7350fb25646ebd53230f787a76c4"
+  },
+  {
+    "path": "Gallery/appearance-6.webp",
+    "bytes": 104472,
+    "sha256": "de79b91335f747d524775b4c3646f19658f7712fa85a16a0bb495015d3fe6407"
+  },
+  {
+    "path": "Gallery/appearance-7.webp",
+    "bytes": 106730,
+    "sha256": "776f070c722e86b3c87dd9b8d00af722b8df9a6520f9e735e1e851f6388f4c66"
+  },
+  {
+    "path": "Gallery/appearance-8.webp",
+    "bytes": 105064,
+    "sha256": "53edf26afe07e4dc5f883bce2ef270896a99e240ea1a095a6a1d3baed971a702"
+  },
+  {
+    "path": "Gallery/appearance-9.webp",
+    "bytes": 102178,
+    "sha256": "e564833a6796c208abcee58fb3db736a27739d795f0e9806098c4eb3c7942d40"
+  },
+  {
+    "path": "Gallery/four-actual-poses.webp",
+    "bytes": 386040,
+    "sha256": "30efbeaaf739677a1513402b3afdd0d1bcfa8dedae2cfcafbb170dc2cab3d1c1"
+  },
+  {
+    "path": "Gallery/idle-actual.webp",
+    "bytes": 505396,
+    "sha256": "0ed1a3e4acb8c8644be0f83eaeb0d9348f7a2f5a0a80244594d7a881d65f9a20"
+  },
+  {
+    "path": "Gallery/idle-background-000.webp",
+    "bytes": 297212,
+    "sha256": "0ca2bcf62dbcb1dfa23a09756520584905ae57154f05ab6dd1fe164b87fd70da"
+  },
+  {
+    "path": "Gallery/idle-background-00ff00.webp",
+    "bytes": 312452,
+    "sha256": "cc46fe930d51e6f755a23dbc9915fe2ef9c1d8e7c955edee678621406c4daecb"
+  },
+  {
+    "path": "Gallery/idle-background-777.webp",
+    "bytes": 301004,
+    "sha256": "9f0781fbf9461a4f02ed75c44f5934a59e071aa80bcc08aa7cefc2c3e6df1e05"
+  },
+  {
+    "path": "Gallery/idle-background-fff.webp",
+    "bytes": 304092,
+    "sha256": "a2a2c79a3fa395784df5e3439e0550d742bf7ef2750c3ef86717532eab11943c"
+  },
+  {
+    "path": "Gallery/idle-breathing.webp",
+    "bytes": 3608582,
+    "sha256": "d18ab39a0f9bdb783bf10088ea4aa5fa21d7de4fc10de2375a2c3c7cf30c64c4"
+  },
+  {
+    "path": "Gallery/idle-comparison.webp",
+    "bytes": 267078,
+    "sha256": "6d788de2e41a8156c6d2a10538eb61ae8e0e1fb927f65052785703882dd2f6ba"
+  },
+  {
+    "path": "Gallery/idle-diagnostic-sleeves.webp",
+    "bytes": 137202,
+    "sha256": "56abc94cf7c558db864c155b9900440fc333b395dae2b79dc7e1f1830179432f"
+  },
+  {
+    "path": "Gallery/idle-reference.png",
+    "bytes": 869715,
+    "sha256": "767674ca366f76955bec8da419eb20f822299e3a4080cd446ef9a34cb1846d68"
+  },
+  {
+    "path": "Gallery/melee-actual.webp",
+    "bytes": 507064,
+    "sha256": "eac9eb8149c5fb759dbba632be6e061c414d481117bdf31c58f827a387608984"
+  },
+  {
+    "path": "Gallery/melee-background-000.webp",
+    "bytes": 300140,
+    "sha256": "a3ee085043b56b6f7105560b38980595a5cfa754bef539abd2e160ed0463b53f"
+  },
+  {
+    "path": "Gallery/melee-background-00ff00.webp",
+    "bytes": 315958,
+    "sha256": "c9725fe6d4a60c614b71901aaab1590afb79c80f793f1e2849a0c63b187c32a3"
+  },
+  {
+    "path": "Gallery/melee-background-777.webp",
+    "bytes": 302872,
+    "sha256": "0e634ed5e1472f8c031cd1c2b9a6c7a20857c947e873184bf8a096f1a02ce18b"
+  },
+  {
+    "path": "Gallery/melee-background-fff.webp",
+    "bytes": 306722,
+    "sha256": "b045a92b7b21b261a668b08e736e7dd8492f86de8e71f1a30faf963aa389d08c"
+  },
+  {
+    "path": "Gallery/melee-breathing.webp",
+    "bytes": 3499350,
+    "sha256": "b8cc6a8054e24727a14972ce0da436912691e218b06f821fb44964a6b22c43d9"
+  },
+  {
+    "path": "Gallery/melee-comparison.webp",
+    "bytes": 284200,
+    "sha256": "111c88529efecf830ef16f85989e3172041731600a9070c15cad392adad5df31"
+  },
+  {
+    "path": "Gallery/melee-diagnostic-sleeves.webp",
+    "bytes": 137778,
+    "sha256": "626d1a5c0155285bc5de04713bee6a4f781394f8434266e5c9435429f43fab22"
+  },
+  {
+    "path": "Gallery/melee-reference.png",
+    "bytes": 337055,
+    "sha256": "abdcb6a9789c668fb4897f2b2799bdb443c683178d5ef363e964fd1571b9dc01"
+  },
+  {
+    "path": "Gallery/melee-right-grip.webp",
+    "bytes": 82148,
+    "sha256": "7a213db0ece813484306eea1bf44772eb0494dcea5f3166acd4939e2d475227c"
+  },
+  {
+    "path": "Gallery/melee-right-shoulder.webp",
+    "bytes": 97898,
+    "sha256": "a4224ba7fdfce661a5a3352f625bc23f3b73e108e8cd2bf6c8f20c987874d902"
+  },
+  {
+    "path": "Gallery/melee-right-wrist.webp",
+    "bytes": 69348,
+    "sha256": "5ba7ef51aaea20aa78dfaf748bd33ec6668213a560c06da3bc01e7c493ac2f71"
+  },
+  {
+    "path": "Gallery/pistol-actual.webp",
+    "bytes": 498018,
+    "sha256": "622fab85023279692b30d7cf9bfe4978cf6ee225826ede462f4f2b94ddd3c2b6"
+  },
+  {
+    "path": "Gallery/pistol-background-000.webp",
+    "bytes": 289052,
+    "sha256": "30574c1c5d240db0b8bbb506bce5eaaeb0323dfb6a9c8ad31ffed37b09dc24b9"
+  },
+  {
+    "path": "Gallery/pistol-background-00ff00.webp",
+    "bytes": 301532,
+    "sha256": "6155abdbb0f7212add203caa3a206fb960bde8f55049cbf54a348ac1a923f018"
+  },
+  {
+    "path": "Gallery/pistol-background-777.webp",
+    "bytes": 291492,
+    "sha256": "e7b40f6869acddfa4fc465a01dad5df68c841b35c4f3f3c5e123745377a38b7e"
+  },
+  {
+    "path": "Gallery/pistol-background-fff.webp",
+    "bytes": 293684,
+    "sha256": "d658a5387d07b8e1b521ab1625833ad38943308625b1adaba6946b0fb1fe2c90"
+  },
+  {
+    "path": "Gallery/pistol-breathing.webp",
+    "bytes": 3346058,
+    "sha256": "fc6c0bd898f7dcd61cd1873fa3577e8aae2938731f4a5443884fe9463f6abf95"
+  },
+  {
+    "path": "Gallery/pistol-comparison.webp",
+    "bytes": 281880,
+    "sha256": "9649e4ff4e703947b37c46be919d8a689efdc065e605b71e598e24b79bee8491"
+  },
+  {
+    "path": "Gallery/pistol-diagnostic-sleeves.webp",
+    "bytes": 139488,
+    "sha256": "1cd5026d8cdc267bdb281dcd34fcd363438573cb044bbef56789cfc1fe832b48"
+  },
+  {
+    "path": "Gallery/pistol-reference.png",
+    "bytes": 336016,
+    "sha256": "4301681286453d1319f709ef1fd0ae7f8317e58d59dfeec18a038f6399d0790d"
+  },
+  {
+    "path": "Gallery/pistol-right-grip.webp",
+    "bytes": 109080,
+    "sha256": "7af21da9d63879c6a3548f7f083a401637be57a0b331b180c4329c0af08bdf6c"
+  },
+  {
+    "path": "Gallery/pistol-right-shoulder.webp",
+    "bytes": 113066,
+    "sha256": "4064fcd89288558ac3896bdf9be0d5d13b0fbaf6b21c9ca29ecbe55b4bd7967d"
+  },
+  {
+    "path": "Gallery/pistol-right-wrist.webp",
+    "bytes": 110422,
+    "sha256": "00de14c2cf74d522e06b275840986508e6f6610846439ab5cf870dcc2a4b4bb9"
+  },
+  {
+    "path": "Gallery/rifle-actual.webp",
+    "bytes": 514932,
+    "sha256": "62a0b5aaa5e665990ad8ee68f08d3ebf98b67607f8aefdf00a942f11f5f31a4c"
+  },
+  {
+    "path": "Gallery/rifle-background-000.webp",
+    "bytes": 313166,
+    "sha256": "d9c2cde89c0db861118ca17a0a8a2103dac49992db4a25b5be2a4e682cfd9f49"
+  },
+  {
+    "path": "Gallery/rifle-background-00ff00.webp",
+    "bytes": 326096,
+    "sha256": "a6da1216a9f5ad9d8fa3a78b534a4b9cd3aec8520194ecea8b54d6d01a669436"
+  },
+  {
+    "path": "Gallery/rifle-background-777.webp",
+    "bytes": 315408,
+    "sha256": "f1e5c803451649d2694ceefe0e121c0eafb07635c882e2d50f6fe69af797bc5d"
+  },
+  {
+    "path": "Gallery/rifle-background-fff.webp",
+    "bytes": 317180,
+    "sha256": "5ebcdee4a53ce07916d835159fbc0be979a471ce581b9a4c2c6f8cd3ffb99ce8"
+  },
+  {
+    "path": "Gallery/rifle-breathing.webp",
+    "bytes": 3527618,
+    "sha256": "72f9f33db75bc1ac58e3372d4fb58a62f0fb73ffbc2a847a2a3e4a1b2aa8bb68"
+  },
+  {
+    "path": "Gallery/rifle-comparison.webp",
+    "bytes": 292380,
+    "sha256": "ed4c4130f006cde622325570b2dae727253139516ba9559bc46358395bcfe4a5"
+  },
+  {
+    "path": "Gallery/rifle-diagnostic-sleeves.webp",
+    "bytes": 150092,
+    "sha256": "586aafc3a808b4d72a556d9cd8da6e075de7de936ba2845a5304de1c62d953ed"
+  },
+  {
+    "path": "Gallery/rifle-left-grip.webp",
+    "bytes": 174390,
+    "sha256": "e12c18d13d81d109d46bee34b91bb2dac0d0b620e97ff5f7241dce7a8e812cd2"
+  },
+  {
+    "path": "Gallery/rifle-left-shoulder.webp",
+    "bytes": 106572,
+    "sha256": "2e6184a59d819688002f199768651cf685a8421e781192366d0cb4b2d6b6ccc4"
+  },
+  {
+    "path": "Gallery/rifle-left-wrist.webp",
+    "bytes": 169632,
+    "sha256": "28e666408caa245a70ed1f81380e4968764b9272c32f2a9ac16971039e0da75e"
+  },
+  {
+    "path": "Gallery/rifle-reference.png",
+    "bytes": 907882,
+    "sha256": "baa281c0442295ceb2632bb8eaeb0c85aef331d9a8a3dd30edee1407ab75db29"
+  },
+  {
+    "path": "Gallery/rifle-right-grip.webp",
+    "bytes": 143240,
+    "sha256": "55598aaa0a3998271f1f17efb8be57c3145999ec3cc938881e218270a3827b66"
+  },
+  {
+    "path": "Gallery/rifle-right-shoulder.webp",
+    "bytes": 99946,
+    "sha256": "eb58d124520d82ca56474d80a7a3ef688606ecdfae0b136203211a13f6186492"
+  },
+  {
+    "path": "Gallery/rifle-right-wrist.webp",
+    "bytes": 155618,
+    "sha256": "687c79fa4b6a04a4c5cfcebe15db51f06376486537c65a112bbc32694d410cbd"
+  },
+  {
+    "path": "Modules/Weapons/melee.png",
+    "bytes": 11593,
+    "sha256": "930a197515a3613e3eaf4d3c70ac920dc983f8ba9895802a310afc7b5ea2a6e7"
+  },
+  {
+    "path": "Modules/Weapons/pistol.png",
+    "bytes": 29596,
+    "sha256": "b41805785c20eac19333c252f847e8aba7c966e74db821ddb178a3a1d8234fc3"
+  },
+  {
+    "path": "Modules/Weapons/rifle.png",
+    "bytes": 169350,
+    "sha256": "e224e4550a24c04f60c667e5b3657321e38948b4e8c55dcad4a83e9006cfcb69"
+  },
+  {
+    "path": "Modules/male-preview.json",
+    "bytes": 2683,
+    "sha256": "a644a30bdd4ed819d58169720efbcd4d642e14d13e79b301a63c7016f16010fa"
+  },
+  {
+    "path": "Modules/pistol-right-frontImage.png",
+    "bytes": 28517,
+    "sha256": "959421bef6242254205e9634d03d673832759c044bfd9bc5c0a293e2c3f2dbba"
+  },
+  {
+    "path": "Modules/pistol-right-image.png",
+    "bytes": 81906,
+    "sha256": "1b53c98ca7cd1dc612e55871ed7d29c6751f7e65317b3a511bc2389dce8aed6a"
+  },
+  {
+    "path": "Modules/registration.json",
+    "bytes": 7342,
+    "sha256": "9a50e076716c6e761ba8832852de38278561708dfd7a8cfa296a0d068f87ee00"
+  },
+  {
+    "path": "Modules/rifle-left-frontImage.png",
+    "bytes": 24229,
+    "sha256": "1d8fd1479ed3792a2e517a87554b7f80eef5a3fd38fb3f0e790b8598983a8eba"
+  },
+  {
+    "path": "Modules/rifle-left-image.png",
+    "bytes": 94105,
+    "sha256": "0976703a971eca4efc65df036b35e3898690095e568de4a22b48781f23df1bc6"
+  },
+  {
+    "path": "Modules/rifle-right-frontImage.png",
+    "bytes": 28042,
+    "sha256": "0e5e2b8ab9dc68ce8a8f68d3f9ff9ce43cae0fb22fd0c619c62a8796607f575d"
+  },
+  {
+    "path": "Modules/rifle-right-image.png",
+    "bytes": 90833,
+    "sha256": "7a63d4d4a37a60b77031848befb1d9fa4050a0acb0353078de102d66255c5195"
+  },
+  {
+    "path": "README.md",
+    "bytes": 7260,
+    "sha256": "c526bbec155d9e24c49826ffbd2be909257634f2978053e4bf94fcf198bf257e"
+  },
+  {
+    "path": "Report.html",
+    "bytes": 30498829,
+    "sha256": "76a6546f6db8dd9023aa245e8f4c06c0bedd59159d776b30d5bc360871c7441d"
+  },
+  {
+    "path": "Sources/knife-working.png",
+    "bytes": 1341283,
+    "sha256": "6850185edfaa42c3710327a3623faa7b0b01089297edb77be90b2a9734aade18"
+  },
+  {
+    "path": "alpha-cleanup.json",
+    "bytes": 1526,
+    "sha256": "80e5ed46d89932c2f1184f54aee3097ae3583000ff624deec882c602a93403bf"
+  },
+  {
+    "path": "browser-capture.json",
+    "bytes": 51283,
+    "sha256": "d4978139225999d69c17b556129e78a18f9816ef2190951cd329c499e527c3ef"
+  },
+  {
+    "path": "changed-files.json",
+    "bytes": 982,
+    "sha256": "8ce253d069a917246fbd90ffdf0841bb02eb8398eb91dcc0b8ef3fc7828ff3ca"
+  },
+  {
+    "path": "issues.json",
+    "bytes": 5244,
+    "sha256": "9e96cf3140393f2fa6f792ebaff2fa6ba95dc36f10f71dfc5006e25d561d335b"
+  },
+  {
+    "path": "knife-registration.json",
+    "bytes": 742,
+    "sha256": "c2a7c397e038f47c01bd95efec7c4d721d145ba33f2f4a2319ac6f535b0bb54a"
+  },
+  {
+    "path": "reference-package.json",
+    "bytes": 393,
+    "sha256": "9756d6a0615fdae6898e3e33fbb9dca7ff6559858463351b0342adbdf42a648e"
+  },
+  {
+    "path": "test-logs/alpha-kit.log",
+    "bytes": 5726,
+    "sha256": "d4bbe6b299b338b94ae978ca103ec72c6fb75bf1c507926c0a86180e84b18f5c"
+  },
+  {
+    "path": "test-logs/capture.log",
+    "bytes": 114,
+    "sha256": "b1d46da7874cf8675c6c2feb670c341ca734e562e7e5d691fb894930cd3623ca"
+  },
+  {
+    "path": "test-logs/javascript-core.log",
+    "bytes": 1914,
+    "sha256": "f37439860c050e918895125f99e4a3aee115c6bfd077dde38a735dd7b6c10004"
+  },
+  {
+    "path": "test-logs/javascript-game.log",
+    "bytes": 9902,
+    "sha256": "e91d03c2ffd7687f505f6abc27eec784ef25a6387ca22715dc5067da8273aad1"
+  },
+  {
+    "path": "test-logs/knife-tip-targeted.log",
+    "bytes": 274,
+    "sha256": "1a5f853cbcbc8b0f054102ae264a158026b6a547ac89d6012af9766eb4b0cf88"
+  },
+  {
+    "path": "test-logs/offline-before-freeze.log",
+    "bytes": 635,
+    "sha256": "116869903b6e81378b9486e65bcb302bd8681bbcb01593c0d2ca8ca5f6c28851"
+  },
+  {
+    "path": "test-logs/offline-package.log",
+    "bytes": 1592,
+    "sha256": "7ff25c46a70769d966456ef1deb074cc7085c83d1a3af77a0aaf80f9f80e6826"
+  },
+  {
+    "path": "test-logs/python-regression-before-knife-tip-update.log",
+    "bytes": 9448,
+    "sha256": "760e1ed04c099bfd7997b68d2cc973f3bf5fef19c3c1fa59a5b3adf6500d0b05"
+  },
+  {
+    "path": "test-logs/python-regression.log",
+    "bytes": 8671,
+    "sha256": "7ab99c4206f264e415ad9cdd11772e4bbeecab663b2ae672593d795e8e358d72"
+  },
+  {
+    "path": "test-results.json",
+    "bytes": 535,
+    "sha256": "ae7010408cd88c9bf54870ed7f183205125d46b73f52033e09b83c99f8ed552b"
+  },
+  {
+    "path": "ВІДКРИЙ_СПОЧАТКУ.txt",
+    "bytes": 463,
+    "sha256": "422ebbd87ce294f0902efbdbbc9199ae6e01565d6bd361d9fdc70526de9403b9"
+  }
+]

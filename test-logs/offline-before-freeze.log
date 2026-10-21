@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/workspace/palata404-avatar-core/tools/verify-male-exact-package.py", line 23, in <module>
+    page.evaluate('p=>avatarLab.engine.setPose(p)',pose);s=page.evaluate('avatarLab.engine.snapshot()');assert s['frame']['primaryError']<1e-6 and s['frame']['supportError']<1e-6;poses.append({'gender':gender,'pose':pose,'primaryError':s['frame']['primaryError'],'supportError':s['frame']['supportError']})
+                                                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

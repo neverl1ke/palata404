@@ -1,0 +1,64 @@
+[
+  {
+    "slot": "art-front-pistol-right",
+    "source": "avatar-core/assets/male/pose-art/pistol-right-front.png",
+    "output": "avatar-core/assets/male/exact-pass/pistol-right-frontImage.png",
+    "source_sha256": "0ffd906061027c8b64156f9812768567c2716ba1f113bd7d80a1da674a6d5ece",
+    "output_sha256": "d0a68dd806f744d2e5a14acc87885f2a5f9e6361758cb1018bef9a6704b38cc5",
+    "removed_islands": [
+      {
+        "pixels": 1,
+        "max_alpha": 1,
+        "bbox_local": [
+          9,
+          213,
+          10,
+          214
+        ]
+      }
+    ],
+    "changed_pixels": 1,
+    "anatomy_changed": false
+  },
+  {
+    "slot": "art-rifle-left",
+    "source": "avatar-core/assets/male/lobby/rifle-left-arm.png",
+    "output": "avatar-core/assets/male/exact-pass/rifle-left-image.png",
+    "source_sha256": "59882e460aeb26a26af0ed27f65d21c7af8d3068f9c9b67508f88b2a86147431",
+    "output_sha256": "f9a465f42920f9fa769fe6a8968a46894aec1812735f09df34717f6ec28bd47e",
+    "removed_islands": [
+      {
+        "pixels": 10,
+        "max_alpha": 7,
+        "bbox_local": [
+          156,
+          86,
+          159,
+          91
+        ]
+      },
+      {
+        "pixels": 19,
+        "max_alpha": 8,
+        "bbox_local": [
+          157,
+          114,
+          160,
+          125
+        ]
+      },
+      {
+        "pixels": 11,
+        "max_alpha": 6,
+        "bbox_local": [
+          156,
+          128,
+          160,
+          134
+        ]
+      }
+    ],
+    "changed_pixels": 40,
+    "anatomy_changed": false
+  }
+]

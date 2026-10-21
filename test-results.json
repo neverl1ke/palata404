@@ -1,0 +1,26 @@
+{
+  "javascript": 115,
+  "python_chromium": 60,
+  "total_passed": 175,
+  "failures": 0,
+  "prior_failed_run": "python-regression-before-knife-tip-update.log (48/49; obsolete hardcoded knife tip)",
+  "capture_cases_additional_not_tests": 280,
+  "logs": [
+    {
+      "log": "javascript-game.log",
+      "passed": true
+    },
+    {
+      "log": "javascript-core.log",
+      "passed": true
+    },
+    {
+      "log": "alpha-kit.log",
+      "passed": true
+    },
+    {
+      "log": "python-regression.log",
+      "passed": true
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "source": "review/male-exact-reference-pass/Sources/knife-working.png",
+  "source_sha256": "6850185edfaa42c3710327a3623faa7b0b01089297edb77be90b2a9734aade18",
+  "output": "avatar-core/assets/weapons/male-exact/knife.png",
+  "output_sha256": "930a197515a3613e3eaf4d3c70ac920dc983f8ba9895802a310afc7b5ea2a6e7",
+  "source_bbox": [
+    390,
+    68,
+    636,
+    1470
+  ],
+  "size": [
+    34,
+    196
+  ],
+  "primary_source": [
+    513,
+    350
+  ],
+  "primary": [
+    17.0,
+    39.42368045649073
+  ],
+  "scale_xy_after_integer_rounding": [
+    0.13821138211382114,
+    0.1398002853067047
+  ],
+  "angle_definition": 140,
+  "male_pose_angle": 195,
+  "resulting_angle": 335,
+  "hands_unchanged": true,
+  "female_shared_weapon_unchanged": true
+}

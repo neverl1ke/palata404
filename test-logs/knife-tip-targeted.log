@@ -1,0 +1,6 @@
+test_supported_pistol_and_combat_wrists_do_not_fold_backwards (tests.test_avatar_polish.PolishBrowserTests.test_supported_pistol_and_combat_wrists_do_not_fold_backwards) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 4.341s
+
+OK

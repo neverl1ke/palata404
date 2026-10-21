@@ -1,0 +1,74 @@
+[
+  {
+    "file": "avatar-core/assets/male/exact-pass/pistol-right-frontImage.png",
+    "problem": "Окремий alpha=1 піксель біля передпліччя, поза основним 8-зв’язним силуетом",
+    "evidence": "alpha-cleanup.json / art-front-pistol-right",
+    "priority": "P2",
+    "fix": "Похідний PNG: видалено лише 1 слабкопрозорий піксель",
+    "status": "Виправлено технічно; хват не змінено"
+  },
+  {
+    "file": "avatar-core/assets/male/exact-pass/rifle-left-image.png",
+    "problem": "Три окремі слабкопрозорі компоненти верхньої руки: 10+19+11 пікселів, alpha максимум 8",
+    "evidence": "alpha-cleanup.json / art-rifle-left",
+    "priority": "P2",
+    "fix": "Похідний PNG; решта байтів RGBA не змінені",
+    "status": "Виправлено технічно"
+  },
+  {
+    "file": "avatar-core/assets/male/lobby/rifle-right-{arm,front}.png",
+    "problem": "Закритий кулак замість природного обхвату рукоятки, немає потрібної форми вказівного пальця та великого пальця",
+    "evidence": "rifle-right-grip.webp; rifle-comparison.webp",
+    "priority": "P0",
+    "fix": "Домалювати кисть у робочих копіях arm/front, залишити зап’ястя [324,631] та існуючий bind; уточнити контакт зі зброєю після малюнка",
+    "status": "НЕ виправлено: потрібна художня робота"
+  },
+  {
+    "file": "avatar-core/assets/male/pose-art/pistol-right-{arm,front}.png",
+    "problem": "Одноручна поза збережена, але пальці та рукоятка не утворюють переконливого контакту",
+    "evidence": "pistol-right-grip.webp; pistol-comparison.webp",
+    "priority": "P0",
+    "fix": "Домалювати пальці/великий палець без зміни плеча/ліктя, зап’ястя [265.764,352.022]",
+    "status": "НЕ виправлено: потрібна художня робота"
+  },
+  {
+    "file": "avatar-core/assets/male/lobby/rifle-left-{arm,front}.png",
+    "problem": "Підтримка знизу є, але контакт пальців з цівкою відрізняється від референсу",
+    "evidence": "rifle-left-grip.webp",
+    "priority": "P1",
+    "fix": "Локально уточнити пальці й передній thumb-шар; зап’ястя [658,725], цівка [619,755]",
+    "status": "Потрібне художнє доведення"
+  },
+  {
+    "file": "avatar-core/assets/weapons/melee.png",
+    "problem": "У попередній версії ніж був схематичним",
+    "evidence": "melee-comparison.webp; melee-right-grip.webp",
+    "priority": "P1",
+    "fix": "Створено окремий ілюстративний PNG assets/weapons/male-exact/knife.png; прив’язано до чинної кисті, без референсних пікселів",
+    "status": "Замінено тестовим художнім предметом; потрібне візуальне затвердження"
+  },
+  {
+    "file": "avatar-core/assets/male/hands/melee-right.png / melee-right-wrist-patch.png",
+    "problem": "Кисть виглядає надто блоковою відносно передпліччя, стик зап’ястя має помітний виступ",
+    "evidence": "melee-right-grip.webp; melee-right-wrist.webp",
+    "priority": "P1",
+    "fix": "Локально домалювати кисть й анатомічний стик у похідних ресурсах, не змінюючи позу опущеної руки",
+    "status": "НЕ виправлено художньо; новий ніж не приховує дефект"
+  },
+  {
+    "file": "avatar-core/rigs/male_rig.json / poses",
+    "problem": "Висота обох кистей rifle та напрямок pistol відрізняються від референсів",
+    "evidence": "rifle-comparison.webp; pistol-comparison.webp",
+    "priority": "P1",
+    "fix": "Після нової анатомії кистей повторно зареєструвати зброю; не приховувати різницю підміною цілого спрайта",
+    "status": "Залишено чинну основу; точна відповідність НЕ досягнута"
+  },
+  {
+    "file": "avatar-lab / equipment binding",
+    "problem": "Діагностичні рукави не доводять сумісність усього ігрового одягу з бойовими руками",
+    "evidence": "*-diagnostic-sleeves.webp / поточні браузерні тести",
+    "priority": "P1",
+    "fix": "Окреме припасування фактичного одягу після затвердження рук",
+    "status": "Повна сумісність НЕ підтверджена"
+  }
+]

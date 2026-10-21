@@ -1,0 +1,9 @@
+{
+  "uploaded_filename": "palata404_exact_reference_poses.zip",
+  "sha256": "7d4bdfd2e5a903f2c28b542432f4c1f5c9ad1f2f317913ff4b432dffd59ef185",
+  "bytes": 6685674,
+  "use": "visual comparison only; full sprite replacement instructions in ZIP not applied",
+  "protected_main_sha": "f70b7e5be63f6b85d895c6d5b259adbc30577b86",
+  "runtime_change_commit": "a6f6433",
+  "originals_changed": false
+}

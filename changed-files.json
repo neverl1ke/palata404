@@ -1,0 +1,27 @@
+{
+  "baseline": "02cae62",
+  "source_commit": "a6f6433",
+  "source_files": [
+    "avatar-core/assets/male/exact-pass/pistol-right-frontImage.png",
+    "avatar-core/assets/male/exact-pass/rifle-left-image.png",
+    "avatar-core/assets/weapons/male-exact/knife.png",
+    "avatar-core/engine.mjs",
+    "avatar-core/male-preview.json",
+    "review/male-exact-reference-pass/Sources/knife-working.png",
+    "review/male-exact-reference-pass/alpha-cleanup.json",
+    "review/male-exact-reference-pass/knife-registration.json",
+    "tests/test_avatar_polish.py",
+    "tests/test_exact_reference_pass.py",
+    "tests/test_grip_pass.py",
+    "tests/test_male_hand_kit.py",
+    "tools/prepare-male-alpha-surfaces.py",
+    "tools/prepare-male-knife-prop.py"
+  ],
+  "new_review_directory": "review/male-exact-reference-pass",
+  "new_tools": [
+    "tools/review-male-exact-pass.py",
+    "tools/package-male-exact-pass.py",
+    "tools/verify-male-exact-package.py"
+  ],
+  "main_changed": false
+}

@@ -1,0 +1,2468 @@
+{
+  "browser": "151.0.7922.34",
+  "entry": "avatar-lab/index.html",
+  "actual_avatar": "original base_male.png partitioned by existing Core; no reference sprite in renderer",
+  "main_game_integration": false,
+  "artistic_grips_fixed": false,
+  "physical_mobile_device": false,
+  "clothing": "four diagnostic bound sleeves only; production wardrobe adaptation NOT certified",
+  "js_errors": [],
+  "http_errors": [],
+  "storage_unchanged": true,
+  "catalog": {
+    "faces": [
+      {
+        "id": "source",
+        "name": "Оригінал"
+      },
+      {
+        "id": "native",
+        "name": "Базове"
+      },
+      {
+        "id": "face-asian",
+        "name": "Азійський тип обличчя"
+      },
+      {
+        "id": "face-young",
+        "name": "Молоде обличчя"
+      },
+      {
+        "id": "face-exhausted",
+        "name": "Виснажене обличчя"
+      },
+      {
+        "id": "face-elder",
+        "name": "Старше обличчя"
+      },
+      {
+        "id": "face-alternative",
+        "name": "Нове обличчя"
+      },
+      {
+        "id": "face-male-goth-pierced",
+        "name": "Готичне обличчя з пірсингом"
+      },
+      {
+        "id": "face-male-freckled",
+        "name": "Обличчя з веснянками"
+      },
+      {
+        "id": "face-male-blue-eyes",
+        "name": "Світлооке обличчя"
+      }
+    ],
+    "hairs": [
+      {
+        "id": "hair-none",
+        "name": "Без зачіски"
+      },
+      {
+        "id": "hair-messy",
+        "name": "Розкуйовджена зачіска"
+      },
+      {
+        "id": "hair-bob",
+        "name": "Каре до підборіддя"
+      },
+      {
+        "id": "hair-double-buns",
+        "name": "Два бокові пучки з локонами"
+      },
+      {
+        "id": "hair-classic-short",
+        "name": "Класична коротка стрижка"
+      },
+      {
+        "id": "hair-textured-short",
+        "name": "Коротка текстурована стрижка"
+      },
+      {
+        "id": "hair-shoulder-length",
+        "name": "Волосся до плечей"
+      }
+    ]
+  },
+  "appearance_pose_cases": [
+    {
+      "f": "source",
+      "h": "hair-none",
+      "pose": "idle",
+      "raster_loaded": true
+    },
+    {
+      "f": "source",
+      "h": "hair-none",
+      "pose": "rifle",
+      "raster_loaded": true
+    },
+    {
+      "f": "source",
+      "h": "hair-none",
+      "pose": "pistol",
+      "raster_loaded": true
+    },
+    {
+      "f": "source",
+      "h": "hair-none",
+      "pose": "melee",
+      "raster_loaded": true
+    },
+    {
+      "f": "source",
+      "h": "hair-messy",
+      "pose": "idle",
+      "raster_loaded": true
+    },
+    {
+      "f": "source",
+      "h": "hair-messy",
+      "pose": "rifle",
+      "raster_loaded": true
+    },
+    {
+      "f": "source",
+      "h": "hair-messy",
+      "pose": "pistol",
+      "raster_loaded": true
+    },
+    {
+      "f": "source",
+      "h": "hair-messy",
+      "pose": "melee",
+      "raster_loaded": true
+    },
+    {
+      "f": "source",
+      "h": "hair-bob",
+      "pose": "idle",
+      "raster_loaded": true
+    },
+    {
+      "f": "source",
+      "h": "hair-bob",
+      "pose": "rifle",
+      "raster_loaded": true
+    },
+    {
+      "f": "source",
+      "h": "hair-bob",
+      "pose": "pistol",
+      "raster_loaded": true
+    },
+    {
+      "f": "source",
+      "h": "hair-bob",
+      "pose": "melee",
+      "raster_loaded": true
+    },
+    {
+      "f": "source",
+      "h": "hair-double-buns",
+      "pose": "idle",
+      "raster_loaded": true
+    },
+    {
+      "f": "source",
+      "h": "hair-double-buns",
+      "pose": "rifle",
+      "raster_loaded": true
+    },
+    {
+      "f": "source",
+      "h": "hair-double-buns",
+      "pose": "pistol",
+      "raster_loaded": true
+    },
+    {
+      "f": "source",
+      "h": "hair-double-buns",
+      "pose": "melee",
+      "raster_loaded": true
+    },
+    {
+      "f": "source",
+      "h": "hair-classic-short",
+      "pose": "idle",
+      "raster_loaded": true
+    },
+    {
+      "f": "source",
+      "h": "hair-classic-short",
+      "pose": "rifle",
+      "raster_loaded": true
+    },
+    {
+      "f": "source",
+      "h": "hair-classic-short",
+      "pose": "pistol",
+      "raster_loaded": true
+    },
+    {
+      "f": "source",
+      "h": "hair-classic-short",
+      "pose": "melee",
+      "raster_loaded": true
+    },
+    {
+      "f": "source",
+      "h": "hair-textured-short",
+      "pose": "idle",
+      "raster_loaded": true
+    },
+    {
+      "f": "source",
+      "h": "hair-textured-short",
+      "pose": "rifle",
+      "raster_loaded": true
+    },
+    {
+      "f": "source",
+      "h": "hair-textured-short",
+      "pose": "pistol",
+      "raster_loaded": true
+    },
+    {
+      "f": "source",
+      "h": "hair-textured-short",
+      "pose": "melee",
+      "raster_loaded": true
+    },
+    {
+      "f": "source",
+      "h": "hair-shoulder-length",
+      "pose": "idle",
+      "raster_loaded": true
+    },
+    {
+      "f": "source",
+      "h": "hair-shoulder-length",
+      "pose": "rifle",
+      "raster_loaded": true
+    },
+    {
+      "f": "source",
+      "h": "hair-shoulder-length",
+      "pose": "pistol",
+      "raster_loaded": true
+    },
+    {
+      "f": "source",
+      "h": "hair-shoulder-length",
+      "pose": "melee",
+      "raster_loaded": true
+    },
+    {
+      "f": "native",
+      "h": "hair-none",
+      "pose": "idle",
+      "raster_loaded": true
+    },
+    {
+      "f": "native",
+      "h": "hair-none",
+      "pose": "rifle",
+      "raster_loaded": true
+    },
+    {
+      "f": "native",
+      "h": "hair-none",
+      "pose": "pistol",
+      "raster_loaded": true
+    },
+    {
+      "f": "native",
+      "h": "hair-none",
+      "pose": "melee",
+      "raster_loaded": true
+    },
+    {
+      "f": "native",
+      "h": "hair-messy",
+      "pose": "idle",
+      "raster_loaded": true
+    },
+    {
+      "f": "native",
+      "h": "hair-messy",
+      "pose": "rifle",
+      "raster_loaded": true
+    },
+    {
+      "f": "native",
+      "h": "hair-messy",
+      "pose": "pistol",
+      "raster_loaded": true
+    },
+    {
+      "f": "native",
+      "h": "hair-messy",
+      "pose": "melee",
+      "raster_loaded": true
+    },
+    {
+      "f": "native",
+      "h": "hair-bob",
+      "pose": "idle",
+      "raster_loaded": true
+    },
+    {
+      "f": "native",
+      "h": "hair-bob",
+      "pose": "rifle",
+      "raster_loaded": true
+    },
+    {
+      "f": "native",
+      "h": "hair-bob",
+      "pose": "pistol",
+      "raster_loaded": true
+    },
+    {
+      "f": "native",
+      "h": "hair-bob",
+      "pose": "melee",
+      "raster_loaded": true
+    },
+    {
+      "f": "native",
+      "h": "hair-double-buns",
+      "pose": "idle",
+      "raster_loaded": true
+    },
+    {
+      "f": "native",
+      "h": "hair-double-buns",
+      "pose": "rifle",
+      "raster_loaded": true
+    },
+    {
+      "f": "native",
+      "h": "hair-double-buns",
+      "pose": "pistol",
+      "raster_loaded": true
+    },
+    {
+      "f": "native",
+      "h": "hair-double-buns",
+      "pose": "melee",
+      "raster_loaded": true
+    },
+    {
+      "f": "native",
+      "h": "hair-classic-short",
+      "pose": "idle",
+      "raster_loaded": true
+    },
+    {
+      "f": "native",
+      "h": "hair-classic-short",
+      "pose": "rifle",
+      "raster_loaded": true
+    },
+    {
+      "f": "native",
+      "h": "hair-classic-short",
+      "pose": "pistol",
+      "raster_loaded": true
+    },
+    {
+      "f": "native",
+      "h": "hair-classic-short",
+      "pose": "melee",
+      "raster_loaded": true
+    },
+    {
+      "f": "native",
+      "h": "hair-textured-short",
+      "pose": "idle",
+      "raster_loaded": true
+    },
+    {
+      "f": "native",
+      "h": "hair-textured-short",
+      "pose": "rifle",
+      "raster_loaded": true
+    },
+    {
+      "f": "native",
+      "h": "hair-textured-short",
+      "pose": "pistol",
+      "raster_loaded": true
+    },
+    {
+      "f": "native",
+      "h": "hair-textured-short",
+      "pose": "melee",
+      "raster_loaded": true
+    },
+    {
+      "f": "native",
+      "h": "hair-shoulder-length",
+      "pose": "idle",
+      "raster_loaded": true
+    },
+    {
+      "f": "native",
+      "h": "hair-shoulder-length",
+      "pose": "rifle",
+      "raster_loaded": true
+    },
+    {
+      "f": "native",
+      "h": "hair-shoulder-length",
+      "pose": "pistol",
+      "raster_loaded": true
+    },
+    {
+      "f": "native",
+      "h": "hair-shoulder-length",
+      "pose": "melee",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-asian",
+      "h": "hair-none",
+      "pose": "idle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-asian",
+      "h": "hair-none",
+      "pose": "rifle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-asian",
+      "h": "hair-none",
+      "pose": "pistol",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-asian",
+      "h": "hair-none",
+      "pose": "melee",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-asian",
+      "h": "hair-messy",
+      "pose": "idle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-asian",
+      "h": "hair-messy",
+      "pose": "rifle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-asian",
+      "h": "hair-messy",
+      "pose": "pistol",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-asian",
+      "h": "hair-messy",
+      "pose": "melee",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-asian",
+      "h": "hair-bob",
+      "pose": "idle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-asian",
+      "h": "hair-bob",
+      "pose": "rifle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-asian",
+      "h": "hair-bob",
+      "pose": "pistol",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-asian",
+      "h": "hair-bob",
+      "pose": "melee",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-asian",
+      "h": "hair-double-buns",
+      "pose": "idle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-asian",
+      "h": "hair-double-buns",
+      "pose": "rifle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-asian",
+      "h": "hair-double-buns",
+      "pose": "pistol",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-asian",
+      "h": "hair-double-buns",
+      "pose": "melee",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-asian",
+      "h": "hair-classic-short",
+      "pose": "idle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-asian",
+      "h": "hair-classic-short",
+      "pose": "rifle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-asian",
+      "h": "hair-classic-short",
+      "pose": "pistol",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-asian",
+      "h": "hair-classic-short",
+      "pose": "melee",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-asian",
+      "h": "hair-textured-short",
+      "pose": "idle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-asian",
+      "h": "hair-textured-short",
+      "pose": "rifle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-asian",
+      "h": "hair-textured-short",
+      "pose": "pistol",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-asian",
+      "h": "hair-textured-short",
+      "pose": "melee",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-asian",
+      "h": "hair-shoulder-length",
+      "pose": "idle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-asian",
+      "h": "hair-shoulder-length",
+      "pose": "rifle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-asian",
+      "h": "hair-shoulder-length",
+      "pose": "pistol",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-asian",
+      "h": "hair-shoulder-length",
+      "pose": "melee",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-young",
+      "h": "hair-none",
+      "pose": "idle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-young",
+      "h": "hair-none",
+      "pose": "rifle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-young",
+      "h": "hair-none",
+      "pose": "pistol",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-young",
+      "h": "hair-none",
+      "pose": "melee",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-young",
+      "h": "hair-messy",
+      "pose": "idle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-young",
+      "h": "hair-messy",
+      "pose": "rifle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-young",
+      "h": "hair-messy",
+      "pose": "pistol",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-young",
+      "h": "hair-messy",
+      "pose": "melee",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-young",
+      "h": "hair-bob",
+      "pose": "idle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-young",
+      "h": "hair-bob",
+      "pose": "rifle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-young",
+      "h": "hair-bob",
+      "pose": "pistol",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-young",
+      "h": "hair-bob",
+      "pose": "melee",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-young",
+      "h": "hair-double-buns",
+      "pose": "idle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-young",
+      "h": "hair-double-buns",
+      "pose": "rifle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-young",
+      "h": "hair-double-buns",
+      "pose": "pistol",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-young",
+      "h": "hair-double-buns",
+      "pose": "melee",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-young",
+      "h": "hair-classic-short",
+      "pose": "idle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-young",
+      "h": "hair-classic-short",
+      "pose": "rifle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-young",
+      "h": "hair-classic-short",
+      "pose": "pistol",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-young",
+      "h": "hair-classic-short",
+      "pose": "melee",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-young",
+      "h": "hair-textured-short",
+      "pose": "idle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-young",
+      "h": "hair-textured-short",
+      "pose": "rifle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-young",
+      "h": "hair-textured-short",
+      "pose": "pistol",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-young",
+      "h": "hair-textured-short",
+      "pose": "melee",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-young",
+      "h": "hair-shoulder-length",
+      "pose": "idle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-young",
+      "h": "hair-shoulder-length",
+      "pose": "rifle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-young",
+      "h": "hair-shoulder-length",
+      "pose": "pistol",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-young",
+      "h": "hair-shoulder-length",
+      "pose": "melee",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-exhausted",
+      "h": "hair-none",
+      "pose": "idle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-exhausted",
+      "h": "hair-none",
+      "pose": "rifle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-exhausted",
+      "h": "hair-none",
+      "pose": "pistol",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-exhausted",
+      "h": "hair-none",
+      "pose": "melee",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-exhausted",
+      "h": "hair-messy",
+      "pose": "idle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-exhausted",
+      "h": "hair-messy",
+      "pose": "rifle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-exhausted",
+      "h": "hair-messy",
+      "pose": "pistol",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-exhausted",
+      "h": "hair-messy",
+      "pose": "melee",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-exhausted",
+      "h": "hair-bob",
+      "pose": "idle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-exhausted",
+      "h": "hair-bob",
+      "pose": "rifle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-exhausted",
+      "h": "hair-bob",
+      "pose": "pistol",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-exhausted",
+      "h": "hair-bob",
+      "pose": "melee",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-exhausted",
+      "h": "hair-double-buns",
+      "pose": "idle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-exhausted",
+      "h": "hair-double-buns",
+      "pose": "rifle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-exhausted",
+      "h": "hair-double-buns",
+      "pose": "pistol",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-exhausted",
+      "h": "hair-double-buns",
+      "pose": "melee",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-exhausted",
+      "h": "hair-classic-short",
+      "pose": "idle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-exhausted",
+      "h": "hair-classic-short",
+      "pose": "rifle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-exhausted",
+      "h": "hair-classic-short",
+      "pose": "pistol",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-exhausted",
+      "h": "hair-classic-short",
+      "pose": "melee",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-exhausted",
+      "h": "hair-textured-short",
+      "pose": "idle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-exhausted",
+      "h": "hair-textured-short",
+      "pose": "rifle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-exhausted",
+      "h": "hair-textured-short",
+      "pose": "pistol",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-exhausted",
+      "h": "hair-textured-short",
+      "pose": "melee",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-exhausted",
+      "h": "hair-shoulder-length",
+      "pose": "idle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-exhausted",
+      "h": "hair-shoulder-length",
+      "pose": "rifle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-exhausted",
+      "h": "hair-shoulder-length",
+      "pose": "pistol",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-exhausted",
+      "h": "hair-shoulder-length",
+      "pose": "melee",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-elder",
+      "h": "hair-none",
+      "pose": "idle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-elder",
+      "h": "hair-none",
+      "pose": "rifle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-elder",
+      "h": "hair-none",
+      "pose": "pistol",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-elder",
+      "h": "hair-none",
+      "pose": "melee",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-elder",
+      "h": "hair-messy",
+      "pose": "idle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-elder",
+      "h": "hair-messy",
+      "pose": "rifle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-elder",
+      "h": "hair-messy",
+      "pose": "pistol",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-elder",
+      "h": "hair-messy",
+      "pose": "melee",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-elder",
+      "h": "hair-bob",
+      "pose": "idle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-elder",
+      "h": "hair-bob",
+      "pose": "rifle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-elder",
+      "h": "hair-bob",
+      "pose": "pistol",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-elder",
+      "h": "hair-bob",
+      "pose": "melee",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-elder",
+      "h": "hair-double-buns",
+      "pose": "idle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-elder",
+      "h": "hair-double-buns",
+      "pose": "rifle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-elder",
+      "h": "hair-double-buns",
+      "pose": "pistol",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-elder",
+      "h": "hair-double-buns",
+      "pose": "melee",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-elder",
+      "h": "hair-classic-short",
+      "pose": "idle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-elder",
+      "h": "hair-classic-short",
+      "pose": "rifle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-elder",
+      "h": "hair-classic-short",
+      "pose": "pistol",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-elder",
+      "h": "hair-classic-short",
+      "pose": "melee",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-elder",
+      "h": "hair-textured-short",
+      "pose": "idle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-elder",
+      "h": "hair-textured-short",
+      "pose": "rifle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-elder",
+      "h": "hair-textured-short",
+      "pose": "pistol",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-elder",
+      "h": "hair-textured-short",
+      "pose": "melee",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-elder",
+      "h": "hair-shoulder-length",
+      "pose": "idle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-elder",
+      "h": "hair-shoulder-length",
+      "pose": "rifle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-elder",
+      "h": "hair-shoulder-length",
+      "pose": "pistol",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-elder",
+      "h": "hair-shoulder-length",
+      "pose": "melee",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-alternative",
+      "h": "hair-none",
+      "pose": "idle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-alternative",
+      "h": "hair-none",
+      "pose": "rifle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-alternative",
+      "h": "hair-none",
+      "pose": "pistol",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-alternative",
+      "h": "hair-none",
+      "pose": "melee",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-alternative",
+      "h": "hair-messy",
+      "pose": "idle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-alternative",
+      "h": "hair-messy",
+      "pose": "rifle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-alternative",
+      "h": "hair-messy",
+      "pose": "pistol",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-alternative",
+      "h": "hair-messy",
+      "pose": "melee",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-alternative",
+      "h": "hair-bob",
+      "pose": "idle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-alternative",
+      "h": "hair-bob",
+      "pose": "rifle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-alternative",
+      "h": "hair-bob",
+      "pose": "pistol",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-alternative",
+      "h": "hair-bob",
+      "pose": "melee",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-alternative",
+      "h": "hair-double-buns",
+      "pose": "idle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-alternative",
+      "h": "hair-double-buns",
+      "pose": "rifle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-alternative",
+      "h": "hair-double-buns",
+      "pose": "pistol",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-alternative",
+      "h": "hair-double-buns",
+      "pose": "melee",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-alternative",
+      "h": "hair-classic-short",
+      "pose": "idle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-alternative",
+      "h": "hair-classic-short",
+      "pose": "rifle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-alternative",
+      "h": "hair-classic-short",
+      "pose": "pistol",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-alternative",
+      "h": "hair-classic-short",
+      "pose": "melee",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-alternative",
+      "h": "hair-textured-short",
+      "pose": "idle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-alternative",
+      "h": "hair-textured-short",
+      "pose": "rifle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-alternative",
+      "h": "hair-textured-short",
+      "pose": "pistol",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-alternative",
+      "h": "hair-textured-short",
+      "pose": "melee",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-alternative",
+      "h": "hair-shoulder-length",
+      "pose": "idle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-alternative",
+      "h": "hair-shoulder-length",
+      "pose": "rifle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-alternative",
+      "h": "hair-shoulder-length",
+      "pose": "pistol",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-alternative",
+      "h": "hair-shoulder-length",
+      "pose": "melee",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-male-goth-pierced",
+      "h": "hair-none",
+      "pose": "idle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-male-goth-pierced",
+      "h": "hair-none",
+      "pose": "rifle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-male-goth-pierced",
+      "h": "hair-none",
+      "pose": "pistol",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-male-goth-pierced",
+      "h": "hair-none",
+      "pose": "melee",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-male-goth-pierced",
+      "h": "hair-messy",
+      "pose": "idle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-male-goth-pierced",
+      "h": "hair-messy",
+      "pose": "rifle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-male-goth-pierced",
+      "h": "hair-messy",
+      "pose": "pistol",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-male-goth-pierced",
+      "h": "hair-messy",
+      "pose": "melee",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-male-goth-pierced",
+      "h": "hair-bob",
+      "pose": "idle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-male-goth-pierced",
+      "h": "hair-bob",
+      "pose": "rifle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-male-goth-pierced",
+      "h": "hair-bob",
+      "pose": "pistol",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-male-goth-pierced",
+      "h": "hair-bob",
+      "pose": "melee",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-male-goth-pierced",
+      "h": "hair-double-buns",
+      "pose": "idle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-male-goth-pierced",
+      "h": "hair-double-buns",
+      "pose": "rifle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-male-goth-pierced",
+      "h": "hair-double-buns",
+      "pose": "pistol",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-male-goth-pierced",
+      "h": "hair-double-buns",
+      "pose": "melee",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-male-goth-pierced",
+      "h": "hair-classic-short",
+      "pose": "idle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-male-goth-pierced",
+      "h": "hair-classic-short",
+      "pose": "rifle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-male-goth-pierced",
+      "h": "hair-classic-short",
+      "pose": "pistol",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-male-goth-pierced",
+      "h": "hair-classic-short",
+      "pose": "melee",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-male-goth-pierced",
+      "h": "hair-textured-short",
+      "pose": "idle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-male-goth-pierced",
+      "h": "hair-textured-short",
+      "pose": "rifle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-male-goth-pierced",
+      "h": "hair-textured-short",
+      "pose": "pistol",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-male-goth-pierced",
+      "h": "hair-textured-short",
+      "pose": "melee",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-male-goth-pierced",
+      "h": "hair-shoulder-length",
+      "pose": "idle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-male-goth-pierced",
+      "h": "hair-shoulder-length",
+      "pose": "rifle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-male-goth-pierced",
+      "h": "hair-shoulder-length",
+      "pose": "pistol",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-male-goth-pierced",
+      "h": "hair-shoulder-length",
+      "pose": "melee",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-male-freckled",
+      "h": "hair-none",
+      "pose": "idle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-male-freckled",
+      "h": "hair-none",
+      "pose": "rifle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-male-freckled",
+      "h": "hair-none",
+      "pose": "pistol",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-male-freckled",
+      "h": "hair-none",
+      "pose": "melee",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-male-freckled",
+      "h": "hair-messy",
+      "pose": "idle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-male-freckled",
+      "h": "hair-messy",
+      "pose": "rifle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-male-freckled",
+      "h": "hair-messy",
+      "pose": "pistol",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-male-freckled",
+      "h": "hair-messy",
+      "pose": "melee",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-male-freckled",
+      "h": "hair-bob",
+      "pose": "idle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-male-freckled",
+      "h": "hair-bob",
+      "pose": "rifle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-male-freckled",
+      "h": "hair-bob",
+      "pose": "pistol",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-male-freckled",
+      "h": "hair-bob",
+      "pose": "melee",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-male-freckled",
+      "h": "hair-double-buns",
+      "pose": "idle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-male-freckled",
+      "h": "hair-double-buns",
+      "pose": "rifle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-male-freckled",
+      "h": "hair-double-buns",
+      "pose": "pistol",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-male-freckled",
+      "h": "hair-double-buns",
+      "pose": "melee",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-male-freckled",
+      "h": "hair-classic-short",
+      "pose": "idle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-male-freckled",
+      "h": "hair-classic-short",
+      "pose": "rifle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-male-freckled",
+      "h": "hair-classic-short",
+      "pose": "pistol",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-male-freckled",
+      "h": "hair-classic-short",
+      "pose": "melee",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-male-freckled",
+      "h": "hair-textured-short",
+      "pose": "idle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-male-freckled",
+      "h": "hair-textured-short",
+      "pose": "rifle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-male-freckled",
+      "h": "hair-textured-short",
+      "pose": "pistol",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-male-freckled",
+      "h": "hair-textured-short",
+      "pose": "melee",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-male-freckled",
+      "h": "hair-shoulder-length",
+      "pose": "idle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-male-freckled",
+      "h": "hair-shoulder-length",
+      "pose": "rifle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-male-freckled",
+      "h": "hair-shoulder-length",
+      "pose": "pistol",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-male-freckled",
+      "h": "hair-shoulder-length",
+      "pose": "melee",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-male-blue-eyes",
+      "h": "hair-none",
+      "pose": "idle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-male-blue-eyes",
+      "h": "hair-none",
+      "pose": "rifle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-male-blue-eyes",
+      "h": "hair-none",
+      "pose": "pistol",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-male-blue-eyes",
+      "h": "hair-none",
+      "pose": "melee",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-male-blue-eyes",
+      "h": "hair-messy",
+      "pose": "idle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-male-blue-eyes",
+      "h": "hair-messy",
+      "pose": "rifle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-male-blue-eyes",
+      "h": "hair-messy",
+      "pose": "pistol",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-male-blue-eyes",
+      "h": "hair-messy",
+      "pose": "melee",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-male-blue-eyes",
+      "h": "hair-bob",
+      "pose": "idle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-male-blue-eyes",
+      "h": "hair-bob",
+      "pose": "rifle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-male-blue-eyes",
+      "h": "hair-bob",
+      "pose": "pistol",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-male-blue-eyes",
+      "h": "hair-bob",
+      "pose": "melee",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-male-blue-eyes",
+      "h": "hair-double-buns",
+      "pose": "idle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-male-blue-eyes",
+      "h": "hair-double-buns",
+      "pose": "rifle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-male-blue-eyes",
+      "h": "hair-double-buns",
+      "pose": "pistol",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-male-blue-eyes",
+      "h": "hair-double-buns",
+      "pose": "melee",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-male-blue-eyes",
+      "h": "hair-classic-short",
+      "pose": "idle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-male-blue-eyes",
+      "h": "hair-classic-short",
+      "pose": "rifle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-male-blue-eyes",
+      "h": "hair-classic-short",
+      "pose": "pistol",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-male-blue-eyes",
+      "h": "hair-classic-short",
+      "pose": "melee",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-male-blue-eyes",
+      "h": "hair-textured-short",
+      "pose": "idle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-male-blue-eyes",
+      "h": "hair-textured-short",
+      "pose": "rifle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-male-blue-eyes",
+      "h": "hair-textured-short",
+      "pose": "pistol",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-male-blue-eyes",
+      "h": "hair-textured-short",
+      "pose": "melee",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-male-blue-eyes",
+      "h": "hair-shoulder-length",
+      "pose": "idle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-male-blue-eyes",
+      "h": "hair-shoulder-length",
+      "pose": "rifle",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-male-blue-eyes",
+      "h": "hair-shoulder-length",
+      "pose": "pistol",
+      "raster_loaded": true
+    },
+    {
+      "f": "face-male-blue-eyes",
+      "h": "hair-shoulder-length",
+      "pose": "melee",
+      "raster_loaded": true
+    }
+  ],
+  "breathing": [
+    {
+      "pose": "idle",
+      "cycleMs": 4000,
+      "samples": [
+        {
+          "t": 0,
+          "primaryError": 0,
+          "supportError": 0
+        },
+        {
+          "t": 125,
+          "primaryError": 0,
+          "supportError": 0
+        },
+        {
+          "t": 250,
+          "primaryError": 0,
+          "supportError": 0
+        },
+        {
+          "t": 375,
+          "primaryError": 0,
+          "supportError": 0
+        },
+        {
+          "t": 500,
+          "primaryError": 0,
+          "supportError": 0
+        },
+        {
+          "t": 625,
+          "primaryError": 0,
+          "supportError": 0
+        },
+        {
+          "t": 750,
+          "primaryError": 0,
+          "supportError": 0
+        },
+        {
+          "t": 875,
+          "primaryError": 0,
+          "supportError": 0
+        },
+        {
+          "t": 1000,
+          "primaryError": 0,
+          "supportError": 0
+        },
+        {
+          "t": 1125,
+          "primaryError": 0,
+          "supportError": 0
+        },
+        {
+          "t": 1250,
+          "primaryError": 0,
+          "supportError": 0
+        },
+        {
+          "t": 1375,
+          "primaryError": 0,
+          "supportError": 0
+        },
+        {
+          "t": 1500,
+          "primaryError": 0,
+          "supportError": 0
+        },
+        {
+          "t": 1625,
+          "primaryError": 0,
+          "supportError": 0
+        },
+        {
+          "t": 1750,
+          "primaryError": 0,
+          "supportError": 0
+        },
+        {
+          "t": 1875,
+          "primaryError": 0,
+          "supportError": 0
+        },
+        {
+          "t": 2000,
+          "primaryError": 0,
+          "supportError": 0
+        },
+        {
+          "t": 2125,
+          "primaryError": 0,
+          "supportError": 0
+        },
+        {
+          "t": 2250,
+          "primaryError": 0,
+          "supportError": 0
+        },
+        {
+          "t": 2375,
+          "primaryError": 0,
+          "supportError": 0
+        },
+        {
+          "t": 2500,
+          "primaryError": 0,
+          "supportError": 0
+        },
+        {
+          "t": 2625,
+          "primaryError": 0,
+          "supportError": 0
+        },
+        {
+          "t": 2750,
+          "primaryError": 0,
+          "supportError": 0
+        },
+        {
+          "t": 2875,
+          "primaryError": 0,
+          "supportError": 0
+        },
+        {
+          "t": 3000,
+          "primaryError": 0,
+          "supportError": 0
+        },
+        {
+          "t": 3125,
+          "primaryError": 0,
+          "supportError": 0
+        },
+        {
+          "t": 3250,
+          "primaryError": 0,
+          "supportError": 0
+        },
+        {
+          "t": 3375,
+          "primaryError": 0,
+          "supportError": 0
+        },
+        {
+          "t": 3500,
+          "primaryError": 0,
+          "supportError": 0
+        },
+        {
+          "t": 3625,
+          "primaryError": 0,
+          "supportError": 0
+        },
+        {
+          "t": 3750,
+          "primaryError": 0,
+          "supportError": 0
+        },
+        {
+          "t": 3875,
+          "primaryError": 0,
+          "supportError": 0
+        }
+      ]
+    },
+    {
+      "pose": "rifle",
+      "cycleMs": 4000,
+      "samples": [
+        {
+          "t": 0,
+          "primaryError": 0,
+          "supportError": 1.1368683772161603e-13
+        },
+        {
+          "t": 125,
+          "primaryError": 0,
+          "supportError": 1.1368683772161603e-13
+        },
+        {
+          "t": 250,
+          "primaryError": 0,
+          "supportError": 1.1368683772161603e-13
+        },
+        {
+          "t": 375,
+          "primaryError": 0,
+          "supportError": 2.2737367544323206e-13
+        },
+        {
+          "t": 500,
+          "primaryError": 0,
+          "supportError": 1.6077746776921858e-13
+        },
+        {
+          "t": 625,
+          "primaryError": 0,
+          "supportError": 2.5421149729252077e-13
+        },
+        {
+          "t": 750,
+          "primaryError": 0,
+          "supportError": 2.2737367544323206e-13
+        },
+        {
+          "t": 875,
+          "primaryError": 0,
+          "supportError": 1.1368683772161603e-13
+        },
+        {
+          "t": 1000,
+          "primaryError": 0,
+          "supportError": 1.1368683772161603e-13
+        },
+        {
+          "t": 1125,
+          "primaryError": 0,
+          "supportError": 1.1368683772161603e-13
+        },
+        {
+          "t": 1250,
+          "primaryError": 0,
+          "supportError": 2.2737367544323206e-13
+        },
+        {
+          "t": 1375,
+          "primaryError": 0,
+          "supportError": 2.5421149729252077e-13
+        },
+        {
+          "t": 1500,
+          "primaryError": 0,
+          "supportError": 1.6077746776921858e-13
+        },
+        {
+          "t": 1625,
+          "primaryError": 0,
+          "supportError": 2.2737367544323206e-13
+        },
+        {
+          "t": 1750,
+          "primaryError": 0,
+          "supportError": 1.1368683772161603e-13
+        },
+        {
+          "t": 1875,
+          "primaryError": 0,
+          "supportError": 1.1368683772161603e-13
+        },
+        {
+          "t": 2000,
+          "primaryError": 0,
+          "supportError": 1.1368683772161603e-13
+        },
+        {
+          "t": 2125,
+          "primaryError": 0,
+          "supportError": 3.595093471822542e-13
+        },
+        {
+          "t": 2250,
+          "primaryError": 0,
+          "supportError": 2.5421149729252077e-13
+        },
+        {
+          "t": 2375,
+          "primaryError": 0,
+          "supportError": 2.5421149729252077e-13
+        },
+        {
+          "t": 2500,
+          "primaryError": 0,
+          "supportError": 2.2737367544323206e-13
+        },
+        {
+          "t": 2625,
+          "primaryError": 0,
+          "supportError": 1.1368683772161603e-13
+        },
+        {
+          "t": 2750,
+          "primaryError": 0,
+          "supportError": 2.5421149729252077e-13
+        },
+        {
+          "t": 2875,
+          "primaryError": 0,
+          "supportError": 1.6077746776921858e-13
+        },
+        {
+          "t": 3000,
+          "primaryError": 0,
+          "supportError": 1.1368683772161603e-13
+        },
+        {
+          "t": 3125,
+          "primaryError": 0,
+          "supportError": 1.6077746776921858e-13
+        },
+        {
+          "t": 3250,
+          "primaryError": 0,
+          "supportError": 2.5421149729252077e-13
+        },
+        {
+          "t": 3375,
+          "primaryError": 0,
+          "supportError": 1.1368683772161603e-13
+        },
+        {
+          "t": 3500,
+          "primaryError": 0,
+          "supportError": 2.2737367544323206e-13
+        },
+        {
+          "t": 3625,
+          "primaryError": 0,
+          "supportError": 2.5421149729252077e-13
+        },
+        {
+          "t": 3750,
+          "primaryError": 0,
+          "supportError": 2.5421149729252077e-13
+        },
+        {
+          "t": 3875,
+          "primaryError": 0,
+          "supportError": 3.595093471822542e-13
+        }
+      ]
+    },
+    {
+      "pose": "pistol",
+      "cycleMs": 4000,
+      "samples": [
+        {
+          "t": 0,
+          "primaryError": 0,
+          "supportError": 0
+        },
+        {
+          "t": 125,
+          "primaryError": 0,
+          "supportError": 0
+        },
+        {
+          "t": 250,
+          "primaryError": 0,
+          "supportError": 0
+        },
+        {
+          "t": 375,
+          "primaryError": 0,
+          "supportError": 0
+        },
+        {
+          "t": 500,
+          "primaryError": 5.684341886080802e-14,
+          "supportError": 0
+        },
+        {
+          "t": 625,
+          "primaryError": 0,
+          "supportError": 0
+        },
+        {
+          "t": 750,
+          "primaryError": 0,
+          "supportError": 0
+        },
+        {
+          "t": 875,
+          "primaryError": 5.684341886080802e-14,
+          "supportError": 0
+        },
+        {
+          "t": 1000,
+          "primaryError": 0,
+          "supportError": 0
+        },
+        {
+          "t": 1125,
+          "primaryError": 5.684341886080802e-14,
+          "supportError": 0
+        },
+        {
+          "t": 1250,
+          "primaryError": 0,
+          "supportError": 0
+        },
+        {
+          "t": 1375,
+          "primaryError": 0,
+          "supportError": 0
+        },
+        {
+          "t": 1500,
+          "primaryError": 5.684341886080802e-14,
+          "supportError": 0
+        },
+        {
+          "t": 1625,
+          "primaryError": 0,
+          "supportError": 0
+        },
+        {
+          "t": 1750,
+          "primaryError": 0,
+          "supportError": 0
+        },
+        {
+          "t": 1875,
+          "primaryError": 0,
+          "supportError": 0
+        },
+        {
+          "t": 2000,
+          "primaryError": 0,
+          "supportError": 0
+        },
+        {
+          "t": 2125,
+          "primaryError": 0,
+          "supportError": 0
+        },
+        {
+          "t": 2250,
+          "primaryError": 5.684341886080802e-14,
+          "supportError": 0
+        },
+        {
+          "t": 2375,
+          "primaryError": 5.684341886080802e-14,
+          "supportError": 0
+        },
+        {
+          "t": 2500,
+          "primaryError": 0,
+          "supportError": 0
+        },
+        {
+          "t": 2625,
+          "primaryError": 2.842170943040401e-14,
+          "supportError": 0
+        },
+        {
+          "t": 2750,
+          "primaryError": 0,
+          "supportError": 0
+        },
+        {
+          "t": 2875,
+          "primaryError": 0,
+          "supportError": 0
+        },
+        {
+          "t": 3000,
+          "primaryError": 0,
+          "supportError": 0
+        },
+        {
+          "t": 3125,
+          "primaryError": 0,
+          "supportError": 0
+        },
+        {
+          "t": 3250,
+          "primaryError": 0,
+          "supportError": 0
+        },
+        {
+          "t": 3375,
+          "primaryError": 2.842170943040401e-14,
+          "supportError": 0
+        },
+        {
+          "t": 3500,
+          "primaryError": 0,
+          "supportError": 0
+        },
+        {
+          "t": 3625,
+          "primaryError": 5.684341886080802e-14,
+          "supportError": 0
+        },
+        {
+          "t": 3750,
+          "primaryError": 5.684341886080802e-14,
+          "supportError": 0
+        },
+        {
+          "t": 3875,
+          "primaryError": 0,
+          "supportError": 0
+        }
+      ]
+    },
+    {
+      "pose": "melee",
+      "cycleMs": 4000,
+      "samples": [
+        {
+          "t": 0,
+          "primaryError": 0,
+          "supportError": 0
+        },
+        {
+          "t": 125,
+          "primaryError": 2.842170943040401e-14,
+          "supportError": 0
+        },
+        {
+          "t": 250,
+          "primaryError": 2.842170943040401e-14,
+          "supportError": 0
+        },
+        {
+          "t": 375,
+          "primaryError": 1.1368683772161603e-13,
+          "supportError": 0
+        },
+        {
+          "t": 500,
+          "primaryError": 1.1368683772161603e-13,
+          "supportError": 0
+        },
+        {
+          "t": 625,
+          "primaryError": 0,
+          "supportError": 0
+        },
+        {
+          "t": 750,
+          "primaryError": 2.842170943040401e-14,
+          "supportError": 0
+        },
+        {
+          "t": 875,
+          "primaryError": 0,
+          "supportError": 0
+        },
+        {
+          "t": 1000,
+          "primaryError": 0,
+          "supportError": 0
+        },
+        {
+          "t": 1125,
+          "primaryError": 0,
+          "supportError": 0
+        },
+        {
+          "t": 1250,
+          "primaryError": 2.842170943040401e-14,
+          "supportError": 0
+        },
+        {
+          "t": 1375,
+          "primaryError": 0,
+          "supportError": 0
+        },
+        {
+          "t": 1500,
+          "primaryError": 1.1368683772161603e-13,
+          "supportError": 0
+        },
+        {
+          "t": 1625,
+          "primaryError": 1.1368683772161603e-13,
+          "supportError": 0
+        },
+        {
+          "t": 1750,
+          "primaryError": 2.842170943040401e-14,
+          "supportError": 0
+        },
+        {
+          "t": 1875,
+          "primaryError": 2.842170943040401e-14,
+          "supportError": 0
+        },
+        {
+          "t": 2000,
+          "primaryError": 0,
+          "supportError": 0
+        },
+        {
+          "t": 2125,
+          "primaryError": 1.1718571004216928e-13,
+          "supportError": 0
+        },
+        {
+          "t": 2250,
+          "primaryError": 1.1368683772161603e-13,
+          "supportError": 0
+        },
+        {
+          "t": 2375,
+          "primaryError": 0,
+          "supportError": 0
+        },
+        {
+          "t": 2500,
+          "primaryError": 2.842170943040401e-14,
+          "supportError": 0
+        },
+        {
+          "t": 2625,
+          "primaryError": 0,
+          "supportError": 0
+        },
+        {
+          "t": 2750,
+          "primaryError": 0,
+          "supportError": 0
+        },
+        {
+          "t": 2875,
+          "primaryError": 1.1368683772161603e-13,
+          "supportError": 0
+        },
+        {
+          "t": 3000,
+          "primaryError": 0,
+          "supportError": 0
+        },
+        {
+          "t": 3125,
+          "primaryError": 1.1368683772161603e-13,
+          "supportError": 0
+        },
+        {
+          "t": 3250,
+          "primaryError": 0,
+          "supportError": 0
+        },
+        {
+          "t": 3375,
+          "primaryError": 0,
+          "supportError": 0
+        },
+        {
+          "t": 3500,
+          "primaryError": 2.842170943040401e-14,
+          "supportError": 0
+        },
+        {
+          "t": 3625,
+          "primaryError": 0,
+          "supportError": 0
+        },
+        {
+          "t": 3750,
+          "primaryError": 1.1368683772161603e-13,
+          "supportError": 0
+        },
+        {
+          "t": 3875,
+          "primaryError": 1.1718571004216928e-13,
+          "supportError": 0
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "file": "assets/male_idle.png",
+      "size": [
+        941,
+        1672
+      ],
+      "sha256": "767674ca366f76955bec8da419eb20f822299e3a4080cd446ef9a34cb1846d68"
+    },
+    {
+      "file": "assets/male_rifle_reference.png",
+      "size": [
+        941,
+        1672
+      ],
+      "sha256": "baa281c0442295ceb2632bb8eaeb0c85aef331d9a8a3dd30edee1407ab75db29"
+    },
+    {
+      "file": "assets/male_pistol_reference.png",
+      "size": [
+        941,
+        1672
+      ],
+      "sha256": "4301681286453d1319f709ef1fd0ae7f8317e58d59dfeec18a038f6399d0790d"
+    },
+    {
+      "file": "assets/male_melee_reference.png",
+      "size": [
+        941,
+        1672
+      ],
+      "sha256": "abdcb6a9789c668fb4897f2b2799bdb443c683178d5ef363e964fd1571b9dc01"
+    }
+  ]
+}
