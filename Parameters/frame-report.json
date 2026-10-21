@@ -1,0 +1,2325 @@
+{
+  "baseline": "e549901",
+  "real_entry": "avatar-lab/index.html",
+  "browser": "151.0.7922.34",
+  "states": {
+    "idle": {
+      "gender": "male",
+      "rig": "male_rig",
+      "pose": "idle",
+      "time": 0,
+      "paused": true,
+      "frame": {
+        "time": 0,
+        "breath": 0,
+        "angles": {
+          "right": {
+            "upper": 0,
+            "fore": 0,
+            "hand": 0
+          },
+          "left": {
+            "upper": -0.0,
+            "fore": -0.0,
+            "hand": -0.0
+          }
+        },
+        "arms": {
+          "right": {
+            "upper": [
+              1,
+              0,
+              -0.0,
+              1,
+              0,
+              0
+            ],
+            "fore": [
+              1,
+              0,
+              -0.0,
+              1,
+              0,
+              0
+            ],
+            "hand": [
+              1,
+              0,
+              -0.0,
+              1,
+              0,
+              0
+            ],
+            "elbow": [
+              250,
+              615
+            ],
+            "wrist": [
+              207,
+              847
+            ],
+            "grip": [
+              217,
+              920
+            ],
+            "shoulder": [
+              287,
+              382
+            ]
+          },
+          "left": {
+            "upper": [
+              1,
+              -0.0,
+              0,
+              1,
+              0,
+              0
+            ],
+            "fore": [
+              1,
+              -0.0,
+              0,
+              1,
+              0,
+              0
+            ],
+            "hand": [
+              1,
+              -0.0,
+              0,
+              1,
+              0,
+              0
+            ],
+            "elbow": [
+              697,
+              615
+            ],
+            "wrist": [
+              747,
+              847
+            ],
+            "grip": [
+              738,
+              920
+            ],
+            "shoulder": [
+              657,
+              381
+            ]
+          }
+        },
+        "transforms": {
+          "torso": [
+            1,
+            0,
+            0,
+            1,
+            0,
+            0
+          ],
+          "head": [
+            1,
+            0,
+            0,
+            1,
+            0,
+            0
+          ],
+          "lower": [
+            1,
+            0,
+            0,
+            1,
+            0,
+            0
+          ],
+          "rightUpper": [
+            1,
+            0,
+            -0.0,
+            1,
+            0,
+            0
+          ],
+          "rightFore": [
+            1,
+            0,
+            -0.0,
+            1,
+            0,
+            0
+          ],
+          "rightHand": [
+            1,
+            0,
+            -0.0,
+            1,
+            0,
+            0
+          ],
+          "leftUpper": [
+            1,
+            -0.0,
+            0,
+            1,
+            0,
+            0
+          ],
+          "leftFore": [
+            1,
+            -0.0,
+            0,
+            1,
+            0,
+            0
+          ],
+          "leftHand": [
+            1,
+            -0.0,
+            0,
+            1,
+            0,
+            0
+          ]
+        },
+        "weapon": null,
+        "transitionProgress": 1,
+        "feetFixed": true,
+        "projection": {
+          "right": [
+            1,
+            1
+          ],
+          "left": [
+            1,
+            1
+          ]
+        },
+        "sourceBoneLengths": {
+          "right": [
+            235.91947778850306,
+            235.95126615468715
+          ],
+          "left": [
+            237.3941869549463,
+            237.32677893571133
+          ]
+        },
+        "primaryError": 0,
+        "supportError": 0
+      },
+      "display": {
+        "dpr": 1,
+        "scale": 1,
+        "backingWidth": 941,
+        "backingHeight": 1672
+      },
+      "equipment": [],
+      "cacheEntries": 35
+    },
+    "rifle": {
+      "gender": "male",
+      "rig": "male_rig",
+      "pose": "rifle",
+      "time": 0,
+      "paused": true,
+      "frame": {
+        "time": 0,
+        "breath": 0,
+        "angles": {
+          "right": {
+            "upper": 0.1553354352313141,
+            "fore": -1.6310269650236708,
+            "hand": -2.1374739327471346,
+            "clamped": false
+          },
+          "left": {
+            "upper": -0.19905002217244294,
+            "fore": 1.3358495910474049,
+            "hand": 2.0943951023931953,
+            "clamped": false
+          }
+        },
+        "arms": {
+          "right": {
+            "upper": [
+              0.9840985606276221,
+              0.1666492678792038,
+              -0.1303968207149425,
+              0.9127840454529226,
+              54.3752986129805,
+              -14.51184524434791
+            ],
+            "fore": [
+              -0.02944744577215778,
+              -0.994384563427466,
+              0.8322970671834556,
+              -0.08070799162711295,
+              -284.2949408445894,
+              886.7442153865414
+            ],
+            "hand": [
+              -0.536831948783126,
+              -0.8436891955961693,
+              0.8436891955961693,
+              -0.536831948783126,
+              -188.9154814868873,
+              1241.887265956606
+            ],
+            "elbow": [
+              220.20589403019636,
+              588.5126596790004
+            ],
+            "wrist": [
+              414.5650537849609,
+              612.5469418488913
+            ],
+            "grip": [
+              450,
+              589.9999999999999
+            ],
+            "shoulder": [
+              287,
+              382
+            ]
+          },
+          "left": {
+            "upper": [
+              0.9778279827045065,
+              -0.20402594512995237,
+              0.18354092642174824,
+              0.9434715566895014,
+              -55.362077603546936,
+              155.5823828516787
+            ],
+            "fore": [
+              0.3353698265994,
+              0.9233271987273947,
+              -0.49656184482717114,
+              0.004505303402341232,
+              810.6944615197978,
+              -52.718512645288584
+            ],
+            "hand": [
+              -0.4999999999999998,
+              0.8660254037844387,
+              -0.8660254037844387,
+              -0.4999999999999998,
+              1747.651356426355,
+              417.4019201588823
+            ],
+            "elbow": [
+              739.0616960908693,
+              593.6113064601453
+            ],
+            "wrist": [
+              640.6278394209356,
+              640.8228967858582
+            ],
+            "grip": [
+              604.2547724619892,
+              619.8228967858582
+            ],
+            "shoulder": [
+              657,
+              381
+            ]
+          }
+        },
+        "transforms": {
+          "torso": [
+            1,
+            0,
+            0,
+            1,
+            0,
+            0
+          ],
+          "head": [
+            1,
+            0,
+            0,
+            1,
+            0,
+            0
+          ],
+          "lower": [
+            1,
+            0,
+            0,
+            1,
+            0,
+            0
+          ],
+          "rightUpper": [
+            0.9840985606276221,
+            0.1666492678792038,
+            -0.1303968207149425,
+            0.9127840454529226,
+            54.3752986129805,
+            -14.51184524434791
+          ],
+          "rightFore": [
+            -0.02944744577215778,
+            -0.994384563427466,
+            0.8322970671834556,
+            -0.08070799162711295,
+            -284.2949408445894,
+            886.7442153865414
+          ],
+          "rightHand": [
+            -0.536831948783126,
+            -0.8436891955961693,
+            0.8436891955961693,
+            -0.536831948783126,
+            -188.9154814868873,
+            1241.887265956606
+          ],
+          "leftUpper": [
+            0.9778279827045065,
+            -0.20402594512995237,
+            0.18354092642174824,
+            0.9434715566895014,
+            -55.362077603546936,
+            155.5823828516787
+          ],
+          "leftFore": [
+            0.3353698265994,
+            0.9233271987273947,
+            -0.49656184482717114,
+            0.004505303402341232,
+            810.6944615197978,
+            -52.718512645288584
+          ],
+          "leftHand": [
+            -0.4999999999999998,
+            0.8660254037844387,
+            -0.8660254037844387,
+            -0.4999999999999998,
+            1747.651356426355,
+            417.4019201588823
+          ]
+        },
+        "weapon": {
+          "id": "test-rifle",
+          "class": "rifle",
+          "matrix": [
+            1.1691342951089922,
+            0.6749999999999998,
+            -0.6749999999999998,
+            1.1691342951089922,
+            326.4014983559263,
+            331.5788845869208
+          ],
+          "primary": [
+            450,
+            589.9999999999999
+          ],
+          "support": [
+            604.2547724619892,
+            619.8228967858581
+          ],
+          "angle": 0.5235987755982987,
+          "order": 30
+        },
+        "transitionProgress": 1,
+        "feetFixed": true,
+        "projection": {
+          "right": [
+            0.92,
+            0.83
+          ],
+          "left": [
+            0.96,
+            0.46
+          ]
+        },
+        "sourceBoneLengths": {
+          "right": [
+            235.91947778850306,
+            235.95126615468715
+          ],
+          "left": [
+            237.3941869549463,
+            237.32677893571133
+          ]
+        },
+        "primaryError": 0,
+        "supportError": 1.1368683772161603e-13
+      },
+      "display": {
+        "dpr": 1,
+        "scale": 1,
+        "backingWidth": 941,
+        "backingHeight": 1672
+      },
+      "equipment": [],
+      "cacheEntries": 35
+    },
+    "pistol": {
+      "gender": "male",
+      "rig": "male_rig",
+      "pose": "pistol",
+      "time": 0,
+      "paused": true,
+      "frame": {
+        "time": 0,
+        "breath": 0,
+        "angles": {
+          "right": {
+            "upper": -6.2066571976915546,
+            "fore": -3.2169988451757554,
+            "hand": -4.160465700853788
+          },
+          "left": {
+            "upper": 0,
+            "fore": 0,
+            "hand": 0
+          }
+        },
+        "arms": {
+          "right": {
+            "upper": [
+              0.9905271457802747,
+              0.10391396906650346,
+              -0.035231278791752384,
+              0.8241459928313224,
+              16.177057659510567,
+              37.3529216163484
+            ],
+            "fore": [
+              -0.9957850232986807,
+              0.0626520112035146,
+              -0.08274405781684398,
+              -0.9287304957640853,
+              541.9754590296807,
+              1125.6874515682712
+            ],
+            "hand": [
+              -0.52432590417187,
+              0.8515176722854031,
+              -0.8515176722854031,
+              -0.52432590417187,
+              1095.5346728253003,
+              619.861570645714
+            ],
+            "elbow": [
+              242.14160764765148,
+              570.1811994742375
+            ],
+            "wrist": [
+              265.7637422359869,
+              352.02168797521847
+            ],
+            "grip": [
+              229.99999999999977,
+              330
+            ],
+            "shoulder": [
+              287,
+              382
+            ]
+          },
+          "left": {
+            "upper": [
+              1,
+              0,
+              -0.0,
+              1,
+              0,
+              0
+            ],
+            "fore": [
+              1,
+              0,
+              -0.0,
+              1,
+              0,
+              0
+            ],
+            "hand": [
+              1,
+              0,
+              -0.0,
+              1,
+              0,
+              0
+            ],
+            "elbow": [
+              697,
+              615
+            ],
+            "wrist": [
+              747,
+              847
+            ],
+            "grip": [
+              738,
+              920
+            ],
+            "shoulder": [
+              657,
+              381
+            ]
+          }
+        },
+        "transforms": {
+          "torso": [
+            1,
+            0,
+            0,
+            1,
+            0,
+            0
+          ],
+          "head": [
+            1,
+            0,
+            0,
+            1,
+            0,
+            0
+          ],
+          "lower": [
+            1,
+            0,
+            0,
+            1,
+            0,
+            0
+          ],
+          "rightUpper": [
+            0.9905271457802747,
+            0.10391396906650346,
+            -0.035231278791752384,
+            0.8241459928313224,
+            16.177057659510567,
+            37.3529216163484
+          ],
+          "rightFore": [
+            -0.9957850232986807,
+            0.0626520112035146,
+            -0.08274405781684398,
+            -0.9287304957640853,
+            541.9754590296807,
+            1125.6874515682712
+          ],
+          "rightHand": [
+            -0.52432590417187,
+            0.8515176722854031,
+            -0.8515176722854031,
+            -0.52432590417187,
+            1095.5346728253003,
+            619.861570645714
+          ],
+          "leftUpper": [
+            1,
+            0,
+            -0.0,
+            1,
+            0,
+            0
+          ],
+          "leftFore": [
+            1,
+            0,
+            -0.0,
+            1,
+            0,
+            0
+          ],
+          "leftHand": [
+            1,
+            0,
+            -0.0,
+            1,
+            0,
+            0
+          ]
+        },
+        "weapon": {
+          "id": "test-pistol",
+          "class": "pistol",
+          "matrix": [
+            0.30901699437494745,
+            -0.9510565162951535,
+            0.9510565162951535,
+            0.30901699437494745,
+            151.79709716388896,
+            338.6577126312792
+          ],
+          "primary": [
+            229.99999999999977,
+            329.99999999999994
+          ],
+          "support": null,
+          "angle": -1.2566370614359172,
+          "order": 30
+        },
+        "transitionProgress": 1,
+        "feetFixed": true,
+        "projection": {
+          "right": [
+            0.82,
+            0.93
+          ],
+          "left": [
+            1,
+            1
+          ]
+        },
+        "sourceBoneLengths": {
+          "right": [
+            235.91947778850306,
+            235.95126615468715
+          ],
+          "left": [
+            237.3941869549463,
+            237.32677893571133
+          ]
+        },
+        "primaryError": 5.684341886080802e-14,
+        "supportError": 0
+      },
+      "display": {
+        "dpr": 1,
+        "scale": 1,
+        "backingWidth": 941,
+        "backingHeight": 1672
+      },
+      "equipment": [],
+      "cacheEntries": 35
+    },
+    "melee": {
+      "gender": "male",
+      "rig": "male_rig",
+      "pose": "melee",
+      "time": 0,
+      "paused": true,
+      "frame": {
+        "time": 0,
+        "breath": 0,
+        "angles": {
+          "right": {
+            "upper": 0.025783576676275954,
+            "fore": -0.025780102809868977,
+            "hand": 0,
+            "clamped": false
+          },
+          "left": {
+            "upper": 0,
+            "fore": 0,
+            "hand": 0
+          }
+        },
+        "arms": {
+          "right": {
+            "upper": [
+              0.9996676220010439,
+              0.02578071998176499,
+              -0.02578071998176499,
+              0.9996676220010439,
+              9.943627518734642,
+              -7.272098239165302
+            ],
+            "fore": [
+              0.9996677115537891,
+              -0.025777247269839227,
+              0.025777247269839227,
+              0.9996677115537891,
+              -21.76454472918826,
+              5.617338498797494
+            ],
+            "hand": [
+              1,
+              0,
+              -0.0,
+              1,
+              -8.526512829121202e-14,
+              1.1368683772161603e-13
+            ],
+            "elbow": [
+              244.00539023021014,
+              613.9686692869179
+            ],
+            "wrist": [
+              206.99999999999991,
+              847.0000000000001
+            ],
+            "grip": [
+              206.99999999999991,
+              889.0000000000001
+            ],
+            "shoulder": [
+              287,
+              382
+            ]
+          },
+          "left": {
+            "upper": [
+              1,
+              0,
+              -0.0,
+              1,
+              0,
+              0
+            ],
+            "fore": [
+              1,
+              0,
+              -0.0,
+              1,
+              0,
+              0
+            ],
+            "hand": [
+              1,
+              0,
+              -0.0,
+              1,
+              0,
+              0
+            ],
+            "elbow": [
+              697,
+              615
+            ],
+            "wrist": [
+              747,
+              847
+            ],
+            "grip": [
+              738,
+              920
+            ],
+            "shoulder": [
+              657,
+              381
+            ]
+          }
+        },
+        "transforms": {
+          "torso": [
+            1,
+            0,
+            0,
+            1,
+            0,
+            0
+          ],
+          "head": [
+            1,
+            0,
+            0,
+            1,
+            0,
+            0
+          ],
+          "lower": [
+            1,
+            0,
+            0,
+            1,
+            0,
+            0
+          ],
+          "rightUpper": [
+            0.9996676220010439,
+            0.02578071998176499,
+            -0.02578071998176499,
+            0.9996676220010439,
+            9.943627518734642,
+            -7.272098239165302
+          ],
+          "rightFore": [
+            0.9996677115537891,
+            -0.025777247269839227,
+            0.025777247269839227,
+            0.9996677115537891,
+            -21.76454472918826,
+            5.617338498797494
+          ],
+          "rightHand": [
+            1,
+            0,
+            -0.0,
+            1,
+            -8.526512829121202e-14,
+            1.1368683772161603e-13
+          ],
+          "leftUpper": [
+            1,
+            0,
+            -0.0,
+            1,
+            0,
+            0
+          ],
+          "leftFore": [
+            1,
+            0,
+            -0.0,
+            1,
+            0,
+            0
+          ],
+          "leftHand": [
+            1,
+            0,
+            -0.0,
+            1,
+            0,
+            0
+          ]
+        },
+        "weapon": {
+          "id": "test-melee",
+          "class": "melee",
+          "matrix": [
+            -0.7727406610312548,
+            -0.2070552360820163,
+            0.2070552360820163,
+            -0.7727406610312548,
+            209.08036762941003,
+            1088.3304594649965
+          ],
+          "primary": [
+            206.9999999999999,
+            889.0000000000002
+          ],
+          "support": null,
+          "angle": 3.4033920413889422,
+          "order": 30
+        },
+        "transitionProgress": 1,
+        "feetFixed": true,
+        "projection": {
+          "right": [
+            1,
+            1
+          ],
+          "left": [
+            1,
+            1
+          ]
+        },
+        "sourceBoneLengths": {
+          "right": [
+            235.91947778850306,
+            235.95126615468715
+          ],
+          "left": [
+            237.3941869549463,
+            237.32677893571133
+          ]
+        },
+        "primaryError": 1.1718571004216928e-13,
+        "supportError": 0
+      },
+      "display": {
+        "dpr": 1,
+        "scale": 1,
+        "backingWidth": 941,
+        "backingHeight": 1672
+      },
+      "equipment": [],
+      "cacheEntries": 35
+    }
+  },
+  "switches": [
+    {
+      "from": "idle",
+      "to": "melee",
+      "pre_switch": [
+        "eee2d8f8e3e19ab437c21fed9af6137684c400ddc7b043c6f8ffed35c78780e9",
+        "eee2d8f8e3e19ab437c21fed9af6137684c400ddc7b043c6f8ffed35c78780e9"
+      ],
+      "frames": [
+        {
+          "time_ms": 0,
+          "before": "d4eb1539a348da579a0e19f3271abe5b2d011bc25f47ffe50fe1edc41b9aa9ff",
+          "after": "84db8a505eca250a125576b2fe2473f1480e35a0961e040dec7a493d79851f06"
+        },
+        {
+          "time_ms": 16,
+          "before": "16047918272206233229c4d1e3ac80dc857b62e6630d21de9c74ad9434fcf41d",
+          "after": "84db8a505eca250a125576b2fe2473f1480e35a0961e040dec7a493d79851f06"
+        },
+        {
+          "time_ms": 32,
+          "before": "c3584c631a7bf2830ec73e052730bccd6e0abad013a54a1f1204e43501cbd13c",
+          "after": "84db8a505eca250a125576b2fe2473f1480e35a0961e040dec7a493d79851f06"
+        },
+        {
+          "time_ms": 48,
+          "before": "1da390583199c2d7c776fce34cc6a5817d462f2d2cf578b3f7dfce1636138173",
+          "after": "84db8a505eca250a125576b2fe2473f1480e35a0961e040dec7a493d79851f06"
+        },
+        {
+          "time_ms": 64,
+          "before": "146d2452c25e9301563ec243c4f394533abf5e818d52e50cfd42c76de71199ef",
+          "after": "84db8a505eca250a125576b2fe2473f1480e35a0961e040dec7a493d79851f06"
+        },
+        {
+          "time_ms": 80,
+          "before": "07f42b8561d0e489ddde66d95740bfec0a1231e8354e0dc3a44252ce2375fd2b",
+          "after": "84db8a505eca250a125576b2fe2473f1480e35a0961e040dec7a493d79851f06"
+        },
+        {
+          "time_ms": 96,
+          "before": "fc4f95016e1dc2af3d8597557c6594248793e0551506ad36ef04dab3a51edd06",
+          "after": "84db8a505eca250a125576b2fe2473f1480e35a0961e040dec7a493d79851f06"
+        },
+        {
+          "time_ms": 112,
+          "before": "b9de6720655ddb52e86ed977b8122a75bdc48c4c27a8dc2981dcbea380a8c598",
+          "after": "84db8a505eca250a125576b2fe2473f1480e35a0961e040dec7a493d79851f06"
+        },
+        {
+          "time_ms": 128,
+          "before": "b5ec6fab04ffbc937e5b1bea6bbfc8f83cee79e08d39009db9c83a6d8f8220a9",
+          "after": "84db8a505eca250a125576b2fe2473f1480e35a0961e040dec7a493d79851f06"
+        },
+        {
+          "time_ms": 144,
+          "before": "578332928dabb513998753a1a0932ae449944eb033b212c76753147c51413689",
+          "after": "84db8a505eca250a125576b2fe2473f1480e35a0961e040dec7a493d79851f06"
+        },
+        {
+          "time_ms": 160,
+          "before": "eb788d533dbeda659a5dd864c0e88da91f6bcfceca39b5d63eb687a5fd05cd34",
+          "after": "84db8a505eca250a125576b2fe2473f1480e35a0961e040dec7a493d79851f06"
+        },
+        {
+          "time_ms": 176,
+          "before": "e9c630e1575651d74395ac8d1a99e3055e21d764a5695d261eff843ce6707773",
+          "after": "84db8a505eca250a125576b2fe2473f1480e35a0961e040dec7a493d79851f06"
+        },
+        {
+          "time_ms": 192,
+          "before": "433c0ade96e53e10fe57ff82fe72db322781862c8fbb4caf7cc5f5a630599ec9",
+          "after": "84db8a505eca250a125576b2fe2473f1480e35a0961e040dec7a493d79851f06"
+        },
+        {
+          "time_ms": 208,
+          "before": "256a0da11b67038ec5473fbc63cef6ae82f6ff5bb0d72b9dfc01255e895e77b0",
+          "after": "84db8a505eca250a125576b2fe2473f1480e35a0961e040dec7a493d79851f06"
+        },
+        {
+          "time_ms": 224,
+          "before": "2e945cc015c4ee0b736665a529c67a185f3ada82af807fccc669bd9e30cb30d8",
+          "after": "84db8a505eca250a125576b2fe2473f1480e35a0961e040dec7a493d79851f06"
+        },
+        {
+          "time_ms": 240,
+          "before": "648ea3e7ca2440446f6fcbd5e33ea2632858ad0c3440262d7a0ae462b8955d7b",
+          "after": "84db8a505eca250a125576b2fe2473f1480e35a0961e040dec7a493d79851f06"
+        },
+        {
+          "time_ms": 256,
+          "before": "163373c360eec6d35c8ea4142c9aef489434c65e0b09375e44011caefeacff12",
+          "after": "84db8a505eca250a125576b2fe2473f1480e35a0961e040dec7a493d79851f06"
+        },
+        {
+          "time_ms": 272,
+          "before": "6cc60b9be390f17354763f69a24bed78cd189ac42c4c40f73ace01256f636bb8",
+          "after": "84db8a505eca250a125576b2fe2473f1480e35a0961e040dec7a493d79851f06"
+        },
+        {
+          "time_ms": 288,
+          "before": "8ea636daa4e80898aee2bd32da2ebd817df1c0bddc416b9442a50d849cee55c2",
+          "after": "84db8a505eca250a125576b2fe2473f1480e35a0961e040dec7a493d79851f06"
+        },
+        {
+          "time_ms": 304,
+          "before": "c5f046588d1ec1f9757addc3739ec59ed77f7edd78fb6f5fef791cf8954ebd17",
+          "after": "84db8a505eca250a125576b2fe2473f1480e35a0961e040dec7a493d79851f06"
+        },
+        {
+          "time_ms": 320,
+          "before": "0147568939b6c64a48996f5f712e2298ee7d1c98407c72a840badbe87b0ebde9",
+          "after": "84db8a505eca250a125576b2fe2473f1480e35a0961e040dec7a493d79851f06"
+        }
+      ]
+    },
+    {
+      "from": "idle",
+      "to": "pistol",
+      "pre_switch": [
+        "eee2d8f8e3e19ab437c21fed9af6137684c400ddc7b043c6f8ffed35c78780e9",
+        "eee2d8f8e3e19ab437c21fed9af6137684c400ddc7b043c6f8ffed35c78780e9"
+      ],
+      "frames": [
+        {
+          "time_ms": 0,
+          "before": "d4eb1539a348da579a0e19f3271abe5b2d011bc25f47ffe50fe1edc41b9aa9ff",
+          "after": "c205664ec25c82306360def66b38a3693769b1ca957692e6be657d95a0da44ba"
+        },
+        {
+          "time_ms": 16,
+          "before": "aa8e762802cc304c764ed43f19125159895e0ecb2d4a1c0fd3298619395280b7",
+          "after": "c205664ec25c82306360def66b38a3693769b1ca957692e6be657d95a0da44ba"
+        },
+        {
+          "time_ms": 32,
+          "before": "28adb847ddb14ec872c1daa186683021855cc308bd8a5b80f83623b1a3e8cfe5",
+          "after": "c205664ec25c82306360def66b38a3693769b1ca957692e6be657d95a0da44ba"
+        },
+        {
+          "time_ms": 48,
+          "before": "44d2de673d71470dc9b3167b60ea64009effffa8e2e08cd53d055117a14180c4",
+          "after": "c205664ec25c82306360def66b38a3693769b1ca957692e6be657d95a0da44ba"
+        },
+        {
+          "time_ms": 64,
+          "before": "76f6b7b9323c3532db79f9262cdf5281ae05e0894ed32f88313a240cc9a8e46c",
+          "after": "c205664ec25c82306360def66b38a3693769b1ca957692e6be657d95a0da44ba"
+        },
+        {
+          "time_ms": 80,
+          "before": "7d19d8c6b48da7ccb19797b8bde9a82059f3a74b5f897b637eec0fee4407611e",
+          "after": "c205664ec25c82306360def66b38a3693769b1ca957692e6be657d95a0da44ba"
+        },
+        {
+          "time_ms": 96,
+          "before": "3fcff66656e972bd7eef6507b5947be7ae88ae5a5d37fc955f3f118076b8d058",
+          "after": "c205664ec25c82306360def66b38a3693769b1ca957692e6be657d95a0da44ba"
+        },
+        {
+          "time_ms": 112,
+          "before": "8635086112d0b80801f48d7f19946fa086e6521b2a2efcc89adedadd5cce7814",
+          "after": "c205664ec25c82306360def66b38a3693769b1ca957692e6be657d95a0da44ba"
+        },
+        {
+          "time_ms": 128,
+          "before": "d5a57578a4e5f8393d396dae8d44c5e3e5c2779fcdd9f5d4b7a536c7122d767a",
+          "after": "c205664ec25c82306360def66b38a3693769b1ca957692e6be657d95a0da44ba"
+        },
+        {
+          "time_ms": 144,
+          "before": "73caca9153e13c1b8095133e4c8494ada9d6233dba39a96b9b6e9f69e97e673a",
+          "after": "c205664ec25c82306360def66b38a3693769b1ca957692e6be657d95a0da44ba"
+        },
+        {
+          "time_ms": 160,
+          "before": "719f781ec768d0c59115303b5f6c2c2e143cce1ea572ce433f891f530596be69",
+          "after": "c205664ec25c82306360def66b38a3693769b1ca957692e6be657d95a0da44ba"
+        },
+        {
+          "time_ms": 176,
+          "before": "d16618104d0d625ea48d14509ea9e6078bb43491e30321b7893fe11f88744e4a",
+          "after": "c205664ec25c82306360def66b38a3693769b1ca957692e6be657d95a0da44ba"
+        },
+        {
+          "time_ms": 192,
+          "before": "b783d3bd4ac9fbb2afdd33fa7924bf0d52e9d01e4670fd6a20474c4b2545f329",
+          "after": "c205664ec25c82306360def66b38a3693769b1ca957692e6be657d95a0da44ba"
+        },
+        {
+          "time_ms": 208,
+          "before": "0c000bc672888fd124aa17cf5facd367214754bae99738144466b0fac12c6a3e",
+          "after": "c205664ec25c82306360def66b38a3693769b1ca957692e6be657d95a0da44ba"
+        },
+        {
+          "time_ms": 224,
+          "before": "cc739601a5eae8aaf57d4f89f0ea59791cd156cbe20a3d98b277719d840a007d",
+          "after": "c205664ec25c82306360def66b38a3693769b1ca957692e6be657d95a0da44ba"
+        },
+        {
+          "time_ms": 240,
+          "before": "29e00c3fd34121d880f79b3eeac3781911e860eeaa2bd9ed1ad32fd0c678e38a",
+          "after": "c205664ec25c82306360def66b38a3693769b1ca957692e6be657d95a0da44ba"
+        },
+        {
+          "time_ms": 256,
+          "before": "0f6d20ddc7a313ae000a155d97fb1790b65a24815c23b167093c28aa1efea8ac",
+          "after": "c205664ec25c82306360def66b38a3693769b1ca957692e6be657d95a0da44ba"
+        },
+        {
+          "time_ms": 272,
+          "before": "9ee39bc95f7f5714c68e2057539627f61b1d85f59988583f975e326a0e2d03de",
+          "after": "c205664ec25c82306360def66b38a3693769b1ca957692e6be657d95a0da44ba"
+        },
+        {
+          "time_ms": 288,
+          "before": "49b38ed263c0eb6e4dc7ae8947e5bcc36a389414106ef7ae1a66dbc2a422fe4c",
+          "after": "c205664ec25c82306360def66b38a3693769b1ca957692e6be657d95a0da44ba"
+        },
+        {
+          "time_ms": 304,
+          "before": "bf371d9420ef8677f246b6212f89feddb48d796768d14db6406312ad6de5a9b0",
+          "after": "c205664ec25c82306360def66b38a3693769b1ca957692e6be657d95a0da44ba"
+        },
+        {
+          "time_ms": 320,
+          "before": "832322715a714ac87fcf43685e7e753c339ff666fae47b1b280c44bb518dfc76",
+          "after": "c205664ec25c82306360def66b38a3693769b1ca957692e6be657d95a0da44ba"
+        }
+      ]
+    },
+    {
+      "from": "idle",
+      "to": "rifle",
+      "pre_switch": [
+        "eee2d8f8e3e19ab437c21fed9af6137684c400ddc7b043c6f8ffed35c78780e9",
+        "eee2d8f8e3e19ab437c21fed9af6137684c400ddc7b043c6f8ffed35c78780e9"
+      ],
+      "frames": [
+        {
+          "time_ms": 0,
+          "before": "d4eb1539a348da579a0e19f3271abe5b2d011bc25f47ffe50fe1edc41b9aa9ff",
+          "after": "5321c436eb63f231ec6bf5a98fec73b8a236eee2a4a9e62f7374fd595276a1e2"
+        },
+        {
+          "time_ms": 16,
+          "before": "174b695599f98dafa65998a4fdab566ce3c49a0b7667df1621e0ad98f832f4a8",
+          "after": "5321c436eb63f231ec6bf5a98fec73b8a236eee2a4a9e62f7374fd595276a1e2"
+        },
+        {
+          "time_ms": 32,
+          "before": "93248cead2f8a3653f0f8af1bff8cb64aefd1b92d3846961e7bb571d2e6edfb4",
+          "after": "5321c436eb63f231ec6bf5a98fec73b8a236eee2a4a9e62f7374fd595276a1e2"
+        },
+        {
+          "time_ms": 48,
+          "before": "ef7fda38231b6a0f5f39fadb7b1c0d38b0a1bcebb57462622f7153beccb5582f",
+          "after": "5321c436eb63f231ec6bf5a98fec73b8a236eee2a4a9e62f7374fd595276a1e2"
+        },
+        {
+          "time_ms": 64,
+          "before": "a4952e4d3db42594be16321cbe08dd19aeffd64c4ffe5ed59e6584e614436d3f",
+          "after": "5321c436eb63f231ec6bf5a98fec73b8a236eee2a4a9e62f7374fd595276a1e2"
+        },
+        {
+          "time_ms": 80,
+          "before": "df4aacdc1a0ae2713e104fe58cb9a2707f3bc14fc791e4139956460bea0bd6dd",
+          "after": "5321c436eb63f231ec6bf5a98fec73b8a236eee2a4a9e62f7374fd595276a1e2"
+        },
+        {
+          "time_ms": 96,
+          "before": "f47f9db33662982a7030c842f257d4ee102165bc0ed48777677d55a47fee886b",
+          "after": "5321c436eb63f231ec6bf5a98fec73b8a236eee2a4a9e62f7374fd595276a1e2"
+        },
+        {
+          "time_ms": 112,
+          "before": "c9a6c7fd6c8d6b64824032b945b6b4e767ddccbba9a9a8aa432f90cbd76c62c6",
+          "after": "5321c436eb63f231ec6bf5a98fec73b8a236eee2a4a9e62f7374fd595276a1e2"
+        },
+        {
+          "time_ms": 128,
+          "before": "7438d62a5f0c39b389d951bef7054367b56b3bf0c76eed2195bdbad34a008eec",
+          "after": "5321c436eb63f231ec6bf5a98fec73b8a236eee2a4a9e62f7374fd595276a1e2"
+        },
+        {
+          "time_ms": 144,
+          "before": "95f8b7e4194cb47b6bd445b917a4343b8b9f471e30b3c62a33af1bce638d314d",
+          "after": "5321c436eb63f231ec6bf5a98fec73b8a236eee2a4a9e62f7374fd595276a1e2"
+        },
+        {
+          "time_ms": 160,
+          "before": "42afa6572f257c122bec24fe5773a3a7bf9987e680364d3e12fbf4c676c91f74",
+          "after": "5321c436eb63f231ec6bf5a98fec73b8a236eee2a4a9e62f7374fd595276a1e2"
+        },
+        {
+          "time_ms": 176,
+          "before": "50d7d424f23da0562e99a8f843c5a5c217ec43b31801c82aa2937e98e80fae71",
+          "after": "5321c436eb63f231ec6bf5a98fec73b8a236eee2a4a9e62f7374fd595276a1e2"
+        },
+        {
+          "time_ms": 192,
+          "before": "81c0d100a640a5d620f8717c549bb26fd270a137337e04004a83ff19d0f800ff",
+          "after": "5321c436eb63f231ec6bf5a98fec73b8a236eee2a4a9e62f7374fd595276a1e2"
+        },
+        {
+          "time_ms": 208,
+          "before": "3a617e8d60eadc2c5c484523ba212b952d61edb9407a25b45205ac61953dfe73",
+          "after": "5321c436eb63f231ec6bf5a98fec73b8a236eee2a4a9e62f7374fd595276a1e2"
+        },
+        {
+          "time_ms": 224,
+          "before": "cb588816d62ee593361ded7e9adfb9ba8f3c8ec19c029ed1efcc69b26ca0cbc4",
+          "after": "5321c436eb63f231ec6bf5a98fec73b8a236eee2a4a9e62f7374fd595276a1e2"
+        },
+        {
+          "time_ms": 240,
+          "before": "d0d84fdd65d6e619b884febebe31ce295506b900d525b3124c5661efd623b971",
+          "after": "5321c436eb63f231ec6bf5a98fec73b8a236eee2a4a9e62f7374fd595276a1e2"
+        },
+        {
+          "time_ms": 256,
+          "before": "4fd623429dbc0d8f081f467761e06bd7fb623082a14788f6571039b7f5d29ed3",
+          "after": "5321c436eb63f231ec6bf5a98fec73b8a236eee2a4a9e62f7374fd595276a1e2"
+        },
+        {
+          "time_ms": 272,
+          "before": "839b913b37e121f36993b818fbb730506375bbd330dcde30c78c643cfce120eb",
+          "after": "5321c436eb63f231ec6bf5a98fec73b8a236eee2a4a9e62f7374fd595276a1e2"
+        },
+        {
+          "time_ms": 288,
+          "before": "5c26c37598be654b29ccf232b24d4669f951c8c9c0966c4c1b3e058adeaaf797",
+          "after": "5321c436eb63f231ec6bf5a98fec73b8a236eee2a4a9e62f7374fd595276a1e2"
+        },
+        {
+          "time_ms": 304,
+          "before": "dfc6031f610b00625b437db2789741fba3672adfd69e31e6c6fe2372f2a8a0b8",
+          "after": "5321c436eb63f231ec6bf5a98fec73b8a236eee2a4a9e62f7374fd595276a1e2"
+        },
+        {
+          "time_ms": 320,
+          "before": "2db227c4ab7f3ded89ca417e903f6b2b0c32a04ff55e46bccc3c4672d6cb43c8",
+          "after": "5321c436eb63f231ec6bf5a98fec73b8a236eee2a4a9e62f7374fd595276a1e2"
+        }
+      ]
+    },
+    {
+      "from": "melee",
+      "to": "idle",
+      "pre_switch": [
+        "0147568939b6c64a48996f5f712e2298ee7d1c98407c72a840badbe87b0ebde9",
+        "84db8a505eca250a125576b2fe2473f1480e35a0961e040dec7a493d79851f06"
+      ],
+      "frames": [
+        {
+          "time_ms": 0,
+          "before": "044b5504beed655af88dbf84acb53c237e7c4f098b3d22cf75b039b317d1ddec",
+          "after": "eee2d8f8e3e19ab437c21fed9af6137684c400ddc7b043c6f8ffed35c78780e9"
+        },
+        {
+          "time_ms": 16,
+          "before": "3ed7524b86f6889f1c7708bf1d023339e1c045327d938380f955bfd993c97fb4",
+          "after": "eee2d8f8e3e19ab437c21fed9af6137684c400ddc7b043c6f8ffed35c78780e9"
+        },
+        {
+          "time_ms": 32,
+          "before": "56842f700837d6a799bcc42af85c62ea023110203991a8aa32da8e9202620480",
+          "after": "eee2d8f8e3e19ab437c21fed9af6137684c400ddc7b043c6f8ffed35c78780e9"
+        },
+        {
+          "time_ms": 48,
+          "before": "37945ed669b6835ebb69b1d5b04f7adf8ab2864b70807c0e2fda63f27639c88d",
+          "after": "eee2d8f8e3e19ab437c21fed9af6137684c400ddc7b043c6f8ffed35c78780e9"
+        },
+        {
+          "time_ms": 64,
+          "before": "1d78924db5acbb4700998d11e74c5744c27c480b74fc3893bc1e7c550d11ff01",
+          "after": "eee2d8f8e3e19ab437c21fed9af6137684c400ddc7b043c6f8ffed35c78780e9"
+        },
+        {
+          "time_ms": 80,
+          "before": "c371dbf58ac3e753ba4be2b8795b39586fb5a1eb29331c19b77b0261ab94df04",
+          "after": "eee2d8f8e3e19ab437c21fed9af6137684c400ddc7b043c6f8ffed35c78780e9"
+        },
+        {
+          "time_ms": 96,
+          "before": "fceaa70c37010f50b6af8b288c26177b481b85212c2a68b2181f88bdf7d0163b",
+          "after": "eee2d8f8e3e19ab437c21fed9af6137684c400ddc7b043c6f8ffed35c78780e9"
+        },
+        {
+          "time_ms": 112,
+          "before": "f7902ed6e57b2a445ca6a45e28761fc4265f62e4755286e7eac779050969994f",
+          "after": "eee2d8f8e3e19ab437c21fed9af6137684c400ddc7b043c6f8ffed35c78780e9"
+        },
+        {
+          "time_ms": 128,
+          "before": "225df2c9baa359b7dc5cc1bf37d36fb96dac5391663a84d67c5f2cd59efce103",
+          "after": "eee2d8f8e3e19ab437c21fed9af6137684c400ddc7b043c6f8ffed35c78780e9"
+        },
+        {
+          "time_ms": 144,
+          "before": "300ad17c7ca768ae51207b1ee7c447702bb2f8500b12bd8e7a9063f873819ae1",
+          "after": "eee2d8f8e3e19ab437c21fed9af6137684c400ddc7b043c6f8ffed35c78780e9"
+        },
+        {
+          "time_ms": 160,
+          "before": "069f9031e462a4374dec7fbf1915ff1b6d1ecc333cfce13b3a71cb10baa0d211",
+          "after": "eee2d8f8e3e19ab437c21fed9af6137684c400ddc7b043c6f8ffed35c78780e9"
+        },
+        {
+          "time_ms": 176,
+          "before": "12a2e26583cc939afc240d8237d96bcf8fff4a466aeea0e573c65311d516c696",
+          "after": "eee2d8f8e3e19ab437c21fed9af6137684c400ddc7b043c6f8ffed35c78780e9"
+        },
+        {
+          "time_ms": 192,
+          "before": "222a6b085bcf7bac53b9b440f5a18b1ba53a6e4af83617ac3733e65386cdf0f3",
+          "after": "eee2d8f8e3e19ab437c21fed9af6137684c400ddc7b043c6f8ffed35c78780e9"
+        },
+        {
+          "time_ms": 208,
+          "before": "b2dbfdbf5023cb987819eeaac30161f95e1f6121f7cd1f9b15dad423d938b909",
+          "after": "eee2d8f8e3e19ab437c21fed9af6137684c400ddc7b043c6f8ffed35c78780e9"
+        },
+        {
+          "time_ms": 224,
+          "before": "56985ea5021e69ec01143ca363eba0ac86b25cae10607ce8024d9e5cb966e7f4",
+          "after": "eee2d8f8e3e19ab437c21fed9af6137684c400ddc7b043c6f8ffed35c78780e9"
+        },
+        {
+          "time_ms": 240,
+          "before": "dc07ef137eaf7ebc226316a0213ee83673cbfbd430314f6ff9634de453d058d1",
+          "after": "eee2d8f8e3e19ab437c21fed9af6137684c400ddc7b043c6f8ffed35c78780e9"
+        },
+        {
+          "time_ms": 256,
+          "before": "6963b44f75c097f2ed79abf46021505a0c53a1905521b732ba653d480e25dd16",
+          "after": "eee2d8f8e3e19ab437c21fed9af6137684c400ddc7b043c6f8ffed35c78780e9"
+        },
+        {
+          "time_ms": 272,
+          "before": "07338f54e254dee35ebb1c44fd27ef407d68f101b9e998ff83541fd535eec95c",
+          "after": "eee2d8f8e3e19ab437c21fed9af6137684c400ddc7b043c6f8ffed35c78780e9"
+        },
+        {
+          "time_ms": 288,
+          "before": "0f93c9af1f838269ea0af56ef10f8513b8b004209d8f695158068ca3a71672c3",
+          "after": "eee2d8f8e3e19ab437c21fed9af6137684c400ddc7b043c6f8ffed35c78780e9"
+        },
+        {
+          "time_ms": 304,
+          "before": "880ee83aabd436976a965a5c71d10dd12a98e2a4bd2c6d75c738020d2ec40423",
+          "after": "eee2d8f8e3e19ab437c21fed9af6137684c400ddc7b043c6f8ffed35c78780e9"
+        },
+        {
+          "time_ms": 320,
+          "before": "eee2d8f8e3e19ab437c21fed9af6137684c400ddc7b043c6f8ffed35c78780e9",
+          "after": "eee2d8f8e3e19ab437c21fed9af6137684c400ddc7b043c6f8ffed35c78780e9"
+        }
+      ]
+    },
+    {
+      "from": "melee",
+      "to": "pistol",
+      "pre_switch": [
+        "0147568939b6c64a48996f5f712e2298ee7d1c98407c72a840badbe87b0ebde9",
+        "84db8a505eca250a125576b2fe2473f1480e35a0961e040dec7a493d79851f06"
+      ],
+      "frames": [
+        {
+          "time_ms": 0,
+          "before": "044b5504beed655af88dbf84acb53c237e7c4f098b3d22cf75b039b317d1ddec",
+          "after": "c205664ec25c82306360def66b38a3693769b1ca957692e6be657d95a0da44ba"
+        },
+        {
+          "time_ms": 16,
+          "before": "7fe698dcb8a419c94c6f535016f771c1eb9d71bd48077166f42f744fe11bb428",
+          "after": "c205664ec25c82306360def66b38a3693769b1ca957692e6be657d95a0da44ba"
+        },
+        {
+          "time_ms": 32,
+          "before": "4d658c8d306ac6a84944b2b7caf11acd53e22b8f2ea5c7cf12bbcf4e85a9bdaa",
+          "after": "c205664ec25c82306360def66b38a3693769b1ca957692e6be657d95a0da44ba"
+        },
+        {
+          "time_ms": 48,
+          "before": "ad7ec4526aef379475224a4fb3003ff03d1980f969eaa9738eb88f8c0731fee4",
+          "after": "c205664ec25c82306360def66b38a3693769b1ca957692e6be657d95a0da44ba"
+        },
+        {
+          "time_ms": 64,
+          "before": "cd13ea28e77b31b3db28b7666ea80cbf2cf46fb8d966cf7059cb26029b6e5244",
+          "after": "c205664ec25c82306360def66b38a3693769b1ca957692e6be657d95a0da44ba"
+        },
+        {
+          "time_ms": 80,
+          "before": "169de9d57dcad89415ceed69575ab7701792b90a234e5c94bf9a5166536060ec",
+          "after": "c205664ec25c82306360def66b38a3693769b1ca957692e6be657d95a0da44ba"
+        },
+        {
+          "time_ms": 96,
+          "before": "a1bd72f32f10d4568ba4043fae6034b6e7e49dcd014c19282d293007829ab407",
+          "after": "c205664ec25c82306360def66b38a3693769b1ca957692e6be657d95a0da44ba"
+        },
+        {
+          "time_ms": 112,
+          "before": "14cf12b45006c2e6db135a30e524950c69f4a77502169524bd9a8665e9231201",
+          "after": "c205664ec25c82306360def66b38a3693769b1ca957692e6be657d95a0da44ba"
+        },
+        {
+          "time_ms": 128,
+          "before": "43ee0b9edf185dfccf78b2e4dce0500a3d0237e19ea189da12a42cb30f1aeeb3",
+          "after": "c205664ec25c82306360def66b38a3693769b1ca957692e6be657d95a0da44ba"
+        },
+        {
+          "time_ms": 144,
+          "before": "90d271d0a1969f573fa6215b2015c9fe6554c0421e1ee10435c02e69cb15d43f",
+          "after": "c205664ec25c82306360def66b38a3693769b1ca957692e6be657d95a0da44ba"
+        },
+        {
+          "time_ms": 160,
+          "before": "e47a0d297398a04b0f30dc2f886120f09ea7b5241e9a3daced1d167826ea064b",
+          "after": "c205664ec25c82306360def66b38a3693769b1ca957692e6be657d95a0da44ba"
+        },
+        {
+          "time_ms": 176,
+          "before": "26f9dd8698f848e5e28c43c98a0dd65c4e5b6d03e6bf410d35c60886ee84b857",
+          "after": "c205664ec25c82306360def66b38a3693769b1ca957692e6be657d95a0da44ba"
+        },
+        {
+          "time_ms": 192,
+          "before": "0ad8224dc46b26932d33fc02203e714c1423d8b0251dcd9b7102ce7e6814baea",
+          "after": "c205664ec25c82306360def66b38a3693769b1ca957692e6be657d95a0da44ba"
+        },
+        {
+          "time_ms": 208,
+          "before": "f7d37c153f427b91a0142b751b6fe1eccaaff2d35c662726f13685c7d755ba1f",
+          "after": "c205664ec25c82306360def66b38a3693769b1ca957692e6be657d95a0da44ba"
+        },
+        {
+          "time_ms": 224,
+          "before": "899d6a9908bc5cf8a3df5df1ac7565201376edcee4b3b798e25a38c308abdf54",
+          "after": "c205664ec25c82306360def66b38a3693769b1ca957692e6be657d95a0da44ba"
+        },
+        {
+          "time_ms": 240,
+          "before": "9af7c5afba89fa644e3ba87227c17807fa327a9786a6466bdd613ca3ef51dd4c",
+          "after": "c205664ec25c82306360def66b38a3693769b1ca957692e6be657d95a0da44ba"
+        },
+        {
+          "time_ms": 256,
+          "before": "1f76b5705bb04683fcbdc90c17ac3185050c824f65b91690e059e7b66280ec5a",
+          "after": "c205664ec25c82306360def66b38a3693769b1ca957692e6be657d95a0da44ba"
+        },
+        {
+          "time_ms": 272,
+          "before": "aaac3282698094db31cef34c62887af1e6dbc4e899af7231fc4b3416783c4c89",
+          "after": "c205664ec25c82306360def66b38a3693769b1ca957692e6be657d95a0da44ba"
+        },
+        {
+          "time_ms": 288,
+          "before": "38f122ce560f428f6ce7640cc53f5c5011312baf53d2e7ee9ce9c85ef0a78a4a",
+          "after": "c205664ec25c82306360def66b38a3693769b1ca957692e6be657d95a0da44ba"
+        },
+        {
+          "time_ms": 304,
+          "before": "6d9d31b07f6cdaea38ec1162c84b7859d12fc43edcc82b1eb3fbc7d8f32f1ffc",
+          "after": "c205664ec25c82306360def66b38a3693769b1ca957692e6be657d95a0da44ba"
+        },
+        {
+          "time_ms": 320,
+          "before": "aa80a7e472c08c97e1107d8379df3d88b8ff2fd3c1516551e9c318ed093202f4",
+          "after": "c205664ec25c82306360def66b38a3693769b1ca957692e6be657d95a0da44ba"
+        }
+      ]
+    },
+    {
+      "from": "melee",
+      "to": "rifle",
+      "pre_switch": [
+        "0147568939b6c64a48996f5f712e2298ee7d1c98407c72a840badbe87b0ebde9",
+        "84db8a505eca250a125576b2fe2473f1480e35a0961e040dec7a493d79851f06"
+      ],
+      "frames": [
+        {
+          "time_ms": 0,
+          "before": "044b5504beed655af88dbf84acb53c237e7c4f098b3d22cf75b039b317d1ddec",
+          "after": "5321c436eb63f231ec6bf5a98fec73b8a236eee2a4a9e62f7374fd595276a1e2"
+        },
+        {
+          "time_ms": 16,
+          "before": "098d4941e3c1adcf09ac8c092191907b52244b1680ca8e31bf1b6d2a1f330804",
+          "after": "5321c436eb63f231ec6bf5a98fec73b8a236eee2a4a9e62f7374fd595276a1e2"
+        },
+        {
+          "time_ms": 32,
+          "before": "42f493c7296e2aa68d865b54649ffa749942334a05941a24f7777dc77ba1069f",
+          "after": "5321c436eb63f231ec6bf5a98fec73b8a236eee2a4a9e62f7374fd595276a1e2"
+        },
+        {
+          "time_ms": 48,
+          "before": "8f2ab2637118e27e9ddc1cc82ac535610d4393c6107fdcddf45c3927c09dfb34",
+          "after": "5321c436eb63f231ec6bf5a98fec73b8a236eee2a4a9e62f7374fd595276a1e2"
+        },
+        {
+          "time_ms": 64,
+          "before": "083831f463b05c4e45096c09732ffbaff126fef16ec28a8d3fc4567e14e1bf52",
+          "after": "5321c436eb63f231ec6bf5a98fec73b8a236eee2a4a9e62f7374fd595276a1e2"
+        },
+        {
+          "time_ms": 80,
+          "before": "a5a26261c7c6b8e19978f7ad1ad9a54e1e824524a2b7c4976ae9f46c85364487",
+          "after": "5321c436eb63f231ec6bf5a98fec73b8a236eee2a4a9e62f7374fd595276a1e2"
+        },
+        {
+          "time_ms": 96,
+          "before": "201ce852c63cba858629758ff4cd1fd0e8310e0f3e56769af77bdb0ca4867005",
+          "after": "5321c436eb63f231ec6bf5a98fec73b8a236eee2a4a9e62f7374fd595276a1e2"
+        },
+        {
+          "time_ms": 112,
+          "before": "60bc552494e7c92b7f8007b732a9c0c6126e54f2a6b2af64d96ee1635ed9812d",
+          "after": "5321c436eb63f231ec6bf5a98fec73b8a236eee2a4a9e62f7374fd595276a1e2"
+        },
+        {
+          "time_ms": 128,
+          "before": "0fb5c5e60b79ec54f0019e029e2bbdfebb1f6ef631aefa3200d8b9ae1789a97d",
+          "after": "5321c436eb63f231ec6bf5a98fec73b8a236eee2a4a9e62f7374fd595276a1e2"
+        },
+        {
+          "time_ms": 144,
+          "before": "c88484b5cb0bcdb31bc539068426f8a035271017f33f8f4f1bf5a703f01d3d0f",
+          "after": "5321c436eb63f231ec6bf5a98fec73b8a236eee2a4a9e62f7374fd595276a1e2"
+        },
+        {
+          "time_ms": 160,
+          "before": "7b03e87a65d3e224b971c6e10a53be83c772204e35b9905fa9329cd08eae080b",
+          "after": "5321c436eb63f231ec6bf5a98fec73b8a236eee2a4a9e62f7374fd595276a1e2"
+        },
+        {
+          "time_ms": 176,
+          "before": "0123f8c6702632c2692b247f24c3668d8d160b069182abbe1c517799405e77f0",
+          "after": "5321c436eb63f231ec6bf5a98fec73b8a236eee2a4a9e62f7374fd595276a1e2"
+        },
+        {
+          "time_ms": 192,
+          "before": "842c0dee0b7294eb2eb739bc45d1899d2be40b39a415788c29c7e5796f2e3632",
+          "after": "5321c436eb63f231ec6bf5a98fec73b8a236eee2a4a9e62f7374fd595276a1e2"
+        },
+        {
+          "time_ms": 208,
+          "before": "104e4d4478668da9d0b5125079c9ec1e1f3808e7cf6fef25c7569a4b8b85e54a",
+          "after": "5321c436eb63f231ec6bf5a98fec73b8a236eee2a4a9e62f7374fd595276a1e2"
+        },
+        {
+          "time_ms": 224,
+          "before": "e4bb56634f4b53cc4b9fc33fc1b1b563dbfd3c73e208f16dfc7ed5f68b36a5f0",
+          "after": "5321c436eb63f231ec6bf5a98fec73b8a236eee2a4a9e62f7374fd595276a1e2"
+        },
+        {
+          "time_ms": 240,
+          "before": "60ea5e50d4812e0f2016322c706ad3446d5377d27e526b760d569cb3243ea25c",
+          "after": "5321c436eb63f231ec6bf5a98fec73b8a236eee2a4a9e62f7374fd595276a1e2"
+        },
+        {
+          "time_ms": 256,
+          "before": "bc585aa300f9f983da7057c35a867f1c39a851fd3ac1bc0e1cbbc238c8635df3",
+          "after": "5321c436eb63f231ec6bf5a98fec73b8a236eee2a4a9e62f7374fd595276a1e2"
+        },
+        {
+          "time_ms": 272,
+          "before": "121413c199f425cacac5287c9e69a2837827c842d3cd086965c88617b080aff0",
+          "after": "5321c436eb63f231ec6bf5a98fec73b8a236eee2a4a9e62f7374fd595276a1e2"
+        },
+        {
+          "time_ms": 288,
+          "before": "c0c699339e560ed26a0bb5f4378460114c2bf1322aa6f7757033760c1fc799ac",
+          "after": "5321c436eb63f231ec6bf5a98fec73b8a236eee2a4a9e62f7374fd595276a1e2"
+        },
+        {
+          "time_ms": 304,
+          "before": "52ad394949063f4beec0c1a2022e672a3ee63e1be042335935f4533fa22c6648",
+          "after": "5321c436eb63f231ec6bf5a98fec73b8a236eee2a4a9e62f7374fd595276a1e2"
+        },
+        {
+          "time_ms": 320,
+          "before": "2db227c4ab7f3ded89ca417e903f6b2b0c32a04ff55e46bccc3c4672d6cb43c8",
+          "after": "5321c436eb63f231ec6bf5a98fec73b8a236eee2a4a9e62f7374fd595276a1e2"
+        }
+      ]
+    },
+    {
+      "from": "pistol",
+      "to": "idle",
+      "pre_switch": [
+        "c0f3c8a3fea973de9da769d579d6cc47fee5f4fba4d16c2891240a1129f52ac7",
+        "c205664ec25c82306360def66b38a3693769b1ca957692e6be657d95a0da44ba"
+      ],
+      "frames": [
+        {
+          "time_ms": 0,
+          "before": "1f1d4a5cc1f1fd1e7156c35430b8f2c87853790068e8e28d5d9e98ef120946f4",
+          "after": "eee2d8f8e3e19ab437c21fed9af6137684c400ddc7b043c6f8ffed35c78780e9"
+        },
+        {
+          "time_ms": 16,
+          "before": "74eda0232d63f406f25d9ad551557c606ba6be721e347e4e0024d0074bdf90ed",
+          "after": "eee2d8f8e3e19ab437c21fed9af6137684c400ddc7b043c6f8ffed35c78780e9"
+        },
+        {
+          "time_ms": 32,
+          "before": "116c5a4276ce8bad29ef19f8b3fdb31c306a2186bcece7c4d8b518636dbd54b3",
+          "after": "eee2d8f8e3e19ab437c21fed9af6137684c400ddc7b043c6f8ffed35c78780e9"
+        },
+        {
+          "time_ms": 48,
+          "before": "84a52cf0126bc173bc45100a227f16d899eaec2e58db851d6b1520adab56ff46",
+          "after": "eee2d8f8e3e19ab437c21fed9af6137684c400ddc7b043c6f8ffed35c78780e9"
+        },
+        {
+          "time_ms": 64,
+          "before": "33518ad5f325358dd785fd4665aca23855a9ca89ace69b2590c905ca6ba9f6bc",
+          "after": "eee2d8f8e3e19ab437c21fed9af6137684c400ddc7b043c6f8ffed35c78780e9"
+        },
+        {
+          "time_ms": 80,
+          "before": "a70fd550917c914fbb1e05c9469e077de40067d754bc9099a7a84f52450fe470",
+          "after": "eee2d8f8e3e19ab437c21fed9af6137684c400ddc7b043c6f8ffed35c78780e9"
+        },
+        {
+          "time_ms": 96,
+          "before": "65cdb26ffdb6c602ab6bed3c3926e3f7ffa94572d397835061d3a4410bdc2e64",
+          "after": "eee2d8f8e3e19ab437c21fed9af6137684c400ddc7b043c6f8ffed35c78780e9"
+        },
+        {
+          "time_ms": 112,
+          "before": "e8d04acc1b82ddfbb83eb094102f789f0a5781622eae32aa0ad004e3007c9921",
+          "after": "eee2d8f8e3e19ab437c21fed9af6137684c400ddc7b043c6f8ffed35c78780e9"
+        },
+        {
+          "time_ms": 128,
+          "before": "36ccc691754dbd2b1cd74cde9667baa72ec4d5749e4118cb10c9f30cb5cdc7a1",
+          "after": "eee2d8f8e3e19ab437c21fed9af6137684c400ddc7b043c6f8ffed35c78780e9"
+        },
+        {
+          "time_ms": 144,
+          "before": "d16618104d0d625ea48d14509ea9e6078bb43491e30321b7893fe11f88744e4a",
+          "after": "eee2d8f8e3e19ab437c21fed9af6137684c400ddc7b043c6f8ffed35c78780e9"
+        },
+        {
+          "time_ms": 160,
+          "before": "10f152c0b832c71109d9463e053e3cc4dbe5551cdc8096908468b4aee04ff4a5",
+          "after": "eee2d8f8e3e19ab437c21fed9af6137684c400ddc7b043c6f8ffed35c78780e9"
+        },
+        {
+          "time_ms": 176,
+          "before": "73caca9153e13c1b8095133e4c8494ada9d6233dba39a96b9b6e9f69e97e673a",
+          "after": "eee2d8f8e3e19ab437c21fed9af6137684c400ddc7b043c6f8ffed35c78780e9"
+        },
+        {
+          "time_ms": 192,
+          "before": "427aeaa890ee113cb77feb5b77182f1347ef985a0db6415fa50ecf1943b67004",
+          "after": "eee2d8f8e3e19ab437c21fed9af6137684c400ddc7b043c6f8ffed35c78780e9"
+        },
+        {
+          "time_ms": 208,
+          "before": "8171a5e714aa03fddaa74b1f818d8f3eb0bb2866617209661d33cc4ff5efbfd7",
+          "after": "eee2d8f8e3e19ab437c21fed9af6137684c400ddc7b043c6f8ffed35c78780e9"
+        },
+        {
+          "time_ms": 224,
+          "before": "95e474eb5de7c839af29a54e6e28bc998869e2e16286d81d903b2382a8f89476",
+          "after": "eee2d8f8e3e19ab437c21fed9af6137684c400ddc7b043c6f8ffed35c78780e9"
+        },
+        {
+          "time_ms": 240,
+          "before": "8b934fb692f2e84e3b1ec721d3af11b23b2bef066c914b4eb2eb5aa1044cc538",
+          "after": "eee2d8f8e3e19ab437c21fed9af6137684c400ddc7b043c6f8ffed35c78780e9"
+        },
+        {
+          "time_ms": 256,
+          "before": "087c71489a5509caafcd8b5fcc92057d951ad07626c97a2ea8659b84bd5e5cee",
+          "after": "eee2d8f8e3e19ab437c21fed9af6137684c400ddc7b043c6f8ffed35c78780e9"
+        },
+        {
+          "time_ms": 272,
+          "before": "d5ea050cdfe4551615cb929c8b40ce5086f0b875787d15a4128ddde20e41d2d5",
+          "after": "eee2d8f8e3e19ab437c21fed9af6137684c400ddc7b043c6f8ffed35c78780e9"
+        },
+        {
+          "time_ms": 288,
+          "before": "b606275cae8fa86eb736685fa79bd020c908f67744735207247302139ea7e427",
+          "after": "eee2d8f8e3e19ab437c21fed9af6137684c400ddc7b043c6f8ffed35c78780e9"
+        },
+        {
+          "time_ms": 304,
+          "before": "a58c9a988e73b2addb86f9322bedebc1c28709fedc08394070cd0e5675446aeb",
+          "after": "eee2d8f8e3e19ab437c21fed9af6137684c400ddc7b043c6f8ffed35c78780e9"
+        },
+        {
+          "time_ms": 320,
+          "before": "eee2d8f8e3e19ab437c21fed9af6137684c400ddc7b043c6f8ffed35c78780e9",
+          "after": "eee2d8f8e3e19ab437c21fed9af6137684c400ddc7b043c6f8ffed35c78780e9"
+        }
+      ]
+    },
+    {
+      "from": "pistol",
+      "to": "melee",
+      "pre_switch": [
+        "c0f3c8a3fea973de9da769d579d6cc47fee5f4fba4d16c2891240a1129f52ac7",
+        "c205664ec25c82306360def66b38a3693769b1ca957692e6be657d95a0da44ba"
+      ],
+      "frames": [
+        {
+          "time_ms": 0,
+          "before": "1f1d4a5cc1f1fd1e7156c35430b8f2c87853790068e8e28d5d9e98ef120946f4",
+          "after": "84db8a505eca250a125576b2fe2473f1480e35a0961e040dec7a493d79851f06"
+        },
+        {
+          "time_ms": 16,
+          "before": "567d764911452d9926a260673662dce3ce384fa52af5ec849f388f574e4dfd5a",
+          "after": "84db8a505eca250a125576b2fe2473f1480e35a0961e040dec7a493d79851f06"
+        },
+        {
+          "time_ms": 32,
+          "before": "08b07fce3f5c10ecd847221f8a8ce8b65ce98457b6e54f8f7f22d6682e821451",
+          "after": "84db8a505eca250a125576b2fe2473f1480e35a0961e040dec7a493d79851f06"
+        },
+        {
+          "time_ms": 48,
+          "before": "d84e10b790b6f5641b254a6c2c1a16ca8f1e01671ee49b7a7b07615fcfbba5cb",
+          "after": "84db8a505eca250a125576b2fe2473f1480e35a0961e040dec7a493d79851f06"
+        },
+        {
+          "time_ms": 64,
+          "before": "2301c458f2d073e6bc994a85587a03f1e99a1719fda2baa6866d21d6c14248b8",
+          "after": "84db8a505eca250a125576b2fe2473f1480e35a0961e040dec7a493d79851f06"
+        },
+        {
+          "time_ms": 80,
+          "before": "51a085aa92b40f1dd444fe7adc085d7aee73a666ccb2fa4c8642633b7d6bb7f1",
+          "after": "84db8a505eca250a125576b2fe2473f1480e35a0961e040dec7a493d79851f06"
+        },
+        {
+          "time_ms": 96,
+          "before": "e9287ac089dce19cc1ed5e47ba8050f4c232e32cc97c4961ffbeb0aa4f8da335",
+          "after": "84db8a505eca250a125576b2fe2473f1480e35a0961e040dec7a493d79851f06"
+        },
+        {
+          "time_ms": 112,
+          "before": "f7f56a8546f2c5db06429a165b63123aafaea9e06ab5062d02b7987aa7243144",
+          "after": "84db8a505eca250a125576b2fe2473f1480e35a0961e040dec7a493d79851f06"
+        },
+        {
+          "time_ms": 128,
+          "before": "81030aeab2d8769c9580128b049cf763a444abf98c3fedeba70c0564e796eba7",
+          "after": "84db8a505eca250a125576b2fe2473f1480e35a0961e040dec7a493d79851f06"
+        },
+        {
+          "time_ms": 144,
+          "before": "693ade67cb572053de9b0075af7142190d13ad7bda889c4cdfd67c5d00607943",
+          "after": "84db8a505eca250a125576b2fe2473f1480e35a0961e040dec7a493d79851f06"
+        },
+        {
+          "time_ms": 160,
+          "before": "6c601ddd54e4d31c64c09c8208008a6549e89ea4b43675057c7b9b4add4cf2f6",
+          "after": "84db8a505eca250a125576b2fe2473f1480e35a0961e040dec7a493d79851f06"
+        },
+        {
+          "time_ms": 176,
+          "before": "52afe7de446aaf0f0760b79a28b93c1ac99157be698e9c107df06b4678f96852",
+          "after": "84db8a505eca250a125576b2fe2473f1480e35a0961e040dec7a493d79851f06"
+        },
+        {
+          "time_ms": 192,
+          "before": "3b8e8687c555b5b34d9bdbe2745078505b3c4be7865bec084594ee1bb326c0d6",
+          "after": "84db8a505eca250a125576b2fe2473f1480e35a0961e040dec7a493d79851f06"
+        },
+        {
+          "time_ms": 208,
+          "before": "7f6f876013a28afdb25ed2a61ea89076604aa04020b48fb5f9b3061cc3916304",
+          "after": "84db8a505eca250a125576b2fe2473f1480e35a0961e040dec7a493d79851f06"
+        },
+        {
+          "time_ms": 224,
+          "before": "85016d0fba052ba4638829ebab3080309d74876d9b83fa78b3b78f89ef14dd3f",
+          "after": "84db8a505eca250a125576b2fe2473f1480e35a0961e040dec7a493d79851f06"
+        },
+        {
+          "time_ms": 240,
+          "before": "72804710f570de027f016b59d7a29051b8a760a8be5a0268b418225e2e87c065",
+          "after": "84db8a505eca250a125576b2fe2473f1480e35a0961e040dec7a493d79851f06"
+        },
+        {
+          "time_ms": 256,
+          "before": "713e268642ceeded75aea02bb6b404445ecd2df2773012155b0bb0de9301ba5b",
+          "after": "84db8a505eca250a125576b2fe2473f1480e35a0961e040dec7a493d79851f06"
+        },
+        {
+          "time_ms": 272,
+          "before": "f86b477ed98a1a2f6340645ad2186f5da61b738ff4e81d307d2d6cad951f3af7",
+          "after": "84db8a505eca250a125576b2fe2473f1480e35a0961e040dec7a493d79851f06"
+        },
+        {
+          "time_ms": 288,
+          "before": "1b940b0e834df85945d66323bea51988c2771a62df0802bba34544c300192a11",
+          "after": "84db8a505eca250a125576b2fe2473f1480e35a0961e040dec7a493d79851f06"
+        },
+        {
+          "time_ms": 304,
+          "before": "e9918986f6071c58b7f9f79ed0bb609bb2458206ed29719f4be675204c921a78",
+          "after": "84db8a505eca250a125576b2fe2473f1480e35a0961e040dec7a493d79851f06"
+        },
+        {
+          "time_ms": 320,
+          "before": "f9c70df9f23eeedf6ffc9b34d148a2cfebcf4fe458a16a2315c455be2c21b397",
+          "after": "84db8a505eca250a125576b2fe2473f1480e35a0961e040dec7a493d79851f06"
+        }
+      ]
+    },
+    {
+      "from": "pistol",
+      "to": "rifle",
+      "pre_switch": [
+        "c0f3c8a3fea973de9da769d579d6cc47fee5f4fba4d16c2891240a1129f52ac7",
+        "c205664ec25c82306360def66b38a3693769b1ca957692e6be657d95a0da44ba"
+      ],
+      "frames": [
+        {
+          "time_ms": 0,
+          "before": "1f1d4a5cc1f1fd1e7156c35430b8f2c87853790068e8e28d5d9e98ef120946f4",
+          "after": "5321c436eb63f231ec6bf5a98fec73b8a236eee2a4a9e62f7374fd595276a1e2"
+        },
+        {
+          "time_ms": 16,
+          "before": "d93b355550c13ad4f03f6bf00ebd5fcc92babdd807530037f91e2fc7f2b7f603",
+          "after": "5321c436eb63f231ec6bf5a98fec73b8a236eee2a4a9e62f7374fd595276a1e2"
+        },
+        {
+          "time_ms": 32,
+          "before": "0e4c76beff6fab115fce2bef34f1e764124d1ac53a780abb834dfed1e9471242",
+          "after": "5321c436eb63f231ec6bf5a98fec73b8a236eee2a4a9e62f7374fd595276a1e2"
+        },
+        {
+          "time_ms": 48,
+          "before": "622ddb47735879b86d2b3916069e03a5dadcfa71e168e872baecd57ba6d1faef",
+          "after": "5321c436eb63f231ec6bf5a98fec73b8a236eee2a4a9e62f7374fd595276a1e2"
+        },
+        {
+          "time_ms": 64,
+          "before": "2c88a87844a5f7fc35939f4aca234b05f798898d06cc1ee824209d104fd28ba6",
+          "after": "5321c436eb63f231ec6bf5a98fec73b8a236eee2a4a9e62f7374fd595276a1e2"
+        },
+        {
+          "time_ms": 80,
+          "before": "8d8c175634c8ac18181dd63faffe4a83a94295f3d129e69eec15a06461575a7e",
+          "after": "5321c436eb63f231ec6bf5a98fec73b8a236eee2a4a9e62f7374fd595276a1e2"
+        },
+        {
+          "time_ms": 96,
+          "before": "ab3226dd990e8bfba22e7f1bacb189ea3b7e6249aad185b519a045b48ddc5923",
+          "after": "5321c436eb63f231ec6bf5a98fec73b8a236eee2a4a9e62f7374fd595276a1e2"
+        },
+        {
+          "time_ms": 112,
+          "before": "1be18d20f825c7c4f5bda0ed78d502cc3eb5cc53b98f98d01e5ee2f5a3441b08",
+          "after": "5321c436eb63f231ec6bf5a98fec73b8a236eee2a4a9e62f7374fd595276a1e2"
+        },
+        {
+          "time_ms": 128,
+          "before": "108e3453121b100c94f5b3f982c0294da2ae0d9c1de7779537e40c1b0eefe904",
+          "after": "5321c436eb63f231ec6bf5a98fec73b8a236eee2a4a9e62f7374fd595276a1e2"
+        },
+        {
+          "time_ms": 144,
+          "before": "0e3bf5832cdfd8c775b19673dec8b7ad9bb62b3204070cf9084fd5e020d30068",
+          "after": "5321c436eb63f231ec6bf5a98fec73b8a236eee2a4a9e62f7374fd595276a1e2"
+        },
+        {
+          "time_ms": 160,
+          "before": "c22af1002bb7f90fabba7a558e3ae380ef33499358aed58108bcf310375f55dd",
+          "after": "5321c436eb63f231ec6bf5a98fec73b8a236eee2a4a9e62f7374fd595276a1e2"
+        },
+        {
+          "time_ms": 176,
+          "before": "78bb5b19e321a7fedd0396b4b680d692ee766f285c882bdae7e9597c5af1728b",
+          "after": "5321c436eb63f231ec6bf5a98fec73b8a236eee2a4a9e62f7374fd595276a1e2"
+        },
+        {
+          "time_ms": 192,
+          "before": "cb7fbbc1c98169f193d8dd3ff50d8cb6e3796328efc871c3d909884f6f3e1b25",
+          "after": "5321c436eb63f231ec6bf5a98fec73b8a236eee2a4a9e62f7374fd595276a1e2"
+        },
+        {
+          "time_ms": 208,
+          "before": "fdd1a827b085c93b18a342c3dcaa76d5f73f983fb7e3b466c3e2d6ece93f323b",
+          "after": "5321c436eb63f231ec6bf5a98fec73b8a236eee2a4a9e62f7374fd595276a1e2"
+        },
+        {
+          "time_ms": 224,
+          "before": "3dcaff5807c9320968578825d6eb32c854b9c9bc6dee2b20129d3236148fe46d",
+          "after": "5321c436eb63f231ec6bf5a98fec73b8a236eee2a4a9e62f7374fd595276a1e2"
+        },
+        {
+          "time_ms": 240,
+          "before": "7a9074550c21e0ef92b4246b8861e2211c0f136779fbe7fff463f3fc76f5b505",
+          "after": "5321c436eb63f231ec6bf5a98fec73b8a236eee2a4a9e62f7374fd595276a1e2"
+        },
+        {
+          "time_ms": 256,
+          "before": "1f8be30914da0d638df784250cf1c079cbd00531152fdbe1eaca2f9855230835",
+          "after": "5321c436eb63f231ec6bf5a98fec73b8a236eee2a4a9e62f7374fd595276a1e2"
+        },
+        {
+          "time_ms": 272,
+          "before": "1c624d4f278ca5b2ac7dbed8600bc1023ecd123f24ad146f3e612286db9ffba7",
+          "after": "5321c436eb63f231ec6bf5a98fec73b8a236eee2a4a9e62f7374fd595276a1e2"
+        },
+        {
+          "time_ms": 288,
+          "before": "b6c8741c1a8b12922355d0e62f364856e69e1301216ced2fca4f220d33a7b416",
+          "after": "5321c436eb63f231ec6bf5a98fec73b8a236eee2a4a9e62f7374fd595276a1e2"
+        },
+        {
+          "time_ms": 304,
+          "before": "7e52835648eb6254a6e4dacad001fa2dd12b3297dd2eb203c60985abeac65157",
+          "after": "5321c436eb63f231ec6bf5a98fec73b8a236eee2a4a9e62f7374fd595276a1e2"
+        },
+        {
+          "time_ms": 320,
+          "before": "4ac42d6e8e750a1b69058b76947117297a4cad30b9481b9c893b1e435da4728d",
+          "after": "5321c436eb63f231ec6bf5a98fec73b8a236eee2a4a9e62f7374fd595276a1e2"
+        }
+      ]
+    },
+    {
+      "from": "rifle",
+      "to": "idle",
+      "pre_switch": [
+        "2db227c4ab7f3ded89ca417e903f6b2b0c32a04ff55e46bccc3c4672d6cb43c8",
+        "5321c436eb63f231ec6bf5a98fec73b8a236eee2a4a9e62f7374fd595276a1e2"
+      ],
+      "frames": [
+        {
+          "time_ms": 0,
+          "before": "bbf5d3729ac3c4e42d186cf18ab3f9921aefbc8a40352965efbee1b9e2f30f0e",
+          "after": "eee2d8f8e3e19ab437c21fed9af6137684c400ddc7b043c6f8ffed35c78780e9"
+        },
+        {
+          "time_ms": 16,
+          "before": "2e89218fcc17beb7f7d4752c5b2c2007f46f3a0862bad2fa74fcda636f0af5d5",
+          "after": "eee2d8f8e3e19ab437c21fed9af6137684c400ddc7b043c6f8ffed35c78780e9"
+        },
+        {
+          "time_ms": 32,
+          "before": "2d6888dd2fb91127fdc760c497ef945b5ce9a5c0861d7c505ccf6e5736715ceb",
+          "after": "eee2d8f8e3e19ab437c21fed9af6137684c400ddc7b043c6f8ffed35c78780e9"
+        },
+        {
+          "time_ms": 48,
+          "before": "232acdf3cb8ddd7f4c56cfa8e8d0e84544478d68d9d4a1a4d18e93431085be14",
+          "after": "eee2d8f8e3e19ab437c21fed9af6137684c400ddc7b043c6f8ffed35c78780e9"
+        },
+        {
+          "time_ms": 64,
+          "before": "ab894fcdf1f3665e8921cd030835ea0aa1d95034343d2caa45a7637648e47c4e",
+          "after": "eee2d8f8e3e19ab437c21fed9af6137684c400ddc7b043c6f8ffed35c78780e9"
+        },
+        {
+          "time_ms": 80,
+          "before": "9187690c1d835845594cc06ae11b796c0e36a42c12524efb4bd4c2dd97761f3d",
+          "after": "eee2d8f8e3e19ab437c21fed9af6137684c400ddc7b043c6f8ffed35c78780e9"
+        },
+        {
+          "time_ms": 96,
+          "before": "ee888522ce857cdcd0e257e2ba1a5344ee2c80cd346c967bb5e58fb618114ce4",
+          "after": "eee2d8f8e3e19ab437c21fed9af6137684c400ddc7b043c6f8ffed35c78780e9"
+        },
+        {
+          "time_ms": 112,
+          "before": "ec490ffcd7ae785febaea76b8fe0b3a82740499ac3331538d6cd609ce8193bc9",
+          "after": "eee2d8f8e3e19ab437c21fed9af6137684c400ddc7b043c6f8ffed35c78780e9"
+        },
+        {
+          "time_ms": 128,
+          "before": "2720c331ba86bc65c9070f20ce5c98eac32670aea12b8946273de704aa321e5b",
+          "after": "eee2d8f8e3e19ab437c21fed9af6137684c400ddc7b043c6f8ffed35c78780e9"
+        },
+        {
+          "time_ms": 144,
+          "before": "daf94212ecb8db555f1efcc5cc792489093047e7b66fcec8f358f472ba047e03",
+          "after": "eee2d8f8e3e19ab437c21fed9af6137684c400ddc7b043c6f8ffed35c78780e9"
+        },
+        {
+          "time_ms": 160,
+          "before": "9241213a0b8d1341bfe16b1f593f72227535f7f4ff5fc3b0a5d7a03169a6340a",
+          "after": "eee2d8f8e3e19ab437c21fed9af6137684c400ddc7b043c6f8ffed35c78780e9"
+        },
+        {
+          "time_ms": 176,
+          "before": "0c0b2a3745ea92ced317eb5db22313ccdb1253355bbd22ad4b6f88180d5dee76",
+          "after": "eee2d8f8e3e19ab437c21fed9af6137684c400ddc7b043c6f8ffed35c78780e9"
+        },
+        {
+          "time_ms": 192,
+          "before": "0a5526bc3b7ef0ac4b47b8992d21229693f8b392293d09f6d72e7bb9bfab1c87",
+          "after": "eee2d8f8e3e19ab437c21fed9af6137684c400ddc7b043c6f8ffed35c78780e9"
+        },
+        {
+          "time_ms": 208,
+          "before": "75a52fa0ba8fc640fe0d8b3fd862de929519f8fc1a9a3950972839af4d881a3e",
+          "after": "eee2d8f8e3e19ab437c21fed9af6137684c400ddc7b043c6f8ffed35c78780e9"
+        },
+        {
+          "time_ms": 224,
+          "before": "4c393395ce51aef825a7b047c8777f8ac3ae48b5eb90afbe0f7b5482e444bff7",
+          "after": "eee2d8f8e3e19ab437c21fed9af6137684c400ddc7b043c6f8ffed35c78780e9"
+        },
+        {
+          "time_ms": 240,
+          "before": "76c79bb0138c88c5802effa740e3c9a824aa20299adcfa3dfcf89622e339fbc8",
+          "after": "eee2d8f8e3e19ab437c21fed9af6137684c400ddc7b043c6f8ffed35c78780e9"
+        },
+        {
+          "time_ms": 256,
+          "before": "5ee19fae8a072fe6513acf474d637b07ca86c672e0261f904071ce87336c3ee6",
+          "after": "eee2d8f8e3e19ab437c21fed9af6137684c400ddc7b043c6f8ffed35c78780e9"
+        },
+        {
+          "time_ms": 272,
+          "before": "a317417400b50dc1d2619205a3d835415912dc2ebfecbd52ccbaae750c5861fd",
+          "after": "eee2d8f8e3e19ab437c21fed9af6137684c400ddc7b043c6f8ffed35c78780e9"
+        },
+        {
+          "time_ms": 288,
+          "before": "02ffc5460db3101067437da3e4a54c9cd5db2a5f7289e9b9827adabe56fff207",
+          "after": "eee2d8f8e3e19ab437c21fed9af6137684c400ddc7b043c6f8ffed35c78780e9"
+        },
+        {
+          "time_ms": 304,
+          "before": "c614c47fd3b709652c1ae81779b3253a8d0cdfd1e0cc676c3d34891c960a30ef",
+          "after": "eee2d8f8e3e19ab437c21fed9af6137684c400ddc7b043c6f8ffed35c78780e9"
+        },
+        {
+          "time_ms": 320,
+          "before": "eee2d8f8e3e19ab437c21fed9af6137684c400ddc7b043c6f8ffed35c78780e9",
+          "after": "eee2d8f8e3e19ab437c21fed9af6137684c400ddc7b043c6f8ffed35c78780e9"
+        }
+      ]
+    },
+    {
+      "from": "rifle",
+      "to": "melee",
+      "pre_switch": [
+        "2db227c4ab7f3ded89ca417e903f6b2b0c32a04ff55e46bccc3c4672d6cb43c8",
+        "5321c436eb63f231ec6bf5a98fec73b8a236eee2a4a9e62f7374fd595276a1e2"
+      ],
+      "frames": [
+        {
+          "time_ms": 0,
+          "before": "bbf5d3729ac3c4e42d186cf18ab3f9921aefbc8a40352965efbee1b9e2f30f0e",
+          "after": "84db8a505eca250a125576b2fe2473f1480e35a0961e040dec7a493d79851f06"
+        },
+        {
+          "time_ms": 16,
+          "before": "753e01a1ad3d2c71af1cbae1e34422e9d1240529bff7d2c32c1a596a241eae59",
+          "after": "84db8a505eca250a125576b2fe2473f1480e35a0961e040dec7a493d79851f06"
+        },
+        {
+          "time_ms": 32,
+          "before": "f66c938ee62e4d9bf73ff9da8d59cab9efbb8876b304c5c9acb240e32f6aa138",
+          "after": "84db8a505eca250a125576b2fe2473f1480e35a0961e040dec7a493d79851f06"
+        },
+        {
+          "time_ms": 48,
+          "before": "358f46cd08c1cc374fc132f33332af8a722368d06261fd17da12097d3ae39600",
+          "after": "84db8a505eca250a125576b2fe2473f1480e35a0961e040dec7a493d79851f06"
+        },
+        {
+          "time_ms": 64,
+          "before": "d8d1e2f8b2b6d21156a7603c4e15104389f0e47802332417c24d09164b575348",
+          "after": "84db8a505eca250a125576b2fe2473f1480e35a0961e040dec7a493d79851f06"
+        },
+        {
+          "time_ms": 80,
+          "before": "312b195eb80d8a6594aa866f491fb372b2922309f8003e7994c3fe59163fc491",
+          "after": "84db8a505eca250a125576b2fe2473f1480e35a0961e040dec7a493d79851f06"
+        },
+        {
+          "time_ms": 96,
+          "before": "b80365f8da1f967945f51e1c3d08d952896a0806e9e49253e861e60c0f0cae65",
+          "after": "84db8a505eca250a125576b2fe2473f1480e35a0961e040dec7a493d79851f06"
+        },
+        {
+          "time_ms": 112,
+          "before": "3be55b2110334e2a2a139b7fe8d3ff4494c992e6ce2851fb0454bf309684c7fc",
+          "after": "84db8a505eca250a125576b2fe2473f1480e35a0961e040dec7a493d79851f06"
+        },
+        {
+          "time_ms": 128,
+          "before": "94b98e89c961ee66885dda055c6443a2bbffe5926199591b6b96006aeff49f0b",
+          "after": "84db8a505eca250a125576b2fe2473f1480e35a0961e040dec7a493d79851f06"
+        },
+        {
+          "time_ms": 144,
+          "before": "6d6ab2e03c8bfa47a947f5b91a4142d6d62c257663ec548237d7be9007d49494",
+          "after": "84db8a505eca250a125576b2fe2473f1480e35a0961e040dec7a493d79851f06"
+        },
+        {
+          "time_ms": 160,
+          "before": "620f4ab56908503b234daec4bc0aae144c3bb947b29c6bcdc7a9a97616682f25",
+          "after": "84db8a505eca250a125576b2fe2473f1480e35a0961e040dec7a493d79851f06"
+        },
+        {
+          "time_ms": 176,
+          "before": "3b46965a761db355f6648372e1a4daf263f875cffa077468b5fc9aa0fc33b826",
+          "after": "84db8a505eca250a125576b2fe2473f1480e35a0961e040dec7a493d79851f06"
+        },
+        {
+          "time_ms": 192,
+          "before": "c27e633f1300e4b2c643e7e01cae5214408c293bcee0bf1cb24093d19ced8339",
+          "after": "84db8a505eca250a125576b2fe2473f1480e35a0961e040dec7a493d79851f06"
+        },
+        {
+          "time_ms": 208,
+          "before": "6099e7edd88d9e00cf7e1b2822e9c01157a843a164c379c07904fb8ec82a2600",
+          "after": "84db8a505eca250a125576b2fe2473f1480e35a0961e040dec7a493d79851f06"
+        },
+        {
+          "time_ms": 224,
+          "before": "8fc101caa6990ce4e48f42f09b59c821e42ac30847df7a200092de589ab5aca5",
+          "after": "84db8a505eca250a125576b2fe2473f1480e35a0961e040dec7a493d79851f06"
+        },
+        {
+          "time_ms": 240,
+          "before": "eece5292796a9a0a4cc8d486279831524deee445146e945a77f54fa23a8d2e26",
+          "after": "84db8a505eca250a125576b2fe2473f1480e35a0961e040dec7a493d79851f06"
+        },
+        {
+          "time_ms": 256,
+          "before": "f00fc073936011872109e197f66f3aeed833821879be6cae5627a4b03942a95a",
+          "after": "84db8a505eca250a125576b2fe2473f1480e35a0961e040dec7a493d79851f06"
+        },
+        {
+          "time_ms": 272,
+          "before": "57d1c3878ce1ee69e4deaae9afdbcf398ce996cac60276bbf0106f71c6233fa9",
+          "after": "84db8a505eca250a125576b2fe2473f1480e35a0961e040dec7a493d79851f06"
+        },
+        {
+          "time_ms": 288,
+          "before": "7932b406363ad830838eed22ba94750cb6ca6d0bb6ff0b0d2e049ab88aef4781",
+          "after": "84db8a505eca250a125576b2fe2473f1480e35a0961e040dec7a493d79851f06"
+        },
+        {
+          "time_ms": 304,
+          "before": "fb8a26e319581ade3361a69b6e28e49d6ecc474216c6ef7986c3925b62e6735f",
+          "after": "84db8a505eca250a125576b2fe2473f1480e35a0961e040dec7a493d79851f06"
+        },
+        {
+          "time_ms": 320,
+          "before": "0147568939b6c64a48996f5f712e2298ee7d1c98407c72a840badbe87b0ebde9",
+          "after": "84db8a505eca250a125576b2fe2473f1480e35a0961e040dec7a493d79851f06"
+        }
+      ]
+    },
+    {
+      "from": "rifle",
+      "to": "pistol",
+      "pre_switch": [
+        "2db227c4ab7f3ded89ca417e903f6b2b0c32a04ff55e46bccc3c4672d6cb43c8",
+        "5321c436eb63f231ec6bf5a98fec73b8a236eee2a4a9e62f7374fd595276a1e2"
+      ],
+      "frames": [
+        {
+          "time_ms": 0,
+          "before": "bbf5d3729ac3c4e42d186cf18ab3f9921aefbc8a40352965efbee1b9e2f30f0e",
+          "after": "c205664ec25c82306360def66b38a3693769b1ca957692e6be657d95a0da44ba"
+        },
+        {
+          "time_ms": 16,
+          "before": "1d9e261ce362fe4fd47b5401b59f1777b4c6085c0bb05205c455d832208c702a",
+          "after": "c205664ec25c82306360def66b38a3693769b1ca957692e6be657d95a0da44ba"
+        },
+        {
+          "time_ms": 32,
+          "before": "93569d684a1708bfae8c79462598af74c1862193e6d2d8406224115e8f2a6b74",
+          "after": "c205664ec25c82306360def66b38a3693769b1ca957692e6be657d95a0da44ba"
+        },
+        {
+          "time_ms": 48,
+          "before": "64f30e42e940c1b697772b2179a184b9335942e27ff52e43be9e56fd9151e085",
+          "after": "c205664ec25c82306360def66b38a3693769b1ca957692e6be657d95a0da44ba"
+        },
+        {
+          "time_ms": 64,
+          "before": "cdaf1ecd2da4d78aebe9af7ee914d1bda232856aca511bc7f7fb2c5c59156828",
+          "after": "c205664ec25c82306360def66b38a3693769b1ca957692e6be657d95a0da44ba"
+        },
+        {
+          "time_ms": 80,
+          "before": "c52d9400d718ccfa58130d39f4056d861bb27b9dbd1934cf2bd029b59fcb3f2b",
+          "after": "c205664ec25c82306360def66b38a3693769b1ca957692e6be657d95a0da44ba"
+        },
+        {
+          "time_ms": 96,
+          "before": "12ba5705700216aa0dcbca63d3131f59c7b197091f90b0046a99f69cabaa8f2c",
+          "after": "c205664ec25c82306360def66b38a3693769b1ca957692e6be657d95a0da44ba"
+        },
+        {
+          "time_ms": 112,
+          "before": "3ef2232d4652a3ef991fcca811548380660893a4eb4f0698640e4aee95558b45",
+          "after": "c205664ec25c82306360def66b38a3693769b1ca957692e6be657d95a0da44ba"
+        },
+        {
+          "time_ms": 128,
+          "before": "d70392f1a545b320f759649591565b83978fd9d73ac1b97e0e35b17aefb63b89",
+          "after": "c205664ec25c82306360def66b38a3693769b1ca957692e6be657d95a0da44ba"
+        },
+        {
+          "time_ms": 144,
+          "before": "c808984dc5d9f1395b8a93767561434fbc9f37f336741dfd73ab606d20d5eb9c",
+          "after": "c205664ec25c82306360def66b38a3693769b1ca957692e6be657d95a0da44ba"
+        },
+        {
+          "time_ms": 160,
+          "before": "f096189707d5bf68d513c24353b84d80fe8847ba0bcecee994f2f2904d8f51ec",
+          "after": "c205664ec25c82306360def66b38a3693769b1ca957692e6be657d95a0da44ba"
+        },
+        {
+          "time_ms": 176,
+          "before": "a0f3d64cbbd7d2fbf1dac4721faa51a9b8035c19a3ace77aa331aac824ed92ff",
+          "after": "c205664ec25c82306360def66b38a3693769b1ca957692e6be657d95a0da44ba"
+        },
+        {
+          "time_ms": 192,
+          "before": "969b76023a82b98e824db49759c2203e898a44c0bc5e594d24d2023ec4ad1614",
+          "after": "c205664ec25c82306360def66b38a3693769b1ca957692e6be657d95a0da44ba"
+        },
+        {
+          "time_ms": 208,
+          "before": "eb82236db8c5245fe56742b4d3f201166e438bac53d4eb521dccfc161f63fc02",
+          "after": "c205664ec25c82306360def66b38a3693769b1ca957692e6be657d95a0da44ba"
+        },
+        {
+          "time_ms": 224,
+          "before": "d4b74e271e5e7d2c38fbd4bfee25d4f8dd360a6184bf67ba89b6cd5582245f0d",
+          "after": "c205664ec25c82306360def66b38a3693769b1ca957692e6be657d95a0da44ba"
+        },
+        {
+          "time_ms": 240,
+          "before": "70e543344fbdb2d889a0d792739a957e6f8a5f3bf15ebdd4dec4cac705f6f9f6",
+          "after": "c205664ec25c82306360def66b38a3693769b1ca957692e6be657d95a0da44ba"
+        },
+        {
+          "time_ms": 256,
+          "before": "68ef9936cd9fb459658377314f6040cdb00207f0e995ded7e07c6f95e969b10c",
+          "after": "c205664ec25c82306360def66b38a3693769b1ca957692e6be657d95a0da44ba"
+        },
+        {
+          "time_ms": 272,
+          "before": "692fe4ffc067b87490b71cc93fc79753fbd4b68277502ac0aa4f2b76511cd197",
+          "after": "c205664ec25c82306360def66b38a3693769b1ca957692e6be657d95a0da44ba"
+        },
+        {
+          "time_ms": 288,
+          "before": "55be892e00d87fe9c41c1d0acaf139eef15e8133b08edca01f5b3721fbe40efb",
+          "after": "c205664ec25c82306360def66b38a3693769b1ca957692e6be657d95a0da44ba"
+        },
+        {
+          "time_ms": 304,
+          "before": "92cbdf2d92c15461bd2d1fb8c25b93d7b07a3939edf00a6e48c5eb57f885ae9d",
+          "after": "c205664ec25c82306360def66b38a3693769b1ca957692e6be657d95a0da44ba"
+        },
+        {
+          "time_ms": 320,
+          "before": "c0f3c8a3fea973de9da769d579d6cc47fee5f4fba4d16c2891240a1129f52ac7",
+          "after": "c205664ec25c82306360def66b38a3693769b1ca957692e6be657d95a0da44ba"
+        }
+      ]
+    }
+  ],
+  "directed_switches": 12,
+  "frames_per_switch": 21,
+  "frames_per_version": 252,
+  "frame_size": [
+    470,
+    835
+  ],
+  "switch_policy": "immediate opaque cut; no animation morph claimed",
+  "js_errors": [],
+  "http_errors": [],
+  "storage_unchanged": true,
+  "physical_device": false
+}

@@ -1,0 +1,112 @@
+[
+  {
+    "path": "Avatar-Lab.html",
+    "bytes": 39997005,
+    "sha256": "63b7ded708f516bb8048bbe9f0aaac7a6e91e06d8dbff5af69a589d3aa42a6e4"
+  },
+  {
+    "path": "Parameters/female_rig.json",
+    "bytes": 429482,
+    "sha256": "06046069b5d4d08f9325f7a950de249bdb431e7e167777357faefe133d8d62e6"
+  },
+  {
+    "path": "Parameters/frame-report.json",
+    "bytes": 79117,
+    "sha256": "8afb309dc5562864d70d3cb2a7704cee2bfa6fea66ff899bf437ef23791eecd7"
+  },
+  {
+    "path": "Parameters/male-preview.json",
+    "bytes": 2264,
+    "sha256": "17b4e0053ae0982fb18de571ee39111dd83b94d9c0c790634945501a1a9c1a14"
+  },
+  {
+    "path": "Parameters/male_anatomy.json",
+    "bytes": 1700,
+    "sha256": "92afd2a06771f304951be9b69f954ae00f8c1cc108457558153090cd31cad2a4"
+  },
+  {
+    "path": "Parameters/male_rig.json",
+    "bytes": 1290872,
+    "sha256": "c4cad73e66ad75f47c7b242d24a67487b576cbc372e6a4d686573988ecb1a0f9"
+  },
+  {
+    "path": "Parameters/registration.json",
+    "bytes": 3178,
+    "sha256": "6852bc1cd4ba59f45aee11051368bb7cca94ff6d68f677038869130b99361fe7"
+  },
+  {
+    "path": "README.md",
+    "bytes": 8258,
+    "sha256": "7403e0caa691f514fe65e52693c7e686c8a56fd65fc951c95bd536bd7355e7c9"
+  },
+  {
+    "path": "Report.html",
+    "bytes": 62571889,
+    "sha256": "8dd3c21d48ef305264a3d7e0fa64eef9822de8358b094faf97c7d0c15d12d042"
+  },
+  {
+    "path": "Revision.txt",
+    "bytes": 157,
+    "sha256": "20a546a032dddb5eac0392fd208399fe3b7ffd8f36d82bfcf1e2b82e13ee5468"
+  },
+  {
+    "path": "Technical-report.html",
+    "bytes": 9298,
+    "sha256": "4ad4090c906ffe852e60d97e4446bc7869d4ca519bfc24229b4797b4b15440a3"
+  },
+  {
+    "path": "avatar-core/assets/male/weapon-pass/melee-wrist-edge.png",
+    "bytes": 9853,
+    "sha256": "6890079203f625e449230c567dd3f68bb860f1b51c00fcf6855ce37b17b286e5"
+  },
+  {
+    "path": "avatar-core/assets/male/weapon-pass/rifle-left-contact.png",
+    "bytes": 12062,
+    "sha256": "a5c7b2fdf5936e86797301451c20e77741fe4ca69880aea460f2eab2be0c8d0b"
+  },
+  {
+    "path": "avatar-core/assets/male/weapon-pass/rifle-right-contact.png",
+    "bytes": 12842,
+    "sha256": "b266bf0096c2ab4878b1e34b41c0f6675808d1cc01b4276ce870bef5cec11c0f"
+  },
+  {
+    "path": "avatar-core/assets/weapons/male-preview/pistol.png",
+    "bytes": 29596,
+    "sha256": "b41805785c20eac19333c252f847e8aba7c966e74db821ddb178a3a1d8234fc3"
+  },
+  {
+    "path": "avatar-core/assets/weapons/male-preview/rifle.png",
+    "bytes": 61472,
+    "sha256": "980842d1c9326415898bd998165188833a297e5e27149a79cd9ab3ecbbd4da34"
+  },
+  {
+    "path": "test-logs/browser-capture.log",
+    "bytes": 103,
+    "sha256": "181ad256dc1f6c75c2e2d1945324110c3597fa8c4f18969ff7df1bad1a7c603d"
+  },
+  {
+    "path": "test-logs/core-js.log",
+    "bytes": 1913,
+    "sha256": "3ce91c3f5ae10690cfffba8776734a3f75c48f01caf7029a59498e33c4ba0b95"
+  },
+  {
+    "path": "test-logs/final-regression.log",
+    "bytes": 7437,
+    "sha256": "12ae2fc955e7596bd97fe0bbe379c7889f315955cfdc6b7b16713e4371291262"
+  },
+  {
+    "path": "test-logs/game-js.log",
+    "bytes": 9897,
+    "sha256": "e00e775d01af7965b8b642d855150acd5fb8379baa4c2bff3b729b8353ee3ea0"
+  },
+  {
+    "path": "test-logs/initial-numerical-failure.log",
+    "bytes": 1815,
+    "sha256": "18aee2520a37d3440451a23dd39a3be868495e78edc995753eb6106355407beb"
+  },
+  {
+    "path": "ВІДКРИЙ_СПОЧАТКУ.txt",
+    "bytes": 614,
+    "sha256": "5512bc2f53597ec095f49f72ac9d1eb7380c2ec2f8ee437c0fffd92e34c1d370"
+  }
+]

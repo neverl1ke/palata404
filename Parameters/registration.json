@@ -1,0 +1,149 @@
+{
+  "atlas_sha256": "b2ccf01672a5e8f5259e089987c3fabc7c95a19b936fe67686dba4282bb4575f",
+  "parts": [
+    {
+      "class": "rifle",
+      "source_box": [
+        0,
+        40,
+        1536,
+        550
+      ],
+      "alpha_crop": [
+        14,
+        43,
+        1523,
+        497
+      ],
+      "uniform_scale": 0.38,
+      "anchors_in_atlas": {
+        "primary": [
+          490,
+          320
+        ],
+        "support": [
+          900,
+          225
+        ],
+        "stock": [
+          24,
+          200
+        ],
+        "trigger": [
+          585,
+          285
+        ]
+      },
+      "registered_anchors": {
+        "primary": [
+          175,
+          120
+        ],
+        "support": [
+          285,
+          82
+        ],
+        "stock": [
+          12,
+          40
+        ],
+        "trigger": [
+          200.11164431898376,
+          107.62342978122794
+        ]
+      },
+      "image": "assets/weapons/male-preview/rifle.png",
+      "sha256": "980842d1c9326415898bd998165188833a297e5e27149a79cd9ab3ecbbd4da34"
+    },
+    {
+      "class": "pistol",
+      "source_box": [
+        380,
+        570,
+        1110,
+        1024
+      ],
+      "alpha_crop": [
+        57,
+        36,
+        686,
+        418
+      ],
+      "uniform_scale": 0.3,
+      "anchors_in_atlas": {
+        "primary": [
+          545,
+          845
+        ],
+        "stock": [
+          480,
+          965
+        ],
+        "trigger": [
+          707,
+          776
+        ]
+      },
+      "registered_anchors": {
+        "primary": [
+          32.4,
+          71.7
+        ],
+        "stock": [
+          12.9,
+          107.7
+        ],
+        "trigger": [
+          81.0,
+          51.0
+        ]
+      },
+      "image": "assets/weapons/male-preview/pistol.png",
+      "sha256": "b41805785c20eac19333c252f847e8aba7c966e74db821ddb178a3a1d8234fc3"
+    },
+    {
+      "class": "melee-wrist",
+      "image": "assets/male/weapon-pass/melee-wrist-edge.png",
+      "original": "assets/male/hands/melee-right-wrist-clean.png",
+      "bounds": [
+        82,
+        807,
+        335,
+        882
+      ],
+      "local_source_box": [
+        171,
+        827,
+        248,
+        876
+      ],
+      "changed_texels": 108,
+      "method": "signed-distance antialiasing only in a two-pixel contour band; RGB unchanged where alpha survives",
+      "sha256": "6890079203f625e449230c567dd3f68bb860f1b51c00fcf6855ce37b17b286e5"
+    },
+    {
+      "class": "rifle-right-contact",
+      "image": "assets/male/weapon-pass/rifle-right-contact.png",
+      "bounds": [
+        283,
+        391,
+        511,
+        634
+      ],
+      "method": "original projected skin; only old placeholder cutouts/ink plus 3px feather",
+      "sha256": "b266bf0096c2ab4878b1e34b41c0f6675808d1cc01b4276ce870bef5cec11c0f"
+    },
+    {
+      "class": "rifle-left-contact",
+      "image": "assets/male/weapon-pass/rifle-left-contact.png",
+      "bounds": [
+        539,
+        562,
+        715,
+        664
+      ],
+      "method": "original projected skin; only old placeholder cutouts/ink plus 3px feather",
+      "sha256": "a5c7b2fdf5936e86797301451c20e77741fe4ca69880aea460f2eab2be0c8d0b"
+    }
+  ]
+}

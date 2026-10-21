@@ -1,0 +1,124 @@
+{
+  "weapons": {
+    "melee": {
+      "size": [
+        140,
+        300
+      ],
+      "primary": [
+        67,
+        240
+      ],
+      "support": null,
+      "id": "test-melee",
+      "class": "melee",
+      "pose": "melee",
+      "image": "assets/weapons/melee.png",
+      "scale": 0.8,
+      "offset": [
+        0,
+        0
+      ],
+      "angle": 0,
+      "order": 30,
+      "test_resource": true
+    },
+    "pistol": {
+      "size": [
+        189,
+        115
+      ],
+      "primary": [
+        32.4,
+        71.7
+      ],
+      "support": null,
+      "id": "test-pistol",
+      "class": "pistol",
+      "pose": "pistol",
+      "image": "assets/weapons/male-preview/pistol.png",
+      "scale": 1,
+      "offset": [
+        0,
+        0
+      ],
+      "angle": 0,
+      "order": 30,
+      "test_resource": true,
+      "stock": [
+        12.9,
+        107.7
+      ],
+      "trigger": [
+        81.0,
+        51.0
+      ],
+      "art": "realistic illustrated test prop; not production-approved"
+    },
+    "rifle": {
+      "size": [
+        520,
+        280
+      ],
+      "primary": [
+        175,
+        120
+      ],
+      "support": [
+        285,
+        82
+      ],
+      "id": "test-rifle",
+      "class": "rifle",
+      "pose": "rifle",
+      "image": "assets/weapons/male-preview/rifle.png",
+      "scale": 1.35,
+      "offset": [
+        0,
+        0
+      ],
+      "angle": 0,
+      "order": 30,
+      "test_resource": true,
+      "stock": [
+        12,
+        40
+      ],
+      "trigger": [
+        200.11164431898376,
+        107.62342978122794
+      ],
+      "art": "realistic illustrated test prop; not production-approved"
+    }
+  },
+  "surfaceOverrides": {
+    "melee-right": "assets/male/weapon-pass/melee-wrist-edge.png"
+  },
+  "transitionPolicy": "opaque-cut",
+  "contactRepairs": [
+    {
+      "pose": "rifle",
+      "side": "right",
+      "bone": "upper",
+      "image": "assets/male/weapon-pass/rifle-right-contact.png",
+      "bounds": [
+        283,
+        391,
+        511,
+        634
+      ]
+    },
+    {
+      "pose": "rifle",
+      "side": "left",
+      "bone": "fore",
+      "image": "assets/male/weapon-pass/rifle-left-contact.png",
+      "bounds": [
+        539,
+        562,
+        715,
+        664
+      ]
+    }
+  ]
+}

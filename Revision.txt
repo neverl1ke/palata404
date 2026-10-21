@@ -1,0 +1,4 @@
+feature/avatar-core-2-weapon-transitions
+Revision: cdb43ebfd383d5658d16063e635431e3ad0b35e2
+Baseline: e549901
+Not production-approved. No push/main changes.

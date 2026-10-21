@@ -1,0 +1,20 @@
+test_breathing_defaults_and_closed_cycle_grips_are_preserved (tests.test_weapon_pass.WeaponPassBrowserTests.test_breathing_defaults_and_closed_cycle_grips_are_preserved) ... FAIL
+test_every_male_switch_frame_is_the_opaque_destination (tests.test_weapon_pass.WeaponPassBrowserTests.test_every_male_switch_frame_is_the_opaque_destination) ... ok
+test_rifle_elbows_and_pistol_arm_remain_at_approved_bind (tests.test_weapon_pass.WeaponPassBrowserTests.test_rifle_elbows_and_pistol_arm_remain_at_approved_bind) ... ok
+test_approved_rigs_pngs_and_original_weapons_are_unchanged (tests.test_weapon_pass.WeaponPassSourceTests.test_approved_rigs_pngs_and_original_weapons_are_unchanged) ... ok
+test_new_prop_contacts_are_on_real_visible_pixels (tests.test_weapon_pass.WeaponPassSourceTests.test_new_prop_contacts_are_on_real_visible_pixels) ... ok
+test_wrist_alpha_edit_is_local_and_does_not_repaint_skin (tests.test_weapon_pass.WeaponPassSourceTests.test_wrist_alpha_edit_is_local_and_does_not_repaint_skin) ... ok
+
+======================================================================
+FAIL: test_breathing_defaults_and_closed_cycle_grips_are_preserved (tests.test_weapon_pass.WeaponPassBrowserTests.test_breathing_defaults_and_closed_cycle_grips_are_preserved)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/palata404-avatar-core/tests/test_weapon_pass.py", line 70, in test_breathing_defaults_and_closed_cycle_grips_are_preserved
+    if time==4000:self.assertTrue(np.array_equal(start,self.c.image()),pose)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : melee
+
+----------------------------------------------------------------------
+Ran 6 tests in 47.924s
+
+FAILED (failures=1)
