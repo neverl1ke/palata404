@@ -1,0 +1,189 @@
+{
+  "id": "rifle-right",
+  "pose": "rifle",
+  "side": "right",
+  "title": "Права кисть · рукоятка автомата",
+  "polygon": [
+    [
+      295,
+      600
+    ],
+    [
+      333,
+      594
+    ],
+    [
+      378,
+      612
+    ],
+    [
+      417,
+      636
+    ],
+    [
+      444,
+      663
+    ],
+    [
+      448,
+      704
+    ],
+    [
+      418,
+      735
+    ],
+    [
+      360,
+      738
+    ],
+    [
+      324,
+      712
+    ],
+    [
+      306,
+      676
+    ],
+    [
+      286,
+      646
+    ]
+  ],
+  "frame": [
+    941,
+    1672
+  ],
+  "source_asset": "assets/male/lobby/rifle-right-arm.png",
+  "source_front": "assets/male/lobby/rifle-right-front.png",
+  "source_bounds": [
+    197,
+    311,
+    414,
+    715
+  ],
+  "anchors_pose": {
+    "shoulder": [
+      287,
+      382
+    ],
+    "elbow": [
+      231,
+      598
+    ],
+    "wrist": [
+      323.99999999999994,
+      631.0000000000001
+    ],
+    "grip": [
+      363.99999999999994,
+      668.0000000000001
+    ]
+  },
+  "source_wrist": [
+    207,
+    847
+  ],
+  "source_grip": [
+    207.0,
+    901.4885309033011
+  ],
+  "bind_hand": [
+    0.679041981617427,
+    -0.7340994395864077,
+    0.7340994395864077,
+    0.679041981617427,
+    -438.3439155244948,
+    207.8100255644258
+  ],
+  "inverse_bind_hand": [
+    [
+      0.6790419816174271,
+      -0.7340994395864078,
+      450.2071443349771
+    ],
+    [
+      0.7340994395864078,
+      0.6790419816174271,
+      180.67629117340738
+    ],
+    [
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "wrist_axis": [
+    0.7340994395864077,
+    0.6790419816174271
+  ],
+  "forearm_axis": [
+    0.9424277454812461,
+    0.3344098451707661
+  ],
+  "weapon_matrix_world": [
+    1,
+    0,
+    -0.0,
+    1,
+    -5.684341886080802e-14,
+    1.1368683772161603e-13
+  ],
+  "weapon_resource": "assets/weapons/male-lobby/rifle.png",
+  "weapon_anchors_local": {
+    "primary": [
+      364,
+      668
+    ],
+    "support": [
+      619,
+      755
+    ],
+    "stock": [
+      240,
+      607
+    ],
+    "trigger": [
+      434.54395785314455,
+      678.1478432663813
+    ]
+  },
+  "seam": {
+    "axis_distance_source_px": [
+      -32,
+      -10
+    ],
+    "axis": "forearm_axis, not hand direction",
+    "weight": "smoothstep; only the wrist seam, never feather all fingers"
+  },
+  "edit_bbox": [
+    286,
+    594,
+    449,
+    739
+  ],
+  "preview_crop": [
+    264,
+    572,
+    471,
+    761
+  ],
+  "crop_translation": [
+    -264,
+    -572
+  ],
+  "candidate_paths": [
+    "Hands/rifle-right/candidate-back.png",
+    "Hands/rifle-right/candidate-front.png",
+    "Hands/rifle-right/candidate-thumb.png"
+  ],
+  "new_art_status": "empty templates; no new hand anatomy",
+  "layer_order": [
+    "hand_back",
+    "separate_weapon",
+    "front_fingers",
+    "optional_near_thumb"
+  ],
+  "animation_transform": "currentHandMatrix * inverse(bind_hand); all new parts share one logical hand",
+  "source_sha256": "b14ec95416d98ac2e83cf12e6fa2874ca4486202c57ede89c7b7ae91cc82f4ac",
+  "source_front_sha256": "c8f57c5cc864215607e5620e54ce990fa8887a0cecdb3d4c847b35c2e1ecb4cb"
+}

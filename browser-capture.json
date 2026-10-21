@@ -1,0 +1,349 @@
+{
+  "browser": "151.0.7922.34",
+  "entry": "avatar-lab/index.html",
+  "reference_runtime": "7854994",
+  "js_errors": [],
+  "http_errors": [],
+  "storage_unchanged": true,
+  "breathing": [
+    {
+      "pose": "pistol",
+      "cycle_ms": 4000,
+      "frame_interval_ms": 125,
+      "frames": 32,
+      "new_hand_art": false,
+      "samples": [
+        {
+          "time_ms": 0,
+          "primary_error": 0,
+          "support_error": 0
+        },
+        {
+          "time_ms": 125,
+          "primary_error": 0,
+          "support_error": 0
+        },
+        {
+          "time_ms": 250,
+          "primary_error": 0,
+          "support_error": 0
+        },
+        {
+          "time_ms": 375,
+          "primary_error": 0,
+          "support_error": 0
+        },
+        {
+          "time_ms": 500,
+          "primary_error": 5.684341886080802e-14,
+          "support_error": 0
+        },
+        {
+          "time_ms": 625,
+          "primary_error": 0,
+          "support_error": 0
+        },
+        {
+          "time_ms": 750,
+          "primary_error": 0,
+          "support_error": 0
+        },
+        {
+          "time_ms": 875,
+          "primary_error": 5.684341886080802e-14,
+          "support_error": 0
+        },
+        {
+          "time_ms": 1000,
+          "primary_error": 0,
+          "support_error": 0
+        },
+        {
+          "time_ms": 1125,
+          "primary_error": 5.684341886080802e-14,
+          "support_error": 0
+        },
+        {
+          "time_ms": 1250,
+          "primary_error": 0,
+          "support_error": 0
+        },
+        {
+          "time_ms": 1375,
+          "primary_error": 0,
+          "support_error": 0
+        },
+        {
+          "time_ms": 1500,
+          "primary_error": 5.684341886080802e-14,
+          "support_error": 0
+        },
+        {
+          "time_ms": 1625,
+          "primary_error": 0,
+          "support_error": 0
+        },
+        {
+          "time_ms": 1750,
+          "primary_error": 0,
+          "support_error": 0
+        },
+        {
+          "time_ms": 1875,
+          "primary_error": 0,
+          "support_error": 0
+        },
+        {
+          "time_ms": 2000,
+          "primary_error": 0,
+          "support_error": 0
+        },
+        {
+          "time_ms": 2125,
+          "primary_error": 0,
+          "support_error": 0
+        },
+        {
+          "time_ms": 2250,
+          "primary_error": 5.684341886080802e-14,
+          "support_error": 0
+        },
+        {
+          "time_ms": 2375,
+          "primary_error": 5.684341886080802e-14,
+          "support_error": 0
+        },
+        {
+          "time_ms": 2500,
+          "primary_error": 0,
+          "support_error": 0
+        },
+        {
+          "time_ms": 2625,
+          "primary_error": 2.842170943040401e-14,
+          "support_error": 0
+        },
+        {
+          "time_ms": 2750,
+          "primary_error": 0,
+          "support_error": 0
+        },
+        {
+          "time_ms": 2875,
+          "primary_error": 0,
+          "support_error": 0
+        },
+        {
+          "time_ms": 3000,
+          "primary_error": 0,
+          "support_error": 0
+        },
+        {
+          "time_ms": 3125,
+          "primary_error": 0,
+          "support_error": 0
+        },
+        {
+          "time_ms": 3250,
+          "primary_error": 0,
+          "support_error": 0
+        },
+        {
+          "time_ms": 3375,
+          "primary_error": 2.842170943040401e-14,
+          "support_error": 0
+        },
+        {
+          "time_ms": 3500,
+          "primary_error": 0,
+          "support_error": 0
+        },
+        {
+          "time_ms": 3625,
+          "primary_error": 5.684341886080802e-14,
+          "support_error": 0
+        },
+        {
+          "time_ms": 3750,
+          "primary_error": 5.684341886080802e-14,
+          "support_error": 0
+        },
+        {
+          "time_ms": 3875,
+          "primary_error": 0,
+          "support_error": 0
+        }
+      ]
+    },
+    {
+      "pose": "rifle",
+      "cycle_ms": 4000,
+      "frame_interval_ms": 125,
+      "frames": 32,
+      "new_hand_art": false,
+      "samples": [
+        {
+          "time_ms": 0,
+          "primary_error": 0,
+          "support_error": 1.1368683772161603e-13
+        },
+        {
+          "time_ms": 125,
+          "primary_error": 0,
+          "support_error": 1.1368683772161603e-13
+        },
+        {
+          "time_ms": 250,
+          "primary_error": 0,
+          "support_error": 1.6077746776921858e-13
+        },
+        {
+          "time_ms": 375,
+          "primary_error": 0,
+          "support_error": 4.547473508864641e-13
+        },
+        {
+          "time_ms": 500,
+          "primary_error": 0,
+          "support_error": 1.6077746776921858e-13
+        },
+        {
+          "time_ms": 625,
+          "primary_error": 0,
+          "support_error": 1.1368683772161603e-13
+        },
+        {
+          "time_ms": 750,
+          "primary_error": 0,
+          "support_error": 3.595093471822542e-13
+        },
+        {
+          "time_ms": 875,
+          "primary_error": 0,
+          "support_error": 2.2737367544323206e-13
+        },
+        {
+          "time_ms": 1000,
+          "primary_error": 0,
+          "support_error": 1.1368683772161603e-13
+        },
+        {
+          "time_ms": 1125,
+          "primary_error": 0,
+          "support_error": 2.2737367544323206e-13
+        },
+        {
+          "time_ms": 1250,
+          "primary_error": 0,
+          "support_error": 3.595093471822542e-13
+        },
+        {
+          "time_ms": 1375,
+          "primary_error": 0,
+          "support_error": 1.1368683772161603e-13
+        },
+        {
+          "time_ms": 1500,
+          "primary_error": 0,
+          "support_error": 1.6077746776921858e-13
+        },
+        {
+          "time_ms": 1625,
+          "primary_error": 0,
+          "support_error": 4.547473508864641e-13
+        },
+        {
+          "time_ms": 1750,
+          "primary_error": 0,
+          "support_error": 1.6077746776921858e-13
+        },
+        {
+          "time_ms": 1875,
+          "primary_error": 0,
+          "support_error": 1.1368683772161603e-13
+        },
+        {
+          "time_ms": 2000,
+          "primary_error": 0,
+          "support_error": 1.1368683772161603e-13
+        },
+        {
+          "time_ms": 2125,
+          "primary_error": 0,
+          "support_error": 0
+        },
+        {
+          "time_ms": 2250,
+          "primary_error": 0,
+          "support_error": 2.5421149729252077e-13
+        },
+        {
+          "time_ms": 2375,
+          "primary_error": 0,
+          "support_error": 2.5421149729252077e-13
+        },
+        {
+          "time_ms": 2500,
+          "primary_error": 0,
+          "support_error": 0
+        },
+        {
+          "time_ms": 2625,
+          "primary_error": 0,
+          "support_error": 1.6077746776921858e-13
+        },
+        {
+          "time_ms": 2750,
+          "primary_error": 0,
+          "support_error": 0
+        },
+        {
+          "time_ms": 2875,
+          "primary_error": 0,
+          "support_error": 1.1368683772161603e-13
+        },
+        {
+          "time_ms": 3000,
+          "primary_error": 0,
+          "support_error": 1.1368683772161603e-13
+        },
+        {
+          "time_ms": 3125,
+          "primary_error": 0,
+          "support_error": 1.1368683772161603e-13
+        },
+        {
+          "time_ms": 3250,
+          "primary_error": 0,
+          "support_error": 0
+        },
+        {
+          "time_ms": 3375,
+          "primary_error": 0,
+          "support_error": 1.6077746776921858e-13
+        },
+        {
+          "time_ms": 3500,
+          "primary_error": 0,
+          "support_error": 0
+        },
+        {
+          "time_ms": 3625,
+          "primary_error": 0,
+          "support_error": 2.5421149729252077e-13
+        },
+        {
+          "time_ms": 3750,
+          "primary_error": 0,
+          "support_error": 2.5421149729252077e-13
+        },
+        {
+          "time_ms": 3875,
+          "primary_error": 0,
+          "support_error": 0
+        }
+      ]
+    }
+  ],
+  "physical_device": false
+}

@@ -1,0 +1,4 @@
+Source checkout: 26abb14b985c6241776a7acb02e3bd5deb09cf2e
+Protected runtime baseline:7854994
+New hand artwork:0
+No main/runtime modifications. Artist authoring fallback from task section7.

@@ -1,0 +1,60 @@
+{
+  "archive": "Male-Hand-Art-Kit-2.1.zip",
+  "crc": "passed",
+  "manifest_files_verified": 70,
+  "browser": "151.0.7922.34",
+  "extracted_file_uri": true,
+  "inspector_cases": [
+    "pistol-right · вихідне полотно941×1672 · crop [146, 224, 329, 439] · огляд×3; реєстрація джерела не змінена",
+    "rifle-right · вихідне полотно941×1672 · crop [264, 572, 471, 761] · огляд×3; реєстрація джерела не змінена",
+    "rifle-left · вихідне полотно941×1672 · crop [514, 662, 721, 828] · огляд×3; реєстрація джерела не змінена"
+  ],
+  "controls_toggled_per_hand": 6,
+  "runtime_cases": [
+    [
+      "male",
+      "idle"
+    ],
+    [
+      "male",
+      "melee"
+    ],
+    [
+      "male",
+      "pistol"
+    ],
+    [
+      "male",
+      "rifle"
+    ],
+    [
+      "female",
+      "idle"
+    ],
+    [
+      "female",
+      "melee"
+    ],
+    [
+      "female",
+      "pistol"
+    ],
+    [
+      "female",
+      "rifle"
+    ]
+  ],
+  "viewport_emulation": [
+    320,
+    390,
+    768
+  ],
+  "physical_device": false,
+  "http_requests": [],
+  "js_errors": [],
+  "request_failures": [],
+  "storage_unchanged": true,
+  "new_artwork_count": 0,
+  "new_artwork_integrated": false,
+  "phase": "prepublication extracted browser verification; final archive reverified after source commit"
+}

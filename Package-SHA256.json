@@ -1,0 +1,362 @@
+[
+  {
+    "path": "Avatar-Lab.html",
+    "bytes": 45823379,
+    "sha256": "558402d7bd0138341261cbeb6d8d29e93489af58afd75f1cdf52eb86326eac7e"
+  },
+  {
+    "path": "Gallery/pistol-breathing.webp",
+    "bytes": 2951134,
+    "sha256": "b025f8d6ef80b344fcc66436f1cd38f8adc71a8450b059abd9e2da380f29fedd"
+  },
+  {
+    "path": "Gallery/pistol-full.png",
+    "bytes": 839944,
+    "sha256": "82e2b0cf30a738749eac9add47629cdbd76afd1492926c48c4b1be40a86effa4"
+  },
+  {
+    "path": "Gallery/pistol-right-before.png",
+    "bytes": 219256,
+    "sha256": "279e763c9f741973b3dab3c71f325935fe8a4509b04dc4e0fa355c4288f32be6"
+  },
+  {
+    "path": "Gallery/pistol-right-breathing.webp",
+    "bytes": 1877154,
+    "sha256": "fc077148008b335e2383447214de28043a4c36c05057574e6e2621ebc1423c57"
+  },
+  {
+    "path": "Gallery/pistol-right-registration.png",
+    "bytes": 248853,
+    "sha256": "bf5071c47626aa1ce6a47f6db4f0893ef7636a4a70ceae642d35aeb1a15732af"
+  },
+  {
+    "path": "Gallery/rifle-breathing.webp",
+    "bytes": 3264474,
+    "sha256": "5ad6e865a2fdd8ecdb208a5b4734b1af506e3945ece5a1b12a6f2232d72f7097"
+  },
+  {
+    "path": "Gallery/rifle-full.png",
+    "bytes": 864260,
+    "sha256": "2fef9207ba9c3179d21feb7ebeb9dc627911581cfefebaf77e56d04d956217e3"
+  },
+  {
+    "path": "Gallery/rifle-left-before.png",
+    "bytes": 356931,
+    "sha256": "a8c9e5f2e8b8a41dac50eea0ee7159fe892ae06e3f5a283d853da2669d32e08f"
+  },
+  {
+    "path": "Gallery/rifle-left-breathing.webp",
+    "bytes": 2388486,
+    "sha256": "4e03e62a9baa803984aedc29846ef69080c34cdef07e20c3390eeabf24248262"
+  },
+  {
+    "path": "Gallery/rifle-left-registration.png",
+    "bytes": 381622,
+    "sha256": "fb726b18673c028c621280a28865c7cded389574c875c755f2e113ae7d7d5a2f"
+  },
+  {
+    "path": "Gallery/rifle-right-before.png",
+    "bytes": 382038,
+    "sha256": "f826f41a3158dfe0f6c7b5052e8ad26efe751d62d6d994c95330e3024c000474"
+  },
+  {
+    "path": "Gallery/rifle-right-breathing.webp",
+    "bytes": 2682812,
+    "sha256": "6dee20a893f43b6179806b5899123d2f357cf69aee4212991473e27af2213a23"
+  },
+  {
+    "path": "Gallery/rifle-right-registration.png",
+    "bytes": 407688,
+    "sha256": "f9db8fae34f7727429a616498174465cddaf360ca755d3a64b4544ed31a3e058"
+  },
+  {
+    "path": "Hands/pistol-right/anchors.json",
+    "bytes": 3080,
+    "sha256": "6a2d0a15a5167ead347bd3535612c0f6ecd336cec78303a13166c248183166df"
+  },
+  {
+    "path": "Hands/pistol-right/candidate-back.png",
+    "bytes": 6180,
+    "sha256": "89adcfa598ebed0b1f435cad625c162267ef54431ef1fe4fd21a9aa26e31f083"
+  },
+  {
+    "path": "Hands/pistol-right/candidate-front.png",
+    "bytes": 6180,
+    "sha256": "89adcfa598ebed0b1f435cad625c162267ef54431ef1fe4fd21a9aa26e31f083"
+  },
+  {
+    "path": "Hands/pistol-right/candidate-thumb.png",
+    "bytes": 6180,
+    "sha256": "89adcfa598ebed0b1f435cad625c162267ef54431ef1fe4fd21a9aa26e31f083"
+  },
+  {
+    "path": "Hands/pistol-right/edit-overlay.png",
+    "bytes": 7245,
+    "sha256": "c9fa242e2ce42435ebb332eb7724b9f0301adca9215677bc14a5f5f2699795bc"
+  },
+  {
+    "path": "Hands/pistol-right/edit-region.png",
+    "bytes": 2529,
+    "sha256": "204c867771a632faf68e632c5dfedc9353aa9c3cc02a14be1631a7fba1105652"
+  },
+  {
+    "path": "Hands/pistol-right/guides.png",
+    "bytes": 8784,
+    "sha256": "46e6cc7782b67a206b0a72d3a26e2ccd9d6b876e0bada67502fdba3510118d58"
+  },
+  {
+    "path": "Hands/pistol-right/old-skin-remove-mask.png",
+    "bytes": 3292,
+    "sha256": "9542ef582c7b7488bf8e5a9913685f54742c592831c2dfb02dcb77fd09c1a3fe"
+  },
+  {
+    "path": "Hands/pistol-right/protected-arm-reference.png",
+    "bytes": 66390,
+    "sha256": "6e087f40df40e77852f404587f4576547ce846a07265295cb693b2488d0e8ce7"
+  },
+  {
+    "path": "Hands/pistol-right/reference-arm-crop-original.png",
+    "bytes": 65794,
+    "sha256": "6547603affe525f432f61ae02adde27e0198449f29804d28e95c6b133459fbeb"
+  },
+  {
+    "path": "Hands/pistol-right/reference-arm-full.png",
+    "bytes": 81906,
+    "sha256": "1b53c98ca7cd1dc612e55871ed7d29c6751f7e65317b3a511bc2389dce8aed6a"
+  },
+  {
+    "path": "Hands/pistol-right/reference-existing-front.png",
+    "bytes": 28525,
+    "sha256": "6542e0d5c08b5eafdac50577e9461842bb92859b69f4434e630469afdc987b9a"
+  },
+  {
+    "path": "Hands/pistol-right/reference-front-crop-original.png",
+    "bytes": 20422,
+    "sha256": "0ffd906061027c8b64156f9812768567c2716ba1f113bd7d80a1da674a6d5ece"
+  },
+  {
+    "path": "Hands/pistol-right/reference-weapon-full.png",
+    "bytes": 43669,
+    "sha256": "44993247507c2e26da658d3133cae6ae5a2233825e65aaa8a6a29aa933ee7b25"
+  },
+  {
+    "path": "Hands/pistol-right/wrist-blend-weight.png",
+    "bytes": 2895,
+    "sha256": "6a23baefc7e242d09b0e6905380c16511e1165d5f0824b336ed6a0fcaecbc499"
+  },
+  {
+    "path": "Hands/rifle-left/anchors.json",
+    "bytes": 3020,
+    "sha256": "f649256fc4392f6123f06a01b9ef551e113385b4d8ae38b9478407fdb71b1c4f"
+  },
+  {
+    "path": "Hands/rifle-left/candidate-back.png",
+    "bytes": 6180,
+    "sha256": "89adcfa598ebed0b1f435cad625c162267ef54431ef1fe4fd21a9aa26e31f083"
+  },
+  {
+    "path": "Hands/rifle-left/candidate-front.png",
+    "bytes": 6180,
+    "sha256": "89adcfa598ebed0b1f435cad625c162267ef54431ef1fe4fd21a9aa26e31f083"
+  },
+  {
+    "path": "Hands/rifle-left/candidate-thumb.png",
+    "bytes": 6180,
+    "sha256": "89adcfa598ebed0b1f435cad625c162267ef54431ef1fe4fd21a9aa26e31f083"
+  },
+  {
+    "path": "Hands/rifle-left/edit-overlay.png",
+    "bytes": 7026,
+    "sha256": "eda8d7a006b69e8101148507aba0f481acc4c607180db57e38375b5c62d9b0a7"
+  },
+  {
+    "path": "Hands/rifle-left/edit-region.png",
+    "bytes": 2411,
+    "sha256": "3e2dd627a8419bd7875f03db9ca318b3846b7c78778683c7631da51e71e64e96"
+  },
+  {
+    "path": "Hands/rifle-left/guides.png",
+    "bytes": 8762,
+    "sha256": "2df590430048f91f823add8870c4cb89799c00854d9b8c2dceb124843496836d"
+  },
+  {
+    "path": "Hands/rifle-left/old-skin-remove-mask.png",
+    "bytes": 4293,
+    "sha256": "8b10e1bd66689a06693af755b49bc3104dbc0207201dc4bb52bbdb12b994cdc1"
+  },
+  {
+    "path": "Hands/rifle-left/protected-arm-reference.png",
+    "bytes": 79960,
+    "sha256": "d61abacf4ce9ce3e518b15a2a2fee8c81595c3773e572c1bb28824815c804e3d"
+  },
+  {
+    "path": "Hands/rifle-left/reference-arm-crop-original.png",
+    "bytes": 78763,
+    "sha256": "59882e460aeb26a26af0ed27f65d21c7af8d3068f9c9b67508f88b2a86147431"
+  },
+  {
+    "path": "Hands/rifle-left/reference-arm-full.png",
+    "bytes": 94232,
+    "sha256": "5519c3c6598b61415d8381276489e948ab445a222966aeb74e24ff0dc732e69c"
+  },
+  {
+    "path": "Hands/rifle-left/reference-existing-front.png",
+    "bytes": 24229,
+    "sha256": "1d8fd1479ed3792a2e517a87554b7f80eef5a3fd38fb3f0e790b8598983a8eba"
+  },
+  {
+    "path": "Hands/rifle-left/reference-front-crop-original.png",
+    "bytes": 16569,
+    "sha256": "3e80f6fe4e07992fe3533735165130452aeeaf6e7609e725c9b6181351306b6f"
+  },
+  {
+    "path": "Hands/rifle-left/reference-weapon-full.png",
+    "bytes": 167812,
+    "sha256": "3804a848a59fa7106a7b6a2fb1245654e6fb8ef9f8adbb8cc146a267d1e2f70c"
+  },
+  {
+    "path": "Hands/rifle-left/wrist-blend-weight.png",
+    "bytes": 3095,
+    "sha256": "9afcd415ca225da74dadc5077a989da763a296babaabcdf52ff6e0dc39c78d5d"
+  },
+  {
+    "path": "Hands/rifle-right/anchors.json",
+    "bytes": 3061,
+    "sha256": "e7c03620e96b3832feb4156d331de72929fb2463107956b4249ec9eccd098cdd"
+  },
+  {
+    "path": "Hands/rifle-right/candidate-back.png",
+    "bytes": 6180,
+    "sha256": "89adcfa598ebed0b1f435cad625c162267ef54431ef1fe4fd21a9aa26e31f083"
+  },
+  {
+    "path": "Hands/rifle-right/candidate-front.png",
+    "bytes": 6180,
+    "sha256": "89adcfa598ebed0b1f435cad625c162267ef54431ef1fe4fd21a9aa26e31f083"
+  },
+  {
+    "path": "Hands/rifle-right/candidate-thumb.png",
+    "bytes": 6180,
+    "sha256": "89adcfa598ebed0b1f435cad625c162267ef54431ef1fe4fd21a9aa26e31f083"
+  },
+  {
+    "path": "Hands/rifle-right/edit-overlay.png",
+    "bytes": 7133,
+    "sha256": "70ba9fcde19516704459505ef0fc22f5f8af70964bba65d7007c3e5a4e0e10f4"
+  },
+  {
+    "path": "Hands/rifle-right/edit-region.png",
+    "bytes": 2440,
+    "sha256": "72298ef5ba0cad9f7439dbbfe3117bd29a477f7fcaf9a2f391cac5b5bf9e5f48"
+  },
+  {
+    "path": "Hands/rifle-right/guides.png",
+    "bytes": 8855,
+    "sha256": "c9b9f9291e3c768ab039c61b1d9c0dd79154f6686670d6fd89d3478efbf1c905"
+  },
+  {
+    "path": "Hands/rifle-right/old-skin-remove-mask.png",
+    "bytes": 3829,
+    "sha256": "eabf3c2c1fa8070580d23a85a4285821a3736d3ee4838aad340c1b93ad4ae524"
+  },
+  {
+    "path": "Hands/rifle-right/protected-arm-reference.png",
+    "bytes": 72899,
+    "sha256": "73eae1c0201aff13299d1906c35de6be59e32f8a465dd33a04d902002e03cbb7"
+  },
+  {
+    "path": "Hands/rifle-right/reference-arm-crop-original.png",
+    "bytes": 75814,
+    "sha256": "b14ec95416d98ac2e83cf12e6fa2874ca4486202c57ede89c7b7ae91cc82f4ac"
+  },
+  {
+    "path": "Hands/rifle-right/reference-arm-full.png",
+    "bytes": 90833,
+    "sha256": "7a63d4d4a37a60b77031848befb1d9fa4050a0acb0353078de102d66255c5195"
+  },
+  {
+    "path": "Hands/rifle-right/reference-existing-front.png",
+    "bytes": 28042,
+    "sha256": "0e5e2b8ab9dc68ce8a8f68d3f9ff9ce43cae0fb22fd0c619c62a8796607f575d"
+  },
+  {
+    "path": "Hands/rifle-right/reference-front-crop-original.png",
+    "bytes": 19613,
+    "sha256": "c8f57c5cc864215607e5620e54ce990fa8887a0cecdb3d4c847b35c2e1ecb4cb"
+  },
+  {
+    "path": "Hands/rifle-right/reference-weapon-full.png",
+    "bytes": 167812,
+    "sha256": "3804a848a59fa7106a7b6a2fb1245654e6fb8ef9f8adbb8cc146a267d1e2f70c"
+  },
+  {
+    "path": "Hands/rifle-right/wrist-blend-weight.png",
+    "bytes": 3024,
+    "sha256": "dbf8eb792408cd00c429ef14728bc7ac3fb1ee9647cd5aca413d0f32389c0f59"
+  },
+  {
+    "path": "README.md",
+    "bytes": 14368,
+    "sha256": "3468b4b4ac87c51e82b70835b74cccd49895bd7707040c72cdadde34e535bc7f"
+  },
+  {
+    "path": "Report.html",
+    "bytes": 15273,
+    "sha256": "cd21dc8a6cbe872185b2ce51432b171c4bc240b114a749057e65b1d242ceb294"
+  },
+  {
+    "path": "Revision.txt",
+    "bytes": 189,
+    "sha256": "adcd7873af21d94a8da16ed718bbfb970651a5c8dcb72db9ce2ced915a66b49d"
+  },
+  {
+    "path": "Technical-report.html",
+    "bytes": 16215,
+    "sha256": "40efdbd9d5235e91a63af6039d15c639e0e2818f1f5e64a9e68bdd0127c9a20d"
+  },
+  {
+    "path": "Tools/validate-male-hand-delivery.py",
+    "bytes": 1929,
+    "sha256": "af7c9a6468c2cd5e256f4eeb8ef22bc0238cd207706040c1b398e1b95c44d45c"
+  },
+  {
+    "path": "browser-capture.json",
+    "bytes": 8126,
+    "sha256": "7718838e9a8903f4898d5505e1f220ac45cf9bda804192992495832c1d5001fb"
+  },
+  {
+    "path": "changed-files.json",
+    "bytes": 4823,
+    "sha256": "1ddad95d9fe38439e395c56ca4d166c54e5228fd62bb5fd8936965cfc812fae7"
+  },
+  {
+    "path": "delivery-validation.json",
+    "bytes": 1420,
+    "sha256": "896c346a8076a93b7d83dc9f3db6cc4384283d41ceae56da41c1b4c63ad78f70"
+  },
+  {
+    "path": "hand-contract.json",
+    "bytes": 11621,
+    "sha256": "e454ef950fa6c9d6dcc63d26c710a92824c2295a7e88910b1003261a5b48dd5d"
+  },
+  {
+    "path": "placeholder-validation.json",
+    "bytes": 2088,
+    "sha256": "5fc12e60460556e12750c166af6f9cd0858ffb83a8039ed3a73384a9fa52d6cd"
+  },
+  {
+    "path": "protected-runtime.json",
+    "bytes": 16185,
+    "sha256": "6992c32523ae6ad4f58c9628dfc79dcfa0614586f81962a88cc4db5eb0df5a3d"
+  },
+  {
+    "path": "test-logs/kit-tests.log",
+    "bytes": 4804,
+    "sha256": "3d8d06c8199bd4b914a32e23972a20552fb1c5e31d535e8c5a8b7e5813df4c1e"
+  },
+  {
+    "path": "ВІДКРИЙ_СПОЧАТКУ.txt",
+    "bytes": 854,
+    "sha256": "1f85620a3b9d3c65f3dcad2ea36573d4ef252297c945d2913c14ee7b1e3a8278"
+  }
+]

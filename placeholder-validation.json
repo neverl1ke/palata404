@@ -1,0 +1,73 @@
+{
+  "technical_valid": false,
+  "artistic_approval": false,
+  "integration_allowed": false,
+  "reason": "technical geometry/alpha checks only; anatomy and layer contact require visual approval",
+  "layers": [
+    {
+      "hand": "pistol-right",
+      "part": "back",
+      "path": "Hands/pistol-right/candidate-back.png",
+      "visible_pixels": 0
+    },
+    {
+      "hand": "pistol-right",
+      "part": "front",
+      "path": "Hands/pistol-right/candidate-front.png",
+      "visible_pixels": 0
+    },
+    {
+      "hand": "pistol-right",
+      "part": "thumb",
+      "path": "Hands/pistol-right/candidate-thumb.png",
+      "visible_pixels": 0
+    },
+    {
+      "hand": "rifle-right",
+      "part": "back",
+      "path": "Hands/rifle-right/candidate-back.png",
+      "visible_pixels": 0
+    },
+    {
+      "hand": "rifle-right",
+      "part": "front",
+      "path": "Hands/rifle-right/candidate-front.png",
+      "visible_pixels": 0
+    },
+    {
+      "hand": "rifle-right",
+      "part": "thumb",
+      "path": "Hands/rifle-right/candidate-thumb.png",
+      "visible_pixels": 0
+    },
+    {
+      "hand": "rifle-left",
+      "part": "back",
+      "path": "Hands/rifle-left/candidate-back.png",
+      "visible_pixels": 0
+    },
+    {
+      "hand": "rifle-left",
+      "part": "front",
+      "path": "Hands/rifle-left/candidate-front.png",
+      "visible_pixels": 0
+    },
+    {
+      "hand": "rifle-left",
+      "part": "thumb",
+      "path": "Hands/rifle-left/candidate-thumb.png",
+      "visible_pixels": 0
+    }
+  ],
+  "errors": [
+    "Hands/pistol-right/candidate-back.png: empty placeholder; no new hand art",
+    "Hands/pistol-right/candidate-front.png: empty placeholder; no new hand art",
+    "Hands/rifle-right/candidate-back.png: empty placeholder; no new hand art",
+    "Hands/rifle-right/candidate-front.png: empty placeholder; no new hand art",
+    "Hands/rifle-left/candidate-back.png: empty placeholder; no new hand art",
+    "Hands/rifle-left/candidate-front.png: empty placeholder; no new hand art"
+  ],
+  "warnings": [],
+  "exit_code": 2,
+  "expected_negative": true
+}
