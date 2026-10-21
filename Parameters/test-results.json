@@ -1,0 +1,20 @@
+{
+  "baseline": "90904dd55e3bbc2da249e572245fae113f9d7f8f",
+  "main_unchanged": "f70b7e5be63f6b85d895c6d5b259adbc30577b86",
+  "javascript_game": {
+    "tests": 95,
+    "passed": 95
+  },
+  "javascript_core_and_anatomy": {
+    "tests": 20,
+    "passed": 20
+  },
+  "python_chromium": {
+    "tests": 36,
+    "passed": 36,
+    "elapsed_seconds": 116.879,
+    "result": "OK"
+  },
+  "visual_status": "endpoint preview; artistic transition work remains open",
+  "publication": "none; local branch only"
+}

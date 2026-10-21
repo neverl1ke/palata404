@@ -1,0 +1,112 @@
+{
+  "poses": {
+    "melee": {
+      "right": [
+        207,
+        889
+      ],
+      "left": [
+        738,
+        920
+      ],
+      "angle": 195,
+      "handAngles": {
+        "right": 0,
+        "left": 0
+      },
+      "bend": {
+        "right": 1,
+        "left": -1
+      }
+    },
+    "pistol": {
+      "right": [
+        230,
+        330
+      ],
+      "left": [
+        738,
+        920
+      ],
+      "angle": -72,
+      "handAngles": {
+        "right": -238.37712546786017,
+        "left": 0
+      },
+      "bend": {
+        "right": -1,
+        "left": -1
+      }
+    },
+    "rifle": {
+      "right": [
+        450,
+        590
+      ],
+      "left": [
+        644,
+        635
+      ],
+      "angle": 30,
+      "handAngles": {
+        "right": -122.46823516564078,
+        "left": 120
+      },
+      "bend": {
+        "right": 1,
+        "left": -1
+      }
+    }
+  },
+  "anatomyProjection": {
+    "idle": {
+      "right": [
+        1,
+        1
+      ],
+      "left": [
+        1,
+        1
+      ]
+    },
+    "melee": {
+      "right": [
+        1,
+        1
+      ],
+      "left": [
+        1,
+        1
+      ]
+    },
+    "pistol": {
+      "right": [
+        0.82,
+        0.93
+      ],
+      "left": [
+        1,
+        1
+      ]
+    },
+    "rifle": {
+      "right": [
+        0.92,
+        0.83
+      ],
+      "left": [
+        0.96,
+        0.46
+      ]
+    }
+  },
+  "posePolicy": {
+    "pistol": "one-hand-only",
+    "legacyAliases": {
+      "pistol-two-hand": "pistol",
+      "pistol-supported": "pistol",
+      "pistol-one-hand": "pistol"
+    }
+  },
+  "projectionNote": "Pose-specific 2D foreshortening; immutable source bone lengths. This is not a full 3D anatomical rig."
+}

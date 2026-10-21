@@ -1,0 +1,121 @@
+test_actual_render_changes_only_at_wrists_and_female_rifle_shoulder (test_avatar_cleanup.CleanupBrowserTests.test_actual_render_changes_only_at_wrists_and_female_rifle_shoulder) ... FAIL
+test_shoulder_surface_is_local_continuous_and_never_changes_skeleton (test_avatar_cleanup.CleanupBrowserTests.test_shoulder_surface_is_local_continuous_and_never_changes_skeleton) ... ok
+test_all_65_precleanup_pngs_are_byte_identical (test_avatar_cleanup.CleanupSourceTests.test_all_65_precleanup_pngs_are_byte_identical) ... FAIL
+test_new_transition_edges_have_no_faint_projection_away_from_the_silhouette (test_avatar_cleanup.CleanupSourceTests.test_new_transition_edges_have_no_faint_projection_away_from_the_silhouette) ... ok
+test_all_current_faces_four_poses_and_shared_hair_palette (test_avatar_core.AvatarCoreBrowserTests.test_all_current_faces_four_poses_and_shared_hair_palette) ... ok
+test_all_eight_poses_preserve_face_feet_and_grips_across_breathing (test_avatar_core.AvatarCoreBrowserTests.test_all_eight_poses_preserve_face_feet_and_grips_across_breathing) ... ok
+test_binding_api_sleeves_follow_each_rig_and_can_be_removed (test_avatar_core.AvatarCoreBrowserTests.test_binding_api_sleeves_follow_each_rig_and_can_be_removed) ... ok
+test_canvas_appearance_matches_actual_game_renderer (test_avatar_core.AvatarCoreBrowserTests.test_canvas_appearance_matches_actual_game_renderer) ... appearance comparison male 0.04813767040052067 0
+appearance comparison female 0.0 0
+ok
+test_existing_saves_and_both_loadouts_remain_byte_unchanged (test_avatar_core.AvatarCoreBrowserTests.test_existing_saves_and_both_loadouts_remain_byte_unchanged) ... ok
+test_hidden_tab_stops_and_resume_does_not_catch_up_hidden_time (test_avatar_core.AvatarCoreBrowserTests.test_hidden_tab_stops_and_resume_does_not_catch_up_hidden_time) ... ok
+test_idle_render_matches_original_for_both_bases (test_avatar_core.AvatarCoreBrowserTests.test_idle_render_matches_original_for_both_bases) ... ok
+test_interrupted_transitions_have_no_joint_jump (test_avatar_core.AvatarCoreBrowserTests.test_interrupted_transitions_have_no_joint_jump) ... FAIL
+test_mobile_and_high_dpi_layout (test_avatar_core.AvatarCoreBrowserTests.test_mobile_and_high_dpi_layout) ... ok
+test_moving_joints_remain_opaque_and_main_body_connected (test_avatar_core.AvatarCoreBrowserTests.test_moving_joints_remain_opaque_and_main_body_connected) ... ok
+test_offline_lab_has_no_network_dependencies (test_avatar_core.AvatarCoreBrowserTests.test_offline_lab_has_no_network_dependencies) ... ok
+test_rapid_gender_switch_is_atomic_and_image_cache_bounded (test_avatar_core.AvatarCoreBrowserTests.test_rapid_gender_switch_is_atomic_and_image_cache_bounded) ... ok
+test_two_handed_pistol_variant_keeps_support_hand_attached (test_avatar_core.AvatarCoreBrowserTests.test_two_handed_pistol_variant_keeps_support_hand_attached) ... ok
+test_two_instances_render_different_genders_without_shared_pose_state (test_avatar_core.AvatarCoreBrowserTests.test_two_instances_render_different_genders_without_shared_pose_state) ... ok
+test_approved_runtime_and_all_original_assets_are_unchanged (test_avatar_core.AvatarCoreSourceTests.test_approved_runtime_and_all_original_assets_are_unchanged) ... ok
+test_nine_disjoint_source_partitions_reconstruct_every_visible_pixel (test_avatar_core.AvatarCoreSourceTests.test_nine_disjoint_source_partitions_reconstruct_every_visible_pixel) ... ok
+test_pivots_are_inside_actual_source_skin_and_assets_match_hashes (test_avatar_core.AvatarCoreSourceTests.test_pivots_are_inside_actual_source_skin_and_assets_match_hashes) ... ok
+test_all_pose_transitions_keep_joints_continuous_and_wrists_within_range (test_avatar_polish.PolishBrowserTests.test_all_pose_transitions_keep_joints_continuous_and_wrists_within_range) ... FAIL
+test_cached_skin_preserves_the_uncached_paint_order (test_avatar_polish.PolishBrowserTests.test_cached_skin_preserves_the_uncached_paint_order) ... ok
+test_hiding_corrective_hands_removes_them_and_old_fingertips_are_absent (test_avatar_polish.PolishBrowserTests.test_hiding_corrective_hands_removes_them_and_old_fingertips_are_absent) ... ok
+test_supported_pistol_and_combat_wrists_do_not_fold_backwards (test_avatar_polish.PolishBrowserTests.test_supported_pistol_and_combat_wrists_do_not_fold_backwards) ... ERROR
+test_wrist_retouch_is_applied_only_inside_declared_source_band (test_avatar_polish.PolishBrowserTests.test_wrist_retouch_is_applied_only_inside_declared_source_band)
+Runtime A/B, not a comparison against newly approved image hashes. ... ok
+test_corrective_hands_have_single_clean_silhouette_and_fit_uv_bounds (test_avatar_polish.PolishSourceTests.test_corrective_hands_have_single_clean_silhouette_and_fit_uv_bounds) ... ok
+test_every_prototype_png_is_still_byte_identical (test_avatar_polish.PolishSourceTests.test_every_prototype_png_is_still_byte_identical) ... ok
+test_registration_is_reproducible_without_moving_sources (test_avatar_polish.PolishSourceTests.test_registration_is_reproducible_without_moving_sources) ... FAIL
+
+======================================================================
+ERROR: test_supported_pistol_and_combat_wrists_do_not_fold_backwards (test_avatar_polish.PolishBrowserTests.test_supported_pistol_and_combat_wrists_do_not_fold_backwards)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/palata404-avatar-core/tests/test_avatar_polish.py", line 119, in test_supported_pistol_and_combat_wrists_do_not_fold_backwards
+    self.assertTrue(self.p.locator('#pistol-support').is_checked());records=[]
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/sync_api/_generated.py", line 19519, in is_checked
+    self._sync(self._impl_obj.is_checked(timeout=to_milliseconds(timeout)))
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/_impl/_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/_impl/_locator.py", line 514, in is_checked
+    return await self._frame.is_checked(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/_impl/_frame.py", line 402, in is_checked
+    return await self._channel.send(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/_impl/_connection.py", line 76, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/_impl/_connection.py", line 632, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Locator.is_checked: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("#pistol-support")
+
+
+======================================================================
+FAIL: test_actual_render_changes_only_at_wrists_and_female_rifle_shoulder (test_avatar_cleanup.CleanupBrowserTests.test_actual_render_changes_only_at_wrists_and_female_rifle_shoulder)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/palata404-avatar-core/tests/test_avatar_cleanup.py", line 82, in test_actual_render_changes_only_at_wrists_and_female_rifle_shoulder
+    for field in ['arms','weapon','angles','transforms']:same(frame[field],before[field],field=='angles')
+                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/palata404-avatar-core/tests/test_avatar_cleanup.py", line 72, in same
+    for k in a:same(a[k],b[k],angles)
+               ^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/palata404-avatar-core/tests/test_avatar_cleanup.py", line 72, in same
+    for k in a:same(a[k],b[k],angles)
+               ^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/palata404-avatar-core/tests/test_avatar_cleanup.py", line 75, in same
+    for x,y in zip(a,b):same(x,y,angles)
+                        ^^^^^^^^^^^^^^^^
+  File "/workspace/palata404-avatar-core/tests/test_avatar_cleanup.py", line 80, in same
+    else:self.assertAlmostEqual(a,b,delta=1e-9)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0.9996676220010439 != 0.975631154522069 within 1e-09 delta (0.02403646747897481 difference)
+
+======================================================================
+FAIL: test_all_65_precleanup_pngs_are_byte_identical (test_avatar_cleanup.CleanupSourceTests.test_all_65_precleanup_pngs_are_byte_identical)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/palata404-avatar-core/tests/test_avatar_cleanup.py", line 24, in test_all_65_precleanup_pngs_are_byte_identical
+    self.assertEqual(current[field],previous[field],(gender,field))
+AssertionError: {'melee': {'right': [207, 889], 'left': [738, 920], 'angle': 19[388 chars]-1}}} != {'melee': {'right': [225, 875], 'left': [738, 920], 'angle': 21[435 chars]-1}}}
+Diff is 1642 characters long. Set self.maxDiff to None to see it. : ('male', 'poses')
+
+======================================================================
+FAIL: test_interrupted_transitions_have_no_joint_jump (test_avatar_core.AvatarCoreBrowserTests.test_interrupted_transitions_have_no_joint_jump)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/palata404-avatar-core/tests/test_avatar_core.py", line 71, in test_interrupted_transitions_have_no_joint_jump
+    for k in ['shoulder','elbow','wrist','grip']:self.assertLess(np.linalg.norm(np.array(a[side][k])-b[side][k]),1e-6)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: np.float64(32.280024783138074) not less than 1e-06
+
+======================================================================
+FAIL: test_all_pose_transitions_keep_joints_continuous_and_wrists_within_range (test_avatar_polish.PolishBrowserTests.test_all_pose_transitions_keep_joints_continuous_and_wrists_within_range)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/palata404-avatar-core/tests/test_avatar_polish.py", line 181, in test_all_pose_transitions_keep_joints_continuous_and_wrists_within_range
+    self.assertLessEqual(angle,70,(gender,first,second,side))
+AssertionError: 130.7802859766568 not less than or equal to 70 : ('male', 'idle', 'pistol', 'right')
+
+======================================================================
+FAIL: test_registration_is_reproducible_without_moving_sources (test_avatar_polish.PolishSourceTests.test_registration_is_reproducible_without_moving_sources)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/palata404-avatar-core/tests/test_avatar_polish.py", line 45, in test_registration_is_reproducible_without_moving_sources
+    self.assertEqual(before,{p:hashlib.sha256(p.read_bytes()).hexdigest() for p in paths})
+AssertionError: {Posi[13425 chars]'): '9c822e9e7a0bbf52f23a9e4900cc6d4559cb5a54f[160 chars]263'} != {Posi[13425 chars]'): '8b464bf8803359d69b2dc4822639112f4619ee08a[160 chars]263'}
+Diff is 14042 characters long. Set self.maxDiff to None to see it.
+
+----------------------------------------------------------------------
+Ran 29 tests in 115.669s
+
+FAILED (failures=5, errors=1)

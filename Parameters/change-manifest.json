@@ -1,0 +1,630 @@
+{
+  "baseline": "90904dd",
+  "self_hash_omitted": true,
+  "files": [
+    {
+      "path": ".gitignore",
+      "previous_git_blob": "f1cb6f957cc13dd8f9dcf8973ce39bb66bf6c5dc",
+      "sha256": "08b2c8a20d9f861622d636a25986e0806454a851e84a90cbe0d8b79db760045c",
+      "purpose": "male rig/rendering calibration, review UI or technical documentation"
+    },
+    {
+      "path": "avatar-core/assets/male/pose-art/pistol-right-arm.png",
+      "previous_git_blob": null,
+      "sha256": "6547603affe525f432f61ae02adde27e0198449f29804d28e95c6b133459fbeb",
+      "purpose": "new isolated male arm corrective RGBA; original PNGs retained"
+    },
+    {
+      "path": "avatar-core/assets/male/pose-art/pistol-right-front.png",
+      "previous_git_blob": null,
+      "sha256": "0ffd906061027c8b64156f9812768567c2716ba1f113bd7d80a1da674a6d5ece",
+      "purpose": "new isolated male arm corrective RGBA; original PNGs retained"
+    },
+    {
+      "path": "avatar-core/assets/male/pose-art/rifle-left-arm.png",
+      "previous_git_blob": null,
+      "sha256": "f7da0da5ee57c190e57126b06026612c8b7f16541de681dc063b263f8968df0a",
+      "purpose": "new isolated male arm corrective RGBA; original PNGs retained"
+    },
+    {
+      "path": "avatar-core/assets/male/pose-art/rifle-left-front.png",
+      "previous_git_blob": null,
+      "sha256": "360acb7b0aeb3a07f18848a16befe59c3e411d034f4dff67fee05e4fec819eef",
+      "purpose": "new isolated male arm corrective RGBA; original PNGs retained"
+    },
+    {
+      "path": "avatar-core/assets/male/pose-art/rifle-right-arm.png",
+      "previous_git_blob": null,
+      "sha256": "d15f2934bb663d4e05156d1f3606a41a64378575aa92046a398e108b07fc2248",
+      "purpose": "new isolated male arm corrective RGBA; original PNGs retained"
+    },
+    {
+      "path": "avatar-core/assets/male/pose-art/rifle-right-front.png",
+      "previous_git_blob": null,
+      "sha256": "1114c29bb8a5741352f2804f0f5d9ac984ce38e5bc9d174872ea11dd981f7f50",
+      "purpose": "new isolated male arm corrective RGBA; original PNGs retained"
+    },
+    {
+      "path": "avatar-core/engine.mjs",
+      "previous_git_blob": "6106ea2cfd7590786513a540080b8586473b8318",
+      "sha256": "8abcea76099b80826e7cb593fa425fc50a72eaa75699fc44fb21e32c97e66cd0",
+      "purpose": "male rig/rendering calibration, review UI or technical documentation"
+    },
+    {
+      "path": "avatar-core/math.mjs",
+      "previous_git_blob": "935e036cac4f6b3a00d065c762ca6c06d47e55a6",
+      "sha256": "3b713ff1f7237960b65ffb710d3c5b8bc51e3bf0c2ea1feb08941858ba996214",
+      "purpose": "male rig/rendering calibration, review UI or technical documentation"
+    },
+    {
+      "path": "avatar-core/pose-art.mjs",
+      "previous_git_blob": null,
+      "sha256": "6217ab1c3034578cbad10bd93cd9f991302b797f1086dc4e4e6e5037a8fc5ee8",
+      "purpose": "male rig/rendering calibration, review UI or technical documentation"
+    },
+    {
+      "path": "avatar-core/rigs/male_anatomy.json",
+      "previous_git_blob": null,
+      "sha256": "92afd2a06771f304951be9b69f954ae00f8c1cc108457558153090cd31cad2a4",
+      "purpose": "male rig/rendering calibration, review UI or technical documentation"
+    },
+    {
+      "path": "avatar-core/rigs/male_rig.json",
+      "previous_git_blob": "eb1230a88a4f1e93264cec100e55bed5fcb32af4",
+      "sha256": "c4cad73e66ad75f47c7b242d24a67487b576cbc372e6a4d686573988ecb1a0f9",
+      "purpose": "male rig/rendering calibration, review UI or technical documentation"
+    },
+    {
+      "path": "avatar-lab/index.html",
+      "previous_git_blob": "2819c8dfc5c87977b3d33bda53a30029e67952d3",
+      "sha256": "7034ecd70622fdb349dfbbdd09d503507f73a53093bfbfacb1952bc971733197",
+      "purpose": "male rig/rendering calibration, review UI or technical documentation"
+    },
+    {
+      "path": "avatar-lab/lab.mjs",
+      "previous_git_blob": "cd1c3c64335ac28a050704243d666b818c76993c",
+      "sha256": "22eb6e45da55a95ba35e023ab56f4b6e406dba95a3aec3543650795e593dfd89",
+      "purpose": "male rig/rendering calibration, review UI or technical documentation"
+    },
+    {
+      "path": "docs/avatar-core.md",
+      "previous_git_blob": "b22fada450c32797e362a678ca09abf0a16c03d8",
+      "sha256": "0e670ae9db0fa7d7baeac30fc45aa34e0fe54294e165a4066b39ef719da223cb",
+      "purpose": "male rig/rendering calibration, review UI or technical documentation"
+    },
+    {
+      "path": "review/avatar-core-2/README.md",
+      "previous_git_blob": null,
+      "sha256": "f6118256bd90d59e12e419e1956e0eff842752ff89443d200e7b98a7d82475d1",
+      "purpose": "evidence, reproducible source, registration or report; not a game runtime import"
+    },
+    {
+      "path": "review/avatar-core-2/arm-art-manifest.json",
+      "previous_git_blob": null,
+      "sha256": "9826772a30746d6d57092645c99198c85d66ed093200aaafa4a6f101223b3ca8",
+      "purpose": "evidence, reproducible source, registration or report; not a game runtime import"
+    },
+    {
+      "path": "review/avatar-core-2/authoring-masks/pistol-right-mask.png",
+      "previous_git_blob": null,
+      "sha256": "60f3fa060f4210e7e3c1d60f08d46b0f956f21addac83e8a17abc81c42bf59c7",
+      "purpose": "evidence, reproducible source, registration or report; not a game runtime import"
+    },
+    {
+      "path": "review/avatar-core-2/authoring-masks/rifle-left-mask.png",
+      "previous_git_blob": null,
+      "sha256": "5f1ff9ffc31da51aa4f104d1deb3882b75acf6880452c9a3e01b2194fa618381",
+      "purpose": "evidence, reproducible source, registration or report; not a game runtime import"
+    },
+    {
+      "path": "review/avatar-core-2/authoring-masks/rifle-right-mask.png",
+      "previous_git_blob": null,
+      "sha256": "a7f88a76c2de62b93fc7361f9a14ce53faf315e4c8d29b8e2fb827caa9962ae5",
+      "purpose": "evidence, reproducible source, registration or report; not a game runtime import"
+    },
+    {
+      "path": "review/avatar-core-2/browser-check.json",
+      "previous_git_blob": null,
+      "sha256": "4b5763acc865b485a679e222e0437d41c94a9dbb854368b24048065eb15c9e08",
+      "purpose": "evidence, reproducible source, registration or report; not a game runtime import"
+    },
+    {
+      "path": "review/avatar-core-2/idle-breathing.webp",
+      "previous_git_blob": null,
+      "sha256": "c767f0c62e44912f3f690c66da9be1ad623b02d0f592d46162b8c40f3eae7fa8",
+      "purpose": "evidence, reproducible source, registration or report; not a game runtime import"
+    },
+    {
+      "path": "review/avatar-core-2/idle-full-before-after.webp",
+      "previous_git_blob": null,
+      "sha256": "76e0be6001fbe875a92f87383fe942406921dee27c8ccbd99ea4fea67014df12",
+      "purpose": "evidence, reproducible source, registration or report; not a game runtime import"
+    },
+    {
+      "path": "review/avatar-core-2/index.html",
+      "previous_git_blob": null,
+      "sha256": "fa4d455fb499800c749c1d7be0875596afe61c86a87d646bc7487d993c2c8732",
+      "purpose": "evidence, reproducible source, registration or report; not a game runtime import"
+    },
+    {
+      "path": "review/avatar-core-2/lab-desktop.png",
+      "previous_git_blob": null,
+      "sha256": "75f815f3ae180663d4bbefb002fd81457130b8decdbf988cbb493e84672d906e",
+      "purpose": "evidence, reproducible source, registration or report; not a game runtime import"
+    },
+    {
+      "path": "review/avatar-core-2/lab-mobile-320.png",
+      "previous_git_blob": null,
+      "sha256": "2925d763889b3fd10068d442fc0770c9da351d8b355926bb1fd32e2fe8442960",
+      "purpose": "evidence, reproducible source, registration or report; not a game runtime import"
+    },
+    {
+      "path": "review/avatar-core-2/lab-mobile-390.png",
+      "previous_git_blob": null,
+      "sha256": "71c2bdc5ba1b7121c9e43bf69f324ce6b290df7e603cacda2ef68f8cef9da28d",
+      "purpose": "evidence, reproducible source, registration or report; not a game runtime import"
+    },
+    {
+      "path": "review/avatar-core-2/lab-mobile-768.png",
+      "previous_git_blob": null,
+      "sha256": "f196e8ba550bad299179bb43c35f6f3a5839aa3a04dffc2c9b0f1f13f5e87571",
+      "purpose": "evidence, reproducible source, registration or report; not a game runtime import"
+    },
+    {
+      "path": "review/avatar-core-2/male-idle.webp",
+      "previous_git_blob": null,
+      "sha256": "ea2469db62807c2ea4a540739850b422c88ba217e09fc69c33d08bfcdea03fa8",
+      "purpose": "evidence, reproducible source, registration or report; not a game runtime import"
+    },
+    {
+      "path": "review/avatar-core-2/male-melee.webp",
+      "previous_git_blob": null,
+      "sha256": "ce35862915ea731c56856e3fafce0833d7252289011cac0c27a69fdf28e385f0",
+      "purpose": "evidence, reproducible source, registration or report; not a game runtime import"
+    },
+    {
+      "path": "review/avatar-core-2/male-pistol.webp",
+      "previous_git_blob": null,
+      "sha256": "e2efbe082f20ca9b8a303875f3fcacfa2bf3cbe49378d2e15cf42907473573a9",
+      "purpose": "evidence, reproducible source, registration or report; not a game runtime import"
+    },
+    {
+      "path": "review/avatar-core-2/male-rifle.webp",
+      "previous_git_blob": null,
+      "sha256": "2a90fb2acd5bacd0bb8053a804763c3168673daa716bc6f7d08c07abb081df24",
+      "purpose": "evidence, reproducible source, registration or report; not a game runtime import"
+    },
+    {
+      "path": "review/avatar-core-2/melee-arms-before-after.webp",
+      "previous_git_blob": null,
+      "sha256": "7db8510f79b508e2f858f180fa93062fefc8da237d522c7038ed0e9248ba04c4",
+      "purpose": "evidence, reproducible source, registration or report; not a game runtime import"
+    },
+    {
+      "path": "review/avatar-core-2/melee-breathing.webp",
+      "previous_git_blob": null,
+      "sha256": "9e0f2063e596a73053bb40ad00bcdaf3c132f43b30eb07a8dd9275a21a6b58ef",
+      "purpose": "evidence, reproducible source, registration or report; not a game runtime import"
+    },
+    {
+      "path": "review/avatar-core-2/melee-four-backgrounds.webp",
+      "previous_git_blob": null,
+      "sha256": "a3110655604480fca953f505a0de51953cb04267c08b27a051bbe09e8b21ba46",
+      "purpose": "evidence, reproducible source, registration or report; not a game runtime import"
+    },
+    {
+      "path": "review/avatar-core-2/melee-full-before-after.webp",
+      "previous_git_blob": null,
+      "sha256": "bf06b0cfc1403702be9dc5eebacbdd0ecfda58fce33f2363bd14dad4cd4a579c",
+      "purpose": "evidence, reproducible source, registration or report; not a game runtime import"
+    },
+    {
+      "path": "review/avatar-core-2/melee-right-elbow.webp",
+      "previous_git_blob": null,
+      "sha256": "9323d9b82fb5b96330c73705da9757a2186c18b73af436a14317f5eb160d23bf",
+      "purpose": "evidence, reproducible source, registration or report; not a game runtime import"
+    },
+    {
+      "path": "review/avatar-core-2/melee-right-grip.webp",
+      "previous_git_blob": null,
+      "sha256": "0b6a6c182fcad5effad5f213dec7d69588a69870e7d171db5c1550032758f09e",
+      "purpose": "evidence, reproducible source, registration or report; not a game runtime import"
+    },
+    {
+      "path": "review/avatar-core-2/melee-right-shoulder.webp",
+      "previous_git_blob": null,
+      "sha256": "25fff7883cac19b0a232743619775ef25f535d5e25b45a9d8946c08e36c3b6a2",
+      "purpose": "evidence, reproducible source, registration or report; not a game runtime import"
+    },
+    {
+      "path": "review/avatar-core-2/melee-right-wrist.webp",
+      "previous_git_blob": null,
+      "sha256": "93428b1a2797431e0fac9db6eb3ebd2f4a23c868f0f3ab9697cfe3415359e968",
+      "purpose": "evidence, reproducible source, registration or report; not a game runtime import"
+    },
+    {
+      "path": "review/avatar-core-2/pistol-arms-before-after.webp",
+      "previous_git_blob": null,
+      "sha256": "8f110cdd14ea61a28b7fe9399754f6c42a14a4d83819ca5efc42aa7d25c7bb8b",
+      "purpose": "evidence, reproducible source, registration or report; not a game runtime import"
+    },
+    {
+      "path": "review/avatar-core-2/pistol-breathing.webp",
+      "previous_git_blob": null,
+      "sha256": "52051700021eb6523a534964dc5ac071a21dc83a825dc678ba4d6a5288f02a60",
+      "purpose": "evidence, reproducible source, registration or report; not a game runtime import"
+    },
+    {
+      "path": "review/avatar-core-2/pistol-four-backgrounds.webp",
+      "previous_git_blob": null,
+      "sha256": "c83a122375fb2de20fa00e1bfeb2a0104cba319e03926c00ae171b7ea255410b",
+      "purpose": "evidence, reproducible source, registration or report; not a game runtime import"
+    },
+    {
+      "path": "review/avatar-core-2/pistol-full-before-after.webp",
+      "previous_git_blob": null,
+      "sha256": "5f559ae66dd9432067e9122f3e0fa31d0ce17b82c51f35abdb5f20ce149afc3f",
+      "purpose": "evidence, reproducible source, registration or report; not a game runtime import"
+    },
+    {
+      "path": "review/avatar-core-2/pistol-right-elbow.webp",
+      "previous_git_blob": null,
+      "sha256": "dbc35481abaec65ff4fc0ddb7c771c7cbbf46b5db5fe2d1753520b754afe3bdd",
+      "purpose": "evidence, reproducible source, registration or report; not a game runtime import"
+    },
+    {
+      "path": "review/avatar-core-2/pistol-right-grip.webp",
+      "previous_git_blob": null,
+      "sha256": "d1bdd8babbf35c4990ed71b7da30d1ce39608d5a1484d70e3f7a5af3e06a188b",
+      "purpose": "evidence, reproducible source, registration or report; not a game runtime import"
+    },
+    {
+      "path": "review/avatar-core-2/pistol-right-shoulder.webp",
+      "previous_git_blob": null,
+      "sha256": "df670f2e030992cc5ae06fbe4095d12aa5ac090daf83d338bc1bcf93628d753f",
+      "purpose": "evidence, reproducible source, registration or report; not a game runtime import"
+    },
+    {
+      "path": "review/avatar-core-2/pistol-right-wrist.webp",
+      "previous_git_blob": null,
+      "sha256": "87a5580ffc0a3422e0476a77a2e330e9e7ec56676bba040542e9be0e9c2f7262",
+      "purpose": "evidence, reproducible source, registration or report; not a game runtime import"
+    },
+    {
+      "path": "review/avatar-core-2/pistol-skeleton.webp",
+      "previous_git_blob": null,
+      "sha256": "ea32eaec31598da62161379f571f608db495cf30bb5f1d0b53329a4279c2d83c",
+      "purpose": "evidence, reproducible source, registration or report; not a game runtime import"
+    },
+    {
+      "path": "review/avatar-core-2/pose-bindings.json",
+      "previous_git_blob": null,
+      "sha256": "4b7a072993640536742c52d902341b8832443b46bbb9d37c0438086bf609d237",
+      "purpose": "evidence, reproducible source, registration or report; not a game runtime import"
+    },
+    {
+      "path": "review/avatar-core-2/reference-provenance.json",
+      "previous_git_blob": null,
+      "sha256": "ed1387f4134afece2ea66a4302b9f60d834a801dafd70c8e1dbd289d4cad5286",
+      "purpose": "evidence, reproducible source, registration or report; not a game runtime import"
+    },
+    {
+      "path": "review/avatar-core-2/rifle-arms-before-after.webp",
+      "previous_git_blob": null,
+      "sha256": "e9079f28ee30f6036a55df7cef9b26abb6169c6de4e65bc8d88f79e22ab4272a",
+      "purpose": "evidence, reproducible source, registration or report; not a game runtime import"
+    },
+    {
+      "path": "review/avatar-core-2/rifle-breathing.webp",
+      "previous_git_blob": null,
+      "sha256": "147ef5ae5aa41c5c757fe44972168fb8ba835a54ddefb3385419c9c507781bbc",
+      "purpose": "evidence, reproducible source, registration or report; not a game runtime import"
+    },
+    {
+      "path": "review/avatar-core-2/rifle-four-backgrounds.webp",
+      "previous_git_blob": null,
+      "sha256": "278c07297201ff5b7be29b554d0ed197df905eb2905c30b12cf611673584a08c",
+      "purpose": "evidence, reproducible source, registration or report; not a game runtime import"
+    },
+    {
+      "path": "review/avatar-core-2/rifle-full-before-after.webp",
+      "previous_git_blob": null,
+      "sha256": "26d23f9bc9b93e51d692b196b075aeb6751a32e1a8144a75609903918bf08128",
+      "purpose": "evidence, reproducible source, registration or report; not a game runtime import"
+    },
+    {
+      "path": "review/avatar-core-2/rifle-left-elbow.webp",
+      "previous_git_blob": null,
+      "sha256": "54669327621898eb92fd9814cc9c2ab371fb53e0330892371859f397d8d72c96",
+      "purpose": "evidence, reproducible source, registration or report; not a game runtime import"
+    },
+    {
+      "path": "review/avatar-core-2/rifle-left-grip.webp",
+      "previous_git_blob": null,
+      "sha256": "2b158a3dcdb409aa2755d40f09735e640d1f5a4677416c11b66e70a151356e2d",
+      "purpose": "evidence, reproducible source, registration or report; not a game runtime import"
+    },
+    {
+      "path": "review/avatar-core-2/rifle-left-shoulder.webp",
+      "previous_git_blob": null,
+      "sha256": "0b0993b94316a0736d0cbe05071e8b19a861512a7c0c36cd36a1a887cb09df7e",
+      "purpose": "evidence, reproducible source, registration or report; not a game runtime import"
+    },
+    {
+      "path": "review/avatar-core-2/rifle-left-wrist.webp",
+      "previous_git_blob": null,
+      "sha256": "81f97483aff7183ed52a582a11c33ba9c722c0b3d76ab0a315bf5a39154f350e",
+      "purpose": "evidence, reproducible source, registration or report; not a game runtime import"
+    },
+    {
+      "path": "review/avatar-core-2/rifle-right-elbow.webp",
+      "previous_git_blob": null,
+      "sha256": "181257d58c03073bd8f762832778c6b12e0c405e490ffe11be5c8fe0e694f3bb",
+      "purpose": "evidence, reproducible source, registration or report; not a game runtime import"
+    },
+    {
+      "path": "review/avatar-core-2/rifle-right-grip.webp",
+      "previous_git_blob": null,
+      "sha256": "ecc487a8c328373b325f4ac6e6e1135d4c1f633aced8d55a2e8435e8cae635a2",
+      "purpose": "evidence, reproducible source, registration or report; not a game runtime import"
+    },
+    {
+      "path": "review/avatar-core-2/rifle-right-shoulder.webp",
+      "previous_git_blob": null,
+      "sha256": "afd646fa2ebd925a0c75cb269e22ffd3948988cbc89a351d222e6a22af1bd825",
+      "purpose": "evidence, reproducible source, registration or report; not a game runtime import"
+    },
+    {
+      "path": "review/avatar-core-2/rifle-right-wrist.webp",
+      "previous_git_blob": null,
+      "sha256": "fb8881d292aa2c225e2febdcbd168fc420f281683a5b243d2d98290139791854",
+      "purpose": "evidence, reproducible source, registration or report; not a game runtime import"
+    },
+    {
+      "path": "review/avatar-core-2/rifle-skeleton.webp",
+      "previous_git_blob": null,
+      "sha256": "f0b51439f11d0fb8435f61218e49e40b8eb0fb861f14d378917a474e0b1ba0c2",
+      "purpose": "evidence, reproducible source, registration or report; not a game runtime import"
+    },
+    {
+      "path": "review/avatar-core-2/sources/pistol-arm-edit.png",
+      "previous_git_blob": null,
+      "sha256": "93d1907ece7e4b8e2eda3911f259fc8a9689bde31b4ae8f4f1686b7615113cd7",
+      "purpose": "evidence, reproducible source, registration or report; not a game runtime import"
+    },
+    {
+      "path": "review/avatar-core-2/sources/rifle-arm-edit.png",
+      "previous_git_blob": null,
+      "sha256": "0732b5be18b0821738aa960d6841df330be3438cc3e9e34a9d28dee019e95027",
+      "purpose": "evidence, reproducible source, registration or report; not a game runtime import"
+    },
+    {
+      "path": "review/avatar-core-2/test-evidence/appearance-comparison.json",
+      "previous_git_blob": null,
+      "sha256": "a312c50cc79086f0981bd673802d3a432771a4225c69f34bcaeb78a4816e204a",
+      "purpose": "evidence, reproducible source, registration or report; not a game runtime import"
+    },
+    {
+      "path": "review/avatar-core-2/test-evidence/cosmetic-check.json",
+      "previous_git_blob": null,
+      "sha256": "fb3665dae407aaffd925b756d947ae75e72452081665f84030500aac54239fec",
+      "purpose": "evidence, reproducible source, registration or report; not a game runtime import"
+    },
+    {
+      "path": "review/avatar-core-2/test-evidence/edge-fringe-check.json",
+      "previous_git_blob": null,
+      "sha256": "f731d78fb3fcbcfa2efad5e5a2cfb857194633c48e362172d3ed96c9967a5905",
+      "purpose": "evidence, reproducible source, registration or report; not a game runtime import"
+    },
+    {
+      "path": "review/avatar-core-2/test-evidence/female-all-current-faces.webp",
+      "previous_git_blob": null,
+      "sha256": "43efe65725fba2db3379a6eee844b3c70a5bed3fa6e0416c109c996ef3cbd917",
+      "purpose": "evidence, reproducible source, registration or report; not a game runtime import"
+    },
+    {
+      "path": "review/avatar-core-2/test-evidence/female-appearance-diff.png",
+      "previous_git_blob": null,
+      "sha256": "4c0c7c9d0e0250c6cde2e03ba681b187ef00106a8174ef27229cd366703b9b7d",
+      "purpose": "evidence, reproducible source, registration or report; not a game runtime import"
+    },
+    {
+      "path": "review/avatar-core-2/test-evidence/female-appearance-game.png",
+      "previous_git_blob": null,
+      "sha256": "93722332d42e21c747630f6a46ec9b8aadd3b2a8ca5d5d4fb95bfe07145d70cb",
+      "purpose": "evidence, reproducible source, registration or report; not a game runtime import"
+    },
+    {
+      "path": "review/avatar-core-2/test-evidence/female-appearance-lab.png",
+      "previous_git_blob": null,
+      "sha256": "93722332d42e21c747630f6a46ec9b8aadd3b2a8ca5d5d4fb95bfe07145d70cb",
+      "purpose": "evidence, reproducible source, registration or report; not a game runtime import"
+    },
+    {
+      "path": "review/avatar-core-2/test-evidence/male-all-current-faces.webp",
+      "previous_git_blob": null,
+      "sha256": "6cc252db60ffae62466ad1ad669638f6a16e03c6f0376e8b44d346cf2606055a",
+      "purpose": "evidence, reproducible source, registration or report; not a game runtime import"
+    },
+    {
+      "path": "review/avatar-core-2/test-evidence/male-appearance-diff.png",
+      "previous_git_blob": null,
+      "sha256": "d3cb0bd56199bc7adc3976d995514a3b3dbe725bfaf8721c6feba112f84a8670",
+      "purpose": "evidence, reproducible source, registration or report; not a game runtime import"
+    },
+    {
+      "path": "review/avatar-core-2/test-evidence/male-appearance-game.png",
+      "previous_git_blob": null,
+      "sha256": "fb5aefa4c01322d39e028c67a1296f287f921f979ac55fca1dd57c687d714a64",
+      "purpose": "evidence, reproducible source, registration or report; not a game runtime import"
+    },
+    {
+      "path": "review/avatar-core-2/test-evidence/male-appearance-lab.png",
+      "previous_git_blob": null,
+      "sha256": "11a00bcbdc498b845ba2f4e5e8261fe51f13efba3602d4ec3de857c3a2264f83",
+      "purpose": "evidence, reproducible source, registration or report; not a game runtime import"
+    },
+    {
+      "path": "review/avatar-core-2/test-evidence/raster-order-check.json",
+      "previous_git_blob": null,
+      "sha256": "452539e0c43bfafa91ef75936ee36862330cc4ef6f957799fcd8ba1fc3674a1f",
+      "purpose": "evidence, reproducible source, registration or report; not a game runtime import"
+    },
+    {
+      "path": "review/avatar-core-2/test-evidence/render-scope-check.json",
+      "previous_git_blob": null,
+      "sha256": "10d58db19c5bcc2e2c7f15fcfd5b7b2c074af32555630e89600906dc43c96890",
+      "purpose": "evidence, reproducible source, registration or report; not a game runtime import"
+    },
+    {
+      "path": "review/avatar-core-2/test-evidence/shoulder-continuity-check.json",
+      "previous_git_blob": null,
+      "sha256": "769a88c2ba3654c8cd220417a0e79c4bf94bd53d3dc4069d60ee02429e529dbd",
+      "purpose": "evidence, reproducible source, registration or report; not a game runtime import"
+    },
+    {
+      "path": "review/avatar-core-2/test-evidence/wrist-angle-check.json",
+      "previous_git_blob": null,
+      "sha256": "8e8527581a10591fbf1419dc1ced3f198892569cddadf642f90c538d78675211",
+      "purpose": "evidence, reproducible source, registration or report; not a game runtime import"
+    },
+    {
+      "path": "review/avatar-core-2/test-evidence/wrist-patch-scope-check.json",
+      "previous_git_blob": null,
+      "sha256": "d024d5745f92697a3b98acd73b9e6713383559fc9044d37421f63137f3de41f1",
+      "purpose": "evidence, reproducible source, registration or report; not a game runtime import"
+    },
+    {
+      "path": "review/avatar-core-2/test-logs/bundle.log",
+      "previous_git_blob": null,
+      "sha256": "930a7f7b7bca102f5eb7099cc9fb50ddf02ace322efa84213909fc42855638e3",
+      "purpose": "evidence, reproducible source, registration or report; not a game runtime import"
+    },
+    {
+      "path": "review/avatar-core-2/test-logs/capture.log",
+      "previous_git_blob": null,
+      "sha256": "68673912ab23bc94e5745722bd16c17e626dfd45994e535dac06a461e40a54d0",
+      "purpose": "evidence, reproducible source, registration or report; not a game runtime import"
+    },
+    {
+      "path": "review/avatar-core-2/test-logs/core-20-js.log",
+      "previous_git_blob": null,
+      "sha256": "dad78ed91290c4075ec0bb2321bcf9d2a499e1a5b5ed444f2b6c4b6b046cc8de",
+      "purpose": "evidence, reproducible source, registration or report; not a game runtime import"
+    },
+    {
+      "path": "review/avatar-core-2/test-logs/game-95-js.log",
+      "previous_git_blob": null,
+      "sha256": "e43a6a7a04188796a062281105e723fe69b00b64fb0389b89e722c2780fe5c17",
+      "purpose": "evidence, reproducible source, registration or report; not a game runtime import"
+    },
+    {
+      "path": "review/avatar-core-2/test-logs/initial-29-python-failed.log",
+      "previous_git_blob": null,
+      "sha256": "ce3e2f630880d9378f2287fc2c5777685addfa6dbf7857a914efcfda8de2a62b",
+      "purpose": "evidence, reproducible source, registration or report; not a game runtime import"
+    },
+    {
+      "path": "review/avatar-core-2/test-logs/intermediate-targeted-failed.log",
+      "previous_git_blob": null,
+      "sha256": "8c137036c70cd1b87d1d6a7670175a216f83cc44aa02a30161deb6a45161d2a5",
+      "purpose": "evidence, reproducible source, registration or report; not a game runtime import"
+    },
+    {
+      "path": "review/avatar-core-2/test-logs/regression-36-python.log",
+      "previous_git_blob": null,
+      "sha256": "178d1dea1e9bda566b661df06c302ba86a941377a9b86dc3d2a7d11c12cb58d2",
+      "purpose": "evidence, reproducible source, registration or report; not a game runtime import"
+    },
+    {
+      "path": "review/avatar-core-2/test-logs/topology-correction-pass.log",
+      "previous_git_blob": null,
+      "sha256": "2d34949c42847c903014144f68a7788923669ce0a9a14f35916a73d4c74b928e",
+      "purpose": "evidence, reproducible source, registration or report; not a game runtime import"
+    },
+    {
+      "path": "review/avatar-core-2/test-results.json",
+      "previous_git_blob": null,
+      "sha256": "044e4cad5c5ac2a6eff1f5548a6a6c524b119e14cbb86272c766bf8122bb5e9d",
+      "purpose": "evidence, reproducible source, registration or report; not a game runtime import"
+    },
+    {
+      "path": "review/avatar-core-2/three-poses-preview.png",
+      "previous_git_blob": null,
+      "sha256": "25cab02191218a954d7182844e2edfa1b3dd2caebad7e2f24cd02df782b82a6f",
+      "purpose": "evidence, reproducible source, registration or report; not a game runtime import"
+    },
+    {
+      "path": "review/avatar-core-2/transition-contact-sheet.webp",
+      "previous_git_blob": null,
+      "sha256": "d66c37e4d5205b0c1bd742d745a44c349750278887ab92d91ad6d89346cbbfca",
+      "purpose": "evidence, reproducible source, registration or report; not a game runtime import"
+    },
+    {
+      "path": "review/avatar-core-2/transitions.webp",
+      "previous_git_blob": null,
+      "sha256": "003673de5ceaf474d5322ae957f0ab24ac3d2da0b15e6e3a228b6fdf2f88defc",
+      "purpose": "evidence, reproducible source, registration or report; not a game runtime import"
+    },
+    {
+      "path": "tests/male-anatomy.test.mjs",
+      "previous_git_blob": null,
+      "sha256": "d3867fca9ae4ce565517191c35f4c58f6377960464473528fef2191ac289ea29",
+      "purpose": "regression test; old female/source guarantees retained"
+    },
+    {
+      "path": "tests/test_avatar_cleanup.py",
+      "previous_git_blob": "ba7ad760b42cdb5541dcb4ba5b66c1c113e2372e",
+      "sha256": "18d5d6735450f016548e522e83819a2222146d26659d0474e06feb9b42678a56",
+      "purpose": "regression test; old female/source guarantees retained"
+    },
+    {
+      "path": "tests/test_avatar_core.py",
+      "previous_git_blob": "cfd8e50f23332ab700428dff5a5c6ed05b4468bf",
+      "sha256": "e1cdbb5286c9d13639e0db7c530512f92682690dc3e3ff3c51eb20322dc75e45",
+      "purpose": "regression test; old female/source guarantees retained"
+    },
+    {
+      "path": "tests/test_avatar_polish.py",
+      "previous_git_blob": "a92927aeb342f26b2a03f9296b44815b74c31629",
+      "sha256": "f8fea10b825cadfaa7b8304ae6b75863d525fadbb3aef6ed6dd94556e53114d5",
+      "purpose": "regression test; old female/source guarantees retained"
+    },
+    {
+      "path": "tests/test_male_anatomy.py",
+      "previous_git_blob": null,
+      "sha256": "d7698f6693e7425c6d596f00b45588e14e9c2043e4eba7f1d72645bdd435e27b",
+      "purpose": "regression test; old female/source guarantees retained"
+    },
+    {
+      "path": "tools/bundle-avatar-lab.py",
+      "previous_git_blob": "df7a8302627afacc7940ca8daec9b80fd494f148",
+      "sha256": "5d2693d759bb4d23844e24ac965aa3187cd6a919958b836fa962c56f67d68c88",
+      "purpose": "prepare, capture, offline bundle/package or verification"
+    },
+    {
+      "path": "tools/package-male-anatomy.py",
+      "previous_git_blob": null,
+      "sha256": "51e7eb065eac15cace085bfe0f9c047ca120975ec0e6902017352e4882792865",
+      "purpose": "prepare, capture, offline bundle/package or verification"
+    },
+    {
+      "path": "tools/prepare-male-pose-art.py",
+      "previous_git_blob": null,
+      "sha256": "4a93e47dd1d7165c1ce32de5ae05b6936d30035990d5a4efac29bd86c7cea12e",
+      "purpose": "prepare, capture, offline bundle/package or verification"
+    },
+    {
+      "path": "tools/review-male-anatomy.py",
+      "previous_git_blob": null,
+      "sha256": "ffac915b7eaac247f8d53041000f837894ec643e3088f6eb6c31a5a2f20f2907",
+      "purpose": "prepare, capture, offline bundle/package or verification"
+    },
+    {
+      "path": "tools/verify-male-anatomy-package.py",
+      "previous_git_blob": null,
+      "sha256": "dc4448df6f09e1fa7358acbdd5d69eb5d768028ab1f527907fa0632a42604586",
+      "purpose": "prepare, capture, offline bundle/package or verification"
+    }
+  ]
+}

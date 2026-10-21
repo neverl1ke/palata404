@@ -1,0 +1,4 @@
+feature/avatar-core-2-male-anatomy
+Revision: e549901cda623f27e12f3a1468ea84926f04fc4f
+Baseline: 90904dd
+Not production-approved. No push/main changes.

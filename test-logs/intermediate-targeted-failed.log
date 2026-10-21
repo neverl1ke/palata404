@@ -1,0 +1,24 @@
+test_breathing_cycle_preserves_grips_projection_and_fixed_regions (tests.test_male_anatomy.MaleAnatomyBrowserTests.test_breathing_cycle_preserves_grips_projection_and_fixed_regions) ... ok
+test_female_all_four_renders_are_pixel_identical (tests.test_male_anatomy.MaleAnatomyBrowserTests.test_female_all_four_renders_are_pixel_identical) ... ok
+test_pistol_legacy_aliases_and_flag_never_activate_left_arm (tests.test_male_anatomy.MaleAnatomyBrowserTests.test_pistol_legacy_aliases_and_flag_never_activate_left_arm) ... ok
+test_pose_art_triangles_do_not_flip_during_breathing (tests.test_male_anatomy.MaleAnatomyBrowserTests.test_pose_art_triangles_do_not_flip_during_breathing) ... FAIL
+test_speed_control_pause_and_bindings_still_work (tests.test_male_anatomy.MaleAnatomyBrowserTests.test_speed_control_pause_and_bindings_still_work) ... ok
+test_art_has_no_gray_weapon_or_background_pixels (tests.test_male_anatomy.MaleAnatomySourceTests.test_art_has_no_gray_weapon_or_background_pixels) ... ok
+test_originals_and_female_rig_are_byte_identical_to_cleanup (tests.test_male_anatomy.MaleAnatomySourceTests.test_originals_and_female_rig_are_byte_identical_to_cleanup) ... ok
+test_interrupted_transitions_have_no_joint_jump (tests.test_avatar_core.AvatarCoreBrowserTests.test_interrupted_transitions_have_no_joint_jump) ... ok
+test_all_pose_transitions_keep_joints_continuous_and_wrists_within_range (tests.test_avatar_polish.PolishBrowserTests.test_all_pose_transitions_keep_joints_continuous_and_wrists_within_range) ... ok
+test_supported_pistol_and_combat_wrists_do_not_fold_backwards (tests.test_avatar_polish.PolishBrowserTests.test_supported_pistol_and_combat_wrists_do_not_fold_backwards) ... ok
+
+======================================================================
+FAIL: test_pose_art_triangles_do_not_flip_during_breathing (tests.test_male_anatomy.MaleAnatomyBrowserTests.test_pose_art_triangles_do_not_flip_during_breathing)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/palata404-avatar-core/tests/test_male_anatomy.py", line 75, in test_pose_art_triangles_do_not_flip_during_breathing
+    self.assertGreater(result['changed'],10000);self.assertGreater(result['minRatio'],.8,result)
+                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0.7514370207413006 not greater than 0.8 : {'minRatio': 0.7514370207413006, 'changed': 118404}
+
+----------------------------------------------------------------------
+Ran 10 tests in 27.146s
+
+FAILED (failures=1)

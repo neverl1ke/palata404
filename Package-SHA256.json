@@ -1,0 +1,162 @@
+[
+  {
+    "path": "Avatar-Lab.html",
+    "bytes": 37228168,
+    "sha256": "41a89a66dbc7a7f8ba818e569f3d987f5db30547f2dee8834b576e9072d11b69"
+  },
+  {
+    "path": "Parameters/arm-art-manifest.json",
+    "bytes": 5202,
+    "sha256": "9826772a30746d6d57092645c99198c85d66ed093200aaafa4a6f101223b3ca8"
+  },
+  {
+    "path": "Parameters/browser-check.json",
+    "bytes": 20896,
+    "sha256": "4b5763acc865b485a679e222e0437d41c94a9dbb854368b24048065eb15c9e08"
+  },
+  {
+    "path": "Parameters/change-manifest.json",
+    "bytes": 30365,
+    "sha256": "126e34232c850a7a56db1b9540bd594cfe9b960db4d4804ee9f89f7fda0c45f6"
+  },
+  {
+    "path": "Parameters/female_rig.json",
+    "bytes": 429482,
+    "sha256": "06046069b5d4d08f9325f7a950de249bdb431e7e167777357faefe133d8d62e6"
+  },
+  {
+    "path": "Parameters/male_anatomy.json",
+    "bytes": 1700,
+    "sha256": "92afd2a06771f304951be9b69f954ae00f8c1cc108457558153090cd31cad2a4"
+  },
+  {
+    "path": "Parameters/male_rig.json",
+    "bytes": 1290872,
+    "sha256": "c4cad73e66ad75f47c7b242d24a67487b576cbc372e6a4d686573988ecb1a0f9"
+  },
+  {
+    "path": "Parameters/pose-bindings.json",
+    "bytes": 8653,
+    "sha256": "4b7a072993640536742c52d902341b8832443b46bbb9d37c0438086bf609d237"
+  },
+  {
+    "path": "Parameters/reference-provenance.json",
+    "bytes": 795,
+    "sha256": "ed1387f4134afece2ea66a4302b9f60d834a801dafd70c8e1dbd289d4cad5286"
+  },
+  {
+    "path": "Parameters/test-results.json",
+    "bytes": 497,
+    "sha256": "044e4cad5c5ac2a6eff1f5548a6a6c524b119e14cbb86272c766bf8122bb5e9d"
+  },
+  {
+    "path": "README.md",
+    "bytes": 15315,
+    "sha256": "f6118256bd90d59e12e419e1956e0eff842752ff89443d200e7b98a7d82475d1"
+  },
+  {
+    "path": "Report.html",
+    "bytes": 31734755,
+    "sha256": "9636d08c2d2ff0a956f5a9d394b726d252b60624b63ffcc369fb8a9a605ef259"
+  },
+  {
+    "path": "Revision.txt",
+    "bytes": 151,
+    "sha256": "0f65f1ce3f4c64253c01d3b8ac6647c33ab09d8831ca68dffa3f4429a7ba20ef"
+  },
+  {
+    "path": "Technical-report.html",
+    "bytes": 17405,
+    "sha256": "64385d8054d2feb62f057d7ccdf04d45721c690aa1136a47d06b0488b3beaafe"
+  },
+  {
+    "path": "authoring-masks/pistol-right-mask.png",
+    "bytes": 6074,
+    "sha256": "60f3fa060f4210e7e3c1d60f08d46b0f956f21addac83e8a17abc81c42bf59c7"
+  },
+  {
+    "path": "authoring-masks/rifle-left-mask.png",
+    "bytes": 6778,
+    "sha256": "5f1ff9ffc31da51aa4f104d1deb3882b75acf6880452c9a3e01b2194fa618381"
+  },
+  {
+    "path": "authoring-masks/rifle-right-mask.png",
+    "bytes": 6511,
+    "sha256": "a7f88a76c2de62b93fc7361f9a14ce53faf315e4c8d29b8e2fb827caa9962ae5"
+  },
+  {
+    "path": "avatar-core/assets/male/pose-art/pistol-right-arm.png",
+    "bytes": 65794,
+    "sha256": "6547603affe525f432f61ae02adde27e0198449f29804d28e95c6b133459fbeb"
+  },
+  {
+    "path": "avatar-core/assets/male/pose-art/pistol-right-front.png",
+    "bytes": 20422,
+    "sha256": "0ffd906061027c8b64156f9812768567c2716ba1f113bd7d80a1da674a6d5ece"
+  },
+  {
+    "path": "avatar-core/assets/male/pose-art/rifle-left-arm.png",
+    "bytes": 73364,
+    "sha256": "f7da0da5ee57c190e57126b06026612c8b7f16541de681dc063b263f8968df0a"
+  },
+  {
+    "path": "avatar-core/assets/male/pose-art/rifle-left-front.png",
+    "bytes": 57862,
+    "sha256": "360acb7b0aeb3a07f18848a16befe59c3e411d034f4dff67fee05e4fec819eef"
+  },
+  {
+    "path": "avatar-core/assets/male/pose-art/rifle-right-arm.png",
+    "bytes": 88932,
+    "sha256": "d15f2934bb663d4e05156d1f3606a41a64378575aa92046a398e108b07fc2248"
+  },
+  {
+    "path": "avatar-core/assets/male/pose-art/rifle-right-front.png",
+    "bytes": 39879,
+    "sha256": "1114c29bb8a5741352f2804f0f5d9ac984ce38e5bc9d174872ea11dd981f7f50"
+  },
+  {
+    "path": "test-logs/bundle.log",
+    "bytes": 61,
+    "sha256": "930a7f7b7bca102f5eb7099cc9fb50ddf02ace322efa84213909fc42855638e3"
+  },
+  {
+    "path": "test-logs/capture.log",
+    "bytes": 43,
+    "sha256": "68673912ab23bc94e5745722bd16c17e626dfd45994e535dac06a461e40a54d0"
+  },
+  {
+    "path": "test-logs/core-20-js.log",
+    "bytes": 1914,
+    "sha256": "dad78ed91290c4075ec0bb2321bcf9d2a499e1a5b5ed444f2b6c4b6b046cc8de"
+  },
+  {
+    "path": "test-logs/game-95-js.log",
+    "bytes": 9895,
+    "sha256": "e43a6a7a04188796a062281105e723fe69b00b64fb0389b89e722c2780fe5c17"
+  },
+  {
+    "path": "test-logs/initial-29-python-failed.log",
+    "bytes": 11881,
+    "sha256": "ce3e2f630880d9378f2287fc2c5777685addfa6dbf7857a914efcfda8de2a62b"
+  },
+  {
+    "path": "test-logs/intermediate-targeted-failed.log",
+    "bytes": 2594,
+    "sha256": "8c137036c70cd1b87d1d6a7670175a216f83cc44aa02a30161deb6a45161d2a5"
+  },
+  {
+    "path": "test-logs/regression-36-python.log",
+    "bytes": 6432,
+    "sha256": "178d1dea1e9bda566b661df06c302ba86a941377a9b86dc3d2a7d11c12cb58d2"
+  },
+  {
+    "path": "test-logs/topology-correction-pass.log",
+    "bytes": 260,
+    "sha256": "2d34949c42847c903014144f68a7788923669ce0a9a14f35916a73d4c74b928e"
+  },
+  {
+    "path": "ВІДКРИЙ_СПОЧАТКУ.txt",
+    "bytes": 614,
+    "sha256": "5512bc2f53597ec095f49f72ac9d1eb7380c2ec2f8ee437c0fffd92e34c1d370"
+  }
+]

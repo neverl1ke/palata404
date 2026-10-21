@@ -1,0 +1,6 @@
+test_pose_art_triangles_do_not_flip_during_breathing (tests.test_male_anatomy.MaleAnatomyBrowserTests.test_pose_art_triangles_do_not_flip_during_breathing) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 2.357s
+
+OK
