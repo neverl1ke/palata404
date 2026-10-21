@@ -1,0 +1,101 @@
+[
+  {
+    "path": "avatar-core/assets/male/reference-art/melee-right-arm.png",
+    "size": [
+      174,
+      596
+    ],
+    "mode": "RGBA",
+    "sha256": "1002e7d298122b53ab1a9771669729b573cd72c02e037906151744826ab0cf2c"
+  },
+  {
+    "path": "avatar-core/assets/male/reference-art/melee-right-front.png",
+    "size": [
+      174,
+      596
+    ],
+    "mode": "RGBA",
+    "sha256": "6ff7dc1ab25fb3fb9feb9e9d95a505fce64e5070291a9596ecfa8245f3648a29"
+  },
+  {
+    "path": "avatar-core/assets/male/reference-art/pistol-right-arm.png",
+    "size": [
+      174,
+      336
+    ],
+    "mode": "RGBA",
+    "sha256": "45c0b7e9917ec209789dea78fef5e4853370b2bbdb96f2a5e6fe63a63aaa99e7"
+  },
+  {
+    "path": "avatar-core/assets/male/reference-art/pistol-right-front.png",
+    "size": [
+      174,
+      336
+    ],
+    "mode": "RGBA",
+    "sha256": "ff32336cebce435f32726d97892458953bf73aa790bfe8b5cf3644cd31c01ee2"
+  },
+  {
+    "path": "avatar-core/assets/male/reference-art/rifle-left-arm.png",
+    "size": [
+      136,
+      456
+    ],
+    "mode": "RGBA",
+    "sha256": "bc295019d1e17530573454cab89c4fa6d26121cec823a77afeed9e02c01f8a14"
+  },
+  {
+    "path": "avatar-core/assets/male/reference-art/rifle-left-front.png",
+    "size": [
+      136,
+      456
+    ],
+    "mode": "RGBA",
+    "sha256": "8e195e6bc43ef23ce3f29ee6ec41a87f32fedfcf4f89b11e644b98e898e10266"
+  },
+  {
+    "path": "avatar-core/assets/male/reference-art/rifle-right-arm.png",
+    "size": [
+      340,
+      360
+    ],
+    "mode": "RGBA",
+    "sha256": "1310232a2657db1ac387b882f585c7ca2eb6a32b4c1c06320ccd5823f2170f57"
+  },
+  {
+    "path": "avatar-core/assets/male/reference-art/rifle-right-front.png",
+    "size": [
+      340,
+      360
+    ],
+    "mode": "RGBA",
+    "sha256": "58f4e44a750a7eb33528b980d65e8367ca6b20f639095a7d015cc2f8c04286e1"
+  },
+  {
+    "path": "avatar-core/assets/weapons/reference-art/melee.png",
+    "size": [
+      941,
+      1672
+    ],
+    "mode": "RGBA",
+    "sha256": "17b8d468ea0de72091c76b4a3b31203b970144522fff4f143c3b72012d5efff3"
+  },
+  {
+    "path": "avatar-core/assets/weapons/reference-art/pistol.png",
+    "size": [
+      941,
+      1672
+    ],
+    "mode": "RGBA",
+    "sha256": "09afccff3865577f24da9b683df420d730aff5c7c3cc6e3ca9e44f9a651844a3"
+  },
+  {
+    "path": "avatar-core/assets/weapons/reference-art/rifle.png",
+    "size": [
+      941,
+      1672
+    ],
+    "mode": "RGBA",
+    "sha256": "4658c742442ae2012dd05f99268ff4b65d6101e21cf1661279b26379f3893cf1"
+  }
+]

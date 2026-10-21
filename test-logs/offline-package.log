@@ -1,0 +1,79 @@
+{
+  "zip_sha256": "e5ae3bfa49fabcbe81e4d41b77ab3415d86d009fa705e60a9ebfda83f55d0460",
+  "zip_bytes": 94606505,
+  "manifest_files_verified": 113,
+  "embedded_report_images_decoded": 50,
+  "extracted_file_scheme": true,
+  "views": [
+    {
+      "width": 320,
+      "horizontal_overflow": false
+    },
+    {
+      "width": 390,
+      "horizontal_overflow": false
+    },
+    {
+      "width": 768,
+      "horizontal_overflow": false
+    },
+    {
+      "width": 1440,
+      "horizontal_overflow": false
+    }
+  ],
+  "poses": [
+    {
+      "gender": "male",
+      "pose": "idle",
+      "primaryError": 0,
+      "supportError": 0
+    },
+    {
+      "gender": "male",
+      "pose": "rifle",
+      "primaryError": 0,
+      "supportError": 1.1368683772161603e-13
+    },
+    {
+      "gender": "male",
+      "pose": "pistol",
+      "primaryError": 0,
+      "supportError": 0
+    },
+    {
+      "gender": "male",
+      "pose": "melee",
+      "primaryError": 0,
+      "supportError": 0
+    },
+    {
+      "gender": "female",
+      "pose": "idle",
+      "primaryError": 0,
+      "supportError": 0
+    },
+    {
+      "gender": "female",
+      "pose": "rifle",
+      "primaryError": 0,
+      "supportError": 1.1368683772161603e-13
+    },
+    {
+      "gender": "female",
+      "pose": "pistol",
+      "primaryError": 5.684341886080802e-14,
+      "supportError": 1.7053025658242404e-13
+    },
+    {
+      "gender": "female",
+      "pose": "melee",
+      "primaryError": 0,
+      "supportError": 0
+    }
+  ],
+  "js_errors": [],
+  "network_requests": [],
+  "storage_unchanged": true,
+  "artistic_approval": false
+}

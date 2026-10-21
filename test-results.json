@@ -1,0 +1,32 @@
+{
+  "javascript": {
+    "tests": 117,
+    "passed": 117,
+    "failed": 0,
+    "logs": [
+      "javascript-game.log",
+      "javascript-core.log"
+    ]
+  },
+  "python_chromium": {
+    "distinct_tests": 69,
+    "last_full_run": {
+      "passed": 68,
+      "failed": 1,
+      "errors": 0,
+      "log": "python-regression-final.log"
+    },
+    "affected_test_rerun": {
+      "passed": 1,
+      "failed": 0,
+      "log": "stock-breathing-targeted.log"
+    },
+    "distinct_tests_verified_after_correction": 69,
+    "explanation": "Runtime unchanged after full run. Corrected stock check now permits its authored breathing movement under2px, while requiring the registered local anchor and arm contact. No repeated full run for this one test-only correction."
+  },
+  "historical_failure_logs_preserved": [
+    "python-regression-initial.log",
+    "reference-before-cap-noise-cleanup.log"
+  ],
+  "capture_cases_not_unit_tests": 280
+}

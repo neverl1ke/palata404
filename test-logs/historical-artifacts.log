@@ -1,0 +1,43 @@
+test_archived_a6_runtime_changes_only_surfaces_and_the_new_male_knife (tests.test_exact_reference_pass.ExactReferenceTests.test_archived_a6_runtime_changes_only_surfaces_and_the_new_male_knife) ... ok
+test_archived_independent_knife_anchor_is_inside_opaque_handle_and_blade_points_down (tests.test_exact_reference_pass.ExactReferenceTests.test_archived_independent_knife_anchor_is_inside_opaque_handle_and_blade_points_down) ... ok
+test_changes_only_remove_true_eight_connected_low_alpha_islands (tests.test_exact_reference_pass.ExactReferenceTests.test_changes_only_remove_true_eight_connected_low_alpha_islands) ... ok
+test_every_original_png_and_rig_is_unchanged (tests.test_exact_reference_pass.ExactReferenceTests.test_every_original_png_and_rig_is_unchanged) ... ok
+test_reference_pixels_are_not_runtime_assets (tests.test_exact_reference_pass.ExactReferenceTests.test_reference_pixels_are_not_runtime_assets) ... ok
+test_all_masks_and_templates_keep_exact_canvas_and_new_art_count_is_zero (tests.test_male_hand_kit.MaleHandKitTests.test_all_masks_and_templates_keep_exact_canvas_and_new_art_count_is_zero) ... /workspace/palata404-avatar-core/tests/test_male_hand_kit.py:22: ResourceWarning: unclosed file <_io.BufferedReader name='/workspace/palata404-avatar-core/review/male-hand-art-kit/Hands/pistol-right/edit-region.png'>
+  im=Image.open(folder/name);self.assertEqual(im.size,(941,1672));self.assertEqual(im.mode,'L')
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/workspace/palata404-avatar-core/tests/test_male_hand_kit.py:22: ResourceWarning: unclosed file <_io.BufferedReader name='/workspace/palata404-avatar-core/review/male-hand-art-kit/Hands/pistol-right/wrist-blend-weight.png'>
+  im=Image.open(folder/name);self.assertEqual(im.size,(941,1672));self.assertEqual(im.mode,'L')
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/workspace/palata404-avatar-core/tests/test_male_hand_kit.py:24: ResourceWarning: unclosed file <_io.BufferedReader name='/workspace/palata404-avatar-core/review/male-hand-art-kit/Hands/pistol-right/old-skin-remove-mask.png'>
+  im=Image.open(KIT/path);self.assertEqual(im.size,(941,1672));self.assertEqual(im.mode,'RGBA');self.assertIsNone(im.getbbox(),path)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/workspace/palata404-avatar-core/tests/test_male_hand_kit.py:22: ResourceWarning: unclosed file <_io.BufferedReader name='/workspace/palata404-avatar-core/review/male-hand-art-kit/Hands/rifle-right/edit-region.png'>
+  im=Image.open(folder/name);self.assertEqual(im.size,(941,1672));self.assertEqual(im.mode,'L')
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/workspace/palata404-avatar-core/tests/test_male_hand_kit.py:22: ResourceWarning: unclosed file <_io.BufferedReader name='/workspace/palata404-avatar-core/review/male-hand-art-kit/Hands/rifle-right/wrist-blend-weight.png'>
+  im=Image.open(folder/name);self.assertEqual(im.size,(941,1672));self.assertEqual(im.mode,'L')
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/workspace/palata404-avatar-core/tests/test_male_hand_kit.py:24: ResourceWarning: unclosed file <_io.BufferedReader name='/workspace/palata404-avatar-core/review/male-hand-art-kit/Hands/rifle-right/old-skin-remove-mask.png'>
+  im=Image.open(KIT/path);self.assertEqual(im.size,(941,1672));self.assertEqual(im.mode,'RGBA');self.assertIsNone(im.getbbox(),path)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/workspace/palata404-avatar-core/tests/test_male_hand_kit.py:22: ResourceWarning: unclosed file <_io.BufferedReader name='/workspace/palata404-avatar-core/review/male-hand-art-kit/Hands/rifle-left/edit-region.png'>
+  im=Image.open(folder/name);self.assertEqual(im.size,(941,1672));self.assertEqual(im.mode,'L')
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/workspace/palata404-avatar-core/tests/test_male_hand_kit.py:22: ResourceWarning: unclosed file <_io.BufferedReader name='/workspace/palata404-avatar-core/review/male-hand-art-kit/Hands/rifle-left/wrist-blend-weight.png'>
+  im=Image.open(folder/name);self.assertEqual(im.size,(941,1672));self.assertEqual(im.mode,'L')
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/workspace/palata404-avatar-core/tests/test_male_hand_kit.py:24: ResourceWarning: unclosed file <_io.BufferedReader name='/workspace/palata404-avatar-core/review/male-hand-art-kit/Hands/rifle-left/old-skin-remove-mask.png'>
+  im=Image.open(KIT/path);self.assertEqual(im.size,(941,1672));self.assertEqual(im.mode,'RGBA');self.assertIsNone(im.getbbox(),path)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_archived_kit_hashes_match_its_historical_runtime_7854994 (tests.test_male_hand_kit.MaleHandKitTests.test_archived_kit_hashes_match_its_historical_runtime_7854994) ... ok
+test_bind_maps_actual_source_wrist_and_grip_and_seam_follows_forearm (tests.test_male_hand_kit.MaleHandKitTests.test_bind_maps_actual_source_wrist_and_grip_and_seam_follows_forearm) ... ok
+test_masks_include_wrist_grip_and_protect_shoulder_elbow (tests.test_male_hand_kit.MaleHandKitTests.test_masks_include_wrist_grip_and_protect_shoulder_elbow) ... ok
+test_skin_removal_and_protected_alpha_conserve_reference_without_repaint (tests.test_male_hand_kit.MaleHandKitTests.test_skin_removal_and_protected_alpha_conserve_reference_without_repaint) ... ok
+test_validator_rejects_empty_or_cropped_or_alpha1_outside_region (tests.test_male_hand_kit.MaleHandKitTests.test_validator_rejects_empty_or_cropped_or_alpha1_outside_region) ... ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 1.304s
+
+OK

@@ -1,0 +1,62 @@
+[
+  {
+    "pose": "rifle",
+    "side": "right",
+    "source_sha256": "12d53547d1485b01ca27db1cd0861bc426351b7f173192eed32a034a8706f6f8",
+    "bounds": [
+      165,
+      317,
+      505,
+      677
+    ],
+    "paths": [
+      "assets/male/reference-art/rifle-right-arm.png",
+      "assets/male/reference-art/rifle-right-front.png"
+    ]
+  },
+  {
+    "pose": "rifle",
+    "side": "left",
+    "source_sha256": "12d53547d1485b01ca27db1cd0861bc426351b7f173192eed32a034a8706f6f8",
+    "bounds": [
+      611,
+      317,
+      747,
+      773
+    ],
+    "paths": [
+      "assets/male/reference-art/rifle-left-arm.png",
+      "assets/male/reference-art/rifle-left-front.png"
+    ]
+  },
+  {
+    "pose": "pistol",
+    "side": "right",
+    "source_sha256": "05aed1b5e5fbac1ffc6b3fac14bc6b66d17d2d8594d7aa66726f054d6d031177",
+    "bounds": [
+      170,
+      261,
+      344,
+      597
+    ],
+    "paths": [
+      "assets/male/reference-art/pistol-right-arm.png",
+      "assets/male/reference-art/pistol-right-front.png"
+    ]
+  },
+  {
+    "pose": "melee",
+    "side": "right",
+    "source_sha256": "ed140cde2c2934638a2248688ae32b76c0951c556c70d5fb8ed6cfea7b83f9ce",
+    "bounds": [
+      161,
+      317,
+      335,
+      913
+    ],
+    "paths": [
+      "assets/male/reference-art/melee-right-arm.png",
+      "assets/male/reference-art/melee-right-front.png"
+    ]
+  }
+]

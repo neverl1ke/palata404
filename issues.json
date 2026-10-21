@@ -1,0 +1,44 @@
+[
+  {
+    "file": "avatar-core/assets/male/reference-art/rifle-{right,left}-{arm,front}.png",
+    "before": "Кулак під автоматом, неправильний малюнок пальців і посадка обох передпліч",
+    "fix": "Дві референсні руки, окремі передні пальці, нові лікті/зап’ястя/контакти. Без розтягування кистей.",
+    "evidence": "rifle-comparison.webp; rifle-{right,left}-grip.webp",
+    "status": "Адаптовано, передано на візуальне погодження"
+  },
+  {
+    "file": "avatar-core/assets/male/reference-art/pistol-right-{arm,front}.png",
+    "before": "Неприродний контакт і орієнтація кисті",
+    "fix": "Піднята права рука й видимі пальці з референсу. Окремий кінчик пальця всередині спускової скоби; ліва рука лишилася оригінальною.",
+    "evidence": "pistol-comparison.webp; pistol-right-grip.webp",
+    "status": "Адаптовано; одноручну позу збережено"
+  },
+  {
+    "file": "avatar-core/assets/male/reference-art/melee-right-{arm,front}.png",
+    "before": "Блокова кисть та виступ старого стику зап’ястя",
+    "fix": "Наданий малюнок передпліччя, зап’ястя та пальців замість старої кисті.",
+    "evidence": "melee-comparison.webp; melee-right-wrist.webp",
+    "status": "Адаптовано; опущену позу збережено"
+  },
+  {
+    "file": "avatar-core/assets/weapons/reference-art/{rifle,pistol,melee}.png",
+    "before": "Предмети не відповідали новому малюнку пальців",
+    "fix": "Незалежні RGBA предмети з видимих референсних пікселів; прихований запас під пальцями; не запечені на руках.",
+    "evidence": "Modules/Weapons; png-quality.json; source/raster tests",
+    "status": "Підключено окремими ресурсами"
+  },
+  {
+    "file": "avatar-core/rigs/male_rig.json; avatar-core/male-preview.json",
+    "before": "Старі контакти та inverse-bind не відповідали референсному малюнку",
+    "fix": "Нові pose-specific прив’язки й UV-меші. Плечі й основа лишились на старих місцях; оновлено проєкції кісток, зап’ястя та контакти.",
+    "evidence": "registration.json; pose-bindings.json; browser-capture.json",
+    "status": "Підключено; дихання4000мс та instant cut збережені"
+  },
+  {
+    "file": "hidden wrist reserve / source masks",
+    "before": "При відокремленні предметів відкривались невідомі ділянки під кистями",
+    "fix": "Лише прихований запас сусідньої шкіри під непрозорими предметами. Нові видимі пальці не генерувалися.",
+    "evidence": "*-hidden-wrist-mask.png",
+    "status": "Запас для малого руху; не повністю домальована невидима анатомія"
+  }
+]

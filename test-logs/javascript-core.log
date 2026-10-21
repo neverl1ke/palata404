@@ -1,0 +1,30 @@
+✔ male rest skeleton retains shoulder/elbow/wrist/grip source registration (2.035052ms)
+✔ male four poses use fixed bone lengths, independent hand rotations and exact primary attachment (0.816848ms)
+✔ male support grip stays on the rifle through a full breathing cycle (2.765227ms)
+✔ male skin weights are bounded and final hand texture shares weapon attachment (3.538695ms)
+✔ female rest skeleton retains shoulder/elbow/wrist/grip source registration (0.154664ms)
+✔ female four poses use fixed bone lengths, independent hand rotations and exact primary attachment (0.140653ms)
+✔ female support grip stays on the rifle through a full breathing cycle (0.543036ms)
+✔ female skin weights are bounded and final hand texture shares weapon attachment (1.280323ms)
+✔ female and male coordinates are independently registered, not a reused rig (8.724019ms)
+✔ angle interpolation follows shortest rotation and endpoint continuity (0.478808ms)
+✔ unreachable/degenerate targets are finite and explicitly marked (5.11778ms)
+✔ weapon controller supports none and rejects unknown classes (7.848541ms)
+✔ rifle/right: inverse binds preserve every authored UV at rest (4.310546ms)
+✔ rifle/right: artwork has modular joint anchors and bounded skin weights (2.885915ms)
+✔ rifle/left: inverse binds preserve every authored UV at rest (0.459133ms)
+✔ rifle/left: artwork has modular joint anchors and bounded skin weights (0.821888ms)
+✔ pistol/right: inverse binds preserve every authored UV at rest (0.381697ms)
+✔ pistol/right: artwork has modular joint anchors and bounded skin weights (0.601196ms)
+✔ melee/right: inverse binds preserve every authored UV at rest (0.679333ms)
+✔ melee/right: artwork has modular joint anchors and bounded skin weights (1.017201ms)
+✔ foreshortening changes projection, not source skeleton or transverse width (0.749857ms)
+✔ canonical male pistol is unilateral and all legacy variants resolve to it (0.295186ms)
+ℹ tests 22
+ℹ suites 0
+ℹ pass 22
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 202.062041

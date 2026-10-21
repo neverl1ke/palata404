@@ -1,0 +1,6 @@
+test_actual_canvas_keeps_reference_fingertip_colors_and_separate_props (tests.test_reference_arm_art.ReferenceArmBrowserTests.test_actual_canvas_keeps_reference_fingertip_colors_and_separate_props) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 3.256s
+
+OK

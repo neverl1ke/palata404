@@ -1,0 +1,4 @@
+Runtime source commit:78d3c44
+Baseline:dd61b2d
+Main preserved:f70b7e5be63f6b85d895c6d5b259adbc30577b86
+No full-reference sprite renderer. No automatic production-ready approval.

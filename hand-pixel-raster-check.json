@@ -1,0 +1,82 @@
+[
+  {
+    "pose": "rifle",
+    "source": [
+      480,
+      614
+    ],
+    "render_rgb_max_error": 2
+  },
+  {
+    "pose": "rifle",
+    "source": [
+      465,
+      600
+    ],
+    "render_rgb_max_error": 1
+  },
+  {
+    "pose": "rifle",
+    "source": [
+      410,
+      630
+    ],
+    "render_rgb_max_error": 2
+  },
+  {
+    "pose": "rifle",
+    "source": [
+      660,
+      680
+    ],
+    "render_rgb_max_error": 1
+  },
+  {
+    "pose": "rifle",
+    "source": [
+      685,
+      701
+    ],
+    "render_rgb_max_error": 1
+  },
+  {
+    "pose": "pistol",
+    "source": [
+      230,
+      246
+    ],
+    "render_rgb_max_error": 0
+  },
+  {
+    "pose": "pistol",
+    "source": [
+      202,
+      300
+    ],
+    "render_rgb_max_error": 0
+  },
+  {
+    "pose": "pistol",
+    "source": [
+      255,
+      300
+    ],
+    "render_rgb_max_error": 0
+  },
+  {
+    "pose": "melee",
+    "source": [
+      180,
+      830
+    ],
+    "render_rgb_max_error": 0
+  },
+  {
+    "pose": "melee",
+    "source": [
+      230,
+      846
+    ],
+    "render_rgb_max_error": 0
+  }
+]
