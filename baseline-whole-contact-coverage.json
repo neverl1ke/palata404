@@ -1,0 +1,23 @@
+[
+  {
+    "pose": "rifle",
+    "reference_pixels": 10077,
+    "before_missing": 555,
+    "after_missing": 0,
+    "native_alpha_tolerance": 8
+  },
+  {
+    "pose": "pistol",
+    "reference_pixels": 1800,
+    "before_missing": 200,
+    "after_missing": 0,
+    "native_alpha_tolerance": 8
+  },
+  {
+    "pose": "melee",
+    "reference_pixels": 416,
+    "before_missing": 72,
+    "after_missing": 0,
+    "native_alpha_tolerance": 8
+  }
+]

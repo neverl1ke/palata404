@@ -1,0 +1,33 @@
+{
+  "python_total": 91,
+  "passed": 91,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "modules": [
+    "test_avatar_core",
+    "test_avatar_polish",
+    "test_avatar_cleanup",
+    "test_male_anatomy",
+    "test_weapon_pass",
+    "test_male_lobby",
+    "test_grip_pass",
+    "test_exact_reference_pass",
+    "test_male_hand_kit",
+    "test_reference_arm_art",
+    "test_arm_contour_cleanup",
+    "test_contact_surfaces"
+  ],
+  "failure_details": [],
+  "javascript_game": 95,
+  "javascript_core": 22,
+  "javascript_passed": 117,
+  "runtime_cycles": 4,
+  "frames_per_cycle": 32,
+  "cycle_ms": 4000,
+  "directed_instant_cuts": 12,
+  "js_errors": [],
+  "http_errors": [],
+  "artistic_approval": false,
+  "prior_failure_logs_preserved": true
+}

@@ -1,0 +1,10 @@
+[
+  {
+    "path": "tools/prepare-reference-arm-art.py",
+    "sha256": "ef1787c6a7ecbb01b0dfad6c72dd5b5bd791403526dfcf75a1fb252d6efd739a"
+  },
+  {
+    "path": "tools/reference-contact-surfaces.py",
+    "sha256": "c66cafd4a87a89f29fde86b14b8b57a536dd0f6e3647856981aea4a0b98265ed"
+  }
+]

@@ -1,0 +1,35 @@
+{
+  "python_total": 88,
+  "passed": 85,
+  "failures": 3,
+  "errors": 0,
+  "skipped": 0,
+  "modules": [
+    "test_avatar_core",
+    "test_avatar_polish",
+    "test_avatar_cleanup",
+    "test_male_anatomy",
+    "test_weapon_pass",
+    "test_male_lobby",
+    "test_grip_pass",
+    "test_exact_reference_pass",
+    "test_male_hand_kit",
+    "test_reference_arm_art",
+    "test_arm_contour_cleanup",
+    "test_contact_surfaces"
+  ],
+  "failure_details": [
+    {
+      "test": "test_art_has_no_gray_weapon_or_background_pixels (tests.test_male_anatomy.MaleAnatomySourceTests.test_art_has_no_gray_weapon_or_background_pixels)",
+      "trace": "Traceback (most recent call last):\n  File \"/workspace/palata404-avatar-core/tests/test_male_anatomy.py\", line 24, in test_art_has_no_gray_weapon_or_background_pixels\n    assert_reference_cold_pixels_have_known_provenance(self,a,path)\n  File \"/workspace/palata404-avatar-core/tests/test_reference_arm_art.py\", line 17, in assert_reference_cold_pixels_have_known_provenance\n    case.assertTrue(np.all(known[cold]),(path,'unexplained opaque cold pixel'));case.assertTrue(np.all(a[a[:,:,3]==0]==0),path)\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: np.False_ is not true : ('assets/male/reference-art/rifle-left-arm.png', 'unexplained opaque cold pixel')\n"
+    },
+    {
+      "test": "test_new_arm_pixels_are_warm_skin_not_the_gray_guide_or_full_avatar (tests.test_male_lobby.LobbySourceTests.test_new_arm_pixels_are_warm_skin_not_the_gray_guide_or_full_avatar)",
+      "trace": "Traceback (most recent call last):\n  File \"/workspace/palata404-avatar-core/tests/test_male_lobby.py\", line 20, in test_new_arm_pixels_are_warm_skin_not_the_gray_guide_or_full_avatar\n    assert_reference_cold_pixels_have_known_provenance(self,a,path)\n  File \"/workspace/palata404-avatar-core/tests/test_reference_arm_art.py\", line 17, in assert_reference_cold_pixels_have_known_provenance\n    case.assertTrue(np.all(known[cold]),(path,'unexplained opaque cold pixel'));case.assertTrue(np.all(a[a[:,:,3]==0]==0),path)\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: np.False_ is not true : ('assets/male/reference-art/rifle-left-arm.png', 'unexplained opaque cold pixel')\n"
+    },
+    {
+      "test": "test_existing_opaque_finger_colours_are_preserved (tests.test_arm_contour_cleanup.ArmContourSourceTests.test_existing_opaque_finger_colours_are_preserved)",
+      "trace": "Traceback (most recent call last):\n  File \"/workspace/palata404-avatar-core/tests/test_arm_contour_cleanup.py\", line 39, in test_existing_opaque_finger_colours_are_preserved\n    before=full(art,'frontImage','0392140');after=full(new['poseArt'][pose][side],'frontImage');keep=(before[:,:,3]>=240)&(after[:,:,3]>=240);self.assertGreater(int(keep.sum()),1000);self.assertLessEqual(int(np.abs(before[keep,:3].astype(int)-after[keep,:3].astype(int)).max()),1,(pose,side,'one integer level from premultiplied alpha rounding only'))\n                                                                                                                                                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: 7 not less than or equal to 1 : ('pistol', 'right', 'one integer level from premultiplied alpha rounding only')\n"
+    }
+  ]
+}

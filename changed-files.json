@@ -1,0 +1,23 @@
+[
+  "avatar-core/assets/male/reference-art/melee-right-arm.png",
+  "avatar-core/assets/male/reference-art/melee-right-front.png",
+  "avatar-core/assets/male/reference-art/pistol-right-arm.png",
+  "avatar-core/assets/male/reference-art/pistol-right-front.png",
+  "avatar-core/assets/male/reference-art/rifle-left-arm.png",
+  "avatar-core/assets/male/reference-art/rifle-left-front.png",
+  "avatar-core/assets/male/reference-art/rifle-right-arm.png",
+  "avatar-core/assets/male/reference-art/rifle-right-front.png",
+  "avatar-core/assets/weapons/reference-art/melee.png",
+  "avatar-core/assets/weapons/reference-art/pistol.png",
+  "avatar-core/assets/weapons/reference-art/rifle.png",
+  "avatar-core/rigs/male_rig.json",
+  "review/male-contact-surface-pass/",
+  "tests/test_arm_contour_cleanup.py",
+  "tests/test_contact_surfaces.py",
+  "tools/package-contact-surfaces.py",
+  "tools/prepare-reference-arm-art.py",
+  "tools/record-contact-motion.py",
+  "tools/reference-contact-surfaces.py",
+  "tools/review-contact-surfaces.py",
+  "tools/verify-contact-package.py"
+]

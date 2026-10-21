@@ -1,0 +1,30 @@
+✔ male rest skeleton retains shoulder/elbow/wrist/grip source registration (2.160319ms)
+✔ male four poses use fixed bone lengths, independent hand rotations and exact primary attachment (1.44928ms)
+✔ male support grip stays on the rifle through a full breathing cycle (3.036183ms)
+✔ male skin weights are bounded and final hand texture shares weapon attachment (7.073996ms)
+✔ female rest skeleton retains shoulder/elbow/wrist/grip source registration (0.239943ms)
+✔ female four poses use fixed bone lengths, independent hand rotations and exact primary attachment (0.253068ms)
+✔ female support grip stays on the rifle through a full breathing cycle (0.85391ms)
+✔ female skin weights are bounded and final hand texture shares weapon attachment (1.855685ms)
+✔ female and male coordinates are independently registered, not a reused rig (19.032925ms)
+✔ angle interpolation follows shortest rotation and endpoint continuity (0.257203ms)
+✔ unreachable/degenerate targets are finite and explicitly marked (5.481658ms)
+✔ weapon controller supports none and rejects unknown classes (5.741388ms)
+✔ rifle/right: inverse binds preserve every authored UV at rest (4.434517ms)
+✔ rifle/right: artwork has modular joint anchors and bounded skin weights (3.390866ms)
+✔ rifle/left: inverse binds preserve every authored UV at rest (0.485401ms)
+✔ rifle/left: artwork has modular joint anchors and bounded skin weights (0.804807ms)
+✔ pistol/right: inverse binds preserve every authored UV at rest (0.657838ms)
+✔ pistol/right: artwork has modular joint anchors and bounded skin weights (0.694686ms)
+✔ melee/right: inverse binds preserve every authored UV at rest (1.41357ms)
+✔ melee/right: artwork has modular joint anchors and bounded skin weights (0.535236ms)
+✔ foreshortening changes projection, not source skeleton or transverse width (0.721269ms)
+✔ canonical male pistol is unilateral and all legacy variants resolve to it (0.318126ms)
+ℹ tests 22
+ℹ suites 0
+ℹ pass 22
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 264.298557

@@ -1,0 +1,38 @@
+[
+  {
+    "pose": "rifle",
+    "source_window": [
+      630,
+      645,
+      755,
+      755
+    ],
+    "source_opaque_pixels": 10077,
+    "missing_runtime_pixels": 0,
+    "max_alpha_loss": 0
+  },
+  {
+    "pose": "pistol",
+    "source_window": [
+      195,
+      315,
+      240,
+      355
+    ],
+    "source_opaque_pixels": 1800,
+    "missing_runtime_pixels": 0,
+    "max_alpha_loss": 0
+  },
+  {
+    "pose": "melee",
+    "source_window": [
+      209,
+      842,
+      225,
+      868
+    ],
+    "source_opaque_pixels": 416,
+    "missing_runtime_pixels": 0,
+    "max_alpha_loss": 0
+  }
+]

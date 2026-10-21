@@ -1,0 +1,19 @@
+test_all_annotated_solid_hand_and_object_probes_have_no_background (tests.test_contact_surfaces.ContactSurfaceSourceTests.test_all_annotated_solid_hand_and_object_probes_have_no_background) ... FAIL
+test_contact_probes_detect_actual_missing_surfaces_in_returned_package (tests.test_contact_surfaces.ContactSurfaceSourceTests.test_contact_probes_detect_actual_missing_surfaces_in_returned_package) ... ok
+test_contact_underlap_uses_object_material_not_baked_source_fingers (tests.test_contact_surfaces.ContactSurfaceSourceTests.test_contact_underlap_uses_object_material_not_baked_source_fingers) ... ok
+test_core_pose_anchors_originals_engine_female_and_game_stay_unchanged (tests.test_contact_surfaces.ContactSurfaceSourceTests.test_core_pose_anchors_originals_engine_female_and_game_stay_unchanged) ... ok
+test_harmonization_is_confined_to_shared_shoulder_not_folded_forearm (tests.test_contact_surfaces.ContactSurfaceSourceTests.test_harmonization_is_confined_to_shared_shoulder_not_folded_forearm) ... ok
+
+======================================================================
+FAIL: test_all_annotated_solid_hand_and_object_probes_have_no_background (tests.test_contact_surfaces.ContactSurfaceSourceTests.test_all_annotated_solid_hand_and_object_probes_have_no_background)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/palata404-avatar-core/tests/test_contact_surfaces.py", line 23, in test_all_annotated_solid_hand_and_object_probes_have_no_background
+    for x,y in points:self.assertGreaterEqual(int(source[y,x,3]),240);self.assertGreaterEqual(float(a[y+26,x+10]),.97,(pose,x,y))
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 231 not greater than or equal to 240
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.515s
+
+FAILED (failures=1)
