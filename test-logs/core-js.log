@@ -1,0 +1,28 @@
+✔ male rest skeleton retains shoulder/elbow/wrist/grip source registration (1.833243ms)
+✔ male four poses use fixed bone lengths, independent hand rotations and exact primary attachment (1.128456ms)
+✔ male support grip stays on the rifle through a full breathing cycle (4.280927ms)
+✔ male skin weights are bounded and final hand texture shares weapon attachment (9.972153ms)
+✔ female rest skeleton retains shoulder/elbow/wrist/grip source registration (0.214635ms)
+✔ female four poses use fixed bone lengths, independent hand rotations and exact primary attachment (0.23659ms)
+✔ female support grip stays on the rifle through a full breathing cycle (0.774944ms)
+✔ female skin weights are bounded and final hand texture shares weapon attachment (2.344153ms)
+✔ female and male coordinates are independently registered, not a reused rig (8.243634ms)
+✔ angle interpolation follows shortest rotation and endpoint continuity (0.340485ms)
+✔ unreachable/degenerate targets are finite and explicitly marked (4.12723ms)
+✔ weapon controller supports none and rejects unknown classes (4.32937ms)
+✔ pistol/right: inverse binds preserve every authored UV at rest (3.452382ms)
+✔ pistol/right: artwork has modular joint anchors and bounded skin weights (3.36756ms)
+✔ rifle/right: inverse binds preserve every authored UV at rest (1.40872ms)
+✔ rifle/right: artwork has modular joint anchors and bounded skin weights (2.128168ms)
+✔ rifle/left: inverse binds preserve every authored UV at rest (2.866427ms)
+✔ rifle/left: artwork has modular joint anchors and bounded skin weights (1.454113ms)
+✔ foreshortening changes projection, not source skeleton or transverse width (1.010962ms)
+✔ canonical male pistol is unilateral and all legacy variants resolve to it (0.409405ms)
+ℹ tests 20
+ℹ suites 0
+ℹ pass 20
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 270.789412

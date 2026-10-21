@@ -1,0 +1,62 @@
+[
+  {
+    "path": "Gallery/idle-chest-breathing.webp",
+    "source_size": [
+      1140,
+      510
+    ],
+    "portable_size": [
+      760,
+      340
+    ],
+    "frames": 32,
+    "frame_duration_ms": 125,
+    "duration_ms": 4000,
+    "method": "uniform Lanczos resize of real captured frames; no generated frames"
+  },
+  {
+    "path": "Gallery/rifle-chest-breathing.webp",
+    "source_size": [
+      1140,
+      510
+    ],
+    "portable_size": [
+      760,
+      340
+    ],
+    "frames": 32,
+    "frame_duration_ms": 125,
+    "duration_ms": 4000,
+    "method": "uniform Lanczos resize of real captured frames; no generated frames"
+  },
+  {
+    "path": "Gallery/pistol-chest-breathing.webp",
+    "source_size": [
+      1140,
+      510
+    ],
+    "portable_size": [
+      760,
+      340
+    ],
+    "frames": 32,
+    "frame_duration_ms": 125,
+    "duration_ms": 4000,
+    "method": "uniform Lanczos resize of real captured frames; no generated frames"
+  },
+  {
+    "path": "Gallery/melee-chest-breathing.webp",
+    "source_size": [
+      1140,
+      510
+    ],
+    "portable_size": [
+      760,
+      340
+    ],
+    "frames": 32,
+    "frame_duration_ms": 125,
+    "duration_ms": 4000,
+    "method": "uniform Lanczos resize of real captured frames; no generated frames"
+  }
+]

@@ -1,0 +1,134 @@
+{
+  "weapons": {
+    "melee": {
+      "size": [
+        140,
+        300
+      ],
+      "primary": [
+        67,
+        240
+      ],
+      "support": null,
+      "id": "test-melee",
+      "class": "melee",
+      "pose": "melee",
+      "image": "assets/weapons/melee.png",
+      "scale": 0.8,
+      "offset": [
+        0,
+        0
+      ],
+      "angle": 0,
+      "order": 30,
+      "test_resource": true
+    },
+    "pistol": {
+      "size": [
+        189,
+        115
+      ],
+      "primary": [
+        42.4,
+        81.7
+      ],
+      "support": null,
+      "id": "test-pistol",
+      "class": "pistol",
+      "pose": "pistol",
+      "image": "assets/weapons/male-preview/pistol.png",
+      "scale": 1,
+      "offset": [
+        0,
+        0
+      ],
+      "angle": 0,
+      "order": 30,
+      "test_resource": true,
+      "stock": [
+        12.9,
+        107.7
+      ],
+      "trigger": [
+        81.0,
+        51.0
+      ],
+      "art": "realistic illustrated test prop; not production-approved"
+    },
+    "rifle": {
+      "size": [
+        941,
+        1672
+      ],
+      "primary": [
+        364,
+        668
+      ],
+      "support": [
+        619,
+        755
+      ],
+      "id": "test-rifle",
+      "class": "rifle",
+      "pose": "rifle",
+      "image": "assets/weapons/male-lobby/rifle.png",
+      "scale": 1,
+      "offset": [
+        0,
+        0
+      ],
+      "angle": 0,
+      "order": 30,
+      "test_resource": true,
+      "stock": [
+        240,
+        607
+      ],
+      "trigger": [
+        434.54395785314455,
+        678.1478432663813
+      ],
+      "art": "realistic illustrated test prop; not production-approved"
+    }
+  },
+  "surfaceOverrides": {
+    "melee-right": "assets/male/weapon-pass/melee-wrist-edge.png"
+  },
+  "transitionPolicy": "opaque-cut",
+  "contactRepairs": [],
+  "breathingProfiles": {
+    "idle": {
+      "propSway": 0,
+      "gripX": 0,
+      "handDegrees": 0,
+      "idleArm": 0.1
+    },
+    "melee": {
+      "propSway": 0.18,
+      "gripX": 0.2,
+      "handDegrees": 0.12
+    },
+    "pistol": {
+      "propSway": 0.045,
+      "gripX": 0.08,
+      "handDegrees": 0.03
+    },
+    "rifle": {
+      "propSway": 0.16,
+      "gripX": 0.18,
+      "handDegrees": 0.1
+    }
+  },
+  "chestDetail": {
+    "center": [
+      474,
+      466
+    ],
+    "radius": [
+      190,
+      150
+    ],
+    "horizontal": 0.022,
+    "vertical": 0.014
+  }
+}

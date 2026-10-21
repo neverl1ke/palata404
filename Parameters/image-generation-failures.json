@@ -1,0 +1,14 @@
+{
+  "rifle": {
+    "status": "blocked",
+    "category": "violence",
+    "request_id": "0d3c1b81-1738-4542-b497-c103de6c6607"
+  },
+  "pistol": {
+    "status": "blocked",
+    "category": "violence",
+    "request_id": "91d1ae3e-d503-4d64-9f64-564cbcc8994a"
+  },
+  "retry_or_bypass": false,
+  "new_hand_art_created": false
+}

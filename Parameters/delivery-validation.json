@@ -1,0 +1,54 @@
+{
+  "archive": "Avatar-Core-Chest-Review.zip",
+  "crc": "passed",
+  "manifest_files_verified": 78,
+  "extracted_file_uri": true,
+  "browser": "Chromium 151.0.7922.34",
+  "pose_cases": [
+    [
+      "male",
+      "idle"
+    ],
+    [
+      "male",
+      "melee"
+    ],
+    [
+      "male",
+      "pistol"
+    ],
+    [
+      "male",
+      "rifle"
+    ],
+    [
+      "female",
+      "idle"
+    ],
+    [
+      "female",
+      "melee"
+    ],
+    [
+      "female",
+      "pistol"
+    ],
+    [
+      "female",
+      "rifle"
+    ]
+  ],
+  "gallery_images_loaded": 38,
+  "viewer_frames_checked": 264,
+  "mobile_emulation": [
+    320,
+    390,
+    768
+  ],
+  "physical_device": false,
+  "http_requests": [],
+  "js_errors": [],
+  "storage_unchanged": true,
+  "main_or_remote_modified": false,
+  "phase": "extracted browser validation; final archive reverified after source commit"
+}

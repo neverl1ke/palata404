@@ -1,0 +1,8 @@
+test_chest_mesh_has_bounded_expansion_positive_topology_and_closed_cycle (tests.test_grip_pass.ChestBrowserTests.test_chest_mesh_has_bounded_expansion_positive_topology_and_closed_cycle) ... ok
+test_chest_surface_changes_only_chest_pixels_not_hand_contacts (tests.test_grip_pass.ChestBrowserTests.test_chest_surface_changes_only_chest_pixels_not_hand_contacts) ... ok
+test_every_prior_png_rig_and_pose_is_unchanged (tests.test_grip_pass.GripSourceTests.test_every_prior_png_rig_and_pose_is_unchanged) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 4.472s
+
+OK
