@@ -1,0 +1,4 @@
+Runtime source:e1f8e862b3e5f47b9b912b6c73820efb74674ac9
+Baseline:0392140 /78d3c44
+Main unchanged:f70b7e5be63f6b85d895c6d5b259adbc30577b86
+No full-reference sprite replacement; no automatic production-ready approval.

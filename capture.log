@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/workspace/palata404-avatar-core/tools/review-arm-contour-cleanup.py", line 61, in <module>
+    a=np.array(im).copy();edge=(alpha>=128)&~ndi.binary_erosion(alpha>=128);a[ndi.binary_dilation(se)]=[0,210,255];a[edge]=[255,0,180];overlays.append(Image.fromarray(a).crop((140,310,780,930)))
+                                                                            ~^^^^^^^^^^^^^^^^^^^^^^^^^
+IndexError: boolean index did not match indexed array along axis 0; size of axis is 1119 but size of corresponding boolean axis is 1672

@@ -1,0 +1,226 @@
+[
+  {
+    "file": "Modules/Arms/rifle-right-image.png",
+    "runtime_crop": "assets/male/reference-art/rifle-right-arm.png",
+    "bounds": [
+      165,
+      317,
+      505,
+      677
+    ],
+    "anchors": {
+      "shoulder": [
+        287,
+        382
+      ],
+      "elbow": [
+        213,
+        579
+      ],
+      "wrist": [
+        341,
+        601
+      ],
+      "grip": [
+        390,
+        644
+      ]
+    }
+  },
+  {
+    "file": "Modules/Arms/rifle-right-frontImage.png",
+    "runtime_crop": "assets/male/reference-art/rifle-right-front.png",
+    "bounds": [
+      165,
+      317,
+      505,
+      677
+    ],
+    "anchors": {
+      "shoulder": [
+        287,
+        382
+      ],
+      "elbow": [
+        213,
+        579
+      ],
+      "wrist": [
+        341,
+        601
+      ],
+      "grip": [
+        390,
+        644
+      ]
+    }
+  },
+  {
+    "file": "Modules/Arms/rifle-left-image.png",
+    "runtime_crop": "assets/male/reference-art/rifle-left-arm.png",
+    "bounds": [
+      597,
+      317,
+      747,
+      773
+    ],
+    "anchors": {
+      "shoulder": [
+        657,
+        381
+      ],
+      "elbow": [
+        714,
+        634
+      ],
+      "wrist": [
+        697,
+        681
+      ],
+      "grip": [
+        675,
+        708
+      ]
+    }
+  },
+  {
+    "file": "Modules/Arms/rifle-left-frontImage.png",
+    "runtime_crop": "assets/male/reference-art/rifle-left-front.png",
+    "bounds": [
+      597,
+      317,
+      747,
+      773
+    ],
+    "anchors": {
+      "shoulder": [
+        657,
+        381
+      ],
+      "elbow": [
+        714,
+        634
+      ],
+      "wrist": [
+        697,
+        681
+      ],
+      "grip": [
+        675,
+        708
+      ]
+    }
+  },
+  {
+    "file": "Modules/Arms/pistol-right-image.png",
+    "runtime_crop": "assets/male/reference-art/pistol-right-arm.png",
+    "bounds": [
+      170,
+      261,
+      363,
+      601
+    ],
+    "anchors": {
+      "shoulder": [
+        287,
+        382
+      ],
+      "elbow": [
+        214,
+        549
+      ],
+      "wrist": [
+        221,
+        397
+      ],
+      "grip": [
+        230,
+        351
+      ]
+    }
+  },
+  {
+    "file": "Modules/Arms/pistol-right-frontImage.png",
+    "runtime_crop": "assets/male/reference-art/pistol-right-front.png",
+    "bounds": [
+      170,
+      261,
+      363,
+      601
+    ],
+    "anchors": {
+      "shoulder": [
+        287,
+        382
+      ],
+      "elbow": [
+        214,
+        549
+      ],
+      "wrist": [
+        221,
+        397
+      ],
+      "grip": [
+        230,
+        351
+      ]
+    }
+  },
+  {
+    "file": "Modules/Arms/melee-right-image.png",
+    "runtime_crop": "assets/male/reference-art/melee-right-arm.png",
+    "bounds": [
+      161,
+      317,
+      358,
+      913
+    ],
+    "anchors": {
+      "shoulder": [
+        287,
+        382
+      ],
+      "elbow": [
+        242,
+        574
+      ],
+      "wrist": [
+        195,
+        807
+      ],
+      "grip": [
+        227,
+        880
+      ]
+    }
+  },
+  {
+    "file": "Modules/Arms/melee-right-frontImage.png",
+    "runtime_crop": "assets/male/reference-art/melee-right-front.png",
+    "bounds": [
+      161,
+      317,
+      358,
+      913
+    ],
+    "anchors": {
+      "shoulder": [
+        287,
+        382
+      ],
+      "elbow": [
+        242,
+        574
+      ],
+      "wrist": [
+        195,
+        807
+      ],
+      "grip": [
+        227,
+        880
+      ]
+    }
+  }
+]

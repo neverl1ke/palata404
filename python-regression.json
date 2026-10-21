@@ -1,0 +1,21 @@
+{
+  "python_total": 79,
+  "passed": 79,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "modules": [
+    "test_avatar_core",
+    "test_avatar_polish",
+    "test_avatar_cleanup",
+    "test_male_anatomy",
+    "test_weapon_pass",
+    "test_male_lobby",
+    "test_grip_pass",
+    "test_exact_reference_pass",
+    "test_male_hand_kit",
+    "test_reference_arm_art",
+    "test_arm_contour_cleanup"
+  ],
+  "failure_details": []
+}

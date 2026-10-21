@@ -1,0 +1,60 @@
+test_contact_and_visible_volume_stay_stable_over_complete_cycles (tests.test_arm_contour_cleanup.ArmContourBrowserTests.test_contact_and_visible_volume_stay_stable_over_complete_cycles) ... ok
+test_free_arm_survives_every_direct_pose_cut (tests.test_arm_contour_cleanup.ArmContourBrowserTests.test_free_arm_survives_every_direct_pose_cut) ... FAIL
+test_live_canvas_preserves_full_forearm_bicep_and_elbow_spans (tests.test_arm_contour_cleanup.ArmContourBrowserTests.test_live_canvas_preserves_full_forearm_bicep_and_elbow_spans) ... FAIL
+test_live_shoulder_has_no_reference_black_edge_inside_base_skin (tests.test_arm_contour_cleanup.ArmContourBrowserTests.test_live_shoulder_has_no_reference_black_edge_inside_base_skin) ... FAIL
+test_existing_opaque_finger_colours_are_preserved (tests.test_arm_contour_cleanup.ArmContourSourceTests.test_existing_opaque_finger_colours_are_preserved) ... FAIL
+test_independent_reference_cross_sections_are_not_cut (tests.test_arm_contour_cleanup.ArmContourSourceTests.test_independent_reference_cross_sections_are_not_cut) ... FAIL
+test_melee_wrist_triangle_and_pistol_thumb_arc_are_present (tests.test_arm_contour_cleanup.ArmContourSourceTests.test_melee_wrist_triangle_and_pistol_thumb_arc_are_present) ... ok
+test_no_mesh_coverage_holes_or_crop_loss (tests.test_arm_contour_cleanup.ArmContourSourceTests.test_no_mesh_coverage_holes_or_crop_loss) ... ok
+test_original_character_engine_config_and_anchors_unchanged (tests.test_arm_contour_cleanup.ArmContourSourceTests.test_original_character_engine_config_and_anchors_unchanged) ... ok
+test_same_cross_sections_detect_the_returned_package_defects (tests.test_arm_contour_cleanup.ArmContourSourceTests.test_same_cross_sections_detect_the_returned_package_defects) ... ok
+
+======================================================================
+FAIL: test_free_arm_survives_every_direct_pose_cut (tests.test_arm_contour_cleanup.ArmContourBrowserTests.test_free_arm_survives_every_direct_pose_cut)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/palata404-avatar-core/tests/test_arm_contour_cleanup.py", line 75, in test_free_arm_survives_every_direct_pose_cut
+    self.p.evaluate('a=>{let e=avatarLab.engine;e.setOptions({transitionMs:320});e.setPose(a[0]);e.setPose(a[1]);e.render()}',[previous,pose]);a=self.c.image();self.assertTrue(np.array_equal(idle[400:1030,660:905],a[400:1030,660:905]),(previous,pose));self.assertTrue(self.p.evaluate('avatarLab.engine.transition===null'))
+                                                                                                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : ('idle', 'melee')
+
+======================================================================
+FAIL: test_live_canvas_preserves_full_forearm_bicep_and_elbow_spans (tests.test_arm_contour_cleanup.ArmContourBrowserTests.test_live_canvas_preserves_full_forearm_bicep_and_elbow_spans)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/palata404-avatar-core/tests/test_arm_contour_cleanup.py", line 65, in test_live_canvas_preserves_full_forearm_bicep_and_elbow_spans
+    for y,x0,x1 in rows:self.assertGreaterEqual(int(a[y+26,x0+10:x1+11,3].min()),235,(pose,side,y))
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 not greater than or equal to 235 : ('rifle', 'left', 500)
+
+======================================================================
+FAIL: test_live_shoulder_has_no_reference_black_edge_inside_base_skin (tests.test_arm_contour_cleanup.ArmContourBrowserTests.test_live_shoulder_has_no_reference_black_edge_inside_base_skin)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/palata404-avatar-core/tests/test_arm_contour_cleanup.py", line 70, in test_live_shoulder_has_no_reference_black_edge_inside_base_skin
+    for x,y in [(273,350),(262,365),(290,336)]:self.assertLessEqual(int(np.abs(a[y,x,:3]-base[y,x,:3]).max()),12,(pose,x,y,a[y,x].tolist(),base[y,x].tolist()))
+                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 21 not less than or equal to 12 : ('pistol', 273, 350, [163, 109, 85, 255], [183, 130, 104, 252])
+
+======================================================================
+FAIL: test_existing_opaque_finger_colours_are_preserved (tests.test_arm_contour_cleanup.ArmContourSourceTests.test_existing_opaque_finger_colours_are_preserved)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/palata404-avatar-core/tests/test_arm_contour_cleanup.py", line 37, in test_existing_opaque_finger_colours_are_preserved
+    before=full(art,'frontImage','0392140');after=full(new['poseArt'][pose][side],'frontImage');keep=(before[:,:,3]>=240)&(after[:,:,3]>=240);self.assertGreater(int(keep.sum()),1000);self.assertTrue(np.array_equal(before[keep,:3],after[keep,:3]),(pose,side))
+                                                                                                                                                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : ('rifle', 'right')
+
+======================================================================
+FAIL: test_independent_reference_cross_sections_are_not_cut (tests.test_arm_contour_cleanup.ArmContourSourceTests.test_independent_reference_cross_sections_are_not_cut)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/palata404-avatar-core/tests/test_arm_contour_cleanup.py", line 22, in test_independent_reference_cross_sections_are_not_cut
+    for y,x0,x1 in rows:self.assertGreaterEqual(int(a[y+26,x0+10:x1+11,3].min()),240,(pose,side,y,x0,x1))
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 not greater than or equal to 240 : ('rifle', 'left', 500, 620, 710)
+
+----------------------------------------------------------------------
+Ran 10 tests in 32.761s
+
+FAILED (failures=5)

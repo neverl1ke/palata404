@@ -1,0 +1,1 @@
+Запускати з початкового репозиторію: підготовка читає незмінні review/male-reference-arm-art/Sources, pose-bindings і base_male.png. Це відтворювані інструменти, не окрема збірка гри.

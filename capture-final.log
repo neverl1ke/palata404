@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/workspace/palata404-avatar-core/tools/review-arm-contour-cleanup.py", line 77, in <module>
+    current.evaluate('p=>avatarLab.engine.setPose(p)',pose);actual=np.array(frame(current));box=(660,400,905,1030);x0,y0,x1,y1=box;different=int(np.any(actual[y0:y1,x0:x1]!=idle[y0:y1,x0:x1],2).sum());free.append({'pose':pose,'box':box,'different_pixels':different});assert different==0
+                                                                                                                                                                                                                                                                                  ^^^^^^^^^^^^
+AssertionError

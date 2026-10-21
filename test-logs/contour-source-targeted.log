@@ -1,0 +1,11 @@
+test_existing_opaque_finger_colours_are_preserved (tests.test_arm_contour_cleanup.ArmContourSourceTests.test_existing_opaque_finger_colours_are_preserved) ... ok
+test_independent_reference_cross_sections_are_not_cut (tests.test_arm_contour_cleanup.ArmContourSourceTests.test_independent_reference_cross_sections_are_not_cut) ... ok
+test_melee_wrist_triangle_and_pistol_thumb_arc_are_present (tests.test_arm_contour_cleanup.ArmContourSourceTests.test_melee_wrist_triangle_and_pistol_thumb_arc_are_present) ... ok
+test_no_mesh_coverage_holes_or_crop_loss (tests.test_arm_contour_cleanup.ArmContourSourceTests.test_no_mesh_coverage_holes_or_crop_loss) ... ok
+test_original_character_engine_config_and_anchors_unchanged (tests.test_arm_contour_cleanup.ArmContourSourceTests.test_original_character_engine_config_and_anchors_unchanged) ... ok
+test_same_cross_sections_detect_the_returned_package_defects (tests.test_arm_contour_cleanup.ArmContourSourceTests.test_same_cross_sections_detect_the_returned_package_defects) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 1.109s
+
+OK

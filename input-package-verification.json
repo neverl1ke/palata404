@@ -1,0 +1,24 @@
+{
+  "input_filename": "palata404-male-reference-arm-art-78d3c44.zip",
+  "verified_local_original_of_returned_package": "/workspace/Male-Reference-Arm-Art-github-verified.zip",
+  "sha256": "202689b6e4c286b905cee6ddde395eb3c4391e8a61c418cd6b1a36c09f9720b4",
+  "bytes": 95284443,
+  "baseline": "0392140",
+  "runtime_files_identical_to_baseline": [
+    "avatar-core/assets/male/reference-art/melee-right-arm.png",
+    "avatar-core/assets/male/reference-art/melee-right-front.png",
+    "avatar-core/assets/male/reference-art/pistol-right-arm.png",
+    "avatar-core/assets/male/reference-art/pistol-right-front.png",
+    "avatar-core/assets/male/reference-art/rifle-left-arm.png",
+    "avatar-core/assets/male/reference-art/rifle-left-front.png",
+    "avatar-core/assets/male/reference-art/rifle-right-arm.png",
+    "avatar-core/assets/male/reference-art/rifle-right-front.png",
+    "avatar-core/assets/weapons/reference-art/melee.png",
+    "avatar-core/assets/weapons/reference-art/pistol.png",
+    "avatar-core/assets/weapons/reference-art/rifle.png",
+    "avatar-core/male-preview.json",
+    "avatar-core/rigs/male_rig.json"
+  ],
+  "returned_chat_upload_download": "blocked: file exceeds executor transfer limit of 32 MiB",
+  "limitation": "The returned upload was not byte-compared. Work uses the previously HTTPS-verified original artifact and its identical 0392140 runtime."
+}
