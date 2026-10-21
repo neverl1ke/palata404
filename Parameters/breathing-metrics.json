@@ -1,0 +1,16 @@
+[
+  {
+    "requested_css_width": 320,
+    "actual_css_width": 320,
+    "pistol_grip_peak_to_peak_css_px": 0.18398540794144094,
+    "cycle_ms": 4000,
+    "samples": 33
+  },
+  {
+    "requested_css_width": 470,
+    "actual_css_width": 470,
+    "pistol_grip_peak_to_peak_css_px": 0.18849227647794617,
+    "cycle_ms": 4000,
+    "samples": 33
+  }
+]

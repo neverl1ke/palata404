@@ -1,0 +1,217 @@
+[
+  {
+    "path": "Avatar-Lab.html",
+    "bytes": 43128457,
+    "sha256": "5c40965e6f172cad55ef43d7ade564b5d8ceca35ce01e74c6dbd5a2979b6d50f"
+  },
+  {
+    "path": "Parameters/arm-art-manifest.json",
+    "bytes": 4106,
+    "sha256": "50cb37ef143c84954403c3adca386d2823a10e5679c1683da9307fc3467d546e"
+  },
+  {
+    "path": "Parameters/breathing-metrics.json",
+    "bytes": 343,
+    "sha256": "c606be568affd4dfcff7f88f41f75d8a736b2f85896c6455219cc7b4cc49b83b"
+  },
+  {
+    "path": "Parameters/calibration.json",
+    "bytes": 2332,
+    "sha256": "4b44466869d0c6caf1163c11af327ce70b952403c3b88bbac541bd26d9b81e46"
+  },
+  {
+    "path": "Parameters/changed-files.json",
+    "bytes": 6544,
+    "sha256": "8c5c721166b2ef425188d3eab887b3d2cd128e26264d1ffed7719105427baeab"
+  },
+  {
+    "path": "Parameters/delivery-validation.json",
+    "bytes": 888,
+    "sha256": "bfc4c323754b4dd8d498bfb917dade45db0ded5de59a49aeb18a3dd12d91932e"
+  },
+  {
+    "path": "Parameters/female_rig.json",
+    "bytes": 429482,
+    "sha256": "06046069b5d4d08f9325f7a950de249bdb431e7e167777357faefe133d8d62e6"
+  },
+  {
+    "path": "Parameters/frame-report.json",
+    "bytes": 78992,
+    "sha256": "5b948e4794f4f9e85a99c1353bea4405af4022ec79e650a78a1ce09d446fb28d"
+  },
+  {
+    "path": "Parameters/male-preview.json",
+    "bytes": 2226,
+    "sha256": "344000eccf4dd6399ce0553be6b24030efa8a8cfb194217949e2fb1cb0b85613"
+  },
+  {
+    "path": "Parameters/male_anatomy.json",
+    "bytes": 1767,
+    "sha256": "a19ed02c02e5d5ce19880eaa8ebf23c1dd160137b8af4821ebdec2aa3930fde3"
+  },
+  {
+    "path": "Parameters/male_rig.json",
+    "bytes": 1260522,
+    "sha256": "dc275cfaba8e7dd3e5581db2c191d3f5389b19cc4149a1ea9fc283056a526f1f"
+  },
+  {
+    "path": "Parameters/pose-bindings.json",
+    "bytes": 4200,
+    "sha256": "fedade5dc280edbf8c2f3a0a337f924e02e67418218a41f945d888b057c2aa6f"
+  },
+  {
+    "path": "Parameters/prop-registration.json",
+    "bytes": 707,
+    "sha256": "f93bba2b0f0a5c5bff0b350f2a030d38b48e814c8cd43f98145b699f93809e38"
+  },
+  {
+    "path": "Parameters/reference-manifest.json",
+    "bytes": 776,
+    "sha256": "c806a908882bf515ff79f26ec1565d7d19b13676b775b6331a701b3d829ab500"
+  },
+  {
+    "path": "Previews/after-idle.webp",
+    "bytes": 503224,
+    "sha256": "ea2469db62807c2ea4a540739850b422c88ba217e09fc69c33d08bfcdea03fa8"
+  },
+  {
+    "path": "Previews/after-melee.webp",
+    "bytes": 503752,
+    "sha256": "de46d732d696fbaf623376d90ab638605a3a24b9932ced62df2dd989f7f116b2"
+  },
+  {
+    "path": "Previews/after-pistol.webp",
+    "bytes": 497478,
+    "sha256": "e917ee09df59aad4d574345f4462d8ca7de8ef976e2eec08f6c97b1734c5df24"
+  },
+  {
+    "path": "Previews/after-rifle.webp",
+    "bytes": 514476,
+    "sha256": "a73a92221a2ef50a03f2219855ab2445d45968ff14f4b10ce203214c44afbfdb"
+  },
+  {
+    "path": "Previews/four-poses-overview.jpg",
+    "bytes": 61801,
+    "sha256": "bb738c24d75a739ecac160b36c4d7e689c1998b260b59d94fca12949540768d2"
+  },
+  {
+    "path": "Previews/melee-close.webp",
+    "bytes": 125420,
+    "sha256": "61e8d96110ad618ad55c8db7aea22301a2ecdff7148e836c37bc68e7e5421f4f"
+  },
+  {
+    "path": "Previews/pistol-close.webp",
+    "bytes": 256988,
+    "sha256": "672aea77ad7b6caebe708aa173bce03fac4ec41109e33ab12eec416fcdb2f750"
+  },
+  {
+    "path": "Previews/rifle-close.webp",
+    "bytes": 1400038,
+    "sha256": "0f188ad36b6ad9f0bbc0b2afcd4c38d9ec8aac645e744147e7bd6b0b52122b5b"
+  },
+  {
+    "path": "Previews/rifle-stock-contact.webp",
+    "bytes": 171158,
+    "sha256": "dbbb4f22b9da311077e64fc371c735034cabd5d6d4e04dcbe8e59cbca4ac27cd"
+  },
+  {
+    "path": "README.md",
+    "bytes": 15552,
+    "sha256": "f3786c8b11813ee1232d54188793b7c0f3db05899dc0cfe80789504590957d27"
+  },
+  {
+    "path": "Report.html",
+    "bytes": 26619413,
+    "sha256": "506102a756c396085b5cd47e4b978f3d0094e364e73870ef53ad5503c0e98c7f"
+  },
+  {
+    "path": "Revision.txt",
+    "bytes": 157,
+    "sha256": "7d5e685e751cac677c369f93093543027daabcc91c87786c2f2ba6967ab3d761"
+  },
+  {
+    "path": "Technical-report.html",
+    "bytes": 17459,
+    "sha256": "d1e6739d3d88f92fc5271c22674221f2e88f505288a569dd099bde1b659be1a7"
+  },
+  {
+    "path": "avatar-core/assets/male/lobby/rifle-left-arm.png",
+    "bytes": 78763,
+    "sha256": "59882e460aeb26a26af0ed27f65d21c7af8d3068f9c9b67508f88b2a86147431"
+  },
+  {
+    "path": "avatar-core/assets/male/lobby/rifle-left-front.png",
+    "bytes": 16569,
+    "sha256": "3e80f6fe4e07992fe3533735165130452aeeaf6e7609e725c9b6181351306b6f"
+  },
+  {
+    "path": "avatar-core/assets/male/lobby/rifle-right-arm.png",
+    "bytes": 75814,
+    "sha256": "b14ec95416d98ac2e83cf12e6fa2874ca4486202c57ede89c7b7ae91cc82f4ac"
+  },
+  {
+    "path": "avatar-core/assets/male/lobby/rifle-right-front.png",
+    "bytes": 19613,
+    "sha256": "c8f57c5cc864215607e5620e54ce990fa8887a0cecdb3d4c847b35c2e1ecb4cb"
+  },
+  {
+    "path": "avatar-core/assets/male/weapon-pass/melee-wrist-edge.png",
+    "bytes": 9853,
+    "sha256": "6890079203f625e449230c567dd3f68bb860f1b51c00fcf6855ce37b17b286e5"
+  },
+  {
+    "path": "avatar-core/assets/male/weapon-pass/rifle-left-contact.png",
+    "bytes": 12062,
+    "sha256": "a5c7b2fdf5936e86797301451c20e77741fe4ca69880aea460f2eab2be0c8d0b"
+  },
+  {
+    "path": "avatar-core/assets/male/weapon-pass/rifle-right-contact.png",
+    "bytes": 12842,
+    "sha256": "b266bf0096c2ab4878b1e34b41c0f6675808d1cc01b4276ce870bef5cec11c0f"
+  },
+  {
+    "path": "avatar-core/assets/weapons/male-lobby/rifle.png",
+    "bytes": 169350,
+    "sha256": "e224e4550a24c04f60c667e5b3657321e38948b4e8c55dcad4a83e9006cfcb69"
+  },
+  {
+    "path": "test-logs/capture.log",
+    "bytes": 101,
+    "sha256": "d3fa42dc2758952127014fb35c09f802fc527ba8bc08e66ae8a60c46bcd687d9"
+  },
+  {
+    "path": "test-logs/core-js.log",
+    "bytes": 1916,
+    "sha256": "50e076f88c1afd7fb81f0ebefb091b2b534cd1db302adbd34f153c6f578f1dda"
+  },
+  {
+    "path": "test-logs/final-regression.log",
+    "bytes": 8163,
+    "sha256": "413e736765d299bb052149b5f5c2683efa388a724dc1aafb772ac03215022629"
+  },
+  {
+    "path": "test-logs/game-js.log",
+    "bytes": 9920,
+    "sha256": "6c896311336718823f0f9f294709e4a9e0f2d981ae8a3ae8518bdd7edb1156e1"
+  },
+  {
+    "path": "test-logs/initial-regression.log",
+    "bytes": 11366,
+    "sha256": "3c9fdb855a978d749addc677e8a3d8c58b8bb0fb4921af6b36f173c74ab0e9d2"
+  },
+  {
+    "path": "test-logs/repaired-tests.log",
+    "bytes": 784,
+    "sha256": "71dd9d997dc2e9a3a9319f44229edacdbbdeb5c47b64c1c8b9ad8a2401776bb1"
+  },
+  {
+    "path": "test-logs/second-regression.log",
+    "bytes": 8797,
+    "sha256": "7d90f2e4b997df867584a631409186e6e9395bdbf0459af7dc5461c858e5500e"
+  },
+  {
+    "path": "ВІДКРИЙ_СПОЧАТКУ.txt",
+    "bytes": 614,
+    "sha256": "5512bc2f53597ec095f49f72ac9d1eb7380c2ec2f8ee437c0fffd92e34c1d370"
+  }
+]

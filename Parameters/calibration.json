@@ -1,0 +1,164 @@
+{
+  "anchors": {
+    "right": {
+      "shoulder": [
+        287,
+        382
+      ],
+      "elbow": [
+        231,
+        598
+      ],
+      "wrist": [
+        324,
+        631
+      ],
+      "grip": [
+        364,
+        668
+      ]
+    },
+    "left": {
+      "shoulder": [
+        657,
+        381
+      ],
+      "elbow": [
+        711,
+        620
+      ],
+      "wrist": [
+        658,
+        725
+      ],
+      "grip": [
+        619,
+        755
+      ]
+    }
+  },
+  "poses": {
+    "melee": {
+      "right": [
+        207,
+        889
+      ],
+      "left": [
+        738,
+        920
+      ],
+      "angle": 195,
+      "handAngles": {
+        "right": 0,
+        "left": 0
+      },
+      "bend": {
+        "right": 1,
+        "left": -1
+      }
+    },
+    "pistol": {
+      "right": [
+        230,
+        330
+      ],
+      "left": [
+        738,
+        920
+      ],
+      "angle": -72,
+      "handAngles": {
+        "right": -238.37712546786017,
+        "left": 0
+      },
+      "bend": {
+        "right": -1,
+        "left": -1
+      }
+    },
+    "rifle": {
+      "right": [
+        364,
+        668
+      ],
+      "left": [
+        619,
+        755
+      ],
+      "angle": 0,
+      "handAngles": {
+        "right": -47.23117460803125,
+        "left": 52.43140797117252
+      },
+      "bend": {
+        "right": 1,
+        "left": -1
+      }
+    }
+  },
+  "projection": {
+    "idle": {
+      "right": [
+        1,
+        1
+      ],
+      "left": [
+        1,
+        1
+      ]
+    },
+    "melee": {
+      "right": [
+        1,
+        1
+      ],
+      "left": [
+        1,
+        1
+      ]
+    },
+    "pistol": {
+      "right": [
+        0.82,
+        0.93
+      ],
+      "left": [
+        1,
+        1
+      ]
+    },
+    "rifle": {
+      "right": [
+        0.945836320881242,
+        0.4182274875172603
+      ],
+      "left": [
+        1.0321419058949521,
+        0.4955952562826388
+      ]
+    }
+  },
+  "breathingProfiles": {
+    "idle": {
+      "propSway": 0,
+      "gripX": 0,
+      "handDegrees": 0,
+      "idleArm": 0.1
+    },
+    "melee": {
+      "propSway": 0.18,
+      "gripX": 0.2,
+      "handDegrees": 0.12
+    },
+    "pistol": {
+      "propSway": 0.045,
+      "gripX": 0.08,
+      "handDegrees": 0.03
+    },
+    "rifle": {
+      "propSway": 0.16,
+      "gripX": 0.18,
+      "handDegrees": 0.1
+    }
+  }
+}

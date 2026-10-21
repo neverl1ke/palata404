@@ -1,0 +1,9 @@
+test_registration_is_reproducible_without_moving_sources (tests.test_avatar_polish.PolishSourceTests.test_registration_is_reproducible_without_moving_sources) ... ok
+test_pose_art_triangles_do_not_flip_during_breathing (tests.test_male_anatomy.MaleAnatomyBrowserTests.test_pose_art_triangles_do_not_flip_during_breathing) ... ok
+test_supported_pistol_and_combat_wrists_do_not_fold_backwards (tests.test_avatar_polish.PolishBrowserTests.test_supported_pistol_and_combat_wrists_do_not_fold_backwards) ... ok
+test_rifle_and_pistol_match_their_current_calibrated_art_bind (tests.test_weapon_pass.WeaponPassBrowserTests.test_rifle_and_pistol_match_their_current_calibrated_art_bind) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 17.938s
+
+OK

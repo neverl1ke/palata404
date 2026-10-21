@@ -1,0 +1,89 @@
+test_all_current_faces_four_poses_and_shared_hair_palette (tests.test_avatar_core.AvatarCoreBrowserTests.test_all_current_faces_four_poses_and_shared_hair_palette) ... ok
+test_all_eight_poses_preserve_face_feet_and_grips_across_breathing (tests.test_avatar_core.AvatarCoreBrowserTests.test_all_eight_poses_preserve_face_feet_and_grips_across_breathing) ... ok
+test_binding_api_sleeves_follow_each_rig_and_can_be_removed (tests.test_avatar_core.AvatarCoreBrowserTests.test_binding_api_sleeves_follow_each_rig_and_can_be_removed) ... ok
+test_canvas_appearance_matches_actual_game_renderer (tests.test_avatar_core.AvatarCoreBrowserTests.test_canvas_appearance_matches_actual_game_renderer) ... appearance comparison male 0.04813767040052067 0
+appearance comparison female 0.0 0
+ok
+test_existing_saves_and_both_loadouts_remain_byte_unchanged (tests.test_avatar_core.AvatarCoreBrowserTests.test_existing_saves_and_both_loadouts_remain_byte_unchanged) ... ok
+test_hidden_tab_stops_and_resume_does_not_catch_up_hidden_time (tests.test_avatar_core.AvatarCoreBrowserTests.test_hidden_tab_stops_and_resume_does_not_catch_up_hidden_time) ... ok
+test_idle_render_matches_original_for_both_bases (tests.test_avatar_core.AvatarCoreBrowserTests.test_idle_render_matches_original_for_both_bases) ... ok
+test_interrupted_transitions_have_no_joint_jump (tests.test_avatar_core.AvatarCoreBrowserTests.test_interrupted_transitions_have_no_joint_jump) ... ok
+test_male_pistol_is_one_handed_even_with_legacy_support_flag (tests.test_avatar_core.AvatarCoreBrowserTests.test_male_pistol_is_one_handed_even_with_legacy_support_flag) ... ok
+test_mobile_and_high_dpi_layout (tests.test_avatar_core.AvatarCoreBrowserTests.test_mobile_and_high_dpi_layout) ... ok
+test_moving_joints_remain_opaque_and_main_body_connected (tests.test_avatar_core.AvatarCoreBrowserTests.test_moving_joints_remain_opaque_and_main_body_connected) ... ok
+test_offline_lab_has_no_network_dependencies (tests.test_avatar_core.AvatarCoreBrowserTests.test_offline_lab_has_no_network_dependencies) ... ok
+test_rapid_gender_switch_is_atomic_and_image_cache_bounded (tests.test_avatar_core.AvatarCoreBrowserTests.test_rapid_gender_switch_is_atomic_and_image_cache_bounded) ... ok
+test_two_instances_render_different_genders_without_shared_pose_state (tests.test_avatar_core.AvatarCoreBrowserTests.test_two_instances_render_different_genders_without_shared_pose_state) ... ok
+test_approved_runtime_and_all_original_assets_are_unchanged (tests.test_avatar_core.AvatarCoreSourceTests.test_approved_runtime_and_all_original_assets_are_unchanged) ... ok
+test_nine_disjoint_source_partitions_reconstruct_every_visible_pixel (tests.test_avatar_core.AvatarCoreSourceTests.test_nine_disjoint_source_partitions_reconstruct_every_visible_pixel) ... ok
+test_pivots_are_inside_actual_source_skin_and_assets_match_hashes (tests.test_avatar_core.AvatarCoreSourceTests.test_pivots_are_inside_actual_source_skin_and_assets_match_hashes) ... ok
+test_all_pose_transitions_keep_joints_continuous_and_wrists_within_range (tests.test_avatar_polish.PolishBrowserTests.test_all_pose_transitions_keep_joints_continuous_and_wrists_within_range) ... ok
+test_cached_skin_preserves_the_uncached_paint_order (tests.test_avatar_polish.PolishBrowserTests.test_cached_skin_preserves_the_uncached_paint_order) ... ok
+test_hiding_corrective_hands_removes_them_and_old_fingertips_are_absent (tests.test_avatar_polish.PolishBrowserTests.test_hiding_corrective_hands_removes_them_and_old_fingertips_are_absent) ... ok
+test_supported_pistol_and_combat_wrists_do_not_fold_backwards (tests.test_avatar_polish.PolishBrowserTests.test_supported_pistol_and_combat_wrists_do_not_fold_backwards) ... FAIL
+test_wrist_retouch_is_applied_only_inside_declared_source_band (tests.test_avatar_polish.PolishBrowserTests.test_wrist_retouch_is_applied_only_inside_declared_source_band)
+Runtime A/B, not a comparison against newly approved image hashes. ... ok
+test_corrective_hands_have_single_clean_silhouette_and_fit_uv_bounds (tests.test_avatar_polish.PolishSourceTests.test_corrective_hands_have_single_clean_silhouette_and_fit_uv_bounds) ... ok
+test_every_prototype_png_is_still_byte_identical (tests.test_avatar_polish.PolishSourceTests.test_every_prototype_png_is_still_byte_identical) ... ok
+test_registration_is_reproducible_without_moving_sources (tests.test_avatar_polish.PolishSourceTests.test_registration_is_reproducible_without_moving_sources) ... FAIL
+test_female_cleanup_scope_and_male_protected_head_feet (tests.test_avatar_cleanup.CleanupBrowserTests.test_female_cleanup_scope_and_male_protected_head_feet) ... ok
+test_shoulder_surface_is_local_continuous_and_never_changes_skeleton (tests.test_avatar_cleanup.CleanupBrowserTests.test_shoulder_surface_is_local_continuous_and_never_changes_skeleton) ... ok
+test_all_65_precleanup_pngs_are_byte_identical (tests.test_avatar_cleanup.CleanupSourceTests.test_all_65_precleanup_pngs_are_byte_identical) ... ok
+test_new_transition_edges_have_no_faint_projection_away_from_the_silhouette (tests.test_avatar_cleanup.CleanupSourceTests.test_new_transition_edges_have_no_faint_projection_away_from_the_silhouette) ... ok
+test_breathing_cycle_preserves_grips_projection_and_fixed_regions (tests.test_male_anatomy.MaleAnatomyBrowserTests.test_breathing_cycle_preserves_grips_projection_and_fixed_regions) ... ok
+test_female_all_four_renders_are_pixel_identical (tests.test_male_anatomy.MaleAnatomyBrowserTests.test_female_all_four_renders_are_pixel_identical) ... ok
+test_pistol_legacy_aliases_and_flag_never_activate_left_arm (tests.test_male_anatomy.MaleAnatomyBrowserTests.test_pistol_legacy_aliases_and_flag_never_activate_left_arm) ... ok
+test_pose_art_triangles_do_not_flip_during_breathing (tests.test_male_anatomy.MaleAnatomyBrowserTests.test_pose_art_triangles_do_not_flip_during_breathing) ... FAIL
+test_speed_control_pause_and_bindings_still_work (tests.test_male_anatomy.MaleAnatomyBrowserTests.test_speed_control_pause_and_bindings_still_work) ... ok
+test_art_has_no_gray_weapon_or_background_pixels (tests.test_male_anatomy.MaleAnatomySourceTests.test_art_has_no_gray_weapon_or_background_pixels) ... ok
+test_originals_and_female_rig_are_byte_identical_to_cleanup (tests.test_male_anatomy.MaleAnatomySourceTests.test_originals_and_female_rig_are_byte_identical_to_cleanup) ... ok
+test_breathing_defaults_and_closed_cycle_grips_are_preserved (tests.test_weapon_pass.WeaponPassBrowserTests.test_breathing_defaults_and_closed_cycle_grips_are_preserved) ... ok
+test_every_male_switch_frame_is_the_opaque_destination (tests.test_weapon_pass.WeaponPassBrowserTests.test_every_male_switch_frame_is_the_opaque_destination) ... ok
+test_rifle_and_pistol_match_their_current_calibrated_art_bind (tests.test_weapon_pass.WeaponPassBrowserTests.test_rifle_and_pistol_match_their_current_calibrated_art_bind) ... FAIL
+test_new_prop_contacts_are_on_real_visible_pixels (tests.test_weapon_pass.WeaponPassSourceTests.test_new_prop_contacts_are_on_real_visible_pixels) ... ok
+test_original_pngs_female_rig_and_shared_weapons_are_unchanged (tests.test_weapon_pass.WeaponPassSourceTests.test_original_pngs_female_rig_and_shared_weapons_are_unchanged) ... ok
+test_wrist_alpha_edit_is_local_and_does_not_repaint_skin (tests.test_weapon_pass.WeaponPassSourceTests.test_wrist_alpha_edit_is_local_and_does_not_repaint_skin) ... ok
+test_pistol_micro_sway_is_bounded_in_css_pixels_at_two_lab_scales (tests.test_male_lobby.LobbyBrowserTests.test_pistol_micro_sway_is_bounded_in_css_pixels_at_two_lab_scales) ... ok
+test_relaxed_rifle_elbows_stock_contacts_and_face_clearance (tests.test_male_lobby.LobbyBrowserTests.test_relaxed_rifle_elbows_stock_contacts_and_face_clearance) ... ok
+test_new_arm_pixels_are_warm_skin_not_the_gray_guide_or_full_avatar (tests.test_male_lobby.LobbySourceTests.test_new_arm_pixels_are_warm_skin_not_the_gray_guide_or_full_avatar) ... ok
+test_originals_old_art_female_and_animation_math_are_preserved (tests.test_male_lobby.LobbySourceTests.test_originals_old_art_female_and_animation_math_are_preserved) ... ok
+
+======================================================================
+FAIL: test_supported_pistol_and_combat_wrists_do_not_fold_backwards (tests.test_avatar_polish.PolishBrowserTests.test_supported_pistol_and_combat_wrists_do_not_fold_backwards)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/palata404-avatar-core/tests/test_avatar_polish.py", line 134, in test_supported_pistol_and_combat_wrists_do_not_fold_backwards
+    self.assertLess(np.linalg.norm(stock-frame['arms']['right']['shoulder']),60,(g,'stock off shoulder'))
+AssertionError: np.float64(438.84963256222505) not less than 60 : ('male', 'stock off shoulder')
+
+======================================================================
+FAIL: test_registration_is_reproducible_without_moving_sources (tests.test_avatar_polish.PolishSourceTests.test_registration_is_reproducible_without_moving_sources)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/palata404-avatar-core/tests/test_avatar_polish.py", line 47, in test_registration_is_reproducible_without_moving_sources
+    self.assertEqual(before,{p:hashlib.sha256(p.read_bytes()).hexdigest() for p in paths})
+AssertionError: {Posi[15252 chars]'): '11be4fb5a01e424fcb300b749b355b41b1ddee357[160 chars]263'} != {Posi[15252 chars]'): 'd82411fd680aef4670b2724ac14bf50a55e07373f[160 chars]263'}
+Diff is 15902 characters long. Set self.maxDiff to None to see it.
+
+======================================================================
+FAIL: test_pose_art_triangles_do_not_flip_during_breathing (tests.test_male_anatomy.MaleAnatomyBrowserTests.test_pose_art_triangles_do_not_flip_during_breathing)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/palata404-avatar-core/tests/test_male_anatomy.py", line 75, in test_pose_art_triangles_do_not_flip_during_breathing
+    self.assertGreater(result['changed'],10000);self.assertGreater(result['minRatio'],.8,result)
+                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: -0.45036859876371316 not greater than 0.8 : {'minRatio': -0.45036859876371316, 'changed': 71874}
+
+======================================================================
+FAIL: test_rifle_and_pistol_match_their_current_calibrated_art_bind (tests.test_weapon_pass.WeaponPassBrowserTests.test_rifle_and_pistol_match_their_current_calibrated_art_bind)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/palata404-avatar-core/tests/test_weapon_pass.py", line 56, in test_rifle_and_pistol_match_their_current_calibrated_art_bind
+    for j in ['shoulder','elbow','wrist','grip']:self.assertTrue(np.allclose(frame['arms'][side][j],anchors[side]['anchors'][j],atol=1e-6),(pose,side,j))
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : ('rifle', 'right', 'elbow')
+
+----------------------------------------------------------------------
+Ran 46 tests in 164.042s
+
+FAILED (failures=4)
