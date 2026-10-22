@@ -1,0 +1,15 @@
+test_no_remote_faint_haze_or_detached_low_alpha_specks (tests.test_paper_doll_audit.AuditAssetTests.test_no_remote_faint_haze_or_detached_low_alpha_specks) ... FAIL
+
+======================================================================
+FAIL: test_no_remote_faint_haze_or_detached_low_alpha_specks (tests.test_paper_doll_audit.AuditAssetTests.test_no_remote_faint_haze_or_detached_low_alpha_specks)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/palata404-avatar-core/tests/test_paper_doll_audit.py", line 40, in test_no_remote_faint_haze_or_detached_low_alpha_specks
+    d=ndi.distance_transform_edt(~(roi>=32));self.assertEqual(int(((roi>0)&(roi<=16)&(d>4)).sum()),0,rel)
+                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 4234 != 0 : base_male.png
+
+----------------------------------------------------------------------
+Ran 1 test in 8.990s
+
+FAILED (failures=1)

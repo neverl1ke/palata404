@@ -1,0 +1,14 @@
+test_female_cleanup_scope_and_male_protected_head_feet (tests.test_avatar_cleanup.CleanupBrowserTests.test_female_cleanup_scope_and_male_protected_head_feet) ... FAIL
+
+======================================================================
+FAIL: test_female_cleanup_scope_and_male_protected_head_feet (tests.test_avatar_cleanup.CleanupBrowserTests.test_female_cleanup_scope_and_male_protected_head_feet)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/palata404-avatar-core/tests/test_avatar_cleanup.py", line 94, in test_female_cleanup_scope_and_male_protected_head_feet
+    self.assertTrue(np.array_equal(actual[20:245,385:560],reference[20:245,385:560]))
+AssertionError: False is not true
+
+----------------------------------------------------------------------
+Ran 1 test in 6.824s
+
+FAILED (failures=1)

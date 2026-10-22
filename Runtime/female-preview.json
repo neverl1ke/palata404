@@ -1,0 +1,106 @@
+{
+  "weapons": {
+    "melee": {
+      "id": "female-donor-melee",
+      "class": "melee",
+      "pose": "melee",
+      "image": "assets/female/donor-art/melee-weapon.png",
+      "size": [
+        941,
+        1672
+      ],
+      "primary": [
+        220,
+        857
+      ],
+      "support": null,
+      "scale": 1,
+      "angle": 0,
+      "offset": [
+        0,
+        0
+      ],
+      "order": 30,
+      "test_resource": true
+    },
+    "pistol": {
+      "id": "female-donor-pistol",
+      "class": "pistol",
+      "pose": "pistol",
+      "image": "assets/female/donor-art/pistol-weapon.png",
+      "size": [
+        941,
+        1672
+      ],
+      "primary": [
+        217,
+        303
+      ],
+      "support": null,
+      "scale": 1,
+      "angle": 0,
+      "offset": [
+        0,
+        0
+      ],
+      "order": 30,
+      "test_resource": true
+    },
+    "rifle": {
+      "id": "female-donor-rifle",
+      "class": "rifle",
+      "pose": "rifle",
+      "image": "assets/female/donor-art/rifle-weapon.png",
+      "size": [
+        941,
+        1672
+      ],
+      "primary": [
+        411,
+        575
+      ],
+      "support": [
+        665,
+        666
+      ],
+      "scale": 1,
+      "angle": 0,
+      "offset": [
+        0,
+        0
+      ],
+      "order": 30,
+      "test_resource": true,
+      "stock": [
+        280,
+        400
+      ]
+    }
+  },
+  "breathingProfiles": {
+    "idle": {
+      "propSway": 0,
+      "gripX": 0,
+      "handDegrees": 0,
+      "idleArm": 0.12
+    },
+    "melee": {
+      "propSway": 0,
+      "gripX": 0,
+      "handDegrees": 0,
+      "idleArm": 0.12
+    },
+    "pistol": {
+      "propSway": 0,
+      "gripX": 0,
+      "handDegrees": 0,
+      "idleArm": 0.12
+    },
+    "rifle": {
+      "propSway": 0,
+      "gripX": 0,
+      "handDegrees": 0,
+      "idleArm": 0.12
+    }
+  }
+}

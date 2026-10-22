@@ -1,0 +1,2190 @@
+{
+  "Avatar-Lab.html": {
+    "sha256": "3a66e4b72d39ca1257a8c337082ac18bbb6e3b5e1ef0b5b3d88022c393e7ea43",
+    "bytes": 55770908
+  },
+  "Baseline/female_rig.json": {
+    "sha256": "06046069b5d4d08f9325f7a950de249bdb431e7e167777357faefe133d8d62e6",
+    "bytes": 429482
+  },
+  "Baseline/left-frontImage.png": {
+    "sha256": "b3b8670b541cfc581be8b77777cb946d30325de54b5d796c3ae55a058587cf78",
+    "bytes": 13383
+  },
+  "Baseline/left-image.png": {
+    "sha256": "9600787ba130b6ff7cfde8ea755e222d75bddb688c37bd9b39d1673cbc5bc367",
+    "bytes": 71595
+  },
+  "Baseline/right-frontImage.png": {
+    "sha256": "53a7e1d8a406eaef55b2f004687213df381badf4d46ba1ee35c59295b48b2391",
+    "bytes": 27988
+  },
+  "Baseline/right-image.png": {
+    "sha256": "4ec499fe3f2e46b6cfe2396d7a9b748b08eaafe2c00f17132cacc9a888bcccc6",
+    "bytes": 88274
+  },
+  "Gallery/after-female-idle-False.webp": {
+    "sha256": "e53d912e035e6f1d11cc81876d71610f67c35d66a1a873908fd1b90d53961e1d",
+    "bytes": 487606
+  },
+  "Gallery/after-female-idle-True.webp": {
+    "sha256": "e53d912e035e6f1d11cc81876d71610f67c35d66a1a873908fd1b90d53961e1d",
+    "bytes": 487606
+  },
+  "Gallery/after-female-melee-False.webp": {
+    "sha256": "c98cc9288ca0bd0d2843e42bca85b966dc3f16601e686d5e0809e6cb137a5100",
+    "bytes": 481880
+  },
+  "Gallery/after-female-melee-True.webp": {
+    "sha256": "60115c269ae089c1873470daf4cd55bfe47ae1ef8e0b7fd3b75dd36cd92c1c81",
+    "bytes": 487790
+  },
+  "Gallery/after-female-pistol-False.webp": {
+    "sha256": "b024117f323767ca36693731268ae13bbb0010618df4ddde455b1a1ae91d9a19",
+    "bytes": 480902
+  },
+  "Gallery/after-female-pistol-True.webp": {
+    "sha256": "40c125d3c5f4e248cbefe36acc662f1301f921f29d301859c93dd8bbc6d20c79",
+    "bytes": 487628
+  },
+  "Gallery/after-female-rifle-False.webp": {
+    "sha256": "1c4c96d910f2476c4f333495cf84bdc8d79442b03405c00e948c051dcd03154b",
+    "bytes": 458190
+  },
+  "Gallery/after-female-rifle-True.webp": {
+    "sha256": "4cdfe5efbf05b92d3052b5d8ecc888cc80c85361c8fcaed233813428d06b915d",
+    "bytes": 498142
+  },
+  "Gallery/after-male-idle-False.webp": {
+    "sha256": "ad5e4b97e64a0c0c14a2544aa3a7657faba625fc42bb720a4f14dc280f27b2e7",
+    "bytes": 504790
+  },
+  "Gallery/after-male-idle-True.webp": {
+    "sha256": "ad5e4b97e64a0c0c14a2544aa3a7657faba625fc42bb720a4f14dc280f27b2e7",
+    "bytes": 504790
+  },
+  "Gallery/after-male-melee-False.webp": {
+    "sha256": "6f4ccd567989a0b2f27b9a3194fdeb3ee8a0c388726cae3bb0e642c7d94d237c",
+    "bytes": 502128
+  },
+  "Gallery/after-male-melee-True.webp": {
+    "sha256": "d5b3e007af7e39216ed5acfd855a6aa45c858a239bec30f1a99051b0f58912f7",
+    "bytes": 508426
+  },
+  "Gallery/after-male-pistol-False.webp": {
+    "sha256": "ded78aed2c2b575e10e5f89553f4a3778ffa6b4af27c72556b4fb9b933828812",
+    "bytes": 492102
+  },
+  "Gallery/after-male-pistol-True.webp": {
+    "sha256": "21acd5e63986cc893909186a90b32e06a85e89982f11577f98257f73737d7d43",
+    "bytes": 500198
+  },
+  "Gallery/after-male-rifle-False.webp": {
+    "sha256": "f4e09f9b8ff1f3f0ad016fbdf0077f0146b4119cdc495481a0792edf94f1bec9",
+    "bytes": 474012
+  },
+  "Gallery/after-male-rifle-True.webp": {
+    "sha256": "ef33e5fd704cf3a86c0d41e0b68240a6425f559cb510ce08d79c629d586a5f8d",
+    "bytes": 520098
+  },
+  "Gallery/before-female-idle-False.webp": {
+    "sha256": "bd6fb74ea39198c4ddec9a533e11921921ea63d7350b037b59324d5e66eb9ca7",
+    "bytes": 487574
+  },
+  "Gallery/before-female-idle-True.webp": {
+    "sha256": "bd6fb74ea39198c4ddec9a533e11921921ea63d7350b037b59324d5e66eb9ca7",
+    "bytes": 487574
+  },
+  "Gallery/before-female-melee-False.webp": {
+    "sha256": "c33697b50a139394ed50079c5cf193fa2e956f2a77b7255cc38da51e09a4db23",
+    "bytes": 489206
+  },
+  "Gallery/before-female-melee-True.webp": {
+    "sha256": "e9528414f25f8c22281adb6fb2e58ff91ff2adc9a77cdca53eed0458f36ed762",
+    "bytes": 491540
+  },
+  "Gallery/before-female-pistol-False.webp": {
+    "sha256": "76847f75d89593986531fb1018de063b03a57ea0afa0e2d5e7f5bcedb745b704",
+    "bytes": 460970
+  },
+  "Gallery/before-female-pistol-True.webp": {
+    "sha256": "d5c912a57c4e2173c3a14d9fc52d2f4a1adabf93975b50640dd4c030cab1a14c",
+    "bytes": 455754
+  },
+  "Gallery/before-female-rifle-False.webp": {
+    "sha256": "39d37764d13219aa80c8dd943f13a50b6f2e62a8ab610bab412b394f563fcdb6",
+    "bytes": 481330
+  },
+  "Gallery/before-female-rifle-True.webp": {
+    "sha256": "0ba6589c39bf7f93fe80c36937fe9548dd2b1204f4a1cffb8e9c283500ddc902",
+    "bytes": 472102
+  },
+  "Gallery/before-male-idle-False.webp": {
+    "sha256": "947dd3bb0a3e641a872845c570303af94d37cbffcaf8e63764becab7259fbc92",
+    "bytes": 504406
+  },
+  "Gallery/before-male-idle-True.webp": {
+    "sha256": "947dd3bb0a3e641a872845c570303af94d37cbffcaf8e63764becab7259fbc92",
+    "bytes": 504406
+  },
+  "Gallery/before-male-melee-False.webp": {
+    "sha256": "31459fd838356836eb39c17173e337595c34882603b20472563d0e4f60c933e1",
+    "bytes": 502262
+  },
+  "Gallery/before-male-melee-True.webp": {
+    "sha256": "03360594342dec1229274b0017443aa3b967d7e4b3b5a596f11d1befae1566b1",
+    "bytes": 508992
+  },
+  "Gallery/before-male-pistol-False.webp": {
+    "sha256": "705a1f5adc263ed8dbc94c8e3b2137aeeb35307bf512b4e66f90930a901339db",
+    "bytes": 492828
+  },
+  "Gallery/before-male-pistol-True.webp": {
+    "sha256": "f18bbcc81b582e3e0a104ed7527b016e0b1bdd22d12683eca69012a23aa03fcc",
+    "bytes": 500712
+  },
+  "Gallery/before-male-rifle-False.webp": {
+    "sha256": "db71da2d2e7a82e30e505f2fa3f74f74d6011f1724e989481becfe74d9fe5154",
+    "bytes": 474296
+  },
+  "Gallery/before-male-rifle-True.webp": {
+    "sha256": "6ec9fc45a684e277a54cb83a2227a680a3885a190af6c7a21aac09c95a5fe760",
+    "bytes": 520380
+  },
+  "Gallery/female-four-poses.webp": {
+    "sha256": "7e02019a58c40770c63f5a22d787b31269bc901e79564e31731bc6cc148dbf1c",
+    "bytes": 390320
+  },
+  "Gallery/female-idle-False-0.png": {
+    "sha256": "ee7ab373e014b00cc93bde441e7d571223561c7a22d3fa5e1463ebcb1d98899a",
+    "bytes": 847660
+  },
+  "Gallery/female-idle-False-000-frames.webp": {
+    "sha256": "14653d87a60985a6dd4d73255cb6fb2f465d1991b90332304e4eca79834b28ee",
+    "bytes": 411774
+  },
+  "Gallery/female-idle-False-00ff00-frames.webp": {
+    "sha256": "6b99fb7a243789573e67d63c4ec751cde17bf1d152865176729062f5ca161758",
+    "bytes": 480170
+  },
+  "Gallery/female-idle-False-1000.webp": {
+    "sha256": "ff80196edec82c1c0e40cc35cb3893efd14742f1ca4905d5fdd753e3393186c3",
+    "bytes": 580410
+  },
+  "Gallery/female-idle-False-3000.webp": {
+    "sha256": "2c17f9aec22c69f4fcfad0e70d23b092f5c0ddd5487850a9aa312dc23d5f028b",
+    "bytes": 577058
+  },
+  "Gallery/female-idle-False-4000.webp": {
+    "sha256": "2ad710c4327c43b54f2da84058b5abd268ccdb10ca7e6a1d1b3dc7c8a4e8a971",
+    "bytes": 582338
+  },
+  "Gallery/female-idle-False-777-frames.webp": {
+    "sha256": "1dfeaf9c46232564795846db3a87c4e85078c9486c89b5b2644ee2d0255c2ea9",
+    "bytes": 383350
+  },
+  "Gallery/female-idle-False-cycle.webp": {
+    "sha256": "1bf5253eb260ac2b9542b2ef46eb7a6137ad5348a8d6b82fc05095a68bce5b2c",
+    "bytes": 587166
+  },
+  "Gallery/female-idle-False-fff-frames.webp": {
+    "sha256": "787635ba7c605c88432cbd5194e50d534566bdeaff1b2f32f919df1f3a7a5871",
+    "bytes": 338388
+  },
+  "Gallery/female-idle-False-transparent-frames.webp": {
+    "sha256": "755670855ff2f8e50807ccaa80e4540ee8eb3cbf09b091f5c795a38ca700d9f1",
+    "bytes": 457418
+  },
+  "Gallery/female-idle-True-0.png": {
+    "sha256": "ee7ab373e014b00cc93bde441e7d571223561c7a22d3fa5e1463ebcb1d98899a",
+    "bytes": 847660
+  },
+  "Gallery/female-idle-True-000-frames.webp": {
+    "sha256": "14653d87a60985a6dd4d73255cb6fb2f465d1991b90332304e4eca79834b28ee",
+    "bytes": 411774
+  },
+  "Gallery/female-idle-True-00ff00-frames.webp": {
+    "sha256": "6b99fb7a243789573e67d63c4ec751cde17bf1d152865176729062f5ca161758",
+    "bytes": 480170
+  },
+  "Gallery/female-idle-True-1000.webp": {
+    "sha256": "ff80196edec82c1c0e40cc35cb3893efd14742f1ca4905d5fdd753e3393186c3",
+    "bytes": 580410
+  },
+  "Gallery/female-idle-True-3000.webp": {
+    "sha256": "2c17f9aec22c69f4fcfad0e70d23b092f5c0ddd5487850a9aa312dc23d5f028b",
+    "bytes": 577058
+  },
+  "Gallery/female-idle-True-4000.webp": {
+    "sha256": "2ad710c4327c43b54f2da84058b5abd268ccdb10ca7e6a1d1b3dc7c8a4e8a971",
+    "bytes": 582338
+  },
+  "Gallery/female-idle-True-777-frames.webp": {
+    "sha256": "1dfeaf9c46232564795846db3a87c4e85078c9486c89b5b2644ee2d0255c2ea9",
+    "bytes": 383350
+  },
+  "Gallery/female-idle-True-cycle.webp": {
+    "sha256": "1bf5253eb260ac2b9542b2ef46eb7a6137ad5348a8d6b82fc05095a68bce5b2c",
+    "bytes": 587166
+  },
+  "Gallery/female-idle-True-fff-frames.webp": {
+    "sha256": "787635ba7c605c88432cbd5194e50d534566bdeaff1b2f32f919df1f3a7a5871",
+    "bytes": 338388
+  },
+  "Gallery/female-idle-True-transparent-frames.webp": {
+    "sha256": "755670855ff2f8e50807ccaa80e4540ee8eb3cbf09b091f5c795a38ca700d9f1",
+    "bytes": 457418
+  },
+  "Gallery/female-idle-comparison.webp": {
+    "sha256": "6a159125ed3acc916a6d5a6241c6b36475df4fbb78ab5cc8c4903abfe8bfc572",
+    "bytes": 234028
+  },
+  "Gallery/female-idle-hidden-live-motion-all-decoded-frames.webp": {
+    "sha256": "363fc4f45876d2219a67a5c529cd11fd3c0265dd3c5c25965cbb787713dce872",
+    "bytes": 1090754
+  },
+  "Gallery/female-idle-hidden-live-motion.webm": {
+    "sha256": "0ac17378a9950dd03f49f3e05f2a6c8c9aa44ea662a52d6ad730a47ebbc4b47c",
+    "bytes": 182131
+  },
+  "Gallery/female-idle-sizes.webp": {
+    "sha256": "c6cdb3bdccc92e441140bf1f4754fd1b2705e68d8c19cb299a1e5e913cb68063",
+    "bytes": 105156
+  },
+  "Gallery/female-idle-visibility.webp": {
+    "sha256": "cd305ecc6816715a84fcabdb88f94d7669fa1da3f626c369161a12492f7825bf",
+    "bytes": 226202
+  },
+  "Gallery/female-idle-visible-live-motion-all-decoded-frames.webp": {
+    "sha256": "e3fce5a1b52d887e1e6cb221c5969706a21a5c618865678554d38c998971d189",
+    "bytes": 781524
+  },
+  "Gallery/female-idle-visible-live-motion.webm": {
+    "sha256": "061ceb707f42b82b2b222c8c664a58c6f195b03281319e00d408dc722f207c95",
+    "bytes": 101031
+  },
+  "Gallery/female-melee-False-0.png": {
+    "sha256": "3278f5a72f96c408a1f9e00de779e0c28de9419353421d90ccb8deeaa2806a87",
+    "bytes": 836406
+  },
+  "Gallery/female-melee-False-000-frames.webp": {
+    "sha256": "6c4af6ecfef84ac28cbf5eac603fa19e7e1429fb32baaa0845611e4e26968c69",
+    "bytes": 392212
+  },
+  "Gallery/female-melee-False-00ff00-frames.webp": {
+    "sha256": "c7fe053315a89ae91f2e52781f6382109a8cd873a0d7b4545784bee5be77ec17",
+    "bytes": 463774
+  },
+  "Gallery/female-melee-False-1000.webp": {
+    "sha256": "782bad67af128e840161807ce6526abe5e86efc51cae67df9909ce1e6a516a0c",
+    "bytes": 563108
+  },
+  "Gallery/female-melee-False-3000.webp": {
+    "sha256": "16b65f513251a8cf59f5164556a57e8e05c52349cb375437ffc333bf936701c7",
+    "bytes": 562050
+  },
+  "Gallery/female-melee-False-4000.webp": {
+    "sha256": "5203b1825c34d105d2605c03ec4b5d76b00d1bcd8da0ce32acb073aeb9930215",
+    "bytes": 573148
+  },
+  "Gallery/female-melee-False-777-frames.webp": {
+    "sha256": "2dd729db51c62c256f9e4720a86b92be9a200f8c9cbb766adf2b7081733f5215",
+    "bytes": 370648
+  },
+  "Gallery/female-melee-False-cycle.webp": {
+    "sha256": "dc92a681e35fb7bbde438f4be9b61edce1552521f51d5878ac792b74f5be93d8",
+    "bytes": 546014
+  },
+  "Gallery/female-melee-False-fff-frames.webp": {
+    "sha256": "098f230a7da21c9f27186f442fcbcbe1466dd2c17f52a3e49e009c3cf4eb3023",
+    "bytes": 324818
+  },
+  "Gallery/female-melee-False-transparent-frames.webp": {
+    "sha256": "7de8eae2ff12e6dd51b27850567d3783e80fd6af53aeaae137dc14c1987b5fc8",
+    "bytes": 438832
+  },
+  "Gallery/female-melee-True-0.png": {
+    "sha256": "97cf3a133b98bbbe1d981b204bfe6994f07b891dd718ba6eadd342c1a43beff7",
+    "bytes": 846169
+  },
+  "Gallery/female-melee-True-000-frames.webp": {
+    "sha256": "a6bcf4429ebaa118845f10833cd07171b1eb62b3b9b735d8628ffa7028df6110",
+    "bytes": 392480
+  },
+  "Gallery/female-melee-True-00ff00-frames.webp": {
+    "sha256": "53d55f5dfd3271ca11da9c749734c4d4a494bab793cd5a1773b8bbc4c0ca2aa3",
+    "bytes": 468468
+  },
+  "Gallery/female-melee-True-1000.webp": {
+    "sha256": "796103cb17edccd4ae53c170c3630b25799f9c6b2e465bb5f3baa5f84c8844d0",
+    "bytes": 569994
+  },
+  "Gallery/female-melee-True-3000.webp": {
+    "sha256": "56ae1a1c4667fafb4b5b74c365f707b0f4165c46914356ab444788d37e92b097",
+    "bytes": 568056
+  },
+  "Gallery/female-melee-True-4000.webp": {
+    "sha256": "2781bf05bdebb188ba2ff9530c7adfa041dadc3ff0455d6e9fc793ee1d5d9c96",
+    "bytes": 577876
+  },
+  "Gallery/female-melee-True-777-frames.webp": {
+    "sha256": "fff02669a45f3e550268e8b735fd31b17ae0ac7bb339d03b77f6394d1d9f30c4",
+    "bytes": 374978
+  },
+  "Gallery/female-melee-True-cycle.webp": {
+    "sha256": "ccda96f82b490d0b621ab2e545c467302c6a63117f105c25168f475fb0c64832",
+    "bytes": 558722
+  },
+  "Gallery/female-melee-True-fff-frames.webp": {
+    "sha256": "a584a3414a1942b95c5376c7fe2fc94db4ea4fbc3631f27edb4250f3c424ea87",
+    "bytes": 329900
+  },
+  "Gallery/female-melee-True-transparent-frames.webp": {
+    "sha256": "d8e83fcc4fe5995f265002bd23f0c6409da874223bcacdd14d97d17f2c3486d4",
+    "bytes": 444794
+  },
+  "Gallery/female-melee-comparison.webp": {
+    "sha256": "00e4e8cd23087e104d0d4c428d869bfc59612934ad8f588ea34350ae97f0ca6c",
+    "bytes": 244796
+  },
+  "Gallery/female-melee-grip-1x.webp": {
+    "sha256": "ef351a1a8019d361cff91f687a1777c312565713b9fac6b2fade69ae25b71e85",
+    "bytes": 20464
+  },
+  "Gallery/female-melee-grip-3x.webp": {
+    "sha256": "eb667d19eaffb40d71333c090c9c40a0434911c32d51ab35bfcef78552fbc355",
+    "bytes": 93450
+  },
+  "Gallery/female-melee-hidden-live-motion-all-decoded-frames.webp": {
+    "sha256": "f0b25b036aa8e6231efd84f8a069a2604ce4e7ea13fa8cfd22e096ba58dc48b1",
+    "bytes": 1072338
+  },
+  "Gallery/female-melee-hidden-live-motion.webm": {
+    "sha256": "c2a2f22f218df2faf129bfe4e600e821cb950569d726b64b566f23f5844a12a2",
+    "bytes": 176448
+  },
+  "Gallery/female-melee-sizes.webp": {
+    "sha256": "996275b5dbd28d3e6e3eb5c401f49607557edb051699620fbaba741d5bdbc230",
+    "bytes": 105032
+  },
+  "Gallery/female-melee-visibility.webp": {
+    "sha256": "254aee07fd017f93292bacd5515ef391274bb78e45d339a67c02139cd50f7f49",
+    "bytes": 229474
+  },
+  "Gallery/female-melee-visible-live-motion-all-decoded-frames.webp": {
+    "sha256": "a1e3ffec91b1e3648c28b918d48a93f8af66988b45aee62384430f1e62475b51",
+    "bytes": 1304698
+  },
+  "Gallery/female-melee-visible-live-motion.webm": {
+    "sha256": "adeae1656e0eeaac5fbe7280cce84e8f72af24b5bc42c6a6c9181ad03ff925c2",
+    "bytes": 272328
+  },
+  "Gallery/female-neck-1x.webp": {
+    "sha256": "78b4603ad0d3d2d1ea7ebfa4f6c80a367072c3021b55f137970f9792ec5b7597",
+    "bytes": 36114
+  },
+  "Gallery/female-neck-3x.webp": {
+    "sha256": "1c47b1d51185eaf1a408ad14285475f9c9c3da2b57565816d631c0e03479fb82",
+    "bytes": 139448
+  },
+  "Gallery/female-pistol-False-0.png": {
+    "sha256": "9c659d9f92fd479a415f78c145be6e0b24ff1dab9f1ed72632a163238f415710",
+    "bytes": 836505
+  },
+  "Gallery/female-pistol-False-000-frames.webp": {
+    "sha256": "a45d248cbd3088a08cc52758704effe6d71344fdf97dde8c68679ec6eb61103e",
+    "bytes": 391582
+  },
+  "Gallery/female-pistol-False-00ff00-frames.webp": {
+    "sha256": "a0555553e0624021a63e04c0bbf96d263dbe4b9753e9f82e0175c17515262d46",
+    "bytes": 463000
+  },
+  "Gallery/female-pistol-False-1000.webp": {
+    "sha256": "0b367cf43a25a69ff643ae85a09881c011cd0c2167ef6ef5d88b9cc15cc5482b",
+    "bytes": 562316
+  },
+  "Gallery/female-pistol-False-3000.webp": {
+    "sha256": "bee20e6ad8f43bbf657ce321413b5e19916dd7f6000178b779866d69c8035efe",
+    "bytes": 560592
+  },
+  "Gallery/female-pistol-False-4000.webp": {
+    "sha256": "b28578c05d5e26a49a2923e95b442697c81315518bc18487e230b6e7d6699749",
+    "bytes": 570656
+  },
+  "Gallery/female-pistol-False-777-frames.webp": {
+    "sha256": "dac403b1ff631efba09dfafe5d764f02d165f3c750b443a1bc9bcafa4990830d",
+    "bytes": 373774
+  },
+  "Gallery/female-pistol-False-cycle.webp": {
+    "sha256": "755872595ff3d164695e13d4d57b3e5ecd191abf1ce9f0f1a1e281c27b4cd09c",
+    "bytes": 561474
+  },
+  "Gallery/female-pistol-False-fff-frames.webp": {
+    "sha256": "e9760712abb9582f763dc6d29e94eec6d46384252059df1e39145d4aeb46c970",
+    "bytes": 333158
+  },
+  "Gallery/female-pistol-False-transparent-frames.webp": {
+    "sha256": "5e655095b9ecb2f0b1393cbd47b967204fbb9374b8616dbb6014290090f0c140",
+    "bytes": 447974
+  },
+  "Gallery/female-pistol-True-0.png": {
+    "sha256": "e31c38cc2205420993151cdfe28654501d0ca5c17bf0aeae7fd1e21566f3ae8d",
+    "bytes": 846765
+  },
+  "Gallery/female-pistol-True-000-frames.webp": {
+    "sha256": "a48a9b48208c0597bc4b12809e429f3e6607649c20dac028149dc39950a60400",
+    "bytes": 387768
+  },
+  "Gallery/female-pistol-True-00ff00-frames.webp": {
+    "sha256": "3fccf971614dd4b49a11debe6a055eeead32a8e155cd8427616291c00c68cb67",
+    "bytes": 468316
+  },
+  "Gallery/female-pistol-True-1000.webp": {
+    "sha256": "481560ffddad97a11bfb742a0077a87b328ec825cb1e30d2fb2b606898baaaf9",
+    "bytes": 569046
+  },
+  "Gallery/female-pistol-True-3000.webp": {
+    "sha256": "2306da4adabf0273468fbce442899e6625150aeaefee60c92009f64bf48c4b8f",
+    "bytes": 567254
+  },
+  "Gallery/female-pistol-True-4000.webp": {
+    "sha256": "9617564d7eb83d4da6d9f75bc240536d264d69cb2e1d08b052a4d5f1af10675d",
+    "bytes": 578008
+  },
+  "Gallery/female-pistol-True-777-frames.webp": {
+    "sha256": "5e15bb92c8138d6ccce30a8ac1c7e5ced25347f5c6fd7635624b242f9ff16a1f",
+    "bytes": 379576
+  },
+  "Gallery/female-pistol-True-cycle.webp": {
+    "sha256": "3b0f31f97ceff38d99a48ffdeaa6b25ed8555153e30792324cbb658d37c9463d",
+    "bytes": 564634
+  },
+  "Gallery/female-pistol-True-fff-frames.webp": {
+    "sha256": "b7073f2ef177f2954ed0d50f12f2440d90113d0eea23c3592f69260685cf874b",
+    "bytes": 337724
+  },
+  "Gallery/female-pistol-True-transparent-frames.webp": {
+    "sha256": "10b9bf8a94d3e86cf9af4520793cf85e8c2f8704896c3070175859b055262eba",
+    "bytes": 444068
+  },
+  "Gallery/female-pistol-comparison.webp": {
+    "sha256": "85e55039a5f77595d0a81945888c970861b32a2f6fc4007d115a6f6d9368718d",
+    "bytes": 236112
+  },
+  "Gallery/female-pistol-grip-1x.webp": {
+    "sha256": "7ae9ee82de4c40d4bc262e8eac62a714726e91769527d2789729838fde6a0b57",
+    "bytes": 14618
+  },
+  "Gallery/female-pistol-grip-3x.webp": {
+    "sha256": "59217d21862d1f84cef42de21b3d26dd7df749851eed175efeee60bab9d69a5a",
+    "bytes": 65176
+  },
+  "Gallery/female-pistol-hidden-live-motion-all-decoded-frames.webp": {
+    "sha256": "2ce74c34b82338a74edef2a28a096cab5e14bb2c12c30d54a088c9241e53c9c4",
+    "bytes": 1244434
+  },
+  "Gallery/female-pistol-hidden-live-motion.webm": {
+    "sha256": "a64348beabbd1a908d026bb7151a81bc0f226bd34eb6506840fdb41fe0fa599c",
+    "bytes": 249253
+  },
+  "Gallery/female-pistol-sizes.webp": {
+    "sha256": "a98e29838c4d1bf4b95d689671144afabf7ae80e0dc1ad357d9215be4d23dfd5",
+    "bytes": 106826
+  },
+  "Gallery/female-pistol-visibility.webp": {
+    "sha256": "603de14b37b360339ab4794183187d0eca0a1f612cbfe3d8340ba7ecb1857f56",
+    "bytes": 230150
+  },
+  "Gallery/female-pistol-visible-live-motion-all-decoded-frames.webp": {
+    "sha256": "f1d5133fe017eb1a263a5ae678d7f2415b7b150262a64541f46d3f8ae238814e",
+    "bytes": 951876
+  },
+  "Gallery/female-pistol-visible-live-motion.webm": {
+    "sha256": "92a161ce387f94cbe3028fdd76f65fec57374275a8fd65681ffd5dad13566dbb",
+    "bytes": 138991
+  },
+  "Gallery/female-rifle-False-0.png": {
+    "sha256": "8d22ffa303400fef10144e00d9026f7551e44dce073b6bada910986731d092ad",
+    "bytes": 794631
+  },
+  "Gallery/female-rifle-False-000-frames.webp": {
+    "sha256": "6e861fa96b09b3de57085fda4debeabcd48582bfa528ccbb033bdc2304587cd0",
+    "bytes": 359818
+  },
+  "Gallery/female-rifle-False-00ff00-frames.webp": {
+    "sha256": "ba1056ce754850d393a2ea8d42dff916bca81f2f1b990956eda6c46e689f7399",
+    "bytes": 432212
+  },
+  "Gallery/female-rifle-False-1000.webp": {
+    "sha256": "c09d819ef2758812dee7a69cc52baeb420abd0c54d047692bc88106a097b97c5",
+    "bytes": 533860
+  },
+  "Gallery/female-rifle-False-3000.webp": {
+    "sha256": "c24e42b082bfb01e57c9eb58de9d7400d044c177cb44e181cc0e57eccf2406d3",
+    "bytes": 531156
+  },
+  "Gallery/female-rifle-False-4000.webp": {
+    "sha256": "3cd886d29b1a0faface309212f2dc0cd6643b2771df88cae92d033273d4c3a4d",
+    "bytes": 535538
+  },
+  "Gallery/female-rifle-False-777-frames.webp": {
+    "sha256": "dbea992eed985b16d209257b99c0a8fb5c391498477ad3afc256826d06b66c67",
+    "bytes": 352204
+  },
+  "Gallery/female-rifle-False-cycle.webp": {
+    "sha256": "605b70543f420decc701afb4b1d5a25932a3f66230392e42bb3b90eefbee3faa",
+    "bytes": 406694
+  },
+  "Gallery/female-rifle-False-fff-frames.webp": {
+    "sha256": "7f010efafd5f4353b8551398fcfeea1722585771926f573da8fff2a40602e7a9",
+    "bytes": 323198
+  },
+  "Gallery/female-rifle-False-transparent-frames.webp": {
+    "sha256": "ab58077387958a4742d95ba98882adf9e7135fa5cea836f9d9f836f934ee5d9f",
+    "bytes": 398216
+  },
+  "Gallery/female-rifle-True-0.png": {
+    "sha256": "ed57550a8a6a996f05f46ab40b1270cc71a3b950d0623b586841464ddcb0fc32",
+    "bytes": 862952
+  },
+  "Gallery/female-rifle-True-000-frames.webp": {
+    "sha256": "d590dc67a6acc21c1ddfc4eceb81f39eb35ee604755847cd8885e9b17e375365",
+    "bytes": 357652
+  },
+  "Gallery/female-rifle-True-00ff00-frames.webp": {
+    "sha256": "5f7b9536f4b1429cb715350eb6e6b791f8f6e54b24ec680a263caf56151fead0",
+    "bytes": 422960
+  },
+  "Gallery/female-rifle-True-1000.webp": {
+    "sha256": "5b45c1b8a5f8edfcf36f5e59a461187e85d5f25158d8f8c0423ba7ba27d43573",
+    "bytes": 576590
+  },
+  "Gallery/female-rifle-True-3000.webp": {
+    "sha256": "03d4b2c26cad09eb83a1d694543c7073572f0ac8f4964283c7cf11dfb11011dd",
+    "bytes": 575394
+  },
+  "Gallery/female-rifle-True-4000.webp": {
+    "sha256": "4de4e958f4e0517c501e7f189ab37585636f5dd0577889759d4de9f4c4028dac",
+    "bytes": 578092
+  },
+  "Gallery/female-rifle-True-777-frames.webp": {
+    "sha256": "e283d9c5330d75394dd301f760452ed3872503740f5fd3093391ac1f8b4bf22f",
+    "bytes": 346448
+  },
+  "Gallery/female-rifle-True-cycle.webp": {
+    "sha256": "c0b3e0a8fa2376355d5d59226f90b81b396fed5e2e9660ddc4da4f4365c49cfe",
+    "bytes": 446318
+  },
+  "Gallery/female-rifle-True-fff-frames.webp": {
+    "sha256": "256a664e28521e07e6afb5c032cb535caf9f1f31700f92ce783e1af18a6a454d",
+    "bytes": 318868
+  },
+  "Gallery/female-rifle-True-transparent-frames.webp": {
+    "sha256": "6b6939c046690281b657c9963ffc02c50d527d99885c7266a9737cd22c396ce2",
+    "bytes": 404188
+  },
+  "Gallery/female-rifle-comparison.webp": {
+    "sha256": "ae7ce1407fe57154fd931abbc6df1d34bb69b4ec0d595f05c22dbf0a9abfed47",
+    "bytes": 249142
+  },
+  "Gallery/female-rifle-hidden-live-motion-all-decoded-frames.webp": {
+    "sha256": "5c25258ec6767cca95390fc532f8f1baa166af3e7ff605869f2189a8ef78b0f5",
+    "bytes": 1180486
+  },
+  "Gallery/female-rifle-hidden-live-motion.webm": {
+    "sha256": "f5942f98d1de535f09862b35cddb033c43ff7668ee65c7b7862038740985198e",
+    "bytes": 273449
+  },
+  "Gallery/female-rifle-right-1x.webp": {
+    "sha256": "231b95fa8fdac680a9104dffae10da956dde7c8d989a291492b1e0edd5297f40",
+    "bytes": 52732
+  },
+  "Gallery/female-rifle-right-3x.webp": {
+    "sha256": "0cea3627cd37e7c7062b38c34f95230f828c700068a55d07a34517defe27a87f",
+    "bytes": 261674
+  },
+  "Gallery/female-rifle-shoulder-1x.webp": {
+    "sha256": "70f416cef14ee9e490988582e204485c5e7bbec2c1c8f00dab5554c158b82743",
+    "bytes": 33718
+  },
+  "Gallery/female-rifle-shoulder-3x.webp": {
+    "sha256": "7b34dddb6c4182ad95cfb0f9728fdb12751d31ab9baaedf952ed4f7d517e691c",
+    "bytes": 153916
+  },
+  "Gallery/female-rifle-sizes.webp": {
+    "sha256": "446e293737230d420314ceb330f345f3478706cb4e5e6caa7d23a313fdf2cbc9",
+    "bytes": 113886
+  },
+  "Gallery/female-rifle-visibility.webp": {
+    "sha256": "e242b0979a0ae7070827aef912b3bdf9e1cdefe8532c3dee6082656ab7284269",
+    "bytes": 234194
+  },
+  "Gallery/female-rifle-visible-live-motion-all-decoded-frames.webp": {
+    "sha256": "07e1c071c5e5027f88e3d7ec141fc002717954e33a636e76430a513dd97f040a",
+    "bytes": 1011000
+  },
+  "Gallery/female-rifle-visible-live-motion.webm": {
+    "sha256": "4a0a0f3bb4d04592ddfc15f13be569157731e6a95d7e5865753a2cb9554244e0",
+    "bytes": 214774
+  },
+  "Gallery/female-rifle-wrist-1x.webp": {
+    "sha256": "b069d609bd467884d5f783c4723a6e25dbed7088aa4473429bc9becb5b082b38",
+    "bytes": 25616
+  },
+  "Gallery/female-rifle-wrist-3x.webp": {
+    "sha256": "e64cdcf9d32b16700c550af5c14a2efb44739e737a946f15b0e380c70242c817",
+    "bytes": 118906
+  },
+  "Gallery/female-transitions-hidden-live-motion-all-decoded-frames.webp": {
+    "sha256": "cf6d52051deef839a25d8a8daed6c4990f0d3e5c6c430db0935d9c88ecd6762f",
+    "bytes": 1839512
+  },
+  "Gallery/female-transitions-hidden-live-motion.webm": {
+    "sha256": "61ed0bf8f0ae0993757c9298709d0d2b0d41688777064e530e71c02936ce6a1a",
+    "bytes": 494805
+  },
+  "Gallery/female-transitions-visible-live-motion-all-decoded-frames.webp": {
+    "sha256": "5610696055160b8c1f7cb14716a3a36617d5e83d464e71d74e6702a159f19b4a",
+    "bytes": 1675730
+  },
+  "Gallery/female-transitions-visible-live-motion.webm": {
+    "sha256": "f74d30d56952e5dfa96140714ebc995be8550c2ee723681760e1115f647f4a44",
+    "bytes": 396307
+  },
+  "Gallery/male-idle-False-0.png": {
+    "sha256": "2c86c238359243519f9372db909034bad9fae03be7e52efd6ee29b2206c90f41",
+    "bytes": 884647
+  },
+  "Gallery/male-idle-False-000-frames.webp": {
+    "sha256": "3b7407985dda7f4bae1ac48ca3f78245307ddeb1717cb6b4f0814b0518aa7421",
+    "bytes": 430454
+  },
+  "Gallery/male-idle-False-00ff00-frames.webp": {
+    "sha256": "bddb53b83227070930847d4ff82ba2a99f1f97f508f210c3f0296ee71349e637",
+    "bytes": 521726
+  },
+  "Gallery/male-idle-False-1000.webp": {
+    "sha256": "951d6d73937a81ac91cb07a603dda17bd21ef9ba7f39fe820c04ec9fe0907d65",
+    "bytes": 598752
+  },
+  "Gallery/male-idle-False-3000.webp": {
+    "sha256": "55b22a8d8365c232730c8d4df4cdeba57fba2507adb4cd985e7fec1e904ff8e0",
+    "bytes": 598170
+  },
+  "Gallery/male-idle-False-4000.webp": {
+    "sha256": "8c593bb4fe6ca26703dc7e0a01fc9484ff402196d29200620612aef432cd952e",
+    "bytes": 599546
+  },
+  "Gallery/male-idle-False-777-frames.webp": {
+    "sha256": "146e31b4d5fc6c7886eafb24b6765869c0c35f9b0a0b0ba36f3cb6cf81d6a1a9",
+    "bytes": 443982
+  },
+  "Gallery/male-idle-False-cycle.webp": {
+    "sha256": "ab34a8520443a051d10e632e88cda38ff852cc1f4d159253741ecb352edfc2a0",
+    "bytes": 659668
+  },
+  "Gallery/male-idle-False-fff-frames.webp": {
+    "sha256": "bcbecc056a28ce46d68ebeb70045f4c3612b2092227e302a3133f3ac097a2858",
+    "bytes": 416146
+  },
+  "Gallery/male-idle-False-transparent-frames.webp": {
+    "sha256": "6493e1dc0d614a8f20e74a70ced93bdeada528fa31eaf5a06b8df729b011a97b",
+    "bytes": 510870
+  },
+  "Gallery/male-idle-True-0.png": {
+    "sha256": "2c86c238359243519f9372db909034bad9fae03be7e52efd6ee29b2206c90f41",
+    "bytes": 884647
+  },
+  "Gallery/male-idle-True-000-frames.webp": {
+    "sha256": "3b7407985dda7f4bae1ac48ca3f78245307ddeb1717cb6b4f0814b0518aa7421",
+    "bytes": 430454
+  },
+  "Gallery/male-idle-True-00ff00-frames.webp": {
+    "sha256": "bddb53b83227070930847d4ff82ba2a99f1f97f508f210c3f0296ee71349e637",
+    "bytes": 521726
+  },
+  "Gallery/male-idle-True-1000.webp": {
+    "sha256": "951d6d73937a81ac91cb07a603dda17bd21ef9ba7f39fe820c04ec9fe0907d65",
+    "bytes": 598752
+  },
+  "Gallery/male-idle-True-3000.webp": {
+    "sha256": "55b22a8d8365c232730c8d4df4cdeba57fba2507adb4cd985e7fec1e904ff8e0",
+    "bytes": 598170
+  },
+  "Gallery/male-idle-True-4000.webp": {
+    "sha256": "8c593bb4fe6ca26703dc7e0a01fc9484ff402196d29200620612aef432cd952e",
+    "bytes": 599546
+  },
+  "Gallery/male-idle-True-777-frames.webp": {
+    "sha256": "146e31b4d5fc6c7886eafb24b6765869c0c35f9b0a0b0ba36f3cb6cf81d6a1a9",
+    "bytes": 443982
+  },
+  "Gallery/male-idle-True-cycle.webp": {
+    "sha256": "ab34a8520443a051d10e632e88cda38ff852cc1f4d159253741ecb352edfc2a0",
+    "bytes": 659668
+  },
+  "Gallery/male-idle-True-fff-frames.webp": {
+    "sha256": "bcbecc056a28ce46d68ebeb70045f4c3612b2092227e302a3133f3ac097a2858",
+    "bytes": 416146
+  },
+  "Gallery/male-idle-True-transparent-frames.webp": {
+    "sha256": "6493e1dc0d614a8f20e74a70ced93bdeada528fa31eaf5a06b8df729b011a97b",
+    "bytes": 510870
+  },
+  "Gallery/male-idle-comparison.webp": {
+    "sha256": "5187c92b76b49dc80c06e666a4ebc2b15662c030240c21a1e5b3ec930502b27b",
+    "bytes": 238006
+  },
+  "Gallery/male-idle-hidden-live-motion-all-decoded-frames.webp": {
+    "sha256": "db8bd94d18fb5d9ccea348c96b9fe79ab247e13f342270b8f7e49daa546765ed",
+    "bytes": 701200
+  },
+  "Gallery/male-idle-hidden-live-motion.webm": {
+    "sha256": "1f45f0ee1216c77262da100a3d8d8565bf09c48238e3cb064221b39553916e6a",
+    "bytes": 82311
+  },
+  "Gallery/male-idle-sizes.webp": {
+    "sha256": "e4d25545c80ebaf4f8009876399002f341aa36c7aaa21703c0f81a61a8627731",
+    "bytes": 115642
+  },
+  "Gallery/male-idle-visibility.webp": {
+    "sha256": "acd1d497eefa56547dde3f24cb99f5a3077b75263732ce5fa66632bd5b68c47b",
+    "bytes": 230110
+  },
+  "Gallery/male-idle-visible-live-motion-all-decoded-frames.webp": {
+    "sha256": "95e91c2d008054d642d839b658e70e7fba0dc3131c2b87998425d1228a210fa5",
+    "bytes": 637992
+  },
+  "Gallery/male-idle-visible-live-motion.webm": {
+    "sha256": "be377878100f385a314cd57ec305b2b6eb32498a69b5507a63e353275542a570",
+    "bytes": 75666
+  },
+  "Gallery/male-melee-1x.webp": {
+    "sha256": "ce774b9a33d52e7f9d42fdbc0c580328025c245e0771184cdad4e4c8c8588b86",
+    "bytes": 28956
+  },
+  "Gallery/male-melee-3x.webp": {
+    "sha256": "37d31e29019ff8e4d2d98929c1b0a20615df51e61fcdc23439fcf197d7846ef0",
+    "bytes": 102234
+  },
+  "Gallery/male-melee-False-0.png": {
+    "sha256": "3ddd8eb924c803185c8903912b132d6f41dc327aac6fc3bc8305fa1da9d2a37c",
+    "bytes": 877701
+  },
+  "Gallery/male-melee-False-000-frames.webp": {
+    "sha256": "c9bbf523def1d2e87dd13358620be98c6d405496a44c7d8e859baf3fda47f1f1",
+    "bytes": 431534
+  },
+  "Gallery/male-melee-False-00ff00-frames.webp": {
+    "sha256": "39594bc3e07814e341cb602b8a16d547fd191eabf18c14b888079e226bcc2a4c",
+    "bytes": 505576
+  },
+  "Gallery/male-melee-False-1000.webp": {
+    "sha256": "35720d59ef26556b3920df21ff7e7fc7a10200bb3adc4a93f32f4fa265097128",
+    "bytes": 580684
+  },
+  "Gallery/male-melee-False-3000.webp": {
+    "sha256": "fbfe6889fc7326706a5201a02cfd7a96caeca846b36b910709d78cb34bd75226",
+    "bytes": 581114
+  },
+  "Gallery/male-melee-False-4000.webp": {
+    "sha256": "34271eeb049874f0626b38078b203787dc64423916802c17ac0c99e95f5dadcf",
+    "bytes": 593186
+  },
+  "Gallery/male-melee-False-777-frames.webp": {
+    "sha256": "e41059df3c17e408cd5632b2c3c48044034adc0a7bef93622809073c18b25505",
+    "bytes": 441072
+  },
+  "Gallery/male-melee-False-cycle.webp": {
+    "sha256": "553b3e62691b622f26b427fd15b6e9fe3936d17a6978cf2a3df8574baedd401b",
+    "bytes": 637488
+  },
+  "Gallery/male-melee-False-fff-frames.webp": {
+    "sha256": "cb97804d3e0d68c367283c251a3223d9c68b979d677a388f2da5df8b985be9a4",
+    "bytes": 419384
+  },
+  "Gallery/male-melee-False-transparent-frames.webp": {
+    "sha256": "fb8288ebff94abd0cf967d6bdfb0fee206a7f8beacac16f9d41f663077033005",
+    "bytes": 504124
+  },
+  "Gallery/male-melee-True-0.png": {
+    "sha256": "6d24e456c5d805bf270c8b9322bb14ab70205017f83563958ecf69a26010ba21",
+    "bytes": 889110
+  },
+  "Gallery/male-melee-True-000-frames.webp": {
+    "sha256": "d671c41415482a61d8a123954dedc8b4adfb4da70b20c5ffa55fe5ea8a89992b",
+    "bytes": 441452
+  },
+  "Gallery/male-melee-True-00ff00-frames.webp": {
+    "sha256": "96d8aa3f3cd243f75d2f74824e5d92878bd3c0b1ca0ee274f47508c85ef52c37",
+    "bytes": 513714
+  },
+  "Gallery/male-melee-True-1000.webp": {
+    "sha256": "f3434c754645b9da64e77dd488025ecde86824d76a14c1d89c036eb3e46698d0",
+    "bytes": 587256
+  },
+  "Gallery/male-melee-True-3000.webp": {
+    "sha256": "a9afc786a081b25af3d40db4a88b2813a140a7adb9bf44ed0cd55b6bf9223542",
+    "bytes": 588200
+  },
+  "Gallery/male-melee-True-4000.webp": {
+    "sha256": "921cdd84d92d920f21f8d0fa82085338ae793016282c9000fa6bc528795277d3",
+    "bytes": 599036
+  },
+  "Gallery/male-melee-True-777-frames.webp": {
+    "sha256": "a8e75143c80ce78e558bd654896d04ad611ced726c361f505cc370a5b27fbe98",
+    "bytes": 448472
+  },
+  "Gallery/male-melee-True-cycle.webp": {
+    "sha256": "9eae3b623e67e0312e037e10c714db6cea8dc55603bfbc9737e2901a635157ea",
+    "bytes": 666934
+  },
+  "Gallery/male-melee-True-fff-frames.webp": {
+    "sha256": "cac02424773e38d08d11db33f139a0424cb99c7be688a6564c7ac98f6d9f8bf5",
+    "bytes": 425730
+  },
+  "Gallery/male-melee-True-transparent-frames.webp": {
+    "sha256": "4eb15d3c9258d4249557127abb0b456d7ecc747dc50f24609d700ec642bfba46",
+    "bytes": 511738
+  },
+  "Gallery/male-melee-comparison.webp": {
+    "sha256": "06314d71ad653dc5dbe19e75a2f578deddd0585425824595a42be723fba3e124",
+    "bytes": 247920
+  },
+  "Gallery/male-melee-hidden-live-motion-all-decoded-frames.webp": {
+    "sha256": "801c0a9393ab89e483ab3850e21b7cebbc97b7ebce2dbc7b97dcb4aa0bbef8ba",
+    "bytes": 657814
+  },
+  "Gallery/male-melee-hidden-live-motion.webm": {
+    "sha256": "18b6233c75d472687caf869616102c9e6690c14840983b1069363253b74c39a1",
+    "bytes": 85267
+  },
+  "Gallery/male-melee-sizes.webp": {
+    "sha256": "ba10a449765cf2d524a6b937390826946d8f2eff4dcb56b8e44aa5e6710463bb",
+    "bytes": 116566
+  },
+  "Gallery/male-melee-visibility.webp": {
+    "sha256": "8098989508b5f966906a0e1c4cd20f9899035288ec5d35473b60872fcb29ce82",
+    "bytes": 235900
+  },
+  "Gallery/male-melee-visible-live-motion-all-decoded-frames.webp": {
+    "sha256": "fffb3da94d3df6bd2fdb65556180815c6fbb2760fb85fc7c67a314e9905d9cf8",
+    "bytes": 860342
+  },
+  "Gallery/male-melee-visible-live-motion.webm": {
+    "sha256": "93b60cafc55e4796fd72e923c0fb6be2ff1de459accd3079ca1b8732d147275c",
+    "bytes": 116130
+  },
+  "Gallery/male-pistol-1x.webp": {
+    "sha256": "beb546d3295245e4aa768439d14b833d3b4f36706711b5f619cab7f083d09144",
+    "bytes": 33786
+  },
+  "Gallery/male-pistol-3x.webp": {
+    "sha256": "d0291c5b2c02adcee0a1ad0a3b32d417af9bfcc60c332810f2be8a2286e5b50e",
+    "bytes": 148034
+  },
+  "Gallery/male-pistol-False-0.png": {
+    "sha256": "8a001891673cf656530d2999b885eae388bf8d6784cc15ae8364344a0b98b12d",
+    "bytes": 861599
+  },
+  "Gallery/male-pistol-False-000-frames.webp": {
+    "sha256": "5c29d5dbc740b6123fa044fdb9c902f099bea7fa9c60667f3f69565018e50dee",
+    "bytes": 404982
+  },
+  "Gallery/male-pistol-False-00ff00-frames.webp": {
+    "sha256": "64afa6b631cfb88002ab46412682f00f3b84da16cfcd6b18e3ea0bffd8f8a045",
+    "bytes": 477202
+  },
+  "Gallery/male-pistol-False-1000.webp": {
+    "sha256": "57b32f6f517aaf67fda392a3a54eeb7e4220d56989beca7737a7e6c8419e3099",
+    "bytes": 567666
+  },
+  "Gallery/male-pistol-False-3000.webp": {
+    "sha256": "d6df3576af14e83a9091b60dc69386a4ccd87238099b587d9dcfb73cb535aec5",
+    "bytes": 568046
+  },
+  "Gallery/male-pistol-False-4000.webp": {
+    "sha256": "0619c6f7234aa72a24135ecbda28a75d9ef0ca4cae45d5666941a32bb91cdd95",
+    "bytes": 578914
+  },
+  "Gallery/male-pistol-False-777-frames.webp": {
+    "sha256": "8957960c66c407b71b1b92c2c2522b3f3a35953fc9c12d31a58140fee932e664",
+    "bytes": 414922
+  },
+  "Gallery/male-pistol-False-cycle.webp": {
+    "sha256": "32baa2b04d0590eef580f29e67780fa5a73435ab1cd0655514b9cfc767570f34",
+    "bytes": 625684
+  },
+  "Gallery/male-pistol-False-fff-frames.webp": {
+    "sha256": "a884c3a5d7488580860294b22ba37569266b6cadc9655c622a96cb8311d8ed97",
+    "bytes": 399856
+  },
+  "Gallery/male-pistol-False-transparent-frames.webp": {
+    "sha256": "5dc7bdb90471a3f3404681d7a4370e56e8dd3e63eb1550fca29be91488d049fc",
+    "bytes": 476442
+  },
+  "Gallery/male-pistol-True-0.png": {
+    "sha256": "af4f05be40f4cb7f37e25ab2407b6c14764121d57cacf7422d65bc608e52516d",
+    "bytes": 875126
+  },
+  "Gallery/male-pistol-True-000-frames.webp": {
+    "sha256": "9273892ee41796ea565895ef387aa19740cf230d40462c58dfa74f4e1c0a41b4",
+    "bytes": 407638
+  },
+  "Gallery/male-pistol-True-00ff00-frames.webp": {
+    "sha256": "e3becb3998f2415599ef54b8478a3106ddf03f0907426df6895c910bdce23e0e",
+    "bytes": 484048
+  },
+  "Gallery/male-pistol-True-1000.webp": {
+    "sha256": "3640b5fd7cc880fbe6a9efcfe078969b7c0da30d2675902031f134438c5ed444",
+    "bytes": 576448
+  },
+  "Gallery/male-pistol-True-3000.webp": {
+    "sha256": "11c90cddf01bacb24010fdc475dafc1dc225a162af31196636e01eb502dd81c2",
+    "bytes": 576198
+  },
+  "Gallery/male-pistol-True-4000.webp": {
+    "sha256": "1c256b2a87ce7877bf287004bbabd7637ae32da1f9a198204d74d1c1039a430d",
+    "bytes": 588308
+  },
+  "Gallery/male-pistol-True-777-frames.webp": {
+    "sha256": "e904fe0252eece26c7b78cd98137d33d3e6fa9ac2235de24ccdcdfb4326599af",
+    "bytes": 421614
+  },
+  "Gallery/male-pistol-True-cycle.webp": {
+    "sha256": "1518d5f21e0d211d5ec70683b00069624c05b6f4daabd5571785c30783ef165b",
+    "bytes": 657382
+  },
+  "Gallery/male-pistol-True-fff-frames.webp": {
+    "sha256": "600986a26a6ff8db27ed343157a012a4f7fde2054d8605d5cc999670872f64ad",
+    "bytes": 405110
+  },
+  "Gallery/male-pistol-True-transparent-frames.webp": {
+    "sha256": "9f2c37c1c0862769e6d05e65a01fdfe1fa9547021b1b4a8e913d2358e30685d0",
+    "bytes": 478764
+  },
+  "Gallery/male-pistol-comparison.webp": {
+    "sha256": "722f4e8b8ed85e26635456290187853adf76e5b85b7248dfde1759a49b11290f",
+    "bytes": 241194
+  },
+  "Gallery/male-pistol-hidden-live-motion-all-decoded-frames.webp": {
+    "sha256": "89b3bc5d7f7fc51611c087734b105381b3d0a5fa43284e73f8fecb4393725f70",
+    "bytes": 884624
+  },
+  "Gallery/male-pistol-hidden-live-motion.webm": {
+    "sha256": "0f843811918a6846ea42d099b256befa2a75083bdb97d9bb2927c322a0885ff5",
+    "bytes": 112900
+  },
+  "Gallery/male-pistol-sizes.webp": {
+    "sha256": "82df53a9e72bf352b3e7f75c297929d5cc15e5e7df9427e316db38b776b53a35",
+    "bytes": 115170
+  },
+  "Gallery/male-pistol-visibility.webp": {
+    "sha256": "524ecc5283cf987e759e7e94c0710cc181459641dc4c12ce05d03d20a9d885b9",
+    "bytes": 231042
+  },
+  "Gallery/male-pistol-visible-live-motion-all-decoded-frames.webp": {
+    "sha256": "97ed0b9532e7027521173515abe0205a141353a9ed629ae845a0acd0379caf7b",
+    "bytes": 844088
+  },
+  "Gallery/male-pistol-visible-live-motion.webm": {
+    "sha256": "ac1475a7ad8c80afec633e1653be30ae859a3fde4e0e5f99cc4c2c245971199a",
+    "bytes": 99877
+  },
+  "Gallery/male-rifle-False-0.png": {
+    "sha256": "44c5119266d46b6e07823a429b2e481e3f3508d0f2334e100ac24059ac99328c",
+    "bytes": 824861
+  },
+  "Gallery/male-rifle-False-000-frames.webp": {
+    "sha256": "dbb95c3c5bea6989a49172c227d9332a7a88ac30880823eb31202bd014c49ecb",
+    "bytes": 386026
+  },
+  "Gallery/male-rifle-False-00ff00-frames.webp": {
+    "sha256": "81d311afb6e7ffaa3207e21a28b2074377911ce249b108136452112ce6ba8fd3",
+    "bytes": 448894
+  },
+  "Gallery/male-rifle-False-1000.webp": {
+    "sha256": "228b9189c7c8e03d60efb89e46d37e88c16e9f956e1b7c231bcc578ddee66e04",
+    "bytes": 545706
+  },
+  "Gallery/male-rifle-False-3000.webp": {
+    "sha256": "bcdb80d59de9fe9e09caff7f9d679010b5595a3365d6f49e86aca76662b74f11",
+    "bytes": 544268
+  },
+  "Gallery/male-rifle-False-4000.webp": {
+    "sha256": "05b6633a8f38d1162374967b968823e8262996e7368d3b6f3666961e6ce82366",
+    "bytes": 554476
+  },
+  "Gallery/male-rifle-False-777-frames.webp": {
+    "sha256": "d26efce1bc168389c31c12021020e2c9f120fa8af8e3efd0da7f01fc419d0a6b",
+    "bytes": 399194
+  },
+  "Gallery/male-rifle-False-cycle.webp": {
+    "sha256": "47a3a821051e6c0e45db8237ec4ea4a6022e8381011ce08375ee7eb48fe6896f",
+    "bytes": 450910
+  },
+  "Gallery/male-rifle-False-fff-frames.webp": {
+    "sha256": "3746a4b8925a59f39ffcce3bb4ce2a355ca237400407054e4e0cdc520b046250",
+    "bytes": 381886
+  },
+  "Gallery/male-rifle-False-transparent-frames.webp": {
+    "sha256": "1b52f0996bb5a04cd9141365fb87b9cb144c49beb2b221d16cb4bf89d8539e0a",
+    "bytes": 443946
+  },
+  "Gallery/male-rifle-True-0.png": {
+    "sha256": "dde41fb1eff73b10aaf0bdbfe7d1c968310785d96312ba6308b03e3788860ef8",
+    "bytes": 908812
+  },
+  "Gallery/male-rifle-True-000-frames.webp": {
+    "sha256": "44e2382254011dc2e3f5f49a4471185b6f08e691ce474928ecd795343746f603",
+    "bytes": 448586
+  },
+  "Gallery/male-rifle-True-00ff00-frames.webp": {
+    "sha256": "7fe6389586f7fef7629284e580790209904874368edd10a070df6ae58f6ec29d",
+    "bytes": 515522
+  },
+  "Gallery/male-rifle-True-1000.webp": {
+    "sha256": "aa577a1c4d32145cbf75e49338cc7f7aad953be4310f097bc91da94636e7b7c5",
+    "bytes": 591402
+  },
+  "Gallery/male-rifle-True-3000.webp": {
+    "sha256": "a791493b7d80b568160088a028d1ea475cd47404e40e1fb2b1627fac4c263af1",
+    "bytes": 588878
+  },
+  "Gallery/male-rifle-True-4000.webp": {
+    "sha256": "ead0dd606b709e7fd8877322cb57de4df13182a5e282e35121410bad39d07edb",
+    "bytes": 606366
+  },
+  "Gallery/male-rifle-True-777-frames.webp": {
+    "sha256": "89a140ded12e66a186a0d1cf22d9c7c2e2e58c797db19341e5a570e5dd487efd",
+    "bytes": 450118
+  },
+  "Gallery/male-rifle-True-cycle.webp": {
+    "sha256": "60bc414b4f61f93ef93e4b8eec487766a0a0be0960e0c0edc4b1bec173460d30",
+    "bytes": 547780
+  },
+  "Gallery/male-rifle-True-fff-frames.webp": {
+    "sha256": "4f68fe015220b698360c801b83d4e2e8df075b1a89dc89bc7f691f18fb5c9a16",
+    "bytes": 432340
+  },
+  "Gallery/male-rifle-True-transparent-frames.webp": {
+    "sha256": "a3f7f349a789be467e958361620b4ea85269f4282680771f8e34592d98cab628",
+    "bytes": 515984
+  },
+  "Gallery/male-rifle-comparison.webp": {
+    "sha256": "94e2168a3228fa7334ad4233c8582745f7f0a9c1a7eda560a80d6fc81e64dc32",
+    "bytes": 256968
+  },
+  "Gallery/male-rifle-hidden-live-motion-all-decoded-frames.webp": {
+    "sha256": "75f3e240443b854a77852b5501c573eea1122b2870bd3127788c6d1f49abab68",
+    "bytes": 915366
+  },
+  "Gallery/male-rifle-hidden-live-motion.webm": {
+    "sha256": "ec1b4c7e8e3ffe082db91f95cb224e1de137c40feca81406e1799c962914a49d",
+    "bytes": 153977
+  },
+  "Gallery/male-rifle-left-1x.webp": {
+    "sha256": "a19bac42c8f660f522384c4bba5cdb14a19998670acc9cb747c0854f4984cb9f",
+    "bytes": 21010
+  },
+  "Gallery/male-rifle-left-3x.webp": {
+    "sha256": "f08726faa8a2f577496aa10f78ec644c5e37649915b2e9db6670bdf5d107f345",
+    "bytes": 118308
+  },
+  "Gallery/male-rifle-right-1x.webp": {
+    "sha256": "38d470074daaef3edcf470fc692cdb0030f5e3ef35b242d82adf6ab35871debc",
+    "bytes": 45874
+  },
+  "Gallery/male-rifle-right-3x.webp": {
+    "sha256": "3fa48f962b6e92efa4827ddf3def2645138cde30b20712ad65350d1a5fd83a20",
+    "bytes": 211984
+  },
+  "Gallery/male-rifle-sizes.webp": {
+    "sha256": "3297aebaf303b80bdc30be129f45ecb3b13b7523e0a7b90706beba16b60655e7",
+    "bytes": 122030
+  },
+  "Gallery/male-rifle-visibility.webp": {
+    "sha256": "db3484d982cd4f8a241905ade6343d114050eb0ab793c8051d56dc0165de932b",
+    "bytes": 241924
+  },
+  "Gallery/male-rifle-visible-live-motion-all-decoded-frames.webp": {
+    "sha256": "96478ffb1ef104546deddb7b683e1fbbfbe30aea81f7f8e475b94485bc72a7b3",
+    "bytes": 904086
+  },
+  "Gallery/male-rifle-visible-live-motion.webm": {
+    "sha256": "28e8919eb5feb99e372d5abf5ef65e4df0f42798c3f12cfafebf16321d318414",
+    "bytes": 162037
+  },
+  "Gallery/male-transitions-hidden-live-motion-all-decoded-frames.webp": {
+    "sha256": "d9e9b3073f26b298d9940531cbbf7b1d6648f882bda9e39a2a296647c139fa1b",
+    "bytes": 801742
+  },
+  "Gallery/male-transitions-hidden-live-motion.webm": {
+    "sha256": "7be5afd6e14f6256753c530516e924913f724ee288aa59ebb2f5e7e5b14dfeba",
+    "bytes": 102652
+  },
+  "Gallery/male-transitions-visible-live-motion-all-decoded-frames.webp": {
+    "sha256": "58999410fafcc5d5b23afc8687808b8e290019c3e179d6b4b7694f689c628858",
+    "bytes": 758648
+  },
+  "Gallery/male-transitions-visible-live-motion.webm": {
+    "sha256": "d53aeb539a24ecc4c8151502c1e7f29d45fe128483333f2ae7d16b2984b24e6f",
+    "bytes": 110869
+  },
+  "Gallery/melee-prop-component-map.webp": {
+    "sha256": "0de8a928410b80d8d9d0ddc058265ae279b31e0aa3e904e91996004b68d1bc5b",
+    "bytes": 5862
+  },
+  "Gallery/pipeline-melee-right-1x.webp": {
+    "sha256": "186e702dddf746ed3ebaf6320ed4568201684fa46bf93bf202361eb48c947d94",
+    "bytes": 120226
+  },
+  "Gallery/pipeline-melee-right-3x.webp": {
+    "sha256": "0ca6d02716ea97c1d5ffa8145ceac2f74629d5b863ec299d7905251584bfea33",
+    "bytes": 600428
+  },
+  "Gallery/pipeline-pistol-right-1x.webp": {
+    "sha256": "39c50fc29c1c5f5c21a8eb7cf388f41058f5a41fff888e5cda71a7a48be21f94",
+    "bytes": 125066
+  },
+  "Gallery/pipeline-pistol-right-3x.webp": {
+    "sha256": "349c4eeca978ea6c979eb38363c73753f5251abb1e752e988112a54342f36fbc",
+    "bytes": 539188
+  },
+  "Gallery/pipeline-rifle-left-1x.webp": {
+    "sha256": "ee3d21eadb1f7a9c556b294ba250600d1f0423cabe00dd77bafc91db33cef848",
+    "bytes": 133720
+  },
+  "Gallery/pipeline-rifle-left-3x.webp": {
+    "sha256": "46690465091a8bbf77144c7a1b605b5a03f61c4770c18b10697605b16be603c4",
+    "bytes": 526182
+  },
+  "Gallery/pipeline-rifle-right-1x.webp": {
+    "sha256": "f28ff1217a0b29f1f25e71988d6669f8daf72a49cbfb7042ec707bb35144a096",
+    "bytes": 223584
+  },
+  "Gallery/pipeline-rifle-right-3x.webp": {
+    "sha256": "07c820d8394179197b74b78eace14cff50d52b7d9f8b924863da9b5b213b38a7",
+    "bytes": 1010676
+  },
+  "Gallery/pistol-prop-component-map.webp": {
+    "sha256": "4eeb9f356c8ec81b11486d8e5f58c427bf06636f6ee8e4d04b425b25a164bb9c",
+    "bytes": 7064
+  },
+  "Gallery/rifle-prop-component-map.webp": {
+    "sha256": "7461b8d40838473293f36bc6366bc877629c8a42f347582919b1c2169f184d8c",
+    "bytes": 69352
+  },
+  "Item-attachment-guide.md": {
+    "sha256": "a0117adbf535cf356fe70e3f0ce240dd3c34a2c7ed11a49a9fa7631ed4c48431",
+    "bytes": 7663
+  },
+  "Masks/male-rifle-left-contour.png": {
+    "sha256": "a026ae4296fa342ae9507480729a099a55d43e9dfdeb6c185f257b1597797a14",
+    "bytes": 2141
+  },
+  "Masks/male-rifle-right-contour.png": {
+    "sha256": "35b883704e5070ae19bda783767851990bd0041afa31fbc2bf49488967814690",
+    "bytes": 2138
+  },
+  "Masks/melee-right-arm.png": {
+    "sha256": "585664049e1fc8c98d544256cbd5e72058105bb15af02b4303cdd6a44fdd2477",
+    "bytes": 6847
+  },
+  "Masks/melee-weapon.png": {
+    "sha256": "6e97ea30165c0b6d7727f5d4b9e72c66ac26081e05e627591b6b9b640c31e9c0",
+    "bytes": 2731
+  },
+  "Masks/pistol-right-arm.png": {
+    "sha256": "7d9c390998852492ddd85e5aed575ca0b5ca5b518d6d2ba199fa72a777c79156",
+    "bytes": 6251
+  },
+  "Masks/pistol-weapon.png": {
+    "sha256": "c82ad98751bac49bfeb5940336a2c564c814c9ecf1189584b1018bd4b7f01654",
+    "bytes": 3096
+  },
+  "Masks/rifle-left-arm.png": {
+    "sha256": "01b7b27dab2fe7b10a0801b4f4ce8fa914951567fe20231631f657529250f156",
+    "bytes": 5973
+  },
+  "Masks/rifle-left-retouch.png": {
+    "sha256": "b8fea0f7f22a36874392b6015c6edb312d781fb1506adac76c23f46a2fa7f301",
+    "bytes": 3060
+  },
+  "Masks/rifle-right-arm.png": {
+    "sha256": "e436c1fdd036f5991f2325b58de2c87f75282f7b490475a2627b19899b3c5fd0",
+    "bytes": 6332
+  },
+  "Masks/rifle-right-retouch.png": {
+    "sha256": "386a33dac71438ca9048317dff3436c86667a8af2be18e52c77940956bf2a832",
+    "bytes": 2364
+  },
+  "Masks/rifle-weapon.png": {
+    "sha256": "b5ab22082bfaa22e5ad8f2e851f7c45f0e041385759d83b3b6cc7972839ab48f",
+    "bytes": 10018
+  },
+  "Pipeline/audit-paper-doll-png.py": {
+    "sha256": "9cf61c4e2ebaee056650d744de0dad8333a258f7f25993608499d5da2904df20",
+    "bytes": 3035
+  },
+  "Pipeline/avatar_revision_contract.py": {
+    "sha256": "d25645033fe24f1bd33f114ded305d830f95256c6f5f40106f69abaf1313706c",
+    "bytes": 4458
+  },
+  "Pipeline/bundle-avatar-lab.py": {
+    "sha256": "7948ab72e29821159d6668a814e0f95485d4d0823f0a361c690248936bf2009c",
+    "bytes": 5105
+  },
+  "Pipeline/capture-female-donor-pass.py": {
+    "sha256": "6ff56622ea54f56ad3ae6225ebd052e6d78765af25466e59bd0d62650fba34c9",
+    "bytes": 10067
+  },
+  "Pipeline/diagnose-alpha-composition.py": {
+    "sha256": "0b147daa593e93e6f45f6c7993e68e0c292e9bdd1fd05047c133e0ef66de3f87",
+    "bytes": 2751
+  },
+  "Pipeline/finish-male-contact-contours.py": {
+    "sha256": "0c6ebf6ffb1c52740f23cbe90349ce9f49298ea0f34e67f3ea8b4556cc2f4b00",
+    "bytes": 2718
+  },
+  "Pipeline/inspect-donor-prop-components.py": {
+    "sha256": "6c50493794f97ac3fc1568557786114ef0bf0dae7c29a3c50c0db5c599168ecc",
+    "bytes": 1610
+  },
+  "Pipeline/prepare-female-donor-arms.py": {
+    "sha256": "cb3a2fb8a7dd3ab68b08dc723643577f03d7c07bc1129194ef07223f6da01d70",
+    "bytes": 19875
+  },
+  "Pipeline/prepare-independent-anatomy.py": {
+    "sha256": "429ad5c89f07f69348f26068f11dc90613211267e2df234d12e8e27cf65da38a",
+    "bytes": 9277
+  },
+  "Pipeline/record-female-donor-motion.py": {
+    "sha256": "b81da51a34a74109972c99c9e89670cb73f179954283b6496b777f351a58e296",
+    "bytes": 5105
+  },
+  "Pipeline/run-python-tests.py": {
+    "sha256": "0eff77bb24224f92d8eca874dd417f6a007f96fa03a2b2d7f0d204e1c832264c",
+    "bytes": 3394
+  },
+  "Pipeline/test_female_donor_arms.py": {
+    "sha256": "3f9eb3c87861ffd86f7d4a313f3b4997ed7f04c10dfe62be099bef5daf17fe32",
+    "bytes": 8915
+  },
+  "Pipeline-guide.md": {
+    "sha256": "fbea0eb06dd29aa4d3d7ebd6047eb15f2a79b04a1753d865d84ad27391d09c81",
+    "bytes": 5060
+  },
+  "README.md": {
+    "sha256": "0f599e4a67029ce7adfafb84584f6f3e0b36e0e186d7a2ed576ed87b81960369",
+    "bytes": 16844
+  },
+  "Report.html": {
+    "sha256": "13ec963a696786c52304122403cd349d69e537deaed2b0bece090ea28434b385",
+    "bytes": 9456871
+  },
+  "Retouch/male-melee-right-input.png": {
+    "sha256": "caad16089a1cf56e508b8f5324c94935817fd7dc737b5040a5988995d3df280f",
+    "bytes": 16964
+  },
+  "Retouch/male-pistol-right-input.png": {
+    "sha256": "460ef250761c6733c74edd41a31fdf45980d003b99bc315bf75cf2b57b94e15f",
+    "bytes": 26675
+  },
+  "Retouch/male-rifle-left-edited.png": {
+    "sha256": "e758618cd30e08e4ae7c85716d4bf1445a82a32bd85712cf42b598ec32cc060f",
+    "bytes": 1285592
+  },
+  "Retouch/male-rifle-left-input.png": {
+    "sha256": "aabed957d55f9c3a1aecba9024e2278e5d7678a990e54e3112237513cc3f19fa",
+    "bytes": 20542
+  },
+  "Retouch/male-rifle-right-edited.png": {
+    "sha256": "cac1fcd4f491f896beed205e34c7181fffd96c6f2da02e0c03221fb4ae0ac551",
+    "bytes": 968840
+  },
+  "Retouch/male-rifle-right-input.png": {
+    "sha256": "169f88d139bf28e5dcc8309c19c99ed294bc4389719ddb3d32c7404e216b46fa",
+    "bytes": 24872
+  },
+  "Retouch/rifle-left-edited.png": {
+    "sha256": "77cc27fb1de67c647d76f27783deef15b6d1f63c587387c94e068b805d22274a",
+    "bytes": 883332
+  },
+  "Retouch/rifle-left-input.png": {
+    "sha256": "933af43c1e067ac2dc5232e6f1271e0d86f70e8a260c543bca1b6a621ef8f2f2",
+    "bytes": 44163
+  },
+  "Retouch/rifle-right-edited.png": {
+    "sha256": "be2d9bc8fdec21c168aa7ca4f690f2de2577043fd172a817f7ba35df26b2f392",
+    "bytes": 806106
+  },
+  "Retouch/rifle-right-input.png": {
+    "sha256": "bae53e8a3a2b4a57bfc48e1e0c9cda8d8db07798280fc2e52e24280214f4a4c2",
+    "bytes": 65128
+  },
+  "Runtime/assets/female/donor-art/melee-right-arm.png": {
+    "sha256": "c9cdd40adef186559cdd8e992c1338e30c5ee68fac9361f4f5c736e02f657f2c",
+    "bytes": 80245
+  },
+  "Runtime/assets/female/donor-art/melee-right-front.png": {
+    "sha256": "eef0899e14b74408c4ffd648353157197f588322d0ba5de8bec82e785c5a4f59",
+    "bytes": 19884
+  },
+  "Runtime/assets/female/donor-art/melee-weapon.png": {
+    "sha256": "ed2e79bdaa9fc6bcf7431005514f26e4075e8a833761e45cd6d0bca905045da5",
+    "bytes": 19031
+  },
+  "Runtime/assets/female/donor-art/pistol-right-arm.png": {
+    "sha256": "3fe25eba12f01f988b90ac4b4dac27b9076695e11ab8fd0d88d3f9f89d3b57fd",
+    "bytes": 74722
+  },
+  "Runtime/assets/female/donor-art/pistol-right-front.png": {
+    "sha256": "8af79c6d3a87b20370b2c83999fc2c4d85cb38a45eb6b3335fc7d5415e5318a9",
+    "bytes": 24653
+  },
+  "Runtime/assets/female/donor-art/pistol-weapon.png": {
+    "sha256": "7fc47e63808c176f4c051c583339339e7ee91eac27dcf28d08ec0f6338867c57",
+    "bytes": 20169
+  },
+  "Runtime/assets/female/donor-art/rifle-left-arm.png": {
+    "sha256": "39f694686449f1e5aa04683b93221579284995bbd5ba07a6a854acf785907396",
+    "bytes": 62510
+  },
+  "Runtime/assets/female/donor-art/rifle-left-front.png": {
+    "sha256": "1e5a51d23c19449017ac436b01abf2b76ad5a5db2d68c7f81af2037d89b920d5",
+    "bytes": 22055
+  },
+  "Runtime/assets/female/donor-art/rifle-right-arm.png": {
+    "sha256": "26f5c26542ef24458e10e78825b2f96618942836e9714f92eebfb2d86075af43",
+    "bytes": 83895
+  },
+  "Runtime/assets/female/donor-art/rifle-right-front.png": {
+    "sha256": "398f51defe53673e3d1a8f9b7b62f66c26e4def4335264b519b260a49812306a",
+    "bytes": 31482
+  },
+  "Runtime/assets/female/donor-art/rifle-weapon.png": {
+    "sha256": "a45c88e9e613c29f0810318bac38998e985816fb8e26d88c570d9a450ce93b54",
+    "bytes": 140761
+  },
+  "Runtime/assets/female/hands/left-arm-source.png": {
+    "sha256": "35042ba2175d0558d66bdfe1287022f355ea7e0e8c2be6183a03cad7a6c57880",
+    "bytes": 84989
+  },
+  "Runtime/assets/female/hands/left-open-hand-source.png": {
+    "sha256": "abe9161883b9cd809fb21c3fbc42fd7f2ab6bc9e654687dc9d14443f4f5fbc80",
+    "bytes": 22229
+  },
+  "Runtime/assets/female/hands/melee-right-wrist-clean.png": {
+    "sha256": "d97003b9b8e0c4db4e5018d2484f406e1d50aae62af7816d4c19dbbd8a77d3c3",
+    "bytes": 8861
+  },
+  "Runtime/assets/female/hands/melee-right-wrist-patch.png": {
+    "sha256": "2bd03899309eeee890597b1390a8fb67acbdd437e11754aae47f4a5cd0f6a063",
+    "bytes": 9705
+  },
+  "Runtime/assets/female/hands/melee-right.png": {
+    "sha256": "f11fe37a8c4377e4dd08050722c23c3fc27fc5ee2e1aaa75d42ba2cb8ae5ded2",
+    "bytes": 12383
+  },
+  "Runtime/assets/female/hands/pistol-left-wrist-clean.png": {
+    "sha256": "b7df164c3fb219a6760090c7ac5682aa605d89291c9bc693867887dba0b4f07a",
+    "bytes": 10282
+  },
+  "Runtime/assets/female/hands/pistol-left-wrist-patch.png": {
+    "sha256": "4840aa8c38f7348ba161d9ae33cef4e36b3844df075e03e0cf31f1f14e230071",
+    "bytes": 11221
+  },
+  "Runtime/assets/female/hands/pistol-left.png": {
+    "sha256": "e5ff5abd8d55bcdb7d4b7f3e1494ef7f974015575bfa1a324adb5362cc192d5b",
+    "bytes": 13876
+  },
+  "Runtime/assets/female/hands/pistol-right-wrist-clean.png": {
+    "sha256": "484427ecf0921cb70e091a493f193711f9e9ed5d3f6803ae1ac9a1cba0946f6e",
+    "bytes": 9180
+  },
+  "Runtime/assets/female/hands/pistol-right-wrist-patch.png": {
+    "sha256": "2f42cc715d98e9cbb6e95b39cb70ff440d34b21dc49ed9a6e4cc6e6bf344a12a",
+    "bytes": 9950
+  },
+  "Runtime/assets/female/hands/pistol-right.png": {
+    "sha256": "1e9e67debffb537cc42def36d1fc19689fc1fcfb5f5268745d829588825bbab5",
+    "bytes": 11813
+  },
+  "Runtime/assets/female/hands/rifle-left-wrist-clean.png": {
+    "sha256": "0f0c282bb8fce54d5ae9b8c53dfa839bdfae4e0aa17aad7f8b729d7d0cae242b",
+    "bytes": 10717
+  },
+  "Runtime/assets/female/hands/rifle-left-wrist-patch.png": {
+    "sha256": "fd71d956fbfe6b517464e6370c5e86e932b9e63b88f2b9736890b1e7ab937f86",
+    "bytes": 11618
+  },
+  "Runtime/assets/female/hands/rifle-left.png": {
+    "sha256": "031dc9b01689a44c827f563dfbee92ae9b2f83e78f527520b709e5a39d132573",
+    "bytes": 15161
+  },
+  "Runtime/assets/female/hands/rifle-right-wrist-clean.png": {
+    "sha256": "2208b1b6591c595ef651bbb1738a70d8eed9fd2d044f08d0a170feb8662dc394",
+    "bytes": 9242
+  },
+  "Runtime/assets/female/hands/rifle-right-wrist-patch.png": {
+    "sha256": "d6a84cd099477927a1cea3d2a71b1b14b6152db1bd95eccca2c2770cb1b89bb0",
+    "bytes": 10146
+  },
+  "Runtime/assets/female/hands/rifle-right.png": {
+    "sha256": "f09563277d63c695035639460ee70873f07291eb88748ece22935a594ad389eb",
+    "bytes": 13850
+  },
+  "Runtime/assets/female/hands/right-arm-source.png": {
+    "sha256": "3cee762e1e16c8819256f392c0a680e4e4e4fa5053e51a47e1e023b1f273b763",
+    "bytes": 86237
+  },
+  "Runtime/assets/female/hands/right-open-hand-source.png": {
+    "sha256": "bd21a2fe1f942ec33854effc804d3fe416ea9b307d6acb4e00b1768350498f87",
+    "bytes": 22721
+  },
+  "Runtime/assets/female/head.png": {
+    "sha256": "2a54e2466fc4b94e4de330d6f7bf37ca190a0a0d755702efb84279cd3f30625f",
+    "bytes": 73975
+  },
+  "Runtime/assets/female/leftArmSkin.png": {
+    "sha256": "df04f12367fdc0f14bdd7c6513b0803ad1d5c086f646ca7af26ac9c5fc52244e",
+    "bytes": 84537
+  },
+  "Runtime/assets/female/leftFore.png": {
+    "sha256": "76e1db6ee7537352d841ebb95f1ca5f2fc040248de469bf8c4f024dc3b6a8986",
+    "bytes": 28923
+  },
+  "Runtime/assets/female/leftForeSleeve.png": {
+    "sha256": "dfb6b0ab68d3e892b15f0e37a153bbdae9b91a36abf216195fa57de406ce65bc",
+    "bytes": 6661
+  },
+  "Runtime/assets/female/leftHand.png": {
+    "sha256": "51952fb89e990470ef92e257982bd3fb9c91c783a57dee449521b8b6e97759fa",
+    "bytes": 20040
+  },
+  "Runtime/assets/female/leftHandSkin.png": {
+    "sha256": "47ca55af436d6be6827f91ce50c0cf2228c1d5cb54784b7c3e869358a0255d1b",
+    "bytes": 22083
+  },
+  "Runtime/assets/female/leftUpper.png": {
+    "sha256": "442a09535038999e217716e39f3f9da6fb8fb20274484cf11b58ea9743cee6a7",
+    "bytes": 33152
+  },
+  "Runtime/assets/female/leftUpperSleeve.png": {
+    "sha256": "435fd148e2c843469af71d506fdebdf606f4e47d03c8d9e3576bbde85b18aca6",
+    "bytes": 5720
+  },
+  "Runtime/assets/female/lower.png": {
+    "sha256": "f2994b53fa9f24926c3357355fcb2681e155c6fccdd9d80caeb34fdd435a0447",
+    "bytes": 361715
+  },
+  "Runtime/assets/female/rightArmSkin.png": {
+    "sha256": "5acf056bd7f53198724333aaec95b98c3b0d930173b293e544c28b37ace83855",
+    "bytes": 85907
+  },
+  "Runtime/assets/female/rightFore.png": {
+    "sha256": "086960883d4ca3b623acb66a592a47939ebcc5cbb41ad00b13359f354a784bb6",
+    "bytes": 29986
+  },
+  "Runtime/assets/female/rightForeSleeve.png": {
+    "sha256": "6bbe46b6d664344ee2097dafb34ce975acd0f2c3bbaad60e5935668326c4783d",
+    "bytes": 6745
+  },
+  "Runtime/assets/female/rightHand.png": {
+    "sha256": "bf06e7b0d254e9a7faaf98cafc0b5c2adaa2c0461b1a699b0d8f564bd2844d41",
+    "bytes": 20247
+  },
+  "Runtime/assets/female/rightHandSkin.png": {
+    "sha256": "5379fd0df745541d89de1c9dafd4722364b2da737114b88be00b1ed4298ca537",
+    "bytes": 22600
+  },
+  "Runtime/assets/female/rightUpper.png": {
+    "sha256": "6ba9e2b7a5f2303a9f75bbf4b3aef2a89365c2b65ed7da048a8db492b25b9a67",
+    "bytes": 33276
+  },
+  "Runtime/assets/female/rightUpperSleeve.png": {
+    "sha256": "82fb767e78000c08d6804c555ab0efa5947ed63e175780a5632d35c2e606bee8",
+    "bytes": 5646
+  },
+  "Runtime/assets/female/torso.png": {
+    "sha256": "6a49d91583351e5c1fce753f9c123ddf88c386ad4ad1e8c764c9300eb8d0d2ba",
+    "bytes": 194351
+  },
+  "Runtime/assets/male/exact-pass/pistol-right-frontImage.png": {
+    "sha256": "d0a68dd806f744d2e5a14acc87885f2a5f9e6361758cb1018bef9a6704b38cc5",
+    "bytes": 20411
+  },
+  "Runtime/assets/male/exact-pass/rifle-left-image.png": {
+    "sha256": "f9a465f42920f9fa769fe6a8968a46894aec1812735f09df34717f6ec28bd47e",
+    "bytes": 78653
+  },
+  "Runtime/assets/male/hands/left-arm-source.png": {
+    "sha256": "7672888bb59cfbec3cca3dcc7be824bda4390450bd9af69df05d1601949f5ab4",
+    "bytes": 110266
+  },
+  "Runtime/assets/male/hands/left-open-hand-source.png": {
+    "sha256": "9dc61008165e0ef3d6d3e5149c6d7508765f3b6078a5e5cdfcc01a5c62ebcde4",
+    "bytes": 30943
+  },
+  "Runtime/assets/male/hands/melee-right-wrist-clean.png": {
+    "sha256": "55d33ae4dccde4668b48d662bc1c30c32bb73b25eb1dec0c5ef5f4495824ff93",
+    "bytes": 9903
+  },
+  "Runtime/assets/male/hands/melee-right-wrist-patch.png": {
+    "sha256": "5be5ab57fc482149de46a5784419522c7998a88a15149e21e6965956e737b1bd",
+    "bytes": 10660
+  },
+  "Runtime/assets/male/hands/melee-right.png": {
+    "sha256": "3d58e102ec6dcc20bf31d3fcec540f6856dc5be2d066ddee95bc09c4bdbc2e11",
+    "bytes": 14336
+  },
+  "Runtime/assets/male/hands/pistol-left-wrist-clean.png": {
+    "sha256": "c0f3ca69aeb471f522032f3cd9a607dc3a42a0042a6e90fe8f12026d2d4b39c7",
+    "bytes": 10300
+  },
+  "Runtime/assets/male/hands/pistol-left-wrist-patch.png": {
+    "sha256": "8ae5a8eb09b012f7747e6c698613b3165e87f4edb1a1e062c2f060b4278446b1",
+    "bytes": 11539
+  },
+  "Runtime/assets/male/hands/pistol-left.png": {
+    "sha256": "350aa0f74c0f3d9d3750012f83a03810a02679ef7d61ceef1d647a43c6284240",
+    "bytes": 15945
+  },
+  "Runtime/assets/male/hands/pistol-right-wrist-clean.png": {
+    "sha256": "47419dcdd8f386e9edb9a4d29c09acd94044d3e41ee745a4a07436796952d233",
+    "bytes": 9965
+  },
+  "Runtime/assets/male/hands/pistol-right-wrist-patch.png": {
+    "sha256": "04f10a3056c4031c9e9f5c679161520182147f41f57c95ee4e378eb52d329f86",
+    "bytes": 10954
+  },
+  "Runtime/assets/male/hands/pistol-right.png": {
+    "sha256": "6b63011fd2b9bf56938b54a0b81eb30d0670d24851e480e1afbacec2d76f2274",
+    "bytes": 13394
+  },
+  "Runtime/assets/male/hands/rifle-left-wrist-clean.png": {
+    "sha256": "81053f99fb26f7a7b8329605b7f07ca879e2cf20d9108950e3888f8e5ae1d0e1",
+    "bytes": 11102
+  },
+  "Runtime/assets/male/hands/rifle-left-wrist-patch.png": {
+    "sha256": "39ec379c87d798068bda75d79680293c61935f6655e0ad8d62bd24427b7f7d75",
+    "bytes": 12385
+  },
+  "Runtime/assets/male/hands/rifle-left.png": {
+    "sha256": "fae889c7d583ffbc26808f888499e4bdd1f9fd364bc6436ae16cc07e2ed2ed2d",
+    "bytes": 17133
+  },
+  "Runtime/assets/male/hands/rifle-right-wrist-clean.png": {
+    "sha256": "f5920ed80aa310fe0053576d4636cb87ba8b569b9ed8ea25115e87f9c18b2a84",
+    "bytes": 10181
+  },
+  "Runtime/assets/male/hands/rifle-right-wrist-patch.png": {
+    "sha256": "1808fce79625ab32d20ea0ebb7228c053b16fa8a8246383241ec0c0294687bec",
+    "bytes": 11098
+  },
+  "Runtime/assets/male/hands/rifle-right.png": {
+    "sha256": "6bc0ff32a749105c4bcbcad2514f1a8c511b112c0a2196d65f87510c4ff06170",
+    "bytes": 15514
+  },
+  "Runtime/assets/male/hands/right-arm-source.png": {
+    "sha256": "55a84fbeb23719a12a071c66d96c82c6ee6037fb51229f2874ed12f3148b9dec",
+    "bytes": 107142
+  },
+  "Runtime/assets/male/hands/right-open-hand-source.png": {
+    "sha256": "4ab05ca66d694565318fb298d8579051e45d482f083b9f6807d5d41cc4b7f21b",
+    "bytes": 30275
+  },
+  "Runtime/assets/male/head.png": {
+    "sha256": "88006d6e7be23368d6ca8cfbdb54da1d9672eab37411530f8debdb24fc47c9d0",
+    "bytes": 82899
+  },
+  "Runtime/assets/male/leftArmSkin.png": {
+    "sha256": "18a8cdd1208ce0655b2eb63de5a30dc89ed2d4e8ce6b50f5f2864994724534c1",
+    "bytes": 109236
+  },
+  "Runtime/assets/male/leftFore.png": {
+    "sha256": "af253429a33f01920c844d2ce4747351d90959c4a39e901eaf9bb2b2e6910f1e",
+    "bytes": 35200
+  },
+  "Runtime/assets/male/leftForeSleeve.png": {
+    "sha256": "924dda85a6bb7ad5bdf28ad2a5f6c4eea1c0efbb4b635a6badf53d7856d5eeca",
+    "bytes": 6240
+  },
+  "Runtime/assets/male/leftHand.png": {
+    "sha256": "79787a499cbef6a7a05efbc6db0c4935a9b2381a2b79d20415374702f9f73ec0",
+    "bytes": 27690
+  },
+  "Runtime/assets/male/leftHandSkin.png": {
+    "sha256": "50aea61f9424c96b3b43c5c085460a297e640a81d7615945eab685df372d2ee0",
+    "bytes": 29856
+  },
+  "Runtime/assets/male/leftUpper.png": {
+    "sha256": "36802602013630eff9a7710c32a2f930aae467d8f44d8f7c3ace82355e7fb12f",
+    "bytes": 43217
+  },
+  "Runtime/assets/male/leftUpperSleeve.png": {
+    "sha256": "c4621b22317bc1c1f98d6775c95f9fc4314c25f7b763cac4f11b4fece11db8b8",
+    "bytes": 6668
+  },
+  "Runtime/assets/male/lobby/rifle-left-arm.png": {
+    "sha256": "59882e460aeb26a26af0ed27f65d21c7af8d3068f9c9b67508f88b2a86147431",
+    "bytes": 78763
+  },
+  "Runtime/assets/male/lobby/rifle-left-front.png": {
+    "sha256": "3e80f6fe4e07992fe3533735165130452aeeaf6e7609e725c9b6181351306b6f",
+    "bytes": 16569
+  },
+  "Runtime/assets/male/lobby/rifle-right-arm.png": {
+    "sha256": "b14ec95416d98ac2e83cf12e6fa2874ca4486202c57ede89c7b7ae91cc82f4ac",
+    "bytes": 75814
+  },
+  "Runtime/assets/male/lobby/rifle-right-front.png": {
+    "sha256": "c8f57c5cc864215607e5620e54ce990fa8887a0cecdb3d4c847b35c2e1ecb4cb",
+    "bytes": 19613
+  },
+  "Runtime/assets/male/lower.png": {
+    "sha256": "6137f3b61979aa1aa84a7f4ff0067639b66f53a64751baaa0404555638761330",
+    "bytes": 383469
+  },
+  "Runtime/assets/male/pose-art/pistol-right-arm.png": {
+    "sha256": "6547603affe525f432f61ae02adde27e0198449f29804d28e95c6b133459fbeb",
+    "bytes": 65794
+  },
+  "Runtime/assets/male/pose-art/pistol-right-front.png": {
+    "sha256": "0ffd906061027c8b64156f9812768567c2716ba1f113bd7d80a1da674a6d5ece",
+    "bytes": 20422
+  },
+  "Runtime/assets/male/pose-art/rifle-left-arm.png": {
+    "sha256": "f7da0da5ee57c190e57126b06026612c8b7f16541de681dc063b263f8968df0a",
+    "bytes": 73364
+  },
+  "Runtime/assets/male/pose-art/rifle-left-front.png": {
+    "sha256": "360acb7b0aeb3a07f18848a16befe59c3e411d034f4dff67fee05e4fec819eef",
+    "bytes": 57862
+  },
+  "Runtime/assets/male/pose-art/rifle-right-arm.png": {
+    "sha256": "d15f2934bb663d4e05156d1f3606a41a64378575aa92046a398e108b07fc2248",
+    "bytes": 88932
+  },
+  "Runtime/assets/male/pose-art/rifle-right-front.png": {
+    "sha256": "1114c29bb8a5741352f2804f0f5d9ac984ce38e5bc9d174872ea11dd981f7f50",
+    "bytes": 39879
+  },
+  "Runtime/assets/male/reference-art/melee-right-arm.png": {
+    "sha256": "0dc2182cadd2291bc14b867546153c38b483b83d89ab68d5a32a922f4c36fad2",
+    "bytes": 84256
+  },
+  "Runtime/assets/male/reference-art/melee-right-front.png": {
+    "sha256": "4b1e78f05c6bb8eaa7222da23ba7faa07b9fd302a5c8089a4a5da89a24d9452e",
+    "bytes": 15283
+  },
+  "Runtime/assets/male/reference-art/pistol-right-arm.png": {
+    "sha256": "4d068d10787cc39ef594c48715214a0381505cf1f78c4472df95e6aa775d2f72",
+    "bytes": 72536
+  },
+  "Runtime/assets/male/reference-art/pistol-right-front.png": {
+    "sha256": "ee7c47639999c6e10d77426442d941ec0c1770fd421f2fc8ca02e6e503b967ca",
+    "bytes": 19072
+  },
+  "Runtime/assets/male/reference-art/rifle-left-arm.png": {
+    "sha256": "f3f924b1d3c3aa78ee961f5e47efe00ba7d97da4a557032d7895c8e720a683c8",
+    "bytes": 71391
+  },
+  "Runtime/assets/male/reference-art/rifle-left-front.png": {
+    "sha256": "629a80e394a1e8b3a81d83d7cae86c1e076f9a09942972bcc237ee894506bfb7",
+    "bytes": 13082
+  },
+  "Runtime/assets/male/reference-art/rifle-right-arm.png": {
+    "sha256": "b6783cd14ed8885eccc1eca7b1bb4b67e600aa17878a7f7c15590312a65c7940",
+    "bytes": 87954
+  },
+  "Runtime/assets/male/reference-art/rifle-right-front.png": {
+    "sha256": "e68aa6e903fc7f2544678022d679caa9d2309de9d3219ee6f20de94d5e0c1ff6",
+    "bytes": 27899
+  },
+  "Runtime/assets/male/rightArmSkin.png": {
+    "sha256": "55a84fbeb23719a12a071c66d96c82c6ee6037fb51229f2874ed12f3148b9dec",
+    "bytes": 107142
+  },
+  "Runtime/assets/male/rightFore.png": {
+    "sha256": "745fb362cbdcb4f24b78ce3afbc44d695645edae94ee398e2e53068bd55f0743",
+    "bytes": 34547
+  },
+  "Runtime/assets/male/rightForeSleeve.png": {
+    "sha256": "267e1d039288139e7ac43e649e0cd7b9c2981f016b0910d2ad5d30b7c9533c00",
+    "bytes": 6331
+  },
+  "Runtime/assets/male/rightHand.png": {
+    "sha256": "821a8267199c4bce993f3834a9b5fda6942803d2b0b21c75d86fe93f5d4936e0",
+    "bytes": 26660
+  },
+  "Runtime/assets/male/rightHandSkin.png": {
+    "sha256": "4ab05ca66d694565318fb298d8579051e45d482f083b9f6807d5d41cc4b7f21b",
+    "bytes": 30275
+  },
+  "Runtime/assets/male/rightUpper.png": {
+    "sha256": "30db32f532833277edaec333a24241f4ce5a9551709a769dfcfc71c86c836b7c",
+    "bytes": 41985
+  },
+  "Runtime/assets/male/rightUpperSleeve.png": {
+    "sha256": "89770e34f5e47d0047dc3c3b3c7b6cc178d0ee115a305b9c82632427deaa661a",
+    "bytes": 6463
+  },
+  "Runtime/assets/male/torso.png": {
+    "sha256": "dd6e76f800e8fa88ff06e90961bf54a7a573e372790d0de7d1e437d47f912882",
+    "bytes": 204553
+  },
+  "Runtime/assets/male/weapon-pass/melee-wrist-edge.png": {
+    "sha256": "6890079203f625e449230c567dd3f68bb860f1b51c00fcf6855ce37b17b286e5",
+    "bytes": 9853
+  },
+  "Runtime/assets/male/weapon-pass/rifle-left-contact.png": {
+    "sha256": "a5c7b2fdf5936e86797301451c20e77741fe4ca69880aea460f2eab2be0c8d0b",
+    "bytes": 12062
+  },
+  "Runtime/assets/male/weapon-pass/rifle-right-contact.png": {
+    "sha256": "b266bf0096c2ab4878b1e34b41c0f6675808d1cc01b4276ce870bef5cec11c0f",
+    "bytes": 12842
+  },
+  "Runtime/assets/weapons/male-exact/knife.png": {
+    "sha256": "930a197515a3613e3eaf4d3c70ac920dc983f8ba9895802a310afc7b5ea2a6e7",
+    "bytes": 11593
+  },
+  "Runtime/assets/weapons/male-lobby/rifle.png": {
+    "sha256": "e224e4550a24c04f60c667e5b3657321e38948b4e8c55dcad4a83e9006cfcb69",
+    "bytes": 169350
+  },
+  "Runtime/assets/weapons/male-preview/pistol.png": {
+    "sha256": "b41805785c20eac19333c252f847e8aba7c966e74db821ddb178a3a1d8234fc3",
+    "bytes": 29596
+  },
+  "Runtime/assets/weapons/male-preview/rifle.png": {
+    "sha256": "980842d1c9326415898bd998165188833a297e5e27149a79cd9ab3ecbbd4da34",
+    "bytes": 61472
+  },
+  "Runtime/assets/weapons/melee.png": {
+    "sha256": "ed2e0be5cb2537f4cbb1bfeab6fe5c70b79a80963914d5e7bee80430803a4969",
+    "bytes": 1112
+  },
+  "Runtime/assets/weapons/pistol.png": {
+    "sha256": "63ac9db1f6f3303ca6fe80f58c5393b1710c36cd723dac669ff1e4ddd00c0ee9",
+    "bytes": 834
+  },
+  "Runtime/assets/weapons/reference-art/melee.png": {
+    "sha256": "458a1aeeb978c63d6c555f3a4b2c9b4a1bcbb000b1e2e3eace6b551c7695b9e6",
+    "bytes": 24340
+  },
+  "Runtime/assets/weapons/reference-art/pistol.png": {
+    "sha256": "703d947d17d9f7da282eedc3d6865011a036b73415bcc88e0bb9610a87d37f45",
+    "bytes": 26800
+  },
+  "Runtime/assets/weapons/reference-art/rifle.png": {
+    "sha256": "0cb1188921c993d0d569980b05cf5322c03282f46919ad6e668e2eb3ec9e7d50",
+    "bytes": 151485
+  },
+  "Runtime/assets/weapons/rifle.png": {
+    "sha256": "1c92af029315b66c411f0e2673dd457550b6586d94e76ed938fcb7dd62c390d0",
+    "bytes": 1218
+  },
+  "Runtime/engine.mjs": {
+    "sha256": "7ac2426ee6ec977410009f1fdae8301617ee73399dd8508a19a33d7d2e24c573",
+    "bytes": 56249
+  },
+  "Runtime/female-preview.json": {
+    "sha256": "7c96137af58c17792519b0cb142ebe7a5fc9414f70956b36c52b627ac2eaa3b5",
+    "bytes": 1825
+  },
+  "Runtime/male-preview.json": {
+    "sha256": "9b817c1571dd433e4c26738f73a379175bb96bf6ef6b787f9a5bd4c96708ec47",
+    "bytes": 2526
+  },
+  "Runtime/manifest.json": {
+    "sha256": "99d240d3ed07b8a673b130243a1b92aa533f72240d919366ef0c34731dd3896e",
+    "bytes": 1485
+  },
+  "Runtime/math.mjs": {
+    "sha256": "3b713ff1f7237960b65ffb710d3c5b8bc51e3bf0c2ea1feb08941858ba996214",
+    "bytes": 4555
+  },
+  "Runtime/pose-art.mjs": {
+    "sha256": "6217ab1c3034578cbad10bd93cd9f991302b797f1086dc4e4e6e5037a8fc5ee8",
+    "bytes": 1433
+  },
+  "Runtime/rigs/female_rig.json": {
+    "sha256": "707ae37f1faacc4d866fdebf74075e80846eba2a69cb9bc9495422d3a852a1b8",
+    "bytes": 1171580
+  },
+  "Runtime/rigs/male_anatomy.json": {
+    "sha256": "a19ed02c02e5d5ce19880eaa8ebf23c1dd160137b8af4821ebdec2aa3930fde3",
+    "bytes": 1767
+  },
+  "Runtime/rigs/male_rig.json": {
+    "sha256": "79b667d15f85c46739435ef4a6ad79fc7f85cdfcbc5ff8489934f49e5a42abd8",
+    "bytes": 1891622
+  },
+  "Runtime/skin.mjs": {
+    "sha256": "cc73fd5ab2cda9795543361cfee2b9178313e664b9efa57356ac15c4445be61a",
+    "bytes": 11290
+  },
+  "Runtime/weapon-controller.mjs": {
+    "sha256": "6953ed1dc14a8559a6d0c83d3e7c99885ddc850cd574d2666470a39b745ca53a",
+    "bytes": 1564
+  },
+  "Runtime/weapons.json": {
+    "sha256": "cdc942fe6147e8f3410178dab3dbf06f530330ae9ca11a83fb56fd4876d66263",
+    "bytes": 1104
+  },
+  "Sources/melee.png": {
+    "sha256": "af23e4e215202c5b8298316054600d849f106ca47373e37d525bc816ab3ee4d5",
+    "bytes": 1037027
+  },
+  "Sources/pistol.png": {
+    "sha256": "406ba290b9666f98739e61829205e84bf01038fce2ce6fe80635667a31a688a1",
+    "bytes": 1041598
+  },
+  "Sources/rifle.png": {
+    "sha256": "ce479efb26bf457ba0579b2249838624b1d1957660a5070af101f27b0d268319",
+    "bytes": 1055826
+  },
+  "Test-results/alpha-composition-baseline.log": {
+    "sha256": "954969d9818e9913ffc20dc41eb5460851b2a866bb21bb35dc5f6f3af0edd9e6",
+    "bytes": 549
+  },
+  "Test-results/background-cleanup-scope-diagnosis.log": {
+    "sha256": "5ce1bd1027f76509890be631eb00b86f6d208e04eef061156b0d7cfe23011540",
+    "bytes": 882
+  },
+  "Test-results/background-composition-test.log": {
+    "sha256": "df6922de4ececf77c9a61bb54e5918c2502c4be6eb1dedf2af7ee7f5b760f4f9",
+    "bytes": 279
+  },
+  "Test-results/background-source-scope-followup.log": {
+    "sha256": "d5d91c04bb281eee7d981138a1400ec234418014a3c70de7003947d14fb720f8",
+    "bytes": 263
+  },
+  "Test-results/baseline-capture.log": {
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  "Test-results/capture-before-finger-ownership.log": {
+    "sha256": "ec64becb3299c04045e7e19c31aa60e1f9cd34048b76f641dcc2e5dd6510cf6b",
+    "bytes": 112
+  },
+  "Test-results/capture-final.log": {
+    "sha256": "ec64becb3299c04045e7e19c31aa60e1f9cd34048b76f641dcc2e5dd6510cf6b",
+    "bytes": 112
+  },
+  "Test-results/capture-initial-alpha-consistency-failure.log": {
+    "sha256": "0619ae5f2a41f5fd789babacb82e69566a6d36e77fea80f54193442b51e5e5ee",
+    "bytes": 1135
+  },
+  "Test-results/core-regression-second.log": {
+    "sha256": "081801773ab48517d6cd8c150823a3f5b31bc669cce18682109407b46e691733",
+    "bytes": 11559
+  },
+  "Test-results/donor-tests-first.log": {
+    "sha256": "9238615ea2bc76c5a4a026327e92091ce707b6c320be4ecf294fa0d00782dc5a",
+    "bytes": 5429
+  },
+  "Test-results/earlier-full/shard-0.log": {
+    "sha256": "a485c9248c59bcc16c1c67cba8eee51092fefc91e945da5caab0bd2e42d86666",
+    "bytes": 15382
+  },
+  "Test-results/earlier-full/shard-1.log": {
+    "sha256": "3f67499d2c8e29d5ab73e7f05fad919f387791865689690c4b40faff54ecb03b",
+    "bytes": 4639
+  },
+  "Test-results/earlier-full/shard-2.log": {
+    "sha256": "2a2aa90c30da1abf352e7be2db52d75082a034a5efa3f130dfb9bafff79c70e3",
+    "bytes": 13648
+  },
+  "Test-results/earlier-full/shard-3.log": {
+    "sha256": "4c2ce0afd9c96066c06e5882b8830ec3b55fc5173d60ac491b0fef03642e35f4",
+    "bytes": 40771
+  },
+  "Test-results/earlier-full/summary.json": {
+    "sha256": "4e7d7f7941a428c623f7a2b5d7087fbb455b4b2271155585c704a33341007633",
+    "bytes": 33686
+  },
+  "Test-results/final-acceptance.log": {
+    "sha256": "63d2da0746366a83108a5324c5a6f973ffe50aad4166e100ece7d7d0753c81a6",
+    "bytes": 31372
+  },
+  "Test-results/final-contour-source-check.log": {
+    "sha256": "133e610a6a09ea9ad2b5a26ef5980cef76cccfc85836fabb4955200d41d74bf3",
+    "bytes": 664
+  },
+  "Test-results/finger-ownership-final.log": {
+    "sha256": "93ffd6372aff3201a2a16f1e8aba9c7d7ff26f29bbe0c52c462e7a0e3d636dcb",
+    "bytes": 1991
+  },
+  "Test-results/finger-ownership-recheck.log": {
+    "sha256": "c03edb504196d5fd8329bcebc431b31f5a0b108ea37625896819920f85cbbc19",
+    "bytes": 2967
+  },
+  "Test-results/finger-ownership-runtime.log": {
+    "sha256": "a4e2df779f2f0b8783c451d9c0131faacc111a32c1432e7480b7a4a36906c98e",
+    "bytes": 166
+  },
+  "Test-results/finger-ownership-source-recheck.log": {
+    "sha256": "126c5a1948a0924a8e03cdf62c688e60ae1769432a69752f0c49780d43c1c350",
+    "bytes": 3134
+  },
+  "Test-results/finger-ownership-tests.log": {
+    "sha256": "4e0baf3099fec7b5a5d9a924e4e052548a14da896dc519baae6531cef7f30ba2",
+    "bytes": 4087
+  },
+  "Test-results/first-runtime.log": {
+    "sha256": "8f8e1b818c59c847bf69375c60f3196dc1e0675a1b8ce1dc595a044dc2425cc4",
+    "bytes": 166
+  },
+  "Test-results/full-final/preparation.log": {
+    "sha256": "bb3b99ade535d75ecdeecd65f1cd160ca6e7e2536f25599ab869ccb79c4f4411",
+    "bytes": 610
+  },
+  "Test-results/full-final/shard-0.log": {
+    "sha256": "7d46f60b60bd515746733290716fc399a4b8013b7a06619d62c3a08b4ba390cf",
+    "bytes": 16603
+  },
+  "Test-results/full-final/shard-1.log": {
+    "sha256": "a2c1c2c9827aadbaa8e756b532a07b7062e8977180d4a67c7b45adf89b85887f",
+    "bytes": 16265
+  },
+  "Test-results/full-final/shard-2.log": {
+    "sha256": "c3441b79e4489a7d3c2ba5444124c3e2de981f23aba8329d134054d65f3a4b4e",
+    "bytes": 21402
+  },
+  "Test-results/full-final/summary.json": {
+    "sha256": "98b6595362790800e66c2311a7780d95c2d6b07671b345e21a48df0611afca71",
+    "bytes": 33930
+  },
+  "Test-results/full-initial/shard-0.log": {
+    "sha256": "40a36b495803065f6db34242f25e69306392eeb1c1585cffe26239b8db4c494b",
+    "bytes": 12139
+  },
+  "Test-results/full-initial/shard-1.log": {
+    "sha256": "15480d3fa6460d749df391d8d1d4f0a4d24d7c72b45a793c58b671450b1df014",
+    "bytes": 8647
+  },
+  "Test-results/full-initial/shard-2.log": {
+    "sha256": "889dcdd78523a31a9db800074e17a0e929a749c730484a6eac191761797ca312",
+    "bytes": 48999
+  },
+  "Test-results/full-initial/summary.json": {
+    "sha256": "3ea602f158bde4704f7a0e43e5ea46f53c5d54de5ac837e2084a30b68a9fa5ee",
+    "bytes": 32459
+  },
+  "Test-results/full-regression-final.log": {
+    "sha256": "39ae405e35edc80aedcee8376478142fde666c9da8dc7c8ce283d9720d148204",
+    "bytes": 31158
+  },
+  "Test-results/full-regression-release.log": {
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  "Test-results/full-regression.log": {
+    "sha256": "918d7c8043486b5435fb9fb75cc2ae49f3bc97c21ffb06bdea49bced7b3f61ea",
+    "bytes": 30117
+  },
+  "Test-results/initial-core-regression.log": {
+    "sha256": "d1e0524352bcf21661ea2ebc8e7272cb66a9351123adff7cc511b314cb1f233f",
+    "bytes": 16288
+  },
+  "Test-results/interrupted/INTERRUPTED.md": {
+    "sha256": "b0f4959d20f5ad66bef73ddba0eb1c1641eabd355b81d055fb3d2a2a7c03fd2c",
+    "bytes": 305
+  },
+  "Test-results/interrupted/shard-0.log": {
+    "sha256": "56e4e56d698ce5322cf9cc87d20cd7d444045d6890594aad02088459146c72e4",
+    "bytes": 1649
+  },
+  "Test-results/interrupted/shard-1.log": {
+    "sha256": "837fbee788d62513518fc2f6f58158f21ad8144418c5d1a3e6ae556e2d8c16b9",
+    "bytes": 2398
+  },
+  "Test-results/interrupted/shard-2.log": {
+    "sha256": "d979792d1629d7ad36ec07241d8e2c2a04d2a4355cfba9d12cf38e496df7d697",
+    "bytes": 184
+  },
+  "Test-results/interrupted/shard-3.log": {
+    "sha256": "1a75b36b5fbe417f6128ebee2006813171b46242e1bc393c24e4fb96a3c3c3ec",
+    "bytes": 3968
+  },
+  "Test-results/javascript-core.log": {
+    "sha256": "2214d7d6c4b42c8f288999f4ccc1fe7582de4b549fed87c4454b27539dbf7dac",
+    "bytes": 2086
+  },
+  "Test-results/javascript-game.log": {
+    "sha256": "1f715b8c4115bb9339e807ab9813450dc391e39d03fa7cd3b25a0add31b24094",
+    "bytes": 9948
+  },
+  "Test-results/live-motion-final.log": {
+    "sha256": "d3439e2c4e3d5311ec017cee13cc4ea66bc8b5181230b518194ae897d032915f",
+    "bytes": 119
+  },
+  "Test-results/male-contours.log": {
+    "sha256": "c932a7d52fc8442dec4cc344d9f4a40b366e01cb3ae6d83c034bda4baa5bc88f",
+    "bytes": 69
+  },
+  "Test-results/package.log": {
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  "Test-results/png-quality.log": {
+    "sha256": "cd403bee28dd07939dd17d32813b6e8f4c0f637f31818e75f16143076855e8b7",
+    "bytes": 1603
+  },
+  "Test-results/post-alpha-cleanup-tests.log": {
+    "sha256": "f62744e57e70a25d1aeafbcce71a9d9253a1705f1c6c7cd86a2453a7a559c833",
+    "bytes": 8312
+  },
+  "Test-results/pre-background-interrupted/INTERRUPTED.md": {
+    "sha256": "dd95fd51c43f60bb7eb70706130783b90773f5edb7ee7110239886c7e547f357",
+    "bytes": 206
+  },
+  "Test-results/pre-background-interrupted/preparation.log": {
+    "sha256": "40f373b57c7bc57775ebb2c446eaf2a16b9a39cacb5b5fbe954ca6bcc737c403",
+    "bytes": 610
+  },
+  "Test-results/pre-background-interrupted/shard-0.log": {
+    "sha256": "64aa815fd90573f60670d2fd64eb5d5dd9f30b4b11e07df703b80ae51f7862e2",
+    "bytes": 9902
+  },
+  "Test-results/pre-background-interrupted/shard-1.log": {
+    "sha256": "eb6b75a1553329ed7b3d20802ae8abb26e60f008097fed818fed4ec4e57df5ee",
+    "bytes": 7469
+  },
+  "Test-results/pre-background-interrupted/shard-2.log": {
+    "sha256": "1d87a1c39694adade3b826221eda43c68f033034a238cde8d922f348f4781c99",
+    "bytes": 15017
+  },
+  "Test-results/pre-final-source-check.log": {
+    "sha256": "912f3306e0f39686967691cf682723cc3d8b316126933def0c7a6e62fd157f78",
+    "bytes": 1403
+  },
+  "Test-results/pre-release-donor-tests.log": {
+    "sha256": "e9b8f8eb4dea1b153bfe3d09cbe968a30b0cb0c99d5167db07d02000435cdba0",
+    "bytes": 1991
+  },
+  "Test-results/preexisting-png-audit-check.log": {
+    "sha256": "96dbc99e96475b02fade733c94f7fed205f703021048143b6254913a8fd289e7",
+    "bytes": 1014
+  },
+  "Test-results/preparation.log": {
+    "sha256": "e75d25c7d0c1b6b697cbc375a1ebffa0bc9117aa81b2798ca4cba250d3c3f464",
+    "bytes": 81
+  },
+  "Test-results/release-regression.log": {
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  "Test-results/replay-final-pipeline.log": {
+    "sha256": "6a88d44527c1d9fb1591b89ed662b620caa7b7f875df1b74490e5572947d6eed",
+    "bytes": 659
+  },
+  "Test-results/strict-source-protection-followup.log": {
+    "sha256": "d1dd0b1efaf73358aa584d300c4dedecbec1d8c420ccea421a161cd5923dc35c",
+    "bytes": 451
+  },
+  "Test-results/torso-reference-followup.log": {
+    "sha256": "24a3011d674e58a0a415109b90bcaa1e2b03567fd754df16aa15e0d88b4bce61",
+    "bytes": 284
+  },
+  "Test-results/torso-zero-phase-diagnosis.log": {
+    "sha256": "d0a307c0c414b83b2661b7a89fc1bbf5f330f4a387d53e1f99fea4202464cfe5",
+    "bytes": 321
+  },
+  "acceptance-runtime-start-sha256.json": {
+    "sha256": "c50a44630cb299e1541ecc67d55cc27a21b05bc02528e8f2384e8ffa4971ab46",
+    "bytes": 15511
+  },
+  "alpha-composition-baseline.json": {
+    "sha256": "364e3a59473f670bab7f7e2bc446ea0cf2e0ee71a5e87bb2e2e86db1195af35f",
+    "bytes": 1210
+  },
+  "base_female.png": {
+    "sha256": "a27b499c03fc15c4788ae3a651483a36463f28b1f034178feccdaa852e7e50f9",
+    "bytes": 838098
+  },
+  "base_male.png": {
+    "sha256": "b40a31b26dcf9aeea1dad02091228377330c9bb3af3a4b9669cfcc67247fc41d",
+    "bytes": 959187
+  },
+  "changed-files.json": {
+    "sha256": "124b81e1fc6a41ab1aeea0cf3530fad67b1022cf1b38b557f90b2bd343714df1",
+    "bytes": 36021
+  },
+  "current-runtime-proof.json": {
+    "sha256": "8a36283ba3bcb991c98236c8fd923cbf5cd9517b41c3467a39555a209893746e",
+    "bytes": 15899
+  },
+  "final-runtime-sha256.json": {
+    "sha256": "c50a44630cb299e1541ecc67d55cc27a21b05bc02528e8f2384e8ffa4971ab46",
+    "bytes": 15511
+  },
+  "final-runtime-start-sha256.json": {
+    "sha256": "f7803f90df5611cb03052187f8e22836695b8606e1644b9684e3f1c68a3d5bc8",
+    "bytes": 15687
+  },
+  "final-weak-cleanup-proof.json": {
+    "sha256": "46788aaf687eb1b7adeddec97175afe52981887adfe4eb48ee116aa257e6bfc5",
+    "bytes": 837
+  },
+  "issues.json": {
+    "sha256": "560df46690cfde0ac11680bf5a3cdf3754056aa857d27aa03c5a4bffa8656a23",
+    "bytes": 4762
+  },
+  "live-motion.json": {
+    "sha256": "aef34812975d2801a25c0026e8912f61af31dc36bb14defa24e9dd419f423ad8",
+    "bytes": 242905
+  },
+  "png-quality-before-weak-cleanup.json": {
+    "sha256": "70f5d543157ce8bb398f7d89db4e7313990ab3ee4af78bcfe8fd828411c71774",
+    "bytes": 61272
+  },
+  "png-quality.json": {
+    "sha256": "38044285ae9d68c7f87e05e17b6ecc84e570f684b6fa7a18ff085cb0d15d0c10",
+    "bytes": 61042
+  },
+  "preexisting-png-audit.json": {
+    "sha256": "196dd4d6e6eb335e06a354a35aec0a3f489faf05048be9c33c63e534ca92e6cb",
+    "bytes": 481
+  },
+  "prop-components.json": {
+    "sha256": "5074e7ace2f7158dc27102438d69922fca81751824b73f09635753608bd3e375",
+    "bytes": 2285
+  },
+  "registration.json": {
+    "sha256": "0c10fb66c9d413a9ea2ed78bd23c1ab45626284739aac57c0a406e3e33d92727",
+    "bytes": 20529
+  },
+  "regression-result-before-final-acceptance.json": {
+    "sha256": "a61a8f0dd430a9d7cbf910c338392e0b6c53bbc0f25516e5def0f4665947d5b2",
+    "bytes": 1484
+  },
+  "regression-result.json": {
+    "sha256": "4641bbefe11a7d151c9157c64977cb434d40b25ada2e3ee259f406d68ff764af",
+    "bytes": 1343
+  },
+  "release-runtime-start-sha256.json": {
+    "sha256": "76fef6ba3020c15d0f2e012690a71ac5605f1d169c1858994f222180db379d91",
+    "bytes": 15511
+  },
+  "runtime-freeze-check.json": {
+    "sha256": "f9407ec5aa5bac9db1105d83594f51ec8dda9dc6bca235475d1b1085982ccd59",
+    "bytes": 106
+  },
+  "runtime-review-before-finger-ownership.json": {
+    "sha256": "9b96f24c9549aa4e0e08b936d053016a053cf9ff77b621d5d19fc659b72f4af5",
+    "bytes": 258740
+  },
+  "runtime-review.json": {
+    "sha256": "82e5ad3463acd0e3213e9a44cac030cab74917cacc803fc1434bdaabf591bcaa",
+    "bytes": 259689
+  },
+  "sources.json": {
+    "sha256": "d7d7b0404f8e15d52662490743174d67e7a91d4672f1fb0a5276334d16662cab",
+    "bytes": 1707
+  }
+}

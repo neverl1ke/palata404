@@ -1,0 +1,30 @@
+{
+  "baseline": "467e10e",
+  "criterion": "Only removal of alpha1..16 debris. All other pixels byte-identical.",
+  "files": [
+    {
+      "path": "avatar-core/assets/female/donor-art/rifle-weapon.png",
+      "removed_pixels": 431,
+      "old_alpha_max": 5,
+      "opaque_rgb_unchanged": true
+    },
+    {
+      "path": "avatar-core/assets/male/reference-art/rifle-left-arm.png",
+      "removed_pixels": 22,
+      "old_alpha_max": 10,
+      "opaque_rgb_unchanged": true
+    },
+    {
+      "path": "avatar-core/assets/male/reference-art/rifle-right-arm.png",
+      "removed_pixels": 26,
+      "old_alpha_max": 1,
+      "opaque_rgb_unchanged": true
+    },
+    {
+      "path": "avatar-core/assets/male/reference-art/rifle-right-front.png",
+      "removed_pixels": 13,
+      "old_alpha_max": 1,
+      "opaque_rgb_unchanged": true
+    }
+  ]
+}

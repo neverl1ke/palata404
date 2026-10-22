@@ -1,0 +1,100 @@
+[
+  {
+    "pose": "melee",
+    "sha256": "ed2e79bdaa9fc6bcf7431005514f26e4075e8a833761e45cd6d0bca905045da5",
+    "components": [
+      {
+        "id": 1,
+        "pixels": 3938,
+        "bounds": [
+          207,
+          843,
+          299,
+          997
+        ],
+        "max_alpha": 255
+      }
+    ],
+    "review_note": "Separate visible prop material and concealed underlap around source finger occlusion are retained. A component count alone is not proof of noise. This is not an unobstructed universal weapon asset."
+  },
+  {
+    "pose": "pistol",
+    "sha256": "7fc47e63808c176f4c051c583339339e7ee91eac27dcf28d08ec0f6338867c57",
+    "components": [
+      {
+        "id": 1,
+        "pixels": 3511,
+        "bounds": [
+          212,
+          153,
+          277,
+          292
+        ],
+        "max_alpha": 255
+      },
+      {
+        "id": 2,
+        "pixels": 977,
+        "bounds": [
+          191,
+          293,
+          228,
+          337
+        ],
+        "max_alpha": 255
+      }
+    ],
+    "review_note": "Separate visible prop material and concealed underlap around source finger occlusion are retained. A component count alone is not proof of noise. This is not an unobstructed universal weapon asset."
+  },
+  {
+    "pose": "rifle",
+    "sha256": "a45c88e9e613c29f0810318bac38998e985816fb8e26d88c570d9a450ce93b54",
+    "components": [
+      {
+        "id": 1,
+        "pixels": 49077,
+        "bounds": [
+          241,
+          399,
+          877,
+          777
+        ],
+        "max_alpha": 255
+      },
+      {
+        "id": 2,
+        "pixels": 317,
+        "bounds": [
+          401,
+          565,
+          422,
+          586
+        ],
+        "max_alpha": 255
+      },
+      {
+        "id": 19,
+        "pixels": 317,
+        "bounds": [
+          655,
+          656,
+          676,
+          677
+        ],
+        "max_alpha": 255
+      },
+      {
+        "id": 14,
+        "pixels": 152,
+        "bounds": [
+          371,
+          594,
+          398,
+          608
+        ],
+        "max_alpha": 255
+      }
+    ],
+    "review_note": "Separate visible prop material and concealed underlap around source finger occlusion are retained. A component count alone is not proof of noise. This is not an unobstructed universal weapon asset."
+  }
+]

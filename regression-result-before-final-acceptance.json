@@ -1,0 +1,35 @@
+{
+  "full_run": {
+    "total": 273,
+    "passed": 271,
+    "failed": 2,
+    "failure_ids": [
+      "tests.test_male_anatomy.MaleAnatomyBrowserTests.test_female_all_four_poses_preserve_original_head_torso_and_feet",
+      "tests.test_paper_doll_audit.AuditAssetTests.test_no_remote_faint_haze_or_detached_low_alpha_specks"
+    ],
+    "summary": "full-regression-final/summary.json"
+  },
+  "followup": {
+    "test": "tests.test_male_anatomy.MaleAnatomyBrowserTests.test_female_all_four_poses_preserve_original_head_torso_and_feet",
+    "passed": 1,
+    "failed": 0,
+    "log": "torso-reference-followup.log",
+    "reason": "Old pistol screenshot includes geometric weapon over 1083 pixels in supposed torso window; now directly compare source-base Canvas rendering",
+    "runtime_unchanged": true
+  },
+  "remaining_failures": [
+    "tests.test_paper_doll_audit.AuditAssetTests.test_no_remote_faint_haze_or_detached_low_alpha_specks"
+  ],
+  "collectively_passed_unique_scenarios": 272,
+  "fully_green_single_run": false,
+  "report_parser_note": "Raw runner summary duplicates method suffix in failure IDs; canonical IDs normalized here from unchanged unittest logs. Future runner parser corrected.",
+  "post_weak_cleanup": {
+    "passed": 44,
+    "failed": 0,
+    "log": "post-alpha-cleanup-tests.log",
+    "removed_pixels": 492,
+    "only_alpha_1_to_10_removed": true,
+    "proof": "final-weak-cleanup-proof.json",
+    "runtime_commit": "1ed3aaad8df5b7d6ffab7ee2a5226116c07981ce"
+  }
+}

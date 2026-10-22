@@ -1,0 +1,141 @@
+test_live_canvas_preserves_full_forearm_bicep_and_elbow_spans (tests.test_arm_contour_cleanup.ArmContourBrowserTests.test_live_canvas_preserves_full_forearm_bicep_and_elbow_spans) ... ok
+test_independent_reference_cross_sections_are_not_cut (tests.test_arm_contour_cleanup.ArmContourSourceTests.test_independent_reference_cross_sections_are_not_cut) ... ok
+test_original_character_engine_config_and_anchors_unchanged (tests.test_arm_contour_cleanup.ArmContourSourceTests.test_original_character_engine_config_and_anchors_unchanged) ... ok
+test_shoulder_surface_is_local_continuous_and_never_changes_skeleton (tests.test_avatar_cleanup.CleanupBrowserTests.test_shoulder_surface_is_local_continuous_and_never_changes_skeleton) ... ok
+test_all_current_faces_four_poses_and_shared_hair_palette (tests.test_avatar_core.AvatarCoreBrowserTests.test_all_current_faces_four_poses_and_shared_hair_palette) ... ok
+test_binding_api_sleeves_follow_each_rig_and_can_be_removed (tests.test_avatar_core.AvatarCoreBrowserTests.test_binding_api_sleeves_follow_each_rig_and_can_be_removed) ... ok
+test_hidden_tab_stops_and_resume_does_not_catch_up_hidden_time (tests.test_avatar_core.AvatarCoreBrowserTests.test_hidden_tab_stops_and_resume_does_not_catch_up_hidden_time) ... ok
+test_mobile_and_high_dpi_layout (tests.test_avatar_core.AvatarCoreBrowserTests.test_mobile_and_high_dpi_layout) ... ok
+test_rapid_gender_switch_is_atomic_and_image_cache_bounded (tests.test_avatar_core.AvatarCoreBrowserTests.test_rapid_gender_switch_is_atomic_and_image_cache_bounded) ... ok
+test_nine_disjoint_source_partitions_reconstruct_every_visible_pixel (tests.test_avatar_core.AvatarCoreSourceTests.test_nine_disjoint_source_partitions_reconstruct_every_visible_pixel) ... ok
+test_cached_skin_preserves_the_uncached_paint_order (tests.test_avatar_polish.PolishBrowserTests.test_cached_skin_preserves_the_uncached_paint_order) ... ok
+test_wrist_retouch_is_applied_only_inside_declared_source_band (tests.test_avatar_polish.PolishBrowserTests.test_wrist_retouch_is_applied_only_inside_declared_source_band)
+Runtime A/B, not a comparison against newly approved image hashes. ... ok
+test_actual_canvas_has_no_contact_surface_holes (tests.test_contact_surfaces.ContactSurfaceBrowserTests.test_actual_canvas_has_no_contact_surface_holes) ... ok
+test_restored_visible_object_pixels_keep_the_supplied_reference_rgb (tests.test_contact_surfaces.ContactSurfaceBrowserTests.test_restored_visible_object_pixels_keep_the_supplied_reference_rgb) ... ok
+test_contact_probes_detect_actual_missing_surfaces_in_returned_package (tests.test_contact_surfaces.ContactSurfaceSourceTests.test_contact_probes_detect_actual_missing_surfaces_in_returned_package) ... ok
+test_harmonization_is_confined_to_shared_shoulder_not_folded_forearm (tests.test_contact_surfaces.ContactSurfaceSourceTests.test_harmonization_is_confined_to_shared_shoulder_not_folded_forearm) ... ok
+test_archived_a6_runtime_changes_only_surfaces_and_the_new_male_knife (tests.test_exact_reference_pass.ExactReferenceTests.test_archived_a6_runtime_changes_only_surfaces_and_the_new_male_knife) ... ok
+test_every_original_png_and_rig_is_unchanged (tests.test_exact_reference_pass.ExactReferenceTests.test_every_original_png_and_rig_is_unchanged) ... ok
+test_all_necks_have_single_rim_and_restore_the_actual_new_body (tests.test_female_base_replacement.FemaleBaseReplacementTests.test_all_necks_have_single_rim_and_restore_the_actual_new_body) ... ok
+test_supplied_original_and_all_non_noise_pixels_are_preserved (tests.test_female_base_replacement.FemaleBaseReplacementTests.test_supplied_original_and_all_non_noise_pixels_are_preserved) ... ok
+test_donor_joints_match_independent_measured_windows_and_one_hand_pistol (tests.test_female_donor_arms.FemaleDonorBrowserTests.test_donor_joints_match_independent_measured_windows_and_one_hand_pistol) ... ok
+test_three_visible_props_exist_and_hide_preserves_anatomy_time (tests.test_female_donor_arms.FemaleDonorBrowserTests.test_three_visible_props_exist_and_hide_preserves_anatomy_time) ... ok
+test_mesh_covers_every_active_pixel_and_foreground_is_skin_only (tests.test_female_donor_arms.FemaleDonorSourceTests.test_mesh_covers_every_active_pixel_and_foreground_is_skin_only) ... ok
+test_all_sources_and_final_resources_are_exact_and_versioned (tests.test_female_faces.FemaleFacesAssetTests.test_all_sources_and_final_resources_are_exact_and_versioned) ... ok
+test_registered_approved_portrait_features_and_piercings_are_preserved (tests.test_female_faces.FemaleFacesAssetTests.test_registered_approved_portrait_features_and_piercings_are_preserved) ... ok
+test_full_female_face_hair_matrix_has_correct_layers_and_palette (tests.test_female_faces.FemaleFacesBrowserTests.test_full_female_face_hair_matrix_has_correct_layers_and_palette) ... ok
+test_each_actual_mask_preserves_solid_neck_and_lower_body (tests.test_female_faces_independent.IndependentFemaleFaceTests.test_each_actual_mask_preserves_solid_neck_and_lower_body) ... ok
+test_repairs_preserve_approved_portraits_and_all_protected_assets (tests.test_female_faces_independent.IndependentFemaleFaceTests.test_repairs_preserve_approved_portraits_and_all_protected_assets) ... ok
+test_updo_is_compact_and_side_knot_is_near_ear (tests.test_female_five_hairstyles.FemaleEarFitTests.test_updo_is_compact_and_side_knot_is_near_ear) ... ok
+test_pixie_temples_cover_skull_landmarks_without_moving_crown_or_center (tests.test_female_five_hairstyles.FemaleFitAuditTests.test_pixie_temples_cover_skull_landmarks_without_moving_crown_or_center) ... ok
+test_browser_evidence_exercises_every_face_style_and_current_bytes (tests.test_female_five_hairstyles.FiveFemaleHairstyleTests.test_browser_evidence_exercises_every_face_style_and_current_bytes) ... ok
+test_full_canvas_safe_edges_alpha_and_open_central_face (tests.test_female_five_hairstyles.FiveFemaleHairstyleTests.test_full_canvas_safe_edges_alpha_and_open_central_face) ... ok
+test_male_renderer_pixels_match_previous_release_on_every_combination (tests.test_female_head_standard.FemaleStandardAssetTests.test_male_renderer_pixels_match_previous_release_on_every_combination) ... ok
+test_reference_all_sources_bodies_male_art_and_hair_are_unchanged (tests.test_female_head_standard.FemaleStandardAssetTests.test_reference_all_sources_bodies_male_art_and_hair_are_unchanged) ... ok
+test_every_female_choice_restores_face_hair_colour_and_separate_outfits (tests.test_female_head_standard.FemaleStandardBrowserTests.test_every_female_choice_restores_face_hair_colour_and_separate_outfits) ... ok
+test_approved_avatars_show_native_faces_in_both_views_and_switch_to_trip (tests.test_game.GameTests.test_approved_avatars_show_native_faces_in_both_views_and_switch_to_trip) ... ok
+test_archive_full_dossier_images_and_personal_statuses (tests.test_game.GameTests.test_archive_full_dossier_images_and_personal_statuses) ... ok
+test_compact_photo_composition_and_floor_filter_are_read_only (tests.test_game.GameTests.test_compact_photo_composition_and_floor_filter_are_read_only) ... ok
+test_complete_face_catalog_selects_both_genders_and_restores_every_type (tests.test_game.GameTests.test_complete_face_catalog_selects_both_genders_and_restores_every_type) ... ok
+test_energy_regeneration_after_offline_time (tests.test_game.GameTests.test_energy_regeneration_after_offline_time) ... ok
+test_final_mobile_wardrobe_full_controls_and_male_shoulder_face_matrix (tests.test_game.GameTests.test_final_mobile_wardrobe_full_controls_and_male_shoulder_face_matrix) ... ok
+test_ground_shadow_tracks_the_shared_frame_without_gender_or_loadout_jumps (tests.test_game.GameTests.test_ground_shadow_tracks_the_shared_frame_without_gender_or_loadout_jumps) ... ok
+test_hair_palette_colors_alpha_persistence_races_and_responsive_ui (tests.test_game.GameTests.test_hair_palette_colors_alpha_persistence_races_and_responsive_ui) ... ok
+test_legacy_item_icons_and_untrusted_icon_urls (tests.test_game.GameTests.test_legacy_item_icons_and_untrusted_icon_urls) ... ok
+test_map_unlock_is_persistent_and_locked_floor_stays_closed (tests.test_game.GameTests.test_map_unlock_is_persistent_and_locked_floor_stays_closed) ... ok
+test_paper_doll_layers_share_canvas_and_keep_faces_aligned_on_mobile (tests.test_game.GameTests.test_paper_doll_layers_share_canvas_and_keep_faces_aligned_on_mobile) ... ok
+test_partial_reward_save_recovers_without_duplicate_credit (tests.test_game.GameTests.test_partial_reward_save_recovers_without_duplicate_credit) ... ok
+test_patient_tunic_real_catalog_fit_in_both_scenes_genders_modes_and_viewports (tests.test_game.GameTests.test_patient_tunic_real_catalog_fit_in_both_scenes_genders_modes_and_viewports) ... ok
+test_production_tunic_fitting_page_uses_current_catalog_without_changing_saves (tests.test_game.GameTests.test_production_tunic_fitting_page_uses_current_catalog_without_changing_saves) ... ok
+test_raid_archive_limit_mobile_bounds_and_stamps (tests.test_game.GameTests.test_raid_archive_limit_mobile_bounds_and_stamps) ... ok
+test_staff_archive_and_enlarged_dossiers_mobile_bounds (tests.test_game.GameTests.test_staff_archive_and_enlarged_dossiers_mobile_bounds) ... ok
+test_staff_forms_thumbnail_scale_and_prominent_personal_raid_stamps (tests.test_game.GameTests.test_staff_forms_thumbnail_scale_and_prominent_personal_raid_stamps) ... ok
+test_touch_navigation_and_arena_fit (tests.test_game.GameTests.test_touch_navigation_and_arena_fit) ... ok
+test_victory_protocol_identity_rewards_and_archive_reopen (tests.test_game.GameTests.test_victory_protocol_identity_rewards_and_archive_reopen) ... ok
+test_wardrobe_final_ux_empty_clothes_and_functional_text_in_both_themes (tests.test_game.GameTests.test_wardrobe_final_ux_empty_clothes_and_functional_text_in_both_themes) ... ok
+test_wardrobe_themes_change_all_columns_keep_contrast_and_restore_after_reload (tests.test_game.GameTests.test_wardrobe_themes_change_all_columns_keep_contrast_and_restore_after_reload) ... ok
+test_young_faces_switch_hair_outfits_and_reload_without_leaking_body_masks (tests.test_game.GameTests.test_young_faces_switch_hair_outfits_and_reload_without_leaking_body_masks) ... ok
+test_approved_wardrobe_backgrounds_are_valid_matching_scenes (tests.test_game.IconAssetTests.test_approved_wardrobe_backgrounds_are_valid_matching_scenes) ... ok
+test_first_patient_shirt_drafts_are_real_transparent_pngs (tests.test_game.IconAssetTests.test_first_patient_shirt_drafts_are_real_transparent_pngs) ... ok
+test_individual_neck_assets_preserve_faces_and_restore_the_original_torso (tests.test_game.IconAssetTests.test_individual_neck_assets_preserve_faces_and_restore_the_original_torso) ... ok
+test_chest_mesh_has_bounded_expansion_positive_topology_and_closed_cycle (tests.test_grip_pass.ChestBrowserTests.test_chest_mesh_has_bounded_expansion_positive_topology_and_closed_cycle) ... ok
+test_hide_weapon_preserves_all_pose_matrices_time_and_hand_passes (tests.test_independent_anatomy.IndependentSurfaceBrowserTests.test_hide_weapon_preserves_all_pose_matrices_time_and_hand_passes) ... ok
+test_preview_sizes_do_not_change_pose_or_attachment_solution (tests.test_independent_anatomy.IndependentSurfaceBrowserTests.test_preview_sizes_do_not_change_pose_or_attachment_solution) ... ok
+test_weaponless_pistol_has_no_detached_fingertip (tests.test_independent_anatomy.IndependentSurfaceBrowserTests.test_weaponless_pistol_has_no_detached_fingertip) ... ok
+test_originals_and_all_female_resources_are_unchanged (tests.test_independent_anatomy.IndependentSurfaceSourceTests.test_originals_and_all_female_resources_are_unchanged) ... ok
+test_female_all_four_poses_preserve_original_head_torso_and_feet (tests.test_male_anatomy.MaleAnatomyBrowserTests.test_female_all_four_poses_preserve_original_head_torso_and_feet) ... FAIL
+test_speed_control_pause_and_bindings_still_work (tests.test_male_anatomy.MaleAnatomyBrowserTests.test_speed_control_pause_and_bindings_still_work) ... ok
+test_all_masks_and_templates_keep_exact_canvas_and_new_art_count_is_zero (tests.test_male_hand_kit.MaleHandKitTests.test_all_masks_and_templates_keep_exact_canvas_and_new_art_count_is_zero) ... /workspace/palata404-avatar-core/tests/test_male_hand_kit.py:22: ResourceWarning: unclosed file <_io.BufferedReader name='/workspace/palata404-avatar-core/review/male-hand-art-kit/Hands/pistol-right/edit-region.png'>
+  im=Image.open(folder/name);self.assertEqual(im.size,(941,1672));self.assertEqual(im.mode,'L')
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/workspace/palata404-avatar-core/tests/test_male_hand_kit.py:22: ResourceWarning: unclosed file <_io.BufferedReader name='/workspace/palata404-avatar-core/review/male-hand-art-kit/Hands/pistol-right/wrist-blend-weight.png'>
+  im=Image.open(folder/name);self.assertEqual(im.size,(941,1672));self.assertEqual(im.mode,'L')
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/workspace/palata404-avatar-core/tests/test_male_hand_kit.py:24: ResourceWarning: unclosed file <_io.BufferedReader name='/workspace/palata404-avatar-core/review/male-hand-art-kit/Hands/pistol-right/old-skin-remove-mask.png'>
+  im=Image.open(KIT/path);self.assertEqual(im.size,(941,1672));self.assertEqual(im.mode,'RGBA');self.assertIsNone(im.getbbox(),path)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/workspace/palata404-avatar-core/tests/test_male_hand_kit.py:22: ResourceWarning: unclosed file <_io.BufferedReader name='/workspace/palata404-avatar-core/review/male-hand-art-kit/Hands/rifle-right/edit-region.png'>
+  im=Image.open(folder/name);self.assertEqual(im.size,(941,1672));self.assertEqual(im.mode,'L')
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/workspace/palata404-avatar-core/tests/test_male_hand_kit.py:22: ResourceWarning: unclosed file <_io.BufferedReader name='/workspace/palata404-avatar-core/review/male-hand-art-kit/Hands/rifle-right/wrist-blend-weight.png'>
+  im=Image.open(folder/name);self.assertEqual(im.size,(941,1672));self.assertEqual(im.mode,'L')
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/workspace/palata404-avatar-core/tests/test_male_hand_kit.py:24: ResourceWarning: unclosed file <_io.BufferedReader name='/workspace/palata404-avatar-core/review/male-hand-art-kit/Hands/rifle-right/old-skin-remove-mask.png'>
+  im=Image.open(KIT/path);self.assertEqual(im.size,(941,1672));self.assertEqual(im.mode,'RGBA');self.assertIsNone(im.getbbox(),path)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/workspace/palata404-avatar-core/tests/test_male_hand_kit.py:22: ResourceWarning: unclosed file <_io.BufferedReader name='/workspace/palata404-avatar-core/review/male-hand-art-kit/Hands/rifle-left/edit-region.png'>
+  im=Image.open(folder/name);self.assertEqual(im.size,(941,1672));self.assertEqual(im.mode,'L')
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/workspace/palata404-avatar-core/tests/test_male_hand_kit.py:22: ResourceWarning: unclosed file <_io.BufferedReader name='/workspace/palata404-avatar-core/review/male-hand-art-kit/Hands/rifle-left/wrist-blend-weight.png'>
+  im=Image.open(folder/name);self.assertEqual(im.size,(941,1672));self.assertEqual(im.mode,'L')
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/workspace/palata404-avatar-core/tests/test_male_hand_kit.py:24: ResourceWarning: unclosed file <_io.BufferedReader name='/workspace/palata404-avatar-core/review/male-hand-art-kit/Hands/rifle-left/old-skin-remove-mask.png'>
+  im=Image.open(KIT/path);self.assertEqual(im.size,(941,1672));self.assertEqual(im.mode,'RGBA');self.assertIsNone(im.getbbox(),path)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_masks_include_wrist_grip_and_protect_shoulder_elbow (tests.test_male_hand_kit.MaleHandKitTests.test_masks_include_wrist_grip_and_protect_shoulder_elbow) ... ok
+test_all_3375_combinations_have_unique_real_lossless_screenshots (tests.test_male_head_library.MaleLibraryAssetTests.test_all_3375_combinations_have_unique_real_lossless_screenshots) ... ok
+test_every_new_resource_is_registered_with_its_actual_hash (tests.test_male_head_library.MaleLibraryAssetTests.test_every_new_resource_is_registered_with_its_actual_hash) ... ok
+test_new_portraits_are_uniformly_registered_without_rgb_repaint (tests.test_male_head_library.MaleLibraryAssetTests.test_new_portraits_are_uniformly_registered_without_rgb_repaint) ... ok
+test_offline_gallery_filters_modal_zoom_and_mobile_layout (tests.test_male_head_library.MaleLibraryBrowserTests.test_offline_gallery_filters_modal_zoom_and_mobile_layout) ... ok
+test_new_arm_pixels_are_warm_skin_not_the_gray_guide_or_full_avatar (tests.test_male_lobby.LobbySourceTests.test_new_arm_pixels_are_warm_skin_not_the_gray_guide_or_full_avatar) ... ok
+test_individual_masks_remove_old_head_and_preserve_torso_without_holes (tests.test_new_female_heads.NewFemaleHeadAssetTests.test_individual_masks_remove_old_head_and_preserve_torso_without_holes) ... ok
+test_each_new_face_reloads_with_hair_colour_and_separate_loadouts (tests.test_new_female_heads.NewFemaleHeadsBrowserTests.test_each_new_face_reloads_with_hair_colour_and_separate_loadouts) ... ok
+test_analyzer_detects_connected_alpha_one_noise_and_preserves_real_strands (tests.test_paper_doll_audit.AuditAssetTests.test_analyzer_detects_connected_alpha_one_noise_and_preserves_real_strands) ... ok
+test_no_remote_faint_haze_or_detached_low_alpha_specks (tests.test_paper_doll_audit.AuditAssetTests.test_no_remote_faint_haze_or_detached_low_alpha_specks) ... FAIL
+test_mobile_catalog_single_scroll_targets_palette_and_player_flow (tests.test_paper_doll_audit.AuditBrowserTests.test_mobile_catalog_single_scroll_targets_palette_and_player_flow) ... ok
+test_historical_asian_scale_is_small_registered_and_head_edges_have_narrow_antialiasing (tests.test_paper_doll_targeted.TargetedAssetTests.test_historical_asian_scale_is_small_registered_and_head_edges_have_narrow_antialiasing) ... ok
+test_only_authorized_pixels_change_and_all_other_assets_remain_exact (tests.test_paper_doll_targeted.TargetedAssetTests.test_only_authorized_pixels_change_and_all_other_assets_remain_exact) ... ok
+test_baseline_dependency_map_has_no_broken_local_links (tests.test_project_audit.GeneralAssetTests.test_baseline_dependency_map_has_no_broken_local_links) ... ok
+test_invalid_boss_names_do_not_mutate_a_saved_character (tests.test_project_audit.GeneralBrowserTests.test_invalid_boss_names_do_not_mutate_a_saved_character) ... ok
+test_all_new_contact_points_and_4000ms_cycles_close_without_hand_disconnect (tests.test_reference_arm_art.ReferenceArmBrowserTests.test_all_new_contact_points_and_4000ms_cycles_close_without_hand_disconnect) ... ok
+test_body_is_not_replaced_by_a_reference_and_new_assets_have_clean_hidden_rgb (tests.test_reference_arm_art.ReferenceArmSourceTests.test_body_is_not_replaced_by_a_reference_and_new_assets_have_clean_hidden_rgb) ... ok
+test_reference_fingertips_are_present_and_keep_source_rgb (tests.test_reference_arm_art.ReferenceArmSourceTests.test_reference_fingertips_are_present_and_keep_source_rgb) ... ok
+test_contour_edit_preserves_canvas_lower_tresses_and_all_pixels_outside_roi (tests.test_trial_braided_curls.TrialBraidedCurlsTests.test_contour_edit_preserves_canvas_lower_tresses_and_all_pixels_outside_roi) ... ok
+test_saved_browser_evidence_covers_all_female_heads (tests.test_trial_braided_curls.TrialBraidedCurlsTests.test_saved_browser_evidence_covers_all_female_heads) ... ok
+test_every_male_switch_frame_is_the_opaque_destination (tests.test_weapon_pass.WeaponPassBrowserTests.test_every_male_switch_frame_is_the_opaque_destination) ... ok
+test_original_pngs_female_rig_and_shared_weapons_are_unchanged (tests.test_weapon_pass.WeaponPassSourceTests.test_original_pngs_female_rig_and_shared_weapons_are_unchanged) ... ok
+
+======================================================================
+FAIL: test_female_all_four_poses_preserve_original_head_torso_and_feet (tests.test_male_anatomy.MaleAnatomyBrowserTests.test_female_all_four_poses_preserve_original_head_torso_and_feet)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/palata404-avatar-core/tests/test_male_anatomy.py", line 44, in test_female_all_four_poses_preserve_original_head_torso_and_feet
+    for pose in ['idle','melee','pistol','rifle']:
+                                                   
+AssertionError: False is not true : idle
+
+======================================================================
+FAIL: test_no_remote_faint_haze_or_detached_low_alpha_specks (tests.test_paper_doll_audit.AuditAssetTests.test_no_remote_faint_haze_or_detached_low_alpha_specks)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/palata404-avatar-core/tests/test_paper_doll_audit.py", line 40, in test_no_remote_faint_haze_or_detached_low_alpha_specks
+    d=ndi.distance_transform_edt(~(roi>=32));self.assertEqual(int(((roi>0)&(roi<=16)&(d>4)).sum()),0,rel)
+                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 4234 != 0 : base_male.png
+
+----------------------------------------------------------------------
+Ran 90 tests in 1150.716s
+
+FAILED (failures=2)

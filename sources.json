@@ -1,0 +1,43 @@
+{
+  "archive_sha256": "510f7e2a996a46bca87e3eb0e06a92599d7417a46a4aa977ef44ccd17db9d234",
+  "base_confirmed_by_user": "base_female.png in project",
+  "base_sha256": "a27b499c03fc15c4788ae3a651483a36463f28b1f034178feccdaa852e7e50f9",
+  "mapping": [
+    {
+      "original_name": "жіночий референс/Изображение ChatGPT 22 окт. 2026 г., 08_28_25-1.png",
+      "pose": "melee",
+      "working_source": "Sources/melee.png",
+      "source_sha256": "af23e4e215202c5b8298316054600d849f106ca47373e37d525bc816ab3ee4d5",
+      "native_canvas": [
+        941,
+        1672
+      ],
+      "source_mode": "RGB",
+      "runtime_use": "arm pixels and separate item ROI only; source body never replaces game body"
+    },
+    {
+      "original_name": "жіночий референс/Изображение ChatGPT 22 окт. 2026 г., 08_28_25-2.png",
+      "pose": "pistol",
+      "working_source": "Sources/pistol.png",
+      "source_sha256": "406ba290b9666f98739e61829205e84bf01038fce2ce6fe80635667a31a688a1",
+      "native_canvas": [
+        941,
+        1672
+      ],
+      "source_mode": "RGB",
+      "runtime_use": "arm pixels and separate item ROI only; source body never replaces game body"
+    },
+    {
+      "original_name": "жіночий референс/Изображение ChatGPT 22 окт. 2026 г., 08_28_26-3.png",
+      "pose": "rifle",
+      "working_source": "Sources/rifle.png",
+      "source_sha256": "ce479efb26bf457ba0579b2249838624b1d1957660a5070af101f27b0d268319",
+      "native_canvas": [
+        941,
+        1672
+      ],
+      "source_mode": "RGB",
+      "runtime_use": "arm pixels and separate item ROI only; source body never replaces game body"
+    }
+  ]
+}

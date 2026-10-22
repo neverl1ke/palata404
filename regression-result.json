@@ -1,0 +1,32 @@
+{
+  "source_commit": "4c1097cdef8a85cbee166a84097e32933561c3b7",
+  "full_run": {
+    "total": 274,
+    "ran": 274,
+    "passed": 271,
+    "failure_ids": [
+      "tests.test_avatar_cleanup.CleanupBrowserTests.test_female_cleanup_scope_and_male_protected_head_feet",
+      "tests.test_male_anatomy.MaleAnatomyBrowserTests.test_female_all_four_poses_preserve_original_head_torso_and_feet",
+      "tests.test_paper_doll_audit.AuditAssetTests.test_no_remote_faint_haze_or_detached_low_alpha_specks"
+    ],
+    "skipped": 0,
+    "all_passed": false
+  },
+  "followup": {
+    "cases": [
+      "tests.test_avatar_cleanup.CleanupBrowserTests.test_female_cleanup_scope_and_male_protected_head_feet",
+      "tests.test_male_anatomy.MaleAnatomyBrowserTests.test_female_all_four_poses_preserve_original_head_torso_and_feet"
+    ],
+    "passed": 2,
+    "failed": 0,
+    "log": "strict-source-protection-followup.log",
+    "criterion": "Exact input-base pixels on transparent Canvas; historical flattened background changed intentionally",
+    "runtime_unchanged": true
+  },
+  "remaining_failures": [
+    "tests.test_paper_doll_audit.AuditAssetTests.test_no_remote_faint_haze_or_detached_low_alpha_specks"
+  ],
+  "collectively_passed_unique_scenarios": 273,
+  "fully_green_single_run": false,
+  "runtime_files_unchanged_during_acceptance_and_followup": 128
+}

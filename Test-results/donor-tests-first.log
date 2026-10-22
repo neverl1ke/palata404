@@ -1,0 +1,42 @@
+test_all_endpoint_cuts_have_no_crossfade_or_stale_previous_pose (tests.test_female_donor_arms.FemaleDonorBrowserTests.test_all_endpoint_cuts_have_no_crossfade_or_stale_previous_pose) ... ok
+test_donor_joints_match_independent_measured_windows_and_one_hand_pistol (tests.test_female_donor_arms.FemaleDonorBrowserTests.test_donor_joints_match_independent_measured_windows_and_one_hand_pistol) ... ok
+test_full_cycles_preserve_neck_contact_loop_and_stationary_head_feet (tests.test_female_donor_arms.FemaleDonorBrowserTests.test_full_cycles_preserve_neck_contact_loop_and_stationary_head_feet) ... ok
+test_idle_is_exact_base_and_four_poses_are_distinct (tests.test_female_donor_arms.FemaleDonorBrowserTests.test_idle_is_exact_base_and_four_poses_are_distinct) ... FAIL
+test_three_visible_props_exist_and_hide_preserves_anatomy_time (tests.test_female_donor_arms.FemaleDonorBrowserTests.test_three_visible_props_exist_and_hide_preserves_anatomy_time) ... ok
+test_alpha_is_clean_and_all_arm_components_are_anatomically_connected (tests.test_female_donor_arms.FemaleDonorSourceTests.test_alpha_is_clean_and_all_arm_components_are_anatomically_connected) ... FAIL
+test_each_donor_is_native_canvas_and_source_mapping_is_explicit (tests.test_female_donor_arms.FemaleDonorSourceTests.test_each_donor_is_native_canvas_and_source_mapping_is_explicit) ... /workspace/palata404-avatar-core/tests/test_female_donor_arms.py:18: ResourceWarning: unclosed file <_io.BufferedReader name='/workspace/palata404-avatar-core/review/female-donor-arm-pass/Sources/melee.png'>
+  path=O/'Sources'/(row['pose']+'.png');self.assertEqual(Image.open(path).size,(941,1672));self.assertEqual(hashlib.sha256(path.read_bytes()).hexdigest(),row['source_sha256']);self.assertEqual(row['source_registration'],{'scale':1,'x':0,'y':0})
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/workspace/palata404-avatar-core/tests/test_female_donor_arms.py:18: ResourceWarning: unclosed file <_io.BufferedReader name='/workspace/palata404-avatar-core/review/female-donor-arm-pass/Sources/pistol.png'>
+  path=O/'Sources'/(row['pose']+'.png');self.assertEqual(Image.open(path).size,(941,1672));self.assertEqual(hashlib.sha256(path.read_bytes()).hexdigest(),row['source_sha256']);self.assertEqual(row['source_registration'],{'scale':1,'x':0,'y':0})
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/workspace/palata404-avatar-core/tests/test_female_donor_arms.py:18: ResourceWarning: unclosed file <_io.BufferedReader name='/workspace/palata404-avatar-core/review/female-donor-arm-pass/Sources/rifle.png'>
+  path=O/'Sources'/(row['pose']+'.png');self.assertEqual(Image.open(path).size,(941,1672));self.assertEqual(hashlib.sha256(path.read_bytes()).hexdigest(),row['source_sha256']);self.assertEqual(row['source_registration'],{'scale':1,'x':0,'y':0})
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_export_is_reproducible_including_rig_without_regeneration (tests.test_female_donor_arms.FemaleDonorSourceTests.test_export_is_reproducible_including_rig_without_regeneration) ... ok
+test_mesh_covers_every_active_pixel_and_foreground_is_skin_only (tests.test_female_donor_arms.FemaleDonorSourceTests.test_mesh_covers_every_active_pixel_and_foreground_is_skin_only) ... ok
+test_sources_bases_game_and_legacy_assets_are_untouched (tests.test_female_donor_arms.FemaleDonorSourceTests.test_sources_bases_game_and_legacy_assets_are_untouched) ... ok
+
+======================================================================
+FAIL: test_idle_is_exact_base_and_four_poses_are_distinct (tests.test_female_donor_arms.FemaleDonorBrowserTests.test_idle_is_exact_base_and_four_poses_are_distinct)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/palata404-avatar-core/tests/test_female_donor_arms.py", line 44, in test_idle_is_exact_base_and_four_poses_are_distinct
+    self.pose('idle');a=self.c.image();base=np.array(Image.open(R/'base_female.png').convert('RGBA'));base[base[:,:,3]==0]=0;self.assertTrue(np.array_equal(a,base));hashes=set()
+                                                                                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true
+
+======================================================================
+FAIL: test_alpha_is_clean_and_all_arm_components_are_anatomically_connected (tests.test_female_donor_arms.FemaleDonorSourceTests.test_alpha_is_clean_and_all_arm_components_are_anatomically_connected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/palata404-avatar-core/tests/test_female_donor_arms.py", line 24, in test_alpha_is_clean_and_all_arm_components_are_anatomically_connected
+    solid=a[:,:,3]>=128;distance=ndi.distance_transform_edt(~solid);weak=(a[:,:,3]>0)&(a[:,:,3]<=16);self.assertTrue(np.all(distance[weak]<=2),(pose,side,'remote faint debris'))
+                                                                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: np.False_ is not true : ('melee', 'right', 'remote faint debris')
+
+----------------------------------------------------------------------
+Ran 10 tests in 30.233s
+
+FAILED (failures=2)

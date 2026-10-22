@@ -1,0 +1,12 @@
+idle head pixels 0 max 0
+idle torso pixels 0 max 0
+idle feet pixels 0 max 0
+melee head pixels 0 max 0
+melee torso pixels 0 max 0
+melee feet pixels 0 max 0
+pistol head pixels 0 max 0
+pistol torso pixels 1083 max 204
+pistol feet pixels 0 max 0
+rifle head pixels 0 max 0
+rifle torso pixels 0 max 0
+rifle feet pixels 0 max 0

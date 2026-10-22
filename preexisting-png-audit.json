@@ -1,0 +1,14 @@
+{
+  "criterion": "alpha1..16 farther than4px from alpha>=32, exact existing test",
+  "failures": [
+    {
+      "path": "base_male.png",
+      "current_remote_faint_pixels": 4234,
+      "baseline_77199cd_remote_faint_pixels": 4234,
+      "sha256": "b40a31b26dcf9aeea1dad02091228377330c9bb3af3a4b9669cfcc67247fc41d",
+      "baseline_sha256": "b40a31b26dcf9aeea1dad02091228377330c9bb3af3a4b9669cfcc67247fc41d",
+      "bytes_identical": true
+    }
+  ],
+  "originals_modified": false
+}

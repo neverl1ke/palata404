@@ -1,0 +1,7 @@
+test_female_cleanup_scope_and_male_protected_head_feet (tests.test_avatar_cleanup.CleanupBrowserTests.test_female_cleanup_scope_and_male_protected_head_feet) ... ok
+test_female_all_four_poses_preserve_original_head_torso_and_feet (tests.test_male_anatomy.MaleAnatomyBrowserTests.test_female_all_four_poses_preserve_original_head_torso_and_feet) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 25.719s
+
+OK

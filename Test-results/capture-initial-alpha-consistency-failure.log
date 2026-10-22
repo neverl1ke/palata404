@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/workspace/palata404-avatar-core/tools/capture-female-donor-pass.py", line 51, in <module>
+    check=p.evaluate('v=>{let e=avatarLab.engine,a=e.ctx.getImageData(0,0,941,1672).data,max=0,sum=0,n=0;for(let [i,c]of v[0])for(let k=0;k<3;k++){let expected=c[k]*c[3]/255+v[1][k]*(1-c[3]/255),d=Math.abs(a[i*4+k]-expected);max=Math.max(max,d);sum+=d;n++}return{samples:v[0].length,max_error:max,mean_error:sum/Math.max(n,1)}}',[edge_templates[key],bg]);assert check['max_error']<=4,(key,color,check);alpha_checks.append({'gender':gender,'pose':pose,'visible':visible,'background':color,**check})
+                                                                                                                                                                                                                                                                                                                                                                          ^^^^^^^^^^^^^^^^^^^^^
+AssertionError: (('male', 'melee', True), '#fff', {'samples': 200, 'max_error': 7, 'mean_error': 0.15237254901960776})

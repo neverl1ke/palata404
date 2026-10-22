@@ -1,0 +1,15 @@
+test_all_endpoint_cuts_have_no_crossfade_or_stale_previous_pose (tests.test_female_donor_arms.FemaleDonorBrowserTests.test_all_endpoint_cuts_have_no_crossfade_or_stale_previous_pose) ... ok
+test_donor_joints_match_independent_measured_windows_and_one_hand_pistol (tests.test_female_donor_arms.FemaleDonorBrowserTests.test_donor_joints_match_independent_measured_windows_and_one_hand_pistol) ... ok
+test_full_cycles_preserve_neck_contact_loop_and_stationary_head_feet (tests.test_female_donor_arms.FemaleDonorBrowserTests.test_full_cycles_preserve_neck_contact_loop_and_stationary_head_feet) ... ok
+test_idle_is_exact_base_and_four_poses_are_distinct (tests.test_female_donor_arms.FemaleDonorBrowserTests.test_idle_is_exact_base_and_four_poses_are_distinct) ... ok
+test_three_visible_props_exist_and_hide_preserves_anatomy_time (tests.test_female_donor_arms.FemaleDonorBrowserTests.test_three_visible_props_exist_and_hide_preserves_anatomy_time) ... ok
+test_alpha_is_clean_and_all_arm_components_are_anatomically_connected (tests.test_female_donor_arms.FemaleDonorSourceTests.test_alpha_is_clean_and_all_arm_components_are_anatomically_connected) ... ok
+test_each_donor_is_native_canvas_and_source_mapping_is_explicit (tests.test_female_donor_arms.FemaleDonorSourceTests.test_each_donor_is_native_canvas_and_source_mapping_is_explicit) ... ok
+test_export_is_reproducible_including_rig_without_regeneration (tests.test_female_donor_arms.FemaleDonorSourceTests.test_export_is_reproducible_including_rig_without_regeneration) ... ok
+test_mesh_covers_every_active_pixel_and_foreground_is_skin_only (tests.test_female_donor_arms.FemaleDonorSourceTests.test_mesh_covers_every_active_pixel_and_foreground_is_skin_only) ... ok
+test_sources_bases_game_and_legacy_assets_are_untouched (tests.test_female_donor_arms.FemaleDonorSourceTests.test_sources_bases_game_and_legacy_assets_are_untouched) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 35.040s
+
+OK

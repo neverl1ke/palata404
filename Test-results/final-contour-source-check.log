@@ -1,0 +1,8 @@
+test_alpha_is_clean_and_all_arm_components_are_anatomically_connected (tests.test_female_donor_arms.FemaleDonorSourceTests.test_alpha_is_clean_and_all_arm_components_are_anatomically_connected) ... ok
+test_existing_opaque_finger_colours_are_preserved (tests.test_arm_contour_cleanup.ArmContourSourceTests.test_existing_opaque_finger_colours_are_preserved) ... ok
+test_whole_reference_contact_surfaces_conserve_native_opaque_coverage (tests.test_contact_surfaces.ContactSurfaceSourceTests.test_whole_reference_contact_surfaces_conserve_native_opaque_coverage) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 1.597s
+
+OK

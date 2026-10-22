@@ -1,0 +1,12 @@
+test_existing_opaque_finger_colours_are_preserved (tests.test_arm_contour_cleanup.ArmContourSourceTests.test_existing_opaque_finger_colours_are_preserved) ... ok
+test_whole_reference_contact_surfaces_conserve_native_opaque_coverage (tests.test_contact_surfaces.ContactSurfaceSourceTests.test_whole_reference_contact_surfaces_conserve_native_opaque_coverage) ... ok
+test_alpha_is_clean_and_all_arm_components_are_anatomically_connected (tests.test_female_donor_arms.FemaleDonorSourceTests.test_alpha_is_clean_and_all_arm_components_are_anatomically_connected) ... ok
+test_each_donor_is_native_canvas_and_source_mapping_is_explicit (tests.test_female_donor_arms.FemaleDonorSourceTests.test_each_donor_is_native_canvas_and_source_mapping_is_explicit) ... ok
+test_export_is_reproducible_including_rig_without_regeneration (tests.test_female_donor_arms.FemaleDonorSourceTests.test_export_is_reproducible_including_rig_without_regeneration) ... ok
+test_mesh_covers_every_active_pixel_and_foreground_is_skin_only (tests.test_female_donor_arms.FemaleDonorSourceTests.test_mesh_covers_every_active_pixel_and_foreground_is_skin_only) ... ok
+test_sources_bases_game_and_legacy_assets_are_untouched (tests.test_female_donor_arms.FemaleDonorSourceTests.test_sources_bases_game_and_legacy_assets_are_untouched) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 20.008s
+
+OK

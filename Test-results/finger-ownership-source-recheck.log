@@ -1,0 +1,28 @@
+test_alpha_is_clean_and_all_arm_components_are_anatomically_connected (tests.test_female_donor_arms.FemaleDonorSourceTests.test_alpha_is_clean_and_all_arm_components_are_anatomically_connected) ... FAIL
+test_each_donor_is_native_canvas_and_source_mapping_is_explicit (tests.test_female_donor_arms.FemaleDonorSourceTests.test_each_donor_is_native_canvas_and_source_mapping_is_explicit) ... ok
+test_export_is_reproducible_including_rig_without_regeneration (tests.test_female_donor_arms.FemaleDonorSourceTests.test_export_is_reproducible_including_rig_without_regeneration) ... ok
+test_mesh_covers_every_active_pixel_and_foreground_is_skin_only (tests.test_female_donor_arms.FemaleDonorSourceTests.test_mesh_covers_every_active_pixel_and_foreground_is_skin_only) ... FAIL
+test_sources_bases_game_and_legacy_assets_are_untouched (tests.test_female_donor_arms.FemaleDonorSourceTests.test_sources_bases_game_and_legacy_assets_are_untouched) ... ok
+
+======================================================================
+FAIL: test_alpha_is_clean_and_all_arm_components_are_anatomically_connected (tests.test_female_donor_arms.FemaleDonorSourceTests.test_alpha_is_clean_and_all_arm_components_are_anatomically_connected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/palata404-avatar-core/tests/test_female_donor_arms.py", line 25, in test_alpha_is_clean_and_all_arm_components_are_anatomically_connected
+    a=np.array(Image.open(C/art['image']));self.assertEqual(a.shape,(1672,941,4));self.assertTrue(np.all(a[a[:,:,3]==0]==0));labels,n=ndi.label(a[:,:,3]>=128);areas=np.bincount(labels.ravel());self.assertEqual(sum(areas[1:]>=8),1,(pose,side,'detached digit/wrist'))
+                                                                                                                                                                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: np.int64(2) != 1 : ('rifle', 'right', 'detached digit/wrist')
+
+======================================================================
+FAIL: test_mesh_covers_every_active_pixel_and_foreground_is_skin_only (tests.test_female_donor_arms.FemaleDonorSourceTests.test_mesh_covers_every_active_pixel_and_foreground_is_skin_only)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/palata404-avatar-core/tests/test_female_donor_arms.py", line 40, in test_mesh_covers_every_active_pixel_and_foreground_is_skin_only
+    if prop[y,x,3]>128:self.assertGreater(int(np.abs(prop[y,x,:3].astype(int)-src[y,x,:3].astype(int)).max()),12,(pose,x,y,'source finger baked into weapon'))
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 not greater than 12 : ('rifle', 383, 605, 'source finger baked into weapon')
+
+----------------------------------------------------------------------
+Ran 5 tests in 14.851s
+
+FAILED (failures=2)

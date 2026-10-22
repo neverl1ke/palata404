@@ -1,0 +1,131 @@
+test_live_canvas_preserves_full_forearm_bicep_and_elbow_spans (tests.test_arm_contour_cleanup.ArmContourBrowserTests.test_live_canvas_preserves_full_forearm_bicep_and_elbow_spans) ... ok
+test_independent_reference_cross_sections_are_not_cut (tests.test_arm_contour_cleanup.ArmContourSourceTests.test_independent_reference_cross_sections_are_not_cut) ... ok
+test_original_character_engine_config_and_anchors_unchanged (tests.test_arm_contour_cleanup.ArmContourSourceTests.test_original_character_engine_config_and_anchors_unchanged) ... ok
+test_shoulder_surface_is_local_continuous_and_never_changes_skeleton (tests.test_avatar_cleanup.CleanupBrowserTests.test_shoulder_surface_is_local_continuous_and_never_changes_skeleton) ... ok
+test_all_current_faces_four_poses_and_shared_hair_palette (tests.test_avatar_core.AvatarCoreBrowserTests.test_all_current_faces_four_poses_and_shared_hair_palette) ... ok
+test_binding_api_sleeves_follow_each_rig_and_can_be_removed (tests.test_avatar_core.AvatarCoreBrowserTests.test_binding_api_sleeves_follow_each_rig_and_can_be_removed) ... ok
+test_hidden_tab_stops_and_resume_does_not_catch_up_hidden_time (tests.test_avatar_core.AvatarCoreBrowserTests.test_hidden_tab_stops_and_resume_does_not_catch_up_hidden_time) ... ok
+test_mobile_and_high_dpi_layout (tests.test_avatar_core.AvatarCoreBrowserTests.test_mobile_and_high_dpi_layout) ... ok
+test_rapid_gender_switch_is_atomic_and_image_cache_bounded (tests.test_avatar_core.AvatarCoreBrowserTests.test_rapid_gender_switch_is_atomic_and_image_cache_bounded) ... ok
+test_nine_disjoint_source_partitions_reconstruct_every_visible_pixel (tests.test_avatar_core.AvatarCoreSourceTests.test_nine_disjoint_source_partitions_reconstruct_every_visible_pixel) ... ok
+test_cached_skin_preserves_the_uncached_paint_order (tests.test_avatar_polish.PolishBrowserTests.test_cached_skin_preserves_the_uncached_paint_order) ... ok
+test_wrist_retouch_is_applied_only_inside_declared_source_band (tests.test_avatar_polish.PolishBrowserTests.test_wrist_retouch_is_applied_only_inside_declared_source_band)
+Runtime A/B, not a comparison against newly approved image hashes. ... ok
+test_actual_canvas_has_no_contact_surface_holes (tests.test_contact_surfaces.ContactSurfaceBrowserTests.test_actual_canvas_has_no_contact_surface_holes) ... ok
+test_restored_visible_object_pixels_keep_the_supplied_reference_rgb (tests.test_contact_surfaces.ContactSurfaceBrowserTests.test_restored_visible_object_pixels_keep_the_supplied_reference_rgb) ... ok
+test_contact_probes_detect_actual_missing_surfaces_in_returned_package (tests.test_contact_surfaces.ContactSurfaceSourceTests.test_contact_probes_detect_actual_missing_surfaces_in_returned_package) ... ok
+test_harmonization_is_confined_to_shared_shoulder_not_folded_forearm (tests.test_contact_surfaces.ContactSurfaceSourceTests.test_harmonization_is_confined_to_shared_shoulder_not_folded_forearm) ... ok
+test_archived_a6_runtime_changes_only_surfaces_and_the_new_male_knife (tests.test_exact_reference_pass.ExactReferenceTests.test_archived_a6_runtime_changes_only_surfaces_and_the_new_male_knife) ... ok
+test_every_original_png_and_rig_is_unchanged (tests.test_exact_reference_pass.ExactReferenceTests.test_every_original_png_and_rig_is_unchanged) ... ok
+test_all_necks_have_single_rim_and_restore_the_actual_new_body (tests.test_female_base_replacement.FemaleBaseReplacementTests.test_all_necks_have_single_rim_and_restore_the_actual_new_body) ... ok
+test_supplied_original_and_all_non_noise_pixels_are_preserved (tests.test_female_base_replacement.FemaleBaseReplacementTests.test_supplied_original_and_all_non_noise_pixels_are_preserved) ... ok
+test_full_cycles_preserve_neck_contact_loop_and_stationary_head_feet (tests.test_female_donor_arms.FemaleDonorBrowserTests.test_full_cycles_preserve_neck_contact_loop_and_stationary_head_feet) ... ok
+test_alpha_is_clean_and_all_arm_components_are_anatomically_connected (tests.test_female_donor_arms.FemaleDonorSourceTests.test_alpha_is_clean_and_all_arm_components_are_anatomically_connected) ... ok
+test_sources_bases_game_and_legacy_assets_are_untouched (tests.test_female_donor_arms.FemaleDonorSourceTests.test_sources_bases_game_and_legacy_assets_are_untouched) ... ok
+test_complementary_masks_have_no_old_skull_holes_or_body_changes (tests.test_female_faces.FemaleFacesAssetTests.test_complementary_masks_have_no_old_skull_holes_or_body_changes) ... ok
+test_eight_female_choices_and_reload_preserve_each_appearance_and_loadout (tests.test_female_faces.FemaleFacesBrowserTests.test_eight_female_choices_and_reload_preserve_each_appearance_and_loadout) ... ----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 52878)
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 52830)
+Traceback (most recent call last):
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/http/server.py", line 676, in __init__
+    super().__init__(*args, **kwargs)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/socketserver.py", line 766, in __init__
+    self.handle()
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/http/server.py", line 440, in handle
+    self.handle_one_request()
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/http/server.py", line 428, in handle_one_request
+    method()
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/http/server.py", line 683, in do_GET
+    self.copyfile(f, self.wfile)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/http/server.py", line 882, in copyfile
+    shutil.copyfileobj(source, outputfile)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/shutil.py", line 204, in copyfileobj
+    fdst_write(buf)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/socketserver.py", line 845, in write
+    self._sock.sendall(b)
+BrokenPipeError: [Errno 32] Broken pipe
+----------------------------------------
+Traceback (most recent call last):
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/http/server.py", line 676, in __init__
+    super().__init__(*args, **kwargs)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/socketserver.py", line 766, in __init__
+    self.handle()
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/http/server.py", line 440, in handle
+    self.handle_one_request()
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/http/server.py", line 428, in handle_one_request
+    method()
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/http/server.py", line 683, in do_GET
+    self.copyfile(f, self.wfile)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/http/server.py", line 882, in copyfile
+    shutil.copyfileobj(source, outputfile)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/shutil.py", line 204, in copyfileobj
+    fdst_write(buf)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/socketserver.py", line 845, in write
+    self._sock.sendall(b)
+BrokenPipeError: [Errno 32] Broken pipe
+----------------------------------------
+ok
+test_mobile_last_face_is_selectable_and_patient_trip_outfits_survive (tests.test_female_faces.FemaleFacesBrowserTests.test_mobile_last_face_is_selectable_and_patient_trip_outfits_survive) ... ok
+test_neck_detector_rejects_the_real_pre_fix_regression (tests.test_female_faces_independent.IndependentFemaleFaceTests.test_neck_detector_rejects_the_real_pre_fix_regression) ... ok
+test_long_waves_enclose_ear_span_on_every_registered_head (tests.test_female_five_hairstyles.FemaleEarFitTests.test_long_waves_enclose_ear_span_on_every_registered_head) ... ok
+test_every_palette_color_preserves_alpha_and_is_exercised_on_every_head (tests.test_female_five_hairstyles.FemaleFitAuditTests.test_every_palette_color_preserves_alpha_and_is_exercised_on_every_head) ... ok
+test_user_approved_pixie_and_jaw_bob_are_byte_identical_to_pre_ear_pass (tests.test_female_five_hairstyles.FemaleFitAuditTests.test_user_approved_pixie_and_jaw_bob_are_byte_identical_to_pre_ear_pass) ... ok
+test_existing_catalog_renderer_and_art_preserved (tests.test_female_five_hairstyles.FiveFemaleHairstyleTests.test_existing_catalog_renderer_and_art_preserved) ... ok
+test_all_seventeen_catalog_resources_and_cache_hashes_are_registered (tests.test_female_head_standard.FemaleStandardAssetTests.test_all_seventeen_catalog_resources_and_cache_hashes_are_registered) ... ok
+test_no_detached_weak_alpha_or_remote_faint_pixels_in_new_derivatives (tests.test_female_head_standard.FemaleStandardAssetTests.test_no_detached_weak_alpha_or_remote_faint_pixels_in_new_derivatives) ... ok
+test_template_matches_actual_unchanged_reference (tests.test_female_head_standard.FemaleStandardAssetTests.test_template_matches_actual_unchanged_reference) ... ok
+test_native_head_is_rendered_but_stays_null_in_saves_and_clears_on_male (tests.test_female_head_standard.FemaleStandardBrowserTests.test_native_head_is_rendered_but_stays_null_in_saves_and_clears_on_male) ... ok
+test_approved_tunic_composite_matches_supplied_overlay_reference_in_both_views (tests.test_game.GameTests.test_approved_tunic_composite_matches_supplied_overlay_reference_in_both_views) ... ok
+test_asian_heads_real_css_order_hair_compatibility_and_reload (tests.test_game.GameTests.test_asian_heads_real_css_order_hair_compatibility_and_reload) ... ok
+test_compact_victory_actions_and_report_reopening_do_not_pay_again (tests.test_game.GameTests.test_compact_victory_actions_and_report_reopening_do_not_pay_again) ... ok
+test_corrupt_saves_and_denied_storage_do_not_break_boot (tests.test_game.GameTests.test_corrupt_saves_and_denied_storage_do_not_break_boot) ... ok
+test_equipment_swap_reload_and_legacy_training_bonus (tests.test_game.GameTests.test_equipment_swap_reload_and_legacy_training_bonus) ... ok
+test_folder_hud_navigation_active_tabs_and_mobile_bounds (tests.test_game.GameTests.test_folder_hud_navigation_active_tabs_and_mobile_bounds) ... ok
+test_gym_energy_psychosis_and_dossier_refresh (tests.test_game.GameTests.test_gym_energy_psychosis_and_dossier_refresh) ... ok
+test_helper_mvp_and_long_report_remain_accessible_in_compact_view (tests.test_game.GameTests.test_helper_mvp_and_long_report_remain_accessible_in_compact_view) ... ok
+test_local_icons_render_in_static_and_dynamic_views (tests.test_game.GameTests.test_local_icons_render_in_static_and_dynamic_views) ... ok
+test_neck_join_does_not_add_transparency_on_four_backgrounds_and_leaves_the_body_intact (tests.test_game.GameTests.test_neck_join_does_not_add_transparency_on_four_backgrounds_and_leaves_the_body_intact) ... ok
+test_paper_doll_missing_png_falls_back_or_hides_without_broken_images (tests.test_game.GameTests.test_paper_doll_missing_png_falls_back_or_hides_without_broken_images) ... ok
+test_patient_shirt_art_preview_uses_unchanged_bases_and_preserves_game_saves (tests.test_game.GameTests.test_patient_shirt_art_preview_uses_unchanged_bases_and_preserves_game_saves) ... ok
+test_patient_tunic_starter_and_independent_loadouts_survive_equip_unequip_reload (tests.test_game.GameTests.test_patient_tunic_starter_and_independent_loadouts_survive_equip_unequip_reload) ... ok
+test_raid_archive_hud_snapshots_and_clear_confirmation (tests.test_game.GameTests.test_raid_archive_hud_snapshots_and_clear_confirmation) ... ok
+test_registration_room_identity_modes_monitor_and_mobile_geometry (tests.test_game.GameTests.test_registration_room_identity_modes_monitor_and_mobile_geometry) ... ok
+test_staff_archive_unknown_cases_first_contact_and_details (tests.test_game.GameTests.test_staff_archive_unknown_cases_first_contact_and_details) ... ok
+test_staff_journal_documents_and_reward_cards_are_read_only_and_responsive (tests.test_game.GameTests.test_staff_journal_documents_and_reward_cards_are_read_only_and_responsive) ... ok
+test_trial_faces_are_not_loaded_or_selectable_after_old_save_migration (tests.test_game.GameTests.test_trial_faces_are_not_loaded_or_selectable_after_old_save_migration) ... ok
+test_victory_protocol_mobile_scroll_and_controls (tests.test_game.GameTests.test_victory_protocol_mobile_scroll_and_controls) ... ok
+test_wardrobe_inventory_ownership_and_old_appearance_migration (tests.test_game.GameTests.test_wardrobe_inventory_ownership_and_old_appearance_migration) ... ok
+test_wardrobe_v3_has_a_large_stage_compact_gender_switch_and_independent_inspection (tests.test_game.GameTests.test_wardrobe_v3_has_a_large_stage_compact_gender_switch_and_independent_inspection) ... node:events:487
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: write EPIPE
+    at afterWriteDispatched (node:internal/stream_base_commons:159:15)
+    at writeGeneric (node:internal/stream_base_commons:150:3)
+    at Socket._writeGeneric (node:net:1171:11)
+    at Socket._write (node:net:1183:8)
+    at writeOrBuffer (node:internal/streams/writable:570:12)
+    at _write (node:internal/streams/writable:499:10)
+    at Writable.write (node:internal/streams/writable:508:10)
+    at PipeTransport.send (/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/driver/package/lib/coreBundle.js:34569:25)
+    at dispatcherConnection.onmessage (/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/driver/package/lib/coreBundle.js:69266:59)
+    at DispatcherConnection.dispatch (/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/driver/package/lib/coreBundle.js:18804:14)
+Emitted 'error' event on Socket instance at:
+    at emitErrorNT (node:internal/streams/destroy:170:8)
+    at emitErrorCloseNT (node:internal/streams/destroy:129:3)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+  errno: -32,
+  code: 'EPIPE',
+  syscall: 'write'
+}
+
+Node.js v24.19.0

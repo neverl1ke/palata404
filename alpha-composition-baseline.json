@@ -1,0 +1,58 @@
+{
+  "same_case": "male melee, 100%, t0, 200 sampled alpha-edge pixels, white background",
+  "results": [
+    {
+      "runtime": "77199cd",
+      "samples": 200,
+      "max_error": 7,
+      "mean_error": 0.15237254901960773,
+      "worst": {
+        "x": 769,
+        "y": 983,
+        "channel": 2,
+        "transparent": [
+          28,
+          28,
+          0,
+          9
+        ],
+        "white": [
+          247,
+          247,
+          239,
+          255
+        ],
+        "expected": 246
+      },
+      "criterion_max_error": 4,
+      "passed": false
+    },
+    {
+      "runtime": "current",
+      "samples": 200,
+      "max_error": 0.41568627450982376,
+      "mean_error": 0.05861437908496702,
+      "worst": {
+        "x": 379,
+        "y": 1602,
+        "channel": 0,
+        "transparent": [
+          74,
+          41,
+          28,
+          226
+        ],
+        "white": [
+          95,
+          65,
+          54,
+          255
+        ],
+        "expected": 94.58431372549018
+      },
+      "criterion_max_error": 4,
+      "passed": true
+    }
+  ],
+  "note": "Diagnostic failure is retained, not hidden by a higher tolerance. Numeric difference alone is not proof of a visible halo."
+}
