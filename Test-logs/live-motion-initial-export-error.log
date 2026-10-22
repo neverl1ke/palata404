@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/workspace/palata404-avatar-core/tools/record-independent-motion.py", line 41, in <module>
+    sheet.save(G/(path.stem+'-all-decoded-frames.webp'),lossless=True);result['all_decoded_frames']=len(decoded);result['decoded_crop_world']=box
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/PIL/Image.py", line 2711, in save
+    save_handler(self, fp, filename)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/PIL/WebPImagePlugin.py", line 299, in _save
+    data = _webp.WebPEncode(
+           ^^^^^^^^^^^^^^^^^
+ValueError: encoding error 5: Image size exceeds WebP limit of 16383 pixels

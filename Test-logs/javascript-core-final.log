@@ -1,0 +1,30 @@
+✔ male rest skeleton retains shoulder/elbow/wrist/grip source registration (5.993054ms)
+✔ male four poses use fixed bone lengths, independent hand rotations and exact primary attachment (0.991617ms)
+✔ male support grip stays on the rifle through a full breathing cycle (5.545389ms)
+✔ male skin weights are bounded and final hand texture shares weapon attachment (8.563488ms)
+✔ female rest skeleton retains shoulder/elbow/wrist/grip source registration (0.214031ms)
+✔ female four poses use fixed bone lengths, independent hand rotations and exact primary attachment (0.17809ms)
+✔ female support grip stays on the rifle through a full breathing cycle (35.114334ms)
+✔ female skin weights are bounded and final hand texture shares weapon attachment (1.107242ms)
+✔ female and male coordinates are independently registered, not a reused rig (29.893846ms)
+✔ angle interpolation follows shortest rotation and endpoint continuity (0.41579ms)
+✔ unreachable/degenerate targets are finite and explicitly marked (27.362128ms)
+✔ weapon controller supports none and rejects unknown classes (39.689737ms)
+✔ rifle/right: inverse binds preserve every authored UV at rest (57.44146ms)
+✔ rifle/right: artwork has modular joint anchors and bounded skin weights (21.403599ms)
+✔ rifle/left: inverse binds preserve every authored UV at rest (1.581236ms)
+✔ rifle/left: artwork has modular joint anchors and bounded skin weights (15.135142ms)
+✔ pistol/right: inverse binds preserve every authored UV at rest (1.256839ms)
+✔ pistol/right: artwork has modular joint anchors and bounded skin weights (2.061254ms)
+✔ melee/right: inverse binds preserve every authored UV at rest (34.108212ms)
+✔ melee/right: artwork has modular joint anchors and bounded skin weights (1.254459ms)
+✔ foreshortening changes projection, not source skeleton or transverse width (7.138867ms)
+✔ canonical male pistol is unilateral and all legacy variants resolve to it (0.773374ms)
+ℹ tests 22
+ℹ suites 0
+ℹ pass 22
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 643.754372

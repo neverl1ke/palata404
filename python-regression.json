@@ -1,0 +1,47 @@
+{
+  "python_total": 103,
+  "passed": 103,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "modules": [
+    "test_avatar_core",
+    "test_avatar_polish",
+    "test_avatar_cleanup",
+    "test_male_anatomy",
+    "test_weapon_pass",
+    "test_male_lobby",
+    "test_grip_pass",
+    "test_exact_reference_pass",
+    "test_male_hand_kit",
+    "test_reference_arm_art",
+    "test_arm_contour_cleanup",
+    "test_contact_surfaces",
+    "test_independent_anatomy"
+  ],
+  "mode": "Full 102/103 plus targeted 1/1 after correcting stale melee probe coordinates; runtime unchanged",
+  "historical_full_run": {
+    "passed": 102,
+    "total": 103,
+    "failures": 1,
+    "log": "python-regression-final.log"
+  },
+  "targeted_followup": {
+    "passed": 1,
+    "total": 1,
+    "log": "coordinate-probe-recheck.log",
+    "test": "test_restored_visible_object_pixels_keep_the_supplied_reference_rgb (tests.test_contact_surfaces.ContactSurfaceBrowserTests.test_restored_visible_object_pixels_keep_the_supplied_reference_rgb)"
+  },
+  "resolved_failure_details": [
+    {
+      "test": "test_restored_visible_object_pixels_keep_the_supplied_reference_rgb (tests.test_contact_surfaces.ContactSurfaceBrowserTests.test_restored_visible_object_pixels_keep_the_supplied_reference_rgb)",
+      "trace": "Traceback (most recent call last):\n  File \"/workspace/palata404-avatar-core/tests/test_contact_surfaces.py\", line 77, in test_restored_visible_object_pixels_keep_the_supplied_reference_rgb\n    for x,y in points:self.assertLessEqual(int(np.abs(a[y+26,x+10,:3].astype(int)-src[y,x,:3].astype(int)).max()),12,(pose,x,y,'must restore real material, not arbitrary opaque filler'))\n                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: 160 not less than or equal to 12 : ('melee', 218, 847, 'must restore real material, not arbitrary opaque filler')\n"
+    }
+  ],
+  "post_final_contour": {
+    "passed": 36,
+    "total": 36,
+    "log": "post-contour-targeted.log",
+    "scope": "final wrist contour, contact surfaces, source protection, ownership, reproducibility and new runtime controls"
+  }
+}

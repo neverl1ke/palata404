@@ -1,0 +1,96 @@
+{
+  "python_total": 103,
+  "passed": 85,
+  "failures": 18,
+  "errors": 0,
+  "skipped": 0,
+  "modules": [
+    "test_avatar_core",
+    "test_avatar_polish",
+    "test_avatar_cleanup",
+    "test_male_anatomy",
+    "test_weapon_pass",
+    "test_male_lobby",
+    "test_grip_pass",
+    "test_exact_reference_pass",
+    "test_male_hand_kit",
+    "test_reference_arm_art",
+    "test_arm_contour_cleanup",
+    "test_contact_surfaces",
+    "test_independent_anatomy"
+  ],
+  "failure_details": [
+    {
+      "test": "test_supported_pistol_and_combat_wrists_do_not_fold_backwards (tests.test_avatar_polish.PolishBrowserTests.test_supported_pistol_and_combat_wrists_do_not_fold_backwards)",
+      "trace": "Traceback (most recent call last):\n  File \"/workspace/palata404-avatar-core/tests/test_avatar_polish.py\", line 167, in test_supported_pistol_and_combat_wrists_do_not_fold_backwards\n    self.assertTrue(310<=x<=335 and 1010<=y<=1045,(x,y,'registered source tip'))\nAssertionError: np.False_ is not true : (np.int64(336), np.int64(1056), 'registered source tip')\n"
+    },
+    {
+      "test": "test_every_prototype_png_is_still_byte_identical (tests.test_avatar_polish.PolishSourceTests.test_every_prototype_png_is_still_byte_identical)",
+      "trace": "Traceback (most recent call last):\n  File \"/workspace/palata404-avatar-core/tests/test_avatar_polish.py\", line 18, in test_every_prototype_png_is_still_byte_identical\n    self.assertEqual(hashlib.sha1(('blob '+str(len(b))+'\\0').encode()+b).hexdigest(),meta.split()[2],name)\nAssertionError: 'b5884ecbdbbb92fe469ce03791801b18f4f5aabd' != '6a7c8ddfdf42f4751fee07277222479123eaf45e'\n- b5884ecbdbbb92fe469ce03791801b18f4f5aabd\n+ 6a7c8ddfdf42f4751fee07277222479123eaf45e\n : avatar-core/assets/male/leftArmSkin.png\n"
+    },
+    {
+      "test": "test_registration_is_reproducible_without_moving_sources (tests.test_avatar_polish.PolishSourceTests.test_registration_is_reproducible_without_moving_sources)",
+      "trace": "Traceback (most recent call last):\n  File \"/workspace/palata404-avatar-core/tests/test_avatar_polish.py\", line 58, in test_registration_is_reproducible_without_moving_sources\n    self.assertEqual(before,{p:hashlib.sha256(p.read_bytes()).hexdigest() for p in paths})\nAssertionError: {Posi[8668 chars]'): '7672888bb59cfbec3cca3dcc7be824bda4390450b[9147 chars]263'} != {Posi[8668 chars]'): '18a8cdd1208ce0655b2eb63de5a30dc89ed2d4e8c[9147 chars]263'}\nDiff is 18540 characters long. Set self.maxDiff to None to see it.\n"
+    },
+    {
+      "test": "test_all_65_precleanup_pngs_are_byte_identical (tests.test_avatar_cleanup.CleanupSourceTests.test_all_65_precleanup_pngs_are_byte_identical)",
+      "trace": "Traceback (most recent call last):\n  File \"/workspace/palata404-avatar-core/tests/test_avatar_cleanup.py\", line 18, in test_all_65_precleanup_pngs_are_byte_identical\n    self.assertEqual(actual,meta.split()[2],name);checked+=1\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: 'b5884ecbdbbb92fe469ce03791801b18f4f5aabd' != '6a7c8ddfdf42f4751fee07277222479123eaf45e'\n- b5884ecbdbbb92fe469ce03791801b18f4f5aabd\n+ 6a7c8ddfdf42f4751fee07277222479123eaf45e\n : avatar-core/assets/male/hands/left-arm-source.png\n"
+    },
+    {
+      "test": "test_art_has_no_gray_weapon_or_background_pixels (tests.test_male_anatomy.MaleAnatomySourceTests.test_art_has_no_gray_weapon_or_background_pixels)",
+      "trace": "Traceback (most recent call last):\n  File \"/workspace/palata404-avatar-core/tests/test_male_anatomy.py\", line 24, in test_art_has_no_gray_weapon_or_background_pixels\n    assert_reference_cold_pixels_have_known_provenance(self,a,path)\n  File \"/workspace/palata404-avatar-core/tests/test_reference_arm_art.py\", line 18, in assert_reference_cold_pixels_have_known_provenance\n    case.assertTrue(np.all(known[cold]),(path,'unexplained opaque cold pixel'));case.assertTrue(np.all(a[a[:,:,3]==0]==0),path)\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: np.False_ is not true : ('assets/male/reference-art/rifle-right-arm.png', 'unexplained opaque cold pixel')\n"
+    },
+    {
+      "test": "test_originals_and_female_rig_are_byte_identical_to_cleanup (tests.test_male_anatomy.MaleAnatomySourceTests.test_originals_and_female_rig_are_byte_identical_to_cleanup)",
+      "trace": "Traceback (most recent call last):\n  File \"/workspace/palata404-avatar-core/tests/test_male_anatomy.py\", line 15, in test_originals_and_female_rig_are_byte_identical_to_cleanup\n    self.assertEqual((ROOT/path).read_bytes(),subprocess.check_output(['git','show','90904dd:'+path],cwd=ROOT),path)\nAssertionError: b'\\x8[188215 chars]00\\xaaoIDAT\\xf2\\xd3\\xba\\xad\\x08\\x96\\xd5\\xcf/m\\[125376 chars]\\x82' != b'\\x8[188215 chars]00\\xaeuIDAT\\xf2\\xd3\\xba\\xad\\x08\\x96\\xd5\\xcf/m\\[128319 chars]\\x82' : avatar-core/assets/male/hands/left-arm-source.png\n"
+    },
+    {
+      "test": "test_original_pngs_female_rig_and_shared_weapons_are_unchanged (tests.test_weapon_pass.WeaponPassSourceTests.test_original_pngs_female_rig_and_shared_weapons_are_unchanged)",
+      "trace": "Traceback (most recent call last):\n  File \"/workspace/palata404-avatar-core/tests/test_weapon_pass.py\", line 12, in test_original_pngs_female_rig_and_shared_weapons_are_unchanged\n    for path in paths:self.assertEqual((ROOT/path).read_bytes(),subprocess.check_output(['git','show','e549901:'+path],cwd=ROOT),path)\n                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: b'\\x8[188215 chars]00\\xaaoIDAT\\xf2\\xd3\\xba\\xad\\x08\\x96\\xd5\\xcf/m\\[125376 chars]\\x82' != b'\\x8[188215 chars]00\\xaeuIDAT\\xf2\\xd3\\xba\\xad\\x08\\x96\\xd5\\xcf/m\\[128319 chars]\\x82' : avatar-core/assets/male/hands/left-arm-source.png\n"
+    },
+    {
+      "test": "test_new_arm_pixels_are_warm_skin_not_the_gray_guide_or_full_avatar (tests.test_male_lobby.LobbySourceTests.test_new_arm_pixels_are_warm_skin_not_the_gray_guide_or_full_avatar)",
+      "trace": "Traceback (most recent call last):\n  File \"/workspace/palata404-avatar-core/tests/test_male_lobby.py\", line 20, in test_new_arm_pixels_are_warm_skin_not_the_gray_guide_or_full_avatar\n    assert_reference_cold_pixels_have_known_provenance(self,a,path)\n  File \"/workspace/palata404-avatar-core/tests/test_reference_arm_art.py\", line 18, in assert_reference_cold_pixels_have_known_provenance\n    case.assertTrue(np.all(known[cold]),(path,'unexplained opaque cold pixel'));case.assertTrue(np.all(a[a[:,:,3]==0]==0),path)\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: np.False_ is not true : ('assets/male/reference-art/rifle-right-arm.png', 'unexplained opaque cold pixel')\n"
+    },
+    {
+      "test": "test_originals_old_art_female_and_animation_math_are_preserved (tests.test_male_lobby.LobbySourceTests.test_originals_old_art_female_and_animation_math_are_preserved)",
+      "trace": "Traceback (most recent call last):\n  File \"/workspace/palata404-avatar-core/tests/test_male_lobby.py\", line 11, in test_originals_old_art_female_and_animation_math_are_preserved\n    for name in names:self.assertEqual((ROOT/name).read_bytes(),subprocess.check_output(['git','show','469b973:'+name],cwd=ROOT),name)\n                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: b'\\x8[188215 chars]00\\xaaoIDAT\\xf2\\xd3\\xba\\xad\\x08\\x96\\xd5\\xcf/m\\[125376 chars]\\x82' != b'\\x8[188215 chars]00\\xaeuIDAT\\xf2\\xd3\\xba\\xad\\x08\\x96\\xd5\\xcf/m\\[128319 chars]\\x82' : avatar-core/assets/male/hands/left-arm-source.png\n"
+    },
+    {
+      "test": "test_every_prior_png_rig_and_pose_is_unchanged (tests.test_grip_pass.GripSourceTests.test_every_prior_png_rig_and_pose_is_unchanged)",
+      "trace": "Traceback (most recent call last):\n  File \"/workspace/palata404-avatar-core/tests/test_grip_pass.py\", line 12, in test_every_prior_png_rig_and_pose_is_unchanged\n    self.assertEqual(old_rig,new_rig,'only reference pose/art registrations are authorized')\nAssertionError: {'id'[2012 chars]6': 'c8dfcf69053098c81774709bcccea24c944d39cc9[194568 chars]ig.'} != {'id'[2012 chars]6': 'af253429a33f01920c844d2ce4747351d90959c4a[194543 chars]ig.'}\nDiff is 578766 characters long. Set self.maxDiff to None to see it. : only reference pose/art registrations are authorized\n"
+    },
+    {
+      "test": "test_every_original_png_and_rig_is_unchanged (tests.test_exact_reference_pass.ExactReferenceTests.test_every_original_png_and_rig_is_unchanged)",
+      "trace": "Traceback (most recent call last):\n  File \"/workspace/palata404-avatar-core/tests/test_exact_reference_pass.py\", line 13, in test_every_original_png_and_rig_is_unchanged\n    meta,path=line.split('\\t');data=(subprocess.check_output(['git','show','dd61b2d:'+path],cwd=ROOT) if path=='avatar-core/rigs/male_rig.json' else (ROOT/path).read_bytes());self.assertEqual(hashlib.sha1(('blob '+str(len(data))+'\\0').encode()+data).hexdigest(),meta.split()[2],path)\n                                                                                                                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: 'b5884ecbdbbb92fe469ce03791801b18f4f5aabd' != '6a7c8ddfdf42f4751fee07277222479123eaf45e'\n- b5884ecbdbbb92fe469ce03791801b18f4f5aabd\n+ 6a7c8ddfdf42f4751fee07277222479123eaf45e\n : avatar-core/assets/male/hands/left-arm-source.png\n"
+    },
+    {
+      "test": "test_actual_canvas_keeps_reference_fingertip_colors_and_separate_props (tests.test_reference_arm_art.ReferenceArmBrowserTests.test_actual_canvas_keeps_reference_fingertip_colors_and_separate_props)",
+      "trace": "Traceback (most recent call last):\n  File \"/workspace/palata404-avatar-core/tests/test_reference_arm_art.py\", line 85, in test_actual_canvas_keeps_reference_fingertip_colors_and_separate_props\n    delta=int(np.abs(actual[y+26,x+10,:3].astype(int)-source[y,x,:3]).max());self.assertLessEqual(delta,8,(pose,x,y,delta));metrics.append({'pose':pose,'source':[x,y],'render_rgb_max_error':delta})\n                                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: 37 not less than or equal to 8 : ('melee', 180, 830, 37)\n"
+    },
+    {
+      "test": "test_all_prior_pngs_engine_female_and_game_files_remain_unchanged (tests.test_reference_arm_art.ReferenceArmSourceTests.test_all_prior_pngs_engine_female_and_game_files_remain_unchanged)",
+      "trace": "Traceback (most recent call last):\n  File \"/workspace/palata404-avatar-core/tests/test_reference_arm_art.py\", line 27, in test_all_prior_pngs_engine_female_and_game_files_remain_unchanged\n    else:self.assertEqual((ROOT/name).read_bytes(),subprocess.check_output(['git','show','dd61b2d:'+name],cwd=ROOT),name)\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: b'\\x8[188215 chars]00\\xaaoIDAT\\xf2\\xd3\\xba\\xad\\x08\\x96\\xd5\\xcf/m\\[125376 chars]\\x82' != b'\\x8[188215 chars]00\\xaeuIDAT\\xf2\\xd3\\xba\\xad\\x08\\x96\\xd5\\xcf/m\\[128319 chars]\\x82' : avatar-core/assets/male/hands/left-arm-source.png\n"
+    },
+    {
+      "test": "test_live_canvas_preserves_full_forearm_bicep_and_elbow_spans (tests.test_arm_contour_cleanup.ArmContourBrowserTests.test_live_canvas_preserves_full_forearm_bicep_and_elbow_spans)",
+      "trace": "Traceback (most recent call last):\n  File \"/workspace/palata404-avatar-core/tests/test_arm_contour_cleanup.py\", line 73, in test_live_canvas_preserves_full_forearm_bicep_and_elbow_spans\n    for y,x0,x1 in rows:self.assertGreaterEqual(int(a[y+26,x0+10:x1+11,3].min()),235,(pose,side,y))\n                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: 0 not greater than or equal to 235 : ('melee', 'right', 520)\n"
+    },
+    {
+      "test": "test_restored_visible_object_pixels_keep_the_supplied_reference_rgb (tests.test_contact_surfaces.ContactSurfaceBrowserTests.test_restored_visible_object_pixels_keep_the_supplied_reference_rgb)",
+      "trace": "Traceback (most recent call last):\n  File \"/workspace/palata404-avatar-core/tests/test_contact_surfaces.py\", line 75, in test_restored_visible_object_pixels_keep_the_supplied_reference_rgb\n    for x,y in points:self.assertLessEqual(int(np.abs(a[y+26,x+10,:3].astype(int)-src[y,x,:3].astype(int)).max()),12,(pose,x,y,'must restore real material, not arbitrary opaque filler'))\n                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: 160 not less than or equal to 12 : ('melee', 218, 847, 'must restore real material, not arbitrary opaque filler')\n"
+    },
+    {
+      "test": "test_whole_contact_windows_have_no_runtime_background_leaks (tests.test_contact_surfaces.ContactSurfaceBrowserTests.test_whole_contact_windows_have_no_runtime_background_leaks)",
+      "trace": "Traceback (most recent call last):\n  File \"/workspace/palata404-avatar-core/tests/test_contact_surfaces.py\", line 70, in test_whole_contact_windows_have_no_runtime_background_leaks\n    self.p.evaluate('p=>avatarLab.engine.setPose(p)',pose);src=np.array(Image.open(ROOT/'review/male-reference-arm-art/Sources'/f'{pose}.png').convert('RGBA'));a=self.c.image();x0,y0,x1,y1=box;reference=src[y0:y1,x0:x1,3].astype(int);actual=a[y0+26:y1+26,x0+10:x1+10,3].astype(int);mask=reference>=240;missing=int((actual[mask]<reference[mask]-8).sum());rows.append({'pose':pose,'source_window':box,'source_opaque_pixels':int(mask.sum()),'missing_runtime_pixels':missing,'max_alpha_loss':int((reference-actual)[mask].max())});self.assertEqual(missing,0,pose)\n                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: 58 != 0 : rifle\n"
+    },
+    {
+      "test": "test_whole_reference_contact_surfaces_conserve_native_opaque_coverage (tests.test_contact_surfaces.ContactSurfaceSourceTests.test_whole_reference_contact_surfaces_conserve_native_opaque_coverage)",
+      "trace": "Traceback (most recent call last):\n  File \"/workspace/palata404-avatar-core/tests/test_contact_surfaces.py\", line 29, in test_whole_reference_contact_surfaces_conserve_native_opaque_coverage\n    self.assertTrue(np.all(actual[mask]>=reference[mask]-8),(pose,'source-opaque contact paint was cut out'))\nAssertionError: np.False_ is not true : ('rifle', 'source-opaque contact paint was cut out')\n"
+    },
+    {
+      "test": "test_local_repaint_process_is_deterministic (tests.test_independent_anatomy.IndependentSurfaceSourceTests.test_local_repaint_process_is_deterministic)",
+      "trace": "Traceback (most recent call last):\n  File \"/workspace/palata404-avatar-core/tests/test_independent_anatomy.py\", line 23, in test_local_repaint_process_is_deterministic\n    paths=[p for p in (CORE/'assets/male').rglob('*.png')]+[CORE/'rigs/male_rig.json'];digest=lambda:[hashlib.sha256(p.read_bytes()).hexdigest() for p in paths];before=digest();subprocess.run(['python','tools/prepare-independent-anatomy.py'],cwd=ROOT,check=True,capture_output=True);self.assertEqual(before,digest())\n                                                                                                                                                                                                                                                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Lists differ: ['50a[1828 chars]6', '18a8cdd1208ce0655b2eb63de5a30dc89ed2d4e8c[2196 chars]bd8'] != ['50a[1828 chars]6', '7672888bb59cfbec3cca3dcc7be824bda4390450b[2196 chars]bd8']\n\nFirst differing element 27:\n'18a8cdd1208ce0655b2eb63de5a30dc89ed2d4e8ce6b50f5f2864994724534c1'\n'7672888bb59cfbec3cca3dcc7be824bda4390450bd9af69df05d1601949f5ab4'\n\nDiff is 4402 characters long. Set self.maxDiff to None to see it.\n"
+    }
+  ]
+}

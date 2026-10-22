@@ -1,0 +1,7642 @@
+{
+  "recordings": [
+    {
+      "mime": "video/webm;codecs=vp9",
+      "samples": [
+        {
+          "pose": "idle",
+          "time": 0,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 33.26999999999998,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 216.56999999999994,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 349.87,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 449.9699999999999,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 566.57,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 666.57,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 766.4699999999999,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 883.2699999999999,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 966.57,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 1049.9699999999998,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 1133.2699999999998,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 1216.57,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 1299.87,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 1383.1699999999998,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 1449.8699999999997,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 1533.2699999999998,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 1599.8699999999997,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 1666.57,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 1749.8699999999997,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 1816.47,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 1883.1699999999998,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 1983.1699999999998,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 2133.17,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 2216.4700000000003,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 2283.17,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 2366.4700000000003,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 2416.4700000000003,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 2483.17,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 2549.77,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 2616.4700000000003,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 2683.17,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 2749.77,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 2849.77,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 2916.4700000000003,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 2999.77,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 3149.87,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 3266.4700000000003,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 3349.77,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 3449.7700000000004,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 3533.17,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 3616.4700000000003,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 3683.17,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 3766.4700000000003,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 3833.0699999999997,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 3899.7700000000004,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 3966.4700000000003,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 4066.37,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 4133.07,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 4216.37,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 4283.07,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        }
+      ],
+      "cycleMs": 4000,
+      "recordingKind": "actual runtime RAF canvas.captureStream, not assembled stills",
+      "path": "idle-visible-live-motion.webm",
+      "pose": "idle",
+      "visible": true,
+      "bytes": 163334,
+      "decode": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "width": 941,
+            "height": 1672,
+            "nb_read_frames": "26"
+          }
+        ],
+        "format": {
+          "duration": "4.146690"
+        }
+      },
+      "all_decoded_frames": 26,
+      "decoded_crop_world": [
+        125,
+        280,
+        925,
+        1060
+      ]
+    },
+    {
+      "mime": "video/webm;codecs=vp9",
+      "samples": [
+        {
+          "pose": "idle",
+          "time": 0,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 16.699999999999818,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 66.69999999999982,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 166.80000000000018,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 266.6999999999998,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 333.3000000000002,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 416.6999999999998,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 466.6999999999998,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 550,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 616.6999999999998,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 700,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 766.6999999999998,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 833.3000000000002,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 900,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 966.6999999999998,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 1033.3999999999996,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 1100,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 1166.6999999999998,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 1233.3000000000002,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 1316.6999999999998,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 1383.3000000000002,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 1450,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 1516.5999999999995,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 1583.3000000000002,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 1649.999999999999,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 1733.3000000000002,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 1799.999999999999,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 1883.4000000000005,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 1949.999999999999,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 2033.3000000000002,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 2099.999999999999,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 2166.7,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 2233.3,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 2316.5999999999995,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 2383.3,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 2466.5999999999995,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 2516.5999999999995,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 2599.999999999999,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 2666.5999999999995,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 2733.3,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 2799.9000000000005,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 2883.3,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 2949.999999999999,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 3016.5999999999995,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 3099.999999999999,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 3166.5999999999995,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 3233.3,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 3299.9000000000005,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 3366.5999999999995,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 3433.2,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 3516.5999999999995,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 3583.3,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 3649.9000000000005,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 3716.5999999999995,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 3799.9000000000005,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 3866.5999999999995,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 3933.2,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 3999.9000000000005,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 4066.499999999999,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 4149.900000000001,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 4216.499999999999,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 4299.900000000001,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        }
+      ],
+      "cycleMs": 4000,
+      "recordingKind": "actual runtime RAF canvas.captureStream, not assembled stills",
+      "path": "idle-hidden-live-motion.webm",
+      "pose": "idle",
+      "visible": false,
+      "bytes": 302338,
+      "decode": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "width": 941,
+            "height": 1672,
+            "nb_read_frames": "48"
+          }
+        ],
+        "format": {
+          "duration": "4.224701"
+        }
+      },
+      "all_decoded_frames": 48,
+      "decoded_crop_world": [
+        125,
+        280,
+        925,
+        1060
+      ]
+    },
+    {
+      "mime": "video/webm;codecs=vp9",
+      "samples": [
+        {
+          "pose": "rifle",
+          "time": 0,
+          "primaryError": 0,
+          "supportError": 1.1368683772161603e-13,
+          "pixels": [
+            [
+              105,
+              68,
+              51,
+              255
+            ],
+            [
+              130,
+              109,
+              102,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "rifle",
+          "time": 16.613999999999578,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              105,
+              68,
+              51,
+              255
+            ],
+            [
+              129,
+              108,
+              101,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "rifle",
+          "time": 66.61399999999958,
+          "primaryError": 0,
+          "supportError": 3.410605131648481e-13,
+          "pixels": [
+            [
+              105,
+              68,
+              51,
+              255
+            ],
+            [
+              127,
+              106,
+              99,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "rifle",
+          "time": 133.3140000000003,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              104,
+              68,
+              51,
+              255
+            ],
+            [
+              124,
+              104,
+              97,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "rifle",
+          "time": 216.61399999999958,
+          "primaryError": 0,
+          "supportError": 1.1368683772161603e-13,
+          "pixels": [
+            [
+              104,
+              67,
+              51,
+              255
+            ],
+            [
+              121,
+              101,
+              94,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "rifle",
+          "time": 283.3140000000003,
+          "primaryError": 0,
+          "supportError": 1.1368683772161603e-13,
+          "pixels": [
+            [
+              103,
+              67,
+              50,
+              255
+            ],
+            [
+              119,
+              99,
+              92,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "rifle",
+          "time": 350.0139999999992,
+          "primaryError": 0,
+          "supportError": 2.5421149729252077e-13,
+          "pixels": [
+            [
+              103,
+              67,
+              50,
+              255
+            ],
+            [
+              117,
+              97,
+              90,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "rifle",
+          "time": 416.6139999999996,
+          "primaryError": 0,
+          "supportError": 2.5421149729252077e-13,
+          "pixels": [
+            [
+              103,
+              67,
+              50,
+              255
+            ],
+            [
+              115,
+              95,
+              88,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "rifle",
+          "time": 483.3140000000003,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              102,
+              67,
+              50,
+              255
+            ],
+            [
+              113,
+              94,
+              86,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "rifle",
+          "time": 549.9140000000007,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              102,
+              67,
+              50,
+              255
+            ],
+            [
+              112,
+              92,
+              85,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "rifle",
+          "time": 616.5139999999992,
+          "primaryError": 0,
+          "supportError": 2.5421149729252077e-13,
+          "pixels": [
+            [
+              102,
+              67,
+              50,
+              255
+            ],
+            [
+              111,
+              91,
+              84,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "rifle",
+          "time": 699.9140000000007,
+          "primaryError": 0,
+          "supportError": 3.595093471822542e-13,
+          "pixels": [
+            [
+              102,
+              67,
+              50,
+              255
+            ],
+            [
+              109,
+              90,
+              83,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "rifle",
+          "time": 783.3140000000003,
+          "primaryError": 0,
+          "supportError": 4.099037227506403e-13,
+          "pixels": [
+            [
+              102,
+              66,
+              50,
+              255
+            ],
+            [
+              109,
+              89,
+              82,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "rifle",
+          "time": 850.0139999999992,
+          "primaryError": 0,
+          "supportError": 1.1368683772161603e-13,
+          "pixels": [
+            [
+              102,
+              66,
+              50,
+              255
+            ],
+            [
+              108,
+              89,
+              82,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "rifle",
+          "time": 916.6139999999996,
+          "primaryError": 0,
+          "supportError": 1.1368683772161603e-13,
+          "pixels": [
+            [
+              102,
+              66,
+              50,
+              255
+            ],
+            [
+              108,
+              89,
+              81,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "rifle",
+          "time": 983.2139999999999,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              102,
+              66,
+              50,
+              255
+            ],
+            [
+              108,
+              89,
+              81,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "rifle",
+          "time": 1049.9140000000007,
+          "primaryError": 0,
+          "supportError": 3.595093471822542e-13,
+          "pixels": [
+            [
+              102,
+              66,
+              50,
+              255
+            ],
+            [
+              108,
+              89,
+              81,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "rifle",
+          "time": 1116.6139999999996,
+          "primaryError": 0,
+          "supportError": 5.084229945850415e-13,
+          "pixels": [
+            [
+              102,
+              66,
+              50,
+              255
+            ],
+            [
+              108,
+              89,
+              82,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "rifle",
+          "time": 1183.214,
+          "primaryError": 0,
+          "supportError": 1.6077746776921858e-13,
+          "pixels": [
+            [
+              102,
+              66,
+              50,
+              255
+            ],
+            [
+              108,
+              89,
+              82,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "rifle",
+          "time": 1233.214,
+          "primaryError": 0,
+          "supportError": 1.1368683772161603e-13,
+          "pixels": [
+            [
+              102,
+              66,
+              50,
+              255
+            ],
+            [
+              109,
+              90,
+              82,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "rifle",
+          "time": 1299.9140000000007,
+          "primaryError": 0,
+          "supportError": 2.5421149729252077e-13,
+          "pixels": [
+            [
+              102,
+              67,
+              50,
+              255
+            ],
+            [
+              109,
+              90,
+              83,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "rifle",
+          "time": 1383.214,
+          "primaryError": 0,
+          "supportError": 1.6077746776921858e-13,
+          "pixels": [
+            [
+              102,
+              67,
+              50,
+              255
+            ],
+            [
+              111,
+              91,
+              84,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "rifle",
+          "time": 1449.9140000000007,
+          "primaryError": 0,
+          "supportError": 2.5421149729252077e-13,
+          "pixels": [
+            [
+              102,
+              67,
+              50,
+              255
+            ],
+            [
+              112,
+              92,
+              85,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "rifle",
+          "time": 1549.8140000000003,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              102,
+              67,
+              50,
+              255
+            ],
+            [
+              114,
+              94,
+              87,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "rifle",
+          "time": 1616.6139999999996,
+          "primaryError": 0,
+          "supportError": 3.2155493553843715e-13,
+          "pixels": [
+            [
+              103,
+              67,
+              50,
+              255
+            ],
+            [
+              116,
+              96,
+              89,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "rifle",
+          "time": 1666.5139999999992,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              103,
+              67,
+              50,
+              255
+            ],
+            [
+              117,
+              97,
+              90,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "rifle",
+          "time": 1733.214,
+          "primaryError": 0,
+          "supportError": 2.5421149729252077e-13,
+          "pixels": [
+            [
+              103,
+              67,
+              50,
+              255
+            ],
+            [
+              119,
+              99,
+              92,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "rifle",
+          "time": 1799.8140000000003,
+          "primaryError": 0,
+          "supportError": 2.5421149729252077e-13,
+          "pixels": [
+            [
+              104,
+              67,
+              51,
+              255
+            ],
+            [
+              122,
+              101,
+              94,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "rifle",
+          "time": 1866.5139999999992,
+          "primaryError": 0,
+          "supportError": 1.6077746776921858e-13,
+          "pixels": [
+            [
+              104,
+              68,
+              51,
+              255
+            ],
+            [
+              124,
+              104,
+              97,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "rifle",
+          "time": 1916.6139999999996,
+          "primaryError": 0,
+          "supportError": 1.6077746776921858e-13,
+          "pixels": [
+            [
+              104,
+              68,
+              51,
+              255
+            ],
+            [
+              126,
+              106,
+              99,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "rifle",
+          "time": 1983.214,
+          "primaryError": 0,
+          "supportError": 3.2155493553843715e-13,
+          "pixels": [
+            [
+              105,
+              68,
+              51,
+              255
+            ],
+            [
+              129,
+              108,
+              101,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "rifle",
+          "time": 2049.8140000000003,
+          "primaryError": 0,
+          "supportError": 1.1368683772161603e-13,
+          "pixels": [
+            [
+              105,
+              68,
+              51,
+              255
+            ],
+            [
+              128,
+              108,
+              101,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "rifle",
+          "time": 2116.6139999999996,
+          "primaryError": 0,
+          "supportError": 2.2737367544323206e-13,
+          "pixels": [
+            [
+              105,
+              68,
+              51,
+              255
+            ],
+            [
+              126,
+              106,
+              99,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "rifle",
+          "time": 2183.214,
+          "primaryError": 0,
+          "supportError": 1.6077746776921858e-13,
+          "pixels": [
+            [
+              105,
+              68,
+              51,
+              255
+            ],
+            [
+              123,
+              104,
+              97,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "rifle",
+          "time": 2249.9140000000007,
+          "primaryError": 0,
+          "supportError": 3.2155493553843715e-13,
+          "pixels": [
+            [
+              105,
+              68,
+              51,
+              255
+            ],
+            [
+              121,
+              103,
+              96,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "rifle",
+          "time": 2316.513999999999,
+          "primaryError": 0,
+          "supportError": 2.2737367544323206e-13,
+          "pixels": [
+            [
+              105,
+              68,
+              51,
+              255
+            ],
+            [
+              119,
+              101,
+              94,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "rifle",
+          "time": 2366.513999999999,
+          "primaryError": 0,
+          "supportError": 1.6077746776921858e-13,
+          "pixels": [
+            [
+              105,
+              68,
+              51,
+              255
+            ],
+            [
+              118,
+              100,
+              93,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "rifle",
+          "time": 2449.9140000000007,
+          "primaryError": 0,
+          "supportError": 2.2737367544323206e-13,
+          "pixels": [
+            [
+              105,
+              68,
+              51,
+              255
+            ],
+            [
+              116,
+              99,
+              92,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "rifle",
+          "time": 2516.513999999999,
+          "primaryError": 0,
+          "supportError": 1.1368683772161603e-13,
+          "pixels": [
+            [
+              105,
+              68,
+              51,
+              255
+            ],
+            [
+              114,
+              98,
+              91,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "rifle",
+          "time": 2566.513999999999,
+          "primaryError": 0,
+          "supportError": 1.6077746776921858e-13,
+          "pixels": [
+            [
+              105,
+              68,
+              51,
+              255
+            ],
+            [
+              113,
+              97,
+              90,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "rifle",
+          "time": 2633.214,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              105,
+              68,
+              51,
+              255
+            ],
+            [
+              112,
+              96,
+              89,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "rifle",
+          "time": 2716.513999999999,
+          "primaryError": 0,
+          "supportError": 2.5421149729252077e-13,
+          "pixels": [
+            [
+              105,
+              68,
+              51,
+              255
+            ],
+            [
+              111,
+              95,
+              88,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "rifle",
+          "time": 2783.214,
+          "primaryError": 0,
+          "supportError": 2.2737367544323206e-13,
+          "pixels": [
+            [
+              105,
+              68,
+              51,
+              255
+            ],
+            [
+              111,
+              95,
+              88,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "rifle",
+          "time": 2849.9140000000007,
+          "primaryError": 0,
+          "supportError": 1.1368683772161603e-13,
+          "pixels": [
+            [
+              105,
+              68,
+              51,
+              255
+            ],
+            [
+              110,
+              94,
+              88,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "rifle",
+          "time": 2899.8140000000003,
+          "primaryError": 0,
+          "supportError": 2.5421149729252077e-13,
+          "pixels": [
+            [
+              105,
+              68,
+              51,
+              255
+            ],
+            [
+              110,
+              94,
+              88,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "rifle",
+          "time": 2966.513999999999,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              105,
+              68,
+              51,
+              255
+            ],
+            [
+              110,
+              94,
+              87,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "rifle",
+          "time": 3033.214,
+          "primaryError": 0,
+          "supportError": 4.687428401686771e-13,
+          "pixels": [
+            [
+              105,
+              68,
+              51,
+              255
+            ],
+            [
+              110,
+              94,
+              87,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "rifle",
+          "time": 3099.8139999999985,
+          "primaryError": 0,
+          "supportError": 2.5421149729252077e-13,
+          "pixels": [
+            [
+              105,
+              68,
+              51,
+              255
+            ],
+            [
+              110,
+              94,
+              88,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "rifle",
+          "time": 3166.4140000000007,
+          "primaryError": 0,
+          "supportError": 2.5421149729252077e-13,
+          "pixels": [
+            [
+              105,
+              68,
+              51,
+              255
+            ],
+            [
+              110,
+              95,
+              88,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "rifle",
+          "time": 3216.513999999999,
+          "primaryError": 0,
+          "supportError": 2.2737367544323206e-13,
+          "pixels": [
+            [
+              105,
+              68,
+              51,
+              255
+            ],
+            [
+              111,
+              95,
+              88,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "rifle",
+          "time": 3283.214,
+          "primaryError": 0,
+          "supportError": 4.823324033076558e-13,
+          "pixels": [
+            [
+              105,
+              68,
+              51,
+              255
+            ],
+            [
+              111,
+              95,
+              88,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "rifle",
+          "time": 3349.8139999999985,
+          "primaryError": 0,
+          "supportError": 2.2737367544323206e-13,
+          "pixels": [
+            [
+              105,
+              68,
+              51,
+              255
+            ],
+            [
+              112,
+              96,
+              89,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "rifle",
+          "time": 3416.513999999999,
+          "primaryError": 0,
+          "supportError": 1.1368683772161603e-13,
+          "pixels": [
+            [
+              105,
+              68,
+              51,
+              255
+            ],
+            [
+              113,
+              97,
+              90,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "rifle",
+          "time": 3466.513999999999,
+          "primaryError": 0,
+          "supportError": 1.6077746776921858e-13,
+          "pixels": [
+            [
+              105,
+              68,
+              51,
+              255
+            ],
+            [
+              114,
+              97,
+              90,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "rifle",
+          "time": 3549.8139999999985,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              105,
+              68,
+              51,
+              255
+            ],
+            [
+              116,
+              99,
+              92,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "rifle",
+          "time": 3616.4140000000007,
+          "primaryError": 0,
+          "supportError": 1.6077746776921858e-13,
+          "pixels": [
+            [
+              105,
+              68,
+              51,
+              255
+            ],
+            [
+              117,
+              100,
+              93,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "rifle",
+          "time": 3683.214,
+          "primaryError": 0,
+          "supportError": 3.410605131648481e-13,
+          "pixels": [
+            [
+              105,
+              68,
+              51,
+              255
+            ],
+            [
+              119,
+              101,
+              94,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "rifle",
+          "time": 3749.8139999999985,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              105,
+              68,
+              51,
+              255
+            ],
+            [
+              121,
+              103,
+              96,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "rifle",
+          "time": 3799.8139999999985,
+          "primaryError": 0,
+          "supportError": 1.6077746776921858e-13,
+          "pixels": [
+            [
+              105,
+              68,
+              51,
+              255
+            ],
+            [
+              123,
+              104,
+              97,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "rifle",
+          "time": 3866.4140000000007,
+          "primaryError": 0,
+          "supportError": 1.6077746776921858e-13,
+          "pixels": [
+            [
+              105,
+              68,
+              51,
+              255
+            ],
+            [
+              125,
+              106,
+              99,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "rifle",
+          "time": 3933.1140000000014,
+          "primaryError": 0,
+          "supportError": 1.6077746776921858e-13,
+          "pixels": [
+            [
+              105,
+              68,
+              51,
+              255
+            ],
+            [
+              128,
+              107,
+              100,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "rifle",
+          "time": 3999.8139999999985,
+          "primaryError": 0,
+          "supportError": 2.2737367544323206e-13,
+          "pixels": [
+            [
+              105,
+              68,
+              51,
+              255
+            ],
+            [
+              130,
+              109,
+              102,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "rifle",
+          "time": 4049.8139999999985,
+          "primaryError": 0,
+          "supportError": 2.5421149729252077e-13,
+          "pixels": [
+            [
+              105,
+              68,
+              51,
+              255
+            ],
+            [
+              128,
+              107,
+              100,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "rifle",
+          "time": 4099.8139999999985,
+          "primaryError": 0,
+          "supportError": 2.5421149729252077e-13,
+          "pixels": [
+            [
+              104,
+              68,
+              51,
+              255
+            ],
+            [
+              126,
+              105,
+              98,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "rifle",
+          "time": 4166.414000000001,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              104,
+              67,
+              51,
+              255
+            ],
+            [
+              123,
+              103,
+              96,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "rifle",
+          "time": 4233.114000000001,
+          "primaryError": 0,
+          "supportError": 5.084229945850415e-13,
+          "pixels": [
+            [
+              103,
+              67,
+              50,
+              255
+            ],
+            [
+              121,
+              100,
+              93,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "rifle",
+          "time": 4299.8139999999985,
+          "primaryError": 0,
+          "supportError": 3.595093471822542e-13,
+          "pixels": [
+            [
+              103,
+              67,
+              50,
+              255
+            ],
+            [
+              118,
+              98,
+              91,
+              255
+            ]
+          ]
+        }
+      ],
+      "cycleMs": 4000,
+      "recordingKind": "actual runtime RAF canvas.captureStream, not assembled stills",
+      "path": "rifle-visible-live-motion.webm",
+      "pose": "rifle",
+      "visible": true,
+      "bytes": 292649,
+      "decode": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "width": 941,
+            "height": 1672,
+            "nb_read_frames": "47"
+          }
+        ],
+        "format": {
+          "duration": "4.218733"
+        }
+      },
+      "all_decoded_frames": 47,
+      "decoded_crop_world": [
+        125,
+        280,
+        925,
+        1060
+      ]
+    },
+    {
+      "mime": "video/webm;codecs=vp9",
+      "samples": [
+        {
+          "pose": "rifle",
+          "time": 0,
+          "primaryError": 0,
+          "supportError": 1.1368683772161603e-13,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 16.63000000000102,
+          "primaryError": 0,
+          "supportError": 3.410605131648481e-13,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 66.63000000000102,
+          "primaryError": 0,
+          "supportError": 2.2737367544323206e-13,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 133.22999999999956,
+          "primaryError": 0,
+          "supportError": 1.6077746776921858e-13,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 183.22999999999956,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 249.9300000000003,
+          "primaryError": 0,
+          "supportError": 1.1368683772161603e-13,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 299.9300000000003,
+          "primaryError": 0,
+          "supportError": 1.1368683772161603e-13,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 349.83000000000175,
+          "primaryError": 0,
+          "supportError": 3.410605131648481e-13,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 399.9300000000003,
+          "primaryError": 0,
+          "supportError": 1.6077746776921858e-13,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 449.9300000000003,
+          "primaryError": 0,
+          "supportError": 1.6077746776921858e-13,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 516.5299999999988,
+          "primaryError": 0,
+          "supportError": 2.2737367544323206e-13,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 566.5299999999988,
+          "primaryError": 0,
+          "supportError": 3.2155493553843715e-13,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 616.630000000001,
+          "primaryError": 0,
+          "supportError": 1.6077746776921858e-13,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 666.5299999999988,
+          "primaryError": 0,
+          "supportError": 3.595093471822542e-13,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 733.2299999999996,
+          "primaryError": 0,
+          "supportError": 2.2737367544323206e-13,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 783.2299999999996,
+          "primaryError": 0,
+          "supportError": 1.1368683772161603e-13,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 833.2299999999996,
+          "primaryError": 0,
+          "supportError": 1.1368683772161603e-13,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 883.130000000001,
+          "primaryError": 0,
+          "supportError": 6.122223575328581e-13,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 949.9300000000003,
+          "primaryError": 0,
+          "supportError": 2.2737367544323206e-13,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 999.9300000000003,
+          "primaryError": 0,
+          "supportError": 1.6077746776921858e-13,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 1049.8300000000017,
+          "primaryError": 0,
+          "supportError": 1.6077746776921858e-13,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 1099.9300000000003,
+          "primaryError": 0,
+          "supportError": 1.1368683772161603e-13,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 1149.8300000000017,
+          "primaryError": 0,
+          "supportError": 3.595093471822542e-13,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 1199.8300000000017,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 1266.5299999999988,
+          "primaryError": 0,
+          "supportError": 1.1368683772161603e-13,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 1316.5299999999988,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 1366.5299999999988,
+          "primaryError": 0,
+          "supportError": 1.6077746776921858e-13,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 1416.5299999999988,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 1466.5299999999988,
+          "primaryError": 0,
+          "supportError": 1.1368683772161603e-13,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 1516.4300000000003,
+          "primaryError": 0,
+          "supportError": 2.5421149729252077e-13,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 1566.5299999999988,
+          "primaryError": 0,
+          "supportError": 1.6077746776921858e-13,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 1633.130000000001,
+          "primaryError": 0,
+          "supportError": 3.2155493553843715e-13,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 1683.2299999999996,
+          "primaryError": 0,
+          "supportError": 3.2155493553843715e-13,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 1733.2299999999996,
+          "primaryError": 0,
+          "supportError": 2.2737367544323206e-13,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 1799.8300000000017,
+          "primaryError": 0,
+          "supportError": 3.595093471822542e-13,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 1849.8300000000017,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 1899.9300000000003,
+          "primaryError": 0,
+          "supportError": 1.6077746776921858e-13,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 1949.8300000000017,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 1999.8300000000017,
+          "primaryError": 0,
+          "supportError": 2.2737367544323206e-13,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 2049.8300000000017,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 2099.8300000000017,
+          "primaryError": 0,
+          "supportError": 1.6077746776921858e-13,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 2149.8300000000017,
+          "primaryError": 0,
+          "supportError": 1.1368683772161603e-13,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 2199.8300000000017,
+          "primaryError": 0,
+          "supportError": 1.1368683772161603e-13,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 2249.8300000000017,
+          "primaryError": 0,
+          "supportError": 4.687428401686771e-13,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 2299.8300000000017,
+          "primaryError": 0,
+          "supportError": 1.6077746776921858e-13,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 2366.4300000000003,
+          "primaryError": 0,
+          "supportError": 3.595093471822542e-13,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 2416.529999999999,
+          "primaryError": 0,
+          "supportError": 1.6077746776921858e-13,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 2466.4300000000003,
+          "primaryError": 0,
+          "supportError": 1.1368683772161603e-13,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 2516.529999999999,
+          "primaryError": 0,
+          "supportError": 2.5421149729252077e-13,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 2583.130000000001,
+          "primaryError": 0,
+          "supportError": 2.5421149729252077e-13,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 2633.130000000001,
+          "primaryError": 0,
+          "supportError": 2.5421149729252077e-13,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 2699.8300000000017,
+          "primaryError": 0,
+          "supportError": 4.099037227506403e-13,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 2749.7299999999996,
+          "primaryError": 0,
+          "supportError": 2.2737367544323206e-13,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 2799.7299999999996,
+          "primaryError": 0,
+          "supportError": 1.1368683772161603e-13,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 2849.8300000000017,
+          "primaryError": 0,
+          "supportError": 1.1368683772161603e-13,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 2899.8300000000017,
+          "primaryError": 0,
+          "supportError": 3.2155493553843715e-13,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 2949.7299999999996,
+          "primaryError": 0,
+          "supportError": 2.2737367544323206e-13,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 2999.8300000000017,
+          "primaryError": 0,
+          "supportError": 1.1368683772161603e-13,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 3049.7299999999996,
+          "primaryError": 0,
+          "supportError": 4.099037227506403e-13,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 3116.529999999999,
+          "primaryError": 0,
+          "supportError": 1.1368683772161603e-13,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 3166.4300000000003,
+          "primaryError": 0,
+          "supportError": 2.5421149729252077e-13,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 3216.529999999999,
+          "primaryError": 0,
+          "supportError": 2.5421149729252077e-13,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 3266.4300000000003,
+          "primaryError": 0,
+          "supportError": 2.5421149729252077e-13,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 3316.4300000000003,
+          "primaryError": 0,
+          "supportError": 3.2155493553843715e-13,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 3366.4300000000003,
+          "primaryError": 0,
+          "supportError": 1.1368683772161603e-13,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 3433.130000000001,
+          "primaryError": 0,
+          "supportError": 1.1368683772161603e-13,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 3483.130000000001,
+          "primaryError": 0,
+          "supportError": 1.6077746776921858e-13,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 3533.130000000001,
+          "primaryError": 0,
+          "supportError": 1.6077746776921858e-13,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 3583.130000000001,
+          "primaryError": 0,
+          "supportError": 3.595093471822542e-13,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 3649.8300000000017,
+          "primaryError": 0,
+          "supportError": 1.6077746776921858e-13,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 3699.7299999999996,
+          "primaryError": 0,
+          "supportError": 1.1368683772161603e-13,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 3749.8300000000017,
+          "primaryError": 0,
+          "supportError": 1.1368683772161603e-13,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 3799.7299999999996,
+          "primaryError": 0,
+          "supportError": 2.5421149729252077e-13,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 3866.4300000000003,
+          "primaryError": 0,
+          "supportError": 1.6077746776921858e-13,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 3916.4300000000003,
+          "primaryError": 0,
+          "supportError": 3.595093471822542e-13,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 3966.4300000000003,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 4016.4300000000003,
+          "primaryError": 0,
+          "supportError": 2.5421149729252077e-13,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 4066.4300000000003,
+          "primaryError": 0,
+          "supportError": 1.1368683772161603e-13,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 4116.43,
+          "primaryError": 0,
+          "supportError": 1.1368683772161603e-13,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 4166.43,
+          "primaryError": 0,
+          "supportError": 2.2737367544323206e-13,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 4216.43,
+          "primaryError": 0,
+          "supportError": 4.547473508864641e-13,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 4266.330000000002,
+          "primaryError": 0,
+          "supportError": 2.5421149729252077e-13,
+          "pixels": []
+        }
+      ],
+      "cycleMs": 4000,
+      "recordingKind": "actual runtime RAF canvas.captureStream, not assembled stills",
+      "path": "rifle-hidden-live-motion.webm",
+      "pose": "rifle",
+      "visible": false,
+      "bytes": 271796,
+      "decode": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "width": 941,
+            "height": 1672,
+            "nb_read_frames": "43"
+          }
+        ],
+        "format": {
+          "duration": "4.099720"
+        }
+      },
+      "all_decoded_frames": 43,
+      "decoded_crop_world": [
+        125,
+        280,
+        925,
+        1060
+      ]
+    },
+    {
+      "mime": "video/webm;codecs=vp9",
+      "samples": [
+        {
+          "pose": "pistol",
+          "time": 0,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              47,
+              43,
+              42,
+              255
+            ],
+            [
+              39,
+              35,
+              34,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "pistol",
+          "time": 33.27600000000166,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              47,
+              43,
+              42,
+              255
+            ],
+            [
+              39,
+              35,
+              34,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "pistol",
+          "time": 99.97599999999875,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              47,
+              43,
+              42,
+              255
+            ],
+            [
+              39,
+              35,
+              34,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "pistol",
+          "time": 166.67599999999948,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              47,
+              43,
+              42,
+              255
+            ],
+            [
+              39,
+              35,
+              34,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "pistol",
+          "time": 233.27600000000166,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              47,
+              43,
+              42,
+              255
+            ],
+            [
+              39,
+              35,
+              34,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "pistol",
+          "time": 299.8760000000002,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              47,
+              43,
+              42,
+              255
+            ],
+            [
+              39,
+              35,
+              34,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "pistol",
+          "time": 366.57600000000093,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              47,
+              43,
+              42,
+              255
+            ],
+            [
+              39,
+              35,
+              34,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "pistol",
+          "time": 416.57600000000093,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              47,
+              43,
+              42,
+              255
+            ],
+            [
+              39,
+              35,
+              34,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "pistol",
+          "time": 499.97599999999875,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              47,
+              43,
+              42,
+              255
+            ],
+            [
+              39,
+              35,
+              34,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "pistol",
+          "time": 549.9759999999987,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              47,
+              43,
+              42,
+              255
+            ],
+            [
+              39,
+              35,
+              34,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "pistol",
+          "time": 616.5760000000009,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              47,
+              43,
+              42,
+              255
+            ],
+            [
+              39,
+              35,
+              34,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "pistol",
+          "time": 683.2760000000017,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              47,
+              43,
+              42,
+              255
+            ],
+            [
+              39,
+              35,
+              34,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "pistol",
+          "time": 749.9759999999987,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              47,
+              43,
+              42,
+              255
+            ],
+            [
+              39,
+              35,
+              34,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "pistol",
+          "time": 849.8760000000002,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              47,
+              43,
+              42,
+              255
+            ],
+            [
+              39,
+              35,
+              34,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "pistol",
+          "time": 966.5760000000009,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              47,
+              43,
+              42,
+              255
+            ],
+            [
+              39,
+              35,
+              34,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "pistol",
+          "time": 1033.2760000000017,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              47,
+              43,
+              42,
+              255
+            ],
+            [
+              39,
+              35,
+              34,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "pistol",
+          "time": 1099.8760000000002,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              47,
+              43,
+              42,
+              255
+            ],
+            [
+              39,
+              35,
+              34,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "pistol",
+          "time": 1149.9759999999987,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              47,
+              43,
+              42,
+              255
+            ],
+            [
+              39,
+              35,
+              34,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "pistol",
+          "time": 1216.576000000001,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              47,
+              43,
+              42,
+              255
+            ],
+            [
+              39,
+              35,
+              34,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "pistol",
+          "time": 1266.576000000001,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              47,
+              43,
+              42,
+              255
+            ],
+            [
+              39,
+              35,
+              34,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "pistol",
+          "time": 1333.1759999999995,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              47,
+              43,
+              42,
+              255
+            ],
+            [
+              39,
+              35,
+              34,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "pistol",
+          "time": 1399.9759999999987,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              47,
+              43,
+              42,
+              255
+            ],
+            [
+              39,
+              35,
+              34,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "pistol",
+          "time": 1466.576000000001,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              47,
+              43,
+              42,
+              255
+            ],
+            [
+              39,
+              35,
+              34,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "pistol",
+          "time": 1516.576000000001,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              47,
+              43,
+              42,
+              255
+            ],
+            [
+              39,
+              35,
+              34,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "pistol",
+          "time": 1583.2760000000017,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              47,
+              43,
+              42,
+              255
+            ],
+            [
+              39,
+              35,
+              34,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "pistol",
+          "time": 1649.8760000000002,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              47,
+              43,
+              42,
+              255
+            ],
+            [
+              39,
+              35,
+              34,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "pistol",
+          "time": 1749.8760000000002,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              47,
+              43,
+              42,
+              255
+            ],
+            [
+              39,
+              35,
+              34,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "pistol",
+          "time": 1816.576000000001,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              47,
+              43,
+              42,
+              255
+            ],
+            [
+              39,
+              35,
+              34,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "pistol",
+          "time": 1916.4759999999987,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              47,
+              43,
+              42,
+              255
+            ],
+            [
+              39,
+              35,
+              34,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "pistol",
+          "time": 1983.1759999999995,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              47,
+              43,
+              42,
+              255
+            ],
+            [
+              39,
+              35,
+              34,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "pistol",
+          "time": 2049.7760000000017,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              47,
+              43,
+              42,
+              255
+            ],
+            [
+              39,
+              35,
+              34,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "pistol",
+          "time": 2099.876,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              47,
+              43,
+              42,
+              255
+            ],
+            [
+              39,
+              35,
+              34,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "pistol",
+          "time": 2166.4759999999987,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              47,
+              43,
+              42,
+              255
+            ],
+            [
+              39,
+              35,
+              34,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "pistol",
+          "time": 2216.4759999999987,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              47,
+              43,
+              42,
+              255
+            ],
+            [
+              39,
+              35,
+              34,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "pistol",
+          "time": 2283.1759999999995,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              48,
+              43,
+              42,
+              255
+            ],
+            [
+              39,
+              35,
+              34,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "pistol",
+          "time": 2349.876,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              48,
+              44,
+              43,
+              255
+            ],
+            [
+              39,
+              35,
+              34,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "pistol",
+          "time": 2416.4759999999987,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              48,
+              44,
+              43,
+              255
+            ],
+            [
+              39,
+              35,
+              34,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "pistol",
+          "time": 2499.7760000000017,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              48,
+              44,
+              43,
+              255
+            ],
+            [
+              39,
+              35,
+              34,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "pistol",
+          "time": 2566.576000000001,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              48,
+              44,
+              43,
+              255
+            ],
+            [
+              39,
+              35,
+              34,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "pistol",
+          "time": 2633.1759999999995,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              48,
+              44,
+              43,
+              255
+            ],
+            [
+              39,
+              35,
+              34,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "pistol",
+          "time": 2699.7760000000017,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              48,
+              44,
+              43,
+              255
+            ],
+            [
+              39,
+              35,
+              34,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "pistol",
+          "time": 2749.7760000000017,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              48,
+              44,
+              43,
+              255
+            ],
+            [
+              39,
+              35,
+              34,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "pistol",
+          "time": 2816.576000000001,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              48,
+              44,
+              43,
+              255
+            ],
+            [
+              39,
+              35,
+              34,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "pistol",
+          "time": 2883.1759999999995,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              48,
+              44,
+              43,
+              255
+            ],
+            [
+              39,
+              35,
+              34,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "pistol",
+          "time": 2949.876,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              48,
+              44,
+              43,
+              255
+            ],
+            [
+              39,
+              35,
+              34,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "pistol",
+          "time": 2999.876,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              48,
+              44,
+              43,
+              255
+            ],
+            [
+              39,
+              35,
+              34,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "pistol",
+          "time": 3066.4759999999987,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              48,
+              44,
+              43,
+              255
+            ],
+            [
+              39,
+              35,
+              34,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "pistol",
+          "time": 3116.4759999999987,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              48,
+              44,
+              43,
+              255
+            ],
+            [
+              39,
+              35,
+              34,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "pistol",
+          "time": 3183.1759999999995,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              48,
+              44,
+              43,
+              255
+            ],
+            [
+              39,
+              35,
+              34,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "pistol",
+          "time": 3233.1759999999995,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              48,
+              44,
+              43,
+              255
+            ],
+            [
+              39,
+              35,
+              34,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "pistol",
+          "time": 3299.7760000000017,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              48,
+              44,
+              43,
+              255
+            ],
+            [
+              39,
+              35,
+              34,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "pistol",
+          "time": 3366.4759999999987,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              48,
+              44,
+              43,
+              255
+            ],
+            [
+              39,
+              35,
+              34,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "pistol",
+          "time": 3433.076000000001,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              48,
+              44,
+              43,
+              255
+            ],
+            [
+              39,
+              35,
+              34,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "pistol",
+          "time": 3499.7760000000017,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              48,
+              44,
+              43,
+              255
+            ],
+            [
+              39,
+              35,
+              34,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "pistol",
+          "time": 3549.7760000000017,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              48,
+              44,
+              43,
+              255
+            ],
+            [
+              39,
+              35,
+              34,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "pistol",
+          "time": 3616.4759999999987,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              48,
+              44,
+              43,
+              255
+            ],
+            [
+              39,
+              35,
+              34,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "pistol",
+          "time": 3683.1759999999995,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              48,
+              44,
+              43,
+              255
+            ],
+            [
+              39,
+              35,
+              34,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "pistol",
+          "time": 3749.7760000000017,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              48,
+              43,
+              42,
+              255
+            ],
+            [
+              39,
+              35,
+              34,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "pistol",
+          "time": 3816.4759999999987,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              47,
+              43,
+              42,
+              255
+            ],
+            [
+              39,
+              35,
+              34,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "pistol",
+          "time": 3866.4759999999987,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              47,
+              43,
+              42,
+              255
+            ],
+            [
+              39,
+              35,
+              34,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "pistol",
+          "time": 3933.076000000001,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              47,
+              43,
+              42,
+              255
+            ],
+            [
+              39,
+              35,
+              34,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "pistol",
+          "time": 3999.7760000000017,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              47,
+              43,
+              42,
+              255
+            ],
+            [
+              39,
+              35,
+              34,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "pistol",
+          "time": 4049.7760000000017,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              47,
+              43,
+              42,
+              255
+            ],
+            [
+              39,
+              35,
+              34,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "pistol",
+          "time": 4116.475999999999,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              47,
+              43,
+              42,
+              255
+            ],
+            [
+              39,
+              35,
+              34,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "pistol",
+          "time": 4183.076000000001,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              47,
+              43,
+              42,
+              255
+            ],
+            [
+              39,
+              35,
+              34,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "pistol",
+          "time": 4233.1759999999995,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              47,
+              43,
+              42,
+              255
+            ],
+            [
+              39,
+              35,
+              34,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "pistol",
+          "time": 4299.776000000002,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              47,
+              43,
+              42,
+              255
+            ],
+            [
+              39,
+              35,
+              34,
+              255
+            ]
+          ]
+        }
+      ],
+      "cycleMs": 4000,
+      "recordingKind": "actual runtime RAF canvas.captureStream, not assembled stills",
+      "path": "pistol-visible-live-motion.webm",
+      "pose": "pistol",
+      "visible": true,
+      "bytes": 220775,
+      "decode": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "width": 941,
+            "height": 1672,
+            "nb_read_frames": "33"
+          }
+        ],
+        "format": {
+          "duration": "4.141809"
+        }
+      },
+      "all_decoded_frames": 33,
+      "decoded_crop_world": [
+        125,
+        140,
+        925,
+        1060
+      ]
+    },
+    {
+      "mime": "video/webm;codecs=vp9",
+      "samples": [
+        {
+          "pose": "pistol",
+          "time": 0,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 33.23999999999796,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 83.23999999999796,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 133.23999999999796,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 199.9399999999987,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 266.53999999999724,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 316.53999999999724,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 366.6399999999994,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 433.23999999999796,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 483.23999999999796,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 533.2400000000016,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 583.2400000000016,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 649.8400000000001,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 699.9399999999987,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 749.9399999999987,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 799.8400000000001,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 866.5399999999972,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 916.5399999999972,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 966.5399999999972,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 1016.5399999999972,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 1083.2400000000016,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 1133.2400000000016,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 1199.9399999999987,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 1249.8400000000001,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 1316.5399999999972,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 1366.5399999999972,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 1416.5399999999972,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 1466.5399999999972,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 1516.5399999999972,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 1583.1399999999958,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 1633.1399999999958,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 1683.1399999999958,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 1749.8400000000001,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 1799.8400000000001,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 1866.4399999999987,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 1916.5399999999972,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 1966.4399999999987,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 2033.2400000000016,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 2083.139999999996,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 2133.139999999996,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 2183.139999999996,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 2233.139999999996,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 2299.84,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 2349.84,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 2399.84,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 2449.84,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 2516.5399999999972,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 2566.4399999999987,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 2616.4399999999987,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 2683.139999999996,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 2733.139999999996,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 2799.84,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 2849.84,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 2899.84,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 2949.7400000000016,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 2999.7400000000016,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 3049.84,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 3116.4399999999987,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 3166.4399999999987,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 3216.4399999999987,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 3266.4399999999987,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 3333.139999999996,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 3383.0399999999972,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 3433.0399999999972,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 3483.139999999996,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 3549.84,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 3599.84,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 3649.84,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 3699.7400000000016,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 3766.5399999999972,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 3816.4399999999987,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 3866.4399999999987,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 3916.4399999999987,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 3966.4399999999987,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 4016.4399999999987,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 4083.139999999996,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 4133.139999999996,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 4183.139999999996,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 4249.740000000002,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 4316.34,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        }
+      ],
+      "cycleMs": 4000,
+      "recordingKind": "actual runtime RAF canvas.captureStream, not assembled stills",
+      "path": "pistol-hidden-live-motion.webm",
+      "pose": "pistol",
+      "visible": false,
+      "bytes": 316380,
+      "decode": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "width": 941,
+            "height": 1672,
+            "nb_read_frames": "44"
+          }
+        ],
+        "format": {
+          "duration": "4.171376"
+        }
+      },
+      "all_decoded_frames": 44,
+      "decoded_crop_world": [
+        125,
+        140,
+        925,
+        1060
+      ]
+    },
+    {
+      "mime": "video/webm;codecs=vp9",
+      "samples": [
+        {
+          "pose": "melee",
+          "time": 0,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              49,
+              47,
+              46,
+              255
+            ],
+            [
+              74,
+              74,
+              78,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "melee",
+          "time": 33.27400000000489,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              49,
+              47,
+              46,
+              255
+            ],
+            [
+              74,
+              74,
+              78,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "melee",
+          "time": 133.2740000000049,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              49,
+              47,
+              46,
+              255
+            ],
+            [
+              74,
+              74,
+              78,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "melee",
+          "time": 233.2740000000049,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              49,
+              47,
+              46,
+              255
+            ],
+            [
+              74,
+              74,
+              77,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "melee",
+          "time": 316.5740000000005,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              49,
+              47,
+              46,
+              255
+            ],
+            [
+              75,
+              74,
+              77,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "melee",
+          "time": 399.87400000000343,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              49,
+              47,
+              46,
+              255
+            ],
+            [
+              75,
+              74,
+              77,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "melee",
+          "time": 466.5740000000005,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              49,
+              47,
+              46,
+              255
+            ],
+            [
+              75,
+              74,
+              77,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "melee",
+          "time": 549.974000000002,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              49,
+              47,
+              46,
+              255
+            ],
+            [
+              75,
+              74,
+              76,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "melee",
+          "time": 649.8740000000034,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              49,
+              47,
+              46,
+              255
+            ],
+            [
+              75,
+              74,
+              76,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "melee",
+          "time": 716.5740000000005,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              49,
+              47,
+              46,
+              255
+            ],
+            [
+              75,
+              74,
+              76,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "melee",
+          "time": 783.2740000000049,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              49,
+              47,
+              46,
+              255
+            ],
+            [
+              75,
+              74,
+              76,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "melee",
+          "time": 866.5740000000005,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              49,
+              47,
+              46,
+              255
+            ],
+            [
+              75,
+              74,
+              76,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "melee",
+          "time": 933.2740000000049,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              49,
+              47,
+              46,
+              255
+            ],
+            [
+              75,
+              74,
+              76,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "melee",
+          "time": 999.8740000000034,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              49,
+              47,
+              46,
+              255
+            ],
+            [
+              75,
+              74,
+              76,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "melee",
+          "time": 1083.274000000005,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              49,
+              47,
+              46,
+              255
+            ],
+            [
+              75,
+              74,
+              76,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "melee",
+          "time": 1149.974000000002,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              49,
+              47,
+              46,
+              255
+            ],
+            [
+              75,
+              74,
+              76,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "melee",
+          "time": 1216.474000000002,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              49,
+              47,
+              46,
+              255
+            ],
+            [
+              75,
+              74,
+              76,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "melee",
+          "time": 1283.274000000005,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              49,
+              47,
+              46,
+              255
+            ],
+            [
+              75,
+              74,
+              76,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "melee",
+          "time": 1349.8740000000034,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              49,
+              47,
+              46,
+              255
+            ],
+            [
+              75,
+              74,
+              76,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "melee",
+          "time": 1416.5740000000005,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              49,
+              47,
+              46,
+              255
+            ],
+            [
+              75,
+              74,
+              76,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "melee",
+          "time": 1483.1740000000063,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              49,
+              47,
+              46,
+              255
+            ],
+            [
+              75,
+              74,
+              77,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "melee",
+          "time": 1549.8740000000034,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              49,
+              47,
+              46,
+              255
+            ],
+            [
+              75,
+              74,
+              77,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "melee",
+          "time": 1633.1740000000063,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              49,
+              47,
+              46,
+              255
+            ],
+            [
+              75,
+              74,
+              77,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "melee",
+          "time": 1699.8740000000034,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              49,
+              47,
+              46,
+              255
+            ],
+            [
+              75,
+              74,
+              77,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "melee",
+          "time": 1766.5740000000005,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              49,
+              47,
+              46,
+              255
+            ],
+            [
+              74,
+              74,
+              77,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "melee",
+          "time": 1833.1740000000063,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              49,
+              47,
+              46,
+              255
+            ],
+            [
+              74,
+              74,
+              78,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "melee",
+          "time": 1916.474000000002,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              49,
+              47,
+              46,
+              255
+            ],
+            [
+              74,
+              74,
+              78,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "melee",
+          "time": 1983.1740000000063,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              49,
+              47,
+              46,
+              255
+            ],
+            [
+              74,
+              74,
+              78,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "melee",
+          "time": 2049.8740000000034,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              49,
+              47,
+              46,
+              255
+            ],
+            [
+              74,
+              74,
+              78,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "melee",
+          "time": 2116.474000000002,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              49,
+              47,
+              46,
+              255
+            ],
+            [
+              74,
+              74,
+              78,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "melee",
+          "time": 2183.1740000000063,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              49,
+              47,
+              46,
+              255
+            ],
+            [
+              74,
+              74,
+              78,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "melee",
+          "time": 2266.474000000002,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              49,
+              47,
+              46,
+              255
+            ],
+            [
+              74,
+              74,
+              78,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "melee",
+          "time": 2349.774000000005,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              49,
+              47,
+              46,
+              255
+            ],
+            [
+              74,
+              74,
+              77,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "melee",
+          "time": 2416.5740000000005,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              49,
+              46,
+              46,
+              255
+            ],
+            [
+              74,
+              74,
+              77,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "melee",
+          "time": 2483.1740000000063,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              49,
+              46,
+              46,
+              255
+            ],
+            [
+              74,
+              74,
+              77,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "melee",
+          "time": 2549.8740000000034,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              49,
+              46,
+              46,
+              255
+            ],
+            [
+              74,
+              74,
+              77,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "melee",
+          "time": 2616.474000000002,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              49,
+              46,
+              46,
+              255
+            ],
+            [
+              74,
+              74,
+              77,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "melee",
+          "time": 2683.1740000000063,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              49,
+              46,
+              46,
+              255
+            ],
+            [
+              74,
+              74,
+              77,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "melee",
+          "time": 2749.8740000000034,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              49,
+              46,
+              46,
+              255
+            ],
+            [
+              74,
+              74,
+              77,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "melee",
+          "time": 2816.474000000002,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              49,
+              46,
+              46,
+              255
+            ],
+            [
+              74,
+              74,
+              77,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "melee",
+          "time": 2883.1740000000063,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              49,
+              46,
+              47,
+              255
+            ],
+            [
+              74,
+              74,
+              77,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "melee",
+          "time": 2949.8740000000034,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              49,
+              46,
+              47,
+              255
+            ],
+            [
+              74,
+              74,
+              77,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "melee",
+          "time": 3016.474000000002,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              49,
+              46,
+              47,
+              255
+            ],
+            [
+              74,
+              74,
+              77,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "melee",
+          "time": 3083.1740000000063,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              49,
+              46,
+              47,
+              255
+            ],
+            [
+              74,
+              74,
+              77,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "melee",
+          "time": 3133.1740000000063,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              49,
+              46,
+              47,
+              255
+            ],
+            [
+              74,
+              74,
+              77,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "melee",
+          "time": 3216.474000000002,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              49,
+              46,
+              46,
+              255
+            ],
+            [
+              74,
+              74,
+              77,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "melee",
+          "time": 3283.1740000000063,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              49,
+              46,
+              46,
+              255
+            ],
+            [
+              74,
+              74,
+              77,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "melee",
+          "time": 3349.8740000000034,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              49,
+              46,
+              46,
+              255
+            ],
+            [
+              74,
+              74,
+              77,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "melee",
+          "time": 3416.474000000002,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              49,
+              46,
+              46,
+              255
+            ],
+            [
+              74,
+              74,
+              77,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "melee",
+          "time": 3499.8740000000034,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              49,
+              46,
+              46,
+              255
+            ],
+            [
+              74,
+              74,
+              77,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "melee",
+          "time": 3566.474000000002,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              49,
+              46,
+              46,
+              255
+            ],
+            [
+              74,
+              74,
+              77,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "melee",
+          "time": 3633.0740000000005,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              49,
+              46,
+              46,
+              255
+            ],
+            [
+              74,
+              74,
+              77,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "melee",
+          "time": 3699.8740000000034,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              49,
+              47,
+              46,
+              255
+            ],
+            [
+              74,
+              74,
+              77,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "melee",
+          "time": 3783.0740000000005,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              49,
+              47,
+              46,
+              255
+            ],
+            [
+              74,
+              74,
+              78,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "melee",
+          "time": 3849.774000000005,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              49,
+              47,
+              46,
+              255
+            ],
+            [
+              74,
+              74,
+              78,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "melee",
+          "time": 3916.474000000002,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              49,
+              47,
+              46,
+              255
+            ],
+            [
+              74,
+              74,
+              78,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "melee",
+          "time": 3983.1740000000063,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              49,
+              47,
+              46,
+              255
+            ],
+            [
+              74,
+              74,
+              78,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "melee",
+          "time": 4066.474000000002,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              49,
+              47,
+              46,
+              255
+            ],
+            [
+              74,
+              74,
+              78,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "melee",
+          "time": 4116.474000000002,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              49,
+              47,
+              46,
+              255
+            ],
+            [
+              74,
+              74,
+              78,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "melee",
+          "time": 4199.674000000006,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              49,
+              47,
+              46,
+              255
+            ],
+            [
+              74,
+              74,
+              77,
+              255
+            ]
+          ]
+        },
+        {
+          "pose": "melee",
+          "time": 4266.474000000002,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": [
+            [
+              49,
+              47,
+              46,
+              255
+            ],
+            [
+              75,
+              74,
+              77,
+              255
+            ]
+          ]
+        }
+      ],
+      "cycleMs": 4000,
+      "recordingKind": "actual runtime RAF canvas.captureStream, not assembled stills",
+      "path": "melee-visible-live-motion.webm",
+      "pose": "melee",
+      "visible": true,
+      "bytes": 263300,
+      "decode": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "width": 941,
+            "height": 1672,
+            "nb_read_frames": "38"
+          }
+        ],
+        "format": {
+          "duration": "4.158774"
+        }
+      },
+      "all_decoded_frames": 38,
+      "decoded_crop_world": [
+        125,
+        280,
+        925,
+        1060
+      ]
+    },
+    {
+      "mime": "video/webm;codecs=vp9",
+      "samples": [
+        {
+          "pose": "melee",
+          "time": 0,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "melee",
+          "time": 33.192000000002736,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "melee",
+          "time": 99.89199999999983,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "melee",
+          "time": 149.89199999999983,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "melee",
+          "time": 249.89199999999983,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "melee",
+          "time": 316.5920000000042,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "melee",
+          "time": 366.5920000000042,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "melee",
+          "time": 449.8919999999998,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "melee",
+          "time": 516.5920000000042,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "melee",
+          "time": 583.1920000000027,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "melee",
+          "time": 633.2920000000013,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "melee",
+          "time": 699.8919999999998,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "melee",
+          "time": 766.4919999999984,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "melee",
+          "time": 833.2920000000013,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "melee",
+          "time": 883.1920000000027,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "melee",
+          "time": 949.8919999999998,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "melee",
+          "time": 999.8919999999998,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "melee",
+          "time": 1066.5920000000042,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "melee",
+          "time": 1166.5920000000042,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "melee",
+          "time": 1233.1920000000027,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "melee",
+          "time": 1299.8919999999998,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "melee",
+          "time": 1366.4919999999984,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "melee",
+          "time": 1416.5920000000042,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "melee",
+          "time": 1483.1920000000027,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "melee",
+          "time": 1549.8919999999998,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "melee",
+          "time": 1616.5920000000042,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "melee",
+          "time": 1683.1920000000027,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "melee",
+          "time": 1733.1920000000027,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "melee",
+          "time": 1799.8919999999998,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "melee",
+          "time": 1849.8919999999998,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "melee",
+          "time": 1916.4919999999984,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "melee",
+          "time": 1983.1920000000027,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "melee",
+          "time": 2033.1920000000027,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "melee",
+          "time": 2099.892,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "melee",
+          "time": 2183.1920000000027,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "melee",
+          "time": 2249.7920000000013,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "melee",
+          "time": 2299.892,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "melee",
+          "time": 2366.592000000004,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "melee",
+          "time": 2433.1920000000027,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "melee",
+          "time": 2499.892,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "melee",
+          "time": 2566.4919999999984,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "melee",
+          "time": 2616.4919999999984,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "melee",
+          "time": 2683.092000000004,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "melee",
+          "time": 2749.7920000000013,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "melee",
+          "time": 2816.4919999999984,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "melee",
+          "time": 2866.4919999999984,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "melee",
+          "time": 2933.1920000000027,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "melee",
+          "time": 2999.892,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "melee",
+          "time": 3049.7920000000013,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "melee",
+          "time": 3116.4919999999984,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "melee",
+          "time": 3166.4919999999984,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "melee",
+          "time": 3233.092000000004,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "melee",
+          "time": 3299.7920000000013,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "melee",
+          "time": 3366.392,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "melee",
+          "time": 3416.392,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "melee",
+          "time": 3483.1920000000027,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "melee",
+          "time": 3533.092000000004,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "melee",
+          "time": 3599.7920000000013,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "melee",
+          "time": 3683.1920000000027,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "melee",
+          "time": 3749.7920000000013,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "melee",
+          "time": 3816.4919999999984,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "melee",
+          "time": 3883.092000000004,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "melee",
+          "time": 3949.7920000000013,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "melee",
+          "time": 4016.4919999999984,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "melee",
+          "time": 4066.392,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "melee",
+          "time": 4133.092000000004,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "melee",
+          "time": 4199.792000000001,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "melee",
+          "time": 4266.392,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        }
+      ],
+      "cycleMs": 4000,
+      "recordingKind": "actual runtime RAF canvas.captureStream, not assembled stills",
+      "path": "melee-hidden-live-motion.webm",
+      "pose": "melee",
+      "visible": false,
+      "bytes": 340460,
+      "decode": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "width": 941,
+            "height": 1672,
+            "nb_read_frames": "45"
+          }
+        ],
+        "format": {
+          "duration": "4.116548"
+        }
+      },
+      "all_decoded_frames": 45,
+      "decoded_crop_world": [
+        125,
+        280,
+        925,
+        1060
+      ]
+    },
+    {
+      "mime": "video/webm;codecs=vp9",
+      "samples": [
+        {
+          "pose": "idle",
+          "time": 0,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 49.917999999997846,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 316.51800000000367,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 616.5180000000037,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 833.2180000000008,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "melee",
+          "time": 916.6180000000022,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 1083.2180000000008,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 1216.5180000000037,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 1283.2180000000008,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 1449.8179999999993,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 1516.5180000000037,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 1583.1180000000022,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 1716.5180000000037,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 1799.9179999999978,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 1866.5180000000037,
+          "primaryError": 0,
+          "supportError": 2.5421149729252077e-13,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 2033.1180000000022,
+          "primaryError": 0,
+          "supportError": 2.2737367544323206e-13,
+          "pixels": []
+        },
+        {
+          "pose": "melee",
+          "time": 2133.2180000000008,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 2266.5180000000037,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 2416.5180000000037,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 2499.8179999999993,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "melee",
+          "time": 2583.2180000000008,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "melee",
+          "time": 2716.417999999998,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 2783.118000000002,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 2916.5180000000037,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 2983.118000000002,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "melee",
+          "time": 3049.8179999999993,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "melee",
+          "time": 3183.118000000002,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 3249.8179999999993,
+          "primaryError": 0,
+          "supportError": 1.6077746776921858e-13,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 3399.7180000000008,
+          "primaryError": 0,
+          "supportError": 4.547473508864641e-13,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 3466.417999999998,
+          "primaryError": 0,
+          "supportError": 1.6077746776921858e-13,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 3516.417999999998,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 3649.7180000000008,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 3716.417999999998,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 3783.118000000002,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 3899.7180000000008,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 3983.118000000002,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 4049.7180000000008,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 4166.417999999998,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 4233.018000000004,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "melee",
+          "time": 4299.718000000001,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "melee",
+          "time": 4433.118000000002,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "melee",
+          "time": 4499.718000000001,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 4566.417999999998,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 4683.018000000004,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 4749.718000000001,
+          "primaryError": 0,
+          "supportError": 2.5421149729252077e-13,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 4883.118000000002,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 4949.718000000001,
+          "primaryError": 0,
+          "supportError": 3.410605131648481e-13,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 5016.317999999999,
+          "primaryError": 0,
+          "supportError": 3.410605131648481e-13,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 5149.718000000001,
+          "primaryError": 0,
+          "supportError": 1.1368683772161603e-13,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 5216.417999999998,
+          "primaryError": 0,
+          "supportError": 5.084229945850415e-13,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 5283.018000000004,
+          "primaryError": 0,
+          "supportError": 1.6077746776921858e-13,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 5333.018000000004,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 5483.018000000004,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 5566.417999999998,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 5633.018000000004,
+          "primaryError": 0,
+          "supportError": 2.2737367544323206e-13,
+          "pixels": []
+        },
+        {
+          "pose": "melee",
+          "time": 5766.417999999998,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "melee",
+          "time": 5916.317999999999,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "melee",
+          "time": 5983.018000000004,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "melee",
+          "time": 6049.718000000001,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 6116.317999999999,
+          "primaryError": 0,
+          "supportError": 1.6077746776921858e-13,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 6233.018000000004,
+          "primaryError": 0,
+          "supportError": 2.5421149729252077e-13,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 6299.618000000002,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 6433.018000000004,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 6499.718000000001,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        }
+      ],
+      "cycleMs": 4000,
+      "recordingKind": "actual runtime RAF canvas.captureStream, not assembled stills",
+      "path": "transitions-visible-live-motion.webm",
+      "pose": "transitions",
+      "visible": true,
+      "bytes": 415263,
+      "decode": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "width": 941,
+            "height": 1672,
+            "nb_read_frames": "51"
+          }
+        ],
+        "format": {
+          "duration": "6.367796"
+        }
+      },
+      "all_decoded_frames": 51,
+      "decoded_crop_world": [
+        125,
+        140,
+        925,
+        1060
+      ]
+    },
+    {
+      "mime": "video/webm;codecs=vp9",
+      "samples": [
+        {
+          "pose": "idle",
+          "time": 0,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 16.677999999999884,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 99.87800000000425,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 166.67799999999988,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 249.9780000000028,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 316.57800000000134,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 466.57800000000134,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 533.2780000000057,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "melee",
+          "time": 599.8780000000042,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "melee",
+          "time": 716.6779999999999,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "melee",
+          "time": 783.2780000000057,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 833.2780000000057,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 949.8780000000042,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 1016.5780000000013,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 1083.2780000000057,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 1183.2780000000057,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 1249.9780000000028,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 1316.5780000000013,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 1433.2780000000057,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 1516.5780000000013,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 1583.2780000000057,
+          "primaryError": 0,
+          "supportError": 1.6077746776921858e-13,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 1699.8780000000042,
+          "primaryError": 0,
+          "supportError": 1.1368683772161603e-13,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 1749.9780000000028,
+          "primaryError": 0,
+          "supportError": 1.1368683772161603e-13,
+          "pixels": []
+        },
+        {
+          "pose": "melee",
+          "time": 1799.8780000000042,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "melee",
+          "time": 1916.5780000000013,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "melee",
+          "time": 1983.1779999999999,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 2049.8780000000042,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 2316.5780000000013,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "melee",
+          "time": 2383.178,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "melee",
+          "time": 2516.5780000000013,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 2599.8780000000042,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 2749.8780000000042,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 2816.5780000000013,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "melee",
+          "time": 2866.5780000000013,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "melee",
+          "time": 2983.178,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "melee",
+          "time": 3049.7780000000057,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 3099.8780000000042,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 3216.478000000003,
+          "primaryError": 0,
+          "supportError": 4.547473508864641e-13,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 3316.478000000003,
+          "primaryError": 0,
+          "supportError": 1.1368683772161603e-13,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 3383.178,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 3499.7780000000057,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 3549.8780000000042,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 3599.7780000000057,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 3733.178,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 3799.7780000000057,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 3866.478000000003,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 3966.478000000003,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 4016.478000000003,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "melee",
+          "time": 4066.478000000003,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "melee",
+          "time": 4199.778000000006,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "melee",
+          "time": 4266.377999999997,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 4333.178,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 4433.078000000009,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 4483.078000000009,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 4533.178,
+          "primaryError": 0,
+          "supportError": 3.2155493553843715e-13,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 4649.778000000006,
+          "primaryError": 0,
+          "supportError": 1.1368683772161603e-13,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 4699.778000000006,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 4766.478000000003,
+          "primaryError": 0,
+          "supportError": 1.1368683772161603e-13,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 4816.377999999997,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 4916.478000000003,
+          "primaryError": 0,
+          "supportError": 1.6077746776921858e-13,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 4966.478000000003,
+          "primaryError": 0,
+          "supportError": 2.2737367544323206e-13,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 5016.377999999997,
+          "primaryError": 0,
+          "supportError": 1.6077746776921858e-13,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 5083.178,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 5199.678,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 5266.377999999997,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 5333.078000000009,
+          "primaryError": 0,
+          "supportError": 1.6077746776921858e-13,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 5449.778000000006,
+          "primaryError": 0,
+          "supportError": 2.5421149729252077e-13,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 5499.778000000006,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "melee",
+          "time": 5549.778000000006,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "melee",
+          "time": 5666.478000000003,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "melee",
+          "time": 5749.678,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "melee",
+          "time": 5816.478000000003,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 5866.478000000003,
+          "primaryError": 0,
+          "supportError": 2.5421149729252077e-13,
+          "pixels": []
+        },
+        {
+          "pose": "rifle",
+          "time": 5966.478000000003,
+          "primaryError": 0,
+          "supportError": 3.2155493553843715e-13,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 6016.377999999997,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 6133.078000000009,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 6183.078000000009,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "pistol",
+          "time": 6249.678,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 6299.678,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 6433.078000000009,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        },
+        {
+          "pose": "idle",
+          "time": 6516.377999999997,
+          "primaryError": 0,
+          "supportError": 0,
+          "pixels": []
+        }
+      ],
+      "cycleMs": 4000,
+      "recordingKind": "actual runtime RAF canvas.captureStream, not assembled stills",
+      "path": "transitions-hidden-live-motion.webm",
+      "pose": "transitions",
+      "visible": false,
+      "bytes": 345176,
+      "decode": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "width": 941,
+            "height": 1672,
+            "nb_read_frames": "52"
+          }
+        ],
+        "format": {
+          "duration": "6.430124"
+        }
+      },
+      "all_decoded_frames": 52,
+      "decoded_crop_world": [
+        125,
+        140,
+        925,
+        1060
+      ]
+    }
+  ],
+  "all_samples_contact_checks_passed": true,
+  "review_limit": "Recorded continuous playback and per-RAF material/contact checks; final human artistic approval is still required."
+}

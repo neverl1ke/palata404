@@ -1,0 +1,17 @@
+{
+  "stage": "incomplete-not-integrated",
+  "full_body_generation": "rejected by generator (output moderation)",
+  "isolated_candidate": {
+    "file": "Sources/female-rifle-arms-candidate-not-integrated.png",
+    "mode": "RGBA",
+    "size": [
+      1536,
+      1024
+    ],
+    "alpha_nonzero": 327947,
+    "alpha_weak_1_16": 14997,
+    "reason": "Female-specific arms generated, but relaxed right fingers do not match the existing pistol-grip contact; broad translucent halo and registration need separate art cleanup. Not substituted with deformed idle arms. No female runtime PNG or rig changed."
+  },
+  "pistol": "not created; first pose art has not passed contact/alpha acceptance",
+  "melee": "not created; first pose art has not passed contact/alpha acceptance"
+}

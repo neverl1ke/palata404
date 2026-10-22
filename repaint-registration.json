@@ -1,0 +1,211 @@
+{
+  "baseline": "184e392",
+  "operations": [
+    {
+      "pose": "rifle",
+      "side": "left",
+      "source": "rifle-left-local-repaint.png",
+      "source_sha256": "143ea52b3377d0418fa934714d1fa2aaaae10f9ea08bcb31ecb8ec4e42ac2293",
+      "box": [
+        600,
+        580,
+        800,
+        810
+      ],
+      "points": [
+        [
+          665,
+          650
+        ],
+        [
+          684,
+          656
+        ],
+        [
+          711,
+          669
+        ],
+        [
+          733,
+          678
+        ],
+        [
+          735,
+          695
+        ],
+        [
+          725,
+          718
+        ],
+        [
+          709,
+          732
+        ],
+        [
+          686,
+          730
+        ],
+        [
+          667,
+          715
+        ],
+        [
+          660,
+          692
+        ]
+      ],
+      "front_preservation": "accepted curled fingers retained; broken pistol tip replaced; rifle material returned to prop; detached extraction crumbs removed"
+    },
+    {
+      "pose": "pistol",
+      "side": "right",
+      "source": "pistol-local-repaint.png",
+      "source_sha256": "5c5e5d9e81ad4750660aaa60fb3e61d351ffe4d70a1639f694f3b1d217146dbc",
+      "box": [
+        219,
+        260,
+        256,
+        310
+      ],
+      "points": [
+        [
+          224,
+          269
+        ],
+        [
+          231,
+          262
+        ],
+        [
+          241,
+          262
+        ],
+        [
+          251,
+          268
+        ],
+        [
+          253,
+          279
+        ],
+        [
+          246,
+          291
+        ],
+        [
+          245,
+          307
+        ],
+        [
+          229,
+          309
+        ],
+        [
+          220,
+          292
+        ]
+      ],
+      "front_preservation": "accepted curled fingers retained; broken pistol tip replaced; rifle material returned to prop; detached extraction crumbs removed"
+    },
+    {
+      "pose": "rifle",
+      "side": "right",
+      "source": "rifle-right-local-repaint.png",
+      "source_sha256": "53fed3590742b7075e52e1f6d0970785236e9c5222c5e28b5637a3623e194cd9",
+      "box": [
+        315,
+        545,
+        530,
+        705
+      ],
+      "points": [
+        [
+          342,
+          618
+        ],
+        [
+          362,
+          623
+        ],
+        [
+          388,
+          633
+        ],
+        [
+          410,
+          644
+        ],
+        [
+          418,
+          657
+        ],
+        [
+          407,
+          664
+        ],
+        [
+          386,
+          655
+        ],
+        [
+          364,
+          649
+        ],
+        [
+          346,
+          640
+        ]
+      ],
+      "front_preservation": "accepted curled fingers retained; broken pistol tip replaced; rifle material returned to prop; detached extraction crumbs removed"
+    },
+    {
+      "pose": "melee",
+      "side": "right",
+      "source": "melee-local-repaint.png",
+      "source_sha256": "bea7528e3d9947d9daf494c399d787a4bdb042314716124330734bba25b4957d",
+      "box": [
+        155,
+        780,
+        290,
+        960
+      ],
+      "points": [
+        [
+          219,
+          853
+        ],
+        [
+          231,
+          856
+        ],
+        [
+          239,
+          870
+        ],
+        [
+          234,
+          888
+        ],
+        [
+          223,
+          909
+        ],
+        [
+          213,
+          912
+        ],
+        [
+          210,
+          897
+        ],
+        [
+          213,
+          876
+        ]
+      ],
+      "front_preservation": "accepted curled fingers retained; broken pistol tip replaced; rifle material returned to prop; detached extraction crumbs removed"
+    }
+  ],
+  "transferred_thigh_pixels": 372,
+  "original_base_unchanged": true
+}

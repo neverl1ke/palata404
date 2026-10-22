@@ -1,0 +1,28 @@
+{
+  "revision": "184e392",
+  "files": {
+    "avatar-core/assets/male/hands/left-arm-source.png": "7672888bb59cfbec3cca3dcc7be824bda4390450bd9af69df05d1601949f5ab4",
+    "avatar-core/assets/male/hands/left-open-hand-source.png": "9dc61008165e0ef3d6d3e5149c6d7508765f3b6078a5e5cdfcc01a5c62ebcde4",
+    "avatar-core/assets/male/head.png": "88006d6e7be23368d6ca8cfbdb54da1d9672eab37411530f8debdb24fc47c9d0",
+    "avatar-core/assets/male/leftArmSkin.png": "7672888bb59cfbec3cca3dcc7be824bda4390450bd9af69df05d1601949f5ab4",
+    "avatar-core/assets/male/leftFore.png": "c8dfcf69053098c81774709bcccea24c944d39cc92f8d298790cc02bab3d2723",
+    "avatar-core/assets/male/leftHand.png": "92ead03371e9bd8b78379d57e7d3bb26d887b52b673db26c514d3c99ba5111f6",
+    "avatar-core/assets/male/leftHandSkin.png": "9dc61008165e0ef3d6d3e5149c6d7508765f3b6078a5e5cdfcc01a5c62ebcde4",
+    "avatar-core/assets/male/leftUpper.png": "36802602013630eff9a7710c32a2f930aae467d8f44d8f7c3ace82355e7fb12f",
+    "avatar-core/assets/male/lower.png": "7e69f0a714d6a9dd55662cd0cb4bf1cdbb9fd54df2653ff308e055b9e0049917",
+    "avatar-core/assets/male/reference-art/melee-right-arm.png": "c907e54fd0168c878b93e74d74b29657c6471953878eea869629290c9608d804",
+    "avatar-core/assets/male/reference-art/melee-right-front.png": "4b1e78f05c6bb8eaa7222da23ba7faa07b9fd302a5c8089a4a5da89a24d9452e",
+    "avatar-core/assets/male/reference-art/pistol-right-arm.png": "44f1caffb1e7bb7e431b7e060ac675a6e35adcf815a14e539f5d67165f844173",
+    "avatar-core/assets/male/reference-art/pistol-right-front.png": "c569e63f2e23f4ef78c1b2310e4ac768c1eaa65494f06aa8adad471de6e98532",
+    "avatar-core/assets/male/reference-art/rifle-left-arm.png": "22c004c884b1d2f071c70a3dbe395d8e2605b84601c083194377f47a2a8e54d9",
+    "avatar-core/assets/male/reference-art/rifle-left-front.png": "13fd1646c0e75947c82225575a491d1de3dd5d889dc49f157770d00463fa5778",
+    "avatar-core/assets/male/reference-art/rifle-right-arm.png": "77dc58e6470c03cf41eb91aaecb9b540f6ed66b1873f23f02a8b73dbc9b1158b",
+    "avatar-core/assets/male/reference-art/rifle-right-front.png": "53a7e1d8a406eaef55b2f004687213df381badf4d46ba1ee35c59295b48b2391",
+    "avatar-core/assets/male/rightFore.png": "745fb362cbdcb4f24b78ce3afbc44d695645edae94ee398e2e53068bd55f0743",
+    "avatar-core/assets/male/rightHand.png": "821a8267199c4bce993f3834a9b5fda6942803d2b0b21c75d86fe93f5d4936e0",
+    "avatar-core/assets/male/rightUpper.png": "30db32f532833277edaec333a24241f4ce5a9551709a769dfcfc71c86c836b7c",
+    "avatar-core/assets/male/torso.png": "dd6e76f800e8fa88ff06e90961bf54a7a573e372790d0de7d1e437d47f912882",
+    "avatar-core/assets/weapons/reference-art/rifle.png": "1f41a849450ca0972bdb5d1f375928a64a01b9fcd4bf05847bf6d1e6269c93bf",
+    "avatar-core/rigs/male_rig.json": "a06c8de7bc8208414e1d6aff1925c9ca5f988f828356ee19a2dfc5487f402f79"
+  }
+}

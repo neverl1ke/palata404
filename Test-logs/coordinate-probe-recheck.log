@@ -1,0 +1,6 @@
+test_restored_visible_object_pixels_keep_the_supplied_reference_rgb (tests.test_contact_surfaces.ContactSurfaceBrowserTests.test_restored_visible_object_pixels_keep_the_supplied_reference_rgb) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 5.348s
+
+OK
