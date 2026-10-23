@@ -1,0 +1,35 @@
+[
+  {
+    "id": "gear-aks",
+    "source": "avatar-core/assets/weapons/reference-art/rifle.png",
+    "source_sha256": "0cb1188921c993d0d569980b05cf5322c03282f46919ad6e668e2eb3ec9e7d50",
+    "output": "avatar-core/assets/weapons/original-visible/weapon_rifle.png",
+    "output_sha256": "83a3fabc9813851dcf7386938c067b7f64e02d7d1db75aa828e4accbd67660ab",
+    "unchanged_surviving_RGBA": true,
+    "removed_skin_pixels": 881,
+    "status": "PARTIAL",
+    "missing": "Full material-only original including concealed grip is unavailable in checked source layers."
+  },
+  {
+    "id": "gear-pm",
+    "source": "avatar-core/assets/weapons/reference-art/pistol.png",
+    "source_sha256": "703d947d17d9f7da282eedc3d6865011a036b73415bcc88e0bb9610a87d37f45",
+    "output": "avatar-core/assets/weapons/original-visible/weapon_pistol.png",
+    "output_sha256": "d4b8bf62603e83df1e22ded0e3a4f9e382b6c6c916e41723ce7d83773ccfe29e",
+    "unchanged_surviving_RGBA": true,
+    "removed_skin_pixels": 510,
+    "status": "PARTIAL",
+    "missing": "Full material-only original including concealed grip is unavailable in checked source layers."
+  },
+  {
+    "id": "gear-knife",
+    "source": "avatar-core/assets/weapons/reference-art/melee.png",
+    "source_sha256": "458a1aeeb978c63d6c555f3a4b2c9b4a1bcbb000b1e2e3eace6b551c7695b9e6",
+    "output": "avatar-core/assets/weapons/original-visible/weapon_knife.png",
+    "output_sha256": "23a21c3b22fd4639b3b2b60ff395a85b38ac35103f0395e4d5504040a4ea2173",
+    "unchanged_surviving_RGBA": true,
+    "removed_skin_pixels": 0,
+    "status": "PARTIAL",
+    "missing": "Full material-only original including concealed grip is unavailable in checked source layers."
+  }
+]

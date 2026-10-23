@@ -1,0 +1,170 @@
+[
+  {
+    "gender": "male",
+    "item": "gear-knife",
+    "time_ms": 0,
+    "primary_error": 0,
+    "support_error": 0
+  },
+  {
+    "gender": "male",
+    "item": "gear-knife",
+    "time_ms": 1000,
+    "primary_error": 0,
+    "support_error": 0
+  },
+  {
+    "gender": "male",
+    "item": "gear-knife",
+    "time_ms": 3000,
+    "primary_error": 0,
+    "support_error": 0
+  },
+  {
+    "gender": "male",
+    "item": "gear-knife",
+    "time_ms": 4000,
+    "primary_error": 0,
+    "support_error": 0
+  },
+  {
+    "gender": "male",
+    "item": "gear-pm",
+    "time_ms": 0,
+    "primary_error": 0,
+    "support_error": 0
+  },
+  {
+    "gender": "male",
+    "item": "gear-pm",
+    "time_ms": 1000,
+    "primary_error": 0,
+    "support_error": 0
+  },
+  {
+    "gender": "male",
+    "item": "gear-pm",
+    "time_ms": 3000,
+    "primary_error": 0,
+    "support_error": 0
+  },
+  {
+    "gender": "male",
+    "item": "gear-pm",
+    "time_ms": 4000,
+    "primary_error": 0,
+    "support_error": 0
+  },
+  {
+    "gender": "male",
+    "item": "gear-aks",
+    "time_ms": 0,
+    "primary_error": 0,
+    "support_error": 1.1368683772161603e-13
+  },
+  {
+    "gender": "male",
+    "item": "gear-aks",
+    "time_ms": 1000,
+    "primary_error": 0,
+    "support_error": 1.1368683772161603e-13
+  },
+  {
+    "gender": "male",
+    "item": "gear-aks",
+    "time_ms": 3000,
+    "primary_error": 0,
+    "support_error": 1.6077746776921858e-13
+  },
+  {
+    "gender": "male",
+    "item": "gear-aks",
+    "time_ms": 4000,
+    "primary_error": 0,
+    "support_error": 1.1368683772161603e-13
+  },
+  {
+    "gender": "female",
+    "item": "gear-knife",
+    "time_ms": 0,
+    "primary_error": 0,
+    "support_error": 0
+  },
+  {
+    "gender": "female",
+    "item": "gear-knife",
+    "time_ms": 1000,
+    "primary_error": 0,
+    "support_error": 0
+  },
+  {
+    "gender": "female",
+    "item": "gear-knife",
+    "time_ms": 3000,
+    "primary_error": 0,
+    "support_error": 0
+  },
+  {
+    "gender": "female",
+    "item": "gear-knife",
+    "time_ms": 4000,
+    "primary_error": 0,
+    "support_error": 0
+  },
+  {
+    "gender": "female",
+    "item": "gear-pm",
+    "time_ms": 0,
+    "primary_error": 0,
+    "support_error": 0
+  },
+  {
+    "gender": "female",
+    "item": "gear-pm",
+    "time_ms": 1000,
+    "primary_error": 0,
+    "support_error": 0
+  },
+  {
+    "gender": "female",
+    "item": "gear-pm",
+    "time_ms": 3000,
+    "primary_error": 0,
+    "support_error": 0
+  },
+  {
+    "gender": "female",
+    "item": "gear-pm",
+    "time_ms": 4000,
+    "primary_error": 0,
+    "support_error": 0
+  },
+  {
+    "gender": "female",
+    "item": "gear-aks",
+    "time_ms": 0,
+    "primary_error": 0,
+    "support_error": 1.6077746776921858e-13
+  },
+  {
+    "gender": "female",
+    "item": "gear-aks",
+    "time_ms": 1000,
+    "primary_error": 0,
+    "support_error": 1.6077746776921858e-13
+  },
+  {
+    "gender": "female",
+    "item": "gear-aks",
+    "time_ms": 3000,
+    "primary_error": 0,
+    "support_error": 0
+  },
+  {
+    "gender": "female",
+    "item": "gear-aks",
+    "time_ms": 4000,
+    "primary_error": 0,
+    "support_error": 1.6077746776921858e-13
+  }
+]

@@ -1,0 +1,41 @@
+{
+  "cases": [
+    [
+      "male",
+      "gear-knife"
+    ],
+    [
+      "male",
+      "gear-pm"
+    ],
+    [
+      "male",
+      "gear-aks"
+    ],
+    [
+      "female",
+      "gear-knife"
+    ],
+    [
+      "female",
+      "gear-pm"
+    ],
+    [
+      "female",
+      "gear-aks"
+    ]
+  ],
+  "reload_selected_item": "gear-aks",
+  "js_errors": [],
+  "http_errors": [
+    {
+      "url": "http://127.0.0.1:46785/Game/background.jpg",
+      "status": 404
+    },
+    {
+      "url": "http://127.0.0.1:46785/Game/background.jpg",
+      "status": 404
+    }
+  ],
+  "inventory_granted_only_in_isolated_test": true
+}

@@ -1,0 +1,12 @@
+/* This crop is only the trial catalog icon; never the equipped PNG. */
+[data-wardrobe-card="hair-trial-braided-curls"] .wardrobe-item-image {
+    overflow: hidden;
+}
+[data-wardrobe-card="hair-trial-braided-curls"] .wardrobe-item-image > img:not(.game-icon) {
+    width: 400%;
+    height: 400%;
+    max-width: none;
+    max-height: none;
+    left: -150%;
+    top: 0;
+}

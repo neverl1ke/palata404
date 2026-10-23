@@ -1,0 +1,582 @@
+{
+  "male": {
+    "collar": [
+      {
+        "id": "diagnostic-collar",
+        "segment": "torso",
+        "source": "assets/diagnostics/male-collar.png",
+        "placement": {
+          "x": 0,
+          "y": 0,
+          "width": 941,
+          "height": 1672
+        },
+        "genders": [
+          "male"
+        ]
+      }
+    ],
+    "waist-top": [
+      {
+        "id": "diagnostic-waist-top",
+        "segment": "torso",
+        "source": "assets/diagnostics/male-waist-top.png",
+        "placement": {
+          "x": 0,
+          "y": 0,
+          "width": 941,
+          "height": 1672
+        },
+        "genders": [
+          "male"
+        ]
+      }
+    ],
+    "trousers": [
+      {
+        "id": "diagnostic-trousers",
+        "segment": "lower",
+        "source": "assets/diagnostics/male-trousers.png",
+        "placement": {
+          "x": 0,
+          "y": 0,
+          "width": 941,
+          "height": 1672
+        },
+        "genders": [
+          "male"
+        ]
+      }
+    ],
+    "shoes": [
+      {
+        "id": "diagnostic-shoes",
+        "segment": "lower",
+        "source": "assets/diagnostics/male-shoes.png",
+        "placement": {
+          "x": 0,
+          "y": 0,
+          "width": 941,
+          "height": 1672
+        },
+        "genders": [
+          "male"
+        ]
+      }
+    ],
+    "short-sleeve": [
+      {
+        "id": "diagnostic-right-short-sleeve",
+        "segment": "rightUpper",
+        "skinned": true,
+        "source": "assets/diagnostics/male-right-short-sleeve-idle.png",
+        "placement": {
+          "x": 82,
+          "y": 311,
+          "width": 253,
+          "height": 701
+        },
+        "poseSources": {
+          "rifle": {
+            "image": "assets/diagnostics/male-rifle-right-short-sleeve.png",
+            "frontImage": "assets/diagnostics/male-rifle-right-short-sleeve-front.png",
+            "completeImage": "assets/diagnostics/male-rifle-right-short-sleeve-complete.png"
+          },
+          "pistol": {
+            "image": "assets/diagnostics/male-pistol-right-short-sleeve.png",
+            "frontImage": "assets/diagnostics/male-pistol-right-short-sleeve-front.png",
+            "completeImage": "assets/diagnostics/male-pistol-right-short-sleeve-complete.png"
+          },
+          "melee": {
+            "image": "assets/diagnostics/male-melee-right-short-sleeve.png",
+            "frontImage": "assets/diagnostics/male-melee-right-short-sleeve-front.png",
+            "completeImage": "assets/diagnostics/male-melee-right-short-sleeve-complete.png"
+          }
+        },
+        "genders": [
+          "male"
+        ]
+      },
+      {
+        "id": "diagnostic-left-short-sleeve",
+        "segment": "leftUpper",
+        "skinned": true,
+        "source": "assets/diagnostics/male-left-short-sleeve-idle.png",
+        "placement": {
+          "x": 612,
+          "y": 311,
+          "width": 291,
+          "height": 718
+        },
+        "poseSources": {
+          "rifle": {
+            "image": "assets/diagnostics/male-rifle-left-short-sleeve.png",
+            "frontImage": "assets/diagnostics/male-rifle-left-short-sleeve-front.png",
+            "completeImage": "assets/diagnostics/male-rifle-left-short-sleeve-complete.png"
+          }
+        },
+        "genders": [
+          "male"
+        ]
+      }
+    ],
+    "long-sleeve": [
+      {
+        "id": "diagnostic-right-long-sleeve",
+        "segment": "rightUpper",
+        "skinned": true,
+        "source": "assets/diagnostics/male-right-long-sleeve-idle.png",
+        "placement": {
+          "x": 82,
+          "y": 311,
+          "width": 253,
+          "height": 701
+        },
+        "poseSources": {
+          "rifle": {
+            "image": "assets/diagnostics/male-rifle-right-long-sleeve.png",
+            "frontImage": "assets/diagnostics/male-rifle-right-long-sleeve-front.png",
+            "completeImage": "assets/diagnostics/male-rifle-right-long-sleeve-complete.png"
+          },
+          "pistol": {
+            "image": "assets/diagnostics/male-pistol-right-long-sleeve.png",
+            "frontImage": "assets/diagnostics/male-pistol-right-long-sleeve-front.png",
+            "completeImage": "assets/diagnostics/male-pistol-right-long-sleeve-complete.png"
+          },
+          "melee": {
+            "image": "assets/diagnostics/male-melee-right-long-sleeve.png",
+            "frontImage": "assets/diagnostics/male-melee-right-long-sleeve-front.png",
+            "completeImage": "assets/diagnostics/male-melee-right-long-sleeve-complete.png"
+          }
+        },
+        "genders": [
+          "male"
+        ]
+      },
+      {
+        "id": "diagnostic-left-long-sleeve",
+        "segment": "leftUpper",
+        "skinned": true,
+        "source": "assets/diagnostics/male-left-long-sleeve-idle.png",
+        "placement": {
+          "x": 612,
+          "y": 311,
+          "width": 291,
+          "height": 718
+        },
+        "poseSources": {
+          "rifle": {
+            "image": "assets/diagnostics/male-rifle-left-long-sleeve.png",
+            "frontImage": "assets/diagnostics/male-rifle-left-long-sleeve-front.png",
+            "completeImage": "assets/diagnostics/male-rifle-left-long-sleeve-complete.png"
+          }
+        },
+        "genders": [
+          "male"
+        ]
+      }
+    ],
+    "cuff": [
+      {
+        "id": "diagnostic-right-cuff",
+        "segment": "rightUpper",
+        "skinned": true,
+        "source": "assets/diagnostics/male-right-cuff-idle.png",
+        "placement": {
+          "x": 82,
+          "y": 311,
+          "width": 253,
+          "height": 701
+        },
+        "poseSources": {
+          "rifle": {
+            "image": "assets/diagnostics/male-rifle-right-cuff.png",
+            "frontImage": "assets/diagnostics/male-rifle-right-cuff-front.png",
+            "completeImage": "assets/diagnostics/male-rifle-right-cuff-complete.png"
+          },
+          "pistol": {
+            "image": "assets/diagnostics/male-pistol-right-cuff.png",
+            "frontImage": "assets/diagnostics/male-pistol-right-cuff-front.png",
+            "completeImage": "assets/diagnostics/male-pistol-right-cuff-complete.png"
+          },
+          "melee": {
+            "image": "assets/diagnostics/male-melee-right-cuff.png",
+            "frontImage": "assets/diagnostics/male-melee-right-cuff-front.png",
+            "completeImage": "assets/diagnostics/male-melee-right-cuff-complete.png"
+          }
+        },
+        "genders": [
+          "male"
+        ]
+      },
+      {
+        "id": "diagnostic-left-cuff",
+        "segment": "leftUpper",
+        "skinned": true,
+        "source": "assets/diagnostics/male-left-cuff-idle.png",
+        "placement": {
+          "x": 612,
+          "y": 311,
+          "width": 291,
+          "height": 718
+        },
+        "poseSources": {
+          "rifle": {
+            "image": "assets/diagnostics/male-rifle-left-cuff.png",
+            "frontImage": "assets/diagnostics/male-rifle-left-cuff-front.png",
+            "completeImage": "assets/diagnostics/male-rifle-left-cuff-complete.png"
+          }
+        },
+        "genders": [
+          "male"
+        ]
+      }
+    ],
+    "glove": [
+      {
+        "id": "diagnostic-right-glove",
+        "segment": "rightHand",
+        "skinned": true,
+        "source": "assets/diagnostics/male-right-glove-idle.png",
+        "placement": {
+          "x": 82,
+          "y": 311,
+          "width": 253,
+          "height": 701
+        },
+        "poseSources": {
+          "rifle": {
+            "image": "assets/diagnostics/male-rifle-right-glove.png",
+            "frontImage": "assets/diagnostics/male-rifle-right-glove-front.png",
+            "completeImage": "assets/diagnostics/male-rifle-right-glove-complete.png"
+          },
+          "pistol": {
+            "image": "assets/diagnostics/male-pistol-right-glove.png",
+            "frontImage": "assets/diagnostics/male-pistol-right-glove-front.png",
+            "completeImage": "assets/diagnostics/male-pistol-right-glove-complete.png"
+          },
+          "melee": {
+            "image": "assets/diagnostics/male-melee-right-glove.png",
+            "frontImage": "assets/diagnostics/male-melee-right-glove-front.png",
+            "completeImage": "assets/diagnostics/male-melee-right-glove-complete.png"
+          }
+        },
+        "genders": [
+          "male"
+        ]
+      },
+      {
+        "id": "diagnostic-left-glove",
+        "segment": "leftHand",
+        "skinned": true,
+        "source": "assets/diagnostics/male-left-glove-idle.png",
+        "placement": {
+          "x": 612,
+          "y": 311,
+          "width": 291,
+          "height": 718
+        },
+        "poseSources": {
+          "rifle": {
+            "image": "assets/diagnostics/male-rifle-left-glove.png",
+            "frontImage": "assets/diagnostics/male-rifle-left-glove-front.png",
+            "completeImage": "assets/diagnostics/male-rifle-left-glove-complete.png"
+          }
+        },
+        "genders": [
+          "male"
+        ]
+      }
+    ]
+  },
+  "female": {
+    "collar": [
+      {
+        "id": "diagnostic-collar",
+        "segment": "torso",
+        "source": "assets/diagnostics/female-collar.png",
+        "placement": {
+          "x": 0,
+          "y": 0,
+          "width": 941,
+          "height": 1672
+        },
+        "genders": [
+          "female"
+        ]
+      }
+    ],
+    "waist-top": [
+      {
+        "id": "diagnostic-waist-top",
+        "segment": "torso",
+        "source": "assets/diagnostics/female-waist-top.png",
+        "placement": {
+          "x": 0,
+          "y": 0,
+          "width": 941,
+          "height": 1672
+        },
+        "genders": [
+          "female"
+        ]
+      }
+    ],
+    "trousers": [
+      {
+        "id": "diagnostic-trousers",
+        "segment": "lower",
+        "source": "assets/diagnostics/female-trousers.png",
+        "placement": {
+          "x": 0,
+          "y": 0,
+          "width": 941,
+          "height": 1672
+        },
+        "genders": [
+          "female"
+        ]
+      }
+    ],
+    "shoes": [
+      {
+        "id": "diagnostic-shoes",
+        "segment": "lower",
+        "source": "assets/diagnostics/female-shoes.png",
+        "placement": {
+          "x": 0,
+          "y": 0,
+          "width": 941,
+          "height": 1672
+        },
+        "genders": [
+          "female"
+        ]
+      }
+    ],
+    "short-sleeve": [
+      {
+        "id": "diagnostic-right-short-sleeve",
+        "segment": "rightUpper",
+        "skinned": true,
+        "source": "assets/diagnostics/female-right-short-sleeve-idle.png",
+        "placement": {
+          "x": 165,
+          "y": 300,
+          "width": 186,
+          "height": 671
+        },
+        "poseSources": {
+          "melee": {
+            "image": "assets/diagnostics/female-melee-right-short-sleeve.png",
+            "frontImage": "assets/diagnostics/female-melee-right-short-sleeve-front.png",
+            "completeImage": "assets/diagnostics/female-melee-right-short-sleeve-complete.png"
+          },
+          "pistol": {
+            "image": "assets/diagnostics/female-pistol-right-short-sleeve.png",
+            "frontImage": "assets/diagnostics/female-pistol-right-short-sleeve-front.png",
+            "completeImage": "assets/diagnostics/female-pistol-right-short-sleeve-complete.png"
+          },
+          "rifle": {
+            "image": "assets/diagnostics/female-rifle-right-short-sleeve.png",
+            "frontImage": "assets/diagnostics/female-rifle-right-short-sleeve-front.png",
+            "completeImage": "assets/diagnostics/female-rifle-right-short-sleeve-complete.png"
+          }
+        },
+        "genders": [
+          "female"
+        ]
+      },
+      {
+        "id": "diagnostic-left-short-sleeve",
+        "segment": "leftUpper",
+        "skinned": true,
+        "source": "assets/diagnostics/female-left-short-sleeve-idle.png",
+        "placement": {
+          "x": 595,
+          "y": 301,
+          "width": 188,
+          "height": 670
+        },
+        "poseSources": {
+          "rifle": {
+            "image": "assets/diagnostics/female-rifle-left-short-sleeve.png",
+            "frontImage": "assets/diagnostics/female-rifle-left-short-sleeve-front.png",
+            "completeImage": "assets/diagnostics/female-rifle-left-short-sleeve-complete.png"
+          }
+        },
+        "genders": [
+          "female"
+        ]
+      }
+    ],
+    "long-sleeve": [
+      {
+        "id": "diagnostic-right-long-sleeve",
+        "segment": "rightUpper",
+        "skinned": true,
+        "source": "assets/diagnostics/female-right-long-sleeve-idle.png",
+        "placement": {
+          "x": 165,
+          "y": 300,
+          "width": 186,
+          "height": 671
+        },
+        "poseSources": {
+          "melee": {
+            "image": "assets/diagnostics/female-melee-right-long-sleeve.png",
+            "frontImage": "assets/diagnostics/female-melee-right-long-sleeve-front.png",
+            "completeImage": "assets/diagnostics/female-melee-right-long-sleeve-complete.png"
+          },
+          "pistol": {
+            "image": "assets/diagnostics/female-pistol-right-long-sleeve.png",
+            "frontImage": "assets/diagnostics/female-pistol-right-long-sleeve-front.png",
+            "completeImage": "assets/diagnostics/female-pistol-right-long-sleeve-complete.png"
+          },
+          "rifle": {
+            "image": "assets/diagnostics/female-rifle-right-long-sleeve.png",
+            "frontImage": "assets/diagnostics/female-rifle-right-long-sleeve-front.png",
+            "completeImage": "assets/diagnostics/female-rifle-right-long-sleeve-complete.png"
+          }
+        },
+        "genders": [
+          "female"
+        ]
+      },
+      {
+        "id": "diagnostic-left-long-sleeve",
+        "segment": "leftUpper",
+        "skinned": true,
+        "source": "assets/diagnostics/female-left-long-sleeve-idle.png",
+        "placement": {
+          "x": 595,
+          "y": 301,
+          "width": 188,
+          "height": 670
+        },
+        "poseSources": {
+          "rifle": {
+            "image": "assets/diagnostics/female-rifle-left-long-sleeve.png",
+            "frontImage": "assets/diagnostics/female-rifle-left-long-sleeve-front.png",
+            "completeImage": "assets/diagnostics/female-rifle-left-long-sleeve-complete.png"
+          }
+        },
+        "genders": [
+          "female"
+        ]
+      }
+    ],
+    "cuff": [
+      {
+        "id": "diagnostic-right-cuff",
+        "segment": "rightUpper",
+        "skinned": true,
+        "source": "assets/diagnostics/female-right-cuff-idle.png",
+        "placement": {
+          "x": 165,
+          "y": 300,
+          "width": 186,
+          "height": 671
+        },
+        "poseSources": {
+          "melee": {
+            "image": "assets/diagnostics/female-melee-right-cuff.png",
+            "frontImage": "assets/diagnostics/female-melee-right-cuff-front.png",
+            "completeImage": "assets/diagnostics/female-melee-right-cuff-complete.png"
+          },
+          "pistol": {
+            "image": "assets/diagnostics/female-pistol-right-cuff.png",
+            "frontImage": "assets/diagnostics/female-pistol-right-cuff-front.png",
+            "completeImage": "assets/diagnostics/female-pistol-right-cuff-complete.png"
+          },
+          "rifle": {
+            "image": "assets/diagnostics/female-rifle-right-cuff.png",
+            "frontImage": "assets/diagnostics/female-rifle-right-cuff-front.png",
+            "completeImage": "assets/diagnostics/female-rifle-right-cuff-complete.png"
+          }
+        },
+        "genders": [
+          "female"
+        ]
+      },
+      {
+        "id": "diagnostic-left-cuff",
+        "segment": "leftUpper",
+        "skinned": true,
+        "source": "assets/diagnostics/female-left-cuff-idle.png",
+        "placement": {
+          "x": 595,
+          "y": 301,
+          "width": 188,
+          "height": 670
+        },
+        "poseSources": {
+          "rifle": {
+            "image": "assets/diagnostics/female-rifle-left-cuff.png",
+            "frontImage": "assets/diagnostics/female-rifle-left-cuff-front.png",
+            "completeImage": "assets/diagnostics/female-rifle-left-cuff-complete.png"
+          }
+        },
+        "genders": [
+          "female"
+        ]
+      }
+    ],
+    "glove": [
+      {
+        "id": "diagnostic-right-glove",
+        "segment": "rightHand",
+        "skinned": true,
+        "source": "assets/diagnostics/female-right-glove-idle.png",
+        "placement": {
+          "x": 165,
+          "y": 300,
+          "width": 186,
+          "height": 671
+        },
+        "poseSources": {
+          "melee": {
+            "image": "assets/diagnostics/female-melee-right-glove.png",
+            "frontImage": "assets/diagnostics/female-melee-right-glove-front.png",
+            "completeImage": "assets/diagnostics/female-melee-right-glove-complete.png"
+          },
+          "pistol": {
+            "image": "assets/diagnostics/female-pistol-right-glove.png",
+            "frontImage": "assets/diagnostics/female-pistol-right-glove-front.png",
+            "completeImage": "assets/diagnostics/female-pistol-right-glove-complete.png"
+          },
+          "rifle": {
+            "image": "assets/diagnostics/female-rifle-right-glove.png",
+            "frontImage": "assets/diagnostics/female-rifle-right-glove-front.png",
+            "completeImage": "assets/diagnostics/female-rifle-right-glove-complete.png"
+          }
+        },
+        "genders": [
+          "female"
+        ]
+      },
+      {
+        "id": "diagnostic-left-glove",
+        "segment": "leftHand",
+        "skinned": true,
+        "source": "assets/diagnostics/female-left-glove-idle.png",
+        "placement": {
+          "x": 595,
+          "y": 301,
+          "width": 188,
+          "height": 670
+        },
+        "poseSources": {
+          "rifle": {
+            "image": "assets/diagnostics/female-rifle-left-glove.png",
+            "frontImage": "assets/diagnostics/female-rifle-left-glove-front.png",
+            "completeImage": "assets/diagnostics/female-rifle-left-glove-complete.png"
+          }
+        },
+        "genders": [
+          "female"
+        ]
+      }
+    ]
+  }
+}

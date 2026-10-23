@@ -1,0 +1,13 @@
+test_actual_game_inventory_both_loadouts_and_reload_use_existing_save_keys (tests.test_requested_corrections.RequestedBrowserTests.test_actual_game_inventory_both_loadouts_and_reload_use_existing_save_keys) ... ok
+test_catalog_switch_hide_and_gender_rebind_preserve_contact_and_anatomy (tests.test_requested_corrections.RequestedBrowserTests.test_catalog_switch_hide_and_gender_rebind_preserve_contact_and_anatomy) ... ok
+test_hidden_wardrobe_stops_raf_and_resumes_after_open (tests.test_requested_corrections.RequestedBrowserTests.test_hidden_wardrobe_stops_raf_and_resumes_after_open) ... ok
+test_idle_seams_remain_filled_inside_the_original_shoulder_silhouette (tests.test_requested_corrections.RequestedBrowserTests.test_idle_seams_remain_filled_inside_the_original_shoulder_silhouette) ... ok
+test_melee_has_base_bone_lengths_stable_elbows_and_closed_grip_cycle (tests.test_requested_corrections.RequestedBrowserTests.test_melee_has_base_bone_lengths_stable_elbows_and_closed_grip_cycle) ... ok
+test_approved_bases_faces_and_hair_are_byte_identical (tests.test_requested_corrections.RequestedSourceTests.test_approved_bases_faces_and_hair_are_byte_identical) ... ok
+test_internal_reserves_copy_exact_source_rgba_and_never_paint_anatomy (tests.test_requested_corrections.RequestedSourceTests.test_internal_reserves_copy_exact_source_rgba_and_never_paint_anatomy) ... ok
+test_original_weapon_candidates_never_invent_or_substitute_material (tests.test_requested_corrections.RequestedSourceTests.test_original_weapon_candidates_never_invent_or_substitute_material) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 70.218s
+
+OK

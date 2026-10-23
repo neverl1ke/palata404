@@ -1,0 +1,32 @@
+[
+  {
+    "file": "Изображение ChatGPT 21 окт. 2026 г., 09_14_33.png",
+    "sha256": "12d53547d1485b01ca27db1cd0861bc426351b7f173192eed32a034a8706f6f8",
+    "matches_existing": "review/male-reference-arm-art/Sources/rifle.png"
+  },
+  {
+    "file": "Изображение ChatGPT 21 окт. 2026 г., 09_14_32.png",
+    "sha256": "ed140cde2c2934638a2248688ae32b76c0951c556c70d5fb8ed6cfea7b83f9ce",
+    "matches_existing": "review/male-reference-arm-art/Sources/melee.png"
+  },
+  {
+    "file": "Изображение ChatGPT 21 окт. 2026 г., 09_14_30.png",
+    "sha256": "05aed1b5e5fbac1ffc6b3fac14bc6b66d17d2d8594d7aa66726f054d6d031177",
+    "matches_existing": "review/male-reference-arm-art/Sources/pistol.png"
+  },
+  {
+    "file": "Изображение ChatGPT 22 окт. 2026 г., 08_28_26-3.png",
+    "sha256": "ce479efb26bf457ba0579b2249838624b1d1957660a5070af101f27b0d268319",
+    "matches_existing": "review/female-donor-arm-pass/Sources/rifle.png"
+  },
+  {
+    "file": "Изображение ChatGPT 22 окт. 2026 г., 08_28_25-1.png",
+    "sha256": "af23e4e215202c5b8298316054600d849f106ca47373e37d525bc816ab3ee4d5",
+    "matches_existing": "review/female-donor-arm-pass/Sources/melee.png"
+  },
+  {
+    "file": "Изображение ChatGPT 22 окт. 2026 г., 08_28_25-2.png",
+    "sha256": "406ba290b9666f98739e61829205e84bf01038fce2ce6fe80635667a31a688a1",
+    "matches_existing": "review/female-donor-arm-pass/Sources/pistol.png"
+  }
+]

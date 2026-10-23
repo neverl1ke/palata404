@@ -1,0 +1,181 @@
+{
+  "breathingProfiles": {
+    "idle": {
+      "gripX": 0,
+      "handDegrees": 0,
+      "idleArm": 0.12,
+      "propSway": 0
+    },
+    "melee": {
+      "gripX": 0,
+      "handDegrees": 0,
+      "idleArm": 0.12,
+      "propSway": 0
+    },
+    "pistol": {
+      "gripX": 0,
+      "handDegrees": 0,
+      "idleArm": 0.12,
+      "propSway": 0
+    },
+    "rifle": {
+      "gripX": 0,
+      "handDegrees": 0,
+      "idleArm": 0.12,
+      "propSway": 0
+    }
+  },
+  "meleeMotion": {
+    "cycleMs": 4000,
+    "foreDegrees": 0.12,
+    "handDegrees": 1.6,
+    "mode": "forward-wrist",
+    "upperDegrees": 0.035
+  },
+  "poseArtCompleteSurfaces": {
+    "melee-right": "assets/female/foundation-cleanup/melee-right-complete.png",
+    "pistol-right": "assets/female/foundation-cleanup/pistol-right-complete.png",
+    "rifle-left": "assets/female/foundation-cleanup/rifle-left-complete.png",
+    "rifle-right": "assets/female/foundation-cleanup/rifle-right-complete.png"
+  },
+  "poseArtSurfaces": {
+    "art-front-melee-right": "assets/female/foundation-cleanup/melee-right-front.png",
+    "art-front-pistol-right": "assets/female/foundation-cleanup/pistol-right-front.png",
+    "art-front-rifle-left": "assets/female/foundation-cleanup/rifle-left-front.png",
+    "art-front-rifle-right": "assets/female/foundation-cleanup/rifle-right-front.png",
+    "art-melee-right": "assets/female/foundation-cleanup/melee-right-arm.png",
+    "art-pistol-right": "assets/female/foundation-cleanup/pistol-right-arm.png",
+    "art-rifle-left": "assets/female/foundation-cleanup/rifle-left-arm.png",
+    "art-rifle-right": "assets/female/foundation-cleanup/rifle-right-arm.png"
+  },
+  "poseCalibration": {
+    "melee": {
+      "projectionRight": [
+        1,
+        1
+      ],
+      "right": [
+        230,
+        895
+      ]
+    }
+  },
+  "poseMeshExtensions": {
+    "pistol-right": [
+      [
+        82,
+        83,
+        98
+      ],
+      [
+        83,
+        99,
+        98
+      ]
+    ],
+    "rifle-right": [
+      [
+        697,
+        698,
+        727
+      ],
+      [
+        698,
+        728,
+        727
+      ]
+    ]
+  },
+  "runtimeSurfaces": {
+    "leftArmSkin": "assets/female/requested-corrections/leftArmSkin.png",
+    "leftUpper": "assets/female/requested-corrections/leftUpper.png",
+    "rightArmSkin": "assets/female/requested-corrections/rightArmSkin.png",
+    "rightUpper": "assets/female/requested-corrections/rightUpper.png",
+    "torso": "assets/female/requested-corrections/torso.png"
+  },
+  "weapons": {
+    "melee": {
+      "angle": 0,
+      "art": "complete existing material-only project prop, independently registered; no donor skin",
+      "class": "melee",
+      "id": "female-donor-melee",
+      "image": "assets/female/foundation-cleanup/melee-weapon.png",
+      "offset": [
+        0,
+        0
+      ],
+      "order": 30,
+      "pose": "melee",
+      "primary": [
+        220,
+        857
+      ],
+      "scale": 1,
+      "size": [
+        941,
+        1672
+      ],
+      "support": null,
+      "test_resource": true
+    },
+    "pistol": {
+      "angle": 0,
+      "art": "complete existing material-only project prop, independently registered; no donor skin",
+      "class": "pistol",
+      "id": "female-donor-pistol",
+      "image": "assets/female/foundation-cleanup/pistol-weapon.png",
+      "offset": [
+        0,
+        0
+      ],
+      "order": 30,
+      "pose": "pistol",
+      "primary": [
+        217,
+        303
+      ],
+      "scale": 1,
+      "size": [
+        941,
+        1672
+      ],
+      "support": null,
+      "test_resource": true
+    },
+    "rifle": {
+      "angle": 0,
+      "art": "complete existing material-only project prop, independently registered; no donor skin",
+      "class": "rifle",
+      "id": "female-donor-rifle",
+      "image": "assets/female/foundation-cleanup/rifle-weapon.png",
+      "offset": [
+        0,
+        0
+      ],
+      "order": 30,
+      "pose": "rifle",
+      "primary": [
+        411,
+        575
+      ],
+      "scale": 1,
+      "size": [
+        941,
+        1672
+      ],
+      "stock": [
+        287.7713447392346,
+        512.0309529713198
+      ],
+      "support": [
+        665,
+        666
+      ],
+      "test_resource": true,
+      "trigger": [
+        481.47958511689166,
+        586.2365821534408
+      ]
+    }
+  }
+}

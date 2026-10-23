@@ -1,0 +1,26 @@
+[
+  {
+    "gender": "male",
+    "breast_source_pixels_transferred": 0,
+    "torso_internal_reserve_pixels": 907,
+    "reserve_width_px": 2,
+    "reserve_y": [
+      300,
+      530
+    ],
+    "source_sha256": "b40a31b26dcf9aeea1dad02091228377330c9bb3af3a4b9669cfcc67247fc41d",
+    "method": "exact source RGBA copied across internal partition; no invented anatomy"
+  },
+  {
+    "gender": "female",
+    "breast_source_pixels_transferred": 896,
+    "torso_internal_reserve_pixels": 1718,
+    "reserve_width_px": 2,
+    "reserve_y": [
+      300,
+      530
+    ],
+    "source_sha256": "a27b499c03fc15c4788ae3a651483a36463f28b1f034178feccdaa852e7e50f9",
+    "method": "exact source RGBA copied across internal partition; no invented anatomy"
+  }
+]

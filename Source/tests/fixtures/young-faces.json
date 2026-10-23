@@ -1,0 +1,61 @@
+{
+  "source_archive": "palata404_young_faces_preview.zip",
+  "missing_types": [
+    "exhausted",
+    "elder"
+  ],
+  "files": [
+    {
+      "gender": "male",
+      "source": "male_young_head_full_canvas.png",
+      "source_sha256": "afd0bddba7f809a53b8fd266f246147d87f883be473fd34ab58296db00661f58",
+      "output": "assets/wardrobe/faces/male_young_head.png",
+      "sha256": "76fdbe2e87a7e3d43f13b28adecdebcca15b71707b295c09e744a828dfcec3eb",
+      "registration": {
+        "x": -10,
+        "y": 0,
+        "scale": 1
+      },
+      "bbox": [
+        386,
+        31,
+        560,
+        263
+      ],
+      "matte_pixels_cleaned": 1888,
+      "detail_box": [
+        440,
+        85,
+        510,
+        205
+      ],
+      "detail_sha256": "9e7f2e651140d8b9336050d664d9bcee9599e01a09b764058ca02af62a5039be"
+    },
+    {
+      "gender": "female",
+      "source": "female_young_head_full_canvas.png",
+      "source_sha256": "0130175d62a477e0268dc8f5eae7758c33750237cc310ba9232a204baa835b0e",
+      "output": "assets/wardrobe/faces/female_young_head.png",
+      "sha256": "5c7665b6b694b01b89021f31fad9f6e922293df6c55bc766b1ad994bd2a40694",
+      "registration": {
+        "x": -18,
+        "y": 0,
+        "scale": 1
+      },
+      "bbox": [
+        387,
+        27,
+        561,
+        263
+      ],
+      "matte_pixels_cleaned": 1855,
+      "detail_box": [
+        440,
+        85,
+        510,
+        205
+      ],
+      "detail_sha256": "6dd3c1796c2138a35ae7c19eb0ddcd26900a67746f778495777a159ba5caded3"
+    }
+  ]
+}

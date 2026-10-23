@@ -1,0 +1,12 @@
+{
+  "full_suite": {
+    "total": 295,
+    "passed": 291,
+    "failed": 4
+  },
+  "files_changed_after_snapshot": [
+    "avatar-core/game-preview.mjs",
+    "tests/test_requested_corrections.py"
+  ],
+  "followup": "8/8 tests in final-targeted.log cover the final visibility/RAF adapter change; full suite snapshot contained 7 of these scenarios."
+}

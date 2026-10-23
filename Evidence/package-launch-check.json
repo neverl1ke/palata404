@@ -1,0 +1,34 @@
+{
+  "cases": [
+    [
+      "male",
+      "gear-knife"
+    ],
+    [
+      "male",
+      "gear-pm"
+    ],
+    [
+      "male",
+      "gear-aks"
+    ],
+    [
+      "female",
+      "gear-knife"
+    ],
+    [
+      "female",
+      "gear-pm"
+    ],
+    [
+      "female",
+      "gear-aks"
+    ]
+  ],
+  "reload_selected_item": "gear-aks",
+  "js_errors": [],
+  "http_errors": [],
+  "inventory_granted_only_in_isolated_test": true,
+  "tested_game_files_sha256": "5a4eb31afa4a17d4b1e43e05a4e6a8d28e922d54e2e823b7d29e8d532c78fcdc",
+  "first_attempt": "Root JPG backgrounds were omitted by the packaging extension filter; fixed and launch rerun passed. Original failed evidence is package-first-launch-failure.json."
+}
