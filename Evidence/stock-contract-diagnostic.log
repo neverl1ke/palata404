@@ -1,0 +1,14 @@
+F
+======================================================================
+FAIL: test_supported_pistol_and_combat_wrists_do_not_fold_backwards (tests.test_avatar_polish.PolishBrowserTests.test_supported_pistol_and_combat_wrists_do_not_fold_backwards)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/palata404-avatar-core/tests/test_avatar_polish.py", line 170, in test_supported_pistol_and_combat_wrists_do_not_fold_backwards
+    else:self.assertEqual(int(base[y,x,3]),0,'lowered blade must be outside the thigh')
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 252 != 0 : lowered blade must be outside the thigh
+
+----------------------------------------------------------------------
+Ran 1 test in 5.814s
+
+FAILED (failures=1)

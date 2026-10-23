@@ -1,0 +1,25 @@
+test_actual_canvas_has_no_contact_surface_holes (tests.test_contact_surfaces.ContactSurfaceBrowserTests.test_actual_canvas_has_no_contact_surface_holes) ... FAIL
+test_restored_visible_object_pixels_keep_the_supplied_reference_rgb (tests.test_contact_surfaces.ContactSurfaceBrowserTests.test_restored_visible_object_pixels_keep_the_supplied_reference_rgb) ... FAIL
+
+======================================================================
+FAIL: test_actual_canvas_has_no_contact_surface_holes (tests.test_contact_surfaces.ContactSurfaceBrowserTests.test_actual_canvas_has_no_contact_surface_holes)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/palata404-avatar-core/tests/test_contact_surfaces.py", line 70, in test_actual_canvas_has_no_contact_surface_holes
+    wx,wy=runtime_point(self.p,pose,x,y,kind='item');self.assertGreaterEqual(int(a[wy,wx,3]),235,(pose,x,y))
+                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 not greater than or equal to 235 : ('rifle', 712, 719)
+
+======================================================================
+FAIL: test_restored_visible_object_pixels_keep_the_supplied_reference_rgb (tests.test_contact_surfaces.ContactSurfaceBrowserTests.test_restored_visible_object_pixels_keep_the_supplied_reference_rgb)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/palata404-avatar-core/tests/test_contact_surfaces.py", line 80, in test_restored_visible_object_pixels_keep_the_supplied_reference_rgb
+    wx,wy=runtime_point(self.p,pose,x,y,kind='item');self.assertLessEqual(int(np.abs(a[wy,wx,:3].astype(int)-src[y,x,:3].astype(int)).max()),12,(pose,x,y,'must restore real material, not arbitrary opaque filler'))
+                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 60 not less than or equal to 12 : ('pistol', 203, 332, 'must restore real material, not arbitrary opaque filler')
+
+----------------------------------------------------------------------
+Ran 2 tests in 6.213s
+
+FAILED (failures=2)

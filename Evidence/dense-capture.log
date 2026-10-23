@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/workspace/palata404-avatar-core/tools/capture-foundation-dense.py", line 40, in <module>
+    path=D/f'{version}-{gender}-{pose}-{visible}.webp';proof=encode(frames,path);frames[0].save(D/f'{version}-{gender}-{pose}-{visible}-0.png');frames[-1].save(D/f'{version}-{gender}-{pose}-{visible}-4000.png');rows.append({'version':version,'gender':gender,'pose':pose,'visible':visible,'logical_frames':241,'native_rgba_size':[941,1672],'file':str(path.relative_to(G)),'metrics':metrics,**proof});print(version,gender,pose,visible,'241 logical frames;',proof['encoded_frames'],'encoded; seconds',round(time.monotonic()-start,2),flush=True)
+                                                             ^^^^^^^^^^^^^^^^^^^
+  File "/workspace/palata404-avatar-core/tools/capture-foundation-dense.py", line 24, in encode
+    target=round(i*1000/60);j=max(j for j,r in enumerate(encoded) if r['pts_ms']<=target);assert hashim(frame)==encoded[j]['sha256'],(str(path),i,j,'lossless decode differs')
+                                                                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ('/workspace/palata404-avatar-core/review/avatar-foundation-cleanup/Gallery/Dense/before-male-melee-True.webp', 0, 0, 'lossless decode differs')

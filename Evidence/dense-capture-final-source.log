@@ -1,0 +1,18 @@
+before male melee True 241 logical frames; 241 encoded; seconds 27.4
+before female melee True 241 logical frames; 241 encoded; seconds 21.26
+after male idle True 241 logical frames; 241 encoded; seconds 21.56
+after male idle False 241 logical frames; 241 encoded; seconds 23.72
+after male melee True 241 logical frames; 241 encoded; seconds 24.33
+after male melee False 241 logical frames; 241 encoded; seconds 21.71
+after male pistol True 241 logical frames; 241 encoded; seconds 68.34
+Traceback (most recent call last):
+  File "/workspace/palata404-avatar-core/tools/capture-foundation-dense.py", line 60, in <module>
+    im=frames[i];bg=Image.new('RGBA',im.size,'#f8f5ed');bg.alpha_composite(im);sheet.paste(bg.resize((235,418)).convert('RGB'),(j%9*235,j//9*444+22));d.text((j%9*235+3,j//9*444+4),f'{i*4000/240:.2f} ms',fill='white')
+                                                                                           ^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/PIL/Image.py", line 2409, in resize
+    im = im.resize(size, resample, box)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/PIL/Image.py", line 2438, in resize
+    im = self.im.resize(size, resample, box)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt

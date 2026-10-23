@@ -1,0 +1,16 @@
+test_native_grids_do_not_paint_a_ghost_arm_outside_actual_skin (tests.test_avatar_foundation_cleanup.FoundationBrowserTests.test_native_grids_do_not_paint_a_ghost_arm_outside_actual_skin) ... FAIL
+test_colour_probe_changes_skin_and_never_changes_weapon_resource (tests.test_avatar_foundation_cleanup.FoundationBrowserTests.test_colour_probe_changes_skin_and_never_changes_weapon_resource) ... ok
+
+======================================================================
+FAIL: test_native_grids_do_not_paint_a_ghost_arm_outside_actual_skin (tests.test_avatar_foundation_cleanup.FoundationBrowserTests.test_native_grids_do_not_paint_a_ghost_arm_outside_actual_skin)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/palata404-avatar-core/tests/test_avatar_foundation_cleanup.py", line 73, in test_native_grids_do_not_paint_a_ghost_arm_outside_actual_skin
+    self.p.evaluate('k=>{document.getElementById("diagnostic-binding").value=k}',kind);self.p.evaluate('avatarLab.diagnosticBinding()');overlay=self.c.image();outside=(overlay[:,:,3]>32)&(distance>1.5);self.assertEqual(int(outside.sum()),0,(g,pose,kind,'garment left the actual arm'));self.assertGreater(int(np.any(base[:,:,:3]!=overlay[:,:,:3],axis=2).sum()),100)
+                                                                                                                                                                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 1 != 0 : ('male', 'idle', 'long-sleeve', 'garment left the actual arm')
+
+----------------------------------------------------------------------
+Ran 2 tests in 8.381s
+
+FAILED (failures=1)

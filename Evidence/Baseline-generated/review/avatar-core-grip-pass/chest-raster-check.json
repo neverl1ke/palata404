@@ -1,0 +1,50 @@
+[
+  {
+    "pose": "idle",
+    "time_ms": 1000,
+    "changed_chest_pixels": 68900,
+    "changed_bbox": [
+      318,
+      320,
+      630,
+      611
+    ],
+    "frame_and_weapon_contacts_unchanged": true
+  },
+  {
+    "pose": "melee",
+    "time_ms": 1000,
+    "changed_chest_pixels": 68836,
+    "changed_bbox": [
+      318,
+      320,
+      630,
+      611
+    ],
+    "frame_and_weapon_contacts_unchanged": true
+  },
+  {
+    "pose": "pistol",
+    "time_ms": 1000,
+    "changed_chest_pixels": 68407,
+    "changed_bbox": [
+      318,
+      320,
+      630,
+      611
+    ],
+    "frame_and_weapon_contacts_unchanged": true
+  },
+  {
+    "pose": "rifle",
+    "time_ms": 1000,
+    "changed_chest_pixels": 54852,
+    "changed_bbox": [
+      318,
+      320,
+      629,
+      608
+    ],
+    "frame_and_weapon_contacts_unchanged": true
+  }
+]

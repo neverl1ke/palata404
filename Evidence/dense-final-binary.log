@@ -1,0 +1,32 @@
+before male melee True 241 logical frames; 241 encoded; seconds 55.58
+before female melee True 241 logical frames; 241 encoded; seconds 53.68
+after male idle True 241 logical frames; 241 encoded; seconds 48.55
+Traceback (most recent call last):
+  File "/workspace/palata404-avatar-core/tools/capture-foundation-dense.py", line 60, in <module>
+    metric=p.evaluate('''i=>{let e=avatarLab.engine;e.time=i*4000/240;e.render();let f=e.frame;return {time:e.time,primary:f.primaryError,support:f.supportError,elbow:f.arms.right.elbow,wrist:f.arms.right.wrist,grip:f.arms.right.grip,hand:f.angles.right.hand,transition:e.transition}}''',i);frames.append(shot(p));metric['pixel_sha256']=hashim(frames[-1]);metrics.append(metric)
+                                                                                                                                                                                                                                                                                                                 ^^^^^^^
+  File "/workspace/palata404-avatar-core/tools/capture-foundation-dense.py", line 20, in shot
+    return Image.open(io.BytesIO(base64.b64decode(p.evaluate('avatarLab.engine.canvas.toDataURL().split(",")[1]')))).convert('RGBA')
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/sync_api/_generated.py", line 9385, in evaluate
+    self._sync(
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/_impl/_sync_base.py", line 113, in _sync
+    self._dispatcher_fiber.switch()
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/sync_api/_context_manager.py", line 56, in greenlet_main
+    self._loop.run_until_complete(self._connection.run_as_sync())
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/base_events.py", line 678, in run_until_complete
+    self.run_forever()
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/base_events.py", line 645, in run_forever
+    self._run_once()
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/base_events.py", line 1961, in _run_once
+    event_list = self._selector.select(timeout)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/selectors.py", line 468, in select
+    fd_event_list = self._selector.poll(timeout, max_ev)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt
+Future exception was never retrieved
+future: <Future finished exception=TargetClosedError('Target page, context or browser has been closed')>
+playwright._impl._errors.TargetClosedError: Target page, context or browser has been closed
+Task was destroyed but it is pending!
+task: <Task cancelling name='Task-158' coro=<Page.evaluate() running at /opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/_impl/_page.py:472> wait_for=<Future finished result=None> cb=[SyncBase._sync.<locals>.<lambda>() at /opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/_impl/_sync_base.py:111]>

@@ -1,0 +1,20 @@
+test_registration_is_reproducible_without_moving_sources (tests.test_avatar_polish.PolishSourceTests.test_registration_is_reproducible_without_moving_sources) ... ok
+test_export_is_reproducible_including_rig_without_regeneration (tests.test_female_donor_arms.FemaleDonorSourceTests.test_export_is_reproducible_including_rig_without_regeneration) ... ok
+test_local_repaint_process_is_deterministic (tests.test_independent_anatomy.IndependentSurfaceSourceTests.test_local_repaint_process_is_deterministic) ... ok
+test_export_is_idempotent_and_diagnostic_meshes_are_reproducible (tests.test_avatar_foundation_cleanup.FoundationSourceTests.test_export_is_idempotent_and_diagnostic_meshes_are_reproducible) ... ERROR
+
+======================================================================
+ERROR: test_export_is_idempotent_and_diagnostic_meshes_are_reproducible (tests.test_avatar_foundation_cleanup.FoundationSourceTests.test_export_is_idempotent_and_diagnostic_meshes_are_reproducible)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/avatar-foundation-regression/tests/test_avatar_foundation_cleanup.py", line 33, in test_export_is_idempotent_and_diagnostic_meshes_are_reproducible
+    paths=[p for g in ['male','female'] for p in (C/f'assets/{g}/foundation-cleanup').glob('*.png')]+[C/f'{g}-preview.json' for g in ['male','female']];digest=lambda:[hashlib.sha256(p.read_bytes()).hexdigest() for p in paths];before=digest();subprocess.run(['python','tools/prepare-foundation-cleanup.py'],cwd=R,check=True,capture_output=True);self.assertEqual(before,digest())
+                                                                                                                                                                                                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['python', 'tools/prepare-foundation-cleanup.py']' returned non-zero exit status 1.
+
+----------------------------------------------------------------------
+Ran 4 tests in 93.403s
+
+FAILED (errors=1)

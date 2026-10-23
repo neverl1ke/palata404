@@ -1,0 +1,24 @@
+test_registration_is_reproducible_without_moving_sources (tests.test_avatar_polish.PolishSourceTests.test_registration_is_reproducible_without_moving_sources) ... ok
+test_export_is_reproducible_including_rig_without_regeneration (tests.test_female_donor_arms.FemaleDonorSourceTests.test_export_is_reproducible_including_rig_without_regeneration) ... ok
+test_local_repaint_process_is_deterministic (tests.test_independent_anatomy.IndependentSurfaceSourceTests.test_local_repaint_process_is_deterministic) ... ok
+test_export_is_idempotent_and_diagnostic_meshes_are_reproducible (tests.test_avatar_foundation_cleanup.FoundationSourceTests.test_export_is_idempotent_and_diagnostic_meshes_are_reproducible) ... FAIL
+
+======================================================================
+FAIL: test_export_is_idempotent_and_diagnostic_meshes_are_reproducible (tests.test_avatar_foundation_cleanup.FoundationSourceTests.test_export_is_idempotent_and_diagnostic_meshes_are_reproducible)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/avatar-foundation-regression/tests/test_avatar_foundation_cleanup.py", line 33, in test_export_is_idempotent_and_diagnostic_meshes_are_reproducible
+    paths=[p for g in ['male','female'] for p in (C/f'assets/{g}/foundation-cleanup').glob('*.png')]+[C/f'{g}-preview.json' for g in ['male','female']];digest=lambda:[hashlib.sha256(p.read_bytes()).hexdigest() for p in paths];before=digest();subprocess.run(['python','tools/prepare-foundation-cleanup.py'],cwd=R,check=True,capture_output=True);self.assertEqual(before,digest())
+                                                                                                                                                                                                                                                                                                                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Lists differ: ['411[2440 chars]c', '157ba1b561fe95f6194fde681eeef712ec316ec69[88 chars]b51'] != ['411[2440 chars]c', '77db967ef778314188dea82cff143a0b7a8a145c8[88 chars]b51']
+
+First differing element 36:
+'157ba1b561fe95f6194fde681eeef712ec316ec695ff86d4a9cce0d6b7978cf9'
+'77db967ef778314188dea82cff143a0b7a8a145c8e2f75f5df6e042e9be448b2'
+
+Diff is 2769 characters long. Set self.maxDiff to None to see it.
+
+----------------------------------------------------------------------
+Ran 4 tests in 170.962s
+
+FAILED (failures=1)

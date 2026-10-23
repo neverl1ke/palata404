@@ -1,0 +1,242 @@
+[
+  {
+    "id": "female-melee-right",
+    "crop_bounds": [
+      170,
+      301,
+      346,
+      889
+    ],
+    "raw_edit_crop": [
+      38,
+      4,
+      690,
+      2165
+    ],
+    "export_size": [
+      941,
+      1672
+    ],
+    "color_shift_rgb": [
+      -6.0,
+      -5.0,
+      -4.0
+    ],
+    "source_sha256": "3cdda13d19b9df370c326e19e1c4dfd6acef78cd2ff167e158eb7536253fe594",
+    "edit_sha256": "e1d54ff41958d27d525391445c7af64c7d12fe89e54858ce47b74339e59c4658",
+    "foreground_ownership": {
+      "minimum_distal_wrist_projection_px": -5,
+      "original_hand_bbox_padding_px": 10
+    }
+  },
+  {
+    "id": "female-pistol-right",
+    "crop_bounds": [
+      173,
+      258,
+      347,
+      572
+    ],
+    "raw_edit_crop": [
+      17,
+      6,
+      934,
+      1647
+    ],
+    "export_size": [
+      941,
+      1672
+    ],
+    "color_shift_rgb": [
+      -6.0,
+      -6.0,
+      -6.0
+    ],
+    "source_sha256": "3cf6cc932aff7e797d1edd42e8f18761ab2b2323866f0415fcaa595b675d8aca",
+    "edit_sha256": "343e9b5d9f1d8d8ddcb7cd94e9a597116295885ea8e356486681a2b974b95fba",
+    "foreground_ownership": {
+      "minimum_distal_wrist_projection_px": -5,
+      "original_hand_bbox_padding_px": 10
+    }
+  },
+  {
+    "id": "female-rifle-right",
+    "crop_bounds": [
+      162,
+      300,
+      499,
+      616
+    ],
+    "raw_edit_crop": [
+      1,
+      2,
+      1279,
+      1181
+    ],
+    "export_size": [
+      941,
+      1672
+    ],
+    "color_shift_rgb": [
+      -6.0,
+      -6.0,
+      -4.0
+    ],
+    "source_sha256": "73c0bbe98d25a692a3abb9bc9e7fcd050e7fbe6ada0d3870ed0268c386f51c48",
+    "edit_sha256": "8bf7ccbba1e931ca08f4da224a8625078da4a62045515c69a3454822a59108d0",
+    "foreground_ownership": {
+      "minimum_distal_wrist_projection_px": -5,
+      "original_hand_bbox_padding_px": 10
+    }
+  },
+  {
+    "id": "female-rifle-left",
+    "crop_bounds": [
+      594,
+      300,
+      718,
+      707
+    ],
+    "raw_edit_crop": [
+      30,
+      0,
+      695,
+      2157
+    ],
+    "export_size": [
+      941,
+      1672
+    ],
+    "color_shift_rgb": [
+      -6.0,
+      -6.0,
+      -6.0
+    ],
+    "source_sha256": "cb998e2f0363109a6675e65d5a45c2b79566bc7cd869b0de4cd2e94b526d1f8b",
+    "edit_sha256": "341d1bc13615b5b46f4d104ea4c916d61040d3482ce352e6ff064b5fa420cfdd",
+    "foreground_ownership": {
+      "minimum_distal_wrist_projection_px": -5,
+      "original_hand_bbox_padding_px": 10
+    }
+  },
+  {
+    "id": "male-rifle-right",
+    "crop_bounds": [
+      0,
+      0,
+      339,
+      356
+    ],
+    "raw_edit_crop": [
+      0,
+      2,
+      1224,
+      1270
+    ],
+    "export_size": [
+      339,
+      356
+    ],
+    "color_shift_rgb": [
+      -6.0,
+      -6.0,
+      -5.0
+    ],
+    "source_sha256": "b6783cd14ed8885eccc1eca7b1bb4b67e600aa17878a7f7c15590312a65c7940",
+    "edit_sha256": "e3f5bcf96f4cf07e9f216acda1da65868d9b5b23d65373d9f308aa775431758d",
+    "foreground_ownership": {
+      "minimum_distal_wrist_projection_px": -5,
+      "original_hand_bbox_padding_px": 10
+    }
+  },
+  {
+    "id": "male-rifle-left",
+    "crop_bounds": [
+      0,
+      0,
+      142,
+      459
+    ],
+    "raw_edit_crop": [
+      36,
+      5,
+      695,
+      2128
+    ],
+    "export_size": [
+      142,
+      459
+    ],
+    "color_shift_rgb": [
+      -4.0,
+      -2.0,
+      1.0
+    ],
+    "source_sha256": "f3f924b1d3c3aa78ee961f5e47efe00ba7d97da4a557032d7895c8e720a683c8",
+    "edit_sha256": "8acae95d012325154278f7dcff341dfe88a92e04b15efd51deb17408af608b40",
+    "foreground_ownership": {
+      "minimum_distal_wrist_projection_px": -5,
+      "original_hand_bbox_padding_px": 10
+    }
+  },
+  {
+    "id": "male-pistol-right",
+    "crop_bounds": [
+      0,
+      0,
+      185,
+      342
+    ],
+    "raw_edit_crop": [
+      1,
+      3,
+      920,
+      1657
+    ],
+    "export_size": [
+      185,
+      342
+    ],
+    "color_shift_rgb": [
+      -3.0,
+      0.0,
+      1.0
+    ],
+    "source_sha256": "4d068d10787cc39ef594c48715214a0381505cf1f78c4472df95e6aa775d2f72",
+    "edit_sha256": "1e1089c11c97d38755aeba90fd9963cedd8213c859f8c6173e3fb3d139f871d6",
+    "foreground_ownership": {
+      "minimum_distal_wrist_projection_px": -5,
+      "original_hand_bbox_padding_px": 10
+    }
+  },
+  {
+    "id": "male-melee-right",
+    "crop_bounds": [
+      0,
+      0,
+      180,
+      596
+    ],
+    "raw_edit_crop": [
+      34,
+      2,
+      687,
+      2166
+    ],
+    "export_size": [
+      180,
+      596
+    ],
+    "color_shift_rgb": [
+      -6.0,
+      -6.0,
+      -6.0
+    ],
+    "source_sha256": "0dc2182cadd2291bc14b867546153c38b483b83d89ab68d5a32a922f4c36fad2",
+    "edit_sha256": "f83e773f9414cbb198a52f38aea7fd548024f5676d6e51675d02a85ca0ed132a",
+    "foreground_ownership": {
+      "minimum_distal_wrist_projection_px": -5,
+      "original_hand_bbox_padding_px": 10
+    }
+  }
+]

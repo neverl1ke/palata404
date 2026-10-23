@@ -1,0 +1,54 @@
+{
+  "poses": [
+    {
+      "gender": "male",
+      "pose": "idle",
+      "primary": 0,
+      "support": 0
+    },
+    {
+      "gender": "male",
+      "pose": "melee",
+      "primary": 0,
+      "support": 0
+    },
+    {
+      "gender": "male",
+      "pose": "pistol",
+      "primary": 0,
+      "support": 0
+    },
+    {
+      "gender": "male",
+      "pose": "rifle",
+      "primary": 0,
+      "support": 3.410605131648481e-13
+    },
+    {
+      "gender": "female",
+      "pose": "idle",
+      "primary": 0,
+      "support": 0
+    },
+    {
+      "gender": "female",
+      "pose": "melee",
+      "primary": 0,
+      "support": 0
+    },
+    {
+      "gender": "female",
+      "pose": "pistol",
+      "primary": 0,
+      "support": 0
+    },
+    {
+      "gender": "female",
+      "pose": "rifle",
+      "primary": 0,
+      "support": 1.6077746776921858e-13
+    }
+  ],
+  "errors": [],
+  "network": []
+}

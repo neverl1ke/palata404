@@ -1,0 +1,46 @@
+{
+  "accepted": false,
+  "reason": "No speed gain; intermediate raster changed fringe RGBA. Original committed compositor restored byte-for-byte. Measurements under concurrent test/capture load, not device FPS benchmark.",
+  "cases": [
+    {
+      "gender": "male",
+      "pose": "melee",
+      "five_frames_ms": [
+        1204.4000000059605,
+        1587.9000000059605
+      ],
+      "max_channel_delta": 19,
+      "changed_channels": 699
+    },
+    {
+      "gender": "male",
+      "pose": "rifle",
+      "five_frames_ms": [
+        1698.5,
+        1749.0999999940395
+      ],
+      "max_channel_delta": 22,
+      "changed_channels": 6242
+    },
+    {
+      "gender": "female",
+      "pose": "melee",
+      "five_frames_ms": [
+        1133.7999999970198,
+        1317
+      ],
+      "max_channel_delta": 4,
+      "changed_channels": 384
+    },
+    {
+      "gender": "female",
+      "pose": "rifle",
+      "five_frames_ms": [
+        762.4000000059605,
+        906
+      ],
+      "max_channel_delta": 7,
+      "changed_channels": 5992
+    }
+  ]
+}

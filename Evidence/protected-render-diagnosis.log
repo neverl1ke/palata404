@@ -1,0 +1,6 @@
+test_all_eight_poses_preserve_face_feet_and_grips_across_breathing (tests.test_avatar_core.AvatarCoreBrowserTests.test_all_eight_poses_preserve_face_feet_and_grips_across_breathing) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 71.145s
+
+OK

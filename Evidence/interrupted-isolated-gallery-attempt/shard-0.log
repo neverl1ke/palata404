@@ -1,0 +1,84 @@
+test_contact_and_visible_volume_stay_stable_over_complete_cycles (tests.test_arm_contour_cleanup.ArmContourBrowserTests.test_contact_and_visible_volume_stay_stable_over_complete_cycles) ... FAIL
+test_live_shoulder_has_no_reference_black_edge_inside_base_skin (tests.test_arm_contour_cleanup.ArmContourBrowserTests.test_live_shoulder_has_no_reference_black_edge_inside_base_skin) ... FAIL
+test_melee_wrist_triangle_and_pistol_thumb_arc_are_present (tests.test_arm_contour_cleanup.ArmContourSourceTests.test_melee_wrist_triangle_and_pistol_thumb_arc_are_present) ... ok
+test_same_cross_sections_detect_the_returned_package_defects (tests.test_arm_contour_cleanup.ArmContourSourceTests.test_same_cross_sections_detect_the_returned_package_defects) ... ok
+test_all_65_precleanup_pngs_are_byte_identical (tests.test_avatar_cleanup.CleanupSourceTests.test_all_65_precleanup_pngs_are_byte_identical) ... ok
+test_all_eight_poses_preserve_face_feet_and_grips_across_breathing (tests.test_avatar_core.AvatarCoreBrowserTests.test_all_eight_poses_preserve_face_feet_and_grips_across_breathing) ... FAIL
+test_canvas_appearance_matches_actual_game_renderer (tests.test_avatar_core.AvatarCoreBrowserTests.test_canvas_appearance_matches_actual_game_renderer) ... appearance comparison male 0.0812561334018071 0
+appearance comparison female 0.03575836812105619 0
+FAIL
+test_idle_render_matches_original_for_both_bases (tests.test_avatar_core.AvatarCoreBrowserTests.test_idle_render_matches_original_for_both_bases) ... FAIL
+test_moving_joints_remain_opaque_and_main_body_connected (tests.test_avatar_core.AvatarCoreBrowserTests.test_moving_joints_remain_opaque_and_main_body_connected) ... FAIL
+test_two_instances_render_different_genders_without_shared_pose_state (tests.test_avatar_core.AvatarCoreBrowserTests.test_two_instances_render_different_genders_without_shared_pose_state) ... FAIL
+test_pivots_are_inside_actual_source_skin_and_assets_match_hashes (tests.test_avatar_core.AvatarCoreSourceTests.test_pivots_are_inside_actual_source_skin_and_assets_match_hashes) ... ok
+test_knife_both_genders_uses_wrist_sway_not_inverse_elbow_motion (tests.test_avatar_foundation_cleanup.FoundationBrowserTests.test_knife_both_genders_uses_wrist_sway_not_inverse_elbow_motion) ... FAIL
+test_pose_space_garments_match_the_active_corrective_mesh_and_unbind (tests.test_avatar_foundation_cleanup.FoundationBrowserTests.test_pose_space_garments_match_the_active_corrective_mesh_and_unbind) ... FAIL
+test_original_bases_refs_and_art_are_byte_identical (tests.test_avatar_foundation_cleanup.FoundationSourceTests.test_original_bases_refs_and_art_are_byte_identical) ... ok
+test_cached_skin_preserves_the_uncached_paint_order (tests.test_avatar_polish.PolishBrowserTests.test_cached_skin_preserves_the_uncached_paint_order) ... FAIL
+test_wrist_retouch_is_applied_only_inside_declared_source_band (tests.test_avatar_polish.PolishBrowserTests.test_wrist_retouch_is_applied_only_inside_declared_source_band)
+Runtime A/B, not a comparison against newly approved image hashes. ... FAIL
+test_actual_canvas_has_no_contact_surface_holes (tests.test_contact_surfaces.ContactSurfaceBrowserTests.test_actual_canvas_has_no_contact_surface_holes) ... FAIL
+test_actual_canvas_has_no_contact_surface_holes (tests.test_contact_surfaces.ContactSurfaceBrowserTests.test_actual_canvas_has_no_contact_surface_holes) ... FAIL
+test_restored_visible_object_pixels_keep_the_supplied_reference_rgb (tests.test_contact_surfaces.ContactSurfaceBrowserTests.test_restored_visible_object_pixels_keep_the_supplied_reference_rgb) ... FAIL
+test_restored_visible_object_pixels_keep_the_supplied_reference_rgb (tests.test_contact_surfaces.ContactSurfaceBrowserTests.test_restored_visible_object_pixels_keep_the_supplied_reference_rgb) ... FAIL
+test_contact_probes_detect_actual_missing_surfaces_in_returned_package (tests.test_contact_surfaces.ContactSurfaceSourceTests.test_contact_probes_detect_actual_missing_surfaces_in_returned_package) ... ok
+test_harmonization_is_confined_to_shared_shoulder_not_folded_forearm (tests.test_contact_surfaces.ContactSurfaceSourceTests.test_harmonization_is_confined_to_shared_shoulder_not_folded_forearm) ... ok
+test_archived_a6_runtime_changes_only_surfaces_and_the_new_male_knife (tests.test_exact_reference_pass.ExactReferenceTests.test_archived_a6_runtime_changes_only_surfaces_and_the_new_male_knife) ... ok
+test_every_original_png_and_rig_is_unchanged (tests.test_exact_reference_pass.ExactReferenceTests.test_every_original_png_and_rig_is_unchanged) ... ok
+test_all_necks_have_single_rim_and_restore_the_actual_new_body (tests.test_female_base_replacement.FemaleBaseReplacementTests.test_all_necks_have_single_rim_and_restore_the_actual_new_body) ... ok
+test_supplied_original_and_all_non_noise_pixels_are_preserved (tests.test_female_base_replacement.FemaleBaseReplacementTests.test_supplied_original_and_all_non_noise_pixels_are_preserved) ... ok
+test_donor_joints_match_independent_measured_windows_and_one_hand_pistol (tests.test_female_donor_arms.FemaleDonorBrowserTests.test_donor_joints_match_independent_measured_windows_and_one_hand_pistol) ... FAIL
+test_three_visible_props_exist_and_hide_preserves_anatomy_time (tests.test_female_donor_arms.FemaleDonorBrowserTests.test_three_visible_props_exist_and_hide_preserves_anatomy_time) ... FAIL
+test_mesh_covers_every_active_pixel_and_foreground_is_skin_only (tests.test_female_donor_arms.FemaleDonorSourceTests.test_mesh_covers_every_active_pixel_and_foreground_is_skin_only) ... ok
+test_all_sources_and_final_resources_are_exact_and_versioned (tests.test_female_faces.FemaleFacesAssetTests.test_all_sources_and_final_resources_are_exact_and_versioned) ... ok
+test_registered_approved_portrait_features_and_piercings_are_preserved (tests.test_female_faces.FemaleFacesAssetTests.test_registered_approved_portrait_features_and_piercings_are_preserved) ... ok
+test_full_female_face_hair_matrix_has_correct_layers_and_palette (tests.test_female_faces.FemaleFacesBrowserTests.test_full_female_face_hair_matrix_has_correct_layers_and_palette) ... Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/__main__.py", line 18, in <module>
+    main(module=None)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/main.py", line 105, in __init__
+    self.runTests()
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/main.py", line 281, in runTests
+    self.result = testRunner.run(self.test)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/runner.py", line 240, in run
+    test(result)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/suite.py", line 84, in __call__
+    return self.run(*args, **kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/suite.py", line 122, in run
+    test(result)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/suite.py", line 84, in __call__
+    return self.run(*args, **kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/suite.py", line 122, in run
+    test(result)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py", line 690, in __call__
+    return self.run(*args, **kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py", line 634, in run
+    self._callTestMethod(testMethod)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py", line 589, in _callTestMethod
+    if method() is not None:
+       ^^^^^^^^
+  File "/workspace/avatar-foundation-regression/tests/test_female_faces.py", line 164, in test_full_female_face_hair_matrix_has_correct_layers_and_palette
+    self.assertIn(e['mask'],self.p.locator('#'+prefix+'layer-body').evaluate('i=>i.style.maskImage'))
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/sync_api/_generated.py", line 18092, in evaluate
+    self._sync(
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/_impl/_sync_base.py", line 113, in _sync
+    self._dispatcher_fiber.switch()
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/sync_api/_context_manager.py", line 56, in greenlet_main
+    self._loop.run_until_complete(self._connection.run_as_sync())
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/base_events.py", line 678, in run_until_complete
+    self.run_forever()
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/base_events.py", line 645, in run_forever
+    self._run_once()
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/base_events.py", line 1961, in _run_once
+    event_list = self._selector.select(timeout)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/selectors.py", line 468, in select
+    fd_event_list = self._selector.poll(timeout, max_ev)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt

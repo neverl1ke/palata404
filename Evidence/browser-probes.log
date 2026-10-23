@@ -1,0 +1,16 @@
+joins 1 320
+joins 1 391.5
+joins 1 941
+joins 2 320
+joins 2 391.5
+joins 2 941
+Traceback (most recent call last):
+  File "/workspace/palata404-avatar-core/tools/probe-foundation-joins.py", line 42, in <module>
+    p.evaluate('c=>avatarLab.engine.setOptions({background:c})',color);im=image(p);im.save(G/f'{gender}-{pose}-{visible}-background-{color.replace("#","")}.webp',lossless=True);ims.append(im.resize((235,418)))
+                                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/PIL/Image.py", line 2711, in save
+    save_handler(self, fp, filename)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/PIL/WebPImagePlugin.py", line 299, in _save
+    data = _webp.WebPEncode(
+           ^^^^^^^^^^^^^^^^^
+KeyboardInterrupt

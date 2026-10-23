@@ -1,0 +1,6 @@
+test_native_grids_do_not_paint_a_ghost_arm_outside_actual_skin (tests.test_avatar_foundation_cleanup.FoundationBrowserTests.test_native_grids_do_not_paint_a_ghost_arm_outside_actual_skin) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 14.320s
+
+OK

@@ -1,0 +1,32 @@
+✔ male rest skeleton retains shoulder/elbow/wrist/grip source registration (1.949328ms)
+✔ male four poses use fixed bone lengths, independent hand rotations and exact primary attachment (11.351139ms)
+✔ male support grip stays on the rifle through a full breathing cycle (27.959545ms)
+✔ male skin weights are bounded and final hand texture shares weapon attachment (10.989711ms)
+✔ female rest skeleton retains shoulder/elbow/wrist/grip source registration (0.230316ms)
+✔ female four poses use fixed bone lengths, independent hand rotations and exact primary attachment (0.269608ms)
+✔ female support grip stays on the rifle through a full breathing cycle (1.455193ms)
+✔ female skin weights are bounded and final hand texture shares weapon attachment (4.87149ms)
+✔ female and male coordinates are independently registered, not a reused rig (23.305301ms)
+✔ angle interpolation follows shortest rotation and endpoint continuity (0.541435ms)
+✔ unreachable/degenerate targets are finite and explicitly marked (14.829386ms)
+✔ weapon controller supports none and rejects unknown classes (12.253072ms)
+✔ rifle/right: inverse binds preserve every authored UV at rest (12.51805ms)
+✔ rifle/right: artwork has modular joint anchors and bounded skin weights (4.204634ms)
+✔ rifle/left: inverse binds preserve every authored UV at rest (0.842296ms)
+✔ rifle/left: artwork has modular joint anchors and bounded skin weights (5.648216ms)
+✔ pistol/right: inverse binds preserve every authored UV at rest (0.373898ms)
+✔ pistol/right: artwork has modular joint anchors and bounded skin weights (0.654339ms)
+✔ melee/right: inverse binds preserve every authored UV at rest (0.698787ms)
+✔ melee/right: artwork has modular joint anchors and bounded skin weights (3.768253ms)
+✔ foreshortening changes projection, not source skeleton or transverse width (0.816633ms)
+✔ canonical male pistol is unilateral and all legacy variants resolve to it (0.456463ms)
+✔ male: knife motion rotates at wrist without IK elbow compensation (41.911766ms)
+✔ female: knife motion rotates at wrist without IK elbow compensation (13.732955ms)
+ℹ tests 24
+ℹ suites 0
+ℹ pass 24
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1191.930612

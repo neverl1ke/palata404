@@ -1,0 +1,182 @@
+[
+  {
+    "gender": "male",
+    "pose": "melee",
+    "source": "assets/weapons/male-exact/knife.png",
+    "source_sha256": "930a197515a3613e3eaf4d3c70ac920dc983f8ba9895802a310afc7b5ea2a6e7",
+    "affine": [
+      [
+        0.8571273129966078,
+        0.4751134278414103,
+        193.69811571924993
+      ],
+      [
+        -0.4751134278414103,
+        0.8571273129966078,
+        854.2858149751952
+      ],
+      [
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "primary": [
+      227,
+      880
+    ],
+    "support": null,
+    "output": "assets/male/foundation-cleanup/melee-weapon.png"
+  },
+  {
+    "gender": "male",
+    "pose": "pistol",
+    "source": "assets/weapons/male-preview/pistol.png",
+    "source_sha256": "b41805785c20eac19333c252f847e8aba7c966e74db821ddb178a3a1d8234fc3",
+    "affine": [
+      [
+        0.35912115049195226,
+        0.9866772518252038,
+        134.16173174502205
+      ],
+      [
+        -0.9866772518252038,
+        0.35912115049195226,
+        363.4949174821961
+      ],
+      [
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "primary": [
+      230,
+      351
+    ],
+    "support": null,
+    "output": "assets/male/foundation-cleanup/pistol-weapon.png"
+  },
+  {
+    "gender": "male",
+    "pose": "rifle",
+    "source": "assets/weapons/male-lobby/rifle.png",
+    "source_sha256": "e224e4550a24c04f60c667e5b3657321e38948b4e8c55dcad4a83e9006cfcb69",
+    "affine": [
+      [
+        1.0778163484585501,
+        0.116745185552525,
+        -80.31093478799892
+      ],
+      [
+        -0.116745185552525,
+        1.0778163484585501,
+        -33.48607322919247
+      ],
+      [
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "primary": [
+      390,
+      644
+    ],
+    "support": [
+      675,
+      708
+    ],
+    "output": "assets/male/foundation-cleanup/rifle-weapon.png"
+  },
+  {
+    "gender": "female",
+    "pose": "melee",
+    "source": "assets/weapons/male-exact/knife.png",
+    "source_sha256": "930a197515a3613e3eaf4d3c70ac920dc983f8ba9895802a310afc7b5ea2a6e7",
+    "affine": [
+      [
+        0.7871577364254562,
+        0.43632865822170336,
+        189.41663688502547
+      ],
+      [
+        -0.43632865822170336,
+        0.7871577364254562,
+        833.3849321200772
+      ],
+      [
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "primary": [
+      220,
+      857
+    ],
+    "support": null,
+    "output": "assets/female/foundation-cleanup/melee-weapon.png"
+  },
+  {
+    "gender": "female",
+    "pose": "pistol",
+    "source": "assets/weapons/male-preview/pistol.png",
+    "source_sha256": "b41805785c20eac19333c252f847e8aba7c966e74db821ddb178a3a1d8234fc3",
+    "affine": [
+      [
+        0.33517974045915544,
+        0.9208987683701901,
+        127.55094962868726
+      ],
+      [
+        -0.9208987683701901,
+        0.33517974045915544,
+        314.6619229833831
+      ],
+      [
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "primary": [
+      217,
+      303
+    ],
+    "support": null,
+    "output": "assets/female/foundation-cleanup/pistol-weapon.png"
+  },
+  {
+    "gender": "female",
+    "pose": "rifle",
+    "source": "assets/weapons/male-lobby/rifle.png",
+    "source_sha256": "e224e4550a24c04f60c667e5b3657321e38948b4e8c55dcad4a83e9006cfcb69",
+    "affine": [
+      [
+        1.0012810976113729,
+        -0.015249194148276725,
+        56.72014216050911
+      ],
+      [
+        0.015249194148276725,
+        1.0012810976113729,
+        -99.4064798743699
+      ],
+      [
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "primary": [
+      411,
+      575
+    ],
+    "support": [
+      665,
+      666
+    ],
+    "output": "assets/female/foundation-cleanup/rifle-weapon.png"
+  }
+]

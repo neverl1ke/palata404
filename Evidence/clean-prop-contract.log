@@ -1,0 +1,14 @@
+F
+======================================================================
+FAIL: test_supported_pistol_and_combat_wrists_do_not_fold_backwards (tests.test_avatar_polish.PolishBrowserTests.test_supported_pistol_and_combat_wrists_do_not_fold_backwards)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/palata404-avatar-core/tests/test_avatar_polish.py", line 151, in test_supported_pistol_and_combat_wrists_do_not_fold_backwards
+    else:self.assertLess(np.linalg.norm(stock-frame['arms']['right'][joint]),60,(g,'stock contact'))
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: np.float64(146.17202602545075) not less than 60 : ('female', 'stock contact')
+
+----------------------------------------------------------------------
+Ran 1 test in 22.428s
+
+FAILED (failures=1)

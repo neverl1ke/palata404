@@ -1,0 +1,22 @@
+test_all_current_contacts_and_unoccluded_material_pixels_have_independent_sources (tests.test_avatar_foundation_cleanup.FoundationBrowserTests.test_all_current_contacts_and_unoccluded_material_pixels_have_independent_sources) ... FAIL
+test_actual_canvas_has_no_contact_surface_holes (tests.test_contact_surfaces.ContactSurfaceBrowserTests.test_actual_canvas_has_no_contact_surface_holes) ... ok
+test_palm_fringe_no_longer_has_opaque_black_backdrop_crumbs (tests.test_contact_surfaces.ContactSurfaceBrowserTests.test_palm_fringe_no_longer_has_opaque_black_backdrop_crumbs) ... ok
+test_real_negative_space_and_forearm_source_details_are_preserved (tests.test_contact_surfaces.ContactSurfaceBrowserTests.test_real_negative_space_and_forearm_source_details_are_preserved) ... ok
+test_restored_visible_object_pixels_keep_the_supplied_reference_rgb (tests.test_contact_surfaces.ContactSurfaceBrowserTests.test_restored_visible_object_pixels_keep_the_supplied_reference_rgb) ... ok
+test_whole_contact_windows_have_no_runtime_background_leaks (tests.test_contact_surfaces.ContactSurfaceBrowserTests.test_whole_contact_windows_have_no_runtime_background_leaks) ... ok
+
+======================================================================
+FAIL: test_all_current_contacts_and_unoccluded_material_pixels_have_independent_sources (tests.test_avatar_foundation_cleanup.FoundationBrowserTests.test_all_current_contacts_and_unoccluded_material_pixels_have_independent_sources)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/palata404-avatar-core/tests/test_avatar_foundation_cleanup.py", line 83, in test_all_current_contacts_and_unoccluded_material_pixels_have_independent_sources
+    self.p.evaluate('p=>avatarLab.engine.setPose(p)',pose);assert_active_foundation_contacts(self,self.p);assert_active_foundation_contacts(self,self.p,'material');assert_active_foundation_contacts(self,self.p,'forearm')
+                                                                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/palata404-avatar-core/tests/avatar_revision_contract.py", line 103, in assert_active_foundation_contacts
+    t.assertGreater(len(xs),30,'independent unoccluded material probes required')
+AssertionError: 20 not greater than 30 : independent unoccluded material probes required
+
+----------------------------------------------------------------------
+Ran 6 tests in 27.267s
+
+FAILED (failures=1)

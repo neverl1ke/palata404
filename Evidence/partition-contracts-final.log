@@ -1,0 +1,34 @@
+test_all_current_contacts_and_unoccluded_material_pixels_have_independent_sources (tests.test_avatar_foundation_cleanup.FoundationBrowserTests.test_all_current_contacts_and_unoccluded_material_pixels_have_independent_sources) ... FAIL
+test_colour_probe_changes_skin_and_never_changes_weapon_resource (tests.test_avatar_foundation_cleanup.FoundationBrowserTests.test_colour_probe_changes_skin_and_never_changes_weapon_resource) ... ok
+test_fractional_display_scaling_and_dpr_do_not_reopen_partition_seams (tests.test_avatar_foundation_cleanup.FoundationBrowserTests.test_fractional_display_scaling_and_dpr_do_not_reopen_partition_seams) ... ok
+test_knife_both_genders_uses_wrist_sway_not_inverse_elbow_motion (tests.test_avatar_foundation_cleanup.FoundationBrowserTests.test_knife_both_genders_uses_wrist_sway_not_inverse_elbow_motion) ... ok
+test_native_grids_do_not_paint_a_ghost_arm_outside_actual_skin (tests.test_avatar_foundation_cleanup.FoundationBrowserTests.test_native_grids_do_not_paint_a_ghost_arm_outside_actual_skin) ... ok
+test_neck_and_waist_have_no_transparent_seams_at_breath_extremes (tests.test_avatar_foundation_cleanup.FoundationBrowserTests.test_neck_and_waist_have_no_transparent_seams_at_breath_extremes) ... ok
+test_pose_space_garments_match_the_active_corrective_mesh_and_unbind (tests.test_avatar_foundation_cleanup.FoundationBrowserTests.test_pose_space_garments_match_the_active_corrective_mesh_and_unbind) ... ok
+test_all_active_arms_have_coverage_clean_alpha_and_same_registration (tests.test_avatar_foundation_cleanup.FoundationSourceTests.test_all_active_arms_have_coverage_clean_alpha_and_same_registration) ... ok
+test_every_prop_is_only_registered_material_from_an_independent_complete_source (tests.test_avatar_foundation_cleanup.FoundationSourceTests.test_every_prop_is_only_registered_material_from_an_independent_complete_source) ... ok
+test_export_is_idempotent_and_diagnostic_meshes_are_reproducible (tests.test_avatar_foundation_cleanup.FoundationSourceTests.test_export_is_idempotent_and_diagnostic_meshes_are_reproducible) ... ok
+test_foreground_ownership_never_includes_proximal_forearm (tests.test_avatar_foundation_cleanup.FoundationSourceTests.test_foreground_ownership_never_includes_proximal_forearm) ... ok
+test_original_bases_refs_and_art_are_byte_identical (tests.test_avatar_foundation_cleanup.FoundationSourceTests.test_original_bases_refs_and_art_are_byte_identical) ... ok
+test_runtime_base_removes_only_documented_faint_matte_not_anatomy (tests.test_avatar_foundation_cleanup.FoundationSourceTests.test_runtime_base_removes_only_documented_faint_matte_not_anatomy) ... ok
+test_actual_canvas_has_no_contact_surface_holes (tests.test_contact_surfaces.ContactSurfaceBrowserTests.test_actual_canvas_has_no_contact_surface_holes) ... ok
+test_palm_fringe_no_longer_has_opaque_black_backdrop_crumbs (tests.test_contact_surfaces.ContactSurfaceBrowserTests.test_palm_fringe_no_longer_has_opaque_black_backdrop_crumbs) ... ok
+test_real_negative_space_and_forearm_source_details_are_preserved (tests.test_contact_surfaces.ContactSurfaceBrowserTests.test_real_negative_space_and_forearm_source_details_are_preserved) ... ok
+test_restored_visible_object_pixels_keep_the_supplied_reference_rgb (tests.test_contact_surfaces.ContactSurfaceBrowserTests.test_restored_visible_object_pixels_keep_the_supplied_reference_rgb) ... ok
+test_whole_contact_windows_have_no_runtime_background_leaks (tests.test_contact_surfaces.ContactSurfaceBrowserTests.test_whole_contact_windows_have_no_runtime_background_leaks) ... ok
+
+======================================================================
+FAIL: test_all_current_contacts_and_unoccluded_material_pixels_have_independent_sources (tests.test_avatar_foundation_cleanup.FoundationBrowserTests.test_all_current_contacts_and_unoccluded_material_pixels_have_independent_sources)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/palata404-avatar-core/tests/test_avatar_foundation_cleanup.py", line 89, in test_all_current_contacts_and_unoccluded_material_pixels_have_independent_sources
+    self.p.evaluate('p=>avatarLab.engine.setPose(p)',pose);assert_active_foundation_contacts(self,self.p);assert_active_foundation_contacts(self,self.p,'material');assert_active_foundation_contacts(self,self.p,'forearm')
+                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/palata404-avatar-core/tests/avatar_revision_contract.py", line 146, in assert_active_foundation_contacts
+    t.assertGreater(count,100,'source-owned contact/forearm probes must exist')
+AssertionError: 0 not greater than 100 : source-owned contact/forearm probes must exist
+
+----------------------------------------------------------------------
+Ran 18 tests in 94.118s
+
+FAILED (failures=1)

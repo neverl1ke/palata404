@@ -1,0 +1,15 @@
+before male melee True 241 logical frames; 241 encoded; seconds 213.9
+Traceback (most recent call last):
+  File "/workspace/palata404-avatar-core/tools/capture-foundation-dense.py", line 49, in <module>
+    at=11+hn+entry['offset'];delta=np.frombuffer(zlib.decompress(data[at:at+entry['bytes']]),dtype='uint8').reshape(1672,941,4);previous=np.bitwise_xor(previous,delta);assert hashlib.sha256(previous.tobytes()).hexdigest()==entry['rgba_sha256'];frames.append(Image.fromarray(previous.copy()))
+                                                           ^^^^^^^^^^^^^^^^^^^
+  File "/workspace/palata404-avatar-core/tools/capture-foundation-dense.py", line 32, in encode
+    previews=[frames[i].resize((400,711),Image.Resampling.LANCZOS) for i in range(0,240,3)]
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/PIL/Image.py", line 2409, in resize
+    im = im.resize(size, resample, box)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/PIL/Image.py", line 2438, in resize
+    im = self.im.resize(size, resample, box)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt

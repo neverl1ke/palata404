@@ -1,0 +1,16 @@
+before male melee True 241 logical frames; 241 encoded; seconds 29.73
+before female melee True 241 logical frames; 241 encoded; seconds 23.66
+after male idle True 241 logical frames; 241 encoded; seconds 87.58
+after male idle False 241 logical frames; 241 encoded; seconds 73.71
+after male melee True 241 logical frames; 241 encoded; seconds 75.59
+after male melee False 241 logical frames; 241 encoded; seconds 73.55
+after male pistol True 241 logical frames; 241 encoded; seconds 68.56
+after male pistol False 241 logical frames; 241 encoded; seconds 68.99
+Traceback (most recent call last):
+  File "/workspace/palata404-avatar-core/tools/capture-foundation-dense.py", line 56, in <module>
+    path=D/f'{version}-{gender}-{pose}-{visible}.webp';proof=encode(frames,path);frames[0].save(D/f'{version}-{gender}-{pose}-{visible}-0.png');frames[-1].save(D/f'{version}-{gender}-{pose}-{visible}-4000.png');rows.append({'version':version,'gender':gender,'pose':pose,'visible':visible,'logical_frames':241,'native_rgba_size':[941,1672],'file':str(path.relative_to(G)),'metrics':metrics,**proof});print(version,gender,pose,visible,'241 logical frames;',proof['native_frames_verified'],'encoded; seconds',round(time.monotonic()-start,2),flush=True)
+                                                             ^^^^^^^^^^^^^^^^^^^
+  File "/workspace/palata404-avatar-core/tools/capture-foundation-dense.py", line 30, in encode
+    at=11+n+entry['offset'];delta=np.frombuffer(zlib.decompress(data[at:at+entry['bytes']]),dtype='uint8').reshape(1672,941,4);previous=np.bitwise_xor(previous,delta);assert previous.tobytes()==original.tobytes()
+                                                                                                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt

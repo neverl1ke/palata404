@@ -1,0 +1,7 @@
+test_neck_and_waist_have_no_transparent_seams_at_breath_extremes (tests.test_avatar_foundation_cleanup.FoundationBrowserTests.test_neck_and_waist_have_no_transparent_seams_at_breath_extremes) ... ok
+test_colour_probe_changes_skin_and_never_changes_weapon_resource (tests.test_avatar_foundation_cleanup.FoundationBrowserTests.test_colour_probe_changes_skin_and_never_changes_weapon_resource) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 17.981s
+
+OK

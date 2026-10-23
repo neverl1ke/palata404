@@ -1,0 +1,86 @@
+{
+  "source_sha256": "b40a31b26dcf9aeea1dad02091228377330c9bb3af3a4b9669cfcc67247fc41d",
+  "removed_pixels": 4281,
+  "all_removed_alpha_max": 3,
+  "all_other_pixels_exact": true,
+  "surfaces": [
+    {
+      "key": "rightUpper",
+      "source": "assets/male/rightUpper.png",
+      "output": "assets/male/foundation-cleanup/rightUpper-runtime.png",
+      "removed_pixels": 372
+    },
+    {
+      "key": "rightFore",
+      "source": "assets/male/rightFore.png",
+      "output": "assets/male/foundation-cleanup/rightFore-runtime.png",
+      "removed_pixels": 111
+    },
+    {
+      "key": "rightHand",
+      "source": "assets/male/rightHand.png",
+      "output": "assets/male/foundation-cleanup/rightHand-runtime.png",
+      "removed_pixels": 164
+    },
+    {
+      "key": "leftUpper",
+      "source": "assets/male/leftUpper.png",
+      "output": "assets/male/foundation-cleanup/leftUpper-runtime.png",
+      "removed_pixels": 672
+    },
+    {
+      "key": "leftFore",
+      "source": "assets/male/leftFore.png",
+      "output": "assets/male/foundation-cleanup/leftFore-runtime.png",
+      "removed_pixels": 87
+    },
+    {
+      "key": "leftHand",
+      "source": "assets/male/leftHand.png",
+      "output": "assets/male/foundation-cleanup/leftHand-runtime.png",
+      "removed_pixels": 207
+    },
+    {
+      "key": "torso",
+      "source": "assets/male/torso.png",
+      "output": "assets/male/foundation-cleanup/torso-runtime.png",
+      "removed_pixels": 219
+    },
+    {
+      "key": "head",
+      "source": "assets/male/head.png",
+      "output": "assets/male/foundation-cleanup/head-runtime.png",
+      "removed_pixels": 922
+    },
+    {
+      "key": "lower",
+      "source": "assets/male/lower.png",
+      "output": "assets/male/foundation-cleanup/lower-runtime.png",
+      "removed_pixels": 1527
+    },
+    {
+      "key": "rightArmSkin",
+      "source": "assets/male/hands/right-arm-source.png",
+      "output": "assets/male/foundation-cleanup/rightArmSkin-runtime.png",
+      "removed_pixels": 647
+    },
+    {
+      "key": "rightHandSkin",
+      "source": "assets/male/hands/right-open-hand-source.png",
+      "output": "assets/male/foundation-cleanup/rightHandSkin-runtime.png",
+      "removed_pixels": 164
+    },
+    {
+      "key": "leftArmSkin",
+      "source": "assets/male/leftArmSkin.png",
+      "output": "assets/male/foundation-cleanup/leftArmSkin-runtime.png",
+      "removed_pixels": 966
+    },
+    {
+      "key": "leftHandSkin",
+      "source": "assets/male/leftHandSkin.png",
+      "output": "assets/male/foundation-cleanup/leftHandSkin-runtime.png",
+      "removed_pixels": 207
+    }
+  ]
+}

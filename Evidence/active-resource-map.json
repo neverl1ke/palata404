@@ -1,0 +1,392 @@
+[
+  {
+    "gender": "male",
+    "pose": "rifle",
+    "side": "right",
+    "role": "image",
+    "path": "assets/male/reference-art/rifle-right-arm.png",
+    "sha256": "b6783cd14ed8885eccc1eca7b1bb4b67e600aa17878a7f7c15590312a65c7940",
+    "size": [
+      339,
+      356
+    ],
+    "mesh_bounds": [
+      165,
+      317,
+      504,
+      673
+    ]
+  },
+  {
+    "gender": "male",
+    "pose": "rifle",
+    "side": "right",
+    "role": "frontImage",
+    "path": "assets/male/reference-art/rifle-right-front.png",
+    "sha256": "e68aa6e903fc7f2544678022d679caa9d2309de9d3219ee6f20de94d5e0c1ff6",
+    "size": [
+      339,
+      356
+    ],
+    "mesh_bounds": [
+      165,
+      317,
+      504,
+      673
+    ]
+  },
+  {
+    "gender": "male",
+    "pose": "rifle",
+    "side": "left",
+    "role": "image",
+    "path": "assets/male/reference-art/rifle-left-arm.png",
+    "sha256": "f3f924b1d3c3aa78ee961f5e47efe00ba7d97da4a557032d7895c8e720a683c8",
+    "size": [
+      142,
+      459
+    ],
+    "mesh_bounds": [
+      605,
+      317,
+      747,
+      776
+    ]
+  },
+  {
+    "gender": "male",
+    "pose": "rifle",
+    "side": "left",
+    "role": "frontImage",
+    "path": "assets/male/reference-art/rifle-left-front.png",
+    "sha256": "629a80e394a1e8b3a81d83d7cae86c1e076f9a09942972bcc237ee894506bfb7",
+    "size": [
+      142,
+      459
+    ],
+    "mesh_bounds": [
+      605,
+      317,
+      747,
+      776
+    ]
+  },
+  {
+    "gender": "male",
+    "pose": "pistol",
+    "side": "right",
+    "role": "image",
+    "path": "assets/male/reference-art/pistol-right-arm.png",
+    "sha256": "4d068d10787cc39ef594c48715214a0381505cf1f78c4472df95e6aa775d2f72",
+    "size": [
+      185,
+      342
+    ],
+    "mesh_bounds": [
+      170,
+      260,
+      355,
+      602
+    ]
+  },
+  {
+    "gender": "male",
+    "pose": "pistol",
+    "side": "right",
+    "role": "frontImage",
+    "path": "assets/male/reference-art/pistol-right-front.png",
+    "sha256": "ee7c47639999c6e10d77426442d941ec0c1770fd421f2fc8ca02e6e503b967ca",
+    "size": [
+      185,
+      342
+    ],
+    "mesh_bounds": [
+      170,
+      260,
+      355,
+      602
+    ]
+  },
+  {
+    "gender": "male",
+    "pose": "melee",
+    "side": "right",
+    "role": "image",
+    "path": "assets/male/reference-art/melee-right-arm.png",
+    "sha256": "0dc2182cadd2291bc14b867546153c38b483b83d89ab68d5a32a922f4c36fad2",
+    "size": [
+      180,
+      596
+    ],
+    "mesh_bounds": [
+      161,
+      317,
+      341,
+      913
+    ]
+  },
+  {
+    "gender": "male",
+    "pose": "melee",
+    "side": "right",
+    "role": "frontImage",
+    "path": "assets/male/reference-art/melee-right-front.png",
+    "sha256": "4b1e78f05c6bb8eaa7222da23ba7faa07b9fd302a5c8089a4a5da89a24d9452e",
+    "size": [
+      180,
+      596
+    ],
+    "mesh_bounds": [
+      161,
+      317,
+      341,
+      913
+    ]
+  },
+  {
+    "gender": "male",
+    "pose": "melee",
+    "role": "weapon",
+    "path": "assets/weapons/reference-art/melee.png",
+    "sha256": "458a1aeeb978c63d6c555f3a4b2c9b4a1bcbb000b1e2e3eace6b551c7695b9e6",
+    "size": [
+      941,
+      1672
+    ],
+    "primary": [
+      227,
+      880
+    ],
+    "support": null
+  },
+  {
+    "gender": "male",
+    "pose": "pistol",
+    "role": "weapon",
+    "path": "assets/weapons/reference-art/pistol.png",
+    "sha256": "703d947d17d9f7da282eedc3d6865011a036b73415bcc88e0bb9610a87d37f45",
+    "size": [
+      941,
+      1672
+    ],
+    "primary": [
+      230,
+      351
+    ],
+    "support": null
+  },
+  {
+    "gender": "male",
+    "pose": "rifle",
+    "role": "weapon",
+    "path": "assets/weapons/reference-art/rifle.png",
+    "sha256": "0cb1188921c993d0d569980b05cf5322c03282f46919ad6e668e2eb3ec9e7d50",
+    "size": [
+      941,
+      1672
+    ],
+    "primary": [
+      390,
+      644
+    ],
+    "support": [
+      675,
+      708
+    ]
+  },
+  {
+    "gender": "female",
+    "pose": "melee",
+    "side": "right",
+    "role": "image",
+    "path": "assets/female/donor-art/melee-right-arm.png",
+    "sha256": "c9cdd40adef186559cdd8e992c1338e30c5ee68fac9361f4f5c736e02f657f2c",
+    "size": [
+      941,
+      1672
+    ],
+    "mesh_bounds": [
+      0,
+      0,
+      941,
+      1672
+    ]
+  },
+  {
+    "gender": "female",
+    "pose": "melee",
+    "side": "right",
+    "role": "frontImage",
+    "path": "assets/female/donor-art/melee-right-front.png",
+    "sha256": "eef0899e14b74408c4ffd648353157197f588322d0ba5de8bec82e785c5a4f59",
+    "size": [
+      941,
+      1672
+    ],
+    "mesh_bounds": [
+      0,
+      0,
+      941,
+      1672
+    ]
+  },
+  {
+    "gender": "female",
+    "pose": "pistol",
+    "side": "right",
+    "role": "image",
+    "path": "assets/female/donor-art/pistol-right-arm.png",
+    "sha256": "3fe25eba12f01f988b90ac4b4dac27b9076695e11ab8fd0d88d3f9f89d3b57fd",
+    "size": [
+      941,
+      1672
+    ],
+    "mesh_bounds": [
+      0,
+      0,
+      941,
+      1672
+    ]
+  },
+  {
+    "gender": "female",
+    "pose": "pistol",
+    "side": "right",
+    "role": "frontImage",
+    "path": "assets/female/donor-art/pistol-right-front.png",
+    "sha256": "8af79c6d3a87b20370b2c83999fc2c4d85cb38a45eb6b3335fc7d5415e5318a9",
+    "size": [
+      941,
+      1672
+    ],
+    "mesh_bounds": [
+      0,
+      0,
+      941,
+      1672
+    ]
+  },
+  {
+    "gender": "female",
+    "pose": "rifle",
+    "side": "right",
+    "role": "image",
+    "path": "assets/female/donor-art/rifle-right-arm.png",
+    "sha256": "26f5c26542ef24458e10e78825b2f96618942836e9714f92eebfb2d86075af43",
+    "size": [
+      941,
+      1672
+    ],
+    "mesh_bounds": [
+      0,
+      0,
+      941,
+      1672
+    ]
+  },
+  {
+    "gender": "female",
+    "pose": "rifle",
+    "side": "right",
+    "role": "frontImage",
+    "path": "assets/female/donor-art/rifle-right-front.png",
+    "sha256": "398f51defe53673e3d1a8f9b7b62f66c26e4def4335264b519b260a49812306a",
+    "size": [
+      941,
+      1672
+    ],
+    "mesh_bounds": [
+      0,
+      0,
+      941,
+      1672
+    ]
+  },
+  {
+    "gender": "female",
+    "pose": "rifle",
+    "side": "left",
+    "role": "image",
+    "path": "assets/female/donor-art/rifle-left-arm.png",
+    "sha256": "39f694686449f1e5aa04683b93221579284995bbd5ba07a6a854acf785907396",
+    "size": [
+      941,
+      1672
+    ],
+    "mesh_bounds": [
+      0,
+      0,
+      941,
+      1672
+    ]
+  },
+  {
+    "gender": "female",
+    "pose": "rifle",
+    "side": "left",
+    "role": "frontImage",
+    "path": "assets/female/donor-art/rifle-left-front.png",
+    "sha256": "1e5a51d23c19449017ac436b01abf2b76ad5a5db2d68c7f81af2037d89b920d5",
+    "size": [
+      941,
+      1672
+    ],
+    "mesh_bounds": [
+      0,
+      0,
+      941,
+      1672
+    ]
+  },
+  {
+    "gender": "female",
+    "pose": "melee",
+    "role": "weapon",
+    "path": "assets/female/donor-art/melee-weapon.png",
+    "sha256": "ed2e79bdaa9fc6bcf7431005514f26e4075e8a833761e45cd6d0bca905045da5",
+    "size": [
+      941,
+      1672
+    ],
+    "primary": [
+      220,
+      857
+    ],
+    "support": null
+  },
+  {
+    "gender": "female",
+    "pose": "pistol",
+    "role": "weapon",
+    "path": "assets/female/donor-art/pistol-weapon.png",
+    "sha256": "7fc47e63808c176f4c051c583339339e7ee91eac27dcf28d08ec0f6338867c57",
+    "size": [
+      941,
+      1672
+    ],
+    "primary": [
+      217,
+      303
+    ],
+    "support": null
+  },
+  {
+    "gender": "female",
+    "pose": "rifle",
+    "role": "weapon",
+    "path": "assets/female/donor-art/rifle-weapon.png",
+    "sha256": "a45c88e9e613c29f0810318bac38998e985816fb8e26d88c570d9a450ce93b54",
+    "size": [
+      941,
+      1672
+    ],
+    "primary": [
+      411,
+      575
+    ],
+    "support": [
+      665,
+      666
+    ]
+  }
+]

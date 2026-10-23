@@ -1,0 +1,9 @@
+test_registration_is_reproducible_without_moving_sources (tests.test_avatar_polish.PolishSourceTests.test_registration_is_reproducible_without_moving_sources) ... ok
+test_export_is_reproducible_including_rig_without_regeneration (tests.test_female_donor_arms.FemaleDonorSourceTests.test_export_is_reproducible_including_rig_without_regeneration) ... ok
+test_local_repaint_process_is_deterministic (tests.test_independent_anatomy.IndependentSurfaceSourceTests.test_local_repaint_process_is_deterministic) ... ok
+test_export_is_idempotent_and_diagnostic_meshes_are_reproducible (tests.test_avatar_foundation_cleanup.FoundationSourceTests.test_export_is_idempotent_and_diagnostic_meshes_are_reproducible) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 148.546s
+
+OK

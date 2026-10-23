@@ -1,0 +1,7 @@
+test_donor_joints_match_independent_measured_windows_and_one_hand_pistol (tests.test_female_donor_arms.FemaleDonorBrowserTests.test_donor_joints_match_independent_measured_windows_and_one_hand_pistol) ... ok
+test_three_visible_props_exist_and_hide_preserves_anatomy_time (tests.test_female_donor_arms.FemaleDonorBrowserTests.test_three_visible_props_exist_and_hide_preserves_anatomy_time) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 4.501s
+
+OK

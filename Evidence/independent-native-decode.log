@@ -1,0 +1,19 @@
+after-female-idle-False.avframes 241 frames; exact RGBA; 0..4000ms inclusive
+after-female-idle-True.avframes 241 frames; exact RGBA; 0..4000ms inclusive
+after-female-melee-False.avframes 241 frames; exact RGBA; 0..4000ms inclusive
+after-female-melee-True.avframes 241 frames; exact RGBA; 0..4000ms inclusive
+after-female-pistol-False.avframes 241 frames; exact RGBA; 0..4000ms inclusive
+after-female-pistol-True.avframes 241 frames; exact RGBA; 0..4000ms inclusive
+after-female-rifle-False.avframes 241 frames; exact RGBA; 0..4000ms inclusive
+after-female-rifle-True.avframes 241 frames; exact RGBA; 0..4000ms inclusive
+after-male-idle-False.avframes 241 frames; exact RGBA; 0..4000ms inclusive
+after-male-idle-True.avframes 241 frames; exact RGBA; 0..4000ms inclusive
+after-male-melee-False.avframes 241 frames; exact RGBA; 0..4000ms inclusive
+after-male-melee-True.avframes 241 frames; exact RGBA; 0..4000ms inclusive
+after-male-pistol-False.avframes 241 frames; exact RGBA; 0..4000ms inclusive
+after-male-pistol-True.avframes 241 frames; exact RGBA; 0..4000ms inclusive
+after-male-rifle-False.avframes 241 frames; exact RGBA; 0..4000ms inclusive
+after-male-rifle-True.avframes 241 frames; exact RGBA; 0..4000ms inclusive
+before-female-melee-True.avframes 241 frames; exact RGBA; 0..4000ms inclusive
+before-male-melee-True.avframes 241 frames; exact RGBA; 0..4000ms inclusive
+Verified 4338 native lossless samples

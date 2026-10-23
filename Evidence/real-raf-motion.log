@@ -1,0 +1,7 @@
+before male melee 28 decoded frames
+before female melee 39 decoded frames
+Traceback (most recent call last):
+  File "/workspace/palata404-avatar-core/tools/record-foundation-raf.py", line 18, in <module>
+    path=G/f'{version}-{gender}-{pose}-raf.webm';path.write_bytes(base64.b64decode(result.pop('data')));probe=json.loads(subprocess.check_output(['ffprobe','-v','error','-select_streams','v','-show_frames','-show_entries','frame=best_effort_timestamp_time','-of','json',str(path)],text=True));pts=[float(f['best_effort_timestamp_time']) for f in probe['frames']];assert len(pts)>10 and result['samples'][-1]['time']>=4000;assert max(x['primary'] for x in result['samples'])<1e-6;assert max(x['support'] for x in result['samples'])<1e-6;rows.append(dict(version=version,gender=gender,pose=pose,file=path.name,decoded_frames=len(pts),pts_seconds=pts,max_gap_seconds=max(b-a for a,b in zip(pts,pts[1:])),**result));print(version,gender,pose,len(pts),'decoded frames',flush=True)
+                                                                                                                                                                                                                                                                                                                                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

@@ -1,0 +1,6 @@
+{
+  "changed_pngs": [
+    "avatar-core/assets/male/foundation-cleanup/pistol-right-arm.png"
+  ],
+  "note": "Only male pistol back arm changed. Earlier other-pose native packs are unaffected; male pistol packs were invalidated."
+}

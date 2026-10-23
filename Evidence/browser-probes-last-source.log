@@ -1,0 +1,4 @@
+  File "/workspace/palata404-avatar-core/tools/probe-foundation-joins.py", line 51
+    frames[0].save(G/f'{gender}-cut-{a}-{b}.webp',save_all=True,append_images=frames[1:],duration=[17]*20+[100],lossless=True,method=0,method=0,loop=0);cuts.append({'gender':gender,'from':a,'to':b,'logical_step_ms':1000/60,'samples':samples})
+                                                                                                                                       ^^^^^^^^
+SyntaxError: keyword argument repeated: method

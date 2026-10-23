@@ -1,0 +1,14 @@
+before male melee True 241 logical frames; 241 encoded; seconds 32.58
+before female melee True 241 logical frames; 241 encoded; seconds 31.21
+after male idle True 241 logical frames; 241 encoded; seconds 242.66
+Traceback (most recent call last):
+  File "/workspace/palata404-avatar-core/tools/capture-foundation-dense.py", line 53, in <module>
+    if existing.exists():
+                          
+  File "/workspace/palata404-avatar-core/tools/capture-foundation-dense.py", line 15, in shot
+    def do_POST(self):
+                       
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/base64.py", line 88, in b64decode
+    return binascii.a2b_base64(s, strict_mode=validate)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt

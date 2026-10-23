@@ -1,0 +1,35 @@
+test_all_current_contacts_and_unoccluded_material_pixels_have_independent_sources (tests.test_avatar_foundation_cleanup.FoundationBrowserTests.test_all_current_contacts_and_unoccluded_material_pixels_have_independent_sources) ... FAIL
+test_actual_canvas_has_no_contact_surface_holes (tests.test_contact_surfaces.ContactSurfaceBrowserTests.test_actual_canvas_has_no_contact_surface_holes) ... ok
+test_palm_fringe_no_longer_has_opaque_black_backdrop_crumbs (tests.test_contact_surfaces.ContactSurfaceBrowserTests.test_palm_fringe_no_longer_has_opaque_black_backdrop_crumbs) ... ok
+test_real_negative_space_and_forearm_source_details_are_preserved (tests.test_contact_surfaces.ContactSurfaceBrowserTests.test_real_negative_space_and_forearm_source_details_are_preserved) ... ok
+test_restored_visible_object_pixels_keep_the_supplied_reference_rgb (tests.test_contact_surfaces.ContactSurfaceBrowserTests.test_restored_visible_object_pixels_keep_the_supplied_reference_rgb) ... FAIL
+test_whole_contact_windows_have_no_runtime_background_leaks (tests.test_contact_surfaces.ContactSurfaceBrowserTests.test_whole_contact_windows_have_no_runtime_background_leaks) ... ok
+
+======================================================================
+FAIL: test_all_current_contacts_and_unoccluded_material_pixels_have_independent_sources (tests.test_avatar_foundation_cleanup.FoundationBrowserTests.test_all_current_contacts_and_unoccluded_material_pixels_have_independent_sources)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/palata404-avatar-core/tests/test_avatar_foundation_cleanup.py", line 83, in test_all_current_contacts_and_unoccluded_material_pixels_have_independent_sources
+    self.p.evaluate('p=>avatarLab.engine.setPose(p)',pose);assert_active_foundation_contacts(self,self.p);assert_active_foundation_contacts(self,self.p,'material');assert_active_foundation_contacts(self,self.p,'forearm')
+                                                                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/palata404-avatar-core/tests/avatar_revision_contract.py", line 105, in assert_active_foundation_contacts
+    x,y=np.floor(world[:2,i]).astype(int);t.assertGreaterEqual(int(actual[y,x,3]),235);uv=np.linalg.inv(matrix(data['f']['weapon']['matrix']))@np.array([x+.5,y+.5,1]);u,v=uv[:2]-.5;expected=np.array([ndi.map_coordinates(source[:,:,k].astype(float),[[v],[u]],order=1)[0] for k in range(3)]);error=float(np.abs(actual[y,x,:3].astype(float)-expected).max());errors.append(error);t.assertLessEqual(error,12,(data['g'],data['pose'],int(xs[i]),int(ys[i]),'new complete material source mismatch'))
+                                                                                                                                                                                                                                                                                                                                                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 124.99999999999625 not less than or equal to 12 : ('male', 'rifle', 262, 577, 'new complete material source mismatch')
+
+======================================================================
+FAIL: test_restored_visible_object_pixels_keep_the_supplied_reference_rgb (tests.test_contact_surfaces.ContactSurfaceBrowserTests.test_restored_visible_object_pixels_keep_the_supplied_reference_rgb)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/palata404-avatar-core/tests/test_contact_surfaces.py", line 85, in test_restored_visible_object_pixels_keep_the_supplied_reference_rgb
+    for pose in ['pistol','rifle','melee']:self.p.evaluate('p=>avatarLab.engine.setPose(p)',pose);assert_active_foundation_contacts(self,self.p,'material')
+                                                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/palata404-avatar-core/tests/avatar_revision_contract.py", line 105, in assert_active_foundation_contacts
+    x,y=np.floor(world[:2,i]).astype(int);t.assertGreaterEqual(int(actual[y,x,3]),235);uv=np.linalg.inv(matrix(data['f']['weapon']['matrix']))@np.array([x+.5,y+.5,1]);u,v=uv[:2]-.5;expected=np.array([ndi.map_coordinates(source[:,:,k].astype(float),[[v],[u]],order=1)[0] for k in range(3)]);error=float(np.abs(actual[y,x,:3].astype(float)-expected).max());errors.append(error);t.assertLessEqual(error,12,(data['g'],data['pose'],int(xs[i]),int(ys[i]),'new complete material source mismatch'))
+                                                                                                                                                                                                                                                                                                                                                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 124.99999999999625 not less than or equal to 12 : ('male', 'rifle', 262, 577, 'new complete material source mismatch')
+
+----------------------------------------------------------------------
+Ran 6 tests in 24.486s
+
+FAILED (failures=2)

@@ -1,0 +1,106 @@
+[
+  {
+    "gender": "female",
+    "pose": "melee",
+    "side": "right",
+    "box": [
+      170,
+      301,
+      346,
+      889
+    ],
+    "arm": "assets/female/donor-art/melee-right-arm.png",
+    "front": "assets/female/donor-art/melee-right-front.png"
+  },
+  {
+    "gender": "female",
+    "pose": "pistol",
+    "side": "right",
+    "box": [
+      173,
+      258,
+      347,
+      572
+    ],
+    "arm": "assets/female/donor-art/pistol-right-arm.png",
+    "front": "assets/female/donor-art/pistol-right-front.png"
+  },
+  {
+    "gender": "female",
+    "pose": "rifle",
+    "side": "right",
+    "box": [
+      162,
+      300,
+      499,
+      616
+    ],
+    "arm": "assets/female/donor-art/rifle-right-arm.png",
+    "front": "assets/female/donor-art/rifle-right-front.png"
+  },
+  {
+    "gender": "female",
+    "pose": "rifle",
+    "side": "left",
+    "box": [
+      594,
+      300,
+      718,
+      707
+    ],
+    "arm": "assets/female/donor-art/rifle-left-arm.png",
+    "front": "assets/female/donor-art/rifle-left-front.png"
+  },
+  {
+    "gender": "male",
+    "pose": "rifle",
+    "side": "right",
+    "box": [
+      0,
+      0,
+      339,
+      356
+    ],
+    "arm": "assets/male/reference-art/rifle-right-arm.png",
+    "front": "assets/male/reference-art/rifle-right-front.png"
+  },
+  {
+    "gender": "male",
+    "pose": "rifle",
+    "side": "left",
+    "box": [
+      0,
+      0,
+      142,
+      459
+    ],
+    "arm": "assets/male/reference-art/rifle-left-arm.png",
+    "front": "assets/male/reference-art/rifle-left-front.png"
+  },
+  {
+    "gender": "male",
+    "pose": "pistol",
+    "side": "right",
+    "box": [
+      0,
+      0,
+      185,
+      342
+    ],
+    "arm": "assets/male/reference-art/pistol-right-arm.png",
+    "front": "assets/male/reference-art/pistol-right-front.png"
+  },
+  {
+    "gender": "male",
+    "pose": "melee",
+    "side": "right",
+    "box": [
+      0,
+      0,
+      180,
+      596
+    ],
+    "arm": "assets/male/reference-art/melee-right-arm.png",
+    "front": "assets/male/reference-art/melee-right-front.png"
+  }
+]

@@ -1,0 +1,1332 @@
+[
+  {
+    "path": "avatar-core/assets/diagnostics/config.json",
+    "sha256": "b0a7aaccd065f7b5264fa8a7ef2cb94b964d3e3bddf6c9d8ff75f14aea1ce66a",
+    "bytes": 18205
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/female-collar.png",
+    "sha256": "670adbdb86453aa94046acf03a5450d8914a6419a1c371f2f038b2f494172353",
+    "bytes": 15317
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/female-left-cuff-idle.png",
+    "sha256": "ff006f87bd751e7bf2b02d2a352feeea5d2f55928a9b588602579b0b6500bc96",
+    "bytes": 2635
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/female-left-glove-idle.png",
+    "sha256": "3bb8c90aa9b42aaa1e6cf78f6eeac2ee23f46aadd3706a48dbfd2a5b747f7aa0",
+    "bytes": 6311
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/female-left-long-sleeve-idle.png",
+    "sha256": "c491a713e1a67c66d2eb2261977d77ae6dc85422e7109f6382335af7fc5761c9",
+    "bytes": 11522
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/female-left-short-sleeve-idle.png",
+    "sha256": "d8ab34118caba38d218950f5429dea11ef9228202100611d2f610e3c3afa99c7",
+    "bytes": 5205
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/female-melee-right-cuff-complete.png",
+    "sha256": "d13a968f0513dcc12646cc2590841bbea38c0e05fa3dc461278027a763882e3f",
+    "bytes": 13027
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/female-melee-right-cuff-front.png",
+    "sha256": "8efd5a892480432dfdc3665842d6ba544f7543692b9fef716da3511c6a422c0e",
+    "bytes": 12927
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/female-melee-right-cuff.png",
+    "sha256": "a9e668681e4566c245dc56d8d1e2e63963fc9842d2c79cf0826309f04d3711ed",
+    "bytes": 12634
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/female-melee-right-glove-complete.png",
+    "sha256": "e70eeebff2c293ead605a1187d47be96d6c3bf97e067be2b47e79828bfb4593b",
+    "bytes": 15268
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/female-melee-right-glove-front.png",
+    "sha256": "ac1cda62e691b1b8bdbd225cab685bb396916718fc0844e4a2e5f8fd48141b06",
+    "bytes": 15224
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/female-melee-right-glove.png",
+    "sha256": "674960bbf9a08757ab6bf541474804cf881781050c05f9b72fa02534c79197a8",
+    "bytes": 12582
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/female-melee-right-long-sleeve-complete.png",
+    "sha256": "61545bd2a09b57d6bdbf499fbe6f04642886ea25388a20c7188164f8a75f7c87",
+    "bytes": 20713
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/female-melee-right-long-sleeve-front.png",
+    "sha256": "75604a34eae228d9a5fdb3e5da181416c50122c1c05d0b84206e6ccabd4af801",
+    "bytes": 12931
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/female-melee-right-long-sleeve.png",
+    "sha256": "34ed9342ca22313f43a380edfd30c37f465c8b2ccfb0989e7dcd3478f2b5229f",
+    "bytes": 20447
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/female-melee-right-short-sleeve-complete.png",
+    "sha256": "b2ee238edcd2248435be4661dac3458cb8e670264ce53bc4dab5a8a7ff848b9f",
+    "bytes": 15795
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/female-melee-right-short-sleeve-front.png",
+    "sha256": "d0cc58dbff46ab9ec344ed3e25826a2c20428ec810608e6b6bfe5180ed5859f5",
+    "bytes": 12416
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/female-melee-right-short-sleeve.png",
+    "sha256": "b2ee238edcd2248435be4661dac3458cb8e670264ce53bc4dab5a8a7ff848b9f",
+    "bytes": 15795
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/female-pistol-right-cuff-complete.png",
+    "sha256": "7d779d275fef3bbfabc2e94bc60f90b07c73e69b4f36448891229bb40d1e8caa",
+    "bytes": 13410
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/female-pistol-right-cuff-front.png",
+    "sha256": "c779d252da26b7c4f5032aeade08d53fa903dfcf9983fad71549560300cd7cc4",
+    "bytes": 13018
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/female-pistol-right-cuff.png",
+    "sha256": "d5bccf4ca381bd24fb3164380200154d5af5efae9a59f94978bcb17c4dd0eac2",
+    "bytes": 13034
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/female-pistol-right-glove-complete.png",
+    "sha256": "44ffa847f7ee378432aaf9facd5e8dadc3797ea9496a452b3ca31611003eefcc",
+    "bytes": 17374
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/female-pistol-right-glove-front.png",
+    "sha256": "f79f3b8118a1065a2e4dce0c2ef66a9743e8d559366dab85b06df6a9ce632daf",
+    "bytes": 16369
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/female-pistol-right-glove.png",
+    "sha256": "a4eda0c757321f65a2373380c6a103acd4925918e6718d7fd22af018ec0693bc",
+    "bytes": 13979
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/female-pistol-right-long-sleeve-complete.png",
+    "sha256": "2a8637c9dd6b931b5b8750ed3b0eb5442c963c08beb55d7c61ecb9b44bd14065",
+    "bytes": 20474
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/female-pistol-right-long-sleeve-front.png",
+    "sha256": "5738e408ef2daa8566a95bf6006ef8fbd607e9fa3c16e23a59b107eb481bd163",
+    "bytes": 12835
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/female-pistol-right-long-sleeve.png",
+    "sha256": "152cd3f84746ac9e84a2ba1ea854379b962262c9b645dc78a5f6dde958d4b096",
+    "bytes": 20325
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/female-pistol-right-short-sleeve-complete.png",
+    "sha256": "91b813c05906efc6f4b4ae5922893a3429315623f7bee4dd42d3c59ba68185b7",
+    "bytes": 21731
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/female-pistol-right-short-sleeve-front.png",
+    "sha256": "0088ad98de20f7ebee1052265143ea78b5a964e7f55ac78c4265dca4ebef41c5",
+    "bytes": 16495
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/female-pistol-right-short-sleeve.png",
+    "sha256": "41ec90b51e49efdc5ad4b6d6497255544cdbe51bedcc7d4213d90755cbf65d17",
+    "bytes": 18459
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/female-rifle-left-cuff-complete.png",
+    "sha256": "bddb7e6cb431d1c7f0644e82b02ff25a30291040ac025b3fc2d43645dd3d7403",
+    "bytes": 12872
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/female-rifle-left-cuff-front.png",
+    "sha256": "80f5dfafa3582a4ff8bd8315771030feb0ee78562c21d22528eed4fc87b608ef",
+    "bytes": 12810
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/female-rifle-left-cuff.png",
+    "sha256": "c2c7e6171844d901b32282253edc352909c1a85921392d02127102e7c7a32984",
+    "bytes": 12622
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/female-rifle-left-glove-complete.png",
+    "sha256": "6da41879dd0fd55ceb4994b305697600aedfeb78935c1cae5df7e3e0ef5a3759",
+    "bytes": 14793
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/female-rifle-left-glove-front.png",
+    "sha256": "4b492d4ab673e20ac09c50d65d00269a8a19a9d5deb5732a0be0d784ca11255d",
+    "bytes": 14764
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/female-rifle-left-glove.png",
+    "sha256": "e561bb14e682f08392d40f5d7fa800e33c8955fd87dca51f2e19ca34b7fbd4e0",
+    "bytes": 12570
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/female-rifle-left-long-sleeve-complete.png",
+    "sha256": "76a20577c49c48cc7c3b833038dd025454cbf1d9038b321b00a4c78fb2b250c4",
+    "bytes": 18219
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/female-rifle-left-long-sleeve-front.png",
+    "sha256": "67f33dbc07987cce3e0e21baea779cb2e449c6aedb6a66e85d31bb32babc664d",
+    "bytes": 12691
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/female-rifle-left-long-sleeve.png",
+    "sha256": "95624022157c3dcf2212c98a2aac05cfef406cafe66698d7c96831f9fc90d934",
+    "bytes": 18142
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/female-rifle-left-short-sleeve-complete.png",
+    "sha256": "abb7feae14b16960c795d3a9d97997718cb03ab99d6bb1a8e6568e63293fcefe",
+    "bytes": 15840
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/female-rifle-left-short-sleeve-front.png",
+    "sha256": "d0cc58dbff46ab9ec344ed3e25826a2c20428ec810608e6b6bfe5180ed5859f5",
+    "bytes": 12416
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/female-rifle-left-short-sleeve.png",
+    "sha256": "abb7feae14b16960c795d3a9d97997718cb03ab99d6bb1a8e6568e63293fcefe",
+    "bytes": 15840
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/female-rifle-right-cuff-complete.png",
+    "sha256": "a49363c88b6b190127d6c3aabf9771fef8ca70acdb49d390ab7a4a2b9ca5f940",
+    "bytes": 13105
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/female-rifle-right-cuff-front.png",
+    "sha256": "f13aca3998ef87af12682aafb1717b0bf648282b55d5396836d010663b46c36f",
+    "bytes": 12985
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/female-rifle-right-cuff.png",
+    "sha256": "87d9cc19e7be5141dea7482112d294b5c9a32af95177563885185760e29f8dcd",
+    "bytes": 12754
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/female-rifle-right-glove-complete.png",
+    "sha256": "704e457ff8f15f103854168a6ace78bfac609e397d81e79a26ad2f907168915b",
+    "bytes": 17115
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/female-rifle-right-glove-front.png",
+    "sha256": "8987409aa7b1c4f08034c20fec31bff988b6562654571107f342d0e28af745fc",
+    "bytes": 17051
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/female-rifle-right-glove.png",
+    "sha256": "c5ef6a0630c44a5b64e774d92dbed3ebff1f3603a55fcfb9fffcf6a6d5feb47c",
+    "bytes": 12693
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/female-rifle-right-long-sleeve-complete.png",
+    "sha256": "70512388f64fd2d2a429155625c1f89e111cadcdf4cc7c143cb6c215a6689ef5",
+    "bytes": 22182
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/female-rifle-right-long-sleeve-front.png",
+    "sha256": "5f2fd8fc30cfd10de3037c97d047748e08ae5e0f00760748018be1ca3cdc26b2",
+    "bytes": 12773
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/female-rifle-right-long-sleeve.png",
+    "sha256": "287c374e4dc05121def035085fd2ce7bed4faaedefa668838b6c87ece1a9e962",
+    "bytes": 22126
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/female-rifle-right-short-sleeve-complete.png",
+    "sha256": "4cdc43b46858f9c68eb32a4f40a11172b1aa515aa956a73e77643f3b7579b177",
+    "bytes": 21097
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/female-rifle-right-short-sleeve-front.png",
+    "sha256": "ceea8579b0776089d21837cb178450b1ffbdc84a13fd65a705e9dbce623817be",
+    "bytes": 16137
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/female-rifle-right-short-sleeve.png",
+    "sha256": "4d056c9a0910ced81e53c6f47432ef5b5b04713a8be8f34d7d083337c0ec98ba",
+    "bytes": 17936
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/female-right-cuff-idle.png",
+    "sha256": "b24f1d070947a59944984babbeb320323e69acaa28106154926cc601e4e63ea4",
+    "bytes": 2684
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/female-right-glove-idle.png",
+    "sha256": "1475a2222ba809e24ecd2c60a4106f393d04e5fa360e41af2e42e085db290923",
+    "bytes": 6528
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/female-right-long-sleeve-idle.png",
+    "sha256": "1105362ff85308599e022fc6784c252411335d8baa8a197c3a132d3c1c9c036c",
+    "bytes": 11142
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/female-right-short-sleeve-idle.png",
+    "sha256": "0b80b8fcee09299641e80444a4fe6b16c96aaf5a4d0aafa1f890ffda3b0d50b3",
+    "bytes": 4774
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/female-shoes.png",
+    "sha256": "76f7f88a2a1d8d6c3fa2846cfe56ac642d4f018d47cdcc2abe09c2932f5dc0fa",
+    "bytes": 23162
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/female-trousers.png",
+    "sha256": "ecca26d0f6f995aa104e1020ecb5f9af16d374b28eacdca9b1bead4000da1807",
+    "bytes": 45194
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/female-waist-top.png",
+    "sha256": "84bccfff3bf83843d0c4c829c4cd6fb027b474cd80d37550d9454efe9a04284f",
+    "bytes": 37247
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/male-collar.png",
+    "sha256": "a0b646b4f37d3e8acc711c164dcaaa4bd80c728add8bd847de6efca16d88cf60",
+    "bytes": 15055
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/male-left-cuff-idle.png",
+    "sha256": "4bcaf7ba7135900e86a606a33187499d244574f55f46c8a25b06f96cfc5a7456",
+    "bytes": 3209
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/male-left-glove-idle.png",
+    "sha256": "f075373361c0a9764e91171715e816081e9eff59f3e406aab0d17ff8efea81b1",
+    "bytes": 7832
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/male-left-long-sleeve-idle.png",
+    "sha256": "af908814c0554f629d47ccf7bbb48380dc0514fb9c1b70687c7d4183a6f37506",
+    "bytes": 12701
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/male-left-short-sleeve-idle.png",
+    "sha256": "14a8fdb978e04b09e5e2ba11cc191ee0cdf04ffe211a3e406e82d0b7e12ba410",
+    "bytes": 5842
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/male-melee-right-cuff-complete.png",
+    "sha256": "a435cb1e23171146bf84a18399046d396e9dc3016c1464f276a0164ac5c7a984",
+    "bytes": 2478
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/male-melee-right-cuff-front.png",
+    "sha256": "7d837cb261bb9706103e80e7c9a4c136a41539b3989ebfe2cb526f91529835ed",
+    "bytes": 2405
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/male-melee-right-cuff.png",
+    "sha256": "9ceb0010afaae867e3642c0230134799fe8f796efcc9739c1a9c05b7675a72af",
+    "bytes": 2029
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/male-melee-right-glove-complete.png",
+    "sha256": "cf0e8f5fd7c2348ad163030b98c76ad0a45d230007c878004e771ca6a9ad2371",
+    "bytes": 4887
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/male-melee-right-glove-front.png",
+    "sha256": "c53a05e0dcd8fecfc6a8eded8871e3ce09eb16ccf1cce5de01bacee40e1560a7",
+    "bytes": 4832
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/male-melee-right-glove.png",
+    "sha256": "f362a69fdfd34fb34e1b3a8077579294480d525d9479bed8d8555d6f094d8038",
+    "bytes": 2005
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/male-melee-right-long-sleeve-complete.png",
+    "sha256": "41a676634bcd72510f398ea3910a93e95118e652795670ffb90925e6f2fc903e",
+    "bytes": 12128
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/male-melee-right-long-sleeve-front.png",
+    "sha256": "9d4713b403d7cf7f16acf17663f4065e35119662fff83a7f2da07cb84c1d6bab",
+    "bytes": 2431
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/male-melee-right-long-sleeve.png",
+    "sha256": "15229ece07693c9bdd531563f833be80aefe6dadfee6e060d8e4c6f665034e5d",
+    "bytes": 11836
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/male-melee-right-short-sleeve-complete.png",
+    "sha256": "d49a27b22983fa882b8f7cb1c3d0e31fdc13879089b5a42241df82a47a174aea",
+    "bytes": 6638
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/male-melee-right-short-sleeve-front.png",
+    "sha256": "2926e66710db3b717247674e943536d2a50a5e59d933af0bcbad9e23df9a0b63",
+    "bytes": 1837
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/male-melee-right-short-sleeve.png",
+    "sha256": "d49a27b22983fa882b8f7cb1c3d0e31fdc13879089b5a42241df82a47a174aea",
+    "bytes": 6638
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/male-pistol-right-cuff-complete.png",
+    "sha256": "130b809a45351f5338f978249c522abf79cb1925828b2564c480c878b11193ae",
+    "bytes": 1985
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/male-pistol-right-cuff-front.png",
+    "sha256": "f6e80c290e0fab0621ea18812c40964e7a497e1187e5c356f8cd3fd6a4ea0f7e",
+    "bytes": 1638
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/male-pistol-right-cuff.png",
+    "sha256": "34fc15168f6b759f085b9026567a5406074841188441a995f6e25360e55885c4",
+    "bytes": 1682
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/male-pistol-right-glove-complete.png",
+    "sha256": "95ab6f08183ad12a8be7710e7c593f2bdf2add9ff883c4906d834eae33f4d721",
+    "bytes": 6508
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/male-pistol-right-glove-front.png",
+    "sha256": "ca9ba3f116b876279c677916e0ee3cb280b7ee762736884adbf14da69897601b",
+    "bytes": 4829
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/male-pistol-right-glove.png",
+    "sha256": "fd253cd422dee429d16d0a444305ae7765a8b5cebcb827a42ff37f36cb4de619",
+    "bytes": 3449
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/male-pistol-right-long-sleeve-complete.png",
+    "sha256": "194d286cc038e6955b519a1c822f478c7fd91146f8854f081b8b18d197f1a388",
+    "bytes": 9099
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/male-pistol-right-long-sleeve-front.png",
+    "sha256": "47601f9a2c6916d4f2ece32d39249f7c3518ab44894a9180e164a7d122e58797",
+    "bytes": 1446
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/male-pistol-right-long-sleeve.png",
+    "sha256": "a1df44b61bd94ebd36b6fdf20a980ad1e020c3fd82810b66c0a66362598d1aec",
+    "bytes": 9015
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/male-pistol-right-short-sleeve-complete.png",
+    "sha256": "ecf542d2274264ac6965c4b2a6ed61bf3afdc2ae125b80da656bccf86f8f0775",
+    "bytes": 9983
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/male-pistol-right-short-sleeve-front.png",
+    "sha256": "90e46ebd92f5d6530f4a2d9eb12d4f70a1f265d15b4a9db6ffd836e592521c29",
+    "bytes": 4922
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/male-pistol-right-short-sleeve.png",
+    "sha256": "1c12d510f191629638bd237dec4dbb41f9eb1d3609b6345367aedfaff995fc0f",
+    "bytes": 7093
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/male-rifle-left-cuff-complete.png",
+    "sha256": "24541772e7f81bcc58f1f8a420ae62b58322c088be2a424ee3dbf3f19fd505ab",
+    "bytes": 2014
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/male-rifle-left-cuff-front.png",
+    "sha256": "d1b05667e4210d79185c9d0a650bb58ce849bb869670fbf5fdee690ead23e156",
+    "bytes": 1512
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/male-rifle-left-cuff.png",
+    "sha256": "dd333e0547a80f571a45e672dd32cd4aa3bcbb820ae4d37cbd960cf3919a0be2",
+    "bytes": 2001
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/male-rifle-left-glove-complete.png",
+    "sha256": "0f363e7d7d0e81493b1e2c2dc8f5e416355975d3b714f29de52171476cf52156",
+    "bytes": 4011
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/male-rifle-left-glove-front.png",
+    "sha256": "baab58d193f1ff3a8c23cd403a02dbb778ad7506f952208131b87ae61a9d3f60",
+    "bytes": 3596
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/male-rifle-left-glove.png",
+    "sha256": "fa1343ffa7bcd182b442df46040955c9a160d42cc96c6c7af8ce2efee60e9e4b",
+    "bytes": 2101
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/male-rifle-left-long-sleeve-complete.png",
+    "sha256": "a4cedad04f7e9f0f985918b95280581325797b88afce2162e12924b87a9c4140",
+    "bytes": 9051
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/male-rifle-left-long-sleeve-front.png",
+    "sha256": "66af2219360e07ffa9c5330d0f6d991548de40fb471f093adffa0beb23ba1193",
+    "bytes": 1391
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/male-rifle-left-long-sleeve.png",
+    "sha256": "2edfe8fcefc7f00cb987c0835a207f19a6d1f0fccf4f57c24cec5644fa948425",
+    "bytes": 9056
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/male-rifle-left-short-sleeve-complete.png",
+    "sha256": "c2ae92b28379c3fe2b5cecfa44bfad8f9d9cc0e7947ae60b0c9de95a6191e18d",
+    "bytes": 6121
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/male-rifle-left-short-sleeve-front.png",
+    "sha256": "f1b114a19969e3b79f87f7774bd3d21eb47b9f03fb275b69a1ca707827416c5c",
+    "bytes": 1331
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/male-rifle-left-short-sleeve.png",
+    "sha256": "c2ae92b28379c3fe2b5cecfa44bfad8f9d9cc0e7947ae60b0c9de95a6191e18d",
+    "bytes": 6121
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/male-rifle-right-cuff-complete.png",
+    "sha256": "80a6430bfb1c9578935564d66d2241c334eda8cb8696b6f205cc47c628c3e33c",
+    "bytes": 2098
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/male-rifle-right-cuff-front.png",
+    "sha256": "34f8fdc3d55e1aa6cc4a85c561f8d45ca632c0bb4018ed63235fa8ac93b48d34",
+    "bytes": 1894
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/male-rifle-right-cuff.png",
+    "sha256": "9127928713406693a3326dd263a133c10d0c9b03d06c7933af7c79d01e3c79b0",
+    "bytes": 1848
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/male-rifle-right-glove-complete.png",
+    "sha256": "e04e0a77b1464213d61fcb3fcb072a7a8c361f19cc0ab80e1aa3905205b5c41a",
+    "bytes": 6126
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/male-rifle-right-glove-front.png",
+    "sha256": "237046e77f9e628af43920f2588e5674d33ba21d65194d540a7bb94711e9ab09",
+    "bytes": 6032
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/male-rifle-right-glove.png",
+    "sha256": "cf6da93732cd9097870d5aaa57a6b334cb5c9287d742e992819f96fb7ba7cc0c",
+    "bytes": 1834
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/male-rifle-right-long-sleeve-complete.png",
+    "sha256": "87c85f662b84e5cc0fc7adf5572ff45e56ef943fd9358e53eb6793332f9aa7cf",
+    "bytes": 12926
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/male-rifle-right-long-sleeve-front.png",
+    "sha256": "3b74d904a050410b941b3dba6cae1adcea7c32cbd76db4352cc6d8545e3215d6",
+    "bytes": 1912
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/male-rifle-right-long-sleeve.png",
+    "sha256": "9f61df693a5b916bd92202df8eeedcd8d930e4fd1f032d6cee07593f992e4909",
+    "bytes": 12822
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/male-rifle-right-short-sleeve-complete.png",
+    "sha256": "176f3181ff4172299037cb6936d4890f5bfa1cebff0eb830e1bf9b1ca464d2aa",
+    "bytes": 7666
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/male-rifle-right-short-sleeve-front.png",
+    "sha256": "7371a9c598a1aefe20d104a6e4a999322051ef8fc20e228be25a512dd325a56a",
+    "bytes": 1465
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/male-rifle-right-short-sleeve.png",
+    "sha256": "176f3181ff4172299037cb6936d4890f5bfa1cebff0eb830e1bf9b1ca464d2aa",
+    "bytes": 7666
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/male-right-cuff-idle.png",
+    "sha256": "e5701db197e2f5e347286f3e500291c4df11d11fc07b3d211804b39b8ae48823",
+    "bytes": 2979
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/male-right-glove-idle.png",
+    "sha256": "5d64f5f6f7c234e7f798907267533d094a7fce99b3c95533017d910b2b320787",
+    "bytes": 7517
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/male-right-long-sleeve-idle.png",
+    "sha256": "a2d11971ea6d6a1a718bb80e1236f71fc135f13b9b8bceafb3018f9a882a140c",
+    "bytes": 11651
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/male-right-short-sleeve-idle.png",
+    "sha256": "8bedeab4f87a654eb81f04aaf89cbe74efe57daa8abedfe15a1512f981744f8e",
+    "bytes": 5483
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/male-shoes.png",
+    "sha256": "8046354752ec7da864f01ab5aaab180fd446ffcedcdcdf516a3dec23f0f40c60",
+    "bytes": 23109
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/male-trousers.png",
+    "sha256": "3ddc8ee313f3e8e0435a0c3d57012e3cdf726d7f07c879deeac228764a9c71e3",
+    "bytes": 46454
+  },
+  {
+    "path": "avatar-core/assets/diagnostics/male-waist-top.png",
+    "sha256": "67c75e22dee39db317c0d7cc181f5c32a500dec7aebfdb8c59b046645b582043",
+    "bytes": 34668
+  },
+  {
+    "path": "avatar-core/assets/female/foundation-cleanup/melee-right-arm.png",
+    "sha256": "5bd10f63eb03418b6518afdbd63a5dd1796be519c842168062e4d6f261f3d605",
+    "bytes": 73517
+  },
+  {
+    "path": "avatar-core/assets/female/foundation-cleanup/melee-right-complete.png",
+    "sha256": "cf2ea2baa276c56481f6707edbf01e9a9e4333f8e4585c03e967257476a09926",
+    "bytes": 88742
+  },
+  {
+    "path": "avatar-core/assets/female/foundation-cleanup/melee-right-front.png",
+    "sha256": "9c85c95e6a79208110781f38e067ecd66cbebe56d87d3ed7f078349915dad5d2",
+    "bytes": 24597
+  },
+  {
+    "path": "avatar-core/assets/female/foundation-cleanup/melee-weapon.png",
+    "sha256": "3cae128f06fcee226fb7dd1ee4ecde339db502ae67d53de2039386444ccdddb7",
+    "bytes": 19174
+  },
+  {
+    "path": "avatar-core/assets/female/foundation-cleanup/pistol-right-arm.png",
+    "sha256": "f18efd10a29b191d7cfe765382d2c779906c00313a1f33f19a958db52a251e5c",
+    "bytes": 62352
+  },
+  {
+    "path": "avatar-core/assets/female/foundation-cleanup/pistol-right-complete.png",
+    "sha256": "e90d3b5e9c5169ef3db538195ccb918deb0fc7a1b52076d5d60ef7d0322eff5b",
+    "bytes": 82839
+  },
+  {
+    "path": "avatar-core/assets/female/foundation-cleanup/pistol-right-front.png",
+    "sha256": "0f8ea739de4122952e1c1abb1ddc7ac93a0f165d338cb7201c83df09c9c3c30a",
+    "bytes": 28109
+  },
+  {
+    "path": "avatar-core/assets/female/foundation-cleanup/pistol-weapon.png",
+    "sha256": "f7f2da05468f9c03dfb25dbed737803530d580c772bfd822fe58b69d5ca39f0d",
+    "bytes": 41817
+  },
+  {
+    "path": "avatar-core/assets/female/foundation-cleanup/rifle-left-arm.png",
+    "sha256": "8a4a671000eeb0bfd365337b6e93fad9ded8fbf33ffd653339799fd40d5c6f46",
+    "bytes": 51271
+  },
+  {
+    "path": "avatar-core/assets/female/foundation-cleanup/rifle-left-complete.png",
+    "sha256": "7b263de8b9f989b465f86499935b32e501e8b6d25d9a08c61166659c79af97dc",
+    "bytes": 66331
+  },
+  {
+    "path": "avatar-core/assets/female/foundation-cleanup/rifle-left-front.png",
+    "sha256": "eac85046f9cca54cb7afe6653375d4f7f9633c4f4ed6f3664bb0a2f64398ffaa",
+    "bytes": 24141
+  },
+  {
+    "path": "avatar-core/assets/female/foundation-cleanup/rifle-right-arm.png",
+    "sha256": "9e535940687f052c8f4dd39a121585614ba8f5d5f975a89f747948501ea99fc9",
+    "bytes": 70489
+  },
+  {
+    "path": "avatar-core/assets/female/foundation-cleanup/rifle-right-complete.png",
+    "sha256": "c6cd2a93755b9adb0180256dc1d66f824807fe9aaea33c126629dbc10bd2c84d",
+    "bytes": 90499
+  },
+  {
+    "path": "avatar-core/assets/female/foundation-cleanup/rifle-right-front.png",
+    "sha256": "f29858bbd11f64af953d9ef4cad129954d13aef1cd383be6aed1a396a2ce925e",
+    "bytes": 30893
+  },
+  {
+    "path": "avatar-core/assets/female/foundation-cleanup/rifle-weapon.png",
+    "sha256": "76743ddcf91631131a039e9b568f8ba476626a394d3b7e3bd72f0a3d9530b574",
+    "bytes": 168986
+  },
+  {
+    "path": "avatar-core/assets/male/foundation-cleanup/base-runtime.png",
+    "sha256": "7a1e676e1ad5b6e84c37084f996490b459f07b74fe87c7f7271a3532e84c7ab7",
+    "bytes": 878041
+  },
+  {
+    "path": "avatar-core/assets/male/foundation-cleanup/head-runtime.png",
+    "sha256": "8bc9ced0eb60701a363a77c3bd045174b871fe050d5837bfe2b186bdfae31bf1",
+    "bytes": 82878
+  },
+  {
+    "path": "avatar-core/assets/male/foundation-cleanup/leftArmSkin-runtime.png",
+    "sha256": "57a17f278660539912d434ffc505611a23197e551549a298daad11208bf76063",
+    "bytes": 108147
+  },
+  {
+    "path": "avatar-core/assets/male/foundation-cleanup/leftFore-runtime.png",
+    "sha256": "7ccc0df4827d33aa91a66f74c76b933e7c14df2757810d2ff63f494c3e07180a",
+    "bytes": 35098
+  },
+  {
+    "path": "avatar-core/assets/male/foundation-cleanup/leftHand-runtime.png",
+    "sha256": "411ff1ddedc2b2a59acb8c01e13a2b9c531529ff3256067183296a40f011d7ce",
+    "bytes": 27362
+  },
+  {
+    "path": "avatar-core/assets/male/foundation-cleanup/leftHandSkin-runtime.png",
+    "sha256": "6c0d8735c191901b819be66549f295aeaf32257d2d1231709a1a749c6c30ff7c",
+    "bytes": 29509
+  },
+  {
+    "path": "avatar-core/assets/male/foundation-cleanup/leftUpper-runtime.png",
+    "sha256": "7e5a4c7942de868bf148fb3584baf02f5af8f8fa04f964fc5f4f85c1dca8dfc3",
+    "bytes": 43886
+  },
+  {
+    "path": "avatar-core/assets/male/foundation-cleanup/lower-runtime.png",
+    "sha256": "262e486fb3d87d6819f46823fd4d80530e78e4f3fb1dff515a80d839272765d7",
+    "bytes": 380940
+  },
+  {
+    "path": "avatar-core/assets/male/foundation-cleanup/melee-right-arm.png",
+    "sha256": "5a194e0c71f550a9e4faf9ce4e0e748e0052eb7abc943a3fe9a0660e7d6c5cde",
+    "bytes": 80441
+  },
+  {
+    "path": "avatar-core/assets/male/foundation-cleanup/melee-right-complete.png",
+    "sha256": "715a919870691ab7856aadcab26c3d90d3c4908648ed8bcd5468fecdc5f3fd73",
+    "bytes": 98526
+  },
+  {
+    "path": "avatar-core/assets/male/foundation-cleanup/melee-right-front.png",
+    "sha256": "63a43c0d82736248482200509bc33cfe4d1a39724c275fb6b7cc135b2ac0fa24",
+    "bytes": 20620
+  },
+  {
+    "path": "avatar-core/assets/male/foundation-cleanup/melee-weapon.png",
+    "sha256": "78eda069b6dd47a3ab7721d660136e69b76def1e0f23a971e293980e78d5b828",
+    "bytes": 21136
+  },
+  {
+    "path": "avatar-core/assets/male/foundation-cleanup/pistol-right-arm.png",
+    "sha256": "2c2f697f43d41bd109a57e21df6580fc16b57e1d9626a5da22d2ecdce5b6e9b8",
+    "bytes": 59750
+  },
+  {
+    "path": "avatar-core/assets/male/foundation-cleanup/pistol-right-complete.png",
+    "sha256": "b660362c29e7b9ed278f361231c2488b87ad21b26e5fc62d24afade165bc310a",
+    "bytes": 83657
+  },
+  {
+    "path": "avatar-core/assets/male/foundation-cleanup/pistol-right-front.png",
+    "sha256": "24456335e21c242c35b38096e65c99037f276f9af22f220b416934733450ec0d",
+    "bytes": 26317
+  },
+  {
+    "path": "avatar-core/assets/male/foundation-cleanup/pistol-weapon.png",
+    "sha256": "62f5aa118be473435ca2721087b0b399683f3ca0b56fc7c7ed7956cbc32c76ea",
+    "bytes": 46762
+  },
+  {
+    "path": "avatar-core/assets/male/foundation-cleanup/rifle-left-arm.png",
+    "sha256": "8f2c72c43e8322998f27e5570b2c9aa36a28a6b571f9cc10264aa265a42b8af6",
+    "bytes": 63406
+  },
+  {
+    "path": "avatar-core/assets/male/foundation-cleanup/rifle-left-complete.png",
+    "sha256": "029d66dedaa4dc0a01130c84c8a798f25d03ea8f150c9b5c568fa6d6e532ba9f",
+    "bytes": 78586
+  },
+  {
+    "path": "avatar-core/assets/male/foundation-cleanup/rifle-left-front.png",
+    "sha256": "2225e1731938c9a8249103a34b2736f72536154bb3849f87d528d2a075b0eeed",
+    "bytes": 17081
+  },
+  {
+    "path": "avatar-core/assets/male/foundation-cleanup/rifle-right-arm.png",
+    "sha256": "dabf21490d5c92888f87d98a3369fc8dd6eeff87117b1c79522ddb00da6716e7",
+    "bytes": 72994
+  },
+  {
+    "path": "avatar-core/assets/male/foundation-cleanup/rifle-right-complete.png",
+    "sha256": "68ef98d18166addda37487617ee33b6abb54405d6cab660a7af3b8a14d9dff8f",
+    "bytes": 97345
+  },
+  {
+    "path": "avatar-core/assets/male/foundation-cleanup/rifle-right-front.png",
+    "sha256": "4407deb54eeaa371fd21b7a77260992f677ac75f6d0fdd4659ab0fccc042d95d",
+    "bytes": 27863
+  },
+  {
+    "path": "avatar-core/assets/male/foundation-cleanup/rifle-weapon.png",
+    "sha256": "77fdf7a2be1e9f6cf5657754cd1d9166efa3268d1490ebd56d0d6010b79808d6",
+    "bytes": 192093
+  },
+  {
+    "path": "avatar-core/assets/male/foundation-cleanup/rightArmSkin-runtime.png",
+    "sha256": "008497c4d1ae8e89cff651dbf95f4f1a16a23dd8ca8e21ce2ba043c7847bba1c",
+    "bytes": 106286
+  },
+  {
+    "path": "avatar-core/assets/male/foundation-cleanup/rightFore-runtime.png",
+    "sha256": "a04a11f2a89ca0f19cac1727eab301e7806e623d760f72368e3676c3ee710ce3",
+    "bytes": 35035
+  },
+  {
+    "path": "avatar-core/assets/male/foundation-cleanup/rightHand-runtime.png",
+    "sha256": "18ee096613b276a3c00f913f171b73a67aadb45d2fee0fe4ec5e8849b2e6fbe5",
+    "bytes": 27200
+  },
+  {
+    "path": "avatar-core/assets/male/foundation-cleanup/rightHandSkin-runtime.png",
+    "sha256": "eb8acf45ab02453c58612aa26dfe926b82d01d032934288617bfad5b67155c31",
+    "bytes": 30076
+  },
+  {
+    "path": "avatar-core/assets/male/foundation-cleanup/rightUpper-runtime.png",
+    "sha256": "dc989ec2f48042381fe56afa30fe086db0ab557a1300f4c1a5e9fff252149d22",
+    "bytes": 42557
+  },
+  {
+    "path": "avatar-core/assets/male/foundation-cleanup/torso-runtime.png",
+    "sha256": "fd08008690654ec53ecded99057fe13abfdd18d3a831d721b8f93a024c4a7b82",
+    "bytes": 207811
+  },
+  {
+    "path": "avatar-core/engine.mjs",
+    "sha256": "61b0e76fee9019a833c0866a94e052a59106a68a66577b7a941e0720f109804c",
+    "bytes": 63508
+  },
+  {
+    "path": "avatar-core/female-preview.json",
+    "sha256": "bb103dc1f16f2d06c1a716fd963282fbc06cadf3549e892bb6833292a0d100d4",
+    "bytes": 3762
+  },
+  {
+    "path": "avatar-core/male-preview.json",
+    "sha256": "18acc20996bcc73adcb0382c1988fa338a447624d4a2e290211c1a513517ab6a",
+    "bytes": 4748
+  },
+  {
+    "path": "avatar-core/relaxed-melee.mjs",
+    "sha256": "df3bcba7f71e2beea8c2cb27247fbdd3edf96447c175cce3ee94ec6331594834",
+    "bytes": 632
+  },
+  {
+    "path": "avatar-lab/index.html",
+    "sha256": "170b7bde4b86e85c0ce4abdf24b64eb4f075f45ec544e2d5b21e8ba5ffc17046",
+    "bytes": 12905
+  },
+  {
+    "path": "avatar-lab/lab.mjs",
+    "sha256": "9cdbd28659735b36c738157a6a8ea8dcd84887fededc459be0f00f0f130935b0",
+    "bytes": 9405
+  },
+  {
+    "path": "docs/avatar-weapon-attachments.md",
+    "sha256": "89a05fabc64ed5c78a574bd991f8b44e75361f2879f0154393789e67a3f281bc",
+    "bytes": 12258
+  },
+  {
+    "path": "review/avatar-foundation-cleanup/Before/active-weapons.png",
+    "sha256": "04b14830852ae92c89e8dd862bede8d8bf75ddf1083e96e8c2969c86af0842e4",
+    "bytes": 188391
+  },
+  {
+    "path": "review/avatar-foundation-cleanup/Before/contact-0.jpg",
+    "sha256": "848265b12eb93088fadb9fd4d95ceb9d6eae3835d93ec34950eefb917991b21d",
+    "bytes": 320020
+  },
+  {
+    "path": "review/avatar-foundation-cleanup/Before/contact-1.jpg",
+    "sha256": "a481741f2fd8131007d933c5552b406f7a7a0b00c5bf50080765a20c6f17d438",
+    "bytes": 359702
+  },
+  {
+    "path": "review/avatar-foundation-cleanup/Before/contact-2.jpg",
+    "sha256": "d6c0ae013e1d7aa94c842cb3a9ff807ba64106457c55e42ffac61afdf5a8df64",
+    "bytes": 360547
+  },
+  {
+    "path": "review/avatar-foundation-cleanup/Before/contact-3.jpg",
+    "sha256": "a3038625e5bf8b860e2bf8260c4a08164e5688f846a38aee3c3b16fd995184b7",
+    "bytes": 381398
+  },
+  {
+    "path": "review/avatar-foundation-cleanup/Before/contact-4.jpg",
+    "sha256": "f1d0a24567327fcf15a68d42a933e7c95611807bfb09a081a23e6be15b82df1e",
+    "bytes": 378027
+  },
+  {
+    "path": "review/avatar-foundation-cleanup/Before/contact-5.jpg",
+    "sha256": "ad5ec6574015987173fdcafd4eec787c4c229e14b2c5822d1e81f816c59410a7",
+    "bytes": 370064
+  },
+  {
+    "path": "review/avatar-foundation-cleanup/Before/contact-6.jpg",
+    "sha256": "5f0f18645b5d9c0ef3ceddc6cf000eeb287c32a1fa884d7b04bd388fa120a8db",
+    "bytes": 355612
+  },
+  {
+    "path": "review/avatar-foundation-cleanup/Before/contact-7.jpg",
+    "sha256": "de663d8b775183bc7c4bb95c4bae59f34628120fbf7dd97ce722b0a2355a3a91",
+    "bytes": 208311
+  },
+  {
+    "path": "review/avatar-foundation-cleanup/Before/engine-before-native-composition.mjs",
+    "sha256": "acc6b547ba24387891b1652fe66493b00b9e27fb91b4b4dcfe738275b759112e",
+    "bytes": 60499
+  },
+  {
+    "path": "review/avatar-foundation-cleanup/Before/female-melee-right-arm.png",
+    "sha256": "3cdda13d19b9df370c326e19e1c4dfd6acef78cd2ff167e158eb7536253fe594",
+    "bytes": 63787
+  },
+  {
+    "path": "review/avatar-foundation-cleanup/Before/female-melee-right-front.png",
+    "sha256": "0adb83f0d166b5756571f1031be8909541463f494cb30a990831ec04b4e8d469",
+    "bytes": 12640
+  },
+  {
+    "path": "review/avatar-foundation-cleanup/Before/female-melee-right-white.jpg",
+    "sha256": "622e0479b0fec5dc52da63da0e4958f77e5874941fc4afc91bfb68d07f452120",
+    "bytes": 8544
+  },
+  {
+    "path": "review/avatar-foundation-cleanup/Before/female-melee-weapon.png",
+    "sha256": "66e46274cb92255d66596372729b93c50a9aba983a1cc47d7e61bd2d83145faf",
+    "bytes": 10763
+  },
+  {
+    "path": "review/avatar-foundation-cleanup/Before/female-pistol-prop-grid.png",
+    "sha256": "658411d1738d8c99022f343f95d2795c5839c20e7ed3d5686e6adee4601d8f29",
+    "bytes": 71098
+  },
+  {
+    "path": "review/avatar-foundation-cleanup/Before/female-pistol-right-arm.png",
+    "sha256": "3cf6cc932aff7e797d1edd42e8f18761ab2b2323866f0415fcaa595b675d8aca",
+    "bytes": 60389
+  },
+  {
+    "path": "review/avatar-foundation-cleanup/Before/female-pistol-right-front.png",
+    "sha256": "3477ef9b5867644a1a4075c68f2d437cce743a90ef2e8c4c5916aa1c77b64a06",
+    "bytes": 16384
+  },
+  {
+    "path": "review/avatar-foundation-cleanup/Before/female-pistol-right-white.jpg",
+    "sha256": "ca83213af6563c1f2469b3b2c8de33f7dd28a7141e4dab2753ffe02e17a43d56",
+    "bytes": 7695
+  },
+  {
+    "path": "review/avatar-foundation-cleanup/Before/female-pistol-weapon.png",
+    "sha256": "6f5a4b4bf86b99faa791fb023b09b2ad8f56b78f91719ed282032039476ee440",
+    "bytes": 11703
+  },
+  {
+    "path": "review/avatar-foundation-cleanup/Before/female-rifle-left-arm.png",
+    "sha256": "cb998e2f0363109a6675e65d5a45c2b79566bc7cd869b0de4cd2e94b526d1f8b",
+    "bytes": 48472
+  },
+  {
+    "path": "review/avatar-foundation-cleanup/Before/female-rifle-left-front.png",
+    "sha256": "8f0cc64070b1a6156bb77e02bcc64f1445c61d09ae8813340dfb7107ca433b34",
+    "bytes": 13924
+  },
+  {
+    "path": "review/avatar-foundation-cleanup/Before/female-rifle-left-white.jpg",
+    "sha256": "c556096b958d3cdce0c1ef5a47d18ba99f524ff43fae387a3466b3c6e8b2b4be",
+    "bytes": 6159
+  },
+  {
+    "path": "review/avatar-foundation-cleanup/Before/female-rifle-prop-grid.png",
+    "sha256": "3af8b696f71a6b10c9ad740967209d09f0064f24d923a9fc30160b5313cfc0c2",
+    "bytes": 692227
+  },
+  {
+    "path": "review/avatar-foundation-cleanup/Before/female-rifle-right-arm.png",
+    "sha256": "73c0bbe98d25a692a3abb9bc9e7fcd050e7fbe6ada0d3870ed0268c386f51c48",
+    "bytes": 70439
+  },
+  {
+    "path": "review/avatar-foundation-cleanup/Before/female-rifle-right-front.png",
+    "sha256": "7d5e587bc2a1e913c5c9fdc788cd92a763c6ce18d7eef5df65888d66c3fc9383",
+    "bytes": 23377
+  },
+  {
+    "path": "review/avatar-foundation-cleanup/Before/female-rifle-right-white.jpg",
+    "sha256": "93f151764ba820814d21bccad969bc3365ea602a2064733c88057a54d00b5ea5",
+    "bytes": 9069
+  },
+  {
+    "path": "review/avatar-foundation-cleanup/Before/female-rifle-weapon.png",
+    "sha256": "454185ee4e027973bd19fd34d00b5569330767f3575d4e2515293e42fd7279b2",
+    "bytes": 131386
+  },
+  {
+    "path": "review/avatar-foundation-cleanup/Before/male-melee-right-arm.png",
+    "sha256": "0dc2182cadd2291bc14b867546153c38b483b83d89ab68d5a32a922f4c36fad2",
+    "bytes": 84256
+  },
+  {
+    "path": "review/avatar-foundation-cleanup/Before/male-melee-right-front.png",
+    "sha256": "4b1e78f05c6bb8eaa7222da23ba7faa07b9fd302a5c8089a4a5da89a24d9452e",
+    "bytes": 15283
+  },
+  {
+    "path": "review/avatar-foundation-cleanup/Before/male-melee-right-white.jpg",
+    "sha256": "6b09f00c611c203d7a5dc7572f31d9b4076278b2f6b65901f0b9ffadfcdfb8c6",
+    "bytes": 10310
+  },
+  {
+    "path": "review/avatar-foundation-cleanup/Before/male-melee-weapon.png",
+    "sha256": "2e8c8669ec6bdd17d2871949dae962179f52c4aa9d002b35cc60b29ed75155d5",
+    "bytes": 15298
+  },
+  {
+    "path": "review/avatar-foundation-cleanup/Before/male-pistol-prop-grid.png",
+    "sha256": "1d001989874aeede67f12d77143fcd99c57948810dc9c9662c6f3f819ac95d6b",
+    "bytes": 105988
+  },
+  {
+    "path": "review/avatar-foundation-cleanup/Before/male-pistol-right-arm.png",
+    "sha256": "4d068d10787cc39ef594c48715214a0381505cf1f78c4472df95e6aa775d2f72",
+    "bytes": 72536
+  },
+  {
+    "path": "review/avatar-foundation-cleanup/Before/male-pistol-right-front.png",
+    "sha256": "ee7c47639999c6e10d77426442d941ec0c1770fd421f2fc8ca02e6e503b967ca",
+    "bytes": 19072
+  },
+  {
+    "path": "review/avatar-foundation-cleanup/Before/male-pistol-right-white.jpg",
+    "sha256": "de6cddc9a24b609fa60a0a12904b7879799aea1a1c9d0ad8f9249f20c2deb92d",
+    "bytes": 8357
+  },
+  {
+    "path": "review/avatar-foundation-cleanup/Before/male-pistol-weapon.png",
+    "sha256": "ebf289642f7a87edc43542d93861d59527e3cdfc8b06b2314432be72498b45f1",
+    "bytes": 17292
+  },
+  {
+    "path": "review/avatar-foundation-cleanup/Before/male-rifle-left-arm.png",
+    "sha256": "f3f924b1d3c3aa78ee961f5e47efe00ba7d97da4a557032d7895c8e720a683c8",
+    "bytes": 71391
+  },
+  {
+    "path": "review/avatar-foundation-cleanup/Before/male-rifle-left-front.png",
+    "sha256": "629a80e394a1e8b3a81d83d7cae86c1e076f9a09942972bcc237ee894506bfb7",
+    "bytes": 13082
+  },
+  {
+    "path": "review/avatar-foundation-cleanup/Before/male-rifle-left-white.jpg",
+    "sha256": "adf6f401d0af863bc7b592b1af71da6e2be43836147e26af3d29e401198cadda",
+    "bytes": 7902
+  },
+  {
+    "path": "review/avatar-foundation-cleanup/Before/male-rifle-prop-grid.png",
+    "sha256": "0150985ed17ce637ab9c0559c596e8805ed624722f9dd1e06636fc4b4ac27279",
+    "bytes": 788504
+  },
+  {
+    "path": "review/avatar-foundation-cleanup/Before/male-rifle-right-arm.png",
+    "sha256": "b6783cd14ed8885eccc1eca7b1bb4b67e600aa17878a7f7c15590312a65c7940",
+    "bytes": 87954
+  },
+  {
+    "path": "review/avatar-foundation-cleanup/Before/male-rifle-right-front.png",
+    "sha256": "e68aa6e903fc7f2544678022d679caa9d2309de9d3219ee6f20de94d5e0c1ff6",
+    "bytes": 27899
+  },
+  {
+    "path": "review/avatar-foundation-cleanup/Before/male-rifle-right-white.jpg",
+    "sha256": "8220f2d08624dc82fff2875e6d715360f43963959237df3cb9772e6f1d3f8c04",
+    "bytes": 10189
+  },
+  {
+    "path": "review/avatar-foundation-cleanup/Before/male-rifle-weapon.png",
+    "sha256": "de697e3cf2b3b7b8ae73dff487d1e634e6fe105aec6247f5a10624e1177ae4f0",
+    "bytes": 141443
+  },
+  {
+    "path": "review/avatar-foundation-cleanup/Edits/female-melee-right-arm.png",
+    "sha256": "e1d54ff41958d27d525391445c7af64c7d12fe89e54858ce47b74339e59c4658",
+    "bytes": 882368
+  },
+  {
+    "path": "review/avatar-foundation-cleanup/Edits/female-pistol-right-arm.png",
+    "sha256": "343e9b5d9f1d8d8ddcb7cd94e9a597116295885ea8e356486681a2b974b95fba",
+    "bytes": 1441839
+  },
+  {
+    "path": "review/avatar-foundation-cleanup/Edits/female-rifle-left-arm.png",
+    "sha256": "341d1bc13615b5b46f4d104ea4c916d61040d3482ce352e6ff064b5fa420cfdd",
+    "bytes": 1218495
+  },
+  {
+    "path": "review/avatar-foundation-cleanup/Edits/female-rifle-right-arm.png",
+    "sha256": "8bf7ccbba1e931ca08f4da224a8625078da4a62045515c69a3454822a59108d0",
+    "bytes": 892382
+  },
+  {
+    "path": "review/avatar-foundation-cleanup/Edits/male-melee-right-arm.png",
+    "sha256": "f83e773f9414cbb198a52f38aea7fd548024f5676d6e51675d02a85ca0ed132a",
+    "bytes": 1174213
+  },
+  {
+    "path": "review/avatar-foundation-cleanup/Edits/male-pistol-right-arm.png",
+    "sha256": "1e1089c11c97d38755aeba90fd9963cedd8213c859f8c6173e3fb3d139f871d6",
+    "bytes": 1566039
+  },
+  {
+    "path": "review/avatar-foundation-cleanup/Edits/male-rifle-left-arm.png",
+    "sha256": "8acae95d012325154278f7dcff341dfe88a92e04b15efd51deb17408af608b40",
+    "bytes": 1361531
+  },
+  {
+    "path": "review/avatar-foundation-cleanup/Edits/male-rifle-right-arm.png",
+    "sha256": "e3f5bcf96f4cf07e9f216acda1da65868d9b5b23d65373d9f308aa775431758d",
+    "bytes": 997715
+  },
+  {
+    "path": "review/avatar-foundation-cleanup/Edits/source-paths.json",
+    "sha256": "51e437b833b5ee7cce7f2aca09e66173094fe2511eb20db77f667f5b8a8403b3",
+    "bytes": 802
+  },
+  {
+    "path": "review/avatar-foundation-cleanup/Evidence/art-export.json",
+    "sha256": "0832f9a0cfd9eb65a11890620208c219ed6840b872c6d4b80063c86e29b95730",
+    "bytes": 4787
+  },
+  {
+    "path": "review/avatar-foundation-cleanup/Evidence/base-male-removed-alpha-mask.png",
+    "sha256": "491edae624c7cfa035cd6c4a98a22c2e0076046b72eed5f5000f162776e9a288",
+    "bytes": 7630
+  },
+  {
+    "path": "review/avatar-foundation-cleanup/Evidence/prop-export.json",
+    "sha256": "ac7510a8d927543307c4c5b577e342162349c501a4b2951bb5d766ef10fa8019",
+    "bytes": 3687
+  },
+  {
+    "path": "review/avatar-foundation-cleanup/Evidence/runtime-alpha-cleanup.json",
+    "sha256": "15d8850f9a8b5b4b6f5025ce6fa4ed9c21a8e15ff149d1f4da196273270ad285",
+    "bytes": 2611
+  },
+  {
+    "path": "review/avatar-foundation-cleanup/Inputs/avatar-audit.md",
+    "sha256": "b868756039cd27d4af14d20510c6635462b3158f2afb863d40a7d0273543a9aa",
+    "bytes": 17758
+  },
+  {
+    "path": "review/avatar-foundation-cleanup/Inputs/codex-avatar-fix-prompt.md",
+    "sha256": "6296ce84bc6582729747c2781ad750bf1b30f51053ac0f7f4fd68280010184eb",
+    "bytes": 17015
+  },
+  {
+    "path": "review/avatar-foundation-cleanup/Inputs/review-coverage.csv",
+    "sha256": "36f255249b09e0e9eb97bafe79b3f5020c6e5a261e6501201ced33b6def727c9",
+    "bytes": 41903
+  },
+  {
+    "path": "review/avatar-foundation-cleanup/README.md",
+    "sha256": "7215d4714f955357240a650012c2bd5c3a0acba98d69b80abbcef68703b30ea3",
+    "bytes": 18427
+  },
+  {
+    "path": "review/avatar-foundation-cleanup/ViewFrames.html",
+    "sha256": "4e59bfa3bbdb6a57c30d0c87b38e4105763bece0e2bb4217324ab27513b70a82",
+    "bytes": 4095
+  },
+  {
+    "path": "review/avatar-foundation-cleanup/active-arms-before.json",
+    "sha256": "c10631b4f4aebc8b2594794846efd5cadce522a1f06bc9c7663557cd853239cb",
+    "bytes": 2050
+  },
+  {
+    "path": "review/avatar-foundation-cleanup/female-preview-before.json",
+    "sha256": "ba49c9e81e55896412c28f09450fa1bd5d32e81a4589c9c79d4045a363863c44",
+    "bytes": 1824
+  },
+  {
+    "path": "review/avatar-foundation-cleanup/issue-register.json",
+    "sha256": "a217c20eea3f132ea2c1a255e0167d912b0e0851ebfd2031fca960b0dab3a0c8",
+    "bytes": 11529
+  },
+  {
+    "path": "review/avatar-foundation-cleanup/male-preview-before.json",
+    "sha256": "20c228e91a46f7604d8a527f1a59d0f74ace58ef8d12178e8d874611f2074ed6",
+    "bytes": 2525
+  },
+  {
+    "path": "tests/avatar_revision_contract.py",
+    "sha256": "09c24326ec9990e9a61e50bd7c031fd6afd33a95bfb6710766e6ac383038e9c2",
+    "bytes": 14838
+  },
+  {
+    "path": "tests/relaxed-melee.test.mjs",
+    "sha256": "1a46c9756e316b2de93e3c72c357a2954c9645d18eaaf6d02a604360dcf04a67",
+    "bytes": 1727
+  },
+  {
+    "path": "tests/test_arm_contour_cleanup.py",
+    "sha256": "b8bd4b1fc23d3136d344c9167fce09dceb486b2a9ea4119a2338311cd7515f44",
+    "bytes": 9106
+  },
+  {
+    "path": "tests/test_avatar_cleanup.py",
+    "sha256": "d494257baa058b93be3f6544d5687020535dfba00bf7ddeb6752ee81f087a979",
+    "bytes": 7780
+  },
+  {
+    "path": "tests/test_avatar_core.py",
+    "sha256": "539fcea61f4d3ff098a9f52214bb7eb8d08f80dc33224d357062753629c25aeb",
+    "bytes": 18049
+  },
+  {
+    "path": "tests/test_avatar_foundation_cleanup.py",
+    "sha256": "d06b3c0f452ce1b908bc0a18debb27ea755075edfa2d94248598cd13321aa1bf",
+    "bytes": 12885
+  },
+  {
+    "path": "tests/test_avatar_polish.py",
+    "sha256": "84633b5621dd880901163742ca8e97e6ae79ef803b9f5cffd06ed5326d987c19",
+    "bytes": 17261
+  },
+  {
+    "path": "tests/test_contact_surfaces.py",
+    "sha256": "ec6df7373ddb2af359c30e58e0ff550cb325ed34a1201627eb9a924afa646e0c",
+    "bytes": 9600
+  },
+  {
+    "path": "tests/test_grip_pass.py",
+    "sha256": "28ab1100159c53e9761b6debd5a90dc0d1768abea8dcd93718d141c0d0e1ca7f",
+    "bytes": 5972
+  },
+  {
+    "path": "tests/test_reference_arm_art.py",
+    "sha256": "b6eb0122c7a83d2b55b8067fb070f79f7d78e828ad01aa100b33b06a727ee7a4",
+    "bytes": 9990
+  },
+  {
+    "path": "tools/bundle-avatar-lab.py",
+    "sha256": "336d01dcaba9ace26616589172ebf706b1d2267274e473e3eb78c7c5f1189ca8",
+    "bytes": 4220
+  },
+  {
+    "path": "tools/capture-foundation-dense.py",
+    "sha256": "24ac049e0452d9d59782328924e3f31bdb2ee5924cbc1be8d35a8392d0db25a2",
+    "bytes": 7668
+  },
+  {
+    "path": "tools/capture-foundation-endpoints.py",
+    "sha256": "8cb420fad93be5ff08f2c820fcb543622b55aeb4b9601599f6d1021b6018b4e2",
+    "bytes": 3825
+  },
+  {
+    "path": "tools/compare-foundation-knife.py",
+    "sha256": "ae9dd2bda1c081c724870007d3583304c40f02b9d050620a88a65a02fe81d196",
+    "bytes": 2005
+  },
+  {
+    "path": "tools/inventory-foundation-review.py",
+    "sha256": "0fcab5d125fd7645741915f1f6c5bbfb0ad47fc2a5150375b2124e88df2f0d3a",
+    "bytes": 2341
+  },
+  {
+    "path": "tools/knife-native-details.py",
+    "sha256": "f73bedc4dfa842ab9ab88a0a7b555a852ac87e79f3ca5e970447fc9cbf1f04a1",
+    "bytes": 1474
+  },
+  {
+    "path": "tools/package-foundation-review.py",
+    "sha256": "9a51cb1d643e614d2d31ccc8db725edae1abcfaac141ba2bea8987b7437c94de",
+    "bytes": 8737
+  },
+  {
+    "path": "tools/prepare-female-donor-arms.py",
+    "sha256": "c6571d909fa52a79772a73613e92a4e4f1918eca16a4eb956f2eb8a470092c03",
+    "bytes": 20275
+  },
+  {
+    "path": "tools/prepare-foundation-cleanup.py",
+    "sha256": "9f99c8280d12151e68edced12da288bf166d68081231985e0d37b1344de0514f",
+    "bytes": 11550
+  },
+  {
+    "path": "tools/prepare-foundation-diagnostics.py",
+    "sha256": "557d17ae41a4f042d9371452a4d95c2671983bd864ac55f69a9a6c7046df5885",
+    "bytes": 3677
+  },
+  {
+    "path": "tools/prepare-independent-anatomy.py",
+    "sha256": "68b6bd5a0a53404679e2d7ebe5adafbfbf9bacbe56c6516fb4700ca0d88d39e8",
+    "bytes": 9639
+  },
+  {
+    "path": "tools/probe-foundation-joins.py",
+    "sha256": "8ccfcef3dd6914ff1d26407075c048ecccf4fc4d61436b49e30f885bb8a4b1db",
+    "bytes": 9101
+  },
+  {
+    "path": "tools/publish-foundation-review.py",
+    "sha256": "f58729df304ded5225513121698f97c39903aca267a1cc0687210cdaadf61ca1",
+    "bytes": 5677
+  },
+  {
+    "path": "tools/record-foundation-raf.py",
+    "sha256": "1521db979e7c9bfc5f8bdf39ce93dcc807cd1b98468771b9b17c298bfa836e4e",
+    "bytes": 3503
+  },
+  {
+    "path": "tools/report-foundation-review.py",
+    "sha256": "921d1ae1110e0a46ed4c73bb3698217de4b284980f5be2ba86d7f697e6a1e467",
+    "bytes": 20578
+  },
+  {
+    "path": "tools/run-python-tests.py",
+    "sha256": "43a622f90161893c4ec5f9733c0faa5293ac0f651a9ea63eb1bd051b09c88f94",
+    "bytes": 3586
+  },
+  {
+    "path": "tools/verify-foundation-frames.py",
+    "sha256": "6c0675d9e0cbf9f67c95a322ce975da079fb18a269b7dd7d9c47804918e88ea0",
+    "bytes": 1396
+  },
+  {
+    "path": "tools/verify-foundation-package.py",
+    "sha256": "c499c3d79fd19677f1a2c31c3ab179cdec87ef08681b5fa4c00e30d4ce751b3f",
+    "bytes": 3808
+  }
+]

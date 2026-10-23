@@ -1,0 +1,12 @@
+[
+  {
+    "gender": "male",
+    "whole_image_mean_abs": 0.07970784668656473,
+    "face_center_max_abs": 0
+  },
+  {
+    "gender": "female",
+    "whole_image_mean_abs": 0.03575836812105619,
+    "face_center_max_abs": 0
+  }
+]

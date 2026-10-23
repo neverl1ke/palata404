@@ -1,0 +1,16 @@
+F........................
+======================================================================
+FAIL: test_all_current_contacts_and_unoccluded_material_pixels_have_independent_sources (tests.test_avatar_foundation_cleanup.FoundationBrowserTests.test_all_current_contacts_and_unoccluded_material_pixels_have_independent_sources)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/palata404-avatar-core/tests/test_avatar_foundation_cleanup.py", line 89, in test_all_current_contacts_and_unoccluded_material_pixels_have_independent_sources
+    self.p.evaluate('p=>avatarLab.engine.setPose(p)',pose);assert_active_foundation_contacts(self,self.p);assert_active_foundation_contacts(self,self.p,'material');assert_active_foundation_contacts(self,self.p,'forearm')
+                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/palata404-avatar-core/tests/avatar_revision_contract.py", line 146, in assert_active_foundation_contacts
+    t.assertGreater(count,100,'source-owned contact/forearm probes must exist')
+AssertionError: 0 not greater than 100 : source-owned contact/forearm probes must exist
+
+----------------------------------------------------------------------
+Ran 25 tests in 115.158s
+
+FAILED (failures=1)

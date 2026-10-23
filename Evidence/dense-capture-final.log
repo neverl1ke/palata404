@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/workspace/palata404-avatar-core/tools/capture-foundation-dense.py", line 38, in <module>
+    server=ThreadingHTTPServer(('127.0.0.1',0),functools.partial(Quiet,directory=str(root)));threading.Thread(target=server.serve_forever,daemon=True).start();p=browser.new_page(viewport={'width':1400,'height':1800});p.on('pageerror',lambda e:errors.append(str(e)));p.on('response',lambda r:http.append([r.url,r.status]) if r.status>=400 else None);p.goto(f'http://127.0.0.1:{server.server_port}/avatar-lab/');p.wait_for_function('window.avatarLab?.ready');p.evaluate('()=>{let e=avatarLab.engine;e.pause();Object.assign(e.canvas.style,{width:"941px",height:"1672px",maxWidth:"none",maxHeight:"none"});e.setOptions({breathing:true,background:"transparent"})}')
+                                                                                                                                                                                                                                                                                                                                                     ^^^^^^^^^^^^^^^^^^
+  File "/workspace/palata404-avatar-core/tools/capture-foundation-dense.py", line 17, in hashim
+    a=np.array(im);a[a[:,:,3]==0]=0;return hashlib.sha256(a.tobytes()).hexdigest()
+                                                          ^^^^^^^^^^^
+KeyboardInterrupt

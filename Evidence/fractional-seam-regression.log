@@ -1,0 +1,6 @@
+test_fractional_display_scaling_and_dpr_do_not_reopen_partition_seams (tests.test_avatar_foundation_cleanup.FoundationBrowserTests.test_fractional_display_scaling_and_dpr_do_not_reopen_partition_seams) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 21.312s
+
+OK

@@ -1,0 +1,989 @@
+[
+  {
+    "gender": "male",
+    "role": "protected-original",
+    "path": "avatar-core/../base_male.png",
+    "sha256": "b40a31b26dcf9aeea1dad02091228377330c9bb3af3a4b9669cfcc67247fc41d",
+    "size": [
+      941,
+      1672
+    ],
+    "mode": "RGBA",
+    "registration": null
+  },
+  {
+    "gender": "male",
+    "role": "segment:rightUpper",
+    "path": "avatar-core/assets/male/foundation-cleanup/rightUpper-runtime.png",
+    "sha256": "dc989ec2f48042381fe56afa30fe086db0ab557a1300f4c1a5e9fff252149d22",
+    "size": [
+      158,
+      313
+    ],
+    "mode": "RGBA",
+    "registration": [
+      177,
+      311,
+      335,
+      624
+    ]
+  },
+  {
+    "gender": "male",
+    "role": "segment:rightFore",
+    "path": "avatar-core/assets/male/foundation-cleanup/rightFore-runtime.png",
+    "sha256": "a04a11f2a89ca0f19cac1727eab301e7806e623d760f72368e3676c3ee710ce3",
+    "size": [
+      221,
+      244
+    ],
+    "mode": "RGBA",
+    "registration": [
+      82,
+      608,
+      303,
+      852
+    ]
+  },
+  {
+    "gender": "male",
+    "role": "segment:rightHand",
+    "path": "avatar-core/assets/male/foundation-cleanup/rightHand-runtime.png",
+    "sha256": "18ee096613b276a3c00f913f171b73a67aadb45d2fee0fe4ec5e8849b2e6fbe5",
+    "size": [
+      99,
+      172
+    ],
+    "mode": "RGBA",
+    "registration": [
+      162,
+      840,
+      261,
+      1012
+    ]
+  },
+  {
+    "gender": "male",
+    "role": "segment:leftUpper",
+    "path": "avatar-core/assets/male/foundation-cleanup/leftUpper-runtime.png",
+    "sha256": "7e5a4c7942de868bf148fb3584baf02f5af8f8fa04f964fc5f4f85c1dca8dfc3",
+    "size": [
+      199,
+      313
+    ],
+    "mode": "RGBA",
+    "registration": [
+      612,
+      311,
+      811,
+      624
+    ]
+  },
+  {
+    "gender": "male",
+    "role": "segment:leftFore",
+    "path": "avatar-core/assets/male/foundation-cleanup/leftFore-runtime.png",
+    "sha256": "7ccc0df4827d33aa91a66f74c76b933e7c14df2757810d2ff63f494c3e07180a",
+    "size": [
+      140,
+      257
+    ],
+    "mode": "RGBA",
+    "registration": [
+      645,
+      608,
+      785,
+      865
+    ]
+  },
+  {
+    "gender": "male",
+    "role": "segment:leftHand",
+    "path": "avatar-core/assets/male/foundation-cleanup/leftHand-runtime.png",
+    "sha256": "411ff1ddedc2b2a59acb8c01e13a2b9c531529ff3256067183296a40f011d7ce",
+    "size": [
+      241,
+      189
+    ],
+    "mode": "RGBA",
+    "registration": [
+      662,
+      840,
+      903,
+      1029
+    ]
+  },
+  {
+    "gender": "male",
+    "role": "segment:torso",
+    "path": "avatar-core/assets/male/foundation-cleanup/torso-runtime.png",
+    "sha256": "fd08008690654ec53ecded99057fe13abfdd18d3a831d721b8f93a024c4a7b82",
+    "size": [
+      610,
+      465
+    ],
+    "mode": "RGBA",
+    "registration": [
+      187,
+      295,
+      797,
+      760
+    ]
+  },
+  {
+    "gender": "male",
+    "role": "segment:head",
+    "path": "avatar-core/assets/male/foundation-cleanup/head-runtime.png",
+    "sha256": "8bc9ced0eb60701a363a77c3bd045174b871fe050d5837bfe2b186bdfae31bf1",
+    "size": [
+      813,
+      274
+    ],
+    "mode": "RGBA",
+    "registration": [
+      41,
+      21,
+      854,
+      295
+    ]
+  },
+  {
+    "gender": "male",
+    "role": "segment:lower",
+    "path": "avatar-core/assets/male/foundation-cleanup/lower-runtime.png",
+    "sha256": "262e486fb3d87d6819f46823fd4d80530e78e4f3fb1dff515a80d839272765d7",
+    "size": [
+      900,
+      900
+    ],
+    "mode": "RGBA",
+    "registration": [
+      21,
+      760,
+      921,
+      1660
+    ]
+  },
+  {
+    "gender": "male",
+    "role": "art-rifle-right",
+    "path": "avatar-core/assets/male/foundation-cleanup/rifle-right-arm.png",
+    "sha256": "dabf21490d5c92888f87d98a3369fc8dd6eeff87117b1c79522ddb00da6716e7",
+    "size": [
+      339,
+      356
+    ],
+    "mode": "RGBA",
+    "registration": [
+      165,
+      317,
+      504,
+      673
+    ]
+  },
+  {
+    "gender": "male",
+    "role": "art-front-rifle-right",
+    "path": "avatar-core/assets/male/foundation-cleanup/rifle-right-front.png",
+    "sha256": "4407deb54eeaa371fd21b7a77260992f677ac75f6d0fdd4659ab0fccc042d95d",
+    "size": [
+      339,
+      356
+    ],
+    "mode": "RGBA",
+    "registration": [
+      165,
+      317,
+      504,
+      673
+    ]
+  },
+  {
+    "gender": "male",
+    "role": "complete:rifle-right",
+    "path": "avatar-core/assets/male/foundation-cleanup/rifle-right-complete.png",
+    "sha256": "68ef98d18166addda37487617ee33b6abb54405d6cab660a7af3b8a14d9dff8f",
+    "size": [
+      339,
+      356
+    ],
+    "mode": "RGBA",
+    "registration": [
+      165,
+      317,
+      504,
+      673
+    ]
+  },
+  {
+    "gender": "male",
+    "role": "art-rifle-left",
+    "path": "avatar-core/assets/male/foundation-cleanup/rifle-left-arm.png",
+    "sha256": "8f2c72c43e8322998f27e5570b2c9aa36a28a6b571f9cc10264aa265a42b8af6",
+    "size": [
+      142,
+      459
+    ],
+    "mode": "RGBA",
+    "registration": [
+      605,
+      317,
+      747,
+      776
+    ]
+  },
+  {
+    "gender": "male",
+    "role": "art-front-rifle-left",
+    "path": "avatar-core/assets/male/foundation-cleanup/rifle-left-front.png",
+    "sha256": "2225e1731938c9a8249103a34b2736f72536154bb3849f87d528d2a075b0eeed",
+    "size": [
+      142,
+      459
+    ],
+    "mode": "RGBA",
+    "registration": [
+      605,
+      317,
+      747,
+      776
+    ]
+  },
+  {
+    "gender": "male",
+    "role": "complete:rifle-left",
+    "path": "avatar-core/assets/male/foundation-cleanup/rifle-left-complete.png",
+    "sha256": "029d66dedaa4dc0a01130c84c8a798f25d03ea8f150c9b5c568fa6d6e532ba9f",
+    "size": [
+      142,
+      459
+    ],
+    "mode": "RGBA",
+    "registration": [
+      605,
+      317,
+      747,
+      776
+    ]
+  },
+  {
+    "gender": "male",
+    "role": "art-pistol-right",
+    "path": "avatar-core/assets/male/foundation-cleanup/pistol-right-arm.png",
+    "sha256": "2c2f697f43d41bd109a57e21df6580fc16b57e1d9626a5da22d2ecdce5b6e9b8",
+    "size": [
+      185,
+      342
+    ],
+    "mode": "RGBA",
+    "registration": [
+      170,
+      260,
+      355,
+      602
+    ]
+  },
+  {
+    "gender": "male",
+    "role": "art-front-pistol-right",
+    "path": "avatar-core/assets/male/foundation-cleanup/pistol-right-front.png",
+    "sha256": "24456335e21c242c35b38096e65c99037f276f9af22f220b416934733450ec0d",
+    "size": [
+      185,
+      342
+    ],
+    "mode": "RGBA",
+    "registration": [
+      170,
+      260,
+      355,
+      602
+    ]
+  },
+  {
+    "gender": "male",
+    "role": "complete:pistol-right",
+    "path": "avatar-core/assets/male/foundation-cleanup/pistol-right-complete.png",
+    "sha256": "b660362c29e7b9ed278f361231c2488b87ad21b26e5fc62d24afade165bc310a",
+    "size": [
+      185,
+      342
+    ],
+    "mode": "RGBA",
+    "registration": [
+      170,
+      260,
+      355,
+      602
+    ]
+  },
+  {
+    "gender": "male",
+    "role": "art-melee-right",
+    "path": "avatar-core/assets/male/foundation-cleanup/melee-right-arm.png",
+    "sha256": "5a194e0c71f550a9e4faf9ce4e0e748e0052eb7abc943a3fe9a0660e7d6c5cde",
+    "size": [
+      180,
+      596
+    ],
+    "mode": "RGBA",
+    "registration": [
+      161,
+      317,
+      341,
+      913
+    ]
+  },
+  {
+    "gender": "male",
+    "role": "art-front-melee-right",
+    "path": "avatar-core/assets/male/foundation-cleanup/melee-right-front.png",
+    "sha256": "63a43c0d82736248482200509bc33cfe4d1a39724c275fb6b7cc135b2ac0fa24",
+    "size": [
+      180,
+      596
+    ],
+    "mode": "RGBA",
+    "registration": [
+      161,
+      317,
+      341,
+      913
+    ]
+  },
+  {
+    "gender": "male",
+    "role": "complete:melee-right",
+    "path": "avatar-core/assets/male/foundation-cleanup/melee-right-complete.png",
+    "sha256": "715a919870691ab7856aadcab26c3d90d3c4908648ed8bcd5468fecdc5f3fd73",
+    "size": [
+      180,
+      596
+    ],
+    "mode": "RGBA",
+    "registration": [
+      161,
+      317,
+      341,
+      913
+    ]
+  },
+  {
+    "gender": "male",
+    "role": "weapon:melee",
+    "path": "avatar-core/assets/male/foundation-cleanup/melee-weapon.png",
+    "sha256": "78eda069b6dd47a3ab7721d660136e69b76def1e0f23a971e293980e78d5b828",
+    "size": [
+      941,
+      1672
+    ],
+    "mode": "RGBA",
+    "registration": {
+      "primary": [
+        227,
+        880
+      ],
+      "support": null,
+      "scale": 1,
+      "angle": 0,
+      "offset": [
+        0,
+        0
+      ]
+    }
+  },
+  {
+    "gender": "male",
+    "role": "weapon:pistol",
+    "path": "avatar-core/assets/male/foundation-cleanup/pistol-weapon.png",
+    "sha256": "62f5aa118be473435ca2721087b0b399683f3ca0b56fc7c7ed7956cbc32c76ea",
+    "size": [
+      941,
+      1672
+    ],
+    "mode": "RGBA",
+    "registration": {
+      "primary": [
+        230,
+        351
+      ],
+      "support": null,
+      "scale": 1,
+      "angle": 0,
+      "offset": [
+        0,
+        0
+      ]
+    }
+  },
+  {
+    "gender": "male",
+    "role": "weapon:rifle",
+    "path": "avatar-core/assets/male/foundation-cleanup/rifle-weapon.png",
+    "sha256": "77fdf7a2be1e9f6cf5657754cd1d9166efa3268d1490ebd56d0d6010b79808d6",
+    "size": [
+      941,
+      1672
+    ],
+    "mode": "RGBA",
+    "registration": {
+      "primary": [
+        390,
+        644
+      ],
+      "support": [
+        675,
+        708
+      ],
+      "scale": 1,
+      "angle": 0,
+      "offset": [
+        0,
+        0
+      ]
+    }
+  },
+  {
+    "gender": "female",
+    "role": "protected-original",
+    "path": "avatar-core/../base_female.png",
+    "sha256": "a27b499c03fc15c4788ae3a651483a36463f28b1f034178feccdaa852e7e50f9",
+    "size": [
+      941,
+      1672
+    ],
+    "mode": "RGBA",
+    "registration": null
+  },
+  {
+    "gender": "female",
+    "role": "segment:rightUpper",
+    "path": "avatar-core/assets/female/rightUpper.png",
+    "sha256": "6ba9e2b7a5f2303a9f75bbf4b3aef2a89365c2b65ed7da048a8db492b25b9a67",
+    "size": [
+      111,
+      290
+    ],
+    "mode": "RGBA",
+    "registration": [
+      240,
+      300,
+      351,
+      590
+    ]
+  },
+  {
+    "gender": "female",
+    "role": "segment:rightFore",
+    "path": "avatar-core/assets/female/rightFore.png",
+    "sha256": "086960883d4ca3b623acb66a592a47939ebcc5cbb41ad00b13359f354a784bb6",
+    "size": [
+      135,
+      253
+    ],
+    "mode": "RGBA",
+    "registration": [
+      189,
+      580,
+      324,
+      833
+    ]
+  },
+  {
+    "gender": "female",
+    "role": "segment:rightHand",
+    "path": "avatar-core/assets/female/rightHand.png",
+    "sha256": "bf06e7b0d254e9a7faaf98cafc0b5c2adaa2c0461b1a699b0d8f564bd2844d41",
+    "size": [
+      82,
+      152
+    ],
+    "mode": "RGBA",
+    "registration": [
+      178,
+      819,
+      260,
+      971
+    ]
+  },
+  {
+    "gender": "female",
+    "role": "segment:leftUpper",
+    "path": "avatar-core/assets/female/leftUpper.png",
+    "sha256": "442a09535038999e217716e39f3f9da6fb8fb20274484cf11b58ea9743cee6a7",
+    "size": [
+      112,
+      291
+    ],
+    "mode": "RGBA",
+    "registration": [
+      595,
+      301,
+      707,
+      592
+    ]
+  },
+  {
+    "gender": "female",
+    "role": "segment:leftFore",
+    "path": "avatar-core/assets/female/leftFore.png",
+    "sha256": "76e1db6ee7537352d841ebb95f1ca5f2fc040248de469bf8c4f024dc3b6a8986",
+    "size": [
+      136,
+      253
+    ],
+    "mode": "RGBA",
+    "registration": [
+      623,
+      580,
+      759,
+      833
+    ]
+  },
+  {
+    "gender": "female",
+    "role": "segment:leftHand",
+    "path": "avatar-core/assets/female/leftHand.png",
+    "sha256": "51952fb89e990470ef92e257982bd3fb9c91c783a57dee449521b8b6e97759fa",
+    "size": [
+      82,
+      153
+    ],
+    "mode": "RGBA",
+    "registration": [
+      687,
+      818,
+      769,
+      971
+    ]
+  },
+  {
+    "gender": "female",
+    "role": "segment:torso",
+    "path": "avatar-core/assets/female/torso.png",
+    "sha256": "6a49d91583351e5c1fce753f9c123ddf88c386ad4ad1e8c764c9300eb8d0d2ba",
+    "size": [
+      365,
+      465
+    ],
+    "mode": "RGBA",
+    "registration": [
+      293,
+      295,
+      658,
+      760
+    ]
+  },
+  {
+    "gender": "female",
+    "role": "segment:head",
+    "path": "avatar-core/assets/female/head.png",
+    "sha256": "2a54e2466fc4b94e4de330d6f7bf37ca190a0a0d755702efb84279cd3f30625f",
+    "size": [
+      266,
+      274
+    ],
+    "mode": "RGBA",
+    "registration": [
+      340,
+      21,
+      606,
+      295
+    ]
+  },
+  {
+    "gender": "female",
+    "role": "segment:lower",
+    "path": "avatar-core/assets/female/lower.png",
+    "sha256": "f2994b53fa9f24926c3357355fcb2681e155c6fccdd9d80caeb34fdd435a0447",
+    "size": [
+      416,
+      894
+    ],
+    "mode": "RGBA",
+    "registration": [
+      274,
+      760,
+      690,
+      1654
+    ]
+  },
+  {
+    "gender": "female",
+    "role": "art-melee-right",
+    "path": "avatar-core/assets/female/foundation-cleanup/melee-right-arm.png",
+    "sha256": "5bd10f63eb03418b6518afdbd63a5dd1796be519c842168062e4d6f261f3d605",
+    "size": [
+      941,
+      1672
+    ],
+    "mode": "RGBA",
+    "registration": [
+      0,
+      0,
+      941,
+      1672
+    ]
+  },
+  {
+    "gender": "female",
+    "role": "art-front-melee-right",
+    "path": "avatar-core/assets/female/foundation-cleanup/melee-right-front.png",
+    "sha256": "9c85c95e6a79208110781f38e067ecd66cbebe56d87d3ed7f078349915dad5d2",
+    "size": [
+      941,
+      1672
+    ],
+    "mode": "RGBA",
+    "registration": [
+      0,
+      0,
+      941,
+      1672
+    ]
+  },
+  {
+    "gender": "female",
+    "role": "complete:melee-right",
+    "path": "avatar-core/assets/female/foundation-cleanup/melee-right-complete.png",
+    "sha256": "cf2ea2baa276c56481f6707edbf01e9a9e4333f8e4585c03e967257476a09926",
+    "size": [
+      941,
+      1672
+    ],
+    "mode": "RGBA",
+    "registration": [
+      0,
+      0,
+      941,
+      1672
+    ]
+  },
+  {
+    "gender": "female",
+    "role": "art-pistol-right",
+    "path": "avatar-core/assets/female/foundation-cleanup/pistol-right-arm.png",
+    "sha256": "f18efd10a29b191d7cfe765382d2c779906c00313a1f33f19a958db52a251e5c",
+    "size": [
+      941,
+      1672
+    ],
+    "mode": "RGBA",
+    "registration": [
+      0,
+      0,
+      941,
+      1672
+    ]
+  },
+  {
+    "gender": "female",
+    "role": "art-front-pistol-right",
+    "path": "avatar-core/assets/female/foundation-cleanup/pistol-right-front.png",
+    "sha256": "0f8ea739de4122952e1c1abb1ddc7ac93a0f165d338cb7201c83df09c9c3c30a",
+    "size": [
+      941,
+      1672
+    ],
+    "mode": "RGBA",
+    "registration": [
+      0,
+      0,
+      941,
+      1672
+    ]
+  },
+  {
+    "gender": "female",
+    "role": "complete:pistol-right",
+    "path": "avatar-core/assets/female/foundation-cleanup/pistol-right-complete.png",
+    "sha256": "e90d3b5e9c5169ef3db538195ccb918deb0fc7a1b52076d5d60ef7d0322eff5b",
+    "size": [
+      941,
+      1672
+    ],
+    "mode": "RGBA",
+    "registration": [
+      0,
+      0,
+      941,
+      1672
+    ]
+  },
+  {
+    "gender": "female",
+    "role": "art-rifle-right",
+    "path": "avatar-core/assets/female/foundation-cleanup/rifle-right-arm.png",
+    "sha256": "9e535940687f052c8f4dd39a121585614ba8f5d5f975a89f747948501ea99fc9",
+    "size": [
+      941,
+      1672
+    ],
+    "mode": "RGBA",
+    "registration": [
+      0,
+      0,
+      941,
+      1672
+    ]
+  },
+  {
+    "gender": "female",
+    "role": "art-front-rifle-right",
+    "path": "avatar-core/assets/female/foundation-cleanup/rifle-right-front.png",
+    "sha256": "f29858bbd11f64af953d9ef4cad129954d13aef1cd383be6aed1a396a2ce925e",
+    "size": [
+      941,
+      1672
+    ],
+    "mode": "RGBA",
+    "registration": [
+      0,
+      0,
+      941,
+      1672
+    ]
+  },
+  {
+    "gender": "female",
+    "role": "complete:rifle-right",
+    "path": "avatar-core/assets/female/foundation-cleanup/rifle-right-complete.png",
+    "sha256": "c6cd2a93755b9adb0180256dc1d66f824807fe9aaea33c126629dbc10bd2c84d",
+    "size": [
+      941,
+      1672
+    ],
+    "mode": "RGBA",
+    "registration": [
+      0,
+      0,
+      941,
+      1672
+    ]
+  },
+  {
+    "gender": "female",
+    "role": "art-rifle-left",
+    "path": "avatar-core/assets/female/foundation-cleanup/rifle-left-arm.png",
+    "sha256": "8a4a671000eeb0bfd365337b6e93fad9ded8fbf33ffd653339799fd40d5c6f46",
+    "size": [
+      941,
+      1672
+    ],
+    "mode": "RGBA",
+    "registration": [
+      0,
+      0,
+      941,
+      1672
+    ]
+  },
+  {
+    "gender": "female",
+    "role": "art-front-rifle-left",
+    "path": "avatar-core/assets/female/foundation-cleanup/rifle-left-front.png",
+    "sha256": "eac85046f9cca54cb7afe6653375d4f7f9633c4f4ed6f3664bb0a2f64398ffaa",
+    "size": [
+      941,
+      1672
+    ],
+    "mode": "RGBA",
+    "registration": [
+      0,
+      0,
+      941,
+      1672
+    ]
+  },
+  {
+    "gender": "female",
+    "role": "complete:rifle-left",
+    "path": "avatar-core/assets/female/foundation-cleanup/rifle-left-complete.png",
+    "sha256": "7b263de8b9f989b465f86499935b32e501e8b6d25d9a08c61166659c79af97dc",
+    "size": [
+      941,
+      1672
+    ],
+    "mode": "RGBA",
+    "registration": [
+      0,
+      0,
+      941,
+      1672
+    ]
+  },
+  {
+    "gender": "female",
+    "role": "weapon:melee",
+    "path": "avatar-core/assets/female/foundation-cleanup/melee-weapon.png",
+    "sha256": "3cae128f06fcee226fb7dd1ee4ecde339db502ae67d53de2039386444ccdddb7",
+    "size": [
+      941,
+      1672
+    ],
+    "mode": "RGBA",
+    "registration": {
+      "primary": [
+        220,
+        857
+      ],
+      "support": null,
+      "scale": 1,
+      "angle": 0,
+      "offset": [
+        0,
+        0
+      ]
+    }
+  },
+  {
+    "gender": "female",
+    "role": "weapon:pistol",
+    "path": "avatar-core/assets/female/foundation-cleanup/pistol-weapon.png",
+    "sha256": "f7f2da05468f9c03dfb25dbed737803530d580c772bfd822fe58b69d5ca39f0d",
+    "size": [
+      941,
+      1672
+    ],
+    "mode": "RGBA",
+    "registration": {
+      "primary": [
+        217,
+        303
+      ],
+      "support": null,
+      "scale": 1,
+      "angle": 0,
+      "offset": [
+        0,
+        0
+      ]
+    }
+  },
+  {
+    "gender": "female",
+    "role": "weapon:rifle",
+    "path": "avatar-core/assets/female/foundation-cleanup/rifle-weapon.png",
+    "sha256": "76743ddcf91631131a039e9b568f8ba476626a394d3b7e3bd72f0a3d9530b574",
+    "size": [
+      941,
+      1672
+    ],
+    "mode": "RGBA",
+    "registration": {
+      "primary": [
+        411,
+        575
+      ],
+      "support": [
+        665,
+        666
+      ],
+      "scale": 1,
+      "angle": 0,
+      "offset": [
+        0,
+        0
+      ]
+    }
+  },
+  {
+    "gender": "male",
+    "role": "skin:leftArmSkin",
+    "path": "avatar-core/assets/male/foundation-cleanup/leftArmSkin-runtime.png",
+    "sha256": "57a17f278660539912d434ffc505611a23197e551549a298daad11208bf76063",
+    "size": [
+      291,
+      718
+    ],
+    "mode": "RGBA"
+  },
+  {
+    "gender": "male",
+    "role": "skin:leftHandSkin",
+    "path": "avatar-core/assets/male/foundation-cleanup/leftHandSkin-runtime.png",
+    "sha256": "6c0d8735c191901b819be66549f295aeaf32257d2d1231709a1a749c6c30ff7c",
+    "size": [
+      291,
+      718
+    ],
+    "mode": "RGBA"
+  },
+  {
+    "gender": "male",
+    "role": "skin:rightArmSkin",
+    "path": "avatar-core/assets/male/foundation-cleanup/rightArmSkin-runtime.png",
+    "sha256": "008497c4d1ae8e89cff651dbf95f4f1a16a23dd8ca8e21ce2ba043c7847bba1c",
+    "size": [
+      253,
+      701
+    ],
+    "mode": "RGBA"
+  },
+  {
+    "gender": "male",
+    "role": "skin:rightHandSkin",
+    "path": "avatar-core/assets/male/foundation-cleanup/rightHandSkin-runtime.png",
+    "sha256": "eb8acf45ab02453c58612aa26dfe926b82d01d032934288617bfad5b67155c31",
+    "size": [
+      253,
+      701
+    ],
+    "mode": "RGBA"
+  },
+  {
+    "gender": "male",
+    "role": "runtime-base",
+    "path": "avatar-core/assets/male/foundation-cleanup/base-runtime.png",
+    "sha256": "7a1e676e1ad5b6e84c37084f996490b459f07b74fe87c7f7271a3532e84c7ab7",
+    "size": [
+      941,
+      1672
+    ],
+    "mode": "RGBA"
+  },
+  {
+    "gender": "female",
+    "role": "skin:leftArmSkin",
+    "path": "avatar-core/assets/female/hands/left-arm-source.png",
+    "sha256": "35042ba2175d0558d66bdfe1287022f355ea7e0e8c2be6183a03cad7a6c57880",
+    "size": [
+      188,
+      670
+    ],
+    "mode": "RGBA"
+  },
+  {
+    "gender": "female",
+    "role": "skin:leftHandSkin",
+    "path": "avatar-core/assets/female/hands/left-open-hand-source.png",
+    "sha256": "abe9161883b9cd809fb21c3fbc42fd7f2ab6bc9e654687dc9d14443f4f5fbc80",
+    "size": [
+      188,
+      670
+    ],
+    "mode": "RGBA"
+  },
+  {
+    "gender": "female",
+    "role": "skin:rightArmSkin",
+    "path": "avatar-core/assets/female/hands/right-arm-source.png",
+    "sha256": "3cee762e1e16c8819256f392c0a680e4e4e4fa5053e51a47e1e023b1f273b763",
+    "size": [
+      186,
+      671
+    ],
+    "mode": "RGBA"
+  },
+  {
+    "gender": "female",
+    "role": "skin:rightHandSkin",
+    "path": "avatar-core/assets/female/hands/right-open-hand-source.png",
+    "sha256": "bd21a2fe1f942ec33854effc804d3fe416ea9b307d6acb4e00b1768350498f87",
+    "size": [
+      186,
+      671
+    ],
+    "mode": "RGBA"
+  }
+]

@@ -1,0 +1,62 @@
+[
+  {
+    "path": "base_male.png",
+    "sha256": "b40a31b26dcf9aeea1dad02091228377330c9bb3af3a4b9669cfcc67247fc41d",
+    "unchanged": true
+  },
+  {
+    "path": "base_female.png",
+    "sha256": "a27b499c03fc15c4788ae3a651483a36463f28b1f034178feccdaa852e7e50f9",
+    "unchanged": true
+  },
+  {
+    "path": "avatar-core/rigs/male_rig.json",
+    "sha256": "79b667d15f85c46739435ef4a6ad79fc7f85cdfcbc5ff8489934f49e5a42abd8",
+    "unchanged": true
+  },
+  {
+    "path": "avatar-core/rigs/female_rig.json",
+    "sha256": "707ae37f1faacc4d866fdebf74075e80846eba2a69cb9bc9495422d3a852a1b8",
+    "unchanged": true
+  },
+  {
+    "path": "index.html",
+    "sha256": "f4846bef4a8e32f0ad49b3eb738a0e5523bb69e6ff05e9cb1b4f9bde052d7ef1",
+    "unchanged": true
+  },
+  {
+    "path": "paper-doll.js",
+    "sha256": "5abf405240fa5fc8abb172e5053d0823d06d68148bff425a11c7420a800423cf",
+    "unchanged": true
+  },
+  {
+    "path": "paper-doll-data.js",
+    "sha256": "0da56cc16540cfb1278ec00bfad873df1b56b2ee578b8ee9752155b9f84917d5",
+    "unchanged": true
+  },
+  {
+    "path": "wardrobe.js",
+    "sha256": "dc97922f0aef5d58a636f8a0f244c3ed157275770e6b953e8132ba0f78628452",
+    "unchanged": true
+  },
+  {
+    "path": "avatar-core/math.mjs",
+    "sha256": "3b713ff1f7237960b65ffb710d3c5b8bc51e3bf0c2ea1feb08941858ba996214",
+    "unchanged": true
+  },
+  {
+    "path": "avatar-core/skin.mjs",
+    "sha256": "cc73fd5ab2cda9795543361cfee2b9178313e664b9efa57356ac15c4445be61a",
+    "unchanged": true
+  },
+  {
+    "path": "avatar-core/weapon-controller.mjs",
+    "sha256": "6953ed1dc14a8559a6d0c83d3e7c99885ddc850cd574d2666470a39b745ca53a",
+    "unchanged": true
+  },
+  {
+    "path": "avatar-core/pose-art.mjs",
+    "sha256": "6217ab1c3034578cbad10bd93cd9f991302b797f1086dc4e4e6e5037a8fc5ee8",
+    "unchanged": true
+  }
+]

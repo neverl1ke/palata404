@@ -1,0 +1,38 @@
+{
+  "renderer": "current pass before unified native composition; measured in Chromium DPR1 at logical time1000, male idle",
+  "measurements": [
+    {
+      "css_width": 320,
+      "source_neck_waist_min_alpha": [
+        253,
+        253
+      ],
+      "rig_neck_waist_min_alpha": [
+        150,
+        247
+      ]
+    },
+    {
+      "css_width": 391.5,
+      "source_neck_waist_min_alpha": [
+        253,
+        253
+      ],
+      "rig_neck_waist_min_alpha": [
+        253,
+        229
+      ]
+    },
+    {
+      "css_width": 941,
+      "source_neck_waist_min_alpha": [
+        252,
+        252
+      ],
+      "rig_neck_waist_min_alpha": [
+        252,
+        252
+      ]
+    }
+  ]
+}

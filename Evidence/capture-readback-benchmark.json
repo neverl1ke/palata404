@@ -1,0 +1,15 @@
+{
+  "byte_exact": true,
+  "measurements": [
+    {
+      "format": "png",
+      "three_readbacks_seconds": 1.1440766480081948,
+      "bytes": 1080349
+    },
+    {
+      "format": "raw",
+      "three_readbacks_seconds": 6.595890914002666,
+      "bytes": 6293408
+    }
+  ]
+}

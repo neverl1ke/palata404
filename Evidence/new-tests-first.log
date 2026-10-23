@@ -1,0 +1,47 @@
+test_colour_probe_changes_skin_and_never_changes_weapon_resource (tests.test_avatar_foundation_cleanup.FoundationBrowserTests.test_colour_probe_changes_skin_and_never_changes_weapon_resource) ... ok
+test_knife_both_genders_uses_wrist_sway_not_inverse_elbow_motion (tests.test_avatar_foundation_cleanup.FoundationBrowserTests.test_knife_both_genders_uses_wrist_sway_not_inverse_elbow_motion) ... ok
+test_neck_and_waist_have_no_transparent_seams_at_breath_extremes (tests.test_avatar_foundation_cleanup.FoundationBrowserTests.test_neck_and_waist_have_no_transparent_seams_at_breath_extremes) ... FAIL
+test_pose_space_garments_match_the_active_corrective_mesh_and_unbind (tests.test_avatar_foundation_cleanup.FoundationBrowserTests.test_pose_space_garments_match_the_active_corrective_mesh_and_unbind) ... ok
+test_all_active_arms_have_coverage_clean_alpha_and_same_registration (tests.test_avatar_foundation_cleanup.FoundationSourceTests.test_all_active_arms_have_coverage_clean_alpha_and_same_registration) ... /workspace/palata404-avatar-core/tests/test_avatar_foundation_cleanup.py:20: ResourceWarning: unclosed file <_io.TextIOWrapper name='/workspace/palata404-avatar-core/avatar-core/rigs/male_rig.json' mode='r' encoding='UTF-8'>
+  rig=json.load(open(C/f'rigs/{g}_rig.json'));cfg=json.load(open(C/f'{g}-preview.json'))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/workspace/palata404-avatar-core/tests/test_avatar_foundation_cleanup.py:20: ResourceWarning: unclosed file <_io.TextIOWrapper name='/workspace/palata404-avatar-core/avatar-core/male-preview.json' mode='r' encoding='UTF-8'>
+  rig=json.load(open(C/f'rigs/{g}_rig.json'));cfg=json.load(open(C/f'{g}-preview.json'))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/workspace/palata404-avatar-core/tests/test_avatar_foundation_cleanup.py:20: ResourceWarning: unclosed file <_io.TextIOWrapper name='/workspace/palata404-avatar-core/avatar-core/rigs/female_rig.json' mode='r' encoding='UTF-8'>
+  rig=json.load(open(C/f'rigs/{g}_rig.json'));cfg=json.load(open(C/f'{g}-preview.json'))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/workspace/palata404-avatar-core/tests/test_avatar_foundation_cleanup.py:20: ResourceWarning: unclosed file <_io.TextIOWrapper name='/workspace/palata404-avatar-core/avatar-core/female-preview.json' mode='r' encoding='UTF-8'>
+  rig=json.load(open(C/f'rigs/{g}_rig.json'));cfg=json.load(open(C/f'{g}-preview.json'))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_every_prop_is_only_registered_material_from_an_independent_complete_source (tests.test_avatar_foundation_cleanup.FoundationSourceTests.test_every_prop_is_only_registered_material_from_an_independent_complete_source) ... /workspace/palata404-avatar-core/tests/test_avatar_foundation_cleanup.py:30: ResourceWarning: unclosed file <_io.TextIOWrapper name='/workspace/palata404-avatar-core/review/avatar-foundation-cleanup/Evidence/prop-export.json' mode='r' encoding='UTF-8'>
+  for row in json.load(open(O/'Evidence/prop-export.json')):
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_export_is_idempotent_and_diagnostic_meshes_are_reproducible (tests.test_avatar_foundation_cleanup.FoundationSourceTests.test_export_is_idempotent_and_diagnostic_meshes_are_reproducible) ... ok
+test_original_bases_refs_and_art_are_byte_identical (tests.test_avatar_foundation_cleanup.FoundationSourceTests.test_original_bases_refs_and_art_are_byte_identical) ... ok
+test_runtime_base_removes_only_documented_faint_matte_not_anatomy (tests.test_avatar_foundation_cleanup.FoundationSourceTests.test_runtime_base_removes_only_documented_faint_matte_not_anatomy) ... FAIL
+
+======================================================================
+FAIL: test_neck_and_waist_have_no_transparent_seams_at_breath_extremes (tests.test_avatar_foundation_cleanup.FoundationBrowserTests.test_neck_and_waist_have_no_transparent_seams_at_breath_extremes)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/palata404-avatar-core/tests/test_avatar_foundation_cleanup.py", line 51, in test_neck_and_waist_have_no_transparent_seams_at_breath_extremes
+    self.p.evaluate('t=>{let e=avatarLab.engine;e.time=t;e.render()}',t);a=self.c.image();self.assertEqual(int(a[293:298,430:510,3].min()),255,(g,pose,t,'neck'));self.assertEqual(int(a[758:762,390:550,3].min()),255,(g,pose,t,'waist'))
+                                                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 252 != 255 : ('male', 'idle', 0, 'neck')
+
+======================================================================
+FAIL: test_runtime_base_removes_only_documented_faint_matte_not_anatomy (tests.test_avatar_foundation_cleanup.FoundationSourceTests.test_runtime_base_removes_only_documented_faint_matte_not_anatomy)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/palata404-avatar-core/tests/test_avatar_foundation_cleanup.py", line 17, in test_runtime_base_removes_only_documented_faint_matte_not_anatomy
+    labels,n=ndi.label(alpha>0,np.ones((3,3)));peaks=ndi.maximum(alpha,labels,range(1,n+1));self.assertTrue(all(p>16 for p in peaks))
+                                                                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true
+
+----------------------------------------------------------------------
+Ran 9 tests in 25.178s
+
+FAILED (failures=2)

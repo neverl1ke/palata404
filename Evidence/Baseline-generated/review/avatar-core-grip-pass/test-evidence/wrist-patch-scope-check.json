@@ -1,0 +1,142 @@
+[
+  {
+    "gender": "male",
+    "pose": "melee",
+    "side": "right",
+    "changed": 4328,
+    "outside": 0,
+    "alpha": 255,
+    "band": [
+      -40,
+      35
+    ],
+    "gripBelowBand": true,
+    "hasReferenceArt": true
+  },
+  {
+    "gender": "male",
+    "pose": "pistol",
+    "side": "right",
+    "changed": 4730,
+    "outside": 0,
+    "alpha": 255,
+    "band": [
+      -40,
+      35
+    ],
+    "gripBelowBand": true,
+    "hasReferenceArt": true
+  },
+  {
+    "gender": "male",
+    "pose": "pistol",
+    "side": "left",
+    "changed": 4769,
+    "outside": 0,
+    "alpha": 255,
+    "band": [
+      -40,
+      35
+    ],
+    "gripBelowBand": true,
+    "hasReferenceArt": false
+  },
+  {
+    "gender": "male",
+    "pose": "rifle",
+    "side": "right",
+    "changed": 5099,
+    "outside": 0,
+    "alpha": 255,
+    "band": [
+      -40,
+      35
+    ],
+    "gripBelowBand": true,
+    "hasReferenceArt": true
+  },
+  {
+    "gender": "male",
+    "pose": "rifle",
+    "side": "left",
+    "changed": 5081,
+    "outside": 0,
+    "alpha": 255,
+    "band": [
+      -40,
+      35
+    ],
+    "gripBelowBand": false,
+    "hasReferenceArt": true
+  },
+  {
+    "gender": "female",
+    "pose": "melee",
+    "side": "right",
+    "changed": 3698,
+    "outside": 0,
+    "alpha": 255,
+    "band": [
+      -40,
+      35
+    ],
+    "gripBelowBand": true,
+    "hasReferenceArt": false
+  },
+  {
+    "gender": "female",
+    "pose": "pistol",
+    "side": "right",
+    "changed": 4045,
+    "outside": 0,
+    "alpha": 255,
+    "band": [
+      -40,
+      35
+    ],
+    "gripBelowBand": true,
+    "hasReferenceArt": false
+  },
+  {
+    "gender": "female",
+    "pose": "pistol",
+    "side": "left",
+    "changed": 4370,
+    "outside": 0,
+    "alpha": 255,
+    "band": [
+      -40,
+      35
+    ],
+    "gripBelowBand": true,
+    "hasReferenceArt": false
+  },
+  {
+    "gender": "female",
+    "pose": "rifle",
+    "side": "right",
+    "changed": 4340,
+    "outside": 0,
+    "alpha": 255,
+    "band": [
+      -40,
+      35
+    ],
+    "gripBelowBand": true,
+    "hasReferenceArt": false
+  },
+  {
+    "gender": "female",
+    "pose": "rifle",
+    "side": "left",
+    "changed": 4446,
+    "outside": 0,
+    "alpha": 255,
+    "band": [
+      -40,
+      35
+    ],
+    "gripBelowBand": true,
+    "hasReferenceArt": false
+  }
+]

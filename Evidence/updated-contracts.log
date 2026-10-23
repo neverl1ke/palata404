@@ -1,0 +1,8 @@
+test_core_pose_anchors_originals_engine_female_and_game_stay_unchanged (tests.test_contact_surfaces.ContactSurfaceSourceTests.test_core_pose_anchors_originals_engine_female_and_game_stay_unchanged) ... ok
+test_idle_render_matches_original_for_both_bases (tests.test_avatar_core.AvatarCoreBrowserTests.test_idle_render_matches_original_for_both_bases) ... ok
+test_new_prop_contacts_are_on_real_visible_pixels (tests.test_weapon_pass.WeaponPassSourceTests.test_new_prop_contacts_are_on_real_visible_pixels) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 2.118s
+
+OK

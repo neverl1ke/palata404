@@ -1,0 +1,111 @@
+start before male melee True
+before male melee True 241 logical frames; 241 encoded; seconds 62.59
+start before female melee True
+before female melee True 241 logical frames; 241 encoded; seconds 65.75
+start after male melee True
+sample after male melee True 0
+sample after male melee True 60
+sample after male melee True 120
+sample after male melee True 180
+sample after male melee True 240
+after male melee True 241 logical frames; 241 encoded; seconds 220.13
+start after male melee False
+sample after male melee False 0
+sample after male melee False 60
+sample after male melee False 120
+sample after male melee False 180
+sample after male melee False 240
+after male melee False 241 logical frames; 241 encoded; seconds 191.13
+start after male idle True
+after male idle True 241 logical frames; 241 encoded; seconds 71.18
+start after male idle False
+sample after male idle False 0
+sample after male idle False 60
+sample after male idle False 120
+sample after male idle False 180
+sample after male idle False 240
+after male idle False 241 logical frames; 241 encoded; seconds 193.67
+start after male pistol True
+sample after male pistol True 0
+sample after male pistol True 60
+sample after male pistol True 120
+sample after male pistol True 180
+sample after male pistol True 240
+after male pistol True 241 logical frames; 241 encoded; seconds 142.8
+start after male pistol False
+sample after male pistol False 0
+sample after male pistol False 60
+sample after male pistol False 120
+sample after male pistol False 180
+sample after male pistol False 240
+after male pistol False 241 logical frames; 241 encoded; seconds 100.62
+start after male rifle True
+sample after male rifle True 0
+sample after male rifle True 60
+sample after male rifle True 120
+sample after male rifle True 180
+sample after male rifle True 240
+after male rifle True 241 logical frames; 241 encoded; seconds 149.64
+start after male rifle False
+sample after male rifle False 0
+sample after male rifle False 60
+sample after male rifle False 120
+sample after male rifle False 180
+sample after male rifle False 240
+after male rifle False 241 logical frames; 241 encoded; seconds 138.98
+start after female melee True
+sample after female melee True 0
+sample after female melee True 60
+sample after female melee True 120
+sample after female melee True 180
+sample after female melee True 240
+after female melee True 241 logical frames; 241 encoded; seconds 156.32
+start after female melee False
+sample after female melee False 0
+sample after female melee False 60
+sample after female melee False 120
+sample after female melee False 180
+sample after female melee False 240
+after female melee False 241 logical frames; 241 encoded; seconds 202.5
+start after female idle True
+sample after female idle True 0
+sample after female idle True 60
+sample after female idle True 120
+sample after female idle True 180
+sample after female idle True 240
+after female idle True 241 logical frames; 241 encoded; seconds 175.81
+start after female idle False
+sample after female idle False 0
+sample after female idle False 60
+sample after female idle False 120
+sample after female idle False 180
+sample after female idle False 240
+after female idle False 241 logical frames; 241 encoded; seconds 152.94
+start after female pistol True
+sample after female pistol True 0
+sample after female pistol True 60
+sample after female pistol True 120
+sample after female pistol True 180
+sample after female pistol True 240
+after female pistol True 241 logical frames; 241 encoded; seconds 148.38
+start after female pistol False
+sample after female pistol False 0
+sample after female pistol False 60
+sample after female pistol False 120
+sample after female pistol False 180
+sample after female pistol False 240
+after female pistol False 241 logical frames; 241 encoded; seconds 142.41
+start after female rifle True
+sample after female rifle True 0
+sample after female rifle True 60
+sample after female rifle True 120
+sample after female rifle True 180
+sample after female rifle True 240
+after female rifle True 241 logical frames; 241 encoded; seconds 162.4
+start after female rifle False
+sample after female rifle False 0
+sample after female rifle False 60
+sample after female rifle False 120
+sample after female rifle False 180
+sample after female rifle False 240
+after female rifle False 241 logical frames; 241 encoded; seconds 74.05
