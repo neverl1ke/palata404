@@ -1,0 +1,622 @@
+{
+  "cases": [
+    {
+      "gender": "male",
+      "item": "gear-knife",
+      "width": 1440,
+      "screen": "real wardrobe + equipped existing inventory item"
+    },
+    {
+      "gender": "male",
+      "item": "gear-pm",
+      "width": 1440,
+      "screen": "real wardrobe + equipped existing inventory item"
+    },
+    {
+      "gender": "male",
+      "item": "gear-aks",
+      "width": 1440,
+      "screen": "real wardrobe + equipped existing inventory item"
+    },
+    {
+      "gender": "female",
+      "item": "gear-knife",
+      "width": 1440,
+      "screen": "real wardrobe + equipped existing inventory item"
+    },
+    {
+      "gender": "female",
+      "item": "gear-pm",
+      "width": 1440,
+      "screen": "real wardrobe + equipped existing inventory item"
+    },
+    {
+      "gender": "female",
+      "item": "gear-aks",
+      "width": 1440,
+      "screen": "real wardrobe + equipped existing inventory item"
+    },
+    {
+      "width": 320,
+      "mobile_emulation": true,
+      "horizontal_overflow": false
+    },
+    {
+      "width": 390,
+      "mobile_emulation": true,
+      "horizontal_overflow": false
+    },
+    {
+      "width": 768,
+      "mobile_emulation": true,
+      "horizontal_overflow": false
+    },
+    {
+      "patient_tunic_preserved": true,
+      "core_blocked_for_unprepared_clothing": true
+    },
+    {
+      "gender": "male",
+      "pose": "idle",
+      "weapon_visible": false,
+      "actual_canvas_background": "#fff",
+      "native_size": [
+        941,
+        1672
+      ]
+    },
+    {
+      "gender": "male",
+      "pose": "idle",
+      "weapon_visible": false,
+      "actual_canvas_background": "#777",
+      "native_size": [
+        941,
+        1672
+      ]
+    },
+    {
+      "gender": "male",
+      "pose": "idle",
+      "weapon_visible": false,
+      "actual_canvas_background": "#000",
+      "native_size": [
+        941,
+        1672
+      ]
+    },
+    {
+      "gender": "male",
+      "pose": "idle",
+      "weapon_visible": false,
+      "actual_canvas_background": "#0f0",
+      "native_size": [
+        941,
+        1672
+      ]
+    },
+    {
+      "gender": "male",
+      "pose": "melee",
+      "weapon_visible": false,
+      "actual_canvas_background": "#fff",
+      "native_size": [
+        941,
+        1672
+      ]
+    },
+    {
+      "gender": "male",
+      "pose": "melee",
+      "weapon_visible": false,
+      "actual_canvas_background": "#777",
+      "native_size": [
+        941,
+        1672
+      ]
+    },
+    {
+      "gender": "male",
+      "pose": "melee",
+      "weapon_visible": false,
+      "actual_canvas_background": "#000",
+      "native_size": [
+        941,
+        1672
+      ]
+    },
+    {
+      "gender": "male",
+      "pose": "melee",
+      "weapon_visible": false,
+      "actual_canvas_background": "#0f0",
+      "native_size": [
+        941,
+        1672
+      ]
+    },
+    {
+      "gender": "male",
+      "pose": "melee",
+      "weapon_visible": true,
+      "actual_canvas_background": "#fff",
+      "native_size": [
+        941,
+        1672
+      ]
+    },
+    {
+      "gender": "male",
+      "pose": "melee",
+      "weapon_visible": true,
+      "actual_canvas_background": "#777",
+      "native_size": [
+        941,
+        1672
+      ]
+    },
+    {
+      "gender": "male",
+      "pose": "melee",
+      "weapon_visible": true,
+      "actual_canvas_background": "#000",
+      "native_size": [
+        941,
+        1672
+      ]
+    },
+    {
+      "gender": "male",
+      "pose": "melee",
+      "weapon_visible": true,
+      "actual_canvas_background": "#0f0",
+      "native_size": [
+        941,
+        1672
+      ]
+    },
+    {
+      "gender": "male",
+      "pose": "pistol",
+      "weapon_visible": false,
+      "actual_canvas_background": "#fff",
+      "native_size": [
+        941,
+        1672
+      ]
+    },
+    {
+      "gender": "male",
+      "pose": "pistol",
+      "weapon_visible": false,
+      "actual_canvas_background": "#777",
+      "native_size": [
+        941,
+        1672
+      ]
+    },
+    {
+      "gender": "male",
+      "pose": "pistol",
+      "weapon_visible": false,
+      "actual_canvas_background": "#000",
+      "native_size": [
+        941,
+        1672
+      ]
+    },
+    {
+      "gender": "male",
+      "pose": "pistol",
+      "weapon_visible": false,
+      "actual_canvas_background": "#0f0",
+      "native_size": [
+        941,
+        1672
+      ]
+    },
+    {
+      "gender": "male",
+      "pose": "pistol",
+      "weapon_visible": true,
+      "actual_canvas_background": "#fff",
+      "native_size": [
+        941,
+        1672
+      ]
+    },
+    {
+      "gender": "male",
+      "pose": "pistol",
+      "weapon_visible": true,
+      "actual_canvas_background": "#777",
+      "native_size": [
+        941,
+        1672
+      ]
+    },
+    {
+      "gender": "male",
+      "pose": "pistol",
+      "weapon_visible": true,
+      "actual_canvas_background": "#000",
+      "native_size": [
+        941,
+        1672
+      ]
+    },
+    {
+      "gender": "male",
+      "pose": "pistol",
+      "weapon_visible": true,
+      "actual_canvas_background": "#0f0",
+      "native_size": [
+        941,
+        1672
+      ]
+    },
+    {
+      "gender": "male",
+      "pose": "rifle",
+      "weapon_visible": false,
+      "actual_canvas_background": "#fff",
+      "native_size": [
+        941,
+        1672
+      ]
+    },
+    {
+      "gender": "male",
+      "pose": "rifle",
+      "weapon_visible": false,
+      "actual_canvas_background": "#777",
+      "native_size": [
+        941,
+        1672
+      ]
+    },
+    {
+      "gender": "male",
+      "pose": "rifle",
+      "weapon_visible": false,
+      "actual_canvas_background": "#000",
+      "native_size": [
+        941,
+        1672
+      ]
+    },
+    {
+      "gender": "male",
+      "pose": "rifle",
+      "weapon_visible": false,
+      "actual_canvas_background": "#0f0",
+      "native_size": [
+        941,
+        1672
+      ]
+    },
+    {
+      "gender": "male",
+      "pose": "rifle",
+      "weapon_visible": true,
+      "actual_canvas_background": "#fff",
+      "native_size": [
+        941,
+        1672
+      ]
+    },
+    {
+      "gender": "male",
+      "pose": "rifle",
+      "weapon_visible": true,
+      "actual_canvas_background": "#777",
+      "native_size": [
+        941,
+        1672
+      ]
+    },
+    {
+      "gender": "male",
+      "pose": "rifle",
+      "weapon_visible": true,
+      "actual_canvas_background": "#000",
+      "native_size": [
+        941,
+        1672
+      ]
+    },
+    {
+      "gender": "male",
+      "pose": "rifle",
+      "weapon_visible": true,
+      "actual_canvas_background": "#0f0",
+      "native_size": [
+        941,
+        1672
+      ]
+    },
+    {
+      "gender": "female",
+      "pose": "idle",
+      "weapon_visible": false,
+      "actual_canvas_background": "#fff",
+      "native_size": [
+        941,
+        1672
+      ]
+    },
+    {
+      "gender": "female",
+      "pose": "idle",
+      "weapon_visible": false,
+      "actual_canvas_background": "#777",
+      "native_size": [
+        941,
+        1672
+      ]
+    },
+    {
+      "gender": "female",
+      "pose": "idle",
+      "weapon_visible": false,
+      "actual_canvas_background": "#000",
+      "native_size": [
+        941,
+        1672
+      ]
+    },
+    {
+      "gender": "female",
+      "pose": "idle",
+      "weapon_visible": false,
+      "actual_canvas_background": "#0f0",
+      "native_size": [
+        941,
+        1672
+      ]
+    },
+    {
+      "gender": "female",
+      "pose": "melee",
+      "weapon_visible": false,
+      "actual_canvas_background": "#fff",
+      "native_size": [
+        941,
+        1672
+      ]
+    },
+    {
+      "gender": "female",
+      "pose": "melee",
+      "weapon_visible": false,
+      "actual_canvas_background": "#777",
+      "native_size": [
+        941,
+        1672
+      ]
+    },
+    {
+      "gender": "female",
+      "pose": "melee",
+      "weapon_visible": false,
+      "actual_canvas_background": "#000",
+      "native_size": [
+        941,
+        1672
+      ]
+    },
+    {
+      "gender": "female",
+      "pose": "melee",
+      "weapon_visible": false,
+      "actual_canvas_background": "#0f0",
+      "native_size": [
+        941,
+        1672
+      ]
+    },
+    {
+      "gender": "female",
+      "pose": "melee",
+      "weapon_visible": true,
+      "actual_canvas_background": "#fff",
+      "native_size": [
+        941,
+        1672
+      ]
+    },
+    {
+      "gender": "female",
+      "pose": "melee",
+      "weapon_visible": true,
+      "actual_canvas_background": "#777",
+      "native_size": [
+        941,
+        1672
+      ]
+    },
+    {
+      "gender": "female",
+      "pose": "melee",
+      "weapon_visible": true,
+      "actual_canvas_background": "#000",
+      "native_size": [
+        941,
+        1672
+      ]
+    },
+    {
+      "gender": "female",
+      "pose": "melee",
+      "weapon_visible": true,
+      "actual_canvas_background": "#0f0",
+      "native_size": [
+        941,
+        1672
+      ]
+    },
+    {
+      "gender": "female",
+      "pose": "pistol",
+      "weapon_visible": false,
+      "actual_canvas_background": "#fff",
+      "native_size": [
+        941,
+        1672
+      ]
+    },
+    {
+      "gender": "female",
+      "pose": "pistol",
+      "weapon_visible": false,
+      "actual_canvas_background": "#777",
+      "native_size": [
+        941,
+        1672
+      ]
+    },
+    {
+      "gender": "female",
+      "pose": "pistol",
+      "weapon_visible": false,
+      "actual_canvas_background": "#000",
+      "native_size": [
+        941,
+        1672
+      ]
+    },
+    {
+      "gender": "female",
+      "pose": "pistol",
+      "weapon_visible": false,
+      "actual_canvas_background": "#0f0",
+      "native_size": [
+        941,
+        1672
+      ]
+    },
+    {
+      "gender": "female",
+      "pose": "pistol",
+      "weapon_visible": true,
+      "actual_canvas_background": "#fff",
+      "native_size": [
+        941,
+        1672
+      ]
+    },
+    {
+      "gender": "female",
+      "pose": "pistol",
+      "weapon_visible": true,
+      "actual_canvas_background": "#777",
+      "native_size": [
+        941,
+        1672
+      ]
+    },
+    {
+      "gender": "female",
+      "pose": "pistol",
+      "weapon_visible": true,
+      "actual_canvas_background": "#000",
+      "native_size": [
+        941,
+        1672
+      ]
+    },
+    {
+      "gender": "female",
+      "pose": "pistol",
+      "weapon_visible": true,
+      "actual_canvas_background": "#0f0",
+      "native_size": [
+        941,
+        1672
+      ]
+    },
+    {
+      "gender": "female",
+      "pose": "rifle",
+      "weapon_visible": false,
+      "actual_canvas_background": "#fff",
+      "native_size": [
+        941,
+        1672
+      ]
+    },
+    {
+      "gender": "female",
+      "pose": "rifle",
+      "weapon_visible": false,
+      "actual_canvas_background": "#777",
+      "native_size": [
+        941,
+        1672
+      ]
+    },
+    {
+      "gender": "female",
+      "pose": "rifle",
+      "weapon_visible": false,
+      "actual_canvas_background": "#000",
+      "native_size": [
+        941,
+        1672
+      ]
+    },
+    {
+      "gender": "female",
+      "pose": "rifle",
+      "weapon_visible": false,
+      "actual_canvas_background": "#0f0",
+      "native_size": [
+        941,
+        1672
+      ]
+    },
+    {
+      "gender": "female",
+      "pose": "rifle",
+      "weapon_visible": true,
+      "actual_canvas_background": "#fff",
+      "native_size": [
+        941,
+        1672
+      ]
+    },
+    {
+      "gender": "female",
+      "pose": "rifle",
+      "weapon_visible": true,
+      "actual_canvas_background": "#777",
+      "native_size": [
+        941,
+        1672
+      ]
+    },
+    {
+      "gender": "female",
+      "pose": "rifle",
+      "weapon_visible": true,
+      "actual_canvas_background": "#000",
+      "native_size": [
+        941,
+        1672
+      ]
+    },
+    {
+      "gender": "female",
+      "pose": "rifle",
+      "weapon_visible": true,
+      "actual_canvas_background": "#0f0",
+      "native_size": [
+        941,
+        1672
+      ]
+    }
+  ],
+  "js_errors": [],
+  "http_errors": [],
+  "physical_device": false
+}

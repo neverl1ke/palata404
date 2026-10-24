@@ -1,0 +1,32 @@
+[
+  {
+    "pose": "rifle",
+    "registered_raw_shift": [
+      10,
+      26
+    ],
+    "solid_pixels_different_from_raw": 6,
+    "interpretation": "historically edited/padded pixels; flagged for source review, not automatically a newly detected visual defect",
+    "runtime_changed": false
+  },
+  {
+    "pose": "pistol",
+    "registered_raw_shift": [
+      10,
+      26
+    ],
+    "solid_pixels_different_from_raw": 125,
+    "interpretation": "historically edited/padded pixels; flagged for source review, not automatically a newly detected visual defect",
+    "runtime_changed": false
+  },
+  {
+    "pose": "melee",
+    "registered_raw_shift": [
+      10,
+      26
+    ],
+    "solid_pixels_different_from_raw": 0,
+    "interpretation": "historically edited/padded pixels; flagged for source review, not automatically a newly detected visual defect",
+    "runtime_changed": false
+  }
+]

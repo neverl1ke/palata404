@@ -1,0 +1,64 @@
+test_original_items_full_cycles_cuts_and_size_primary_pivot (tests.test_selective_merge.SelectiveBrowserTests.test_original_items_full_cycles_cuts_and_size_primary_pivot) ... ok
+test_rgb_merge_never_changes_rendered_alpha_or_neutral_pose (tests.test_selective_merge.SelectiveBrowserTests.test_rgb_merge_never_changes_rendered_alpha_or_neutral_pose) ... ok
+test_derived_alpha_and_hand_texels_are_exact_for_every_layer (tests.test_selective_merge.SelectiveSourceTests.test_derived_alpha_and_hand_texels_are_exact_for_every_layer) ... FAIL
+test_existing_pngs_rigs_engine_catalog_and_saves_are_not_modified (tests.test_selective_merge.SelectiveSourceTests.test_existing_pngs_rigs_engine_catalog_and_saves_are_not_modified) ... FAIL
+test_historical_runtime_is_identical_at_184e392_and_766a71e (tests.test_selective_merge.SelectiveSourceTests.test_historical_runtime_is_identical_at_184e392_and_766a71e) ... ok
+test_only_surface_paths_change_in_preview_configs (tests.test_selective_merge.SelectiveSourceTests.test_only_surface_paths_change_in_preview_configs) ... FAIL
+test_actual_game_inventory_both_loadouts_and_reload_use_existing_save_keys (tests.test_requested_corrections.RequestedBrowserTests.test_actual_game_inventory_both_loadouts_and_reload_use_existing_save_keys) ... ok
+test_catalog_switch_hide_and_gender_rebind_preserve_contact_and_anatomy (tests.test_requested_corrections.RequestedBrowserTests.test_catalog_switch_hide_and_gender_rebind_preserve_contact_and_anatomy) ... FAIL
+test_hidden_wardrobe_stops_raf_and_resumes_after_open (tests.test_requested_corrections.RequestedBrowserTests.test_hidden_wardrobe_stops_raf_and_resumes_after_open) ... ok
+test_idle_seams_remain_filled_inside_the_original_shoulder_silhouette (tests.test_requested_corrections.RequestedBrowserTests.test_idle_seams_remain_filled_inside_the_original_shoulder_silhouette) ... ok
+test_melee_has_base_bone_lengths_stable_elbows_and_closed_grip_cycle (tests.test_requested_corrections.RequestedBrowserTests.test_melee_has_base_bone_lengths_stable_elbows_and_closed_grip_cycle) ... FAIL
+test_approved_bases_faces_and_hair_are_byte_identical (tests.test_requested_corrections.RequestedSourceTests.test_approved_bases_faces_and_hair_are_byte_identical) ... ok
+test_internal_reserves_copy_exact_source_rgba_and_never_paint_anatomy (tests.test_requested_corrections.RequestedSourceTests.test_internal_reserves_copy_exact_source_rgba_and_never_paint_anatomy) ... ok
+test_original_weapon_candidates_never_invent_or_substitute_material (tests.test_requested_corrections.RequestedSourceTests.test_original_weapon_candidates_never_invent_or_substitute_material) ... ok
+
+======================================================================
+FAIL: test_derived_alpha_and_hand_texels_are_exact_for_every_layer (tests.test_selective_merge.SelectiveSourceTests.test_derived_alpha_and_hand_texels_are_exact_for_every_layer)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/palata404-avatar-core/tests/test_selective_merge.py", line 26, in test_derived_alpha_and_hand_texels_are_exact_for_every_layer
+    jx,jy=art['anchors'][joint];m=(x-jx)**2+(y-jy)**2<85**2;self.assertTrue(np.array_equal(a[m],b[m]),(g,key,joint))
+                                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : ('male', 'pistol-right', 'wrist')
+
+======================================================================
+FAIL: test_existing_pngs_rigs_engine_catalog_and_saves_are_not_modified (tests.test_selective_merge.SelectiveSourceTests.test_existing_pngs_rigs_engine_catalog_and_saves_are_not_modified)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/palata404-avatar-core/tests/test_selective_merge.py", line 15, in test_existing_pngs_rigs_engine_catalog_and_saves_are_not_modified
+    for p in set(paths):self.assertEqual((R/p).read_bytes(),subprocess.check_output(['git','show','5532a93:'+p],cwd=R),p)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: b'{\n[2216 chars]    207,\n        889\n      ],\n      "left":[874695 chars]n}\n' != b'{\n[2216 chars]    241,\n        906\n      ],\n      "left":[2006581 chars]n}\n' : avatar-core/rigs/male_rig.json
+
+======================================================================
+FAIL: test_only_surface_paths_change_in_preview_configs (tests.test_selective_merge.SelectiveSourceTests.test_only_surface_paths_change_in_preview_configs)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/palata404-avatar-core/tests/test_selective_merge.py", line 31, in test_only_surface_paths_change_in_preview_configs
+    self.assertEqual(a,b)
+AssertionError: {'bre[2335 chars]y': [230, 351], 'scale': 1, 'size': [941, 1672[506 chars]8]}}} != {'bre[2335 chars]y': [42.4, 81.7], 'scale': 1, 'size': [941, 16[469 chars]3]}}}
+Diff is 5598 characters long. Set self.maxDiff to None to see it.
+
+======================================================================
+FAIL: test_catalog_switch_hide_and_gender_rebind_preserve_contact_and_anatomy (tests.test_requested_corrections.RequestedBrowserTests.test_catalog_switch_hide_and_gender_rebind_preserve_contact_and_anatomy)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/palata404-avatar-core/tests/test_requested_corrections.py", line 65, in test_catalog_switch_hide_and_gender_rebind_preserve_contact_and_anatomy
+    self.p.evaluate('t=>{let e=avatarLab.engine;e.time=t;e.setOptions({background:"transparent",breathing:true});e.setLayerVisible("weapon",true)}',t);frame=self.p.evaluate('avatarLab.engine.frame');before=self.c.image();self.assertLess(frame['primaryError'],1e-6);self.assertLess(frame['supportError'],1e-6)
+                                                                                                                                                                                                                                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 28.403816271759222 not less than 1e-06
+
+======================================================================
+FAIL: test_melee_has_base_bone_lengths_stable_elbows_and_closed_grip_cycle (tests.test_requested_corrections.RequestedBrowserTests.test_melee_has_base_bone_lengths_stable_elbows_and_closed_grip_cycle)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/palata404-avatar-core/tests/test_requested_corrections.py", line 51, in test_melee_has_base_bone_lengths_stable_elbows_and_closed_grip_cycle
+    a=f['arms']['right'];self.assertAlmostEqual(np.linalg.norm(np.array(a['elbow'])-a['shoulder']),np.linalg.norm(np.array(rest['elbow'])-rest['shoulder']),places=6);self.assertAlmostEqual(np.linalg.norm(np.array(a['wrist'])-a['elbow']),np.linalg.norm(np.array(rest['wrist'])-rest['elbow']),places=6);self.assertLess(f['primaryError'],1e-6)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: np.float64(197.20294115453754) != np.float64(235.9194777885031) within 6 places (np.float64(38.716536633965546) difference)
+
+----------------------------------------------------------------------
+Ran 14 tests in 69.261s
+
+FAILED (failures=5)

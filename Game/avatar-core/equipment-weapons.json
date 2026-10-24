@@ -1,0 +1,146 @@
+{
+  "version": 1,
+  "items": [
+    {
+      "id": "gear-aks",
+      "name": "Автомат",
+      "type": "rifle",
+      "pose": "rifle",
+      "image": "assets/weapons/original-visible/weapon_rifle.png",
+      "thumbnail": "assets/weapons/original-visible/weapon_rifle.thumb.png",
+      "attachmentByGender": {
+        "male": {
+          "primary": [
+            390,
+            644
+          ],
+          "support": [
+            675,
+            708
+          ],
+          "offset": [
+            0,
+            0
+          ],
+          "scale": 1.0,
+          "angle": 0.0,
+          "stock": [
+            257,
+            512
+          ],
+          "order": 30
+        },
+        "female": {
+          "primary": [
+            390,
+            644
+          ],
+          "support": [
+            675,
+            708
+          ],
+          "offset": [
+            0,
+            0
+          ],
+          "scale": 0.9236953825339228,
+          "angle": 7.054500277763228,
+          "stock": [
+            257,
+            512
+          ],
+          "order": 30
+        }
+      },
+      "artStatus": "PARTIAL",
+      "previewOnly": true,
+      "limitation": "Occluded handle/fore-end pixels are absent from the approved source; no invented material or replacement model used."
+    },
+    {
+      "id": "gear-pm",
+      "name": "Пістолет",
+      "type": "pistol",
+      "pose": "pistol",
+      "image": "assets/weapons/original-visible/weapon_pistol.png",
+      "thumbnail": "assets/weapons/original-visible/weapon_pistol.thumb.png",
+      "attachmentByGender": {
+        "male": {
+          "primary": [
+            230,
+            351
+          ],
+          "support": null,
+          "offset": [
+            0,
+            0
+          ],
+          "scale": 1.0,
+          "angle": 0.0,
+          "stock": null,
+          "order": 30
+        },
+        "female": {
+          "primary": [
+            230,
+            351
+          ],
+          "support": null,
+          "offset": [
+            0,
+            0
+          ],
+          "scale": 1.0,
+          "angle": 0.0,
+          "stock": null,
+          "order": 30
+        }
+      },
+      "artStatus": "PARTIAL",
+      "previewOnly": true,
+      "limitation": "Occluded handle/fore-end pixels are absent from the approved source; no invented material or replacement model used."
+    },
+    {
+      "id": "gear-knife",
+      "name": "Ніж",
+      "type": "melee",
+      "pose": "melee",
+      "image": "assets/weapons/original-visible/weapon_knife.png",
+      "thumbnail": "assets/weapons/original-visible/weapon_knife.thumb.png",
+      "attachmentByGender": {
+        "male": {
+          "primary": [
+            227,
+            880
+          ],
+          "support": null,
+          "offset": [
+            0,
+            0
+          ],
+          "scale": 1.0,
+          "angle": 0.0,
+          "stock": null,
+          "order": 30
+        },
+        "female": {
+          "primary": [
+            227,
+            880
+          ],
+          "support": null,
+          "offset": [
+            0,
+            0
+          ],
+          "scale": 1.0,
+          "angle": 0.0,
+          "stock": null,
+          "order": 30
+        }
+      },
+      "artStatus": "PARTIAL",
+      "previewOnly": true,
+      "limitation": "Occluded handle/fore-end pixels are absent from the approved source; no invented material or replacement model used."
+    }
+  ]
+}

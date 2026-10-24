@@ -1,0 +1,19 @@
+test_original_items_full_cycles_cuts_and_size_primary_pivot (tests.test_selective_merge.SelectiveBrowserTests.test_original_items_full_cycles_cuts_and_size_primary_pivot) ... ok
+test_rgb_merge_never_changes_rendered_alpha_or_neutral_pose (tests.test_selective_merge.SelectiveBrowserTests.test_rgb_merge_never_changes_rendered_alpha_or_neutral_pose) ... ok
+test_derived_alpha_and_hand_texels_are_exact_for_every_layer (tests.test_selective_merge.SelectiveSourceTests.test_derived_alpha_and_hand_texels_are_exact_for_every_layer) ... ok
+test_existing_pngs_rigs_engine_catalog_and_saves_are_not_modified (tests.test_selective_merge.SelectiveSourceTests.test_existing_pngs_rigs_engine_catalog_and_saves_are_not_modified) ... ok
+test_historical_runtime_is_identical_at_184e392_and_766a71e (tests.test_selective_merge.SelectiveSourceTests.test_historical_runtime_is_identical_at_184e392_and_766a71e) ... ok
+test_only_surface_paths_change_in_preview_configs (tests.test_selective_merge.SelectiveSourceTests.test_only_surface_paths_change_in_preview_configs) ... ok
+test_actual_game_inventory_both_loadouts_and_reload_use_existing_save_keys (tests.test_requested_corrections.RequestedBrowserTests.test_actual_game_inventory_both_loadouts_and_reload_use_existing_save_keys) ... ok
+test_catalog_switch_hide_and_gender_rebind_preserve_contact_and_anatomy (tests.test_requested_corrections.RequestedBrowserTests.test_catalog_switch_hide_and_gender_rebind_preserve_contact_and_anatomy) ... ok
+test_hidden_wardrobe_stops_raf_and_resumes_after_open (tests.test_requested_corrections.RequestedBrowserTests.test_hidden_wardrobe_stops_raf_and_resumes_after_open) ... ok
+test_idle_seams_remain_filled_inside_the_original_shoulder_silhouette (tests.test_requested_corrections.RequestedBrowserTests.test_idle_seams_remain_filled_inside_the_original_shoulder_silhouette) ... ok
+test_melee_has_base_bone_lengths_stable_elbows_and_closed_grip_cycle (tests.test_requested_corrections.RequestedBrowserTests.test_melee_has_base_bone_lengths_stable_elbows_and_closed_grip_cycle) ... ok
+test_approved_bases_faces_and_hair_are_byte_identical (tests.test_requested_corrections.RequestedSourceTests.test_approved_bases_faces_and_hair_are_byte_identical) ... ok
+test_internal_reserves_copy_exact_source_rgba_and_never_paint_anatomy (tests.test_requested_corrections.RequestedSourceTests.test_internal_reserves_copy_exact_source_rgba_and_never_paint_anatomy) ... ok
+test_original_weapon_candidates_never_invent_or_substitute_material (tests.test_requested_corrections.RequestedSourceTests.test_original_weapon_candidates_never_invent_or_substitute_material) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 94.735s
+
+OK

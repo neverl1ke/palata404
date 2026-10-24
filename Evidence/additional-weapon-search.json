@@ -1,0 +1,557 @@
+[
+  {
+    "blob": "94b0c8345c891ee411e6cb09bbf275e2fb5d3b1f",
+    "path": "avatar-core/assets/female/donor-art/melee-weapon.png",
+    "size": [
+      941,
+      1672
+    ],
+    "sha256": "ed2e79bdaa9fc6bcf7431005514f26e4075e8a833761e45cd6d0bca905045da5",
+    "bbox": [
+      207,
+      843,
+      299,
+      997
+    ]
+  },
+  {
+    "blob": "ac8b87315495603a74575e3ef4a178a943bd28da",
+    "path": "avatar-core/assets/female/donor-art/pistol-weapon.png",
+    "size": [
+      941,
+      1672
+    ],
+    "sha256": "7fc47e63808c176f4c051c583339339e7ee91eac27dcf28d08ec0f6338867c57",
+    "bbox": [
+      191,
+      153,
+      277,
+      337
+    ]
+  },
+  {
+    "blob": "e9cd48bfecbb76793f32e443d3e011ea2d7ea948",
+    "path": "avatar-core/assets/female/donor-art/rifle-weapon.png",
+    "size": [
+      941,
+      1672
+    ],
+    "sha256": "a45c88e9e613c29f0810318bac38998e985816fb8e26d88c570d9a450ce93b54",
+    "bbox": [
+      241,
+      399,
+      877,
+      777
+    ]
+  },
+  {
+    "blob": "3135cc22c582dc492cd190930419d9ce472f9f34",
+    "path": "avatar-core/assets/female/foundation-cleanup/melee-weapon.png",
+    "size": [
+      941,
+      1672
+    ],
+    "sha256": "3cae128f06fcee226fb7dd1ee4ecde339db502ae67d53de2039386444ccdddb7",
+    "bbox": [
+      194,
+      824,
+      287,
+      982
+    ]
+  },
+  {
+    "blob": "1428e3ddec8884e8d760cbfeddb3eefb54a2084c",
+    "path": "avatar-core/assets/female/foundation-cleanup/pistol-weapon.png",
+    "size": [
+      941,
+      1672
+    ],
+    "sha256": "f7f2da05468f9c03dfb25dbed737803530d580c772bfd822fe58b69d5ca39f0d",
+    "bbox": [
+      139,
+      143,
+      250,
+      351
+    ]
+  },
+  {
+    "blob": "4a4827d2ed78aa6135c26264e5387c6aae3fb7e3",
+    "path": "avatar-core/assets/female/foundation-cleanup/rifle-weapon.png",
+    "size": [
+      941,
+      1672
+    ],
+    "sha256": "76743ddcf91631131a039e9b568f8ba476626a394d3b7e3bd72f0a3d9530b574",
+    "bbox": [
+      267,
+      467,
+      902,
+      789
+    ]
+  },
+  {
+    "blob": "4bdae165bc88a25357545c93d4244c7547fe6631",
+    "path": "avatar-core/assets/male/foundation-cleanup/melee-weapon.png",
+    "size": [
+      941,
+      1672
+    ],
+    "sha256": "78eda069b6dd47a3ab7721d660136e69b76def1e0f23a971e293980e78d5b828",
+    "bbox": [
+      198,
+      842,
+      300,
+      1016
+    ]
+  },
+  {
+    "blob": "398260139c1d5f261a199065dbfe638ec008ec56",
+    "path": "avatar-core/assets/male/foundation-cleanup/pistol-weapon.png",
+    "size": [
+      941,
+      1672
+    ],
+    "sha256": "62f5aa118be473435ca2721087b0b399683f3ca0b56fc7c7ed7956cbc32c76ea",
+    "bbox": [
+      146,
+      179,
+      266,
+      403
+    ]
+  },
+  {
+    "blob": "4d9e7f9223e6f3fc15c03c0976f545de38b5233a",
+    "path": "avatar-core/assets/male/foundation-cleanup/rifle-weapon.png",
+    "size": [
+      941,
+      1672
+    ],
+    "sha256": "77fdf7a2be1e9f6cf5657754cd1d9166efa3268d1490ebd56d0d6010b79808d6",
+    "bbox": [
+      230,
+      540,
+      941,
+      817
+    ]
+  },
+  {
+    "blob": "9808456bff2b526c195cde06e8ba1cac4f16feab",
+    "path": "review/avatar-core-2-weapon-pass/sources/weapon-atlas.png",
+    "size": [
+      1536,
+      1024
+    ],
+    "sha256": "b2ccf01672a5e8f5259e089987c3fabc7c95a19b936fe67686dba4282bb4575f",
+    "bbox": [
+      0,
+      80,
+      1535,
+      994
+    ]
+  },
+  {
+    "blob": "2f918fee8dcfd6a237e47496795a72ef4ecdf899",
+    "path": "review/avatar-foundation-cleanup/Before/active-weapons.png",
+    "size": [
+      1400,
+      950
+    ],
+    "sha256": "04b14830852ae92c89e8dd862bede8d8bf75ddf1083e96e8c2969c86af0842e4",
+    "bbox": [
+      0,
+      0,
+      1400,
+      950
+    ]
+  },
+  {
+    "blob": "7c7edf7284d63241259ae3284060debec616ddbd",
+    "path": "review/avatar-foundation-cleanup/Before/female-melee-weapon.png",
+    "size": [
+      92,
+      154
+    ],
+    "sha256": "66e46274cb92255d66596372729b93c50a9aba983a1cc47d7e61bd2d83145faf",
+    "bbox": [
+      0,
+      0,
+      92,
+      154
+    ]
+  },
+  {
+    "blob": "d57ee5117c4392226d4b72f076ad0acaf668fb62",
+    "path": "review/avatar-foundation-cleanup/Before/female-pistol-prop-grid.png",
+    "size": [
+      258,
+      552
+    ],
+    "sha256": "658411d1738d8c99022f343f95d2795c5839c20e7ed3d5686e6adee4601d8f29",
+    "bbox": [
+      0,
+      0,
+      258,
+      552
+    ]
+  },
+  {
+    "blob": "96b8132752feabcc099113439e2ff0f7359bd2d9",
+    "path": "review/avatar-foundation-cleanup/Before/female-pistol-weapon.png",
+    "size": [
+      86,
+      184
+    ],
+    "sha256": "6f5a4b4bf86b99faa791fb023b09b2ad8f56b78f91719ed282032039476ee440",
+    "bbox": [
+      0,
+      0,
+      86,
+      184
+    ]
+  },
+  {
+    "blob": "cb3b4bbfc3ac255d392a736f07d91240c5a57258",
+    "path": "review/avatar-foundation-cleanup/Before/female-rifle-prop-grid.png",
+    "size": [
+      1908,
+      1134
+    ],
+    "sha256": "3af8b696f71a6b10c9ad740967209d09f0064f24d923a9fc30160b5313cfc0c2",
+    "bbox": [
+      0,
+      0,
+      1908,
+      1134
+    ]
+  },
+  {
+    "blob": "baa114dcb3877ac166b6ca8565359231bf0cc6f1",
+    "path": "review/avatar-foundation-cleanup/Before/female-rifle-weapon.png",
+    "size": [
+      636,
+      378
+    ],
+    "sha256": "454185ee4e027973bd19fd34d00b5569330767f3575d4e2515293e42fd7279b2",
+    "bbox": [
+      0,
+      0,
+      636,
+      378
+    ]
+  },
+  {
+    "blob": "42b9b03cd2ed3276d0edbf075b6f5b1294c2bca5",
+    "path": "review/avatar-foundation-cleanup/Before/male-melee-weapon.png",
+    "size": [
+      121,
+      168
+    ],
+    "sha256": "2e8c8669ec6bdd17d2871949dae962179f52c4aa9d002b35cc60b29ed75155d5",
+    "bbox": [
+      0,
+      0,
+      121,
+      168
+    ]
+  },
+  {
+    "blob": "893c94d655019a3e952225d8d600ad7cb4e4aa5c",
+    "path": "review/avatar-foundation-cleanup/Before/male-pistol-prop-grid.png",
+    "size": [
+      279,
+      603
+    ],
+    "sha256": "1d001989874aeede67f12d77143fcd99c57948810dc9c9662c6f3f819ac95d6b",
+    "bbox": [
+      0,
+      0,
+      279,
+      603
+    ]
+  },
+  {
+    "blob": "9fb8eed724c9a1b01597600e91f56ff6acd0f3b3",
+    "path": "review/avatar-foundation-cleanup/Before/male-pistol-weapon.png",
+    "size": [
+      93,
+      201
+    ],
+    "sha256": "ebf289642f7a87edc43542d93861d59527e3cdfc8b06b2314432be72498b45f1",
+    "bbox": [
+      0,
+      0,
+      93,
+      201
+    ]
+  },
+  {
+    "blob": "5ef58ce455ca3d0a3aee5e666a355ee41ae273fa",
+    "path": "review/avatar-foundation-cleanup/Before/male-rifle-prop-grid.png",
+    "size": [
+      1926,
+      1152
+    ],
+    "sha256": "0150985ed17ce637ab9c0559c596e8805ed624722f9dd1e06636fc4b4ac27279",
+    "bbox": [
+      0,
+      0,
+      1926,
+      1152
+    ]
+  },
+  {
+    "blob": "b7a015be19fc6d7c60215ff39b519b58821393ea",
+    "path": "review/avatar-foundation-cleanup/Before/male-rifle-weapon.png",
+    "size": [
+      642,
+      384
+    ],
+    "sha256": "de697e3cf2b3b7b8ae73dff487d1e634e6fe105aec6247f5a10624e1177ae4f0",
+    "bbox": [
+      0,
+      0,
+      642,
+      384
+    ]
+  },
+  {
+    "blob": "98de6a8eab87e73a019d1b6c3313b5b49d4cce71",
+    "path": "review/female-donor-arm-pass/Masks/melee-weapon.png",
+    "size": [
+      941,
+      1672
+    ],
+    "sha256": "6e97ea30165c0b6d7727f5d4b9e72c66ac26081e05e627591b6b9b640c31e9c0",
+    "bbox": [
+      0,
+      0,
+      941,
+      1672
+    ]
+  },
+  {
+    "blob": "124b9714fea666ee9f98df2be1b19f565cadb6e9",
+    "path": "review/female-donor-arm-pass/Masks/pistol-weapon.png",
+    "size": [
+      941,
+      1672
+    ],
+    "sha256": "c82ad98751bac49bfeb5940336a2c564c814c9ecf1189584b1018bd4b7f01654",
+    "bbox": [
+      0,
+      0,
+      941,
+      1672
+    ]
+  },
+  {
+    "blob": "a2d34d3e735190c95d7b5a7a639c6a66e67c4f36",
+    "path": "review/female-donor-arm-pass/Masks/rifle-weapon.png",
+    "size": [
+      941,
+      1672
+    ],
+    "sha256": "b5ab22082bfaa22e5ad8f2e851f7c45f0e041385759d83b3b6cc7972839ab48f",
+    "bbox": [
+      0,
+      0,
+      941,
+      1672
+    ]
+  },
+  {
+    "blob": "a71572d164af2da2558709265ed850647a68a16e",
+    "path": "review/male-arm-contour-cleanup/melee-prop-mask.png",
+    "size": [
+      941,
+      1672
+    ],
+    "sha256": "ce404a5b973dfd5dbc2408bf99759d6d118045e4a1d3140e69368fc5dcbe5663",
+    "bbox": [
+      0,
+      0,
+      941,
+      1672
+    ]
+  },
+  {
+    "blob": "7b8ba5b8a5fe96129f762500e394297d05173464",
+    "path": "review/male-arm-contour-cleanup/pistol-prop-mask.png",
+    "size": [
+      941,
+      1672
+    ],
+    "sha256": "1d0eee72dfa8a52cfdcd4266f5db3461d06ec8e0dbab9efc1859309dd8a7bb92",
+    "bbox": [
+      0,
+      0,
+      941,
+      1672
+    ]
+  },
+  {
+    "blob": "eb1d898bfb50a3894ea1ae2ffb8661b4902bb8ba",
+    "path": "review/male-arm-contour-cleanup/rifle-prop-mask.png",
+    "size": [
+      941,
+      1672
+    ],
+    "sha256": "7352272ce153e04fc573b042af440019266e025a818d7b1760b855672148aa0d",
+    "bbox": [
+      0,
+      0,
+      941,
+      1672
+    ]
+  },
+  {
+    "blob": "569a01904ca4ff82659a1fa831b36b045bf00f5a",
+    "path": "review/male-contact-surface-pass/melee-prop-mask.png",
+    "size": [
+      941,
+      1672
+    ],
+    "sha256": "c497c03463aba88aab2b09e76a2dde65fbec7a4e694c8391c2fb06ac276b35c1",
+    "bbox": [
+      0,
+      0,
+      941,
+      1672
+    ]
+  },
+  {
+    "blob": "3e6680594015a5986236d5e1a0a0fa7032911096",
+    "path": "review/male-contact-surface-pass/pistol-prop-mask.png",
+    "size": [
+      941,
+      1672
+    ],
+    "sha256": "429ca6ffe3be03ac98496a58a6c132de25e74ada27857c5b3f9d4c70234ef8cc",
+    "bbox": [
+      0,
+      0,
+      941,
+      1672
+    ]
+  },
+  {
+    "blob": "f06e0bc820b6dac06b7d18557d90159cdcbb8c6a",
+    "path": "review/male-contact-surface-pass/rifle-prop-mask.png",
+    "size": [
+      941,
+      1672
+    ],
+    "sha256": "f606b42209377549628207305b4ab509f8662918789721bc4e8dad6b12ed616b",
+    "bbox": [
+      0,
+      0,
+      941,
+      1672
+    ]
+  },
+  {
+    "blob": "d641c6d1533125248e96126e58f2ad4f7031c35b",
+    "path": "review/male-hand-art-kit/Hands/pistol-right/reference-weapon-full.png",
+    "size": [
+      941,
+      1672
+    ],
+    "sha256": "44993247507c2e26da658d3133cae6ae5a2233825e65aaa8a6a29aa933ee7b25",
+    "bbox": [
+      149,
+      168,
+      265,
+      380
+    ]
+  },
+  {
+    "blob": "97353acc84db757c3202a9ec3405343d9f72773a",
+    "path": "review/male-hand-art-kit/Hands/rifle-left/reference-weapon-full.png",
+    "size": [
+      941,
+      1672
+    ],
+    "sha256": "3804a848a59fa7106a7b6a2fb1245654e6fb8ef9f8adbb8cc146a267d1e2f70c",
+    "bbox": [
+      219,
+      561,
+      858,
+      875
+    ]
+  },
+  {
+    "blob": "afd8b1b05146b2873d442c07f3469a6b4ca0ba3e",
+    "path": "review/male-reference-arm-art/pistol-prop-mask.png",
+    "size": [
+      941,
+      1672
+    ],
+    "sha256": "6b5e8ab4d3bd630b5f0c9a74f2a07473606b4a8716da98d650bec3c25ef9d6ab",
+    "bbox": [
+      0,
+      0,
+      941,
+      1672
+    ]
+  },
+  {
+    "blob": "3df08165655fc193588bdedf43a37d1c58845240",
+    "path": "review/male-reference-arm-art/rifle-prop-mask.png",
+    "size": [
+      941,
+      1672
+    ],
+    "sha256": "12aa1aded0482859c2a47a6f1cc9fa3ef79c9a0ead648608e2a39af9cac78d73",
+    "bbox": [
+      0,
+      0,
+      941,
+      1672
+    ]
+  },
+  {
+    "blob": "78736e5f2252bca67745844dad24470a6035a1b0",
+    "path": "avatar-core/assets/female/donor-art/rifle-weapon.png",
+    "size": [
+      941,
+      1672
+    ],
+    "sha256": "37180626b5b2fbeaf613955229aeb61d687fe61aa74e86e5796ceb0424f04e8b",
+    "bbox": [
+      240,
+      397,
+      877,
+      777
+    ]
+  },
+  {
+    "blob": "f0704aeb85cb5045dbf163947f76a5a22f50f13c",
+    "path": "review/female-donor-arm-pass/Masks/rifle-weapon.png",
+    "size": [
+      941,
+      1672
+    ],
+    "sha256": "504d30056d54b199e6eead1e5ed93f61c01b7903e7cf00edd0f3293e86cca4c7",
+    "bbox": [
+      0,
+      0,
+      941,
+      1672
+    ]
+  },
+  {
+    "blob": "e2228d4f67ee235a9dd6dd74d9bc1ba810768a75",
+    "path": "avatar-core/assets/female/donor-art/rifle-weapon.png",
+    "size": [
+      941,
+      1672
+    ],
+    "sha256": "c289f9968f55ff7bd823b70107d164fec7924832906c899cc9c54971e69e2288",
+    "bbox": [
+      239,
+      397,
+      877,
+      777
+    ]
+  }
+]

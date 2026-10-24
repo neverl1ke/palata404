@@ -1,0 +1,143 @@
+{
+  "engine": "Chromium",
+  "file_protocol": true,
+  "physical_device": false,
+  "other_installed_engines": false,
+  "report_viewports": [
+    {
+      "file": "Report.html",
+      "width": 320,
+      "overflow": false
+    },
+    {
+      "file": "Report.html",
+      "width": 390,
+      "overflow": false
+    },
+    {
+      "file": "Report.html",
+      "width": 768,
+      "overflow": false
+    },
+    {
+      "file": "Report.html",
+      "width": 1440,
+      "overflow": false
+    },
+    {
+      "file": "Technical-report.html",
+      "width": 320,
+      "overflow": false
+    },
+    {
+      "file": "Technical-report.html",
+      "width": 390,
+      "overflow": false
+    },
+    {
+      "file": "Technical-report.html",
+      "width": 768,
+      "overflow": false
+    },
+    {
+      "file": "Technical-report.html",
+      "width": 1440,
+      "overflow": false
+    }
+  ],
+  "lab_cases": [
+    {
+      "gender": "male",
+      "pose": "idle",
+      "item": null,
+      "before_image_exact_184e392": true
+    },
+    {
+      "gender": "male",
+      "pose": "melee",
+      "item": "gear-knife",
+      "before_image_exact_184e392": true
+    },
+    {
+      "gender": "male",
+      "pose": "pistol",
+      "item": "gear-pm",
+      "before_image_exact_184e392": true
+    },
+    {
+      "gender": "male",
+      "pose": "rifle",
+      "item": "gear-aks",
+      "before_image_exact_184e392": true
+    },
+    {
+      "gender": "female",
+      "pose": "idle",
+      "item": null,
+      "before_image_exact_184e392": true
+    },
+    {
+      "gender": "female",
+      "pose": "melee",
+      "item": "gear-knife",
+      "before_image_exact_184e392": true
+    },
+    {
+      "gender": "female",
+      "pose": "pistol",
+      "item": "gear-pm",
+      "before_image_exact_184e392": true
+    },
+    {
+      "gender": "female",
+      "pose": "rifle",
+      "item": "gear-aks",
+      "before_image_exact_184e392": true
+    }
+  ],
+  "js_errors": [],
+  "external_requests": [],
+  "cycles": {
+    "female-melee-cycle.webp": {
+      "frames": 40,
+      "duration_ms": 4000
+    },
+    "male-melee-cycle.webp": {
+      "frames": 40,
+      "duration_ms": 4000
+    },
+    "male-rifle-cycle.webp": {
+      "frames": 40,
+      "duration_ms": 4000
+    },
+    "male-pistol-cycle.webp": {
+      "frames": 40,
+      "duration_ms": 4000
+    },
+    "male-idle-cycle.webp": {
+      "frames": 40,
+      "duration_ms": 4000
+    },
+    "female-knife-triple-cycle.webp": {
+      "frames": 40,
+      "duration_ms": 4000
+    },
+    "female-rifle-cycle.webp": {
+      "frames": 40,
+      "duration_ms": 4000
+    },
+    "female-pistol-cycle.webp": {
+      "frames": 40,
+      "duration_ms": 4000
+    },
+    "female-idle-cycle.webp": {
+      "frames": 40,
+      "duration_ms": 4000
+    },
+    "male-knife-triple-cycle.webp": {
+      "frames": 40,
+      "duration_ms": 4000
+    }
+  },
+  "pdf_pages": 8
+}

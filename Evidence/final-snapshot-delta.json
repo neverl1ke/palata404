@@ -1,0 +1,23 @@
+{
+  "full_run": {
+    "total": 305,
+    "ran": 305,
+    "passed": 301,
+    "failure_ids": [
+      "tests.test_paper_doll_audit.AuditAssetTests.test_no_remote_faint_haze_or_detached_low_alpha_specks",
+      "tests.test_avatar_polish.PolishBrowserTests.test_supported_pistol_and_combat_wrists_do_not_fold_backwards",
+      "tests.test_male_lobby.LobbyBrowserTests.test_relaxed_rifle_elbows_stock_contacts_and_face_clearance",
+      "tests.test_weapon_pass.WeaponPassBrowserTests.test_rifle_and_pistol_match_their_current_calibrated_art_bind"
+    ],
+    "skipped": 0
+  },
+  "source_changed_after_snapshot": [
+    "tests/test_selective_merge.py",
+    "avatar-lab/lab.mjs",
+    "tools/measure-selective-motion.py",
+    "tools/report-selective-merge.py",
+    "avatar-lab/index.html"
+  ],
+  "snapshot_mutation_delta": [],
+  "validation": "No final engine, math, rig, preview JSON or PNG differs from full snapshot. Lab UI defaults/dropdown comparison and the added UI test are checked separately in final-selective-tests.log and lab-dropdown-followup.log; other differences are report/measurement/preview artifact tooling."
+}

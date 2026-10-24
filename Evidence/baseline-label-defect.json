@@ -1,0 +1,1 @@
+{"issue":"Lab before header named 184e392/766a71e but loaded c2822a7 images via avatar-foundation-cleanup/Gallery", "fix":"Use actual immutable 184e392 native endpoint captures at 0 ms; explicitly label the phase", "historical_files_replaced":false, "scope":"Lab image URL, explanatory label and offline embed only"}

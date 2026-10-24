@@ -1,0 +1,590 @@
+{
+  "base_commit": "5532a93718c5aeb698fdbf6450abe266407eb2cd",
+  "code_commit": "f8fef05",
+  "branch": "feature/avatar-selective-merge-5532a93",
+  "excludes_self": true,
+  "files": [
+    {
+      "path": "README.md",
+      "previous_git_blob": "a0cca46c66cc7c3f6a267140c314123eac0779f5",
+      "sha256": "5b6c810b8db6e06d73ec03e6fdaa47ced27c4b96f6bc00228b8b90c2481b0d6c",
+      "bytes": 21338
+    },
+    {
+      "path": "avatar-core/assets/female/selective-merge/melee-right-arm.png",
+      "previous_git_blob": null,
+      "sha256": "e11b72885baf73ab97f734388aca7832df0011dc95d5c84ca1dddd9af866842f",
+      "bytes": 73960
+    },
+    {
+      "path": "avatar-core/assets/female/selective-merge/melee-right-complete.png",
+      "previous_git_blob": null,
+      "sha256": "361ec048c0db5a86a94b6a096ba9c8a8040c0ca987d9cc05c36c00d5c004cc1d",
+      "bytes": 89213
+    },
+    {
+      "path": "avatar-core/assets/female/selective-merge/melee-right-front.png",
+      "previous_git_blob": null,
+      "sha256": "9c85c95e6a79208110781f38e067ecd66cbebe56d87d3ed7f078349915dad5d2",
+      "bytes": 24597
+    },
+    {
+      "path": "avatar-core/assets/female/selective-merge/pistol-right-arm.png",
+      "previous_git_blob": null,
+      "sha256": "bdc8b932605b7d1df86b38f7e0b8507eaf1cdfabe579ae2a524f75a642517657",
+      "bytes": 62255
+    },
+    {
+      "path": "avatar-core/assets/female/selective-merge/pistol-right-complete.png",
+      "previous_git_blob": null,
+      "sha256": "c50b430a93dba80732f2b5f5af034ac3d5334ff6287248e16ef36cc046fa85c9",
+      "bytes": 82890
+    },
+    {
+      "path": "avatar-core/assets/female/selective-merge/pistol-right-front.png",
+      "previous_git_blob": null,
+      "sha256": "0f8ea739de4122952e1c1abb1ddc7ac93a0f165d338cb7201c83df09c9c3c30a",
+      "bytes": 28109
+    },
+    {
+      "path": "avatar-core/assets/female/selective-merge/rifle-left-arm.png",
+      "previous_git_blob": null,
+      "sha256": "167987ef9e8f0f2f51ad6a0ac9a8ee6520cdbd3f1cdd2d4093f4036561dd298b",
+      "bytes": 52246
+    },
+    {
+      "path": "avatar-core/assets/female/selective-merge/rifle-left-complete.png",
+      "previous_git_blob": null,
+      "sha256": "b871e8e626147ee2acad15e251c055a0807859c26f181ad61ef0bcd47bbbed84",
+      "bytes": 67387
+    },
+    {
+      "path": "avatar-core/assets/female/selective-merge/rifle-left-front.png",
+      "previous_git_blob": null,
+      "sha256": "eac85046f9cca54cb7afe6653375d4f7f9633c4f4ed6f3664bb0a2f64398ffaa",
+      "bytes": 24141
+    },
+    {
+      "path": "avatar-core/assets/female/selective-merge/rifle-right-arm.png",
+      "previous_git_blob": null,
+      "sha256": "b5c1cea5c46debc51aec4a50894a35662f4d17a78f3ed4bd4c8a55a06ee147e8",
+      "bytes": 69281
+    },
+    {
+      "path": "avatar-core/assets/female/selective-merge/rifle-right-complete.png",
+      "previous_git_blob": null,
+      "sha256": "18721e7296e2f6af33a76482320166b5e8655942e99e71fdd1f05e30cbe4c463",
+      "bytes": 89369
+    },
+    {
+      "path": "avatar-core/assets/female/selective-merge/rifle-right-front.png",
+      "previous_git_blob": null,
+      "sha256": "f29858bbd11f64af953d9ef4cad129954d13aef1cd383be6aed1a396a2ce925e",
+      "bytes": 30893
+    },
+    {
+      "path": "avatar-core/assets/male/selective-merge/melee-right-arm.png",
+      "previous_git_blob": null,
+      "sha256": "c80ab7743819bd12c1122dfff46d6486e329e4e918ab84b033688707934d8f9a",
+      "bytes": 75112
+    },
+    {
+      "path": "avatar-core/assets/male/selective-merge/melee-right-complete.png",
+      "previous_git_blob": null,
+      "sha256": "094b2afcdae2621ea5eaa6afe3ef82b9afe76c3f9fb49aa484dcf712808c0954",
+      "bytes": 93260
+    },
+    {
+      "path": "avatar-core/assets/male/selective-merge/melee-right-front.png",
+      "previous_git_blob": null,
+      "sha256": "63a43c0d82736248482200509bc33cfe4d1a39724c275fb6b7cc135b2ac0fa24",
+      "bytes": 20620
+    },
+    {
+      "path": "avatar-core/assets/male/selective-merge/pistol-right-arm.png",
+      "previous_git_blob": null,
+      "sha256": "b7f5f5166c1e8b8a42c1dc8b15c667f6cfd2a2756dfaad02dece71c87f3c52fb",
+      "bytes": 57310
+    },
+    {
+      "path": "avatar-core/assets/male/selective-merge/pistol-right-complete.png",
+      "previous_git_blob": null,
+      "sha256": "93471f8519abf951cf7f9d655b60741fa5621264f57a5b2ad50b4d991e6a66cb",
+      "bytes": 81341
+    },
+    {
+      "path": "avatar-core/assets/male/selective-merge/pistol-right-front.png",
+      "previous_git_blob": null,
+      "sha256": "24456335e21c242c35b38096e65c99037f276f9af22f220b416934733450ec0d",
+      "bytes": 26317
+    },
+    {
+      "path": "avatar-core/assets/male/selective-merge/rifle-left-arm.png",
+      "previous_git_blob": null,
+      "sha256": "226f2d26b5051a5cd6cd144e2e7181adff7cb93229d750ced399418778b8b7ab",
+      "bytes": 60996
+    },
+    {
+      "path": "avatar-core/assets/male/selective-merge/rifle-left-complete.png",
+      "previous_git_blob": null,
+      "sha256": "643d1de2653204fc2ef668ea0e9e56e58c4a628e3d639a968dfda6725fd19c80",
+      "bytes": 76114
+    },
+    {
+      "path": "avatar-core/assets/male/selective-merge/rifle-left-front.png",
+      "previous_git_blob": null,
+      "sha256": "2225e1731938c9a8249103a34b2736f72536154bb3849f87d528d2a075b0eeed",
+      "bytes": 17081
+    },
+    {
+      "path": "avatar-core/assets/male/selective-merge/rifle-right-arm.png",
+      "previous_git_blob": null,
+      "sha256": "3ac95e13cbf4a6d30ed8d5efc5fdf03b0373b31e166932dca636c169410caa6f",
+      "bytes": 69970
+    },
+    {
+      "path": "avatar-core/assets/male/selective-merge/rifle-right-complete.png",
+      "previous_git_blob": null,
+      "sha256": "ff34ebc5d2eea243d132647c7d20ada6d970f54cf23c5a707941077413edfe14",
+      "bytes": 94387
+    },
+    {
+      "path": "avatar-core/assets/male/selective-merge/rifle-right-front.png",
+      "previous_git_blob": null,
+      "sha256": "c4d924c7e3e90fc973e58f8b6583a83173a62eb1ea669522747041e4a773ed4e",
+      "bytes": 27852
+    },
+    {
+      "path": "avatar-core/engine.mjs",
+      "previous_git_blob": "2626b4fa5817d92f0f93cb03619e239cc3889e92",
+      "sha256": "0d1e4fd0ec88e59fae1f83a8431503c54a03937cee4654c97bdfe9319b6a7355",
+      "bytes": 67145
+    },
+    {
+      "path": "avatar-core/female-preview.json",
+      "previous_git_blob": "7ded1337932d4e1f9780f9800baa68155d9ceda7",
+      "sha256": "78822f045a284d3e6156e932e7e0e49e21dff87cec770561442bfe3fb1e8754d",
+      "bytes": 4265
+    },
+    {
+      "path": "avatar-core/male-preview.json",
+      "previous_git_blob": "38b68df2958b621634cd86085ee283efe2053df2",
+      "sha256": "91e9aa6eea1d4c38c5ac2c4faf6d569ab78527e2a0b0f38a60d11b302a1e4d6f",
+      "bytes": 4788
+    },
+    {
+      "path": "avatar-core/relaxed-melee.mjs",
+      "previous_git_blob": "11db702fc0012fa0e2b989569b9a42e368205698",
+      "sha256": "c8ed051171feb416817709c512cd606e4daa37523eacba7ac4817d99a7b5d26d",
+      "bytes": 718
+    },
+    {
+      "path": "avatar-lab/index.html",
+      "previous_git_blob": "a8001c2f834f3ab9af13894f469cba910e803778",
+      "sha256": "81b886c9c55b0f98aeedd2411c369f606c9c2d6b31b85e3a3d7691bf720eac0c",
+      "bytes": 13751
+    },
+    {
+      "path": "avatar-lab/lab.mjs",
+      "previous_git_blob": "031be1d62fbbb505509ec4a5902ebb16c8563eac",
+      "sha256": "a3b1af751cf42200dd284a82f9719a803ed61ed1fad0b22457267e0bf998ecf2",
+      "bytes": 10702
+    },
+    {
+      "path": "docs/avatar-weapon-attachments.md",
+      "previous_git_blob": "d56cdf9e1fe109805fcb5d84fe8c1a4d97c6ba14",
+      "sha256": "f8b696ae4ac781f597fbecb5cec374255ba5c15dc0833657e307934b85a9515d",
+      "bytes": 15791
+    },
+    {
+      "path": "review/avatar-selective-merge/.gitignore",
+      "previous_git_blob": null,
+      "sha256": "ff6075a337f022d45488c7b3d8cf0e5dfda8d268eadce48e63341584cd0cc9d5",
+      "bytes": 72
+    },
+    {
+      "path": "review/avatar-selective-merge/AUDIT-BEFORE-EDIT.md",
+      "previous_git_blob": null,
+      "sha256": "95785ba4160425cfdabd4e96ec036cd69918254e7e845161b0fecf1e74d45c19",
+      "bytes": 5061
+    },
+    {
+      "path": "review/avatar-selective-merge/Evidence/184e392-captures.json",
+      "previous_git_blob": null,
+      "sha256": "837ff0c1c0ad83a2a13034d8fed161e8aa2c0d63563c722f2466717aecf9b2e2",
+      "bytes": 89924
+    },
+    {
+      "path": "review/avatar-selective-merge/Evidence/5532a93-captures.json",
+      "previous_git_blob": null,
+      "sha256": "b9a525695184a2599324e8addd1e1b12cbd2beaa871fabecf2e5420cfec9349d",
+      "bytes": 87512
+    },
+    {
+      "path": "review/avatar-selective-merge/Evidence/actual-game-review.json",
+      "previous_git_blob": null,
+      "sha256": "ac8dec24ff3189e447766f39a1f4e6fd934b223ab32201ee65e7d9083f49365d",
+      "bytes": 12085
+    },
+    {
+      "path": "review/avatar-selective-merge/Evidence/actual-weapon-motion.json",
+      "previous_git_blob": null,
+      "sha256": "8000c9fcd89679f3f60b96aaffc8060035863a07f15115813f267b0042ad13c0",
+      "bytes": 1880
+    },
+    {
+      "path": "review/avatar-selective-merge/Evidence/additional-weapon-search.json",
+      "previous_git_blob": null,
+      "sha256": "652757b7dc0cc5ee8ded809af473875a5e4272caae76baa25617dd2d953c746d",
+      "bytes": 11994
+    },
+    {
+      "path": "review/avatar-selective-merge/Evidence/baseline-label-defect.json",
+      "previous_git_blob": null,
+      "sha256": "8db504eec8bb2afd4f0db501ebfaa392f11af7d77b7994ae043e1d41717974bc",
+      "bytes": 317
+    },
+    {
+      "path": "review/avatar-selective-merge/Evidence/before-weapon-motion.json",
+      "previous_git_blob": null,
+      "sha256": "d083c787454b32f18f6146721bc78ffaa13333830f95541748e2ee4375de99f6",
+      "bytes": 1877
+    },
+    {
+      "path": "review/avatar-selective-merge/Evidence/contract-followup.log",
+      "previous_git_blob": null,
+      "sha256": "fe19a762928d16a1312cc50af34bdf7a06b62d0b0d0fbd849c239d2f10f5be6d",
+      "bytes": 625
+    },
+    {
+      "path": "review/avatar-selective-merge/Evidence/final-captures.json",
+      "previous_git_blob": null,
+      "sha256": "a1d81870903e83cc5e771c72d3ad73b1815549fecea54b6fa96ad4f2450ac42e",
+      "bytes": 87397
+    },
+    {
+      "path": "review/avatar-selective-merge/Evidence/final-selective-tests.log",
+      "previous_git_blob": null,
+      "sha256": "51f3c2f6505530fd2fa6ddacbc948091ea3ad4b9def9ffd132474e246cba4c19",
+      "bytes": 5073
+    },
+    {
+      "path": "review/avatar-selective-merge/Evidence/final-snapshot-delta.json",
+      "previous_git_blob": null,
+      "sha256": "9a01863714081a9b79df0f874ea5b4a4a220ec9cde30ac824c59a17d2e6ea824",
+      "bytes": 1119
+    },
+    {
+      "path": "review/avatar-selective-merge/Evidence/frozen-inputs.json",
+      "previous_git_blob": null,
+      "sha256": "69e2f6f89ed7db35bdc53ee4b6baebe0284721319bb2a1fbe578676e66a197fc",
+      "bytes": 66919
+    },
+    {
+      "path": "review/avatar-selective-merge/Evidence/full-run/summary.json",
+      "previous_git_blob": null,
+      "sha256": "ef3793af4722ff423e53096883993307321f17e55f847010f0ccffb2cb9d75d8",
+      "bytes": 37978
+    },
+    {
+      "path": "review/avatar-selective-merge/Evidence/inherited-weapon-source-differences.json",
+      "previous_git_blob": null,
+      "sha256": "1b2f531e00977bc058914fabcba20e330f9dcc6cda4067e03d2f996975d5afa2",
+      "bytes": 885
+    },
+    {
+      "path": "review/avatar-selective-merge/Evidence/interrupted-source-preparation-javascript.log",
+      "previous_git_blob": null,
+      "sha256": "99155c499629f6161820228f865eda927f3b195ba2bd68b2db73539b6bf3ec48",
+      "bytes": 12125
+    },
+    {
+      "path": "review/avatar-selective-merge/Evidence/interrupted-source-preparation-targeted.log",
+      "previous_git_blob": null,
+      "sha256": "88fb176909e6822b11372b78f4639d212c70207491fe4c4ffab699cfc98768a1",
+      "bytes": 7691
+    },
+    {
+      "path": "review/avatar-selective-merge/Evidence/javascript.log",
+      "previous_git_blob": null,
+      "sha256": "8bff7442359a979776d42500531389e6ea07fa64fb64a73d8956410fdfef7f73",
+      "bytes": 12416
+    },
+    {
+      "path": "review/avatar-selective-merge/Evidence/lab-dropdown-followup.log",
+      "previous_git_blob": null,
+      "sha256": "eb802c8199b7ce05568be599d485fd4e16544c2d2376da735df6d2b4b97d08c3",
+      "bytes": 265
+    },
+    {
+      "path": "review/avatar-selective-merge/Evidence/motion-captures.json",
+      "previous_git_blob": null,
+      "sha256": "38a54339d99d4f2a410561287195640fc08bcd1fd63d5a19358cdff459c6dbb6",
+      "bytes": 9453
+    },
+    {
+      "path": "review/avatar-selective-merge/Evidence/offline-verification.json",
+      "previous_git_blob": null,
+      "sha256": "2619f5c99b2bdd857c35204653dea83c6314898fc9a2bb5bc43213d89d22b104",
+      "bytes": 2855
+    },
+    {
+      "path": "review/avatar-selective-merge/Evidence/pre-motion-full-run/preparation.log",
+      "previous_git_blob": null,
+      "sha256": "976e637e5f1796580f0a619a337665ed5bb632937e7778ba5eee814c606f9742",
+      "bytes": 809
+    },
+    {
+      "path": "review/avatar-selective-merge/Evidence/pre-motion-full-run/shard-0.log",
+      "previous_git_blob": null,
+      "sha256": "bf785b8056d101167464a63cf9aa21b4c010e8897c6ac4d74058cee7a5cca496",
+      "bytes": 8697
+    },
+    {
+      "path": "review/avatar-selective-merge/Evidence/pre-motion-full-run/shard-1.log",
+      "previous_git_blob": null,
+      "sha256": "531650dc1dfeeb83c7d22a4879ba7e705357faff7f18f17a736db452602fd485",
+      "bytes": 12336
+    },
+    {
+      "path": "review/avatar-selective-merge/Evidence/selective-arm-export.json",
+      "previous_git_blob": null,
+      "sha256": "9bca7987c810b735328f0a489b5452117005c2a3aee098c51c80fc8b51f4d5d1",
+      "bytes": 4667
+    },
+    {
+      "path": "review/avatar-selective-merge/Evidence/selective-motion-tests.json",
+      "previous_git_blob": null,
+      "sha256": "9b8acebc03a0777086049a5f429985a4ef8de520dc755bb00fdb10fd2d7246be",
+      "bytes": 99148
+    },
+    {
+      "path": "review/avatar-selective-merge/Evidence/snapshot-provenance.json",
+      "previous_git_blob": null,
+      "sha256": "1b1cfaf643d0fde5b65394aae219588a56d5922d0e14f0d74af4afb6c14e0742",
+      "bytes": 271684
+    },
+    {
+      "path": "review/avatar-selective-merge/Evidence/source-weapon-caveat.json",
+      "previous_git_blob": null,
+      "sha256": "9924feebc1ddfe74bbfe490adc596d0f1aaba92125f5641f9525ee19e2193632",
+      "bytes": 703
+    },
+    {
+      "path": "review/avatar-selective-merge/Evidence/targeted.log",
+      "previous_git_blob": null,
+      "sha256": "7d94ea5a4fc662e4faa3620e1a932132da88b324aefcfe27c4d02b543ccd6c18",
+      "bytes": 2731
+    },
+    {
+      "path": "review/avatar-selective-merge/Evidence/weapon-history.json",
+      "previous_git_blob": null,
+      "sha256": "262eb9bc1e6e9e28b009e17414003eafc5f8adb82e011efdd9b8ed6ecb4e8712",
+      "bytes": 9783
+    },
+    {
+      "path": "review/avatar-selective-merge/Evidence/weapon-knife-inherited-difference-mask.png",
+      "previous_git_blob": null,
+      "sha256": "cd7714fdb32e20d395832664ba30ade6943d4a0ccffd34c4e41f90871869e563",
+      "bytes": 1606
+    },
+    {
+      "path": "review/avatar-selective-merge/Evidence/weapon-pistol-inherited-difference-mask.png",
+      "previous_git_blob": null,
+      "sha256": "62ad1600f262f8b6e217a12ca6267094c58e9b1e75804a435f3cb91470e46dac",
+      "bytes": 1726
+    },
+    {
+      "path": "review/avatar-selective-merge/Evidence/weapon-rifle-inherited-difference-mask.png",
+      "previous_git_blob": null,
+      "sha256": "055818f5ee2c5118476524efc995eba2a1e0d31aeba943f7e22e87caa072a8b6",
+      "bytes": 1630
+    },
+    {
+      "path": "review/avatar-selective-merge/Gallery/184e392-female-idle-0-False.png",
+      "previous_git_blob": null,
+      "sha256": "3153f2e3e64a2e2eb04262f2b9fea3d53cf12d83b78544a95692f7dd54a78ed7",
+      "bytes": 1028083
+    },
+    {
+      "path": "review/avatar-selective-merge/Gallery/184e392-female-melee-0-True.png",
+      "previous_git_blob": null,
+      "sha256": "469ba07c076f51d03055055feb97f418346d469abf8708030880692d816a8a3b",
+      "bytes": 1034870
+    },
+    {
+      "path": "review/avatar-selective-merge/Gallery/184e392-female-pistol-0-True.png",
+      "previous_git_blob": null,
+      "sha256": "7fe9adafcb71194da0a1aaf3e491bae807567ecf783f68c0ed9f11f35d07db40",
+      "bytes": 970477
+    },
+    {
+      "path": "review/avatar-selective-merge/Gallery/184e392-female-rifle-0-True.png",
+      "previous_git_blob": null,
+      "sha256": "41681cc1300518775994d161b8b9e365967b74e3f32e1c45b1e9d3eacb1ac730",
+      "bytes": 1000556
+    },
+    {
+      "path": "review/avatar-selective-merge/Gallery/184e392-male-idle-0-False.png",
+      "previous_git_blob": null,
+      "sha256": "241c3c2a8f380d87728bfe16f36e6a72df3e7f550adc31ec96c147ce8851e23e",
+      "bytes": 1088391
+    },
+    {
+      "path": "review/avatar-selective-merge/Gallery/184e392-male-melee-0-True.png",
+      "previous_git_blob": null,
+      "sha256": "036a1aa2849e15d637d60eadb2858623e8d704a087f2ac6ffe10042acb7a4c04",
+      "bytes": 1084421
+    },
+    {
+      "path": "review/avatar-selective-merge/Gallery/184e392-male-pistol-0-True.png",
+      "previous_git_blob": null,
+      "sha256": "4e847a36cf74059ed1209f403188bb5aae6767e051d334d60c0f939ea76b33f9",
+      "bytes": 1073924
+    },
+    {
+      "path": "review/avatar-selective-merge/Gallery/184e392-male-rifle-0-True.png",
+      "previous_git_blob": null,
+      "sha256": "4426d06a447f2d97445e379ac2ecd526d49eaf57b62180a0a2b3d6e7b06088fc",
+      "bytes": 1091857
+    },
+    {
+      "path": "review/avatar-selective-merge/README.md",
+      "previous_git_blob": null,
+      "sha256": "02cb4139019006fdc5d121bfb863c1a8cd00c5212605bda95910f9face14bd00",
+      "bytes": 14365
+    },
+    {
+      "path": "review/avatar-selective-merge/Technical-report.html",
+      "previous_git_blob": null,
+      "sha256": "78d5c7ce41ee1aa51a149c24df0635dec427060241eb5fba420051edcd5f0200",
+      "bytes": 15522
+    },
+    {
+      "path": "review/avatar-selective-merge/issues.json",
+      "previous_git_blob": null,
+      "sha256": "425fab0abee020c353ff46cbcc0a906ac2f0d47ebacbaed3facd5daa74acd77f",
+      "bytes": 12952
+    },
+    {
+      "path": "review/avatar-selective-merge/pose-assessment.csv",
+      "previous_git_blob": null,
+      "sha256": "55199d8b2ffbd367c105a1d872b3690f8cf29d295ba11169e8a6e1260ecfa43f",
+      "bytes": 9277
+    },
+    {
+      "path": "review/avatar-selective-merge/pose-assessment.json",
+      "previous_git_blob": null,
+      "sha256": "0b2a6fdc25a70faf7582d202bfe48b77ef4214f9fc7c8722e6cc815dc8296a26",
+      "bytes": 11338
+    },
+    {
+      "path": "tests/avatar_revision_contract.py",
+      "previous_git_blob": "bf2fd2ea980625f6e50696609a7850cea5775925",
+      "sha256": "62dec7297a03d752e400daf5b03b18f898eacd4887c786c444f2319c2d0dc6ed",
+      "bytes": 15994
+    },
+    {
+      "path": "tests/relaxed-melee.test.mjs",
+      "previous_git_blob": "294da68b0e3050aaf12feb3b2769d0a7b98810c3",
+      "sha256": "60bc6dcc2cc19b849f275731c864517107c3c8b13fe3ee7ea2b1275065064f0d",
+      "bytes": 2570
+    },
+    {
+      "path": "tests/requested_source_contract.py",
+      "previous_git_blob": "c6a8ed474ea8f33d07fd85b2de09156a66d0cf49",
+      "sha256": "7d89196c507ac814754a5b064b1f17fbfd91fec640a2410487e9bfc10320a882",
+      "bytes": 2508
+    },
+    {
+      "path": "tests/test_avatar_foundation_cleanup.py",
+      "previous_git_blob": "13f10659d9d15264270daa031f00958eef6cd036",
+      "sha256": "634e43737a4cc427ac033c3f0cc4ca9cc035681ecf215fa9575699cf1bc9e3dd",
+      "bytes": 13104
+    },
+    {
+      "path": "tests/test_selective_merge.py",
+      "previous_git_blob": null,
+      "sha256": "c168bede21d32b11bd8305b6e301a64a1e736ba83ae0931d0a2ff08fe9e20a25",
+      "bytes": 8923
+    },
+    {
+      "path": "tools/audit-selective-weapon-source.py",
+      "previous_git_blob": null,
+      "sha256": "0c5c844a7cdc3c429a99cf9c4a42a1aff73a049184f3a1dc38de4bfc60958473",
+      "bytes": 1560
+    },
+    {
+      "path": "tools/audit-selective-weapons.py",
+      "previous_git_blob": null,
+      "sha256": "b50193d60aa5c5b7c69023099cb9d6c2584090e25d41297db4072a7b8d6a0636",
+      "bytes": 1430
+    },
+    {
+      "path": "tools/bundle-avatar-lab.py",
+      "previous_git_blob": "029bd44691af1f713b3a8ad86841e44e34494e86",
+      "sha256": "e584cfb570757f503932dd6760940634c83b29ea267ada902f6c0097c07f25c2",
+      "bytes": 4551
+    },
+    {
+      "path": "tools/capture-selective-game.py",
+      "previous_git_blob": null,
+      "sha256": "2c615a14250ad6705b48924de30e7c1c101fb24123534979f59d91fe5027f81a",
+      "bytes": 4697
+    },
+    {
+      "path": "tools/capture-selective-merge.py",
+      "previous_git_blob": null,
+      "sha256": "743196d9814825127e1bdaca61b1a035b0cd6231fcbc62b45f5bced49d9b58d5",
+      "bytes": 2678
+    },
+    {
+      "path": "tools/capture-selective-motion.py",
+      "previous_git_blob": null,
+      "sha256": "7529affa1158f4f13857fef55d5f352f650007305cefdd0610fdbea2751b0999",
+      "bytes": 3098
+    },
+    {
+      "path": "tools/measure-selective-motion.py",
+      "previous_git_blob": null,
+      "sha256": "6f0b8388e67741cc584b6ba5b635bde86d06dc3a93306dbb792ac864b3be586b",
+      "bytes": 2220
+    },
+    {
+      "path": "tools/package-selective-merge.py",
+      "previous_git_blob": null,
+      "sha256": "36dcf8ba3733b016a091edc6fbeb9f23b86fda22c9b71a8033329ff888cdba5e",
+      "bytes": 3863
+    },
+    {
+      "path": "tools/prepare-foundation-cleanup.py",
+      "previous_git_blob": "af45d2b61d772273b32240bfc0510aebc10f2b69",
+      "sha256": "aa7d43424d997db1169999b7b09214ae1197a5d72ed5ba76ef3fc01b989dd5f5",
+      "bytes": 12104
+    },
+    {
+      "path": "tools/prepare-selective-arms.py",
+      "previous_git_blob": null,
+      "sha256": "bbe98f93b075f868bac66d759606bf184405dd5102b940f396d16aa18926d640",
+      "bytes": 3870
+    },
+    {
+      "path": "tools/prepare-selective-snapshots.py",
+      "previous_git_blob": null,
+      "sha256": "9996983b7d0ae28c9dedbc88c1a4340d4b171ce69df58cb65a0ccfb1b60818a5",
+      "bytes": 1511
+    },
+    {
+      "path": "tools/report-selective-merge.py",
+      "previous_git_blob": null,
+      "sha256": "92dbb9a57e22feeb908fd5efff01b831953f066dd335caced73d001fcf016c03",
+      "bytes": 19538
+    },
+    {
+      "path": "tools/verify-selective-offline.py",
+      "previous_git_blob": null,
+      "sha256": "4e64f425fc9eeb3c5adc356c0cd588a88d5095f6140282adb0c050ca210dfbb3",
+      "bytes": 2995
+    }
+  ]
+}

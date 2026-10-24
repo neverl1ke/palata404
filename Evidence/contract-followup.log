@@ -1,0 +1,8 @@
+test_original_character_engine_config_and_anchors_unchanged (tests.test_arm_contour_cleanup.ArmContourSourceTests.test_original_character_engine_config_and_anchors_unchanged) ... ok
+test_every_prior_png_rig_and_pose_is_unchanged (tests.test_grip_pass.GripSourceTests.test_every_prior_png_rig_and_pose_is_unchanged) ... ok
+test_core_pose_anchors_originals_engine_female_and_game_stay_unchanged (tests.test_contact_surfaces.ContactSurfaceSourceTests.test_core_pose_anchors_originals_engine_female_and_game_stay_unchanged) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 1.331s
+
+OK

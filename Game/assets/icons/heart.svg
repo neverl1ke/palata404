@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+<defs>
+ <linearGradient id="metal" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ead5a5"/><stop offset=".45" stop-color="#b59a65"/><stop offset="1" stop-color="#695039"/></linearGradient>
+ <linearGradient id="paper" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f1e6c9"/><stop offset="1" stop-color="#ae9976"/></linearGradient>
+ <linearGradient id="steel" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#c6cbc2"/><stop offset=".5" stop-color="#89968f"/><stop offset="1" stop-color="#485753"/></linearGradient>
+</defs>
+<g fill="url(#metal)" stroke="#30251d" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M32 55 9 32C-7 11 22 0 32 19 42 0 71 11 55 32Z" fill="#a94a3e" /><path d="m9 33 11 0 5-12 8 23 5-13h17" fill="none" stroke="#f3ddbe" stroke-width="4" /></g>
+</svg>

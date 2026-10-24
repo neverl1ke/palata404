@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="uk">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <title>Палата 404 · Avatar Lab · Foundation review</title>
+        <link rel="stylesheet" href="lab.css" />
+    </head>
+    <body>
+        <header>
+            <span>ПАЛАТА 404 / ДОСЛІДНА СИСТЕМА</span>
+            <h1>Avatar Lab <small>перевірка обох основ</small></h1>
+            <p>
+                Перевірка прихованої анатомії та заміни предметів · чоловіча основа ще проходить художній контроль
+            </p>
+        </header>
+        <main>
+            <aside>
+                <fieldset>
+                    <legend>Діагностика майбутніх скінів</legend>
+                    <label>Накладка<select id="diagnostic-binding">
+                        <option value="none">Без накладки</option>
+                        <option value="collar">Комір</option>
+                        <option value="waist-top">Верх через талію</option>
+                        <option value="short-sleeve">Короткий рукав</option>
+                        <option value="long-sleeve">Довгий рукав</option>
+                        <option value="cuff">Манжета</option>
+                        <option value="glove">Рукавичка</option>
+                        <option value="trousers">Штани / пояс</option>
+                        <option value="shoes">Взуття</option>
+                    </select></label>
+                    <label>Колір шару тіла<select id="diagnostic-hue">
+                        <option value="0">Оригінальний</option>
+                        <option value="120">Діагностичний зелений</option>
+                        <option value="240">Діагностичний фіолетовий</option>
+                    </select></label>
+                    <p class="note">Сітки перевіряють прив’язку. Це не готовий одяг і не фінальна палітра шкіри. Предмети 85/115% — непідтримувана діагностика контактів.</p>
+                </fieldset>
+                <fieldset>
+                    <legend>Персонаж</legend>
+                    <div class="buttons" id="gender">
+                        <button data-gender="male" aria-pressed="true">
+                            Чоловік</button
+                        ><button data-gender="female" aria-pressed="false">
+                            Жінка
+                        </button>
+                    </div>
+                    <label
+                        >Перегляд<select id="view">
+                            <option value="rig">Модульний риг</option>
+                            <option value="original">Оригінальний PNG</option>
+                            <option value="compare">
+                                Накладка оригіналу 35%
+                            </option>
+                        </select></label
+                    ><label
+                        >Фон<select id="background">
+                            <option value="#d3cfc6">Світлий</option>
+                            <option value="#777777">Сірий</option>
+                            <option value="#101418">Чорний</option>
+                            <option value="#00ff00">Зелений</option>
+                        </select></label
+                    >
+                </fieldset>
+                <fieldset>
+                    <legend>Поза та зброя</legend>
+<label>Оригінальні предмети — контрольні неповні ресурси<select id="equipment-weapon"><option value="legacy">Попередні тестові моделі</option><option value="none" selected>Без зброї / Idle</option><option value="gear-knife">Затверджений ніж — PARTIAL</option><option value="gear-pm">Затверджений пістолет — PARTIAL</option><option value="gear-aks">Затверджений автомат — PARTIAL</option></select></label><p class="note">На старих PNG рукоятки частково закриті руками. Тут відновлено тільки наявні пікселі предметів; ці ресурси потребують художнього завершення.</p>
+                    <div class="poses" id="poses">
+                        <button data-pose="idle" aria-pressed="true">
+                            01 · Спокій</button
+                        ><button data-pose="melee">02 · Холодна зброя</button
+                        ><button data-pose="pistol">03 · Пістолет</button
+                        ><button data-pose="rifle">04 · Автомат</button>
+                    </div>
+                    <label><input id="show-weapon" type="checkbox" checked /> Показувати предмет (поза зберігається)</label>
+                    <label>Тест розміру предмета<select id="weapon-preview-scale">
+                        <option value="0.85">Менший · 85%</option>
+                        <option value="1" selected>Поточний · 100%</option>
+                        <option value="1.15">Більший · 115%</option>
+                    </select></label>
+                    <p class="note">Тестові розміри тримають основний хват. Для іншої цівки потрібне окреме налаштування другої руки.</p>
+                    <p class="note">
+                        Чоловічі пози перемикаються миттєво без crossfade. Пістолет — лише однією рукою. Зброя — окремі
+                        тестові PNG. Художня якість рук ще перевіряється.
+                    </p>
+                </fieldset>
+                <fieldset>
+                    <legend>Анімація</legend>
+                    <label class="check"
+                        ><input id="breathing" type="checkbox" checked />
+                        Дихання</label
+                    ><label
+                        >Цикл, мс <output id="cycle-value">4000</output
+                        ><input
+                            id="cycle"
+                            type="range"
+                            min="1000"
+                            max="8000"
+                            step="100"
+                            value="4000" /></label
+                    ><label
+                        >Амплітуда <output id="amplitude-value">1</output
+                        ><input
+                            id="amplitude"
+                            type="range"
+                            min="0"
+                            max="2"
+                            step="0.1"
+                            value="1" /></label
+                    ><label
+                        >Похитування зброї, px <output id="sway-value">2</output
+                        ><input
+                            id="sway"
+                            type="range"
+                            min="0"
+                            max="4"
+                            step="0.25"
+                            value="2" /></label
+                    ><label
+                        >Перехід, мс <output id="transition-value">320</output
+                        ><input
+                            id="transition"
+                            type="range"
+                            min="0"
+                            max="1000"
+                            step="10"
+                            value="320"
+                    /></label>
+                    <label
+                        >Швидкість <span id="speed-value">1</span>×<input
+                            id="speed"
+                            type="range"
+                            min="0"
+                            max="2"
+                            step="0.1"
+                            value="1"
+                    /></label>
+                    <div class="buttons">
+                        <button id="pause">Пауза</button
+                        ><button id="step">Крок 1/60 с</button
+                        ><button id="reset">Початок циклу</button>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend>Зовнішність · без зміни сейву</legend>
+                    <label>Обличчя<select id="face"></select></label
+                    ><label>Зачіска<select id="hair"></select></label
+                    ><label>Колір<select id="color"></select></label
+                    ><button id="read-save">
+                        Зчитати зовнішність із сейву
+                    </button>
+                    <p id="save-status" class="note">
+                        Лабораторія нічого не записує в localStorage.
+                    </p>
+                </fieldset>
+                <fieldset>
+                    <legend>Налагодження та кріплення</legend>
+                    <label class="check"
+                        ><input type="checkbox" id="pivots" /> Скелет і pivot
+                        points</label
+                    ><label class="check"
+                        ><input type="checkbox" id="bounds" /> Межі
+                        сегментів</label
+                    ><label class="check"
+                        ><input type="checkbox" id="grips" /> Точки хвату</label
+                    ><label class="check"
+                        ><input type="checkbox" id="sleeves" /> Тестові рукави ·
+                        Binding API</label
+                    >
+                    <details>
+                        <summary>Видимість сегментів</summary>
+                        <div id="layers"></div>
+                    </details>
+                    <p class="note">
+                        Основний гардероб і гра не замінені. Старі суцільні
+                        рукави не можна автоматично згинати без сегментованих
+                        ресурсів.
+                    </p>
+                </fieldset>
+            </aside>
+            <section class="stage">
+                <div class="stage-top">
+                    <span id="rig-name">Завантаження…</span
+                    ><span id="metrics">—</span>
+                </div>
+                <canvas
+                    id="avatar"
+                    width="941"
+                    height="1672"
+                    aria-label="Повноростовий аватар"
+                ></canvas>
+                <p id="status" role="status">Підготовка рига…</p>
+                <details open>
+                    <summary>ДО · точний рендер 184e392 / 766a71e · 0 ms</summary>
+                    <img
+                        id="previous-arms"
+                        alt="Попередній риг у тій самій позі, без дихання"
+                        style="width: 100%; max-width: 470px"
+                    />
+                    <p>
+                        ДО — історичний рендер при 0 ms без активного переходу. ФІНАЛ —
+                        інтерактивний canvas вище.
+                    </p>
+                </details>
+                <details>
+                    <summary>Обмеження джерел</summary>
+                    <p>
+                        Чоловічі rifle і pistol використовують локально
+                        домальовані шари рук із прив’язкою до чинного скелета.
+                        Голова, тулуб і ноги — з оригіналу. Проєкційне
+                        скорочення є 2D-наближенням; чоловічі переходи — непрозорий cut. Rifle має нові нижчі
+                        шари рук; оцінка художнього хвату ще потрібна. Жіночі бойові руки вирізано з окремих наданих референсів; приховані ділянки rifle допрацьовані локально. Базові тіла незмінені. Для обох статей використовуються непрозорі перемикання поз. Розміри 85/115% — діагностика, не калібровані нові моделі. Це версія для погодження, не фінальна
+                        анатомічна гарантія.
+                    </p>
+                </details>
+            </section>
+        </main>
+        <script src="../paper-doll-data.js"></script>
+        <script src="../hair-color.js"></script>
+        <script src="../paper-doll.js"></script>
+        <script src="catalog-bridge.js"></script>
+        <script type="module" src="lab.mjs"></script>
+    </body>
+</html>

@@ -1,0 +1,152 @@
+[
+  {
+    "id": "SM-01",
+    "location": "male/rifle/right",
+    "problem": "Відмінна текстура/тон у зоні переходу плеча",
+    "cause": "Pose-specific живопис і його історична ретуш відрізняються від базового тіла; upper-arm alpha належить іншому шару.",
+    "change": "Старий надійний RGB чоловічої руки + current alpha/кисті; проксимальний RGB з точного base без зміни форми. Жінки: збережені current donor та корекція тільки зареєстрованого кореня.",
+    "status": "PARTIAL",
+    "evidence": "Gallery/close-male-rifle-right-shoulder.webp",
+    "remaining": "У 100–400% частина відмінностей донорського рисунка/світлотіні залишається; це не повний repaint."
+  },
+  {
+    "id": "SM-02",
+    "location": "male/rifle/left",
+    "problem": "Відмінна текстура/тон у зоні переходу плеча",
+    "cause": "Pose-specific живопис і його історична ретуш відрізняються від базового тіла; upper-arm alpha належить іншому шару.",
+    "change": "Старий надійний RGB чоловічої руки + current alpha/кисті; проксимальний RGB з точного base без зміни форми. Жінки: збережені current donor та корекція тільки зареєстрованого кореня.",
+    "status": "PARTIAL",
+    "evidence": "Gallery/close-male-rifle-left-shoulder.webp",
+    "remaining": "У 100–400% частина відмінностей донорського рисунка/світлотіні залишається; це не повний repaint."
+  },
+  {
+    "id": "SM-03",
+    "location": "male/pistol/right",
+    "problem": "Відмінна текстура/тон у зоні переходу плеча",
+    "cause": "Pose-specific живопис і його історична ретуш відрізняються від базового тіла; upper-arm alpha належить іншому шару.",
+    "change": "Старий надійний RGB чоловічої руки + current alpha/кисті; проксимальний RGB з точного base без зміни форми. Жінки: збережені current donor та корекція тільки зареєстрованого кореня.",
+    "status": "PARTIAL",
+    "evidence": "Gallery/close-male-pistol-right-shoulder.webp",
+    "remaining": "У 100–400% частина відмінностей донорського рисунка/світлотіні залишається; це не повний repaint."
+  },
+  {
+    "id": "SM-04",
+    "location": "male/melee/right",
+    "problem": "Відмінна текстура/тон у зоні переходу плеча",
+    "cause": "Pose-specific живопис і його історична ретуш відрізняються від базового тіла; upper-arm alpha належить іншому шару.",
+    "change": "Старий надійний RGB чоловічої руки + current alpha/кисті; проксимальний RGB з точного base без зміни форми. Жінки: збережені current donor та корекція тільки зареєстрованого кореня.",
+    "status": "PARTIAL",
+    "evidence": "Gallery/close-male-melee-right-shoulder.webp",
+    "remaining": "У 100–400% частина відмінностей донорського рисунка/світлотіні залишається; це не повний repaint."
+  },
+  {
+    "id": "SM-05",
+    "location": "female/melee/right",
+    "problem": "Відмінна текстура/тон у зоні переходу плеча",
+    "cause": "Pose-specific живопис і його історична ретуш відрізняються від базового тіла; upper-arm alpha належить іншому шару.",
+    "change": "Старий надійний RGB чоловічої руки + current alpha/кисті; проксимальний RGB з точного base без зміни форми. Жінки: збережені current donor та корекція тільки зареєстрованого кореня.",
+    "status": "PARTIAL",
+    "evidence": "Gallery/close-female-melee-right-shoulder.webp",
+    "remaining": "У 100–400% частина відмінностей донорського рисунка/світлотіні залишається; це не повний repaint."
+  },
+  {
+    "id": "SM-06",
+    "location": "female/pistol/right",
+    "problem": "Відмінна текстура/тон у зоні переходу плеча",
+    "cause": "Pose-specific живопис і його історична ретуш відрізняються від базового тіла; upper-arm alpha належить іншому шару.",
+    "change": "Старий надійний RGB чоловічої руки + current alpha/кисті; проксимальний RGB з точного base без зміни форми. Жінки: збережені current donor та корекція тільки зареєстрованого кореня.",
+    "status": "PARTIAL",
+    "evidence": "Gallery/close-female-pistol-right-shoulder.webp",
+    "remaining": "У 100–400% частина відмінностей донорського рисунка/світлотіні залишається; це не повний repaint."
+  },
+  {
+    "id": "SM-07",
+    "location": "female/rifle/right",
+    "problem": "Відмінна текстура/тон у зоні переходу плеча",
+    "cause": "Pose-specific живопис і його історична ретуш відрізняються від базового тіла; upper-arm alpha належить іншому шару.",
+    "change": "Старий надійний RGB чоловічої руки + current alpha/кисті; проксимальний RGB з точного base без зміни форми. Жінки: збережені current donor та корекція тільки зареєстрованого кореня.",
+    "status": "PARTIAL",
+    "evidence": "Gallery/close-female-rifle-right-shoulder.webp",
+    "remaining": "У 100–400% частина відмінностей донорського рисунка/світлотіні залишається; це не повний repaint."
+  },
+  {
+    "id": "SM-08",
+    "location": "female/rifle/left",
+    "problem": "Відмінна текстура/тон у зоні переходу плеча",
+    "cause": "Pose-specific живопис і його історична ретуш відрізняються від базового тіла; upper-arm alpha належить іншому шару.",
+    "change": "Старий надійний RGB чоловічої руки + current alpha/кисті; проксимальний RGB з точного base без зміни форми. Жінки: збережені current donor та корекція тільки зареєстрованого кореня.",
+    "status": "PARTIAL",
+    "evidence": "Gallery/close-female-rifle-left-shoulder.webp",
+    "remaining": "У 100–400% частина відмінностей донорського рисунка/світлотіні залишається; це не повний repaint."
+  },
+  {
+    "id": "SM-09",
+    "location": "AKS",
+    "problem": "Немає доказово повного затвердженого незалежного PNG",
+    "cause": "У джерелах рукоятки закриті кистями; повні інші моделі не відповідають затвердженому дизайну.",
+    "change": "Збережено наявні достовірні пікселі original-visible без генерації/підміни.",
+    "status": "OPEN",
+    "evidence": "Gallery/weapon-history.webp",
+    "remaining": "Потрібен затверджений повний шар або окремо погоджене відновлення невидимого матеріалу."
+  },
+  {
+    "id": "SM-10",
+    "location": "PM",
+    "problem": "Немає доказово повного затвердженого незалежного PNG",
+    "cause": "У джерелах рукоятки закриті кистями; повні інші моделі не відповідають затвердженому дизайну.",
+    "change": "Збережено наявні достовірні пікселі original-visible без генерації/підміни.",
+    "status": "OPEN",
+    "evidence": "Gallery/weapon-history.webp",
+    "remaining": "Потрібен затверджений повний шар або окремо погоджене відновлення невидимого матеріалу."
+  },
+  {
+    "id": "SM-11",
+    "location": "knife",
+    "problem": "Немає доказово повного затвердженого незалежного PNG",
+    "cause": "У джерелах рукоятки закриті кистями; повні інші моделі не відповідають затвердженому дизайну.",
+    "change": "Збережено наявні достовірні пікселі original-visible без генерації/підміни.",
+    "status": "OPEN",
+    "evidence": "Gallery/weapon-history.webp",
+    "remaining": "Потрібен затверджений повний шар або окремо погоджене відновлення невидимого матеріалу."
+  },
+  {
+    "id": "SM-12",
+    "location": "rifle/85%-115%",
+    "problem": "Зміна довжини предмета змінює потрібне положення опорної кисті",
+    "cause": "Діагностичний scale зберігає primary pivot, але не перекалібровує support pose.",
+    "change": "Показано три розміри без приховування відстані; 100% профіль збережено.",
+    "status": "OPEN",
+    "evidence": "Gallery/sizes-male-rifle.webp",
+    "remaining": "Потрібні модельні support-профілі для цих розмірів; не змінено увесь аватар заради діагностики."
+  },
+  {
+    "id": "SM-13",
+    "location": "Lab / ДО",
+    "problem": "Підпис 184e392/766a71e вів до знімків c2822a7",
+    "cause": "Старе посилання previousFrame залишилося після оновлення підпису.",
+    "change": "Посилання та offline embed тепер використовують справжні native 184e392 rerenders, фаза 0 ms явно вказана.",
+    "status": "FIXED",
+    "evidence": "Evidence/baseline-label-defect.json",
+    "remaining": "Історичні файли не замінювалися."
+  },
+  {
+    "id": "SM-14",
+    "location": "melee / обидві статі",
+    "problem": "Регулятор 2 px фактично давав 7.5–7.9 px на ножі",
+    "cause": "Жорстка амплітуда 1.6° через важіль до кінця ножа давала понад 7 px; функція не читала опис meleeMotion з preview JSON.",
+    "change": "Один додатковий аргумент підключає наявний профіль: upper .008°, fore .025°, hand .35°. Цикл 4000 ms. Реальний hull усіх alpha>0: male 1.981 px, female 1.825 px при штатному масштабі 100%.",
+    "status": "FIXED",
+    "evidence": "Evidence/actual-weapon-motion.json",
+    "remaining": "Діагностичні 85/115% та більші значення регулятора не є затвердженими предметними профілями."
+  },
+  {
+    "id": "SM-15",
+    "location": "Lab / вибір пози",
+    "problem": "Початковий режим міг показати інші повні тестові моделі після натискання пози",
+    "cause": "Кнопки викликали setPose без вибору original-visible ID.",
+    "change": "Кнопки за замовчуванням обирають gear-aks/gear-pm/gear-knife. Legacy доступний тільки після явного вибору режиму.",
+    "status": "FIXED",
+    "evidence": "Evidence/final-selective-tests.log",
+    "remaining": "Оригінальні моделі лишаються PARTIAL через джерела."
+  }
+]

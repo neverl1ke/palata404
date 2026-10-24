@@ -1,0 +1,398 @@
+[
+  {
+    "path": "avatar-core/assets/weapons/male-exact/knife.png",
+    "git_blob": "4f8e5038aca231286d9ad1fa43abd1d4ca785257",
+    "sha256": "930a197515a3613e3eaf4d3c70ac920dc983f8ba9895802a310afc7b5ea2a6e7",
+    "size": [
+      34,
+      196
+    ],
+    "bbox": [
+      0,
+      0,
+      34,
+      196
+    ],
+    "first_commit": [
+      "a6f6433 Clean isolated male arm alpha and register independent illustrated knife"
+    ]
+  },
+  {
+    "path": "avatar-core/assets/weapons/male-lobby/rifle.png",
+    "git_blob": "7bacdc10767396dfe3a6e32d51e866333024edc9",
+    "sha256": "e224e4550a24c04f60c667e5b3657321e38948b4e8c55dcad4a83e9006cfcb69",
+    "size": [
+      941,
+      1672
+    ],
+    "bbox": [
+      219,
+      561,
+      858,
+      875
+    ],
+    "first_commit": [
+      "7ba0863 Rework male rifle lobby carry and pose-specific breathing with visual review"
+    ]
+  },
+  {
+    "path": "avatar-core/assets/weapons/male-preview/pistol.png",
+    "git_blob": "4c3e0d209b1f572d189ec175bdb24ba1ff1b0b0f",
+    "sha256": "b41805785c20eac19333c252f847e8aba7c966e74db821ddb178a3a1d8234fc3",
+    "size": [
+      189,
+      115
+    ],
+    "bbox": [
+      0,
+      0,
+      189,
+      115
+    ],
+    "first_commit": [
+      "cdb43eb Refine male test weapons and use opaque pose switches with review evidence"
+    ]
+  },
+  {
+    "path": "avatar-core/assets/weapons/male-preview/rifle.png",
+    "git_blob": "96d55a70b68fbf47dcc963fad43fc5a576034864",
+    "sha256": "980842d1c9326415898bd998165188833a297e5e27149a79cd9ab3ecbbd4da34",
+    "size": [
+      520,
+      280
+    ],
+    "bbox": [
+      8,
+      26,
+      456,
+      171
+    ],
+    "first_commit": [
+      "cdb43eb Refine male test weapons and use opaque pose switches with review evidence"
+    ]
+  },
+  {
+    "path": "avatar-core/assets/weapons/melee.png",
+    "git_blob": "c59b192e437990bf385c2a6e4704044eca5c77f2",
+    "sha256": "ed2e0be5cb2537f4cbb1bfeab6fe5c70b79a80963914d5e7bee80430803a4969",
+    "size": [
+      140,
+      300
+    ],
+    "bbox": [
+      45,
+      12,
+      89,
+      283
+    ],
+    "first_commit": [
+      "1331a91 Add isolated Avatar Core prototype and review lab for both base models"
+    ]
+  },
+  {
+    "path": "avatar-core/assets/weapons/original-visible/weapon_knife.png",
+    "git_blob": "a45dd1844bff47922a8debc596a33c7d8597a2ee",
+    "sha256": "23a21c3b22fd4639b3b2b60ff395a85b38ac35103f0395e4d5504040a4ea2173",
+    "size": [
+      941,
+      1672
+    ],
+    "bbox": [
+      209,
+      868,
+      323,
+      1031
+    ],
+    "first_commit": [
+      "2cd53c6 fix(avatar): stabilize torso joins and melee geometry; add partial original-weapon preview"
+    ]
+  },
+  {
+    "path": "avatar-core/assets/weapons/original-visible/weapon_knife.thumb.png",
+    "git_blob": "f3c20e6818abdd950f63d56d4ef77d7d3b31a435",
+    "sha256": "ee4363313b645acd84fe0fbe2b4cee1f59f0374322862d7d0286e7df99f4df2b",
+    "size": [
+      114,
+      163
+    ],
+    "bbox": [
+      0,
+      0,
+      114,
+      163
+    ],
+    "first_commit": [
+      "2cd53c6 fix(avatar): stabilize torso joins and melee geometry; add partial original-weapon preview"
+    ]
+  },
+  {
+    "path": "avatar-core/assets/weapons/original-visible/weapon_pistol.png",
+    "git_blob": "13e9fe51a342a8f32c88c433a6280d49fc7cb1d1",
+    "sha256": "d4b8bf62603e83df1e22ded0e3a4f9e382b6c6c916e41723ce7d83773ccfe29e",
+    "size": [
+      941,
+      1672
+    ],
+    "bbox": [
+      222,
+      180,
+      295,
+      328
+    ],
+    "first_commit": [
+      "2cd53c6 fix(avatar): stabilize torso joins and melee geometry; add partial original-weapon preview"
+    ]
+  },
+  {
+    "path": "avatar-core/assets/weapons/original-visible/weapon_pistol.thumb.png",
+    "git_blob": "9c8f30d643ab62364a54e00896d81ce9acf991d3",
+    "sha256": "f73e79cade9751edbb797c2584c3db6597429260ebae8972578a8cdb755b48e6",
+    "size": [
+      73,
+      148
+    ],
+    "bbox": [
+      0,
+      0,
+      73,
+      148
+    ],
+    "first_commit": [
+      "2cd53c6 fix(avatar): stabilize torso joins and melee geometry; add partial original-weapon preview"
+    ]
+  },
+  {
+    "path": "avatar-core/assets/weapons/original-visible/weapon_rifle.png",
+    "git_blob": "4f9e824f55a79d99c6c7f424f06b461fe9292ef1",
+    "sha256": "83a3fabc9813851dcf7386938c067b7f64e02d7d1db75aa828e4accbd67660ab",
+    "size": [
+      941,
+      1672
+    ],
+    "bbox": [
+      250,
+      454,
+      892,
+      838
+    ],
+    "first_commit": [
+      "2cd53c6 fix(avatar): stabilize torso joins and melee geometry; add partial original-weapon preview"
+    ]
+  },
+  {
+    "path": "avatar-core/assets/weapons/original-visible/weapon_rifle.thumb.png",
+    "git_blob": "7c164bf650cf89ee4cf5b3a49aace8d6683a8408",
+    "sha256": "e5e36bbda276010ad1bfd2b97aaf1662e6a0975adc55ecfd1bb74e705b7a5f73",
+    "size": [
+      642,
+      384
+    ],
+    "bbox": [
+      0,
+      0,
+      642,
+      384
+    ],
+    "first_commit": [
+      "2cd53c6 fix(avatar): stabilize torso joins and melee geometry; add partial original-weapon preview"
+    ]
+  },
+  {
+    "path": "avatar-core/assets/weapons/pistol.png",
+    "git_blob": "f1c682696c167df916d91e5cf09ccd0258ba8e7e",
+    "sha256": "63ac9db1f6f3303ca6fe80f58c5393b1710c36cd723dac669ff1e4ddd00c0ee9",
+    "size": [
+      210,
+      150
+    ],
+    "bbox": [
+      20,
+      22,
+      196,
+      144
+    ],
+    "first_commit": [
+      "1331a91 Add isolated Avatar Core prototype and review lab for both base models"
+    ]
+  },
+  {
+    "path": "avatar-core/assets/weapons/reference-art/melee.png",
+    "git_blob": "5324ba96988dad14e27941a008ed416d345ae2c2",
+    "sha256": "458a1aeeb978c63d6c555f3a4b2c9b4a1bcbb000b1e2e3eace6b551c7695b9e6",
+    "size": [
+      941,
+      1672
+    ],
+    "bbox": [
+      202,
+      863,
+      323,
+      1031
+    ],
+    "first_commit": [
+      "766a71e Restore source contact surfaces and synchronize arm and finger mattes"
+    ]
+  },
+  {
+    "path": "avatar-core/assets/weapons/reference-art/pistol.png",
+    "git_blob": "22b21c83582cfd8de079c702083a463192b4d9ab",
+    "sha256": "703d947d17d9f7da282eedc3d6865011a036b73415bcc88e0bb9610a87d37f45",
+    "size": [
+      941,
+      1672
+    ],
+    "bbox": [
+      202,
+      180,
+      295,
+      381
+    ],
+    "first_commit": [
+      "766a71e Restore source contact surfaces and synchronize arm and finger mattes"
+    ]
+  },
+  {
+    "path": "avatar-core/assets/weapons/reference-art/rifle.png",
+    "git_blob": "117442a2fb8c7a336979a4216da093585d16c6b9",
+    "sha256": "0cb1188921c993d0d569980b05cf5322c03282f46919ad6e668e2eb3ec9e7d50",
+    "size": [
+      941,
+      1672
+    ],
+    "bbox": [
+      250,
+      454,
+      892,
+      838
+    ],
+    "first_commit": [
+      "2d28534 Add weapon-independent inspection and correct melee arm proportions and body ownership"
+    ]
+  },
+  {
+    "path": "avatar-core/assets/weapons/rifle.png",
+    "git_blob": "aae8ff9b3d1f6f12bb334a14fa44e69aed85d283",
+    "sha256": "1c92af029315b66c411f0e2673dd457550b6586d94e76ed938fcb7dd62c390d0",
+    "size": [
+      480,
+      160
+    ],
+    "bbox": [
+      12,
+      40,
+      467,
+      152
+    ],
+    "first_commit": [
+      "1331a91 Add isolated Avatar Core prototype and review lab for both base models"
+    ]
+  },
+  {
+    "path": "avatar-core/assets/weapons/reference-art/rifle.png",
+    "git_blob": "3c03469db1edf1df5c959f818af923aa41e3ad49",
+    "sha256": "1f41a849450ca0972bdb5d1f375928a64a01b9fcd4bf05847bf6d1e6269c93bf",
+    "size": [
+      941,
+      1672
+    ],
+    "bbox": [
+      250,
+      454,
+      892,
+      838
+    ],
+    "first_commit": [
+      "766a71e Restore source contact surfaces and synchronize arm and finger mattes"
+    ]
+  },
+  {
+    "path": "avatar-core/assets/weapons/reference-art/melee.png",
+    "git_blob": "4c413a5393eb17709dfc3bc61fdfdc6d9278d3b1",
+    "sha256": "17b8d468ea0de72091c76b4a3b31203b970144522fff4f143c3b72012d5efff3",
+    "size": [
+      941,
+      1672
+    ],
+    "bbox": [
+      209,
+      870,
+      323,
+      1031
+    ],
+    "first_commit": [
+      "78d3c44 Adapt modular male combat arms from authorized reference artwork"
+    ]
+  },
+  {
+    "path": "avatar-core/assets/weapons/reference-art/pistol.png",
+    "git_blob": "43756a6681ef8a8703aa3cc137bdaa7d736c9cbd",
+    "sha256": "1cec15bf6b2676e13ac9a63020581d96d8d2d1febbc43009ef7e2196e080ef8e",
+    "size": [
+      941,
+      1672
+    ],
+    "bbox": [
+      206,
+      180,
+      295,
+      376
+    ],
+    "first_commit": [
+      "e1f8e86 Restore complete reference arm contours and fix shoulder alpha joins"
+    ]
+  },
+  {
+    "path": "avatar-core/assets/weapons/reference-art/rifle.png",
+    "git_blob": "8e8440030a8ff3f6c6de16a27f35041eef0c33fd",
+    "sha256": "98a987e88e3f64efaf79e829c6962d4c32b38c2558a18ce74d8f9727b5ad6f7e",
+    "size": [
+      941,
+      1672
+    ],
+    "bbox": [
+      250,
+      454,
+      892,
+      838
+    ],
+    "first_commit": [
+      "e1f8e86 Restore complete reference arm contours and fix shoulder alpha joins"
+    ]
+  },
+  {
+    "path": "avatar-core/assets/weapons/reference-art/pistol.png",
+    "git_blob": "aecd0fdfec682fa7523f9fe76a5ef25b8497141c",
+    "sha256": "09afccff3865577f24da9b683df420d730aff5c7c3cc6e3ca9e44f9a651844a3",
+    "size": [
+      941,
+      1672
+    ],
+    "bbox": [
+      206,
+      180,
+      295,
+      376
+    ],
+    "first_commit": [
+      "78d3c44 Adapt modular male combat arms from authorized reference artwork"
+    ]
+  },
+  {
+    "path": "avatar-core/assets/weapons/reference-art/rifle.png",
+    "git_blob": "f399fe4406dd1970e13c84071de030238aecb488",
+    "sha256": "4658c742442ae2012dd05f99268ff4b65d6101e21cf1661279b26379f3893cf1",
+    "size": [
+      941,
+      1672
+    ],
+    "bbox": [
+      250,
+      454,
+      892,
+      838
+    ],
+    "first_commit": [
+      "78d3c44 Adapt modular male combat arms from authorized reference artwork"
+    ]
+  }
+]

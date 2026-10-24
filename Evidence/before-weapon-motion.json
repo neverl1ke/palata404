@@ -1,0 +1,68 @@
+[
+  {
+    "nominalSway": 2,
+    "gender": "male",
+    "pose": "rifle",
+    "actual_max_radius_px": 0.9453893529111459,
+    "actual_peak_to_peak_bbox_px": [
+      0.3315870133091039,
+      1.8827472766140545
+    ],
+    "interpretation": "actual opaque weapon hull measured, not just the UI sway parameter"
+  },
+  {
+    "nominalSway": 2,
+    "gender": "male",
+    "pose": "pistol",
+    "actual_max_radius_px": 0.24667060636528743,
+    "actual_peak_to_peak_bbox_px": [
+      0.13348849373664962,
+      0.4785424771878297
+    ],
+    "interpretation": "actual opaque weapon hull measured, not just the UI sway parameter"
+  },
+  {
+    "nominalSway": 2,
+    "gender": "male",
+    "pose": "melee",
+    "actual_max_radius_px": 7.898022175192759,
+    "actual_peak_to_peak_bbox_px": [
+      14.65065378312488,
+      5.905367122064035
+    ],
+    "interpretation": "actual opaque weapon hull measured, not just the UI sway parameter"
+  },
+  {
+    "nominalSway": 2,
+    "gender": "female",
+    "pose": "rifle",
+    "actual_max_radius_px": 3.2155493553843715e-13,
+    "actual_peak_to_peak_bbox_px": [
+      3.410605131648481e-13,
+      4.547473508864641e-13
+    ],
+    "interpretation": "actual opaque weapon hull measured, not just the UI sway parameter"
+  },
+  {
+    "nominalSway": 2,
+    "gender": "female",
+    "pose": "pistol",
+    "actual_max_radius_px": 2.5421149729252077e-13,
+    "actual_peak_to_peak_bbox_px": [
+      2.2737367544323206e-13,
+      4.547473508864641e-13
+    ],
+    "interpretation": "actual opaque weapon hull measured, not just the UI sway parameter"
+  },
+  {
+    "nominalSway": 2,
+    "gender": "female",
+    "pose": "melee",
+    "actual_max_radius_px": 7.537731899045255,
+    "actual_peak_to_peak_bbox_px": [
+      14.226134236587711,
+      4.988658478000161
+    ],
+    "interpretation": "actual opaque weapon hull measured, not just the UI sway parameter"
+  }
+]

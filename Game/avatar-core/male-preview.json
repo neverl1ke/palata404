@@ -1,0 +1,175 @@
+{
+  "breathingProfiles": {
+    "idle": {
+      "gripX": 0,
+      "handDegrees": 0,
+      "idleArm": 0.1,
+      "propSway": 0
+    },
+    "melee": {
+      "gripX": 0.2,
+      "handDegrees": 0.12,
+      "propSway": 0.18
+    },
+    "pistol": {
+      "gripX": 0.08,
+      "handDegrees": 0.03,
+      "propSway": 0.045
+    },
+    "rifle": {
+      "gripX": 0.18,
+      "handDegrees": 0.1,
+      "propSway": 0.16
+    }
+  },
+  "chestDetail": {
+    "center": [
+      474,
+      466
+    ],
+    "horizontal": 0.022,
+    "radius": [
+      190,
+      150
+    ],
+    "vertical": 0.014
+  },
+  "contactRepairs": [],
+  "meleeMotion": {
+    "cycleMs": 4000,
+    "foreDegrees": 0.025,
+    "handDegrees": 0.35,
+    "mode": "forward-wrist",
+    "upperDegrees": 0.008
+  },
+  "poseArtCompleteSurfaces": {
+    "melee-right": "assets/male/selective-merge/melee-right-complete.png",
+    "pistol-right": "assets/male/selective-merge/pistol-right-complete.png",
+    "rifle-left": "assets/male/selective-merge/rifle-left-complete.png",
+    "rifle-right": "assets/male/selective-merge/rifle-right-complete.png"
+  },
+  "poseArtSurfaces": {
+    "art-front-melee-right": "assets/male/selective-merge/melee-right-front.png",
+    "art-front-pistol-right": "assets/male/selective-merge/pistol-right-front.png",
+    "art-front-rifle-left": "assets/male/selective-merge/rifle-left-front.png",
+    "art-front-rifle-right": "assets/male/selective-merge/rifle-right-front.png",
+    "art-melee-right": "assets/male/selective-merge/melee-right-arm.png",
+    "art-pistol-right": "assets/male/selective-merge/pistol-right-arm.png",
+    "art-rifle-left": "assets/male/selective-merge/rifle-left-arm.png",
+    "art-rifle-right": "assets/male/selective-merge/rifle-right-arm.png"
+  },
+  "poseCalibration": {
+    "melee": {
+      "right": [
+        241,
+        920
+      ]
+    }
+  },
+  "poseMeshExtensions": {},
+  "runtimeSource": "assets/male/foundation-cleanup/base-runtime.png",
+  "runtimeSurfaces": {
+    "head": "assets/male/foundation-cleanup/head-runtime.png",
+    "leftArmSkin": "assets/male/requested-corrections/leftArmSkin.png",
+    "leftFore": "assets/male/foundation-cleanup/leftFore-runtime.png",
+    "leftHand": "assets/male/foundation-cleanup/leftHand-runtime.png",
+    "leftHandSkin": "assets/male/foundation-cleanup/leftHandSkin-runtime.png",
+    "leftUpper": "assets/male/requested-corrections/leftUpper.png",
+    "lower": "assets/male/foundation-cleanup/lower-runtime.png",
+    "rightArmSkin": "assets/male/requested-corrections/rightArmSkin.png",
+    "rightFore": "assets/male/foundation-cleanup/rightFore-runtime.png",
+    "rightHand": "assets/male/foundation-cleanup/rightHand-runtime.png",
+    "rightHandSkin": "assets/male/foundation-cleanup/rightHandSkin-runtime.png",
+    "rightUpper": "assets/male/requested-corrections/rightUpper.png",
+    "torso": "assets/male/requested-corrections/torso.png"
+  },
+  "surfaceOverrides": {
+    "melee-right": "assets/male/weapon-pass/melee-wrist-edge.png"
+  },
+  "transitionPolicy": "opaque-cut",
+  "weapons": {
+    "melee": {
+      "angle": 0,
+      "art": "complete existing material-only project prop, independently registered; no donor skin",
+      "class": "melee",
+      "id": "test-melee",
+      "image": "assets/male/foundation-cleanup/melee-weapon.png",
+      "offset": [
+        0,
+        0
+      ],
+      "order": 30,
+      "pose": "melee",
+      "primary": [
+        227,
+        880
+      ],
+      "scale": 1,
+      "size": [
+        941,
+        1672
+      ],
+      "support": null,
+      "test_resource": true
+    },
+    "pistol": {
+      "angle": 0,
+      "art": "complete existing material-only project prop, independently registered; no donor skin",
+      "class": "pistol",
+      "id": "test-pistol",
+      "image": "assets/male/foundation-cleanup/pistol-weapon.png",
+      "offset": [
+        0,
+        0
+      ],
+      "order": 30,
+      "pose": "pistol",
+      "primary": [
+        230,
+        351
+      ],
+      "scale": 1,
+      "size": [
+        941,
+        1672
+      ],
+      "support": null,
+      "test_resource": true
+    },
+    "rifle": {
+      "angle": 0,
+      "art": "complete existing material-only project prop, independently registered; no donor skin",
+      "class": "rifle",
+      "id": "test-rifle",
+      "image": "assets/male/foundation-cleanup/rifle-weapon.png",
+      "offset": [
+        0,
+        0
+      ],
+      "order": 30,
+      "pose": "rifle",
+      "primary": [
+        390,
+        644
+      ],
+      "scale": 1,
+      "size": [
+        941,
+        1672
+      ],
+      "stock": [
+        249.2293164724358,
+        592.7296057525415
+      ],
+      "support": [
+        675,
+        708
+      ],
+      "test_resource": true,
+      "trigger": [
+        467.2181429041817,
+        646.7018439249258
+      ]
+    }
+  }
+}

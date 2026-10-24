@@ -1,0 +1,249 @@
+{
+  "approved_commit": "38f5ba4018284a80ba4da2df77ba4e1d5e5ef59f",
+  "files": [
+    {
+      "kind": "young",
+      "gender": "male",
+      "source_sha256": "afd0bddba7f809a53b8fd266f246147d87f883be473fd34ab58296db00661f58",
+      "approved_sha256": "0ac013f5367b608b82d15975baa84f9e6070bf2dfd154d790d62a2c185c7b470",
+      "output": "assets/wardrobe/faces/male_young_head.png",
+      "sha256": "02729493aaecad136538e03e4c56eddc63bcb1ecb0064ffbe3ed83bb4a663fdc",
+      "mask": "assets/wardrobe/faces/masks/male_young_body.png",
+      "mask_sha256": "73bad65e54573c40589af4e1e9fa5dcd2b5e82a70829ef61f8994cbd160eab24",
+      "protected_y": 221,
+      "protected_sha256": "3fa868569627186d37048b38f3f81abaadcab268d8648314aa379d1ec9f2b903",
+      "detail_box": [
+        440,
+        85,
+        510,
+        205
+      ],
+      "detail_sha256": "9e7f2e651140d8b9336050d664d9bcee9599e01a09b764058ca02af62a5039be",
+      "profile": {
+        "center": 474,
+        "radius": 70,
+        "recovery_y": 224,
+        "start_y": 258,
+        "end_y": 282,
+        "start_arc": 26,
+        "end_arc": 22,
+        "overlap": 10
+      },
+      "bbox": [
+        388,
+        32,
+        559,
+        292
+      ],
+      "pre_edge_audit_sha256": "fb485d56ac9480ea96aed1c3d4820613269c6a195e8f3af99ef4e884005cfacf",
+      "integrated_alpha_sha256": "f7fb7764f5fad2c64136d314b59b6cce3f7cbc5b2f08518d512186aa862a8efb",
+      "pre_edge_audit_protected_sha256": "1b95203d86aa0f7fc630c2669daa31daa9b8537831f88dd87dbe72a623bb65a5",
+      "pre_targeted_fix_sha256": "cfcefadaed898cd60fa25c1aba161294a321ce3dcfa013f2ac7331acc9a22d1b",
+      "pre_targeted_fix_protected_sha256": "4d2d04a2c1c037c822e1c6c9444c227106ba6011fc62b2bddef579c45c0e2ec8"
+    },
+    {
+      "kind": "young",
+      "gender": "female",
+      "source_sha256": "0130175d62a477e0268dc8f5eae7758c33750237cc310ba9232a204baa835b0e",
+      "approved_sha256": "726f26118334ff3053c9b172f1cfed7dd2ce538a55822377fc79be2522af55a5",
+      "output": "assets/wardrobe/faces/female_young_head.png",
+      "sha256": "deba67794b0f654bd33c8bb4ff8c3de53438e2ac846fef31891f3d6968855323",
+      "mask": "assets/wardrobe/faces/masks/female_young_body.png",
+      "mask_sha256": "3f8e960c4b689f0fb6613b7bda0ca9d6e3247eb1c1cf236df5722cd032a1eca2",
+      "protected_y": 221,
+      "protected_sha256": "e0373ce284129b84b6026d598fd057fc7cec6bd5eb0d892a24941444b7502d0d",
+      "detail_box": [
+        440,
+        85,
+        510,
+        205
+      ],
+      "detail_sha256": "6dd3c1796c2138a35ae7c19eb0ddcd26900a67746f778495777a159ba5caded3",
+      "profile": {
+        "center": 473,
+        "radius": 65,
+        "recovery_y": 225,
+        "start_y": 248,
+        "end_y": 274,
+        "start_arc": 25,
+        "end_arc": 18,
+        "overlap": 8
+      },
+      "bbox": [
+        388,
+        28,
+        560,
+        282
+      ],
+      "neck_rebase_reference_commit": "41bf1d15d92d09cec4fae9ecbe39fde028a78c3d",
+      "pre_edge_audit_sha256": "8f652b417017e6f35665a73b9d25868e8c5739d38be2e85eaf3e27f9ffe5e7de",
+      "integrated_alpha_sha256": "13c8e84223583abc08e43fda33450689fe4df8aa44e0a1b049ad0445df6ab39f",
+      "pre_edge_audit_protected_sha256": "644066008c6a4d50451507c1409487cc0acff51fbec7f7ac7046ab6c751b32dd",
+      "pre_targeted_fix_sha256": "b69fc6e7ea936c769cdf3fdf06f1da0f822313fde7eba1be4c44c7cb785ac76d",
+      "pre_targeted_fix_protected_sha256": "ae7eb041f77115a550172e263c452b04a1e4f291b3a9208e7ee1dbebb760795c"
+    },
+    {
+      "kind": "exhausted",
+      "gender": "male",
+      "source_sha256": "6d1aeda458c9b84818859d5201092549c7554f9a7bd0c9acdc11e4b7003c0863",
+      "approved_sha256": "fc2f8d03109afa2a112403a4e05dd1232a272eaf3e83bf3bf4abde9349088250",
+      "output": "assets/wardrobe/faces/male_exhausted_head.png",
+      "sha256": "5683706e6b232e08c45f8c290a642ac2791890141b25d4f7d1571c5687307f34",
+      "mask": "assets/wardrobe/faces/masks/male_exhausted_body.png",
+      "mask_sha256": "95e48d488e32558ea02a9ad5b3f60dfff83e98029bfa3ce6c420c23857de482e",
+      "protected_y": 221,
+      "protected_sha256": "8714f97127ef6f172e8016f39c474746cce782c5f16d2dd108f8e1b6dd9e0cd2",
+      "detail_box": [
+        440,
+        85,
+        510,
+        205
+      ],
+      "detail_sha256": "3adc9b84f7af2b0cdab1c3304b29ea8c8a0dc0b6638028d96e11b126567cbe3a",
+      "profile": {
+        "center": 474,
+        "radius": 69,
+        "recovery_y": 223,
+        "start_y": 261,
+        "end_y": 287,
+        "start_arc": 27,
+        "end_arc": 22,
+        "overlap": 9
+      },
+      "bbox": [
+        384,
+        32,
+        562,
+        296
+      ],
+      "pre_edge_audit_sha256": "fa13f69a7c23cdb4b025af0d397eaab172706b4ff647071616e8e294e98285ad",
+      "integrated_alpha_sha256": "7c44609805ffe07c6b5d2cd523fe5c05171b26fea6e55b4606a4ccc4706db951",
+      "pre_edge_audit_protected_sha256": "41ff133c05497905829680d149c56bbd6a3e5ed993aeaa2391a64c2cb454f227",
+      "pre_targeted_fix_sha256": "82576dc07da0d86d6ec6b95d29696f108c6b2b2e2e371337553a8ab75577fabe",
+      "pre_targeted_fix_protected_sha256": "3cf86a28d066161dca953db2f5c58706e9d3587ecad554ac8946e10e4e5bdfe4"
+    },
+    {
+      "kind": "exhausted",
+      "gender": "female",
+      "source_sha256": "d0e3da9f1645ea8f272fcf4f2c1266d20625b73180a66f3f60c435b615927ab0",
+      "approved_sha256": "aaa398750264ebd494247f8319927f2a0c8e8ff8edba3c2b7eef5d74e55a8896",
+      "output": "assets/wardrobe/faces/female_exhausted_head.png",
+      "sha256": "76ee4e8f2ee9af1947f1014e999f0e507fd3afb49153bc7efcef3807266bb6d2",
+      "mask": "assets/wardrobe/faces/masks/female_exhausted_body.png",
+      "mask_sha256": "034b704365f6f10deebc3678efcc32538a134080942add7ce9c7b2a4e8cb6f6b",
+      "protected_y": 221,
+      "protected_sha256": "5d5285f707f926ea5c06c27ba3633acae96b48dfdc4fd1e53193cf58060305c1",
+      "detail_box": [
+        440,
+        85,
+        510,
+        205
+      ],
+      "detail_sha256": "bb79d2f2dc102baf55c25295512fc2d613b7e31b3eb4bbe1ca9ebee3aeebe243",
+      "profile": {
+        "center": 473,
+        "radius": 62,
+        "recovery_y": 224,
+        "start_y": 240,
+        "end_y": 272,
+        "start_arc": 13,
+        "end_arc": 14,
+        "overlap": 9
+      },
+      "bbox": [
+        388,
+        27,
+        558,
+        281
+      ],
+      "neck_rebase_reference_commit": "41bf1d15d92d09cec4fae9ecbe39fde028a78c3d",
+      "pre_edge_audit_sha256": "00f05b07b0888a69e70cb1536f26bf0bb849711e68c1dc2b546dc650310d220e",
+      "integrated_alpha_sha256": "6a3692f5375602da96696d57ba512a34b18522d6a090789724686a429b011720",
+      "pre_edge_audit_protected_sha256": "31bb5e252da218558242ac96541b9f9471609b9d616b37ae1c7649967aac4d5c",
+      "pre_targeted_fix_sha256": "9135238f1a383dc6b516b160fa4bc4e2dbcc8b765ad1acae0c6304f2514b3a20",
+      "pre_targeted_fix_protected_sha256": "113ab3b4e075eceef9415378f31659b5e24d308d49ea23023229d6732e6ed404"
+    },
+    {
+      "kind": "elder",
+      "gender": "male",
+      "source_sha256": "00b0ebdce23aa099704bc18c1e31f751fccb5f51d5931a316d669c86cbeb3b70",
+      "approved_sha256": "95eed0578b0f36c7765d69f6c839443d0bfb7656e77b3ac2c829c5a1a982ef97",
+      "output": "assets/wardrobe/faces/male_elder_head.png",
+      "sha256": "f6e3003cce525198d3a5ff4539d20351042e378862939a4429fba251dc2edd1c",
+      "mask": "assets/wardrobe/faces/masks/male_elder_body.png",
+      "mask_sha256": "191ad94a7ab8e8b00f5a48de854e7dcf5f9adfc54d4e6aa4b81d6963fca0dcd1",
+      "protected_y": 221,
+      "protected_sha256": "b9693a7bb15146d9c10cb1597eb1e8d0421b00a37f70afd6abf8502ba14402cb",
+      "detail_box": [
+        440,
+        85,
+        510,
+        205
+      ],
+      "detail_sha256": "2e4d70c2503be38cbf6156814e6271820d1934150df57f298ded2abc40735fa3",
+      "profile": {
+        "center": 474,
+        "radius": 71,
+        "recovery_y": 224,
+        "start_y": 257,
+        "end_y": 285,
+        "start_arc": 23,
+        "end_arc": 21,
+        "overlap": 8
+      },
+      "bbox": [
+        388,
+        32,
+        559,
+        293
+      ],
+      "pre_edge_audit_sha256": "ac9ec1cabdd02c1b5f5e67b47d7be4dc32988a0bfc5ff1ac29a6ec6e5ed6c50b",
+      "integrated_alpha_sha256": "15c402fe621797bba4b537e4ceb06692b58be2546f8fb1c93890ff3f839e41aa",
+      "pre_edge_audit_protected_sha256": "9c9f08692d1be01419fe3636b4bd55f4eb4125a7b7f850f3e864fd56da7838c2",
+      "pre_targeted_fix_sha256": "c870f32335781ebae93558eb8ed27dd10435d611a3b6d6542e7a5996eebd7c65",
+      "pre_targeted_fix_protected_sha256": "9ecfa0a0ca3de61e14317045cd902184868cd72e93efdff840ab12a07ca94d4c"
+    },
+    {
+      "kind": "elder",
+      "gender": "female",
+      "source_sha256": "5bd49e257ef0a620cd9b95fffc5d5751d5573958b614ca75f0ef9a0fdebee815",
+      "approved_sha256": "3cc105a9aec83c4af78e55064554828340c0c786d1ece2f1047b437718536f0f",
+      "output": "assets/wardrobe/faces/female_elder_head.png",
+      "sha256": "53cd99eba4fdd054b21b8cc4a472401801736f2032fea76c6c5a25ef29379469",
+      "mask": "assets/wardrobe/faces/masks/female_elder_body.png",
+      "mask_sha256": "a9f8e7b6c6f394523838c2c65aa21f03de408ae171fc7e4ee607cf194b848e3a",
+      "protected_y": 221,
+      "protected_sha256": "4dd5b8cd5070488fbb0e55711bf6fec10b8e1f092d37c26e097ad9cada7d33d7",
+      "detail_box": [
+        440,
+        85,
+        510,
+        205
+      ],
+      "detail_sha256": "3209e5ffb54160d2b66d363225f862becde77c10106cc83cd04bace10e727b94",
+      "profile": {
+        "center": 474,
+        "radius": 64,
+        "recovery_y": 226,
+        "start_y": 245,
+        "end_y": 276,
+        "start_arc": 20,
+        "end_arc": 18,
+        "overlap": 7
+      },
+      "bbox": [
+        392,
+        27,
+        557,
+        283
+      ],
+      "neck_rebase_reference_commit": "41bf1d15d92d09cec4fae9ecbe39fde028a78c3d",
+      "pre_edge_audit_sha256": "20d53aaf9d8b57d808b530b8be431ad12ca53ba2c56f13acd7f171fb973de79b",
+      "integrated_alpha_sha256": "4d9fb01140dc6468b9539a08903882a51d9e039b561c30d6cb3944b74243ff5c",
+      "pre_edge_audit_protected_sha256": "34a474c7cd42d2616c024b0aac472f228ce091ebbfa35d994d77baee8c75242c",
+      "pre_targeted_fix_sha256": "90f75a47f477b8be371f5ba8562d3c8e05125b3ba5506301e93599a1f4af9625",
+      "pre_targeted_fix_protected_sha256": "d18cf0aa663a75ef170d71cf5e59b5b5691c7a4b0f1cc60dd32d3527c2902209"
+    }
+  ],
+  "edge_audit_reference": "dbbcddff2f79a3393271ac6afc4d261221d9b77e"
+}

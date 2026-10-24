@@ -1,0 +1,39 @@
+test_actual_opaque_weapon_motion_is_at_most_two_pixels (tests.test_selective_merge.SelectiveBrowserTests.test_actual_opaque_weapon_motion_is_at_most_two_pixels) ... ok
+test_lab_pose_buttons_choose_original_items_by_default (tests.test_selective_merge.SelectiveBrowserTests.test_lab_pose_buttons_choose_original_items_by_default) ... ok
+test_original_items_full_cycles_cuts_and_size_primary_pivot (tests.test_selective_merge.SelectiveBrowserTests.test_original_items_full_cycles_cuts_and_size_primary_pivot) ... ok
+test_rgb_merge_never_changes_rendered_alpha_or_neutral_pose (tests.test_selective_merge.SelectiveBrowserTests.test_rgb_merge_never_changes_rendered_alpha_or_neutral_pose) ... ok
+test_derived_alpha_and_hand_texels_are_exact_for_every_layer (tests.test_selective_merge.SelectiveSourceTests.test_derived_alpha_and_hand_texels_are_exact_for_every_layer) ... ok
+test_engine_change_only_wires_the_existing_motion_profile (tests.test_selective_merge.SelectiveSourceTests.test_engine_change_only_wires_the_existing_motion_profile) ... ok
+test_existing_pngs_rigs_engine_catalog_and_saves_are_not_modified (tests.test_selective_merge.SelectiveSourceTests.test_existing_pngs_rigs_engine_catalog_and_saves_are_not_modified) ... ok
+test_historical_runtime_is_identical_at_184e392_and_766a71e (tests.test_selective_merge.SelectiveSourceTests.test_historical_runtime_is_identical_at_184e392_and_766a71e) ... ok
+test_lab_before_panel_uses_the_named_historical_rerender (tests.test_selective_merge.SelectiveSourceTests.test_lab_before_panel_uses_the_named_historical_rerender) ... /workspace/palata404-avatar-core/tests/test_selective_merge.py:22: ResourceWarning: unclosed file <_io.BufferedReader name='/workspace/palata404-avatar-core/review/avatar-selective-merge/Gallery/184e392-male-idle-0-False.png'>
+  f=D/'Gallery'/f'184e392-{g}-{p}-0-{p!="idle"}.png';self.assertEqual(Image.open(f).size,(941,1672))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/workspace/palata404-avatar-core/tests/test_selective_merge.py:22: ResourceWarning: unclosed file <_io.BufferedReader name='/workspace/palata404-avatar-core/review/avatar-selective-merge/Gallery/184e392-male-melee-0-True.png'>
+  f=D/'Gallery'/f'184e392-{g}-{p}-0-{p!="idle"}.png';self.assertEqual(Image.open(f).size,(941,1672))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/workspace/palata404-avatar-core/tests/test_selective_merge.py:22: ResourceWarning: unclosed file <_io.BufferedReader name='/workspace/palata404-avatar-core/review/avatar-selective-merge/Gallery/184e392-male-pistol-0-True.png'>
+  f=D/'Gallery'/f'184e392-{g}-{p}-0-{p!="idle"}.png';self.assertEqual(Image.open(f).size,(941,1672))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/workspace/palata404-avatar-core/tests/test_selective_merge.py:22: ResourceWarning: unclosed file <_io.BufferedReader name='/workspace/palata404-avatar-core/review/avatar-selective-merge/Gallery/184e392-male-rifle-0-True.png'>
+  f=D/'Gallery'/f'184e392-{g}-{p}-0-{p!="idle"}.png';self.assertEqual(Image.open(f).size,(941,1672))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/workspace/palata404-avatar-core/tests/test_selective_merge.py:22: ResourceWarning: unclosed file <_io.BufferedReader name='/workspace/palata404-avatar-core/review/avatar-selective-merge/Gallery/184e392-female-idle-0-False.png'>
+  f=D/'Gallery'/f'184e392-{g}-{p}-0-{p!="idle"}.png';self.assertEqual(Image.open(f).size,(941,1672))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/workspace/palata404-avatar-core/tests/test_selective_merge.py:22: ResourceWarning: unclosed file <_io.BufferedReader name='/workspace/palata404-avatar-core/review/avatar-selective-merge/Gallery/184e392-female-melee-0-True.png'>
+  f=D/'Gallery'/f'184e392-{g}-{p}-0-{p!="idle"}.png';self.assertEqual(Image.open(f).size,(941,1672))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/workspace/palata404-avatar-core/tests/test_selective_merge.py:22: ResourceWarning: unclosed file <_io.BufferedReader name='/workspace/palata404-avatar-core/review/avatar-selective-merge/Gallery/184e392-female-pistol-0-True.png'>
+  f=D/'Gallery'/f'184e392-{g}-{p}-0-{p!="idle"}.png';self.assertEqual(Image.open(f).size,(941,1672))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/workspace/palata404-avatar-core/tests/test_selective_merge.py:22: ResourceWarning: unclosed file <_io.BufferedReader name='/workspace/palata404-avatar-core/review/avatar-selective-merge/Gallery/184e392-female-rifle-0-True.png'>
+  f=D/'Gallery'/f'184e392-{g}-{p}-0-{p!="idle"}.png';self.assertEqual(Image.open(f).size,(941,1672))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_only_surface_paths_change_in_preview_configs (tests.test_selective_merge.SelectiveSourceTests.test_only_surface_paths_change_in_preview_configs) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 101.812s
+
+OK
