@@ -1,0 +1,79 @@
+[
+  {
+    "id": "K01",
+    "problem": "Сміття альфи та ненавмисна прозорість повного ножа",
+    "change": "16514 слабких зовнішніх пікселів видалено; внутрішню непрозорість відновлено. RGB, початкове полотно, вістря, гарда й реальні отвори збережені.",
+    "evidence": "Evidence/master-cleanup.json; knife-master-white/dark/green.png",
+    "status": "FIXED"
+  },
+  {
+    "id": "K02",
+    "problem": "Обрізаний старий ніж та різний ресурс у позах",
+    "change": "Один gear-knife, master1774×887, scale0.11 для обох статей. Male anchor520,454; female560,454; angle60°. Catalog і прямий setPose використовують той самий master.",
+    "evidence": "avatar-core/equipment-weapons.json; male/female-preview.json",
+    "status": "FIXED"
+  },
+  {
+    "id": "K03",
+    "problem": "Рукоятка має сидіти всередині хвату",
+    "change": "Повний матеріал за пальцями, foreground тільки поверх предмета. Вістря не обрізане. Видимий контакт перевірено крупними планами, але остаточна природність пальців очікує художнього приймання.",
+    "evidence": "before/result-*-melee-0-True.png; grip-cycle.webp",
+    "status": "PARTIAL"
+  },
+  {
+    "id": "M01",
+    "problem": "Контрастна, строката чоловіча melee-рука",
+    "change": "Зареєстрований мальований RGB використано всередині upper/fore, з відступом від краю, кореня й зап’ястя. Інший generated silhouette відхилено. Контраст зменшено, але старі вени кисті й частина передпліччя лишаються.",
+    "evidence": "Sources/male-arm-edit.png; Evidence/arm-export.json",
+    "status": "PARTIAL"
+  },
+  {
+    "id": "F01",
+    "problem": "Надто тонка жіноча рука та різка світлотінь",
+    "change": "Контекстну художню правку перенесено назад через справжній corrective mesh, виключно в руку. Зовнішній об’єм upper збільшено максимум на3 native px із нульовою правкою біля суглобів. Різкі білі вени пом’якшено малюнком, без глобального blur. Повну анатомічну переробку не заявлено.",
+    "evidence": "Sources/female-context-arm-edit.png; Evidence/female-context-registration.json; arm-export.json",
+    "status": "PARTIAL"
+  },
+  {
+    "id": "F02",
+    "problem": "Відчуття плаского зрізу грудей біля доданої руки",
+    "change": "Затверджений torso/bra не перемальовано. Окремий аналіз не виявив закритих шкірою пікселів чорного бюстгальтера в ROI300..410/365..535; це не доводить художню цілісність. Округлість/пахвовий перехід не оголошено виправленими.",
+    "evidence": "female-breast-before.png; female-bra-overlap-audit.png; native shoulder/chest closeups",
+    "status": "OPEN"
+  },
+  {
+    "id": "F03",
+    "problem": "Плечовий стик жіночої руки",
+    "change": "Корінь та його анатомічна посадка збережені; локальні світлотінь і зовнішня повнота покращені. Зернистість старого контуру й стилістичний перехід ще потребують ручного огляду.",
+    "evidence": "close-female-shoulder.webp; stress-shoulders.png",
+    "status": "PARTIAL"
+  },
+  {
+    "id": "A01",
+    "problem": "Погойдування ножа без компенсаційного руху ліктя",
+    "change": "Чинний рух збережено. Новий master їде за hand matrix; два цикли штатно й stress, замикання та hull виміряні. Траєкторія ліктя точно збігається з попередньою.",
+    "evidence": "Evidence/two-cycle-motion.json; tests/test_knife_both_avatars.py",
+    "status": "FIXED"
+  },
+  {
+    "id": "A02",
+    "problem": "Прозорі сліди навколо похідних рук",
+    "change": "Після огляду прибрано лише цілі відокремлені компоненти з max alpha≤4. Приєднаний antialiasing та деталі пальців не обрізалися.",
+    "evidence": "Evidence/arm-components.json; final-arm-components.json; png-quality.json",
+    "status": "FIXED"
+  },
+  {
+    "id": "S01",
+    "problem": "Регресії idle/pistol/rifle, оригіналів і збережень",
+    "change": "50 синхронних native кадрів інших поз збігаються з незалежно зафіксованими RGBA-хешами ДО. Початкові PNG, риги, engine, формати збережень і правила гри byte-exact. Реальний index з ножем пройшов reload обох статей й окремих комплектів.",
+    "evidence": "Evidence/before-render-hashes.json; knife-tests.log; actual-game-review.json",
+    "status": "FIXED"
+  },
+  {
+    "id": "T01",
+    "problem": "Чотири старі контрактні перевірки не приймають нове джерело",
+    "change": "Не послаблені й не приховані: дві вимагають PARTIAL для всіх предметів; дві заморожують index/wardrobe попри нову cache-версію та вузький підпис повного ножа. Нові незалежні тести окремо перевіряють джерело/альфу/незмінені області.",
+    "evidence": "Evidence/existing-regression.log",
+    "status": "OPEN"
+  }
+]
