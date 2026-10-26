@@ -1,0 +1,15 @@
+{
+  "download_url": "https://codeload.github.com/neverl1ke/palata404/zip/refs/tags/rifle-seams-review-20261026",
+  "download_SHA256": "1274fa910c4d0a549e7f191ebc595a8e91bafdcb3f201a769899e3b4ffd904dc",
+  "download_bytes": 153055261,
+  "original_local_archive_SHA256": "345c8418667e0cd29aeb3804777547fcc86965993fbe40fe65fc62a91a41fafb",
+  "different_GitHub_ZIP_wrapper_same_exact_payload": true,
+  "all_payload_files_exact": 256,
+  "all_CRC_verified": true,
+  "pdf_url": "https://raw.githubusercontent.com/neverl1ke/palata404/rifle-seams-review-20261026/Payload/Review.pdf",
+  "PDF_SHA256": "7b44254be2b5af54fad35cb63d62baf8cfcde8c76a0fbd20bdd5bae834514027",
+  "PDF_bytes": 1713603,
+  "review_commit": "0d2e7405321101780dc7f2dcd2832bc533cc30e5",
+  "main_before_and_after": "f70b7e5be63f6b85d895c6d5b259adbc30577b86",
+  "live_deployed": false
+}
