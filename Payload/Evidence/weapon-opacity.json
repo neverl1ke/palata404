@@ -1,0 +1,10 @@
+{
+  "master_sha256": "891939f70b385def634c127f1999b22db92f55a3a6a80a99369fd01623b3104f",
+  "runtime_sha256": "dddc69d569aedc546b25c35f237206b5fddc4f12cef57ef4e4bacce1c5f83dd3",
+  "RGB_exact": true,
+  "all_alpha_below128_exact": true,
+  "all_boundary_collar_exact": true,
+  "changed_alpha_pixels": 287562,
+  "confirmed_interior_pixels": 287562,
+  "method": "distance>=2.5 inside alpha>=128; preserve original holes and 2px contour collar"
+}

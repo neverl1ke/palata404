@@ -1,0 +1,8 @@
+{
+  "failed_attempts": [
+    "PDF JavaScript canvas conversion from file URLs was tainted; replaced with Python-only JPEG print embedding, no browser security flags changed",
+    "One PDF run read images during report generation and failed completeness assertion; final regeneration was sequential and all image payloads decoded successfully",
+    "Automatic Git temporary repack filled disk; no indexed Git pack or original artifact deleted; unindexed abandoned tmp_pack removed; subsequent commits disable auto-maintenance per command"
+  ],
+  "source_or_art_success_not_inferred_from_these_checks": true
+}

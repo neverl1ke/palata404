@@ -1,0 +1,134 @@
+[
+  {
+    "gender": "male",
+    "side": "right",
+    "source_sha256": "d7efda6f0f69623646c718fee1e78ada4d1c311a29a7fc9588eab4afbfcb876b",
+    "registration": {
+      "matrix": [
+        [
+          0.9998062865730936,
+          2.3372261523177526e-05,
+          0.20921426986582406
+        ],
+        [
+          -2.3372261523177526e-05,
+          0.9998062865730936,
+          0.4410503672295032
+        ]
+      ],
+      "uniform_scale": 0.9998062868462778,
+      "inliers": 134,
+      "matches": 138
+    },
+    "torso_LAB_match": [
+      -1.0,
+      -1.0,
+      0.0
+    ],
+    "role": "local rifle arm edit only",
+    "new_mesh_triangles": 0,
+    "changed_pixels": 13908,
+    "new_opaque_pixels": 386,
+    "detached_extraction_pixels_removed": 28,
+    "originals_changed": false
+  },
+  {
+    "gender": "male",
+    "side": "left",
+    "source_sha256": "d7efda6f0f69623646c718fee1e78ada4d1c311a29a7fc9588eab4afbfcb876b",
+    "registration": {
+      "matrix": [
+        [
+          0.9998062865730936,
+          2.3372261523177526e-05,
+          0.20921426986582406
+        ],
+        [
+          -2.3372261523177526e-05,
+          0.9998062865730936,
+          0.4410503672295032
+        ]
+      ],
+      "uniform_scale": 0.9998062868462778,
+      "inliers": 134,
+      "matches": 138
+    },
+    "torso_LAB_match": [
+      -1.0,
+      -1.0,
+      0.0
+    ],
+    "role": "local rifle arm edit only",
+    "new_mesh_triangles": 0,
+    "changed_pixels": 12106,
+    "new_opaque_pixels": 230,
+    "detached_extraction_pixels_removed": 15,
+    "originals_changed": false
+  },
+  {
+    "gender": "female",
+    "side": "right",
+    "source_sha256": "1c34fb4014dffcad735d2253ae7594f91deecd375e404571ebf094ed6e724ee7",
+    "registration": {
+      "matrix": [
+        [
+          1.0000792929386793,
+          0.00031272130136691923,
+          -0.13858597329014866
+        ],
+        [
+          -0.00031272130136691923,
+          1.0000792929386793,
+          0.47109109612215877
+        ]
+      ],
+      "uniform_scale": 1.0000793418321072,
+      "inliers": 90,
+      "matches": 121
+    },
+    "torso_LAB_match": [
+      -4.0,
+      -2.0,
+      0.0
+    ],
+    "role": "local rifle arm edit only",
+    "new_mesh_triangles": 108,
+    "changed_pixels": 44253,
+    "new_opaque_pixels": 7148,
+    "detached_extraction_pixels_removed": 64,
+    "originals_changed": false
+  },
+  {
+    "gender": "female",
+    "side": "left",
+    "source_sha256": "1c34fb4014dffcad735d2253ae7594f91deecd375e404571ebf094ed6e724ee7",
+    "registration": {
+      "matrix": [
+        [
+          1.0000792929386793,
+          0.00031272130136691923,
+          -0.13858597329014866
+        ],
+        [
+          -0.00031272130136691923,
+          1.0000792929386793,
+          0.47109109612215877
+        ]
+      ],
+      "uniform_scale": 1.0000793418321072,
+      "inliers": 90,
+      "matches": 121
+    },
+    "torso_LAB_match": [
+      -4.0,
+      -2.0,
+      0.0
+    ],
+    "role": "local rifle arm edit only",
+    "new_mesh_triangles": 68,
+    "changed_pixels": 31734,
+    "new_opaque_pixels": 4982,
+    "detached_extraction_pixels_removed": 142,
+    "originals_changed": false
+  }
+]

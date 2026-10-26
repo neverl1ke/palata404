@@ -1,0 +1,192 @@
+
+FILE tests/avatar-core.test.mjs
+✔ male rest skeleton retains shoulder/elbow/wrist/grip source registration (1.228633ms)
+✔ male four poses use fixed bone lengths, independent hand rotations and exact primary attachment (0.739876ms)
+✔ male support grip stays on the rifle through a full breathing cycle (1.135286ms)
+✔ male skin weights are bounded and final hand texture shares weapon attachment (2.808182ms)
+✔ female rest skeleton retains shoulder/elbow/wrist/grip source registration (0.155474ms)
+✔ female four poses use fixed bone lengths, independent hand rotations and exact primary attachment (0.142819ms)
+✔ female support grip stays on the rifle through a full breathing cycle (0.974577ms)
+✔ female skin weights are bounded and final hand texture shares weapon attachment (2.116113ms)
+✔ female and male coordinates are independently registered, not a reused rig (9.798946ms)
+✔ angle interpolation follows shortest rotation and endpoint continuity (0.288254ms)
+✔ unreachable/degenerate targets are finite and explicitly marked (6.003326ms)
+✔ weapon controller supports none and rejects unknown classes (5.11278ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 12
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 45.741823
+
+FILE tests/game-logic.test.cjs
+Некоректні параметри покупки: hp_10 -5 silver
+Бос не знайдений у bossesDatabase: constructor
+Бос не знайдений у bossesDatabase: toString
+Бос не знайдений у bossesDatabase: __proto__
+Бос не знайдений у bossesDatabase: missing
+✔ malformed saves and unavailable storage allow startup, exercise, energy recovery (16.070344ms)
+✔ legacy equipment and permanent training gains survive swapping and reloading (12.976791ms)
+✔ all five shop products can be purchased, invalid price does not spend funds (7.225019ms)
+✔ legacy gym rounds populate dossier and preserve permanent damage (8.931599ms)
+✔ medkits have consistent effects in battle and no charge at full health (8.420768ms)
+✔ armor reduces counterattacks; cooldown prevents duplicate taps (4.870421ms)
+✔ delayed attacks cannot leak into a new fight (5.719097ms)
+✔ battle expiry uses elapsed time and does not reward after expiry (4.40797ms)
+✔ victory is credited once and persists (8.850375ms)
+✔ rubble unlock, room, gym and live dossier remain consistent after reload (11.235529ms)
+✔ text escape and repeated toast remain safe and visible (3.485048ms)
+✔ icon images accept only registered assets and preserve legacy emoji saves (5.770329ms)
+✔ item names and notifications stay escaped next to decorative images (3.569805ms)
+✔ both bosses produce their own registry identity and one MVP-adjusted reward (19.933544ms)
+✔ a future configured boss needs no result-screen logic and MVP adds exactly five percent (25.622078ms)
+✔ effective healing, armor damage, medicine actions and madness track real events (6.908788ms)
+✔ local helper MVP retains base player payout and unavailable fields are not fabricated (6.09262ms)
+✔ new raid resets metrics and duplicate event identifiers do not increment them (5.302387ms)
+✔ interrupted reward writes recover snapshots exactly once without replaying gains (8.621291ms)
+✔ failed journal persistence leaves a visible retry and cannot award twice on retry (4.606478ms)
+✔ participant text is escaped in the protocol and malformed saved reports are rejected (8.260024ms)
+✔ summary and repeated detailed views preserve every result and never mutate resources or storage (17.819205ms)
+✔ summary does not advertise a personal MVP bonus when a helper wins it (4.762337ms)
+✔ archive keeps exactly the newest 50 real raid snapshots across reloads (104.711677ms)
+✔ historical protocols retain original boss, names, MVP and rewards without changing saves (9.897199ms)
+✔ clearing requires UI confirmation, retains resources and does not replay old records (9.602418ms)
+✔ archive write failures retain the reward journal, retry once and honor clearing (9.643826ms)
+✔ archives and pending-result access are isolated by stable identity, not nickname (10.50611ms)
+✔ separate tabs keep distinct raid IDs and retries cannot overwrite a historical snapshot (12.624969ms)
+✔ medical stamps use verified inactivity, spare support actions, NPCs and unknown legacy data (20.580466ms)
+✔ timeout, defeat and flee create zero-reward records, while damaged archives stay usable (6.988666ms)
+✔ archive dossiers reuse configured full cards and preserve their historical binding (6.236726ms)
+✔ archive personal stamps describe only the owner, not an MVP helper or useful teammate (17.528264ms)
+✔ staff identities stay sealed until actual combat and survive defeat, repeats and reload (16.697237ms)
+✔ staff drop threshold is five percent; only new raid documents roll and reset misses (15.400256ms)
+✔ document finalization rejects premature and mismatched combat results (14.317951ms)
+✔ pity gives a new eligible document on exactly the thirtieth unsuccessful winning raid (172.298519ms)
+✔ quest document follows the existing rubble milestone and never joins the random pool (10.680106ms)
+✔ staff collection rewards journal exactly once; raid-history clear cannot remove documents or claims (31.455637ms)
+✔ interrupted document and collection saves recover ready snapshots without rerolling or recrediting (27.924939ms)
+✔ staff progress is isolated per ID and only trustworthy owned history restores encounters (26.109622ms)
+✔ data-defined future bosses need no component change and locked secret titles/content never enter DOM (12.447536ms)
+✔ staff floor filters use map and boss assignments while department collections and progress stay intact (12.478571ms)
+✔ paper doll retires trial faces and persists independent previews without changing combat gear (25.708387ms)
+✔ paper doll rejects malformed saves, wrong slots and unsupported images while owned gear without PNG remains usable (16.064ms)
+✔ paper doll gender fallback, missing PNG errors and stable layer order do not alter selected equipment (10.787732ms)
+✔ paper doll storage failures preserve in-memory choices and retry without combat changes (12.526692ms)
+✔ wardrobe v1 migration retires trial faces while preserving owned gear and inert legacy metadata (18.211815ms)
+✔ wardrobe cannot equip unowned inventory gear or create quantities through repeated choices (39.473861ms)
+✔ one paper doll renderer synchronizes both views and removes front and rear parts when unequipped (10.102054ms)
+✔ retired faces are disabled in legacy, v1 and v2 saves without losing character data (310.921291ms)
+✔ future approved face layers remain selectable, shared and persistent (16.248527ms)
+✔ wardrobe V3 inspection is transient and only the action changes the visual loadout (16.367787ms)
+✔ wardrobe V3 shows unowned item details without granting equipment (9.939507ms)
+✔ production patient tunic preserves the exact approved corrected ZIP bytes (37.758649ms)
+✔ a fresh patient starts dressed while the combat outfit stays independent without inventory grants (10.560747ms)
+✔ existing empty, corrupt and unsupported wardrobe records never receive a new starter outfit (205.424337ms)
+✔ tunic removal and independent patient and combat choices survive reloads (38.092235ms)
+✔ gender changes retain the tunic selection and use matching clothing in both character views (34.056585ms)
+✔ failed fitted clothing hides instead of substituting shared or opposite-gender art (13.343718ms)
+✔ fitted clothing keeps local PNG path restrictions (8.691599ms)
+✔ retrying a failed wardrobe save preserves an intentionally removed starter (17.57526ms)
+✔ the approved neckline part follows only the female tunic across modes, saves and replacements (39.024417ms)
+✔ approved hair remains shared appearance with eight choices, gender-fitted art and persistent bald reset (184.470154ms)
+✔ hair migration retains inert legacy metadata, failed art never swaps gender and inspection never saves (34.732857ms)
+✔ hair colors migrate safely and preserve pigment texture, alpha and cosmetic save scope (161.202097ms)
+✔ approved Asian head variants stay below hair and preserve shared cosmetics, outfits and reloads (131.409471ms)
+✔ female face packs keep legacy IDs and add female-only catalog choices (52.121674ms)
+✔ female-only faces reset safely on gender changes and unsupported male saves (38.012371ms)
+✔ independent face audit rejects malformed and retired face IDs without changing progress or outfits (60.298151ms)
+✔ independent face audit migrates v1 selected mode and keeps old paired IDs across gender changes (60.041052ms)
+✔ crown clipping covers affected heads and clears on unaffected hairstyles (25.332457ms)
+✔ young face variants persist without changing approved hair, outfits or old-face rendering (19.414001ms)
+✔ all face-pack types select the correct gender, preserve saves and reset local masks (39.643856ms)
+✔ the paired face and female bob use real files and persist without altering loadouts (15.349583ms)
+✔ female bangs are hidden and rejected for men and old male saves migrate safely (11.164351ms)
+✔ male shoulder rear is local, shares pigment reference and disappears on switch (8.452512ms)
+✔ crown smoothing is monotone in x and remains local above y=90 (6.882837ms)
+✔ rear and front recoloring use the same lighting median without changing alpha (3.587903ms)
+✔ all historical and malformed save shapes retain valid progression and boot safely (74.54551ms)
+✔ boss actions reject inherited property names without starting or corrupting combat (5.169499ms)
+✔ repeated multipart hair renders preserve the current front request and source (7.423173ms)
+✔ an evicted reference image failure cannot delete a newer retry promise (5.08951ms)
+✔ unchanged crown contours are reused without recomputation or a visual change (10.190431ms)
+✔ new male-only portraits survive saves and reject unsupported female states (43.03848ms)
+✔ legacy shared face IDs and save schema remain valid after male pack replacement (37.944301ms)
+✔ new female portraits retain separate loadouts, colour and appearance across reload (127.923497ms)
+✔ new female catalog adds eight exclusive variants without replacing existing choices (12.247306ms)
+✔ female native head normalization is render-only and never becomes a saved item (10.247912ms)
+✔ trial braided curls stay female-only, use the full frame, persist and have a safe missing-item fallback (10.069927ms)
+✔ new female pixie: catalog, shared appearance, reload and individual removal (12.016597ms)
+✔ new female jaw-bob: catalog, shared appearance, reload and individual removal (10.77962ms)
+✔ new female long-waves: catalog, shared appearance, reload and individual removal (11.008525ms)
+✔ new female high-ponytail: catalog, shared appearance, reload and individual removal (11.075963ms)
+✔ new female braided-updo: catalog, shared appearance, reload and individual removal (15.662818ms)
+ℹ tests 95
+ℹ suites 0
+ℹ pass 95
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2923.177754
+
+FILE tests/male-anatomy.test.mjs
+✔ rifle/right: inverse binds preserve every authored UV at rest (10.75962ms)
+✔ rifle/right: artwork has modular joint anchors and bounded skin weights (2.234741ms)
+✔ rifle/left: inverse binds preserve every authored UV at rest (1.347887ms)
+✔ rifle/left: artwork has modular joint anchors and bounded skin weights (1.138821ms)
+✔ pistol/right: inverse binds preserve every authored UV at rest (1.646655ms)
+✔ pistol/right: artwork has modular joint anchors and bounded skin weights (0.460831ms)
+✔ melee/right: inverse binds preserve every authored UV at rest (0.850273ms)
+✔ melee/right: artwork has modular joint anchors and bounded skin weights (1.791041ms)
+✔ foreshortening changes projection, not source skeleton or transverse width (0.87019ms)
+✔ canonical male pistol is unilateral and all legacy variants resolve to it (0.454794ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 10
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 29.324061
+
+FILE tests/pose-ownership.test.mjs
+✔ male: raised hand belongs to hand, not pinned torso (2.752471ms)
+✔ male: ownership never alters registration, topology or joint blend ranges (3.337358ms)
+✔ female: raised hand belongs to hand, not pinned torso (0.832862ms)
+✔ female: ownership never alters registration, topology or joint blend ranges (1.143972ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 22.112858
+
+FILE tests/relaxed-melee.test.mjs
+✔ male: knife motion rotates at wrist without IK elbow compensation (15.273176ms)
+✔ female: knife motion rotates at wrist without IK elbow compensation (4.957824ms)
+✔ male: configured wrist amplitude is respected without changing source bone lengths (6.692011ms)
+✔ female: configured wrist amplitude is respected without changing source bone lengths (4.475743ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 37.398517
+
+FILE tests/torso-space.test.mjs
+✔ body joins stay fixed during both extremes of chest breathing (1.703614ms)
+✔ pinned breathing has continuous neck and waist transitions without freezing the chest (0.226327ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 2
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 8.1714

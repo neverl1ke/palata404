@@ -1,0 +1,9 @@
+{
+  "tag": "rifle-seams-review-20261026",
+  "payload_unchanged": true,
+  "original_archive_sha256": "345c8418667e0cd29aeb3804777547fcc86965993fbe40fe65fc62a91a41fafb",
+  "source_commit": "069ff32c837a4947d63a5706a9298f6fc8ecb7fa",
+  "main_changed": false,
+  "live_deployed": false,
+  "new_publication_explicitly_authorized": true
+}

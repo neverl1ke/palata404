@@ -1,0 +1,1103 @@
+{
+  "cases": [
+    {
+      "gender": "male",
+      "scale": 0.85,
+      "mode": "standard",
+      "phase": 0,
+      "nativeMatrix": [
+        0.3106054555984843,
+        0.13829045864577205,
+        -0.13829045864577205,
+        0.3106054555984843,
+        296.07736513368184,
+        416.0947814117275
+      ],
+      "opaque_front_samples": 3618,
+      "max_RGB_difference": 0,
+      "samples_over2": 0,
+      "alpha_changed": 0
+    },
+    {
+      "gender": "male",
+      "scale": 0.85,
+      "mode": "standard",
+      "phase": 0.25,
+      "nativeMatrix": [
+        0.3105764853004266,
+        0.13835550866674554,
+        -0.13835550866674554,
+        0.3105764853004266,
+        296.25109955064886,
+        416.3951152997454
+      ],
+      "opaque_front_samples": 3560,
+      "max_RGB_difference": 0,
+      "samples_over2": 0,
+      "alpha_changed": 0
+    },
+    {
+      "gender": "male",
+      "scale": 0.85,
+      "mode": "standard",
+      "phase": 0.5,
+      "nativeMatrix": [
+        0.3106054555984843,
+        0.13829045864577205,
+        -0.13829045864577205,
+        0.3106054555984843,
+        296.07736513368184,
+        416.0947814117275
+      ],
+      "opaque_front_samples": 3618,
+      "max_RGB_difference": 0,
+      "samples_over2": 0,
+      "alpha_changed": 0
+    },
+    {
+      "gender": "male",
+      "scale": 0.85,
+      "mode": "standard",
+      "phase": 0.75,
+      "nativeMatrix": [
+        0.3106344122718622,
+        0.1382254025587003,
+        -0.1382254025587003,
+        0.3106344122718622,
+        295.9036348366225,
+        415.7944575207513
+      ],
+      "opaque_front_samples": 3564,
+      "max_RGB_difference": 0,
+      "samples_over2": 0,
+      "alpha_changed": 0
+    },
+    {
+      "gender": "male",
+      "scale": 0.85,
+      "mode": "standard",
+      "phase": 1,
+      "nativeMatrix": [
+        0.3106054555984843,
+        0.13829045864577205,
+        -0.13829045864577205,
+        0.3106054555984843,
+        296.07736513368184,
+        416.0947814117275
+      ],
+      "opaque_front_samples": 3618,
+      "max_RGB_difference": 0,
+      "samples_over2": 0,
+      "alpha_changed": 0
+    },
+    {
+      "gender": "male",
+      "scale": 0.85,
+      "mode": "stress",
+      "phase": 0,
+      "nativeMatrix": [
+        0.3106054555984843,
+        0.13829045864577205,
+        -0.13829045864577205,
+        0.3106054555984843,
+        296.07736513368184,
+        416.0947814117275
+      ],
+      "opaque_front_samples": 3618,
+      "max_RGB_difference": 0,
+      "samples_over2": 0,
+      "alpha_changed": 0
+    },
+    {
+      "gender": "male",
+      "scale": 0.85,
+      "mode": "stress",
+      "phase": 0.25,
+      "nativeMatrix": [
+        0.3105475013789598,
+        0.13842055261876732,
+        -0.13842055261876732,
+        0.3105475013789598,
+        296.4248380854297,
+        417.33545918566733
+      ],
+      "opaque_front_samples": 3578,
+      "max_RGB_difference": 0,
+      "samples_over2": 0,
+      "alpha_changed": 0
+    },
+    {
+      "gender": "male",
+      "scale": 0.85,
+      "mode": "stress",
+      "phase": 0.5,
+      "nativeMatrix": [
+        0.3106054555984843,
+        0.13829045864577205,
+        -0.13829045864577205,
+        0.3106054555984843,
+        296.07736513368184,
+        416.0947814117275
+      ],
+      "opaque_front_samples": 3618,
+      "max_RGB_difference": 0,
+      "samples_over2": 0,
+      "alpha_changed": 0
+    },
+    {
+      "gender": "male",
+      "scale": 0.85,
+      "mode": "stress",
+      "phase": 0.75,
+      "nativeMatrix": [
+        0.31066335531929007,
+        0.13816034040838393,
+        -0.13816034040838393,
+        0.31066335531929007,
+        295.7299086615646,
+        414.8541436259534
+      ],
+      "opaque_front_samples": 3542,
+      "max_RGB_difference": 0,
+      "samples_over2": 0,
+      "alpha_changed": 0
+    },
+    {
+      "gender": "male",
+      "scale": 0.85,
+      "mode": "stress",
+      "phase": 1,
+      "nativeMatrix": [
+        0.3106054555984843,
+        0.13829045864577205,
+        -0.13829045864577205,
+        0.3106054555984843,
+        296.07736513368184,
+        416.0947814117275
+      ],
+      "opaque_front_samples": 3618,
+      "max_RGB_difference": 0,
+      "samples_over2": 0,
+      "alpha_changed": 0
+    },
+    {
+      "gender": "male",
+      "scale": 1,
+      "mode": "standard",
+      "phase": 0,
+      "nativeMatrix": [
+        0.3654181830570404,
+        0.16269465723032006,
+        -0.16269465723032006,
+        0.3654181830570404,
+        279.50278251021393,
+        375.8762134255618
+      ],
+      "opaque_front_samples": 4041,
+      "max_RGB_difference": 0,
+      "samples_over2": 0,
+      "alpha_changed": 0
+    },
+    {
+      "gender": "male",
+      "scale": 1,
+      "mode": "standard",
+      "phase": 0.25,
+      "nativeMatrix": [
+        0.36538410035344304,
+        0.16277118666675947,
+        -0.16277118666675947,
+        0.36538410035344304,
+        279.6849406478222,
+        376.17307682322985
+      ],
+      "opaque_front_samples": 3918,
+      "max_RGB_difference": 0,
+      "samples_over2": 0,
+      "alpha_changed": 0
+    },
+    {
+      "gender": "male",
+      "scale": 1,
+      "mode": "standard",
+      "phase": 0.5,
+      "nativeMatrix": [
+        0.3654181830570404,
+        0.16269465723032006,
+        -0.16269465723032006,
+        0.3654181830570404,
+        279.50278251021393,
+        375.8762134255618
+      ],
+      "opaque_front_samples": 4041,
+      "max_RGB_difference": 0,
+      "samples_over2": 0,
+      "alpha_changed": 0
+    },
+    {
+      "gender": "male",
+      "scale": 1,
+      "mode": "standard",
+      "phase": 0.75,
+      "nativeMatrix": [
+        0.3654522497316026,
+        0.16261812065729447,
+        -0.16261812065729447,
+        0.3654522497316026,
+        279.3206292195559,
+        375.5793617891191
+      ],
+      "opaque_front_samples": 3908,
+      "max_RGB_difference": 0,
+      "samples_over2": 0,
+      "alpha_changed": 0
+    },
+    {
+      "gender": "male",
+      "scale": 1,
+      "mode": "standard",
+      "phase": 1,
+      "nativeMatrix": [
+        0.3654181830570404,
+        0.16269465723032006,
+        -0.16269465723032006,
+        0.3654181830570404,
+        279.50278251021393,
+        375.8762134255618
+      ],
+      "opaque_front_samples": 4041,
+      "max_RGB_difference": 0,
+      "samples_over2": 0,
+      "alpha_changed": 0
+    },
+    {
+      "gender": "male",
+      "scale": 1,
+      "mode": "stress",
+      "phase": 0,
+      "nativeMatrix": [
+        0.3654181830570404,
+        0.16269465723032006,
+        -0.16269465723032006,
+        0.3654181830570404,
+        279.50278251021393,
+        375.8762134255618
+      ],
+      "opaque_front_samples": 4041,
+      "max_RGB_difference": 0,
+      "samples_over2": 0,
+      "alpha_changed": 0
+    },
+    {
+      "gender": "male",
+      "scale": 1,
+      "mode": "stress",
+      "phase": 0.25,
+      "nativeMatrix": [
+        0.3653500016223057,
+        0.16284770896325568,
+        -0.16284770896325568,
+        0.3653500016223057,
+        279.8671036299173,
+        377.109951983138
+      ],
+      "opaque_front_samples": 3959,
+      "max_RGB_difference": 0,
+      "samples_over2": 0,
+      "alpha_changed": 0
+    },
+    {
+      "gender": "male",
+      "scale": 1,
+      "mode": "stress",
+      "phase": 0.5,
+      "nativeMatrix": [
+        0.3654181830570404,
+        0.16269465723032006,
+        -0.16269465723032006,
+        0.3654181830570404,
+        279.50278251021393,
+        375.8762134255618
+      ],
+      "opaque_front_samples": 4041,
+      "max_RGB_difference": 0,
+      "samples_over2": 0,
+      "alpha_changed": 0
+    },
+    {
+      "gender": "male",
+      "scale": 1,
+      "mode": "stress",
+      "phase": 0.75,
+      "nativeMatrix": [
+        0.3654863003756354,
+        0.16254157695103993,
+        -0.16254157695103993,
+        0.3654863003756354,
+        279.1384807783113,
+        374.6425219128863
+      ],
+      "opaque_front_samples": 3907,
+      "max_RGB_difference": 0,
+      "samples_over2": 0,
+      "alpha_changed": 0
+    },
+    {
+      "gender": "male",
+      "scale": 1,
+      "mode": "stress",
+      "phase": 1,
+      "nativeMatrix": [
+        0.3654181830570404,
+        0.16269465723032006,
+        -0.16269465723032006,
+        0.3654181830570404,
+        279.50278251021393,
+        375.8762134255618
+      ],
+      "opaque_front_samples": 4041,
+      "max_RGB_difference": 0,
+      "samples_over2": 0,
+      "alpha_changed": 0
+    },
+    {
+      "gender": "male",
+      "scale": 1.15,
+      "mode": "standard",
+      "phase": 0,
+      "nativeMatrix": [
+        0.4202309105155964,
+        0.18709885581486804,
+        -0.18709885581486804,
+        0.4202309105155964,
+        262.92819988674603,
+        335.6576454393961
+      ],
+      "opaque_front_samples": 4290,
+      "max_RGB_difference": 0,
+      "samples_over2": 0,
+      "alpha_changed": 0
+    },
+    {
+      "gender": "male",
+      "scale": 1.15,
+      "mode": "standard",
+      "phase": 0.25,
+      "nativeMatrix": [
+        0.42019171540645944,
+        0.18718686466677337,
+        -0.18718686466677337,
+        0.42019171540645944,
+        263.11878174499554,
+        335.9510383467143
+      ],
+      "opaque_front_samples": 4150,
+      "max_RGB_difference": 0,
+      "samples_over2": 0,
+      "alpha_changed": 0
+    },
+    {
+      "gender": "male",
+      "scale": 1.15,
+      "mode": "standard",
+      "phase": 0.5,
+      "nativeMatrix": [
+        0.4202309105155964,
+        0.18709885581486804,
+        -0.18709885581486804,
+        0.4202309105155964,
+        262.92819988674603,
+        335.6576454393961
+      ],
+      "opaque_front_samples": 4290,
+      "max_RGB_difference": 0,
+      "samples_over2": 0,
+      "alpha_changed": 0
+    },
+    {
+      "gender": "male",
+      "scale": 1.15,
+      "mode": "standard",
+      "phase": 0.75,
+      "nativeMatrix": [
+        0.42027008719134296,
+        0.18701083875588864,
+        -0.18701083875588864,
+        0.42027008719134296,
+        262.7376236024893,
+        335.364266057487
+      ],
+      "opaque_front_samples": 4257,
+      "max_RGB_difference": 0,
+      "samples_over2": 0,
+      "alpha_changed": 0
+    },
+    {
+      "gender": "male",
+      "scale": 1.15,
+      "mode": "standard",
+      "phase": 1,
+      "nativeMatrix": [
+        0.4202309105155964,
+        0.18709885581486804,
+        -0.18709885581486804,
+        0.4202309105155964,
+        262.92819988674603,
+        335.6576454393961
+      ],
+      "opaque_front_samples": 4290,
+      "max_RGB_difference": 0,
+      "samples_over2": 0,
+      "alpha_changed": 0
+    },
+    {
+      "gender": "male",
+      "scale": 1.15,
+      "mode": "stress",
+      "phase": 0,
+      "nativeMatrix": [
+        0.4202309105155964,
+        0.18709885581486804,
+        -0.18709885581486804,
+        0.4202309105155964,
+        262.92819988674603,
+        335.6576454393961
+      ],
+      "opaque_front_samples": 4290,
+      "max_RGB_difference": 0,
+      "samples_over2": 0,
+      "alpha_changed": 0
+    },
+    {
+      "gender": "male",
+      "scale": 1.15,
+      "mode": "stress",
+      "phase": 0.25,
+      "nativeMatrix": [
+        0.4201525018656515,
+        0.187274865307744,
+        -0.187274865307744,
+        0.4201525018656515,
+        263.30936917440494,
+        336.8844447806087
+      ],
+      "opaque_front_samples": 4083,
+      "max_RGB_difference": 0,
+      "samples_over2": 0,
+      "alpha_changed": 0
+    },
+    {
+      "gender": "male",
+      "scale": 1.15,
+      "mode": "stress",
+      "phase": 0.5,
+      "nativeMatrix": [
+        0.4202309105155964,
+        0.18709885581486804,
+        -0.18709885581486804,
+        0.4202309105155964,
+        262.92819988674603,
+        335.6576454393961
+      ],
+      "opaque_front_samples": 4290,
+      "max_RGB_difference": 0,
+      "samples_over2": 0,
+      "alpha_changed": 0
+    },
+    {
+      "gender": "male",
+      "scale": 1.15,
+      "mode": "stress",
+      "phase": 0.75,
+      "nativeMatrix": [
+        0.42030924543198067,
+        0.1869228134936959,
+        -0.1869228134936959,
+        0.42030924543198067,
+        262.547052895058,
+        334.4309001998193
+      ],
+      "opaque_front_samples": 4230,
+      "max_RGB_difference": 0,
+      "samples_over2": 0,
+      "alpha_changed": 0
+    },
+    {
+      "gender": "male",
+      "scale": 1.15,
+      "mode": "stress",
+      "phase": 1,
+      "nativeMatrix": [
+        0.4202309105155964,
+        0.18709885581486804,
+        -0.18709885581486804,
+        0.4202309105155964,
+        262.92819988674603,
+        335.6576454393961
+      ],
+      "opaque_front_samples": 4290,
+      "max_RGB_difference": 0,
+      "samples_over2": 0,
+      "alpha_changed": 0
+    },
+    {
+      "gender": "female",
+      "scale": 0.85,
+      "mode": "standard",
+      "phase": 0,
+      "nativeMatrix": [
+        0.31060545559848435,
+        0.13829045864577205,
+        -0.13829045864577205,
+        0.31060545559848435,
+        317.0773651336816,
+        347.0947814117276
+      ],
+      "opaque_front_samples": 5217,
+      "max_RGB_difference": 0,
+      "samples_over2": 0,
+      "alpha_changed": 0
+    },
+    {
+      "gender": "female",
+      "scale": 0.85,
+      "mode": "standard",
+      "phase": 0.25,
+      "nativeMatrix": [
+        0.31059676593960056,
+        0.13830997428913422,
+        -0.13830997428913422,
+        0.31059676593960056,
+        317.1476850262768,
+        347.38888052840446
+      ],
+      "opaque_front_samples": 5119,
+      "max_RGB_difference": 0,
+      "samples_over2": 0,
+      "alpha_changed": 0
+    },
+    {
+      "gender": "female",
+      "scale": 0.85,
+      "mode": "standard",
+      "phase": 0.5,
+      "nativeMatrix": [
+        0.31060545559848435,
+        0.13829045864577205,
+        -0.13829045864577205,
+        0.31060545559848435,
+        317.0773651336816,
+        347.0947814117276
+      ],
+      "opaque_front_samples": 5217,
+      "max_RGB_difference": 0,
+      "samples_over2": 0,
+      "alpha_changed": 0
+    },
+    {
+      "gender": "female",
+      "scale": 0.85,
+      "mode": "standard",
+      "phase": 0.75,
+      "nativeMatrix": [
+        0.3106141440311469,
+        0.13827094245646102,
+        -0.13827094245646102,
+        0.3106141440311469,
+        317.0070456118782,
+        346.80068319478454
+      ],
+      "opaque_front_samples": 5152,
+      "max_RGB_difference": 0,
+      "samples_over2": 0,
+      "alpha_changed": 0
+    },
+    {
+      "gender": "female",
+      "scale": 0.85,
+      "mode": "standard",
+      "phase": 1,
+      "nativeMatrix": [
+        0.31060545559848435,
+        0.13829045864577205,
+        -0.13829045864577205,
+        0.31060545559848435,
+        317.0773651336816,
+        347.0947814117276
+      ],
+      "opaque_front_samples": 5217,
+      "max_RGB_difference": 0,
+      "samples_over2": 0,
+      "alpha_changed": 0
+    },
+    {
+      "gender": "female",
+      "scale": 0.85,
+      "mode": "stress",
+      "phase": 0,
+      "nativeMatrix": [
+        0.31060545559848435,
+        0.13829045864577205,
+        -0.13829045864577205,
+        0.31060545559848435,
+        317.0773651336816,
+        347.0947814117276
+      ],
+      "opaque_front_samples": 5217,
+      "max_RGB_difference": 0,
+      "samples_over2": 0,
+      "alpha_changed": 0
+    },
+    {
+      "gender": "female",
+      "scale": 0.85,
+      "mode": "stress",
+      "phase": 0.25,
+      "nativeMatrix": [
+        0.31058807505453,
+        0.13832948938647052,
+        -0.13832948938647052,
+        0.31058807505453,
+        317.21800528960716,
+        348.282980544838
+      ],
+      "opaque_front_samples": 5120,
+      "max_RGB_difference": 0,
+      "samples_over2": 0,
+      "alpha_changed": 0
+    },
+    {
+      "gender": "female",
+      "scale": 0.85,
+      "mode": "stress",
+      "phase": 0.5,
+      "nativeMatrix": [
+        0.31060545559848435,
+        0.13829045864577205,
+        -0.13829045864577205,
+        0.31060545559848435,
+        317.0773651336816,
+        347.0947814117276
+      ],
+      "opaque_front_samples": 5217,
+      "max_RGB_difference": 0,
+      "samples_over2": 0,
+      "alpha_changed": 0
+    },
+    {
+      "gender": "female",
+      "scale": 0.85,
+      "mode": "stress",
+      "phase": 0.75,
+      "nativeMatrix": [
+        0.31062283123755396,
+        0.1382514257212782,
+        -0.1382514257212782,
+        0.31062283123755396,
+        316.9367264609232,
+        345.90658587755195
+      ],
+      "opaque_front_samples": 5151,
+      "max_RGB_difference": 0,
+      "samples_over2": 0,
+      "alpha_changed": 0
+    },
+    {
+      "gender": "female",
+      "scale": 0.85,
+      "mode": "stress",
+      "phase": 1,
+      "nativeMatrix": [
+        0.31060545559848435,
+        0.13829045864577205,
+        -0.13829045864577205,
+        0.31060545559848435,
+        317.0773651336816,
+        347.0947814117276
+      ],
+      "opaque_front_samples": 5217,
+      "max_RGB_difference": 0,
+      "samples_over2": 0,
+      "alpha_changed": 0
+    },
+    {
+      "gender": "female",
+      "scale": 1,
+      "mode": "standard",
+      "phase": 0,
+      "nativeMatrix": [
+        0.36541818305704044,
+        0.16269465723032006,
+        -0.16269465723032006,
+        0.36541818305704044,
+        300.5027825102137,
+        306.87621342556184
+      ],
+      "opaque_front_samples": 5822,
+      "max_RGB_difference": 0,
+      "samples_over2": 0,
+      "alpha_changed": 0
+    },
+    {
+      "gender": "female",
+      "scale": 1,
+      "mode": "standard",
+      "phase": 0.25,
+      "nativeMatrix": [
+        0.3654079599289419,
+        0.16271761681074615,
+        -0.16271761681074615,
+        0.3654079599289419,
+        300.5756294426786,
+        307.16927120988754
+      ],
+      "opaque_front_samples": 5767,
+      "max_RGB_difference": 0,
+      "samples_over2": 0,
+      "alpha_changed": 0
+    },
+    {
+      "gender": "female",
+      "scale": 1,
+      "mode": "standard",
+      "phase": 0.5,
+      "nativeMatrix": [
+        0.36541818305704044,
+        0.16269465723032006,
+        -0.16269465723032006,
+        0.36541818305704044,
+        300.5027825102137,
+        306.87621342556184
+      ],
+      "opaque_front_samples": 5822,
+      "max_RGB_difference": 0,
+      "samples_over2": 0,
+      "alpha_changed": 0
+    },
+    {
+      "gender": "female",
+      "scale": 1,
+      "mode": "standard",
+      "phase": 0.75,
+      "nativeMatrix": [
+        0.36542840474252575,
+        0.1626716970076012,
+        -0.1626716970076012,
+        0.36542840474252575,
+        300.4299360139744,
+        306.5831566997465
+      ],
+      "opaque_front_samples": 5765,
+      "max_RGB_difference": 0,
+      "samples_over2": 0,
+      "alpha_changed": 0
+    },
+    {
+      "gender": "female",
+      "scale": 1,
+      "mode": "standard",
+      "phase": 1,
+      "nativeMatrix": [
+        0.36541818305704044,
+        0.16269465723032006,
+        -0.16269465723032006,
+        0.36541818305704044,
+        300.5027825102137,
+        306.87621342556184
+      ],
+      "opaque_front_samples": 5822,
+      "max_RGB_difference": 0,
+      "samples_over2": 0,
+      "alpha_changed": 0
+    },
+    {
+      "gender": "female",
+      "scale": 1,
+      "mode": "stress",
+      "phase": 0,
+      "nativeMatrix": [
+        0.36541818305704044,
+        0.16269465723032006,
+        -0.16269465723032006,
+        0.36541818305704044,
+        300.5027825102137,
+        306.87621342556184
+      ],
+      "opaque_front_samples": 5822,
+      "max_RGB_difference": 0,
+      "samples_over2": 0,
+      "alpha_changed": 0
+    },
+    {
+      "gender": "female",
+      "scale": 1,
+      "mode": "stress",
+      "phase": 0.25,
+      "nativeMatrix": [
+        0.3653977353582706,
+        0.16274057574878886,
+        -0.16274057574878886,
+        0.3653977353582706,
+        300.64847681130254,
+        308.06233005275055
+      ],
+      "opaque_front_samples": 5763,
+      "max_RGB_difference": 0,
+      "samples_over2": 0,
+      "alpha_changed": 0
+    },
+    {
+      "gender": "female",
+      "scale": 1,
+      "mode": "stress",
+      "phase": 0.5,
+      "nativeMatrix": [
+        0.36541818305704044,
+        0.16269465723032006,
+        -0.16269465723032006,
+        0.36541818305704044,
+        300.5027825102137,
+        306.87621342556184
+      ],
+      "opaque_front_samples": 5822,
+      "max_RGB_difference": 0,
+      "samples_over2": 0,
+      "alpha_changed": 0
+    },
+    {
+      "gender": "female",
+      "scale": 1,
+      "mode": "stress",
+      "phase": 0.75,
+      "nativeMatrix": [
+        0.3654386249853576,
+        0.16264873614268022,
+        -0.16264873614268022,
+        0.3654386249853576,
+        300.3570899540273,
+        305.6901010324141
+      ],
+      "opaque_front_samples": 5761,
+      "max_RGB_difference": 0,
+      "samples_over2": 0,
+      "alpha_changed": 0
+    },
+    {
+      "gender": "female",
+      "scale": 1,
+      "mode": "stress",
+      "phase": 1,
+      "nativeMatrix": [
+        0.36541818305704044,
+        0.16269465723032006,
+        -0.16269465723032006,
+        0.36541818305704044,
+        300.5027825102137,
+        306.87621342556184
+      ],
+      "opaque_front_samples": 5822,
+      "max_RGB_difference": 0,
+      "samples_over2": 0,
+      "alpha_changed": 0
+    },
+    {
+      "gender": "female",
+      "scale": 1.15,
+      "mode": "standard",
+      "phase": 0,
+      "nativeMatrix": [
+        0.42023091051559647,
+        0.18709885581486804,
+        -0.18709885581486804,
+        0.42023091051559647,
+        283.9281998867458,
+        266.6576454393961
+      ],
+      "opaque_front_samples": 6460,
+      "max_RGB_difference": 0,
+      "samples_over2": 0,
+      "alpha_changed": 0
+    },
+    {
+      "gender": "female",
+      "scale": 1.15,
+      "mode": "standard",
+      "phase": 0.25,
+      "nativeMatrix": [
+        0.42021915391828313,
+        0.18712525933235805,
+        -0.18712525933235805,
+        0.42021915391828313,
+        284.00357385908035,
+        266.9496618913707
+      ],
+      "opaque_front_samples": 6388,
+      "max_RGB_difference": 0,
+      "samples_over2": 0,
+      "alpha_changed": 0
+    },
+    {
+      "gender": "female",
+      "scale": 1.15,
+      "mode": "standard",
+      "phase": 0.5,
+      "nativeMatrix": [
+        0.42023091051559647,
+        0.18709885581486804,
+        -0.18709885581486804,
+        0.42023091051559647,
+        283.9281998867458,
+        266.6576454393961
+      ],
+      "opaque_front_samples": 6460,
+      "max_RGB_difference": 0,
+      "samples_over2": 0,
+      "alpha_changed": 0
+    },
+    {
+      "gender": "female",
+      "scale": 1.15,
+      "mode": "standard",
+      "phase": 0.75,
+      "nativeMatrix": [
+        0.4202426654539046,
+        0.18707245155874136,
+        -0.18707245155874136,
+        0.4202426654539046,
+        283.85282641607057,
+        266.3656302047085
+      ],
+      "opaque_front_samples": 6397,
+      "max_RGB_difference": 0,
+      "samples_over2": 0,
+      "alpha_changed": 0
+    },
+    {
+      "gender": "female",
+      "scale": 1.15,
+      "mode": "standard",
+      "phase": 1,
+      "nativeMatrix": [
+        0.42023091051559647,
+        0.18709885581486804,
+        -0.18709885581486804,
+        0.42023091051559647,
+        283.9281998867458,
+        266.6576454393961
+      ],
+      "opaque_front_samples": 6460,
+      "max_RGB_difference": 0,
+      "samples_over2": 0,
+      "alpha_changed": 0
+    },
+    {
+      "gender": "female",
+      "scale": 1.15,
+      "mode": "stress",
+      "phase": 0,
+      "nativeMatrix": [
+        0.42023091051559647,
+        0.18709885581486804,
+        -0.18709885581486804,
+        0.42023091051559647,
+        283.9281998867458,
+        266.6576454393961
+      ],
+      "opaque_front_samples": 6460,
+      "max_RGB_difference": 0,
+      "samples_over2": 0,
+      "alpha_changed": 0
+    },
+    {
+      "gender": "female",
+      "scale": 1.15,
+      "mode": "stress",
+      "phase": 0.25,
+      "nativeMatrix": [
+        0.42020739566201115,
+        0.18715166211110718,
+        -0.18715166211110718,
+        0.42020739566201115,
+        284.0789483329979,
+        267.8416795606632
+      ],
+      "opaque_front_samples": 6403,
+      "max_RGB_difference": 0,
+      "samples_over2": 0,
+      "alpha_changed": 0
+    },
+    {
+      "gender": "female",
+      "scale": 1.15,
+      "mode": "stress",
+      "phase": 0.5,
+      "nativeMatrix": [
+        0.42023091051559647,
+        0.18709885581486804,
+        -0.18709885581486804,
+        0.42023091051559647,
+        283.9281998867458,
+        266.6576454393961
+      ],
+      "opaque_front_samples": 6460,
+      "max_RGB_difference": 0,
+      "samples_over2": 0,
+      "alpha_changed": 0
+    },
+    {
+      "gender": "female",
+      "scale": 1.15,
+      "mode": "stress",
+      "phase": 0.75,
+      "nativeMatrix": [
+        0.4202544187331612,
+        0.18704604656408225,
+        -0.18704604656408225,
+        0.4202544187331612,
+        283.7774534471314,
+        265.4736161872762
+      ],
+      "opaque_front_samples": 6390,
+      "max_RGB_difference": 0,
+      "samples_over2": 0,
+      "alpha_changed": 0
+    },
+    {
+      "gender": "female",
+      "scale": 1.15,
+      "mode": "stress",
+      "phase": 1,
+      "nativeMatrix": [
+        0.42023091051559647,
+        0.18709885581486804,
+        -0.18709885581486804,
+        0.42023091051559647,
+        283.9281998867458,
+        266.6576454393961
+      ],
+      "opaque_front_samples": 6460,
+      "max_RGB_difference": 0,
+      "samples_over2": 0,
+      "alpha_changed": 0
+    }
+  ],
+  "erase_comparison": [
+    {
+      "gender": "male",
+      "erase_alternative": {
+        "pixels_losing_more_than2_alpha": 80,
+        "max_alpha_loss": 60,
+        "chosen": "retain source-atop with opaque item interior; erase variant rejected when it opens AA coverage"
+      }
+    },
+    {
+      "gender": "female",
+      "erase_alternative": {
+        "pixels_losing_more_than2_alpha": 76,
+        "max_alpha_loss": 64,
+        "chosen": "retain source-atop with opaque item interior; erase variant rejected when it opens AA coverage"
+      }
+    }
+  ],
+  "warning": "Mask coverage and mechanical correctness are not anatomy acceptance; native image inspection required"
+}

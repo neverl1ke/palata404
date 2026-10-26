@@ -1,0 +1,38 @@
+[
+  {
+    "gender": "male",
+    "side": "right",
+    "triangles": 1740,
+    "added_vertices": 0,
+    "overridden_root_vertices": 0,
+    "uncovered_material_pixels": 0,
+    "warning": "Coverage of existing pixels is not proof of anatomical completeness"
+  },
+  {
+    "gender": "male",
+    "side": "left",
+    "triangles": 936,
+    "added_vertices": 0,
+    "overridden_root_vertices": 0,
+    "uncovered_material_pixels": 0,
+    "warning": "Coverage of existing pixels is not proof of anatomical completeness"
+  },
+  {
+    "gender": "female",
+    "side": "right",
+    "triangles": 764,
+    "added_vertices": 30,
+    "overridden_root_vertices": 0,
+    "uncovered_material_pixels": 0,
+    "warning": "Coverage of existing pixels is not proof of anatomical completeness"
+  },
+  {
+    "gender": "female",
+    "side": "left",
+    "triangles": 544,
+    "added_vertices": 12,
+    "overridden_root_vertices": 27,
+    "uncovered_material_pixels": 0,
+    "warning": "Coverage of existing pixels is not proof of anatomical completeness"
+  }
+]

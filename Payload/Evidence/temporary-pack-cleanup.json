@@ -1,0 +1,7 @@
+{
+  "removed_unindexed_abandoned_git_tmp_pack": "/workspace/palata404/.git/objects/pack/tmp_pack_0z8pei",
+  "bytes": 1887961088,
+  "no_active_gc_repack_pack_objects_observed": true,
+  "original_git_packs_loose_objects_and_refs_preserved": true,
+  "future_commits_use_per_command_gc_auto0": true
+}

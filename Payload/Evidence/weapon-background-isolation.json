@@ -1,0 +1,17 @@
+{
+  "method": "Actual black/white final renders; current time0 matrix, alpha255 projected item interior eroded2px",
+  "cases": [
+    {
+      "gender": "male",
+      "confirmed_opaque_native_pixels": 39398,
+      "max_final_background_dependence": 0,
+      "changed_pixels": 0
+    },
+    {
+      "gender": "female",
+      "confirmed_opaque_native_pixels": 39398,
+      "max_final_background_dependence": 0,
+      "changed_pixels": 0
+    }
+  ]
+}

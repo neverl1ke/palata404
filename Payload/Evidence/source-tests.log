@@ -1,0 +1,11 @@
+test_accepted_knife_reference (tests.test_rifle_seams.RifleSeamsTests.test_accepted_knife_reference) ... ok
+test_current_surface_topology_and_foreground_subset (tests.test_rifle_seams.RifleSeamsTests.test_current_surface_topology_and_foreground_subset) ... ok
+test_master_and_runtime_only_alpha (tests.test_rifle_seams.RifleSeamsTests.test_master_and_runtime_only_alpha) ... ok
+test_non_rifle_configuration_unchanged (tests.test_rifle_seams.RifleSeamsTests.test_non_rifle_configuration_unchanged) ... ok
+test_protected_base_rig_gameplay_and_other_weapons (tests.test_rifle_seams.RifleSeamsTests.test_protected_base_rig_gameplay_and_other_weapons) ... ok
+test_reexport_exact (tests.test_rifle_seams.RifleSeamsTests.test_reexport_exact) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 9.895s
+
+OK

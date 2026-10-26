@@ -1,0 +1,2346 @@
+{
+  "only_identical_ignored_generated_copies": true,
+  "files": [
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/approved-female-room-768x1024.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/approved-female-room-768x1024.png",
+      "sha256": "9581ed6731df7476e5483e3ad49a11791f81231ea5aec98560538f8998f32754",
+      "bytes": 539774
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/approved-male-room-1280x800.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/approved-male-room-1280x800.png",
+      "sha256": "06cff844a4cda8c38d360f3fa698df6db14c68e4a129d9817c7045062db3f560",
+      "bytes": 1019463
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/approved-male-room-320x568.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/approved-male-room-320x568.png",
+      "sha256": "3637790dd293f5e78b38ecd1e12b311c972cce18d0941ed2358b84b04e18a182",
+      "bytes": 155122
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/approved-male-room-390x844.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/approved-male-room-390x844.png",
+      "sha256": "313f9f585a1da498d3f09fe619d5953c0fe2ba50292800b7514276ad9dc5805e",
+      "bytes": 260946
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/approved-male-room-768x1024.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/approved-male-room-768x1024.png",
+      "sha256": "2b548d927df556061e9911851e8b9eca54597cd37fc22300d39385d982d72ffe",
+      "bytes": 539856
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/archive-doctor-documents-1280.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/archive-doctor-documents-1280.png",
+      "sha256": "b95027d43ce1335bd247940220ccc86c6c1b4559cb79162cd034787351960616",
+      "bytes": 406345
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/archive-doctor-documents-390.png",
+      "retained": "/workspace/palata404/test-results/archive-doctor-documents-390.png",
+      "sha256": "c7566e713d29e72f80233e0bbe382ab6d579f818d010629a0e7c812bd2b04bcd",
+      "bytes": 181765
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/archive-doctor-identity-1280.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/archive-doctor-identity-1280.png",
+      "sha256": "96eda924cd6cc7233f6370b14e206c869ed0c4b43658b3368499d0efc3d089bd",
+      "bytes": 428135
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/archive-doctor-identity-390.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/archive-doctor-identity-390.png",
+      "sha256": "161fe2f19734462129840e00e7d21bf93305b0b6c1e60aae5f31ef55085762d4",
+      "bytes": 168565
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/archive-doctor-observations-1280.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/archive-doctor-observations-1280.png",
+      "sha256": "e51499b1070f851d7ce40801a4174c85520247d20e75a97054813451bfaecfd8",
+      "bytes": 391447
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/archive-doctor-observations-390.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/archive-doctor-observations-390.png",
+      "sha256": "5b429c50c1e3b2afaa0a6c387da4a793f1eeb0b206a73abad737a38d5a56fe81",
+      "bytes": 171327
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/archive-doctor-rewards-1280.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/archive-doctor-rewards-1280.png",
+      "sha256": "71d8d21c69acd0eb89e097c01d86addff3ad26be7c94645c8c6ff267ded469f9",
+      "bytes": 346255
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/archive-doctor-rewards-390.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/archive-doctor-rewards-390.png",
+      "sha256": "cbcedd45ffbc4d2397bd3a2ead0a98c36013e10c262fa8833c6f7b4a1a6f0d84",
+      "bytes": 158300
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/archive-nurse-documents-1280.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/archive-nurse-documents-1280.png",
+      "sha256": "a9904896c467a1e51772eca0aee3ba5087a61fe56cc21ea7a4dbb41906cd36ec",
+      "bytes": 384998
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/archive-nurse-documents-390.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/archive-nurse-documents-390.png",
+      "sha256": "370d41d2edb5614f9db581eb6a5babcff8f0c51cd9c4970bc9dd2a8caf748aaa",
+      "bytes": 171958
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/archive-nurse-identity-1280.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/archive-nurse-identity-1280.png",
+      "sha256": "736f1a10e85026765d1dd971cef2030fbe0c03008321cf47237b05c56aa19bd3",
+      "bytes": 423903
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/archive-nurse-identity-390.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/archive-nurse-identity-390.png",
+      "sha256": "ef837879f03548ec5f9021d6f8b52343e435ed0626f42f4568626ed645656623",
+      "bytes": 182650
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/archive-nurse-observations-1280.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/archive-nurse-observations-1280.png",
+      "sha256": "4bfa608bc06bbd4e350b5e656155365dd24df557b43f9a1c415a812dd51ae65c",
+      "bytes": 385214
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/archive-nurse-observations-390.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/archive-nurse-observations-390.png",
+      "sha256": "211283b6cac1c35f329ad1dae7eb515bb02a4bb86ed4a664cd2038d68f32ccc4",
+      "bytes": 175437
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/archive-nurse-rewards-1280.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/archive-nurse-rewards-1280.png",
+      "sha256": "f51c7e48ed047beb9ada1ccc51f44e647905378c6842928b730d72f7e7fc486e",
+      "bytes": 346715
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/archive-nurse-rewards-390.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/archive-nurse-rewards-390.png",
+      "sha256": "1d1ee4f0797d4939ff85b0533a548b418b436a56080cb732785c32de0df08583",
+      "bytes": 158798
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/asian-head-female-combat-1280.png",
+      "retained": "/workspace/palata404/test-results/asian-head-female-combat-1280.png",
+      "sha256": "d6edba78175e760e5a13147b5fae180bd56e1dd3041060a56a5bd8cc9ca6162f",
+      "bytes": 775412
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/asian-head-male-combat-1280.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/asian-head-male-combat-1280.png",
+      "sha256": "961b3fc0b48e44582f33927bf1dcd5a573ce3c82b38acca44033e07709cc732a",
+      "bytes": 774208
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/asian-head-male-combat-390.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/asian-head-male-combat-390.png",
+      "sha256": "42b0c73489ad643d04e3da3c4fc8688ae8e91d618a0e5f1c9a296da0585d457e",
+      "bytes": 183081
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/compact-staff-doctor-1024x768.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/compact-staff-doctor-1024x768.png",
+      "sha256": "83e2309d48fad7187af923b286ba92dbbd7b3f8cfb772b3c5dda024ac9b9d1fb",
+      "bytes": 361997
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/compact-staff-doctor-1280x800.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/compact-staff-doctor-1280x800.png",
+      "sha256": "4fe7aaaa705743e11c46c5458e28d523c939d54cd517a093d6571e6d4a935119",
+      "bytes": 427926
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/compact-staff-doctor-320x568.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/compact-staff-doctor-320x568.png",
+      "sha256": "c60dc3cd990fd6add58f041e44da34b99566e4613a734a901e36823d1d3774dc",
+      "bytes": 148143
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/compact-staff-doctor-390x844.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/compact-staff-doctor-390x844.png",
+      "sha256": "8668542df20c14879785a15c061d7f6301aed452f8862555a5b266148922860c",
+      "bytes": 209819
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/compact-staff-doctor-768x1024.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/compact-staff-doctor-768x1024.png",
+      "sha256": "7b068e6ee95ae8e2c5b77ec80de411a097341bb7ab31bc4a9eab050b9d2a865a",
+      "bytes": 379421
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/compact-staff-doctor-844x390.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/compact-staff-doctor-844x390.png",
+      "sha256": "4e5024fee44949515b05c0254ae1d93526d6508ca72329495a12740062ccd538",
+      "bytes": 176321
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/compact-staff-nurse-1024x768.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/compact-staff-nurse-1024x768.png",
+      "sha256": "013e10e91b09816272c7122d4948508ad0aed5bd3d39336cf78a90007d17b719",
+      "bytes": 360306
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/compact-staff-nurse-1280x800.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/compact-staff-nurse-1280x800.png",
+      "sha256": "8e375e58b9fd383d49261c7b47d65f734303e126ee57f1fb2566d9d083a18424",
+      "bytes": 423760
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/compact-staff-nurse-320x568.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/compact-staff-nurse-320x568.png",
+      "sha256": "b49c6d2e49b624cf645ba8ed0003696d16cdb919b2c3fb931e3a804c29fe565f",
+      "bytes": 146122
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/compact-staff-nurse-390x844.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/compact-staff-nurse-390x844.png",
+      "sha256": "5b88d4b98857063e3e90cabdd72a5a11ecab8900b79d5d3c65b71edfb26e8fcc",
+      "bytes": 207869
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/compact-staff-nurse-768x1024.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/compact-staff-nurse-768x1024.png",
+      "sha256": "355a30330a73a7d81afe884e2c222f6ed02b26f6a4c1cc7163d5634eea98c168",
+      "bytes": 377516
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/compact-staff-nurse-844x390.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/compact-staff-nurse-844x390.png",
+      "sha256": "86308e082eb3ea025699ea6cc65bb6178e6683d46fd6c5d2ebdd7e1ce3c4e561",
+      "bytes": 174829
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/female-hair-bob-combat-mobile.png",
+      "retained": "/workspace/palata404/test-results/female-hair-bob-combat-mobile.png",
+      "sha256": "e95f41b8c892a7f9b02947794f6058e17edd9d976fb6191e21b9e3483f70d7ce",
+      "bytes": 209670
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/female-hair-bob-head.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/female-hair-bob-head.png",
+      "sha256": "3010d16d7cc90a39c7f7a172ec9a593caf903f5557ac7d85286050566ee239f7",
+      "bytes": 119064
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/female-hair-bob-wardrobe.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/female-hair-bob-wardrobe.png",
+      "sha256": "74043e23b0d5dcdd486e356db45580a5784e0f8c7187bf87bb4a375a5db3c104",
+      "bytes": 432993
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/female-hair-classic-short-combat-mobile.png",
+      "retained": "/workspace/palata404/test-results/female-hair-classic-short-combat-mobile.png",
+      "sha256": "bdca81f154530d985e06edb22df84c07724ed511b9ed66e5ccfcd1932de252e5",
+      "bytes": 198787
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/female-hair-classic-short-head-dark.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/female-hair-classic-short-head-dark.png",
+      "sha256": "8b94ba39d3b0b4773ad2b55cf4f6d7281b83c7ea9b8a57761414d870185bba0a",
+      "bytes": 330606
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/female-hair-classic-short-head.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/female-hair-classic-short-head.png",
+      "sha256": "8321f4a9e569f4a03232d64b8975029fdf793b163722dac7121d60f07d7185c0",
+      "bytes": 338375
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/female-hair-classic-short-wardrobe.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/female-hair-classic-short-wardrobe.png",
+      "sha256": "d531c20cb8045c17429cfbbd0070ebddd817a02df32b147ff4fb9272b8046c96",
+      "bytes": 433062
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/female-hair-double-buns-combat-mobile.png",
+      "retained": "/workspace/palata404/test-results/female-hair-double-buns-combat-mobile.png",
+      "sha256": "e962e25b8900d0412a5858a7d8370f05de352d696d4960041a8cc1f06afa725a",
+      "bytes": 203427
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/female-hair-double-buns-head.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/female-hair-double-buns-head.png",
+      "sha256": "8150badb225cf9d81a27c368874a4aedce11f324f7d5c40ff1372b9a37dadec5",
+      "bytes": 145680
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/female-hair-double-buns-wardrobe.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/female-hair-double-buns-wardrobe.png",
+      "sha256": "0aa0f7ae51b0f4f7c5c71c6dc781a7e5dbf07eb02c35b1dcc461d2242950ac9c",
+      "bytes": 435099
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/female-hair-messy-combat-mobile.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/female-hair-messy-combat-mobile.png",
+      "sha256": "9d9918d3eaaff15282e46225951f24e98521f466c93ed7e7f292f8a4bfeb68a1",
+      "bytes": 210668
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/female-hair-messy-head.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/female-hair-messy-head.png",
+      "sha256": "c99f875a3a342b8143e55a0a3cf04577a0e9345ffa139b5279cf82a6b3a0f71f",
+      "bytes": 136741
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/female-hair-messy-wardrobe.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/female-hair-messy-wardrobe.png",
+      "sha256": "78d92493c5eb22ca43537542b87d7e462b81cc10a430f3ffdb6b70b220b432ff",
+      "bytes": 434609
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/female-hair-none.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/female-hair-none.png",
+      "sha256": "798304bc0db6ae87c8ad609c6be7b18a9395615c23bbf54af583a31c67d4ee8c",
+      "bytes": 509244
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/female-hair-shoulder-length-fit8-after-head.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/female-hair-shoulder-length-fit8-after-head.png",
+      "sha256": "f0bc55710d83ef183b89086231003228c793fa52ec0d80bcf9ef18282c0af76b",
+      "bytes": 456700
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/female-hair-shoulder-length-fit8-before-head.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/female-hair-shoulder-length-fit8-before-head.png",
+      "sha256": "61ac105f59a9b7f41ea56f66127e20d62f559b57f5ed4a2e8caf9afc2bcf7585",
+      "bytes": 457114
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/female-hair-shoulder-length-head-dark.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/female-hair-shoulder-length-head-dark.png",
+      "sha256": "f2a90770b185f604438e949597e27e5223fb2e209ce00a5dc2f620b7688f7a9d",
+      "bytes": 433430
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/female-hair-shoulder-length-head.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/female-hair-shoulder-length-fit8-after-head.png",
+      "sha256": "f0bc55710d83ef183b89086231003228c793fa52ec0d80bcf9ef18282c0af76b",
+      "bytes": 456700
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/female-hair-shoulder-length-wardrobe.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/female-hair-shoulder-length-wardrobe.png",
+      "sha256": "e9f6cdb8571a4c76d73bab2a78a152457afb9a9ef79a8fd37ad4bf56146b3c27",
+      "bytes": 434323
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/female-hair-textured-short-combat-mobile.png",
+      "retained": "/workspace/palata404/test-results/female-hair-textured-short-combat-mobile.png",
+      "sha256": "7d4da6fd2370988f3776c12d37f22436a9c8bcc482e08ff54e11787b45cda4eb",
+      "bytes": 195421
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/female-hair-textured-short-fit8-after-head.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/female-hair-textured-short-fit8-after-head.png",
+      "sha256": "53542eb03e907681e4c4c6105411efb4874133a9de7228cab609b83bfa5ec096",
+      "bytes": 318702
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/female-hair-textured-short-fit8-before-head.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/female-hair-textured-short-fit8-before-head.png",
+      "sha256": "682175b654bdee4a557f962f7380c9fb91d5f050fcc1eafc2deb9ea6c0d25252",
+      "bytes": 326530
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/female-hair-textured-short-head-dark.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/female-hair-textured-short-head-dark.png",
+      "sha256": "60d62e5b2947960303441c810613ca15619c27d9e0f019bea6114fb3a4888b93",
+      "bytes": 311065
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/female-hair-textured-short-head.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/female-hair-textured-short-fit8-after-head.png",
+      "sha256": "53542eb03e907681e4c4c6105411efb4874133a9de7228cab609b83bfa5ec096",
+      "bytes": 318702
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/female-hair-textured-short-wardrobe.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/female-hair-textured-short-wardrobe.png",
+      "sha256": "d968f022df0524a635f94a2380d68d3413a49bc2218ce6cb1e35b5ade16be4d8",
+      "bytes": 432611
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/female-hairstyles-pack-02-overview.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/female-hairstyles-pack-02-overview.png",
+      "sha256": "27959e6b8e2de6d03bc6c00ae832885e23a0b0123cfd1bdfd03c5b1352554955",
+      "bytes": 450394
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/female-shirt-fit-detail-combat.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/female-shirt-fit-detail-combat.png",
+      "sha256": "88904b302bae5afafa44944765711e33632e4e7ad7b54adefa5756f0ca0b7c76",
+      "bytes": 324003
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/female-shirt-fit-detail-patient.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/female-shirt-fit-detail-patient.png",
+      "sha256": "b3b0d00f96b8ecd8e1b68a487b90b6bcb7f22bf146f999b9a44de109e5c49772",
+      "bytes": 297121
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/final-mobile-390-combat-male-faces.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/final-mobile-390-combat-male-faces.png",
+      "sha256": "1dfb5a4a07ffc84082a6c18f0f736a1aae3fa52dc997097f4320ce46cfe83b63",
+      "bytes": 195981
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/final-mobile-768-combat-male-hair.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/final-mobile-768-combat-male-hair.png",
+      "sha256": "8af5a827ee528b8789c6f807d388d7b22b65ba6da3143d73050c779ec0928f6d",
+      "bytes": 444366
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/folder-hud-1024x768.png",
+      "retained": "/workspace/palata404/test-results/folder-hud-1024x768.png",
+      "sha256": "cd700de72ca94ee028739c86e53c8aa1e313aeb9958644d526086539744c0c6e",
+      "bytes": 664008
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/folder-hud-320x568.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/folder-hud-320x568.png",
+      "sha256": "98c8c1a83ff5c24fa03e1de7e8ca15424eeab93682ec37e20083edff79ebe390",
+      "bytes": 115567
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/folder-hud-390x844.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/folder-hud-390x844.png",
+      "sha256": "8d2c504c55f31eb28a0d6492354af3e899e22c2fb1295ac78b7710c03eb47d88",
+      "bytes": 232601
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/folder-hud-768x1024.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/folder-hud-768x1024.png",
+      "sha256": "06bb104c628c112e74c364af0969d733f969c8910827e78a2b4b3dbf3e3e53d8",
+      "bytes": 535259
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/folder-hud-844x390.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/folder-hud-844x390.png",
+      "sha256": "51ec31cf6f7f2c1cd434f99e383f81fb398287161d0ab445bb981eaf0d71a218",
+      "bytes": 356380
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/ground-shadow-female-combat-1024x768.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/ground-shadow-female-combat-1024x768.png",
+      "sha256": "2b7f0611a6a66751f3f21252e14b1b81a0c255764c806d4b340e7eeb731438ff",
+      "bytes": 557071
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/ground-shadow-female-combat-1280x800.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/ground-shadow-female-combat-1280x800.png",
+      "sha256": "20c1ced4660020e522a4a2fa0b12fda4d21dbd970aa71a593ac08d37402b07d1",
+      "bytes": 739914
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/ground-shadow-male-patient-844x390.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/ground-shadow-male-patient-844x390.png",
+      "sha256": "5a0cc797d88538c3b9937c3429cabfbde23e3fedcd8b17188d931f55ba5811a6",
+      "bytes": 184144
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/hair-palette-combat-1920.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/hair-palette-combat-1920.png",
+      "sha256": "46d4b1b3ec017493d42898d90e3f67924340fc522633e9b52fa4fe90c04ac7e8",
+      "bytes": 1369483
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/male-hair-bob-combat-mobile.png",
+      "retained": "/workspace/palata404/test-results/male-hair-bob-combat-mobile.png",
+      "sha256": "a6ebd9796f124747cafacbfba4c3f4ab2fd184366a634d85fd0bbc4b98d4ac41",
+      "bytes": 209000
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/male-hair-bob-head.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/male-hair-bob-head.png",
+      "sha256": "b0fac58715116610999915e247ddcecc2185218f44d7d133aad63a1532f9044d",
+      "bytes": 120651
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/male-hair-bob-wardrobe.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/male-hair-bob-wardrobe.png",
+      "sha256": "0baf574b5e6a6dc10bc180a54f86dbc6b936113443bc61fd80c98a8587c9f930",
+      "bytes": 433562
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/male-hair-classic-short-combat-mobile.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/male-hair-classic-short-combat-mobile.png",
+      "sha256": "01a274048dfcb2467407d6f7a66cd0a5ff556cdaf92999b3faaec6ccdba52a43",
+      "bytes": 197419
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/male-hair-classic-short-head-dark.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/male-hair-classic-short-head-dark.png",
+      "sha256": "5aa946c7949d0275b4b6d3231a4a1e8ffe3690912e79a6d3755436f2903d5714",
+      "bytes": 327968
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/male-hair-classic-short-head.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/male-hair-classic-short-head.png",
+      "sha256": "5fa702de97b16fca0196e9afb9bf1f4750c72522dd1f6a6abeeec9befe408894",
+      "bytes": 337404
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/male-hair-classic-short-wardrobe.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/male-hair-classic-short-wardrobe.png",
+      "sha256": "f84c37e0419f924a8d9a93b55fb19bb5a53ff4eb4cf82457100868bf5a6b5adb",
+      "bytes": 433636
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/male-hair-double-buns-combat-mobile.png",
+      "retained": "/workspace/palata404/test-results/male-hair-double-buns-combat-mobile.png",
+      "sha256": "102be6049717f4e479075f0a0b6b3442de8fe4ac40cb44126353e719b29c7a3e",
+      "bytes": 202165
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/male-hair-double-buns-head.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/male-hair-double-buns-head.png",
+      "sha256": "dea3b5482bf536235ef2269501bb3e4897f51752f56b3f70f8e3fcecc5f91bee",
+      "bytes": 139651
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/male-hair-double-buns-wardrobe.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/male-hair-double-buns-wardrobe.png",
+      "sha256": "8ac925322e098992de01500ddb6e0b74841b6b792f7972e4d3a94ca119cb4d54",
+      "bytes": 435257
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/male-hair-messy-combat-mobile.png",
+      "retained": "/workspace/palata404/test-results/male-hair-messy-combat-mobile.png",
+      "sha256": "bd87152c391287884616717b7eb77028316717c98346789531b79c116564b237",
+      "bytes": 209376
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/male-hair-messy-crown-audit-4x.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/male-hair-messy-crown-audit-4x.png",
+      "sha256": "76f3b0bccd018cd9f903b4ee2da8315d9611e6e13ff62d01f023a039bd5ba3bc",
+      "bytes": 257040
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/male-hair-messy-fit8-after-ears-4x.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/male-hair-messy-fit8-after-ears-4x.png",
+      "sha256": "32b30d9fdc5d902a95c4a4fa8f30348788c1723f8d19c4eff37c5f94c65c77db",
+      "bytes": 656117
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/male-hair-messy-fit8-after-head.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/male-hair-messy-fit8-after-head.png",
+      "sha256": "5884e046d338691db2136c6dd35a84c0ae38d5c3dbef8fec83cfd4a39139b82f",
+      "bytes": 335984
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/male-hair-messy-fit8-before-ears-4x.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/male-hair-messy-fit8-before-ears-4x.png",
+      "sha256": "8eca5af1c96af9f334f40337805d1f32ee9cb59cb6081a71185d7798aa44959b",
+      "bytes": 659559
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/male-hair-messy-fit8-before-head.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/male-hair-messy-fit8-before-head.png",
+      "sha256": "88586a4a05aee4466459a2779ae097bdb66daab0bc78ec0440fea584018bc1f4",
+      "bytes": 336585
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/male-hair-messy-head-dark.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/male-hair-messy-head-dark.png",
+      "sha256": "6b8e2871261acdabb19992b7053bd849ac4fa1e7a82402956cf04ed6b6f34661",
+      "bytes": 322141
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/male-hair-messy-head.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/male-hair-messy-fit8-after-head.png",
+      "sha256": "5884e046d338691db2136c6dd35a84c0ae38d5c3dbef8fec83cfd4a39139b82f",
+      "bytes": 335984
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/male-hair-messy-wardrobe.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/male-hair-messy-wardrobe.png",
+      "sha256": "022844a76372fa093ebc6c8bea1a899dd37ad8825a0b2aa31a13c79f0d05dec5",
+      "bytes": 433670
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/male-hair-none.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/male-hair-none.png",
+      "sha256": "c16068d48167a5a012797cb7b9f357fd530d4696fe508baef44103e16d37eb17",
+      "bytes": 508471
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/male-hair-shoulder-length-combat-mobile.png",
+      "retained": "/workspace/palata404/test-results/male-hair-shoulder-length-combat-mobile.png",
+      "sha256": "305f1bf0440b461fa972fc0a3064c52ce95098cbab9e9050dacdc875604812ab",
+      "bytes": 202126
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/male-hair-shoulder-length-fit8-after-head-dark.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/male-hair-shoulder-length-fit8-after-head-dark.png",
+      "sha256": "23de6ee4ec700c89934b70b8291f18a1c796a758ad1cf1067f5cd8370d5f730a",
+      "bytes": 382988
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/male-hair-shoulder-length-fit8-after-head.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/male-hair-shoulder-length-fit8-after-head.png",
+      "sha256": "334aff0a43dd49bc4541f3439bfceda72f61ac52d57ec6a1448c572d77f46104",
+      "bytes": 399447
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/male-hair-shoulder-length-fit8-before-head-dark.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/male-hair-shoulder-length-fit8-before-head-dark.png",
+      "sha256": "79a501bd66f1eab2297ead1fb97db4ec5efd24a736a0c35dd3360269b8241929",
+      "bytes": 361659
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/male-hair-shoulder-length-fit8-before-head.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/male-hair-shoulder-length-fit8-before-head.png",
+      "sha256": "7febe2761e1fdb28431dd0093d144f7ef46c6f5f886f962c6c764bc29d11e67d",
+      "bytes": 377527
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/male-hair-shoulder-length-head-dark.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/male-hair-shoulder-length-fit8-after-head-dark.png",
+      "sha256": "23de6ee4ec700c89934b70b8291f18a1c796a758ad1cf1067f5cd8370d5f730a",
+      "bytes": 382988
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/male-hair-shoulder-length-head.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/male-hair-shoulder-length-fit8-after-head.png",
+      "sha256": "334aff0a43dd49bc4541f3439bfceda72f61ac52d57ec6a1448c572d77f46104",
+      "bytes": 399447
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/male-hair-shoulder-length-wardrobe.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/male-hair-shoulder-length-wardrobe.png",
+      "sha256": "d9285ba113d8ef0c7179ca22bfbae97a3de9f4c72c49322434f1369c1d4e34b2",
+      "bytes": 434544
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/male-hair-textured-short-head-dark.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/male-hair-textured-short-head-dark.png",
+      "sha256": "d911aa4e9a12ab4a9b9cdbd69977fdab933a16933635bd71e14c9bfa7712512c",
+      "bytes": 305815
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/male-hair-textured-short-head.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/male-hair-textured-short-head.png",
+      "sha256": "3c9b1456f3b5c61ba0e524b36494851e64b4308aa671aadf948e3a544b7691f4",
+      "bytes": 314819
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/male-hair-textured-short-wardrobe.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/male-hair-textured-short-wardrobe.png",
+      "sha256": "eb6aff7ea50370d60ee27b2dae447a5b8cf15af7fd3948320a397ca9650bafb1",
+      "bytes": 433131
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/male-hairstyles-pack-02-overview.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/male-hairstyles-pack-02-overview.png",
+      "sha256": "dd66d554d0014a8e85083bf1167f6038e288010e37300ec96a9a3545a17e2a37",
+      "bytes": 442683
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/male-shirt-fit-detail-combat.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/male-shirt-fit-detail-combat.png",
+      "sha256": "67db810724d7562201d4e54d1aa6bfd178928bbba3903a6d3222acf376dc50da",
+      "bytes": 319766
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/male-shirt-fit-detail-patient.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/male-shirt-fit-detail-patient.png",
+      "sha256": "be3b70a602049fff3baab0252d3978d70b3f81c9e0dca8f750454cf57b1a50b8",
+      "bytes": 296861
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/mobile-battle.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/mobile-battle.png",
+      "sha256": "593a026cad2f9cbacf40779176bf2e3a762d16332b98f1e568f3855d0c325a1b",
+      "bytes": 3118343
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/mobile-lobby.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/mobile-lobby.png",
+      "sha256": "f74146730515536ff24a3c063545f83862844fb84c7be281dd9e7f37a1847813",
+      "bytes": 1901196
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/paper-doll-female-1024x768.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/paper-doll-female-1024x768.png",
+      "sha256": "19449b4144381d8a647b62425dce851065acc63c35a6ca8d7ed9cada30daee0b",
+      "bytes": 673100
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/paper-doll-female-1280x800.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/paper-doll-female-1280x800.png",
+      "sha256": "255f5c38cad295979bf7e9636309839b3e482e0b9590322c0224d9adaa6ced54",
+      "bytes": 1019874
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/paper-doll-female-320x568.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/paper-doll-female-320x568.png",
+      "sha256": "db9eafc7d1b956d127d79fd06df45436d8d0ff1ad87fb33b6ddcefef53147706",
+      "bytes": 115576
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/paper-doll-female-768x1024.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/paper-doll-female-768x1024.png",
+      "sha256": "7a0aa8522aaa1016cb3e5ac9fe13e7582556a0821309cd23231762632808f10c",
+      "bytes": 536978
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/paper-doll-female-844x390.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/paper-doll-female-844x390.png",
+      "sha256": "b20d40988f6aa4f1a011c463e7dee3ba88ac1cf04a7b9882a36c7b254153da83",
+      "bytes": 353100
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/paper-doll-male-1280x800.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/paper-doll-male-1280x800.png",
+      "sha256": "c35f4a8d5b7c1482d09fe74ad5376e66aa632d2e8a0f4c42c074d243b0b22580",
+      "bytes": 1019966
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/paper-doll-male-320x568.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/paper-doll-female-320x568.png",
+      "sha256": "db9eafc7d1b956d127d79fd06df45436d8d0ff1ad87fb33b6ddcefef53147706",
+      "bytes": 115576
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/patient-shirt-art-combat-1280x1000.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/patient-shirt-art-combat-1280x1000.png",
+      "sha256": "2a9afe2b252d987bfcfce792713dd86e9bde1019da92191c5fc426da6e7b23ed",
+      "bytes": 815110
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/patient-shirt-art-patient-1280x1000.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/patient-shirt-art-patient-1280x1000.png",
+      "sha256": "cc48a717071a6c2432a114c7980a403e65036c7ddf6bbee45d984026adc5433c",
+      "bytes": 715582
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/patient-shirt-art-phone.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/patient-shirt-art-phone.png",
+      "sha256": "6e2dde5dfc0c86aa9454f73e77467a8c17dd82ed4b54bc0f9a0f57d32305310a",
+      "bytes": 647963
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/patient-tunic-combat-female-390x844-main.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/patient-tunic-combat-female-390x844-main.png",
+      "sha256": "65a0ade7c5507cce76c89136c8478721fced8d6d28b05315d1eb50544887c288",
+      "bytes": 260479
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/patient-tunic-combat-female-390x844-wardrobe.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/patient-tunic-combat-female-390x844-wardrobe.png",
+      "sha256": "334e1bc1e8d9c550036dc4275aeb1c01cedba4e0a94dd3c0ff1e8a1f75f4cfe5",
+      "bytes": 181334
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/patient-tunic-combat-male-1280x800-main.png",
+      "retained": "/workspace/palata404/test-results/patient-tunic-combat-male-1280x800-main.png",
+      "sha256": "3454d5f01230ac90414a58a89f6285788aa11ecd8e4fcb5b4d5f4d66a483589b",
+      "bytes": 1019456
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/patient-tunic-combat-male-1280x800-wardrobe.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/patient-tunic-combat-male-1280x800-wardrobe.png",
+      "sha256": "3f7941bf4cb3f0c800d4d61a730fa0ad1d0153d2c05117a3816ab5b78a421975",
+      "bytes": 733222
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/patient-tunic-fit-female-full-combat.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/patient-tunic-fit-female-full-combat.png",
+      "sha256": "3ea25f024a9797b8a335bdc8dc9d3d073ecb13531b6c77431f3b7ee73d83c291",
+      "bytes": 841360
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/patient-tunic-fit-female-full-patient.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/patient-tunic-fit-female-full-patient.png",
+      "sha256": "c635a98624793345b2aad09392064e5fbcd28f871358c4f2838fd2cf4f70b446",
+      "bytes": 705861
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/patient-tunic-fit-female-neck-combat.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/patient-tunic-fit-female-neck-combat.png",
+      "sha256": "7e18a458761acfd8a01b7ea03e1e7c1ed5473c62e7c329bb22e11acf01485343",
+      "bytes": 95626
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/patient-tunic-fit-female-neck-patient.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/patient-tunic-fit-female-neck-combat.png",
+      "sha256": "7e18a458761acfd8a01b7ea03e1e7c1ed5473c62e7c329bb22e11acf01485343",
+      "bytes": 95626
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/patient-tunic-fit-female-shoulders-combat.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/patient-tunic-fit-female-shoulders-combat.png",
+      "sha256": "2ee3c9d3699e01fdd8071b53e5a6ecea30504dfaece1b764630ce08e6f7f5cd3",
+      "bytes": 206787
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/patient-tunic-fit-female-shoulders-patient.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/patient-tunic-fit-female-shoulders-combat.png",
+      "sha256": "2ee3c9d3699e01fdd8071b53e5a6ecea30504dfaece1b764630ce08e6f7f5cd3",
+      "bytes": 206787
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/patient-tunic-fit-female-slits-combat.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/patient-tunic-fit-female-slits-combat.png",
+      "sha256": "b9d2826f3ad83cc1f6f383008196c4dcb9b1ef4f2476da30a8d825f21f7a4d4b",
+      "bytes": 124841
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/patient-tunic-fit-female-slits-patient.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/patient-tunic-fit-female-slits-combat.png",
+      "sha256": "b9d2826f3ad83cc1f6f383008196c4dcb9b1ef4f2476da30a8d825f21f7a4d4b",
+      "bytes": 124841
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/patient-tunic-fit-female-underarms-combat.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/patient-tunic-fit-female-underarms-combat.png",
+      "sha256": "14db64937a98508bd2315c04f1da1f548a3565b37b851e6464ff70d0d839c884",
+      "bytes": 170391
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/patient-tunic-fit-female-underarms-patient.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/patient-tunic-fit-female-underarms-combat.png",
+      "sha256": "14db64937a98508bd2315c04f1da1f548a3565b37b851e6464ff70d0d839c884",
+      "bytes": 170391
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/patient-tunic-fit-male-full-combat.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/patient-tunic-fit-male-full-combat.png",
+      "sha256": "f80d7400b67f7f2e1671dc9b4ebfa0acf08af08711586659a1b4e47496831a99",
+      "bytes": 839859
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/patient-tunic-fit-male-full-patient.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/patient-tunic-fit-male-full-patient.png",
+      "sha256": "6d0c7a781c01bd0855cfec3dd2c9f6d75ad861cc0a66f9710033eaaf2bd88ec7",
+      "bytes": 707816
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/patient-tunic-fit-male-shoulders-combat.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/patient-tunic-fit-male-shoulders-combat.png",
+      "sha256": "765bbbd2a216c4d697e667ce8e1eacde90a1f39973841ef9f88eccbc3b9d5f29",
+      "bytes": 230359
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/patient-tunic-fit-male-shoulders-patient.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/patient-tunic-fit-male-shoulders-combat.png",
+      "sha256": "765bbbd2a216c4d697e667ce8e1eacde90a1f39973841ef9f88eccbc3b9d5f29",
+      "bytes": 230359
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/patient-tunic-fit-male-slits-combat.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/patient-tunic-fit-male-slits-combat.png",
+      "sha256": "78a8cd6e30e2b5d28103a36fd0623ddee1a03d4bf7ef61c3060173ada6e8ad78",
+      "bytes": 132905
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/patient-tunic-fit-male-slits-patient.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/patient-tunic-fit-male-slits-combat.png",
+      "sha256": "78a8cd6e30e2b5d28103a36fd0623ddee1a03d4bf7ef61c3060173ada6e8ad78",
+      "bytes": 132905
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/patient-tunic-fit-male-underarms-combat.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/patient-tunic-fit-male-underarms-combat.png",
+      "sha256": "bbbbdabb2cab2c35dc44e418aeba253300293e42f9b5f6b60c0b6894ef08ce74",
+      "bytes": 185275
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/patient-tunic-fit-male-underarms-patient.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/patient-tunic-fit-male-underarms-combat.png",
+      "sha256": "bbbbdabb2cab2c35dc44e418aeba253300293e42f9b5f6b60c0b6894ef08ce74",
+      "bytes": 185275
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/patient-tunic-fit-phone.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/patient-tunic-fit-phone.png",
+      "sha256": "314a82cf760f1794f093f52e7bce60e74046e5f7f7a6fea835b663e122b3dce9",
+      "bytes": 1547285
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/patient-tunic-patient-female-390x844-main.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/patient-tunic-patient-female-390x844-main.png",
+      "sha256": "2b8b40a26c7bee2a492277d980493fb3066b4505d04c003030634754a9efd365",
+      "bytes": 260478
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/patient-tunic-patient-male-390x844-main.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/patient-tunic-patient-male-390x844-main.png",
+      "sha256": "a8ae3ab507cb835cbb49fab2d14430e48a1652588461ccc6cae7e93723e2b7a7",
+      "bytes": 260850
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/personnel-form-1024x768.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/personnel-form-1024x768.png",
+      "sha256": "09d1704cef249acdc18688c41600c61d2002798b1376c20e8dc8a595c6ed70d0",
+      "bytes": 351330
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/personnel-form-1280x800.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/personnel-form-1280x800.png",
+      "sha256": "63b0ad373f9db334e98b00527bd5f6b10594506b910e3e1880c27fb04539e196",
+      "bytes": 417125
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/personnel-form-320x568.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/personnel-form-320x568.png",
+      "sha256": "29abbacc12f04751beb431d670ea6ce02820055f1535ed97fa3c259f1c69a661",
+      "bytes": 102173
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/personnel-form-768x1024.png",
+      "retained": "/workspace/palata404/test-results/personnel-form-768x1024.png",
+      "sha256": "e2bafda654a15158bf5fff6bc9d054dfee914e24006c39fd5602a0f19cf2ecab",
+      "bytes": 369588
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/registration-combat-female-1280x800.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/registration-combat-female-1280x800.png",
+      "sha256": "c4d2db8a2f31aa15116a03cf63f8cf9a506eda9a036a6e14dddf7bebdc85cc14",
+      "bytes": 740094
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/registration-combat-male-1024x768.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/registration-combat-male-1024x768.png",
+      "sha256": "4fd0e0ce0db605319c3f8fbf21426df4c31e44d965f90edd862ed86c601248b7",
+      "bytes": 557147
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/registration-combat-male-1280x800.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/registration-combat-male-1280x800.png",
+      "sha256": "5aa1cfef1d3b08d4718b855aa3078096c44a1b529865b28dccc90de420e4d338",
+      "bytes": 739419
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/staff-archive-1024x768.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/staff-archive-1024x768.png",
+      "sha256": "628af0e349cdc986112a2e9e6238b94309c0324554691baa21eba7eb0cc23a1e",
+      "bytes": 360263
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/staff-archive-1280x800.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/staff-archive-1280x800.png",
+      "sha256": "a2e2fe0e024a310691e529f327db874a6b81d020e068249b93975312d36a39cc",
+      "bytes": 423777
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/staff-archive-320x568.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/staff-archive-320x568.png",
+      "sha256": "6a1455972de9390a2c3f5c450a69d76b9dd8705e25735e34786187434972f715",
+      "bytes": 111249
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/staff-archive-390x844.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/staff-archive-390x844.png",
+      "sha256": "fe20b886bcd1770489d15d1a2317a86fb1129cc9dd69463410ebe117c24ed9ca",
+      "bytes": 220434
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/staff-archive-768x1024.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/staff-archive-768x1024.png",
+      "sha256": "f0d65e214379d65f4092d0e134c7703361fa29849a4a2c92c1b4b889186c29e2",
+      "bytes": 377554
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/staff-archive-844x390.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/staff-archive-844x390.png",
+      "sha256": "7c9e8e5a2dff1a468bdf36a3abb69c391dbc0a3dc129496c464212144fd76a56",
+      "bytes": 167756
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/victory-1280x800.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/victory-1280x800.png",
+      "sha256": "4cbd503e3fa65631924c75b4872b6ec5e2a3e50b724a8da99dd06264ba7196be",
+      "bytes": 394601
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/victory-390x844.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/victory-390x844.png",
+      "sha256": "55b2f9d0b8bbbbc4630e919cf53a8eb999f434e3de4dff4d9ad493e1b688191f",
+      "bytes": 190021
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/victory-summary-1024x600.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/victory-summary-1024x600.png",
+      "sha256": "da398931a2fb5faab835736e6987e4d665a402f1b28eae272cb3bfe5cf2c8d36",
+      "bytes": 263075
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/victory-summary-1366x768.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/victory-summary-1366x768.png",
+      "sha256": "75caf3e6e0d7cbde294a2e178be965dea446eeb6d2d7a93693836c687454e655",
+      "bytes": 415049
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/victory-summary-320x320.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/victory-summary-320x320.png",
+      "sha256": "804b4e0507e5133fe230bed46ea14be7cf28a9e5d513a7697672f1df6906449a",
+      "bytes": 62492
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/victory-summary-390x844.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/victory-summary-390x844.png",
+      "sha256": "b2f9ab7c22a9e75608ca4541ca592cc08ab6b7c65c7256d3b817c8b8429f942f",
+      "bytes": 179171
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/victory-summary-844x390.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/victory-summary-844x390.png",
+      "sha256": "0cb2816c643d026fc78ba7c686fb870c060f6d006c9cf3ae3ac3c6986908c4e1",
+      "bytes": 135577
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/wardrobe-final-empty-combat-1920x1080.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/wardrobe-final-empty-combat-1920x1080.png",
+      "sha256": "0ebc24243eed39ab3de5597364d8a7a394f565e1539940fb7aa50ed8f7ef5749",
+      "bytes": 1265249
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/wardrobe-final-empty-combat-320x568.png",
+      "retained": "/workspace/palata404/test-results/wardrobe-final-empty-combat-320x568.png",
+      "sha256": "d377be30ea2e03cd2899f9726d213c0c92136ac376f4d2acc16e04fe248040a2",
+      "bytes": 95022
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/wardrobe-final-empty-combat-390x844.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/wardrobe-final-empty-combat-390x844.png",
+      "sha256": "be9c533ac4fe521706164fdf75dd4a4257c577c5ce36ec814b42ace302928dc0",
+      "bytes": 185194
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/wardrobe-final-empty-combat-768x1024.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/wardrobe-final-empty-combat-768x1024.png",
+      "sha256": "d6d29ea446575200ee283e7276b922e8f9f5bcca4b4fbc24ef5727aaffed90bf",
+      "bytes": 409095
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/wardrobe-final-empty-patient-390x844.png",
+      "retained": "/workspace/palata404/test-results/wardrobe-final-empty-patient-390x844.png",
+      "sha256": "e8d2f7aeb92355de2cb6bf78516cbc8ebe237ab213174dcdb59d68f6b7006752",
+      "bytes": 165390
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/wardrobe-scale-combat-female-1280x800.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/wardrobe-scale-combat-female-1280x800.png",
+      "sha256": "c401a91bc74b29441a61508bee62c6d0abfa93eeb6f453eac2e199f83af1eb82",
+      "bytes": 740237
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/wardrobe-scale-combat-female-1920x1080.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/wardrobe-scale-combat-female-1920x1080.png",
+      "sha256": "e421f2d426bb9e3c2e2bb1613191eb4a42edf06fca70ffac86b10360c18951e2",
+      "bytes": 1274610
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/wardrobe-scale-combat-male-1280x800.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/wardrobe-scale-combat-male-1280x800.png",
+      "sha256": "b9d1f3388fa8b48349cdf8bb61c7519e715b25755cd471a1faf3c40cd757612c",
+      "bytes": 739146
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/wardrobe-scale-combat-male-1920x1080.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/wardrobe-scale-combat-male-1920x1080.png",
+      "sha256": "e3abe1e32626564a3b7c4fb1b5ccb7a6a2be5cab110b203181ebeb4786288e14",
+      "bytes": 1273737
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/wardrobe-scale-patient-female-1280x800.png",
+      "retained": "/workspace/avatar-foundation-regression/test-results/ground-shadow-female-patient-1280x800.png",
+      "sha256": "08d7450440fe8ce95fa7c3b9eb21f03f1532848f2a90d9a552409a874969e24e",
+      "bytes": 663414
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/wardrobe-v3-combat-female-1024x768.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/wardrobe-v3-combat-female-1024x768.png",
+      "sha256": "84ab2a836c99bd457f8fe660ffc6fc8170d9d80d5780aa1ad364e18e4987ef7e",
+      "bytes": 557486
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/wardrobe-v3-combat-female-2560x1440.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/wardrobe-v3-combat-female-2560x1440.png",
+      "sha256": "243ce3ea5814877a57e1cdcb1d4b8376e2ec95f9d56548741a850eeae7957757",
+      "bytes": 1591635
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/wardrobe-v3-combat-male-1024x768.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/wardrobe-v3-combat-male-1024x768.png",
+      "sha256": "1870ee554aa8f1a66d2593c793318fc50d023b2c1c920e0fd572e3a9663dba3b",
+      "bytes": 556802
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/wardrobe-v3-combat-male-1280x800.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/wardrobe-v3-combat-male-1280x800.png",
+      "sha256": "0103b31fb36d604fd8116336bbe415fb41797d95f010cddb090268fb4566bf33",
+      "bytes": 739114
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/wardrobe-v3-combat-male-1440x900.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/wardrobe-v3-combat-male-1440x900.png",
+      "sha256": "8e91e2030a41ae4b0e506af05115053fbc25d23a8c0fb7bb870d9adde91be5b8",
+      "bytes": 935457
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/wardrobe-v3-combat-male-1920x1080.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/wardrobe-v3-combat-male-1920x1080.png",
+      "sha256": "1d72add9ce5ec1ba9f4fdff1ee0d112684487d53779cd78538012e742d55dffd",
+      "bytes": 1273706
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/wardrobe-v3-combat-male-2560x1440.png",
+      "retained": "/workspace/palata404/test-results/wardrobe-v3-combat-male-2560x1440.png",
+      "sha256": "4811825c489d5946162131db89912814a8b4b06ce33070ff5209e1bd5791ff19",
+      "bytes": 1590404
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/wardrobe-v3-combat-male-320x568.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/wardrobe-v3-combat-male-320x568.png",
+      "sha256": "0569eaebf40ba1d3825e22723072b7e8b5a543cbb494fb8877bcde0660a63334",
+      "bytes": 91343
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/wardrobe-v3-combat-male-390x844.png",
+      "retained": "/workspace/palata404/test-results/wardrobe-v3-combat-male-390x844.png",
+      "sha256": "38863029bafdbb2db6b5d5d718122a86713b9928450f4219269a2857b49838ea",
+      "bytes": 181965
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/wardrobe-v3-combat-male-768x1024.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/wardrobe-v3-combat-male-768x1024.png",
+      "sha256": "cec2cb19307b8403add7b5123a9c6511b94bdc1f3c650cb9e81f4330b4ba92e3",
+      "bytes": 408490
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/wardrobe-v3-items-768x1024.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/wardrobe-v3-items-768x1024.png",
+      "sha256": "156347249039807f8be6efeb28fd67bafe712cc677fd9f08c2e5e0a5c74f98d4",
+      "bytes": 464394
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/wide-wardrobe-1024x768.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/wide-wardrobe-1024x768.png",
+      "sha256": "61a9ee5a19bd0d1b753160d95a7ab4e5f1b10c5f650ba596c7d7af73bf0769dd",
+      "bytes": 534943
+    },
+    {
+      "removed": "/workspace/avatar-foundation-regression/test-results/wide-wardrobe-1280x800.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/wide-wardrobe-1280x800.png",
+      "sha256": "b0211effc0a2f9da111b21a4e2bafff97c43f1eb728bb467a1778792db8f5998",
+      "bytes": 708688
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/approved-female-room-1280x800.png",
+      "retained": "/workspace/avatar-foundation-regression/test-results/approved-female-room-1280x800.png",
+      "sha256": "9c296eddb0ab7f78e06b21b4a06682a779ab3321e41de497372c836367fcc10b",
+      "bytes": 1021023
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/approved-female-room-320x568.png",
+      "retained": "/workspace/avatar-foundation-regression/test-results/approved-female-room-320x568.png",
+      "sha256": "17ce5388548cd75e0c73552ec8c9af2f5157977f6149007c6f842cb9014bfc82",
+      "bytes": 155150
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/approved-female-room-390x844.png",
+      "retained": "/workspace/avatar-foundation-regression/test-results/approved-female-room-390x844.png",
+      "sha256": "5121978b0e449256700aa4ac28cd6e5fc0861658da8f66cb64abc5c96e7bfe03",
+      "bytes": 260952
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/approved-female-room-768x1024.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/approved-female-room-768x1024.png",
+      "sha256": "9581ed6731df7476e5483e3ad49a11791f81231ea5aec98560538f8998f32754",
+      "bytes": 539774
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/approved-female-wardrobe-768x1024.png",
+      "retained": "/workspace/palata404/test-results/approved-female-wardrobe-768x1024.png",
+      "sha256": "fe096beb5662614931c99ac6014d7d98f7e81193edec0b277c4001953c4dd5ff",
+      "bytes": 375488
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/approved-male-room-1280x800.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/approved-male-room-1280x800.png",
+      "sha256": "06cff844a4cda8c38d360f3fa698df6db14c68e4a129d9817c7045062db3f560",
+      "bytes": 1019463
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/approved-male-room-320x568.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/approved-male-room-320x568.png",
+      "sha256": "3637790dd293f5e78b38ecd1e12b311c972cce18d0941ed2358b84b04e18a182",
+      "bytes": 155122
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/approved-male-room-390x844.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/approved-male-room-390x844.png",
+      "sha256": "313f9f585a1da498d3f09fe619d5953c0fe2ba50292800b7514276ad9dc5805e",
+      "bytes": 260946
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/archive-doctor-documents-1280.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/archive-doctor-documents-1280.png",
+      "sha256": "b95027d43ce1335bd247940220ccc86c6c1b4559cb79162cd034787351960616",
+      "bytes": 406345
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/archive-doctor-documents-390.png",
+      "retained": "/workspace/palata404/test-results/archive-doctor-documents-390.png",
+      "sha256": "c7566e713d29e72f80233e0bbe382ab6d579f818d010629a0e7c812bd2b04bcd",
+      "bytes": 181765
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/archive-doctor-identity-1280.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/archive-doctor-identity-1280.png",
+      "sha256": "96eda924cd6cc7233f6370b14e206c869ed0c4b43658b3368499d0efc3d089bd",
+      "bytes": 428135
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/archive-doctor-identity-390.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/archive-doctor-identity-390.png",
+      "sha256": "161fe2f19734462129840e00e7d21bf93305b0b6c1e60aae5f31ef55085762d4",
+      "bytes": 168565
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/archive-doctor-observations-1280.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/archive-doctor-observations-1280.png",
+      "sha256": "e51499b1070f851d7ce40801a4174c85520247d20e75a97054813451bfaecfd8",
+      "bytes": 391447
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/archive-doctor-observations-390.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/archive-doctor-observations-390.png",
+      "sha256": "5b429c50c1e3b2afaa0a6c387da4a793f1eeb0b206a73abad737a38d5a56fe81",
+      "bytes": 171327
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/archive-doctor-rewards-1280.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/archive-doctor-rewards-1280.png",
+      "sha256": "71d8d21c69acd0eb89e097c01d86addff3ad26be7c94645c8c6ff267ded469f9",
+      "bytes": 346255
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/archive-doctor-rewards-390.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/archive-doctor-rewards-390.png",
+      "sha256": "cbcedd45ffbc4d2397bd3a2ead0a98c36013e10c262fa8833c6f7b4a1a6f0d84",
+      "bytes": 158300
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/archive-nurse-documents-1280.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/archive-nurse-documents-1280.png",
+      "sha256": "a9904896c467a1e51772eca0aee3ba5087a61fe56cc21ea7a4dbb41906cd36ec",
+      "bytes": 384998
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/archive-nurse-documents-390.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/archive-nurse-documents-390.png",
+      "sha256": "370d41d2edb5614f9db581eb6a5babcff8f0c51cd9c4970bc9dd2a8caf748aaa",
+      "bytes": 171958
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/archive-nurse-identity-1280.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/archive-nurse-identity-1280.png",
+      "sha256": "736f1a10e85026765d1dd971cef2030fbe0c03008321cf47237b05c56aa19bd3",
+      "bytes": 423903
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/archive-nurse-observations-1280.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/archive-nurse-observations-1280.png",
+      "sha256": "4bfa608bc06bbd4e350b5e656155365dd24df557b43f9a1c415a812dd51ae65c",
+      "bytes": 385214
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/archive-nurse-observations-390.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/archive-nurse-observations-390.png",
+      "sha256": "211283b6cac1c35f329ad1dae7eb515bb02a4bb86ed4a664cd2038d68f32ccc4",
+      "bytes": 175437
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/archive-nurse-rewards-1280.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/archive-nurse-rewards-1280.png",
+      "sha256": "f51c7e48ed047beb9ada1ccc51f44e647905378c6842928b730d72f7e7fc486e",
+      "bytes": 346715
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/archive-nurse-rewards-390.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/archive-nurse-rewards-390.png",
+      "sha256": "1d1ee4f0797d4939ff85b0533a548b418b436a56080cb732785c32de0df08583",
+      "bytes": 158798
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/asian-head-female-combat-1280.png",
+      "retained": "/workspace/palata404/test-results/asian-head-female-combat-1280.png",
+      "sha256": "d6edba78175e760e5a13147b5fae180bd56e1dd3041060a56a5bd8cc9ca6162f",
+      "bytes": 775412
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/asian-head-male-combat-1280.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/asian-head-male-combat-1280.png",
+      "sha256": "961b3fc0b48e44582f33927bf1dcd5a573ce3c82b38acca44033e07709cc732a",
+      "bytes": 774208
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/compact-staff-doctor-1024x768.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/compact-staff-doctor-1024x768.png",
+      "sha256": "83e2309d48fad7187af923b286ba92dbbd7b3f8cfb772b3c5dda024ac9b9d1fb",
+      "bytes": 361997
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/compact-staff-doctor-1280x800.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/compact-staff-doctor-1280x800.png",
+      "sha256": "4fe7aaaa705743e11c46c5458e28d523c939d54cd517a093d6571e6d4a935119",
+      "bytes": 427926
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/compact-staff-doctor-320x568.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/compact-staff-doctor-320x568.png",
+      "sha256": "c60dc3cd990fd6add58f041e44da34b99566e4613a734a901e36823d1d3774dc",
+      "bytes": 148143
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/compact-staff-doctor-390x844.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/compact-staff-doctor-390x844.png",
+      "sha256": "8668542df20c14879785a15c061d7f6301aed452f8862555a5b266148922860c",
+      "bytes": 209819
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/compact-staff-doctor-768x1024.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/compact-staff-doctor-768x1024.png",
+      "sha256": "7b068e6ee95ae8e2c5b77ec80de411a097341bb7ab31bc4a9eab050b9d2a865a",
+      "bytes": 379421
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/compact-staff-doctor-844x390.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/compact-staff-doctor-844x390.png",
+      "sha256": "4e5024fee44949515b05c0254ae1d93526d6508ca72329495a12740062ccd538",
+      "bytes": 176321
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/compact-staff-nurse-1024x768.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/compact-staff-nurse-1024x768.png",
+      "sha256": "013e10e91b09816272c7122d4948508ad0aed5bd3d39336cf78a90007d17b719",
+      "bytes": 360306
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/compact-staff-nurse-1280x800.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/compact-staff-nurse-1280x800.png",
+      "sha256": "8e375e58b9fd383d49261c7b47d65f734303e126ee57f1fb2566d9d083a18424",
+      "bytes": 423760
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/compact-staff-nurse-320x568.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/compact-staff-nurse-320x568.png",
+      "sha256": "b49c6d2e49b624cf645ba8ed0003696d16cdb919b2c3fb931e3a804c29fe565f",
+      "bytes": 146122
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/compact-staff-nurse-390x844.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/compact-staff-nurse-390x844.png",
+      "sha256": "5b88d4b98857063e3e90cabdd72a5a11ecab8900b79d5d3c65b71edfb26e8fcc",
+      "bytes": 207869
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/compact-staff-nurse-768x1024.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/compact-staff-nurse-768x1024.png",
+      "sha256": "355a30330a73a7d81afe884e2c222f6ed02b26f6a4c1cc7163d5634eea98c168",
+      "bytes": 377516
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/compact-staff-nurse-844x390.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/compact-staff-nurse-844x390.png",
+      "sha256": "86308e082eb3ea025699ea6cc65bb6178e6683d46fd6c5d2ebdd7e1ce3c4e561",
+      "bytes": 174829
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/female-hair-bob-combat-mobile.png",
+      "retained": "/workspace/palata404/test-results/female-hair-bob-combat-mobile.png",
+      "sha256": "e95f41b8c892a7f9b02947794f6058e17edd9d976fb6191e21b9e3483f70d7ce",
+      "bytes": 209670
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/female-hair-bob-head.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/female-hair-bob-head.png",
+      "sha256": "3010d16d7cc90a39c7f7a172ec9a593caf903f5557ac7d85286050566ee239f7",
+      "bytes": 119064
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/female-hair-bob-wardrobe.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/female-hair-bob-wardrobe.png",
+      "sha256": "74043e23b0d5dcdd486e356db45580a5784e0f8c7187bf87bb4a375a5db3c104",
+      "bytes": 432993
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/female-hair-classic-short-head-dark.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/female-hair-classic-short-head-dark.png",
+      "sha256": "8b94ba39d3b0b4773ad2b55cf4f6d7281b83c7ea9b8a57761414d870185bba0a",
+      "bytes": 330606
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/female-hair-classic-short-head.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/female-hair-classic-short-head.png",
+      "sha256": "8321f4a9e569f4a03232d64b8975029fdf793b163722dac7121d60f07d7185c0",
+      "bytes": 338375
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/female-hair-classic-short-wardrobe.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/female-hair-classic-short-wardrobe.png",
+      "sha256": "d531c20cb8045c17429cfbbd0070ebddd817a02df32b147ff4fb9272b8046c96",
+      "bytes": 433062
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/female-hair-double-buns-combat-mobile.png",
+      "retained": "/workspace/palata404/test-results/female-hair-double-buns-combat-mobile.png",
+      "sha256": "e962e25b8900d0412a5858a7d8370f05de352d696d4960041a8cc1f06afa725a",
+      "bytes": 203427
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/female-hair-double-buns-head.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/female-hair-double-buns-head.png",
+      "sha256": "8150badb225cf9d81a27c368874a4aedce11f324f7d5c40ff1372b9a37dadec5",
+      "bytes": 145680
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/female-hair-double-buns-wardrobe.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/female-hair-double-buns-wardrobe.png",
+      "sha256": "0aa0f7ae51b0f4f7c5c71c6dc781a7e5dbf07eb02c35b1dcc461d2242950ac9c",
+      "bytes": 435099
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/female-hair-messy-combat-mobile.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/female-hair-messy-combat-mobile.png",
+      "sha256": "9d9918d3eaaff15282e46225951f24e98521f466c93ed7e7f292f8a4bfeb68a1",
+      "bytes": 210668
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/female-hair-messy-head.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/female-hair-messy-head.png",
+      "sha256": "c99f875a3a342b8143e55a0a3cf04577a0e9345ffa139b5279cf82a6b3a0f71f",
+      "bytes": 136741
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/female-hair-messy-wardrobe.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/female-hair-messy-wardrobe.png",
+      "sha256": "78d92493c5eb22ca43537542b87d7e462b81cc10a430f3ffdb6b70b220b432ff",
+      "bytes": 434609
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/female-hair-none.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/female-hair-none.png",
+      "sha256": "798304bc0db6ae87c8ad609c6be7b18a9395615c23bbf54af583a31c67d4ee8c",
+      "bytes": 509244
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/female-hair-shoulder-length-combat-mobile.png",
+      "retained": "/workspace/palata404/test-results/female-hair-shoulder-length-combat-mobile.png",
+      "sha256": "94f5c3112dfc5460153f88c0de42ea5b84dcbb616e9469d349437cf53d79fc96",
+      "bytes": 203075
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/female-hair-shoulder-length-fit8-after-head.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/female-hair-shoulder-length-fit8-after-head.png",
+      "sha256": "f0bc55710d83ef183b89086231003228c793fa52ec0d80bcf9ef18282c0af76b",
+      "bytes": 456700
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/female-hair-shoulder-length-fit8-before-head.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/female-hair-shoulder-length-fit8-before-head.png",
+      "sha256": "61ac105f59a9b7f41ea56f66127e20d62f559b57f5ed4a2e8caf9afc2bcf7585",
+      "bytes": 457114
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/female-hair-shoulder-length-head-dark.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/female-hair-shoulder-length-head-dark.png",
+      "sha256": "f2a90770b185f604438e949597e27e5223fb2e209ce00a5dc2f620b7688f7a9d",
+      "bytes": 433430
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/female-hair-shoulder-length-head.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/female-hair-shoulder-length-fit8-after-head.png",
+      "sha256": "f0bc55710d83ef183b89086231003228c793fa52ec0d80bcf9ef18282c0af76b",
+      "bytes": 456700
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/female-hair-shoulder-length-patient-mobile.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/female-hair-shoulder-length-patient-mobile.png",
+      "sha256": "1633fe37d2ab64bba711db8eab0d0678c1597debac8a8a4f43e423de5756c04f",
+      "bytes": 203233
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/female-hair-shoulder-length-wardrobe.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/female-hair-shoulder-length-wardrobe.png",
+      "sha256": "e9f6cdb8571a4c76d73bab2a78a152457afb9a9ef79a8fd37ad4bf56146b3c27",
+      "bytes": 434323
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/female-hair-textured-short-fit8-after-head.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/female-hair-textured-short-fit8-after-head.png",
+      "sha256": "53542eb03e907681e4c4c6105411efb4874133a9de7228cab609b83bfa5ec096",
+      "bytes": 318702
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/female-hair-textured-short-fit8-before-head.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/female-hair-textured-short-fit8-before-head.png",
+      "sha256": "682175b654bdee4a557f962f7380c9fb91d5f050fcc1eafc2deb9ea6c0d25252",
+      "bytes": 326530
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/female-hair-textured-short-head-dark.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/female-hair-textured-short-head-dark.png",
+      "sha256": "60d62e5b2947960303441c810613ca15619c27d9e0f019bea6114fb3a4888b93",
+      "bytes": 311065
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/female-hair-textured-short-head.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/female-hair-textured-short-fit8-after-head.png",
+      "sha256": "53542eb03e907681e4c4c6105411efb4874133a9de7228cab609b83bfa5ec096",
+      "bytes": 318702
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/female-hair-textured-short-wardrobe.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/female-hair-textured-short-wardrobe.png",
+      "sha256": "d968f022df0524a635f94a2380d68d3413a49bc2218ce6cb1e35b5ade16be4d8",
+      "bytes": 432611
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/female-hairstyles-pack-02-overview.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/female-hairstyles-pack-02-overview.png",
+      "sha256": "27959e6b8e2de6d03bc6c00ae832885e23a0b0123cfd1bdfd03c5b1352554955",
+      "bytes": 450394
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/female-shirt-fit-detail-combat.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/female-shirt-fit-detail-combat.png",
+      "sha256": "88904b302bae5afafa44944765711e33632e4e7ad7b54adefa5756f0ca0b7c76",
+      "bytes": 324003
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/female-shirt-fit-detail-patient.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/female-shirt-fit-detail-patient.png",
+      "sha256": "b3b0d00f96b8ecd8e1b68a487b90b6bcb7f22bf146f999b9a44de109e5c49772",
+      "bytes": 297121
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/final-mobile-768-combat-female-hair.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/final-mobile-768-combat-female-hair.png",
+      "sha256": "13dbce141d4ebdecb1af9a9494e111b77babc8e9eb406c5b8ab2229237596c45",
+      "bytes": 443727
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/final-mobile-768-combat-male-faces.png",
+      "retained": "/workspace/palata404/test-results/final-mobile-768-combat-male-faces.png",
+      "sha256": "18d5de2182fde06e2f8bc3ce612637002cef76377e81db568097ccf7cd1fd620",
+      "bytes": 443600
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/folder-hud-1024x768.png",
+      "retained": "/workspace/palata404/test-results/folder-hud-1024x768.png",
+      "sha256": "cd700de72ca94ee028739c86e53c8aa1e313aeb9958644d526086539744c0c6e",
+      "bytes": 664008
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/folder-hud-1280x800.png",
+      "retained": "/workspace/avatar-foundation-regression/test-results/folder-hud-1280x800.png",
+      "sha256": "226d6c87fdb97ec97c784714ed44bc9bcc0125416180f4bae905ae484aca2ba9",
+      "bytes": 1020880
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/folder-hud-320x568.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/folder-hud-320x568.png",
+      "sha256": "98c8c1a83ff5c24fa03e1de7e8ca15424eeab93682ec37e20083edff79ebe390",
+      "bytes": 115567
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/folder-hud-390x844.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/folder-hud-390x844.png",
+      "sha256": "8d2c504c55f31eb28a0d6492354af3e899e22c2fb1295ac78b7710c03eb47d88",
+      "bytes": 232601
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/folder-hud-768x1024.png",
+      "retained": "/workspace/palata404/test-results/folder-hud-768x1024.png",
+      "sha256": "15ebb5c8440d6ce79c6c2944cc09f427c355de9460c1e5415ba7596cabc1784c",
+      "bytes": 535261
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/folder-hud-844x390.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/folder-hud-844x390.png",
+      "sha256": "51ec31cf6f7f2c1cd434f99e383f81fb398287161d0ab445bb981eaf0d71a218",
+      "bytes": 356380
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/ground-shadow-female-combat-1024x768.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/ground-shadow-female-combat-1024x768.png",
+      "sha256": "2b7f0611a6a66751f3f21252e14b1b81a0c255764c806d4b340e7eeb731438ff",
+      "bytes": 557071
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/ground-shadow-female-combat-1280x800.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/ground-shadow-female-combat-1280x800.png",
+      "sha256": "20c1ced4660020e522a4a2fa0b12fda4d21dbd970aa71a593ac08d37402b07d1",
+      "bytes": 739914
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/ground-shadow-female-combat-768x1024.png",
+      "retained": "/workspace/avatar-foundation-regression/test-results/ground-shadow-female-combat-768x1024.png",
+      "sha256": "ee3f543a75a3fd6c85a449b4ee90e51988f0953059958f4a2f68640089c8401e",
+      "bytes": 409045
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/ground-shadow-male-combat-1280x800.png",
+      "retained": "/workspace/avatar-foundation-regression/test-results/ground-shadow-male-combat-1280x800.png",
+      "sha256": "8c71e919bf6f14a866b95dbaa95bf51f89048eb93c9461417ece3d89f3827365",
+      "bytes": 739576
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/ground-shadow-male-combat-768x1024.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/ground-shadow-male-combat-768x1024.png",
+      "sha256": "b8ed5cbc8fa064310d99d71ee1fcf9ca53737c59fb624c4fa459d0f44ff92306",
+      "bytes": 408411
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/ground-shadow-male-patient-390x844.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/approved-male-wardrobe-390x844.png",
+      "sha256": "0514437397ced82f16309e1618419450a557db2dbf33447440e76331db99bb3a",
+      "bytes": 162172
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/hair-palette-combat-1280.png",
+      "retained": "/workspace/avatar-foundation-regression/test-results/hair-palette-combat-1280.png",
+      "sha256": "5f635ca5e40206b2e43f4953fbfc5bf998e27d22f4628e8f80b050d1929450e5",
+      "bytes": 794115
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/hair-palette-combat-1920.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/hair-palette-combat-1920.png",
+      "sha256": "46d4b1b3ec017493d42898d90e3f67924340fc522633e9b52fa4fe90c04ac7e8",
+      "bytes": 1369483
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/male-hair-bob-combat-mobile.png",
+      "retained": "/workspace/palata404/test-results/male-hair-bob-combat-mobile.png",
+      "sha256": "a6ebd9796f124747cafacbfba4c3f4ab2fd184366a634d85fd0bbc4b98d4ac41",
+      "bytes": 209000
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/male-hair-bob-head.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/male-hair-bob-head.png",
+      "sha256": "b0fac58715116610999915e247ddcecc2185218f44d7d133aad63a1532f9044d",
+      "bytes": 120651
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/male-hair-bob-wardrobe.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/male-hair-bob-wardrobe.png",
+      "sha256": "0baf574b5e6a6dc10bc180a54f86dbc6b936113443bc61fd80c98a8587c9f930",
+      "bytes": 433562
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/male-hair-classic-short-combat-mobile.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/male-hair-classic-short-combat-mobile.png",
+      "sha256": "01a274048dfcb2467407d6f7a66cd0a5ff556cdaf92999b3faaec6ccdba52a43",
+      "bytes": 197419
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/male-hair-classic-short-head-dark.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/male-hair-classic-short-head-dark.png",
+      "sha256": "5aa946c7949d0275b4b6d3231a4a1e8ffe3690912e79a6d3755436f2903d5714",
+      "bytes": 327968
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/male-hair-classic-short-head.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/male-hair-classic-short-head.png",
+      "sha256": "5fa702de97b16fca0196e9afb9bf1f4750c72522dd1f6a6abeeec9befe408894",
+      "bytes": 337404
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/male-hair-classic-short-wardrobe.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/male-hair-classic-short-wardrobe.png",
+      "sha256": "f84c37e0419f924a8d9a93b55fb19bb5a53ff4eb4cf82457100868bf5a6b5adb",
+      "bytes": 433636
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/male-hair-double-buns-combat-mobile.png",
+      "retained": "/workspace/palata404/test-results/male-hair-double-buns-combat-mobile.png",
+      "sha256": "102be6049717f4e479075f0a0b6b3442de8fe4ac40cb44126353e719b29c7a3e",
+      "bytes": 202165
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/male-hair-double-buns-head.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/male-hair-double-buns-head.png",
+      "sha256": "dea3b5482bf536235ef2269501bb3e4897f51752f56b3f70f8e3fcecc5f91bee",
+      "bytes": 139651
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/male-hair-double-buns-wardrobe.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/male-hair-double-buns-wardrobe.png",
+      "sha256": "8ac925322e098992de01500ddb6e0b74841b6b792f7972e4d3a94ca119cb4d54",
+      "bytes": 435257
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/male-hair-messy-combat-mobile.png",
+      "retained": "/workspace/palata404/test-results/male-hair-messy-combat-mobile.png",
+      "sha256": "bd87152c391287884616717b7eb77028316717c98346789531b79c116564b237",
+      "bytes": 209376
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/male-hair-messy-crown-audit-4x.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/male-hair-messy-crown-audit-4x.png",
+      "sha256": "76f3b0bccd018cd9f903b4ee2da8315d9611e6e13ff62d01f023a039bd5ba3bc",
+      "bytes": 257040
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/male-hair-messy-fit8-after-ears-4x.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/male-hair-messy-fit8-after-ears-4x.png",
+      "sha256": "32b30d9fdc5d902a95c4a4fa8f30348788c1723f8d19c4eff37c5f94c65c77db",
+      "bytes": 656117
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/male-hair-messy-fit8-after-head.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/male-hair-messy-fit8-after-head.png",
+      "sha256": "5884e046d338691db2136c6dd35a84c0ae38d5c3dbef8fec83cfd4a39139b82f",
+      "bytes": 335984
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/male-hair-messy-fit8-before-ears-4x.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/male-hair-messy-fit8-before-ears-4x.png",
+      "sha256": "8eca5af1c96af9f334f40337805d1f32ee9cb59cb6081a71185d7798aa44959b",
+      "bytes": 659559
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/male-hair-messy-fit8-before-head.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/male-hair-messy-fit8-before-head.png",
+      "sha256": "88586a4a05aee4466459a2779ae097bdb66daab0bc78ec0440fea584018bc1f4",
+      "bytes": 336585
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/male-hair-messy-head-dark.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/male-hair-messy-head-dark.png",
+      "sha256": "6b8e2871261acdabb19992b7053bd849ac4fa1e7a82402956cf04ed6b6f34661",
+      "bytes": 322141
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/male-hair-messy-head.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/male-hair-messy-fit8-after-head.png",
+      "sha256": "5884e046d338691db2136c6dd35a84c0ae38d5c3dbef8fec83cfd4a39139b82f",
+      "bytes": 335984
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/male-hair-messy-wardrobe.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/male-hair-messy-wardrobe.png",
+      "sha256": "022844a76372fa093ebc6c8bea1a899dd37ad8825a0b2aa31a13c79f0d05dec5",
+      "bytes": 433670
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/male-hair-none.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/male-hair-none.png",
+      "sha256": "c16068d48167a5a012797cb7b9f357fd530d4696fe508baef44103e16d37eb17",
+      "bytes": 508471
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/male-hair-shoulder-length-fit8-after-head-dark.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/male-hair-shoulder-length-fit8-after-head-dark.png",
+      "sha256": "23de6ee4ec700c89934b70b8291f18a1c796a758ad1cf1067f5cd8370d5f730a",
+      "bytes": 382988
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/male-hair-shoulder-length-fit8-after-head.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/male-hair-shoulder-length-fit8-after-head.png",
+      "sha256": "334aff0a43dd49bc4541f3439bfceda72f61ac52d57ec6a1448c572d77f46104",
+      "bytes": 399447
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/male-hair-shoulder-length-fit8-before-head-dark.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/male-hair-shoulder-length-fit8-before-head-dark.png",
+      "sha256": "79a501bd66f1eab2297ead1fb97db4ec5efd24a736a0c35dd3360269b8241929",
+      "bytes": 361659
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/male-hair-shoulder-length-fit8-before-head.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/male-hair-shoulder-length-fit8-before-head.png",
+      "sha256": "7febe2761e1fdb28431dd0093d144f7ef46c6f5f886f962c6c764bc29d11e67d",
+      "bytes": 377527
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/male-hair-shoulder-length-head-dark.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/male-hair-shoulder-length-fit8-after-head-dark.png",
+      "sha256": "23de6ee4ec700c89934b70b8291f18a1c796a758ad1cf1067f5cd8370d5f730a",
+      "bytes": 382988
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/male-hair-shoulder-length-head.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/male-hair-shoulder-length-fit8-after-head.png",
+      "sha256": "334aff0a43dd49bc4541f3439bfceda72f61ac52d57ec6a1448c572d77f46104",
+      "bytes": 399447
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/male-hair-shoulder-length-wardrobe.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/male-hair-shoulder-length-wardrobe.png",
+      "sha256": "d9285ba113d8ef0c7179ca22bfbae97a3de9f4c72c49322434f1369c1d4e34b2",
+      "bytes": 434544
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/male-hair-textured-short-combat-mobile.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/male-hair-textured-short-combat-mobile.png",
+      "sha256": "0bd8efe35a5cb0ba35aa91dbef6c7735add0bf7fe612174a3a57d6882297d4bf",
+      "bytes": 193263
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/male-hair-textured-short-head-dark.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/male-hair-textured-short-head-dark.png",
+      "sha256": "d911aa4e9a12ab4a9b9cdbd69977fdab933a16933635bd71e14c9bfa7712512c",
+      "bytes": 305815
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/male-hair-textured-short-head.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/male-hair-textured-short-head.png",
+      "sha256": "3c9b1456f3b5c61ba0e524b36494851e64b4308aa671aadf948e3a544b7691f4",
+      "bytes": 314819
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/male-hair-textured-short-wardrobe.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/male-hair-textured-short-wardrobe.png",
+      "sha256": "eb6aff7ea50370d60ee27b2dae447a5b8cf15af7fd3948320a397ca9650bafb1",
+      "bytes": 433131
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/male-hairstyles-pack-02-overview.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/male-hairstyles-pack-02-overview.png",
+      "sha256": "dd66d554d0014a8e85083bf1167f6038e288010e37300ec96a9a3545a17e2a37",
+      "bytes": 442683
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/male-shirt-fit-detail-combat.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/male-shirt-fit-detail-combat.png",
+      "sha256": "67db810724d7562201d4e54d1aa6bfd178928bbba3903a6d3222acf376dc50da",
+      "bytes": 319766
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/male-shirt-fit-detail-patient.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/male-shirt-fit-detail-patient.png",
+      "sha256": "be3b70a602049fff3baab0252d3978d70b3f81c9e0dca8f750454cf57b1a50b8",
+      "bytes": 296861
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/mobile-battle.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/mobile-battle.png",
+      "sha256": "593a026cad2f9cbacf40779176bf2e3a762d16332b98f1e568f3855d0c325a1b",
+      "bytes": 3118343
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/mobile-lobby.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/mobile-lobby.png",
+      "sha256": "f74146730515536ff24a3c063545f83862844fb84c7be281dd9e7f37a1847813",
+      "bytes": 1901196
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/paper-doll-female-1024x768.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/paper-doll-female-1024x768.png",
+      "sha256": "19449b4144381d8a647b62425dce851065acc63c35a6ca8d7ed9cada30daee0b",
+      "bytes": 673100
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/paper-doll-female-1280x800.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/paper-doll-female-1280x800.png",
+      "sha256": "255f5c38cad295979bf7e9636309839b3e482e0b9590322c0224d9adaa6ced54",
+      "bytes": 1019874
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/paper-doll-female-320x568.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/paper-doll-female-320x568.png",
+      "sha256": "db9eafc7d1b956d127d79fd06df45436d8d0ff1ad87fb33b6ddcefef53147706",
+      "bytes": 115576
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/paper-doll-female-390x844.png",
+      "retained": "/workspace/avatar-foundation-regression/test-results/paper-doll-female-390x844.png",
+      "sha256": "2bf86f0eec4af73ad990cf4617535587a89ef7685560e24362e9f2e201fedb99",
+      "bytes": 236221
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/paper-doll-female-844x390.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/paper-doll-female-844x390.png",
+      "sha256": "b20d40988f6aa4f1a011c463e7dee3ba88ac1cf04a7b9882a36c7b254153da83",
+      "bytes": 353100
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/paper-doll-male-1280x800.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/paper-doll-male-1280x800.png",
+      "sha256": "c35f4a8d5b7c1482d09fe74ad5376e66aa632d2e8a0f4c42c074d243b0b22580",
+      "bytes": 1019966
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/paper-doll-male-320x568.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/paper-doll-female-320x568.png",
+      "sha256": "db9eafc7d1b956d127d79fd06df45436d8d0ff1ad87fb33b6ddcefef53147706",
+      "bytes": 115576
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/paper-doll-male-844x390.png",
+      "retained": "/workspace/avatar-foundation-regression/test-results/paper-doll-male-844x390.png",
+      "sha256": "b20944f4fe2e21cc69c5ae8bcd264181f2e3cd4cbb1b144477192d40c5e5a72a",
+      "bytes": 352652
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/patient-shirt-art-combat-1280x1000.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/patient-shirt-art-combat-1280x1000.png",
+      "sha256": "2a9afe2b252d987bfcfce792713dd86e9bde1019da92191c5fc426da6e7b23ed",
+      "bytes": 815110
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/patient-shirt-art-patient-1280x1000.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/patient-shirt-art-patient-1280x1000.png",
+      "sha256": "cc48a717071a6c2432a114c7980a403e65036c7ddf6bbee45d984026adc5433c",
+      "bytes": 715582
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/patient-shirt-art-phone.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/patient-shirt-art-phone.png",
+      "sha256": "6e2dde5dfc0c86aa9454f73e77467a8c17dd82ed4b54bc0f9a0f57d32305310a",
+      "bytes": 647963
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/patient-tunic-combat-female-1280x800-wardrobe.png",
+      "retained": "/workspace/avatar-foundation-regression/test-results/patient-tunic-combat-female-1280x800-wardrobe.png",
+      "sha256": "86f1782ae0159364694de122f3586473a1854baa9266aa9348497770bb2f029d",
+      "bytes": 733430
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/patient-tunic-combat-female-390x844-main.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/patient-tunic-combat-female-390x844-main.png",
+      "sha256": "65a0ade7c5507cce76c89136c8478721fced8d6d28b05315d1eb50544887c288",
+      "bytes": 260479
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/patient-tunic-combat-female-390x844-wardrobe.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/patient-tunic-combat-female-390x844-wardrobe.png",
+      "sha256": "334e1bc1e8d9c550036dc4275aeb1c01cedba4e0a94dd3c0ff1e8a1f75f4cfe5",
+      "bytes": 181334
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/patient-tunic-combat-male-1280x800-wardrobe.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/patient-tunic-combat-male-1280x800-wardrobe.png",
+      "sha256": "3f7941bf4cb3f0c800d4d61a730fa0ad1d0153d2c05117a3816ab5b78a421975",
+      "bytes": 733222
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/patient-tunic-combat-male-390x844-main.png",
+      "retained": "/workspace/avatar-foundation-regression/test-results/patient-tunic-combat-male-390x844-main.png",
+      "sha256": "375dcaf94fe4b8b04ecf841d795a74ac6c809ae8cb3e5d463a10475a886e9bbb",
+      "bytes": 260843
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/patient-tunic-fit-female-full-combat.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/patient-tunic-fit-female-full-combat.png",
+      "sha256": "3ea25f024a9797b8a335bdc8dc9d3d073ecb13531b6c77431f3b7ee73d83c291",
+      "bytes": 841360
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/patient-tunic-fit-female-full-patient.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/patient-tunic-fit-female-full-patient.png",
+      "sha256": "c635a98624793345b2aad09392064e5fbcd28f871358c4f2838fd2cf4f70b446",
+      "bytes": 705861
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/patient-tunic-fit-female-neck-combat.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/patient-tunic-fit-female-neck-combat.png",
+      "sha256": "7e18a458761acfd8a01b7ea03e1e7c1ed5473c62e7c329bb22e11acf01485343",
+      "bytes": 95626
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/patient-tunic-fit-female-neck-patient.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/patient-tunic-fit-female-neck-combat.png",
+      "sha256": "7e18a458761acfd8a01b7ea03e1e7c1ed5473c62e7c329bb22e11acf01485343",
+      "bytes": 95626
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/patient-tunic-fit-female-shoulders-combat.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/patient-tunic-fit-female-shoulders-combat.png",
+      "sha256": "2ee3c9d3699e01fdd8071b53e5a6ecea30504dfaece1b764630ce08e6f7f5cd3",
+      "bytes": 206787
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/patient-tunic-fit-female-shoulders-patient.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/patient-tunic-fit-female-shoulders-combat.png",
+      "sha256": "2ee3c9d3699e01fdd8071b53e5a6ecea30504dfaece1b764630ce08e6f7f5cd3",
+      "bytes": 206787
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/patient-tunic-fit-female-slits-combat.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/patient-tunic-fit-female-slits-combat.png",
+      "sha256": "b9d2826f3ad83cc1f6f383008196c4dcb9b1ef4f2476da30a8d825f21f7a4d4b",
+      "bytes": 124841
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/patient-tunic-fit-female-slits-patient.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/patient-tunic-fit-female-slits-combat.png",
+      "sha256": "b9d2826f3ad83cc1f6f383008196c4dcb9b1ef4f2476da30a8d825f21f7a4d4b",
+      "bytes": 124841
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/patient-tunic-fit-female-underarms-combat.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/patient-tunic-fit-female-underarms-combat.png",
+      "sha256": "14db64937a98508bd2315c04f1da1f548a3565b37b851e6464ff70d0d839c884",
+      "bytes": 170391
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/patient-tunic-fit-female-underarms-patient.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/patient-tunic-fit-female-underarms-combat.png",
+      "sha256": "14db64937a98508bd2315c04f1da1f548a3565b37b851e6464ff70d0d839c884",
+      "bytes": 170391
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/patient-tunic-fit-male-full-combat.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/patient-tunic-fit-male-full-combat.png",
+      "sha256": "f80d7400b67f7f2e1671dc9b4ebfa0acf08af08711586659a1b4e47496831a99",
+      "bytes": 839859
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/patient-tunic-fit-male-full-patient.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/patient-tunic-fit-male-full-patient.png",
+      "sha256": "6d0c7a781c01bd0855cfec3dd2c9f6d75ad861cc0a66f9710033eaaf2bd88ec7",
+      "bytes": 707816
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/patient-tunic-fit-male-shoulders-combat.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/patient-tunic-fit-male-shoulders-combat.png",
+      "sha256": "765bbbd2a216c4d697e667ce8e1eacde90a1f39973841ef9f88eccbc3b9d5f29",
+      "bytes": 230359
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/patient-tunic-fit-male-shoulders-patient.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/patient-tunic-fit-male-shoulders-combat.png",
+      "sha256": "765bbbd2a216c4d697e667ce8e1eacde90a1f39973841ef9f88eccbc3b9d5f29",
+      "bytes": 230359
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/patient-tunic-fit-male-slits-combat.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/patient-tunic-fit-male-slits-combat.png",
+      "sha256": "78a8cd6e30e2b5d28103a36fd0623ddee1a03d4bf7ef61c3060173ada6e8ad78",
+      "bytes": 132905
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/patient-tunic-fit-male-slits-patient.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/patient-tunic-fit-male-slits-combat.png",
+      "sha256": "78a8cd6e30e2b5d28103a36fd0623ddee1a03d4bf7ef61c3060173ada6e8ad78",
+      "bytes": 132905
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/patient-tunic-fit-male-underarms-combat.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/patient-tunic-fit-male-underarms-combat.png",
+      "sha256": "bbbbdabb2cab2c35dc44e418aeba253300293e42f9b5f6b60c0b6894ef08ce74",
+      "bytes": 185275
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/patient-tunic-fit-male-underarms-patient.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/patient-tunic-fit-male-underarms-combat.png",
+      "sha256": "bbbbdabb2cab2c35dc44e418aeba253300293e42f9b5f6b60c0b6894ef08ce74",
+      "bytes": 185275
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/patient-tunic-fit-phone.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/patient-tunic-fit-phone.png",
+      "sha256": "314a82cf760f1794f093f52e7bce60e74046e5f7f7a6fea835b663e122b3dce9",
+      "bytes": 1547285
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/patient-tunic-patient-female-390x844-main.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/patient-tunic-patient-female-390x844-main.png",
+      "sha256": "2b8b40a26c7bee2a492277d980493fb3066b4505d04c003030634754a9efd365",
+      "bytes": 260478
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/patient-tunic-patient-male-1280x800-main.png",
+      "retained": "/workspace/avatar-foundation-regression/test-results/patient-tunic-patient-male-1280x800-main.png",
+      "sha256": "abd4f5f68e60e8df0f1b1ca69f89690dc003df13c11ac8f52b639d58ed92e853",
+      "bytes": 1019466
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/patient-tunic-patient-male-390x844-main.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/patient-tunic-patient-male-390x844-main.png",
+      "sha256": "a8ae3ab507cb835cbb49fab2d14430e48a1652588461ccc6cae7e93723e2b7a7",
+      "bytes": 260850
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/personnel-form-1024x768.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/personnel-form-1024x768.png",
+      "sha256": "09d1704cef249acdc18688c41600c61d2002798b1376c20e8dc8a595c6ed70d0",
+      "bytes": 351330
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/personnel-form-1280x800.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/personnel-form-1280x800.png",
+      "sha256": "63b0ad373f9db334e98b00527bd5f6b10594506b910e3e1880c27fb04539e196",
+      "bytes": 417125
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/personnel-form-320x568.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/personnel-form-320x568.png",
+      "sha256": "29abbacc12f04751beb431d670ea6ce02820055f1535ed97fa3c259f1c69a661",
+      "bytes": 102173
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/personnel-form-390x844.png",
+      "retained": "/workspace/avatar-foundation-regression/test-results/personnel-form-390x844.png",
+      "sha256": "9fd9b2101f7fc1f577b8bfcb8841f95f01443e3e6ca91acbbd4009d50a8e8232",
+      "bytes": 212955
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/personnel-form-768x1024.png",
+      "retained": "/workspace/palata404/test-results/personnel-form-768x1024.png",
+      "sha256": "e2bafda654a15158bf5fff6bc9d054dfee914e24006c39fd5602a0f19cf2ecab",
+      "bytes": 369588
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/registration-combat-male-1024x768.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/registration-combat-male-1024x768.png",
+      "sha256": "4fd0e0ce0db605319c3f8fbf21426df4c31e44d965f90edd862ed86c601248b7",
+      "bytes": 557147
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/registration-combat-male-1280x800.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/registration-combat-male-1280x800.png",
+      "sha256": "5aa1cfef1d3b08d4718b855aa3078096c44a1b529865b28dccc90de420e4d338",
+      "bytes": 739419
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/registration-combat-male-768x1024.png",
+      "retained": "/workspace/avatar-foundation-regression/test-results/registration-combat-male-768x1024.png",
+      "sha256": "ccda61f9e9b44330472d4dc43c27c40fa0f2f30c9e283cc9382c1604e2af6412",
+      "bytes": 410683
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/registration-patient-female-1024x768.png",
+      "retained": "/workspace/avatar-foundation-regression/test-results/registration-patient-female-1024x768.png",
+      "sha256": "03b49138fdc88caf1b79dec6fdbcdf004772dc4910bf96e8734cb3f7ed843fcf",
+      "bytes": 507113
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/staff-archive-1024x768.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/staff-archive-1024x768.png",
+      "sha256": "628af0e349cdc986112a2e9e6238b94309c0324554691baa21eba7eb0cc23a1e",
+      "bytes": 360263
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/staff-archive-1280x800.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/staff-archive-1280x800.png",
+      "sha256": "a2e2fe0e024a310691e529f327db874a6b81d020e068249b93975312d36a39cc",
+      "bytes": 423777
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/staff-archive-320x568.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/staff-archive-320x568.png",
+      "sha256": "6a1455972de9390a2c3f5c450a69d76b9dd8705e25735e34786187434972f715",
+      "bytes": 111249
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/staff-archive-390x844.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/staff-archive-390x844.png",
+      "sha256": "fe20b886bcd1770489d15d1a2317a86fb1129cc9dd69463410ebe117c24ed9ca",
+      "bytes": 220434
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/staff-archive-768x1024.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/staff-archive-768x1024.png",
+      "sha256": "f0d65e214379d65f4092d0e134c7703361fa29849a4a2c92c1b4b889186c29e2",
+      "bytes": 377554
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/staff-archive-844x390.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/staff-archive-844x390.png",
+      "sha256": "7c9e8e5a2dff1a468bdf36a3abb69c391dbc0a3dc129496c464212144fd76a56",
+      "bytes": 167756
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/victory-1280x800.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/victory-1280x800.png",
+      "sha256": "4cbd503e3fa65631924c75b4872b6ec5e2a3e50b724a8da99dd06264ba7196be",
+      "bytes": 394601
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/victory-320x568.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/victory-320x568.png",
+      "sha256": "c640bad8dda8daa7eea0dab173f2b432bc80936ea2f85a2fa390c8946362b4f7",
+      "bytes": 111619
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/victory-390x844.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/victory-390x844.png",
+      "sha256": "55b2f9d0b8bbbbc4630e919cf53a8eb999f434e3de4dff4d9ad493e1b688191f",
+      "bytes": 190021
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/victory-844x390.png",
+      "retained": "/workspace/avatar-foundation-regression/test-results/victory-844x390.png",
+      "sha256": "81168ff73af1a86ce5d8cab536d09551987741617fafc8149a95504b2593c61e",
+      "bytes": 148593
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/victory-summary-1280x800.png",
+      "retained": "/workspace/avatar-foundation-regression/test-results/victory-summary-1280x800.png",
+      "sha256": "9cbc88b0cbf2c3751b1d735943d7defa1fd01e85320d9ef6577ba0b1f3597832",
+      "bytes": 382942
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/victory-summary-1366x768.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/victory-summary-1366x768.png",
+      "sha256": "75caf3e6e0d7cbde294a2e178be965dea446eeb6d2d7a93693836c687454e655",
+      "bytes": 415049
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/victory-summary-390x844.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/victory-summary-390x844.png",
+      "sha256": "b2f9ab7c22a9e75608ca4541ca592cc08ab6b7c65c7256d3b817c8b8429f942f",
+      "bytes": 179171
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/wardrobe-final-empty-combat-1920x1080.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/wardrobe-final-empty-combat-1920x1080.png",
+      "sha256": "0ebc24243eed39ab3de5597364d8a7a394f565e1539940fb7aa50ed8f7ef5749",
+      "bytes": 1265249
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/wardrobe-final-empty-combat-320x568.png",
+      "retained": "/workspace/palata404/test-results/wardrobe-final-empty-combat-320x568.png",
+      "sha256": "d377be30ea2e03cd2899f9726d213c0c92136ac376f4d2acc16e04fe248040a2",
+      "bytes": 95022
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/wardrobe-final-empty-combat-390x844.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/wardrobe-final-empty-combat-390x844.png",
+      "sha256": "be9c533ac4fe521706164fdf75dd4a4257c577c5ce36ec814b42ace302928dc0",
+      "bytes": 185194
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/wardrobe-final-empty-combat-768x1024.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/wardrobe-final-empty-combat-768x1024.png",
+      "sha256": "d6d29ea446575200ee283e7276b922e8f9f5bcca4b4fbc24ef5727aaffed90bf",
+      "bytes": 409095
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/wardrobe-scale-combat-female-1280x800.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/ground-shadow-female-combat-1280x800.png",
+      "sha256": "20c1ced4660020e522a4a2fa0b12fda4d21dbd970aa71a593ac08d37402b07d1",
+      "bytes": 739914
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/wardrobe-scale-combat-female-1920x1080.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/wardrobe-scale-combat-female-1920x1080.png",
+      "sha256": "e421f2d426bb9e3c2e2bb1613191eb4a42edf06fca70ffac86b10360c18951e2",
+      "bytes": 1274610
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/wardrobe-scale-combat-male-1280x800.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/wardrobe-scale-combat-male-1280x800.png",
+      "sha256": "b9d1f3388fa8b48349cdf8bb61c7519e715b25755cd471a1faf3c40cd757612c",
+      "bytes": 739146
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/wardrobe-scale-combat-male-1920x1080.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/wardrobe-scale-combat-male-1920x1080.png",
+      "sha256": "e3abe1e32626564a3b7c4fb1b5ccb7a6a2be5cab110b203181ebeb4786288e14",
+      "bytes": 1273737
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/wardrobe-v3-combat-female-1024x768.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/wardrobe-v3-combat-female-1024x768.png",
+      "sha256": "84ab2a836c99bd457f8fe660ffc6fc8170d9d80d5780aa1ad364e18e4987ef7e",
+      "bytes": 557486
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/wardrobe-v3-combat-female-1920x1080.png",
+      "retained": "/workspace/avatar-foundation-regression/test-results/wardrobe-v3-combat-female-1920x1080.png",
+      "sha256": "dd4686792e725c9c875eb32707cecef507bd1bea1be24786ce449181d796a8a5",
+      "bytes": 1274581
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/wardrobe-v3-combat-female-768x1024.png",
+      "retained": "/workspace/palata404/test-results/wardrobe-v3-combat-female-768x1024.png",
+      "sha256": "e9f83b165616c678215da9a1da49ab46791ccc1b4a7a47cc970bfb31db253ad9",
+      "bytes": 408917
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/wardrobe-v3-combat-male-1024x768.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/wardrobe-v3-combat-male-1024x768.png",
+      "sha256": "1870ee554aa8f1a66d2593c793318fc50d023b2c1c920e0fd572e3a9663dba3b",
+      "bytes": 556802
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/wardrobe-v3-combat-male-1280x800.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/wardrobe-v3-combat-male-1280x800.png",
+      "sha256": "0103b31fb36d604fd8116336bbe415fb41797d95f010cddb090268fb4566bf33",
+      "bytes": 739114
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/wardrobe-v3-combat-male-1440x900.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/wardrobe-v3-combat-male-1440x900.png",
+      "sha256": "8e91e2030a41ae4b0e506af05115053fbc25d23a8c0fb7bb870d9adde91be5b8",
+      "bytes": 935457
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/wardrobe-v3-combat-male-1920x1080.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/wardrobe-v3-combat-male-1920x1080.png",
+      "sha256": "1d72add9ce5ec1ba9f4fdff1ee0d112684487d53779cd78538012e742d55dffd",
+      "bytes": 1273706
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/wardrobe-v3-combat-male-2560x1440.png",
+      "retained": "/workspace/palata404/test-results/wardrobe-v3-combat-male-2560x1440.png",
+      "sha256": "4811825c489d5946162131db89912814a8b4b06ce33070ff5209e1bd5791ff19",
+      "bytes": 1590404
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/wardrobe-v3-combat-male-390x844.png",
+      "retained": "/workspace/palata404/test-results/wardrobe-v3-combat-male-390x844.png",
+      "sha256": "38863029bafdbb2db6b5d5d718122a86713b9928450f4219269a2857b49838ea",
+      "bytes": 181965
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/wardrobe-v3-combat-male-768x1024.png",
+      "retained": "/workspace/palata404/test-results/wardrobe-v3-combat-male-768x1024.png",
+      "sha256": "6f9c0ab5557587d26b9e74ad141ac5ae971911789701431b36410e8d6e83cd3f",
+      "bytes": 409091
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/wardrobe-v3-combat-male-844x390.png",
+      "retained": "/workspace/avatar-foundation-regression/test-results/wardrobe-v3-combat-male-844x390.png",
+      "sha256": "c6577fa2d5269a3e449a6c6a30018b0d7112f02a34d03140074480c7064f6851",
+      "bytes": 191548
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/wardrobe-v3-items-1024x768.png",
+      "retained": "/workspace/avatar-foundation-regression/test-results/wardrobe-v3-items-1024x768.png",
+      "sha256": "ce20c436406674353b39169ae07ca7656dbebe37abd031314c25cc9e8742953b",
+      "bytes": 601151
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/wardrobe-v3-items-1280x800.png",
+      "retained": "/workspace/avatar-foundation-regression/test-results/wardrobe-v3-items-1280x800.png",
+      "sha256": "4bf34f9eae47c4e3c49ae2cdea4ca1ffb93d2fe14ee9a074a9c07af0d37b9f29",
+      "bytes": 801208
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/wardrobe-v3-items-1920x1080.png",
+      "retained": "/workspace/avatar-foundation-regression/test-results/wardrobe-v3-items-1920x1080.png",
+      "sha256": "fc6379397ef43fd1c0990df115e3702e86da53155f93023823c313247ea371ae",
+      "bytes": 1340455
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/wardrobe-v3-items-2560x1440.png",
+      "retained": "/workspace/palata404/test-results/wardrobe-v3-items-2560x1440.png",
+      "sha256": "207cdac8bf10d325637ae5a217d65321b69ddd7595c26bf0bf9f89ca874a28e4",
+      "bytes": 1677876
+    },
+    {
+      "removed": "/workspace/avatar-requested-regression/test-results/wardrobe-v3-patient-female-1920x1080.png",
+      "retained": "/workspace/palata404-avatar-core/test-results/wardrobe-v3-patient-female-1920x1080.png",
+      "sha256": "b597094ff3070babed82205dd80f0269de36bebd58071982549418575f552036",
+      "bytes": 1162023
+    }
+  ],
+  "freed": 174406189
+}

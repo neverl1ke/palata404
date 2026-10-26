@@ -1,0 +1,9 @@
+{
+  "base_commit": "52bfbcaa2e72b9ec675b7f5da868e77aa90f4873",
+  "source_commit": "069ff32c837a4947d63a5706a9298f6fc8ecb7fa",
+  "branch": "feature/rifle-seams-52bfbca",
+  "status": "TECHNICAL CANDIDATE; R03/R04/R09 OPEN",
+  "published": false,
+  "main_changed": false,
+  "live_deployed": false
+}

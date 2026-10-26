@@ -1,0 +1,14 @@
+{
+  "total_samples": 5772,
+  "protected_frames": 50,
+  "opaque_front_pixel_samples": 292520,
+  "pixel_samples_over2_RGB": 0,
+  "max_RGB_difference": 0,
+  "all_mechanical_contacts_under1e_6": true,
+  "standard_hull_radius": {
+    "male": 0.4411152002275222,
+    "female": 0.3360185499749083
+  },
+  "stress_playback": "1x;2 simulation cycles=2000ms continuous video; phase slideshow is not real-time",
+  "full_wardrobe_and_historical_regression_not_run": true
+}

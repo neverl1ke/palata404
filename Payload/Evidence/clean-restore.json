@@ -1,0 +1,108 @@
+{
+  "baseline": "52bfbcaa2e72b9ec675b7f5da868e77aa90f4873",
+  "directory": "/workspace/rifle-seams-clean-restore",
+  "selected_base_paths": [
+    "avatar-core/assets/female/rifle-arm-integrity/torso.png",
+    "avatar-core/assets/male/rifle-arm-integrity/torso.png",
+    "avatar-core/assets/weapons/user-ak47-20261026/ak47-master.png",
+    "avatar-core/engine.mjs",
+    "avatar-core/equipment-weapons.json",
+    "avatar-core/female-preview.json",
+    "avatar-core/male-preview.json",
+    "avatar-core/rigs/female_rig.json",
+    "avatar-core/rigs/male_rig.json",
+    "base_female.png",
+    "base_male.png",
+    "review/rifle-arm-integrity/Sources",
+    "tools/prepare-foundation-cleanup.py",
+    "tools/prepare-knife-perspective.py"
+  ],
+  "baseline_export_snapshot": "Source/Export-Base.zip",
+  "baseline_export_snapshot_sha256": "b43cf5442e7d25765d54b710a222e409b38929a6b074368144114e65d05bc862",
+  "patch_name": "Source/code.patch",
+  "exported_files": [
+    {
+      "file": "avatar-core/assets/male/rifle-seams/rifle-right-arm.png",
+      "sha256": "f160867fa51d96641c6f358a9c837dbf37c7cf8f3964b05f55fd1193b05f37de",
+      "restored_exact": true
+    },
+    {
+      "file": "avatar-core/assets/male/rifle-seams/rifle-left-complete.png",
+      "sha256": "384c5dec186d7253f7042f77c50b2063284da5051ac28e2673a07be0b0f71686",
+      "restored_exact": true
+    },
+    {
+      "file": "avatar-core/assets/male/rifle-seams/rifle-left-front.png",
+      "sha256": "05909c80f2adf5f52e31d24af9f0eb7b02a11d62303dd0450d581a289ec0ae5a",
+      "restored_exact": true
+    },
+    {
+      "file": "avatar-core/assets/male/rifle-seams/rifle-right-complete.png",
+      "sha256": "12e06323d5fc243f6ca64cd7a518f88c7c5136434a60bb3d4ee5c16c808b6936",
+      "restored_exact": true
+    },
+    {
+      "file": "avatar-core/assets/male/rifle-seams/rifle-right-front.png",
+      "sha256": "709f123c5027e0df02ac0f168594986d9fc97646c6a7f1412c7ccfcaf363a716",
+      "restored_exact": true
+    },
+    {
+      "file": "avatar-core/assets/male/rifle-seams/rifle-left-arm.png",
+      "sha256": "2274dec37f37911a8ead330c98feb520c52f88c5590be10f11c1d80d8f103aac",
+      "restored_exact": true
+    },
+    {
+      "file": "avatar-core/assets/female/rifle-seams/rifle-right-arm.png",
+      "sha256": "560170cbd58f3d32c915a2974122242c10563e540ef910db132e97646b02666c",
+      "restored_exact": true
+    },
+    {
+      "file": "avatar-core/assets/female/rifle-seams/rifle-left-complete.png",
+      "sha256": "7e4f064d3daf8d99f38d8e39820479804217be661937f268af076ccfb8ed2f9b",
+      "restored_exact": true
+    },
+    {
+      "file": "avatar-core/assets/female/rifle-seams/rifle-left-front.png",
+      "sha256": "bb86075c31640236fcf0b1eb87d15733d289abb3561d9111c8b6d7895f18366f",
+      "restored_exact": true
+    },
+    {
+      "file": "avatar-core/assets/female/rifle-seams/rifle-right-complete.png",
+      "sha256": "d7d5f9bb2355f64b42c7c247c8ba1cd208db49d17744e24b70dfdecd8addb3a0",
+      "restored_exact": true
+    },
+    {
+      "file": "avatar-core/assets/female/rifle-seams/rifle-right-front.png",
+      "sha256": "9a7669119552b147b4b7c404d2e88ef43e660b549660b9dd874c2d1a2885c51c",
+      "restored_exact": true
+    },
+    {
+      "file": "avatar-core/assets/female/rifle-seams/rifle-left-arm.png",
+      "sha256": "b24f36e1d12039624ac85b7a3d4c599d4bb5cb34e8ecd0d5a08cb25e49bf4f91",
+      "restored_exact": true
+    },
+    {
+      "file": "avatar-core/assets/weapons/user-ak47-20261026/ak47-runtime-opaque.png",
+      "sha256": "dddc69d569aedc546b25c35f237206b5fddc4f12cef57ef4e4bacce1c5f83dd3",
+      "restored_exact": true
+    },
+    {
+      "file": "avatar-core/male-preview.json",
+      "sha256": "5120f61ff018352835980702d056284d9337b8a1a83c0fa570e8c50030666cbe",
+      "restored_exact": true
+    },
+    {
+      "file": "avatar-core/female-preview.json",
+      "sha256": "bc821fb6ac90a6b38d4b3060df327280fac292c22e37812a4c7c20914db072ad",
+      "restored_exact": true
+    },
+    {
+      "file": "avatar-core/equipment-weapons.json",
+      "sha256": "27f23be5778ae958301815cb92ce14b4b98d655f3779ac8bdd6712c23e3477f2",
+      "restored_exact": true
+    }
+  ],
+  "all_exported_bytes_exact": true,
+  "scope": "clean dependency-scoped base extraction, NOT complete checkout or full historical suite",
+  "temporary_copy_removed_after_verification": true
+}
