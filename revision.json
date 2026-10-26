@@ -1,8 +1,7 @@
 {
-  "package": "Palata404-Rifle-Arms-AK47-PARTIAL-20261026.zip",
-  "source_commit": "52bfbcaa2e72b9ec675b7f5da868e77aa90f4873",
   "zip_sha256": "0dfeb34d43419ea25a722aafbea319ee7e3023a28068625a025f7ce4453b01e0",
-  "status": "PARTIAL",
-  "main_merged": false,
+  "source_commit": "52bfbcaa2e72b9ec675b7f5da868e77aa90f4873",
+  "download": "https://raw.githubusercontent.com/neverl1ke/palata404/review/rifle-arms-ak47-partial-20261026/Palata404-Rifle-Arms-AK47-PARTIAL-20261026.zip",
+  "main_changed": false,
   "live_deployed": false
 }
