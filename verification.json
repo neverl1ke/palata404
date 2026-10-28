@@ -1,0 +1,15 @@
+{
+  "zip": "/workspace/Palata404-Rifle-Shoulder-Restore-v9-20261028.zip",
+  "bytes": 22657327,
+  "sha256": "4a58c87f750808c1179eaca85a77ad076d3ea0f1545cc82b0ac77a3aad5f0a2b",
+  "files": 132,
+  "lab_sha256": "0fc8514c3f6bea4a2f5ff8b4e6a911514daaf5d8081cf82175dbdd96496ff33f",
+  "all_file_hashes_and_CRC_verified": true,
+  "approval": "APPROVED_BY_USER: \u0442\u0430\u043a \u043f\u0443\u0431\u043b\u0456\u043a\u0443\u0439",
+  "fresh_selective_unpack": "Avatar-Lab.html; all other archive files checked by hashes and CRC",
+  "fresh_approved_no_weapon_preview_pixels_exact": true,
+  "fresh_107_110_weapon_preview_pixels_exact": true,
+  "front_rear_masks_partition_exact": true,
+  "motion_UI_preserved": true,
+  "fresh_JS_errors": []
+}
