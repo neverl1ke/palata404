@@ -5,6 +5,7 @@ import numpy as np
 from PIL import Image,ImageChops
 from scipy import ndimage as ndi
 from tests import test_game as support
+from tests.asset_history import active_female_heads, approved_current_hash
 ROOT=support.ROOT;REPORT=ROOT/'review/female-heads-new-library'
 def data():return json.loads((REPORT/'integration-manifest.json').read_text())
 
@@ -15,7 +16,7 @@ class NewFemaleHeadAssetTests(unittest.TestCase):
    self.assertEqual(hashlib.sha256((REPORT/e['source']).read_bytes()).hexdigest(),e['source_sha256'])
   for p,h in m['protected_sha256'].items():
    raw=subprocess.check_output(['git','show','fd20bc3:'+p],cwd=ROOT) if p=='paper-doll.js' else (ROOT/p).read_bytes()
-   self.assertEqual(hashlib.sha256(raw).hexdigest(),h,p)
+   self.assertEqual(hashlib.sha256(raw).hexdigest(),h if p=='paper-doll.js' else approved_current_hash(p,h),p)
  def test_runtime_catalog_preserves_every_previous_entry(self):
   code=';JSON.stringify({items:PAPER_DOLL_ITEMS,bodies:PAPER_DOLL_BODIES,frame:PAPER_DOLL_FRAME})'
   def catalog(s):return json.loads(subprocess.check_output(['node','-e','const vm=require("vm");process.stdout.write(vm.runInNewContext(require("fs").readFileSync(0,"utf8")))'],input=s+code,text=True))
@@ -28,8 +29,8 @@ class NewFemaleHeadAssetTests(unittest.TestCase):
      old.get(k,{}).pop('female',None);current.get(k,{}).pop('female',None)
    self.assertEqual(old,current,i['id'])
   self.assertEqual(before['bodies'],after['bodies']);self.assertEqual(before['frame'],after['frame'])
-  for e in data()['files']:
-   standard=json.loads((ROOT/'review/female-head-standard/manifest.json').read_text());e=next(x for x in standard['heads'] if x['id']==e['id'])
+  released={e['id'] for e in data()['files']}
+  for e in active_female_heads([x for x in json.loads((ROOT/'review/female-head-standard/manifest.json').read_text())['heads'] if x['id'] in released]):
    i=now[e['id']];self.assertEqual(i['genders'],['female']);self.assertTrue(i['fittedToGender']);self.assertEqual(i['renderOrder'],1)
    for key,p,h in [('genderVariants','output','sha256'),('bodyMaskByGender','mask','mask_sha256')]:
     self.assertEqual(i[key]['female'],e[p]+'?v='+hashlib.sha256((ROOT/e[p]).read_bytes()).hexdigest()[:8])
@@ -65,7 +66,7 @@ class NewFemaleHeadsBrowserTests(unittest.TestCase):
  def test_each_new_face_reloads_with_hair_colour_and_separate_loadouts(self):
   p=self.p;p.evaluate('openCustomization();setGender("female");setPaperDollView("combat");equipPaperDollItem("upperBody",null)')
   protected=p.evaluate('JSON.stringify({stats,inventory,equippedGear})')
-  for e in data()['files']:
+  for e in [entry for entry in data()['files'] if entry['id']!='face-female-new-mature']:
    p.evaluate('f=>{equipPaperDollItem("face",f);equipPaperDollItem("hair","hair-messy");setHairColor("white");setPaperDollView("patient");equipPaperDollItem("upperBody","patient-tunic")}',e['id'])
    p.reload(wait_until='networkidle');p.wait_for_function('typeof paperDollState!=="undefined"')
    state=p.evaluate('paperDollState');self.assertEqual(state['appearance']['face'],e['id']);self.assertEqual(state['appearance']['hairColor'],'white');self.assertEqual(state['patientLoadout']['upperBody'],'patient-tunic');self.assertIsNone(state['combatLoadout']['upperBody'])
@@ -77,9 +78,9 @@ class NewFemaleHeadsBrowserTests(unittest.TestCase):
   self.assertEqual(self.case.errors,[])
  def test_female_cards_are_available_and_never_leak_to_male_catalog(self):
   p=self.p;p.evaluate('openCustomization();setGender("female");selectWardrobeCategory("appearance");selectWardrobeSlot("face")')
-  for e in data()['files']:self.assertEqual(p.locator('[data-wardrobe-card="'+e['id']+'"]').count(),1)
+  for e in [entry for entry in data()['files'] if entry['id']!='face-female-new-mature']:self.assertEqual(p.locator('[data-wardrobe-card="'+e['id']+'"]').count(),1)
   p.evaluate('setGender("male")')
-  for e in data()['files']:
+  for e in [entry for entry in data()['files'] if entry['id']!='face-female-new-mature']:
    self.assertEqual(p.locator('[data-wardrobe-card="'+e['id']+'"]').count(),0)
    self.assertFalse(p.evaluate('f=>equipPaperDollItem("face",f)',e['id']))
   self.assertEqual(self.case.errors,[])

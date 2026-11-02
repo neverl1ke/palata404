@@ -242,6 +242,12 @@ class GameTests(unittest.TestCase):
     def setUp(self):
         self.context = self.browser.new_context(viewport={'width': 1280, 'height': 800})
         self.context.add_init_script('Math.random=()=>0.5;')
+        self.context.add_init_script("""window.expectedHairDisplaySource=async(source,color,reference)=>{
+            const g=paperDollState.selectedGender,item=selectedPaperDollItem('hair');
+            const part=paperDollItemLayers(item,g).find(p=>p.id==='front')||item;
+            const fit=source===part.genderVariants?.[g]&&typeof femaleHairFitFor==='function'?femaleHairFitFor(g,selectedPaperDollItem('face')?.id,item.id,part.placementByGender?.[g]??part.placement):null;
+            return fit?fittedFemaleHairSource(source,color,reference,fit):coloredHairSource(source,color,reference);
+        };""")
         self.context.route('https://**/*', lambda route: route.abort())
         self.errors = []
         self.page = self.context.new_page()
@@ -363,7 +369,7 @@ class GameTests(unittest.TestCase):
         self.assertEqual(wardrobe.locator('[data-wardrobe-category]').count(),5)
         wardrobe.get_by_role('button',name='Жінка',exact=True).click()
         wardrobe.locator('[data-wardrobe-slot="face"]').click()
-        self.assertEqual(wardrobe.locator('[data-wardrobe-card]').count(),16)
+        self.assertEqual(wardrobe.locator('[data-wardrobe-card]').count(),15)
         self.assertIn('Оригінальне обличчя',wardrobe.locator('#wardrobe-container').inner_text())
         for prefix in ['', 'wardrobe-']:
             self.assertEqual(self.page.locator(f'#{prefix}layer-face').get_attribute('src'),self.native_head_source())
@@ -731,7 +737,7 @@ class GameTests(unittest.TestCase):
         self.assertEqual(self.page.evaluate('inventory.length'),0)
         self.page.evaluate('setPaperDollView("patient"); selectWardrobeCategory("appearance"); selectWardrobeSlot("face");')
         self.assertEqual(self.page.locator('#wardrobe-layer-face').get_attribute('src'),self.native_head_source())
-        self.assertEqual(self.page.locator('[data-wardrobe-card]').count(),16)
+        self.assertEqual(self.page.locator('[data-wardrobe-card]').count(),15)
 
     def test_wardrobe_complex_layers_update_both_views_and_clean_up_after_removal(self):
         self.load()
@@ -1413,7 +1419,7 @@ class GameTests(unittest.TestCase):
                         self.page.evaluate('([hair,color])=>{equipPaperDollItem("hair",hair);setHairColor(color)}',[hair,color])
                         self.page.wait_for_function("""()=>['layer-face','wardrobe-layer-face'].every(id=>{const i=document.getElementById(id);return i.complete&&i.naturalWidth===941})""")
                         if hair!='hair-none':
-                            self.page.wait_for_function("""async()=>{const i=document.getElementById('wardrobe-layer-hair');return i.getAttribute('src')===await coloredHairSource(selectedPaperDollItem('hair').genderVariants[paperDollState.selectedGender],paperDollState.appearance.hairColor)&&i.complete&&i.naturalWidth>0}""")
+                            self.page.wait_for_function("""async()=>{const i=document.getElementById('wardrobe-layer-hair');return i.getAttribute('src')===await expectedHairDisplaySource(selectedPaperDollItem('hair').genderVariants[paperDollState.selectedGender],paperDollState.appearance.hairColor)&&i.complete&&i.naturalWidth>0}""")
                         for prefix in ['','wardrobe-']:
                             self.assertIn(gender+'_young_head.png',self.page.locator('#'+prefix+'layer-face').get_attribute('src'))
                             self.assertEqual(self.page.locator('#'+prefix+'layer-face').evaluate('i=>getComputedStyle(i).zIndex'),'1')
@@ -1570,7 +1576,7 @@ class GameTests(unittest.TestCase):
                             self.assertEqual(self.page.locator('#'+prefix+'layer-face').evaluate('i=>getComputedStyle(i).zIndex'),'1')
                             self.assertEqual(self.page.locator('#'+prefix+'layer-hair').evaluate('i=>getComputedStyle(i).zIndex'),'9')
                 self.page.evaluate('g=>{equipPaperDollItem("hair",g==="female"?"hair-bob-bangs":"hair-shoulder-length");setHairColor("white")}',gender)
-                self.page.wait_for_function("""async()=>{const i=document.getElementById('wardrobe-layer-hair');return i.complete&&i.src===await coloredHairSource(selectedPaperDollItem('hair').genderVariants[paperDollState.selectedGender],'white')}""")
+                self.page.wait_for_function("""async()=>{const i=document.getElementById('wardrobe-layer-hair');return i.complete&&i.src===await expectedHairDisplaySource(selectedPaperDollItem('hair').genderVariants[paperDollState.selectedGender],'white')}""")
                 self.page.reload(wait_until='networkidle')
                 self.assertEqual(self.page.evaluate('paperDollState.appearance.face'),'face-alternative')
                 self.assertEqual(self.page.evaluate('paperDollState.appearance.hair'),'hair-bob-bangs' if gender=='female' else 'hair-shoulder-length')
@@ -1582,7 +1588,7 @@ class GameTests(unittest.TestCase):
     def test_complete_face_catalog_selects_both_genders_and_restores_every_type(self):
         self.load()
         self.page.evaluate('openCustomization();selectWardrobeCategory("appearance");selectWardrobeSlot("face")')
-        self.assertEqual(self.page.locator('[data-wardrobe-card]').count(),8)
+        self.assertEqual(self.page.locator('[data-wardrobe-card]').count(),15)
         original=self.page.evaluate('JSON.stringify({stats,inventory,equippedGear,hair:PAPER_DOLL_ITEMS.filter(i=>i.slot==="hair"),colors:HAIR_COLORS})')
         for gender in ['male','female']:
             self.page.evaluate('gender=>setGender(gender)',gender)
@@ -1595,7 +1601,7 @@ class GameTests(unittest.TestCase):
                     self.page.evaluate('hair=>{equipPaperDollItem("hair",hair);setHairColor("white")}',hair)
                     self.page.wait_for_function("""()=>{const i=document.getElementById('wardrobe-layer-face');return i.complete&&i.naturalWidth===941&&!i.classList.contains('hidden')}""")
                     if hair!='hair-none':
-                        self.page.wait_for_function("""async()=>{const i=document.getElementById('wardrobe-layer-hair');return i.getAttribute('src')===await coloredHairSource(selectedPaperDollItem('hair').genderVariants[paperDollState.selectedGender],'white')&&i.complete&&i.naturalWidth>0}""")
+                        self.page.wait_for_function("""async()=>{const i=document.getElementById('wardrobe-layer-hair');return i.getAttribute('src')===await expectedHairDisplaySource(selectedPaperDollItem('hair').genderVariants[paperDollState.selectedGender],'white')&&i.complete&&i.naturalWidth>0}""")
                     self.assertIn(gender+'_'+kind+'_head.png',self.page.locator('#wardrobe-layer-face').get_attribute('src'))
                     self.assertEqual(self.page.locator('#wardrobe-layer-face').evaluate('i=>getComputedStyle(i).zIndex'),'1')
                     self.assertEqual(self.page.locator('#wardrobe-layer-hair').evaluate('i=>getComputedStyle(i).zIndex'),'9')
@@ -1651,7 +1657,7 @@ class GameTests(unittest.TestCase):
             for color,hex_value in [('white','#C8C3BA'),('red','#9E3137'),('blue','#335BA6'),('turquoise','#28736F'),('lime','#748C28')]:
                 self.assertEqual(self.page.evaluate('id=>HAIR_COLORS.find(c=>c.id===id).hex',color),hex_value)
                 self.page.evaluate('color=>{equipPaperDollItem("hair","hair-shoulder-length");setHairColor(color)}',color)
-                self.page.wait_for_function('''async()=>{const i=document.getElementById('wardrobe-layer-hair');return i.getAttribute('src')===await coloredHairSource(selectedPaperDollItem('hair').genderVariants[paperDollState.selectedGender],paperDollState.appearance.hairColor)&&i.complete}''')
+                self.page.wait_for_function('''async()=>{const i=document.getElementById('wardrobe-layer-hair');return i.getAttribute('src')===await expectedHairDisplaySource(selectedPaperDollItem('hair').genderVariants[paperDollState.selectedGender],paperDollState.appearance.hairColor)&&i.complete}''')
                 self.assertEqual(self.page.evaluate('paperDollState.appearance.face'),'face-asian')
         self.assertEqual(self.page.evaluate('JSON.stringify(PAPER_DOLL_ITEMS.filter(i=>i.slot==="hair").map(i=>i.placementByGender))'),original_geometry)
         self.assertEqual(self.page.evaluate('JSON.stringify({stats,inventory,equippedGear,patient:paperDollState.patientLoadout,combat:paperDollState.combatLoadout})'),before)
@@ -1677,8 +1683,8 @@ class GameTests(unittest.TestCase):
         self.assertEqual(self.page.locator('[data-wardrobe-category]').count(),5)
         self.assertEqual(self.page.locator('#wardrobe-slots button').all_text_contents(),['Базове тіло','Обличчя','Зачіски'])
         self.page.locator('[data-wardrobe-slot="hair"]').click()
-        self.assertEqual(self.page.locator('[data-wardrobe-card]').count(),14)
-        self.assertEqual(self.page.locator('[data-wardrobe-card^="hair-f5-"]').count(),5)
+        self.assertEqual(self.page.locator('[data-wardrobe-card]').count(),11)
+        self.assertEqual(self.page.locator('[data-wardrobe-card^="hair-f5-"]').count(),3)
         self.assertNotIn('першого комплекту',self.page.locator('.wardrobe-items').inner_text())
         self.assertNotIn('ІНВЕНТАРНИЙ ЗАПИС',self.page.locator('#wardrobe-item-detail').inner_text())
         self.assertEqual(self.page.locator('#wardrobe-item-detail h4').count(),0)
@@ -1696,7 +1702,7 @@ class GameTests(unittest.TestCase):
         source=self.page.evaluate('selectedPaperDollItem("hair").genderVariants.female')
         for color in colors:
             self.page.evaluate('id=>setHairColor(id)',color)
-            self.page.wait_for_function('''color=>['layer-hair','wardrobe-layer-hair'].every(id=>{const i=document.getElementById(id);return i.paperHairRequest?.endsWith('|'+color)&&i.complete&&i.naturalWidth>0&&!i.classList.contains('hidden')&&(color==='original'?!i.src.startsWith('data:'):i.src.startsWith('data:'))})''',arg=color)
+            self.page.wait_for_function('''color=>['layer-hair','wardrobe-layer-hair'].every(id=>{const i=document.getElementById(id);return i.paperHairRequest?.endsWith('|'+color)&&i.complete&&i.naturalWidth>0&&!i.classList.contains('hidden')&&(paperDollState.selectedGender==='female'||color!=='original'?i.src.startsWith('data:'):!i.src.startsWith('data:'))})''',arg=color)
             result=self.page.evaluate(async_check,[source,color])
             self.assertTrue(result['dimensions']);self.assertEqual(result['alpha'],0,color)
             if color=='original': self.assertTrue(result['same'])
@@ -1706,7 +1712,7 @@ class GameTests(unittest.TestCase):
         self.assertEqual(self.page.evaluate('''()=>{const s=selectedPaperDollItem('hair').genderVariants.female;return coloredHairSource(s,'orange')===coloredHairSource(s,'orange')}'''),True)
         # Rapid requests must never overwrite the newest selection or revive removed hair.
         self.page.evaluate('setHairColor("black");setGender("male");equipPaperDollItem("hair","hair-bob");setHairColor("blue");setGender("female");equipPaperDollItem("hair","hair-textured-short");setHairColor("pink")')
-        self.page.wait_for_function('''async()=>{const expected=await coloredHairSource(selectedPaperDollItem('hair').genderVariants.female,'pink');return ['layer-hair','wardrobe-layer-hair'].every(id=>document.getElementById(id).getAttribute('src')===expected)}''')
+        self.page.wait_for_function('''async()=>{const expected=await expectedHairDisplaySource(selectedPaperDollItem('hair').genderVariants.female,'pink');return ['layer-hair','wardrobe-layer-hair'].every(id=>document.getElementById(id).getAttribute('src')===expected)}''')
         self.page.reload(wait_until='networkidle')
         self.assertEqual(self.page.evaluate('paperDollState.appearance.hairColor'),'pink')
         self.page.evaluate('openCustomization();selectWardrobeCategory("hair")')
@@ -1716,7 +1722,7 @@ class GameTests(unittest.TestCase):
                 self.page.evaluate('([gender,id])=>{setGender(gender);equipPaperDollItem("hair",id);setHairColor("platinum")}',[gender,item])
                 src=self.page.evaluate('selectedPaperDollItem("hair").genderVariants[paperDollState.selectedGender]')
                 self.assertEqual(self.page.evaluate(async_check,[src,'platinum'])['alpha'],0)
-                self.page.wait_for_function('''async()=>document.getElementById('wardrobe-layer-hair').getAttribute('src')===await coloredHairSource(selectedPaperDollItem('hair').genderVariants[paperDollState.selectedGender],'platinum')''')
+                self.page.wait_for_function('''async()=>document.getElementById('wardrobe-layer-hair').getAttribute('src')===await expectedHairDisplaySource(selectedPaperDollItem('hair').genderVariants[paperDollState.selectedGender],'platinum')''')
         self.page.evaluate('equipPaperDollItem("hair","hair-none")')
         self.assertIsNone(self.page.locator('#wardrobe-layer-hair').get_attribute('src'))
         self.assertEqual(self.page.evaluate('JSON.stringify(PAPER_DOLL_ITEMS.map(i=>[i.id,i.placementByGender]))'),placements)
@@ -1742,7 +1748,7 @@ class GameTests(unittest.TestCase):
         wardrobe=self.page.locator('#custom-modal')
         wardrobe.locator('[data-wardrobe-category="appearance"]').click()
         wardrobe.locator('[data-wardrobe-slot="hair"]').click()
-        self.assertEqual(wardrobe.locator('[data-wardrobe-card]').count(),7)
+        self.assertEqual(wardrobe.locator('[data-wardrobe-card]').count(),13)
         self.assertEqual(self.page.evaluate('selectedPaperDollItem("hair").id'),'hair-none')
         before=self.page.evaluate('JSON.stringify({stats,inventory,equippedGear,gameProgress,patient:paperDollState.patientLoadout,combat:paperDollState.combatLoadout})')
         results=ROOT/'test-results';results.mkdir(exist_ok=True)
@@ -1778,12 +1784,13 @@ class GameTests(unittest.TestCase):
                         self.assertEqual(self.page.evaluate('paperDollState.appearance.hair'),choice)
                         item=self.page.evaluate('id=>PAPER_DOLL_ITEMS.find(item=>item.id===id)',choice)
                         source=item['genderVariants'][gender]
-                        self.page.wait_for_function('''source=>['layer-hair','wardrobe-layer-hair'].every(id=>{
-                            const image=document.getElementById(id);return image.src.endsWith(source)&&image.complete
-                                &&image.naturalWidth>0&&!image.classList.contains('hidden')})''',arg=source)
+                        self.page.wait_for_function('''async source=>{const expected=await expectedHairDisplaySource(source,'original');return ['layer-hair','wardrobe-layer-hair'].every(id=>{
+                            const image=document.getElementById(id);return image.getAttribute('src')===expected&&image.complete
+                                &&image.naturalWidth>0&&!image.classList.contains('hidden')})}''',arg=source)
+                        display_source=self.page.evaluate("async source=>await expectedHairDisplaySource(source,'original')",source)
                         for prefix in ['', 'wardrobe-']:
                             layer=self.page.locator(f'#{prefix}layer-hair')
-                            self.assertEqual(layer.get_attribute('src'),source)
+                            self.assertEqual(layer.get_attribute('src'),display_source)
                             placement=layer.evaluate('''image=>{
                                 const host=image.parentElement.getBoundingClientRect(),r=image.getBoundingClientRect();
                                 return {x:(r.x-host.x)/host.width*941,y:(r.y-host.y)/host.height*1672,
@@ -1791,7 +1798,7 @@ class GameTests(unittest.TestCase):
                                     scaleX:r.width/image.naturalWidth,scaleY:r.height/image.naturalHeight,frameWidth:host.width,
                                     order:Number(getComputedStyle(image).zIndex)};
                             }''')
-                            registration=item['placementByGender'][gender]
+                            registration={'x':0,'y':0,'width':941,'height':1672} if gender=='female' else item['placementByGender'][gender]
                             for key in ['x','y','width','height']:
                                 self.assertAlmostEqual(placement[key],registration[key],delta=1)
                             stretched=choice=='hair-messy' and gender=='male'
@@ -1909,7 +1916,7 @@ class GameTests(unittest.TestCase):
             self.assertEqual(self.page.evaluate('paperDollState.appearance.hair'),'old-hair')
             self.assertEqual(self.page.evaluate('paperDollState.patientLoadout.armor'),'gear-br1')
             self.assertEqual(self.page.evaluate('paperDollState.combatLoadout.weapon'),'gear-pm')
-            self.assertEqual(self.page.locator('[data-wardrobe-card]').count(),16)
+            self.assertEqual(self.page.locator('[data-wardrobe-card]').count(),15)
             for prefix in ['', 'wardrobe-']:
                 self.assertEqual(self.page.locator(f'#{prefix}layer-face').get_attribute('src'),self.native_head_source())
                 self.assertTrue(self.page.locator(f'#{prefix}layer-body').is_visible())

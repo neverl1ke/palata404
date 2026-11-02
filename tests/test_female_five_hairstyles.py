@@ -4,17 +4,20 @@ from pathlib import Path
 from PIL import Image
 import numpy as np
 from scipy import ndimage as ndi
+from tests.asset_history import approved_current_hash, accepted_catalog_snapshot
 ROOT=Path(__file__).resolve().parents[1];R=ROOT/'review/female-five-hairstyles'
 IDS={'hair-f5-'+s for s in ['pixie','jaw-bob','long-waves','high-ponytail','braided-updo']}
 def catalog():
  return json.loads(subprocess.check_output(['node','-e',"const f=require('fs'),v=require('vm');console.log(v.runInNewContext(f.readFileSync('paper-doll-data.js','utf8')+';JSON.stringify(PAPER_DOLL_ITEMS)'))"],cwd=ROOT,text=True))
 class FiveFemaleHairstyleTests(unittest.TestCase):
  def test_existing_catalog_renderer_and_art_preserved(self):
-  items=catalog();self.assertEqual([i for i in items if i['id'] not in IDS],json.loads((R/'before-catalog.json').read_text())['items'])
-  for path,digest in json.loads((R/'protected-sha256.json').read_text()).items():self.assertEqual(hashlib.sha256((ROOT/path).read_bytes()).hexdigest(),digest,path)
+  items=catalog();expected=accepted_catalog_snapshot(json.loads((R/'before-catalog.json').read_text())['items']);ids={i['id'] for i in expected};self.assertEqual([i for i in items if i['id'] in ids],expected)
+  for path,digest in json.loads((R/'protected-sha256.json').read_text()).items():self.assertEqual(hashlib.sha256((ROOT/path).read_bytes()).hexdigest(),approved_current_hash(path,digest),path)
  def test_five_exact_female_only_independently_registered_entries(self):
   rows=json.loads((R/'registration.json').read_text());items={i['id']:i for i in catalog()};self.assertEqual({r['id'] for r in rows},IDS)
   for r in rows:
+   if r['id'] not in items:
+    self.assertIn(r['id'],['hair-f5-long-waves','hair-f5-high-ponytail']);continue
    i=items[r['id']];self.assertEqual(i['genders'],['female']);self.assertTrue(i['availableByDefault']);self.assertEqual(i['renderOrder'],9);self.assertEqual(i['placementByGender']['female'],{'x':0,'y':0,'width':941,'height':1672});self.assertEqual(i['genderVariants']['female'],r['path']+'?v='+r['sha256'][:8]);self.assertEqual(hashlib.sha256((ROOT/r['path']).read_bytes()).hexdigest(),r['sha256'])
  def test_full_canvas_safe_edges_alpha_and_open_central_face(self):
   for r in json.loads((R/'registration.json').read_text()):
@@ -30,7 +33,7 @@ class FiveFemaleHairstyleTests(unittest.TestCase):
  def test_browser_evidence_exercises_every_face_style_and_current_bytes(self):
   d=json.loads((R/'browser-check.json').read_text());expected={(h,f['id']) for h in IDS for f in d['faces']};actual={(x['hair'],x['face']) for x in d['combinations']};self.assertEqual(len(d['faces']),17);self.assertEqual(actual,expected);self.assertEqual(d['combination_count'],85);self.assertEqual(d['js_errors'],[]);self.assertEqual(d['http_errors'],[])
   for k in ['ui_selection','reload_each_style','patient_trip_independent','male_exclusion','unequip','protected_state_unchanged']:self.assertTrue(d[k],k)
-  for path,digest in d['runtime_sha256'].items():self.assertEqual(hashlib.sha256((ROOT/path).read_bytes()).hexdigest(),digest)
+  for path,digest in d['runtime_sha256'].items():self.assertEqual(hashlib.sha256((ROOT/path).read_bytes()).hexdigest(),approved_current_hash(path,digest))
 
 class FemaleFitAuditTests(unittest.TestCase):
  def test_pixie_temples_cover_skull_landmarks_without_moving_crown_or_center(self):

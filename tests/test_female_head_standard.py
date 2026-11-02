@@ -5,13 +5,14 @@ import numpy as np
 from PIL import Image,ImageChops
 from scipy import ndimage as ndi
 from tests import test_game as support
+from tests.asset_history import approved_current_hash, active_female_heads
 ROOT=support.ROOT;D=ROOT/'review/female-head-standard'
 def manifest():return json.loads((D/'manifest.json').read_text())
 
 class FemaleStandardAssetTests(unittest.TestCase):
  def test_reference_all_sources_bodies_male_art_and_hair_are_unchanged(self):
   m=manifest();self.assertEqual(len(m['heads']),17)
-  for p,h in m['protected_sha256'].items():self.assertEqual(hashlib.sha256((ROOT/p).read_bytes()).hexdigest(),h,p)
+  for p,h in m['protected_sha256'].items():self.assertEqual(hashlib.sha256((ROOT/p).read_bytes()).hexdigest(),approved_current_hash(p,h),p)
   e=next(e for e in m['heads'] if e['reference']);self.assertEqual(e['id'],'face-young');self.assertEqual(e['output'],e['source']);self.assertEqual(e['sha256'],e['source_sha256'])
  def test_every_female_head_has_exact_reference_width_top_and_centre(self):
   for e in manifest()['heads']:
@@ -38,7 +39,7 @@ class FemaleStandardAssetTests(unittest.TestCase):
  def test_all_seventeen_catalog_resources_and_cache_hashes_are_registered(self):
   code='const fs=require("fs"),vm=require("vm");console.log(vm.runInNewContext(fs.readFileSync("paper-doll-data.js","utf8")+`;JSON.stringify({items:PAPER_DOLL_ITEMS,native:PAPER_DOLL_NATIVE_HEADS})`))'
   catalog=json.loads(subprocess.check_output(['node','-e',code],cwd=ROOT,text=True))
-  for e in manifest()['heads']:
+  for e in active_female_heads(manifest()['heads']):
    item=catalog['native']['female'] if e['id'] is None else next(i for i in catalog['items'] if i['id']==e['id'])
    for key,path,h in [('genderVariants','output','sha256'),('bodyMaskByGender','mask','mask_sha256')]:
     self.assertEqual(hashlib.sha256((ROOT/e[path]).read_bytes()).hexdigest(),e[h]);self.assertEqual(item[key]['female'],e[path]+'?v='+e[h][:8])
@@ -64,6 +65,6 @@ class FemaleStandardBrowserTests(unittest.TestCase):
   p.reload(wait_until='networkidle');self.assertIsNone(p.evaluate('paperDollState.appearance.face'));p.evaluate('setGender("male")');self.assertIsNone(p.locator('#layer-face').get_attribute('src'));self.assertEqual(p.locator('#layer-body').evaluate('e=>e.style.maskImage'),'')
  def test_every_female_choice_restores_face_hair_colour_and_separate_outfits(self):
   p=self.p;p.evaluate('openCustomization();setGender("female");setPaperDollView("combat");equipPaperDollItem("upperBody",null)');protected=p.evaluate('JSON.stringify({stats,inventory,equippedGear})')
-  for e in manifest()['heads']:
+  for e in active_female_heads(manifest()['heads']):
    p.evaluate('f=>{equipPaperDollItem("face",f);equipPaperDollItem("hair","hair-textured-short");setHairColor("white");setPaperDollView("patient");equipPaperDollItem("upperBody","patient-tunic")}',e['id']);p.reload(wait_until='networkidle');p.wait_for_function('typeof paperDollState!=="undefined"');s=p.evaluate('paperDollState');self.assertEqual(s['appearance'],{'face':e['id'],'hair':'hair-textured-short','hairColor':'white'});self.assertEqual(s['patientLoadout']['upperBody'],'patient-tunic');self.assertIsNone(s['combatLoadout']['upperBody']);self.assertEqual(p.evaluate('JSON.stringify({stats,inventory,equippedGear})'),protected);p.evaluate('openCustomization();setPaperDollView("combat")')
   self.assertEqual(self.case.errors,[])

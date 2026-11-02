@@ -1,0 +1,120 @@
+{
+  "face_code": "F17",
+  "face_id": "face-female-new-almond-eyes",
+  "gender": "female",
+  "status": "approved by user: супер",
+  "frame": [
+    941,
+    1672
+  ],
+  "hair_color": "black",
+  "settings": {
+    "hair-none": {
+      "hair_code": "H00",
+      "name": "Без зачіски",
+      "horizontalScale": 1,
+      "downPixels": 0,
+      "shiftX": 0,
+      "anchorX": 470.5
+    },
+    "hair-f5-pixie": {
+      "hair_code": "H01",
+      "name": "Коротка піксі",
+      "horizontalScale": 0.9991,
+      "downPixels": 6,
+      "shiftX": 0,
+      "anchorX": 470.5
+    },
+    "hair-f5-jaw-bob": {
+      "hair_code": "H02",
+      "name": "Каре до щелепи",
+      "horizontalScale": 1.1162922201382488,
+      "downPixels": 3,
+      "shiftX": -0.9907834101382684,
+      "anchorX": 470.5
+    },
+    "hair-f5-braided-updo": {
+      "hair_code": "H05",
+      "name": "Зібрана коса",
+      "horizontalScale": 1,
+      "downPixels": -3,
+      "shiftX": 0,
+      "anchorX": 470.5
+    },
+    "hair-bob-bangs": {
+      "hair_code": "H07",
+      "name": "Каре з чубчиком",
+      "horizontalScale": 1,
+      "downPixels": 9,
+      "shiftX": 0,
+      "anchorX": 470.5
+    },
+    "hair-messy": {
+      "hair_code": "H08",
+      "name": "Розкуйовджена зачіска",
+      "horizontalScale": 1,
+      "downPixels": 0,
+      "shiftX": 0,
+      "anchorX": 470.5
+    },
+    "hair-bob": {
+      "hair_code": "H09",
+      "name": "Каре до підборіддя",
+      "horizontalScale": 1,
+      "downPixels": 0,
+      "shiftX": 0,
+      "anchorX": 470.5
+    },
+    "hair-double-buns": {
+      "hair_code": "H10",
+      "name": "Два бокові пучки з локонами",
+      "horizontalScale": 0.97,
+      "downPixels": 0,
+      "shiftX": 0,
+      "anchorX": 470.5
+    },
+    "hair-classic-short": {
+      "hair_code": "H11",
+      "name": "Класична коротка стрижка",
+      "horizontalScale": 1.0599451899999999,
+      "downPixels": 9,
+      "shiftX": -2.812111513456943,
+      "anchorX": 470.5
+    },
+    "hair-textured-short": {
+      "hair_code": "H12",
+      "name": "Коротка текстурована стрижка",
+      "horizontalScale": 1.0348793338222462,
+      "downPixels": 9,
+      "shiftX": -1.0960568162796838,
+      "anchorX": 470.5
+    },
+    "hair-shoulder-length": {
+      "hair_code": "H13",
+      "name": "Волосся до плечей",
+      "horizontalScale": 1.029073,
+      "downPixels": 0,
+      "shiftX": 0,
+      "anchorX": 470.5
+    }
+  },
+  "excluded_for_all_faces": [
+    "hair-f5-long-waves",
+    "hair-f5-high-ponytail",
+    "hair-trial-braided-curls"
+  ],
+  "local_repair_runtime": {
+    "script": "hair-repairs.js",
+    "mappings": "repair-maps.json",
+    "keys": [
+      "F17-H02",
+      "F17-H05"
+    ],
+    "color_handling": "Clone from current selected hair color"
+  },
+  "head_source": "/tmp/Face-Hair-Review-20261101/F17-skin-tone-light-candidate/F17-head-tone-candidate.png",
+  "head_repairs": [
+    "gentle skin tone matching; light version approved",
+    "original neck transition"
+  ]
+}

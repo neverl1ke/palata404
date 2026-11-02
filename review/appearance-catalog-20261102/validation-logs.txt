@@ -1,0 +1,53 @@
+APPROVED REVIEW REPLAY:
+.F01 saved review replay passed
+F02 saved review replay passed
+F03 saved review replay passed
+F04 saved review replay passed
+F05 saved review replay passed
+F06 saved review replay passed
+F07 saved review replay passed
+F08 saved review replay passed
+F09 saved review replay passed
+F10 saved review replay passed
+F11 saved review replay passed
+F12 saved review replay passed
+F14 saved review replay passed
+F15 saved review replay passed
+F16 saved review replay passed
+F17 saved review replay passed
+..
+----------------------------------------------------------------------
+Ran 3 tests in 51.650s
+
+OK
+
+EXISTING FACE/LOADOUT REGRESSIONS:
+...
+----------------------------------------------------------------------
+Ran 3 tests in 59.361s
+
+OK
+
+FEMALE COLOR MATRIX:
+.
+----------------------------------------------------------------------
+Ran 1 test in 106.040s
+
+OK
+
+FINAL ASSET AUDIT:
+......
+----------------------------------------------------------------------
+Ran 6 tests in 7.063s
+
+OK
+
+FINAL LOGIC SUMMARY:
+ℹ tests 93
+ℹ suites 0
+ℹ pass 93
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3307.902827

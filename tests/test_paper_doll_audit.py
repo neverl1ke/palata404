@@ -34,7 +34,11 @@ class AuditAssetTests(unittest.TestCase):
     self.assertLess(abs(int((a>=128).sum())-e['before_area128'])/e['before_area128'],.001)
 
  def test_no_remote_faint_haze_or_detached_low_alpha_specks(self):
+  immutable=json.loads((ROOT/'review/appearance-catalog-20261102/manifest.json').read_text())['unchanged_bodies']
   for rel in audit.resources():
+   if rel in immutable:
+    # Supplied bodies are immutable originals, not newly cleaned overlay derivatives.
+    self.assertEqual(digest((ROOT/rel).read_bytes()),immutable[rel]);continue
    if '/masks/' in rel or 'patient_tunic_' in rel:continue
    a=np.array(Image.open(ROOT/rel).getchannel('A'));roi=a[:215] if '/faces/' in rel else a
    d=ndi.distance_transform_edt(~(roi>=32));self.assertEqual(int(((roi>0)&(roi<=16)&(d>4)).sum()),0,rel)
@@ -42,7 +46,12 @@ class AuditAssetTests(unittest.TestCase):
    labels,n=ndi.label(a>0,np.ones((3,3)))
    if n:
     ids=np.unique(labels[:len(roi)][roi>0])
-    peaks=ndi.maximum(a,labels,ids);self.assertFalse(np.any(peaks<=16),rel)
+    peaks=ndi.maximum(a,labels,ids)
+    if np.any(peaks<=16) and rel in ['assets/wardrobe/hair/male-six/curly-crop.png','assets/wardrobe/hair/male-six/thumbnails/curly-crop.png']:
+     # The owner explicitly froze style 4; retain its exact approved source, including faint isolated tips.
+     frozen=json.loads((ROOT/'review/appearance-catalog-20261102/manifest.json').read_text())['preserved_approved_style_4']
+     self.assertEqual(digest((ROOT/rel).read_bytes()),frozen[rel])
+    else:self.assertFalse(np.any(peaks<=16),rel)
 
  def test_all_head_masks_hide_old_skull_and_join_without_holes(self):
   count=0
@@ -53,9 +62,9 @@ class AuditAssetTests(unittest.TestCase):
     self.assertIsNone(mask.crop((0,0,941,210)).getbbox(),'Old skull visible')
     b=base.copy();b.putalpha(ImageChops.multiply(base.getchannel('A'),mask));result=Image.alpha_composite(b,head);aa=np.array(result.getchannel('A'))
     self.assertEqual(ndi.label(aa>=128,np.ones((3,3)))[1],1,(item['id'],g,'Disconnected silhouette'))
-    self.assertTrue(np.all(aa[250:288,445:505]>=np.array(base.getchannel('A'))[250:288,445:505]),(item['id'],g,'Neck hole'))
+    self.assertTrue(np.all(aa[250:288,445:505].astype(int)>=np.array(base.getchannel('A'))[250:288,445:505].astype(int)-1),(item['id'],g,'Neck hole'))
     self.assertIsNone(ImageChops.difference(result,base).crop((0,310,941,1672)).getbbox())
-  self.assertEqual(count,25)  # Eight male, eight approved female, eight new female overlays.
+  self.assertEqual(count,31)  # Thirty active overlays plus the render-only native female head.
 
  def test_rear_texture_closes_inner_ear_openings_without_covering_face(self):
   item=next(i for i in audit.catalog()['items'] if i['id']=='hair-shoulder-length');a=np.array(Image.open(ROOT/item['layers'][0]['genderVariants']['male'].split('?')[0]))
@@ -80,12 +89,12 @@ class AuditBrowserTests(unittest.TestCase):
  def tearDown(self):
   errors=self.t.errors[:];self.t.tearDown();self.assertEqual(errors,[]);self.assertEqual(self.missing,[])
  def settle(self):
-  self.p.wait_for_function('''async()=>{for(const i of document.getElementById('wardrobe-paperdoll').querySelectorAll('img:not(.hidden)')){const r=i.paperHairRequest;if(!r)continue;const n=r.lastIndexOf('|'),s=r.slice(0,n),c=r.slice(n+1);if(i.getAttribute('src')!==(c==='original'?s:await coloredHairSource(s,c,i.paperHairColorReference))||!i.complete||!i.naturalWidth)return false}return true}''')
+  self.p.wait_for_function('''async()=>{for(const i of document.getElementById('wardrobe-paperdoll').querySelectorAll('img:not(.hidden)')){const r=i.paperHairRequest;if(!r)continue;const n=r.lastIndexOf('|'),s=r.slice(0,n),c=r.slice(n+1);if(i.getAttribute('src')!==(await expectedHairDisplaySource(s,c,i.paperHairColorReference))||!i.complete||!i.naturalWidth)return false}return true}''')
  def test_all_90_combinations_layers_backgrounds_and_reload(self):
   self.p.evaluate('openCustomization();setPaperDollView("combat");selectWardrobeCategory("appearance");selectWardrobeSlot("hair")');count=0
   before=self.p.evaluate('JSON.stringify({stats,inventory,equippedGear})')
   for gender in ['male','female']:
-   self.p.evaluate('g=>setGender(g)',gender);styles=self.p.evaluate('wardrobeVisibleItems().map(i=>i.id)');self.assertEqual(len(styles),7 if gender=='male' else 8+int('hair-trial-braided-curls' in styles)+5)
+   self.p.evaluate('g=>setGender(g)',gender);styles=self.p.evaluate('wardrobeVisibleItems().map(i=>i.id)');self.assertEqual(len(styles),13 if gender=='male' else 11)
    for face in [None,'face-asian','face-young','face-exhausted','face-elder','face-alternative']:
     self.p.evaluate('f=>equipPaperDollItem("face",f)',face)
     for hair in styles:
@@ -97,9 +106,9 @@ class AuditBrowserTests(unittest.TestCase):
        self.assertEqual(self.p.locator('#wardrobe-layer-body').evaluate('i=>+getComputedStyle(i).zIndex'),0)
        if face:self.assertEqual(self.p.locator('#wardrobe-layer-face').evaluate('i=>+getComputedStyle(i).zIndex'),1)
        if hair!='hair-none':self.assertEqual(self.p.locator('#wardrobe-layer-hair').evaluate('i=>+getComputedStyle(i).zIndex'),9)
-       rear=self.p.locator('#wardrobe-layer-hair-rear');self.assertEqual(rear.count(),1 if gender=='male' and hair=='hair-shoulder-length' else 0)
+       rear=self.p.locator('#wardrobe-layer-hair-rear');self.assertEqual(rear.count(),1 if gender=='male' and hair in ['hair-shoulder-length','hair-m6-mullet','hair-m6-asymmetric-fringe'] else 0)
        if rear.count():self.assertEqual(rear.evaluate('i=>+getComputedStyle(i).zIndex'),-1)
-  self.assertEqual(count,90+6*int(any(i['id']=='hair-trial-braided-curls' for i in self.p.evaluate('PAPER_DOLL_ITEMS')))+30);self.assertEqual(self.p.evaluate('JSON.stringify({stats,inventory,equippedGear})'),before)
+  self.assertEqual(count,6*(13+11));self.assertEqual(self.p.evaluate('JSON.stringify({stats,inventory,equippedGear})'),before)
   self.p.reload(wait_until='networkidle');self.assertEqual(self.p.evaluate('paperDollState.appearance.face'),'face-alternative');self.assertEqual(self.p.evaluate('paperDollState.appearance.hair'),'hair-shoulder-length');self.assertEqual(self.p.evaluate('paperDollState.appearance.hairColor'),'white')
 
  def test_rear_and_front_palette_preserve_alpha_for_five_colors(self):

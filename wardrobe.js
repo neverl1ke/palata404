@@ -65,6 +65,8 @@ function applyWardrobeItemAction() {
 }
 
 function wardrobeItemImage(item) {
+    const catalogThumbnail = item?.thumbnailByGender?.[paperDollState.selectedGender];
+    if (catalogThumbnail && !failedPaperDollImages.has(catalogThumbnail)) return catalogThumbnail;
     const parts = paperDollItemLayers(item, paperDollState.selectedGender);
     if (item.slot === 'hair') parts.sort((a,b) => (b.renderOrder || 0) - (a.renderOrder || 0));
     return parts.flatMap(part => paperDollImageCandidates(part, paperDollState.selectedGender)).find(path => !failedPaperDollImages.has(path));

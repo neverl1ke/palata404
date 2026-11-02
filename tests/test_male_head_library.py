@@ -10,6 +10,7 @@ import numpy as np
 from PIL import Image,ImageChops
 
 from tests import test_game as support
+from tests.asset_history import approved_current_hash
 
 ROOT=support.ROOT
 REPORT=ROOT/'review/male-heads-full-library'
@@ -57,7 +58,7 @@ class MaleLibraryAssetTests(unittest.TestCase):
         for path,digest in manifest()['protected_sha256'].items():
             # Follow-up normalization changes only the female native rendering helper.
             raw=subprocess.check_output(['git','show','fd20bc3:'+path],cwd=ROOT) if path=='paper-doll.js' else (ROOT/path).read_bytes()
-            self.assertEqual(hashlib.sha256(raw).hexdigest(),digest,path)
+            self.assertEqual(hashlib.sha256(raw).hexdigest(),digest if path=='paper-doll.js' else approved_current_hash(path,digest),path)
         baseline=json.loads((REPORT/'registration.json').read_text())['baseline']
         old=subprocess.check_output(['git','show',baseline+':paper-doll-data.js'],cwd=ROOT,text=True)
         expression=';JSON.stringify({items:PAPER_DOLL_ITEMS,frame:PAPER_DOLL_FRAME,order:PAPER_DOLL_LAYER_ORDER,bodies:PAPER_DOLL_BODIES})'
@@ -141,11 +142,11 @@ class MaleLibraryBrowserTests(unittest.TestCase):
     def test_new_male_catalog_and_tunic_render_on_every_head(self):
         self.case.load();p=self.page;p.evaluate('openCustomization();setGender("male");selectWardrobeCategory("appearance");selectWardrobeSlot("face")')
         faces=p.evaluate('PAPER_DOLL_ITEMS.filter(i=>i.slot==="face"&&paperDollItemSupportsGender(i,"male")).map(i=>i.id)')
-        self.assertEqual(len(faces),8)
+        self.assertEqual(len(faces),15)
         for face in faces:
             p.evaluate('f=>{equipPaperDollItem("face",f);equipPaperDollItem("hair","hair-messy");setPaperDollView("patient");equipPaperDollItem("upperBody","patient-tunic")}',face)
             p.wait_for_function('()=>[...document.querySelectorAll("#wardrobe-paperdoll img:not(.hidden)")].every(i=>i.complete&&i.naturalWidth>0)')
-            self.assertIn('male_',p.locator('#wardrobe-layer-face').get_attribute('src'))
+            self.assertEqual(p.evaluate('selectedPaperDollItem("face").genderVariants.male'),p.locator('#wardrobe-layer-face').get_attribute('src'))
         p.evaluate('setGender("female");selectWardrobeSlot("face")')
         for face in ['face-male-goth-pierced','face-male-freckled','face-male-blue-eyes']:
             self.assertEqual(p.locator(f'[data-wardrobe-card="{face}"]').count(),0)

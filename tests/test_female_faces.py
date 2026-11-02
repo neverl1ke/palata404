@@ -11,7 +11,7 @@ from PIL import Image, ImageChops
 from scipy import ndimage as ndi
 
 from tests import test_game as support
-from tests.asset_history import approved_current_hash
+from tests.asset_history import approved_current_hash, active_female_heads
 
 ROOT = support.ROOT
 REPORT = ROOT/'review/female-faces-integration'
@@ -100,7 +100,7 @@ class FemaleFacesAssetTests(unittest.TestCase):
         code="const fs=require('fs'),vm=require('vm');console.log(vm.runInNewContext(fs.readFileSync('paper-doll-data.js','utf8')+';JSON.stringify(PAPER_DOLL_ITEMS.filter(i=>i.slot===\"hair\"))'))"
         current=subprocess.check_output(['node','-e',code],cwd=ROOT,text=True)
         # The removable trial is tested separately; every approved entry stays exact.
-        self.assertEqual([i for i in json.loads(current) if i['id'] not in ['hair-trial-braided-curls', 'hair-f5-pixie', 'hair-f5-jaw-bob', 'hair-f5-long-waves', 'hair-f5-high-ponytail', 'hair-f5-braided-updo']],data['hair_items_before'])
+        self.assertEqual([i for i in json.loads(current) if not i['id'].startswith('hair-m6-') and i['id'] not in ['hair-trial-braided-curls', 'hair-f5-pixie', 'hair-f5-jaw-bob', 'hair-f5-long-waves', 'hair-f5-high-ponytail', 'hair-f5-braided-updo']],data['hair_items_before'])
 
 
 class FemaleFacesBrowserTests(unittest.TestCase):
@@ -116,8 +116,8 @@ class FemaleFacesBrowserTests(unittest.TestCase):
 
     def test_eight_female_choices_and_reload_preserve_each_appearance_and_loadout(self):
         self.p.evaluate('openCustomization();setGender("female");selectWardrobeSlot("face")')
-        ids=[e['id'] for e in manifest()['files']]
-        self.assertEqual(self.p.locator('[data-wardrobe-card]').count(),16)
+        ids=[e['id'] for e in manifest()['files'] if e['id']!='face-female-new-mature']
+        self.assertEqual(self.p.locator('[data-wardrobe-card]').count(),15)
         protected=self.p.evaluate('JSON.stringify({stats,inventory,equippedGear,patient:paperDollState.patientLoadout,combat:paperDollState.combatLoadout})')
         for face in ids:
             self.p.locator('[data-wardrobe-card="'+face+'"]').click()
@@ -134,7 +134,7 @@ class FemaleFacesBrowserTests(unittest.TestCase):
         for kind in ['ginger-soft','goth-septum','goth-black-lips']:
             self.p.evaluate('f=>{setGender("female");equipPaperDollItem("face",f);setGender("male");openCustomization();selectWardrobeSlot("face")}','face-'+kind)
             self.assertIsNone(self.p.evaluate('paperDollState.appearance.face'))
-            self.assertEqual(self.p.locator('[data-wardrobe-card]').count(),8)
+            self.assertEqual(self.p.locator('[data-wardrobe-card]').count(),15)
             self.assertFalse(self.p.evaluate('f=>equipPaperDollItem("face",f)','face-'+kind))
             self.assertTrue(self.p.locator('#layer-face').evaluate('i=>i.classList.contains("hidden")'))
 
@@ -142,10 +142,10 @@ class FemaleFacesBrowserTests(unittest.TestCase):
         self.p.evaluate('setGender("female");setPaperDollView("combat");openCustomization();selectWardrobeSlot("hair")')
         protected=self.p.evaluate('JSON.stringify({stats,inventory,equippedGear})')
         hairs=self.p.evaluate('wardrobeVisibleItems().map(i=>i.id)')
-        self.assertEqual(len(hairs),8+int('hair-trial-braided-curls' in hairs)+5)
+        self.assertEqual(len(hairs),11)
         count=0
-        for e in manifest()['files']:
-            e=next(x for x in json.loads((ROOT/'review/female-head-standard/manifest.json').read_text())['heads'] if x['id']==e['id'])
+        released_ids={entry['id'] for entry in manifest()['files']}
+        for e in active_female_heads([entry for entry in json.loads((ROOT/'review/female-head-standard/manifest.json').read_text())['heads'] if entry['id'] in released_ids]):
             self.p.evaluate('f=>equipPaperDollItem("face",f)',e['id'])
             for hair in hairs:
                 count+=1
@@ -155,7 +155,7 @@ class FemaleFacesBrowserTests(unittest.TestCase):
                         for(const i of document.querySelectorAll('#wardrobe-paperdoll img:not(.hidden)')){
                             if(!i.complete||!i.naturalWidth)return false;
                             if(i.paperHairRequest){const r=i.paperHairRequest,n=r.lastIndexOf('|');
-                                if(i.getAttribute('src')!==await coloredHairSource(r.slice(0,n),r.slice(n+1),i.paperHairColorReference))return false;}
+                                if(i.getAttribute('src')!==await expectedHairDisplaySource(r.slice(0,n),r.slice(n+1),i.paperHairColorReference))return false;}
                         }return true;
                     }''')
                     for prefix in ['','wardrobe-']:
@@ -163,7 +163,7 @@ class FemaleFacesBrowserTests(unittest.TestCase):
                         self.assertIn(e['output'],self.p.locator('#'+prefix+'layer-face').get_attribute('src'))
                         self.assertIn(e['mask'],self.p.locator('#'+prefix+'layer-body').evaluate('i=>i.style.maskImage'))
                         if hair!='hair-none':self.assertEqual(self.p.locator('#'+prefix+'layer-hair').evaluate('i=>+getComputedStyle(i).zIndex'),9)
-        self.assertEqual(count,len(manifest()['files'])*len(hairs))
+        self.assertEqual(count,len(released_ids)*len(hairs))
         self.assertEqual(self.p.evaluate('JSON.stringify({stats,inventory,equippedGear})'),protected)
         self.assertEqual(self.p.evaluate('[...failedPaperDollImages]'),[])
 

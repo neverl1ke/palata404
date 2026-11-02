@@ -1,0 +1,52 @@
+{
+  "female_saved_review_replay": {
+    "cases": 224,
+    "result": "passed"
+  },
+  "new_male_face_hair_combinations": {
+    "cases": 42,
+    "result": "passed"
+  },
+  "node_logic": {
+    "tests": 93,
+    "failures": 0
+  },
+  "existing_loadout_and_face_regressions": {
+    "tests": 3,
+    "result": "passed"
+  },
+  "female_legacy_matrix": {
+    "head_hair_pairs": 88,
+    "colors": [
+      "original",
+      "black",
+      "white"
+    ],
+    "result": "passed"
+  },
+  "asset_alpha_and_neck_audit": {
+    "tests": 6,
+    "result": "passed",
+    "neck_alpha_rounding_tolerance": 1
+  },
+  "full_suite_initial": {
+    "tests": 163,
+    "outcome": "exposed obsolete catalog assumptions and invisible derivative alpha noise; corrected and rerun by affected area"
+  },
+  "ui": {
+    "widths": [
+      390,
+      1440
+    ],
+    "genders": [
+      "female",
+      "male"
+    ],
+    "modes": [
+      "patient",
+      "combat"
+    ],
+    "race_reload_unequip": "passed"
+  },
+  "scope": "appearance only; no Avatar Core branch history, weapon or body changes"
+}

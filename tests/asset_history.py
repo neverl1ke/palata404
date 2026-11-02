@@ -46,6 +46,13 @@ def historical_asset(relative):
 
 def approved_current_hash(relative, old_hash):
     """No broad exemption: only the explicit user-approved replacement list."""
+    if hashlib.sha256((ROOT/relative).read_bytes()).hexdigest()==old_hash:
+        return old_hash
+    appearance=ROOT/'review/appearance-catalog-20261102/manifest.json'
+    if appearance.exists():
+        accepted=json.loads(appearance.read_text())
+        if accepted['runtime_before_sha256'].get(relative)==old_hash:
+            return accepted['runtime_after_sha256'][relative]
     male=ROOT/'review/male-heads-full-library/integration-manifest.json'
     if male.exists():
         data=json.loads(male.read_text())
@@ -77,3 +84,30 @@ def approved_current_hash(relative, old_hash):
                     assert data['before_sha256'][relative]==old_hash
                     return e[field]
     return old_hash
+
+
+def accepted_catalog_snapshot(items):
+    """Apply only the enumerated approved retirements and three female head URLs."""
+    path=ROOT/'review/appearance-catalog-20261102/manifest.json'
+    if not path.exists():return items
+    receipt=json.loads(path.read_text());retired=set(receipt['excluded_ids']);heads={h['id']:h for h in receipt['female_heads']}
+    result=[]
+    for item in items:
+        if item['id'] in retired:continue
+        item=json.loads(json.dumps(item))
+        if item['id'] in heads:
+            h=heads[item['id']];item['genderVariants']['female']=h['path']+'?v='+h['sha256'][:8]
+        result.append(item)
+    return result
+
+
+def active_female_heads(heads):
+    receipt=json.loads((ROOT/'review/appearance-catalog-20261102/manifest.json').read_text())
+    corrected={h['id']:h for h in receipt['female_heads']};result=[]
+    for head in heads:
+        if head['id'] in receipt['excluded_ids']:continue
+        head=dict(head)
+        if head['id'] in corrected:
+            h=corrected[head['id']];head['output']=h['path'];head['sha256']=h['sha256']
+        result.append(head)
+    return result

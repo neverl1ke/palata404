@@ -7,6 +7,7 @@ from pathlib import Path
 import numpy as np
 from PIL import Image
 from scipy import ndimage as ndi
+from tests.asset_history import accepted_catalog_snapshot, approved_current_hash
 
 ROOT = Path(__file__).resolve().parents[1]
 REPORT = ROOT / 'review/trial-braided-curls'
@@ -22,19 +23,18 @@ class TrialBraidedCurlsTests(unittest.TestCase):
     def test_existing_catalog_and_approved_art_are_unchanged(self):
         before = catalog(subprocess.check_output(['git','show','adffd71:paper-doll-data.js'],text=True,cwd=ROOT))
         after = catalog((ROOT/'paper-doll-data.js').read_text())
-        self.assertEqual([i for i in after if i['id'] not in [TRIAL,'hair-f5-pixie','hair-f5-jaw-bob','hair-f5-long-waves','hair-f5-high-ponytail','hair-f5-braided-updo']],before)
+        expected=accepted_catalog_snapshot(before);ids={i['id'] for i in expected};self.assertEqual([i for i in after if i['id'] in ids],expected)
         protected=json.loads((ROOT/'review/female-head-standard/manifest.json').read_text())['protected_sha256']
         for path,digest in protected.items():
-            self.assertEqual(hashlib.sha256((ROOT/path).read_bytes()).hexdigest(),digest,path)
-        self.assertEqual((ROOT/'paper-doll.js').read_bytes(),subprocess.check_output(['git','show','adffd71:paper-doll.js'],cwd=ROOT))
+            self.assertEqual(hashlib.sha256((ROOT/path).read_bytes()).hexdigest(),approved_current_hash(path,digest),path)
+        old_hash=hashlib.sha256(subprocess.check_output(['git','show','adffd71:paper-doll.js'],cwd=ROOT)).hexdigest();self.assertEqual(hashlib.sha256((ROOT/'paper-doll.js').read_bytes()).hexdigest(),approved_current_hash('paper-doll.js',old_hash))
 
-    def test_trial_is_female_only_full_canvas_and_cache_version_matches_bytes(self):
-        items=catalog((ROOT/'paper-doll-data.js').read_text());item=next(i for i in items if i['id']==TRIAL)
-        self.assertEqual(item['genders'],['female']);self.assertEqual(item['renderOrder'],9)
-        self.assertEqual(item['placementByGender']['female'],{'x':0,'y':0,'width':941,'height':1672})
-        path,version=item['genderVariants']['female'].split('?v=')
-        self.assertEqual(hashlib.sha256((ROOT/path).read_bytes()).hexdigest()[:8],version)
-        self.assertTrue(item['availableByDefault']);self.assertTrue(item['fittedToGender'])
+    def test_removed_trial_is_absent_but_original_resource_is_retained(self):
+        self.assertFalse(any(i['id']==TRIAL for i in catalog((ROOT/'paper-doll-data.js').read_text())))
+        entry=json.loads((REPORT/'registration.json').read_text())
+        path=ROOT/entry['output']
+        self.assertEqual(hashlib.sha256(path.read_bytes()).hexdigest(),entry['sha256'])
+        with Image.open(path) as image:self.assertEqual(image.size,(941,1672))
 
     def test_alpha_margin_and_central_face_opening_are_clear(self):
         entry=json.loads((REPORT/'registration.json').read_text())

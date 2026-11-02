@@ -59,7 +59,7 @@ class TargetedAssetTests(unittest.TestCase):
   a=old[:,:,:3].astype(float).mean(2);b=new[:,:,:3].astype(float).mean(2);core=ndi.binary_erosion(changed,iterations=3)
   before=(a-ndi.gaussian_filter(a,1))[core];after=(b-ndi.gaussian_filter(b,1))[core];self.assertGreater(np.std(after)/np.std(before),.95)
  def test_male_ear_cuts_are_local_and_approved_placements_and_rear_stay(self):
-  fixture=json.loads((ROOT/'tests/fixtures/paper-doll-targeted-fix.json').read_text());catalog=support.audit.catalog();self.assertEqual({i['id']:i.get('placementByGender') for i in catalog['items'] if i['slot']=='hair' and i['id'] not in ['hair-trial-braided-curls','hair-f5-pixie','hair-f5-jaw-bob','hair-f5-long-waves','hair-f5-high-ponytail','hair-f5-braided-updo']},fixture['hair_placements_before'])
+  fixture=json.loads((ROOT/'tests/fixtures/paper-doll-targeted-fix.json').read_text());catalog=support.audit.catalog();self.assertEqual({i['id']:i.get('placementByGender') for i in catalog['items'] if i['slot']=='hair' and not i['id'].startswith('hair-m6-') and i['id'] not in ['hair-trial-braided-curls','hair-f5-pixie','hair-f5-jaw-bob','hair-f5-long-waves','hair-f5-high-ponytail','hair-f5-braided-updo']},fixture['hair_placements_before'])
   for e in fixture['files']:
    if '/hair/' not in e['path']:continue
    if e['changed']:

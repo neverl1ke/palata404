@@ -257,7 +257,10 @@ function renderPaperDollAt(host, prefix = '') {
         const layer = part;
         const candidates = paperDollImageCandidates(layer, selectedGender);
         const order = Number.isFinite(layer.renderOrder) ? Math.max(-100, Math.min(100, layer.renderOrder)) : index;
-        positionPaperDollLayer(image, layer.placementByGender?.[selectedGender] ?? layer.placement, order);
+        const originalPlacement = layer.placementByGender?.[selectedGender] ?? layer.placement;
+        const femaleFit = slot === 'hair' ? femaleHairFitFor(selectedGender,
+            selectedPaperDollItem('face')?.id, item?.id, originalPlacement) : null;
+        positionPaperDollLayer(image, femaleFit ? { x: 0, y: 0, width: 941, height: 1672 } : originalPlacement, order);
         if (slot === 'baseBody' || slot === 'face') applyPaperDollCrownMask(image, selectedGender);
         // Each replacement head has its own registered under-jaw/neck occlusion.
         // Masks restore the original body only where that head already matches it.
@@ -280,13 +283,17 @@ function renderPaperDollAt(host, prefix = '') {
         const color = slot === 'hair' ? normalizeHairColor(paperDollState.appearance.hairColor) : 'original';
         image.paperHairColorReference = layer.colorReference;
         const request = `${source}|${color}`;
-        if (image.paperHairRequest !== request) {
+        const fitKey = femaleFit?.key || '';
+        if (image.paperHairRequest !== request || image.paperHairFitKey !== fitKey) {
             image.paperHairRequest = request;
-            if (color === 'original') setPaperDollImage(image, source, source);
-            else coloredHairSource(source, color, layer.colorReference).then(colored => {
-                if (image.paperHairRequest === request) setPaperDollImage(image, colored, source);
+            image.paperHairFitKey = fitKey;
+            if (color === 'original' && !femaleFit) setPaperDollImage(image, source, source);
+            else (femaleFit ? fittedFemaleHairSource(source, color, layer.colorReference, femaleFit)
+                : coloredHairSource(source, color, layer.colorReference)).then(colored => {
+                if (image.paperHairRequest === request && image.paperHairFitKey === fitKey) setPaperDollImage(image, colored, source);
             }).catch(() => {
-                if (image.paperHairRequest !== request) return;
+                if (image.paperHairRequest !== request || image.paperHairFitKey !== fitKey) return;
+                if (femaleFit) positionPaperDollLayer(image, originalPlacement, order);
                 image.paperHairRequest = null;
                 setPaperDollImage(image, source, source);
                 document.getElementById('hair-color-error')?.classList.remove('hidden');

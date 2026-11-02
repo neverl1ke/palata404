@@ -1,0 +1,268 @@
+{
+  "unchanged_bodies": {
+    "base_male.png": "b40a31b26dcf9aeea1dad02091228377330c9bb3af3a4b9669cfcc67247fc41d",
+    "base_female.png": "a27b499c03fc15c4788ae3a651483a36463f28b1f034178feccdaa852e7e50f9"
+  },
+  "sources": [
+    {
+      "role": "male-head",
+      "number": 1,
+      "path": "review/appearance-catalog-20261102/sources/male-head-01.png",
+      "sha256": "8c2cf154906946b40fec8c5c1e85fe111faa0d2e4de421f490aaa0ea9b39a6ba",
+      "runtime_id": "face-male-new-neutral"
+    },
+    {
+      "role": "male-head",
+      "number": 2,
+      "path": "review/appearance-catalog-20261102/sources/male-head-02.png",
+      "sha256": "77c1b8e7216849cfa6c0221ad2c25e66ee8c2370da14726453545cf0864a18bd",
+      "runtime_id": "face-male-new-almond"
+    },
+    {
+      "role": "male-head",
+      "number": 3,
+      "path": "review/appearance-catalog-20261102/sources/male-head-03.png",
+      "sha256": "263bd0d65fafb7b99083ebb3a89b7295fee713c761ebb9255ce03392d4c1e0b9",
+      "runtime_id": "face-male-new-defined"
+    },
+    {
+      "role": "male-head",
+      "number": 4,
+      "path": "review/appearance-catalog-20261102/sources/male-head-04.png",
+      "sha256": "fc22c2929f16e0380e6b5b8bc3b5b785a729d34492edd165e8894c3a9129500a",
+      "runtime_id": "face-male-new-youthful"
+    },
+    {
+      "role": "male-head",
+      "number": 5,
+      "path": "review/appearance-catalog-20261102/sources/male-head-05.png",
+      "sha256": "8e73d2417ee7c9f50419434d7b0c2b5918da03605746d171addd34c2cbb4bd46",
+      "runtime_id": "face-male-new-mature"
+    },
+    {
+      "role": "male-head",
+      "number": 6,
+      "path": "review/appearance-catalog-20261102/sources/male-head-06.png",
+      "sha256": "69ad83d50a46e5cd5f12b54ccd16a7dade57cc1084759da9c6db28512e4ba5ec",
+      "runtime_id": "face-male-new-freckled-pierced"
+    },
+    {
+      "role": "male-head",
+      "number": 7,
+      "path": "review/appearance-catalog-20261102/sources/male-head-07.png",
+      "sha256": "dc0dadb32b9f2fa0baaaa80a86c27ac9efc770cdda2b5487cbdcc74aeb5992a6",
+      "runtime_id": "face-male-new-stern"
+    },
+    {
+      "role": "male-hair",
+      "number": 1,
+      "path": "review/appearance-catalog-20261102/sources/male-hair-01.png",
+      "sha256": "b35f92bb4dc1b9a9e201f53ddb0ba151ca86e1eca3b7205217199463877e7504",
+      "runtime_id": "hair-m6-mohawk"
+    },
+    {
+      "role": "male-hair",
+      "number": 2,
+      "path": "review/appearance-catalog-20261102/sources/male-hair-02.png",
+      "sha256": "ec37c776adeaa4ccd11c52b9e3863052fd46c7c42c19e9f9390dbc75feacc28d",
+      "runtime_id": "hair-m6-cornrows"
+    },
+    {
+      "role": "male-hair",
+      "number": 3,
+      "path": "review/appearance-catalog-20261102/sources/male-hair-03.png",
+      "sha256": "84de221afdf6d0bcc4067d88ff7100885dd37a9948883fdf3a2be10837c1dea4",
+      "runtime_id": "hair-m6-mullet"
+    },
+    {
+      "role": "male-hair",
+      "number": 4,
+      "path": "review/appearance-catalog-20261102/sources/male-hair-04.png",
+      "sha256": "5d8ff11d67c6aae990984444ea810a5ba6f2874588645253969ee1e11264ebeb",
+      "runtime_id": "hair-m6-curly-crop"
+    },
+    {
+      "role": "male-hair",
+      "number": 5,
+      "path": "review/appearance-catalog-20261102/sources/male-hair-05.png",
+      "sha256": "05ed292f8f99966bbe6d2a15a6563879c141b6a9c176ac908b4ad9c97dc6803b",
+      "runtime_id": "hair-m6-topknot"
+    },
+    {
+      "role": "male-hair",
+      "number": 6,
+      "path": "review/appearance-catalog-20261102/sources/male-hair-06.png",
+      "sha256": "e67d32682660b7c1ddbcac5f7c3531fe41c170d79467f866b490c682c66b872b",
+      "runtime_id": "hair-m6-asymmetric-fringe"
+    },
+    {
+      "role": "authorized-hidden-fill",
+      "path": "review/appearance-catalog-20261102/sources/male-mullet-rear-fill.png",
+      "sha256": "dcee5bb51ae78b71ccac3d72fe46145fc7d3fa5cba1adade30e49f98ba90b99d"
+    },
+    {
+      "role": "authorized-hidden-fill",
+      "path": "review/appearance-catalog-20261102/sources/male-dreadlocks-rear-fill.png",
+      "sha256": "afa405f69bb661f83df120fcc8665b23136411fa8ba0c2894477e84f0037d294"
+    }
+  ],
+  "female_heads": [
+    {
+      "code": "F07",
+      "id": "face-ginger-soft",
+      "path": "assets/wardrobe/faces/approved-female-corrections/f07.png",
+      "sha256": "9dd9bb07125fb8bb69f1f2bd737776a508a2cf75f519e81f1f858eef28770d44",
+      "repairs": [
+        "skin tone matched",
+        "original body neck restored",
+        "eye transition smoothed"
+      ]
+    },
+    {
+      "code": "F14",
+      "id": "face-female-new-light-eyes",
+      "path": "assets/wardrobe/faces/approved-female-corrections/f14.png",
+      "sha256": "ced9166739d5ab885ee45d7287d95ff14afa1a39cf16465b75106c94717eaa0d",
+      "repairs": [
+        "skin tone matched to body",
+        "neck transition restored"
+      ]
+    },
+    {
+      "code": "F17",
+      "id": "face-female-new-almond-eyes",
+      "path": "assets/wardrobe/faces/approved-female-corrections/f17.png",
+      "sha256": "935d8399d34033633507123ffd8f6c9c7562248a53b34eb9562c5090e713d505",
+      "repairs": [
+        "gentle skin tone matching; light version approved",
+        "original neck transition"
+      ]
+    }
+  ],
+  "female_faces_with_saved_fit": 16,
+  "female_repair_maps": 32,
+  "male_counts": {
+    "new_heads": 7,
+    "new_hairstyles": 6
+  },
+  "excluded_ids": [
+    "face-female-new-mature",
+    "hair-f5-long-waves",
+    "hair-f5-high-ponytail",
+    "hair-trial-braided-curls"
+  ],
+  "base_commit": "f70b7e5be63f6b85d895c6d5b259adbc30577b86",
+  "runtime_before_sha256": {
+    "index.html": "f4846bef4a8e32f0ad49b3eb738a0e5523bb69e6ff05e9cb1b4f9bde052d7ef1",
+    "paper-doll-data.js": "0da56cc16540cfb1278ec00bfad873df1b56b2ee578b8ee9752155b9f84917d5",
+    "paper-doll.js": "5abf405240fa5fc8abb172e5053d0823d06d68148bff425a11c7420a800423cf",
+    "wardrobe.js": "dc97922f0aef5d58a636f8a0f244c3ed157275770e6b953e8132ba0f78628452"
+  },
+  "runtime_after_sha256": {
+    "index.html": "5df433687c282695296903a53491c0dbcdae1716820181a0d2b9ddeec62de0f5",
+    "paper-doll-data.js": "f6002174d13af82a62aa549027d73fa764fe26c2a119fba980e55ad3e2889b5c",
+    "paper-doll.js": "fba267b5074fc8d0c0c4d6a307cdc7d75bf38193cb837f949e3480090a548997",
+    "wardrobe.js": "63de2dcaa3c54254eeb6e371c5e2e1193e90d52c0af153513802b44b739718e1"
+  },
+  "invisible_resampling_noise_cleanup": [
+    {
+      "path": "assets/wardrobe/faces/male-approved-seven/head-02.png",
+      "removed_invisible_pixels": 228,
+      "sha256": "8c2d64e491e4ffac54066b7435dec0db625e43f46577a33d69a5a5b99b3af5ae"
+    },
+    {
+      "path": "assets/wardrobe/faces/male-approved-seven/head-03.png",
+      "removed_invisible_pixels": 140,
+      "sha256": "cb9713dbad12fa58b7862ac6e9353059b998323967d851a673e8da4249c14fda"
+    },
+    {
+      "path": "assets/wardrobe/faces/male-approved-seven/head-05.png",
+      "removed_invisible_pixels": 158,
+      "sha256": "0139231f5c462927d21f3879745a8a388eaaca7f18367c88d80340f3f4262846"
+    },
+    {
+      "path": "assets/wardrobe/faces/male-approved-seven/head-07.png",
+      "removed_invisible_pixels": 252,
+      "sha256": "54896d95cec1c2e4c62a105b825f0131d88ccbfe2450c27deb4a422ebc0b857c"
+    },
+    {
+      "path": "assets/wardrobe/faces/male-approved-seven/head-01.png",
+      "removed_invisible_pixels": 260,
+      "sha256": "d2a03c31d167bb61184d5d70ca67942b3a34df7ef1444761d480e98e8152cfe9"
+    },
+    {
+      "path": "assets/wardrobe/faces/male-approved-seven/head-04.png",
+      "removed_invisible_pixels": 189,
+      "sha256": "aea49f61c99b5cbcc5e7efbb78872c1c89e5eff53d44915ca7ceedb0b71727e1"
+    },
+    {
+      "path": "assets/wardrobe/faces/male-approved-seven/head-06.png",
+      "removed_invisible_pixels": 260,
+      "sha256": "4ea19b129b89cfbbe54b863ce5036d8bbd7bb588c1e82cffeba8e99c3fdbd6d2"
+    },
+    {
+      "path": "assets/wardrobe/hair/male-six/mohawk.png",
+      "removed_invisible_pixels": 4,
+      "sha256": "05b3bc0b0bf3d3c827a83102d0692dc2cab17207d8204739965feee412d5542a"
+    },
+    {
+      "path": "assets/wardrobe/hair/male-six/mullet-rear.png",
+      "removed_invisible_pixels": 40,
+      "sha256": "8e65a1bc722d85f38d7b79a40bb5d732bdf88b875826eeb6f7e4e9ae98b228a9"
+    },
+    {
+      "path": "assets/wardrobe/hair/male-six/mullet.png",
+      "removed_invisible_pixels": 27,
+      "sha256": "eeb452bc49332207acdadef789a0b9b7d3985cadda9c6aec64f49b4188182870"
+    },
+    {
+      "path": "assets/wardrobe/hair/male-six/dreadlocks.png",
+      "removed_invisible_pixels": 193,
+      "sha256": "1b1cb91da4f5165aaf9356e850b2f7b5686048acec3a912d3f59b641704c7d96"
+    },
+    {
+      "path": "assets/wardrobe/hair/male-six/topknot.png",
+      "removed_invisible_pixels": 8,
+      "sha256": "3304da5c67c3af46660b7a7a590e3ac524ba4608e0ab5f73d7edee2ca70c87b8"
+    },
+    {
+      "path": "assets/wardrobe/hair/male-six/dreadlocks-rear.png",
+      "removed_invisible_pixels": 190,
+      "sha256": "b3b26d323fc52d2b1904ab5ee716cfa59ed6da9bcff92157373cef190859aaf3"
+    },
+    {
+      "path": "assets/wardrobe/hair/male-six/cornrows.png",
+      "removed_invisible_pixels": 26,
+      "sha256": "1c70ac7cf77f32e9ab672a4b127fd8123ea7e8d83ddef1a3aa2fece808c9bf27"
+    },
+    {
+      "path": "assets/wardrobe/hair/male-six/thumbnails/mohawk.png",
+      "removed_invisible_pixels": 4,
+      "sha256": "d571cafb5f8d2d1e371b17de1252f2a613fcb837e2981eb057cb74155ba7fa0a"
+    },
+    {
+      "path": "assets/wardrobe/hair/male-six/thumbnails/mullet.png",
+      "removed_invisible_pixels": 24,
+      "sha256": "5deb90724552e02d7314ab34896557b7a275dc9fe07b11db6e4cf135f3b4acb1"
+    },
+    {
+      "path": "assets/wardrobe/hair/male-six/thumbnails/dreadlocks.png",
+      "removed_invisible_pixels": 8,
+      "sha256": "442df9aa7fec41f944275e0835b5e82512641803c6199185ebdde117b5d92a62"
+    },
+    {
+      "path": "assets/wardrobe/hair/male-six/thumbnails/topknot.png",
+      "removed_invisible_pixels": 8,
+      "sha256": "1edee922e782bc6111192a4297a463255702788b720772df8c6aa9b084e35f8b"
+    },
+    {
+      "path": "assets/wardrobe/hair/male-six/thumbnails/cornrows.png",
+      "removed_invisible_pixels": 26,
+      "sha256": "07195730392a30e06e17985ad4547a3f1edafa49e84f9e380f89bbb6c63ddf56"
+    }
+  ],
+  "preserved_approved_style_4": {
+    "assets/wardrobe/hair/male-six/curly-crop.png": "ad212bad14958ba237cb767a388187e0f67e105e728976c27af5608153e99e82",
+    "assets/wardrobe/hair/male-six/thumbnails/curly-crop.png": "9d9708567dc735f843d74907db4ad781b07e924a4487215065d3a07b190cb3c5"
+  }
+}
