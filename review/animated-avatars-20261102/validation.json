@@ -1,0 +1,27 @@
+{
+  "browser_tests": {
+    "exact_source_and_base_registration": "passed",
+    "male_and_female_idle_melee_rifle_breathing": "passed",
+    "head_hair_color_and_reload": "passed",
+    "mobile_weapon_cards_and_no_horizontal_overflow": "passed",
+    "tunic_retention_and_reduced_motion": "passed",
+    "stash_png_art_and_rapid_gender_weapon_changes": "passed",
+    "previous_approved_temple_fills_16_heads_3_colors": "passed",
+    "registered_catalog_paths_99": "passed after count updated for two thumbnails"
+  },
+  "node_tests": {
+    "game_logic": 93,
+    "avatar_rig": 12,
+    "failed": 0
+  },
+  "javascript_syntax": "passed",
+  "git_diff_check": "passed",
+  "visual_review": [
+    "male rifle native game render",
+    "mobile weapon cards with both PNGs visible"
+  ],
+  "known_limitations": [
+    "Equipped tunic retains the original pose and a subtle full-composition breathing cycle; authored weapon-pose sleeves are not available.",
+    "Source rifle anatomy/seam limitations are retained; no replacement art was generated."
+  ]
+}

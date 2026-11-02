@@ -1,0 +1,566 @@
+{
+  "source": "/workspace/palata404-avatar-core/avatar-core",
+  "method": "Exact runtime files copied; separate game adapter, no branch merge or art regeneration",
+  "files": [
+    {
+      "path": "avatar-core/assets/female/donor-art/melee-right-arm.png",
+      "sha256": "c9cdd40adef186559cdd8e992c1338e30c5ee68fac9361f4f5c736e02f657f2c"
+    },
+    {
+      "path": "avatar-core/assets/female/donor-art/melee-right-front.png",
+      "sha256": "eef0899e14b74408c4ffd648353157197f588322d0ba5de8bec82e785c5a4f59"
+    },
+    {
+      "path": "avatar-core/assets/female/donor-art/pistol-right-arm.png",
+      "sha256": "3fe25eba12f01f988b90ac4b4dac27b9076695e11ab8fd0d88d3f9f89d3b57fd"
+    },
+    {
+      "path": "avatar-core/assets/female/donor-art/pistol-right-front.png",
+      "sha256": "8af79c6d3a87b20370b2c83999fc2c4d85cb38a45eb6b3335fc7d5415e5318a9"
+    },
+    {
+      "path": "avatar-core/assets/female/donor-art/rifle-left-arm.png",
+      "sha256": "39f694686449f1e5aa04683b93221579284995bbd5ba07a6a854acf785907396"
+    },
+    {
+      "path": "avatar-core/assets/female/donor-art/rifle-left-front.png",
+      "sha256": "1e5a51d23c19449017ac436b01abf2b76ad5a5db2d68c7f81af2037d89b920d5"
+    },
+    {
+      "path": "avatar-core/assets/female/donor-art/rifle-right-arm.png",
+      "sha256": "26f5c26542ef24458e10e78825b2f96618942836e9714f92eebfb2d86075af43"
+    },
+    {
+      "path": "avatar-core/assets/female/donor-art/rifle-right-front.png",
+      "sha256": "398f51defe53673e3d1a8f9b7b62f66c26e4def4335264b519b260a49812306a"
+    },
+    {
+      "path": "avatar-core/assets/female/foundation-cleanup/pistol-weapon.png",
+      "sha256": "f7f2da05468f9c03dfb25dbed737803530d580c772bfd822fe58b69d5ca39f0d"
+    },
+    {
+      "path": "avatar-core/assets/female/foundation-cleanup/rifle-weapon.png",
+      "sha256": "76743ddcf91631131a039e9b568f8ba476626a394d3b7e3bd72f0a3d9530b574"
+    },
+    {
+      "path": "avatar-core/assets/female/hands/left-arm-source.png",
+      "sha256": "35042ba2175d0558d66bdfe1287022f355ea7e0e8c2be6183a03cad7a6c57880"
+    },
+    {
+      "path": "avatar-core/assets/female/hands/left-open-hand-source.png",
+      "sha256": "abe9161883b9cd809fb21c3fbc42fd7f2ab6bc9e654687dc9d14443f4f5fbc80"
+    },
+    {
+      "path": "avatar-core/assets/female/hands/melee-right-wrist-clean.png",
+      "sha256": "d97003b9b8e0c4db4e5018d2484f406e1d50aae62af7816d4c19dbbd8a77d3c3"
+    },
+    {
+      "path": "avatar-core/assets/female/hands/melee-right.png",
+      "sha256": "f11fe37a8c4377e4dd08050722c23c3fc27fc5ee2e1aaa75d42ba2cb8ae5ded2"
+    },
+    {
+      "path": "avatar-core/assets/female/hands/pistol-left-wrist-clean.png",
+      "sha256": "b7df164c3fb219a6760090c7ac5682aa605d89291c9bc693867887dba0b4f07a"
+    },
+    {
+      "path": "avatar-core/assets/female/hands/pistol-left.png",
+      "sha256": "e5ff5abd8d55bcdb7d4b7f3e1494ef7f974015575bfa1a324adb5362cc192d5b"
+    },
+    {
+      "path": "avatar-core/assets/female/hands/pistol-right-wrist-clean.png",
+      "sha256": "484427ecf0921cb70e091a493f193711f9e9ed5d3f6803ae1ac9a1cba0946f6e"
+    },
+    {
+      "path": "avatar-core/assets/female/hands/pistol-right.png",
+      "sha256": "1e9e67debffb537cc42def36d1fc19689fc1fcfb5f5268745d829588825bbab5"
+    },
+    {
+      "path": "avatar-core/assets/female/hands/rifle-left-wrist-clean.png",
+      "sha256": "0f0c282bb8fce54d5ae9b8c53dfa839bdfae4e0aa17aad7f8b729d7d0cae242b"
+    },
+    {
+      "path": "avatar-core/assets/female/hands/rifle-left.png",
+      "sha256": "031dc9b01689a44c827f563dfbee92ae9b2f83e78f527520b709e5a39d132573"
+    },
+    {
+      "path": "avatar-core/assets/female/hands/rifle-right-wrist-clean.png",
+      "sha256": "2208b1b6591c595ef651bbb1738a70d8eed9fd2d044f08d0a170feb8662dc394"
+    },
+    {
+      "path": "avatar-core/assets/female/hands/rifle-right.png",
+      "sha256": "f09563277d63c695035639460ee70873f07291eb88748ece22935a594ad389eb"
+    },
+    {
+      "path": "avatar-core/assets/female/hands/right-arm-source.png",
+      "sha256": "3cee762e1e16c8819256f392c0a680e4e4e4fa5053e51a47e1e023b1f273b763"
+    },
+    {
+      "path": "avatar-core/assets/female/hands/right-open-hand-source.png",
+      "sha256": "bd21a2fe1f942ec33854effc804d3fe416ea9b307d6acb4e00b1768350498f87"
+    },
+    {
+      "path": "avatar-core/assets/female/head.png",
+      "sha256": "2a54e2466fc4b94e4de330d6f7bf37ca190a0a0d755702efb84279cd3f30625f"
+    },
+    {
+      "path": "avatar-core/assets/female/independent-finish/pistol-right-arm.png",
+      "sha256": "261c048f291f70475f498c8137b4cd27b2dc0bcf3c93d27b974c154ca7af52ec"
+    },
+    {
+      "path": "avatar-core/assets/female/independent-finish/pistol-right-complete.png",
+      "sha256": "08a6a54fda845df2f2d9c43706139e574a974f4a13e6fe9c4b12a2259f969ae2"
+    },
+    {
+      "path": "avatar-core/assets/female/independent-finish/pistol-right-front.png",
+      "sha256": "0f8ea739de4122952e1c1abb1ddc7ac93a0f165d338cb7201c83df09c9c3c30a"
+    },
+    {
+      "path": "avatar-core/assets/female/knife-edge-cleanup/melee-right-arm.png",
+      "sha256": "6b305012be187dc4450210a589034c73b30e5a5c77d550a54f13d1364a6f1b34"
+    },
+    {
+      "path": "avatar-core/assets/female/knife-edge-cleanup/melee-right-complete.png",
+      "sha256": "739bb969a299a7f986b836e6143c6edae1c9f62941547bf321718f411f4f9718"
+    },
+    {
+      "path": "avatar-core/assets/female/knife-grip-arm/melee-right-front.png",
+      "sha256": "09b69e4c1f8cd7f7f2a378c3b288c70ea4afbcae20413b241097ca0de924baef"
+    },
+    {
+      "path": "avatar-core/assets/female/knife-perspective/melee-torso.png",
+      "sha256": "cdae3bc8e3da41aaaa7e618e7759ce805378054f4714c5b32d27c212108d0150"
+    },
+    {
+      "path": "avatar-core/assets/female/leftFore.png",
+      "sha256": "76e1db6ee7537352d841ebb95f1ca5f2fc040248de469bf8c4f024dc3b6a8986"
+    },
+    {
+      "path": "avatar-core/assets/female/leftHand.png",
+      "sha256": "51952fb89e990470ef92e257982bd3fb9c91c783a57dee449521b8b6e97759fa"
+    },
+    {
+      "path": "avatar-core/assets/female/leftUpper.png",
+      "sha256": "442a09535038999e217716e39f3f9da6fb8fb20274484cf11b58ea9743cee6a7"
+    },
+    {
+      "path": "avatar-core/assets/female/lower.png",
+      "sha256": "f2994b53fa9f24926c3357355fcb2681e155c6fccdd9d80caeb34fdd435a0447"
+    },
+    {
+      "path": "avatar-core/assets/female/requested-corrections/leftArmSkin.png",
+      "sha256": "eb0336264276c61cfd71a4aecc7bbafd4d80209cecc10487f51b0a3d02ffe884"
+    },
+    {
+      "path": "avatar-core/assets/female/requested-corrections/leftUpper.png",
+      "sha256": "8e7ab2cd0b3320402213a5287de5c6984dd578064d41c426944f3b77edafe5ff"
+    },
+    {
+      "path": "avatar-core/assets/female/requested-corrections/rightArmSkin.png",
+      "sha256": "e2443adcc5202f6a6ef8978d31b0d7867240fa0e79323e5d886dd182741f5cca"
+    },
+    {
+      "path": "avatar-core/assets/female/requested-corrections/rightUpper.png",
+      "sha256": "e0a5d35cb119fd4e86408f2e70e2970f8577864b3495cec701c5616a6bbe90a2"
+    },
+    {
+      "path": "avatar-core/assets/female/requested-corrections/torso.png",
+      "sha256": "2a9cafee614ce6ead71cc7b7da0278b5b496c2db417f375be5f1220cedbb2b48"
+    },
+    {
+      "path": "avatar-core/assets/female/rifle-arm-integrity/torso.png",
+      "sha256": "386de2a460c1cc70407e6164301f490aebfaa8a0c2ca3418bd4fd227f2c4bf39"
+    },
+    {
+      "path": "avatar-core/assets/female/rifle-seams/rifle-left-arm.png",
+      "sha256": "b24f36e1d12039624ac85b7a3d4c599d4bb5cb34e8ecd0d5a08cb25e49bf4f91"
+    },
+    {
+      "path": "avatar-core/assets/female/rifle-seams/rifle-left-complete.png",
+      "sha256": "7e4f064d3daf8d99f38d8e39820479804217be661937f268af076ccfb8ed2f9b"
+    },
+    {
+      "path": "avatar-core/assets/female/rifle-seams/rifle-left-front.png",
+      "sha256": "bb86075c31640236fcf0b1eb87d15733d289abb3561d9111c8b6d7895f18366f"
+    },
+    {
+      "path": "avatar-core/assets/female/rifle-seams/rifle-right-arm.png",
+      "sha256": "560170cbd58f3d32c915a2974122242c10563e540ef910db132e97646b02666c"
+    },
+    {
+      "path": "avatar-core/assets/female/rifle-seams/rifle-right-complete.png",
+      "sha256": "d7d5f9bb2355f64b42c7c247c8ba1cd208db49d17744e24b70dfdecd8addb3a0"
+    },
+    {
+      "path": "avatar-core/assets/female/rifle-seams/rifle-right-front.png",
+      "sha256": "9a7669119552b147b4b7c404d2e88ef43e660b549660b9dd874c2d1a2885c51c"
+    },
+    {
+      "path": "avatar-core/assets/female/rightFore.png",
+      "sha256": "086960883d4ca3b623acb66a592a47939ebcc5cbb41ad00b13359f354a784bb6"
+    },
+    {
+      "path": "avatar-core/assets/female/rightHand.png",
+      "sha256": "bf06e7b0d254e9a7faaf98cafc0b5c2adaa2c0461b1a699b0d8f564bd2844d41"
+    },
+    {
+      "path": "avatar-core/assets/female/rightUpper.png",
+      "sha256": "6ba9e2b7a5f2303a9f75bbf4b3aef2a89365c2b65ed7da048a8db492b25b9a67"
+    },
+    {
+      "path": "avatar-core/assets/female/torso.png",
+      "sha256": "6a49d91583351e5c1fce753f9c123ddf88c386ad4ad1e8c764c9300eb8d0d2ba"
+    },
+    {
+      "path": "avatar-core/assets/male/foundation-cleanup/base-runtime.png",
+      "sha256": "7a1e676e1ad5b6e84c37084f996490b459f07b74fe87c7f7271a3532e84c7ab7"
+    },
+    {
+      "path": "avatar-core/assets/male/foundation-cleanup/head-runtime.png",
+      "sha256": "8bc9ced0eb60701a363a77c3bd045174b871fe050d5837bfe2b186bdfae31bf1"
+    },
+    {
+      "path": "avatar-core/assets/male/foundation-cleanup/leftFore-runtime.png",
+      "sha256": "7ccc0df4827d33aa91a66f74c76b933e7c14df2757810d2ff63f494c3e07180a"
+    },
+    {
+      "path": "avatar-core/assets/male/foundation-cleanup/leftHand-runtime.png",
+      "sha256": "411ff1ddedc2b2a59acb8c01e13a2b9c531529ff3256067183296a40f011d7ce"
+    },
+    {
+      "path": "avatar-core/assets/male/foundation-cleanup/leftHandSkin-runtime.png",
+      "sha256": "6c0d8735c191901b819be66549f295aeaf32257d2d1231709a1a749c6c30ff7c"
+    },
+    {
+      "path": "avatar-core/assets/male/foundation-cleanup/lower-runtime.png",
+      "sha256": "262e486fb3d87d6819f46823fd4d80530e78e4f3fb1dff515a80d839272765d7"
+    },
+    {
+      "path": "avatar-core/assets/male/foundation-cleanup/pistol-weapon.png",
+      "sha256": "62f5aa118be473435ca2721087b0b399683f3ca0b56fc7c7ed7956cbc32c76ea"
+    },
+    {
+      "path": "avatar-core/assets/male/foundation-cleanup/rifle-weapon.png",
+      "sha256": "77fdf7a2be1e9f6cf5657754cd1d9166efa3268d1490ebd56d0d6010b79808d6"
+    },
+    {
+      "path": "avatar-core/assets/male/foundation-cleanup/rightFore-runtime.png",
+      "sha256": "a04a11f2a89ca0f19cac1727eab301e7806e623d760f72368e3676c3ee710ce3"
+    },
+    {
+      "path": "avatar-core/assets/male/foundation-cleanup/rightHand-runtime.png",
+      "sha256": "18ee096613b276a3c00f913f171b73a67aadb45d2fee0fe4ec5e8849b2e6fbe5"
+    },
+    {
+      "path": "avatar-core/assets/male/foundation-cleanup/rightHandSkin-runtime.png",
+      "sha256": "eb8acf45ab02453c58612aa26dfe926b82d01d032934288617bfad5b67155c31"
+    },
+    {
+      "path": "avatar-core/assets/male/hands/melee-right-wrist-clean.png",
+      "sha256": "55d33ae4dccde4668b48d662bc1c30c32bb73b25eb1dec0c5ef5f4495824ff93"
+    },
+    {
+      "path": "avatar-core/assets/male/hands/melee-right.png",
+      "sha256": "3d58e102ec6dcc20bf31d3fcec540f6856dc5be2d066ddee95bc09c4bdbc2e11"
+    },
+    {
+      "path": "avatar-core/assets/male/hands/pistol-left-wrist-clean.png",
+      "sha256": "c0f3ca69aeb471f522032f3cd9a607dc3a42a0042a6e90fe8f12026d2d4b39c7"
+    },
+    {
+      "path": "avatar-core/assets/male/hands/pistol-left.png",
+      "sha256": "350aa0f74c0f3d9d3750012f83a03810a02679ef7d61ceef1d647a43c6284240"
+    },
+    {
+      "path": "avatar-core/assets/male/hands/pistol-right-wrist-clean.png",
+      "sha256": "47419dcdd8f386e9edb9a4d29c09acd94044d3e41ee745a4a07436796952d233"
+    },
+    {
+      "path": "avatar-core/assets/male/hands/pistol-right.png",
+      "sha256": "6b63011fd2b9bf56938b54a0b81eb30d0670d24851e480e1afbacec2d76f2274"
+    },
+    {
+      "path": "avatar-core/assets/male/hands/rifle-left-wrist-clean.png",
+      "sha256": "81053f99fb26f7a7b8329605b7f07ca879e2cf20d9108950e3888f8e5ae1d0e1"
+    },
+    {
+      "path": "avatar-core/assets/male/hands/rifle-left.png",
+      "sha256": "fae889c7d583ffbc26808f888499e4bdd1f9fd364bc6436ae16cc07e2ed2ed2d"
+    },
+    {
+      "path": "avatar-core/assets/male/hands/rifle-right-wrist-clean.png",
+      "sha256": "f5920ed80aa310fe0053576d4636cb87ba8b569b9ed8ea25115e87f9c18b2a84"
+    },
+    {
+      "path": "avatar-core/assets/male/hands/rifle-right.png",
+      "sha256": "6bc0ff32a749105c4bcbcad2514f1a8c511b112c0a2196d65f87510c4ff06170"
+    },
+    {
+      "path": "avatar-core/assets/male/hands/right-arm-source.png",
+      "sha256": "55a84fbeb23719a12a071c66d96c82c6ee6037fb51229f2874ed12f3148b9dec"
+    },
+    {
+      "path": "avatar-core/assets/male/hands/right-open-hand-source.png",
+      "sha256": "4ab05ca66d694565318fb298d8579051e45d482f083b9f6807d5d41cc4b7f21b"
+    },
+    {
+      "path": "avatar-core/assets/male/head.png",
+      "sha256": "88006d6e7be23368d6ca8cfbdb54da1d9672eab37411530f8debdb24fc47c9d0"
+    },
+    {
+      "path": "avatar-core/assets/male/knife-grip-arm/melee-right-arm.png",
+      "sha256": "71c95d01a4ab48effcece235f723194f66ca387bc0e11c9f87202646875dea34"
+    },
+    {
+      "path": "avatar-core/assets/male/knife-grip-arm/melee-right-complete.png",
+      "sha256": "78e2b1ea54cbe2566291126550cf30b28807408c7be84460818c8f5e09cd1323"
+    },
+    {
+      "path": "avatar-core/assets/male/knife-grip-arm/melee-right-front.png",
+      "sha256": "09d466372313363dd295d9858998cbe5f0ce70ad796c4ec7c71d5be18aaac644"
+    },
+    {
+      "path": "avatar-core/assets/male/knife-perspective/melee-torso.png",
+      "sha256": "05904f69edef5631769135a356722ddb360ed5cb0f4d371aaf3c92e3500b05d5"
+    },
+    {
+      "path": "avatar-core/assets/male/leftArmSkin.png",
+      "sha256": "18a8cdd1208ce0655b2eb63de5a30dc89ed2d4e8ce6b50f5f2864994724534c1"
+    },
+    {
+      "path": "avatar-core/assets/male/leftFore.png",
+      "sha256": "af253429a33f01920c844d2ce4747351d90959c4a39e901eaf9bb2b2e6910f1e"
+    },
+    {
+      "path": "avatar-core/assets/male/leftHand.png",
+      "sha256": "79787a499cbef6a7a05efbc6db0c4935a9b2381a2b79d20415374702f9f73ec0"
+    },
+    {
+      "path": "avatar-core/assets/male/leftHandSkin.png",
+      "sha256": "50aea61f9424c96b3b43c5c085460a297e640a81d7615945eab685df372d2ee0"
+    },
+    {
+      "path": "avatar-core/assets/male/leftUpper.png",
+      "sha256": "36802602013630eff9a7710c32a2f930aae467d8f44d8f7c3ace82355e7fb12f"
+    },
+    {
+      "path": "avatar-core/assets/male/lower.png",
+      "sha256": "6137f3b61979aa1aa84a7f4ff0067639b66f53a64751baaa0404555638761330"
+    },
+    {
+      "path": "avatar-core/assets/male/reference-art/melee-right-arm.png",
+      "sha256": "0dc2182cadd2291bc14b867546153c38b483b83d89ab68d5a32a922f4c36fad2"
+    },
+    {
+      "path": "avatar-core/assets/male/reference-art/melee-right-front.png",
+      "sha256": "4b1e78f05c6bb8eaa7222da23ba7faa07b9fd302a5c8089a4a5da89a24d9452e"
+    },
+    {
+      "path": "avatar-core/assets/male/reference-art/pistol-right-arm.png",
+      "sha256": "4d068d10787cc39ef594c48715214a0381505cf1f78c4472df95e6aa775d2f72"
+    },
+    {
+      "path": "avatar-core/assets/male/reference-art/pistol-right-front.png",
+      "sha256": "ee7c47639999c6e10d77426442d941ec0c1770fd421f2fc8ca02e6e503b967ca"
+    },
+    {
+      "path": "avatar-core/assets/male/reference-art/rifle-left-arm.png",
+      "sha256": "f3f924b1d3c3aa78ee961f5e47efe00ba7d97da4a557032d7895c8e720a683c8"
+    },
+    {
+      "path": "avatar-core/assets/male/reference-art/rifle-left-front.png",
+      "sha256": "629a80e394a1e8b3a81d83d7cae86c1e076f9a09942972bcc237ee894506bfb7"
+    },
+    {
+      "path": "avatar-core/assets/male/reference-art/rifle-right-arm.png",
+      "sha256": "b6783cd14ed8885eccc1eca7b1bb4b67e600aa17878a7f7c15590312a65c7940"
+    },
+    {
+      "path": "avatar-core/assets/male/reference-art/rifle-right-front.png",
+      "sha256": "e68aa6e903fc7f2544678022d679caa9d2309de9d3219ee6f20de94d5e0c1ff6"
+    },
+    {
+      "path": "avatar-core/assets/male/requested-corrections/leftArmSkin.png",
+      "sha256": "85fef9e1e7e436cb545450218fd8f76f1ebb56532f113525067eadf8e55efc4c"
+    },
+    {
+      "path": "avatar-core/assets/male/requested-corrections/leftUpper.png",
+      "sha256": "e2d74187d2e5cd3488e27755e965fa79b8541bbf4a399351a6eaf9c60ea03c38"
+    },
+    {
+      "path": "avatar-core/assets/male/requested-corrections/rightArmSkin.png",
+      "sha256": "7c9675afa23ea63e2ab54cbfea6b97e79d25a3ff9c5af35196ca7012bd0de664"
+    },
+    {
+      "path": "avatar-core/assets/male/requested-corrections/rightUpper.png",
+      "sha256": "49016cc36397f85a547fb02d8b32d9587b3fb16f90c834da16bf7644214bb14d"
+    },
+    {
+      "path": "avatar-core/assets/male/requested-corrections/torso.png",
+      "sha256": "a2b03a39ff6643a73badc535fff921ec13e0ae454ba22a2601019f0e050593a6"
+    },
+    {
+      "path": "avatar-core/assets/male/rifle-arm-integrity/torso.png",
+      "sha256": "26332fe4631e85a6c1d0464aeb2f7a097e358a02a7db12ef06655264f1912e56"
+    },
+    {
+      "path": "avatar-core/assets/male/rifle-seams/rifle-left-arm.png",
+      "sha256": "2274dec37f37911a8ead330c98feb520c52f88c5590be10f11c1d80d8f103aac"
+    },
+    {
+      "path": "avatar-core/assets/male/rifle-seams/rifle-left-complete.png",
+      "sha256": "384c5dec186d7253f7042f77c50b2063284da5051ac28e2673a07be0b0f71686"
+    },
+    {
+      "path": "avatar-core/assets/male/rifle-seams/rifle-left-front.png",
+      "sha256": "05909c80f2adf5f52e31d24af9f0eb7b02a11d62303dd0450d581a289ec0ae5a"
+    },
+    {
+      "path": "avatar-core/assets/male/rifle-seams/rifle-right-arm.png",
+      "sha256": "f160867fa51d96641c6f358a9c837dbf37c7cf8f3964b05f55fd1193b05f37de"
+    },
+    {
+      "path": "avatar-core/assets/male/rifle-seams/rifle-right-complete.png",
+      "sha256": "12e06323d5fc243f6ca64cd7a518f88c7c5136434a60bb3d4ee5c16c808b6936"
+    },
+    {
+      "path": "avatar-core/assets/male/rifle-seams/rifle-right-front.png",
+      "sha256": "709f123c5027e0df02ac0f168594986d9fc97646c6a7f1412c7ccfcaf363a716"
+    },
+    {
+      "path": "avatar-core/assets/male/rightFore.png",
+      "sha256": "745fb362cbdcb4f24b78ce3afbc44d695645edae94ee398e2e53068bd55f0743"
+    },
+    {
+      "path": "avatar-core/assets/male/rightHand.png",
+      "sha256": "821a8267199c4bce993f3834a9b5fda6942803d2b0b21c75d86fe93f5d4936e0"
+    },
+    {
+      "path": "avatar-core/assets/male/rightUpper.png",
+      "sha256": "30db32f532833277edaec333a24241f4ce5a9551709a769dfcfc71c86c836b7c"
+    },
+    {
+      "path": "avatar-core/assets/male/selective-merge/pistol-right-arm.png",
+      "sha256": "b7f5f5166c1e8b8a42c1dc8b15c667f6cfd2a2756dfaad02dece71c87f3c52fb"
+    },
+    {
+      "path": "avatar-core/assets/male/selective-merge/pistol-right-complete.png",
+      "sha256": "93471f8519abf951cf7f9d655b60741fa5621264f57a5b2ad50b4d991e6a66cb"
+    },
+    {
+      "path": "avatar-core/assets/male/selective-merge/pistol-right-front.png",
+      "sha256": "24456335e21c242c35b38096e65c99037f276f9af22f220b416934733450ec0d"
+    },
+    {
+      "path": "avatar-core/assets/male/torso.png",
+      "sha256": "dd6e76f800e8fa88ff06e90961bf54a7a573e372790d0de7d1e437d47f912882"
+    },
+    {
+      "path": "avatar-core/assets/male/weapon-pass/melee-wrist-edge.png",
+      "sha256": "6890079203f625e449230c567dd3f68bb860f1b51c00fcf6855ce37b17b286e5"
+    },
+    {
+      "path": "avatar-core/assets/weapons/knife-view-20261025/knife-view.png",
+      "sha256": "8ce69b82ba85c3443a7369afaa68453c642c825414fff9ce901e967799c21e58"
+    },
+    {
+      "path": "avatar-core/assets/weapons/knife-view-20261025/knife-view.thumb.png",
+      "sha256": "c59ec6fb61106eac177ca4ea3876bdcf8c407ec5d71dad1641abdb9538b79cb0"
+    },
+    {
+      "path": "avatar-core/assets/weapons/melee.png",
+      "sha256": "ed2e0be5cb2537f4cbb1bfeab6fe5c70b79a80963914d5e7bee80430803a4969"
+    },
+    {
+      "path": "avatar-core/assets/weapons/original-visible/weapon_pistol.png",
+      "sha256": "d4b8bf62603e83df1e22ded0e3a4f9e382b6c6c916e41723ce7d83773ccfe29e"
+    },
+    {
+      "path": "avatar-core/assets/weapons/original-visible/weapon_pistol.thumb.png",
+      "sha256": "f73e79cade9751edbb797c2584c3db6597429260ebae8972578a8cdb755b48e6"
+    },
+    {
+      "path": "avatar-core/assets/weapons/pistol.png",
+      "sha256": "63ac9db1f6f3303ca6fe80f58c5393b1710c36cd723dac669ff1e4ddd00c0ee9"
+    },
+    {
+      "path": "avatar-core/assets/weapons/rifle.png",
+      "sha256": "1c92af029315b66c411f0e2673dd457550b6586d94e76ed938fcb7dd62c390d0"
+    },
+    {
+      "path": "avatar-core/assets/weapons/user-ak47-20261026/ak47-master.png",
+      "sha256": "891939f70b385def634c127f1999b22db92f55a3a6a80a99369fd01623b3104f"
+    },
+    {
+      "path": "avatar-core/assets/weapons/user-ak47-20261026/ak47-runtime-opaque.png",
+      "sha256": "dddc69d569aedc546b25c35f237206b5fddc4f12cef57ef4e4bacce1c5f83dd3"
+    },
+    {
+      "path": "avatar-core/assets/weapons/user-ak47-20261026/ak47-thumb.png",
+      "sha256": "586327991ad658e1b724cb9f61559b53dbe661eb6c930f7696ae3fb400650fda"
+    },
+    {
+      "path": "avatar-core/engine.mjs",
+      "sha256": "971ecb099707fc4083aa8dbad1ffc0f2b429fc3d4138f52a001afc5816bbae75"
+    },
+    {
+      "path": "avatar-core/equipment-weapons.json",
+      "sha256": "27f23be5778ae958301815cb92ce14b4b98d655f3779ac8bdd6712c23e3477f2"
+    },
+    {
+      "path": "avatar-core/female-preview.json",
+      "sha256": "bc821fb6ac90a6b38d4b3060df327280fac292c22e37812a4c7c20914db072ad"
+    },
+    {
+      "path": "avatar-core/male-preview.json",
+      "sha256": "5120f61ff018352835980702d056284d9337b8a1a83c0fa570e8c50030666cbe"
+    },
+    {
+      "path": "avatar-core/manifest.json",
+      "sha256": "99d240d3ed07b8a673b130243a1b92aa533f72240d919366ef0c34731dd3896e"
+    },
+    {
+      "path": "avatar-core/math.mjs",
+      "sha256": "3b713ff1f7237960b65ffb710d3c5b8bc51e3bf0c2ea1feb08941858ba996214"
+    },
+    {
+      "path": "avatar-core/pose-art.mjs",
+      "sha256": "3e3445cf2715be5986cdb208c796189aae48de8926115017d25be5b940256f07"
+    },
+    {
+      "path": "avatar-core/pose-ownership.mjs",
+      "sha256": "0fe5f84250ab6c8d326d8cb4b3950df59325983c4d4d4b66ce41d89d27e10094"
+    },
+    {
+      "path": "avatar-core/relaxed-melee.mjs",
+      "sha256": "c8ed051171feb416817709c512cd606e4daa37523eacba7ac4817d99a7b5d26d"
+    },
+    {
+      "path": "avatar-core/rigs/female_rig.json",
+      "sha256": "707ae37f1faacc4d866fdebf74075e80846eba2a69cb9bc9495422d3a852a1b8"
+    },
+    {
+      "path": "avatar-core/rigs/male_anatomy.json",
+      "sha256": "a19ed02c02e5d5ce19880eaa8ebf23c1dd160137b8af4821ebdec2aa3930fde3"
+    },
+    {
+      "path": "avatar-core/rigs/male_rig.json",
+      "sha256": "79b667d15f85c46739435ef4a6ad79fc7f85cdfcbc5ff8489934f49e5a42abd8"
+    },
+    {
+      "path": "avatar-core/skin.mjs",
+      "sha256": "c4569a702acbe88614393d099def9035e387be92a3950bb4ccdd24d16e9b7153"
+    },
+    {
+      "path": "avatar-core/torso-space.mjs",
+      "sha256": "5a3b053c02032e14305590496ac9d0757f5064a4dab9889326d917ea474796c9"
+    },
+    {
+      "path": "avatar-core/weapon-controller.mjs",
+      "sha256": "c108cbb79549a8cc8683eab064e0b580cfa27473ba6e7d62e40e72bfc40594e2"
+    },
+    {
+      "path": "avatar-core/weapons.json",
+      "sha256": "cdc942fe6147e8f3410178dab3dbf06f530330ae9ca11a83fb56fd4876d66263"
+    }
+  ]
+}

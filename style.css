@@ -2049,3 +2049,15 @@ body.modal-open {
     /* Longer equipment descriptions must flow after their cards, not cover them. */
     .wardrobe-item-detail:not([data-slot="hair"]):not([data-slot="face"]) { position: static; }
 }
+
+/* Shared framed art for weapon cards, stash slots and item details. */
+.weapon-icon-frame { display: inline-grid; place-items: center; position: relative; width: 64px; height: 54px; box-sizing: border-box; padding: 5px; border: 1px solid #8c7861; border-radius: 3px; background: radial-gradient(ellipse at center,#514c40,#252821); box-shadow: inset 0 0 0 2px #171b1680,0 1px 3px #0005; overflow: hidden; vertical-align: middle; }
+.weapon-icon-frame img { position: absolute; inset: 5px; width: calc(100% - 10px); height: calc(100% - 10px); object-fit: contain; filter: drop-shadow(0 2px 2px #0008); }
+.mc-slot .weapon-icon-frame { width: 46px; height: 42px; padding: 3px; }
+.wardrobe-item-image.weapon-icon-frame { width: 100%; max-width: 110px; height: 60px; flex: 0 0 60px; }
+.avatar-core-wardrobe-preview { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 30; }
+.avatar-core-wardrobe-preview[hidden] { display: none; }
+/* Preserve the complete approved clothed composition while pose sleeves are unavailable. */
+.avatar-clothed-breathing { transform-origin: 50% 100%; animation: clothed-avatar-breath 4s ease-in-out infinite; }
+@keyframes clothed-avatar-breath { 0%,100% { scale: 1; } 50% { scale: 1.001 1.0007; } }
+@media (prefers-reduced-motion: reduce) { .avatar-clothed-breathing { animation: none; } }

@@ -1,0 +1,211 @@
+{
+  "version": 1,
+  "items": [
+    {
+      "id": "gear-aks",
+      "name": "\u0410\u0432\u0442\u043e\u043c\u0430\u0442",
+      "type": "rifle",
+      "pose": "rifle",
+      "image": "assets/weapons/user-ak47-20261026/ak47-runtime-opaque.png",
+      "thumbnail": "assets/weapons/user-ak47-20261026/ak47-thumb.png",
+      "attachmentByGender": {
+        "male": {
+          "primary": [
+            525,
+            500
+          ],
+          "support": [
+            1190,
+            380
+          ],
+          "offset": [
+            0,
+            0
+          ],
+          "scale": 0.4,
+          "angle": 24,
+          "stock": [
+            40,
+            450
+          ],
+          "order": 30,
+          "previewScaleSupport": true,
+          "previewSupportProfiles": {
+            "0.85": [
+              1230,
+              380
+            ],
+            "1": [
+              1190,
+              380
+            ],
+            "1.15": [
+              1130,
+              380
+            ]
+          }
+        },
+        "female": {
+          "primary": [
+            525,
+            500
+          ],
+          "support": [
+            1190,
+            380
+          ],
+          "offset": [
+            0,
+            0
+          ],
+          "scale": 0.4,
+          "angle": 24,
+          "stock": [
+            40,
+            450
+          ],
+          "order": 30,
+          "previewScaleSupport": true,
+          "previewSupportProfiles": {
+            "0.85": [
+              1230,
+              380
+            ],
+            "1": [
+              1190,
+              380
+            ],
+            "1.15": [
+              1130,
+              380
+            ]
+          }
+        }
+      },
+      "artStatus": "COMPLETE",
+      "previewOnly": true,
+      "limitation": "Original user master unchanged; runtime derivative changes confirmed interior alpha only. Rifle anatomy and hand artwork remain pending approval.",
+      "masterImage": "assets/weapons/user-ak47-20261026/ak47-master.png"
+    },
+    {
+      "id": "gear-pm",
+      "name": "\u041f\u0456\u0441\u0442\u043e\u043b\u0435\u0442",
+      "type": "pistol",
+      "pose": "pistol",
+      "image": "assets/weapons/original-visible/weapon_pistol.png",
+      "thumbnail": "assets/weapons/original-visible/weapon_pistol.thumb.png",
+      "attachmentByGender": {
+        "male": {
+          "primary": [
+            230,
+            351
+          ],
+          "support": null,
+          "offset": [
+            0,
+            0
+          ],
+          "scale": 1.0,
+          "angle": 0.0,
+          "stock": null,
+          "order": 30
+        },
+        "female": {
+          "primary": [
+            247,
+            330
+          ],
+          "support": null,
+          "offset": [
+            0,
+            0
+          ],
+          "scale": 1.0,
+          "angle": 0.0,
+          "stock": null,
+          "order": 30
+        }
+      },
+      "artStatus": "PARTIAL",
+      "previewOnly": true,
+      "limitation": "Occluded handle/fore-end pixels are absent from the approved source; no invented material or replacement model used."
+    },
+    {
+      "id": "gear-knife",
+      "name": "\u041d\u0456\u0436",
+      "type": "melee",
+      "pose": "melee",
+      "image": "assets/weapons/knife-view-20261025/knife-view.png",
+      "thumbnail": "assets/weapons/knife-view-20261025/knife-view.thumb.png",
+      "attachmentByGender": {
+        "male": {
+          "primary": [
+            550,
+            454
+          ],
+          "support": null,
+          "offset": [
+            0,
+            0
+          ],
+          "scale": 0.174,
+          "angle": 20,
+          "stock": null,
+          "order": 30,
+          "surfaceGrip": {
+            "indices": [
+              741,
+              742,
+              757
+            ],
+            "weights": [
+              0.33333333333335563,
+              0.5833333333333398,
+              0.0833333333333045
+            ],
+            "sourcePoint": [
+              228.00000000000006,
+              869.9999999999997
+            ]
+          },
+          "gripProfile": "relaxed-wrap"
+        },
+        "female": {
+          "primary": [
+            550,
+            454
+          ],
+          "support": null,
+          "offset": [
+            0,
+            0
+          ],
+          "scale": 0.174,
+          "angle": 17,
+          "stock": null,
+          "order": 30,
+          "surfaceGrip": {
+            "indices": [
+              725,
+              726,
+              741
+            ],
+            "weights": [
+              0.5625000000000069,
+              0.12500000000000186,
+              0.3124999999999913
+            ],
+            "sourcePoint": [
+              231.50000000000003,
+              844.75
+            ]
+          },
+          "gripProfile": "relaxed-wrap"
+        }
+      },
+      "artStatus": "COMPLETE",
+      "previewOnly": true,
+      "limitation": "Complete user-selected knife. Melee arm art still requires visual approval; no change to gameplay."
+    }
+  ]
+}

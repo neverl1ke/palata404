@@ -727,6 +727,13 @@ function setCategoryFilter(category, btnElem) {
     renderMinecraftStash();
 }
 
+function inventoryItemArt(item) {
+    const catalog = PAPER_DOLL_ITEMS.find(entry => entry.inventoryName === item.name && entry.inventoryCategory === item.category);
+    return catalog?.thumbnail
+        ? `<span class="weapon-icon-frame"><img src="${escapeHTML(catalog.thumbnail)}" alt="" aria-hidden="true" draggable="false"></span>`
+        : iconHTML(item.icon);
+}
+
 function renderMinecraftStash() {
     const container = document.getElementById('stash-items');
     if (!container) return;
@@ -751,7 +758,7 @@ function renderMinecraftStash() {
             );
 
             slot.innerHTML = `
-                <span class="item-icon">${iconHTML(item.icon)}</span>
+                <span class="item-icon">${inventoryItemArt(item)}</span>
                 ${item.count > 1 ? `<span class="item-count">${item.count}</span>` : ''}
                 ${isEquipped ? `<span style="position: absolute; top: 2px; left: 2px; font-size: 8px; background: #e74c3c; color: #fff; padding: 1px 3px; border-radius: 3px;">EQ</span>` : ''}
             `;
@@ -767,7 +774,7 @@ function renderMinecraftStash() {
 function openItemInfo(item) {
     selectedItemForAction = item;
     const titleElem = document.getElementById('item-info-title');
-    if (titleElem) titleElem.innerHTML = `${iconHTML(item.icon)} ${escapeHTML(item.name)}`;
+    if (titleElem) titleElem.innerHTML = `${inventoryItemArt(item)} ${escapeHTML(item.name)}`;
 
     let bodyHtml = `<p style="color: #a3927d;">${escapeHTML(item.desc || 'Немає опису предмета.')}</p>`;
 

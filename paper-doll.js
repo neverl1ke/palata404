@@ -311,6 +311,7 @@ function renderPaperDoll() {
     document.getElementById('character-container')?.style.setProperty('--paper-doll-aspect', `${PAPER_DOLL_FRAME.width} / ${PAPER_DOLL_FRAME.height}`);
     renderPaperDollAt(document.getElementById('character-paperdoll'));
     renderPaperDollAt(document.getElementById('wardrobe-paperdoll'), 'wardrobe-');
+    if (typeof Event === 'function' && window.dispatchEvent) window.dispatchEvent(new Event('paper-doll-render'));
 }
 
 function renderPaperDollControls(renderSlots = true) {

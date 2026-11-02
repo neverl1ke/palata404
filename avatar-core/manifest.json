@@ -1,0 +1,63 @@
+{
+  "version": 1,
+  "frame": [
+    941,
+    1672
+  ],
+  "source_commit": "f70b7e5be63f6b85d895c6d5b259adbc30577b86",
+  "genders": {
+    "male": {
+      "rig": "rigs/male_rig.json",
+      "source_sha256": "b40a31b26dcf9aeea1dad02091228377330c9bb3af3a4b9669cfcc67247fc41d",
+      "source_size": [
+        941,
+        1672
+      ],
+      "source_mode": "RGBA",
+      "alpha_bounds_1": [
+        21,
+        21,
+        921,
+        1660
+      ],
+      "alpha_bounds_128": [
+        165,
+        30,
+        792,
+        1658
+      ],
+      "nonzero_alpha_pixels": 520368,
+      "weak_alpha_1_16": 19141,
+      "exact_partition": true
+    },
+    "female": {
+      "rig": "rigs/female_rig.json",
+      "source_sha256": "a27b499c03fc15c4788ae3a651483a36463f28b1f034178feccdaa852e7e50f9",
+      "source_size": [
+        941,
+        1672
+      ],
+      "source_mode": "RGBA",
+      "alpha_bounds_1": [
+        178,
+        21,
+        769,
+        1654
+      ],
+      "alpha_bounds_128": [
+        182,
+        23,
+        766,
+        1651
+      ],
+      "nonzero_alpha_pixels": 479080,
+      "weak_alpha_1_16": 11187,
+      "exact_partition": true
+    }
+  },
+  "limitations": [
+    "Source hands have relaxed fingers, not authored trigger/support grips.",
+    "Continuous skinning cannot reconstruct hidden shoulder/elbow surfaces."
+  ],
+  "note": "No original PNG overwritten; cropped lossless partitions, continuous arm skin weights copied from source geometry; no generated anatomy."
+}
