@@ -1,0 +1,15 @@
+{
+  "source_pixels_restored": 437,
+  "render_pixels_restored": 1046,
+  "source_bbox_exclusive": [
+    318,
+    300,
+    351,
+    490
+  ],
+  "donor": "Reference/original-control-for-axillary-shadow.png",
+  "method": "registered existing skin restored along shoulder seam; upper shoulder overlap and an8x8 antialiased PCHIP lower contour joining the existing biceps edge smoothly; no new generation",
+  "no_alpha_removed": true,
+  "all_fingers_source_y550plus_exact_v8": true,
+  "runtime_and_rigid_biceps_motion_unchanged_v8": true
+}

@@ -10,18 +10,18 @@ import {
     solveArm,
     armMatrices,
     rad,
-} from '../avatar-core/math.mjs';
-import { WeaponAttachmentController } from '../avatar-core/weapon-controller.mjs';
-import { skinVertices } from '../avatar-core/skin.mjs';
+} from '../avatar-core/approved/male/runtime/math.mjs';
+import { WeaponAttachmentController } from '../avatar-core/approved/male/runtime/weapon-controller.mjs';
+import { skinVertices } from '../avatar-core/approved/male/runtime/skin.mjs';
 const rig = (g) =>
     JSON.parse(
         fs.readFileSync(
-            new URL('../avatar-core/rigs/' + g + '_rig.json', import.meta.url),
+            new URL('../avatar-core/approved/' + g + '/resources.json', import.meta.url),
         ),
-    );
+    ).json['rigs/' + g + '_rig.json'];
 const weapons = JSON.parse(
-    fs.readFileSync(new URL('../avatar-core/weapons.json', import.meta.url)),
-);
+    fs.readFileSync(new URL('../avatar-core/approved/male/resources.json', import.meta.url)),
+).json['weapons.json'];
 const near = (a, b, eps = 1e-7) =>
     assert.ok(distance(a, b) < eps, `${a} != ${b}`);
 for (const g of ['male', 'female']) {

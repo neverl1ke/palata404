@@ -1,0 +1,48 @@
+{
+  "uploaded_archive_file_checks": {
+    "male": 131,
+    "female": 63,
+    "failed": 0
+  },
+  "exact_source_runtime_files": 162,
+  "archive_lab_vs_game_scene": {
+    "compared_rgba_frames": 16,
+    "different_pixels": 0,
+    "phases_ms": [
+      0,
+      1000,
+      2000,
+      3000
+    ],
+    "genders": [
+      "male",
+      "female"
+    ],
+    "weapon_states": [
+      "off",
+      "approved rifle"
+    ]
+  },
+  "real_game_canvas_vs_archive_phase_hashes": {
+    "compared_frames": 16,
+    "different_frames": 0
+  },
+  "real_game_browser_tests": 4,
+  "approved_hair_and_catalog_regressions": 2,
+  "node_tests": {
+    "rig": 12,
+    "game_logic": 93,
+    "failed": 0
+  },
+  "syntax_checks": "passed",
+  "git_diff_check": "passed",
+  "visual_review": [
+    "male and female rifle game portraits with selected cosmetics",
+    "male and female complete rifle in mobile stage",
+    "mobile framed weapon PNG cards"
+  ],
+  "limitations": [
+    "Uploaded archives do not include an independent knife animation; previous unapproved pose removed, knife PNG card and gameplay retained.",
+    "Tunic keeps its prior approved fitting and subtle breathing; no weapon-pose sleeve art supplied."
+  ]
+}

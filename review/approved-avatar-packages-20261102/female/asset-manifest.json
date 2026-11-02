@@ -1,0 +1,472 @@
+{
+  "package": "Palata404-Female-Approved-AK90-20261029",
+  "all_visual_stages_approved": true,
+  "retained_weapon_scale": 0.9,
+  "assets": [
+    {
+      "path": "Layers/01-Torso.png",
+      "bytes": 171653,
+      "sha256": "3bd10245dd1907e9f83fd5515a9fc7c2d44ac7b4889d37a6c19735a773034704",
+      "canvas": [
+        941,
+        1672
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "Masks/01-Torso-alpha.png",
+      "bytes": 8071,
+      "sha256": "5ad39e8b3068a4bf52f7b01234af1fadf5db419fd72a0124120df30b56df3036",
+      "canvas": [
+        941,
+        1672
+      ],
+      "mode": "L"
+    },
+    {
+      "path": "Layers/02-Right-arm.png",
+      "bytes": 90899,
+      "sha256": "196af4ae697b4dcad105d81c233212989626a7ff75a56674968953151c2bb567",
+      "canvas": [
+        941,
+        1672
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "Masks/02-Right-arm-alpha.png",
+      "bytes": 8190,
+      "sha256": "1c1dcc7413ae8c06fe05b2d379e63e79952e8176c89db286d0d2b07fdca5db53",
+      "canvas": [
+        941,
+        1672
+      ],
+      "mode": "L"
+    },
+    {
+      "path": "Layers/03-Left-arm-source-UV.png",
+      "bytes": 86977,
+      "sha256": "24a041a1621814808e706d9f55959827f571f5b3c9dc569d9f45f586d14b2f35",
+      "canvas": [
+        941,
+        1672
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "Masks/03-Left-arm-source-UV-alpha.png",
+      "bytes": 9781,
+      "sha256": "58d670fcfc91b7b5f0e791830d998509ad9880baa41ca2c37a09abe8f88054f5",
+      "canvas": [
+        941,
+        1672
+      ],
+      "mode": "L"
+    },
+    {
+      "path": "Layers/04-Head-from-original.png",
+      "bytes": 95350,
+      "sha256": "dfc096035f73f15d12cc84125f837dc196c48489c192a88d0b8baa2eca92f1b1",
+      "canvas": [
+        941,
+        1672
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "Masks/04-Head-replacement-owner.png",
+      "bytes": 12174,
+      "sha256": "81c0695e0737fa7b2086007744ea5e58f461b9b315c52cda2693e619a6ccf81d",
+      "canvas": [
+        941,
+        1672
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "Layers/05-Original-pelvis-and-legs.png",
+      "bytes": 468280,
+      "sha256": "82da5157d9f86883efec03c1a6c21ec58264d0310158750079e7deb3b77c2acb",
+      "canvas": [
+        941,
+        1672
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "Reference/original-avatar.png",
+      "bytes": 838098,
+      "sha256": "a27b499c03fc15c4788ae3a651483a36463f28b1f034178feccdaa852e7e50f9",
+      "canvas": [
+        941,
+        1672
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "Joints/right-shared-surface.png",
+      "bytes": 14107,
+      "sha256": "34ba954f5bc613e58d755bd09a81ca9ffbfe92baec0cf0c4b9e4c4f7836b14b8",
+      "canvas": [
+        941,
+        1672
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "Masks/right-joint-owner.png",
+      "bytes": 11658,
+      "sha256": "6114cb025fcb694170e651ce5c4ca3b5e9f7a035b883cece05339c3c2c2980df",
+      "canvas": [
+        941,
+        1672
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "Hands/right-foreground.png",
+      "bytes": 85509,
+      "sha256": "03ecd7e98b21d54a4e3505a4ae26b860364d42d9ef616639339480a5b27ea1d2",
+      "canvas": [
+        941,
+        1672
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "Masks/right-hand-foreground-alpha.png",
+      "bytes": 3008,
+      "sha256": "d05744afcdb8a800f7ce08ac0380df47e19c88cedfcaeac9607853d08fa5fae1",
+      "canvas": [
+        941,
+        1672
+      ],
+      "mode": "L"
+    },
+    {
+      "path": "Joints/left-shared-surface.png",
+      "bytes": 24852,
+      "sha256": "c1232a596c804deb8f4472c3ae620186aaa6999d69334ad93a36ad538dc0e307",
+      "canvas": [
+        941,
+        1672
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "Masks/left-joint-owner.png",
+      "bytes": 13934,
+      "sha256": "91b73a4829e8b1462b77595fc05a4f1cbbc254e897c4c71a43b9fc607e05d833",
+      "canvas": [
+        941,
+        1672
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "Hands/left-foreground.png",
+      "bytes": 23328,
+      "sha256": "b0be6e08392d196e69abbaf82f9c83630768ab56b0fef1280939e569f376f1cf",
+      "canvas": [
+        941,
+        1672
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "Masks/left-hand-foreground-alpha.png",
+      "bytes": 3636,
+      "sha256": "c78595931f5760fbd502781a6c130fd19ead66fbdd3fdcfc935c8823a9aee23e",
+      "canvas": [
+        941,
+        1672
+      ],
+      "mode": "L"
+    },
+    {
+      "path": "Weapon/AK47-separate-runtime.png",
+      "bytes": 771877,
+      "sha256": "dddc69d569aedc546b25c35f237206b5fddc4f12cef57ef4e4bacce1c5f83dd3",
+      "canvas": [
+        1774,
+        887
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "Pose-preview/03-Left-arm-rigid-at-rest.png",
+      "bytes": 84207,
+      "sha256": "a3bca85a71239b77d50c1dc851adaf6b48dbb1009788f9dac23c2a4a2eb9b466",
+      "canvas": [
+        941,
+        1672
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "Composite/avatar-no-weapon-941x1672.png",
+      "bytes": 1000886,
+      "sha256": "84e2c753ae3eb009edf8caae3b1768dc4aa0ec426b192abb08d92e71e8c36836",
+      "canvas": [
+        941,
+        1672
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "Composite/avatar-ak90-1200x1672.png",
+      "bytes": 1114021,
+      "sha256": "9fd6308c256b2111f196748a487b3f42db1a75d9bd9d976b013fbb392cbcc188",
+      "canvas": [
+        1200,
+        1672
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "Avatar-Lab.html",
+      "bytes": 3365663,
+      "sha256": "58f50f31ee22db4ed2ca815d44b249adfa2d04d2cff6376af6686242179f45e3"
+    },
+    {
+      "path": "Rig/layout.json",
+      "bytes": 29610,
+      "sha256": "9382debdd97a8096d22b6fbd8470a26d3cd7955098ba1bdfefae29560aa053dd"
+    },
+    {
+      "path": "Rig/meshes.json",
+      "bytes": 195064,
+      "sha256": "bd5039dfd824089f91ad3ea8557a6813e648522340fc6bef96f9bff4061e58e0"
+    },
+    {
+      "path": "Rig/female_rig.json",
+      "bytes": 255174,
+      "sha256": "97f492a8ca38b04f6f76c9c027877b30cfbfed3fff2e63cbb695a8e8f15d54b6"
+    },
+    {
+      "path": "Validation/cycle-verification.json",
+      "bytes": 941,
+      "sha256": "8009fc84512221b250918ce41cbc0c8333a3b576ed112b32ec8d863898953602"
+    },
+    {
+      "path": "Validation/dense-cycle-samples.json",
+      "bytes": 13240,
+      "sha256": "e525f48f296692f82c9f93c17e0aed394af0ab3f5c79611945e802e52a9c92ec"
+    },
+    {
+      "path": "Validation/final-root-displacement.json",
+      "bytes": 1365,
+      "sha256": "fbe9f5f2c6d166fbc98f3d7175c023f25dbb11ccf9d4f57ac493e6e4ddfa7c49"
+    },
+    {
+      "path": "Validation/slim-lab-equivalence.json",
+      "bytes": 384,
+      "sha256": "dbafbffb1fc2639cb7d836cfb179f35c4d2dc54e07ce102f6bd6e6391374d40f"
+    },
+    {
+      "path": "Validation/pre-final-stock-resource-map.json",
+      "bytes": 20711,
+      "sha256": "282d5cc3f23ae138a6153f96724d6a0c4bd25f3ab6ea5d77586aa123fce950a8"
+    },
+    {
+      "path": "Validation/approvals.json",
+      "bytes": 6339,
+      "sha256": "87d58a56ccb179fd950fa5d2926cf900b80c16752c680fbe93451e830a0f4c29"
+    },
+    {
+      "path": "Review/ak90-breathing-dark.mp4",
+      "bytes": 54741,
+      "sha256": "cf5aa10d8fdc5a479f5b21130937d769eef938edd09228a0dd4a9b5a469e8315"
+    },
+    {
+      "path": "Review/ak90-breathing-light.mp4",
+      "bytes": 59016,
+      "sha256": "f2be3160da3bb31179ff5d80cc9723a68313ec3736cd17b18526b6846c178657"
+    },
+    {
+      "path": "Review/no-weapon-breathing-dark.mp4",
+      "bytes": 39278,
+      "sha256": "f0a757a4d3602661ef038d25827c9431b47fd422a023712831c09560c2842799"
+    },
+    {
+      "path": "Review/no-weapon-breathing-light.mp4",
+      "bytes": 41890,
+      "sha256": "3caade387fff579728ffe9eae815766f9a66eb56e7c199f87a3ff04786bd6dc3"
+    },
+    {
+      "path": "Review/original-and-final.jpg",
+      "bytes": 155984,
+      "sha256": "92917555b0f91a77211c35626aff692e75e0a900209a3842f2bebe1cba01574d"
+    },
+    {
+      "path": "Review/input-and-final-no-weapon.jpg",
+      "bytes": 146610,
+      "sha256": "3db5691977d4cfe1d4c5d4ff23e5dcbf76c83740646d84b418316513b1565dc3"
+    },
+    {
+      "path": "Review/details-no-weapon-light.jpg",
+      "bytes": 62625,
+      "sha256": "37a85872361dce80a079c00c94683bd9e533547b4a165dfafcd3f4f973942713"
+    },
+    {
+      "path": "Review/details-no-weapon-dark.jpg",
+      "bytes": 63900,
+      "sha256": "163948426bc19c0597654fabcb6e1dc5b065ef50580d621bd9f1df02ab087933"
+    },
+    {
+      "path": "Review/details-ak90-light.jpg",
+      "bytes": 81284,
+      "sha256": "0eaca35bfa1d0db93149b037e2f495c49b38cb61b472dfa6d78572b3b494d201"
+    },
+    {
+      "path": "Review/details-ak90-dark.jpg",
+      "bytes": 81333,
+      "sha256": "ef4c0bf0718a94a716d55070678fc0bf6d4bdc35ccabc30b03f022fdc61c7323"
+    },
+    {
+      "path": "Review/full-no-weapon-light.jpg",
+      "bytes": 66904,
+      "sha256": "ddf0507087bc1bd1f99e51ba673284e59b33b8b158b612fa8e3175be55487c95"
+    },
+    {
+      "path": "Review/full-no-weapon-dark.jpg",
+      "bytes": 62889,
+      "sha256": "2ab7cfa5feb7a0f0b4ab4a447604ffd62c6ed42c7ee748f504b2db95d9123424"
+    },
+    {
+      "path": "Review/full-ak90-light.jpg",
+      "bytes": 74703,
+      "sha256": "aaed5cd0c61a40bf241059083655ccfe67c806ef7f127d5f132f2810aa1d8921"
+    },
+    {
+      "path": "Review/full-ak90-dark.jpg",
+      "bytes": 69942,
+      "sha256": "122ca49cb52d6b4ef374173770720ef85e8a6260b173e039b1529dc1531ac7a3"
+    },
+    {
+      "path": "Review/cycle-no-weapon-light.jpg",
+      "bytes": 117398,
+      "sha256": "237f1a3c22fca752d073b351402a1a662936c2497e793c973d54f7584b56ac05"
+    },
+    {
+      "path": "Review/cycle-no-weapon-dark.jpg",
+      "bytes": 110799,
+      "sha256": "b1028210808e424a9b20c728e68d391d9e539f2309271562f55fabcd20639fab"
+    },
+    {
+      "path": "Review/cycle-ak90-light.jpg",
+      "bytes": 128150,
+      "sha256": "e701d7cf7cb96bb044e439f7fdf90fb9824fa4c477fc91290f5fdfaf7f5ba873"
+    },
+    {
+      "path": "Review/cycle-ak90-dark.jpg",
+      "bytes": 120154,
+      "sha256": "ea9b03efd187e5d35c58c6259db0be5d36390f5b43676af6ff025ac602fe8fde"
+    },
+    {
+      "path": "Art-Handoff/Legacy-independent-renderer/ARTIST-TASK-UA.txt",
+      "bytes": 2523,
+      "sha256": "8f7b799c16eab81cee8caed1ac906cff4734989f82c6565ae511ab2edc30d716"
+    },
+    {
+      "path": "Art-Handoff/Legacy-independent-renderer/CURRENT-STATUS-UA.txt",
+      "bytes": 1377,
+      "sha256": "dd3d0f7faae70ded87a07827175fc6223ff263a1bc51377973eef07ce9195054"
+    },
+    {
+      "path": "Art-Handoff/Legacy-independent-renderer/left-mask-location.png",
+      "bytes": 18283,
+      "sha256": "2e61cd578b5e986a2b97f8cd06947541f44d9b163ad3fee77715e15e684476eb",
+      "canvas": [
+        225,
+        630
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "Art-Handoff/Legacy-independent-renderer/left-measured-raster-band-reference.png",
+      "bytes": 2314,
+      "sha256": "310b6864826766d1994875f0ff82efaafba84ad6a1544e0be46b6d4d9c107ea7",
+      "canvas": [
+        941,
+        1672
+      ],
+      "mode": "L"
+    },
+    {
+      "path": "Art-Handoff/Legacy-independent-renderer/left-protect-mask.png",
+      "bytes": 5201,
+      "sha256": "7d0244b20452c61de0c657fad1b792af8d768260c2433832181aba60801090cc",
+      "canvas": [
+        941,
+        1672
+      ],
+      "mode": "L"
+    },
+    {
+      "path": "Art-Handoff/Legacy-independent-renderer/left-required-hidden-overlap-mask.png",
+      "bytes": 2317,
+      "sha256": "4d2788f06e060d8af81f9f84d6a8b4464fb6c7c891748a8cfb1a674af3c3ebfd",
+      "canvas": [
+        941,
+        1672
+      ],
+      "mode": "L"
+    },
+    {
+      "path": "Art-Handoff/Legacy-independent-renderer/measured-overlap-report.json",
+      "bytes": 1434,
+      "sha256": "2fa3fbdd6dc6e37bba9f41354640b2044356b794f66e7a7bafd463aa2db44d41"
+    },
+    {
+      "path": "Art-Handoff/Legacy-independent-renderer/right-mask-location.png",
+      "bytes": 15877,
+      "sha256": "b96c05d2cedba4ebe2d39368dd356b7b4c366a6875b52d828a44ffa3e36c057d",
+      "canvas": [
+        225,
+        495
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "Art-Handoff/Legacy-independent-renderer/right-measured-raster-band-reference.png",
+      "bytes": 2250,
+      "sha256": "8344c512cdf8c432e74fdbff2ec2e7a3e4fa62c03651f7877b0a78946e6d7804",
+      "canvas": [
+        941,
+        1672
+      ],
+      "mode": "L"
+    },
+    {
+      "path": "Art-Handoff/Legacy-independent-renderer/right-protect-mask.png",
+      "bytes": 5167,
+      "sha256": "81c6cb15d3a93e0372c281d8cf4ac3811efffcfe60a896578628ee36b5c70509",
+      "canvas": [
+        941,
+        1672
+      ],
+      "mode": "L"
+    },
+    {
+      "path": "Art-Handoff/Legacy-independent-renderer/right-required-hidden-overlap-mask.png",
+      "bytes": 2270,
+      "sha256": "9cb524fe0ead178d4afe82574973755eb7ba8a7f94edc98916d9e14f36db2fef",
+      "canvas": [
+        941,
+        1672
+      ],
+      "mode": "L"
+    },
+    {
+      "path": "REPORT-UA.md",
+      "bytes": 6782,
+      "sha256": "cc82e10d126e33ecf2d045f7770169f13f3fe620928d6941d079f48439f6b306"
+    },
+    {
+      "path": "README-UA.md",
+      "bytes": 1687,
+      "sha256": "6699ba29fdde540199435d382068ab662a3d29c7f4d06f29d53b24a939ecc04e"
+    }
+  ]
+}

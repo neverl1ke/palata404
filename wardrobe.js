@@ -78,6 +78,7 @@ function wardrobeItemStatus(item) {
 
 // Presentation only: missing graphics never change ownership or the saved outfit.
 function wardrobeImageStatus(item, detailed = false) {
+    if (item?.avatarPoseUnavailable) return { state: 'partial', text: 'Поза з ножем поки недоступна.' };
     if (item?.avatarWeapon && selectedPaperDollItem('upperBody')?.id === 'patient-tunic')
         return { state: 'partial', text: 'Щоб показати позу зі зброєю, зніміть туніку в цьому комплекті.' };
     if (item?.avatarWeapon || item?.noImageRequired) return { state: 'ready', text: '' };
@@ -120,7 +121,7 @@ function wardrobeItemCard(item) {
     const inspected = wardrobeSelectedItemId === item.id;
     const source = wardrobeItemImage(item);
     return `<button type="button" class="wardrobe-item-card${equipped ? ' equipped' : ''}${inspected ? ' selected' : ''}" data-wardrobe-card="${escapeHTML(item.id)}" data-wardrobe-item="${escapeHTML(item.id)}" data-equipped="${equipped}" data-available="${isPaperDollItemOwned(item)}" data-wardrobe-focus="item-${escapeHTML(item.id)}" aria-pressed="${inspected}" aria-controls="wardrobe-item-detail">
-        <span class="wardrobe-item-image${item.slot === 'face' ? ' wardrobe-face-portrait' : item.avatarWeapon ? ' weapon-icon-frame' : ''}">${iconHTML(item.icon || PAPER_DOLL_SLOTS[item.slot].icon, 'large')}${source ? `<img src="${escapeHTML(source)}" alt="" aria-hidden="true">` : ''}</span>
+        <span class="wardrobe-item-image${item.slot === 'face' ? ' wardrobe-face-portrait' : item.thumbnail && item.slot === 'weapon' ? ' weapon-icon-frame' : ''}">${iconHTML(item.icon || PAPER_DOLL_SLOTS[item.slot].icon, 'large')}${source ? `<img src="${escapeHTML(source)}" alt="" aria-hidden="true">` : ''}</span>
         <strong class="wardrobe-item-name">${escapeHTML(item.name)}</strong>
         <span class="wardrobe-item-state">${inspected && !equipped ? 'Огляд · ' : ''}${wardrobeItemStatus(item)}</span>
         <span class="wardrobe-image-note${source || item.noImageRequired ? ' hidden' : ''}" data-paper-image-item="${escapeHTML(item.id)}">Зображення не підготовлено</span>

@@ -1,5 +1,5 @@
 /** Game adapter. Inventory and Paper Doll remain the only owners of saved state. */
-import { AvatarEngine } from './engine.mjs';
+import { ApprovedAvatar as AvatarEngine } from './approved/avatar.mjs';
 const instances = new Map();
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
 const absolute = path => new URL('../' + path, import.meta.url).href;
@@ -42,7 +42,7 @@ function snapshot() {
     const clothing=['upperBody','outerwear','armor','loadout','gloves','pants','footwear','back','accessory'].map(selectedPaperDollItem);
     const unsupported=clothing.some(item=>item && paperDollItemLayers(item,gender).some(p=>paperDollImageCandidates(p,gender).length));
     const weapon=selectedPaperDollItem('weapon');
-    return {gender,face:paperDollRenderedFace(gender),hair:selectedPaperDollItem('hair'),headwear:selectedPaperDollItem('headwear'),
+    return {gender,face:selectedPaperDollItem('face') || null,hair:selectedPaperDollItem('hair'),headwear:selectedPaperDollItem('headwear'),
         color:paperDollState.appearance.hairColor,crown,unsupported,weapon:weapon?.avatarWeapon ? weapon.id : null,
         key:JSON.stringify([gender,paperDollState.activeViewMode,paperDollState.appearance,weapon?.id,clothing.map(i=>i?.id),selectedPaperDollItem('headwear')?.id])};
 }

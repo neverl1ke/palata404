@@ -1,0 +1,213 @@
+{
+  "phases": [
+    {
+      "gender": "male",
+      "time_ms": 0,
+      "weapon": false,
+      "exact": true,
+      "shape": [
+        1672,
+        1100,
+        4
+      ],
+      "changed_pixels": 0,
+      "rgba_sha256": "952bf95b95b0965c698ba6f9a8ea8065776984b37643f4c918c47da5840c37b9"
+    },
+    {
+      "gender": "male",
+      "time_ms": 1000,
+      "weapon": false,
+      "exact": true,
+      "shape": [
+        1672,
+        1100,
+        4
+      ],
+      "changed_pixels": 0,
+      "rgba_sha256": "1b210ca99ab680575ea0c139aff32f8c298dc6b52ea4cba76ff2224ef10f84ed"
+    },
+    {
+      "gender": "male",
+      "time_ms": 2000,
+      "weapon": false,
+      "exact": true,
+      "shape": [
+        1672,
+        1100,
+        4
+      ],
+      "changed_pixels": 0,
+      "rgba_sha256": "952bf95b95b0965c698ba6f9a8ea8065776984b37643f4c918c47da5840c37b9"
+    },
+    {
+      "gender": "male",
+      "time_ms": 3000,
+      "weapon": false,
+      "exact": true,
+      "shape": [
+        1672,
+        1100,
+        4
+      ],
+      "changed_pixels": 0,
+      "rgba_sha256": "c67f277dcb7d440c74974438b363b614d3b2c06d49473ea7e1a6f50fdedd0d42"
+    },
+    {
+      "gender": "male",
+      "time_ms": 0,
+      "weapon": true,
+      "exact": true,
+      "shape": [
+        1672,
+        1100,
+        4
+      ],
+      "changed_pixels": 0,
+      "rgba_sha256": "22675db75f87c4b42506284e362ff939d773bf19915c4c2395dba35a8ecf350f"
+    },
+    {
+      "gender": "male",
+      "time_ms": 1000,
+      "weapon": true,
+      "exact": true,
+      "shape": [
+        1672,
+        1100,
+        4
+      ],
+      "changed_pixels": 0,
+      "rgba_sha256": "595c08dbd54636c2633457e776e1617949aaf90ec061bbe3134d05b7f8daeada"
+    },
+    {
+      "gender": "male",
+      "time_ms": 2000,
+      "weapon": true,
+      "exact": true,
+      "shape": [
+        1672,
+        1100,
+        4
+      ],
+      "changed_pixels": 0,
+      "rgba_sha256": "22675db75f87c4b42506284e362ff939d773bf19915c4c2395dba35a8ecf350f"
+    },
+    {
+      "gender": "male",
+      "time_ms": 3000,
+      "weapon": true,
+      "exact": true,
+      "shape": [
+        1672,
+        1100,
+        4
+      ],
+      "changed_pixels": 0,
+      "rgba_sha256": "ce5da61dab68f3655a34688b894135b0d1c4b68d59ccdc8271a5a02d0cbd8e76"
+    },
+    {
+      "gender": "female",
+      "time_ms": 0,
+      "weapon": false,
+      "exact": true,
+      "shape": [
+        1672,
+        1200,
+        4
+      ],
+      "changed_pixels": 0,
+      "rgba_sha256": "b70e1aeaa98cc2a75ba7fb63f0f68bf7804933166929538ec5e41f0ab1126372"
+    },
+    {
+      "gender": "female",
+      "time_ms": 1000,
+      "weapon": false,
+      "exact": true,
+      "shape": [
+        1672,
+        1200,
+        4
+      ],
+      "changed_pixels": 0,
+      "rgba_sha256": "8a870bec5b9b8e408ac717d76bf922111c6cffa11652c2fcabdec6e33066a1c1"
+    },
+    {
+      "gender": "female",
+      "time_ms": 2000,
+      "weapon": false,
+      "exact": true,
+      "shape": [
+        1672,
+        1200,
+        4
+      ],
+      "changed_pixels": 0,
+      "rgba_sha256": "b70e1aeaa98cc2a75ba7fb63f0f68bf7804933166929538ec5e41f0ab1126372"
+    },
+    {
+      "gender": "female",
+      "time_ms": 3000,
+      "weapon": false,
+      "exact": true,
+      "shape": [
+        1672,
+        1200,
+        4
+      ],
+      "changed_pixels": 0,
+      "rgba_sha256": "ff27b62f0012d01184eb7b7e3015cd9e8b9c3bba9bcab83bd92bab7790e1103f"
+    },
+    {
+      "gender": "female",
+      "time_ms": 0,
+      "weapon": true,
+      "exact": true,
+      "shape": [
+        1672,
+        1200,
+        4
+      ],
+      "changed_pixels": 0,
+      "rgba_sha256": "19b2980c9f1eab176b45e62417d9c6e3d6ae792e3954bf035ae0115fc13e760a"
+    },
+    {
+      "gender": "female",
+      "time_ms": 1000,
+      "weapon": true,
+      "exact": true,
+      "shape": [
+        1672,
+        1200,
+        4
+      ],
+      "changed_pixels": 0,
+      "rgba_sha256": "4f89965b1a30fbf1abe1cb292752e4c5d228fe17137c82f1c898ab93402d1faa"
+    },
+    {
+      "gender": "female",
+      "time_ms": 2000,
+      "weapon": true,
+      "exact": true,
+      "shape": [
+        1672,
+        1200,
+        4
+      ],
+      "changed_pixels": 0,
+      "rgba_sha256": "19b2980c9f1eab176b45e62417d9c6e3d6ae792e3954bf035ae0115fc13e760a"
+    },
+    {
+      "gender": "female",
+      "time_ms": 3000,
+      "weapon": true,
+      "exact": true,
+      "shape": [
+        1672,
+        1200,
+        4
+      ],
+      "changed_pixels": 0,
+      "rgba_sha256": "77d4d9bd180ac4afa24b797057a8f8a6099576f6c626f392b19967823e613303"
+    }
+  ],
+  "page_errors": []
+}

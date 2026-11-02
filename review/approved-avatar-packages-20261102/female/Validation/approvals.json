@@ -1,0 +1,132 @@
+{
+  "step01": {
+    "status": "APPROVED",
+    "user_message": "так схвалюю",
+    "torso_sha256": "5209240f4f7876cff2aed3c18106e28b76ccb4eb505267862c214c40fb67637a"
+  },
+  "step02": {
+    "status": "APPROVED",
+    "user_message": "так",
+    "torso_sha256": "17e3a9570e4b535423efefcc6f53253545ecffeb314e10ca91d211bb441cf1ef"
+  },
+  "step03": {
+    "status": "APPROVED",
+    "user_message": "так схалюю але треба ще виправити тут...",
+    "right_arm_sha256": "8f6c9e5b7a4d787b42ae6b9d84ae9795d47d9f5ca0fc4bf172939edc1cf6321d"
+  },
+  "step04g": {
+    "status": "APPROVED",
+    "user_message": "схвалюю",
+    "includes": "current hand contour04c→04e→04f and dorsal tone04g",
+    "right_arm_sha256": "042af99a7a5b6b9299aa1b670d195e244cb336634f956c9d631a35c4b6e786f8"
+  },
+  "step05": {
+    "status": "APPROVED_WITH_LOCAL_ARTIFACT_REMOVAL",
+    "user_message": "так схвалюю але прибери цей артефакт",
+    "candidate": "05-original-lower-registration",
+    "original_source": "/workspace/palata404-avatar-core/base_female.png",
+    "artifact_cleanup": {
+      "changed_pixels": 19,
+      "bbox": [
+        602,
+        627,
+        610,
+        631
+      ],
+      "candidate": "05a-hip-artifact-removed"
+    }
+  },
+  "step05a": {
+    "status": "APPROVED",
+    "user_message": "так",
+    "candidate": "05a-hip-artifact-removed",
+    "assembly_sha256": "2885d170bad9b144511de3ededac1998995fe4451069a4531931c7282c557f75"
+  },
+  "step06": {
+    "status": "SHARED_JOINT_METHOD_APPROVED_WITH_MARKED_RIM_CORRECTION",
+    "user_message": "так але треба усунути чорні пікселі на мітках"
+  },
+  "step06e": {
+    "status": "APPROVED",
+    "user_message": "так",
+    "includes": "shared right joint and localized upper rim/armpit tone corrections through 06e",
+    "active_trial": "Trial/Joint-Rim-Candidate.html",
+    "source_sha256": {
+      "01-TORSO-REPAIRED.png": "d5d6855aabe4a39e0a2bc5e07f4ab9df386de7c40c10f5d6f1072b9c76ab4ffb",
+      "02-RIGHT-ARM-CLEANED.png": "0dc7177585493976b62aa0f691530a885c6bd31c0ad0fdbe1ab2300f76227c24"
+    }
+  },
+  "step07h": {
+    "status": "APPROVED",
+    "user_message": "так",
+    "includes": "left joint, neck, transfer of cloth to torso, rounded fabric restoration, wrist/hand contour cleanup, local underarm fill",
+    "left_edit_authorization": "так і виправи ще тут чорні пікселі на шиї та частинка грудей попала на руку...",
+    "active_lab": "Trial/Avatar-Lab.html",
+    "sha256": {
+      "01-TORSO-REPAIRED.png": "7b26a5f662682ff9b3a12aeed53cd14db6eadda92cefc048f3955c72290f1627",
+      "02-RIGHT-ARM-CLEANED.png": "0dc7177585493976b62aa0f691530a885c6bd31c0ad0fdbe1ab2300f76227c24",
+      "03-LEFT-ARM-REPAIRED.png": "15022f80c9019d5fd56fef0342e7f9fd9ed0343e226714efee4fea9643eb9776"
+    }
+  },
+  "step10_weapon_size": {
+    "status": "90_PERCENT_SELECTED_WITH_HAND_OCCLUSION_CORRECTION_PENDING",
+    "user_message": "залишаємо 90% але є правки",
+    "size": 0.9,
+    "pose_changes": false
+  },
+  "step11_partial_finger_mask": {
+    "status": "REJECTED",
+    "user_message": "ні ти відрізав пальці те що я обвів треба за автоматом ти відрізав пальці"
+  },
+  "step20_user_contour": {
+    "status": "APPROVED",
+    "user_message": "так, покажи на автоматі",
+    "source_candidate": "20-user-drawn-finger-contour",
+    "later_request": "local light edge cleanup; preserve approved contour"
+  },
+  "step21_light_fringe": {
+    "status": "APPROVED",
+    "user_message": "так, покжи повний зріст",
+    "foreground_sha256": "8ba8565bae730e5cb3ef9242ccdeac6e43efb036a559ea0c89fbf36b086cb4e1",
+    "weapon_scale": 0.9
+  },
+  "step24_original_tones_shoulder_bra": {
+    "status": "APPROVED",
+    "user_message": "так, тепер трохи опорну руку треба здвинуть до лінії не ламаючи руку можна трохи підрізати",
+    "includes": "original head, torso and arm tone matching, local right shoulder seam correction, original bra color; finger ownership and weapon scale90 preserved",
+    "work_sha256": {
+      "01-TORSO-REPAIRED.png": "3bd10245dd1907e9f83fd5515a9fc7c2d44ac7b4889d37a6c19735a773034704",
+      "02-RIGHT-ARM-CLEANED.png": "196af4ae697b4dcad105d81c233212989626a7ff75a56674968953151c2bb567",
+      "03-LEFT-ARM-REPAIRED.png": "24a041a1621814808e706d9f55959827f571f5b3c9dc569d9f45f586d14b2f35",
+      "04-HEAD-FROM-ORIGINAL.png": "dfc096035f73f15d12cc84125f837dc196c48489c192a88d0b8baa2eca92f1b1",
+      "04-HEAD-REPLACEMENT-OWNER.png": "81c0695e0737fa7b2086007744ea5e58f461b9b315c52cda2693e619a6ccf81d",
+      "RIGHT-HAND-FOREGROUND.png": "03ecd7e98b21d54a4e3505a4ae26b860364d42d9ef616639339480a5b27ea1d2",
+      "LEFT-HAND-FOREGROUND.png": "b0be6e08392d196e69abbaf82f9c83630768ab56b0fef1280939e569f376f1cf"
+    },
+    "next_step": "support arm movement; direction clarification pending"
+  },
+  "step25_rightward_support_shift": {
+    "status": "REJECTED_WRONG_DIRECTION",
+    "user_message": "не в ту сторону ти з сунув",
+    "replacement": "26-support-arm-shift-left"
+  },
+  "step26_leftward_support_shift": {
+    "status": "REJECTED_AND_REVERTED",
+    "user_message": "ріка зломана руку ламать заборонено можна підрізать тільки",
+    "reverted_to": "step24 approved source pose; no pose corrective in Lab",
+    "constraint": "only contour trimming/occlusion edits; no arm/hand/joint movement"
+  },
+  "step29_rigid_support_arm": {
+    "status": "APPROVED_WITH_BREAST_SIDE_OWNERSHIP_CORRECTION",
+    "user_message": "так але тут треба повернути частину округленості грудей",
+    "angle_degrees": 2.5,
+    "arm_shape_rigid": true,
+    "pending_correction": "restore breast-side roundness from existing torso in front of upper arm"
+  },
+  "step30_breast_roundness": {
+    "status": "APPROVED",
+    "user_message": "так",
+    "method": "existing approved torso breast-side material in front of the rigidly rotated arm; no new anatomy or source shape drawn",
+    "candidate": "30-breast-roundness-ownership"
+  }
+}
