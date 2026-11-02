@@ -275,7 +275,7 @@ const PAPER_DOLL_ITEMS = [
         genderVariants: { male: 'assets/wardrobe/hair/male-six/mullet.png?v=eeb452bc' },
         layers: [
             { id: 'rear', genders: ['male'], renderOrder: -1, fittedToGender: true,
-                genderVariants: { male: 'assets/wardrobe/hair/male-six/mullet-rear.png?v=8e65a1bc' },
+                genderVariants: { male: 'assets/wardrobe/hair/male-six/mullet-rear.png?v=0c7bbec5' },
                 colorReference: 'assets/wardrobe/hair/male-six/mullet.png?v=eeb452bc', placementByGender: { male: { x: 0, y: 0, width: 941, height: 1672 } } },
             { id: 'front', renderOrder: 9, fittedToGender: true,
                 genderVariants: { male: 'assets/wardrobe/hair/male-six/mullet.png?v=eeb452bc' } }
@@ -285,6 +285,14 @@ const PAPER_DOLL_ITEMS = [
         thumbnailByGender: { male: 'assets/wardrobe/hair/male-six/thumbnails/curly-crop.png?v=9d970856' },
         genders: ['male'], fittedToGender: true, renderOrder: 9,
         genderVariants: { male: 'assets/wardrobe/hair/male-six/curly-crop.png?v=ad212bad' },
+        layers: [
+            { id: 'rear', genders: ['male'], renderOrder: -1, fittedToGender: true,
+                genderVariants: { male: 'assets/wardrobe/hair/male-six/curly-crop-rear.png?v=396d1f83' },
+                colorReference: 'assets/wardrobe/hair/male-six/curly-crop.png?v=ad212bad',
+                placementByGender: { male: { x: 0, y: 0, width: 941, height: 1672 } } },
+            { id: 'front', renderOrder: 9, fittedToGender: true,
+                genderVariants: { male: 'assets/wardrobe/hair/male-six/curly-crop.png?v=ad212bad' } }
+        ],
         placementByGender: { male: { x: 0, y: 0, width: 941, height: 1672 } } },
     { id: 'hair-m6-topknot', slot: 'hair', name: 'Високий вузол', icon: 'user', availableByDefault: true,
         thumbnailByGender: { male: 'assets/wardrobe/hair/male-six/thumbnails/topknot.png?v=1edee922' },

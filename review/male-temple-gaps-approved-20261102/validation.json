@@ -1,0 +1,26 @@
+{
+  "approved_preview_pixel_match": true,
+  "male_heads": 16,
+  "styles": [
+    "mullet",
+    "curly-crop"
+  ],
+  "colors": [
+    "original",
+    "black",
+    "white"
+  ],
+  "mobile_viewport": [
+    390,
+    844
+  ],
+  "mobile_modes": [
+    "patient",
+    "combat"
+  ],
+  "appearance_and_asset_tests": 8,
+  "mobile_extended_appearance_tests": 1,
+  "game_logic_tests": 93,
+  "node_syntax_check": "passed",
+  "git_diff_check": "passed"
+}

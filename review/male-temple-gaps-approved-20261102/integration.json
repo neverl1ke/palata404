@@ -1,0 +1,46 @@
+{
+  "status": "approved by user and integrated",
+  "method": "preview-only rear temple gap closure using cloned adjacent original hair pixels",
+  "source_head": "/workspace/palata404/assets/wardrobe/faces/male-approved-seven/head-01.png",
+  "source_sha256": "d2a03c31d167bb61184d5d70ca67942b3a34df7ef1444761d480e98e8152cfe9",
+  "protected": {
+    "paper-doll-data.js": "f6002174d13af82a62aa549027d73fa764fe26c2a119fba980e55ad3e2889b5c",
+    "index.html": "5df433687c282695296903a53491c0dbcdae1716820181a0d2b9ddeec62de0f5",
+    "assets/wardrobe/hair/male-six/mullet.png": "eeb452bc49332207acdadef789a0b9b7d3985cadda9c6aec64f49b4188182870",
+    "assets/wardrobe/hair/male-six/mullet-rear.png": "8e65a1bc722d85f38d7b79a40bb5d732bdf88b875826eeb6f7e4e9ae98b228a9",
+    "assets/wardrobe/hair/male-six/curly-crop.png": "ad212bad14958ba237cb767a388187e0f67e105e728976c27af5608153e99e82"
+  },
+  "browser_preview": "real game renderer with preview-only rear hair routes; head and original front layers unchanged",
+  "js_errors": [],
+  "selected_fix": "behind-temple gap closure using adjacent original strand pixels; no head recolor",
+  "candidates": [
+    {
+      "key": "mullet",
+      "path": "/workspace/outputs/male-hair-gray-preview-20261102/mullet-rear-candidate.png",
+      "changed_pixels": 99,
+      "existing_opaque_rear_unchanged": true,
+      "sha256": "0c7bbec51dcbf594156f3734fce2cab5c48b0dafaac72bd66808c609c04aed92",
+      "behind_temples_only": true
+    },
+    {
+      "key": "curly-crop",
+      "path": "/workspace/outputs/male-hair-gray-preview-20261102/curly-crop-rear-candidate.png",
+      "changed_pixels": 820,
+      "existing_opaque_rear_unchanged": true,
+      "sha256": "396d1f837daeb44e38036e41253a50813028d81bc6eeea4e14ddb4d4cb5effb3",
+      "behind_temples_only": true
+    }
+  ],
+  "front_hair_unchanged": true,
+  "head_unchanged": true,
+  "runtime_files": [
+    {
+      "path": "assets/wardrobe/hair/male-six/mullet-rear.png",
+      "sha256": "0c7bbec51dcbf594156f3734fce2cab5c48b0dafaac72bd66808c609c04aed92"
+    },
+    {
+      "path": "assets/wardrobe/hair/male-six/curly-crop-rear.png",
+      "sha256": "396d1f837daeb44e38036e41253a50813028d81bc6eeea4e14ddb4d4cb5effb3"
+    }
+  ]
+}
