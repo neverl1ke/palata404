@@ -1,4 +1,4 @@
-// Display adapter for the exact male v9 and female AK90 scene renderers.
+// Display adapter for approved male v9 and revised female arms / matched-size rifle.
 const imageCache=new Map();
 function image(source) {
     if(!imageCache.has(source)) {
@@ -19,7 +19,7 @@ export class ApprovedAvatar {
     }
     async setGender(gender) {
         this.scene?.dispose();
-        const module=await import(`./${gender}-scene.mjs`);
+        const module=await import(`./${gender}-scene.mjs?v=arms-approved-20261103`);
         this.scene=await module.createScene(canvas());this.gender=gender;this.width=this.scene.width;
         this.canvas.width=this.width;this.canvas.height=1672;this.canvas.style.width=`${this.width/941*100}%`;
         this.body.width=this.width;this.appearance={layers:[]};this.mask=null;this.pose='idle';this.render();

@@ -15,7 +15,8 @@ class AnimatedAvatarTests(unittest.TestCase):
         self.page.wait_for_function('''p=>['character-paperdoll','wardrobe-paperdoll'].every(id=>{const h=document.getElementById(id),s=window.avatarCoreGamePreview?.instances.get(h);return h.dataset.avatarCoreReady==='true'&&s?.engine.pose===p&&!s.running})''',arg=pose)
     def test_exact_sources_and_base_registration(self):
         manifest=json.loads((ROOT/'review/approved-avatar-packages-20261102/integration-manifest.json').read_text())
-        for entry in manifest['exact_files']:
+        revision=json.loads((ROOT/'review/female-arms-approved-20261103/integration-manifest.json').read_text())
+        for entry in manifest['exact_files']+revision['exact_files']:
             self.assertEqual(hashlib.sha256((ROOT/entry['path']).read_bytes()).hexdigest(),entry['sha256'])
         for gender in ['male','female']:
             rig=json.loads((ROOT/f'avatar-core/approved/{gender}/resources.json').read_text())['json'][f'rigs/{gender}_rig.json']
@@ -47,29 +48,32 @@ class AnimatedAvatarTests(unittest.TestCase):
         self.assertEqual(self.page.locator('#wardrobe-layer-upper-body-front').evaluate('(i)=>getComputedStyle(i).visibility'),'visible')
         self.page.evaluate('setPaperDollView("combat");equipPaperDollItem("weapon",null)');self.ready('idle')
         self.page.emulate_media(reduced_motion='reduce');self.page.wait_for_function('avatarCoreGamePreview.instances.get(document.getElementById("wardrobe-paperdoll")).engine.paused')
-    def test_game_canvas_matches_uploaded_approved_frames(self):
+    def test_game_canvas_matches_approved_reference_frames(self):
         import io
         import numpy as np
         from PIL import Image
         review=ROOT/'review/approved-avatar-packages-20261102'
         self.load();self.page.evaluate('openCustomization();setPaperDollView("combat");equipPaperDollItem("upperBody",null);equipPaperDollItem("face",null);equipPaperDollItem("hair","hair-none");setHairColor("original")')
         for gender in ['male','female']:
+            current_review=ROOT/'review/female-arms-approved-20261103' if gender=='female' else review
             self.page.evaluate('g=>setGender(g)',gender)
             for weapon,pose in [(None,'idle'),('gear-aks','rifle')]:
                 self.page.evaluate('w=>equipPaperDollItem("weapon",w)',weapon);self.ready(pose)
                 actual=self.page.evaluate("""()=>{const e=avatarCoreGamePreview.instances.get(document.getElementById('wardrobe-paperdoll')).engine;e.pause();e.time=0;e.render();return e.canvas.toDataURL().split(',')[1]}""")
                 import base64
                 image=Image.open(io.BytesIO(base64.b64decode(actual))).convert('RGBA')
-                expected=Image.open(review/f'{gender}-approved-{"rifle" if weapon else "no-weapon"}.png').convert('RGBA')
+                expected_path=current_review/f'female-{"rifle" if weapon else "no-weapon"}-0.png' if gender=='female' else review/f'{gender}-approved-{"rifle" if weapon else "no-weapon"}.png'
+                expected=Image.open(expected_path).convert('RGBA')
                 self.assertTrue(np.array_equal(np.array(image),np.array(expected)),f'{gender} {pose} differs from uploaded Lab')
-                phases=json.loads((review/'archive-renderer-equivalence.json').read_text())['phases']
+                phase_path=current_review/'render-proof.json' if gender=='female' else review/'archive-renderer-equivalence.json'
+                phases=json.loads(phase_path.read_text())['phases']
                 for phase in [p for p in phases if p['gender']==gender and p['weapon']==bool(weapon)]:
                     raw=self.page.evaluate("""t=>{const e=avatarCoreGamePreview.instances.get(document.getElementById('wardrobe-paperdoll')).engine;e.pause();e.time=t;e.render();return e.canvas.toDataURL().split(',')[1]}""",phase['time_ms'])
                     rgba=Image.open(io.BytesIO(base64.b64decode(raw))).convert('RGBA')
                     self.assertEqual(hashlib.sha256(rgba.tobytes()).hexdigest(),phase['rgba_sha256'],f"{gender} {pose} at {phase['time_ms']}ms")
                 self.page.set_viewport_size({'width':390,'height':844})
                 self.assertTrue(self.page.evaluate("""()=>{const c=document.querySelector('#wardrobe-paperdoll canvas').getBoundingClientRect(),s=document.querySelector('.wardrobe-stage').getBoundingClientRect();return c.left>=s.left-2&&c.right<=s.right+2}"""))
-                self.page.locator('.wardrobe-stage').screenshot(path=str(review/f'{gender}-game-{"rifle" if weapon else "no-weapon"}.png'))
+                self.page.locator('.wardrobe-stage').screenshot(path=str(current_review/f'{gender}-game-{"rifle" if weapon else "no-weapon"}.png'))
     def test_stash_art_and_rapid_changes(self):
         self.load();self.page.evaluate('openInventory()')
         self.page.wait_for_function('''()=>[...document.querySelectorAll('#stash-items .weapon-icon-frame img')].length===2&&[...document.querySelectorAll('#stash-items .weapon-icon-frame img')].every(i=>i.complete&&i.naturalWidth>0)''')

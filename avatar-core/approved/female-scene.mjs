@@ -1,27 +1,108 @@
-import { AvatarEngine } from './female/runtime/engine.mjs';
-import { correctiveMatrices, correctiveVertices } from './female/runtime/pose-art.mjs';
-import { pinnedTorsoPoint } from './female/runtime/torso-space.mjs';
-import { config } from './config.mjs';
-export async function createScene(canvas) {
-const {resources,trial}=await config('female');
-const W=941,H=1672;
-let e=await AvatarEngine.create(canvas,{gender:'female',resources,nativeResolution:true,transitionMs:0});e.pause();e.setPose('rifle');e.pause();e.setOptions({breathing:true,cycleMs:4000,amplitude:1,weaponSwayPx:2,weaponPreviewScale:1});e.visible.set('weapon',false);e.time=0;
-const img=async s=>{let im=new Image;im.src=s;await im.decode();return im};let images={};for(const[stage,group]of Object.entries(trial.images)){images[stage]={};for(const[k,v]of Object.entries(group))images[stage][k]=await img(v)}const protectedImage=await img(trial.protected),owner=await img(trial.ownerMask),originalLower=await img(trial.lower),jointTexture=await img(trial.jointRight.texture),jointOwner=await img(trial.jointRight.owner),leftJointTexture=await img(trial.jointLeft.texture),leftJointOwner=await img(trial.jointLeft.owner),neutralLeftJointTexture=await img(trial.supportRigid.neutralTexture),neutralLeftJointOwner=await img(trial.supportRigid.neutralOwner);
-class Raster{constructor(){this.canvas=document.createElement('canvas');this.canvas.width=W;this.canvas.height=H;this.gl=this.canvas.getContext('webgl',{alpha:true,premultipliedAlpha:true,antialias:false,preserveDrawingBuffer:true});if(!this.gl)throw Error('WebGL is required for single-pass alpha; no lossy fallback');let g=this.gl;const shader=(type,s)=>{let q=g.createShader(type);g.shaderSource(q,s);g.compileShader(q);if(!g.getShaderParameter(q,g.COMPILE_STATUS))throw Error(g.getShaderInfoLog(q));return q};let p=g.createProgram();g.attachShader(p,shader(g.VERTEX_SHADER,'attribute vec2 p;attribute vec2 uv;varying vec2 v;void main(){v=uv;gl_Position=vec4(p.x/941.0*2.0-1.0,1.0-p.y/1672.0*2.0,0,1);}'));g.attachShader(p,shader(g.FRAGMENT_SHADER,'precision highp float;uniform sampler2D tex;varying vec2 v;void main(){gl_FragColor=texture2D(tex,v);}'));g.linkProgram(p);if(!g.getProgramParameter(p,g.LINK_STATUS))throw Error('shader link');g.useProgram(p);this.p=g.getAttribLocation(p,'p');this.uv=g.getAttribLocation(p,'uv');this.buf=g.createBuffer();this.textures=new WeakMap();g.viewport(0,0,W,H);g.disable(g.BLEND)}texture(im){let g=this.gl;if(this.textures.has(im))return this.textures.get(im);let t=g.createTexture();g.bindTexture(g.TEXTURE_2D,t);g.pixelStorei(g.UNPACK_PREMULTIPLY_ALPHA_WEBGL,true);g.texParameteri(g.TEXTURE_2D,g.TEXTURE_MIN_FILTER,g.LINEAR);g.texParameteri(g.TEXTURE_2D,g.TEXTURE_MAG_FILTER,g.LINEAR);g.texParameteri(g.TEXTURE_2D,g.TEXTURE_WRAP_S,g.CLAMP_TO_EDGE);g.texParameteri(g.TEXTURE_2D,g.TEXTURE_WRAP_T,g.CLAMP_TO_EDGE);g.texImage2D(g.TEXTURE_2D,0,g.RGBA,g.RGBA,g.UNSIGNED_BYTE,im);this.textures.set(im,t);return t}draw(im,mesh,nv){let g=this.gl;g.clearColor(0,0,0,0);g.clear(g.COLOR_BUFFER_BIT);g.bindTexture(g.TEXTURE_2D,this.texture(im));let v=[];for(let tri of mesh.triangles)for(let i of tri)v.push(nv[i][0],nv[i][1],mesh.vertices[i][0]/W,mesh.vertices[i][1]/H);g.bindBuffer(g.ARRAY_BUFFER,this.buf);g.bufferData(g.ARRAY_BUFFER,new Float32Array(v),g.DYNAMIC_DRAW);g.enableVertexAttribArray(this.p);g.vertexAttribPointer(this.p,2,g.FLOAT,false,16,0);g.enableVertexAttribArray(this.uv);g.vertexAttribPointer(this.uv,2,g.FLOAT,false,16,8);g.drawArrays(g.TRIANGLES,0,v.length/4);return this.canvas}}
-const raster=new Raster;let state={time:0,stage:'approved',mode:'full',background:'transparent',amplitude:1,play:false};let latest;
-function vertices(frame,mode='full'){let out={};for(const side of['right','left']){let mesh=trial.meshes[mode][side];out[side]=Math.abs(frame.breath)<1e-12?mesh.vertices.map(v=>v.slice(0,2)):correctiveVertices(mesh,correctiveMatrices(e.rig.poseArt.rifle[side].bind,frame.arms[side],frame.transforms.torso))}out.torso=trial.meshes.torso.vertices.map(p=>pinnedTorsoPoint(frame.transforms.torso,p));if(mode==='full'){out.right=out.right.map((p,i)=>{let w=trial.jointRight.weights[i];if(!w)return p;let uv=trial.meshes.full.right.vertices[i],root=pinnedTorsoPoint(frame.transforms.torso,uv.slice(0,2));return[p[0]+w*(root[0]-p[0]),p[1]+w*(root[1]-p[1])]})}if(mode==='full'){out.left=out.left.map((p,i)=>{let w=trial.jointLeft.weights[i];if(!w)return p;let uv=trial.meshes.full.left.vertices[i],root=pinnedTorsoPoint(frame.transforms.torso,uv.slice(0,2));return[p[0]+w*(root[0]-p[0]),p[1]+w*(root[1]-p[1])]})}if(mode==='full'&&trial.supportRigid){out.leftWeaponReference=out.left.map(p=>p.slice());let plan=trial.supportRigid,pivot=pointOn(trial.meshes.full.left,out.left,plan.pivotUV),co=Math.cos(plan.angleRadians),si=Math.sin(plan.angleRadians);out.left=out.left.map(p=>{let x=p[0]-pivot[0],y=p[1]-pivot[1];return[pivot[0]+co*x-si*y,pivot[1]+si*x+co*y]})}return out}
-const cache=new WeakMap;function pointOn(mesh,nv,p){let saved=cache.get(mesh);if(!saved){saved=new Map;cache.set(mesh,saved)}let key=p.join(',');let record=saved.get(key);if(record)return[0,1].map(k=>record.weights.reduce((s,w,j)=>s+w*nv[record.tri[j]][k],0));for(const tri of mesh.triangles){let[a,b,c]=tri.map(i=>mesh.vertices[i]);let den=(b[1]-c[1])*(a[0]-c[0])+(c[0]-b[0])*(a[1]-c[1]);let u=((b[1]-c[1])*(p[0]-c[0])+(c[0]-b[0])*(p[1]-c[1]))/den,v=((c[1]-a[1])*(p[0]-c[0])+(a[0]-c[0])*(p[1]-c[1]))/den,w=1-u-v;if(Math.min(u,v,w)>=-1e-8){saved.set(key,{tri,weights:[u,v,w]});return[0,1].map(k=>u*nv[tri[0]][k]+v*nv[tri[1]][k]+w*nv[tri[2]][k])}}throw Error('UV outside review mesh '+p)}
-e.options.reviewNativeProvider=(frame,cx)=>{let nv=vertices(frame,state.mode),meshes=trial.meshes[state.mode];cx.clearRect(0,0,W,H);cx.drawImage(originalLower,0,0);cx.drawImage(raster.draw(images[state.stage].torso,trial.meshes.torso,nv.torso),0,0);for(const side of['right','left'])cx.drawImage(raster.draw(images[state.stage][side],meshes[side],nv[side]),0,0);if(state.mode==='full'){cx.globalCompositeOperation='destination-out';cx.drawImage(raster.draw(jointOwner,trial.meshes.torso,nv.torso),0,0);cx.globalCompositeOperation='lighter';cx.drawImage(raster.draw(jointTexture,trial.meshes.torso,nv.torso),0,0);cx.globalCompositeOperation='source-over';}if(state.mode==='full'){cx.globalCompositeOperation='destination-out';cx.drawImage(raster.draw(trial.supportRigid?leftJointOwner:neutralLeftJointOwner,trial.meshes.torso,nv.torso),0,0);cx.globalCompositeOperation='lighter';cx.drawImage(raster.draw(trial.supportRigid?leftJointTexture:neutralLeftJointTexture,trial.meshes.torso,nv.torso),0,0);cx.globalCompositeOperation='source-over';}cx.globalCompositeOperation='destination-out';cx.drawImage(owner,0,0);cx.globalCompositeOperation='lighter';cx.drawImage(protectedImage,0,0);cx.globalCompositeOperation='source-over';latest={frame,vertices:nv,state:{...state}};return true};
-const weaponConfig=trial.weaponReview,weaponImage=await img(weaponConfig.image),weaponForeground={right:await img(weaponConfig.foreground.right),left:await img(weaponConfig.foreground.left)};
-const scene=document.createElement('canvas');scene.width=1200;scene.height=1672;const sceneCtx=scene.getContext('2d');
-function contactsAt(frameVertices){return{right:pointOn(trial.meshes.full.right,frameVertices.right,weaponConfig.right_hand_uv),left:pointOn(trial.meshes.full.left,frameVertices.leftWeaponReference||frameVertices.left,weaponConfig.left_hand_uv)}}
-e.time=0;e.compute();let restContacts=contactsAt(vertices(e.compute(),'full')),restVector=restContacts.left.map((v,i)=>v-restContacts.right[i]),sourceVector=[1190-525,380-500],weaponBaseScale=Math.hypot(...restVector)/Math.hypot(...sourceVector);
-state.weapon='0.9';let weaponInfo;
-function weaponPlacement(){let size=Number(state.weapon||1),contacts=contactsAt(latest.vertices),primary=weaponConfig.source_primary,support=weaponConfig.source_support_profiles[String(size)],a=support.map((v,i)=>v-primary[i]),b=contacts.left.map((v,i)=>v-contacts.right[i]),angle=Math.atan2(b[1],b[0])-Math.atan2(a[1],a[0]),scale=weaponBaseScale*size,co=Math.cos(angle)*scale,si=Math.sin(angle)*scale,tx=contacts.right[0]-co*primary[0]+si*primary[1],ty=contacts.right[1]-si*primary[0]-co*primary[1],map=p=>[co*p[0]-si*p[1]+tx,si*p[0]+co*p[1]+ty],actual=map(support);return{size,scale,angle,matrix:[co,si,-si,co,tx,ty],contacts,supportPoint:actual,supportError:Math.hypot(actual[0]-contacts.left[0],actual[1]-contacts.left[1]),primaryError:Math.hypot(...map(primary).map((v,i)=>v-contacts.right[i])),corners:[[0,0],[1774,0],[1774,887],[0,887]].map(map)}}
-e.options.background='transparent';
-return {engine:e,canvas:scene,width:1200,render(time,weapon=true){
- state.time=time;state.weapon=weapon?'0.9':'off';e.time=time;e.render();sceneCtx.setTransform(1,0,0,1,0,0);sceneCtx.clearRect(0,0,1200,1672);sceneCtx.drawImage(canvas,0,0);
- if(weapon){weaponInfo=weaponPlacement();sceneCtx.save();sceneCtx.setTransform(...weaponInfo.matrix);sceneCtx.drawImage(weaponImage,0,0);sceneCtx.restore();for(const side of ['right','left'])sceneCtx.drawImage(raster.draw(weaponForeground[side],trial.meshes.full[side],latest.vertices[side]),0,0)}
- return scene;
-},dispose(){e.destroy();raster.gl.getExtension('WEBGL_lose_context')?.loseContext()}};
+// Final approved painted arms, breast-side contours and male-size rifle (2026-11-03).
+// The two registered PNGs are copied byte-for-byte from the user's approved preview.
+// One breathing surface keeps the chest, both grips and rifle together. The previous
+// IK arm motion must not be applied to this newly authored, already posed artwork.
+const WIDTH = 1200, HEIGHT = 1672;
+export const approvedPose = Object.freeze({
+    cycleMs: 4000,
+    rifleScale: 0.428,
+    primaryHand: [442, 565],
+    supportHand: [742.1903106342786, 649.0776064477784],
+    rifleMatrix: [0.391005702400108, 0.1740647600480872,
+        -0.1740647600480872, 0.391005702400108,
+        323.7543862639869, 278.1131497747002],
+});
+const smooth = x => {x = Math.max(0, Math.min(1, x)); return x*x*(3-2*x)};
+export function breathAt(time) {
+    const phase = (time % approvedPose.cycleMs) / approvedPose.cycleMs * Math.PI * 2;
+    const value = Math.sin(phase + 0.08 * Math.sin(2 * phase));
+    return Math.abs(value) < 1e-10 ? 0 : value;
+}
+export function breathingPoint([x,y], breath) {
+    // Head and lower legs stay registered to the cosmetic/clothing coordinate frame.
+    // All visible rifle pixels and both hands lie inside the constant-motion region.
+    const weight = smooth((y-275)/65) * (1-smooth((y-760)/160));
+    return [x + 0.2*breath*weight, y - 1.6*breath*weight];
+}
+function load(name) {
+    return new Promise((resolve,reject) => {
+        const image = new Image();
+        image.onload = () => resolve(image);
+        image.onerror = () => reject(new Error(`Approved female pose unavailable: ${name}`));
+        image.src = new URL(`./female/Approved20261103/${name}`, import.meta.url).href;
+    });
+}
+class BreathingSurface {
+    constructor() {
+        this.canvas = document.createElement('canvas');
+        this.canvas.width = WIDTH; this.canvas.height = HEIGHT;
+        const gl = this.gl = this.canvas.getContext('webgl', {
+            alpha:true, premultipliedAlpha:true, antialias:false, preserveDrawingBuffer:true,
+        });
+        if (!gl) throw new Error('WebGL is required for the approved breathing surface');
+        const shader = (kind, source) => {
+            const s=gl.createShader(kind); gl.shaderSource(s,source); gl.compileShader(s);
+            if (!gl.getShaderParameter(s,gl.COMPILE_STATUS)) throw new Error(gl.getShaderInfoLog(s));
+            return s;
+        };
+        const program=gl.createProgram();
+        gl.attachShader(program,shader(gl.VERTEX_SHADER,`
+            attribute vec2 position; attribute vec2 uv; varying vec2 textureUV;
+            void main(){textureUV=uv;gl_Position=vec4(position.x/1200.0*2.0-1.0,
+                1.0-position.y/1672.0*2.0,0,1);}`));
+        gl.attachShader(program,shader(gl.FRAGMENT_SHADER,`
+            precision highp float; uniform sampler2D image; varying vec2 textureUV;
+            void main(){gl_FragColor=texture2D(image,textureUV);}`));
+        gl.linkProgram(program);
+        if (!gl.getProgramParameter(program,gl.LINK_STATUS)) throw new Error(gl.getProgramInfoLog(program));
+        gl.useProgram(program); gl.viewport(0,0,WIDTH,HEIGHT); gl.disable(gl.BLEND);
+        this.position=gl.getAttribLocation(program,'position');this.uv=gl.getAttribLocation(program,'uv');
+        this.buffer=gl.createBuffer();this.textures=new WeakMap();
+        this.rows=[0,275];
+        for(let y=283;y<920;y+=8)this.rows.push(y);
+        this.rows.push(340,760,920,HEIGHT);this.rows=[...new Set(this.rows)].sort((a,b)=>a-b);
+    }
+    texture(image) {
+        if(this.textures.has(image))return this.textures.get(image);
+        const gl=this.gl,t=gl.createTexture();gl.bindTexture(gl.TEXTURE_2D,t);
+        gl.pixelStorei(gl.UNPACK_PREMULTIPLY_ALPHA_WEBGL,true);
+        gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR);
+        gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.LINEAR);
+        gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,gl.CLAMP_TO_EDGE);
+        gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE);
+        gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,gl.RGBA,gl.UNSIGNED_BYTE,image);
+        this.textures.set(image,t);return t;
+    }
+    draw(image,breath) {
+        const vertices=[];
+        const vertex=(x,y)=>{const p=breathingPoint([x,y],breath);vertices.push(...p,x/WIDTH,y/HEIGHT)};
+        for(let i=0;i<this.rows.length-1;i++) {
+            const y=this.rows[i],next=this.rows[i+1];
+            vertex(0,y);vertex(WIDTH,y);vertex(WIDTH,next);
+            vertex(0,y);vertex(WIDTH,next);vertex(0,next);
+        }
+        const gl=this.gl;gl.clearColor(0,0,0,0);gl.clear(gl.COLOR_BUFFER_BIT);
+        gl.bindTexture(gl.TEXTURE_2D,this.texture(image));gl.bindBuffer(gl.ARRAY_BUFFER,this.buffer);
+        gl.bufferData(gl.ARRAY_BUFFER,new Float32Array(vertices),gl.DYNAMIC_DRAW);
+        gl.enableVertexAttribArray(this.position);gl.vertexAttribPointer(this.position,2,gl.FLOAT,false,16,0);
+        gl.enableVertexAttribArray(this.uv);gl.vertexAttribPointer(this.uv,2,gl.FLOAT,false,16,8);
+        gl.drawArrays(gl.TRIANGLES,0,vertices.length/4);return this.canvas;
+    }
+    dispose(){this.gl.getExtension('WEBGL_lose_context')?.loseContext()}
+}
+export async function createScene() {
+    const [bare,armed]=await Promise.all([load('arms-no-weapon.png'),load('arms-rifle.png')]);
+    for(const image of [bare,armed])if(image.width!==WIDTH||image.height!==HEIGHT)
+        throw new Error('Approved female pose registration must be 1200 × 1672');
+    const canvas=document.createElement('canvas');canvas.width=WIDTH;canvas.height=HEIGHT;
+    const ctx=canvas.getContext('2d'),surface=new BreathingSurface();
+    return {canvas,width:WIDTH,approvedPose,
+        render(time,weapon=true) {
+            const image=weapon?armed:bare,breath=breathAt(time);
+            ctx.setTransform(1,0,0,1,0,0);ctx.clearRect(0,0,WIDTH,HEIGHT);
+            // Rest frames go straight from the approved PNG, avoiding a resampling pass.
+            ctx.drawImage(breath===0?image:surface.draw(image,breath),0,0);return canvas;
+        },
+        dispose(){surface.dispose()},
+    };
 }

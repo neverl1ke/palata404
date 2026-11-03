@@ -1,0 +1,57 @@
+{
+  "approval": "User explicitly requested integration into Main after the shoulder tone / elbow speck preview.",
+  "source_preview_directory": "shoulder-tone-speck-fix-20261103",
+  "rifle_scale": 0.428,
+  "previous_female_rifle_scale": 0.4683894860570441,
+  "canvas": [
+    1200,
+    1672
+  ],
+  "base_coordinate_frame": [
+    941,
+    1672
+  ],
+  "exact_files": [
+    {
+      "path": "avatar-core/approved/female/Approved20261103/arms-no-weapon.png",
+      "sha256": "3ce06d67ccbfc533daf94f05f9bba33bb0cd31c95d19b11e1198efa92507e198"
+    },
+    {
+      "path": "avatar-core/approved/female/Approved20261103/arms-rifle.png",
+      "sha256": "25ed457b18e1b2aa97a1386ffb6e36c2e4b4d1de4af4f3356badbe7a85db4676"
+    },
+    {
+      "path": "avatar-core/approved/female-scene.mjs",
+      "sha256": "156f016e4b561af53b4162d99a7a27c33ac2ff6149f435c72db9c335d63a9cda"
+    },
+    {
+      "path": "avatar-core/approved/avatar.mjs",
+      "sha256": "94707fc856a0632dde68372e7f32e18348cb575bc8c404541cd6f4a8727d9d99"
+    },
+    {
+      "path": "avatar-core/game-preview.mjs",
+      "sha256": "da0c90807008df523a9ccea6eedadeb6d38d91cd3046a3a01a57d30fa53721d4"
+    },
+    {
+      "path": "index.html",
+      "sha256": "155667801118944a74a774ca6c29dfd6a3ab4f93a851de8a35c6bf6da4a05b57"
+    }
+  ],
+  "checks": {
+    "browser_avatar_integration": "4 tests passed",
+    "rig_and_game_logic": "105 tests passed",
+    "approved_renderer": "16 reference frames + 33 grip positions passed",
+    "visual_review": "Actual female game screenshot and breath phases at 0 / 1000 ms inspected",
+    "approval_scope": "User approved integration of latest arms and reduced same rifle into Main"
+  },
+  "source_asset_identity": [
+    {
+      "preview_name": "REVIEW_WITHOUT_WEAPON.png",
+      "same_bytes": true
+    },
+    {
+      "preview_name": "REVIEW_WITH_WEAPON.png",
+      "same_bytes": true
+    }
+  ]
+}

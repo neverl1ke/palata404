@@ -1,5 +1,5 @@
 /** Game adapter. Inventory and Paper Doll remain the only owners of saved state. */
-import { ApprovedAvatar as AvatarEngine } from './approved/avatar.mjs';
+import { ApprovedAvatar as AvatarEngine } from './approved/avatar.mjs?v=arms-approved-20261103';
 const instances = new Map();
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
 const absolute = path => new URL('../' + path, import.meta.url).href;
