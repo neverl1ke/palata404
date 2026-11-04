@@ -63,7 +63,9 @@ function hairReferenceMedian(source) {
                 canvas.width = image.naturalWidth; canvas.height = image.naturalHeight;
                 const context = canvas.getContext('2d',{willReadFrequently:true});
                 context.drawImage(image,0,0);
-                resolve(hairLuminanceMedian(context.getImageData(0,0,canvas.width,canvas.height).data));
+                const pixels=context.getImageData(0,0,canvas.width,canvas.height).data;
+                if (curlyCropNeedsScalpCleanup(source)) cleanCurlyCropScalp(pixels,canvas.width,canvas.height);
+                resolve(hairLuminanceMedian(pixels));
             } catch (error) { reject(error); }
         };
         image.onerror = () => reject(new Error('Не вдалося завантажити еталон відтінку волосся'));

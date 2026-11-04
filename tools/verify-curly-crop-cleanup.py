@@ -38,9 +38,10 @@ with sync_playwright() as playwright:
                 for(let i=0;i<raw.length;i+=4){let x=(i/4)%941,y=Math.floor(i/4/941);if(raw[i+3]!==clean[i+3]){removed++;if(x<415||x>535||y<88||y>102)outsideChanges++}else if(raw[i+3]===255&&raw.slice(i,i+3).some((v,c)=>v!==clean[i+c]))rgbChanges++}
                 const palette=[];
                 for(const color of HAIR_COLORS){let a=await pixels(await coloredHairSource(src,color.id)),alphaChanges=0;for(let i=3;i<a.length;i+=4)if(a[i]!==clean[i])alphaChanges++;palette.push({color:color.id,alphaChanges})}
-                return {removed,outsideChanges,rgbChanges,palette,foreheadSampleAlpha:clean[(98*941+446)*4+3],curlSampleAlpha:clean[(80*941+450)*4+3]};
+                return {removed,outsideChanges,rgbChanges,palette,referenceMedian:await hairReferenceMedian(src),cleanMedian:hairLuminanceMedian(clean),foreheadSampleAlpha:clean[(98*941+446)*4+3],curlSampleAlpha:clean[(80*941+450)*4+3]};
             }''')
             assert 100<evidence['removed']<1000,evidence
+            assert evidence['referenceMedian']==evidence['cleanMedian'],evidence
             assert evidence['outsideChanges']==0 and evidence['rgbChanges']==0,evidence
             assert evidence['foreheadSampleAlpha']==0,evidence
             assert evidence['curlSampleAlpha']>200,evidence

@@ -7,9 +7,9 @@
     "index.html": "91b0258910d46c59f14f51606c13250b6f513da881711c37cbcff5f2d51c1c72"
   },
   "runtime_after_sha256": {
-    "hair-color.js": "aa3e85aac2d53e412367d5fbdc0a46b3072dc71fc4b1f2da97e74b4f3619697c",
+    "hair-color.js": "ca61bee208ebbbbd64ddc8337ce4722f5fd0b3e2beabf78568ba9c2f726e51f5",
     "paper-doll.js": "cc12268faae147748829ca5eb0346d617650e638fa7d99c039618a7065d0e7dc",
-    "index.html": "d6714e7f50aeb6cd223e1c70f0dba6bec9877957f4cfd2d5ad94099dac82aaab"
+    "index.html": "2e7ed3ff52a10b7216869661ee4693a924f3ab9dff7bab868ad2db463537fc84"
   },
   "immutable_source": "assets/wardrobe/hair/male-six/curly-crop.png",
   "immutable_source_sha256": "ad212bad14958ba237cb767a388187e0f67e105e728976c27af5608153e99e82"

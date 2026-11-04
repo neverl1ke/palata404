@@ -104,6 +104,8 @@
       "alphaChanges": 0
     }
   ],
+  "referenceMedian": 46,
+  "cleanMedian": 46,
   "foreheadSampleAlpha": 0,
   "curlSampleAlpha": 253,
   "maleHeadsChecked": 16,
