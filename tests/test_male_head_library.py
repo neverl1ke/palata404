@@ -10,7 +10,7 @@ import numpy as np
 from PIL import Image,ImageChops
 
 from tests import test_game as support
-from tests.asset_history import approved_current_hash
+from tests.asset_history import approved_current_hash, accepted_catalog_snapshot
 
 ROOT=support.ROOT
 REPORT=ROOT/'review/male-heads-full-library'
@@ -71,6 +71,7 @@ class MaleLibraryAssetTests(unittest.TestCase):
         self.assertEqual(before['bodies']['female'],after['bodies']['female'])
         current={i['id']:i for i in after['items']}
         for item in before['items']:
+            if item['slot']=='weapon':item=accepted_catalog_snapshot([item])[0]
             now=current[item['id']]
             if item['slot']=='face':
                 # Male integration and later approved female normalization replace only resource URLs.
@@ -146,7 +147,7 @@ class MaleLibraryBrowserTests(unittest.TestCase):
         for face in faces:
             p.evaluate('f=>{equipPaperDollItem("face",f);equipPaperDollItem("hair","hair-messy");setPaperDollView("patient");equipPaperDollItem("upperBody","patient-tunic")}',face)
             p.wait_for_function('()=>[...document.querySelectorAll("#wardrobe-paperdoll img:not(.hidden)")].every(i=>i.complete&&i.naturalWidth>0)')
-            self.assertEqual(p.evaluate('selectedPaperDollItem("face").genderVariants.male'),p.locator('#wardrobe-layer-face').get_attribute('src'))
+            self.assertEqual(p.evaluate('paperDollRenderedFace("male").genderVariants.male'),p.locator('#wardrobe-layer-face').get_attribute('src'))
         p.evaluate('setGender("female");selectWardrobeSlot("face")')
         for face in ['face-male-goth-pierced','face-male-freckled','face-male-blue-eyes']:
             self.assertEqual(p.locator(f'[data-wardrobe-card="{face}"]').count(),0)

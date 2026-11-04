@@ -13,10 +13,10 @@ export const approvedPose = Object.freeze({
         323.7543862639869, 278.1131497747002],
 });
 const smooth = x => {x = Math.max(0, Math.min(1, x)); return x*x*(3-2*x)};
-export function breathAt(time) {
-    const phase = (time % approvedPose.cycleMs) / approvedPose.cycleMs * Math.PI * 2;
+export function breathAt(time, {amplitude=1,cycleMs=approvedPose.cycleMs}={}) {
+    const phase = (time % cycleMs) / cycleMs * Math.PI * 2;
     const value = Math.sin(phase + 0.08 * Math.sin(2 * phase));
-    return Math.abs(value) < 1e-10 ? 0 : value;
+    return Math.abs(value) < 1e-10 ? 0 : value * amplitude;
 }
 export function breathingPoint([x,y], breath) {
     // Head and lower legs stay registered to the cosmetic/clothing coordinate frame.
@@ -97,8 +97,8 @@ export async function createScene() {
     const canvas=document.createElement('canvas');canvas.width=WIDTH;canvas.height=HEIGHT;
     const ctx=canvas.getContext('2d'),surface=new BreathingSurface();
     return {canvas,width:WIDTH,approvedPose,
-        render(time,weapon=true) {
-            const image=weapon?armed:bare,breath=breathAt(time);
+        render(time,weapon=true,motion={}) {
+            const image=weapon?armed:bare,breath=breathAt(time,motion);
             ctx.setTransform(1,0,0,1,0,0);ctx.clearRect(0,0,WIDTH,HEIGHT);
             // Rest frames go straight from the approved PNG, avoiding a resampling pass.
             ctx.drawImage(breath===0?image:surface.draw(image,breath),0,0);return canvas;

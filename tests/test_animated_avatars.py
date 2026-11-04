@@ -2,6 +2,7 @@
 import hashlib,json,unittest
 from pathlib import Path
 from tests import test_game as support
+from tests.asset_history import approved_current_hash
 ROOT=Path(__file__).resolve().parents[1]
 class AnimatedAvatarTests(unittest.TestCase):
     @classmethod
@@ -17,7 +18,7 @@ class AnimatedAvatarTests(unittest.TestCase):
         manifest=json.loads((ROOT/'review/approved-avatar-packages-20261102/integration-manifest.json').read_text())
         revision=json.loads((ROOT/'review/female-arms-approved-20261103/integration-manifest.json').read_text())
         for entry in manifest['exact_files']+revision['exact_files']:
-            self.assertEqual(hashlib.sha256((ROOT/entry['path']).read_bytes()).hexdigest(),entry['sha256'])
+            self.assertEqual(hashlib.sha256((ROOT/entry['path']).read_bytes()).hexdigest(),approved_current_hash(entry['path'],entry['sha256']))
         for gender in ['male','female']:
             rig=json.loads((ROOT/f'avatar-core/approved/{gender}/resources.json').read_text())['json'][f'rigs/{gender}_rig.json']
             self.assertEqual(hashlib.sha256((ROOT/f'base_{gender}.png').read_bytes()).hexdigest(),rig['source_sha256'])
@@ -59,6 +60,8 @@ class AnimatedAvatarTests(unittest.TestCase):
             self.page.evaluate('g=>setGender(g)',gender)
             for weapon,pose in [(None,'idle'),('gear-aks','rifle')]:
                 self.page.evaluate('w=>equipPaperDollItem("weapon",w)',weapon);self.ready(pose)
+                # Probe the unchanged approved body without the independently normalized native head.
+                self.page.evaluate("async()=>{const e=avatarCoreGamePreview.instances.get(document.getElementById('wardrobe-paperdoll')).engine;e.setOptions({amplitude:1,cycleMs:4000});await e.setAppearance({layers:[],crown:null,bodyMask:null})}")
                 actual=self.page.evaluate("""()=>{const e=avatarCoreGamePreview.instances.get(document.getElementById('wardrobe-paperdoll')).engine;e.pause();e.time=0;e.render();return e.canvas.toDataURL().split(',')[1]}""")
                 import base64
                 image=Image.open(io.BytesIO(base64.b64decode(actual))).convert('RGBA')
@@ -74,9 +77,53 @@ class AnimatedAvatarTests(unittest.TestCase):
                 self.page.set_viewport_size({'width':390,'height':844})
                 self.assertTrue(self.page.evaluate("""()=>{const c=document.querySelector('#wardrobe-paperdoll canvas').getBoundingClientRect(),s=document.querySelector('.wardrobe-stage').getBoundingClientRect();return c.left>=s.left-2&&c.right<=s.right+2}"""))
                 self.page.locator('.wardrobe-stage').screenshot(path=str(current_review/f'{gender}-game-{"rifle" if weapon else "no-weapon"}.png'))
+    def test_native_female_head_and_hair_match_static_registered_preview(self):
+        import base64,io
+        import numpy as np
+        from PIL import Image
+        self.load();self.page.evaluate('openCustomization();setGender("female");setPaperDollView("combat");equipPaperDollItem("upperBody",null);equipPaperDollItem("face",null);equipPaperDollItem("hair","hair-none");equipPaperDollItem("weapon",null)');self.ready('idle')
+        raw=self.page.evaluate("""()=>{const e=avatarCoreGamePreview.instances.get(document.getElementById('wardrobe-paperdoll')).engine;e.pause();e.time=0;e.render();return e.canvas.toDataURL().split(',')[1]}""")
+        frame=Image.open(io.BytesIO(base64.b64decode(raw))).convert('RGBA');bg=Image.new('RGBA',frame.size,'#f7f4eb');bg.alpha_composite(frame)
+        self.page.evaluate("""()=>{const h=document.createElement('div');h.id='native-female-sync';Object.assign(h.style,{position:'fixed',left:0,top:0,width:'941px',height:'1672px',background:'#f7f4eb',zIndex:2147483647});document.body.append(h);renderPaperDollAt(h,'native-sync-')}""")
+        self.page.wait_for_function("()=>[...document.querySelectorAll('#native-female-sync img[src]')].every(i=>i.complete&&i.naturalWidth>0&&!i.classList.contains('hidden'))")
+        static=Image.open(io.BytesIO(self.page.screenshot(clip={'x':350,'y':0,'width':241,'height':260}))).convert('RGB');actual=bg.crop((350,0,591,260)).convert('RGB')
+        error=np.abs(np.array(actual).astype(float)-np.array(static));self.assertLess(error.mean(),.5);self.assertLessEqual(error.max(),2)
+        self.assertIsNone(self.page.evaluate('paperDollState.appearance.face'));self.page.locator('#native-female-sync').evaluate('e=>e.remove()')
+        self.page.evaluate('equipPaperDollItem("hair","hair-textured-short");setHairColor("blue")');self.ready('idle')
+        self.assertTrue(self.page.evaluate("""async()=>{const part=paperDollItemLayers(selectedPaperDollItem('hair'),'female').find(p=>p.id==='front')||selectedPaperDollItem('hair');const fit=femaleHairFitFor('female',null,selectedPaperDollItem('hair').id,part.placementByGender.female);const expected=await fittedFemaleHairSource(part.genderVariants.female,'blue',part.colorReference,fit);const e=avatarCoreGamePreview.instances.get(document.getElementById('wardrobe-paperdoll')).engine;return e.appearance.layers.some(l=>l.slot==='hair'&&l.source===expected)}"""))
+
     def test_stash_art_and_rapid_changes(self):
         self.load();self.page.evaluate('openInventory()')
         self.page.wait_for_function('''()=>[...document.querySelectorAll('#stash-items .weapon-icon-frame img')].length===2&&[...document.querySelectorAll('#stash-items .weapon-icon-frame img')].every(i=>i.complete&&i.naturalWidth>0)''')
         self.page.evaluate('openCustomization();setPaperDollView("combat");equipPaperDollItem("upperBody",null);for(let i=0;i<8;i++){setGender(i%2?"male":"female");equipPaperDollItem("weapon",i%2?"gear-knife":"gear-aks")}setGender("female");equipPaperDollItem("weapon","gear-aks")');self.ready('rifle')
         self.assertTrue(self.page.evaluate('''()=>[...avatarCoreGamePreview.instances.values()].every(s=>s.engine.gender==='female'&&s.host.querySelectorAll('canvas').length===1)'''))
         self.page.evaluate('equipPaperDollItem("weapon",null)');self.ready('idle')
+
+    def test_stronger_faster_breathing_for_both_genders(self):
+        self.load();self.page.evaluate('openCustomization();setPaperDollView("combat");equipPaperDollItem("upperBody",null)')
+        for gender in ['male','female']:
+            self.page.evaluate('g=>setGender(g)',gender)
+            for weapon,pose in [(None,'idle'),('gear-aks','rifle')]:
+                self.page.evaluate('w=>equipPaperDollItem("weapon",w)',weapon);self.ready(pose)
+                result=self.page.evaluate("""async()=>{
+                    const e=avatarCoreGamePreview.instances.get(document.getElementById('wardrobe-paperdoll')).engine;
+                    e.pause(); const defaults={amplitude:e.options.amplitude,cycleMs:e.options.cycleMs};
+                    const frame=(time,opts)=>{e.setOptions(opts);e.time=time;e.render();return new Uint8ClampedArray(e.canvas.getContext('2d').getImageData(0,0,e.width,1672).data)};
+                    const rest=frame(0,defaults),peak=frame(900,defaults),closed=frame(3600,defaults);
+                    const samePhase=frame(1000,{amplitude:1.25,cycleMs:4000}),oldPeak=frame(1000,{amplitude:1,cycleMs:4000});
+                    const error=(a,b)=>a.reduce((n,v,i)=>n+Math.abs(v-b[i]),0)/a.length;
+                    const female=await import('./avatar-core/approved/female-scene.mjs?v=breathing-20261104');
+                    const amplitudeRatio=female.breathAt(900,defaults)/female.breathAt(1000);
+                    e.setOptions(defaults);
+                    return {defaults,moving:error(rest,peak),closure:error(rest,closed),samePhase:error(peak,samePhase),stronger:error(peak,oldPeak),amplitudeRatio};
+                }""")
+                self.assertEqual(result['defaults'],{'amplitude':1.25,'cycleMs':3600})
+                self.assertGreater(result['moving'],0);self.assertGreater(result['stronger'],0)
+                self.assertLess(result['closure'],.01);self.assertLess(result['samePhase'],.01)
+                self.assertAlmostEqual(result['amplitudeRatio'],1.25)
+            self.page.evaluate('setPaperDollView("patient")')
+            self.page.wait_for_function('document.getElementById("wardrobe-paperdoll").classList.contains("avatar-clothed-breathing")')
+            self.assertEqual(self.page.locator('#wardrobe-paperdoll').evaluate('(e)=>getComputedStyle(e).animationDuration'),'3.6s')
+            self.page.evaluate('setPaperDollView("combat");equipPaperDollItem("upperBody",null)')
+        self.page.emulate_media(reduced_motion='reduce')
+        self.page.wait_for_function('avatarCoreGamePreview.instances.get(document.getElementById("wardrobe-paperdoll")).engine.paused')

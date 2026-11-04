@@ -48,11 +48,20 @@ def approved_current_hash(relative, old_hash):
     """No broad exemption: only the explicit user-approved replacement list."""
     if hashlib.sha256((ROOT/relative).read_bytes()).hexdigest()==old_hash:
         return old_hash
+    latest=ROOT/'review/male-head-hair-20261104/runtime-receipt.json'
+    if latest.exists():
+        receipt=json.loads(latest.read_text())
+        baseline=receipt.get('unchanged_baseline_runtime',{}).get(relative)
+        if baseline and old_hash in baseline['historical_hashes']:
+            assert hashlib.sha256((ROOT/baseline['archived_baseline']).read_bytes()).hexdigest()==baseline['sha256']
+            return baseline['sha256']
+        if receipt['runtime_before_sha256'].get(relative)==old_hash or old_hash in receipt.get('superseded_runtime_sha256',{}).get(relative,[]):
+            return receipt['runtime_after_sha256'][relative]
     appearance=ROOT/'review/appearance-catalog-20261102/manifest.json'
     if appearance.exists():
         accepted=json.loads(appearance.read_text())
         if accepted['runtime_before_sha256'].get(relative)==old_hash:
-            return accepted['runtime_after_sha256'][relative]
+            return approved_current_hash(relative,accepted['runtime_after_sha256'][relative])
     male=ROOT/'review/male-heads-full-library/integration-manifest.json'
     if male.exists():
         data=json.loads(male.read_text())
@@ -97,6 +106,11 @@ def accepted_catalog_snapshot(items):
         item=json.loads(json.dumps(item))
         if item['id'] in heads:
             h=heads[item['id']];item['genderVariants']['female']=h['path']+'?v='+h['sha256'][:8]
+        latest=ROOT/'review/male-head-hair-20261104/runtime-receipt.json'
+        if latest.exists():
+            changes=json.loads(latest.read_text()).get('catalog_changes',{})
+            item.update(json.loads(latest.read_text()).get('preexisting_weapon_presentation',{}).get(item['id'],{}))
+            item.update(changes.get(item['id'],{}))
         result.append(item)
     return result
 

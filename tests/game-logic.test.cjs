@@ -98,6 +98,8 @@ function game(saves = {}, deniedStorage = false, failWrites = [], telegramId = n
     vm.runInContext(fs.readFileSync(path.join(root, 'hair-color.js'), 'utf8'), context, { filename: 'hair-color.js' });
     vm.runInContext(fs.readFileSync(path.join(root, 'female-hair-fit-data.js'), 'utf8'), context, { filename: 'female-hair-fit-data.js' });
     vm.runInContext(fs.readFileSync(path.join(root, 'female-hair-fit.js'), 'utf8'), context, { filename: 'female-hair-fit.js' });
+    vm.runInContext(fs.readFileSync(path.join(root, 'male-hair-fit-data.js'), 'utf8'), context, { filename: 'male-hair-fit-data.js' });
+    vm.runInContext(fs.readFileSync(path.join(root, 'male-hair-fit.js'), 'utf8'), context, { filename: 'male-hair-fit.js' });
     // This VM tests state/DOM commands; real pixel fitting is checked in test_appearance_catalog.py.
     vm.runInContext('fittedFemaleHairSource = source => ({ then(resolve) { resolve(source); return { catch() {} }; } });', context);
     vm.runInContext(fs.readFileSync(path.join(root, 'paper-doll.js'), 'utf8'), context, { filename: 'paper-doll.js' });
@@ -1153,15 +1155,15 @@ test('approved hair remains shared appearance with eight choices, gender-fitted 
         for(const gender of ['male','female']) {
             g.run(`setGender('${gender}');setPaperDollView('combat');`);
             assert.equal(g.run('paperDollState.appearance.hair'),id);
-            const source=g.run('selectedPaperDollItem("hair").genderVariants[paperDollState.selectedGender]');
+            const source=g.run('(paperDollItemLayers(selectedPaperDollItem("hair"),paperDollState.selectedGender).find(p=>p.id==="front")||selectedPaperDollItem("hair")).genderVariants[paperDollState.selectedGender]');
             if (['hair-classic-short','hair-textured-short'].includes(id)) {
                 assert.match(source,/\/hair\/classic_short_unisex_style_[AB]\.png/);
                 assert.equal(g.run('selectedPaperDollItem("hair").genderVariants.male===selectedPaperDollItem("hair").genderVariants.female'),true);
                 assert.notEqual(g.run('JSON.stringify(selectedPaperDollItem("hair").placementByGender.male)'),g.run('JSON.stringify(selectedPaperDollItem("hair").placementByGender.female)'));
-            } else assert.match(source,new RegExp(`/hair/${gender}_`));
+            } else assert.match(source,new RegExp(gender==='male'?'/hair/(male_|male-reviewed/)':'/hair/female_'));
             for(const prefix of ['', 'wardrobe-']) {
                 assert.equal(g.elements.get(prefix+'layer-hair').getAttribute('src'),source);
-                assert.equal(g.elements.get(prefix+'layer-hair').style.objectFit,id==='hair-messy'&&gender==='male'?'fill':'');
+                assert.equal(g.elements.get(prefix+'layer-hair').style.objectFit,'');
             }
             g.run('setPaperDollView("patient")');
             assert.equal(g.run('paperDollState.appearance.hair'),id);
@@ -1342,8 +1344,8 @@ test('crown clipping covers affected heads and clears on unaffected hairstyles',
         g.run(`setGender('${gender}');equipPaperDollItem('face',${JSON.stringify(face)});equipPaperDollItem('hair','${hair}')`);
         for(const prefix of ['','wardrobe-']) for(const slot of ['body','face']) {
             const clip=g.elements.get(prefix+'layer-'+slot).style.clipPath;
-            assert.equal(Boolean(clip),active);
-            if(active) assert.match(clip,/^polygon\(/);
+            assert.equal(Boolean(clip),gender==='male'?false:active);
+            if(active&&gender!=='male') assert.match(clip,/^polygon\(/);
         }
     }
     assert.equal(g.run('JSON.stringify(PAPER_DOLL_ITEMS.filter(i=>i.slot==="hair").map(i=>i.placementByGender))'),geometry);
@@ -1361,7 +1363,7 @@ test('young face variants persist without changing approved hair, outfits or old
             assert.equal(face.style.zIndex,'1');
             assert.ok(body.style.maskImage.includes(gender+'_young_body.png'));
             assert.match(body.style.maskImage,/^url\(/);
-            assert.match(face.style.clipPath,/^polygon/);
+            if(gender==='female')assert.match(face.style.clipPath,/^polygon/);else assert.equal(face.style.clipPath,'');
         }
         const restored=game(Object.fromEntries(g.storage));
         assert.equal(restored.run('paperDollState.appearance.face'),'face-young');
@@ -1403,7 +1405,7 @@ test('the paired face and female bob use real files and persist without altering
     for(const gender of ['male','female']) {
         g.run(`setGender('${gender}');equipPaperDollItem('face','face-alternative');equipPaperDollItem('hair','${gender==='female'?'hair-bob-bangs':'hair-shoulder-length'}');`);
         for(const slot of ['face','hair']) {
-            const source=g.run(`selectedPaperDollItem('${slot}').genderVariants['${gender}']`);
+            const source=g.run(slot==='hair'?`(paperDollItemLayers(selectedPaperDollItem('hair'),'${gender}').find(p=>p.id==='front')||selectedPaperDollItem('hair')).genderVariants['${gender}']`:`selectedPaperDollItem('${slot}').genderVariants['${gender}']`);
             assert.ok(fs.existsSync(path.join(root,source.split('?')[0])),source);
             if(slot==='face')assert.match(source,new RegExp('/'+gender+'_alternative_head\\.png'));
             for(const prefix of ['', 'wardrobe-']) {
@@ -1440,17 +1442,21 @@ test('female bangs are hidden and rejected for men and old male saves migrate sa
 });
 
 
-test('male shoulder rear is local, shares pigment reference and disappears on switch', () => {
+test('male reviewed own-head edge is untinted and disappears on switch', () => {
     const g=game();g.run('setGender("male");equipPaperDollItem("face","face-alternative");equipPaperDollItem("hair","hair-shoulder-length")');
     for(const prefix of ['', 'wardrobe-']) {
-        const rear=g.elements.get(prefix+'layer-hair-rear');assert.ok(rear);assert.equal(rear.style.zIndex,'-1');
-        assert.equal(rear.style.width,'100%');assert.equal(rear.style.top,'0%');
-        assert.equal(g.elements.get(prefix+'layer-hair').style.zIndex,'9');
-        assert.ok(rear.paperHairColorReference.includes('male_medium_shoulder_length.png'));
+        const edge=g.elements.get(prefix+'layer-hair-skin-edge');assert.ok(edge);
+        assert.equal(edge.style.zIndex,'2');assert.equal(edge.style.width,'100%');
+        assert.equal(edge.style.top,'0%');assert.equal(edge.paperHairRequest.endsWith('|original'),true);
+        assert.ok(g.elements.get(prefix+'layer-hair').getAttribute('src').includes('/male-reviewed/M06-H06.png'));
     }
-    g.run('setGender("female")');assert.equal(g.elements.has('layer-hair-rear'),false);assert.ok(g.elements.get('layer-hair').getAttribute('src').includes('female_medium'));
+    g.run('equipPaperDollItem("face","face-young")');
+    assert.ok(g.elements.get('layer-hair').getAttribute('src').includes('/male-reviewed/M03-H06.png'));
+    g.run('setGender("female")');assert.equal(g.elements.has('layer-hair-skin-edge'),false);
+    assert.ok(g.elements.get('layer-hair').getAttribute('src').includes('female_medium'));
     g.run('setGender("male");equipPaperDollItem("hair","hair-shoulder-length");equipPaperDollItem("hair","hair-messy")');
-    assert.equal(g.elements.has('layer-hair-rear'),false);assert.ok(g.elements.get('layer-hair').getAttribute('src').includes('male_messy'));
+    assert.equal(g.elements.has('layer-hair-skin-edge'),false);
+    assert.ok(g.elements.get('layer-hair').getAttribute('src').includes('/male-reviewed/hair01.png'));
 });
 
 test('crown smoothing is monotone in x and remains local above y=90', () => {
@@ -1504,7 +1510,7 @@ test('repeated multipart hair renders preserve the current front request and sou
     g.run('renderPaperDoll();renderPaperDoll();updateUI()');
     assert.equal(removals,0);
     assert.equal(hair.paperHairRequest,request);
-    assert.ok(hair.getAttribute('src').includes('male_medium_shoulder_length'));
+    assert.ok(hair.getAttribute('src').includes('/male-reviewed/M01-H06.png'));
 });
 
 test('an evicted reference image failure cannot delete a newer retry promise', async () => {
@@ -1517,8 +1523,8 @@ test('an evicted reference image failure cannot delete a newer retry promise', a
     assert.equal(g.run('hairReferenceMedians.get("retry.png")'),retry);
 });
 
-test('unchanged crown contours are reused without recomputation or a visual change', () => {
-    const g=game();g.run('setGender("male");equipPaperDollItem("face","face-alternative");equipPaperDollItem("hair","hair-messy")');
+test('unchanged female crown contours are reused without recomputation or a visual change', () => {
+    const g=game();g.run('setGender("female");equipPaperDollItem("face","face-alternative");equipPaperDollItem("hair","hair-bob")');
     const clip=g.elements.get('wardrobe-layer-face').style.clipPath;
     g.run('globalThis.crownCalls=0;globalThis.originalCrown=smoothPaperDollCrown;smoothPaperDollCrown=(...args)=>{crownCalls++;return originalCrown(...args)};renderPaperDoll();updateUI()');
     assert.equal(g.run('crownCalls'),0);
@@ -1636,3 +1642,24 @@ for (const key of ['pixie','jaw-bob','braided-updo']) {
         assert.equal(g.run('PAPER_DOLL_ITEMS.filter(i=>i.id.startsWith("hair-f5-")).length'),2);
     });
 }
+
+test('approved male review follows all16 face IDs and replays the saved registrations', () => {
+    const g=game();
+    const protectedState=g.run('JSON.stringify({stats,inventory,equippedGear})');
+    const faces=JSON.parse(g.run('JSON.stringify(Object.keys(MALE_HAIR_REVIEW.heads))'));
+    assert.equal(faces.length,16);
+    for(const face of faces) {
+        g.run(`setGender('male');equipPaperDollItem('face',${JSON.stringify(face==='@native'?null:face)})`);
+        const code=g.run(`MALE_HAIR_REVIEW.heads[${JSON.stringify(face)}].code`);
+        for(const [id,n] of [['hair-shoulder-length','06'],['hair-m6-mullet','09'],['hair-m6-asymmetric-fringe','12']]) {
+            g.run(`equipPaperDollItem('hair','${id}')`);
+            for(const p of ['','wardrobe-'])assert.ok(g.elements.get(p+'layer-hair').getAttribute('src').includes(`${code}-H${n}.png`));
+        }
+    }
+    g.run('equipPaperDollItem("face","face-young");equipPaperDollItem("hair","hair-bob")');
+    assert.equal(g.run('paperDollItemLayers(selectedPaperDollItem("hair"),"male")[0].placementByGender.male.y'),g.run('selectedPaperDollItem("hair").placementByGender.male.y')-6);
+    g.run('equipPaperDollItem("face","face-exhausted");equipPaperDollItem("hair","hair-double-buns")');
+    assert.equal(g.run('paperDollItemLayers(selectedPaperDollItem("hair"),"male")[0].placementByGender.male.y'),-3.5);
+    assert.equal(g.run('paperDollItemLayers(selectedPaperDollItem("hair"),"male")[0].placementByGender.male.x'),320.05);
+    assert.equal(g.run('JSON.stringify({stats,inventory,equippedGear})'),protectedState);
+});

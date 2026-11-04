@@ -37,6 +37,8 @@ class AuditAssetTests(unittest.TestCase):
   immutable=json.loads((ROOT/'review/appearance-catalog-20261102/manifest.json').read_text())['unchanged_bodies']
   approved_rears={e['path']:e['sha256'] for e in json.loads((ROOT/'review/male-temple-gaps-approved-20261102/integration.json').read_text())['runtime_files']}
   for rel in audit.resources():
+   # Inventory thumbnails are illustrations, not registered anatomical overlays.
+   if rel.startswith('avatar-core/assets/weapons/') and 'thumb' in Path(rel).name:continue
    if rel in immutable:
     # Supplied bodies are immutable originals, not newly cleaned overlay derivatives.
     self.assertEqual(digest((ROOT/rel).read_bytes()),immutable[rel]);continue
@@ -110,7 +112,9 @@ class AuditBrowserTests(unittest.TestCase):
        self.assertEqual(self.p.locator('#wardrobe-layer-body').evaluate('i=>+getComputedStyle(i).zIndex'),0)
        if face:self.assertEqual(self.p.locator('#wardrobe-layer-face').evaluate('i=>+getComputedStyle(i).zIndex'),1)
        if hair!='hair-none':self.assertEqual(self.p.locator('#wardrobe-layer-hair').evaluate('i=>+getComputedStyle(i).zIndex'),9)
-       rear=self.p.locator('#wardrobe-layer-hair-rear');self.assertEqual(rear.count(),1 if gender=='male' and hair in ['hair-shoulder-length','hair-m6-mullet','hair-m6-curly-crop','hair-m6-asymmetric-fringe'] else 0)
+       rear=self.p.locator('#wardrobe-layer-hair-rear');self.assertEqual(rear.count(),1 if gender=='male' and hair=='hair-m6-curly-crop' else 0)
+       if gender=='male' and hair in ['hair-shoulder-length','hair-m6-mullet','hair-m6-asymmetric-fringe']:
+        self.assertEqual(self.p.locator('#wardrobe-layer-hair-skin-edge').evaluate('i=>+getComputedStyle(i).zIndex'),2)
        if rear.count():self.assertEqual(rear.evaluate('i=>+getComputedStyle(i).zIndex'),-1)
   self.assertEqual(count,6*(13+11));self.assertEqual(self.p.evaluate('JSON.stringify({stats,inventory,equippedGear})'),before)
   self.p.reload(wait_until='networkidle');self.assertEqual(self.p.evaluate('paperDollState.appearance.face'),'face-alternative');self.assertEqual(self.p.evaluate('paperDollState.appearance.hair'),'hair-shoulder-length');self.assertEqual(self.p.evaluate('paperDollState.appearance.hairColor'),'white')

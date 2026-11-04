@@ -52,6 +52,8 @@ class AppearanceCatalogTests(unittest.TestCase):
         for relative,digest in record['protected'].items():
             if relative not in ['paper-doll-data.js','index.html','assets/wardrobe/hair/male-six/mullet-rear.png']:
                 self.assertEqual(hashlib.sha256((ROOT/relative).read_bytes()).hexdigest(),digest)
+        # Immutable20261102 temple-art contract; current own-head exports have their own tests.
+        self.context.route('**/male-hair-fit.js?*', lambda route: route.fulfill(content_type='application/javascript', body='function maleHairReviewFor(){return null} function maleReviewedHead(face){return face} function maleReviewedHairParts(item,gender,face,parts){return parts}'))
         self.load();self.page.set_viewport_size({'width':1200,'height':900})
         self.page.evaluate('openCustomization();setGender("male");setPaperDollView("combat");equipPaperDollItem("face","face-male-new-neutral");equipPaperDollItem("upperBody",null);setHairColor("original")')
         for column,hair in [(1,'hair-m6-mullet'),(3,'hair-m6-curly-crop')]:
@@ -120,9 +122,12 @@ class AppearanceCatalogTests(unittest.TestCase):
             for hair in hairs:
                 self.page.evaluate('([f,h])=>{equipPaperDollItem("face",f);equipPaperDollItem("hair",h);setHairColor("original")}',[face,hair['id']]);self.wait_hair()
                 self.assertEqual(self.page.locator('#layer-hair').evaluate('i=>i.paperHairFitKey'),'')
-                if hair['rear']:
-                    self.page.wait_for_function('()=>["layer-hair-rear","wardrobe-layer-hair-rear"].every(id=>{const i=document.getElementById(id);return i&&i.complete&&i.naturalWidth===941})')
-                    for prefix in ['', 'wardrobe-']:self.assertEqual(self.page.locator('#'+prefix+'layer-hair-rear').evaluate('i=>getComputedStyle(i).zIndex'),'-1')
+                extras=self.page.evaluate("paperDollItemLayers(selectedPaperDollItem('hair'),'male').filter(p=>['rear','skin-edge'].includes(p.id)).map(p=>({id:p.id,order:p.renderOrder}))")
+                for part in extras:
+                    for prefix in ['', 'wardrobe-']:
+                        image_id=prefix+'layer-hair-'+part['id']
+                        self.page.wait_for_function("id=>{const i=document.getElementById(id);return i&&i.complete&&i.naturalWidth===941}",arg=image_id)
+                        self.assertEqual(self.page.locator('#'+image_id).evaluate('i=>getComputedStyle(i).zIndex'),str(part['order']))
         self.page.evaluate('setGender("female");equipPaperDollItem("face","face-goth-black-lips");equipPaperDollItem("hair","hair-textured-short");setHairColor("black");equipPaperDollItem("face","face-goth-septum");setHairColor("white");setGender("male");equipPaperDollItem("hair","hair-m6-asymmetric-fringe");setGender("female");equipPaperDollItem("face","face-female-new-almond-eyes");equipPaperDollItem("hair","hair-textured-short");setHairColor("ginger")');self.wait_hair()
         self.assertEqual(self.page.locator('#layer-hair').evaluate('i=>i.paperHairFitKey'),'F17/hair-textured-short')
         self.assertEqual(self.page.locator('[data-paper-extra]').count(),0)

@@ -15,11 +15,11 @@ function crownPath(ctx,points) {
 export class ApprovedAvatar {
     static async create(output,{gender}) {const avatar=new ApprovedAvatar(output);await avatar.setGender(gender);return avatar}
     constructor(output) {
-        this.canvas=output;this.time=0;this.paused=true;this.pose='idle';this.appearance={layers:[]};this.options={breathing:true,transitionMs:0};this.body=canvas();
+        this.canvas=output;this.time=0;this.paused=true;this.pose='idle';this.appearance={layers:[]};this.options={breathing:true,transitionMs:0,amplitude:1.25,cycleMs:3600};this.body=canvas();
     }
     async setGender(gender) {
         this.scene?.dispose();
-        const module=await import(`./${gender}-scene.mjs?v=arms-approved-20261103`);
+        const module=await import(`./${gender}-scene.mjs?v=breathing-20261104`);
         this.scene=await module.createScene(canvas());this.gender=gender;this.width=this.scene.width;
         this.canvas.width=this.width;this.canvas.height=1672;this.canvas.style.width=`${this.width/941*100}%`;
         this.body.width=this.width;this.appearance={layers:[]};this.mask=null;this.pose='idle';this.render();
@@ -41,7 +41,7 @@ export class ApprovedAvatar {
     setOptions(options) {Object.assign(this.options,options);this.render()}
     render() {
         if(!this.scene)return;
-        const native=this.scene.render(this.options.breathing?this.time:0,this.pose==='rifle');
+        const native=this.scene.render(this.options.breathing?this.time:0,this.pose==='rifle',this.options);
         const body=this.body.getContext('2d');body.setTransform(1,0,0,1,0,0);body.globalCompositeOperation='source-over';body.clearRect(0,0,this.width,1672);body.drawImage(native,0,0);
         if(this.mask){body.globalCompositeOperation='destination-in';body.drawImage(this.mask,0,0);body.globalCompositeOperation='source-over'}
         const ctx=this.canvas.getContext('2d');ctx.setTransform(1,0,0,1,0,0);ctx.clearRect(0,0,this.width,1672);
@@ -61,7 +61,7 @@ export class ApprovedAvatar {
             if(this.paused)return;
             if(this.lastTime!=null)this.time+=now-this.lastTime;
             this.lastTime=now;
-            // Keep the approved 4000ms timing while limiting work in the game UI.
+            // Limit rendering work without changing the breathing cycle.
             if(this.lastDraw==null||now-this.lastDraw>=1000/30){this.lastDraw=now;this.render()}
             this.raf=requestAnimationFrame(tick);
         };

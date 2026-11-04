@@ -1,0 +1,353 @@
+{
+  "actual_game_renderer": true,
+  "native_frame": [
+    941,
+    1672
+  ],
+  "comparisons": [
+    {
+      "head": "M01",
+      "hair": "hair-shoulder-length",
+      "mean_abs_error": 0.0066274970622796706,
+      "max_error": 5,
+      "central_face_error": 0
+    },
+    {
+      "head": "M01",
+      "hair": "hair-m6-mullet",
+      "mean_abs_error": 0.07617182399791095,
+      "max_error": 7,
+      "central_face_error": 0
+    },
+    {
+      "head": "M01",
+      "hair": "hair-m6-asymmetric-fringe",
+      "mean_abs_error": 0.032150411280846065,
+      "max_error": 2,
+      "central_face_error": 1
+    },
+    {
+      "head": "M02",
+      "hair": "hair-shoulder-length",
+      "mean_abs_error": 0.019284501893197546,
+      "max_error": 5,
+      "central_face_error": 0
+    },
+    {
+      "head": "M02",
+      "hair": "hair-m6-mullet",
+      "mean_abs_error": 0.07499412455934196,
+      "max_error": 7,
+      "central_face_error": 0
+    },
+    {
+      "head": "M02",
+      "hair": "hair-m6-asymmetric-fringe",
+      "mean_abs_error": 0.018477608042825434,
+      "max_error": 2,
+      "central_face_error": 0
+    },
+    {
+      "head": "M03",
+      "hair": "hair-shoulder-length",
+      "mean_abs_error": 0.0060347303825564694,
+      "max_error": 5,
+      "central_face_error": 0
+    },
+    {
+      "head": "M03",
+      "hair": "hair-m6-mullet",
+      "mean_abs_error": 0.01239587413500457,
+      "max_error": 5,
+      "central_face_error": 0
+    },
+    {
+      "head": "M03",
+      "hair": "hair-m6-asymmetric-fringe",
+      "mean_abs_error": 0.019033816425120774,
+      "max_error": 2,
+      "central_face_error": 0
+    },
+    {
+      "head": "M04",
+      "hair": "hair-shoulder-length",
+      "mean_abs_error": 0.01947773860817339,
+      "max_error": 5,
+      "central_face_error": 0
+    },
+    {
+      "head": "M04",
+      "hair": "hair-m6-mullet",
+      "mean_abs_error": 0.08013317665491579,
+      "max_error": 7,
+      "central_face_error": 0
+    },
+    {
+      "head": "M04",
+      "hair": "hair-m6-asymmetric-fringe",
+      "mean_abs_error": 0.018754406580493536,
+      "max_error": 2,
+      "central_face_error": 0
+    },
+    {
+      "head": "M05",
+      "hair": "hair-shoulder-length",
+      "mean_abs_error": 0.005875440658049354,
+      "max_error": 5,
+      "central_face_error": 0
+    },
+    {
+      "head": "M05",
+      "hair": "hair-m6-mullet",
+      "mean_abs_error": 0.07915915915915916,
+      "max_error": 7,
+      "central_face_error": 0
+    },
+    {
+      "head": "M05",
+      "hair": "hair-m6-asymmetric-fringe",
+      "mean_abs_error": 0.018613396004700352,
+      "max_error": 2,
+      "central_face_error": 0
+    },
+    {
+      "head": "M06",
+      "hair": "hair-shoulder-length",
+      "mean_abs_error": 0.01945162553858206,
+      "max_error": 5,
+      "central_face_error": 0
+    },
+    {
+      "head": "M06",
+      "hair": "hair-m6-mullet",
+      "mean_abs_error": 0.057696827262044656,
+      "max_error": 6,
+      "central_face_error": 0
+    },
+    {
+      "head": "M06",
+      "hair": "hair-m6-asymmetric-fringe",
+      "mean_abs_error": 0.0184828306567437,
+      "max_error": 2,
+      "central_face_error": 0
+    },
+    {
+      "head": "M07",
+      "hair": "hair-shoulder-length",
+      "mean_abs_error": 0.0072751011881446665,
+      "max_error": 5,
+      "central_face_error": 0
+    },
+    {
+      "head": "M07",
+      "hair": "hair-m6-mullet",
+      "mean_abs_error": 0.06002089045567306,
+      "max_error": 7,
+      "central_face_error": 0
+    },
+    {
+      "head": "M07",
+      "hair": "hair-m6-asymmetric-fringe",
+      "mean_abs_error": 0.019618749183966576,
+      "max_error": 3,
+      "central_face_error": 0
+    },
+    {
+      "head": "M08",
+      "hair": "hair-shoulder-length",
+      "mean_abs_error": 0.019584802193497845,
+      "max_error": 5,
+      "central_face_error": 0
+    },
+    {
+      "head": "M08",
+      "hair": "hair-m6-mullet",
+      "mean_abs_error": 0.05928711320015668,
+      "max_error": 7,
+      "central_face_error": 0
+    },
+    {
+      "head": "M08",
+      "hair": "hair-m6-asymmetric-fringe",
+      "mean_abs_error": 0.019148713931322628,
+      "max_error": 2,
+      "central_face_error": 0
+    },
+    {
+      "head": "M09",
+      "hair": "hair-shoulder-length",
+      "mean_abs_error": 0.01913565739652696,
+      "max_error": 5,
+      "central_face_error": 0
+    },
+    {
+      "head": "M09",
+      "hair": "hair-m6-mullet",
+      "mean_abs_error": 0.057208512860686775,
+      "max_error": 7,
+      "central_face_error": 0
+    },
+    {
+      "head": "M09",
+      "hair": "hair-m6-asymmetric-fringe",
+      "mean_abs_error": 0.0181903642773208,
+      "max_error": 2,
+      "central_face_error": 0
+    },
+    {
+      "head": "M10",
+      "hair": "hair-shoulder-length",
+      "mean_abs_error": 0.020073116594855726,
+      "max_error": 5,
+      "central_face_error": 0
+    },
+    {
+      "head": "M10",
+      "hair": "hair-m6-mullet",
+      "mean_abs_error": 0.08337903120511816,
+      "max_error": 7,
+      "central_face_error": 0
+    },
+    {
+      "head": "M10",
+      "hair": "hair-m6-asymmetric-fringe",
+      "mean_abs_error": 0.01977803890847369,
+      "max_error": 3,
+      "central_face_error": 0
+    },
+    {
+      "head": "M11",
+      "hair": "hair-shoulder-length",
+      "mean_abs_error": 0.006648387517952735,
+      "max_error": 5,
+      "central_face_error": 0
+    },
+    {
+      "head": "M11",
+      "hair": "hair-m6-mullet",
+      "mean_abs_error": 0.08455673064368717,
+      "max_error": 7,
+      "central_face_error": 0
+    },
+    {
+      "head": "M11",
+      "hair": "hair-m6-asymmetric-fringe",
+      "mean_abs_error": 0.01952213082647865,
+      "max_error": 3,
+      "central_face_error": 0
+    },
+    {
+      "head": "M12",
+      "hair": "hair-shoulder-length",
+      "mean_abs_error": 0.02013578796187492,
+      "max_error": 5,
+      "central_face_error": 0
+    },
+    {
+      "head": "M12",
+      "hair": "hair-m6-mullet",
+      "mean_abs_error": 0.08748139443791618,
+      "max_error": 7,
+      "central_face_error": 0
+    },
+    {
+      "head": "M12",
+      "hair": "hair-m6-asymmetric-fringe",
+      "mean_abs_error": 0.019378508943726336,
+      "max_error": 2,
+      "central_face_error": 0
+    },
+    {
+      "head": "M13",
+      "hair": "hair-shoulder-length",
+      "mean_abs_error": 0.006956521739130435,
+      "max_error": 5,
+      "central_face_error": 0
+    },
+    {
+      "head": "M13",
+      "hair": "hair-m6-mullet",
+      "mean_abs_error": 0.08717848283065674,
+      "max_error": 7,
+      "central_face_error": 0
+    },
+    {
+      "head": "M13",
+      "hair": "hair-m6-asymmetric-fringe",
+      "mean_abs_error": 0.019148713931322628,
+      "max_error": 2,
+      "central_face_error": 0
+    },
+    {
+      "head": "M14",
+      "hair": "hair-shoulder-length",
+      "mean_abs_error": 0.006708447578012796,
+      "max_error": 5,
+      "central_face_error": 0
+    },
+    {
+      "head": "M14",
+      "hair": "hair-m6-mullet",
+      "mean_abs_error": 0.08411541976759368,
+      "max_error": 7,
+      "central_face_error": 0
+    },
+    {
+      "head": "M14",
+      "hair": "hair-m6-asymmetric-fringe",
+      "mean_abs_error": 0.019234887060974017,
+      "max_error": 2,
+      "central_face_error": 0
+    },
+    {
+      "head": "M15",
+      "hair": "hair-shoulder-length",
+      "mean_abs_error": 0.020033946990468728,
+      "max_error": 5,
+      "central_face_error": 0
+    },
+    {
+      "head": "M15",
+      "hair": "hair-m6-mullet",
+      "mean_abs_error": 0.08501370936153545,
+      "max_error": 7,
+      "central_face_error": 0
+    },
+    {
+      "head": "M15",
+      "hair": "hair-m6-asymmetric-fringe",
+      "mean_abs_error": 0.019420289855072465,
+      "max_error": 2,
+      "central_face_error": 0
+    },
+    {
+      "head": "M16",
+      "hair": "hair-shoulder-length",
+      "mean_abs_error": 0.006285415850633242,
+      "max_error": 5,
+      "central_face_error": 0
+    },
+    {
+      "head": "M16",
+      "hair": "hair-m6-mullet",
+      "mean_abs_error": 0.08704791748270009,
+      "max_error": 7,
+      "central_face_error": 0
+    },
+    {
+      "head": "M16",
+      "hair": "hair-m6-asymmetric-fringe",
+      "mean_abs_error": 0.019381120250685467,
+      "max_error": 2,
+      "central_face_error": 0
+    }
+  ],
+  "all_male_combinations_loaded": 0,
+  "colors_checked": [],
+  "female_switch_cleanup": null,
+  "unequip_cleanup": null,
+  "stable_save_ids": null,
+  "fit_data_sha256": "99f75a9f213d8a46ebd56e05317c7df805136b6aacca18547cf48ec28a15b686",
+  "page_errors": [],
+  "worst_mean_error": 0.08748139443791618
+}

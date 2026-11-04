@@ -1,0 +1,2167 @@
+{
+  "baseline": "c1190fc",
+  "frame": [
+    941,
+    1672
+  ],
+  "records": [
+    {
+      "head": "M01",
+      "face_id": "@native",
+      "hair": "hair-shoulder-length",
+      "number": 6,
+      "reference": "review/male-head-hair-20261104/M01-H06-approved.png",
+      "source": "/workspace/outputs/male-head-hair-review-20261103/approved-reference-h06-h09-h12-propagation-v1/M01-H06.png",
+      "layers": [
+        {
+          "id": "skin-edge",
+          "source": "assets/wardrobe/hair/male-reviewed/M01-H06-edge.png?v=f9516a21",
+          "renderOrder": 2,
+          "recolor": false
+        },
+        {
+          "id": "front",
+          "source": "assets/wardrobe/hair/male-reviewed/M01-H06.png?v=14dc81e7",
+          "renderOrder": 9
+        }
+      ],
+      "mean_abs_error": 0.1034827492654886,
+      "max_error": 5.0,
+      "skin_edge_pixels": 2472,
+      "central_face_error": 0.7294117647058869
+    },
+    {
+      "head": "M01",
+      "face_id": "@native",
+      "hair": "hair-m6-mullet",
+      "number": 9,
+      "reference": "review/male-head-hair-20261104/M01-H09-approved.png",
+      "source": "/workspace/outputs/male-head-hair-review-20261103/hair09-individual-repairs-v6/M01-H09-after.png",
+      "layers": [
+        {
+          "id": "skin-edge",
+          "source": "assets/wardrobe/hair/male-reviewed/M01-H09-edge.png?v=900e9499",
+          "renderOrder": 2,
+          "recolor": false
+        },
+        {
+          "id": "front",
+          "source": "assets/wardrobe/hair/male-reviewed/M01-H09.png?v=b9054826",
+          "renderOrder": 9
+        }
+      ],
+      "mean_abs_error": 0.17684013505506935,
+      "max_error": 7.0,
+      "skin_edge_pixels": 1430,
+      "central_face_error": 0.7294117647058869
+    },
+    {
+      "head": "M01",
+      "face_id": "@native",
+      "hair": "hair-m6-asymmetric-fringe",
+      "number": 12,
+      "reference": "review/male-head-hair-20261104/M01-H12-approved.png",
+      "source": "/workspace/palata404/review/male-head-hair-20261104/M01-H12-approved.png",
+      "layers": [
+        {
+          "id": "skin-edge",
+          "source": "assets/wardrobe/hair/male-reviewed/M01-H12-edge.png?v=0932a81c",
+          "renderOrder": 2,
+          "recolor": false
+        },
+        {
+          "id": "front",
+          "source": "assets/wardrobe/hair/male-reviewed/M01-H12.png?v=1bfb9f90",
+          "renderOrder": 9
+        }
+      ],
+      "mean_abs_error": 0.09455066853624619,
+      "max_error": 0.7521722414455887,
+      "skin_edge_pixels": 2415,
+      "central_face_error": 0.4980392156862763
+    },
+    {
+      "head": "M02",
+      "face_id": "face-asian",
+      "hair": "hair-shoulder-length",
+      "number": 6,
+      "reference": "review/male-head-hair-20261104/M02-H06-approved.png",
+      "source": "/workspace/palata404/review/male-head-hair-20261104/M02-H06-approved.png",
+      "layers": [
+        {
+          "id": "skin-edge",
+          "source": "assets/wardrobe/hair/male-reviewed/M02-H06-edge.png?v=00062f08",
+          "renderOrder": 2,
+          "recolor": false
+        },
+        {
+          "id": "front",
+          "source": "assets/wardrobe/hair/male-reviewed/M02-H06.png?v=c7d39ff5",
+          "renderOrder": 9
+        }
+      ],
+      "mean_abs_error": 0.05820617472193643,
+      "max_error": 5.0,
+      "skin_edge_pixels": 1124,
+      "central_face_error": 0.0
+    },
+    {
+      "head": "M02",
+      "face_id": "face-asian",
+      "hair": "hair-m6-mullet",
+      "number": 9,
+      "reference": "review/male-head-hair-20261104/M02-H09-approved.png",
+      "source": "/workspace/outputs/male-head-hair-review-20261103/hair09-individual-repairs-v6/M02-H09-after.png",
+      "layers": [
+        {
+          "id": "skin-edge",
+          "source": "assets/wardrobe/hair/male-reviewed/M02-H09-edge.png?v=e1c17bea",
+          "renderOrder": 2,
+          "recolor": false
+        },
+        {
+          "id": "front",
+          "source": "assets/wardrobe/hair/male-reviewed/M02-H09.png?v=81694a4b",
+          "renderOrder": 9
+        }
+      ],
+      "mean_abs_error": 0.13012599063132155,
+      "max_error": 6.607843137254918,
+      "skin_edge_pixels": 1502,
+      "central_face_error": 0.0
+    },
+    {
+      "head": "M02",
+      "face_id": "face-asian",
+      "hair": "hair-m6-asymmetric-fringe",
+      "number": 12,
+      "reference": "review/male-head-hair-20261104/M02-H12-approved.png",
+      "source": "/workspace/palata404/review/male-head-hair-20261104/M02-H12-approved.png",
+      "layers": [
+        {
+          "id": "skin-edge",
+          "source": "assets/wardrobe/hair/male-reviewed/M02-H12-edge.png?v=59604240",
+          "renderOrder": 2,
+          "recolor": false
+        },
+        {
+          "id": "front",
+          "source": "assets/wardrobe/hair/male-reviewed/M02-H12.png?v=5bf37509",
+          "renderOrder": 9
+        }
+      ],
+      "mean_abs_error": 0.056851315906448735,
+      "max_error": 0.6427681660899687,
+      "skin_edge_pixels": 1390,
+      "central_face_error": 0.0
+    },
+    {
+      "head": "M03",
+      "face_id": "face-young",
+      "hair": "hair-shoulder-length",
+      "number": 6,
+      "reference": "review/male-head-hair-20261104/M03-H06-approved.png",
+      "source": "/workspace/outputs/male-head-hair-review-20261103/approved-reference-h06-h09-h12-propagation-v1/M03-H06.png",
+      "layers": [
+        {
+          "id": "skin-edge",
+          "source": "assets/wardrobe/hair/male-reviewed/M03-H06-edge.png?v=3b2e8a08",
+          "renderOrder": 2,
+          "recolor": false
+        },
+        {
+          "id": "front",
+          "source": "assets/wardrobe/hair/male-reviewed/M03-H06.png?v=85df8d96",
+          "renderOrder": 9
+        }
+      ],
+      "mean_abs_error": 0.05956892994493936,
+      "max_error": 5.0,
+      "skin_edge_pixels": 1157,
+      "central_face_error": 0.0
+    },
+    {
+      "head": "M03",
+      "face_id": "face-young",
+      "hair": "hair-m6-mullet",
+      "number": 9,
+      "reference": "review/male-head-hair-20261104/M03-H09-approved.png",
+      "source": "/workspace/outputs/male-head-hair-review-20261103/ear-fit-review-v4/M03-H09-after.png",
+      "layers": [
+        {
+          "id": "skin-edge",
+          "source": "assets/wardrobe/hair/male-reviewed/M03-H09-edge.png?v=cdf14a83",
+          "renderOrder": 2,
+          "recolor": false
+        },
+        {
+          "id": "front",
+          "source": "assets/wardrobe/hair/male-reviewed/M03-H09.png?v=b3e15128",
+          "renderOrder": 9
+        }
+      ],
+      "mean_abs_error": 0.06837928304915937,
+      "max_error": 5.0,
+      "skin_edge_pixels": 1259,
+      "central_face_error": 0.0
+    },
+    {
+      "head": "M03",
+      "face_id": "face-young",
+      "hair": "hair-m6-asymmetric-fringe",
+      "number": 12,
+      "reference": "review/male-head-hair-20261104/M03-H12-approved.png",
+      "source": "/workspace/palata404/review/male-head-hair-20261104/M03-H12-approved.png",
+      "layers": [
+        {
+          "id": "skin-edge",
+          "source": "assets/wardrobe/hair/male-reviewed/M03-H12-edge.png?v=f023a2da",
+          "renderOrder": 2,
+          "recolor": false
+        },
+        {
+          "id": "front",
+          "source": "assets/wardrobe/hair/male-reviewed/M03-H12.png?v=fcbba463",
+          "renderOrder": 9
+        }
+      ],
+      "mean_abs_error": 0.05687627931828342,
+      "max_error": 0.6168550557477843,
+      "skin_edge_pixels": 1477,
+      "central_face_error": 0.0
+    },
+    {
+      "head": "M04",
+      "face_id": "face-exhausted",
+      "hair": "hair-shoulder-length",
+      "number": 6,
+      "reference": "review/male-head-hair-20261104/M04-H06-approved.png",
+      "source": "/workspace/palata404/review/male-head-hair-20261104/M04-H06-approved.png",
+      "layers": [
+        {
+          "id": "skin-edge",
+          "source": "assets/wardrobe/hair/male-reviewed/M04-H06-edge.png?v=388199e0",
+          "renderOrder": 2,
+          "recolor": false
+        },
+        {
+          "id": "front",
+          "source": "assets/wardrobe/hair/male-reviewed/M04-H06.png?v=e6a5a1ba",
+          "renderOrder": 9
+        }
+      ],
+      "mean_abs_error": 0.05819914401137028,
+      "max_error": 5.0,
+      "skin_edge_pixels": 1092,
+      "central_face_error": 0.0
+    },
+    {
+      "head": "M04",
+      "face_id": "face-exhausted",
+      "hair": "hair-m6-mullet",
+      "number": 9,
+      "reference": "review/male-head-hair-20261104/M04-H09-approved.png",
+      "source": "/workspace/outputs/male-head-hair-review-20261103/hair09-individual-repairs-v6/M04-H09-after.png",
+      "layers": [
+        {
+          "id": "skin-edge",
+          "source": "assets/wardrobe/hair/male-reviewed/M04-H09-edge.png?v=f50bcf0e",
+          "renderOrder": 2,
+          "recolor": false
+        },
+        {
+          "id": "front",
+          "source": "assets/wardrobe/hair/male-reviewed/M04-H09.png?v=4e2f4a7c",
+          "renderOrder": 9
+        }
+      ],
+      "mean_abs_error": 0.1353648368593258,
+      "max_error": 6.529411764705884,
+      "skin_edge_pixels": 1486,
+      "central_face_error": 0.0
+    },
+    {
+      "head": "M04",
+      "face_id": "face-exhausted",
+      "hair": "hair-m6-asymmetric-fringe",
+      "number": 12,
+      "reference": "review/male-head-hair-20261104/M04-H12-approved.png",
+      "source": "/workspace/palata404/review/male-head-hair-20261104/M04-H12-approved.png",
+      "layers": [
+        {
+          "id": "skin-edge",
+          "source": "assets/wardrobe/hair/male-reviewed/M04-H12-edge.png?v=307296e1",
+          "renderOrder": 2,
+          "recolor": false
+        },
+        {
+          "id": "front",
+          "source": "assets/wardrobe/hair/male-reviewed/M04-H12.png?v=0f67832a",
+          "renderOrder": 9
+        }
+      ],
+      "mean_abs_error": 0.056944969200683745,
+      "max_error": 1.0,
+      "skin_edge_pixels": 1387,
+      "central_face_error": 0.0
+    },
+    {
+      "head": "M05",
+      "face_id": "face-elder",
+      "hair": "hair-shoulder-length",
+      "number": 6,
+      "reference": "review/male-head-hair-20261104/M05-H06-approved.png",
+      "source": "/workspace/outputs/male-head-hair-review-20261103/approved-reference-h06-h09-h12-propagation-v1/M05-H06.png",
+      "layers": [
+        {
+          "id": "skin-edge",
+          "source": "assets/wardrobe/hair/male-reviewed/M05-H06-edge.png?v=fd0c65b8",
+          "renderOrder": 2,
+          "recolor": false
+        },
+        {
+          "id": "front",
+          "source": "assets/wardrobe/hair/male-reviewed/M05-H06.png?v=6ac7fdf9",
+          "renderOrder": 9
+        }
+      ],
+      "mean_abs_error": 0.05957881624666659,
+      "max_error": 5.0,
+      "skin_edge_pixels": 1128,
+      "central_face_error": 0.0
+    },
+    {
+      "head": "M05",
+      "face_id": "face-elder",
+      "hair": "hair-m6-mullet",
+      "number": 9,
+      "reference": "review/male-head-hair-20261104/M05-H09-approved.png",
+      "source": "/workspace/outputs/male-head-hair-review-20261103/hair09-individual-repairs-v6/M05-H09-after.png",
+      "layers": [
+        {
+          "id": "skin-edge",
+          "source": "assets/wardrobe/hair/male-reviewed/M05-H09-edge.png?v=7630b10c",
+          "renderOrder": 2,
+          "recolor": false
+        },
+        {
+          "id": "front",
+          "source": "assets/wardrobe/hair/male-reviewed/M05-H09.png?v=1881dcbd",
+          "renderOrder": 9
+        }
+      ],
+      "mean_abs_error": 0.13483365562041674,
+      "max_error": 6.607843137254918,
+      "skin_edge_pixels": 1341,
+      "central_face_error": 0.0
+    },
+    {
+      "head": "M05",
+      "face_id": "face-elder",
+      "hair": "hair-m6-asymmetric-fringe",
+      "number": 12,
+      "reference": "review/male-head-hair-20261104/M05-H12-approved.png",
+      "source": "/workspace/palata404/review/male-head-hair-20261104/M05-H12-approved.png",
+      "layers": [
+        {
+          "id": "skin-edge",
+          "source": "assets/wardrobe/hair/male-reviewed/M05-H12-edge.png?v=8387ed0b",
+          "renderOrder": 2,
+          "recolor": false
+        },
+        {
+          "id": "front",
+          "source": "assets/wardrobe/hair/male-reviewed/M05-H12.png?v=65c53d82",
+          "renderOrder": 9
+        }
+      ],
+      "mean_abs_error": 0.056882754235103854,
+      "max_error": 0.7294117647058869,
+      "skin_edge_pixels": 1347,
+      "central_face_error": 0.0
+    },
+    {
+      "head": "M06",
+      "face_id": "face-alternative",
+      "hair": "hair-shoulder-length",
+      "number": 6,
+      "reference": "review/male-head-hair-20261104/M06-H06-approved.png",
+      "source": "/workspace/palata404/review/male-head-hair-20261104/M06-H06-approved.png",
+      "layers": [
+        {
+          "id": "skin-edge",
+          "source": "assets/wardrobe/hair/male-reviewed/M06-H06-edge.png?v=d7e376ce",
+          "renderOrder": 2,
+          "recolor": false
+        },
+        {
+          "id": "front",
+          "source": "assets/wardrobe/hair/male-reviewed/M06-H06.png?v=4110a644",
+          "renderOrder": 9
+        }
+      ],
+      "mean_abs_error": 0.05822302760109309,
+      "max_error": 5.0,
+      "skin_edge_pixels": 1121,
+      "central_face_error": 0.0
+    },
+    {
+      "head": "M06",
+      "face_id": "face-alternative",
+      "hair": "hair-m6-mullet",
+      "number": 9,
+      "reference": "review/male-head-hair-20261104/M06-H09-approved.png",
+      "source": "/workspace/outputs/male-head-hair-review-20261103/hair09-individual-repairs-v6/M06-H09-after.png",
+      "layers": [
+        {
+          "id": "skin-edge",
+          "source": "assets/wardrobe/hair/male-reviewed/M06-H09-edge.png?v=08634eb1",
+          "renderOrder": 2,
+          "recolor": false
+        },
+        {
+          "id": "front",
+          "source": "assets/wardrobe/hair/male-reviewed/M06-H09.png?v=3345e533",
+          "renderOrder": 9
+        }
+      ],
+      "mean_abs_error": 0.11335426463020884,
+      "max_error": 6.0,
+      "skin_edge_pixels": 1470,
+      "central_face_error": 0.0
+    },
+    {
+      "head": "M06",
+      "face_id": "face-alternative",
+      "hair": "hair-m6-asymmetric-fringe",
+      "number": 12,
+      "reference": "review/male-head-hair-20261104/M06-H12-approved.png",
+      "source": "/workspace/palata404/review/male-head-hair-20261104/M06-H12-approved.png",
+      "layers": [
+        {
+          "id": "skin-edge",
+          "source": "assets/wardrobe/hair/male-reviewed/M06-H12-edge.png?v=6dd26e3e",
+          "renderOrder": 2,
+          "recolor": false
+        },
+        {
+          "id": "front",
+          "source": "assets/wardrobe/hair/male-reviewed/M06-H12.png?v=535d3ebe",
+          "renderOrder": 9
+        }
+      ],
+      "mean_abs_error": 0.0569092201373433,
+      "max_error": 0.7642906574394566,
+      "skin_edge_pixels": 1409,
+      "central_face_error": 0.0
+    },
+    {
+      "head": "M07",
+      "face_id": "face-male-goth-pierced",
+      "hair": "hair-shoulder-length",
+      "number": 6,
+      "reference": "review/male-head-hair-20261104/M07-H06-approved.png",
+      "source": "/workspace/outputs/male-head-hair-review-20261103/ear-fit-review-v3/M07-H06-after.png",
+      "layers": [
+        {
+          "id": "skin-edge",
+          "source": "assets/wardrobe/hair/male-reviewed/M07-H06-edge.png?v=065bbbab",
+          "renderOrder": 2,
+          "recolor": false
+        },
+        {
+          "id": "front",
+          "source": "assets/wardrobe/hair/male-reviewed/M07-H06.png?v=17af2149",
+          "renderOrder": 9
+        }
+      ],
+      "mean_abs_error": 0.05995717850140415,
+      "max_error": 5.0,
+      "skin_edge_pixels": 1204,
+      "central_face_error": 0.0
+    },
+    {
+      "head": "M07",
+      "face_id": "face-male-goth-pierced",
+      "hair": "hair-m6-mullet",
+      "number": 9,
+      "reference": "review/male-head-hair-20261104/M07-H09-approved.png",
+      "source": "/workspace/outputs/male-head-hair-review-20261103/hair09-individual-repairs-v6/M07-H09-after.png",
+      "layers": [
+        {
+          "id": "skin-edge",
+          "source": "assets/wardrobe/hair/male-reviewed/M07-H09-edge.png?v=320ff07e",
+          "renderOrder": 2,
+          "recolor": false
+        },
+        {
+          "id": "front",
+          "source": "assets/wardrobe/hair/male-reviewed/M07-H09.png?v=75783aba",
+          "renderOrder": 9
+        }
+      ],
+      "mean_abs_error": 0.11499785014441269,
+      "max_error": 6.4470588235294315,
+      "skin_edge_pixels": 1339,
+      "central_face_error": 0.0
+    },
+    {
+      "head": "M07",
+      "face_id": "face-male-goth-pierced",
+      "hair": "hair-m6-asymmetric-fringe",
+      "number": 12,
+      "reference": "review/male-head-hair-20261104/M07-H12-approved.png",
+      "source": "/workspace/palata404/review/male-head-hair-20261104/M07-H12-approved.png",
+      "layers": [
+        {
+          "id": "skin-edge",
+          "source": "assets/wardrobe/hair/male-reviewed/M07-H12-edge.png?v=c9130d58",
+          "renderOrder": 2,
+          "recolor": false
+        },
+        {
+          "id": "front",
+          "source": "assets/wardrobe/hair/male-reviewed/M07-H12.png?v=4f63b429",
+          "renderOrder": 9
+        }
+      ],
+      "mean_abs_error": 0.0570145020904764,
+      "max_error": 3.0,
+      "skin_edge_pixels": 1349,
+      "central_face_error": 0.0
+    },
+    {
+      "head": "M08",
+      "face_id": "face-male-freckled",
+      "hair": "hair-shoulder-length",
+      "number": 6,
+      "reference": "review/male-head-hair-20261104/M08-H06-approved.png",
+      "source": "/workspace/palata404/review/male-head-hair-20261104/M08-H06-approved.png",
+      "layers": [
+        {
+          "id": "skin-edge",
+          "source": "assets/wardrobe/hair/male-reviewed/M08-H06-edge.png?v=1ba39a8f",
+          "renderOrder": 2,
+          "recolor": false
+        },
+        {
+          "id": "front",
+          "source": "assets/wardrobe/hair/male-reviewed/M08-H06.png?v=255fe074",
+          "renderOrder": 9
+        }
+      ],
+      "mean_abs_error": 0.05803649816006288,
+      "max_error": 5.0,
+      "skin_edge_pixels": 1136,
+      "central_face_error": 0.0
+    },
+    {
+      "head": "M08",
+      "face_id": "face-male-freckled",
+      "hair": "hair-m6-mullet",
+      "number": 9,
+      "reference": "review/male-head-hair-20261104/M08-H09-approved.png",
+      "source": "/workspace/outputs/male-head-hair-review-20261103/hair09-individual-repairs-v6/M08-H09-after.png",
+      "layers": [
+        {
+          "id": "skin-edge",
+          "source": "assets/wardrobe/hair/male-reviewed/M08-H09-edge.png?v=7a90f135",
+          "renderOrder": 2,
+          "recolor": false
+        },
+        {
+          "id": "front",
+          "source": "assets/wardrobe/hair/male-reviewed/M08-H09.png?v=39659083",
+          "renderOrder": 9
+        }
+      ],
+      "mean_abs_error": 0.11441099680493913,
+      "max_error": 7.0,
+      "skin_edge_pixels": 1543,
+      "central_face_error": 0.0
+    },
+    {
+      "head": "M08",
+      "face_id": "face-male-freckled",
+      "hair": "hair-m6-asymmetric-fringe",
+      "number": 12,
+      "reference": "review/male-head-hair-20261104/M08-H12-approved.png",
+      "source": "/workspace/palata404/review/male-head-hair-20261104/M08-H12-approved.png",
+      "layers": [
+        {
+          "id": "skin-edge",
+          "source": "assets/wardrobe/hair/male-reviewed/M08-H12-edge.png?v=b1412964",
+          "renderOrder": 2,
+          "recolor": false
+        },
+        {
+          "id": "front",
+          "source": "assets/wardrobe/hair/male-reviewed/M08-H12.png?v=94af5e54",
+          "renderOrder": 9
+        }
+      ],
+      "mean_abs_error": 0.05687239390235248,
+      "max_error": 0.6235294117647072,
+      "skin_edge_pixels": 1485,
+      "central_face_error": 0.0
+    },
+    {
+      "head": "M09",
+      "face_id": "face-male-blue-eyes",
+      "hair": "hair-shoulder-length",
+      "number": 6,
+      "reference": "review/male-head-hair-20261104/M09-H06-approved.png",
+      "source": "/workspace/palata404/review/male-head-hair-20261104/M09-H06-approved.png",
+      "layers": [
+        {
+          "id": "skin-edge",
+          "source": "assets/wardrobe/hair/male-reviewed/M09-H06-edge.png?v=9dc335fa",
+          "renderOrder": 2,
+          "recolor": false
+        },
+        {
+          "id": "front",
+          "source": "assets/wardrobe/hair/male-reviewed/M09-H06.png?v=ff902360",
+          "renderOrder": 9
+        }
+      ],
+      "mean_abs_error": 0.05823321701923598,
+      "max_error": 5.0,
+      "skin_edge_pixels": 1228,
+      "central_face_error": 0.0
+    },
+    {
+      "head": "M09",
+      "face_id": "face-male-blue-eyes",
+      "hair": "hair-m6-mullet",
+      "number": 9,
+      "reference": "review/male-head-hair-20261104/M09-H09-approved.png",
+      "source": "/workspace/outputs/male-head-hair-review-20261103/hair09-individual-repairs-v6/M09-H09-after.png",
+      "layers": [
+        {
+          "id": "skin-edge",
+          "source": "assets/wardrobe/hair/male-reviewed/M09-H09-edge.png?v=d7cb815b",
+          "renderOrder": 2,
+          "recolor": false
+        },
+        {
+          "id": "front",
+          "source": "assets/wardrobe/hair/male-reviewed/M09-H09.png?v=b1376efd",
+          "renderOrder": 9
+        }
+      ],
+      "mean_abs_error": 0.11301226991998789,
+      "max_error": 7.0,
+      "skin_edge_pixels": 1669,
+      "central_face_error": 0.0
+    },
+    {
+      "head": "M09",
+      "face_id": "face-male-blue-eyes",
+      "hair": "hair-m6-asymmetric-fringe",
+      "number": 12,
+      "reference": "review/male-head-hair-20261104/M09-H12-approved.png",
+      "source": "/workspace/palata404/review/male-head-hair-20261104/M09-H12-approved.png",
+      "layers": [
+        {
+          "id": "skin-edge",
+          "source": "assets/wardrobe/hair/male-reviewed/M09-H12-edge.png?v=9dd55304",
+          "renderOrder": 2,
+          "recolor": false
+        },
+        {
+          "id": "front",
+          "source": "assets/wardrobe/hair/male-reviewed/M09-H12.png?v=6a4288fa",
+          "renderOrder": 9
+        }
+      ],
+      "mean_abs_error": 0.056880332757410335,
+      "max_error": 0.7545559400230744,
+      "skin_edge_pixels": 1480,
+      "central_face_error": 0.0
+    },
+    {
+      "head": "M10",
+      "face_id": "face-male-new-neutral",
+      "hair": "hair-shoulder-length",
+      "number": 6,
+      "reference": "review/male-head-hair-20261104/M10-H06-approved.png",
+      "source": "/workspace/palata404/review/male-head-hair-20261104/M10-H06-approved.png",
+      "layers": [
+        {
+          "id": "skin-edge",
+          "source": "assets/wardrobe/hair/male-reviewed/M10-H06-edge.png?v=5c54af6b",
+          "renderOrder": 2,
+          "recolor": false
+        },
+        {
+          "id": "front",
+          "source": "assets/wardrobe/hair/male-reviewed/M10-H06.png?v=23a3c0ea",
+          "renderOrder": 9
+        }
+      ],
+      "mean_abs_error": 0.0582318358878413,
+      "max_error": 5.0,
+      "skin_edge_pixels": 1076,
+      "central_face_error": 0.0
+    },
+    {
+      "head": "M10",
+      "face_id": "face-male-new-neutral",
+      "hair": "hair-m6-mullet",
+      "number": 9,
+      "reference": "review/male-head-hair-20261104/M10-H09-approved.png",
+      "source": "/workspace/outputs/male-head-hair-review-20261103/hair09-individual-repairs-v6/M10-H09-after.png",
+      "layers": [
+        {
+          "id": "skin-edge",
+          "source": "assets/wardrobe/hair/male-reviewed/M10-H09-edge.png?v=25179294",
+          "renderOrder": 2,
+          "recolor": false
+        },
+        {
+          "id": "front",
+          "source": "assets/wardrobe/hair/male-reviewed/M10-H09.png?v=06a83ad2",
+          "renderOrder": 9
+        }
+      ],
+      "mean_abs_error": 0.13736764243306562,
+      "max_error": 7.0,
+      "skin_edge_pixels": 1403,
+      "central_face_error": 0.0
+    },
+    {
+      "head": "M10",
+      "face_id": "face-male-new-neutral",
+      "hair": "hair-m6-asymmetric-fringe",
+      "number": 12,
+      "reference": "review/male-head-hair-20261104/M10-H12-approved.png",
+      "source": "/workspace/palata404/review/male-head-hair-20261104/M10-H12-approved.png",
+      "layers": [
+        {
+          "id": "skin-edge",
+          "source": "assets/wardrobe/hair/male-reviewed/M10-H12-edge.png?v=f05b0319",
+          "renderOrder": 2,
+          "recolor": false
+        },
+        {
+          "id": "front",
+          "source": "assets/wardrobe/hair/male-reviewed/M10-H12.png?v=ecde88f1",
+          "renderOrder": 9
+        }
+      ],
+      "mean_abs_error": 0.05698276911885075,
+      "max_error": 3.0,
+      "skin_edge_pixels": 1379,
+      "central_face_error": 0.0
+    },
+    {
+      "head": "M11",
+      "face_id": "face-male-new-almond",
+      "hair": "hair-shoulder-length",
+      "number": 6,
+      "reference": "review/male-head-hair-20261104/M11-H06-approved.png",
+      "source": "/workspace/outputs/male-head-hair-review-20261103/approved-reference-h06-h09-h12-propagation-v1/M11-H06.png",
+      "layers": [
+        {
+          "id": "skin-edge",
+          "source": "assets/wardrobe/hair/male-reviewed/M11-H06-edge.png?v=731b77ad",
+          "renderOrder": 2,
+          "recolor": false
+        },
+        {
+          "id": "front",
+          "source": "assets/wardrobe/hair/male-reviewed/M11-H06.png?v=5e990acc",
+          "renderOrder": 9
+        }
+      ],
+      "mean_abs_error": 0.05978836249619078,
+      "max_error": 5.0,
+      "skin_edge_pixels": 1031,
+      "central_face_error": 0.0
+    },
+    {
+      "head": "M11",
+      "face_id": "face-male-new-almond",
+      "hair": "hair-m6-mullet",
+      "number": 9,
+      "reference": "review/male-head-hair-20261104/M11-H09-approved.png",
+      "source": "/workspace/outputs/male-head-hair-review-20261103/hair09-individual-repairs-v6/M11-H09-after.png",
+      "layers": [
+        {
+          "id": "skin-edge",
+          "source": "assets/wardrobe/hair/male-reviewed/M11-H09-edge.png?v=1b34d9b4",
+          "renderOrder": 2,
+          "recolor": false
+        },
+        {
+          "id": "front",
+          "source": "assets/wardrobe/hair/male-reviewed/M11-H09.png?v=da84af0e",
+          "renderOrder": 9
+        }
+      ],
+      "mean_abs_error": 0.13808814485213883,
+      "max_error": 7.0,
+      "skin_edge_pixels": 1471,
+      "central_face_error": 0.0
+    },
+    {
+      "head": "M11",
+      "face_id": "face-male-new-almond",
+      "hair": "hair-m6-asymmetric-fringe",
+      "number": 12,
+      "reference": "review/male-head-hair-20261104/M11-H12-approved.png",
+      "source": "/workspace/palata404/review/male-head-hair-20261104/M11-H12-approved.png",
+      "layers": [
+        {
+          "id": "skin-edge",
+          "source": "assets/wardrobe/hair/male-reviewed/M11-H12-edge.png?v=f7191b26",
+          "renderOrder": 2,
+          "recolor": false
+        },
+        {
+          "id": "front",
+          "source": "assets/wardrobe/hair/male-reviewed/M11-H12.png?v=1a3c56b2",
+          "renderOrder": 9
+        }
+      ],
+      "mean_abs_error": 0.057100230625289745,
+      "max_error": 3.0,
+      "skin_edge_pixels": 1372,
+      "central_face_error": 0.0
+    },
+    {
+      "head": "M12",
+      "face_id": "face-male-new-defined",
+      "hair": "hair-shoulder-length",
+      "number": 6,
+      "reference": "review/male-head-hair-20261104/M12-H06-approved.png",
+      "source": "/workspace/palata404/review/male-head-hair-20261104/M12-H06-approved.png",
+      "layers": [
+        {
+          "id": "skin-edge",
+          "source": "assets/wardrobe/hair/male-reviewed/M12-H06-edge.png?v=f38a1b3d",
+          "renderOrder": 2,
+          "recolor": false
+        },
+        {
+          "id": "front",
+          "source": "assets/wardrobe/hair/male-reviewed/M12-H06.png?v=bc2ddeee",
+          "renderOrder": 9
+        }
+      ],
+      "mean_abs_error": 0.058321464898025956,
+      "max_error": 5.0,
+      "skin_edge_pixels": 1052,
+      "central_face_error": 0.0
+    },
+    {
+      "head": "M12",
+      "face_id": "face-male-new-defined",
+      "hair": "hair-m6-mullet",
+      "number": 9,
+      "reference": "review/male-head-hair-20261104/M12-H09-approved.png",
+      "source": "/workspace/outputs/male-head-hair-review-20261103/hair09-individual-repairs-v6/M12-H09-after.png",
+      "layers": [
+        {
+          "id": "skin-edge",
+          "source": "assets/wardrobe/hair/male-reviewed/M12-H09-edge.png?v=2652655d",
+          "renderOrder": 2,
+          "recolor": false
+        },
+        {
+          "id": "front",
+          "source": "assets/wardrobe/hair/male-reviewed/M12-H09.png?v=733dc422",
+          "renderOrder": 9
+        }
+      ],
+      "mean_abs_error": 0.14145218504698992,
+      "max_error": 7.0,
+      "skin_edge_pixels": 1485,
+      "central_face_error": 0.0
+    },
+    {
+      "head": "M12",
+      "face_id": "face-male-new-defined",
+      "hair": "hair-m6-asymmetric-fringe",
+      "number": 12,
+      "reference": "review/male-head-hair-20261104/M12-H12-approved.png",
+      "source": "/workspace/palata404/review/male-head-hair-20261104/M12-H12-approved.png",
+      "layers": [
+        {
+          "id": "skin-edge",
+          "source": "assets/wardrobe/hair/male-reviewed/M12-H12-edge.png?v=c9d78a87",
+          "renderOrder": 2,
+          "recolor": false
+        },
+        {
+          "id": "front",
+          "source": "assets/wardrobe/hair/male-reviewed/M12-H12.png?v=ebe02acc",
+          "renderOrder": 9
+        }
+      ],
+      "mean_abs_error": 0.057096778800765746,
+      "max_error": 1.0,
+      "skin_edge_pixels": 1357,
+      "central_face_error": 0.0
+    },
+    {
+      "head": "M13",
+      "face_id": "face-male-new-youthful",
+      "hair": "hair-shoulder-length",
+      "number": 6,
+      "reference": "review/male-head-hair-20261104/M13-H06-approved.png",
+      "source": "/workspace/outputs/male-head-hair-review-20261103/ear-fit-review-v2/M13-H06-after.png",
+      "layers": [
+        {
+          "id": "skin-edge",
+          "source": "assets/wardrobe/hair/male-reviewed/M13-H06-edge.png?v=387534e1",
+          "renderOrder": 2,
+          "recolor": false
+        },
+        {
+          "id": "front",
+          "source": "assets/wardrobe/hair/male-reviewed/M13-H06.png?v=d9267bc5",
+          "renderOrder": 9
+        }
+      ],
+      "mean_abs_error": 0.06001225914746821,
+      "max_error": 5.0,
+      "skin_edge_pixels": 1227,
+      "central_face_error": 0.0
+    },
+    {
+      "head": "M13",
+      "face_id": "face-male-new-youthful",
+      "hair": "hair-m6-mullet",
+      "number": 9,
+      "reference": "review/male-head-hair-20261104/M13-H09-approved.png",
+      "source": "/workspace/outputs/male-head-hair-review-20261103/hair09-individual-repairs-v6/M13-H09-after.png",
+      "layers": [
+        {
+          "id": "skin-edge",
+          "source": "assets/wardrobe/hair/male-reviewed/M13-H09-edge.png?v=65f526aa",
+          "renderOrder": 2,
+          "recolor": false
+        },
+        {
+          "id": "front",
+          "source": "assets/wardrobe/hair/male-reviewed/M13-H09.png?v=1327619b",
+          "renderOrder": 9
+        }
+      ],
+      "mean_abs_error": 0.14108474301491725,
+      "max_error": 7.0,
+      "skin_edge_pixels": 1493,
+      "central_face_error": 0.0
+    },
+    {
+      "head": "M13",
+      "face_id": "face-male-new-youthful",
+      "hair": "hair-m6-asymmetric-fringe",
+      "number": 12,
+      "reference": "review/male-head-hair-20261104/M13-H12-approved.png",
+      "source": "/workspace/palata404/review/male-head-hair-20261104/M13-H12-approved.png",
+      "layers": [
+        {
+          "id": "skin-edge",
+          "source": "assets/wardrobe/hair/male-reviewed/M13-H12-edge.png?v=9eb78c99",
+          "renderOrder": 2,
+          "recolor": false
+        },
+        {
+          "id": "front",
+          "source": "assets/wardrobe/hair/male-reviewed/M13-H12.png?v=86c9f8c4",
+          "renderOrder": 9
+        }
+      ],
+      "mean_abs_error": 0.057005196360294094,
+      "max_error": 0.8210841983852326,
+      "skin_edge_pixels": 1411,
+      "central_face_error": 0.0
+    },
+    {
+      "head": "M14",
+      "face_id": "face-male-new-mature",
+      "hair": "hair-shoulder-length",
+      "number": 6,
+      "reference": "review/male-head-hair-20261104/M14-H06-approved.png",
+      "source": "/workspace/outputs/male-head-hair-review-20261103/ear-fit-review-v2/M14-H06-after.png",
+      "layers": [
+        {
+          "id": "skin-edge",
+          "source": "assets/wardrobe/hair/male-reviewed/M14-H06-edge.png?v=33bf97cb",
+          "renderOrder": 2,
+          "recolor": false
+        },
+        {
+          "id": "front",
+          "source": "assets/wardrobe/hair/male-reviewed/M14-H06.png?v=e58838fa",
+          "renderOrder": 9
+        }
+      ],
+      "mean_abs_error": 0.05990024795368578,
+      "max_error": 5.0,
+      "skin_edge_pixels": 1211,
+      "central_face_error": 0.0
+    },
+    {
+      "head": "M14",
+      "face_id": "face-male-new-mature",
+      "hair": "hair-m6-mullet",
+      "number": 9,
+      "reference": "review/male-head-hair-20261104/M14-H09-approved.png",
+      "source": "/workspace/outputs/male-head-hair-review-20261103/hair09-individual-repairs-v6/M14-H09-after.png",
+      "layers": [
+        {
+          "id": "skin-edge",
+          "source": "assets/wardrobe/hair/male-reviewed/M14-H09-edge.png?v=8d7058bc",
+          "renderOrder": 2,
+          "recolor": false
+        },
+        {
+          "id": "front",
+          "source": "assets/wardrobe/hair/male-reviewed/M14-H09.png?v=bc0d87fc",
+          "renderOrder": 9
+        }
+      ],
+      "mean_abs_error": 0.13804763078107463,
+      "max_error": 7.0,
+      "skin_edge_pixels": 1458,
+      "central_face_error": 0.0
+    },
+    {
+      "head": "M14",
+      "face_id": "face-male-new-mature",
+      "hair": "hair-m6-asymmetric-fringe",
+      "number": 12,
+      "reference": "review/male-head-hair-20261104/M14-H12-approved.png",
+      "source": "/workspace/palata404/review/male-head-hair-20261104/M14-H12-approved.png",
+      "layers": [
+        {
+          "id": "skin-edge",
+          "source": "assets/wardrobe/hair/male-reviewed/M14-H12-edge.png?v=b7835af5",
+          "renderOrder": 2,
+          "recolor": false
+        },
+        {
+          "id": "front",
+          "source": "assets/wardrobe/hair/male-reviewed/M14-H12.png?v=43c4ca46",
+          "renderOrder": 9
+        }
+      ],
+      "mean_abs_error": 0.05700394405739192,
+      "max_error": 2.0,
+      "skin_edge_pixels": 1422,
+      "central_face_error": 0.0
+    },
+    {
+      "head": "M15",
+      "face_id": "face-male-new-freckled-pierced",
+      "hair": "hair-shoulder-length",
+      "number": 6,
+      "reference": "review/male-head-hair-20261104/M15-H06-approved.png",
+      "source": "/workspace/palata404/review/male-head-hair-20261104/M15-H06-approved.png",
+      "layers": [
+        {
+          "id": "skin-edge",
+          "source": "assets/wardrobe/hair/male-reviewed/M15-H06-edge.png?v=9ae44213",
+          "renderOrder": 2,
+          "recolor": false
+        },
+        {
+          "id": "front",
+          "source": "assets/wardrobe/hair/male-reviewed/M15-H06.png?v=a32173c8",
+          "renderOrder": 9
+        }
+      ],
+      "mean_abs_error": 0.058279540540490546,
+      "max_error": 5.0,
+      "skin_edge_pixels": 1052,
+      "central_face_error": 0.0
+    },
+    {
+      "head": "M15",
+      "face_id": "face-male-new-freckled-pierced",
+      "hair": "hair-m6-mullet",
+      "number": 9,
+      "reference": "review/male-head-hair-20261104/M15-H09-approved.png",
+      "source": "/workspace/outputs/male-head-hair-review-20261103/hair09-individual-repairs-v6/M15-H09-after.png",
+      "layers": [
+        {
+          "id": "skin-edge",
+          "source": "assets/wardrobe/hair/male-reviewed/M15-H09-edge.png?v=4388d0ff",
+          "renderOrder": 2,
+          "recolor": false
+        },
+        {
+          "id": "front",
+          "source": "assets/wardrobe/hair/male-reviewed/M15-H09.png?v=911a4cf1",
+          "renderOrder": 9
+        }
+      ],
+      "mean_abs_error": 0.1393995740487493,
+      "max_error": 7.0,
+      "skin_edge_pixels": 1564,
+      "central_face_error": 0.0
+    },
+    {
+      "head": "M15",
+      "face_id": "face-male-new-freckled-pierced",
+      "hair": "hair-m6-asymmetric-fringe",
+      "number": 12,
+      "reference": "review/male-head-hair-20261104/M15-H12-approved.png",
+      "source": "/workspace/palata404/review/male-head-hair-20261104/M15-H12-approved.png",
+      "layers": [
+        {
+          "id": "skin-edge",
+          "source": "assets/wardrobe/hair/male-reviewed/M15-H12-edge.png?v=48441a24",
+          "renderOrder": 2,
+          "recolor": false
+        },
+        {
+          "id": "front",
+          "source": "assets/wardrobe/hair/male-reviewed/M15-H12.png?v=0a7f2b92",
+          "renderOrder": 9
+        }
+      ],
+      "mean_abs_error": 0.057047398654860866,
+      "max_error": 1.0,
+      "skin_edge_pixels": 1386,
+      "central_face_error": 0.0
+    },
+    {
+      "head": "M16",
+      "face_id": "face-male-new-stern",
+      "hair": "hair-shoulder-length",
+      "number": 6,
+      "reference": "review/male-head-hair-20261104/M16-H06-approved.png",
+      "source": "/workspace/outputs/male-head-hair-review-20261103/approved-reference-h06-h09-h12-propagation-v1/M16-H06.png",
+      "layers": [
+        {
+          "id": "skin-edge",
+          "source": "assets/wardrobe/hair/male-reviewed/M16-H06-edge.png?v=c48131ae",
+          "renderOrder": 2,
+          "recolor": false
+        },
+        {
+          "id": "front",
+          "source": "assets/wardrobe/hair/male-reviewed/M16-H06.png?v=e54742cc",
+          "renderOrder": 9
+        }
+      ],
+      "mean_abs_error": 0.059686438838417365,
+      "max_error": 5.0,
+      "skin_edge_pixels": 1115,
+      "central_face_error": 0.0
+    },
+    {
+      "head": "M16",
+      "face_id": "face-male-new-stern",
+      "hair": "hair-m6-mullet",
+      "number": 9,
+      "reference": "review/male-head-hair-20261104/M16-H09-approved.png",
+      "source": "/workspace/outputs/male-head-hair-review-20261103/hair09-individual-repairs-v6/M16-H09-after.png",
+      "layers": [
+        {
+          "id": "skin-edge",
+          "source": "assets/wardrobe/hair/male-reviewed/M16-H09-edge.png?v=ac5b8ee0",
+          "renderOrder": 2,
+          "recolor": false
+        },
+        {
+          "id": "front",
+          "source": "assets/wardrobe/hair/male-reviewed/M16-H09.png?v=aebf4f30",
+          "renderOrder": 9
+        }
+      ],
+      "mean_abs_error": 0.14117030091623162,
+      "max_error": 7.0,
+      "skin_edge_pixels": 1539,
+      "central_face_error": 0.0
+    },
+    {
+      "head": "M16",
+      "face_id": "face-male-new-stern",
+      "hair": "hair-m6-asymmetric-fringe",
+      "number": 12,
+      "reference": "review/male-head-hair-20261104/M16-H12-approved.png",
+      "source": "/workspace/palata404/review/male-head-hair-20261104/M16-H12-approved.png",
+      "layers": [
+        {
+          "id": "skin-edge",
+          "source": "assets/wardrobe/hair/male-reviewed/M16-H12-edge.png?v=d2747ff8",
+          "renderOrder": 2,
+          "recolor": false
+        },
+        {
+          "id": "front",
+          "source": "assets/wardrobe/hair/male-reviewed/M16-H12.png?v=87068549",
+          "renderOrder": 9
+        }
+      ],
+      "mean_abs_error": 0.057040926227867904,
+      "max_error": 1.0,
+      "skin_edge_pixels": 1414,
+      "central_face_error": 0.0
+    }
+  ],
+  "config": {
+    "version": "male-reviewed-20261104",
+    "heads": {
+      "@native": {
+        "code": "M01",
+        "layers": {
+          "hair-shoulder-length": [
+            {
+              "id": "skin-edge",
+              "source": "assets/wardrobe/hair/male-reviewed/M01-H06-edge.png?v=f9516a21",
+              "renderOrder": 2,
+              "recolor": false
+            },
+            {
+              "id": "front",
+              "source": "assets/wardrobe/hair/male-reviewed/M01-H06.png?v=14dc81e7",
+              "renderOrder": 9
+            }
+          ],
+          "hair-m6-mullet": [
+            {
+              "id": "skin-edge",
+              "source": "assets/wardrobe/hair/male-reviewed/M01-H09-edge.png?v=900e9499",
+              "renderOrder": 2,
+              "recolor": false
+            },
+            {
+              "id": "front",
+              "source": "assets/wardrobe/hair/male-reviewed/M01-H09.png?v=b9054826",
+              "renderOrder": 9
+            }
+          ],
+          "hair-m6-asymmetric-fringe": [
+            {
+              "id": "skin-edge",
+              "source": "assets/wardrobe/hair/male-reviewed/M01-H12-edge.png?v=0932a81c",
+              "renderOrder": 2,
+              "recolor": false
+            },
+            {
+              "id": "front",
+              "source": "assets/wardrobe/hair/male-reviewed/M01-H12.png?v=1bfb9f90",
+              "renderOrder": 9
+            }
+          ]
+        },
+        "placements": {
+          "hair-bob": {
+            "dx": 0,
+            "dy": 0
+          },
+          "hair-double-buns": {
+            "dx": 0,
+            "dy": 0
+          },
+          "hair-m6-topknot": {
+            "dx": 0,
+            "dy": 0
+          }
+        }
+      },
+      "face-asian": {
+        "code": "M02",
+        "layers": {
+          "hair-shoulder-length": [
+            {
+              "id": "skin-edge",
+              "source": "assets/wardrobe/hair/male-reviewed/M02-H06-edge.png?v=00062f08",
+              "renderOrder": 2,
+              "recolor": false
+            },
+            {
+              "id": "front",
+              "source": "assets/wardrobe/hair/male-reviewed/M02-H06.png?v=c7d39ff5",
+              "renderOrder": 9
+            }
+          ],
+          "hair-m6-mullet": [
+            {
+              "id": "skin-edge",
+              "source": "assets/wardrobe/hair/male-reviewed/M02-H09-edge.png?v=e1c17bea",
+              "renderOrder": 2,
+              "recolor": false
+            },
+            {
+              "id": "front",
+              "source": "assets/wardrobe/hair/male-reviewed/M02-H09.png?v=81694a4b",
+              "renderOrder": 9
+            }
+          ],
+          "hair-m6-asymmetric-fringe": [
+            {
+              "id": "skin-edge",
+              "source": "assets/wardrobe/hair/male-reviewed/M02-H12-edge.png?v=59604240",
+              "renderOrder": 2,
+              "recolor": false
+            },
+            {
+              "id": "front",
+              "source": "assets/wardrobe/hair/male-reviewed/M02-H12.png?v=5bf37509",
+              "renderOrder": 9
+            }
+          ]
+        },
+        "placements": {
+          "hair-bob": {
+            "dx": 0,
+            "dy": 0
+          },
+          "hair-double-buns": {
+            "dx": 0,
+            "dy": 0
+          },
+          "hair-m6-topknot": {
+            "dx": 3,
+            "dy": 0
+          }
+        }
+      },
+      "face-young": {
+        "code": "M03",
+        "layers": {
+          "hair-shoulder-length": [
+            {
+              "id": "skin-edge",
+              "source": "assets/wardrobe/hair/male-reviewed/M03-H06-edge.png?v=3b2e8a08",
+              "renderOrder": 2,
+              "recolor": false
+            },
+            {
+              "id": "front",
+              "source": "assets/wardrobe/hair/male-reviewed/M03-H06.png?v=85df8d96",
+              "renderOrder": 9
+            }
+          ],
+          "hair-m6-mullet": [
+            {
+              "id": "skin-edge",
+              "source": "assets/wardrobe/hair/male-reviewed/M03-H09-edge.png?v=cdf14a83",
+              "renderOrder": 2,
+              "recolor": false
+            },
+            {
+              "id": "front",
+              "source": "assets/wardrobe/hair/male-reviewed/M03-H09.png?v=b3e15128",
+              "renderOrder": 9
+            }
+          ],
+          "hair-m6-asymmetric-fringe": [
+            {
+              "id": "skin-edge",
+              "source": "assets/wardrobe/hair/male-reviewed/M03-H12-edge.png?v=f023a2da",
+              "renderOrder": 2,
+              "recolor": false
+            },
+            {
+              "id": "front",
+              "source": "assets/wardrobe/hair/male-reviewed/M03-H12.png?v=fcbba463",
+              "renderOrder": 9
+            }
+          ]
+        },
+        "placements": {
+          "hair-bob": {
+            "dx": 0,
+            "dy": -6
+          },
+          "hair-double-buns": {
+            "dx": 0,
+            "dy": 0
+          },
+          "hair-m6-topknot": {
+            "dx": 3,
+            "dy": 0
+          }
+        }
+      },
+      "face-exhausted": {
+        "code": "M04",
+        "layers": {
+          "hair-shoulder-length": [
+            {
+              "id": "skin-edge",
+              "source": "assets/wardrobe/hair/male-reviewed/M04-H06-edge.png?v=388199e0",
+              "renderOrder": 2,
+              "recolor": false
+            },
+            {
+              "id": "front",
+              "source": "assets/wardrobe/hair/male-reviewed/M04-H06.png?v=e6a5a1ba",
+              "renderOrder": 9
+            }
+          ],
+          "hair-m6-mullet": [
+            {
+              "id": "skin-edge",
+              "source": "assets/wardrobe/hair/male-reviewed/M04-H09-edge.png?v=f50bcf0e",
+              "renderOrder": 2,
+              "recolor": false
+            },
+            {
+              "id": "front",
+              "source": "assets/wardrobe/hair/male-reviewed/M04-H09.png?v=4e2f4a7c",
+              "renderOrder": 9
+            }
+          ],
+          "hair-m6-asymmetric-fringe": [
+            {
+              "id": "skin-edge",
+              "source": "assets/wardrobe/hair/male-reviewed/M04-H12-edge.png?v=307296e1",
+              "renderOrder": 2,
+              "recolor": false
+            },
+            {
+              "id": "front",
+              "source": "assets/wardrobe/hair/male-reviewed/M04-H12.png?v=0f67832a",
+              "renderOrder": 9
+            }
+          ]
+        },
+        "placements": {
+          "hair-bob": {
+            "dx": 0,
+            "dy": -6
+          },
+          "hair-double-buns": {
+            "dx": 3,
+            "dy": -8
+          },
+          "hair-m6-topknot": {
+            "dx": 3,
+            "dy": 0
+          }
+        }
+      },
+      "face-elder": {
+        "code": "M05",
+        "layers": {
+          "hair-shoulder-length": [
+            {
+              "id": "skin-edge",
+              "source": "assets/wardrobe/hair/male-reviewed/M05-H06-edge.png?v=fd0c65b8",
+              "renderOrder": 2,
+              "recolor": false
+            },
+            {
+              "id": "front",
+              "source": "assets/wardrobe/hair/male-reviewed/M05-H06.png?v=6ac7fdf9",
+              "renderOrder": 9
+            }
+          ],
+          "hair-m6-mullet": [
+            {
+              "id": "skin-edge",
+              "source": "assets/wardrobe/hair/male-reviewed/M05-H09-edge.png?v=7630b10c",
+              "renderOrder": 2,
+              "recolor": false
+            },
+            {
+              "id": "front",
+              "source": "assets/wardrobe/hair/male-reviewed/M05-H09.png?v=1881dcbd",
+              "renderOrder": 9
+            }
+          ],
+          "hair-m6-asymmetric-fringe": [
+            {
+              "id": "skin-edge",
+              "source": "assets/wardrobe/hair/male-reviewed/M05-H12-edge.png?v=8387ed0b",
+              "renderOrder": 2,
+              "recolor": false
+            },
+            {
+              "id": "front",
+              "source": "assets/wardrobe/hair/male-reviewed/M05-H12.png?v=65c53d82",
+              "renderOrder": 9
+            }
+          ]
+        },
+        "placements": {
+          "hair-bob": {
+            "dx": 0,
+            "dy": -6
+          },
+          "hair-double-buns": {
+            "dx": 3,
+            "dy": -8
+          },
+          "hair-m6-topknot": {
+            "dx": 3,
+            "dy": 0
+          }
+        }
+      },
+      "face-alternative": {
+        "code": "M06",
+        "layers": {
+          "hair-shoulder-length": [
+            {
+              "id": "skin-edge",
+              "source": "assets/wardrobe/hair/male-reviewed/M06-H06-edge.png?v=d7e376ce",
+              "renderOrder": 2,
+              "recolor": false
+            },
+            {
+              "id": "front",
+              "source": "assets/wardrobe/hair/male-reviewed/M06-H06.png?v=4110a644",
+              "renderOrder": 9
+            }
+          ],
+          "hair-m6-mullet": [
+            {
+              "id": "skin-edge",
+              "source": "assets/wardrobe/hair/male-reviewed/M06-H09-edge.png?v=08634eb1",
+              "renderOrder": 2,
+              "recolor": false
+            },
+            {
+              "id": "front",
+              "source": "assets/wardrobe/hair/male-reviewed/M06-H09.png?v=3345e533",
+              "renderOrder": 9
+            }
+          ],
+          "hair-m6-asymmetric-fringe": [
+            {
+              "id": "skin-edge",
+              "source": "assets/wardrobe/hair/male-reviewed/M06-H12-edge.png?v=6dd26e3e",
+              "renderOrder": 2,
+              "recolor": false
+            },
+            {
+              "id": "front",
+              "source": "assets/wardrobe/hair/male-reviewed/M06-H12.png?v=535d3ebe",
+              "renderOrder": 9
+            }
+          ]
+        },
+        "placements": {
+          "hair-bob": {
+            "dx": 0,
+            "dy": -6
+          },
+          "hair-double-buns": {
+            "dx": 3,
+            "dy": -8
+          },
+          "hair-m6-topknot": {
+            "dx": 3,
+            "dy": 0
+          }
+        }
+      },
+      "face-male-goth-pierced": {
+        "code": "M07",
+        "layers": {
+          "hair-shoulder-length": [
+            {
+              "id": "skin-edge",
+              "source": "assets/wardrobe/hair/male-reviewed/M07-H06-edge.png?v=065bbbab",
+              "renderOrder": 2,
+              "recolor": false
+            },
+            {
+              "id": "front",
+              "source": "assets/wardrobe/hair/male-reviewed/M07-H06.png?v=17af2149",
+              "renderOrder": 9
+            }
+          ],
+          "hair-m6-mullet": [
+            {
+              "id": "skin-edge",
+              "source": "assets/wardrobe/hair/male-reviewed/M07-H09-edge.png?v=320ff07e",
+              "renderOrder": 2,
+              "recolor": false
+            },
+            {
+              "id": "front",
+              "source": "assets/wardrobe/hair/male-reviewed/M07-H09.png?v=75783aba",
+              "renderOrder": 9
+            }
+          ],
+          "hair-m6-asymmetric-fringe": [
+            {
+              "id": "skin-edge",
+              "source": "assets/wardrobe/hair/male-reviewed/M07-H12-edge.png?v=c9130d58",
+              "renderOrder": 2,
+              "recolor": false
+            },
+            {
+              "id": "front",
+              "source": "assets/wardrobe/hair/male-reviewed/M07-H12.png?v=4f63b429",
+              "renderOrder": 9
+            }
+          ]
+        },
+        "placements": {
+          "hair-bob": {
+            "dx": 0,
+            "dy": -6
+          },
+          "hair-double-buns": {
+            "dx": 3,
+            "dy": -8
+          },
+          "hair-m6-topknot": {
+            "dx": 3,
+            "dy": 0
+          }
+        }
+      },
+      "face-male-freckled": {
+        "code": "M08",
+        "layers": {
+          "hair-shoulder-length": [
+            {
+              "id": "skin-edge",
+              "source": "assets/wardrobe/hair/male-reviewed/M08-H06-edge.png?v=1ba39a8f",
+              "renderOrder": 2,
+              "recolor": false
+            },
+            {
+              "id": "front",
+              "source": "assets/wardrobe/hair/male-reviewed/M08-H06.png?v=255fe074",
+              "renderOrder": 9
+            }
+          ],
+          "hair-m6-mullet": [
+            {
+              "id": "skin-edge",
+              "source": "assets/wardrobe/hair/male-reviewed/M08-H09-edge.png?v=7a90f135",
+              "renderOrder": 2,
+              "recolor": false
+            },
+            {
+              "id": "front",
+              "source": "assets/wardrobe/hair/male-reviewed/M08-H09.png?v=39659083",
+              "renderOrder": 9
+            }
+          ],
+          "hair-m6-asymmetric-fringe": [
+            {
+              "id": "skin-edge",
+              "source": "assets/wardrobe/hair/male-reviewed/M08-H12-edge.png?v=b1412964",
+              "renderOrder": 2,
+              "recolor": false
+            },
+            {
+              "id": "front",
+              "source": "assets/wardrobe/hair/male-reviewed/M08-H12.png?v=94af5e54",
+              "renderOrder": 9
+            }
+          ]
+        },
+        "placements": {
+          "hair-bob": {
+            "dx": 0,
+            "dy": -6
+          },
+          "hair-double-buns": {
+            "dx": 3,
+            "dy": -8
+          },
+          "hair-m6-topknot": {
+            "dx": 3,
+            "dy": 0
+          }
+        }
+      },
+      "face-male-blue-eyes": {
+        "code": "M09",
+        "layers": {
+          "hair-shoulder-length": [
+            {
+              "id": "skin-edge",
+              "source": "assets/wardrobe/hair/male-reviewed/M09-H06-edge.png?v=9dc335fa",
+              "renderOrder": 2,
+              "recolor": false
+            },
+            {
+              "id": "front",
+              "source": "assets/wardrobe/hair/male-reviewed/M09-H06.png?v=ff902360",
+              "renderOrder": 9
+            }
+          ],
+          "hair-m6-mullet": [
+            {
+              "id": "skin-edge",
+              "source": "assets/wardrobe/hair/male-reviewed/M09-H09-edge.png?v=d7cb815b",
+              "renderOrder": 2,
+              "recolor": false
+            },
+            {
+              "id": "front",
+              "source": "assets/wardrobe/hair/male-reviewed/M09-H09.png?v=b1376efd",
+              "renderOrder": 9
+            }
+          ],
+          "hair-m6-asymmetric-fringe": [
+            {
+              "id": "skin-edge",
+              "source": "assets/wardrobe/hair/male-reviewed/M09-H12-edge.png?v=9dd55304",
+              "renderOrder": 2,
+              "recolor": false
+            },
+            {
+              "id": "front",
+              "source": "assets/wardrobe/hair/male-reviewed/M09-H12.png?v=6a4288fa",
+              "renderOrder": 9
+            }
+          ]
+        },
+        "placements": {
+          "hair-bob": {
+            "dx": 0,
+            "dy": -6
+          },
+          "hair-double-buns": {
+            "dx": 3,
+            "dy": -8
+          },
+          "hair-m6-topknot": {
+            "dx": 3,
+            "dy": 0
+          }
+        }
+      },
+      "face-male-new-neutral": {
+        "code": "M10",
+        "layers": {
+          "hair-shoulder-length": [
+            {
+              "id": "skin-edge",
+              "source": "assets/wardrobe/hair/male-reviewed/M10-H06-edge.png?v=5c54af6b",
+              "renderOrder": 2,
+              "recolor": false
+            },
+            {
+              "id": "front",
+              "source": "assets/wardrobe/hair/male-reviewed/M10-H06.png?v=23a3c0ea",
+              "renderOrder": 9
+            }
+          ],
+          "hair-m6-mullet": [
+            {
+              "id": "skin-edge",
+              "source": "assets/wardrobe/hair/male-reviewed/M10-H09-edge.png?v=25179294",
+              "renderOrder": 2,
+              "recolor": false
+            },
+            {
+              "id": "front",
+              "source": "assets/wardrobe/hair/male-reviewed/M10-H09.png?v=06a83ad2",
+              "renderOrder": 9
+            }
+          ],
+          "hair-m6-asymmetric-fringe": [
+            {
+              "id": "skin-edge",
+              "source": "assets/wardrobe/hair/male-reviewed/M10-H12-edge.png?v=f05b0319",
+              "renderOrder": 2,
+              "recolor": false
+            },
+            {
+              "id": "front",
+              "source": "assets/wardrobe/hair/male-reviewed/M10-H12.png?v=ecde88f1",
+              "renderOrder": 9
+            }
+          ]
+        },
+        "placements": {
+          "hair-bob": {
+            "dx": 0,
+            "dy": -6
+          },
+          "hair-double-buns": {
+            "dx": 3,
+            "dy": -8
+          },
+          "hair-m6-topknot": {
+            "dx": 3,
+            "dy": 0
+          }
+        }
+      },
+      "face-male-new-almond": {
+        "code": "M11",
+        "layers": {
+          "hair-shoulder-length": [
+            {
+              "id": "skin-edge",
+              "source": "assets/wardrobe/hair/male-reviewed/M11-H06-edge.png?v=731b77ad",
+              "renderOrder": 2,
+              "recolor": false
+            },
+            {
+              "id": "front",
+              "source": "assets/wardrobe/hair/male-reviewed/M11-H06.png?v=5e990acc",
+              "renderOrder": 9
+            }
+          ],
+          "hair-m6-mullet": [
+            {
+              "id": "skin-edge",
+              "source": "assets/wardrobe/hair/male-reviewed/M11-H09-edge.png?v=1b34d9b4",
+              "renderOrder": 2,
+              "recolor": false
+            },
+            {
+              "id": "front",
+              "source": "assets/wardrobe/hair/male-reviewed/M11-H09.png?v=da84af0e",
+              "renderOrder": 9
+            }
+          ],
+          "hair-m6-asymmetric-fringe": [
+            {
+              "id": "skin-edge",
+              "source": "assets/wardrobe/hair/male-reviewed/M11-H12-edge.png?v=f7191b26",
+              "renderOrder": 2,
+              "recolor": false
+            },
+            {
+              "id": "front",
+              "source": "assets/wardrobe/hair/male-reviewed/M11-H12.png?v=1a3c56b2",
+              "renderOrder": 9
+            }
+          ]
+        },
+        "placements": {
+          "hair-bob": {
+            "dx": 0,
+            "dy": -6
+          },
+          "hair-double-buns": {
+            "dx": 3,
+            "dy": -8
+          },
+          "hair-m6-topknot": {
+            "dx": 3,
+            "dy": 0
+          }
+        }
+      },
+      "face-male-new-defined": {
+        "code": "M12",
+        "layers": {
+          "hair-shoulder-length": [
+            {
+              "id": "skin-edge",
+              "source": "assets/wardrobe/hair/male-reviewed/M12-H06-edge.png?v=f38a1b3d",
+              "renderOrder": 2,
+              "recolor": false
+            },
+            {
+              "id": "front",
+              "source": "assets/wardrobe/hair/male-reviewed/M12-H06.png?v=bc2ddeee",
+              "renderOrder": 9
+            }
+          ],
+          "hair-m6-mullet": [
+            {
+              "id": "skin-edge",
+              "source": "assets/wardrobe/hair/male-reviewed/M12-H09-edge.png?v=2652655d",
+              "renderOrder": 2,
+              "recolor": false
+            },
+            {
+              "id": "front",
+              "source": "assets/wardrobe/hair/male-reviewed/M12-H09.png?v=733dc422",
+              "renderOrder": 9
+            }
+          ],
+          "hair-m6-asymmetric-fringe": [
+            {
+              "id": "skin-edge",
+              "source": "assets/wardrobe/hair/male-reviewed/M12-H12-edge.png?v=c9d78a87",
+              "renderOrder": 2,
+              "recolor": false
+            },
+            {
+              "id": "front",
+              "source": "assets/wardrobe/hair/male-reviewed/M12-H12.png?v=ebe02acc",
+              "renderOrder": 9
+            }
+          ]
+        },
+        "placements": {
+          "hair-bob": {
+            "dx": 0,
+            "dy": -6
+          },
+          "hair-double-buns": {
+            "dx": 3,
+            "dy": -8
+          },
+          "hair-m6-topknot": {
+            "dx": 3,
+            "dy": 0
+          }
+        }
+      },
+      "face-male-new-youthful": {
+        "code": "M13",
+        "layers": {
+          "hair-shoulder-length": [
+            {
+              "id": "skin-edge",
+              "source": "assets/wardrobe/hair/male-reviewed/M13-H06-edge.png?v=387534e1",
+              "renderOrder": 2,
+              "recolor": false
+            },
+            {
+              "id": "front",
+              "source": "assets/wardrobe/hair/male-reviewed/M13-H06.png?v=d9267bc5",
+              "renderOrder": 9
+            }
+          ],
+          "hair-m6-mullet": [
+            {
+              "id": "skin-edge",
+              "source": "assets/wardrobe/hair/male-reviewed/M13-H09-edge.png?v=65f526aa",
+              "renderOrder": 2,
+              "recolor": false
+            },
+            {
+              "id": "front",
+              "source": "assets/wardrobe/hair/male-reviewed/M13-H09.png?v=1327619b",
+              "renderOrder": 9
+            }
+          ],
+          "hair-m6-asymmetric-fringe": [
+            {
+              "id": "skin-edge",
+              "source": "assets/wardrobe/hair/male-reviewed/M13-H12-edge.png?v=9eb78c99",
+              "renderOrder": 2,
+              "recolor": false
+            },
+            {
+              "id": "front",
+              "source": "assets/wardrobe/hair/male-reviewed/M13-H12.png?v=86c9f8c4",
+              "renderOrder": 9
+            }
+          ]
+        },
+        "placements": {
+          "hair-bob": {
+            "dx": 0,
+            "dy": -6
+          },
+          "hair-double-buns": {
+            "dx": 3,
+            "dy": -8
+          },
+          "hair-m6-topknot": {
+            "dx": 3,
+            "dy": 0
+          }
+        }
+      },
+      "face-male-new-mature": {
+        "code": "M14",
+        "layers": {
+          "hair-shoulder-length": [
+            {
+              "id": "skin-edge",
+              "source": "assets/wardrobe/hair/male-reviewed/M14-H06-edge.png?v=33bf97cb",
+              "renderOrder": 2,
+              "recolor": false
+            },
+            {
+              "id": "front",
+              "source": "assets/wardrobe/hair/male-reviewed/M14-H06.png?v=e58838fa",
+              "renderOrder": 9
+            }
+          ],
+          "hair-m6-mullet": [
+            {
+              "id": "skin-edge",
+              "source": "assets/wardrobe/hair/male-reviewed/M14-H09-edge.png?v=8d7058bc",
+              "renderOrder": 2,
+              "recolor": false
+            },
+            {
+              "id": "front",
+              "source": "assets/wardrobe/hair/male-reviewed/M14-H09.png?v=bc0d87fc",
+              "renderOrder": 9
+            }
+          ],
+          "hair-m6-asymmetric-fringe": [
+            {
+              "id": "skin-edge",
+              "source": "assets/wardrobe/hair/male-reviewed/M14-H12-edge.png?v=b7835af5",
+              "renderOrder": 2,
+              "recolor": false
+            },
+            {
+              "id": "front",
+              "source": "assets/wardrobe/hair/male-reviewed/M14-H12.png?v=43c4ca46",
+              "renderOrder": 9
+            }
+          ]
+        },
+        "placements": {
+          "hair-bob": {
+            "dx": 0,
+            "dy": -6
+          },
+          "hair-double-buns": {
+            "dx": 3,
+            "dy": -8
+          },
+          "hair-m6-topknot": {
+            "dx": 3,
+            "dy": 0
+          }
+        }
+      },
+      "face-male-new-freckled-pierced": {
+        "code": "M15",
+        "layers": {
+          "hair-shoulder-length": [
+            {
+              "id": "skin-edge",
+              "source": "assets/wardrobe/hair/male-reviewed/M15-H06-edge.png?v=9ae44213",
+              "renderOrder": 2,
+              "recolor": false
+            },
+            {
+              "id": "front",
+              "source": "assets/wardrobe/hair/male-reviewed/M15-H06.png?v=a32173c8",
+              "renderOrder": 9
+            }
+          ],
+          "hair-m6-mullet": [
+            {
+              "id": "skin-edge",
+              "source": "assets/wardrobe/hair/male-reviewed/M15-H09-edge.png?v=4388d0ff",
+              "renderOrder": 2,
+              "recolor": false
+            },
+            {
+              "id": "front",
+              "source": "assets/wardrobe/hair/male-reviewed/M15-H09.png?v=911a4cf1",
+              "renderOrder": 9
+            }
+          ],
+          "hair-m6-asymmetric-fringe": [
+            {
+              "id": "skin-edge",
+              "source": "assets/wardrobe/hair/male-reviewed/M15-H12-edge.png?v=48441a24",
+              "renderOrder": 2,
+              "recolor": false
+            },
+            {
+              "id": "front",
+              "source": "assets/wardrobe/hair/male-reviewed/M15-H12.png?v=0a7f2b92",
+              "renderOrder": 9
+            }
+          ]
+        },
+        "placements": {
+          "hair-bob": {
+            "dx": 0,
+            "dy": -6
+          },
+          "hair-double-buns": {
+            "dx": 3,
+            "dy": -8
+          },
+          "hair-m6-topknot": {
+            "dx": 3,
+            "dy": 0
+          }
+        }
+      },
+      "face-male-new-stern": {
+        "code": "M16",
+        "layers": {
+          "hair-shoulder-length": [
+            {
+              "id": "skin-edge",
+              "source": "assets/wardrobe/hair/male-reviewed/M16-H06-edge.png?v=c48131ae",
+              "renderOrder": 2,
+              "recolor": false
+            },
+            {
+              "id": "front",
+              "source": "assets/wardrobe/hair/male-reviewed/M16-H06.png?v=e54742cc",
+              "renderOrder": 9
+            }
+          ],
+          "hair-m6-mullet": [
+            {
+              "id": "skin-edge",
+              "source": "assets/wardrobe/hair/male-reviewed/M16-H09-edge.png?v=ac5b8ee0",
+              "renderOrder": 2,
+              "recolor": false
+            },
+            {
+              "id": "front",
+              "source": "assets/wardrobe/hair/male-reviewed/M16-H09.png?v=aebf4f30",
+              "renderOrder": 9
+            }
+          ],
+          "hair-m6-asymmetric-fringe": [
+            {
+              "id": "skin-edge",
+              "source": "assets/wardrobe/hair/male-reviewed/M16-H12-edge.png?v=d2747ff8",
+              "renderOrder": 2,
+              "recolor": false
+            },
+            {
+              "id": "front",
+              "source": "assets/wardrobe/hair/male-reviewed/M16-H12.png?v=87068549",
+              "renderOrder": 9
+            }
+          ]
+        },
+        "placements": {
+          "hair-bob": {
+            "dx": 0,
+            "dy": -6
+          },
+          "hair-double-buns": {
+            "dx": 3,
+            "dy": -8
+          },
+          "hair-m6-topknot": {
+            "dx": 3,
+            "dy": 0
+          }
+        }
+      }
+    },
+    "headSources": {
+      "face-male-new-almond": "assets/wardrobe/hair/male-reviewed/M11-head.png?v=8263e3be",
+      "face-male-new-defined": "assets/wardrobe/hair/male-reviewed/M12-head.png?v=6a6e7722",
+      "face-male-new-youthful": "assets/wardrobe/hair/male-reviewed/M13-head.png?v=a1948318",
+      "face-male-new-mature": "assets/wardrobe/hair/male-reviewed/M14-head.png?v=385a5f21",
+      "face-male-new-freckled-pierced": "assets/wardrobe/hair/male-reviewed/M15-head.png?v=b7f5165b",
+      "face-male-new-stern": "assets/wardrobe/hair/male-reviewed/M16-head.png?v=fda82b62"
+    },
+    "shared": {
+      "hair-messy": "assets/wardrobe/hair/male-reviewed/hair01.png?v=21016822",
+      "hair-m6-cornrows": "assets/wardrobe/hair/male-reviewed/hair08.png?v=9606867c"
+    },
+    "thumbnails": {
+      "hair-messy": "assets/wardrobe/hair/male-reviewed/thumb-01.png?v=860c2c69",
+      "hair-m6-cornrows": "assets/wardrobe/hair/male-reviewed/thumb-08.png?v=721ae3ab",
+      "hair-shoulder-length": "assets/wardrobe/hair/male-reviewed/thumb-06.png?v=417dc0fb",
+      "hair-m6-mullet": "assets/wardrobe/hair/male-reviewed/thumb-09.png?v=db048650",
+      "hair-m6-asymmetric-fringe": "assets/wardrobe/hair/male-reviewed/thumb-12.png?v=5213b6a5"
+    }
+  },
+  "source_review_root": "/workspace/outputs/male-head-hair-review-20261103",
+  "body_sha256": {
+    "male": "b40a31b26dcf9aeea1dad02091228377330c9bb3af3a4b9669cfcc67247fc41d",
+    "female": "a27b499c03fc15c4788ae3a651483a36463f28b1f034178feccdaa852e7e50f9"
+  },
+  "method": "Own approved compositions unmatted against exact own original body/head. Hair and own skin-edge repairs are separate, all941x1672 with full alpha. No generated replacement portraits."
+}

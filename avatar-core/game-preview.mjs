@@ -1,5 +1,5 @@
 /** Game adapter. Inventory and Paper Doll remain the only owners of saved state. */
-import { ApprovedAvatar as AvatarEngine } from './approved/avatar.mjs?v=arms-approved-20261103';
+import { ApprovedAvatar as AvatarEngine } from './approved/avatar.mjs?v=breathing-20261104';
 const instances = new Map();
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
 const absolute = path => new URL('../' + path, import.meta.url).href;
@@ -15,15 +15,15 @@ const visibility = new ResizeObserver(entries => entries.forEach(({target}) => p
 reducedMotion.addEventListener('change', () => instances.forEach(playback));
 
 async function descriptor(snapshot) {
-    const {gender, face, hair, headwear, color, crown} = snapshot;
+    const {gender, face, faceId, hair, headwear, color, crown} = snapshot;
     const layers = [];
     for (const [slot,item] of [['face',face],['hair',hair],['headwear',headwear]]) {
         for (const part of item ? paperDollItemLayers(item,gender) : []) {
             const path = paperDollImageCandidates(part,gender).find(p => !failedPaperDollImages.has(p));
             if (!path) continue;
             let placement = part.placementByGender?.[gender] || part.placement || {x:0,y:0,width:941,height:1672};
-            const fit = slot === 'hair' ? femaleHairFitFor(gender,face?.id,hair.id,placement) : null;
-            const source = slot !== 'hair' ? absolute(path) : fit
+            const fit = slot === 'hair' ? femaleHairFitFor(gender,faceId,hair.id,placement) : null;
+            const source = slot !== 'hair' || part.recolor === false ? absolute(path) : fit
                 ? await fittedFemaleHairSource(path,color,part.colorReference,fit)
                 : await coloredHairSource(path,color,part.colorReference);
             if (fit) placement = {x:0,y:0,width:941,height:1672};
@@ -31,7 +31,7 @@ async function descriptor(snapshot) {
         }
     }
     layers.sort((a,b)=>a.order-b.order);
-    return {layers,crown,bodyMask:face?.bodyMaskByGender?.[gender] ? absolute(face.bodyMaskByGender[gender]) : null};
+    return {layers,crown,bodyMask:layers.some(layer=>layer.slot==='face') && face?.bodyMaskByGender?.[gender] ? absolute(face.bodyMaskByGender[gender]) : null};
 }
 function snapshot() {
     const gender=paperDollState.selectedGender;
@@ -42,7 +42,7 @@ function snapshot() {
     const clothing=['upperBody','outerwear','armor','loadout','gloves','pants','footwear','back','accessory'].map(selectedPaperDollItem);
     const unsupported=clothing.some(item=>item && paperDollItemLayers(item,gender).some(p=>paperDollImageCandidates(p,gender).length));
     const weapon=selectedPaperDollItem('weapon');
-    return {gender,face:selectedPaperDollItem('face') || null,hair:selectedPaperDollItem('hair'),headwear:selectedPaperDollItem('headwear'),
+    return {gender,face:paperDollRenderedFace(gender) || null,faceId:paperDollState.appearance.face,hair:selectedPaperDollItem('hair'),headwear:selectedPaperDollItem('headwear'),
         color:paperDollState.appearance.hairColor,crown,unsupported,weapon:weapon?.avatarWeapon ? weapon.id : null,
         key:JSON.stringify([gender,paperDollState.activeViewMode,paperDollState.appearance,weapon?.id,clothing.map(i=>i?.id),selectedPaperDollItem('headwear')?.id])};
 }

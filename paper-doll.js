@@ -59,8 +59,9 @@ function selectedPaperDollItem(slot) {
 // Null remains the original face in saves and in the wardrobe. The normalized
 // native female head is a render-only overlay; male rendering is unchanged.
 function paperDollRenderedFace(selectedGender = paperDollState.selectedGender) {
-    return selectedPaperDollItem('face') ||
+    const face = selectedPaperDollItem('face') ||
         (typeof PAPER_DOLL_NATIVE_HEADS === 'object' ? PAPER_DOLL_NATIVE_HEADS[selectedGender] : undefined);
+    return maleReviewedHead(face, selectedGender);
 }
 
 function loadPaperDollState(legacy) {
@@ -148,13 +149,15 @@ function positionPaperDollLayer(image, placement, index) {
 
 // Resolve the same gender-specific parts for rendering and wardrobe status.
 function paperDollItemLayers(item, selectedGender) {
-    if (!Array.isArray(item?.layers) || !item.layers.length) return item ? [item] : [];
-    return item.layers.filter(part => part && typeof part.id === 'string' && /^[a-zA-Z0-9_-]+$/.test(part.id)
-        && (!Array.isArray(part.genders) || part.genders.includes(selectedGender)))
+    item = maleReviewedHead(item, selectedGender);
+    const parts = !Array.isArray(item?.layers) || !item.layers.length ? (item ? [item] : [])
+        : item.layers.filter(part => part && typeof part.id === 'string' && /^[a-zA-Z0-9_-]+$/.test(part.id)
+            && (!Array.isArray(part.genders) || part.genders.includes(selectedGender)))
         .map(part => ({ ...part, placement: part.placement ?? item.placement,
             placementByGender: part.placementByGender ?? item.placementByGender,
             fittedToGender: part.fittedToGender ?? item.fittedToGender,
             renderOrder: part.renderOrder ?? item.renderOrder }));
+    return maleReviewedHairParts(item, selectedGender, paperDollState.appearance.face, parts);
 }
 
 // Measured upper envelopes of the approved hair PNGs at their existing placements.
@@ -202,6 +205,7 @@ const paperDollCrownClipCache = new WeakMap();
 function applyPaperDollCrownMask(image, selectedGender) {
     const hair = selectedPaperDollItem('hair')?.id;
     const face = paperDollRenderedFace(selectedGender);
+    if (maleHairReviewFor(selectedGender, paperDollState.appearance.face, hair)) { image.style.clipPath = ''; return; }
     const active = face?.slot === 'face' || (selectedGender === 'male' && hair !== 'hair-messy') || hair === 'hair-bob';
     const source = active && PAPER_DOLL_CROWN_CONTOURS[hair]?.[selectedGender];
     if (!source) { image.style.clipPath = ''; return; }
@@ -233,8 +237,10 @@ function renderPaperDollAt(host, prefix = '') {
         const definition = PAPER_DOLL_SLOTS[slot];
         if (!definition) return;
         const item = slot === 'baseBody' ? { image: PAPER_DOLL_BODIES[selectedGender] } : slot === 'face' ? paperDollRenderedFace(selectedGender) : selectedPaperDollItem(slot);
-        const layered = Array.isArray(item?.layers) && item.layers.length > 0;
-        const parts = layered ? paperDollItemLayers(item, selectedGender) : [item || {}];
+        const parts = paperDollItemLayers(item || {}, selectedGender);
+        const review = slot === 'hair' && maleHairReviewFor(selectedGender, paperDollState.appearance.face, item?.id);
+        const layered = (Array.isArray(item?.layers) && item.layers.length > 0) ||
+            Boolean(review && (review.layers[item.id] || MALE_HAIR_REVIEW.shared[item.id]));
         // A multipart hair front reuses this stable root. Clearing it here would
         // reset its request and src on every HP/energy update.
         if (layered && !(slot === 'hair' && parts.some(part => part.id === 'front'))) {
@@ -280,7 +286,7 @@ function renderPaperDollAt(host, prefix = '') {
             image.paperHairRequest = null;
             image.classList.add('hidden'); image.removeAttribute('src'); return;
         }
-        const color = slot === 'hair' ? normalizeHairColor(paperDollState.appearance.hairColor) : 'original';
+        const color = slot === 'hair' && layer.recolor !== false ? normalizeHairColor(paperDollState.appearance.hairColor) : 'original';
         image.paperHairColorReference = layer.colorReference;
         const request = `${source}|${color}`;
         const fitKey = femaleFit?.key || '';

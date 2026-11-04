@@ -1,0 +1,87 @@
+{
+  "baseline": "c1190fc35f47a6735e8ccdb763fdf18100aaac55",
+  "runtime_before_sha256": {
+    "index.html": "155667801118944a74a774ca6c29dfd6a3ab4f93a851de8a35c6bf6da4a05b57",
+    "paper-doll.js": "e99f462578484a7378d720ea6d23d7356c387ba835fcc6f81571521cd4a9a8bf",
+    "paper-doll-data.js": "c7ff40f886085ec25fb472481f691b1a5dcf0a4ac046bc8db6a4ded1747a0e41",
+    "avatar-core/game-preview.mjs": "da0c90807008df523a9ccea6eedadeb6d38d91cd3046a3a01a57d30fa53721d4",
+    "style.css": "b62036482f0c6b04b9e035be609e8992ddbed0f518239d5c7e5c31a47b6ac2dc",
+    "avatar-core/approved/avatar.mjs": "94707fc856a0632dde68372e7f32e18348cb575bc8c404541cd6f4a8727d9d99",
+    "avatar-core/approved/male-scene.mjs": "d106ec7aa78882575f20b47546e0c83c0b471fe0f8355ce0382feb2d56450e6b",
+    "avatar-core/approved/female-scene.mjs": "156f016e4b561af53b4162d99a7a27c33ac2ff6149f435c72db9c335d63a9cda"
+  },
+  "runtime_after_sha256": {
+    "index.html": "91b0258910d46c59f14f51606c13250b6f513da881711c37cbcff5f2d51c1c72",
+    "paper-doll.js": "c8f4545fa0a9832530a4f84bffdcb17841c1ab0e8abbd02f88b72764581f6835",
+    "paper-doll-data.js": "19679185f465059da60808f20761e793077bbd247a8f4850d2de778ccb9f04e5",
+    "avatar-core/game-preview.mjs": "3b73284e81131e03b4520ce1f0bc0cd6e2724db9b48eebba58f7ea6b2c79b62b",
+    "style.css": "a2b9ea02e4938c5c47e0bbe32359ab89c586937de8c504ed58f58dc61b735b19",
+    "avatar-core/approved/avatar.mjs": "6b033d940a82eb33ebd35702567c7cca2217c026bde11cb125a08aca985ae423",
+    "avatar-core/approved/male-scene.mjs": "293d081dd55a4a14160b53ca88349b2285c7bdb9e6057bfc8e18df1e2b2d5d22",
+    "avatar-core/approved/female-scene.mjs": "3f35b2bc94c247e60285f4c136ffc9116f81ccad5d3d4767fd66fd493605b341"
+  },
+  "reason": "User-approved all male heads/hairstyles transfer including clean neck boundaries and individual fits; inventory/save IDs retained",
+  "superseded_runtime_sha256": {
+    "index.html": [
+      "155667801118944a74a774ca6c29dfd6a3ab4f93a851de8a35c6bf6da4a05b57",
+      "5df433687c282695296903a53491c0dbcdae1716820181a0d2b9ddeec62de0f5",
+      "f4846bef4a8e32f0ad49b3eb738a0e5523bb69e6ff05e9cb1b4f9bde052d7ef1"
+    ],
+    "paper-doll.js": [
+      "5abf405240fa5fc8abb172e5053d0823d06d68148bff425a11c7420a800423cf",
+      "e99f462578484a7378d720ea6d23d7356c387ba835fcc6f81571521cd4a9a8bf",
+      "fba267b5074fc8d0c0c4d6a307cdc7d75bf38193cb837f949e3480090a548997"
+    ],
+    "paper-doll-data.js": [
+      "0da56cc16540cfb1278ec00bfad873df1b56b2ee578b8ee9752155b9f84917d5",
+      "c7ff40f886085ec25fb472481f691b1a5dcf0a4ac046bc8db6a4ded1747a0e41",
+      "f6002174d13af82a62aa549027d73fa764fe26c2a119fba980e55ad3e2889b5c"
+    ],
+    "avatar-core/game-preview.mjs": [
+      "da0c90807008df523a9ccea6eedadeb6d38d91cd3046a3a01a57d30fa53721d4"
+    ],
+    "style.css": [
+      "ad38c78d010cfce7b64170a350b261e788aa33f9df933c71dcc35405f05c873e"
+    ]
+  },
+  "catalog_changes": {
+    "hair-m6-cornrows": {
+      "name": "\u0428\u0442\u043e\u0440\u043a\u0438"
+    }
+  },
+  "preexisting_weapon_presentation": {
+    "gear-knife": {
+      "avatarPoseUnavailable": true,
+      "thumbnail": "avatar-core/assets/weapons/knife-view-20261025/knife-view.thumb.png"
+    },
+    "gear-pm": {},
+    "gear-aks": {
+      "avatarWeapon": true,
+      "thumbnail": "avatar-core/assets/weapons/user-ak47-20261026/ak47-thumb.png"
+    }
+  },
+  "unchanged_baseline_runtime": {
+    "wardrobe.js": {
+      "sha256": "71af11da05182a0c0773cb8d8c357b32fb0f01bce9b2b8c7e4a12c26894ad756",
+      "historical_hashes": [
+        "dc97922f0aef5d58a636f8a0f244c3ed157275770e6b953e8132ba0f78628452"
+      ],
+      "archived_baseline": "review/male-head-hair-20261104/before/wardrobe.js"
+    }
+  },
+  "native_female_rendering": "Existing normalized native female head is now replayed in animated preview too, with raw face ID preserved for saved hair fits.",
+  "breathing": {
+    "amplitude": 1.25,
+    "cycleMs": 3600,
+    "previous_amplitude": 1,
+    "previous_cycleMs": 4000,
+    "genders": [
+      "male",
+      "female"
+    ],
+    "clothed_scale": [
+      1.00125,
+      1.000875
+    ]
+  }
+}

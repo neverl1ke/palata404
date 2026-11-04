@@ -1,0 +1,22 @@
+{
+  "amplitude": 1.25,
+  "cycleMs": 3600,
+  "genders": [
+    "male",
+    "female"
+  ],
+  "poses": [
+    "idle",
+    "rifle"
+  ],
+  "checks": [
+    "cycle closure within 0.01 channel average",
+    "same normalized phase at new period",
+    "stronger peak than previous amplitude",
+    "female analytic amplitude ratio 1.25",
+    "clothed animation duration 3.6s",
+    "reduced motion pauses engine"
+  ],
+  "unittest": "tests.test_animated_avatars: 6 passed",
+  "node_game_logic": "94 passed"
+}

@@ -264,7 +264,7 @@ const PAPER_DOLL_ITEMS = [
         genders: ['male'], fittedToGender: true, renderOrder: 9,
         genderVariants: { male: 'assets/wardrobe/hair/male-six/mohawk.png?v=05b3bc0b' },
         placementByGender: { male: { x: 0, y: 0, width: 941, height: 1672 } } },
-    { id: 'hair-m6-cornrows', slot: 'hair', name: 'Корнроу — тонке плетіння', icon: 'user', availableByDefault: true,
+    { id: 'hair-m6-cornrows', slot: 'hair', name: 'Шторки', icon: 'user', availableByDefault: true,
         thumbnailByGender: { male: 'assets/wardrobe/hair/male-six/thumbnails/cornrows.png?v=07195730' },
         genders: ['male'], fittedToGender: true, renderOrder: 9,
         genderVariants: { male: 'assets/wardrobe/hair/male-six/cornrows.png?v=1c70ac7c' },

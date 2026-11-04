@@ -1,0 +1,16 @@
+{
+  "viewports": "native941x1672",
+  "gender": "female",
+  "face_selection": null,
+  "head_comparison_box": [
+    350,
+    0,
+    591,
+    260
+  ],
+  "before_normalized_head_sync_MAE": 21.308559421215023,
+  "after_normalized_head_sync_MAE": 0.006564528141291627,
+  "after_max_error": 1,
+  "saved_face_stays_null": true,
+  "raw_bodies_unchanged": true
+}

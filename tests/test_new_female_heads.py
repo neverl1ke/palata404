@@ -5,7 +5,7 @@ import numpy as np
 from PIL import Image,ImageChops
 from scipy import ndimage as ndi
 from tests import test_game as support
-from tests.asset_history import active_female_heads, approved_current_hash
+from tests.asset_history import active_female_heads, approved_current_hash, accepted_catalog_snapshot
 ROOT=support.ROOT;REPORT=ROOT/'review/female-heads-new-library'
 def data():return json.loads((REPORT/'integration-manifest.json').read_text())
 
@@ -22,7 +22,7 @@ class NewFemaleHeadAssetTests(unittest.TestCase):
   def catalog(s):return json.loads(subprocess.check_output(['node','-e','const vm=require("vm");process.stdout.write(vm.runInNewContext(require("fs").readFileSync(0,"utf8")))'],input=s+code,text=True))
   before=catalog(subprocess.check_output(['git','show','cbe74df:paper-doll-data.js'],text=True,cwd=ROOT));after=catalog((ROOT/'paper-doll-data.js').read_text())
   now={i['id']:i for i in after['items']}
-  for i in before['items']:
+  for i in accepted_catalog_snapshot(before['items']):
    current=json.loads(json.dumps(now[i['id']]));old=json.loads(json.dumps(i))
    if old['slot']=='face':
     for k in ['genderVariants','bodyMaskByGender']:

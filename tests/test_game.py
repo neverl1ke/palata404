@@ -245,6 +245,7 @@ class GameTests(unittest.TestCase):
         self.context.add_init_script("""window.expectedHairDisplaySource=async(source,color,reference)=>{
             const g=paperDollState.selectedGender,item=selectedPaperDollItem('hair');
             const part=paperDollItemLayers(item,g).find(p=>p.id==='front')||item;
+            if(source===item.genderVariants?.[g]){source=part.genderVariants?.[g]||source;reference=part.colorReference;}
             const fit=source===part.genderVariants?.[g]&&typeof femaleHairFitFor==='function'?femaleHairFitFor(g,selectedPaperDollItem('face')?.id,item.id,part.placementByGender?.[g]??part.placement):null;
             return fit?fittedFemaleHairSource(source,color,reference,fit):coloredHairSource(source,color,reference);
         };""")
@@ -583,7 +584,7 @@ class GameTests(unittest.TestCase):
                                 preview = wardrobe.locator('.wardrobe-stage').screenshot(type='jpeg', quality=65)
                                 print('PATIENT_TUNIC_PREVIEW:' + json.dumps({'name':name+'-wardrobe','jpeg':base64.b64encode(preview).decode()},separators=(',',':')),flush=True)
                             wardrobe.get_by_role('button', name='Закрити гардероб', exact=True).click()
-                            self.page.locator('#character-paperdoll').scroll_into_view_if_needed()
+                            self.page.locator('#character-paperdoll').evaluate("e=>e.scrollIntoView({block:'nearest'})")
                             self.page.screenshot(path=str(results / f'{name}-main.png'))
                             if width == 1280 and os.getenv('GITHUB_ACTIONS') == 'true':
                                 preview = self.page.locator('#character-paperdoll').screenshot(type='jpeg', quality=65)
@@ -762,6 +763,8 @@ class GameTests(unittest.TestCase):
         self.assertEqual(self.page.evaluate('JSON.stringify({stats,inventory,equippedGear,gameProgress})'),before)
 
     def test_approved_avatars_show_native_faces_in_both_views_and_switch_to_trip(self):
+        # Layout capture freezes breathing; motion is verified in AnimatedAvatarTests.
+        self.page.emulate_media(reduced_motion='reduce')
         self.load()
         self.page.evaluate('equipPaperDollItem("face",null); openCustomization();')
         before=self.page.evaluate('JSON.stringify({stats,inventory,equippedGear,gameProgress,patient:paperDollState.patientLoadout,combat:paperDollState.combatLoadout})')
@@ -776,14 +779,20 @@ class GameTests(unittest.TestCase):
                     for prefix in ['', 'wardrobe-']:
                         # Both genders have identical dimensions; naturalWidth
                         # can still describe the previous PNG while src changes.
-                        self.page.locator(f'#{prefix}layer-body').wait_for(state='visible')
-                        self.assertTrue(self.page.locator(f'#{prefix}layer-body').is_visible())
-                        self.assertEqual(self.page.locator(f'#{prefix}layer-face').is_visible(), gender == 'female')
+                        host_id=prefix+'paperdoll' if prefix else 'character-paperdoll'
+                        if prefix:host_id='wardrobe-paperdoll'
+                        self.page.wait_for_function("""id=>{const h=document.getElementById(id),c=h.querySelector('canvas');return (h.dataset.avatarCoreReady==='true'&&c&&!c.hidden)||[...h.querySelectorAll('.char-layer')].some(i=>i.id.endsWith('layer-body')&&i.complete&&!i.classList.contains('hidden')&&getComputedStyle(i).visibility!=='hidden')}""",arg=host_id)
+                        animated=self.page.locator('#'+host_id).get_attribute('data-avatar-core-ready')=='true'
+                        if animated:self.assertTrue(self.page.locator('#'+host_id+' canvas').is_visible())
+                        else:
+                            self.assertTrue(self.page.locator(f'#{prefix}layer-body').is_visible())
+                            self.assertEqual(self.page.locator(f'#{prefix}layer-face').is_visible(), gender == 'female')
                     self.assertEqual(self.page.locator('#layer-body').get_attribute('src'),self.page.locator('#wardrobe-layer-body').get_attribute('src'))
                     self.page.screenshot(path=str(results/f'approved-{gender}-wardrobe-{width}x{height}.png'))
                     self.page.evaluate('closeCustomization()')
                     self.page.locator('#character-paperdoll').scroll_into_view_if_needed()
-                    self.assertTrue(self.page.locator('#layer-body').is_visible())
+                    animated=self.page.locator('#character-paperdoll').get_attribute('data-avatar-core-ready')=='true'
+                    self.assertTrue(self.page.locator('#character-paperdoll canvas' if animated else '#layer-body').is_visible())
                     self.page.screenshot(path=str(results/f'approved-{gender}-room-{width}x{height}.png'))
         self.page.evaluate('openCustomization()')
         self.assertEqual(self.page.locator('.wardrobe-view-switch button').all_text_contents(),['Пацієнт','Трип'])
@@ -1351,6 +1360,8 @@ class GameTests(unittest.TestCase):
     def test_crown_mask_pixels_locality_backgrounds_and_neckline(self):
         from io import BytesIO
         from PIL import ImageChops
+        # Replay the retained legacy crown contract; current native male layers are checked separately.
+        self.context.route('**/male-hair-fit.js?*',lambda route:route.fulfill(content_type='application/javascript',body='function maleHairReviewFor(){return null} function maleReviewedHead(face){return face} function maleReviewedHairParts(item,gender,face,parts){return parts}'))
         self.load()
         self.page.set_viewport_size({'width':1280,'height':800})
         self.page.evaluate('openCustomization();setGender("male");equipPaperDollItem("face","face-asian");equipPaperDollItem("hair","hair-shoulder-length");setHairColor("white")')
@@ -1743,6 +1754,9 @@ class GameTests(unittest.TestCase):
         self.assertEqual(missing,[])
 
     def test_hair_pack_ui_choices_shared_persistence_mobile_and_real_render_previews(self):
+        # Immutable catalog-authoring geometry (including its before/after resize recipe).
+        # Current own-head native layers are covered by the accepted male integration checks.
+        self.context.route('**/male-hair-fit.js?*',lambda route:route.fulfill(content_type='application/javascript',body='function maleHairReviewFor(){return null} function maleReviewedHead(face){return face} function maleReviewedHairParts(item,gender,face,parts){return parts}'))
         self.load()
         self.page.evaluate('openCustomization();setPaperDollView("combat");equipPaperDollItem("upperBody","patient-tunic");setPaperDollView("patient");')
         wardrobe=self.page.locator('#custom-modal')
@@ -1919,7 +1933,9 @@ class GameTests(unittest.TestCase):
             self.assertEqual(self.page.locator('[data-wardrobe-card]').count(),15)
             for prefix in ['', 'wardrobe-']:
                 self.assertEqual(self.page.locator(f'#{prefix}layer-face').get_attribute('src'),self.native_head_source())
-                self.assertTrue(self.page.locator(f'#{prefix}layer-body').is_visible())
+                host='#wardrobe-paperdoll' if prefix else '#character-paperdoll'
+                animated=self.page.locator(host).get_attribute('data-avatar-core-ready')=='true'
+                self.assertTrue(self.page.locator(host+' canvas' if animated else f'#{prefix}layer-body').is_visible())
         self.assertFalse(any(re.search(r'/face_[1-6]\.png',url) for url in requests))
 
     def test_equipment_swap_reload_and_legacy_training_bonus(self):
@@ -2096,9 +2112,10 @@ class GameTests(unittest.TestCase):
         self.page.evaluate('openProcedureRoom()')
         self.assertEqual(self.page.get_by_role('button', name='Придбати малу аптечку за 30 срібла', exact=True).count(), 1)
         self.page.evaluate('openInventory()')
-        self.assertEqual(self.page.locator('#stash-items .game-icon').count(), 5)
-        self.assertEqual(self.page.locator('#stash-items .game-icon').nth(2).get_attribute('src'),
-                         'assets/icons/rifle.svg')
+        self.assertEqual(self.page.locator('#stash-items .game-icon').count(), 3)
+        self.assertEqual(self.page.locator('#stash-items .weapon-icon-frame').count(), 2)
+        rifle=self.page.evaluate("PAPER_DOLL_ITEMS.find(i=>i.id==='gear-aks').thumbnail")
+        self.assertTrue(self.page.locator('#stash-items .weapon-icon-frame img').evaluate_all('(images,expected)=>images.some(i=>i.getAttribute("src")===expected)',rifle))
         for action, selector in [
                 ('openGym()', '#gym-exercises-list'),
                 ('openMedicalHub()', '#rooms-list-container'),

@@ -2059,6 +2059,6 @@ body.modal-open {
 .wardrobe-preview[data-portrait="true"] .avatar-core-wardrobe-preview { left: 0; max-width: none; transform: none; }
 .avatar-core-wardrobe-preview[hidden] { display: none; }
 /* Preserve the complete approved clothed composition while pose sleeves are unavailable. */
-.avatar-clothed-breathing { transform-origin: 50% 100%; animation: clothed-avatar-breath 4s ease-in-out infinite; }
-@keyframes clothed-avatar-breath { 0%,100% { scale: 1; } 50% { scale: 1.001 1.0007; } }
+.avatar-clothed-breathing { transform-origin: 50% 100%; animation: clothed-avatar-breath 3.6s ease-in-out infinite; }
+@keyframes clothed-avatar-breath { 0%,100% { scale: 1; } 50% { scale: 1.00125 1.000875; } }
 @media (prefers-reduced-motion: reduce) { .avatar-clothed-breathing { animation: none; } }

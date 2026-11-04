@@ -1,0 +1,1100 @@
+{
+  "animated_comparisons": [
+    {
+      "head": "M01",
+      "hair": 6,
+      "mean_abs_error": 1.4742916829873352,
+      "head_core_mean_error": 0.024598622674478363,
+      "sources": [
+        {
+          "slot": "hair",
+          "source": "http://127.0.0.1:43599/assets/wardrobe/hair/male-reviewed/M01-H06-edge.png?v=f9516a21",
+          "order": 2
+        },
+        {
+          "slot": "hair",
+          "source": "assets/wardrobe/hair/male-reviewed/M01-H06.png?v=14dc81e7",
+          "order": 9
+        }
+      ]
+    },
+    {
+      "head": "M01",
+      "hair": 9,
+      "mean_abs_error": 1.6607311659485573,
+      "head_core_mean_error": 0.0933950046253469,
+      "sources": [
+        {
+          "slot": "hair",
+          "source": "http://127.0.0.1:43599/assets/wardrobe/hair/male-reviewed/M01-H09-edge.png?v=900e9499",
+          "order": 2
+        },
+        {
+          "slot": "hair",
+          "source": "assets/wardrobe/hair/male-reviewed/M01-H09.png?v=b9054826",
+          "order": 9
+        }
+      ]
+    },
+    {
+      "head": "M01",
+      "hair": 12,
+      "mean_abs_error": 1.4030500065282674,
+      "head_core_mean_error": 0.007688354404358105,
+      "sources": [
+        {
+          "slot": "hair",
+          "source": "http://127.0.0.1:43599/assets/wardrobe/hair/male-reviewed/M01-H12-edge.png?v=0932a81c",
+          "order": 2
+        },
+        {
+          "slot": "hair",
+          "source": "assets/wardrobe/hair/male-reviewed/M01-H12.png?v=1bfb9f90",
+          "order": 9
+        }
+      ]
+    },
+    {
+      "head": "M02",
+      "hair": 6,
+      "mean_abs_error": 1.4159785872829351,
+      "head_core_mean_error": 0.00397574262514133,
+      "sources": [
+        {
+          "slot": "face",
+          "source": "http://127.0.0.1:43599/assets/wardrobe/faces/male_asian_head.png?v=eedab3fa",
+          "order": 1
+        },
+        {
+          "slot": "hair",
+          "source": "http://127.0.0.1:43599/assets/wardrobe/hair/male-reviewed/M02-H06-edge.png?v=00062f08",
+          "order": 2
+        },
+        {
+          "slot": "hair",
+          "source": "assets/wardrobe/hair/male-reviewed/M02-H06.png?v=c7d39ff5",
+          "order": 9
+        }
+      ]
+    },
+    {
+      "head": "M02",
+      "hair": 9,
+      "mean_abs_error": 1.5762632197414805,
+      "head_core_mean_error": 0.06925274951176894,
+      "sources": [
+        {
+          "slot": "face",
+          "source": "http://127.0.0.1:43599/assets/wardrobe/faces/male_asian_head.png?v=eedab3fa",
+          "order": 1
+        },
+        {
+          "slot": "hair",
+          "source": "http://127.0.0.1:43599/assets/wardrobe/hair/male-reviewed/M02-H09-edge.png?v=e1c17bea",
+          "order": 2
+        },
+        {
+          "slot": "hair",
+          "source": "assets/wardrobe/hair/male-reviewed/M02-H09.png?v=81694a4b",
+          "order": 9
+        }
+      ]
+    },
+    {
+      "head": "M02",
+      "hair": 12,
+      "mean_abs_error": 1.373662358010184,
+      "head_core_mean_error": 0.003819508685373625,
+      "sources": [
+        {
+          "slot": "face",
+          "source": "http://127.0.0.1:43599/assets/wardrobe/faces/male_asian_head.png?v=eedab3fa",
+          "order": 1
+        },
+        {
+          "slot": "hair",
+          "source": "http://127.0.0.1:43599/assets/wardrobe/hair/male-reviewed/M02-H12-edge.png?v=59604240",
+          "order": 2
+        },
+        {
+          "slot": "hair",
+          "source": "assets/wardrobe/hair/male-reviewed/M02-H12.png?v=5bf37509",
+          "order": 9
+        }
+      ]
+    },
+    {
+      "head": "M03",
+      "hair": 6,
+      "mean_abs_error": 1.420292466379423,
+      "head_core_mean_error": 0.004238873471065886,
+      "sources": [
+        {
+          "slot": "face",
+          "source": "http://127.0.0.1:43599/assets/wardrobe/faces/male_young_head.png?v=524934e7",
+          "order": 1
+        },
+        {
+          "slot": "hair",
+          "source": "http://127.0.0.1:43599/assets/wardrobe/hair/male-reviewed/M03-H06-edge.png?v=3b2e8a08",
+          "order": 2
+        },
+        {
+          "slot": "hair",
+          "source": "assets/wardrobe/hair/male-reviewed/M03-H06.png?v=85df8d96",
+          "order": 9
+        }
+      ]
+    },
+    {
+      "head": "M03",
+      "hair": 9,
+      "mean_abs_error": 1.517234625930278,
+      "head_core_mean_error": 0.014731215952307534,
+      "sources": [
+        {
+          "slot": "face",
+          "source": "http://127.0.0.1:43599/assets/wardrobe/faces/male_young_head.png?v=524934e7",
+          "order": 1
+        },
+        {
+          "slot": "hair",
+          "source": "http://127.0.0.1:43599/assets/wardrobe/hair/male-reviewed/M03-H09-edge.png?v=cdf14a83",
+          "order": 2
+        },
+        {
+          "slot": "hair",
+          "source": "assets/wardrobe/hair/male-reviewed/M03-H09.png?v=b3e15128",
+          "order": 9
+        }
+      ]
+    },
+    {
+      "head": "M03",
+      "hair": 12,
+      "mean_abs_error": 1.3740984462723593,
+      "head_core_mean_error": 0.004407441669236304,
+      "sources": [
+        {
+          "slot": "face",
+          "source": "http://127.0.0.1:43599/assets/wardrobe/faces/male_young_head.png?v=524934e7",
+          "order": 1
+        },
+        {
+          "slot": "hair",
+          "source": "http://127.0.0.1:43599/assets/wardrobe/hair/male-reviewed/M03-H12-edge.png?v=f023a2da",
+          "order": 2
+        },
+        {
+          "slot": "hair",
+          "source": "assets/wardrobe/hair/male-reviewed/M03-H12.png?v=fcbba463",
+          "order": 9
+        }
+      ]
+    },
+    {
+      "head": "M04",
+      "hair": 6,
+      "mean_abs_error": 1.416273664969317,
+      "head_core_mean_error": 0.004041525336622469,
+      "sources": [
+        {
+          "slot": "face",
+          "source": "http://127.0.0.1:43599/assets/wardrobe/faces/male_exhausted_head.png?v=b9585100",
+          "order": 1
+        },
+        {
+          "slot": "hair",
+          "source": "http://127.0.0.1:43599/assets/wardrobe/hair/male-reviewed/M04-H06-edge.png?v=388199e0",
+          "order": 2
+        },
+        {
+          "slot": "hair",
+          "source": "assets/wardrobe/hair/male-reviewed/M04-H06.png?v=e6a5a1ba",
+          "order": 9
+        }
+      ]
+    },
+    {
+      "head": "M04",
+      "hair": 9,
+      "mean_abs_error": 1.5804961483222353,
+      "head_core_mean_error": 0.07526775619282557,
+      "sources": [
+        {
+          "slot": "face",
+          "source": "http://127.0.0.1:43599/assets/wardrobe/faces/male_exhausted_head.png?v=b9585100",
+          "order": 1
+        },
+        {
+          "slot": "hair",
+          "source": "http://127.0.0.1:43599/assets/wardrobe/hair/male-reviewed/M04-H09-edge.png?v=f50bcf0e",
+          "order": 2
+        },
+        {
+          "slot": "hair",
+          "source": "assets/wardrobe/hair/male-reviewed/M04-H09.png?v=4e2f4a7c",
+          "order": 9
+        }
+      ]
+    },
+    {
+      "head": "M04",
+      "hair": 12,
+      "mean_abs_error": 1.3740488314401358,
+      "head_core_mean_error": 0.004016856819817042,
+      "sources": [
+        {
+          "slot": "face",
+          "source": "http://127.0.0.1:43599/assets/wardrobe/faces/male_exhausted_head.png?v=b9585100",
+          "order": 1
+        },
+        {
+          "slot": "hair",
+          "source": "http://127.0.0.1:43599/assets/wardrobe/hair/male-reviewed/M04-H12-edge.png?v=307296e1",
+          "order": 2
+        },
+        {
+          "slot": "hair",
+          "source": "assets/wardrobe/hair/male-reviewed/M04-H12.png?v=0f67832a",
+          "order": 9
+        }
+      ]
+    },
+    {
+      "head": "M05",
+      "hair": 6,
+      "mean_abs_error": 1.420415197806502,
+      "head_core_mean_error": 0.004066193853427896,
+      "sources": [
+        {
+          "slot": "face",
+          "source": "http://127.0.0.1:43599/assets/wardrobe/faces/male_elder_head.png?v=bb0d89be",
+          "order": 1
+        },
+        {
+          "slot": "hair",
+          "source": "http://127.0.0.1:43599/assets/wardrobe/hair/male-reviewed/M05-H06-edge.png?v=fd0c65b8",
+          "order": 2
+        },
+        {
+          "slot": "hair",
+          "source": "assets/wardrobe/hair/male-reviewed/M05-H06.png?v=6ac7fdf9",
+          "order": 9
+        }
+      ]
+    },
+    {
+      "head": "M05",
+      "hair": 9,
+      "mean_abs_error": 1.5793628411019716,
+      "head_core_mean_error": 0.07405077603042451,
+      "sources": [
+        {
+          "slot": "face",
+          "source": "http://127.0.0.1:43599/assets/wardrobe/faces/male_elder_head.png?v=bb0d89be",
+          "order": 1
+        },
+        {
+          "slot": "hair",
+          "source": "http://127.0.0.1:43599/assets/wardrobe/hair/male-reviewed/M05-H09-edge.png?v=7630b10c",
+          "order": 2
+        },
+        {
+          "slot": "hair",
+          "source": "assets/wardrobe/hair/male-reviewed/M05-H09.png?v=1881dcbd",
+          "order": 9
+        }
+      ]
+    },
+    {
+      "head": "M05",
+      "hair": 12,
+      "mean_abs_error": 1.3739783261522391,
+      "head_core_mean_error": 0.0039839654640764725,
+      "sources": [
+        {
+          "slot": "face",
+          "source": "http://127.0.0.1:43599/assets/wardrobe/faces/male_elder_head.png?v=bb0d89be",
+          "order": 1
+        },
+        {
+          "slot": "hair",
+          "source": "http://127.0.0.1:43599/assets/wardrobe/hair/male-reviewed/M05-H12-edge.png?v=8387ed0b",
+          "order": 2
+        },
+        {
+          "slot": "hair",
+          "source": "assets/wardrobe/hair/male-reviewed/M05-H12.png?v=65c53d82",
+          "order": 9
+        }
+      ]
+    },
+    {
+      "head": "M06",
+      "hair": 6,
+      "mean_abs_error": 1.4160804282543413,
+      "head_core_mean_error": 0.003811285846438483,
+      "sources": [
+        {
+          "slot": "face",
+          "source": "http://127.0.0.1:43599/assets/wardrobe/faces/male_alternative_head.png?v=82a9642a",
+          "order": 1
+        },
+        {
+          "slot": "hair",
+          "source": "http://127.0.0.1:43599/assets/wardrobe/hair/male-reviewed/M06-H06-edge.png?v=d7e376ce",
+          "order": 2
+        },
+        {
+          "slot": "hair",
+          "source": "assets/wardrobe/hair/male-reviewed/M06-H06.png?v=4110a644",
+          "order": 9
+        }
+      ]
+    },
+    {
+      "head": "M06",
+      "hair": 9,
+      "mean_abs_error": 1.5582634808721765,
+      "head_core_mean_error": 0.055154692157467364,
+      "sources": [
+        {
+          "slot": "face",
+          "source": "http://127.0.0.1:43599/assets/wardrobe/faces/male_alternative_head.png?v=82a9642a",
+          "order": 1
+        },
+        {
+          "slot": "hair",
+          "source": "http://127.0.0.1:43599/assets/wardrobe/hair/male-reviewed/M06-H09-edge.png?v=08634eb1",
+          "order": 2
+        },
+        {
+          "slot": "hair",
+          "source": "assets/wardrobe/hair/male-reviewed/M06-H09.png?v=3345e533",
+          "order": 9
+        }
+      ]
+    },
+    {
+      "head": "M06",
+      "hair": 12,
+      "mean_abs_error": 1.3737041389215303,
+      "head_core_mean_error": 0.003404255319148936,
+      "sources": [
+        {
+          "slot": "face",
+          "source": "http://127.0.0.1:43599/assets/wardrobe/faces/male_alternative_head.png?v=82a9642a",
+          "order": 1
+        },
+        {
+          "slot": "hair",
+          "source": "http://127.0.0.1:43599/assets/wardrobe/hair/male-reviewed/M06-H12-edge.png?v=6dd26e3e",
+          "order": 2
+        },
+        {
+          "slot": "hair",
+          "source": "assets/wardrobe/hair/male-reviewed/M06-H12.png?v=535d3ebe",
+          "order": 9
+        }
+      ]
+    },
+    {
+      "head": "M07",
+      "hair": 6,
+      "mean_abs_error": 1.4218931975453715,
+      "head_core_mean_error": 0.006853736252441156,
+      "sources": [
+        {
+          "slot": "face",
+          "source": "http://127.0.0.1:43599/assets/wardrobe/faces/male_goth_pierced_head.png?v=88db1cc9",
+          "order": 1
+        },
+        {
+          "slot": "hair",
+          "source": "http://127.0.0.1:43599/assets/wardrobe/hair/male-reviewed/M07-H06-edge.png?v=065bbbab",
+          "order": 2
+        },
+        {
+          "slot": "hair",
+          "source": "assets/wardrobe/hair/male-reviewed/M07-H06.png?v=17af2149",
+          "order": 9
+        }
+      ]
+    },
+    {
+      "head": "M07",
+      "hair": 9,
+      "mean_abs_error": 1.5580728554641599,
+      "head_core_mean_error": 0.06124781580840785,
+      "sources": [
+        {
+          "slot": "face",
+          "source": "http://127.0.0.1:43599/assets/wardrobe/faces/male_goth_pierced_head.png?v=88db1cc9",
+          "order": 1
+        },
+        {
+          "slot": "hair",
+          "source": "http://127.0.0.1:43599/assets/wardrobe/hair/male-reviewed/M07-H09-edge.png?v=320ff07e",
+          "order": 2
+        },
+        {
+          "slot": "hair",
+          "source": "assets/wardrobe/hair/male-reviewed/M07-H09.png?v=75783aba",
+          "order": 9
+        }
+      ]
+    },
+    {
+      "head": "M07",
+      "hair": 12,
+      "mean_abs_error": 1.374894894894895,
+      "head_core_mean_error": 0.005899886935964642,
+      "sources": [
+        {
+          "slot": "face",
+          "source": "http://127.0.0.1:43599/assets/wardrobe/faces/male_goth_pierced_head.png?v=88db1cc9",
+          "order": 1
+        },
+        {
+          "slot": "hair",
+          "source": "http://127.0.0.1:43599/assets/wardrobe/hair/male-reviewed/M07-H12-edge.png?v=c9130d58",
+          "order": 2
+        },
+        {
+          "slot": "hair",
+          "source": "assets/wardrobe/hair/male-reviewed/M07-H12.png?v=4f63b429",
+          "order": 9
+        }
+      ]
+    },
+    {
+      "head": "M08",
+      "hair": 6,
+      "mean_abs_error": 1.4161300430865649,
+      "head_core_mean_error": 0.004173090759584747,
+      "sources": [
+        {
+          "slot": "face",
+          "source": "http://127.0.0.1:43599/assets/wardrobe/faces/male_freckled_head.png?v=6154c483",
+          "order": 1
+        },
+        {
+          "slot": "hair",
+          "source": "http://127.0.0.1:43599/assets/wardrobe/hair/male-reviewed/M08-H06-edge.png?v=1ba39a8f",
+          "order": 2
+        },
+        {
+          "slot": "hair",
+          "source": "assets/wardrobe/hair/male-reviewed/M08-H06.png?v=255fe074",
+          "order": 9
+        }
+      ]
+    },
+    {
+      "head": "M08",
+      "hair": 9,
+      "mean_abs_error": 1.5585768377072724,
+      "head_core_mean_error": 0.05698016240106897,
+      "sources": [
+        {
+          "slot": "face",
+          "source": "http://127.0.0.1:43599/assets/wardrobe/faces/male_freckled_head.png?v=6154c483",
+          "order": 1
+        },
+        {
+          "slot": "hair",
+          "source": "http://127.0.0.1:43599/assets/wardrobe/hair/male-reviewed/M08-H09-edge.png?v=7a90f135",
+          "order": 2
+        },
+        {
+          "slot": "hair",
+          "source": "assets/wardrobe/hair/male-reviewed/M08-H09.png?v=39659083",
+          "order": 9
+        }
+      ]
+    },
+    {
+      "head": "M08",
+      "hair": 12,
+      "mean_abs_error": 1.3741637289463375,
+      "head_core_mean_error": 0.0045390070921985815,
+      "sources": [
+        {
+          "slot": "face",
+          "source": "http://127.0.0.1:43599/assets/wardrobe/faces/male_freckled_head.png?v=6154c483",
+          "order": 1
+        },
+        {
+          "slot": "hair",
+          "source": "http://127.0.0.1:43599/assets/wardrobe/hair/male-reviewed/M08-H12-edge.png?v=b1412964",
+          "order": 2
+        },
+        {
+          "slot": "hair",
+          "source": "assets/wardrobe/hair/male-reviewed/M08-H12.png?v=94af5e54",
+          "order": 9
+        }
+      ]
+    },
+    {
+      "head": "M09",
+      "hair": 6,
+      "mean_abs_error": 1.4159629194411802,
+      "head_core_mean_error": 0.003996299722479186,
+      "sources": [
+        {
+          "slot": "face",
+          "source": "http://127.0.0.1:43599/assets/wardrobe/faces/male_blue_eyes_head.png?v=06898e53",
+          "order": 1
+        },
+        {
+          "slot": "hair",
+          "source": "http://127.0.0.1:43599/assets/wardrobe/hair/male-reviewed/M09-H06-edge.png?v=9dc335fa",
+          "order": 2
+        },
+        {
+          "slot": "hair",
+          "source": "assets/wardrobe/hair/male-reviewed/M09-H06.png?v=ff902360",
+          "order": 9
+        }
+      ]
+    },
+    {
+      "head": "M09",
+      "hair": 9,
+      "mean_abs_error": 1.5556234495364931,
+      "head_core_mean_error": 0.055771405077603045,
+      "sources": [
+        {
+          "slot": "face",
+          "source": "http://127.0.0.1:43599/assets/wardrobe/faces/male_blue_eyes_head.png?v=06898e53",
+          "order": 1
+        },
+        {
+          "slot": "hair",
+          "source": "http://127.0.0.1:43599/assets/wardrobe/hair/male-reviewed/M09-H09-edge.png?v=d7cb815b",
+          "order": 2
+        },
+        {
+          "slot": "hair",
+          "source": "assets/wardrobe/hair/male-reviewed/M09-H09.png?v=b1376efd",
+          "order": 9
+        }
+      ]
+    },
+    {
+      "head": "M09",
+      "hair": 12,
+      "mean_abs_error": 1.3735344039691866,
+      "head_core_mean_error": 0.0035234864837085005,
+      "sources": [
+        {
+          "slot": "face",
+          "source": "http://127.0.0.1:43599/assets/wardrobe/faces/male_blue_eyes_head.png?v=06898e53",
+          "order": 1
+        },
+        {
+          "slot": "hair",
+          "source": "http://127.0.0.1:43599/assets/wardrobe/hair/male-reviewed/M09-H12-edge.png?v=9dd55304",
+          "order": 2
+        },
+        {
+          "slot": "hair",
+          "source": "assets/wardrobe/hair/male-reviewed/M09-H12.png?v=6a4288fa",
+          "order": 9
+        }
+      ]
+    },
+    {
+      "head": "M10",
+      "hair": 6,
+      "mean_abs_error": 1.3766888627758194,
+      "head_core_mean_error": 0.0049378147805529855,
+      "sources": [
+        {
+          "slot": "face",
+          "source": "http://127.0.0.1:43599/assets/wardrobe/faces/male-approved-seven/head-01.png?v=d2a03c31",
+          "order": 1
+        },
+        {
+          "slot": "hair",
+          "source": "http://127.0.0.1:43599/assets/wardrobe/hair/male-reviewed/M10-H06-edge.png?v=5c54af6b",
+          "order": 2
+        },
+        {
+          "slot": "hair",
+          "source": "assets/wardrobe/hair/male-reviewed/M10-H06.png?v=23a3c0ea",
+          "order": 9
+        }
+      ]
+    },
+    {
+      "head": "M10",
+      "hair": 9,
+      "mean_abs_error": 1.5103590547068808,
+      "head_core_mean_error": 0.08166101346489876,
+      "sources": [
+        {
+          "slot": "face",
+          "source": "http://127.0.0.1:43599/assets/wardrobe/faces/male-approved-seven/head-01.png?v=d2a03c31",
+          "order": 1
+        },
+        {
+          "slot": "hair",
+          "source": "http://127.0.0.1:43599/assets/wardrobe/hair/male-reviewed/M10-H09-edge.png?v=25179294",
+          "order": 2
+        },
+        {
+          "slot": "hair",
+          "source": "assets/wardrobe/hair/male-reviewed/M10-H09.png?v=06a83ad2",
+          "order": 9
+        }
+      ]
+    },
+    {
+      "head": "M10",
+      "hair": 12,
+      "mean_abs_error": 1.3348034991513253,
+      "head_core_mean_error": 0.005242059821153253,
+      "sources": [
+        {
+          "slot": "face",
+          "source": "http://127.0.0.1:43599/assets/wardrobe/faces/male-approved-seven/head-01.png?v=d2a03c31",
+          "order": 1
+        },
+        {
+          "slot": "hair",
+          "source": "http://127.0.0.1:43599/assets/wardrobe/hair/male-reviewed/M10-H12-edge.png?v=f05b0319",
+          "order": 2
+        },
+        {
+          "slot": "hair",
+          "source": "assets/wardrobe/hair/male-reviewed/M10-H12.png?v=ecde88f1",
+          "order": 9
+        }
+      ]
+    },
+    {
+      "head": "M11",
+      "hair": 6,
+      "mean_abs_error": 1.3811411411411412,
+      "head_core_mean_error": 0.005102271559255833,
+      "sources": [
+        {
+          "slot": "face",
+          "source": "http://127.0.0.1:43599/assets/wardrobe/hair/male-reviewed/M11-head.png?v=8263e3be",
+          "order": 1
+        },
+        {
+          "slot": "hair",
+          "source": "http://127.0.0.1:43599/assets/wardrobe/hair/male-reviewed/M11-H06-edge.png?v=731b77ad",
+          "order": 2
+        },
+        {
+          "slot": "hair",
+          "source": "assets/wardrobe/hair/male-reviewed/M11-H06.png?v=5e990acc",
+          "order": 9
+        }
+      ]
+    },
+    {
+      "head": "M11",
+      "hair": 9,
+      "mean_abs_error": 1.5115863689776734,
+      "head_core_mean_error": 0.082396957549594,
+      "sources": [
+        {
+          "slot": "face",
+          "source": "http://127.0.0.1:43599/assets/wardrobe/hair/male-reviewed/M11-head.png?v=8263e3be",
+          "order": 1
+        },
+        {
+          "slot": "hair",
+          "source": "http://127.0.0.1:43599/assets/wardrobe/hair/male-reviewed/M11-H09-edge.png?v=1b34d9b4",
+          "order": 2
+        },
+        {
+          "slot": "hair",
+          "source": "assets/wardrobe/hair/male-reviewed/M11-H09.png?v=da84af0e",
+          "order": 9
+        }
+      ]
+    },
+    {
+      "head": "M11",
+      "hair": 12,
+      "mean_abs_error": 1.3346964355660007,
+      "head_core_mean_error": 0.004851474971733991,
+      "sources": [
+        {
+          "slot": "face",
+          "source": "http://127.0.0.1:43599/assets/wardrobe/hair/male-reviewed/M11-head.png?v=8263e3be",
+          "order": 1
+        },
+        {
+          "slot": "hair",
+          "source": "http://127.0.0.1:43599/assets/wardrobe/hair/male-reviewed/M11-H12-edge.png?v=f7191b26",
+          "order": 2
+        },
+        {
+          "slot": "hair",
+          "source": "assets/wardrobe/hair/male-reviewed/M11-H12.png?v=1a3c56b2",
+          "order": 9
+        }
+      ]
+    },
+    {
+      "head": "M12",
+      "hair": 6,
+      "mean_abs_error": 1.3769056012534273,
+      "head_core_mean_error": 0.0050282660088395515,
+      "sources": [
+        {
+          "slot": "face",
+          "source": "http://127.0.0.1:43599/assets/wardrobe/hair/male-reviewed/M12-head.png?v=6a6e7722",
+          "order": 1
+        },
+        {
+          "slot": "hair",
+          "source": "http://127.0.0.1:43599/assets/wardrobe/hair/male-reviewed/M12-H06-edge.png?v=f38a1b3d",
+          "order": 2
+        },
+        {
+          "slot": "hair",
+          "source": "assets/wardrobe/hair/male-reviewed/M12-H06.png?v=bc2ddeee",
+          "order": 9
+        }
+      ]
+    },
+    {
+      "head": "M12",
+      "hair": 9,
+      "mean_abs_error": 1.5148505026765897,
+      "head_core_mean_error": 0.08533251104943981,
+      "sources": [
+        {
+          "slot": "face",
+          "source": "http://127.0.0.1:43599/assets/wardrobe/hair/male-reviewed/M12-head.png?v=6a6e7722",
+          "order": 1
+        },
+        {
+          "slot": "hair",
+          "source": "http://127.0.0.1:43599/assets/wardrobe/hair/male-reviewed/M12-H09-edge.png?v=2652655d",
+          "order": 2
+        },
+        {
+          "slot": "hair",
+          "source": "assets/wardrobe/hair/male-reviewed/M12-H09.png?v=733dc422",
+          "order": 9
+        }
+      ]
+    },
+    {
+      "head": "M12",
+      "hair": 12,
+      "mean_abs_error": 1.3346128737433085,
+      "head_core_mean_error": 0.004789803679720424,
+      "sources": [
+        {
+          "slot": "face",
+          "source": "http://127.0.0.1:43599/assets/wardrobe/hair/male-reviewed/M12-head.png?v=6a6e7722",
+          "order": 1
+        },
+        {
+          "slot": "hair",
+          "source": "http://127.0.0.1:43599/assets/wardrobe/hair/male-reviewed/M12-H12-edge.png?v=c9d78a87",
+          "order": 2
+        },
+        {
+          "slot": "hair",
+          "source": "assets/wardrobe/hair/male-reviewed/M12-H12.png?v=ebe02acc",
+          "order": 9
+        }
+      ]
+    },
+    {
+      "head": "M13",
+      "hair": 6,
+      "mean_abs_error": 1.381511946729338,
+      "head_core_mean_error": 0.005521636344948093,
+      "sources": [
+        {
+          "slot": "face",
+          "source": "http://127.0.0.1:43599/assets/wardrobe/hair/male-reviewed/M13-head.png?v=a1948318",
+          "order": 1
+        },
+        {
+          "slot": "hair",
+          "source": "http://127.0.0.1:43599/assets/wardrobe/hair/male-reviewed/M13-H06-edge.png?v=387534e1",
+          "order": 2
+        },
+        {
+          "slot": "hair",
+          "source": "assets/wardrobe/hair/male-reviewed/M13-H06.png?v=d9267bc5",
+          "order": 9
+        }
+      ]
+    },
+    {
+      "head": "M13",
+      "hair": 9,
+      "mean_abs_error": 1.5144013578796187,
+      "head_core_mean_error": 0.08552574776441567,
+      "sources": [
+        {
+          "slot": "face",
+          "source": "http://127.0.0.1:43599/assets/wardrobe/hair/male-reviewed/M13-head.png?v=a1948318",
+          "order": 1
+        },
+        {
+          "slot": "hair",
+          "source": "http://127.0.0.1:43599/assets/wardrobe/hair/male-reviewed/M13-H09-edge.png?v=65f526aa",
+          "order": 2
+        },
+        {
+          "slot": "hair",
+          "source": "assets/wardrobe/hair/male-reviewed/M13-H09.png?v=1327619b",
+          "order": 9
+        }
+      ]
+    },
+    {
+      "head": "M13",
+      "hair": 12,
+      "mean_abs_error": 1.3343830787309048,
+      "head_core_mean_error": 0.00435810463562545,
+      "sources": [
+        {
+          "slot": "face",
+          "source": "http://127.0.0.1:43599/assets/wardrobe/hair/male-reviewed/M13-head.png?v=a1948318",
+          "order": 1
+        },
+        {
+          "slot": "hair",
+          "source": "http://127.0.0.1:43599/assets/wardrobe/hair/male-reviewed/M13-H12-edge.png?v=9eb78c99",
+          "order": 2
+        },
+        {
+          "slot": "hair",
+          "source": "assets/wardrobe/hair/male-reviewed/M13-H12.png?v=86c9f8c4",
+          "order": 9
+        }
+      ]
+    },
+    {
+      "head": "M14",
+      "hair": 6,
+      "mean_abs_error": 1.3811829220524872,
+      "head_core_mean_error": 0.005069380203515264,
+      "sources": [
+        {
+          "slot": "face",
+          "source": "http://127.0.0.1:43599/assets/wardrobe/hair/male-reviewed/M14-head.png?v=385a5f21",
+          "order": 1
+        },
+        {
+          "slot": "hair",
+          "source": "http://127.0.0.1:43599/assets/wardrobe/hair/male-reviewed/M14-H06-edge.png?v=33bf97cb",
+          "order": 2
+        },
+        {
+          "slot": "hair",
+          "source": "assets/wardrobe/hair/male-reviewed/M14-H06.png?v=e58838fa",
+          "order": 9
+        }
+      ]
+    },
+    {
+      "head": "M14",
+      "hair": 9,
+      "mean_abs_error": 1.5114296905601254,
+      "head_core_mean_error": 0.08196114708603146,
+      "sources": [
+        {
+          "slot": "face",
+          "source": "http://127.0.0.1:43599/assets/wardrobe/hair/male-reviewed/M14-head.png?v=385a5f21",
+          "order": 1
+        },
+        {
+          "slot": "hair",
+          "source": "http://127.0.0.1:43599/assets/wardrobe/hair/male-reviewed/M14-H09-edge.png?v=8d7058bc",
+          "order": 2
+        },
+        {
+          "slot": "hair",
+          "source": "assets/wardrobe/hair/male-reviewed/M14-H09.png?v=bc0d87fc",
+          "order": 9
+        }
+      ]
+    },
+    {
+      "head": "M14",
+      "hair": 12,
+      "mean_abs_error": 1.334424859642251,
+      "head_core_mean_error": 0.004493781478055299,
+      "sources": [
+        {
+          "slot": "face",
+          "source": "http://127.0.0.1:43599/assets/wardrobe/hair/male-reviewed/M14-head.png?v=385a5f21",
+          "order": 1
+        },
+        {
+          "slot": "hair",
+          "source": "http://127.0.0.1:43599/assets/wardrobe/hair/male-reviewed/M14-H12-edge.png?v=b7835af5",
+          "order": 2
+        },
+        {
+          "slot": "hair",
+          "source": "assets/wardrobe/hair/male-reviewed/M14-H12.png?v=43c4ca46",
+          "order": 9
+        }
+      ]
+    },
+    {
+      "head": "M15",
+      "hair": 6,
+      "mean_abs_error": 1.3767358663010838,
+      "head_core_mean_error": 0.004826806454928564,
+      "sources": [
+        {
+          "slot": "face",
+          "source": "http://127.0.0.1:43599/assets/wardrobe/hair/male-reviewed/M15-head.png?v=b7f5165b",
+          "order": 1
+        },
+        {
+          "slot": "hair",
+          "source": "http://127.0.0.1:43599/assets/wardrobe/hair/male-reviewed/M15-H06-edge.png?v=9ae44213",
+          "order": 2
+        },
+        {
+          "slot": "hair",
+          "source": "assets/wardrobe/hair/male-reviewed/M15-H06.png?v=a32173c8",
+          "order": 9
+        }
+      ]
+    },
+    {
+      "head": "M15",
+      "hair": 9,
+      "mean_abs_error": 1.5124298211254732,
+      "head_core_mean_error": 0.08168979340117176,
+      "sources": [
+        {
+          "slot": "face",
+          "source": "http://127.0.0.1:43599/assets/wardrobe/hair/male-reviewed/M15-head.png?v=b7f5165b",
+          "order": 1
+        },
+        {
+          "slot": "hair",
+          "source": "http://127.0.0.1:43599/assets/wardrobe/hair/male-reviewed/M15-H09-edge.png?v=4388d0ff",
+          "order": 2
+        },
+        {
+          "slot": "hair",
+          "source": "assets/wardrobe/hair/male-reviewed/M15-H09.png?v=911a4cf1",
+          "order": 9
+        }
+      ]
+    },
+    {
+      "head": "M15",
+      "hair": 12,
+      "mean_abs_error": 1.3346102624363494,
+      "head_core_mean_error": 0.0048432521327988485,
+      "sources": [
+        {
+          "slot": "face",
+          "source": "http://127.0.0.1:43599/assets/wardrobe/hair/male-reviewed/M15-head.png?v=b7f5165b",
+          "order": 1
+        },
+        {
+          "slot": "hair",
+          "source": "http://127.0.0.1:43599/assets/wardrobe/hair/male-reviewed/M15-H12-edge.png?v=48441a24",
+          "order": 2
+        },
+        {
+          "slot": "hair",
+          "source": "assets/wardrobe/hair/male-reviewed/M15-H12.png?v=0a7f2b92",
+          "order": 9
+        }
+      ]
+    },
+    {
+      "head": "M16",
+      "hair": 6,
+      "mean_abs_error": 1.3807285546415982,
+      "head_core_mean_error": 0.004423887347106589,
+      "sources": [
+        {
+          "slot": "face",
+          "source": "http://127.0.0.1:43599/assets/wardrobe/hair/male-reviewed/M16-head.png?v=fda82b62",
+          "order": 1
+        },
+        {
+          "slot": "hair",
+          "source": "http://127.0.0.1:43599/assets/wardrobe/hair/male-reviewed/M16-H06-edge.png?v=c48131ae",
+          "order": 2
+        },
+        {
+          "slot": "hair",
+          "source": "assets/wardrobe/hair/male-reviewed/M16-H06.png?v=e54742cc",
+          "order": 9
+        }
+      ]
+    },
+    {
+      "head": "M16",
+      "hair": 9,
+      "mean_abs_error": 1.514464029246638,
+      "head_core_mean_error": 0.08651659985610032,
+      "sources": [
+        {
+          "slot": "face",
+          "source": "http://127.0.0.1:43599/assets/wardrobe/hair/male-reviewed/M16-head.png?v=fda82b62",
+          "order": 1
+        },
+        {
+          "slot": "hair",
+          "source": "http://127.0.0.1:43599/assets/wardrobe/hair/male-reviewed/M16-H09-edge.png?v=ac5b8ee0",
+          "order": 2
+        },
+        {
+          "slot": "hair",
+          "source": "assets/wardrobe/hair/male-reviewed/M16-H09.png?v=aebf4f30",
+          "order": 9
+        }
+      ]
+    },
+    {
+      "head": "M16",
+      "hair": 12,
+      "mean_abs_error": 1.334565870218044,
+      "head_core_mean_error": 0.004662349676225717,
+      "sources": [
+        {
+          "slot": "face",
+          "source": "http://127.0.0.1:43599/assets/wardrobe/hair/male-reviewed/M16-head.png?v=fda82b62",
+          "order": 1
+        },
+        {
+          "slot": "hair",
+          "source": "http://127.0.0.1:43599/assets/wardrobe/hair/male-reviewed/M16-H12-edge.png?v=d2747ff8",
+          "order": 2
+        },
+        {
+          "slot": "hair",
+          "source": "assets/wardrobe/hair/male-reviewed/M16-H12.png?v=87068549",
+          "order": 9
+        }
+      ]
+    }
+  ],
+  "worst_mean_error": 1.6607311659485573,
+  "worst_head_core_mean_error": 0.0933950046253469,
+  "uncolored_skin_edges": true,
+  "mobile_bounds": true,
+  "rifle_breathing": true,
+  "patient_fallback": true,
+  "page_errors": []
+}
