@@ -18,5 +18,26 @@
     "reduced motion pauses engine"
   ],
   "unittest": "tests.test_animated_avatars: 6 passed",
-  "node_game_logic": "94 passed"
+  "node_game_logic": "94 passed",
+  "live_game": {
+    "url": "https://neverl1ke.github.io/palata404/",
+    "runtime_commit": "87681454977146758d667b63b81e8fef39448f18",
+    "male": {
+      "amplitude": 1.25,
+      "cycleMs": 3600
+    },
+    "female": {
+      "amplitude": 1.25,
+      "cycleMs": 3600
+    },
+    "page_errors": []
+  },
+  "validation_scope": {
+    "targeted_animated_tests_passed": 6,
+    "game_logic_tests_passed": 94,
+    "native_asset_tests_passed": 2,
+    "static_project_audit": "passed",
+    "full_suite_completed": false,
+    "full_suite_note": "151 of 172 checks completed across resumed runs; redundant full DOM matrix stopped. Targeted motion tests and production browser verification completed."
+  }
 }
