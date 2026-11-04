@@ -1,0 +1,113 @@
+{
+  "removed": 494,
+  "outsideChanges": 0,
+  "rgbChanges": 0,
+  "palette": [
+    {
+      "color": "original",
+      "alphaChanges": 0
+    },
+    {
+      "color": "black",
+      "alphaChanges": 0
+    },
+    {
+      "color": "dark-brown",
+      "alphaChanges": 0
+    },
+    {
+      "color": "brown",
+      "alphaChanges": 0
+    },
+    {
+      "color": "light-brown",
+      "alphaChanges": 0
+    },
+    {
+      "color": "dark-fair",
+      "alphaChanges": 0
+    },
+    {
+      "color": "fair",
+      "alphaChanges": 0
+    },
+    {
+      "color": "light-fair",
+      "alphaChanges": 0
+    },
+    {
+      "color": "blond",
+      "alphaChanges": 0
+    },
+    {
+      "color": "platinum",
+      "alphaChanges": 0
+    },
+    {
+      "color": "ginger",
+      "alphaChanges": 0
+    },
+    {
+      "color": "gray",
+      "alphaChanges": 0
+    },
+    {
+      "color": "white",
+      "alphaChanges": 0
+    },
+    {
+      "color": "burgundy",
+      "alphaChanges": 0
+    },
+    {
+      "color": "red",
+      "alphaChanges": 0
+    },
+    {
+      "color": "pink",
+      "alphaChanges": 0
+    },
+    {
+      "color": "pastel-pink",
+      "alphaChanges": 0
+    },
+    {
+      "color": "purple",
+      "alphaChanges": 0
+    },
+    {
+      "color": "lavender",
+      "alphaChanges": 0
+    },
+    {
+      "color": "navy",
+      "alphaChanges": 0
+    },
+    {
+      "color": "blue",
+      "alphaChanges": 0
+    },
+    {
+      "color": "turquoise",
+      "alphaChanges": 0
+    },
+    {
+      "color": "emerald",
+      "alphaChanges": 0
+    },
+    {
+      "color": "lime",
+      "alphaChanges": 0
+    },
+    {
+      "color": "orange",
+      "alphaChanges": 0
+    }
+  ],
+  "foreheadSampleAlpha": 0,
+  "curlSampleAlpha": 253,
+  "maleHeadsChecked": 16,
+  "animatedHeadsChecked": 2,
+  "femaleSwitchAndUnequip": true,
+  "pageErrors": []
+}

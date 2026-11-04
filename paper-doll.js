@@ -293,7 +293,7 @@ function renderPaperDollAt(host, prefix = '') {
         if (image.paperHairRequest !== request || image.paperHairFitKey !== fitKey) {
             image.paperHairRequest = request;
             image.paperHairFitKey = fitKey;
-            if (color === 'original' && !femaleFit) setPaperDollImage(image, source, source);
+            if (color === 'original' && !femaleFit && !curlyCropNeedsScalpCleanup(source)) setPaperDollImage(image, source, source);
             else (femaleFit ? fittedFemaleHairSource(source, color, layer.colorReference, femaleFit)
                 : coloredHairSource(source, color, layer.colorReference)).then(colored => {
                 if (image.paperHairRequest === request && image.paperHairFitKey === fitKey) setPaperDollImage(image, colored, source);

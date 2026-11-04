@@ -48,6 +48,13 @@ def approved_current_hash(relative, old_hash):
     """No broad exemption: only the explicit user-approved replacement list."""
     if hashlib.sha256((ROOT/relative).read_bytes()).hexdigest()==old_hash:
         return old_hash
+    correction=ROOT/'review/curly-crop-scalp-cleanup-20261104/runtime-receipt.json'
+    if correction.exists():
+        repair=json.loads(correction.read_text())
+        if repair['runtime_before_sha256'].get(relative)==old_hash:
+            saved=correction.parent/'before'/relative
+            assert hashlib.sha256(saved.read_bytes()).hexdigest()==old_hash
+            return repair['runtime_after_sha256'][relative]
     latest=ROOT/'review/male-head-hair-20261104/runtime-receipt.json'
     if latest.exists():
         receipt=json.loads(latest.read_text())
@@ -56,7 +63,7 @@ def approved_current_hash(relative, old_hash):
             assert hashlib.sha256((ROOT/baseline['archived_baseline']).read_bytes()).hexdigest()==baseline['sha256']
             return baseline['sha256']
         if receipt['runtime_before_sha256'].get(relative)==old_hash or old_hash in receipt.get('superseded_runtime_sha256',{}).get(relative,[]):
-            return receipt['runtime_after_sha256'][relative]
+            return approved_current_hash(relative,receipt['runtime_after_sha256'][relative])
     appearance=ROOT/'review/appearance-catalog-20261102/manifest.json'
     if appearance.exists():
         accepted=json.loads(appearance.read_text())

@@ -147,4 +147,24 @@ class AppearanceCatalogTests(unittest.TestCase):
                     output=ROOT/'test-results';output.mkdir(exist_ok=True);self.page.screenshot(path=str(output/f'appearance-main-{gender}-{width}-{mode}.png'))
         self.page.evaluate('equipPaperDollItem("hair","hair-none")');self.wait_hair();self.assertEqual(self.page.locator('[data-paper-extra]').count(),0)
 
+
+    def test_curly_crop_palette_keeps_painted_forehead_out_of_hair(self):
+        self.load();self.page.evaluate('openCustomization();setGender("male");equipPaperDollItem("hair","hair-m6-curly-crop")')
+        result=self.page.evaluate('''async()=>{
+            const src=selectedPaperDollItem('hair').genderVariants.male;
+            async function samples(s){const im=new Image();im.src=s;await im.decode();const c=document.createElement('canvas');c.width=im.width;c.height=im.height;const ctx=c.getContext('2d');ctx.drawImage(im,0,0);return {forehead:[...ctx.getImageData(446,98,1,1).data],curl:[...ctx.getImageData(450,80,1,1).data]}}
+            const original=await samples(src),colors=[];
+            for(const color of ['original','white','blue','red'])colors.push({color,...await samples(await coloredHairSource(src,color))});
+            return {original,colors};
+        }''')
+        self.assertGreater(result['original']['forehead'][3],200)
+        for sample in result['colors']:
+            self.assertEqual(sample['forehead'][3],0,sample['color'])
+            self.assertEqual(sample['curl'][3],result['original']['curl'][3],sample['color'])
+        if result['colors'][0]['curl'][3]==255:
+            self.assertEqual(result['colors'][0]['curl'],result['original']['curl'])
+        for color in ['original','blue']:
+            self.page.evaluate('c=>setHairColor(c)',color)
+            self.page.wait_for_function('''async c=>{const i=document.getElementById('wardrobe-layer-hair');return i?.complete&&i.getAttribute('src')===await coloredHairSource(selectedPaperDollItem('hair').genderVariants.male,c)}''',arg=color)
+
 if __name__=='__main__':unittest.main()

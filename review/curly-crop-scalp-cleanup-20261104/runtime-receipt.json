@@ -1,0 +1,16 @@
+{
+  "baseline": "c30fae0610e8d21ffa836b0d2748e888cebfb94a",
+  "reason": "User-reported gray/recolored painted scalp remnant below curly crop; remove bottom-connected skin alpha only in this native source before all palette colors, including original.",
+  "runtime_before_sha256": {
+    "hair-color.js": "ac8eb8268db4c86eb39f5bc9b7511b558eb8bf61edfcf34cd21baaa4492badfc",
+    "paper-doll.js": "c8f4545fa0a9832530a4f84bffdcb17841c1ab0e8abbd02f88b72764581f6835",
+    "index.html": "91b0258910d46c59f14f51606c13250b6f513da881711c37cbcff5f2d51c1c72"
+  },
+  "runtime_after_sha256": {
+    "hair-color.js": "aa3e85aac2d53e412367d5fbdc0a46b3072dc71fc4b1f2da97e74b4f3619697c",
+    "paper-doll.js": "cc12268faae147748829ca5eb0346d617650e638fa7d99c039618a7065d0e7dc",
+    "index.html": "d6714e7f50aeb6cd223e1c70f0dba6bec9877957f4cfd2d5ad94099dac82aaab"
+  },
+  "immutable_source": "assets/wardrobe/hair/male-six/curly-crop.png",
+  "immutable_source_sha256": "ad212bad14958ba237cb767a388187e0f67e105e728976c27af5608153e99e82"
+}

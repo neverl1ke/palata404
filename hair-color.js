@@ -75,9 +75,39 @@ function hairReferenceMedian(source) {
     return promise;
 }
 
+// The curly crop contains a narrow painted forehead remnant beneath its curls.
+// Remove only bottom-connected skin in that source's measured hairline band.
+// Keep the immutable artwork, strand RGB, other hairstyles and scalp below intact.
+function cleanCurlyCropScalp(pixels, width, height) {
+    if (width !== 941 || height !== 1672) return;
+    const eligible = (x,y) => {
+        if (x<415 || x>535 || y<88 || y>102) return false;
+        const i=(y*width+x)*4,r=pixels[i],g=pixels[i+1],b=pixels[i+2];
+        return pixels[i+3]>0 && r>140 && g/r>.59 && b/r>.4 && r-g>30 && g-b>12;
+    };
+    const seen=new Set(),queue=[];
+    for(let y=88;y<=102;y++) for(let x=415;x<=535;x++) {
+        if(eligible(x,y) && !pixels[((y+1)*width+x)*4+3]) {
+            const key=y*width+x;seen.add(key);queue.push(key);
+        }
+    }
+    for(let n=0;n<queue.length;n++) {
+        const key=queue[n],x=key%width,y=Math.floor(key/width);
+        for(const [nx,ny] of [[x-1,y],[x+1,y],[x,y-1],[x,y+1]]) {
+            const next=ny*width+nx;
+            if(!seen.has(next)&&eligible(nx,ny)){seen.add(next);queue.push(next)}
+        }
+    }
+    for(const key of queue) pixels[key*4+3]=0;
+}
+function curlyCropNeedsScalpCleanup(source) {
+    return /(?:^|\/)assets\/wardrobe\/hair\/male-six\/curly-crop\.png(?:[?#]|$)/.test(source);
+}
+
 function coloredHairSource(source, id, referenceSource = null) {
     const color=HAIR_COLORS.find(entry => entry.id===id);
-    if (!color?.hex) return Promise.resolve(source);
+    const cleanScalp=curlyCropNeedsScalpCleanup(source);
+    if (!color?.hex && !cleanScalp) return Promise.resolve(source);
     const key=`${source}|${id}${referenceSource ? '|'+referenceSource : ''}`;
     if (hairColorCache.has(key)) {
         const cached=hairColorCache.get(key);
@@ -93,8 +123,9 @@ function coloredHairSource(source, id, referenceSource = null) {
                 const context=canvas.getContext('2d',{willReadFrequently:true});
                 context.drawImage(image,0,0);
                 const frame=context.getImageData(0,0,canvas.width,canvas.height);
+                if (cleanScalp) cleanCurlyCropScalp(frame.data,canvas.width,canvas.height);
                 const referenceMedian = referenceSource ? await hairReferenceMedian(referenceSource) : null;
-                recolorHairPixels(frame.data,color.hex,referenceMedian);
+                if (color?.hex) recolorHairPixels(frame.data,color.hex,referenceMedian);
                 context.putImageData(frame,0,0);
                 resolve(canvas.toDataURL('image/png'));
             } catch (error) { reject(error); }
