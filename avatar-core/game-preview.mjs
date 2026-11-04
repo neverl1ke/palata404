@@ -1,5 +1,5 @@
 /** Game adapter. Inventory and Paper Doll remain the only owners of saved state. */
-import { ApprovedAvatar as AvatarEngine } from './approved/avatar.mjs?v=breathing-20261104';
+import { ApprovedAvatar as AvatarEngine } from './approved/avatar.mjs?v=beards-weapons-20261105';
 const instances = new Map();
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
 const absolute = path => new URL('../' + path, import.meta.url).href;
@@ -15,19 +15,20 @@ const visibility = new ResizeObserver(entries => entries.forEach(({target}) => p
 reducedMotion.addEventListener('change', () => instances.forEach(playback));
 
 async function descriptor(snapshot) {
-    const {gender, face, faceId, hair, headwear, color, crown} = snapshot;
+    const {gender, face, faceId, hair, headwear, beard, beardColor, color, crown} = snapshot;
     const layers = [];
-    for (const [slot,item] of [['face',face],['hair',hair],['headwear',headwear]]) {
+    for (const [slot,item] of [['face',face],['hair',hair],['beard',beard],['headwear',headwear]]) {
         for (const part of item ? paperDollItemLayers(item,gender) : []) {
             const path = paperDollImageCandidates(part,gender).find(p => !failedPaperDollImages.has(p));
             if (!path) continue;
             let placement = part.placementByGender?.[gender] || part.placement || {x:0,y:0,width:941,height:1672};
             const fit = slot === 'hair' ? femaleHairFitFor(gender,faceId,hair.id,placement) : null;
-            const source = slot !== 'hair' || part.recolor === false ? absolute(path) : fit
-                ? await fittedFemaleHairSource(path,color,part.colorReference,fit)
-                : await coloredHairSource(path,color,part.colorReference);
+            const pigment = slot === 'beard' ? beardColor : color;
+            const source = !['hair','beard'].includes(slot) || part.recolor === false ? absolute(path) : fit
+                ? await fittedFemaleHairSource(path,pigment,part.colorReference,fit)
+                : await coloredHairSource(path,pigment,part.colorReference);
             if (fit) placement = {x:0,y:0,width:941,height:1672};
-            layers.push({source,slot,placement,order:part.renderOrder ?? (slot==='face'?1:slot==='headwear'?20:9)});
+            layers.push({source,slot,placement,order:part.renderOrder ?? (slot==='face'?1:slot==='headwear'?20:slot==='beard'?10:9)});
         }
     }
     layers.sort((a,b)=>a.order-b.order);
@@ -43,7 +44,7 @@ function snapshot() {
     const unsupported=clothing.some(item=>item && paperDollItemLayers(item,gender).some(p=>paperDollImageCandidates(p,gender).length));
     const weapon=selectedPaperDollItem('weapon');
     return {gender,face:paperDollRenderedFace(gender) || null,faceId:paperDollState.appearance.face,hair:selectedPaperDollItem('hair'),headwear:selectedPaperDollItem('headwear'),
-        color:paperDollState.appearance.hairColor,crown,unsupported,weapon:weapon?.avatarWeapon ? weapon.id : null,
+        beard:selectedPaperDollItem('beard'),beardColor:paperDollState.appearance.beardColor,color:paperDollState.appearance.hairColor,crown,unsupported,weapon:weapon?.avatarWeapon ? weapon.id : null,
         key:JSON.stringify([gender,paperDollState.activeViewMode,paperDollState.appearance,weapon?.id,clothing.map(i=>i?.id),selectedPaperDollItem('headwear')?.id])};
 }
 function original(state) {
@@ -57,7 +58,7 @@ async function update(state) {
     while(state.pending) {
         state.pending=false;
         const current=snapshot(), revision=state.revision;
-        if (current.key===state.key) { playback(state);continue; }
+        if (current.key===state.key && (!state.canvas.hidden || current.unsupported)) { playback(state);continue; }
         original(state);
         // Existing approved clothing is never dropped or warped into a different pose.
         // It keeps the original renderer until matching authored sleeves are available.

@@ -148,3 +148,11 @@ function setHairColor(id) {
     commitPaperDollSelection();
     return true;
 }
+
+// Shares the exact hairstyle palette, with an independent saved beard choice.
+function setBeardColor(id) {
+    if (!HAIR_COLORS.some(color => color.id === id)) return false;
+    paperDollState.appearance.beardColor = id;
+    commitPaperDollSelection();
+    return true;
+}

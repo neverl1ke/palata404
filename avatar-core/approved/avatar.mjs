@@ -19,7 +19,7 @@ export class ApprovedAvatar {
     }
     async setGender(gender) {
         this.scene?.dispose();
-        const module=await import(`./${gender}-scene.mjs?v=breathing-20261104`);
+        const module=await import(`./${gender}-scene.mjs?v=weapons-20261105`);
         this.scene=await module.createScene(canvas());this.gender=gender;this.width=this.scene.width;
         this.canvas.width=this.width;this.canvas.height=1672;this.canvas.style.width=`${this.width/941*100}%`;
         this.body.width=this.width;this.appearance={layers:[]};this.mask=null;this.pose='idle';this.render();
@@ -37,11 +37,15 @@ export class ApprovedAvatar {
         }
         this.render();
     }
-    async equipWeaponItem(id) {this.pose=id==='gear-aks'?'rifle':'idle';this.render()}
+    async equipWeaponItem(id) {
+        await this.scene.equipWeaponItem?.(id);
+        this.pose=id==='gear-aks'?'rifle':id==='gear-knife'?'melee':'idle';
+        this.render();
+    }
     setOptions(options) {Object.assign(this.options,options);this.render()}
     render() {
         if(!this.scene)return;
-        const native=this.scene.render(this.options.breathing?this.time:0,this.pose==='rifle',this.options);
+        const native=this.scene.render(this.options.breathing?this.time:0,this.pose,this.options);
         const body=this.body.getContext('2d');body.setTransform(1,0,0,1,0,0);body.globalCompositeOperation='source-over';body.clearRect(0,0,this.width,1672);body.drawImage(native,0,0);
         if(this.mask){body.globalCompositeOperation='destination-in';body.drawImage(this.mask,0,0);body.globalCompositeOperation='source-over'}
         const ctx=this.canvas.getContext('2d');ctx.setTransform(1,0,0,1,0,0);ctx.clearRect(0,0,this.width,1672);

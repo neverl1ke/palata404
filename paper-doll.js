@@ -3,7 +3,7 @@ const failedPaperDollImages = new Set();
 let paperDollSaveFailed = false;
 
 function emptyPaperDollLoadout() {
-    return Object.fromEntries(PAPER_DOLL_LAYER_ORDER.filter(slot => slot !== 'baseBody' && slot !== 'hair').map(slot => [slot, null]));
+    return Object.fromEntries(PAPER_DOLL_LAYER_ORDER.filter(slot => slot !== 'baseBody' && slot !== 'hair' && slot !== 'beard').map(slot => [slot, null]));
 }
 
 function normalizePaperDollState(value, legacy = {}) {
@@ -11,7 +11,7 @@ function normalizePaperDollState(value, legacy = {}) {
     const state = { schemaVersion: 2,
         selectedGender: (valid ? value.selectedGender : legacy.gender) === 'female' ? 'female' : 'male',
         activeViewMode: valid && value.activeViewMode === 'combat' ? 'combat' : 'patient',
-        appearance: { face: null, hairColor: normalizeHairColor(valid ? value.appearance?.hairColor : null), hair: (valid && value.schemaVersion === 2 && typeof value.appearance?.hair === 'string' ? value.appearance.hair : legacy.hair) || 'hair-none' },
+        appearance: { face: null, beard: valid && typeof value.appearance?.beard === 'string' ? value.appearance.beard : null, beardColor: normalizeHairColor(valid ? value.appearance?.beardColor : null), hairColor: normalizeHairColor(valid ? value.appearance?.hairColor : null), hair: (valid && value.schemaVersion === 2 && typeof value.appearance?.hair === 'string' ? value.appearance.hair : legacy.hair) || 'hair-none' },
         patientLoadout: emptyPaperDollLoadout(), combatLoadout: emptyPaperDollLoadout() };
     for (const key of ['patientLoadout', 'combatLoadout']) {
         const source = valid && value[key] && typeof value[key] === 'object' ? value[key] : {};
@@ -33,6 +33,7 @@ function normalizePaperDollState(value, legacy = {}) {
             if (equippedGear[item.inventoryCategory] === item.inventoryName) state.combatLoadout[item.slot] = item.id;
         }
     }
+    if (!PAPER_DOLL_ITEMS.some(item => item.slot === 'beard' && item.id === state.appearance.beard && isPaperDollItemOwned(item))) state.appearance.beard = null;
     const savedHair = PAPER_DOLL_ITEMS.find(item => item.slot === 'hair' && item.id === state.appearance.hair);
     if (savedHair && !paperDollItemSupportsGender(savedHair, state.selectedGender)) state.appearance.hair = 'hair-none';
     const savedFace = PAPER_DOLL_ITEMS.find(item => item.slot === 'face' && item.id === state.appearance.face);
@@ -50,6 +51,7 @@ function isPaperDollItemOwned(item) {
 }
 
 function selectedPaperDollItem(slot) {
+    if (slot === 'beard') return PAPER_DOLL_ITEMS.find(item => item.slot === slot && item.id === paperDollState.appearance.beard && isPaperDollItemOwned(item) && paperDollItemSupportsGender(item));
     if (slot === 'hair') return PAPER_DOLL_ITEMS.find(item => item.slot === 'hair' && item.id === paperDollState.appearance.hair && isPaperDollItemOwned(item) && paperDollItemSupportsGender(item))
         || PAPER_DOLL_ITEMS.find(item => item.id === 'hair-none');
     const id = slot === 'face' ? paperDollState.appearance.face : activePaperDollLoadout()[slot];
@@ -117,9 +119,10 @@ function setPaperDollView(mode) {
 }
 
 function equipPaperDollItem(slot, itemId) {
-    if (slot === 'baseBody' || (slot !== 'hair' && !Object.hasOwn(activePaperDollLoadout(), slot))) return false;
+    if (slot === 'baseBody' || (!['hair','beard'].includes(slot) && !Object.hasOwn(activePaperDollLoadout(), slot))) return false;
     if (itemId !== null && !PAPER_DOLL_ITEMS.some(item => item.id === itemId && item.slot === slot && isPaperDollItemOwned(item) && paperDollItemSupportsGender(item))) return false;
     if (slot === 'hair') paperDollState.appearance.hair = itemId || 'hair-none';
+    else if (slot === 'beard') paperDollState.appearance.beard = itemId;
     else if (slot === 'face') paperDollState.appearance.face = itemId;
     else activePaperDollLoadout()[slot] = itemId;
     commitPaperDollSelection();
@@ -287,7 +290,7 @@ function renderPaperDollAt(host, prefix = '') {
             image.paperHairRequest = null;
             image.classList.add('hidden'); image.removeAttribute('src'); return;
         }
-        const color = slot === 'hair' && layer.recolor !== false ? normalizeHairColor(paperDollState.appearance.hairColor) : 'original';
+        const color = ['hair','beard'].includes(slot) && layer.recolor !== false ? normalizeHairColor(paperDollState.appearance[slot === 'beard' ? 'beardColor' : 'hairColor']) : 'original';
         image.paperHairColorReference = layer.colorReference;
         const request = `${source}|${color}`;
         const fitKey = femaleFit?.key || '';

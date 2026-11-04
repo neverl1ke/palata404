@@ -1,0 +1,71 @@
+{
+  "head": "M11",
+  "status": "all ten variants approved by user",
+  "head_only_corrections": {
+    "1": {
+      "up_native_px": 1
+    },
+    "2": {
+      "up_native_px": 2
+    },
+    "6": {
+      "up_native_px": 2
+    },
+    "8": {
+      "up_native_px": 2
+    }
+  },
+  "inherit_to_other_heads": false,
+  "fits": [
+    {
+      "number": 1,
+      "native": "fitting/M11-local-lift-v4/native/M11/01.png",
+      "sha256": "36d2c8032f917b8b3095c120166b0c5b595cf949002e8c35d414a42be5b39019"
+    },
+    {
+      "number": 2,
+      "native": "fitting/M11-local-lift-v4/native/M11/02.png",
+      "sha256": "9178d1a6e4f4cc6920ff1f32d23346257f1ef1781a99a8af58d454c2581bc4ee"
+    },
+    {
+      "number": 3,
+      "native": "fitting/M11-local-lift-v4/native/M11/03.png",
+      "sha256": "cea08d825c6f95cd38bfb5192fbedbc973fa649a22c8a0427453dd784326a078"
+    },
+    {
+      "number": 4,
+      "native": "fitting/M11-local-lift-v4/native/M11/04.png",
+      "sha256": "08991062c5087a9f9b46494cdcaaece7f56ff4d8389f00943bae69ec449c2a2a"
+    },
+    {
+      "number": 5,
+      "native": "fitting/M11-local-lift-v4/native/M11/05.png",
+      "sha256": "f72929f10ff9d100bc17bd0c48f51c86d7f523252a9c81fbe71b6cb35e624a15"
+    },
+    {
+      "number": 6,
+      "native": "fitting/M11-local-lift-v4/native/M11/06.png",
+      "sha256": "0cad30ee4b130a1b1635c1080bd438b2ef9f59a6d99e2853f14428996626707b"
+    },
+    {
+      "number": 7,
+      "native": "fitting/M11-local-lift-v4/native/M11/07.png",
+      "sha256": "b391475909c6296071cd7a33920d15d67c6404dc0bbed1880eb894b143c03558"
+    },
+    {
+      "number": 8,
+      "native": "fitting/M11-local-lift-v4/native/M11/08.png",
+      "sha256": "862ddffe29d78bac96edaa6e13edd9d5a09554e293f788e10d65f71462e038cd"
+    },
+    {
+      "number": 9,
+      "native": "fitting/M11-local-lift-v4/native/M11/09.png",
+      "sha256": "24d1883ee128d94c70748928b5453394fedeaf7d0c6890e00d866f30daecbf94"
+    },
+    {
+      "number": 10,
+      "native": "fitting/M11-local-lift-v4/native/M11/10.png",
+      "sha256": "55ac66e9d346ab30684dbdff123df52539e5004db704201576f9b1a833f0a026"
+    }
+  ]
+}

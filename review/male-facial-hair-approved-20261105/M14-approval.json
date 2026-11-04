@@ -1,0 +1,56 @@
+{
+  "head": "M14",
+  "status": "all ten variants approved by user",
+  "fits": [
+    {
+      "number": 1,
+      "native": "fitting/M14-fit-v1/native/M14/01.png",
+      "sha256": "70174a3f676a037051b531252a0821f62b13f23b9aad71b525b6997260f1c6aa"
+    },
+    {
+      "number": 2,
+      "native": "fitting/M14-fit-v1/native/M14/02.png",
+      "sha256": "98b8ffe07002d8b0969fc9854d598728f666de331025bd48c429c717b2403d3c"
+    },
+    {
+      "number": 3,
+      "native": "fitting/M14-fit-v1/native/M14/03.png",
+      "sha256": "cea08d825c6f95cd38bfb5192fbedbc973fa649a22c8a0427453dd784326a078"
+    },
+    {
+      "number": 4,
+      "native": "fitting/M14-fit-v1/native/M14/04.png",
+      "sha256": "42633f6700686f9a451fe06e564ca7fc17ad9333f47c03e9bf6e02b64e89e700"
+    },
+    {
+      "number": 5,
+      "native": "fitting/M14-fit-v1/native/M14/05.png",
+      "sha256": "f72929f10ff9d100bc17bd0c48f51c86d7f523252a9c81fbe71b6cb35e624a15"
+    },
+    {
+      "number": 6,
+      "native": "fitting/M14-fit-v1/native/M14/06.png",
+      "sha256": "7275af9ac26b2d2a657270bdd9aed6e2205cc1cc7b7950887d864e15f372362d"
+    },
+    {
+      "number": 7,
+      "native": "fitting/M14-fit-v1/native/M14/07.png",
+      "sha256": "67858fd86b2b052cfe0021f758b54063ab61c5b1c35559cd93e039d1319862a3"
+    },
+    {
+      "number": 8,
+      "native": "fitting/M14-fit-v1/native/M14/08.png",
+      "sha256": "f7b4ed68b9e443908b5d25d0aaa8154bc5663c09b998d1bb11a134117e6cdce4"
+    },
+    {
+      "number": 9,
+      "native": "fitting/M14-fit-v1/native/M14/09.png",
+      "sha256": "3959883ffc7e5ea2317593efc9ad39f1b49adf78a92fb3a65c18a93e6ec6935b"
+    },
+    {
+      "number": 10,
+      "native": "fitting/M14-fit-v1/native/M14/10.png",
+      "sha256": "55ac66e9d346ab30684dbdff123df52539e5004db704201576f9b1a833f0a026"
+    }
+  ]
+}

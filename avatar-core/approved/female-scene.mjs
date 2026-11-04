@@ -1,5 +1,6 @@
-// Final approved painted arms, breast-side contours and male-size rifle (2026-11-03).
-// The two registered PNGs are copied byte-for-byte from the user's approved preview.
+import { config } from './config.mjs';
+// Approved rifle paint stays unchanged; idle uses the current approved neutral body.
+// The knife uses that same body and the complete shared weapon artwork.
 // One breathing surface keeps the chest, both grips and rifle together. The previous
 // IK arm motion must not be applied to this newly authored, already posed artwork.
 const WIDTH = 1200, HEIGHT = 1672;
@@ -32,7 +33,7 @@ function load(name) {
         image.src = new URL(`./female/Approved20261103/${name}`, import.meta.url).href;
     });
 }
-class BreathingSurface {
+export class BreathingSurface {
     constructor() {
         this.canvas = document.createElement('canvas');
         this.canvas.width = WIDTH; this.canvas.height = HEIGHT;
@@ -91,14 +92,36 @@ class BreathingSurface {
     dispose(){this.gl.getExtension('WEBGL_lose_context')?.loseContext()}
 }
 export async function createScene() {
-    const [bare,armed]=await Promise.all([load('arms-no-weapon.png'),load('arms-rifle.png')]);
-    for(const image of [bare,armed])if(image.width!==WIDTH||image.height!==HEIGHT)
+    const armed=await load('arms-rifle.png');
+    const neutral=await new Promise((resolve,reject)=>{const i=new Image();i.onload=()=>resolve(i);i.onerror=()=>reject(new Error('Neutral female body unavailable'));i.src=new URL('../../base_female.png?v=a27b499c',import.meta.url).href});
+    const rest=document.createElement('canvas');rest.width=WIDTH;rest.height=HEIGHT;rest.getContext('2d').drawImage(neutral,0,0);
+    let melee=null;
+    for(const image of [armed])if(image.width!==WIDTH||image.height!==HEIGHT)
         throw new Error('Approved female pose registration must be 1200 × 1672');
     const canvas=document.createElement('canvas');canvas.width=WIDTH;canvas.height=HEIGHT;
     const ctx=canvas.getContext('2d'),surface=new BreathingSurface();
     return {canvas,width:WIDTH,approvedPose,
+        async equipWeaponItem(id) {
+            if (id !== 'gear-knife' || melee) return;
+            // The female archived rig is intentionally empty. Use the current
+            // approved neutral body and the same complete knife as the male.
+            const {resources}=await config('male');
+            const item=resources.json['equipment-weapons.json'].items.find(i=>i.id===id);
+            const knife=await new Promise((resolve,reject)=>{const i=new Image();i.onload=()=>resolve(i);i.onerror=reject;i.src=resources.images[item.image]});
+            const def=item.attachmentByGender.female,angle=def.angle*Math.PI/180;
+            melee=document.createElement('canvas');melee.width=WIDTH;melee.height=HEIGHT;
+            const m=melee.getContext('2d');m.drawImage(rest,0,0);
+            m.save();m.translate(230,925);m.rotate(angle);m.scale(def.scale,def.scale);
+            m.drawImage(knife,-def.primary[0],-def.primary[1]);m.restore();
+            // Reuse the existing fingers as the foreground grip, without
+            // duplicating their alpha or changing the neutral hand anatomy.
+            m.save();m.beginPath();
+            [[202,881],[219,894],[239,906],[245,922],[245,957],[228,971],[207,949],[191,919],[188,899]].forEach(([x,y],n)=>n?m.lineTo(x,y):m.moveTo(x,y));
+            m.closePath();m.clip();m.drawImage(rest,0,0);m.restore();
+        },
         render(time,weapon=true,motion={}) {
-            const image=weapon?armed:bare,breath=breathAt(time,motion);
+            const pose=typeof weapon==='string'?weapon:weapon?'rifle':'idle';
+            const image=pose==='rifle'?armed:pose==='melee'&&melee?melee:rest,breath=breathAt(time,motion);
             ctx.setTransform(1,0,0,1,0,0);ctx.clearRect(0,0,WIDTH,HEIGHT);
             // Rest frames go straight from the approved PNG, avoiding a resampling pass.
             ctx.drawImage(breath===0?image:surface.draw(image,breath),0,0);return canvas;

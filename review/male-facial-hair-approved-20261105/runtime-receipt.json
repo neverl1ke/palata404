@@ -1,0 +1,25 @@
+{
+  "authorization": "Owner approved all 16 male head fits and requested Main integration, matching beard palette, and idle/knife/rifle repair for both avatars.",
+  "runtime_before_sha256": {
+    "paper-doll-data.js": "a13865f464785d7634227caa05e2bb9a4d9a8c72857ddf63d5f71ac6cbc89b07",
+    "paper-doll.js": "4f28983e6aea88a53132d077c7f84a9f122ed7c61d9be5fd49366fdee129ed98",
+    "hair-color.js": "ca61bee208ebbbbd64ddc8337ce4722f5fd0b3e2beabf78568ba9c2f726e51f5",
+    "wardrobe.js": "71af11da05182a0c0773cb8d8c357b32fb0f01bce9b2b8c7e4a12c26894ad756",
+    "index.html": "e031783fc35c6a48a7e12de69cabcfaabe2bf8d3fdd0e809d6e8b29daac60dc9",
+    "avatar-core/game-preview.mjs": "3b73284e81131e03b4520ce1f0bc0cd6e2724db9b48eebba58f7ea6b2c79b62b",
+    "avatar-core/approved/avatar.mjs": "6b033d940a82eb33ebd35702567c7cca2217c026bde11cb125a08aca985ae423",
+    "avatar-core/approved/male-scene.mjs": "293d081dd55a4a14160b53ca88349b2285c7bdb9e6057bfc8e18df1e2b2d5d22",
+    "avatar-core/approved/female-scene.mjs": "3f35b2bc94c247e60285f4c136ffc9116f81ccad5d3d4767fd66fd493605b341"
+  },
+  "runtime_after_sha256": {
+    "paper-doll-data.js": "fb4c8c1d85946ee32c18e624ca8113e4ee6885d82082cb2e37bee2c9bd29fd7f",
+    "paper-doll.js": "a4652c5bcdd6e010312eb3d6b5aac207a18ec435439aed26d759e859a56898ba",
+    "hair-color.js": "2a304c20e5d2e9ec282f19c4adc5fc223b457cae56786e323c4e18308d3922ed",
+    "wardrobe.js": "6f15e024d6fdeebe02afc893a3db806ad4cc5075e56b7b25fbce60ff61c9e040",
+    "index.html": "35c00d2624d7ceb599a0d5652326646eb0c2386856ae77b07172d14b8b6b7162",
+    "avatar-core/game-preview.mjs": "fe9d3a671ac85d9bbd95a22a0b7d9fc348ebabe14e72038e8fd8dd837c7322cd",
+    "avatar-core/approved/avatar.mjs": "276733e787aca8bbaa9a1d5f57efabb06ed51d46207e0fa5da4043cac9e460d2",
+    "avatar-core/approved/male-scene.mjs": "e25f307c84e1dafdd8c4f1bcd7d527df90eeecce6b2d0cebd812188370c7c61e",
+    "avatar-core/approved/female-scene.mjs": "9115d4c37c3a054fda582fd18308dbab6147ed4b027bf1809fdc163c394bd3d2"
+  }
+}

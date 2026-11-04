@@ -1,0 +1,11 @@
+test_exact_sources_and_base_registration (tests.test_animated_avatars.AnimatedAvatarTests.test_exact_sources_and_base_registration) ... ok
+test_game_canvas_matches_approved_reference_frames (tests.test_animated_avatars.AnimatedAvatarTests.test_game_canvas_matches_approved_reference_frames) ... ok
+test_native_female_head_and_hair_match_static_registered_preview (tests.test_animated_avatars.AnimatedAvatarTests.test_native_female_head_and_hair_match_static_registered_preview) ... ok
+test_poses_breathing_cosmetics_and_saved_weapons (tests.test_animated_avatars.AnimatedAvatarTests.test_poses_breathing_cosmetics_and_saved_weapons) ... ok
+test_stash_art_and_rapid_changes (tests.test_animated_avatars.AnimatedAvatarTests.test_stash_art_and_rapid_changes) ... ok
+test_stronger_faster_breathing_for_both_genders (tests.test_animated_avatars.AnimatedAvatarTests.test_stronger_faster_breathing_for_both_genders) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 42.449s
+
+OK

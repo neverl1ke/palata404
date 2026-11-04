@@ -1,0 +1,56 @@
+{
+  "head": "M05",
+  "status": "all ten variants approved by user",
+  "fits": [
+    {
+      "number": 1,
+      "native": "fitting/M05-fit-v1/native/M05/01.png",
+      "sha256": "d2f0e66c24041e2cb13d9c1b44b91886073f2e87abea6f1a0726b83e05375978"
+    },
+    {
+      "number": 2,
+      "native": "fitting/M05-fit-v1/native/M05/02.png",
+      "sha256": "5a97cb81fe4e19585fa955f3d991b60385ff5147fb16c4eaa2be3da0438344bf"
+    },
+    {
+      "number": 3,
+      "native": "fitting/M05-fit-v1/native/M05/03.png",
+      "sha256": "2aaaff4d04c3e4900793cfac8b9302740aa07b04edc162f1912f007dc2d5d53f"
+    },
+    {
+      "number": 4,
+      "native": "fitting/M05-fit-v1/native/M05/04.png",
+      "sha256": "c423a8cacf8a0254c18597aa699abc4bc91ee5ab588d9f36ae1bace898e650d2"
+    },
+    {
+      "number": 5,
+      "native": "fitting/M05-fit-v1/native/M05/05.png",
+      "sha256": "e7f21bfa6338353c0b9588bdb8166aeee1b55d6aa50c7afb400603bd50339de9"
+    },
+    {
+      "number": 6,
+      "native": "fitting/M05-fit-v1/native/M05/06.png",
+      "sha256": "0439102795b94a07a650b119245f7a4746ecf2f1ccbbf2d91774946c2ed8a607"
+    },
+    {
+      "number": 7,
+      "native": "fitting/M05-fit-v1/native/M05/07.png",
+      "sha256": "8c2e354eca98830073a9cddcb4d83a70ac2498d5b79209a3d342f89a80298d8c"
+    },
+    {
+      "number": 8,
+      "native": "fitting/M05-fit-v1/native/M05/08.png",
+      "sha256": "b6831a3687278f29808b8c516d475053ede2d400596c1f5d650283dde310f126"
+    },
+    {
+      "number": 9,
+      "native": "fitting/M05-fit-v1/native/M05/09.png",
+      "sha256": "559eb1af017e708c5515795107b0b9062c5cddb0314eaab40a650076e74523cd"
+    },
+    {
+      "number": 10,
+      "native": "fitting/M05-fit-v1/native/M05/10.png",
+      "sha256": "41bc3044589ad741857221d2c91f93226fd243ec0638c4c903380e372b722fcf"
+    }
+  ]
+}

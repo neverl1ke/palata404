@@ -1,0 +1,72 @@
+[
+  {
+    "gender": "male",
+    "weapon": null,
+    "pose": "idle"
+  },
+  {
+    "gender": "male",
+    "weapon": "gear-aks",
+    "pose": "rifle"
+  },
+  {
+    "gender": "male",
+    "weapon": null,
+    "pose": "idle"
+  },
+  {
+    "gender": "male",
+    "weapon": "gear-knife",
+    "pose": "melee"
+  },
+  {
+    "gender": "male",
+    "weapon": "gear-aks",
+    "pose": "rifle"
+  },
+  {
+    "gender": "male",
+    "weapon": "gear-knife",
+    "pose": "melee"
+  },
+  {
+    "gender": "male",
+    "weapon": null,
+    "pose": "idle"
+  },
+  {
+    "gender": "female",
+    "weapon": null,
+    "pose": "idle"
+  },
+  {
+    "gender": "female",
+    "weapon": "gear-aks",
+    "pose": "rifle"
+  },
+  {
+    "gender": "female",
+    "weapon": null,
+    "pose": "idle"
+  },
+  {
+    "gender": "female",
+    "weapon": "gear-knife",
+    "pose": "melee"
+  },
+  {
+    "gender": "female",
+    "weapon": "gear-aks",
+    "pose": "rifle"
+  },
+  {
+    "gender": "female",
+    "weapon": "gear-knife",
+    "pose": "melee"
+  },
+  {
+    "gender": "female",
+    "weapon": null,
+    "pose": "idle"
+  }
+]

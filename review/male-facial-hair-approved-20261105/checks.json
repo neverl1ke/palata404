@@ -1,0 +1,35 @@
+{
+  "approved_assets": {
+    "exact_sha256_matches": 160,
+    "heads": 16,
+    "styles": 10
+  },
+  "palette": {
+    "choices": 25,
+    "alpha_preserved": true,
+    "independent_from_hair": true
+  },
+  "browser": {
+    "beards_weapons_tests": 4,
+    "existing_avatar_tests": 6,
+    "both_genders": true,
+    "rapid_transitions_and_reload": true,
+    "mobile_widths": [
+      320,
+      390
+    ],
+    "approved_rifle_frames_preserved": true
+  },
+  "javascript": {
+    "game_logic_passed": 94,
+    "avatar_math_passed": 12
+  },
+  "project_audit_exit": 0,
+  "syntax_and_diff_checks": "passed",
+  "visual_evidence": [
+    "weapon-states.jpg",
+    "beard-mobile-320.jpg",
+    "beard-mobile-390.jpg"
+  ],
+  "clothing": "Existing static fallback for clothing without authored weapon-pose sleeves retained."
+}

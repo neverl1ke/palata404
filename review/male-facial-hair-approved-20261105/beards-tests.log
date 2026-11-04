@@ -1,0 +1,10 @@
+test_every_integrated_fit_is_exact_owner_approved_rgba (tests.test_beards_weapons.BeardAssetTests.test_every_integrated_fit_is_exact_owner_approved_rgba) ... ok
+test_beard_palette_per_head_layers_and_persistence (tests.test_beards_weapons.BeardWeaponBrowserTests.test_beard_palette_per_head_layers_and_persistence) ... ok
+test_mobile_beard_selection_palette_and_removal (tests.test_beards_weapons.BeardWeaponBrowserTests.test_mobile_beard_selection_palette_and_removal) ... ok
+test_weapon_cycles_return_to_exact_neutral_body_both_genders (tests.test_beards_weapons.BeardWeaponBrowserTests.test_weapon_cycles_return_to_exact_neutral_body_both_genders) ... ok
+test_exact_sources_and_base_registration (tests.test_animated_avatars.AnimatedAvatarTests.test_exact_sources_and_base_registration) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 68.152s
+
+OK

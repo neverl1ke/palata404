@@ -1,0 +1,56 @@
+{
+  "head": "M15",
+  "status": "all ten variants approved by user",
+  "fits": [
+    {
+      "number": 1,
+      "native": "fitting/M15-lift-v3/native/M15/01.png",
+      "sha256": "e533ca9bb0da21e1872140f785c455d6a5e1a78d9b6b224171db39fb399d0d88"
+    },
+    {
+      "number": 2,
+      "native": "fitting/M15-lift-v3/native/M15/02.png",
+      "sha256": "cdb8f1e4fac5b8e29eb9785fac5c345aabb779d959311d8fdae0869786cb9f89"
+    },
+    {
+      "number": 3,
+      "native": "fitting/M15-lift-v3/native/M15/03.png",
+      "sha256": "0298d36464e4707e6f555092117251ae3a3d91f715c255e92bccd5c81607100d"
+    },
+    {
+      "number": 4,
+      "native": "fitting/M15-lift-v3/native/M15/04.png",
+      "sha256": "de8261cde19131fa367411c88addd22d96e04c4bd6a70c921f3579d52adab606"
+    },
+    {
+      "number": 5,
+      "native": "fitting/M15-lift-v3/native/M15/05.png",
+      "sha256": "7b45d776c06888a6f80b0946d8d21536e9fb02f2227f1df62612b4c29ca6ac21"
+    },
+    {
+      "number": 6,
+      "native": "fitting/M15-lift-v3/native/M15/06.png",
+      "sha256": "a2dd42b6d722099ee577a9623922bc051b0b179ef8c376093968cfc847fda878"
+    },
+    {
+      "number": 7,
+      "native": "fitting/M15-lift-v3/native/M15/07.png",
+      "sha256": "12147928d3e57f701d2bc2cb88472a483e0559bdfbd8c656bc0f6aaef732aedc"
+    },
+    {
+      "number": 8,
+      "native": "fitting/M15-lift-v3/native/M15/08.png",
+      "sha256": "45b17ced857b5fd53740808c60e73b1fc2e5085d1a074b2a659fa0ec0e90dd0a"
+    },
+    {
+      "number": 9,
+      "native": "fitting/M15-lift-v3/native/M15/09.png",
+      "sha256": "e8ac965cf73aa08b76ae587f8d2f427a650c83c19384fb8f294c2fda9a5213eb"
+    },
+    {
+      "number": 10,
+      "native": "fitting/M15-lift-v3/native/M15/10.png",
+      "sha256": "3f7db11785f6ee003d59647a1d45725c36ac4c0c3d5c199b8fd59e97a5d431bc"
+    }
+  ]
+}

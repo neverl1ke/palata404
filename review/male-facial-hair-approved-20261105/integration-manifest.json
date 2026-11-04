@@ -1,0 +1,1181 @@
+{
+  "frame": [
+    941,
+    1672
+  ],
+  "head_specific_M11_not_inherited": true,
+  "files": [
+    {
+      "head": "M01",
+      "face": "@native",
+      "number": 1,
+      "path": "assets/wardrobe/beards/approved-20261105/M01-01.png",
+      "sha256": "3f9ca19d11ca112df828136e70c5f3787145fe22a453cde2c6dfddc39c8028fb"
+    },
+    {
+      "head": "M01",
+      "face": "@native",
+      "number": 2,
+      "path": "assets/wardrobe/beards/approved-20261105/M01-02.png",
+      "sha256": "e5c72839c5b64a7a0509f2927702d00424bc581ca5567a7a15edcb18b0d87f84"
+    },
+    {
+      "head": "M01",
+      "face": "@native",
+      "number": 3,
+      "path": "assets/wardrobe/beards/approved-20261105/M01-03.png",
+      "sha256": "3369750e05f9627be66670fc93679cf06f1410edf1d4e2768ae779d1cc487739"
+    },
+    {
+      "head": "M01",
+      "face": "@native",
+      "number": 4,
+      "path": "assets/wardrobe/beards/approved-20261105/M01-04.png",
+      "sha256": "c690458e9f689769b827d2dbb90d19ce08b61fb6a607cba918a7e9716fcf070e"
+    },
+    {
+      "head": "M01",
+      "face": "@native",
+      "number": 5,
+      "path": "assets/wardrobe/beards/approved-20261105/M01-05.png",
+      "sha256": "93748a2f757e6b44ddfc25733a91d252e3bb3e5c082ca0fd1f76ae38b03013eb"
+    },
+    {
+      "head": "M01",
+      "face": "@native",
+      "number": 6,
+      "path": "assets/wardrobe/beards/approved-20261105/M01-06.png",
+      "sha256": "daf96889b02a775626dd0fb6c4c5b819c507aaaffc9f381b1a26d63afeb4ddfb"
+    },
+    {
+      "head": "M01",
+      "face": "@native",
+      "number": 7,
+      "path": "assets/wardrobe/beards/approved-20261105/M01-07.png",
+      "sha256": "4ab4b41c1d2b277f20bdae6c300f60e946a37fa6f9eed010778168954c15d436"
+    },
+    {
+      "head": "M01",
+      "face": "@native",
+      "number": 8,
+      "path": "assets/wardrobe/beards/approved-20261105/M01-08.png",
+      "sha256": "18f66aa6a68f3948ed1ec5cf621bacaf5d962191a98f647cf53838549e30b6ca"
+    },
+    {
+      "head": "M01",
+      "face": "@native",
+      "number": 9,
+      "path": "assets/wardrobe/beards/approved-20261105/M01-09.png",
+      "sha256": "ddd9be160d8d13d571edc766a42ba0c91a4bf1911ec9cadc2a417b81ee20d865"
+    },
+    {
+      "head": "M01",
+      "face": "@native",
+      "number": 10,
+      "path": "assets/wardrobe/beards/approved-20261105/M01-10.png",
+      "sha256": "6ff034db68867cb0c9e7c782bc0f76ce738216316d31186baeee474e6b4ce2f1"
+    },
+    {
+      "head": "M02",
+      "face": "face-asian",
+      "number": 1,
+      "path": "assets/wardrobe/beards/approved-20261105/M02-01.png",
+      "sha256": "617e21d0950229ddf82c845af2ed8ee116d7c14656dc487dd83e28cda943e519"
+    },
+    {
+      "head": "M02",
+      "face": "face-asian",
+      "number": 2,
+      "path": "assets/wardrobe/beards/approved-20261105/M02-02.png",
+      "sha256": "48abc389d90fd25bbff1ee5ba3b05f476accd9806fea075cd344ccdb8ad760e6"
+    },
+    {
+      "head": "M02",
+      "face": "face-asian",
+      "number": 3,
+      "path": "assets/wardrobe/beards/approved-20261105/M02-03.png",
+      "sha256": "b1b6cdd72440e22c7bdc51b3a2616cdb5316da3264636884495e74960b51a1d7"
+    },
+    {
+      "head": "M02",
+      "face": "face-asian",
+      "number": 4,
+      "path": "assets/wardrobe/beards/approved-20261105/M02-04.png",
+      "sha256": "951e4d875555d490a0e616a3aa0207a8e2c5a5cdd62dfd224f0ba6040caee92c"
+    },
+    {
+      "head": "M02",
+      "face": "face-asian",
+      "number": 5,
+      "path": "assets/wardrobe/beards/approved-20261105/M02-05.png",
+      "sha256": "fb161e934b562bcedfa01a67d482dc61d7e97a9987ab9a9529e84102ef30372d"
+    },
+    {
+      "head": "M02",
+      "face": "face-asian",
+      "number": 6,
+      "path": "assets/wardrobe/beards/approved-20261105/M02-06.png",
+      "sha256": "86c96cd88614c1e8708bbf3d9eba3a0811903df890321f5a22f61b035d379f58"
+    },
+    {
+      "head": "M02",
+      "face": "face-asian",
+      "number": 7,
+      "path": "assets/wardrobe/beards/approved-20261105/M02-07.png",
+      "sha256": "c9ef26fe20deedc6ace6d4fe004dc7f62a9afc24e21823845b4bbbacb6491574"
+    },
+    {
+      "head": "M02",
+      "face": "face-asian",
+      "number": 8,
+      "path": "assets/wardrobe/beards/approved-20261105/M02-08.png",
+      "sha256": "57bc9a0864f0baa1c345fec3773a7d4cfb9cf90667cddb63362079000192ece5"
+    },
+    {
+      "head": "M02",
+      "face": "face-asian",
+      "number": 9,
+      "path": "assets/wardrobe/beards/approved-20261105/M02-09.png",
+      "sha256": "d1a962a21022bba4a519f64d3a36baff4a0b0a69150c951a6b5f13b8db1f7178"
+    },
+    {
+      "head": "M02",
+      "face": "face-asian",
+      "number": 10,
+      "path": "assets/wardrobe/beards/approved-20261105/M02-10.png",
+      "sha256": "dc32c38b2e227c07bfbbe601ecd2429d77145d9e766550b64437d0c6b6a72f83"
+    },
+    {
+      "head": "M03",
+      "face": "face-young",
+      "number": 1,
+      "path": "assets/wardrobe/beards/approved-20261105/M03-01.png",
+      "sha256": "d2f0e66c24041e2cb13d9c1b44b91886073f2e87abea6f1a0726b83e05375978"
+    },
+    {
+      "head": "M03",
+      "face": "face-young",
+      "number": 2,
+      "path": "assets/wardrobe/beards/approved-20261105/M03-02.png",
+      "sha256": "5a97cb81fe4e19585fa955f3d991b60385ff5147fb16c4eaa2be3da0438344bf"
+    },
+    {
+      "head": "M03",
+      "face": "face-young",
+      "number": 3,
+      "path": "assets/wardrobe/beards/approved-20261105/M03-03.png",
+      "sha256": "2aaaff4d04c3e4900793cfac8b9302740aa07b04edc162f1912f007dc2d5d53f"
+    },
+    {
+      "head": "M03",
+      "face": "face-young",
+      "number": 4,
+      "path": "assets/wardrobe/beards/approved-20261105/M03-04.png",
+      "sha256": "c423a8cacf8a0254c18597aa699abc4bc91ee5ab588d9f36ae1bace898e650d2"
+    },
+    {
+      "head": "M03",
+      "face": "face-young",
+      "number": 5,
+      "path": "assets/wardrobe/beards/approved-20261105/M03-05.png",
+      "sha256": "e7f21bfa6338353c0b9588bdb8166aeee1b55d6aa50c7afb400603bd50339de9"
+    },
+    {
+      "head": "M03",
+      "face": "face-young",
+      "number": 6,
+      "path": "assets/wardrobe/beards/approved-20261105/M03-06.png",
+      "sha256": "0439102795b94a07a650b119245f7a4746ecf2f1ccbbf2d91774946c2ed8a607"
+    },
+    {
+      "head": "M03",
+      "face": "face-young",
+      "number": 7,
+      "path": "assets/wardrobe/beards/approved-20261105/M03-07.png",
+      "sha256": "8c2e354eca98830073a9cddcb4d83a70ac2498d5b79209a3d342f89a80298d8c"
+    },
+    {
+      "head": "M03",
+      "face": "face-young",
+      "number": 8,
+      "path": "assets/wardrobe/beards/approved-20261105/M03-08.png",
+      "sha256": "b6831a3687278f29808b8c516d475053ede2d400596c1f5d650283dde310f126"
+    },
+    {
+      "head": "M03",
+      "face": "face-young",
+      "number": 9,
+      "path": "assets/wardrobe/beards/approved-20261105/M03-09.png",
+      "sha256": "559eb1af017e708c5515795107b0b9062c5cddb0314eaab40a650076e74523cd"
+    },
+    {
+      "head": "M03",
+      "face": "face-young",
+      "number": 10,
+      "path": "assets/wardrobe/beards/approved-20261105/M03-10.png",
+      "sha256": "41bc3044589ad741857221d2c91f93226fd243ec0638c4c903380e372b722fcf"
+    },
+    {
+      "head": "M04",
+      "face": "face-exhausted",
+      "number": 1,
+      "path": "assets/wardrobe/beards/approved-20261105/M04-01.png",
+      "sha256": "d2f0e66c24041e2cb13d9c1b44b91886073f2e87abea6f1a0726b83e05375978"
+    },
+    {
+      "head": "M04",
+      "face": "face-exhausted",
+      "number": 2,
+      "path": "assets/wardrobe/beards/approved-20261105/M04-02.png",
+      "sha256": "5a97cb81fe4e19585fa955f3d991b60385ff5147fb16c4eaa2be3da0438344bf"
+    },
+    {
+      "head": "M04",
+      "face": "face-exhausted",
+      "number": 3,
+      "path": "assets/wardrobe/beards/approved-20261105/M04-03.png",
+      "sha256": "2aaaff4d04c3e4900793cfac8b9302740aa07b04edc162f1912f007dc2d5d53f"
+    },
+    {
+      "head": "M04",
+      "face": "face-exhausted",
+      "number": 4,
+      "path": "assets/wardrobe/beards/approved-20261105/M04-04.png",
+      "sha256": "c423a8cacf8a0254c18597aa699abc4bc91ee5ab588d9f36ae1bace898e650d2"
+    },
+    {
+      "head": "M04",
+      "face": "face-exhausted",
+      "number": 5,
+      "path": "assets/wardrobe/beards/approved-20261105/M04-05.png",
+      "sha256": "e7f21bfa6338353c0b9588bdb8166aeee1b55d6aa50c7afb400603bd50339de9"
+    },
+    {
+      "head": "M04",
+      "face": "face-exhausted",
+      "number": 6,
+      "path": "assets/wardrobe/beards/approved-20261105/M04-06.png",
+      "sha256": "0439102795b94a07a650b119245f7a4746ecf2f1ccbbf2d91774946c2ed8a607"
+    },
+    {
+      "head": "M04",
+      "face": "face-exhausted",
+      "number": 7,
+      "path": "assets/wardrobe/beards/approved-20261105/M04-07.png",
+      "sha256": "8c2e354eca98830073a9cddcb4d83a70ac2498d5b79209a3d342f89a80298d8c"
+    },
+    {
+      "head": "M04",
+      "face": "face-exhausted",
+      "number": 8,
+      "path": "assets/wardrobe/beards/approved-20261105/M04-08.png",
+      "sha256": "b6831a3687278f29808b8c516d475053ede2d400596c1f5d650283dde310f126"
+    },
+    {
+      "head": "M04",
+      "face": "face-exhausted",
+      "number": 9,
+      "path": "assets/wardrobe/beards/approved-20261105/M04-09.png",
+      "sha256": "559eb1af017e708c5515795107b0b9062c5cddb0314eaab40a650076e74523cd"
+    },
+    {
+      "head": "M04",
+      "face": "face-exhausted",
+      "number": 10,
+      "path": "assets/wardrobe/beards/approved-20261105/M04-10.png",
+      "sha256": "41bc3044589ad741857221d2c91f93226fd243ec0638c4c903380e372b722fcf"
+    },
+    {
+      "head": "M05",
+      "face": "face-elder",
+      "number": 1,
+      "path": "assets/wardrobe/beards/approved-20261105/M05-01.png",
+      "sha256": "d2f0e66c24041e2cb13d9c1b44b91886073f2e87abea6f1a0726b83e05375978"
+    },
+    {
+      "head": "M05",
+      "face": "face-elder",
+      "number": 2,
+      "path": "assets/wardrobe/beards/approved-20261105/M05-02.png",
+      "sha256": "5a97cb81fe4e19585fa955f3d991b60385ff5147fb16c4eaa2be3da0438344bf"
+    },
+    {
+      "head": "M05",
+      "face": "face-elder",
+      "number": 3,
+      "path": "assets/wardrobe/beards/approved-20261105/M05-03.png",
+      "sha256": "2aaaff4d04c3e4900793cfac8b9302740aa07b04edc162f1912f007dc2d5d53f"
+    },
+    {
+      "head": "M05",
+      "face": "face-elder",
+      "number": 4,
+      "path": "assets/wardrobe/beards/approved-20261105/M05-04.png",
+      "sha256": "c423a8cacf8a0254c18597aa699abc4bc91ee5ab588d9f36ae1bace898e650d2"
+    },
+    {
+      "head": "M05",
+      "face": "face-elder",
+      "number": 5,
+      "path": "assets/wardrobe/beards/approved-20261105/M05-05.png",
+      "sha256": "e7f21bfa6338353c0b9588bdb8166aeee1b55d6aa50c7afb400603bd50339de9"
+    },
+    {
+      "head": "M05",
+      "face": "face-elder",
+      "number": 6,
+      "path": "assets/wardrobe/beards/approved-20261105/M05-06.png",
+      "sha256": "0439102795b94a07a650b119245f7a4746ecf2f1ccbbf2d91774946c2ed8a607"
+    },
+    {
+      "head": "M05",
+      "face": "face-elder",
+      "number": 7,
+      "path": "assets/wardrobe/beards/approved-20261105/M05-07.png",
+      "sha256": "8c2e354eca98830073a9cddcb4d83a70ac2498d5b79209a3d342f89a80298d8c"
+    },
+    {
+      "head": "M05",
+      "face": "face-elder",
+      "number": 8,
+      "path": "assets/wardrobe/beards/approved-20261105/M05-08.png",
+      "sha256": "b6831a3687278f29808b8c516d475053ede2d400596c1f5d650283dde310f126"
+    },
+    {
+      "head": "M05",
+      "face": "face-elder",
+      "number": 9,
+      "path": "assets/wardrobe/beards/approved-20261105/M05-09.png",
+      "sha256": "559eb1af017e708c5515795107b0b9062c5cddb0314eaab40a650076e74523cd"
+    },
+    {
+      "head": "M05",
+      "face": "face-elder",
+      "number": 10,
+      "path": "assets/wardrobe/beards/approved-20261105/M05-10.png",
+      "sha256": "41bc3044589ad741857221d2c91f93226fd243ec0638c4c903380e372b722fcf"
+    },
+    {
+      "head": "M06",
+      "face": "face-alternative",
+      "number": 1,
+      "path": "assets/wardrobe/beards/approved-20261105/M06-01.png",
+      "sha256": "d2f0e66c24041e2cb13d9c1b44b91886073f2e87abea6f1a0726b83e05375978"
+    },
+    {
+      "head": "M06",
+      "face": "face-alternative",
+      "number": 2,
+      "path": "assets/wardrobe/beards/approved-20261105/M06-02.png",
+      "sha256": "5a97cb81fe4e19585fa955f3d991b60385ff5147fb16c4eaa2be3da0438344bf"
+    },
+    {
+      "head": "M06",
+      "face": "face-alternative",
+      "number": 3,
+      "path": "assets/wardrobe/beards/approved-20261105/M06-03.png",
+      "sha256": "2aaaff4d04c3e4900793cfac8b9302740aa07b04edc162f1912f007dc2d5d53f"
+    },
+    {
+      "head": "M06",
+      "face": "face-alternative",
+      "number": 4,
+      "path": "assets/wardrobe/beards/approved-20261105/M06-04.png",
+      "sha256": "c423a8cacf8a0254c18597aa699abc4bc91ee5ab588d9f36ae1bace898e650d2"
+    },
+    {
+      "head": "M06",
+      "face": "face-alternative",
+      "number": 5,
+      "path": "assets/wardrobe/beards/approved-20261105/M06-05.png",
+      "sha256": "e7f21bfa6338353c0b9588bdb8166aeee1b55d6aa50c7afb400603bd50339de9"
+    },
+    {
+      "head": "M06",
+      "face": "face-alternative",
+      "number": 6,
+      "path": "assets/wardrobe/beards/approved-20261105/M06-06.png",
+      "sha256": "0439102795b94a07a650b119245f7a4746ecf2f1ccbbf2d91774946c2ed8a607"
+    },
+    {
+      "head": "M06",
+      "face": "face-alternative",
+      "number": 7,
+      "path": "assets/wardrobe/beards/approved-20261105/M06-07.png",
+      "sha256": "8c2e354eca98830073a9cddcb4d83a70ac2498d5b79209a3d342f89a80298d8c"
+    },
+    {
+      "head": "M06",
+      "face": "face-alternative",
+      "number": 8,
+      "path": "assets/wardrobe/beards/approved-20261105/M06-08.png",
+      "sha256": "b6831a3687278f29808b8c516d475053ede2d400596c1f5d650283dde310f126"
+    },
+    {
+      "head": "M06",
+      "face": "face-alternative",
+      "number": 9,
+      "path": "assets/wardrobe/beards/approved-20261105/M06-09.png",
+      "sha256": "559eb1af017e708c5515795107b0b9062c5cddb0314eaab40a650076e74523cd"
+    },
+    {
+      "head": "M06",
+      "face": "face-alternative",
+      "number": 10,
+      "path": "assets/wardrobe/beards/approved-20261105/M06-10.png",
+      "sha256": "41bc3044589ad741857221d2c91f93226fd243ec0638c4c903380e372b722fcf"
+    },
+    {
+      "head": "M07",
+      "face": "face-male-goth-pierced",
+      "number": 1,
+      "path": "assets/wardrobe/beards/approved-20261105/M07-01.png",
+      "sha256": "14ac00c709b1d0b16721284c7bf30883424d2890f35e7cb302dc349ea79591b8"
+    },
+    {
+      "head": "M07",
+      "face": "face-male-goth-pierced",
+      "number": 2,
+      "path": "assets/wardrobe/beards/approved-20261105/M07-02.png",
+      "sha256": "234afa7c676d0b648ad8a682a28897379818fcabf21fbe2b515f88f32215a0b9"
+    },
+    {
+      "head": "M07",
+      "face": "face-male-goth-pierced",
+      "number": 3,
+      "path": "assets/wardrobe/beards/approved-20261105/M07-03.png",
+      "sha256": "35fed7d72a5c4b4af8da43822917bacab045827299618ce3f14b9c74957025c1"
+    },
+    {
+      "head": "M07",
+      "face": "face-male-goth-pierced",
+      "number": 4,
+      "path": "assets/wardrobe/beards/approved-20261105/M07-04.png",
+      "sha256": "eea98f1dc270de291e2c34170cc500f9dacdc3fb2f88f401d7bc049721001897"
+    },
+    {
+      "head": "M07",
+      "face": "face-male-goth-pierced",
+      "number": 5,
+      "path": "assets/wardrobe/beards/approved-20261105/M07-05.png",
+      "sha256": "9de3a8ac6cb56c52e7632e52d41256cb359f2f7b79172e24f7680f4070932d83"
+    },
+    {
+      "head": "M07",
+      "face": "face-male-goth-pierced",
+      "number": 6,
+      "path": "assets/wardrobe/beards/approved-20261105/M07-06.png",
+      "sha256": "2c76dcc4130acd6316dc7bb013bc5b65feda1249f5968dc0d73b60d43adace9c"
+    },
+    {
+      "head": "M07",
+      "face": "face-male-goth-pierced",
+      "number": 7,
+      "path": "assets/wardrobe/beards/approved-20261105/M07-07.png",
+      "sha256": "e52be87461ae97fa15619feba5653581309d9afc3bdf78e3e873b4da8815ee69"
+    },
+    {
+      "head": "M07",
+      "face": "face-male-goth-pierced",
+      "number": 8,
+      "path": "assets/wardrobe/beards/approved-20261105/M07-08.png",
+      "sha256": "1c38ddd2d2f47a9dd6438ae0594324ecb82d47476c018d38b8b50abda63b737d"
+    },
+    {
+      "head": "M07",
+      "face": "face-male-goth-pierced",
+      "number": 9,
+      "path": "assets/wardrobe/beards/approved-20261105/M07-09.png",
+      "sha256": "41e441a2f9c77e5b878bc344573aaf690f73b85e791301012855702b77d2a0e2"
+    },
+    {
+      "head": "M07",
+      "face": "face-male-goth-pierced",
+      "number": 10,
+      "path": "assets/wardrobe/beards/approved-20261105/M07-10.png",
+      "sha256": "c32a3370643afe5c8abaf71feff5efa0229f3e1126f9170e7458dda78cec3ed3"
+    },
+    {
+      "head": "M08",
+      "face": "face-male-freckled",
+      "number": 1,
+      "path": "assets/wardrobe/beards/approved-20261105/M08-01.png",
+      "sha256": "d2f0e66c24041e2cb13d9c1b44b91886073f2e87abea6f1a0726b83e05375978"
+    },
+    {
+      "head": "M08",
+      "face": "face-male-freckled",
+      "number": 2,
+      "path": "assets/wardrobe/beards/approved-20261105/M08-02.png",
+      "sha256": "5a97cb81fe4e19585fa955f3d991b60385ff5147fb16c4eaa2be3da0438344bf"
+    },
+    {
+      "head": "M08",
+      "face": "face-male-freckled",
+      "number": 3,
+      "path": "assets/wardrobe/beards/approved-20261105/M08-03.png",
+      "sha256": "2aaaff4d04c3e4900793cfac8b9302740aa07b04edc162f1912f007dc2d5d53f"
+    },
+    {
+      "head": "M08",
+      "face": "face-male-freckled",
+      "number": 4,
+      "path": "assets/wardrobe/beards/approved-20261105/M08-04.png",
+      "sha256": "c423a8cacf8a0254c18597aa699abc4bc91ee5ab588d9f36ae1bace898e650d2"
+    },
+    {
+      "head": "M08",
+      "face": "face-male-freckled",
+      "number": 5,
+      "path": "assets/wardrobe/beards/approved-20261105/M08-05.png",
+      "sha256": "e7f21bfa6338353c0b9588bdb8166aeee1b55d6aa50c7afb400603bd50339de9"
+    },
+    {
+      "head": "M08",
+      "face": "face-male-freckled",
+      "number": 6,
+      "path": "assets/wardrobe/beards/approved-20261105/M08-06.png",
+      "sha256": "0439102795b94a07a650b119245f7a4746ecf2f1ccbbf2d91774946c2ed8a607"
+    },
+    {
+      "head": "M08",
+      "face": "face-male-freckled",
+      "number": 7,
+      "path": "assets/wardrobe/beards/approved-20261105/M08-07.png",
+      "sha256": "8c2e354eca98830073a9cddcb4d83a70ac2498d5b79209a3d342f89a80298d8c"
+    },
+    {
+      "head": "M08",
+      "face": "face-male-freckled",
+      "number": 8,
+      "path": "assets/wardrobe/beards/approved-20261105/M08-08.png",
+      "sha256": "b6831a3687278f29808b8c516d475053ede2d400596c1f5d650283dde310f126"
+    },
+    {
+      "head": "M08",
+      "face": "face-male-freckled",
+      "number": 9,
+      "path": "assets/wardrobe/beards/approved-20261105/M08-09.png",
+      "sha256": "559eb1af017e708c5515795107b0b9062c5cddb0314eaab40a650076e74523cd"
+    },
+    {
+      "head": "M08",
+      "face": "face-male-freckled",
+      "number": 10,
+      "path": "assets/wardrobe/beards/approved-20261105/M08-10.png",
+      "sha256": "41bc3044589ad741857221d2c91f93226fd243ec0638c4c903380e372b722fcf"
+    },
+    {
+      "head": "M09",
+      "face": "face-male-blue-eyes",
+      "number": 1,
+      "path": "assets/wardrobe/beards/approved-20261105/M09-01.png",
+      "sha256": "d2f0e66c24041e2cb13d9c1b44b91886073f2e87abea6f1a0726b83e05375978"
+    },
+    {
+      "head": "M09",
+      "face": "face-male-blue-eyes",
+      "number": 2,
+      "path": "assets/wardrobe/beards/approved-20261105/M09-02.png",
+      "sha256": "5a97cb81fe4e19585fa955f3d991b60385ff5147fb16c4eaa2be3da0438344bf"
+    },
+    {
+      "head": "M09",
+      "face": "face-male-blue-eyes",
+      "number": 3,
+      "path": "assets/wardrobe/beards/approved-20261105/M09-03.png",
+      "sha256": "2aaaff4d04c3e4900793cfac8b9302740aa07b04edc162f1912f007dc2d5d53f"
+    },
+    {
+      "head": "M09",
+      "face": "face-male-blue-eyes",
+      "number": 4,
+      "path": "assets/wardrobe/beards/approved-20261105/M09-04.png",
+      "sha256": "c423a8cacf8a0254c18597aa699abc4bc91ee5ab588d9f36ae1bace898e650d2"
+    },
+    {
+      "head": "M09",
+      "face": "face-male-blue-eyes",
+      "number": 5,
+      "path": "assets/wardrobe/beards/approved-20261105/M09-05.png",
+      "sha256": "e7f21bfa6338353c0b9588bdb8166aeee1b55d6aa50c7afb400603bd50339de9"
+    },
+    {
+      "head": "M09",
+      "face": "face-male-blue-eyes",
+      "number": 6,
+      "path": "assets/wardrobe/beards/approved-20261105/M09-06.png",
+      "sha256": "0439102795b94a07a650b119245f7a4746ecf2f1ccbbf2d91774946c2ed8a607"
+    },
+    {
+      "head": "M09",
+      "face": "face-male-blue-eyes",
+      "number": 7,
+      "path": "assets/wardrobe/beards/approved-20261105/M09-07.png",
+      "sha256": "8c2e354eca98830073a9cddcb4d83a70ac2498d5b79209a3d342f89a80298d8c"
+    },
+    {
+      "head": "M09",
+      "face": "face-male-blue-eyes",
+      "number": 8,
+      "path": "assets/wardrobe/beards/approved-20261105/M09-08.png",
+      "sha256": "b6831a3687278f29808b8c516d475053ede2d400596c1f5d650283dde310f126"
+    },
+    {
+      "head": "M09",
+      "face": "face-male-blue-eyes",
+      "number": 9,
+      "path": "assets/wardrobe/beards/approved-20261105/M09-09.png",
+      "sha256": "559eb1af017e708c5515795107b0b9062c5cddb0314eaab40a650076e74523cd"
+    },
+    {
+      "head": "M09",
+      "face": "face-male-blue-eyes",
+      "number": 10,
+      "path": "assets/wardrobe/beards/approved-20261105/M09-10.png",
+      "sha256": "41bc3044589ad741857221d2c91f93226fd243ec0638c4c903380e372b722fcf"
+    },
+    {
+      "head": "M10",
+      "face": "face-male-new-neutral",
+      "number": 1,
+      "path": "assets/wardrobe/beards/approved-20261105/M10-01.png",
+      "sha256": "87e4f34bc45ea4e229ae744164a1bf76be15cdec845acf4b708d2a8f55a4ba28"
+    },
+    {
+      "head": "M10",
+      "face": "face-male-new-neutral",
+      "number": 2,
+      "path": "assets/wardrobe/beards/approved-20261105/M10-02.png",
+      "sha256": "ab4e005a95d0f6a41b55779f236d4dda7eb5fcedeea6df917a5654fe62728e40"
+    },
+    {
+      "head": "M10",
+      "face": "face-male-new-neutral",
+      "number": 3,
+      "path": "assets/wardrobe/beards/approved-20261105/M10-03.png",
+      "sha256": "9d3ec0bd85701c12919073aa23a990ad005efb80864e4a33e3c1edb6a8472ee5"
+    },
+    {
+      "head": "M10",
+      "face": "face-male-new-neutral",
+      "number": 4,
+      "path": "assets/wardrobe/beards/approved-20261105/M10-04.png",
+      "sha256": "142613a1d9b35bf8d3d4afc9b58e071d2fccc84d66cb77a55362875fec701322"
+    },
+    {
+      "head": "M10",
+      "face": "face-male-new-neutral",
+      "number": 5,
+      "path": "assets/wardrobe/beards/approved-20261105/M10-05.png",
+      "sha256": "f0303fa80e51f0e9d3813c2b1d840119dc2bb5efefbd951b01b51577fc0c4f55"
+    },
+    {
+      "head": "M10",
+      "face": "face-male-new-neutral",
+      "number": 6,
+      "path": "assets/wardrobe/beards/approved-20261105/M10-06.png",
+      "sha256": "aab8c6f2e48c93e085705f6303a76edf3cc7e0adb04ef9b56d947ff417c0701c"
+    },
+    {
+      "head": "M10",
+      "face": "face-male-new-neutral",
+      "number": 7,
+      "path": "assets/wardrobe/beards/approved-20261105/M10-07.png",
+      "sha256": "f7f971583ec2a2acdded44c5518a617cefe91c524cb1f65bf745449cefd85b77"
+    },
+    {
+      "head": "M10",
+      "face": "face-male-new-neutral",
+      "number": 8,
+      "path": "assets/wardrobe/beards/approved-20261105/M10-08.png",
+      "sha256": "3f285d7daa6d76fea28c80ad377a93128d3e6fb3d0370b0cff2fbc22af2c18e2"
+    },
+    {
+      "head": "M10",
+      "face": "face-male-new-neutral",
+      "number": 9,
+      "path": "assets/wardrobe/beards/approved-20261105/M10-09.png",
+      "sha256": "d75ff5d5a85afadadca342960639fd8e65f686368f9b5f46d6f1d3fb68d5e70b"
+    },
+    {
+      "head": "M10",
+      "face": "face-male-new-neutral",
+      "number": 10,
+      "path": "assets/wardrobe/beards/approved-20261105/M10-10.png",
+      "sha256": "bb9907f50584448de9344a98ef71abc39b45094df3ee8510cfbd51d228f25a1f"
+    },
+    {
+      "head": "M11",
+      "face": "face-male-new-almond",
+      "number": 1,
+      "path": "assets/wardrobe/beards/approved-20261105/M11-01.png",
+      "sha256": "36d2c8032f917b8b3095c120166b0c5b595cf949002e8c35d414a42be5b39019"
+    },
+    {
+      "head": "M11",
+      "face": "face-male-new-almond",
+      "number": 2,
+      "path": "assets/wardrobe/beards/approved-20261105/M11-02.png",
+      "sha256": "9178d1a6e4f4cc6920ff1f32d23346257f1ef1781a99a8af58d454c2581bc4ee"
+    },
+    {
+      "head": "M11",
+      "face": "face-male-new-almond",
+      "number": 3,
+      "path": "assets/wardrobe/beards/approved-20261105/M11-03.png",
+      "sha256": "cea08d825c6f95cd38bfb5192fbedbc973fa649a22c8a0427453dd784326a078"
+    },
+    {
+      "head": "M11",
+      "face": "face-male-new-almond",
+      "number": 4,
+      "path": "assets/wardrobe/beards/approved-20261105/M11-04.png",
+      "sha256": "08991062c5087a9f9b46494cdcaaece7f56ff4d8389f00943bae69ec449c2a2a"
+    },
+    {
+      "head": "M11",
+      "face": "face-male-new-almond",
+      "number": 5,
+      "path": "assets/wardrobe/beards/approved-20261105/M11-05.png",
+      "sha256": "f72929f10ff9d100bc17bd0c48f51c86d7f523252a9c81fbe71b6cb35e624a15"
+    },
+    {
+      "head": "M11",
+      "face": "face-male-new-almond",
+      "number": 6,
+      "path": "assets/wardrobe/beards/approved-20261105/M11-06.png",
+      "sha256": "0cad30ee4b130a1b1635c1080bd438b2ef9f59a6d99e2853f14428996626707b"
+    },
+    {
+      "head": "M11",
+      "face": "face-male-new-almond",
+      "number": 7,
+      "path": "assets/wardrobe/beards/approved-20261105/M11-07.png",
+      "sha256": "b391475909c6296071cd7a33920d15d67c6404dc0bbed1880eb894b143c03558"
+    },
+    {
+      "head": "M11",
+      "face": "face-male-new-almond",
+      "number": 8,
+      "path": "assets/wardrobe/beards/approved-20261105/M11-08.png",
+      "sha256": "862ddffe29d78bac96edaa6e13edd9d5a09554e293f788e10d65f71462e038cd"
+    },
+    {
+      "head": "M11",
+      "face": "face-male-new-almond",
+      "number": 9,
+      "path": "assets/wardrobe/beards/approved-20261105/M11-09.png",
+      "sha256": "24d1883ee128d94c70748928b5453394fedeaf7d0c6890e00d866f30daecbf94"
+    },
+    {
+      "head": "M11",
+      "face": "face-male-new-almond",
+      "number": 10,
+      "path": "assets/wardrobe/beards/approved-20261105/M11-10.png",
+      "sha256": "55ac66e9d346ab30684dbdff123df52539e5004db704201576f9b1a833f0a026"
+    },
+    {
+      "head": "M12",
+      "face": "face-male-new-defined",
+      "number": 1,
+      "path": "assets/wardrobe/beards/approved-20261105/M12-01.png",
+      "sha256": "3f1abcf2982f9e461c2718f29003663c186db9abcdb384493143fd6f49de2b6e"
+    },
+    {
+      "head": "M12",
+      "face": "face-male-new-defined",
+      "number": 2,
+      "path": "assets/wardrobe/beards/approved-20261105/M12-02.png",
+      "sha256": "a9b3180690b6027cf39d2cef5910cff63827892ccae9b8d126b93c42e6dcd80e"
+    },
+    {
+      "head": "M12",
+      "face": "face-male-new-defined",
+      "number": 3,
+      "path": "assets/wardrobe/beards/approved-20261105/M12-03.png",
+      "sha256": "8f789da5b2996f325e391c425d192f1453e541f90d35175a90777116d6e8fe1b"
+    },
+    {
+      "head": "M12",
+      "face": "face-male-new-defined",
+      "number": 4,
+      "path": "assets/wardrobe/beards/approved-20261105/M12-04.png",
+      "sha256": "142613a1d9b35bf8d3d4afc9b58e071d2fccc84d66cb77a55362875fec701322"
+    },
+    {
+      "head": "M12",
+      "face": "face-male-new-defined",
+      "number": 5,
+      "path": "assets/wardrobe/beards/approved-20261105/M12-05.png",
+      "sha256": "e04dea8b559eda164d2fadaf13f3c4aef822eda889daefc91e5c5b57b3821e4b"
+    },
+    {
+      "head": "M12",
+      "face": "face-male-new-defined",
+      "number": 6,
+      "path": "assets/wardrobe/beards/approved-20261105/M12-06.png",
+      "sha256": "34be1644a09a8a35dc9330cfdffc843f5df72a209b635c39c03f97b0e6b2f796"
+    },
+    {
+      "head": "M12",
+      "face": "face-male-new-defined",
+      "number": 7,
+      "path": "assets/wardrobe/beards/approved-20261105/M12-07.png",
+      "sha256": "f7f971583ec2a2acdded44c5518a617cefe91c524cb1f65bf745449cefd85b77"
+    },
+    {
+      "head": "M12",
+      "face": "face-male-new-defined",
+      "number": 8,
+      "path": "assets/wardrobe/beards/approved-20261105/M12-08.png",
+      "sha256": "4cf743578da6b48aebf26015c6d19b02c8168028926aeb7dcf50b69aa54ce10a"
+    },
+    {
+      "head": "M12",
+      "face": "face-male-new-defined",
+      "number": 9,
+      "path": "assets/wardrobe/beards/approved-20261105/M12-09.png",
+      "sha256": "d75ff5d5a85afadadca342960639fd8e65f686368f9b5f46d6f1d3fb68d5e70b"
+    },
+    {
+      "head": "M12",
+      "face": "face-male-new-defined",
+      "number": 10,
+      "path": "assets/wardrobe/beards/approved-20261105/M12-10.png",
+      "sha256": "34b39509b16786d5d4127c9e3a14341bc0ffe33a176c6199aabd495ead3b21e7"
+    },
+    {
+      "head": "M13",
+      "face": "face-male-new-youthful",
+      "number": 1,
+      "path": "assets/wardrobe/beards/approved-20261105/M13-01.png",
+      "sha256": "7624b4763db35609eca6a21242febc4530ba81ead24974f45d1c63e970e27ff3"
+    },
+    {
+      "head": "M13",
+      "face": "face-male-new-youthful",
+      "number": 2,
+      "path": "assets/wardrobe/beards/approved-20261105/M13-02.png",
+      "sha256": "9178d1a6e4f4cc6920ff1f32d23346257f1ef1781a99a8af58d454c2581bc4ee"
+    },
+    {
+      "head": "M13",
+      "face": "face-male-new-youthful",
+      "number": 3,
+      "path": "assets/wardrobe/beards/approved-20261105/M13-03.png",
+      "sha256": "dc3778b0fba94f2b91302550507b8bab22eae6315e4fc71eb9bbf1f1c41b9156"
+    },
+    {
+      "head": "M13",
+      "face": "face-male-new-youthful",
+      "number": 4,
+      "path": "assets/wardrobe/beards/approved-20261105/M13-04.png",
+      "sha256": "08991062c5087a9f9b46494cdcaaece7f56ff4d8389f00943bae69ec449c2a2a"
+    },
+    {
+      "head": "M13",
+      "face": "face-male-new-youthful",
+      "number": 5,
+      "path": "assets/wardrobe/beards/approved-20261105/M13-05.png",
+      "sha256": "6221a17665a685784fdbb5ae273189282d87167bb68a38167b35d764259e2f7a"
+    },
+    {
+      "head": "M13",
+      "face": "face-male-new-youthful",
+      "number": 6,
+      "path": "assets/wardrobe/beards/approved-20261105/M13-06.png",
+      "sha256": "0cad30ee4b130a1b1635c1080bd438b2ef9f59a6d99e2853f14428996626707b"
+    },
+    {
+      "head": "M13",
+      "face": "face-male-new-youthful",
+      "number": 7,
+      "path": "assets/wardrobe/beards/approved-20261105/M13-07.png",
+      "sha256": "b391475909c6296071cd7a33920d15d67c6404dc0bbed1880eb894b143c03558"
+    },
+    {
+      "head": "M13",
+      "face": "face-male-new-youthful",
+      "number": 8,
+      "path": "assets/wardrobe/beards/approved-20261105/M13-08.png",
+      "sha256": "7e1400ca530540ff9ac676e0f21bed925215eb0e88c25566d9e69e3480c2d463"
+    },
+    {
+      "head": "M13",
+      "face": "face-male-new-youthful",
+      "number": 9,
+      "path": "assets/wardrobe/beards/approved-20261105/M13-09.png",
+      "sha256": "24d1883ee128d94c70748928b5453394fedeaf7d0c6890e00d866f30daecbf94"
+    },
+    {
+      "head": "M13",
+      "face": "face-male-new-youthful",
+      "number": 10,
+      "path": "assets/wardrobe/beards/approved-20261105/M13-10.png",
+      "sha256": "b0d65a0b4cc4b2101ec9413df78d2c55dbdbd3d08842397d61f1604a31871936"
+    },
+    {
+      "head": "M14",
+      "face": "face-male-new-mature",
+      "number": 1,
+      "path": "assets/wardrobe/beards/approved-20261105/M14-01.png",
+      "sha256": "70174a3f676a037051b531252a0821f62b13f23b9aad71b525b6997260f1c6aa"
+    },
+    {
+      "head": "M14",
+      "face": "face-male-new-mature",
+      "number": 2,
+      "path": "assets/wardrobe/beards/approved-20261105/M14-02.png",
+      "sha256": "98b8ffe07002d8b0969fc9854d598728f666de331025bd48c429c717b2403d3c"
+    },
+    {
+      "head": "M14",
+      "face": "face-male-new-mature",
+      "number": 3,
+      "path": "assets/wardrobe/beards/approved-20261105/M14-03.png",
+      "sha256": "cea08d825c6f95cd38bfb5192fbedbc973fa649a22c8a0427453dd784326a078"
+    },
+    {
+      "head": "M14",
+      "face": "face-male-new-mature",
+      "number": 4,
+      "path": "assets/wardrobe/beards/approved-20261105/M14-04.png",
+      "sha256": "42633f6700686f9a451fe06e564ca7fc17ad9333f47c03e9bf6e02b64e89e700"
+    },
+    {
+      "head": "M14",
+      "face": "face-male-new-mature",
+      "number": 5,
+      "path": "assets/wardrobe/beards/approved-20261105/M14-05.png",
+      "sha256": "f72929f10ff9d100bc17bd0c48f51c86d7f523252a9c81fbe71b6cb35e624a15"
+    },
+    {
+      "head": "M14",
+      "face": "face-male-new-mature",
+      "number": 6,
+      "path": "assets/wardrobe/beards/approved-20261105/M14-06.png",
+      "sha256": "7275af9ac26b2d2a657270bdd9aed6e2205cc1cc7b7950887d864e15f372362d"
+    },
+    {
+      "head": "M14",
+      "face": "face-male-new-mature",
+      "number": 7,
+      "path": "assets/wardrobe/beards/approved-20261105/M14-07.png",
+      "sha256": "67858fd86b2b052cfe0021f758b54063ab61c5b1c35559cd93e039d1319862a3"
+    },
+    {
+      "head": "M14",
+      "face": "face-male-new-mature",
+      "number": 8,
+      "path": "assets/wardrobe/beards/approved-20261105/M14-08.png",
+      "sha256": "f7b4ed68b9e443908b5d25d0aaa8154bc5663c09b998d1bb11a134117e6cdce4"
+    },
+    {
+      "head": "M14",
+      "face": "face-male-new-mature",
+      "number": 9,
+      "path": "assets/wardrobe/beards/approved-20261105/M14-09.png",
+      "sha256": "3959883ffc7e5ea2317593efc9ad39f1b49adf78a92fb3a65c18a93e6ec6935b"
+    },
+    {
+      "head": "M14",
+      "face": "face-male-new-mature",
+      "number": 10,
+      "path": "assets/wardrobe/beards/approved-20261105/M14-10.png",
+      "sha256": "55ac66e9d346ab30684dbdff123df52539e5004db704201576f9b1a833f0a026"
+    },
+    {
+      "head": "M15",
+      "face": "face-male-new-freckled-pierced",
+      "number": 1,
+      "path": "assets/wardrobe/beards/approved-20261105/M15-01.png",
+      "sha256": "e533ca9bb0da21e1872140f785c455d6a5e1a78d9b6b224171db39fb399d0d88"
+    },
+    {
+      "head": "M15",
+      "face": "face-male-new-freckled-pierced",
+      "number": 2,
+      "path": "assets/wardrobe/beards/approved-20261105/M15-02.png",
+      "sha256": "cdb8f1e4fac5b8e29eb9785fac5c345aabb779d959311d8fdae0869786cb9f89"
+    },
+    {
+      "head": "M15",
+      "face": "face-male-new-freckled-pierced",
+      "number": 3,
+      "path": "assets/wardrobe/beards/approved-20261105/M15-03.png",
+      "sha256": "0298d36464e4707e6f555092117251ae3a3d91f715c255e92bccd5c81607100d"
+    },
+    {
+      "head": "M15",
+      "face": "face-male-new-freckled-pierced",
+      "number": 4,
+      "path": "assets/wardrobe/beards/approved-20261105/M15-04.png",
+      "sha256": "de8261cde19131fa367411c88addd22d96e04c4bd6a70c921f3579d52adab606"
+    },
+    {
+      "head": "M15",
+      "face": "face-male-new-freckled-pierced",
+      "number": 5,
+      "path": "assets/wardrobe/beards/approved-20261105/M15-05.png",
+      "sha256": "7b45d776c06888a6f80b0946d8d21536e9fb02f2227f1df62612b4c29ca6ac21"
+    },
+    {
+      "head": "M15",
+      "face": "face-male-new-freckled-pierced",
+      "number": 6,
+      "path": "assets/wardrobe/beards/approved-20261105/M15-06.png",
+      "sha256": "a2dd42b6d722099ee577a9623922bc051b0b179ef8c376093968cfc847fda878"
+    },
+    {
+      "head": "M15",
+      "face": "face-male-new-freckled-pierced",
+      "number": 7,
+      "path": "assets/wardrobe/beards/approved-20261105/M15-07.png",
+      "sha256": "12147928d3e57f701d2bc2cb88472a483e0559bdfbd8c656bc0f6aaef732aedc"
+    },
+    {
+      "head": "M15",
+      "face": "face-male-new-freckled-pierced",
+      "number": 8,
+      "path": "assets/wardrobe/beards/approved-20261105/M15-08.png",
+      "sha256": "45b17ced857b5fd53740808c60e73b1fc2e5085d1a074b2a659fa0ec0e90dd0a"
+    },
+    {
+      "head": "M15",
+      "face": "face-male-new-freckled-pierced",
+      "number": 9,
+      "path": "assets/wardrobe/beards/approved-20261105/M15-09.png",
+      "sha256": "e8ac965cf73aa08b76ae587f8d2f427a650c83c19384fb8f294c2fda9a5213eb"
+    },
+    {
+      "head": "M15",
+      "face": "face-male-new-freckled-pierced",
+      "number": 10,
+      "path": "assets/wardrobe/beards/approved-20261105/M15-10.png",
+      "sha256": "3f7db11785f6ee003d59647a1d45725c36ac4c0c3d5c199b8fd59e97a5d431bc"
+    },
+    {
+      "head": "M16",
+      "face": "face-male-new-stern",
+      "number": 1,
+      "path": "assets/wardrobe/beards/approved-20261105/M16-01.png",
+      "sha256": "072b6f25611dcf056f4239aa68bd4975dca9f73c63bb1d9ddaea7d7a318d6008"
+    },
+    {
+      "head": "M16",
+      "face": "face-male-new-stern",
+      "number": 2,
+      "path": "assets/wardrobe/beards/approved-20261105/M16-02.png",
+      "sha256": "285bed453a889956291a10cdfb5e00a556335fdbd86d7846d224f7a22af19e01"
+    },
+    {
+      "head": "M16",
+      "face": "face-male-new-stern",
+      "number": 3,
+      "path": "assets/wardrobe/beards/approved-20261105/M16-03.png",
+      "sha256": "b987cf8f838ce4576a15eded9ab062714ad718b01afa783c3951691244e9a07c"
+    },
+    {
+      "head": "M16",
+      "face": "face-male-new-stern",
+      "number": 4,
+      "path": "assets/wardrobe/beards/approved-20261105/M16-04.png",
+      "sha256": "142613a1d9b35bf8d3d4afc9b58e071d2fccc84d66cb77a55362875fec701322"
+    },
+    {
+      "head": "M16",
+      "face": "face-male-new-stern",
+      "number": 5,
+      "path": "assets/wardrobe/beards/approved-20261105/M16-05.png",
+      "sha256": "f3e5ef3c91fdad328b5d0f5a7337ce68faa12119e20825074f944c41fd3d46e7"
+    },
+    {
+      "head": "M16",
+      "face": "face-male-new-stern",
+      "number": 6,
+      "path": "assets/wardrobe/beards/approved-20261105/M16-06.png",
+      "sha256": "4fa66b5bfa14661911e42f007e27efc430fb2692b7be8aa437862dd09ce4b8fc"
+    },
+    {
+      "head": "M16",
+      "face": "face-male-new-stern",
+      "number": 7,
+      "path": "assets/wardrobe/beards/approved-20261105/M16-07.png",
+      "sha256": "8c2e354eca98830073a9cddcb4d83a70ac2498d5b79209a3d342f89a80298d8c"
+    },
+    {
+      "head": "M16",
+      "face": "face-male-new-stern",
+      "number": 8,
+      "path": "assets/wardrobe/beards/approved-20261105/M16-08.png",
+      "sha256": "4810930ba6b41913c7bb5093dd3645115fa64daa3778cee6f4e6e0f2d2bf65fe"
+    },
+    {
+      "head": "M16",
+      "face": "face-male-new-stern",
+      "number": 9,
+      "path": "assets/wardrobe/beards/approved-20261105/M16-09.png",
+      "sha256": "559eb1af017e708c5515795107b0b9062c5cddb0314eaab40a650076e74523cd"
+    },
+    {
+      "head": "M16",
+      "face": "face-male-new-stern",
+      "number": 10,
+      "path": "assets/wardrobe/beards/approved-20261105/M16-10.png",
+      "sha256": "874681710857f2a5191ba8c0fcda3d66d7b17d43dadee2e2c09f4185916438ed"
+    }
+  ],
+  "thumbnails": [
+    {
+      "path": "assets/wardrobe/beards/approved-20261105/thumb-01.png",
+      "sha256": "68b4399c82bc7e6f33f8829e76d136af8c9c633cefecae384e234853dc29f8a6",
+      "derived_from": "assets/wardrobe/beards/approved-20261105/M01-01.png"
+    },
+    {
+      "path": "assets/wardrobe/beards/approved-20261105/thumb-02.png",
+      "sha256": "db52fa0322fbfeff010d781b923d586697e0ee6488314c0a3b072c05c507613c",
+      "derived_from": "assets/wardrobe/beards/approved-20261105/M01-02.png"
+    },
+    {
+      "path": "assets/wardrobe/beards/approved-20261105/thumb-03.png",
+      "sha256": "20f5f83febb21bb6b39342b346c40205ebec01073e2c2f0b5389872f49fe41a3",
+      "derived_from": "assets/wardrobe/beards/approved-20261105/M01-03.png"
+    },
+    {
+      "path": "assets/wardrobe/beards/approved-20261105/thumb-04.png",
+      "sha256": "c164c3810bb066ffb331a3727cbedc441337ca9dc0ec954a99139b22ac639538",
+      "derived_from": "assets/wardrobe/beards/approved-20261105/M01-04.png"
+    },
+    {
+      "path": "assets/wardrobe/beards/approved-20261105/thumb-05.png",
+      "sha256": "ce1fcfefee41689185c415e1ae7a81a603981eb1d913990cf933efce64dc31b8",
+      "derived_from": "assets/wardrobe/beards/approved-20261105/M01-05.png"
+    },
+    {
+      "path": "assets/wardrobe/beards/approved-20261105/thumb-06.png",
+      "sha256": "ad0d601388c7e1a5cee8d30016b2c5c72770ba11b2996ebd88982f68b27000af",
+      "derived_from": "assets/wardrobe/beards/approved-20261105/M01-06.png"
+    },
+    {
+      "path": "assets/wardrobe/beards/approved-20261105/thumb-07.png",
+      "sha256": "9b2a72870085bfd97fa59de244011259fdb44070ed7e82d295e417f7a2b022c6",
+      "derived_from": "assets/wardrobe/beards/approved-20261105/M01-07.png"
+    },
+    {
+      "path": "assets/wardrobe/beards/approved-20261105/thumb-08.png",
+      "sha256": "e74a76eb2d65bc1a12356d5c31fa95fdc0161827906d31b94b79e4be56e13d99",
+      "derived_from": "assets/wardrobe/beards/approved-20261105/M01-08.png"
+    },
+    {
+      "path": "assets/wardrobe/beards/approved-20261105/thumb-09.png",
+      "sha256": "04e6d44c9e1149df43d9d60cf792bce70b49c9b57f6b572b2d84c00978b8244f",
+      "derived_from": "assets/wardrobe/beards/approved-20261105/M01-09.png"
+    },
+    {
+      "path": "assets/wardrobe/beards/approved-20261105/thumb-10.png",
+      "sha256": "f5f4e01a6e18b65259e69422be2060ec43849137c38c5d2cd95ac5d6ad9b7253",
+      "derived_from": "assets/wardrobe/beards/approved-20261105/M01-10.png"
+    }
+  ]
+}

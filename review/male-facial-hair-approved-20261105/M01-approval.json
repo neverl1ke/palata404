@@ -1,0 +1,87 @@
+{
+  "head": "M01",
+  "status": "All final fits and corrections approved by user; saved as reference before M02",
+  "reference_folder": "fitting/M01-rounded-v11",
+  "fits": [
+    {
+      "number": 1,
+      "file": "fitting/M01-rounded-v11/native/M01/01.png",
+      "sha256": "3f9ca19d11ca112df828136e70c5f3787145fe22a453cde2c6dfddc39c8028fb"
+    },
+    {
+      "number": 2,
+      "file": "fitting/M01-rounded-v11/native/M01/02.png",
+      "sha256": "e5c72839c5b64a7a0509f2927702d00424bc581ca5567a7a15edcb18b0d87f84"
+    },
+    {
+      "number": 3,
+      "file": "fitting/M01-rounded-v11/native/M01/03.png",
+      "sha256": "3369750e05f9627be66670fc93679cf06f1410edf1d4e2768ae779d1cc487739"
+    },
+    {
+      "number": 4,
+      "file": "fitting/M01-rounded-v11/native/M01/04.png",
+      "sha256": "c690458e9f689769b827d2dbb90d19ce08b61fb6a607cba918a7e9716fcf070e"
+    },
+    {
+      "number": 5,
+      "file": "fitting/M01-rounded-v11/native/M01/05.png",
+      "sha256": "93748a2f757e6b44ddfc25733a91d252e3bb3e5c082ca0fd1f76ae38b03013eb"
+    },
+    {
+      "number": 6,
+      "file": "fitting/M01-rounded-v11/native/M01/06.png",
+      "sha256": "daf96889b02a775626dd0fb6c4c5b819c507aaaffc9f381b1a26d63afeb4ddfb"
+    },
+    {
+      "number": 7,
+      "file": "fitting/M01-rounded-v11/native/M01/07.png",
+      "sha256": "4ab4b41c1d2b277f20bdae6c300f60e946a37fa6f9eed010778168954c15d436"
+    },
+    {
+      "number": 8,
+      "file": "fitting/M01-rounded-v11/native/M01/08.png",
+      "sha256": "18f66aa6a68f3948ed1ec5cf621bacaf5d962191a98f647cf53838549e30b6ca"
+    },
+    {
+      "number": 9,
+      "file": "fitting/M01-rounded-v11/native/M01/09.png",
+      "sha256": "ddd9be160d8d13d571edc766a42ba0c91a4bf1911ec9cadc2a417b81ee20d865"
+    },
+    {
+      "number": 10,
+      "file": "fitting/M01-rounded-v11/native/M01/10.png",
+      "sha256": "6ff034db68867cb0c9e7c782bc0f76ce738216316d31186baeee474e6b4ce2f1"
+    }
+  ],
+  "retained_parameters": {
+    "native_canvas": [
+      941,
+      1672
+    ],
+    "image_left_scale": 1.045,
+    "image_left_anchor_x": 473,
+    "image_left_scaled_variants": [
+      1,
+      4,
+      5,
+      7,
+      10
+    ],
+    "one_pixel_lift": [
+      5,
+      8,
+      10
+    ],
+    "final_corner_cleanup": [
+      2,
+      6
+    ],
+    "final_soft_mouth_joins": [
+      5,
+      8,
+      10
+    ],
+    "no_vertical_moustache_squash": true
+  }
+}

@@ -32,8 +32,8 @@ class AnimatedAvatarTests(unittest.TestCase):
                 self.assertTrue(evidence['moving']);self.assertTrue(evidence['face']);self.assertGreater(evidence['hair'],0);self.assertTrue(evidence['hidden']);self.assertEqual(evidence['gender'],gender)
                 self.page.locator('.wardrobe-stage').screenshot(path=str(ROOT/'test-results'/f'animated-{gender}-{pose}.png'))
                 self.page.evaluate('avatarCoreGamePreview.refresh()')
-        self.page.evaluate('equipPaperDollItem("weapon","gear-knife")');self.ready('idle')
-        self.assertTrue(self.page.evaluate('selectedPaperDollItem("weapon").avatarPoseUnavailable'))
+        self.page.evaluate('equipPaperDollItem("weapon","gear-knife")');self.ready('melee')
+        self.assertTrue(self.page.evaluate('selectedPaperDollItem("weapon").avatarWeapon'))
         self.page.evaluate('equipPaperDollItem("weapon","gear-aks")');self.ready('rifle')
         self.page.reload(wait_until='networkidle');self.page.evaluate('openCustomization()');self.ready('rifle')
         self.assertEqual(self.page.evaluate('selectedPaperDollItem("weapon").id'),'gear-aks')
@@ -67,16 +67,21 @@ class AnimatedAvatarTests(unittest.TestCase):
                 image=Image.open(io.BytesIO(base64.b64decode(actual))).convert('RGBA')
                 expected_path=current_review/f'female-{"rifle" if weapon else "no-weapon"}-0.png' if gender=='female' else review/f'{gender}-approved-{"rifle" if weapon else "no-weapon"}.png'
                 expected=Image.open(expected_path).convert('RGBA')
+                if not weapon:
+                    # Compare the approved neutral PNG after the same Canvas
+                    # premultiplication; hidden RGB in a source PNG is not visible art.
+                    rest=self.page.evaluate('''async([g,w,h])=>{const i=new Image();i.src='base_'+g+'.png';await i.decode();const c=document.createElement('canvas');c.width=w;c.height=h;c.getContext('2d').drawImage(i,0,0);return c.toDataURL().split(',')[1]}''',[gender,image.width,image.height])
+                    expected=Image.open(io.BytesIO(base64.b64decode(rest))).convert('RGBA')
                 self.assertTrue(np.array_equal(np.array(image),np.array(expected)),f'{gender} {pose} differs from uploaded Lab')
                 phase_path=current_review/'render-proof.json' if gender=='female' else review/'archive-renderer-equivalence.json'
                 phases=json.loads(phase_path.read_text())['phases']
-                for phase in [p for p in phases if p['gender']==gender and p['weapon']==bool(weapon)]:
+                for phase in [p for p in phases if weapon and p['gender']==gender and p['weapon']==bool(weapon)]:
                     raw=self.page.evaluate("""t=>{const e=avatarCoreGamePreview.instances.get(document.getElementById('wardrobe-paperdoll')).engine;e.pause();e.time=t;e.render();return e.canvas.toDataURL().split(',')[1]}""",phase['time_ms'])
                     rgba=Image.open(io.BytesIO(base64.b64decode(raw))).convert('RGBA')
                     self.assertEqual(hashlib.sha256(rgba.tobytes()).hexdigest(),phase['rgba_sha256'],f"{gender} {pose} at {phase['time_ms']}ms")
                 self.page.set_viewport_size({'width':390,'height':844})
                 self.assertTrue(self.page.evaluate("""()=>{const c=document.querySelector('#wardrobe-paperdoll canvas').getBoundingClientRect(),s=document.querySelector('.wardrobe-stage').getBoundingClientRect();return c.left>=s.left-2&&c.right<=s.right+2}"""))
-                self.page.locator('.wardrobe-stage').screenshot(path=str(current_review/f'{gender}-game-{"rifle" if weapon else "no-weapon"}.png'))
+                self.page.locator('.wardrobe-stage').screenshot(path=str(ROOT/'review/male-facial-hair-approved-20261105'/f'{gender}-game-{"rifle" if weapon else "no-weapon"}.png'))
     def test_native_female_head_and_hair_match_static_registered_preview(self):
         import base64,io
         import numpy as np

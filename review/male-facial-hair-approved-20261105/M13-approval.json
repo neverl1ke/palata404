@@ -1,0 +1,56 @@
+{
+  "head": "M13",
+  "status": "all ten variants approved by user",
+  "fits": [
+    {
+      "number": 1,
+      "native": "fitting/M13-lift-v2/native/M13/01.png",
+      "sha256": "7624b4763db35609eca6a21242febc4530ba81ead24974f45d1c63e970e27ff3"
+    },
+    {
+      "number": 2,
+      "native": "fitting/M13-lift-v2/native/M13/02.png",
+      "sha256": "9178d1a6e4f4cc6920ff1f32d23346257f1ef1781a99a8af58d454c2581bc4ee"
+    },
+    {
+      "number": 3,
+      "native": "fitting/M13-lift-v2/native/M13/03.png",
+      "sha256": "dc3778b0fba94f2b91302550507b8bab22eae6315e4fc71eb9bbf1f1c41b9156"
+    },
+    {
+      "number": 4,
+      "native": "fitting/M13-lift-v2/native/M13/04.png",
+      "sha256": "08991062c5087a9f9b46494cdcaaece7f56ff4d8389f00943bae69ec449c2a2a"
+    },
+    {
+      "number": 5,
+      "native": "fitting/M13-lift-v2/native/M13/05.png",
+      "sha256": "6221a17665a685784fdbb5ae273189282d87167bb68a38167b35d764259e2f7a"
+    },
+    {
+      "number": 6,
+      "native": "fitting/M13-lift-v2/native/M13/06.png",
+      "sha256": "0cad30ee4b130a1b1635c1080bd438b2ef9f59a6d99e2853f14428996626707b"
+    },
+    {
+      "number": 7,
+      "native": "fitting/M13-lift-v2/native/M13/07.png",
+      "sha256": "b391475909c6296071cd7a33920d15d67c6404dc0bbed1880eb894b143c03558"
+    },
+    {
+      "number": 8,
+      "native": "fitting/M13-lift-v2/native/M13/08.png",
+      "sha256": "7e1400ca530540ff9ac676e0f21bed925215eb0e88c25566d9e69e3480c2d463"
+    },
+    {
+      "number": 9,
+      "native": "fitting/M13-lift-v2/native/M13/09.png",
+      "sha256": "24d1883ee128d94c70748928b5453394fedeaf7d0c6890e00d866f30daecbf94"
+    },
+    {
+      "number": 10,
+      "native": "fitting/M13-lift-v2/native/M13/10.png",
+      "sha256": "b0d65a0b4cc4b2101ec9413df78d2c55dbdbd3d08842397d61f1604a31871936"
+    }
+  ]
+}

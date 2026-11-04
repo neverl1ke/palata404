@@ -833,8 +833,8 @@ test('paper doll gender fallback, missing PNG errors and stable layer order do n
     assert.equal(layer.getAttribute('src'), null);
     assert.equal(layer.classList.contains('hidden'), true);
     assert.equal(g.run('paperDollState.patientLoadout.outerwear'), 'future-coat');
-    assert.equal(g.run('PAPER_DOLL_LAYER_ORDER.join()'), 'baseBody,pants,footwear,upperBody,outerwear,armor,loadout,gloves,back,hair,headwear,face,weapon,accessory');
-    assert.equal(g.elements.get('layer-weapon').style.zIndex, '12');
+    assert.equal(g.run('PAPER_DOLL_LAYER_ORDER.join()'), 'baseBody,pants,footwear,upperBody,outerwear,armor,loadout,gloves,back,hair,headwear,face,beard,weapon,accessory');
+    assert.equal(g.elements.get('layer-weapon').style.zIndex, '13');
     assert.equal(g.elements.get('layer-armor').style.width, '100%');
 });
 
@@ -1208,7 +1208,7 @@ test('hair migration retains inert legacy metadata, failed art never swaps gende
 test('hair colors migrate safely and preserve pigment texture, alpha and cosmetic save scope', () => {
     const g=game();
     assert.equal(g.run('Object.keys(WARDROBE_CATEGORIES).length'),5);
-    assert.equal(g.run('WARDROBE_CATEGORIES.appearance.slots.join(",")'),'baseBody,face,hair');
+    assert.equal(g.run('WARDROBE_CATEGORIES.appearance.slots.join(",")'),'baseBody,face,hair,beard');
     assert.equal(g.run('HAIR_COLORS.length'),25);
     assert.equal(g.run('new Set(HAIR_COLORS.map(c=>c.id)).size'),25);
     assert.equal(g.run('HAIR_COLORS.filter(c=>c.group==="natural").length'),12);

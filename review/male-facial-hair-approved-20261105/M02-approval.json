@@ -1,0 +1,56 @@
+{
+  "head": "M02",
+  "status": "all ten fits approved by user before proceeding to M03",
+  "fits": [
+    {
+      "number": 1,
+      "native": "fitting/M02-sideburns-v9/native/M02/01.png",
+      "sha256": "617e21d0950229ddf82c845af2ed8ee116d7c14656dc487dd83e28cda943e519"
+    },
+    {
+      "number": 2,
+      "native": "fitting/M02-sideburns-v9/native/M02/02.png",
+      "sha256": "48abc389d90fd25bbff1ee5ba3b05f476accd9806fea075cd344ccdb8ad760e6"
+    },
+    {
+      "number": 3,
+      "native": "fitting/M02-sideburns-v9/native/M02/03.png",
+      "sha256": "b1b6cdd72440e22c7bdc51b3a2616cdb5316da3264636884495e74960b51a1d7"
+    },
+    {
+      "number": 4,
+      "native": "fitting/M02-sideburns-v9/native/M02/04.png",
+      "sha256": "951e4d875555d490a0e616a3aa0207a8e2c5a5cdd62dfd224f0ba6040caee92c"
+    },
+    {
+      "number": 5,
+      "native": "fitting/M02-sideburns-v9/native/M02/05.png",
+      "sha256": "fb161e934b562bcedfa01a67d482dc61d7e97a9987ab9a9529e84102ef30372d"
+    },
+    {
+      "number": 6,
+      "native": "fitting/M02-sideburns-v9/native/M02/06.png",
+      "sha256": "86c96cd88614c1e8708bbf3d9eba3a0811903df890321f5a22f61b035d379f58"
+    },
+    {
+      "number": 7,
+      "native": "fitting/M02-sideburns-v9/native/M02/07.png",
+      "sha256": "c9ef26fe20deedc6ace6d4fe004dc7f62a9afc24e21823845b4bbbacb6491574"
+    },
+    {
+      "number": 8,
+      "native": "fitting/M02-sideburns-v9/native/M02/08.png",
+      "sha256": "57bc9a0864f0baa1c345fec3773a7d4cfb9cf90667cddb63362079000192ece5"
+    },
+    {
+      "number": 9,
+      "native": "fitting/M02-sideburns-v9/native/M02/09.png",
+      "sha256": "d1a962a21022bba4a519f64d3a36baff4a0b0a69150c951a6b5f13b8db1f7178"
+    },
+    {
+      "number": 10,
+      "native": "fitting/M02-sideburns-v9/native/M02/10.png",
+      "sha256": "dc32c38b2e227c07bfbbe601ecd2429d77145d9e766550b64437d0c6b6a72f83"
+    }
+  ]
+}

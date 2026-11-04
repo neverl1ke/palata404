@@ -1,0 +1,56 @@
+{
+  "head": "M12",
+  "status": "all ten variants approved by user",
+  "fits": [
+    {
+      "number": 1,
+      "native": "fitting/M12-lift-v2/native/M12/01.png",
+      "sha256": "3f1abcf2982f9e461c2718f29003663c186db9abcdb384493143fd6f49de2b6e"
+    },
+    {
+      "number": 2,
+      "native": "fitting/M12-lift-v2/native/M12/02.png",
+      "sha256": "a9b3180690b6027cf39d2cef5910cff63827892ccae9b8d126b93c42e6dcd80e"
+    },
+    {
+      "number": 3,
+      "native": "fitting/M12-lift-v2/native/M12/03.png",
+      "sha256": "8f789da5b2996f325e391c425d192f1453e541f90d35175a90777116d6e8fe1b"
+    },
+    {
+      "number": 4,
+      "native": "fitting/M12-lift-v2/native/M12/04.png",
+      "sha256": "142613a1d9b35bf8d3d4afc9b58e071d2fccc84d66cb77a55362875fec701322"
+    },
+    {
+      "number": 5,
+      "native": "fitting/M12-lift-v2/native/M12/05.png",
+      "sha256": "e04dea8b559eda164d2fadaf13f3c4aef822eda889daefc91e5c5b57b3821e4b"
+    },
+    {
+      "number": 6,
+      "native": "fitting/M12-lift-v2/native/M12/06.png",
+      "sha256": "34be1644a09a8a35dc9330cfdffc843f5df72a209b635c39c03f97b0e6b2f796"
+    },
+    {
+      "number": 7,
+      "native": "fitting/M12-lift-v2/native/M12/07.png",
+      "sha256": "f7f971583ec2a2acdded44c5518a617cefe91c524cb1f65bf745449cefd85b77"
+    },
+    {
+      "number": 8,
+      "native": "fitting/M12-lift-v2/native/M12/08.png",
+      "sha256": "4cf743578da6b48aebf26015c6d19b02c8168028926aeb7dcf50b69aa54ce10a"
+    },
+    {
+      "number": 9,
+      "native": "fitting/M12-lift-v2/native/M12/09.png",
+      "sha256": "d75ff5d5a85afadadca342960639fd8e65f686368f9b5f46d6f1d3fb68d5e70b"
+    },
+    {
+      "number": 10,
+      "native": "fitting/M12-lift-v2/native/M12/10.png",
+      "sha256": "34b39509b16786d5d4127c9e3a14341bc0ffe33a176c6199aabd495ead3b21e7"
+    }
+  ]
+}
