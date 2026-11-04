@@ -1,0 +1,791 @@
+{
+  "approved": "User approved both new female designs, curls fit and braid F04 v5 on all16, then requested main integration",
+  "records": [
+    {
+      "head": "F01",
+      "face": "@native",
+      "style": "braids",
+      "layer": "rear",
+      "source": "assets/wardrobe/hair/female-approved-20261104/F01-braids-rear.png?v=f110f43c",
+      "sha256": "f110f43cd916c74325996ab86651be9061e57bc457387f2f268416ed59e7bb59",
+      "approved_source": "braids-approved-all-v5/native/F01-braids-rear.png"
+    },
+    {
+      "head": "F01",
+      "face": "@native",
+      "style": "braids",
+      "layer": "front",
+      "source": "assets/wardrobe/hair/female-approved-20261104/F01-braids-front.png?v=6c64b6f8",
+      "sha256": "6c64b6f8616ea08af421e3e4b62bb1fef6f955ae2de983dc93c08f2af94baf6f",
+      "approved_source": "braids-approved-all-v5/native/F01-braids-front.png"
+    },
+    {
+      "head": "F02",
+      "face": "face-asian",
+      "style": "braids",
+      "layer": "rear",
+      "source": "assets/wardrobe/hair/female-approved-20261104/F02-braids-rear.png?v=b3ef2775",
+      "sha256": "b3ef27752e608144b2c2e2c1c2f2f0caec046061cae7c9acd18fac985b1e13f4",
+      "approved_source": "braids-approved-all-v5/native/F02-braids-rear.png"
+    },
+    {
+      "head": "F02",
+      "face": "face-asian",
+      "style": "braids",
+      "layer": "front",
+      "source": "assets/wardrobe/hair/female-approved-20261104/F02-braids-front.png?v=63117abc",
+      "sha256": "63117abc7bcb00d23754023090e1fedf5d97e542cd4ae63f21e1c09a1cb49067",
+      "approved_source": "braids-approved-all-v5/native/F02-braids-front.png"
+    },
+    {
+      "head": "F03",
+      "face": "face-young",
+      "style": "braids",
+      "layer": "rear",
+      "source": "assets/wardrobe/hair/female-approved-20261104/F03-braids-rear.png?v=100e9706",
+      "sha256": "100e9706dc7420ce293b041778c89fe4b6d3f287da4683ec32427a165581ad14",
+      "approved_source": "braids-approved-all-v5/native/F03-braids-rear.png"
+    },
+    {
+      "head": "F03",
+      "face": "face-young",
+      "style": "braids",
+      "layer": "front",
+      "source": "assets/wardrobe/hair/female-approved-20261104/F03-braids-front.png?v=323173fc",
+      "sha256": "323173fcc953144facbdbbf0544e988497e0bfda656510eee11ab0756bcc09c3",
+      "approved_source": "braids-approved-all-v5/native/F03-braids-front.png"
+    },
+    {
+      "head": "F04",
+      "face": "face-exhausted",
+      "style": "braids",
+      "layer": "rear",
+      "source": "assets/wardrobe/hair/female-approved-20261104/F04-braids-rear.png?v=9e1c41b7",
+      "sha256": "9e1c41b75799a562b4ba7abb09b4ae4b81ed495425bc19e4135dc832f3877e59",
+      "approved_source": "braids-approved-all-v5/native/F04-braids-rear.png"
+    },
+    {
+      "head": "F04",
+      "face": "face-exhausted",
+      "style": "braids",
+      "layer": "front",
+      "source": "assets/wardrobe/hair/female-approved-20261104/F04-braids-front.png?v=ef70dde4",
+      "sha256": "ef70dde452238bc20afeb61f095bccfdbc59618f2cfe499360f8f5c11eaff781",
+      "approved_source": "braids-approved-all-v5/native/F04-braids-front.png"
+    },
+    {
+      "head": "F05",
+      "face": "face-elder",
+      "style": "braids",
+      "layer": "rear",
+      "source": "assets/wardrobe/hair/female-approved-20261104/F05-braids-rear.png?v=562750f3",
+      "sha256": "562750f38fff85afe3eabb4e3393744beb4b75f4d5d8e925c482313831355bd8",
+      "approved_source": "braids-approved-all-v5/native/F05-braids-rear.png"
+    },
+    {
+      "head": "F05",
+      "face": "face-elder",
+      "style": "braids",
+      "layer": "front",
+      "source": "assets/wardrobe/hair/female-approved-20261104/F05-braids-front.png?v=473be42e",
+      "sha256": "473be42e3eb17c4052ace768cc78a399c1b2075f7034cbd2534953c520e57287",
+      "approved_source": "braids-approved-all-v5/native/F05-braids-front.png"
+    },
+    {
+      "head": "F06",
+      "face": "face-alternative",
+      "style": "braids",
+      "layer": "rear",
+      "source": "assets/wardrobe/hair/female-approved-20261104/F06-braids-rear.png?v=d7b0ec01",
+      "sha256": "d7b0ec01389d6f027d0e1b2c15793d88d20e067b19623e2cd4829a7c170825a8",
+      "approved_source": "braids-approved-all-v5/native/F06-braids-rear.png"
+    },
+    {
+      "head": "F06",
+      "face": "face-alternative",
+      "style": "braids",
+      "layer": "front",
+      "source": "assets/wardrobe/hair/female-approved-20261104/F06-braids-front.png?v=c3fbca8b",
+      "sha256": "c3fbca8bc810c7c0bdca090893c56b07d649d990db8f36417b2970255e6d036b",
+      "approved_source": "braids-approved-all-v5/native/F06-braids-front.png"
+    },
+    {
+      "head": "F07",
+      "face": "face-ginger-soft",
+      "style": "braids",
+      "layer": "rear",
+      "source": "assets/wardrobe/hair/female-approved-20261104/F07-braids-rear.png?v=fd75249a",
+      "sha256": "fd75249a34c0c0fee5a793dd4bf73c4c802d62ef6d9ab7781cc6913c32f58213",
+      "approved_source": "braids-approved-all-v5/native/F07-braids-rear.png"
+    },
+    {
+      "head": "F07",
+      "face": "face-ginger-soft",
+      "style": "braids",
+      "layer": "front",
+      "source": "assets/wardrobe/hair/female-approved-20261104/F07-braids-front.png?v=778950f9",
+      "sha256": "778950f905154198b54ce37bcf85d14e9d4819e337f26b6e814ac35c367f5a8d",
+      "approved_source": "braids-approved-all-v5/native/F07-braids-front.png"
+    },
+    {
+      "head": "F08",
+      "face": "face-goth-septum",
+      "style": "braids",
+      "layer": "rear",
+      "source": "assets/wardrobe/hair/female-approved-20261104/F08-braids-rear.png?v=310b4130",
+      "sha256": "310b4130dcd7515f0ef22fc5682d0ee066ea41e7e68babc1032e78694808227c",
+      "approved_source": "braids-approved-all-v5/native/F08-braids-rear.png"
+    },
+    {
+      "head": "F08",
+      "face": "face-goth-septum",
+      "style": "braids",
+      "layer": "front",
+      "source": "assets/wardrobe/hair/female-approved-20261104/F08-braids-front.png?v=84d5c814",
+      "sha256": "84d5c814ffc1297e92dbf39b8ba215a2c415849c3955da622d284933d125878a",
+      "approved_source": "braids-approved-all-v5/native/F08-braids-front.png"
+    },
+    {
+      "head": "F09",
+      "face": "face-goth-black-lips",
+      "style": "braids",
+      "layer": "rear",
+      "source": "assets/wardrobe/hair/female-approved-20261104/F09-braids-rear.png?v=11ff8c10",
+      "sha256": "11ff8c107c67cc7fd7b329e5b791ea595a71df936ef24251b5c93cc209245377",
+      "approved_source": "braids-approved-all-v5/native/F09-braids-rear.png"
+    },
+    {
+      "head": "F09",
+      "face": "face-goth-black-lips",
+      "style": "braids",
+      "layer": "front",
+      "source": "assets/wardrobe/hair/female-approved-20261104/F09-braids-front.png?v=7b13a648",
+      "sha256": "7b13a6488e5a3a3df735a15df4596137be74621550810df2f0273b59ee1e5133",
+      "approved_source": "braids-approved-all-v5/native/F09-braids-front.png"
+    },
+    {
+      "head": "F10",
+      "face": "face-female-new-defined-brows",
+      "style": "braids",
+      "layer": "rear",
+      "source": "assets/wardrobe/hair/female-approved-20261104/F10-braids-rear.png?v=328c6a1d",
+      "sha256": "328c6a1d9581b33d29abc8d1accedeb2ccfff41802087e85290b6864a678c706",
+      "approved_source": "braids-approved-all-v5/native/F10-braids-rear.png"
+    },
+    {
+      "head": "F10",
+      "face": "face-female-new-defined-brows",
+      "style": "braids",
+      "layer": "front",
+      "source": "assets/wardrobe/hair/female-approved-20261104/F10-braids-front.png?v=530abece",
+      "sha256": "530abeceb42623711c9ae79009c611ff3bb33b55ea98ed7167e06feaf55bc400",
+      "approved_source": "braids-approved-all-v5/native/F10-braids-front.png"
+    },
+    {
+      "head": "F11",
+      "face": "face-female-new-blue-gaze",
+      "style": "braids",
+      "layer": "rear",
+      "source": "assets/wardrobe/hair/female-approved-20261104/F11-braids-rear.png?v=1a8f9a89",
+      "sha256": "1a8f9a8910255a63af9dca096784a4ec0adc71b25ec5fa0fd25b975a86f8197c",
+      "approved_source": "braids-approved-all-v5/native/F11-braids-rear.png"
+    },
+    {
+      "head": "F11",
+      "face": "face-female-new-blue-gaze",
+      "style": "braids",
+      "layer": "front",
+      "source": "assets/wardrobe/hair/female-approved-20261104/F11-braids-front.png?v=59053aca",
+      "sha256": "59053acae23bb3a9d47830f67d89701160c81dcc164d00085ad517de2e63a2a3",
+      "approved_source": "braids-approved-all-v5/native/F11-braids-front.png"
+    },
+    {
+      "head": "F12",
+      "face": "face-female-new-freckled",
+      "style": "braids",
+      "layer": "rear",
+      "source": "assets/wardrobe/hair/female-approved-20261104/F12-braids-rear.png?v=bcfdd6e3",
+      "sha256": "bcfdd6e3e79f681104e9cbcf335eda200a8c559a93e78c0964431a6d76f06265",
+      "approved_source": "braids-approved-all-v5/native/F12-braids-rear.png"
+    },
+    {
+      "head": "F12",
+      "face": "face-female-new-freckled",
+      "style": "braids",
+      "layer": "front",
+      "source": "assets/wardrobe/hair/female-approved-20261104/F12-braids-front.png?v=00cba9ba",
+      "sha256": "00cba9baf04722cea80d42c624b8738e9b514ade492a0e7e88de7b50a1381faf",
+      "approved_source": "braids-approved-all-v5/native/F12-braids-front.png"
+    },
+    {
+      "head": "F14",
+      "face": "face-female-new-light-eyes",
+      "style": "braids",
+      "layer": "rear",
+      "source": "assets/wardrobe/hair/female-approved-20261104/F14-braids-rear.png?v=0d856c36",
+      "sha256": "0d856c360e7b33ab052b0517ef04e6c656bf8935d93b5e80e9bc5f74d0b7e853",
+      "approved_source": "braids-approved-all-v5/native/F14-braids-rear.png"
+    },
+    {
+      "head": "F14",
+      "face": "face-female-new-light-eyes",
+      "style": "braids",
+      "layer": "front",
+      "source": "assets/wardrobe/hair/female-approved-20261104/F14-braids-front.png?v=391879ca",
+      "sha256": "391879cad429ad4278af564601a755bddd89f81e7da484d8b2d1723482bb58ee",
+      "approved_source": "braids-approved-all-v5/native/F14-braids-front.png"
+    },
+    {
+      "head": "F15",
+      "face": "face-female-new-pierced",
+      "style": "braids",
+      "layer": "rear",
+      "source": "assets/wardrobe/hair/female-approved-20261104/F15-braids-rear.png?v=3eede61a",
+      "sha256": "3eede61ab0942929cb427a20e605c18573b6efcfa34393fa7b3309c0c8991b85",
+      "approved_source": "braids-approved-all-v5/native/F15-braids-rear.png"
+    },
+    {
+      "head": "F15",
+      "face": "face-female-new-pierced",
+      "style": "braids",
+      "layer": "front",
+      "source": "assets/wardrobe/hair/female-approved-20261104/F15-braids-front.png?v=c41121d5",
+      "sha256": "c41121d56be0a249ee9e57619fe17aa9a2131d51959c33ce09c5653841b67261",
+      "approved_source": "braids-approved-all-v5/native/F15-braids-front.png"
+    },
+    {
+      "head": "F16",
+      "face": "face-female-new-soft-gaze",
+      "style": "braids",
+      "layer": "rear",
+      "source": "assets/wardrobe/hair/female-approved-20261104/F16-braids-rear.png?v=6b8552f8",
+      "sha256": "6b8552f8a72c5f439eff10d3e16c5937c1495239f987693939cd07ab62b0d573",
+      "approved_source": "braids-approved-all-v5/native/F16-braids-rear.png"
+    },
+    {
+      "head": "F16",
+      "face": "face-female-new-soft-gaze",
+      "style": "braids",
+      "layer": "front",
+      "source": "assets/wardrobe/hair/female-approved-20261104/F16-braids-front.png?v=46a209bb",
+      "sha256": "46a209bbca85b6f92f515018dc7e8acf0486f9ca39a6f47047b08de6427288ec",
+      "approved_source": "braids-approved-all-v5/native/F16-braids-front.png"
+    },
+    {
+      "head": "F17",
+      "face": "face-female-new-almond-eyes",
+      "style": "braids",
+      "layer": "rear",
+      "source": "assets/wardrobe/hair/female-approved-20261104/F17-braids-rear.png?v=b7936ce4",
+      "sha256": "b7936ce432df6b801a9437781caf6170de69c00f7289e59c9e575969343c43d7",
+      "approved_source": "braids-approved-all-v5/native/F17-braids-rear.png"
+    },
+    {
+      "head": "F17",
+      "face": "face-female-new-almond-eyes",
+      "style": "braids",
+      "layer": "front",
+      "source": "assets/wardrobe/hair/female-approved-20261104/F17-braids-front.png?v=03ca0262",
+      "sha256": "03ca0262679936369fa3ec32b32cfb43fa6c5f3b2079c026e1c9bd5da8ed0915",
+      "approved_source": "braids-approved-all-v5/native/F17-braids-front.png"
+    },
+    {
+      "head": "F01",
+      "face": "@native",
+      "style": "curls",
+      "layer": "rear",
+      "source": "assets/wardrobe/hair/female-approved-20261104/F01-curls-rear.png?v=8ce6805d",
+      "sha256": "8ce6805d60a0e774d33c7a447fdde6c592c5836c6ac5831b9e4856f777bcb0a1",
+      "approved_source": "curls-approved-all-v2/native/F01-curls-rear.png"
+    },
+    {
+      "head": "F01",
+      "face": "@native",
+      "style": "curls",
+      "layer": "front",
+      "source": "assets/wardrobe/hair/female-approved-20261104/F01-curls-front.png?v=98a69c76",
+      "sha256": "98a69c769b8577fd3b369fa7539d08e5eba3b4a871fa362ec028fe51722971fb",
+      "approved_source": "curls-approved-all-v2/native/F01-curls-front.png"
+    },
+    {
+      "head": "F02",
+      "face": "face-asian",
+      "style": "curls",
+      "layer": "rear",
+      "source": "assets/wardrobe/hair/female-approved-20261104/F02-curls-rear.png?v=d3e1753e",
+      "sha256": "d3e1753ef6ee504da28381f35de4e9f588e7687b026082c73eec94d7a9003372",
+      "approved_source": "curls-approved-all-v2/native/F02-curls-rear.png"
+    },
+    {
+      "head": "F02",
+      "face": "face-asian",
+      "style": "curls",
+      "layer": "front",
+      "source": "assets/wardrobe/hair/female-approved-20261104/F02-curls-front.png?v=499f13b8",
+      "sha256": "499f13b893d25bd55bc0685197dd2aad4174845593d7a9b2d655b7f3b87ba5e7",
+      "approved_source": "curls-approved-all-v2/native/F02-curls-front.png"
+    },
+    {
+      "head": "F03",
+      "face": "face-young",
+      "style": "curls",
+      "layer": "rear",
+      "source": "assets/wardrobe/hair/female-approved-20261104/F03-curls-rear.png?v=c03aaea4",
+      "sha256": "c03aaea47451c02429ce6e2e539add95dd6a152612e9b820aff1cc6501f31454",
+      "approved_source": "curls-approved-all-v2/native/F03-curls-rear.png"
+    },
+    {
+      "head": "F03",
+      "face": "face-young",
+      "style": "curls",
+      "layer": "front",
+      "source": "assets/wardrobe/hair/female-approved-20261104/F03-curls-front.png?v=1da75b46",
+      "sha256": "1da75b466ef29e40277ec2bc17204e360631e2bf6b508858bfa097b2942c2633",
+      "approved_source": "curls-approved-all-v2/native/F03-curls-front.png"
+    },
+    {
+      "head": "F04",
+      "face": "face-exhausted",
+      "style": "curls",
+      "layer": "rear",
+      "source": "assets/wardrobe/hair/female-approved-20261104/F04-curls-rear.png?v=3b4f78d7",
+      "sha256": "3b4f78d7cb9e5a82631e152e85a511726c4b2fbb00fa8ed7d41a3a546b184ef9",
+      "approved_source": "curls-approved-all-v2/native/F04-curls-rear.png"
+    },
+    {
+      "head": "F04",
+      "face": "face-exhausted",
+      "style": "curls",
+      "layer": "front",
+      "source": "assets/wardrobe/hair/female-approved-20261104/F04-curls-front.png?v=fa747806",
+      "sha256": "fa747806f62440cdbf72629433255dc6a7bcc498cfe971a5ff6b163c314f4d64",
+      "approved_source": "curls-approved-all-v2/native/F04-curls-front.png"
+    },
+    {
+      "head": "F05",
+      "face": "face-elder",
+      "style": "curls",
+      "layer": "rear",
+      "source": "assets/wardrobe/hair/female-approved-20261104/F05-curls-rear.png?v=3bb896d2",
+      "sha256": "3bb896d2dcdaedc07ab5452a9a66131d9b7b4239e2186f3bf149fa64f7de78d0",
+      "approved_source": "curls-approved-all-v2/native/F05-curls-rear.png"
+    },
+    {
+      "head": "F05",
+      "face": "face-elder",
+      "style": "curls",
+      "layer": "front",
+      "source": "assets/wardrobe/hair/female-approved-20261104/F05-curls-front.png?v=c31db7e9",
+      "sha256": "c31db7e9d9dfd29e3b5c76e3c76f787d02bb46f490fbfb44e72df2e78724aba4",
+      "approved_source": "curls-approved-all-v2/native/F05-curls-front.png"
+    },
+    {
+      "head": "F06",
+      "face": "face-alternative",
+      "style": "curls",
+      "layer": "rear",
+      "source": "assets/wardrobe/hair/female-approved-20261104/F06-curls-rear.png?v=697ae8d8",
+      "sha256": "697ae8d81d256423358d0dc683d694799a21d3a03e90071774c4c14aebee3102",
+      "approved_source": "curls-approved-all-v2/native/F06-curls-rear.png"
+    },
+    {
+      "head": "F06",
+      "face": "face-alternative",
+      "style": "curls",
+      "layer": "front",
+      "source": "assets/wardrobe/hair/female-approved-20261104/F06-curls-front.png?v=9c6a5d81",
+      "sha256": "9c6a5d81b30eee8ab0a44ba87b0110134f4c259faf946c3d3318ee10dfc79de9",
+      "approved_source": "curls-approved-all-v2/native/F06-curls-front.png"
+    },
+    {
+      "head": "F07",
+      "face": "face-ginger-soft",
+      "style": "curls",
+      "layer": "rear",
+      "source": "assets/wardrobe/hair/female-approved-20261104/F07-curls-rear.png?v=2b2f353e",
+      "sha256": "2b2f353e80df323b42c660025a17fb5a3cca5d7c7f0851ce477fd2cf73b42deb",
+      "approved_source": "curls-approved-all-v2/native/F07-curls-rear.png"
+    },
+    {
+      "head": "F07",
+      "face": "face-ginger-soft",
+      "style": "curls",
+      "layer": "front",
+      "source": "assets/wardrobe/hair/female-approved-20261104/F07-curls-front.png?v=4b77465f",
+      "sha256": "4b77465f0daea46227f21b6ddee3a9f151e717418715f9d85249e64ad8db928d",
+      "approved_source": "curls-approved-all-v2/native/F07-curls-front.png"
+    },
+    {
+      "head": "F08",
+      "face": "face-goth-septum",
+      "style": "curls",
+      "layer": "rear",
+      "source": "assets/wardrobe/hair/female-approved-20261104/F08-curls-rear.png?v=3e27509e",
+      "sha256": "3e27509e247966047b1180b55901b9edf35adffa13245fb60189197dfce68cf0",
+      "approved_source": "curls-approved-all-v2/native/F08-curls-rear.png"
+    },
+    {
+      "head": "F08",
+      "face": "face-goth-septum",
+      "style": "curls",
+      "layer": "front",
+      "source": "assets/wardrobe/hair/female-approved-20261104/F08-curls-front.png?v=ea6fb0d9",
+      "sha256": "ea6fb0d9694c328892666eba7539d2305619360259cb6c822565bc8b34f51475",
+      "approved_source": "curls-approved-all-v2/native/F08-curls-front.png"
+    },
+    {
+      "head": "F09",
+      "face": "face-goth-black-lips",
+      "style": "curls",
+      "layer": "rear",
+      "source": "assets/wardrobe/hair/female-approved-20261104/F09-curls-rear.png?v=86ad6aa4",
+      "sha256": "86ad6aa4b2ad8c68873246ba587b72df0f475eddfd810da2a7f587d1c56c1ea0",
+      "approved_source": "curls-approved-all-v2/native/F09-curls-rear.png"
+    },
+    {
+      "head": "F09",
+      "face": "face-goth-black-lips",
+      "style": "curls",
+      "layer": "front",
+      "source": "assets/wardrobe/hair/female-approved-20261104/F09-curls-front.png?v=f1739674",
+      "sha256": "f17396742c8d3522fbecc7f167d699963a5561ceee39c557e17d2152a4d6e8a5",
+      "approved_source": "curls-approved-all-v2/native/F09-curls-front.png"
+    },
+    {
+      "head": "F10",
+      "face": "face-female-new-defined-brows",
+      "style": "curls",
+      "layer": "rear",
+      "source": "assets/wardrobe/hair/female-approved-20261104/F10-curls-rear.png?v=c163ce57",
+      "sha256": "c163ce57b7d1df185fa5dd4ddb92f88b3ce43caff7551df1f8d8c45376e4edc6",
+      "approved_source": "curls-approved-all-v2/native/F10-curls-rear.png"
+    },
+    {
+      "head": "F10",
+      "face": "face-female-new-defined-brows",
+      "style": "curls",
+      "layer": "front",
+      "source": "assets/wardrobe/hair/female-approved-20261104/F10-curls-front.png?v=137c6935",
+      "sha256": "137c693593c73192997dce95e59139f2e978b09777b7bddf6062add4e3a3b584",
+      "approved_source": "curls-approved-all-v2/native/F10-curls-front.png"
+    },
+    {
+      "head": "F11",
+      "face": "face-female-new-blue-gaze",
+      "style": "curls",
+      "layer": "rear",
+      "source": "assets/wardrobe/hair/female-approved-20261104/F11-curls-rear.png?v=8500fe87",
+      "sha256": "8500fe871664d2905702a085c5f2f1f2f0cb6403b10efad557dec2c89f42f2e2",
+      "approved_source": "curls-approved-all-v2/native/F11-curls-rear.png"
+    },
+    {
+      "head": "F11",
+      "face": "face-female-new-blue-gaze",
+      "style": "curls",
+      "layer": "front",
+      "source": "assets/wardrobe/hair/female-approved-20261104/F11-curls-front.png?v=1761663c",
+      "sha256": "1761663c663da2a2c38cb058403b14ee41ffa2044caf8306b0afa753016d7fda",
+      "approved_source": "curls-approved-all-v2/native/F11-curls-front.png"
+    },
+    {
+      "head": "F12",
+      "face": "face-female-new-freckled",
+      "style": "curls",
+      "layer": "rear",
+      "source": "assets/wardrobe/hair/female-approved-20261104/F12-curls-rear.png?v=99b6b7ea",
+      "sha256": "99b6b7eac334687cd3e6f5ea769736e8c0ea14e365be515106be5414d9bcf527",
+      "approved_source": "curls-approved-all-v2/native/F12-curls-rear.png"
+    },
+    {
+      "head": "F12",
+      "face": "face-female-new-freckled",
+      "style": "curls",
+      "layer": "front",
+      "source": "assets/wardrobe/hair/female-approved-20261104/F12-curls-front.png?v=99f0ad3d",
+      "sha256": "99f0ad3d0e01385557ac779dac528c2e0ded505338a96f4bc290f0d6c3ffe211",
+      "approved_source": "curls-approved-all-v2/native/F12-curls-front.png"
+    },
+    {
+      "head": "F14",
+      "face": "face-female-new-light-eyes",
+      "style": "curls",
+      "layer": "rear",
+      "source": "assets/wardrobe/hair/female-approved-20261104/F14-curls-rear.png?v=82cb62b0",
+      "sha256": "82cb62b0a8b583265065323c41f68126e460207cf0c111dd4c2030d2ba289b97",
+      "approved_source": "curls-approved-all-v2/native/F14-curls-rear.png"
+    },
+    {
+      "head": "F14",
+      "face": "face-female-new-light-eyes",
+      "style": "curls",
+      "layer": "front",
+      "source": "assets/wardrobe/hair/female-approved-20261104/F14-curls-front.png?v=78694d53",
+      "sha256": "78694d53f8a0358d0f4f2e8fb619490a46578ce3f5213231f24f35cba06bf2db",
+      "approved_source": "curls-approved-all-v2/native/F14-curls-front.png"
+    },
+    {
+      "head": "F15",
+      "face": "face-female-new-pierced",
+      "style": "curls",
+      "layer": "rear",
+      "source": "assets/wardrobe/hair/female-approved-20261104/F15-curls-rear.png?v=95faafef",
+      "sha256": "95faafef449cdd256e8034b26673ae0e1948787fb7bdf04c09c26914212b7ee3",
+      "approved_source": "curls-approved-all-v2/native/F15-curls-rear.png"
+    },
+    {
+      "head": "F15",
+      "face": "face-female-new-pierced",
+      "style": "curls",
+      "layer": "front",
+      "source": "assets/wardrobe/hair/female-approved-20261104/F15-curls-front.png?v=9a1873d3",
+      "sha256": "9a1873d327e599575b9f4b756e3789ee5a35f36e2a973f2d319d499e0c568f6a",
+      "approved_source": "curls-approved-all-v2/native/F15-curls-front.png"
+    },
+    {
+      "head": "F16",
+      "face": "face-female-new-soft-gaze",
+      "style": "curls",
+      "layer": "rear",
+      "source": "assets/wardrobe/hair/female-approved-20261104/F16-curls-rear.png?v=2edd4732",
+      "sha256": "2edd47321a1c6715778c122d95a35d72ae6ca4bb46bee53a503b656073c5de3d",
+      "approved_source": "curls-approved-all-v2/native/F16-curls-rear.png"
+    },
+    {
+      "head": "F16",
+      "face": "face-female-new-soft-gaze",
+      "style": "curls",
+      "layer": "front",
+      "source": "assets/wardrobe/hair/female-approved-20261104/F16-curls-front.png?v=eaf5d070",
+      "sha256": "eaf5d0707445560d1b2ac9315885a04a40f3c1c80465427320ace9a0c058ec26",
+      "approved_source": "curls-approved-all-v2/native/F16-curls-front.png"
+    },
+    {
+      "head": "F17",
+      "face": "face-female-new-almond-eyes",
+      "style": "curls",
+      "layer": "rear",
+      "source": "assets/wardrobe/hair/female-approved-20261104/F17-curls-rear.png?v=4a22db52",
+      "sha256": "4a22db52c440adebf2b025ea1703d27a70390e018f0e1f07c85a91aa42363a32",
+      "approved_source": "curls-approved-all-v2/native/F17-curls-rear.png"
+    },
+    {
+      "head": "F17",
+      "face": "face-female-new-almond-eyes",
+      "style": "curls",
+      "layer": "front",
+      "source": "assets/wardrobe/hair/female-approved-20261104/F17-curls-front.png?v=37959853",
+      "sha256": "37959853373a7cbcf2aa660429e01543e623dd4001bc942efc5363f67603f5c7",
+      "approved_source": "curls-approved-all-v2/native/F17-curls-front.png"
+    }
+  ],
+  "runtime_before_sha256": {
+    "paper-doll-data.js": "19679185f465059da60808f20761e793077bbd247a8f4850d2de778ccb9f04e5",
+    "paper-doll.js": "cc12268faae147748829ca5eb0346d617650e638fa7d99c039618a7065d0e7dc",
+    "index.html": "2e7ed3ff52a10b7216869661ee4693a924f3ab9dff7bab868ad2db463537fc84"
+  },
+  "runtime_after_sha256": {
+    "paper-doll-data.js": "a13865f464785d7634227caa05e2bb9a4d9a8c72857ddf63d5f71ac6cbc89b07",
+    "paper-doll.js": "4f28983e6aea88a53132d077c7f84a9f122ed7c61d9be5fd49366fdee129ed98",
+    "index.html": "e031783fc35c6a48a7e12de69cabcfaabe2bf8d3fdd0e809d6e8b29daac60dc9"
+  },
+  "bodies": {
+    "male": "b40a31b26dcf9aeea1dad02091228377330c9bb3af3a4b9669cfcc67247fc41d",
+    "female": "a27b499c03fc15c4788ae3a651483a36463f28b1f034178feccdaa852e7e50f9"
+  },
+  "palette_references": [
+    {
+      "path": "assets/wardrobe/hair/female-approved-20261104/palette/F01-braids-front.png",
+      "sha256": "60222f7b9e6307dbb9c5760b9f0ff0c9469f6d00114d98b4639beff11326afbe"
+    },
+    {
+      "path": "assets/wardrobe/hair/female-approved-20261104/palette/F01-curls-front.png",
+      "sha256": "9693bd5b0b88d91fca78a691aee4f3c272132a8026fdb241c58d26679f2dfd69"
+    },
+    {
+      "path": "assets/wardrobe/hair/female-approved-20261104/palette/F02-braids-front.png",
+      "sha256": "ed80a9e7ac1a85f5d809ad92b7163f2553c31b1f9880769d3707cf560837fc1e"
+    },
+    {
+      "path": "assets/wardrobe/hair/female-approved-20261104/palette/F02-curls-front.png",
+      "sha256": "adfae998da7e69ef3e5d29eae433678324bb7b3fb73b7444d5a01f9872211ffe"
+    },
+    {
+      "path": "assets/wardrobe/hair/female-approved-20261104/palette/F03-braids-front.png",
+      "sha256": "ba30145eff1675785bee60db48e347c1fc17f9781f66d69f70336c3b6baf8f5c"
+    },
+    {
+      "path": "assets/wardrobe/hair/female-approved-20261104/palette/F03-curls-front.png",
+      "sha256": "1116c0fbcda2bc2a4a20eb0c5df06a98a6bbb2eef2b2de935c10fa89c723b259"
+    },
+    {
+      "path": "assets/wardrobe/hair/female-approved-20261104/palette/F04-braids-front.png",
+      "sha256": "5a9b231af6c9632e2ede93edd75c7c1070f611fb0af80d0c8015e277d5f49792"
+    },
+    {
+      "path": "assets/wardrobe/hair/female-approved-20261104/palette/F04-curls-front.png",
+      "sha256": "49e4ae1463e30b06cfdfb28ec31b5a9c79a1ff05eb46b2ca25b27ac7523718a8"
+    },
+    {
+      "path": "assets/wardrobe/hair/female-approved-20261104/palette/F05-braids-front.png",
+      "sha256": "4119ebbec5480e795a006745e5c7ea790cb3b76ff2670611e3917ba201551753"
+    },
+    {
+      "path": "assets/wardrobe/hair/female-approved-20261104/palette/F05-curls-front.png",
+      "sha256": "7c20d2c3d504a942f8d4c425753e46fd9abf4ee03f4c913bc6cfbaf19fb9e9e0"
+    },
+    {
+      "path": "assets/wardrobe/hair/female-approved-20261104/palette/F06-braids-front.png",
+      "sha256": "9a89a9868a952ac9411b88c34bb7ba946167c6b99ce4b9c0a209dcbaf20f2adc"
+    },
+    {
+      "path": "assets/wardrobe/hair/female-approved-20261104/palette/F06-curls-front.png",
+      "sha256": "945a614532b9ad09581a99bc305c05c137ef1dcb419872b98d599c1d0a5149ae"
+    },
+    {
+      "path": "assets/wardrobe/hair/female-approved-20261104/palette/F07-braids-front.png",
+      "sha256": "91236e670f88c1c203e49808625feafa6be8733535b93603fcf2142c9b5efc50"
+    },
+    {
+      "path": "assets/wardrobe/hair/female-approved-20261104/palette/F07-curls-front.png",
+      "sha256": "39480858a77ff7c930f75991954915fd9faeaaefb56a40942dde470aa808efcc"
+    },
+    {
+      "path": "assets/wardrobe/hair/female-approved-20261104/palette/F08-braids-front.png",
+      "sha256": "cef6c7fef120f3633644b510003660b110ad7d3bcdd3feb1a050995667522fd5"
+    },
+    {
+      "path": "assets/wardrobe/hair/female-approved-20261104/palette/F08-curls-front.png",
+      "sha256": "103b0ecff644dbff0e408a7283143a557f661109e230d75421fe816ee1b8eae2"
+    },
+    {
+      "path": "assets/wardrobe/hair/female-approved-20261104/palette/F09-braids-front.png",
+      "sha256": "2eb674a27b972db9d6bc48b9b1552dc6078db5d184e7ad3943e60a4ffb83cf02"
+    },
+    {
+      "path": "assets/wardrobe/hair/female-approved-20261104/palette/F09-curls-front.png",
+      "sha256": "d29b7fe6472836aae7ca7fd69c14cc48f184e41f9076f2d818af747d1495e223"
+    },
+    {
+      "path": "assets/wardrobe/hair/female-approved-20261104/palette/F10-braids-front.png",
+      "sha256": "59ade20b8b332a646466bc4548b5f5b56e4bd39262181efe401fa2fbf90aa97a"
+    },
+    {
+      "path": "assets/wardrobe/hair/female-approved-20261104/palette/F10-curls-front.png",
+      "sha256": "962ce0502c7e046faa3dfa3f825b4f8895964e8cf698823fe2db5845fd13fd57"
+    },
+    {
+      "path": "assets/wardrobe/hair/female-approved-20261104/palette/F11-braids-front.png",
+      "sha256": "ed80a9e7ac1a85f5d809ad92b7163f2553c31b1f9880769d3707cf560837fc1e"
+    },
+    {
+      "path": "assets/wardrobe/hair/female-approved-20261104/palette/F11-curls-front.png",
+      "sha256": "64c4e73e681b88f441c1543caf4cecc1757210c03fc026ddf383010b180b1028"
+    },
+    {
+      "path": "assets/wardrobe/hair/female-approved-20261104/palette/F12-braids-front.png",
+      "sha256": "d345a2a8ab9c50d02d18161449fbd2a37d3ce38d9ecf0849e9efd112c4ccb56a"
+    },
+    {
+      "path": "assets/wardrobe/hair/female-approved-20261104/palette/F12-curls-front.png",
+      "sha256": "da28117714cf4f5163eb527ad5d8b952f4bdaec957148a2c48f4ea85056969cc"
+    },
+    {
+      "path": "assets/wardrobe/hair/female-approved-20261104/palette/F14-braids-front.png",
+      "sha256": "f220ccdc46822f7c9b479c4be4256ab8208e10f09846461b8d98fdb5b99c65cc"
+    },
+    {
+      "path": "assets/wardrobe/hair/female-approved-20261104/palette/F14-curls-front.png",
+      "sha256": "af51c25b7ccce0f88587b1091c22f40b6ffd97a30fd01d9e62899c57d381c068"
+    },
+    {
+      "path": "assets/wardrobe/hair/female-approved-20261104/palette/F15-braids-front.png",
+      "sha256": "ad097023fb24dc5b6c5e340d313b532ecb3860e920cf2d0f65f8522ca0eabfa5"
+    },
+    {
+      "path": "assets/wardrobe/hair/female-approved-20261104/palette/F15-curls-front.png",
+      "sha256": "1a18d2f7a26d8391099b3fd803c7c66ae96ee2aceda7bcff9ff254a7b8890b54"
+    },
+    {
+      "path": "assets/wardrobe/hair/female-approved-20261104/palette/F16-braids-front.png",
+      "sha256": "472ae31ce03b79185bd2de3dfbcebb519bc040a12c64bf1791af8560a700ed05"
+    },
+    {
+      "path": "assets/wardrobe/hair/female-approved-20261104/palette/F16-curls-front.png",
+      "sha256": "481ef39dba8d1370861f71ba7a813c8761138c9a1e2fce4b2ab954284cfc6855"
+    },
+    {
+      "path": "assets/wardrobe/hair/female-approved-20261104/palette/F17-braids-front.png",
+      "sha256": "d9035e43481efdf891fa2652f691e2b847a983c06958f2b7aa9b3cbb3ef8df3a"
+    },
+    {
+      "path": "assets/wardrobe/hair/female-approved-20261104/palette/F17-curls-front.png",
+      "sha256": "037b2a36958ea4abe5ce217eba6d88e5a652b41eb0d14c2494c00419bac4c853"
+    }
+  ],
+  "heads": [
+    {
+      "path": "assets/wardrobe/faces/standardized/female_native_head.png",
+      "sha256": "637a5c3934a0add4e8da06a7e309cf113d0066d277d9206c80d0cd0ede452f60"
+    },
+    {
+      "path": "assets/wardrobe/faces/standardized/female_asian_head.png",
+      "sha256": "52c4d4c9e7d933070f4d73178a140453e80abaf558087e22c6b67003fd394cf7"
+    },
+    {
+      "path": "assets/wardrobe/faces/female_young_head.png",
+      "sha256": "d7e2c1da556c0056dc466343afe99f46deb55fb40915de1e34a52649a0db0efa"
+    },
+    {
+      "path": "assets/wardrobe/faces/standardized/female_exhausted_head.png",
+      "sha256": "ce67809c0363aedacc7037a498723a3030c64ba42aca85f8a7418c86256ae53f"
+    },
+    {
+      "path": "assets/wardrobe/faces/standardized/female_elder_head.png",
+      "sha256": "87261a6bc551efba06dba4ea5d0902743a6eef54eeb4b1155dcf975cd9807b49"
+    },
+    {
+      "path": "assets/wardrobe/faces/standardized/female_alternative_head.png",
+      "sha256": "196abd67116fe700d54fc56d8c9c51649a88a388a411b47071e5a18db73dd123"
+    },
+    {
+      "path": "assets/wardrobe/faces/approved-female-corrections/f07.png",
+      "sha256": "9dd9bb07125fb8bb69f1f2bd737776a508a2cf75f519e81f1f858eef28770d44"
+    },
+    {
+      "path": "assets/wardrobe/faces/standardized/female_goth_septum_head.png",
+      "sha256": "5bf67cbff5e22489cd638d53040484551e090f87ce5344d79fdb006d7118facc"
+    },
+    {
+      "path": "assets/wardrobe/faces/standardized/female_goth_black_lips_head.png",
+      "sha256": "a66a1bebead7dc20f086deb1243cde22c40a7f6c31317a8ae8cf9bc49b946208"
+    },
+    {
+      "path": "assets/wardrobe/faces/standardized/female_new_defined_brows_head.png",
+      "sha256": "a54f63a4c927c4d5fbdf6ac0e6afcb307d130c540a91dd36c5297818d91222d4"
+    },
+    {
+      "path": "assets/wardrobe/faces/standardized/female_new_blue_gaze_head.png",
+      "sha256": "f8e73361a1d788ee6717710da7e23805d042eed44e3d676937871a82cc4b2210"
+    },
+    {
+      "path": "assets/wardrobe/faces/standardized/female_new_freckled_head.png",
+      "sha256": "de5cbf25be91b01f486879bce300c8e338c42170d7c027dcc238c2617d30920b"
+    },
+    {
+      "path": "assets/wardrobe/faces/approved-female-corrections/f14.png",
+      "sha256": "ced9166739d5ab885ee45d7287d95ff14afa1a39cf16465b75106c94717eaa0d"
+    },
+    {
+      "path": "assets/wardrobe/faces/standardized/female_new_pierced_head.png",
+      "sha256": "d4eaac3fa5e655df1c1b45408dc2e2606c5aa1c6b5b51cae05525c5c006769a0"
+    },
+    {
+      "path": "assets/wardrobe/faces/standardized/female_new_soft_gaze_head.png",
+      "sha256": "244a08d9d19a5fcacf7daeb6ead78c0593e155084c0e1fb4f7086d09a318b7e3"
+    },
+    {
+      "path": "assets/wardrobe/faces/approved-female-corrections/f17.png",
+      "sha256": "935d8399d34033633507123ffd8f6c9c7562248a53b34eb9562c5090e713d505"
+    }
+  ]
+}

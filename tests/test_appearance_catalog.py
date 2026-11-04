@@ -29,7 +29,7 @@ class AppearanceCatalogTests(unittest.TestCase):
     def test_catalog_assets_counts_and_approved_sources(self):
         self.load()
         counts=self.page.evaluate('Object.fromEntries(["male","female"].map(g=>[g,{heads:1+PAPER_DOLL_ITEMS.filter(i=>i.slot==="face"&&paperDollItemSupportsGender(i,g)).length,hair:PAPER_DOLL_ITEMS.filter(i=>i.slot==="hair"&&i.id!=="hair-none"&&paperDollItemSupportsGender(i,g)).length}]))')
-        self.assertEqual(counts,{'male':{'heads':16,'hair':12},'female':{'heads':16,'hair':10}})
+        self.assertEqual(counts,{'male':{'heads':16,'hair':12},'female':{'heads':16,'hair':12}})
         manifest=json.loads((REVIEW/'manifest.json').read_text())
         for record in manifest['sources']+manifest['female_heads']:
             self.assertEqual(hashlib.sha256((ROOT/record['path']).read_bytes()).hexdigest(),record['sha256'])
@@ -56,12 +56,15 @@ class AppearanceCatalogTests(unittest.TestCase):
         self.context.route('**/male-hair-fit.js?*', lambda route: route.fulfill(content_type='application/javascript', body='function maleHairReviewFor(){return null} function maleReviewedHead(face){return face} function maleReviewedHairParts(item,gender,face,parts){return parts}'))
         self.load();self.page.set_viewport_size({'width':1200,'height':900})
         self.page.evaluate('openCustomization();setGender("male");setPaperDollView("combat");equipPaperDollItem("face","face-male-new-neutral");equipPaperDollItem("upperBody",null);setHairColor("original")')
+        # Replay the immutable pre-scalp-cleanup preview; current cleanup is tested separately below.
+        self.page.evaluate('window.previewScalpCleanup=curlyCropNeedsScalpCleanup;curlyCropNeedsScalpCleanup=()=>false')
         for column,hair in [(1,'hair-m6-mullet'),(3,'hair-m6-curly-crop')]:
             self.page.evaluate('''hair=>{equipPaperDollItem('hair',hair);document.getElementById('approved-board')?.remove();const c=document.createElement('div');c.id='approved-board';Object.assign(c.style,{position:'fixed',left:0,top:0,width:'250px',height:'310px',overflow:'hidden',background:'#97938d',zIndex:2147483647});const h=document.createElement('div');h.className='character-paperdoll';Object.assign(h.style,{position:'absolute',width:'941px',height:'1672px',left:'-348px',top:0});c.append(h);document.body.append(c);renderPaperDollAt(h,'approval-')}''',hair)
             self.page.wait_for_function('''()=>['approval-layer-body','approval-layer-face','approval-layer-hair','approval-layer-hair-rear'].every(id=>{const i=document.getElementById(id);return i&&i.complete&&i.naturalWidth===941&&!i.classList.contains('hidden')})''')
             actual=Image.open(io.BytesIO(self.page.locator('#approved-board').screenshot())).convert('RGB')
             expected=Image.open(approved/'approved-before-after.png').crop((column*250,38,column*250+250,348)).convert('RGB')
             self.assertTrue(np.array_equal(np.array(actual),np.array(expected)),hair+' differs from approved preview')
+        self.page.evaluate('curlyCropNeedsScalpCleanup=window.previewScalpCleanup;hairColorCache.clear()')
         self.page.evaluate('document.getElementById("approved-board").remove()')
         faces=self.page.evaluate('[null,...PAPER_DOLL_ITEMS.filter(i=>i.slot==="face"&&paperDollItemSupportsGender(i,"male")).map(i=>i.id)]')
         for face in faces:

@@ -150,8 +150,9 @@ function positionPaperDollLayer(image, placement, index) {
 // Resolve the same gender-specific parts for rendering and wardrobe status.
 function paperDollItemLayers(item, selectedGender) {
     item = maleReviewedHead(item, selectedGender);
-    const parts = !Array.isArray(item?.layers) || !item.layers.length ? (item ? [item] : [])
-        : item.layers.filter(part => part && typeof part.id === 'string' && /^[a-zA-Z0-9_-]+$/.test(part.id)
+    const layers = item?.layersByFace?.[selectedGender]?.[paperDollState.appearance.face || '@native'] ?? item?.layers;
+    const parts = !Array.isArray(layers) || !layers.length ? (item ? [item] : [])
+        : layers.filter(part => part && typeof part.id === 'string' && /^[a-zA-Z0-9_-]+$/.test(part.id)
             && (!Array.isArray(part.genders) || part.genders.includes(selectedGender)))
         .map(part => ({ ...part, placement: part.placement ?? item.placement,
             placementByGender: part.placementByGender ?? item.placementByGender,

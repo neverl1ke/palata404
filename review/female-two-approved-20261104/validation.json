@@ -1,0 +1,37 @@
+{
+  "node_logic": {
+    "passed": 94,
+    "failed": 0
+  },
+  "new_female_styles": {
+    "passed": 3,
+    "failed": 0,
+    "fits": 32,
+    "modes": [
+      "patient",
+      "combat"
+    ],
+    "colors": [
+      "original",
+      "white",
+      "blue"
+    ]
+  },
+  "existing_assets": {
+    "passed": 14,
+    "failed": 0,
+    "suites": [
+      "test_female_five_hairstyles",
+      "test_male_review_integration"
+    ]
+  },
+  "appearance_catalog": {
+    "passed": 5,
+    "failed": 0,
+    "notes": "Four tests passed in the initial suite; the historical male temple preview was rerun successfully after isolating its pre-scalp-cleanup contract. Existing protected runtime hash chain extended with archived before bytes."
+  },
+  "production_visual_parity": "32/32 fits, exact approved pixel match",
+  "browser_errors": [],
+  "http_errors": [],
+  "syntax_and_diff_checks": "passed"
+}

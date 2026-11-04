@@ -1,0 +1,9 @@
+{
+  "status": "user approved F04 v5; applied to all 16 active female heads",
+  "reference": "reference-fix-F04-v5",
+  "reference_F04_exact": true,
+  "heads": 16,
+  "original_heads_unchanged": true,
+  "approved_curls_unchanged": true,
+  "runtime": "review renderer; production integration not performed"
+}

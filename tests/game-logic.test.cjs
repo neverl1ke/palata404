@@ -1147,7 +1147,7 @@ test('approved hair remains shared appearance with eight choices, gender-fitted 
     const g=game();
     assert.equal(g.run('paperDollState.appearance.hair'),'hair-none');
     assert.equal(g.run('PAPER_DOLL_SLOTS.hair.label'),'Зачіски');
-    assert.equal(g.run('PAPER_DOLL_ITEMS.filter(item=>item.slot==="hair"&&!item.id.startsWith("hair-m6-")&&item.id!=="hair-trial-braided-curls"&&![\"hair-f5-pixie\", \"hair-f5-jaw-bob\", \"hair-f5-long-waves\", \"hair-f5-high-ponytail\", \"hair-f5-braided-updo\"].includes(item.id)).length'),8);
+    assert.equal(g.run('PAPER_DOLL_ITEMS.filter(item=>item.slot==="hair"&&!item.id.startsWith("hair-female-")&&!item.id.startsWith("hair-m6-")&&item.id!=="hair-trial-braided-curls"&&![\"hair-f5-pixie\", \"hair-f5-jaw-bob\", \"hair-f5-long-waves\", \"hair-f5-high-ponytail\", \"hair-f5-braided-updo\"].includes(item.id)).length'),8);
     assert.equal(g.run('wardrobeImageStatus(selectedPaperDollItem("hair")).state'),'ready');
     const before=g.run('JSON.stringify({stats,inventory,equippedGear,gameProgress,patient:paperDollState.patientLoadout,combat:paperDollState.combatLoadout})');
     for(const id of ['hair-messy','hair-bob','hair-double-buns','hair-classic-short','hair-textured-short','hair-shoulder-length']) {
