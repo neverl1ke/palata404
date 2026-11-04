@@ -48,12 +48,18 @@ def approved_current_hash(relative, old_hash):
     """No broad exemption: only the explicit user-approved replacement list."""
     if hashlib.sha256((ROOT/relative).read_bytes()).hexdigest()==old_hash:
         return old_hash
+    wrist=ROOT/'review/female-knife-wrist-20261105/runtime-receipt.json'
+    if wrist.exists():
+        receipt=json.loads(wrist.read_text())
+        if receipt['runtime_before_sha256'].get(relative)==old_hash:
+            assert hashlib.sha256((wrist.parent/'before'/relative).read_bytes()).hexdigest()==old_hash
+            return receipt['runtime_after_sha256'][relative]
     beards=ROOT/'review/male-facial-hair-approved-20261105/runtime-receipt.json'
     if beards.exists():
         receipt=json.loads(beards.read_text())
         if receipt['runtime_before_sha256'].get(relative)==old_hash:
             assert hashlib.sha256((beards.parent/'before'/relative).read_bytes()).hexdigest()==old_hash
-            return receipt['runtime_after_sha256'][relative]
+            return approved_current_hash(relative,receipt['runtime_after_sha256'][relative])
     female=ROOT/'review/female-two-approved-20261104/integration.json'
     if female.exists():
         receipt=json.loads(female.read_text())

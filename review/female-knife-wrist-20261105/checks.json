@@ -1,0 +1,12 @@
+{
+  "tests_passed": 6,
+  "closed_hand_and_wrist_snapshot": "restored-wrist-reference.png",
+  "exact_authored_layers_preserved": true,
+  "base_female_unchanged": true,
+  "idle_and_rifle_reference_frames_preserved": true,
+  "weapon_cycles_and_reload": "passed",
+  "visual_review": [
+    "female-melee-restored.jpg",
+    "wrist-before-after.jpg"
+  ]
+}

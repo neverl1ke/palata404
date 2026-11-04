@@ -1,3 +1,4 @@
+import { AvatarEngine } from './female/runtime/engine.mjs';
 import { config } from './config.mjs';
 // Approved rifle paint stays unchanged; idle uses the current approved neutral body.
 // The knife uses that same body and the complete shared weapon artwork.
@@ -103,21 +104,29 @@ export async function createScene() {
     return {canvas,width:WIDTH,approvedPose,
         async equipWeaponItem(id) {
             if (id !== 'gear-knife' || melee) return;
-            // The female archived rig is intentionally empty. Use the current
-            // approved neutral body and the same complete knife as the male.
-            const {resources}=await config('male');
+            // Restore the authored closed hand, wrist and front-finger layers.
+            // The archived rest of the rig stays transparent: only this arm
+            // and the shared knife are rendered onto the unchanged current base.
+            const [{resources:archived},{resources:shared}]=await Promise.all([config('female'),config('male')]);
+            const resources=structuredClone(archived);
+            const restored=name=>new URL('./female/RestoredMelee20261105/'+name,import.meta.url).href;
+            const overrides={
+                'assets/female/knife-edge-cleanup/melee-right-arm.png':'arm.png',
+                'assets/female/knife-edge-cleanup/melee-right-complete.png':'complete.png',
+                'assets/female/knife-grip-arm/melee-right-front.png':'front.png',
+            };
+            for(const [key,name] of Object.entries(overrides)) resources.images[key]=restored(name);
             const item=resources.json['equipment-weapons.json'].items.find(i=>i.id===id);
-            const knife=await new Promise((resolve,reject)=>{const i=new Image();i.onload=()=>resolve(i);i.onerror=reject;i.src=resources.images[item.image]});
-            const def=item.attachmentByGender.female,angle=def.angle*Math.PI/180;
+            resources.images[item.image]=shared.images[item.image];
+            const output=document.createElement('canvas');output.width=941;output.height=HEIGHT;
+            const rig=await AvatarEngine.create(output,{gender:'female',resources,nativeResolution:true,transitionMs:0,background:'transparent'});
+            rig.pause();await rig.equipWeaponItem(id);rig.time=0;rig.render();
+            const mask=await new Promise((resolve,reject)=>{const i=new Image();i.onload=()=>resolve(i);i.onerror=reject;i.src=restored('original-arm-mask.png')});
             melee=document.createElement('canvas');melee.width=WIDTH;melee.height=HEIGHT;
             const m=melee.getContext('2d');m.drawImage(rest,0,0);
-            m.save();m.translate(230,925);m.rotate(angle);m.scale(def.scale,def.scale);
-            m.drawImage(knife,-def.primary[0],-def.primary[1]);m.restore();
-            // Reuse the existing fingers as the foreground grip, without
-            // duplicating their alpha or changing the neutral hand anatomy.
-            m.save();m.beginPath();
-            [[202,881],[219,894],[239,906],[245,922],[245,957],[228,971],[207,949],[191,919],[188,899]].forEach(([x,y],n)=>n?m.lineTo(x,y):m.moveTo(x,y));
-            m.closePath();m.clip();m.drawImage(rest,0,0);m.restore();
+            m.globalCompositeOperation='destination-out';m.drawImage(mask,0,0);
+            m.globalCompositeOperation='source-over';m.drawImage(output,0,0);
+            rig.destroy();
         },
         render(time,weapon=true,motion={}) {
             const pose=typeof weapon==='string'?weapon:weapon?'rifle':'idle';

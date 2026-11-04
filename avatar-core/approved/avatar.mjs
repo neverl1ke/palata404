@@ -19,7 +19,7 @@ export class ApprovedAvatar {
     }
     async setGender(gender) {
         this.scene?.dispose();
-        const module=await import(`./${gender}-scene.mjs?v=weapons-20261105`);
+        const module=await import(`./${gender}-scene.mjs?v=wrist-20261105`);
         this.scene=await module.createScene(canvas());this.gender=gender;this.width=this.scene.width;
         this.canvas.width=this.width;this.canvas.height=1672;this.canvas.style.width=`${this.width/941*100}%`;
         this.body.width=this.width;this.appearance={layers:[]};this.mask=null;this.pose='idle';this.render();

@@ -1,0 +1,15 @@
+{
+  "authorization": "Owner reported missing female wrist pose with knife and requested restoration.",
+  "runtime_before_sha256": {
+    "avatar-core/approved/female-scene.mjs": "9115d4c37c3a054fda582fd18308dbab6147ed4b027bf1809fdc163c394bd3d2",
+    "avatar-core/approved/avatar.mjs": "276733e787aca8bbaa9a1d5f57efabb06ed51d46207e0fa5da4043cac9e460d2",
+    "avatar-core/game-preview.mjs": "fe9d3a671ac85d9bbd95a22a0b7d9fc348ebabe14e72038e8fd8dd837c7322cd",
+    "index.html": "35c00d2624d7ceb599a0d5652326646eb0c2386856ae77b07172d14b8b6b7162"
+  },
+  "runtime_after_sha256": {
+    "avatar-core/approved/female-scene.mjs": "34f35b0b4def327551416c757326475ad9409acdc8b051db975887f3f5ef5fff",
+    "avatar-core/approved/avatar.mjs": "3d36ec86356f9d9671413796a3e321ab4b3b861dda0044f8e8b8e41b5e362fa6",
+    "avatar-core/game-preview.mjs": "e148a4b9d6f51c4948ec60caad3fe0ad7e482754e929fcbb5136273776b394c1",
+    "index.html": "6663ca4ecd0b9df2ce87960396713c65388a0d5d5a4ca3e1e6e2d192e6133df1"
+  }
+}

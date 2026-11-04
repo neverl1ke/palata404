@@ -1,0 +1,11 @@
+test_restored_authored_layers_keep_historical_bytes (tests.test_female_knife_wrist.FemaleKnifeWristAssets.test_restored_authored_layers_keep_historical_bytes) ... ok
+test_wrist_and_closed_grip_survive_weapon_changes_and_reload (tests.test_female_knife_wrist.FemaleKnifeWristBrowser.test_wrist_and_closed_grip_survive_weapon_changes_and_reload) ... ok
+test_weapon_cycles_return_to_exact_neutral_body_both_genders (tests.test_beards_weapons.BeardWeaponBrowserTests.test_weapon_cycles_return_to_exact_neutral_body_both_genders) ... ok
+test_game_canvas_matches_approved_reference_frames (tests.test_animated_avatars.AnimatedAvatarTests.test_game_canvas_matches_approved_reference_frames) ... ok
+test_exact_sources_and_base_registration (tests.test_animated_avatars.AnimatedAvatarTests.test_exact_sources_and_base_registration) ... ok
+test_stronger_faster_breathing_for_both_genders (tests.test_animated_avatars.AnimatedAvatarTests.test_stronger_faster_breathing_for_both_genders) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 48.264s
+
+OK

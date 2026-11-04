@@ -1,0 +1,29 @@
+{
+  "reason": "Restore historical female knife wrist, closed hand and registered finger occlusion; approved body unchanged",
+  "files": [
+    {
+      "path": "avatar-core/approved/female/RestoredMelee20261105/arm.png",
+      "sha256": "6b305012be187dc4450210a589034c73b30e5a5c77d550a54f13d1364a6f1b34",
+      "source_revision": "ce39af4b54951058d05e132b31b286cb5b65cb0f",
+      "source_path": "avatar-core/assets/female/knife-edge-cleanup/melee-right-arm.png"
+    },
+    {
+      "path": "avatar-core/approved/female/RestoredMelee20261105/complete.png",
+      "sha256": "739bb969a299a7f986b836e6143c6edae1c9f62941547bf321718f411f4f9718",
+      "source_revision": "ce39af4b54951058d05e132b31b286cb5b65cb0f",
+      "source_path": "avatar-core/assets/female/knife-edge-cleanup/melee-right-complete.png"
+    },
+    {
+      "path": "avatar-core/approved/female/RestoredMelee20261105/front.png",
+      "sha256": "09b69e4c1f8cd7f7f2a378c3b288c70ea4afbcae20413b241097ca0de924baef",
+      "source_revision": "ce39af4b54951058d05e132b31b286cb5b65cb0f",
+      "source_path": "avatar-core/assets/female/knife-grip-arm/melee-right-front.png"
+    },
+    {
+      "path": "avatar-core/approved/female/RestoredMelee20261105/original-arm.png",
+      "sha256": "3cee762e1e16c8819256f392c0a680e4e4e4fa5053e51a47e1e023b1f273b763",
+      "source_revision": "ce39af4b54951058d05e132b31b286cb5b65cb0f",
+      "source_path": "avatar-core/assets/female/hands/right-arm-source.png"
+    }
+  ]
+}
