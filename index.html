@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Special+Elite&display=swap" rel="stylesheet">
 
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <link rel="stylesheet" href="style.css?v=a2b9ea02e493">
+    <link rel="stylesheet" href="style.css?v=8bf1e424a17a">
     <link rel="stylesheet" href="assets/wardrobe/hair/trial/preview.css?v=9db13ce8">
     <link rel="stylesheet" href="assets/wardrobe/hair/female-five/preview.css?v=1">
 </head>
@@ -138,8 +138,8 @@
                 <div class="character-preview">
                     <div id="character-container" class="character-container">
                         <!-- Шари персонажа (Paper Doll) -->
-                        <div id="character-paperdoll" class="character-paperdoll" role="img" aria-label="Чоловік · Пацієнт">
-                            <img id="layer-body" class="char-layer" src="base_male.png?v=08da7a7f" alt="" aria-hidden="true">
+                        <div id="character-paperdoll" data-paper-loading="true" class="character-paperdoll" role="img" aria-label="Чоловік · Пацієнт">
+                            <img id="layer-body" class="char-layer hidden" alt="" aria-hidden="true">
                             <img id="layer-pants" class="char-layer hidden" alt="" aria-hidden="true">
                             <img id="layer-footwear" class="char-layer hidden" alt="" aria-hidden="true">
                             <img id="layer-upper-body" class="char-layer hidden" alt="" aria-hidden="true">
@@ -256,7 +256,7 @@
                 <section id="wardrobe-registration" class="wardrobe-preview" data-view="patient" aria-label="Попередній перегляд персонажа">
                     <span class="wardrobe-registration-title">АНТРОПОМЕТРИЧНА РЕЄСТРАЦІЯ</span>
                     <div class="wardrobe-stage">
-                        <div id="wardrobe-paperdoll" class="character-paperdoll" role="img" aria-label="Чоловік · Пацієнт">
+                        <div id="wardrobe-paperdoll" data-paper-loading="true" class="character-paperdoll" role="img" aria-label="Чоловік · Пацієнт">
                             <div class="wardrobe-ground-shadow" aria-hidden="true"><span class="wardrobe-shadow-base"></span><span class="wardrobe-shadow-contact"></span></div>
                         </div>
                     </div>
@@ -437,13 +437,13 @@
     <script src="battle-results.js?v=project-audit-1" defer></script>
     <script src="raid-archive.js?v=40012" defer></script>
     <script src="staff-archive.js?v=project-audit-1" defer></script>
-    <script src="paper-doll-data.js?v=fb4c8c1d8594" defer></script>
+    <script src="paper-doll-data.js?v=29b496cdc4c5" defer></script>
     <script src="hair-color.js?v=2a304c20e5d2" defer></script>
     <script src="female-hair-fit-data.js?v=99f75a9f213d" defer></script>
     <script src="female-hair-fit.js?v=bf7735c664ca" defer></script>
     <script src="male-hair-fit-data.js?v=99f75a9f213d" defer></script>
     <script src="male-hair-fit.js?v=bf7735c664ca" defer></script>
-    <script src="paper-doll.js?v=a4652c5bcdd6" defer></script>
+    <script src="paper-doll.js?v=5f543f52a629" defer></script>
     <script src="wardrobe.js?v=6f15e024d6fd" defer></script>
     <script src="script.js?v=approved-packages-20261102" defer></script>
     <!-- Модальне вікно: Медичне Досьє пацієнта (Аркуш паперу А4) -->
@@ -824,6 +824,6 @@
     </article>
 </div>
 
-<script type="module" src="avatar-core/game-preview.mjs?v=e148a4b9d6f5"></script>
+<script type="module" src="avatar-core/game-preview.mjs?v=15bd611518ba"></script>
 </body>
 </html>

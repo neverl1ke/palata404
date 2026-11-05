@@ -833,7 +833,7 @@ test('paper doll gender fallback, missing PNG errors and stable layer order do n
     assert.equal(layer.getAttribute('src'), null);
     assert.equal(layer.classList.contains('hidden'), true);
     assert.equal(g.run('paperDollState.patientLoadout.outerwear'), 'future-coat');
-    assert.equal(g.run('PAPER_DOLL_LAYER_ORDER.join()'), 'baseBody,pants,footwear,upperBody,outerwear,armor,loadout,gloves,back,hair,headwear,face,beard,weapon,accessory');
+    assert.equal(g.run('PAPER_DOLL_LAYER_ORDER.join()'), 'baseBody,pants,footwear,upperBody,outerwear,armor,loadout,gloves,back,beard,hair,headwear,face,weapon,accessory');
     assert.equal(g.elements.get('layer-weapon').style.zIndex, '13');
     assert.equal(g.elements.get('layer-armor').style.width, '100%');
 });
@@ -1410,7 +1410,7 @@ test('the paired face and female bob use real files and persist without altering
             if(slot==='face')assert.match(source,new RegExp('/'+gender+'_alternative_head\\.png'));
             for(const prefix of ['', 'wardrobe-']) {
                 assert.equal(g.elements.get(prefix+'layer-'+slot).getAttribute('src'),source);
-                assert.equal(g.elements.get(prefix+'layer-'+slot).style.zIndex,slot==='face'?'1':'9');
+                assert.equal(g.elements.get(prefix+'layer-'+slot).style.zIndex,slot==='face'?'1':gender==='male'?'9':'10');
             }
         }
         const mask=g.run(`selectedPaperDollItem('face').bodyMaskByGender['${gender}']`);

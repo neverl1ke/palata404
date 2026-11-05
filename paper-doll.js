@@ -230,7 +230,68 @@ function applyPaperDollCrownMask(image, selectedGender) {
     image.style.clipPath = paths.get(variant);
 }
 
+// Keep the last complete composition visible while its replacement decodes.
+const paperDollMaskLoads = new Map();
+function paperDollMaskReady(source) {
+    if (!source) return Promise.resolve();
+    if (!paperDollMaskLoads.has(source)) {
+        const image = new Image(); image.src = source;
+        paperDollMaskLoads.set(source, image.decode().catch(() => {}));
+    }
+    return paperDollMaskLoads.get(source);
+}
+function paperDollWantsAnimation(host) {
+    return ['character-paperdoll','wardrobe-paperdoll'].includes(host.id) &&
+        !['upperBody','outerwear','armor','loadout','gloves','pants','footwear','back','accessory'].some(slot => {
+            const item=selectedPaperDollItem(slot);
+            return item && paperDollItemLayers(item,paperDollState.selectedGender).some(part => paperDollImageCandidates(part,paperDollState.selectedGender).length);
+        });
+}
+function finishPaperDollFrame(host) {
+    host.removeAttribute('data-paper-loading'); host.removeAttribute('aria-busy');
+    if (!paperDollWantsAnimation(host)) host.querySelectorAll(':scope > .char-layer').forEach(image=>image.style.visibility='visible');
+    const generation=host.paperDollGeneration;
+    const release=()=>{
+        if(generation!==host.paperDollGeneration) return;
+        // CSS mask/visibility invalidation may finish on the next paint.
+        // Retain the old layers until every new visible layer can be painted.
+        if(host.paperDollFrozen && !paperDollWantsAnimation(host) &&
+            [...host.querySelectorAll(':scope > .char-layer')].some(image=>image.getAttribute('src') && !image.classList.contains('hidden') && getComputedStyle(image).visibility==='hidden')) {
+            requestAnimationFrame(release);return;
+        }
+        host.paperDollFrozen?.remove();host.paperDollFrozen=null;
+    };
+    release();
+}
 function renderPaperDollAt(host, prefix = '') {
+    if (!host) return;
+    // Non-DOM consumers can still inspect the synchronous layer definitions.
+    if (typeof host.cloneNode !== 'function') return renderPaperDollLayersAt(host,prefix);
+    const key=JSON.stringify([prefix,paperDollState.selectedGender,paperDollState.activeViewMode,
+        paperDollState.appearance,PAPER_DOLL_LAYER_ORDER.map(slot=>selectedPaperDollItem(slot)?.id),[...failedPaperDollImages]]);
+    if (host.paperDollVisualKey===key) return;
+    host.paperDollVisualKey=key;
+    const generation=host.paperDollGeneration=(host.paperDollGeneration||0)+1;
+    if (!host.paperDollFrozen) {
+        const frozen=document.createElement('div');frozen.className='paper-doll-frozen';frozen.setAttribute('aria-hidden','true');
+        for (const image of host.querySelectorAll(':scope > .char-layer')) {
+            if (!image.complete || !image.naturalWidth || image.classList.contains('hidden') || getComputedStyle(image).visibility==='hidden') continue;
+            const copy=image.cloneNode(false);copy.removeAttribute('id');copy.removeAttribute('data-paper-extra');
+            copy.classList.remove('char-layer');copy.classList.add('paper-doll-frozen-layer');copy.style.visibility='';frozen.append(copy);
+        }
+        if (frozen.childElementCount) {host.append(frozen);host.paperDollFrozen=frozen;}
+    }
+    host.setAttribute('data-paper-loading','true');host.setAttribute('aria-busy','true');
+    if (paperDollWantsAnimation(host)) host.setAttribute('data-avatar-pending','true');
+    else host.removeAttribute('data-avatar-pending');
+    renderPaperDollLayersAt(host,prefix);
+    host.paperDollReady=Promise.all([...host.querySelectorAll(':scope > .char-layer')].map(image =>
+        Promise.all([image.paperDollReady,paperDollMaskReady(image.paperDollMaskSource)]))).then(() => {
+        if (generation!==host.paperDollGeneration) return;
+        if (!paperDollWantsAnimation(host)) finishPaperDollFrame(host);
+    });
+}
+function renderPaperDollLayersAt(host, prefix = '') {
     if (!host) return;
     const selectedGender = paperDollState.selectedGender;
     host.style.setProperty('--paper-doll-aspect', `${PAPER_DOLL_FRAME.width} / ${PAPER_DOLL_FRAME.height}`);
@@ -280,6 +341,7 @@ function renderPaperDollAt(host, prefix = '') {
             const faceSource = face?.genderVariants?.[selectedGender];
             const mask = face?.bodyMaskByGender?.[selectedGender];
             const active = mask && faceSource && !failedPaperDollImages.has(faceSource);
+            image.paperDollMaskSource = active ? mask : null;
             image.style.maskImage = active ? `url("${mask}")` : '';
             image.style.maskSize = active ? '100% 100%' : '';
             image.style.maskRepeat = active ? 'no-repeat' : '';
@@ -288,6 +350,7 @@ function renderPaperDollAt(host, prefix = '') {
         if (!source) {
             image.onload = null; image.onerror = null;
             image.paperHairRequest = null;
+            image.paperDollReady=Promise.resolve();
             image.classList.add('hidden'); image.removeAttribute('src'); return;
         }
         const color = ['hair','beard'].includes(slot) && layer.recolor !== false ? normalizeHairColor(paperDollState.appearance[slot === 'beard' ? 'beardColor' : 'hairColor']) : 'original';
@@ -297,16 +360,17 @@ function renderPaperDollAt(host, prefix = '') {
         if (image.paperHairRequest !== request || image.paperHairFitKey !== fitKey) {
             image.paperHairRequest = request;
             image.paperHairFitKey = fitKey;
-            if (color === 'original' && !femaleFit && !curlyCropNeedsScalpCleanup(source)) setPaperDollImage(image, source, source);
-            else (femaleFit ? fittedFemaleHairSource(source, color, layer.colorReference, femaleFit)
+            if (color === 'original' && !femaleFit && !curlyCropNeedsScalpCleanup(source)) image.paperDollReady=setPaperDollImage(image, source, source);
+            else image.paperDollReady=(femaleFit ? fittedFemaleHairSource(source, color, layer.colorReference, femaleFit)
                 : coloredHairSource(source, color, layer.colorReference)).then(colored => {
-                if (image.paperHairRequest === request && image.paperHairFitKey === fitKey) setPaperDollImage(image, colored, source);
+                if (image.paperHairRequest === request && image.paperHairFitKey === fitKey) return setPaperDollImage(image, colored, source);
             }).catch(() => {
                 if (image.paperHairRequest !== request || image.paperHairFitKey !== fitKey) return;
                 if (femaleFit) positionPaperDollLayer(image, originalPlacement, order);
                 image.paperHairRequest = null;
-                setPaperDollImage(image, source, source);
+                const ready=setPaperDollImage(image, source, source);
                 document.getElementById('hair-color-error')?.classList.remove('hidden');
+                return ready;
             });
         }
 
@@ -351,4 +415,7 @@ function setPaperDollImage(image, displaySource, originalSource) {
     };
     if (image.getAttribute('src') !== displaySource) image.setAttribute('src', displaySource);
     if (image.complete && image.naturalWidth > 0) image.classList.remove('hidden');
+    return typeof image.decode === 'function' ? image.decode().then(() => {
+        if (image.getAttribute('src') === displaySource && image.naturalWidth > 0) image.classList.remove('hidden');
+    }).catch(() => {}) : Promise.resolve();
 }

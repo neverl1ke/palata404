@@ -1,0 +1,20 @@
+✔ male rest skeleton retains shoulder/elbow/wrist/grip source registration (1.278082ms)
+✔ male four poses use fixed bone lengths, independent hand rotations and exact primary attachment (0.821147ms)
+✔ male support grip stays on the rifle through a full breathing cycle (1.158379ms)
+✔ male skin weights are bounded and final hand texture shares weapon attachment (4.935992ms)
+✔ female rest skeleton retains shoulder/elbow/wrist/grip source registration (0.235177ms)
+✔ female four poses use fixed bone lengths, independent hand rotations and exact primary attachment (0.254719ms)
+✔ female support grip stays on the rifle through a full breathing cycle (1.226507ms)
+✔ female skin weights are bounded and final hand texture shares weapon attachment (1.992194ms)
+✔ female and male coordinates are independently registered, not a reused rig (15.616852ms)
+✔ angle interpolation follows shortest rotation and endpoint continuity (0.595395ms)
+✔ unreachable/degenerate targets are finite and explicitly marked (5.644481ms)
+✔ weapon controller supports none and rejects unknown classes (4.600436ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 12
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 143.254696

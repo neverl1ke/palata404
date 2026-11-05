@@ -1,0 +1,22 @@
+test_all_female_rifle_heads_preserve_the_original_trapezius_coverage (tests.test_avatar_render_transitions.AvatarRenderTransitions.test_all_female_rifle_heads_preserve_the_original_trapezius_coverage) ... ok
+test_cold_reload_never_paints_the_default_avatar (tests.test_avatar_render_transitions.AvatarRenderTransitions.test_cold_reload_never_paints_the_default_avatar) ... ok
+test_delayed_gender_head_and_hair_swap_only_presents_complete_frames (tests.test_avatar_render_transitions.AvatarRenderTransitions.test_delayed_gender_head_and_hair_swap_only_presents_complete_frames) ... ok
+test_front_hair_covers_beard_in_canvas_and_static_layers (tests.test_avatar_render_transitions.AvatarRenderTransitions.test_front_hair_covers_beard_in_canvas_and_static_layers) ... ok
+test_static_outfit_waits_for_head_hair_and_body_mask_together (tests.test_avatar_render_transitions.AvatarRenderTransitions.test_static_outfit_waits_for_head_hair_and_body_mask_together) ... ok
+test_exact_sources_and_base_registration (tests.test_animated_avatars.AnimatedAvatarTests.test_exact_sources_and_base_registration) ... ok
+test_game_canvas_matches_approved_reference_frames (tests.test_animated_avatars.AnimatedAvatarTests.test_game_canvas_matches_approved_reference_frames) ... ok
+test_native_female_head_and_hair_match_static_registered_preview (tests.test_animated_avatars.AnimatedAvatarTests.test_native_female_head_and_hair_match_static_registered_preview) ... ok
+test_poses_breathing_cosmetics_and_saved_weapons (tests.test_animated_avatars.AnimatedAvatarTests.test_poses_breathing_cosmetics_and_saved_weapons) ... ok
+test_stash_art_and_rapid_changes (tests.test_animated_avatars.AnimatedAvatarTests.test_stash_art_and_rapid_changes) ... ok
+test_stronger_faster_breathing_for_both_genders (tests.test_animated_avatars.AnimatedAvatarTests.test_stronger_faster_breathing_for_both_genders) ... ok
+test_every_integrated_fit_is_exact_owner_approved_rgba (tests.test_beards_weapons.BeardAssetTests.test_every_integrated_fit_is_exact_owner_approved_rgba) ... ok
+test_beard_palette_per_head_layers_and_persistence (tests.test_beards_weapons.BeardWeaponBrowserTests.test_beard_palette_per_head_layers_and_persistence) ... ok
+test_mobile_beard_selection_palette_and_removal (tests.test_beards_weapons.BeardWeaponBrowserTests.test_mobile_beard_selection_palette_and_removal) ... ok
+test_weapon_cycles_return_to_exact_neutral_body_both_genders (tests.test_beards_weapons.BeardWeaponBrowserTests.test_weapon_cycles_return_to_exact_neutral_body_both_genders) ... ok
+test_restored_authored_layers_keep_historical_bytes (tests.test_female_knife_wrist.FemaleKnifeWristAssets.test_restored_authored_layers_keep_historical_bytes) ... ok
+test_wrist_and_closed_grip_survive_weapon_changes_and_reload (tests.test_female_knife_wrist.FemaleKnifeWristBrowser.test_wrist_and_closed_grip_survive_weapon_changes_and_reload) ... ok
+
+----------------------------------------------------------------------
+Ran 17 tests in 164.509s
+
+OK

@@ -22,11 +22,11 @@ export class ApprovedAvatar {
         const module=await import(`./${gender}-scene.mjs?v=wrist-20261105`);
         this.scene=await module.createScene(canvas());this.gender=gender;this.width=this.scene.width;
         this.canvas.width=this.width;this.canvas.height=1672;this.canvas.style.width=`${this.width/941*100}%`;
-        this.body.width=this.width;this.appearance={layers:[]};this.mask=null;this.pose='idle';this.render();
+        this.body.width=this.width;this.appearance={layers:[]};this.mask=null;this.rifleMask=null;this.pose='idle';this.render();
     }
     async setAppearance(descriptor) {
         const layers=await Promise.all(descriptor.layers.map(async l=>({...l,bitmap:await image(l.source)})));
-        this.appearance={...descriptor,layers};this.mask=null;
+        this.appearance={...descriptor,layers};this.mask=null;this.rifleMask=null;
         if(descriptor.bodyMask || descriptor.crown?.length) {
             const mask=canvas(this.width),ctx=mask.getContext('2d');
             ctx.fillStyle='white';ctx.fillRect(941,0,this.width-941,1672);
@@ -34,6 +34,16 @@ export class ApprovedAvatar {
             if(descriptor.crown?.length){crownPath(ctx,descriptor.crown);ctx.fill()}else ctx.fillRect(0,0,941,1672);
             if(descriptor.bodyMask){const bitmap=await image(descriptor.bodyMask);ctx.globalCompositeOperation='destination-in';ctx.drawImage(bitmap,0,0,941,1672)}
             ctx.restore();this.mask=mask;
+            if(this.gender==='female') {
+                const repaired=canvas(this.width),r=repaired.getContext('2d');r.drawImage(mask,0,0);
+                // Head masks were authored for neutral shoulders. Preserve the
+                // rifle torso's own trapezius silhouette beneath the neck join.
+                const join=r.createLinearGradient(0,245,0,260);
+                join.addColorStop(0,'rgba(255,255,255,0)');join.addColorStop(1,'white');
+                r.fillStyle=join;r.fillRect(0,245,this.width,15);
+                r.fillStyle='white';r.fillRect(0,260,this.width,1672-260);
+                this.rifleMask=repaired;
+            }
         }
         this.render();
     }
@@ -47,7 +57,8 @@ export class ApprovedAvatar {
         if(!this.scene)return;
         const native=this.scene.render(this.options.breathing?this.time:0,this.pose,this.options);
         const body=this.body.getContext('2d');body.setTransform(1,0,0,1,0,0);body.globalCompositeOperation='source-over';body.clearRect(0,0,this.width,1672);body.drawImage(native,0,0);
-        if(this.mask){body.globalCompositeOperation='destination-in';body.drawImage(this.mask,0,0);body.globalCompositeOperation='source-over'}
+        const mask=this.gender==='female'&&this.pose==='rifle'?this.rifleMask||this.mask:this.mask;
+        if(mask){body.globalCompositeOperation='destination-in';body.drawImage(mask,0,0);body.globalCompositeOperation='source-over'}
         const ctx=this.canvas.getContext('2d');ctx.setTransform(1,0,0,1,0,0);ctx.clearRect(0,0,this.width,1672);
         const draw=l=>{
             const p=l.placement||{x:0,y:0,width:941,height:1672},scale=Math.min(p.width/l.bitmap.width,p.height/l.bitmap.height),w=l.bitmap.width*scale,h=l.bitmap.height*scale;
@@ -55,6 +66,7 @@ export class ApprovedAvatar {
             ctx.drawImage(l.bitmap,p.x+(p.width-w)/2,p.y+(p.height-h)/2,w,h);ctx.restore();
         };
         this.appearance.layers.filter(l=>l.order<0).forEach(draw);ctx.drawImage(this.body,0,0);this.appearance.layers.filter(l=>l.order>=0).forEach(draw);
+        this.onRender?.();
     }
     advance(ms){this.time+=ms;this.render()}
     pause(value=true) {

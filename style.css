@@ -743,7 +743,7 @@ body {
 }
 
 .character-paperdoll { position: relative; height: 100%; width: 100%; isolation: isolate; pointer-events: none; }
-.char-layer {
+.char-layer, .paper-doll-frozen-layer {
     position: absolute;
     top: 0;
     left: 0;
@@ -2062,3 +2062,8 @@ body.modal-open {
 .avatar-clothed-breathing { transform-origin: 50% 100%; animation: clothed-avatar-breath 3.6s ease-in-out infinite; }
 @keyframes clothed-avatar-breath { 0%,100% { scale: 1; } 50% { scale: 1.00125 1.000875; } }
 @media (prefers-reduced-motion: reduce) { .avatar-clothed-breathing { animation: none; } }
+
+/* Swap the complete avatar, including head masks, in one paint. */
+.paper-doll-frozen { position: absolute; inset: 0; z-index: 29; pointer-events: none; }
+.character-paperdoll[data-paper-loading="true"] > .char-layer,
+.character-paperdoll[data-avatar-pending="true"] > .char-layer { visibility: hidden !important; }

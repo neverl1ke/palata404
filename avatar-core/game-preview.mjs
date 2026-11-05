@@ -1,5 +1,5 @@
 /** Game adapter. Inventory and Paper Doll remain the only owners of saved state. */
-import { ApprovedAvatar as AvatarEngine } from './approved/avatar.mjs?v=female-wrist-20261105';
+import { ApprovedAvatar as AvatarEngine } from './approved/avatar.mjs?v=atomic-frame-20261105';
 const instances = new Map();
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
 const absolute = path => new URL('../' + path, import.meta.url).href;
@@ -9,7 +9,7 @@ const isVisible = host => {
 };
 function playback(state) {
     if (!state.engine || state.canvas.hidden) return;
-    state.engine.pause(reducedMotion.matches || !isVisible(state.host));
+    state.engine.pause(!state.live || reducedMotion.matches || !isVisible(state.host));
 }
 const visibility = new ResizeObserver(entries => entries.forEach(({target}) => playback(instances.get(target))));
 reducedMotion.addEventListener('change', () => instances.forEach(playback));
@@ -28,7 +28,7 @@ async function descriptor(snapshot) {
                 ? await fittedFemaleHairSource(path,pigment,part.colorReference,fit)
                 : await coloredHairSource(path,pigment,part.colorReference);
             if (fit) placement = {x:0,y:0,width:941,height:1672};
-            layers.push({source,slot,placement,order:part.renderOrder ?? (slot==='face'?1:slot==='headwear'?20:slot==='beard'?10:9)});
+            layers.push({source,slot,placement,order:part.renderOrder ?? (slot==='face'?1:slot==='headwear'?20:slot==='beard'?8:9)});
         }
     }
     layers.sort((a,b)=>a.order-b.order);
@@ -47,27 +47,44 @@ function snapshot() {
         beard:selectedPaperDollItem('beard'),beardColor:paperDollState.appearance.beardColor,color:paperDollState.appearance.hairColor,crown,unsupported,weapon:weapon?.avatarWeapon ? weapon.id : null,
         key:JSON.stringify([gender,paperDollState.activeViewMode,paperDollState.appearance,weapon?.id,clothing.map(i=>i?.id),selectedPaperDollItem('headwear')?.id])};
 }
+function present(state) {
+    const output=state.engine.canvas;
+    if (state.canvas.width!==output.width) state.canvas.width=output.width;
+    if (state.canvas.height!==output.height) state.canvas.height=output.height;
+    state.canvas.style.width=output.style.width;
+    const ctx=state.canvas.getContext('2d');ctx.clearRect(0,0,output.width,output.height);ctx.drawImage(output,0,0);
+}
 function original(state) {
+    state.live=false;
     state.canvas.hidden=true;
     state.engine?.pause();
     delete state.host.dataset.avatarCoreReady;
     delete state.host.dataset.avatarPose;
     state.host.querySelectorAll('.char-layer').forEach(n=>n.style.visibility='');
+    state.host.removeAttribute('data-avatar-pending');finishPaperDollFrame(state.host);
 }
 async function update(state) {
     while(state.pending) {
         state.pending=false;
         const current=snapshot(), revision=state.revision;
-        if (current.key===state.key && (!state.canvas.hidden || current.unsupported)) { playback(state);continue; }
-        original(state);
+        if (current.key===state.key && !state.dirty && (!state.canvas.hidden || current.unsupported)) {
+            if(!state.canvas.hidden) {
+                state.host.querySelectorAll('.char-layer').forEach(n=>n.style.visibility='hidden');
+                state.host.removeAttribute('data-avatar-pending');finishPaperDollFrame(state.host);
+            }
+            playback(state);continue;
+        }
+        state.live=false;state.dirty=true;state.engine?.pause();
         // Existing approved clothing is never dropped or warped into a different pose.
         // It keeps the original renderer until matching authored sleeves are available.
-        state.host.classList.toggle('avatar-clothed-breathing',current.unsupported);
         if(current.unsupported) {
-            state.key=current.key;state.host.dataset.avatarCoreBlocked='clothing';continue;
+            await state.host.paperDollReady;
+            if (revision!==state.revision) continue;
+            original(state);state.host.classList.add('avatar-clothed-breathing');state.dirty=false;state.key=current.key;state.host.dataset.avatarCoreBlocked='clothing';continue;
         }
         delete state.host.dataset.avatarCoreBlocked;
-        state.engine ??= await AvatarEngine.create(state.canvas,{gender:current.gender,background:'transparent'});
+        state.engine ??= await AvatarEngine.create(state.workCanvas,{gender:current.gender,background:'transparent'});
+        state.engine.onRender=()=>{if(state.live && !state.canvas.hidden)present(state)};
         if (revision!==state.revision) continue;
         if(state.engine.gender!==current.gender) await state.engine.setGender(current.gender);
         const appearance=await descriptor(current);
@@ -75,9 +92,9 @@ async function update(state) {
         await state.engine.setAppearance(appearance);
         await state.engine.equipWeaponItem(current.weapon);
         if (revision!==state.revision) continue;
-        state.key=current.key;
+        state.key=current.key;state.dirty=false;state.live=true;state.host.classList.remove('avatar-clothed-breathing');present(state);
         state.host.querySelectorAll('.char-layer').forEach(n=>n.style.visibility='hidden');
-        state.canvas.hidden=false;
+        state.canvas.hidden=false;state.host.removeAttribute('data-avatar-pending');finishPaperDollFrame(state.host);
         delete state.host.dataset.avatarCoreError;
         state.host.dataset.avatarCoreReady='true';
         state.host.dataset.avatarPose=state.engine.pose;
@@ -86,8 +103,8 @@ async function update(state) {
 }
 function run(state) {
     if (state.running) return;
-    state.running = update(state).catch(error=>{
-        original(state);state.key=null;state.host.dataset.avatarCoreError=error.message;console.error(error);
+    state.running = update(state).catch(async error=>{
+        await state.host.paperDollReady;original(state);state.key=null;state.host.dataset.avatarCoreError=error.message;console.error(error);
     }).finally(()=>{state.running=null;if(state.pending) run(state);});
 }
 function refresh() {
@@ -97,7 +114,8 @@ function refresh() {
         if(!state) {
             const canvas=document.createElement('canvas');canvas.className='avatar-core-wardrobe-preview';canvas.hidden=true;
             canvas.setAttribute('aria-hidden','true');host.append(canvas);
-            state={host,canvas,revision:0};instances.set(host,state);visibility.observe(host);
+            const workCanvas=document.createElement('canvas');
+            state={host,canvas,workCanvas,revision:0,live:false,dirty:false};instances.set(host,state);visibility.observe(host);
         }
         if(!state.canvas.hidden) host.querySelectorAll('.char-layer').forEach(n=>n.style.visibility='hidden');
         state.revision++;state.pending=true;

@@ -1,0 +1,19 @@
+{
+  "authorization": "Owner requested restoration of female rifle shoulders, beard beneath hair, and complete-frame appearance loading on Main.",
+  "runtime_before_sha256": {
+    "avatar-core/approved/avatar.mjs": "3d36ec86356f9d9671413796a3e321ab4b3b861dda0044f8e8b8e41b5e362fa6",
+    "avatar-core/game-preview.mjs": "e148a4b9d6f51c4948ec60caad3fe0ad7e482754e929fcbb5136273776b394c1",
+    "paper-doll.js": "a4652c5bcdd6e010312eb3d6b5aac207a18ec435439aed26d759e859a56898ba",
+    "paper-doll-data.js": "fb4c8c1d85946ee32c18e624ca8113e4ee6885d82082cb2e37bee2c9bd29fd7f",
+    "index.html": "6663ca4ecd0b9df2ce87960396713c65388a0d5d5a4ca3e1e6e2d192e6133df1",
+    "style.css": "a2b9ea02e4938c5c47e0bbe32359ab89c586937de8c504ed58f58dc61b735b19"
+  },
+  "runtime_after_sha256": {
+    "avatar-core/approved/avatar.mjs": "7d6389bf0a91d8fd78a058dabfc3aec2449a6acca837b4f93cdf11fa70c7a20d",
+    "avatar-core/game-preview.mjs": "15bd611518baebb0fb953e538a3b0d7594d1925fd65f4dcd182feb3eb545873e",
+    "paper-doll.js": "5f543f52a629c81a5cd22df3c6c6fd2f0d4735c83cbb721dc44fa49d10cb495a",
+    "paper-doll-data.js": "29b496cdc4c5091f5a9e9dca0d4c014ff09f2eb06449f1d19ee7b880e6f1012a",
+    "index.html": "5a00eacbc3568bcb3ac7841e934448433cfabe4546838491828059134ec665db",
+    "style.css": "8bf1e424a17a8c1f526148110343b0c934c4fe29b7cfb900fa0f2f75ab9d4e87"
+  }
+}
