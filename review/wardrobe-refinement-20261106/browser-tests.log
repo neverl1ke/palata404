@@ -1,0 +1,17 @@
+test_all_instances_keep_approved_poses_both_genders_and_temporary_hide (tests.test_weapon_archive.WeaponArchiveBrowserTests.test_all_instances_keep_approved_poses_both_genders_and_temporary_hide) ... ok
+test_browser_manual_cooldown_miss_reload_and_material_reward (tests.test_weapon_archive.WeaponArchiveBrowserTests.test_browser_manual_cooldown_miss_reload_and_material_reward) ... ok
+test_draft_close_keyboard_cancel_apply_and_old_save_migration (tests.test_weapon_archive.WeaponArchiveBrowserTests.test_draft_close_keyboard_cancel_apply_and_old_save_migration) ... ok
+test_four_rarities_one_sprite_readable_single_tablet_and_saved_avatar (tests.test_weapon_archive.WeaponArchiveBrowserTests.test_four_rarities_one_sprite_readable_single_tablet_and_saved_avatar) ... ok
+test_responsive_rails_catalog_detail_and_upgrade_dialog_stay_accessible (tests.test_weapon_archive.WeaponArchiveBrowserTests.test_responsive_rails_catalog_detail_and_upgrade_dialog_stay_accessible) ... Responsive viewport 1680 1000
+Responsive viewport 1280 800
+Responsive viewport 1024 768
+Responsive viewport 768 1024
+Responsive viewport 390 844
+Responsive viewport 320 568
+ok
+test_upgrade_plus_three_modules_and_absolute_use_real_resources (tests.test_weapon_archive.WeaponArchiveBrowserTests.test_upgrade_plus_three_modules_and_absolute_use_real_resources) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 117.351s
+
+OK

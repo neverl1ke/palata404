@@ -17,7 +17,8 @@ function renderWardrobeRegistration() {
     const caption = document.getElementById('wardrobe-appearance-caption');
     const beardCaption = wardrobeSlot === 'beard';
     if (caption) caption.textContent = `${selectedPaperDollItem(beardCaption ? 'beard' : 'hair')?.name || (beardCaption ? 'Без бороди' : 'Без зачіски')} · ${HAIR_COLORS.find(c=>c.id===paperDollState.appearance[beardCaption ? 'beardColor' : 'hairColor'])?.name || 'Оригінальний'}`;
-    document.getElementById('wardrobe-registration')?.setAttribute('data-portrait', String(wardrobeCategory === 'appearance' && ['face','hair','beard'].includes(wardrobeSlot)));
+    // Appearance changes keep the same full-body framing as equipment.
+    document.getElementById('wardrobe-registration')?.setAttribute('data-portrait', 'false');
 }
 
 function wardrobeVisibleItems() {

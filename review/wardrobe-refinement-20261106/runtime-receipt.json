@@ -1,0 +1,11 @@
+{
+  "description": "Authorized archive refinement: keep full-body preview, restore appearance rails, generated rarity surfaces and contact shadows; approved avatar images and rigs unchanged.",
+  "runtime_before_sha256": {
+    "wardrobe.js": "1301a7c5fa2a9bc63c13bc261eaf25aa491605403c3b8bad9a2c7e74f9bc68b4",
+    "index.html": "8435538e41d1d3433025b7517bf5ecaa8ba3e79289d5be7446c07df864115dc8"
+  },
+  "runtime_after_sha256": {
+    "wardrobe.js": "fcc614fcb47c29c521733fb72835e70647e7fd8f5d24ccdefa0cca4182b299bd",
+    "index.html": "72eb500a6e6b7134793843d5b0bd70176ceb4bbc8a3557e107dcb255ebd4e66b"
+  }
+}

@@ -1,0 +1,7 @@
+test_appearance_rails_preserve_full_body_frame_for_both_genders (tests.test_weapon_archive.WeaponArchiveBrowserTests.test_appearance_rails_preserve_full_body_frame_for_both_genders) ... ok
+test_group_legacy_rifles_without_deleting_progress_and_inline_description (tests.test_weapon_archive.WeaponArchiveBrowserTests.test_group_legacy_rifles_without_deleting_progress_and_inline_description) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 4.092s
+
+OK

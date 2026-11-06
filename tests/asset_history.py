@@ -48,12 +48,18 @@ def approved_current_hash(relative, old_hash):
     """No broad exemption: only the explicit user-approved replacement list."""
     if hashlib.sha256((ROOT/relative).read_bytes()).hexdigest()==old_hash:
         return old_hash
+    refinement=ROOT/'review/wardrobe-refinement-20261106/runtime-receipt.json'
+    if refinement.exists():
+        receipt=json.loads(refinement.read_text())
+        if receipt['runtime_before_sha256'].get(relative)==old_hash:
+            assert hashlib.sha256((refinement.parent/'before'/relative).read_bytes()).hexdigest()==old_hash
+            return receipt['runtime_after_sha256'][relative]
     weapons=ROOT/'review/weapon-archive-20261106/runtime-receipt.json'
     if weapons.exists():
         receipt=json.loads(weapons.read_text())
         if receipt['runtime_before_sha256'].get(relative)==old_hash:
             assert hashlib.sha256((weapons.parent/'before'/relative).read_bytes()).hexdigest()==old_hash
-            return receipt['runtime_after_sha256'][relative]
+            return approved_current_hash(relative,receipt['runtime_after_sha256'][relative])
     rendering=ROOT/'review/avatar-render-fixes-20261105/runtime-receipt.json'
     if rendering.exists():
         receipt=json.loads(rendering.read_text())

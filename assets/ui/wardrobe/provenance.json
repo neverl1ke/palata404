@@ -36,6 +36,24 @@
     {
       "file": "assets/ui/wardrobe/weapon-doctor-signature.svg",
       "sha256": "beba22264872fb6f5dc97dc74e4065b614443545418dc5c1391b373485877e78"
+    },
+    {
+      "file": "assets/ui/wardrobe/rarity-mounts.png",
+      "sha256": "18875ebc836a8e73b4d543de8327e155d23748bdcbc14b69c0aa5222d3078ece",
+      "source": "/workspace/generated_images/exec-adc1d86e-aad5-44a9-a823-cac1213424f3.png",
+      "notes": "Imagegen artwork requested by user. Four equal rows: moderately scuffed common brown leather; improved olive hospital leather/brass; rare scorched charcoal leather/steel; experimental burgundy velvet. Empty centers, no weapon or live text. Red edge droplets and small hospital archive details."
+    },
+    {
+      "file": "assets/ui/wardrobe/control-papers.jpg",
+      "sha256": "734db0619545c0e569428ad0bfbc82b17692c398db27c0c164d0226e065e2f54",
+      "source": "/workspace/outputs/wardrobe-concept/controls-material.jpg",
+      "notes": "Exact copy of earlier wardrobe control artwork; bottom quarter is the yellowed paper button surface. Live labels remain HTML."
+    },
+    {
+      "file": "assets/ui/wardrobe/pinned-paper-actions.png",
+      "sha256": "e924eb188c75ae24814ea11e88791384fa2a1fd8735fa7e586a4e756ceef5c69",
+      "source": "/workspace/generated_images/exec-aaaad891-2925-4e64-b605-0c60f920abd3.png",
+      "notes": "Imagegen local edit of exec-b6d6d4af-02ec-4d49-9cba-89965a505d46.png. Two equal transparent sprite rows: paperclip and brass thumbtack paper labels, torn corners and red edge stains. Center empty; text remains HTML."
     }
   ]
 }
