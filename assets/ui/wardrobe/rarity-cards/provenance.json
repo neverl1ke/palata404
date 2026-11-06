@@ -1,0 +1,52 @@
+{
+  "description": "Four supplied rarity-card designs exported as transparent tightly cropped PNGs. All catalogue weapon cards render in one 3.1:1 format. Main weapon mount keeps the source aspect with the user-requested 20% extra vertical space, capped to fit. Rifle stock stays clear of the colored strip. No avatar or weapon sprite was edited.",
+  "preparation": "ImageMagick: alpha channel threshold 78%, trim transparent margins, reset canvas origin; RGB artwork not repainted during technical export.",
+  "mapping": {
+    "I": "common",
+    "II": "improved",
+    "III": "rare",
+    "IV": "experimental"
+  },
+  "files": [
+    {
+      "rarity": "common",
+      "file": "assets/ui/wardrobe/rarity-cards/common.png",
+      "size": [
+        1978,
+        531
+      ],
+      "sha256": "7d81b04f3545d3bc15378b37b5f1f1f2c319c28fea2366674c05c1220fef62df",
+      "source": "/workspace/generated_images/exec-8c42e233-3cdc-4d71-8caa-8c42f09ccf05.png"
+    },
+    {
+      "rarity": "improved",
+      "file": "assets/ui/wardrobe/rarity-cards/improved.png",
+      "size": [
+        1942,
+        503
+      ],
+      "sha256": "679c4145a75821855b1ff5008bc09811d48385539ae0bd4de01053509918f001",
+      "source": "/workspace/generated_images/exec-2bacd6ee-8a0f-4e16-9d05-a6aec7291cf7.png"
+    },
+    {
+      "rarity": "rare",
+      "file": "assets/ui/wardrobe/rarity-cards/rare.png",
+      "size": [
+        1999,
+        483
+      ],
+      "sha256": "9b6934d344d6bb9a314cb089f8b57d427c52e35cc6d34664e3483198af40d9bf",
+      "source": "/workspace/generated_images/exec-e29a2e34-297a-4e02-8c71-4f717341b98b.png"
+    },
+    {
+      "rarity": "experimental",
+      "file": "assets/ui/wardrobe/rarity-cards/experimental.png",
+      "size": [
+        1980,
+        405
+      ],
+      "sha256": "2c35e5392eb135e992f8e604a053392cc2977a0493d87b870a3095b3f46e4eb1",
+      "source": "/workspace/generated_images/exec-504a2a9e-ab7f-4c83-9713-373944f7c166.png"
+    }
+  ]
+}

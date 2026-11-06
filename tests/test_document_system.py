@@ -72,6 +72,7 @@ class DocumentSystemBrowserTests(unittest.TestCase):
         self.assertIn('paper-header-only.svg',self.page.locator('.archive-letterhead').evaluate('e=>getComputedStyle(e).backgroundImage'))
         self.assertEqual(self.page.locator('.tablet-main-sheet>document-header').get_attribute('variant'),'center')
         self.assertEqual(self.page.locator('.tablet-paper-face.document-paper').count(),2)
+        self.page.wait_for_function('document.querySelector(".tablet-weapon-mount img").complete&&document.querySelector(".tablet-weapon-mount img").naturalWidth>0')
         self.assertEqual(self.page.locator('.tablet-original-fasteners image').get_attribute('href'),'assets/ui/wardrobe/weapon-tablet-blank.webp')
         self.assertEqual(self.page.locator('.tablet-seal img').get_attribute('src'),'assets/ui/wardrobe/weapon-red-seal.svg')
         for width,height in [(1800,1070),(1680,1000),(1280,800),(1024,768),(390,844),(320,568)]:

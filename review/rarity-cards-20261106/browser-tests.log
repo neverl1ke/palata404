@@ -1,0 +1,55 @@
+test_clipboard_large_center_header_and_both_sheets_fit_without_scrolling (tests.test_document_system.DocumentSystemBrowserTests.test_clipboard_large_center_header_and_both_sheets_fit_without_scrolling) ... ok
+test_four_rarities_one_sprite_readable_single_tablet_and_saved_avatar (tests.test_weapon_archive.WeaponArchiveBrowserTests.test_four_rarities_one_sprite_readable_single_tablet_and_saved_avatar) ... ok
+test_responsive_rails_catalog_detail_and_upgrade_dialog_stay_accessible (tests.test_weapon_archive.WeaponArchiveBrowserTests.test_responsive_rails_catalog_detail_and_upgrade_dialog_stay_accessible) ... Responsive viewport 1680 1000
+Responsive viewport 1280 800
+Responsive viewport 1024 768
+Responsive viewport 768 1024
+Responsive viewport 390 844
+Responsive viewport 320 568
+ERROR
+test_weapon_type_filters_resources_and_eye_toggle (tests.test_weapon_archive.WeaponArchiveBrowserTests.test_weapon_type_filters_resources_and_eye_toggle) ... ok
+
+======================================================================
+ERROR: test_responsive_rails_catalog_detail_and_upgrade_dialog_stay_accessible (tests.test_weapon_archive.WeaponArchiveBrowserTests.test_responsive_rails_catalog_detail_and_upgrade_dialog_stay_accessible)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/palata404/tests/test_weapon_archive.py", line 101, in test_responsive_rails_catalog_detail_and_upgrade_dialog_stay_accessible
+    self.page.locator('[data-wardrobe-card="gear-aks"]').click(no_wait_after=True)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/sync_api/_generated.py", line 17876, in click
+    self._sync(
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/_impl/_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/_impl/_locator.py", line 165, in click
+    return await self._frame._click(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/_impl/_frame.py", line 593, in _click
+    await self._channel.send("click", self._timeout, locals_to_params(locals()))
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/_impl/_connection.py", line 76, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/_impl/_connection.py", line 632, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Locator.click: Timeout 60000ms exceeded.
+Call log:
+  - waiting for locator("[data-wardrobe-card=\"gear-aks\"]")
+    - locator resolved to <button type="button" aria-pressed="true" data-rarity="common" data-available="true" data-equipped="false" data-weapon-kind="rifles" data-wardrobe-item="gear-aks" data-wardrobe-card="gear-aks" class="wardrobe-item-card selected" data-wardrobe-focus="item-gear-aks">…</button>
+  - attempting click action
+    2 × waiting for element to be visible, enabled and stable
+      - element is not visible
+    - retrying click action
+    - waiting 20ms
+    2 × waiting for element to be visible, enabled and stable
+      - element is not visible
+    - retrying click action
+      - waiting 100ms
+    84 × waiting for element to be visible, enabled and stable
+       - element is not visible
+     - retrying click action
+       - waiting 500ms
+
+
+----------------------------------------------------------------------
+Ran 4 tests in 109.184s
+
+FAILED (errors=1)

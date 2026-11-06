@@ -1,0 +1,9 @@
+{
+  "description": "User-provided rarity-card backgrounds, transparent PNG exports, uniform catalogue cards and stock clearance. CSS presentation and cache keys only; no gameplay or avatar changes.",
+  "runtime_before_sha256": {
+    "index.html": "705f9feb4405b9125435b88b8ad3bfaef47932432a4b7af1f7cbf7d2a433ec61"
+  },
+  "runtime_after_sha256": {
+    "index.html": "34b46a9740ac7e20fb2a4b58848fb85b61dfd1cd2c72659babd90e9966b5b664"
+  }
+}

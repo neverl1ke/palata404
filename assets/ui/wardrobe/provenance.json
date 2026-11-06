@@ -60,6 +60,30 @@
       "sha256": "a55039e475d7ce468a5a7e30f8730642ce1f796776cb78ef4dabb4420942948d",
       "source": "/workspace/generated_images/exec-a69507e5-9db0-4d8a-8fb6-1dc2f08fd065.png",
       "notes": "Generated at user request. Three equal sprite cells: tarnished silver coins, salvaged gear/bolt, vintage electrotherapy insulator/coil. Transparent original copied unchanged."
+    },
+    {
+      "file": "assets/ui/wardrobe/rarity-cards/common.png",
+      "sha256": "7d81b04f3545d3bc15378b37b5f1f1f2c319c28fea2366674c05c1220fef62df",
+      "source": "/workspace/generated_images/exec-8c42e233-3cdc-4d71-8caa-8c42f09ccf05.png",
+      "notes": "User-supplied rarity card. Transparent crop; display normalized to uniform catalogue dimensions per user clarification."
+    },
+    {
+      "file": "assets/ui/wardrobe/rarity-cards/improved.png",
+      "sha256": "679c4145a75821855b1ff5008bc09811d48385539ae0bd4de01053509918f001",
+      "source": "/workspace/generated_images/exec-2bacd6ee-8a0f-4e16-9d05-a6aec7291cf7.png",
+      "notes": "User-supplied rarity card. Transparent crop; display normalized to uniform catalogue dimensions per user clarification."
+    },
+    {
+      "file": "assets/ui/wardrobe/rarity-cards/rare.png",
+      "sha256": "9b6934d344d6bb9a314cb089f8b57d427c52e35cc6d34664e3483198af40d9bf",
+      "source": "/workspace/generated_images/exec-e29a2e34-297a-4e02-8c71-4f717341b98b.png",
+      "notes": "User-supplied rarity card. Transparent crop; display normalized to uniform catalogue dimensions per user clarification."
+    },
+    {
+      "file": "assets/ui/wardrobe/rarity-cards/experimental.png",
+      "sha256": "2c35e5392eb135e992f8e604a053392cc2977a0493d87b870a3095b3f46e4eb1",
+      "source": "/workspace/generated_images/exec-504a2a9e-ab7f-4c83-9713-373944f7c166.png",
+      "notes": "User-supplied rarity card. Transparent crop; display normalized to uniform catalogue dimensions per user clarification."
     }
   ]
 }
