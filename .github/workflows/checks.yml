@@ -31,6 +31,9 @@ jobs:
       - run: node --check hair-color.js
       - run: node --check wardrobe.js
       - run: node --check wardrobe-archive.js
+      - run: node --check localization.js
+      - run: node --check document-system.js
+      - run: node --check document-demo.js
       - run: node --check weapon-system.js
       - run: node --check weapon-runtime.js
       - run: node --test --test-isolation=none tests/game-logic.test.cjs

@@ -1,0 +1,122 @@
+// Production archive UI. All avatar layers still use the existing renderer.
+wardrobeCategory = 'weapons'; wardrobeSlot = 'weapon'; wardrobeSelectedItemId = 'gear-aks';
+let wardrobeVirtualSlot = null;
+let archiveWeaponType = 'all';
+const ARCHIVE_WEAPON_TYPES = {all:'Все',rifles:'Автоматы',pistols:'Пистолеты',melee:'Холодное оружие'};
+function archiveWeaponKind(item){return ({'gear-aks':'rifles','gear-pm':'pistols','gear-knife':'melee'})[weaponInventoryItem(item)?.modelId] || 'other';}
+function archiveVisibilityIcon(hidden){return `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/>${hidden?'<path class="eye-strike" d="M3 3 21 21"/>':''}</svg>`;}
+
+const archiveVisibleItems = wardrobeVisibleItems;
+wardrobeVisibleItems = function(){
+    let items=archiveVisibleItems();
+    if(wardrobeVirtualSlot==='cap'&&wardrobeSlot==='headwear') items=items.filter(i=>i.id!=='gear-helmet');
+    if(wardrobeSlot!=='weapon') return items;
+    // Present one representative of each rarity without deleting owned legacy copies.
+    const representatives=new Map(), other=[];
+    const equipped=selectedPaperDollItem('weapon')?.id;
+    const rank=item=>{const weapon=weaponInventoryItem(item);return (item.id===wardrobeSelectedItemId?10000:0)+(item.id===equipped?1000:0)+(weapon?.absolute?100:0)+(weapon?.upgradeLevel||0)*10+Object.values(weapon?.modules||{}).filter(v=>v!=='standard').length;};
+    for(const item of items){
+        const weapon=weaponInventoryItem(item);
+        if(weapon?.modelId!=='gear-aks'){other.push(item);continue;}
+        const previous=representatives.get(weapon.rarity);
+        if(!previous||rank(item)>rank(previous)) representatives.set(weapon.rarity,item);
+    }
+    return Object.keys(WEAPON_RARITIES).map(r=>representatives.get(r)).filter(Boolean).concat(other).filter(item=>archiveWeaponType==='all'||archiveWeaponKind(item)===archiveWeaponType);
+};
+const ARCHIVE_SLOT_LABELS = { headwear:'Головной убор',helmet:'Шлем',upperBody:'Верхняя одежда',outerwear:'Куртка',gloves:'Перчатки',pants:'Брюки',footwear:'Обувь',armor:'Бронежилет',loadout:'Разгрузка',weapon:'Оружие',accessory:'Аксессуар',appearance:'Внешность',baseBody:'Персонаж',face:'Головы',hair:'Причёски',beard:'Борода и усы',equipment:'К оснащению' };
+const ARCHIVE_TILES = {helmet:0,upperBody:1,outerwear:2,gloves:3,pants:4,footwear:5,armor:6,loadout:7,weapon:8,accessory:10,appearance:11,face:12,hair:11,beard:13,equipment:0};
+function archiveSelectSlot(slot) {
+    wardrobeVirtualSlot=slot==='headwear'?'cap':slot==='helmet'?'helmet':null;
+    if(slot==='equipment'){wardrobeCategory='weapons';wardrobeSlot='weapon';wardrobeSelectedItemId=null;wardrobePaletteExpanded=false;document.querySelector('.archive-wardrobe')?.removeAttribute('data-inspecting');renderWardrobe();return;}
+    if(slot==='helmet') slot='headwear';
+    if (slot === 'appearance') { wardrobeCategory='appearance'; wardrobeSlot='face'; }
+    else {
+        const category = Object.entries(WARDROBE_CATEGORIES).find(([,c]) => c.slots.includes(slot));
+        if (!category) return;
+        wardrobeCategory=category[0]; wardrobeSlot=slot;
+    }
+    wardrobeSelectedItemId=null; wardrobePaletteExpanded=false; document.querySelector('.archive-wardrobe')?.removeAttribute('data-inspecting'); renderWardrobe();
+}
+function archiveRenderRails() {
+    const appearance=wardrobeCategory==='appearance';
+    const rails=appearance?[["archive-left-slots",['face','hair',...(paperDollState.selectedGender==='male'?['beard']:[])]],["archive-right-slots",['equipment']]]:[['archive-left-slots',['headwear','upperBody','outerwear','gloves','pants','footwear']],['archive-right-slots',['helmet','armor','loadout','weapon','accessory','appearance']]];
+    for (const [id,list] of rails) {
+        const host=document.getElementById(id); if (!host) continue;
+        host.innerHTML=list.map(slot=>{const tile=ARCHIVE_TILES[slot]??0;const cat={upperBody:'clothes',helmet:'gear',weapon:'weapons',accessory:'accessories',appearance:'appearance',equipment:'weapons'}[slot];const compatSlot=slot==='helmet'?'headwear':slot==='headwear'?'cap':slot;return `<div class="archive-slot-wrap"><button type="button" class="archive-slot${slot==='appearance'?' appearance':''}" data-archive-slot="${slot}" ${cat?`data-wardrobe-category="${cat}"`:""} ${!["appearance","headwear","equipment"].includes(slot)?`data-wardrobe-slot="${compatSlot}"`:""} aria-pressed="${slot==='appearance'?wardrobeCategory==='appearance':(slot==='helmet'?wardrobeSlot==='headwear'&&wardrobeVirtualSlot!=='cap':slot==='headwear'?wardrobeSlot==='headwear'&&wardrobeVirtualSlot==='cap':wardrobeSlot===slot)}"><span>${slot==='equipment'?'↩ ':''}${ARCHIVE_SLOT_LABELS[slot]}</span><i class="slot-art" style="background-position:${tile%4*100/3}% ${Math.floor(tile/4)*100/3}%" aria-hidden="true"></i></button>${['helmet','headwear','appearance','accessory','face','hair','beard','equipment'].includes(slot)?'':`<button type="button" class="archive-eye" data-hide-slot="${slot}" aria-pressed="${wardrobeHiddenSlots.has(slot)}" aria-label="${wardrobeHiddenSlots.has(slot)?'Показать':'Скрыть'}: ${ARCHIVE_SLOT_LABELS[slot]}">${archiveVisibilityIcon(wardrobeHiddenSlots.has(slot))}</button>`}</div>`;}).join('');
+        host.setAttribute('aria-label',appearance?(id==='archive-left-slots'?'Внешность':'Вернуться к оснащению'):(id==='archive-left-slots'?'Одежда':'Оснащение'));
+        host.querySelectorAll('[data-archive-slot]').forEach(b=>b.onclick=()=>archiveSelectSlot(b.dataset.archiveSlot));
+        host.querySelectorAll('[data-hide-slot]').forEach(b=>b.onclick=()=>{const slot=b.dataset.hideSlot;wardrobeHiddenSlots.has(slot)?wardrobeHiddenSlots.delete(slot):wardrobeHiddenSlots.add(slot);renderWardrobe();});
+    }
+}
+function wardrobeItemCard(item) {
+    const instance=weaponInventoryItem(item), label=instance?weaponItemLabel(instance):item.name;
+    const equipped=selectedPaperDollItem(item.slot)?.id===item.id, selected=wardrobeSelectedItemId===item.id;
+    const source=wardrobeItemImage(item);
+    return `<button type="button" class="wardrobe-item-card${equipped?' equipped':''}${selected?' selected':''}" data-wardrobe-item="${escapeHTML(item.id)}" data-wardrobe-card="${escapeHTML(item.id)}" data-available="${isPaperDollItemOwned(item)}" data-equipped="${equipped}" data-rarity="${instance?.rarity || 'common'}" data-weapon-kind="${item.slot==='weapon'?archiveWeaponKind(item):''}" aria-pressed="${selected}" data-wardrobe-focus="item-${escapeHTML(item.id)}"><span class="wardrobe-item-image${item.slot==='weapon'?' weapon-icon-frame':item.slot==='face'?' wardrobe-face-portrait':''}">${source?`<img src="${escapeHTML(source)}" alt="" draggable="false">`:iconHTML(item.icon||PAPER_DOLL_SLOTS[item.slot].icon,'large')}</span><strong class="wardrobe-item-name">${escapeHTML(label)}</strong>${instance?`<span class="rarity-tag" data-rarity="${instance.rarity}">${WEAPON_RARITIES[instance.rarity].label}</span>`:''}<span class="wardrobe-item-state">${equipped?'✓ ПРИМЕРЕНО':isPaperDollItemOwned(item)?'ДОСТУПНО':'НЕТ В ИНВЕНТАРЕ'}</span><span class="wardrobe-image-note hidden" data-paper-image-item="${escapeHTML(item.id)}"></span></button>`;
+}
+function archiveInstitution() { return `<header class="tablet-institution"><img src="assets/ui/wardrobe/requested-header-emblem.webp" alt="Эмблема учреждения"><div><small>МИНИСТЕРСТВО ЗДРАВООХРАНЕНИЯ</small><strong>ЦЕНТР ИНТЕНСИВНОГО ЛЕЧЕНИЯ<br>ПСИХИЧЕСКИХ РАССТРОЙСТВ №404</strong></div></header>`; }
+function renderWardrobeItemDetail(item) {
+    const panel=document.getElementById('wardrobe-item-detail'); if (!panel) return;
+    panel.classList.remove('hidden'); panel.dataset.slot=item?.slot||wardrobeSlot;
+    if (!item) { panel.innerHTML=`<div class="archive-tablet empty-tablet">${archiveInstitution()}<div class="tablet-empty"><h4>${ARCHIVE_SLOT_LABELS[wardrobeSlot]||'Карточка'}</h4><p>В этом разделе пока нет доступных предметов.</p></div></div>`;return; }
+    if (['hair','beard','face'].includes(item.slot)) {
+        const equipped=selectedPaperDollItem(item.slot)?.id===item.id;
+        panel.innerHTML=`<div class="archive-cosmetic-action"><strong>${escapeHTML(item.name)}</strong><button type="button" data-wardrobe-action="${escapeHTML(item.id)}"${item.slot==='hair'&&equipped?' disabled':''}>${equipped?item.slot==='hair'?'Выбрано':'Снять':'Выбрать'}</button></div>`;
+        panel.querySelector('[data-wardrobe-action]').addEventListener('click',applyWardrobeItemAction);return;
+    }
+    const instance=weaponInventoryItem(item), profile=instance?calculateWeaponStats(instance):null;
+    const equipped=selectedPaperDollItem(item.slot)?.id===item.id, owned=isPaperDollItemOwned(item), source=wardrobeItemImage(item);
+    const label=instance?weaponItemLabel(instance):item.name;
+    const reference=inventory.find(i=>instance?i.instanceId===instance.instanceId:i.name===item.inventoryName&&i.category===item.inventoryCategory);
+    const offer=instance?weaponUpgradeOffer(instance):null;
+    const percentages=n=>`${Math.round(n*100)}%`;
+    const description=reference?.desc||item.description||({"gear-aks":'Укороченный автомат бывшей охраны лечебницы.',"gear-knife":'Самодельный нож из обломка медицинского шпателя.',"gear-pm":'Табельный пистолет дежурной охраны.'})[instance?.modelId]||'Архивная карточка предмета.';
+    panel.innerHTML=`<button type="button" class="archive-detail-close" onclick="document.querySelector('.archive-wardrobe').removeAttribute('data-inspecting')">← Назад</button><article class="archive-tablet" data-instance-id="${escapeHTML(instance?.instanceId||'')}" data-weapon-kind="${item.slot==='weapon'?archiveWeaponKind(item):''}" data-rarity="${instance?.rarity||'common'}"><section class="tablet-main-sheet">
+        ${archiveInstitution()}<header class="tablet-title"><h4 id="wardrobe-detail-title">${escapeHTML(label)}</h4>${instance?`<span class="rarity-tag" data-rarity="${instance.rarity}">${WEAPON_RARITIES[instance.rarity].label}</span>`:`<span>${ARCHIVE_SLOT_LABELS[item.slot]}</span>`}</header>
+        <span class="tablet-use-stamp">${equipped?'ИСПОЛЬЗУЕТСЯ':'КАРТОТЕКА'}</span>
+        <div class="tablet-weapon-mount rarity-frame" data-rarity="${instance?.rarity||'common'}">${instance?.rarity==='experimental'?'<small class="weapon-sample-mark">ОСОБЫЙ ОБРАЗЕЦ</small>':instance?.rarity==='rare'?'<small class="weapon-sample-mark">АРХИВ · III</small>':''}${source?`<img src="${escapeHTML(source)}" alt="${escapeHTML(item.name)}">`:iconHTML(item.icon,'large')}</div>
+        ${instance?`<div class="weapon-progress" aria-label="Улучшение +${instance.upgradeLevel}">${['I','II','III','IV','V'].map((n,i)=>`<span class="${instance.upgradeLevel>i?'completed':''}">${n}</span>`).join('')}<span class="absolute-star${instance.absolute?' complete':''}" aria-label="${instance.absolute?'Абсолют':'Абсолют доступен после +5'}">${instance.absolute?'★':'☆'}</span></div>
+        <dl class="weapon-stat-grid"><div><dt>Урон</dt><dd>${profile.weaponDamage}</dd></div><div><dt>КД атаки</dt><dd>${profile.cooldown.toFixed(1)} с</dd></div><div><dt>Промах</dt><dd>${percentages(profile.miss)}</dd></div><div><dt>Крит</dt><dd>${percentages(profile.critical)}</dd></div><div><dt>Магазин</dt><dd>${profile.capacity||'—'}</dd></div><div><dt>Перезарядка</dt><dd>${profile.capacity?profile.reload.toFixed(1)+' с':'—'}</dd></div></dl>
+        <button type="button" class="tablet-modules" data-weapon-modules="${instance.instanceId}">МОДИФИКАЦИИ · ${Object.values(instance.modules).filter(v=>v!=='standard').length}/3</button>`:`<div class="tablet-description"><p>${escapeHTML(reference?.desc||item.description||ARCHIVE_SLOT_LABELS[item.slot])}</p>${reference?.armorBonus?`<p>Броня: +${reference.armorBonus}</p>`:''}<p class="wardrobe-image-note hidden" data-paper-image-item="${escapeHTML(item.id)}" data-paper-image-detail role="status"></p></div>`}
+        <div class="tablet-actions"><button type="button" class="archive-paper-action" data-wardrobe-action="${escapeHTML(item.id)}"${!owned?' disabled':''}>${equipped?'Снять':'Надеть'}</button>${instance?`<button type="button" class="archive-paper-action weapon-upgrade" data-weapon-upgrade="${instance.instanceId}"${!offer||!owned||isBattleActive?' disabled':''}>${offer?offer.label:'АБСОЛЮТ ★'}</button>`:''}</div>
+        </section><section class="tablet-approval-sheet">
+        <strong class="tablet-approval-status">${instance?.absolute?'ПРЕДЕЛЬНАЯ МОДИФИКАЦИЯ':instance?.upgradeLevel||Object.values(instance?.modules||{}).some(v=>v!=='standard')?'МОДИФИЦИРОВАНО':'УЧТЕНО'}</strong>
+        <div class="tablet-inspection-copy"><p>${escapeHTML(description)}</p>${profile?`<p>Урон оружия: ${profile.weaponDamage}. Вместе с постоянными бонусами персонажа: ${calculateWeaponStats(instance,{damage:stats.baseDamage}).damage}.</p><p>Критический множитель: ×${profile.criticalMultiplier}. Модификации сохраняются для этого экземпляра.</p>`:''}</div>
+        <div class="tablet-responsible"><div class="tablet-doctor-line"><span>Ответственный врач:</span><span class="tablet-redacted" aria-label="Имя скрыто">████████</span></div><img class="tablet-signature" src="assets/ui/wardrobe/weapon-doctor-signature.svg" alt="Подпись"></div><img class="tablet-seal" src="assets/ui/wardrobe/weapon-red-seal.svg" alt="Красная печать учреждения">
+        </section>
+    </article>`;
+    panel.querySelector('[data-wardrobe-action]')?.addEventListener('click',applyWardrobeItemAction);
+    panel.querySelector('[data-weapon-upgrade]')?.addEventListener('click',()=>openWeaponUpgrade(instance.instanceId));
+    panel.querySelector('[data-weapon-modules]')?.addEventListener('click',()=>openWeaponModules(instance.instanceId));
+
+}
+function renderWardrobeUI() {
+    if (wardrobeSlot==='beard' && paperDollState.selectedGender!=='male') wardrobeSlot='hair';
+    const container=document.getElementById('wardrobe-container'); if(!container)return;
+    document.querySelector('.archive-wardrobe').dataset.category=wardrobeCategory;
+    const scroll=container.scrollTop;
+    archiveRenderRails();
+    document.getElementById('wardrobe-items').dataset.slot=wardrobeSlot;
+    document.getElementById('wardrobe-items-title').textContent=wardrobeSlot==='headwear'&&wardrobeVirtualSlot!=='cap'?'Шлем':ARCHIVE_SLOT_LABELS[wardrobeSlot]||PAPER_DOLL_SLOTS[wardrobeSlot].label;
+    const categories=document.getElementById('wardrobe-categories');
+    categories.innerHTML=wardrobeSlot==='weapon'?Object.entries(ARCHIVE_WEAPON_TYPES).map(([id,label])=>`<button type="button" data-weapon-type="${id}" aria-pressed="${archiveWeaponType===id}">${label}</button>`).join(''):'';
+    categories.querySelectorAll('[data-weapon-type]').forEach(button=>button.onclick=()=>{archiveWeaponType=button.dataset.weaponType;wardrobeSelectedItemId=null;document.querySelector('.archive-wardrobe')?.removeAttribute('data-inspecting');container.scrollTop=0;renderWardrobe();});
+    categories.querySelectorAll('[data-wardrobe-slot]').forEach(b=>b.onclick=()=>selectWardrobeSlot(b.dataset.wardrobeSlot));
+    document.getElementById('wardrobe-slots').innerHTML='';
+    document.getElementById('wardrobe-gender-switch').classList.toggle('hidden',wardrobeCategory!=='appearance');
+    document.querySelectorAll('[data-paper-gender]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.paperGender===paperDollState.selectedGender)));
+    const items=wardrobeVisibleItems().sort((a,b)=>(b.modelId==='gear-aks')-(a.modelId==='gear-aks'));
+    if(!items.some(i=>i.id===wardrobeSelectedItemId))wardrobeSelectedItemId=items.find(i=>i.id===selectedPaperDollItem(wardrobeSlot)?.id)?.id||items[0]?.id||null;
+    renderHairPalette();
+    container.classList.toggle('wardrobe-hair-grid',['hair','beard','face'].includes(wardrobeSlot));
+    if(wardrobeSlot==='baseBody') container.innerHTML='<p class="archive-empty">Выберите пол персонажа или раздел внешности. Примерка сохраняется после «Применить».</p>';
+    else container.innerHTML=(wardrobeSlot==='face'?`<button type="button" class="archive-native" data-wardrobe-native-face onclick="equipPaperDollItem('face',null)">Оригинальная голова</button>`:'')+(items.length?items.map(wardrobeItemCard).join(''):'<p class="archive-empty">Нет доступных предметов.</p>');
+    container.querySelectorAll('[data-wardrobe-item]').forEach(b=>b.onclick=()=>{selectWardrobeItem(b.dataset.wardrobeItem);if(!['face','hair','beard','baseBody'].includes(wardrobeSlot))document.querySelector('.archive-wardrobe')?.setAttribute('data-inspecting','true');});
+    renderWardrobeItemDetail(items.find(i=>i.id===wardrobeSelectedItemId));
+    container.scrollTop=scroll;
+    document.getElementById('archive-resources').innerHTML=[['silver','Серебро',stats.silver],['parts','Детали',stats.equipmentParts],['experimental','Эксп. компоненты',stats.experimentalComponents]].map(([id,label,value],i)=>`<span class="archive-resource" title="${label}" aria-label="${label}: ${value}"><i style="--resource-position:${i*50}%" aria-hidden="true"></i><span>${value}</span></span>`).join('');
+    document.getElementById('archive-draft-note').textContent=wardrobeHasChanges()?'Есть неприменённые изменения':'Комплект готов к осмотру';
+    renderPaperDoll(); renderPaperDollControls(false);
+}
+
+function toggleArchiveCatalog(){document.getElementById('wardrobe-items')?.classList.toggle('expanded')}

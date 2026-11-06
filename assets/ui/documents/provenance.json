@@ -1,0 +1,28 @@
+{
+  "files": [
+    {
+      "file": "assets/ui/documents/paper-source.jpg",
+      "sha256": "ece25e66ead99a18e985d3e71e2d05679baea1fdafeff32fee5e669ebe6dfcc7",
+      "source": "User attachment 28323.jpg; exact unchanged copy."
+    },
+    {
+      "file": "assets/ui/documents/paper-center.svg",
+      "sha256": "3d5cce60aba6526b4bfffc1ada85740c47b14c14f50733f3fedbe07b4b31f96d",
+      "source": "SVG viewBox 200 130 880 420, containing the exact original JPEG bytes. Presentation crop only; no pixel repaint or recompression."
+    },
+    {
+      "file": "assets/ui/documents/paperclip.png",
+      "sha256": "e65b73ffdc4523080fd0d604e76e3f0838380c9c5b0b22453dc17ce743890a23",
+      "source": "Imagegen exec-e915c7ff-3521-4a28-a320-d2a0e1b2335f.png; isolated accessory reconstructed from 28324.jpg. Does not replace existing wardrobe/clipboard clips."
+    }
+  ],
+  "approved_unchanged": {
+    "assets/ui/wardrobe/requested-header-emblem.webp": "d845211c8898de7d36b164beab1d3c40cbbc73a62971a9c76df9df3a6416e765",
+    "assets/ui/wardrobe/paper-header-only.svg": "3f74f8499953076322fee4e22f6b344639079ab35757e6ae6ea9b868f6f91f04",
+    "assets/ui/wardrobe/weapon-tablet-blank.webp": "7210c993a4cef4d524a847c61c8540d52a5ca56ad17c861f9f5c7c4e3ae57234",
+    "assets/ui/wardrobe/weapon-red-seal.svg": "6df6d5cfb0009d92bdddc6f58f8572bc0706e7de16b38e491bccc95d50307a68",
+    "assets/ui/wardrobe/weapon-doctor-signature.svg": "beba22264872fb6f5dc97dc74e4065b614443545418dc5c1391b373485877e78"
+  },
+  "reference": "review/document-system-20261106/header-reference.jpg",
+  "policy": "All header and rectangular stamp text is live UI text. The approved round seal retains its original inscription per the explicit user correction; no replacement seal is rendered."
+}

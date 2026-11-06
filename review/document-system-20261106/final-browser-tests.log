@@ -1,0 +1,10 @@
+test_weapon_type_filters_resources_and_eye_toggle (tests.test_weapon_archive.WeaponArchiveBrowserTests.test_weapon_type_filters_resources_and_eye_toggle) ... ok
+test_both_headers_three_languages_and_sizes_keep_graphics_and_alignment (tests.test_document_system.DocumentSystemBrowserTests.test_both_headers_three_languages_and_sizes_keep_graphics_and_alignment) ... ok
+test_clipboard_large_center_header_and_both_sheets_fit_without_scrolling (tests.test_document_system.DocumentSystemBrowserTests.test_clipboard_large_center_header_and_both_sheets_fit_without_scrolling) ... ok
+test_custom_department_layout_api_safe_text_and_language_survives_reload (tests.test_document_system.DocumentSystemBrowserTests.test_custom_department_layout_api_safe_text_and_language_survives_reload) ... ok
+test_live_wardrobe_and_post_battle_protocol_keep_game_state (tests.test_document_system.DocumentSystemBrowserTests.test_live_wardrobe_and_post_battle_protocol_keep_game_state) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 27.016s
+
+OK

@@ -1,0 +1,11 @@
+{
+  "description": "User-authorized reusable document system, retaining approved wardrobe banner and clipboard hardware; centered large weapon header and compact second sheet without scrolling. Approved seal remains unchanged per latest correction.",
+  "runtime_before_sha256": {
+    "index.html": "369fe7e98136c8457e2759c7fa4e70901e8424b2b472336b20859dd154bac13f",
+    "wardrobe-archive.js": "560c41bc296e388c7fd761da602991243e5c48f34cab94ad34b3df4e7ba64a98"
+  },
+  "runtime_after_sha256": {
+    "index.html": "705f9feb4405b9125435b88b8ad3bfaef47932432a4b7af1f7cbf7d2a433ec61",
+    "wardrobe-archive.js": "6c696a95e4c2d6e4f8967e4312b7f477913fa59b2f750e1bdf5bc5acf2c95c0d"
+  }
+}

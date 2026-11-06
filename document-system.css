@@ -1,0 +1,108 @@
+/* One material and typographic contract; artwork and live content are independent. */
+:root{--document-ink:#241a11;--document-red:#7e291f;--document-line:#49301c;--document-font:'Palata Typewriter','Courier New',monospace;--document-edge:34px;--document-paper-source:url('assets/ui/documents/paper-source.jpg');--document-paper-center:url('assets/ui/documents/paper-center.svg')}
+.document-paper{position:relative;isolation:isolate;background:none!important;color:var(--document-ink);--paper-edge:var(--document-edge)}
+.document-paper::before{content:'';position:absolute;inset:calc(var(--paper-edge) * .8);z-index:-1;pointer-events:none;background:var(--document-paper-center) center/cover no-repeat;border:0;box-shadow:none;mask-image:radial-gradient(ellipse farthest-side,#000 64%,transparent 100%)}
+.document-paper::after{content:'';position:absolute;inset:0;z-index:-2;pointer-events:none;border:var(--paper-edge) solid transparent;border-image-source:var(--document-paper-source);border-image-slice:90 fill;border-image-width:var(--paper-edge);border-image-repeat:stretch;box-sizing:border-box}
+document-paper,document-layout{display:block;padding:clamp(24px,4%,50px)}
+document-layout{max-width:100%;min-width:0}
+document-header{display:block;position:relative;container-type:inline-size;min-width:0;width:100%;color:var(--document-ink);font-family:var(--document-font);text-align:left;line-height:1.1;font-weight:normal}
+.document-header-grid{position:relative;display:grid;box-sizing:border-box;min-width:0;padding:3.5% 4%;aspect-ratio:calc(4 / var(--document-scale,1));grid-template-columns:17% minmax(0,1fr);grid-template-rows:20% 53% 27%;column-gap:3%}
+.document-emblem-cell{grid-column:1;grid-row:1/4;display:flex;align-items:center;justify-content:center;border-right:1px solid var(--document-line);padding-right:9%;min-width:0}
+.document-emblem{display:block;width:100%;height:100%;object-fit:contain;filter:sepia(.75) saturate(.8) brightness(.85);mix-blend-mode:multiply}
+.document-ministry{grid-column:2;grid-row:1;display:block;align-self:center;min-width:0;margin:0;font-size:1.9cqw;line-height:1.1;white-space:nowrap}
+.document-institution{grid-column:2;grid-row:2;display:flex;flex-direction:column;justify-content:center;min-width:0;font-size:3.9cqw!important;line-height:1.13!important;font-weight:normal!important;letter-spacing:0!important;text-transform:none;margin:0!important;padding:0!important;border:0!important;background:none!important;color:var(--document-ink)!important;border-top:1px solid var(--document-line)!important;border-bottom:1px solid var(--document-line)!important}
+.document-institution span{display:block;white-space:nowrap}
+.document-department{grid-column:2;grid-row:3;align-self:center;font-size:1.9cqw;line-height:1.1;min-width:0;white-space:normal;overflow-wrap:anywhere}
+.document-department small{display:block;font-size:.85em;margin-top:.2em}
+document-header[data-variant=center]{text-align:center}
+document-header[data-variant=center] .document-header-grid{aspect-ratio:calc(2.65 / var(--document-scale,1));grid-template-columns:1fr;grid-template-rows:31% 15% 35% 19%;padding:2% 4% 4%;column-gap:0}
+document-header[data-variant=center] .document-emblem-cell{grid-column:1;grid-row:1;border:0;padding:0;position:relative}
+document-header[data-variant=center] .document-emblem{width:15%;max-height:100%}
+document-header[data-variant=center] .document-emblem-cell::before,document-header[data-variant=center] .document-emblem-cell::after{content:'';position:absolute;top:52%;width:31%;border-top:3px double var(--document-line)}
+document-header[data-variant=center] .document-emblem-cell::before{left:10%}document-header[data-variant=center] .document-emblem-cell::after{right:10%}
+document-header[data-variant=center] .document-ministry{grid-column:1;grid-row:2;font-size:1.9cqw;width:66%;justify-self:center}
+document-header[data-variant=center] .document-institution{grid-column:1;grid-row:3;border-top:0!important;border-bottom:0!important;font-size:4.1cqw!important}
+document-header[data-variant=center] .document-department{grid-column:1;grid-row:4;border-top:1px solid var(--document-line);padding-top:1.1%;width:96%;justify-self:center;font-size:1.9cqw}
+document-stamp{display:inline-block;position:relative;font-family:var(--document-font);color:var(--document-red);border:3px double currentColor;font-size:clamp(11px,1.9cqw,22px);line-height:1.15;text-align:center;padding:.3em .5em;max-width:100%;transform:rotate(var(--stamp-rotation,0deg));opacity:var(--stamp-opacity,.78);box-sizing:border-box;font-weight:normal}
+document-stamp[data-position=left]{float:left}document-stamp[data-position=right]{float:right}document-stamp[data-position=center]{display:block;width:fit-content;margin-inline:auto}
+document-stamp[data-type=seal]{border:0;padding:0;width:140px;aspect-ratio:1;container-type:inline-size}
+.document-header-service{position:absolute;left:4%;top:31%;width:18%;font-size:1.8cqw;padding:.45em .2em}
+.document-header-seal{position:absolute;right:4%;top:23%;width:15%!important}
+document-stamp[data-type=seal]>.document-approved-seal{position:static;display:block;width:100%;height:100%;object-fit:contain;filter:none;mix-blend-mode:multiply}
+.document-paperclip{position:absolute;left:-.5%;top:-2%;width:8%;height:57%;object-fit:contain;z-index:2;pointer-events:none}
+document-header[data-scale=compact] .document-paperclip{display:none}
+.document-language-picker{display:block;margin-top:4px;font-size:11px;color:var(--document-ink)}
+.document-language-picker select{font:inherit;color:inherit;background:transparent;border:1px solid #735535;max-width:100%;padding:2px}
+/* The approved wardrobe banner retains its original paper, anatomical illustration and clip. */
+.archive-wardrobe .archive-letterhead{padding:0!important;display:block;aspect-ratio:5/1;container-type:normal;background:url('assets/ui/wardrobe/paper-header-only.svg') center/100% 100% no-repeat!important}
+.archive-wardrobe .archive-letterhead>document-header{width:100%;height:100%}
+.archive-wardrobe .archive-letterhead .document-header-grid{height:100%;aspect-ratio:5/1;padding:2% 23% 2% 2%;grid-template-columns:18% minmax(0,1fr);column-gap:3%}
+.archive-wardrobe .archive-letterhead .document-emblem-cell{border:0;padding:0}
+.archive-wardrobe .archive-letterhead .document-paperclip{display:none}
+.archive-wardrobe .archive-letterhead .document-institution{font-size:3cqw!important;border-top:0!important}
+.archive-wardrobe .archive-letterhead .document-ministry{font-size:1.3cqw}
+.archive-wardrobe .archive-letterhead .document-department{font-size:1.4cqw}
+/* Original clipboard behind a new paper face. Hardware remains a separate, exact source layer. */
+.archive-wardrobe .wardrobe-item-detail{overflow:visible!important}
+.archive-wardrobe .archive-tablet:has(>.tablet-main-sheet){display:grid;grid-template-rows:minmax(0,1fr) 150px;gap:6px;height:100%;min-height:0;container-type:size;background:none;overflow:visible}
+.archive-wardrobe .tablet-main-sheet{position:relative;display:grid;grid-template-rows:auto 32px minmax(0,1fr) 24px 42px 28px 44px;gap:4px;min-height:0;padding:26px 7% 12px;isolation:isolate}
+.archive-wardrobe .tablet-main-sheet::before{inset:-32px 0 0;z-index:-3;content:'';background:url('assets/ui/wardrobe/weapon-tablet-blank.webp') top center/100% 128.205128% no-repeat}
+.tablet-paper-face{position:absolute;inset:26px 12px 10px;z-index:-2;--paper-edge:20px;clip-path:polygon(0 0,100% 0,100% 86%,92% 100%,0 100%);pointer-events:none}
+.tablet-original-fasteners{position:absolute;inset:-32px 0 0;width:100%;height:calc(100% + 32px);z-index:3;pointer-events:none}
+.archive-wardrobe .tablet-main-sheet>document-header{grid-row:1;position:static;width:100%;height:auto;min-height:0}
+.archive-wardrobe .tablet-main-sheet>document-header .document-header-grid{height:auto;aspect-ratio:3.45/1;padding:0;grid-template-rows:34% 12% 36% 18%}
+.archive-wardrobe .tablet-main-sheet .tablet-title{position:static;grid-row:2;min-height:0;inset:auto}
+.archive-wardrobe .tablet-title h4{font-size:clamp(14px,4cqw,20px);line-height:1.05;margin:0 0 2px}
+.archive-wardrobe .tablet-title .rarity-tag{font-size:10px}
+.archive-wardrobe .tablet-main-sheet .tablet-weapon-mount{position:relative;grid-row:3;inset:auto;width:100%;height:100%;min-height:0;margin:0;overflow:visible}
+.archive-wardrobe .archive-tablet[data-weapon-kind=rifles] .tablet-weapon-mount img{width:92%;height:140%;max-height:none;object-fit:contain}
+.archive-wardrobe .tablet-main-sheet .tablet-use-stamp{position:absolute;top:3px;right:4px;font-size:clamp(10px,2.7cqw,13px);line-height:1;padding:2px 4px;z-index:2;background:var(--document-paper-center) center/cover;opacity:.92}
+.archive-wardrobe .tablet-main-sheet .weapon-progress{position:static;grid-row:4;font-size:12px;gap:4px;min-height:0}
+.archive-wardrobe .weapon-progress>span{width:24px;height:22px}
+.archive-wardrobe .weapon-progress .absolute-star{font-size:22px}
+.archive-wardrobe .tablet-main-sheet .weapon-stat-grid{position:static;grid-row:5;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2px 9px;font-size:clamp(11px,3cqw,14px);line-height:1.05;min-height:0}
+.archive-wardrobe .weapon-stat-grid>div{padding:1px 0;gap:3px;min-width:0}
+.archive-wardrobe .tablet-main-sheet .weapon-stat-grid dt{font-size:clamp(8px,2.4cqw,11px)}
+.archive-wardrobe .tablet-main-sheet .tablet-modules{position:static;grid-row:6;inset:auto;width:100%;min-height:28px;padding:3px;font-size:12px}
+.archive-wardrobe .tablet-main-sheet .tablet-actions{position:static;grid-row:7;inset:auto;gap:8px}
+.archive-wardrobe .tablet-actions .archive-paper-action{height:44px;min-height:44px;padding:9px 7px 4px;font-size:clamp(11px,3cqw,15px)}
+.archive-wardrobe .tablet-main-sheet .tablet-description{position:static;grid-row:3/6;max-height:none;font-size:13px;line-height:1.2}
+.archive-wardrobe .tablet-approval-sheet{position:relative;display:grid;grid-template-rows:16px minmax(0,1fr) 44px;gap:2px;min-height:0;height:100%;padding:14px 8% 9px;isolation:isolate;background:url('assets/ui/wardrobe/weapon-tablet-blank.webp') center bottom/100% 454.545455% no-repeat}
+.archive-wardrobe .tablet-approval-sheet>.tablet-paper-face{inset:6px 12px 10px;--paper-edge:10px;z-index:-1;clip-path:polygon(0 0,100% 0,100% 65%,86% 100%,0 100%)}
+.tablet-approval-fastener{position:absolute;inset:0;width:100%;height:100%;z-index:2;pointer-events:none}
+.archive-wardrobe .tablet-approval-status{grid-row:1;font-size:12px;line-height:1.1;margin:0;font-weight:normal}
+.archive-wardrobe .tablet-inspection-copy{grid-row:2;min-height:0;font-size:11px;line-height:1.1;padding-right:88px}
+.archive-wardrobe .tablet-inspection-copy p{margin:0 0 2px;max-width:none}
+.archive-wardrobe .tablet-responsible{position:relative;grid-row:3;inset:auto;width:calc(100% - 90px);height:44px}
+.archive-wardrobe .tablet-doctor-line{font-size:10px;gap:5px;line-height:1.1}
+.archive-wardrobe .tablet-redacted{font-size:12px;min-width:42px;letter-spacing:-2px}
+.archive-wardrobe .tablet-responsible .tablet-signature{position:absolute;left:40%;top:-3px;width:min(55%,122px);height:42px;max-width:none;object-fit:cover;object-position:center;margin:0}
+.archive-wardrobe .tablet-approval-sheet document-stamp.tablet-seal{top:auto;right:9%;bottom:44px;width:74px;max-height:74px;opacity:1}
+/* Center standard on the existing detailed report. Compact reward summary is preserved. */
+#battle-detail-modal .battle-report.document-paper{--paper-edge:28px;border:0;border-radius:0;box-shadow:0 14px 45px #0009}
+#battle-detail-modal .document-protocol-header{flex:1;min-width:0;max-width:none}
+#battle-detail-modal .document-protocol-header document-header{max-width:660px;margin:auto}
+#battle-detail-modal .document-protocol-header document-header .document-header-grid{aspect-ratio:3.1/1}
+#battle-detail-modal .document-protocol-header .document-header-service{font-size:1.7cqw}
+@media(max-width:1100px){
+.archive-wardrobe[data-inspecting=true] #wardrobe-item-detail{position:fixed!important;inset:12px!important;width:auto!important;height:auto!important;max-height:none!important;padding:26px 0 0!important;margin:0!important;z-index:200;background:#141811!important;overflow:hidden!important;scrollbar-gutter:auto}
+.archive-wardrobe .archive-tablet:has(>.tablet-main-sheet){height:100%;min-height:0;max-width:600px;margin-inline:auto}
+}
+@media(max-width:700px){
+.document-paper{--document-edge:22px}
+.document-language-picker{font-size:10px}
+#battle-detail-modal .document-protocol-header document-header .document-header-grid{aspect-ratio:2.65/1}
+.archive-wardrobe[data-inspecting=true] #wardrobe-item-detail{inset:6px!important;padding-top:26px!important}
+.archive-wardrobe .tablet-main-sheet{padding:19px 7% 8px;gap:3px;grid-template-rows:auto 30px minmax(0,1fr) 22px 38px 26px 44px}
+.archive-wardrobe .tablet-main-sheet .tablet-modules{min-height:26px;font-size:11px}
+.archive-wardrobe .tablet-inspection-copy{padding-right:0;font-size:10.5px}
+.archive-wardrobe .tablet-approval-sheet document-stamp.tablet-seal{width:48px;max-height:48px;right:10%;bottom:26px}
+.archive-wardrobe .tablet-responsible{width:calc(100% - 54px)}
+.archive-wardrobe .tablet-doctor-line{font-size:9px}
+}
+
+@media(max-width:1100px){.archive-wardrobe[data-inspecting=true] .archive-detail-close{position:absolute;top:0;right:0;left:auto;width:88px;height:44px;min-height:44px;z-index:6;margin:0}}
+@media(max-width:700px){.archive-wardrobe .tablet-responsible .tablet-signature{width:min(50%,108px)}}
+@media(min-width:1101px) and (max-width:1400px){
+.archive-wardrobe .tablet-main-sheet{padding:20px 7% 10px;gap:2px;grid-template-rows:auto 30px minmax(0,1fr) 22px 40px 28px 44px}
+}

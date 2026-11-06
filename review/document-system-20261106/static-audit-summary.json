@@ -1,0 +1,29 @@
+{
+  "commit": "ce2225c73de782d61cae85ae480dc2e62143a5d2",
+  "tracked_files": 8187,
+  "bytes": 1264232403,
+  "missing_static_references": [],
+  "classic_scripts": [
+    "https://telegram.org/js/telegram-web-app.js",
+    "localization.js",
+    "document-system.js",
+    "icons.js",
+    "staff-archive-data.js",
+    "battle-results.js",
+    "raid-archive.js",
+    "staff-archive.js",
+    "paper-doll-data.js",
+    "hair-color.js",
+    "female-hair-fit-data.js",
+    "female-hair-fit.js",
+    "male-hair-fit-data.js",
+    "male-hair-fit.js",
+    "paper-doll.js",
+    "weapon-system.js",
+    "weapon-runtime.js",
+    "wardrobe.js",
+    "wardrobe-archive.js",
+    "script.js",
+    "avatar-core/game-preview.mjs"
+  ]
+}
