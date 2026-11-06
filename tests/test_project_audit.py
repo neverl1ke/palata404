@@ -27,7 +27,7 @@ class GeneralAssetTests(unittest.TestCase):
   import subprocess,re
   code="const fs=require('fs'),vm=require('vm');console.log(vm.runInNewContext(fs.readFileSync('paper-doll-data.js','utf8')+';JSON.stringify({bodies:PAPER_DOLL_BODIES,items:PAPER_DOLL_ITEMS,nativeHeads:PAPER_DOLL_NATIVE_HEADS})'))"
   catalog=json.loads(subprocess.check_output(['node','-e',code],cwd=ROOT));paths=set(re.findall(r'[A-Za-z0-9_./-]+\.png',json.dumps(catalog)))
-  self.assertEqual(len(paths),99)  # Approved appearance assets plus two weapon thumbnails.
+  self.assertEqual(len(paths),365)  # Includes the subsequently approved 160 beards and head-specific female hair.
   for path in paths:
    self.assertTrue((ROOT/path).is_file(),path)
    current=ROOT
@@ -44,15 +44,17 @@ class GeneralBrowserTests(unittest.TestCase):
  def tearDownClass(cls):support.GameTests.tearDownClass()
  def setUp(self):self.case=support.GameTests();self.case.setUp();self.page=self.case.page
  def tearDown(self):self.case.tearDown()
- def test_repeated_render_retains_colored_front_and_rear_after_reload(self):
+ def test_repeated_render_retains_approved_colored_layers_after_reload(self):
   self.case.load();self.page.evaluate('openCustomization();setGender("male");equipPaperDollItem("face","face-alternative");equipPaperDollItem("hair","hair-shoulder-length");setHairColor("white")')
-  white_ready='''async()=>{for(const id of ['wardrobe-layer-hair','wardrobe-layer-hair-rear']){const i=document.getElementById(id);if(!i?.paperHairRequest||!i.paperHairRequest.endsWith('|white'))return false;const r=i.paperHairRequest,n=r.lastIndexOf('|');const expected=await coloredHairSource(r.slice(0,n),'white',i.paperHairColorReference);if(i.paperHairRequest!==r||i.getAttribute('src')!==expected||!i.complete||!i.naturalWidth||i.classList.contains('hidden'))return false}return paperDollState.appearance.hairColor==='white'}'''
+  # Reviewed male heads use a registered front and skin edge, not the old rear.
+  white_ready="""()=>{const imgs=[...document.querySelectorAll('#wardrobe-paperdoll > img')].filter(i=>i.paperHairRequest?.endsWith('|white'));return imgs.length>0&&imgs.every(i=>i.complete&&i.naturalWidth&&!i.classList.contains('hidden')&&i.getAttribute('src')?.startsWith('data:image/png'))&&paperDollState.appearance.hairColor==='white'}"""
   self.page.wait_for_function(white_ready)
-  # Read both layers and perform the synchronous mutation check in one JS turn;
+  self.assertTrue(self.page.evaluate("""async()=>{for(const i of document.querySelectorAll('#wardrobe-paperdoll > img')){if(!i.paperHairRequest?.endsWith('|white'))continue;const r=i.paperHairRequest,n=r.lastIndexOf('|');if(i.getAttribute('src')!==await coloredHairSource(r.slice(0,n),'white',i.paperHairColorReference))return false}return true}"""))
+  # Read the approved coloured layers and check mutations in one JS turn;
   # a separate protocol round-trip could sample a pending original-color frame.
-  snapshot=self.page.evaluate('''()=>{const imgs=['wardrobe-layer-hair','wardrobe-layer-hair-rear'].map(id=>document.getElementById(id));const before=imgs.map(i=>i.getAttribute('src'));const observers=imgs.map(i=>{const o=new MutationObserver(()=>{});o.observe(i,{attributes:true,attributeFilter:['src']});return o});for(let n=0;n<30;n++)updateCharacterLayers();const counts=observers.map(o=>{const n=o.takeRecords().length;o.disconnect();return n});return {counts,unchanged:imgs.every((i,n)=>i.getAttribute('src')===before[n]),white:imgs.every(i=>i.paperHairRequest?.endsWith('|white')&&i.getAttribute('src').startsWith('data:image/png'))}}''')
-  self.assertEqual(snapshot,{'counts':[0,0],'unchanged':True,'white':True})
-  self.page.reload(wait_until='networkidle');self.page.wait_for_function('document.readyState==="complete" && typeof paperDollState!=="undefined"');self.assertEqual(self.page.evaluate('paperDollState.appearance.hair'),'hair-shoulder-length');self.assertEqual(self.page.evaluate('paperDollState.appearance.hairColor'),'white')
+  snapshot=self.page.evaluate('''()=>{const imgs=[...document.querySelectorAll('#wardrobe-paperdoll > img')].filter(i=>i.paperHairRequest?.endsWith('|white'));const before=imgs.map(i=>i.getAttribute('src'));const observers=imgs.map(i=>{const o=new MutationObserver(()=>{});o.observe(i,{attributes:true,attributeFilter:['src']});return o});for(let n=0;n<30;n++)updateCharacterLayers();const counts=observers.map(o=>{const n=o.takeRecords().length;o.disconnect();return n});return {counts,unchanged:imgs.every((i,n)=>i.getAttribute('src')===before[n]),white:imgs.every(i=>i.paperHairRequest?.endsWith('|white')&&i.getAttribute('src').startsWith('data:image/png'))}}''')
+  self.assertEqual(snapshot,{'counts':[0],'unchanged':True,'white':True})
+  self.page.evaluate('typeof applyWardrobeSession === "function" && applyWardrobeSession()');self.page.reload(wait_until='networkidle');self.page.evaluate('openCustomization()');self.page.wait_for_function('document.readyState==="complete" && typeof paperDollState!=="undefined"');self.assertEqual(self.page.evaluate('paperDollState.appearance.hair'),'hair-shoulder-length');self.assertEqual(self.page.evaluate('paperDollState.appearance.hairColor'),'white')
   self.page.wait_for_function(white_ready)
  def test_invalid_boss_names_do_not_mutate_a_saved_character(self):
   self.case.load();before=self.page.evaluate('JSON.stringify({stats,inventory,gameProgress})')

@@ -42,7 +42,7 @@ class FemaleTwoApprovedBrowser(unittest.TestCase):
   self.page.set_viewport_size({'width':390,'height':844});self.load();self.page.evaluate('openCustomization();setGender("female");selectWardrobeCategory("appearance");selectWardrobeSlot("hair")')
   for hair in IDS:
    self.page.locator(f'[data-wardrobe-card="{hair}"]').click();self.page.locator('#wardrobe-item-detail [data-wardrobe-action]').click();self.wait_hair()
-   self.page.evaluate('setHairColor("white")');self.wait_hair();self.page.reload(wait_until='networkidle');self.page.evaluate('openCustomization()');self.wait_hair();self.assertEqual(self.page.evaluate('paperDollState.appearance.hair'),hair)
+   self.page.evaluate('setHairColor("white")');self.wait_hair();self.page.evaluate('typeof applyWardrobeSession === "function" && applyWardrobeSession()');self.page.reload(wait_until='networkidle');self.page.evaluate('openCustomization()');self.wait_hair();self.assertEqual(self.page.evaluate('paperDollState.appearance.hair'),hair)
    self.page.evaluate('setGender("male")');self.assertEqual(self.page.locator('[data-paper-extra][id$="layer-hair-rear"]').count(),0);self.assertFalse(self.page.evaluate('h=>equipPaperDollItem("hair",h)',hair))
    self.page.evaluate('setGender("female");selectWardrobeCategory("appearance");selectWardrobeSlot("hair")')
   self.page.evaluate('equipPaperDollItem("hair","hair-none")');self.assertEqual(self.page.locator('[data-paper-extra][id$="layer-hair-rear"]').count(),0)

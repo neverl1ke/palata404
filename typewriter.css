@@ -1,0 +1,2 @@
+@font-face{font-family:'Palata Typewriter';src:url('assets/fonts/TT2020StyleE-Regular.woff') format('woff');font-display:swap;font-style:normal;font-weight:100 900}
+html,body,body *,body::before,body::after,body *::before,body *::after,.dossier-paper{font-family:'Palata Typewriter','Courier New',monospace!important;font-synthesis:none}

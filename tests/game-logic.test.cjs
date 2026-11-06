@@ -22,7 +22,7 @@ function game(saves = {}, deniedStorage = false, failWrites = [], telegramId = n
     function element(id = '') {
         const classes = new Set();
         return {
-            id, style: { setProperty(name, value) { this[name] = value; } }, children: [], textContent: '', innerHTML: '',
+            id, dataset: {}, style: { setProperty(name, value) { this[name] = value; } }, children: [], textContent: '', innerHTML: '',
             classList: {
                 add(...names) { names.forEach(name => classes.add(name)); },
                 remove(...names) { names.forEach(name => classes.delete(name)); },
@@ -103,6 +103,8 @@ function game(saves = {}, deniedStorage = false, failWrites = [], telegramId = n
     // This VM tests state/DOM commands; real pixel fitting is checked in test_appearance_catalog.py.
     vm.runInContext('fittedFemaleHairSource = source => ({ then(resolve) { resolve(source); return { catch() {} }; } });', context);
     vm.runInContext(fs.readFileSync(path.join(root, 'paper-doll.js'), 'utf8'), context, { filename: 'paper-doll.js' });
+    vm.runInContext(fs.readFileSync(path.join(root, 'weapon-system.js'), 'utf8'), context, { filename: 'weapon-system.js' });
+    vm.runInContext(fs.readFileSync(path.join(root, 'weapon-runtime.js'), 'utf8'), context, { filename: 'weapon-runtime.js' });
     vm.runInContext(fs.readFileSync(path.join(root, 'wardrobe.js'), 'utf8'), context, { filename: 'wardrobe.js' });
     vm.runInContext(source, context, { filename: 'script.js' });
     const run = code => vm.runInContext(code, context);
@@ -781,18 +783,20 @@ test('staff floor filters use map and boss assignments while department collecti
     assert.equal(g.run('JSON.stringify(staffArchiveState)'),state);
 });
 
-test('paper doll retires trial faces and persists independent previews without changing combat gear', () => {
+test('paper doll stages independent previews and applies combat equipment only on confirmation', () => {
     const g = game({ palata404_gender: 'female', palata404_face: 'face_3.png' });
     assert.equal(g.run('paperDollState.selectedGender'), 'female');
     assert.equal(g.run('paperDollState.appearance.face'), null);
     assert.equal(g.run('paperDollState.patientLoadout.face'), null);
     const combat = g.run('JSON.stringify({stats,inventory,equippedGear,gameProgress})');
-    g.run('equipPaperDollItem("armor","gear-br1"); setPaperDollView("combat"); setFace("face_2.png"); equipPaperDollItem("weapon","gear-pm"); setGender("male");');
+    g.run('beginWardrobeSession(); equipPaperDollItem("armor","gear-br1"); setPaperDollView("combat"); setFace("face_2.png"); equipPaperDollItem("weapon","gear-pm"); setGender("male");');
     assert.equal(g.run('paperDollState.patientLoadout.armor'), 'gear-br1');
     assert.equal(g.run('paperDollState.patientLoadout.weapon'), null);
     assert.equal(g.run('paperDollState.combatLoadout.armor'), null);
     assert.equal(g.run('paperDollState.appearance.face'), null);
     assert.equal(g.run('JSON.stringify({stats,inventory,equippedGear,gameProgress})'), combat);
+    assert.equal(g.run('applyWardrobeSession()'),true);
+    assert.equal(g.run('stats.damage'),28);
     const restored = game(Object.fromEntries(g.storage));
     assert.equal(restored.run('JSON.stringify(paperDollState)'), g.run('JSON.stringify(paperDollState)'));
     restored.run('setPaperDollView("patient"); equipPaperDollItem("face",null);');
@@ -838,17 +842,18 @@ test('paper doll gender fallback, missing PNG errors and stable layer order do n
     assert.equal(g.elements.get('layer-armor').style.width, '100%');
 });
 
-test('paper doll storage failures preserve in-memory choices and retry without combat changes', () => {
+test('paper doll storage failures preserve in-memory choices and retry with a durable wardrobe journal', () => {
     const g = game({}, false, ['palata404_paper_doll']);
     const combat = g.run('JSON.stringify({stats,inventory,equippedGear})');
-    g.run('setGender("female"); setPaperDollView("combat"); equipPaperDollItem("headwear","gear-helmet");');
+    g.run('beginWardrobeSession(); setGender("female"); setPaperDollView("combat"); equipPaperDollItem("headwear","gear-helmet"); applyWardrobeSession();');
     assert.equal(g.run('paperDollSaveFailed'), true);
     assert.equal(g.elements.get('paper-doll-save-note').classList.contains('hidden'), false);
     assert.equal(g.storage.has('palata404_paper_doll'), false);
     g.failedKeys.clear(); g.run('retryPaperDollSave();');
     assert.equal(g.run('paperDollSaveFailed'), false);
     assert.equal(JSON.parse(g.storage.get('palata404_paper_doll')).combatLoadout.headwear, 'gear-helmet');
-    assert.equal(g.run('JSON.stringify({stats,inventory,equippedGear})'), combat);
+    assert.equal(g.run('stats.armor'),12);
+    assert.equal(g.run('inventory.filter(i=>i.category==="helmet").length'),1);
 });
 
 test('wardrobe v1 migration retires trial faces while preserving owned gear and inert legacy metadata', () => {
@@ -874,9 +879,10 @@ test('wardrobe cannot equip unowned inventory gear or create quantities through 
     assert.equal(g.run('equipPaperDollItem("weapon","gear-pm")'),false);
     assert.equal(g.run('inventory.length'),0);
     g.run('inventory.push({...DEFAULT_INVENTORY.find(item=>item.category==="armor"),count:1});');
-    const before=g.run('JSON.stringify({inventory,stats,equippedGear})');
+    const before=g.run('JSON.stringify(inventory)');
     g.run('for(let i=0;i<5;i++){equipPaperDollItem("armor","gear-br1");equipPaperDollItem("armor",null)};setPaperDollView("combat");equipPaperDollItem("armor","gear-br1");');
-    assert.equal(g.run('JSON.stringify({inventory,stats,equippedGear})'),before);
+    assert.equal(g.run('JSON.stringify(inventory)'),before);
+    assert.equal(g.run('stats.armor'),28);
 });
 
 test('one paper doll renderer synchronizes both views and removes front and rear parts when unequipped', () => {
@@ -1662,4 +1668,96 @@ test('approved male review follows all16 face IDs and replays the saved registra
     assert.equal(g.run('paperDollItemLayers(selectedPaperDollItem("hair"),"male")[0].placementByGender.male.y'),-3.5);
     assert.equal(g.run('paperDollItemLayers(selectedPaperDollItem("hair"),"male")[0].placementByGender.male.x'),320.05);
     assert.equal(g.run('JSON.stringify({stats,inventory,equippedGear})'),protectedState);
+});
+
+test('four AKS instances share one visual model and preserve distinct seeded progress', () => {
+    const g=game();
+    assert.equal(g.run('inventory.filter(i=>i.modelId==="gear-aks").length'),4);
+    assert.equal(g.run('new Set(inventory.filter(i=>i.modelId==="gear-aks").map(i=>i.instanceId)).size'),4);
+    assert.equal(g.run('PAPER_DOLL_ITEMS.filter(i=>i.modelId==="gear-aks").every(i=>i.thumbnail===PAPER_DOLL_ITEMS.find(i=>i.id==="gear-aks").thumbnail)'),true);
+    assert.equal(g.run('inventory.filter(i=>i.modelId==="gear-aks").map(i=>calculateWeaponStats(i).weaponDamage).join(",")'),'35,39,45,54');
+    g.run('saveGameProgress()');
+    const r=game(Object.fromEntries(g.storage));
+    assert.equal(r.run('JSON.stringify(inventory.filter(i=>i.modelId==="gear-aks"))'),g.run('JSON.stringify(inventory.filter(i=>i.modelId==="gear-aks"))'));
+});
+test('guaranteed upgrades charge exact costs, stop at +5 and Absolute is one permanent 20% bonus', () => {
+    const g=game();g.run('stats.silver=10000;stats.equipmentParts=100;stats.experimentalComponents=2;var id=inventory.find(i=>i.paperDollId==="gear-aks").instanceId;');
+    const damage=[35,37,39,41,43,45];
+    for(let i=0;i<5;i++){assert.equal(g.run(`calculateWeaponStats(weaponInventoryItem(id)).weaponDamage`),damage[i]);assert.equal(g.run('upgradeWeaponInstance(id).ok'),true);}
+    assert.equal(g.run('stats.silver'),7050);assert.equal(g.run('stats.equipmentParts'),78);
+    assert.equal(g.run('upgradeWeaponInstance(id).ok'),true);assert.equal(g.run('calculateWeaponStats(weaponInventoryItem(id)).weaponDamage'),54);
+    assert.equal(g.run('weaponInventoryItem(id).rarity'),'common');assert.equal(g.run('upgradeWeaponInstance(id).ok'),false);
+    assert.equal(g.run('stats.silver'),4550);assert.equal(g.run('stats.equipmentParts'),63);assert.equal(g.run('stats.experimentalComponents'),1);
+    assert.equal(g.run('weaponInventoryItem("demo-aks-improved").upgradeLevel'),2);
+    const r=game(Object.fromEntries(g.storage));assert.equal(r.run('calculateWeaponStats(weaponInventoryItem("gear-aks")).weaponDamage'),54);
+});
+test('insufficient funds and denied journals do not spend resources or change progress', () => {
+    const g=game();g.run('var id=weaponInventoryItem("gear-aks").instanceId;stats.silver=149;');
+    assert.equal(g.run('upgradeWeaponInstance(id).ok'),false);assert.equal(g.run('stats.silver'),149);assert.equal(g.run('weaponInventoryItem(id).upgradeLevel'),0);
+    g.run('stats.silver=500');g.failedKeys.add('palata404_weapon_transaction');assert.equal(g.run('upgradeWeaponInstance(id).ok'),false);assert.equal(g.run('stats.silver'),500);assert.equal(g.run('weaponInventoryItem(id).upgradeLevel'),0);
+});
+test('interrupted weapon saves recover the exact item and resource snapshot without double charging', () => {
+    const g=game({},false,['palata404_inventory']);g.run('stats.silver=500;var id=weaponInventoryItem("gear-aks").instanceId;');
+    assert.equal(g.run('upgradeWeaponInstance(id).ok'),true);assert.equal(g.storage.has('palata404_weapon_transaction'),true);
+    const r=game(Object.fromEntries(g.storage));assert.equal(r.run('weaponInventoryItem("gear-aks").upgradeLevel'),1);assert.equal(r.run('stats.silver'),350);
+    r.run('saveGameProgress()');assert.equal(r.storage.has('palata404_weapon_transaction'),false);
+    const again=game(Object.fromEntries(r.storage));assert.equal(again.run('stats.silver'),350);
+});
+test('module slots open at +0/+2/+4 and purchased modules may be reused without another payment', () => {
+    const g=game();g.run('stats.silver=10000;stats.equipmentParts=100;');
+    assert.equal(g.run('setWeaponModule("gear-aks","aiming","accuracy").ok'),false);
+    assert.equal(g.run('setWeaponModule("gear-aks","magazine","extended").ok'),false);
+    assert.equal(g.run('setWeaponModule("gear-aks","mechanism","accelerated").ok'),true);
+    assert.equal(g.run('calculateWeaponStats(weaponInventoryItem("gear-aks")).cooldown'),3.8);
+    const balance=g.run('stats.silver');assert.equal(g.run('setWeaponModule("demo-aks-improved","mechanism","accelerated").ok'),true);assert.equal(g.run('stats.silver'),balance);
+    assert.equal(g.run('setWeaponModule("demo-aks-improved","aiming","accuracy").ok'),true);assert.equal(g.run('calculateWeaponStats(weaponInventoryItem("demo-aks-improved")).miss'),0);
+    assert.equal(g.run('setWeaponModule("demo-aks-rare","magazine","extended").ok'),true);assert.equal(g.run('calculateWeaponStats(weaponInventoryItem("demo-aks-rare")).capacity'),13);
+    assert.equal(g.run('setWeaponModule("demo-aks-rare","aiming","critical").ok'),true);assert.equal(g.run('calculateWeaponStats(weaponInventoryItem("demo-aks-rare")).critical'),.12);
+    assert.equal(g.run('setWeaponModule("demo-aks-rare","mechanism","quick-reload").ok'),true);assert.equal(g.run('calculateWeaponStats(weaponInventoryItem("demo-aks-rare")).reload'),2);
+    assert.equal(g.run('setWeaponModule("gear-knife","mechanism","accelerated").ok'),false);
+    const r=game(Object.fromEntries(g.storage));assert.equal(r.run('calculateWeaponStats(weaponInventoryItem("demo-aks-rare")).capacity'),13);
+});
+test('combat calculator clamps future bonuses and does not accumulate on reopen/equip', () => {
+    const g=game();assert.equal(g.run('calculateWeaponStats(weaponInventoryItem("gear-aks"),{cooldown:-100,miss:-4,critical:9}).cooldown'),.25);
+    assert.equal(g.run('calculateWeaponStats(weaponInventoryItem("gear-aks"),{miss:-4}).miss'),0);
+    assert.equal(g.run('calculateWeaponStats(weaponInventoryItem("gear-aks"),{critical:9}).critical'),1);
+    g.run('setPaperDollView("combat");equipPaperDollItem("weapon","weapon-demo-aks-experimental");for(let i=0;i<5;i++){recalculateEquipmentStats();renderWardrobe();}');
+    assert.equal(g.run('stats.damage'),64);
+});
+test('manual shots consume one round; cooldown and reload never schedule automatic attacks', () => {
+    const g=game();g.run('setPaperDollView("combat");equipPaperDollItem("weapon","gear-aks");stats.baseArmor=10000;recalculateEquipmentStats();startBossFight("doctor");bossCurrentHp=bossMaxHp=10000;performPlayerAttack();performPlayerAttack();');
+    assert.equal(g.run('battleWeaponAmmo'),9);const hp=g.run('bossCurrentHp');g.advance(4001);assert.equal(g.run('bossCurrentHp'),hp);assert.equal(g.run('battleWeaponAmmo'),9);
+    assert.equal(g.run('startWeaponReload()'),true);g.run('performPlayerAttack()');assert.equal(g.run('bossCurrentHp'),hp);g.advance(2501);assert.equal(g.run('battleWeaponAmmo'),10);assert.equal(g.run('bossCurrentHp'),hp);
+    g.run('performPlayerAttack()');assert.equal(g.run('battleWeaponAmmo'),9);assert.equal(g.run('bossCurrentHp'),hp-45);
+});
+test('misses consume ammo, critical hits use the centralized multiplier, empty magazines reload', () => {
+    const g=game();g.run('setPaperDollView("combat");equipPaperDollItem("weapon","gear-aks");startBossFight("doctor");bossCurrentHp=bossMaxHp=10000;Math.random=()=>0;performPlayerAttack()');
+    assert.equal(g.run('bossCurrentHp'),10000);assert.equal(g.run('battleWeaponAmmo'),9);
+    g.advance(4001);g.run('var rolls=[.5,0];Math.random=()=>rolls.shift()??.5;performPlayerAttack()');assert.equal(g.run('bossCurrentHp'),9932);
+    g.advance(4001);g.run('battleWeaponAmmo=1;performPlayerAttack()');assert.equal(g.run('battleWeaponAmmo'),0);assert.equal(g.run('weaponReloadEndsAt>Date.now()'),true);
+    g.advance(2501);assert.equal(g.run('battleWeaponAmmo'),10);
+});
+test('raid parts and boss component are additional durable rewards without changing MVP payouts', () => {
+    const g=game();g.run('stats.baseDamage=1000;recalculateEquipmentStats();startBossFight("doctor");performPlayerAttack()');
+    assert.equal(g.run('stats.equipmentParts'),3);assert.equal(g.run('stats.experimentalComponents'),1);
+    assert.equal(g.run('lastBattleResult.payout.silver'),84);assert.equal(g.run('lastBattleResult.weaponMaterials.equipmentParts'),3);
+    g.run('handleVictory();openLastBattleResult()');assert.equal(g.run('stats.equipmentParts'),3);
+    const r=game(Object.fromEntries(g.storage));assert.equal(r.run('stats.equipmentParts'),3);assert.equal(r.run('stats.experimentalComponents'),1);
+});
+test('draft cancellation restores all appearance and both loadouts without leaking into autosaves', () => {
+    const g=game();const before=g.run('JSON.stringify(paperDollState)');g.run('beginWardrobeSession();setGender("female");setPaperDollView("combat");equipPaperDollItem("weapon","weapon-demo-aks-rare");saveGameProgress();');
+    assert.equal(g.run('getEquippedItem("weapon")'),undefined);assert.equal(JSON.stringify(JSON.parse(g.storage.get('palata404_paper_doll'))),before);
+    g.run('discardWardrobeSession()');assert.equal(g.run('JSON.stringify(paperDollState)'),before);
+});
+test('old duplicate model items retain separate IDs and corrupted progress gets safe defaults', () => {
+    const g=game({palata404_inventory:JSON.stringify([{name:'Штурмовий АКС-74У',category:'weapon',count:2,upgradeLevel:999,absolute:true,rarity:'bad',modules:{aiming:'bad'}}])});
+    assert.equal(g.run('new Set(inventory.filter(i=>i.modelId==="gear-aks").map(i=>i.instanceId)).size'),5);
+    assert.equal(g.run('weaponInventoryItem("gear-aks").rarity'),'common');assert.equal(g.run('weaponInventoryItem("gear-aks").modules.aiming'),'standard');
+});
+
+test('legacy weapons with unknown model and rarity keep their bonus without breaking inventory UI', () => {
+    const g=game({palata404_inventory:JSON.stringify([{name:'Legacy tool',category:'weapon',count:1,modelId:'retired-model',rarity:'unsupported',damageBonus:12}])});
+    g.run('renderMinecraftStash();openItemInfo(inventory[0]);equippedGear.weapon="Legacy tool";recalculateEquipmentStats()');
+    assert.equal(g.run('stats.damage'),22);
+    assert.equal(g.run('inventory[0].count'),1);
 });

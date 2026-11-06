@@ -48,12 +48,18 @@ def approved_current_hash(relative, old_hash):
     """No broad exemption: only the explicit user-approved replacement list."""
     if hashlib.sha256((ROOT/relative).read_bytes()).hexdigest()==old_hash:
         return old_hash
+    weapons=ROOT/'review/weapon-archive-20261106/runtime-receipt.json'
+    if weapons.exists():
+        receipt=json.loads(weapons.read_text())
+        if receipt['runtime_before_sha256'].get(relative)==old_hash:
+            assert hashlib.sha256((weapons.parent/'before'/relative).read_bytes()).hexdigest()==old_hash
+            return receipt['runtime_after_sha256'][relative]
     rendering=ROOT/'review/avatar-render-fixes-20261105/runtime-receipt.json'
     if rendering.exists():
         receipt=json.loads(rendering.read_text())
         if receipt['runtime_before_sha256'].get(relative)==old_hash:
             assert hashlib.sha256((rendering.parent/'before'/relative).read_bytes()).hexdigest()==old_hash
-            return receipt['runtime_after_sha256'][relative]
+            return approved_current_hash(relative,receipt['runtime_after_sha256'][relative])
     wrist=ROOT/'review/female-knife-wrist-20261105/runtime-receipt.json'
     if wrist.exists():
         receipt=json.loads(wrist.read_text())
@@ -142,6 +148,9 @@ def accepted_catalog_snapshot(items):
             changes=json.loads(latest.read_text()).get('catalog_changes',{})
             item.update(json.loads(latest.read_text()).get('preexisting_weapon_presentation',{}).get(item['id'],{}))
             item.update(changes.get(item['id'],{}))
+        # The subsequently approved melee restoration enabled the existing knife.
+        if item['id']=='gear-knife' and (ROOT/'review/male-facial-hair-approved-20261105/runtime-receipt.json').exists():
+            item.pop('avatarPoseUnavailable',None);item['avatarWeapon']=True
         result.append(item)
     return result
 

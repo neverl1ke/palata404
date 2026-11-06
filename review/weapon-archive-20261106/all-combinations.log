@@ -1,0 +1,18 @@
+test_all_90_combinations_layers_backgrounds_and_reload (tests.test_paper_doll_audit.AuditBrowserTests.test_all_90_combinations_layers_backgrounds_and_reload) ... Static fit matrix: male None
+Static fit matrix: male face-asian
+Static fit matrix: male face-young
+Static fit matrix: male face-exhausted
+Static fit matrix: male face-elder
+Static fit matrix: male face-alternative
+Static fit matrix: female None
+Static fit matrix: female face-asian
+Static fit matrix: female face-young
+Static fit matrix: female face-exhausted
+Static fit matrix: female face-elder
+Static fit matrix: female face-alternative
+ok
+
+----------------------------------------------------------------------
+Ran 1 test in 128.022s
+
+OK

@@ -79,7 +79,7 @@ class AppearanceCatalogTests(unittest.TestCase):
                 self.page.wait_for_function('()=>["layer-hair-rear","wardrobe-layer-hair-rear"].every(id=>{const i=document.getElementById(id);return i&&i.complete&&i.naturalWidth===941&&!i.classList.contains("hidden")})')
                 self.assertTrue(self.page.evaluate('document.documentElement.scrollWidth<=innerWidth+1'))
                 self.page.screenshot(path=str(ROOT/'test-results'/f'approved-temple-{hair}-{mode}-mobile.png'))
-        self.page.reload(wait_until='networkidle');self.page.evaluate('openCustomization()');self.wait_hair()
+        self.page.evaluate('typeof applyWardrobeSession === "function" && applyWardrobeSession()');self.page.reload(wait_until='networkidle');self.page.evaluate('openCustomization()');self.wait_hair()
         self.assertEqual(self.page.evaluate('paperDollState.appearance.hair'),'hair-m6-curly-crop')
         for hair in ['hair-m6-mullet','hair-m6-curly-crop']:
             self.page.evaluate('h=>{equipPaperDollItem("hair",h);equipPaperDollItem("hair","hair-none")}',hair)
@@ -134,7 +134,7 @@ class AppearanceCatalogTests(unittest.TestCase):
         self.page.evaluate('setGender("female");equipPaperDollItem("face","face-goth-black-lips");equipPaperDollItem("hair","hair-textured-short");setHairColor("black");equipPaperDollItem("face","face-goth-septum");setHairColor("white");setGender("male");equipPaperDollItem("hair","hair-m6-asymmetric-fringe");setGender("female");equipPaperDollItem("face","face-female-new-almond-eyes");equipPaperDollItem("hair","hair-textured-short");setHairColor("ginger")');self.wait_hair()
         self.assertEqual(self.page.locator('#layer-hair').evaluate('i=>i.paperHairFitKey'),'F17/hair-textured-short')
         self.assertEqual(self.page.locator('[data-paper-extra]').count(),0)
-        self.page.reload(wait_until='networkidle');self.page.evaluate('openCustomization()');self.wait_hair()
+        self.page.evaluate('typeof applyWardrobeSession === "function" && applyWardrobeSession()');self.page.reload(wait_until='networkidle');self.page.evaluate('openCustomization()');self.wait_hair()
         self.assertEqual(self.page.evaluate('paperDollState.appearance.face'),'face-female-new-almond-eyes')
         self.assertEqual(self.page.evaluate('paperDollState.appearance.hairColor'),'ginger')
         for gender in ['female','male']:

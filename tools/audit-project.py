@@ -5,13 +5,17 @@ from urllib.parse import unquote,urlsplit
 ROOT=Path(__file__).resolve().parents[1]
 def audit():
  paths=subprocess.check_output(['git','ls-files','-z'],cwd=ROOT).decode().rstrip('\0').split('\0');known=set(paths);case={p.lower():p for p in paths};files=[];edges=[];missing=[];dynamic=[];texts={};hashes=collections.defaultdict(list)
+ # Read Git blob IDs in one batch; per-file subprocesses make large art archives slow.
+ existing=[path for path in paths if (ROOT/path).is_file()]
+ blob_ids=subprocess.check_output(['git','hash-object','--stdin-paths'],input='\n'.join(existing)+'\n',cwd=ROOT,text=True).splitlines()
+ blobs=dict(zip(existing,blob_ids,strict=True))
  text_ext={'.js','.cjs','.py','.html','.css','.md','.json','.yml','.yaml','.txt'}
  for path in paths:
   p=ROOT/path
   if not p.is_file():continue
   data=p.read_bytes();sha=hashlib.sha256(data).hexdigest();hashes[sha].append(path)
   category='runtime' if '/' not in path and p.suffix in {'.js','.css','.html','.png','.jpg'} else path.split('/')[0] if '/' in path else 'config/docs'
-  files.append({'path':path,'bytes':len(data),'sha256':sha,'git_blob':subprocess.check_output(['git','hash-object',path],cwd=ROOT,text=True).strip(),'category':category})
+  files.append({'path':path,'bytes':len(data),'sha256':sha,'git_blob':blobs[path],'category':category})
   if p.suffix in text_ext:
    try:texts[path]=data.decode()
    except UnicodeDecodeError:pass

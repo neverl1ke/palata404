@@ -15,6 +15,7 @@ function normalizePaperDollState(value, legacy = {}) {
         patientLoadout: emptyPaperDollLoadout(), combatLoadout: emptyPaperDollLoadout() };
     for (const key of ['patientLoadout', 'combatLoadout']) {
         const source = valid && value[key] && typeof value[key] === 'object' ? value[key] : {};
+        if (source.helmet === 'gear-helmet' && !source.headwear) source.headwear = source.helmet;
         for (const slot of Object.keys(state[key])) {
             if (slot === 'face') continue;
             const id = valid && value.schemaVersion === 1 ? PAPER_DOLL_LEGACY_ITEMS[source[slot]] || source[slot] : source[slot];
@@ -30,7 +31,7 @@ function normalizePaperDollState(value, legacy = {}) {
     }
     if (!valid) {
         for (const item of PAPER_DOLL_ITEMS.filter(entry => entry.inventoryName && isPaperDollItemOwned(entry))) {
-            if (equippedGear[item.inventoryCategory] === item.inventoryName) state.combatLoadout[item.slot] = item.id;
+            if (equippedGear[item.inventoryCategory] === item.inventoryName || item.inventoryInstanceId && equippedGear[item.inventoryCategory] === item.inventoryInstanceId) state.combatLoadout[item.slot] = item.id;
         }
     }
     if (!PAPER_DOLL_ITEMS.some(item => item.slot === 'beard' && item.id === state.appearance.beard && isPaperDollItemOwned(item))) state.appearance.beard = null;
@@ -47,7 +48,7 @@ function paperDollItemSupportsGender(item, selectedGender = paperDollState.selec
 
 function isPaperDollItemOwned(item) {
     return Boolean(item && !PAPER_DOLL_RETIRED_FACES.has(item.id) && (item.availableByDefault === true ||
-        (item.inventoryName && inventory.some(entry => entry.name === item.inventoryName && entry.category === item.inventoryCategory && entry.count > 0))));
+        (item.inventoryInstanceId ? inventory.some(entry => entry.instanceId === item.inventoryInstanceId && entry.count > 0) : item.inventoryName && inventory.some(entry => entry.name === item.inventoryName && entry.category === item.inventoryCategory && entry.count > 0))));
 }
 
 function selectedPaperDollItem(slot) {
@@ -67,7 +68,8 @@ function paperDollRenderedFace(selectedGender = paperDollState.selectedGender) {
 }
 
 function loadPaperDollState(legacy) {
-    const raw = safeStorageGet(PAPER_DOLL_STORAGE_KEY);
+    const pending = readWeaponTransaction()?.paperDoll;
+    const raw = pending ? JSON.stringify(pending) : safeStorageGet(PAPER_DOLL_STORAGE_KEY);
     let value = null;
     try { value = JSON.parse(raw || 'null'); } catch { /* Keep old cosmetic choices. */ }
     const state = normalizePaperDollState(value, legacy);
@@ -83,7 +85,7 @@ function loadPaperDollState(legacy) {
 }
 
 function savePaperDollState() {
-    paperDollSaveFailed = !safeStorageSet(PAPER_DOLL_STORAGE_KEY, JSON.stringify(paperDollState));
+    paperDollSaveFailed = !safeStorageSet(PAPER_DOLL_STORAGE_KEY, JSON.stringify(wardrobeSession?.savedState || paperDollState));
     const note = document.getElementById('paper-doll-save-note');
     if (note) note.classList.toggle('hidden', !paperDollSaveFailed);
     return !paperDollSaveFailed;
@@ -100,6 +102,9 @@ function syncLegacyPaperDollSelection() {
 }
 
 function commitPaperDollSelection() {
+    if (wardrobeSession) { syncLegacyPaperDollSelection(); renderWardrobe(); return; }
+    syncCombatEquipmentFromPaperDoll();
+    recalculateEquipmentStats();
     syncLegacyPaperDollSelection();
     paperDollSaveFailed = !saveGameProgress();
     updateCharacterLayers();
@@ -268,7 +273,7 @@ function renderPaperDollAt(host, prefix = '') {
     // Non-DOM consumers can still inspect the synchronous layer definitions.
     if (typeof host.cloneNode !== 'function') return renderPaperDollLayersAt(host,prefix);
     const key=JSON.stringify([prefix,paperDollState.selectedGender,paperDollState.activeViewMode,
-        paperDollState.appearance,PAPER_DOLL_LAYER_ORDER.map(slot=>selectedPaperDollItem(slot)?.id),[...failedPaperDollImages]]);
+        paperDollState.appearance,PAPER_DOLL_LAYER_ORDER.map(slot=>selectedPaperDollItem(slot)?.id),[...failedPaperDollImages],wardrobeSession && prefix==='wardrobe-' ? [...wardrobeHiddenSlots].sort() : []]);
     if (host.paperDollVisualKey===key) return;
     host.paperDollVisualKey=key;
     const generation=host.paperDollGeneration=(host.paperDollGeneration||0)+1;
@@ -301,7 +306,7 @@ function renderPaperDollLayersAt(host, prefix = '') {
     PAPER_DOLL_LAYER_ORDER.forEach((slot, index) => {
         const definition = PAPER_DOLL_SLOTS[slot];
         if (!definition) return;
-        const item = slot === 'baseBody' ? { image: PAPER_DOLL_BODIES[selectedGender] } : slot === 'face' ? paperDollRenderedFace(selectedGender) : selectedPaperDollItem(slot);
+        const item = wardrobeSession && prefix === 'wardrobe-' && wardrobeHiddenSlots.has(slot) ? null : slot === 'baseBody' ? { image: PAPER_DOLL_BODIES[selectedGender] } : slot === 'face' ? paperDollRenderedFace(selectedGender) : selectedPaperDollItem(slot);
         const parts = paperDollItemLayers(item || {}, selectedGender);
         const review = slot === 'hair' && maleHairReviewFor(selectedGender, paperDollState.appearance.face, item?.id);
         const layered = (Array.isArray(item?.layers) && item.layers.length > 0) ||

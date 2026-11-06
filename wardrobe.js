@@ -40,7 +40,11 @@ function selectWardrobeCategory(category) {
 }
 
 function selectWardrobeSlot(slot) {
-    if (!WARDROBE_CATEGORIES[wardrobeCategory].slots.includes(slot)) return;
+    if (!WARDROBE_CATEGORIES[wardrobeCategory].slots.includes(slot)) {
+        const category=Object.entries(WARDROBE_CATEGORIES).find(([,value])=>value.slots.includes(slot));
+        if (!category) return;
+        wardrobeCategory=category[0];
+    }
     wardrobeSlot = slot;
     wardrobePaletteExpanded = false;
     const panel = document.getElementById('wardrobe-items');
@@ -79,9 +83,9 @@ function wardrobeItemStatus(item) {
 
 // Presentation only: missing graphics never change ownership or the saved outfit.
 function wardrobeImageStatus(item, detailed = false) {
-    if (item?.avatarPoseUnavailable) return { state: 'partial', text: 'Поза з ножем поки недоступна.' };
+    if (item?.avatarPoseUnavailable) return { state: 'partial', text: 'Поза с ножом пока недоступна.' };
     if (item?.avatarWeapon && selectedPaperDollItem('upperBody')?.id === 'patient-tunic')
-        return { state: 'partial', text: 'Щоб показати позу зі зброєю, зніміть туніку в цьому комплекті.' };
+        return { state: 'partial', text: 'Для позы с оружием снимите тунику в этом комплекте.' };
     if (item?.avatarWeapon || item?.noImageRequired) return { state: 'ready', text: '' };
     const layers = paperDollItemLayers(item, paperDollState.selectedGender);
     const ready = layers.filter(layer => paperDollImageCandidates(layer, paperDollState.selectedGender).some(path => !failedPaperDollImages.has(path))).length;
@@ -89,11 +93,11 @@ function wardrobeImageStatus(item, detailed = false) {
     const equipped = item && selectedPaperDollItem(item.slot)?.id === item.id;
     if (state === 'ready') return { state, text: '' };
     if (state === 'partial') return { state, text: detailed
-        ? `${equipped ? 'Предмет екіпіровано. ' : ''}Частина PNG-шарів відсутня або не завантажилася. На персонажі ${equipped ? 'видно' : 'буде видно'} лише доступні частини.`
-        : 'PNG неповний · лише частина шарів' };
+        ? `${equipped ? 'Предмет надет. ' : ''}Изображение загружено частично. На персонаже ${equipped ? 'видны' : 'будут видны'} только доступные части.`
+        : 'Изображение загружено частично' };
     return { state, text: detailed
-        ? `${equipped ? 'Предмет екіпіровано в цьому комплекті, але на персонажі він не відображається. ' : ''}PNG-накладку ще не підготовлено або не вдалося завантажити.`
-        : equipped ? 'PNG відсутній · на моделі не видно' : 'Зображення не підготовлено' };
+        ? `${equipped ? 'Предмет надет в этом комплекте, но на персонаже он не отображается. ' : ''}Изображение ещё не подготовлено или не удалось загрузить.`
+        : equipped ? 'На персонаже не видно' : 'Изображение недоступно' };
 }
 
 function renderWardrobeImageNotes() {
@@ -125,7 +129,7 @@ function wardrobeItemCard(item) {
         <span class="wardrobe-item-image${item.slot === 'face' ? ' wardrobe-face-portrait' : item.thumbnail && item.slot === 'weapon' ? ' weapon-icon-frame' : ''}">${iconHTML(item.icon || PAPER_DOLL_SLOTS[item.slot].icon, 'large')}${source ? `<img src="${escapeHTML(source)}" alt="" aria-hidden="true">` : ''}</span>
         <strong class="wardrobe-item-name">${escapeHTML(item.name)}</strong>
         <span class="wardrobe-item-state">${inspected && !equipped ? 'Огляд · ' : ''}${wardrobeItemStatus(item)}</span>
-        <span class="wardrobe-image-note${source || item.noImageRequired ? ' hidden' : ''}" data-paper-image-item="${escapeHTML(item.id)}">Зображення не підготовлено</span>
+        <span class="wardrobe-image-note${source || item.noImageRequired ? ' hidden' : ''}" data-paper-image-item="${escapeHTML(item.id)}">Изображение недоступно</span>
     </button>`;
 }
 

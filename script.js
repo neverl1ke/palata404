@@ -116,7 +116,7 @@ friendsList = friendsList
     }));
 
 function openFriends() {
-    closeOtherModals(['friends-modal']);
+    if (closeOtherModals(['friends-modal']) === false) return;
     closeInventory();
     closeCustomization();
     closeSettings();
@@ -219,6 +219,9 @@ const DEFAULT_STATS = {
     enemiesKilled: 0,
     bossesKilled: 0,
     pillsUsed: 5,
+    equipmentParts: 0,
+    experimentalComponents: 0,
+    weaponCatalogVersion: 0,
     gymRounds: 0
 };
 
@@ -258,7 +261,7 @@ let equippedGear = loadSaveData('palata404_equipped', {
     armor: null
 });
 ['weapon', 'helmet', 'armor'].forEach(slot => {
-    const item = inventory.find(entry => entry.category === slot && entry.name === equippedGear[slot]);
+    const item = inventory.find(entry => entry.category === slot && (entry.instanceId === equippedGear[slot] || entry.name === equippedGear[slot]));
     if (!item || item.count <= 0) equippedGear[slot] = null;
 });
 
@@ -274,6 +277,7 @@ stats.baseArmor = Number.isSafeInteger(stats.baseArmor) && stats.baseArmor >= 0
     : Math.max(DEFAULT_STATS.armor, stats.armor - equippedArmorBonus);
 recalculateEquipmentStats();
 
+initializeWeaponCatalog();
 let paperDollState = loadPaperDollState({ gender, face: currentFace, hair: currentHair });
 syncLegacyPaperDollSelection();
 
@@ -296,7 +300,18 @@ function normalizeInventory(items) {
                 normalized[field] = Number.isSafeInteger(bonus) && bonus >= 0 ? bonus : 0;
             }
         });
-        const existing = result.find(entry => entry.name === normalized.name && entry.category === normalized.category);
+        if (normalized.category === 'weapon' && weaponModelId(normalized)) {
+            for (let n = 0; n < Math.min(rawCount, 100); n++) {
+                const weapon = normalizeWeaponInstance({ ...normalized, instanceId: n ? `${normalized.instanceId || 'legacy'}-copy-${result.length}` : normalized.instanceId }, result.length);
+                if (result.some(i => i.instanceId === weapon.instanceId)) weapon.instanceId += `-${result.length}`;
+                if (n && weapon.paperDollId) delete weapon.paperDollId;
+                result.push(weapon);
+            }
+            // Preserve unusually large legacy stacks without unbounded allocation.
+            if (rawCount > 100) result[result.length - 1].count += rawCount - 100;
+            return;
+        }
+        const existing = result.find(entry => entry.name === normalized.name && entry.category === normalized.category && entry.moduleKey === normalized.moduleKey);
         if (existing) existing.count = Math.min(Number.MAX_SAFE_INTEGER, existing.count + normalized.count);
         else result.push(normalized);
     });
@@ -304,11 +319,11 @@ function normalizeInventory(items) {
 }
 
 function getEquippedItem(slot) {
-    return inventory.find(item => item.category === slot && item.name === equippedGear[slot] && item.count > 0);
+    return inventory.find(item => item.category === slot && (item.instanceId === equippedGear[slot] || item.name === equippedGear[slot]) && item.count > 0);
 }
 
 function recalculateEquipmentStats() {
-    stats.damage = stats.baseDamage + (getEquippedItem('weapon')?.damageBonus || 0);
+    stats.damage = getCombatWeaponStats().damage;
     stats.armor = stats.baseArmor + (getEquippedItem('helmet')?.armorBonus || 0)
         + (getEquippedItem('armor')?.armorBonus || 0);
 }
@@ -350,9 +365,9 @@ if (gameProgress.rubbleCleared) {
 function loadSaveData(key, fallback) {
     let saved;
     try {
-        const pendingFields = { palata404_stats: 'stats', palata404_inventory: 'inventory', palata404_boss_kills: 'bossKills' };
+        const pendingFields = { palata404_stats: 'stats', palata404_inventory: 'inventory', palata404_boss_kills: 'bossKills', palata404_equipped: 'equippedGear' };
         const field = pendingFields[key];
-        const pendingState = pendingBattleReward?.state || pendingStaffReward?.state;
+        const pendingState = pendingBattleReward?.state || pendingStaffReward?.state || readWeaponTransaction();
         saved = pendingState && field && pendingState[field] !== undefined
             ? JSON.stringify(pendingState[field]) : safeStorageGet(key);
     } catch (e) {
@@ -384,7 +399,7 @@ function normalizeStats(savedStats) {
 
     const wholeNumberFields = [
         'silver', 'pills', 'bucks', 'hp', 'maxHp', 'madness', 'energy', 'maxEnergy',
-        'level', 'exp', 'nextLvlExp', 'damage', 'armor', 'daysInClinic',
+        'level', 'exp', 'nextLvlExp', 'damage', 'armor', 'daysInClinic', 'equipmentParts', 'experimentalComponents', 'weaponCatalogVersion',
         'madnessAttacks', 'enemiesKilled', 'bossesKilled', 'pillsUsed', 'gymRounds'
     ];
     wholeNumberFields.forEach(key => {
@@ -409,12 +424,12 @@ function normalizeStats(savedStats) {
 function saveGameProgress() {
     // Journal the entire reward state first. An interrupted write restores snapshots,
     // never re-runs experience gains or increments the boss counter.
-    if (!prepareBattleRewardSave() || !prepareStaffRewardSave()) return false;
+    if (!prepareWeaponSave() || !prepareBattleRewardSave() || !prepareStaffRewardSave()) return false;
     const saved = [
         safeStorageSet('palata404_stats', JSON.stringify(stats)),
-        safeStorageSet('palata404_gender', gender),
-        safeStorageSet('palata404_hair', currentHair),
-        safeStorageSet('palata404_face', currentFace),
+        safeStorageSet('palata404_gender', wardrobeSession?.savedState.selectedGender || gender),
+        safeStorageSet('palata404_hair', wardrobeSession?.savedState.appearance.hair || currentHair),
+        safeStorageSet('palata404_face', wardrobeSession ? wardrobeSession.savedState.appearance.face || '' : currentFace),
         safeStorageSet('palata404_clothes', currentClothes),
         safeStorageSet('palata404_inventory', JSON.stringify(inventory)),
         safeStorageSet('palata404_equipped', JSON.stringify(equippedGear)),
@@ -424,7 +439,7 @@ function saveGameProgress() {
         safeStorageSet('palata404_boss_kills', JSON.stringify(bossKillsCount))
     ].every(Boolean);
     const staffSaved = saved && saveStaffArchiveState();
-    return finishStaffRewardSave(finishBattleRewardSave(staffSaved));
+    return finishWeaponSave(finishStaffRewardSave(finishBattleRewardSave(staffSaved)));
 }
 
 function getPlayerRank(level) {
@@ -568,7 +583,7 @@ function toggleMapModal(show) {
     const modal = document.getElementById('map-modal');
     if (!modal) return;
     if (show) {
-        closeOtherModals(['map-modal']);
+        if (closeOtherModals(['map-modal']) === false) return;
         modal.classList.remove('hidden');
         showFloorsList();
     } else {
@@ -677,7 +692,7 @@ function handleNodeClick(node, floor) {
 }
 
 function openSettings() {
-    closeOtherModals(['settings-modal']);
+    if (closeOtherModals(['settings-modal']) === false) return;
     closeInventory();
     closeCustomization();
     closeFriends();
@@ -692,7 +707,7 @@ function closeSettings() {
 }
 
 function openBank() {
-    closeOtherModals(['bank-modal']);
+    if (closeOtherModals(['bank-modal']) === false) return;
     const modal = document.getElementById('bank-modal');
     if (modal) modal.classList.remove('hidden');
 }
@@ -703,7 +718,7 @@ function closeBank() {
 }
 
 function openInventory() {
-    closeOtherModals(['inventory-modal']);
+    if (closeOtherModals(['inventory-modal']) === false) return;
     closeCustomization();
     closeFriends();
     closeDossier();
@@ -728,7 +743,7 @@ function setCategoryFilter(category, btnElem) {
 }
 
 function inventoryItemArt(item) {
-    const catalog = PAPER_DOLL_ITEMS.find(entry => entry.inventoryName === item.name && entry.inventoryCategory === item.category);
+    const catalog = PAPER_DOLL_ITEMS.find(entry => item.instanceId ? entry.inventoryInstanceId === item.instanceId : entry.inventoryName === item.name && entry.inventoryCategory === item.category);
     return catalog?.thumbnail
         ? `<span class="weapon-icon-frame"><img src="${escapeHTML(catalog.thumbnail)}" alt="" aria-hidden="true" draggable="false"></span>`
         : iconHTML(item.icon);
@@ -750,9 +765,10 @@ function renderMinecraftStash() {
 
         if (filteredItems[i]) {
             let item = filteredItems[i];
+            if (weaponModelId(item) && Object.hasOwn(WEAPON_RARITIES,item.rarity)) { slot.dataset.rarity=item.rarity; slot.title=weaponItemLabel(item)+' · '+WEAPON_RARITIES[item.rarity].label; }
 
             const isEquipped = (
-                (item.category === 'weapon' && equippedGear.weapon === item.name) ||
+                (item.category === 'weapon' && getEquippedItem('weapon') === item) ||
                 (item.category === 'helmet' && equippedGear.helmet === item.name) ||
                 (item.category === 'armor' && equippedGear.armor === item.name)
             );
@@ -774,12 +790,12 @@ function renderMinecraftStash() {
 function openItemInfo(item) {
     selectedItemForAction = item;
     const titleElem = document.getElementById('item-info-title');
-    if (titleElem) titleElem.innerHTML = `${inventoryItemArt(item)} ${escapeHTML(item.name)}`;
+    if (titleElem) titleElem.innerHTML = `${inventoryItemArt(item)} ${escapeHTML(weaponModelId(item) ? weaponItemLabel(item) : item.name)}`;
 
     let bodyHtml = `<p style="color: #a3927d;">${escapeHTML(item.desc || 'Немає опису предмета.')}</p>`;
 
     const isEquipped = (
-        (item.category === 'weapon' && equippedGear.weapon === item.name) ||
+        (item.category === 'weapon' && getEquippedItem('weapon') === item) ||
         (item.category === 'helmet' && equippedGear.helmet === item.name) ||
         (item.category === 'armor' && equippedGear.armor === item.name)
     );
@@ -787,7 +803,7 @@ function openItemInfo(item) {
     const actionBtn = document.getElementById('item-action-btn');
 
     if (item.category === 'weapon') {
-        bodyHtml += `<div style="color: #e74c3c; margin-top: 5px;"><strong>${iconHTML('swords')} Бонус до урону:</strong> +${escapeHTML(item.damageBonus || 0)}</div>`;
+        bodyHtml += `<div style="color: #e74c3c; margin-top: 5px;"><strong>${iconHTML('swords')} Бонус до урону:</strong> +${escapeHTML(calculateWeaponStats(item).weaponDamage)}</div>`;
         if (actionBtn) actionBtn.textContent = isEquipped ? "Зняти" : "Озброїтися";
     } else if (item.category === 'armor' || item.category === 'helmet') {
         bodyHtml += `<div style="color: #3498db; margin-top: 5px;"><strong>${iconHTML('shield')} Бонус до броні:</strong> +${escapeHTML(item.armorBonus || 0)}</div>`;
@@ -799,6 +815,7 @@ function openItemInfo(item) {
         if (actionBtn) actionBtn.textContent = "Закрити";
     }
 
+    if (weaponModelId(item)) bodyHtml += `<p class="rarity-tag" data-rarity="${item.rarity}">${WEAPON_RARITIES[item.rarity].label}</p><button type="button" onclick="closeItemInfo();openCustomization();selectWardrobeCategory('weapons');selectWardrobeItem('${item.paperDollId}')">Открыть карточку оружия</button>`;
     const bodyElem = document.getElementById('item-info-body');
     if (bodyElem) bodyElem.innerHTML = bodyHtml;
 
@@ -845,8 +862,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
             if (['weapon', 'helmet', 'armor'].includes(cat)) {
-                equippedGear[cat] = equippedGear[cat] === selectedItemForAction.name
-                    ? null : selectedItemForAction.name;
+                if (isBattleActive) { showCustomToast('Смена оснащения доступна после боя.'); return; }
+                equippedGear[cat] = getEquippedItem(cat) === selectedItemForAction ? null : (selectedItemForAction.instanceId || selectedItemForAction.name);
+                syncInventoryEquipmentToPaperDoll(cat);
                 recalculateEquipmentStats();
             } else if (cat === 'meds') {
                 consumeMedicalItem(selectedItemForAction);
@@ -861,16 +879,19 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function openCustomization() {
-    closeOtherModals(['custom-modal']);
+    if (closeOtherModals(['custom-modal']) === false) return;
     closeInventory();
     closeFriends();
     closeDossier();
+    beginWardrobeSession();
     renderWardrobe();
     const modal = document.getElementById('custom-modal');
     if (modal) modal.classList.remove('hidden');
 }
 
 function closeCustomization() {
+    if (wardrobeSession && wardrobeHasChanges()) { openWardrobeCloseDialog(); return; }
+    discardWardrobeSession();
     const modal = document.getElementById('custom-modal');
     if (modal) modal.classList.add('hidden');
 }
@@ -929,7 +950,7 @@ function openGym() {
         showCustomToast('Ця локація недоступна у стані психозу.');
         return;
     }
-    closeOtherModals(['gym-modal']);
+    if (closeOtherModals(['gym-modal']) === false) return;
     closeInventory();
     closeCustomization();
     closeFriends();
@@ -1032,7 +1053,7 @@ function openMedicalHub() {
         showCustomToast('Ця локація недоступна у стані психозу.');
         return;
     }
-    closeOtherModals(['medical-hub-modal']);
+    if (closeOtherModals(['medical-hub-modal']) === false) return;
     closeInventory();
     closeCustomization();
     closeFriends();
@@ -1052,7 +1073,7 @@ function openProcedureRoom() {
         showCustomToast('Ця локація недоступна у стані психозу.');
         return;
     }
-    closeOtherModals(['procedure-room-modal']);
+    if (closeOtherModals(['procedure-room-modal']) === false) return;
     currentRoom = medicalRooms.find(room => room.id === 'treatment_room');
     updateUI();
     closeMedicalHub();
@@ -1217,7 +1238,7 @@ function updateEnergyTimer() {
 setInterval(updateEnergyTimer, 1000);
 
 function openDossier() {
-    closeOtherModals(['dossier-modal']);
+    if (closeOtherModals(['dossier-modal']) === false) return;
     closeInventory();
     closeCustomization();
     closeSettings();
@@ -1384,6 +1405,7 @@ function closeDoctorDossier() {
 
 // === УНІВЕРСАЛЬНИЙ ЗАПУСК БОЮ ===
 function stopBattleTimers() {
+    stopWeaponBattleTimers();
     clearInterval(raidTimerInterval);
     clearInterval(friendAttackInterval);
     clearTimeout(attackCooldownTimeout);
@@ -1399,6 +1421,7 @@ function stopBattleTimers() {
 }
 
 function startBossFight(bossKey) {
+    if (wardrobeSession) { showCustomToast('Сначала примените или отмените примерку.'); return; }
     const boss = getBossDefinition(bossKey);
     if (!boss) return;
 
@@ -1416,7 +1439,7 @@ function startBossFight(bossKey) {
     closeUniversalDossier();
     toggleMapModal(false);
 
-    closeOtherModals(['nurse-battle-modal']);
+    if (closeOtherModals(['nurse-battle-modal']) === false) return;
     currentBossKey = bossKey;
     bossCurrentHp = boss.hp;
     bossMaxHp = boss.hp;
@@ -1455,6 +1478,7 @@ function startBossFight(bossKey) {
         }
     });
     beginBattleMetrics(bossKey);
+    initializeWeaponBattle();
     encounterStaffBoss(bossKey);
 
     updateBattleUI();
@@ -1495,7 +1519,7 @@ function reopenNurseBattle() {
     if (!isBattleActive) return;
     updateRaidTimerTick();
     if (!isBattleActive) return;
-    closeOtherModals(['nurse-battle-modal']);
+    if (closeOtherModals(['nurse-battle-modal']) === false) return;
     autoScaleBattleArena();
     updateBattleUI();
     const modal = document.getElementById('nurse-battle-modal');
@@ -1674,13 +1698,19 @@ function performPlayerAttack(event) {
     if (!isBattleActive) return;
     updateRaidTimerTick();
     if (!isBattleActive || Date.now() < attackCooldownEndsAt || bossCurrentHp <= 0) return;
+    const attackProfile = getBattleAttackProfile();
+    if (Date.now() < weaponReloadEndsAt) { renderWeaponBattleState(); return; }
+    if (attackProfile.capacity && battleWeaponAmmo <= 0) { startWeaponReload(); return; }
     const generation = battleGeneration;
-    const dmg = Math.min(bossCurrentHp, stats.damage);
+    const hit = Math.random() >= attackProfile.miss;
+    const critical = hit && Math.random() < attackProfile.critical;
+    const dmg = hit ? Math.min(bossCurrentHp, Math.round(attackProfile.damage * (critical ? attackProfile.criticalMultiplier : 1))) : 0;
     const player = raidMembers.find(member => member.isPlayer);
     const attackId = nextBattleEventId('attack');
     if (!recordBattleEvent(attackId, player, { damage: dmg, turns: 1 })) return;
+    if (attackProfile.capacity) battleWeaponAmmo--;
     bossCurrentHp = Math.max(0, bossCurrentHp - dmg);
-    showFloatingDamage(`-${dmg}`, false, event?.clientX, event?.clientY);
+    showFloatingDamage(hit ? `${critical ? 'КРИТ ' : ''}-${dmg}` : 'ПРОМАХ', false, event?.clientX, event?.clientY);
     updateRaidListUI();
     updateBattleUI();
     if (bossCurrentHp <= 0) {
@@ -1688,11 +1718,13 @@ function performPlayerAttack(event) {
         return;
     }
     playerAttackCooldown = true;
-    attackCooldownEndsAt = Date.now() + 4000;
+    attackCooldownEndsAt = Date.now() + attackProfile.cooldown * 1000;
+    if (attackProfile.capacity && battleWeaponAmmo === 0) startWeaponReload();
+    renderWeaponBattleState();
     clearTimeout(attackCooldownTimeout);
     attackCooldownTimeout = setTimeout(() => {
         if (generation === battleGeneration) playerAttackCooldown = false;
-    }, 4000);
+    }, attackProfile.cooldown * 1000);
     bossCounterTimeout = setTimeout(() => {
         if (generation !== battleGeneration || bossCurrentHp <= 0 || !isBattleActive) return;
         updateRaidTimerTick();
@@ -1762,6 +1794,9 @@ function handleVictory() {
     updateLobbyRaidWidget();
 
     stats.silver += result.payout.silver;
+    const materials = result.weaponMaterials || {};
+    stats.equipmentParts += materials.equipmentParts || 0;
+    stats.experimentalComponents += materials.experimentalComponents || 0;
     // Keep level-up notifications after the durable reward write.
     const reachedLevels = addExperience(result.payout.exp, false);
     if (activeBoss.questItem && result.extraRewards[0]?.granted) {
@@ -1798,6 +1833,7 @@ function updateBattleMedkitCounts() {
 }
 
 function updateBattleUI() {
+    renderWeaponBattleState();
     document.getElementById('b-player-name').textContent = playerName;
     document.getElementById('b-player-hp').textContent = `${stats.hp}/${stats.maxHp}`;
     document.getElementById('b-player-hpbar').style.width = `${Math.max(0, (stats.hp / stats.maxHp) * 100)}%`;
@@ -1835,7 +1871,7 @@ function openBossDossier(bossKey) {
             return;
         }
 
-        closeOtherModals(['universal-dossier-modal']);
+        if (closeOtherModals(['universal-dossier-modal']) === false) return;
         // Закриваємо модалки (за наявності функцій)
         if (typeof closeInventory === 'function') closeInventory();
         if (typeof closeCustomization === 'function') closeCustomization();
@@ -1907,21 +1943,24 @@ function closeUniversalDossier() {
 
 const MODAL_IDS = [
     'settings-modal', 'bank-modal', 'inventory-modal', 'item-info-modal', 'custom-modal',
-    'friends-modal', 'map-modal', 'gym-modal', 'medical-hub-modal', 'procedure-room-modal',
+    'weapon-dialog', 'friends-modal', 'map-modal', 'gym-modal', 'medical-hub-modal', 'procedure-room-modal',
     'dossier-modal', 'universal-dossier-modal', 'nurse-battle-modal', 'friend-invite-modal',
     'nurse-victory-modal', 'battle-detail-modal', 'raid-archive-modal', 'raid-archive-confirm', 'staff-archive-modal'
 ];
 
 function closeOtherModals(keepIds = []) {
+    if (!keepIds.includes('custom-modal') && wardrobeHasChanges()) { openWardrobeCloseDialog(); return false; }
     MODAL_IDS.forEach(id => {
         if (keepIds.includes(id)) return;
         const modal = document.getElementById(id);
         if (modal) {
+            if (id === 'custom-modal' && wardrobeSession) discardWardrobeSession();
             modal.classList.add('hidden');
             if (id === 'nurse-battle-modal') modal.style.display = 'none';
         }
     });
     if (!keepIds.includes('item-info-modal')) selectedItemForAction = null;
+    return true;
 }
 
 function initializeModalControls() {
@@ -1934,7 +1973,9 @@ function initializeModalControls() {
     )).filter(element => !element.disabled && element.getClientRects().length > 0);
     const topModal = () => openOrder.at(-1);
     const closeModal = modal => {
-        if (modal.id === 'nurse-battle-modal') closeNurseBattle();
+        if (modal.id === 'custom-modal') closeCustomization();
+        else if (modal.id === 'weapon-dialog') hideWeaponDialog();
+        else if (modal.id === 'nurse-battle-modal') closeNurseBattle();
         else if (modal.id === 'item-info-modal') closeItemInfo();
         else if (modal.id === 'inventory-modal') closeInventory();
         else if (modal.id === 'battle-detail-modal') closeDetailedBattleReport();

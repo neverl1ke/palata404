@@ -1,4 +1,5 @@
 __pycache__/
 .venv/
 test-results/
+/test-results
 .DS_Store

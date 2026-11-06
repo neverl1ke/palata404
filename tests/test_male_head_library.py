@@ -67,7 +67,7 @@ class MaleLibraryAssetTests(unittest.TestCase):
                 'const vm=require("vm"),fs=require("fs");console.log(vm.runInNewContext(fs.readFileSync(0,"utf8")))'],
                 input=source+expression,cwd=ROOT,text=True))
         before,after=catalog(old),catalog((ROOT/'paper-doll-data.js').read_text())
-        self.assertEqual(before['frame'],after['frame']);self.assertEqual(before['order'],after['order'])
+        self.assertEqual(before['frame'],after['frame']);expected_order=list(before['order']);expected_order.insert(expected_order.index('hair'),'beard');self.assertEqual(expected_order,after['order'])
         self.assertEqual(before['bodies']['female'],after['bodies']['female'])
         current={i['id']:i for i in after['items']}
         for item in before['items']:

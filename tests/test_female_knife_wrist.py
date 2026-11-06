@@ -33,5 +33,5 @@ class FemaleKnifeWristBrowser(unittest.TestCase):
             image=Image.open(io.BytesIO(base64.b64decode(raw))).convert('RGBA')
             self.assertTrue(np.array_equal(np.array(image.crop((155,780,410,980))),expected),'Closed-hand knife wrist was replaced or shifted')
             self.assertTrue(np.array_equal(np.array(image.crop((450,1000,900,1600))),np.array(base.crop((450,1000,900,1600)))),'Other arm/legs changed')
-        self.page.reload(wait_until='networkidle');self.page.evaluate('openCustomization()');self.ready('melee')
+        self.page.evaluate('typeof applyWardrobeSession === "function" && applyWardrobeSession()');self.page.reload(wait_until='networkidle');self.page.evaluate('openCustomization()');self.ready('melee')
         self.page.evaluate('equipPaperDollItem("weapon",null)');self.ready()

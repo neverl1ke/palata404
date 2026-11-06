@@ -68,7 +68,7 @@ class NewFemaleHeadsBrowserTests(unittest.TestCase):
   protected=p.evaluate('JSON.stringify({stats,inventory,equippedGear})')
   for e in [entry for entry in data()['files'] if entry['id']!='face-female-new-mature']:
    p.evaluate('f=>{equipPaperDollItem("face",f);equipPaperDollItem("hair","hair-messy");setHairColor("white");setPaperDollView("patient");equipPaperDollItem("upperBody","patient-tunic")}',e['id'])
-   p.reload(wait_until='networkidle');p.wait_for_function('typeof paperDollState!=="undefined"')
+   p.evaluate('typeof applyWardrobeSession === "function" && applyWardrobeSession()');p.reload(wait_until='networkidle');p.wait_for_function('typeof paperDollState!=="undefined"')
    state=p.evaluate('paperDollState');self.assertEqual(state['appearance']['face'],e['id']);self.assertEqual(state['appearance']['hairColor'],'white');self.assertEqual(state['patientLoadout']['upperBody'],'patient-tunic');self.assertIsNone(state['combatLoadout']['upperBody'])
    for prefix in ['', 'wardrobe-']:
     p.wait_for_function('id=>{const i=document.getElementById(id);return i.complete&&i.naturalWidth===941}',arg=prefix+'layer-face')

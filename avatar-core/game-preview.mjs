@@ -35,16 +35,17 @@ async function descriptor(snapshot) {
     return {layers,crown,bodyMask:layers.some(layer=>layer.slot==='face') && face?.bodyMaskByGender?.[gender] ? absolute(face.bodyMaskByGender[gender]) : null};
 }
 function snapshot() {
+    const pick = slot => wardrobeSession && wardrobeHiddenSlots.has(slot) ? null : selectedPaperDollItem(slot);
     const gender=paperDollState.selectedGender;
     const image=document.createElement('img');
     applyPaperDollCrownMask(image,gender);
     const polygon=image.style.clipPath.match(/polygon\((.*)\)/);
     const crown=polygon ? polygon[1].split(',').map(p=>p.trim().split(/\s+/).map((v,i)=>parseFloat(v)*[941,1672][i]/100)) : null;
-    const clothing=['upperBody','outerwear','armor','loadout','gloves','pants','footwear','back','accessory'].map(selectedPaperDollItem);
+    const clothing=['upperBody','outerwear','armor','loadout','gloves','pants','footwear','back','accessory'].map(pick);
     const unsupported=clothing.some(item=>item && paperDollItemLayers(item,gender).some(p=>paperDollImageCandidates(p,gender).length));
-    const weapon=selectedPaperDollItem('weapon');
+    const weapon=pick('weapon');
     return {gender,face:paperDollRenderedFace(gender) || null,faceId:paperDollState.appearance.face,hair:selectedPaperDollItem('hair'),headwear:selectedPaperDollItem('headwear'),
-        beard:selectedPaperDollItem('beard'),beardColor:paperDollState.appearance.beardColor,color:paperDollState.appearance.hairColor,crown,unsupported,weapon:weapon?.avatarWeapon ? weapon.id : null,
+        beard:selectedPaperDollItem('beard'),beardColor:paperDollState.appearance.beardColor,color:paperDollState.appearance.hairColor,crown,unsupported,weapon:weapon?.avatarWeapon ? (weapon.modelId || weapon.id) : null,
         key:JSON.stringify([gender,paperDollState.activeViewMode,paperDollState.appearance,weapon?.id,clothing.map(i=>i?.id),selectedPaperDollItem('headwear')?.id])};
 }
 function present(state) {

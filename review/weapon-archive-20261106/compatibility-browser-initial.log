@@ -1,0 +1,36 @@
+test_complete_face_catalog_selects_both_genders_and_restores_every_type (tests.test_game.GameTests.test_complete_face_catalog_selects_both_genders_and_restores_every_type) ... ok
+test_final_mobile_wardrobe_full_controls_and_male_shoulder_face_matrix (tests.test_game.GameTests.test_final_mobile_wardrobe_full_controls_and_male_shoulder_face_matrix) ... ok
+test_hair_pack_ui_choices_shared_persistence_mobile_and_real_render_previews (tests.test_game.GameTests.test_hair_pack_ui_choices_shared_persistence_mobile_and_real_render_previews) ... FAIL
+Traceback (most recent call last):
+  File "/workspace/palata404/tests/test_game.py", line 1584, in test_hair_pack_ui_choices_shared_persistence_mobile_and_real_render_previews
+    self.assertAlmostEqual(added*frame/941,-.5,delta=.01)
+AssertionError: -1.4180087619360828 != -0.5 within 0.01 delta (0.9180087619360828 difference)
+
+test_new_avatar_face_and_bangs_share_layers_and_persist_in_both_modes (tests.test_game.GameTests.test_new_avatar_face_and_bangs_share_layers_and_persist_in_both_modes) ... ok
+test_patient_tunic_starter_and_independent_loadouts_survive_equip_unequip_reload (tests.test_game.GameTests.test_patient_tunic_starter_and_independent_loadouts_survive_equip_unequip_reload) ... ok
+test_raid_archive_hud_snapshots_and_clear_confirmation (tests.test_game.GameTests.test_raid_archive_hud_snapshots_and_clear_confirmation) ... ok
+test_registration_room_identity_modes_monitor_and_mobile_geometry (tests.test_game.GameTests.test_registration_room_identity_modes_monitor_and_mobile_geometry) ... ok
+test_staff_archive_unknown_cases_first_contact_and_details (tests.test_game.GameTests.test_staff_archive_unknown_cases_first_contact_and_details) ... ok
+test_staff_journal_documents_and_reward_cards_are_read_only_and_responsive (tests.test_game.GameTests.test_staff_journal_documents_and_reward_cards_are_read_only_and_responsive) ... ok
+test_trial_faces_are_not_loaded_or_selectable_after_old_save_migration (tests.test_game.GameTests.test_trial_faces_are_not_loaded_or_selectable_after_old_save_migration) ... ok
+test_victory_protocol_mobile_scroll_and_controls (tests.test_game.GameTests.test_victory_protocol_mobile_scroll_and_controls) ... ok
+test_wardrobe_inventory_ownership_and_old_appearance_migration (tests.test_game.GameTests.test_wardrobe_inventory_ownership_and_old_appearance_migration) ... ok
+test_wardrobe_v3_has_a_large_stage_compact_gender_switch_and_independent_inspection (tests.test_game.GameTests.test_wardrobe_v3_has_a_large_stage_compact_gender_switch_and_independent_inspection) ... ok
+test_young_faces_switch_hair_outfits_and_reload_without_leaking_body_masks (tests.test_game.GameTests.test_young_faces_switch_hair_outfits_and_reload_without_leaking_body_masks) ... ok
+test_new_male_catalog_and_tunic_render_on_every_head (tests.test_male_head_library.MaleLibraryBrowserTests.test_new_male_catalog_and_tunic_render_on_every_head) ... ok
+test_female_cards_are_available_and_never_leak_to_male_catalog (tests.test_new_female_heads.NewFemaleHeadsBrowserTests.test_female_cards_are_available_and_never_leak_to_male_catalog) ... ok
+test_rear_and_front_palette_preserve_alpha_for_five_colors (tests.test_paper_doll_audit.AuditBrowserTests.test_rear_and_front_palette_preserve_alpha_for_five_colors) ... ok
+test_invalid_boss_names_do_not_mutate_a_saved_character (tests.test_project_audit.GeneralBrowserTests.test_invalid_boss_names_do_not_mutate_a_saved_character) ... ok
+
+======================================================================
+FAIL: test_hair_pack_ui_choices_shared_persistence_mobile_and_real_render_previews (tests.test_game.GameTests.test_hair_pack_ui_choices_shared_persistence_mobile_and_real_render_previews)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/palata404/tests/test_game.py", line 1584, in test_hair_pack_ui_choices_shared_persistence_mobile_and_real_render_previews
+    self.assertAlmostEqual(added*frame/941,-.5,delta=.01)
+AssertionError: -1.4180087619360828 != -0.5 within 0.01 delta (0.9180087619360828 difference)
+
+----------------------------------------------------------------------
+Ran 18 tests in 681.816s
+
+FAILED (failures=1)

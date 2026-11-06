@@ -1,0 +1,11 @@
+test_female_assets_hair_palette_clothing_and_renderer_remain_unchanged (tests.test_male_head_library.MaleLibraryAssetTests.test_female_assets_hair_palette_clothing_and_renderer_remain_unchanged) ... ok
+test_runtime_catalog_preserves_every_previous_entry (tests.test_new_female_heads.NewFemaleHeadAssetTests.test_runtime_catalog_preserves_every_previous_entry) ... ok
+test_no_remote_faint_haze_or_detached_low_alpha_specks (tests.test_paper_doll_audit.AuditAssetTests.test_no_remote_faint_haze_or_detached_low_alpha_specks) ... ok
+test_male_ear_cuts_are_local_and_approved_placements_and_rear_stay (tests.test_paper_doll_targeted.TargetedAssetTests.test_male_ear_cuts_are_local_and_approved_placements_and_rear_stay) ... ok
+test_registered_paper_doll_assets_and_paths_match_case (tests.test_project_audit.GeneralAssetTests.test_registered_paper_doll_assets_and_paths_match_case) ... ok
+test_existing_catalog_and_approved_art_are_unchanged (tests.test_trial_braided_curls.TrialBraidedCurlsTests.test_existing_catalog_and_approved_art_are_unchanged) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 10.158s
+
+OK

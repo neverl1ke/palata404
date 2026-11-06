@@ -1,0 +1,6 @@
+test_static_outfit_waits_for_head_hair_and_body_mask_together (tests.test_avatar_render_transitions.AvatarRenderTransitions.test_static_outfit_waits_for_head_hair_and_body_mask_together) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 3.414s
+
+OK

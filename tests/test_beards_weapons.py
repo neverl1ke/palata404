@@ -43,7 +43,7 @@ class BeardWeaponBrowserTests(unittest.TestCase):
                 if pose=='idle':self.assertLessEqual(result['max'],2,gender+' did not restore approved neutral arms')
             self.page.evaluate('''()=>{for(let i=0;i<10;i++){equipPaperDollItem('weapon','gear-aks');equipPaperDollItem('weapon','gear-knife');equipPaperDollItem('weapon',null)}}''');self.ready()
             self.page.evaluate('equipPaperDollItem("weapon","gear-knife")');self.ready('melee')
-            self.page.reload(wait_until='networkidle');self.page.evaluate('openCustomization()');self.ready('melee')
+            self.page.evaluate('typeof applyWardrobeSession === "function" && applyWardrobeSession()');self.page.reload(wait_until='networkidle');self.page.evaluate('openCustomization()');self.ready('melee')
             self.page.evaluate('equipPaperDollItem("weapon",null)');self.ready()
     def test_beard_palette_per_head_layers_and_persistence(self):
         self.start();self.page.evaluate('setGender("male");equipPaperDollItem("beard","beard-06");setHairColor("ginger");setBeardColor("blue");selectWardrobeCategory("appearance");selectWardrobeSlot("beard")');self.ready()
@@ -72,7 +72,7 @@ class BeardWeaponBrowserTests(unittest.TestCase):
         self.assertEqual(self.page.locator('[data-wardrobe-slot="beard"]').count(),0)
         self.page.evaluate('setGender("male")');self.ready()
         self.assertEqual(self.page.evaluate('selectedPaperDollItem("beard").id'),'beard-06')
-        self.page.reload(wait_until='networkidle');self.page.evaluate('openCustomization()');self.ready()
+        self.page.evaluate('typeof applyWardrobeSession === "function" && applyWardrobeSession()');self.page.reload(wait_until='networkidle');self.page.evaluate('openCustomization()');self.ready()
         self.assertEqual(self.page.evaluate('paperDollState.appearance.beardColor'),'blue')
         self.assertEqual(self.page.evaluate('selectedPaperDollItem("beard").id'),'beard-06')
         self.page.evaluate('equipPaperDollItem("beard",null)');self.ready()

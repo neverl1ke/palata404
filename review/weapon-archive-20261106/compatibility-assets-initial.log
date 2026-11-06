@@ -1,0 +1,314 @@
+test_all_eight_faces_ears_and_piercings_keep_exact_released_pixels (tests.test_female_base_replacement.FemaleBaseReplacementTests.test_all_eight_faces_ears_and_piercings_keep_exact_released_pixels) ... ok
+test_all_necks_have_single_rim_and_restore_the_actual_new_body (tests.test_female_base_replacement.FemaleBaseReplacementTests.test_all_necks_have_single_rim_and_restore_the_actual_new_body) ... ok
+test_new_body_has_no_detached_faint_pixels_or_saturated_export_fringe (tests.test_female_base_replacement.FemaleBaseReplacementTests.test_new_body_has_no_detached_faint_pixels_or_saturated_export_fringe) ... ok
+test_released_masks_and_heads_are_versioned_and_other_art_is_unchanged (tests.test_female_base_replacement.FemaleBaseReplacementTests.test_released_masks_and_heads_are_versioned_and_other_art_is_unchanged) ... ok
+test_supplied_original_and_all_non_noise_pixels_are_preserved (tests.test_female_base_replacement.FemaleBaseReplacementTests.test_supplied_original_and_all_non_noise_pixels_are_preserved) ... ok
+test_all_other_approved_art_and_hair_placements_are_unchanged (tests.test_female_faces.FemaleFacesAssetTests.test_all_other_approved_art_and_hair_placements_are_unchanged) ... FAIL
+Traceback (most recent call last):
+  File "/workspace/palata404/tests/test_female_faces.py", line 103, in test_all_other_approved_art_and_hair_placements_are_unchanged
+    self.assertEqual([i for i in json.loads(current) if not i['id'].startswith('hair-m6-') and i['id'] not in ['hair-trial-braided-curls', 'hair-f5-pixie', 'hair-f5-jaw-bob', 'hair-f5-long-waves', 'hair-f5-high-ponytail', 'hair-f5-braided-updo']],data['hair_items_before'])
+AssertionError: Lists differ: [{'id[4629 chars]24}}}, {'id': 'hair-female-braids', 'slot': 'h[18678 chars]]}}}] != [{'id[4629 chars]24}}}]
+
+First list contains 2 additional elements.
+First extra element 8:
+{'id': 'hair-female-braids', 'slot': 'hair', 'name': 'Дві коси з чубчиком', 'icon': 'user', 'genders': ['female'], 'availableByDefault': True, 'fittedToGender': True, 'renderOrder': 9, 'genderVariants': {'female': 'assets/wardrobe/hair/female-approved-20261104/F01-braids-front.png?v=6c64b6f8'}, 'placementByGender': {'female': {'x': 0, 'y': 0, 'width': 941, 'height': 1672}}, 'layers': [{'id': 'rear', 'renderOrder': -1, 'genderVariants': {'female': 'assets/wardrobe/hair/female-approved-20261104/F01-braids-rear.png?v=f110f43c'}, 'colorReference': 'assets/wardrobe/hair/female-approved-20261104/palette/F01-braids-front.png?v=60222f7b'}, {'id': 'front', 'renderOrder': 9, 'genderVariants': {'female': 'assets/wardrobe/hair/female-approved-20261104/F01-braids-front.png?v=6c64b6f8'}, 'colorReference': 'assets/wardrobe/hair/female-approved-20261104/palette/F01-braids-front.png?v=60222f7b'}], 'layersByFace': {'female': {'@native': [{'id': 'rear', 'renderOrder': -1, 'genderVariants': {'female': 'assets/wardrobe/hair/female-approved-20261104/F01-braids-rear.png?v=f110f43c'}, 'colorReference': 'assets/wardrobe/hair/female-approved-20261104/palette/F01-braids-front.png?v=60222f7b'}, {'id': 'front', 'renderOrder': 9, 'genderVariants': {'female': 'assets/wardrobe/hair/female-approved-20261104/F01-braids-front.png?v=6c64b6f8'}, 'colorReference': 'assets/wardrobe/hair/female-approved-20261104/palette/F01-braids-front.png?v=60222f7b'}], 'face-asian': [{'id': 'rear', 'renderOrder': -1, 'genderVariants': {'female': 'assets/wardrobe/hair/female-approved-20261104/F02-braids-rear.png?v=b3ef2775'}, 'colorReference': 'assets/wardrobe/hair/female-approved-20261104/palette/F02-braids-front.png?v=ed80a9e7'}, {'id': 'front', 'renderOrder': 9, 'genderVariants': {'female': 'assets/wardrobe/hair/female-approved-20261104/F02-braids-front.png?v=63117abc'}, 'colorReference': 'assets/wardrobe/hair/female-approved-20261104/palette/F02-braids-front.png?v=ed80a9e7'}], 'face-young': [{'id': 'rear', 'renderOrder': -1, 'genderVariants': {'female': 'assets/wardrobe/hair/female-approved-20261104/F03-braids-rear.png?v=100e9706'}, 'colorReference': 'assets/wardrobe/hair/female-approved-20261104/palette/F03-braids-front.png?v=ba30145e'}, {'id': 'front', 'renderOrder': 9, 'genderVariants': {'female': 'assets/wardrobe/hair/female-approved-20261104/F03-braids-front.png?v=323173fc'}, 'colorReference': 'assets/wardrobe/hair/female-approved-20261104/palette/F03-braids-front.png?v=ba30145e'}], 'face-exhausted': [{'id': 'rear', 'renderOrder': -1, 'genderVariants': {'female': 'assets/wardrobe/hair/female-approved-20261104/F04-braids-rear.png?v=9e1c41b7'}, 'colorReference': 'assets/wardrobe/hair/female-approved-20261104/palette/F04-braids-front.png?v=5a9b231a'}, {'id': 'front', 'renderOrder': 9, 'genderVariants': {'female': 'assets/wardrobe/hair/female-approved-20261104/F04-braids-front.png?v=ef70dde4'}, 'colorReference': 'assets/wardrobe/hair/female-approved-20261104/palette/F04-braids-front.png?v=5a9b231a'}], 'face-elder': [{'id': 'rear', 'renderOrder': -1, 'genderVariants': {'female': 'assets/wardrobe/hair/female-approved-20261104/F05-braids-rear.png?v=562750f3'}, 'colorReference': 'assets/wardrobe/hair/female-approved-20261104/palette/F05-braids-front.png?v=4119ebbe'}, {'id': 'front', 'renderOrder': 9, 'genderVariants': {'female': 'assets/wardrobe/hair/female-approved-20261104/F05-braids-front.png?v=473be42e'}, 'colorReference': 'assets/wardrobe/hair/female-approved-20261104/palette/F05-braids-front.png?v=4119ebbe'}], 'face-alternative': [{'id': 'rear', 'renderOrder': -1, 'genderVariants': {'female': 'assets/wardrobe/hair/female-approved-20261104/F06-braids-rear.png?v=d7b0ec01'}, 'colorReference': 'assets/wardrobe/hair/female-approved-20261104/palette/F06-braids-front.png?v=9a89a986'}, {'id': 'front', 'renderOrder': 9, 'genderVariants': {'female': 'assets/wardrobe/hair/female-approved-20261104/F06-braids-front.png?v=c3fbca8b'}, 'colorReference': 'assets/wardrobe/hair/female-approved-20261104/palette/F06-braids-front.png?v=9a89a986'}], 'face-ginger-soft': [{'id': 'rear', 'renderOrder': -1, 'genderVariants': {'female': 'assets/wardrobe/hair/female-approved-20261104/F07-braids-rear.png?v=fd75249a'}, 'colorReference': 'assets/wardrobe/hair/female-approved-20261104/palette/F07-braids-front.png?v=91236e67'}, {'id': 'front', 'renderOrder': 9, 'genderVariants': {'female': 'assets/wardrobe/hair/female-approved-20261104/F07-braids-front.png?v=778950f9'}, 'colorReference': 'assets/wardrobe/hair/female-approved-20261104/palette/F07-braids-front.png?v=91236e67'}], 'face-goth-septum': [{'id': 'rear', 'renderOrder': -1, 'genderVariants': {'female': 'assets/wardrobe/hair/female-approved-20261104/F08-braids-rear.png?v=310b4130'}, 'colorReference': 'assets/wardrobe/hair/female-approved-20261104/palette/F08-braids-front.png?v=cef6c7fe'}, {'id': 'front', 'renderOrder': 9, 'genderVariants': {'female': 'assets/wardrobe/hair/female-approved-20261104/F08-braids-front.png?v=84d5c814'}, 'colorReference': 'assets/wardrobe/hair/female-approved-20261104/palette/F08-braids-front.png?v=cef6c7fe'}], 'face-goth-black-lips': [{'id': 'rear', 'renderOrder': -1, 'genderVariants': {'female': 'assets/wardrobe/hair/female-approved-20261104/F09-braids-rear.png?v=11ff8c10'}, 'colorReference': 'assets/wardrobe/hair/female-approved-20261104/palette/F09-braids-front.png?v=2eb674a2'}, {'id': 'front', 'renderOrder': 9, 'genderVariants': {'female': 'assets/wardrobe/hair/female-approved-20261104/F09-braids-front.png?v=7b13a648'}, 'colorReference': 'assets/wardrobe/hair/female-approved-20261104/palette/F09-braids-front.png?v=2eb674a2'}], 'face-female-new-defined-brows': [{'id': 'rear', 'renderOrder': -1, 'genderVariants': {'female': 'assets/wardrobe/hair/female-approved-20261104/F10-braids-rear.png?v=328c6a1d'}, 'colorReference': 'assets/wardrobe/hair/female-approved-20261104/palette/F10-braids-front.png?v=59ade20b'}, {'id': 'front', 'renderOrder': 9, 'genderVariants': {'female': 'assets/wardrobe/hair/female-approved-20261104/F10-braids-front.png?v=530abece'}, 'colorReference': 'assets/wardrobe/hair/female-approved-20261104/palette/F10-braids-front.png?v=59ade20b'}], 'face-female-new-blue-gaze': [{'id': 'rear', 'renderOrder': -1, 'genderVariants': {'female': 'assets/wardrobe/hair/female-approved-20261104/F11-braids-rear.png?v=1a8f9a89'}, 'colorReference': 'assets/wardrobe/hair/female-approved-20261104/palette/F11-braids-front.png?v=ed80a9e7'}, {'id': 'front', 'renderOrder': 9, 'genderVariants': {'female': 'assets/wardrobe/hair/female-approved-20261104/F11-braids-front.png?v=59053aca'}, 'colorReference': 'assets/wardrobe/hair/female-approved-20261104/palette/F11-braids-front.png?v=ed80a9e7'}], 'face-female-new-freckled': [{'id': 'rear', 'renderOrder': -1, 'genderVariants': {'female': 'assets/wardrobe/hair/female-approved-20261104/F12-braids-rear.png?v=bcfdd6e3'}, 'colorReference': 'assets/wardrobe/hair/female-approved-20261104/palette/F12-braids-front.png?v=d345a2a8'}, {'id': 'front', 'renderOrder': 9, 'genderVariants': {'female': 'assets/wardrobe/hair/female-approved-20261104/F12-braids-front.png?v=00cba9ba'}, 'colorReference': 'assets/wardrobe/hair/female-approved-20261104/palette/F12-braids-front.png?v=d345a2a8'}], 'face-female-new-light-eyes': [{'id': 'rear', 'renderOrder': -1, 'genderVariants': {'female': 'assets/wardrobe/hair/female-approved-20261104/F14-braids-rear.png?v=0d856c36'}, 'colorReference': 'assets/wardrobe/hair/female-approved-20261104/palette/F14-braids-front.png?v=f220ccdc'}, {'id': 'front', 'renderOrder': 9, 'genderVariants': {'female': 'assets/wardrobe/hair/female-approved-20261104/F14-braids-front.png?v=391879ca'}, 'colorReference': 'assets/wardrobe/hair/female-approved-20261104/palette/F14-braids-front.png?v=f220ccdc'}], 'face-female-new-pierced': [{'id': 'rear', 'renderOrder': -1, 'genderVariants': {'female': 'assets/wardrobe/hair/female-approved-20261104/F15-braids-rear.png?v=3eede61a'}, 'colorReference': 'assets/wardrobe/hair/female-approved-20261104/palette/F15-braids-front.png?v=ad097023'}, {'id': 'front', 'renderOrder': 9, 'genderVariants': {'female': 'assets/wardrobe/hair/female-approved-20261104/F15-braids-front.png?v=c41121d5'}, 'colorReference': 'assets/wardrobe/hair/female-approved-20261104/palette/F15-braids-front.png?v=ad097023'}], 'face-female-new-soft-gaze': [{'id': 'rear', 'renderOrder': -1, 'genderVariants': {'female': 'assets/wardrobe/hair/female-approved-20261104/F16-braids-rear.png?v=6b8552f8'}, 'colorReference': 'assets/wardrobe/hair/female-approved-20261104/palette/F16-braids-front.png?v=472ae31c'}, {'id': 'front', 'renderOrder': 9, 'genderVariants': {'female': 'assets/wardrobe/hair/female-approved-20261104/F16-braids-front.png?v=46a209bb'}, 'colorReference': 'assets/wardrobe/hair/female-approved-20261104/palette/F16-braids-front.png?v=472ae31c'}], 'face-female-new-almond-eyes': [{'id': 'rear', 'renderOrder': -1, 'genderVariants': {'female': 'assets/wardrobe/hair/female-approved-20261104/F17-braids-rear.png?v=b7936ce4'}, 'colorReference': 'assets/wardrobe/hair/female-approved-20261104/palette/F17-braids-front.png?v=d9035e43'}, {'id': 'front', 'renderOrder': 9, 'genderVariants': {'female': 'assets/wardrobe/hair/female-approved-20261104/F17-braids-front.png?v=03ca0262'}, 'colorReference': 'assets/wardrobe/hair/female-approved-20261104/palette/F17-braids-front.png?v=d9035e43'}]}}}
+
+Diff is 39886 characters long. Set self.maxDiff to None to see it.
+
+test_all_sources_and_final_resources_are_exact_and_versioned (tests.test_female_faces.FemaleFacesAssetTests.test_all_sources_and_final_resources_are_exact_and_versioned) ... ok
+test_complementary_masks_have_no_old_skull_holes_or_body_changes (tests.test_female_faces.FemaleFacesAssetTests.test_complementary_masks_have_no_old_skull_holes_or_body_changes) ... ok
+test_no_remote_alpha_noise_and_complete_head_silhouette (tests.test_female_faces.FemaleFacesAssetTests.test_no_remote_alpha_noise_and_complete_head_silhouette) ... ok
+test_registered_approved_portrait_features_and_piercings_are_preserved (tests.test_female_faces.FemaleFacesAssetTests.test_registered_approved_portrait_features_and_piercings_are_preserved) ... ok
+test_all_neck_silhouettes_have_no_abrupt_join_steps (tests.test_female_faces_independent.IndependentFemaleFaceTests.test_all_neck_silhouettes_have_no_abrupt_join_steps) ... ok
+test_each_actual_mask_preserves_solid_neck_and_lower_body (tests.test_female_faces_independent.IndependentFemaleFaceTests.test_each_actual_mask_preserves_solid_neck_and_lower_body) ... ok
+test_neck_detector_rejects_the_real_pre_fix_regression (tests.test_female_faces_independent.IndependentFemaleFaceTests.test_neck_detector_rejects_the_real_pre_fix_regression) ... ok
+test_repaired_necks_do_not_have_a_second_alpha_rim (tests.test_female_faces_independent.IndependentFemaleFaceTests.test_repaired_necks_do_not_have_a_second_alpha_rim) ... ok
+test_repairs_preserve_approved_portraits_and_all_protected_assets (tests.test_female_faces_independent.IndependentFemaleFaceTests.test_repairs_preserve_approved_portraits_and_all_protected_assets) ... ok
+test_long_waves_enclose_ear_span_on_every_registered_head (tests.test_female_five_hairstyles.FemaleEarFitTests.test_long_waves_enclose_ear_span_on_every_registered_head) ... ok
+test_ponytail_reveals_actual_ear_and_preserves_crown_left_and_tail (tests.test_female_five_hairstyles.FemaleEarFitTests.test_ponytail_reveals_actual_ear_and_preserves_crown_left_and_tail) ... ok
+test_updo_is_compact_and_side_knot_is_near_ear (tests.test_female_five_hairstyles.FemaleEarFitTests.test_updo_is_compact_and_side_knot_is_near_ear) ... ok
+test_every_palette_color_preserves_alpha_and_is_exercised_on_every_head (tests.test_female_five_hairstyles.FemaleFitAuditTests.test_every_palette_color_preserves_alpha_and_is_exercised_on_every_head) ... ok
+test_long_waves_keep_iris_clear_after_user_requested_ear_widening (tests.test_female_five_hairstyles.FemaleFitAuditTests.test_long_waves_keep_iris_clear_after_user_requested_ear_widening) ... ok
+test_pixie_temples_cover_skull_landmarks_without_moving_crown_or_center (tests.test_female_five_hairstyles.FemaleFitAuditTests.test_pixie_temples_cover_skull_landmarks_without_moving_crown_or_center) ... ok
+test_user_approved_pixie_and_jaw_bob_are_byte_identical_to_pre_ear_pass (tests.test_female_five_hairstyles.FemaleFitAuditTests.test_user_approved_pixie_and_jaw_bob_are_byte_identical_to_pre_ear_pass) ... ok
+test_all_active_female_heads_share_measured_registration (tests.test_female_five_hairstyles.FiveFemaleHairstyleTests.test_all_active_female_heads_share_measured_registration) ... ok
+test_browser_evidence_exercises_every_face_style_and_current_bytes (tests.test_female_five_hairstyles.FiveFemaleHairstyleTests.test_browser_evidence_exercises_every_face_style_and_current_bytes) ... ok
+test_existing_catalog_renderer_and_art_preserved (tests.test_female_five_hairstyles.FiveFemaleHairstyleTests.test_existing_catalog_renderer_and_art_preserved) ... FAIL
+Traceback (most recent call last):
+  File "/workspace/palata404/tests/test_female_five_hairstyles.py", line 14, in test_existing_catalog_renderer_and_art_preserved
+    items=catalog();expected=accepted_catalog_snapshot(json.loads((R/'before-catalog.json').read_text())['items']);ids={i['id'] for i in expected};self.assertEqual([i for i in items if i['id'] in ids],expected)
+                                                                                                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Lists differ: [{'id[16043 chars]e', 'avatarWeapon': True, 'thumbnail': 'avatar[987 chars]ld'}] != [{'id[16043 chars]e', 'slot': 'weapon', 'name': 'Іржавий ніж', '[996 chars]ld'}]
+
+First differing element 27:
+{'id': 'gear-knife', 'avatarWeapon': True, 'thumbnail': 'avatar[194 chars]ife'}
+{'id': 'gear-knife', 'slot': 'weapon', 'name': 'Іржавий ніж', '[203 chars]png'}
+
+Diff is 22682 characters long. Set self.maxDiff to None to see it.
+
+test_five_exact_female_only_independently_registered_entries (tests.test_female_five_hairstyles.FiveFemaleHairstyleTests.test_five_exact_female_only_independently_registered_entries) ... ok
+test_full_canvas_safe_edges_alpha_and_open_central_face (tests.test_female_five_hairstyles.FiveFemaleHairstyleTests.test_full_canvas_safe_edges_alpha_and_open_central_face) ... ok
+test_all_seventeen_catalog_resources_and_cache_hashes_are_registered (tests.test_female_head_standard.FemaleStandardAssetTests.test_all_seventeen_catalog_resources_and_cache_hashes_are_registered) ... ok
+test_every_female_head_has_exact_reference_width_top_and_centre (tests.test_female_head_standard.FemaleStandardAssetTests.test_every_female_head_has_exact_reference_width_top_and_centre) ... ok
+test_male_renderer_pixels_match_previous_release_on_every_combination (tests.test_female_head_standard.FemaleStandardAssetTests.test_male_renderer_pixels_match_previous_release_on_every_combination) ... ok
+test_no_detached_weak_alpha_or_remote_faint_pixels_in_new_derivatives (tests.test_female_head_standard.FemaleStandardAssetTests.test_no_detached_weak_alpha_or_remote_faint_pixels_in_new_derivatives) ... ok
+test_paired_masks_preserve_original_torso_and_neck_opacity (tests.test_female_head_standard.FemaleStandardAssetTests.test_paired_masks_preserve_original_torso_and_neck_opacity) ... ok
+test_reference_all_sources_bodies_male_art_and_hair_are_unchanged (tests.test_female_head_standard.FemaleStandardAssetTests.test_reference_all_sources_bodies_male_art_and_hair_are_unchanged) ... ok
+test_template_matches_actual_unchanged_reference (tests.test_female_head_standard.FemaleStandardAssetTests.test_template_matches_actual_unchanged_reference) ... ok
+test_uniform_transform_preserves_portrait_rgb_above_neck_join (tests.test_female_head_standard.FemaleStandardAssetTests.test_uniform_transform_preserves_portrait_rgb_above_neck_join) ... ok
+test_restored_authored_layers_keep_historical_bytes (tests.test_female_knife_wrist.FemaleKnifeWristAssets.test_restored_authored_layers_keep_historical_bytes) ... ok
+test_wrist_and_closed_grip_survive_weapon_changes_and_reload (tests.test_female_knife_wrist.FemaleKnifeWristBrowser.test_wrist_and_closed_grip_survive_weapon_changes_and_reload) ... ok
+test_exact_approved_bytes_and_native_frames (tests.test_female_two_approved.FemaleTwoApprovedAssets.test_exact_approved_bytes_and_native_frames) ... ok
+test_every_head_modes_and_palette_use_approved_fit (tests.test_female_two_approved.FemaleTwoApprovedBrowser.test_every_head_modes_and_palette_use_approved_fit) ... ok
+test_ui_reload_mobile_gender_and_unequip (tests.test_female_two_approved.FemaleTwoApprovedBrowser.test_ui_reload_mobile_gender_and_unequip) ... ok
+test_approved_body_pngs_have_real_alpha_and_match_the_new_frame (tests.test_game.IconAssetTests.test_approved_body_pngs_have_real_alpha_and_match_the_new_frame) ... ok
+test_approved_neckline_underlay_and_bases_keep_exact_bytes (tests.test_game.IconAssetTests.test_approved_neckline_underlay_and_bases_keep_exact_bytes) ... ok
+test_approved_wardrobe_backgrounds_are_valid_matching_scenes (tests.test_game.IconAssetTests.test_approved_wardrobe_backgrounds_are_valid_matching_scenes) ... ok
+test_asian_heads_keep_cleaned_edges_and_opaque_inner_face (tests.test_game.IconAssetTests.test_asian_heads_keep_cleaned_edges_and_opaque_inner_face) ... ok
+test_avatar_pack_assets_keep_shared_hair_source_and_approved_body_geometry (tests.test_game.IconAssetTests.test_avatar_pack_assets_keep_shared_hair_source_and_approved_body_geometry) ... ok
+test_first_patient_shirt_drafts_are_real_transparent_pngs (tests.test_game.IconAssetTests.test_first_patient_shirt_drafts_are_real_transparent_pngs) ... ok
+test_hair_pack_02_preserves_four_cleaned_overlays_and_alpha (tests.test_game.IconAssetTests.test_hair_pack_02_preserves_four_cleaned_overlays_and_alpha) ... ok
+test_hair_pack_pngs_preserve_strands_dimensions_and_real_transparency (tests.test_game.IconAssetTests.test_hair_pack_pngs_preserve_strands_dimensions_and_real_transparency) ... ok
+test_individual_neck_assets_preserve_faces_and_restore_the_original_torso (tests.test_game.IconAssetTests.test_individual_neck_assets_preserve_faces_and_restore_the_original_torso) ... ok
+test_patient_tunic_revised_release_integrity_and_transparency (tests.test_game.IconAssetTests.test_patient_tunic_revised_release_integrity_and_transparency) ... ok
+test_svg_assets_are_self_contained_and_valid (tests.test_game.IconAssetTests.test_svg_assets_are_self_contained_and_valid) ... ok
+test_all_3375_combinations_have_unique_real_lossless_screenshots (tests.test_male_head_library.MaleLibraryAssetTests.test_all_3375_combinations_have_unique_real_lossless_screenshots) ... ok
+test_current_complementary_masks_hide_old_skull_and_restore_the_new_torso (tests.test_male_head_library.MaleLibraryAssetTests.test_current_complementary_masks_hide_old_skull_and_restore_the_new_torso) ... ok
+test_every_combination_is_restored_by_an_actual_browser_reload (tests.test_male_head_library.MaleLibraryAssetTests.test_every_combination_is_restored_by_an_actual_browser_reload) ... ok
+test_every_new_resource_is_registered_with_its_actual_hash (tests.test_male_head_library.MaleLibraryAssetTests.test_every_new_resource_is_registered_with_its_actual_hash) ... ok
+test_female_assets_hair_palette_clothing_and_renderer_remain_unchanged (tests.test_male_head_library.MaleLibraryAssetTests.test_female_assets_hair_palette_clothing_and_renderer_remain_unchanged) ... FAIL
+Traceback (most recent call last):
+  File "/workspace/palata404/tests/test_male_head_library.py", line 70, in test_female_assets_hair_palette_clothing_and_renderer_remain_unchanged
+    self.assertEqual(before['frame'],after['frame']);self.assertEqual(before['order'],after['order'])
+                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Lists differ: ['bas[89 chars]k', 'hair', 'headwear', 'face', 'weapon', 'accessory'] != ['bas[89 chars]k', 'beard', 'hair', 'headwear', 'face', 'weapon', 'accessory']
+
+First differing element 9:
+'hair'
+'beard'
+
+Second list contains 1 additional elements.
+First extra element 14:
+'accessory'
+
+  ['baseBody',
+   'pants',
+   'footwear',
+   'upperBody',
+   'outerwear',
+   'armor',
+   'loadout',
+   'gloves',
+   'back',
++  'beard',
+   'hair',
+   'headwear',
+   'face',
+   'weapon',
+   'accessory']
+
+test_new_body_is_the_exact_supplied_resource_and_sources_are_retained (tests.test_male_head_library.MaleLibraryAssetTests.test_new_body_is_the_exact_supplied_resource_and_sources_are_retained) ... ok
+test_new_portraits_are_uniformly_registered_without_rgb_repaint (tests.test_male_head_library.MaleLibraryAssetTests.test_new_portraits_are_uniformly_registered_without_rgb_repaint) ... ok
+test_offline_gallery_does_not_depend_on_external_services (tests.test_male_head_library.MaleLibraryAssetTests.test_offline_gallery_does_not_depend_on_external_services) ... ok
+test_all48_approved_fits_have_native_transparent_layers_and_versioned_sources (tests.test_male_review_integration.MaleReviewAssets.test_all48_approved_fits_have_native_transparent_layers_and_versioned_sources) ... ok
+test_body_and_head_rgb_are_preserved (tests.test_male_review_integration.MaleReviewAssets.test_body_and_head_rgb_are_preserved) ... ok
+test_heads_have_female_scale_clean_alpha_and_opaque_interior (tests.test_new_female_heads.NewFemaleHeadAssetTests.test_heads_have_female_scale_clean_alpha_and_opaque_interior) ... ok
+test_individual_masks_remove_old_head_and_preserve_torso_without_holes (tests.test_new_female_heads.NewFemaleHeadAssetTests.test_individual_masks_remove_old_head_and_preserve_torso_without_holes) ... ok
+test_original_sources_and_all_preexisting_art_are_unchanged (tests.test_new_female_heads.NewFemaleHeadAssetTests.test_original_sources_and_all_preexisting_art_are_unchanged) ... ok
+test_runtime_catalog_preserves_every_previous_entry (tests.test_new_female_heads.NewFemaleHeadAssetTests.test_runtime_catalog_preserves_every_previous_entry) ... FAIL
+Traceback (most recent call last):
+  File "/workspace/palata404/tests/test_new_female_heads.py", line 30, in test_runtime_catalog_preserves_every_previous_entry
+    self.assertEqual(old,current,i['id'])
+AssertionError: {'id': 'gear-knife', 'slot': 'weapon', 'name': 'Іржавий ніж', '[203 chars]png'} != {'id': 'gear-knife', 'avatarWeapon': True, 'thumbnail': 'avatar[194 chars]ife'}
+- {'avatarPoseUnavailable': True,
++ {'avatarWeapon': True,
+   'icon': 'knife',
+   'id': 'gear-knife',
+   'image': None,
+   'inventoryCategory': 'weapon',
+   'inventoryName': 'Іржавий ніж',
+   'name': 'Іржавий ніж',
+   'slot': 'weapon',
+   'thumbnail': 'avatar-core/assets/weapons/knife-view-20261025/knife-view.thumb.png'} : gear-knife
+
+test_all_head_masks_hide_old_skull_and_join_without_holes (tests.test_paper_doll_audit.AuditAssetTests.test_all_head_masks_hide_old_skull_and_join_without_holes) ... ok
+test_analyzer_detects_connected_alpha_one_noise_and_preserves_real_strands (tests.test_paper_doll_audit.AuditAssetTests.test_analyzer_detects_connected_alpha_one_noise_and_preserves_real_strands) ... ok
+test_face_identity_and_body_registration_are_protected (tests.test_paper_doll_audit.AuditAssetTests.test_face_identity_and_body_registration_are_protected) ... ok
+test_hair_preserves_approved_strands_and_local_repair_contracts (tests.test_paper_doll_audit.AuditAssetTests.test_hair_preserves_approved_strands_and_local_repair_contracts) ... ok
+test_no_remote_faint_haze_or_detached_low_alpha_specks (tests.test_paper_doll_audit.AuditAssetTests.test_no_remote_faint_haze_or_detached_low_alpha_specks) ... FAIL
+Traceback (most recent call last):
+  File "/workspace/palata404/tests/test_paper_doll_audit.py", line 60, in test_no_remote_faint_haze_or_detached_low_alpha_specks
+    else:self.assertFalse(np.any(peaks<=16),rel)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: np.True_ is not false : assets/wardrobe/beards/approved-20261105/M01-01.png
+
+test_rear_texture_closes_inner_ear_openings_without_covering_face (tests.test_paper_doll_audit.AuditAssetTests.test_rear_texture_closes_inner_ear_openings_without_covering_face) ... ok
+test_historical_alternative_tones_move_toward_body_and_original_features_remain (tests.test_paper_doll_targeted.TargetedAssetTests.test_historical_alternative_tones_move_toward_body_and_original_features_remain) ... ok
+test_historical_asian_scale_is_small_registered_and_head_edges_have_narrow_antialiasing (tests.test_paper_doll_targeted.TargetedAssetTests.test_historical_asian_scale_is_small_registered_and_head_edges_have_narrow_antialiasing) ... ok
+test_historical_exhausted_neck_restores_base_without_holes_or_abrupt_side_jumps (tests.test_paper_doll_targeted.TargetedAssetTests.test_historical_exhausted_neck_restores_base_without_holes_or_abrupt_side_jumps) ... ok
+test_male_ear_cuts_are_local_and_approved_placements_and_rear_stay (tests.test_paper_doll_targeted.TargetedAssetTests.test_male_ear_cuts_are_local_and_approved_placements_and_rear_stay) ... FAIL
+Traceback (most recent call last):
+  File "/workspace/palata404/tests/test_paper_doll_targeted.py", line 62, in test_male_ear_cuts_are_local_and_approved_placements_and_rear_stay
+    fixture=json.loads((ROOT/'tests/fixtures/paper-doll-targeted-fix.json').read_text());catalog=support.audit.catalog();self.assertEqual({i['id']:i.get('placementByGender') for i in catalog['items'] if i['slot']=='hair' and not i['id'].startswith('hair-m6-') and i['id'] not in ['hair-trial-braided-curls','hair-f5-pixie','hair-f5-jaw-bob','hair-f5-long-waves','hair-f5-high-ponytail','hair-f5-braided-updo']},fixture['hair_placements_before'])
+                                                                                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: {'hai[1293 chars]624}}, 'hair-female-braids': {'female': {'x': [118 chars]72}}} != {'hai[1293 chars]624}}}
+Diff is 3175 characters long. Set self.maxDiff to None to see it.
+
+test_only_authorized_pixels_change_and_all_other_assets_remain_exact (tests.test_paper_doll_targeted.TargetedAssetTests.test_only_authorized_pixels_change_and_all_other_assets_remain_exact) ... ok
+test_thigh_correction_preserves_alpha_and_skin_texture (tests.test_paper_doll_targeted.TargetedAssetTests.test_thigh_correction_preserves_alpha_and_skin_texture) ... ok
+test_approved_graphics_remain_byte_identical (tests.test_project_audit.GeneralAssetTests.test_approved_graphics_remain_byte_identical) ... ok
+test_baseline_dependency_map_has_no_broken_local_links (tests.test_project_audit.GeneralAssetTests.test_baseline_dependency_map_has_no_broken_local_links) ... ok
+test_deleted_files_have_pre_audit_hash_and_runtime_evidence (tests.test_project_audit.GeneralAssetTests.test_deleted_files_have_pre_audit_hash_and_runtime_evidence) ... ok
+test_registered_paper_doll_assets_and_paths_match_case (tests.test_project_audit.GeneralAssetTests.test_registered_paper_doll_assets_and_paths_match_case) ... FAIL
+Traceback (most recent call last):
+  File "/workspace/palata404/tests/test_project_audit.py", line 30, in test_registered_paper_doll_assets_and_paths_match_case
+    self.assertEqual(len(paths),99)  # Approved appearance assets plus two weapon thumbnails.
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 365 != 99
+
+test_alpha_margin_and_central_face_opening_are_clear (tests.test_trial_braided_curls.TrialBraidedCurlsTests.test_alpha_margin_and_central_face_opening_are_clear) ... ok
+test_contour_edit_preserves_canvas_lower_tresses_and_all_pixels_outside_roi (tests.test_trial_braided_curls.TrialBraidedCurlsTests.test_contour_edit_preserves_canvas_lower_tresses_and_all_pixels_outside_roi) ... ok
+test_existing_catalog_and_approved_art_are_unchanged (tests.test_trial_braided_curls.TrialBraidedCurlsTests.test_existing_catalog_and_approved_art_are_unchanged) ... FAIL
+Traceback (most recent call last):
+  File "/workspace/palata404/tests/test_trial_braided_curls.py", line 26, in test_existing_catalog_and_approved_art_are_unchanged
+    expected=accepted_catalog_snapshot(before);ids={i['id'] for i in expected};self.assertEqual([i for i in after if i['id'] in ids],expected)
+                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Lists differ: [{'id[16043 chars]e', 'avatarWeapon': True, 'thumbnail': 'avatar[987 chars]ld'}] != [{'id[16043 chars]e', 'slot': 'weapon', 'name': 'Іржавий ніж', '[996 chars]ld'}]
+
+First differing element 27:
+{'id': 'gear-knife', 'avatarWeapon': True, 'thumbnail': 'avatar[194 chars]ife'}
+{'id': 'gear-knife', 'slot': 'weapon', 'name': 'Іржавий ніж', '[203 chars]png'}
+
+Diff is 22682 characters long. Set self.maxDiff to None to see it.
+
+test_local_edit_preserves_approved_texture_outside_explicit_mask (tests.test_trial_braided_curls.TrialBraidedCurlsTests.test_local_edit_preserves_approved_texture_outside_explicit_mask) ... ok
+test_removed_trial_is_absent_but_original_resource_is_retained (tests.test_trial_braided_curls.TrialBraidedCurlsTests.test_removed_trial_is_absent_but_original_resource_is_retained) ... ok
+test_saved_browser_evidence_covers_all_female_heads (tests.test_trial_braided_curls.TrialBraidedCurlsTests.test_saved_browser_evidence_covers_all_female_heads) ... ok
+
+======================================================================
+FAIL: test_all_other_approved_art_and_hair_placements_are_unchanged (tests.test_female_faces.FemaleFacesAssetTests.test_all_other_approved_art_and_hair_placements_are_unchanged)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/palata404/tests/test_female_faces.py", line 103, in test_all_other_approved_art_and_hair_placements_are_unchanged
+    self.assertEqual([i for i in json.loads(current) if not i['id'].startswith('hair-m6-') and i['id'] not in ['hair-trial-braided-curls', 'hair-f5-pixie', 'hair-f5-jaw-bob', 'hair-f5-long-waves', 'hair-f5-high-ponytail', 'hair-f5-braided-updo']],data['hair_items_before'])
+AssertionError: Lists differ: [{'id[4629 chars]24}}}, {'id': 'hair-female-braids', 'slot': 'h[18678 chars]]}}}] != [{'id[4629 chars]24}}}]
+
+First list contains 2 additional elements.
+First extra element 8:
+{'id': 'hair-female-braids', 'slot': 'hair', 'name': 'Дві коси з чубчиком', 'icon': 'user', 'genders': ['female'], 'availableByDefault': True, 'fittedToGender': True, 'renderOrder': 9, 'genderVariants': {'female': 'assets/wardrobe/hair/female-approved-20261104/F01-braids-front.png?v=6c64b6f8'}, 'placementByGender': {'female': {'x': 0, 'y': 0, 'width': 941, 'height': 1672}}, 'layers': [{'id': 'rear', 'renderOrder': -1, 'genderVariants': {'female': 'assets/wardrobe/hair/female-approved-20261104/F01-braids-rear.png?v=f110f43c'}, 'colorReference': 'assets/wardrobe/hair/female-approved-20261104/palette/F01-braids-front.png?v=60222f7b'}, {'id': 'front', 'renderOrder': 9, 'genderVariants': {'female': 'assets/wardrobe/hair/female-approved-20261104/F01-braids-front.png?v=6c64b6f8'}, 'colorReference': 'assets/wardrobe/hair/female-approved-20261104/palette/F01-braids-front.png?v=60222f7b'}], 'layersByFace': {'female': {'@native': [{'id': 'rear', 'renderOrder': -1, 'genderVariants': {'female': 'assets/wardrobe/hair/female-approved-20261104/F01-braids-rear.png?v=f110f43c'}, 'colorReference': 'assets/wardrobe/hair/female-approved-20261104/palette/F01-braids-front.png?v=60222f7b'}, {'id': 'front', 'renderOrder': 9, 'genderVariants': {'female': 'assets/wardrobe/hair/female-approved-20261104/F01-braids-front.png?v=6c64b6f8'}, 'colorReference': 'assets/wardrobe/hair/female-approved-20261104/palette/F01-braids-front.png?v=60222f7b'}], 'face-asian': [{'id': 'rear', 'renderOrder': -1, 'genderVariants': {'female': 'assets/wardrobe/hair/female-approved-20261104/F02-braids-rear.png?v=b3ef2775'}, 'colorReference': 'assets/wardrobe/hair/female-approved-20261104/palette/F02-braids-front.png?v=ed80a9e7'}, {'id': 'front', 'renderOrder': 9, 'genderVariants': {'female': 'assets/wardrobe/hair/female-approved-20261104/F02-braids-front.png?v=63117abc'}, 'colorReference': 'assets/wardrobe/hair/female-approved-20261104/palette/F02-braids-front.png?v=ed80a9e7'}], 'face-young': [{'id': 'rear', 'renderOrder': -1, 'genderVariants': {'female': 'assets/wardrobe/hair/female-approved-20261104/F03-braids-rear.png?v=100e9706'}, 'colorReference': 'assets/wardrobe/hair/female-approved-20261104/palette/F03-braids-front.png?v=ba30145e'}, {'id': 'front', 'renderOrder': 9, 'genderVariants': {'female': 'assets/wardrobe/hair/female-approved-20261104/F03-braids-front.png?v=323173fc'}, 'colorReference': 'assets/wardrobe/hair/female-approved-20261104/palette/F03-braids-front.png?v=ba30145e'}], 'face-exhausted': [{'id': 'rear', 'renderOrder': -1, 'genderVariants': {'female': 'assets/wardrobe/hair/female-approved-20261104/F04-braids-rear.png?v=9e1c41b7'}, 'colorReference': 'assets/wardrobe/hair/female-approved-20261104/palette/F04-braids-front.png?v=5a9b231a'}, {'id': 'front', 'renderOrder': 9, 'genderVariants': {'female': 'assets/wardrobe/hair/female-approved-20261104/F04-braids-front.png?v=ef70dde4'}, 'colorReference': 'assets/wardrobe/hair/female-approved-20261104/palette/F04-braids-front.png?v=5a9b231a'}], 'face-elder': [{'id': 'rear', 'renderOrder': -1, 'genderVariants': {'female': 'assets/wardrobe/hair/female-approved-20261104/F05-braids-rear.png?v=562750f3'}, 'colorReference': 'assets/wardrobe/hair/female-approved-20261104/palette/F05-braids-front.png?v=4119ebbe'}, {'id': 'front', 'renderOrder': 9, 'genderVariants': {'female': 'assets/wardrobe/hair/female-approved-20261104/F05-braids-front.png?v=473be42e'}, 'colorReference': 'assets/wardrobe/hair/female-approved-20261104/palette/F05-braids-front.png?v=4119ebbe'}], 'face-alternative': [{'id': 'rear', 'renderOrder': -1, 'genderVariants': {'female': 'assets/wardrobe/hair/female-approved-20261104/F06-braids-rear.png?v=d7b0ec01'}, 'colorReference': 'assets/wardrobe/hair/female-approved-20261104/palette/F06-braids-front.png?v=9a89a986'}, {'id': 'front', 'renderOrder': 9, 'genderVariants': {'female': 'assets/wardrobe/hair/female-approved-20261104/F06-braids-front.png?v=c3fbca8b'}, 'colorReference': 'assets/wardrobe/hair/female-approved-20261104/palette/F06-braids-front.png?v=9a89a986'}], 'face-ginger-soft': [{'id': 'rear', 'renderOrder': -1, 'genderVariants': {'female': 'assets/wardrobe/hair/female-approved-20261104/F07-braids-rear.png?v=fd75249a'}, 'colorReference': 'assets/wardrobe/hair/female-approved-20261104/palette/F07-braids-front.png?v=91236e67'}, {'id': 'front', 'renderOrder': 9, 'genderVariants': {'female': 'assets/wardrobe/hair/female-approved-20261104/F07-braids-front.png?v=778950f9'}, 'colorReference': 'assets/wardrobe/hair/female-approved-20261104/palette/F07-braids-front.png?v=91236e67'}], 'face-goth-septum': [{'id': 'rear', 'renderOrder': -1, 'genderVariants': {'female': 'assets/wardrobe/hair/female-approved-20261104/F08-braids-rear.png?v=310b4130'}, 'colorReference': 'assets/wardrobe/hair/female-approved-20261104/palette/F08-braids-front.png?v=cef6c7fe'}, {'id': 'front', 'renderOrder': 9, 'genderVariants': {'female': 'assets/wardrobe/hair/female-approved-20261104/F08-braids-front.png?v=84d5c814'}, 'colorReference': 'assets/wardrobe/hair/female-approved-20261104/palette/F08-braids-front.png?v=cef6c7fe'}], 'face-goth-black-lips': [{'id': 'rear', 'renderOrder': -1, 'genderVariants': {'female': 'assets/wardrobe/hair/female-approved-20261104/F09-braids-rear.png?v=11ff8c10'}, 'colorReference': 'assets/wardrobe/hair/female-approved-20261104/palette/F09-braids-front.png?v=2eb674a2'}, {'id': 'front', 'renderOrder': 9, 'genderVariants': {'female': 'assets/wardrobe/hair/female-approved-20261104/F09-braids-front.png?v=7b13a648'}, 'colorReference': 'assets/wardrobe/hair/female-approved-20261104/palette/F09-braids-front.png?v=2eb674a2'}], 'face-female-new-defined-brows': [{'id': 'rear', 'renderOrder': -1, 'genderVariants': {'female': 'assets/wardrobe/hair/female-approved-20261104/F10-braids-rear.png?v=328c6a1d'}, 'colorReference': 'assets/wardrobe/hair/female-approved-20261104/palette/F10-braids-front.png?v=59ade20b'}, {'id': 'front', 'renderOrder': 9, 'genderVariants': {'female': 'assets/wardrobe/hair/female-approved-20261104/F10-braids-front.png?v=530abece'}, 'colorReference': 'assets/wardrobe/hair/female-approved-20261104/palette/F10-braids-front.png?v=59ade20b'}], 'face-female-new-blue-gaze': [{'id': 'rear', 'renderOrder': -1, 'genderVariants': {'female': 'assets/wardrobe/hair/female-approved-20261104/F11-braids-rear.png?v=1a8f9a89'}, 'colorReference': 'assets/wardrobe/hair/female-approved-20261104/palette/F11-braids-front.png?v=ed80a9e7'}, {'id': 'front', 'renderOrder': 9, 'genderVariants': {'female': 'assets/wardrobe/hair/female-approved-20261104/F11-braids-front.png?v=59053aca'}, 'colorReference': 'assets/wardrobe/hair/female-approved-20261104/palette/F11-braids-front.png?v=ed80a9e7'}], 'face-female-new-freckled': [{'id': 'rear', 'renderOrder': -1, 'genderVariants': {'female': 'assets/wardrobe/hair/female-approved-20261104/F12-braids-rear.png?v=bcfdd6e3'}, 'colorReference': 'assets/wardrobe/hair/female-approved-20261104/palette/F12-braids-front.png?v=d345a2a8'}, {'id': 'front', 'renderOrder': 9, 'genderVariants': {'female': 'assets/wardrobe/hair/female-approved-20261104/F12-braids-front.png?v=00cba9ba'}, 'colorReference': 'assets/wardrobe/hair/female-approved-20261104/palette/F12-braids-front.png?v=d345a2a8'}], 'face-female-new-light-eyes': [{'id': 'rear', 'renderOrder': -1, 'genderVariants': {'female': 'assets/wardrobe/hair/female-approved-20261104/F14-braids-rear.png?v=0d856c36'}, 'colorReference': 'assets/wardrobe/hair/female-approved-20261104/palette/F14-braids-front.png?v=f220ccdc'}, {'id': 'front', 'renderOrder': 9, 'genderVariants': {'female': 'assets/wardrobe/hair/female-approved-20261104/F14-braids-front.png?v=391879ca'}, 'colorReference': 'assets/wardrobe/hair/female-approved-20261104/palette/F14-braids-front.png?v=f220ccdc'}], 'face-female-new-pierced': [{'id': 'rear', 'renderOrder': -1, 'genderVariants': {'female': 'assets/wardrobe/hair/female-approved-20261104/F15-braids-rear.png?v=3eede61a'}, 'colorReference': 'assets/wardrobe/hair/female-approved-20261104/palette/F15-braids-front.png?v=ad097023'}, {'id': 'front', 'renderOrder': 9, 'genderVariants': {'female': 'assets/wardrobe/hair/female-approved-20261104/F15-braids-front.png?v=c41121d5'}, 'colorReference': 'assets/wardrobe/hair/female-approved-20261104/palette/F15-braids-front.png?v=ad097023'}], 'face-female-new-soft-gaze': [{'id': 'rear', 'renderOrder': -1, 'genderVariants': {'female': 'assets/wardrobe/hair/female-approved-20261104/F16-braids-rear.png?v=6b8552f8'}, 'colorReference': 'assets/wardrobe/hair/female-approved-20261104/palette/F16-braids-front.png?v=472ae31c'}, {'id': 'front', 'renderOrder': 9, 'genderVariants': {'female': 'assets/wardrobe/hair/female-approved-20261104/F16-braids-front.png?v=46a209bb'}, 'colorReference': 'assets/wardrobe/hair/female-approved-20261104/palette/F16-braids-front.png?v=472ae31c'}], 'face-female-new-almond-eyes': [{'id': 'rear', 'renderOrder': -1, 'genderVariants': {'female': 'assets/wardrobe/hair/female-approved-20261104/F17-braids-rear.png?v=b7936ce4'}, 'colorReference': 'assets/wardrobe/hair/female-approved-20261104/palette/F17-braids-front.png?v=d9035e43'}, {'id': 'front', 'renderOrder': 9, 'genderVariants': {'female': 'assets/wardrobe/hair/female-approved-20261104/F17-braids-front.png?v=03ca0262'}, 'colorReference': 'assets/wardrobe/hair/female-approved-20261104/palette/F17-braids-front.png?v=d9035e43'}]}}}
+
+Diff is 39886 characters long. Set self.maxDiff to None to see it.
+
+======================================================================
+FAIL: test_existing_catalog_renderer_and_art_preserved (tests.test_female_five_hairstyles.FiveFemaleHairstyleTests.test_existing_catalog_renderer_and_art_preserved)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/palata404/tests/test_female_five_hairstyles.py", line 14, in test_existing_catalog_renderer_and_art_preserved
+    items=catalog();expected=accepted_catalog_snapshot(json.loads((R/'before-catalog.json').read_text())['items']);ids={i['id'] for i in expected};self.assertEqual([i for i in items if i['id'] in ids],expected)
+                                                                                                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Lists differ: [{'id[16043 chars]e', 'avatarWeapon': True, 'thumbnail': 'avatar[987 chars]ld'}] != [{'id[16043 chars]e', 'slot': 'weapon', 'name': 'Іржавий ніж', '[996 chars]ld'}]
+
+First differing element 27:
+{'id': 'gear-knife', 'avatarWeapon': True, 'thumbnail': 'avatar[194 chars]ife'}
+{'id': 'gear-knife', 'slot': 'weapon', 'name': 'Іржавий ніж', '[203 chars]png'}
+
+Diff is 22682 characters long. Set self.maxDiff to None to see it.
+
+======================================================================
+FAIL: test_female_assets_hair_palette_clothing_and_renderer_remain_unchanged (tests.test_male_head_library.MaleLibraryAssetTests.test_female_assets_hair_palette_clothing_and_renderer_remain_unchanged)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/palata404/tests/test_male_head_library.py", line 70, in test_female_assets_hair_palette_clothing_and_renderer_remain_unchanged
+    self.assertEqual(before['frame'],after['frame']);self.assertEqual(before['order'],after['order'])
+                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Lists differ: ['bas[89 chars]k', 'hair', 'headwear', 'face', 'weapon', 'accessory'] != ['bas[89 chars]k', 'beard', 'hair', 'headwear', 'face', 'weapon', 'accessory']
+
+First differing element 9:
+'hair'
+'beard'
+
+Second list contains 1 additional elements.
+First extra element 14:
+'accessory'
+
+  ['baseBody',
+   'pants',
+   'footwear',
+   'upperBody',
+   'outerwear',
+   'armor',
+   'loadout',
+   'gloves',
+   'back',
++  'beard',
+   'hair',
+   'headwear',
+   'face',
+   'weapon',
+   'accessory']
+
+======================================================================
+FAIL: test_runtime_catalog_preserves_every_previous_entry (tests.test_new_female_heads.NewFemaleHeadAssetTests.test_runtime_catalog_preserves_every_previous_entry)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/palata404/tests/test_new_female_heads.py", line 30, in test_runtime_catalog_preserves_every_previous_entry
+    self.assertEqual(old,current,i['id'])
+AssertionError: {'id': 'gear-knife', 'slot': 'weapon', 'name': 'Іржавий ніж', '[203 chars]png'} != {'id': 'gear-knife', 'avatarWeapon': True, 'thumbnail': 'avatar[194 chars]ife'}
+- {'avatarPoseUnavailable': True,
++ {'avatarWeapon': True,
+   'icon': 'knife',
+   'id': 'gear-knife',
+   'image': None,
+   'inventoryCategory': 'weapon',
+   'inventoryName': 'Іржавий ніж',
+   'name': 'Іржавий ніж',
+   'slot': 'weapon',
+   'thumbnail': 'avatar-core/assets/weapons/knife-view-20261025/knife-view.thumb.png'} : gear-knife
+
+======================================================================
+FAIL: test_no_remote_faint_haze_or_detached_low_alpha_specks (tests.test_paper_doll_audit.AuditAssetTests.test_no_remote_faint_haze_or_detached_low_alpha_specks)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/palata404/tests/test_paper_doll_audit.py", line 60, in test_no_remote_faint_haze_or_detached_low_alpha_specks
+    else:self.assertFalse(np.any(peaks<=16),rel)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: np.True_ is not false : assets/wardrobe/beards/approved-20261105/M01-01.png
+
+======================================================================
+FAIL: test_male_ear_cuts_are_local_and_approved_placements_and_rear_stay (tests.test_paper_doll_targeted.TargetedAssetTests.test_male_ear_cuts_are_local_and_approved_placements_and_rear_stay)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/palata404/tests/test_paper_doll_targeted.py", line 62, in test_male_ear_cuts_are_local_and_approved_placements_and_rear_stay
+    fixture=json.loads((ROOT/'tests/fixtures/paper-doll-targeted-fix.json').read_text());catalog=support.audit.catalog();self.assertEqual({i['id']:i.get('placementByGender') for i in catalog['items'] if i['slot']=='hair' and not i['id'].startswith('hair-m6-') and i['id'] not in ['hair-trial-braided-curls','hair-f5-pixie','hair-f5-jaw-bob','hair-f5-long-waves','hair-f5-high-ponytail','hair-f5-braided-updo']},fixture['hair_placements_before'])
+                                                                                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: {'hai[1293 chars]624}}, 'hair-female-braids': {'female': {'x': [118 chars]72}}} != {'hai[1293 chars]624}}}
+Diff is 3175 characters long. Set self.maxDiff to None to see it.
+
+======================================================================
+FAIL: test_registered_paper_doll_assets_and_paths_match_case (tests.test_project_audit.GeneralAssetTests.test_registered_paper_doll_assets_and_paths_match_case)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/palata404/tests/test_project_audit.py", line 30, in test_registered_paper_doll_assets_and_paths_match_case
+    self.assertEqual(len(paths),99)  # Approved appearance assets plus two weapon thumbnails.
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 365 != 99
+
+======================================================================
+FAIL: test_existing_catalog_and_approved_art_are_unchanged (tests.test_trial_braided_curls.TrialBraidedCurlsTests.test_existing_catalog_and_approved_art_are_unchanged)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/palata404/tests/test_trial_braided_curls.py", line 26, in test_existing_catalog_and_approved_art_are_unchanged
+    expected=accepted_catalog_snapshot(before);ids={i['id'] for i in expected};self.assertEqual([i for i in after if i['id'] in ids],expected)
+                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Lists differ: [{'id[16043 chars]e', 'avatarWeapon': True, 'thumbnail': 'avatar[987 chars]ld'}] != [{'id[16043 chars]e', 'slot': 'weapon', 'name': 'Іржавий ніж', '[996 chars]ld'}]
+
+First differing element 27:
+{'id': 'gear-knife', 'avatarWeapon': True, 'thumbnail': 'avatar[194 chars]ife'}
+{'id': 'gear-knife', 'slot': 'weapon', 'name': 'Іржавий ніж', '[203 chars]png'}
+
+Diff is 22682 characters long. Set self.maxDiff to None to see it.
+
+----------------------------------------------------------------------
+Ran 87 tests in 157.478s
+
+FAILED (failures=8)

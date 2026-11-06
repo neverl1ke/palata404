@@ -1,0 +1,41 @@
+{
+  "source": "Approved wardrobe prototype, revision 19; weapon tablet revision 10",
+  "files": [
+    {
+      "file": "assets/ui/wardrobe/paper-header-only.svg",
+      "sha256": "3f74f8499953076322fee4e22f6b344639079ab35757e6ae6ea9b868f6f91f04"
+    },
+    {
+      "file": "assets/ui/wardrobe/requested-header-emblem.webp",
+      "sha256": "d845211c8898de7d36b164beab1d3c40cbbc73a62971a9c76df9df3a6416e765"
+    },
+    {
+      "file": "assets/ui/wardrobe/paper-material.jpg",
+      "sha256": "ef42e5df692759386bf72ad795d59c58bb362a1de6cb3f2d615a2261131f4d0b"
+    },
+    {
+      "file": "assets/ui/wardrobe/steel-material.jpg",
+      "sha256": "8b575d637abf58c1339ffce1a8508615a6bd7302d61fa3925893c88ac41e13e6"
+    },
+    {
+      "file": "assets/ui/wardrobe/slot-art.webp",
+      "sha256": "4df37a18ad6f49f19b879fe15e41b9ce5cee021b76419b6039812d56f69a0965"
+    },
+    {
+      "file": "assets/ui/wardrobe/cap-art.webp",
+      "sha256": "96ce899684d0c2f888f482689529f8e128426c802a47f48dbb069dd0f9337609"
+    },
+    {
+      "file": "assets/ui/wardrobe/weapon-tablet-blank.webp",
+      "sha256": "7210c993a4cef4d524a847c61c8540d52a5ca56ad17c861f9f5c7c4e3ae57234"
+    },
+    {
+      "file": "assets/ui/wardrobe/weapon-red-seal.svg",
+      "sha256": "6df6d5cfb0009d92bdddc6f58f8572bc0706e7de16b38e491bccc95d50307a68"
+    },
+    {
+      "file": "assets/ui/wardrobe/weapon-doctor-signature.svg",
+      "sha256": "beba22264872fb6f5dc97dc74e4065b614443545418dc5c1391b373485877e78"
+    }
+  ]
+}

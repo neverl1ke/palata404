@@ -4,17 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Палата 404</title>
-    <!-- Підключення атмосферних шрифтів Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Special+Elite&display=swap" rel="stylesheet">
-
+    <link rel="preload" href="assets/fonts/TT2020StyleE-Regular.woff" as="font" type="font/woff" crossorigin>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <link rel="stylesheet" href="style.css?v=8bf1e424a17a">
-    <link rel="stylesheet" href="assets/wardrobe/hair/trial/preview.css?v=9db13ce8">
-    <link rel="stylesheet" href="assets/wardrobe/hair/female-five/preview.css?v=1">
+    <link rel="stylesheet" href="assets/wardrobe/hair/trial/preview.css?v=9db13ce8bbba">
+    <link rel="stylesheet" href="assets/wardrobe/hair/female-five/preview.css?v=4ed188fa9d95">
+    <link rel="stylesheet" href="wardrobe-archive.css?v=05073f59293a">
+    <link rel="stylesheet" href="typewriter.css?v=d83bdf590691">
 </head>
 <body>
+<svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute;pointer-events:none" aria-hidden="true"><defs><filter id="emblem-paper-ink" color-interpolation-filters="sRGB"><feColorMatrix type="matrix" values=".185 .622 .063 0 0 .153 .515 .052 0 0 .098 .329 .033 0 0 0 0 0 1 0"/></filter></defs></svg>
 
     <!-- Контейнер для строгого збереження пропорцій кімнати 16:9 -->
     <div class="game-viewport">
@@ -238,54 +237,36 @@
         </div>
     </div>
 
-    <!-- RPG-гардероб: картотека, спільний Paper Doll, предмети інвентаря -->
+    <!-- Approved archive wardrobe; real shared Paper Doll and item instances. -->
     <div id="custom-modal" role="dialog" aria-modal="true" aria-label="Гардероб" class="modal wardrobe-modal hidden" data-wardrobe-theme="patient">
-        <article class="battle-report wardrobe-document">
-            <header class="wardrobe-header">
-                <div><span class="staff-section-code">ВІДДІЛ РЕЄСТРАЦІЇ · ОБЛІК СПОРЯДЖЕННЯ</span><h3>Гардероб</h3></div>
-                <div class="wardrobe-view-switch" role="group" aria-label="Комплект для перегляду">
-                    <button type="button" data-paper-view="patient" onclick="setPaperDollView('patient')">Пацієнт</button>
-                    <button type="button" data-paper-view="combat" onclick="setPaperDollView('combat')">Трип</button>
-                </div>
-                <button type="button" class="report-close" onclick="closeCustomization()" aria-label="Закрити гардероб">✕</button>
-            </header>
-            <div id="paper-doll-save-note" class="report-save-note hidden" role="status">Не вдалося зберегти зовнішність. <button type="button" class="report-detail-link" onclick="retryPaperDollSave()">Повторити збереження</button></div>
-            <div class="wardrobe-layout">
-                <aside class="wardrobe-index">
-                    <span class="wardrobe-section-label">КАРТОТЕКА КОМПЛЕКТІВ</span><nav id="wardrobe-categories" aria-label="Категорії гардероба"></nav><nav id="wardrobe-slots" aria-label="Слоти категорії"></nav></aside>
-                <section id="wardrobe-registration" class="wardrobe-preview" data-view="patient" aria-label="Попередній перегляд персонажа">
-                    <span class="wardrobe-registration-title">АНТРОПОМЕТРИЧНА РЕЄСТРАЦІЯ</span>
-                    <div class="wardrobe-stage">
-                        <div id="wardrobe-paperdoll" data-paper-loading="true" class="character-paperdoll" role="img" aria-label="Чоловік · Пацієнт">
-                            <div class="wardrobe-ground-shadow" aria-hidden="true"><span class="wardrobe-shadow-base"></span><span class="wardrobe-shadow-contact"></span></div>
-                        </div>
-                    </div>
-                    <div class="wardrobe-registration-footer">
-                    <span id="wardrobe-appearance-caption" class="wardrobe-appearance-caption"></span>
-                    <div class="wardrobe-registration-plate">
-                        <strong>НА ОБЛІКУ</strong>
-                        <span>Пацієнт: <b id="wardrobe-patient-name"></b></span>
-                        <span>Справа № <b id="wardrobe-patient-case"></b></span>
-                    </div>
-                    <div class="wardrobe-monitor" aria-label="Декоративний індикатор спостереження">
-                        <span class="wardrobe-monitor-light" aria-hidden="true"></span><span>МОНІТОРИНГ ОБ'ЄКТА</span>
-                        <svg class="wardrobe-monitor-trace" viewBox="0 0 120 18" aria-hidden="true" focusable="false"><path d="M0 10h25l5-3 5 3h15l4-7 5 13 5-6h15l5-2 5 2h31"/></svg>
-                    </div>
-                    </div>
-                </section>
-                <section id="wardrobe-items" class="wardrobe-items" aria-labelledby="wardrobe-items-title">
-                    <header class="wardrobe-items-heading"><span class="wardrobe-section-label">МАТЕРІАЛИ КОМПЛЕКТУ</span><h4 id="wardrobe-items-title">Базове тіло</h4></header>
-                    <div id="wardrobe-gender-switch" class="wardrobe-gender-switch" role="group" aria-label="Базовий персонаж">
-                        <button type="button" data-paper-gender="male" data-wardrobe-focus="gender-male" onclick="setGender('male')">Чоловік</button>
-                        <button type="button" data-paper-gender="female" data-wardrobe-focus="gender-female" onclick="setGender('female')">Жінка</button>
-                    </div>
-                    <section id="wardrobe-hair-palette" class="hidden" aria-label="Колір волосся"></section>
-                    <div id="wardrobe-container" class="wardrobe-item-grid"></div>
-                    <section id="wardrobe-item-detail" class="wardrobe-item-detail hidden" aria-labelledby="wardrobe-detail-title"></section>
-                </section>
-            </div>
-        </article>
+      <article class="battle-report wardrobe-document archive-wardrobe">
+        <header class="wardrobe-header">
+          <div class="archive-letterhead"><img class="archive-emblem" src="assets/ui/wardrobe/requested-header-emblem.webp" alt="Эмблема учреждения"><div><small>МИНИСТЕРСТВО ЗДРАВООХРАНЕНИЯ</small><h3>ЦЕНТР ИНТЕНСИВНОГО ЛЕЧЕНИЯ<br>ПСИХИЧЕСКИХ РАССТРОЙСТВ №404</h3><p>ОТДЕЛ ГАРДЕРОБА И ОСНАЩЕНИЯ</p></div></div>
+          <div class="wardrobe-view-switch" role="group" aria-label="Комплект"><button type="button" data-paper-view="patient" onclick="setPaperDollView('patient')">Пациент</button><button type="button" data-paper-view="combat" onclick="setPaperDollView('combat')">Трип</button></div>
+          <div class="archive-file-note">ФОРМА 404/Г<br><small>СЛУЖЕБНЫЙ ДОКУМЕНТ</small><br>Карта оснащения · экз. №1</div>
+          <button type="button" class="report-close" onclick="closeCustomization()" aria-label="Закрыть гардероб">✕</button>
+        </header>
+        <div id="paper-doll-save-note" class="report-save-note hidden" role="status">Не удалось сохранить. <button onclick="retryPaperDollSave()">Повторить</button></div>
+        <div class="wardrobe-layout">
+          <section id="wardrobe-registration" class="wardrobe-preview" data-view="patient" aria-label="Примерка персонажа">
+            <nav id="archive-left-slots" class="archive-rail" aria-label="Одежда"></nav>
+            <div class="wardrobe-stage"><div id="wardrobe-paperdoll" data-paper-loading="true" class="character-paperdoll" role="img" aria-label="Персонаж"><div class="wardrobe-ground-shadow" aria-hidden="true"><span class="wardrobe-shadow-base"></span><span class="wardrobe-shadow-contact"></span></div></div></div>
+            <nav id="archive-right-slots" class="archive-rail" aria-label="Оснащение"></nav>
+            <div class="wardrobe-registration-footer"><span id="wardrobe-appearance-caption"></span><span id="wardrobe-patient-name"></span><span id="wardrobe-patient-case"></span></div>
+          </section>
+          <section id="wardrobe-items" class="wardrobe-items" aria-labelledby="wardrobe-items-title">
+            <header class="wardrobe-items-heading"><h4 id="wardrobe-items-title">Оружие</h4><button class="archive-drawer-toggle" onclick="toggleArchiveCatalog()" aria-label="Развернуть список">↕</button></header>
+            <nav id="wardrobe-categories" aria-label="Категории"></nav><nav id="wardrobe-slots" aria-label="Раздел"></nav>
+            <div id="wardrobe-gender-switch" class="wardrobe-gender-switch"><button data-paper-gender="male" onclick="setGender('male')">Мужчина</button><button data-paper-gender="female" onclick="setGender('female')">Женщина</button></div>
+            <section id="wardrobe-hair-palette" class="hidden" aria-label="Цвет волос"></section>
+            <div id="wardrobe-container" class="wardrobe-item-grid"></div>
+          </section>
+          <section id="wardrobe-item-detail" class="wardrobe-item-detail" aria-label="Карточка оснащения"></section>
+        </div>
+        <footer class="archive-footer"><div id="archive-draft-note" role="status"></div><div id="archive-resources"></div><button onclick="discardWardrobeSession();beginWardrobeSession()">Отменить</button><button onclick="applyWardrobeSession();beginWardrobeSession()">Применить</button></footer>
+      </article>
     </div>
+    <div id="weapon-dialog" class="modal hidden" role="dialog" aria-modal="true" aria-label="Настройка оружия"></div>
 
     <!-- Модальне вікно: Сусіди по блоку -->
     <div id="friends-modal" role="dialog" aria-modal="true" aria-label="Сусіди по блоку" class="modal center-modal hidden">
@@ -432,20 +413,23 @@
         </div>
     </div>
 
-    <script src="icons.js?v=40003" defer></script>
-    <script src="staff-archive-data.js?v=40009" defer></script>
-    <script src="battle-results.js?v=project-audit-1" defer></script>
-    <script src="raid-archive.js?v=40012" defer></script>
-    <script src="staff-archive.js?v=project-audit-1" defer></script>
+    <script src="icons.js?v=f93e77809f1a" defer></script>
+    <script src="staff-archive-data.js?v=cd6869218ff9" defer></script>
+    <script src="battle-results.js?v=857dd4c22ffa" defer></script>
+    <script src="raid-archive.js?v=bd7f267def97" defer></script>
+    <script src="staff-archive.js?v=d68146a370fb" defer></script>
     <script src="paper-doll-data.js?v=29b496cdc4c5" defer></script>
     <script src="hair-color.js?v=2a304c20e5d2" defer></script>
-    <script src="female-hair-fit-data.js?v=99f75a9f213d" defer></script>
-    <script src="female-hair-fit.js?v=bf7735c664ca" defer></script>
+    <script src="female-hair-fit-data.js?v=3b4fb3949106" defer></script>
+    <script src="female-hair-fit.js?v=58c1a5809e8f" defer></script>
     <script src="male-hair-fit-data.js?v=99f75a9f213d" defer></script>
     <script src="male-hair-fit.js?v=bf7735c664ca" defer></script>
-    <script src="paper-doll.js?v=5f543f52a629" defer></script>
-    <script src="wardrobe.js?v=6f15e024d6fd" defer></script>
-    <script src="script.js?v=approved-packages-20261102" defer></script>
+    <script src="paper-doll.js?v=53e1c3367409" defer></script>
+    <script src="weapon-system.js?v=a9a2eb1e3091" defer></script>
+    <script src="weapon-runtime.js?v=d5baae7ec4db" defer></script>
+    <script src="wardrobe.js?v=1301a7c5fa2a" defer></script>
+    <script src="wardrobe-archive.js?v=e3e202b4bdbf" defer></script>
+    <script src="script.js?v=bff634739f50" defer></script>
     <!-- Модальне вікно: Медичне Досьє пацієнта (Аркуш паперу А4) -->
     <div id="dossier-modal" role="dialog" aria-modal="true" aria-label="Особисте досьє" class="modal center-modal hidden">
         <div class="modal-content dossier-paper">
@@ -557,6 +541,7 @@
 
     <!-- ФОНОВА АРЕНА (Жорсткі пропорції 16:9, що вписуються в будь-який екран) -->
     <div id="battle-arena-scale">
+    <div id="weapon-battle-state" class="weapon-battle-state" aria-live="polite"></div>
     <div id="battle-arena-screen" onclick="performPlayerAttack(event)" style="position: relative; width: 100vw; height: 56.25vw; max-height: 100vh; max-width: 177.78vh; background: url('nurse_bg.jpg') center/cover no-repeat; display: flex; justify-content: space-between; align-items: flex-start; padding: 2.5%; box-sizing: border-box; cursor: pointer; user-select: none;">
 
         <!-- ВЕРХ ЗЛІВА: Панель гравця -->
@@ -681,7 +666,7 @@
                     <p><strong id="victory-summary-silver"></strong><span>срібла</span></p>
                 </div>
                 <p id="victory-summary-mvp" class="victory-summary-mvp hidden"><strong id="victory-summary-mvp-name"></strong><span id="victory-summary-mvp-bonus" class="hidden">+5% EXP / +5% срібла</span></p>
-                <ul id="victory-summary-items" class="report-extra-rewards"></ul>
+                <p id="victory-weapon-materials"></p><ul id="victory-summary-items" class="report-extra-rewards"></ul>
             </section>
             <dl class="victory-summary-stats" aria-label="Основні показники бою">
                 <div><dt>Завдано шкоди</dt><dd id="victory-summary-damage"></dd></div>
@@ -824,6 +809,6 @@
     </article>
 </div>
 
-<script type="module" src="avatar-core/game-preview.mjs?v=15bd611518ba"></script>
+<script type="module" src="avatar-core/game-preview.mjs?v=45a2de687ef4"></script>
 </body>
 </html>

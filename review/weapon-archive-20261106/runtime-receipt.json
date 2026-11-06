@@ -1,0 +1,19 @@
+{
+  "description": "Authorized wardrobe/weapon integration; no avatar art or rig changes. Instance IDs resolve to the original weapon model before rendering.",
+  "runtime_before_sha256": {
+    "avatar-core/game-preview.mjs": "15bd611518baebb0fb953e538a3b0d7594d1925fd65f4dcd182feb3eb545873e",
+    "script.js": "82310d316ee24666b7e6ec34ea79d07bc56798406f032e31e4b15c37e645186f",
+    "paper-doll.js": "5f543f52a629c81a5cd22df3c6c6fd2f0d4735c83cbb721dc44fa49d10cb495a",
+    "index.html": "5a00eacbc3568bcb3ac7841e934448433cfabe4546838491828059134ec665db",
+    "battle-results.js": "075af3c45fd544820fafe1cb68c04fd079181ea4b3f021977b6448a358baa2a9",
+    "wardrobe.js": "6f15e024d6fdeebe02afc893a3db806ad4cc5075e56b7b25fbce60ff61c9e040"
+  },
+  "runtime_after_sha256": {
+    "avatar-core/game-preview.mjs": "45a2de687ef4073bb3d0a80a7ea2e3b19378cd360409a39803d986a089e7cb0c",
+    "script.js": "bff634739f50f155f7d6911bbc38fc7e5b3be4c9db5eb63bd7fef9888117dd4d",
+    "paper-doll.js": "53e1c3367409f643b571b1bc00efc72098e1ccbe70c79b6e120988c7d90ad1f4",
+    "index.html": "8435538e41d1d3433025b7517bf5ecaa8ba3e79289d5be7446c07df864115dc8",
+    "battle-results.js": "857dd4c22ffa3f94406159c1e03847ec1459aaaddeb6c9e1411aa6756be25bf6",
+    "wardrobe.js": "1301a7c5fa2a9bc63c13bc261eaf25aa491605403c3b8bad9a2c7e74f9bc68b4"
+  }
+}

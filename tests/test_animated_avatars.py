@@ -35,7 +35,7 @@ class AnimatedAvatarTests(unittest.TestCase):
         self.page.evaluate('equipPaperDollItem("weapon","gear-knife")');self.ready('melee')
         self.assertTrue(self.page.evaluate('selectedPaperDollItem("weapon").avatarWeapon'))
         self.page.evaluate('equipPaperDollItem("weapon","gear-aks")');self.ready('rifle')
-        self.page.reload(wait_until='networkidle');self.page.evaluate('openCustomization()');self.ready('rifle')
+        self.page.evaluate('typeof applyWardrobeSession === "function" && applyWardrobeSession()');self.page.reload(wait_until='networkidle');self.page.evaluate('openCustomization()');self.ready('rifle')
         self.assertEqual(self.page.evaluate('selectedPaperDollItem("weapon").id'),'gear-aks')
         self.page.set_viewport_size({'width':390,'height':844});self.page.evaluate('selectWardrobeCategory("weapons");selectWardrobeSlot("weapon")');self.ready('rifle')
         for weapon in ['gear-knife','gear-aks']:
@@ -99,7 +99,7 @@ class AnimatedAvatarTests(unittest.TestCase):
 
     def test_stash_art_and_rapid_changes(self):
         self.load();self.page.evaluate('openInventory()')
-        self.page.wait_for_function('''()=>[...document.querySelectorAll('#stash-items .weapon-icon-frame img')].length===2&&[...document.querySelectorAll('#stash-items .weapon-icon-frame img')].every(i=>i.complete&&i.naturalWidth>0)''')
+        self.page.wait_for_function('''()=>[...document.querySelectorAll('#stash-items .weapon-icon-frame img')].length===5&&[...document.querySelectorAll('#stash-items .weapon-icon-frame img')].every(i=>i.complete&&i.naturalWidth>0)''')
         self.page.evaluate('openCustomization();setPaperDollView("combat");equipPaperDollItem("upperBody",null);for(let i=0;i<8;i++){setGender(i%2?"male":"female");equipPaperDollItem("weapon",i%2?"gear-knife":"gear-aks")}setGender("female");equipPaperDollItem("weapon","gear-aks")');self.ready('rifle')
         self.assertTrue(self.page.evaluate('''()=>[...avatarCoreGamePreview.instances.values()].every(s=>s.engine.gender==='female'&&s.host.querySelectorAll('canvas').length===1)'''))
         self.page.evaluate('equipPaperDollItem("weapon",null)');self.ready('idle')

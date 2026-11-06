@@ -1,0 +1,6 @@
+test_all_instances_keep_approved_poses_both_genders_and_temporary_hide (tests.test_weapon_archive.WeaponArchiveBrowserTests.test_all_instances_keep_approved_poses_both_genders_and_temporary_hide) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 40.134s
+
+OK

@@ -116,6 +116,7 @@ function buildBattleResult(boss, outcome = 'victory') {
         },
         mvpId,
         totalDamage,
+        weaponMaterials: won ? { ...(WEAPON_RAID_MATERIALS[battle.bossKey] || { equipmentParts: 1, experimentalComponents: 0 }) } : { equipmentParts: 0, experimentalComponents: 0 },
         payout: { baseExp, baseSilver, bonusExp, bonusSilver, exp: baseExp + bonusExp, silver: baseSilver + bonusSilver },
         participants: sorted.map(member => ({
             id: member.id, name: member.isPlayer ? playerName : member.name,
@@ -173,6 +174,7 @@ function normalizeBattleResult(value) {
         && (member.rewards === null || (object(member.rewards) && number(member.rewards.exp) && number(member.rewards.silver))))) return null;
     if (!value.extraRewards.every(reward => object(reward) && typeof reward.name === 'string'
         && typeof reward.icon === 'string' && typeof reward.granted === 'boolean')) return null;
+    if (value.weaponMaterials && (!object(value.weaponMaterials) || !['equipmentParts','experimentalComponents'].every(k=>number(value.weaponMaterials[k]) && value.weaponMaterials[k]<=100000))) return null;
     return value;
 }
 
@@ -199,6 +201,8 @@ function setBattleReportText(id, value) {
 }
 
 function renderBattleSummary(result) {
+    const materialInfo=document.getElementById('victory-weapon-materials');
+    if(materialInfo) materialInfo.textContent=result.weaponMaterials ? `Детали: +${result.weaponMaterials.equipmentParts || 0} · Эксп. компоненты: +${result.weaponMaterials.experimentalComponents || 0}` : '';
     setBattleReportText('victory-summary-boss', result.boss.name);
     setBattleReportText('victory-summary-number', `№${result.boss.registrationNumber}`);
     setBattleReportText('victory-summary-case', result.boss.caseCode);
@@ -265,10 +269,12 @@ function renderBattleResult(result) {
     }).join('');
     const table = document.getElementById('victory-statistics-body');
     if (table) table.innerHTML = rows;
+    const materialNote = result.weaponMaterials ? `<li>Детали оснащения: +${escapeHTML(result.weaponMaterials.equipmentParts || 0)} · Эксп. компоненты: +${escapeHTML(result.weaponMaterials.experimentalComponents || 0)}</li>` : '';
     const additional = document.getElementById('victory-extra-rewards');
     if (additional) additional.innerHTML = result.extraRewards.length ? result.extraRewards.map(reward =>
         `<li>${iconHTML(reward.icon)} <strong>${escapeHTML(reward.name)}</strong> — ${reward.granted ? 'отримано' : 'вже є в інвентарі'}</li>`
     ).join('') : '<li>Додаткових предметів не видано.</li>';
+    if (additional && materialNote) additional.innerHTML += materialNote;
     updateBattleResultSaveNotice();
 }
 
