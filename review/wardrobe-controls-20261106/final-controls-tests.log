@@ -1,0 +1,6 @@
+test_weapon_type_filters_resources_and_eye_toggle (tests.test_weapon_archive.WeaponArchiveBrowserTests.test_weapon_type_filters_resources_and_eye_toggle) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 7.194s
+
+OK

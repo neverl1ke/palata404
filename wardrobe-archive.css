@@ -125,3 +125,54 @@
 .tablet-main-sheet .tablet-modules{top:79%}
 .tablet-main-sheet .tablet-actions{top:87%}
 .archive-wardrobe .wardrobe-item-card .weapon-icon-frame{box-shadow:none;overflow:visible}
+/* Weapon scale follows the visible silhouette, not the transparent thumbnail padding. */
+.archive-wardrobe .wardrobe-item-card[data-weapon-kind=rifles]{height:165px;min-height:165px;grid-template-rows:92px auto auto}
+.archive-wardrobe .wardrobe-item-card[data-weapon-kind=rifles] .weapon-icon-frame{height:92px!important;max-height:92px;width:100%;max-width:none;overflow:visible}
+.archive-wardrobe .wardrobe-item-card[data-weapon-kind=rifles] .weapon-icon-frame img{position:static;inset:auto;width:96%;height:auto;max-height:none;object-fit:contain}
+.archive-tablet[data-weapon-kind=rifles] .tablet-weapon-mount img{width:94%;height:auto;max-height:none;flex:none}
+.tablet-main-sheet .tablet-institution{top:3%;height:13%;gap:3%}
+.tablet-main-sheet .tablet-institution>img{width:21%;height:100%}
+.tablet-main-sheet .tablet-institution strong{font-size:14px;line-height:1.1}
+.tablet-main-sheet .tablet-institution small{font-size:10px}
+.tablet-responsible{bottom:12px;left:9%;width:60%;height:66px}
+.tablet-doctor-line{display:flex;align-items:center;gap:9px;white-space:nowrap;font-size:12px}
+.tablet-redacted{display:inline-block;color:#16130f;font-weight:bold;letter-spacing:-3px;line-height:.85;transform:rotate(-1deg);text-shadow:1px 1px #16130f,-1px -1px #16130f}
+.tablet-responsible .tablet-signature{position:absolute;left:42%;top:16px;width:58%;height:56px;max-width:none;object-fit:cover;object-position:center}
+.tablet-approval-sheet .tablet-seal{right:9%;bottom:51px;width:16%;max-height:68px}
+.archive-file-note{padding:10px 12px}
+.archive-file-note>br:last-of-type{display:none}
+.archive-file-note #archive-resources{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:7px;font-size:15px;line-height:1}
+.archive-resource{display:inline-flex;gap:4px;align-items:center;white-space:nowrap}
+.archive-resource i{display:inline-block;width:29px;height:29px;flex:none;background:url('assets/ui/wardrobe/resource-icons.png') var(--resource-position) center/300% 100% no-repeat}
+.archive-wardrobe #wardrobe-categories:has([data-weapon-type]){padding:6px;gap:4px;flex-wrap:wrap}
+.archive-wardrobe #wardrobe-categories [data-weapon-type]{font-size:12px;min-height:32px;padding:5px 7px;background:var(--archive-steel) center/cover;border:1px solid #90734b;color:#ddc99c}
+.archive-wardrobe #wardrobe-categories [data-weapon-type][aria-pressed=true]{background:var(--archive-paper) center/cover;color:#382719}
+.archive-eye{display:grid;place-items:center;padding:1px;width:22px;height:20px;line-height:1;background:#30291e;border:1px solid #ac8955;box-shadow:inset 0 0 0 1px #17150f;color:#f3dca4}
+.archive-eye svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;pointer-events:none}
+.archive-eye[aria-pressed=true]{opacity:1;color:#85847e;background:#262723;border-color:#5a5c53}
+.archive-eye .eye-strike{stroke-width:2.5;paint-order:stroke;filter:drop-shadow(0 1px #262723)}
+.archive-eye:focus-visible{outline:2px solid #edc887;outline-offset:2px}
+.archive-wardrobe,.archive-wardrobe *{scrollbar-width:thin;scrollbar-color:#9a7849 #171c17}
+.archive-wardrobe::-webkit-scrollbar,.archive-wardrobe *::-webkit-scrollbar{width:14px;height:14px}
+.archive-wardrobe::-webkit-scrollbar-track,.archive-wardrobe *::-webkit-scrollbar-track{background:#161b17 url('assets/ui/wardrobe/steel-material.jpg') center/cover;border:3px double #7b603d;box-shadow:inset 2px 0 4px #000a}
+.archive-wardrobe::-webkit-scrollbar-thumb,.archive-wardrobe *::-webkit-scrollbar-thumb{background:#92734b url('assets/ui/wardrobe/control-papers.jpg') center top/100% 400%;border:2px solid #30281a;border-radius:2px;box-shadow:inset 0 0 0 1px #ae8951;min-height:36px}
+.archive-wardrobe::-webkit-scrollbar-thumb:hover,.archive-wardrobe *::-webkit-scrollbar-thumb:hover{border-color:#b99158}
+.archive-wardrobe::-webkit-scrollbar-corner,.archive-wardrobe *::-webkit-scrollbar-corner{background:#1a1c15}
+@supports selector(::-webkit-scrollbar){.archive-wardrobe,.archive-wardrobe *{scrollbar-width:auto;scrollbar-color:auto}}
+@media(max-width:700px){.archive-wardrobe .wardrobe-item-card[data-weapon-kind=rifles]{height:135px;min-height:135px;grid-template-rows:70px auto auto}.archive-wardrobe .wardrobe-item-card[data-weapon-kind=rifles] .weapon-icon-frame{height:70px!important}.archive-eye{width:20px;height:18px}.tablet-main-sheet .tablet-institution strong{font-size:12px}.tablet-main-sheet .tablet-institution small{font-size:9px}}
+.tablet-approval-sheet{flex-basis:260px;min-height:260px}
+.tablet-approval-sheet .tablet-seal{right:14%;bottom:51px}
+.tablet-inspection-copy p:last-child{max-width:68%}
+.archive-tablet[data-weapon-kind=rifles] .tablet-weapon-mount img{width:88%}
+.tablet-responsible .tablet-signature{top:9px;height:48px}
+.tablet-main-sheet{min-height:420px}
+.archive-wardrobe .tablet-main-sheet .tablet-weapon-mount{top:28%;height:26.5%}
+.archive-tablet[data-weapon-kind=rifles] .tablet-weapon-mount img{width:84%}
+.tablet-main-sheet .weapon-progress{top:55%}
+.tablet-main-sheet .weapon-stat-grid{top:62%;line-height:1.15;gap:2px 10px}
+.tablet-main-sheet .weapon-stat-grid>div{padding:1px 0}
+.tablet-responsible .tablet-signature{top:5px;height:43px}
+@media(min-width:1401px){.archive-wardrobe{height:min(980px,calc(100dvh - 40px))!important}}
+.archive-wardrobe .wardrobe-item-grid,.archive-wardrobe .wardrobe-item-detail,.archive-wardrobe #wardrobe-hair-palette{scrollbar-gutter:stable}
+.archive-wardrobe::-webkit-scrollbar,.archive-wardrobe *::-webkit-scrollbar{display:block}
+.tablet-redacted{font-size:16px;letter-spacing:-2px;min-width:68px;overflow:hidden}

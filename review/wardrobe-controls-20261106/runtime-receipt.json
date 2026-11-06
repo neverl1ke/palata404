@@ -1,0 +1,9 @@
+{
+  "description": "User-requested wardrobe controls, filters and resource header; no avatar source image or rig changes.",
+  "runtime_before_sha256": {
+    "index.html": "72eb500a6e6b7134793843d5b0bd70176ceb4bbc8a3557e107dcb255ebd4e66b"
+  },
+  "runtime_after_sha256": {
+    "index.html": "369fe7e98136c8457e2759c7fa4e70901e8424b2b472336b20859dd154bac13f"
+  }
+}

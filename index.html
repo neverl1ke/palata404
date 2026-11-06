@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="style.css?v=8bf1e424a17a">
     <link rel="stylesheet" href="assets/wardrobe/hair/trial/preview.css?v=9db13ce8bbba">
     <link rel="stylesheet" href="assets/wardrobe/hair/female-five/preview.css?v=4ed188fa9d95">
-    <link rel="stylesheet" href="wardrobe-archive.css?v=8bc29850e04c">
+    <link rel="stylesheet" href="wardrobe-archive.css?v=17c7ec4cd102">
     <link rel="stylesheet" href="typewriter.css?v=d83bdf590691">
 </head>
 <body>
@@ -243,7 +243,7 @@
         <header class="wardrobe-header">
           <div class="archive-letterhead"><img class="archive-emblem" src="assets/ui/wardrobe/requested-header-emblem.webp" alt="Эмблема учреждения"><div><small>МИНИСТЕРСТВО ЗДРАВООХРАНЕНИЯ</small><h3>ЦЕНТР ИНТЕНСИВНОГО ЛЕЧЕНИЯ<br>ПСИХИЧЕСКИХ РАССТРОЙСТВ №404</h3><p>ОТДЕЛ ГАРДЕРОБА И ОСНАЩЕНИЯ</p></div></div>
           <div class="wardrobe-view-switch" role="group" aria-label="Комплект"><button type="button" data-paper-view="patient" onclick="setPaperDollView('patient')">Пациент</button><button type="button" data-paper-view="combat" onclick="setPaperDollView('combat')">Трип</button></div>
-          <div class="archive-file-note">ФОРМА 404/Г<br><small>СЛУЖЕБНЫЙ ДОКУМЕНТ</small><br>Карта оснащения · экз. №1</div>
+          <div class="archive-file-note">ФОРМА 404/Г<br><small>СЛУЖЕБНЫЙ ДОКУМЕНТ</small><br><div id="archive-resources" aria-label="Ресурсы"></div></div>
           <button type="button" class="report-close" onclick="closeCustomization()" aria-label="Закрыть гардероб">✕</button>
         </header>
         <div id="paper-doll-save-note" class="report-save-note hidden" role="status">Не удалось сохранить. <button onclick="retryPaperDollSave()">Повторить</button></div>
@@ -263,7 +263,7 @@
           </section>
           <section id="wardrobe-item-detail" class="wardrobe-item-detail" aria-label="Карточка оснащения"></section>
         </div>
-        <footer class="archive-footer"><div id="archive-draft-note" role="status"></div><div id="archive-resources"></div><button onclick="discardWardrobeSession();beginWardrobeSession()">Отменить</button><button onclick="applyWardrobeSession();beginWardrobeSession()">Применить</button></footer>
+        <footer class="archive-footer"><div id="archive-draft-note" role="status"></div><button onclick="discardWardrobeSession();beginWardrobeSession()">Отменить</button><button onclick="applyWardrobeSession();beginWardrobeSession()">Применить</button></footer>
       </article>
     </div>
     <div id="weapon-dialog" class="modal hidden" role="dialog" aria-modal="true" aria-label="Настройка оружия"></div>
@@ -428,7 +428,7 @@
     <script src="weapon-system.js?v=a9a2eb1e3091" defer></script>
     <script src="weapon-runtime.js?v=d5baae7ec4db" defer></script>
     <script src="wardrobe.js?v=fcc614fcb47c" defer></script>
-    <script src="wardrobe-archive.js?v=c93533b8e80f" defer></script>
+    <script src="wardrobe-archive.js?v=560c41bc296e" defer></script>
     <script src="script.js?v=bff634739f50" defer></script>
     <!-- Модальне вікно: Медичне Досьє пацієнта (Аркуш паперу А4) -->
     <div id="dossier-modal" role="dialog" aria-modal="true" aria-label="Особисте досьє" class="modal center-modal hidden">

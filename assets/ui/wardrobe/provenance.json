@@ -54,6 +54,12 @@
       "sha256": "e924eb188c75ae24814ea11e88791384fa2a1fd8735fa7e586a4e756ceef5c69",
       "source": "/workspace/generated_images/exec-aaaad891-2925-4e64-b605-0c60f920abd3.png",
       "notes": "Imagegen local edit of exec-b6d6d4af-02ec-4d49-9cba-89965a505d46.png. Two equal transparent sprite rows: paperclip and brass thumbtack paper labels, torn corners and red edge stains. Center empty; text remains HTML."
+    },
+    {
+      "file": "assets/ui/wardrobe/resource-icons.png",
+      "sha256": "a55039e475d7ce468a5a7e30f8730642ce1f796776cb78ef4dabb4420942948d",
+      "source": "/workspace/generated_images/exec-a69507e5-9db0-4d8a-8fb6-1dc2f08fd065.png",
+      "notes": "Generated at user request. Three equal sprite cells: tarnished silver coins, salvaged gear/bolt, vintage electrotherapy insulator/coil. Transparent original copied unchanged."
     }
   ]
 }

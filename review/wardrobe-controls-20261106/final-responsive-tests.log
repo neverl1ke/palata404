@@ -1,0 +1,13 @@
+test_responsive_rails_catalog_detail_and_upgrade_dialog_stay_accessible (tests.test_weapon_archive.WeaponArchiveBrowserTests.test_responsive_rails_catalog_detail_and_upgrade_dialog_stay_accessible) ... Responsive viewport 1680 1000
+Responsive viewport 1280 800
+Responsive viewport 1024 768
+Responsive viewport 768 1024
+Responsive viewport 390 844
+Responsive viewport 320 568
+ok
+test_weapon_type_filters_resources_and_eye_toggle (tests.test_weapon_archive.WeaponArchiveBrowserTests.test_weapon_type_filters_resources_and_eye_toggle) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 24.876s
+
+OK
