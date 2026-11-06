@@ -1,0 +1,87 @@
+{
+  "files": [
+    {
+      "file": "assets/ui/wardrobe/rarity-cards/common-blank.png",
+      "sha256": "5701b38de4b4e80898f606e8c06ee8843ac145c55f7e82381972ec85806bcc67",
+      "size": [
+        2170,
+        593
+      ],
+      "source": "/workspace/generated_images/exec-b09b845b-cd21-41b7-a7f1-a5fbe0285fa7.png",
+      "edit": "Targeted removal of printed rarity stamp/word; original card retained separately. Transparent margins trimmed after alpha threshold 78%. Live rarity ink added by UI."
+    },
+    {
+      "file": "assets/ui/wardrobe/rarity-cards/improved-blank.png",
+      "sha256": "074c1a42a6ed1d5d703e8eb8b73787821e6974acc415644bb5633d2973f3549d",
+      "size": [
+        2170,
+        569
+      ],
+      "source": "/workspace/generated_images/exec-8644adcd-e549-4e3b-8263-8f9c4495d659.png",
+      "edit": "Targeted removal of printed rarity stamp/word; original card retained separately. Transparent margins trimmed after alpha threshold 78%. Live rarity ink added by UI."
+    },
+    {
+      "file": "assets/ui/wardrobe/rarity-cards/rare-blank.png",
+      "sha256": "ded793a42e9c3fce670d6967fd5cb24ff4dd42e2dd9b86cdcfd620e1f0fdff1c",
+      "size": [
+        2170,
+        525
+      ],
+      "source": "/workspace/generated_images/exec-7e01c6c2-e668-48ab-92be-14446bddccef.png",
+      "edit": "Targeted removal of printed rarity stamp/word; original card retained separately. Transparent margins trimmed after alpha threshold 78%. Live rarity ink added by UI."
+    },
+    {
+      "file": "assets/ui/wardrobe/rarity-cards/experimental-blank.png",
+      "sha256": "8206974cf203a26e3b0aefc87c324de23a4386831ae2012ed618d40e28bdf54b",
+      "size": [
+        2172,
+        446
+      ],
+      "source": "/workspace/generated_images/exec-58dfa57a-47c7-4a09-a5f2-c30822b309fd.png",
+      "edit": "Targeted removal of printed rarity stamp/word; original card retained separately. Transparent margins trimmed after alpha threshold 78%. Live rarity ink added by UI."
+    },
+    {
+      "file": "assets/ui/documents/hospital-engraving.png",
+      "sha256": "ccd045b6348d453b3ed907c310b38127b34abb7c9eae55cdb610476d63c6a04c",
+      "size": [
+        2172,
+        724
+      ],
+      "source": "/workspace/generated_images/exec-568a0246-11b2-4647-a6ed-83173f67903a.png",
+      "edit": "New supporting archival engraving"
+    },
+    {
+      "file": "assets/ui/wardrobe/aged-leather.webp",
+      "sha256": "e331f3babdecae737391177e246f13651ed1a0dba38143c0366cdfbac632fb62",
+      "size": [
+        1254,
+        1254
+      ],
+      "source": "/workspace/generated_images/exec-be6db054-a030-408f-a9be-e1483501e5dc.png",
+      "edit": "Dark leather locally aged after user review; format export WebP quality 92"
+    },
+    {
+      "file": "assets/ui/wardrobe/battered-wood.webp",
+      "sha256": "2b63b5207a5f01a3e8fa93590b1e7a951a1a06916440276acbcdbaff055cec9a",
+      "size": [
+        1585,
+        992
+      ],
+      "source": "/workspace/generated_images/exec-ce1695c3-aa32-4e6f-a6ab-155bb971ff54.png",
+      "edit": "Wood aged after review, then deep fingernail gouges added; format export WebP quality 92"
+    }
+  ],
+  "approved_unchanged": {
+    "assets/ui/wardrobe/paper-header-only.svg": "3f74f8499953076322fee4e22f6b344639079ab35757e6ae6ea9b868f6f91f04",
+    "assets/ui/wardrobe/requested-header-emblem.webp": "d845211c8898de7d36b164beab1d3c40cbbc73a62971a9c76df9df3a6416e765",
+    "assets/ui/wardrobe/weapon-red-seal.svg": "6df6d5cfb0009d92bdddc6f58f8572bc0706e7de16b38e491bccc95d50307a68",
+    "assets/ui/wardrobe/weapon-doctor-signature.svg": "beba22264872fb6f5dc97dc74e4065b614443545418dc5c1391b373485877e78",
+    "assets/ui/wardrobe/weapon-tablet-blank.webp": "7210c993a4cef4d524a847c61c8540d52a5ca56ad17c861f9f5c7c4e3ae57234"
+  },
+  "font": {
+    "file": "assets/fonts/MarckScript-Regular.ttf",
+    "source": "https://github.com/google/fonts/tree/main/ofl/marckscript",
+    "license": "assets/fonts/MarckScript-OFL.txt",
+    "sha256": "504de8cc6f919163bc9afb67b9bc208d258230c5e8d00cb82ec52474f9fafc3b"
+  }
+}

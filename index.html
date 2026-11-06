@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,9 +9,9 @@
     <link rel="stylesheet" href="style.css?v=8bf1e424a17a">
     <link rel="stylesheet" href="assets/wardrobe/hair/trial/preview.css?v=9db13ce8bbba">
     <link rel="stylesheet" href="assets/wardrobe/hair/female-five/preview.css?v=4ed188fa9d95">
-    <link rel="stylesheet" href="wardrobe-archive.css?v=84d8a12b8a24">
+    <link rel="stylesheet" href="wardrobe-archive.css?v=84f39edeeea8">
     <link rel="stylesheet" href="typewriter.css?v=d83bdf590691">
-    <link rel="stylesheet" href="document-system.css?v=56d6a5cb76de">
+    <link rel="stylesheet" href="document-system.css?v=9109738af394">
 </head>
 <body>
 <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute;pointer-events:none" aria-hidden="true"><defs><filter id="emblem-paper-ink" color-interpolation-filters="sRGB"><feColorMatrix type="matrix" values=".185 .622 .063 0 0 .153 .515 .052 0 0 .098 .329 .033 0 0 0 0 0 1 0"/></filter></defs></svg>
@@ -182,7 +182,7 @@
                 <button class="menu-btn" onclick="changeNickname()"><img class="game-icon" src="assets/icons/user.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"> Змінити ім'я</button>
                 <button class="menu-btn" onclick="alert('Звукові ефекти в розробці')"><img class="game-icon" src="assets/icons/speaker.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"> Звукові ефекти</button>
                 <button class="menu-btn" onclick="alert('Версія гри: 1.0.0')"><img class="game-icon" src="assets/icons/info.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"> Про гру</button>
-                <label class="document-language-picker"><span data-i18n="documents.language">Мова документів</span> <select data-document-language aria-label="Мова документів"><option value="uk">Українська</option><option value="ru">Русский</option><option value="en">English</option></select></label>
+
                 <button id="last-battle-result-btn" class="menu-btn" onclick="openLastBattleResult()" disabled><img class="game-icon" src="assets/icons/clipboard.svg" alt="" aria-hidden="true" width="64" height="64"> Останній протокол бою</button>
             </div>
         </div>
@@ -245,7 +245,7 @@
         <header class="wardrobe-header">
           <div class="archive-letterhead"><document-header variant="left" department="documents.wardrobe"></document-header></div>
           <div class="wardrobe-view-switch" role="group" aria-label="Комплект"><button type="button" data-paper-view="patient" onclick="setPaperDollView('patient')">Пациент</button><button type="button" data-paper-view="combat" onclick="setPaperDollView('combat')">Трип</button></div>
-          <div class="archive-file-note"><span data-i18n="documents.form">ФОРМА 404/Г</span><br><small data-i18n="documents.service">СЛУЖБОВИЙ ДОКУМЕНТ</small><br><div id="archive-resources" aria-label="Ресурсы"></div><label class="document-language-picker"><select data-document-language aria-label="Мова документів"><option value="uk">Українська</option><option value="ru">Русский</option><option value="en">English</option></select></label></div>
+          <div class="archive-file-note"><span data-i18n="documents.form">ФОРМА 404/Г</span><br><small data-i18n="documents.service">СЛУЖБОВИЙ ДОКУМЕНТ</small><br><div id="archive-resources" aria-label="Ресурсы"></div></div>
           <button type="button" class="report-close" onclick="closeCustomization()" aria-label="Закрыть гардероб">✕</button>
         </header>
         <div id="paper-doll-save-note" class="report-save-note hidden" role="status">Не удалось сохранить. <button onclick="retryPaperDollSave()">Повторить</button></div>
@@ -415,7 +415,7 @@
         </div>
     </div>
 
-    <script src="localization.js?v=84f7548a7012" defer></script>
+    <script src="localization.js?v=801a77570b7d" defer></script>
     <script src="document-system.js?v=cea1d2279df9" defer></script>
     <script src="icons.js?v=f93e77809f1a" defer></script>
     <script src="staff-archive-data.js?v=cd6869218ff9" defer></script>
@@ -432,7 +432,7 @@
     <script src="weapon-system.js?v=a9a2eb1e3091" defer></script>
     <script src="weapon-runtime.js?v=d5baae7ec4db" defer></script>
     <script src="wardrobe.js?v=fcc614fcb47c" defer></script>
-    <script src="wardrobe-archive.js?v=6c696a95e4c2" defer></script>
+    <script src="wardrobe-archive.js?v=413d32dfe53d" defer></script>
     <script src="script.js?v=bff634739f50" defer></script>
     <!-- Модальне вікно: Медичне Досьє пацієнта (Аркуш паперу А4) -->
     <div id="dossier-modal" role="dialog" aria-modal="true" aria-label="Особисте досьє" class="modal center-modal hidden">

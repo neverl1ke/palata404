@@ -9,14 +9,14 @@ class DocumentSystemBrowserTests(unittest.TestCase):
     setUp=support.GameTests.setUp
     tearDown=support.GameTests.tearDown
     load=support.GameTests.load
-    def test_both_headers_three_languages_and_sizes_keep_graphics_and_alignment(self):
+    def test_both_headers_russian_text_and_sizes_keep_graphics_and_alignment(self):
         self.page.goto(self.url+'document-demo.html',wait_until='networkidle')
         self.page.evaluate('document.fonts.ready')
         for width in [960,640,320]:
             self.page.select_option('#demo-width',str(width))
             graphics=None
-            for locale in ['ru','uk','en']:
-                self.page.select_option('[data-document-language]',locale)
+            for locale in ['ru']:
+                self.page.evaluate('(l)=>PalataI18n.setLocale(l)',locale)
                 self.page.wait_for_timeout(40)
                 for variant in ['left','center']:
                     header=self.page.locator(f'[data-demo-variant="{variant}"] > document-header')
@@ -32,7 +32,7 @@ class DocumentSystemBrowserTests(unittest.TestCase):
                 else:self.assertEqual(graphics,geometry)
                 self.assertEqual(self.page.locator('[data-demo-variant="center"] document-stamp[type=service]').inner_text().strip(),self.page.evaluate('PalataI18n.t("documents.service")'))
                 self.assertTrue(self.page.locator('[data-demo-variant="left"]').evaluate('e=>getComputedStyle(e,"::after").borderImageSource.includes("paper-source.jpg")'))
-    def test_custom_department_layout_api_safe_text_and_language_survives_reload(self):
+    def test_custom_department_layout_api_safe_text_and_russian_ignores_saved_locale(self):
         self.page.goto(self.url+'document-demo.html',wait_until='networkidle')
         self.page.fill('#demo-custom-department','<img src=x onerror=alert(1)> Department')
         self.assertEqual(self.page.locator('[data-demo-variant="left"] .document-department').inner_text(),'<img src=x onerror=alert(1)> Department')
@@ -44,17 +44,19 @@ class DocumentSystemBrowserTests(unittest.TestCase):
             self.assertTrue(header.evaluate('h=>h.querySelector(".document-department").getBoundingClientRect().bottom<=h.getBoundingClientRect().bottom+1'))
         self.page.evaluate('''()=>{const layout=document.createElement('document-layout');layout.id='api-document';layout.setAttribute('variant','center');layout.setAttribute('department','documents.staff');layout.innerHTML='<p>Record</p>';document.body.append(layout);}''')
         self.assertEqual(self.page.locator('#api-document > document-header').get_attribute('variant'),'center')
-        self.page.evaluate('PalataI18n.setLocale("en")')
-        self.assertIn('PERSONNEL ARCHIVE',self.page.locator('#api-document').inner_text())
+        self.assertFalse(self.page.evaluate('PalataI18n.setLocale("en")'))
+        self.assertIn('АРХИВ ПЕРСОНАЛА',self.page.locator('#api-document').inner_text())
+        self.page.evaluate('localStorage.setItem("palata404_locale","uk")')
         self.page.reload(wait_until='networkidle')
-        self.assertEqual(self.page.evaluate('PalataI18n.locale'),'en')
+        self.assertEqual(self.page.evaluate('PalataI18n.locale'),'ru')
+        self.assertEqual(self.page.locator('[data-document-language]').count(),0)
         self.assertFalse(self.page.evaluate('PalataI18n.setLocale("invalid")'))
     def test_live_wardrobe_and_post_battle_protocol_keep_game_state(self):
         self.load();self.page.set_viewport_size({'width':1800,'height':1070})
         self.page.evaluate('openCustomization();setPaperDollView("combat");equipPaperDollItem("upperBody",null);equipPaperDollItem("weapon","gear-aks");selectWardrobeItem("gear-aks")')
         before=self.page.evaluate('JSON.stringify({inventory,stats,paperDollState})')
-        for locale in ['en','ru','uk']:
-            self.page.select_option('.archive-file-note [data-document-language]',locale)
+        for locale in ['ru']:
+            self.assertEqual(self.page.locator('[data-document-language]').count(),0)
             for selector in ['.archive-letterhead document-header','.tablet-main-sheet document-header']:
                 self.assertIn(self.page.evaluate('PalataI18n.t("documents.name1")'),self.page.locator(selector).inner_text())
             self.assertEqual(self.page.evaluate('JSON.stringify({inventory,stats,paperDollState})'),before)
@@ -62,7 +64,7 @@ class DocumentSystemBrowserTests(unittest.TestCase):
         self.assertTrue(self.page.locator('#battle-detail-modal document-header[variant=center]').is_visible())
         rewards=self.page.evaluate('JSON.stringify(stats)')
         self.page.evaluate('PalataI18n.setLocale("en")')
-        self.assertIn('POST-BATTLE',self.page.locator('#battle-detail-modal document-header').inner_text())
+        self.assertIn('ПОСЛЕБОЕВОГО',self.page.locator('#battle-detail-modal document-header').inner_text())
         self.assertEqual(self.page.evaluate('JSON.stringify(stats)'),rewards)
         self.assertTrue(self.page.locator('#battle-detail-modal .report-actions button').count()>0)
 
@@ -79,7 +81,7 @@ class DocumentSystemBrowserTests(unittest.TestCase):
             self.page.set_viewport_size({'width':width,'height':height})
             self.page.evaluate('document.querySelector(".archive-wardrobe").setAttribute("data-inspecting","true")')
             self.assertTrue(self.page.locator('.tablet-weapon-mount').evaluate('e=>{const i=e.querySelector("img"),b=i.getBoundingClientRect(),s=Math.min(b.width/i.naturalWidth,b.height/i.naturalHeight);return i.naturalWidth*s>=e.clientWidth*.65;}'),(width,height))
-            for locale in ['ru','uk','en']:
+            for locale in ['ru']:
                 self.page.evaluate('(l)=>PalataI18n.setLocale(l,{persist:false})',locale)
                 detail=self.page.locator('#wardrobe-item-detail').bounding_box()
                 footer=self.page.locator('.tablet-approval-sheet').bounding_box()
@@ -92,6 +94,30 @@ class DocumentSystemBrowserTests(unittest.TestCase):
                     box=self.page.locator(selector).bounding_box()
                     self.assertGreaterEqual(box['y'],detail['y'])
                     self.assertLessEqual(box['y']+box['height'],min(height,detail['y']+detail['height'])+1,(width,height,locale,selector))
+
+    def test_rarity_marks_keep_rectangle_geometry_and_insert_titles_follow_progress(self):
+        self.load();self.page.set_viewport_size({'width':1800,'height':1070})
+        self.page.evaluate('openCustomization();selectWardrobeItem("weapon-demo-aks-rare")')
+        for locale in ['ru']:
+            self.page.evaluate('(locale)=>PalataI18n.setLocale(locale,{persist:false})',locale)
+            titles=self.page.evaluate("""()=>Object.keys(WEAPON_RARITIES).flatMap(rarity=>Array.from({length:7},(_,i)=>archiveInsertHeading({rarity,upgradeLevel:Math.min(i,5),absolute:i===6})))""")
+            self.assertEqual(len(set(titles)),28,(locale,titles))
+            self.assertIn('АРХИВНАЯ МОДИФИКАЦИЯ',self.page.locator('.tablet-approval-status').inner_text())
+            self.assertIn('ЭТАП V',self.page.locator('.tablet-approval-status').inner_text())
+            self.assertEqual(self.page.locator('[data-weapon-modules]').count(),0)
+            self.assertIn(self.page.evaluate('PalataI18n.t("insert.rifles")'),self.page.locator('.tablet-weapon-info').inner_text())
+            self.assertTrue(self.page.locator('.archive-rarity-mark b').evaluate_all("""marks=>marks.every(e=>{const m=new DOMMatrix(getComputedStyle(e).transform);return Math.abs(m.a*m.c+m.b*m.d)<.00001&&Math.abs(Math.hypot(m.a,m.b)-Math.hypot(m.c,m.d))<.00001;})"""))
+            for width,height in [(1800,1070),(1280,800),(390,844),(320,568)]:
+                self.page.set_viewport_size({'width':width,'height':height})
+                self.page.evaluate('document.querySelector(".archive-wardrobe").setAttribute("data-inspecting","true")')
+                self.page.wait_for_timeout(40)
+                mount=self.page.locator('.tablet-weapon-mount').bounding_box()
+                progress=self.page.locator('.weapon-progress').bounding_box()
+                self.assertLessEqual(abs(progress['y']-mount['y']-mount['height']),8,(width,locale))
+                self.assertTrue(self.page.locator('.tablet-inspection-copy').evaluate('e=>e.scrollHeight<=e.clientHeight+1'),(width,locale))
+                self.assertTrue(self.page.locator('.tablet-case-fields').evaluate("""e=>[...e.children].every(row=>{const b=row.getBoundingClientRect(),label=row.querySelector('dt').getBoundingClientRect(),value=row.querySelector('dd').getBoundingClientRect();return label.bottom<=value.top+1&&value.bottom<=b.bottom+1&&b.right<=e.getBoundingClientRect().right+1;})"""),(width,locale))
+                self.assertTrue(self.page.locator('.archive-rarity-mark').evaluate_all("""marks=>marks.every(e=>e.querySelector('small').getBoundingClientRect().top>=e.querySelector('b').getBoundingClientRect().bottom+1)"""))
+        self.assertEqual(self.page.locator('.tablet-signature image').get_attribute('href'),'assets/ui/wardrobe/weapon-doctor-signature.svg')
 
 class DocumentMaterialTests(unittest.TestCase):
     def test_material_sources_and_approved_graphics_are_exact(self):

@@ -1,0 +1,9 @@
+{
+  "description": "User-reviewed wardrobe: Russian-only document copy, independent rarity ink, reference-style insert, worn leather and wood. Approved avatars, weapons, seal, autograph, original banner unchanged. No game mechanics changed.",
+  "runtime_before_sha256": {
+    "index.html": "34b46a9740ac7e20fb2a4b58848fb85b61dfd1cd2c72659babd90e9966b5b664"
+  },
+  "runtime_after_sha256": {
+    "index.html": "0e0866e1b218f650242a1f20053a16b84c572092d54aeb9b51bf5399267a639d"
+  }
+}
