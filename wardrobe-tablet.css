@@ -1,0 +1,114 @@
+.p404,.p404 *{box-sizing:border-box;font-family:'Palata Typewriter','Courier New',monospace!important}
+.p404{color:#322416;font-size:14px;line-height:1.15;min-width:0}
+.p404 .p404-hand,.p404 .p404-hand *{font-family:'Palata Hand',cursive!important;font-weight:400!important}
+.p404-rarity-label{position:absolute;right:5%;bottom:11%;font-weight:700;color:var(--rarity-color);white-space:nowrap;line-height:1.1}
+.p404-board{position:relative;width:100%;aspect-ratio:1054/1492;container-type:inline-size;isolation:isolate}
+.p404-board-art{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;z-index:-2;pointer-events:none}
+.p404-institution{position:absolute;top:6.8%;left:8%;right:8%;height:15.8%;display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:39% 15% 33% 13%;justify-content:normal;align-items:normal;margin:0;text-align:center;gap:0;color:#2d2015;line-height:1.05}
+.p404-logo-row{position:relative;display:flex;justify-content:center;min-height:0;height:100%;align-self:stretch;overflow:visible}
+.p404-logo-row img{position:absolute;left:39%;top:-5%;width:22%;height:110%;object-fit:contain;mix-blend-mode:multiply;filter:none;opacity:1}
+.p404-logo-row:before,.p404-logo-row:after{content:'';position:absolute;top:53%;width:34%;border-top:3px solid #5b3d25}
+.p404-logo-row:before{left:10%;width:29.5%}.p404-logo-row:after{left:auto;right:10%;width:29.5%}
+.p404-ministry{font-size:1.65cqw;align-self:center;white-space:nowrap}
+.p404-hospital-name{font-size:3.05cqw;font-weight:400;align-self:center;margin:0;line-height:1.06}
+.p404-hospital-name span{display:block;white-space:nowrap}
+.p404-department{font-size:1.6cqw;margin-inline:1.7%;border-top:1px solid #765335;padding-top:.5%;align-self:stretch}
+.p404-weapon-title{position:absolute;top:24.5%;left:8%;right:8%;text-align:center;margin:0;font-size:3.5cqw;font-weight:400;line-height:1.05}
+.p404-weapon-subtitle{position:absolute;top:27.4%;left:10%;right:10%;font-size:2cqw;text-align:center;color:var(--rarity-color)}
+.p404-mount{position:absolute;left:8%;top:28.3%;width:84%;aspect-ratio:var(--frame-aspect);container-type:inline-size;isolation:isolate}
+.p404-mount-art{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;z-index:-1}
+.p404-mount-gun{position:absolute;left:17%;top:-17.5%;width:66%;height:140%;object-fit:contain;filter:drop-shadow(.12cqw .35cqw .18cqw #1b0e08a0)}
+.p404-mount .p404-rarity-label{font-size:2.4cqw;bottom:10%;max-width:48%;right:4%}
+.p404-progress{position:absolute;top:44.7%;left:9%;right:9%;display:flex;justify-content:center;align-items:center;gap:.8cqw;font-size:2.1cqw;line-height:1}
+.p404-progress span{display:grid;place-items:center;width:5.1cqw;height:4.5cqw;border:1px solid #8c704c;color:#786044;background:#93734920}
+.p404-progress span.completed{background:#725635;color:#ecd19e}
+.p404-progress span.p404-star{border:0;background:none;font-size:4cqw;color:#6e4b22}
+.p404-info{position:absolute;top:49.6%;left:8%;right:8%;margin:0;padding:3px 0;border-bottom:1px solid #82604077;font-size:2.35cqw;line-height:1.15}
+.p404-info>div,.p404-stats>div{display:flex;justify-content:space-between;gap:4px}
+.p404-info dt,.p404-info dd,.p404-stats dt,.p404-stats dd{margin:0;min-width:0}
+.p404-info dd{text-align:right}
+.p404-stats{position:absolute;top:54.5%;left:8%;right:8%;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1cqw 1.6cqw;margin:0;font-size:2.25cqw;line-height:1.1}
+.p404-stats>div{border-bottom:1px solid #8f6f4660;padding-bottom:.8cqw}
+.p404-stats dt{font-size:2.05cqw;white-space:nowrap}
+.p404-actions{position:absolute;top:61.4%;left:8%;right:8%;display:flex;gap:3cqw;height:4.1%}
+.p404-actions button{width:50%;display:grid;place-items:center;padding:0;border:.8cqw solid transparent;border-image-source:var(--concept-actions);border-image-slice:90 fill;border-image-width:.8cqw;border-image-repeat:stretch;filter:drop-shadow(1px 2px 1px #24150765);font-size:2.8cqw;color:#3f2a19}
+.p404-actions button:first-child{color:#71352a}
+.p404-use-stamp{position:absolute;top:11.5%;right:5%;border:.38cqw double #72352d;color:#72352d;transform:rotate(-4deg);font-size:2.35cqw;font-weight:700;padding:.2em .35em;line-height:1;background:#e4cca860;z-index:1}
+.p404-slip{position:absolute;bottom:3.5%;left:4%;width:92%;aspect-ratio:1816/866;container-type:inline-size;isolation:isolate;filter:drop-shadow(0 3px 2px #1e120a88)}
+.p404-slip-art{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;z-index:-1;pointer-events:none}
+.p404-slip-content{position:absolute;inset:0}
+.p404-coffee{position:absolute;left:63%;top:72%;width:30%;height:auto;z-index:0;opacity:.32;mix-blend-mode:multiply;pointer-events:none}
+.p404-slip-logo{position:absolute;left:8.8%;top:13.1%;width:10%;height:19.5%;object-fit:contain;mix-blend-mode:multiply;filter:none;opacity:1}
+.p404-slip-top-rule{position:absolute;left:22.5%;right:22%;top:14.7%;border-top:1px solid #765335}
+.p404-slip-title{position:absolute;left:23%;right:24%;top:17%;margin:0;text-align:center;font-size:3.1cqw;line-height:1.05;font-weight:700;color:#39271a}
+.p404-slip-series{position:absolute;left:23%;right:24%;top:25%;text-align:center;font-size:2.5cqw;line-height:1.15;white-space:nowrap;color:#783b2e}
+.p404-slip-institution{position:absolute;left:23%;right:23.3%;top:31.5%;height:13.5%;border-block:1px solid #735236;text-align:center;display:flex;flex-direction:column;justify-content:center;font-size:2.4cqw;line-height:1.13;font-weight:700}
+.p404-slip-service{position:absolute;left:23.5%;top:47.4%;margin:0;font-size:2.45cqw;line-height:1.1;font-weight:700}
+.p404-case{position:absolute;left:5%;top:35.5%;width:16.5%;height:46.5%;display:grid;grid-template-rows:repeat(4,minmax(0,1fr));margin:0;border:1px solid #8b6840;min-width:0;overflow:hidden}
+.p404-case>div{border-bottom:1px solid #8b684066;padding:.2cqw .4cqw;min-width:0;overflow:hidden}
+.p404-case>div:last-child{border:0}
+.p404-case dt{font-size:1.6cqw;line-height:1.1;font-weight:700;margin:0;white-space:nowrap}
+.p404-case dd{font-size:2.45cqw;line-height:1.15;margin:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.p404-copy{position:absolute;left:23.5%;top:55%;width:52%;height:22%;font-size:2.3cqw;line-height:1.15;min-height:0;color:#372518}
+.p404-copy p{margin:0 0 .12em;white-space:nowrap}
+.p404-copy-note{font-size:1.35cqw;line-height:1.1;display:block;white-space:nowrap;margin-top:1px}
+.p404-slip-footer-rule{position:absolute;left:23.5%;right:24%;top:77.5%;border-top:1px solid #89633c}
+.p404-signoff{position:absolute;left:41.5%;top:83.5%;width:30%;height:6%;display:flex;align-items:center}
+.p404-doctor{font-size:1.65cqw;line-height:1.1;white-space:nowrap}
+.p404-redacted{display:inline-block;background:#181411;width:8.8cqw;height:2.1cqw;margin:0 0 0 .8cqw;transform:rotate(-1deg);vertical-align:middle}
+.p404-signature{position:absolute;left:73%;top:77%;width:21%;height:15%;mix-blend-mode:multiply;overflow:hidden}
+.p404-slip-seal{position:absolute;left:76.5%;top:13.5%;width:19.5%;aspect-ratio:1;object-fit:contain;transform:rotate(-6deg);mix-blend-mode:multiply;filter:none;opacity:1}
+.p404-slip-footer-divider{position:absolute;left:39.5%;top:81.5%;height:10%;border-left:1px solid #89633c}
+.p404-date{position:absolute;left:12.7%;top:83.5%;font-size:1.6cqw;line-height:1.2;color:#503a27;white-space:nowrap}
+.p404-splash{position:absolute;width:4cqw;height:4cqw;z-index:-1;mix-blend-mode:multiply;opacity:.8;pointer-events:none}
+.splash-1{left:24.6%;top:21.8%;transform:rotate(15deg)}
+.splash-2{left:73.9%;top:21.8%;transform:rotate(-30deg)}
+.splash-3{left:47.4%;top:58.9%;transform:rotate(75deg)}
+.splash-4{left:21.7%;top:64.9%;transform:rotate(-15deg)}
+
+.p404-backing{position:absolute;left:-2.1%;top:-1.1%;width:104.2%;height:102.2%;z-index:-3;pointer-events:none}
+
+/* Approved LEFT institutional header on the lower slip. Main sheet is unchanged. */
+.p404-slip-document-header{position:absolute;left:5%;top:7.5%;width:70%;height:25.5%;display:grid;grid-template-columns:19% minmax(0,1fr);gap:3%;align-items:stretch;text-align:left}
+.p404-slip-document-header .p404-slip-logo{position:static;width:100%;height:100%;padding-right:10%;border-right:1px solid #765335;object-fit:contain}
+.p404-slip-header-text{display:grid;grid-template-rows:20% 58% 22%;min-width:0}
+.p404-slip-ministry{font-size:1.35cqw;line-height:1;white-space:nowrap;align-self:center}
+.p404-slip-document-header .p404-slip-institution{position:static;width:auto;height:auto;text-align:left;font-size:2.15cqw;line-height:1.12;border-block:1px solid #735236;justify-content:center;font-weight:700}
+.p404-slip-institution span{white-space:nowrap}
+.p404-slip-department{font-size:1.3cqw;line-height:1;align-self:center;white-space:nowrap}
+.p404-slip-title{top:36%;font-size:2.75cqw;line-height:1.05}
+.p404-slip-series{top:43.5%;font-size:2.1cqw;line-height:1.05}
+.p404-slip-service{top:50%;font-size:2.1cqw}
+
+.archive-wardrobe #wardrobe-item-detail:has(.archive-unified-tablet){container-type:size;overflow:hidden!important;padding:10px!important;margin-top:0}
+.archive-wardrobe .archive-unified-tablet{width:min(94cqw,calc(94cqh * 1054 / 1492));margin:auto}
+.archive-unified-tablet h3,.archive-unified-tablet h4,.archive-unified-tablet h5{background:none;border-radius:0;text-shadow:none;letter-spacing:normal;text-transform:none;box-shadow:none}
+.archive-unified-tablet h4{border:0;padding:0}
+.archive-unified-tablet .p404-actions button{min-width:0;min-height:0;margin:0;border-radius:0;cursor:pointer;line-height:1;letter-spacing:normal;text-shadow:none;white-space:nowrap;box-shadow:none;background:none;font-weight:400}
+.archive-unified-tablet .p404-actions button:disabled{cursor:default;opacity:.65}
+.archive-unified-tablet .p404-actions button:focus-visible{outline:2px solid #6b3a21;outline-offset:2px}
+.archive-unified-tablet .p404-actions button:hover:enabled{filter:drop-shadow(1px 3px 2px #24150790) brightness(1.06)}
+.archive-wardrobe .wardrobe-item-card:has(.weapon-icon-frame) .archive-rarity-mark{align-items:flex-end}
+.archive-wardrobe .wardrobe-item-card:has(.weapon-icon-frame) .archive-rarity-mark b{width:54px;min-width:54px}
+.archive-wardrobe .wardrobe-item-card:has(.weapon-icon-frame) .wardrobe-item-name{white-space:nowrap;max-width:72%;font-size:3.6cqw;bottom:9%}
+.archive-wardrobe[data-palette-shadow=strong] .wardrobe-item-card .weapon-icon-frame img{filter:drop-shadow(1px 5px 3px #170c09ad) drop-shadow(0 2px 1px #170c0960)}
+@media(max-width:1100px){.archive-wardrobe[data-inspecting=true] #wardrobe-item-detail:has(.archive-unified-tablet){padding-top:24px!important}.archive-unified-tablet{max-width:96%}}
+.archive-unified-tablet .p404-weapon-title{color:#322416!important}
+.archive-wardrobe .wardrobe-item-card:has(.weapon-icon-frame) .archive-rarity-mark b{width:62px;min-width:62px;padding:1px 5px;font-size:22px;white-space:nowrap;line-height:1}
+.archive-wardrobe .archive-unified-tablet{width:min(98cqw,calc(98cqh * 1054 / 1492))}
+
+/* Review revision: stronger weapon shadow and pen annotations. */
+.archive-unified-tablet .p404-mount-gun{filter:drop-shadow(.25cqw 1.25cqw .75cqw #170c09ad) drop-shadow(0 .5cqw .25cqw #170c0960)}
+.archive-unified-tablet .p404-info dt,.archive-unified-tablet .p404-info dd,.archive-unified-tablet .p404-stats dt,.archive-unified-tablet .p404-stats dd{position:relative;top:.9cqw}
+.p404-title-underline{position:absolute;left:23%;top:41.8%;width:53%;height:1.5%;pointer-events:none;overflow:visible;fill:none;stroke:#873a2e;stroke-width:2.5;stroke-linecap:round;opacity:.78;mix-blend-mode:multiply}
+.archive-unified-tablet .p404-redacted{background:none;width:8.8cqw;height:2.1cqw;overflow:visible;mix-blend-mode:multiply}
+/* The outer backing meets the full weapon section height without stretching its art. */
+.archive-wardrobe #wardrobe-item-detail:has(.archive-unified-tablet){padding:0!important;scrollbar-gutter:auto;align-items:center;justify-content:center}
+.archive-wardrobe .archive-unified-tablet{width:min(calc(100cqw / 1.042),calc(100cqh / 1.022 * 1054 / 1492));height:auto;flex:none;margin:auto}
+@media(min-width:1101px){
+.archive-wardrobe .wardrobe-layout{grid-template-columns:minmax(300px,1fr) minmax(240px,24.5%) var(--archive-tablet-track,34%)}
+.archive-wardrobe #wardrobe-item-detail:has(.archive-unified-tablet){display:flex!important}
+}
+@media(max-width:1100px){
+.archive-wardrobe[data-inspecting=true] #wardrobe-item-detail:has(.archive-unified-tablet){display:flex!important;padding:24px 4px 4px!important}
+}

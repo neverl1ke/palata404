@@ -1,0 +1,12 @@
+{
+  "checks": [
+    "Selecting all six real weapons updates stats without mutating inventory, resources or draft.",
+    "Actual equip and remove buttons work for both avatars; avatar renderer settles.",
+    "Actual upgrade dialog charges existing price and updates only the selected weapon.",
+    "Tablet and lower fields fit without scrolling at 1800, 1280, 1024 and 390 pixels.",
+    "Existing nonweapon equipment renderer is preserved.",
+    "Existing Apply, save and reload preserve equipped weapon."
+  ],
+  "browserErrors": [],
+  "mainTouched": true
+}

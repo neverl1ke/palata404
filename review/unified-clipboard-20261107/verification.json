@@ -1,0 +1,29 @@
+{
+  "gameLogic": {
+    "passed": 106,
+    "failed": 0
+  },
+  "browserIntegration": [
+    "six weapons use live stats without mutating state on selection",
+    "equip/remove for male and female",
+    "existing upgrade price charged once",
+    "save and reload retain weapon",
+    "nonweapon renderer preserved",
+    "no inner scrolling at four viewport widths"
+  ],
+  "existingUiSuite": {
+    "initialPassed": 14,
+    "initialFailed": 1,
+    "issue": "Avatar position changed when switching to appearance after widening the tablet track.",
+    "fix": "Keep the same desktop tracks for all wardrobe categories.",
+    "targetedRetest": {
+      "passed": 2,
+      "failed": 0,
+      "includes": [
+        "appearance transitions on both avatars",
+        "full-height backing alignment and single-line weapon labels"
+      ]
+    }
+  },
+  "browserRuntimeErrors": []
+}

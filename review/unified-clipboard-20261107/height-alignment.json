@@ -1,0 +1,23 @@
+[
+  {
+    "w": 1800,
+    "top": 0.015625,
+    "bottom": -0.03125,
+    "boardRatio": 0.7064405410862103,
+    "scroll": false
+  },
+  {
+    "w": 1680,
+    "top": 0.015625,
+    "bottom": 0,
+    "boardRatio": 0.7064349351428704,
+    "scroll": false
+  },
+  {
+    "w": 1280,
+    "top": 0.015625,
+    "bottom": -0.015625,
+    "boardRatio": 0.7064396175185929,
+    "scroll": false
+  }
+]

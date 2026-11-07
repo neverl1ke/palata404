@@ -86,6 +86,7 @@ function renderWardrobeItemDetail(item) {
         panel.innerHTML=`<div class="archive-cosmetic-action"><strong>${escapeHTML(item.name)}</strong><button type="button" data-wardrobe-action="${escapeHTML(item.id)}"${item.slot==='hair'&&equipped?' disabled':''}>${equipped?item.slot==='hair'?'Выбрано':'Снять':'Выбрать'}</button></div>`;
         panel.querySelector('[data-wardrobe-action]').addEventListener('click',applyWardrobeItemAction);return;
     }
+    if(item.slot==='weapon'&&weaponInventoryItem(item)&&Object.hasOwn(WEAPON_MODELS,weaponInventoryItem(item).modelId)){renderArchiveWeaponTablet(item,panel);return;}
     const instance=weaponInventoryItem(item), profile=instance?calculateWeaponStats(instance):null;
     const equipped=selectedPaperDollItem(item.slot)?.id===item.id, owned=isPaperDollItemOwned(item), source=wardrobeItemImage(item);
     const label=instance?archiveWeaponLabel(instance):item.name;

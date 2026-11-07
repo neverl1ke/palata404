@@ -128,3 +128,6 @@ python tools/check-project-browser.py --output test-results/project-browser
 ## Єдина система документів
 
 [Демонстрація HEADER-LEFT / HEADER-CENTER](document-demo.html) — три мови, різні розміри й довільні назви відділів. [Компоненти та підключення](docs/DOCUMENT_SYSTEM.md) · [Перевірки й знімки](review/document-system-20261106/README.md).
+
+
+Второй утверждённый вариант планшетки и исправленная палитра оружия подключены: [снимки и проверки](review/unified-clipboard-20261107/README.md). Планшетка заполняет высоту секции оружия без растяжения бумаги; названия со звёздочкой и штампы каталога выровнены.
