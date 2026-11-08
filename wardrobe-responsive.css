@@ -1,0 +1,94 @@
+/* Layout owns scrolling; artwork keeps its approved proportions. Never fit an
+   interactive document to viewport height: that makes its buttons untappable. */
+.archive-wardrobe .wardrobe-layout { min-width:0; }
+.archive-wardrobe .wardrobe-layout > * { min-width:0; }
+.archive-wardrobe .wardrobe-header .report-close,
+.archive-wardrobe .archive-footer > button { min-height:44px; min-width:44px; }
+.archive-wardrobe #wardrobe-item-detail:has(.archive-unified-tablet) {
+    container-type:inline-size;
+    overflow:auto!important;
+    display:block!important;
+    padding:12px!important;
+}
+.archive-wardrobe .archive-unified-tablet {
+    width:96%; height:auto; margin:0 auto 60px;
+}
+.archive-unified-tablet .p404-actions { top:calc(100% + 8px); height:auto; min-height:44px; }
+.archive-unified-tablet .p404-actions button { min-height:44px; font-size:max(14px,2.8cqw); }
+
+/* Two panels are useful on landscape phones, but must be allowed to scroll
+   vertically instead of colliding with the fixed header and footer. */
+@media (max-width:1100px), (max-height:650px) {
+    .archive-wardrobe {
+        width:100%!important; height:100%!important; max-height:100%!important;
+        padding: max(8px,env(safe-area-inset-top)) max(8px,env(safe-area-inset-right)) max(8px,env(safe-area-inset-bottom)) max(8px,env(safe-area-inset-left))!important;
+        border-radius:0!important; gap:6px;
+    }
+    .archive-wardrobe .wardrobe-header {
+        grid-template-columns:minmax(0,1fr) minmax(170px,.7fr) 44px; gap:6px;
+    }
+    .archive-wardrobe .archive-letterhead { grid-column:auto; grid-row:auto; max-height:80px; }
+    .archive-wardrobe .archive-file-note { display:none; }
+    .archive-wardrobe .wardrobe-view-switch { grid-column:auto; padding:2px; }
+    .archive-wardrobe .wardrobe-view-switch button { min-height:44px; padding:5px; font-size:16px; }
+    .archive-wardrobe .report-close { grid-column:auto; grid-row:auto; width:44px; }
+    .archive-wardrobe .wardrobe-layout {
+        display:grid!important; position:static;
+        grid-template-columns:minmax(0,1fr) minmax(250px,.85fr);
+        grid-template-rows:minmax(330px,1fr);
+        overflow:auto; overscroll-behavior:contain; gap:8px;
+    }
+    .archive-wardrobe .wardrobe-preview {
+        min-height:330px!important; height:auto; max-height:none;
+        grid-template-columns:64px minmax(0,1fr) 64px;
+        grid-template-rows:minmax(0,1fr); padding:4px!important; gap:2px;
+    }
+    .archive-wardrobe .wardrobe-registration-footer { display:none; }
+    .archive-wardrobe .wardrobe-items,
+    .archive-wardrobe .wardrobe-items.expanded { height:auto; min-height:330px; }
+    .archive-wardrobe .wardrobe-item-grid {
+        display:grid!important; grid-template-columns:minmax(0,1fr)!important;
+        grid-auto-rows:max-content; align-content:start; overflow:auto;
+    }
+    .archive-wardrobe .wardrobe-item-card,
+    .archive-wardrobe .wardrobe-items.expanded .wardrobe-item-card,
+    .archive-wardrobe .wardrobe-item-card:has(.weapon-icon-frame),
+    .archive-wardrobe .wardrobe-items.expanded .wardrobe-item-card:has(.weapon-icon-frame) {
+        width:100%!important; min-width:0!important;
+    }
+    .archive-wardrobe .archive-drawer-toggle { display:none; }
+    .archive-wardrobe .archive-footer { min-height:44px; flex:none; flex-wrap:nowrap; padding:0; }
+    .archive-wardrobe #archive-draft-note { display:none; }
+    .archive-wardrobe .wardrobe-item-detail,
+    .archive-wardrobe #wardrobe-item-detail:has(.archive-unified-tablet) { display:none!important; }
+    .archive-wardrobe[data-inspecting=true] .wardrobe-item-detail,
+    .archive-wardrobe[data-inspecting=true] #wardrobe-item-detail:has(.archive-unified-tablet) {
+        display:block!important; position:absolute; inset:8px; width:auto; height:auto;
+        z-index:95; overflow:auto!important; padding:0 12px 12px!important;
+        background:#171b13!important; container-type:inline-size;
+    }
+    .archive-wardrobe .archive-detail-close {
+        display:block; position:sticky; top:0; z-index:10;
+        width:100%; min-height:44px; margin:0 0 12px;
+    }
+    .archive-wardrobe .archive-unified-tablet { width:min(96%,520px); margin:0 auto 60px; }
+}
+@media (max-width:600px) {
+    .archive-wardrobe .wardrobe-header { grid-template-columns:minmax(0,1fr) 44px; }
+    .archive-wardrobe .archive-letterhead { grid-column:1; grid-row:1; }
+    .archive-wardrobe .report-close { grid-column:2; grid-row:1; }
+    .archive-wardrobe .wardrobe-view-switch { grid-column:1/-1; }
+    .archive-wardrobe .wardrobe-layout {
+        grid-template-columns:minmax(0,1fr); grid-template-rows:330px 300px;
+    }
+    .archive-wardrobe .wardrobe-items,
+    .archive-wardrobe .wardrobe-items.expanded { min-height:300px; }
+    .archive-wardrobe .wardrobe-item-grid { grid-template-columns:repeat(2,minmax(0,1fr))!important; }
+    .archive-wardrobe .wardrobe-item-grid:has(.weapon-icon-frame) { grid-template-columns:minmax(0,1fr)!important; }
+}
+/* Desktop tracks depend on available width, not the previous document height. */
+@media (min-width:1101px) and (min-height:651px) {
+    .archive-wardrobe .wardrobe-layout {
+        grid-template-columns:minmax(300px,1fr) minmax(240px,24.5%) minmax(300px,34%);
+    }
+}
