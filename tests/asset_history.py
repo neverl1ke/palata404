@@ -6,6 +6,7 @@ manifests to claim a different approved portrait is the same image.
 """
 import hashlib
 import json
+import subprocess
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -160,6 +161,20 @@ def approved_current_hash(relative, old_hash):
                     assert data['before_sha256'][relative]==old_hash
                     return e[field]
     return old_hash
+
+
+
+def approved_female_arms_integration_html():
+    """Original integration document, not a hash exemption for today's page.
+
+    Later clipboard and responsive releases legitimately edit index.html. Keep
+    the historical document's manifest contract and test current registrations
+    separately; immutable avatar resources still use approved_current_hash.
+    """
+    return subprocess.check_output(
+        ['git', 'show', 'c1190fc35f47a6735e8ccdb763fdf18100aaac55:index.html'],
+        cwd=ROOT,
+    )
 
 
 def accepted_catalog_snapshot(items):
