@@ -94,6 +94,6 @@
 }
 /* Approved rifle canvases are 1200px wide around the 941px body registration.
    Reserve that real footprint so limbs/weapons do not extend into slot rails. */
-.archive-wardrobe .wardrobe-preview:not([data-portrait=true]) #wardrobe-paperdoll {
+.archive-wardrobe .wardrobe-preview:not([data-portrait=true]) #wardrobe-paperdoll:has(canvas[width="1200"]:not([hidden])) {
     width:min(calc(100cqw * 941 / 1200),calc(100cqh * .562799))!important;
 }
