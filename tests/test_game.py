@@ -427,7 +427,7 @@ class GameTests(unittest.TestCase):
         self.assertIsNone(self.page.evaluate('paperDollState.combatLoadout.upperBody'))
         self.page.get_by_role('button', name='Гардероб', exact=True).click()
         wardrobe = self.page.locator('#custom-modal')
-        wardrobe.locator('[data-wardrobe-category="clothes"]').click()
+        wardrobe.locator('[data-archive-slot="upperBody"]').click()
         card = wardrobe.locator('[data-wardrobe-card="patient-tunic"]')
         self.assertEqual(card.get_attribute('data-available'), 'true')
         self.assertEqual(card.get_attribute('data-equipped'), 'true')
@@ -446,16 +446,17 @@ class GameTests(unittest.TestCase):
         self.assertIsNone(self.page.evaluate('paperDollState.patientLoadout.upperBody'))
         self.assertIsNone(self.page.evaluate('paperDollState.combatLoadout.upperBody'))
         self.page.get_by_role('button', name='Гардероб', exact=True).click()
-        wardrobe.locator('[data-wardrobe-category="clothes"]').click()
+        wardrobe.locator('[data-archive-slot="upperBody"]').click()
         self.wardrobe_action('patient-tunic', 'Надягнути')
         wardrobe.get_by_role('button', name='Трип', exact=True).click()
         self.assertEqual(self.page.evaluate('paperDollState.patientLoadout.upperBody'), 'patient-tunic')
         self.assertIsNone(self.page.evaluate('paperDollState.combatLoadout.upperBody'))
         self.assertEqual(self.page.locator('#wardrobe-layer-upper-body-front').count(), 0)
         self.wardrobe_action('patient-tunic', 'Надягнути')
-        wardrobe.locator('[data-wardrobe-category="appearance"]').click()
+        wardrobe.locator('[data-archive-slot="appearance"]').click()
         wardrobe.get_by_role('button', name='Женщина', exact=True).click()
-        wardrobe.locator('[data-wardrobe-category="clothes"]').click()
+        wardrobe.locator('[data-archive-slot="equipment"]').click()
+        wardrobe.locator('[data-archive-slot="upperBody"]').click()
         self.assert_patient_tunic_layers('female')
         wardrobe.get_by_role('button', name='Пациент', exact=True).click()
         self.wardrobe_action('patient-tunic', 'Зняти')
@@ -477,7 +478,7 @@ class GameTests(unittest.TestCase):
         })})
         self.page.get_by_role('button', name='Гардероб', exact=True).click()
         wardrobe = self.page.locator('#custom-modal')
-        wardrobe.locator('[data-wardrobe-category="clothes"]').click()
+        wardrobe.locator('[data-archive-slot="upperBody"]').click()
         for name in ['Пациент', 'Трип']:
             wardrobe.get_by_role('button', name=name, exact=True).click()
             self.assertEqual(wardrobe.locator('[data-wardrobe-card="patient-tunic"]').get_attribute('data-equipped'), 'false')
@@ -503,9 +504,10 @@ class GameTests(unittest.TestCase):
             self.page.set_viewport_size({'width': width, 'height': height})
             for gender, gender_label in [('male', 'Мужчина'), ('female', 'Женщина')]:
                 if wardrobe.locator('.archive-detail-close').count() and wardrobe.locator('.archive-detail-close').is_visible():wardrobe.locator('.archive-detail-close').click()
-                wardrobe.locator('[data-wardrobe-category="appearance"]').click()
+                wardrobe.locator('[data-archive-slot="appearance"]').click()
                 wardrobe.get_by_role('button', name=gender_label, exact=True).click()
-                wardrobe.locator('[data-wardrobe-category="clothes"]').click()
+                wardrobe.locator('[data-archive-slot="equipment"]').click()
+                wardrobe.locator('[data-archive-slot="upperBody"]').click()
                 for mode, mode_label in [('patient', 'Пациент'), ('combat', 'Трип')]:
                     with self.subTest(viewport=(width, height), gender=gender, mode=mode):
                         if wardrobe.locator('.archive-detail-close').count() and wardrobe.locator('.archive-detail-close').is_visible():wardrobe.locator('.archive-detail-close').click()
@@ -798,19 +800,37 @@ class GameTests(unittest.TestCase):
         before=self.page.evaluate('JSON.stringify({stats,equippedGear,paperDollState})')
         self.page.locator('[data-wardrobe-card="weapon-demo-aks-rare"]').click()
         self.assertEqual(self.page.evaluate('JSON.stringify({stats,equippedGear,paperDollState})'),before)
-        self.assertIn('РЕДКОЕ',self.page.locator('.tablet-title').inner_text())
+        self.assertEqual(self.page.locator('.p404-board').get_attribute('data-selected-rarity'),'rare')
+        self.assertEqual(self.page.locator('.p404-rarity-label').inner_text(),'РЕДКИЙ')
         self.assertGreater(self.page.locator('.wardrobe-stage').bounding_box()['height'],400)
-        self.assertEqual(self.page.locator('.archive-tablet').count(),1)
+        self.assertEqual(self.page.locator('.p404-board').count(),1)
 
 
     def test_wardrobe_final_ux_empty_clothes_and_functional_text_in_both_themes(self):
-        self.load();self.page.evaluate('openCustomization();archiveSelectSlot("headwear")')
+        self.load();self.page.set_viewport_size({'width':1680,'height':1000})
+        self.page.evaluate('openCustomization();archiveSelectSlot("headwear")')
         self.assertIn('Нет доступных предметов',self.page.locator('#wardrobe-container').inner_text())
         self.page.evaluate('archiveSelectSlot("weapon");selectWardrobeItem("gear-aks")')
-        self.assertGreaterEqual(self.page.locator('.weapon-stat-grid').evaluate('e=>parseFloat(getComputedStyle(e).fontSize)'),14)
-        self.assertTrue(self.page.locator('[data-weapon-modules]').is_visible())
-        self.assertTrue(self.page.locator('[data-weapon-upgrade]').is_visible())
-        self.assertEqual(self.page.locator('.archive-tablet').count(),1)
+        for mode in ['patient','combat']:
+            self.page.evaluate('mode=>setPaperDollView(mode)',mode)
+            # Match the current clipboard readability contract in test_weapon_archive.
+            self.assertGreaterEqual(self.page.locator('.p404-stats').evaluate('e=>parseFloat(getComputedStyle(e).fontSize)'),10)
+            self.assertEqual(self.page.locator('.p404-stats > div').count(),6)
+            self.assertTrue(self.page.evaluate("""()=>{
+                const stats=document.querySelector('.p404-stats').getBoundingClientRect();
+                const actions=document.querySelector('.p404-actions').getBoundingClientRect();
+                return stats.bottom<=actions.top+1;
+            }"""))
+            self.assertTrue(self.page.locator('[data-wardrobe-action="gear-aks"]').is_visible())
+            upgrade=self.page.locator('[data-weapon-upgrade]')
+            self.assertTrue(upgrade.is_visible())
+            upgrade.click(trial=True)
+            self.assertEqual(self.page.locator('.p404-board').count(),1)
+            # The current tablet omits the module counter, but its dialog remains functional.
+            self.page.evaluate('openWeaponModules(weaponInventoryItem("gear-aks").instanceId)')
+            self.assertTrue(self.page.locator('#weapon-dialog').is_visible())
+            self.assertTrue(self.page.locator('[data-install-module="mechanism:accelerated"]').is_visible())
+            self.page.locator('#weapon-dialog').get_by_role('button',name='Закрыть',exact=True).click()
 
 
     def test_wardrobe_scale_matches_room_height_and_keeps_full_layer_canvas(self):
@@ -1228,11 +1248,15 @@ class GameTests(unittest.TestCase):
             self.page.set_viewport_size({'width':width,'height':height})
             for mode in ['patient','combat']:
                 self.page.evaluate('m=>setPaperDollView(m)',mode)
+                if self.page.locator('[data-archive-slot="equipment"]').count():
+                    self.page.locator('[data-archive-slot="equipment"]').click(no_wait_after=True)
                 for slot in self.page.locator('[data-archive-slot]').evaluate_all('es=>es.map(e=>e.dataset.archiveSlot)'):
                     self.page.locator('[data-archive-slot="'+slot+'"]').click(no_wait_after=True)
                     expected='headwear' if slot=='helmet' else 'face' if slot=='appearance' else slot
                     self.assertEqual(self.page.evaluate('wardrobeSlot'),expected)
-                self.page.locator('[data-wardrobe-category="appearance"]').click(no_wait_after=True)
+                # The last equipment rail button opens the appearance rails.
+                self.assertEqual(self.page.evaluate('wardrobeCategory'),'appearance')
+                self.assertTrue(self.page.locator('[data-archive-slot="equipment"]').is_visible())
                 for gender in ['female','male']:
                     self.page.locator('#wardrobe-gender-switch').get_by_role('button',name='Женщина' if gender=='female' else 'Мужчина',exact=True).click(no_wait_after=True)
                     self.page.locator('[data-wardrobe-slot="face"]').click(no_wait_after=True)
@@ -1390,8 +1414,9 @@ class GameTests(unittest.TestCase):
         missing=[]
         self.page.on('response',lambda response: missing.append(response.url) if response.status>=400 else None)
         self.page.evaluate('openCustomization();selectWardrobeCategory("appearance")')
-        self.assertEqual(self.page.locator('[data-wardrobe-category]').count(),5)
-        self.assertEqual(self.page.locator('#wardrobe-categories button').all_text_contents(),['Персонаж','Головы','Причёски'])
+        self.assertEqual(self.page.locator('[data-archive-slot]').evaluate_all('es=>es.map(e=>e.dataset.archiveSlot)'),['face','hair','equipment'])
+        self.assertEqual(self.page.locator('#archive-left-slots .archive-slot span').all_text_contents(),['Головы','Причёски'])
+        self.assertTrue(self.page.locator('#wardrobe-gender-switch').is_visible())
         self.page.locator('[data-wardrobe-slot="hair"]').click()
         self.assertEqual(self.page.locator('[data-wardrobe-card]').count(),13)
         self.assertEqual(self.page.locator('[data-wardrobe-card^="hair-f5-"]').count(),3)
@@ -1460,7 +1485,7 @@ class GameTests(unittest.TestCase):
         self.load()
         self.page.evaluate('openCustomization();setPaperDollView("combat");equipPaperDollItem("upperBody","patient-tunic");setPaperDollView("patient");')
         wardrobe=self.page.locator('#custom-modal')
-        wardrobe.locator('[data-wardrobe-category="appearance"]').click()
+        wardrobe.locator('[data-archive-slot="appearance"]').click()
         wardrobe.locator('[data-wardrobe-slot="hair"]').click()
         self.assertEqual(wardrobe.locator('[data-wardrobe-card]').count(),13)
         self.assertEqual(self.page.evaluate('selectedPaperDollItem("hair").id'),'hair-none')
