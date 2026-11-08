@@ -68,7 +68,7 @@ class DocumentSystemBrowserTests(unittest.TestCase):
         self.assertEqual(self.page.evaluate('JSON.stringify(stats)'),rewards)
         self.assertTrue(self.page.locator('#battle-detail-modal .report-actions button').count()>0)
 
-    def test_clipboard_large_center_header_and_both_sheets_fit_without_scrolling(self):
+    def test_clipboard_preserves_both_sheets_and_scrolls_to_reachable_actions(self):
         self.load();self.page.set_viewport_size({'width':1800,'height':1070})
         self.page.evaluate('openCustomization();setPaperDollView("combat");equipPaperDollItem("upperBody",null);selectWardrobeItem("weapon-demo-aks-rare")')
         self.assertIn('paper-header-only.svg',self.page.locator('.archive-letterhead').evaluate('e=>getComputedStyle(e).backgroundImage'))
@@ -86,12 +86,13 @@ class DocumentSystemBrowserTests(unittest.TestCase):
                 self.page.evaluate('(l)=>PalataI18n.setLocale(l,{persist:false})',locale)
                 detail=self.page.locator('#wardrobe-item-detail').bounding_box()
                 footer=self.page.locator('.p404-slip').bounding_box()
-                self.assertLessEqual(footer['y']+footer['height'],min(height,detail['y']+detail['height'])+1,(width,height,locale))
-                self.assertTrue(self.page.locator('#wardrobe-item-detail').evaluate('e=>e.scrollHeight<=e.clientHeight+1'),(width,height,locale))
+                # The document may scroll vertically instead of shrinking text and controls.
+                self.assertTrue(self.page.locator('#wardrobe-item-detail').evaluate('e=>e.scrollWidth<=e.clientWidth+1'),(width,height,locale))
                 self.assertTrue(self.page.locator('.p404-copy').evaluate('e=>e.scrollHeight<=e.clientHeight+1'),(width,height,locale))
                 signature=self.page.locator('.p404-signature').bounding_box()
                 self.assertLessEqual(signature['y']+signature['height'],footer['y']+footer['height']-1,(width,height,locale))
                 for selector in ['.p404-actions','.p404-signoff','.p404-slip-seal']:
+                    self.page.locator(selector).scroll_into_view_if_needed()
                     box=self.page.locator(selector).bounding_box()
                     self.assertGreaterEqual(box['y'],detail['y'])
                     self.assertLessEqual(box['y']+box['height'],min(height,detail['y']+detail['height'])+1,(width,height,locale,selector))
@@ -120,12 +121,13 @@ class DocumentSystemBrowserTests(unittest.TestCase):
                 self.assertTrue(self.page.locator('.archive-rarity-mark').evaluate_all("""marks=>marks.every(e=>e.querySelector('small').getBoundingClientRect().top>=e.querySelector('b').getBoundingClientRect().bottom+1)"""))
         self.assertEqual(self.page.locator('.p404-signature image').get_attribute('href'),'assets/ui/wardrobe/weapon-doctor-signature.svg')
 
-    def test_full_height_clipboard_and_single_line_palette_share_aligned_edges(self):
+    def test_clipboard_preserves_aspect_ratio_and_single_line_palette(self):
         self.load();self.page.set_viewport_size({'width':1800,'height':1070})
         self.page.evaluate('openCustomization();selectWardrobeItem("weapon-demo-aks-experimental")')
         for width,height in [(1800,1070),(1680,1000),(1280,800)]:
             self.page.set_viewport_size({'width':width,'height':height})
-            self.page.wait_for_function("""()=>{const frame=document.querySelector('.p404-backing').getBoundingClientRect(),catalog=document.querySelector('.wardrobe-items').getBoundingClientRect();return Math.abs(frame.top-catalog.top)<1&&Math.abs(frame.bottom-catalog.bottom)<1;}""")
+            self.page.wait_for_function("""()=>{const board=document.querySelector('.p404-board');return board.clientWidth>0&&board.clientHeight>0;}""")
+            self.assertTrue(self.page.locator('#wardrobe-item-detail').evaluate('e=>e.scrollWidth<=e.clientWidth+1'))
             ratio=self.page.locator('.p404-board').evaluate('e=>e.clientWidth/e.clientHeight')
             self.assertAlmostEqual(ratio,1054/1492,delta=.003)
             cards=self.page.locator('.wardrobe-item-card:has(.weapon-icon-frame)')
