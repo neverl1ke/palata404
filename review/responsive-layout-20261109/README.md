@@ -43,3 +43,23 @@ sidebars and five common dialogs. The Python shard runner includes both classes.
 
 Review and visually validate the `fix/responsive-phone-layout` branch before
 merging. This change is not deployed and does not alter the live game.
+
+## GitHub browser follow-up
+
+The branch is now published. Run 42535217385 on b8f1b368 completed all four new
+responsive tests successfully and produced nine viewport screenshots. All 86
+asset-shard tests passed. Comparison with baseline run 42535137572 identified
+10 pre-existing failures and two document tests that required updating from
+height-fitting to scroll/reachability contracts.
+
+Follow-up corrections keep Back sticky despite an older higher-specificity
+rule, reserve the approved 1200px canvas footprint around the 941px body,
+and wrap the review gallery's long mobile filter label. Updated historical
+checks use current archive rails and clipboard selectors, retain immutable
+asset checks, and verify original loader order separately from mutable HTML.
+The stronger Back hit-target check and updated full suite need another CI run.
+
+A commit-pinned raw.githack preview of b8f1b368 was opened successfully in an
+isolated browser: game initialization, wardrobe interaction and visible image
+loading worked. This third-party preview has separate local saves, an initial
+external-content notice, and is not production or a guarantee for later commits.
