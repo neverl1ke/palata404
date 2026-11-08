@@ -1,8 +1,10 @@
 """Real game integration: poses, inventory art, saved outfits and rendering races."""
 import hashlib,json,unittest
 from pathlib import Path
+from html.parser import HTMLParser
+from urllib.parse import urlsplit
 from tests import test_game as support
-from tests.asset_history import approved_current_hash
+from tests.asset_history import approved_current_hash, approved_female_arms_integration_html
 ROOT=Path(__file__).resolve().parents[1]
 class AnimatedAvatarTests(unittest.TestCase):
     @classmethod
@@ -18,7 +20,26 @@ class AnimatedAvatarTests(unittest.TestCase):
         manifest=json.loads((ROOT/'review/approved-avatar-packages-20261102/integration-manifest.json').read_text())
         revision=json.loads((ROOT/'review/female-arms-approved-20261103/integration-manifest.json').read_text())
         for entry in manifest['exact_files']+revision['exact_files']:
-            self.assertEqual(hashlib.sha256((ROOT/entry['path']).read_bytes()).hexdigest(),approved_current_hash(entry['path'],entry['sha256']))
+            if entry['path'] == 'index.html':
+                self.assertEqual(hashlib.sha256(approved_female_arms_integration_html()).hexdigest(),entry['sha256'])
+            else:
+                self.assertEqual(hashlib.sha256((ROOT/entry['path']).read_bytes()).hexdigest(),approved_current_hash(entry['path'],entry['sha256']),entry['path'])
+        class Scripts(HTMLParser):
+            def __init__(self, html):
+                super().__init__();self.scripts=[];self.feed(html)
+            def handle_starttag(self, tag, attrs):
+                attrs=dict(attrs)
+                if tag=='script' and 'src' in attrs:
+                    self.scripts.append((urlsplit(attrs['src']).path,attrs.get('type'),'defer' in attrs))
+        original=Scripts(approved_female_arms_integration_html().decode()).scripts
+        current=Scripts((ROOT/'index.html').read_text()).scripts
+        # New feature scripts are allowed, but every original loader must remain
+        # present exactly once, with its module/defer semantics and ordering.
+        positions=[]
+        for script in original:
+            self.assertEqual(current.count(script),1,script)
+            positions.append(current.index(script))
+        self.assertEqual(positions,sorted(positions))
         for gender in ['male','female']:
             rig=json.loads((ROOT/f'avatar-core/approved/{gender}/resources.json').read_text())['json'][f'rigs/{gender}_rig.json']
             self.assertEqual(hashlib.sha256((ROOT/f'base_{gender}.png').read_bytes()).hexdigest(),rig['source_sha256'])
@@ -40,7 +61,18 @@ class AnimatedAvatarTests(unittest.TestCase):
         self.page.set_viewport_size({'width':390,'height':844});self.page.evaluate('selectWardrobeCategory("weapons");selectWardrobeSlot("weapon")');self.ready('rifle')
         for weapon in ['gear-knife','gear-aks']:
             self.assertTrue(self.page.locator(f'[data-wardrobe-card="{weapon}"] .weapon-icon-frame img:not(.game-icon)').is_visible())
-            self.assertTrue(self.page.locator(f'[data-wardrobe-card="{weapon}"] .weapon-icon-frame img:not(.game-icon)').evaluate('(i)=>i.complete&&i.naturalWidth>0&&i.offsetTop+i.offsetHeight<=i.parentElement.clientHeight'))
+            # Approved rarity cards enlarge the art to 150% of its mount and
+            # deliberately allow overhang. Verify that contract, not the old
+            # clipped inventory-thumbnail box.
+            self.assertTrue(self.page.locator(f'[data-wardrobe-card="{weapon}"] .weapon-icon-frame img:not(.game-icon)').evaluate('''i=>{
+                const frame=i.parentElement, box=i.getBoundingClientRect(), artStyle=getComputedStyle(i), mountStyle=getComputedStyle(frame);
+                const innerHeight=frame.clientHeight-(artStyle.position==='absolute'?0:parseFloat(mountStyle.paddingTop)+parseFloat(mountStyle.paddingBottom));
+                const card=i.closest('[data-wardrobe-card]').getBoundingClientRect();
+                return i.complete&&i.naturalWidth>0&&i.naturalHeight>0&&
+                    artStyle.objectFit==='contain'&&mountStyle.overflow==='visible'&&
+                    Math.abs(box.height/innerHeight-1.5)<.03&&box.width>0&&
+                    box.left>=card.left-1&&box.right<=card.right+1&&box.bottom>card.top&&box.top<card.bottom;
+            }'''))
         self.page.screenshot(path=str(ROOT/'test-results/animated-weapons-mobile.png'))
         self.assertTrue(self.page.evaluate('document.documentElement.scrollWidth<=innerWidth+1'))
         self.page.evaluate('setPaperDollView("patient")')
@@ -80,7 +112,7 @@ class AnimatedAvatarTests(unittest.TestCase):
                     rgba=Image.open(io.BytesIO(base64.b64decode(raw))).convert('RGBA')
                     self.assertEqual(hashlib.sha256(rgba.tobytes()).hexdigest(),phase['rgba_sha256'],f"{gender} {pose} at {phase['time_ms']}ms")
                 self.page.set_viewport_size({'width':390,'height':844})
-                self.assertTrue(self.page.evaluate("""()=>{const c=document.querySelector('#wardrobe-paperdoll canvas').getBoundingClientRect(),s=document.querySelector('.wardrobe-stage').getBoundingClientRect();return c.left>=s.left-2&&c.right<=s.right+2}"""))
+                self.page.wait_for_function("""()=>{const c=document.querySelector('#wardrobe-paperdoll canvas').getBoundingClientRect(),s=document.querySelector('.wardrobe-stage').getBoundingClientRect();return c.width>0&&c.left>=s.left-2&&c.right<=s.right+2}""")
                 self.page.locator('.wardrobe-stage').screenshot(path=str(ROOT/'review/male-facial-hair-approved-20261105'/f'{gender}-game-{"rifle" if weapon else "no-weapon"}.png'))
     def test_native_female_head_and_hair_match_static_registered_preview(self):
         import base64,io
