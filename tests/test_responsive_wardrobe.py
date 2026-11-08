@@ -40,7 +40,9 @@ class ResponsiveWardrobeTests(unittest.TestCase):
                 out=Path('test-results/responsive');out.mkdir(parents=True,exist_ok=True)
                 self.page.screenshot(path=str(out/f'wardrobe-{width}x{height}.png'))
                 if width<=1100 or height<=650:
-                    self.page.locator('.archive-detail-close').click()
+                    back=self.page.locator('.archive-detail-close')
+                    self.assertTrue(back.evaluate('(e)=>{const r=e.getBoundingClientRect();return r.top>=0&&r.bottom<=innerHeight&&e.contains(document.elementFromPoint(r.x+r.width/2,r.y+r.height/2))}'))
+                    back.click()
                     self.assertFalse(self.page.locator('#wardrobe-item-detail').is_visible())
                 self.page.locator('.archive-footer button:last-child').click()
         self.page.locator('.archive-wardrobe .report-close').click()
