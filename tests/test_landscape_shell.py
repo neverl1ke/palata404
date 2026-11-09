@@ -69,6 +69,20 @@ class LandscapeShellTests(unittest.TestCase):
                 self.assertTrue(all(rows.values()),(width,i,rows))
             self.game.locator('.archive-wardrobe .report-close').click()
 
+    def test_desktop_fullscreen_control_has_reserved_space(self):
+        with self.browser.new_context(viewport={'width':1280,'height':720}) as context:
+            page=context.new_page()
+            page.goto(self.url,wait_until='networkidle')
+            button=page.locator('#fullscreen-button')
+            self.assertTrue(button.is_visible())
+            self.assertTrue(page.evaluate("""()=>{const b=document.querySelector('#fullscreen-button').getBoundingClientRect(),f=document.querySelector('#game-canvas').getBoundingClientRect();return f.right<=b.left;}"""))
+            button.click()
+            page.wait_for_function('Boolean(document.fullscreenElement)')
+            self.assertEqual(button.get_attribute('aria-pressed'),'true')
+            button.click()
+            page.wait_for_function('!document.fullscreenElement')
+            self.assertEqual(button.get_attribute('aria-pressed'),'false')
+
     def test_entry_preserves_query_and_hash_without_redirect_loop(self):
         self.page.goto(self.url+'?dev=1#layout-check',wait_until='networkidle')
         self.assertIn('play.html?dev=1#layout-check',self.page.url)
