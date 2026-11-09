@@ -12,6 +12,7 @@ class GeneralResponsiveTests(unittest.TestCase):
 
     def setUp(self):
         self.context = self.browser.new_context(viewport={'width': 1280, 'height': 800})
+        self.context.add_init_script('window.__PALATA_TEST_DIRECT__=true;')
         self.context.route('https://**/*', lambda route: route.abort())
         self.page = self.context.new_page()
         self.page.on('dialog', lambda dialog: dialog.accept())
