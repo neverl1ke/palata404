@@ -97,3 +97,22 @@
 .archive-wardrobe .wardrobe-preview:not([data-portrait=true]) #wardrobe-paperdoll:has(canvas[width="1200"]:not([hidden])) {
     width:min(calc(100cqw * 941 / 1200),calc(100cqh * .562799))!important;
 }
+/* Fixed landscape composition: show the entire approved clipboard AND its
+   action row. Size against both axes, reserving space for the live buttons. */
+@media (min-width:1101px) and (min-height:651px) {
+    .archive-wardrobe #wardrobe-item-detail:has(.archive-unified-tablet) {
+        container-type:size;
+        overflow:hidden!important;
+        display:flex!important;
+        flex-direction:column;
+        align-items:center;
+        justify-content:center;
+        padding:8px!important;
+    }
+    .archive-wardrobe .archive-unified-tablet {
+        width:min(calc(100cqw / 1.042),calc((100cqh - 60px) / 1.022 * 1054 / 1492));
+        height:auto;
+        flex:none;
+        margin:0 auto 60px;
+    }
+}
