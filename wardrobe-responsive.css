@@ -127,3 +127,11 @@
     margin:0;
     white-space:nowrap;
 }
+/* Keep the rarity line in the clear strip above the weapon mount. */
+.archive-unified-tablet .p404-weapon-title { top:24%; }
+.archive-unified-tablet .p404-weapon-subtitle {
+    top:26.9%;
+    font-size:1.6cqw;
+    line-height:1.05;
+    white-space:nowrap;
+}
