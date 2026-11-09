@@ -114,3 +114,16 @@
         margin:auto;
     }
 }
+/* Generic modal h3 / detail h4 rules otherwise override the proportional
+   typography and force fixed 15/16px text into smaller artwork rows. */
+.archive-unified-tablet .p404-institution .p404-hospital-name {
+    font-size:3.05cqw;
+    line-height:1.06;
+    margin:0;
+}
+.archive-unified-tablet .p404-weapon-title {
+    font-size:3.5cqw;
+    line-height:1.05;
+    margin:0;
+    white-space:nowrap;
+}
