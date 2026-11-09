@@ -242,7 +242,7 @@ class GameTests(unittest.TestCase):
 
     def setUp(self):
         self.context = self.browser.new_context(viewport={'width': 1280, 'height': 800})
-        self.context.add_init_script('Math.random=()=>0.5;')
+        self.context.add_init_script('window.__PALATA_TEST_DIRECT__=true;Math.random=()=>0.5;')
         self.context.add_init_script("""window.expectedHairDisplaySource=async(source,color,reference)=>{
             const g=paperDollState.selectedGender,item=selectedPaperDollItem('hair');
             const part=paperDollItemLayers(item,g).find(p=>p.id==='front')||item;
@@ -1801,6 +1801,7 @@ class GameTests(unittest.TestCase):
         # A mobile context also exercises coarse-pointer CSS and tap events.
         context = self.browser.new_context(viewport={'width': 390, 'height': 844},
                                            is_mobile=True, has_touch=True, device_scale_factor=3)
+        context.add_init_script('window.__PALATA_TEST_DIRECT__=true;')
         context.route('https://**/*', lambda route: route.abort())
         page = context.new_page()
         page.on('pageerror', lambda error: self.errors.append(str(error)))
