@@ -44,6 +44,13 @@ class LandscapeShellTests(unittest.TestCase):
                 self.assertTrue(self.game.locator('#wardrobe-item-detail').evaluate('e=>e.scrollHeight<=e.clientHeight+1&&e.scrollWidth<=e.clientWidth+1'))
                 for selector in ['.p404-backing','.p404-slip','.p404-actions']:
                     self.assertTrue(self.game.locator(selector).evaluate("""e=>{const r=e.getBoundingClientRect(),p=e.closest('#wardrobe-item-detail').getBoundingClientRect();return r.left>=p.left-1&&r.right<=p.right+1&&r.top>=p.top-1&&r.bottom<=p.bottom+1;}"""),selector)
+                # Preserve the production composition, not merely visibility:
+                # action row is ON the board, below stats and above the slip.
+                placement=self.game.locator('.archive-unified-tablet').evaluate("""e=>{const b=e.getBoundingClientRect(),a=e.querySelector('.p404-actions').getBoundingClientRect(),s=e.querySelector('.p404-slip').getBoundingClientRect();return {top:(a.top-b.top)/b.height,height:a.height/b.height,left:(a.left-b.left)/b.width,aboveSlip:a.bottom<=s.top,inside:a.bottom<=b.bottom};}""")
+                self.assertAlmostEqual(placement['top'],.614,delta=.001)
+                self.assertAlmostEqual(placement['height'],.041,delta=.001)
+                self.assertAlmostEqual(placement['left'],.08,delta=.001)
+                self.assertTrue(placement['aboveSlip']);self.assertTrue(placement['inside'])
                 # Trial click verifies hit testing without changing the outfit.
                 self.game.locator('.p404-actions button').first.click(trial=True)
                 self.page.screenshot(path=str(out/f'wardrobe-{width}x{height}.png'))
