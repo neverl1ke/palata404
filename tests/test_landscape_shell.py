@@ -58,6 +58,17 @@ class LandscapeShellTests(unittest.TestCase):
                 self.game.locator('.archive-wardrobe .report-close').click()
         self.assertEqual(self.page.locator('iframe').count(),1)
 
+    def test_clipboard_text_rows_do_not_overlap_for_all_weapons(self):
+        for width,height in [(568,320),(667,375),(844,390)]:
+            self.page.set_viewport_size({'width':width,'height':height})
+            self.game.locator('[onclick="openCustomization()"]').click()
+            cards=self.game.locator('[data-wardrobe-item]')
+            for i in range(cards.count()):
+                cards.nth(i).click()
+                rows=self.game.locator('.archive-unified-tablet').evaluate("""e=>{const r=s=>e.querySelector(s).getBoundingClientRect(),m=r('.p404-ministry'),h=r('.p404-hospital-name'),d=r('.p404-department'),t=r('.p404-weapon-title'),s=r('.p404-weapon-subtitle'),gun=r('.p404-mount');return {header:m.bottom<=h.top&&h.bottom<=d.top,title:t.bottom<=s.top,aboveGun:s.bottom<=gun.top,titleFits:e.querySelector('.p404-weapon-title').scrollWidth<=t.width+1};}""")
+                self.assertTrue(all(rows.values()),(width,i,rows))
+            self.game.locator('.archive-wardrobe .report-close').click()
+
     def test_entry_preserves_query_and_hash_without_redirect_loop(self):
         self.page.goto(self.url+'?dev=1#layout-check',wait_until='networkidle')
         self.assertIn('play.html?dev=1#layout-check',self.page.url)
