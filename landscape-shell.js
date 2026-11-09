@@ -22,7 +22,7 @@
         const rotate = matchMedia('(pointer:coarse)').matches && width < 900 && height > width;
         prompt.hidden = !rotate;
         // Keep the optional fullscreen control in the letterbox, never over gameplay.
-        fullscreen.hidden = !rotate && height - HEIGHT * scale < 96 && width - WIDTH * scale < 96;
+        fullscreen.hidden = !matchMedia('(pointer:fine)').matches && !rotate && height - HEIGHT * scale < 96 && width - WIDTH * scale < 96;
         document.body.dataset.rotate = String(rotate);
         frame.inert = rotate;
         frame.setAttribute('aria-hidden', String(rotate));
@@ -38,6 +38,13 @@
         } catch {
             document.getElementById('fullscreen-note').hidden = false;
         }
+    });
+    document.addEventListener('fullscreenchange', () => {
+        const active = Boolean(document.fullscreenElement);
+        fullscreen.setAttribute('aria-pressed', String(active));
+        fullscreen.setAttribute('aria-label', active ? 'Вийти з повного екрана' : 'На весь екран');
+        fullscreen.title = active ? 'Вийти з повного екрана' : 'На весь екран';
+        fit();
     });
     fit();
 })();
