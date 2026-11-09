@@ -1,5 +1,5 @@
-/* Layout owns scrolling; artwork keeps its approved proportions. Never fit an
-   interactive document to viewport height: that makes its buttons untappable. */
+/* Legacy direct-view layout. The landscape shell below preserves the original
+   clipboard composition and scales all of its contents together. */
 .archive-wardrobe .wardrobe-layout { min-width:0; }
 .archive-wardrobe .wardrobe-layout > * { min-width:0; }
 .archive-wardrobe .wardrobe-header .report-close,
@@ -13,8 +13,6 @@
 .archive-wardrobe .archive-unified-tablet {
     width:96%; height:auto; margin:0 auto 60px;
 }
-.archive-unified-tablet .p404-actions { top:calc(100% + 8px); height:auto; min-height:44px; }
-.archive-unified-tablet .p404-actions button { min-height:44px; font-size:max(14px,2.8cqw); }
 
 /* Two panels are useful on landscape phones, but must be allowed to scroll
    vertically instead of colliding with the fixed header and footer. */
@@ -97,8 +95,8 @@
 .archive-wardrobe .wardrobe-preview:not([data-portrait=true]) #wardrobe-paperdoll:has(canvas[width="1200"]:not([hidden])) {
     width:min(calc(100cqw * 941 / 1200),calc(100cqh * .562799))!important;
 }
-/* Fixed landscape composition: show the entire approved clipboard AND its
-   action row. Size against both axes, reserving space for the live buttons. */
+/* Match the production clipboard: buttons stay on the paper at 61.4%, above
+   the service slip. Fit the whole artwork; do not restyle or detach controls. */
 @media (min-width:1101px) and (min-height:651px) {
     .archive-wardrobe #wardrobe-item-detail:has(.archive-unified-tablet) {
         container-type:size;
@@ -107,12 +105,12 @@
         flex-direction:column;
         align-items:center;
         justify-content:center;
-        padding:8px!important;
+        padding:0!important;
     }
     .archive-wardrobe .archive-unified-tablet {
-        width:min(calc(100cqw / 1.042),calc((100cqh - 60px) / 1.022 * 1054 / 1492));
+        width:min(calc(100cqw / 1.042),calc(100cqh / 1.022 * 1054 / 1492));
         height:auto;
         flex:none;
-        margin:0 auto 60px;
+        margin:auto;
     }
 }
