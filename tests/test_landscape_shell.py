@@ -41,7 +41,11 @@ class LandscapeShellTests(unittest.TestCase):
                 # Every physical size retains the same three-column wardrobe.
                 self.assertEqual(self.game.locator('.wardrobe-layout').evaluate('e=>getComputedStyle(e).gridTemplateColumns.split(" ").length'),3)
                 self.game.locator('[data-wardrobe-item]').first.click()
-                self.game.locator('.p404-actions button').first.scroll_into_view_if_needed()
+                self.assertTrue(self.game.locator('#wardrobe-item-detail').evaluate('e=>e.scrollHeight<=e.clientHeight+1&&e.scrollWidth<=e.clientWidth+1'))
+                for selector in ['.p404-backing','.p404-slip','.p404-actions']:
+                    self.assertTrue(self.game.locator(selector).evaluate("""e=>{const r=e.getBoundingClientRect(),p=e.closest('#wardrobe-item-detail').getBoundingClientRect();return r.left>=p.left-1&&r.right<=p.right+1&&r.top>=p.top-1&&r.bottom<=p.bottom+1;}"""),selector)
+                # Trial click verifies hit testing without changing the outfit.
+                self.game.locator('.p404-actions button').first.click(trial=True)
                 self.page.screenshot(path=str(out/f'wardrobe-{width}x{height}.png'))
                 self.game.locator('.archive-footer button:last-child').click()
                 self.game.locator('.archive-wardrobe .report-close').click()
