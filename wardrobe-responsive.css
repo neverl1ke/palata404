@@ -1,0 +1,137 @@
+/* Legacy direct-view layout. The landscape shell below preserves the original
+   clipboard composition and scales all of its contents together. */
+.archive-wardrobe .wardrobe-layout { min-width:0; }
+.archive-wardrobe .wardrobe-layout > * { min-width:0; }
+.archive-wardrobe .wardrobe-header .report-close,
+.archive-wardrobe .archive-footer > button { min-height:44px; min-width:44px; }
+.archive-wardrobe #wardrobe-item-detail:has(.archive-unified-tablet) {
+    container-type:inline-size;
+    overflow:auto!important;
+    display:block!important;
+    padding:12px!important;
+}
+.archive-wardrobe .archive-unified-tablet {
+    width:96%; height:auto; margin:0 auto 60px;
+}
+
+/* Two panels are useful on landscape phones, but must be allowed to scroll
+   vertically instead of colliding with the fixed header and footer. */
+@media (max-width:1100px), (max-height:650px) {
+    .archive-wardrobe {
+        width:100%!important; height:100%!important; max-height:100%!important;
+        padding: max(8px,env(safe-area-inset-top)) max(8px,env(safe-area-inset-right)) max(8px,env(safe-area-inset-bottom)) max(8px,env(safe-area-inset-left))!important;
+        border-radius:0!important; gap:6px;
+    }
+    .archive-wardrobe .wardrobe-header {
+        grid-template-columns:minmax(0,1fr) minmax(170px,.7fr) 44px; gap:6px;
+    }
+    .archive-wardrobe .archive-letterhead { grid-column:auto; grid-row:auto; max-height:80px; }
+    .archive-wardrobe .archive-file-note { display:none; }
+    .archive-wardrobe .wardrobe-view-switch { grid-column:auto; padding:2px; }
+    .archive-wardrobe .wardrobe-view-switch button { min-height:44px; padding:5px; font-size:16px; }
+    .archive-wardrobe .report-close { grid-column:auto; grid-row:auto; width:44px; }
+    .archive-wardrobe .wardrobe-layout {
+        display:grid!important; position:static;
+        grid-template-columns:minmax(0,1fr) minmax(250px,.85fr);
+        grid-template-rows:minmax(330px,1fr);
+        overflow:auto; overscroll-behavior:contain; gap:8px;
+    }
+    .archive-wardrobe .wardrobe-preview {
+        min-height:330px!important; height:auto; max-height:none;
+        grid-template-columns:64px minmax(0,1fr) 64px;
+        grid-template-rows:minmax(0,1fr); padding:4px!important; gap:2px;
+    }
+    .archive-wardrobe .wardrobe-registration-footer { display:none; }
+    .archive-wardrobe .wardrobe-items,
+    .archive-wardrobe .wardrobe-items.expanded { height:auto; min-height:330px; }
+    .archive-wardrobe .wardrobe-item-grid {
+        display:grid!important; grid-template-columns:minmax(0,1fr)!important;
+        grid-auto-rows:max-content; align-content:start; overflow:auto;
+    }
+    .archive-wardrobe .wardrobe-item-card,
+    .archive-wardrobe .wardrobe-items.expanded .wardrobe-item-card,
+    .archive-wardrobe .wardrobe-item-card:has(.weapon-icon-frame),
+    .archive-wardrobe .wardrobe-items.expanded .wardrobe-item-card:has(.weapon-icon-frame) {
+        width:100%!important; min-width:0!important;
+    }
+    .archive-wardrobe .archive-drawer-toggle { display:none; }
+    .archive-wardrobe .archive-footer { min-height:44px; flex:none; flex-wrap:nowrap; padding:0; }
+    .archive-wardrobe #archive-draft-note { display:none; }
+    .archive-wardrobe .wardrobe-item-detail,
+    .archive-wardrobe #wardrobe-item-detail:has(.archive-unified-tablet) { display:none!important; }
+    .archive-wardrobe[data-inspecting=true] .wardrobe-item-detail,
+    .archive-wardrobe[data-inspecting=true] #wardrobe-item-detail:has(.archive-unified-tablet) {
+        display:block!important; position:absolute; inset:8px; width:auto; height:auto;
+        z-index:95; overflow:auto!important; padding:0 12px 12px!important;
+        background:#171b13!important; container-type:inline-size;
+    }
+    .archive-wardrobe[data-inspecting=true] .archive-detail-close {
+        display:block; position:sticky; top:0; z-index:10;
+        width:100%; min-height:44px; margin:0 0 12px;
+    }
+    .archive-wardrobe .archive-unified-tablet { width:min(96%,520px); margin:0 auto 60px; }
+}
+@media (max-width:600px) {
+    .archive-wardrobe .wardrobe-header { grid-template-columns:minmax(0,1fr) 44px; }
+    .archive-wardrobe .archive-letterhead { grid-column:1; grid-row:1; }
+    .archive-wardrobe .report-close { grid-column:2; grid-row:1; }
+    .archive-wardrobe .wardrobe-view-switch { grid-column:1/-1; }
+    .archive-wardrobe .wardrobe-layout {
+        grid-template-columns:minmax(0,1fr); grid-template-rows:330px 300px;
+    }
+    .archive-wardrobe .wardrobe-items,
+    .archive-wardrobe .wardrobe-items.expanded { min-height:300px; }
+    .archive-wardrobe .wardrobe-item-grid { grid-template-columns:repeat(2,minmax(0,1fr))!important; }
+    .archive-wardrobe .wardrobe-item-grid:has(.weapon-icon-frame) { grid-template-columns:minmax(0,1fr)!important; }
+}
+/* Desktop tracks depend on available width, not the previous document height. */
+@media (min-width:1101px) and (min-height:651px) {
+    .archive-wardrobe .wardrobe-layout {
+        grid-template-columns:minmax(300px,1fr) minmax(240px,24.5%) minmax(300px,34%);
+    }
+}
+/* Approved rifle canvases are 1200px wide around the 941px body registration.
+   Reserve that real footprint so limbs/weapons do not extend into slot rails. */
+.archive-wardrobe .wardrobe-preview:not([data-portrait=true]) #wardrobe-paperdoll:has(canvas[width="1200"]:not([hidden])) {
+    width:min(calc(100cqw * 941 / 1200),calc(100cqh * .562799))!important;
+}
+/* Match the production clipboard: buttons stay on the paper at 61.4%, above
+   the service slip. Fit the whole artwork; do not restyle or detach controls. */
+@media (min-width:1101px) and (min-height:651px) {
+    .archive-wardrobe #wardrobe-item-detail:has(.archive-unified-tablet) {
+        container-type:size;
+        overflow:hidden!important;
+        display:flex!important;
+        flex-direction:column;
+        align-items:center;
+        justify-content:center;
+        padding:0!important;
+    }
+    .archive-wardrobe .archive-unified-tablet {
+        width:min(calc(100cqw / 1.042),calc(100cqh / 1.022 * 1054 / 1492));
+        height:auto;
+        flex:none;
+        margin:auto;
+    }
+}
+/* Generic modal h3 / detail h4 rules otherwise override the proportional
+   typography and force fixed 15/16px text into smaller artwork rows. */
+.archive-unified-tablet .p404-institution .p404-hospital-name {
+    font-size:3.05cqw;
+    line-height:1.06;
+    margin:0;
+}
+.archive-unified-tablet .p404-weapon-title {
+    font-size:3.5cqw;
+    line-height:1.05;
+    margin:0;
+    white-space:nowrap;
+}
+/* Keep the rarity line in the clear strip above the weapon mount. */
+.archive-unified-tablet .p404-weapon-title { top:24%; }
+.archive-unified-tablet .p404-weapon-subtitle {
+    top:26.9%;
+    font-size:1.6cqw;
+    line-height:1.05;
+    white-space:nowrap;
+}
