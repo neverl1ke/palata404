@@ -13,3 +13,8 @@ p { max-width:38ch; margin:0; line-height:1.5; }
 #fullscreen-note { position:fixed; bottom:52px; right:8px; z-index:3; padding:8px; background:#111710; color:#e0c99d; }
 body[data-rotate=true] #canvas-slot { visibility:hidden; }
 button:focus-visible { outline:2px solid #e0c99d; outline-offset:2px; }
+/* Desktop always has a dedicated control rail, including exact 16:9 windows.
+   Reserve its width so fullscreen never covers game controls. */
+@media (pointer:fine) {
+    #landscape-screen { padding-right:calc(52px + env(safe-area-inset-right)); }
+}
