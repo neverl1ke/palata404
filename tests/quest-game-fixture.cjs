@@ -119,7 +119,7 @@ function game(saves = {}, deniedStorage = false, failWrites = [], telegramId = n
     function walk(node,predicate){if(predicate(node))return node;for(const child of node.children||[]){const r=walk(child,predicate);if(r)return r;}}
     return {
         run, storage, elements, failedKeys,
-        click(kind,id){if(kind==='room')run('toggleMapModal(true)');const b=walk(elements.get('map-floors-view'),n=>n.dataset?.[kind]===id);if(!b)throw Error('Missing button '+kind+':'+id);b.click();},
+        click(kind,id){if(kind==='room')run('toggleMapModal(true)');const b=walk(elements.get('map-floors-view'),n=>n.dataset?.[kind]===id);if(!b)throw Error('Missing button '+kind+':'+id);b.click();if(kind==='action'&&run('!!PalataQuestEngine.interactions['+JSON.stringify(id)+']')){run('PalataQuestEngine.interactions['+JSON.stringify(id)+'].steps.slice(window.PalataQuestPrototype.snapshot().interactions['+JSON.stringify(id)+']||0)').forEach(step=>{const c=walk(elements.get('map-floors-view'),n=>n.dataset?.choice===step.answer);if(c)c.click();});}},
         switch(){selectors.get('.room-trip-switch').click();},
         state(){return run('window.PalataQuestPrototype.snapshot()');},
         advance(ms) {

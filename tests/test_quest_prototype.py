@@ -53,7 +53,14 @@ class QuestPrototypeBrowserTest(unittest.TestCase):
             back=page.get_by_role('button',name='Повернутися до карти',exact=True)
             if back.is_visible(): back.click()
             page.locator(f'[data-room="{id}"]').click()
-        def action(id): page.locator(f'[data-action="{id}"]').click()
+        def action(id):
+            page.locator(f'[data-action="{id}"]').click()
+            choices={'markerA':['sign','A','trace'],'markerB':['frame','AB','trace'],'unlockB':['A','AB','B'],'exercise':['L','R','M']}
+            for choice in choices.get(id,[]): page.locator(f'[data-choice="{choice}"]').click()
+        room('gym');action('exercise')
+        self.assertEqual(page.evaluate('PalataQuestPrototype.snapshot().exerciseCount'),1)
+        room('ward404')
+        page.get_by_role('button',name='Повернутися до карти',exact=True).click()
         page.emulate_media(reduced_motion='no-preference')
         room('A')
         page.locator('.quest-traveller').wait_for(state='visible')
@@ -62,7 +69,16 @@ class QuestPrototypeBrowserTest(unittest.TestCase):
         self.assertEqual(page.evaluate('PalataQuestPrototype.snapshot().room'),'A')
         page.screenshot(path=str(out/'location-arrival.png'))
         page.emulate_media(reduced_motion='reduce')
-        for kind, value in [('action','markerA'),('room','B'),('action','markerB'),('room','procedure'),('action','record'),('room','B'),('room','C'),('room','doctor'),('action','observation'),('room','stairs'),('action','stairsPatient'),('room','C'),('room','B'),('room','A'),('room','ward404')]:
+        page.locator('[data-action="markerA"]').click()
+        page.locator('[data-choice="bench"]').click()
+        self.assertFalse(page.evaluate('!!PalataQuestPrototype.snapshot().flags.markerA'))
+        page.locator('[data-choice="sign"]').click()
+        page.reload();page.wait_for_function('!!window.PalataQuestPrototype')
+        self.assertEqual(page.evaluate('PalataQuestPrototype.snapshot().interactions.markerA'),1)
+        page.locator('#nav-map-btn').click();room('A')
+        page.locator('[data-action="markerA"]').click()
+        page.locator('[data-choice="A"]').click();page.locator('[data-choice="trace"]').click()
+        for kind, value in [('room','B'),('action','markerB'),('room','procedure'),('action','record'),('room','B'),('room','C'),('room','doctor'),('action','observation'),('room','stairs'),('action','stairsPatient'),('room','C'),('room','B'),('room','A'),('room','ward404')]:
             (room if kind == 'room' else action)(value)
         page.locator('#map-modal .btn-close-map').click()
         page.locator('.room-trip-switch').click()
@@ -80,7 +96,11 @@ class QuestPrototypeBrowserTest(unittest.TestCase):
         page.locator('.quest-actions').get_by_role('button',name='Вийти з Трипу',exact=True).click()
         self.assertEqual(page.evaluate('PalataQuestPrototype.snapshot().mode'),'patient')
         page.locator('.quest-actions').get_by_role('button',name='Увійти в Трип',exact=True).click()
-        room('A'); action('unlockB'); room('B'); action('unlockC'); room('C'); room('doctor')
+        room('A'); action('unlockB');
+        page.get_by_role('button',name='Повернутися до карти',exact=True).click()
+        self.assertEqual(page.locator('[data-section="B"]').count(),0)
+        self.assertEqual(page.locator('[data-section="C"]').count(),1)
+        room('B'); action('unlockC'); room('C'); room('doctor')
         # Deterministic test fixture: retain real combat entry/victory/reward code,
         # but remove combat randomness and waiting from this progression test.
         page.evaluate('stats.baseDamage=10000;recalculateEquipmentStats();Math.random=()=>0.5;updateUI()')
