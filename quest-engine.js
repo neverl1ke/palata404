@@ -38,5 +38,25 @@ else if(id.startsWith('boss:')){s.battle=id.slice(5);message='Рейд розп�
 else if(id==='collect'){s.materials+=s.collectorAt?Math.min(5,Math.floor((now-s.collectorAt)/60000)):1;s.collectorAt=now;message='Матеріали зібрано. Перемикання режиму не прискорює збір.';}
 f.route=!!(s.visited.A&&s.visited.B&&s.visited.C&&f.stairsSeen&&f.markerA&&f.markerB);s.log.push(message);s.log=s.log.slice(-12);return {ok:true,message};}
 function story(s){const f=s.flags;return [{id:'С1',title:'Власний маршрут',done:f.route,detail:`Пацієнт: секції ${['A','B','C'].filter(x=>s.visited[x]).join(', ')}; позначки ${Number(!!f.markerA)+Number(!!f.markerB)}/2; сходи ${f.stairsSeen?'оглянуто':'не оглянуто'}.`},{id:'С2',title:'Той самий коридор',done:f.unlockB,detail:`Підказка: ${f.route?'знайдена':'потрібен С1'}. Дія у Трипі A: ${f.unlockB?'виконана':'не виконана'}.`},{id:'С3',title:'Неповна нічна зміна',done:f.unlockC,detail:`Підказки Пацієнта: процедурна ${f.record?'✓':'—'}, лікар ${f.observation?'✓':'—'}. Перевірка в Трипі B: ${f.unlockC?'✓':'—'}.`},{id:'С4',title:'Право на вихід',done:f.exit,detail:`Перша перемога над лікарем: ${f.doctorWon?'✓':'—'}. Окремо перевірити двері сходів у Трипі C.`},{id:'С5',title:'Нижче десятого',done:false,detail:f.exit?'Доступ до сходів є. 9-й поверх у розробці; предмети не витрачаються.':'Спочатку відкрийте сходи. 9-й поверх у розробці.'}];}
-return {rooms,pins,jobs,initial,restore,accessible,destinations,actions,apply,ready,story};
+// Progress-aware directions are advisory; they never mutate position or bypass locks.
+function guide(s,id){
+ const f=s.flags;let room,mode='patient',text;
+ const target=(r,m,t)=>({room:r,mode:m,text:t});
+ const route=()=>!f.markerA?target('A','patient','Натисніть «Записати позначку коридору A».'):!f.markerB?target('B','patient','Натисніть «Записати номер переходу A/B».'):target('stairs','patient','Огляньте сходи. Шлях через коридори A → B → C.');
+ const openB=()=>!f.route?route():target('A','trip','Натисніть «Зіставити дві позначки й відкрити B». Це одна дія: автоматично порівнює вже записані у Пацієнті позначки A та A/B.');
+ const openC=()=>!f.unlockB?openB():!f.record?target('procedure','patient','Прочитайте пошкоджений запис зміни.'):!f.observation?target('doctor','patient','Запитайте про час обходу.'):target('B','trip','Натисніть «Перевірити суперечність на межі B/C». Доручення персоналу не потрібні.');
+ const exit=()=>!f.unlockC?openC():!f.doctorWon?target('doctor','trip','Переможіть лікаря в рейді. Рейд можна повторювати.'):target('stairs','trip','Натисніть «Зіставити маршрут і перевірити двері».');
+ let g;
+ if(id==='С1')g=f.route?target('stairs','patient','Маршрут уже записано. Переходьте до С2.'):route();
+ else if(id==='С2'||id==='lockB')g=f.unlockB?target('B','trip','Секцію B вже відкрито.'):openB();
+ else if(id==='С3'||id==='lockC')g=f.unlockC?target('C','trip','Секцію C вже відкрито.'):openC();
+ else if(id==='С4'||id==='С5')g=f.exit?target('stairs','trip','Сходи відкриті. 9-й поверх ще в розробці.'):exit();
+ else if(jobs[id]){const j=jobs[id],p=s.jobs[id];if(!p?.active||ready(s,id))g=target(j.giver,'patient',p?.active?'Здайте виконане доручення: +2 тестові матеріали.':p?.count&&!j.repeat?'Разове доручення вже завершено.':'Візьміть доручення «'+j.title+'».');else{const step=j.steps.find(x=>!p.done[x]);const targets={tag:['procedure','Звірте контейнер і заберіть бирку.'],copies:['procedure','Зіставте копії записів.'],linen:['linen','Візьміть позначену білизну.'],deliver:['ward406','Передайте білизну у 406.'],bell407:['ward407','Перевірте кнопку виклику 407.'],bell408:['ward408','Перевірте кнопку виклику 408.'],log:['doctor','Зіставте час у журналі.']};g=step==='difference'?s.mode==='trip'&&s.trip<=p.startTrip?target('ward404','patient','Вийдіть із Трипу, потім увійдіть знову для нового спостереження.'):target('A','trip','Натисніть «Записати відмінність у Трипі» під час нового входу.'):target(targets[step][0],'patient',targets[step][1]);}}
+ else g=target(id,s.mode,'Оберіть точку кімнати. Доступні дії показані поруч із планом.');
+ if(s.mode!==g.mode)return {...g,room:'ward404',text:'Спочатку поверніться до палати 404 і '+(g.mode==='trip'?'увійдіть у Трип':'вийдіть із Трипу')+'. Потім: '+rooms[g.room][1]+'. '+g.text};
+ return g;
+}
+function directions(s,target){if(s.room===target)return 'Ви вже на місці.';const from=rooms[s.room][0],to=rooms[target][0];const path=[];if(s.room!==from)path.push(from);let c=from.charCodeAt(0);while(c!==to.charCodeAt(0)){c+=c<to.charCodeAt(0)?1:-1;path.push(String.fromCharCode(c));}if(target!==to)path.push(target);return 'Шлях: '+path.map(x=>rooms[x][1]).join(' → ')+'. Натискайте точки по черзі.';}
+
+return {guide,directions,rooms,pins,jobs,initial,restore,accessible,destinations,actions,apply,ready,story};
 });
