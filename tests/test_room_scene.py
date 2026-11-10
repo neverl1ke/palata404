@@ -44,27 +44,32 @@ class RoomSceneTests(unittest.TestCase):
         avatar = self.page.locator('.room-shadow-cast canvas').evaluate('e=>e.toDataURL()')
         values = self.page.locator('.hospital-hud').evaluate('''e=>{
             const a=e.getAnimations().find(a=>a.animationName==='room-light-supply');
-            const values=[];for(let t=0;t<101000;t+=100){a.currentTime=t;values.push(Number(getComputedStyle(e).getPropertyValue('--room-light')))}
+            const values=[];for(let t=0;t<61000;t+=100){a.currentTime=t;values.push(Number(getComputedStyle(e).getPropertyValue('--room-light')))}
             a.currentTime=0;return values;
         }''')
-        self.assertGreaterEqual(min(values), .79)
-        self.assertLess(sum(v < .999 for v in values)/len(values), .04)
-        self.seek('room-light-supply', 26744.8)
+        self.assertGreaterEqual(min(values), .68)
+        self.assertLess(sum(v < .999 for v in values)/len(values), .12)
+        self.seek('room-light-supply', 3904)
         dim = self.page.screenshot()
         for rect in [(897,291,941,335), (1071,178,1100,220), (828,105,848,119)]:
             ratio = sum(self.rgb(dim, rect))/sum(self.rgb(bright, rect))
             self.assertGreater(ratio, .77)
             self.assertLess(ratio, .98)
         bulb = self.rgb(dim, (828,105,848,119))
-        self.assertGreater(bulb[0]-bulb[2], 25)  # Warm emitter, no gray semicircle.
+        self.assertGreater(bulb[0]-bulb[2], 18)  # Warm emitter, no gray semicircle.
         self.assertGreater(sum(bulb)/3, 120)
         self.assertEqual(self.page.locator('.room-shadow-cast canvas').evaluate('e=>e.toDataURL()'), avatar)
-        for time in [0, 7250]:  # Includes the peak of the glass contact trace.
-            self.seek('room-print-evaporate', time)
-            outside = self.rgb(self.page.screenshot(), (709,238,737,260))
-            self.assertLess(sum(outside)/3, 80)
-            self.assertLess(max(outside)-min(outside), 24)
-            self.assertGreaterEqual(outside[0], outside[2])  # Warm room reflection; no blue cast.
+        self.seek('room-light-supply', 0)
+        self.seek('room-night-cycle', 0)
+        dusk = sum(self.rgb(self.page.screenshot(), (709,238,737,260)))/3
+        self.seek('room-night-cycle', 36000)
+        outside = self.rgb(self.page.screenshot(), (709,238,737,260))
+        self.assertLess(sum(outside)/3, dusk*.55)
+        self.assertGreater(sum(outside)/3, 30)
+        self.assertLess(max(outside)-min(outside), 28)
+        self.seek('room-night-cycle', 72000)
+        returned = sum(self.rgb(self.page.screenshot(), (709,238,737,260)))/3
+        self.assertAlmostEqual(returned, dusk, delta=3)
         light = self.page.locator('.room-distant-left-low')
         self.seek('room-distant-switch', 0)
         before = float(light.evaluate('e=>getComputedStyle(e).opacity'))
@@ -116,9 +121,10 @@ class RoomSceneTests(unittest.TestCase):
             if modal == '#custom-modal':
                 self.assertEqual(self.page.locator('.room-cabinet-door-back').count(), 2)
                 self.assertEqual(self.page.locator('.room-handle-grip').count(), 0)
-                self.assertIn('original-handle-left.svg', self.page.locator('.room-handle-face').first.get_attribute('src'))
+                self.assertIn('original-handle-left.svg', self.page.locator('.room-cabinet-handle .room-handle-face').first.get_attribute('src'))
                 self.assertIn('cabinet-inner-right.webp', self.page.locator('.room-cabinet-leaf-left .room-cabinet-door-back').evaluate('e=>getComputedStyle(e).backgroundImage'))
-                self.assertAlmostEqual(float(self.page.locator('.room-cabinet-leaf-left').evaluate('e=>parseFloat(getComputedStyle(e,"::after").width)')), 4, delta=.02)
+                self.assertEqual(self.page.locator('.room-cabinet-metal-return').count(), 8)
+                self.assertEqual(self.page.locator('.room-cabinet-leaf-right').evaluate('e=>getComputedStyle(e,"::after").content'), 'none')
                 self.assertGreater(self.page.locator('.room-handle-face').first.evaluate('e=>new DOMMatrix(getComputedStyle(e).transform).m43'), 0)
                 self.assertNotEqual(self.page.locator('.room-cabinet-leaf-left').evaluate('e=>getComputedStyle(e).transform'), 'none')
                 self.assertFalse(self.page.evaluate('PalataRoom.openDoor()'))
@@ -134,6 +140,59 @@ class RoomSceneTests(unittest.TestCase):
             self.page.wait_for_function('s=>document.querySelector(s).dataset.state==="closed"', arg=assembly)
             self.assertFalse(self.page.locator(assembly).evaluate('e=>e.classList.contains("is-revealed")'))
             self.assertEqual(self.page.evaluate('JSON.stringify({inventory,paperDollState})'), before)
+
+    def test_hover_opens_a_small_gap_and_presses_only_the_door_lever(self):
+        self.freeze()
+        for action, assembly, modal in [('.room-door-action','.room-door-assembly','#map-modal'),('.room-cabinet-action','.room-cabinet-assembly','#custom-modal')]:
+            self.page.locator(action).hover(); self.page.wait_for_timeout(720)
+            self.assertEqual(self.page.locator(assembly).get_attribute('data-state'), 'closed')
+            self.assertTrue(self.page.locator(assembly).evaluate('e=>e.classList.contains("is-peeking")'))
+            self.assertTrue(self.page.locator(modal).is_hidden())
+            self.page.mouse.move(700,730); self.page.wait_for_timeout(1350)
+            self.assertFalse(self.page.locator(assembly).evaluate('e=>e.classList.contains("is-revealed")'))
+        self.page.locator('.room-door-action').hover(); self.page.wait_for_timeout(720)
+        self.assertGreater(self.page.locator('.room-door-handle').evaluate('e=>new DOMMatrix(getComputedStyle(e).transform).b'), .1)
+        self.page.locator('.room-door-action').click();self.page.locator('#map-modal').wait_for(state='visible')
+        self.assertTrue(self.page.locator('.room-door-assembly').evaluate('e=>e.classList.contains("is-handle-pressed")'))
+        self.page.evaluate('toggleMapModal(false)')
+        self.page.wait_for_function('document.querySelector(".room-door-assembly").dataset.state==="closed"')
+        self.page.wait_for_timeout(200)
+        self.assertAlmostEqual(self.page.locator('.room-door-handle').evaluate('e=>new DOMMatrix(getComputedStyle(e).transform).b'),0,delta=.001)
+        for selector in ['.room-corridor-scene','.room-corridor-sight']:
+            self.assertIn('room-corridor.webp',self.page.locator(selector).evaluate('e=>getComputedStyle(e).backgroundImage'))
+            self.assertIn('blur(',self.page.locator(selector).evaluate('e=>getComputedStyle(e).filter'))
+
+    def test_contacts_visit_all_glass_and_steps_appear_in_order(self):
+        self.freeze()
+        for surface,count in [(0,12),(1,12),(2,6)]:
+            positions=self.page.evaluate('([surface,count])=>Array.from({length:count},()=>PalataAtmosphere.showContact(surface).slot)',[surface,count])
+            self.assertEqual(len(set(positions)),count)
+        self.assertEqual(self.page.locator('.room-window-left .room-glass-mark').count(),12)
+        self.assertEqual(self.page.locator('.room-window-right .room-glass-mark').count(),12)
+        self.assertEqual(self.page.locator('.room-door-glass .room-glass-mark').count(),6)
+        self.seek('room-wet-step',8500)
+        steps=self.page.locator('.room-floor-print')
+        self.assertGreater(float(steps.first.evaluate('e=>getComputedStyle(e).opacity')),.2)
+        self.assertEqual(float(steps.last.evaluate('e=>getComputedStyle(e).opacity')),0)
+        self.seek('room-wet-step',12500)
+        self.assertGreater(float(steps.last.evaluate('e=>getComputedStyle(e).opacity')),.2)
+        self.seek('room-wet-step',35000)
+        self.assertEqual(float(steps.first.evaluate('e=>getComputedStyle(e).opacity')),0)
+
+    def test_metal_returns_match_the_registered_door_contours(self):
+        returns=self.page.locator('.room-cabinet-leaf-right .room-cabinet-metal-return')
+        self.assertEqual(returns.count(),4)
+        # The free edge runs from y9 to y453, rather than the full 465px rectangle.
+        edge=returns.nth(3).evaluate('e=>{const m=new DOMMatrix(getComputedStyle(e).transform);const l=parseFloat(e.style.width);return {start:m.m42,end:m.m42+m.m12*l,depth:parseFloat(e.style.height)}}')
+        self.assertAlmostEqual(edge['start'],453,delta=.6)
+        self.assertAlmostEqual(edge['end'],9,delta=.6)
+        self.assertAlmostEqual(edge['depth'],4,delta=.02)
+        self.assertEqual(self.page.locator('.room-handle-side').count(),156)
+        self.assertEqual(self.page.locator('.room-cabinet-handle').first.evaluate('e=>getComputedStyle(e).transform'),'none')
+        for name,time in [('room-curtain-draft',9000),('room-robe-draft',12500),('room-bag-draft',10000)]:
+            self.seek(name,time)
+        for selector in ['.room-moving-curtain','.room-moving-robe','.room-moving-bag']:
+            self.assertNotEqual(self.page.locator(selector).evaluate('e=>getComputedStyle(e).transform'),'none')
 
     def test_trip_is_real_and_entrances_honor_reduced_motion(self):
         self.page.emulate_media(reduced_motion='reduce')

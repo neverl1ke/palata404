@@ -9,18 +9,23 @@
     1620
   ],
   "provenance": {
-    "wardRoom": "Artist reconstruction based on supplied room reference; original interior is preserved by rendering subsequent exterior edits only in the two glass panes.",
+    "wardRoom": "Original room base is preserved. Local restored clean plates sit underneath the original fabric cutouts; original dusk glass pixels receive only runtime exposure changes.",
     "patientCard": "Artist reconstruction of the supplied patient-card reference with live game text and current character portrait layered above.",
     "innerDoors": "Separate generated matte steel inner-door textures; exterior door imagery is preserved.",
     "approvedAvatarAssets": "Existing original registered PNGs and AvatarCore renderer, unchanged.",
-    "approvedEmblemAndSeal": "Existing assets/ui/wardrobe resources, unchanged."
+    "approvedEmblemAndSeal": "Existing assets/ui/wardrobe resources, unchanged.",
+    "ambientTextures": "Generated isolated glass residues and wet footprint decals; original room pixels are retained for all fabric and handle front textures."
   },
   "rendering": {
-    "outside": "Dusk to night only, muted warm charcoal/taupe grade and weak indoor reflections; the same grade applies to contact traces.",
-    "lamp": "Two brief voltage dips per 101-second cycle; minimum 0.80 supply, remains lit.",
+    "outside": "Original approved gray dusk view cycles smoothly to night and back in 72 seconds. Exterior fixture is off camera on the tenth floor; no lamp/post is visible.",
+    "lamp": "Three brief warm voltage dips per 61 seconds, first at about 4 seconds; minimum supply 0.69, never off.",
     "groundContact": "Derived from the actual composed avatar alpha and heel-to-toe lower contour.",
-    "cabinet": "Separate outer/inner faces, 4px metal returns; original curved pull-handle pixels at native source positions are raised as separate 3D texture layers.",
-    "state": "Existing game save/stat/loadout APIs; Tasks is a read-only placeholder."
+    "cabinet": "Actual registered trapezoid metal returns, front and separate inner faces; original handle pixels on solid extruded contours, no pull-handle bending.",
+    "state": "Existing game save/stat/loadout APIs; Tasks is a read-only placeholder.",
+    "door": "Original lever depresses on hover, stays down through opening/closing, returns after the door closes. Same soft-focus corridor behind glass and opening.",
+    "contacts": "Independent grease/breath textures visit nonrepeating positions across both window panes and door glass.",
+    "floor": "Six damp bare footprints appear successively along a perspective path, then evaporate.",
+    "fabrics": "Original curtain, robe and bag pixels sway mildly over localized restored clean plates."
   },
   "files": [
     {
@@ -37,6 +42,46 @@
       "path": "control-heading-patch.svg",
       "bytes": 760916,
       "sha256": "0d4152d3a5d8a7b05bcab7edcd036c5e12ee4f71baa1a55a66aba0be9a38b880"
+    },
+    {
+      "path": "dusk-window-left.webp",
+      "bytes": 20562,
+      "sha256": "30a9ae0bf73cf268df463732be1b9063acf5659ca6dec819ee72c4af0d18d3fa"
+    },
+    {
+      "path": "dusk-window-right.webp",
+      "bytes": 18996,
+      "sha256": "86a02fd014c60de7483565915296a163b9a421248d04a9abada218fce5c70513"
+    },
+    {
+      "path": "glass-mark-0.webp",
+      "bytes": 76370,
+      "sha256": "80fa853695e4da9214b0116611461ea5a84ff2a0b5b56c839ad5af0471a2d6f7"
+    },
+    {
+      "path": "glass-mark-1.webp",
+      "bytes": 78726,
+      "sha256": "6a8b51b82463d64bb41a86ad01487a37f1f89f3ad84a7dd279d136ac71417b49"
+    },
+    {
+      "path": "glass-mark-2.webp",
+      "bytes": 64174,
+      "sha256": "d6bfb3990d5555a8643bc498aac3bbd1eb7619c239aea1aec85c1242d7b05022"
+    },
+    {
+      "path": "glass-mark-3.webp",
+      "bytes": 69620,
+      "sha256": "23df70bfa7fd7eb6ae66a754573b9a1ed7fe5c4a142705d6a2a176d0cf100c83"
+    },
+    {
+      "path": "glass-mark-4.webp",
+      "bytes": 79272,
+      "sha256": "dba5625c24c83ea22a9baeed7dfff927f4e3180109e5109b65a03402fc1caca4"
+    },
+    {
+      "path": "glass-mark-5.webp",
+      "bytes": 59644,
+      "sha256": "de7217c1623c671e420a2587f6214f3e0c3f2095faa96076f73c706e674e0330"
     },
     {
       "path": "hud-paper-composition.webp",
@@ -69,6 +114,11 @@
       "sha256": "0ccfc6a020f4c7ef72c547921008a67f8966376a29d12acfb43c8abb40b4fed5"
     },
     {
+      "path": "original-door-lever.svg",
+      "bytes": 2021,
+      "sha256": "9cd4e37c4355bd74d2ae6de710a88314c4e3430912c6119c2c51b289fa45a660"
+    },
+    {
       "path": "original-handle-left.svg",
       "bytes": 2730,
       "sha256": "3653383e2e7dcc73c06e67a54a70fc9882d851b9669f4b60014be5c13423601c"
@@ -84,19 +134,29 @@
       "sha256": "6a0125732f236967190d0792126f8933d122baca9c99836a7705bac87140b2b8"
     },
     {
+      "path": "room-bag.svg",
+      "bytes": 27757,
+      "sha256": "0063d88e849d8faf46ca3913c33f7990c620766dcc1bf84d17b7287021607b52"
+    },
+    {
       "path": "room-cabinet-interior.webp",
       "bytes": 245466,
       "sha256": "b2e02fe55f45918797613db592508e60aa0c3beb9f47763e8bda4742370a0dec"
     },
     {
       "path": "room-cabinet-left.svg",
-      "bytes": 595499,
-      "sha256": "41a1527855c4089fc4302af8b301d0b122afd1e78e6004fe5d0fdfc4e770d374"
+      "bytes": 595725,
+      "sha256": "ee45963be6106833594c48d4767eb18cae0dc81363325952ffe427736980cdb1"
     },
     {
       "path": "room-cabinet-right.svg",
-      "bytes": 595499,
-      "sha256": "a5b32a1a0829c6cc740772c781d7889914196d2bd000ed010e79527161859ef7"
+      "bytes": 595725,
+      "sha256": "876b6a5f402a35489be27737f5d4b580630cdcc6a3bf525321e2ca42c315f49f"
+    },
+    {
+      "path": "room-cloth-clear.svg",
+      "bytes": 14925,
+      "sha256": "5b502e9e41bbf803905572397e2f1ac310607a1163efa374c85f09a9c25b8662"
     },
     {
       "path": "room-corridor.webp",
@@ -104,14 +164,29 @@
       "sha256": "56aeeba0f28d525f88fc5872ce148a16e5772f68181baa049921e4d80b675385"
     },
     {
+      "path": "room-curtain-clear.svg",
+      "bytes": 16110,
+      "sha256": "c52d2dac0a0f50305184f3bffa62178e960e201089144b27d1d39037b4e5d83d"
+    },
+    {
+      "path": "room-curtain.svg",
+      "bytes": 14753,
+      "sha256": "b421e91a9aaeb38eb081e8b122ae57116510463ae3ddead0cec85a2395a0009c"
+    },
+    {
       "path": "room-door-leaf.svg",
-      "bytes": 595500,
-      "sha256": "eaec3313629bd103e7cabf385c94a26e1f3f22e05de1e989c058cb15bed14f2d"
+      "bytes": 595726,
+      "sha256": "7e0c37f5646a97561211b3fd3f7999991e2e2f4eb0ab3b02f0e82702c5cfde73"
     },
     {
       "path": "room-exposure-mask.svg",
       "bytes": 372,
       "sha256": "212d9c77cb36a5c2737fdbdf06c477ff49c24e05ed35ab56cfea2ba437e7e561"
+    },
+    {
+      "path": "room-robe.svg",
+      "bytes": 27775,
+      "sha256": "4369c62a89c9f0f038fe1d55ac6942d4ca7f8d0aa857fc4592b1f457086470e6"
     },
     {
       "path": "room-switch.svg",
@@ -122,6 +197,26 @@
       "path": "warm-ward-room.webp",
       "bytes": 446438,
       "sha256": "ee669913781a68937942b49ae7212de64741af5f4e38e3ed17711218f8284326"
+    },
+    {
+      "path": "wet-foot-left.webp",
+      "bytes": 249972,
+      "sha256": "3119bff60cedf9ac0ab5f4ee37a8882120552b02d1fd1c016b04b72f775be376"
+    },
+    {
+      "path": "wet-foot-right.webp",
+      "bytes": 256522,
+      "sha256": "ecf81ee2190f8a5583d267ccc7ea381520139acffed0fa7295acc5760eb3d4b8"
+    },
+    {
+      "path": "window-left-unlit.webp",
+      "bytes": 800,
+      "sha256": "7197b239061c7cda9b0c4b03b2d638f9f99b4b6f8cc8bee8f7b8f5986daca5f0"
+    },
+    {
+      "path": "window-right-unlit.webp",
+      "bytes": 1190,
+      "sha256": "56de82120366d8f4866e58f05db34a6fc6c39d897441485dbc8a2ba9d4888d50"
     }
   ],
   "originalHandleCrops": {

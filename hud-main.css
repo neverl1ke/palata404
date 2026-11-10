@@ -14,7 +14,7 @@ body .hospital-hud .hud-tabs .hud-menu-tab{position:relative!important;display:f
 .hospital-hud .hud-header-actions .nav-icon-btn{background:none;border:0;box-shadow:none;min-width:0;min-height:0;width:33%;height:75%;padding:.2cqw}
 .hospital-hud .hud-header-actions img{width:2cqw;height:2cqw;filter:sepia(.7)}
 .hospital-hud .hud-main{position:absolute;inset:0;height:100%;margin:0;width:100%;display:block;pointer-events:none}
-.hospital-hud .hud-patient-board{position:absolute;left:3.8%;top:7.4%;height:90%;width:calc(90cqh * 971 / 1620);display:block;padding:0;margin:0;overflow:visible;border:0;border-radius:0;container-type:inline-size;isolation:isolate;box-shadow:none;background:url('hud-art/hud-reference-card.webp') center/100% 100% no-repeat;pointer-events:auto;color:#2b221b}
+.hospital-hud .hud-patient-board{position:absolute;left:.6%;top:7.4%;height:90%;width:calc(90cqh * 971 / 1620);display:block;padding:0;margin:0;overflow:visible;border:0;border-radius:0;container-type:inline-size;isolation:isolate;box-shadow:none;background:url('hud-art/hud-reference-card.webp') center/100% 100% no-repeat;pointer-events:auto;color:#2b221b}
 .hud-patient-board .hud-field{position:absolute;left:calc(var(--x) / 971 * 100%);top:calc(var(--y) / 1620 * 100%);width:calc(var(--w) / 971 * 100%);font-size:calc(var(--font) / 971 * 100cqw);font-weight:400;line-height:1.06;text-align:left;margin:0;padding:0;border:0;border-radius:0;background:none;box-shadow:none;color:#2b221b;text-shadow:none;white-space:nowrap;box-sizing:border-box}
 .hud-patient-board .hud-centered{text-align:center}
 .hud-patient-board .hud-institution-title{line-height:1.08}

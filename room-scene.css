@@ -1,8 +1,10 @@
 /* One light supply controls the room exposure, actor, emitter and projected shadows. */
 @property --room-light{syntax:'<number>';inherits:true;initial-value:1}
-.hospital-hud{--room-light:1;animation:room-light-supply 101s linear infinite}
-/* Two brief voltage dips, separated by long steady intervals. The bulb stays lit. */
-@keyframes room-light-supply{0%,26%,27.35%,73%,74.1%,100%{--room-light:1}26.22%{--room-light:.91}26.48%{--room-light:.80}26.73%{--room-light:.95}27%{--room-light:.85}73.28%{--room-light:.88}73.52%{--room-light:.82}73.8%{--room-light:.96}}
+@property --room-night{syntax:'<number>';inherits:true;initial-value:0}
+.hospital-hud{--room-light:1;--room-night:0;animation:room-light-supply 61s linear infinite,room-night-cycle 72s ease-in-out infinite}
+/* Visible short voltage dips; warm lamp, room, actor and shadows stay coupled. */
+@keyframes room-light-supply{0%,5.5%,8.3%,37.6%,40.5%,76.3%,79.6%,100%{--room-light:1}6%{--room-light:.92}6.4%{--room-light:.69}6.9%{--room-light:.93}7.4%{--room-light:.78}38.4%{--room-light:.82}39.1%{--room-light:.70}39.7%{--room-light:.94}77.3%{--room-light:.76}77.9%{--room-light:.90}78.5%{--room-light:.70}}
+@keyframes room-night-cycle{0%,8%,100%{--room-night:0}43%,57%{--room-night:1}}
 .hospital-hud .hud-topbar{z-index:20}
 .hospital-hud .hud-patient-board,.hospital-hud .hud-location-area,.hospital-hud .hud-procedures{z-index:10}
 .hospital-hud .hud-character-stage{position:absolute;display:block;z-index:2!important;pointer-events:none}
@@ -16,31 +18,58 @@
 .room-shadow-contact{filter:brightness(0) blur(1.1px);opacity:calc(.46 + var(--room-light)*.10)}
 .room-lamp-glow{position:absolute;left:43.4%;top:4.2%;width:13.2%;height:23%;background:radial-gradient(ellipse at 50% 28%,#ffd89168,transparent 65%);mix-blend-mode:screen;opacity:calc(var(--room-light)*.85)}
 .room-light-veil{position:absolute;inset:0;z-index:1;background:#17140f;opacity:calc(.02 + (1 - var(--room-light))*.68);pointer-events:none;mask-image:url('hud-art/room-exposure-mask.svg');mask-size:100% 100%;mask-repeat:no-repeat}
-.room-window-glass{position:absolute;overflow:hidden;isolation:isolate;clip-path:polygon(0 0,100% 1%,98% 100%,0 100%)}
-.room-window-left{left:41.7464%;top:23.5919%;width:7.177%;height:30.0744%;background:#28231d url('hud-art/night-window-left.webp') center/100% 100% no-repeat}
-.room-window-right{left:50.7177%;top:23.5919%;width:7.1172%;height:30.0744%;background:#28231d url('hud-art/night-window-right.webp') center/100% 100% no-repeat}
-.room-window-glass{animation:room-outside-night 137s ease-in-out infinite}
-@keyframes room-outside-night{0%,100%{filter:grayscale(1) sepia(.95) saturate(.8) brightness(.78)}45%,68%{filter:grayscale(1) sepia(.95) saturate(.8) brightness(.56)}}
-.room-window-glass::after{content:'';position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(112deg,#d8aa6f21,transparent 38%,#c2986222),radial-gradient(ellipse at -20% 65%,#cb9c5730,transparent 70%);opacity:calc(.26 + var(--room-light)*.14);mix-blend-mode:screen}
-.room-distant-light{position:absolute;pointer-events:none;z-index:1;background:#111722;opacity:0;animation:room-distant-switch 67s linear infinite;clip-path:polygon(3% 1%,99% 0,100% 98%,0 100%)}
-.room-distant-light::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent 46%,#17202b 47% 54%,transparent 55%),linear-gradient(0deg,transparent 51%,#17202b 52% 59%,transparent 60%);opacity:.8}
-.room-distant-left-low{left:65%;top:85.8%;width:20%;height:13%;animation-delay:-13s}
-.room-distant-right-high{left:53.8%;top:43.8%;width:30%;height:14.2%;animation-duration:79s;animation-delay:-41s}
-.room-distant-left-high{left:65%;top:43.8%;width:27%;height:14.2%;background:repeating-linear-gradient(45deg,transparent 0 8px,#27303e66 8px 9px),repeating-linear-gradient(-45deg,transparent 0 8px,#27303e66 8px 9px),radial-gradient(ellipse at 50% 75%,#ce934d,#8c653e);mix-blend-mode:screen;animation:room-distant-wake 89s linear infinite;animation-delay:-27s}
-@keyframes room-distant-wake{0%,35%,69%,100%{opacity:0}35.8%{opacity:.32}36.2%{opacity:.20}36.7%,68.5%{opacity:.35}}
+.room-window-glass{position:absolute;overflow:hidden;isolation:isolate;background:#29271f;clip-path:inset(0)}
+.room-window-left{left:41.7464%;top:23.2731%;width:7.177%;height:30.4995%}
+.room-window-right{left:50.7177%;top:23.2731%;width:7.1172%;height:30.4995%}
+.room-window-scene{position:absolute;inset:0;background-position:center;background-size:100% 100%;filter:sepia(.23) saturate(.66) brightness(calc(.96 - var(--room-night)*.62))}
+.room-window-left .room-window-scene{background-image:url('hud-art/dusk-window-left.webp')}
+.room-window-right .room-window-scene{background-image:url('hud-art/dusk-window-right.webp')}
+.room-window-glass::after{content:'';position:absolute;inset:0;z-index:4;pointer-events:none;background:linear-gradient(112deg,#d8aa6f18,transparent 38%,#c2986222);opacity:calc(.20 + var(--room-light)*.14);mix-blend-mode:screen}
+.room-outside-bounce{position:absolute;left:-30%;top:-25%;width:160%;height:70%;background:radial-gradient(ellipse at 50% 0,#ccc5b348,transparent 70%);mix-blend-mode:screen;opacity:calc(.08 + var(--room-night)*.14);pointer-events:none}
+.room-distant-light{position:absolute;pointer-events:none;z-index:1;background-position:center;background-size:100% 100%;filter:brightness(calc(.28 - var(--room-night)*.12)) saturate(.5);opacity:0;animation:room-distant-switch 67s linear infinite;clip-path:polygon(3% 1%,99% 0,100% 98%,0 100%)}
+.room-distant-left-low{left:65%;top:85.8%;width:20%;height:13%;background-image:url('hud-art/window-left-unlit.webp');animation-delay:-13s}
+.room-distant-right-high{left:53.8%;top:43.8%;width:30%;height:14.2%;background-image:url('hud-art/window-right-unlit.webp');animation-duration:79s;animation-delay:-41s}
 @keyframes room-distant-switch{0%,18%,19.3%,58.7%,60.2%,100%{opacity:0}18.6%{opacity:.9}20%,58%{opacity:.97}59.3%{opacity:.72}}
-.room-glass-print{position:absolute;inset:0;background-position:center;background-size:100% 100%;background-repeat:no-repeat;opacity:0;pointer-events:none;animation:room-print-evaporate 29s ease-in-out infinite}
-.room-print-window{background-image:url('hud-art/night-window-contact.webp');mask-image:radial-gradient(ellipse 100% 88% at 60% 64%,#000 42%,#000d 65%,transparent 99%)}
-.room-print-door{background-image:url('hud-art/night-door-contact.webp');animation-duration:33s;animation-delay:3s;mask-image:radial-gradient(ellipse 97% 99% at 70% 66%,#000 35%,#000d 65%,transparent 99%)}
-@keyframes room-print-evaporate{0%,17%,48%,100%{opacity:0}25%{opacity:.9}31%{opacity:.85}40%{opacity:.32}}
+.room-glass-mark{position:absolute;z-index:3;height:auto;aspect-ratio:1;object-fit:contain;transform:translate(-50%,-50%) rotate(var(--mark-turn,0deg));opacity:0;mix-blend-mode:screen;filter:brightness(2.1) saturate(.25);pointer-events:none}
+.room-floor-trail{position:absolute;inset:0;pointer-events:none}
+.room-floor-print{position:absolute;width:2.15%;height:5.2%;object-fit:fill;opacity:0;filter:grayscale(1) sepia(.4) brightness(.35);mix-blend-mode:multiply;transform:rotate(-32deg);animation:room-wet-step 48s linear infinite;animation-delay:calc(6s + var(--step)*.95s)}
+.room-floor-print:nth-child(1){left:77.5%;top:89%;width:2.7%;height:6.4%}
+.room-floor-print:nth-child(2){left:75%;top:86%;width:2.5%;height:6%}
+.room-floor-print:nth-child(3){left:75.1%;top:83.5%;width:2.3%;height:5.5%}
+.room-floor-print:nth-child(4){left:72.6%;top:81%;width:2.1%;height:5%}
+.room-floor-print:nth-child(5){left:72.9%;top:78.7%;width:1.9%;height:4.5%}
+.room-floor-print:nth-child(6){left:70.5%;top:76.6%;width:1.7%;height:4.1%}
+@keyframes room-wet-step{0%,43%,100%{opacity:0}1.5%,15%{opacity:.34}31%{opacity:.18}}
+.room-curtain-clear,.room-moving-curtain{position:absolute;left:36.8421%;top:21.7853%;width:5.3828%;height:35.0691%;background:center/100% 100% no-repeat;pointer-events:none}
+.room-curtain-clear{background-image:url('hud-art/room-curtain-clear.svg')}
+.room-moving-curtain{background-image:url('hud-art/room-curtain.svg');filter:drop-shadow(1px 1px 1.8px #30201477);transform-origin:48% 3%;animation:room-curtain-draft 21s ease-in-out infinite}
+.room-cloth-clear,.room-moving-robe,.room-moving-bag{position:absolute;left:91.0287%;top:33.475%;width:8.9713%;height:35.6004%;background:center/100% 100% no-repeat;pointer-events:none}
+.room-cloth-clear{background-image:url('hud-art/room-cloth-clear.svg')}
+.room-moving-robe{background-image:url('hud-art/room-robe.svg');filter:drop-shadow(1px 2px 2.5px #21170b99);transform-origin:50% 2%;animation:room-robe-draft 29s ease-in-out infinite}
+.room-moving-bag{background-image:url('hud-art/room-bag.svg');filter:drop-shadow(1px 2px 2px #21170b88);transform-origin:86% 0;animation:room-bag-draft 24s ease-in-out infinite;animation-delay:-7s}
+@keyframes room-curtain-draft{0%,18%,76%,100%{transform:skewX(0) rotate(0)}36%{transform:skewX(.35deg) rotate(.12deg)}53%{transform:skewX(-.22deg) rotate(-.12deg)}}
+@keyframes room-robe-draft{0%,24%,76%,100%{transform:rotate(0deg)}43%{transform:rotate(.32deg)}61%{transform:rotate(-.20deg)}}
+@keyframes room-bag-draft{0%,23%,83%,100%{transform:rotate(0deg)}42%{transform:rotate(1.1deg)}62%{transform:rotate(-.7deg)}}
 .room-door-assembly{position:absolute;left:66.388%;top:29.543%;width:11.782%;height:46.121%;perspective:850px;isolation:isolate}
-.room-door-portal{position:absolute;inset:0;background:#211b15 url('hud-art/room-corridor.webp') center/cover no-repeat;opacity:0;transition:opacity .13s linear;box-shadow:inset 10px 0 12px #0009,inset -4px 0 7px #0008;filter:brightness(.56)}
+.room-door-portal{position:absolute;inset:0;background:#211b15;overflow:hidden;opacity:0;transition:opacity .13s linear;box-shadow:inset 10px 0 12px #0009,inset -4px 0 7px #0008;}
 .room-door-leaf{position:absolute;inset:0;transform-origin:100% 50%;transform:rotateY(0deg);transform-style:preserve-3d;backface-visibility:hidden;transition:transform .82s cubic-bezier(.25,.05,.25,1);will-change:transform}
 .room-door-leaf>img{display:block;width:100%;height:100%;pointer-events:none}
-.room-door-glass{position:absolute;left:14.2%;top:9.7%;width:70.5%;height:23%;overflow:hidden;isolation:isolate}
+.room-door-glass{position:absolute;left:14.2%;top:9.7%;width:70.5%;height:23%;overflow:hidden;isolation:isolate;background:#473421}
+.room-corridor-scene,.room-corridor-sight{position:absolute;background:#211b15 url('hud-art/room-corridor.webp') center/cover no-repeat;filter:brightness(.62) blur(.32cqw);animation:room-corridor-air 17s ease-in-out infinite;transform:scale(1.045)}
+.room-corridor-scene{inset:0}
+.room-corridor-sight{left:-20.1418%;top:-42.1739%;width:141.844%;height:434.783%}
+.room-door-wire{position:absolute;inset:0;z-index:1;background:repeating-linear-gradient(45deg,transparent 0 calc(.58cqw - .7px),#36342899 calc(.58cqw - .7px) .58cqw),repeating-linear-gradient(-45deg,transparent 0 calc(.58cqw - .7px),#36342899 calc(.58cqw - .7px) .58cqw);box-shadow:inset 0 0 6px #30231880}
+@keyframes room-corridor-air{0%,100%{filter:brightness(.62) blur(.32cqw)}50%{filter:brightness(.56) blur(.42cqw)}}
+.room-door-handle{position:absolute;left:4.5685%;top:50.9217%;width:17.7665%;height:3.4562%;transform-origin:14.2857% 40%;transform:rotateZ(0deg);transform-style:preserve-3d;transition:transform .16s ease}
+.room-door-handle img{position:absolute;inset:0;width:100%;height:100%}
+.room-door-assembly.is-handle-pressed .room-door-handle{transform:rotateZ(17deg)}
+.room-door-assembly.is-peeking:not(.is-open) .room-door-leaf{transform:rotateY(-10deg);transition-duration:.48s;transition-delay:.11s}
+.room-cabinet-assembly.is-peeking:not(.is-open) .room-cabinet-leaf-left{transform:rotateY(-9deg);transition-duration:.52s}
+.room-cabinet-assembly.is-peeking:not(.is-open) .room-cabinet-leaf-right{transform:rotateY(10deg);transition-duration:.55s}
+
 
 .room-door-assembly.is-revealed .room-door-portal{opacity:1}
-.room-door-assembly.is-open .room-door-leaf{transform:rotateY(-79deg)}
+.room-door-assembly.is-open .room-door-leaf{transform:rotateY(-79deg);transition-delay:.12s}
 .room-cabinet-assembly{position:absolute;left:81.22%;top:28.8%;width:8.493%;height:49.628%;--cabinet-depth:.239234cqw;--cabinet-grip-depth:.155502cqw;perspective:38.8756cqw;perspective-origin:50% 48%;isolation:isolate}
 .room-cabinet-portal{position:absolute;inset:0;opacity:0;pointer-events:none}
 .room-cabinet-interior{position:absolute;inset:0;width:100%;height:100%;object-fit:fill;transform-origin:0 0;filter:brightness(.83)}
@@ -51,17 +80,15 @@
 /* Inner textures and outlines are mirrored before the reverse-facing plane. */
 .room-cabinet-leaf-left .room-cabinet-door-back{background-image:url('hud-art/cabinet-inner-right.webp');clip-path:polygon(100% 2.03%,2.9% 0,0 100%,95.7% 97.75%)}
 .room-cabinet-leaf-right .room-cabinet-door-back{background-image:url('hud-art/cabinet-inner-left.webp');clip-path:polygon(100% 1.94%,1.4% 0,0 100%,98.57% 97.42%)}
-.room-cabinet-leaf::after{content:'';position:absolute;left:97.1%;top:0;width:var(--cabinet-depth);height:100%;background:linear-gradient(90deg,#b29a6c,#776040 36%,#493f2f);transform-origin:0 50%;transform:skewX(.26deg) rotateY(90deg);backface-visibility:visible;box-shadow:inset 1px 0 #d2b78399}
-.room-cabinet-leaf-right::after{left:0;transform:skewX(.123deg) rotateY(90deg)}
-.room-cabinet-door-top,.room-cabinet-door-bottom{position:absolute;left:0;top:2.03%;width:97.1%;height:var(--cabinet-depth);transform-origin:0 0;transform:rotateZ(-7.5deg) rotateX(-90deg);background:linear-gradient(#c2a874,#776346);backface-visibility:visible}
-.room-cabinet-door-bottom{left:4.3%;top:97.75%;width:95.7%;transform:rotateZ(8.5deg) rotateX(-90deg);background:#6b593b}
-.room-cabinet-leaf-right .room-cabinet-door-top{top:1.94%;width:98.6%}
-.room-cabinet-leaf-right .room-cabinet-door-bottom{left:1.43%;top:97.42%;width:98.57%;transform:rotateZ(9.8deg) rotateX(-90deg)}
+.room-cabinet-leaf::after{content:none}
+.room-cabinet-metal-return{position:absolute;left:0;top:0;transform-origin:0 0;backface-visibility:visible;pointer-events:none;background:linear-gradient(#b29a6c,#776040 48%,#493f2f)}
 .room-cabinet-handle{position:absolute;top:44.369%;left:72.857%;width:20%;height:13.063%;transform-style:preserve-3d;pointer-events:none}
 .room-cabinet-leaf-right .room-cabinet-handle{top:44.301%;left:1.429%;height:12.473%}
 .room-cabinet-handle img{position:absolute;inset:0;display:block;width:100%;height:100%}
-.room-handle-body{transform:translateZ(calc(var(--cabinet-grip-depth) * .5));filter:brightness(.68)}
-.room-handle-face{transform:translateZ(var(--cabinet-grip-depth))}
+.room-handle-body{transform:translateZ(.01px);filter:brightness(.50)}
+.room-handle-face{transform:translateZ(var(--handle-depth,var(--cabinet-grip-depth)));backface-visibility:hidden}
+.room-handle-shadow{transform:translateZ(.02px) translate(1.3px,1.5px);filter:brightness(0) blur(.7px);opacity:calc(.18 + var(--room-light)*.1)}
+.room-handle-side{position:absolute;left:0;top:0;display:block;transform-origin:0 0;backface-visibility:visible;background:linear-gradient(180deg,#7e7057,#ad9a7a 48%,#75654c);pointer-events:none}
 .room-cabinet-leaf-left{left:.704%;top:2.141%;width:49.296%;height:95.075%;transform-origin:0 50%;transform:rotateY(0deg)}
 .room-cabinet-leaf-right{left:50%;top:.214%;width:49.296%;height:99.572%;transform-origin:100% 50%;transform:rotateY(0deg);transition-duration:1.06s;transition-delay:.08s}
 .room-cabinet-assembly.is-open .room-cabinet-leaf-left{transform:rotateY(-109deg)}
@@ -96,10 +123,10 @@
 .hospital-hud[data-scene-paused="true"] .room-scene *,.hospital-hud[data-scene-paused="true"] .room-light-veil{animation-play-state:paused!important}
 .hospital-hud[data-scene-paused="true"]{animation-play-state:paused!important}
 @media(prefers-reduced-motion:reduce){
- .hospital-hud{animation:none!important;--room-light:1}
+ .hospital-hud{animation:none!important;--room-light:1;--room-night:0}
  .room-scene *,.room-light-veil{animation:none!important}
- .room-glass-print{opacity:0!important}
- .room-door-leaf,.room-door-portal,.room-cabinet-leaf,.room-action-label,.room-switch-art,.room-switch-art::after,.room-task-corner{transition:none}
+ .room-glass-mark,.room-floor-print{opacity:0!important}
+ .room-door-leaf,.room-door-portal,.room-cabinet-leaf,.room-action-label,.room-switch-art,.room-switch-art::after,.room-task-corner,.room-door-handle{transition:none}
 }
 
 /* Same modal manager, keyboard controls and unsaved-wardrobe guard as other screens. */
