@@ -20,7 +20,7 @@
     "outside": "Original approved gray dusk view cycles to night and back in 72 seconds. Selective warm-glass relighting preserves dark window texture, frames and foreground mesh when a distant light switches off. No visible exterior fixture on the tenth floor.",
     "lamp": "Three brief warm voltage dips per 61 seconds, first at about 4 seconds; minimum supply 0.60, never off. Room, avatar and cast shadows share the supply.",
     "groundContact": "Derived from the actual composed avatar alpha and heel-to-toe lower contour.",
-    "cabinet": "Actual registered trapezoid metal returns, front and separate inner faces; original handle pixels on solid extruded contours, no pull-handle bending.",
+    "cabinet": "Actual registered trapezoid metal returns, front and separate inner faces; original handle pixels on solid extruded contours, no pull-handle bending. Interior visibility follows the actual leaf angles, fading out before closed hover cleanup so no dark slit or final flash remains.",
     "state": "Existing game save/stat/loadout APIs; Tasks is a read-only placeholder.",
     "door": "The original door face has a true transparent glass aperture. A fixed sharp corridor is seen through it; only glass motion adds slight transient optical smear. No duplicated backdrop is carried by the door.",
     "contacts": "Ordinary windows have only pale hand residue, with no breath/fog patches or writing. The door pane alone carries localized HELP wiped slowly into a thin warm-tinted condensation patch; droplets run after writing ends. One message at a time; effects fade and pause behind dialogs.",

@@ -73,6 +73,26 @@ new ResizeObserver(trackDoorGlass).observe(doorAssembly);
 reduced.addEventListener('change',trackDoorGlass);
 window.addEventListener('pagehide',()=>{cancelAnimationFrame(glassFrame);glassFrame=0;doorGlass.style.setProperty('--glass-motion','0');});
 window.addEventListener('pageshow',trackDoorGlass);updateDoorGlass(performance.now());
+// Fade the cabinet interior with the actual leaf angles, including interrupted
+// hover reversals. A delayed class change must not leave a dark slit at rest.
+const cabinetAssembly=root.querySelector('.room-cabinet-assembly'),cabinetLeaves=[...cabinetAssembly.querySelectorAll('.room-cabinet-leaf')];
+let cabinetFrame=0;
+function updateCabinetReveal(){
+ const angle=Math.max(...cabinetLeaves.map(leaf=>{const m=new DOMMatrix(getComputedStyle(leaf).transform);return Math.abs(Math.atan2(m.m31,m.m11))*180/Math.PI;}));
+ const progress=Math.min(1,angle/4),opacity=progress*progress*(3-2*progress);
+ cabinetAssembly.style.setProperty('--cabinet-reveal',opacity.toFixed(5));
+ return !reduced.matches&&cabinetLeaves.some(leaf=>leaf.getAnimations().some(a=>a.transitionProperty==='transform'&&a.playState==='running'));
+}
+function trackCabinetReveal(){
+ if(cabinetFrame||document.hidden)return;
+ cabinetFrame=requestAnimationFrame(()=>{cabinetFrame=0;if(updateCabinetReveal())trackCabinetReveal();});
+}
+cabinetLeaves.forEach(leaf=>{for(const event of ['transitionrun','transitionend','transitioncancel'])leaf.addEventListener(event,trackCabinetReveal);});
+new MutationObserver(trackCabinetReveal).observe(cabinetAssembly,{attributes:true,attributeFilter:['class']});
+reduced.addEventListener('change',trackCabinetReveal);
+document.addEventListener('visibilitychange',()=>{if(!document.hidden)trackCabinetReveal();});
+window.addEventListener('pagehide',()=>{cancelAnimationFrame(cabinetFrame);cabinetFrame=0;cabinetAssembly.style.setProperty('--cabinet-reveal','0');});
+window.addEventListener('pageshow',trackCabinetReveal);updateCabinetReveal();
 function refresh(){
  const trip=stats.madness>=100;root.dataset.roomMode=trip?'trip':'patient';button.setAttribute('aria-pressed',String(trip));const label=trip?'Выйти из Трипа':'Войти в Трип';button.setAttribute('aria-label',label);button.querySelector('.room-action-label').textContent=label;button.disabled=isBattleActive;
 }

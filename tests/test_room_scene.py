@@ -296,6 +296,43 @@ class RoomSceneTests(unittest.TestCase):
             self.assertFalse(self.page.locator(assembly).evaluate('e=>e.classList.contains("is-revealed")'))
             self.assertEqual(self.page.evaluate('JSON.stringify({inventory,paperDollState})'), before)
 
+    def test_cabinet_hover_closes_without_a_late_dark_slit_or_flash(self):
+        self.freeze()
+        cabinet=self.page.locator('.room-cabinet-assembly')
+        action=self.page.locator('.room-cabinet-action')
+        portal=self.page.locator('.room-cabinet-portal')
+        action.hover();self.page.wait_for_timeout(800)
+        self.assertGreater(float(portal.evaluate('e=>getComputedStyle(e).opacity')),.99)
+        self.page.mouse.move(700,730)
+        # Seat both leaves while the delayed hover cleanup is still pending.
+        # Finishing the browser transitions avoids racing a wall-clock timeout
+        # on slower CI machines without skipping the actual closing styles.
+        self.page.wait_for_timeout(100)
+        self.page.evaluate('''()=>document.querySelectorAll('.room-cabinet-leaf').forEach(e=>{
+            e.getAnimations().filter(a=>a.transitionProperty==='transform').forEach(a=>a.finish());
+        })''')
+        self.page.evaluate('()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)))')
+        self.assertTrue(cabinet.evaluate('e=>e.classList.contains("is-revealed")'))
+        self.assertLess(float(portal.evaluate('e=>getComputedStyle(e).opacity')),.001,
+                        'The interior must already be gone when both doors meet, before the fallback timer runs')
+        before=self.page.screenshot()
+        self.page.wait_for_function('!document.querySelector(".room-cabinet-assembly").classList.contains("is-revealed")')
+        after=self.page.screenshot()
+        a=Image.open(io.BytesIO(before)).convert('RGB').crop((1350,260,1510,750))
+        b=Image.open(io.BytesIO(after)).convert('RGB').crop((1350,260,1510,750))
+        self.assertLessEqual(sum(max(abs(x-y) for x,y in zip(p,q))>6
+                                 for p,q in zip(self.pixels(a),self.pixels(b))),50,
+                             'Settling the hover state must not change the closed cabinet image')
+        # Reverse an incomplete close, then leave again: exposure still follows
+        # the rendered doors rather than the abandoned hover timeout.
+        action.hover();self.page.wait_for_timeout(300)
+        self.page.mouse.move(700,730);self.page.wait_for_timeout(180)
+        action.hover();self.page.wait_for_timeout(200)
+        self.assertGreater(float(portal.evaluate('e=>getComputedStyle(e).opacity')),.5)
+        self.page.mouse.move(700,730);self.page.wait_for_timeout(1400)
+        self.assertLess(float(portal.evaluate('e=>getComputedStyle(e).opacity')),.001)
+        self.assertFalse(cabinet.evaluate('e=>e.classList.contains("is-revealed")'))
+
     def test_hover_opens_a_small_gap_and_presses_only_the_door_lever(self):
         self.freeze()
         for action, assembly, modal in [('.room-door-action','.room-door-assembly','#map-modal'),('.room-cabinet-action','.room-cabinet-assembly','#custom-modal')]:

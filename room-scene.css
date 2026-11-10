@@ -79,9 +79,8 @@
 .room-door-assembly.is-revealed .room-door-portal{opacity:1}
 .room-door-assembly.is-open .room-door-leaf{transform:rotateY(-79deg);transition-delay:.12s}
 .room-cabinet-assembly{position:absolute;left:81.22%;top:28.8%;width:8.493%;height:49.628%;--cabinet-depth:.239234cqw;--cabinet-grip-depth:.155502cqw;perspective:38.8756cqw;perspective-origin:50% 48%;isolation:isolate}
-.room-cabinet-portal{position:absolute;inset:0;opacity:0;pointer-events:none}
+.room-cabinet-portal{position:absolute;inset:0;opacity:var(--cabinet-reveal,0);pointer-events:none}
 .room-cabinet-interior{position:absolute;inset:0;width:100%;height:100%;object-fit:fill;transform-origin:0 0;filter:brightness(.83)}
-.room-cabinet-assembly.is-revealed .room-cabinet-portal{opacity:1}
 .room-cabinet-leaf{position:absolute;transform-style:preserve-3d;transition:transform .98s cubic-bezier(.32,.04,.25,1);will-change:transform}
 .room-cabinet-leaf>img{display:block;width:100%;height:100%;backface-visibility:hidden}
 .room-cabinet-door-back{position:absolute;inset:0;backface-visibility:hidden;transform:rotateY(180deg) translateZ(var(--cabinet-depth));background-position:center;background-size:100% 100%;filter:brightness(.84)}
