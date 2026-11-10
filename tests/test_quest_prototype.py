@@ -40,6 +40,11 @@ class QuestPrototypeBrowserTest(unittest.TestCase):
         page.get_by_role('button', name='Завдання', exact=True).click()
         self.assertTrue(page.get_by_text('С1 Власний маршрут', exact=False).is_visible())
         page.get_by_role('button', name='До дій на поверсі', exact=True).click()
+        out=ROOT/'test-results'/'quest-prototype';out.mkdir(parents=True,exist_ok=True)
+        page.locator('.quest-blueprint-image').wait_for(state='visible')
+        page.wait_for_function("document.querySelector('.quest-blueprint-image').naturalWidth>0")
+        self.assertEqual(page.locator('.quest-map-pin').count(),17)
+        page.screenshot(path=str(out/'map-patient-desktop.png'))
         def room(id): page.locator(f'[data-room="{id}"]').click()
         def action(id): page.locator(f'[data-action="{id}"]').click()
         for kind, value in [('room','A'),('action','markerA'),('room','B'),('action','markerB'),('room','procedure'),('action','record'),('room','B'),('room','C'),('room','doctor'),('action','observation'),('room','stairs'),('action','stairsPatient'),('room','C'),('room','B'),('room','A'),('room','ward404')]:
@@ -47,6 +52,8 @@ class QuestPrototypeBrowserTest(unittest.TestCase):
         page.locator('#map-modal .btn-close-map').click()
         page.locator('.room-trip-switch').click()
         page.locator('#nav-map-btn').click()
+        self.assertTrue(page.locator('[data-room="B"]').is_disabled())
+        page.screenshot(path=str(out/'map-trip-locked.png'))
         room('A'); action('unlockB'); room('B'); action('unlockC'); room('C'); room('doctor')
         # Deterministic test fixture: retain real combat entry/victory/reward code,
         # but remove combat randomness and waiting from this progression test.
@@ -65,6 +72,12 @@ class QuestPrototypeBrowserTest(unittest.TestCase):
         page.get_by_role('button', name='Завдання', exact=True).click()
         out=ROOT/'test-results'/'quest-prototype';out.mkdir(parents=True,exist_ok=True)
         page.screenshot(path=str(out/'quests-desktop.png'))
+        page.set_viewport_size({'width':844,'height':390})
+        page.goto(base+'/quest-play.html')
+        frame=page.frame_locator('#game-canvas')
+        frame.locator('#nav-map-btn').click()
+        frame.locator('.quest-blueprint-image').wait_for(state='visible')
+        page.screenshot(path=str(out/'map-mobile-landscape.png'))
         self.assertEqual(errors, [])
         context.close()
 
