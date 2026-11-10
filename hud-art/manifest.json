@@ -23,10 +23,11 @@
     "cabinet": "Actual registered trapezoid metal returns, front and separate inner faces; original handle pixels on solid extruded contours, no pull-handle bending.",
     "state": "Existing game save/stat/loadout APIs; Tasks is a read-only placeholder.",
     "door": "The original door face has a true transparent glass aperture. A fixed sharp corridor is seen through it; only glass motion adds slight transient optical smear. No duplicated backdrop is carried by the door.",
-    "contacts": "Hand residue is pale luminance-derived coverage with no black matte. Small breath patches and thin running condensation visit the glass. Finger-written HELP appears exclusively on the door pane, with one written message at a time; other windows have only hands and plain fog. Strokes and drips fade and pause behind dialogs.",
+    "contacts": "Ordinary windows have only pale hand residue, with no breath/fog patches or writing. The door pane alone carries localized HELP wiped slowly into a thin warm-tinted condensation patch; droplets run after writing ends. One message at a time; effects fade and pause behind dialogs.",
     "floor": "Four damp bare footprints appear successively along a perspective path, then evaporate. Strides and left/right separation are visibly wider; original sole orientation is preserved.",
     "fabrics": "The original curtain is one continuous photo crop up to the fabric attachments; its restored background has a feathered top blend. Robe outer edge excludes baked shadow pixels. Each opaque face and soft cast shadow shares one plane. A shared 54-second cycle moves curtain, then robe, then bag, with quiet gaps and no overlapping movement.",
-    "corridor": "Sharp fixed corridor behind the transparent door glass, with independent rare warm voltage dips in a 47-second cycle; minimum supply 0.62, never off."
+    "corridor": "Sharp fixed corridor behind the transparent door glass, with independent rare warm voltage dips in a 47-second cycle; minimum supply 0.62, never off.",
+    "tripButton": "The original room photo supplies the button and wall pixels, so the fixture follows room exposure exactly. A registered transparent overlay adds only the red-circle hover glow; no scaled opaque wall crop is placed above the room light."
   },
   "files": [
     {

@@ -112,7 +112,7 @@
 .room-action-label{position:absolute;left:50%;bottom:102%;transform:translateX(-50%);white-space:nowrap;background:#302318ed;color:#ead4b3;padding:.3cqw .5cqw;border:1px solid #9c7650;font-size:.9cqw;line-height:1.1;opacity:0;transition:opacity .18s;pointer-events:none;box-shadow:0 2px 4px #0005}
 .room-door-action:hover>.room-action-label,.room-door-action:focus-visible>.room-action-label,.room-trip-switch:hover>.room-action-label,.room-trip-switch:focus-visible>.room-action-label{opacity:1}
 .hospital-hud .room-trip-switch{position:absolute;left:61.1%;top:47.5%;width:3.8%;height:6.7%;min-width:0;min-height:0;margin:0;padding:0;border:0;background:none;box-shadow:none;z-index:4;pointer-events:auto;outline:0}
-.room-switch-art{position:absolute;left:14%;top:16%;width:72%;height:68%;background:url('hud-art/room-switch.svg') center/100% 100% no-repeat;transition:transform .15s}
+.room-switch-art{position:absolute;left:25.825%;top:20.66%;width:50.366%;height:49.17%;background:none;transition:transform .15s}
 .room-switch-art::after{content:'';position:absolute;left:24%;top:19%;width:49%;height:54%;border-radius:50%;background:radial-gradient(circle at 38% 32%,#ffc19f99,#fa2a118c 48%,#b5120c77 74%,transparent 78%);box-shadow:0 0 7px 2px #ff2f185c,inset 0 0 3px #ffb29b99;opacity:0;transition:opacity .2s;mix-blend-mode:screen}
 .room-trip-switch:hover .room-switch-art::after,.room-trip-switch:focus-visible .room-switch-art::after{opacity:1}
 .room-trip-switch[aria-pressed="true"] .room-switch-art::after{opacity:.42}

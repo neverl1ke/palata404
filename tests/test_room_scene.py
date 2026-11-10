@@ -82,6 +82,34 @@ class RoomSceneTests(unittest.TestCase):
         self.seek('room-distant-switch', 26000)
         self.assertGreater(abs(float(light.evaluate('e=>getComputedStyle(e).opacity'))-before), .5)
 
+    def test_trip_button_plate_and_surrounding_wall_follow_room_exposure(self):
+        self.freeze()
+        self.page.mouse.move(700,730)
+        self.page.evaluate('document.activeElement.blur()')
+        self.page.wait_for_timeout(220)
+        bright=self.page.screenshot()
+        self.seek('room-light-supply',3904)
+        dim=self.page.screenshot()
+        regions={
+            'plate corner':(1040,462,1045,468),
+            'old lower wall patch':(1033,493,1075,499),
+            'old left wall patch':(1031,461,1036,487),
+            'neighboring wall':(1080,493,1090,499),
+        }
+        ratios={name:sum(self.rgb(dim,rect))/sum(self.rgb(bright,rect)) for name,rect in regions.items()}
+        for name,ratio in ratios.items():
+            with self.subTest(region=name):
+                self.assertGreater(ratio,.68)
+                self.assertLess(ratio,.90,'The button image or its wall patch stayed bright above the room lighting')
+        self.assertLess(max(ratios.values())-min(ratios.values()),.12)
+        self.seek('room-light-supply',0)
+        self.page.locator('.room-trip-switch').hover()
+        self.page.wait_for_timeout(250)
+        hover=self.page.screenshot()
+        self.assertGreater(sum(self.rgb(hover,(1047,468,1060,482)))/3-sum(self.rgb(bright,(1047,468,1060,482)))/3,5)
+        for rect in [(1033,493,1075,499),(1031,461,1036,487)]:
+            self.assertAlmostEqual(sum(self.rgb(hover,rect))/3,sum(self.rgb(bright,rect))/3,delta=2)
+
     def test_contact_shadow_supports_heel_and_toes_for_both_avatars(self):
         self.freeze()
         out = Path('test-results/hospital-room'); out.mkdir(parents=True, exist_ok=True)
@@ -390,11 +418,14 @@ class RoomSceneTests(unittest.TestCase):
                 writing=fog.evaluate('''e=>{
                     const paths=[...e.querySelectorAll('.room-help-stroke')];
                     const before=paths.map(p=>getComputedStyle(p).strokeDashoffset);
-                    for(const a of e.getAnimations({subtree:true}))if(a.effect.target.matches('.room-help-stroke')){a.pause();a.currentTime=10000;}
-                    return {before,after:paths.map(p=>getComputedStyle(p).strokeDashoffset)};
+                    const animations=e.getAnimations({subtree:true}).filter(a=>a.effect.target.matches('.room-help-stroke'));
+                    const timing=animations.map(a=>{const t=a.effect.getTiming();return {start:Number(t.delay),end:Number(t.delay)+Number(t.duration)}});
+                    for(const a of animations){const t=a.effect.getTiming();a.pause();a.currentTime=Number(t.delay)+Number(t.duration);}
+                    return {before,after:paths.map(p=>getComputedStyle(p).strokeDashoffset),span:Math.max(...timing.map(t=>t.end))-Math.min(...timing.map(t=>t.start))};
                 }''')
                 self.assertGreaterEqual(len(writing['before']),4)
                 self.assertNotEqual(writing['before'],writing['after'])
+                self.assertGreater(writing['span'],5000,'HELP should be written slowly enough to follow each letter')
                 self.page.wait_for_timeout(100)
                 after=Image.open(io.BytesIO(pane.screenshot())).convert('RGB')
                 # Writing clears the condensation instead of painting black letters.
@@ -412,22 +443,23 @@ class RoomSceneTests(unittest.TestCase):
                 self.assertTrue(all(d['y']-d['before']>10 and d['opacity']>.1 for d in drips))
                 fog.evaluate('e=>e.remove()')
 
-    def test_main_window_condensation_has_drops_but_never_help_writing(self):
+    def test_main_windows_keep_only_hands_even_when_fog_or_help_is_requested(self):
         self.freeze()
         for surface, selector in [(0,'.room-window-left'),(1,'.room-window-right')]:
             with self.subTest(surface=surface):
-                # Even an explicit preview request cannot put the door-only word
-                # on either large window pane.
-                info=self.page.evaluate('i=>PalataAtmosphere.showContact(i,"help")',surface)
-                self.assertEqual(info['kind'],'fog')
-                mist=self.page.locator('.room-glass-mark[data-generation="'+str(info['generation'])+'"]')
-                self.assertEqual(mist.locator('.room-help-stroke').count(),0)
-                self.assertEqual(mist.locator('.room-help-fog').count(),1)
-                self.assertGreaterEqual(mist.locator('.room-condensation-drop').count(),2)
+                # Ordinary windows retain hand residue only, including forced
+                # preview requests for the effects reserved for door glass.
+                for requested in ['help','fog','hand']:
+                    info=self.page.evaluate('([i,kind])=>PalataAtmosphere.showContact(i,kind)',[surface,requested])
+                    self.assertEqual(info['kind'],'hand')
+                    self.assertIn(info['variant'],range(3))
+                    hand=self.page.locator('.room-glass-mark[data-generation="'+str(info['generation'])+'"]')
+                    self.assertEqual(hand.evaluate('e=>e.tagName'),'IMG')
+                    self.assertTrue(hand.evaluate('e=>e.classList.contains("is-hand")'))
                 samples=self.page.evaluate('i=>Array.from({length:8},()=>PalataAtmosphere.showContact(i).kind)',surface)
-                self.assertEqual(set(samples),{'hand','fog'})
+                self.assertEqual(set(samples),{'hand'})
                 pane=self.page.locator(selector)
-                self.assertEqual(pane.locator('.room-glass-mark.is-help,.room-help-stroke').count(),0)
+                self.assertEqual(pane.locator('.is-help,.is-fog,.room-help-fog,.room-help-stroke,.room-condensation-drop,.room-condensation-trail').count(),0)
 
     def test_metal_returns_match_the_registered_door_contours(self):
         returns=self.page.locator('.room-cabinet-leaf-right .room-cabinet-metal-return')
