@@ -311,6 +311,7 @@ class RoomSceneTests(unittest.TestCase):
         self.seek('room-wet-step',8500)
         steps=self.page.locator('.room-floor-print')
         walking = steps.evaluate_all('''es=>es.map(e=>{const r=e.getBoundingClientRect(),s=getComputedStyle(e),m=new DOMMatrix(s.transform);return {foot:e.dataset.foot,src:e.getAttribute('src'),x:r.x+r.width/2,y:r.y+r.height/2,dx:-m.c,dy:-m.d,width:parseFloat(s.width),height:parseFloat(s.height)}})''')
+        self.assertGreaterEqual(len(walking), 4)
         for right, left in zip(walking[::2], walking[1::2]):
             self.assertEqual((right['foot'], left['foot']), ('right', 'left'))
             self.assertIn('wet-foot-right.webp', right['src'])
@@ -321,16 +322,93 @@ class RoomSceneTests(unittest.TestCase):
         for previous, following in zip(walking, walking[1:]):
             dx,dy=following['x']-previous['x'],following['y']-previous['y']
             forward=dx*previous['dx']+dy*previous['dy']
-            self.assertGreater(forward,.70*(previous['height']+following['height'])/2)
+            self.assertGreater(forward,1.1*(previous['height']+following['height'])/2)
             lateral=dx*previous['dy']-dy*previous['dx']
             toward_next_foot=lateral if following['foot']=='left' else -lateral
-            self.assertGreater(toward_next_foot,.54*(previous['width']+following['width'])/2)
+            self.assertGreater(toward_next_foot,.75*(previous['width']+following['width'])/2)
         self.assertGreater(float(steps.first.evaluate('e=>getComputedStyle(e).opacity')),.2)
         self.assertEqual(float(steps.last.evaluate('e=>getComputedStyle(e).opacity')),0)
         self.seek('room-wet-step',12500)
         self.assertGreater(float(steps.last.evaluate('e=>getComputedStyle(e).opacity')),.2)
         self.seek('room-wet-step',35000)
         self.assertEqual(float(steps.first.evaluate('e=>getComputedStyle(e).opacity')),0)
+
+    def test_hand_residue_cannot_paint_a_dark_halo_on_transparent_glass(self):
+        self.freeze()
+        # Keep the pane genuinely transparent. A gray background on the pane itself
+        # would conceal the old screen-blend/isolated-layer bug being tested.
+        self.page.add_style_tag(content='''
+            .room-corridor-scene{background:#777!important;filter:none!important;animation:none!important}
+            .room-door-wire,.room-door-glass::after{display:none!important}
+            .room-glass-mark:not(.room-test-residue){display:none!important}
+        ''')
+        glass = self.page.locator('.room-door-glass')
+        before = Image.open(io.BytesIO(glass.screenshot())).convert('RGB')
+        contact = self.page.evaluate('PalataAtmosphere.showContact(2,"hand")')
+        self.assertEqual(contact['kind'], 'hand')
+        hand = self.page.locator('.room-glass-mark[data-generation="'+str(contact['generation'])+'"]')
+        hand.evaluate('''async e=>{
+            e.classList.add('room-test-residue');e.style.left='50%';e.style.top='50%';e.style.setProperty('--mark-turn','0deg');
+            await Promise.all([...document.images].map(im=>im.decode().catch(()=>{})));
+            for(const a of e.getAnimations({subtree:true})){a.pause();const t=a.effect.getTiming();a.currentTime=Number(t.delay)+Number(t.duration)*.4;}
+        }''')
+        self.page.wait_for_timeout(100)
+        after = Image.open(io.BytesIO(glass.screenshot())).convert('RGB')
+        differences = [sum(b)/3-sum(a)/3 for a,b in zip(self.pixels(before),self.pixels(after))]
+        self.assertGreater(sum(d>3 for d in differences), 20, 'The pale residue should remain visible')
+        self.assertLessEqual(sum(d < -3 for d in differences), 3, 'Residue painted a dark halo over the view behind the glass')
+
+    def test_help_is_finger_written_into_fog_with_moving_condensation(self):
+        self.freeze()
+        self.page.add_style_tag(content='''
+            .hud-character-stage{display:none!important}
+            .room-window-scene,.room-corridor-scene{background:#777!important;filter:none!important;animation:none!important}
+            .room-distant-light{display:none!important}
+            .room-door-wire,.room-door-glass::after,.room-window-glass::after,.room-outside-bounce{display:none!important}
+            .room-glass-mark:not(.room-test-residue){display:none!important}
+        ''')
+        for surface, selector in [(0,'.room-window-left'),(2,'.room-door-glass')]:
+            with self.subTest(surface=surface):
+                hand_info=self.page.evaluate('i=>PalataAtmosphere.showContact(i,"hand")',surface)
+                hand=self.page.locator('.room-glass-mark[data-generation="'+str(hand_info['generation'])+'"]')
+                hand_width=hand.evaluate('e=>parseFloat(e.style.width)')
+                pane=self.page.locator(selector)
+                background=Image.open(io.BytesIO(pane.screenshot())).convert('RGB')
+                info=self.page.evaluate('i=>PalataAtmosphere.showContact(i,"help")',surface)
+                self.assertEqual(info['kind'],'help')
+                fog=self.page.locator('.room-glass-mark[data-generation="'+str(info['generation'])+'"]')
+                self.assertGreater(fog.evaluate('e=>parseFloat(e.style.width)'), hand_width*(1.5 if surface==2 else 1.3))
+                self.assertEqual(fog.locator('.room-glass-help').get_attribute('aria-label'),'HELP')
+                fog.evaluate('''e=>{
+                    e.classList.add('room-test-residue');e.style.left='50%';e.style.top='50%';e.style.setProperty('--mark-turn','0deg');
+                    for(const a of e.getAnimations({subtree:true})){a.pause();a.currentTime=a.effect.target===e?Number(a.effect.getTiming().duration)*.4:0;}
+                }''')
+                self.page.wait_for_timeout(100)
+                before=Image.open(io.BytesIO(pane.screenshot())).convert('RGB')
+                writing=fog.evaluate('''e=>{
+                    const paths=[...e.querySelectorAll('.room-help-stroke')];
+                    const before=paths.map(p=>getComputedStyle(p).strokeDashoffset);
+                    for(const a of e.getAnimations({subtree:true}))if(a.effect.target.matches('.room-help-stroke')){a.pause();a.currentTime=10000;}
+                    return {before,after:paths.map(p=>getComputedStyle(p).strokeDashoffset)};
+                }''')
+                self.assertGreaterEqual(len(writing['before']),4)
+                self.assertNotEqual(writing['before'],writing['after'])
+                self.page.wait_for_timeout(100)
+                after=Image.open(io.BytesIO(pane.screenshot())).convert('RGB')
+                # Writing clears the condensation instead of painting black letters.
+                cleared=[sum(a)/3-sum(b)/3 for a,b in zip(self.pixels(before),self.pixels(after))]
+                self.assertGreater(sum(d>3 for d in cleared),40)
+                darkened=[sum(a)/3-sum(b)/3 for a,b in zip(self.pixels(background),self.pixels(after))]
+                self.assertLessEqual(sum(d>3 for d in darkened),3,'Finger wipes should reveal the real background, not paint black ink')
+                drips=fog.evaluate('''e=>{
+                    const drops=[...e.querySelectorAll('.room-condensation-drop')];
+                    const before=drops.map(p=>{const t=getComputedStyle(p).transform;return t==='none'?0:new DOMMatrix(t).f;});
+                    for(const a of e.getAnimations({subtree:true}))if(a.effect.target.matches('.room-condensation-drop,.room-condensation-trail')){const t=a.effect.getTiming();a.pause();a.currentTime=Number(t.delay)+Number(t.duration)*.55;}
+                    return drops.map((p,n)=>{const s=getComputedStyle(p);return {before:before[n],y:new DOMMatrix(s.transform).f,opacity:Number(s.opacity)}});
+                }''')
+                self.assertGreaterEqual(len(drips),2)
+                self.assertTrue(all(d['y']-d['before']>10 and d['opacity']>.1 for d in drips))
+                fog.evaluate('e=>e.remove()')
 
     def test_metal_returns_match_the_registered_door_contours(self):
         returns=self.page.locator('.room-cabinet-leaf-right .room-cabinet-metal-return')

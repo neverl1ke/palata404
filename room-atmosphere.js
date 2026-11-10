@@ -10,24 +10,53 @@ function position(i){
  if(!bags[i].length){bags[i]=slots[i].map((_,n)=>n);for(let k=bags[i].length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));[bags[i][k],bags[i][j]]=[bags[i][j],bags[i][k]];}if(bags[i].at(-1)===last[i]&&bags[i].length>1)[bags[i][0],bags[i][bags[i].length-1]]=[bags[i].at(-1),bags[i][0]];}
  const id=bags[i].pop();last[i]=id;return {id,point:slots[i][id]};
 }
-function showContact(index=nextSurface++%surfaces.length){
- if(reduced.matches||document.hidden||root.dataset.scenePaused==='true')return false;
- const i=Math.abs(Number(index)||0)%surfaces.length,surface=surfaces[i],slot=position(i),node=document.createElement('img');
- const variant=Math.floor(Math.random()*6);node.className='room-glass-mark';node.src='hud-art/glass-mark-'+variant+'.webp';node.alt='';node.setAttribute('aria-hidden','true');
- node.style.left=slot.point[0]+'%';node.style.top=slot.point[1]+'%';node.style.width=(i===2?28:48)+'%';node.style.setProperty('--mark-turn',((Math.random()-.5)*34).toFixed(1)+'deg');
- node.dataset.slot=String(slot.id);node.dataset.generation=String(++sequence);surface.append(node);surface.dataset.lastContact=String(slot.id);
- const animation=node.animate([{opacity:0,offset:0},{opacity:.68,offset:.24},{opacity:.56,offset:.57},{opacity:0,offset:1}],{duration:10500+Math.random()*1800,easing:'ease-in-out'});
- const entry={node,animation};active.add(entry);animation.onfinish=()=>{active.delete(entry);node.remove();};
- return {surface:i,slot:slot.id,variant,generation:sequence};
+const ns='http://www.w3.org/2000/svg';
+function svgNode(tag,attributes={}){const node=document.createElementNS(ns,tag);for(const [k,v] of Object.entries(attributes))node.setAttribute(k,v);return node;}
+function helpArtwork(generation){
+ const svg=svgNode('svg',{class:'room-glass-help',viewBox:'0 0 200 120','aria-label':'HELP'}),defs=svgNode('defs');
+ const maskId='room-help-wipe-'+generation,edgeId='room-help-edge-'+generation;
+ const edge=svgNode('filter',{id:edgeId,x:'-10%',y:'-10%',width:'120%',height:'120%'});
+ edge.append(svgNode('feTurbulence',{type:'fractalNoise',baseFrequency:'.075',numOctaves:'2',seed:String(generation%9+1),result:'grain'}),svgNode('feDisplacementMap',{in:'SourceGraphic',in2:'grain',scale:'1.4',xChannelSelector:'R',yChannelSelector:'G'}),svgNode('feGaussianBlur',{stdDeviation:'.25'}));
+ const mask=svgNode('mask',{id:maskId,maskUnits:'userSpaceOnUse',x:'0',y:'0',width:'200',height:'120'});
+ mask.append(svgNode('rect',{width:'200',height:'120',fill:'white'}));
+ const writing=svgNode('g',{fill:'none',stroke:'black','stroke-width':'7.5','stroke-linecap':'round','stroke-linejoin':'round',filter:'url(#'+edgeId+')'});
+ const strokes=['M36 43C34 51 36 59 32 70Q30 79 31 85','M61 33Q55 44 59 59Q62 75 56 89','M34 62Q43 59 58 64','M99 39Q91 36 80 43','M80 43C77 55 82 68 77 89Q87 90 100 86','M80 65Q88 60 97 64','M118 36Q116 49 121 62Q119 74 120 86Q126 91 141 87','M155 91Q151 72 157 55L155 39Q167 35 178 43Q186 57 174 64Q165 68 155 62'];
+ const widths=[6.2,7.4,5.3,6.5,6,5.6,7.2,6.5];
+ const paths=strokes.map((d,n)=>svgNode('path',{class:'room-help-stroke',d,pathLength:'1','stroke-width':String(widths[n]),transform:'rotate('+((Math.random()-.5)*2.5).toFixed(2)+' 100 60)'}));writing.append(...paths);mask.append(writing);
+ const trails=svgNode('g',{fill:'none',stroke:'black','stroke-width':'1.4','stroke-linecap':'round',filter:'url(#'+edgeId+')'});
+ const drops=svgNode('g',{class:'room-condensation-drops',fill:'#d6d9d0','fill-opacity':'.30',stroke:'#eef0e3','stroke-opacity':'.32','stroke-width':'.45'});
+ const streams=[[67,69,102],[141,82,117],[174,62,104]].map(([x,y,end],n)=>{
+  const trail=svgNode('path',{class:'room-condensation-trail',d:'M'+x+' '+y+'Q'+(x-.8)+' '+((y+end)/2)+' '+(x+.6)+' '+end,pathLength:'1'});
+  const bead=svgNode('ellipse',{class:'room-condensation-drop',cx:x,cy:y,rx:n===1?'1.1':'.85',ry:'1.8',opacity:'0'});trails.append(trail);drops.append(bead);return {trail,bead,distance:end-y};
+ });mask.append(trails);defs.append(edge,mask);svg.append(defs);
+ const fog=svgNode('g',{mask:'url(#'+maskId+')'});fog.append(svgNode('image',{class:'room-help-fog',href:'hud-art/glass-mark-4.webp',x:String(-38+Math.random()*6),y:String(-27+Math.random()*4),width:'270',height:'170',preserveAspectRatio:'none'}));svg.append(fog,drops);return {svg,paths,streams};
 }
-function tick(){timer=0;showContact();schedule(4300+Math.random()*2500);}
+function showContact(index=nextSurface++%surfaces.length,requestedKind){
+ if(reduced.matches||document.hidden||root.dataset.scenePaused==='true')return false;
+ const i=Math.abs(Number(index)||0)%surfaces.length,surface=surfaces[i],slot=position(i);
+ const kind=requestedKind==='hand'||requestedKind==='help'?requestedKind:(sequence%2===0?'help':'hand'),generation=++sequence;
+ const node=document.createElement(kind==='hand'?'img':'div'),variant=kind==='hand'?Math.floor(Math.random()*3):4;
+ node.className='room-glass-mark is-'+kind;node.setAttribute('aria-hidden','true');
+ let x=slot.point[0],y=slot.point[1],width=i===2?28:48,artwork=null;
+ if(kind==='hand'){node.src='hud-art/glass-mark-'+variant+'.webp';node.alt='';}
+ else{width=i===2?60:68;const halfHeight=surface.clientWidth*width/100*.6/surface.clientHeight*50;x=Math.max(width/2+1,Math.min(99-width/2,x));y=Math.max(halfHeight+2,Math.min(98-halfHeight,y));artwork=helpArtwork(generation);node.append(artwork.svg);}
+ node.style.left=x+'%';node.style.top=y+'%';node.style.width=width+'%';node.style.setProperty('--mark-turn',((Math.random()-.5)*(kind==='help'?6:34)).toFixed(1)+'deg');
+ node.dataset.slot=String(slot.id);node.dataset.generation=String(generation);node.dataset.kind=kind;surface.append(node);surface.dataset.lastContact=String(slot.id);
+ const animation=node.animate([{opacity:0,offset:0},{opacity:kind==='help'?.64:.48,offset:.22},{opacity:kind==='help'?.54:.40,offset:.64},{opacity:0,offset:1}],{duration:kind==='help'?16500:12000,easing:'ease-in-out'});
+ let cursor=2400;
+ const draws=artwork?artwork.paths.map(path=>{const duration=Math.min(620,Math.max(240,path.getTotalLength()*4));const draw=path.animate([{strokeDashoffset:'1px'},{strokeDashoffset:'0px'}],{duration,delay:cursor,fill:'forwards',easing:'ease-in-out'});cursor+=duration+110;return draw;}):[];
+ if(artwork)artwork.streams.forEach(({trail,bead,distance},n)=>{const timing={duration:5800+n*350,delay:6200+n*900,fill:'forwards',easing:'linear'};draws.push(trail.animate([{strokeDashoffset:'1px'},{strokeDashoffset:'0px'}],timing),bead.animate([{transform:'translateY(0px)',opacity:0,offset:0},{transform:'translateY('+distance*.2+'px)',opacity:.7,offset:.2},{transform:'translateY('+distance+'px)',opacity:0,offset:1}],timing));});
+ const animations=[animation,...draws],entry={node,animations};active.add(entry);animation.onfinish=()=>{active.delete(entry);draws.forEach(a=>a.cancel());node.remove();};
+ return {surface:i,slot:slot.id,variant,kind,generation};
+}
+function tick(){timer=0;showContact();schedule(6000+Math.random()*2200);}
 function schedule(delay){clearTimeout(timer);if(!reduced.matches&&!document.hidden&&root.dataset.scenePaused!=='true')timer=setTimeout(tick,delay);}
 function playback(){
  const paused=reduced.matches||document.hidden||root.dataset.scenePaused==='true';clearTimeout(timer);timer=0;
- for(const entry of active){if(reduced.matches){entry.animation.cancel();entry.node.remove();active.delete(entry);}else if(paused)entry.animation.pause();else entry.animation.play();}
+ for(const entry of active){if(reduced.matches){entry.animations.forEach(a=>a.cancel());entry.node.remove();active.delete(entry);}else for(const a of entry.animations){if(paused&&a.playState==='running')a.pause();else if(!paused&&a.playState==='paused')a.play();}}
  if(!paused)schedule(2600+Math.random()*1800);
 }
 new MutationObserver(playback).observe(root,{attributes:true,attributeFilter:['data-scene-paused']});document.addEventListener('visibilitychange',playback);reduced.addEventListener('change',playback);
-window.addEventListener('pagehide',()=>{clearTimeout(timer);for(const e of active){e.animation.cancel();e.node.remove();}active.clear();});window.addEventListener('pageshow',playback);
+window.addEventListener('pagehide',()=>{clearTimeout(timer);for(const e of active){e.animations.forEach(a=>a.cancel());e.node.remove();}active.clear();});window.addEventListener('pageshow',playback);
 window.PalataAtmosphere=Object.freeze({showContact});playback();
 })();

@@ -31,15 +31,18 @@
 .room-distant-left-low{left:65%;top:85.8%;width:20%;height:13%;background-image:url('hud-art/window-left-unlit.webp');animation-delay:-13s}
 .room-distant-right-high{left:53.8%;top:43.8%;width:30%;height:14.2%;background-image:url('hud-art/window-right-unlit.webp');animation-duration:79s;animation-delay:-41s}
 @keyframes room-distant-switch{0%,18%,19.3%,58.7%,60.2%,100%{opacity:0}18.6%{opacity:.9}20%,58%{opacity:.97}59.3%{opacity:.72}}
-.room-glass-mark{position:absolute;z-index:3;height:auto;aspect-ratio:1;object-fit:contain;transform:translate(-50%,-50%) rotate(var(--mark-turn,0deg));opacity:0;mix-blend-mode:screen;filter:brightness(2.1) saturate(.25);pointer-events:none}
+.room-glass-mark{position:absolute;z-index:3;height:auto;aspect-ratio:1;object-fit:contain;transform:translate(-50%,-50%) rotate(var(--mark-turn,0deg));opacity:0;mix-blend-mode:normal;pointer-events:none}
+.room-glass-mark.is-hand{filter:url('#room-hand-residue')}
+.room-glass-mark.is-help{aspect-ratio:5/3;overflow:visible}
+.room-glass-help{display:block;width:100%;height:auto;overflow:visible}
+.room-help-fog{filter:url('#room-fog-residue')}
+.room-help-stroke,.room-condensation-trail{stroke-dasharray:1;stroke-dashoffset:1}
 .room-floor-trail{position:absolute;inset:0;pointer-events:none}
 .room-floor-print{position:absolute;width:2.15%;height:5.2%;object-fit:fill;opacity:0;filter:grayscale(1) sepia(.4) brightness(.35);mix-blend-mode:multiply;transform:rotate(-32deg);animation:room-wet-step 48s linear infinite;animation-delay:calc(6s + var(--step)*.95s)}
-.room-floor-print:nth-child(1){left:78.25670%;top:92.45462%;width:2.7%;height:6.4%}
-.room-floor-print:nth-child(2){left:75.63696%;top:90.03560%;width:2.5%;height:6%}
-.room-floor-print:nth-child(3){left:75.61651%;top:85.03066%;width:2.3%;height:5.5%}
-.room-floor-print:nth-child(4){left:73.22500%;top:82.90946%;width:2.1%;height:5%}
-.room-floor-print:nth-child(5){left:73.22990%;top:78.37763%;width:1.9%;height:4.5%}
-.room-floor-print:nth-child(6){left:71.06663%;top:76.45425%;width:1.7%;height:4.1%}
+.room-floor-print:nth-child(1){left:78.61172%;top:92.06036%;width:2.7%;height:6.4%}
+.room-floor-print:nth-child(2){left:74.52644%;top:88.11854%;width:2.35%;height:5.7%}
+.room-floor-print:nth-child(3){left:74.42249%;top:80.30664%;width:2.0%;height:4.9%}
+.room-floor-print:nth-child(4){left:70.76866%;top:76.91047%;width:1.7%;height:4.1%}
 @keyframes room-wet-step{0%,43%,100%{opacity:0}1.5%,15%{opacity:.34}31%{opacity:.18}}
 .room-curtain-clear,.room-moving-curtain{position:absolute;left:36.8421%;top:21.7853%;width:5.3828%;height:35.0691%;background:center/100% 100% no-repeat;pointer-events:none}
 .room-curtain-clear{left:35.8852%;top:18.5972%;width:7.4761%;height:40.3826%;background-image:url('hud-art/room-curtain-clear.svg?v=ac8427028108')}
