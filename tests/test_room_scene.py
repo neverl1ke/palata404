@@ -115,9 +115,11 @@ class RoomSceneTests(unittest.TestCase):
             self.assertTrue(self.page.locator(modal).is_hidden())
             if modal == '#custom-modal':
                 self.assertEqual(self.page.locator('.room-cabinet-door-back').count(), 2)
+                self.assertEqual(self.page.locator('.room-handle-grip').count(), 0)
+                self.assertIn('original-handle-left.svg', self.page.locator('.room-handle-face').first.get_attribute('src'))
                 self.assertIn('cabinet-inner-right.webp', self.page.locator('.room-cabinet-leaf-left .room-cabinet-door-back').evaluate('e=>getComputedStyle(e).backgroundImage'))
                 self.assertAlmostEqual(float(self.page.locator('.room-cabinet-leaf-left').evaluate('e=>parseFloat(getComputedStyle(e,"::after").width)')), 4, delta=.02)
-                self.assertGreater(self.page.locator('.room-handle-grip').first.evaluate('e=>new DOMMatrix(getComputedStyle(e).transform).m43'), 0)
+                self.assertGreater(self.page.locator('.room-handle-face').first.evaluate('e=>new DOMMatrix(getComputedStyle(e).transform).m43'), 0)
                 self.assertNotEqual(self.page.locator('.room-cabinet-leaf-left').evaluate('e=>getComputedStyle(e).transform'), 'none')
                 self.assertFalse(self.page.evaluate('PalataRoom.openDoor()'))
             self.page.locator(modal).wait_for(state='visible')

@@ -19,7 +19,7 @@
     "outside": "Dusk to night only, muted warm charcoal/taupe grade and weak indoor reflections; the same grade applies to contact traces.",
     "lamp": "Two brief voltage dips per 101-second cycle; minimum 0.80 supply, remains lit.",
     "groundContact": "Derived from the actual composed avatar alpha and heel-to-toe lower contour.",
-    "cabinet": "Separate outer/inner faces, 4px side/top/bottom metal returns and raised 3D pull handles.",
+    "cabinet": "Separate outer/inner faces, 4px metal returns; original curved pull-handle pixels at native source positions are raised as separate 3D texture layers.",
     "state": "Existing game save/stat/loadout APIs; Tasks is a read-only placeholder."
   },
   "files": [
@@ -69,6 +69,16 @@
       "sha256": "0ccfc6a020f4c7ef72c547921008a67f8966376a29d12acfb43c8abb40b4fed5"
     },
     {
+      "path": "original-handle-left.svg",
+      "bytes": 2730,
+      "sha256": "3653383e2e7dcc73c06e67a54a70fc9882d851b9669f4b60014be5c13423601c"
+    },
+    {
+      "path": "original-handle-right.svg",
+      "bytes": 2698,
+      "sha256": "bfa97e2a07e2c0153bc6d21db8ed2d303fddd487ac1c2eee184d21ef6ff7d140"
+    },
+    {
       "path": "portrait-foreground-reference.svg",
       "bytes": 761124,
       "sha256": "6a0125732f236967190d0792126f8933d122baca9c99836a7705bac87140b2b8"
@@ -113,5 +123,21 @@
       "bytes": 446438,
       "sha256": "ee669913781a68937942b49ae7212de64741af5f4e38e3ed17711218f8284326"
     }
-  ]
+  ],
+  "originalHandleCrops": {
+    "source": "warm-ward-room.webp",
+    "left": [
+      1410,
+      478,
+      14,
+      58
+    ],
+    "right": [
+      1430,
+      478,
+      14,
+      58
+    ],
+    "method": "Unchanged source pixel crops, SVG contour and runtime 3D projection; no replacement handles drawn."
+  }
 }

@@ -15,6 +15,7 @@ jobs:
         with:
           python-version: '3.12'
       - run: python -m compileall -q tools tests
+      - run: python tools/prepare-pages.py --check
       - run: python tools/audit-project.py --check
       - run: node --check script.js
       - run: node --check hud-main.js && node --check room-scene.js && node --check room-projection.js && node --check room-shadows.js

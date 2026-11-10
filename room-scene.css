@@ -41,7 +41,7 @@
 
 .room-door-assembly.is-revealed .room-door-portal{opacity:1}
 .room-door-assembly.is-open .room-door-leaf{transform:rotateY(-79deg)}
-.room-cabinet-assembly{position:absolute;left:81.22%;top:28.8%;width:8.493%;height:49.628%;--cabinet-depth:.239234cqw;--cabinet-grip-depth:.358852cqw;perspective:38.8756cqw;perspective-origin:50% 48%;isolation:isolate}
+.room-cabinet-assembly{position:absolute;left:81.22%;top:28.8%;width:8.493%;height:49.628%;--cabinet-depth:.239234cqw;--cabinet-grip-depth:.155502cqw;perspective:38.8756cqw;perspective-origin:50% 48%;isolation:isolate}
 .room-cabinet-portal{position:absolute;inset:0;opacity:0;pointer-events:none}
 .room-cabinet-interior{position:absolute;inset:0;width:100%;height:100%;object-fit:fill;transform-origin:0 0;filter:brightness(.83)}
 .room-cabinet-assembly.is-revealed .room-cabinet-portal{opacity:1}
@@ -57,12 +57,11 @@
 .room-cabinet-door-bottom{left:4.3%;top:97.75%;width:95.7%;transform:rotateZ(8.5deg) rotateX(-90deg);background:#6b593b}
 .room-cabinet-leaf-right .room-cabinet-door-top{top:1.94%;width:98.6%}
 .room-cabinet-leaf-right .room-cabinet-door-bottom{left:1.43%;top:97.42%;width:98.57%;transform:rotateZ(9.8deg) rotateX(-90deg)}
-.room-cabinet-handle{position:absolute;top:51.2%;left:79%;width:12%;height:14.8%;transform-style:preserve-3d;pointer-events:none}
-.room-cabinet-leaf-right .room-cabinet-handle{top:50.8%;left:7.5%;height:14.1%}
-.room-handle-grip{position:absolute;left:24%;top:6%;width:45%;height:88%;border-radius:45%/8%;background:linear-gradient(90deg,#3e3528,#d4c199 29%,#b5a37e 49%,#695b43 79%,#302a21);transform:translateZ(var(--cabinet-grip-depth));box-shadow:1px 1px 1px #1c1811aa}
-.room-handle-grip::after{content:'';position:absolute;left:100%;width:calc(var(--cabinet-depth) * .75);height:100%;transform-origin:0 50%;transform:rotateY(70deg);background:linear-gradient(90deg,#7e6d50,#3a3327);border-radius:35%/8%}
-.room-handle-post{position:absolute;left:27%;top:6%;width:40%;height:var(--cabinet-grip-depth);background:linear-gradient(#d1bd91,#756044);transform:translateZ(calc(var(--cabinet-grip-depth) / 2)) rotateX(90deg);border-radius:30%}
-.room-handle-post:last-child{top:auto;bottom:6%}
+.room-cabinet-handle{position:absolute;top:44.369%;left:72.857%;width:20%;height:13.063%;transform-style:preserve-3d;pointer-events:none}
+.room-cabinet-leaf-right .room-cabinet-handle{top:44.301%;left:1.429%;height:12.473%}
+.room-cabinet-handle img{position:absolute;inset:0;display:block;width:100%;height:100%}
+.room-handle-body{transform:translateZ(calc(var(--cabinet-grip-depth) * .5));filter:brightness(.68)}
+.room-handle-face{transform:translateZ(var(--cabinet-grip-depth))}
 .room-cabinet-leaf-left{left:.704%;top:2.141%;width:49.296%;height:95.075%;transform-origin:0 50%;transform:rotateY(0deg)}
 .room-cabinet-leaf-right{left:50%;top:.214%;width:49.296%;height:99.572%;transform-origin:100% 50%;transform:rotateY(0deg);transition-duration:1.06s;transition-delay:.08s}
 .room-cabinet-assembly.is-open .room-cabinet-leaf-left{transform:rotateY(-109deg)}
