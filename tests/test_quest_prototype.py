@@ -66,9 +66,9 @@ class QuestPrototypeBrowserTest(unittest.TestCase):
         page.locator('.room-trip-switch').click()
         self.assertTrue(page.locator('[data-room="ward404"]').evaluate("e=>e.classList.contains('is-target')"))
         room('ward404')
-        page.get_by_role('button',name='Вийти з Трипу',exact=True).click()
+        page.locator('.quest-actions').get_by_role('button',name='Вийти з Трипу',exact=True).click()
         self.assertEqual(page.evaluate('PalataQuestPrototype.snapshot().mode'),'patient')
-        page.get_by_role('button',name='Увійти в Трип',exact=True).click()
+        page.locator('.quest-actions').get_by_role('button',name='Увійти в Трип',exact=True).click()
         room('A'); action('unlockB'); room('B'); action('unlockC'); room('C'); room('doctor')
         # Deterministic test fixture: retain real combat entry/victory/reward code,
         # but remove combat randomness and waiting from this progression test.
