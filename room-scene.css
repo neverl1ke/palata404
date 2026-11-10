@@ -33,7 +33,7 @@
 @keyframes room-distant-switch{0%,18%,19.3%,58.7%,60.2%,100%{opacity:0}18.6%{opacity:.9}20%,58%{opacity:.97}59.3%{opacity:.72}}
 .room-glass-mark{position:absolute;z-index:3;height:auto;aspect-ratio:1;object-fit:contain;transform:translate(-50%,-50%) rotate(var(--mark-turn,0deg));opacity:0;mix-blend-mode:normal;pointer-events:none}
 .room-glass-mark.is-hand{filter:url('#room-hand-residue')}
-.room-glass-mark.is-help{aspect-ratio:5/3;overflow:visible}
+.room-glass-mark.is-help,.room-glass-mark.is-fog{aspect-ratio:5/3;overflow:visible}
 .room-glass-help{display:block;width:100%;height:auto;overflow:visible}
 .room-help-fog{filter:url('#room-fog-residue')}
 .room-help-stroke,.room-condensation-trail{stroke-dasharray:1;stroke-dashoffset:1}

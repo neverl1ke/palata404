@@ -307,7 +307,9 @@ class RoomSceneTests(unittest.TestCase):
             self.assertEqual(len(set(positions)),count)
         self.assertEqual(self.page.locator('.room-window-left .room-glass-mark').count(),12)
         self.assertEqual(self.page.locator('.room-window-right .room-glass-mark').count(),12)
-        self.assertEqual(self.page.locator('.room-door-glass .room-glass-mark').count(),6)
+        self.assertEqual(self.page.locator('.room-door-glass .room-glass-mark').count(),4)
+        self.assertEqual(self.page.locator('.room-door-glass .is-hand').count(),3)
+        self.assertEqual(self.page.locator('.room-door-glass .is-help').count(),1)
         self.seek('room-wet-step',8500)
         steps=self.page.locator('.room-floor-print')
         walking = steps.evaluate_all('''es=>es.map(e=>{const r=e.getBoundingClientRect(),s=getComputedStyle(e),m=new DOMMatrix(s.transform);return {foot:e.dataset.foot,src:e.getAttribute('src'),x:r.x+r.width/2,y:r.y+r.height/2,dx:-m.c,dy:-m.d,width:parseFloat(s.width),height:parseFloat(s.height)}})''')
@@ -367,7 +369,7 @@ class RoomSceneTests(unittest.TestCase):
             .room-door-wire,.room-door-glass::after,.room-window-glass::after,.room-outside-bounce{display:none!important}
             .room-glass-mark:not(.room-test-residue){display:none!important}
         ''')
-        for surface, selector in [(0,'.room-window-left'),(2,'.room-door-glass')]:
+        for surface, selector in [(2,'.room-door-glass')]:
             with self.subTest(surface=surface):
                 hand_info=self.page.evaluate('i=>PalataAtmosphere.showContact(i,"hand")',surface)
                 hand=self.page.locator('.room-glass-mark[data-generation="'+str(hand_info['generation'])+'"]')
@@ -409,6 +411,23 @@ class RoomSceneTests(unittest.TestCase):
                 self.assertGreaterEqual(len(drips),2)
                 self.assertTrue(all(d['y']-d['before']>10 and d['opacity']>.1 for d in drips))
                 fog.evaluate('e=>e.remove()')
+
+    def test_main_window_condensation_has_drops_but_never_help_writing(self):
+        self.freeze()
+        for surface, selector in [(0,'.room-window-left'),(1,'.room-window-right')]:
+            with self.subTest(surface=surface):
+                # Even an explicit preview request cannot put the door-only word
+                # on either large window pane.
+                info=self.page.evaluate('i=>PalataAtmosphere.showContact(i,"help")',surface)
+                self.assertEqual(info['kind'],'fog')
+                mist=self.page.locator('.room-glass-mark[data-generation="'+str(info['generation'])+'"]')
+                self.assertEqual(mist.locator('.room-help-stroke').count(),0)
+                self.assertEqual(mist.locator('.room-help-fog').count(),1)
+                self.assertGreaterEqual(mist.locator('.room-condensation-drop').count(),2)
+                samples=self.page.evaluate('i=>Array.from({length:8},()=>PalataAtmosphere.showContact(i).kind)',surface)
+                self.assertEqual(set(samples),{'hand','fog'})
+                pane=self.page.locator(selector)
+                self.assertEqual(pane.locator('.room-glass-mark.is-help,.room-help-stroke').count(),0)
 
     def test_metal_returns_match_the_registered_door_contours(self):
         returns=self.page.locator('.room-cabinet-leaf-right .room-cabinet-metal-return')
