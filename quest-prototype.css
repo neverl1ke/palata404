@@ -17,3 +17,14 @@
 .quest-floor .quest-actions{margin:6px 0 10px}.quest-floor>h4{margin:8px 0}
 @media(max-width:700px){.quest-floor .quest-map-pin{width:27px;height:27px;min-height:27px;font-size:9px}.quest-floor>p{font-size:11px}}
 .quest-blueprint{max-width:calc((100dvh - 240px)*1.894);margin:12px auto}
+/* Keep the plan and room actions visible together in the landscape shell. */
+@media(min-width:901px){
+.quest-floor{display:grid!important;grid-template-columns:minmax(0,1fr) 220px;grid-template-rows:auto auto auto auto auto 1fr auto;gap:8px 14px;align-content:start}
+.quest-floor>h3{grid-column:1/-1;grid-row:1}.quest-floor>p{grid-column:1/-1;grid-row:2}
+.quest-floor>.quest-blueprint{grid-column:1;grid-row:3/7;max-width:100%;margin:0;align-self:start}
+.quest-floor>.quest-map-legend{grid-column:1/-1;grid-row:7}
+.quest-floor>h4{grid-column:2;grid-row:3;align-self:start}
+.quest-floor>.quest-actions{grid-column:2;grid-row:4;align-content:start}
+.quest-floor>button{grid-column:2;grid-row:5;align-self:start}
+.quest-floor>.quest-note{grid-column:2;grid-row:6;align-self:start}
+}
