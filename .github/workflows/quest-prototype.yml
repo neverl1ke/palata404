@@ -1,0 +1,27 @@
+name: Quest prototype checks
+on:
+  push:
+    branches: [codex/quest-prototype-v4]
+  workflow_dispatch:
+jobs:
+  quests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: node --check quest-engine.js && node --check quest-prototype.js && node --check quest-sandbox.js && node --check quest-shell.js
+      - run: node --test tests/quest-engine.test.cjs tests/quest-integration.test.cjs
+      - run: pip install -r requirements-dev.txt
+      - run: python -m playwright install --with-deps chromium
+      - run: python tests/test_quest_prototype.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: quest-prototype-screenshots
+          path: test-results/quest-prototype
