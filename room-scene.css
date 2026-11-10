@@ -3,7 +3,7 @@
 @property --room-night{syntax:'<number>';inherits:true;initial-value:0}
 .hospital-hud{--room-light:1;--room-night:0;animation:room-light-supply 61s linear infinite,room-night-cycle 72s ease-in-out infinite}
 /* Visible short voltage dips; warm lamp, room, actor and shadows stay coupled. */
-@keyframes room-light-supply{0%,5.5%,8.3%,37.6%,40.5%,76.3%,79.6%,100%{--room-light:1}6%{--room-light:.92}6.4%{--room-light:.69}6.9%{--room-light:.93}7.4%{--room-light:.78}38.4%{--room-light:.82}39.1%{--room-light:.70}39.7%{--room-light:.94}77.3%{--room-light:.76}77.9%{--room-light:.90}78.5%{--room-light:.70}}
+@keyframes room-light-supply{0%,5.5%,8.3%,37.6%,40.5%,76.3%,79.6%,100%{--room-light:1}6%{--room-light:.90}6.4%{--room-light:.60}6.9%{--room-light:.91}7.4%{--room-light:.69}38.4%{--room-light:.75}39.1%{--room-light:.61}39.7%{--room-light:.91}77.3%{--room-light:.68}77.9%{--room-light:.86}78.5%{--room-light:.60}}
 @keyframes room-night-cycle{0%,8%,100%{--room-night:0}43%,57%{--room-night:1}}
 .hospital-hud .hud-topbar{z-index:20}
 .hospital-hud .hud-patient-board,.hospital-hud .hud-location-area,.hospital-hud .hud-procedures{z-index:10}
@@ -11,7 +11,7 @@
 .hospital-hud .hud-character-stage *{pointer-events:none!important}
 .hospital-hud .hud-character-stage .avatar-clothed-breathing{animation:none!important;scale:1!important}
 .hospital-hud .hud-character-stage .character-container{filter:url('#room-character-lighting') sepia(.12) brightness(calc(.30 + var(--room-light)*.68))}
-.room-scene{position:absolute;inset:0;pointer-events:none;z-index:0}
+.room-scene{position:absolute;inset:0;pointer-events:none;z-index:0;overflow:clip}
 .room-shadow-cast,.room-shadow-contact{position:absolute;left:44%;top:26%;width:22%;height:70%;pointer-events:none;mix-blend-mode:multiply;filter:brightness(0) blur(2.6px);opacity:calc(.12 + var(--room-light)*.16)}
 .room-shadow-cast canvas,.room-shadow-contact canvas{position:absolute;inset:0;width:100%;height:100%;transform-origin:0 0}
 .room-shadow-cast canvas{mask-image:linear-gradient(to bottom,#0004,#000a 50%,#000 94%)}
@@ -26,7 +26,7 @@
 .room-window-right .room-window-scene{background-image:url('hud-art/dusk-window-right.webp')}
 .room-window-glass::after{content:'';position:absolute;inset:0;z-index:4;pointer-events:none;background:linear-gradient(112deg,#d8aa6f18,transparent 38%,#c2986222);opacity:calc(.20 + var(--room-light)*.14);mix-blend-mode:screen}
 .room-outside-bounce{position:absolute;left:-30%;top:-25%;width:160%;height:70%;background:radial-gradient(ellipse at 50% 0,#ccc5b348,transparent 70%);mix-blend-mode:screen;opacity:calc(.08 + var(--room-night)*.14);pointer-events:none}
-.room-distant-light{position:absolute;pointer-events:none;z-index:1;background-position:center;background-size:100% 100%;filter:brightness(calc(.28 - var(--room-night)*.12)) saturate(.5);opacity:0;animation:room-distant-switch 67s linear infinite;clip-path:polygon(3% 1%,99% 0,100% 98%,0 100%)}
+.room-distant-light{position:absolute;pointer-events:none;z-index:1;background-position:center;background-size:100% 100%;filter:url('#room-window-unlit') sepia(.23) saturate(.66) brightness(calc(.96 - var(--room-night)*.62));opacity:0;animation:room-distant-switch 67s linear infinite}
 .room-distant-left-low{left:65%;top:85.8%;width:20%;height:13%;background-image:url('hud-art/window-left-unlit.webp');animation-delay:-13s}
 .room-distant-right-high{left:53.8%;top:43.8%;width:30%;height:14.2%;background-image:url('hud-art/window-right-unlit.webp');animation-duration:79s;animation-delay:-41s}
 @keyframes room-distant-switch{0%,18%,19.3%,58.7%,60.2%,100%{opacity:0}18.6%{opacity:.9}20%,58%{opacity:.97}59.3%{opacity:.72}}
@@ -41,25 +41,28 @@
 .room-floor-print:nth-child(6){left:70.5%;top:76.6%;width:1.7%;height:4.1%}
 @keyframes room-wet-step{0%,43%,100%{opacity:0}1.5%,15%{opacity:.34}31%{opacity:.18}}
 .room-curtain-clear,.room-moving-curtain{position:absolute;left:36.8421%;top:21.7853%;width:5.3828%;height:35.0691%;background:center/100% 100% no-repeat;pointer-events:none}
-.room-curtain-clear{background-image:url('hud-art/room-curtain-clear.svg')}
-.room-moving-curtain{background-image:url('hud-art/room-curtain.svg');filter:drop-shadow(1px 1px 1.8px #30201477);transform-origin:48% 3%;animation:room-curtain-draft 21s ease-in-out infinite}
+.room-curtain-clear{left:35.8852%;top:21.7853%;width:7.4761%;height:37.726%;background-image:url('hud-art/room-curtain-clear.svg?v=51a88303831c')}
+.room-moving-curtain{--cloth-art:url('hud-art/room-curtain.svg?v=f7d09f4ff8e3');--cloth-shadow-x:-.299043cqw;--cloth-shadow-y:.179426cqw;--cloth-shadow-blur:.167464cqw;opacity:1;transform-origin:48% 0;animation:room-curtain-draft 21s ease-in-out infinite}
 .room-cloth-clear,.room-moving-robe,.room-moving-bag{position:absolute;left:91.0287%;top:33.475%;width:8.9713%;height:35.6004%;background:center/100% 100% no-repeat;pointer-events:none}
-.room-cloth-clear{background-image:url('hud-art/room-cloth-clear.svg')}
-.room-moving-robe{background-image:url('hud-art/room-robe.svg');filter:drop-shadow(1px 2px 2.5px #21170b99);transform-origin:50% 2%;animation:room-robe-draft 29s ease-in-out infinite}
-.room-moving-bag{background-image:url('hud-art/room-bag.svg');filter:drop-shadow(1px 2px 2px #21170b88);transform-origin:86% 0;animation:room-bag-draft 24s ease-in-out infinite;animation-delay:-7s}
-@keyframes room-curtain-draft{0%,18%,76%,100%{transform:skewX(0) rotate(0)}36%{transform:skewX(.35deg) rotate(.12deg)}53%{transform:skewX(-.22deg) rotate(-.12deg)}}
-@keyframes room-robe-draft{0%,24%,76%,100%{transform:rotate(0deg)}43%{transform:rotate(.32deg)}61%{transform:rotate(-.20deg)}}
-@keyframes room-bag-draft{0%,23%,83%,100%{transform:rotate(0deg)}42%{transform:rotate(1.1deg)}62%{transform:rotate(-.7deg)}}
+.room-cloth-clear{left:89.8325%;top:31.3496%;width:10.1675%;height:40.3826%;background-image:url('hud-art/room-cloth-clear.svg?v=b84737137658')}
+.room-moving-robe{--cloth-art:url('hud-art/room-robe.svg?v=124d1365c9da');--cloth-shadow-x:.358852cqw;--cloth-shadow-y:.239234cqw;--cloth-shadow-blur:.179426cqw;top:32.8374%;height:36.238%;opacity:1;transform-origin:50% 1%;animation:room-robe-draft 29s ease-in-out infinite}
+.room-moving-bag{--cloth-art:url('hud-art/room-bag.svg?v=04282240f63d');--cloth-shadow-x:.239234cqw;--cloth-shadow-y:.119617cqw;--cloth-shadow-blur:.119617cqw;opacity:1;transform-origin:86% 0;animation:room-bag-draft 24s ease-in-out infinite;animation-delay:-7s}
+/* One moving plane carries both the approved opaque fabric and its cast shadow. */
+.room-moving-curtain::before,.room-moving-curtain::after,.room-moving-robe::before,.room-moving-robe::after,.room-moving-bag::before,.room-moving-bag::after{content:'';position:absolute;inset:0;background:var(--cloth-art) center/100% 100% no-repeat;pointer-events:none}
+.room-moving-curtain::before,.room-moving-robe::before,.room-moving-bag::before{transform-origin:inherit;transform:translate(var(--cloth-shadow-x),var(--cloth-shadow-y)) scale(1.015);filter:brightness(0) blur(var(--cloth-shadow-blur));opacity:calc(.08 + var(--room-light)*.24);mix-blend-mode:multiply}
+.room-moving-curtain::after,.room-moving-robe::after,.room-moving-bag::after{opacity:1}
+@keyframes room-curtain-draft{0%,18%,76%,100%{transform:skewX(0) rotate(0)}36%{transform:skewX(-.35deg) rotate(.85deg)}53%{transform:skewX(.30deg) rotate(-.70deg)}}
+@keyframes room-robe-draft{0%,24%,76%,100%{transform:rotate(0deg)}43%{transform:rotate(.95deg)}61%{transform:rotate(-.65deg)}}
+@keyframes room-bag-draft{0%,23%,83%,100%{transform:rotate(0deg)}42%{transform:rotate(1.8deg)}62%{transform:rotate(-1.2deg)}}
 .room-door-assembly{position:absolute;left:66.388%;top:29.543%;width:11.782%;height:46.121%;perspective:850px;isolation:isolate}
-.room-door-portal{position:absolute;inset:0;background:#211b15;overflow:hidden;opacity:0;transition:opacity .13s linear;box-shadow:inset 10px 0 12px #0009,inset -4px 0 7px #0008;}
+.room-door-portal{position:absolute;inset:0;background:#211b15;overflow:hidden;opacity:1;box-shadow:inset 10px 0 12px #0009,inset -4px 0 7px #0008;}
 .room-door-leaf{position:absolute;inset:0;transform-origin:100% 50%;transform:rotateY(0deg);transform-style:preserve-3d;backface-visibility:hidden;transition:transform .82s cubic-bezier(.25,.05,.25,1);will-change:transform}
 .room-door-leaf>img{display:block;width:100%;height:100%;pointer-events:none}
-.room-door-glass{position:absolute;left:14.2%;top:9.7%;width:70.5%;height:23%;overflow:hidden;isolation:isolate;background:#473421}
-.room-corridor-scene,.room-corridor-sight{position:absolute;background:#211b15 url('hud-art/room-corridor.webp') center/cover no-repeat;filter:brightness(.62) blur(.32cqw);animation:room-corridor-air 17s ease-in-out infinite;transform:scale(1.045)}
+.room-door-glass{position:absolute;left:15.6345%;top:9.7696%;width:67.2081%;height:21.8203%;overflow:hidden;isolation:isolate;background:transparent;clip-path:polygon(0 0,100% .4224%,99.8489% 99.6832%,.3021% 100%);backdrop-filter:blur(calc(var(--glass-motion,0) * .07cqw))}
+.room-corridor-scene{position:absolute;background:#211b15 url('hud-art/room-corridor.webp') center/100% 100% no-repeat;filter:brightness(.78)}
 .room-corridor-scene{inset:0}
-.room-corridor-sight{left:-20.1418%;top:-42.1739%;width:141.844%;height:434.783%}
+.room-door-glass::after{content:'';position:absolute;inset:0;pointer-events:none;background:linear-gradient(120deg,#d1b08012,transparent 55%,#d1b0800a);opacity:1}
 .room-door-wire{position:absolute;inset:0;z-index:1;background:repeating-linear-gradient(45deg,transparent 0 calc(.58cqw - .7px),#36342899 calc(.58cqw - .7px) .58cqw),repeating-linear-gradient(-45deg,transparent 0 calc(.58cqw - .7px),#36342899 calc(.58cqw - .7px) .58cqw);box-shadow:inset 0 0 6px #30231880}
-@keyframes room-corridor-air{0%,100%{filter:brightness(.62) blur(.32cqw)}50%{filter:brightness(.56) blur(.42cqw)}}
 .room-door-handle{position:absolute;left:4.5685%;top:50.9217%;width:17.7665%;height:3.4562%;transform-origin:14.2857% 40%;transform:rotateZ(0deg);transform-style:preserve-3d;transition:transform .16s ease}
 .room-door-handle img{position:absolute;inset:0;width:100%;height:100%}
 .room-door-assembly.is-handle-pressed .room-door-handle{transform:rotateZ(17deg)}

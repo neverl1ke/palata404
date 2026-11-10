@@ -45,6 +45,34 @@ function makeEntrance(actionSelector,assemblySelector,leafSelector,modalId,revea
 }
 const door=makeEntrance('.room-door-action','.room-door-assembly','.room-door-leaf','map-modal',()=>toggleMapModal(true),820);
 const cabinet=makeEntrance('.room-cabinet-action','.room-cabinet-assembly','.room-cabinet-leaf-right','custom-modal',openCustomization,1140);
+// The SVG pane is an actual aperture: the fixed scene is seen through it.
+// A bounded motion sample adds a little optical smear only while it turns.
+const doorAssembly=root.querySelector('.room-door-assembly'),doorLeaf=doorAssembly.querySelector('.room-door-leaf');
+const doorGlass=doorAssembly.querySelector('.room-door-glass');
+let glassFrame=0,glassAngle=0,glassTime=0;
+function updateDoorGlass(now){
+ const rotation=new DOMMatrix(getComputedStyle(doorLeaf).transform);
+ const angle=Math.abs(Math.atan2(rotation.m31,rotation.m11));
+ const moving=!reduced.matches&&doorLeaf.getAnimations().some(a=>a.transitionProperty==='transform'&&a.playState==='running');
+ const elapsed=now-glassTime;
+ const motion=moving&&elapsed>0&&elapsed<100?Math.min(1,Math.abs(angle-glassAngle)*1000/elapsed/6):0;
+ doorGlass.style.setProperty('--glass-motion',motion.toFixed(5));
+ doorGlass.dataset.angle=(angle*180/Math.PI).toFixed(2);
+ glassAngle=angle;glassTime=now;
+ return moving;
+}
+function trackDoorGlass(){
+ if(glassFrame||document.hidden)return;
+ glassFrame=requestAnimationFrame(now=>{glassFrame=0;if(updateDoorGlass(now))trackDoorGlass();});
+}
+doorLeaf.addEventListener('transitionrun',trackDoorGlass);
+doorLeaf.addEventListener('transitionend',trackDoorGlass);
+doorLeaf.addEventListener('transitioncancel',trackDoorGlass);
+new MutationObserver(trackDoorGlass).observe(doorAssembly,{attributes:true,attributeFilter:['class']});
+new ResizeObserver(trackDoorGlass).observe(doorAssembly);
+reduced.addEventListener('change',trackDoorGlass);
+window.addEventListener('pagehide',()=>{cancelAnimationFrame(glassFrame);glassFrame=0;doorGlass.style.setProperty('--glass-motion','0');});
+window.addEventListener('pageshow',trackDoorGlass);updateDoorGlass(performance.now());
 function refresh(){
  const trip=stats.madness>=100;root.dataset.roomMode=trip?'trip':'patient';button.setAttribute('aria-pressed',String(trip));const label=trip?'Выйти из Трипа':'Войти в Трип';button.setAttribute('aria-label',label);button.querySelector('.room-action-label').textContent=label;button.disabled=isBattleActive;
 }

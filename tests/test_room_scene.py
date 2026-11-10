@@ -3,7 +3,7 @@ import io
 import unittest
 from pathlib import Path
 
-from PIL import Image, ImageStat
+from PIL import Image, ImageChops, ImageStat
 from tests import test_game
 
 
@@ -28,7 +28,7 @@ class RoomSceneTests(unittest.TestCase):
         self.assertEqual(self.errors, [])
 
     def freeze(self):
-        self.page.evaluate('document.getAnimations().forEach(a=>{a.pause();a.currentTime=0})')
+        self.page.evaluate('document.getAnimations().filter(a=>a.animationName).forEach(a=>{a.pause();a.currentTime=0})')
 
     def seek(self, name, time):
         self.page.evaluate('([name,time])=>{for(const a of document.getAnimations())if(a.animationName===name){a.pause();a.currentTime=time}}', [name, time])
@@ -37,6 +37,11 @@ class RoomSceneTests(unittest.TestCase):
     @staticmethod
     def rgb(data, rect):
         return ImageStat.Stat(Image.open(io.BytesIO(data)).convert('RGB').crop(rect)).mean
+
+    @staticmethod
+    def pixels(image):
+        raw = iter(image.tobytes())
+        return zip(raw, raw, raw)
 
     def test_soft_rare_flicker_keeps_the_bulb_lit_and_night_outside(self):
         self.freeze()
@@ -47,17 +52,18 @@ class RoomSceneTests(unittest.TestCase):
             const values=[];for(let t=0;t<61000;t+=100){a.currentTime=t;values.push(Number(getComputedStyle(e).getPropertyValue('--room-light')))}
             a.currentTime=0;return values;
         }''')
-        self.assertGreaterEqual(min(values), .68)
+        self.assertGreaterEqual(min(values), .59)
+        self.assertLessEqual(min(values), .63)
         self.assertLess(sum(v < .999 for v in values)/len(values), .12)
         self.seek('room-light-supply', 3904)
         dim = self.page.screenshot()
         for rect in [(897,291,941,335), (1071,178,1100,220), (828,105,848,119)]:
             ratio = sum(self.rgb(dim, rect))/sum(self.rgb(bright, rect))
-            self.assertGreater(ratio, .77)
-            self.assertLess(ratio, .98)
+            self.assertGreater(ratio, .63)
+            self.assertLess(ratio, .95)
         bulb = self.rgb(dim, (828,105,848,119))
         self.assertGreater(bulb[0]-bulb[2], 18)  # Warm emitter, no gray semicircle.
-        self.assertGreater(sum(bulb)/3, 120)
+        self.assertGreater(sum(bulb)/3, 110)
         self.assertEqual(self.page.locator('.room-shadow-cast canvas').evaluate('e=>e.toDataURL()'), avatar)
         self.seek('room-light-supply', 0)
         self.seek('room-night-cycle', 0)
@@ -92,6 +98,69 @@ class RoomSceneTests(unittest.TestCase):
             hashes.append(contact.locator('canvas').evaluate('e=>e.toDataURL()'))
             self.page.screenshot(path=str(out/f'{gender}.png'))
         self.assertNotEqual(*hashes)
+
+    def test_distant_lights_leave_the_unlit_glass_and_grid_visible(self):
+        self.freeze()
+        # Expose both distant windows and isolate their light from foreground effects.
+        self.page.add_style_tag(content='.hud-character-stage,.room-glass-mark{display:none!important}')
+        lights = self.page.locator('.room-distant-light')
+        lights.evaluate_all('es=>es.forEach(e=>{e.style.animation="none";e.style.opacity="0"})')
+        for phase in [0, 36000]:
+            self.seek('room-night-cycle', phase)
+            for selector, source in [('.room-distant-left-low','window-left-unlit.webp'),('.room-distant-right-high','window-right-unlit.webp')]:
+                with self.subTest(phase=phase, window=source):
+                    light = self.page.locator(selector)
+                    light.evaluate('e=>e.style.opacity="0"')
+                    lit = Image.open(io.BytesIO(light.screenshot())).convert('RGB')
+                    light.evaluate('e=>e.style.opacity="1"')
+                    unlit = Image.open(io.BytesIO(light.screenshot())).convert('RGB')
+                    original = Image.open(test_game.ROOT/'hud-art'/source).convert('RGB').resize(lit.size)
+                    # Select cold foreground/grid pixels away from the orange emission.
+                    delta = ImageChops.difference(lit, unlit)
+                    cold = [sum(v)/3 for v,(r,g,b) in zip(self.pixels(delta),self.pixels(original)) if r-b < 24]
+                    self.assertGreater(len(cold), 20)
+                    self.assertLess(sum(cold)/len(cold), 3)
+                    warm = [sum(v)/3 for v,(r,g,b) in zip(self.pixels(delta),self.pixels(original)) if r-b > 70]
+                    self.assertGreater(len(warm), 15)
+                    self.assertGreater(sum(warm)/len(warm), 4 if phase else 10)
+                    # Extinguished glazing retains texture instead of becoming black.
+                    self.assertGreater(sum(ImageStat.Stat(unlit).mean)/3, 20 if phase else 55)
+                    light.evaluate('e=>e.style.opacity="0"')
+
+    def test_fabric_cast_shadows_move_with_the_opaque_approved_cutouts(self):
+        self.freeze()
+        self.page.add_style_tag(content='.room-glass-mark{display:none!important}')
+        fabrics = [('curtain',7560,(60,160)),('robe',12470,(75,206)),('bag',10080,(125,100))]
+        for name, time, sample in fabrics:
+            with self.subTest(fabric=name):
+                selector = '.room-moving-'+name
+                cloth = self.page.locator(selector)
+                styles = cloth.evaluate('''e=>{const front=getComputedStyle(e,'::after'),shadow=getComputedStyle(e,'::before');return {front:front.backgroundImage,shadow:shadow.backgroundImage,frontOpacity:Number(front.opacity),shadowOpacity:Number(shadow.opacity),shadowFilter:shadow.filter,frontAnimation:front.animationName,shadowAnimation:shadow.animationName}}''')
+                self.assertEqual(styles['front'], styles['shadow'])
+                self.assertIn('room-'+name+'.svg', styles['front'])
+                self.assertEqual(styles['frontOpacity'], 1)
+                self.assertGreater(styles['shadowOpacity'], .1)
+                self.assertIn('brightness(0)', styles['shadowFilter'])
+                self.assertIn('blur(', styles['shadowFilter'])
+                self.assertEqual((styles['frontAnimation'],styles['shadowAnimation']),('none','none'))
+                self.seek('room-light-supply',3904)
+                dim_opacity = float(cloth.evaluate('e=>getComputedStyle(e,"::before").opacity'))
+                self.assertLess(dim_opacity, styles['shadowOpacity'])
+                self.seek('room-light-supply',0)
+                alpha = self.page.evaluate('''async ([name,x,y])=>{const im=new Image();im.src='hud-art/room-'+name+'.svg';await im.decode();const c=document.createElement('canvas');c.width=name==='curtain'?90:150;c.height=name==='curtain'?330:name==='robe'?341:335;const ctx=c.getContext('2d');ctx.drawImage(im,0,0,c.width,c.height);return [ctx.getImageData(x,y,1,1).data[3],ctx.getImageData(0,y,1,1).data[3]]}''',[name,*sample])
+                self.assertEqual(alpha, [255,0])
+
+                # Render only one cast shadow over the fixed wall: its pixels must move.
+                rule = self.page.add_style_tag(content='.room-moving-curtain::after,.room-moving-robe::after,.room-moving-bag::after,.room-moving-curtain::before,.room-moving-robe::before,.room-moving-bag::before{opacity:0!important}'+selector+'::before{opacity:.4!important}')
+                self.seek('room-'+name+'-draft',0)
+                box=cloth.bounding_box(); rect=(max(0,int(box['x'])-20),max(0,int(box['y'])-20),min(1672,int(box['x']+box['width'])+20),min(941,int(box['y']+box['height'])+20))
+                still=Image.open(io.BytesIO(self.page.screenshot())).convert('RGB').crop(rect)
+                self.seek('room-'+name+'-draft',time)
+                moved=Image.open(io.BytesIO(self.page.screenshot())).convert('RGB').crop(rect)
+                changed=sum(1 for r,g,b in self.pixels(ImageChops.difference(still,moved)) if max(r,g,b)>3)
+                self.assertGreater(changed, 30)
+                rule.evaluate('e=>e.remove()')
+                self.seek('room-'+name+'-draft',0)
 
     def test_circle_hover_and_all_task_links_use_the_same_read_only_dialog(self):
         self.freeze()
@@ -158,9 +227,18 @@ class RoomSceneTests(unittest.TestCase):
         self.page.wait_for_function('document.querySelector(".room-door-assembly").dataset.state==="closed"')
         self.page.wait_for_timeout(200)
         self.assertAlmostEqual(self.page.locator('.room-door-handle').evaluate('e=>new DOMMatrix(getComputedStyle(e).transform).b'),0,delta=.001)
-        for selector in ['.room-corridor-scene','.room-corridor-sight']:
-            self.assertIn('room-corridor.webp',self.page.locator(selector).evaluate('e=>getComputedStyle(e).backgroundImage'))
-            self.assertIn('blur(',self.page.locator(selector).evaluate('e=>getComputedStyle(e).filter'))
+        corridor = self.page.locator('.room-corridor-scene')
+        self.assertIn('room-corridor.webp', corridor.evaluate('e=>getComputedStyle(e).backgroundImage'))
+        self.assertNotIn('blur(', corridor.evaluate('e=>getComputedStyle(e).filter'))
+        self.assertEqual(self.page.locator('.room-corridor-sight').count(), 0)
+        self.assertGreater(float(self.page.locator('.room-door-portal').evaluate('e=>getComputedStyle(e).opacity')), .99)
+        alpha = self.page.locator('.room-door-leaf>img').evaluate('''async e=>{
+            await e.decode();const c=document.createElement('canvas');c.width=197;c.height=434;
+            const ctx=c.getContext('2d');ctx.drawImage(e,0,0,197,434);
+            return {glass:ctx.getImageData(98,92,1,1).data[3],paint:ctx.getImageData(90,150,1,1).data[3]};
+        }''')
+        self.assertLess(alpha['glass'], 5)  # A real aperture shows the fixed world behind it.
+        self.assertGreater(alpha['paint'], 250)
 
     def test_contacts_visit_all_glass_and_steps_appear_in_order(self):
         self.freeze()
@@ -172,6 +250,14 @@ class RoomSceneTests(unittest.TestCase):
         self.assertEqual(self.page.locator('.room-door-glass .room-glass-mark').count(),6)
         self.seek('room-wet-step',8500)
         steps=self.page.locator('.room-floor-print')
+        walking = steps.evaluate_all('''es=>es.map(e=>{const r=e.getBoundingClientRect(),m=new DOMMatrix(getComputedStyle(e).transform);return {foot:e.dataset.foot,src:e.getAttribute('src'),x:r.x+r.width/2,y:r.y+r.height/2,dx:-m.c,dy:-m.d}})''')
+        for right, left in zip(walking[::2], walking[1::2]):
+            self.assertEqual((right['foot'], left['foot']), ('right', 'left'))
+            self.assertIn('wet-foot-right.webp', right['src'])
+            self.assertIn('wet-foot-left.webp', left['src'])
+            # Looking along the path, the left sole must lie to the walker's left.
+            lateral = (left['x']-right['x'])*right['dy'] - (left['y']-right['y'])*right['dx']
+            self.assertGreater(lateral, 8)
         self.assertGreater(float(steps.first.evaluate('e=>getComputedStyle(e).opacity')),.2)
         self.assertEqual(float(steps.last.evaluate('e=>getComputedStyle(e).opacity')),0)
         self.seek('room-wet-step',12500)

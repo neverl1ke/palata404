@@ -17,15 +17,15 @@
     "ambientTextures": "Generated isolated glass residues and wet footprint decals; original room pixels are retained for all fabric and handle front textures."
   },
   "rendering": {
-    "outside": "Original approved gray dusk view cycles smoothly to night and back in 72 seconds. Exterior fixture is off camera on the tenth floor; no lamp/post is visible.",
-    "lamp": "Three brief warm voltage dips per 61 seconds, first at about 4 seconds; minimum supply 0.69, never off.",
+    "outside": "Original approved gray dusk view cycles to night and back in 72 seconds. Selective warm-glass relighting preserves dark window texture, frames and foreground mesh when a distant light switches off. No visible exterior fixture on the tenth floor.",
+    "lamp": "Three brief warm voltage dips per 61 seconds, first at about 4 seconds; minimum supply 0.60, never off. Room, avatar and cast shadows share the supply.",
     "groundContact": "Derived from the actual composed avatar alpha and heel-to-toe lower contour.",
     "cabinet": "Actual registered trapezoid metal returns, front and separate inner faces; original handle pixels on solid extruded contours, no pull-handle bending.",
     "state": "Existing game save/stat/loadout APIs; Tasks is a read-only placeholder.",
-    "door": "Original lever depresses on hover, stays down through opening/closing, returns after the door closes. Same soft-focus corridor behind glass and opening.",
+    "door": "The original door face has a true transparent glass aperture. A fixed sharp corridor is seen through it; only glass motion adds slight transient optical smear. No duplicated backdrop is carried by the door.",
     "contacts": "Independent grease/breath textures visit nonrepeating positions across both window panes and door glass.",
     "floor": "Six damp bare footprints appear successively along a perspective path, then evaporate.",
-    "fabrics": "Original curtain, robe and bag pixels sway mildly over localized restored clean plates."
+    "fabrics": "User-approved original-photo alpha crops. Each opaque face and its soft cast shadow share one moving plane; shadow strength follows room light. Broad feathered restoration behind them removes the fixed silhouette."
   },
   "files": [
     {
@@ -135,8 +135,8 @@
     },
     {
       "path": "room-bag.svg",
-      "bytes": 27757,
-      "sha256": "0063d88e849d8faf46ca3913c33f7990c620766dcc1bf84d17b7287021607b52"
+      "bytes": 28166,
+      "sha256": "04282240f63deff682ffe43ac001413cebefc2ed4cce6293b0822cc791a6ccb5"
     },
     {
       "path": "room-cabinet-interior.webp",
@@ -155,8 +155,8 @@
     },
     {
       "path": "room-cloth-clear.svg",
-      "bytes": 14925,
-      "sha256": "5b502e9e41bbf803905572397e2f1ac310607a1163efa374c85f09a9c25b8662"
+      "bytes": 19160,
+      "sha256": "b8473713765818426437f3366fe849f68274f534b42e7bd5fadba45ac1c3db61"
     },
     {
       "path": "room-corridor.webp",
@@ -165,18 +165,18 @@
     },
     {
       "path": "room-curtain-clear.svg",
-      "bytes": 16110,
-      "sha256": "c52d2dac0a0f50305184f3bffa62178e960e201089144b27d1d39037b4e5d83d"
+      "bytes": 23133,
+      "sha256": "51a88303831c494bbc384dd13abd7598e2c2a5f150271df9d0d46eef42b3f31c"
     },
     {
       "path": "room-curtain.svg",
-      "bytes": 14753,
-      "sha256": "b421e91a9aaeb38eb081e8b122ae57116510463ae3ddead0cec85a2395a0009c"
+      "bytes": 15010,
+      "sha256": "f7d09f4ff8e352fb823ed0b74b0c220e600a9fa1e3f21ecc1f184068e1ed327c"
     },
     {
       "path": "room-door-leaf.svg",
-      "bytes": 595726,
-      "sha256": "7e0c37f5646a97561211b3fd3f7999991e2e2f4eb0ab3b02f0e82702c5cfde73"
+      "bytes": 595998,
+      "sha256": "c58549eca8e399c331d7a1439588bb7e974c4a5482e0770bc890c0b693227db3"
     },
     {
       "path": "room-exposure-mask.svg",
@@ -185,8 +185,8 @@
     },
     {
       "path": "room-robe.svg",
-      "bytes": 27775,
-      "sha256": "4369c62a89c9f0f038fe1d55ac6942d4ca7f8d0aa857fc4592b1f457086470e6"
+      "bytes": 75221,
+      "sha256": "124d1365c9da2e1b47f7f8ff88f182edd0bd64a4e4077919b5ca61ffc062d936"
     },
     {
       "path": "room-switch.svg",
@@ -234,5 +234,49 @@
       58
     ],
     "method": "Unchanged source pixel crops, SVG contour and runtime 3D projection; no replacement handles drawn."
+  },
+  "clothRegistration": {
+    "curtain": {
+      "sourceBox": [
+        616,
+        205,
+        90,
+        330
+      ],
+      "viewBox": [
+        0,
+        0,
+        90,
+        330
+      ]
+    },
+    "robe": {
+      "sourceBox": [
+        1522,
+        309,
+        150,
+        341
+      ],
+      "viewBox": [
+        0,
+        -6,
+        150,
+        341
+      ]
+    },
+    "bag": {
+      "sourceBox": [
+        1522,
+        315,
+        150,
+        335
+      ],
+      "viewBox": [
+        0,
+        0,
+        150,
+        335
+      ]
+    }
   }
 }
