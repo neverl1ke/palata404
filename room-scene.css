@@ -1,6 +1,7 @@
 /* One light supply controls the room exposure, actor, emitter and projected shadows. */
 @property --room-light{syntax:'<number>';inherits:true;initial-value:1}
 @property --room-night{syntax:'<number>';inherits:true;initial-value:0}
+@property --corridor-light{syntax:'<number>';inherits:true;initial-value:1}
 .hospital-hud{--room-light:1;--room-night:0;animation:room-light-supply 61s linear infinite,room-night-cycle 72s ease-in-out infinite}
 /* Visible short voltage dips; warm lamp, room, actor and shadows stay coupled. */
 @keyframes room-light-supply{0%,5.5%,8.3%,37.6%,40.5%,76.3%,79.6%,100%{--room-light:1}6%{--room-light:.90}6.4%{--room-light:.60}6.9%{--room-light:.91}7.4%{--room-light:.69}38.4%{--room-light:.75}39.1%{--room-light:.61}39.7%{--room-light:.91}77.3%{--room-light:.68}77.9%{--room-light:.86}78.5%{--room-light:.60}}
@@ -33,33 +34,34 @@
 .room-glass-mark{position:absolute;z-index:3;height:auto;aspect-ratio:1;object-fit:contain;transform:translate(-50%,-50%) rotate(var(--mark-turn,0deg));opacity:0;mix-blend-mode:screen;filter:brightness(2.1) saturate(.25);pointer-events:none}
 .room-floor-trail{position:absolute;inset:0;pointer-events:none}
 .room-floor-print{position:absolute;width:2.15%;height:5.2%;object-fit:fill;opacity:0;filter:grayscale(1) sepia(.4) brightness(.35);mix-blend-mode:multiply;transform:rotate(-32deg);animation:room-wet-step 48s linear infinite;animation-delay:calc(6s + var(--step)*.95s)}
-.room-floor-print:nth-child(1){left:77.5%;top:89%;width:2.7%;height:6.4%}
-.room-floor-print:nth-child(2){left:75%;top:86%;width:2.5%;height:6%}
-.room-floor-print:nth-child(3){left:75.1%;top:83.5%;width:2.3%;height:5.5%}
-.room-floor-print:nth-child(4){left:72.6%;top:81%;width:2.1%;height:5%}
-.room-floor-print:nth-child(5){left:72.9%;top:78.7%;width:1.9%;height:4.5%}
-.room-floor-print:nth-child(6){left:70.5%;top:76.6%;width:1.7%;height:4.1%}
+.room-floor-print:nth-child(1){left:78.25670%;top:92.45462%;width:2.7%;height:6.4%}
+.room-floor-print:nth-child(2){left:75.63696%;top:90.03560%;width:2.5%;height:6%}
+.room-floor-print:nth-child(3){left:75.61651%;top:85.03066%;width:2.3%;height:5.5%}
+.room-floor-print:nth-child(4){left:73.22500%;top:82.90946%;width:2.1%;height:5%}
+.room-floor-print:nth-child(5){left:73.22990%;top:78.37763%;width:1.9%;height:4.5%}
+.room-floor-print:nth-child(6){left:71.06663%;top:76.45425%;width:1.7%;height:4.1%}
 @keyframes room-wet-step{0%,43%,100%{opacity:0}1.5%,15%{opacity:.34}31%{opacity:.18}}
 .room-curtain-clear,.room-moving-curtain{position:absolute;left:36.8421%;top:21.7853%;width:5.3828%;height:35.0691%;background:center/100% 100% no-repeat;pointer-events:none}
-.room-curtain-clear{left:35.8852%;top:21.7853%;width:7.4761%;height:37.726%;background-image:url('hud-art/room-curtain-clear.svg?v=51a88303831c')}
-.room-moving-curtain{--cloth-art:url('hud-art/room-curtain.svg?v=f7d09f4ff8e3');--cloth-shadow-x:-.299043cqw;--cloth-shadow-y:.179426cqw;--cloth-shadow-blur:.167464cqw;opacity:1;transform-origin:48% 0;animation:room-curtain-draft 21s ease-in-out infinite}
+.room-curtain-clear{left:35.8852%;top:18.5972%;width:7.4761%;height:40.3826%;background-image:url('hud-art/room-curtain-clear.svg?v=ac8427028108')}
+.room-moving-curtain{--cloth-art:url('hud-art/room-curtain.svg?v=e154d4658cce');--cloth-shadow-x:-.299043cqw;--cloth-shadow-y:.179426cqw;--cloth-shadow-blur:.167464cqw;top:19.1286%;height:37.726%;opacity:1;transform-origin:48% 1.5%;animation:room-curtain-draft 54s ease-in-out infinite}
 .room-cloth-clear,.room-moving-robe,.room-moving-bag{position:absolute;left:91.0287%;top:33.475%;width:8.9713%;height:35.6004%;background:center/100% 100% no-repeat;pointer-events:none}
 .room-cloth-clear{left:89.8325%;top:31.3496%;width:10.1675%;height:40.3826%;background-image:url('hud-art/room-cloth-clear.svg?v=b84737137658')}
-.room-moving-robe{--cloth-art:url('hud-art/room-robe.svg?v=124d1365c9da');--cloth-shadow-x:.358852cqw;--cloth-shadow-y:.239234cqw;--cloth-shadow-blur:.179426cqw;top:32.8374%;height:36.238%;opacity:1;transform-origin:50% 1%;animation:room-robe-draft 29s ease-in-out infinite}
-.room-moving-bag{--cloth-art:url('hud-art/room-bag.svg?v=04282240f63d');--cloth-shadow-x:.239234cqw;--cloth-shadow-y:.119617cqw;--cloth-shadow-blur:.119617cqw;opacity:1;transform-origin:86% 0;animation:room-bag-draft 24s ease-in-out infinite;animation-delay:-7s}
+.room-moving-robe{--cloth-art:url('hud-art/room-robe.svg?v=d330db196392');--cloth-shadow-x:.358852cqw;--cloth-shadow-y:.239234cqw;--cloth-shadow-blur:.179426cqw;top:32.8374%;height:36.238%;opacity:1;transform-origin:50% 1%;animation:room-robe-draft 54s ease-in-out infinite}
+.room-moving-bag{--cloth-art:url('hud-art/room-bag.svg?v=04282240f63d');--cloth-shadow-x:.239234cqw;--cloth-shadow-y:.119617cqw;--cloth-shadow-blur:.119617cqw;opacity:1;transform-origin:86% 0;animation:room-bag-draft 54s ease-in-out infinite}
 /* One moving plane carries both the approved opaque fabric and its cast shadow. */
 .room-moving-curtain::before,.room-moving-curtain::after,.room-moving-robe::before,.room-moving-robe::after,.room-moving-bag::before,.room-moving-bag::after{content:'';position:absolute;inset:0;background:var(--cloth-art) center/100% 100% no-repeat;pointer-events:none}
 .room-moving-curtain::before,.room-moving-robe::before,.room-moving-bag::before{transform-origin:inherit;transform:translate(var(--cloth-shadow-x),var(--cloth-shadow-y)) scale(1.015);filter:brightness(0) blur(var(--cloth-shadow-blur));opacity:calc(.08 + var(--room-light)*.24);mix-blend-mode:multiply}
 .room-moving-curtain::after,.room-moving-robe::after,.room-moving-bag::after{opacity:1}
-@keyframes room-curtain-draft{0%,18%,76%,100%{transform:skewX(0) rotate(0)}36%{transform:skewX(-.35deg) rotate(.85deg)}53%{transform:skewX(.30deg) rotate(-.70deg)}}
-@keyframes room-robe-draft{0%,24%,76%,100%{transform:rotate(0deg)}43%{transform:rotate(.95deg)}61%{transform:rotate(-.65deg)}}
-@keyframes room-bag-draft{0%,23%,83%,100%{transform:rotate(0deg)}42%{transform:rotate(1.8deg)}62%{transform:rotate(-1.2deg)}}
+@keyframes room-curtain-draft{0%,6%,17%,100%{transform:skewX(0) rotate(0)}10%{transform:skewX(-.35deg) rotate(.85deg)}14%{transform:skewX(.30deg) rotate(-.70deg)}}
+@keyframes room-robe-draft{0%,35%,48%,100%{transform:rotate(0deg)}40%{transform:rotate(.95deg)}44%{transform:rotate(-.65deg)}}
+@keyframes room-bag-draft{0%,64%,76%,100%{transform:rotate(0deg)}69%{transform:rotate(1.8deg)}73%{transform:rotate(-1.2deg)}}
 .room-door-assembly{position:absolute;left:66.388%;top:29.543%;width:11.782%;height:46.121%;perspective:850px;isolation:isolate}
 .room-door-portal{position:absolute;inset:0;background:#211b15;overflow:hidden;opacity:1;box-shadow:inset 10px 0 12px #0009,inset -4px 0 7px #0008;}
 .room-door-leaf{position:absolute;inset:0;transform-origin:100% 50%;transform:rotateY(0deg);transform-style:preserve-3d;backface-visibility:hidden;transition:transform .82s cubic-bezier(.25,.05,.25,1);will-change:transform}
 .room-door-leaf>img{display:block;width:100%;height:100%;pointer-events:none}
 .room-door-glass{position:absolute;left:15.6345%;top:9.7696%;width:67.2081%;height:21.8203%;overflow:hidden;isolation:isolate;background:transparent;clip-path:polygon(0 0,100% .4224%,99.8489% 99.6832%,.3021% 100%);backdrop-filter:blur(calc(var(--glass-motion,0) * .07cqw))}
-.room-corridor-scene{position:absolute;background:#211b15 url('hud-art/room-corridor.webp') center/100% 100% no-repeat;filter:brightness(.78)}
+.room-corridor-scene{--corridor-light:1;position:absolute;background:#211b15 url('hud-art/room-corridor.webp') center/100% 100% no-repeat;filter:brightness(calc(.78 * var(--corridor-light)));animation:room-corridor-supply 47s linear infinite}
+@keyframes room-corridor-supply{0%,11%,15%,65%,69%,100%{--corridor-light:1}12.3%{--corridor-light:.64}13%{--corridor-light:.89}14%{--corridor-light:.74}66%{--corridor-light:.77}67%{--corridor-light:.62}68%{--corridor-light:.92}}
 .room-corridor-scene{inset:0}
 .room-door-glass::after{content:'';position:absolute;inset:0;pointer-events:none;background:linear-gradient(120deg,#d1b08012,transparent 55%,#d1b0800a);opacity:1}
 .room-door-wire{position:absolute;inset:0;z-index:1;background:repeating-linear-gradient(45deg,transparent 0 calc(.58cqw - .7px),#36342899 calc(.58cqw - .7px) .58cqw),repeating-linear-gradient(-45deg,transparent 0 calc(.58cqw - .7px),#36342899 calc(.58cqw - .7px) .58cqw);box-shadow:inset 0 0 6px #30231880}
@@ -128,6 +130,7 @@
 @media(prefers-reduced-motion:reduce){
  .hospital-hud{animation:none!important;--room-light:1;--room-night:0}
  .room-scene *,.room-light-veil{animation:none!important}
+ .room-corridor-scene{--corridor-light:1}
  .room-glass-mark,.room-floor-print{opacity:0!important}
  .room-door-leaf,.room-door-portal,.room-cabinet-leaf,.room-action-label,.room-switch-art,.room-switch-art::after,.room-task-corner,.room-door-handle{transition:none}
 }

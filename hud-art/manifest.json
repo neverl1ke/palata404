@@ -24,8 +24,9 @@
     "state": "Existing game save/stat/loadout APIs; Tasks is a read-only placeholder.",
     "door": "The original door face has a true transparent glass aperture. A fixed sharp corridor is seen through it; only glass motion adds slight transient optical smear. No duplicated backdrop is carried by the door.",
     "contacts": "Independent grease/breath textures visit nonrepeating positions across both window panes and door glass.",
-    "floor": "Six damp bare footprints appear successively along a perspective path, then evaporate.",
-    "fabrics": "User-approved original-photo alpha crops. Each opaque face and its soft cast shadow share one moving plane; shadow strength follows room light. Broad feathered restoration behind them removes the fixed silhouette."
+    "floor": "Six damp bare footprints appear successively along a perspective path, then evaporate. Forward intervals are even and left/right lanes are wider.",
+    "fabrics": "The original curtain is one continuous photo crop up to the fabric attachments; its restored background has a feathered top blend. Robe outer edge excludes baked shadow pixels. Each opaque face and soft cast shadow shares one plane. A shared 54-second cycle moves curtain, then robe, then bag, with quiet gaps and no overlapping movement.",
+    "corridor": "Sharp fixed corridor behind the transparent door glass, with independent rare warm voltage dips in a 47-second cycle; minimum supply 0.62, never off."
   },
   "files": [
     {
@@ -165,13 +166,13 @@
     },
     {
       "path": "room-curtain-clear.svg",
-      "bytes": 23133,
-      "sha256": "51a88303831c494bbc384dd13abd7598e2c2a5f150271df9d0d46eef42b3f31c"
+      "bytes": 23643,
+      "sha256": "ac84270281087518aa8eb88a368f4635397bae06829dc1562317f1f75b4dab9a"
     },
     {
       "path": "room-curtain.svg",
-      "bytes": 15010,
-      "sha256": "f7d09f4ff8e352fb823ed0b74b0c220e600a9fa1e3f21ecc1f184068e1ed327c"
+      "bytes": 44655,
+      "sha256": "e154d4658cce28fdc0d2c7da23fc033c509246bcd1b87cbdc56e6f19e9a44bc7"
     },
     {
       "path": "room-door-leaf.svg",
@@ -185,8 +186,8 @@
     },
     {
       "path": "room-robe.svg",
-      "bytes": 75221,
-      "sha256": "124d1365c9da2e1b47f7f8ff88f182edd0bd64a4e4077919b5ca61ffc062d936"
+      "bytes": 75301,
+      "sha256": "d330db1963928df201474968b98a252d09f2abac7bf846185dbd30feb7876a35"
     },
     {
       "path": "room-switch.svg",
@@ -239,15 +240,15 @@
     "curtain": {
       "sourceBox": [
         616,
-        205,
+        180,
         90,
-        330
+        355
       ],
       "viewBox": [
         0,
-        0,
+        -25,
         90,
-        330
+        355
       ]
     },
     "robe": {

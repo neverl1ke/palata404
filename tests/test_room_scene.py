@@ -130,7 +130,7 @@ class RoomSceneTests(unittest.TestCase):
     def test_fabric_cast_shadows_move_with_the_opaque_approved_cutouts(self):
         self.freeze()
         self.page.add_style_tag(content='.room-glass-mark{display:none!important}')
-        fabrics = [('curtain',7560,(60,160)),('robe',12470,(75,206)),('bag',10080,(125,100))]
+        fabrics = [('curtain',5400,(60,160)),('robe',21600,(75,206)),('bag',37260,(125,100))]
         for name, time, sample in fabrics:
             with self.subTest(fabric=name):
                 selector = '.room-moving-'+name
@@ -147,7 +147,7 @@ class RoomSceneTests(unittest.TestCase):
                 dim_opacity = float(cloth.evaluate('e=>getComputedStyle(e,"::before").opacity'))
                 self.assertLess(dim_opacity, styles['shadowOpacity'])
                 self.seek('room-light-supply',0)
-                alpha = self.page.evaluate('''async ([name,x,y])=>{const im=new Image();im.src='hud-art/room-'+name+'.svg';await im.decode();const c=document.createElement('canvas');c.width=name==='curtain'?90:150;c.height=name==='curtain'?330:name==='robe'?341:335;const ctx=c.getContext('2d');ctx.drawImage(im,0,0,c.width,c.height);return [ctx.getImageData(x,y,1,1).data[3],ctx.getImageData(0,y,1,1).data[3]]}''',[name,*sample])
+                alpha = self.page.evaluate(r'''async ([name,x,y])=>{const im=new Image();im.src='hud-art/room-'+name+'.svg';await im.decode();const source=await (await fetch(im.src)).text();const svg=new DOMParser().parseFromString(source,'image/svg+xml').documentElement;const bounds=svg.getAttribute('viewBox').trim().split(/\s+/).map(Number);const c=document.createElement('canvas');c.width=bounds[2];c.height=bounds[3];const ctx=c.getContext('2d');ctx.drawImage(im,0,0,c.width,c.height);return [ctx.getImageData(x,y,1,1).data[3],ctx.getImageData(0,y,1,1).data[3]]}''',[name,*sample])
                 self.assertEqual(alpha, [255,0])
 
                 # Render only one cast shadow over the fixed wall: its pixels must move.
@@ -161,6 +161,64 @@ class RoomSceneTests(unittest.TestCase):
                 self.assertGreater(changed, 30)
                 rule.evaluate('e=>e.remove()')
                 self.seek('room-'+name+'-draft',0)
+
+    def test_cloths_take_turns_and_keep_quiet_gaps_between_them(self):
+        self.freeze()
+        phases = self.page.evaluate('''()=>{
+            const names=['curtain','robe','bag'];
+            const cloths=names.map(name=>document.querySelector('.room-moving-'+name));
+            const animations=cloths.map((e,n)=>e.getAnimations().find(a=>a.animationName==='room-'+names[n]+'-draft'));
+            return Array.from({length:217},(_,i)=>{
+                const time=i*250;animations.forEach(a=>{a.pause();a.currentTime=time});
+                const displacement=cloths.map(e=>{const s=getComputedStyle(e),m=new DOMMatrix(s.transform);const h=parseFloat(s.height);return Math.hypot(m.c*h,(m.d-1)*h)});
+                return {time,active:names.filter((_,n)=>displacement[n]>.1),displacement};
+            });
+        }''')
+        self.assertTrue(all(len(p['active']) <= 1 for p in phases), 'Fabric movements overlap')
+        order=[]
+        for phase in phases:
+            if phase['active'] and (not order or order[-1] != phase['active'][0]):
+                order.append(phase['active'][0])
+        self.assertEqual(order, ['curtain','robe','bag'])
+        for index in range(3):
+            self.assertGreater(max(p['displacement'][index] for p in phases), 3)
+        intervals=[]
+        for name in order:
+            times=[p['time'] for p in phases if p['active']==[name]]
+            intervals.append((min(times),max(times)))
+        self.assertGreater(intervals[1][0]-intervals[0][1], 3000)
+        self.assertGreater(intervals[2][0]-intervals[1][1], 3000)
+
+    def test_corridor_flickers_independently_and_stays_lit_and_sharp(self):
+        self.freeze()
+        self.page.add_style_tag(content='.room-door-leaf{display:none!important}')
+        corridor = self.page.locator('.room-corridor-scene')
+        cycle = corridor.evaluate('''e=>{
+            const a=e.getAnimations().find(a=>a.animationName==='room-corridor-supply');
+            const values=[];let lowest={time:0,value:1};
+            for(let t=0;t<47000;t+=50){a.currentTime=t;const value=Number(getComputedStyle(e).getPropertyValue('--corridor-light'));values.push(value);if(value<lowest.value)lowest={time:t,value};}
+            a.currentTime=0;return {values,lowest};
+        }''')
+        self.assertGreaterEqual(min(cycle['values']), .60)
+        self.assertLessEqual(min(cycle['values']), .75)
+        self.assertLess(sum(v < .999 for v in cycle['values'])/len(cycle['values']), .18)
+        bright = self.page.screenshot()
+        self.seek('room-corridor-supply',cycle['lowest']['time'])
+        dim = self.page.screenshot()
+        # The corridor walls dim while the room itself is held at full supply.
+        ratio=sum(self.rgb(dim,(1150,440,1180,475)))/sum(self.rgb(bright,(1150,440,1180,475)))
+        self.assertGreater(ratio,.55)
+        self.assertLess(ratio,.85)
+        self.assertGreater(sum(self.rgb(dim,(1150,440,1180,475)))/3,10)
+        lit_pixels=list(self.pixels(Image.open(io.BytesIO(bright)).convert('RGB').crop((1110,278,1307,712))))
+        dim_pixels=list(self.pixels(Image.open(io.BytesIO(dim)).convert('RGB').crop((1110,278,1307,712))))
+        emitter=[sum(after)/3 for before,after in zip(lit_pixels,dim_pixels) if sum(before)/3>130]
+        self.assertGreater(len(emitter),10)
+        self.assertGreater(sum(emitter)/len(emitter),65)
+        self.assertAlmostEqual(sum(self.rgb(dim,(1071,178,1100,220))),sum(self.rgb(bright,(1071,178,1100,220))),delta=2)
+        self.assertNotIn('blur(',corridor.evaluate('e=>getComputedStyle(e).filter'))
+        self.page.emulate_media(reduced_motion='reduce')
+        self.assertAlmostEqual(float(corridor.evaluate('e=>getComputedStyle(e).getPropertyValue("--corridor-light")')),1)
 
     def test_circle_hover_and_all_task_links_use_the_same_read_only_dialog(self):
         self.freeze()
@@ -224,8 +282,10 @@ class RoomSceneTests(unittest.TestCase):
         self.page.locator('.room-door-action').click();self.page.locator('#map-modal').wait_for(state='visible')
         self.assertTrue(self.page.locator('.room-door-assembly').evaluate('e=>e.classList.contains("is-handle-pressed")'))
         self.page.evaluate('toggleMapModal(false)')
+        self.page.mouse.move(700,730)
+        self.page.locator('.room-door-action').evaluate('e=>e.blur()')
         self.page.wait_for_function('document.querySelector(".room-door-assembly").dataset.state==="closed"')
-        self.page.wait_for_timeout(200)
+        self.page.wait_for_function('Math.abs(new DOMMatrix(getComputedStyle(document.querySelector(".room-door-handle")).transform).b)<.001')
         self.assertAlmostEqual(self.page.locator('.room-door-handle').evaluate('e=>new DOMMatrix(getComputedStyle(e).transform).b'),0,delta=.001)
         corridor = self.page.locator('.room-corridor-scene')
         self.assertIn('room-corridor.webp', corridor.evaluate('e=>getComputedStyle(e).backgroundImage'))
@@ -250,7 +310,7 @@ class RoomSceneTests(unittest.TestCase):
         self.assertEqual(self.page.locator('.room-door-glass .room-glass-mark').count(),6)
         self.seek('room-wet-step',8500)
         steps=self.page.locator('.room-floor-print')
-        walking = steps.evaluate_all('''es=>es.map(e=>{const r=e.getBoundingClientRect(),m=new DOMMatrix(getComputedStyle(e).transform);return {foot:e.dataset.foot,src:e.getAttribute('src'),x:r.x+r.width/2,y:r.y+r.height/2,dx:-m.c,dy:-m.d}})''')
+        walking = steps.evaluate_all('''es=>es.map(e=>{const r=e.getBoundingClientRect(),s=getComputedStyle(e),m=new DOMMatrix(s.transform);return {foot:e.dataset.foot,src:e.getAttribute('src'),x:r.x+r.width/2,y:r.y+r.height/2,dx:-m.c,dy:-m.d,width:parseFloat(s.width),height:parseFloat(s.height)}})''')
         for right, left in zip(walking[::2], walking[1::2]):
             self.assertEqual((right['foot'], left['foot']), ('right', 'left'))
             self.assertIn('wet-foot-right.webp', right['src'])
@@ -258,6 +318,13 @@ class RoomSceneTests(unittest.TestCase):
             # Looking along the path, the left sole must lie to the walker's left.
             lateral = (left['x']-right['x'])*right['dy'] - (left['y']-right['y'])*right['dx']
             self.assertGreater(lateral, 8)
+        for previous, following in zip(walking, walking[1:]):
+            dx,dy=following['x']-previous['x'],following['y']-previous['y']
+            forward=dx*previous['dx']+dy*previous['dy']
+            self.assertGreater(forward,.70*(previous['height']+following['height'])/2)
+            lateral=dx*previous['dy']-dy*previous['dx']
+            toward_next_foot=lateral if following['foot']=='left' else -lateral
+            self.assertGreater(toward_next_foot,.54*(previous['width']+following['width'])/2)
         self.assertGreater(float(steps.first.evaluate('e=>getComputedStyle(e).opacity')),.2)
         self.assertEqual(float(steps.last.evaluate('e=>getComputedStyle(e).opacity')),0)
         self.seek('room-wet-step',12500)
@@ -275,7 +342,7 @@ class RoomSceneTests(unittest.TestCase):
         self.assertAlmostEqual(edge['depth'],4,delta=.02)
         self.assertEqual(self.page.locator('.room-handle-side').count(),156)
         self.assertEqual(self.page.locator('.room-cabinet-handle').first.evaluate('e=>getComputedStyle(e).transform'),'none')
-        for name,time in [('room-curtain-draft',9000),('room-robe-draft',12500),('room-bag-draft',10000)]:
+        for name,time in [('room-curtain-draft',5400),('room-robe-draft',21600),('room-bag-draft',37260)]:
             self.seek(name,time)
         for selector in ['.room-moving-curtain','.room-moving-robe','.room-moving-bag']:
             self.assertNotEqual(self.page.locator(selector).evaluate('e=>getComputedStyle(e).transform'),'none')
