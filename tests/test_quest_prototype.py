@@ -133,7 +133,7 @@ class QuestPrototypeBrowserTest(unittest.TestCase):
         frame.locator('.quest-blueprint-image').wait_for(state='visible')
         frame.locator('.quest-actions').get_by_role('button',name='Выйти из Трипа',exact=True).click()
         self.assertIn('Пациент',frame.locator('.quest-floor h3').inner_text())
-        frame.get_by_role('button',name='Открыть задания',exact=True).click()
+        frame.locator('#map-modal').get_by_role('button',name='Открыть задания',exact=True).click()
         self.assertEqual(frame.locator('[data-task-mode=patient]').get_attribute('aria-pressed'),'true')
         frame.locator('[data-task-mode=trip]').click()
         frame.locator('#quest-list .quest-card').first.get_by_role('button',name='Перейти к заданию').click()
