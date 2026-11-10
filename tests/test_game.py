@@ -1793,7 +1793,7 @@ class GameTests(unittest.TestCase):
                 self.assertTrue(self.page.locator('#nurse-battle-modal').is_visible())
                 self.page.evaluate('openFleeConfirmModal()')
         self.page.evaluate('closeOtherModals();')
-        self.page.locator('.user-profile-badge').focus()
+        self.page.locator('.hud-patient-name').focus()
         self.page.keyboard.press('Enter')
         self.assertTrue(self.page.locator('#dossier-modal').is_visible())
 
@@ -1808,7 +1808,7 @@ class GameTests(unittest.TestCase):
         page.on('dialog', lambda dialog: dialog.accept())
         try:
             page.goto(self.url, wait_until='networkidle')
-            page.get_by_role('button', name='Інвентар', exact=True).tap()
+            page.get_by_role('button', name='Инвентарь', exact=True).tap()
             self.assertTrue(page.locator('#inventory-modal').is_visible())
             page.locator('#inventory-modal .btn-close-mini').tap()
             page.evaluate('startBossFight("nurse")')
@@ -2036,7 +2036,7 @@ class GameTests(unittest.TestCase):
     def test_raid_archive_hud_snapshots_and_clear_confirmation(self):
         self.load({'palata404_nickname':'Історичний пацієнт'})
         institution = 'ЦЕНТР ІНТЕНСИВНОГО ЛІКУВАННЯ ПСИХІЧНИХ РОЗЛАДІВ № 404'
-        self.page.get_by_role('button', name='Архів рейдів', exact=True).click()
+        self.page.get_by_role('button', name='Архив рейдов', exact=True).click()
         self.assertTrue(self.page.locator('#raid-archive-empty').is_visible())
         self.page.get_by_role('button', name='Закрити архів рейдів', exact=True).click()
         self.page.evaluate('stats.baseDamage=300; recalculateEquipmentStats(); startBossFight("nurse"); performPlayerAttack();')
@@ -2061,7 +2061,7 @@ class GameTests(unittest.TestCase):
         self.page.get_by_role('button', name='Повернутися до архіву', exact=True).click()
         self.assertEqual(self.page.evaluate('JSON.stringify({stats,inventory,bossKillsCount,gameProgress,storage:{...localStorage}})'), state)
         self.page.evaluate('typeof applyWardrobeSession === "function" && applyWardrobeSession()');self.page.reload(wait_until='networkidle')
-        nav = self.page.get_by_role('button', name='Архів рейдів', exact=True)
+        nav = self.page.get_by_role('button', name='Архив рейдов', exact=True)
         nav.focus()
         self.page.keyboard.press('Enter')
         self.assertEqual(self.page.locator('.raid-archive-card').count(), 2)
@@ -2202,7 +2202,7 @@ class GameTests(unittest.TestCase):
 
     def test_staff_archive_unknown_cases_first_contact_and_details(self):
         self.load()
-        self.page.get_by_role('button', name='Архів персоналу', exact=True).click()
+        self.page.get_by_role('button', name='Архив персонала', exact=True).click()
         archive = self.page.locator('#staff-archive-modal')
         self.assertEqual(archive.locator('.staff-case-button').count(), 2)
         self.assertEqual(archive.get_by_text('ОСОБУ НЕ ВСТАНОВЛЕНО', exact=True).count(), 3)
@@ -2319,16 +2319,18 @@ class GameTests(unittest.TestCase):
         self.load()
         self.page.evaluate('stats.madness=100; updateUI();')
         before=self.page.evaluate('JSON.stringify({stats,inventory,staffArchiveState,storage:{...localStorage}})')
-        nav=self.page.get_by_role('navigation',name='Ігрове меню')
+        nav=self.page.get_by_role('navigation',name='Игровое меню')
         results=ROOT/'test-results'
         results.mkdir(exist_ok=True)
         for width,height in [(1280,800),(1024,768),(768,1024),(844,390),(390,844),(320,568)]:
             with self.subTest(viewport=(width,height)):
                 self.page.set_viewport_size({'width':width,'height':height})
-                for button in nav.locator('.hud-folder-tab').all():
+                for button in nav.locator('.hud-menu-tab').all():
                     box=button.bounding_box()
                     self.assertIsNotNone(box)
-                    self.assertGreaterEqual(box['height'],44)
+                    # Production scales one fixed landscape canvas; direct portrait
+                    # fallback keeps full-size touch controls.
+                    self.assertGreaterEqual(box['height'],44 if width<=900 and height>width else 10)
                     self.assertGreaterEqual(box['x'],0)
                     self.assertLessEqual(box['x']+box['width'],width)
                     self.assertLessEqual(button.evaluate('e=>e.scrollWidth-e.clientWidth'),1)
@@ -2336,7 +2338,7 @@ class GameTests(unittest.TestCase):
                 self.assertLessEqual(self.page.evaluate('document.documentElement.scrollWidth'),width)
                 self.assertTrue(self.page.locator('#armor-val').is_visible())
                 self.page.screenshot(path=str(results/f'folder-hud-{width}x{height}.png'))
-        for name,modal in [('Інвентар','inventory-modal'),('Гардероб','custom-modal'),('Карта','map-modal'),('Сусіди по блоку','friends-modal'),('Архів рейдів','raid-archive-modal'),('Архів персоналу','staff-archive-modal')]:
+        for name,modal in [('Инвентарь','inventory-modal'),('Гардероб','custom-modal'),('Карта','map-modal'),('Соседи','friends-modal'),('Архив рейдов','raid-archive-modal'),('Архив персонала','staff-archive-modal')]:
             button=nav.get_by_role('button',name=name,exact=True)
             button.click()
             self.assertTrue(self.page.locator(f'#{modal}').is_visible())
@@ -2344,7 +2346,9 @@ class GameTests(unittest.TestCase):
             self.assertEqual(nav.locator('[aria-pressed="true"]').count(),1)
             self.page.keyboard.press('Escape')
             self.page.wait_for_function('()=>!document.querySelector(".center-nav [aria-pressed=true]")')
-        nav.get_by_role('button',name='Завдання',exact=True).click()
+        nav.get_by_role('button',name='Задания',exact=True).click()
+        self.assertTrue(self.page.locator('#tasks-modal').is_visible())
+        self.page.keyboard.press('Escape')
         nav.get_by_role('button',name='Рейд',exact=True).click()
         self.assertEqual(self.page.evaluate('JSON.stringify({stats,inventory,staffArchiveState,storage:{...localStorage}})'),before)
         self.page.evaluate('startBossFight("nurse"); closeNurseBattle();')

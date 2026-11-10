@@ -1941,11 +1941,21 @@ function closeUniversalDossier() {
     if (modal) modal.classList.add('hidden');
 }
 
+function openTasks() {
+    if (closeOtherModals(['tasks-modal']) === false) return false;
+    document.getElementById('tasks-modal')?.classList.remove('hidden');
+    return true;
+}
+
+function closeTasks() {
+    document.getElementById('tasks-modal')?.classList.add('hidden');
+}
+
 const MODAL_IDS = [
     'settings-modal', 'bank-modal', 'inventory-modal', 'item-info-modal', 'custom-modal',
     'weapon-dialog', 'friends-modal', 'map-modal', 'gym-modal', 'medical-hub-modal', 'procedure-room-modal',
     'dossier-modal', 'universal-dossier-modal', 'nurse-battle-modal', 'friend-invite-modal',
-    'nurse-victory-modal', 'battle-detail-modal', 'raid-archive-modal', 'raid-archive-confirm', 'staff-archive-modal'
+    'nurse-victory-modal', 'battle-detail-modal', 'raid-archive-modal', 'raid-archive-confirm', 'staff-archive-modal', 'tasks-modal'
 ];
 
 function closeOtherModals(keepIds = []) {
@@ -1997,7 +2007,7 @@ function initializeModalControls() {
         });
         document.body.classList.toggle('modal-open', opened.length > 0);
         const top = topModal();
-        document.querySelectorAll('.hud-folder-tab[data-nav-modal]').forEach(button => {
+        document.querySelectorAll('[data-nav-modal]').forEach(button => {
             button.setAttribute('aria-pressed', String(button.dataset.navModal.split(' ').includes(top?.id)));
         });
         if (top && (added.length > 0 || (closed.length > 0 && !top.contains(document.activeElement)))) {

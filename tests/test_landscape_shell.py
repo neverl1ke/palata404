@@ -25,6 +25,9 @@ class LandscapeShellTests(unittest.TestCase):
                 self.page.wait_for_function('(r)=>document.body.dataset.rotate===String(r)',arg=rotate)
                 self.assertEqual(self.page.locator('#rotate-prompt').is_visible(),rotate)
                 self.assertEqual(self.page.locator('#game-canvas').get_attribute('aria-hidden'),str(rotate).lower())
+                # ResizeObserver fits on the next rendering frame. Wait for the
+                # new dimensions, even when the rotation flag did not change.
+                self.page.wait_for_function('''()=>{const r=document.querySelector('#game-canvas').getBoundingClientRect();return r.right<=innerWidth+1&&r.bottom<=innerHeight+1}''')
                 geometry=self.page.evaluate('''()=>{const f=document.querySelector('#game-canvas'),r=f.getBoundingClientRect();return {w:f.contentWindow.innerWidth,h:f.contentWindow.innerHeight,x:r.x,y:r.y,right:r.right,bottom:r.bottom,ratio:r.width/r.height}}''')
                 self.assertEqual((geometry['w'],geometry['h']),(1280,720))
                 self.assertAlmostEqual(geometry['ratio'],16/9,places=3)
@@ -71,6 +74,7 @@ class LandscapeShellTests(unittest.TestCase):
 
     def test_desktop_fullscreen_control_has_reserved_space(self):
         with self.browser.new_context(viewport={'width':1280,'height':720}) as context:
+            context.route('https://**/*',lambda route:route.abort())
             page=context.new_page()
             page.goto(self.url,wait_until='networkidle')
             button=page.locator('#fullscreen-button')
@@ -84,7 +88,9 @@ class LandscapeShellTests(unittest.TestCase):
             self.assertEqual(button.get_attribute('aria-pressed'),'false')
 
     def test_entry_preserves_query_and_hash_without_redirect_loop(self):
-        self.page.goto(self.url+'?dev=1#layout-check',wait_until='networkidle')
+        self.page.goto(self.url+'?dev=1#layout-check',wait_until='domcontentloaded')
+        self.page.wait_for_url('**/play.html?dev=1#layout-check',wait_until='domcontentloaded')
+        self.game.locator('.hospital-hud').wait_for()
         self.assertIn('play.html?dev=1#layout-check',self.page.url)
         src=self.page.locator('#game-canvas').get_attribute('src')
         self.assertIn('index.html?',src);self.assertIn('dev=1',src)

@@ -17,6 +17,7 @@ jobs:
       - run: python -m compileall -q tools tests
       - run: python tools/audit-project.py --check
       - run: node --check script.js
+      - run: node --check hud-main.js && node --check room-scene.js && node --check room-projection.js && node --check room-shadows.js
       - run: node --check icons.js
       - run: node --check battle-results.js
       - run: node --check raid-archive.js

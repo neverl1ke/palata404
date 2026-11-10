@@ -16,163 +16,46 @@
     <link rel="stylesheet" href="document-system.css?v=9109738af394">
     <link rel="stylesheet" href="game-responsive.css?v=20261109">
     <link rel="stylesheet" href="wardrobe-responsive.css?v=20261109">
+    <link rel="stylesheet" href="hud-main.css?v=b63d2e2e94a8">
+    <link rel="stylesheet" href="room-scene.css?v=dcaa4683103d">
 </head>
 <body>
-<svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute;pointer-events:none" aria-hidden="true"><defs><filter id="emblem-paper-ink" color-interpolation-filters="sRGB"><feColorMatrix type="matrix" values=".185 .622 .063 0 0 .153 .515 .052 0 0 .098 .329 .033 0 0 0 0 0 1 0"/></filter></defs></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute;pointer-events:none" aria-hidden="true"><defs><filter id="emblem-paper-ink" color-interpolation-filters="sRGB"><feColorMatrix type="matrix" values=".185 .622 .063 0 0 .153 .515 .052 0 0 .098 .329 .033 0 0 0 0 0 1 0"/></filter><filter id="room-character-lighting" x="-2%" y="-2%" width="104%" height="104%" color-interpolation-filters="sRGB"><feConvolveMatrix order="3" kernelMatrix="0 -0.10 0 -0.10 1.40 -0.10 0 -0.10 0" preserveAlpha="true" edgeMode="duplicate"/><feColorMatrix type="matrix" values="1.055 0 0 0 -.006 0 1.025 0 0 -.020 0 0 .965 0 -.025 0 0 0 1 0"/></filter></defs></svg>
 
     <!-- Контейнер для строгого збереження пропорцій кімнати 16:9 -->
-    <div class="game-viewport">
+    <div class="game-viewport hospital-hud" data-assets-ready="false">
+      <header class="hud-topbar top-nav"><button class="hud-brand" onclick="openDossier()">ПАЛАТА 404</button><nav class="hud-tabs center-nav" aria-label="Игровое меню"><button type="button" class="hud-menu-tab nav-icon-btn" data-nav-modal="inventory-modal item-info-modal" onclick="openInventory()" aria-label="Инвентарь"><span>Инвентарь</span></button><button type="button" class="hud-menu-tab nav-icon-btn" data-nav-modal="custom-modal" onclick="openCustomization()" aria-label="Гардероб"><span>Гардероб</span></button><button type="button" class="hud-menu-tab nav-icon-btn" id="nav-map-btn" data-nav-modal="map-modal" onclick="toggleMapModal(true)" aria-label="Карта"><span>Карта</span></button><button type="button" class="hud-menu-tab nav-icon-btn" data-nav-modal="tasks-modal" onclick="openTasks()" aria-label="Задания"><span>Задания</span></button><button type="button" class="hud-menu-tab nav-icon-btn" id="nav-raid-btn" data-nav-modal="nurse-battle-modal universal-dossier-modal nurse-victory-modal" onclick="handleRaidButtonAction()" aria-label="Рейд"><span>Рейд</span></button><button type="button" class="hud-menu-tab nav-icon-btn" data-nav-modal="friends-modal" onclick="openFriends()" aria-label="Соседи"><span>Соседи</span></button><button type="button" class="hud-menu-tab nav-icon-btn" id="nav-archive-btn" data-nav-modal="raid-archive-modal raid-archive-confirm" onclick="openRaidArchive()" aria-label="Архив рейдов"><span>Архив рейдов</span></button><button type="button" class="hud-menu-tab nav-icon-btn" id="nav-staff-btn" data-nav-modal="staff-archive-modal" onclick="openStaffArchive()" aria-label="Архив персонала"><span>Архив персонала</span></button></nav><div class="hud-header-actions top-right-group"><button class="nav-icon-btn" onclick="alert('Нет новых уведомлений')" aria-label="Уведомления"><img class="game-icon" src="assets/icons/bell.svg" alt="" aria-hidden="true"></button><button class="nav-icon-btn" onclick="alert('Почтовый ящик пуст')" aria-label="Почта"><img class="game-icon" src="assets/icons/mail.svg" alt="" aria-hidden="true"></button><button class="nav-icon-btn" onclick="openSettings()" aria-label="Настройки"><img class="game-icon" src="assets/icons/gear.svg" alt="" aria-hidden="true"></button></div></header>
+      <main class="main-layout hud-main"><div class="room-scene" aria-label="Палата" data-paused="false">
+ <div class="room-window-glass room-window-left" aria-hidden="true"><div class="room-glass-print room-print-window"></div><div class="room-distant-light room-distant-left-low"></div><div class="room-distant-light room-distant-left-high"></div></div>
+ <div class="room-window-glass room-window-right" aria-hidden="true"><div class="room-distant-light room-distant-right-high"></div></div>
 
-        <!-- Верхня панель (Єдина суцільна шапка-полоска) -->
-        <div class="top-nav">
-<!-- Лівий блок: Профіль гравця (відкриває Досьє) -->
-            <div class="user-profile-badge" role="button" tabindex="0" aria-label="Відкрити особисте досьє" onclick="openDossier()" title="Натисніть для перегляду медичного досьє">
-                <div class="avatar-mini"><img class="game-icon" src="assets/icons/helmet.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"></div>
-                <div class="user-text">
-                    <div class="user-name-row">
-                        <strong id="player-name">Завантаження...</strong>
-                        <span class="rank-tag" id="player-rank">Новачок</span>
-                    </div>
-
-                    <div class="exp-container">
-                        <div class="exp-label">
-                            <span>Рівень <strong id="player-lvl">1</strong></span>
-                            <span id="exp-val">0 / 100 EXP</span>
-                        </div>
-                        <div class="exp-bar-bg">
-                            <div class="exp-fill" id="exp-bar" style="width: 0%;"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Центральний блок: Архівна папка з навігаційними закладками -->
-            <nav class="center-nav" aria-label="Ігрове меню">
-                <span class="hud-folder-caption" aria-hidden="true">КАРТОТЕКА · ПАЛАТА 404</span>
-                <div class="hud-folder-tabs">
-                    <button type="button" class="nav-icon-btn hud-folder-tab" data-nav-modal="inventory-modal item-info-modal" title="Інвентар" onclick="openInventory()" aria-label="Інвентар"><img class="game-icon" src="assets/icons/bag.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"><span>Інвентар</span></button>
-                    <button type="button" class="nav-icon-btn hud-folder-tab" data-nav-modal="custom-modal" title="Гардероб" onclick="openCustomization()" aria-label="Гардероб"><img class="game-icon" src="assets/icons/coat.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"><span>Гардероб</span></button>
-                    <button type="button" id="nav-map-btn" title="Карта" class="nav-icon-btn hud-folder-tab" data-nav-modal="map-modal" style="display: none;" onclick="toggleMapModal(true)" aria-label="Карта"><img class="game-icon" src="assets/icons/map.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"><span>Карта</span></button>
-                    <button type="button" class="nav-icon-btn hud-folder-tab" title="Завдання" onclick="alert('Завдання в розробці')" aria-label="Завдання"><img class="game-icon" src="assets/icons/clipboard.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"><span>Завдання</span></button>
-                    <button type="button" id="nav-raid-btn" class="nav-icon-btn hud-folder-tab" data-nav-modal="nurse-battle-modal universal-dossier-modal nurse-victory-modal" title="Рейд" onclick="handleRaidButtonAction()" aria-label="Рейд"><img class="game-icon" src="assets/icons/swords.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"><span>Рейд</span></button>
-                    <button type="button" class="nav-icon-btn hud-folder-tab" data-nav-modal="friends-modal" title="Сусіди по блоку" onclick="openFriends()" aria-label="Сусіди по блоку"><img class="game-icon" src="assets/icons/people.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"><span>Сусіди</span></button>
-                    <button type="button" id="nav-archive-btn" class="nav-icon-btn hud-folder-tab" data-nav-modal="raid-archive-modal raid-archive-confirm" title="Архів рейдів" onclick="openRaidArchive()" aria-label="Архів рейдів"><img class="game-icon" src="assets/icons/clipboard.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"><span>Архів рейдів</span></button>
-                    <button type="button" id="nav-staff-btn" class="nav-icon-btn hud-folder-tab" data-nav-modal="staff-archive-modal" title="Архів персоналу" onclick="openStaffArchive()" aria-label="Архів персоналу"><img class="game-icon" src="assets/icons/card.svg" alt="" aria-hidden="true" width="64" height="64"><span>Архів персоналу</span></button>
-                </div>
-            </nav>
-
-            <!-- Правий блок: Дзвінок, пошта, налаштування в єдиному стилі -->
-            <div class="top-right-group" style="display: flex; gap: 6px; align-items: center;">
-                <button class="nav-icon-btn" onclick="alert('Немає нових сповіщень')" title="Сповіщення" aria-label="Сповіщення"><img class="game-icon" src="assets/icons/bell.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"></button>
-                <button class="nav-icon-btn" onclick="alert('Поштова скринька порожня')" title="Пошта" aria-label="Пошта"><img class="game-icon" src="assets/icons/mail.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"></button>
-                <button class="nav-icon-btn" onclick="openSettings()" title="Налаштування" aria-label="Налаштування"><img class="game-icon" src="assets/icons/gear.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"></button>
-            </div>
-        </div>
-
-        <!-- Основна ігрова сітка -->
-        <main class="main-layout">
-
-            <!-- Ліва панель -->
-            <aside class="left-panel">
-                <!-- Показники життя -->
-                <div class="vitals-group">
-                    <div class="vital-item">
-                        <div class="vital-icon madness-icon"><img class="game-icon" src="assets/icons/brain.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"></div>
-                        <div class="vital-info">
-                            <div class="vital-label">Божевілля <span id="madness-val">0 / 100</span></div>
-                            <div class="bar-bg"><div class="bar-fill madness" id="madness-bar" style="width: 0%;"></div></div>
-                        </div>
-                    </div>
-<!-- ТЕСТОВА ПАНЕЛЬ РОЗРОБНИКА ДЛЯ ПЕРЕМИКАННЯ СТАНІВ -->
-<div id="developer-tools" class="hidden" style="background: rgba(192, 57, 43, 0.2); border: 1px dashed #e74c3c; padding: 6px; border-radius: 6px; margin-top: 10px; display: flex; flex-direction: column; gap: 4px;">
-    <div style="font-size: 10px; color: #e74c3c; text-align: center; font-weight: bold;"><img class="game-icon" src="assets/icons/flask.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"> ТЕСТ РЕЖИМІВ (DEV)</div>
-    <div style="display: flex; gap: 4px;">
-        <button class="btn-outfit" style="flex:1; font-size: 10px; background: #c0392b;" onclick="devSetMadness(100)">Психоз (100%)</button>
-        <button class="btn-outfit" style="flex:1; font-size: 10px; background: #27ae60;" onclick="devSetMadness(0)">Норма (0%)</button>
-    </div>
+ <div class="room-door-assembly" aria-hidden="true"><div class="room-door-portal"></div><div class="room-door-leaf"><img src="hud-art/room-door-leaf.svg" alt=""><div class="room-door-glass"><div class="room-glass-print room-print-door"></div></div></div></div>
+ <div class="room-shadow-cast" aria-hidden="true"></div><div class="room-shadow-contact" aria-hidden="true"></div>
+ <div class="room-cabinet-assembly" aria-hidden="true"><div class="room-cabinet-portal"><img class="room-cabinet-interior" src="hud-art/room-cabinet-interior.webp" alt=""></div><div class="room-cabinet-leaf room-cabinet-leaf-left"><img src="hud-art/room-cabinet-left.svg" alt=""><span class="room-cabinet-door-back"></span><span class="room-cabinet-door-top"></span><span class="room-cabinet-door-bottom"></span><span class="room-cabinet-handle"><i class="room-handle-grip"></i><i class="room-handle-post"></i><i class="room-handle-post"></i></span></div><div class="room-cabinet-leaf room-cabinet-leaf-right"><img src="hud-art/room-cabinet-right.svg" alt=""><span class="room-cabinet-door-back"></span><span class="room-cabinet-door-top"></span><span class="room-cabinet-door-bottom"></span><span class="room-cabinet-handle"><i class="room-handle-grip"></i><i class="room-handle-post"></i><i class="room-handle-post"></i></span></div></div><div class="room-lamp-glow" aria-hidden="true"></div>
 </div>
-                    <div class="vital-item">
-                        <div class="vital-icon energy-icon"><img class="game-icon" src="assets/icons/lightning.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"></div>
-                        <div class="vital-info">
-                            <div class="vital-label">
-                                <span>Витривалість <span id="energy-val">100 / 100</span></span>
-                                <span id="energy-timer" style="font-size: 0.75cqw; color: #f39c12;"></span>
-                            </div>
-                            <div class="bar-bg"><div class="bar-fill energy" id="energy-bar" style="width: 100%;"></div></div>
-                        </div>
-                    </div>
-                </div>
+<button class="room-door-action" type="button" aria-label="Открыть дверь и карту" aria-busy="false"><span class="room-action-label">Карта</span></button>
+<button class="room-cabinet-action" type="button" aria-label="Открыть шкаф и гардероб" aria-busy="false"><span class="room-action-label">Гардероб</span></button>
+<button class="room-trip-switch" type="button" aria-label="Войти в Трип" aria-pressed="false"><span class="room-switch-art" aria-hidden="true"></span><span class="room-action-label">Войти в Трип</span></button>
+<button class="room-tasks-action" type="button" aria-label="Открыть задания"><span class="room-task-corner" aria-hidden="true"></span><span class="room-action-label">Задания</span></button>
+<div class="room-light-veil" aria-hidden="true"></div><span class="room-mode-announcement" role="status" aria-live="polite"></span>
+        <aside class="left-panel hud-patient-board" aria-label="Карта пациента" data-hud-version="reference3"><img class="hud-approved-emblem" src="assets/ui/wardrobe/requested-header-emblem.webp" alt="Эмблема учреждения"><span class="hud-field " style="--x:230;--y:145;--w:640;--font:16" >МИНИСТЕРСТВО ЗДРАВООХРАНЕНИЯ</span><strong class="hud-field hud-institution-title" style="--x:230;--y:172;--w:660;--font:30" >ЦЕНТР ИНТЕНСИВНОГО ЛЕЧЕНИЯ<br>ПСИХИЧЕСКИХ РАССТРОЙСТВ №404</strong><span class="hud-field " style="--x:230;--y:234;--w:350;--font:16" >КАРТА ПАЦИЕНТА</span><span class="hud-field hud-registration-number" style="--x:752;--y:147;--w:144;--font:12" data-hud-case></span><button class="hud-field hud-patient-name" style="--x:102;--y:270;--w:486;--font:65" onclick="openDossier()"><span>Пациент:</span><strong id="player-name">Загрузка…</strong><span id="player-rank" class="hidden"></span></button><div class="hud-photo" aria-label="Портрет текущего персонажа"><div id="hud-portrait" class="character-paperdoll"></div></div><img class="hud-photo-foreground" src="hud-art/portrait-foreground-reference.svg" alt="" aria-hidden="true"><img class="hud-photo-stamp" src="assets/ui/wardrobe/weapon-red-seal.svg" alt="Печать учреждения"><span class="hud-field " style="--x:132;--y:382;--w:115;--font:25" >УРОВЕНЬ</span><strong class="hud-field hud-level-value" style="--x:241;--y:367;--w:80;--font:50" id="player-lvl">1</strong><span class="hud-field " style="--x:230;--y:424;--w:100;--font:22" >ОПЫТ</span><div class="hud-exp-track" aria-hidden="true"><i id="exp-bar"></i></div><output class="hud-field hud-xp-percent" style="--x:505;--y:432;--w:63;--font:22" id="hud-exp-percent">0%</output><strong class="hud-field " style="--x:230;--y:456;--w:322;--font:26" id="exp-val">0 / 100 EXP</strong><h2 class="hud-field hud-centered hud-control-title" style="--x:350;--y:506;--w:278;--font:29" >ЛИСТ КОНТРОЛЯ</h2><h3 class="hud-field hud-centered" style="--x:245;--y:576;--w:224;--font:27" >РАССУДОК</h3><h3 class="hud-field hud-centered" style="--x:639;--y:576;--w:258;--font:25" >ВЫНОСЛИВОСТЬ</h3><svg class="hud-meter-trace hud-meter-sanity" viewBox="0 0 180 60" aria-hidden="true"><path data-hud-wave="sanity" d="M0 30H180"/></svg><svg class="hud-meter-trace hud-meter-energy" viewBox="0 0 180 60" aria-hidden="true"><path data-hud-wave="energy" d="M0 30H180"/></svg><output class="hud-field hud-meter-value" style="--x:253;--y:661;--w:169;--font:26" id="hud-sanity-value">100 / 100</output><output class="hud-field hud-meter-value" style="--x:664;--y:661;--w:166;--font:26" id="energy-val">100 / 100</output><span class="hud-field hud-centered" style="--x:676;--y:697;--w:198;--font:13" id="energy-timer"></span><h2 class="hud-field hud-centered hud-characteristics-title" style="--x:260;--y:748;--w:451;--font:34" >ХАРАКТЕРИСТИКИ</h2><span class="hud-field hud-centered" style="--x:349;--y:788;--w:270;--font:20" >Больница №404</span><span class="hud-field " style="--x:174;--y:839;--w:145;--font:33" >Урон</span><strong class="hud-field " style="--x:174;--y:895;--w:140;--font:73" id="damage-val">10</strong><span class="hud-field " style="--x:654;--y:839;--w:158;--font:33" >Здоровье</span><strong class="hud-field hud-right" style="--x:655;--y:895;--w:155;--font:73" id="hud-health-value">100</strong><span class="hud-field " style="--x:174;--y:1049;--w:145;--font:33" >Броня</span><strong class="hud-field " style="--x:174;--y:1103;--w:140;--font:73" id="armor-val">0</strong><span class="hud-field " style="--x:631;--y:1026;--w:178;--font:28" >Критический<br>урон</span><strong class="hud-field hud-right" style="--x:631;--y:1105;--w:178;--font:63" id="hud-critical-value">×1,5</strong><svg class="hud-anatomy-leaders" viewBox="0 0 971 1620" aria-hidden="true">
+ <g class="hud-red-leaders"><path d="M289 885H325L357 1037"/><path d="M651 885H624L549 1038"/><path d="M280 1088C358 1107 405 1110 480 1106"/></g>
+ <path class="hud-critical-leader" d="M663 1098H610L514 856"/>
+ <g class="hud-red-dots"><path d="M174 885H278M668 885H799M174 1088H269"/></g>
+ <path class="hud-gray-dots" d="M680 1098H802"/>
+ <g class="hud-anatomy-points"><circle data-anatomy="upper-arm" cx="357" cy="1037" r="7"/><circle data-anatomy="heart" cx="549" cy="1038" r="7"/><circle data-anatomy="abdomen" cx="480" cy="1106" r="7"/><circle class="hud-gray-point" data-anatomy="temple" cx="514" cy="856" r="7"/></g>
+</svg><h2 class="hud-field " style="--x:99;--y:1307;--w:535;--font:37" >ВЕДОМОСТЬ</h2><span class="hud-field hud-centered hud-currency-label" style="--x:90;--y:1454;--w:174;--font:24" >Серебро</span><strong class="hud-field hud-centered hud-currency-value" style="--x:90;--y:1490;--w:174;--font:60" id="silver-val">0</strong><span class="hud-field hud-centered hud-currency-label" style="--x:282;--y:1454;--w:169;--font:24" >Таблетки</span><strong class="hud-field hud-centered hud-currency-value" style="--x:282;--y:1490;--w:169;--font:60" id="pills-val">0</strong><span class="hud-field hud-centered hud-currency-label" style="--x:464;--y:1454;--w:175;--font:24" >Банкноты</span><strong class="hud-field hud-centered hud-currency-value" style="--x:464;--y:1490;--w:175;--font:60" id="bucks-val">0</strong><strong class="hud-field hud-centered" style="--x:681;--y:1311;--w:212;--font:27" >ЛИЦЕВОЙ СЧЁТ</strong><span class="hud-field hud-centered" style="--x:681;--y:1357;--w:212;--font:25" data-hud-case></span><button class="bank-btn hud-bank-button" onclick="openBank()">БАНК</button><span class="hud-field hud-checked hud-centered" style="--x:292;--y:1567;--w:160;--font:22" >ПРОВЕРЕНО</span><div class="hidden" aria-hidden="true"><span id="madness-val"></span><i id="madness-bar"></i><i id="energy-bar"></i><span id="hp-val"></span></div></aside>
+        <section class="center-stage hud-character-stage"><div class="character-preview"><div id="character-container" class="character-container"><div id="character-paperdoll" data-paper-loading="true" class="character-paperdoll" role="img" aria-label="Персонаж"></div></div></div><span id="paper-doll-view-label" class="paper-doll-view-label hidden"></span></section>
+        <aside class="right-panel hud-location-area"><button id="location-card-box" class="location-card" onclick="handleLocationClick()"><span id="loc-title-label" class="loc-title">ТЕКУЩАЯ ЛОКАЦИЯ</span><strong class="loc-name" id="current-location-name">Палата #404</strong><span class="loc-desc" id="current-location-desc"></span></button><button class="hud-task" onclick="openTasks()"><img class="game-icon" src="assets/icons/clipboard.svg" alt="" aria-hidden="true"><span>Задания в разработке</span><span aria-hidden="true">⌄</span></button></aside>
+        <button class="hud-procedures" onclick="openProcedureRoom()">ПРОЦЕДУРЫ</button>
+      </main>
+    </div>
 
-                <!-- Блок валюти та характеристик -->
-                <div class="currency-group">
-                    <div class="currency-title">Гроші та Ресурси</div>
-                    <div class="currency-item">
-                        <span><img class="game-icon" src="assets/icons/coin.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"> Срібло:</span>
-                        <strong id="silver-val">0</strong>
-                    </div>
-                    <div class="currency-item">
-                        <span><img class="game-icon" src="assets/icons/pills.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"> Пігулки:</span>
-                        <strong id="pills-val">0</strong>
-                    </div>
-                    <div class="currency-item">
-                        <span><img class="game-icon" src="assets/icons/cash.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"> Бакси:</span>
-                        <strong id="bucks-val">0</strong>
-                    </div>
-
-                    <div class="currency-title" style="margin-top: 6px;">Бойові стати</div>
-                    <div class="currency-item">
-                        <span><img class="game-icon" src="assets/icons/heart.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"> Здоров'я (HP):</span>
-                        <strong id="hp-val">100 / 100</strong>
-                    </div>
-                    <div class="currency-item">
-                        <span><img class="game-icon" src="assets/icons/swords.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"> Шкода:</span>
-                        <strong id="damage-val">10</strong>
-                    </div>
-                    <div class="currency-item">
-                        <span><img class="game-icon" src="assets/icons/shield.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"> Броня:</span>
-                        <strong id="armor-val">0</strong>
-                    </div>
-
-                    <button class="bank-btn" onclick="openBank()"><img class="game-icon" src="assets/icons/bank.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"> Банк (Донат)</button>
-                </div>
-            </aside>
-
-            <!-- Центр: Сцена Кімнати та Персонаж на підлозі -->
-            <section class="center-stage">
-                <div class="character-preview">
-                    <div id="character-container" class="character-container">
-                        <!-- Шари персонажа (Paper Doll) -->
-                        <div id="character-paperdoll" data-paper-loading="true" class="character-paperdoll" role="img" aria-label="Чоловік · Пацієнт">
-                            <img id="layer-body" class="char-layer hidden" alt="" aria-hidden="true">
-                            <img id="layer-pants" class="char-layer hidden" alt="" aria-hidden="true">
-                            <img id="layer-footwear" class="char-layer hidden" alt="" aria-hidden="true">
-                            <img id="layer-upper-body" class="char-layer hidden" alt="" aria-hidden="true">
-                            <img id="layer-outerwear" class="char-layer hidden" alt="" aria-hidden="true">
-                            <img id="layer-armor" class="char-layer hidden" alt="" aria-hidden="true">
-                            <img id="layer-loadout" class="char-layer hidden" alt="" aria-hidden="true">
-                            <img id="layer-gloves" class="char-layer hidden" alt="" aria-hidden="true">
-                            <img id="layer-back" class="char-layer hidden" alt="" aria-hidden="true">
-                            <img id="layer-headwear" class="char-layer hidden" alt="" aria-hidden="true">
-                            <img id="layer-face" class="char-layer hidden" alt="" aria-hidden="true">
-                            <img id="layer-weapon" class="char-layer hidden" alt="" aria-hidden="true">
-                            <img id="layer-accessory" class="char-layer hidden" alt="" aria-hidden="true">
-                        </div>
-                    </div>
-                </div>
-                <span id="paper-doll-view-label" class="paper-doll-view-label">Комплект: Пацієнт</span>
-            </section>
-
-            <!-- Права панель (Картка поточної локації) -->
-            <aside class="right-panel">
-                <div id="location-card-box" class="location-card" role="button" tabindex="0" aria-label="Відкрити поточну локацію" onclick="handleLocationClick()" style="cursor: pointer;" title="Натисніть для переходу по корпусу">
-                    <div id="loc-title-label" class="loc-title">Поточна локація (Натисніть)</div>
-                    <div class="loc-name" id="current-location-name">Палата #404</div>
-                    <div class="loc-desc" id="current-location-desc">Стіни шепочуть тобі... Перехід у корпус.</div>
-                </div>
-            </aside>
-
-        </main>
-
+    <div id="tasks-modal" role="dialog" aria-modal="true" aria-labelledby="tasks-title" class="modal center-modal hidden">
+        <section class="modal-content tasks-placeholder">
+            <div class="modal-header"><h3 id="tasks-title">Задания</h3><button type="button" class="btn-close-mini" onclick="closeTasks()" aria-label="Закрыть задания">✕</button></div>
+            <div class="tasks-placeholder-body"><img src="assets/icons/clipboard.svg" alt="" aria-hidden="true"><p>Задания в разработке</p><span>Здесь появятся назначения и поручения лечебницы.</span></div>
+        </section>
     </div>
 
     <!-- Модальне вікно Налаштувань -->
@@ -438,7 +321,7 @@
     <script src="wardrobe.js?v=fcc614fcb47c" defer></script>
     <script src="wardrobe-tablet.js?v=fca32b70b7d1" defer></script>
     <script src="wardrobe-archive.js?v=7efa66b747fe" defer></script>
-    <script src="script.js?v=bff634739f50" defer></script>
+    <script src="script.js?v=5f1384d853bc" defer></script>
     <!-- Модальне вікно: Медичне Досьє пацієнта (Аркуш паперу А4) -->
     <div id="dossier-modal" role="dialog" aria-modal="true" aria-label="Особисте досьє" class="modal center-modal hidden">
         <div class="modal-content dossier-paper">
@@ -819,5 +702,9 @@
 </div>
 
 <script type="module" src="avatar-core/game-preview.mjs?v=45a2de687ef4"></script>
+    <script src="hud-main.js?v=e5e386429d44" defer></script>
+    <script src="room-projection.js?v=baa9f2b97440" defer></script>
+<script src="room-scene.js?v=75ff80241067" defer></script>
+<script src="room-shadows.js?v=71ba9bf014bb" defer></script>
 </body>
 </html>

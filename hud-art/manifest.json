@@ -1,0 +1,117 @@
+{
+  "schema": 1,
+  "roomReferenceSize": [
+    1672,
+    941
+  ],
+  "patientCardSize": [
+    971,
+    1620
+  ],
+  "provenance": {
+    "wardRoom": "Artist reconstruction based on supplied room reference; original interior is preserved by rendering subsequent exterior edits only in the two glass panes.",
+    "patientCard": "Artist reconstruction of the supplied patient-card reference with live game text and current character portrait layered above.",
+    "innerDoors": "Separate generated matte steel inner-door textures; exterior door imagery is preserved.",
+    "approvedAvatarAssets": "Existing original registered PNGs and AvatarCore renderer, unchanged.",
+    "approvedEmblemAndSeal": "Existing assets/ui/wardrobe resources, unchanged."
+  },
+  "rendering": {
+    "outside": "Dusk to night only, muted warm charcoal/taupe grade and weak indoor reflections; the same grade applies to contact traces.",
+    "lamp": "Two brief voltage dips per 101-second cycle; minimum 0.80 supply, remains lit.",
+    "groundContact": "Derived from the actual composed avatar alpha and heel-to-toe lower contour.",
+    "cabinet": "Separate outer/inner faces, 4px side/top/bottom metal returns and raised 3D pull handles.",
+    "state": "Existing game save/stat/loadout APIs; Tasks is a read-only placeholder."
+  },
+  "files": [
+    {
+      "path": "cabinet-inner-left.webp",
+      "bytes": 175004,
+      "sha256": "97ee92ecd97bcbce53c0050c813f4f6c04c0c3ebd29f023973c305463f57975a"
+    },
+    {
+      "path": "cabinet-inner-right.webp",
+      "bytes": 180092,
+      "sha256": "b31749ea81d4a7d1f1de406e49194b973f053a995b25dbe7d000285b82edc255"
+    },
+    {
+      "path": "control-heading-patch.svg",
+      "bytes": 760916,
+      "sha256": "0d4152d3a5d8a7b05bcab7edcd036c5e12ee4f71baa1a55a66aba0be9a38b880"
+    },
+    {
+      "path": "hud-paper-composition.webp",
+      "bytes": 553330,
+      "sha256": "bf3961a3d73ec00f5afae851750688dd95302d8e50bae22fb2ee76668b1baa0b"
+    },
+    {
+      "path": "hud-reference-card.webp",
+      "bytes": 570502,
+      "sha256": "28414ec82c3f607f5c12c6f689cf0a6699cb252529fc0c6f88abacfb85ff6a25"
+    },
+    {
+      "path": "night-door-contact.webp",
+      "bytes": 6220,
+      "sha256": "fa54036a024543a734efccc83542a21cdc90488f898407c37c5432da8c4102ba"
+    },
+    {
+      "path": "night-window-contact.webp",
+      "bytes": 13874,
+      "sha256": "3c448c5daae83954d9071b2352315507847a87f4dbf7ea2ff95e57d178ae1ee4"
+    },
+    {
+      "path": "night-window-left.webp",
+      "bytes": 14928,
+      "sha256": "b1c8521c4324962df1840dfa7ad88eb25135445321ca3ba0bac392ac5368f52e"
+    },
+    {
+      "path": "night-window-right.webp",
+      "bytes": 13886,
+      "sha256": "0ccfc6a020f4c7ef72c547921008a67f8966376a29d12acfb43c8abb40b4fed5"
+    },
+    {
+      "path": "portrait-foreground-reference.svg",
+      "bytes": 761124,
+      "sha256": "6a0125732f236967190d0792126f8933d122baca9c99836a7705bac87140b2b8"
+    },
+    {
+      "path": "room-cabinet-interior.webp",
+      "bytes": 245466,
+      "sha256": "b2e02fe55f45918797613db592508e60aa0c3beb9f47763e8bda4742370a0dec"
+    },
+    {
+      "path": "room-cabinet-left.svg",
+      "bytes": 595499,
+      "sha256": "41a1527855c4089fc4302af8b301d0b122afd1e78e6004fe5d0fdfc4e770d374"
+    },
+    {
+      "path": "room-cabinet-right.svg",
+      "bytes": 595499,
+      "sha256": "a5b32a1a0829c6cc740772c781d7889914196d2bd000ed010e79527161859ef7"
+    },
+    {
+      "path": "room-corridor.webp",
+      "bytes": 241582,
+      "sha256": "56aeeba0f28d525f88fc5872ce148a16e5772f68181baa049921e4d80b675385"
+    },
+    {
+      "path": "room-door-leaf.svg",
+      "bytes": 595500,
+      "sha256": "eaec3313629bd103e7cabf385c94a26e1f3f22e05de1e989c058cb15bed14f2d"
+    },
+    {
+      "path": "room-exposure-mask.svg",
+      "bytes": 372,
+      "sha256": "212d9c77cb36a5c2737fdbdf06c477ff49c24e05ed35ab56cfea2ba437e7e561"
+    },
+    {
+      "path": "room-switch.svg",
+      "bytes": 595496,
+      "sha256": "d66e41c7e1ca1970e0785e2c0a3ba7f75f763ced97fd77beb8fd0e9c3895a496"
+    },
+    {
+      "path": "warm-ward-room.webp",
+      "bytes": 446438,
+      "sha256": "ee669913781a68937942b49ae7212de64741af5f4e38e3ed17711218f8284326"
+    }
+  ]
+}
