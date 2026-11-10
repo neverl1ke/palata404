@@ -29,3 +29,6 @@
 .quest-floor>.quest-note{grid-column:2;grid-row:6;align-self:start}
 }
 .quest-locked-zone{position:absolute;top:3%;height:90%;background:repeating-linear-gradient(135deg,#b7232344 0 7px,#b7232311 7px 15px);border:2px solid #a32a2a88;pointer-events:none;z-index:1}.quest-locked-zone.zone-B{left:35.4%;width:29.8%}.quest-locked-zone.zone-C{left:65.2%;width:32%}.quest-floor .quest-map-pin.is-target{outline:4px solid #ffb300;outline-offset:4px;box-shadow:0 0 0 7px #ffb30055}.quest-floor>.quest-note{background:#fff5d6;border-left:4px solid #be8128;padding:8px;font-size:13px}.quest-card button{margin-top:8px}.quest-card p+p{margin-top:8px}
+.quest-locked-zone{inset:0;width:100%;height:100%;border:0;clip-path:none}
+.quest-traveller{position:absolute;z-index:5;transform:translate(-50%,-50%);color:#fff;background:#145bb4;border:3px solid #fff;border-radius:50%;width:22px;height:22px;text-align:center;box-shadow:0 0 0 4px #145bb477;pointer-events:none}
+.quest-floor.quest-location{display:flex!important;flex-direction:column;gap:16px;min-height:360px;background:linear-gradient(135deg,#f7f1df,#dcd3bd);padding:24px!important}.quest-location>.quest-actions{display:flex;flex-direction:column;align-items:stretch}.quest-location>button{align-self:flex-start}.quest-location h3{font-size:24px}.quest-floor[aria-busy=true] .quest-map-pin{pointer-events:none}

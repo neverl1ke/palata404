@@ -58,5 +58,16 @@ function guide(s,id){
 }
 function directions(s,target){if(s.room===target)return 'Ви вже на місці.';const from=rooms[s.room][0],to=rooms[target][0];const path=[];if(s.room!==from)path.push(from);let c=from.charCodeAt(0);while(c!==to.charCodeAt(0)){c+=c<to.charCodeAt(0)?1:-1;path.push(String.fromCharCode(c));}if(target!==to)path.push(target);return 'Шлях: '+path.map(x=>rooms[x][1]).join(' → ')+'. Натискайте точки по черзі.';}
 
-return {guide,directions,rooms,pins,jobs,initial,restore,accessible,destinations,actions,apply,ready,story};
+// Revision 04 geometry in original plan units. Every branch crosses its drawn door.
+const branches={ward404:[[265,650],[265,740]],ward405:[[465,650],[465,740]],collector:[[244,960],[244,740]],gym:[[424,960],[424,740]],toilet:[[550,1020],[540,1020],[540,740]],technical:[[690,610],[692,610],[692,740]],nurse:[[794,520],[794,600],[800,600]],procedure:[[994,520],[994,600],[800,600]],linen:[[725,950],[725,740]],ward406:[[1000,920],[1004,920],[1004,600],[800,600]],ward407:[[1174,500],[1174,600]],doctor:[[1475,520],[1475,600]],ward408:[[1174,830],[1174,765],[1300,765]],stairs:[[1520,850],[1520,770],[1300,770]],A:[[400,740]],B:[[800,740]],C:[[1300,600]]};
+const spine=[[100,740],[800,740],[800,600],[1650,600]];
+function routePoints(s,target){if(!destinations(s).includes(target))return [];const a=branches[s.room],b=branches[target],start=a.at(-1),end=b.at(-1);
+// Project lower C branches onto its north corridor before following the central spine.
+ const project=p=>p[0]===1300&&p[1]>600?[[1300,600]]:[];
+ const ap=project(start),bp=project(end),aa=ap.at(-1)||start,bb=bp.at(-1)||end;
+ const middle=[];if(aa[1]!==bb[1])middle.push([800,aa[1]],[800,bb[1]]);
+ return [...a,...ap,...middle,...bp.slice().reverse(),...b.slice().reverse()].filter((p,i,all)=>!i||p[0]!==all[i-1][0]||p[1]!==all[i-1][1]);}
+const sectionPolygons={B:[[600,310],[1100,310],[1100,1050],[600,1050]],C:[[1100,310],[1650,310],[1650,950],[1100,950]]};
+
+return {routePoints,sectionPolygons,guide,directions,rooms,pins,jobs,initial,restore,accessible,destinations,actions,apply,ready,story};
 });

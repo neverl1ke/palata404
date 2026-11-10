@@ -49,9 +49,20 @@ class QuestPrototypeBrowserTest(unittest.TestCase):
         page.wait_for_function("document.querySelector('.quest-blueprint-image').naturalWidth>0")
         self.assertEqual(page.locator('.quest-map-pin').count(),17)
         page.screenshot(path=str(out/'map-patient-desktop.png'))
-        def room(id): page.locator(f'[data-room="{id}"]').click()
+        def room(id):
+            back=page.get_by_role('button',name='Повернутися до карти',exact=True)
+            if back.is_visible(): back.click()
+            page.locator(f'[data-room="{id}"]').click()
         def action(id): page.locator(f'[data-action="{id}"]').click()
-        for kind, value in [('room','A'),('action','markerA'),('room','B'),('action','markerB'),('room','procedure'),('action','record'),('room','B'),('room','C'),('room','doctor'),('action','observation'),('room','stairs'),('action','stairsPatient'),('room','C'),('room','B'),('room','A'),('room','ward404')]:
+        page.emulate_media(reduced_motion='no-preference')
+        room('A')
+        page.locator('.quest-traveller').wait_for(state='visible')
+        self.assertEqual(page.evaluate('PalataQuestPrototype.snapshot().room'),'ward404')
+        page.get_by_role('button',name='Повернутися до карти',exact=True).wait_for(state='visible')
+        self.assertEqual(page.evaluate('PalataQuestPrototype.snapshot().room'),'A')
+        page.screenshot(path=str(out/'location-arrival.png'))
+        page.emulate_media(reduced_motion='reduce')
+        for kind, value in [('action','markerA'),('room','B'),('action','markerB'),('room','procedure'),('action','record'),('room','B'),('room','C'),('room','doctor'),('action','observation'),('room','stairs'),('action','stairsPatient'),('room','C'),('room','B'),('room','A'),('room','ward404')]:
             (room if kind == 'room' else action)(value)
         page.locator('#map-modal .btn-close-map').click()
         page.locator('.room-trip-switch').click()
