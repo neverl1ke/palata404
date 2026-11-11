@@ -1,0 +1,41 @@
+/* The same live fields use either the original tall chart or the compact reference. */
+.hud-compact-heading,.hud-compact-photo-frame,.hud-compact-meter,.hud-compact-critical-label{display:none}
+.hospital-hud .hud-card-toggle{position:absolute;z-index:4;right:-7cqw;top:9%;width:8.5cqw;height:28cqw;min-width:0;min-height:0;padding:2cqw 1cqw;display:flex;align-items:center;justify-content:center;gap:1.5cqw;writing-mode:vertical-rl;border:2px double #b0895c;border-radius:0 8px 8px 0;background:linear-gradient(90deg,#54251f,#803b31 62%,#5d2722);box-shadow:2px 3px 4px #20110980;color:#eddbbd;font-size:3.7cqw;letter-spacing:.1cqw;line-height:1;white-space:nowrap}
+.hud-card-toggle b{font-size:1.15em;font-weight:400}
+.hospital-hud .hud-card-toggle:hover{filter:brightness(1.1)}
+.hospital-hud .hud-card-toggle:focus-visible{outline:2px solid #f1d09b;outline-offset:2px}
+.hospital-hud .hud-card-toggle:disabled{cursor:default}
+.hud-patient-board[data-card-mode="compact"]{left:.6%;top:8.3%;width:49%;height:auto;aspect-ratio:1902/827;background-image:url('hud-art/patient-compact.webp');container-type:inline-size}
+.hud-patient-board[data-card-mode="compact"]::before{display:none}
+.hud-patient-board[data-card-mode="compact"] .hud-field:not([data-compact-field]),
+.hud-patient-board[data-card-mode="compact"] .hud-photo-foreground,
+.hud-patient-board[data-card-mode="compact"] .hud-photo-stamp,
+.hud-patient-board[data-card-mode="compact"] .hud-meter-trace,
+.hud-patient-board[data-card-mode="compact"] .hud-anatomy-leaders,
+.hud-patient-board[data-card-mode="compact"] .hud-bank-button,
+.hud-patient-board[data-card-mode="compact"] .hud-patient-name>span:first-child,
+.hud-patient-board[data-card-mode="compact"] .hud-full-critical-label{display:none}
+.hud-patient-board[data-card-mode="compact"] .hud-field[data-compact-field]{display:block;left:calc(var(--cx) / 1902 * 100%);top:calc(var(--cy) / 827 * 100%);width:calc(var(--cw) / 1902 * 100%);font-size:calc(var(--cf) / 1902 * 100cqw);text-align:left;line-height:1.04;color:#2b221b;letter-spacing:0}
+.hud-patient-board[data-card-mode="compact"] .hud-meter-value{text-align:center}
+.hud-patient-board[data-card-mode="compact"] h3[data-compact-field]::after{content:':'}
+.hud-patient-board[data-card-mode="compact"] .hud-compact-critical-label{display:inline}
+.hud-patient-board[data-card-mode="compact"] .hud-currency-label,.hud-patient-board[data-card-mode="compact"] .hud-stat-label{text-transform:uppercase}
+.hud-patient-board[data-card-mode="compact"] .hud-compact-heading{letter-spacing:.12cqw}
+.hud-patient-board[data-card-mode="compact"] .hud-approved-emblem{left:7.15%;top:12.1%;width:6.4%;height:13.7%}
+.hud-patient-board[data-card-mode="compact"] .hud-patient-name{height:12.6%}
+.hud-patient-board[data-card-mode="compact"] .hud-level-value,
+.hud-patient-board[data-card-mode="compact"] .hud-xp-percent{color:#8b3e3e}
+.hud-patient-board[data-card-mode="compact"] .hud-photo{left:82.15%;top:10.5%;width:10.4%;height:24.5%;clip-path:polygon(5% 0%,99% 2.8%,93% 98%,0% 96%)}
+.hud-patient-board[data-card-mode="compact"] .hud-compact-photo-frame{display:block;position:absolute;left:81.35%;top:7.75%;width:12.45%;height:29.4%;z-index:2;pointer-events:none}
+.hud-patient-board[data-card-mode="compact"] .hud-exp-track{left:52%;top:31.2%;width:18.5%;height:3.4%;background:repeating-linear-gradient(90deg,#a67b5730 0 1.15cqw,transparent 1.15cqw 1.42cqw)}
+.hud-patient-board[data-card-mode="compact"] .hud-exp-track #exp-bar{background:repeating-linear-gradient(90deg,#a67b57 0 1.15cqw,transparent 1.15cqw 1.42cqw)}
+.hud-patient-board[data-card-mode="compact"] .hud-compact-meter{display:block;position:absolute;left:31.3%;top:42.8%;width:48.4%;height:2.25%;overflow:hidden;pointer-events:none}
+.hud-patient-board[data-card-mode="compact"] .hud-compact-energy{top:50.55%}
+.hud-compact-meter i{display:block;height:100%;width:calc(var(--hud-sanity,100) * 1%);background:repeating-linear-gradient(132deg,#343522aa 0 1px,transparent 1px 5px),linear-gradient(#bac47b,#c9d08b)}
+.hud-compact-energy i{width:calc(var(--hud-energy,100) * 1%);background:repeating-linear-gradient(132deg,#775026aa 0 1px,transparent 1px 5px),linear-gradient(#efb25f,#f4c177)}
+.hud-patient-board[data-card-mode="compact"] .hud-card-toggle{left:72.8%;top:77.8%;right:auto;width:22.7%;height:10.2%;border:0;border-radius:0;background:none;box-shadow:none;writing-mode:horizontal-tb;font-size:2.25cqw;gap:.7cqw;letter-spacing:.1cqw;padding:0;color:#efdac2}
+.hud-patient-board[data-card-mode="compact"] .hud-card-toggle b{font-size:1.45em;line-height:1}
+@media(max-width:900px) and (orientation:portrait){
+ body .hospital-hud.game-viewport:has(.hud-patient-board[data-card-mode="compact"]){--mobile-board-width:calc(100vw - 24px);--mobile-board-height:calc(var(--mobile-board-width) * 827 / 1902)}
+ .hospital-hud .hud-patient-board[data-card-mode="compact"]{top:calc(100% + 16px);left:50%;width:calc(100vw - 24px);height:auto;transform:translateX(-50%)}
+}

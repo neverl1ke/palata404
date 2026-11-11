@@ -18,6 +18,7 @@ class GeneralResponsiveTests(unittest.TestCase):
         self.page.on('dialog', lambda dialog: dialog.accept())
         self.page.goto(self.url)
         self.page.wait_for_function("typeof openInventory === 'function'")
+        self.page.wait_for_function('document.querySelector(".hospital-hud").dataset.assetsReady==="true" && Number(getComputedStyle(document.querySelector(".hospital-hud")).opacity)>.999')
 
     def tearDown(self):
         self.context.close()
@@ -37,6 +38,8 @@ class GeneralResponsiveTests(unittest.TestCase):
         self.assertGreater(result['height'], 0)
 
     def test_landscape_hud_and_panels_survive_live_resize(self):
+        self.page.locator('.hud-card-toggle').click()
+        self.page.wait_for_function('!PalataHudCard.moving')
         for width, height in [(844,390), (667,375), (568,320), (1024,600), (1280,480), (1440,900)]:
             with self.subTest(width=width, height=height):
                 self.page.set_viewport_size({'width':width,'height':height})

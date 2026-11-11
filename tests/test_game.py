@@ -292,6 +292,7 @@ class GameTests(unittest.TestCase):
                 'localStorage.setItem(key, value);'
                 'sessionStorage.setItem("seeded", "1"); }')
         self.page.goto(self.url + query, wait_until='networkidle')
+        self.page.wait_for_function('document.querySelector(".hospital-hud").dataset.assetsReady==="true" && Number(getComputedStyle(document.querySelector(".hospital-hud")).opacity)>.999')
         self.assertNotEqual(self.page.locator('#player-name').inner_text(), 'Завантаження...')
 
     def register_face_fixtures(self):

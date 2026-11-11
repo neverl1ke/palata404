@@ -13,7 +13,8 @@ class RoomSceneTests(unittest.TestCase):
 
     def setUp(self):
         self.context = self.browser.new_context(viewport={'width': 1672, 'height': 941})
-        self.context.add_init_script('window.__PALATA_TEST_DIRECT__=true;')
+        # These image-coordinate atmosphere checks use the unobstructed tall chart.
+        self.context.add_init_script('window.__PALATA_TEST_DIRECT__=true;localStorage.setItem("palata404_hud_card","full");')
         self.context.route('https://**/*', lambda route: route.abort())
         self.page = self.context.new_page()
         self.errors = []
@@ -22,6 +23,7 @@ class RoomSceneTests(unittest.TestCase):
         self.page.evaluate('document.fonts.ready')
         self.page.evaluate('document.getElementById("character-paperdoll").paperDollReady')
         self.page.wait_for_function('Number(document.querySelector(".room-shadow-contact").dataset.soleSamples)>40')
+        self.page.wait_for_function('document.querySelector(".hospital-hud").dataset.assetsReady==="true" && Number(getComputedStyle(document.querySelector(".hospital-hud")).opacity)>.999')
 
     def tearDown(self):
         self.context.close()

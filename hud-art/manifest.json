@@ -14,7 +14,8 @@
     "innerDoors": "Separate generated matte steel inner-door textures; exterior door imagery is preserved.",
     "approvedAvatarAssets": "Existing original registered PNGs and AvatarCore renderer, unchanged.",
     "approvedEmblemAndSeal": "Existing assets/ui/wardrobe resources, unchanged.",
-    "ambientTextures": "Generated isolated glass residues and wet footprint decals; original room pixels are retained for all fabric and handle front textures."
+    "ambientTextures": "Generated isolated glass residues and wet footprint decals; original room pixels are retained for all fabric and handle front textures.",
+    "compactPatientCard": "Textless backplate generated from the user-provided wide reference. The approved emblem and the current live avatar portrait remain separate original resources."
   },
   "rendering": {
     "outside": "Original approved gray dusk view cycles to night and back in 72 seconds. Selective warm-glass relighting preserves dark window texture, frames and foreground mesh when a distant light switches off. No visible exterior fixture on the tenth floor.",
@@ -29,7 +30,9 @@
     "corridor": "Sharp fixed corridor behind the transparent door glass, with independent rare warm voltage dips in a 47-second cycle; minimum supply 0.62, never off.",
     "tripButton": "The original room photo supplies the button and wall pixels, so the fixture follows room exposure exactly. A registered transparent overlay adds only the red-circle hover glow; no scaled opaque wall crop is placed above the room light.",
     "patientPaper": "The approved weapon clipboard paper texture is multiplied into the existing patient chart through a softly feathered paper-only mask. Original metal rim, diagram registration, live fields, portrait and seal remain separate.",
-    "patientStats": "Damage, armor and critical multiplier describe the currently visible saved patient or combat loadout. Wardrobe drafts do not change the chart until applied; combat calculations still use the combat loadout."
+    "patientStats": "Damage, armor and critical multiplier describe the currently visible saved patient or combat loadout. Wardrobe drafts do not change the chart until applied; combat calculations still use the combat loadout.",
+    "patientCardLayout": "Compact horizontal chart defaults to the upper left. The red expand button and a side folder tab switch between compact and full charts by sliding the folder past the left edge, changing registration offscreen, then returning. Layout preference is saved separately from game progress; reduced motion switches immediately.",
+    "startup": "The room stays hidden and inert behind a loading screen until current CSS art, both chart views, fonts, live character, portrait and contact shadow are ready to paint. Failed required artwork keeps the loading screen with a reload action."
   },
   "files": [
     {
@@ -131,6 +134,11 @@
       "path": "original-handle-right.svg",
       "bytes": 2698,
       "sha256": "bfa97e2a07e2c0153bc6d21db8ed2d303fddd487ac1c2eee184d21ef6ff7d140"
+    },
+    {
+      "path": "patient-compact.webp",
+      "bytes": 378434,
+      "sha256": "82dc617456f232dd85e733efb2d321a99f3e952d13a882d612560a67700a68d1"
     },
     {
       "path": "patient-paper-mask.svg",
@@ -287,5 +295,9 @@
         335
       ]
     }
-  }
+  },
+  "compactPatientCardSize": [
+    1902,
+    827
+  ]
 }

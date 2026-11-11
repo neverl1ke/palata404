@@ -16,6 +16,11 @@ function sync(){
  if(playerName==='Пацієнт #404')byId('player-name').textContent='Пациент №404';
  const sanity=Math.max(0,Math.min(100,100-stats.madness));
  byId('hud-sanity-value').textContent=sanity+' / 100';
+ const board=byId('patient-card'),compact=board?.dataset.cardMode==='compact';
+ const energy=Math.max(0,Math.min(100,100*stats.energy/Math.max(1,stats.maxEnergy)));
+ board?.style.setProperty('--hud-sanity',sanity);board?.style.setProperty('--hud-energy',energy);
+ board?.querySelector('.hud-compact-sanity')?.setAttribute('aria-valuenow',String(sanity));
+ board?.querySelector('.hud-compact-energy')?.setAttribute('aria-valuenow',String(energy));
  byId('loc-title-label').textContent=stats.madness>=100?'СИСТЕМНЫЙ СБОЙ':'ТЕКУЩАЯ ЛОКАЦИЯ';
  if(stats.madness>=100)byId('current-location-name').textContent='ОШИБКА 404: Неизвестно';
  byId('hud-health-value').textContent=stats.hp;
@@ -29,10 +34,15 @@ function sync(){
  document.querySelectorAll('[data-hud-case]').forEach(n=>n.textContent=identity);
  // Keep large balances and XP inside the same painted receipt/ribbon areas.
  ['silver-val','pills-val','bucks-val','exp-val','damage-val','armor-val','hud-health-value','hud-critical-value'].forEach(id=>{
-  const el=byId(id),base=Number(el.style.getPropertyValue('--font')),width=Number(el.style.getPropertyValue('--w'));
+  const el=byId(id),base=Number(el.style.getPropertyValue(compact?'--cf':'--font')),width=Number(el.style.getPropertyValue(compact?'--cw':'--w'));
   const size=Math.min(base,width/Math.max(1,el.textContent.length*.64));
-  el.style.fontSize='calc('+size+' / 971 * 100cqw)';
+  el.style.fontSize='calc('+size+' / '+(compact?1902:971)+' * 100cqw)';
  });
+ const name=byId('player-name'),nameField=name.parentElement;
+ if(compact){
+  const base=Number(nameField.style.getPropertyValue('--cf')),width=Number(nameField.style.getPropertyValue('--cw'));
+  nameField.style.fontSize='calc('+Math.min(base,width/Math.max(1,name.textContent.length*.64))+' / 1902 * 100cqw)';
+ }else nameField.style.removeProperty('font-size');
  if(window.PalataRoom)window.PalataRoom.refresh();
  portrait();
 }

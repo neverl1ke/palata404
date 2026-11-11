@@ -1,0 +1,15 @@
+.scene-loading{position:fixed;inset:0;z-index:60000;display:grid;place-items:center;margin:0;background:radial-gradient(ellipse at 45% 35%,#493324,#1f1712 72%);color:#e4c9a0;font-family:Georgia,serif;transition:opacity .18s ease}
+.scene-loading[hidden]{display:none}
+.scene-loading.is-ready{opacity:0;pointer-events:none}
+.scene-loading-paper{width:min(350px,78vw);padding:26px 30px;border:3px double #a47c52;box-shadow:0 9px 28px #0008,inset 0 0 25px #1c100650;background:linear-gradient(120deg,#3d2c20,#302116);text-align:center}
+.scene-loading-name{display:block;font-size:25px;letter-spacing:3px;border-bottom:1px solid #9b754e;padding-bottom:15px}
+.scene-loading p{margin:17px 0 0;font-size:15px;line-height:1.4}
+.scene-loading-line{height:2px;width:68%;margin:20px auto 0;background:#9b754e;transform-origin:left;animation:scene-loading-pulse 1.7s ease-in-out infinite}
+.scene-loading button{font:inherit;margin-top:18px;min-height:40px;padding:8px 18px;border:1px solid #ad8457;background:#6a3b2b;color:#f1ddbe;cursor:pointer}
+.scene-loading button[hidden]{display:none}
+.scene-loading button:focus-visible{outline:2px solid #f1ddbe;outline-offset:3px}
+.hospital-hud{transition:opacity .18s ease}
+.hospital-hud[data-assets-ready="false"]{opacity:0;pointer-events:none;animation-play-state:paused!important}
+.hospital-hud[data-assets-ready="false"] .room-scene *,.hospital-hud[data-assets-ready="false"] .room-light-veil{animation-play-state:paused!important}
+@keyframes scene-loading-pulse{0%,100%{opacity:.3;transform:scaleX(.5)}50%{opacity:.95;transform:scaleX(1)}}
+@media(prefers-reduced-motion:reduce){.scene-loading,.hospital-hud{transition:none}.scene-loading-line{animation:none}}
