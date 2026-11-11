@@ -81,3 +81,4 @@
 /* Preserve the pin-to-drawing transform at every desktop viewport size. */
 .quest-floor:not(.quest-location)>.quest-blueprint{width:min(100%,calc((100dvh - 320px)*1.894117647));height:auto;aspect-ratio:1610/850;max-height:none}
 .quest-floor:not(.quest-location)>.quest-note{max-height:112px;overflow:auto;box-sizing:border-box}.quest-floor:not(.quest-location)>.quest-actions{max-height:96px;overflow:auto}
+@media(min-height:800px){#map-modal .quest-map-sheet{padding-top:160px!important}.quest-floor:not(.quest-location)>.quest-blueprint{width:min(100%,calc((100dvh - 370px)*1.894117647))}}
