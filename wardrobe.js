@@ -2,8 +2,6 @@ let wardrobeCategory = 'appearance';
 let wardrobeSlot = 'baseBody';
 // Inspection is transient UI state; only the existing equip operation saves.
 let wardrobeSelectedItemId = null;
-let wardrobeHairColorGroup = 'natural';
-let wardrobePaletteExpanded = false;
 
 function renderWardrobeRegistration() {
     document.getElementById('custom-modal')?.setAttribute('data-wardrobe-theme', paperDollState.activeViewMode === 'combat' ? 'trip' : 'patient');
@@ -32,7 +30,6 @@ function selectWardrobeCategory(category) {
     wardrobeCategory = category;
     wardrobeSlot = WARDROBE_CATEGORIES[category].slots[0];
     wardrobeSelectedItemId = null;
-    wardrobePaletteExpanded = false;
     const panel = document.getElementById('wardrobe-items');
     if (panel) panel.scrollTop = 0;
     const grid = document.getElementById('wardrobe-container');
@@ -47,10 +44,8 @@ function selectWardrobeSlot(slot) {
         wardrobeCategory=category[0];
     }
     wardrobeSlot = slot;
-    wardrobePaletteExpanded = false;
     const panel = document.getElementById('wardrobe-items');
     if (panel) panel.scrollTop = 0;
-    if (['hair','beard'].includes(slot)) wardrobeHairColorGroup = HAIR_COLORS.find(color => color.id === paperDollState.appearance[slot === 'beard' ? 'beardColor' : 'hairColor'])?.group === 'alternative' ? 'alternative' : 'natural';
     wardrobeSelectedItemId = null;
     const grid = document.getElementById('wardrobe-container');
     if (grid) grid.scrollTop = 0;
@@ -71,6 +66,8 @@ function applyWardrobeItemAction() {
 }
 
 function wardrobeItemImage(item) {
+    const illustration=typeof wardrobeAppearanceIcon==='function' ? wardrobeAppearanceIcon(item) : null;
+    if (illustration) return illustration;
     const catalogThumbnail = item?.thumbnailByGender?.[paperDollState.selectedGender] || item?.thumbnail;
     if (catalogThumbnail && !failedPaperDollImages.has(catalogThumbnail)) return catalogThumbnail;
     const parts = paperDollItemLayers(item, paperDollState.selectedGender);
@@ -220,22 +217,13 @@ function renderWardrobeUI() {
 function renderHairPalette() {
     const panel=document.getElementById('wardrobe-hair-palette');
     if (!panel) return;
-    const beard = wardrobeSlot === 'beard';
-    panel.classList.toggle('hidden', !['hair','beard'].includes(wardrobeSlot));
-    if (!['hair','beard'].includes(wardrobeSlot)) return;
-    panel.setAttribute('data-expanded', String(wardrobePaletteExpanded));
-    const selected=HAIR_COLORS.find(color => color.id===normalizeHairColor(paperDollState.appearance[beard ? 'beardColor' : 'hairColor']));
-    panel.innerHTML = `<header><strong>${beard ? 'Колір бороди та вусів' : 'Колір волосся'}</strong><span role="status">${escapeHTML(selected.name)}</span></header>
-        <button type="button" class="hair-palette-toggle" data-palette-toggle data-wardrobe-focus="palette-toggle" aria-expanded="${wardrobePaletteExpanded}" aria-controls="hair-palette-options">Колір: ${escapeHTML(selected.name)} ${wardrobePaletteExpanded ? '▴' : '▾'}</button>
-        <div id="hair-palette-options" class="hair-palette-options" data-expanded="${wardrobePaletteExpanded}">
-        <div class="hair-color-controls"><button type="button" class="hair-original" data-hair-color="original" data-wardrobe-focus="color-original" aria-pressed="${selected.id==='original'}">Оригінальний</button>
-        <div class="hair-color-groups" role="group" aria-label="Група кольорів">${[['natural','Природні'],['alternative','Альтернативні']].map(([id,name]) => `<button type="button" data-hair-color-group="${id}" data-wardrobe-focus="color-group-${id}" aria-pressed="${wardrobeHairColorGroup===id}">${name}</button>`).join('')}</div></div>
-        <div class="hair-color-swatches" role="group" aria-label="Відтінки волосся">${HAIR_COLORS.filter(color => color.group===wardrobeHairColorGroup).map(color => `<button type="button" data-hair-color="${color.id}" data-wardrobe-focus="color-${color.id}" aria-label="${escapeHTML(color.name)}" title="${escapeHTML(color.name)}" aria-pressed="${selected.id===color.id}" style="--hair-color:${color.hex}"><span aria-hidden="true">${selected.id===color.id ? '✓' : ''}</span></button>`).join('')}</div>
-        </div><p id="hair-color-error" class="hidden" role="alert">Колір не вдалося застосувати. Показано оригінал; спробуйте обрати колір знову.</p>`;
-    panel.querySelectorAll('[data-palette-toggle]').forEach(button => button.addEventListener('click', () => { wardrobePaletteExpanded = !wardrobePaletteExpanded; renderWardrobe(); }));
-    panel.querySelectorAll('[data-hair-color]').forEach(button => button.addEventListener('click', () => (beard ? setBeardColor : setHairColor)(button.dataset.hairColor)));
-    panel.querySelectorAll('[data-hair-color-group]').forEach(button => button.addEventListener('click', () => {
-        wardrobeHairColorGroup=button.dataset.hairColorGroup;
-        renderWardrobe();
-    }));
+    const beard=wardrobeSlot==='beard',visible=['hair','beard'].includes(wardrobeSlot);
+    panel.classList.toggle('hidden',!visible);
+    if (!visible) return;
+    const selected=HAIR_COLORS.find(color=>color.id===normalizeHairColor(paperDollState.appearance[beard?'beardColor':'hairColor']));
+    panel.setAttribute('data-expanded','true');
+    panel.innerHTML=`<header><strong>${beard?'Колір бороди та вусів':'Колір волосся'}</strong><span role="status">${escapeHTML(selected.name)}</span></header>
+        <div id="hair-palette-options" class="hair-palette-options" data-expanded="true"><div class="hair-color-swatches" role="group" aria-label="${beard?'Відтінки бороди та вусів':'Відтінки волосся'}">${HAIR_COLORS.map(color=>`<button type="button" class="${color.id==='original'?'is-original':''}" data-hair-color="${color.id}" data-wardrobe-focus="color-${color.id}" aria-label="${escapeHTML(color.name)}" title="${escapeHTML(color.name)}" aria-pressed="${selected.id===color.id}" style="--hair-color:${color.hex||'transparent'}"><span aria-hidden="true">${color.id==='original'?'↺':selected.id===color.id?'✓':''}</span></button>`).join('')}</div></div>
+        <p id="hair-color-error" class="hidden" role="alert">Колір не вдалося застосувати. Показано оригінал; спробуйте обрати колір знову.</p>`;
+    panel.querySelectorAll('[data-hair-color]').forEach(button=>button.addEventListener('click',()=>(beard?setBeardColor:setHairColor)(button.dataset.hairColor)));
 }

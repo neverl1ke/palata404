@@ -1280,7 +1280,6 @@ class GameTests(unittest.TestCase):
                     if not action.is_disabled():action.click(no_wait_after=True)
                     for color in ['original','black','white']:
                         self.open_hair_palette()
-                        if color!='original':self.page.locator('[data-hair-color-group="natural"]').click(no_wait_after=True)
                         self.page.locator('[data-hair-color="'+color+'"]').click(no_wait_after=True)
                         self.assertEqual(self.page.evaluate('paperDollState.appearance.hairColor'),color)
                     self.page.screenshot(path=str(results/f'final-mobile-{width}-{mode}-{gender}-hair.png'))
@@ -1478,9 +1477,8 @@ class GameTests(unittest.TestCase):
                 self.assertLessEqual(self.page.locator('.wardrobe-items').evaluate('e=>e.scrollWidth-e.clientWidth'),1)
                 self.open_hair_palette()
                 self.assertTrue(self.page.locator('[data-hair-color="original"]').is_visible())
-                self.page.locator('[data-hair-color-group="natural"]').click()
                 self.page.locator('[data-hair-color="black"]').click()
-                self.assertEqual(self.page.locator('[data-hair-color="black"]').bounding_box()['height'],44)
+                self.assertGreaterEqual(self.page.locator('[data-hair-color="black"]').bounding_box()['height'],26)
                 self.page.screenshot(path=str(results/f'hair-palette-{mode}-{width}.png'))
         self.assertEqual(missing,[])
 

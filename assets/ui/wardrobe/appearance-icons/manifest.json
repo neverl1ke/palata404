@@ -1,0 +1,676 @@
+{
+  "schema": 1,
+  "source": "Two user-supplied Palata404-Appearance-Icons.zip and hair.zip attachments, 2026-11-11",
+  "sourceIconSize": [
+    512,
+    512
+  ],
+  "runtimeIconSize": [
+    256,
+    256
+  ],
+  "processing": "Proportional thumbnail resize and WebP encoding only; supplied illustration and alpha retained. Original PNGs are stored separately in review. Avatar layers and item IDs are unchanged.",
+  "count": 66,
+  "files": [
+    {
+      "gender": "female",
+      "id": "@native",
+      "source": "review/appearance-icons-20261111/source/heads/female/face-native.png",
+      "sourceSha256": "905bd29b51659084844b3ff659eb66a2f0191686fda1f3f973e5e5bfc1193d10",
+      "sourceBytes": 516099,
+      "runtime": "assets/ui/wardrobe/appearance-icons/heads/female/face-native.webp",
+      "sha256": "4dc84da99a49d26d7d6e9dd5c82e70065038286c6061be55602dc5535887ed92",
+      "bytes": 16508
+    },
+    {
+      "gender": "female",
+      "id": "face-asian",
+      "source": "review/appearance-icons-20261111/source/heads/female/face-asian.png",
+      "sourceSha256": "a161dbcf0b5322973661bfe2a2f4a75fd5a8abb6125b9bd0c817349bdcbe98b9",
+      "sourceBytes": 525207,
+      "runtime": "assets/ui/wardrobe/appearance-icons/heads/female/face-asian.webp",
+      "sha256": "5434a9cb5ddd8715364342632a43dd8b31c486cbbf492ae6ccb58fdfda0ff32e",
+      "bytes": 17062
+    },
+    {
+      "gender": "female",
+      "id": "face-young",
+      "source": "review/appearance-icons-20261111/source/heads/female/face-young.png",
+      "sourceSha256": "484383b8373652c525ad30b676bd55b67f09b73b6d293eeb5e4e9243dcb123bf",
+      "sourceBytes": 521997,
+      "runtime": "assets/ui/wardrobe/appearance-icons/heads/female/face-young.webp",
+      "sha256": "5b5cba614663da9471d2a94a8b88c852388f5c44fce35b813bdf2d9eaa24fe77",
+      "bytes": 17018
+    },
+    {
+      "gender": "female",
+      "id": "face-exhausted",
+      "source": "review/appearance-icons-20261111/source/heads/female/face-exhausted.png",
+      "sourceSha256": "55a3feedcf8bce44966a4205ef15ca3daf02b3ab8d220d664564e160a2f9c39f",
+      "sourceBytes": 526287,
+      "runtime": "assets/ui/wardrobe/appearance-icons/heads/female/face-exhausted.webp",
+      "sha256": "fb771dba7043d25f6e1038ffe309f4d57c6017b28cfc6234573c1484c1254d71",
+      "bytes": 17720
+    },
+    {
+      "gender": "female",
+      "id": "face-elder",
+      "source": "review/appearance-icons-20261111/source/heads/female/face-elder.png",
+      "sourceSha256": "f878be103667638b7e794b295b1c1ffb54b1095d90b3345d2b129a0efe6785ee",
+      "sourceBytes": 532990,
+      "runtime": "assets/ui/wardrobe/appearance-icons/heads/female/face-elder.webp",
+      "sha256": "e56c2328557a2c69636ced833f224a9cd09b8a85dd39ebeb7381668ae0ff3cdb",
+      "bytes": 17736
+    },
+    {
+      "gender": "female",
+      "id": "face-alternative",
+      "source": "review/appearance-icons-20261111/source/heads/female/face-alternative.png",
+      "sourceSha256": "d1917de1118d39fc531f8aaf63a7d4b5b21beab69c791c0bd8fb46687aebb1aa",
+      "sourceBytes": 524473,
+      "runtime": "assets/ui/wardrobe/appearance-icons/heads/female/face-alternative.webp",
+      "sha256": "f9935a45c6672684c1f90ea58e9bba6993167d78ae4ccf5d9025820fe1426244",
+      "bytes": 17778
+    },
+    {
+      "gender": "female",
+      "id": "face-ginger-soft",
+      "source": "review/appearance-icons-20261111/source/heads/female/face-ginger-soft.png",
+      "sourceSha256": "bb616c63b1c404f33f2eb93dae5382162c4c46914345ca9e08b00338f9d4a8e2",
+      "sourceBytes": 526543,
+      "runtime": "assets/ui/wardrobe/appearance-icons/heads/female/face-ginger-soft.webp",
+      "sha256": "339b1d6a96e8c35d05c0f44da1fbc91a8c623e9aff0449399ea6bb3bab0f6e3e",
+      "bytes": 17778
+    },
+    {
+      "gender": "female",
+      "id": "face-goth-septum",
+      "source": "review/appearance-icons-20261111/source/heads/female/face-goth-septum.png",
+      "sourceSha256": "4d8c7106df1dd44a1a6b3d907c645b60dddb6c9bfff7034b31ca35f1b49deb68",
+      "sourceBytes": 537194,
+      "runtime": "assets/ui/wardrobe/appearance-icons/heads/female/face-goth-septum.webp",
+      "sha256": "154732d4e765933edfae35bfe661769990f108a554d2ca6fc3a39c5220f958c7",
+      "bytes": 18070
+    },
+    {
+      "gender": "female",
+      "id": "face-goth-black-lips",
+      "source": "review/appearance-icons-20261111/source/heads/female/face-goth-black-lips.png",
+      "sourceSha256": "ab23259033b8436bb6da9b9ff2a541748da767b1a5c7cc8df90a7f91425d8691",
+      "sourceBytes": 539222,
+      "runtime": "assets/ui/wardrobe/appearance-icons/heads/female/face-goth-black-lips.webp",
+      "sha256": "c89f2a02447accdab1df9b30c0e790079ec36eff06499646eaf35d7880f7de97",
+      "bytes": 17966
+    },
+    {
+      "gender": "female",
+      "id": "face-female-new-defined-brows",
+      "source": "review/appearance-icons-20261111/source/heads/female/face-female-new-defined-brows.png",
+      "sourceSha256": "d641036c19e1131511419e5b378d805ed7fa124b48af967bc1d0363db771c862",
+      "sourceBytes": 538264,
+      "runtime": "assets/ui/wardrobe/appearance-icons/heads/female/face-female-new-defined-brows.webp",
+      "sha256": "e46597da0d1856634243d52272bcfe37c8704ba89c0748dc5b7d45714395a7a8",
+      "bytes": 18448
+    },
+    {
+      "gender": "female",
+      "id": "face-female-new-blue-gaze",
+      "source": "review/appearance-icons-20261111/source/heads/female/face-female-new-blue-gaze.png",
+      "sourceSha256": "bf1b44319752702e3f6a7a2afdfbdcaf2f82a516aa94c76e6dc399d64d1b254c",
+      "sourceBytes": 542361,
+      "runtime": "assets/ui/wardrobe/appearance-icons/heads/female/face-female-new-blue-gaze.webp",
+      "sha256": "74d1157e52437572c0d96e613d07d22cc945af4e4a54e2f73f6a24785957d32f",
+      "bytes": 19116
+    },
+    {
+      "gender": "female",
+      "id": "face-female-new-freckled",
+      "source": "review/appearance-icons-20261111/source/heads/female/face-female-new-freckled.png",
+      "sourceSha256": "fcdab08fa97cf5db42d48ad06ff6067668198836d4ae51dfd88b5657a9d3f828",
+      "sourceBytes": 545645,
+      "runtime": "assets/ui/wardrobe/appearance-icons/heads/female/face-female-new-freckled.webp",
+      "sha256": "16cbb80a1078be6db04d9d62d8e115b244f3d603412b52056271a54feb195747",
+      "bytes": 19110
+    },
+    {
+      "gender": "female",
+      "id": "face-female-new-light-eyes",
+      "source": "review/appearance-icons-20261111/source/heads/female/face-female-new-light-eyes.png",
+      "sourceSha256": "11bc8633bafe3c12bbf9e5beaef5737f0865220976234243d6ad1ad79216844b",
+      "sourceBytes": 514343,
+      "runtime": "assets/ui/wardrobe/appearance-icons/heads/female/face-female-new-light-eyes.webp",
+      "sha256": "2015873ab1a978d9126e84df6a79b3a3fb7cca16f6c98652868bcdaeb27df6cc",
+      "bytes": 16882
+    },
+    {
+      "gender": "female",
+      "id": "face-female-new-pierced",
+      "source": "review/appearance-icons-20261111/source/heads/female/face-female-new-pierced.png",
+      "sourceSha256": "28b6860c3d8ba7373bead250c9e6260dcfb56ef7ce8c1260a6780297e3d55259",
+      "sourceBytes": 524781,
+      "runtime": "assets/ui/wardrobe/appearance-icons/heads/female/face-female-new-pierced.webp",
+      "sha256": "5b18fc45e6e0a131a1d0384ad53008e2c0bc1bc3c8b4c3cd646dbb83f5a37859",
+      "bytes": 17920
+    },
+    {
+      "gender": "female",
+      "id": "face-female-new-soft-gaze",
+      "source": "review/appearance-icons-20261111/source/heads/female/face-female-new-soft-gaze.png",
+      "sourceSha256": "9bd32eeeead701e10d2f3a20fca43d1c506120dc0cb279c54d4f42f7149d815a",
+      "sourceBytes": 519912,
+      "runtime": "assets/ui/wardrobe/appearance-icons/heads/female/face-female-new-soft-gaze.webp",
+      "sha256": "e37534132fbe96d6de8eb66eb41c4ba6f575b7fc2c3e61eb894cfce1f86219e5",
+      "bytes": 17044
+    },
+    {
+      "gender": "female",
+      "id": "face-female-new-almond-eyes",
+      "source": "review/appearance-icons-20261111/source/heads/female/face-female-new-almond-eyes.png",
+      "sourceSha256": "93ba475aa9719c7e5cba0c80881302c1aaccb0c028a425c501b3b97e27c8043f",
+      "sourceBytes": 515681,
+      "runtime": "assets/ui/wardrobe/appearance-icons/heads/female/face-female-new-almond-eyes.webp",
+      "sha256": "c6b9a7571530ef7057502886ade5a128cf4379ae6a8c6011faaf87618373c3c9",
+      "bytes": 17164
+    },
+    {
+      "gender": "female",
+      "id": "hair-f5-pixie",
+      "source": "review/appearance-icons-20261111/source/hair/female/hair-f5-pixie.png",
+      "sourceSha256": "61e12ddddc2879e71e6701932507d21bff4ab1d9dbff162b3f32b2aa34994fde",
+      "sourceBytes": 536149,
+      "runtime": "assets/ui/wardrobe/appearance-icons/hair/female/hair-f5-pixie.webp",
+      "sha256": "31c048e9de9cc17a9661a55372c5bb393f32489f79a0ec3d879ec7c82d67983f",
+      "bytes": 26434
+    },
+    {
+      "gender": "female",
+      "id": "hair-f5-jaw-bob",
+      "source": "review/appearance-icons-20261111/source/hair/female/hair-f5-jaw-bob.png",
+      "sourceSha256": "bbcc5dc091d8d71f73927317a7d701c1a7526585f28c741bae839d678c07205e",
+      "sourceBytes": 581056,
+      "runtime": "assets/ui/wardrobe/appearance-icons/hair/female/hair-f5-jaw-bob.webp",
+      "sha256": "51c267ba03f95da7d8cdf7f60c7f87e84d2580b60e5da54ddd65fccff4bb2590",
+      "bytes": 27636
+    },
+    {
+      "gender": "female",
+      "id": "hair-f5-braided-updo",
+      "source": "review/appearance-icons-20261111/source/hair/female/hair-f5-braided-updo.png",
+      "sourceSha256": "59d0847a84fdfc58331b49772e209468f045a16501b90101e640a88cfad949e1",
+      "sourceBytes": 542119,
+      "runtime": "assets/ui/wardrobe/appearance-icons/hair/female/hair-f5-braided-updo.webp",
+      "sha256": "92d870f0ade1dd860dfb6b2718cce4392a33ae6693a6dce07efff6b4b1235df5",
+      "bytes": 27136
+    },
+    {
+      "gender": "female",
+      "id": "hair-bob-bangs",
+      "source": "review/appearance-icons-20261111/source/hair/female/hair-bob-bangs.png",
+      "sourceSha256": "5535a38154649544ddee5f903a908771b5dd3cf8168d7538042c7e90f5f24d80",
+      "sourceBytes": 602968,
+      "runtime": "assets/ui/wardrobe/appearance-icons/hair/female/hair-bob-bangs.webp",
+      "sha256": "5499e6b007457679a19634371caa8ad5ec63513fd0270895ceef7e022c556b9e",
+      "bytes": 28820
+    },
+    {
+      "gender": "female",
+      "id": "hair-messy",
+      "source": "review/appearance-icons-20261111/source/hair/female/hair-messy.png",
+      "sourceSha256": "93fee197911318d0a19d6102188a9832c75d3e6b1f04a53e9b0b0e9aa9f53ac7",
+      "sourceBytes": 544595,
+      "runtime": "assets/ui/wardrobe/appearance-icons/hair/female/hair-messy.webp",
+      "sha256": "ffdaffecec6dd5f741951d853b78a01507c2eee892b1e7723725836acf1941ca",
+      "bytes": 34002
+    },
+    {
+      "gender": "female",
+      "id": "hair-bob",
+      "source": "review/appearance-icons-20261111/source/hair/female/hair-bob.png",
+      "sourceSha256": "57e1e960aa8455a038ca3d9ed67a256259ce86a17447ebb7cd7330a2b7d05735",
+      "sourceBytes": 554673,
+      "runtime": "assets/ui/wardrobe/appearance-icons/hair/female/hair-bob.webp",
+      "sha256": "1acfd3815b4dd9a2c6266eb6f948477fc2f1447605e668e9da1d5fdaef262b6e",
+      "bytes": 27130
+    },
+    {
+      "gender": "female",
+      "id": "hair-double-buns",
+      "source": "review/appearance-icons-20261111/source/hair/female/hair-double-buns.png",
+      "sourceSha256": "a1c8d2e4ac802bfd84b95ecda412bbe19c0fdcba8fb081288d20dc5b110a2066",
+      "sourceBytes": 532483,
+      "runtime": "assets/ui/wardrobe/appearance-icons/hair/female/hair-double-buns.webp",
+      "sha256": "2d2d2b138dc568c0892489ef05a03f8d7da2775141121068aa1652de726e343b",
+      "bytes": 31080
+    },
+    {
+      "gender": "female",
+      "id": "hair-classic-short",
+      "source": "review/appearance-icons-20261111/source/hair/female/hair-classic-short.png",
+      "sourceSha256": "3511d415c771386060d50e7136170ce2d3c96c33b84611f03489a1b8b52f2765",
+      "sourceBytes": 517291,
+      "runtime": "assets/ui/wardrobe/appearance-icons/hair/female/hair-classic-short.webp",
+      "sha256": "679ee6c82e118fdcb4f78677b5ab02241701a1a765aec479fab1f6be9fb20e5a",
+      "bytes": 24042
+    },
+    {
+      "gender": "female",
+      "id": "hair-textured-short",
+      "source": "review/appearance-icons-20261111/source/hair/female/hair-textured-short.png",
+      "sourceSha256": "4e09ecaf6e728ea1bd0a08937f0e266b9f2f3bd4f7d6c0fa652c5f01f7244780",
+      "sourceBytes": 485295,
+      "runtime": "assets/ui/wardrobe/appearance-icons/hair/female/hair-textured-short.webp",
+      "sha256": "216f7f47d3e9acb5e80d5fe1167d8e5d25781244bb1f5b0e080454b3245d1b10",
+      "bytes": 20168
+    },
+    {
+      "gender": "female",
+      "id": "hair-shoulder-length",
+      "source": "review/appearance-icons-20261111/source/hair/female/hair-shoulder-length.png",
+      "sourceSha256": "261b0992680486ca99fb2002f327f6c405e886c9224d3dcc074f79b2056f48d3",
+      "sourceBytes": 605078,
+      "runtime": "assets/ui/wardrobe/appearance-icons/hair/female/hair-shoulder-length.webp",
+      "sha256": "5d7ddace4b5da3b3f2bb8ee7c632603372147d62eaa3c3503e6c39e0b0029e9d",
+      "bytes": 31882
+    },
+    {
+      "gender": "female",
+      "id": "hair-female-braids",
+      "source": "review/appearance-icons-20261111/source/hair/female/hair-female-braids.png",
+      "sourceSha256": "7f8e6fe98936dc1c310683c37e06b7eb0da994b5c2cf664f94e7154b9d62603b",
+      "sourceBytes": 483566,
+      "runtime": "assets/ui/wardrobe/appearance-icons/hair/female/hair-female-braids.webp",
+      "sha256": "8bafb1eebdc64f022878aa42d300ab0869424b65fc95e1fab68a0af02fbfa0e5",
+      "bytes": 21388
+    },
+    {
+      "gender": "female",
+      "id": "hair-female-curls",
+      "source": "review/appearance-icons-20261111/source/hair/female/hair-female-curls.png",
+      "sourceSha256": "f7f2cae90ed68f61aa1cdcc28f8cfafb15afd1ae348838c8204652a9403df349",
+      "sourceBytes": 576428,
+      "runtime": "assets/ui/wardrobe/appearance-icons/hair/female/hair-female-curls.webp",
+      "sha256": "f9b05f8484508c96f87151ad27b7ac81c0b57977fb11d4a15a8a149164394a29",
+      "bytes": 31036
+    },
+    {
+      "gender": "male",
+      "id": "@native",
+      "source": "review/appearance-icons-20261111/source/heads/male/face-native.png",
+      "sourceSha256": "973ef2cd041451f04c619fe916f51c0013e2c6b45ef6ac6d966e99a2dd09a331",
+      "sourceBytes": 545114,
+      "runtime": "assets/ui/wardrobe/appearance-icons/heads/male/face-native.webp",
+      "sha256": "f255edd3e030be26b0d642c21edd83dba6b4a4ac460b3c1c0415702e7ae8eeb0",
+      "bytes": 18518
+    },
+    {
+      "gender": "male",
+      "id": "face-asian",
+      "source": "review/appearance-icons-20261111/source/heads/male/face-asian.png",
+      "sourceSha256": "40da859c11a3268438821883fd5a7f437653fef8c83bb64bdebb7f590e93b87f",
+      "sourceBytes": 544702,
+      "runtime": "assets/ui/wardrobe/appearance-icons/heads/male/face-asian.webp",
+      "sha256": "37315cff9e30ad47156ab2a2820555fdbba2126cf83cd0bead9433e4b79a8fc3",
+      "bytes": 18316
+    },
+    {
+      "gender": "male",
+      "id": "face-young",
+      "source": "review/appearance-icons-20261111/source/heads/male/face-young.png",
+      "sourceSha256": "2cd44f1e7b786c14ca2b3755c5f249b8b9d5a91d3aae3c0ede0fe63b9096af16",
+      "sourceBytes": 522282,
+      "runtime": "assets/ui/wardrobe/appearance-icons/heads/male/face-young.webp",
+      "sha256": "0a672be2fba651244d628f3ccaf5c3b398703b78191ed0eaf789413c12e47a0f",
+      "bytes": 17942
+    },
+    {
+      "gender": "male",
+      "id": "face-exhausted",
+      "source": "review/appearance-icons-20261111/source/heads/male/face-exhausted.png",
+      "sourceSha256": "5e3247ea5c1630262c7e0dff4c3f46bca6e41c80117a813f4dc8778909df6856",
+      "sourceBytes": 529192,
+      "runtime": "assets/ui/wardrobe/appearance-icons/heads/male/face-exhausted.webp",
+      "sha256": "cd28194f8d0ce4faa4bc3b4a5a31601361b482c43ca38588646e1bd189314199",
+      "bytes": 18500
+    },
+    {
+      "gender": "male",
+      "id": "face-elder",
+      "source": "review/appearance-icons-20261111/source/heads/male/face-elder.png",
+      "sourceSha256": "54456056b691de85fe972e82ad36102f4bd9b759ea5fa95a65d3901ba5145761",
+      "sourceBytes": 533825,
+      "runtime": "assets/ui/wardrobe/appearance-icons/heads/male/face-elder.webp",
+      "sha256": "ea76bf8bfc753713f4f2cbe17f0880ad98860793afbbdc0770a31002d4e35cd7",
+      "bytes": 18830
+    },
+    {
+      "gender": "male",
+      "id": "face-alternative",
+      "source": "review/appearance-icons-20261111/source/heads/male/face-alternative.png",
+      "sourceSha256": "5dcb902c1c1f430ea232b659f0d66d3237abd45c598aead9ee8d633f22859759",
+      "sourceBytes": 532684,
+      "runtime": "assets/ui/wardrobe/appearance-icons/heads/male/face-alternative.webp",
+      "sha256": "1f3fae72d8db25e0009335ed7bc76a8015c3d532335c32fd3eb08beed437e780",
+      "bytes": 18736
+    },
+    {
+      "gender": "male",
+      "id": "face-male-goth-pierced",
+      "source": "review/appearance-icons-20261111/source/heads/male/face-male-goth-pierced.png",
+      "sourceSha256": "0ef012c579cb6d19a0a8c0c4acbec078d2a36b4ac4c71178dc11848304b55ffa",
+      "sourceBytes": 539147,
+      "runtime": "assets/ui/wardrobe/appearance-icons/heads/male/face-male-goth-pierced.webp",
+      "sha256": "af2e602105610c8ccca5295d9a2f6c24ba19d7122eae3a4979b75ad4ae6deef2",
+      "bytes": 19226
+    },
+    {
+      "gender": "male",
+      "id": "face-male-freckled",
+      "source": "review/appearance-icons-20261111/source/heads/male/face-male-freckled.png",
+      "sourceSha256": "db46118f0c4c225b2ffa9adbe7977003b4117f7d13d37822021806b3e6c379a8",
+      "sourceBytes": 541837,
+      "runtime": "assets/ui/wardrobe/appearance-icons/heads/male/face-male-freckled.webp",
+      "sha256": "241e82dcf0699801e1f3627f88b622243a15661ce5b8a91771beda249063915a",
+      "bytes": 19260
+    },
+    {
+      "gender": "male",
+      "id": "face-male-blue-eyes",
+      "source": "review/appearance-icons-20261111/source/heads/male/face-male-blue-eyes.png",
+      "sourceSha256": "aa08d99c24008f4e9a405b674ad26e1a9d1afe5f487194e4cfd81d7aa1c7a123",
+      "sourceBytes": 493850,
+      "runtime": "assets/ui/wardrobe/appearance-icons/heads/male/face-male-blue-eyes.webp",
+      "sha256": "3fe3d97dd19425febeb12bcae3f5357e479ce984e7cfdff8a43840da9a7f9d40",
+      "bytes": 18946
+    },
+    {
+      "gender": "male",
+      "id": "face-male-new-neutral",
+      "source": "review/appearance-icons-20261111/source/heads/male/face-male-new-neutral.png",
+      "sourceSha256": "a483d1294a11202d6dcf66a20a146203d8c5d4e275f00e33c2192cc30c71b4a3",
+      "sourceBytes": 498312,
+      "runtime": "assets/ui/wardrobe/appearance-icons/heads/male/face-male-new-neutral.webp",
+      "sha256": "70ac3e6d5c990501788102bafb595ce3aa62b38b3b22776cfd8cf81a19d1cfc9",
+      "bytes": 16936
+    },
+    {
+      "gender": "male",
+      "id": "face-male-new-almond",
+      "source": "review/appearance-icons-20261111/source/heads/male/face-male-new-almond.png",
+      "sourceSha256": "5f16c88efd5aa91b573fad57064d2d6f7db14ec379bf85b183c6373ebd28ef87",
+      "sourceBytes": 500185,
+      "runtime": "assets/ui/wardrobe/appearance-icons/heads/male/face-male-new-almond.webp",
+      "sha256": "3bd2ec4b9176235530a4c1d78ae51706fe71eeead97826d0a0305c39eaabd21f",
+      "bytes": 17478
+    },
+    {
+      "gender": "male",
+      "id": "face-male-new-defined",
+      "source": "review/appearance-icons-20261111/source/heads/male/face-male-new-defined.png",
+      "sourceSha256": "94714729a0278511351b9938d51237dd2910ff5a27275947bc6ad5272c011f89",
+      "sourceBytes": 515960,
+      "runtime": "assets/ui/wardrobe/appearance-icons/heads/male/face-male-new-defined.webp",
+      "sha256": "4789055ca14b528bd116cf510c530c03fa604e8cf75a6072af5889adcc82bf03",
+      "bytes": 18234
+    },
+    {
+      "gender": "male",
+      "id": "face-male-new-youthful",
+      "source": "review/appearance-icons-20261111/source/heads/male/face-male-new-youthful.png",
+      "sourceSha256": "48827dcb5457c1a774c24ba18ee47b41e4e851d9dcb72154beafd03fc6922ca5",
+      "sourceBytes": 499873,
+      "runtime": "assets/ui/wardrobe/appearance-icons/heads/male/face-male-new-youthful.webp",
+      "sha256": "0d5b3b1dfe4318128007edae3cf8d45de8e59eb9172c6678b3460b30302f6b35",
+      "bytes": 16374
+    },
+    {
+      "gender": "male",
+      "id": "face-male-new-mature",
+      "source": "review/appearance-icons-20261111/source/heads/male/face-male-new-mature.png",
+      "sourceSha256": "4b0407593b68fdd7450a7e5fca070961172ae2e79212ced7bae4bc484c9bfdbc",
+      "sourceBytes": 510613,
+      "runtime": "assets/ui/wardrobe/appearance-icons/heads/male/face-male-new-mature.webp",
+      "sha256": "5972a43dda836256fc70e7979b0f5a4a34faae62e88bab1a788b47a3373e8956",
+      "bytes": 17218
+    },
+    {
+      "gender": "male",
+      "id": "face-male-new-freckled-pierced",
+      "source": "review/appearance-icons-20261111/source/heads/male/face-male-new-freckled-pierced.png",
+      "sourceSha256": "3e94fbdc88df564fd1de221fb346ea780cc2631904f0a57ba83f889819f2bb67",
+      "sourceBytes": 518891,
+      "runtime": "assets/ui/wardrobe/appearance-icons/heads/male/face-male-new-freckled-pierced.webp",
+      "sha256": "0ccfd968f4c00c98e60873a888e807f10164459be2e260f875f2222eba7d48cc",
+      "bytes": 17512
+    },
+    {
+      "gender": "male",
+      "id": "face-male-new-stern",
+      "source": "review/appearance-icons-20261111/source/heads/male/face-male-new-stern.png",
+      "sourceSha256": "8dc4fe380c9aea2551ce2fcd5681cdf0c517f97f5a4c0d94bbf5b4e4a7c964da",
+      "sourceBytes": 521255,
+      "runtime": "assets/ui/wardrobe/appearance-icons/heads/male/face-male-new-stern.webp",
+      "sha256": "f943b0db352c1ed40a251f7b55244a65db33950e6f25286dac79e2bb06ad0797",
+      "bytes": 17614
+    },
+    {
+      "gender": "male",
+      "id": "hair-messy",
+      "source": "review/appearance-icons-20261111/source/hair/male/hair-messy.png",
+      "sourceSha256": "a1767d92b2fc9ed4cbc66f73ab523f1ae494e844a03f96912bde25505749279d",
+      "sourceBytes": 501952,
+      "runtime": "assets/ui/wardrobe/appearance-icons/hair/male/hair-messy.webp",
+      "sha256": "8373cc935d3a3304c4c7f46ed65a0a255a2db191c05a5c2dc3eb48af9abacdba",
+      "bytes": 25224
+    },
+    {
+      "gender": "male",
+      "id": "hair-bob",
+      "source": "review/appearance-icons-20261111/source/hair/male/hair-bob.png",
+      "sourceSha256": "e8c9c962934596635f44aa7f4b8009bd1e7666c8431fa6b88e6f5a4726104797",
+      "sourceBytes": 561383,
+      "runtime": "assets/ui/wardrobe/appearance-icons/hair/male/hair-bob.webp",
+      "sha256": "82cc18c43f5ee070777544d32d58794e3e5cb720ef1ba0844c1da0b7e94caeac",
+      "bytes": 27016
+    },
+    {
+      "gender": "male",
+      "id": "hair-double-buns",
+      "source": "review/appearance-icons-20261111/source/hair/male/hair-double-buns.png",
+      "sourceSha256": "397466ace136c8aa1c9b6830e5368d338294ff78e837820f4b0c560b7e3a04b0",
+      "sourceBytes": 546076,
+      "runtime": "assets/ui/wardrobe/appearance-icons/hair/male/hair-double-buns.webp",
+      "sha256": "e797e45d2923244ed50ba8e462e30f4f7735b1c21200dfd8f9a984f3331a3254",
+      "bytes": 31636
+    },
+    {
+      "gender": "male",
+      "id": "hair-classic-short",
+      "source": "review/appearance-icons-20261111/source/hair/male/hair-classic-short.png",
+      "sourceSha256": "7317f6be8e5e3832c14f7b45413c5e17a459cb1a39a167efd9c7711ee39c0084",
+      "sourceBytes": 496449,
+      "runtime": "assets/ui/wardrobe/appearance-icons/hair/male/hair-classic-short.webp",
+      "sha256": "c64112c73553811a101e8b2536db0fd4dcd2e2da79787bed48c3c6f0972804a9",
+      "bytes": 21958
+    },
+    {
+      "gender": "male",
+      "id": "hair-textured-short",
+      "source": "review/appearance-icons-20261111/source/hair/male/hair-textured-short.png",
+      "sourceSha256": "57f4fbb9f0a78531128381b72d2162ddad9ffb92b130f5a31ee99fcf359138f8",
+      "sourceBytes": 467044,
+      "runtime": "assets/ui/wardrobe/appearance-icons/hair/male/hair-textured-short.webp",
+      "sha256": "7c36e0e4fbd467050900568bb4c0d7d89b367a49d4e251441e7ae028325d45ca",
+      "bytes": 20086
+    },
+    {
+      "gender": "male",
+      "id": "hair-shoulder-length",
+      "source": "review/appearance-icons-20261111/source/hair/male/hair-shoulder-length.png",
+      "sourceSha256": "4fd0f48de8862b0778124ef70c8d414d634605221de2c958037a00541f2de9db",
+      "sourceBytes": 552927,
+      "runtime": "assets/ui/wardrobe/appearance-icons/hair/male/hair-shoulder-length.webp",
+      "sha256": "7fcd950b9fc7bfcf8892d085a59e8540080c4d5ce34cc0a25e8965e80092cd6d",
+      "bytes": 29062
+    },
+    {
+      "gender": "male",
+      "id": "hair-m6-mohawk",
+      "source": "review/appearance-icons-20261111/source/hair/male/hair-m6-mohawk.png",
+      "sourceSha256": "67ab87fbc681e0a718497edd26a3554fda6cb74812c82b920c3ea33336a37bd8",
+      "sourceBytes": 456743,
+      "runtime": "assets/ui/wardrobe/appearance-icons/hair/male/hair-m6-mohawk.webp",
+      "sha256": "c995bf299e2656bcb43d6a1a5af108223a52af19c6c71f36b01a7e1842b55312",
+      "bytes": 18658
+    },
+    {
+      "gender": "male",
+      "id": "hair-m6-cornrows",
+      "source": "review/appearance-icons-20261111/source/hair/male/hair-m6-cornrows.png",
+      "sourceSha256": "c6762f08dc0ab206aead86e148cf5a841e48ddcd40f91197bbe689f5d25a7d84",
+      "sourceBytes": 422756,
+      "runtime": "assets/ui/wardrobe/appearance-icons/hair/male/hair-m6-cornrows.webp",
+      "sha256": "d2f8660abec05524b9ac7b0ce009b8d8557af06d93e393f8a7f6c07aed4b09de",
+      "bytes": 16618
+    },
+    {
+      "gender": "male",
+      "id": "hair-m6-mullet",
+      "source": "review/appearance-icons-20261111/source/hair/male/hair-m6-mullet.png",
+      "sourceSha256": "aabbac5ada07ab17a8a8b3b11d820d5fa5eeb62f55fcf2d27d845d77aa53eae9",
+      "sourceBytes": 534492,
+      "runtime": "assets/ui/wardrobe/appearance-icons/hair/male/hair-m6-mullet.webp",
+      "sha256": "66ffe3ab442bd1abc187bb761eed488bbabf251bb60e9b7f6244c5f464a3c1fa",
+      "bytes": 28014
+    },
+    {
+      "gender": "male",
+      "id": "hair-m6-curly-crop",
+      "source": "review/appearance-icons-20261111/source/hair/male/hair-m6-curly-crop.png",
+      "sourceSha256": "0cc6e4ddc7e4881ef6c3f654c827777259b07958160f79a4bb74d2a79e5ee613",
+      "sourceBytes": 509757,
+      "runtime": "assets/ui/wardrobe/appearance-icons/hair/male/hair-m6-curly-crop.webp",
+      "sha256": "86d0997258623efb26bb7f9af3ac25459dfafb701096ded02024e44215dfb8b2",
+      "bytes": 24072
+    },
+    {
+      "gender": "male",
+      "id": "hair-m6-topknot",
+      "source": "review/appearance-icons-20261111/source/hair/male/hair-m6-topknot.png",
+      "sourceSha256": "191bd73a50d189e44a4602e6eddd65f7512589b34ac341fe6af77b35e6d937db",
+      "sourceBytes": 448127,
+      "runtime": "assets/ui/wardrobe/appearance-icons/hair/male/hair-m6-topknot.webp",
+      "sha256": "2bbe74a09c1090c9ac2e665ea2b8b177fbd167073c2d83b88832fa0ef34ed4b6",
+      "bytes": 17662
+    },
+    {
+      "gender": "male",
+      "id": "hair-m6-asymmetric-fringe",
+      "source": "review/appearance-icons-20261111/source/hair/male/hair-m6-asymmetric-fringe.png",
+      "sourceSha256": "3ebed8afb43bad0bbf03be9f4fbbcf6f279cc83f4229d108c45b751918a7c99d",
+      "sourceBytes": 539449,
+      "runtime": "assets/ui/wardrobe/appearance-icons/hair/male/hair-m6-asymmetric-fringe.webp",
+      "sha256": "5bf5bc1871cc57069fce1cc85dbc560c030297b2cc29110893ca415de5f3b250",
+      "bytes": 24722
+    },
+    {
+      "gender": "male",
+      "id": "beard-01",
+      "source": "review/appearance-icons-20261111/source/beards/male/beard-01.png",
+      "sourceSha256": "9f664a808142d375314d265623cb697a7b237b968f298b83dd9c83bd580ff861",
+      "sourceBytes": 378505,
+      "runtime": "assets/ui/wardrobe/appearance-icons/beards/male/beard-01.webp",
+      "sha256": "6f104f2908a65871695e68fe4bd4c241aee6656ae01c03b51e7d94f78b4acdaf",
+      "bytes": 15374
+    },
+    {
+      "gender": "male",
+      "id": "beard-02",
+      "source": "review/appearance-icons-20261111/source/beards/male/beard-02.png",
+      "sourceSha256": "f65e0d9f6a7ffb9a38c14206e2adaae4d43221dfdd926bc73c62c4362855ae3f",
+      "sourceBytes": 321972,
+      "runtime": "assets/ui/wardrobe/appearance-icons/beards/male/beard-02.webp",
+      "sha256": "8b100451043ab50ec7ee40b9e1dcfa61432d3a7b0e0943e21f24333a41435053",
+      "bytes": 9426
+    },
+    {
+      "gender": "male",
+      "id": "beard-03",
+      "source": "review/appearance-icons-20261111/source/beards/male/beard-03.png",
+      "sourceSha256": "58b3a6ca71f7d44bb823cc4bace6640acfba1ad4c08a0e1221972aae7efcd401",
+      "sourceBytes": 432290,
+      "runtime": "assets/ui/wardrobe/appearance-icons/beards/male/beard-03.webp",
+      "sha256": "c5193e42869c31d6d19ca297f3dcd95adc8c493f95e1163bbc98cccf151c38f8",
+      "bytes": 17574
+    },
+    {
+      "gender": "male",
+      "id": "beard-04",
+      "source": "review/appearance-icons-20261111/source/beards/male/beard-04.png",
+      "sourceSha256": "60a57b831c8cfb218589c251365dc635ffdec75c9ae125d6dc858591a608efe6",
+      "sourceBytes": 376310,
+      "runtime": "assets/ui/wardrobe/appearance-icons/beards/male/beard-04.webp",
+      "sha256": "4ff025bf0ed62ebf55ee06bbb7b854bd056bf1a224aed8a9535d1f4cea233781",
+      "bytes": 13928
+    },
+    {
+      "gender": "male",
+      "id": "beard-05",
+      "source": "review/appearance-icons-20261111/source/beards/male/beard-05.png",
+      "sourceSha256": "809bab4001c2c85db3aadbf6fdb09bfad3aef447b2f5878362996af6bc268e90",
+      "sourceBytes": 518936,
+      "runtime": "assets/ui/wardrobe/appearance-icons/beards/male/beard-05.webp",
+      "sha256": "ddbd98b5ac3ce808906b805aa0555bc69866be305b03a03251d96d706370c3f3",
+      "bytes": 23162
+    },
+    {
+      "gender": "male",
+      "id": "beard-06",
+      "source": "review/appearance-icons-20261111/source/beards/male/beard-06.png",
+      "sourceSha256": "fbfb29c654c1300c522980b980eea545386b35d63cafb9e565a157d909b39967",
+      "sourceBytes": 324834,
+      "runtime": "assets/ui/wardrobe/appearance-icons/beards/male/beard-06.webp",
+      "sha256": "8595a09ee7b6f45b4003b7e1f9ea1380e96d42c6479aed9e8c96e384ebb32f8a",
+      "bytes": 11792
+    },
+    {
+      "gender": "male",
+      "id": "beard-07",
+      "source": "review/appearance-icons-20261111/source/beards/male/beard-07.png",
+      "sourceSha256": "0698c634c8fc97f011d932a1c50141838b015651bfbee8d04fce53e025a29d1f",
+      "sourceBytes": 456426,
+      "runtime": "assets/ui/wardrobe/appearance-icons/beards/male/beard-07.webp",
+      "sha256": "5195b9c5bcb57b1c474e551461bca881bb666358bb7ab3eccf10ca858fea06cf",
+      "bytes": 19236
+    },
+    {
+      "gender": "male",
+      "id": "beard-08",
+      "source": "review/appearance-icons-20261111/source/beards/male/beard-08.png",
+      "sourceSha256": "e7fa72ac2911e94a915d3844d7ffd388ae47da65ea698017aaf322c7b2908f89",
+      "sourceBytes": 451839,
+      "runtime": "assets/ui/wardrobe/appearance-icons/beards/male/beard-08.webp",
+      "sha256": "5869bd10f1117f9a6dd58e1e91c7ba1ec2534d148f8138028df57862a668e051",
+      "bytes": 19632
+    },
+    {
+      "gender": "male",
+      "id": "beard-09",
+      "source": "review/appearance-icons-20261111/source/beards/male/beard-09.png",
+      "sourceSha256": "02a38b3468452c812003539212fa3d885724a6479e38f0dd97b22dca66cafa23",
+      "sourceBytes": 529256,
+      "runtime": "assets/ui/wardrobe/appearance-icons/beards/male/beard-09.webp",
+      "sha256": "53729d260fe0efdd7bd5a21897bb7a6bc424e8a2a10490eee2cc35d6af8f1e34",
+      "bytes": 22524
+    },
+    {
+      "gender": "male",
+      "id": "beard-10",
+      "source": "review/appearance-icons-20261111/source/beards/male/beard-10.png",
+      "sourceSha256": "a7488fe48a64168b463f30c2666abecf03bb32ca2b4aa30bc517a6dd2a8a7cdc",
+      "sourceBytes": 515244,
+      "runtime": "assets/ui/wardrobe/appearance-icons/beards/male/beard-10.webp",
+      "sha256": "5e34a43cacd9141ca6483a371c010d290521b036442656697bad07d65a9deb7e",
+      "bytes": 23724
+    }
+  ]
+}

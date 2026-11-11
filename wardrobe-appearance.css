@@ -1,0 +1,40 @@
+/* The supplied engraved icons are menu art, separate from the registered avatar layers. */
+.archive-wardrobe .wardrobe-appearance-icon>img{position:static!important;inset:auto!important;width:100%!important;height:100%!important;max-width:100%!important;object-fit:contain;filter:none!important}
+.archive-wardrobe .archive-slot .appearance-slot-art{--icon-x:0%;--icon-y:0%;background-size:contain!important;background-position:center!important;filter:none;opacity:.85}
+.archive-wardrobe .archive-slot[aria-pressed="true"] .appearance-slot-art{opacity:1}
+.archive-wardrobe .archive-native.wardrobe-item-card{cursor:pointer;text-align:left;grid-template-rows:75px auto}
+.archive-wardrobe .wardrobe-hair-grid [data-equipped="false"][data-available="true"] .wardrobe-item-state{display:none}
+.archive-wardrobe .wardrobe-hair-grid [data-equipped="true"] .wardrobe-item-state{top:6px;bottom:auto;max-width:90%;font-size:9px}
+.wardrobe-inspection{display:contents}
+.archive-wardrobe[data-category="appearance"] .wardrobe-inspection{display:flex;flex-direction:column;min-width:0;min-height:0;overflow:auto;gap:8px;background:var(--archive-paper) center/cover;border:1px solid #8b6c45;padding:10px;scrollbar-color:#8b6c45 #c8b28c}
+.archive-wardrobe[data-category="appearance"] #wardrobe-inspection #wardrobe-item-detail{position:static!important;inset:auto!important;display:block!important;width:100%!important;height:auto!important;max-height:none!important;min-height:0;margin:0;padding:0!important;overflow:visible!important;flex:none;background:none!important;box-shadow:none!important;border:0!important}
+.archive-wardrobe[data-category="appearance"] .wardrobe-inspection:has(#wardrobe-item-detail[data-slot="baseBody"]){display:none}
+.archive-wardrobe .wardrobe-inspection .archive-cosmetic-action{display:grid;grid-template-columns:minmax(0,1fr);justify-items:center;gap:8px;background:none;padding:4px;text-align:center;font-size:15px}
+.archive-wardrobe .archive-selected-appearance{display:block;width:min(100%,150px);height:150px;object-fit:contain}
+.archive-wardrobe .wardrobe-inspection .archive-cosmetic-action strong{min-width:0;overflow-wrap:anywhere}
+.archive-wardrobe .wardrobe-inspection .archive-cosmetic-action button{min-height:36px;width:100%;max-width:230px;padding:6px 12px}
+.archive-wardrobe #wardrobe-inspection #wardrobe-hair-palette{max-height:none;overflow:visible;scrollbar-gutter:auto;margin:0;padding:8px 0 0;border:0;border-top:1px solid #a0845f;background:none;color:#3c2a1d;flex:none;font-size:12px}
+.archive-wardrobe #wardrobe-inspection #wardrobe-hair-palette.hidden{display:none}
+.archive-wardrobe #wardrobe-inspection #wardrobe-hair-palette header{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px;margin-bottom:8px;font-size:12px;line-height:1.3}
+.archive-wardrobe #wardrobe-inspection .hair-palette-options{display:block;position:static!important;margin:0;padding:0;background:none;border:0;box-shadow:none}
+.archive-wardrobe #wardrobe-inspection .hair-color-swatches{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px;padding:0}
+.archive-wardrobe #wardrobe-inspection .hair-color-swatches button{display:grid;place-items:center;justify-self:center;width:30px;height:30px;min-width:0;min-height:0;padding:0;margin:0;border:1px solid #9a774f;border-radius:50%;background:var(--hair-color);box-shadow:none;cursor:pointer;color:#f7edda;font-size:17px;text-shadow:0 1px 2px #17120b}
+.archive-wardrobe #wardrobe-inspection .hair-color-swatches button.is-original{background:linear-gradient(135deg,#e1d1ad 48%,#877457 52%);color:#2e2116;text-shadow:0 1px #f1dfbd}
+.archive-wardrobe #wardrobe-inspection .hair-color-swatches button[aria-pressed="true"]{outline:2px solid #773d32;outline-offset:2px}
+.archive-wardrobe #wardrobe-inspection .hair-color-swatches button:focus-visible{outline:2px solid #302418;outline-offset:2px}
+@media(min-width:701px) and (max-width:1100px){
+ .archive-wardrobe[data-category="appearance"] .wardrobe-layout{grid-template-columns:minmax(230px,1.1fr) minmax(160px,.8fr) minmax(180px,.7fr)}
+ .archive-wardrobe .archive-selected-appearance{width:110px;height:110px}
+ .archive-wardrobe #wardrobe-inspection .hair-color-swatches{grid-template-columns:repeat(5,minmax(0,1fr));gap:5px}
+ .archive-wardrobe #wardrobe-inspection .hair-color-swatches button{width:26px;height:26px}
+}
+@media(max-width:700px){
+ .archive-wardrobe[data-category="appearance"] .wardrobe-layout{display:flex!important;flex-direction:column;overflow:auto}
+ .archive-wardrobe[data-category="appearance"] .wardrobe-items{height:200px;min-height:200px}
+ .archive-wardrobe .wardrobe-hair-grid .wardrobe-item-card{height:100px;min-height:100px;grid-template-rows:52px auto}
+ .archive-wardrobe[data-category="appearance"] .wardrobe-inspection{flex:none;width:100%;overflow:visible;padding:8px}
+ .archive-wardrobe .wardrobe-inspection .archive-cosmetic-action{grid-template-columns:64px minmax(0,1fr) auto;text-align:left;font-size:12px}
+ .archive-wardrobe .archive-selected-appearance{width:64px;height:64px}
+ .archive-wardrobe .wardrobe-inspection .archive-cosmetic-action button{width:auto;max-width:none;min-height:36px;font-size:12px;padding:5px 8px}
+ .archive-wardrobe #wardrobe-inspection .hair-color-swatches{grid-template-columns:repeat(auto-fit,minmax(32px,1fr))}
+}

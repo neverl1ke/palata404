@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="document-system.css?v=9109738af394">
     <link rel="stylesheet" href="game-responsive.css?v=20261109">
     <link rel="stylesheet" href="wardrobe-responsive.css?v=20261109">
+    <link rel="stylesheet" href="wardrobe-appearance.css?v=b20ee6a75aa3">
     <link rel="stylesheet" href="hud-main.css?v=4baedda98f19">
     <link rel="stylesheet" href="room-scene.css?v=12dcf6d78c79">
     <link rel="stylesheet" href="scene-loading.css?v=9c9bf32b3eaf">
@@ -215,10 +216,12 @@
             <header class="wardrobe-items-heading"><h4 id="wardrobe-items-title">Оружие</h4><button class="archive-drawer-toggle" onclick="toggleArchiveCatalog()" aria-label="Развернуть список">↕</button></header>
             <nav id="wardrobe-categories" aria-label="Категории"></nav><nav id="wardrobe-slots" aria-label="Раздел"></nav>
             <div id="wardrobe-gender-switch" class="wardrobe-gender-switch"><button data-paper-gender="male" onclick="setGender('male')">Мужчина</button><button data-paper-gender="female" onclick="setGender('female')">Женщина</button></div>
-            <section id="wardrobe-hair-palette" class="hidden" aria-label="Цвет волос"></section>
             <div id="wardrobe-container" class="wardrobe-item-grid"></div>
           </section>
-          <section id="wardrobe-item-detail" class="wardrobe-item-detail" aria-label="Карточка оснащения"></section>
+          <section id="wardrobe-inspection" class="wardrobe-inspection" aria-label="Выбранный образ">
+            <section id="wardrobe-item-detail" class="wardrobe-item-detail" aria-label="Карточка оснащения"></section>
+            <section id="wardrobe-hair-palette" class="hidden" aria-label="Цвет волос"></section>
+          </section>
         </div>
         <footer class="archive-footer"><div id="archive-draft-note" role="status"></div><button onclick="discardWardrobeSession();beginWardrobeSession()">Отменить</button><button onclick="applyWardrobeSession();beginWardrobeSession()">Применить</button></footer>
       </article>
@@ -386,9 +389,10 @@
     <script src="paper-doll.js?v=30916604be8b" defer></script>
     <script src="weapon-system.js?v=a9a2eb1e3091" defer></script>
     <script src="weapon-runtime.js?v=d5baae7ec4db" defer></script>
-    <script src="wardrobe.js?v=fcc614fcb47c" defer></script>
+    <script src="appearance-icons.js?v=c2c6cfbc83f8" defer></script>
+    <script src="wardrobe.js?v=44f26694c042" defer></script>
     <script src="wardrobe-tablet.js?v=fca32b70b7d1" defer></script>
-    <script src="wardrobe-archive.js?v=7efa66b747fe" defer></script>
+    <script src="wardrobe-archive.js?v=d3b6576b7e36" defer></script>
     <script src="script.js?v=5f1384d853bc" defer></script>
     <!-- Модальне вікно: Медичне Досьє пацієнта (Аркуш паперу А4) -->
     <div id="dossier-modal" role="dialog" aria-modal="true" aria-label="Особисте досьє" class="modal center-modal hidden">
@@ -777,6 +781,7 @@
 <script src="room-atmosphere.js?v=963a4545cadb" defer></script>
 <script src="room-scene.js?v=843b0dae1ab2" defer></script>
 <script src="room-shadows.js?v=71ba9bf014bb" defer></script>
+<script src="room-door-rattle.js?v=bd36015147bc" defer></script>
 <script src="scene-loading.js?v=e89e0e6bc5ea" defer></script>
 </body>
 </html>

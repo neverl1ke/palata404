@@ -32,7 +32,8 @@
     "patientPaper": "The approved weapon clipboard paper texture is multiplied into the existing patient chart through a softly feathered paper-only mask. Original metal rim, diagram registration, live fields, portrait and seal remain separate.",
     "patientStats": "Damage, armor and critical multiplier describe the currently visible saved patient or combat loadout. Wardrobe drafts do not change the chart until applied; combat calculations still use the combat loadout.",
     "patientCardLayout": "Compact horizontal chart defaults to the upper left at the same width as the full vertical chart. The red expand button and a side folder tab switch between compact and full charts by sliding the folder past the left edge, changing registration offscreen, then returning. Layout preference is saved separately from game progress; reduced motion switches immediately.",
-    "startup": "The room stays hidden and inert behind a loading screen until current CSS art, both chart views, fonts, live character, portrait and contact shadow are ready to paint. Failed required artwork keeps the loading screen with a reload action."
+    "startup": "The room stays hidden and inert behind a loading screen until current CSS art, both chart views, fonts, live character, portrait and contact shadow are ready to paint. Failed required artwork keeps the loading screen with a reload action.",
+    "doorVisitor": "The original solid lever makes new irregular spring-loaded pulls after the last footprint reaches full opacity, stopping when the first print begins fading. It follows the existing wet-step animation clock, pauses behind dialogs, and yields to manual door interaction. It never opens the leaf."
   },
   "files": [
     {

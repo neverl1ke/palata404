@@ -141,7 +141,7 @@ class AuditBrowserTests(unittest.TestCase):
    self.p.set_viewport_size({'width':width,'height':height});self.p.evaluate('openCustomization();setGender("female");selectWardrobeCategory("appearance");selectWardrobeSlot("hair")')
    toggle=self.p.locator('[data-palette-toggle]')
    if toggle.is_visible() and toggle.get_attribute('aria-expanded')=='false':toggle.click()
-   self.p.locator('[data-hair-color-group="natural"]').click();self.p.locator('[data-hair-color="black"]').click()
+   self.p.locator('[data-hair-color="black"]').click()
    self.p.locator('[data-wardrobe-card="hair-bob-bangs"]').click()
    action=self.p.locator('[data-wardrobe-action="hair-bob-bangs"]')
    if not action.is_disabled():action.click()
