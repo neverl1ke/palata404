@@ -1,5 +1,5 @@
 {
-  "stage": "Recovered local release candidate; final browser transaction suite running",
+  "stage": "Validated release candidate; awaiting main deployment and public smoke",
   "baseCommit": "912bff56c4adaaaa617d13e72aa1a7d0c7927c6a",
   "userAuthorization": {
     "designApproved": "так",
@@ -87,7 +87,21 @@
       "legacyTunicAndSlippers": "passed for both genders",
       "evidence": "verification/restored-runtime-qa.json"
     },
-    "strictUiTransactions": "running after recovery; pre-outage suite passed",
+    "strictUiTransactions": {
+      "passed": 2,
+      "failed": 0,
+      "nativeCombinations": 12,
+      "covers": [
+        "both genders",
+        "both saved loadouts",
+        "all three poses",
+        "independent items",
+        "unchanged stats and inventory",
+        "save/reload",
+        "390px controls",
+        "no duplicate body after decode and paint frames"
+      ]
+    },
     "publicDeployment": "pending main publication"
   }
 }

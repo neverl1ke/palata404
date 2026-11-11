@@ -1,0 +1,98 @@
+[
+  {
+    "gender": "male",
+    "mode": "patient",
+    "pose": "idle",
+    "wardrobeReady": true,
+    "appliedMainReady": true,
+    "noVisibleStaticLayersAfterRepaint": true
+  },
+  {
+    "gender": "male",
+    "mode": "patient",
+    "pose": "melee",
+    "wardrobeReady": true,
+    "appliedMainReady": true,
+    "noVisibleStaticLayersAfterRepaint": true
+  },
+  {
+    "gender": "male",
+    "mode": "patient",
+    "pose": "rifle",
+    "wardrobeReady": true,
+    "appliedMainReady": true,
+    "noVisibleStaticLayersAfterRepaint": true
+  },
+  {
+    "gender": "male",
+    "mode": "combat",
+    "pose": "idle",
+    "wardrobeReady": true,
+    "appliedMainReady": true,
+    "noVisibleStaticLayersAfterRepaint": true
+  },
+  {
+    "gender": "male",
+    "mode": "combat",
+    "pose": "melee",
+    "wardrobeReady": true,
+    "appliedMainReady": true,
+    "noVisibleStaticLayersAfterRepaint": true
+  },
+  {
+    "gender": "male",
+    "mode": "combat",
+    "pose": "rifle",
+    "wardrobeReady": true,
+    "appliedMainReady": true,
+    "noVisibleStaticLayersAfterRepaint": true
+  },
+  {
+    "gender": "female",
+    "mode": "patient",
+    "pose": "idle",
+    "wardrobeReady": true,
+    "appliedMainReady": true,
+    "noVisibleStaticLayersAfterRepaint": true
+  },
+  {
+    "gender": "female",
+    "mode": "patient",
+    "pose": "melee",
+    "wardrobeReady": true,
+    "appliedMainReady": true,
+    "noVisibleStaticLayersAfterRepaint": true
+  },
+  {
+    "gender": "female",
+    "mode": "patient",
+    "pose": "rifle",
+    "wardrobeReady": true,
+    "appliedMainReady": true,
+    "noVisibleStaticLayersAfterRepaint": true
+  },
+  {
+    "gender": "female",
+    "mode": "combat",
+    "pose": "idle",
+    "wardrobeReady": true,
+    "appliedMainReady": true,
+    "noVisibleStaticLayersAfterRepaint": true
+  },
+  {
+    "gender": "female",
+    "mode": "combat",
+    "pose": "melee",
+    "wardrobeReady": true,
+    "appliedMainReady": true,
+    "noVisibleStaticLayersAfterRepaint": true
+  },
+  {
+    "gender": "female",
+    "mode": "combat",
+    "pose": "rifle",
+    "wardrobeReady": true,
+    "appliedMainReady": true,
+    "noVisibleStaticLayersAfterRepaint": true
+  }
+]

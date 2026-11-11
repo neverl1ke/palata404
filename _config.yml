@@ -2011,6 +2011,7 @@ exclude:
   - "review/pajamas-implementation-20261111/verification/final-runtime-versions.json"
   - "review/pajamas-implementation-20261111/verification/native-arms-invariant-summary.json"
   - "review/pajamas-implementation-20261111/verification/restored-runtime-qa.json"
+  - "review/pajamas-implementation-20261111/verification/ui-pose-checks.json"
   - "review/paper-doll-audit-2026-10/after/ui-capture.json"
   - "review/paper-doll-audit-2026-10/logs/after-details.log"
   - "review/paper-doll-audit-2026-10/logs/before-details.log"
