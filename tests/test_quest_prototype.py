@@ -62,6 +62,8 @@ class QuestPrototypeBrowserTest(unittest.TestCase):
             for choice in choices.get(id,[]): page.locator(f'[data-choice="{choice}"]').click()
         room('gym')
         self.assertEqual(page.locator('[data-scene-room="gym"]').count(),1)
+        self.assertTrue(page.locator('#map-modal').is_hidden())
+        self.assertTrue(page.locator('#quest-location-screen').is_visible())
         page.wait_for_function("document.querySelector('.scene-painting').naturalWidth > 0")
         page.screenshot(path=str(out/'scene-gym.png'))
         action('exercise')
@@ -90,6 +92,7 @@ class QuestPrototypeBrowserTest(unittest.TestCase):
         page.locator('[data-choice="A"]').click();page.locator('[data-choice="trace"]').click()
         for kind, value in [('room','B'),('action','markerB'),('room','procedure'),('action','record'),('room','B'),('room','C'),('room','doctor'),('action','observation'),('room','stairs'),('action','stairsPatient'),('room','C'),('room','B'),('room','A'),('room','ward404')]:
             (room if kind == 'room' else action)(value)
+        page.get_by_role('button',name='Вернуться к карте',exact=True).click()
         page.locator('#map-modal .btn-close-map').click()
         page.locator('.room-trip-switch').click()
         page.locator('#nav-map-btn').click()
@@ -99,6 +102,7 @@ class QuestPrototypeBrowserTest(unittest.TestCase):
         self.assertEqual(page.evaluate('PalataQuestPrototype.snapshot().room'),'ward404')
         page.screenshot(path=str(out/'map-trip-locked.png'))
         room('A');
+        page.get_by_role('button',name='Вернуться к карте',exact=True).click()
         page.locator('#map-modal .btn-close-map').click()
         page.locator('.room-trip-switch').click()
         self.assertTrue(page.locator('[data-room="ward404"]').evaluate("e=>e.classList.contains('is-target')"))
