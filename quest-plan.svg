@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" version="1.1" width="2200" height="1400" viewBox="0 0 2200 1400">
-<path transform="matrix(1,0,0,-1,0,1400)" d="M0 0H2200V1400H0Z" fill="#f4f0e5" fill-rule="evenodd"/>
+<path transform="matrix(1,0,0,-1,0,1400)" d="M0 0H2200V1400H0Z" fill="none" fill-rule="evenodd"/>
 <path transform="matrix(1,0,0,-1,0,1400)" stroke-width="2" stroke-linecap="butt" stroke-miterlimit="10" stroke-linejoin="miter" fill="none" stroke="#8e9889" d="M35 35H2165V1365H35Z"/>
 <path transform="matrix(1,0,0,-1,0,1400)" stroke-width="1" stroke-linecap="butt" stroke-miterlimit="10" stroke-linejoin="miter" fill="none" stroke="#929989" d="M1995 1230H2100V1335H1995Z"/>
-<path transform="matrix(1,0,0,-1,0,1400)" d="M100 970H600V1090H1650V450H1100V350H100Z" fill="#fffdf6" fill-rule="evenodd"/>
+<path transform="matrix(1,0,0,-1,0,1400)" d="M100 970H600V1090H1650V450H1100V350H100Z" fill="#fffdf6" fill-opacity=".12" fill-rule="evenodd"/>
 <path transform="matrix(1,0,0,-1,0,1400)" stroke-width="14" stroke-linecap="butt" stroke-miterlimit="10" stroke-linejoin="miter" fill="none" stroke="#242b28" d="M100 970H600V1090H1650V450H1100V350H100Z"/>
 <path transform="matrix(1,0,0,-1,0,1400)" d="M100 710H750V850H1650V750H1350V450H1250V750H850V610H100Z" fill="#e6ecdf" fill-rule="evenodd"/>
 <path transform="matrix(1,0,0,-1,0,1400)" stroke-width="7" stroke-linecap="butt" stroke-miterlimit="10" stroke-linejoin="miter" fill="none" stroke="#242b28" d="M100 710H330V970H100Z"/>
