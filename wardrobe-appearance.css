@@ -10,14 +10,14 @@
 .archive-wardrobe[data-category="appearance"] #wardrobe-inspection #wardrobe-item-detail{position:static!important;inset:auto!important;display:block!important;width:100%!important;height:auto!important;max-height:none!important;min-height:0;margin:0;padding:0!important;overflow:visible!important;flex:none;background:none!important;box-shadow:none!important;border:0!important}
 .archive-wardrobe[data-category="appearance"] .wardrobe-inspection:has(#wardrobe-item-detail[data-slot="baseBody"]){display:none}
 .archive-wardrobe .wardrobe-inspection .archive-cosmetic-action{display:grid;grid-template-columns:minmax(0,1fr);justify-items:center;gap:8px;background:none;padding:4px;text-align:center;font-size:15px}
-.archive-wardrobe .archive-selected-appearance{display:block;width:min(100%,150px);height:150px;object-fit:contain}
+.archive-wardrobe .archive-selected-appearance{display:block;width:min(100%,120px);height:120px;object-fit:contain}
 .archive-wardrobe .wardrobe-inspection .archive-cosmetic-action strong{min-width:0;overflow-wrap:anywhere}
 .archive-wardrobe .wardrobe-inspection .archive-cosmetic-action button{min-height:36px;width:100%;max-width:230px;padding:6px 12px}
 .archive-wardrobe #wardrobe-inspection #wardrobe-hair-palette{max-height:none;overflow:visible;scrollbar-gutter:auto;margin:0;padding:8px 0 0;border:0;border-top:1px solid #a0845f;background:none;color:#3c2a1d;flex:none;font-size:12px}
 .archive-wardrobe #wardrobe-inspection #wardrobe-hair-palette.hidden{display:none}
 .archive-wardrobe #wardrobe-inspection #wardrobe-hair-palette header{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px;margin-bottom:8px;font-size:12px;line-height:1.3}
 .archive-wardrobe #wardrobe-inspection .hair-palette-options{display:block;position:static!important;margin:0;padding:0;background:none;border:0;box-shadow:none}
-.archive-wardrobe #wardrobe-inspection .hair-color-swatches{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px;padding:0}
+.archive-wardrobe #wardrobe-inspection .hair-color-swatches{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px;padding:0}
 .archive-wardrobe #wardrobe-inspection .hair-color-swatches button{display:grid;place-items:center;justify-self:center;width:30px;height:30px;min-width:0;min-height:0;padding:0;margin:0;border:1px solid #9a774f;border-radius:50%;background:var(--hair-color);box-shadow:none;cursor:pointer;color:#f7edda;font-size:17px;text-shadow:0 1px 2px #17120b}
 .archive-wardrobe #wardrobe-inspection .hair-color-swatches button.is-original{background:linear-gradient(135deg,#e1d1ad 48%,#877457 52%);color:#2e2116;text-shadow:0 1px #f1dfbd}
 .archive-wardrobe #wardrobe-inspection .hair-color-swatches button[aria-pressed="true"]{outline:2px solid #773d32;outline-offset:2px}

@@ -71,12 +71,14 @@ class AppearanceIconUiTests(unittest.TestCase):
 
     def test_small_screens_keep_palette_scrollable_and_color_buttons_reachable(self):
         self.load();self.page.evaluate('openCustomization();selectWardrobeCategory("appearance");selectWardrobeSlot("beard")')
-        for width,height in [(390,844),(320,568),(844,390)]:
+        for width,height in [(1280,720),(390,844),(320,568),(844,390)]:
             self.page.set_viewport_size({'width':width,'height':height})
             self.page.locator('[data-hair-color="red"]').click()
             self.assertEqual(self.page.evaluate('paperDollState.appearance.beardColor'),'red')
             self.assertLessEqual(self.page.evaluate('document.documentElement.scrollWidth'),width+1)
             self.assertTrue(self.page.locator('.archive-footer').get_by_role('button',name='Применить',exact=True).is_visible())
+            if width==1280:
+                self.assertTrue(self.page.locator('#wardrobe-inspection').evaluate('''e=>{e.scrollTop=0;const r=e.getBoundingClientRect();return [...e.querySelectorAll('[data-hair-color]')].every(b=>b.getBoundingClientRect().bottom<=r.bottom-4)}'''))
 
 
 if __name__=='__main__':
