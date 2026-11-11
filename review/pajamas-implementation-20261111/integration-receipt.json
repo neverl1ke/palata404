@@ -1,0 +1,93 @@
+{
+  "stage": "Recovered local release candidate; final browser transaction suite running",
+  "baseCommit": "912bff56c4adaaaa617d13e72aa1a7d0c7927c6a",
+  "userAuthorization": {
+    "designApproved": "так",
+    "corrections": [
+      "художньо намалюй рукава а не викручуй їх",
+      "автомат також на шар вище",
+      "Keep complete original arms underneath artist-painted sleeves; do not replace arms with wrist-only pieces."
+    ]
+  },
+  "items": {
+    "upperBody": "patient-pajama-top",
+    "pants": "patient-pajama-pants",
+    "footwear": "patient-pajama-slippers"
+  },
+  "genders": [
+    "male",
+    "female"
+  ],
+  "poses": [
+    "idle",
+    "melee",
+    "rifle"
+  ],
+  "preserved": {
+    "nativeBodyFiles": {
+      "male": "b40a31b26dcf9aeea1dad02091228377330c9bb3af3a4b9669cfcc67247fc41d",
+      "female": "a27b499c03fc15c4788ae3a651483a36463f28b1f034178feccdaa852e7e50f9"
+    },
+    "completeNativeArms": true,
+    "nativeHeadsAndHands": true,
+    "originalWeaponArtAndGrips": true,
+    "inventoryAndCombatStats": true,
+    "starterOutfit": true,
+    "saveSchema": true,
+    "existingSlots": true
+  },
+  "composition": [
+    "Complete original native avatar",
+    "Only footwear-owned bare-foot occlusion, removed with footwear",
+    "Separate footwear, trousers and canonical torso",
+    "Artist-painted pose-specific sleeves over torso",
+    "Original weapon and gripping hands over clothing"
+  ],
+  "sourceArt": {
+    "approvedBoards": {
+      "male": {
+        "file": "review/pajamas-implementation-20261111/male/approved-male-concept.png",
+        "sha256": "1943dc7c37aa15bff0cda043d37d80845b92a894045b6ba720197a278c2c5885"
+      },
+      "female": {
+        "file": "review/pajamas-implementation-20261111/female/approved-source.png",
+        "sha256": "6a48666ca4650bb37e120b83eaff16edce3225c2c6aeb0b8070d031a6981d669"
+      }
+    },
+    "artistSleeves": "review/sleeves-artist-20261111/",
+    "proceduralSleeveDistortionRejected": true
+  },
+  "recovery": {
+    "reason": "Execution environment replaced after outage",
+    "originalBoardsAndArtistRaws": "Recovered byte-for-byte from retained tool results; no new generation",
+    "runtimeModulesAndPaperDoll": "Recovered byte-for-byte, including duplicate-actor handoff correction",
+    "maleGarments": "All original final garment hashes recovered exactly; pants thumbnail rederived",
+    "femaleTops": "All three original final hashes recovered exactly",
+    "femaleLower": "Source-only registered reconstruction after original extractor tail loss; disclosed updated hashes, waist/hem cleanup and actual anatomy validation"
+  },
+  "checks": {
+    "nodeLogicAndCatalog": {
+      "passed": 109,
+      "failed": 0
+    },
+    "assetContracts": {
+      "passed": 3,
+      "failed": 0
+    },
+    "nativeArms": {
+      "cases": 6,
+      "changedNativeRgbaPixels": 0,
+      "changedNativeAlphaPixels": 0,
+      "evidence": "verification/native-arms-invariant-summary.json"
+    },
+    "normalRuntime": {
+      "cases": 6,
+      "wardrobeAndRoom": true,
+      "staticOrFrozenDuplicates": 0,
+      "legacyTunicAndSlippers": "passed for both genders",
+      "evidence": "verification/restored-runtime-qa.json"
+    },
+    "strictUiTransactions": "running after recovery; pre-outage suite passed",
+    "publicDeployment": "pending main publication"
+  }
+}

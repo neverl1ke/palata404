@@ -1,0 +1,15 @@
+Tool: image_gen.imagegen
+transparent_background: true
+Each of the three requests used the respective female-{pose}.png native target as first referenced image and approved-source.png as second referenced image.
+
+COMMON PROMPT (exact text, followed by one newline and the pose-specific text below):
+LOCAL IMAGE EDIT OF FIRST IMAGE, NOT A NEW AVATAR. The first image is the exact existing game avatar that must remain registered on its original transparent canvas. The second image is ONLY the approved pajama fabric/style reference. Artistically PAINT NEW ANATOMICALLY NATURAL LONG PAJAMA SLEEVES onto the first image, for its EXACT existing arm pose. This is a local sleeve painting correction, not geometric twisting or stretching. Paint convincing cylindrical fabric volume, naturally narrowing forearms, sleeve seams, small gathered elbow folds and defined thin piped cuffs. Muted gray-blue woven cotton, fine narrow ivory vertical pinstripes of even material pitch; stripes follow the actual three-dimensional cloth gently with its folds, never fan out or stretch into giant bands. SLEEVE FABRIC IS IN FRONT OF THE TORSO where arms overlap it, with natural armpit and elbow occlusion. Eliminate pasted rectangular/triangular patches and jagged seams. Preserve EXACTLY the current center torso, collar, lapels, buttons, chest pocket, shirt hem, trousers, slippers, bald head, face, skin, hands, anatomy, pose, height, feet positions, composition and registration. Do not repaint, substitute or resize the avatar. Do not add any text, reference-board labels, annotations, shadows/background, new accessories, new skin or new weapon. Keep same canvas size and fully transparent background. Edit ONLY the two sleeves from shoulder seams to actual wrist cuff edges; all native hand pixels remain precisely in place, in front of cuffs. The old oversized/flared warped sleeve panels should be replaced with natural relaxed fit and clean silhouette matching the actual arms. Return a single full pose, not a triptych.
+
+IDLE:
+POSE: idle with both arms relaxed down, palms unchanged. Natural relaxed hanging sleeves with small gravity folds at elbows; thin cuffs end exactly at original wrists. Match the fine stripe density of the unchanged torso. No weapon.
+
+MELEE:
+POSE: knife held down in screen-left original hand. Preserve that exact knife, fist, grip and arm pose. Natural relaxed long sleeves, small elbow/cuff folds. Do not move or redraw the weapon. Native knife and hands remain ABOVE sleeves. Match the fine stripe density of the unchanged torso.
+
+RIFLE:
+POSE: exact current assault-rifle hold, screen-left forearm bent horizontally to trigger wrist, screen-right supporting hand unchanged. Draw new pose-specific sleeves artistically with true elbow compression folds and natural shoulder-to-wrist fabric. Preserve EXACT current AK rifle, stock, magazine, grips, fingers, weapon scale and angle. THE COMPLETE ORIGINAL RIFLE IS ABOVE THE TORSO AND ALL SLEEVES, fully visible and never covered by fabric. Original hands are above rifle where appropriate. Fix only cloth. No stretched pinstripe fan, no folded polygon collage. Match unchanged torso stripe pitch.

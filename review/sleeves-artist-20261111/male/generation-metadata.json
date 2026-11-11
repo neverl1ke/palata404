@@ -1,0 +1,39 @@
+{
+  "stage": "Original approved male art and final registered/runtime garments restored. All garment PNG/runtime art matches retained prior hashes; normal final browser QA pending.",
+  "approvedBoardSha256": "1943dc7c37aa15bff0cda043d37d80845b92a894045b6ba720197a278c2c5885",
+  "source": "review/pajamas-implementation-20261111/male/approved-male-concept.png",
+  "generationPrompts": "review/sleeves-artist-20261111/male/generation-prompts.json",
+  "recoveryNotes": "review/sleeves-artist-20261111/male/RECOVERY-NOTES.txt",
+  "poses": {
+    "idle": {
+      "rawArt": "review/sleeves-artist-20261111/male/male-idle-artist-raw.png",
+      "rawArtSha256": "faaf61cb9fdde28e15472c818223f0732c9febe8cac426c55813d8533aa99e28",
+      "size": [
+        981,
+        1602
+      ]
+    },
+    "melee": {
+      "rawArt": "review/sleeves-artist-20261111/male/male-melee-artist-raw.png",
+      "rawArtSha256": "93c497685e1a6630f0c7527d4c631c93b31d42af3660c2cbd733c3624fa51714",
+      "size": [
+        981,
+        1602
+      ]
+    },
+    "rifle": {
+      "rawArt": "review/sleeves-artist-20261111/male/male-rifle-artist-raw.png",
+      "rawArtSha256": "bae1adf6742a85db99998fbc78c5f7485b0628b78d61eff8086e55385017ee22",
+      "size": [
+        981,
+        1602
+      ]
+    }
+  },
+  "reproductionEnvironment": "python -m pip install -r tools/pajamas-male-requirements.txt",
+  "reproductionCommands": [
+    "python tools/pajamas-male-extract.py",
+    "python tools/pajamas-male-artist-sleeves.py",
+    "python tools/pajamas-male-artist-rifle-retouch.py --write"
+  ]
+}

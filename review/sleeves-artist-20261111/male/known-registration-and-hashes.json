@@ -1,0 +1,38 @@
+{
+  "status": "Recovered facts from pre-outage tool output. These are not claims that lost registered files exist in the replacement environment.",
+  "approvedMaleConceptSha256": "1943dc7c37aa15bff0cda043d37d80845b92a894045b6ba720197a278c2c5885",
+  "nativeRegistration": [941, 1672],
+  "rawRegistration": [981, 1602],
+  "singleWholeImageSimilarityRawToNative": {
+    "idle": [[1.0641614489557358, -0.00606711428228223, 5.7113770525092455], [0.00606711428228223, 1.0641614489557358, -2.9150610442806393]],
+    "melee": [[1.0651856627555536, -0.0039200611353065575, 4.412744583027249], [0.0039200611353065575, 1.0651856627555536, -1.8014209204794718]],
+    "rifle": [[1.0630342040946688, -0.0013910949339597375, 32.135996975633475], [0.0013910949339597375, 1.0630342040946688, -0.12844625514488864]]
+  },
+  "registrationQa": {
+    "idle": {"inliers":117,"medianResidualPx":1.0538981},
+    "melee": {"inliers":118,"medianResidualPx":1.0699184},
+    "rifle": {"inliers":196,"medianResidualPx":1.0065387}
+  },
+  "rifleLocalRetouchRawSize": [1437,1095],
+  "rifleLocalRetouchRawToUpperCropSimilarity": [[0.5754027812715363, -0.000821707340162799, -2.5840937904962926], [0.000821707340162799, 0.5754027812715363, 0.23076573603310693]],
+  "rifleUpperCropOriginNative": [120,240],
+  "rifleLocalRetouchQa": {"inliers":375,"medianResidualPx":1.22028386592865,"changedPixels":6108,"alphaPreserved":true},
+  "preOutageFinalRegisteredPngSha256": {
+    "rifle": "2935688861d84ef23cc1905827a442b9e887d225cefd8b7867a6475eaf3dc146",
+    "pants": "b320701c6abbdebd689ccac27adb7b1bcc81f480d1484fbcfee0893bf2b8777f",
+    "footwear": "a2d72f266daec1f0d9ca3a938fcc041d40a93fce9464852a47779ed64679e403"
+  },
+  "preOutageFinalRegisteredPngShaPrefixes": {"idle":"a4fcd8f3da83","melee":"7d447b545fe2"},
+  "preOutageFinalRuntimeWebp": {
+    "top-idle.webp":{"bytes":67954,"sha256":"6b7d8185b1b2797b12d38a1afa720486978359f5184694f596b4586500776327"},
+    "top-melee.webp":{"bytes":69172,"sha256":"3e0e56f4d2927b922ef78d059cb88baaf2ea9a4444d8b528f218c360fd425084"},
+    "top-rifle.webp":{"bytes":59864,"sha256":"14461ff07c72a00f64a51400abd2d9b745c5aea6d012bbef5d4e9d36bcf65c53"},
+    "thumb-top.webp":{"bytes":15932,"sha256":"359693fa720e5644a088181e69bbb47c635d7c404f9ec5c956964226c1539743"},
+    "pants.webp":{"bytes":66734,"sha256":"80907147fe2fe655257e628986dd61169c0ec05373b9d875aeaca55a4319dceb"},
+    "footwear.webp":{"bytes":17426,"sha256":"ab51ed65c469efaa2d31c0c8d1b005ac25f2e9f55a8830d677d124b16b8200fe"},
+    "mask-footwear.webp":{"bytes":648,"sha256":"d8b038ae1436bd449f080521fe6927295a9d1004d1f3089e331517024afd5c95"},
+    "foreground-hands-rifle.webp":{"bytes":1868,"sha256":"ce0e3b27047ad369f767d9d15a751a846c7431fbe56452d32ea14f5c9dc998c0"}
+  },
+  "preOutageMaleRuntimeTotalBytes":316290,
+  "invariant": "Original base anatomy, head, hands and weapons stay unchanged. Final draw order is minimal cloth-only underlay, canonical torso, artist sleeves in front, original native gun and exact original hands above clothing. No per-arm warp or pattern UV transfer."
+}

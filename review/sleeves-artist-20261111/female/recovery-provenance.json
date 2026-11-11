@@ -1,0 +1,25 @@
+{
+  "recoveryStatus": "Three immutable raw artistic sleeve images recovered byte-for-byte. Original approved board is being recovered by root. Previous runtime/registered garments/native targets are not yet present here.",
+  "userAuthorization": "художньо намалюй рукава а не викручуй їх; автомат також на шар вище",
+  "originalApprovedBoardSha256": "6a48666ca4650bb37e120b83eaff16edce3225c2c6aeb0b8070d031a6981d669",
+  "originalNativeTargetHashes": {
+    "idle": "eabfdf82b17dae9ad0fb11405427660e5af7c497160383d130cf95127c60cca2",
+    "melee": "b8785823b1cb48dc1f9c568666499ff75f1c25c26efdf0f1be7011c92befb25a",
+    "rifle": "745ad33018f25d569cabc27d6a6173f5284f7a3daf1754e9525e46be029979c1"
+  },
+  "originalFinalTopPngHashes": {
+    "idle": "48342a60235b6417ead097398a8c54b135b593afa58635bbd34bec0a4a566278",
+    "melee": "343d99ea0bbc918294b65d435f27a36df7e233b88aed23548e29fbbd80eaec44",
+    "rifle": "652be9234c57b805f188c2d2e5593866ff7ea331c6928608a1ec52d03a0a045b"
+  },
+  "originalFinalTopWebpHashes": {
+    "idle": "414fd3d32faae79b45113b6e77f19edde41fd010124adaba5c012622bc4bab94",
+    "melee": "26f666e12a038ba05e4a0fe5ea9c99720076e3a1d1446144a12e3568cff7a38b",
+    "rifle": "2f3be7e67534be5f28fd9976ff8e3c83b5e09b6583737b6b1268be2b0f6a77cf"
+  },
+  "originalLowerPngHashes": {
+    "pants": "1fac906116edb262dfa12cdb678f6ee34ec4146310635e8b7b17be4619e98a22",
+    "footwear": "aa65e2d2b352446286a895be2314f530204a6a452817b380863ab5b3e10fdb02",
+    "mask-footwear": "01d885ad746c7c711be967094c9c62371ade55eb6b64e1a7b40109b06154635e"
+  }
+}

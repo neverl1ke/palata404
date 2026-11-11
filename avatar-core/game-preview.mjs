@@ -1,5 +1,6 @@
 /** Game adapter. Inventory and Paper Doll remain the only owners of saved state. */
 import { ApprovedAvatar as AvatarEngine } from './approved/avatar.mjs?v=atomic-frame-20261105';
+import { PoseClothing, isPoseClothing } from './pajamas.mjs?v=b7ba84ccb424';
 const instances = new Map();
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
 const absolute = path => new URL('../' + path, import.meta.url).href;
@@ -42,10 +43,10 @@ function snapshot() {
     const polygon=image.style.clipPath.match(/polygon\((.*)\)/);
     const crown=polygon ? polygon[1].split(',').map(p=>p.trim().split(/\s+/).map((v,i)=>parseFloat(v)*[941,1672][i]/100)) : null;
     const clothing=['upperBody','outerwear','armor','loadout','gloves','pants','footwear','back','accessory'].map(pick);
-    const unsupported=clothing.some(item=>item && paperDollItemLayers(item,gender).some(p=>paperDollImageCandidates(p,gender).length));
+    const unsupported=clothing.some(item=>item && !isPoseClothing(item) && paperDollItemLayers(item,gender).some(p=>paperDollImageCandidates(p,gender).length));
     const weapon=pick('weapon');
     return {gender,face:paperDollRenderedFace(gender) || null,faceId:paperDollState.appearance.face,hair:selectedPaperDollItem('hair'),headwear:selectedPaperDollItem('headwear'),
-        beard:selectedPaperDollItem('beard'),beardColor:paperDollState.appearance.beardColor,color:paperDollState.appearance.hairColor,crown,unsupported,weapon:weapon?.avatarWeapon ? (weapon.modelId || weapon.id) : null,
+        beard:selectedPaperDollItem('beard'),beardColor:paperDollState.appearance.beardColor,color:paperDollState.appearance.hairColor,crown,unsupported,clothing:clothing.filter(isPoseClothing),weapon:weapon?.avatarWeapon ? (weapon.modelId || weapon.id) : null,
         key:JSON.stringify([gender,paperDollState.activeViewMode,paperDollState.appearance,weapon?.id,clothing.map(i=>i?.id),selectedPaperDollItem('headwear')?.id])};
 }
 function present(state) {
@@ -54,8 +55,16 @@ function present(state) {
     if (state.canvas.height!==output.height) state.canvas.height=output.height;
     state.canvas.style.width=output.style.width;
     const ctx=state.canvas.getContext('2d');ctx.clearRect(0,0,output.width,output.height);ctx.drawImage(output,0,0);
+    if(state.pajamas)state.pajamas.draw(state.canvas,state.engine.time,state.pajamaMotion);
+}
+function clearPoseClothing(state){
+    state.pajamas?.dispose();state.pajamas=null;
+    if(state.pajamaMotion&&state.engine)state.engine.options.breathing=state.pajamaMotion.breathing;
+    state.pajamaMotion=null;
+    delete state.host.dataset.pajamaParts;delete state.host.dataset.pajamaPose;
 }
 function original(state) {
+    clearPoseClothing(state);
     state.live=false;
     state.canvas.hidden=true;
     state.engine?.pause();
@@ -76,6 +85,7 @@ async function update(state) {
             playback(state);continue;
         }
         state.live=false;state.dirty=true;state.engine?.pause();
+        clearPoseClothing(state);
         // Existing approved clothing is never dropped or warped into a different pose.
         // It keeps the original renderer until matching authored sleeves are available.
         if(current.unsupported) {
@@ -93,6 +103,18 @@ async function update(state) {
         await state.engine.setAppearance(appearance);
         await state.engine.equipWeaponItem(current.weapon);
         if (revision!==state.revision) continue;
+        if(current.clothing.length){
+            // The approved shirt sleeves are authored for these stable poses.
+            // Breathe the assembled subject together instead of deforming bare
+            // arms beneath an independently stationary garment.
+            state.pajamaMotion={...state.engine.options};
+            state.engine.options.breathing=false;state.engine.time=0;state.engine.render();
+            const clothing=await PoseClothing.create(state.engine,current,absolute);
+            if(revision!==state.revision){clothing.dispose();continue;}
+            state.pajamas=clothing;
+            state.host.dataset.pajamaParts=clothing.parts.join(' ');
+            state.host.dataset.pajamaPose=clothing.pose;
+        }
         state.key=current.key;state.dirty=false;state.live=true;state.host.classList.remove('avatar-clothed-breathing');present(state);
         state.host.querySelectorAll('.char-layer').forEach(n=>n.style.visibility='hidden');
         state.canvas.hidden=false;state.host.removeAttribute('data-avatar-pending');finishPaperDollFrame(state.host);

@@ -1081,10 +1081,13 @@ test('failed fitted clothing hides instead of substituting shared or opposite-ge
     assert.equal(g.run('paperDollState.patientLoadout.upperBody'), 'patient-tunic');
 });
 
-test('fitted clothing keeps local PNG path restrictions', () => {
+test('fitted clothing keeps local PNG and WebP path restrictions', () => {
     const g = game();
+    assert.equal(g.run('paperDollImageCandidates({fittedToGender:true,genderVariants:{male:"assets/wardrobe/clothing/patient/pajamas/male/top-idle.webp?v=ready123"}},"male").join()'),
+        'assets/wardrobe/clothing/patient/pajamas/male/top-idle.webp?v=ready123');
     for (const source of [
         'https://example.test/shirt.png', '//example.test/shirt.png', '../shirt.png',
+        'https://example.test/shirt.webp', 'assets/../shirt.webp',
         'assets/../shirt.png', 'assets/%2e%2e/shirt.png', 'shirt.svg',
         'shirt.png?tracking=1', 'shirt.png?v=ok&tracking=1',
     ]) {

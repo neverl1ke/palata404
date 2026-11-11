@@ -1,0 +1,46 @@
+{
+  "stage": "IMMUTABLE_ART_RECOVERED_BYTE_IDENTICAL",
+  "date": "2026-11-11",
+  "tool": "image_gen.imagegen",
+  "transparent_background": true,
+  "explicit_user_instruction": "Explicit user: художньо намалюй рукава а не викручуй їх; автомат також на шар вище",
+  "sourceStyleOnly": "review/pajamas-implementation-20261111/female/approved-source.png",
+  "sourceStyleSha256": "6a48666ca4650bb37e120b83eaff16edce3225c2c6aeb0b8070d031a6981d669",
+  "prompts": "generation-prompts.txt",
+  "method": "Three independent artistically painted sleeve edits made before outage. Exact raw image data recovered from persistent functions.store; no new generation performed. Newly painted sleeves extracted only; source heads/torso/body/hands/gun never substituted for native body.",
+  "poses": {
+    "idle": {
+      "rawGenerated": "idle-artist-raw.png",
+      "sha256": "7e6d56e37be10dd1b2c4b169788c58753bbf92cd20180f467c893a62de0ebb20",
+      "size": [
+        1063,
+        1480
+      ],
+      "originalInputTargetSha256": "eabfdf82b17dae9ad0fb11405427660e5af7c497160383d130cf95127c60cca2",
+      "originalInputTargetRecovered": false,
+      "targetNote": "Pre-outage garment draft input was not preserved in memory; its recorded SHA remains as historical provenance. Native body references were rendered again exactly from the restored engine."
+    },
+    "melee": {
+      "rawGenerated": "melee-artist-raw.png",
+      "sha256": "d07d5c2ba1fd12bbdd1cb665687cbd724a6e1e8806128c925f292ea3f0938f41",
+      "size": [
+        1063,
+        1480
+      ],
+      "originalInputTargetSha256": "b8785823b1cb48dc1f9c568666499ff75f1c25c26efdf0f1be7011c92befb25a",
+      "originalInputTargetRecovered": false,
+      "targetNote": "Pre-outage garment draft input was not preserved in memory; its recorded SHA remains as historical provenance. Native body references were rendered again exactly from the restored engine."
+    },
+    "rifle": {
+      "rawGenerated": "rifle-artist-raw.png",
+      "sha256": "1552f382ea5df5e6140fdc09000474d985a668b82ca719d7572239d62fb58870",
+      "size": [
+        1063,
+        1480
+      ],
+      "originalInputTargetSha256": "745ad33018f25d569cabc27d6a6173f5284f7a3daf1754e9525e46be029979c1",
+      "originalInputTargetRecovered": false,
+      "targetNote": "Pre-outage garment draft input was not preserved in memory; its recorded SHA remains as historical provenance. Native body references were rendered again exactly from the restored engine."
+    }
+  }
+}

@@ -1,0 +1,97 @@
+{
+  "stage": "RECOVERED_ARTIST_SLEEVE_RECIPE_REVIEW_PENDING",
+  "runtimeAssetsWritten": true,
+  "poses": {
+    "idle": {
+      "source": "review/sleeves-artist-20261111/female/idle-artist-raw.png",
+      "sourceSha256": "7e6d56e37be10dd1b2c4b169788c58753bbf92cd20180f467c893a62de0ebb20",
+      "canvasMatrix": [
+        [
+          1.1297297477722168,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.1297297477722168,
+          0.0
+        ]
+      ],
+      "candidate": "review/artist-candidates/female-top-idle.png",
+      "candidateSha256": "48342a60235b6417ead097398a8c54b135b593afa58635bbd34bec0a4a566278",
+      "expectedOriginalFinalPngSha256": "48342a60235b6417ead097398a8c54b135b593afa58635bbd34bec0a4a566278",
+      "matchesOriginalFinal": true,
+      "runtime": {
+        "path": "assets/wardrobe/clothing/patient/pajamas/female/top-idle.webp",
+        "bytes": 77544,
+        "sha256": "414fd3d32faae79b45113b6e77f19edde41fd010124adaba5c012622bc4bab94",
+        "dimensions": [
+          941,
+          1672
+        ],
+        "quality": 88
+      }
+    },
+    "melee": {
+      "source": "review/sleeves-artist-20261111/female/melee-artist-raw.png",
+      "sourceSha256": "d07d5c2ba1fd12bbdd1cb665687cbd724a6e1e8806128c925f292ea3f0938f41",
+      "canvasMatrix": [
+        [
+          1.1297297477722168,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.1297297477722168,
+          0.0
+        ]
+      ],
+      "candidate": "review/artist-candidates/female-top-melee.png",
+      "candidateSha256": "343d99ea0bbc918294b65d435f27a36df7e233b88aed23548e29fbbd80eaec44",
+      "expectedOriginalFinalPngSha256": "343d99ea0bbc918294b65d435f27a36df7e233b88aed23548e29fbbd80eaec44",
+      "matchesOriginalFinal": true,
+      "runtime": {
+        "path": "assets/wardrobe/clothing/patient/pajamas/female/top-melee.webp",
+        "bytes": 78806,
+        "sha256": "26f666e12a038ba05e4a0fe5ea9c99720076e3a1d1446144a12e3568cff7a38b",
+        "dimensions": [
+          941,
+          1672
+        ],
+        "quality": 88
+      }
+    },
+    "rifle": {
+      "source": "review/sleeves-artist-20261111/female/rifle-artist-raw.png",
+      "sourceSha256": "1552f382ea5df5e6140fdc09000474d985a668b82ca719d7572239d62fb58870",
+      "canvasMatrix": [
+        [
+          1.1297297477722168,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.1297297477722168,
+          0.0
+        ]
+      ],
+      "candidate": "review/artist-candidates/female-top-rifle.png",
+      "candidateSha256": "652be9234c57b805f188c2d2e5593866ff7ea331c6928608a1ec52d03a0a045b",
+      "expectedOriginalFinalPngSha256": "652be9234c57b805f188c2d2e5593866ff7ea331c6928608a1ec52d03a0a045b",
+      "matchesOriginalFinal": true,
+      "runtime": {
+        "path": "assets/wardrobe/clothing/patient/pajamas/female/top-rifle.webp",
+        "bytes": 71804,
+        "sha256": "2f3be7e67534be5f28fd9976ff8e3c83b5e09b6583737b6b1268be2b0f6a77cf",
+        "dimensions": [
+          941,
+          1672
+        ],
+        "quality": 88
+      }
+    }
+  },
+  "recoveryNote": "Original final outputs were lost in environment replacement. These are reconstructed from recorded exact source pixels, polygons and math; compare expected final hashes before treating as identical."
+}

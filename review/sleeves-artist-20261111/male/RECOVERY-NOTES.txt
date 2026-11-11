@@ -1,0 +1,27 @@
+EXACT BINARY RECOVERY (not regenerated or re-encoded):
+  male-idle-artist-raw.png, male-melee-artist-raw.png,
+  male-rifle-artist-raw.png, artist-retouch-raw.png.
+  Files were decoded directly from surviving functions.store imagegen data URLs.
+  Original rifle retouch prompt also survived in store.
+  PNG hashes/dimensions are in recovery-manifest.json.
+
+HISTORY RECONSTRUCTION (code/facts, not recovered image bytes):
+  Exact source prompt wording for the three initial sleeve edits.
+  Whole-image similarity matrices and their QA evidence.
+  Source mask polygons, native gap underlay definitions, local retouch masks.
+  Extraction scripts reconstructed from tool calls in this agent's context.
+
+NOT RECOVERED IN THIS AGENT'S STORE:
+  approved-male-concept.png (only its SHA256 survives here),
+  unchanged native pose reference PNGs and target capture PNGs,
+  canonical torso layers, registered garments, final WebP assets,
+  rifle retouch target-upper.png, top-before.png, actual QA screenshots.
+  Do not treat these missing files as present in this directory.
+
+The retained exact artist raw images and known whole-image similarities avoid
+any need to regenerate sleeve art. The canonical torso can be rebuilt from the
+approved concept board if root recovers it. Native reference captures can be
+rebuilt by the unchanged approved renderer once its repository is restored.
+The original v2 rifle actual render can then rebuild the local retouch's
+foreground protection mask, keeping only cloth RGB and preserving native
+weapons, hands, head, and body exactly.

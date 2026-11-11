@@ -1,0 +1,72 @@
+{
+  "stage": "FINAL_MALE_ART_RECONSTRUCTION_COMPLETE_RUNTIME_FROZEN",
+  "bodyHeadHandsWeaponsChanged": false,
+  "nativeRegisteredTopSize": [
+    941,
+    1672
+  ],
+  "runtimeSize": [
+    941,
+    1672
+  ],
+  "runtimeQuality": 88,
+  "runtimeBytes": 316114,
+  "comparison": [
+    {
+      "file": "assets/wardrobe/clothing/patient/pajamas/male/top-idle.webp",
+      "sha256": "6b7d8185b1b2797b12d38a1afa720486978359f5184694f596b4586500776327",
+      "matchesHistoricalSha256": true,
+      "bytes": 67954
+    },
+    {
+      "file": "assets/wardrobe/clothing/patient/pajamas/male/top-melee.webp",
+      "sha256": "3e0e56f4d2927b922ef78d059cb88baaf2ea9a4444d8b528f218c360fd425084",
+      "matchesHistoricalSha256": true,
+      "bytes": 69172
+    },
+    {
+      "file": "assets/wardrobe/clothing/patient/pajamas/male/top-rifle.webp",
+      "sha256": "14461ff07c72a00f64a51400abd2d9b745c5aea6d012bbef5d4e9d36bcf65c53",
+      "matchesHistoricalSha256": true,
+      "bytes": 59864
+    },
+    {
+      "file": "assets/wardrobe/clothing/patient/pajamas/male/thumb-top.webp",
+      "sha256": "359693fa720e5644a088181e69bbb47c635d7c404f9ec5c956964226c1539743",
+      "matchesHistoricalSha256": true,
+      "bytes": 15932
+    },
+    {
+      "file": "assets/wardrobe/clothing/patient/pajamas/male/pants.webp",
+      "sha256": "80907147fe2fe655257e628986dd61169c0ec05373b9d875aeaca55a4319dceb",
+      "matchesHistoricalSha256": true,
+      "bytes": 66734
+    },
+    {
+      "file": "assets/wardrobe/clothing/patient/pajamas/male/footwear.webp",
+      "sha256": "ab51ed65c469efaa2d31c0c8d1b005ac25f2e9f55a8830d677d124b16b8200fe",
+      "matchesHistoricalSha256": true,
+      "bytes": 17426
+    },
+    {
+      "file": "assets/wardrobe/clothing/patient/pajamas/male/mask-footwear.webp",
+      "sha256": "d8b038ae1436bd449f080521fe6927295a9d1004d1f3089e331517024afd5c95",
+      "matchesHistoricalSha256": true,
+      "bytes": 648
+    },
+    {
+      "file": "assets/wardrobe/clothing/patient/pajamas/male/foreground-hands-rifle.webp",
+      "sha256": "ce0e3b27047ad369f767d9d15a751a846c7431fbe56452d32ea14f5c9dc998c0",
+      "matchesHistoricalSha256": true,
+      "bytes": 1868
+    }
+  ],
+  "nonExactDerivative": "Only thumb-pants.webp differs from old recorded thumbnail: regenerated from exact final registered pants into256x256,11166B versus old11342B. Garment source/PNG/runtime pants hash match exactly.",
+  "rifleRegisteredPngMatchesHistoricalSha256": true,
+  "finalNativeQa": "Original pre-outage QA passed; post-recovery normal runtime QA pending.",
+  "reproductionCommands": [
+    "python tools/pajamas-male-extract.py",
+    "python tools/pajamas-male-artist-sleeves.py",
+    "python tools/pajamas-male-artist-rifle-retouch.py --write"
+  ]
+}

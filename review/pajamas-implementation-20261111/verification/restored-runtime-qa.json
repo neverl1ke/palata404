@@ -1,0 +1,207 @@
+{
+  "records": [
+    {
+      "gender": "male",
+      "pose": "idle",
+      "wardrobe": {
+        "host": "wardrobe-paperdoll",
+        "dataset": {
+          "pajamaParts": "footwear pants top",
+          "pajamaPose": "idle",
+          "avatarCoreReady": "true",
+          "avatarPose": "idle"
+        },
+        "frozen": 0,
+        "visibleStatic": [],
+        "canvasHidden": false
+      },
+      "room": {
+        "host": "character-paperdoll",
+        "dataset": {
+          "pajamaParts": "footwear pants top",
+          "pajamaPose": "idle",
+          "avatarCoreReady": "true",
+          "avatarPose": "idle"
+        },
+        "frozen": 0,
+        "visibleStatic": [],
+        "canvasHidden": false
+      }
+    },
+    {
+      "gender": "male",
+      "pose": "melee",
+      "wardrobe": {
+        "host": "wardrobe-paperdoll",
+        "dataset": {
+          "avatarCoreReady": "true",
+          "avatarPose": "melee",
+          "pajamaParts": "footwear pants top",
+          "pajamaPose": "melee"
+        },
+        "frozen": 0,
+        "visibleStatic": [],
+        "canvasHidden": false
+      },
+      "room": {
+        "host": "character-paperdoll",
+        "dataset": {
+          "avatarCoreReady": "true",
+          "avatarPose": "melee",
+          "pajamaParts": "footwear pants top",
+          "pajamaPose": "melee"
+        },
+        "frozen": 0,
+        "visibleStatic": [],
+        "canvasHidden": false
+      }
+    },
+    {
+      "gender": "male",
+      "pose": "rifle",
+      "wardrobe": {
+        "host": "wardrobe-paperdoll",
+        "dataset": {
+          "avatarCoreReady": "true",
+          "avatarPose": "rifle",
+          "pajamaParts": "footwear pants top",
+          "pajamaPose": "rifle"
+        },
+        "frozen": 0,
+        "visibleStatic": [],
+        "canvasHidden": false
+      },
+      "room": {
+        "host": "character-paperdoll",
+        "dataset": {
+          "avatarCoreReady": "true",
+          "avatarPose": "rifle",
+          "pajamaParts": "footwear pants top",
+          "pajamaPose": "rifle"
+        },
+        "frozen": 0,
+        "visibleStatic": [],
+        "canvasHidden": false
+      }
+    },
+    {
+      "gender": "female",
+      "pose": "idle",
+      "wardrobe": {
+        "host": "wardrobe-paperdoll",
+        "dataset": {
+          "avatarCoreReady": "true",
+          "avatarPose": "idle",
+          "pajamaParts": "footwear pants top",
+          "pajamaPose": "idle"
+        },
+        "frozen": 0,
+        "visibleStatic": [],
+        "canvasHidden": false
+      },
+      "room": {
+        "host": "character-paperdoll",
+        "dataset": {
+          "avatarCoreReady": "true",
+          "avatarPose": "idle",
+          "pajamaParts": "footwear pants top",
+          "pajamaPose": "idle"
+        },
+        "frozen": 0,
+        "visibleStatic": [],
+        "canvasHidden": false
+      }
+    },
+    {
+      "gender": "female",
+      "pose": "melee",
+      "wardrobe": {
+        "host": "wardrobe-paperdoll",
+        "dataset": {
+          "avatarCoreReady": "true",
+          "avatarPose": "melee",
+          "pajamaParts": "footwear pants top",
+          "pajamaPose": "melee"
+        },
+        "frozen": 0,
+        "visibleStatic": [],
+        "canvasHidden": false
+      },
+      "room": {
+        "host": "character-paperdoll",
+        "dataset": {
+          "avatarCoreReady": "true",
+          "avatarPose": "melee",
+          "pajamaParts": "footwear pants top",
+          "pajamaPose": "melee"
+        },
+        "frozen": 0,
+        "visibleStatic": [],
+        "canvasHidden": false
+      }
+    },
+    {
+      "gender": "female",
+      "pose": "rifle",
+      "wardrobe": {
+        "host": "wardrobe-paperdoll",
+        "dataset": {
+          "avatarCoreReady": "true",
+          "avatarPose": "rifle",
+          "pajamaParts": "footwear pants top",
+          "pajamaPose": "rifle"
+        },
+        "frozen": 0,
+        "visibleStatic": [],
+        "canvasHidden": false
+      },
+      "room": {
+        "host": "character-paperdoll",
+        "dataset": {
+          "avatarCoreReady": "true",
+          "avatarPose": "rifle",
+          "pajamaParts": "footwear pants top",
+          "pajamaPose": "rifle"
+        },
+        "frozen": 0,
+        "visibleStatic": [],
+        "canvasHidden": false
+      }
+    }
+  ],
+  "legacy": [
+    {
+      "gender": "male",
+      "host": "wardrobe-paperdoll",
+      "dataset": {
+        "avatarCoreBlocked": "clothing"
+      },
+      "frozen": 0,
+      "visibleStatic": [
+        "wardrobe-layer-body",
+        "wardrobe-layer-footwear",
+        "wardrobe-layer-upper-body-front"
+      ],
+      "canvasHidden": true,
+      "bodyMask": "linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255)), url(\"http://127.0.0.1:37289/assets/wardrobe/clothing/patient/pajamas/male/mask-footwear.webp?v=d8b038ae1436\")"
+    },
+    {
+      "gender": "female",
+      "host": "wardrobe-paperdoll",
+      "dataset": {
+        "avatarCoreBlocked": "clothing"
+      },
+      "frozen": 0,
+      "visibleStatic": [
+        "wardrobe-layer-body",
+        "wardrobe-layer-footwear",
+        "wardrobe-layer-face",
+        "wardrobe-layer-upper-body-front",
+        "wardrobe-layer-upper-body-neckline"
+      ],
+      "canvasHidden": true,
+      "bodyMask": "url(\"http://127.0.0.1:37289/assets/wardrobe/faces/masks/standardized/female_native_body.png?v=ad13fbe5\"), url(\"http://127.0.0.1:37289/assets/wardrobe/clothing/patient/pajamas/female/mask-footwear.webp?v=6505d9972bc5\")"
+    }
+  ],
+  "browserErrors": []
+}

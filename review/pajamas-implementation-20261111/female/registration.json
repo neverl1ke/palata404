@@ -1,0 +1,103 @@
+{
+  "source": "approved-source.png",
+  "sourceSha256": "6a48666ca4650bb37e120b83eaff16edce3225c2c6aeb0b8070d031a6981d669",
+  "targetSize": [
+    941,
+    1672
+  ],
+  "runtimeSize": [
+    941,
+    1672
+  ],
+  "stage": "recovered local asset freeze; integrated runtime review pending",
+  "records": [
+    {
+      "name": "top-idle",
+      "sourcePng": "registered/top-idle.png",
+      "sha256": "48342a60235b6417ead097398a8c54b135b593afa58635bbd34bec0a4a566278",
+      "runtime": "assets/wardrobe/clothing/patient/pajamas/female/top-idle.webp",
+      "runtimeSha256": "414fd3d32faae79b45113b6e77f19edde41fd010124adaba5c012622bc4bab94",
+      "runtimeBytes": 77544,
+      "matchesPreOutageOriginal": true,
+      "preOutageOriginalSha256": "48342a60235b6417ead097398a8c54b135b593afa58635bbd34bec0a4a566278"
+    },
+    {
+      "name": "top-melee",
+      "sourcePng": "registered/top-melee.png",
+      "sha256": "343d99ea0bbc918294b65d435f27a36df7e233b88aed23548e29fbbd80eaec44",
+      "runtime": "assets/wardrobe/clothing/patient/pajamas/female/top-melee.webp",
+      "runtimeSha256": "26f666e12a038ba05e4a0fe5ea9c99720076e3a1d1446144a12e3568cff7a38b",
+      "runtimeBytes": 78806,
+      "matchesPreOutageOriginal": true,
+      "preOutageOriginalSha256": "343d99ea0bbc918294b65d435f27a36df7e233b88aed23548e29fbbd80eaec44"
+    },
+    {
+      "name": "top-rifle",
+      "sourcePng": "registered/top-rifle.png",
+      "sha256": "652be9234c57b805f188c2d2e5593866ff7ea331c6928608a1ec52d03a0a045b",
+      "runtime": "assets/wardrobe/clothing/patient/pajamas/female/top-rifle.webp",
+      "runtimeSha256": "2f3be7e67534be5f28fd9976ff8e3c83b5e09b6583737b6b1268be2b0f6a77cf",
+      "runtimeBytes": 71804,
+      "matchesPreOutageOriginal": true,
+      "preOutageOriginalSha256": "652be9234c57b805f188c2d2e5593866ff7ea331c6928608a1ec52d03a0a045b"
+    },
+    {
+      "name": "pants",
+      "sourcePng": "registered/pants.png",
+      "sha256": "0acafef7161dcb773f86e6ef65e40b9be8c21741600a85636fd54281446a2f82",
+      "runtime": "assets/wardrobe/clothing/patient/pajamas/female/pants.webp",
+      "runtimeSha256": "538ae40a70cb920365669285843aa88cedb305719539ee2f7573f6118ae13eee",
+      "runtimeBytes": 62150,
+      "matchesPreOutageOriginal": false,
+      "preOutageOriginalSha256": "1fac906116edb262dfa12cdb678f6ee34ec4146310635e8b7b17be4619e98a22"
+    },
+    {
+      "name": "footwear",
+      "sourcePng": "registered/footwear.png",
+      "sha256": "098ac9b3e254d55a1dd271bc14472466fda7e4f8614ef9a74f31c538ffea3d1b",
+      "runtime": "assets/wardrobe/clothing/patient/pajamas/female/footwear.webp",
+      "runtimeSha256": "0ebb4543418dc619a42c1e0eca2061f0151d31853763fb7b88646ecaf1b69079",
+      "runtimeBytes": 9964,
+      "matchesPreOutageOriginal": false,
+      "preOutageOriginalSha256": "aa65e2d2b352446286a895be2314f530204a6a452817b380863ab5b3e10fdb02"
+    },
+    {
+      "name": "mask-footwear",
+      "sourcePng": "registered/mask-footwear.png",
+      "sha256": "bcfbe991a6889102a8ac39d79023a0756b0549d18cf2a119b27cf97cda4c9ba3",
+      "runtime": "assets/wardrobe/clothing/patient/pajamas/female/mask-footwear.webp",
+      "runtimeSha256": "6505d9972bc569a4ec9c39044cfe9b47efbb3a5f0ba0840f8181d9790d7a0f5d",
+      "runtimeBytes": 712,
+      "matchesPreOutageOriginal": false,
+      "preOutageOriginalSha256": "01d885ad746c7c711be967094c9c62371ade55eb6b64e1a7b40109b06154635e"
+    }
+  ],
+  "compositionOrder": [
+    "footwear native-foot erase mask",
+    "footwear",
+    "pants",
+    "canonical top torso",
+    "new artist-painted sleeve/cap pixels",
+    "original native hands and complete original weapon"
+  ],
+  "sourceAuthorization": "Explicit user: художньо намалюй рукава а не викручуй їх; автомат також на шар вище",
+  "artistSourceDirectory": "review/sleeves-artist-20261111/female",
+  "artistPrompts": "review/sleeves-artist-20261111/female/generation-prompts.txt",
+  "artistExtractionMetadata": "review/artist-candidates/female-artist-sleeves-metadata.json",
+  "lowerRecoveryMetadata": "review/artist-candidates/female-lower-recovery/lower-recovery-metadata.json",
+  "reproductionCommands": [
+    "python tools/pajamas-female-assets.py --write",
+    "python tools/pajamas-female-artist-sleeves.py --write"
+  ],
+  "notes": [
+    "Original approved board and three raw locally painted artist images recovered byte-for-byte from stored image generation outputs; no new generation after environment replacement.",
+    "All three final top original PNGs AND runtime WebPs reproduced with hashes matching pre-outage final outputs. Torso, sleeve art, native body, head, hands, pose and anatomy remain unchanged.",
+    "Original lower extractor tail was lost. Pants/slippers/mask reconstructed from original approved board source pixels and restored native refs. Their new hashes intentionally differ and are explicitly disclosed.",
+    "Foot erase mask alpha255 affects actual native foot pixels below1578 only; alpha0 preserves original ankles/body.",
+    "No base-avatar files were edited. New sleeve art uses only one full-canvas uniform registration; no sleeve UV map or bone deformation.",
+    "Recovery cleanup removes source shirt hem above native847 before rebuilding pants waist from clean upper trouser weave. Curved hem alpha is lightly antialiased without changing sleeve art, torso, body or pose."
+  ],
+  "readyForRuntimeReview": true,
+  "readyForPublication": false,
+  "runtimeBytes": 338060
+}

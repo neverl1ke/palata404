@@ -140,7 +140,7 @@ function paperDollImageCandidates(item, selectedGender) {
     const sources = item?.fittedToGender === true ? [variants[selectedGender]]
         : [variants[selectedGender], item?.image, variants[selectedGender === 'female' ? 'male' : 'female']];
     return [...new Set(sources)]
-        .filter(path => typeof path === 'string' && /^(?:[a-zA-Z0-9_-]+\/)*[a-zA-Z0-9_.-]+\.png(?:\?v=[a-zA-Z0-9_-]+)?$/.test(path)
+        .filter(path => typeof path === 'string' && /^(?:[a-zA-Z0-9_-]+\/)*[a-zA-Z0-9_.-]+\.(?:png|webp)(?:\?v=[a-zA-Z0-9_-]+)?$/.test(path)
             && !path.split('/').includes('..'));
 }
 
@@ -239,6 +239,7 @@ function applyPaperDollCrownMask(image, selectedGender) {
 // Keep the last complete composition visible while its replacement decodes.
 const paperDollMaskLoads = new Map();
 function paperDollMaskReady(source) {
+    if (Array.isArray(source)) return Promise.all(source.map(paperDollMaskReady));
     if (!source) return Promise.resolve();
     if (!paperDollMaskLoads.has(source)) {
         const image = new Image(); image.src = source;
@@ -249,7 +250,12 @@ function paperDollMaskReady(source) {
 function paperDollWantsAnimation(host) {
     return ['character-paperdoll','wardrobe-paperdoll'].includes(host.id) &&
         !['upperBody','outerwear','armor','loadout','gloves','pants','footwear','back','accessory'].some(slot => {
+            if (wardrobeSession && host.id === 'wardrobe-paperdoll' && wardrobeHiddenSlots.has(slot)) return false;
             const item=selectedPaperDollItem(slot);
+            // The native compositor owns these registered clothing poses.
+            // Keeping them in the animated path prevents a late static-image
+            // decode from revealing a second body beneath the ready canvas.
+            if (item?.poseAwareClothing === true && ['top','pants','footwear'].includes(item.poseClothingPart)) return false;
             return item && paperDollItemLayers(item,paperDollState.selectedGender).some(part => paperDollImageCandidates(part,paperDollState.selectedGender).length);
         });
 }
@@ -347,10 +353,23 @@ function renderPaperDollLayersAt(host, prefix = '') {
             const faceSource = face?.genderVariants?.[selectedGender];
             const mask = face?.bodyMaskByGender?.[selectedGender];
             const active = mask && faceSource && !failedPaperDollImages.has(faceSource);
-            image.paperDollMaskSource = active ? mask : null;
-            image.style.maskImage = active ? `url("${mask}")` : '';
-            image.style.maskSize = active ? '100% 100%' : '';
-            image.style.maskRepeat = active ? 'no-repeat' : '';
+            // Garment-owned erase masks also apply when legacy clothing keeps
+            // the static renderer active (for example tunic + pajama slippers).
+            // They never alter the source body or survive removal of that item.
+            const eraseMasks = PAPER_DOLL_LAYER_ORDER.flatMap(garmentSlot => {
+                if (wardrobeSession && prefix === 'wardrobe-' && wardrobeHiddenSlots.has(garmentSlot)) return [];
+                const garment = selectedPaperDollItem(garmentSlot);
+                const poses = garment?.poseClothingMaskByGender?.[selectedGender];
+                const source = typeof poses === 'string' ? poses : poses?.idle;
+                return source ? paperDollImageCandidates({ fittedToGender: true, genderVariants: { [selectedGender]: source } }, selectedGender) : [];
+            });
+            image.paperDollMaskSource = eraseMasks.length ? [active ? mask : null, ...eraseMasks].filter(Boolean) : active ? mask : null;
+            image.style.maskImage = eraseMasks.length
+                ? [active ? `url("${mask}")` : 'linear-gradient(white,white)', ...eraseMasks.map(source => `url("${source}")`)].join(', ')
+                : active ? `url("${mask}")` : '';
+            image.style.maskComposite = eraseMasks.length ? ['subtract', ...eraseMasks.map(() => 'add')].join(', ') : '';
+            image.style.maskSize = active || eraseMasks.length ? '100% 100%' : '';
+            image.style.maskRepeat = active || eraseMasks.length ? 'no-repeat' : '';
         }
         const source = candidates.find(path => !failedPaperDollImages.has(path));
         if (!source) {

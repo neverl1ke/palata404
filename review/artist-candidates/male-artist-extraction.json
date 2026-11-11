@@ -1,0 +1,1125 @@
+{
+  "method": "Recovered artist sleeve RGB + traced alpha; retained exact pre-outage whole-image similarities, no new fitting. No arm deformation or cloth texture transfer. Original canonical torso fixed. Candidate-only output.",
+  "recoveredFromHistory": true,
+  "poses": {
+    "idle": {
+      "matrix": [
+        [
+          1.0641614489557358,
+          -0.00606711428228223,
+          5.7113770525092455
+        ],
+        [
+          0.00606711428228223,
+          1.0641614489557358,
+          -2.9150610442806393
+        ]
+      ],
+      "inliers": 117,
+      "medianResidualPx": 1.0538981,
+      "source": "review/sleeves-artist-20261111/male/male-idle-artist-raw.png",
+      "sourceSha256": "faaf61cb9fdde28e15472c818223f0732c9febe8cac426c55813d8533aa99e28",
+      "canonicalTorso": "review/pajamas-implementation-20261111/male/overlap-layers/idle-torso.png",
+      "canonicalTorsoSha256": "575268222a308b33b56832b8738c5e3e0d1358ec023e6832bf92bb4959cda25d",
+      "candidate": "review/artist-candidates/male-idle.png",
+      "candidateSha256": "a4fcd8f3da8309362e5969ef80a94b59c2a8b4e7e520e486c51034291ac4d3fa",
+      "sourcePolygons": {
+        "left": [
+          [
+            [
+              240,
+              288
+            ],
+            [
+              263,
+              299
+            ],
+            [
+              280,
+              321
+            ],
+            [
+              295,
+              351
+            ],
+            [
+              305,
+              391
+            ],
+            [
+              307,
+              432
+            ],
+            [
+              299,
+              477
+            ],
+            [
+              289,
+              509
+            ],
+            [
+              282,
+              536
+            ],
+            [
+              272,
+              562
+            ],
+            [
+              257,
+              601
+            ],
+            [
+              243,
+              648
+            ],
+            [
+              231,
+              694
+            ],
+            [
+              223,
+              738
+            ],
+            [
+              224,
+              782
+            ],
+            [
+              209,
+              791
+            ],
+            [
+              174,
+              787
+            ],
+            [
+              143,
+              783
+            ],
+            [
+              136,
+              730
+            ],
+            [
+              138,
+              664
+            ],
+            [
+              147,
+              601
+            ],
+            [
+              158,
+              554
+            ],
+            [
+              177,
+              507
+            ],
+            [
+              190,
+              457
+            ],
+            [
+              202,
+              404
+            ],
+            [
+              212,
+              359
+            ],
+            [
+              222,
+              321
+            ]
+          ]
+        ],
+        "right": [
+          [
+            [
+              619,
+              292
+            ],
+            [
+              610,
+              312
+            ],
+            [
+              601,
+              344
+            ],
+            [
+              595,
+              380
+            ],
+            [
+              591,
+              421
+            ],
+            [
+              590,
+              464
+            ],
+            [
+              592,
+              500
+            ],
+            [
+              599,
+              535
+            ],
+            [
+              609,
+              570
+            ],
+            [
+              618,
+              609
+            ],
+            [
+              632,
+              659
+            ],
+            [
+              647,
+              705
+            ],
+            [
+              658,
+              750
+            ],
+            [
+              658,
+              786
+            ],
+            [
+              687,
+              792
+            ],
+            [
+              737,
+              788
+            ],
+            [
+              742,
+              730
+            ],
+            [
+              735,
+              661
+            ],
+            [
+              725,
+              597
+            ],
+            [
+              711,
+              546
+            ],
+            [
+              692,
+              505
+            ],
+            [
+              680,
+              461
+            ],
+            [
+              668,
+              412
+            ],
+            [
+              661,
+              369
+            ],
+            [
+              649,
+              328
+            ],
+            [
+              633,
+              301
+            ]
+          ]
+        ]
+      },
+      "underlay": [
+        {
+          "region": "left-inner",
+          "uncoveredSkinPixels": 1055,
+          "remainingPixels": 0,
+          "donors": [
+            {
+              "translation": [
+                18,
+                0
+              ],
+              "pixels": 2395
+            },
+            {
+              "translation": [
+                36,
+                0
+              ],
+              "pixels": 0
+            }
+          ]
+        },
+        {
+          "region": "right-outer-shoulder",
+          "uncoveredSkinPixels": 261,
+          "remainingPixels": 0,
+          "donors": [
+            {
+              "translation": [
+                18,
+                0
+              ],
+              "pixels": 939
+            },
+            {
+              "translation": [
+                36,
+                0
+              ],
+              "pixels": 0
+            }
+          ]
+        },
+        {
+          "region": "right-inner",
+          "uncoveredSkinPixels": 0,
+          "remainingPixels": 0,
+          "donors": [
+            {
+              "translation": [
+                -18,
+                0
+              ],
+              "pixels": 0
+            },
+            {
+              "translation": [
+                -36,
+                0
+              ],
+              "pixels": 0
+            }
+          ]
+        }
+      ]
+    },
+    "melee": {
+      "matrix": [
+        [
+          1.0651856627555536,
+          -0.0039200611353065575,
+          4.412744583027249
+        ],
+        [
+          0.0039200611353065575,
+          1.0651856627555536,
+          -1.8014209204794718
+        ]
+      ],
+      "inliers": 118,
+      "medianResidualPx": 1.0699184,
+      "source": "review/sleeves-artist-20261111/male/male-melee-artist-raw.png",
+      "sourceSha256": "93c497685e1a6630f0c7527d4c631c93b31d42af3660c2cbd733c3624fa51714",
+      "canonicalTorso": "review/pajamas-implementation-20261111/male/overlap-layers/melee-torso.png",
+      "canonicalTorsoSha256": "575268222a308b33b56832b8738c5e3e0d1358ec023e6832bf92bb4959cda25d",
+      "candidate": "review/artist-candidates/male-melee.png",
+      "candidateSha256": "7d447b545fe20a62fdc5668c27b238945e5c1522e20938f53c371f68353e4f39",
+      "sourcePolygons": {
+        "left": [
+          [
+            [
+              240,
+              287
+            ],
+            [
+              264,
+              298
+            ],
+            [
+              281,
+              321
+            ],
+            [
+              295,
+              352
+            ],
+            [
+              305,
+              392
+            ],
+            [
+              306,
+              433
+            ],
+            [
+              298,
+              477
+            ],
+            [
+              288,
+              508
+            ],
+            [
+              279,
+              535
+            ],
+            [
+              268,
+              565
+            ],
+            [
+              252,
+              608
+            ],
+            [
+              239,
+              655
+            ],
+            [
+              229,
+              698
+            ],
+            [
+              225,
+              739
+            ],
+            [
+              225,
+              778
+            ],
+            [
+              210,
+              786
+            ],
+            [
+              175,
+              785
+            ],
+            [
+              148,
+              781
+            ],
+            [
+              142,
+              735
+            ],
+            [
+              140,
+              684
+            ],
+            [
+              145,
+              629
+            ],
+            [
+              153,
+              582
+            ],
+            [
+              163,
+              540
+            ],
+            [
+              176,
+              507
+            ],
+            [
+              190,
+              460
+            ],
+            [
+              202,
+              405
+            ],
+            [
+              212,
+              360
+            ],
+            [
+              222,
+              321
+            ]
+          ]
+        ],
+        "right": [
+          [
+            [
+              619,
+              292
+            ],
+            [
+              610,
+              312
+            ],
+            [
+              601,
+              344
+            ],
+            [
+              595,
+              380
+            ],
+            [
+              591,
+              421
+            ],
+            [
+              590,
+              464
+            ],
+            [
+              592,
+              500
+            ],
+            [
+              599,
+              535
+            ],
+            [
+              609,
+              570
+            ],
+            [
+              618,
+              609
+            ],
+            [
+              632,
+              659
+            ],
+            [
+              647,
+              705
+            ],
+            [
+              658,
+              750
+            ],
+            [
+              658,
+              786
+            ],
+            [
+              687,
+              792
+            ],
+            [
+              737,
+              788
+            ],
+            [
+              742,
+              730
+            ],
+            [
+              735,
+              661
+            ],
+            [
+              725,
+              597
+            ],
+            [
+              711,
+              546
+            ],
+            [
+              692,
+              505
+            ],
+            [
+              680,
+              461
+            ],
+            [
+              668,
+              412
+            ],
+            [
+              661,
+              369
+            ],
+            [
+              649,
+              328
+            ],
+            [
+              633,
+              301
+            ]
+          ]
+        ]
+      },
+      "underlay": [
+        {
+          "region": "left-inner",
+          "uncoveredSkinPixels": 2265,
+          "remainingPixels": 0,
+          "donors": [
+            {
+              "translation": [
+                18,
+                0
+              ],
+              "pixels": 3735
+            },
+            {
+              "translation": [
+                36,
+                0
+              ],
+              "pixels": 14
+            }
+          ]
+        },
+        {
+          "region": "right-outer-shoulder",
+          "uncoveredSkinPixels": 748,
+          "remainingPixels": 0,
+          "donors": [
+            {
+              "translation": [
+                18,
+                0
+              ],
+              "pixels": 1454
+            },
+            {
+              "translation": [
+                36,
+                0
+              ],
+              "pixels": 0
+            }
+          ]
+        },
+        {
+          "region": "right-inner",
+          "uncoveredSkinPixels": 0,
+          "remainingPixels": 0,
+          "donors": [
+            {
+              "translation": [
+                -18,
+                0
+              ],
+              "pixels": 0
+            },
+            {
+              "translation": [
+                -36,
+                0
+              ],
+              "pixels": 0
+            }
+          ]
+        }
+      ]
+    },
+    "rifle": {
+      "matrix": [
+        [
+          1.0630342040946688,
+          -0.0013910949339597375,
+          32.135996975633475
+        ],
+        [
+          0.0013910949339597375,
+          1.0630342040946688,
+          -0.12844625514488864
+        ]
+      ],
+      "inliers": 196,
+      "medianResidualPx": 1.0065387,
+      "source": "review/sleeves-artist-20261111/male/male-rifle-artist-raw.png",
+      "sourceSha256": "bae1adf6742a85db99998fbc78c5f7485b0628b78d61eff8086e55385017ee22",
+      "canonicalTorso": "review/pajamas-implementation-20261111/male/overlap-layers/rifle-torso.png",
+      "canonicalTorsoSha256": "575268222a308b33b56832b8738c5e3e0d1358ec023e6832bf92bb4959cda25d",
+      "candidate": "review/artist-candidates/male-rifle.png",
+      "candidateSha256": "2935688861d84ef23cc1905827a442b9e887d225cefd8b7867a6475eaf3dc146",
+      "sourcePolygons": {
+        "left": [
+          [
+            [
+              250,
+              281
+            ],
+            [
+              267,
+              298
+            ],
+            [
+              281,
+              322
+            ],
+            [
+              288,
+              351
+            ],
+            [
+              287,
+              381
+            ],
+            [
+              280,
+              410
+            ],
+            [
+              247,
+              407
+            ],
+            [
+              207,
+              475
+            ],
+            [
+              173,
+              482
+            ],
+            [
+              142,
+              485
+            ],
+            [
+              159,
+              454
+            ],
+            [
+              176,
+              429
+            ],
+            [
+              184,
+              399
+            ],
+            [
+              188,
+              369
+            ],
+            [
+              199,
+              337
+            ],
+            [
+              219,
+              309
+            ]
+          ],
+          [
+            [
+              110,
+              489
+            ],
+            [
+              142,
+              483
+            ],
+            [
+              165,
+              486
+            ],
+            [
+              198,
+              494
+            ],
+            [
+              230,
+              503
+            ],
+            [
+              271,
+              516
+            ],
+            [
+              301,
+              524
+            ],
+            [
+              331,
+              530
+            ],
+            [
+              326,
+              557
+            ],
+            [
+              321,
+              586
+            ],
+            [
+              317,
+              610
+            ],
+            [
+              291,
+              614
+            ],
+            [
+              255,
+              613
+            ],
+            [
+              218,
+              608
+            ],
+            [
+              179,
+              602
+            ],
+            [
+              141,
+              591
+            ],
+            [
+              117,
+              580
+            ],
+            [
+              109,
+              559
+            ],
+            [
+              107,
+              533
+            ]
+          ]
+        ],
+        "right": [
+          [
+            [
+              599,
+              292
+            ],
+            [
+              595,
+              317
+            ],
+            [
+              587,
+              345
+            ],
+            [
+              579,
+              383
+            ],
+            [
+              575,
+              424
+            ],
+            [
+              575,
+              468
+            ],
+            [
+              580,
+              503
+            ],
+            [
+              592,
+              529
+            ],
+            [
+              608,
+              542
+            ],
+            [
+              631,
+              563
+            ],
+            [
+              655,
+              581
+            ],
+            [
+              680,
+              592
+            ],
+            [
+              695,
+              597
+            ],
+            [
+              703,
+              585
+            ],
+            [
+              701,
+              560
+            ],
+            [
+              698,
+              534
+            ],
+            [
+              690,
+              508
+            ],
+            [
+              677,
+              486
+            ],
+            [
+              666,
+              461
+            ],
+            [
+              655,
+              437
+            ],
+            [
+              647,
+              400
+            ],
+            [
+              641,
+              362
+            ],
+            [
+              636,
+              331
+            ],
+            [
+              619,
+              302
+            ]
+          ]
+        ]
+      },
+      "underlay": [
+        {
+          "region": "left-under-stock",
+          "uncoveredSkinPixels": 2339,
+          "remainingPixels": 23,
+          "donors": [
+            {
+              "translation": [
+                18,
+                0
+              ],
+              "pixels": 2694
+            },
+            {
+              "translation": [
+                -18,
+                0
+              ],
+              "pixels": 840
+            },
+            {
+              "translation": [
+                36,
+                0
+              ],
+              "pixels": 1261
+            },
+            {
+              "translation": [
+                -36,
+                0
+              ],
+              "pixels": 0
+            },
+            {
+              "translation": [
+                54,
+                0
+              ],
+              "pixels": 598
+            },
+            {
+              "translation": [
+                72,
+                0
+              ],
+              "pixels": 153
+            },
+            {
+              "translation": [
+                -18,
+                36
+              ],
+              "pixels": 82
+            }
+          ]
+        },
+        {
+          "region": "right-under-receiver",
+          "uncoveredSkinPixels": 3674,
+          "remainingPixels": 116,
+          "donors": [
+            {
+              "translation": [
+                -18,
+                0
+              ],
+              "pixels": 2125
+            },
+            {
+              "translation": [
+                -36,
+                0
+              ],
+              "pixels": 876
+            },
+            {
+              "translation": [
+                -18,
+                36
+              ],
+              "pixels": 1196
+            },
+            {
+              "translation": [
+                -36,
+                36
+              ],
+              "pixels": 492
+            },
+            {
+              "translation": [
+                -18,
+                54
+              ],
+              "pixels": 91
+            },
+            {
+              "translation": [
+                -54,
+                54
+              ],
+              "pixels": 469
+            },
+            {
+              "translation": [
+                -72,
+                54
+              ],
+              "pixels": 2
+            },
+            {
+              "translation": [
+                0,
+                54
+              ],
+              "pixels": 229
+            }
+          ]
+        }
+      ],
+      "localArtistRetouch": {
+        "method": "Two local artist-painted cloth regions, retained exact global similarity. Original top alpha preserved; original actual gun/hand foreground excluded. No arm deformation or pattern transfer.",
+        "recoveredFromHistory": true,
+        "raw": "review/sleeves-artist-20261111/male/rifle-seam-retouch/artist-retouch-raw.png",
+        "rawSha256": "3718a6c831ad4c51b5d2b3fda9c76020ec70cb91a30fac712d40760ac1320afc",
+        "beforeSha256": "67b7796d4977ce3e3ea1cc06afbf83659f753b906cb786ff6bbffb0c34a4e3d0",
+        "candidateSha256": "2935688861d84ef23cc1905827a442b9e887d225cefd8b7867a6475eaf3dc146",
+        "cropSimilarity": [
+          [
+            0.5754027812715363,
+            -0.000821707340162799,
+            -2.5840937904962926
+          ],
+          [
+            0.000821707340162799,
+            0.5754027812715363,
+            0.23076573603310693
+          ]
+        ],
+        "nativeSimilarity": [
+          [
+            0.5754027812715363,
+            -0.000821707340162799,
+            117.4159062095037
+          ],
+          [
+            0.000821707340162799,
+            0.5754027812715363,
+            240.2307657360331
+          ]
+        ],
+        "inliers": 375,
+        "medianResidualPx": 1.22028386592865,
+        "regionCropPolygons": {
+          "below-left-stock": [
+            [
+              51,
+              258
+            ],
+            [
+              104,
+              257
+            ],
+            [
+              139,
+              266
+            ],
+            [
+              151,
+              276
+            ],
+            [
+              142,
+              290
+            ],
+            [
+              110,
+              295
+            ],
+            [
+              70,
+              289
+            ],
+            [
+              52,
+              280
+            ]
+          ],
+          "above-right-receiver": [
+            [
+              525,
+              310
+            ],
+            [
+              549,
+              311
+            ],
+            [
+              568,
+              325
+            ],
+            [
+              587,
+              349
+            ],
+            [
+              587,
+              375
+            ],
+            [
+              567,
+              383
+            ],
+            [
+              543,
+              365
+            ],
+            [
+              526,
+              340
+            ]
+          ]
+        },
+        "changedPixels": 6108,
+        "alphaPreserved": true
+      }
+    }
+  }
+}

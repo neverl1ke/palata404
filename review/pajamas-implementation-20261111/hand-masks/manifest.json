@@ -1,0 +1,60 @@
+{
+  "method": "Original native distal-hand alpha only; exact reviewed4x ROIs, nativeRGBmatch<=6, isolated-source alpha, originalmale ARAP1.07 support, rigidfemale2.5deg support. No body/cloth/weaponRGB modifications.",
+  "reproducer": "tools/pajamas-hand-masks.py",
+  "registration": {
+    "width": 941,
+    "height": 1672,
+    "origin": [
+      0,
+      0
+    ]
+  },
+  "previousKnownHashes": {
+    "male": {
+      "source": "919dd073ca5028c165f2237194c39ec84ecffc0c735cccb0e7a1d5bfa22b5023",
+      "runtime": "ce0e3b27047ad369f767d9d15a751a846c7431fbe56452d32ea14f5c9dc998c0",
+      "rgba": "a1c350122c615d98b687736a58ad62b8f7cf7e4c6c2511b3c6a45d2befbdbbf1"
+    },
+    "female": {
+      "source": "5c352a5734f9dd30971887d27157d63d16248ff71c71389c2be021a823575df4",
+      "runtime": "803bb04b11cd965ff5c57be652b2cabf0b482433b35d9f72081856b6ea6a90ad",
+      "rgba": "0344fed5d36442fbfb80d7d95b0a6b1beb36fe6805e6c5b0c7ad626e6291f3f0"
+    }
+  },
+  "masks": {
+    "male": {
+      "bounds": [
+        373,
+        557,
+        780,
+        726
+      ],
+      "nonzeroPixels": 13944,
+      "rgbaSha256": "a1c350122c615d98b687736a58ad62b8f7cf7e4c6c2511b3c6a45d2befbdbbf1",
+      "matchesPreviousRgba": true,
+      "source": "review/pajamas-implementation-20261111/hand-masks/male-rifle.png",
+      "sourceSha256": "919dd073ca5028c165f2237194c39ec84ecffc0c735cccb0e7a1d5bfa22b5023",
+      "runtime": "assets/wardrobe/clothing/patient/pajamas/male/foreground-hands-rifle.webp",
+      "runtimeSha256": "ce0e3b27047ad369f767d9d15a751a846c7431fbe56452d32ea14f5c9dc998c0",
+      "matchesPreviousSource": true,
+      "matchesPreviousRuntime": true
+    },
+    "female": {
+      "bounds": [
+        362,
+        515,
+        771,
+        688
+      ],
+      "nonzeroPixels": 14862,
+      "rgbaSha256": "0344fed5d36442fbfb80d7d95b0a6b1beb36fe6805e6c5b0c7ad626e6291f3f0",
+      "matchesPreviousRgba": true,
+      "source": "review/pajamas-implementation-20261111/hand-masks/female-rifle.png",
+      "sourceSha256": "5c352a5734f9dd30971887d27157d63d16248ff71c71389c2be021a823575df4",
+      "runtime": "assets/wardrobe/clothing/patient/pajamas/female/foreground-hands-rifle.webp",
+      "runtimeSha256": "803bb04b11cd965ff5c57be652b2cabf0b482433b35d9f72081856b6ea6a90ad",
+      "matchesPreviousSource": true,
+      "matchesPreviousRuntime": true
+    }
+  }
+}

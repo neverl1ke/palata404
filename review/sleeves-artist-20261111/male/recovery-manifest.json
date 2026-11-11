@@ -1,0 +1,76 @@
+{
+  "origin": "Exact original imagegen data URLs recovered from retained functions.store after execution environment replacement; no image regeneration or re-encoding.",
+  "files": {
+    "artist-retouch-raw.png": {
+      "bytes": 1817368,
+      "sha256": "3718a6c831ad4c51b5d2b3fda9c76020ec70cb91a30fac712d40760ac1320afc",
+      "pngSize": [
+        1437,
+        1095
+      ],
+      "type": "exact recovered imagegen binary"
+    },
+    "male-melee-artist-raw.png": {
+      "bytes": 1160644,
+      "sha256": "93c497685e1a6630f0c7527d4c631c93b31d42af3660c2cbd733c3624fa51714",
+      "pngSize": [
+        981,
+        1602
+      ],
+      "type": "exact recovered imagegen binary"
+    },
+    "male-idle-artist-raw.png": {
+      "bytes": 1102334,
+      "sha256": "faaf61cb9fdde28e15472c818223f0732c9febe8cac426c55813d8533aa99e28",
+      "pngSize": [
+        981,
+        1602
+      ],
+      "type": "exact recovered imagegen binary"
+    },
+    "male-rifle-artist-raw.png": {
+      "bytes": 1106391,
+      "sha256": "bae1adf6742a85db99998fbc78c5f7485b0628b78d61eff8086e55385017ee22",
+      "pngSize": [
+        981,
+        1602
+      ],
+      "type": "exact recovered imagegen binary"
+    },
+    "rifle-seam-prompt.txt": {
+      "bytes": 1881,
+      "sha256": "68a16caba0dc31d56b21baddcec8e5ab99e4002d311f24f199544874d247e5ed",
+      "type": "exact retained prompt"
+    },
+    "RECOVERY-NOTES.txt": {
+      "bytes": 1561,
+      "sha256": "3cbd241bb0964c7307bfe00001296783946903a0940b222f3a2890cdfe72d4e5",
+      "type": "history-reconstructed code or provenance"
+    },
+    "generation-prompts.json": {
+      "bytes": 3878,
+      "sha256": "3e8c959cd824af26fbd7cfeccc6f48703283eb9f4f6311935d48404e9c64ad2c",
+      "type": "history-reconstructed code or provenance"
+    },
+    "known-registration-and-hashes.json": {
+      "bytes": 3049,
+      "sha256": "ab95dad8406210b4a0cd88d65f7eb58b6c8a6cf8a00f28059a7036a27bfd488f",
+      "type": "history-reconstructed code or provenance"
+    },
+    "pajamas-male-artist-rifle-retouch.py": {
+      "bytes": 7997,
+      "sha256": "5464405e40a400b87be620acb7d5f7dfdee1a5b823b887cb22f4085e18be7af6",
+      "type": "history-reconstructed code or provenance"
+    },
+    "pajamas-male-artist-sleeves.py": {
+      "bytes": 8696,
+      "sha256": "5658ce9b8fb77c8c02ebc6fb248e109dbb9e192503ac64f3b32dd17e48718c43",
+      "type": "history-reconstructed code or provenance"
+    },
+    "pajamas-male-extract.py": {
+      "bytes": 8650,
+      "sha256": "00f42869736e48b98ac4f16e2f2e531a0b506e6897db5de70fe39c2c75782f3d",
+      "type": "history-reconstructed code or provenance"
+    }
+  }
+}

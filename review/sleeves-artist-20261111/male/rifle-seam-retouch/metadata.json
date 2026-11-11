@@ -1,0 +1,54 @@
+{
+  "origin": "Original artist retouch PNG recovered byte-for-byte from retained functions.store, without regeneration. Native target was rebuilt through original runtime using lossless v2 shirt and original gun/hands. Registered final top matches original pre-outage v3 SHA256 exactly.",
+  "files": {
+    "artist-retouch-raw.png": {
+      "bytes": 1817368,
+      "sha256": "3718a6c831ad4c51b5d2b3fda9c76020ec70cb91a30fac712d40760ac1320afc",
+      "size": [
+        1437,
+        1095
+      ],
+      "mode": "RGBA"
+    },
+    "target-upper.png": {
+      "bytes": 572920,
+      "sha256": "ffcb8156b14fcd5287661f985304f3b5431156e89c8ebd95ef1075b7d12b2de9",
+      "size": [
+        840,
+        640
+      ],
+      "mode": "RGBA"
+    },
+    "top-before.png": {
+      "bytes": 448768,
+      "sha256": "67b7796d4977ce3e3ea1cc06afbf83659f753b906cb786ff6bbffb0c34a4e3d0",
+      "size": [
+        941,
+        1672
+      ],
+      "mode": "RGBA"
+    },
+    "top-after.png": {
+      "bytes": 452177,
+      "sha256": "2935688861d84ef23cc1905827a442b9e887d225cefd8b7867a6475eaf3dc146",
+      "size": [
+        941,
+        1672
+      ],
+      "mode": "RGBA"
+    },
+    "prompt.txt": {
+      "bytes": 1881,
+      "sha256": "68a16caba0dc31d56b21baddcec8e5ab99e4002d311f24f199544874d247e5ed"
+    },
+    "registered-cloth-patch.png": {
+      "bytes": 27860,
+      "sha256": "626ecfea66f7a89f7930ecaeafc02bd289cd1e082b5d90dd337929e945777c49",
+      "size": [
+        941,
+        1672
+      ],
+      "mode": "RGBA"
+    }
+  }
+}

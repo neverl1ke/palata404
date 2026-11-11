@@ -1,0 +1,14 @@
+{
+  "dataset": {
+    "pajamaParts": "footwear pants top",
+    "pajamaPose": "rifle",
+    "avatarCoreReady": "true",
+    "avatarPose": "rifle"
+  },
+  "width": 1100,
+  "height": 1672,
+  "losslessSource": "/workspace/palata404/review/artist-candidates/male-rifle.png",
+  "sourceSha256": "67b7796d4977ce3e3ea1cc06afbf83659f753b906cb786ff6bbffb0c34a4e3d0",
+  "targetSha256": "ffcb8156b14fcd5287661f985304f3b5431156e89c8ebd95ef1075b7d12b2de9",
+  "browserErrors": []
+}

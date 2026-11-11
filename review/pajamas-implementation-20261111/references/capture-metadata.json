@@ -1,0 +1,161 @@
+{
+  "registration": {
+    "width": 1200,
+    "height": 1672,
+    "origin": [
+      0,
+      0
+    ],
+    "rescale": false,
+    "nativeBodyCoordinates": "941x1672 origin unchanged; right padding only"
+  },
+  "engine": "/avatar-core/approved/avatar.mjs?v=atomic-frame-20261105",
+  "browser": "156.0.8078.79",
+  "records": [
+    {
+      "gender": "male",
+      "pose": "idle",
+      "width": 1100,
+      "height": 1672,
+      "time": 0,
+      "breathing": false,
+      "weaponId": null,
+      "path": "/workspace/palata404/review/pajamas-implementation-20261111/references/male-idle.png",
+      "commonSize": [
+        1200,
+        1672
+      ],
+      "nativeSha256": "f990f2f3a0497bf279fa02f1a15d01e1018a9c0d9c10e089f9800b266024b7ae",
+      "commonSha256": "0ab3ecf09380550f5d28ece24874368e0d2774d6cd90e054c724de2b0bf46a9d",
+      "commonRgbaSha256": "03c791f24792bb714b4513ad1c841a2b928ffa9fe6e0ca21971199b20cc3e49e",
+      "alphaBounds": [
+        21,
+        21,
+        921,
+        1660
+      ]
+    },
+    {
+      "gender": "male",
+      "pose": "melee",
+      "width": 1100,
+      "height": 1672,
+      "time": 0,
+      "breathing": false,
+      "weaponId": "gear-knife",
+      "path": "/workspace/palata404/review/pajamas-implementation-20261111/references/male-melee.png",
+      "commonSize": [
+        1200,
+        1672
+      ],
+      "nativeSha256": "603c90b37d98f04e3c3e18ccad65882fc2371d5beb36d5321f0257f94e1ae1e1",
+      "commonSha256": "e197eb6dd11a605b5eb45f5b8cc7d3f57cb5366873aefe728103791e780177ec",
+      "commonRgbaSha256": "3805d2e33c5de1c667215226a812d477776b4016dd15c354a837fd3b3d9a1411",
+      "alphaBounds": [
+        159,
+        27,
+        795,
+        1660
+      ]
+    },
+    {
+      "gender": "male",
+      "pose": "rifle",
+      "width": 1100,
+      "height": 1672,
+      "time": 0,
+      "breathing": false,
+      "weaponId": "gear-aks",
+      "path": "/workspace/palata404/review/pajamas-implementation-20261111/references/male-rifle.png",
+      "commonSize": [
+        1200,
+        1672
+      ],
+      "nativeSha256": "1ca6bb1e81deaccd1f6f0e3ab74b575d804886cd211207747b761d1ee376381e",
+      "commonSha256": "302d5d23e28f6aa11cbe852dd2eb3685ed8ac2b384ad2d0d6cc3e849d4e5d856",
+      "commonRgbaSha256": "67adc2428965fa69811ad2a383efe4cc9af27ef6f8f17a316bce0199ca7d79f7",
+      "alphaBounds": [
+        21,
+        21,
+        954,
+        1660
+      ]
+    },
+    {
+      "gender": "female",
+      "pose": "idle",
+      "width": 1200,
+      "height": 1672,
+      "time": 0,
+      "breathing": false,
+      "weaponId": null,
+      "path": "/workspace/palata404/review/pajamas-implementation-20261111/references/female-idle.png",
+      "commonSize": [
+        1200,
+        1672
+      ],
+      "nativeSha256": "b2101c37e0f2396c819e4d999283d07206c6a179307509f4104644f0b149f54f",
+      "commonSha256": "513285971e6eb4c4830de3d8a680096379ad4e68ecde03345d0fea605683bebd",
+      "commonRgbaSha256": "140c17e1dcaafb25fb32baa10a40a8b234e104b04cc5bfab282e6db28385b360",
+      "alphaBounds": [
+        178,
+        21,
+        769,
+        1654
+      ]
+    },
+    {
+      "gender": "female",
+      "pose": "melee",
+      "width": 1200,
+      "height": 1672,
+      "time": 0,
+      "breathing": false,
+      "weaponId": "gear-knife",
+      "path": "/workspace/palata404/review/pajamas-implementation-20261111/references/female-melee.png",
+      "commonSize": [
+        1200,
+        1672
+      ],
+      "nativeSha256": "0d82a8b163810f17199ca343f997ac4526d25dcca4b5e71f4877549fcace45ef",
+      "commonSha256": "0b77e4bda6abbd450d209f1eaf66ef28ea80612a1ee0602eb6d8a1efbe885023",
+      "commonRgbaSha256": "0350952d66cba17fc7d7e3446636841d11d7339c9d7bc229db90284cdfa863b8",
+      "alphaBounds": [
+        147,
+        21,
+        769,
+        1654
+      ]
+    },
+    {
+      "gender": "female",
+      "pose": "rifle",
+      "width": 1200,
+      "height": 1672,
+      "time": 0,
+      "breathing": false,
+      "weaponId": "gear-aks",
+      "path": "/workspace/palata404/review/pajamas-implementation-20261111/references/female-rifle.png",
+      "commonSize": [
+        1200,
+        1672
+      ],
+      "nativeSha256": "5c238a8190ff93be9c3c5aff1291d8baf8ab511be5afb2d119c5789d2a65390e",
+      "commonSha256": "8d1dd28a1480393953bc246a54bfbb490406722cef10cf5dbab7450c50031186",
+      "commonRgbaSha256": "a5b4b21b300a4285bcda16093d3c1fd1f5b31c355fe6beeb48d1c036408b7f78",
+      "alphaBounds": [
+        161,
+        21,
+        958,
+        1654
+      ]
+    }
+  ],
+  "browserErrors": [],
+  "failedRequests": [],
+  "sourceCommit": "912bff56c4adaaaa617d13e72aa1a7d0c7927c6a",
+  "approvedBaseSha256": {
+    "base_male.png": "b40a31b26dcf9aeea1dad02091228377330c9bb3af3a4b9669cfcc67247fc41d",
+    "base_female.png": "a27b499c03fc15c4788ae3a651483a36463f28b1f034178feccdaa852e7e50f9"
+  }
+}

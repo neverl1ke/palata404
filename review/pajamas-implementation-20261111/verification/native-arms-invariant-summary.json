@@ -1,0 +1,98 @@
+{
+  "method": "Read live engine.canvas RGBA at time 0 with engine and assembled breathing disabled, before and after removing ONLY pajama top; pants and footwear remained equipped. No avatar-file hash shortcut.",
+  "records": [
+    {
+      "gender": "male",
+      "pose": "idle",
+      "frameSize": [
+        1100,
+        1672
+      ],
+      "beforeNativeRgbaSha256": "c9bd5d28f149f6bef712f6ac00ca5e90d874bb5636036ae1f4f10b062a738f25",
+      "afterNativeRgbaSha256": "c9bd5d28f149f6bef712f6ac00ca5e90d874bb5636036ae1f4f10b062a738f25",
+      "changedNativePixels": 0,
+      "changedNativeAlphaPixels": 0,
+      "topEraseMask": null,
+      "retainedParts": "footwear pants",
+      "originalUpperPixelsErased": 0
+    },
+    {
+      "gender": "male",
+      "pose": "melee",
+      "frameSize": [
+        1100,
+        1672
+      ],
+      "beforeNativeRgbaSha256": "02b4f7c4d9640d1ecc25747620830ae462ebb04e8c9a3c2f74d6387d32effab4",
+      "afterNativeRgbaSha256": "02b4f7c4d9640d1ecc25747620830ae462ebb04e8c9a3c2f74d6387d32effab4",
+      "changedNativePixels": 0,
+      "changedNativeAlphaPixels": 0,
+      "topEraseMask": null,
+      "retainedParts": "footwear pants",
+      "originalUpperPixelsErased": 0
+    },
+    {
+      "gender": "male",
+      "pose": "rifle",
+      "frameSize": [
+        1100,
+        1672
+      ],
+      "beforeNativeRgbaSha256": "22675db75f87c4b42506284e362ff939d773bf19915c4c2395dba35a8ecf350f",
+      "afterNativeRgbaSha256": "22675db75f87c4b42506284e362ff939d773bf19915c4c2395dba35a8ecf350f",
+      "changedNativePixels": 0,
+      "changedNativeAlphaPixels": 0,
+      "topEraseMask": null,
+      "retainedParts": "footwear pants",
+      "originalUpperPixelsErased": 0
+    },
+    {
+      "gender": "female",
+      "pose": "idle",
+      "frameSize": [
+        1200,
+        1672
+      ],
+      "beforeNativeRgbaSha256": "877592dcb57b0b1570a58c53008fdf09828873b7404a14ea9e0ad8acc68fc2ce",
+      "afterNativeRgbaSha256": "877592dcb57b0b1570a58c53008fdf09828873b7404a14ea9e0ad8acc68fc2ce",
+      "changedNativePixels": 0,
+      "changedNativeAlphaPixels": 0,
+      "topEraseMask": null,
+      "retainedParts": "footwear pants",
+      "originalUpperPixelsErased": 0
+    },
+    {
+      "gender": "female",
+      "pose": "melee",
+      "frameSize": [
+        1200,
+        1672
+      ],
+      "beforeNativeRgbaSha256": "e57e6c2d9fe447219a1280adf5dada52bdeda9d1d6740de4a244f73b35707818",
+      "afterNativeRgbaSha256": "e57e6c2d9fe447219a1280adf5dada52bdeda9d1d6740de4a244f73b35707818",
+      "changedNativePixels": 0,
+      "changedNativeAlphaPixels": 0,
+      "topEraseMask": null,
+      "retainedParts": "footwear pants",
+      "originalUpperPixelsErased": 0
+    },
+    {
+      "gender": "female",
+      "pose": "rifle",
+      "frameSize": [
+        1200,
+        1672
+      ],
+      "beforeNativeRgbaSha256": "844fa92dcd8477a805bd2884102e48a502e5802edb6e3cee3ec49b21d3371569",
+      "afterNativeRgbaSha256": "844fa92dcd8477a805bd2884102e48a502e5802edb6e3cee3ec49b21d3371569",
+      "changedNativePixels": 0,
+      "changedNativeAlphaPixels": 0,
+      "topEraseMask": null,
+      "retainedParts": "footwear pants",
+      "originalUpperPixelsErased": 0
+    }
+  ],
+  "browserErrors": [],
+  "allSixNativeFramesByteIdentical": true,
+  "note": "Composite RGB diagnostics in the detailed readout include retained pants at the waist. This summary concerns unchanged complete native body/arms beneath garment overlays. Final lower-garment visual QA is separate."
+}

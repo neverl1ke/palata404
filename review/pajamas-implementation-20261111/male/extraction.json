@@ -1,0 +1,111 @@
+{
+  "source": "review/pajamas-implementation-20261111/male/approved-male-concept.png",
+  "sourceSha256": "1943dc7c37aa15bff0cda043d37d80845b92a894045b6ba720197a278c2c5885",
+  "method": "Original approved canonical torso plus user-authorized artist sleeves. Retained exact whole-image similarities; tiny same-artist translated underlays fill native arm gaps. Two small rifle joins use the separately recovered local artist retouch. No final arm warp, UV texture transfer, native body/head/hand/weapon edit.",
+  "registeredSize": [
+    941,
+    1672
+  ],
+  "runtimeSize": [
+    941,
+    1672
+  ],
+  "mapping": {
+    "sx": 2.12,
+    "sy": 1.9567307692307692,
+    "sourceCenterX": 325,
+    "targetCenterX": 474,
+    "sourceHeadTop": 112,
+    "targetHeadTop": 30,
+    "sourceSole": 944,
+    "targetSole": 1658
+  },
+  "files": [
+    {
+      "name": "top-idle",
+      "png": "review/pajamas-implementation-20261111/male/registered/top-idle.png",
+      "pngSha256": "a4fcd8f3da8309362e5969ef80a94b59c2a8b4e7e520e486c51034291ac4d3fa",
+      "webp": "assets/wardrobe/clothing/patient/pajamas/male/top-idle.webp",
+      "webpSha256": "6b7d8185b1b2797b12d38a1afa720486978359f5184694f596b4586500776327",
+      "webpBytes": 67954,
+      "registeredBbox": [
+        160,
+        239,
+        785,
+        855
+      ]
+    },
+    {
+      "name": "top-melee",
+      "png": "review/pajamas-implementation-20261111/male/registered/top-melee.png",
+      "pngSha256": "7d447b545fe20a62fdc5668c27b238945e5c1522e20938f53c371f68353e4f39",
+      "webp": "assets/wardrobe/clothing/patient/pajamas/male/top-melee.webp",
+      "webpSha256": "3e0e56f4d2927b922ef78d059cb88baaf2ea9a4444d8b528f218c360fd425084",
+      "webpBytes": 69172,
+      "registeredBbox": [
+        162,
+        239,
+        788,
+        855
+      ]
+    },
+    {
+      "name": "top-rifle",
+      "png": "review/pajamas-implementation-20261111/male/registered/top-rifle.png",
+      "pngSha256": "2935688861d84ef23cc1905827a442b9e887d225cefd8b7867a6475eaf3dc146",
+      "webp": "assets/wardrobe/clothing/patient/pajamas/male/top-rifle.webp",
+      "webpSha256": "14461ff07c72a00f64a51400abd2d9b745c5aea6d012bbef5d4e9d36bcf65c53",
+      "webpBytes": 59864,
+      "registeredBbox": [
+        152,
+        239,
+        771,
+        855
+      ]
+    },
+    {
+      "name": "pants",
+      "png": "review/pajamas-implementation-20261111/male/registered/pants.png",
+      "pngSha256": "b320701c6abbdebd689ccac27adb7b1bcc81f480d1484fbcfee0893bf2b8777f",
+      "webp": "assets/wardrobe/clothing/patient/pajamas/male/pants.webp",
+      "webpSha256": "80907147fe2fe655257e628986dd61169c0ec05373b9d875aeaca55a4319dceb",
+      "webpBytes": 66734,
+      "registeredBbox": [
+        260,
+        700,
+        694,
+        1590
+      ]
+    },
+    {
+      "name": "footwear",
+      "png": "review/pajamas-implementation-20261111/male/registered/footwear.png",
+      "pngSha256": "a2d72f266daec1f0d9ca3a938fcc041d40a93fce9464852a47779ed64679e403",
+      "webp": "assets/wardrobe/clothing/patient/pajamas/male/footwear.webp",
+      "webpSha256": "ab51ed65c469efaa2d31c0c8d1b005ac25f2e9f55a8830d677d124b16b8200fe",
+      "webpBytes": 17426,
+      "registeredBbox": [
+        233,
+        1554,
+        750,
+        1668
+      ]
+    }
+  ],
+  "readyForPublication": false,
+  "artistSleeveAuthorization": "художньо намалюй рукава а не викручуй їх; автомат також на шар вище",
+  "compositionOrder": [
+    "minimal cloth-only underlay",
+    "unchanged canonical torso",
+    "artist sleeves and caps in front",
+    "original native weapon and hands above clothing"
+  ],
+  "reproductionCommands": [
+    "python tools/pajamas-male-extract.py",
+    "python tools/pajamas-male-artist-sleeves.py",
+    "python tools/pajamas-male-artist-rifle-retouch.py --write"
+  ],
+  "recoveredFromHistory": true,
+  "reproductionNote": "Recovered original artist raws and registration constants; no art regeneration. Native reference captures, exact native hand matte and v2 target-upper capture must first be rebuilt by unchanged approved runtime. Runtime visual QA required after recovery.",
+  "runtimeBytes": 316114
+}

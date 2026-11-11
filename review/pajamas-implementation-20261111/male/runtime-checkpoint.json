@@ -1,0 +1,149 @@
+{
+  "assetsFrozenForVisualQa": true,
+  "publicationReady": false,
+  "recoveredFromHistory": true,
+  "files": [
+    {
+      "name": "footwear.webp",
+      "size": [
+        941,
+        1672
+      ],
+      "bytes": 17426,
+      "alpha": [
+        0,
+        255
+      ],
+      "sha256": "ab51ed65c469efaa2d31c0c8d1b005ac25f2e9f55a8830d677d124b16b8200fe"
+    },
+    {
+      "name": "foreground-hands-rifle.webp",
+      "size": [
+        941,
+        1672
+      ],
+      "bytes": 1868,
+      "alpha": [
+        0,
+        255
+      ],
+      "sha256": "ce0e3b27047ad369f767d9d15a751a846c7431fbe56452d32ea14f5c9dc998c0"
+    },
+    {
+      "name": "mask-footwear.webp",
+      "size": [
+        941,
+        1672
+      ],
+      "bytes": 648,
+      "alpha": [
+        0,
+        255
+      ],
+      "sha256": "d8b038ae1436bd449f080521fe6927295a9d1004d1f3089e331517024afd5c95"
+    },
+    {
+      "name": "pants.webp",
+      "size": [
+        941,
+        1672
+      ],
+      "bytes": 66734,
+      "alpha": [
+        0,
+        255
+      ],
+      "sha256": "80907147fe2fe655257e628986dd61169c0ec05373b9d875aeaca55a4319dceb"
+    },
+    {
+      "name": "thumb-footwear.webp",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 5350,
+      "alpha": [
+        0,
+        255
+      ],
+      "sha256": "8f1ee160bd801e577077a92a48150c7e3a11aa7a2d638640a0a920da02c7fc66"
+    },
+    {
+      "name": "thumb-pants.webp",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 11166,
+      "alpha": [
+        0,
+        255
+      ],
+      "sha256": "3917f8dbe8090676d3af9a9e302d12f6b4b8e921d32fb6ba8e61b20233261fbc"
+    },
+    {
+      "name": "thumb-top.webp",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 15932,
+      "alpha": [
+        0,
+        255
+      ],
+      "sha256": "359693fa720e5644a088181e69bbb47c635d7c404f9ec5c956964226c1539743"
+    },
+    {
+      "name": "top-idle.webp",
+      "size": [
+        941,
+        1672
+      ],
+      "bytes": 67954,
+      "alpha": [
+        0,
+        255
+      ],
+      "sha256": "6b7d8185b1b2797b12d38a1afa720486978359f5184694f596b4586500776327"
+    },
+    {
+      "name": "top-melee.webp",
+      "size": [
+        941,
+        1672
+      ],
+      "bytes": 69172,
+      "alpha": [
+        0,
+        255
+      ],
+      "sha256": "3e0e56f4d2927b922ef78d059cb88baaf2ea9a4444d8b528f218c360fd425084"
+    },
+    {
+      "name": "top-rifle.webp",
+      "size": [
+        941,
+        1672
+      ],
+      "bytes": 59864,
+      "alpha": [
+        0,
+        255
+      ],
+      "sha256": "14461ff07c72a00f64a51400abd2d9b745c5aea6d012bbef5d4e9d36bcf65c53"
+    }
+  ],
+  "runtimeBytes": 316114,
+  "compositionOrder": [
+    "minimal cloth-only underlay",
+    "unchanged canonical torso",
+    "artist sleeves and caps in front",
+    "original native weapon and hands above clothing"
+  ],
+  "reproductionCommands": [
+    "python tools/pajamas-male-extract.py",
+    "python tools/pajamas-male-artist-sleeves.py",
+    "python tools/pajamas-male-artist-rifle-retouch.py --write"
+  ]
+}
