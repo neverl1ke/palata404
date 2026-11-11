@@ -48,6 +48,8 @@ class QuestPrototypeBrowserTest(unittest.TestCase):
         page.locator('.quest-blueprint-image').wait_for(state='visible')
         page.wait_for_function("document.querySelector('.quest-blueprint-image').naturalWidth>0")
         self.assertEqual(page.locator('.quest-map-pin').count(),17)
+        box=page.locator('.quest-blueprint').bounding_box()
+        self.assertAlmostEqual(box['width']/box['height'],1610/850,places=2)
         self.assertEqual(page.locator('.quest-plan-label').count(),14)
         self.assertIn('quest-plan.svg',page.locator('.quest-blueprint-image').get_attribute('src'))
         self.assertTrue(page.locator('.quest-official-header .document-emblem').is_visible())
