@@ -1,7 +1,7 @@
 name: Quest prototype checks
 on:
   push:
-    branches: [codex/quest-prototype-v4]
+    branches: [codex/quest-prototype-v4, codex/floor10-audit-20261111]
   workflow_dispatch:
 jobs:
   quests:
