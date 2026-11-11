@@ -84,6 +84,7 @@ class SceneStartupTests(unittest.TestCase):
         self.assertTrue(any(s['x']<-100 and s['mode']=='compact' for s in samples))
         self.assertTrue(any(s['x']<-100 and s['mode']=='full' for s in samples))
         self.assertEqual(card.get_attribute('data-card-mode'),'full')
+        self.assertAlmostEqual(card.bounding_box()['width'],rect['width'],delta=1)
         self.assertEqual(button.get_attribute('aria-expanded'),'true')
         self.assertTrue(self.page.locator('.hud-bank-button').is_visible())
         self.assertEqual(self.page.evaluate('JSON.stringify({stats,inventory,equippedGear,paperDollState})'),saved)

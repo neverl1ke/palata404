@@ -5,7 +5,7 @@
 .hospital-hud .hud-card-toggle:hover{filter:brightness(1.1)}
 .hospital-hud .hud-card-toggle:focus-visible{outline:2px solid #f1d09b;outline-offset:2px}
 .hospital-hud .hud-card-toggle:disabled{cursor:default}
-.hud-patient-board[data-card-mode="compact"]{left:.6%;top:8.3%;width:49%;height:auto;aspect-ratio:1902/827;background-image:url('hud-art/patient-compact.webp');container-type:inline-size}
+.hud-patient-board[data-card-mode="compact"]{left:.6%;top:8.3%;width:calc(90cqh * 971 / 1620);height:auto;aspect-ratio:1902/827;background-image:url('hud-art/patient-compact.webp');container-type:inline-size}
 .hud-patient-board[data-card-mode="compact"]::before{display:none}
 .hud-patient-board[data-card-mode="compact"] .hud-field:not([data-compact-field]),
 .hud-patient-board[data-card-mode="compact"] .hud-photo-foreground,
@@ -36,6 +36,6 @@
 .hud-patient-board[data-card-mode="compact"] .hud-card-toggle{left:72.8%;top:77.8%;right:auto;width:22.7%;height:10.2%;border:0;border-radius:0;background:none;box-shadow:none;writing-mode:horizontal-tb;font-size:2.25cqw;gap:.7cqw;letter-spacing:.1cqw;padding:0;color:#efdac2}
 .hud-patient-board[data-card-mode="compact"] .hud-card-toggle b{font-size:1.45em;line-height:1}
 @media(max-width:900px) and (orientation:portrait){
- body .hospital-hud.game-viewport:has(.hud-patient-board[data-card-mode="compact"]){--mobile-board-width:calc(100vw - 24px);--mobile-board-height:calc(var(--mobile-board-width) * 827 / 1902)}
- .hospital-hud .hud-patient-board[data-card-mode="compact"]{top:calc(100% + 16px);left:50%;width:calc(100vw - 24px);height:auto;transform:translateX(-50%)}
+ body .hospital-hud.game-viewport:has(.hud-patient-board[data-card-mode="compact"]){--mobile-board-height:calc(var(--mobile-board-width) * 827 / 1902)}
+ .hospital-hud .hud-patient-board[data-card-mode="compact"]{top:calc(100% + 16px);left:50%;width:var(--mobile-board-width);height:auto;transform:translateX(-50%)}
 }
