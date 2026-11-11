@@ -23,13 +23,15 @@ wardrobeVisibleItems = function(){
     }
     return Object.keys(WEAPON_RARITIES).map(r=>representatives.get(r)).filter(Boolean).concat(other).filter(item=>archiveWeaponType==='all'||archiveWeaponKind(item)===archiveWeaponType);
 };
-const ARCHIVE_SLOT_LABELS = { headwear:'Головной убор',helmet:'Шлем',upperBody:'Верхняя одежда',outerwear:'Куртка',gloves:'Перчатки',pants:'Брюки',footwear:'Обувь',armor:'Бронежилет',loadout:'Разгрузка',weapon:'Оружие',accessory:'Аксессуар',appearance:'Внешность',baseBody:'Персонаж',face:'Головы',hair:'Причёски',beard:'Борода и усы',equipment:'К оснащению' };
+const ARCHIVE_SLOT_LABELS = { headwear:'Головной убор',helmet:'Шлем',mask:'Маска',upperBody:'Верхняя одежда',outerwear:'Куртка',gloves:'Перчатки',pants:'Брюки',footwear:'Обувь',armor:'Бронежилет',loadout:'Разгрузка',weapon:'Оружие',accessory:'Аксессуар',appearance:'Внешность',baseBody:'Персонаж',face:'Головы',hair:'Причёски',beard:'Борода и усы',equipment:'К оснащению' };
 const ARCHIVE_TILES = {helmet:0,upperBody:1,outerwear:2,gloves:3,pants:4,footwear:5,armor:6,loadout:7,weapon:8,accessory:10,appearance:11,face:12,hair:11,beard:13,equipment:0};
 function archiveSelectSlot(slot) {
     wardrobeVirtualSlot=slot==='headwear'?'cap':slot==='helmet'?'helmet':null;
     if(slot==='equipment'){wardrobeCategory='weapons';wardrobeSlot='weapon';wardrobeSelectedItemId=null;document.querySelector('.archive-wardrobe')?.removeAttribute('data-inspecting');renderWardrobe();return;}
     if(slot==='helmet') slot='headwear';
-    if (slot === 'appearance') { wardrobeCategory='appearance'; wardrobeSlot='face'; }
+    // Reserve the mask catalogue without inventing an equipped item or changing saves.
+    if (slot === 'mask') { wardrobeCategory='gear'; wardrobeSlot='mask'; }
+    else if (slot === 'appearance') { wardrobeCategory='appearance'; wardrobeSlot='face'; }
     else {
         const category = Object.entries(WARDROBE_CATEGORIES).find(([,c]) => c.slots.includes(slot));
         if (!category) return;
@@ -39,10 +41,10 @@ function archiveSelectSlot(slot) {
 }
 function archiveRenderRails() {
     const appearance=wardrobeCategory==='appearance';
-    const rails=appearance?[["archive-left-slots",['face','hair',...(paperDollState.selectedGender==='male'?['beard']:[])]],["archive-right-slots",['equipment']]]:[['archive-left-slots',['headwear','upperBody','outerwear','gloves','pants','footwear']],['archive-right-slots',['helmet','armor','loadout','weapon','accessory','appearance']]];
+    const rails=appearance?[["archive-left-slots",['face','hair',...(paperDollState.selectedGender==='male'?['beard']:[])]],["archive-right-slots",['equipment']]]:[['archive-left-slots',['headwear','mask','upperBody','gloves','pants','footwear']],['archive-right-slots',['helmet','armor','loadout','weapon','accessory','appearance']]];
     for (const [id,list] of rails) {
         const host=document.getElementById(id); if (!host) continue;
-        host.innerHTML=list.map(slot=>{const tile=ARCHIVE_TILES[slot]??0,appearanceSource=wardrobeAppearanceCategoryIcon(slot);const cat={upperBody:'clothes',helmet:'gear',weapon:'weapons',accessory:'accessories',appearance:'appearance',equipment:'weapons'}[slot];const compatSlot=slot==='helmet'?'headwear':slot==='headwear'?'cap':slot;return `<div class="archive-slot-wrap"><button type="button" class="archive-slot${slot==='appearance'?' appearance':''}" data-archive-slot="${slot}" ${cat?`data-wardrobe-category="${cat}"`:""} ${!["appearance","headwear","equipment"].includes(slot)?`data-wardrobe-slot="${compatSlot}"`:""} aria-pressed="${slot==='appearance'?wardrobeCategory==='appearance':(slot==='helmet'?wardrobeSlot==='headwear'&&wardrobeVirtualSlot!=='cap':slot==='headwear'?wardrobeSlot==='headwear'&&wardrobeVirtualSlot==='cap':wardrobeSlot===slot)}"><span>${slot==='equipment'?'↩ ':''}${ARCHIVE_SLOT_LABELS[slot]}</span><i class="slot-art${appearanceSource?' appearance-slot-art':''}" style="${appearanceSource?`background-image:url('${escapeHTML(appearanceSource)}')`:`background-position:${tile%4*100/3}% ${Math.floor(tile/4)*100/3}%`}" aria-hidden="true"></i></button>${['helmet','headwear','appearance','accessory','face','hair','beard','equipment'].includes(slot)?'':`<button type="button" class="archive-eye" data-hide-slot="${slot}" aria-pressed="${wardrobeHiddenSlots.has(slot)}" aria-label="${wardrobeHiddenSlots.has(slot)?'Показать':'Скрыть'}: ${ARCHIVE_SLOT_LABELS[slot]}">${archiveVisibilityIcon(wardrobeHiddenSlots.has(slot))}</button>`}</div>`;}).join('');
+        host.innerHTML=list.map(slot=>{const tile=ARCHIVE_TILES[slot]??0,appearanceSource=wardrobeAppearanceCategoryIcon(slot);const cat={mask:'gear',upperBody:'clothes',helmet:'gear',weapon:'weapons',accessory:'accessories',appearance:'appearance',equipment:'weapons'}[slot];const compatSlot=slot==='helmet'?'headwear':slot==='headwear'?'cap':slot;return `<div class="archive-slot-wrap"><button type="button" class="archive-slot${slot==='appearance'?' appearance':''}" data-archive-slot="${slot}" ${cat?`data-wardrobe-category="${cat}"`:""} ${!["appearance","headwear","equipment"].includes(slot)?`data-wardrobe-slot="${compatSlot}"`:""} aria-pressed="${slot==='appearance'?wardrobeCategory==='appearance':(slot==='helmet'?wardrobeSlot==='headwear'&&wardrobeVirtualSlot!=='cap':slot==='headwear'?wardrobeSlot==='headwear'&&wardrobeVirtualSlot==='cap':wardrobeSlot===slot)}"><span>${slot==='equipment'?'↩ ':''}${ARCHIVE_SLOT_LABELS[slot]}</span><i class="slot-art${appearanceSource?' appearance-slot-art':''}" style="${appearanceSource?`background-image:url('${escapeHTML(appearanceSource)}')`:`background-position:${tile%4*100/3}% ${Math.floor(tile/4)*100/3}%`}" aria-hidden="true"></i></button>${['helmet','headwear','mask','appearance','accessory','face','hair','beard','equipment'].includes(slot)?'':`<button type="button" class="archive-eye" data-hide-slot="${slot}" aria-pressed="${wardrobeHiddenSlots.has(slot)}" aria-label="${wardrobeHiddenSlots.has(slot)?'Показать':'Скрыть'}: ${ARCHIVE_SLOT_LABELS[slot]}">${archiveVisibilityIcon(wardrobeHiddenSlots.has(slot))}</button>`}</div>`;}).join('');
         host.setAttribute('aria-label',appearance?(id==='archive-left-slots'?'Внешность':'Вернуться к оснащению'):(id==='archive-left-slots'?'Одежда':'Оснащение'));
         host.querySelectorAll('[data-archive-slot]').forEach(b=>b.onclick=()=>archiveSelectSlot(b.dataset.archiveSlot));
         host.querySelectorAll('[data-hide-slot]').forEach(b=>b.onclick=()=>{const slot=b.dataset.hideSlot;wardrobeHiddenSlots.has(slot)?wardrobeHiddenSlots.delete(slot):wardrobeHiddenSlots.add(slot);renderWardrobe();});
@@ -80,6 +82,7 @@ function archiveClipboardHardware(lower=false){
 function renderWardrobeItemDetail(item) {
     const panel=document.getElementById('wardrobe-item-detail'); if (!panel) return;
     panel.classList.remove('hidden'); panel.dataset.slot=item?.slot||wardrobeSlot;
+    if (!item && wardrobeSlot==='mask') { panel.innerHTML='<div class="archive-mask-empty"><img src="assets/ui/wardrobe/mask-art.webp" alt=""><h4>Маска</h4><p>В этом разделе пока нет доступных предметов.</p></div>';return; }
     if (!item) { panel.innerHTML=`<div class="archive-tablet empty-tablet">${archiveInstitution()}<div class="tablet-empty"><h4>${ARCHIVE_SLOT_LABELS[wardrobeSlot]||'Карточка'}</h4><p>В этом разделе пока нет доступных предметов.</p></div></div>`;return; }
     if (['hair','beard','face'].includes(item.slot)) {
         const equipped=selectedPaperDollItem(item.slot)?.id===item.id;

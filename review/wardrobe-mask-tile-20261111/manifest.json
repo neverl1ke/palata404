@@ -1,0 +1,10 @@
+{
+  "created": "2026-11-11",
+  "purpose": "Wardrobe mask category tile; interface illustration only, no wearable item or avatar layer",
+  "styleReference": "assets/ui/wardrobe/slot-art.webp",
+  "source": "review/wardrobe-mask-tile-20261111/mask-icon-source.png",
+  "sourceSha256": "26176bf26e3964e3299137106a1d079139c4bdd70dd02a333d5dff08cbe699f2",
+  "runtime": "assets/ui/wardrobe/mask-art.webp",
+  "runtimeSha256": "7e4d97e51b40f00ac1b6de4fef7ad65937857c7889c1af02c252889e72be570b",
+  "processing": "Proportional thumbnail resize to 256 × 256 and WebP encoding. Source artwork preserved separately."
+}

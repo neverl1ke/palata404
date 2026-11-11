@@ -2039,6 +2039,8 @@ exclude:
   - "review/wardrobe-controls-20261106/final-controls-tests.log"
   - "review/wardrobe-controls-20261106/final-responsive-tests.log"
   - "review/wardrobe-controls-20261106/runtime-receipt.json"
+  - "review/wardrobe-mask-tile-20261111/manifest.json"
+  - "review/wardrobe-mask-tile-20261111/mask-icon-source.png"
   - "review/wardrobe-refinement-20261106/appearance-tests.log"
   - "review/wardrobe-refinement-20261106/browser-tests.log"
   - "review/wardrobe-refinement-20261106/final-ui-tests.log"
