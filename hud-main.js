@@ -3,6 +3,15 @@
 'use strict';
 const byId=id=>document.getElementById(id);
 function portrait(){const host=byId('hud-portrait');if(host)renderPaperDollAt(host,'hud-');}
+function equippedProfile(){
+ // The chart describes the saved outfit currently shown in the room. Trying
+ // another outfit must not change the chart or the authoritative combat gear.
+ const state=wardrobeSession?.savedState||paperDollState;
+ const loadout=state[state.activeViewMode==='combat'?'combatLoadout':'patientLoadout'];
+ const visual=slot=>PAPER_DOLL_ITEMS.find(item=>item.id===loadout[slot]&&item.slot===slot&&isPaperDollItemOwned(item)&&paperDollItemSupportsGender(item,state.selectedGender));
+ const armorBonus=slot=>{const item=visual(slot);return inventory.find(entry=>entry.category===item?.inventoryCategory&&entry.name===item?.inventoryName&&entry.count>0)?.armorBonus||0;};
+ return {...calculateWeaponStats(weaponInventoryItem(visual('weapon')),{damage:stats.baseDamage}),armor:stats.baseArmor+armorBonus('headwear')+armorBonus('armor')};
+}
 function sync(){
  if(playerName==='Пацієнт #404')byId('player-name').textContent='Пациент №404';
  const sanity=Math.max(0,Math.min(100,100-stats.madness));
@@ -12,7 +21,10 @@ function sync(){
  byId('hud-health-value').textContent=stats.hp;
  byId('hud-health-value').title=stats.hp+' / '+stats.maxHp;
  byId('hud-exp-percent').textContent=(Math.min(100,100*stats.exp/Math.max(1,stats.nextLvlExp))).toLocaleString('ru-RU',{maximumFractionDigits:1})+'%';
- byId('hud-critical-value').textContent='×'+getCombatWeaponStats().criticalMultiplier.toLocaleString('ru-RU',{maximumFractionDigits:2});
+ const equipment=equippedProfile();
+ byId('damage-val').textContent=equipment.damage;
+ byId('armor-val').textContent=equipment.armor;
+ byId('hud-critical-value').textContent='×'+equipment.criticalMultiplier.toLocaleString('ru-RU',{maximumFractionDigits:2});
  const identity=getPlayerUniqueId().id;
  document.querySelectorAll('[data-hud-case]').forEach(n=>n.textContent=identity);
  // Keep large balances and XP inside the same painted receipt/ribbon areas.
@@ -21,7 +33,6 @@ function sync(){
   const size=Math.min(base,width/Math.max(1,el.textContent.length*.64));
   el.style.fontSize='calc('+size+' / 971 * 100cqw)';
  });
- const map=byId('nav-map-btn');map.disabled=false;map.setAttribute('aria-disabled','false');
  if(window.PalataRoom)window.PalataRoom.refresh();
  portrait();
 }

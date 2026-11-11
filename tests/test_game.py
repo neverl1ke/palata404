@@ -425,7 +425,8 @@ class GameTests(unittest.TestCase):
         before = self.page.evaluate('JSON.stringify({stats,inventory,equippedGear,gameProgress})')
         self.assertEqual(self.page.evaluate('paperDollState.patientLoadout.upperBody'), 'patient-tunic')
         self.assertIsNone(self.page.evaluate('paperDollState.combatLoadout.upperBody'))
-        self.page.get_by_role('button', name='Гардероб', exact=True).click()
+        self.page.locator('.room-cabinet-action').click()
+        self.page.locator('#custom-modal').wait_for(state='visible')
         wardrobe = self.page.locator('#custom-modal')
         wardrobe.locator('[data-archive-slot="upperBody"]').click()
         card = wardrobe.locator('[data-wardrobe-card="patient-tunic"]')
@@ -445,7 +446,8 @@ class GameTests(unittest.TestCase):
         self.page.evaluate('typeof applyWardrobeSession === "function" && applyWardrobeSession()');self.page.reload(wait_until='networkidle')
         self.assertIsNone(self.page.evaluate('paperDollState.patientLoadout.upperBody'))
         self.assertIsNone(self.page.evaluate('paperDollState.combatLoadout.upperBody'))
-        self.page.get_by_role('button', name='Гардероб', exact=True).click()
+        self.page.locator('.room-cabinet-action').click()
+        self.page.locator('#custom-modal').wait_for(state='visible')
         wardrobe.locator('[data-archive-slot="upperBody"]').click()
         self.wardrobe_action('patient-tunic', 'Надягнути')
         wardrobe.get_by_role('button', name='Трип', exact=True).click()
@@ -467,7 +469,8 @@ class GameTests(unittest.TestCase):
         outfit = self.page.evaluate('JSON.stringify(paperDollState)')
         self.page.evaluate('typeof applyWardrobeSession === "function" && applyWardrobeSession()');self.page.reload(wait_until='networkidle')
         self.assertEqual(self.page.evaluate('JSON.stringify(paperDollState)'), outfit)
-        self.page.get_by_role('button', name='Гардероб', exact=True).click()
+        self.page.locator('.room-cabinet-action').click()
+        self.page.locator('#custom-modal').wait_for(state='visible')
         self.assert_patient_tunic_layers('female')
         self.assertEqual(self.page.evaluate('JSON.stringify({stats,inventory,equippedGear,gameProgress})'), before)
 
@@ -476,7 +479,8 @@ class GameTests(unittest.TestCase):
             'schemaVersion': 2, 'selectedGender': 'female', 'activeViewMode': 'patient',
             'appearance': {'face': None, 'hair': ''}, 'patientLoadout': {}, 'combatLoadout': {},
         })})
-        self.page.get_by_role('button', name='Гардероб', exact=True).click()
+        self.page.locator('.room-cabinet-action').click()
+        self.page.locator('#custom-modal').wait_for(state='visible')
         wardrobe = self.page.locator('#custom-modal')
         wardrobe.locator('[data-archive-slot="upperBody"]').click()
         for name in ['Пациент', 'Трип']:
@@ -498,7 +502,8 @@ class GameTests(unittest.TestCase):
                 bounds[gender] = image.getchannel('A').point(lambda value: 255 if value >= 64 else 0).getbbox()
         results = ROOT / 'test-results'
         results.mkdir(exist_ok=True)
-        self.page.get_by_role('button', name='Гардероб', exact=True).click()
+        self.page.locator('.room-cabinet-action').click()
+        self.page.locator('#custom-modal').wait_for(state='visible')
         wardrobe = self.page.locator('#custom-modal')
         for width, height in [(1280, 800), (1920, 1080), (390, 844), (320, 568), (844, 390)]:
             self.page.set_viewport_size({'width': width, 'height': height})
@@ -572,7 +577,8 @@ class GameTests(unittest.TestCase):
                             if width == 1280 and os.getenv('GITHUB_ACTIONS') == 'true':
                                 preview = self.page.locator('#character-paperdoll').screenshot(type='jpeg', quality=65)
                                 print('PATIENT_TUNIC_PREVIEW:' + json.dumps({'name':name+'-main','jpeg':base64.b64encode(preview).decode()},separators=(',',':')),flush=True)
-                            self.page.get_by_role('button', name='Гардероб', exact=True).click()
+                            self.page.locator('.room-cabinet-action').click()
+                            self.page.locator('#custom-modal').wait_for(state='visible')
         self.assertEqual(self.page.evaluate('JSON.stringify({stats,inventory,equippedGear,gameProgress})'), before)
 
     def test_paper_doll_layers_share_canvas_and_keep_faces_aligned_on_mobile(self):
@@ -2338,7 +2344,7 @@ class GameTests(unittest.TestCase):
                 self.assertLessEqual(self.page.evaluate('document.documentElement.scrollWidth'),width)
                 self.assertTrue(self.page.locator('#armor-val').is_visible())
                 self.page.screenshot(path=str(results/f'folder-hud-{width}x{height}.png'))
-        for name,modal in [('Инвентарь','inventory-modal'),('Гардероб','custom-modal'),('Карта','map-modal'),('Соседи','friends-modal'),('Архив рейдов','raid-archive-modal'),('Архив персонала','staff-archive-modal')]:
+        for name,modal in [('Инвентарь','inventory-modal'),('Соседи','friends-modal'),('Архив рейдов','raid-archive-modal'),('Архив персонала','staff-archive-modal')]:
             button=nav.get_by_role('button',name=name,exact=True)
             button.click()
             self.assertTrue(self.page.locator(f'#{modal}').is_visible())
@@ -2346,7 +2352,7 @@ class GameTests(unittest.TestCase):
             self.assertEqual(nav.locator('[aria-pressed="true"]').count(),1)
             self.page.keyboard.press('Escape')
             self.page.wait_for_function('()=>!document.querySelector(".center-nav [aria-pressed=true]")')
-        nav.get_by_role('button',name='Задания',exact=True).click()
+        self.page.locator('.room-tasks-action').click()
         self.assertTrue(self.page.locator('#tasks-modal').is_visible())
         self.page.keyboard.press('Escape')
         nav.get_by_role('button',name='Рейд',exact=True).click()

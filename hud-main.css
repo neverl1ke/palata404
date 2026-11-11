@@ -9,12 +9,14 @@ body .hospital-hud .hud-tabs{display:flex!important;flex-direction:row!important
 body .hospital-hud .hud-tabs .hud-menu-tab{position:relative!important;display:flex!important;align-items:center;justify-content:center;width:auto!important;max-width:none!important;height:98%!important;min-height:0!important;flex:1 1 0%!important;margin:0!important;align-self:end;padding:.2cqw .25cqw!important;transform:none!important;font-size:1.06cqw!important;line-height:1.05!important;box-sizing:border-box;white-space:normal;text-align:center;background:#d9c5a4 url('hud-art/hud-paper-composition.webp') 34.43% 12.46%/322.666% 902.77%;border:1px solid #8a6242;border-radius:10px 10px 0 0;box-shadow:0 1px 3px #0008;color:#291e14}
 .hospital-hud .hud-tabs .hud-menu-tab span{font-size:inherit!important;line-height:inherit!important;position:static!important;transform:none!important;display:block;white-space:normal;color:#291e14!important}
 .hospital-hud .hud-menu-tab:disabled{cursor:default;opacity:.65}
-.hospital-hud #nav-map-btn{display:flex!important}
 .hospital-hud .hud-header-actions{display:flex;gap:.2cqw;width:10.2%;height:100%;align-items:center;flex:none;border-left:1px solid #a17a52;padding-left:.5cqw}
 .hospital-hud .hud-header-actions .nav-icon-btn{background:none;border:0;box-shadow:none;min-width:0;min-height:0;width:33%;height:75%;padding:.2cqw}
 .hospital-hud .hud-header-actions img{width:2cqw;height:2cqw;filter:sepia(.7)}
 .hospital-hud .hud-main{position:absolute;inset:0;height:100%;margin:0;width:100%;display:block;pointer-events:none}
 .hospital-hud .hud-patient-board{position:absolute;left:.6%;top:7.4%;height:90%;width:calc(90cqh * 971 / 1620);display:block;padding:0;margin:0;overflow:visible;border:0;border-radius:0;container-type:inline-size;isolation:isolate;box-shadow:none;background:url('hud-art/hud-reference-card.webp') center/100% 100% no-repeat;pointer-events:auto;color:#2b221b}
+/* Reuse the approved weapon sheet's actual paper grain inside the chart.
+   Its metal rim stays outside the paper boundary; live fields stay above it. */
+.hospital-hud .hud-patient-board::before{content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;background:url('assets/ui/wardrobe/clipboard-v2/board-original.png') center/180% 180% no-repeat;mix-blend-mode:multiply;opacity:.58;mask:url('hud-art/patient-paper-mask.svg') center/100% 100% no-repeat}
 .hud-patient-board .hud-field{position:absolute;left:calc(var(--x) / 971 * 100%);top:calc(var(--y) / 1620 * 100%);width:calc(var(--w) / 971 * 100%);font-size:calc(var(--font) / 971 * 100cqw);font-weight:400;line-height:1.06;text-align:left;margin:0;padding:0;border:0;border-radius:0;background:none;box-shadow:none;color:#2b221b;text-shadow:none;white-space:nowrap;box-sizing:border-box}
 .hud-patient-board .hud-centered{text-align:center}
 .hud-patient-board .hud-institution-title{line-height:1.08}
@@ -66,7 +68,7 @@ body .hospital-hud .hud-tabs .hud-menu-tab{position:relative!important;display:f
 .hud-photo{left:62.7%;top:15.06%;width:22.5%;height:13.1%;clip-path:polygon(5% 0%,99% 2.8%,93% 98%,0% 96%)}
 .hud-photo #hud-portrait{top:-1%;left:-110%;width:320%;transform:rotate(2deg)}
 .hud-photo-stamp{left:81.3%;top:21.5%;width:14.1%;height:8.5%}
-.hud-patient-board .hud-control-title{background:#e0cdbc url('hud-art/control-heading-patch.svg') center/100% 100% no-repeat;letter-spacing:calc(3 / 971 * 100cqw)}
+.hud-patient-board .hud-control-title{background:#eadcc6 url('hud-art/control-heading-patch.svg') center/100% 100% no-repeat;background-blend-mode:multiply;letter-spacing:calc(3 / 971 * 100cqw)}
 .hud-meter-trace{left:23.2%;top:37.6%;width:24%;height:3%}
 .hud-meter-energy{left:65.3%;width:25.7%}
 .hud-patient-board .hud-meter-value{border:0;background:none}
@@ -84,7 +86,7 @@ body .hospital-hud .hud-tabs .hud-menu-tab{position:relative!important;display:f
  body .hospital-hud.game-viewport{--mobile-board-width:min(470px,calc(100vw - 24px));--mobile-board-height:calc(var(--mobile-board-width) * 1620 / 971);width:100%;height:calc(166px + 100vw * 9 / 16 + var(--mobile-board-height) + 190px);min-height:100dvh;max-width:none;max-height:none;container-type:size;background:#292018!important}
  .hospital-hud .hud-topbar{inset:8px 8px auto;width:calc(100% - 16px);height:148px;box-sizing:border-box;padding:6px;display:grid;grid-template-columns:1fr 100px;grid-template-rows:30px 96px;gap:6px}
  .hospital-hud .hud-brand{width:auto;font-size:20px;text-align:left;padding-left:6px}
- body .hospital-hud .hud-tabs{grid-column:1/-1;grid-row:2;display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr));grid-template-rows:repeat(2,44px);gap:4px;align-items:stretch!important}
+ body .hospital-hud .hud-tabs{grid-column:1/-1;grid-row:2;display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:repeat(2,44px);gap:4px;align-items:stretch!important}
  body .hospital-hud .hud-tabs .hud-menu-tab{height:44px!important;min-height:44px!important;padding:3px!important;font-size:11px!important;align-self:stretch;border-radius:6px}
  .hospital-hud .hud-header-actions{grid-column:2;grid-row:1;width:100px;padding-left:4px;box-sizing:border-box}
  .hospital-hud .hud-header-actions img{width:22px;height:22px}

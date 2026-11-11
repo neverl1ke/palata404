@@ -260,7 +260,7 @@ class RoomSceneTests(unittest.TestCase):
         action = self.page.locator('.room-tasks-action')
         action.hover(); self.page.wait_for_timeout(360)
         self.assertGreater(float(self.page.locator('.room-task-corner').evaluate('e=>getComputedStyle(e).opacity')), .95)
-        for entry in [action, self.page.locator('.hud-task'), self.page.locator('[data-nav-modal="tasks-modal"]')]:
+        for entry in [action, self.page.locator('.hud-task')]:
             entry.click()
             self.assertTrue(self.page.locator('#tasks-modal').is_visible())
             self.assertIn('Задания в разработке', self.page.locator('#tasks-modal').inner_text())

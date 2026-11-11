@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="document-system.css?v=9109738af394">
     <link rel="stylesheet" href="game-responsive.css?v=20261109">
     <link rel="stylesheet" href="wardrobe-responsive.css?v=20261109">
-    <link rel="stylesheet" href="hud-main.css?v=2c8c076c510f">
+    <link rel="stylesheet" href="hud-main.css?v=4baedda98f19">
     <link rel="stylesheet" href="room-scene.css?v=12dcf6d78c79">
 </head>
 <body>
@@ -24,7 +24,7 @@
 
     <!-- Контейнер для строгого збереження пропорцій кімнати 16:9 -->
     <div class="game-viewport hospital-hud" data-assets-ready="false">
-      <header class="hud-topbar top-nav"><button class="hud-brand" onclick="openDossier()">ПАЛАТА 404</button><nav class="hud-tabs center-nav" aria-label="Игровое меню"><button type="button" class="hud-menu-tab nav-icon-btn" data-nav-modal="inventory-modal item-info-modal" onclick="openInventory()" aria-label="Инвентарь"><span>Инвентарь</span></button><button type="button" class="hud-menu-tab nav-icon-btn" data-nav-modal="custom-modal" onclick="openCustomization()" aria-label="Гардероб"><span>Гардероб</span></button><button type="button" class="hud-menu-tab nav-icon-btn" id="nav-map-btn" data-nav-modal="map-modal" onclick="toggleMapModal(true)" aria-label="Карта"><span>Карта</span></button><button type="button" class="hud-menu-tab nav-icon-btn" data-nav-modal="tasks-modal" onclick="openTasks()" aria-label="Задания"><span>Задания</span></button><button type="button" class="hud-menu-tab nav-icon-btn" id="nav-raid-btn" data-nav-modal="nurse-battle-modal universal-dossier-modal nurse-victory-modal" onclick="handleRaidButtonAction()" aria-label="Рейд"><span>Рейд</span></button><button type="button" class="hud-menu-tab nav-icon-btn" data-nav-modal="friends-modal" onclick="openFriends()" aria-label="Соседи"><span>Соседи</span></button><button type="button" class="hud-menu-tab nav-icon-btn" id="nav-archive-btn" data-nav-modal="raid-archive-modal raid-archive-confirm" onclick="openRaidArchive()" aria-label="Архив рейдов"><span>Архив рейдов</span></button><button type="button" class="hud-menu-tab nav-icon-btn" id="nav-staff-btn" data-nav-modal="staff-archive-modal" onclick="openStaffArchive()" aria-label="Архив персонала"><span>Архив персонала</span></button></nav><div class="hud-header-actions top-right-group"><button class="nav-icon-btn" onclick="alert('Нет новых уведомлений')" aria-label="Уведомления"><img class="game-icon" src="assets/icons/bell.svg" alt="" aria-hidden="true"></button><button class="nav-icon-btn" onclick="alert('Почтовый ящик пуст')" aria-label="Почта"><img class="game-icon" src="assets/icons/mail.svg" alt="" aria-hidden="true"></button><button class="nav-icon-btn" onclick="openSettings()" aria-label="Настройки"><img class="game-icon" src="assets/icons/gear.svg" alt="" aria-hidden="true"></button></div></header>
+      <header class="hud-topbar top-nav"><button class="hud-brand" onclick="openDossier()">ПАЛАТА 404</button><nav class="hud-tabs center-nav" aria-label="Игровое меню"><button type="button" class="hud-menu-tab nav-icon-btn" data-nav-modal="inventory-modal item-info-modal" onclick="openInventory()" aria-label="Инвентарь"><span>Инвентарь</span></button><button type="button" class="hud-menu-tab nav-icon-btn" id="nav-raid-btn" data-nav-modal="nurse-battle-modal universal-dossier-modal nurse-victory-modal" onclick="handleRaidButtonAction()" aria-label="Рейд"><span>Рейд</span></button><button type="button" class="hud-menu-tab nav-icon-btn" data-nav-modal="friends-modal" onclick="openFriends()" aria-label="Соседи"><span>Соседи</span></button><button type="button" class="hud-menu-tab nav-icon-btn" id="nav-archive-btn" data-nav-modal="raid-archive-modal raid-archive-confirm" onclick="openRaidArchive()" aria-label="Архив рейдов"><span>Архив рейдов</span></button><button type="button" class="hud-menu-tab nav-icon-btn" id="nav-staff-btn" data-nav-modal="staff-archive-modal" onclick="openStaffArchive()" aria-label="Архив персонала"><span>Архив персонала</span></button></nav><div class="hud-header-actions top-right-group"><button class="nav-icon-btn" onclick="alert('Нет новых уведомлений')" aria-label="Уведомления"><img class="game-icon" src="assets/icons/bell.svg" alt="" aria-hidden="true"></button><button class="nav-icon-btn" onclick="alert('Почтовый ящик пуст')" aria-label="Почта"><img class="game-icon" src="assets/icons/mail.svg" alt="" aria-hidden="true"></button><button class="nav-icon-btn" onclick="openSettings()" aria-label="Настройки"><img class="game-icon" src="assets/icons/gear.svg" alt="" aria-hidden="true"></button></div></header>
       <main class="main-layout hud-main"><div class="room-scene" aria-label="Палата" data-paused="false">
  <div class="room-curtain-clear" aria-hidden="true"></div><div class="room-cloth-clear" aria-hidden="true"></div>
  <div class="room-window-glass room-window-left" aria-hidden="true"><div class="room-window-scene"></div><div class="room-outside-bounce"></div><div class="room-distant-light room-distant-left-low"></div></div>
@@ -317,7 +317,7 @@
     <script src="female-hair-fit.js?v=58c1a5809e8f" defer></script>
     <script src="male-hair-fit-data.js?v=99f75a9f213d" defer></script>
     <script src="male-hair-fit.js?v=bf7735c664ca" defer></script>
-    <script src="paper-doll.js?v=53e1c3367409" defer></script>
+    <script src="paper-doll.js?v=30916604be8b" defer></script>
     <script src="weapon-system.js?v=a9a2eb1e3091" defer></script>
     <script src="weapon-runtime.js?v=d5baae7ec4db" defer></script>
     <script src="wardrobe.js?v=fcc614fcb47c" defer></script>
@@ -704,7 +704,7 @@
 </div>
 
 <script type="module" src="avatar-core/game-preview.mjs?v=45a2de687ef4"></script>
-    <script src="hud-main.js?v=e5e386429d44" defer></script>
+    <script src="hud-main.js?v=ce6f2b2fe3dc" defer></script>
     <script src="room-projection.js?v=baa9f2b97440" defer></script>
 <script src="room-handles.js?v=240c55910e56" defer></script>
 <script src="room-atmosphere.js?v=963a4545cadb" defer></script>

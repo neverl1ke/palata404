@@ -108,6 +108,7 @@ function commitPaperDollSelection() {
     syncLegacyPaperDollSelection();
     paperDollSaveFailed = !saveGameProgress();
     updateCharacterLayers();
+    window.PalataHUD?.refresh();
     renderWardrobe();
 }
 

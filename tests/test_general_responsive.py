@@ -40,7 +40,6 @@ class GeneralResponsiveTests(unittest.TestCase):
         for width, height in [(844,390), (667,375), (568,320), (1024,600), (1280,480), (1440,900)]:
             with self.subTest(width=width, height=height):
                 self.page.set_viewport_size({'width':width,'height':height})
-                self.page.evaluate("document.getElementById('nav-map-btn').style.display='flex'")
                 self.assert_inside('.top-nav')
                 self.assert_inside('.top-right-group')
                 self.assert_inside('.center-nav')

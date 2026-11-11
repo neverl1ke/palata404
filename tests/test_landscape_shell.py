@@ -39,7 +39,8 @@ class LandscapeShellTests(unittest.TestCase):
                     self.game.locator(open_selector).first.click()
                     self.assertTrue(self.game.locator(modal).is_visible())
                     self.game.locator(modal+' .btn-close-mini').click()
-                self.game.locator('[onclick="openCustomization()"]').click()
+                self.game.locator('.room-cabinet-action').click()
+                self.game.locator('#custom-modal').wait_for(state='visible')
                 self.assertTrue(self.game.locator('.archive-wardrobe').is_visible())
                 # Every physical size retains the same three-column wardrobe.
                 self.assertEqual(self.game.locator('.wardrobe-layout').evaluate('e=>getComputedStyle(e).gridTemplateColumns.split(" ").length'),3)
@@ -64,7 +65,8 @@ class LandscapeShellTests(unittest.TestCase):
     def test_clipboard_text_rows_do_not_overlap_for_all_weapons(self):
         for width,height in [(568,320),(667,375),(844,390)]:
             self.page.set_viewport_size({'width':width,'height':height})
-            self.game.locator('[onclick="openCustomization()"]').click()
+            self.game.locator('.room-cabinet-action').click()
+            self.game.locator('#custom-modal').wait_for(state='visible')
             cards=self.game.locator('[data-wardrobe-item]')
             for i in range(cards.count()):
                 cards.nth(i).click()

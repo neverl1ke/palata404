@@ -27,7 +27,9 @@
     "floor": "Four damp bare footprints appear successively along a perspective path, then evaporate. Strides and left/right separation are visibly wider; original sole orientation is preserved.",
     "fabrics": "The original curtain is one continuous photo crop up to the fabric attachments; its restored background has a feathered top blend. Robe outer edge excludes baked shadow pixels. Each opaque face and soft cast shadow shares one plane. A shared 54-second cycle moves curtain, then robe, then bag, with quiet gaps and no overlapping movement.",
     "corridor": "Sharp fixed corridor behind the transparent door glass, with independent rare warm voltage dips in a 47-second cycle; minimum supply 0.62, never off.",
-    "tripButton": "The original room photo supplies the button and wall pixels, so the fixture follows room exposure exactly. A registered transparent overlay adds only the red-circle hover glow; no scaled opaque wall crop is placed above the room light."
+    "tripButton": "The original room photo supplies the button and wall pixels, so the fixture follows room exposure exactly. A registered transparent overlay adds only the red-circle hover glow; no scaled opaque wall crop is placed above the room light.",
+    "patientPaper": "The approved weapon clipboard paper texture is multiplied into the existing patient chart through a softly feathered paper-only mask. Original metal rim, diagram registration, live fields, portrait and seal remain separate.",
+    "patientStats": "Damage, armor and critical multiplier describe the currently visible saved patient or combat loadout. Wardrobe drafts do not change the chart until applied; combat calculations still use the combat loadout."
   },
   "files": [
     {
@@ -129,6 +131,11 @@
       "path": "original-handle-right.svg",
       "bytes": 2698,
       "sha256": "bfa97e2a07e2c0153bc6d21db8ed2d303fddd487ac1c2eee184d21ef6ff7d140"
+    },
+    {
+      "path": "patient-paper-mask.svg",
+      "bytes": 281,
+      "sha256": "7469505cc93928c0a70e47c5e98012c9eb80315c2c602e3ff603539d8c6dcd56"
     },
     {
       "path": "portrait-foreground-reference.svg",
