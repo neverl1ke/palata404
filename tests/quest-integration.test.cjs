@@ -22,3 +22,19 @@ test('legacy incomplete battle keeps a recovery copy and no invented reward',()=
 test('repeated real raids have distinct IDs, payouts once per raid, and do not open C',()=>{
  const g=game();nurse(g);const id=g.run('currentBattleSession.id');g.run('bossCurrentHp=0;handleVictory()');const silver=g.run('stats.silver');a.equal(!!g.state().flags.unlockC,false);g.click('action','boss:nurse');a.notEqual(g.run('currentBattleSession.id'),id);g.run('bossCurrentHp=0;handleVictory()');a.ok(g.run('stats.silver')>silver);a.equal(g.run('readRaidArchive().length'),2);
 });
+
+test('damaged live checkpoint is backed up without crashing or paying a reward',()=>{
+ const g=game();nurse(g);const key='palata404_quest_test_v1:quest_progress';const raw=JSON.parse(g.storage.get(key));raw.raid.counters={broken:true};g.storage.set(key,JSON.stringify(raw));const r=game(Object.fromEntries(g.storage));a.equal(r.run('isBattleActive'),false);a.equal(r.state().room,'ward404');a.equal(r.storage.get('palata404_quest_test_v1:quest_progress_recovery'),JSON.stringify(raw));
+});
+test('stale pre-victory checkpoint reconciles with reward ledger without paying twice',()=>{
+ const g=game();nurse(g);const key='palata404_quest_test_v1:quest_progress',checkpoint=g.storage.get(key);g.run('bossCurrentHp=0;handleVictory()');const silver=g.run('stats.silver');g.storage.set(key,checkpoint);const r=game(Object.fromEntries(g.storage));a.equal(r.run('isBattleActive'),false);a.equal(r.run('stats.silver'),silver);
+});
+test('interrupted reward journal retries its snapshot once after reload',()=>{
+ const g=game();nurse(g);g.failedKeys.add('palata404_quest_test_v1:palata404_stats');g.run('bossCurrentHp=0;handleVictory()');const silver=g.run('stats.silver');a.ok(g.storage.has('palata404_quest_test_v1:palata404_pending_battle_reward'));const r=game(Object.fromEntries(g.storage));a.equal(r.run('stats.silver'),silver);a.equal(r.run('isBattleActive'),false);const r2=game(Object.fromEntries(r.storage));a.equal(r2.run('stats.silver'),silver);
+});
+test('elapsed raid deadline restores as timeout, with no new reward',()=>{
+ const g=game();nurse(g);const key='palata404_quest_test_v1:quest_progress',raw=JSON.parse(g.storage.get(key));raw.raid.endsAt=1;g.storage.set(key,JSON.stringify(raw));const silver=g.run('stats.silver');const r=game(Object.fromEntries(g.storage));a.equal(r.run('isBattleActive'),false);a.equal(r.state().room,'ward404');a.equal(r.run('stats.silver'),silver);a.equal(r.run('readRaidArchive()[0].outcome'),'timeout');
+});
+test('reload resumes magazine refill without granting immediate ammo',()=>{
+ const g=game();nurse(g);g.run('battleWeaponProfile={...getBattleAttackProfile(),capacity:3,reload:1};battleWeaponAmmo=1;startWeaponReload()');const r=game(Object.fromEntries(g.storage));a.equal(r.run('battleWeaponAmmo'),1);r.advance(999);a.equal(r.run('battleWeaponAmmo'),1);r.advance(1);a.equal(r.run('battleWeaponAmmo'),3);
+});

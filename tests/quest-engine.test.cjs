@@ -31,3 +31,12 @@ test('B needs the complete patient route; C needs both independent sources and B
  s.flags.route=true;s.flags.markerA=true;s.flags.markerB=true;act(s,'unlockB');move(s,'nurse');act(s,'boss:nurse');run(s,{type:'battleEnd',victory:true});a.equal(!!s.flags.unlockC,false);
  move(s,'B');run(s,{type:'interact',id:'unlockC',choice:'record'},false);s.flags.record=true;run(s,{type:'interact',id:'unlockC',choice:'record'},false);s.flags.observation=true;act(s,'unlockC');a.equal(s.flags.unlockC,true);
 });
+test('all six jobs complete through their ordered objects; every repeat starts clean',()=>{
+ for(const id of Object.keys(E.jobs)){
+  let s=E.initial();const job=E.jobs[id];move(s,job.giver);act(s,'accept:'+id);
+  const places={tag:'procedure',copies:'procedure',linen:'linen',deliver:'ward406',bell407:'ward407',bell408:'ward408',log:'doctor',difference:'A'};
+  for(const step of job.steps){if(step==='difference'){move(s,'ward404');sw(s);}if(s.room!==places[step])move(s,places[step]);act(s,'job:'+step);s=E.restore(JSON.parse(JSON.stringify(s)));}
+  if(s.mode==='trip'){move(s,'ward404');sw(s);}if(s.room!==job.giver)move(s,job.giver);act(s,'claim:'+id);a.equal(s.materials,2);act(s,'claim:'+id,false);
+  if(job.repeat){act(s,'accept:'+id);a.equal(E.ready(s,id),false);a.deepEqual(s.jobs[id].done,{});}else act(s,'accept:'+id,false);
+ }
+});

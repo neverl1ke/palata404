@@ -23,10 +23,10 @@ function checkpoint(){
 }
 function resumeRaid(r){
  if(!state.battle)return;
- const completed=r?.session?.id&&(lastBattleResult?.battleId===r.session.id||readRaidArchive().some(x=>x.battleId===r.session.id));
- if(completed){if(lastBattleResult?.battleId===r.session.id&&lastBattleResult.outcome==='victory'&&state.battle==='doctor')state.flags.doctorWon=true;state.battle=null;return;}
+ const completed=r?.session?.id&&(lastBattleResult?.battleId===r.session.id?lastBattleResult:readRaidArchive().find(x=>x.battleId===r.session.id));
+ if(completed){if(completed.outcome==='victory'&&state.battle==='doctor')state.flags.doctorWon=true;if(completed.outcome!=='victory')state.room='ward404';state.battle=null;return;}
  const finite=n=>Number.isFinite(n)&&n>=0;
- if(!r||r.version!==1||r.owner!==raidArchiveOwnerId||r.boss!==state.battle||r.session?.bossKey!==r.boss||typeof r.session?.id!=='string'||r.session.finished||!Array.isArray(r.session.events)||!Array.isArray(r.members)||!Array.isArray(r.inventory)||![r.hp,r.maxHp,r.playerHp,r.endsAt,r.cooldown,r.ammo,r.reloadAt].every(finite)||!r.profile||!finite(r.profile.cooldown)||!finite(r.profile.capacity)){
+ if(!r||r.version!==1||r.owner!==raidArchiveOwnerId||r.boss!==state.battle||r.session?.bossKey!==r.boss||typeof r.session?.id!=='string'||r.session.finished||!Array.isArray(r.session.events)||!Array.isArray(r.members)||!Array.isArray(r.inventory)||![r.hp,r.maxHp,r.playerHp,r.endsAt,r.cooldown,r.ammo,r.reloadAt].every(finite)||!r.profile||!finite(r.profile.cooldown)||!finite(r.profile.capacity)||!Number.isSafeInteger(r.session.serial)||r.session.serial<0||!r.session.events.every(x=>typeof x==='string'&&x.startsWith(r.session.id+':'))||!Array.isArray(r.counters)||!r.counters.every(x=>Array.isArray(x)&&x.length===2&&typeof x[0]==='string'&&x[0].startsWith(r.session.id+':')&&finite(x[1]))||!r.members.every(x=>x&&raidMembers.some(m=>m.id===x.id)&&finite(x.damage)&&x.metrics&&['damageTaken','healing','turns','madnessStart'].every(k=>x.metrics[k]===null||finite(x.metrics[k])))||!r.inventory.every(x=>x&&typeof x==='object'&&!Array.isArray(x))||r.hp>r.maxHp||r.maxHp<=0||!['damage','reload','critical','miss','criticalMultiplier'].every(k=>finite(r.profile[k]))){
   // Keep the original bytes available before migrating a legacy/incomplete battle.
   if(stored&&!safeStorageSet('quest_progress_recovery',stored)){protectedSave=true;saveFailed=true;}
   state.battle=null;state.room='ward404';notice='Старый рейд не содержит контрольной точки. Копия сохранения оставлена для восстановления.';return;
@@ -106,5 +106,5 @@ const priorRoom=window.PalataRoom;window.PalataRoom=Object.freeze({...priorRoom,
 tasks.addEventListener('click',e=>{if(e.target.dataset.taskMode){taskMode=e.target.dataset.taskMode;renderTasks();}if(e.target.dataset.questTab){tab=e.target.dataset.questTab;renderTasks();}});
 document.querySelectorAll('[data-nav-modal="tasks-modal"]').forEach(b=>{b.setAttribute('aria-label','Задания');b.querySelector('span').textContent='Задания';});document.querySelector('.hud-task span').textContent='Задания · тест';
 const banner=document.createElement('div');banner.className='quest-banner';banner.textContent='ТЕСТ ЗАДАНИЙ · отдельные сохранения · сюжет и баланс не утверждены';document.body.append(banner);
-resumeRaid(raw?.raid);save();refresh();window.PalataQuestPrototype=Object.freeze({snapshot:()=>JSON.parse(JSON.stringify(state))});
+resumeRaid(raw?.raid);locationView=state.room!=='ward404'&&!state.battle;save();refresh();window.PalataQuestPrototype=Object.freeze({snapshot:()=>JSON.parse(JSON.stringify(state))});
 })();
