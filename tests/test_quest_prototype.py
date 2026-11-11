@@ -48,7 +48,7 @@ class QuestBrowser(unittest.TestCase):
         p.locator('#quest-list .quest-card').first.get_by_role('button',name='Перейти к заданию').click()
         p.locator('[data-scene-room="A"]').wait_for(state='visible')
         self.assertTrue(p.locator('#map-modal').is_hidden())
-        p.locator('[data-action="inspectDoor"]').click();p.locator('[data-choice="bench"]').click()
+        p.locator('[data-action="inspectDoor"]').click();self.assertIn('choice-object',p.locator('[data-choice="door"]').get_attribute('class'));p.locator('[data-choice="bench"]').click()
         self.assertFalse(state()['flags'].get('doorKnown',False))
         p.locator('[data-choice="door"]').focus();p.locator('[data-choice="door"]').press('Enter')
         p.reload();p.wait_for_function('!!window.PalataQuestPrototype');self.assertEqual(state()['room'],'A');self.assertEqual(state()['interactions']['inspectDoor'],1)
