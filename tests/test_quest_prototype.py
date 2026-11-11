@@ -83,6 +83,6 @@ class QuestBrowser(unittest.TestCase):
         room('stairs');action('exit');before=state();action('descend');self.assertEqual(state(),before)
         p.reload();p.wait_for_function('!!window.PalataQuestPrototype');self.assertEqual(state()['room'],'stairs');self.assertTrue(state()['flags']['exit'])
         room('ward404');p.locator('.quest-location').get_by_role('button',name='Выйти из Трипа',exact=True).click();room('stairs');self.assertEqual(p.locator('[data-action="descend"]').count(),0)
-        p.set_viewport_size({'width':844,'height':390});p.goto(base+'/quest-play.html');f=p.frame_locator('#game-canvas');f.locator('#nav-map-btn').click();f.locator('[data-room="gym"]').click();f.locator('[data-scene-room="gym"]').wait_for(state='visible');p.screenshot(path=str(out/'mobile-gym.png'))
+        p.set_viewport_size({'width':844,'height':390});p.goto(base+'/quest-play.html');f=p.frame_locator('#game-canvas');f.get_by_role('button',name='Вернуться к карте',exact=True).click();f.locator('[data-room="gym"]').click();f.locator('[data-scene-room="gym"]').wait_for(state='visible');p.screenshot(path=str(out/'mobile-gym.png'))
         self.assertEqual(errors,[]);ctx.close()
 if __name__=='__main__':unittest.main()
