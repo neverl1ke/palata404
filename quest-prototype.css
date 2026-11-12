@@ -151,3 +151,6 @@
 /* Quest rooms cover the legacy HUD; their inventory must remain above the room. */
 #inventory-modal{z-index:850!important}
 #item-info-modal{z-index:860!important}
+
+/* Journal must remain usable above fullscreen locations and the inventory. */
+#tasks-modal{z-index:900!important}

@@ -15,3 +15,5 @@ for(const [id,job] of Object.entries(E.jobs))test('Complete '+id+' with cargo, r
 test('Inventory and item details stack above fullscreen quest room',()=>{const css=fs.readFileSync('quest-prototype.css','utf8');function z(id){const rule=css.match(new RegExp('#'+id+'\\{[^}]*z-index:(\\d+)'));a.ok(rule,id);return Number(rule[1]);}a.ok(z('inventory-modal')>z('quest-location-screen'));a.ok(z('item-info-modal')>z('inventory-modal'));});
 
 test("Modal override beats legacy important rule",()=>{const css=fs.readFileSync("quest-prototype.css","utf8");a.match(css,/#inventory-modal\{z-index:850!important\}/);a.match(css,/#item-info-modal\{z-index:860!important\}/);});
+
+test('Task journal clears fullscreen room and inventory',()=>{const css=fs.readFileSync('quest-prototype.css','utf8');a.match(css,/#tasks-modal\{z-index:900!important\}/);});
