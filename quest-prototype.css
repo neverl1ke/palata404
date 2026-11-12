@@ -1,0 +1,153 @@
+.quest-banner{position:fixed;bottom:0;left:0;right:0;background:#502317;color:#fff4db;text-align:center;font:12px/1.6 sans-serif;z-index:500;pointer-events:none}.quest-sheet{width:min(760px,94vw)!important;max-height:86vh;overflow:auto;background:#e9dfc5!important;color:#30261e!important;padding:22px!important}.quest-sheet h3,.quest-sheet h4,.quest-sheet p{color:#30261e!important}.quest-sheet button,.quest-floor button{border:1px solid #695743;border-radius:4px;background:#f4ead2;color:#30261e;padding:10px 14px;cursor:pointer;font:inherit;min-height:42px}.quest-sheet button:focus-visible,.quest-floor button:focus-visible{outline:3px solid #a6482c;outline-offset:2px}.quest-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}.quest-tabs [aria-pressed=true]{background:#553b28;color:#fff}.quest-card{border-bottom:1px solid #ae9b7d;padding:10px 0}.quest-card h4{margin:0 0 8px}.quest-card p{margin:0;line-height:1.5}.quest-note{font-size:12px;line-height:1.5}.quest-floor{overflow:auto;max-height:70vh;color:#30261e;padding:16px}.quest-destinations,.quest-actions{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}.quest-floor h3{margin:0 0 12px}.quest-floor p{line-height:1.5}.quest-floor .quest-actions button{background:#ead6b2}.quest-floor button:disabled{opacity:.5;cursor:not-allowed}
+
+/* Exact revision 04 image, cropped by layout only; source pixels stay unchanged. */
+.quest-map-sheet{background:#f4f0e5!important;color:#30261e!important;padding:12px!important}
+.quest-floor{display:block!important;overflow:auto!important;max-height:none;min-height:0;padding:10px!important;box-sizing:border-box}
+.quest-floor>h3{font-size:17px;margin:0 0 6px}.quest-floor>p{font-size:12px;margin:6px 0}
+.quest-blueprint{position:relative;width:100%;aspect-ratio:1610/850;margin:12px 0;overflow:hidden;background:#f4f0e5;border:1px solid #aab1a4;border-radius:3px;isolation:isolate}
+.quest-blueprint-image{position:absolute!important;max-width:none!important;width:136.6459627%!important;height:auto!important;left:-4.3478261%;top:-32.9411765%;pointer-events:none;user-select:none}
+.quest-plan-origin-mask{position:absolute;left:3.3%;top:41.7%;width:6.5%;height:2.8%;background:#fffdf6;pointer-events:none}
+.quest-floor .quest-map-pin{position:absolute;transform:translate(-50%,-50%);display:grid;place-items:center;width:32px;height:32px;min-height:32px;padding:0;border-radius:50%;border:2px solid #fff;box-shadow:0 1px 5px #0008;background:#236b47;color:#fff;font:700 11px/1 sans-serif;z-index:2;opacity:1}
+.quest-floor .quest-map-pin.is-current{background:#235a9c;outline:3px solid #87baff;outline-offset:2px;cursor:default}
+.quest-floor .quest-map-pin.is-locked{background:#7f3229;color:#fff}
+.quest-floor .quest-map-pin.is-distant{background:#7c837c;color:#fff}
+.quest-floor .quest-map-pin.is-reachable:hover{background:#153f29;transform:translate(-50%,-50%) scale(1.15)}
+.quest-floor .quest-map-pin:focus-visible{outline:3px solid #1565c0;outline-offset:3px}
+.quest-map-legend{color:#4c594c;font-size:11px!important}
+.quest-floor .quest-actions{margin:6px 0 10px}.quest-floor>h4{margin:8px 0}
+@media(max-width:700px){.quest-floor .quest-map-pin{width:27px;height:27px;min-height:27px;font-size:9px}.quest-floor>p{font-size:11px}}
+.quest-blueprint{max-width:calc((100dvh - 240px)*1.894);margin:12px auto}
+/* Keep the plan and room actions visible together in the landscape shell. */
+@media(min-width:901px){
+.quest-floor{display:grid!important;grid-template-columns:minmax(0,1fr) 220px;grid-template-rows:auto auto auto auto auto 1fr auto;gap:8px 14px;align-content:start}
+.quest-floor>h3{grid-column:1/-1;grid-row:1}.quest-floor>p{grid-column:1/-1;grid-row:2}
+.quest-floor>.quest-blueprint{grid-column:1;grid-row:3/7;max-width:100%;margin:0;align-self:start}
+.quest-floor>.quest-map-legend{grid-column:1/-1;grid-row:7}
+.quest-floor>h4{grid-column:2;grid-row:3;align-self:start}
+.quest-floor>.quest-actions{grid-column:2;grid-row:4;align-content:start}
+.quest-floor>button{grid-column:2;grid-row:5;align-self:start}
+.quest-floor>.quest-note{grid-column:2;grid-row:6;align-self:start}
+}
+.quest-locked-zone{position:absolute;top:3%;height:90%;background:repeating-linear-gradient(135deg,#b7232344 0 7px,#b7232311 7px 15px);border:2px solid #a32a2a88;pointer-events:none;z-index:1}.quest-locked-zone.zone-B{left:35.4%;width:29.8%}.quest-locked-zone.zone-C{left:65.2%;width:32%}.quest-floor .quest-map-pin.is-target{outline:4px solid #ffb300;outline-offset:4px;box-shadow:0 0 0 7px #ffb30055}.quest-floor>.quest-note{background:#fff5d6;border-left:4px solid #be8128;padding:8px;font-size:13px}.quest-card button{margin-top:8px}.quest-card p+p{margin-top:8px}
+.quest-locked-zone{inset:0;width:100%;height:100%;border:0;clip-path:none}
+.quest-traveller{position:absolute;z-index:5;transform:translate(-50%,-50%);color:#fff;background:#145bb4;border:3px solid #fff;border-radius:50%;width:22px;height:22px;text-align:center;box-shadow:0 0 0 4px #145bb477;pointer-events:none}
+.quest-floor.quest-location{display:flex!important;flex-direction:column;gap:16px;min-height:360px;background:linear-gradient(135deg,#f7f1df,#dcd3bd);padding:24px!important}.quest-location>.quest-actions{display:flex;flex-direction:column;align-items:stretch}.quest-location>button{align-self:flex-start}.quest-location h3{font-size:24px}.quest-floor[aria-busy=true] .quest-map-pin{pointer-events:none}
+/* Existing document components and exact approved source assets, no new emblems or seals. */
+.quest-official-header{display:flex;align-items:center;gap:12px;width:min(650px,72%)}.quest-official-header document-header{width:420px}.quest-official-header document-stamp{font-size:10px}.quest-official-header document-stamp[data-type=seal]{width:62px;flex-shrink:0}.quest-map-sheet>.map-clipboard-header{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:0 8px}.quest-map-sheet #map-title-text{font-size:11px}.quest-map-sheet .btn-close-map{order:3;margin-left:auto}.quest-plan-label{position:absolute;z-index:1;transform:translate(-50%,-100%);max-width:16%;font:700 10px/1.05 'Courier New',monospace;text-align:center;color:#28362b;pointer-events:none;background:#fffdf6c9;padding:2px}.quest-plan-origin-mask{display:none}
+.quest-floor.quest-location{display:grid!important;grid-template-columns:minmax(0,1fr) 280px;gap:14px;padding:8px!important;min-height:430px;background:none}.quest-room-scene{position:relative;isolation:isolate;min-height:430px;overflow:hidden;background:linear-gradient(0deg,#242b25 0%,#485046 25%,#637064 26%,#465449 60%,#8a8f79 61%,#a6a58c 100%);border:5px solid #38372d;box-shadow:inset 0 0 90px #0e1513aa}.quest-room-scene.mode-trip{filter:sepia(.35);background:linear-gradient(#444c46 60%,#242b26 60%)}.scene-architecture{position:absolute;inset:0;z-index:-1;background:repeating-linear-gradient(90deg,transparent 0 19.8%,#1112 20% 20.3%),linear-gradient(160deg,#fff1,transparent 60%)}.scene-window{position:absolute;top:7%;left:6%;width:19%;height:42%;border:8px ridge #706e58;background:repeating-linear-gradient(0deg,transparent 0 30%,#303d38 31% 34%),repeating-linear-gradient(90deg,#adb8a587 0 45%,#303d38 46% 51%);box-shadow:12px 12px 40px #d9deab33}.scene-light{position:absolute;left:54%;top:0;width:2px;height:50px;background:#383829}.scene-light:after{content:'';position:absolute;top:48px;left:-36px;width:76px;height:28px;border-radius:100% 100% 15% 15%;background:#aaa082;box-shadow:0 15px 50px #e4d49f88}.scene-skirt{position:absolute;bottom:17%;left:0;right:0;height:20%;background:repeating-linear-gradient(115deg,#6c6e58 0 49px,#313e35 50px 52px);transform:perspective(200px) rotateX(35deg);opacity:.5}
+.quest-floor .scene-object{position:relative;background:transparent;border:0;border-radius:8px;color:#e4d8ae;padding:6px;min-width:70px;min-height:70px;box-shadow:none;transition:filter .15s,transform .15s}.scene-object svg{display:block;width:100%;height:76px;fill:#7b806c;stroke:#c1bda3;stroke-width:2.5;filter:drop-shadow(4px 8px 3px #1118)}.scene-object span{display:block;background:#252c24e6;color:#f1e7c4;border:1px solid #a0956c;font:12px/1.25 'Courier New',monospace;padding:4px;margin-top:4px}.scene-object:hover,.scene-object:focus-visible{outline:3px solid #f0d589!important;outline-offset:2px;filter:brightness(1.2);transform:translateY(-3px)}.scene-object.is-inspected svg{stroke:#d4dfad;fill:#9b9d70}.scene-object.is-inspected:after{content:'✓';position:absolute;right:4px;top:4px;background:#2c5938;color:white;border-radius:50%;padding:3px}
+.quest-floor .prop{position:absolute;top:28%;width:22%;opacity:.7}.prop-0{left:4%}.prop-1{left:39%}.prop-2{right:3%}.quest-floor .prop svg{height:115px}.quest-floor .prop span{font-size:10px}.scene-paper{padding:12px;display:flex;flex-direction:column;gap:10px;color:#342c21;--paper-edge:18px}.scene-paper h3{margin:0;font-size:20px}.scene-paper p{font-size:12px;line-height:1.4;margin:0}.scene-paper document-stamp[data-type=seal]{width:70px;align-self:flex-end}.scene-paper button{font-size:12px!important;padding:8px!important}.scene-paper document-header .document-header-grid{aspect-ratio:2.7;padding:0}.scene-paper document-header .document-institution{font-size:4cqw!important}.quest-floor .scene-actions{position:relative;margin:0;padding:12px;display:flex;flex-wrap:wrap;gap:10px;align-content:flex-end;min-height:405px;box-sizing:border-box}.scene-actions>.active-object,.scene-actions>.choice-object{flex:1 1 24%;max-width:44%;background:#242e2470;border:1px solid #d4c18a99;align-self:flex-end;z-index:2}.scene-actions>h4,.scene-actions>p{flex:0 0 100%;background:#e7ddbbec;color:#30281d;padding:8px;margin:0;z-index:2;font-size:13px}.scene-actions>h4{align-self:flex-start}.scene-actions>.interaction-feedback:empty{display:none}.scene-actions>button:not(.scene-object){align-self:flex-end;font-size:11px}.quest-floor .scene-actions:has(.choice-object)~*{display:none}.quest-room-scene:has(.choice-object)>.prop{opacity:.2;pointer-events:none}.scene-actions .choice-object[data-object-kind=rail] svg{fill:#918a66}.scene-actions .choice-object[data-object-kind=mat] svg{fill:#616d50}.quest-floor .scene-actions .choice-object[aria-pressed=true]{outline:3px solid #d3e998}
+@media(max-width:900px){.quest-floor.quest-location{grid-template-columns:minmax(0,1fr) 210px}.scene-paper{padding:8px}.scene-paper document-header{display:none}}
+@media(min-width:901px){.quest-floor>.quest-blueprint{max-height:360px;width:100%;aspect-ratio:1610/850;max-width:682px}.quest-floor>.quest-map-legend{position:relative;z-index:3;margin-top:10px;background:#f4f0e5}}
+.quest-room-scene:has(.choice-object) .prop{visibility:hidden}.scene-object[aria-invalid=true]{outline:3px solid #da8065!important}
+/* The hit target is the drawn object. No card/button plate sits over a room image. */
+.quest-floor .scene-actions button.scene-object{background:transparent;border:0;box-shadow:none;padding:4px;max-width:30%;flex:1 1 25%;color:#eee2b5}.quest-floor .scene-actions button.scene-object svg{height:125px;stroke-width:2.2}.quest-floor .scene-actions button.scene-object span{background:#253027b8;border:0;padding:4px;min-height:28px}.quest-floor .scene-actions button.scene-object:hover{background:transparent;filter:brightness(1.3)}.quest-floor .scene-actions button.scene-object:focus-visible{background:transparent;outline:2px dashed #ecd58d!important}.quest-floor .scene-actions .choice-object[data-object-kind=rail] svg{fill:#b4ad8d;stroke:#e2d6b0}.quest-floor .scene-actions .choice-object[data-object-kind=mat] svg{fill:#687856;stroke:#b5ba8c}
+/* Painted scene layer: hit regions coincide with art, instructions stay on real document UI. */
+.quest-floor.quest-location{grid-template-columns:minmax(0,1fr) 285px;align-items:start;min-height:0}
+.quest-room-scene.painted-room{min-height:0;aspect-ratio:3/2;border:3px solid #514737;background:#232822;box-shadow:0 5px 20px #17130d55;overflow:visible}
+.scene-painting{display:block!important;width:100%!important;height:100%!important;max-width:none!important;pointer-events:none;user-select:none}
+.painted-room.mode-trip{filter:none;background:#172023}.painted-room.mode-trip .scene-painting{filter:sepia(.25) saturate(.65) hue-rotate(20deg) brightness(.73)}
+.painted-room .scene-actions{position:absolute;inset:0;min-height:0;padding:0;display:block;margin:0;pointer-events:none}
+.quest-floor .painted-target{position:absolute!important;transform:translate(-50%,-50%);min-width:0;min-height:24px;max-width:none!important;border-radius:12px;border:1px solid transparent;background:transparent!important;padding:0!important;cursor:pointer;pointer-events:auto;z-index:2;box-shadow:none!important;color:#fff}
+.quest-floor .painted-target[hidden]{display:none!important}.quest-floor .painted-target span{position:absolute;left:50%;bottom:-16px;transform:translateX(-50%);white-space:normal;width:max-content;max-width:185px;background:#181f19e8;color:#f4e6c4;font:11px/1.2 Georgia,serif;padding:4px 7px;border:1px solid #b6a77b;border-radius:3px;pointer-events:none}
+.quest-floor .painted-prop span{opacity:0}.quest-floor .painted-prop:hover span,.quest-floor .painted-prop:focus-visible span{opacity:1}
+.quest-floor .painted-target.active-object,.quest-floor .painted-target.choice-object{border:1px solid #dfca8c77;box-shadow:inset 0 0 16px #dfca8c22!important}
+.quest-floor .painted-target:hover,.quest-floor .painted-target:focus-visible{transform:translate(-50%,-50%)!important;outline:2px solid #efd59a!important;outline-offset:0;background:#f6d89b13!important;filter:none}
+.quest-floor .painted-target[aria-invalid=true]{outline:3px solid #c7745a!important;background:#c7745a22!important}
+.quest-floor .painted-target.is-inspected{outline:2px solid #a6bf8b}.scene-live-mark{position:absolute;transform:translate(-50%,-50%);font:bold 15px Georgia;color:#d6ceb9;pointer-events:none;text-shadow:1px 1px #111}
+.scene-paper{max-height:435px;overflow:auto;gap:7px}.scene-paper .scene-instruction{margin:0;font-size:12px;flex:none}.scene-paper h4{font-size:14px}.scene-paper .interaction-feedback:empty{display:none}.scene-paper .scene-paper-choice{background:#dfd2af;border-color:#9a835d}.scene-paper .scene-paper-action{background:#e6d9b8}.scene-paper .scene-instruction[aria-invalid=true]{border:2px solid #9e3c2b}.scene-paper button{flex-shrink:0}.scene-paper document-stamp[data-type=seal]{width:54px}.scene-paper .quest-note{font-size:11px}
+
+.scene-paper-nav{position:sticky;bottom:-12px;display:grid;grid-template-columns:1fr 1fr;gap:4px;background:#dfd0ac;padding:6px 0;z-index:4}.scene-paper-nav button{font-size:10px!important;padding:6px!important}.quest-floor .painted-target.step-done{border:2px solid #b6d497;box-shadow:inset 0 0 25px #a4d17a33!important}.painted-target.step-done:after{content:'✓';position:absolute;right:4px;top:4px;color:#f1ffe0;background:#355638;border-radius:50%;padding:4px}
+/* Artistic medical clipboard. The original vector paths remain the geometry source. */
+#map-modal{padding:6px!important;background:#171b17e8;backdrop-filter:blur(8px)}
+#map-modal .quest-map-sheet{width:98vw!important;max-width:1240px!important;height:98vh!important;max-height:none!important;box-sizing:border-box;padding:72px 38px 24px!important;border:0!important;border-radius:24px;background:#d9c39d url('assets/quest-scenes/clipboard.webp') center/100% 100% no-repeat!important;box-shadow:0 12px 80px #000d;overflow:hidden}
+.quest-map-sheet>.map-clipboard-header{height:80px;min-height:80px;padding:0 8px 8px!important;border-bottom:2px solid #695d47;margin:0 0 8px;background:transparent;box-shadow:none;position:relative}.quest-official-header{width:88%;gap:20px}.quest-official-header document-header{width:520px}.quest-official-header document-stamp{font-size:12px}.quest-official-header document-stamp[data-type=seal]{width:74px}#map-title-text{position:absolute;right:6px;bottom:4px;font:11px 'Courier New',monospace!important;letter-spacing:1px}.quest-map-sheet .btn-close-map{position:absolute;right:0;top:0;color:#6e3027!important;background:transparent!important;border:1px solid #8e7760!important}
+.quest-floor:not(.quest-location){display:grid!important;grid-template-columns:minmax(0,1fr) 238px;grid-template-rows:28px 36px auto 34px auto auto 1fr;column-gap:20px;row-gap:6px;padding:0!important;overflow:visible!important;height:calc(100% - 90px);font-family:'Courier New',monospace}
+.quest-floor:not(.quest-location)>h3{grid-column:1;grid-row:1;font-size:22px;text-transform:uppercase;letter-spacing:1px;margin:0;color:#302c22;border-bottom:1px solid #8d826c}.quest-floor:not(.quest-location)>p:not(.quest-map-legend):not(.quest-note){grid-column:1;grid-row:2;font-size:11px;line-height:1.35;margin:0}
+.quest-floor:not(.quest-location)>.quest-blueprint{grid-column:1;grid-row:3/8;width:100%;max-width:none;max-height:none;height:auto;aspect-ratio:1610/850;align-self:center;overflow:hidden;background:transparent;border:0;border-radius:0;margin:0;isolation:isolate}
+.quest-blueprint-image{mix-blend-mode:multiply;filter:sepia(.35) contrast(.94);opacity:.96}.quest-plan-label{background:transparent;font:700 12px/1.1 'Courier New',monospace;color:#272b23;max-width:20%;padding:0;text-shadow:0 0 3px #eaddbe}.plan-section-caption{position:absolute;bottom:0;transform:translateX(-50%);font:700 14px 'Courier New',monospace;letter-spacing:2px;border-top:1px solid #6d6451;width:29%;text-align:center;padding-top:6px;color:#35382a}
+.quest-floor:not(.quest-location)>.quest-map-legend{grid-column:2;grid-row:1/4;position:static;margin:0!important;padding:14px 12px;background:#ddcca83b;border:1px solid #8f8269;white-space:pre-line;line-height:2;font-size:12px!important;color:#343c2c;align-self:start}
+.quest-floor:not(.quest-location)>h4{grid-column:2;grid-row:4;font-size:14px;letter-spacing:1px;border-bottom:1px solid #8f8269;margin:0;padding:4px 0;text-transform:uppercase}.quest-floor:not(.quest-location)>.quest-actions{grid-column:2;grid-row:5;margin:0;font-size:12px;line-height:1.4}.quest-floor:not(.quest-location)>button{grid-column:2;grid-row:6}.quest-floor:not(.quest-location)>.quest-note{grid-column:2;grid-row:7;border:1px solid #8f8269;border-left:3px solid #746440;background:#c7ad7933;padding:10px;font-size:12px;line-height:1.5;margin:0;align-self:start}
+.quest-floor:not(.quest-location) button:not(.quest-map-pin){background:#d8c49d77;box-shadow:inset 0 0 8px #795c3a22;border:1px solid #77684e;border-radius:2px;font:bold 12px 'Courier New',monospace}.quest-floor .quest-map-pin{width:28px;height:28px;min-height:28px;font-size:10px;border:2px solid #ded0ae;box-shadow:0 1px 3px #30291d88}.quest-floor .quest-map-pin.is-current{background:#3e6074;outline:2px solid #567c8c}.quest-floor .quest-map-pin.is-reachable{background:#4b6342}.quest-floor .quest-map-pin.is-distant{background:#8a8975}.quest-floor .quest-map-pin.is-target{outline:3px solid #ad7c2f;box-shadow:0 0 0 5px #b18a3f44}
+/* Dedicated location screen, not content inside the map dialog. */
+#quest-location-screen{position:fixed;inset:0;z-index:800;background:#161b16;overflow:hidden}
+#quest-location-screen .quest-floor.quest-location{display:grid!important;grid-template-columns:minmax(0,1fr) 290px;width:100%;height:100%;padding:0!important;gap:0;overflow:hidden!important;background:#171c17}
+#quest-location-screen .painted-room{height:100%;width:100%;aspect-ratio:auto;border:0;box-shadow:none;overflow:hidden}#quest-location-screen .scene-painting{height:100%!important;width:100%!important;object-fit:fill}
+#quest-location-screen .scene-paper{margin:18px 12px;max-height:calc(100% - 36px);box-sizing:border-box;overflow:auto;align-self:stretch;padding:20px 14px;gap:14px;box-shadow:-8px 0 30px #0007}#quest-location-screen .scene-paper h3{font-size:24px}#quest-location-screen .scene-paper p{font-size:14px;line-height:1.5}#quest-location-screen .scene-paper h4{font-size:17px}#quest-location-screen .scene-paper .scene-paper-nav{margin-top:auto;bottom:-20px}#quest-location-screen .scene-paper-nav button{min-height:42px;font-size:12px!important}
+#quest-location-screen .painted-target span{font-size:14px;padding:6px 10px;max-width:230px}.quest-banner{font-size:10px}
+#map-modal .quest-map-sheet{padding-top:110px!important}.quest-map-sheet>.map-clipboard-header{height:72px;min-height:72px;box-sizing:border-box}.quest-official-header document-header{width:440px;height:72px}.quest-official-header .document-header-grid{height:72px!important;aspect-ratio:auto!important;padding:0!important}.quest-official-header .document-header-grid .document-header-copy{padding:0!important}.quest-official-header{align-items:center}.quest-floor:not(.quest-location)>.quest-blueprint{height:calc(100dvh - 320px);width:auto;max-width:100%;justify-self:center;align-self:start}.quest-blueprint-image{filter:sepia(.25) contrast(.95);mix-blend-mode:normal}.quest-floor:not(.quest-location){height:calc(100% - 80px)}
+#quest-location-screen .quest-floor.quest-location{max-height:none!important;min-height:100%!important}#quest-location-screen .painted-room{max-height:none!important;min-height:100%!important}
+#quest-location-screen .quest-floor.quest-location{grid-template-rows:minmax(0,1fr);align-content:stretch}
+/* Preserve the pin-to-drawing transform at every desktop viewport size. */
+.quest-floor:not(.quest-location)>.quest-blueprint{width:min(100%,calc((100dvh - 320px)*1.894117647));height:auto;aspect-ratio:1610/850;max-height:none}
+.quest-floor:not(.quest-location)>.quest-note{max-height:112px;overflow:auto;box-sizing:border-box}.quest-floor:not(.quest-location)>.quest-actions{max-height:96px;overflow:auto}
+@media(min-height:800px){#map-modal .quest-map-sheet{padding-top:160px!important}.quest-floor:not(.quest-location)>.quest-blueprint{width:min(100%,calc((100dvh - 370px)*1.894117647))}}
+
+/* Library medpoint pair: physical decay is in the image, not a color filter. */
+.painted-room.paired-art.mode-trip .scene-painting{filter:none}
+
+/* Explicit inspection diagram: the key is drawn and clickable, not an unseen prop. */
+.scene-key-detail{position:absolute;left:24%;top:28%;width:52%;z-index:5;padding:16px;background:#353d3af5;border:6px ridge #9a9d8b;border-radius:32px;box-shadow:0 12px 32px #000b;color:#eee4ca;text-align:center}
+.scene-key-detail p{font:14px Georgia,serif;color:#eee4ca!important}
+.quest-floor .scene-key-object{display:block!important;width:100%;padding:8px;background:transparent!important;border:2px solid #dbc98a!important;border-radius:18px;color:#f8edce!important}
+.scene-key-object svg{display:block;width:100%;height:auto;max-height:170px}.scene-key-object span{display:block;font-size:14px}.scene-key-object:focus-visible{outline:3px solid #fff6c9;outline-offset:4px}
+
+/* Map readability: bounded label columns and one keyboard-scrollable sidebar.
+   Plan SVG, room coordinates and institution marks are unchanged. */
+.quest-plan-label{width:10%;max-width:10%;box-sizing:border-box;overflow-wrap:anywhere;hyphens:manual;white-space:normal;line-height:1.2}
+#map-modal .quest-map-sheet{display:flex;flex-direction:column;min-height:0}
+.quest-map-sheet>.map-clipboard-header{flex:0 0 72px}
+.quest-floor:not(.quest-location){flex:1 1 auto;min-height:0;height:auto;grid-template-columns:minmax(0,1fr) 238px;grid-template-rows:auto auto minmax(0,1fr);overflow:auto!important;align-content:stretch}
+.quest-floor:not(.quest-location)>.quest-blueprint{grid-row:3;align-self:start}
+.quest-map-sidebar{grid-column:2;grid-row:1/-1;min-width:0;min-height:0;overflow:auto;overscroll-behavior:contain;scrollbar-gutter:stable;box-sizing:border-box;padding:0 6px 18px 0;display:flex;flex-direction:column;gap:10px;align-self:stretch}
+.quest-map-sidebar>*{flex:0 0 auto;min-width:0;max-width:100%;box-sizing:border-box;overflow-wrap:anywhere}
+.quest-map-sidebar:focus-visible{outline:2px solid #746440;outline-offset:-2px}
+.quest-map-sidebar>.quest-map-legend{margin:0!important;padding:12px;background:#ddcca83b;border:1px solid #8f8269;white-space:pre-line;line-height:1.7;font-size:12px!important}
+.quest-map-sidebar>h4{font-size:14px;margin:0;padding:4px 0;border-bottom:1px solid #8f8269;text-transform:uppercase}
+.quest-map-sidebar>.quest-actions{max-height:none;overflow:visible;margin:0;font-size:12px;line-height:1.4}
+.quest-map-sidebar>.quest-note{max-height:none;overflow:visible;white-space:normal;text-overflow:clip;margin:0;padding:10px;border:1px solid #8f8269;border-left:3px solid #746440;background:#c7ad7933;font-size:12px;line-height:1.5}
+@media(max-width:900px){
+ .quest-floor:not(.quest-location){grid-template-columns:minmax(0,1fr);grid-template-rows:auto auto auto auto;align-content:start}
+ .quest-map-sidebar{grid-column:1;grid-row:4;overflow:visible;min-height:auto;scrollbar-gutter:auto}
+ .quest-floor:not(.quest-location)>.quest-blueprint{width:100%;max-width:none}
+}
+@media(max-width:700px){
+ .quest-floor:not(.quest-location)>.quest-blueprint{min-width:580px;justify-self:start}
+ .quest-floor:not(.quest-location)>.quest-map-sidebar{min-width:0;width:100%}
+ .quest-plan-label{font-size:11px}
+}
+
+/* Readable names stay whole; narrow plans scroll instead of shrinking the type.
+   Only label anchors move inside rooms; navigation pins and SVG stay unchanged. */
+.quest-floor:not(.quest-location)>.quest-blueprint{min-width:800px;justify-self:start}
+.quest-plan-label{width:max-content;max-width:180px;white-space:normal;overflow-wrap:normal;word-break:normal;hyphens:none;font:700 14px/1.15 Arial,sans-serif;text-shadow:0 0 3px #eaddbe}
+.quest-plan-label[data-label-room=collector],.quest-plan-label[data-label-room=gym],.quest-plan-label[data-label-room=technical]{white-space:nowrap;max-width:none}
+@media(min-width:901px){.quest-floor:not(.quest-location){grid-template-columns:minmax(800px,1fr) 238px}}
+
+/* All room labels use measured, inset room boxes from the SVG coordinate system.
+   This final rule supersedes earlier per-room and pin-relative label styling. */
+.quest-floor .quest-plan-label{transform:none;display:flex;align-items:center;justify-content:center;max-width:none;box-sizing:border-box;padding:0;white-space:nowrap;overflow-wrap:normal;word-break:normal;hyphens:none;font:700 14px/1.15 Arial,sans-serif;text-align:center}
+.quest-map-sidebar>.quest-room-key{white-space:pre-line;font:12px/1.5 Arial,sans-serif;margin:0;padding:10px;border:1px solid #8f8269}
+
+/* Full user-requested name along the narrow room; preserve the 14px type. */
+.quest-floor .quest-plan-label[data-label-room=toilet]{writing-mode:vertical-rl;text-orientation:mixed}
+
+/* Runtime quest props: separate collectable parcel, not a replacement background. */
+.quest-world-item{position:absolute;width:18%;aspect-ratio:1.8;transform:translate(-50%,-50%);z-index:3;pointer-events:none;filter:drop-shadow(2px 5px 3px #0009)}
+.quest-world-item svg,.quest-parcel-choice svg{width:100%;height:100%}
+.quest-parcel-choice{z-index:4!important}
+.quest-object-status{position:absolute;left:2%;bottom:2%;max-width:65%;background:#1b251de8;color:#f5eed8!important;padding:8px;font:13px/1.4 sans-serif;pointer-events:none}
+.quest-cargo-panel{border-top:2px solid #857055;margin-top:12px;padding-top:8px;font:13px/1.4 sans-serif}
+.quest-cargo-panel h4{margin:0 0 6px}.quest-cargo-panel p{margin:6px 0;overflow-wrap:anywhere}.quest-cargo-panel button{width:100%}
+.quest-receipt{background:#e6eacb;border-left:3px solid #52693c;padding:8px}
+.quest-evidence-choice{display:flex;flex-direction:column;gap:8px;text-align:left}
+.quest-evidence-card{display:block;background:#fff5da;border:1px dashed #806b43;padding:10px;color:#33271b;font:bold 15px/1.4 monospace}
+
+.quest-observation-sign{position:absolute;left:12%;top:43%;padding:6px 10px;background:#d8d1b9;color:#302b20;border:2px solid #615b48;font:bold clamp(10px,1.2vw,17px)/1.2 monospace;pointer-events:none;z-index:3}
+
+.quest-npc{position:absolute;left:52%;bottom:1%;transform:translateX(-50%);height:83%;width:35%;object-fit:contain;object-position:center bottom;pointer-events:none;z-index:1}
+.quest-npc-doctor.quest-npc-trip{width:56%;height:82%}
+.quest-npc-portrait{border-top:1px solid #9d8e70;padding-top:8px}.quest-npc-portrait summary{cursor:pointer;font-size:14px}.quest-npc-portrait img{display:block;max-width:100%;max-height:230px;margin:8px auto;object-fit:contain}
+/* Quest rooms cover the legacy HUD; their inventory must remain above the room. */
+#inventory-modal{z-index:850!important}
+#item-info-modal{z-index:860!important}

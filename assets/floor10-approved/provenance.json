@@ -1,0 +1,74 @@
+[
+  {
+    "archive": "Duty_Doctor.zip",
+    "member": "Duty_Doctor/Background_Normal.png",
+    "sha256": "8b215fc5706e1cd7c1c641c9c3d01fa111cc5708da5e96b98fc20612a60a51e1",
+    "runtime": "assets/floor10-approved/doctor/Background_Normal.png"
+  },
+  {
+    "archive": "Duty_Doctor.zip",
+    "member": "Duty_Doctor/Background_Trip.png",
+    "sha256": "b439621a523363e5a4b9ec482494e2ccc4e28e4eaee0027c7c74c393ccfacf35",
+    "runtime": "assets/floor10-approved/doctor/Background_Trip.png"
+  },
+  {
+    "archive": "Duty_Doctor.zip",
+    "member": "Duty_Doctor/Dossier_Normal.png",
+    "sha256": "927eb6df02dc883b8d5c66d96f57142763221005cf73ae3d22dc30174116e21e",
+    "runtime": "assets/floor10-approved/doctor/Dossier_Normal.png"
+  },
+  {
+    "archive": "Duty_Doctor.zip",
+    "member": "Duty_Doctor/Dossier_Trip.png",
+    "sha256": "4687359a57f0d0a7644e7fcb43f9652cc4e8e85fed69760cbe98db44f06d0034",
+    "runtime": "assets/floor10-approved/doctor/Dossier_Trip.png"
+  },
+  {
+    "archive": "Duty_Doctor.zip",
+    "member": "Duty_Doctor/Sprite_Normal.png",
+    "sha256": "34ac7d22907a5b9217b5c633bb1c6add603ee09aefa2555ac15c7b2016dec78e",
+    "runtime": "assets/floor10-approved/doctor/Sprite_Normal.png"
+  },
+  {
+    "archive": "Duty_Doctor.zip",
+    "member": "Duty_Doctor/Sprite_Trip.png",
+    "sha256": "384aed6a7352460ab3d1dd784e0c7d550c9bc7d6308e18e7451b760631392dc0",
+    "runtime": "assets/floor10-approved/doctor/Sprite_Trip.png"
+  },
+  {
+    "archive": "Clara.zip",
+    "member": "Clara/Dossier_Normal.png",
+    "sha256": "23606259623731a2192568999cea4a88bed97907d8bb61866bba90541ee8dadc",
+    "runtime": "assets/floor10-approved/nurse/Dossier_Normal.png"
+  },
+  {
+    "archive": "Clara.zip",
+    "member": "Clara/Dossier_Trip.png",
+    "sha256": "69d2aed65c153a46dfa0fa8ce565061b7df7d04baa08f0840017f417cf5935dd",
+    "runtime": "assets/floor10-approved/nurse/Dossier_Trip.png"
+  },
+  {
+    "archive": "Clara.zip",
+    "member": "Clara/Sprite_Normal.png",
+    "sha256": "d035421f9120044350f2044c96f827087873d247e861ebf59593ce63d2643b80",
+    "runtime": "assets/floor10-approved/nurse/Sprite_Normal.png"
+  },
+  {
+    "archive": "Clara.zip",
+    "member": "Clara/Sprite_Trip.png",
+    "sha256": "e2089ddad0a81eab1771ba8e711de50bfb111ce310b9897afb5825ab5cd6ce73",
+    "runtime": "assets/floor10-approved/nurse/Sprite_Trip.png"
+  },
+  {
+    "archive": "фони клара.zip",
+    "member": "фони клара/Background_Normal.png",
+    "sha256": "6ed87e28fc9370fe1cb48efb86dd3dfaf39ab58c157f06f5d41fde39d73f0875",
+    "runtime": "assets/floor10-approved/nurse/Background_Normal.png"
+  },
+  {
+    "archive": "фони клара.zip",
+    "member": "фони клара/Background_Trip.png",
+    "sha256": "4f32fcb32e56e65723a11b5dd53a51f8273050d3eb437c927c1843380e40121a",
+    "runtime": "assets/floor10-approved/nurse/Background_Trip.png"
+  }
+]
