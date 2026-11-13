@@ -4,14 +4,14 @@
     const poses = (idle, melee = idle, rifle = idle) => ({ idle, melee, rifle });
     const top = {
         male: poses(
-            'assets/wardrobe/clothing/patient/pajamas/male/top-idle.webp?v=6b7d8185b1b2',
-            'assets/wardrobe/clothing/patient/pajamas/male/top-melee.webp?v=3e0e56f4d292',
-            'assets/wardrobe/clothing/patient/pajamas/male/top-rifle.webp?v=14461ff07c72'
+            'assets/wardrobe/clothing/patient/pajamas/male/top-idle.png?v=f55d4e5d9f7c',
+            'assets/wardrobe/clothing/patient/pajamas/male/top-melee.png?v=906a6ef4956b',
+            'assets/wardrobe/clothing/patient/pajamas/male/top-rifle.png?v=7796c09c33d8'
         ),
         female: poses(
-            'assets/wardrobe/clothing/patient/pajamas/female/top-idle.webp?v=414fd3d32faa',
-            'assets/wardrobe/clothing/patient/pajamas/female/top-melee.webp?v=26f666e12a03',
-            'assets/wardrobe/clothing/patient/pajamas/female/top-rifle.webp?v=2f3be7e67534'
+            'assets/wardrobe/clothing/patient/pajamas/female/top-idle.png?v=1e087eb02b49',
+            'assets/wardrobe/clothing/patient/pajamas/female/top-melee.png?v=c3df05497493',
+            'assets/wardrobe/clothing/patient/pajamas/female/top-rifle.png?v=d239135eaedb'
         )
     };
     const pants = {
@@ -54,8 +54,8 @@
             'patient-pajama-top', 'upperBody', 'top', 'Піжамна сорочка',
             'Сіро-блакитна бавовняна сорочка на ґудзиках у тонку смужку.', top,
             {
-                male: 'assets/wardrobe/clothing/patient/pajamas/male/thumb-top.webp?v=359693fa720e',
-                female: 'assets/wardrobe/clothing/patient/pajamas/female/thumb-top.webp?v=4b2e2ec9d0de'
+                male: 'assets/wardrobe/clothing/patient/pajamas/male/thumb-top.webp?v=4d2b143c7ed6',
+                female: 'assets/wardrobe/clothing/patient/pajamas/female/thumb-top.webp?v=f172558a481e'
             }, null, topHands
         ),
         clothing(
@@ -76,3 +76,6 @@
         )
     );
 })();
+
+// Approved shirt rear pieces belong only to the equipped shirt and active pose.
+PAPER_DOLL_ITEMS.find(item=>item.id==='patient-pajama-top').poseClothingBackByGender={"male":{"idle":"assets/wardrobe/clothing/patient/pajamas/male/back-idle.png?v=af57cfab58fc","melee":"assets/wardrobe/clothing/patient/pajamas/male/back-melee.png?v=56e8919c2d59","rifle":"assets/wardrobe/clothing/patient/pajamas/male/back-rifle.png?v=89adcfa598eb"},"female":{"idle":"assets/wardrobe/clothing/patient/pajamas/female/back-idle.png?v=53a82c63ada5","melee":"assets/wardrobe/clothing/patient/pajamas/female/back-melee.png?v=1b736b925d41","rifle":"assets/wardrobe/clothing/patient/pajamas/female/back-rifle.png?v=6c2f3a664fd4"}};

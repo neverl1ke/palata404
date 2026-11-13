@@ -1,0 +1,178 @@
+{
+  "approval": "User: затверджуєм",
+  "date": "2026-11-13",
+  "scope": "Shirt only: six fronts, six rear pieces and two catalogue thumbnails",
+  "baseCommit": "cf3619ac2c8483ad75339aefc768929936ed13c2",
+  "sourceReview": "shirt-sleeve-refine-20261113",
+  "artwork": [
+    {
+      "gender": "male",
+      "part": "top",
+      "pose": "idle",
+      "approvedSource": "review/shirt-sleeve-refine-20261113/candidate/male/top-idle.png",
+      "master": "review/shirt-approved-20261113/masters/male/top-idle.png",
+      "sourceSha256": "f55d4e5d9f7c4f155b1228dd41ea8a3065869d5b1a8e54d19df5a21ec9c1bbfe",
+      "runtime": "assets/wardrobe/clothing/patient/pajamas/male/top-idle.png",
+      "runtimeSha256": "f55d4e5d9f7c4f155b1228dd41ea8a3065869d5b1a8e54d19df5a21ec9c1bbfe",
+      "exactApprovedPNGBytes": true
+    },
+    {
+      "gender": "male",
+      "part": "top",
+      "pose": "melee",
+      "approvedSource": "review/shirt-sleeve-refine-20261113/candidate/male/top-melee.png",
+      "master": "review/shirt-approved-20261113/masters/male/top-melee.png",
+      "sourceSha256": "906a6ef4956b43efa57ca5f72c3d63df8d85b1966cfb8658969d62dca117824e",
+      "runtime": "assets/wardrobe/clothing/patient/pajamas/male/top-melee.png",
+      "runtimeSha256": "906a6ef4956b43efa57ca5f72c3d63df8d85b1966cfb8658969d62dca117824e",
+      "exactApprovedPNGBytes": true
+    },
+    {
+      "gender": "male",
+      "part": "top",
+      "pose": "rifle",
+      "approvedSource": "review/shirt-sleeve-refine-20261113/candidate/male/top-rifle.png",
+      "master": "review/shirt-approved-20261113/masters/male/top-rifle.png",
+      "sourceSha256": "7796c09c33d88a8469b84c5c733d431e93aa12ac728ba89d5aa36d404ca2c085",
+      "runtime": "assets/wardrobe/clothing/patient/pajamas/male/top-rifle.png",
+      "runtimeSha256": "7796c09c33d88a8469b84c5c733d431e93aa12ac728ba89d5aa36d404ca2c085",
+      "exactApprovedPNGBytes": true
+    },
+    {
+      "gender": "male",
+      "part": "back",
+      "pose": "idle",
+      "approvedSource": "review/shirt-sleeve-refine-20261113/candidate/male/back-idle.png",
+      "master": "review/shirt-approved-20261113/masters/male/back-idle.png",
+      "sourceSha256": "af57cfab58fcd2475e818b9a6287225e9e1a26006ef0e531c8fb0d9d4d692669",
+      "runtime": "assets/wardrobe/clothing/patient/pajamas/male/back-idle.png",
+      "runtimeSha256": "af57cfab58fcd2475e818b9a6287225e9e1a26006ef0e531c8fb0d9d4d692669",
+      "exactApprovedPNGBytes": true
+    },
+    {
+      "gender": "male",
+      "part": "back",
+      "pose": "melee",
+      "approvedSource": "review/shirt-sleeve-refine-20261113/candidate/male/back-melee.png",
+      "master": "review/shirt-approved-20261113/masters/male/back-melee.png",
+      "sourceSha256": "56e8919c2d59dba313f817f3073ced17771d5d3bb96689d8188e8638a0ee2c35",
+      "runtime": "assets/wardrobe/clothing/patient/pajamas/male/back-melee.png",
+      "runtimeSha256": "56e8919c2d59dba313f817f3073ced17771d5d3bb96689d8188e8638a0ee2c35",
+      "exactApprovedPNGBytes": true
+    },
+    {
+      "gender": "male",
+      "part": "back",
+      "pose": "rifle",
+      "approvedSource": "review/shirt-sleeve-refine-20261113/candidate/male/back-rifle.png",
+      "master": "review/shirt-approved-20261113/masters/male/back-rifle.png",
+      "sourceSha256": "89adcfa598ebed0b1f435cad625c162267ef54431ef1fe4fd21a9aa26e31f083",
+      "runtime": "assets/wardrobe/clothing/patient/pajamas/male/back-rifle.png",
+      "runtimeSha256": "89adcfa598ebed0b1f435cad625c162267ef54431ef1fe4fd21a9aa26e31f083",
+      "exactApprovedPNGBytes": true
+    },
+    {
+      "gender": "female",
+      "part": "top",
+      "pose": "idle",
+      "approvedSource": "review/shirt-sleeve-refine-20261113/candidate/female/top-idle.png",
+      "master": "review/shirt-approved-20261113/masters/female/top-idle.png",
+      "sourceSha256": "1e087eb02b497f375c71db98a5788eaf682c1c18ec98e9a37a99db3beb5047b0",
+      "runtime": "assets/wardrobe/clothing/patient/pajamas/female/top-idle.png",
+      "runtimeSha256": "1e087eb02b497f375c71db98a5788eaf682c1c18ec98e9a37a99db3beb5047b0",
+      "exactApprovedPNGBytes": true
+    },
+    {
+      "gender": "female",
+      "part": "top",
+      "pose": "melee",
+      "approvedSource": "review/shirt-sleeve-refine-20261113/candidate/female/top-melee.png",
+      "master": "review/shirt-approved-20261113/masters/female/top-melee.png",
+      "sourceSha256": "c3df05497493c130ddc8ef8c97df8188cad9c3ce87f5666f2fe9ca528f5784c5",
+      "runtime": "assets/wardrobe/clothing/patient/pajamas/female/top-melee.png",
+      "runtimeSha256": "c3df05497493c130ddc8ef8c97df8188cad9c3ce87f5666f2fe9ca528f5784c5",
+      "exactApprovedPNGBytes": true
+    },
+    {
+      "gender": "female",
+      "part": "top",
+      "pose": "rifle",
+      "approvedSource": "review/shirt-sleeve-refine-20261113/candidate/female/top-rifle.png",
+      "master": "review/shirt-approved-20261113/masters/female/top-rifle.png",
+      "sourceSha256": "d239135eaedbeb057ee89acc09216d1889b5a42d09b6c2b84b7510aa310dad57",
+      "runtime": "assets/wardrobe/clothing/patient/pajamas/female/top-rifle.png",
+      "runtimeSha256": "d239135eaedbeb057ee89acc09216d1889b5a42d09b6c2b84b7510aa310dad57",
+      "exactApprovedPNGBytes": true
+    },
+    {
+      "gender": "female",
+      "part": "back",
+      "pose": "idle",
+      "approvedSource": "review/shirt-sleeve-refine-20261113/candidate/female/back-idle.png",
+      "master": "review/shirt-approved-20261113/masters/female/back-idle.png",
+      "sourceSha256": "53a82c63ada55fce7c66c94224b78f24ea431a64397f0f93d4b8bd8cf5477a44",
+      "runtime": "assets/wardrobe/clothing/patient/pajamas/female/back-idle.png",
+      "runtimeSha256": "53a82c63ada55fce7c66c94224b78f24ea431a64397f0f93d4b8bd8cf5477a44",
+      "exactApprovedPNGBytes": true
+    },
+    {
+      "gender": "female",
+      "part": "back",
+      "pose": "melee",
+      "approvedSource": "review/shirt-sleeve-refine-20261113/candidate/female/back-melee.png",
+      "master": "review/shirt-approved-20261113/masters/female/back-melee.png",
+      "sourceSha256": "1b736b925d412d674bb04907a8f075f02993be5e9e6c87fb9a1f5c4b3222589d",
+      "runtime": "assets/wardrobe/clothing/patient/pajamas/female/back-melee.png",
+      "runtimeSha256": "1b736b925d412d674bb04907a8f075f02993be5e9e6c87fb9a1f5c4b3222589d",
+      "exactApprovedPNGBytes": true
+    },
+    {
+      "gender": "female",
+      "part": "back",
+      "pose": "rifle",
+      "approvedSource": "review/shirt-sleeve-refine-20261113/candidate/female/back-rifle.png",
+      "master": "review/shirt-approved-20261113/masters/female/back-rifle.png",
+      "sourceSha256": "6c2f3a664fd45b6881ce85dc7d15b78a2eba25a99f116fea6fbbf45adcc07fe8",
+      "runtime": "assets/wardrobe/clothing/patient/pajamas/female/back-rifle.png",
+      "runtimeSha256": "6c2f3a664fd45b6881ce85dc7d15b78a2eba25a99f116fea6fbbf45adcc07fe8",
+      "exactApprovedPNGBytes": true
+    }
+  ],
+  "registeredCanvas": [
+    941,
+    1672
+  ],
+  "unchangedBodies": {
+    "male": "b40a31b26dcf9aeea1dad02091228377330c9bb3af3a4b9669cfcc67247fc41d",
+    "female": "a27b499c03fc15c4788ae3a651483a36463f28b1f034178feccdaa852e7e50f9"
+  },
+  "unchangedPantsFootwearAndMasks": true,
+  "sourceReviewPreserved": true,
+  "beforeIntegrationSha256": {
+    "base_male.png": "b40a31b26dcf9aeea1dad02091228377330c9bb3af3a4b9669cfcc67247fc41d",
+    "base_female.png": "a27b499c03fc15c4788ae3a651483a36463f28b1f034178feccdaa852e7e50f9",
+    "assets/wardrobe/clothing/patient/pajamas/female/thumb-footwear.webp": "b3ab212a0b06c68a6ab73bfcf260f5d2e57b8c264b196eb9812cd1de05e20dc2",
+    "assets/wardrobe/clothing/patient/pajamas/female/thumb-pants.webp": "9d25abe4ed8361e8c927295b8b87d2db258c1b29b780d7befde0aa889e00fb7a",
+    "assets/wardrobe/clothing/patient/pajamas/female/top-melee.webp": "26f666e12a038ba05e4a0fe5ea9c99720076e3a1d1446144a12e3568cff7a38b",
+    "assets/wardrobe/clothing/patient/pajamas/female/top-idle.webp": "414fd3d32faae79b45113b6e77f19edde41fd010124adaba5c012622bc4bab94",
+    "assets/wardrobe/clothing/patient/pajamas/female/pants.webp": "538ae40a70cb920365669285843aa88cedb305719539ee2f7573f6118ae13eee",
+    "assets/wardrobe/clothing/patient/pajamas/female/footwear.webp": "0ebb4543418dc619a42c1e0eca2061f0151d31853763fb7b88646ecaf1b69079",
+    "assets/wardrobe/clothing/patient/pajamas/female/mask-footwear.webp": "6505d9972bc569a4ec9c39044cfe9b47efbb3a5f0ba0840f8181d9790d7a0f5d",
+    "assets/wardrobe/clothing/patient/pajamas/female/foreground-hands-rifle.webp": "803bb04b11cd965ff5c57be652b2cabf0b482433b35d9f72081856b6ea6a90ad",
+    "assets/wardrobe/clothing/patient/pajamas/female/top-rifle.webp": "2f3be7e67534be5f28fd9976ff8e3c83b5e09b6583737b6b1268be2b0f6a77cf",
+    "assets/wardrobe/clothing/patient/pajamas/female/thumb-top.webp": "4b2e2ec9d0def21ea6eb08338c1cdfb822bd4ba3d0f7af6210f41fd9179652ff",
+    "assets/wardrobe/clothing/patient/pajamas/male/thumb-footwear.webp": "8f1ee160bd801e577077a92a48150c7e3a11aa7a2d638640a0a920da02c7fc66",
+    "assets/wardrobe/clothing/patient/pajamas/male/thumb-pants.webp": "3917f8dbe8090676d3af9a9e302d12f6b4b8e921d32fb6ba8e61b20233261fbc",
+    "assets/wardrobe/clothing/patient/pajamas/male/top-melee.webp": "3e0e56f4d2927b922ef78d059cb88baaf2ea9a4444d8b528f218c360fd425084",
+    "assets/wardrobe/clothing/patient/pajamas/male/top-idle.webp": "6b7d8185b1b2797b12d38a1afa720486978359f5184694f596b4586500776327",
+    "assets/wardrobe/clothing/patient/pajamas/male/pants.webp": "80907147fe2fe655257e628986dd61169c0ec05373b9d875aeaca55a4319dceb",
+    "assets/wardrobe/clothing/patient/pajamas/male/footwear.webp": "ab51ed65c469efaa2d31c0c8d1b005ac25f2e9f55a8830d677d124b16b8200fe",
+    "assets/wardrobe/clothing/patient/pajamas/male/mask-footwear.webp": "d8b038ae1436bd449f080521fe6927295a9d1004d1f3089e331517024afd5c95",
+    "assets/wardrobe/clothing/patient/pajamas/male/foreground-hands-rifle.webp": "ce0e3b27047ad369f767d9d15a751a846c7431fbe56452d32ea14f5c9dc998c0",
+    "assets/wardrobe/clothing/patient/pajamas/male/top-rifle.webp": "14461ff07c72a00f64a51400abd2d9b745c5aea6d012bbef5d4e9d36bcf65c53",
+    "assets/wardrobe/clothing/patient/pajamas/male/thumb-top.webp": "359693fa720e5644a088181e69bbb47c635d7c404f9ec5c956964226c1539743"
+  },
+  "backupArtifact": "/workspace/artifacts/shirt-approved-20261113/before-integration.zip",
+  "allTwelveRuntimePNGBytesExact": true,
+  "runtimeFormatReason": "Chromium WebP decoding changes a few translucent-edge RGB values despite lossless stored RGBA; exact source PNGs preserve the approved actual rendering."
+}

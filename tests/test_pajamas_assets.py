@@ -34,6 +34,12 @@ def digest(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
+def registered_art(gender, name):
+    if name.startswith('top-'):
+        return ROOT / 'review/shirt-approved-20261113/masters' / gender / (name + '.png')
+    return REVIEW / gender / 'registered' / (name + '.png')
+
+
 def solid_bounds(alpha):
     return alpha.point(lambda value: 255 if value >= 128 else 0).getbbox()
 
@@ -64,28 +70,30 @@ class PajamasAssetTests(unittest.TestCase):
         for gender in APPROVED_BODIES:
             for name in REGISTERED:
                 with self.subTest(gender=gender, image=name):
-                    path = REVIEW / gender / 'registered' / (name + '.png')
+                    path = registered_art(gender, name)
                     with Image.open(path) as image:
                         self.assertEqual(image.format, 'PNG')
                         self.assertEqual(image.size, FRAME)
                         alpha = self.assert_transparent_rgba(image, str(path))
                         self.assertIsNone(alpha.crop((0, 0, FRAME[0], 220)).getbbox(),
                                           str(path) + ' includes pixels over the original head')
-        # Large originals belong to review. Publishing another PNG copy of each
-        # registered layer needlessly duplicates the compact runtime artwork.
-        self.assertEqual(sorted(str(path.relative_to(RUNTIME)) for path in RUNTIME.rglob('*.png')), [])
+        # Approved shirts use the exact PNG bytes. Browser WebP decoders can
+        # quantize translucent-edge RGB even when the stored image is lossless.
+        expected = sorted(f'{gender}/{part}-{pose}.png' for gender in APPROVED_BODIES
+                          for part in ('top', 'back') for pose in ('idle', 'melee', 'rifle'))
+        self.assertEqual(sorted(str(path.relative_to(RUNTIME)) for path in RUNTIME.rglob('*.png')), expected)
 
     def test_runtime_layers_preserve_registration_and_thumbnails_have_real_transparency(self):
         for gender in APPROVED_BODIES:
             for name in REGISTERED:
                 with self.subTest(gender=gender, runtime=name):
-                    path = RUNTIME / gender / (name + '.webp')
+                    path = RUNTIME / gender / (name + ('.png' if name.startswith('top-') else '.webp'))
                     with Image.open(path) as image:
-                        self.assertEqual(image.format, 'WEBP')
+                        self.assertEqual(image.format, 'PNG' if name.startswith('top-') else 'WEBP')
                         alpha = self.assert_transparent_rgba(image, str(path))
                         self.assertAlmostEqual(image.width / image.height, FRAME[0] / FRAME[1], delta=.002)
                         runtime_bounds = solid_bounds(alpha)
-                        with Image.open(REVIEW / gender / 'registered' / (name + '.png')) as original:
+                        with Image.open(registered_art(gender, name)) as original:
                             source_bounds = solid_bounds(original.getchannel('A'))
                         # Compare the registered position independently of WebP
                         # resolution. Two output pixels allow resampling edges.
@@ -102,6 +110,24 @@ class PajamasAssetTests(unittest.TestCase):
                         self.assertEqual(image.format, 'WEBP')
                         self.assertEqual(image.size, (256, 256))
                         self.assert_transparent_rgba(image, str(path))
+
+    def test_approved_shirt_front_and_rear_runtime_pixels_match_the_approved_layers(self):
+        approval = json.loads((ROOT / 'review/shirt-approved-20261113/approval.json').read_text())
+        records = approval['artwork']
+        self.assertEqual(len(records), 12)
+        self.assertEqual({(r['gender'], r['part'], r['pose']) for r in records},
+                         {(g, part, pose) for g in APPROVED_BODIES
+                          for part in ('top', 'back') for pose in ('idle', 'melee', 'rifle')})
+        for record in records:
+            with self.subTest(layer=record['runtime']):
+                master, runtime = ROOT / record['master'], ROOT / record['runtime']
+                self.assertEqual(digest(master), record['sourceSha256'])
+                self.assertEqual(digest(runtime), record['runtimeSha256'])
+                self.assertEqual(runtime.read_bytes(), master.read_bytes())
+                with Image.open(master) as source, Image.open(runtime) as decoded:
+                    self.assertEqual(source.size, FRAME)
+                    self.assertEqual(decoded.size, FRAME)
+                    self.assertEqual(decoded.convert('RGBA').tobytes(), source.convert('RGBA').tobytes())
 
 
 if __name__ == '__main__':

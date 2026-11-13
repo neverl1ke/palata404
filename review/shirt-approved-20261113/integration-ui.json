@@ -1,0 +1,94 @@
+{
+  "loadedArtworkSha256": {
+    "assets/wardrobe/clothing/patient/pajamas/female/back-melee.png": "1b736b925d412d674bb04907a8f075f02993be5e9e6c87fb9a1f5c4b3222589d",
+    "assets/wardrobe/clothing/patient/pajamas/female/top-melee.png": "c3df05497493c130ddc8ef8c97df8188cad9c3ce87f5666f2fe9ca528f5784c5",
+    "assets/wardrobe/clothing/patient/pajamas/female/top-rifle.png": "d239135eaedbeb057ee89acc09216d1889b5a42d09b6c2b84b7510aa310dad57",
+    "assets/wardrobe/clothing/patient/pajamas/female/back-idle.png": "53a82c63ada55fce7c66c94224b78f24ea431a64397f0f93d4b8bd8cf5477a44",
+    "assets/wardrobe/clothing/patient/pajamas/female/back-rifle.png": "6c2f3a664fd45b6881ce85dc7d15b78a2eba25a99f116fea6fbbf45adcc07fe8",
+    "assets/wardrobe/clothing/patient/pajamas/female/top-idle.png": "1e087eb02b497f375c71db98a5788eaf682c1c18ec98e9a37a99db3beb5047b0",
+    "assets/wardrobe/clothing/patient/pajamas/male/back-melee.png": "56e8919c2d59dba313f817f3073ced17771d5d3bb96689d8188e8638a0ee2c35",
+    "assets/wardrobe/clothing/patient/pajamas/male/top-melee.png": "906a6ef4956b43efa57ca5f72c3d63df8d85b1966cfb8658969d62dca117824e",
+    "assets/wardrobe/clothing/patient/pajamas/male/top-rifle.png": "7796c09c33d88a8469b84c5c733d431e93aa12ac728ba89d5aa36d404ca2c085",
+    "assets/wardrobe/clothing/patient/pajamas/male/back-idle.png": "af57cfab58fcd2475e818b9a6287225e9e1a26006ef0e531c8fb0d9d4d692669",
+    "assets/wardrobe/clothing/patient/pajamas/male/back-rifle.png": "89adcfa598ebed0b1f435cad625c162267ef54431ef1fe4fd21a9aa26e31f083",
+    "assets/wardrobe/clothing/patient/pajamas/male/top-idle.png": "f55d4e5d9f7c4f155b1228dd41ea8a3065869d5b1a8e54d19df5a21ec9c1bbfe"
+  },
+  "records": [
+    {
+      "gender": "male",
+      "mode": "patient",
+      "pose": "idle",
+      "wardrobeAndMainPixelsIdentical": true
+    },
+    {
+      "gender": "male",
+      "mode": "patient",
+      "pose": "melee",
+      "wardrobeAndMainPixelsIdentical": true
+    },
+    {
+      "gender": "male",
+      "mode": "patient",
+      "pose": "rifle",
+      "wardrobeAndMainPixelsIdentical": true
+    },
+    {
+      "gender": "male",
+      "mode": "combat",
+      "pose": "idle",
+      "wardrobeAndMainPixelsIdentical": true
+    },
+    {
+      "gender": "male",
+      "mode": "combat",
+      "pose": "melee",
+      "wardrobeAndMainPixelsIdentical": true
+    },
+    {
+      "gender": "male",
+      "mode": "combat",
+      "pose": "rifle",
+      "wardrobeAndMainPixelsIdentical": true
+    },
+    {
+      "gender": "female",
+      "mode": "patient",
+      "pose": "idle",
+      "wardrobeAndMainPixelsIdentical": true
+    },
+    {
+      "gender": "female",
+      "mode": "patient",
+      "pose": "melee",
+      "wardrobeAndMainPixelsIdentical": true
+    },
+    {
+      "gender": "female",
+      "mode": "patient",
+      "pose": "rifle",
+      "wardrobeAndMainPixelsIdentical": true
+    },
+    {
+      "gender": "female",
+      "mode": "combat",
+      "pose": "idle",
+      "wardrobeAndMainPixelsIdentical": true
+    },
+    {
+      "gender": "female",
+      "mode": "combat",
+      "pose": "melee",
+      "wardrobeAndMainPixelsIdentical": true
+    },
+    {
+      "gender": "female",
+      "mode": "combat",
+      "pose": "rifle",
+      "wardrobeAndMainPixelsIdentical": true
+    }
+  ],
+  "reloadKeptCurrentOutfit": true,
+  "mobileWardrobeReady": true,
+  "unequippingClearsClothingAndRear": true,
+  "browserErrors": []
+}

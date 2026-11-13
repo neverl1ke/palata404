@@ -197,6 +197,50 @@ class PajamasUiTests(unittest.TestCase):
             self.assertEqual(self.selected()[slot], PIECES[slot])
         self.assertLessEqual(self.page.evaluate('document.documentElement.scrollWidth'), 391)
 
+    def test_face_neck_stays_below_individual_shirt_and_head_is_preserved(self):
+        self.load()
+        self.page.set_viewport_size({'width': 1672, 'height': 941})
+        self.open_wardrobe()
+        self.page.evaluate("setPaperDollView('combat');['outerwear','armor','loadout','gloves','pants','footwear','back','accessory','headwear','beard'].forEach(s=>equipPaperDollItem(s,null));equipPaperDollItem('upperBody','patient-pajama-top')")
+        for gender, face, hair in [
+            ('male', 'face-asian', 'hair-none'),
+            ('male', 'face-male-new-stern', 'hair-none'),
+            ('female', None, 'hair-none'),
+            ('female', 'face-ginger-soft', 'hair-none'),
+            ('female', 'face-female-new-soft-gaze', 'hair-bob'),
+        ]:
+            self.page.evaluate("a=>{setGender(a.gender);equipPaperDollItem('face',a.face);equipPaperDollItem('hair',a.hair)}",
+                               {'gender': gender, 'face': face, 'hair': hair})
+            for weapon, pose in POSES:
+                with self.subTest(gender=gender, face=face, pose=pose):
+                    self.page.evaluate("id=>equipPaperDollItem('weapon',id)", weapon)
+                    self.ready_pose('wardrobe-paperdoll', pose, gender, parts=('top',))
+                    pixels = self.page.evaluate("""async()=>{
+                        const s=avatarCoreGamePreview.instances.get(document.getElementById('wardrobe-paperdoll'));
+                        s.engine.pause();s.engine.options.breathing=false;s.pajamaMotion.breathing=false;s.engine.time=0;s.engine.render();
+                        const image=new Image();image.src=selectedPaperDollItem('upperBody').poseClothingByGender[s.engine.gender][s.engine.pose];await image.decode();
+                        const garment=document.createElement('canvas');garment.width=941;garment.height=1672;
+                        const ctx=garment.getContext('2d');ctx.drawImage(image,0,0,941,1672);
+                        const cloth=ctx.getImageData(0,0,941,1672).data;
+                        const actual=s.canvas.getContext('2d').getImageData(0,0,s.canvas.width,1672).data;
+                        const native=s.engine.canvas.getContext('2d').getImageData(0,0,s.engine.canvas.width,1672).data;
+                        let opaqueCollarPixels=0,collarOverpaintPixels=0,changedHeadPixels=0;
+                        // No gun intersects this collar rectangle. Fully opaque
+                        // cloth must cover the face PNG's old neck/shoulder join.
+                        for(let y=220;y<400;y++)for(let x=140;x<800;x++){
+                            const i=(y*941+x)*4,j=(y*s.canvas.width+x)*4;
+                            if(cloth[i+3]===255){opaqueCollarPixels++;if(Math.max(Math.abs(cloth[i]-actual[j]),Math.abs(cloth[i+1]-actual[j+1]),Math.abs(cloth[i+2]-actual[j+2]))>16)collarOverpaintPixels++;}
+                        }
+                        for(let y=0;y<220;y++)for(let x=0;x<941;x++){
+                            const i=(y*s.engine.canvas.width+x)*4,j=(y*s.canvas.width+x)*4;
+                            if([0,1,2,3].some(c=>native[i+c]!==actual[j+c]))changedHeadPixels++;
+                        }
+                        return {opaqueCollarPixels,collarOverpaintPixels,changedHeadPixels};
+                    }""")
+                    self.assertGreater(pixels['opaqueCollarPixels'], 10000)
+                    self.assertEqual(pixels['collarOverpaintPixels'], 0, pixels)
+                    self.assertEqual(pixels['changedHeadPixels'], 0, pixels)
+
     def test_full_set_keeps_all_native_weapon_poses_in_wardrobe_and_applied_main_avatar(self):
         self.load()
         self.page.set_viewport_size({'width': 1672, 'height': 941})

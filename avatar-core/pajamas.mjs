@@ -94,9 +94,10 @@ export class PoseClothing {
         const parts=await Promise.all(clothing.filter(isPoseClothing).map(async item=>{
             const source=sourceFor(item.poseClothingByGender,gender,pose,item.poseClothingPart!=='top');
             if(!source)throw new Error('Pajama '+item.poseClothingPart+' has no '+gender+' '+pose+' artwork');
+            const backSource=sourceFor(item.poseClothingBackByGender,gender,pose,false);
             const maskSource=sourceFor(item.poseClothingMaskByGender,gender,pose);
             const foregroundSource=sourceFor(item.poseClothingForegroundMaskByGender,gender,pose,false);
-            return {part:item.poseClothingPart,image:await bitmap(absolute(source)),mask:maskSource?await bitmap(absolute(maskSource)):null,foregroundMask:foregroundSource?await bitmap(absolute(foregroundSource)):null};
+            return {part:item.poseClothingPart,back:backSource?await bitmap(absolute(backSource)):null,image:await bitmap(absolute(source)),mask:maskSource?await bitmap(absolute(maskSource)):null,foregroundMask:foregroundSource?await bitmap(absolute(foregroundSource)):null};
         }));
         parts.sort((a,b)=>PART_ORDER.indexOf(a.part)-PART_ORDER.indexOf(b.part));
         const foreground=await weaponForeground(engine,gender,pose);
@@ -110,7 +111,9 @@ export class PoseClothing {
     compose(engine,parts,foreground){
         const ctx=this.neutral.getContext('2d'),native=engine.canvas;
         const coverage=makeCanvas(),cover=coverage.getContext('2d');
-        ctx.clearRect(0,0,WIDTH,HEIGHT);ctx.drawImage(native,0,0);
+        ctx.clearRect(0,0,WIDTH,HEIGHT);
+        for(const part of parts)if(part.back)drawRegistered(ctx,part.back);
+        ctx.drawImage(native,0,0);
         // Optional alpha removal belongs only to the equipped garment. Removing
         // that item restores the untouched approved body on the next frame.
         for(const part of parts)if(part.mask){ctx.globalCompositeOperation='destination-out';drawRegistered(ctx,part.mask);}
@@ -132,7 +135,9 @@ export class PoseClothing {
         r.globalCompositeOperation='destination-in';r.drawImage(coverage,0,0);r.globalCompositeOperation='source-over';
         ctx.drawImage(restore,0,0);
         const appearance=makeCanvas(),a=appearance.getContext('2d');
-        for(const layer of engine.appearance.layers.filter(layer=>layer.order>=0))drawAppearance(a,layer,engine.appearance.crown);
+        // The native frame already includes face and neck pixels. Repainting
+        // that layer here would place old skin above the approved collar.
+        for(const layer of engine.appearance.layers.filter(layer=>layer.order>=0&&layer.slot!=='face'))drawAppearance(a,layer,engine.appearance.crown);
         a.globalCompositeOperation='destination-in';a.drawImage(coverage,0,0);a.globalCompositeOperation='source-over';
         ctx.drawImage(appearance,0,0);
     }

@@ -1,0 +1,604 @@
+{
+  "realGameURL": "http://127.0.0.1:3004/index.html?canvas=1",
+  "artworkRoutesMocked": false,
+  "sourceReview": "shirt-sleeve-refine-20261113",
+  "cases": [
+    {
+      "frames": [
+        {
+          "phase": 0,
+          "timeMs": 0,
+          "rgbaSha256": "bff8dec205b553ea2ea8eba3b3e3e8292e83c3e9f8801911be30090656e3bb7f"
+        },
+        {
+          "phase": 1,
+          "timeMs": 225,
+          "rgbaSha256": "a6d54b588eed96a3ac3f9808e356ead63bc08854cf92ba29df461141f5acf806"
+        },
+        {
+          "phase": 2,
+          "timeMs": 450,
+          "rgbaSha256": "f64d6b3023bcdf0e40fed1677a144c85a7138f497be1d028f9a91110eb6f5ad2"
+        },
+        {
+          "phase": 3,
+          "timeMs": 675,
+          "rgbaSha256": "65f141d359cf016b34d7581fcec709cc55208b4be03b185f6972f3a1208cd652"
+        },
+        {
+          "phase": 4,
+          "timeMs": 900,
+          "rgbaSha256": "e04dd7bfce61bbd5a720304d83a833df0d4e089eae9df9106d058b2bf586b387"
+        },
+        {
+          "phase": 5,
+          "timeMs": 1125,
+          "rgbaSha256": "65f141d359cf016b34d7581fcec709cc55208b4be03b185f6972f3a1208cd652"
+        },
+        {
+          "phase": 6,
+          "timeMs": 1350,
+          "rgbaSha256": "f64d6b3023bcdf0e40fed1677a144c85a7138f497be1d028f9a91110eb6f5ad2"
+        },
+        {
+          "phase": 7,
+          "timeMs": 1575,
+          "rgbaSha256": "a6d54b588eed96a3ac3f9808e356ead63bc08854cf92ba29df461141f5acf806"
+        },
+        {
+          "phase": 8,
+          "timeMs": 1800,
+          "rgbaSha256": "bff8dec205b553ea2ea8eba3b3e3e8292e83c3e9f8801911be30090656e3bb7f"
+        },
+        {
+          "phase": 9,
+          "timeMs": 2025,
+          "rgbaSha256": "b070f30eecff68cd2e495669df7f3a7dd694581b78e5be1a4ea22ed496245be8"
+        },
+        {
+          "phase": 10,
+          "timeMs": 2250,
+          "rgbaSha256": "ef06bae08374447bd839523f8607e86e8636933bc3edacc960380817feb27803"
+        },
+        {
+          "phase": 11,
+          "timeMs": 2475,
+          "rgbaSha256": "da919f92cdde7f4cbeea803a8c327be026b867c98705f2e183c284f6f2f630a2"
+        },
+        {
+          "phase": 12,
+          "timeMs": 2700,
+          "rgbaSha256": "804b4bbfdaa55679d40e72dea94adf51adb9fed6d48def4d1fdea4e3cc657caf"
+        },
+        {
+          "phase": 13,
+          "timeMs": 2925,
+          "rgbaSha256": "da919f92cdde7f4cbeea803a8c327be026b867c98705f2e183c284f6f2f630a2"
+        },
+        {
+          "phase": 14,
+          "timeMs": 3150,
+          "rgbaSha256": "ef06bae08374447bd839523f8607e86e8636933bc3edacc960380817feb27803"
+        },
+        {
+          "phase": 15,
+          "timeMs": 3375,
+          "rgbaSha256": "b070f30eecff68cd2e495669df7f3a7dd694581b78e5be1a4ea22ed496245be8"
+        },
+        {
+          "phase": 16,
+          "timeMs": 3600,
+          "rgbaSha256": "bff8dec205b553ea2ea8eba3b3e3e8292e83c3e9f8801911be30090656e3bb7f"
+        }
+      ],
+      "cycleMs": 3600,
+      "width": 1100,
+      "height": 1672,
+      "gender": "male",
+      "pose": "idle",
+      "approvedPixelsExact": true,
+      "nativePixelsExact": true
+    },
+    {
+      "frames": [
+        {
+          "phase": 0,
+          "timeMs": 0,
+          "rgbaSha256": "739cd71e6289f0137ac5775dc6cb019e73d11edf3e7b46ebf7e1c42bd101dd96"
+        },
+        {
+          "phase": 1,
+          "timeMs": 225,
+          "rgbaSha256": "a4d7a95986a2ec0b10bc821979d7caa1248773b2f6247bd86cdf3a618fa923e5"
+        },
+        {
+          "phase": 2,
+          "timeMs": 450,
+          "rgbaSha256": "6463bde80bca52bb42b1f4cd04aaaaaaeee79f7ecb498ddadac5aa36230f7114"
+        },
+        {
+          "phase": 3,
+          "timeMs": 675,
+          "rgbaSha256": "2c20301b0223fc75e614ceae7e18372c85c0d86a4c6d2bb487a81b9a26d42b8f"
+        },
+        {
+          "phase": 4,
+          "timeMs": 900,
+          "rgbaSha256": "48084d3e8097c00f9d90ebb9512411d31c54f6137bb7d07df3c7d0d0c4e13c04"
+        },
+        {
+          "phase": 5,
+          "timeMs": 1125,
+          "rgbaSha256": "2c20301b0223fc75e614ceae7e18372c85c0d86a4c6d2bb487a81b9a26d42b8f"
+        },
+        {
+          "phase": 6,
+          "timeMs": 1350,
+          "rgbaSha256": "6463bde80bca52bb42b1f4cd04aaaaaaeee79f7ecb498ddadac5aa36230f7114"
+        },
+        {
+          "phase": 7,
+          "timeMs": 1575,
+          "rgbaSha256": "a4d7a95986a2ec0b10bc821979d7caa1248773b2f6247bd86cdf3a618fa923e5"
+        },
+        {
+          "phase": 8,
+          "timeMs": 1800,
+          "rgbaSha256": "739cd71e6289f0137ac5775dc6cb019e73d11edf3e7b46ebf7e1c42bd101dd96"
+        },
+        {
+          "phase": 9,
+          "timeMs": 2025,
+          "rgbaSha256": "8875d7dc69108c66b525e60b263fce54f167d6ce778ced1c2598b0afda46557f"
+        },
+        {
+          "phase": 10,
+          "timeMs": 2250,
+          "rgbaSha256": "9d876d448032a5549742e22de958a29366866ac4399a0c8085ce8d6db393a6b4"
+        },
+        {
+          "phase": 11,
+          "timeMs": 2475,
+          "rgbaSha256": "8bc662cf55d5d8155988c47dc86c33d9e22ba7737b5084bea55a0e45f42b6d2e"
+        },
+        {
+          "phase": 12,
+          "timeMs": 2700,
+          "rgbaSha256": "15dc10f6c3062459a7aa7011c7f1400028dbbe55393eba39c94cc37de79bbde6"
+        },
+        {
+          "phase": 13,
+          "timeMs": 2925,
+          "rgbaSha256": "8bc662cf55d5d8155988c47dc86c33d9e22ba7737b5084bea55a0e45f42b6d2e"
+        },
+        {
+          "phase": 14,
+          "timeMs": 3150,
+          "rgbaSha256": "9d876d448032a5549742e22de958a29366866ac4399a0c8085ce8d6db393a6b4"
+        },
+        {
+          "phase": 15,
+          "timeMs": 3375,
+          "rgbaSha256": "8875d7dc69108c66b525e60b263fce54f167d6ce778ced1c2598b0afda46557f"
+        },
+        {
+          "phase": 16,
+          "timeMs": 3600,
+          "rgbaSha256": "739cd71e6289f0137ac5775dc6cb019e73d11edf3e7b46ebf7e1c42bd101dd96"
+        }
+      ],
+      "cycleMs": 3600,
+      "width": 1100,
+      "height": 1672,
+      "gender": "male",
+      "pose": "melee",
+      "approvedPixelsExact": true,
+      "nativePixelsExact": true
+    },
+    {
+      "frames": [
+        {
+          "phase": 0,
+          "timeMs": 0,
+          "rgbaSha256": "6f8ef3526b4915c155f25af658628803d772c295b53e334ca4b3de890d523215"
+        },
+        {
+          "phase": 1,
+          "timeMs": 225,
+          "rgbaSha256": "eaa99c8fc46b6bba09f41a2dd4adb9b4690afb76244c49c1b20af98559e0e874"
+        },
+        {
+          "phase": 2,
+          "timeMs": 450,
+          "rgbaSha256": "423915f88f726c392ce9384fd5ce9be0b96556b5d76336a0f02c856c9b816e98"
+        },
+        {
+          "phase": 3,
+          "timeMs": 675,
+          "rgbaSha256": "b486280a5e3ef2fc57fac24ac69132b823d3359539d67eaf716c95844906360d"
+        },
+        {
+          "phase": 4,
+          "timeMs": 900,
+          "rgbaSha256": "e8b1d43aa854c6ece2f47ec520d24b38c73c2d781db0eaa48f3937aad9e95482"
+        },
+        {
+          "phase": 5,
+          "timeMs": 1125,
+          "rgbaSha256": "b486280a5e3ef2fc57fac24ac69132b823d3359539d67eaf716c95844906360d"
+        },
+        {
+          "phase": 6,
+          "timeMs": 1350,
+          "rgbaSha256": "423915f88f726c392ce9384fd5ce9be0b96556b5d76336a0f02c856c9b816e98"
+        },
+        {
+          "phase": 7,
+          "timeMs": 1575,
+          "rgbaSha256": "eaa99c8fc46b6bba09f41a2dd4adb9b4690afb76244c49c1b20af98559e0e874"
+        },
+        {
+          "phase": 8,
+          "timeMs": 1800,
+          "rgbaSha256": "6f8ef3526b4915c155f25af658628803d772c295b53e334ca4b3de890d523215"
+        },
+        {
+          "phase": 9,
+          "timeMs": 2025,
+          "rgbaSha256": "4361dcde806a1b8e0ac65a6446871844f4c99b3b2f8e011c951304748675f669"
+        },
+        {
+          "phase": 10,
+          "timeMs": 2250,
+          "rgbaSha256": "5ee24bd2d9297489747f5678966a80361a2528ead8aaf2c8726b77797ef3b43b"
+        },
+        {
+          "phase": 11,
+          "timeMs": 2475,
+          "rgbaSha256": "9b011d919911c611694d6bee67ed48602571dee682e4d859d724ff160747fa56"
+        },
+        {
+          "phase": 12,
+          "timeMs": 2700,
+          "rgbaSha256": "99e98fa16eaf92290203be319eec20b2c93e5ae52a6737a3422f0071f1c1a5e2"
+        },
+        {
+          "phase": 13,
+          "timeMs": 2925,
+          "rgbaSha256": "9b011d919911c611694d6bee67ed48602571dee682e4d859d724ff160747fa56"
+        },
+        {
+          "phase": 14,
+          "timeMs": 3150,
+          "rgbaSha256": "5ee24bd2d9297489747f5678966a80361a2528ead8aaf2c8726b77797ef3b43b"
+        },
+        {
+          "phase": 15,
+          "timeMs": 3375,
+          "rgbaSha256": "4361dcde806a1b8e0ac65a6446871844f4c99b3b2f8e011c951304748675f669"
+        },
+        {
+          "phase": 16,
+          "timeMs": 3600,
+          "rgbaSha256": "6f8ef3526b4915c155f25af658628803d772c295b53e334ca4b3de890d523215"
+        }
+      ],
+      "cycleMs": 3600,
+      "width": 1100,
+      "height": 1672,
+      "gender": "male",
+      "pose": "rifle",
+      "approvedPixelsExact": true,
+      "nativePixelsExact": true
+    },
+    {
+      "frames": [
+        {
+          "phase": 0,
+          "timeMs": 0,
+          "rgbaSha256": "b05d0e22492fe69acbc3f9ac8c640376cd9e6d7d784456b90b79291ffeb46342"
+        },
+        {
+          "phase": 1,
+          "timeMs": 225,
+          "rgbaSha256": "ddbc01797b96361a69365bfe2a9bdd7f97388e961d4db8f94f429d5c5b168455"
+        },
+        {
+          "phase": 2,
+          "timeMs": 450,
+          "rgbaSha256": "0d634f7556279a6987ee92e0bddbaeb27628bd9afbf4a4cb58ca79af585a3870"
+        },
+        {
+          "phase": 3,
+          "timeMs": 675,
+          "rgbaSha256": "ee017bc4bea5eb337810ded3b9987beb0537f676b3b9828c790cfe3b527eff61"
+        },
+        {
+          "phase": 4,
+          "timeMs": 900,
+          "rgbaSha256": "c33c2a265308cb8b4d7a02e290de17ef16b10b224b7bf057b71738c2f4e932b0"
+        },
+        {
+          "phase": 5,
+          "timeMs": 1125,
+          "rgbaSha256": "ee017bc4bea5eb337810ded3b9987beb0537f676b3b9828c790cfe3b527eff61"
+        },
+        {
+          "phase": 6,
+          "timeMs": 1350,
+          "rgbaSha256": "0d634f7556279a6987ee92e0bddbaeb27628bd9afbf4a4cb58ca79af585a3870"
+        },
+        {
+          "phase": 7,
+          "timeMs": 1575,
+          "rgbaSha256": "ddbc01797b96361a69365bfe2a9bdd7f97388e961d4db8f94f429d5c5b168455"
+        },
+        {
+          "phase": 8,
+          "timeMs": 1800,
+          "rgbaSha256": "b05d0e22492fe69acbc3f9ac8c640376cd9e6d7d784456b90b79291ffeb46342"
+        },
+        {
+          "phase": 9,
+          "timeMs": 2025,
+          "rgbaSha256": "9b95320cd1a9a713bcfca7b13ed949784b8e2d06455333731447452fb0eefad1"
+        },
+        {
+          "phase": 10,
+          "timeMs": 2250,
+          "rgbaSha256": "174fb8f9f655f8095573ea43a511b032c42949232694d34cf1bc16da83e63f65"
+        },
+        {
+          "phase": 11,
+          "timeMs": 2475,
+          "rgbaSha256": "55e1858f3b4bb12cf53e68db2a74ef077169216d17f671c72acd042870fc0706"
+        },
+        {
+          "phase": 12,
+          "timeMs": 2700,
+          "rgbaSha256": "72ce53fd93b72a6123409b4d5c3d2129c522b63a9ed66d82d7e84cbc4eaad3f7"
+        },
+        {
+          "phase": 13,
+          "timeMs": 2925,
+          "rgbaSha256": "55e1858f3b4bb12cf53e68db2a74ef077169216d17f671c72acd042870fc0706"
+        },
+        {
+          "phase": 14,
+          "timeMs": 3150,
+          "rgbaSha256": "174fb8f9f655f8095573ea43a511b032c42949232694d34cf1bc16da83e63f65"
+        },
+        {
+          "phase": 15,
+          "timeMs": 3375,
+          "rgbaSha256": "9b95320cd1a9a713bcfca7b13ed949784b8e2d06455333731447452fb0eefad1"
+        },
+        {
+          "phase": 16,
+          "timeMs": 3600,
+          "rgbaSha256": "b05d0e22492fe69acbc3f9ac8c640376cd9e6d7d784456b90b79291ffeb46342"
+        }
+      ],
+      "cycleMs": 3600,
+      "width": 1200,
+      "height": 1672,
+      "gender": "female",
+      "pose": "idle",
+      "approvedPixelsExact": true,
+      "nativePixelsExact": true
+    },
+    {
+      "frames": [
+        {
+          "phase": 0,
+          "timeMs": 0,
+          "rgbaSha256": "5670897dd7afbd44f1fcaa7132d9c593555d2599e822a297579fa14ae4694b1f"
+        },
+        {
+          "phase": 1,
+          "timeMs": 225,
+          "rgbaSha256": "525f500f9a56bd6cb6b1eb19d2132ce14b4af9cd08b3f4523047d06ebb260aa2"
+        },
+        {
+          "phase": 2,
+          "timeMs": 450,
+          "rgbaSha256": "bfff59b465096929b530887555105a4458bbf021f1a652d809ffd72cf9a0fbde"
+        },
+        {
+          "phase": 3,
+          "timeMs": 675,
+          "rgbaSha256": "11cc829b77b9a5a7f5955611692e060a290903cf4e85310503a572098882a378"
+        },
+        {
+          "phase": 4,
+          "timeMs": 900,
+          "rgbaSha256": "612ac5cbc367e2f024adea12d28eb6181e47c642411114ded82d7bab08064869"
+        },
+        {
+          "phase": 5,
+          "timeMs": 1125,
+          "rgbaSha256": "11cc829b77b9a5a7f5955611692e060a290903cf4e85310503a572098882a378"
+        },
+        {
+          "phase": 6,
+          "timeMs": 1350,
+          "rgbaSha256": "bfff59b465096929b530887555105a4458bbf021f1a652d809ffd72cf9a0fbde"
+        },
+        {
+          "phase": 7,
+          "timeMs": 1575,
+          "rgbaSha256": "525f500f9a56bd6cb6b1eb19d2132ce14b4af9cd08b3f4523047d06ebb260aa2"
+        },
+        {
+          "phase": 8,
+          "timeMs": 1800,
+          "rgbaSha256": "5670897dd7afbd44f1fcaa7132d9c593555d2599e822a297579fa14ae4694b1f"
+        },
+        {
+          "phase": 9,
+          "timeMs": 2025,
+          "rgbaSha256": "bb43064389637e76691fda00c2f1b11949f8cf0f6d80cfc4d512e373991bf62f"
+        },
+        {
+          "phase": 10,
+          "timeMs": 2250,
+          "rgbaSha256": "b51cef9608e604d1835587e97611c58b527cf9de917c586f9588705e99f6ef47"
+        },
+        {
+          "phase": 11,
+          "timeMs": 2475,
+          "rgbaSha256": "117c647fa39910a5d3e773cfb8094bc18d92b70f62c21c917c1fce7013c3b6cb"
+        },
+        {
+          "phase": 12,
+          "timeMs": 2700,
+          "rgbaSha256": "679b3a8537d972dacbe600a51de3000b6711bef79965e04f6d6819b0d73a7ad5"
+        },
+        {
+          "phase": 13,
+          "timeMs": 2925,
+          "rgbaSha256": "117c647fa39910a5d3e773cfb8094bc18d92b70f62c21c917c1fce7013c3b6cb"
+        },
+        {
+          "phase": 14,
+          "timeMs": 3150,
+          "rgbaSha256": "b51cef9608e604d1835587e97611c58b527cf9de917c586f9588705e99f6ef47"
+        },
+        {
+          "phase": 15,
+          "timeMs": 3375,
+          "rgbaSha256": "bb43064389637e76691fda00c2f1b11949f8cf0f6d80cfc4d512e373991bf62f"
+        },
+        {
+          "phase": 16,
+          "timeMs": 3600,
+          "rgbaSha256": "5670897dd7afbd44f1fcaa7132d9c593555d2599e822a297579fa14ae4694b1f"
+        }
+      ],
+      "cycleMs": 3600,
+      "width": 1200,
+      "height": 1672,
+      "gender": "female",
+      "pose": "melee",
+      "approvedPixelsExact": true,
+      "nativePixelsExact": true
+    },
+    {
+      "frames": [
+        {
+          "phase": 0,
+          "timeMs": 0,
+          "rgbaSha256": "a48564c1c724bebe03bc440c671bb9d7db7a49a82200a9118d3150344c578812"
+        },
+        {
+          "phase": 1,
+          "timeMs": 225,
+          "rgbaSha256": "5c9ddf3c7e1a78c79bbeb125a83b8198b0553848dd035ad58acc594bc15fec81"
+        },
+        {
+          "phase": 2,
+          "timeMs": 450,
+          "rgbaSha256": "93ec625d325c98fa8aa7d79f3c3622918b38357290ba8cc26b9aa78dfe37bac2"
+        },
+        {
+          "phase": 3,
+          "timeMs": 675,
+          "rgbaSha256": "b730e575d3c4b2885c053cae6d04677b274edf04150db4ed98c303ca61ba6409"
+        },
+        {
+          "phase": 4,
+          "timeMs": 900,
+          "rgbaSha256": "1e26644b1b9db24c59908d2ae9507c5baa18ed9e59dc88a516d96cb995642d82"
+        },
+        {
+          "phase": 5,
+          "timeMs": 1125,
+          "rgbaSha256": "b730e575d3c4b2885c053cae6d04677b274edf04150db4ed98c303ca61ba6409"
+        },
+        {
+          "phase": 6,
+          "timeMs": 1350,
+          "rgbaSha256": "93ec625d325c98fa8aa7d79f3c3622918b38357290ba8cc26b9aa78dfe37bac2"
+        },
+        {
+          "phase": 7,
+          "timeMs": 1575,
+          "rgbaSha256": "5c9ddf3c7e1a78c79bbeb125a83b8198b0553848dd035ad58acc594bc15fec81"
+        },
+        {
+          "phase": 8,
+          "timeMs": 1800,
+          "rgbaSha256": "a48564c1c724bebe03bc440c671bb9d7db7a49a82200a9118d3150344c578812"
+        },
+        {
+          "phase": 9,
+          "timeMs": 2025,
+          "rgbaSha256": "e35e680525c9e28da724e4c294dd5f183e951e6121d4e0e254a43b35977142fa"
+        },
+        {
+          "phase": 10,
+          "timeMs": 2250,
+          "rgbaSha256": "18bbad7b56b07d784bc4a716945d5ca8ddbfb36ded1d0a607c4c64df29608cad"
+        },
+        {
+          "phase": 11,
+          "timeMs": 2475,
+          "rgbaSha256": "ea42ebe69801fbb937e5d7b93ee409813331520996b607372f3cdf3b6a036081"
+        },
+        {
+          "phase": 12,
+          "timeMs": 2700,
+          "rgbaSha256": "ed785017bd29070e749c099cc1bf22e2c2f4f1f05594d435a7a4a2d4648774c8"
+        },
+        {
+          "phase": 13,
+          "timeMs": 2925,
+          "rgbaSha256": "ea42ebe69801fbb937e5d7b93ee409813331520996b607372f3cdf3b6a036081"
+        },
+        {
+          "phase": 14,
+          "timeMs": 3150,
+          "rgbaSha256": "18bbad7b56b07d784bc4a716945d5ca8ddbfb36ded1d0a607c4c64df29608cad"
+        },
+        {
+          "phase": 15,
+          "timeMs": 3375,
+          "rgbaSha256": "e35e680525c9e28da724e4c294dd5f183e951e6121d4e0e254a43b35977142fa"
+        },
+        {
+          "phase": 16,
+          "timeMs": 3600,
+          "rgbaSha256": "a48564c1c724bebe03bc440c671bb9d7db7a49a82200a9118d3150344c578812"
+        }
+      ],
+      "cycleMs": 3600,
+      "width": 1200,
+      "height": 1672,
+      "gender": "female",
+      "pose": "rifle",
+      "approvedPixelsExact": true,
+      "nativePixelsExact": true
+    }
+  ],
+  "actualMotionFrames": 102,
+  "allApprovedFrameRGBAExact": true,
+  "allNativeFrameRGBAExact": true,
+  "verifiedActualRuntimeSources": {
+    "assets/wardrobe/clothing/patient/pajamas/male/top-idle.png": "f55d4e5d9f7c4f155b1228dd41ea8a3065869d5b1a8e54d19df5a21ec9c1bbfe",
+    "assets/wardrobe/clothing/patient/pajamas/male/top-melee.png": "906a6ef4956b43efa57ca5f72c3d63df8d85b1966cfb8658969d62dca117824e",
+    "assets/wardrobe/clothing/patient/pajamas/male/top-rifle.png": "7796c09c33d88a8469b84c5c733d431e93aa12ac728ba89d5aa36d404ca2c085",
+    "assets/wardrobe/clothing/patient/pajamas/male/back-idle.png": "af57cfab58fcd2475e818b9a6287225e9e1a26006ef0e531c8fb0d9d4d692669",
+    "assets/wardrobe/clothing/patient/pajamas/male/back-melee.png": "56e8919c2d59dba313f817f3073ced17771d5d3bb96689d8188e8638a0ee2c35",
+    "assets/wardrobe/clothing/patient/pajamas/male/back-rifle.png": "89adcfa598ebed0b1f435cad625c162267ef54431ef1fe4fd21a9aa26e31f083",
+    "assets/wardrobe/clothing/patient/pajamas/female/top-idle.png": "1e087eb02b497f375c71db98a5788eaf682c1c18ec98e9a37a99db3beb5047b0",
+    "assets/wardrobe/clothing/patient/pajamas/female/top-melee.png": "c3df05497493c130ddc8ef8c97df8188cad9c3ce87f5666f2fe9ca528f5784c5",
+    "assets/wardrobe/clothing/patient/pajamas/female/top-rifle.png": "d239135eaedbeb057ee89acc09216d1889b5a42d09b6c2b84b7510aa310dad57",
+    "assets/wardrobe/clothing/patient/pajamas/female/back-idle.png": "53a82c63ada55fce7c66c94224b78f24ea431a64397f0f93d4b8bd8cf5477a44",
+    "assets/wardrobe/clothing/patient/pajamas/female/back-melee.png": "1b736b925d412d674bb04907a8f075f02993be5e9e6c87fb9a1f5c4b3222589d",
+    "assets/wardrobe/clothing/patient/pajamas/female/back-rifle.png": "6c2f3a664fd45b6881ce85dc7d15b78a2eba25a99f116fea6fbbf45adcc07fe8"
+  },
+  "browserErrors": [],
+  "limits": [
+    "17 sampled phases per pose cover the existing shared 3600 ms breathing cycle. There is no separate clothed arm skeleton or combat action cycle."
+  ]
+}

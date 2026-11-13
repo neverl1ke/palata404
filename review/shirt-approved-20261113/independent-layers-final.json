@@ -1,0 +1,178 @@
+{
+  "iteration": "H — shirt sleeve refinement, 2026-11-13",
+  "reviewer": "independent cuff/layer reviewer",
+  "reviewedAtUTC": "2026-11-13T10:28:13.053951+00:00",
+  "result": "PASS for user review within inspected source, static and sampled-motion scope",
+  "perMark": [
+    {
+      "id": "R1",
+      "pose": "male idle",
+      "zone": "screen-right cuff, inner rear fabric",
+      "status": "PASS for user review",
+      "sourceChange": "28 rear-only alpha reductions, bbox [725,850,732,857]; front and native unchanged. Exact independently reviewed short-rear proposal.",
+      "visualFinding": "Rejected downward tail removed. Rear lip remains curved and visibly behind the wrist. No new enclosed hole or pale internal halo seen in actual before/after or sampled motion. Natural exterior opening is left open, per user clarification; superseded G four-pixel fill criteria were not applied.",
+      "evidence": "FINAL-R1-actual.png"
+    },
+    {
+      "id": "R2",
+      "pose": "female idle and female melee",
+      "zone": "screen-right forearm inner edge",
+      "status": "PASS for user review",
+      "sourceChange": "Shared stale fragment from the former hard ROI boundary removed by local alpha geometry; 111 pixels per pose. Endpoint blends join existing contour without RGB filtering. No changed pixel intersects native A>0.",
+      "visualFinding": "Dangling inner needle absent in both current actual poses. No endpoint notch, flat patch, exposed skin or changed weave seen. Natural concavity remains.",
+      "evidence": [
+        "FINAL-R2-idle-actual.png",
+        "FINAL-R2-melee-actual.png"
+      ]
+    },
+    {
+      "id": "R3",
+      "pose": "female melee",
+      "zone": "screen-right forearm outer edge",
+      "status": "PASS for user review",
+      "sourceChange": "69 additional local alpha reductions round the old tip; fold RGB and bulk retained. No changed pixel intersects native A>0.",
+      "visualFinding": "Abrupt pointed tip becomes a continuous rounded fold edge, with existing stripe/fold shading retained. No new notch or skin gap seen in actual enlarged panels or sampled motion.",
+      "evidence": "FINAL-R3-actual.png"
+    }
+  ],
+  "visualReview": {
+    "actualFullSix": "FINAL-full-six.png",
+    "isolatedFrontRearAllSix": "FINAL-isolated-front-rear-six.png",
+    "enlargedCriticalPhases": "FINAL-critical-motion.png",
+    "wholeShirtPerimeterAllSixReviewed": true,
+    "collarShoulderAxillaSleeveCuffHemReviewed": true,
+    "actualMotionContactSheetsReviewed": [
+      "FINAL-motion17-top-male-idle.png",
+      "FINAL-motion17-top-male-melee.png",
+      "FINAL-motion17-top-male-rifle.png",
+      "FINAL-motion17-top-female-idle.png",
+      "FINAL-motion17-top-female-melee.png",
+      "FINAL-motion17-top-female-rifle.png",
+      "FINAL-motion17-hidden-rifle-male-rifle.png",
+      "FINAL-motion17-hidden-rifle-female-rifle.png"
+    ],
+    "motionCases": 8,
+    "phasesPerCase": 17,
+    "timesMs": [
+      0,
+      225,
+      450,
+      675,
+      900,
+      1125,
+      1350,
+      1575,
+      1800,
+      2025,
+      2250,
+      2475,
+      2700,
+      2925,
+      3150,
+      3375,
+      3600
+    ],
+    "rifleAlsoReviewedHidden": true,
+    "newConfirmedDefectsFound": []
+  },
+  "preservation": {
+    "originalFileGuardsPassed": 136,
+    "GSourcePNGsUnchanged": 36,
+    "GCapturePNGsUnchanged": 144,
+    "HBeforeExactG": true,
+    "canvas": [
+      941,
+      1672
+    ],
+    "bodyPoseHandsCoordinatesUnchanged": true,
+    "sixEditorSplitReassembliesExact": true,
+    "retainedNonzeroAlphaRGBExactG": true,
+    "onlyAlphaReductionsInThreeMasters": [
+      {
+        "gender": "male",
+        "pose": "idle",
+        "part": "back",
+        "pixels": 28,
+        "bbox": [
+          725,
+          850,
+          732,
+          857
+        ],
+        "onlyAlphaDecreased": true,
+        "retainedRGBExact": true,
+        "nativeAgt240Touched": 0
+      },
+      {
+        "gender": "female",
+        "pose": "idle",
+        "part": "top",
+        "pixels": 111,
+        "bbox": [
+          656,
+          703,
+          677,
+          738
+        ],
+        "onlyAlphaDecreased": true,
+        "retainedRGBExact": true,
+        "nativeAgt240Touched": 0
+      },
+      {
+        "gender": "female",
+        "pose": "melee",
+        "part": "top",
+        "pixels": 180,
+        "bbox": [
+          656,
+          703,
+          767,
+          768
+        ],
+        "onlyAlphaDecreased": true,
+        "retainedRGBExact": true,
+        "nativeAgt240Touched": 0
+      }
+    ],
+    "otherNineMastersUnchanged": true,
+    "pantsAndFootwearUnchanged": true
+  },
+  "actualVerification": {
+    "captureComplete": true,
+    "sourcePinsCurrent": true,
+    "nativeFrameDigestsEqualG": 136,
+    "deepHandCoreFramesCompared": 136,
+    "deepHandCoreMaximumRGBADifference": 0,
+    "fullProtectedBoundaryOccurrencesAcross102NormalFrames": 254,
+    "fullProtectedMaximumRGBADifference": 229,
+    "boundaryExplanation": "All nonzero full-mask differences versus G occur at the male-idle rear-cuff/wrist matte/background boundary after the rejected low rear lip was removed. Male front and native are unchanged; female forearm trims touch no native-positive source pixels or hand regions. This is not a claim that every full protected-mask RGBA pixel is identical.",
+    "uiStates": 12,
+    "uiSourcePinsCurrent": true,
+    "unequipReloadMobilePassed": true
+  },
+  "motionModel": "Existing shared BreathingSurface warps the assembled native/body/clothes together; authored idle/melee/rifle poses, no working joint skeleton assumed.",
+  "finalMastersSha256": {
+    "review/shirt-sleeve-refine-20261113/candidate/female/back-melee.png": "1b736b925d412d674bb04907a8f075f02993be5e9e6c87fb9a1f5c4b3222589d",
+    "review/shirt-sleeve-refine-20261113/candidate/female/top-melee.png": "c3df05497493c130ddc8ef8c97df8188cad9c3ce87f5666f2fe9ca528f5784c5",
+    "review/shirt-sleeve-refine-20261113/candidate/female/top-rifle.png": "d239135eaedbeb057ee89acc09216d1889b5a42d09b6c2b84b7510aa310dad57",
+    "review/shirt-sleeve-refine-20261113/candidate/female/back-idle.png": "53a82c63ada55fce7c66c94224b78f24ea431a64397f0f93d4b8bd8cf5477a44",
+    "review/shirt-sleeve-refine-20261113/candidate/female/back-rifle.png": "6c2f3a664fd45b6881ce85dc7d15b78a2eba25a99f116fea6fbbf45adcc07fe8",
+    "review/shirt-sleeve-refine-20261113/candidate/female/top-idle.png": "1e087eb02b497f375c71db98a5788eaf682c1c18ec98e9a37a99db3beb5047b0",
+    "review/shirt-sleeve-refine-20261113/candidate/male/back-melee.png": "56e8919c2d59dba313f817f3073ced17771d5d3bb96689d8188e8638a0ee2c35",
+    "review/shirt-sleeve-refine-20261113/candidate/male/top-melee.png": "906a6ef4956b43efa57ca5f72c3d63df8d85b1966cfb8658969d62dca117824e",
+    "review/shirt-sleeve-refine-20261113/candidate/male/top-rifle.png": "7796c09c33d88a8469b84c5c733d431e93aa12ac728ba89d5aa36d404ca2c085",
+    "review/shirt-sleeve-refine-20261113/candidate/male/back-idle.png": "af57cfab58fcd2475e818b9a6287225e9e1a26006ef0e531c8fb0d9d4d692669",
+    "review/shirt-sleeve-refine-20261113/candidate/male/back-rifle.png": "89adcfa598ebed0b1f435cad625c162267ef54431ef1fe4fd21a9aa26e31f083",
+    "review/shirt-sleeve-refine-20261113/candidate/male/top-idle.png": "f55d4e5d9f7c4f155b1228dd41ea8a3065869d5b1a8e54d19df5a21ec9c1bbfe"
+  },
+  "technicalEvidence": "H-FINAL-TECHNICAL.json",
+  "unresolvedConfirmedDefects": [],
+  "limits": [
+    "Visual motion inspection uses 17 captured phases of the actual 3600 ms cycle, not every intermediate instant.",
+    "Raster edges remain finite-resolution anti-aliased contours; nearest-neighbour enlarged comparison pixels are not evidence of an additional blur operation.",
+    "These findings approve presentation for user review, not publication or replacement of approved assets."
+  ],
+  "readyForUserReview": true,
+  "publicationApproval": false,
+  "candidateModifiedByReviewer": false
+}
