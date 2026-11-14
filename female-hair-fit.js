@@ -25,7 +25,8 @@ function fittedFemaleHairSource(source, color, reference, fit) {
     }
     const promise = (async () => {
         const image = new Image();
-        image.src = await coloredHairSource(source, color, reference);
+        const colored = await coloredHairSource(source, color, reference);
+        image.src = window.PalataOutline ? await PalataOutline.source(colored) : colored;
         await image.decode();
         const canvas = document.createElement('canvas');
         canvas.width = 941; canvas.height = 1672;

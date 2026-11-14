@@ -12,7 +12,7 @@ const makeCanvas=(width=WIDTH)=>{const c=document.createElement('canvas');c.widt
 const copy=source=>{const c=makeCanvas(source.width);c.getContext('2d').drawImage(source,0,0);return c;};
 function bitmap(source){
     if(!bitmapCache.has(source)){
-        const task=new Promise((resolve,reject)=>{const image=new Image();image.onload=()=>resolve(image);image.onerror=()=>reject(new Error('Pajama artwork unavailable: '+source));image.src=source;});
+        const task=new Promise((resolve,reject)=>{const image=new Image();image.onload=()=>Promise.resolve(window.PalataOutline?.bitmap(image,source)||image).then(resolve,reject);image.onerror=()=>reject(new Error('Pajama artwork unavailable: '+source));image.src=source;});
         bitmapCache.set(source,task);task.catch(()=>bitmapCache.delete(source));
         while(bitmapCache.size>48)bitmapCache.delete(bitmapCache.keys().next().value);
     }

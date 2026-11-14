@@ -69,7 +69,7 @@ function hairReferenceMedian(source) {
             } catch (error) { reject(error); }
         };
         image.onerror = () => reject(new Error('Не вдалося завантажити еталон відтінку волосся'));
-        image.src = source;
+        Promise.resolve(window.PalataOutline?.source(source)||source).then(url=>{image.src=url;});
     });
     hairReferenceMedians.set(source,promise);
     promise.catch(() => { if (hairReferenceMedians.get(source) === promise) hairReferenceMedians.delete(source); });
@@ -133,7 +133,7 @@ function coloredHairSource(source, id, referenceSource = null) {
             } catch (error) { reject(error); }
         };
         image.onerror=() => reject(new Error('Не вдалося завантажити PNG зачіски'));
-        image.src=source;
+        Promise.resolve(window.PalataOutline?.source(source)||source).then(url=>{image.src=url;});
     });
     hairColorCache.set(key,promise);
     // Data URLs remain valid for currently displayed layers after LRU eviction.

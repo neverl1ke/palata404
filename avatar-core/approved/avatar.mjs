@@ -2,7 +2,7 @@
 const imageCache=new Map();
 function image(source) {
     if(!imageCache.has(source)) {
-        const promise=new Promise((resolve,reject)=>{const i=new Image();i.onload=()=>resolve(i);i.onerror=()=>reject(new Error('Appearance PNG unavailable'));i.src=source});
+        const promise=new Promise((resolve,reject)=>{const i=new Image();i.onload=()=>Promise.resolve(window.PalataOutline?.bitmap(i,source)||i).then(resolve,reject);i.onerror=()=>reject(new Error('Appearance PNG unavailable'));i.src=source});
         imageCache.set(source,promise);promise.catch(()=>imageCache.delete(source));
         while(imageCache.size>96) imageCache.delete(imageCache.keys().next().value);
     }

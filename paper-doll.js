@@ -469,14 +469,17 @@ function renderPaperDollControls(renderSlots = true) {
 }
 
 // Source identity stays separate from the runtime color image and its error state.
-function setPaperDollImage(image, displaySource, originalSource) {
+async function setPaperDollImage(image, displaySource, originalSource, skipOutline=false) {
+    const request=image.paperHairRequest;
+    if(!skipOutline && window.PalataOutline) displaySource=await PalataOutline.source(displaySource);
+    if(request!==image.paperHairRequest)return;
     if (image.getAttribute('src') !== displaySource) image.classList.add('hidden');
     image.onload = () => { if (image.getAttribute('src') === displaySource && image.naturalWidth > 0) image.classList.remove('hidden'); };
     image.onerror = () => {
         if (image.getAttribute('src') !== displaySource) return;
         if (displaySource !== originalSource) {
             image.paperHairRequest = null;
-            setPaperDollImage(image, originalSource, originalSource);
+            setPaperDollImage(image, originalSource, originalSource, true);
             document.getElementById('hair-color-error')?.classList.remove('hidden');
             return;
         }
