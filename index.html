@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="scene-loading.css?v=9c9bf32b3eaf">
     <link rel="stylesheet" href="hud-card.css?v=d64aced52614">
 <link rel="stylesheet" href="quest-prototype.css?v=2cccd177cd03">
+<link rel="stylesheet" href="level-notice.css?v=d789a7fc0171">
 </head>
 <body>
 <section id="scene-loading" class="scene-loading" aria-label="Загрузка игры"><div class="scene-loading-paper"><strong class="scene-loading-name">ПАЛАТА 404</strong><p role="status" aria-live="polite">Подготовка палаты…</p><div class="scene-loading-line" aria-hidden="true"></div><button type="button" hidden>Повторить</button></div></section>
@@ -398,7 +399,7 @@
     <script src="wardrobe.js?v=f7526db229ae" defer></script>
     <script src="wardrobe-tablet.js?v=fca32b70b7d1" defer></script>
     <script src="wardrobe-archive.js?v=2cc4980cab6c" defer></script>
-    <script src="script.js?v=5f1384d853bc" defer></script>
+    <script src="script.js?v=680303e499dd" defer></script>
     <!-- Модальне вікно: Медичне Досьє пацієнта (Аркуш паперу А4) -->
     <div id="dossier-modal" role="dialog" aria-modal="true" aria-label="Особисте досьє" class="modal center-modal hidden">
         <div class="modal-content dossier-paper">
@@ -791,6 +792,8 @@
 <script src="quest-engine.js?v=447dff6b8310" defer></script>
 <script src="quest-art.js?v=floor10-main-1" defer></script>
 <script src="quest-scenes.js?v=fba30ad334ab" defer></script>
-<script src="quest-prototype.js?v=cdc36bbfd1af" defer></script>
+<script src="quest-prototype.js?v=bacd286a3b54" defer></script>
+<dialog id="level-notice" aria-labelledby="level-notice-title" oncancel="event.preventDefault();closeLevelNotice()">
+<article class="document-paper"><document-header variant="center" department="ПІДВИЩЕННЯ РІВНЯ"></document-header><h2 id="level-notice-title">Ви отримали новий рівень!</h2><p class="level-notice-number" id="level-notice-number"></p><p>Нагороду вже зараховано</p><ul><li>100 срібла</li><li>50 таблеток</li><li>5 баксів</li></ul><button type="button" onclick="closeLevelNotice()">Продовжити</button></article></dialog>
 </body>
 </html>

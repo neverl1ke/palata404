@@ -282,14 +282,14 @@ test('both bosses produce their own registry identity and one MVP-adjusted rewar
         assert.equal(g.run('lastBattleResult.boss.conclusion'), g.run(`bossesDatabase.${key}.victoryReport.conclusion`));
         assert.equal(g.run('lastBattleResult.payout.exp'), exp);
         assert.equal(g.run('lastBattleResult.payout.silver'), silver);
-        assert.equal(g.run('stats.silver'), 150+silver);
+        assert.equal(g.run('stats.silver'), 150+silver+(key==='doctor'?100:0));
         g.run('handleVictory(); openLastBattleResult(); closeLastBattleResult(); openLastBattleResult();');
-        assert.equal(g.run('stats.silver'), 150+silver);
+        assert.equal(g.run('stats.silver'), 150+silver+(key==='doctor'?100:0));
         assert.equal(g.run('stats.bossesKilled'), 1);
         assert.equal(g.run('inventory.filter(i=>i.category==="quest").length'), 1);
         const reload = game(Object.fromEntries(g.storage));
         reload.run('openLastBattleResult(); handleVictory();');
-        assert.equal(reload.run('stats.silver'), 150+silver);
+        assert.equal(reload.run('stats.silver'), 150+silver+(key==='doctor'?100:0));
         assert.equal(reload.run('stats.bossesKilled'), 1);
         assert.equal(reload.run('lastBattleResult.battleId'), g.run('lastBattleResult.battleId'));
     }
@@ -508,19 +508,19 @@ test('archive write failures retain the reward journal, retry once and honor cle
     g.run('stats.baseDamage=300; recalculateEquipmentStats(); startBossFight("nurse"); performPlayerAttack(); startBossFight("doctor");');
     g.failedKeys.add(g.run('raidArchiveRecordKey(currentBattleSession.id)'));
     g.run('performPlayerAttack();');
-    assert.equal(g.run('stats.silver'),265);
+    assert.equal(g.run('stats.silver'),365);
     assert.equal(g.run('raidArchiveSaveFailed'),true);
     assert.equal(g.run('readRaidArchive().length'),1);
     assert.ok(g.storage.has('palata404_pending_battle_reward'));
     g.run('clearRaidArchive();');
     g.failedKeys.clear();
     g.run('retryBattleResultSave(); handleVictory();');
-    assert.equal(g.run('stats.silver'),265);
+    assert.equal(g.run('stats.silver'),365);
     assert.equal(g.run('readRaidArchive().length'),0);
     assert.equal(g.storage.has('palata404_pending_battle_reward'),false);
     const restored=game(Object.fromEntries(g.storage));
     assert.equal(restored.run('readRaidArchive().length'),0);
-    assert.equal(restored.run('stats.silver'),265);
+    assert.equal(restored.run('stats.silver'),365);
 });
 
 test('archives and pending-result access are isolated by stable identity, not nickname', () => {
@@ -723,7 +723,7 @@ test('interrupted document and collection saves recover ready snapshots without 
     const profile=g.run('JSON.stringify(staffArchiveState)');
     const restored=game(Object.fromEntries(g.storage));
     assert.equal(restored.run('JSON.stringify(staffArchiveState)'),profile);
-    assert.equal(restored.run('stats.silver'),234);
+    assert.equal(restored.run('stats.silver'),334);
     restored.run('stats.baseDamage=300; recalculateEquipmentStats(); Math.random=()=>0; for(let i=0;i<4;i++){startBossFight("doctor"); performPlayerAttack();}');
     const before=restored.run('stats.silver');
     restored.failedKeys.add('palata404_stats');
@@ -1770,3 +1770,5 @@ test('legacy weapons with unknown model and rarity keep their bonus without brea
     assert.equal(g.run('stats.damage'),22);
     assert.equal(g.run('inventory[0].count'),1);
 });
+
+test('level bonuses apply per reached level and do not replay on reload',()=>{const g=game();g.run('addExperience(400,false);updateUI()');assert.equal(g.run('stats.level'),3);assert.equal(g.run('stats.silver'),350);assert.equal(g.run('stats.pills'),105);assert.equal(g.run('stats.bucks'),20);const r=game(Object.fromEntries(g.storage));assert.equal(r.run('stats.silver'),350);assert.equal(r.run('stats.pills'),105);assert.equal(r.run('stats.bucks'),20);});

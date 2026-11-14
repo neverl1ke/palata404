@@ -464,10 +464,27 @@ function addExperience(amount, notify = true) {
         const previousHp = stats.hp;
         stats.hp = stats.maxHp;
         recordPlayerRecovery(stats.hp - previousHp);
+        stats.silver += 100; stats.pills += 50; stats.bucks += 5;
         reachedLevels.push(stats.level);
-        if (notify) alert(`Вітаємо! Ви досягли ${stats.level} рівня!\nВаше звання: ${getPlayerRank(stats.level)}`);
     }
+    if (notify) reachedLevels.forEach(showLevelNotice);
     return reachedLevels;
+}
+
+const levelNoticeQueue = [];
+function showLevelNotice(level) {
+    levelNoticeQueue.push(level);
+    renderLevelNotice();
+}
+function renderLevelNotice() {
+    const modal = document.getElementById("level-notice");
+    if (!modal || modal.open || !levelNoticeQueue.length || !modal.showModal) return;
+    document.getElementById("level-notice-number").textContent = levelNoticeQueue.shift();
+    modal.showModal();
+}
+function closeLevelNotice() {
+    document.getElementById("level-notice").close();
+    renderLevelNotice();
 }
 
 function setGender(selectedGender) {
@@ -1807,7 +1824,7 @@ function handleVictory() {
     pendingBattleReward = { result, state: null };
     updateUI();
     openLastBattleResult();
-    reachedLevels.forEach(level => alert(`Вітаємо! Ви досягли ${level} рівня!\nВаше звання: ${getPlayerRank(level)}`));
+    reachedLevels.forEach(showLevelNotice);
 }
 
 function victoryContinueToMap() {

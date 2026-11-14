@@ -209,13 +209,14 @@ function dispatch(event){
  const needed=event.id==='job:deliver'?['linen']:event.id==='job:difference'?['baseline']:event.id?.startsWith('claim:')?E.requiredCargo[event.id.slice(6)]:[];
  if(economic&&needed?.some(id=>!inventory.some(x=>x.questCargo===id&&x.count>0))){showCustomToast('Нужного предмета нет в инвентаре. Получите его в указанной комнате.');return false;}
  const before=economic?{state:JSON.parse(JSON.stringify(state)),stats:JSON.parse(JSON.stringify(stats)),inventory:JSON.parse(JSON.stringify(inventory))}:null;
+ let reachedLevels=[];
  const result=E.apply(state,event);
  if(result.ok){
   if(economic){
    syncCargo();
    if(result.reward?.kind==='collector')for(const [currency,amount] of Object.entries(collectorPayout))stats[currency]+=amount;
    if(result.reward?.kind==='job'){
-    stats.silver+=result.reward.silver;addExperience(result.reward.exp,false);
+    stats.silver+=result.reward.silver;reachedLevels=addExperience(result.reward.exp,false);
     if(result.reward.medical){const item=MEDICAL_ITEMS[result.reward.medical],existing=inventory.find(x=>x.name===item.name&&x.category==='meds');if(existing)existing.count++;else inventory.push({...item,count:1});}
    }
    state.transaction++;state.lastReceipt=result.message;
@@ -228,6 +229,7 @@ function dispatch(event){
    pendingQuestReward=receipt;
   }
   save();refresh();
+  reachedLevels.forEach(showLevelNotice);
   if(event.type==='action'&&event.id.startsWith('boss:')){counters.clear();originalFight(state.battle);save();if(!isBattleActive){state.battle=null;save();refresh();}}
  }
  showCustomToast(result.message);return result.ok;
