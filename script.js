@@ -418,6 +418,7 @@ function normalizeStats(savedStats) {
         const value = savedStats?.[key];
         if (Number.isSafeInteger(value) && value >= 0) normalized[key] = value;
     });
+    if (savedStats?.rehabTraining && typeof savedStats.rehabTraining === "object") normalized.rehabTraining = globalThis.PalataRehabRules?.normalize(savedStats.rehabTraining) || savedStats.rehabTraining;
     return normalized;
 }
 

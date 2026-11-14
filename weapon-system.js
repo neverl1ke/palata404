@@ -92,7 +92,7 @@ function calculateWeaponStats(item, bonuses = {}) {
     const clamp = (n, min, max) => Math.round(Math.min(max, Math.max(min, Number.isFinite(n) ? n : min)) * 1000000) / 1000000;
     return { weaponDamage, damage: Math.max(0, weaponDamage + (bonuses.damage || 0)), cooldown: clamp(values.cooldown, model.minCooldown, 60), miss: clamp(values.miss, 0, 1), critical: clamp(values.critical, 0, 1), criticalMultiplier: clamp(values.criticalMultiplier, 1, 10), capacity: model.capacity ? Math.floor(clamp(values.capacity, 1, 100)) : 0, reload: model.capacity ? clamp(values.reload, model.minReload, 60) : 0 };
 }
-function getCombatWeaponStats() { return calculateWeaponStats(getEquippedItem('weapon'), { damage: stats.baseDamage }); }
+function getCombatWeaponStats() { const bonus=globalThis.PalataRehabRules?.bonuses(stats.rehabTraining)||{damage:0,critical:0}; const profile=calculateWeaponStats(getEquippedItem('weapon'), { damage: stats.baseDamage+bonus.damage }); return {...profile,critical:Math.min(1,profile.critical+bonus.critical)}; }
 function weaponUpgradeOffer(item) {
     if (!item || !WEAPON_MODELS[weaponModelId(item)] || item.absolute) return null;
     return item.upgradeLevel < 5 ? { kind: 'upgrade', label: `Улучшить до +${item.upgradeLevel + 1}`, cost: WEAPON_MODELS[item.modelId]?.upgradeCosts?.[item.upgradeLevel] || WEAPON_UPGRADE_COSTS[item.upgradeLevel] } : { kind: 'absolute', label: 'АБСОЛЮТ ★', cost: WEAPON_MODELS[item.modelId]?.absoluteCost || WEAPON_ABSOLUTE_COST };

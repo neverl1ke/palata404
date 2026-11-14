@@ -27,6 +27,7 @@
     <link rel="stylesheet" href="hud-card.css?v=d64aced52614">
 <link rel="stylesheet" href="quest-prototype.css?v=2cccd177cd03">
 <link rel="stylesheet" href="level-notice.css?v=d789a7fc0171">
+<link rel="stylesheet" href="rehab-training.css?v=911e653bdab2">
 </head>
 <body>
 <section id="scene-loading" class="scene-loading" aria-label="Загрузка игры"><div class="scene-loading-paper"><strong class="scene-loading-name">ПАЛАТА 404</strong><p role="status" aria-live="polite">Подготовка палаты…</p><div class="scene-loading-line" aria-hidden="true"></div><button type="button" hidden>Повторить</button></div></section>
@@ -393,13 +394,14 @@
     <script src="male-hair-fit-data.js?v=99f75a9f213d" defer></script>
     <script src="male-hair-fit.js?v=bf7735c664ca" defer></script>
     <script src="paper-doll.js?v=18b1fcdde372" defer></script>
-    <script src="weapon-system.js?v=a9a2eb1e3091" defer></script>
+    <script src="rehab-training.js?v=50bfb4317ac7" defer></script>
+    <script src="weapon-system.js?v=933e6da888f5" defer></script>
     <script src="weapon-runtime.js?v=d5baae7ec4db" defer></script>
     <script src="appearance-icons.js?v=c2c6cfbc83f8" defer></script>
     <script src="wardrobe.js?v=f7526db229ae" defer></script>
     <script src="wardrobe-tablet.js?v=fca32b70b7d1" defer></script>
     <script src="wardrobe-archive.js?v=2cc4980cab6c" defer></script>
-    <script src="script.js?v=680303e499dd" defer></script>
+    <script src="script.js?v=6560a3c38e54" defer></script>
     <!-- Модальне вікно: Медичне Досьє пацієнта (Аркуш паперу А4) -->
     <div id="dossier-modal" role="dialog" aria-modal="true" aria-label="Особисте досьє" class="modal center-modal hidden">
         <div class="modal-content dossier-paper">
@@ -792,7 +794,8 @@
 <script src="quest-engine.js?v=447dff6b8310" defer></script>
 <script src="quest-art.js?v=floor10-main-1" defer></script>
 <script src="quest-scenes.js?v=fba30ad334ab" defer></script>
-<script src="quest-prototype.js?v=bacd286a3b54" defer></script>
+<script src="rehab-training-ui.js?v=ac4a6280ab63" defer></script>
+<script src="quest-prototype.js?v=c74f0c049dc0" defer></script>
 <dialog id="level-notice" aria-labelledby="level-notice-title" oncancel="event.preventDefault();closeLevelNotice()">
 <article class="document-paper"><document-header variant="center" department="ПІДВИЩЕННЯ РІВНЯ"></document-header><h2 id="level-notice-title">Ви отримали новий рівень!</h2><p class="level-notice-number" id="level-notice-number"></p><p>Нагороду вже зараховано</p><ul><li>100 срібла</li><li>50 таблеток</li><li>5 баксів</li></ul><button type="button" onclick="closeLevelNotice()">Продовжити</button></article></dialog>
 </body>

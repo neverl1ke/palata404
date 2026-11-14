@@ -1,0 +1,3 @@
+.rehab-training{border-top:1px solid #846e4f;padding-top:12px}.rehab-training>section{border-bottom:1px solid #baa78a;padding:8px 0}.rehab-training progress{display:block;width:100%;height:16px;accent-color:#5d7042;margin:8px 0}.rehab-training button{width:100%;min-height:44px}.rehab-training p{font-size:13px;line-height:1.4}
+/* Keep long training content legible while the existing paper scrolls. */
+#quest-location-screen .scene-paper:has(.rehab-training){background:#eadfc6!important}#quest-location-screen .scene-paper:has(.rehab-training)>*{flex-shrink:0}.rehab-training{flex:none;background:#eadfc6}.rehab-training>section{background:#eadfc6}
