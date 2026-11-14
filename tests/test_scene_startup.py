@@ -24,7 +24,8 @@ class SceneStartupTests(unittest.TestCase):
         self.context.close();self.assertEqual(self.errors,[])
 
     def ready(self):
-        self.page.wait_for_function('document.querySelector(".hospital-hud").dataset.assetsReady==="true" && Number(getComputedStyle(document.querySelector(".hospital-hud")).opacity)>.999')
+        # Retry navigates asynchronously; a new document may not have its HUD yet.
+        self.page.wait_for_function('document.querySelector(".hospital-hud")?.dataset.assetsReady==="true" && Number(getComputedStyle(document.querySelector(".hospital-hud")).opacity)>.999')
 
     def test_room_stays_hidden_until_delayed_background_avatar_and_font_decode(self):
         for pattern in ['**/warm-ward-room.webp','**/base_male.png*','**/TT2020StyleE-Regular.woff*']:
@@ -71,6 +72,36 @@ class SceneStartupTests(unittest.TestCase):
                 self.assertEqual(self.page.locator('#character-paperdoll').get_attribute('data-avatar-pose'),'idle')
                 self.assertGreater(int(self.page.locator('.room-shadow-contact').get_attribute('data-sole-samples')),0)
 
+    def test_restored_raid_waits_for_arena_art_and_does_not_wait_for_hidden_room_shadow(self):
+        self.page.goto(self.url,wait_until='domcontentloaded');self.ready()
+        self.page.locator('.room-trip-switch').click()
+        self.page.locator('#quest-unlock-all').click()
+        self.page.evaluate('toggleMapModal(true)')
+        self.page.locator('.quest-map-pin[data-room="nurse"]').dblclick(delay=35)
+        self.page.wait_for_function('PalataQuestPrototype.snapshot().room==="nurse"')
+        self.page.locator('[data-action="boss:nurse"]').click()
+        self.page.wait_for_function('isBattleActive')
+        session=self.page.evaluate('currentBattleSession.id')
+        pattern='**/assets/floor10-approved/nurse/Background_Trip.png*'
+        held=[];self.context.route(pattern,lambda route:held.append(route))
+        self.page.reload(wait_until='domcontentloaded')
+        self.page.wait_for_function('isBattleActive')
+        self.assertTrue(held)
+        self.assertEqual(self.page.locator('.hospital-hud').get_attribute('data-assets-ready'),'false')
+        self.assertTrue(self.page.locator('#scene-loading').is_visible())
+        self.context.unroute(pattern)
+        for route in held:route.continue_()
+        self.ready()
+        self.assertEqual(self.page.evaluate('currentBattleSession.id'),session)
+        self.assertEqual(self.page.locator('.hospital-hud').get_attribute('data-scene-paused'),'true')
+        self.assertTrue(self.page.locator('#nurse-battle-modal').is_visible())
+        self.page.locator('[onclick="openFriendInviteModal()"]').click()
+        self.assertTrue(self.page.locator('#friend-invite-modal').is_visible())
+        self.page.evaluate('closeFriendInviteModal()')
+        self.page.locator('[onclick="minimizeNurseBattle()"]').click()
+        self.page.wait_for_function('Number(document.querySelector(".room-shadow-contact").dataset.soleSamples)>0')
+        self.assertNotEqual(self.page.locator('.hospital-hud').get_attribute('data-load-error'),'true')
+
     def test_default_compact_card_slides_offscreen_before_its_layout_changes(self):
         self.page.goto(self.url,wait_until='networkidle');self.ready()
         card=self.page.locator('#patient-card');button=card.locator('.hud-card-toggle')
@@ -96,7 +127,9 @@ class SceneStartupTests(unittest.TestCase):
 
     def test_compact_fields_are_live_unique_and_reduced_motion_switches_immediately(self):
         self.page.goto(self.url,wait_until='networkidle');self.ready()
-        self.page.evaluate('stats.madness=46;stats.energy=32;stats.hp=64;stats.silver=634;stats.pills=7;stats.level=10;stats.exp=1066;stats.nextLvlExp=1200;equipPaperDollItem("weapon","gear-aks");updateUI()')
+        # Exercise the HUD's intermediate meter independently of the quest
+        # adapter, which intentionally pins madness to the current mode's 0/100.
+        self.page.evaluate('stats.energy=32;stats.hp=64;stats.silver=634;stats.pills=7;stats.level=10;stats.exp=1066;stats.nextLvlExp=1200;stats.baseDamage=45;recalculateEquipmentStats();updateUI();stats.madness=46;PalataHUD.refresh()')
         for selector,text in [('#damage-val','45'),('#hud-health-value','64'),('#silver-val','634'),('#pills-val','7'),('#player-lvl','10'),('#exp-val','1066 / 1200 EXP'),('#hud-exp-percent','88,8%')]:
             self.assertEqual(self.page.locator(selector).count(),1)
             self.assertEqual(self.page.locator(selector).inner_text(),text)

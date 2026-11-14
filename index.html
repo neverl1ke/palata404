@@ -17,14 +17,15 @@
     <link rel="stylesheet" href="wardrobe-tablet.css?v=33557bd7aeb1">
     <link rel="stylesheet" href="typewriter.css?v=d83bdf590691">
     <link rel="stylesheet" href="document-system.css?v=9109738af394">
+    <link rel="stylesheet" href="settings-paper.css?v=b1dfce5897f5">
     <link rel="stylesheet" href="game-responsive.css?v=20261109">
-    <link rel="stylesheet" href="wardrobe-responsive.css?v=20261109">
+    <link rel="stylesheet" href="wardrobe-responsive.css?v=e917b90acdd3">
     <link rel="stylesheet" href="wardrobe-appearance.css?v=c95fb41c6967">
     <link rel="stylesheet" href="hud-main.css?v=4baedda98f19">
     <link rel="stylesheet" href="room-scene.css?v=12dcf6d78c79">
     <link rel="stylesheet" href="scene-loading.css?v=9c9bf32b3eaf">
     <link rel="stylesheet" href="hud-card.css?v=d64aced52614">
-<link rel="stylesheet" href="quest-prototype.css?v=8895d3be5ab2">
+<link rel="stylesheet" href="quest-prototype.css?v=2cccd177cd03">
 </head>
 <body>
 <section id="scene-loading" class="scene-loading" aria-label="Загрузка игры"><div class="scene-loading-paper"><strong class="scene-loading-name">ПАЛАТА 404</strong><p role="status" aria-live="polite">Подготовка палаты…</p><div class="scene-loading-line" aria-hidden="true"></div><button type="button" hidden>Повторить</button></div></section>
@@ -130,17 +131,17 @@
 
     <!-- Модальне вікно Налаштувань -->
     <div id="settings-modal" role="dialog" aria-modal="true" aria-label="Налаштування" class="modal center-modal hidden">
-        <div class="modal-content">
+        <div class="modal-content settings-paper">
             <div class="modal-header">
                 <h3><img class="game-icon" src="assets/icons/gear.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"> Налаштування</h3>
                 <button class="btn-close-mini" onclick="closeSettings()" aria-label="Закрити вікно">✕</button>
             </div>
-            <div class="settings-body" style="display: flex; flex-direction: column; gap: 8px;">
-                <button class="menu-btn" onclick="changeNickname()"><img class="game-icon" src="assets/icons/user.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"> Змінити ім'я</button>
-                <button class="menu-btn" onclick="alert('Звукові ефекти в розробці')"><img class="game-icon" src="assets/icons/speaker.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"> Звукові ефекти</button>
-                <button class="menu-btn" onclick="alert('Версія гри: 1.0.0')"><img class="game-icon" src="assets/icons/info.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"> Про гру</button>
+            <div class="settings-body">
+                <button class="menu-btn" onclick="changeNickname()"><img class="game-icon" src="assets/icons/user.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"><span class="settings-action-label">Змінити ім'я</span></button>
+                <button class="menu-btn settings-placeholder" onclick="alert('Звукові ефекти в розробці')"><img class="game-icon" src="assets/icons/speaker.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"><span class="settings-action-label">Звукові ефекти</span><small id="settings-sound-status" class="settings-status">у розробці</small></button>
+                <button class="menu-btn" onclick="alert('Версія гри: 1.0.0')"><img class="game-icon" src="assets/icons/info.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"><span class="settings-action-label">Про гру</span></button>
 
-                <button id="last-battle-result-btn" class="menu-btn" onclick="openLastBattleResult()" disabled><img class="game-icon" src="assets/icons/clipboard.svg" alt="" aria-hidden="true" width="64" height="64"> Останній протокол бою</button>
+                <button id="last-battle-result-btn" class="menu-btn" onclick="openLastBattleResult()" disabled><img class="game-icon" src="assets/icons/clipboard.svg" alt="" aria-hidden="true" width="64" height="64"><span class="settings-action-label">Останній протокол бою</span></button>
             </div>
         </div>
     </div>
@@ -384,7 +385,7 @@
     <script src="paper-doll-data.js?v=29b496cdc4c5" defer></script>
     <script src="pajama-data.js?v=81a42939798e" defer></script>
     <script src="outline-manifest.js?v=d3136a12e18c" defer></script>
-    <script src="outline-finish.js?v=2b9ab4f93aad" defer></script>
+    <script src="outline-finish.js?v=925dc0565332" defer></script>
     <script src="hair-color.js?v=9992402faf4f" defer></script>
     <script src="female-hair-fit-data.js?v=3b4fb3949106" defer></script>
     <script src="female-hair-fit.js?v=9b2e85e6aac5" defer></script>
@@ -777,7 +778,7 @@
     </article>
 </div>
 
-<script type="module" src="avatar-core/game-preview.mjs?v=6288993930cb"></script>
+<script type="module" src="avatar-core/game-preview.mjs?v=0130101071bf"></script>
 <script src="hud-card.js?v=4f70fe15d49d" defer></script>
     <script src="hud-main.js?v=9806d0cac1fc" defer></script>
     <script src="room-projection.js?v=baa9f2b97440" defer></script>
@@ -786,10 +787,10 @@
 <script src="room-scene.js?v=843b0dae1ab2" defer></script>
 <script src="room-shadows.js?v=71ba9bf014bb" defer></script>
 <script src="room-door-rattle.js?v=bd36015147bc" defer></script>
-<script src="scene-loading.js?v=e89e0e6bc5ea" defer></script>
+<script src="scene-loading.js?v=694da03e74b2" defer></script>
 <script src="quest-engine.js?v=447dff6b8310" defer></script>
 <script src="quest-art.js?v=floor10-main-1" defer></script>
-<script src="quest-scenes.js?v=floor10-main-1" defer></script>
-<script src="quest-prototype.js?v=61e990bbeead" defer></script>
+<script src="quest-scenes.js?v=fba30ad334ab" defer></script>
+<script src="quest-prototype.js?v=cdc36bbfd1af" defer></script>
 </body>
 </html>

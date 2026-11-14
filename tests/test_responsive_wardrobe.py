@@ -17,6 +17,12 @@ class ResponsiveWardrobeTests(unittest.TestCase):
 
     def test_resize_inspect_return_and_apply(self):
         self.page.goto(self.url)
+        # The real cabinet is inert during cold-start preparation. Do not open
+        # a modal through the JS API before the room can receive player input.
+        self.page.wait_for_function('document.querySelector(".hospital-hud")?.dataset.assetsReady==="true"')
+        self.page.locator('#scene-loading').wait_for(state='hidden')
+        # Equipment inspection belongs to Trip in the current mode contract.
+        self.page.locator('.room-trip-switch').click()
         self.page.evaluate('openCustomization()')
         for width,height in [(390,844),(844,390),(667,375),(568,320),(320,568),(1024,600),(1280,500),(1280,800),(1600,900),(390,844)]:
             with self.subTest(viewport=(width,height)):
@@ -36,7 +42,13 @@ class ResponsiveWardrobeTests(unittest.TestCase):
                 action=self.page.locator('#wardrobe-item-detail [data-wardrobe-action]').first
                 action.scroll_into_view_if_needed()
                 box=action.bounding_box()
-                self.assertGreaterEqual(box['height'],44)
+                # The approved printed button remains proportional to its
+                # artwork. Its transparent hit target must cover 44px even
+                # when that printed rectangle is smaller.
+                self.assertTrue(action.evaluate('''e=>{
+                    const r=e.getBoundingClientRect(),x=r.x+r.width/2,y=r.y+r.height/2;
+                    return [-21,21].every(d=>e.contains(document.elementFromPoint(x,y+d)));
+                }'''))
                 self.assertTrue(action.evaluate('(e)=>{const r=e.getBoundingClientRect();return e.contains(document.elementFromPoint(r.x+r.width/2,r.y+r.height/2))}'))
                 out=Path('test-results/responsive');out.mkdir(parents=True,exist_ok=True)
                 self.page.screenshot(path=str(out/f'wardrobe-{width}x{height}.png'))
@@ -48,3 +60,38 @@ class ResponsiveWardrobeTests(unittest.TestCase):
                 self.page.locator('.archive-footer button:last-child').click()
         self.page.locator('.archive-wardrobe .report-close').click()
         self.assertFalse(self.page.locator('#custom-modal').is_visible())
+
+    def test_phone_taps_outside_printed_weapon_button_activate_the_same_action(self):
+        self.context.close()
+        self.context=self.browser.new_context(viewport={'width':844,'height':390},is_mobile=True,has_touch=True,reduced_motion='reduce')
+        self.context.route('https://**/*',lambda route:route.abort())
+        self.page=self.context.new_page()
+        self.page.goto(self.url+'play.html')
+        game=self.page.frames[1]
+        game.wait_for_function('document.querySelector(".hospital-hud")?.dataset.assetsReady==="true"')
+        game.locator('#scene-loading').wait_for(state='hidden')
+        game.locator('.room-trip-switch').click()
+        game.locator('.room-cabinet-action').click()
+        game.locator('[data-archive-slot="weapon"]').click()
+        game.locator('[data-wardrobe-card="gear-knife"]').click()
+        action=game.locator('[data-wardrobe-action="gear-knife"]')
+        before=game.evaluate('JSON.stringify({stats,inventory,equippedGear})')
+        for width,height in [(844,390),(667,375),(568,320)]:
+            with self.subTest(viewport=(width,height)):
+                self.page.set_viewport_size(dict(width=width,height=height))
+                # The outer shell applies its scale in ResizeObserver/RAF.
+                self.page.evaluate('new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)))')
+                box=action.bounding_box()
+                scale=self.page.locator('#game-canvas').evaluate('e=>e.getBoundingClientRect().width/1280')
+                # Tap 20 physical pixels above/below the printed centre. These
+                # points lie outside the artwork but inside the same button.
+                x=box['x']+box['width']/2;y=box['y']+box['height']/2
+                self.assertLess(box['height']/2,20)
+                self.assertGreaterEqual(100*scale,44)
+                self.page.touchscreen.tap(x,y-20)
+                self.assertEqual(game.evaluate('selectedPaperDollItem("weapon")?.id'),'gear-knife')
+                self.page.wait_for_timeout(350)
+                box=action.bounding_box();x=box['x']+box['width']/2;y=box['y']+box['height']/2
+                self.page.touchscreen.tap(x,y+20)
+                self.assertIsNone(game.evaluate('selectedPaperDollItem("weapon")?.id'))
+                self.assertEqual(game.evaluate('JSON.stringify({stats,inventory,equippedGear})'),before)

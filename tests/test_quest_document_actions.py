@@ -1,0 +1,113 @@
+"""Real clicks through the scaled game shell, including formerly covered targets.
+
+No forced pointer actions, quest-state injection or collapsing-paper workaround.
+"""
+import unittest
+
+from tests import test_game
+
+
+class QuestDocumentActionTests(unittest.TestCase):
+    setUpClass = classmethod(test_game.GameTests.setUpClass.__func__)
+    tearDownClass = classmethod(test_game.GameTests.tearDownClass.__func__)
+
+    def setUp(self):
+        self.errors = []
+        self.context = self.browser.new_context(
+            viewport={'width': 844, 'height': 390},
+            reduced_motion='reduce', is_mobile=True, has_touch=True)
+        self.context.route('https://**/*', lambda route: route.abort())
+        self.page = self.context.new_page()
+        self.page.on('pageerror', lambda error: self.errors.append(str(error)))
+        self.page.goto(self.url + 'play.html')
+        self.game = self.page.frames[1]
+        self.ready()
+
+    def tearDown(self):
+        self.context.close()
+        self.assertEqual(self.errors, [])
+
+    def ready(self):
+        self.game.wait_for_function('window.PalataQuestPrototype && '
+            'document.querySelector(".hospital-hud").dataset.assetsReady==="true"')
+        self.page.wait_for_timeout(220)
+
+    def room(self, room):
+        if self.game.locator('.quest-room-tools').is_visible():
+            self.game.locator('.quest-room-tools button').first.click()
+        elif not self.game.locator('#map-modal').is_visible():
+            self.game.locator('#location-card-box').click()
+        self.game.locator(f'.quest-map-pin[data-room="{room}"]').dblclick(delay=40)
+        self.game.wait_for_function('r=>PalataQuestPrototype.snapshot().room===r && '
+            '!document.getElementById("quest-location-screen").classList.contains("hidden")', arg=room)
+
+    def click_action(self, action, choice=False):
+        mirror = self.game.locator(f'.scene-document-actions [data-scene-action="{action}"]')
+        original = self.game.locator(f'[data-{"choice" if choice else "action"}="{action}"]').first
+        (mirror if mirror.count() else original).click()
+
+    def action(self, action, choices=()):
+        self.click_action(action)
+        for choice in choices:
+            self.click_action(choice, choice=True)
+
+    def test_trip_key_chain_is_reachable_with_document_open(self):
+        # Prerequisite supplied by playing the normal patient clue, not by flags.
+        self.room('A')
+        self.action('inspectDoor', ['door', 'door'])
+        self.room('collector')
+        self.action('supplyNote', ['cabinet', 'cabinet'])
+        self.room('procedure')
+        self.action('record', ['record', 'copy'])
+        self.room('doctor')
+        self.action('observation', ['document', 'confirm'])
+        self.game.locator('.quest-room-tools button').first.click()
+        self.game.locator('#map-modal .btn-close-map').click()
+        self.game.locator('.room-trip-switch').click()
+        self.room('collector')
+        self.action('takeHandle', ['cabinet', 'cabinet'])
+        self.room('A')
+        self.action('unlockB', ['door', 'handle', 'door'])
+        self.room('B')
+        self.action('unlockC')
+        self.assertTrue(self.game.locator('.scene-paper:not(.is-collapsed)').is_visible())
+        tray = self.game.locator('.scene-document-actions [data-scene-action="tray"]')
+        tray.click()
+        self.click_action('keyC', choice=True)
+        self.click_action('lock', choice=True)
+        self.click_action('frame', choice=True)
+        self.assertTrue(self.game.evaluate('PalataQuestPrototype.snapshot().flags.unlockC'))
+        self.page.reload()
+        self.game = self.page.frames[1]
+        self.ready()
+        self.assertTrue(self.game.evaluate('PalataQuestPrototype.snapshot().flags.unlockC'))
+
+    def test_bell_choices_reopen_collapsed_paper_and_redeem_once(self):
+        self.room('doctor')
+        self.action('accept:d1')
+        self.room('ward407')
+        self.action('job:bell407')
+        self.game.locator('[data-room-info-toggle]').click()
+        self.assertEqual(self.game.locator('.scene-paper.is-collapsed').count(), 1)
+        self.assertTrue(self.game.locator('.scene-paper').is_hidden())
+        # A real click on the now-visible bell advances to a document answer.
+        self.game.locator('[data-choice="bell"]').click()
+        self.assertTrue(self.game.locator('.scene-paper:not(.is-collapsed)').is_visible())
+        self.click_action('working', choice=True)
+        self.room('ward408')
+        self.action('job:bell408', ['bell', 'broken'])
+        self.room('doctor')
+        before = self.game.evaluate('({silver:stats.silver,exp:stats.exp})')
+        self.action('claim:d1')
+        self.assertEqual(self.game.evaluate('PalataQuestPrototype.snapshot().jobs.d1.count'), 1)
+        after = self.game.evaluate('({silver:stats.silver,exp:stats.exp})')
+        self.assertEqual(after, {'silver': before['silver'] + 10, 'exp': before['exp'] + 20})
+        self.assertEqual(self.game.locator('[data-action="claim:d1"]').count(), 0)
+        self.page.reload()
+        self.game = self.page.frames[1]
+        self.ready()
+        self.assertEqual(self.game.evaluate('({silver:stats.silver,exp:stats.exp})'), after)
+
+
+if __name__ == '__main__':
+    unittest.main()

@@ -48,6 +48,14 @@ class PajamasUiTests(unittest.TestCase):
     def view(self, mode):
         self.page.locator('[data-paper-view="' + mode + '"]').click()
 
+    def enter_mode(self, mode):
+        # Wardrobe tabs are previews. The actual main actor follows the red
+        # room switch; applying a preview cannot change the quest mode.
+        actual = 'trip' if mode == 'combat' else 'patient'
+        if self.page.evaluate('PalataQuestPrototype.snapshot().mode') != actual:
+            self.page.locator('.room-trip-switch').click()
+        self.page.wait_for_function('mode=>PalataQuestPrototype.snapshot().mode===mode', arg=actual)
+
     def selected(self):
         return self.page.evaluate('''()=>Object.fromEntries(
             ['upperBody','pants','footwear'].map(slot=>[slot,selectedPaperDollItem(slot)?.id||null]))''')
@@ -151,10 +159,11 @@ class PajamasUiTests(unittest.TestCase):
         self.assertEqual(self.page.evaluate('paperDollState.patientLoadout.upperBody'), 'patient-tunic')
         self.assertIsNone(self.page.evaluate('paperDollState.patientLoadout.pants'))
         self.assertIsNone(self.page.evaluate('paperDollState.patientLoadout.footwear'))
-        self.open_wardrobe()
         for gender in ['male', 'female']:
-            self.gender(gender)
             for mode in ['patient', 'combat']:
+                self.enter_mode(mode)
+                self.open_wardrobe()
+                self.gender(gender)
                 self.view(mode)
                 facts = self.facts()
                 self.full_set()
@@ -170,13 +179,12 @@ class PajamasUiTests(unittest.TestCase):
                     self.assertEqual(self.facts(), facts)
                     self.toggle_piece(slot)
                     self.assertEqual(self.selected(), PIECES)
-                self.page.locator('.archive-footer').get_by_role('button', name='Применить', exact=True).click()
+                self.apply_and_close()
                 self.ready_pose('character-paperdoll', 'idle', gender)
                 self.repaint_roundtrip('character-paperdoll', 'idle', gender)
                 self.assertEqual(self.facts(), facts)
         saved = self.page.evaluate('JSON.stringify(paperDollState)')
         facts = self.facts()
-        self.apply_and_close()
         self.ready_pose('character-paperdoll', 'idle', 'female')
         self.repaint_roundtrip('character-paperdoll', 'idle', 'female')
         self.page.reload(wait_until='networkidle')
@@ -218,7 +226,9 @@ class PajamasUiTests(unittest.TestCase):
                     pixels = self.page.evaluate("""async()=>{
                         const s=avatarCoreGamePreview.instances.get(document.getElementById('wardrobe-paperdoll'));
                         s.engine.pause();s.engine.options.breathing=false;s.pajamaMotion.breathing=false;s.engine.time=0;s.engine.render();
-                        const image=new Image();image.src=selectedPaperDollItem('upperBody').poseClothingByGender[s.engine.gender][s.engine.pose];await image.decode();
+                        // Compare the exact approved runtime garment, including
+                        // its existing edge finish, rather than the raw PNG.
+                        const image=new Image();image.src=await PalataOutline.source(selectedPaperDollItem('upperBody').poseClothingByGender[s.engine.gender][s.engine.pose]);await image.decode();
                         const garment=document.createElement('canvas');garment.width=941;garment.height=1672;
                         const ctx=garment.getContext('2d');ctx.drawImage(image,0,0,941,1672);
                         const cloth=ctx.getImageData(0,0,941,1672).data;
@@ -244,14 +254,16 @@ class PajamasUiTests(unittest.TestCase):
     def test_full_set_keeps_all_native_weapon_poses_in_wardrobe_and_applied_main_avatar(self):
         self.load()
         self.page.set_viewport_size({'width': 1672, 'height': 941})
-        self.open_wardrobe()
         evidence = []
         for gender in ['male', 'female']:
-            self.gender(gender)
             for mode in ['patient', 'combat']:
-                self.view(mode)
-                self.full_set()
-                for weapon_id, pose in POSES:
+                self.enter_mode(mode)
+                # Patient has no equipment; Trip supports all three real poses.
+                for weapon_id, pose in POSES if mode == 'combat' else POSES[:1]:
+                    self.open_wardrobe()
+                    self.gender(gender)
+                    self.view(mode)
+                    self.full_set()
                     current = self.page.evaluate('selectedPaperDollItem("weapon")?.id||null')
                     if current != weapon_id:
                         self.page.locator('[data-archive-slot="weapon"]').click()
@@ -277,8 +289,6 @@ class PajamasUiTests(unittest.TestCase):
                     evidence.append({'gender': gender, 'mode': mode, 'pose': pose,
                                      'wardrobeReady': True, 'appliedMainReady': True,
                                      'noVisibleStaticLayersAfterRepaint': True})
-                    self.open_wardrobe()
-        self.apply_and_close()
         self.ready_pose('character-paperdoll', 'rifle', 'female')
         self.page.reload(wait_until='networkidle')
         self.ready_pose('character-paperdoll', 'rifle', 'female')

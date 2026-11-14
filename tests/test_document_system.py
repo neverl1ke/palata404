@@ -9,6 +9,11 @@ class DocumentSystemBrowserTests(unittest.TestCase):
     setUp=support.GameTests.setUp
     tearDown=support.GameTests.tearDown
     load=support.GameTests.load
+    def enter_trip(self):
+        # Equipment documents belong to Trip. Changing a preview alone does not
+        # change the quest adapter's authoritative Patient/Trip mode.
+        self.page.locator('.room-trip-switch').click()
+        self.page.wait_for_function('PalataQuestPrototype.snapshot().mode==="trip"')
     def test_both_headers_russian_text_and_sizes_keep_graphics_and_alignment(self):
         self.page.goto(self.url+'document-demo.html',wait_until='networkidle')
         self.page.evaluate('document.fonts.ready')
@@ -53,6 +58,7 @@ class DocumentSystemBrowserTests(unittest.TestCase):
         self.assertFalse(self.page.evaluate('PalataI18n.setLocale("invalid")'))
     def test_live_wardrobe_and_post_battle_protocol_keep_game_state(self):
         self.load();self.page.set_viewport_size({'width':1800,'height':1070})
+        self.enter_trip()
         self.page.evaluate('openCustomization();setPaperDollView("combat");equipPaperDollItem("upperBody",null);equipPaperDollItem("weapon","gear-aks");selectWardrobeItem("gear-aks")')
         before=self.page.evaluate('JSON.stringify({inventory,stats,paperDollState})')
         for locale in ['ru']:
@@ -60,7 +66,17 @@ class DocumentSystemBrowserTests(unittest.TestCase):
             for selector in ['.archive-letterhead document-header','.p404-institution']:
                 self.assertIn(self.page.evaluate('PalataI18n.t("documents.name1")'),self.page.locator(selector).inner_text())
             self.assertEqual(self.page.evaluate('JSON.stringify({inventory,stats,paperDollState})'),before)
-        self.page.evaluate('discardWardrobeSession();document.getElementById("custom-modal").classList.add("hidden");stats.baseDamage=300;recalculateEquipmentStats();startBossFight("doctor");performPlayerAttack();openDetailedBattleReport()')
+        # Only combat damage is a fixture shortcut; access, travel, starting the
+        # raid and opening its resulting protocol use the real game controls.
+        self.page.evaluate('discardWardrobeSession();closeCustomization();stats.baseDamage=300;recalculateEquipmentStats()')
+        self.page.locator('#quest-unlock-all').click()
+        self.page.locator('#location-card-box').click()
+        self.page.locator('.quest-map-pin[data-room="doctor"]').dblclick(delay=40)
+        self.page.wait_for_function('PalataQuestPrototype.snapshot().room==="doctor"')
+        self.page.locator('[data-action="boss:doctor"]').click()
+        self.page.wait_for_function('isBattleActive')
+        self.page.locator('#battle-arena-screen').click(position={'x':600,'y':300})
+        self.page.locator('#nurse-victory-modal [onclick="openDetailedBattleReport()"]').click()
         self.assertTrue(self.page.locator('#battle-detail-modal document-header[variant=center]').is_visible())
         rewards=self.page.evaluate('JSON.stringify(stats)')
         self.page.evaluate('PalataI18n.setLocale("en")')
@@ -70,6 +86,7 @@ class DocumentSystemBrowserTests(unittest.TestCase):
 
     def test_clipboard_preserves_both_sheets_and_scrolls_to_reachable_actions(self):
         self.load();self.page.set_viewport_size({'width':1800,'height':1070})
+        self.enter_trip()
         self.page.evaluate('openCustomization();setPaperDollView("combat");equipPaperDollItem("upperBody",null);selectWardrobeItem("weapon-demo-aks-rare")')
         self.assertIn('paper-header-only.svg',self.page.locator('.archive-letterhead').evaluate('e=>getComputedStyle(e).backgroundImage'))
         self.assertEqual(self.page.locator('.p404-institution').evaluate('e=>getComputedStyle(e).textAlign'),'center')
@@ -99,6 +116,7 @@ class DocumentSystemBrowserTests(unittest.TestCase):
 
     def test_rarity_marks_keep_rectangle_geometry_and_insert_titles_follow_progress(self):
         self.load();self.page.set_viewport_size({'width':1800,'height':1070})
+        self.enter_trip()
         self.page.evaluate('openCustomization();selectWardrobeItem("weapon-demo-aks-rare")')
         for locale in ['ru']:
             self.page.evaluate('(locale)=>PalataI18n.setLocale(locale,{persist:false})',locale)
@@ -123,6 +141,7 @@ class DocumentSystemBrowserTests(unittest.TestCase):
 
     def test_clipboard_preserves_aspect_ratio_and_single_line_palette(self):
         self.load();self.page.set_viewport_size({'width':1800,'height':1070})
+        self.enter_trip()
         self.page.evaluate('openCustomization();selectWardrobeItem("weapon-demo-aks-experimental")')
         for width,height in [(1800,1070),(1680,1000),(1280,800)]:
             self.page.set_viewport_size({'width':width,'height':height})

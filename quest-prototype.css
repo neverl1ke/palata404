@@ -178,3 +178,8 @@
 #quest-location-screen .quest-room-tools{position:absolute;z-index:12;left:16px;right:16px;top:14px;display:flex;justify-content:space-between;pointer-events:none}
 #quest-location-screen .quest-room-tools button{pointer-events:auto;min-height:36px;padding:7px 14px;background:#e5d7b9eb;color:#30291f;border:1px solid #9a815a;border-radius:3px;font:14px/1.25 Georgia,serif;box-shadow:0 2px 7px #0007}
 @media(max-height:600px){#quest-location-screen .scene-paper{top:56px;bottom:10px;padding:10px;width:min(300px,34vw)}#quest-location-screen .scene-paper p{font-size:12px}}
+
+/* Accessible alternatives for scene targets covered by the existing paper. */
+.scene-document-actions{display:flex;flex-direction:column;gap:6px}
+.scene-document-actions h4{margin:0 0 2px;font-size:14px}
+.scene-document-actions button{width:100%;white-space:normal;text-align:left}

@@ -2,7 +2,9 @@
  * recolouring and animation. Original artwork and interior detail are intact. */
 (function(){
  'use strict';
- const cache=new Map(),images=new Map();
+ const cache=new Map(),images=new Map(),CACHE_LIMIT=32;
+ function remember(map,key,value){map.delete(key);map.set(key,value);while(map.size>CACHE_LIMIT)map.delete(map.keys().next().value);return value;}
+ function recalled(map,key){const value=map.get(key);if(value)remember(map,key,value);return value;}
  function eligible(source){
   if(!source||/^(blob:|data:)/.test(source))return false;
   const url=new URL(source,document.baseURI),i=url.pathname.indexOf('/assets/');
@@ -38,21 +40,38 @@
  }
  async function source(original){
   if(!eligible(original))return original;
-  const key=new URL(original,document.baseURI).href;
-  if(!cache.has(key))cache.set(key,(async()=>{
+  const key=new URL(original,document.baseURI).href,cached=recalled(cache,key);
+  if(cached)return cached;
+  let task;
+  task=(async()=>{
    const image=new Image();image.src=key;await image.decode();
    const canvas=document.createElement('canvas');canvas.width=image.naturalWidth;canvas.height=image.naturalHeight;
    const ctx=canvas.getContext('2d');ctx.drawImage(image,0,0);
    ctx.putImageData(process(ctx.getImageData(0,0,canvas.width,canvas.height)),0,0);
    const blob=await new Promise(resolve=>canvas.toBlob(resolve,'image/png'));if(!blob)throw Error('Edge encoding failed');
-   return URL.createObjectURL(blob);
-  })().catch(error=>{console.warn('Thin outline:',original,error.message);return original;}));
-  return cache.get(key);
+   // Data URLs can outlive an LRU entry safely. Revoking blob URLs while a DOM
+   // layer, native image cache or fitting task still uses one can break it.
+   return await new Promise((resolve,reject)=>{
+    const reader=new FileReader();
+    reader.onload=()=>typeof reader.result==='string'?resolve(reader.result):reject(new Error('Edge encoding failed'));
+    reader.onerror=()=>reject(new Error('Edge encoding failed'));
+    reader.readAsDataURL(blob);
+   });
+  })().catch(error=>{
+   if(cache.get(key)===task)cache.delete(key);
+   console.warn('Thin outline:',original,error.message);return original;
+  });
+  return remember(cache,key,task);
  }
  async function bitmap(image,original){
   const processed=await source(original);if(processed===original)return image;
-  if(!images.has(processed))images.set(processed,(async()=>{const next=new Image();next.src=processed;await next.decode();return next;})());
-  return images.get(processed);
+  const cached=recalled(images,processed);if(cached)return cached;
+  let task;
+  task=(async()=>{const next=new Image();next.src=processed;await next.decode();return next;})().catch(error=>{
+   if(images.get(processed)===task)images.delete(processed);
+   console.warn('Thin outline decode:',original,error.message);return image;
+  });
+  return remember(images,processed,task);
  }
  window.PalataOutline=Object.freeze({source,bitmap,process});
 })();

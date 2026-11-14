@@ -4,9 +4,27 @@ import { PoseClothing, isPoseClothing } from './pajamas.mjs?v=b37948cea1fa';
 const instances = new Map();
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
 const absolute = path => new URL('../' + path, import.meta.url).href;
+const blockerSelector='[role="dialog"],.modal,.modal-overlay,.map-modal-overlay,#quest-location-screen';
+const blockers=new Set();
+const shown=node=>{
+    if(!node.isConnected || node.hidden || !node.getClientRects().length)return false;
+    const style=getComputedStyle(node);
+    return style.display!=='none' && style.visibility!=='hidden' && style.visibility!=='collapse' && Number(style.opacity)!==0;
+};
+function above(node,owner){
+    const z=n=>Number.parseFloat(getComputedStyle(n).zIndex)||0;
+    return z(node)>z(owner) || z(node)===z(owner) && Boolean(owner.compareDocumentPosition(node)&Node.DOCUMENT_POSITION_FOLLOWING);
+}
 const isVisible = host => {
-    const wardrobeOpen = !document.getElementById('custom-modal')?.classList.contains('hidden');
-    return !(host.id === 'character-paperdoll' && wardrobeOpen) && host.getBoundingClientRect().width > 0 && host.getBoundingClientRect().height > 0;
+    if(document.hidden || !shown(host))return false;
+    const owner=host.closest(blockerSelector);
+    // All current overlays are full-viewport siblings. Nested role=dialog
+    // sections belong to their outer overlay, not an additional blocker.
+    for(const node of blockers){
+        if(node.contains(host) || node.parentElement?.closest(blockerSelector) || !shown(node))continue;
+        if(!owner || above(node,owner))return false;
+    }
+    return true;
 };
 function playback(state) {
     if (!state.engine || state.canvas.hidden) return;
@@ -145,8 +163,35 @@ function refresh() {
         run(state);
     }
 }
-const modal = document.getElementById('custom-modal');
-if (modal) new MutationObserver(()=>instances.forEach(playback)).observe(modal,{attributes:true,attributeFilter:['class']});
+const updatePlayback=()=>instances.forEach(playback);
+const modalChanges=new MutationObserver(updatePlayback);
+function registerBlocker(node){
+    if(blockers.has(node) || node.closest('#scene-loading'))return false;
+    blockers.add(node);modalChanges.observe(node,{attributes:true,attributeFilter:['class','style','hidden','open']});return true;
+}
+function registerTree(node){
+    if(node.nodeType!==Node.ELEMENT_NODE)return false;
+    let changed=false;
+    if(node.matches(blockerSelector))changed=registerBlocker(node)||changed;
+    node.querySelectorAll(blockerSelector).forEach(n=>{changed=registerBlocker(n)||changed;});
+    return changed;
+}
+registerTree(document.body);
+// The quest screen and some confirmation overlays are added after this module.
+// Observe only direct body additions; scene/door style writes happen each RAF.
+new MutationObserver(records=>{
+    let changed=false,removed=false;
+    for(const record of records){
+        record.addedNodes.forEach(node=>{changed=registerTree(node)||changed;});
+        for(const node of record.removedNodes)for(const blocker of blockers){
+            if(node===blocker || node.contains(blocker)){blockers.delete(blocker);removed=changed=true;}
+        }
+    }
+    if(removed){modalChanges.disconnect();blockers.forEach(node=>modalChanges.observe(node,{attributes:true,attributeFilter:['class','style','hidden','open']}));}
+    if(changed)updatePlayback();
+}).observe(document.body,{childList:true});
+document.addEventListener('visibilitychange',updatePlayback);
+document.addEventListener('transitionend',event=>{if(blockers.has(event.target))updatePlayback();});
 window.addEventListener('paper-doll-render',refresh);
 window.addEventListener('pagehide',()=>instances.forEach(state=>state.engine?.pause()));
 window.addEventListener('pageshow',()=>instances.forEach(playback));

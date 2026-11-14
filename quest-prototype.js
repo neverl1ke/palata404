@@ -57,12 +57,26 @@ function checkpoint(){
   members:JSON.parse(JSON.stringify(raidMembers)),inventory:JSON.parse(JSON.stringify(inventory)),
   counters:[...counters].filter(([id])=>!currentBattleSession.events.has(id+':counter'))};
 }
+// Checkpoint inventories bypass the normal profile loader. Reject the whole
+// malformed checkpoint instead of replacing a valid profile with partial data.
+function raidInventorySnapshot(items){
+ if(!Array.isArray(items))return null;
+ const result=[];
+ for(const item of items){
+  if(!item||typeof item!=='object'||Array.isArray(item)||typeof item.name!=='string'||!item.name.trim())return null;
+  const count=item.count===undefined?1:(typeof item.count==='number'||typeof item.count==='string'?Number(item.count):NaN);
+  if(!Number.isSafeInteger(count)||count<=0)return null;
+  result.push({...item,count});
+ }
+ return result;
+}
 function resumeRaid(r){
  if(!state.battle)return;
  const completed=r?.session?.id&&(lastBattleResult?.battleId===r.session.id?lastBattleResult:readRaidArchive().find(x=>x.battleId===r.session.id));
  if(completed){if(completed.outcome==='victory'&&state.battle==='doctor')state.flags.doctorWon=true;if(completed.outcome!=='victory')state.room='ward404';state.battle=null;return;}
  const finite=n=>Number.isFinite(n)&&n>=0;
- if(!r||r.version!==1||r.owner!==raidArchiveOwnerId||r.boss!==state.battle||r.session?.bossKey!==r.boss||typeof r.session?.id!=='string'||r.session.finished||!Array.isArray(r.session.events)||!Array.isArray(r.members)||!Array.isArray(r.inventory)||![r.hp,r.maxHp,r.playerHp,r.endsAt,r.cooldown,r.ammo,r.reloadAt].every(finite)||!r.profile||!finite(r.profile.cooldown)||!finite(r.profile.capacity)||!Number.isSafeInteger(r.session.serial)||r.session.serial<0||!r.session.events.every(x=>typeof x==='string'&&x.startsWith(r.session.id+':'))||!Array.isArray(r.counters)||!r.counters.every(x=>Array.isArray(x)&&x.length===2&&typeof x[0]==='string'&&x[0].startsWith(r.session.id+':')&&finite(x[1]))||!r.members.every(x=>x&&raidMembers.some(m=>m.id===x.id)&&finite(x.damage)&&x.metrics&&['damageTaken','healing','turns','madnessStart'].every(k=>x.metrics[k]===null||finite(x.metrics[k])))||!r.inventory.every(x=>x&&typeof x==='object'&&!Array.isArray(x))||r.hp>r.maxHp||r.maxHp<=0||!['damage','reload','critical','miss','criticalMultiplier'].every(k=>finite(r.profile[k]))){
+ const savedInventory=raidInventorySnapshot(r?.inventory);
+ if(!r||r.version!==1||r.owner!==raidArchiveOwnerId||r.boss!==state.battle||r.session?.bossKey!==r.boss||typeof r.session?.id!=='string'||r.session.finished||!Array.isArray(r.session.events)||!Array.isArray(r.members)||!savedInventory||![r.hp,r.maxHp,r.playerHp,r.endsAt,r.cooldown,r.ammo,r.reloadAt].every(finite)||!r.profile||!finite(r.profile.cooldown)||!finite(r.profile.capacity)||!Number.isSafeInteger(r.session.serial)||r.session.serial<0||!r.session.events.every(x=>typeof x==='string'&&x.startsWith(r.session.id+':'))||!Array.isArray(r.counters)||!r.counters.every(x=>Array.isArray(x)&&x.length===2&&typeof x[0]==='string'&&x[0].startsWith(r.session.id+':')&&finite(x[1]))||!r.members.every(x=>x&&raidMembers.some(m=>m.id===x.id)&&finite(x.damage)&&x.metrics&&['damageTaken','healing','turns','madnessStart'].every(k=>x.metrics[k]===null||finite(x.metrics[k])))||r.hp>r.maxHp||r.maxHp<=0||!['damage','reload','critical','miss','criticalMultiplier'].every(k=>finite(r.profile[k]))){
   // Keep the original bytes available before migrating a legacy/incomplete battle.
   if(stored&&!safeStorageSet(key+':recovery',stored)){protectedSave=true;saveFailed=true;}
   state.battle=null;state.room='ward404';notice='Старый рейд не содержит контрольной точки. Копия сохранения оставлена для восстановления.';return;
@@ -70,7 +84,7 @@ function resumeRaid(r){
  // Starting restores only arena UI and timers; overwrite its new metrics before input.
  restoringRaid=true;originalFight(r.boss);stopBattleTimers();isBattleActive=true;
  currentBossKey=r.boss;bossCurrentHp=r.hp;bossMaxHp=r.maxHp;stats.hp=Math.min(stats.maxHp,r.playerHp);
- inventory=r.inventory;currentBattleSession={...r.session,events:new Set(r.session.events)};
+ inventory=savedInventory;currentBattleSession={...r.session,events:new Set(r.session.events)};
  for(const member of raidMembers){const prior=r.members.find(x=>x.id===member.id);if(prior)Object.assign(member,prior);}
  battleWeaponProfile=r.profile;battleWeaponAmmo=r.ammo;raidEndsAt=r.endsAt;attackCooldownEndsAt=r.cooldown;
  playerAttackCooldown=Date.now()<r.cooldown;
@@ -156,9 +170,11 @@ function selectRoomDoor(id,event){
 function beginAction(id){if(!E.interactions[id])return dispatch({type:'action',id});if(id==='unlockB'&&(!state.flags.doorKnown||!state.flags.reserveKnown||!state.flags.tripHandle)){focusQuest='lockB';notice='Нужны знание исправного механизма и аварийная рукоять из ординаторской A. ';locationView=false;renderMap();return;}if(id==='unlockC'&&(!state.flags.cKeyKnown||!state.flags.cLockKnown)){focusQuest='lockC';notice='Нужны опись хранения ключа в процедурной и памятка о замке у врача. ';locationView=false;renderMap();return;}interaction=id;locationView=true;renderMap();}
 function renderInteraction(host){const spec=E.interactions[interaction],index=state.interactions[interaction]||0,step=spec.steps[index];if(!step){interaction=null;return;}const h=document.createElement('h4');h.textContent=spec.title+' · шаг '+(index+1)+'/'+spec.steps.length;const p=document.createElement('p');p.textContent=step.text;host.append(h,p);for(const [choice,label] of step.choices){const b=button(label,()=>{const id=interaction;const ok=dispatch({type:'interact',id,choice});if(ok){if((state.interactions[id]||0)===spec.steps.length||id==='exercise'&&state.interactions.exercise===0)interaction=null;renderMap();}else b.setAttribute('aria-invalid','true');});b.dataset.choice=choice;if(window.PalataQuestScenes)PalataQuestScenes.decorateChoice(b,choice);host.append(b);}const feedback=document.createElement('p');feedback.className='interaction-feedback';feedback.setAttribute('role','status');host.append(feedback,button('Отложить осмотр',()=>{interaction=null;renderMap();}));}
 
-function roomActions(host){if(interaction){renderInteraction(host);return;}for(const a of E.actions(state)){const b=button(a.label,()=>beginAction(a.id));b.dataset.action=a.id;if(window.PalataQuestScenes)PalataQuestScenes.decorate(b,a.id);host.append(b);}if(state.room==='ward404')host.append(button(state.mode==='trip'?'Выйти из Трипа':'Войти в Трип',switchMode));if(state.room==='collector'){const p=document.createElement('p');p.textContent='Сборщик: 15 серебра и 1 таблетка в ваш профиль. Следующая выдача через '+Math.max(0,Math.ceil((state.collectorAt+60000-Date.now())/1000))+' с. Частота выдачи пока тестовая; запас за время отсутствия не накапливается.';host.append(p);}if(!host.children.length)host.textContent='Сейчас тут нет новых действий. Откройте задания, чтобы найти следующий шаг.';}
+function roomActions(host){if(interaction){renderInteraction(host);return;}for(const a of E.actions(state)){const b=button(a.label,()=>beginAction(a.id));b.dataset.action=a.id;if(window.PalataQuestScenes)PalataQuestScenes.decorate(b,a.id);host.append(b);}if(state.room==='ward404')host.append(button(state.mode==='trip'?'Выйти из Трипа':'Войти в Трип',switchMode));if(state.mode==='patient'&&state.room==='procedure'){const shop=button('Медицинский шкаф · купить препараты',openProcedureRoom);shop.className='scene-paper-action';shop.dataset.medicalShop='true';host.append(shop);}if(state.room==='collector'){const p=document.createElement('p');p.textContent='Сборщик: 15 серебра и 1 таблетка в ваш профиль. Следующая выдача через '+Math.max(0,Math.ceil((state.collectorAt+60000-Date.now())/1000))+' с. Частота выдачи пока тестовая; запас за время отсутствия не накапливается.';host.append(p);}if(!host.children.length)host.textContent='Сейчас тут нет новых действий. Откройте задания, чтобы найти следующий шаг.';}
 function renderLocation(){locationScreen.classList.remove('hidden');locationScreen.append(map);byId('map-modal').classList.add('hidden');map.replaceChildren();map.classList.add('quest-location');const info=document.createElement('section');info.className='scene-paper document-paper';const header=document.createElement('document-header');header.setAttribute('variant','left');header.setAttribute('department','КАРТОЧКА ЛОКАЦИИ');header.setAttribute('scale','compact');const title=document.createElement('h3');title.textContent=E.rooms[state.room][1];const mode=document.createElement('p');mode.textContent=(state.mode==='trip'?'Трип':'Пациент')+' · секция '+E.rooms[state.room][0];const message=document.createElement('p');message.className='quest-note';message.setAttribute('role','status');message.textContent='Выберите предмет. Enter или пробел активируют выбранную цель. Прогресс сохраняется после каждого шага.';const seal=document.createElement('document-stamp');seal.setAttribute('type','seal');seal.setAttribute('rotate','-8');info.append(header,title,mode,message,seal,button('Вернуться к карте',()=>{interaction=null;locationView=false;renderMap();}),button('Открыть задания',openTasks));const bag=document.createElement('section');bag.className='quest-cargo-panel';bag.setAttribute('aria-label','Предметы поручений');const bagTitle=document.createElement('h4');bagTitle.textContent='При себе · инвентарь';bag.append(bagTitle);for(const item of inventory.filter(x=>x.questCargo)){const row=document.createElement('p');row.dataset.cargo=item.questCargo;row.textContent=item.name+' ×'+item.count;bag.append(row);}if(!inventory.some(x=>x.questCargo)){const empty=document.createElement('p');empty.textContent='Предметов поручений пока нет.';bag.append(empty);}const receipt=document.createElement('p');receipt.className='quest-receipt';receipt.setAttribute('role','status');receipt.textContent=state.lastReceipt||'Собирайте предметы в комнатах и используйте их по поручению.';bag.append(receipt,button('Открыть инвентарь',openInventory));const balance=document.createElement('p');balance.textContent='Уровень '+stats.level+' · EXP '+stats.exp+'/'+stats.nextLvlExp+' · Серебро '+stats.silver;bag.append(balance);info.append(bag);window.PalataFloorArt.renderPortrait(info,state.room,state.mode);const scene=document.createElement('section');if(window.PalataQuestScenes)PalataQuestScenes.render(scene,state.room,state.mode,text=>{message.textContent=text;});const acts=document.createElement('div');acts.className='quest-actions scene-actions';roomActions(acts);scene.append(acts);if(window.PalataQuestScenes?.renderCargo)PalataQuestScenes.renderCargo(scene,state,interaction);if(window.PalataQuestScenes?.finish)PalataQuestScenes.finish(scene,info,interaction,state.interactions[interaction]||0);const tools=document.createElement('nav');tools.className='quest-room-tools';tools.setAttribute('aria-label','Керування кімнатою');
 const back=button('До карти',()=>{interaction=null;locationView=false;renderMap();});
+// Required answers must not remain hidden after an interaction advances.
+if(interaction && info.querySelector('[data-choice],.scene-document-actions'))roomInfoCollapsed=false;
 info.classList.toggle('is-collapsed',roomInfoCollapsed);
 const toggle=button(roomInfoCollapsed?'Опис і завдання':'Згорнути опис',()=>{const collapsed=info.classList.toggle('is-collapsed');roomInfoCollapsed=collapsed;toggle.textContent=collapsed?'Опис і завдання':'Згорнути опис';toggle.setAttribute('aria-expanded',String(!collapsed));});toggle.setAttribute('aria-expanded',String(!roomInfoCollapsed));toggle.dataset.roomInfoToggle='true';
 tools.append(back,toggle);map.append(scene,info,tools);}
@@ -222,7 +238,19 @@ openTasks=function(){if(travelling)return false;if(closeOtherModals(['tasks-moda
 toggleMapModal=function(show){if(travelling){showCustomToast('Дождитесь прибытия.');return;}if(show){interaction=null;locationView=false;if(isBattleActive){reopenNurseBattle();return;}if(closeOtherModals(['map-modal'])===false)return;renderMap();}byId('map-modal').classList.toggle('hidden',!show);};
 showFloorsList=renderMap;openFloorMap=()=>toggleMapModal(true);handleLocationClick=()=>toggleMapModal(true);openMedicalHub=()=>toggleMapModal(true);handleNodeClick=()=>toggleMapModal(true);
 // Legacy medical navigation cannot teleport the prototype's authoritative position.
-selectRoom=()=>toggleMapModal(true);openProcedureRoom=()=>toggleMapModal(true);
+selectRoom=()=>toggleMapModal(true);
+openProcedureRoom=function(){
+ if(state.mode!=='patient'||state.room!=='procedure'||isBattleActive||travelling)return toggleMapModal(true);
+ if(closeOtherModals(['procedure-room-modal'])===false)return false;
+ // Reuse the existing medicine shop in the actual room, without legacy teleport.
+ locationView=true;renderMap();
+ const modal=byId('procedure-room-modal');
+ // This adapter owns mode changes, so its legacy madness medicine is unusable.
+ // Keep saved pills intact and explain the disabled purchase instead of selling it.
+ const modePills=modal.querySelector('[onclick^="buyMedicalItem(\'madness_pills\'"]');
+ if(modePills){const description=modePills.previousElementSibling?.lastElementChild;modePills.disabled=true;if(description){description.id='procedure-mode-note';description.setAttribute('role','status');description.textContent='У цій версії режим змінюється червоним перемикачем.';modePills.setAttribute('aria-describedby',description.id);}}
+ modal.style.setProperty('z-index','850','important');modal.classList.remove('hidden');return true;
+};
 startBossFight=function(boss){if(isBattleActive){reopenNurseBattle();return;}dispatch({type:'action',id:'boss:'+boss});};
 openBossDossier=function(boss){if(!E.actions(state).some(a=>a.id==='boss:'+boss)){showCustomToast('Рейд доступен в комнате босса в Трипе после открытия секции.');return;}startBossFight(boss);};
 handleVictory=function(){const active=isBattleActive,battle=currentBattleSession?.id;originalVictory();if(active&&lastBattleResult?.battleId===battle&&state.battle)dispatch({type:'battleEnd',victory:true});};

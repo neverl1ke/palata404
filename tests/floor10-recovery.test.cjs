@@ -17,3 +17,50 @@ test('Inventory and item details stack above fullscreen quest room',()=>{const c
 test("Modal override beats legacy important rule",()=>{const css=fs.readFileSync("quest-prototype.css","utf8");a.match(css,/#inventory-modal\{z-index:850!important\}/);a.match(css,/#item-info-modal\{z-index:860!important\}/);});
 
 test('Task journal clears fullscreen room and inventory',()=>{const css=fs.readFileSync('quest-prototype.css','utf8');a.match(css,/#tasks-modal\{z-index:900!important\}/);});
+
+// Runtime raid checkpoint recovery regressions.
+const assert=a;
+const code=fs.readFileSync(require('node:path').join(__dirname,'../quest-prototype.js'),'utf8');
+const resumeSource=code.slice(code.indexOf('function raidInventorySnapshot('),code.indexOf('function resumeCounter('));
+function checkpoint(){return {
+ version:1,owner:'fixture-owner',boss:'nurse',hp:900,maxHp:1000,playerHp:55,endsAt:200000,cooldown:0,ammo:9,reloadAt:0,
+ profile:{damage:35,cooldown:4,capacity:10,reload:2.5,critical:.05,miss:.05,criticalMultiplier:1.5},
+ session:{id:'raid-fixture',bossKey:'nurse',startedAt:100,serial:1,events:['raid-fixture:1:attack'],finished:false},
+ members:[{id:'player',damage:35,metrics:{damageTaken:0,healing:0,turns:1,madnessStart:100}}],
+ counters:[],inventory:[{name:'Known weapon',category:'weapon',instanceId:'weapon-one',count:1,modules:{aiming:'accuracy'}},{name:'Medicine',category:'meds',count:3}]
+};}
+function harness({backup=true}={}){
+ const writes=new Map(),original=[{name:'Profile weapon',category:'weapon',count:1},{name:'Profile medicine',category:'meds',count:7}];
+ const c={state:{battle:'nurse',room:'nurse',flags:{}},inventory:structuredClone(original),stats:{hp:81,maxHp:100},
+ raidArchiveOwnerId:'fixture-owner',lastBattleResult:null,readRaidArchive:()=>[],stored:'exact-original-save-bytes',key:'quest-key',
+ safeStorageSet:(k,v)=>{if(!backup)return false;writes.set(k,v);return true;},protectedSave:false,saveFailed:false,notice:'',
+ restoringRaid:false,originalFight:()=>{c.started++},started:0,stopBattleTimers(){},isBattleActive:false,currentBossKey:null,bossCurrentHp:0,bossMaxHp:0,
+ currentBattleSession:null,raidMembers:[{id:'player',damage:0,metrics:{damageTaken:0,healing:0,turns:0,madnessStart:100}}],battleWeaponProfile:null,battleWeaponAmmo:0,
+ raidEndsAt:0,attackCooldownEndsAt:0,playerAttackCooldown:false,weaponReloadEndsAt:0,battleGeneration:1,weaponReloadTimer:null,counters:new Map(),
+ raidTimerInterval:null,friendAttackInterval:null,setInterval:()=>1,setTimeout:()=>2,Date,Map,Number,
+ updateRaidTimerTick(){},friendsAutoAttackTick(){},updateBattleUI(){},updateRaidListUI(){},reopenNurseBattle(){},renderWeaponBattleState(){},save(){},resumeCounter(){}};
+ vm.createContext(c);vm.runInContext("'use strict';\n"+resumeSource,c);return {c,writes,original};
+}
+test('malformed raid inventory cannot replace valid profile items, and raw save is backed up',()=>{
+ for(const bad of [[{}],[{name:'Medicine',count:0}],[{name:'Medicine',count:-3}],[{name:'',count:1}]]){
+  const {c,writes,original}=harness(),r=checkpoint();r.inventory=bad;c.resumeRaid(r);
+  assert.deepEqual(c.inventory,original);assert.equal(c.started,0);assert.equal(c.isBattleActive,false);assert.equal(c.state.battle,null);assert.equal(c.state.room,'ward404');
+  assert.equal(writes.get('quest-key:recovery'),'exact-original-save-bytes');
+ }
+});
+test('valid checkpoint preserves every inventory item, weapon identity and module while resuming',()=>{
+ const {c}=harness(),r=checkpoint(),before=JSON.stringify(r);c.resumeRaid(r);
+ assert.equal(c.started,1);assert.equal(c.isBattleActive,true);assert.equal(c.stats.hp,55);
+ assert.equal(JSON.stringify(c.inventory),JSON.stringify(r.inventory));assert.equal(JSON.stringify(r),before);assert.equal(c.currentBattleSession.id,r.session.id);
+});
+test('older positive string counts and omitted counts migrate without losing items',()=>{
+ const {c}=harness(),r=checkpoint();r.inventory=[{name:'Legacy medicine',count:'2'},{name:'Legacy keepsake',custom:'retained'}];c.resumeRaid(r);
+ assert.equal(c.started,1);assert.equal(c.inventory.length,2);assert.equal(c.inventory[0].count,2);assert.equal(c.inventory[1].count,1);assert.equal(c.inventory[1].custom,'retained');
+});
+test('a legitimately empty inventory remains valid',()=>{
+ const {c}=harness(),r=checkpoint();r.inventory=[];c.resumeRaid(r);assert.equal(c.started,1);assert.equal(c.inventory.length,0);
+});
+test('failed recovery backup protects original progress instead of overwriting it',()=>{
+ const {c,writes,original}=harness({backup:false}),r=checkpoint();r.inventory=[{}];c.resumeRaid(r);
+ assert.equal(c.protectedSave,true);assert.equal(c.saveFailed,true);assert.equal(writes.size,0);assert.deepEqual(c.inventory,original);assert.equal(c.started,0);
+});

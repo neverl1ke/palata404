@@ -135,3 +135,24 @@
     line-height:1.05;
     white-space:nowrap;
 }
+
+/* Keep the approved printed buttons unchanged while making their hit area
+   usable. The transparent extension belongs to the same semantic button. */
+.archive-unified-tablet .p404-actions button { position:relative; overflow:visible; }
+.archive-unified-tablet .p404-actions button::after {
+    content:"";
+    position:absolute;
+    left:0;
+    right:0;
+    top:50%;
+    height:100%;
+    min-height:44px;
+    transform:translateY(-50%);
+}
+/* The read-only service slip is painted over the lower target extension. It
+   must not intercept input intended for that button; its appearance is intact. */
+.archive-unified-tablet .p404-slip { pointer-events:none; }
+/* A phone displays the fixed 1280px game canvas at roughly 44–65% scale. */
+@media (pointer:coarse) {
+    .archive-unified-tablet .p404-actions button::after { min-height:100px; }
+}

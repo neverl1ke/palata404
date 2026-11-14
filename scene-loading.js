@@ -24,28 +24,39 @@ function cssImages(value){
   const source=(m[1]||m[2]||m[3]||'').trim();if(source&&!source.startsWith('#'))urls.push(source);
  }return urls;
 }
-function roomImages(){
- const sources=new Set([
-  'hud-art/hud-reference-card.webp','hud-art/patient-compact.webp','hud-art/control-heading-patch.svg',
-  'hud-art/patient-paper-mask.svg','assets/ui/wardrobe/clipboard-v2/board-original.png',
-  'hud-art/glass-mark-0.webp','hud-art/glass-mark-1.webp','hud-art/glass-mark-2.webp','hud-art/glass-mark-4.webp'
- ]);
- for(const image of root.querySelectorAll('img'))if(!image.closest('.character-paperdoll')&&image.getAttribute('src'))sources.add(image.currentSrc||image.src);
- for(const element of [root,...root.querySelectorAll('*')]){
+function activeArena(){
+ const arena=document.getElementById('nurse-battle-modal');
+ return arena&&!arena.hidden&&!arena.classList.contains('hidden')&&getComputedStyle(arena).display!=='none'?arena:null;
+}
+function collectImages(container,sources){
+ for(const image of container.querySelectorAll('img'))if(!image.closest('.character-paperdoll')&&image.getAttribute('src'))sources.add(image.currentSrc||image.src);
+ for(const element of [container,...container.querySelectorAll('*')]){
   if(element.closest('.character-paperdoll'))continue;
   for(const pseudo of [null,'::before','::after']){
    const style=getComputedStyle(element,pseudo);
    for(const property of ['backgroundImage','maskImage','borderImageSource'])for(const source of cssImages(style[property]))sources.add(source);
   }
  }
+}
+function roomImages(){
+ const sources=new Set([
+  'hud-art/hud-reference-card.webp','hud-art/patient-compact.webp','hud-art/control-heading-patch.svg',
+  'hud-art/patient-paper-mask.svg','assets/ui/wardrobe/clipboard-v2/board-original.png',
+  'hud-art/glass-mark-0.webp','hud-art/glass-mark-1.webp','hud-art/glass-mark-2.webp','hud-art/glass-mark-4.webp'
+ ]);
+ collectImages(root,sources);
  return [...sources];
 }
 async function characterReady(host){
  while(!stopped){
+  if(activeArena())return;
   const generation=host.paperDollGeneration;
-  await host.paperDollReady;
+  // A restored raid may pause the room renderer before its first frame.
+  // Keep checking the visible scene rather than awaiting hidden animation.
+  await Promise.race([host.paperDollReady,frame()]);
+  if(activeArena())return;
   const renderer=window.avatarCoreGamePreview?.instances.get(host);
-  if(renderer?.running)await renderer.running;
+  if(renderer?.running){await Promise.race([renderer.running,frame()]);if(renderer.running)continue;}
   if(generation===host.paperDollGeneration&&!host.hasAttribute('data-paper-loading')&&!host.hasAttribute('data-avatar-pending')){
    const painted=[...host.querySelectorAll('canvas')].some(c=>!c.hidden&&c.width&&c.height)||
     [...host.querySelectorAll('img')].some(im=>im.complete&&im.naturalWidth&&!im.classList.contains('hidden')&&getComputedStyle(im).visibility!=='hidden');
@@ -59,9 +70,18 @@ async function prepare(){
  const sources=roomImages();root.dataset.assetCount=String(sources.length);
  const artwork=Promise.allSettled(sources.map(imageReady));
  await Promise.all([artwork,document.fonts.ready,characterReady(document.getElementById('character-paperdoll')),characterReady(document.getElementById('hud-portrait'))]);
+ const arena=activeArena();
+ if(arena){
+  // The arena is the initial visible scene after restoring an active raid.
+  // Its actual artwork must decode; the occluded room needs no contact shadow.
+  const arenaSources=new Set();collectImages(arena,arenaSources);
+  await Promise.allSettled([...arenaSources].map(imageReady));
+ }
  if(failed.size)throw new Error('Required room artwork could not be decoded');
- window.PalataRoomShadows?.refresh();
- while(!stopped&&(root.dataset.shadowReady!=='true'||!(Number(root.querySelector('.room-shadow-contact')?.dataset.soleSamples)>0)))await frame();
+ if(!activeArena()){
+  window.PalataRoomShadows?.refresh();
+  while(!stopped&&!activeArena()&&(root.dataset.shadowReady!=='true'||!(Number(root.querySelector('.room-shadow-contact')?.dataset.soleSamples)>0)))await frame();
+ }
  await frame();await frame();
 }
 async function start(){

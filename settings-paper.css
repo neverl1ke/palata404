@@ -1,0 +1,143 @@
+/* Approved settings concept. Scoped to this dialog; neighbours and game art stay unchanged. */
+#settings-modal .settings-paper {
+    width: min(560px, calc(100vw - 32px));
+    padding: 28px;
+    border: 1px solid #9a8060;
+    border-radius: 10px;
+    background-color: #f1e6cf;
+    background-image: linear-gradient(#f7efdcde, #f7efdcde), var(--document-paper-center);
+    background-position: center;
+    background-size: cover;
+    color: #34261c;
+    backdrop-filter: none;
+    box-shadow: 0 15px 45px #0009, inset 0 0 24px #8f60252b, inset 0 0 0 2px #fff8;
+}
+
+#settings-modal .modal-header {
+    gap: 16px;
+    padding-bottom: 18px;
+    margin-bottom: 24px;
+    border-bottom: 1px solid #65513b;
+}
+
+#settings-modal .modal-header h3 {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 28px;
+    line-height: 1.2;
+    font-weight: normal;
+    letter-spacing: 0;
+    color: #402c1c;
+}
+
+#settings-modal .game-icon {
+    width: 25px;
+    height: 25px;
+    margin: 0;
+    filter: grayscale(1) contrast(1.6) brightness(.65) sepia(.7);
+    opacity: .9;
+}
+
+#settings-modal .modal-header .game-icon {
+    width: 32px;
+    height: 32px;
+}
+
+#settings-modal .btn-close-mini {
+    width: 44px;
+    height: 44px;
+    border: 1px solid #65513b;
+    border-radius: 4px;
+    color: #402c1c;
+    background: #fff3;
+    font-size: 22px;
+    line-height: 1;
+}
+
+#settings-modal .settings-body {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+#settings-modal .menu-btn {
+    display: grid;
+    grid-template-columns: 25px minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 14px;
+    min-height: 62px;
+    padding: 14px 18px;
+    border: 1px solid #72614b;
+    border-radius: 6px;
+    background: #fff2;
+    color: #34261c;
+    font-size: 20px;
+    line-height: 1.25;
+    text-align: left;
+    transition: background-color .12s ease, border-color .12s ease;
+}
+
+#settings-modal .settings-status {
+    font-size: 15px;
+    line-height: 1.2;
+    font-style: italic;
+    white-space: nowrap;
+    color: #655949;
+}
+
+#settings-modal .settings-placeholder {
+    background: #a4937010;
+}
+
+#settings-modal .menu-btn:hover:not(:disabled),
+#settings-modal .btn-close-mini:hover {
+    background-color: #fff8;
+    border-color: #49301c;
+}
+
+#settings-modal .menu-btn:active:not(:disabled),
+#settings-modal .btn-close-mini:active {
+    background-color: #a17f4a26;
+}
+
+#settings-modal button:focus-visible {
+    outline: 3px solid #7e291f;
+    outline-offset: 3px;
+}
+
+#settings-modal .menu-btn:disabled {
+    color: #786c5b;
+    border-color: #9e927c;
+    background: #a4937010;
+    cursor: default;
+}
+
+#settings-modal .menu-btn:disabled .game-icon {
+    opacity: .45;
+}
+
+/* play.html scales a fixed 1280×720 canvas. Enlarge touch controls inside it. */
+@media (pointer: coarse) {
+    #settings-modal .settings-paper { width: min(680px, calc(100vw - 32px)); padding: 28px; }
+    #settings-modal .modal-header { padding-bottom: 16px; margin-bottom: 20px; }
+    #settings-modal .modal-header h3 { font-size: 32px; }
+    #settings-modal .btn-close-mini { width: 82px; height: 82px; font-size: 30px; }
+    #settings-modal .menu-btn { min-height: 82px; font-size: 26px; }
+    #settings-modal .settings-status { font-size: 20px; }
+    #settings-modal .menu-btn .game-icon { width: 28px; height: 28px; }
+}
+
+/* Direct narrow view remains usable too; production play uses the wide canvas. */
+@media (max-width: 600px) {
+    #settings-modal .settings-paper { padding: 20px; }
+    #settings-modal .modal-header h3 { font-size: 24px; gap: 10px; }
+    #settings-modal .modal-header .game-icon { width: 25px; height: 25px; }
+    #settings-modal .btn-close-mini { width: 44px; height: 44px; font-size: 22px; }
+    #settings-modal .menu-btn { grid-template-columns: 25px minmax(0, 1fr); gap: 8px 12px; min-height: 62px; padding: 12px; font-size: 18px; }
+    #settings-modal .settings-status { grid-column: 2; font-size: 14px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #settings-modal .menu-btn { transition: none; }
+}
