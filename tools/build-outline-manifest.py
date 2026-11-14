@@ -10,5 +10,6 @@ for rel in sorted(paths):
  p=R/rel
  if p.is_file()and p.suffix in ['.png','.webp']and not any(x in rel.lower()for x in ['mask','neckline','head.png','/palette/','/thumbnails/','thumb-','foreground-','keep-pants']):items[rel]=True
 (R/'outline-manifest.js').write_text('window.PalataOutlineManifest='+json.dumps(items,separators=(',',':'))+';\n')
-(R/'review/outline-release-20261114/sources.json').write_text(json.dumps({rel:hashlib.sha256((R/rel).read_bytes()).hexdigest()for rel in items},indent=2))
+proof=R/'test-results/outline-finish/sources.json';proof.parent.mkdir(parents=True,exist_ok=True)
+proof.write_text(json.dumps({rel:hashlib.sha256((R/rel).read_bytes()).hexdigest()for rel in items},indent=2))
 print(len(items),'unchanged source files selected')

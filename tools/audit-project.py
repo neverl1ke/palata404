@@ -32,6 +32,9 @@ def audit():
   if strict:
    missing.append({'source':src,'target':target,'reference':raw,'kind':kind,'case_match':case.get(target.lower())})
  for path,text in texts.items():
+  # Archived source snapshots are data for hash regressions, not deployed apps.
+  # Live pages still validate every dependency they reference in these folders.
+  if path.startswith('review/') and any(part in path.split('/') for part in ['before','before-assets','originals','masters','renderer-masters']):continue
   suffix=Path(path).suffix
   if suffix=='.html':
    for x in re.findall(r'(?:src|href)\s*=\s*["\']([^"\']+)',text):link(path,x,'html',True)

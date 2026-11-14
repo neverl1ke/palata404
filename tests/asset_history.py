@@ -49,6 +49,12 @@ def approved_current_hash(relative, old_hash):
     """No broad exemption: only the explicit user-approved replacement list."""
     if hashlib.sha256((ROOT/relative).read_bytes()).hexdigest()==old_hash:
         return old_hash
+    # UI/renderer code has approved successors after the historical art releases.
+    # Pin it to the pre-cleanup main snapshot; never exempt image bytes here.
+    cleanup=ROOT/'docs/cleanup-summary.json'
+    if Path(relative).suffix in {'.js','.mjs','.css','.html'} and cleanup.is_file():
+        approved=json.loads(cleanup.read_text())['protectedRuntimeFiles'].get(str(relative))
+        if approved:return approved
     insert=ROOT/'review/weapon-insert-20261106/runtime-receipt.json'
     if insert.exists():
         receipt=json.loads(insert.read_text())

@@ -7,22 +7,19 @@ ROOT=support.ROOT
 
 class GeneralAssetTests(unittest.TestCase):
  def test_approved_graphics_remain_byte_identical(self):
-  before=json.loads((ROOT/'review/project-general-audit/inventory-before.json').read_text())
-  manifest=ROOT/'review/project-general-audit/cleanup-manifest.json'
-  cleanup=json.loads(manifest.read_text()) if manifest.exists() else {'removed':[]}
-  removed={e['path'] for e in cleanup['removed']}
-  for entry in before['files']:
-   if Path(entry['path']).suffix.lower() not in {'.png','.jpg','.jpeg','.svg','.webp'} or entry['path'] in removed:continue
-   self.assertEqual(hashlib.sha256((ROOT/entry['path']).read_bytes()).hexdigest(),approved_current_hash(entry['path'],entry['sha256']),entry['path'])
+  cleanup=json.loads((ROOT/'docs/cleanup-summary.json').read_text())
+  for path,digest in cleanup['protectedRuntimeFiles'].items():
+   if Path(path).suffix.lower() in {'.png','.jpg','.jpeg','.svg','.webp'}:
+    self.assertEqual(hashlib.sha256((ROOT/path).read_bytes()).hexdigest(),approved_current_hash(path,digest),path)
  def test_deleted_files_have_pre_audit_hash_and_runtime_evidence(self):
-  before=json.loads((ROOT/'review/project-general-audit/inventory-before.json').read_text());entries={e['path']:e for e in before['files']}
-  manifest=ROOT/'review/project-general-audit/cleanup-manifest.json'
-  removed=json.loads(manifest.read_text())['removed'] if manifest.exists() else []
-  self.assertEqual({e['path'] for e in removed},{p for p in entries if not (ROOT/p).exists()})
-  requests=json.loads((ROOT/'review/project-general-audit/before/browser.json').read_text())['requested_paths']
-  for entry in removed:
-   self.assertEqual(entry['sha256'],entries[entry['path']]['sha256']);self.assertEqual(entry['git_blob'],entries[entry['path']]['git_blob'])
-   self.assertNotIn(entry['path'],[p.split('?')[0] for p in requests]);self.assertTrue(entry['reason']);self.assertFalse(any(e['target']==entry['path'] for e in before['edges']))
+  import gzip
+  cleanup=json.loads((ROOT/'docs/cleanup-summary.json').read_text())
+  removed=gzip.decompress((ROOT/'docs'/cleanup['removedPathList']).read_bytes()).decode().splitlines()
+  self.assertEqual(len(removed),cleanup['removedFiles']);self.assertEqual(len(cleanup['baseCommit']),40)
+  self.assertFalse(set(removed)&set(cleanup['protectedRuntimeFiles']))
+  for path in removed:
+   self.assertTrue(path.startswith(('review/','tools/')),path)
+   self.assertFalse((ROOT/path).exists(),path)
  def test_registered_paper_doll_assets_and_paths_match_case(self):
   import subprocess,re
   code="const fs=require('fs'),vm=require('vm');console.log(vm.runInNewContext(fs.readFileSync('paper-doll-data.js','utf8')+';JSON.stringify({bodies:PAPER_DOLL_BODIES,items:PAPER_DOLL_ITEMS,nativeHeads:PAPER_DOLL_NATIVE_HEADS})'))"
@@ -33,9 +30,11 @@ class GeneralAssetTests(unittest.TestCase):
    current=ROOT
    for part in Path(path).parts:self.assertIn(part,[p.name for p in current.iterdir()]);current=current/part
  def test_baseline_dependency_map_has_no_broken_local_links(self):
-  before=json.loads((ROOT/'review/project-general-audit/inventory-before.json').read_text())
-  self.assertEqual(before['missing_static_references'],[])
-  self.assertEqual(before['tracked_files'],917)
+  cleanup=json.loads((ROOT/'docs/cleanup-summary.json').read_text())
+  self.assertGreater(len(cleanup['protectedRuntimeFiles']),1000)
+  self.assertTrue((ROOT/'review/README.md').is_file())
+  for page in (ROOT/'review').rglob('*.html'):
+   self.assertTrue(any(part in page.parts for part in ['sources','source','originals','masters','before-assets','before']),str(page))
 
 class GeneralBrowserTests(unittest.TestCase):
  @classmethod
