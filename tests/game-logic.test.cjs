@@ -789,10 +789,11 @@ test('paper doll stages independent previews and applies combat equipment only o
     assert.equal(g.run('paperDollState.appearance.face'), null);
     assert.equal(g.run('paperDollState.patientLoadout.face'), null);
     const combat = g.run('JSON.stringify({stats,inventory,equippedGear,gameProgress})');
-    g.run('beginWardrobeSession(); equipPaperDollItem("armor","gear-br1"); setPaperDollView("combat"); setFace("face_2.png"); equipPaperDollItem("weapon","gear-pm"); setGender("male");');
-    assert.equal(g.run('paperDollState.patientLoadout.armor'), 'gear-br1');
+    g.run('beginWardrobeSession(); setPaperDollView("combat"); equipPaperDollItem("armor","gear-br1"); setFace("face_2.png"); equipPaperDollItem("weapon","gear-pm"); setGender("male");');
+    assert.equal(g.run('paperDollState.patientLoadout.armor'), null);
+    assert.equal(g.run('paperDollState.combatLoadout.armor'), 'gear-br1');
     assert.equal(g.run('paperDollState.patientLoadout.weapon'), null);
-    assert.equal(g.run('paperDollState.combatLoadout.armor'), null);
+    assert.equal(g.run('paperDollState.combatLoadout.armor'), 'gear-br1');
     assert.equal(g.run('paperDollState.appearance.face'), null);
     assert.equal(g.run('JSON.stringify({stats,inventory,equippedGear,gameProgress})'), combat);
     assert.equal(g.run('applyWardrobeSession()'),true);
@@ -812,7 +813,8 @@ test('paper doll rejects malformed saves, wrong slots and unsupported images whi
     assert.equal(g.run('paperDollState.activeViewMode'), 'patient');
     assert.equal(g.run('paperDollState.patientLoadout.weapon'), null);
     assert.equal(g.run('paperDollState.appearance.face'), null);
-    assert.equal(g.run('paperDollState.patientLoadout.armor'), 'gear-br1');
+    assert.equal(g.run('paperDollState.patientLoadout.armor'), null);
+    assert.equal(g.run('paperDollState.combatLoadout.armor'), 'gear-br1');
     assert.equal(g.elements.get('layer-armor').getAttribute('src'), null);
     assert.equal(g.elements.get('layer-armor').classList.contains('hidden'), true);
     const before = g.run('JSON.stringify(paperDollState)');
@@ -863,7 +865,8 @@ test('wardrobe v1 migration retires trial faces while preserving owned gear and 
     assert.equal(g.run('paperDollState.appearance.face'),null);
     assert.equal(g.run('paperDollState.legacyFaces.patient'),'face_3.png');
     assert.equal(g.run('paperDollState.legacyFaces.combat'),'face_2.png');
-    assert.equal(g.run('paperDollState.patientLoadout.armor'),'gear-br1');
+    assert.equal(g.run('paperDollState.patientLoadout.armor'),null);
+                assert.equal(g.run('paperDollState.combatLoadout.armor'),'gear-br1');
     assert.equal(g.run('paperDollState.combatLoadout.weapon'),'gear-pm');
     g.run('setPaperDollView("patient");');
     assert.equal(g.run('currentFace'),'');
@@ -912,7 +915,8 @@ test('retired faces are disabled in legacy, v1 and v2 saves without losing chara
             if(saves.palata404_paper_doll) {
                 assert.equal(g.run('paperDollState.selectedGender'),'female');
                 assert.equal(g.run('paperDollState.activeViewMode'),'combat');
-                assert.equal(g.run('paperDollState.patientLoadout.armor'),'gear-br1');
+                assert.equal(g.run('paperDollState.patientLoadout.armor'),null);
+                assert.equal(g.run('paperDollState.combatLoadout.armor'),'gear-br1');
                 assert.equal(g.run('paperDollState.combatLoadout.weapon'),'gear-pm');
             }
             const before=g.run('JSON.stringify({stats,inventory,equippedGear,gameProgress})');
@@ -938,6 +942,7 @@ test('future approved face layers remain selectable, shared and persistent', () 
 
 test('wardrobe V3 inspection is transient and only the action changes the visual loadout', () => {
     const g=game();
+    g.run('setPaperDollView("combat");');
     const before=g.run('JSON.stringify({stats,inventory,equippedGear,gameProgress,paperDollState})');
     const saved=JSON.stringify([...g.storage]);
     g.run('selectWardrobeCategory("weapons");selectWardrobeItem("gear-pm");');
@@ -946,13 +951,14 @@ test('wardrobe V3 inspection is transient and only the action changes the visual
     assert.equal(JSON.stringify([...g.storage]),saved);
     assert.equal(g.run('selectWardrobeItem("gear-br1")'),false);
     assert.equal(g.run('applyWardrobeItemAction()'),true);
-    assert.equal(g.run('paperDollState.patientLoadout.weapon'),'gear-pm');
+    assert.equal(g.run('paperDollState.combatLoadout.weapon'),'gear-pm');
     assert.equal(g.run('applyWardrobeItemAction()'),true);
-    assert.equal(g.run('paperDollState.patientLoadout.weapon'),null);
+    assert.equal(g.run('paperDollState.combatLoadout.weapon'),null);
 });
 
 test('wardrobe V3 shows unowned item details without granting equipment', () => {
     const g=game({palata404_inventory:'[]'});
+    g.run('setPaperDollView("combat");');
     g.run('selectWardrobeCategory("weapons");selectWardrobeItem("gear-pm");');
     assert.match(g.elements.get('wardrobe-item-detail').innerHTML,/disabled/);
     assert.match(g.elements.get('wardrobe-item-detail').innerHTML,/Недоступно/);

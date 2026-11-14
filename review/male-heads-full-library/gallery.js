@@ -1,5 +1,7 @@
 (() => {
     'use strict';
+    const assetURL=path=>location.hostname.endsWith('.github.io')&&path.startsWith('captures/')
+        ? 'https://raw.githubusercontent.com/neverl1ke/palata404/1d15769db949d901b2fa922d696a07f6d3096ab2/review/male-heads-full-library/'+path : path;
     const data=window.AVATAR_AUDIT, byId=id=>document.getElementById(id), pageSize=60;
     const escape=value=>String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
     const names=new Map([...data.catalog.faces,...data.catalog.hairs,...data.catalog.colors].map(x=>[x.id,x.name]));
@@ -13,7 +15,7 @@
     byId('totals').textContent=`${data.records.length} детальних знімків · ${data.full_body.length} повноростових еталонів · ${data.catalog.colors.length} кольорів. ${data.summary}`;
     function draw(){
         const start=page*pageSize,visible=filtered.slice(start,start+pageSize);
-        byId('grid').innerHTML=visible.map((r,n)=>`<article><button type="button" data-open="${start+n}" aria-label="Збільшити ${escape(r.key)}"><img loading="lazy" src="${escape(r.path)}" alt="${escape(r.key)}"></button><p><span class="badge ${r.status}">${r.status}</span> ${r.gender==='male'?'Чоловік':'Жінка'}<br>${escape(names.get(r.face||'base'))}<br>${escape(names.get(r.hair))} · ${escape(names.get(r.color))}<br>${escape(r.key)}</p></article>`).join('');
+        byId('grid').innerHTML=visible.map((r,n)=>`<article><button type="button" data-open="${start+n}" aria-label="Збільшити ${escape(r.key)}"><img loading="lazy" src="${escape(assetURL(r.path))}" alt="${escape(r.key)}"></button><p><span class="badge ${r.status}">${r.status}</span> ${r.gender==='male'?'Чоловік':'Жінка'}<br>${escape(names.get(r.face||'base'))}<br>${escape(names.get(r.hair))} · ${escape(names.get(r.color))}<br>${escape(r.key)}</p></article>`).join('');
         byId('matches').textContent=`Знайдено: ${filtered.length}. Технічний статус і художні зауваження показані окремо у збільшеному перегляді.`;
         byId('position').textContent=`${page+1} / ${Math.max(1,Math.ceil(filtered.length/pageSize))}`;
         byId('back').disabled=page===0;byId('next').disabled=start+pageSize>=filtered.length;
@@ -24,7 +26,7 @@
     function image(){
         const r=filtered[index];if(!r)return;
         const body=data.full_body.find(b=>b.gender===r.gender&&b.face===r.face);
-        byId('large').src=full?body.path:r.path;byId('large').style.width=`${(full?480:400)*Number(byId('zoom').value)}px`;
+        byId('large').src=assetURL(full?body.path:r.path);byId('large').style.width=`${(full?480:400)*Number(byId('zoom').value)}px`;
         const sheet='overviews/'+r.gender+'-'+(r.face||'base');
         byId('overview').href=sheet+'-all-colors.webp';byId('geometry').href=sheet+'-geometry.webp';
         byId('caption').textContent=`${r.key} · ${r.status} · технічний: ${r.technical} · reload: ${r.reload_verified?'пройдено':'ще не підтверджено'}${full?' · повноростовий еталон без зачіски':''}`;
