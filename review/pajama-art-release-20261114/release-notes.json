@@ -1,0 +1,41 @@
+{
+  "scope": "Artistic quality/tone finish and main integration of the current three-piece pajama set, explicitly authorised by the user.",
+  "sourceSelection": {
+    "shirt": "Approved 20261113 front/rear PNG masters, all six poses",
+    "pants": "Male original native PNG; female A-rounded from latest review",
+    "slippers": "Latest heel-return front/rear/no-op native erase mask"
+  },
+  "artisticChange": "Small neutral/cool cloth-only colour balance and bounded existing luminance detail, delivered as native lossless PNG. No repaint, synthesized weave, alpha/registration change or resampling.",
+  "kept": "Original body, hands, proportions, clothing folds/stripe directions and alpha. Warm soles and distinct cloth/felt materials retained.",
+  "runtimeChange": "Pair-owned per-pose keep mask clips only upper lateral pants and restores original pants when shirt is absent/hidden/replaced. Static legacy path now includes rear cloth for the shirt and slippers.",
+  "rootVerification": {
+    "gameFrames": 510,
+    "poseVariants": 6,
+    "phasesEach": 17,
+    "cycleMs": 3600,
+    "kinds": [
+      "full",
+      "shirt",
+      "pants",
+      "footwear",
+      "none"
+    ],
+    "routesMocked": false,
+    "all30CycleEndpointsExact": true,
+    "nativeExactAllPoses": true,
+    "fullSetSilhouetteAndStateExactPrevious": true,
+    "nodeTestsPassed": 158,
+    "assetTestsPassed": 5,
+    "pajamaUITestsPassed": 3,
+    "generalBrowserRegressionTestsPassed": 2,
+    "responsiveReport": "1350x950 and390x844"
+  },
+  "knownLimits": [
+    "The small finish cannot reconstruct thread detail absent from the source; no fake texture was added.",
+    "Only the existing shared breathing cycle and three weapon poses exist; no walk cycle was invented.",
+    "The full general historical-asset suite is blocked by source files omitted from this sparse checkout. Its browser subset passes when using installed Chromium.",
+    "The general static audit reports 11 pre-existing documentation links in unchanged shirt approval evidence; new release introduces no missing static references.",
+    "The pre-existing Pages1GB budget check also fails. It was not weakened and old galleries were not deleted."
+  ],
+  "mainStrategy": "Use current origin/main8cda2bd as parent. Preserve the older dirty local main worktree and unrelated floor/quest content. Fast-forward the canonical GitHub main without force."
+}

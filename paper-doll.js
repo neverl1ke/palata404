@@ -303,6 +303,43 @@ function renderPaperDollAt(host, prefix = '') {
         if (!paperDollWantsAnimation(host)) finishPaperDollFrame(host);
     });
 }
+// Garment keep masks act on a derived image only; originals and state stay intact.
+const paperDollKeptGarmentCache = new Map();
+function paperDollGarmentKeepMasksAt(prefix,item,selectedGender){
+    if(!item)return [];
+    return [...new Set(PAPER_DOLL_LAYER_ORDER.flatMap(slot=>{
+        if(wardrobeSession && prefix==='wardrobe-' && wardrobeHiddenSlots.has(slot))return [];
+        const owner=selectedPaperDollItem(slot);
+        if(!owner || !paperDollImageCandidates(owner,selectedGender).some(path=>!failedPaperDollImages.has(path)))return [];
+        const artwork=record=>typeof record==='string'?record:typeof record?.[selectedGender]==='string'?record[selectedGender]:record?.[selectedGender]?.idle;
+        const targetSource=paperDollImageCandidates(item,selectedGender).find(path=>!failedPaperDollImages.has(path));
+        const ownerSource=paperDollImageCandidates(owner,selectedGender).find(path=>!failedPaperDollImages.has(path));
+        return (owner.poseClothingOccludes || []).filter(rule=>rule.targetItemId===item.id
+            && (!rule.targetArtworkByGender || artwork(rule.targetArtworkByGender)===targetSource)
+            && (!rule.ownerArtworkByGender || artwork(rule.ownerArtworkByGender)===ownerSource)).flatMap(rule=>{
+            const value=rule.keepMaskByGender?.[selectedGender];
+            // Static legacy compositions actually use the catalog's idle art.
+            const source=typeof value==='string'?value:value?.idle;
+            return source?paperDollImageCandidates({fittedToGender:true,genderVariants:{[selectedGender]:source}},selectedGender):[];
+        });
+    }))];
+}
+function paperDollKeptGarmentSource(source,masks){
+    const key=JSON.stringify([source,masks]);
+    if(!paperDollKeptGarmentCache.has(key)){
+        const load=path=>new Promise((resolve,reject)=>{const image=new Image();image.onload=()=>resolve(image);image.onerror=()=>reject(new Error('Garment clipping image unavailable'));image.src=path;});
+        const task=Promise.all([source,...masks].map(load)).then(([original,...keep])=>{
+            const canvas=document.createElement('canvas');canvas.width=PAPER_DOLL_FRAME.width;canvas.height=PAPER_DOLL_FRAME.height;
+            const ctx=canvas.getContext('2d');ctx.drawImage(original,0,0,canvas.width,canvas.height);ctx.globalCompositeOperation='destination-in';
+            for(const mask of keep)ctx.drawImage(mask,0,0,canvas.width,canvas.height);
+            return canvas.toDataURL();
+        });
+        paperDollKeptGarmentCache.set(key,task);task.catch(()=>paperDollKeptGarmentCache.delete(key));
+        while(paperDollKeptGarmentCache.size>16)paperDollKeptGarmentCache.delete(paperDollKeptGarmentCache.keys().next().value);
+    }
+    return paperDollKeptGarmentCache.get(key);
+}
+
 function renderPaperDollLayersAt(host, prefix = '') {
     if (!host) return;
     const selectedGender = paperDollState.selectedGender;
@@ -380,12 +417,21 @@ function renderPaperDollLayersAt(host, prefix = '') {
         }
         const color = ['hair','beard'].includes(slot) && layer.recolor !== false ? normalizeHairColor(paperDollState.appearance[slot === 'beard' ? 'beardColor' : 'hairColor']) : 'original';
         image.paperHairColorReference = layer.colorReference;
+        const garmentKeepMasks = paperDollGarmentKeepMasksAt(prefix,item,selectedGender);
+        const garmentKeepKey = garmentKeepMasks.join(";");
         const request = `${source}|${color}`;
         const fitKey = femaleFit?.key || '';
-        if (image.paperHairRequest !== request || image.paperHairFitKey !== fitKey) {
+        if (image.paperHairRequest !== request || image.paperHairFitKey !== fitKey || image.paperGarmentKeepKey !== garmentKeepKey) {
             image.paperHairRequest = request;
             image.paperHairFitKey = fitKey;
-            if (color === 'original' && !femaleFit && !curlyCropNeedsScalpCleanup(source)) image.paperDollReady=setPaperDollImage(image, source, source);
+            image.paperGarmentKeepKey = garmentKeepKey;
+            if (garmentKeepMasks.length) image.paperDollReady=paperDollKeptGarmentSource(source,garmentKeepMasks).then(masked=>{
+                if(image.paperHairRequest===request && image.paperGarmentKeepKey===garmentKeepKey)return setPaperDollImage(image,masked,source);
+            }).catch(()=>{
+                // Missing optional mask restores the complete original pants.
+                if(image.paperHairRequest===request && image.paperGarmentKeepKey===garmentKeepKey)return setPaperDollImage(image,source,source);
+            });
+            else if (color === 'original' && !femaleFit && !curlyCropNeedsScalpCleanup(source)) image.paperDollReady=setPaperDollImage(image, source, source);
             else image.paperDollReady=(femaleFit ? fittedFemaleHairSource(source, color, layer.colorReference, femaleFit)
                 : coloredHairSource(source, color, layer.colorReference)).then(colored => {
                 if (image.paperHairRequest === request && image.paperHairFitKey === fitKey) return setPaperDollImage(image, colored, source);

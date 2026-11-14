@@ -66,7 +66,7 @@ test('approved pajamas append three cosmetic items without replacing existing it
                 assert.deepEqual(Object.keys(masks), ['idle', 'melee', 'rifle']);
                 assert.equal(new Set(Object.values(masks)).size, 1);
                 assert.ok(Object.values(masks).every(source => source.split('?')[0] ===
-                    'assets/wardrobe/clothing/patient/pajamas/' + gender + '/mask-footwear.webp'));
+                    'assets/wardrobe/clothing/patient/pajamas/' + gender + '/mask-footwear.png'));
             }
             if (item.slot === 'upperBody') {
                 const foreground = item.poseClothingForegroundMaskByGender[gender];
@@ -74,6 +74,30 @@ test('approved pajamas append three cosmetic items without replacing existing it
                 assert.equal(foreground.rifle.split('?')[0],
                     'assets/wardrobe/clothing/patient/pajamas/' + gender + '/foreground-hands-rifle.webp');
             }
+        }
+    }
+});
+
+test('rear cloth and waist clipping remain owned by the exact equipped garments', () => {
+    const g = wardrobe();
+    const shirt = JSON.parse(g.run('JSON.stringify(PAPER_DOLL_ITEMS.find(i=>i.id==="patient-pajama-top"))'));
+    const pants = JSON.parse(g.run('JSON.stringify(PAPER_DOLL_ITEMS.find(i=>i.id==="patient-pajama-pants"))'));
+    const slippers = JSON.parse(g.run('JSON.stringify(PAPER_DOLL_ITEMS.find(i=>i.id==="patient-pajama-slippers"))'));
+    assert.equal(shirt.poseClothingOccludes.length, 1);
+    const rule = shirt.poseClothingOccludes[0];
+    assert.equal(rule.targetItemId, pants.id);
+    assert.deepEqual(rule.ownerArtworkByGender, shirt.poseClothingByGender);
+    assert.deepEqual(rule.targetArtworkByGender, pants.poseClothingByGender);
+    assert.equal(Object.hasOwn(pants, 'poseClothingOccludes'), false);
+    assert.equal(Object.hasOwn(slippers, 'poseClothingOccludes'), false);
+    for (const item of [shirt, slippers]) {
+        assert.deepEqual(item.layers.map(p => p.id), ['rear', 'front']);
+        assert.ok(item.layers[0].renderOrder < 0);
+        assert.equal(item.layers[1].renderOrder, item.renderOrder);
+        assert.deepEqual(item.layers[1].genderVariants, item.genderVariants);
+        for (const gender of ['male', 'female']) {
+            assert.equal(item.layers[0].genderVariants[gender], item.poseClothingBackByGender[gender].idle);
+            assert.deepEqual(Object.keys(rule.keepMaskByGender[gender]), ['idle', 'melee', 'rifle']);
         }
     }
 });

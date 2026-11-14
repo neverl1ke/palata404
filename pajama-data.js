@@ -4,27 +4,27 @@
     const poses = (idle, melee = idle, rifle = idle) => ({ idle, melee, rifle });
     const top = {
         male: poses(
-            'assets/wardrobe/clothing/patient/pajamas/male/top-idle.png?v=f55d4e5d9f7c',
-            'assets/wardrobe/clothing/patient/pajamas/male/top-melee.png?v=906a6ef4956b',
-            'assets/wardrobe/clothing/patient/pajamas/male/top-rifle.png?v=7796c09c33d8'
+            'assets/wardrobe/clothing/patient/pajamas/male/top-idle.png?v=2df763bde43e',
+            'assets/wardrobe/clothing/patient/pajamas/male/top-melee.png?v=e0ea02f99757',
+            'assets/wardrobe/clothing/patient/pajamas/male/top-rifle.png?v=691ac0ac0ce1'
         ),
         female: poses(
-            'assets/wardrobe/clothing/patient/pajamas/female/top-idle.png?v=1e087eb02b49',
-            'assets/wardrobe/clothing/patient/pajamas/female/top-melee.png?v=c3df05497493',
-            'assets/wardrobe/clothing/patient/pajamas/female/top-rifle.png?v=d239135eaedb'
+            'assets/wardrobe/clothing/patient/pajamas/female/top-idle.png?v=71f1c22c16f6',
+            'assets/wardrobe/clothing/patient/pajamas/female/top-melee.png?v=91e826f3c77d',
+            'assets/wardrobe/clothing/patient/pajamas/female/top-rifle.png?v=c67ec0187760'
         )
     };
     const pants = {
-        male: poses('assets/wardrobe/clothing/patient/pajamas/male/pants.webp?v=80907147fe2f'),
-        female: poses('assets/wardrobe/clothing/patient/pajamas/female/pants.webp?v=538ae40a70cb')
+        male: poses('assets/wardrobe/clothing/patient/pajamas/male/pants.png?v=92081a7760cf'),
+        female: poses('assets/wardrobe/clothing/patient/pajamas/female/pants.png?v=3c8b600aac79')
     };
     const footwear = {
-        male: poses('assets/wardrobe/clothing/patient/pajamas/male/footwear.webp?v=ab51ed65c469'),
-        female: poses('assets/wardrobe/clothing/patient/pajamas/female/footwear.webp?v=0ebb4543418d')
+        male: poses('assets/wardrobe/clothing/patient/pajamas/male/footwear.png?v=bdd2cc75318e'),
+        female: poses('assets/wardrobe/clothing/patient/pajamas/female/footwear.png?v=856fbe784678')
     };
     const footwearMask = {
-        male: poses('assets/wardrobe/clothing/patient/pajamas/male/mask-footwear.webp?v=d8b038ae1436'),
-        female: poses('assets/wardrobe/clothing/patient/pajamas/female/mask-footwear.webp?v=6505d9972bc5')
+        male: poses('assets/wardrobe/clothing/patient/pajamas/male/mask-footwear.png?v=89adcfa598eb'),
+        female: poses('assets/wardrobe/clothing/patient/pajamas/female/mask-footwear.png?v=89adcfa598eb')
     };
     const topHands = {
         male: { rifle: 'assets/wardrobe/clothing/patient/pajamas/male/foreground-hands-rifle.webp?v=ce0e3b27047a' },
@@ -54,28 +54,40 @@
             'patient-pajama-top', 'upperBody', 'top', 'Піжамна сорочка',
             'Сіро-блакитна бавовняна сорочка на ґудзиках у тонку смужку.', top,
             {
-                male: 'assets/wardrobe/clothing/patient/pajamas/male/thumb-top.webp?v=4d2b143c7ed6',
-                female: 'assets/wardrobe/clothing/patient/pajamas/female/thumb-top.webp?v=f172558a481e'
+                male: 'assets/wardrobe/clothing/patient/pajamas/male/thumb-top.webp?v=2f1b911ff6ff',
+                female: 'assets/wardrobe/clothing/patient/pajamas/female/thumb-top.webp?v=81d68c8064cc'
             }, null, topHands
         ),
         clothing(
             'patient-pajama-pants', 'pants', 'pants', 'Піжамні штани',
             'Вільні бавовняні штани в тонку смужку з м’яким поясом.', pants,
             {
-                male: 'assets/wardrobe/clothing/patient/pajamas/male/thumb-pants.webp?v=3917f8dbe809',
-                female: 'assets/wardrobe/clothing/patient/pajamas/female/thumb-pants.webp?v=9d25abe4ed83'
+                male: 'assets/wardrobe/clothing/patient/pajamas/male/thumb-pants.webp?v=3fdf3ce8154a',
+                female: 'assets/wardrobe/clothing/patient/pajamas/female/thumb-pants.webp?v=35bfd7e5e7e7'
             }
         ),
         clothing(
             'patient-pajama-slippers', 'footwear', 'footwear', 'Лікарняні капці',
             'Закриті м’які капці з тонкою гумовою підошвою.', footwear,
             {
-                male: 'assets/wardrobe/clothing/patient/pajamas/male/thumb-footwear.webp?v=8f1ee160bd80',
-                female: 'assets/wardrobe/clothing/patient/pajamas/female/thumb-footwear.webp?v=b3ab212a0b06'
+                male: 'assets/wardrobe/clothing/patient/pajamas/male/thumb-footwear.webp?v=cf1195b426c3',
+                female: 'assets/wardrobe/clothing/patient/pajamas/female/thumb-footwear.webp?v=39127ef11630'
             }, footwearMask
         )
     );
-})();
 
-// Approved shirt rear pieces belong only to the equipped shirt and active pose.
-PAPER_DOLL_ITEMS.find(item=>item.id==='patient-pajama-top').poseClothingBackByGender={"male":{"idle":"assets/wardrobe/clothing/patient/pajamas/male/back-idle.png?v=af57cfab58fc","melee":"assets/wardrobe/clothing/patient/pajamas/male/back-melee.png?v=56e8919c2d59","rifle":"assets/wardrobe/clothing/patient/pajamas/male/back-rifle.png?v=89adcfa598eb"},"female":{"idle":"assets/wardrobe/clothing/patient/pajamas/female/back-idle.png?v=53a82c63ada5","melee":"assets/wardrobe/clothing/patient/pajamas/female/back-melee.png?v=1b736b925d41","rifle":"assets/wardrobe/clothing/patient/pajamas/female/back-rifle.png?v=6c2f3a664fd4"}};
+    const shirt = PAPER_DOLL_ITEMS.find(item => item.id === 'patient-pajama-top');
+    const slippers = PAPER_DOLL_ITEMS.find(item => item.id === 'patient-pajama-slippers');
+    shirt.poseClothingBackByGender = {"male": {"idle": "assets/wardrobe/clothing/patient/pajamas/male/back-idle.png?v=6cb3845e1419", "melee": "assets/wardrobe/clothing/patient/pajamas/male/back-melee.png?v=128e72f19e3a", "rifle": "assets/wardrobe/clothing/patient/pajamas/male/back-rifle.png?v=89adcfa598eb"}, "female": {"idle": "assets/wardrobe/clothing/patient/pajamas/female/back-idle.png?v=1dc532ecbf94", "melee": "assets/wardrobe/clothing/patient/pajamas/female/back-melee.png?v=ed56f9304478", "rifle": "assets/wardrobe/clothing/patient/pajamas/female/back-rifle.png?v=075ed68f20c0"}};
+    slippers.poseClothingBackByGender = {"male": {"idle": "assets/wardrobe/clothing/patient/pajamas/male/back-footwear.png?v=aca460992c31", "melee": "assets/wardrobe/clothing/patient/pajamas/male/back-footwear.png?v=aca460992c31", "rifle": "assets/wardrobe/clothing/patient/pajamas/male/back-footwear.png?v=aca460992c31"}, "female": {"idle": "assets/wardrobe/clothing/patient/pajamas/female/back-footwear.png?v=9b737462ee36", "melee": "assets/wardrobe/clothing/patient/pajamas/female/back-footwear.png?v=9b737462ee36", "rifle": "assets/wardrobe/clothing/patient/pajamas/female/back-footwear.png?v=9b737462ee36"}};
+    // Keep masks belong only to this exact artwork pair; pants stay equipped.
+    shirt.poseClothingOccludes = [{
+        targetItemId: 'patient-pajama-pants', keepMaskByGender: {"male": {"idle": "assets/wardrobe/clothing/patient/pajamas/male/keep-pants-idle.png?v=2ec822b51ca4", "melee": "assets/wardrobe/clothing/patient/pajamas/male/keep-pants-melee.png?v=c30e6839bea1", "rifle": "assets/wardrobe/clothing/patient/pajamas/male/keep-pants-rifle.png?v=b935c91558e4"}, "female": {"idle": "assets/wardrobe/clothing/patient/pajamas/female/keep-pants-idle.png?v=7ff7c8078fa5", "melee": "assets/wardrobe/clothing/patient/pajamas/female/keep-pants-melee.png?v=7ff7c8078fa5", "rifle": "assets/wardrobe/clothing/patient/pajamas/female/keep-pants-rifle.png?v=ec5e8507b3f0"}},
+        ownerArtworkByGender: top, targetArtworkByGender: pants
+    }];
+    // Mixed legacy outfits use the real idle art with the same front/rear order.
+    for (const item of [shirt, slippers]) item.layers = [
+        {id:'rear', genderVariants:Object.fromEntries(['male','female'].map(g=>[g,item.poseClothingBackByGender[g].idle])), renderOrder:-1},
+        {id:'front', genderVariants:item.genderVariants, renderOrder:item.renderOrder}
+    ];
+})();

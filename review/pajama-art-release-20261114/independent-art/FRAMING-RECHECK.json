@@ -1,0 +1,67 @@
+{
+  "01sha": "3b3ef370f7784cd0b78f61087142f8ffaa09f4f4802e76411e351feac71920e8",
+  "02sha": "52b01b149c6329a242b5f9a36cfcb260df40fbfcd91919cc09a8708003f09425",
+  "same_dimensions": true,
+  "head_boxes": [
+    {
+      "box": [
+        130,
+        140,
+        230,
+        235
+      ],
+      "RGBmax": 1,
+      "changed_pixels": 6
+    },
+    {
+      "box": [
+        650,
+        140,
+        750,
+        235
+      ],
+      "RGBmax": 1,
+      "changed_pixels": 4
+    },
+    {
+      "box": [
+        1170,
+        140,
+        1270,
+        235
+      ],
+      "RGBmax": 0,
+      "changed_pixels": 0
+    },
+    {
+      "box": [
+        130,
+        930,
+        230,
+        1025
+      ],
+      "RGBmax": 1,
+      "changed_pixels": 10
+    },
+    {
+      "box": [
+        650,
+        930,
+        750,
+        1025
+      ],
+      "RGBmax": 1,
+      "changed_pixels": 9
+    },
+    {
+      "box": [
+        1170,
+        930,
+        1270,
+        1025
+      ],
+      "RGBmax": 0,
+      "changed_pixels": 0
+    }
+  ]
+}

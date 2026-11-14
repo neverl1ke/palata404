@@ -1,0 +1,446 @@
+{
+  "authorization": "User requested artistic quality/tone finishing followed by main integration.",
+  "method": "Original native PNG -> small Lab cloth-only colour correction + bounded existing luminance detail. Exact alpha/coordinates; no resize, repaint, grain synthesis or deblur claim.",
+  "records": [
+    {
+      "gender": "male",
+      "part": "top-idle",
+      "source": "review/pajama-art-release-20261114/originals/male/top-idle.png",
+      "historicalSource": "assets/wardrobe/clothing/patient/pajamas/male/top-idle.png",
+      "sourceSha256": "f55d4e5d9f7c4f155b1228dd41ea8a3065869d5b1a8e54d19df5a21ec9c1bbfe",
+      "candidate": "review/pajama-art-release-20261114/candidate/male/top-idle.png",
+      "candidateSha256": "2df763bde43e950e753b816fbc72c6a018cb349ef5bb310129bbc01a4b2dfd2c",
+      "size": [
+        941,
+        1672
+      ],
+      "alphaExact": true,
+      "noResampling": true,
+      "gradeLabAB": [
+        -0.15,
+        -0.35
+      ],
+      "detailGain": 0.18,
+      "visibleRGBMaxChange": 3,
+      "visibleRGBMeanChange": 0.4111316329110368
+    },
+    {
+      "gender": "male",
+      "part": "top-melee",
+      "source": "review/pajama-art-release-20261114/originals/male/top-melee.png",
+      "historicalSource": "assets/wardrobe/clothing/patient/pajamas/male/top-melee.png",
+      "sourceSha256": "906a6ef4956b43efa57ca5f72c3d63df8d85b1966cfb8658969d62dca117824e",
+      "candidate": "review/pajama-art-release-20261114/candidate/male/top-melee.png",
+      "candidateSha256": "e0ea02f99757f0f902a76b8c9c30002939882079e24741ac0ed9e5ae2560fdf4",
+      "size": [
+        941,
+        1672
+      ],
+      "alphaExact": true,
+      "noResampling": true,
+      "gradeLabAB": [
+        -0.15,
+        -0.35
+      ],
+      "detailGain": 0.18,
+      "visibleRGBMaxChange": 3,
+      "visibleRGBMeanChange": 0.4407359563476643
+    },
+    {
+      "gender": "male",
+      "part": "top-rifle",
+      "source": "review/pajama-art-release-20261114/originals/male/top-rifle.png",
+      "historicalSource": "assets/wardrobe/clothing/patient/pajamas/male/top-rifle.png",
+      "sourceSha256": "7796c09c33d88a8469b84c5c733d431e93aa12ac728ba89d5aa36d404ca2c085",
+      "candidate": "review/pajama-art-release-20261114/candidate/male/top-rifle.png",
+      "candidateSha256": "691ac0ac0ce1249724d803d849116983add03b30403b33cdf0cd037c141d7b58",
+      "size": [
+        941,
+        1672
+      ],
+      "alphaExact": true,
+      "noResampling": true,
+      "gradeLabAB": [
+        -0.15,
+        -0.35
+      ],
+      "detailGain": 0.1,
+      "visibleRGBMaxChange": 3,
+      "visibleRGBMeanChange": 0.4679509698225099
+    },
+    {
+      "gender": "male",
+      "part": "back-idle",
+      "source": "review/pajama-art-release-20261114/originals/male/back-idle.png",
+      "historicalSource": "assets/wardrobe/clothing/patient/pajamas/male/back-idle.png",
+      "sourceSha256": "af57cfab58fcd2475e818b9a6287225e9e1a26006ef0e531c8fb0d9d4d692669",
+      "candidate": "review/pajama-art-release-20261114/candidate/male/back-idle.png",
+      "candidateSha256": "6cb3845e1419e684b691acc69898589216151e5615ecec6e2822dea28181a0cb",
+      "size": [
+        941,
+        1672
+      ],
+      "alphaExact": true,
+      "noResampling": true,
+      "gradeLabAB": [
+        -0.15,
+        -0.35
+      ],
+      "detailGain": 0.0,
+      "visibleRGBMaxChange": 1,
+      "visibleRGBMeanChange": 0.31153466973381533
+    },
+    {
+      "gender": "male",
+      "part": "back-melee",
+      "source": "review/pajama-art-release-20261114/originals/male/back-melee.png",
+      "historicalSource": "assets/wardrobe/clothing/patient/pajamas/male/back-melee.png",
+      "sourceSha256": "56e8919c2d59dba313f817f3073ced17771d5d3bb96689d8188e8638a0ee2c35",
+      "candidate": "review/pajama-art-release-20261114/candidate/male/back-melee.png",
+      "candidateSha256": "128e72f19e3a44ad22f92a74b0d64fcb221d4d6dda19b1715c60e560fcc90406",
+      "size": [
+        941,
+        1672
+      ],
+      "alphaExact": true,
+      "noResampling": true,
+      "gradeLabAB": [
+        -0.15,
+        -0.35
+      ],
+      "detailGain": 0.0,
+      "visibleRGBMaxChange": 1,
+      "visibleRGBMeanChange": 0.3132648066568771
+    },
+    {
+      "gender": "male",
+      "part": "back-rifle",
+      "source": "review/pajama-art-release-20261114/originals/male/back-rifle.png",
+      "historicalSource": "assets/wardrobe/clothing/patient/pajamas/male/back-rifle.png",
+      "sourceSha256": "89adcfa598ebed0b1f435cad625c162267ef54431ef1fe4fd21a9aa26e31f083",
+      "candidate": "review/pajama-art-release-20261114/candidate/male/back-rifle.png",
+      "candidateSha256": "89adcfa598ebed0b1f435cad625c162267ef54431ef1fe4fd21a9aa26e31f083",
+      "size": [
+        941,
+        1672
+      ],
+      "alphaExact": true,
+      "noResampling": true,
+      "gradeLabAB": [
+        -0.15,
+        -0.35
+      ],
+      "detailGain": 0.0,
+      "visibleRGBMaxChange": 0,
+      "visibleRGBMeanChange": 0
+    },
+    {
+      "gender": "male",
+      "part": "pants",
+      "source": "review/pajama-art-release-20261114/originals/male/pants.png",
+      "historicalSource": "review/pajama-waist-occlusion-20261114/reference/male-pants.png",
+      "sourceSha256": "4366d637196a410723f7b21cb3b468b1874707142bbf420e5823b73675d32131",
+      "candidate": "review/pajama-art-release-20261114/candidate/male/pants.png",
+      "candidateSha256": "92081a7760cf56ef0f5d0e41d27a154efc74f0434e1c99994924e7030b9259be",
+      "size": [
+        941,
+        1672
+      ],
+      "alphaExact": true,
+      "noResampling": true,
+      "gradeLabAB": [
+        -0.2,
+        -0.8
+      ],
+      "detailGain": 0.1,
+      "visibleRGBMaxChange": 3,
+      "visibleRGBMeanChange": 0.6942033548187547
+    },
+    {
+      "gender": "male",
+      "part": "footwear",
+      "source": "review/pajama-art-release-20261114/originals/male/footwear.png",
+      "historicalSource": "review/slippers-rear-return-20261114/candidate/male/footwear.png",
+      "sourceSha256": "d656c27b66c34cc1f25786212f1a3358719971fb0933d5103672a567164dd798",
+      "candidate": "review/pajama-art-release-20261114/candidate/male/footwear.png",
+      "candidateSha256": "bdd2cc75318e6d85a1e8fc62c8ea0d32073e33ee423d028f0dbd68870ce6d460",
+      "size": [
+        941,
+        1672
+      ],
+      "alphaExact": true,
+      "noResampling": true,
+      "gradeLabAB": [
+        -0.35,
+        -1.9
+      ],
+      "detailGain": 0.0,
+      "visibleRGBMaxChange": 4,
+      "visibleRGBMeanChange": 1.4016521279407876
+    },
+    {
+      "gender": "male",
+      "part": "back-footwear",
+      "source": "review/pajama-art-release-20261114/originals/male/back-footwear.png",
+      "historicalSource": "review/slippers-rear-return-20261114/candidate/male/back-footwear.png",
+      "sourceSha256": "59c768bb8ee5b758e4c02268a2f7b4acea42d366d5955b92106b300d3bb8b234",
+      "candidate": "review/pajama-art-release-20261114/candidate/male/back-footwear.png",
+      "candidateSha256": "aca460992c313e62624e30f9cacf703b31df0edfd10c9b67b198153b9af1df82",
+      "size": [
+        941,
+        1672
+      ],
+      "alphaExact": true,
+      "noResampling": true,
+      "gradeLabAB": [
+        -0.35,
+        -1.9
+      ],
+      "detailGain": 0.0,
+      "visibleRGBMaxChange": 3,
+      "visibleRGBMeanChange": 1.6487332764019356
+    },
+    {
+      "gender": "male",
+      "part": "mask-footwear",
+      "source": "review/pajama-art-release-20261114/originals/male/mask-footwear.png",
+      "historicalSource": "review/slippers-rear-return-20261114/candidate/male/mask-footwear.png",
+      "sourceSha256": "89adcfa598ebed0b1f435cad625c162267ef54431ef1fe4fd21a9aa26e31f083",
+      "candidate": "review/pajama-art-release-20261114/candidate/male/mask-footwear.png",
+      "candidateSha256": "89adcfa598ebed0b1f435cad625c162267ef54431ef1fe4fd21a9aa26e31f083",
+      "size": [
+        941,
+        1672
+      ],
+      "alphaExact": true,
+      "noResampling": true,
+      "gradeLabAB": [
+        0,
+        0
+      ],
+      "detailGain": 0,
+      "visibleRGBMaxChange": 0,
+      "visibleRGBMeanChange": 0
+    },
+    {
+      "gender": "female",
+      "part": "top-idle",
+      "source": "review/pajama-art-release-20261114/originals/female/top-idle.png",
+      "historicalSource": "assets/wardrobe/clothing/patient/pajamas/female/top-idle.png",
+      "sourceSha256": "1e087eb02b497f375c71db98a5788eaf682c1c18ec98e9a37a99db3beb5047b0",
+      "candidate": "review/pajama-art-release-20261114/candidate/female/top-idle.png",
+      "candidateSha256": "71f1c22c16f6830baa7cbb3100e8f8e67905cdb3a5b57029e8566e0a05e7d76f",
+      "size": [
+        941,
+        1672
+      ],
+      "alphaExact": true,
+      "noResampling": true,
+      "gradeLabAB": [
+        -0.15,
+        -0.35
+      ],
+      "detailGain": 0.18,
+      "visibleRGBMaxChange": 3,
+      "visibleRGBMeanChange": 0.39918618134807293
+    },
+    {
+      "gender": "female",
+      "part": "top-melee",
+      "source": "review/pajama-art-release-20261114/originals/female/top-melee.png",
+      "historicalSource": "assets/wardrobe/clothing/patient/pajamas/female/top-melee.png",
+      "sourceSha256": "c3df05497493c130ddc8ef8c97df8188cad9c3ce87f5666f2fe9ca528f5784c5",
+      "candidate": "review/pajama-art-release-20261114/candidate/female/top-melee.png",
+      "candidateSha256": "91e826f3c77d7ebc3bb561a5a8369c5d5d800aa123466f568b7214c698a57b2b",
+      "size": [
+        941,
+        1672
+      ],
+      "alphaExact": true,
+      "noResampling": true,
+      "gradeLabAB": [
+        -0.15,
+        -0.35
+      ],
+      "detailGain": 0.18,
+      "visibleRGBMaxChange": 3,
+      "visibleRGBMeanChange": 0.4240822344375292
+    },
+    {
+      "gender": "female",
+      "part": "top-rifle",
+      "source": "review/pajama-art-release-20261114/originals/female/top-rifle.png",
+      "historicalSource": "assets/wardrobe/clothing/patient/pajamas/female/top-rifle.png",
+      "sourceSha256": "d239135eaedbeb057ee89acc09216d1889b5a42d09b6c2b84b7510aa310dad57",
+      "candidate": "review/pajama-art-release-20261114/candidate/female/top-rifle.png",
+      "candidateSha256": "c67ec0187760a33a046c83a529ccf73b0afcd6666831012294d02450b444ede4",
+      "size": [
+        941,
+        1672
+      ],
+      "alphaExact": true,
+      "noResampling": true,
+      "gradeLabAB": [
+        -0.15,
+        -0.35
+      ],
+      "detailGain": 0.1,
+      "visibleRGBMaxChange": 3,
+      "visibleRGBMeanChange": 0.5152864955541268
+    },
+    {
+      "gender": "female",
+      "part": "back-idle",
+      "source": "review/pajama-art-release-20261114/originals/female/back-idle.png",
+      "historicalSource": "assets/wardrobe/clothing/patient/pajamas/female/back-idle.png",
+      "sourceSha256": "53a82c63ada55fce7c66c94224b78f24ea431a64397f0f93d4b8bd8cf5477a44",
+      "candidate": "review/pajama-art-release-20261114/candidate/female/back-idle.png",
+      "candidateSha256": "1dc532ecbf94aa41f4b9c3ddbbb9ab451104eeb8b19b3be0ab45dc502fc573bb",
+      "size": [
+        941,
+        1672
+      ],
+      "alphaExact": true,
+      "noResampling": true,
+      "gradeLabAB": [
+        -0.15,
+        -0.35
+      ],
+      "detailGain": 0.0,
+      "visibleRGBMaxChange": 1,
+      "visibleRGBMeanChange": 0.28470561439471587
+    },
+    {
+      "gender": "female",
+      "part": "back-melee",
+      "source": "review/pajama-art-release-20261114/originals/female/back-melee.png",
+      "historicalSource": "assets/wardrobe/clothing/patient/pajamas/female/back-melee.png",
+      "sourceSha256": "1b736b925d412d674bb04907a8f075f02993be5e9e6c87fb9a1f5c4b3222589d",
+      "candidate": "review/pajama-art-release-20261114/candidate/female/back-melee.png",
+      "candidateSha256": "ed56f9304478258ae96cfad2a0d6682382eabbf97ca24e0efd375758f770fc52",
+      "size": [
+        941,
+        1672
+      ],
+      "alphaExact": true,
+      "noResampling": true,
+      "gradeLabAB": [
+        -0.15,
+        -0.35
+      ],
+      "detailGain": 0.0,
+      "visibleRGBMaxChange": 1,
+      "visibleRGBMeanChange": 0.29954337899543376
+    },
+    {
+      "gender": "female",
+      "part": "back-rifle",
+      "source": "review/pajama-art-release-20261114/originals/female/back-rifle.png",
+      "historicalSource": "assets/wardrobe/clothing/patient/pajamas/female/back-rifle.png",
+      "sourceSha256": "6c2f3a664fd45b6881ce85dc7d15b78a2eba25a99f116fea6fbbf45adcc07fe8",
+      "candidate": "review/pajama-art-release-20261114/candidate/female/back-rifle.png",
+      "candidateSha256": "075ed68f20c00a0a32a97e1eaee02210b928719aab3e995dcc30660ba88cb801",
+      "size": [
+        941,
+        1672
+      ],
+      "alphaExact": true,
+      "noResampling": true,
+      "gradeLabAB": [
+        -0.15,
+        -0.35
+      ],
+      "detailGain": 0.0,
+      "visibleRGBMaxChange": 1,
+      "visibleRGBMeanChange": 0.3083028083028083
+    },
+    {
+      "gender": "female",
+      "part": "pants",
+      "source": "review/pajama-art-release-20261114/originals/female/pants.png",
+      "historicalSource": "review/pajama-waist-occlusion-20261114/reference/female-pants.png",
+      "sourceSha256": "d9397353d6d04356965aaec9a950c7f1e916be9425ac5b8e072c0dbee22b6776",
+      "candidate": "review/pajama-art-release-20261114/candidate/female/pants.png",
+      "candidateSha256": "3c8b600aac79551f9944c9a0bca928fedc0878ea967dd1657f2540c7458c5b68",
+      "size": [
+        941,
+        1672
+      ],
+      "alphaExact": true,
+      "noResampling": true,
+      "gradeLabAB": [
+        -0.2,
+        -1.2
+      ],
+      "detailGain": 0.05,
+      "visibleRGBMaxChange": 3,
+      "visibleRGBMeanChange": 1.1624432899125787
+    },
+    {
+      "gender": "female",
+      "part": "footwear",
+      "source": "review/pajama-art-release-20261114/originals/female/footwear.png",
+      "historicalSource": "review/slippers-rear-return-20261114/candidate/female/footwear.png",
+      "sourceSha256": "8bf2503be09d1c9dff90a5744579c3048ddda7c60783f04ec1e5b6765e7d31f1",
+      "candidate": "review/pajama-art-release-20261114/candidate/female/footwear.png",
+      "candidateSha256": "856fbe7846784673a4e93533e7142dc1f8d1fc26667c89897eadae86c967b315",
+      "size": [
+        941,
+        1672
+      ],
+      "alphaExact": true,
+      "noResampling": true,
+      "gradeLabAB": [
+        -0.35,
+        -1.9
+      ],
+      "detailGain": 0.0,
+      "visibleRGBMaxChange": 3,
+      "visibleRGBMeanChange": 1.4406563955142313
+    },
+    {
+      "gender": "female",
+      "part": "back-footwear",
+      "source": "review/pajama-art-release-20261114/originals/female/back-footwear.png",
+      "historicalSource": "review/slippers-rear-return-20261114/candidate/female/back-footwear.png",
+      "sourceSha256": "67900d7fdf8cd19d953d43febf7163eecb25741cd94efb97031294fa2c430025",
+      "candidate": "review/pajama-art-release-20261114/candidate/female/back-footwear.png",
+      "candidateSha256": "9b737462ee3665a5be8a6a8e4cf63354993f2e4b815d0bac6a093aa04e774624",
+      "size": [
+        941,
+        1672
+      ],
+      "alphaExact": true,
+      "noResampling": true,
+      "gradeLabAB": [
+        -0.35,
+        -1.9
+      ],
+      "detailGain": 0.0,
+      "visibleRGBMaxChange": 4,
+      "visibleRGBMeanChange": 1.5473126419379257
+    },
+    {
+      "gender": "female",
+      "part": "mask-footwear",
+      "source": "review/pajama-art-release-20261114/originals/female/mask-footwear.png",
+      "historicalSource": "review/slippers-rear-return-20261114/candidate/female/mask-footwear.png",
+      "sourceSha256": "89adcfa598ebed0b1f435cad625c162267ef54431ef1fe4fd21a9aa26e31f083",
+      "candidate": "review/pajama-art-release-20261114/candidate/female/mask-footwear.png",
+      "candidateSha256": "89adcfa598ebed0b1f435cad625c162267ef54431ef1fe4fd21a9aa26e31f083",
+      "size": [
+        941,
+        1672
+      ],
+      "alphaExact": true,
+      "noResampling": true,
+      "gradeLabAB": [
+        0,
+        0
+      ],
+      "detailGain": 0,
+      "visibleRGBMaxChange": 0,
+      "visibleRGBMeanChange": 0
+    }
+  ]
+}

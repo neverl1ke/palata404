@@ -1,0 +1,419 @@
+{
+  "status": "READ_ONLY_BASELINE",
+  "reviewer": "/root/cuff_round_art_check",
+  "findings": [
+    {
+      "id": "Tone",
+      "finding": "Shirt neutral/slightly cool (sample b*around−.9); pants a little warmer (−.1M/+.6F), felt shoes visibly warmer (+2.9…3.9). Small chroma-only cloth cooling is preferable to equalizing lightness."
+    },
+    {
+      "id": "Sharpness",
+      "finding": "FI/FM shirt weave is softer than FR. Female pants fine twill and male felt grain are already stronger than shirt detail; unequal material texture is not automatically a flaw."
+    },
+    {
+      "id": "Source",
+      "finding": "H-current vs earlier C: core center patch RGB exact in all6, shared-opaque RGB91.7–100% exact. Rollback does not restore more native center detail. Old WebP has different RGB and alpha/version; deltas cannot be attributed just to compression."
+    },
+    {
+      "id": "Preserve",
+      "finding": "Keep approved fit/contours/cuffs/collars/pockets, pants A waist and straight lower legs, pair-only waist taper, toe volume, all rear returns and male pair construction. No new confirmed shape blocker found in this baseline."
+    }
+  ],
+  "recommended_initial_parameters": {
+    "pants": {
+      "male_b_star_delta": -0.8,
+      "female_b_star_delta": -1.2,
+      "a_star_delta": 0,
+      "L_delta": 0
+    },
+    "shoe_cloth_only": {
+      "b_star_delta_range": [
+        -2.2,
+        -1.8
+      ],
+      "a_star_delta_range": [
+        -0.5,
+        -0.3
+      ],
+      "L_delta": 0,
+      "protect": "All soles/beige stitching; same transform on both shoes and corresponding front/rear"
+    },
+    "top_detail": {
+      "sigma_native_px": [
+        0.55,
+        0.65
+      ],
+      "gain_initial": [
+        0.15,
+        0.2
+      ],
+      "delta_luma8bit_clamp": [
+        -2,
+        2
+      ],
+      "optional_only_if_preview_justifies": [
+        -3,
+        3
+      ],
+      "scope": "alpha>250 and contour-eroded2px, or alpha-normalized filtering; weaker gain for already-crisper rifle"
+    },
+    "pants_detail": {
+      "male_gain_max": 0.1,
+      "female_gain_range": [
+        0,
+        0.08
+      ]
+    },
+    "shoe_detail": {
+      "gain": 0,
+      "reason": "Do not amplify already-strong male felt grain or force different materials to one sharpness metric."
+    },
+    "all": "No scaling, alpha changes, new generated texture, exposure normalization or invisible-detail recovery claim."
+  },
+  "samples": {
+    "male-shirt-mid": {
+      "roi": [
+        385,
+        430,
+        440,
+        570
+      ],
+      "opaque_sample_count": 7700,
+      "median_RGB": [
+        120.0,
+        117.0,
+        119.0
+      ],
+      "median_Lab": [
+        49.24599838256836,
+        1.593999981880188,
+        -0.9380000233650208
+      ],
+      "mean_abs_highpass_rgb_sigma065": 1.238
+    },
+    "male-shirt-lower": {
+      "roi": [
+        520,
+        660,
+        580,
+        740
+      ],
+      "opaque_sample_count": 4800,
+      "median_RGB": [
+        122.0,
+        120.0,
+        122.0
+      ],
+      "median_Lab": [
+        50.50699996948242,
+        1.593999981880188,
+        -0.953000009059906
+      ],
+      "mean_abs_highpass_rgb_sigma065": 1.399
+    },
+    "male-pants-thigh": {
+      "roi": [
+        350,
+        1010,
+        410,
+        1150
+      ],
+      "opaque_sample_count": 8400,
+      "median_RGB": [
+        119.0,
+        117.0,
+        118.0
+      ],
+      "median_Lab": [
+        49.29199981689453,
+        1.3589999675750732,
+        -0.14100000262260437
+      ],
+      "mean_abs_highpass_rgb_sigma065": 1.193
+    },
+    "male-shoe-left-toe": {
+      "roi": [
+        292,
+        1607,
+        327,
+        1634
+      ],
+      "opaque_sample_count": 945,
+      "median_RGB": [
+        106.0,
+        98.0,
+        94.0
+      ],
+      "median_Lab": [
+        42.047000885009766,
+        2.3589999675750732,
+        3.1410000324249268
+      ],
+      "mean_abs_highpass_rgb_sigma065": 10.23
+    },
+    "male-shoe-right-toe": {
+      "roi": [
+        625,
+        1610,
+        660,
+        1637
+      ],
+      "opaque_sample_count": 945,
+      "median_RGB": [
+        100.0,
+        93.0,
+        89.0
+      ],
+      "median_Lab": [
+        39.849998474121094,
+        1.8910000324249268,
+        3.2190001010894775
+      ],
+      "mean_abs_highpass_rgb_sigma065": 6.735
+    },
+    "female-shirt-mid": {
+      "roi": [
+        385,
+        430,
+        440,
+        570
+      ],
+      "opaque_sample_count": 7700,
+      "median_RGB": [
+        105.0,
+        103.0,
+        104.0
+      ],
+      "median_Lab": [
+        43.707000732421875,
+        1.2339999675750732,
+        -0.8360000252723694
+      ],
+      "mean_abs_highpass_rgb_sigma065": 1.146
+    },
+    "female-shirt-lower": {
+      "roi": [
+        520,
+        660,
+        580,
+        740
+      ],
+      "opaque_sample_count": 4800,
+      "median_RGB": [
+        115.0,
+        112.0,
+        115.0
+      ],
+      "median_Lab": [
+        47.564998626708984,
+        1.3910000324249268,
+        -0.953000009059906
+      ],
+      "mean_abs_highpass_rgb_sigma065": 1.299
+    },
+    "female-pants-thigh": {
+      "roi": [
+        325,
+        1010,
+        385,
+        1150
+      ],
+      "opaque_sample_count": 8400,
+      "median_RGB": [
+        108.0,
+        105.0,
+        104.0
+      ],
+      "median_Lab": [
+        44.45800018310547,
+        0.953000009059906,
+        0.578000009059906
+      ],
+      "mean_abs_highpass_rgb_sigma065": 2.142
+    },
+    "female-shoe-left-toe": {
+      "roi": [
+        330,
+        1607,
+        365,
+        1634
+      ],
+      "opaque_sample_count": 945,
+      "median_RGB": [
+        91.0,
+        86.0,
+        82.0
+      ],
+      "median_Lab": [
+        36.779998779296875,
+        1.218999981880188,
+        2.8589999675750732
+      ],
+      "mean_abs_highpass_rgb_sigma065": 2.45
+    },
+    "female-shoe-right-toe": {
+      "roi": [
+        600,
+        1610,
+        635,
+        1637
+      ],
+      "opaque_sample_count": 945,
+      "median_RGB": [
+        105.0,
+        98.0,
+        93.0
+      ],
+      "median_Lab": [
+        41.89500045776367,
+        1.593999981880188,
+        3.921999931335449
+      ],
+      "mean_abs_highpass_rgb_sigma065": 2.131
+    }
+  },
+  "source_quality_comparison": {
+    "male-idle": {
+      "older": "/workspace/palata404/review/pajamas-volume-review-20261112/candidate/male/top-idle.png",
+      "size": [
+        941,
+        1672
+      ],
+      "common_opaque_RGB_exact_fraction": 0.9470788568093579,
+      "core_mid_sample_RGB_exact": true
+    },
+    "male-melee": {
+      "older": "/workspace/palata404/review/pajamas-volume-review-20261112/candidate/male/top-melee.png",
+      "size": [
+        941,
+        1672
+      ],
+      "common_opaque_RGB_exact_fraction": 0.9410517583076001,
+      "core_mid_sample_RGB_exact": true
+    },
+    "male-rifle": {
+      "older": "/workspace/palata404/review/pajamas-volume-review-20261112/candidate/male/top-rifle.png",
+      "size": [
+        941,
+        1672
+      ],
+      "common_opaque_RGB_exact_fraction": 1.0,
+      "core_mid_sample_RGB_exact": true
+    },
+    "female-idle": {
+      "older": "/workspace/palata404/review/pajamas-volume-review-20261112/candidate/female/top-idle.png",
+      "size": [
+        941,
+        1672
+      ],
+      "common_opaque_RGB_exact_fraction": 0.9173405987020782,
+      "core_mid_sample_RGB_exact": true
+    },
+    "female-melee": {
+      "older": "/workspace/palata404/review/pajamas-volume-review-20261112/candidate/female/top-melee.png",
+      "size": [
+        941,
+        1672
+      ],
+      "common_opaque_RGB_exact_fraction": 0.9176877974167233,
+      "core_mid_sample_RGB_exact": true
+    },
+    "female-rifle": {
+      "older": "/workspace/palata404/review/pajamas-volume-review-20261112/candidate/female/top-rifle.png",
+      "size": [
+        941,
+        1672
+      ],
+      "common_opaque_RGB_exact_fraction": 0.9343436005698622,
+      "core_mid_sample_RGB_exact": true
+    }
+  },
+  "old_webp_comparison": {
+    "male-idle": {
+      "opaque_RGB_mean_abs_delta": 6.528722530405173,
+      "opaque_RGB_exact_fraction": 0.003737999862493713,
+      "alpha_exact": false
+    },
+    "male-melee": {
+      "opaque_RGB_mean_abs_delta": 7.153618400885712,
+      "opaque_RGB_exact_fraction": 0.0030473401588944466,
+      "alpha_exact": false
+    },
+    "male-rifle": {
+      "opaque_RGB_mean_abs_delta": 10.388006550643507,
+      "opaque_RGB_exact_fraction": 0.0009245989552031807,
+      "alpha_exact": false
+    },
+    "female-idle": {
+      "opaque_RGB_mean_abs_delta": 10.07356786821515,
+      "opaque_RGB_exact_fraction": 0.002321832819106898,
+      "alpha_exact": false
+    },
+    "female-melee": {
+      "opaque_RGB_mean_abs_delta": 8.962331557321798,
+      "opaque_RGB_exact_fraction": 0.0024705903040320738,
+      "alpha_exact": false
+    },
+    "female-rifle": {
+      "opaque_RGB_mean_abs_delta": 9.891853431136154,
+      "opaque_RGB_exact_fraction": 0.0006954491230741897,
+      "alpha_exact": false
+    }
+  },
+  "source_sha_before_staging": {
+    "assets/wardrobe/clothing/patient/pajamas/male/top-idle.png": "f55d4e5d9f7c4f155b1228dd41ea8a3065869d5b1a8e54d19df5a21ec9c1bbfe",
+    "assets/wardrobe/clothing/patient/pajamas/male/top-melee.png": "906a6ef4956b43efa57ca5f72c3d63df8d85b1966cfb8658969d62dca117824e",
+    "assets/wardrobe/clothing/patient/pajamas/male/top-rifle.png": "7796c09c33d88a8469b84c5c733d431e93aa12ac728ba89d5aa36d404ca2c085",
+    "assets/wardrobe/clothing/patient/pajamas/male/back-idle.png": "af57cfab58fcd2475e818b9a6287225e9e1a26006ef0e531c8fb0d9d4d692669",
+    "assets/wardrobe/clothing/patient/pajamas/male/back-melee.png": "56e8919c2d59dba313f817f3073ced17771d5d3bb96689d8188e8638a0ee2c35",
+    "assets/wardrobe/clothing/patient/pajamas/male/back-rifle.png": "89adcfa598ebed0b1f435cad625c162267ef54431ef1fe4fd21a9aa26e31f083",
+    "review/pajama-waist-occlusion-20261114/reference/male-pants.png": "4366d637196a410723f7b21cb3b468b1874707142bbf420e5823b73675d32131",
+    "review/slippers-rear-return-20261114/candidate/male/footwear.png": "d656c27b66c34cc1f25786212f1a3358719971fb0933d5103672a567164dd798",
+    "review/slippers-rear-return-20261114/candidate/male/back-footwear.png": "59c768bb8ee5b758e4c02268a2f7b4acea42d366d5955b92106b300d3bb8b234",
+    "review/slippers-rear-return-20261114/candidate/male/mask-footwear.png": "89adcfa598ebed0b1f435cad625c162267ef54431ef1fe4fd21a9aa26e31f083",
+    "assets/wardrobe/clothing/patient/pajamas/female/top-idle.png": "1e087eb02b497f375c71db98a5788eaf682c1c18ec98e9a37a99db3beb5047b0",
+    "assets/wardrobe/clothing/patient/pajamas/female/top-melee.png": "c3df05497493c130ddc8ef8c97df8188cad9c3ce87f5666f2fe9ca528f5784c5",
+    "assets/wardrobe/clothing/patient/pajamas/female/top-rifle.png": "d239135eaedbeb057ee89acc09216d1889b5a42d09b6c2b84b7510aa310dad57",
+    "assets/wardrobe/clothing/patient/pajamas/female/back-idle.png": "53a82c63ada55fce7c66c94224b78f24ea431a64397f0f93d4b8bd8cf5477a44",
+    "assets/wardrobe/clothing/patient/pajamas/female/back-melee.png": "1b736b925d412d674bb04907a8f075f02993be5e9e6c87fb9a1f5c4b3222589d",
+    "assets/wardrobe/clothing/patient/pajamas/female/back-rifle.png": "6c2f3a664fd45b6881ce85dc7d15b78a2eba25a99f116fea6fbbf45adcc07fe8",
+    "review/pajama-waist-occlusion-20261114/reference/female-pants.png": "d9397353d6d04356965aaec9a950c7f1e916be9425ac5b8e072c0dbee22b6776",
+    "review/slippers-rear-return-20261114/candidate/female/footwear.png": "8bf2503be09d1c9dff90a5744579c3048ddda7c60783f04ec1e5b6765e7d31f1",
+    "review/slippers-rear-return-20261114/candidate/female/back-footwear.png": "67900d7fdf8cd19d953d43febf7163eecb25741cd94efb97031294fa2c430025",
+    "review/slippers-rear-return-20261114/candidate/female/mask-footwear.png": "89adcfa598ebed0b1f435cad625c162267ef54431ef1fe4fd21a9aa26e31f083"
+  },
+  "verified_preserved_originals_sha256": {
+    "review/pajama-art-release-20261114/originals/male/top-idle.png": "f55d4e5d9f7c4f155b1228dd41ea8a3065869d5b1a8e54d19df5a21ec9c1bbfe",
+    "review/pajama-art-release-20261114/originals/male/top-melee.png": "906a6ef4956b43efa57ca5f72c3d63df8d85b1966cfb8658969d62dca117824e",
+    "review/pajama-art-release-20261114/originals/male/top-rifle.png": "7796c09c33d88a8469b84c5c733d431e93aa12ac728ba89d5aa36d404ca2c085",
+    "review/pajama-art-release-20261114/originals/male/back-idle.png": "af57cfab58fcd2475e818b9a6287225e9e1a26006ef0e531c8fb0d9d4d692669",
+    "review/pajama-art-release-20261114/originals/male/back-melee.png": "56e8919c2d59dba313f817f3073ced17771d5d3bb96689d8188e8638a0ee2c35",
+    "review/pajama-art-release-20261114/originals/male/back-rifle.png": "89adcfa598ebed0b1f435cad625c162267ef54431ef1fe4fd21a9aa26e31f083",
+    "review/pajama-art-release-20261114/originals/male/pants.png": "4366d637196a410723f7b21cb3b468b1874707142bbf420e5823b73675d32131",
+    "review/pajama-art-release-20261114/originals/male/footwear.png": "d656c27b66c34cc1f25786212f1a3358719971fb0933d5103672a567164dd798",
+    "review/pajama-art-release-20261114/originals/male/back-footwear.png": "59c768bb8ee5b758e4c02268a2f7b4acea42d366d5955b92106b300d3bb8b234",
+    "review/pajama-art-release-20261114/originals/male/mask-footwear.png": "89adcfa598ebed0b1f435cad625c162267ef54431ef1fe4fd21a9aa26e31f083",
+    "review/pajama-art-release-20261114/originals/female/top-idle.png": "1e087eb02b497f375c71db98a5788eaf682c1c18ec98e9a37a99db3beb5047b0",
+    "review/pajama-art-release-20261114/originals/female/top-melee.png": "c3df05497493c130ddc8ef8c97df8188cad9c3ce87f5666f2fe9ca528f5784c5",
+    "review/pajama-art-release-20261114/originals/female/top-rifle.png": "d239135eaedbeb057ee89acc09216d1889b5a42d09b6c2b84b7510aa310dad57",
+    "review/pajama-art-release-20261114/originals/female/back-idle.png": "53a82c63ada55fce7c66c94224b78f24ea431a64397f0f93d4b8bd8cf5477a44",
+    "review/pajama-art-release-20261114/originals/female/back-melee.png": "1b736b925d412d674bb04907a8f075f02993be5e9e6c87fb9a1f5c4b3222589d",
+    "review/pajama-art-release-20261114/originals/female/back-rifle.png": "6c2f3a664fd45b6881ce85dc7d15b78a2eba25a99f116fea6fbbf45adcc07fe8",
+    "review/pajama-art-release-20261114/originals/female/pants.png": "d9397353d6d04356965aaec9a950c7f1e916be9425ac5b8e072c0dbee22b6776",
+    "review/pajama-art-release-20261114/originals/female/footwear.png": "8bf2503be09d1c9dff90a5744579c3048ddda7c60783f04ec1e5b6765e7d31f1",
+    "review/pajama-art-release-20261114/originals/female/back-footwear.png": "67900d7fdf8cd19d953d43febf7163eecb25741cd94efb97031294fa2c430025",
+    "review/pajama-art-release-20261114/originals/female/mask-footwear.png": "89adcfa598ebed0b1f435cad625c162267ef54431ef1fe4fd21a9aa26e31f083"
+  },
+  "opened_visuals": [
+    "/workspace/artifacts/pajama-waist-occlusion-20261114/02-full-after.png",
+    "/workspace/palata404-shirt-release/review/pajama-art-release-20261114/source-detail.png",
+    "/workspace/palata404-shirt-release/review/pajama-art-release-20261114/independent-art/baseline-native-materials.jpg"
+  ],
+  "limits": [
+    "Baseline only; final candidate needs review.",
+    "Luminance samples depend on fold/plane and must not be normalized to a common value.",
+    "Compared named native sources, not every unrelated generated archive image.",
+    "Earlier no-publication boundary is superseded by new user authorization to integrate completed work into main; this report introduces no approval gate."
+  ],
+  "staging_note": "Root staged local candidate after source sampling. Original SHA were independently checked in originals/{gender}/{label}.png; current assets are not mislabelled as original."
+}

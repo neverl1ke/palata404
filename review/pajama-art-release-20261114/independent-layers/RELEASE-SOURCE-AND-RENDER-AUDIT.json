@@ -1,0 +1,579 @@
+{
+  "status": "PASS",
+  "sourceArtwork": [
+    {
+      "gender": "male",
+      "part": "top-idle",
+      "originalSHA": "f55d4e5d9f7c4f155b1228dd41ea8a3065869d5b1a8e54d19df5a21ec9c1bbfe",
+      "candidateSHA": "2df763bde43e950e753b816fbc72c6a018cb349ef5bb310129bbc01a4b2dfd2c",
+      "alphaExact": true,
+      "size": [
+        941,
+        1672
+      ],
+      "maxVisibleRGBChange": 3
+    },
+    {
+      "gender": "male",
+      "part": "top-melee",
+      "originalSHA": "906a6ef4956b43efa57ca5f72c3d63df8d85b1966cfb8658969d62dca117824e",
+      "candidateSHA": "e0ea02f99757f0f902a76b8c9c30002939882079e24741ac0ed9e5ae2560fdf4",
+      "alphaExact": true,
+      "size": [
+        941,
+        1672
+      ],
+      "maxVisibleRGBChange": 3
+    },
+    {
+      "gender": "male",
+      "part": "top-rifle",
+      "originalSHA": "7796c09c33d88a8469b84c5c733d431e93aa12ac728ba89d5aa36d404ca2c085",
+      "candidateSHA": "691ac0ac0ce1249724d803d849116983add03b30403b33cdf0cd037c141d7b58",
+      "alphaExact": true,
+      "size": [
+        941,
+        1672
+      ],
+      "maxVisibleRGBChange": 3
+    },
+    {
+      "gender": "male",
+      "part": "back-idle",
+      "originalSHA": "af57cfab58fcd2475e818b9a6287225e9e1a26006ef0e531c8fb0d9d4d692669",
+      "candidateSHA": "6cb3845e1419e684b691acc69898589216151e5615ecec6e2822dea28181a0cb",
+      "alphaExact": true,
+      "size": [
+        941,
+        1672
+      ],
+      "maxVisibleRGBChange": 1
+    },
+    {
+      "gender": "male",
+      "part": "back-melee",
+      "originalSHA": "56e8919c2d59dba313f817f3073ced17771d5d3bb96689d8188e8638a0ee2c35",
+      "candidateSHA": "128e72f19e3a44ad22f92a74b0d64fcb221d4d6dda19b1715c60e560fcc90406",
+      "alphaExact": true,
+      "size": [
+        941,
+        1672
+      ],
+      "maxVisibleRGBChange": 1
+    },
+    {
+      "gender": "male",
+      "part": "back-rifle",
+      "originalSHA": "89adcfa598ebed0b1f435cad625c162267ef54431ef1fe4fd21a9aa26e31f083",
+      "candidateSHA": "89adcfa598ebed0b1f435cad625c162267ef54431ef1fe4fd21a9aa26e31f083",
+      "alphaExact": true,
+      "size": [
+        941,
+        1672
+      ],
+      "maxVisibleRGBChange": 0
+    },
+    {
+      "gender": "male",
+      "part": "pants",
+      "originalSHA": "4366d637196a410723f7b21cb3b468b1874707142bbf420e5823b73675d32131",
+      "candidateSHA": "92081a7760cf56ef0f5d0e41d27a154efc74f0434e1c99994924e7030b9259be",
+      "alphaExact": true,
+      "size": [
+        941,
+        1672
+      ],
+      "maxVisibleRGBChange": 3
+    },
+    {
+      "gender": "male",
+      "part": "footwear",
+      "originalSHA": "d656c27b66c34cc1f25786212f1a3358719971fb0933d5103672a567164dd798",
+      "candidateSHA": "bdd2cc75318e6d85a1e8fc62c8ea0d32073e33ee423d028f0dbd68870ce6d460",
+      "alphaExact": true,
+      "size": [
+        941,
+        1672
+      ],
+      "maxVisibleRGBChange": 4
+    },
+    {
+      "gender": "male",
+      "part": "back-footwear",
+      "originalSHA": "59c768bb8ee5b758e4c02268a2f7b4acea42d366d5955b92106b300d3bb8b234",
+      "candidateSHA": "aca460992c313e62624e30f9cacf703b31df0edfd10c9b67b198153b9af1df82",
+      "alphaExact": true,
+      "size": [
+        941,
+        1672
+      ],
+      "maxVisibleRGBChange": 3
+    },
+    {
+      "gender": "male",
+      "part": "mask-footwear",
+      "originalSHA": "89adcfa598ebed0b1f435cad625c162267ef54431ef1fe4fd21a9aa26e31f083",
+      "candidateSHA": "89adcfa598ebed0b1f435cad625c162267ef54431ef1fe4fd21a9aa26e31f083",
+      "alphaExact": true,
+      "size": [
+        941,
+        1672
+      ],
+      "maxVisibleRGBChange": 0
+    },
+    {
+      "gender": "female",
+      "part": "top-idle",
+      "originalSHA": "1e087eb02b497f375c71db98a5788eaf682c1c18ec98e9a37a99db3beb5047b0",
+      "candidateSHA": "71f1c22c16f6830baa7cbb3100e8f8e67905cdb3a5b57029e8566e0a05e7d76f",
+      "alphaExact": true,
+      "size": [
+        941,
+        1672
+      ],
+      "maxVisibleRGBChange": 3
+    },
+    {
+      "gender": "female",
+      "part": "top-melee",
+      "originalSHA": "c3df05497493c130ddc8ef8c97df8188cad9c3ce87f5666f2fe9ca528f5784c5",
+      "candidateSHA": "91e826f3c77d7ebc3bb561a5a8369c5d5d800aa123466f568b7214c698a57b2b",
+      "alphaExact": true,
+      "size": [
+        941,
+        1672
+      ],
+      "maxVisibleRGBChange": 3
+    },
+    {
+      "gender": "female",
+      "part": "top-rifle",
+      "originalSHA": "d239135eaedbeb057ee89acc09216d1889b5a42d09b6c2b84b7510aa310dad57",
+      "candidateSHA": "c67ec0187760a33a046c83a529ccf73b0afcd6666831012294d02450b444ede4",
+      "alphaExact": true,
+      "size": [
+        941,
+        1672
+      ],
+      "maxVisibleRGBChange": 3
+    },
+    {
+      "gender": "female",
+      "part": "back-idle",
+      "originalSHA": "53a82c63ada55fce7c66c94224b78f24ea431a64397f0f93d4b8bd8cf5477a44",
+      "candidateSHA": "1dc532ecbf94aa41f4b9c3ddbbb9ab451104eeb8b19b3be0ab45dc502fc573bb",
+      "alphaExact": true,
+      "size": [
+        941,
+        1672
+      ],
+      "maxVisibleRGBChange": 1
+    },
+    {
+      "gender": "female",
+      "part": "back-melee",
+      "originalSHA": "1b736b925d412d674bb04907a8f075f02993be5e9e6c87fb9a1f5c4b3222589d",
+      "candidateSHA": "ed56f9304478258ae96cfad2a0d6682382eabbf97ca24e0efd375758f770fc52",
+      "alphaExact": true,
+      "size": [
+        941,
+        1672
+      ],
+      "maxVisibleRGBChange": 1
+    },
+    {
+      "gender": "female",
+      "part": "back-rifle",
+      "originalSHA": "6c2f3a664fd45b6881ce85dc7d15b78a2eba25a99f116fea6fbbf45adcc07fe8",
+      "candidateSHA": "075ed68f20c00a0a32a97e1eaee02210b928719aab3e995dcc30660ba88cb801",
+      "alphaExact": true,
+      "size": [
+        941,
+        1672
+      ],
+      "maxVisibleRGBChange": 1
+    },
+    {
+      "gender": "female",
+      "part": "pants",
+      "originalSHA": "d9397353d6d04356965aaec9a950c7f1e916be9425ac5b8e072c0dbee22b6776",
+      "candidateSHA": "3c8b600aac79551f9944c9a0bca928fedc0878ea967dd1657f2540c7458c5b68",
+      "alphaExact": true,
+      "size": [
+        941,
+        1672
+      ],
+      "maxVisibleRGBChange": 3
+    },
+    {
+      "gender": "female",
+      "part": "footwear",
+      "originalSHA": "8bf2503be09d1c9dff90a5744579c3048ddda7c60783f04ec1e5b6765e7d31f1",
+      "candidateSHA": "856fbe7846784673a4e93533e7142dc1f8d1fc26667c89897eadae86c967b315",
+      "alphaExact": true,
+      "size": [
+        941,
+        1672
+      ],
+      "maxVisibleRGBChange": 3
+    },
+    {
+      "gender": "female",
+      "part": "back-footwear",
+      "originalSHA": "67900d7fdf8cd19d953d43febf7163eecb25741cd94efb97031294fa2c430025",
+      "candidateSHA": "9b737462ee3665a5be8a6a8e4cf63354993f2e4b815d0bac6a093aa04e774624",
+      "alphaExact": true,
+      "size": [
+        941,
+        1672
+      ],
+      "maxVisibleRGBChange": 4
+    },
+    {
+      "gender": "female",
+      "part": "mask-footwear",
+      "originalSHA": "89adcfa598ebed0b1f435cad625c162267ef54431ef1fe4fd21a9aa26e31f083",
+      "candidateSHA": "89adcfa598ebed0b1f435cad625c162267ef54431ef1fe4fd21a9aa26e31f083",
+      "alphaExact": true,
+      "size": [
+        941,
+        1672
+      ],
+      "maxVisibleRGBChange": 0
+    }
+  ],
+  "productionPNGCount": 26,
+  "runtimeSHA256": {
+    "pajama-data.js": "81a42939798e73d1af015178838ed7a63b28cb6d7486978e49f9827e014549b1",
+    "paper-doll.js": "2f7646903c01392ff888252e62add651d3038503fdbb535fea7e293c3652b120",
+    "avatar-core/pajamas.mjs": "74d6d2b50c5b50eee4492d7f8bcfb9735025cce455523a54f7d3bc7f69075095",
+    "avatar-core/game-preview.mjs": "1986fd16c3a872d0b7c757a2ffd0915f5d56f87bb0ca25766e663dce3cba0e81",
+    "index.html": "ede9e305e3218876f41aaa60d03eec1ab460f170eb2fb7a2ccc8885773654b54"
+  },
+  "servedSourcePinsVerified": 31,
+  "immutableInputsChecked": 41,
+  "immutableChanged": [],
+  "actualPhaseMetadataVerified": 510,
+  "storedFullRGBAAndPNGVerified": 42,
+  "fullSetWaistsDecoded": 102,
+  "fullSetThumbsDecoded": 102,
+  "previousFullAlphaCompared": 18,
+  "previousWaistAlphaCompared": 102,
+  "records": [
+    {
+      "kind": "full",
+      "gender": "male",
+      "pose": "idle",
+      "phases": 17,
+      "cycleCloses": true,
+      "actualMovementPresent": true,
+      "storedFullVerified": 3
+    },
+    {
+      "kind": "full",
+      "gender": "male",
+      "pose": "melee",
+      "phases": 17,
+      "cycleCloses": true,
+      "actualMovementPresent": true,
+      "storedFullVerified": 3
+    },
+    {
+      "kind": "full",
+      "gender": "male",
+      "pose": "rifle",
+      "phases": 17,
+      "cycleCloses": true,
+      "actualMovementPresent": true,
+      "storedFullVerified": 3
+    },
+    {
+      "kind": "full",
+      "gender": "female",
+      "pose": "idle",
+      "phases": 17,
+      "cycleCloses": true,
+      "actualMovementPresent": true,
+      "storedFullVerified": 3
+    },
+    {
+      "kind": "full",
+      "gender": "female",
+      "pose": "melee",
+      "phases": 17,
+      "cycleCloses": true,
+      "actualMovementPresent": true,
+      "storedFullVerified": 3
+    },
+    {
+      "kind": "full",
+      "gender": "female",
+      "pose": "rifle",
+      "phases": 17,
+      "cycleCloses": true,
+      "actualMovementPresent": true,
+      "storedFullVerified": 3
+    },
+    {
+      "kind": "shirt",
+      "gender": "male",
+      "pose": "idle",
+      "phases": 17,
+      "cycleCloses": true,
+      "actualMovementPresent": true,
+      "storedFullVerified": 1
+    },
+    {
+      "kind": "shirt",
+      "gender": "male",
+      "pose": "melee",
+      "phases": 17,
+      "cycleCloses": true,
+      "actualMovementPresent": true,
+      "storedFullVerified": 1
+    },
+    {
+      "kind": "shirt",
+      "gender": "male",
+      "pose": "rifle",
+      "phases": 17,
+      "cycleCloses": true,
+      "actualMovementPresent": true,
+      "storedFullVerified": 1
+    },
+    {
+      "kind": "shirt",
+      "gender": "female",
+      "pose": "idle",
+      "phases": 17,
+      "cycleCloses": true,
+      "actualMovementPresent": true,
+      "storedFullVerified": 1
+    },
+    {
+      "kind": "shirt",
+      "gender": "female",
+      "pose": "melee",
+      "phases": 17,
+      "cycleCloses": true,
+      "actualMovementPresent": true,
+      "storedFullVerified": 1
+    },
+    {
+      "kind": "shirt",
+      "gender": "female",
+      "pose": "rifle",
+      "phases": 17,
+      "cycleCloses": true,
+      "actualMovementPresent": true,
+      "storedFullVerified": 1
+    },
+    {
+      "kind": "pants",
+      "gender": "male",
+      "pose": "idle",
+      "phases": 17,
+      "cycleCloses": true,
+      "actualMovementPresent": true,
+      "storedFullVerified": 1
+    },
+    {
+      "kind": "pants",
+      "gender": "male",
+      "pose": "melee",
+      "phases": 17,
+      "cycleCloses": true,
+      "actualMovementPresent": true,
+      "storedFullVerified": 1
+    },
+    {
+      "kind": "pants",
+      "gender": "male",
+      "pose": "rifle",
+      "phases": 17,
+      "cycleCloses": true,
+      "actualMovementPresent": true,
+      "storedFullVerified": 1
+    },
+    {
+      "kind": "pants",
+      "gender": "female",
+      "pose": "idle",
+      "phases": 17,
+      "cycleCloses": true,
+      "actualMovementPresent": true,
+      "storedFullVerified": 1
+    },
+    {
+      "kind": "pants",
+      "gender": "female",
+      "pose": "melee",
+      "phases": 17,
+      "cycleCloses": true,
+      "actualMovementPresent": true,
+      "storedFullVerified": 1
+    },
+    {
+      "kind": "pants",
+      "gender": "female",
+      "pose": "rifle",
+      "phases": 17,
+      "cycleCloses": true,
+      "actualMovementPresent": true,
+      "storedFullVerified": 1
+    },
+    {
+      "kind": "footwear",
+      "gender": "male",
+      "pose": "idle",
+      "phases": 17,
+      "cycleCloses": true,
+      "actualMovementPresent": true,
+      "storedFullVerified": 1
+    },
+    {
+      "kind": "footwear",
+      "gender": "male",
+      "pose": "melee",
+      "phases": 17,
+      "cycleCloses": true,
+      "actualMovementPresent": true,
+      "storedFullVerified": 1
+    },
+    {
+      "kind": "footwear",
+      "gender": "male",
+      "pose": "rifle",
+      "phases": 17,
+      "cycleCloses": true,
+      "actualMovementPresent": true,
+      "storedFullVerified": 1
+    },
+    {
+      "kind": "footwear",
+      "gender": "female",
+      "pose": "idle",
+      "phases": 17,
+      "cycleCloses": true,
+      "actualMovementPresent": true,
+      "storedFullVerified": 1
+    },
+    {
+      "kind": "footwear",
+      "gender": "female",
+      "pose": "melee",
+      "phases": 17,
+      "cycleCloses": true,
+      "actualMovementPresent": true,
+      "storedFullVerified": 1
+    },
+    {
+      "kind": "footwear",
+      "gender": "female",
+      "pose": "rifle",
+      "phases": 17,
+      "cycleCloses": true,
+      "actualMovementPresent": true,
+      "storedFullVerified": 1
+    },
+    {
+      "kind": "none",
+      "gender": "male",
+      "pose": "idle",
+      "phases": 17,
+      "cycleCloses": true,
+      "actualMovementPresent": true,
+      "storedFullVerified": 1
+    },
+    {
+      "kind": "none",
+      "gender": "male",
+      "pose": "melee",
+      "phases": 17,
+      "cycleCloses": true,
+      "actualMovementPresent": true,
+      "storedFullVerified": 1
+    },
+    {
+      "kind": "none",
+      "gender": "male",
+      "pose": "rifle",
+      "phases": 17,
+      "cycleCloses": true,
+      "actualMovementPresent": true,
+      "storedFullVerified": 1
+    },
+    {
+      "kind": "none",
+      "gender": "female",
+      "pose": "idle",
+      "phases": 17,
+      "cycleCloses": true,
+      "actualMovementPresent": true,
+      "storedFullVerified": 1
+    },
+    {
+      "kind": "none",
+      "gender": "female",
+      "pose": "melee",
+      "phases": 17,
+      "cycleCloses": true,
+      "actualMovementPresent": true,
+      "storedFullVerified": 1
+    },
+    {
+      "kind": "none",
+      "gender": "female",
+      "pose": "rifle",
+      "phases": 17,
+      "cycleCloses": true,
+      "actualMovementPresent": true,
+      "storedFullVerified": 1
+    }
+  ],
+  "native": [
+    {
+      "gender": "male",
+      "pose": "idle",
+      "RGBAExact": true,
+      "SHA256": "f990f2f3a0497bf279fa02f1a15d01e1018a9c0d9c10e089f9800b266024b7ae"
+    },
+    {
+      "gender": "male",
+      "pose": "melee",
+      "RGBAExact": true,
+      "SHA256": "603c90b37d98f04e3c3e18ccad65882fc2371d5beb36d5321f0257f94e1ae1e1"
+    },
+    {
+      "gender": "male",
+      "pose": "rifle",
+      "RGBAExact": true,
+      "SHA256": "1ca6bb1e81deaccd1f6f0e3ab74b575d804886cd211207747b761d1ee376381e"
+    },
+    {
+      "gender": "female",
+      "pose": "idle",
+      "RGBAExact": true,
+      "SHA256": "4e5797eff4c98533d1f5b6f572ddf668ee9b67d0644b110721467d038b413590"
+    },
+    {
+      "gender": "female",
+      "pose": "melee",
+      "RGBAExact": true,
+      "SHA256": "0cbd3238b1d44d6d5c8a5055d176f94dc0d7100604f51b84557b8ed6abe5d9cc"
+    },
+    {
+      "gender": "female",
+      "pose": "rifle",
+      "RGBAExact": true,
+      "SHA256": "d51000fd9a1124ae95db626bf02d55067afedfd16ffde0ccec94814e08899ca3"
+    }
+  ],
+  "protectedTrackedDiff": "",
+  "oldMainDirtyChanged": [],
+  "errors": [],
+  "limits": [
+    "All510frame records/times/cycle hashes verified.42stored full images independently decoded and PNG/RGBA-hash verified:18full-set keys plus24isolated/native neutrals.102full-set waist crops and102thumbs decoded; the other full images were not stored and cannot be independently re-decoded.",
+    "Colour/detail changes stay within8RGB levels with exact alpha/registration; this does not recover missing weave detail or establish deblurring."
+  ]
+}

@@ -88,6 +88,22 @@ function drawAppearance(ctx,layer,crown){
     ctx.drawImage(layer.bitmap,placement.x+(placement.width-width)/2,placement.y+(placement.height-height)/2,width,height);
     ctx.restore();
 }
+// Declarative owner-to-target clipping. The cached garment bitmap is immutable.
+export function garmentKeepMaskSources(clothing,target,gender,pose){
+    return [...new Set(clothing.flatMap(owner=>(owner.poseClothingOccludes || [])
+        .filter(rule=>rule.targetItemId===target.id
+            && (!rule.targetArtworkByGender || sourceFor(rule.targetArtworkByGender,gender,pose,false)===sourceFor(target.poseClothingByGender,gender,pose,target.poseClothingPart!=='top'))
+            && (!rule.ownerArtworkByGender || sourceFor(rule.ownerArtworkByGender,gender,pose,false)===sourceFor(owner.poseClothingByGender,gender,pose,owner.poseClothingPart!=='top')))
+        .map(rule=>sourceFor(rule.keepMaskByGender,gender,pose,false))
+        .filter(Boolean)))];
+}
+function keptGarment(image,masks){
+    if(!image || !masks.length)return image;
+    const canvas=makeCanvas(BODY_WIDTH),ctx=canvas.getContext('2d');
+    drawRegistered(ctx,image);ctx.globalCompositeOperation='destination-in';
+    for(const mask of masks)drawRegistered(ctx,mask);
+    ctx.globalCompositeOperation='source-over';return canvas;
+}
 export class PoseClothing {
     static async create(engine,{gender,clothing},absolute){
         const pose=engine.pose;
@@ -97,7 +113,10 @@ export class PoseClothing {
             const backSource=sourceFor(item.poseClothingBackByGender,gender,pose,false);
             const maskSource=sourceFor(item.poseClothingMaskByGender,gender,pose);
             const foregroundSource=sourceFor(item.poseClothingForegroundMaskByGender,gender,pose,false);
-            return {part:item.poseClothingPart,back:backSource?await bitmap(absolute(backSource)):null,image:await bitmap(absolute(source)),mask:maskSource?await bitmap(absolute(maskSource)):null,foregroundMask:foregroundSource?await bitmap(absolute(foregroundSource)):null};
+            const keepSources=garmentKeepMaskSources(clothing,item,gender,pose);
+            // An optional occlusion asset failure leaves the original garment visible.
+            const keepMasks=await Promise.all(keepSources.map(path=>bitmap(absolute(path)))).catch(()=>[]);
+            return {id:item.id,part:item.poseClothingPart,back:keptGarment(backSource?await bitmap(absolute(backSource)):null,keepMasks),image:keptGarment(await bitmap(absolute(source)),keepMasks),mask:maskSource?await bitmap(absolute(maskSource)):null,foregroundMask:foregroundSource?await bitmap(absolute(foregroundSource)):null};
         }));
         parts.sort((a,b)=>PART_ORDER.indexOf(a.part)-PART_ORDER.indexOf(b.part));
         const foreground=await weaponForeground(engine,gender,pose);
