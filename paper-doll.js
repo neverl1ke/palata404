@@ -6,6 +6,8 @@ function emptyPaperDollLoadout() {
     return Object.fromEntries(PAPER_DOLL_LAYER_ORDER.filter(slot => slot !== 'baseBody' && slot !== 'hair' && slot !== 'beard').map(slot => [slot, null]));
 }
 
+function isCombatPaperDollItem(item) { return Boolean(item && (['weapon','armor'].includes(item.slot) || ['weapon','helmet','armor'].includes(item.inventoryCategory))); }
+
 function normalizePaperDollState(value, legacy = {}) {
     const valid = value && typeof value === 'object' && !Array.isArray(value) && [1,2].includes(value.schemaVersion);
     const state = { schemaVersion: 2,
@@ -20,6 +22,14 @@ function normalizePaperDollState(value, legacy = {}) {
             if (slot === 'face') continue;
             const id = valid && value.schemaVersion === 1 ? PAPER_DOLL_LEGACY_ITEMS[source[slot]] || source[slot] : source[slot];
             if (PAPER_DOLL_ITEMS.some(item => item.id === id && item.slot === slot && isPaperDollItemOwned(item))) state[key][slot] = id;
+        }
+    }
+    // Repair mixed old saves without removing any owned inventory item.
+    for (const slot of Object.keys(state.patientLoadout)) {
+        const item=PAPER_DOLL_ITEMS.find(item=>item.id===state.patientLoadout[slot]);
+        if(isCombatPaperDollItem(item)) {
+            if(!state.combatLoadout[slot])state.combatLoadout[slot]=item.id;
+            state.patientLoadout[slot]=null;
         }
     }
     const face = valid ? value.schemaVersion === 2 ? value.appearance?.face
@@ -119,12 +129,14 @@ function retryPaperDollSave() {
 
 function setPaperDollView(mode) {
     if (!['patient', 'combat'].includes(mode)) return false;
+    if(!wardrobeSession && window.PalataQuestPrototype) mode=PalataQuestPrototype.snapshot().mode==='trip'?'combat':'patient';
     paperDollState.activeViewMode = mode;
     commitPaperDollSelection();
     return true;
 }
 
 function equipPaperDollItem(slot, itemId) {
+    if(paperDollState.activeViewMode==='patient' && isCombatPaperDollItem(PAPER_DOLL_ITEMS.find(item=>item.id===itemId)))return false;
     if (slot === 'baseBody' || (!['hair','beard'].includes(slot) && !Object.hasOwn(activePaperDollLoadout(), slot))) return false;
     if (itemId !== null && !PAPER_DOLL_ITEMS.some(item => item.id === itemId && item.slot === slot && isPaperDollItemOwned(item) && paperDollItemSupportsGender(item))) return false;
     if (slot === 'hair') paperDollState.appearance.hair = itemId || 'hair-none';

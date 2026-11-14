@@ -20,7 +20,7 @@ function renderWardrobeRegistration() {
 }
 
 function wardrobeVisibleItems() {
-    return PAPER_DOLL_ITEMS.filter(item => item.slot === wardrobeSlot && !PAPER_DOLL_RETIRED_FACES.has(item.id) && paperDollItemSupportsGender(item));
+    return PAPER_DOLL_ITEMS.filter(item => (paperDollState.activeViewMode==='combat'||!isCombatPaperDollItem(item)) && item.slot === wardrobeSlot && !PAPER_DOLL_RETIRED_FACES.has(item.id) && paperDollItemSupportsGender(item));
 }
 
 function selectWardrobeCategory(category) {

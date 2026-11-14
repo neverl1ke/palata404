@@ -158,3 +158,23 @@
 /* Separate reversible access control; does not grant quest rewards. */
 .hospital-hud .quest-unlock-all{position:absolute;right:2.8%;top:23.4%;bottom:auto;z-index:6;width:22.4%;max-width:none;padding:.4cqw .6cqw;font:.9cqw/1.2 system-ui;color:#e8e2d3;background:#302b24e8;border:1px solid #a18b65;border-radius:3px;cursor:pointer}
 .hospital-hud .quest-unlock-all[aria-pressed="true"]{border-color:#d9b267;color:#ffe3aa}
+/* Door markers retain the original room coordinates and accessible hit areas. */
+.quest-floor .quest-map-pin{border-radius:3px;width:27px;height:33px;min-height:33px;padding:3px!important;background:#ece0c4;color:#4b4535;border:1px solid #6d624c;touch-action:manipulation}
+.quest-floor .quest-map-pin svg{display:block;width:100%;height:100%;pointer-events:none}
+.quest-floor .quest-map-pin.is-current{color:#d8eafa;background:#3e6074}
+.quest-floor .quest-map-pin.is-reachable{color:#e0ead3;background:#4b6342}
+.quest-floor .quest-map-pin.is-locked{color:#716c61;background:#b4ac99;opacity:.85}
+.quest-floor .quest-map-pin[aria-expanded="true"]{outline:2px solid #b58436;outline-offset:2px}
+.quest-room-preview{padding:12px;background:#e8dbc0;border:1px solid #8e7954;box-shadow:0 3px 8px #30271933}
+.quest-room-preview h4{font:700 17px/1.25 Georgia,serif;margin:0 0 8px}.quest-room-preview h5{font-size:12px;margin:12px 0 5px}
+.quest-room-preview p,.quest-room-preview li{font:12px/1.5 Arial,sans-serif}.quest-room-preview ul{padding-left:18px;margin:5px 0 12px}
+.quest-room-preview button{width:100%;min-height:36px}
+/* The complete scene fills the game viewport; the document overlays the art. */
+#quest-location-screen .quest-floor.quest-location{display:block!important;position:relative;isolation:isolate;width:100%;height:100%;padding:0!important;overflow:hidden!important}
+#quest-location-screen .painted-room{position:absolute;inset:0;width:100%;height:100%;min-height:0!important;aspect-ratio:auto;border:0;overflow:hidden}
+#quest-location-screen .scene-painting{width:100%!important;height:100%!important;object-fit:fill}
+#quest-location-screen .scene-paper{position:absolute;z-index:10;right:16px;top:64px;bottom:16px;width:min(320px,33vw);max-height:none;margin:0;padding:16px;overflow:auto;align-self:auto;gap:10px;box-shadow:0 6px 24px #0008}
+#quest-location-screen .scene-paper.is-collapsed{display:none}
+#quest-location-screen .quest-room-tools{position:absolute;z-index:12;left:16px;right:16px;top:14px;display:flex;justify-content:space-between;pointer-events:none}
+#quest-location-screen .quest-room-tools button{pointer-events:auto;min-height:36px;padding:7px 14px;background:#e5d7b9eb;color:#30291f;border:1px solid #9a815a;border-radius:3px;font:14px/1.25 Georgia,serif;box-shadow:0 2px 7px #0007}
+@media(max-height:600px){#quest-location-screen .scene-paper{top:56px;bottom:10px;padding:10px;width:min(300px,34vw)}#quest-location-screen .scene-paper p{font-size:12px}}
