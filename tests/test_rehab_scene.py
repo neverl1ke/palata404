@@ -33,7 +33,12 @@ class RehabSceneTests(unittest.TestCase):
             for i,id in enumerate(['rope','pullup','bench','bag']):
                 target=self.page.locator('[data-rehab-equipment="'+id+'"]')
                 target.hover()
-                self.page.wait_for_function('i=>Math.abs(Number(document.querySelector("[data-scene-room=gym]").dataset.rehabMotion.split(",")[i]))>.01',arg=i)
+                if id in ['rope','bag']:
+                    self.page.wait_for_function('i=>Math.abs(Number(document.querySelector("[data-scene-room=gym]").dataset.rehabMotion.split(",")[i]))>.01',arg=i)
+                else:
+                    self.page.wait_for_timeout(150)
+                    self.assertEqual(float(scene.get_attribute('data-rehab-motion').split(',')[i]),0)
+                self.assertEqual(target.evaluate('e=>getComputedStyle(e).outlineStyle'),'none')
                 movement=json.loads(self.page.evaluate('JSON.stringify(document.querySelector("[data-scene-room=gym]").dataset.rehabMotion.split(",").map(Number))'))
                 target.click()
                 card=self.page.locator('[data-train="'+id+'"]')

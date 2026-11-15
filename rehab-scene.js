@@ -17,7 +17,7 @@ float bench=box(p,vec4(981.,373.,1338.,713.),18.);d.y+=motion.z*bench*clamp((713
 float dummy=box(p,vec4(1460.,155.,1615.,684.),14.);d.x+=motion.w*dummy*clamp((p.y-155.)/529.,0.,1.);
 vec2 uv=vec2((p.x-d.x)/size.x,1.-(p.y-d.y)/size.y);vec4 c=texture2D(photo,uv);
 float bulb=box(p,vec4(760.,0.,904.,136.),20.);float spill=exp(-dot((p-vec2(835.,260.))/vec2(400.,420.),(p-vec2(835.,260.))/vec2(400.,420.)));
-c.rgb*=1.+lamp*(bulb+.22*spill);
+c.rgb*=1.+lamp*(.35+.65*bulb+.2*spill);
 float w1=box(p,vec4(259.,298.,271.,315.),2.);float w2=box(p,vec4(262.,389.,274.,410.),2.);float w3=box(p,vec4(318.,392.,330.,414.),2.);
 c.rgb+=vec3(1.,.59,.19)*(windows.x*w1+windows.y*w2+windows.z*w3);gl_FragColor=c;}`;
 function shader(gl,type,source){const s=gl.createShader(type);gl.shaderSource(s,source);gl.compileShader(s);if(!gl.getShaderParameter(s,gl.COMPILE_STATUS)){const message=gl.getShaderInfoLog(s);gl.deleteShader(s);throw Error('Scene shader: '+message);}return s;}
@@ -34,9 +34,9 @@ function mount(host,mode,onSelect){
  function draw(time,neutral=false){
   if(!gl||!program||disposed)return;
   const animate=!neutral&&!reduced.matches;
-  for(let i=0;i<4;i++){strength[i]+=((animate&&(i===hover||i===training)?1:0)-strength[i])*.2;values[i]=animate?Math.sin(time/([340,230,270,610][i]))*[1.7,.65,.6,2.2][i]*strength[i]:0;}
-  const phase=time%19000;const dip=animate&&phase>7800&&phase<8200?Math.sin((phase-7800)/400*Math.PI):0;
-  const lamp=animate?-dip*(mode==='trip'?.15:.055):0;
+  for(let i=0;i<4;i++){strength[i]+=((animate&&(i===0||i===3)&&(i===hover||i===training)?1:0)-strength[i])*.2;values[i]=animate?Math.sin(time/([340,230,270,610][i]))*[1.7,.65,.6,2.2][i]*strength[i]:0;}
+  const phase=time%14000;const dip=!animate?0:phase>7600&&phase<8350?Math.sin((phase-7600)/750*Math.PI):phase>8550&&phase<9200?.65*Math.sin((phase-8550)/650*Math.PI):0;
+  const lamp=animate?-dip*(mode==='trip'?.38:.16):0;
   const ws=animate?[0,1,2].map(i=>.13*Math.max(0,Math.sin(time/(2800+i*650)+i*2))):[0,0,0];
   gl.uniform4fv(gl.getUniformLocation(program,'motion'),values);gl.uniform1f(gl.getUniformLocation(program,'lamp'),lamp);gl.uniform3fv(gl.getUniformLocation(program,'windows'),ws);gl.drawArrays(gl.TRIANGLE_STRIP,0,4);frames++;host.dataset.rehabFrames=String(frames);host.dataset.rehabMotion=values.map(n=>n.toFixed(3)).join(',');host.dataset.rehabLamp=String(lamp);host.dataset.rehabWindows=ws.join(',');
  }
