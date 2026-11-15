@@ -13,5 +13,12 @@
     "path": "assets/rehabilitation/boxing-fists.png",
     "sha256": "3826ba05240c15ee4aaa90697ab548411442c9fe6d58d934fb6bc475070eb962",
     "purpose": "Separate animation layers derived from the close training concept; original room art unchanged."
+  },
+  {
+    "path": "assets/rehabilitation/boxing-fists-painted.png",
+    "sha256": "2111a34205becc6d95635b21c7f724de5d01c45fd7af9c0905ee26991f3a47b4",
+    "purpose": "Painterly skin matched to the current base avatar, extended pajama sleeves for wind-up; previous boxing-fists.png preserved.",
+    "avatarReference": "base_male.png",
+    "avatarReferenceSha256": "b40a31b26dcf9aeea1dad02091228377330c9bb3af3a4b9669cfcc67247fc41d"
   }
 ]

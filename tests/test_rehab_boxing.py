@@ -82,7 +82,7 @@ class RehabBoxingTests(unittest.TestCase):
         self.page.wait_for_function('Number(document.querySelector("[data-scene-room=gym]").dataset.rehabFrames)>2')
 
     def test_missing_layer_blocks_punches_and_training_without_spending(self):
-        self.load();self.page.route('**/assets/rehabilitation/boxing-fists.png',lambda route:route.abort());self.gym_without_ready()
+        self.load();self.page.route('**/assets/rehabilitation/boxing-fists-painted.png',lambda route:route.abort());self.gym_without_ready()
         self.page.wait_for_function('document.querySelector(".rehab-boxing").dataset.boxingReady==="error"')
         before=self.page.evaluate('JSON.stringify(stats)')
         self.assertTrue(self.page.locator('[data-boxing-start]').is_disabled())
@@ -96,3 +96,49 @@ class RehabBoxingTests(unittest.TestCase):
         self.page.locator('#location-card-box').click();self.page.locator('.quest-map-pin[data-room="gym"]').dblclick(delay=40)
         self.page.wait_for_function('document.querySelector("[data-scene-room=gym]")?.dataset.rehabRenderer==="webgl"')
         self.page.locator('[data-rehab-equipment=bag]').click()
+
+    def test_breath_windup_contact_and_one_second_rest_after_pair(self):
+        self.load();self.gym();dialog=self.page.locator('.rehab-boxing')
+        before=self.page.locator('.boxing-fist.right').bounding_box()
+        self.page.wait_for_timeout(250)
+        after=self.page.locator('.boxing-fist.right').bounding_box()
+        self.assertGreater(abs(before['x']-after['x'])+abs(before['y']-after['y']),.1)
+        self.page.locator('.boxing-stage').click(position={'x':300,'y':250})
+        self.assertEqual(dialog.get_attribute('data-boxing-phase'),'windup')
+        self.page.wait_for_timeout(85)
+        back=self.page.locator('.boxing-fist.right').bounding_box()
+        self.assertGreater(back['x'],after['x']+10)
+        self.assertGreater(back['y'],after['y']+10)
+        self.page.screenshot(path=str(OUT/'painted-windup.png'))
+        self.page.wait_for_function('document.querySelector(".rehab-boxing").dataset.boxingHits==="1"')
+        self.page.wait_for_function('document.querySelector(".rehab-boxing").dataset.boxingPhase==="ready"')
+        self.hit('left',2)
+        self.page.wait_for_function('document.querySelector(".rehab-boxing").dataset.boxingPhase==="cooldown"')
+        self.page.locator('.boxing-stage').click(position={'x':300,'y':250})
+        self.page.wait_for_timeout(200)
+        self.assertEqual(dialog.get_attribute('data-boxing-hits'),'2')
+        self.page.wait_for_function('document.querySelector(".rehab-boxing").dataset.boxingPhase==="ready"')
+        elapsed=self.page.evaluate('performance.now()-Number(document.querySelector(".rehab-boxing").dataset.boxingRestStarted)')
+        self.assertGreaterEqual(elapsed,1000)
+        self.page.wait_for_timeout(250)
+        self.assertEqual(dialog.get_attribute('data-boxing-hits'),'2')
+        self.hit('right',3)
+        self.page.keyboard.press('Escape')
+
+    def test_painted_arm_edges_stay_outside_frame_and_contact_effect_is_visible(self):
+        self.load();self.gym()
+        for width,height in [(1280,800),(390,844)]:
+            self.page.set_viewport_size({'width':width,'height':height});self.page.wait_for_timeout(300)
+            result=self.page.evaluate('''async()=>{
+   const img=new Image();img.src='assets/rehabilitation/boxing-fists-painted.png';await img.decode();const c=document.createElement('canvas');c.width=img.width;c.height=img.height;const ctx=c.getContext('2d');ctx.drawImage(img,0,0);const a=ctx.getImageData(0,0,c.width,c.height).data,points=[];
+   const add=(x,y)=>{if(a[(y*c.width+x)*4+3]>200)points.push([x,y])};
+   for(let x=0;x<c.width;x+=4)add(x,c.height-1);for(let y=0;y<c.height;y+=4){add(0,y);add(c.width-1,y)}
+   const stage=document.querySelector('.boxing-stage'),left=document.querySelector('.boxing-fist.left'),right=document.querySelector('.boxing-fist.right');let bad=[],effectSeen=false,frames=0;const start=performance.now();stage.click();
+   await new Promise(resolve=>{function sample(now){frames++;const r=stage.getBoundingClientRect(),lm=left.getScreenCTM(),rm=right.getScreenCTM();
+    for(const [x,y] of points){const p=new DOMPoint(x,y).matrixTransform(x<c.width/2?lm:rm);if(p.x>r.left+2&&p.x<r.right-2&&p.y>r.top+2&&p.y<r.bottom-2&&bad.length<5)bad.push({x:p.x,y:p.y,t:now-start,source:[x,y]});}
+    if(Number(getComputedStyle(document.querySelector('.boxing-impact')).opacity)>.1)effectSeen=true;
+    if(now-start<750)requestAnimationFrame(sample);else resolve();}requestAnimationFrame(sample)});return{frames,effectSeen,bad};
+  }''')
+            self.assertGreater(result['frames'],5)
+            self.assertTrue(result['effectSeen'])
+            self.assertEqual(result['bad'],[],str((width,height)))
