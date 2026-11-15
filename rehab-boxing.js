@@ -46,7 +46,7 @@ function open(mode){
  function between(a,b,t){return{x:a.x+(b.x-a.x)*t,y:a.y+(b.y-a.y)*t};}
  function throwPunch(){
   if(punch||disposed||target.disabled||performance.now()<restUntil)return;
-  punch={hand:next,time:performance.now(),contact:false,...hookGeometry(next)};dialog.dataset.boxingStrike='diagonal';next=next==='right'?'left':'right';dialog.dataset.boxingHand=punch.hand;dialog.dataset.boxingPhase='windup';
+  punch={hand:next,time:performance.now(),contact:false,...hookGeometry(next)};dialog.dataset.boxingStrike='corner-diagonal';next=next==='right'?'left':'right';dialog.dataset.boxingHand=punch.hand;dialog.dataset.boxingPhase='windup';
  }
  target.onclick=throwPunch;stage.onclick=()=>{if(!target.disabled)throwPunch();};
  function frame(time){
@@ -56,19 +56,25 @@ function open(mode){
   const poses={left:{x:0,y:0,r:0,s:1},right:{x:0,y:0,r:0,s:1}};
   if(punch){
    const elapsed=Math.max(0,time-punch.time),side=punch.hand==='right'?1:-1,pose=poses[punch.hand],base=punch.knuckle,room=punch.room;
-   const chamber={x:base.x+side*room.width*.09,y:base.y-room.height*.015};
+   const chamber={x:Math.max(room.left+room.width*.12,Math.min(room.right-room.width*.12,base.x+side*room.width*.04)),y:Math.min(room.bottom-room.height*.09,base.y+room.height*.14)};
+   const strikeScale=stage.clientWidth<stage.clientHeight?1.35:1;pose.idleBlend=0;
    let point,rotation,scale;
    if(elapsed<150){
-    const q=elapsed/150,t=q*q*(3-2*q);point={x:base.x+(chamber.x-base.x)*t,y:base.y+(chamber.y-base.y)*t};rotation=side*8*t;scale=1-.025*t;
+    const q=elapsed/150,t=q*q*(3-2*q);point={x:base.x+(chamber.x-base.x)*t,y:base.y+(chamber.y-base.y)*t};rotation=0;scale=1;
    }else if(elapsed<350){
     const q=(elapsed-150)/200,t=q*q;
     point=between(chamber,punch.contactPoint,t);
     pose.blur=Math.min(1.7,Math.hypot(punch.contactPoint.x-chamber.x,punch.contactPoint.y-chamber.y)*2*q/200*.35);
-    rotation=side*(8-68*t);scale=.975+.185*t;
+    rotation=0;scale=1+(strikeScale-1)*t;
    }else{
-    const q=Math.min(1,Math.max(0,time-(punch.contactAt??time)-80)/300),t=1-(1-q)*(1-q);
-    point=between(punch.contactPoint,base,t);
-    rotation=-side*60*(1-t);scale=1.16-.16*t;
+    const age=punch.contactAt?time-punch.contactAt:0;
+    if(age<280){
+     const q=Math.min(1,Math.max(0,age-80)/200),t=q*q*(3-2*q);
+     point=between(punch.contactPoint,chamber,t);rotation=0;scale=strikeScale+(1-strikeScale)*t;
+    }else{
+     const q=Math.min(1,(age-280)/170),t=q*q*(3-2*q);
+     point=between(chamber,base,t);rotation=0;scale=1;pose.idleBlend=t;
+    }
    }
    aimKnuckle(pose,punch,point,rotation,scale);
    if(elapsed>=150&&elapsed<350)dialog.dataset.boxingPhase='forward';
@@ -79,8 +85,8 @@ function open(mode){
     dialog.dataset.boxingImpact=punch.hand;dialog.dataset.boxingHits=String(hits);dialog.dataset.boxingPhase='contact';
     notice.textContent=(punch.hand==='right'?'Удар правою — ціль відхиляється вліво.':'Удар лівою — ціль відхиляється вправо.')+' Ударів: '+hits;
    }
-   if(punch.contact&&time-punch.contactAt>=80)dialog.dataset.boxingPhase='return';
-   if(punch.contact&&time-punch.contactAt>=380){
+   if(punch.contact&&time-punch.contactAt>=80)dialog.dataset.boxingPhase=time-punch.contactAt<280?'return':'recover';
+   if(punch.contact&&time-punch.contactAt>=450){
     punch=null;
     if(hits%2===0){restUntil=time+1000;dialog.dataset.boxingRestStarted=String(time);dialog.dataset.boxingPhase='cooldown';notice.textContent='Два удари. Пауза — 1 секунда.';}
     else dialog.dataset.boxingPhase='ready';
@@ -89,7 +95,7 @@ function open(mode){
   if(!punch&&restUntil&&time>=restUntil){restUntil=0;dialog.dataset.boxingPhase='ready';notice.textContent='Наступна серія: права рука → ліва рука.';}
   dialog.dataset.boxingRest=String(Math.max(0,Math.ceil(restUntil-time)));
   for(const [id,hand]of [['left',left],['right',right]]){
-   const pose=poses[id],breathX=Math.sin(time/850+(id==='left'?0:.4))*2,breathY=Math.sin(time/610+(id==='left'?0:.25))*3;
+   const pose=poses[id],breath=pose.idleBlend??1,breathX=Math.sin(time/850+(id==='left'?0:.4))*2*breath,breathY=Math.sin(time/610+(id==='left'?0:.25))*3*breath;
    hand.style.filter=!reduced.matches&&pose.blur?`blur(${pose.blur.toFixed(2)}px)`:'none';
    hand.style.transform=reduced.matches?'none':`translate(${pose.x+breathX}px,${pose.y+breathY}px) rotate(${pose.r}deg) scale(${pose.s})`;
   }
