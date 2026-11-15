@@ -26,9 +26,27 @@ function open(mode){
  function close(){if(disposed)return;disposed=true;cancelAnimationFrame(raf);window.PalataRehabUI.cancelBoxing();dialog.close();dialog.remove();current=null;window.PalataRehabScene.resume();if(previous?.isConnected)previous.focus();else document.querySelector('[data-rehab-equipment=bag]')?.focus();}
  current={close};back.onclick=close;dialog.addEventListener('cancel',event=>{event.preventDefault();close();});
  start.onclick=()=>{if(window.PalataRehabUI.startBoxing()){started=true;wasActive=true;start.disabled=true;}else notice.textContent='Вправа зараз недоступна: перевірте енергію, перерву між вправами або поточне тренування.';};
+ // Map the leading knuckle and target cheek into screen coordinates. This
+ // keeps a hook on the visible side of the prop, across viewport sizes.
+ function hookGeometry(id){
+  const hand=id==='right'?right:left,old=hand.style.transform;hand.style.transform='none';
+  const rect=hand.getBoundingClientRect(),room=stage.getBoundingClientRect();
+  const knuckle=new DOMPoint(id==='right'?1219:555,120).matrixTransform(hand.getScreenCTM());
+  hand.style.transform=old;
+  const art=target.querySelector('svg'),x=mode==='trip'?(id==='right'?615:370):(id==='right'?1310:1040);
+  const contactPoint=new DOMPoint(x,480).matrixTransform(art.getScreenCTM());
+  return{knuckle,contactPoint,pivot:{x:rect.left+rect.width*.5,y:rect.top+rect.height*.9},room,sx:room.width/stage.clientWidth,sy:room.height/stage.clientHeight};
+ }
+ function aimKnuckle(pose,geometry,point,rotation,scale){
+  const dx=geometry.knuckle.x-geometry.pivot.x,dy=geometry.knuckle.y-geometry.pivot.y,a=rotation*Math.PI/180;
+  pose.x=(point.x-geometry.pivot.x-(dx*Math.cos(a)-dy*Math.sin(a))*scale)/geometry.sx;
+  pose.y=(point.y-geometry.pivot.y-(dx*Math.sin(a)+dy*Math.cos(a))*scale)/geometry.sy;
+  pose.r=rotation;pose.s=scale;
+ }
+ function curve(a,b,c,t){const k=1-t;return{x:k*k*a.x+2*k*t*b.x+t*t*c.x,y:k*k*a.y+2*k*t*b.y+t*t*c.y};}
  function throwPunch(){
   if(punch||disposed||target.disabled||performance.now()<restUntil)return;
-  punch={hand:next,time:performance.now(),contact:false};next=next==='right'?'left':'right';dialog.dataset.boxingHand=punch.hand;dialog.dataset.boxingPhase='windup';
+  punch={hand:next,time:performance.now(),contact:false,...hookGeometry(next)};dialog.dataset.boxingStrike='hook';next=next==='right'?'left':'right';dialog.dataset.boxingHand=punch.hand;dialog.dataset.boxingPhase='windup';
  }
  target.onclick=throwPunch;stage.onclick=()=>{if(!target.disabled)throwPunch();};
  function frame(time){
@@ -37,21 +55,31 @@ function open(mode){
   const dt=Math.min(.032,last?(time-last)/1000:0);last=time;
   const poses={left:{x:0,y:0,r:0,s:1},right:{x:0,y:0,r:0,s:1}};
   if(punch){
-   const elapsed=Math.max(0,time-punch.time),sign=punch.hand==='right'?-1:1,pose=poses[punch.hand];
-   const backward=Math.min(1,elapsed/150),reach=elapsed<150?0:elapsed<350?1-Math.pow(1-(elapsed-150)/200,3):Math.max(0,1-(elapsed-350)/300);
-   const windup=elapsed<150?backward:elapsed<350?1-reach:0;
-   pose.x=sign*stage.clientWidth*(.235*reach-.07*windup);
-   pose.y=stage.clientHeight*(.12*windup-(stage.clientWidth<stage.clientHeight?.10:.19)*reach);
-   pose.r=sign*(-13*reach+7*windup);pose.s=1+.08*reach-.04*windup;
+   const elapsed=Math.max(0,time-punch.time),side=punch.hand==='right'?1:-1,pose=poses[punch.hand],base=punch.knuckle,room=punch.room;
+   const chamber={x:base.x+side*room.width*.08,y:base.y+room.height*.10};
+   let point,rotation,scale;
+   if(elapsed<150){
+    const q=elapsed/150,t=q*q*(3-2*q);point={x:base.x+(chamber.x-base.x)*t,y:base.y+(chamber.y-base.y)*t};rotation=side*8*t;scale=1-.025*t;
+   }else if(elapsed<350){
+    const q=(elapsed-150)/200,t=q*q;
+    point=curve(chamber,{x:chamber.x+side*room.width*.05,y:punch.contactPoint.y-room.height*.12},punch.contactPoint,t);
+    rotation=side*(8-68*t);scale=.975+.185*t;
+   }else{
+    const q=Math.min(1,Math.max(0,time-(punch.contactAt??time)-80)/300),t=1-(1-q)*(1-q);
+    point=curve(punch.contactPoint,{x:base.x+side*room.width*.03,y:base.y-room.height*.08},base,t);
+    rotation=-side*60*(1-t);scale=1.16-.16*t;
+   }
+   aimKnuckle(pose,punch,point,rotation,scale);
    if(elapsed>=150&&elapsed<350)dialog.dataset.boxingPhase='forward';
    if(elapsed>=350&&!punch.contact){
-    punch.contact=true;hits++;velocity+=punch.hand==='right'?1.05:-1.05;impactAt=time;
-    const rect=target.getBoundingClientRect(),room=stage.getBoundingClientRect();
-    impact.style.left=(rect.left-room.left+rect.width*(punch.hand==='right'?.55:.45))+'px';impact.style.top=(rect.top-room.top+rect.height*(stage.clientWidth<stage.clientHeight?.66:.51))+'px';
-    dialog.dataset.boxingImpact=punch.hand;dialog.dataset.boxingHits=String(hits);dialog.dataset.boxingPhase='return';
+    punch.contact=true;punch.contactAt=time;hits++;velocity+=punch.hand==='right'?1.05:-1.05;impactAt=time;
+    const rect=stage.getBoundingClientRect();
+    impact.style.left=((punch.contactPoint.x-rect.left)/punch.sx)+'px';impact.style.top=((punch.contactPoint.y-rect.top)/punch.sy)+'px';
+    dialog.dataset.boxingImpact=punch.hand;dialog.dataset.boxingHits=String(hits);dialog.dataset.boxingPhase='contact';
     notice.textContent=(punch.hand==='right'?'Удар правою — ціль відхиляється вліво.':'Удар лівою — ціль відхиляється вправо.')+' Ударів: '+hits;
    }
-   if(elapsed>=650){
+   if(punch.contact&&time-punch.contactAt>=80)dialog.dataset.boxingPhase='return';
+   if(punch.contact&&time-punch.contactAt>=380){
     punch=null;
     if(hits%2===0){restUntil=time+1000;dialog.dataset.boxingRestStarted=String(time);dialog.dataset.boxingPhase='cooldown';notice.textContent='Два удари. Пауза — 1 секунда.';}
     else dialog.dataset.boxingPhase='ready';

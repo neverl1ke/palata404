@@ -99,14 +99,14 @@ class RehabBoxingTests(unittest.TestCase):
 
     def test_breath_windup_contact_and_one_second_rest_after_pair(self):
         self.load();self.gym();dialog=self.page.locator('.rehab-boxing')
-        before=self.page.locator('.boxing-fist.right').bounding_box()
+        before=self.page.evaluate('()=>{const p=new DOMPoint(1219,120).matrixTransform(document.querySelector(".boxing-fist.right").getScreenCTM());return{x:p.x,y:p.y}}')
         self.page.wait_for_timeout(250)
-        after=self.page.locator('.boxing-fist.right').bounding_box()
+        after=self.page.evaluate('()=>{const p=new DOMPoint(1219,120).matrixTransform(document.querySelector(".boxing-fist.right").getScreenCTM());return{x:p.x,y:p.y}}')
         self.assertGreater(abs(before['x']-after['x'])+abs(before['y']-after['y']),.1)
         self.page.locator('.boxing-stage').click(position={'x':300,'y':250})
         self.assertEqual(dialog.get_attribute('data-boxing-phase'),'windup')
         self.page.wait_for_timeout(85)
-        back=self.page.locator('.boxing-fist.right').bounding_box()
+        back=self.page.evaluate('()=>{const p=new DOMPoint(1219,120).matrixTransform(document.querySelector(".boxing-fist.right").getScreenCTM());return{x:p.x,y:p.y}}')
         self.assertGreater(back['x'],after['x']+10)
         self.assertGreater(back['y'],after['y']+10)
         self.page.screenshot(path=str(OUT/'painted-windup.png'))
@@ -142,3 +142,26 @@ class RehabBoxingTests(unittest.TestCase):
             self.assertGreater(result['frames'],5)
             self.assertTrue(result['effectSeen'])
             self.assertEqual(result['bad'],[],str((width,height)))
+
+    def test_hook_uses_diagonal_guard_and_contacts_side_after_lateral_arc(self):
+        self.load();self.gym()
+        result=self.page.evaluate('''async()=>{
+            const hand=document.querySelector('.boxing-fist.right'),target=document.querySelector('.boxing-target-art'),stage=document.querySelector('.boxing-stage'),dialog=document.querySelector('.rehab-boxing');
+            const rows=[],started=performance.now(),point=()=>new DOMPoint(1219,120).matrixTransform(hand.getScreenCTM());
+            const initial=point(),center=target.getBoundingClientRect();stage.click();
+            await new Promise(resolve=>{function sample(now){const p=point(),thumb=new DOMPoint(1074,310).matrixTransform(hand.getScreenCTM()),fx=document.querySelector('.boxing-impact').getBoundingClientRect();rows.push({t:now-started,x:p.x,y:p.y,thumbX:thumb.x,phase:dialog.dataset.boxingPhase,effect:dialog.dataset.boxingEffect,fx:fx.x+fx.width/2});if(now-started<420)requestAnimationFrame(sample);else resolve();}requestAnimationFrame(sample)});
+            return{initial:{x:initial.x,y:initial.y},center:center.x+center.width/2,rows,source:hand.querySelector('image').getAttribute('href')};
+        }''')
+        self.assertIn('boxing-fists-painted.png',result['source'])
+        arc=[r for r in result['rows'] if r['phase']=='forward']
+        self.assertTrue(any(r['x']>result['initial']['x']+30 and r['y']<result['initial']['y']-10 for r in arc),result)
+        approach=[r for r in arc if r['t']>270]
+        self.assertGreaterEqual(len(approach),2)
+        dx=approach[-1]['x']-approach[0]['x'];dy=approach[-1]['y']-approach[0]['y']
+        self.assertLess(dx,-20)
+        self.assertGreater(abs(dx),abs(dy)*2)
+        contact=[r for r in result['rows'] if r['effect']=='impact']
+        self.assertTrue(contact)
+        self.assertGreater(contact[0]['fx'],result['center']+30)
+        self.assertLess(contact[0]['x'],contact[0]['thumbX']-25)
+        (OUT/'hook-trajectory.json').write_text(json.dumps(result,indent=2))
