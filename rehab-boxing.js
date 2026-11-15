@@ -7,6 +7,13 @@ function sprite(file,viewBox,width,height,cls){
  const ns='http://www.w3.org/2000/svg',svg=document.createElementNS(ns,'svg'),image=document.createElementNS(ns,'image');
  svg.setAttribute('viewBox',viewBox);svg.style.overflow='hidden';svg.setAttribute('aria-hidden','true');svg.classList.add(cls);image.setAttribute('href',file);image.setAttribute('width',width);image.setAttribute('height',height);svg.append(image);return svg;
 }
+function arm(id){
+ const right=id==='right',svg=sprite('assets/rehabilitation/boxing-fists-painted.png',right?'887 0 887 887':'0 0 887 887',1774,887,'boxing-fist');
+ const guard=svg.querySelector('image'),strike=guard.cloneNode();
+ strike.setAttribute('href','assets/rehabilitation/boxing-fists-extended.png');strike.setAttribute('transform',right?'translate(15 -60)':'translate(-15 -60)');strike.style.opacity='0';
+ guard.classList.add('boxing-guard-art');strike.classList.add('boxing-strike-art');svg.append(strike);svg.classList.add(id);svg.setAttribute('preserveAspectRatio','xMidYMax meet');svg.armFrames={guard,strike};return svg;
+}
+function poseBlend(t){const q=Math.max(0,Math.min(1,(t-.15)/.5));return q*q*(3-2*q);}
 function open(mode){
  if(current)return;
  const previous=document.activeElement,dialog=document.createElement('dialog');dialog.className='rehab-boxing';dialog.dataset.mode=mode;
@@ -18,7 +25,7 @@ function open(mode){
  background.setAttribute('preserveAspectRatio','xMidYMid slice');
  const target=document.createElement('button');target.className='boxing-target';target.dataset.boxingTarget='';target.setAttribute('aria-label','Ударити '+(mode==='trip'?'манекен':'грушу'));
  target.append(sprite('assets/rehabilitation/boxing-targets.png',mode==='trip'?'330 0 340 941':'1000 0 360 941',1671,941,'boxing-target-art'));
- const left=sprite('assets/rehabilitation/boxing-fists-painted.png','0 0 887 887',1774,887,'boxing-fist'),right=sprite('assets/rehabilitation/boxing-fists-painted.png','887 0 887 887',1774,887,'boxing-fist');left.classList.add('left');right.classList.add('right');left.setAttribute('preserveAspectRatio','xMidYMax meet');right.setAttribute('preserveAspectRatio','xMidYMax meet');
+ const left=arm('left'),right=arm('right');
  const impact=document.createElement('div');impact.className='boxing-impact';impact.setAttribute('aria-hidden','true');
  impact.innerHTML='<svg viewBox="0 0 100 100"><g fill="none" stroke="#e8dab8" stroke-width="3" stroke-linecap="round"><path d="M15 30L31 39M12 60L29 55M40 10L44 28M72 16L62 32M88 43L73 46M80 78L67 66M45 89L47 73"/></g><ellipse cx="51" cy="51" rx="15" ry="12" fill="#cab88e" opacity=".22"/></svg>';
  const light=document.createElement('div');light.className='boxing-light';stage.append(background,target,left,right,impact,light);dialog.append(toolbar,stage);document.body.append(dialog);
@@ -56,24 +63,24 @@ function open(mode){
   const poses={left:{x:0,y:0,r:0,s:1},right:{x:0,y:0,r:0,s:1}};
   if(punch){
    const elapsed=Math.max(0,time-punch.time),side=punch.hand==='right'?1:-1,pose=poses[punch.hand],base=punch.knuckle,room=punch.room;
-   const chamber={x:Math.max(room.left+room.width*.12,Math.min(room.right-room.width*.12,base.x+side*room.width*.04)),y:Math.min(room.bottom-room.height*.09,base.y+room.height*.14)};
-   const strikeScale=stage.clientWidth<stage.clientHeight?1.35:1;pose.idleBlend=0;
+   const chamber={x:Math.max(room.left+room.width*.12,Math.min(room.right-room.width*.12,base.x+side*room.width*.02)),y:Math.min(room.bottom-room.height*.09,base.y+room.height*.025)};
+   const strikeScale=1.2;pose.idleBlend=0;
    let point,rotation,scale;
    if(elapsed<150){
-    const q=elapsed/150,t=q*q*(3-2*q);point={x:base.x+(chamber.x-base.x)*t,y:base.y+(chamber.y-base.y)*t};rotation=0;scale=1;
+    const q=elapsed/150,t=q*q*(3-2*q);point={x:base.x+(chamber.x-base.x)*t,y:base.y+(chamber.y-base.y)*t};rotation=-side*8*t;scale=1;
    }else if(elapsed<350){
     const q=(elapsed-150)/200,t=q*q;
     point=between(chamber,punch.contactPoint,t);
     pose.blur=Math.min(1.7,Math.hypot(punch.contactPoint.x-chamber.x,punch.contactPoint.y-chamber.y)*2*q/200*.35);
-    rotation=0;scale=1+(strikeScale-1)*t;
+    rotation=-side*8;scale=1+(strikeScale-1)*t;pose.artBlend=poseBlend(t);
    }else{
     const age=punch.contactAt?time-punch.contactAt:0;
     if(age<280){
      const q=Math.min(1,Math.max(0,age-80)/200),t=q*q*(3-2*q);
-     point=between(punch.contactPoint,chamber,t);rotation=0;scale=strikeScale+(1-strikeScale)*t;
+     point=between(punch.contactPoint,chamber,t);rotation=-side*8;scale=strikeScale+(1-strikeScale)*t;pose.artBlend=poseBlend(1-t);
     }else{
      const q=Math.min(1,(age-280)/170),t=q*q*(3-2*q);
-     point=between(chamber,base,t);rotation=0;scale=1;pose.idleBlend=t;
+     point=between(chamber,base,t);rotation=-side*8*(1-t);scale=1;pose.idleBlend=t;
     }
    }
    aimKnuckle(pose,punch,point,rotation,scale);
@@ -98,6 +105,7 @@ function open(mode){
    const pose=poses[id],breath=pose.idleBlend??1,breathX=Math.sin(time/850+(id==='left'?0:.4))*2*breath,breathY=Math.sin(time/610+(id==='left'?0:.25))*3*breath;
    hand.style.filter=!reduced.matches&&pose.blur?`blur(${pose.blur.toFixed(2)}px)`:'none';
    hand.style.transform=reduced.matches?'none':`translate(${pose.x+breathX}px,${pose.y+breathY}px) rotate(${pose.r}deg) scale(${pose.s})`;
+   const blend=reduced.matches?0:pose.artBlend??0;hand.armFrames.guard.style.opacity=String(1-blend);hand.armFrames.strike.style.opacity=String(blend);
   }
   const impactAge=time-impactAt,impactVisible=!reduced.matches&&impactAge>=0&&impactAge<190;
   impact.style.opacity=impactVisible?String(1-impactAge/190):'0';impact.style.transform=`translate(-50%,-50%) scale(${.7+Math.min(1,impactAge/190)*.5})`;
@@ -113,7 +121,7 @@ function open(mode){
  }
  target.disabled=true;start.disabled=true;notice.textContent='Завантаження тренування…';
  dialog.showModal();raf=requestAnimationFrame(frame);
- Promise.all(['boxing-backgrounds.png','boxing-targets.png','boxing-fists-painted.png'].map(file=>{const image=new Image();image.src='assets/rehabilitation/'+file;return image.decode();})).then(()=>{
+ Promise.all(['boxing-backgrounds.png','boxing-targets.png','boxing-fists-painted.png','boxing-fists-extended.png'].map(file=>{const image=new Image();image.src='assets/rehabilitation/'+file;return image.decode();})).then(()=>{
   if(disposed)return;dialog.dataset.boxingReady='true';target.disabled=false;start.disabled=false;notice.textContent='Клік — удар. Права → ліва → пауза 1 с.';target.focus();
  }).catch(()=>{if(!disposed){dialog.dataset.boxingReady='error';notice.textContent='Не вдалося завантажити зображення. Поверніться до кімнати й спробуйте ще раз.';}});
 }

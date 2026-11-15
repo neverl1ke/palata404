@@ -107,8 +107,8 @@ class RehabBoxingTests(unittest.TestCase):
         self.assertEqual(dialog.get_attribute('data-boxing-phase'),'windup')
         self.page.wait_for_timeout(85)
         back=self.page.evaluate('()=>{const p=new DOMPoint(1219,120).matrixTransform(document.querySelector(".boxing-fist.right").getScreenCTM());return{x:p.x,y:p.y}}')
-        self.assertGreater(back['x'],after['x']+10)
-        self.assertGreater(back['y'],after['y']+10)
+        self.assertGreater(back['x'],after['x']+2)
+        self.assertGreater(back['y'],after['y']+2)
         self.page.screenshot(path=str(OUT/'painted-windup.png'))
         self.page.wait_for_function('document.querySelector(".rehab-boxing").dataset.boxingHits==="1"')
         self.page.wait_for_function('document.querySelector(".rehab-boxing").dataset.boxingPhase==="ready"')
@@ -130,14 +130,26 @@ class RehabBoxingTests(unittest.TestCase):
         for width,height in [(1280,800),(390,844)]:
             self.page.set_viewport_size({'width':width,'height':height});self.page.wait_for_timeout(300)
             result=self.page.evaluate('''async()=>{
-   const img=new Image();img.src='assets/rehabilitation/boxing-fists-painted.png';await img.decode();const c=document.createElement('canvas');c.width=img.width;c.height=img.height;const ctx=c.getContext('2d');ctx.drawImage(img,0,0);const a=ctx.getImageData(0,0,c.width,c.height).data,points=[];
-   const add=(x,y)=>{if(a[(y*c.width+x)*4+3]>200)points.push([x,y])};
-   for(let x=0;x<c.width;x+=4)add(x,c.height-1);for(let y=0;y<c.height;y+=4){add(0,y);add(c.width-1,y)}
-   const stage=document.querySelector('.boxing-stage'),left=document.querySelector('.boxing-fist.left'),right=document.querySelector('.boxing-fist.right');let bad=[],effectSeen=false,frames=0;const start=performance.now();stage.click();
-   await new Promise(resolve=>{function sample(now){frames++;const r=stage.getBoundingClientRect(),lm=left.getScreenCTM(),rm=right.getScreenCTM();
-    for(const [x,y] of points){const p=new DOMPoint(x,y).matrixTransform(x<c.width/2?lm:rm);if(p.x>r.left+2&&p.x<r.right-2&&p.y>r.top+2&&p.y<r.bottom-2&&bad.length<5)bad.push({x:p.x,y:p.y,t:now-start,source:[x,y]});}
+   const sources={};
+   for(const file of ['boxing-fists-painted.png','boxing-fists-extended.png']){
+    const img=new Image();img.src='assets/rehabilitation/'+file;await img.decode();const c=document.createElement('canvas');c.width=img.width;c.height=img.height;const ctx=c.getContext('2d');ctx.drawImage(img,0,0);const a=ctx.getImageData(0,0,c.width,c.height).data,points=[];
+    const add=(x,y)=>{if(a[(y*c.width+x)*4+3]>200)points.push([x,y])};
+    for(let x=0;x<c.width;x+=4)add(x,c.height-1);for(let y=0;y<c.height;y+=4){add(0,y);add(c.width-1,y);if(file.includes('extended')){add(15,y);add(c.width-16,y)}}sources[file]=points;
+   }
+   const stage=document.querySelector('.boxing-stage'),hands=[document.querySelector('.boxing-fist.left'),document.querySelector('.boxing-fist.right')];let bad=[],effectSeen=false,frames=0;const start=performance.now();stage.click();
+   await new Promise(resolve=>{function sample(now){frames++;const r=stage.getBoundingClientRect();
+    for(const hand of hands)for(const image of hand.querySelectorAll('image')){
+     if(Number(getComputedStyle(image).opacity)<.05)continue;
+     const m=image.getScreenCTM(),inv=hand.getScreenCTM().inverse(),right=hand.classList.contains('right'),file=image.getAttribute('href').split('/').pop();
+     for(const [x,y]of sources[file]){
+      if((x<887)===right)continue;
+      const p=new DOMPoint(x,y).matrixTransform(m),v=p.matrixTransform(inv);
+      if(v.x<(right?887:0)||v.x>(right?1774:887)||v.y<0||v.y>887)continue;
+      if(p.x>r.left+2&&p.x<r.right-2&&p.y>r.top+2&&p.y<r.bottom-2&&bad.length<5)bad.push({x:p.x,y:p.y,t:now-start,source:[x,y],file});
+     }
+    }
     if(Number(getComputedStyle(document.querySelector('.boxing-impact')).opacity)>.1)effectSeen=true;
-    if(now-start<750)requestAnimationFrame(sample);else resolve();}requestAnimationFrame(sample)});return{frames,effectSeen,bad};
+    if(now-start<950)requestAnimationFrame(sample);else resolve();}requestAnimationFrame(sample)});return{frames,effectSeen,bad};
   }''')
             self.assertGreater(result['frames'],5)
             self.assertTrue(result['effectSeen'])
@@ -148,9 +160,9 @@ class RehabBoxingTests(unittest.TestCase):
         self.page.evaluate('''()=>{
             const hand=document.querySelector('.boxing-fist.right'),target=document.querySelector('.boxing-target-art'),stage=document.querySelector('.boxing-stage'),dialog=document.querySelector('.rehab-boxing');
             const rows=[],started=performance.now(),point=()=>new DOMPoint(1219,120).matrixTransform(hand.getScreenCTM());
-            const initial=point(),center=target.getBoundingClientRect();stage.click();
-            function sample(now){const p=point(),thumb=new DOMPoint(1074,310).matrixTransform(hand.getScreenCTM()),fx=document.querySelector('.boxing-impact').getBoundingClientRect();rows.push({t:now-started,x:p.x,y:p.y,thumbX:thumb.x,thumbY:thumb.y,transform:hand.style.transform,phase:dialog.dataset.boxingPhase,filter:hand.style.filter,effect:dialog.dataset.boxingEffect,fx:fx.x+fx.width/2});if(now-started<950)requestAnimationFrame(sample);}requestAnimationFrame(sample);
-            window.__cornerSamples={initial:{x:initial.x,y:initial.y},center:center.x+center.width/2,rows,source:hand.querySelector('image').getAttribute('href')};
+            const initial=point(),initialSpan=Math.hypot(hand.getScreenCTM().a,hand.getScreenCTM().b),center=target.getBoundingClientRect();stage.click();
+            function sample(now){const p=point(),thumb=new DOMPoint(1074,310).matrixTransform(hand.getScreenCTM()),fx=document.querySelector('.boxing-impact').getBoundingClientRect();rows.push({t:now-started,x:p.x,y:p.y,thumbX:thumb.x,thumbY:thumb.y,span:Math.hypot(hand.getScreenCTM().a,hand.getScreenCTM().b),art:Array.from(hand.querySelectorAll('image')).filter(e=>Number(e.style.opacity||1)>.05).map(e=>({source:e.getAttribute('href'),opacity:Number(e.style.opacity||1),sx:Math.hypot(e.getScreenCTM().a,e.getScreenCTM().b),sy:Math.hypot(e.getScreenCTM().c,e.getScreenCTM().d)})),transform:hand.style.transform,phase:dialog.dataset.boxingPhase,filter:hand.style.filter,effect:dialog.dataset.boxingEffect,fx:fx.x+fx.width/2});if(now-started<950)requestAnimationFrame(sample);}requestAnimationFrame(sample);
+            window.__cornerSamples={initialSpan,initial:{x:initial.x,y:initial.y},center:center.x+center.width/2,rows,source:hand.querySelector('image').getAttribute('href')};
         }''')
         self.page.clock.run_for(960)
         result=self.page.evaluate('window.__cornerSamples')
@@ -159,9 +171,9 @@ class RehabBoxingTests(unittest.TestCase):
         self.assertTrue(arc)
         windup=[r for r in result['rows'] if r['phase']=='windup']
         self.assertTrue(windup)
-        self.assertTrue(any(r['x']>result['initial']['x']+20 and r['y']>result['initial']['y']+30 for r in windup))
+        self.assertTrue(any(r['x']>result['initial']['x']+5 and r['y']>result['initial']['y']+5 for r in windup))
         self.assertTrue(all(r['x']<1152 for r in windup))
-        self.assertTrue(all('rotate(0deg)' in r['transform'] for r in result['rows']))
+        self.assertTrue(all(abs(float(r['transform'].split('rotate(')[1].split('deg')[0]))<=8.01 for r in result['rows']))
         self.assertTrue(any(r['filter'].startswith('blur(') for r in arc))
         approach=arc
         self.assertGreaterEqual(len(approach),2)
@@ -173,6 +185,11 @@ class RehabBoxingTests(unittest.TestCase):
         self.assertGreater(contact[0]['fx'],result['center']+30)
         self.assertGreater((contact[0]['x']-contact[0]['thumbX'])*dx+(contact[0]['y']-contact[0]['thumbY'])*dy,0)
         self.assertTrue(all(r['filter']=='none' for r in contact if r['phase']=='contact'))
+        for r in contact:
+            if r['phase']=='contact':
+                self.assertTrue(any('extended.png' in a['source'] and a['opacity']>.99 for a in r['art']))
+        for r in result['rows']:
+            for art in r['art']:self.assertAlmostEqual(art['sx'],art['sy'],delta=.001)
         returning=[r for r in result['rows'] if r['phase']=='return']
         recovering=[r for r in result['rows'] if r['phase']=='recover']
         self.assertGreaterEqual(len(returning),2)

@@ -20,5 +20,10 @@
     "purpose": "Painterly skin matched to the current base avatar, extended pajama sleeves for wind-up; previous boxing-fists.png preserved.",
     "avatarReference": "base_male.png",
     "avatarReferenceSha256": "b40a31b26dcf9aeea1dad02091228377330c9bb3af3a4b9669cfcc67247fc41d"
+  },
+  {
+    "path": "assets/rehabilitation/boxing-fists-extended.png",
+    "sha256": "335a165030c226119b04833be1a618952f7dabc0241903341aeb7886f5d944a8",
+    "purpose": "Authored contact keyframe with natural elbow folds and perspective from the supplied motion reference. No runtime axial stretching; existing guard art preserved."
   }
 ]
