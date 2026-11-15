@@ -1,0 +1,22 @@
+[
+  {
+    "mode": "patient",
+    "path": "assets/rehabilitation/pullup-patient.png",
+    "size": [
+      1672,
+      941
+    ],
+    "sha256": "49e2c369dfe0cacf5a634a72280630381339a9c95f53ef38db08fb0966c731a7",
+    "status": "Approved viewpoint and outer grip"
+  },
+  {
+    "mode": "trip",
+    "path": "assets/rehabilitation/pullup-trip.png",
+    "size": [
+      1671,
+      941
+    ],
+    "sha256": "132b4efed08785478781930b71293ee33f9439d922647988f31f64d79b00ffb4",
+    "status": "Trip material variant of approved viewpoint, for review"
+  }
+]

@@ -41,9 +41,9 @@ class RehabSceneTests(unittest.TestCase):
                 self.assertEqual(target.evaluate('e=>getComputedStyle(e).outlineStyle'),'none')
                 movement=json.loads(self.page.evaluate('JSON.stringify(document.querySelector("[data-scene-room=gym]").dataset.rehabMotion.split(",").map(Number))'))
                 target.click()
-                if id=='bag':
-                    self.page.locator('.rehab-boxing').wait_for(state='visible')
-                    self.page.locator('[data-boxing-back]').click()
+                if id in ['bag','pullup']:
+                    self.page.locator('.rehab-boxing' if id=='bag' else '.rehab-pullups').wait_for(state='visible')
+                    self.page.locator('[data-boxing-back]' if id=='bag' else '[data-pullup-back]').click()
                     continue
                 card=self.page.locator('[data-train="'+id+'"]')
                 card.wait_for(state='visible')

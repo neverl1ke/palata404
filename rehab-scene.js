@@ -27,9 +27,9 @@ function mount(host,mode,onSelect){
  const canvas=document.createElement('canvas');canvas.className='rehab-live-canvas';canvas.setAttribute('aria-hidden','true');canvas.hidden=true;host.append(canvas);
  const targets=[];let hover=-1,training=-1,disposed=false,raf=null,gl=null,program=null,texture=null,buffer=null,shaders=[],lastDraw=0;
  const strength=[0,0,0,0],values=[0,0,0,0];let frames=0;
- const visible=()=>host.isConnected&&!document.hidden&&!host.closest('.hidden')&&!document.querySelector('.rehab-boxing[open]');
+ const visible=()=>host.isConnected&&!document.hidden&&!host.closest('.hidden')&&!document.querySelector('.rehab-boxing[open],.rehab-pullups[open]');
  function layout(){if(!image.naturalWidth)return;const w=host.clientWidth,h=host.clientHeight,s=Math.min(w/image.naturalWidth,h/image.naturalHeight),dx=(w-image.naturalWidth*s)/2,dy=(h-image.naturalHeight*s)/2;ids.forEach((id,i)=>{const [l,t,r,b]=regions[id],button=targets[i];Object.assign(button.style,{left:(l*s+dx)+'px',top:(t*s+dy)+'px',width:((r-l)*s)+'px',height:((b-t)*s)+'px'});});}
- function select(i){if(ids[i]==='bag')window.PalataBoxing.open(mode);else onSelect(ids[i]);}
+ function select(i){if(ids[i]==='bag')window.PalataBoxing.open(mode);else if(ids[i]==='pullup')window.PalataPullups.open(mode);else onSelect(ids[i]);}
  ids.forEach((id,i)=>{const b=document.createElement('button');b.type='button';b.className='rehab-equipment';b.dataset.rehabEquipment=id;const name=id==='bag'&&mode==='trip'?'Манекен':PalataRehabRules.equipment[id].name;b.setAttribute('aria-label',name+' — тренування');b.title=name;const label=document.createElement('span');label.textContent=name;b.append(label);b.addEventListener('pointerenter',()=>{hover=i;start();});b.addEventListener('pointerleave',()=>{if(hover===i)hover=-1;});b.addEventListener('focus',()=>{hover=i;start();});b.addEventListener('blur',()=>{if(hover===i)hover=-1;});b.onclick=()=>select(i);targets.push(b);host.append(b);});
  function draw(time,neutral=false){
   if(!gl||!program||disposed)return;

@@ -121,7 +121,7 @@ function open(mode){
  }
  target.disabled=true;start.disabled=true;notice.textContent='Завантаження тренування…';
  dialog.showModal();raf=requestAnimationFrame(frame);
- Promise.all(['boxing-backgrounds.png','boxing-targets.png','boxing-fists-painted.png','boxing-fists-extended.png'].map(file=>{const image=new Image();image.src='assets/rehabilitation/'+file;return image.decode();})).then(()=>{
+ Promise.all(['assets/rehabilitation/boxing-backgrounds.png','assets/rehabilitation/boxing-targets.png','assets/rehabilitation/boxing-fists-painted.png','assets/rehabilitation/boxing-fists-extended.png'].map(source=>{const image=new Image();image.src=source;return image.decode();})).then(()=>{
   if(disposed)return;dialog.dataset.boxingReady='true';target.disabled=false;start.disabled=false;notice.textContent='Клік — удар. Права → ліва → пауза 1 с.';target.focus();
  }).catch(()=>{if(!disposed){dialog.dataset.boxingReady='error';notice.textContent='Не вдалося завантажити зображення. Поверніться до кімнати й спробуйте ще раз.';}});
 }
