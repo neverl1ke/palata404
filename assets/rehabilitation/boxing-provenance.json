@@ -1,0 +1,17 @@
+[
+  {
+    "path": "assets/rehabilitation/boxing-backgrounds.png",
+    "sha256": "279b26b53283c7887b7bde8a6cda9bfcb7f86009f565d65ac5c428500b319f86",
+    "purpose": "Separate animation layers derived from the close training concept; original room art unchanged."
+  },
+  {
+    "path": "assets/rehabilitation/boxing-targets.png",
+    "sha256": "ee6fc6ad1c2c2863a61eef2991d4fb65f5b593ccc2145b3a6f4f0f5a46d8bc12",
+    "purpose": "Separate animation layers derived from the close training concept; original room art unchanged."
+  },
+  {
+    "path": "assets/rehabilitation/boxing-fists.png",
+    "sha256": "3826ba05240c15ee4aaa90697ab548411442c9fe6d58d934fb6bc475070eb962",
+    "purpose": "Separate animation layers derived from the close training concept; original room art unchanged."
+  }
+]

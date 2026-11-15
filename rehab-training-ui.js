@@ -1,7 +1,7 @@
 /* Real scene objects and document controls share one training transaction. */
 (function(){
 'use strict';
-const R=PalataRehabRules;let active=null,root=null,context=null,timer=null,selected='rope';
+const R=PalataRehabRules;let active=null,root=null,context=null,timer=null,selected='rope',lastFinish=null;
 const name=id=>id==='bag'&&context?.mode==='trip'?'Манекен':R.equipment[id].name;
 function status(text){root?.querySelector('[role="status"]')?.replaceChildren(document.createTextNode(text));}
 function stop(message){PalataRehabScene.setTraining(null);clearInterval(timer);timer=null;active=null;if(context?.allowed())context.refresh();status(message);}
@@ -9,7 +9,7 @@ function begin(id){
  if(active||!context.allowed())return;
  updateEnergyTimer();const check=R.finish(stats.rehabTraining,id,stats.energy);
  if(!check.ok){status(check.error);return;}
- selected=id;active={id,start:performance.now(),duration:R.equipment[id].duration};context.refresh();PalataRehabScene.setTraining(id);
+ lastFinish=null;selected=id;active={id,start:performance.now(),duration:R.equipment[id].duration};context.refresh();PalataRehabScene.setTraining(id);
  timer=setInterval(()=>{
   if(!context.allowed()){stop('Вправу перервано. Енергію не списано.');return;}
   const elapsed=performance.now()-active.start;
@@ -22,10 +22,10 @@ function begin(id){
    stats.rehabTraining=next.progress;stats.energy-=next.cost;stats.maxEnergy+=next.energyBonus;
    return{ok:true,rank:next.rank,rankUp:next.rankUp};
   });
-  context.refresh();status(result.ok?(result.rankUp?'Новий ранг '+result.rank+'! Постійний бонус застосовано.':'Вправу завершено: +10 прогресу.')+(result.pendingSave?' Результат у журналі; збереження повторюється.':''):result.error);
+  lastFinish=result;context.refresh();status(result.ok?(result.rankUp?'Новий ранг '+result.rank+'! Постійний бонус застосовано.':'Вправу завершено: +10 прогресу.')+(result.pendingSave?' Результат у журналі; збереження повторюється.':''):result.error);
  },100);
 }
-window.PalataRehabUI=Object.freeze({select(id){if(!Object.hasOwn(R.equipment,id))return;selected=id;if(context)context.reveal();},render(host,ctx){
+window.PalataRehabUI=Object.freeze({startBoxing(){begin('bag');return active?.id==='bag';},cancelBoxing(){if(active?.id==='bag')stop('Вправу скасовано. Енергію не списано.');},boxingState(){return{active:active?.id==='bag',progress:active?.id==='bag'?Math.min(100,(performance.now()-active.start)/active.duration*100):0,success:!!lastFinish?.ok,message:root?.querySelector('[role="status"]')?.textContent||''};},select(id){if(!Object.hasOwn(R.equipment,id))return;selected=id;if(context)context.reveal();},render(host,ctx){
  context=ctx;root=document.createElement('section');root.className='rehab-training';root.setAttribute('aria-label','Постійні тренування');
  const heading=document.createElement('h4');heading.textContent='Реабілітація · тренування';root.append(heading);
  const note=document.createElement('p');note.textContent='Оберіть снаряд у кімнаті або зі списку. Прогрес спільний для Пацієнта й Трипу. 10 вправ на ранг, максимум 5 рангів. Енергія списується після завершення. Перерва між вправами на одному снаряді — 60 секунд.';root.append(note);
