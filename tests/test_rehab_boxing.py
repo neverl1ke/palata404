@@ -108,7 +108,7 @@ class RehabBoxingTests(unittest.TestCase):
         self.page.wait_for_timeout(85)
         back=self.page.evaluate('()=>{const p=new DOMPoint(1219,120).matrixTransform(document.querySelector(".boxing-fist.right").getScreenCTM());return{x:p.x,y:p.y}}')
         self.assertGreater(back['x'],after['x']+10)
-        self.assertGreater(back['y'],after['y']+10)
+        self.assertLess(abs(back['y']-after['y']),20)
         self.page.screenshot(path=str(OUT/'painted-windup.png'))
         self.page.wait_for_function('document.querySelector(".rehab-boxing").dataset.boxingHits==="1"')
         self.page.wait_for_function('document.querySelector(".rehab-boxing").dataset.boxingPhase==="ready"')
@@ -143,19 +143,23 @@ class RehabBoxingTests(unittest.TestCase):
             self.assertTrue(result['effectSeen'])
             self.assertEqual(result['bad'],[],str((width,height)))
 
-    def test_hook_uses_diagonal_guard_and_contacts_side_after_lateral_arc(self):
+    def test_diagonal_strike_chambers_at_guard_height_and_blurs_only_in_flight(self):
         self.load();self.gym()
         result=self.page.evaluate('''async()=>{
             const hand=document.querySelector('.boxing-fist.right'),target=document.querySelector('.boxing-target-art'),stage=document.querySelector('.boxing-stage'),dialog=document.querySelector('.rehab-boxing');
             const rows=[],started=performance.now(),point=()=>new DOMPoint(1219,120).matrixTransform(hand.getScreenCTM());
             const initial=point(),center=target.getBoundingClientRect();stage.click();
-            await new Promise(resolve=>{function sample(now){const p=point(),thumb=new DOMPoint(1074,310).matrixTransform(hand.getScreenCTM()),fx=document.querySelector('.boxing-impact').getBoundingClientRect();rows.push({t:now-started,x:p.x,y:p.y,thumbX:thumb.x,phase:dialog.dataset.boxingPhase,effect:dialog.dataset.boxingEffect,fx:fx.x+fx.width/2});if(now-started<420)requestAnimationFrame(sample);else resolve();}requestAnimationFrame(sample)});
+            await new Promise(resolve=>{function sample(now){const p=point(),thumb=new DOMPoint(1074,310).matrixTransform(hand.getScreenCTM()),fx=document.querySelector('.boxing-impact').getBoundingClientRect();rows.push({t:now-started,x:p.x,y:p.y,thumbX:thumb.x,phase:dialog.dataset.boxingPhase,filter:hand.style.filter,effect:dialog.dataset.boxingEffect,fx:fx.x+fx.width/2});if(now-started<420)requestAnimationFrame(sample);else resolve();}requestAnimationFrame(sample)});
             return{initial:{x:initial.x,y:initial.y},center:center.x+center.width/2,rows,source:hand.querySelector('image').getAttribute('href')};
         }''')
         self.assertIn('boxing-fists-painted.png',result['source'])
         arc=[r for r in result['rows'] if r['phase']=='forward']
-        self.assertTrue(any(r['x']>result['initial']['x']+30 and r['y']<result['initial']['y']-10 for r in arc),result)
-        approach=[r for r in arc if r['t']>270]
+        self.assertTrue(any(r['x']>result['initial']['x']+30 for r in arc),result)
+        windup=[r for r in result['rows'] if r['phase']=='windup']
+        self.assertTrue(windup)
+        self.assertTrue(all(abs(r['y']-result['initial']['y'])<20 for r in windup))
+        self.assertTrue(any(r['filter'].startswith('blur(') for r in arc))
+        approach=arc
         self.assertGreaterEqual(len(approach),2)
         dx=approach[-1]['x']-approach[0]['x'];dy=approach[-1]['y']-approach[0]['y']
         self.assertLess(dx,-20)
@@ -164,4 +168,9 @@ class RehabBoxingTests(unittest.TestCase):
         self.assertTrue(contact)
         self.assertGreater(contact[0]['fx'],result['center']+30)
         self.assertLess(contact[0]['x'],contact[0]['thumbX']-25)
-        (OUT/'hook-trajectory.json').write_text(json.dumps(result,indent=2))
+        self.assertTrue(all(r['filter']=='none' for r in contact if r['phase']=='contact'))
+        for a,b,c in zip(arc,arc[1:],arc[2:]):
+            cross=(b['x']-a['x'])*(c['y']-a['y'])-(b['y']-a['y'])*(c['x']-a['x'])
+            length=((c['x']-a['x'])**2+(c['y']-a['y'])**2)**.5
+            self.assertLess(abs(cross)/max(1,length),4)
+        (OUT/'diagonal-trajectory.json').write_text(json.dumps(result,indent=2))
