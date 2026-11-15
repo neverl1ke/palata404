@@ -28,6 +28,7 @@
 <link rel="stylesheet" href="quest-prototype.css?v=2cccd177cd03">
 <link rel="stylesheet" href="level-notice.css?v=d789a7fc0171">
 <link rel="stylesheet" href="rehab-training.css?v=911e653bdab2">
+<link rel="stylesheet" href="rehab-scene.css?v=ce456d9d4f10">
 </head>
 <body>
 <section id="scene-loading" class="scene-loading" aria-label="Загрузка игры"><div class="scene-loading-paper"><strong class="scene-loading-name">ПАЛАТА 404</strong><p role="status" aria-live="polite">Подготовка палаты…</p><div class="scene-loading-line" aria-hidden="true"></div><button type="button" hidden>Повторить</button></div></section>
@@ -791,11 +792,12 @@
 <script src="room-shadows.js?v=71ba9bf014bb" defer></script>
 <script src="room-door-rattle.js?v=bd36015147bc" defer></script>
 <script src="scene-loading.js?v=694da03e74b2" defer></script>
-<script src="quest-engine.js?v=447dff6b8310" defer></script>
-<script src="quest-art.js?v=floor10-main-1" defer></script>
-<script src="quest-scenes.js?v=fba30ad334ab" defer></script>
-<script src="rehab-training-ui.js?v=ac4a6280ab63" defer></script>
-<script src="quest-prototype.js?v=c74f0c049dc0" defer></script>
+<script src="quest-engine.js?v=369bfd2ce0d7" defer></script>
+<script src="quest-art.js?v=a49746259352" defer></script>
+<script src="rehab-scene.js?v=f1927f678de4" defer></script>
+<script src="quest-scenes.js?v=c6c809ea5ab9" defer></script>
+<script src="rehab-training-ui.js?v=fb47dd73818e" defer></script>
+<script src="quest-prototype.js?v=aa4937300f96" defer></script>
 <dialog id="level-notice" aria-labelledby="level-notice-title" oncancel="event.preventDefault();closeLevelNotice()">
 <article class="document-paper"><document-header variant="center" department="ПІДВИЩЕННЯ РІВНЯ"></document-header><h2 id="level-notice-title">Ви отримали новий рівень!</h2><p class="level-notice-number" id="level-notice-number"></p><p>Нагороду вже зараховано</p><ul><li>100 срібла</li><li>50 таблеток</li><li>5 баксів</li></ul><button type="button" onclick="closeLevelNotice()">Продовжити</button></article></dialog>
 </body>

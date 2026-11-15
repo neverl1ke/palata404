@@ -14,6 +14,7 @@ class RehabTrainingTests(unittest.TestCase):
     def gym(self):
         self.page.locator('#location-card-box').click()
         self.page.locator('.quest-map-pin[data-room="gym"]').dblclick(delay=40)
+        self.page.locator('[data-rehab-equipment="rope"]').click()
         self.page.locator('[data-train="rope"]').wait_for(state='visible')
 
     def test_timed_rank_energy_reload_and_shared_mode(self):

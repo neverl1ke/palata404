@@ -3,6 +3,7 @@
 'use strict';
 const actors={nurse:'Клара',doctor:'Дежурный врач'};
 function resolve(room,mode){
+ if(room==='gym')return{background:'assets/rehabilitation/'+(mode==='trip'?'trip':'patient')+'.png',paired:true};
  if(Object.hasOwn(actors,room)){
   const base='assets/floor10-approved/'+room+'/',state=mode==='trip'?'Trip':'Normal';
   return {background:base+'Background_'+state+'.png',sprite:base+'Sprite_'+state+'.png',portrait:base+'Dossier_'+state+'.png',paired:true};

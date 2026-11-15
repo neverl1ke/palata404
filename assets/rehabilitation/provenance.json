@@ -1,0 +1,14 @@
+[
+  {
+    "mode": "patient",
+    "runtime": "assets/rehabilitation/patient.png",
+    "sha256": "675154f5c8135a037cda583d9dd057261782d030ec9988f018f084ede4b7e9f3",
+    "approval": "Approved in conversation before integration; original pixels unchanged."
+  },
+  {
+    "mode": "trip",
+    "runtime": "assets/rehabilitation/trip.png",
+    "sha256": "c3163e8fccd05cf6c7bc7dd9d232d142670bcaa8838849d5957987aa1211c4fa",
+    "approval": "Approved in conversation before integration; original pixels unchanged."
+  }
+]
