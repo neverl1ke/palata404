@@ -1727,7 +1727,11 @@ class GameTests(unittest.TestCase):
         self.page.locator('#gym-exercises-list button').first.click()
         self.assertEqual(self.state()['energy'], 98)
         self.assertEqual(self.state()['exp'], 5)
-        self.page.evaluate('stats.madness=100; updateUI(); doGymExercise("squats"); openDossier();')
+        # The current mode belongs to the quest state; writing madness directly
+        # is normalized back to Patient. Exercise the real room switch instead.
+        self.page.evaluate('closeGym()')
+        self.page.locator('.room-trip-switch').click()
+        self.page.evaluate('doGymExercise("squats"); openDossier();')
         self.assertEqual(self.state()['energy'], 98)
         self.assertEqual(self.page.locator('#dossier-madness-attacks').inner_text(), '4')
         self.page.evaluate('typeof applyWardrobeSession === "function" && applyWardrobeSession()');self.page.reload(wait_until='networkidle')

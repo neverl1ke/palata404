@@ -1,0 +1,32 @@
+{
+  "sources": {
+    "rope-patient.png": {
+      "sha256": "b111fdefbd2f045ee6bbf07e083802897f888c700477b35eb3e7129f48a33dc3",
+      "source": "art-polish-20261116/bench-lower/training-art/assets/rope-patient.png"
+    },
+    "rope-trip.png": {
+      "sha256": "2af1ffa26a2d2fb1733831d663a0e03c677c71481bac03caaab7907e1099c060",
+      "source": "art-polish-20261116/bench-lower/training-art/assets/rope-trip.png"
+    },
+    "rope-hands.png": {
+      "sha256": "360bf8db6a49de7f7ca2914868c5d901973e5c460265173d4c11697a5ccf66d3",
+      "source": "art-polish-20261116/bench-lower/training-art/assets/rope-hands.png"
+    },
+    "bench-patient.png": {
+      "sha256": "0f611d7e7150fc13a708078fa5bc54e5f795dde15a39196340f124e5997d5106",
+      "source": "art-polish-20261116/bench-lower/training-art/assets/bench-patient.png"
+    },
+    "bench-trip.png": {
+      "sha256": "91b594e9da727a7d9b4c586c3a7afc6fe9308b956e92bdce6c5aa2267147aec0",
+      "source": "art-polish-20261116/bench-lower/training-art/assets/bench-trip.png"
+    },
+    "bench-hands.png": {
+      "sha256": "ae7d521b43f96225fa05649ede06b88880d72c7440a91d8ce6c7f146af47ff4c",
+      "source": "art-polish-20261116/bench-lower/training-art/assets/bench-hands.png"
+    }
+  },
+  "originalImagesUnmodified": true,
+  "patientBenchSkin": "Display-only masked highlight and saturation correction",
+  "benchBottom": 700,
+  "benchTop": 320
+}

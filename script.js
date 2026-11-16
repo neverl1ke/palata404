@@ -227,6 +227,7 @@ const DEFAULT_STATS = {
 
 let stats = normalizeStats(loadSaveData('palata404_stats', DEFAULT_STATS));
 let lastKnownEnergy = stats.energy;
+let lastKnownMaxEnergy = stats.maxEnergy;
 let lastKnownMadness = stats.madness;
 
 let gender = safeStorageGet('palata404_gender') === 'female' ? 'female' : 'male';
@@ -511,13 +512,14 @@ function updateCharacterLayers() {
 function updateUI() {
     if (lastKnownMadness < 100 && stats.madness >= 100) stats.madnessAttacks += 1;
     lastKnownMadness = stats.madness;
-    const wasAtMaxEnergy = lastKnownEnergy >= stats.maxEnergy;
+    const wasAtMaxEnergy = lastKnownEnergy >= lastKnownMaxEnergy;
     const isAtMaxEnergy = stats.energy >= stats.maxEnergy;
     if (wasAtMaxEnergy !== isAtMaxEnergy) {
         energyLastTime = Date.now();
         safeStorageSet('palata404_last_time', energyLastTime.toString());
     }
     lastKnownEnergy = stats.energy;
+    lastKnownMaxEnergy = stats.maxEnergy;
 
     const hpValElem = document.getElementById('hp-val');
     if (hpValElem) hpValElem.textContent = `${stats.hp} / ${stats.maxHp}`;

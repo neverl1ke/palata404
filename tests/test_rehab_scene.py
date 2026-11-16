@@ -41,15 +41,10 @@ class RehabSceneTests(unittest.TestCase):
                 self.assertEqual(target.evaluate('e=>getComputedStyle(e).outlineStyle'),'none')
                 movement=json.loads(self.page.evaluate('JSON.stringify(document.querySelector("[data-scene-room=gym]").dataset.rehabMotion.split(",").map(Number))'))
                 target.click()
-                if id in ['bag','pullup']:
-                    self.page.locator('.rehab-boxing' if id=='bag' else '.rehab-pullups').wait_for(state='visible')
-                    self.page.locator('[data-boxing-back]' if id=='bag' else '[data-pullup-back]').click()
-                    continue
-                card=self.page.locator('[data-train="'+id+'"]')
-                card.wait_for(state='visible')
+                selector='.rehab-boxing' if id=='bag' else '.rehab-pullups' if id=='pullup' else '.rehab-exercise'
+                self.page.locator(selector).wait_for(state='visible')
                 self.assertEqual(self.page.evaluate('JSON.stringify({stats,inventory})'),before)
-                self.page.locator('[data-room-info-toggle]').click()
-                self.assertTrue(self.page.locator('.scene-paper').is_hidden())
+                self.page.locator('[data-boxing-back]' if id=='bag' else '[data-pullup-back]' if id=='pullup' else '[data-exercise-back]').click()
                 results.append({'mode':mode,'equipment':id,'hoverMotion':movement,'cardAccessible':True})
             self.page.mouse.move(0,0)
             self.page.screenshot(path=str(OUT/(mode+'-full-room.png')))
@@ -92,5 +87,5 @@ class RehabSceneTests(unittest.TestCase):
         self.page.wait_for_function('document.querySelector("[data-scene-room=gym]").dataset.rehabRenderer==="static"')
         self.assertTrue(scene.locator('.scene-painting').is_visible())
         self.page.locator('[data-rehab-equipment="rope"]').click()
-        self.assertTrue(self.page.locator('[data-train="rope"]').is_visible())
+        self.assertTrue(self.page.locator('.rehab-exercise').is_visible())
         (OUT/'renderer-check.json').write_text(json.dumps({'neutralPixels':pixels,'localHoverPixels':local,'reducedMotion':True,'contextLossFallback':True,'ambientSampled':True},indent=2))

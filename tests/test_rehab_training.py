@@ -1,4 +1,4 @@
-"""Actual timed UI exercises; rank-boundary saves are diagnostic fixtures."""
+"""Manual rope input, durable rank saves, cancellation and transaction recovery."""
 import json
 from pathlib import Path
 import unittest
@@ -15,23 +15,32 @@ class RehabTrainingTests(unittest.TestCase):
         self.page.locator('#location-card-box').click()
         self.page.locator('.quest-map-pin[data-room="gym"]').dblclick(delay=40)
         self.page.locator('[data-rehab-equipment="rope"]').click()
-        self.page.locator('[data-train="rope"]').wait_for(state='visible')
+        self.page.wait_for_function('document.querySelector(".rehab-exercise")?.dataset.exerciseReady==="true"')
+
+    def complete_rope(self):
+        self.page.clock.install();self.page.clock.pause_at((self.page.evaluate('Date.now()')+100)/1000);self.page.locator('[data-exercise-start]').click();self.page.clock.run_for(20)
+        for i in range(10):
+            self.page.locator('[data-exercise-view]').press('Space');self.page.clock.run_for(20)
+            if i<9:self.page.clock.run_for(1130)
+        self.page.clock.run_for(1500)
+        self.page.clock.resume()
 
     def test_timed_rank_energy_reload_and_shared_mode(self):
         self.load({'palata404_stats':json.dumps({'rehabTraining':{'rope':{'completed':9},'pullup':{'completed':10},'bench':{'completed':20},'bag':{'completed':30}}})})
         self.assertEqual(self.page.evaluate('getCombatWeaponStats().damage'),13)
         self.assertAlmostEqual(self.page.evaluate('getCombatWeaponStats().critical'),.03)
-        self.gym();self.page.locator('[data-train="rope"]').click()
+        self.gym()
         self.assertEqual(self.page.evaluate('stats.energy'),100)
+        self.complete_rope()
         self.page.wait_for_function('stats.rehabTraining.rope.completed===10',timeout=16000)
         self.assertEqual(self.page.evaluate('stats.maxEnergy'),101)
         self.assertEqual(self.page.evaluate('stats.energy'),92)
         self.assertEqual(self.page.evaluate('stats.silver'),150)
-        self.page.locator('[data-train="rope"]').click()
-        self.assertIn('60 секунд',self.page.locator('.rehab-training>[role="status"]').inner_text())
+        self.page.locator('[data-exercise-start]').click()
+        self.assertIn('60 секунд',self.page.locator('.rehab-exercise [role="status"]').inner_text())
         out=Path(__file__).resolve().parents[1]/'test-results/level-rehab';out.mkdir(parents=True,exist_ok=True)
-        self.page.locator('.rehab-training h4').scroll_into_view_if_needed()
         self.page.screenshot(path=str(out/'training-real-preview.png'))
+        self.page.locator('[data-exercise-back]').click()
         self.page.reload(wait_until='networkidle')
         self.assertEqual(self.page.evaluate('stats.rehabTraining.rope.completed'),10)
         self.assertEqual(self.page.evaluate('stats.maxEnergy'),101)
@@ -39,16 +48,15 @@ class RehabTrainingTests(unittest.TestCase):
         self.page.locator('#map-modal .btn-close-map').click()
         self.page.locator('.room-trip-switch').click()
         self.assertEqual(self.page.evaluate('stats.rehabTraining.rope.completed'),10)
-        self.gym();self.assertTrue(self.page.locator('[data-train="rope"]').is_visible())
+        self.gym();self.assertTrue(self.page.locator('.rehab-exercise').is_visible())
 
     def test_cancellation_and_failed_transaction_do_not_charge_or_grant(self):
-        self.load();self.gym();self.page.locator('[data-train="rope"]').click()
-        self.page.get_by_role('button',name='Скасувати без витрат',exact=True).click()
+        self.load();self.gym();self.page.locator('[data-exercise-start]').click();self.page.locator('[data-exercise-back]').click()
         self.assertEqual(self.page.evaluate('stats.energy'),100)
         self.assertEqual(self.page.evaluate('PalataRehabRules.normalize(stats.rehabTraining).rope.completed'),0)
         # Deny the atomic profile journal; normal UI timing still runs fully.
         self.page.evaluate('window.rehabOriginalSet=safeStorageSet;safeStorageSet=(k,v)=>k===WEAPON_TRANSACTION_KEY?false:rehabOriginalSet(k,v)')
-        self.page.locator('[data-train="rope"]').click()
+        self.page.locator('[data-rehab-equipment="rope"]').click();self.page.wait_for_function('document.querySelector(".rehab-exercise")?.dataset.exerciseReady==="true"');self.complete_rope()
         self.page.wait_for_function('document.querySelector(".rehab-training>[role=status]").textContent.includes("Ресурсы не списаны")',timeout=16000)
         self.assertEqual(self.page.evaluate('stats.energy'),100)
         self.assertEqual(self.page.evaluate('PalataRehabRules.normalize(stats.rehabTraining).rope.completed'),0)
@@ -56,8 +64,10 @@ class RehabTrainingTests(unittest.TestCase):
     def test_interrupted_profile_write_recovers_one_rank_only(self):
         self.load({'palata404_stats':json.dumps({'rehabTraining':{'rope':{'completed':9}}})})
         self.gym()
+        # Time spent sitting at full energy must not refill a rank-up spend.
+        self.page.evaluate('energyLastTime=Date.now()-3600000;safeStorageSet("palata404_last_time",String(energyLastTime))')
         self.page.evaluate('window.rehabOriginalSet=safeStorageSet;safeStorageSet=(k,v)=>k==="palata404_stats"?false:rehabOriginalSet(k,v)')
-        self.page.locator('[data-train="rope"]').click()
+        self.complete_rope()
         self.page.wait_for_function('stats.rehabTraining.rope.completed===10',timeout=16000)
         self.assertTrue(self.page.evaluate('Boolean(readWeaponTransaction())'))
         for _ in range(2):

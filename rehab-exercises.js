@@ -1,0 +1,29 @@
+/* Manual rope and bench scenes share the existing durable training transaction. */
+(function(){'use strict';let current=null;
+function open(kind,mode){
+ if(current||!['rope','bench'].includes(kind))return;
+ const M=PalataExerciseModel,previous=document.activeElement,dialog=document.createElement('dialog');dialog.className='rehab-exercise';dialog.dataset.exerciseKind=kind;dialog.dataset.mode=mode;
+ const title=kind==='rope'?'Скакалка':'Жим лежачи';dialog.setAttribute('aria-label',title);
+ const header=document.createElement('header'),back=document.createElement('button'),start=document.createElement('button'),status=document.createElement('p');back.textContent='Назад до кімнати';back.dataset.exerciseBack='';start.textContent='Почати · '+(kind==='rope'?'10 стрибків · 8':'5 повторів · 10')+' енергії';start.dataset.exerciseStart='';start.disabled=true;status.setAttribute('role','status');status.textContent='Завантаження вправи…';header.append(back,start,status);
+ const meters=document.createElement('section');meters.className='exercise-meters';const count=document.createElement('span'),bar=document.createElement('progress');count.dataset.exerciseCount='';bar.max=100;bar.value=0;bar.setAttribute('aria-label','Прогрес підходу');meters.append(count,bar);
+ const viewport=document.createElement('section');viewport.className='exercise-viewport';const view=document.createElement('button');view.className='exercise-view';view.type='button';view.disabled=true;view.dataset.exerciseView='';view.setAttribute('aria-label',kind==='rope'?'Стрибок — натисніть у зеленій зоні':'Утримуйте для жиму, відпустіть для спуску');const canvas=document.createElement('canvas');canvas.width=1672;canvas.height=941;canvas.setAttribute('aria-hidden','true');view.append(canvas);viewport.append(view);
+ const rhythm=document.createElement('div');rhythm.className='exercise-rhythm';const zone=document.createElement('span'),marker=document.createElement('i');zone.className='exercise-window';rhythm.append(zone,marker);rhythm.hidden=kind!=='rope';dialog.append(header,meters,viewport,rhythm);document.body.append(dialog);
+ let state=M.initial(kind),ready=false,failed=false,disposed=false,raf=0,last=0,hasStarted=false;const art=PalataExerciseArt.create(canvas,kind,mode);
+ function close(){if(disposed)return;disposed=true;cancelAnimationFrame(raf);document.removeEventListener('visibilitychange',hidden);globalThis.removeEventListener('blur',release);art.dispose();PalataRehabUI.cancelExercise(kind);dialog.close();dialog.remove();current=null;PalataRehabScene.resume();if(previous?.isConnected)previous.focus();else document.querySelector(`[data-rehab-equipment="${kind}"]`)?.focus();}
+ function release(){M.release(state)}
+ function advance(now){const dt=last?Math.min(.05,Math.max(0,(now-last)/1000)):0;last=now;M.step(state,dt);if(hasStarted){PalataRehabUI.advanceExercise(kind,state.count/(kind==='rope'?10:5));const session=PalataRehabUI.exerciseState(kind);if(!session.active&&!state.done){state.started=false;release();hasStarted=false;status.textContent=session.message||'Вправу зупинено.';}if(state.done)status.textContent=session.message||'Підхід завершено.';}}
+ function action(){advance(performance.now());if(M.press(state)&&kind==='rope')status.textContent='У ритм · '+state.count+' / 10';else if(kind==='rope'&&state.started)status.textContent='Ловіть зелену зону наступного оберту.';}
+ start.onclick=()=>{if(!ready||state.started||state.ropeSettling||state.stage==='rackBack')return;if(PalataRehabUI.startExercise(kind)){M.start(state);hasStarted=true;last=performance.now();view.focus();status.textContent=kind==='rope'?'Клік або Пробіл у зеленій зоні. Один стрибок за оберт.':'Утримуйте кнопку або Пробіл. Угорі відпустіть для спуску.';}else status.textContent=PalataRehabUI.exerciseState(kind).message||'Підхід недоступний: перевірте енергію, ранг і перерву між вправами.';};
+ back.onclick=close;dialog.addEventListener('cancel',e=>{e.preventDefault();close()});
+ view.addEventListener('pointerdown',e=>{e.preventDefault();view.setPointerCapture(e.pointerId);action()});for(const event of ['pointerup','pointercancel','lostpointercapture'])view.addEventListener(event,release);
+ view.addEventListener('click',e=>{if(e.detail===0)action()});view.addEventListener('keydown',e=>{if([' ','Enter'].includes(e.key)){e.preventDefault();if(!e.repeat)action()}});view.addEventListener('keyup',e=>{if([' ','Enter'].includes(e.key)){e.preventDefault();release()}});globalThis.addEventListener('blur',release);
+ function hidden(){release();last=0}document.addEventListener('visibilitychange',hidden);
+ function frame(now){if(disposed)return;if(!dialog.isConnected){close();return}if(!document.hidden){advance(now);if(ready)art.draw(state)}else last=0;
+  count.textContent=title+': '+state.count+' / '+(kind==='rope'?10:5);bar.value=state.count/(kind==='rope'?10:5)*100;marker.style.left=(state.time/M.PERIOD%1*100)+'%';
+  start.disabled=!ready||state.started||state.ropeSettling||state.stage==='rackBack';view.disabled=!ready||!state.started||state.done||state.stage==='unrack';
+  Object.assign(dialog.dataset,{exerciseReady:failed?'error':String(ready),exerciseCount:String(state.count),exerciseLift:state.lift.toFixed(4),exerciseStage:state.stage,exercisePhase:state.phase,exerciseTime:String(state.time),exerciseDone:String(state.done)});raf=requestAnimationFrame(frame);
+ }
+ current={close};dialog.showModal();raf=requestAnimationFrame(frame);art.ready.then(()=>{if(disposed)return;ready=true;status.textContent=kind==='rope'?'Почніть підхід. Натискайте, коли шнур іде під ноги.':'Почніть підхід. П’ять повних повторів зараховують тренування.'}).catch(()=>{if(!disposed){failed=true;dialog.dataset.exerciseReady='error';status.textContent='Не вдалося завантажити вправу. Поверніться й спробуйте знову.'}});
+}
+globalThis.PalataExercises=Object.freeze({open,close:()=>current?.close()});
+})();
