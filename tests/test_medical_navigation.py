@@ -51,6 +51,7 @@ class MedicalNavigationTests(unittest.TestCase):
             mode:PalataQuestPrototype.snapshot().mode})''')
 
     def open_shop(self):
+        if self.game.locator('#quest-location-screen').is_hidden():self.room('procedure')
         self.game.locator('[data-medical-shop="true"]').click()
         self.assertTrue(self.game.locator('#procedure-room-modal').is_visible())
 

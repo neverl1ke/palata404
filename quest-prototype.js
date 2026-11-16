@@ -286,5 +286,7 @@ const priorRoom=window.PalataRoom;window.PalataRoom=Object.freeze({...priorRoom,
 tasks.addEventListener('click',e=>{if(e.target.dataset.taskMode){taskMode=e.target.dataset.taskMode;renderTasks();}if(e.target.dataset.questTab){tab=e.target.dataset.questTab;renderTasks();}});
 document.querySelectorAll('[data-nav-modal="tasks-modal"]').forEach(b=>{b.setAttribute('aria-label','Задания');b.querySelector('span').textContent='Задания';});const taskLabel=document.querySelector('.hud-task span');if(taskLabel)taskLabel.textContent='Задания';
 
-resumeRaid(raw?.raid);locationView=state.room!=='ward404'&&!state.battle;save();refresh();window.PalataQuestPrototype=Object.freeze({snapshot:()=>JSON.parse(JSON.stringify(state))});
+// Restore durable progress, not a transient room or arena overlay. The saved
+// location still belongs to the quest; a live raid continues minimized.
+resumeRaid(raw?.raid);if(isBattleActive)minimizeNurseBattle();save();refresh();window.PalataQuestPrototype=Object.freeze({snapshot:()=>JSON.parse(JSON.stringify(state))});
 })();

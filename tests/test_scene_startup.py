@@ -72,7 +72,7 @@ class SceneStartupTests(unittest.TestCase):
                 self.assertEqual(self.page.locator('#character-paperdoll').get_attribute('data-avatar-pose'),'idle')
                 self.assertGreater(int(self.page.locator('.room-shadow-contact').get_attribute('data-sole-samples')),0)
 
-    def test_restored_raid_waits_for_arena_art_and_does_not_wait_for_hidden_room_shadow(self):
+    def test_restored_raid_starts_minimized_without_waiting_for_hidden_arena_art(self):
         self.page.goto(self.url,wait_until='domcontentloaded');self.ready()
         self.page.locator('.room-trip-switch').click()
         self.page.locator('#quest-unlock-all').click()
@@ -87,20 +87,63 @@ class SceneStartupTests(unittest.TestCase):
         self.page.reload(wait_until='domcontentloaded')
         self.page.wait_for_function('isBattleActive')
         self.assertTrue(held)
-        self.assertEqual(self.page.locator('.hospital-hud').get_attribute('data-assets-ready'),'false')
-        self.assertTrue(self.page.locator('#scene-loading').is_visible())
-        self.context.unroute(pattern)
-        for route in held:route.continue_()
         self.ready()
         self.assertEqual(self.page.evaluate('currentBattleSession.id'),session)
-        self.assertEqual(self.page.locator('.hospital-hud').get_attribute('data-scene-paused'),'true')
+        self.assertTrue(self.page.locator('#nurse-battle-modal').is_hidden())
+        self.assertTrue(self.page.locator('#quest-location-screen').is_hidden())
+        self.assertTrue(self.page.locator('#map-modal').is_hidden())
+        self.assertEqual(self.page.locator('.hospital-hud').get_attribute('data-scene-paused'),'false')
+        self.context.unroute(pattern)
+        for route in held:route.continue_()
+        self.page.locator('#nav-raid-btn').click()
         self.assertTrue(self.page.locator('#nurse-battle-modal').is_visible())
         self.page.locator('[onclick="openFriendInviteModal()"]').click()
         self.assertTrue(self.page.locator('#friend-invite-modal').is_visible())
         self.page.evaluate('closeFriendInviteModal()')
-        self.page.locator('[onclick="minimizeNurseBattle()"]').click()
+        self.page.locator('.raid-minimize').click()
         self.page.wait_for_function('Number(document.querySelector(".room-shadow-contact").dataset.soleSamples)>0')
         self.assertNotEqual(self.page.locator('.hospital-hud').get_attribute('data-load-error'),'true')
+
+    def test_reload_from_rooms_and_exercises_opens_home_and_preserves_progress(self):
+        self.page.goto(self.url,wait_until='domcontentloaded');self.ready()
+        self.page.evaluate('stats.silver=777;stats.pills=88;stats.bucks=11;stats.rehabTraining=PalataRehabRules.normalize({rope:{completed:12},bench:{completed:7}});saveGameProgress()')
+        snapshot='''()=>{const s=PalataQuestEngine.restore(PalataQuestPrototype.snapshot());return {room:s.room,mode:s.mode,flags:s.flags,jobs:s.jobs,cargo:s.cargo,unlocked:s.allSectionsUnlocked,silver:stats.silver,pills:stats.pills,bucks:stats.bucks,level:stats.level,training:stats.rehabTraining,inventory,equippedGear,appearance:paperDollState.appearance}}'''
+        self.page.locator('#quest-unlock-all').click()
+        for mode in ['patient','trip']:
+            if mode=='trip':self.page.locator('.room-trip-switch').click()
+            for room in ['gym','procedure']:
+                with self.subTest(mode=mode,room=room):
+                    self.page.locator('#location-card-box').click()
+                    self.page.locator(f'.quest-map-pin[data-room="{room}"]').dblclick(delay=40)
+                    self.page.locator('#quest-location-screen').wait_for(state='visible')
+                    if room=='gym':
+                        self.page.locator('[data-rehab-equipment=rope]').click()
+                        self.page.wait_for_function('document.querySelector(".rehab-exercise")?.dataset.exerciseReady==="true"')
+                        self.page.locator('[data-exercise-start]').click()
+                    before=self.page.evaluate(snapshot)
+                    self.page.reload(wait_until='domcontentloaded');self.ready()
+                    self.assertTrue(self.page.locator('#quest-location-screen').is_hidden())
+                    self.assertTrue(self.page.locator('#map-modal').is_hidden())
+                    self.assertTrue(self.page.locator('#nurse-battle-modal').is_hidden())
+                    self.assertEqual(self.page.locator('dialog[open]').count(),0)
+                    self.assertTrue(self.page.locator('.hospital-hud').is_visible())
+                    self.assertEqual(self.page.evaluate(snapshot),before)
+
+    def test_reload_inside_mobile_shell_opens_home_instead_of_saved_room(self):
+        self.context.close()
+        self.context=self.browser.new_context(viewport={'width':844,'height':390},is_mobile=True,has_touch=True,reduced_motion='reduce')
+        self.context.route('https://**/*',lambda route:route.abort())
+        self.page=self.context.new_page();self.page.on('pageerror',lambda e:self.errors.append(str(e)))
+        self.page.goto(self.url+'play.html')
+        game=self.page.frames[1]
+        game.wait_for_function('document.querySelector(".hospital-hud")?.dataset.assetsReady==="true"')
+        game.locator('#location-card-box').click();game.locator('.quest-map-pin[data-room="gym"]').dblclick(delay=40)
+        game.locator('#quest-location-screen').wait_for(state='visible')
+        self.page.reload(wait_until='domcontentloaded');game=self.page.frames[1]
+        game.wait_for_function('document.querySelector(".hospital-hud")?.dataset.assetsReady==="true"')
+        self.assertTrue(game.locator('#quest-location-screen').is_hidden());self.assertTrue(game.locator('#map-modal').is_hidden())
+        self.assertTrue(game.locator('.hospital-hud').is_visible())
+        self.assertEqual(game.evaluate('PalataQuestPrototype.snapshot().room'),'gym')
 
     def test_default_compact_card_slides_offscreen_before_its_layout_changes(self):
         self.page.goto(self.url,wait_until='networkidle');self.ready()

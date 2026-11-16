@@ -97,6 +97,7 @@ class RehabPullupTests(unittest.TestCase):
         self.page.reload(wait_until='networkidle')
         self.page.wait_for_function('document.querySelector(".hospital-hud")?.dataset.assetsReady==="true"')
         self.page.locator('#scene-loading').wait_for(state='hidden')
+        self.page.locator('#location-card-box').click();self.page.locator('.quest-map-pin[data-room="gym"]').dblclick(delay=40)
         self.page.wait_for_function('document.querySelector("[data-scene-room=gym]")?.dataset.rehabRenderer==="webgl"')
         self.page.locator('[data-rehab-equipment=pullup]').click()
         self.page.wait_for_function('document.querySelector(".rehab-pullups").dataset.pullupReady==="error"')

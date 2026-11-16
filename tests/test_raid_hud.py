@@ -49,7 +49,7 @@ class RaidHUDTests(unittest.TestCase):
  def test_reload_restores_both_weapons_and_log_without_refill(self):
   self.enter(boss='doctor');self.hit();self.page.locator('[data-raid-weapon="melee"]').click()
   before=self.page.evaluate('({id:currentBattleSession.id,end:raidEndsAt,cd:attackCooldownEndsAt,hp:bossCurrentHp,ammo:battleWeaponSnapshot().slots.ranged.ammo,log:currentBattleSession.log.length})')
-  self.page.reload(wait_until='networkidle');self.page.locator('#nurse-battle-modal').wait_for(state='visible')
+  self.page.reload(wait_until='networkidle');self.assertTrue(self.page.locator('#nurse-battle-modal').is_hidden());self.page.locator('#nav-raid-btn').click();self.page.locator('#nurse-battle-modal').wait_for(state='visible')
   self.assertEqual(self.page.evaluate('currentBattleSession.id'),before['id']);self.assertEqual(self.page.evaluate('raidEndsAt'),before['end']);self.assertEqual(self.page.evaluate('attackCooldownEndsAt'),before['cd'])
   self.assertEqual(self.page.evaluate('battleWeaponSlot'),'melee');self.assertEqual(self.page.evaluate('battleWeaponSnapshot().slots.ranged.ammo'),before['ammo']);self.assertEqual(self.page.evaluate('bossCurrentHp'),before['hp'])
   self.assertGreaterEqual(self.page.evaluate('currentBattleSession.log.length'),before['log'])
@@ -69,4 +69,4 @@ class RaidHUDTests(unittest.TestCase):
   # The pagehide checkpoint must not overwrite the deliberately seeded old schema.
   legacy=self.page.evaluate('localStorage.getItem("palata404_floor10_progress:"+encodeURIComponent(raidArchiveOwnerId))')
   self.context.add_init_script('if(!sessionStorage.getItem("legacy-seeded")){localStorage.setItem('+repr(self.page.evaluate('"palata404_floor10_progress:"+encodeURIComponent(raidArchiveOwnerId)'))+','+repr(legacy)+');sessionStorage.setItem("legacy-seeded","yes")}')
-  self.page.reload(wait_until='networkidle');self.page.locator('#nurse-battle-modal').wait_for(state='visible');self.assertEqual(self.page.evaluate('battleWeaponAmmo'),3)
+  self.page.reload(wait_until='networkidle');self.assertTrue(self.page.locator('#nurse-battle-modal').is_hidden());self.page.locator('#nav-raid-btn').click();self.page.locator('#nurse-battle-modal').wait_for(state='visible');self.assertEqual(self.page.evaluate('battleWeaponAmmo'),3)

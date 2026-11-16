@@ -62,7 +62,7 @@ class RehabBoxingTests(unittest.TestCase):
         self.assertEqual(self.page.evaluate('stats.rehabTraining.bag.completed'),1)
         self.assertEqual(self.page.evaluate('stats.energy'),92)
         self.page.evaluate('stats.rehabTraining.bag.lastCompletedAt=0;stats.rehabTraining.rope.lastCompletedAt=0')
-        self.page.locator('[data-rehab-equipment=bag]').click();self.page.locator('[data-boxing-start]').click();self.assertTrue(self.page.locator('[data-boxing-start]').is_disabled());self.page.wait_for_timeout(500);self.page.keyboard.press('Escape');self.page.wait_for_timeout(500)
+        self.gym();self.page.locator('[data-boxing-start]').click();self.assertTrue(self.page.locator('[data-boxing-start]').is_disabled());self.page.wait_for_timeout(500);self.page.keyboard.press('Escape');self.page.wait_for_timeout(500)
         self.assertEqual(self.page.evaluate('stats.rehabTraining.bag.completed'),1)
         self.assertEqual(self.page.evaluate('stats.energy'),92)
 
