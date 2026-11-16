@@ -1527,7 +1527,6 @@ function closeNurseBattle() {
         modal.classList.add('hidden');
         modal.style.display = 'none';
     }
-    document.getElementById('battle-raid-panel')?.classList.add('hidden');
     updateLobbyRaidWidget();
 }
 

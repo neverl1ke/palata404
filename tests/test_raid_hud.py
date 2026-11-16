@@ -52,8 +52,9 @@ class RaidHUDTests(unittest.TestCase):
   self.assertEqual(self.page.evaluate('currentBattleSession.id'),before['id']);self.assertEqual(self.page.evaluate('raidEndsAt'),before['end']);self.assertEqual(self.page.evaluate('attackCooldownEndsAt'),before['cd'])
   self.assertEqual(self.page.evaluate('battleWeaponSlot'),'melee');self.assertEqual(self.page.evaluate('battleWeaponSnapshot().slots.ranged.ammo'),before['ammo']);self.assertEqual(self.page.evaluate('bossCurrentHp'),before['hp'])
   self.assertGreaterEqual(self.page.evaluate('currentBattleSession.log.length'),before['log'])
+  self.page.locator('#raid-members-toggle').click();self.assertTrue(self.page.locator('#battle-raid-panel').is_visible())
   self.page.locator('.raid-minimize').click();self.assertFalse(self.page.locator('#nurse-battle-modal').is_visible());self.assertTrue(self.page.evaluate('isBattleActive'))
-  self.page.locator('#nav-raid-btn').click();self.assertTrue(self.page.locator('#nurse-battle-modal').is_visible());self.assertEqual(self.page.evaluate('raidEndsAt'),before['end'])
+  self.page.locator('#nav-raid-btn').click();self.assertTrue(self.page.locator('#nurse-battle-modal').is_visible());self.assertEqual(self.page.evaluate('raidEndsAt'),before['end']);self.assertTrue(self.page.locator('#battle-raid-panel').is_visible());self.assertEqual(self.page.locator('#raid-members-toggle').get_attribute('aria-expanded'),'true')
  def test_responsive_controls_and_legacy_checkpoint(self):
   self.enter(weapon='gear-pm')
   for w,h in [(1672,941),(1280,800),(844,390),(390,844),(320,568)]:
