@@ -12,10 +12,11 @@ const fragment=`precision highp float;varying vec2 v;uniform sampler2D photo;uni
 float box(vec2 p,vec4 r,float f){return smoothstep(r.x,r.x+f,p.x)*(1.-smoothstep(r.z-f,r.z,p.x))*smoothstep(r.y,r.y+f,p.y)*(1.-smoothstep(r.w-f,r.w,p.y));}
 float hash(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
 float ellipse(vec2 p,vec2 center,vec2 radius){return 1.-smoothstep(.8,1.1,length((p-center)/radius));}
+float lightArea(vec2 p,vec4 r,float night){return box(p,r+vec4(-6.,-6.,6.,6.)*night,mix(1.,4.,night));}
 void main(){vec2 p=vec2(v.x*size.x,(1.-v.y)*size.y);vec2 d=vec2(0.);vec3 mask=texture2D(mattes,v).rgb;
 d.x+=motion.x*mask.r*clamp((p.y-260.)/330.,0.,1.);
 d.x+=motion.w*mask.g*clamp((p.y-155.)/529.,0.,1.);
-vec2 uv=vec2((p.x-d.x)/size.x,1.-(p.y-d.y)/size.y);vec4 c=texture2D(photo,uv);
+vec2 uv=vec2((p.x-d.x)/size.x,1.-(p.y-d.y)/size.y);vec4 c=texture2D(photo,uv);vec3 painted=c.rgb;
 float bulb=box(p,vec4(760.,0.,904.,136.),20.);float spill=exp(-dot((p-vec2(835.,260.))/vec2(400.,420.),(p-vec2(835.,260.))/vec2(400.,420.)));
 c.rgb*=1.+lamp*(.35+.65*bulb+.2*spill);
 float glass=mask.b*ambient;
@@ -23,11 +24,20 @@ c.rgb=mix(c.rgb,c.rgb*vec3(.67,.72,.80),glass*weather*.6);c.rgb=mix(c.rgb,vec3(.
 vec2 rainCell=vec2((p.x+p.y*.13)/11.,p.y/70.+clock*2.2),rainId=floor(rainCell);float seed=hash(rainId);float rain=(1.-smoothstep(.02,.065,abs(fract(rainCell.x)-.5)))*(1.-smoothstep(.12,.3,fract(rainCell.y+seed)))*step(.3,seed)*smoothstep(.55,.85,weather);
 c.rgb+=vec3(.17,.21,.25)*rain*glass*.3;
 vec4 a=mix(vec4(223.,323.,234.,341.),vec4(226.,316.,233.,328.),trip),b=mix(vec4(254.,323.,266.,341.),vec4(263.,398.,271.,411.),trip),e=mix(vec4(254.,366.,266.,385.),vec4(315.,288.,323.,299.),trip);
-float wa=box(p,a,.7)*glass,wb=box(p,b,.7)*glass,we=box(p,e,.7)*glass;
+float wa=lightArea(p,a,trip)*glass,wb=lightArea(p,b,trip)*glass,we=lightArea(p,e,trip)*glass;
 float lit=wa*windows.x+wb*windows.y+we*windows.z,off=wa*(1.-windows.x)+wb*(1.-windows.y)+we*(1.-windows.z);
-c.rgb=mix(c.rgb,c.rgb*vec3(.16,.21,.29),off*.85);c.rgb+=vec3(.55,.30,.08)*lit*.30;
+// Daylight already illuminates an unlit window. Never paint a dark rectangle
+// over its glass, mullions or facade. Only the blue glazing picks up warm light.
+float glazing=smoothstep(.012,.055,min(painted.b-painted.r,painted.g-painted.r));
+// Trip windows contain painted-in lamplight. Fade that warm emission alone,
+// keeping the original frame, reflections and surrounding building untouched.
+float emission=smoothstep(.10,.30,painted.r-painted.b)*smoothstep(.24,.40,max(painted.r,max(painted.g,painted.b)));
+float luminance=dot(c.rgb,vec3(.2126,.7152,.0722));
+vec3 unlit=mix(c.rgb,vec3(luminance)*vec3(.20,.25,.29),emission);
+c.rgb=mix(c.rgb,unlit,off*trip);
+c.rgb+=vec3(.095,.060,.018)*lit*glazing*(1.-trip);
 float pass=mod(clock,32.);float walking=smoothstep(10.,11.,pass)*(1.-smoothstep(18.,19.,pass));vec4 cell=mix(e,b,trip);float q=clamp((pass-10.)/9.,0.,1.);vec2 person=vec2(mix(cell.x+2.,cell.z-2.,q),cell.y+(cell.w-cell.y)*.42);
-float silhouette=max(ellipse(p,person,vec2(1.,1.4)),ellipse(p,person+vec2(0.,3.),vec2(1.25,2.6)))*walking*glass*box(p,cell,.5);c.rgb*=1.-silhouette*.8;
+float silhouette=max(ellipse(p,person,vec2(1.,1.4)),ellipse(p,person+vec2(0.,3.),vec2(1.25,2.6)))*walking*glass*box(p,cell,1.)*mix(glazing,emission,trip);c.rgb*=1.-silhouette*mix(.18,.55,trip);
 c.rgb+=vec3(.8,.58,.3)*bulb*ambient*(.008+.004*sin(clock*.9))*(1.+lamp);
 gl_FragColor=c;}`;
 function shader(gl,type,source){const s=gl.createShader(type);gl.shaderSource(s,source);gl.compileShader(s);if(!gl.getShaderParameter(s,gl.COMPILE_STATUS)){const message=gl.getShaderInfoLog(s);gl.deleteShader(s);throw Error('Scene shader: '+message);}return s;}

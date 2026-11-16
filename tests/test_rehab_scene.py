@@ -77,7 +77,9 @@ class RehabSceneTests(unittest.TestCase):
         self.assertEqual(float(ambient['rehabLamp']),0)
         self.assertTrue(any(float(x)>0 for x in ambient['rehabWindows'].split(',')))
         self.page.emulate_media(reduced_motion='reduce')
-        self.page.wait_for_timeout(100)
+        # Wait for the neutral reduced-motion frame, not an arbitrary delay:
+        # the media-query event may be queued behind a busy graphics process.
+        self.page.wait_for_function('document.querySelector("[data-scene-room=gym]").dataset.rehabWindows==="0,0,0"')
         frames=scene.get_attribute('data-rehab-frames');self.page.wait_for_timeout(200)
         self.assertEqual(scene.get_attribute('data-rehab-frames'),frames)
         self.assertEqual(scene.get_attribute('data-rehab-motion'),'0.000,0.000,0.000,0.000')
@@ -89,3 +91,41 @@ class RehabSceneTests(unittest.TestCase):
         self.page.locator('[data-rehab-equipment="rope"]').click()
         self.assertTrue(self.page.locator('.rehab-exercise').is_visible())
         (OUT/'renderer-check.json').write_text(json.dumps({'neutralPixels':pixels,'localHoverPixels':local,'reducedMotion':True,'contextLossFallback':True,'ambientSampled':True},indent=2))
+
+    def test_window_lights_preserve_daylight_and_do_not_black_out_frames(self):
+        self.load()
+        results=[]
+        for mode in ['patient','trip']:
+            if mode=='trip':
+                self.page.locator('.quest-room-tools button').first.click()
+                self.page.locator('#map-modal .btn-close-map').click()
+                self.page.locator('.room-trip-switch').click()
+            self.gym()
+            pixels=self.page.evaluate('''()=>{
+                const c=document.querySelector('.rehab-live-canvas'),g=c.getContext('webgl'),program=g.getParameter(g.CURRENT_PROGRAM);
+                const read=()=>{const a=new Uint8Array(c.width*c.height*4);g.readPixels(0,0,c.width,c.height,g.RGBA,g.UNSIGNED_BYTE,a);return a};
+                PalataRehabScene.drawNeutral();const original=read();
+                g.uniform1f(g.getUniformLocation(program,'ambient'),1);
+                g.uniform3f(g.getUniformLocation(program,'windows'),0,0,0);g.drawArrays(g.TRIANGLE_STRIP,0,4);const off=read();
+                g.uniform3f(g.getUniformLocation(program,'windows'),1,1,1);g.drawArrays(g.TRIANGLE_STRIP,0,4);const on=read();
+                let daylightDarkened=0,coolOrDarkDetailsChanged=0,protectedCount=0,changing=0,onDifference=0;
+                for(let y=280;y<430;y++)for(let x=215;x<336;x++){
+                    const i=((c.height-1-y)*c.width+x)*4;
+                    const difference=(a,b)=>Math.max(...[0,1,2].map(k=>Math.abs(a[i+k]-b[i+k])));
+                    if([0,1,2].some(k=>off[i+k]<original[i+k]-1))daylightDarkened++;
+                    if(original[i]-original[i+2]<=25||Math.max(original[i],original[i+1],original[i+2])<=61){
+                        protectedCount++;if(difference(off,original)>1)coolOrDarkDetailsChanged++;
+                    }
+                    if(difference(on,off)>1)changing++;
+                    onDifference=Math.max(onDifference,difference(on,original));
+                }
+                return{daylightDarkened,coolOrDarkDetailsChanged,protectedCount,changing,onDifference};
+            }''')
+            self.assertGreater(pixels['changing'],20,pixels)
+            self.assertGreater(pixels['protectedCount'],100,pixels)
+            if mode=='patient':self.assertEqual(pixels['daylightDarkened'],0,pixels)
+            else:
+                self.assertEqual(pixels['coolOrDarkDetailsChanged'],0,pixels)
+                self.assertLessEqual(pixels['onDifference'],1,pixels)
+            results.append({'mode':mode,**pixels})
+        (OUT/'window-lights-check.json').write_text(json.dumps(results,indent=2))
