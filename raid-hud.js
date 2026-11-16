@@ -83,7 +83,7 @@ const selected=callSelectedFriends;callSelectedFriends=function(){const before=r
 const all=callAllFriends;callAllFriends=function(){const before=raidMembers.filter(m=>m.called).map(m=>m.id),r=all.apply(this,arguments);raidMembers.filter(m=>m.called&&!before.includes(m.id)).forEach(m=>log(m.name+': присоединился к рейду.'));window.dispatchEvent(new Event('raid-weapon-state'));return r;};
 function paintRing(host,remaining,total,label){
  host.classList.toggle('hidden',remaining<=0);if(remaining<=0)return;
- host.querySelector('.raid-cd-fill').style.strokeDashoffset=String(100*(1-Math.min(1,remaining/Math.max(1,total))));
+ host.querySelector('.raid-cd-fill').style.strokeDashoffset=String(100*Math.min(1,remaining/Math.max(1,total)));
  const text=host.querySelector('.raid-cooldown-label');if(text)text.textContent=label+(remaining/1000).toFixed(1);
 }
 function animate(){

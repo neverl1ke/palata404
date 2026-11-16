@@ -18,7 +18,8 @@ class RaidHUDTests(unittest.TestCase):
   self.page.wait_for_function('document.getElementById("raid-player-portrait").querySelector("img")?.complete')
  def hit(self):self.page.locator('#battle-arena-screen').click(position={'x':500,'y':260})
  def test_switching_keeps_ammo_reload_and_shared_attack_cooldown(self):
-  self.enter(boss='doctor');self.page.clock.install();self.hit()
+  self.enter(boss='doctor');self.page.clock.install();self.hit();self.page.clock.run_for(20)
+  ring=self.page.locator('[data-raid-slot="ranged"] .raid-cd-fill');initial=ring.evaluate('e=>parseFloat(e.style.strokeDashoffset)');self.page.clock.run_for(1000);self.assertLess(ring.evaluate('e=>parseFloat(e.style.strokeDashoffset)'),initial)
   self.assertEqual(self.page.evaluate('battleWeaponAmmo'),9)
   hp=self.page.evaluate('bossCurrentHp');end=self.page.evaluate('attackCooldownEndsAt')
   self.page.locator('[data-raid-weapon="melee"]').click();self.hit()
