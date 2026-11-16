@@ -61,6 +61,7 @@ class RaidHUDTests(unittest.TestCase):
    self.page.set_viewport_size({'width':w,'height':h});self.page.wait_for_timeout(80)
    self.page.screenshot(path=str(OUT/f'check-{w}x{h}.png'))
    self.assertTrue(self.page.evaluate('''()=>['.raid-exit','.raid-minimize','.raid-invite','[data-raid-weapon="ranged"]','[data-raid-weapon="melee"]','#raid-members-toggle','#raid-actions-toggle','#medkit-btn-small'].every(s=>{const r=document.querySelector(s).getBoundingClientRect();return r.left>=-1&&r.top>=-1&&r.right<=innerWidth+1&&r.bottom<=innerHeight+1;})'''), self.page.evaluate('''()=>({w:innerWidth,h:innerHeight,arena:document.getElementById('battle-arena-screen').getBoundingClientRect().toJSON(),buttons:[...document.querySelectorAll('.raid-top-controls button,.raid-invite,#medkit-btn-small')].map(b=>({name:b.textContent,rect:b.getBoundingClientRect().toJSON()}))})'''))
+   self.assertTrue(self.page.locator('.raid-weapon-select .weapon-icon-frame>:is(img,svg)').evaluate_all('''imgs=>imgs.every(img=>{const a=img.getBoundingClientRect(),b=img.parentElement.getBoundingClientRect();return a.left>=b.left-1&&a.top>=b.top-1&&a.right<=b.right+1&&a.bottom<=b.bottom+1;})'''))
    self.page.locator('#raid-actions-toggle').click();self.page.locator('#raid-members-toggle').click()
    self.page.screenshot(path=str(OUT/f'raid-{w}x{h}.png'))
   self.page.evaluate('''()=>{const key='palata404_floor10_progress:'+encodeURIComponent(raidArchiveOwnerId),s=JSON.parse(localStorage.getItem(key));delete s.raid.weapons;s.raid.ammo=3;localStorage.setItem(key,JSON.stringify(s));}''')

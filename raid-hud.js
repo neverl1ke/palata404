@@ -29,6 +29,12 @@ function renderLog(){
 function renderMembers(){
  $('raid-members-container').innerHTML=raidMembers.filter(m=>m.isPlayer||m.called).map(m=>`<article class="raid-member"><div><span class="raid-member-name">${esc(m.name)}</span><small>${m.damage} урона</small></div>${m.isPlayer?`<small>HP ${stats.hp} / ${stats.maxHp}</small><div class="raid-health-track"><div style="width:${Math.max(0,Math.min(100,stats.hp/stats.maxHp*100))}%"></div></div>`:'<small>Союзник · в бою</small>'}</article>`).join('');
 }
+// Crop only transparent thumbnail margins for the card; source PNGs stay intact.
+function weaponThumbnail(source){
+ const crops={'avatar-core/assets/weapons/knife-view-20261025/knife-view.thumb.png':[6,30,242,62,256,128],'avatar-core/assets/weapons/user-ak47-20261026/ak47-thumb.png':[0,29,319,104,320,160]};
+ const c=crops[source?.split('?')[0]];
+ return c?`<svg viewBox="${c.slice(0,4).join(' ')}" aria-hidden="true"><image href="${esc(source)}" width="${c[4]}" height="${c[5]}"/></svg>`:`<img src="${esc(source)}" alt="" draggable="false">`;
+}
 function renderWeapons(){
  const snapshot=battleWeaponSnapshot(),signature=JSON.stringify([snapshot?.active,...['ranged','melee'].map(k=>{const s=snapshot?.slots[k];const i=weaponInventoryItem(s?.itemId);return [s?.itemId,i?.rarity,i?.upgradeLevel,i?.absolute];})]);
  if(signature!==weaponSignature){
@@ -36,7 +42,7 @@ function renderWeapons(){
   $('raid-weapon-cards').innerHTML=['ranged','melee'].map(kind=>{
    const s=snapshot?.slots[kind],item=weaponInventoryItem(s?.itemId),descriptor=PAPER_DOLL_ITEMS.find(i=>i.id===s?.descriptorId),rarity=item?.rarity||'common',source=descriptor?wardrobeItemImage(descriptor):null;
    const label=item?archiveWeaponLabel(item):kind==='ranged'?'Нет огнестрельного оружия':'Нет холодного оружия';
-   return `<article class="raid-weapon-slot" data-raid-slot="${kind}"><button type="button" class="wardrobe-item-card raid-weapon-select" data-rarity="${esc(rarity)}" data-raid-weapon="${kind}" aria-pressed="${snapshot?.active===kind}" aria-label="${esc(label)}: выбрать"${!s?' disabled':''}><span class="wardrobe-item-image weapon-icon-frame">${source?`<img src="${esc(source)}" alt="" draggable="false">`:item?iconHTML(item.icon||'knife'):'—'}</span><strong class="wardrobe-item-name">${esc(label)}</strong>${s?`<span class="archive-rarity-mark"><b>${({common:'I',improved:'II',rare:'III',experimental:'IV'})[rarity]}</b><small>${esc(WEAPON_RARITIES[rarity].label)}</small></span>`:''}<span class="raid-weapon-caption"></span></button><div class="raid-cooldown hidden" aria-hidden="true">${ring}</div></article>`;
+   return `<article class="raid-weapon-slot" data-raid-slot="${kind}"><button type="button" class="wardrobe-item-card raid-weapon-select" data-rarity="${esc(rarity)}" data-raid-weapon="${kind}" aria-pressed="${snapshot?.active===kind}" aria-label="${esc(label)}: выбрать"${!s?' disabled':''}><span class="wardrobe-item-image weapon-icon-frame">${source?weaponThumbnail(source):item?iconHTML(item.icon||'knife'):'—'}</span><strong class="wardrobe-item-name">${esc(label)}</strong>${s?`<span class="archive-rarity-mark"><b>${({common:'I',improved:'II',rare:'III',experimental:'IV'})[rarity]}</b><small>${esc(WEAPON_RARITIES[rarity].label)}</small></span>`:''}<span class="raid-weapon-caption"></span></button><div class="raid-cooldown hidden" aria-hidden="true">${ring}</div></article>`;
   }).join('');
   $('raid-weapon-cards').querySelectorAll('[data-raid-weapon]').forEach(b=>b.onclick=()=>selectBattleWeapon(b.dataset.raidWeapon));
  }
