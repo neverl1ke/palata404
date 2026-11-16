@@ -1,6 +1,7 @@
 const {test}=require('node:test');
 const a=require('node:assert/strict');
 const E=require('../quest-engine.js');
+const W=require('../quest-job-model.js');
 const act=(s,id)=>E.apply(s,{type:'action',id});
 const work=(s,id,op,value)=>E.apply(s,{type:'work',id,op,value});
 const go=(s,room)=>{if(s.room===room)return;const r=E.apply(s,{type:'move',room});a.ok(r.ok,r.message);};
@@ -8,6 +9,7 @@ function accept(s,id){go(s,E.jobs[id].giver);const r=act(s,'accept:'+id);a.ok(r.
 function step(s,id,op,value){const r=work(s,id,op,value);a.ok(r.ok,r.message);return r;}
 function solve(s,id){
  let b=E.workbench(s,id);a.ok(b,id+' board should be available');
+ a.deepEqual(b.brief,E.jobBrief(b.jobId));
  if(b.kind==='inspection'){
   for(const item of b.items)step(s,id,'inspect',item.id);
   b=E.workbench(s,id);const item=b.items.find(x=>x.details.kit===b.request.kit&&x.details.lot===b.request.lot&&x.details.seal==='целая');
@@ -121,4 +123,69 @@ test('unrecognized version7 job shapes are rejected without altering the origina
   a.equal(E.supportsSave(raw),false);a.equal(JSON.stringify(raw),before);
  }
  const valid=E.initial();accept(valid,'k2');a.equal(E.supportsSave(valid),true);
+});
+
+test('every commission states its hospital purpose and actual deliverable without changing rewards',()=>{
+ for(const id of Object.keys(E.jobs)){
+  const brief=E.jobBrief(id);a.ok(brief.giver.length);a.ok(brief.purpose.length);a.ok(brief.deliverable.length);
+  const copy=E.jobBrief(id);copy.purpose='external change';a.equal(E.jobBrief(id).purpose,brief.purpose);
+  const s=E.initial();go(s,E.jobs[id].giver);const result=act(s,'accept:'+id);a.ok(result.ok);
+  a.ok(result.message.includes(brief.purpose));a.ok(result.message.includes(brief.deliverable));a.equal(result.reward,null);
+ }
+ for(const id of [null,{},'__proto__','not-a-job'])a.equal(E.jobBrief(id),null);
+});
+
+test('issued container variants retain target IDs and use unambiguous named evidence',()=>{
+ for(const [variant,target]of [[0,'pack-1'],[1,'pack-3'],[2,'pack-0']]){
+  let s=E.restore({version:7,mode:'patient',room:'procedure',jobs:{k1:{active:true,revision:2,variant,count:0,done:{},work:{inspected:['pack-0','pack-1','pack-2','pack-3'],selected:[target]}}},cargo:[]});
+  const b=E.workbench(s,'job:tag');const matches=b.items.filter(x=>x.details.kit===b.request.kit&&x.details.lot===b.request.lot&&x.details.seal==='целая');
+  a.deepEqual(matches.map(x=>x.id),[target]);a.ok(b.items.every(x=>!x.details.kit.includes('Другой')&&!x.details.lot.includes('резерв')));
+  const before=JSON.stringify(s);s=E.restore(JSON.parse(before));a.deepEqual(E.workbench(s,'job:tag'),b);
+  const result=step(s,'job:tag','submit');a.ok(result.message.includes(E.cargoDescription(s,'tag')));a.ok(result.message.includes(E.cargoCatalog.tag.name));
+ }
+});
+
+test('failed checks explain observed evidence without revealing untouched containers or changing work',()=>{
+ const s=E.initial();accept(s,'k1');go(s,'procedure');step(s,'job:tag','inspect','pack-0');step(s,'job:tag','select','pack-0');
+ const before=JSON.stringify(s),result=work(s,'job:tag','submit');a.equal(result.ok,false);a.match(result.message,/партия на осмотренной упаковке отличается/);a.equal(JSON.stringify(s),before);
+ const b=E.workbench(s,'job:tag');a.ok(b.items.filter(x=>x.id!=='pack-0').every(x=>x.details===null));a.ok(!result.message.includes('pack-1'));
+ accept(s,'k2');go(s,'linen');const packing=E.workbench(s,'job:linen');a.match(packing.request.markingNote,/учётная маркировка/);a.ok(packing.items.every(x=>/см$/.test(x.measure)));
+ step(s,'job:linen','select','linen-0');const selected=JSON.stringify(s),incomplete=work(s,'job:linen','submit');a.equal(incomplete.ok,false);a.match(incomplete.message,/выбрано вещей: 1 из 2/);a.equal(JSON.stringify(s),selected);
+});
+
+test('completed work preserves concrete findings alongside the inventory receipt for every commission',()=>{
+ for(const id of Object.keys(E.jobs)){
+  const s=E.initial();accept(s,id);complete(s,id);
+  for(const cargo of E.requiredCargo[id]){
+   const description=E.cargoDescription(s,cargo);a.ok(description);a.ok(s.log.some(message=>message.includes(description)),id+' '+cargo+' must retain observed findings');
+   a.ok(s.log.some(message=>message.includes(E.cargoCatalog[cargo].name)),id+' '+cargo+' must name its receipt');
+  }
+  a.ok(s.log.every(message=>message.length<=500),'current persisted receipt limit must preserve complete work feedback');
+ }
+});
+
+test('delivery describes the actual accepted parcel and exposes no invented contents without cargo',()=>{
+ for(let variant=0;variant<3;variant++){
+  let s=E.restore({version:7,mode:'patient',room:'linen',jobs:{k2:{active:true,revision:2,variant,count:variant,done:{},work:{selected:[]}}},cargo:[]});
+  const packing=E.workbench(s,'job:linen'),contents=packing.items.filter(x=>x.size===packing.request.size&&x.condition==='чистая упаковка');
+  for(const item of contents)step(s,'job:linen','select',item.id);step(s,'job:linen','submit');s=E.restore(JSON.parse(JSON.stringify(s)));go(s,'ward406');
+  const b=E.workbench(s,'job:deliver');a.equal(b.parcel,true);a.deepEqual(b.parcelDetails,{components:packing.request.components,size:packing.request.size,items:contents.map(x=>({type:x.type,measure:x.measure}))});
+  const bytes=JSON.stringify(s);b.parcelDetails.components.push('invented');a.equal(JSON.stringify(s),bytes);
+  const absent=E.restore(JSON.parse(bytes));absent.cargo=[];a.equal(E.workbench(absent,'job:deliver'),null);a.equal(W.board(absent,'job:deliver').parcel,false);a.equal(W.board(absent,'job:deliver').parcelDetails,undefined);
+ }
+});
+
+test('every two-item linen combination requires distinct matching clean components in all variants',()=>{
+ for(let variant=0;variant<3;variant++){
+  const fresh=()=>E.restore({version:7,mode:'patient',room:'linen',jobs:{k2:{active:true,revision:2,variant,count:variant,done:{},work:{selected:[]}}},cargo:[]});
+  const b=E.workbench(fresh(),'job:linen');let accepted=0;
+  for(let left=0;left<b.items.length;left++)for(let right=left+1;right<b.items.length;right++){
+   const pair=[b.items[left],b.items[right]],s=fresh();s.jobs.k2.work.selected=pair.map(x=>x.id);
+   const expected=b.request.components.every(type=>pair.some(x=>x.type===type&&x.size===b.request.size&&x.condition==='чистая упаковка'));
+   const before=JSON.stringify(s),result=work(s,'job:linen','submit');a.equal(result.ok,expected,variant+' '+pair.map(x=>x.id).join(','));
+   if(expected){accepted++;a.deepEqual(s.cargo,['linen']);a.equal(s.jobs.k2.done.linen,true);a.equal(result.reward,undefined);}
+   else{a.equal(JSON.stringify(s),before);if(pair[0].type===pair[1].type)a.match(result.message,/два разных предмета/);}
+  }
+  a.equal(accepted,1,'exactly one physically usable pair in each current catalogue');
+ }
 });

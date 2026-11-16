@@ -34,6 +34,21 @@ class QuestWorkbenchTests(unittest.TestCase):
             medkits:inventory.filter(x=>x.name===MEDICAL_ITEMS.hp_10.name&&x.category==='meds').reduce((n,x)=>n+x.count,0),
             cargo:inventory.filter(x=>x.questCargo).map(x=>x.questCargo).sort()})''')
 
+    def assert_paired_fields(self,source,current):
+        """Each comparison presents both observations together, never an answer key."""
+        rows=self.page.locator('[data-work-field][data-work-op="mark"]')
+        self.assertEqual(rows.count(),len(source))
+        other={field['id']:field for field in current}
+        for field in source:
+            row=self.page.locator(f'[data-work-field="{field["id"]}"]')
+            self.assertEqual(row.get_attribute('data-work-value'),field['id'])
+            self.assertEqual(row.locator('.workbench-pair-field strong').inner_text(),field['label'])
+            values=row.locator('.workbench-pair-value > span')
+            self.assertEqual(values.count(),2)
+            self.assertEqual(values.nth(0).inner_text(),field['value'] or '—')
+            self.assertEqual(values.nth(1).inner_text(),other[field['id']]['value'] or '—')
+            self.assertEqual(row.get_attribute('aria-pressed'),'false')
+
     def accept(self,id):
         ui.room(self.page,'nurse' if id.startswith('k') else 'doctor')
         ui.action(self.page,'accept:'+id)
@@ -65,7 +80,18 @@ class QuestWorkbenchTests(unittest.TestCase):
             ui.room(self.page,'procedure');ui.complete(self.page,'job:copies')
         elif id=='d1':
             for room in ['ward407','ward408']:
-                ui.room(self.page,room);ui.complete(self.page,'job:bell'+room[-3:])
+                action='job:bell'+room[-3:]
+                ui.room(self.page,room);ui.action(self.page,action)
+                self.assertEqual(self.page.locator('.workbench-connector-view').count(),0)
+                self.assertTrue(self.page.locator('[data-work-op="test"]').is_disabled())
+                ui.operate(self.page,'inspect','connector');ui.operate(self.page,'test')
+                observed=ui.board(self.page,action)
+                response=self.page.locator('.workbench-call-response')
+                self.assertIn(observed['response'],response.inner_text())
+                visible=response.evaluate('''e=>{const r=e.getBoundingClientRect(),board=e.closest('.quest-workbench'),top=board.querySelector('.workbench-scroll').getBoundingClientRect().top,bottom=board.querySelector('.workbench-footer').getBoundingClientRect().top;return{top:r.top,bottom:r.bottom,clipTop:top,clipBottom:bottom}}''')
+                self.assertGreaterEqual(visible['top'],visible['clipTop'],visible)
+                self.assertLessEqual(visible['bottom'],visible['clipBottom'],visible)
+                ui.complete(self.page,action,open_board=False)
         elif id=='d2':
             ui.complete(self.page,'job:log')
         elif id=='d3':
@@ -160,7 +186,9 @@ class QuestWorkbenchTests(unittest.TestCase):
         self.assertEqual(current['baseline'],initial['details'])
         for field in current['current']:
             self.assertTrue(self.page.locator(f'[data-observation-field="{field["id"]}"]').inner_text().endswith(field['value']))
-        ui.complete(self.page,'job:difference')
+        ui.action(self.page,'job:difference')
+        self.assert_paired_fields(current['baseline'],current['current'])
+        ui.complete(self.page,'job:difference',open_board=False)
         self.assertIn('difference',self.ledger()['cargo']);self.assertNotIn('baseline',self.ledger()['cargo'])
         ui.return_home(self.page);self.page.locator('.hud-task').click()
         self.page.locator('[data-quest-tab="doctor"]').click()
@@ -312,6 +340,123 @@ class QuestWorkbenchTests(unittest.TestCase):
         self.assertEqual(after['medkits']-claimed['medkits'],1)
         self.assertEqual(self.progress()['jobs']['k2']['count'],5)
         self.reload_home();self.assertEqual(self.ledger(),after)
+
+    def test_order_purpose_precedes_acceptance_and_partial_work_keeps_last_receipt(self):
+        self.load();self.page.locator('.hud-task').click()
+        self.page.locator('[data-quest-tab="nurse"]').click()
+        brief=self.page.evaluate('PalataQuestEngine.jobBrief("k1")')
+        card=self.page.locator('[data-quest-id="k1"]')
+        self.assertIn(brief['purpose'],card.locator('.quest-order-purpose').inner_text())
+        self.assertIn(brief['deliverable'],card.locator('.quest-order-deliverable').inner_text())
+        self.assertFalse(self.progress()['jobs'].get('k1',{}).get('active',False))
+        self.page.locator('#tasks-modal .modal-header button').click()
+        ui.room(self.page,'nurse')
+        offer=self.page.locator('[data-action="accept:k1"]')
+        description=offer.get_attribute('aria-describedby')
+        self.assertTrue(description)
+        self.assertIn(brief['purpose'],self.page.locator('#'+description).inner_text())
+        ui.action(self.page,'accept:k1');ui.room(self.page,'procedure')
+        self.page.locator('[data-room-info-toggle]').click()
+        self.assertEqual(self.page.locator('[data-room-info-toggle]').get_attribute('aria-expanded'),'false')
+        self.page.locator('[data-action="job:tag"]').click()
+        self.page.locator('#custom-toast-notification').wait_for(state='hidden')
+        board=ui.board(self.page,'job:tag')
+        self.assertIn(brief['purpose'],self.page.locator('.workbench-brief').inner_text())
+        before_receipt=self.progress()['lastReceipt'];before=self.ledger()
+        item=board['items'][0]['id']
+        ui.operate(self.page,'inspect',item);ui.operate(self.page,'select',item)
+        self.assertEqual(self.progress()['lastReceipt'],before_receipt)
+        self.assertEqual(self.ledger(),before)
+        self.assertTrue(self.page.locator('#custom-toast-notification').is_hidden())
+        self.assertTrue(self.page.locator('.workbench-status').inner_text())
+        saved_work=self.progress()['jobs']['k1']['work']
+        self.reload_home();ui.room(self.page,'procedure')
+        self.page.locator('[data-room-info-toggle]').click()
+        self.page.locator('[data-action="job:tag"]').click()
+        self.assertEqual(self.progress()['jobs']['k1']['work'],saved_work)
+        self.assertEqual(self.progress()['lastReceipt'],before_receipt)
+        ui.complete(self.page,'job:tag',open_board=False)
+        receipt=self.progress()['lastReceipt']
+        self.assertNotEqual(receipt,before_receipt)
+        self.assertIn(board['request']['lot'],receipt)
+        self.assertIn(board['request']['kit'].lower(),receipt.lower())
+        self.assertIn('пломб',receipt.lower())
+        self.assertEqual(self.page.locator('[data-room-info-toggle]').get_attribute('aria-expanded'),'true')
+        visible=self.page.locator('.quest-receipt').evaluate('''e=>{const r=e.getBoundingClientRect(),paper=e.closest('.scene-paper').getBoundingClientRect();return{top:r.top,bottom:r.bottom,clipTop:Math.max(0,paper.top),clipBottom:Math.min(innerHeight,paper.bottom)}}''')
+        self.assertGreaterEqual(visible['top'],visible['clipTop'],visible)
+        self.assertLessEqual(visible['bottom'],visible['clipBottom'],visible)
+        self.assertIn(board['request']['lot'],self.page.locator('.quest-receipt').inner_text())
+        self.assertTrue(self.page.locator('#custom-toast-notification').is_hidden())
+        self.assertIn('tag',self.ledger()['cargo'])
+        self.assertEqual(self.ledger()['exp'],before['exp'])
+        self.assertEqual(self.ledger()['silver'],before['silver'])
+
+    def test_comparison_pairs_readable_sources_on_phone_and_landscape_without_answer_highlights(self):
+        self.load();self.accept('k3');ui.room(self.page,'procedure');ui.action(self.page,'job:copies')
+        board=ui.board(self.page,'job:copies')
+        self.page.locator('#custom-toast-notification').wait_for(state='hidden')
+        for width,height in [(1280,800),(390,844),(844,390)]:
+            with self.subTest(viewport=(width,height)):
+                self.page.set_viewport_size({'width':width,'height':height})
+                self.assert_paired_fields(board['documents'][0]['fields'],board['documents'][1]['fields'])
+                geometry=self.page.locator('.workbench-pairing').evaluate('''e=>({overflow:e.scrollWidth>e.clientWidth,rows:[...e.querySelectorAll('[data-work-field]')].map(row=>{const r=row.getBoundingClientRect();return{x:r.x,right:r.right,height:r.height}})})''')
+                self.assertFalse(geometry['overflow'],geometry)
+                for row in geometry['rows']:
+                    self.assertGreaterEqual(row['x'],0,geometry)
+                    self.assertLessEqual(row['right'],width,geometry)
+                    self.assertGreaterEqual(row['height'],44,geometry)
+                if height==390:
+                    self.page.locator('.workbench-scroll').evaluate('e=>{e.scrollTop=0}')
+                    visible=self.page.locator('.quest-workbench').evaluate('''e=>{const top=e.querySelector('.workbench-scroll').getBoundingClientRect().top,bottom=e.querySelector('.workbench-footer').getBoundingClientRect().top;return[...e.querySelector('[data-work-field]').querySelectorAll('.workbench-pair-value')].map(value=>{const r=value.getBoundingClientRect();return{top:r.top,bottom:r.bottom,visible:r.top>=top&&r.bottom<=bottom}})}''')
+                    self.assertTrue(all(value['visible'] for value in visible),visible)
+                if width==390:
+                    self.page.locator('.workbench-brief summary').click()
+                    self.page.locator('[data-work-field="signature"]').focus()
+                    self.page.locator('.workbench-scroll').hover();self.page.mouse.wheel(0,260)
+                    self.page.wait_for_function('document.querySelector(".workbench-scroll").scrollTop>0')
+                    view='''()=>({scroll:document.querySelector('.workbench-scroll').scrollTop,briefOpen:document.querySelector('.workbench-brief').open,focus:document.activeElement.dataset.workFocus||null,work:PalataQuestPrototype.snapshot().jobs.k3.work})'''
+                    before_view=self.page.evaluate(view);before_ledger=self.ledger()
+                    # Energy and other background updates use this real refresh path.
+                    self.page.evaluate('updateUI()')
+                    self.page.wait_for_function('document.activeElement.dataset.workFocus==="mark:signature"')
+                    self.assertEqual(self.page.evaluate(view),before_view)
+                    self.assertEqual(self.ledger(),before_ledger)
+                    self.page.locator('.workbench-brief summary').click()
+                field=board['documents'][0]['fields'][0]['id']
+                row=self.page.locator(f'[data-work-field="{field}"]')
+                row.focus();self.page.keyboard.press('Space')
+                self.assertEqual(self.page.locator(f'[data-work-field="{field}"]').get_attribute('aria-pressed'),'true')
+                self.assertEqual(self.page.evaluate('document.activeElement.dataset.workField'),field)
+                self.page.keyboard.press('Space')
+                self.assertEqual(ui.board(self.page,'job:copies')['marked'],[])
+                self.assertNotIn('copies',self.ledger()['cargo'])
+
+    def test_linen_labels_dimensions_and_unvalidated_bundle_remain_auditable(self):
+        self.load();self.accept('k2');ui.room(self.page,'linen');ui.action(self.page,'job:linen')
+        board=ui.board(self.page,'job:linen');before=self.ledger()
+        self.assertIn('Маркировка комплекта',self.page.locator('.workbench-request').inner_text())
+        note=self.page.locator('.workbench-marking-note').evaluate('e=>({width:e.getBoundingClientRect().width,request:e.parentElement.getBoundingClientRect().width})')
+        self.assertGreaterEqual(note['width'],note['request']*.75,note)
+        first_row=self.page.locator('.quest-workbench').evaluate('''e=>{const top=e.querySelector('.workbench-scroll').getBoundingClientRect().top,bottom=e.querySelector('.workbench-footer').getBoundingClientRect().top;return[...e.querySelectorAll('[data-work-item]')].slice(0,3).map(card=>{const value=card.querySelector('.workbench-condition span').getBoundingClientRect(),pick=card.querySelector('[data-work-op="select"]').getBoundingClientRect();return{condition:value.top>=top&&value.bottom<=bottom,pick:pick.top>=top&&pick.bottom<=bottom,conditionBottom:value.bottom,pickBottom:pick.bottom,footer:bottom}})}''')
+        self.assertTrue(all(item['condition'] and item['pick'] for item in first_row),first_row)
+        for item in board['items']:
+            card=self.page.locator(f'[data-work-item="{item["id"]}"]')
+            self.assertIn(item['size'],card.locator('.workbench-kit-mark').inner_text())
+            self.assertIn(item['measure'],card.locator('.workbench-linen-measure').inner_text())
+            self.assertEqual(card.locator('.workbench-condition span').inner_text(),item['condition'])
+        wrong=[item for item in board['items'] if item['type']=='Простыня'][:2]
+        for item in wrong:ui.operate(self.page,'select',item['id'])
+        packed=self.page.locator('.workbench-packing-list')
+        self.assertEqual(packed.locator('.workbench-picked').count(),2)
+        for item in wrong:
+            summary=next(text for text in packed.locator('.workbench-picked').all_inner_texts() if item['measure'] in text)
+            for value in [item['type'],item['size'],item['measure'],item['condition']]:self.assertIn(value,summary)
+        selected=ui.board(self.page,'job:linen')
+        ui.operate(self.page,'submit')
+        self.assertEqual(ui.board(self.page,'job:linen'),selected)
+        self.assertEqual(self.ledger(),before)
+        self.assertNotIn('linen',self.ledger()['cargo'])
+        self.assertIn('чистых целых упаковках',self.page.locator('.workbench-status').inner_text())
 
 
 if __name__=='__main__':unittest.main()

@@ -81,6 +81,7 @@ function workOwner(s,id){const key=Work?.owner?.[typeof id==='string'&&id.starts
 function workbench(s,id){return Work&&workOwner(s,id)&&actions(s).some(a=>a.id===id)?Work.board(s,id):null;}
 function observation(s){return Work?Work.observation(s):{time:s.mode==='trip'?'03:00':'08:00',route:'Палаты 404–408',mark:'—'};}
 function cargoDescription(s,id){return Work?Work.description(s,id):null;}
+function jobBrief(id){return Work?.brief?.(id)||null;}
 function finishJobStep(s,step){
  for(const [key,j]of Object.entries(jobs))if(s.jobs[key]?.active&&j.steps.includes(step))s.jobs[key].done[step]=true;
  if(step==='deliver')s.cargo=s.cargo.filter(x=>x!=='linen');if(step==='difference')s.cargo=s.cargo.filter(x=>x!=='baseline');
@@ -92,8 +93,8 @@ if(event.type==='work'){
  const key=workOwner(s,event.id);if(!key||!actions(s,now).some(a=>a.id===event.id))return fail('Рабочий лист недоступен в этой комнате или состоянии.');
  const result=Work.operate(s,event.id,event.op,event.value);if(!result.ok)return result;
  s.jobs[key].work=result.work;let message=result.message;
- if(result.complete==='baseline'){s.jobs.d3.startTrip=s.trip;if(!s.cargo.includes('baseline'))s.cargo.push('baseline');}
- else if(result.complete)message=finishJobStep(s,result.complete);
+ if(result.complete==='baseline'){s.jobs.d3.startTrip=s.trip;if(!s.cargo.includes('baseline'))s.cargo.push('baseline');message+=' '+Work.description(s,'baseline')+' Получено: '+cargoCatalog.baseline.name+'. Предмет доступен в инвентаре.';}
+ else if(result.complete){const receipt=finishJobStep(s,result.complete);message+=' '+(Work.description(s,stepCargo[result.complete])||'')+' '+receipt;}
  if(result.complete)s.interactions[event.id]=interactions[event.id]?.steps.length||1;
  s.log.push(message);s.log=s.log.slice(-12);return{ok:true,message,completed:result.complete||null};
 }
@@ -110,7 +111,7 @@ else if(id==='unlockB'){if(!f.doorKnown||!f.reserveKnown||!f.tripHandle)return f
 else if(id==='unlockC'){if(!f.cKeyKnown||!f.cLockKnown)return fail('Нужны опись хранения ключа в процедурной и памятка о замке у врача в Пациенте. Поручения необязательны.');f.unlockC=true;message='Замок отперт ключом из тележки. Створка B/C открыта; можно пройти в C.';}
 else if(id==='exit'){if(!f.doctorWon||!f.route)return fail('Нужны маршрут и первая победа над врачом в Трипе.');f.exit=true;message='Лестница открыта в Трипе. 9-й этаж еще в разработке.';}
 else if(id==='descend')return {ok:true,message:'9-й этаж еще в разработке. Переход и расход предметов не происходят.'};
-else if(id.startsWith('accept:')){const key=id.slice(7);for(const step of jobs[key].steps)s.interactions['job:'+step]=0;s.jobs[key]={active:true,done:{},count:s.jobs[key]?.count||0,startTrip:s.trip,...(Work?Work.make(key,s.jobs[key]?.count||0):{revision:1})};if(key==='d3'&&!Work&&!s.cargo.includes('baseline'))s.cargo.push('baseline');message='Поручение принято. Награда: '+rewardText(key)+'.'+(key==='d3'?' Сначала запишите показания таблички в коридоре A.':'');}
+else if(id.startsWith('accept:')){const key=id.slice(7);for(const step of jobs[key].steps)s.interactions['job:'+step]=0;s.jobs[key]={active:true,done:{},count:s.jobs[key]?.count||0,startTrip:s.trip,...(Work?Work.make(key,s.jobs[key]?.count||0):{revision:1})};if(key==='d3'&&!Work&&!s.cargo.includes('baseline'))s.cargo.push('baseline');const brief=jobBrief(key);message='Поручение принято. '+(brief?brief.giver+': '+brief.purpose+' Передайте: '+brief.deliverable+' ':'')+'Награда: '+rewardText(key)+'.'+(key==='d3'?' Сначала запишите показания таблички в коридоре A.':'');}
 else if(id.startsWith('claim:')){const key=id.slice(6),j=s.jobs[key];s.cargo=s.cargo.filter(x=>!requiredCargo[key].includes(x));j.active=false;j.count++;reward={kind:'job',job:key,id:key+':'+j.count,...payouts[key]};message='Поручение сдано. Получено: '+rewardText(key)+'. Предметы подтверждения переданы.';}
 else if(id.startsWith('job:')){message=finishJobStep(s,id.slice(4));}
 else if(id.startsWith('boss:')){s.battle=id.slice(5);message='Рейд начат.';}
@@ -165,5 +166,5 @@ function routePoints(s,target){if(!destinations(s).includes(target))return [];co
  return [...a,...ap,...middle,...bp.slice().reverse(),...b.slice().reverse()].filter((p,i,all)=>!i||p[0]!==all[i-1][0]||p[1]!==all[i-1][1]);}
 const sectionPolygons={B:[[600,310],[1100,310],[1100,1050],[600,1050]],C:[[1100,310],[1650,310],[1650,950],[1100,950]]};
 
-return {supportsSave,workbench,observation,cargoDescription,payouts,cargoCatalog,requiredCargo,rewardText,roomBounds,mapLabels,mapHint,interactions,routePoints,sectionPolygons,guide,directions,rooms,pins,jobs,initial,restore,accessible,destinations,actions,apply,ready,story};
+return {supportsSave,workbench,observation,cargoDescription,jobBrief,payouts,cargoCatalog,requiredCargo,rewardText,roomBounds,mapLabels,mapHint,interactions,routePoints,sectionPolygons,guide,directions,rooms,pins,jobs,initial,restore,accessible,destinations,actions,apply,ready,story};
 });
