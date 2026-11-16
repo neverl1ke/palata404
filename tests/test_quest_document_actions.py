@@ -5,6 +5,7 @@ No forced pointer actions, quest-state injection or collapsing-paper workaround.
 import unittest
 
 from tests import test_game
+from tests.quest_ui_support import complete
 
 
 class QuestDocumentActionTests(unittest.TestCase):
@@ -82,20 +83,19 @@ class QuestDocumentActionTests(unittest.TestCase):
         self.ready()
         self.assertTrue(self.game.evaluate('PalataQuestPrototype.snapshot().flags.unlockC'))
 
-    def test_bell_choices_reopen_collapsed_paper_and_redeem_once(self):
+    def test_call_workbench_opens_from_collapsed_paper_and_redeems_once(self):
         self.room('doctor')
         self.action('accept:d1')
         self.room('ward407')
-        self.action('job:bell407')
         self.game.locator('[data-room-info-toggle]').click()
         self.assertEqual(self.game.locator('.scene-paper.is-collapsed').count(), 1)
         self.assertTrue(self.game.locator('.scene-paper').is_hidden())
-        # A real click on the now-visible bell advances to a document answer.
-        self.game.locator('[data-choice="bell"]').click()
-        self.assertTrue(self.game.locator('.scene-paper:not(.is-collapsed)').is_visible())
-        self.click_action('working', choice=True)
+        # The actual bell opens a work surface even when the side paper is shut.
+        self.game.locator('[data-action="job:bell407"]').click()
+        self.assertTrue(self.game.locator('.quest-workbench').is_visible())
+        complete(self.game,'job:bell407',open_board=False)
         self.room('ward408')
-        self.action('job:bell408', ['bell', 'broken'])
+        complete(self.game,'job:bell408')
         self.room('doctor')
         before = self.game.evaluate('({silver:stats.silver,exp:stats.exp})')
         self.action('claim:d1')

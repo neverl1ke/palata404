@@ -1,5 +1,6 @@
 const {test}=require('node:test'),a=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm'),crypto=require('node:crypto');
 const E=require('../quest-engine.js'),c={};vm.createContext(c);vm.runInContext(fs.readFileSync('quest-art.js','utf8'),c);const art=c.PalataFloorArt;
+const {nextOperation}=require('./quest-workbench-solver.cjs');
 for(const row of JSON.parse(fs.readFileSync('assets/floor10-approved/provenance.json')))test('Original bytes '+row.runtime,()=>a.equal(crypto.createHash('sha256').update(fs.readFileSync(''+row.runtime)).digest('hex'),row.sha256));
 test('17 scenes resolve both modes',()=>{a.equal(Object.keys(E.rooms).length,17);for(const id of Object.keys(E.rooms))for(const mode of ['patient','trip'])a.ok(fs.existsSync(''+art.resolve(id,mode).background));});
 test('Five approved physical room pairs resolve independently',()=>{for(const id of Object.keys(E.rooms)){a.equal(art.resolve(id,'trip').paired,['doctor','nurse','collector','procedure','gym'].includes(id));if(art.resolve(id,'trip').paired)a.notEqual(art.resolve(id,'trip').background,art.resolve(id,'patient').background);}});
@@ -10,8 +11,28 @@ test('Versions 1–6 migrate without mutating input',()=>{for(let version=1;vers
 test('Both bosses repeat; Clara never opens C',()=>{const s=E.initial();s.mode='trip';s.flags.unlockB=true;for(const boss of ['nurse','doctor']){s.room=boss;if(boss==='doctor')s.flags.unlockC=true;for(let i=0;i<2;i++){a.ok(E.apply(s,{type:'action',id:'boss:'+boss}).ok);a.ok(E.apply(s,{type:'battleEnd',victory:true}).ok);if(boss==='nurse')a.ok(!s.flags.unlockC);}}});
 test('Doctor hotspots fit and do not overlap in both states',()=>{const src=fs.readFileSync('quest-scenes.js','utf8'),ctx={};vm.createContext(ctx);vm.runInContext(src.slice(src.indexOf('const objects='),src.indexOf("let currentMode="))+';globalThis.g={objects,tripObjects};',ctx);for(const box of [ctx.g.objects.doctor,ctx.g.tripObjects.doctor]){const all=Object.values(box);for(const [x,y,w,h]of all)a.ok(x-w/2>=0&&x+w/2<=100&&y-h/2>=0&&y+h/2<=100);for(let i=0;i<all.length;i++)for(let j=i+1;j<all.length;j++){const [x,y,w,h]=all[i],[u,v,q,r]=all[j];a.ok(Math.abs(x-u)>=(w+q)/2||Math.abs(y-v)>=(h+r)/2);}}});
 const locations={tag:'procedure',linen:'linen',deliver:'ward406',copies:'procedure',bell407:'ward407',bell408:'ward408',log:'doctor',difference:'A'};
-function interact(s,id){let result;for(const step of E.interactions[id].steps){result=E.apply(s,{type:'interact',id,choice:step.answer});a.ok(result.ok,result.message);}return result;}
-for(const [id,job] of Object.entries(E.jobs))test('Complete '+id+' with cargo, reload, unique/repeat reward',()=>{let s=E.initial();for(let pass=0;pass<(job.repeat?2:1);pass++){s.mode='patient';s.room=job.giver;a.ok(E.apply(s,{type:'action',id:'accept:'+id}).ok);a.equal(E.apply(s,{type:'action',id:'claim:'+id}).ok,false);for(const step of job.steps){s.room=locations[step];if(step==='difference'){s.mode='trip';s.trip++;}interact(s,'job:'+step);s=E.restore(JSON.parse(JSON.stringify(s)));}s.mode='patient';s.room=job.giver;const result=E.apply(s,{type:'action',id:'claim:'+id});a.ok(result.ok);a.equal(result.reward.id,id+':'+(pass+1));a.ok(result.reward.exp>0&&result.reward.silver>0);for(const cargo of E.requiredCargo[id])a.ok(!s.cargo.includes(cargo));a.equal(E.apply(s,{type:'action',id:'claim:'+id}).ok,false);s=E.restore(JSON.parse(JSON.stringify(s)));a.equal(E.apply(s,{type:'action',id:'claim:'+id}).ok,false);}if(!job.repeat)a.equal(E.apply(s,{type:'action',id:'accept:'+id}).ok,false);});
+function interact(s,id){
+ let result;
+ if(E.workbench(s,id)){
+  // Follow inspectable evidence, not the model's private solution generators.
+  for(let guard=0;guard<100;guard++){
+   const board=E.workbench(s,id);if(!board)return result;
+   result=E.apply(s,{type:'work',id,...nextOperation(board)});a.ok(result.ok,result.message);
+  }
+  throw Error('Work order did not terminate: '+id);
+ }
+ // The old sequence remains supported for a genuinely migrated active order.
+ for(const step of E.interactions[id].steps){result=E.apply(s,{type:'interact',id,choice:step.answer});a.ok(result.ok,result.message);}return result;
+}
+for(const [id,job] of Object.entries(E.jobs))test('Complete '+id+' with cargo, reload, unique/repeat reward',()=>{let s=E.initial();for(let pass=0;pass<(job.repeat?2:1);pass++){s.mode='patient';s.room=job.giver;a.ok(E.apply(s,{type:'action',id:'accept:'+id}).ok);a.equal(s.jobs[id].revision,2);a.equal(E.apply(s,{type:'action',id:'claim:'+id}).ok,false);if(id==='d3'){s.room='A';interact(s,'job:baseline');a.ok(s.cargo.includes('baseline'));s=E.restore(JSON.parse(JSON.stringify(s)));}for(const step of job.steps){s.room=locations[step];if(step==='difference'){s.mode='trip';s.trip++;}interact(s,'job:'+step);s=E.restore(JSON.parse(JSON.stringify(s)));}s.mode='patient';s.room=job.giver;const result=E.apply(s,{type:'action',id:'claim:'+id});a.ok(result.ok);a.equal(result.reward.id,id+':'+(pass+1));a.ok(result.reward.exp>0&&result.reward.silver>0);for(const cargo of E.requiredCargo[id])a.ok(!s.cargo.includes(cargo));a.equal(E.apply(s,{type:'action',id:'claim:'+id}).ok,false);s=E.restore(JSON.parse(JSON.stringify(s)));a.equal(E.apply(s,{type:'action',id:'claim:'+id}).ok,false);}if(!job.repeat)a.equal(E.apply(s,{type:'action',id:'accept:'+id}).ok,false);});
+test('legacy active parcel orders finish under their original revision and next accept uses a workbench',()=>{
+ for(let version=1;version<=6;version++){
+  const raw={version,mode:'patient',room:'ward406',flags:{unlockB:true,unlockC:true},jobs:{k2:{active:true,count:2,done:{linen:true},startTrip:0}},cargo:['linen']},before=JSON.stringify(raw);
+  let s=E.restore(raw);a.equal(JSON.stringify(raw),before);a.equal(s.jobs.k2.revision,1);a.ok(s.cargo.includes('linen'));a.equal(E.workbench(s,'job:deliver'),null);
+  interact(s,'job:deliver');a.ok(s.cargo.includes('delivery'));a.ok(!s.cargo.includes('linen'));s=E.restore(JSON.parse(JSON.stringify(s)));s.room='nurse';const claim=E.apply(s,{type:'action',id:'claim:k2'});a.ok(claim.ok);a.equal(claim.reward.id,'k2:3');a.equal(s.flags.unlockB,true);a.equal(s.flags.unlockC,true);
+  a.ok(E.apply(s,{type:'action',id:'accept:k2'}).ok);a.equal(s.jobs.k2.revision,2);s.room='linen';a.equal(E.workbench(s,'job:linen').kind,'packing');
+ }
+});
 test('Inventory and item details stack above fullscreen quest room',()=>{const css=fs.readFileSync('quest-prototype.css','utf8');function z(id){const rule=css.match(new RegExp('#'+id+'\\{[^}]*z-index:(\\d+)'));a.ok(rule,id);return Number(rule[1]);}a.ok(z('inventory-modal')>z('quest-location-screen'));a.ok(z('item-info-modal')>z('inventory-modal'));});
 
 test("Modal override beats legacy important rule",()=>{const css=fs.readFileSync("quest-prototype.css","utf8");a.match(css,/#inventory-modal\{z-index:850!important\}/);a.match(css,/#item-info-modal\{z-index:860!important\}/);});
