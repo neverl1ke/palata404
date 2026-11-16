@@ -1772,3 +1772,32 @@ test('legacy weapons with unknown model and rarity keep their bonus without brea
 });
 
 test('level bonuses apply per reached level and do not replay on reload',()=>{const g=game();g.run('addExperience(400,false);updateUI()');assert.equal(g.run('stats.level'),3);assert.equal(g.run('stats.silver'),350);assert.equal(g.run('stats.pills'),105);assert.equal(g.run('stats.bucks'),20);const r=game(Object.fromEntries(g.storage));assert.equal(r.run('stats.silver'),350);assert.equal(r.run('stats.pills'),105);assert.equal(r.run('stats.bucks'),20);});
+
+test('raid quick switching retains magazines and cannot bypass the shared attack deadline',()=>{
+    const g=game({palata404_equipped:JSON.stringify({weapon:'Штурмовий АКС-74У'})});
+    g.run('stats.baseArmor=10000;recalculateEquipmentStats();startBossFight("doctor");performPlayerAttack()');
+    assert.equal(g.run('battleWeaponAmmo'),9);
+    const hp=g.run('bossCurrentHp'),until=g.run('attackCooldownEndsAt');
+    assert.equal(g.run('selectBattleWeapon("melee")'),true);
+    g.run('performPlayerAttack()');assert.equal(g.run('bossCurrentHp'),hp);assert.equal(g.run('attackCooldownEndsAt'),until);
+    g.run('selectBattleWeapon("ranged");startWeaponReload();selectBattleWeapon("melee")');
+    g.advance(2600);g.run('selectBattleWeapon("ranged")');
+    assert.equal(g.run('battleWeaponAmmo'),10);assert.equal(g.run('bossCurrentHp'),hp);
+    g.advance(1500);g.run('selectBattleWeapon("melee");performPlayerAttack()');
+    assert.equal(g.run('bossCurrentHp'),hp-18);
+});
+
+test('dual weapon checkpoint restores the active knife and partial firearm magazine',()=>{
+    const g=game({palata404_equipped:JSON.stringify({weapon:'ПМ (Пістолет Макарова)'})});
+    g.run('startBossFight("doctor");performPlayerAttack();selectBattleWeapon("melee");var savedWeapons=battleWeaponSnapshot();var oldProfile={profile:getBattleAttackProfile(),ammo:battleWeaponAmmo,reloadAt:0};stopWeaponBattleTimers();restoreBattleWeapons(savedWeapons,oldProfile)');
+    assert.equal(g.run('battleWeaponSlot'),'melee');g.run('selectBattleWeapon("ranged")');assert.equal(g.run('battleWeaponAmmo'),7);
+    g.run('var legacy={profile:getBattleAttackProfile(),ammo:2,reloadAt:0};stopWeaponBattleTimers();restoreBattleWeapons(null,legacy)');
+    assert.equal(g.run('battleWeaponAmmo'),2);
+});
+
+test('remembered raid backup weapon survives wardrobe normalization without double-counting gear',()=>{
+    const g=game();g.run('setPaperDollView("combat");equipPaperDollItem("weapon","gear-aks");equipPaperDollItem("weapon","gear-knife")');
+    assert.equal(g.run('paperDollState.raidWeapons.ranged'),'gear-aks');assert.equal(g.run('stats.damage'),18);
+    const reloaded=game(Object.fromEntries(g.storage));reloaded.run('startBossFight("doctor")');
+    assert.equal(reloaded.run('battleWeaponSlots.ranged.descriptorId'),'gear-aks');assert.equal(reloaded.run('stats.damage'),18);
+});

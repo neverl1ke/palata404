@@ -1,37 +1,95 @@
-// Manual attack state belongs to one raid and never schedules a player attack.
+// One manual attack clock, two independently preserved weapon states per raid.
 let battleWeaponProfile = null;
 let battleWeaponAmmo = 0;
 let weaponReloadEndsAt = 0;
 let weaponReloadTimer = null;
+let battleWeaponSlots = null;
+let battleWeaponSlot = null;
+function raidWeaponKind(item) { return weaponModelId(item)==='gear-knife'?'melee':WEAPON_MODELS[weaponModelId(item)]?.capacity?'ranged':null; }
+function rememberRaidWeapon(itemId, state=paperDollState) {
+    const item=weaponInventoryItem(itemId),kind=raidWeaponKind(item);
+    if(kind){state.raidWeapons ||= {};state.raidWeapons[kind]=item.paperDollId;}
+}
 function getBattleAttackProfile() { return battleWeaponProfile || getCombatWeaponStats(); }
+function stashBattleWeapon() {
+    const slot=battleWeaponSlots?.[battleWeaponSlot];
+    if(slot){slot.ammo=battleWeaponAmmo;slot.reloadAt=weaponReloadEndsAt;}
+}
+function loadBattleWeaponSlot() {
+    const slot=battleWeaponSlots?.[battleWeaponSlot];
+    if(slot){battleWeaponProfile=slot.profile;battleWeaponAmmo=slot.ammo;weaponReloadEndsAt=slot.reloadAt;}
+}
+function finishReadyWeaponReloads() {
+    stashBattleWeapon();
+    for(const slot of Object.values(battleWeaponSlots||{}))if(slot?.reloadAt&&slot.reloadAt<=Date.now()){
+        slot.ammo=slot.profile.capacity;slot.reloadAt=0;
+    }
+    loadBattleWeaponSlot();
+}
+function scheduleWeaponReloads() {
+    clearTimeout(weaponReloadTimer);weaponReloadTimer=null;
+    const at=Object.values(battleWeaponSlots||{}).map(s=>s?.reloadAt||0).filter(Boolean).sort((a,b)=>a-b)[0];
+    if(!at)return;
+    const generation=battleGeneration;
+    weaponReloadTimer=setTimeout(()=>{
+        if(generation!==battleGeneration||!isBattleActive)return;
+        finishReadyWeaponReloads();scheduleWeaponReloads();renderWeaponBattleState();
+        window.dispatchEvent?.(new Event('raid-weapon-state'));
+    },Math.max(0,at-Date.now()));
+}
 function initializeWeaponBattle() {
     stopWeaponBattleTimers();
-    battleWeaponProfile = { ...getCombatWeaponStats() };
-    battleWeaponAmmo = battleWeaponProfile.capacity;
-    renderWeaponBattleState();
+    const equipped=getEquippedItem('weapon'),active=raidWeaponKind(equipped),saved=paperDollState.raidWeapons||{};
+    const bonus=globalThis.PalataRehabRules?.bonuses(stats.rehabTraining)||{damage:0,critical:0};
+    const entry=item=>{
+        if(!item)return null;
+        const p=calculateWeaponStats(item,{damage:stats.baseDamage+bonus.damage});p.critical=Math.min(1,p.critical+bonus.critical);
+        return {itemId:item.instanceId,descriptorId:item.paperDollId,profile:p,ammo:p.capacity,reloadAt:0};
+    };
+    battleWeaponSlots=Object.fromEntries(['ranged','melee'].map(kind=>{
+        const remembered=weaponInventoryItem(saved[kind]);
+        const item=active===kind?equipped:raidWeaponKind(remembered)===kind?remembered:inventory.find(i=>i.count>0&&raidWeaponKind(i)===kind);
+        return [kind,entry(item)];
+    }));
+    battleWeaponSlot=active;
+    battleWeaponProfile={...getCombatWeaponStats()};battleWeaponAmmo=battleWeaponProfile.capacity;
+    loadBattleWeaponSlot();renderWeaponBattleState();
 }
 function stopWeaponBattleTimers() {
-    clearTimeout(weaponReloadTimer); weaponReloadTimer = null; weaponReloadEndsAt = 0; battleWeaponProfile = null;
+    clearTimeout(weaponReloadTimer);weaponReloadTimer=null;weaponReloadEndsAt=0;battleWeaponProfile=null;battleWeaponSlots=null;battleWeaponSlot=null;
+}
+function selectBattleWeapon(kind) {
+    if(!isBattleActive||!battleWeaponSlots?.[kind])return false;
+    finishReadyWeaponReloads();battleWeaponSlot=kind;loadBattleWeaponSlot();renderWeaponBattleState();
+    window.dispatchEvent?.(new Event('raid-weapon-state'));return true;
 }
 function startWeaponReload() {
-    const profile = getBattleAttackProfile();
-    if (!isBattleActive || !profile.capacity || weaponReloadEndsAt || battleWeaponAmmo >= profile.capacity) return false;
-    weaponReloadEndsAt = Date.now() + profile.reload * 1000;
-    const generation = battleGeneration;
-    weaponReloadTimer = setTimeout(() => {
-        if (generation !== battleGeneration || !isBattleActive) return;
-        battleWeaponAmmo = profile.capacity; weaponReloadEndsAt = 0; weaponReloadTimer = null;
-        renderWeaponBattleState();
-    }, profile.reload * 1000);
-    renderWeaponBattleState();
-    return true;
+    finishReadyWeaponReloads();
+    const profile=getBattleAttackProfile();
+    if(!isBattleActive||!profile.capacity||weaponReloadEndsAt||battleWeaponAmmo>=profile.capacity)return false;
+    weaponReloadEndsAt=Date.now()+profile.reload*1000;stashBattleWeapon();scheduleWeaponReloads();renderWeaponBattleState();return true;
+}
+function battleWeaponSnapshot() { stashBattleWeapon();return battleWeaponSlots?{active:battleWeaponSlot,slots:JSON.parse(JSON.stringify(battleWeaponSlots))}:null; }
+function restoreBattleWeapons(saved, legacy) {
+    const validProfile=p=>p&&['damage','weaponDamage','cooldown','miss','critical','criticalMultiplier','capacity','reload'].every(k=>Number.isFinite(p[k])&&p[k]>=0)&&Number.isSafeInteger(p.capacity)&&p.capacity<=100;
+    if(saved&&['ranged','melee'].every(kind=>{
+        const s=saved.slots?.[kind];if(s===null)return true;
+        return s&&raidWeaponKind(weaponInventoryItem(s.itemId))===kind&&validProfile(s.profile)&&Number.isSafeInteger(s.ammo)&&s.ammo>=0&&s.ammo<=s.profile.capacity&&Number.isFinite(s.reloadAt)&&s.reloadAt>=0;
+    })&&(saved.active===null||['ranged','melee'].includes(saved.active)&&saved.slots[saved.active])){
+        battleWeaponSlots=JSON.parse(JSON.stringify(saved.slots));battleWeaponSlot=saved.active;loadBattleWeaponSlot();
+    }else{
+        // Old checkpoints contain only one frozen weapon profile. Keep its ammo,
+        // damage and pending reload exactly; never refill a legacy magazine.
+        const item=getEquippedItem('weapon'),kind=raidWeaponKind(item)||((legacy.profile.capacity||0)>0?'ranged':'melee');
+        battleWeaponSlots={ranged:null,melee:null};battleWeaponSlots[kind]={itemId:item?.instanceId||null,descriptorId:item?.paperDollId||null,profile:legacy.profile,ammo:legacy.ammo,reloadAt:legacy.reloadAt};battleWeaponSlot=kind;loadBattleWeaponSlot();
+    }
+    finishReadyWeaponReloads();scheduleWeaponReloads();
 }
 function renderWeaponBattleState() {
-    const panel = document.getElementById('weapon-battle-state');
-    if (!panel) return;
-    const profile = getBattleAttackProfile();
-    const reloading = Date.now() < weaponReloadEndsAt;
-    panel.innerHTML = `<span>${profile.capacity ? reloading ? 'Перезарядка…' : `Магазин: ${battleWeaponAmmo}/${profile.capacity}` : 'Ближний бой'} · КД ${profile.cooldown.toFixed(1)} с</span><button type="button" onclick="event.stopPropagation();startWeaponReload()"${!profile.capacity || reloading || battleWeaponAmmo >= profile.capacity ? ' disabled' : ''}>Перезарядить</button>`;
+    const panel=document.getElementById('weapon-battle-state');if(!panel)return;
+    const profile=getBattleAttackProfile(),reloading=Date.now()<weaponReloadEndsAt;
+    panel.innerHTML=`<span>${profile.capacity?reloading?'Перезарядка…':`Магазин: ${battleWeaponAmmo}/${profile.capacity}`:'Ближний бой'} · КД ${profile.cooldown.toFixed(1)} с</span><button type="button" onclick="event.stopPropagation();startWeaponReload()"${!profile.capacity||reloading||battleWeaponAmmo>=profile.capacity?' disabled':''}>Перезарядить</button>`;
+    window.PalataRaidHUD?.renderWeapons();
 }
 let wardrobeSession = null;
 const wardrobeHiddenSlots = new Set();
@@ -76,6 +134,8 @@ function syncInventoryEquipmentToPaperDoll(category) {
     const descriptor = PAPER_DOLL_ITEMS.find(i => category === 'weapon' ? i.inventoryInstanceId === item?.instanceId : i.inventoryCategory === category && i.inventoryName === item?.name);
     const slot = category === 'helmet' ? 'headwear' : category;
     paperDollState.combatLoadout[slot] = descriptor?.id || null;
+    if(category==='weapon'&&descriptor)rememberRaidWeapon(descriptor.id);
+    if(category==='weapon'&&descriptor&&wardrobeSession)rememberRaidWeapon(descriptor.id,wardrobeSession.savedState);
     if (wardrobeSession) wardrobeSession.savedState.combatLoadout[slot] = descriptor?.id || null;
     updateCharacterLayers();
 }

@@ -31,6 +31,7 @@
 <link rel="stylesheet" href="rehab-pullups.css?v=64bac653fdd7">
 <link rel="stylesheet" href="rehab-boxing.css?v=fd74da4639b5">
 <link rel="stylesheet" href="rehab-scene.css?v=c42ed30135ef">
+<link rel="stylesheet" href="raid-hud.css?v=c702ca19b68f">
 </head>
 <body>
 <section id="scene-loading" class="scene-loading" aria-label="Загрузка игры"><div class="scene-loading-paper"><strong class="scene-loading-name">ПАЛАТА 404</strong><p role="status" aria-live="polite">Подготовка палаты…</p><div class="scene-loading-line" aria-hidden="true"></div><button type="button" hidden>Повторить</button></div></section>
@@ -396,15 +397,15 @@
     <script src="female-hair-fit.js?v=9b2e85e6aac5" defer></script>
     <script src="male-hair-fit-data.js?v=99f75a9f213d" defer></script>
     <script src="male-hair-fit.js?v=bf7735c664ca" defer></script>
-    <script src="paper-doll.js?v=18b1fcdde372" defer></script>
+    <script src="paper-doll.js?v=bed46ac6bf06" defer></script>
     <script src="rehab-training.js?v=50bfb4317ac7" defer></script>
     <script src="weapon-system.js?v=933e6da888f5" defer></script>
-    <script src="weapon-runtime.js?v=d5baae7ec4db" defer></script>
+    <script src="weapon-runtime.js?v=3cf070ce056c" defer></script>
     <script src="appearance-icons.js?v=c2c6cfbc83f8" defer></script>
     <script src="wardrobe.js?v=f7526db229ae" defer></script>
     <script src="wardrobe-tablet.js?v=fca32b70b7d1" defer></script>
     <script src="wardrobe-archive.js?v=2cc4980cab6c" defer></script>
-    <script src="script.js?v=6560a3c38e54" defer></script>
+    <script src="script.js?v=ef5f05579d32" defer></script>
     <!-- Модальне вікно: Медичне Досьє пацієнта (Аркуш паперу А4) -->
     <div id="dossier-modal" role="dialog" aria-modal="true" aria-label="Особисте досьє" class="modal center-modal hidden">
         <div class="modal-content dossier-paper">
@@ -512,98 +513,39 @@
 
 
 <!-- ПОВНОЕКРАННА БОЙОВА СЦЕНА -->
-<div id="nurse-battle-modal" role="dialog" aria-modal="true" aria-label="Бій із босом" class="modal-overlay hidden" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #000; z-index: 10000; display: flex; align-items: center; justify-content: center; overflow: hidden;">
-
-    <!-- ФОНОВА АРЕНА (Жорсткі пропорції 16:9, що вписуються в будь-який екран) -->
-    <div id="battle-arena-scale">
-    <div id="weapon-battle-state" class="weapon-battle-state" aria-live="polite"></div>
-    <div id="battle-arena-screen" onclick="performPlayerAttack(event)" style="position: relative; width: 100vw; height: 56.25vw; max-height: 100vh; max-width: 177.78vh; background: url('nurse_bg.jpg') center/cover no-repeat; display: flex; justify-content: space-between; align-items: flex-start; padding: 2.5%; box-sizing: border-box; cursor: pointer; user-select: none;">
-
-        <!-- ВЕРХ ЗЛІВА: Панель гравця -->
-        <div style="display: flex; flex-direction: column; gap: 10px; z-index: 5;" onclick="event.stopPropagation()">
-            <div style="background: rgba(20, 15, 12, 0.94); border: 2px solid #5c4033; padding: 14px 18px; border-radius: 12px; width: 320px; color: #fff; display: flex; gap: 15px; align-items: center; box-shadow: 0 6px 20px rgba(0,0,0,0.85);">
-                <div id="player-battle-avatar-box" style="width: 70px; height: 70px; background: #2a1f18; border: 2px solid #8c5842; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 32px; flex-shrink: 0; overflow: hidden;">
-                    <img class="game-icon" src="assets/icons/user.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64">
-                </div>
-                <div style="flex-grow: 1;">
-                    <div style="font-weight: bold; font-size: 18px; color: #e67e22; margin-bottom: 4px;" id="b-player-name">Пацієнт #404</div>
-                    <div style="font-size: 14px; margin-bottom: 4px; font-weight: bold;">HP: <span id="b-player-hp">100/100</span></div>
-                    <div style="background: #222; height: 12px; border-radius: 6px; overflow: hidden; border: 1px solid #444;">
-                        <div id="b-player-hpbar" style="background: #27ae60; width: 100%; height: 100%;"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- ВЕРХ ПОСЕРЕДИНІ: Таймер рейду + Кнопка згортання та втечі -->
-        <div style="position: absolute; left: 50%; top: 20px; transform: translateX(-50%); background: rgba(20, 15, 12, 0.95); border: 2px solid #e74c3c; padding: 6px 16px; border-radius: 20px; color: #e74c3c; font-weight: bold; font-size: 15px; z-index: 5; display: flex; align-items: center; gap: 10px; box-shadow: 0 0 15px rgba(231,76,60,0.4);" onclick="event.stopPropagation()">
-            <button title="Згорнути бій у лобі" style="background: none; border: none; color: #27ae60; font-size: 16px; cursor: pointer; padding: 0; font-weight: bold;" onclick="minimizeNurseBattle()" aria-label="Згорнути бій у лобі"><img class="game-icon" src="assets/icons/back.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"></button>
-            <span><img class="game-icon" src="assets/icons/clock.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"> Час рейду: <span id="battle-timer-display">05:00</span></span>
-            <button title="Втекти з бою (Штраф)" style="background: none; border: none; color: #e74c3c; font-size: 15px; cursor: pointer; padding: 0; font-weight: bold; margin-left: 5px;" onclick="openFleeConfirmModal()" aria-label="Втекти з бою (Штраф)"><img class="game-icon" src="assets/icons/door.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"></button>
-        </div>
-
-        <!-- ЗЛІВА ПОСЕРЕДИНІ: Аптечки -->
-        <div style="position: absolute; left: 25px; top: 55%; transform: translateY(-50%); background: rgba(20, 15, 12, 0.92); border: 1px solid #3d2d22; padding: 10px; border-radius: 10px; display: flex; flex-direction: column; gap: 8px; z-index: 5;" onclick="event.stopPropagation()">
-            <div style="font-size: 10px; color: #a3927d; text-align: center; margin-bottom: 2px; font-weight: bold;"><img class="game-icon" src="assets/icons/flask.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"> АПТЕЧКИ</div>
-
-            <button id="medkit-btn-small" title="Мала аптечка (+10% HP)" class="btn-outfit" style="background: #2a1f18; border: 1px solid #5c4033; width: 44px; height: 44px; border-radius: 8px; font-size: 20px; cursor: pointer; position: relative;" onclick="useBattleMedkit('small')" aria-label="Мала аптечка (+10% HP)">
-                <img class="game-icon" src="assets/icons/medkit.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64">
-                <span id="medkit-count-small" style="position: absolute; bottom: 2px; right: 2px; font-size: 10px; background: #c0392b; color: #fff; padding: 1px 3px; border-radius: 3px; font-weight: bold;">0</span>
-            </button>
-
-            <button id="medkit-btn-big" title="Велика аптечка (повне відновлення HP)" class="btn-outfit" style="background: #2a1f18; border: 1px solid #5c4033; width: 44px; height: 44px; border-radius: 8px; font-size: 20px; cursor: pointer; position: relative;" onclick="useBattleMedkit('big')" aria-label="Велика аптечка (повне відновлення HP)">
-                <img class="game-icon" src="assets/icons/surgery.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64">
-                <span id="medkit-count-big" style="position: absolute; bottom: 2px; right: 2px; font-size: 10px; background: #c0392b; color: #fff; padding: 1px 3px; border-radius: 3px; font-weight: bold;">0</span>
-            </button>
-        </div>
-
-        <!-- ПОСЕРЕДИНІ: Медсестра СТРОГО ПО ЦЕНТРУ -->
-        <div id="damage-floating-container" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 15;">
-            <img id="nurse-boss-sprite" src="nurse_sprite.png" alt="Медсестра" style="position: absolute; left: 50%; bottom: 5%; transform: translateX(-50%); height: 75%; width: auto; object-fit: contain;">
-        </div>
-
-        <!-- СПРАВА ПОСЕРЕДИНІ: Кнопки виклику друзів та рейду -->
-        <div style="position: absolute; right: 25px; top: 40%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 8px; z-index: 25;" onclick="event.stopPropagation()">
-            <button class="btn-outfit" style="background: #8e44ad; padding: 8px 14px; font-size: 11px; font-weight: bold; cursor: pointer; border-radius: 8px; color: #fff; box-shadow: 0 4px 12px rgba(0,0,0,0.6);" onclick="openFriendInviteModal()"><img class="game-icon" src="assets/icons/megaphone.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"> Покликати друзів</button>
-            <button class="btn-outfit" style="background: #2980b9; padding: 8px 14px; font-size: 11px; font-weight: bold; cursor: pointer; border-radius: 8px; color: #fff; box-shadow: 0 4px 12px rgba(0,0,0,0.6);" onclick="toggleRaidPanel()"><img class="game-icon" src="assets/icons/people.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"> Список рейду</button>
-        </div>
-
-        <!-- КОМПАКТНА ПАНЕЛЬ СПИСКУ РЕЙДУ -->
-        <div id="battle-raid-panel" class="hidden" style="position: absolute; right: 25px; top: 50%; width: 250px; background: rgba(20, 15, 12, 0.95); border: 1px solid #2980b9; padding: 10px; border-radius: 10px; z-index: 25; box-shadow: 0 6px 20px rgba(0,0,0,0.8);" onclick="event.stopPropagation()">
-            <div style="font-weight: bold; font-size: 12px; color: #3498db; margin-bottom: 6px; text-align: center; border-bottom: 1px dashed #3d2d22; padding-bottom: 4px;"><img class="game-icon" src="assets/icons/people.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"> Учасники Рейду</div>
-            <div id="raid-members-container" style="max-height: 160px; overflow-y: auto; display: flex; flex-direction: column; gap: 4px;">
-            </div>
-        </div>
-
-<!-- ВЕРХ СПРАВА: Панель Боса -->
-        <div style="background: rgba(20, 15, 12, 0.94); border: 2px solid #c0392b; padding: 14px 18px; border-radius: 12px; width: 320px; color: #fff; display: flex; gap: 15px; align-items: center; z-index: 5; box-shadow: 0 6px 20px rgba(0,0,0,0.85);" onclick="event.stopPropagation()">
-            <div style="flex-grow: 1; text-align: right;">
-                <!-- ДОДАЛИ id="battle-boss-name" -->
-                <div id="battle-boss-name" style="font-weight: bold; font-size: 18px; color: #e74c3c; margin-bottom: 4px;">Сестра Клара</div>
-                <div style="font-size: 14px; margin-bottom: 4px; font-weight: bold;">HP: <span id="b-boss-hp">120/120</span></div>
-                <div style="background: #222; height: 12px; border-radius: 6px; overflow: hidden; border: 1px solid #444;">
-                    <div id="b-boss-hpbar" style="background: #c0392b; width: 100%; height: 100%;"></div>
-                </div>
-            </div>
-            <div style="width: 70px; height: 70px; border: 2px solid #c0392b; border-radius: 10px; overflow: hidden; flex-shrink: 0; background: #2a1f18; box-shadow: 0 0 10px rgba(231,76,60,0.5);">
-                <!-- ДОДАЛИ id="battle-boss-avatar" -->
-                <img id="battle-boss-avatar" src="nurse_avatar_battle.png" alt="Сестра Клара" style="width: 100%; height: 100%; object-fit: cover;">
-            </div>
-        </div>
-
+<div id="nurse-battle-modal" role="dialog" aria-modal="true" aria-label="Бой с боссом" class="modal-overlay hidden">
+ <div id="battle-arena-scale">
+  <div id="battle-arena-screen" class="raid-arena" onclick="performPlayerAttack(event)">
+   <div id="damage-floating-container"><img id="nurse-boss-sprite" src="nurse_sprite.png" alt="Босс"></div>
+   <img class="raid-hud-art" src="assets/ui/raid/hud-frame.png" alt="" aria-hidden="true" draggable="false">
+   <header class="raid-boss" onclick="event.stopPropagation()"><span class="raid-boss-tag">БОСС</span><strong id="battle-boss-name">Клара</strong><div class="raid-boss-health"><span>HP <b id="b-boss-hp">0/0</b></span><div class="raid-health-track"><div id="b-boss-hpbar"></div></div></div><img id="battle-boss-avatar" alt="" hidden></header>
+   <nav class="raid-top-controls" aria-label="Управление боем" onclick="event.stopPropagation()"><button type="button" class="raid-minimize" onclick="minimizeNurseBattle()">≪ Свернуть<br>бой</button><div class="raid-clock"><small>ВРЕМЯ</small><time id="battle-timer-display">05:00.000</time></div><button type="button" class="raid-exit" onclick="openFleeConfirmModal()">Выйти<br>из боя ⇥</button></nav>
+   <aside class="raid-journal" onclick="event.stopPropagation()" aria-label="Боевой журнал">
+    <header class="raid-journal-header"><h2>БОЕВОЙ<br>ЖУРНАЛ</h2><div><img src="assets/ui/wardrobe/requested-header-emblem.webp" alt="Эмблема учреждения"><small>ЦЕНТР ИНТЕНСИВНОГО ЛЕЧЕНИЯ<br>ПСИХИЧЕСКИХ РАССТРОЙСТВ №404<br>ОТДЕЛ БОЕВОЙ СТАТИСТИКИ</small></div></header>
+    <div class="raid-journal-body">
+     <section class="raid-accordion" data-raid-section="members"><h3><button type="button" id="raid-members-toggle" aria-expanded="false" aria-controls="battle-raid-panel" onclick="toggleRaidPanel()">Участники рейда <span>+</span></button></h3><div id="battle-raid-panel" class="hidden" role="region" aria-labelledby="raid-members-toggle"><div id="raid-members-container"></div></div></section>
+     <section class="raid-accordion" data-raid-section="actions"><h3><button type="button" id="raid-actions-toggle" aria-expanded="false" aria-controls="raid-actions-panel" onclick="PalataRaidHUD.toggle('actions')">Действия в рейде <span>+</span></button></h3><div id="raid-actions-panel" class="hidden" role="region" aria-labelledby="raid-actions-toggle"><ol id="raid-actions-list"></ol></div></section>
+     <p class="raid-journal-hint">Откройте раздел журнала</p>
     </div>
-    </div>
+    <button type="button" class="raid-invite" onclick="openFriendInviteModal()">Пригласить в рейд</button>
+   </aside>
+   <section class="raid-player" onclick="event.stopPropagation()" aria-label="Планшетка пациента"><h2 id="b-player-name">Пациент №404</h2><div class="raid-player-health"><span>HP <b id="b-player-hp">100/100</b></span><div class="raid-health-track"><div id="b-player-hpbar"></div></div></div><div id="player-battle-avatar-box" class="raid-player-photo"><div id="raid-player-portrait" class="character-paperdoll"></div></div><div class="raid-medkits"><span>АПТЕЧКИ</span><button type="button" id="medkit-btn-small" onclick="useBattleMedkit('small')" title="Малая аптечка: +10% HP" aria-label="Малая аптечка: восстановить 10% HP"><img src="assets/icons/medkit.svg" alt=""> ×<span id="medkit-count-small">0</span></button><button type="button" id="medkit-btn-big" onclick="useBattleMedkit('big')" title="Большая аптечка: полное восстановление HP" aria-label="Большая аптечка: восстановить всё HP"><img src="assets/icons/surgery.svg" alt=""> ×<span id="medkit-count-big">0</span></button></div></section>
+   <section id="raid-weapon-cards" aria-label="Оружие рейда" onclick="event.stopPropagation()"></section>
+   <div id="weapon-battle-state" class="weapon-battle-state" aria-live="polite" onclick="event.stopPropagation()"></div>
+  </div>
+ </div>
+ <div id="raid-cursor-cooldown" class="raid-cooldown hidden" aria-hidden="true"><svg viewBox="0 0 44 44"><circle class="raid-cd-track" cx="22" cy="22" r="18"/><circle class="raid-cd-fill" cx="22" cy="22" r="18" pathLength="100"/></svg></div>
 </div>
 
 <!-- МОДАЛЬНЕ ВІКНО: ВИБІР ДРУЗІВ ДЛЯ РЕЙДУ -->
-<div id="friend-invite-modal" role="dialog" aria-modal="true" aria-label="Запрошення друзів до рейду" class="modal-overlay hidden" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.75); z-index: 25000; display: flex; align-items: center; justify-content: center;">
+<div id="friend-invite-modal" role="dialog" aria-modal="true" aria-label="Приглашение в рейд" class="modal-overlay hidden" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.75); z-index: 25000; display: flex; align-items: center; justify-content: center;">
     <div style="background: #1c1511; border: 2px solid #8e44ad; width: 440px; padding: 25px; border-radius: 12px; color: #f4e8d1; font-family: sans-serif; position: relative; box-shadow: 0 0 30px rgba(142,68,173,0.5);">
-        <button onclick="closeFriendInviteModal()" style="position: absolute; top: 12px; right: 12px; background: none; border: none; color: #fff; font-size: 22px; cursor: pointer;" aria-label="Закрити вікно">✕</button>
+        <button onclick="closeFriendInviteModal()" style="position: absolute; top: 12px; right: 12px; background: none; border: none; color: #fff; font-size: 22px; cursor: pointer;" aria-label="Закрыть окно">✕</button>
 
-        <h3 style="color: #9b59b6; margin-top: 0; text-align: center; border-bottom: 1px dashed #3d2d22; padding-bottom: 12px;"><img class="game-icon" src="assets/icons/megaphone.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"> Запросити друзів до рейду</h3>
+        <h3 style="color: #9b59b6; margin-top: 0; text-align: center; border-bottom: 1px dashed #3d2d22; padding-bottom: 12px;"><img class="game-icon" src="assets/icons/megaphone.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"> Пригласить в рейд</h3>
 
         <!-- Пошук друзів -->
-        <input type="text" id="friend-search-input" aria-label="Пошук друга для рейду" autocomplete="off" placeholder="Пошук друга..." oninput="filterFriendsList()" style="width: 100%; padding: 10px; background: #120e0b; border: 1px solid #5c4033; color: #fff; border-radius: 6px; box-sizing: border-box; margin-bottom: 15px; font-size: 13px;">
+        <input type="text" id="friend-search-input" aria-label="Поиск союзника" autocomplete="off" placeholder="Поиск союзника..." oninput="filterFriendsList()" style="width: 100%; padding: 10px; background: #120e0b; border: 1px solid #5c4033; color: #fff; border-radius: 6px; box-sizing: border-box; margin-bottom: 15px; font-size: 13px;">
 
         <!-- Список друзів з галочками -->
         <div id="friends-checkbox-container" style="max-height: 220px; overflow-y: auto; display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px;">
@@ -612,8 +554,8 @@
 
         <!-- Кнопки керування викликом -->
         <div style="display: flex; gap: 12px;">
-            <button class="btn-outfit" style="flex: 1; background: #8e44ad; padding: 10px; font-weight: bold; font-size: 13px; cursor: pointer; border-radius: 6px; color: #fff;" onclick="callSelectedFriends()"><img class="game-icon" src="assets/icons/check.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"> Покликати обраних</button>
-            <button class="btn-outfit" style="flex: 1; background: #27ae60; padding: 10px; font-weight: bold; font-size: 13px; cursor: pointer; border-radius: 6px; color: #fff;" onclick="callAllFriends()"><img class="game-icon" src="assets/icons/flame.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"> Покликати всіх</button>
+            <button class="btn-outfit" style="flex: 1; background: #8e44ad; padding: 10px; font-weight: bold; font-size: 13px; cursor: pointer; border-radius: 6px; color: #fff;" onclick="callSelectedFriends()"><img class="game-icon" src="assets/icons/check.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"> Пригласить выбранных</button>
+            <button class="btn-outfit" style="flex: 1; background: #27ae60; padding: 10px; font-weight: bold; font-size: 13px; cursor: pointer; border-radius: 6px; color: #fff;" onclick="callAllFriends()"><img class="game-icon" src="assets/icons/flame.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"> Пригласить всех</button>
         </div>
     </div>
 </div>
@@ -803,7 +745,8 @@
 <script src="rehab-scene.js?v=c421603801bd" defer></script>
 <script src="quest-scenes.js?v=c6c809ea5ab9" defer></script>
 <script src="rehab-training-ui.js?v=4d7ed1da9109" defer></script>
-<script src="quest-prototype.js?v=aa4937300f96" defer></script>
+<script src="quest-prototype.js?v=301e0ba8d56e" defer></script>
+<script src="raid-hud.js?v=68ba306a64fa" defer></script>
 <dialog id="level-notice" aria-labelledby="level-notice-title" oncancel="event.preventDefault();closeLevelNotice()">
 <article class="document-paper"><document-header variant="center" department="ПІДВИЩЕННЯ РІВНЯ"></document-header><h2 id="level-notice-title">Ви отримали новий рівень!</h2><p class="level-notice-number" id="level-notice-number"></p><p>Нагороду вже зараховано</p><ul><li>100 срібла</li><li>50 таблеток</li><li>5 баксів</li></ul><button type="button" onclick="closeLevelNotice()">Продовжити</button></article></dialog>
 </body>

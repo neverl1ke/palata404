@@ -1458,6 +1458,7 @@ function startBossFight(bossKey) {
     toggleMapModal(false);
 
     if (closeOtherModals(['nurse-battle-modal']) === false) return;
+    stopBattleTimers();
     currentBossKey = bossKey;
     bossCurrentHp = boss.hp;
     bossMaxHp = boss.hp;
@@ -1506,7 +1507,6 @@ function startBossFight(bossKey) {
         battleModal.style.display = 'flex';
     }
 
-    stopBattleTimers();
     raidEndsAt = Date.now() + 300 * 1000;
     updateRaidTimerTick();
     autoScaleBattleArena();
@@ -1589,7 +1589,7 @@ function handleRaidTimeOut() {
     stopBattleTimers();
     closeNurseBattle();
     closeFriendInviteModal();
-    alert("Час рейду вичерпано!");
+    alert("Время рейда истекло!");
     updateLobbyRaidWidget();
 }
 
@@ -1655,7 +1655,7 @@ function callSelectedFriends() {
     });
     closeFriendInviteModal();
     if (!document.getElementById('battle-raid-panel').classList.contains('hidden')) updateRaidListUI();
-    showCustomToast("📢 Друзі приєдналися до рейду!");
+    showCustomToast("Союзники присоединились к рейду.");
 }
 
 function callAllFriends() {
@@ -1663,7 +1663,7 @@ function callAllFriends() {
     raidMembers.forEach(m => { if (!m.isPlayer) { m.called = true; m.active = true; } });
     closeFriendInviteModal();
     if (!document.getElementById('battle-raid-panel').classList.contains('hidden')) updateRaidListUI();
-    showCustomToast("🔥 Усі друзі приєдналися!");
+    showCustomToast("Все союзники присоединились.");
 }
 
 function updateRaidListUI() {
@@ -1700,7 +1700,7 @@ function triggerBossAttackAnimation() {
 
 function openFleeConfirmModal() {
     if (!isBattleActive) return;
-    if (confirm("Втекти з бою? Це коштуватиме 20 срібла.")) {
+    if (confirm("Выйти из боя? Стоимость: 20 серебра.")) {
         recordUnrewardedRaid('fled');
         stats.silver = Math.max(0, stats.silver - 20);
         updateUI();
@@ -1708,7 +1708,7 @@ function openFleeConfirmModal() {
         stopBattleTimers();
         closeNurseBattle();
         closeFriendInviteModal();
-        showCustomToast("💨 Ви втекли з бою (-20 срібла)");
+        showCustomToast("Вы вышли из боя (−20 серебра).");
     }
 }
 
@@ -1716,6 +1716,7 @@ function performPlayerAttack(event) {
     if (!isBattleActive) return;
     updateRaidTimerTick();
     if (!isBattleActive || Date.now() < attackCooldownEndsAt || bossCurrentHp <= 0) return;
+    finishReadyWeaponReloads();
     const attackProfile = getBattleAttackProfile();
     if (Date.now() < weaponReloadEndsAt) { renderWeaponBattleState(); return; }
     if (attackProfile.capacity && battleWeaponAmmo <= 0) { startWeaponReload(); return; }
@@ -1760,7 +1761,7 @@ function performPlayerAttack(event) {
             isBattleActive = false;
             stopBattleTimers();
             closeFriendInviteModal();
-            alert('Бос вас здолав...');
+            alert('Босс одержал верх…');
             stats.hp = stats.maxHp;
             closeNurseBattle();
             updateUI();

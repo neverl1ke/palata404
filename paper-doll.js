@@ -49,6 +49,10 @@ function normalizePaperDollState(value, legacy = {}) {
     if (savedHair && !paperDollItemSupportsGender(savedHair, state.selectedGender)) state.appearance.hair = 'hair-none';
     const savedFace = PAPER_DOLL_ITEMS.find(item => item.slot === 'face' && item.id === state.appearance.face);
     if (savedFace && !paperDollItemSupportsGender(savedFace, state.selectedGender)) state.appearance.face = null;
+    const ownedKind=id=>{const item=PAPER_DOLL_ITEMS.find(i=>i.id===id&&i.slot==='weapon'&&isPaperDollItemOwned(i));const model=item?.modelId||item?.id;return model==='gear-knife'?'melee':['gear-pm','gear-aks'].includes(model)?'ranged':null;};
+    state.raidWeapons={ranged:null,melee:null};
+    for(const kind of ['ranged','melee'])if(ownedKind(value?.raidWeapons?.[kind])===kind)state.raidWeapons[kind]=value.raidWeapons[kind];
+    const selected=state.combatLoadout.weapon;if(selected&&ownedKind(selected))state.raidWeapons[ownedKind(selected)]=selected;
     return state;
 }
 
@@ -143,6 +147,7 @@ function equipPaperDollItem(slot, itemId) {
     else if (slot === 'beard') paperDollState.appearance.beard = itemId;
     else if (slot === 'face') paperDollState.appearance.face = itemId;
     else activePaperDollLoadout()[slot] = itemId;
+    if(slot==='weapon'&&itemId)rememberRaidWeapon(itemId);
     commitPaperDollSelection();
     return true;
 }

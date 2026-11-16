@@ -53,6 +53,7 @@ function checkpoint(){
  if(!state.battle||!currentBattleSession)return null;
  return {version:1,owner:raidArchiveOwnerId,boss:currentBossKey,hp:bossCurrentHp,maxHp:bossMaxHp,playerHp:stats.hp,
   endsAt:raidEndsAt,cooldown:attackCooldownEndsAt,ammo:battleWeaponAmmo,reloadAt:weaponReloadEndsAt,
+  weapons:typeof battleWeaponSnapshot==='function'?battleWeaponSnapshot():null,
   profile:{...getBattleAttackProfile()},session:{...currentBattleSession,events:[...currentBattleSession.events]},
   members:JSON.parse(JSON.stringify(raidMembers)),inventory:JSON.parse(JSON.stringify(inventory)),
   counters:[...counters].filter(([id])=>!currentBattleSession.events.has(id+':counter'))};
@@ -89,7 +90,8 @@ function resumeRaid(r){
  battleWeaponProfile=r.profile;battleWeaponAmmo=r.ammo;raidEndsAt=r.endsAt;attackCooldownEndsAt=r.cooldown;
  playerAttackCooldown=Date.now()<r.cooldown;
  weaponReloadEndsAt=r.reloadAt;
- if(r.reloadAt){const generation=battleGeneration;const finish=()=>{if(!isBattleActive||generation!==battleGeneration)return;battleWeaponAmmo=r.profile.capacity;weaponReloadEndsAt=0;renderWeaponBattleState();save();};if(r.reloadAt<=Date.now())finish();else weaponReloadTimer=setTimeout(finish,r.reloadAt-Date.now());}
+ if(typeof restoreBattleWeapons==='function')restoreBattleWeapons(r.weapons,r);
+ else if(r.reloadAt){const generation=battleGeneration;const finish=()=>{if(!isBattleActive||generation!==battleGeneration)return;battleWeaponAmmo=r.profile.capacity;weaponReloadEndsAt=0;renderWeaponBattleState();save();};if(r.reloadAt<=Date.now())finish();else weaponReloadTimer=setTimeout(finish,r.reloadAt-Date.now());}
  for(const [id,at] of r.counters||[]){if(typeof id!=='string'||!finite(at)||currentBattleSession.events.has(id+':counter'))continue;counters.set(id,at);setTimeout(()=>resumeCounter(id),Math.max(0,at-Date.now()));}
  raidTimerInterval=setInterval(updateRaidTimerTick,1000);friendAttackInterval=setInterval(friendsAutoAttackTick,3500);
  restoringRaid=false;updateRaidTimerTick();if(isBattleActive){updateBattleUI();updateRaidListUI();reopenNurseBattle();}
@@ -106,6 +108,7 @@ const attack=performPlayerAttack;performPlayerAttack=function(){const serial=cur
 const helpers=friendsAutoAttackTick;friendsAutoAttackTick=function(){const r=helpers.apply(this,arguments);save();return r;};
 const reload=startWeaponReload;startWeaponReload=function(){const r=reload.apply(this,arguments);save();return r;};
 window.addEventListener('pagehide',save);
+window.addEventListener('raid-weapon-state',save);
 function save(){if(restoringRaid)return false;if(protectedSave){saveFailed=true;return false;}state.raid=checkpoint();saveFailed=rewardRecoveryError||(pendingQuestReward?!saveGameProgress():!safeStorageSet(key,JSON.stringify(state)));return !saveFailed;}
 function sync(){stats.madness=state.mode==='trip'?100:0;if(!wardrobeSession)paperDollState.activeViewMode=state.mode==='trip'?'combat':'patient';currentRoom={id:state.room==='ward404'?'room_404':state.room,name:E.rooms[state.room][1],desc:'10-й этаж · секция '+E.rooms[state.room][0]};}
 function renderTasks(){
