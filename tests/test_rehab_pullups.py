@@ -16,9 +16,34 @@ class RehabPullupTests(unittest.TestCase):
         self.page.wait_for_function('document.querySelector(".rehab-pullups")?.dataset.pullupReady==="true"')
     def seed_energy(self):
         self.page.evaluate('stats.energy=100;stats.maxEnergy=100;saveGameProgress()')
-    def tap(self):
-        self.page.locator('[data-pullup-view]').click()
-        self.page.wait_for_timeout(100)
+    def tap(self,interval=100):
+        # The view itself is stationary. Locator.click waits for two render
+        # frames and turns a rapid cadence into slow clicks on a busy runner.
+        box=self.page.locator('[data-pullup-view]').bounding_box()
+        self.page.mouse.click(box['x']+box['width']/2,box['y']+box['height']/2)
+        self.page.wait_for_timeout(interval)
+    def test_slowing_or_stopping_falls_without_a_rep_and_peak_descends_immediately(self):
+        self.load();self.seed_energy();self.gym();self.page.locator('[data-pullup-start]').click()
+        for i in range(30):
+            self.tap()
+            if float(self.page.locator('.rehab-pullups').get_attribute('data-pullup-lift'))>.45:break
+        self.assertGreater(float(self.page.locator('.rehab-pullups').get_attribute('data-pullup-lift')),.45)
+        self.page.wait_for_timeout(280)
+        self.assertEqual(self.page.locator('.rehab-pullups').get_attribute('data-pullup-motion'),'down')
+        height=float(self.page.locator('.rehab-pullups').get_attribute('data-pullup-lift'))
+        self.tap(interval=350)
+        self.assertLess(float(self.page.locator('.rehab-pullups').get_attribute('data-pullup-lift')),height)
+        self.assertEqual(self.page.locator('.rehab-pullups').get_attribute('data-pullup-reps'),'0')
+        for i in range(45):
+            self.tap()
+            if self.page.locator('.rehab-pullups').get_attribute('data-pullup-phase')=='down':break
+        self.assertEqual(self.page.locator('.rehab-pullups').get_attribute('data-pullup-reps'),'1')
+        self.assertEqual(self.page.locator('.rehab-pullups').get_attribute('data-pullup-phase'),'down')
+        top=float(self.page.locator('.rehab-pullups').get_attribute('data-pullup-lift'));self.page.wait_for_timeout(80)
+        self.assertLess(float(self.page.locator('.rehab-pullups').get_attribute('data-pullup-lift')),top)
+        self.page.wait_for_timeout(650)
+        self.assertEqual(float(self.page.locator('.rehab-pullups').get_attribute('data-pullup-lift')),0)
+        self.assertEqual(self.page.evaluate('stats.energy'),100)
     def test_both_modes_lift_moves_scene_down_and_cancellation_costs_nothing(self):
         self.load();self.seed_energy()
         for mode in ['patient','trip']:
