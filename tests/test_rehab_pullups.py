@@ -16,7 +16,7 @@ class RehabPullupTests(unittest.TestCase):
         self.page.wait_for_function('document.querySelector(".rehab-pullups")?.dataset.pullupReady==="true"')
     def seed_energy(self):
         self.page.evaluate('stats.energy=100;stats.maxEnergy=100;saveGameProgress()')
-    def tap(self,interval=100):
+    def tap(self,interval=50):
         # The view itself is stationary. Locator.click waits for two render
         # frames and turns a rapid cadence into slow clicks on a busy runner.
         box=self.page.locator('[data-pullup-view]').bounding_box()
@@ -56,7 +56,7 @@ class RehabPullupTests(unittest.TestCase):
                 self.tap()
                 if float(self.page.locator('.rehab-pullups').get_attribute('data-pullup-lift'))>.35:break
             self.assertGreater(float(self.page.locator('.rehab-pullups').get_attribute('data-pullup-lift')),.35)
-            self.assertGreater(self.page.locator('.pullup-main').evaluate('e=>new DOMMatrix(getComputedStyle(e).transform).m42'),0)
+            self.assertGreater(self.page.locator('.pullup-world').evaluate('e=>new DOMMatrix(getComputedStyle(e).transform).m42'),0)
             self.page.screenshot(path=str(OUT/(mode+'-rising.png')))
             self.assertEqual(self.page.evaluate('stats.energy'),100)
             self.page.keyboard.press('Escape');self.page.wait_for_timeout(250)
