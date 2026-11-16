@@ -29,7 +29,7 @@ class RehabTrainingTests(unittest.TestCase):
         self.assertEqual(self.page.evaluate('stats.silver'),150)
         self.page.locator('[data-train="rope"]').click()
         self.assertIn('60 секунд',self.page.locator('.rehab-training>[role="status"]').inner_text())
-        out=Path('/workspace/artifacts/level-rehab');out.mkdir(exist_ok=True)
+        out=Path(__file__).resolve().parents[1]/'test-results/level-rehab';out.mkdir(parents=True,exist_ok=True)
         self.page.locator('.rehab-training h4').scroll_into_view_if_needed()
         self.page.screenshot(path=str(out/'training-real-preview.png'))
         self.page.reload(wait_until='networkidle')

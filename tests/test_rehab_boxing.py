@@ -3,7 +3,7 @@ import json
 from pathlib import Path
 import unittest
 from tests import test_game
-OUT=Path('/workspace/artifacts/level-rehab/boxing-live');OUT.mkdir(parents=True,exist_ok=True)
+OUT=Path(__file__).resolve().parents[1]/'test-results/level-rehab/boxing-live';OUT.mkdir(parents=True,exist_ok=True)
 class RehabBoxingTests(unittest.TestCase):
     setUpClass=classmethod(test_game.GameTests.setUpClass.__func__)
     tearDownClass=classmethod(test_game.GameTests.tearDownClass.__func__)

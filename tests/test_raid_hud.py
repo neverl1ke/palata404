@@ -2,7 +2,7 @@
 from pathlib import Path
 import unittest
 from tests import test_game as support
-OUT=Path('/workspace/artifacts/main-training-raid/verified');OUT.mkdir(parents=True,exist_ok=True)
+OUT=Path(__file__).resolve().parents[1]/'test-results/raid-hud';OUT.mkdir(parents=True,exist_ok=True)
 class RaidHUDTests(unittest.TestCase):
  setUpClass=classmethod(support.GameTests.setUpClass.__func__)
  tearDownClass=classmethod(support.GameTests.tearDownClass.__func__)
