@@ -1,0 +1,39 @@
+{
+  "reference": [
+    "assets/ui/wardrobe/clipboard-v2/board-original.png",
+    "assets/ui/wardrobe/clipboard-v2/slip-matched.webp"
+  ],
+  "instruction": "Trip large weapon description paper, finer grain; generate format variants rather than deforming texture; source PNGs unchanged.",
+  "variants": {
+    "landscape": {
+      "asset": "assets/ui/documents/weapon-paper-fine-landscape.webp",
+      "master": "/workspace/generated_images/exec-88701214-d5e5-4db1-8c8a-7f8e61c7afc9.png",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "source_sha256": "74e3ecfcac2aa8afdb7bbc32522c284972ac3af411051526d4c16bbf2084e910",
+      "runtime_encoding": "WebP quality94, no resize or geometric transformation"
+    },
+    "portrait": {
+      "asset": "assets/ui/documents/weapon-paper-fine-portrait.webp",
+      "master": "/workspace/generated_images/exec-f12bb61d-6403-4e42-b154-475e2a86f9e6.png",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "source_sha256": "86510a23de337c3555e736ff44072a2b8bd05dff3503c64465a400981e06e700",
+      "runtime_encoding": "WebP quality94, no resize or geometric transformation"
+    },
+    "strip": {
+      "asset": "assets/ui/documents/weapon-paper-fine-strip.webp",
+      "master": "/workspace/generated_images/exec-b767b0f8-3a4a-4e63-92f0-d9a7fee06f4b.png",
+      "dimensions": [
+        2172,
+        724
+      ],
+      "source_sha256": "b11c3e4aa7656f047d5b33b127e59e82fda332defc02da3c4b28f4d9c21abb69",
+      "runtime_encoding": "WebP quality94, no resize or geometric transformation"
+    }
+  }
+}

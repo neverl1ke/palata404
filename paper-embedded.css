@@ -1,0 +1,43 @@
+/* Fine weapon-description material on baked paper faces. Original hardware,
+   source artwork files, coordinates and all live content remain independent. */
+body .hospital-hud .hud-tabs .hud-menu-tab,
+.hospital-hud .hud-location-area,
+.hospital-hud .hud-procedures{background-image:var(--paper-material-strip);background-position:center;background-size:cover;background-repeat:no-repeat}
+
+.archive-wardrobe{--archive-paper:var(--paper-material-image)}
+.archive-wardrobe .archive-letterhead{background:url('assets/ui/documents/composed/wardrobe-header.svg') center/contain no-repeat!important}
+.archive-wardrobe .tablet-actions .archive-paper-action,
+.archive-wardrobe .archive-cosmetic-action button{background:var(--paper-material-strip) center/cover no-repeat;border:1px solid #8b6845;box-shadow:0 1px 2px #24150765}
+.archive-wardrobe .tablet-actions .archive-paper-action.weapon-upgrade{background-position:center}
+.archive-wardrobe::-webkit-scrollbar-thumb,
+.archive-wardrobe *::-webkit-scrollbar-thumb{background:#92734b var(--paper-material-portrait) center/cover no-repeat}
+.archive-wardrobe[data-category="appearance"] .wardrobe-inspection{background:var(--paper-material-portrait) center/cover no-repeat}
+/* The source references are retained as src for recovery and auditing. Only
+   their paper interiors are replaced; the authored clamp and pins are exact. */
+.archive-wardrobe .p404-board-art{content:url('assets/ui/documents/composed/weapon-board.svg')}
+.archive-wardrobe .p404-slip-art{content:url('assets/ui/documents/composed/weapon-slip.svg')}
+.raid-hud-art{content:url('assets/ui/documents/composed/raid-frame.svg')}
+#friend-invite-modal>div{background:#dfc495 var(--paper-material-portrait) center/cover no-repeat!important}
+
+/* A map changes shape with the viewport. Its material is a separate uniform
+   cover layer; only the source hardware cut-out and geometric mask resize. */
+#map-modal .quest-map-sheet{position:relative;isolation:isolate;background:none!important}
+#map-modal .quest-map-sheet::before{content:'';position:absolute;inset:0;z-index:-2;pointer-events:none;background:var(--paper-material-landscape) center/cover no-repeat;mask:url('assets/ui/documents/composed/map-paper-mask.svg') center/100% 100% no-repeat}
+#map-modal .quest-map-sheet::after{content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;background:url('assets/ui/documents/composed/map-hardware.svg') center/100% 100% no-repeat}
+/* Rarity hardware keeps its original tint; paper beneath it scales uniformly. */
+[data-rarity="common"]{--rarity-card:url('assets/ui/documents/composed/rarity-common-hardware.svg')}
+[data-rarity="improved"]{--rarity-card:url('assets/ui/documents/composed/rarity-improved-hardware.svg')}
+[data-rarity="rare"]{--rarity-card:url('assets/ui/documents/composed/rarity-rare-hardware.svg')}
+[data-rarity="experimental"]{--rarity-card:url('assets/ui/documents/composed/rarity-experimental-hardware.svg')}
+.archive-wardrobe .wardrobe-item-card:has(.weapon-icon-frame)::before,
+.archive-wardrobe .tablet-weapon-mount::before,
+.raid-weapon-select::before{content:'';position:absolute;inset:2%;z-index:-2;pointer-events:none;background:var(--paper-material-strip) center/cover no-repeat;border-radius:5px}
+.archive-wardrobe .archive-tablet[data-weapon-kind=""] .tablet-weapon-mount::before{display:none}
+.archive-wardrobe .archive-footer>button:not(:last-child){background:var(--paper-material-strip) center/cover no-repeat}
+.archive-wardrobe .archive-file-note,
+.archive-wardrobe .archive-slot.appearance,
+.archive-wardrobe .wardrobe-items-heading,
+.archive-wardrobe .wardrobe-view-switch button[aria-pressed="true"]{background:var(--paper-material-image) center/cover no-repeat}
+/* Fine material also covers the live weapon action labels; border artwork is
+   replaced by its existing thin rule, rather than stretching a paper sprite. */
+.archive-wardrobe .archive-unified-tablet .p404-actions button{border:1px solid #8c6a43;border-image:none;background:var(--paper-material-strip) center/cover no-repeat}

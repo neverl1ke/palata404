@@ -1,8 +1,9 @@
-/* One material and typographic contract; artwork and live content are independent. */
-:root{--document-ink:#241a11;--document-red:#7e291f;--document-line:#49301c;--document-font:'Palata Typewriter','Courier New',monospace;--document-edge:34px;--document-paper-source:url('assets/ui/documents/paper-source.jpg');--document-paper-center:url('assets/ui/documents/paper-center.svg')}
+/* Fine paper from the Trip weapon description; artwork and live content remain independent.
+   A single proportionate image covers each face. Never stretch a border image. */
+:root{--document-ink:#241a11;--document-red:#7e291f;--document-line:#49301c;--document-font:'Palata Typewriter','Courier New',monospace;--document-edge:34px;--document-paper-source:var(--paper-material-image);--document-paper-center:var(--paper-material-image)}
 .document-paper{position:relative;isolation:isolate;background:none!important;color:var(--document-ink);--paper-edge:var(--document-edge)}
-.document-paper::before{content:'';position:absolute;inset:calc(var(--paper-edge) * .8);z-index:-1;pointer-events:none;background:var(--document-paper-center) center/cover no-repeat;border:0;box-shadow:none;mask-image:radial-gradient(ellipse farthest-side,#000 64%,transparent 100%)}
-.document-paper::after{content:'';position:absolute;inset:0;z-index:-2;pointer-events:none;border:var(--paper-edge) solid transparent;border-image-source:var(--document-paper-source);border-image-slice:90 fill;border-image-width:var(--paper-edge);border-image-repeat:stretch;box-sizing:border-box}
+.document-paper::before{content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;background:none;border:0;box-shadow:inset 0 0 18px #79563116;mask-image:none}
+.document-paper::after{content:'';position:absolute;inset:0;z-index:-2;pointer-events:none;border:1px solid #9a7955;background:#d8b989 var(--paper-material-image) center/cover no-repeat;box-sizing:border-box}
 document-paper,document-layout{display:block;padding:clamp(24px,4%,50px)}
 document-layout{max-width:100%;min-width:0}
 document-header{display:block;position:relative;container-type:inline-size;min-width:0;width:100%;color:var(--document-ink);font-family:var(--document-font);text-align:left;line-height:1.1;font-weight:normal}

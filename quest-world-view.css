@@ -6,3 +6,7 @@
 .quest-call-service-tag{position:absolute;z-index:3;left:72.3%;top:43.2%;width:22px;height:30px;background:#d5c7a3;border:1px solid #8c7756;box-shadow:1px 2px 3px #16130d66;color:#744d32;transform:rotate(6deg);font:18px/28px var(--document-font,'Courier New',monospace);text-align:center;pointer-events:none}
 .quest-observation-physical-mark{position:absolute;left:26.5%;top:31.1%;width:2.7%;height:4.1%;z-index:2;pointer-events:none;fill:none;stroke:#362c1c;stroke-width:4;stroke-linecap:round;opacity:.83;mix-blend-mode:multiply}
 @media(max-height:600px){.quest-world-effect{padding:9px;margin:9px 0}.quest-world-effect h4{font-size:13px}.quest-world-effect p{font-size:12px}}
+
+/* Documentary consequences and physical paper tags use the same fine stock. */
+.quest-world-effect,.quest-world-post-response{background:#d8b989 var(--paper-material-landscape) center/cover no-repeat}
+.quest-bed-service-tag,.quest-call-service-tag{background:#d8b989 var(--paper-material-portrait) center/cover no-repeat}

@@ -1,13 +1,14 @@
-/* Approved settings concept. Scoped to this dialog; neighbours and game art stay unchanged. */
+/* Settings retain their layout, with the shared fine weapon-description paper. */
 #settings-modal .settings-paper {
     width: min(560px, calc(100vw - 32px));
     padding: 28px;
     border: 1px solid #9a8060;
     border-radius: 10px;
     background-color: #f1e6cf;
-    background-image: linear-gradient(#f7efdcde, #f7efdcde), var(--document-paper-center);
+    background-image: var(--paper-material-portrait);
     background-position: center;
     background-size: cover;
+    background-repeat: no-repeat;
     color: #34261c;
     backdrop-filter: none;
     box-shadow: 0 15px 45px #0009, inset 0 0 24px #8f60252b, inset 0 0 0 2px #fff8;

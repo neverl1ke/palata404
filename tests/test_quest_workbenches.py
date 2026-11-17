@@ -427,8 +427,24 @@ class QuestWorkbenchTests(unittest.TestCase):
                 if width==390:
                     self.page.locator('.workbench-brief summary').click()
                     self.page.locator('[data-work-field="signature"]').focus()
+                    scroll_before_wheel=self.page.locator('.workbench-scroll').evaluate('e=>e.scrollTop')
                     self.page.locator('.workbench-scroll').hover();self.page.mouse.wheel(0,260)
-                    self.page.wait_for_function('document.querySelector(".workbench-scroll").scrollTop>0')
+                    # Focus already scrolls this field into view. scrollTop>0
+                    # therefore passes before Chromium processes the wheel.
+                    # Wait for the actual scroll input and stable paint frames
+                    # before comparing it with a background refresh.
+                    self.page.wait_for_function('before=>document.querySelector(".workbench-scroll").scrollTop>before',arg=scroll_before_wheel)
+                    self.page.evaluate('''()=>new Promise(resolve=>{
+                        const scroller=document.querySelector('.workbench-scroll');
+                        let previous=scroller.scrollTop,stable=0,frames=0;
+                        const settled=()=>{
+                            const current=scroller.scrollTop;
+                            stable=current===previous?stable+1:0;previous=current;
+                            if(++frames>=3&&stable>=3){resolve();return;}
+                            requestAnimationFrame(settled);
+                        };
+                        requestAnimationFrame(settled);
+                    })''')
                     view='''()=>({scroll:document.querySelector('.workbench-scroll').scrollTop,briefOpen:document.querySelector('.workbench-brief').open,focus:document.activeElement.dataset.workFocus||null,work:PalataQuestPrototype.snapshot().jobs.k3.work})'''
                     before_view=self.page.evaluate(view);before_ledger=self.ledger()
                     # Energy and other background updates use this real refresh path.
@@ -472,6 +488,60 @@ class QuestWorkbenchTests(unittest.TestCase):
         self.assertEqual(self.ledger(),before)
         self.assertNotIn('linen',self.ledger()['cargo'])
         self.assertIn('чистых целых упаковках',self.page.locator('.workbench-status').inner_text())
+
+    def test_mobile_map_panning_preview_and_room_documents_remain_readable(self):
+        self.page.set_viewport_size({'width':390,'height':844})
+        self.load();self.page.locator('#location-card-box').click()
+        geometry=self.page.locator('#map-floors-view').evaluate('''e=>{
+            const plan=e.querySelector('.quest-blueprint').getBoundingClientRect(),
+                metadata=e.querySelector('.quest-map-sidebar').getBoundingClientRect();
+            return {planBottom:plan.bottom,metadataTop:metadata.top,
+                headings:[...document.querySelectorAll('.quest-official-header .document-ministry,.quest-official-header .document-institution,.quest-official-header .document-department')].map(n=>({text:n.innerText,width:n.clientWidth,scrollWidth:n.scrollWidth,height:n.clientHeight,scrollHeight:n.scrollHeight}))};
+        }''')
+        self.assertLessEqual(geometry['planBottom'],geometry['metadataTop'],geometry)
+        self.assertEqual(len(geometry['headings']),3,geometry)
+        for heading in geometry['headings']:
+            self.assertTrue(heading['text'].strip(),heading)
+            self.assertLessEqual(heading['scrollWidth'],heading['width'],heading)
+            self.assertLessEqual(heading['scrollHeight'],heading['height'],heading)
+
+        # Native UI scroll and keyboard focus must survive an ordinary HUD refresh.
+        pan=self.page.locator('.quest-blueprint-viewport');pan.focus()
+        pan.evaluate('e=>e.scrollLeft=250')
+        self.page.evaluate('updateUI()')
+        self.assertEqual(pan.evaluate('e=>e.scrollLeft'),250)
+        self.assertTrue(pan.evaluate('e=>document.activeElement===e'))
+        self.page.keyboard.press('ArrowRight')
+        self.page.wait_for_function('document.querySelector(".quest-blueprint-viewport").scrollLeft>250')
+
+        # A single click reveals the room description below the panned plan.
+        self.page.locator('.quest-map-pin[data-room="nurse"]').click()
+        self.page.wait_for_function('''()=>{
+            const card=document.querySelector('.quest-room-preview');if(!card)return false;
+            const r=card.getBoundingClientRect(),frame=card.closest('.quest-floor').getBoundingClientRect();
+            return r.top>=frame.top-1&&r.bottom<=frame.bottom+1;
+        }''')
+        self.page.locator('[data-enter-room="nurse"]').click()
+        self.page.wait_for_function('PalataQuestPrototype.snapshot().room==="nurse"&&!document.getElementById("quest-location-screen").classList.contains("hidden")')
+        paper=self.page.locator('.scene-paper')
+        self.assertLessEqual(paper.evaluate('e=>e.scrollWidth'),paper.evaluate('e=>e.clientWidth'))
+        for control in paper.locator('h3,button').all():
+            if not control.is_visible():continue
+            self.assertLessEqual(control.evaluate('e=>e.scrollWidth'),control.evaluate('e=>e.clientWidth'),control.inner_text())
+        for control in paper.locator('button').all():
+            if not control.is_visible():continue
+            control.evaluate('e=>e.scrollIntoView({block:"center"})')
+            control.click(trial=True,timeout=3000)
+
+        paper.get_by_role('button',name='Открыть задания',exact=True).click()
+        self.assertTrue(self.page.locator('#tasks-modal').is_visible())
+        self.page.locator('#tasks-modal [onclick="closeTasks()"]').click()
+        paper.get_by_role('button',name='Вернуться к карте',exact=True).click()
+        self.assertTrue(self.page.locator('#map-modal').is_visible())
+        self.assertTrue(self.page.locator('#quest-location-screen').is_hidden())
+        # The existing fast double-click route remains usable too.
+        ui.room(self.page,'ward404')
+        self.assertEqual(self.progress()['room'],'ward404')
 
 
 if __name__=='__main__':unittest.main()

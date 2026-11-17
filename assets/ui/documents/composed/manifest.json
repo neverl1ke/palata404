@@ -1,0 +1,115 @@
+{
+  "version": 1,
+  "material": "../weapon-paper-fine-landscape.webp",
+  "scope": "Paper interiors only; source originals unchanged. Source-aligned masks keep hardware. The original player stat chart is excluded. Other printed shaded highlights adopt the new paper tone through luminance isolation, not pixel-identical preservation.",
+  "files": {
+    "raid-frame.svg": {
+      "source": "assets/ui/raid/hud-frame.png",
+      "source_sha256": "b3de073dc5c8515349cfb16f0ccf5fec200405e9f69e7a9abd41e750980260a4",
+      "size": [
+        1670,
+        942
+      ],
+      "paper": "<path fill-rule=\"evenodd\" d=\"M50 697H376L391 716V868L370 897H51L40 874V716Z M302 727H396V845H302Z\"/><path d=\"M1263 148L1407 135L1421 208L1273 221Z\"/><path d=\"M1420 144H1638V198H1420Z\"/><path d=\"M452 793H821Q835 793 835 809V889Q835 904 821 904H451Q441 904 441 891V811Z\"/><path d=\"M882 793H1196Q1210 793 1210 810V890Q1210 903 1196 903H882Q869 903 869 890V809Z\"/><ellipse cx=\"1464\" cy=\"78\" rx=\"58\" ry=\"35\"/>",
+      "protected": "<path d=\"M303 728L373 719L383 705L396 701L406 709L402 733L400 842L311 850Z\"/><path d=\"M448 810L487 768L502 780L464 824Z\"/><path d=\"M874 810L913 768L928 780L890 824Z\"/>",
+      "printed_ink_isolated": false,
+      "sha256": "5cf700399bd0ed23f896a5605c978a31b3350b29f4d41f50c13a7c597e5ba7b7"
+    },
+    "weapon-board.svg": {
+      "source": "assets/ui/wardrobe/clipboard-v2/board-original.png",
+      "source_sha256": "cd8faac300be2f24a63b8d8bde33926b3286312b981545275ee1d07083d48df8",
+      "size": [
+        1054,
+        1492
+      ],
+      "paper": "<path d=\"M63 99H994L1014 132V1385L984 1431H76L44 1381V139Z\"/>",
+      "protected": "",
+      "printed_ink_isolated": false,
+      "sha256": "236d15219719da9ce89524deca158182c35fc138e18f4b38ddea0af8f50ca389"
+    },
+    "weapon-slip.svg": {
+      "source": "assets/ui/wardrobe/clipboard-v2/slip-matched.webp",
+      "source_sha256": "d4ddd807bef8e487481f2a34c22937e2a828f051c94d2be5bf413c0a9aa5f68c",
+      "size": [
+        1816,
+        866
+      ],
+      "paper": "<path d=\"M64 94H1751L1773 131V734L1729 790H87L48 743V135Z\"/>",
+      "protected": "<path d=\"M244 69H351V110H244Z\"/><path d=\"M1440 72H1559V110H1440Z\"/>",
+      "printed_ink_isolated": false,
+      "sha256": "d0d3106cf391c8c4faad5026a9c88b11e908033912e5058394e719e9b999a957"
+    },
+    "wardrobe-header.svg": {
+      "source": "assets/ui/wardrobe/paper-header-only.svg",
+      "source_sha256": "3f74f8499953076322fee4e22f6b344639079ab35757e6ae6ea9b868f6f91f04",
+      "size": [
+        2090,
+        443
+      ],
+      "paper": "<path d=\"M29 40H2036L2072 78V377L2031 414H42L15 381V79Z\"/>",
+      "protected": "",
+      "printed_ink_isolated": true,
+      "sha256": "825d47e3d096a666165460df0923c0ce666b47a74b7d3914d38869faa063ad67"
+    },
+    "map-hardware.svg": {
+      "source": "assets/quest-scenes/clipboard.webp",
+      "source_sha256": "f12479d7c72004cbf71beb617418b28cf72fb5ea90d1db0162bc291fc6154622",
+      "size": [
+        1536,
+        1024
+      ],
+      "paper": "<path d=\"M64 79Q69 71 99 72H1424Q1461 73 1470 111L1488 152V912Q1481 970 1436 982H94Q40 974 35 930V151Q35 103 64 79Z\"/>",
+      "protected": "<path d=\"M510 151Q506 130 516 116L521 106Q521 74 541 56Q553 42 586 43H706Q709 11 724 0H808Q825 16 828 43H955Q986 44 1002 67Q1011 84 1013 110Q1028 126 1027 147Q1027 165 1012 170H524Q508 166 510 151Z\"/>",
+      "printed_ink_isolated": false,
+      "sha256": "142531fc7e0c5a1efb879c6c9d8fa1dac954b28c860cb53dff544a4e0906024d"
+    },
+    "rarity-common-hardware.svg": {
+      "source": "assets/ui/wardrobe/rarity-cards/common-blank.png",
+      "source_sha256": "5701b38de4b4e80898f606e8c06ee8843ac145c55f7e82381972ec85806bcc67",
+      "size": [
+        2170,
+        593
+      ],
+      "paper": "<rect x=\"65\" y=\"50\" width=\"2040\" height=\"493\" rx=\"6\"/>",
+      "protected": "",
+      "printed_ink_isolated": false,
+      "sha256": "60f8b561cf02f457db2840dbbceae0ec32624fdf9cc9661fb1763a7532df2b0e"
+    },
+    "rarity-improved-hardware.svg": {
+      "source": "assets/ui/wardrobe/rarity-cards/improved-blank.png",
+      "source_sha256": "074c1a42a6ed1d5d703e8eb8b73787821e6974acc415644bb5633d2973f3549d",
+      "size": [
+        2170,
+        569
+      ],
+      "paper": "<rect x=\"65\" y=\"50\" width=\"2040\" height=\"469\" rx=\"6\"/>",
+      "protected": "",
+      "printed_ink_isolated": false,
+      "sha256": "508dd6d610e3630cee41645ab8230539b5c5c54efe507a4f84f5db194c4650fd"
+    },
+    "rarity-rare-hardware.svg": {
+      "source": "assets/ui/wardrobe/rarity-cards/rare-blank.png",
+      "source_sha256": "ded793a42e9c3fce670d6967fd5cb24ff4dd42e2dd9b86cdcfd620e1f0fdff1c",
+      "size": [
+        2170,
+        525
+      ],
+      "paper": "<rect x=\"65\" y=\"50\" width=\"2040\" height=\"425\" rx=\"6\"/>",
+      "protected": "",
+      "printed_ink_isolated": false,
+      "sha256": "9d244e1ff0b8ac9196e57a52e399cc61a1a3f99d63d28664e6e6cd6cad5c8e2a"
+    },
+    "rarity-experimental-hardware.svg": {
+      "source": "assets/ui/wardrobe/rarity-cards/experimental-blank.png",
+      "source_sha256": "8206974cf203a26e3b0aefc87c324de23a4386831ae2012ed618d40e28bdf54b",
+      "size": [
+        2172,
+        446
+      ],
+      "paper": "<rect x=\"65\" y=\"50\" width=\"2042\" height=\"346\" rx=\"6\"/>",
+      "protected": "",
+      "printed_ink_isolated": false,
+      "sha256": "80192259309ffc5707ae546848449302dc6379f7a6ca90a1c20e18ac2f724ba0"
+    }
+  }
+}

@@ -1,0 +1,60 @@
+/* The Trip weapon description is the material reference. These independent
+   formats are newly generated fine-grain sheets, never stretched source art.
+   `cover` uses one scale for both axes; only the crop changes with a panel. */
+:root {
+    --paper-material-landscape: url('assets/ui/documents/weapon-paper-fine-landscape.webp');
+    --paper-material-portrait: url('assets/ui/documents/weapon-paper-fine-portrait.webp');
+    --paper-material-strip: url('assets/ui/documents/weapon-paper-fine-strip.webp');
+    --paper-material-image: var(--paper-material-landscape);
+    --paper-material-color: #e4c18e;
+}
+
+.battle-report,
+.staff-case-sheet,
+.staff-document-reading,
+.staff-reward-section {
+    background: var(--paper-material-color) var(--paper-material-landscape) center / cover no-repeat;
+}
+.dossier-paper {
+    background: var(--paper-material-color) var(--paper-material-portrait) center / cover no-repeat !important;
+}
+#level-notice article { --paper-material-image: var(--paper-material-portrait); }
+.report-conclusion,
+.staff-case-button,
+.staff-identity,
+.staff-identity-note,
+.staff-document-item,
+.staff-reward-card {
+    background: var(--paper-material-color) var(--paper-material-landscape) center / cover no-repeat;
+}
+.staff-tabs button,
+.report-button-secondary,
+#level-notice button,
+.rehab-exercise header button,
+.rehab-pullups header button,
+.rehab-boxing header button {
+    background: var(--paper-material-color) var(--paper-material-strip) center / cover no-repeat;
+}
+.staff-case-button.selected {
+    border-color: #743b37;
+    background: var(--paper-material-color) var(--paper-material-landscape) center / cover no-repeat;
+}
+.staff-tabs button[aria-pressed=true] {
+    border-bottom-color: #743b37;
+    background: var(--paper-material-color) var(--paper-material-strip) center / cover no-repeat;
+}
+.staff-record-locked { border-left-color: #947556; }
+.staff-reward-claimed { border-color: #657360; }
+
+/* The loader is itself a small paper note, not a wood or leather panel. */
+.scene-loading-paper {
+    background: var(--paper-material-color) var(--paper-material-landscape) center / cover no-repeat;
+    color: #30261e;
+    box-shadow: 0 9px 28px #0008, inset 0 0 12px #76522b16;
+}
+.scene-loading-paper .scene-loading-name { border-color: #8c6744; }
+
+/* Training lives on the room's document. Opaque flat fills previously hid it. */
+#quest-location-screen .scene-paper:has(.rehab-training) { background: none !important; }
+.rehab-training,
+.rehab-training > section { background: transparent; }

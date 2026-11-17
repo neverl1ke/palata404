@@ -156,3 +156,94 @@
 @media (pointer:coarse) {
     .archive-unified-tablet .p404-actions button::after { min-height:100px; }
 }
+
+/* The older clothing document has two real sheets, unlike the fixed artwork
+   weapon tablet. Let its content keep a readable height and scroll as a whole
+   rather than squeezing the upper sheet beneath a fixed lower ledger. */
+@media (max-width:1100px), (max-height:650px) {
+    .archive-wardrobe[data-inspecting=true] #wardrobe-item-detail:has(>.archive-tablet>.tablet-main-sheet) {
+        overflow:auto!important;
+        padding:0 12px 12px!important;
+        scroll-padding-top:64px;
+    }
+    .archive-wardrobe #wardrobe-item-detail>.archive-tablet:has(>.tablet-main-sheet) {
+        grid-template-rows:minmax(460px,auto) minmax(230px,auto);
+        height:auto;
+        min-height:696px;
+        margin:32px auto 0;
+        container-type:inline-size;
+    }
+    .archive-wardrobe #wardrobe-item-detail>.archive-tablet>.tablet-main-sheet {
+        min-height:460px;
+    }
+    .archive-wardrobe #wardrobe-item-detail>.archive-tablet>.tablet-approval-sheet {
+        min-height:230px;
+    }
+    .archive-wardrobe #wardrobe-item-detail:has(>.archive-tablet>.tablet-main-sheet)>.archive-detail-close {
+        position:sticky;
+        top:0;
+        min-height:44px;
+        margin:0 0 12px;
+        width:100%;
+    }
+}
+/* Clothing has an illustration and a prose description, not the weapon
+   tablet's seven numeric rows. Explicit areas prevent an implicit second
+   column from squeezing the institutional heading and item title. */
+.archive-wardrobe #wardrobe-item-detail>.archive-tablet[data-weapon-kind=""]>.tablet-main-sheet {
+    grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+    grid-template-rows:auto auto minmax(200px,1fr) auto;
+    gap:12px;
+}
+.archive-wardrobe .archive-tablet[data-weapon-kind=""]>.tablet-main-sheet>document-header {
+    grid-column:1/-1;
+    grid-row:1;
+}
+.archive-wardrobe .archive-tablet[data-weapon-kind=""]>.tablet-main-sheet>.tablet-title {
+    grid-column:1/-1;
+    grid-row:2;
+    min-height:44px;
+    text-align:center;
+}
+.archive-wardrobe .archive-tablet[data-weapon-kind=""]>.tablet-main-sheet>.tablet-weapon-mount {
+    grid-column:1;
+    grid-row:3;
+    min-height:200px;
+}
+.archive-wardrobe .archive-tablet[data-weapon-kind=""]>.tablet-main-sheet>.tablet-description {
+    grid-column:2;
+    grid-row:3;
+    align-self:center;
+    min-width:0;
+    font-size:14px;
+    line-height:1.45;
+}
+.archive-wardrobe .archive-tablet[data-weapon-kind=""]>.tablet-main-sheet>.tablet-actions {
+    grid-column:1/-1;
+    grid-row:4;
+    justify-content:center;
+    grid-template-columns:minmax(150px,50%);
+}
+@media (max-width:600px) {
+    .archive-wardrobe #wardrobe-item-detail>.archive-tablet[data-weapon-kind=""]>.tablet-main-sheet {
+        grid-template-columns:minmax(0,1fr);
+        grid-template-rows:auto auto minmax(200px,1fr) auto auto;
+    }
+    .archive-wardrobe .archive-tablet[data-weapon-kind=""]>.tablet-main-sheet>.tablet-weapon-mount {
+        grid-column:1;
+        grid-row:3;
+    }
+    .archive-wardrobe .archive-tablet[data-weapon-kind=""]>.tablet-main-sheet>.tablet-description {
+        grid-column:1;
+        grid-row:4;
+    }
+    .archive-wardrobe .archive-tablet[data-weapon-kind=""]>.tablet-main-sheet>.tablet-actions {
+        grid-row:5;
+    }
+}
+
+/* The same readable clothing document also applies to a desktop side pane. */
+.archive-wardrobe #wardrobe-item-detail:has(>.archive-tablet>.tablet-main-sheet){overflow:auto!important}
+.archive-wardrobe #wardrobe-item-detail>.archive-tablet:has(>.tablet-main-sheet){grid-template-rows:minmax(460px,auto) minmax(230px,auto);height:auto;min-height:696px;margin:32px auto 0;container-type:inline-size}
+.archive-wardrobe #wardrobe-item-detail>.archive-tablet>.tablet-main-sheet{min-height:460px}
+.archive-wardrobe #wardrobe-item-detail>.archive-tablet>.tablet-approval-sheet{min-height:230px}

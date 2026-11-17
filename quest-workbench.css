@@ -1,4 +1,4 @@
-/* New work surfaces reuse the approved hospital paper, emblem and typewriter. */
+/* Work surfaces share the Trip weapon-description paper, emblem and typewriter. */
 .quest-workbench-host{position:absolute;inset:0;z-index:20;pointer-events:none}
 .quest-workbench{position:absolute;inset:64px 16px 16px;display:flex;flex-direction:column;min-height:0;max-width:1260px;margin:0 auto;background:#282d26;color:#30291e;border:1px solid #786e52;box-shadow:0 12px 55px #000b;font:15px/1.45 var(--document-font,'Courier New',monospace);pointer-events:auto;isolation:isolate}
 .quest-workbench *{box-sizing:border-box}.quest-workbench button{font:inherit;letter-spacing:normal;text-transform:none;white-space:normal;cursor:pointer;min-height:44px;border:1px solid #87765a;border-radius:2px;padding:9px 12px;background:#e1d4b4;color:#30271b;box-shadow:inset 0 1px #fff5,0 1px 2px #201a1426}.quest-workbench button:hover:not(:disabled){background:#f0e4c7;border-color:#5b573c}.quest-workbench button:focus-visible{outline:3px solid #4f7180;outline-offset:2px}.quest-workbench button:disabled{opacity:.58;cursor:default}.quest-workbench button[aria-pressed=true]{background:#d4dcc0;border-color:#516044;box-shadow:inset 0 0 0 1px #516044}.quest-workbench button[aria-pressed=true]::before{content:'✓ ';font-weight:bold}
@@ -34,3 +34,25 @@
 .quest-workbench .workbench-bed-reference svg{aspect-ratio:970/290}.quest-workbench .workbench-bed-diagram{max-width:440px}.quest-workbench .workbench-bed-pieces,.quest-workbench .workbench-bed-scheme{padding:12px}.quest-workbench .workbench-bed-pieces h3{margin-bottom:6px}.quest-workbench button.workbench-bed-piece{padding:8px 10px;gap:2px 9px}.quest-workbench .workbench-bed-piece .workbench-object-illustration{height:46px}.quest-workbench .workbench-bed-reference figcaption{font-size:10px;padding:4px 7px}.quest-workbench .workbench-shortage{display:grid;grid-template-columns:minmax(0,1fr) max-content;gap:4px 18px;align-items:center;padding:10px 14px}.quest-workbench .workbench-shortage h3,.quest-workbench .workbench-shortage>p{grid-column:1;margin:0}.quest-workbench .workbench-shortage>button{grid-column:2;grid-row:1/3}.quest-workbench .workbench-shortage>.workbench-reserve-guidance{grid-column:1/-1;margin-top:5px}
 @media(max-width:600px){.quest-workbench .workbench-shortage{display:block}.quest-workbench .workbench-shortage>p{margin:6px 0 9px}.quest-workbench .workbench-shortage>button{width:100%}}
 @media(max-height:600px) and (min-width:601px){.quest-workbench .workbench-bed-pieces{display:grid;grid-template-columns:1fr 1fr;gap:7px;padding:9px}.quest-workbench .workbench-bed-pieces>figure{display:none}.quest-workbench .workbench-bed-pieces>h3{grid-column:1/-1;font-size:13px;margin:0 0 3px}.quest-workbench button.workbench-bed-piece{display:flex;flex-direction:column;align-items:flex-start;gap:2px;margin:0;padding:7px}.quest-workbench .workbench-bed-piece .workbench-object-illustration{height:28px}.quest-workbench .workbench-bed-piece strong{font-size:12px}.quest-workbench .workbench-bed-piece span{font-size:11px}.quest-workbench .workbench-bed-piece small{font-size:10px}.quest-workbench .workbench-bed-scheme{padding:9px}.quest-workbench .workbench-bed-scheme>h3{font-size:13px;margin:0 0 6px}.quest-workbench .workbench-bed-scheme>.workbench-muted{display:none}.quest-workbench .workbench-bed-diagram{display:flex;flex-direction:column;gap:8px;aspect-ratio:auto;max-width:none}.quest-workbench .workbench-bed-diagram>svg{display:none}.quest-workbench[data-work-kind=bedmaking] button.workbench-bed-target[data-bed-zone]{position:static;width:100%;height:auto;min-height:52px;font-size:12px}}
+
+/* Material bindings only: the equipment housings, green metal trays, actual
+   linen illustrations and physical bed targets retain their own artwork. */
+.quest-workbench .workbench-paper{--paper-material-image:var(--paper-material-landscape)}
+.quest-workbench .workbench-request,.quest-workbench .workbench-packing-list,
+.quest-workbench .workbench-receipt,.quest-workbench .workbench-record,
+.quest-workbench .workbench-observation-card,.quest-workbench .workbench-pairing,
+.quest-workbench .workbench-diagnostic-form,.quest-workbench .workbench-test-observation,
+.quest-workbench .workbench-shortage,.quest-workbench .workbench-bed-pieces,
+.quest-workbench .workbench-bed-scheme{background:#d8b989 var(--paper-material-landscape) center/cover no-repeat}
+.quest-workbench .workbench-item:not(.workbench-medical-container){background-image:var(--paper-material-landscape);background-position:center;background-size:cover;background-repeat:no-repeat}
+.quest-workbench .workbench-record{background-image:var(--paper-material-portrait)}
+.quest-workbench .workbench-container-label,.quest-workbench .workbench-container-seal,
+.quest-workbench .workbench-call-number,.quest-workbench .workbench-footer,
+.quest-workbench .workbench-bed-reference figcaption{background-image:var(--paper-material-strip);background-position:center;background-size:cover;background-repeat:no-repeat}
+.quest-workbench button:not(.workbench-call-trigger):not(.workbench-bed-target):not(.workbench-submit){background-image:var(--paper-material-strip);background-position:center;background-size:cover;background-repeat:no-repeat}
+.quest-workbench button.workbench-reserve-option,.quest-workbench button.workbench-bed-piece{background-image:var(--paper-material-landscape)}
+.quest-workbench button.workbench-compare-row[aria-pressed=true],
+.quest-workbench button.workbench-mark[aria-pressed=true]{background-image:linear-gradient(#d4dcc066,#d4dcc066),var(--paper-material-strip)}
+.quest-workbench .workbench-timeline{background:repeating-linear-gradient(0deg,transparent 0 35px,#86715338 35px 36px),var(--paper-material-portrait) center/cover no-repeat}
+
+@media(max-width:1024px){.quest-workbench .workbench-paper{--paper-material-image:var(--paper-material-portrait)}}

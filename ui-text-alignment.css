@@ -1,0 +1,129 @@
+/* Titles and action labels are centred within their own usable areas.
+   Reading paragraphs, evidence fields and numeric columns keep their alignment.
+   No artwork, paper material or player-chart coordinates are changed here. */
+:is(#settings-modal,#bank-modal,#inventory-modal,#item-info-modal,#friends-modal,
+    #gym-modal,#medical-hub-modal,#procedure-room-modal,#tasks-modal,#dossier-modal) .modal-header {
+    display: grid;
+    grid-template-columns: 44px minmax(0,1fr) 44px;
+    align-items: center;
+    gap: 8px;
+}
+:is(#settings-modal,#bank-modal,#inventory-modal,#item-info-modal,#friends-modal,
+    #gym-modal,#medical-hub-modal,#procedure-room-modal,#tasks-modal,#dossier-modal) .modal-header > h3 {
+    grid-column: 2;
+    grid-row: 1;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    min-width: 0;
+    margin: 0;
+    text-align: center;
+    overflow-wrap: anywhere;
+}
+:is(#settings-modal,#bank-modal,#inventory-modal,#item-info-modal,#friends-modal,
+    #gym-modal,#medical-hub-modal,#procedure-room-modal,#tasks-modal,#dossier-modal) .modal-header > :is(.btn-close-mini,button[onclick="closeTasks()"]) {
+    grid-column: 3;
+    grid-row: 1;
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    min-height: 44px;
+    padding: 0;
+    line-height: 1;
+}
+#settings-modal .menu-btn {
+    grid-template-columns: 25px minmax(0,1fr) 25px;
+    justify-items: center;
+    gap: 4px 10px;
+    text-align: center;
+}
+#settings-modal .menu-btn > .game-icon { grid-column: 1; grid-row: 1; }
+#settings-modal .settings-action-label { grid-column: 2; grid-row: 1; min-width: 0; }
+#settings-modal .settings-status { grid-column: 1 / -1; grid-row: 2; text-align: center; }
+.quest-sheet .quest-tabs { justify-content: center; }
+.quest-sheet .quest-tabs button { flex: 1 1 120px; text-align: center; }
+.scene-paper > h3,
+.quest-room-preview > h4,
+.quest-workbench .workbench-heading { text-align: center; }
+.scene-paper button,
+.quest-room-preview button { text-align: center; }
+.raid-archive-toolbar,
+.staff-archive-toolbar { justify-content: center; }
+.raid-archive-toolbar > h2,
+.staff-archive-toolbar > h2 {
+    flex: 1 0 100%;
+    text-align: center;
+    margin: 0;
+}
+.raid-archive-toolbar .report-detail-link { margin-left: 0; }
+.battle-report-header { align-items: center; }
+.battle-report-header .report-institution { flex: 1; text-align: center; }
+.archive-wardrobe .archive-slot > span {
+    left: 4px;
+    right: 4px;
+    text-align: center;
+    overflow-wrap: normal;
+}
+.archive-wardrobe .wardrobe-items-heading {
+    position: relative;
+    padding-inline: 38px;
+}
+.archive-wardrobe .wardrobe-items-heading h4 {
+    flex: 1;
+    min-width: 0;
+    margin: 0;
+    text-align: center;
+}
+.archive-wardrobe .wardrobe-items-heading .archive-drawer-toggle {
+    position: absolute;
+    right: 6px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+@media (min-width: 701px) and (max-width: 1100px) {
+    .archive-wardrobe .archive-slot > span { font-size: 10px; }
+}
+
+/* The archive stamp has its own line instead of crossing the title/close key. */
+#dossier-modal .dossier-header-stamp {
+    position: static;
+    display: table;
+    box-sizing: border-box;
+    max-width: calc(100% - 20px);
+    margin: 0 auto 12px;
+    text-align: center;
+    transform: rotate(-2deg);
+}
+#dossier-modal .modal-header > h3 {
+    display: block;
+    line-height: 1.3;
+    overflow-wrap: normal;
+    text-wrap: balance;
+}
+#dossier-modal .modal-header > h3 .game-icon {
+    width: 22px;
+    height: 22px;
+    margin: 0 5px 0 0;
+    vertical-align: middle;
+}
+@media (max-width: 360px) {
+    #settings-modal .modal-header { position: relative; }
+    #settings-modal .modal-header > h3 {
+        display: block;
+        font-size: 18px;
+        line-height: 1.3;
+        white-space: nowrap;
+        overflow-wrap: normal;
+    }
+    #settings-modal .modal-header > h3 .game-icon {
+        position: absolute;
+        left: 6px;
+        top: 22px;
+        transform: translateY(-50%);
+        width: 24px;
+        height: 24px;
+    }
+}

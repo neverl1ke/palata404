@@ -17,3 +17,37 @@
 #weapon-battle-state{width:18.2%}body:has(#nurse-battle-modal:not(.hidden)) #custom-toast-notification{top:18%!important;left:22%!important;max-width:340px!important;background:#ddc392!important;color:#352318!important;border:3px double #765031!important;border-radius:2px!important;font:13px/1.4 var(--document-font,monospace)!important;box-shadow:2px 4px 12px #0008!important}
 .raid-weapon-select .weapon-icon-frame{background:none;border:0;box-shadow:none}.raid-weapon-select .weapon-icon-frame>img{position:static;max-width:100%;max-height:100%;margin:0}.raid-weapon-select .weapon-icon-frame>.game-icon{width:50px;height:100%}
 .raid-weapon-select .weapon-icon-frame{top:25%;height:59%;width:65%}.raid-weapon-select .weapon-icon-frame>svg{display:block;width:100%;height:100%;overflow:hidden}.raid-weapon-select .weapon-icon-frame>.game-icon{max-width:100%;max-height:100%}
+
+/* Keep live type registered to the two authored journal slips. The raid is a
+   1200x675 stage; its existing viewport transform scales text and art together. */
+.raid-journal-header{position:relative;padding:0;display:block;box-sizing:border-box}
+.raid-journal-header h2{position:absolute;left:0;top:15%;width:40%;margin:0;padding:0;text-align:center;line-height:1.05;transform:rotate(-6deg);transform-origin:center;font-size:18px}
+.raid-journal-header>div{position:absolute;left:43%;right:3%;top:8%;height:72%;display:grid;grid-template-columns:25px minmax(0,1fr);gap:4px;align-items:center}
+.raid-journal-header img{display:block;width:25px;height:34px;object-fit:contain}
+.raid-journal-header small{display:block;min-width:0;text-align:center;font-size:6.5px;line-height:1.28}
+.raid-accordion h3 button{position:relative;display:block;padding:9px 26px;text-align:center;line-height:1.15}
+.raid-accordion h3 span{position:absolute;right:10px;top:50%;transform:translateY(-50%);float:none;line-height:1}
+.raid-invite{display:grid;place-items:center;text-align:center;line-height:1.1}
+.raid-top-controls>button{display:grid;place-content:center;text-align:center;line-height:1.15}
+.raid-clock{align-items:center;justify-content:center;gap:1px}
+.raid-clock small{display:block;line-height:1.1;text-align:center}
+.raid-clock time{display:block;font-size:17px;line-height:1.1;letter-spacing:-.5px;text-align:center;font-variant-numeric:tabular-nums}
+.raid-boss>strong{min-width:0;text-align:center}
+.raid-boss-health>span{font-variant-numeric:tabular-nums;white-space:nowrap}
+
+/* Three distinct lines on the patient slip: name, HP, then medical supplies. */
+.raid-player h2{position:absolute;left:0;right:0;top:1%;height:21%;box-sizing:border-box;margin:0;padding:2px 2px 4px;font-size:16px;line-height:1.15;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.raid-player-health{position:absolute;left:0;top:30%;width:66%;font-size:16px;line-height:1.15}
+.raid-player-health>span{align-items:center;padding-bottom:5px;gap:5px;white-space:nowrap}
+.raid-player-health b{font-variant-numeric:tabular-nums;text-align:right}
+.raid-medkits{position:absolute;left:0;top:66%;width:69%;margin:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px}
+.raid-medkits>span{grid-column:1/-1;display:block;width:auto;text-align:center;font-size:11px;line-height:1.1}
+.raid-medkits button{justify-content:center;min-width:0;width:100%;height:24px;box-sizing:border-box;padding:2px 3px;font-size:12px;line-height:1;white-space:nowrap}
+.raid-medkits img{width:17px;height:17px;flex:none}
+
+/* Long weapon names occupy their own two-line area, above the silhouette. */
+.raid-weapon-select .wardrobe-item-name{left:5%;top:6%;bottom:auto;width:64%;height:28%;max-height:28%;margin:0;display:grid;place-content:center;text-align:center;font-size:11.5px;line-height:1.05;white-space:normal;overflow-wrap:anywhere;overflow:hidden}
+.raid-weapon-select .weapon-icon-frame{left:6%;top:36%;width:62%;height:41%}
+.raid-weapon-select .archive-rarity-mark{right:4%;top:12%;bottom:auto;width:25%;height:auto;align-items:center;text-align:center}
+.raid-weapon-select .archive-rarity-mark small{width:100%;max-width:none;text-align:center;line-height:1.1;white-space:normal}
+.raid-weapon-caption{left:5%;bottom:6%;width:63%;text-align:center;font-size:10px;line-height:1.1;white-space:nowrap}
