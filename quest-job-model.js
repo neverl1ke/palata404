@@ -4,7 +4,7 @@
 (function(root,factory){const api=factory();if(typeof module==='object'&&module.exports)module.exports=api;else root.PalataQuestJobModel=api;})(globalThis,function(){
 'use strict';
 const ids=['k1','k2','k3','d1','d2','d3'];
-const owner={tag:'k1',linen:'k2',deliver:'k2',copies:'k3',bell407:'d1',bell408:'d1',log:'d2',baseline:'d3',difference:'d3'};
+const owner={tag:'k1',linen:'k2',linenReserve:'k2',deliver:'k2',copies:'k3',bell407:'d1',bell408:'d1',log:'d2',baseline:'d3',difference:'d3'};
 const labels={time:'Время обхода',route:'Маршрут',mark:'Отметка на табличке'};
 const safeArray=(value,allowed)=>[...new Set((Array.isArray(value)?value:[]).filter(x=>typeof x==='string'&&allowed.includes(x)))];
 const clone=value=>JSON.parse(JSON.stringify(value));
@@ -19,12 +19,13 @@ const briefs={
  d3:{giver:'Врач',purpose:'Сначала зафиксируйте увиденное, затем сравните. Причины возможного расхождения пока неизвестны.',deliverable:'Карточка сравнения исходных и повторных показаний коридора A.'}
 };
 function brief(id){return typeof id==='string'&&Object.hasOwn(briefs,id)?{...briefs[id]}:null;}
-function make(id,serial=0){return{revision:2,variant:variant(serial),work:restoreWork(id,{},variant(serial))};}
-function restoreWork(id,raw,v){
+function supportsRevision(id,r){return ids.includes(id)&&(r===2||r===3&&['k2','d1'].includes(id));}
+function make(id,serial=0){const r=['k2','d1'].includes(id)?3:2;return{revision:r,variant:variant(serial),work:restoreWork(id,{},variant(serial),r)};}
+function restoreWork(id,raw,v,r=2){
  raw=raw&&typeof raw==='object'&&!Array.isArray(raw)?raw:{};
  const result={};
  if(id==='k1'){result.inspected=safeArray(raw.inspected,['pack-0','pack-1','pack-2','pack-3']);result.selected=safeArray(raw.selected,['pack-0','pack-1','pack-2','pack-3']).slice(0,1);}
- if(id==='k2')result.selected=safeArray(raw.selected,['linen-0','linen-1','linen-2','linen-3','linen-4','linen-5']);
+ if(id==='k2'){result.selected=safeArray(raw.selected,['linen-0','linen-1','linen-2','linen-3','linen-4','linen-5']);if(r===3){result.shortageNoted=raw.shortageNoted===true;result.reserveGranted=result.shortageNoted&&raw.reserveGranted===true;result.selectedReserve=safeArray(raw.selectedReserve,['reserve-same-size','reserve-small']).slice(0,1);result.selectedPiece=['sheet','pillowcase'].includes(raw.selectedPiece)?raw.selectedPiece:null;result.placed=safeArray(raw.placed,['sheet','pillowcase']);if(result.placed.includes(result.selectedPiece))result.selectedPiece=null;}}
  if(id==='k3')result.marked=safeArray(raw.marked,['time','ward','signature','lot']);
  if(id==='d1'){
   result.diagnostics={};for(const key of ['bell407','bell408']){const d=raw.diagnostics?.[key]||{};result.diagnostics[key]={inspected:d.inspected===true,tested:d.inspected===true&&d.tested===true,selected:safeArray(d.selected,['working','disconnected','noResponse']).slice(0,1)};}
@@ -33,7 +34,7 @@ function restoreWork(id,raw,v){
  if(id==='d3'){result.baselineCaptured=raw.baselineCaptured===true;result.marked=safeArray(raw.marked,['time','route','mark']);}
  return result;
 }
-function restore(id,raw){const v=variant(raw?.variant);return{revision:2,variant:v,work:restoreWork(id,raw?.work,v)};}
+function restore(id,raw){const v=variant(raw?.variant),r=raw?.revision===3&&supportsRevision(id,3)?3:2;return{revision:r,variant:v,work:restoreWork(id,raw?.work,v,r)};}
 function inspectionData(v){
  const kit=['Перевязочный','Диагностический','Осмотровой'][v],lot=['Б-17','В-24','А-09'][v],target=[1,3,0][v];
  const otherKit=['Диагностический','Осмотровой','Перевязочный'][v],otherLot=['Б-71','В-42','А-90'][v];
@@ -41,11 +42,12 @@ function inspectionData(v){
  const ordered=[];let j=0;for(let i=0;i<4;i++)ordered.push(i===target?values[3]:values[j++]);
  return{request:{kit,lot},items:ordered.map((details,i)=>({id:'pack-'+i,name:'Контейнер '+(i+1),details}))};
 }
-function packingData(v){
+function packingData(v,r=2,w={}){
  const size=['М','Л','С'][v],other=['Л','С','М'][v];
  const measures={М:['150 × 215 см','70 × 70 см'],Л:['180 × 220 см','70 × 70 см'],С:['120 × 200 см','50 × 70 см']};
  const items=[['Простыня',size,'чистая упаковка'],['Наволочка',size,'чистая упаковка'],['Простыня',other,'чистая упаковка'],['Наволочка',size,'повреждена упаковка'],['Простыня',size,'загрязнена'],['Наволочка',other,'чистая упаковка']].map(([type,size,condition],i)=>({id:'linen-'+i,name:type,type,size,condition,measure:measures[size][type==='Простыня'?0:1]}));
- return{request:{destination:'406',size,components:['Простыня','Наволочка'],markingNote:'Буква на упаковке — учётная маркировка парного комплекта. Физический размер указан отдельно.'},items:rotate(items,v*2)};
+ const special=r===3&&v===1;if(special){const reserve=items.find(x=>x.id==='linen-1');reserve.size='М';reserve.measure='70 × 70 см';reserve.unavailable=!w.reserveGranted;reserve.availabilityNote=w.reserveGranted?'Замена разрешена Кларой по физическому размеру.':'Резерв поста: требуется разрешение Клары.';}
+ return{request:{destination:'406',size,components:['Простыня','Наволочка'],markingNote:'Буква на упаковке — учётная маркировка парного комплекта. Физический размер указан отдельно.',...(special?{missingComponent:'Наволочка с маркировкой Л',neededMeasure:'70 × 70 см'}:{})},items:rotate(items,v*2),...(r===3?{shortageNoted:!!w.shortageNoted,reserveGranted:!!w.reserveGranted}:{}),...(special&&w.reserveGranted?{authorizedSubstitution:{itemId:'linen-1',mark:'М',measure:'70 × 70 см'}}:{})};
 }
 function compareData(v){
  const a={time:['09:15','10:25','11:40'][v],ward:['406','407','408'][v],signature:'Клара',lot:['Б-17','В-24','А-09'][v]},b={...a};
@@ -69,11 +71,14 @@ function details(v,mode){
 const fields=values=>Object.entries(values).map(([id,value])=>({id,label:labels[id],value}));
 function observation(s){const j=s.jobs?.d3;return j?.active&&j.revision===2?details(variant(j.variant),s.mode):{time:s.mode==='trip'?'03:00':'08:00',route:'Палаты 404–408',mark:'—'};}
 function board(s,actionId){
- const step=typeof actionId==='string'&&actionId.startsWith('job:')?actionId.slice(4):'',jobId=owner[step],job=s.jobs?.[jobId];if(!job?.active||job.revision!==2)return null;
- const v=variant(job.variant),w=restoreWork(jobId,job.work,v),base={jobId,actionId,brief:brief(jobId)};
+ const step=typeof actionId==='string'&&actionId.startsWith('job:')?actionId.slice(4):'',jobId=owner[step],job=s.jobs?.[jobId];if(!job?.active||!supportsRevision(jobId,job.revision))return null;
+ const v=variant(job.variant),w=restoreWork(jobId,job.work,v,job.revision),base={jobId,actionId,brief:brief(jobId)};
  if(step==='tag'){const d=inspectionData(v);return{...base,kind:'inspection',title:'Приёмка контейнера',instruction:'Сверьте заявку с маркировкой и состоянием пломбы. Подтвердите пригодный комплект.',request:d.request,items:d.items.map(x=>({id:x.id,name:x.name,inspected:w.inspected.includes(x.id),details:w.inspected.includes(x.id)?x.details:null})),inspected:w.inspected,selected:w.selected};}
- if(step==='linen')return{...base,kind:'packing',title:'Комплект для палаты 406',instruction:'Соберите чистый комплект с указанной маркировкой. Непригодные упаковки оставьте на полке.',...packingData(v),selected:w.selected};
- if(step==='deliver'){const parcel=s.cargo.includes('linen'),d=packingData(v),parcelDetails=parcel?{components:d.request.components.slice(),size:d.request.size,items:d.items.filter(x=>x.size===d.request.size&&x.condition==='чистая упаковка').map(x=>({type:x.type,measure:x.measure}))}:null;return{...base,kind:'delivery',title:'Передача комплекта',instruction:'Передайте принесённый комплект на отмеченную кровать. Квитанция останется для сдачи поручения.',request:{destination:'406'},parcel,...(parcelDetails?{parcelDetails}:{})};}
+ if(step==='linen')return{...base,kind:'packing',title:'Комплект для палаты 406',instruction:'Соберите чистый комплект с указанной маркировкой. Непригодные упаковки оставьте на полке.',...packingData(v,job.revision,w),selected:w.selected};
+ if(step==='linenReserve'&&job.revision===3&&v===1)return{...base,kind:'clarification',title:'Уточнение комплекта для 406',instruction:'Наволочка нужной маркировки отсутствует в доступной выдаче. Сопоставьте физический размер и запросите разрешение на замену.',request:{neededType:'Наволочка',neededMeasure:'70 × 70 см'},options:[{id:'reserve-same-size',measure:'70 × 70 см',label:'Наволочка М · резерв поста'},{id:'reserve-small',measure:'50 × 70 см',label:'Наволочка С · резерв поста'}],selected:w.selectedReserve,shortageNoted:w.shortageNoted,reserveGranted:w.reserveGranted};
+ if(step==='deliver'){const parcel=s.cargo.includes('linen'),d=packingData(v,job.revision,w),kit=d.items.filter(x=>w.selected.includes(x.id)&&x.condition==='чистая упаковка').map(x=>({id:x.type==='Простыня'?'sheet':'pillowcase',type:x.type,measure:x.measure})),parcelDetails=parcel?{components:d.request.components.slice(),size:d.request.size,items:(job.revision===3?kit:d.items.filter(x=>x.size===d.request.size&&x.condition==='чистая упаковка').map(x=>({type:x.type,measure:x.measure})))}:null;
+ if(job.revision===3)return{...base,kind:'bedmaking',title:'Подготовить кровать 406',instruction:'Выберите вещь из принесённого комплекта и положите на соответствующую часть кровати. Завершённая подготовка останется в палате.',request:{destination:'406'},parcel,items:parcel?kit:[],selectedPiece:w.selectedPiece,placed:w.placed,targets:[{id:'sheetZone',label:'Матрас · постелить простыню'},{id:'pillowZone',label:'Подушка · сменить наволочку'}],...(parcelDetails?{parcelDetails}:{})};
+ return{...base,kind:'delivery',title:'Передача комплекта',instruction:'Передайте принесённый комплект на отмеченную кровать. Квитанция останется для сдачи поручения.',request:{destination:'406'},parcel,...(parcelDetails?{parcelDetails}:{})};}
  if(step==='copies')return{...base,kind:'compare',title:'Сверка записей',instruction:'Отметьте только поля, в которых записи расходятся. Не дописывайте неизвестные сведения.',...compareData(v),marked:w.marked};
  if(step==='bell407'||step==='bell408'){const d=diagnosis(v,step),p=w.diagnostics[step];return{...base,kind:'diagnostic',title:'Проверка вызова '+step.slice(4),instruction:'Осмотрите подключение, проверьте вызов и запишите то, что удалось наблюдать.',room:step.slice(4),inspected:p.inspected,tested:p.tested,connector:p.inspected?{connected:d.connected,text:d.connected?'Разъём установлен, провод цел.':'Разъём отсоединён от кнопки.'}:null,indicator:p.tested?d.indicator:'idle',response:p.tested?d.response:null,reports:[{id:'working',label:'Сигнал и ответ получены'},{id:'disconnected',label:'Нет подключения кнопки'},{id:'noResponse',label:'Сигнал есть, ответа поста нет'}],selected:p.selected};}
  if(step==='log')return{...base,kind:'timeline',title:'Журнал обхода',instruction:'Восстановите хронологию по времени записей. Поля исполнителя не дописывайте.',...timelineData(v),order:w.order};
@@ -83,7 +88,7 @@ function board(s,actionId){
 }
 function same(a,b){return a.length===b.length&&a.every(x=>b.includes(x));}
 function operate(s,actionId,op,value){
- const b=board(s,actionId);if(!b)return{ok:false,message:'Рабочий лист недоступен.'};const job=s.jobs[b.jobId],w=clone(restoreWork(b.jobId,job.work,job.variant)),step=actionId.slice(4),v=variant(job.variant);
+ const b=board(s,actionId);if(!b)return{ok:false,message:'Рабочий лист недоступен.'};const job=s.jobs[b.jobId],w=clone(restoreWork(b.jobId,job.work,job.variant,job.revision)),step=actionId.slice(4),v=variant(job.variant);
  const fail=message=>({ok:false,message}),ok=(message,complete=null)=>({ok:true,message,work:w,complete});
  const toggle=(key,id,allowed,max=Infinity)=>{if(!allowed.includes(id))return false;w[key]=w[key].includes(id)?w[key].filter(x=>x!==id):max===1?[id]:w[key].concat(id).slice(0,max);return true;};
  if(b.kind==='inspection'){
@@ -93,9 +98,20 @@ function operate(s,actionId,op,value){
   if(op==='submit'){const item=d.items.find(x=>x.id===w.selected[0]);if(!item||!w.inspected.includes(item.id))return fail('Осмотрите выбранный контейнер перед подтверждением.');const problems=[];if(item.details.kit!==d.request.kit)problems.push('название на осмотренной упаковке отличается от заявки');if(item.details.lot!==d.request.lot)problems.push('партия на осмотренной упаковке отличается от заявки');if(item.details.seal!=='целая')problems.push('на осмотренной упаковке повреждена пломба');if(problems.length)return fail('Комплект не соответствует заявке: '+problems.join('; ')+'.');return ok('Комплект проверен. Бирка приложена к листу приёмки.','tag');}
  }
  if(b.kind==='packing'){
-  const d=packingData(v),allowed=d.items.map(x=>x.id);
-  if(op==='select'){if(!toggle('selected',value,allowed))return fail('Выберите вещь с полки.');return ok('Состав комплекта сохранён.');}
-  if(op==='submit'){const selected=d.items.filter(x=>w.selected.includes(x.id)),types=selected.map(x=>x.type),problems=[];if(selected.length!==2)problems.push('сейчас выбрано вещей: '+selected.length+' из 2');else if(new Set(types).size!==d.request.components.length||!same(types,d.request.components))problems.push('в комплекте нужны два разных предмета');if(selected.some(x=>x.size!==d.request.size))problems.push('на выбранных упаковках есть другая маркировка');if(selected.some(x=>x.condition!=='чистая упаковка'))problems.push('среди выбранного есть загрязнённая или повреждённая упаковка');if(problems.length)return fail('Нужны простыня и наволочка указанной маркировки в чистых целых упаковках: '+problems.join('; ')+'.');return ok('Комплект упакован и помечен для палаты 406.','linen');}
+  const d=packingData(v,job.revision,w),allowed=d.items.filter(x=>!x.unavailable).map(x=>x.id);
+  if(op==='noteShortage'){if(job.revision!==3||v!==1||w.reserveGranted)return fail('Для этого комплекта уточнение не требуется.');w.shortageNoted=true;return ok('Недостача записана. Уточните допустимую замену у Клары, прежде чем брать резерв поста.');}
+  if(op==='select'){if(!toggle('selected',value,allowed))return fail('Вещь недоступна: резерв поста нельзя брать без разрешения.');return ok('Состав комплекта сохранён.');}
+  if(op==='submit'){const selected=d.items.filter(x=>w.selected.includes(x.id)),types=selected.map(x=>x.type),problems=[];if(selected.length!==2)problems.push('сейчас выбрано вещей: '+selected.length+' из 2');else if(new Set(types).size!==d.request.components.length||!same(types,d.request.components))problems.push('в комплекте нужны два разных предмета');if(selected.some(x=>x.unavailable))problems.push('резерв поста ещё не разрешён');if(selected.some(x=>x.size!==d.request.size&&x.id!==d.authorizedSubstitution?.itemId))problems.push('на выбранных упаковках есть другая маркировка без разрешённой замены');if(selected.some(x=>x.condition!=='чистая упаковка'))problems.push('среди выбранного есть загрязнённая или повреждённая упаковка');if(problems.length)return fail('Нужны простыня и наволочка указанной маркировки в чистых целых упаковках: '+problems.join('; ')+'.');return ok('Комплект упакован и помечен для палаты 406.','linen');}
+ }
+ if(b.kind==='clarification'){
+  if(!w.shortageNoted||w.reserveGranted)return fail('Сначала зафиксируйте недостачу в бельевой.');
+  if(op==='select'){if(!b.options.some(x=>x.id===value))return fail('Выберите один из описанных резервных комплектов.');w.selectedReserve=[value];return ok('Вариант замены выбран для согласования.');}
+  if(op==='submit'){const choice=b.options.find(x=>x.id===w.selectedReserve[0]);if(!choice||choice.measure!==b.request.neededMeasure)return fail('Размер замены не совпадает с заявкой. Нужна наволочка '+b.request.neededMeasure+'.');w.reserveGranted=true;return ok('Клара: разрешаю наволочку М из резерва поста — физический размер совпадает. Заберите её в бельевой.','linenReserve');}
+ }
+ if(b.kind==='bedmaking'){
+  if(!b.parcel)return fail('Комплект должен оставаться при вас до завершения подготовки.');
+  if(op==='selectPiece'){if(!b.items.some(x=>x.id===value)||w.placed.includes(value))return fail('Эта вещь недоступна или уже использована.');w.selectedPiece=value;return ok('Выбрано: '+b.items.find(x=>x.id===value).type+'. Укажите место на кровати.');}
+  if(op==='place'){const required={sheet:'sheetZone',pillowcase:'pillowZone'};if(!w.selectedPiece)return fail('Сначала выберите вещь из комплекта.');if(required[w.selectedPiece]!==value)return fail('Это место не соответствует выбранной вещи. Простыня нужна на матрасе, наволочка — на подушке.');w.placed.push(w.selectedPiece);w.selectedPiece=null;return w.placed.length===2?ok('Кровать 406 подготовлена: чистые простыня и наволочка на своих местах. Квитанция для Клары заполнена.','deliver'):ok('Вещь размещена. Подготовьте оставшуюся часть кровати.');}
  }
  if(b.kind==='delivery'&&(op==='deliver'||op==='submit'))return b.parcel?ok('Комплект передан. Получена квитанция для Клары.','deliver'):fail('Принесите упакованный комплект из бельевой.');
  if(b.kind==='compare'){
@@ -125,11 +141,11 @@ function operate(s,actionId,op,value){
  return fail('Это действие не относится к текущему рабочему листу.');
 }
 function description(s,cargo){
- const key={tag:'k1',linen:'k2',delivery:'k2',copies:'k3',bell407:'d1',bell408:'d1',log:'d2',baseline:'d3',difference:'d3'}[cargo],j=s.jobs?.[key];if(j?.revision!==2)return null;
+ const key={tag:'k1',linen:'k2',delivery:'k2',copies:'k3',bell407:'d1',bell408:'d1',log:'d2',baseline:'d3',difference:'d3'}[cargo],j=s.jobs?.[key];if(!supportsRevision(key,j?.revision))return null;
  const v=variant(j.variant);
  if(cargo==='tag'){const r=inspectionData(v).request;return 'Проверен '+r.kit.toLowerCase()+' комплект, партия '+r.lot+'. Пломба целая. Передайте лист приёмки Кларе.';}
- if(cargo==='linen')return 'Чистые простыня и наволочка, маркировка комплекта '+packingData(v).request.size+'. Комплект для палаты 406.';
- if(cargo==='delivery')return 'Комплект передан в палату 406. Квитанцию необходимо вернуть Кларе.';
+ if(cargo==='linen'){const placed=j.revision===3?j.work?.placed||[]:[];return 'Чистый комплект '+packingData(v).request.size+' для палаты 406.'+(placed.length?' Уже использовано: '+placed.map(x=>x==='sheet'?'простыня':'наволочка').join(', ')+'. Оставшаяся вещь ещё в комплекте.':' Простыня и наволочка при себе.');}
+ if(cargo==='delivery')return (j.revision===3?'Кровать 406 подготовлена: простыня и наволочка на своих местах.':'Комплект передан в палату 406.')+' Квитанцию необходимо вернуть Кларе.';
  if(cargo==='copies'){const d=compareData(v),names=d.documents[0].fields.filter((x,i)=>x.value!==d.documents[1].fields[i].value).map(x=>x.label.toLowerCase());return 'Подтверждены расхождения: '+names.join(', ')+'. Неподтверждённые данные не добавлялись.';}
  if(cargo==='bell407'||cargo==='bell408'){const d=diagnosis(v,cargo);return 'Палата '+cargo.slice(4)+'. '+(d.connected?'Разъём установлен. ':'Разъём отсоединён. ')+(d.indicator==='on'?'Индикатор загорелся. ':'Индикатор не загорелся. ')+d.response;}
  if(cargo==='log')return 'Записи расположены по указанному времени; неизвестные сведения об исполнителе не добавлялись.';
@@ -137,5 +153,8 @@ function description(s,cargo){
  if(cargo==='difference'){const b=details(v,'trip');return 'В карточке: '+Object.keys(a).filter(k=>a[k]!==b[k]).map(k=>labels[k]+': '+a[k]+' → '+b[k]).join('; ')+'. Причина расхождения не установлена.';}
  return null;
 }
-return Object.freeze({ids,owner,brief,make,restore,board,operate,observation,description});
+function kitResult(s){const j=s.jobs?.k2;if(!j?.active||!supportsRevision('k2',j.revision)||!j.done?.linen)return null;const d=packingData(variant(j.variant),j.revision,j.work),items=d.items.filter(x=>j.revision===3?j.work.selected.includes(x.id):x.size===d.request.size&&x.condition==='чистая упаковка').map(x=>({type:x.type,measure:x.measure}));return{mark:d.request.size,items};}
+function callResult(s,step){const j=s.jobs?.d1;if(!j||!supportsRevision('d1',j.revision)||!['bell407','bell408'].includes(step)||!j.work?.diagnostics?.[step]?.tested)return null;const d=diagnosis(variant(j.variant),step);return{connected:d.connected,indicator:d.indicator,responseCode:d.type==='working'?'acknowledged':'none',report:j.done?.[step]?d.type:null};}
+function route(s,id){const j=s.jobs?.[id];if(id!=='k2'||!j?.active||j.revision!==3)return null;if(j.done?.deliver)return{room:'nurse',mode:'patient',action:'claim:k2',text:'Передайте Кларе квитанцию подготовки кровати 406.'};if(j.done?.linen)return{room:'ward406',mode:'patient',action:'job:deliver',text:'Разложите принесённые простыню и наволочку на кровати 406.'};if(j.variant===1&&j.work?.shortageNoted&&!j.work?.reserveGranted)return{room:'nurse',mode:'patient',action:'job:linenReserve',text:'Уточните у Клары замену отсутствующей наволочки по физическому размеру.'};return{room:'linen',mode:'patient',action:'job:linen',text:j.variant===1&&j.work?.reserveGranted?'Разрешённая замена записана. Соберите комплект в бельевой.':'Соберите чистые вещи по заявке; недостающую вещь сначала зафиксируйте.'};}
+return Object.freeze({ids,owner,brief,supportsRevision,make,restore,board,operate,observation,description,callResult,kitResult,route});
 });

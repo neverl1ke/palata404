@@ -90,6 +90,8 @@
   if(E.ready(s,id))return target(E,s,spec.giver,'patient',
    'Передайте собранные подтверждения '+(spec.giver==='nurse'?'Кларе':'врачу')+'.',
    'Предметы подтверждения находятся в инвентаре; награда выдаётся при сдаче.');
+  const stage=E.jobStage?.(s,id);
+  if(stage)return target(E,s,stage.room,stage.mode||'patient',stage.text,stage.hint);
   if(id==='d3'){
    if(job.revision===2&&!job.work?.baselineCaptured)return target(E,s,'A','patient',
     'Запишите наблюдаемые детали коридора A в карточку.',
@@ -115,10 +117,10 @@
   };
   const g=goals[step];
   if(g){
-   if(job.revision!==2&&step==='linen')return target(E,s,'linen','patient',
+   if(![2,3].includes(job.revision)&&step==='linen')return target(E,s,'linen','patient',
     'Получите помеченный комплект для палаты 406.',
     'В старой заявке используется уже упакованный комплект. После передачи возьмите квитанцию.');
-   if(job.revision!==2&&(step==='bell407'||step==='bell408'))return target(E,s,g[0],'patient',g[1],
+   if(![2,3].includes(job.revision)&&(step==='bell407'||step==='bell408'))return target(E,s,g[0],'patient',g[1],
     'Нажмите кнопку вызова и зафиксируйте полученный ответ в акте.');
    return target(E,s,g[0],'patient',g[1],g[2]);
   }

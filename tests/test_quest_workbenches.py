@@ -54,7 +54,7 @@ class QuestWorkbenchTests(unittest.TestCase):
         ui.action(self.page,'accept:'+id)
         job=self.progress()['jobs'][id]
         self.assertTrue(job['active'])
-        self.assertEqual(job['revision'],2)
+        self.assertEqual(job['revision'],3 if id in ['k2','d1'] else 2)
 
     def reload_home(self):
         self.page.reload(wait_until='networkidle')
@@ -153,7 +153,8 @@ class QuestWorkbenchTests(unittest.TestCase):
         self.assertIn('linen',self.ledger()['cargo'])
         ui.room(self.page,'ward406');ui.complete(self.page,'job:deliver')
         self.assertNotIn('linen',self.ledger()['cargo']);self.assertIn('delivery',self.ledger()['cargo'])
-        self.assertEqual(self.page.locator('[data-world-item="delivered-linen"]').count(),1)
+        self.assertTrue(self.progress()['world']['linen406']['prepared'])
+        self.assertEqual(self.page.locator('[data-world-effect="linen406"]').count(),1)
         ui.room(self.page,'nurse');ui.action(self.page,'claim:k2')
         after=self.ledger()
         self.assertEqual(after['silver']-before['silver'],8)
@@ -205,6 +206,20 @@ class QuestWorkbenchTests(unittest.TestCase):
         ui.return_home(self.page);self.page.locator('.hud-task').click()
         self.page.locator('[data-quest-tab="doctor"]').click()
         self.assertTrue(self.page.locator('[data-quest-id="d3"] h4').inner_text().startswith('✓'))
+        # The next real order uses the existing stripe/cross variant. Its
+        # non-written mark must physically change with the recorded evidence.
+        self.page.get_by_role('button',name='Закрыть задания',exact=True).click()
+        self.accept('d3');ui.room(self.page,'A')
+        self.assertEqual(self.page.locator('[data-observation-mark]').get_attribute('data-observation-mark'),'Полоса')
+        patient_shape=self.page.locator('[data-observation-mark] path').get_attribute('d')
+        ui.complete(self.page,'job:baseline');self.switch_mode();ui.room(self.page,'A')
+        self.assertEqual(self.page.locator('[data-observation-mark]').get_attribute('data-observation-mark'),'Крест')
+        trip_shape=self.page.locator('[data-observation-mark] path').get_attribute('d')
+        self.assertNotEqual(patient_shape,trip_shape)
+        ui.action(self.page,'job:difference')
+        physical=ui.board(self.page,'job:difference')
+        self.assertEqual(next(field['value'] for field in physical['baseline'] if field['id']=='mark'),'Полоса')
+        self.assertEqual(next(field['value'] for field in physical['current'] if field['id']=='mark'),'Крест')
 
     def test_wrong_inspection_and_packing_keep_progress_and_saved_variant(self):
         self.load();self.accept('k1');ui.room(self.page,'procedure');ui.action(self.page,'job:tag')
@@ -326,7 +341,7 @@ class QuestWorkbenchTests(unittest.TestCase):
         self.reload_home();self.assertEqual(self.ledger(),claimed)
         self.accept('k2')
         repeated=self.progress()['jobs']['k2']
-        self.assertEqual(repeated['revision'],2);self.assertEqual(repeated['count'],4)
+        self.assertEqual(repeated['revision'],3);self.assertEqual(repeated['count'],4)
         self.assertEqual(repeated['variant'],1);self.assertEqual(repeated['done'],{})
         ui.room(self.page,'linen');ui.action(self.page,'job:linen')
         self.assertEqual(ui.board(self.page,'job:linen')['kind'],'packing')

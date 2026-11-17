@@ -39,7 +39,7 @@ jobs:
       - run: node --check document-demo.js
       - run: node --check weapon-system.js
       - run: node --check weapon-runtime.js
-      - run: node --check quest-job-model.js && node --check quest-engine.js && node --check quest-navigation.js && node --check quest-workbench.js && node --check quest-prototype.js && node --check quest-scenes.js
+      - run: node --check quest-job-model.js && node --check quest-engine.js && node --check quest-navigation.js && node --check quest-workbench.js && node --check quest-prototype.js && node --check quest-scenes.js && node --check quest-world-view.js && node --check quest-art.js
       - run: node --test --test-isolation=none tests/game-logic.test.cjs tests/rehab-*.test.cjs tests/floor10-main.test.cjs tests/floor10-recovery.test.cjs tests/quest-*.test.cjs
       - run: pip install -r requirements-dev.txt
       - run: python -m playwright install --with-deps chromium

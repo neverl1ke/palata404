@@ -9,7 +9,8 @@ def room(game,destination):
  game.wait_for_function('id=>PalataQuestPrototype.snapshot().room===id&&!document.getElementById("quest-location-screen").classList.contains("hidden")',arg=destination)
 def action(game,id):
  mirror=game.locator(f'.scene-document-actions [data-scene-action="{id}"]')
- (mirror if mirror.count() else game.locator(f'[data-action="{id}"]').first).click()
+ visible=next((item for item in mirror.all() if item.is_visible()),None)
+ (visible if visible is not None else game.locator(f'[data-action="{id}"]').first).click()
 def board(game,id):return game.evaluate('id=>PalataQuestEngine.workbench(PalataQuestPrototype.snapshot(),id)',id)
 def operate(game,op,value=None):
  encoded=json.dumps(value,ensure_ascii=False,separators=(',',':')) if isinstance(value,(dict,list)) else str(value) if value is not None else None
@@ -23,6 +24,16 @@ def complete(game,id,open_board=True):
   current=board(game,id)
   if current is None:return
   operation=game.evaluate('(board)=>{const module={exports:{}};'+SOLVER+';return module.exports.nextOperation(board)}',current)
+  if operation.get('navigate'):
+   # A shortage is resolved with the actual giver, never by mutating the board
+   # or teleporting authoritative progress from the test driver.
+   close=game.locator('[data-work-focus="close"]')
+   if close.count():close.click()
+   room(game,operation['navigate'])
+   complete(game,operation['action'])
+   room(game,operation['resumeRoom'])
+   action(game,operation['resume'])
+   continue
   operate(game,operation['op'],operation.get('value'))
  raise AssertionError('Workbench did not finish: '+id)
 def return_home(game):

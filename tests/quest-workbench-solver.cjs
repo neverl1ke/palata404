@@ -13,11 +13,20 @@ function nextOperation(b){
    return toggleTowards(b.selected,[match.id],'select');
   }
   case 'packing':{
-   const desired=b.request.components.map(type=>b.items.find(x=>x.type===type&&x.size===b.request.size&&x.condition==='чистая упаковка'));
+   if(b.request.missingComponent&&!b.reserveGranted)return !b.shortageNoted?{op:'noteShortage'}:{navigate:'nurse',action:'job:linenReserve',resume:'job:linen',resumeRoom:'linen'};
+   const desired=b.request.components.map(type=>b.items.find(x=>x.type===type&&!x.unavailable&&(x.size===b.request.size||x.id===b.authorizedSubstitution?.itemId)&&x.condition==='чистая упаковка'));
    if(desired.some(x=>!x))throw Error('No clean packing selection matches the written request.');
    return toggleTowards(b.selected,desired.map(x=>x.id),'select');
   }
   case 'delivery':return{op:'deliver'};
+  case 'bedmaking':{
+   const item=b.items.find(x=>!b.placed.includes(x.id));if(!item)throw Error('No unplaced item remains in an unfinished bed preparation.');
+   return b.selectedPiece===item.id?{op:'place',value:item.id==='sheet'?'sheetZone':'pillowZone'}:{op:'selectPiece',value:item.id};
+  }
+  case 'clarification':{
+   const choice=b.options.find(x=>x.measure===b.request.neededMeasure);if(!choice)throw Error('No reserve item matches the requested physical size.');
+   return b.selected[0]===choice.id?{op:'submit'}:{op:'select',value:choice.id};
+  }
   case 'compare':return toggleTowards(b.marked,difference(b.documents[0].fields,b.documents[1].fields),'mark');
   case 'diagnostic':{
    if(!b.inspected)return{op:'inspect',value:'connector'};

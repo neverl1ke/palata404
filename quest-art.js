@@ -3,6 +3,7 @@
 'use strict';
 const actors={nurse:'Клара',doctor:'Дежурный врач'};
 function resolve(room,mode){
+ if(room==='ward406')return{background:'assets/quest-world/ward406-'+(mode==='trip'?'trip':'patient')+'.webp',paired:true};
  if(room==='gym')return{background:'assets/rehabilitation/'+(mode==='trip'?'trip':'patient')+'.png',paired:true};
  if(Object.hasOwn(actors,room)){
   const base='assets/floor10-approved/'+room+'/',state=mode==='trip'?'Trip':'Normal';

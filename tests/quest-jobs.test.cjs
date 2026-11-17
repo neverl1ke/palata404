@@ -8,28 +8,15 @@ const go=(s,room)=>{if(s.room===room)return;const r=E.apply(s,{type:'move',room}
 function accept(s,id){go(s,E.jobs[id].giver);const r=act(s,'accept:'+id);a.ok(r.ok,r.message);return s.jobs[id];}
 function step(s,id,op,value){const r=work(s,id,op,value);a.ok(r.ok,r.message);return r;}
 function solve(s,id){
- let b=E.workbench(s,id);a.ok(b,id+' board should be available');
- a.deepEqual(b.brief,E.jobBrief(b.jobId));
- if(b.kind==='inspection'){
-  for(const item of b.items)step(s,id,'inspect',item.id);
-  b=E.workbench(s,id);const item=b.items.find(x=>x.details.kit===b.request.kit&&x.details.lot===b.request.lot&&x.details.seal==='целая');
-  step(s,id,'select',item.id);return step(s,id,'submit');
+ const {nextOperation}=require('./quest-workbench-solver.cjs');let result;
+ a.ok(E.workbench(s,id),id+' board should be available');
+ for(let count=0;count<60;count++){
+  const board=E.workbench(s,id);if(!board)return result;
+  a.deepEqual(board.brief,E.jobBrief(board.jobId));const operation=nextOperation(board);
+  if(operation.navigate){go(s,operation.navigate);solve(s,operation.action);go(s,operation.resumeRoom);continue;}
+  result=step(s,id,operation.op,operation.value);
  }
- if(b.kind==='packing'){
-  for(const type of b.request.components){const item=b.items.find(x=>x.type===type&&x.size===b.request.size&&x.condition==='чистая упаковка');step(s,id,'select',item.id);}return step(s,id,'submit');
- }
- if(b.kind==='delivery')return step(s,id,'deliver');
- if(b.kind==='compare'){
-  for(const x of b.documents[0].fields){const other=b.documents[1].fields.find(y=>y.id===x.id);if(x.value!==other.value)step(s,id,'mark',x.id);}return step(s,id,'submit');
- }
- if(b.kind==='diagnostic'){
-  step(s,id,'inspect','connector');step(s,id,'test');b=E.workbench(s,id);
-  const report=!b.connector.connected?'disconnected':b.indicator==='on'&&b.response.includes('вызов принят')?'working':'noResponse';step(s,id,'select',report);return step(s,id,'submit');
- }
- if(b.kind==='timeline'){for(const x of b.cards.slice().sort((x,y)=>x.time.localeCompare(y.time)))step(s,id,'place',x.id);return step(s,id,'submit');}
- if(b.kind==='baseline')return step(s,id,'record');
- if(b.kind==='difference'){for(const x of b.baseline)if(x.value!==b.current.find(y=>y.id===x.id).value)step(s,id,'mark',x.id);return step(s,id,'submit');}
- throw new Error('Unrecognized board '+b.kind);
+ throw Error('Work surface did not finish '+id);
 }
 function complete(s,id){
  if(id==='k1'){go(s,'procedure');solve(s,'job:tag');}
@@ -41,7 +28,7 @@ function complete(s,id){
  go(s,E.jobs[id].giver);
 }
 for(const id of Object.keys(E.jobs))test('new '+id+' requires its distinct work, produces proof and pays only at submission',()=>{
- let s=E.initial();const j=accept(s,id);a.equal(j.revision,2);a.equal(s.version,7);const stored=JSON.stringify(s);s=E.restore(JSON.parse(stored));a.equal(JSON.stringify(s.jobs[id]),JSON.stringify(j));
+ let s=E.initial();const j=accept(s,id);a.equal(j.revision,['k2','d1'].includes(id)?3:2);a.equal(s.version,8);const stored=JSON.stringify(s);s=E.restore(JSON.parse(stored));a.equal(JSON.stringify(s.jobs[id]),JSON.stringify(j));
  a.equal(act(s,'claim:'+id).ok,false);complete(s,id);a.ok(E.ready(s,id));a.equal(E.workbench(s,'job:'+E.jobs[id].steps.at(-1)),null);
  const proof=E.requiredCargo[id];for(const cargo of proof){a.ok(s.cargo.includes(cargo));a.ok(E.cargoDescription(s,cargo));}
  const result=act(s,'claim:'+id);a.ok(result.ok,result.message);a.deepEqual(result.reward,{kind:'job',job:id,id:id+':1',...E.payouts[id]});a.equal(s.jobs[id].count,1);a.equal(s.jobs[id].active,false);for(const cargo of proof)a.ok(!s.cargo.includes(cargo));a.equal(act(s,'claim:'+id).ok,false);
@@ -59,7 +46,7 @@ test('partial packing is restored exactly and the parcel is consumed only by del
  let s=E.initial();accept(s,'k2');go(s,'linen');const b=E.workbench(s,'job:linen'),item=b.items.find(x=>x.type==='Простыня'&&x.size===b.request.size&&x.condition==='чистая упаковка');step(s,'job:linen','select',item.id);
  const before=JSON.stringify(s);a.equal(work(s,'job:linen','submit').ok,false);a.equal(JSON.stringify(s),before);s=E.restore(JSON.parse(before));a.deepEqual(E.workbench(s,'job:linen').selected,[item.id]);
  const next=E.workbench(s,'job:linen').items.find(x=>x.type==='Наволочка'&&x.size===b.request.size&&x.condition==='чистая упаковка');step(s,'job:linen','select',next.id);step(s,'job:linen','submit');a.ok(s.cargo.includes('linen'));
- a.equal(work(s,'job:deliver','deliver').ok,false);a.ok(s.cargo.includes('linen'));go(s,'ward406');step(s,'job:deliver','deliver');a.ok(!s.cargo.includes('linen'));a.ok(s.cargo.includes('delivery'));a.equal(work(s,'job:deliver','deliver').ok,false);
+ a.equal(work(s,'job:deliver','deliver').ok,false);a.ok(s.cargo.includes('linen'));go(s,'ward406');solve(s,'job:deliver');a.ok(!s.cargo.includes('linen'));a.ok(s.cargo.includes('delivery'));a.equal(work(s,'job:deliver','deliver').ok,false);
 });
 test('diagnostics require observed connection and signal; classification is absent before testing',()=>{
  const s=E.initial();accept(s,'d1');go(s,'ward407');let b=E.workbench(s,'job:bell407');a.equal(b.connector,null);a.equal(b.response,null);a.equal(b.indicator,'idle');
@@ -90,7 +77,7 @@ test('engine fallback guidance requires a new observation baseline while legacy 
 test('versions 1–6 retain old active progress and their final legacy step; next repeat uses new work',()=>{
  for(let version=1;version<=6;version++){
   const raw={version,mode:'patient',room:'ward406',jobs:{k2:{active:true,done:{linen:true},count:2,startTrip:0,revision:2,variant:2,work:{selected:['linen-1']}}},cargo:['linen'],flags:{unlockB:true,unlockC:true}};const bytes=JSON.stringify(raw);let s=E.restore(raw);a.equal(JSON.stringify(raw),bytes);a.equal(s.jobs.k2.revision,1);a.equal(s.jobs.k2.count,2);a.equal(s.jobs.k2.done.linen,true);a.equal(E.workbench(s,'job:deliver'),null);
-  a.ok(E.apply(s,{type:'interact',id:'job:deliver',choice:'bed'}).ok);go(s,'nurse');a.ok(act(s,'claim:k2').ok);a.ok(act(s,'accept:k2').ok);a.equal(s.jobs.k2.revision,2);a.equal(s.jobs.k2.count,3);a.equal(s.flags.unlockB,true);a.equal(s.flags.unlockC,true);
+  a.ok(E.apply(s,{type:'interact',id:'job:deliver',choice:'bed'}).ok);go(s,'nurse');a.ok(act(s,'claim:k2').ok);a.ok(act(s,'accept:k2').ok);a.equal(s.jobs.k2.revision,3);a.equal(s.jobs.k2.count,3);a.equal(s.flags.unlockB,true);a.equal(s.flags.unlockC,true);
  }
  const s=E.restore({version:6,mode:'patient',room:'nurse',jobs:{k1:{active:false,done:{tag:true},count:1}},cargo:[]});a.equal(act(s,'accept:k1').ok,false);a.equal(s.jobs.k1.count,1);
 });
@@ -102,7 +89,7 @@ test('new work fields are bounded and cannot auto-complete from unknown or malfo
 });
 
 test('unsupported work revisions and malformed operation IDs are rejected safely',()=>{
- a.equal(E.supportsSave({version:7,jobs:{k1:{revision:3}}}),false);a.equal(E.supportsSave({version:8}),false);a.equal(E.supportsSave({version:6,jobs:{k1:{revision:3}}}),true);a.equal(E.supportsSave({version:7,jobs:{k1:{revision:2,variant:0,work:{}}}}),true);
+ a.equal(E.supportsSave({version:7,jobs:{k1:{revision:3}}}),false);a.equal(E.supportsSave({version:9}),false);a.equal(E.supportsSave({version:6,jobs:{k1:{revision:3}}}),true);a.equal(E.supportsSave({version:7,jobs:{k1:{revision:2,variant:0,work:{}}}}),true);
  a.equal(E.supportsSave({version:7,jobs:{k1:{revision:2,variant:3,work:{}}}}),false);a.equal(E.supportsSave({version:7,jobs:{k1:{revision:2,variant:0}}}),false);
  a.equal(E.supportsSave({version:7,jobs:{futureJob:{revision:1}}}),false);a.equal(E.supportsSave({version:7,jobs:[]}),false);
  const s=E.initial();accept(s,'k1');go(s,'procedure');const before=JSON.stringify(s);for(const id of [null,5,{},[]]){a.equal(E.workbench(s,id),null);a.equal(E.apply(s,{type:'work',id,op:'submit'}).ok,false);a.equal(JSON.stringify(s),before);}
