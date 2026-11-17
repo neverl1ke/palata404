@@ -39,6 +39,20 @@ html[data-touch-ui=true] #tasks-modal .modal-header{
     position:sticky;top:-12px;z-index:2;padding-top:4px;padding-bottom:6px;
     background:#d8b989 var(--paper-material-landscape) center/cover no-repeat;
 }
+/* Two logical filters share one row on a landscape phone. Keep native targets;
+   the saved height belongs to the actual order, not a second tab strip. */
+.quest-filter-row{display:contents}
+.quest-mobile-scroll-cue{display:none}
+html[data-touch-ui=true] #tasks-modal .quest-mobile-scroll-cue{display:inline}
+html[data-touch-ui=true] #tasks-modal .quest-filter-row{
+    display:grid;grid-template-columns:minmax(0,3fr) minmax(0,2fr);gap:8px;margin:8px 0;
+}
+html[data-touch-ui=true] #tasks-modal .quest-filter-row .quest-tabs{
+    min-width:0;gap:6px;margin:0;flex-wrap:nowrap;
+}
+html[data-touch-ui=true] #tasks-modal .quest-filter-row .quest-tabs button{
+    flex:1 1 0;padding:8px 6px;
+}
 html[data-touch-ui=true] #tasks-modal .quest-tabs{gap:6px;margin:8px 0;flex:0 0 auto}
 html[data-touch-ui=true] #tasks-modal .quest-tabs button{flex:1 1 100px}
 html[data-touch-ui=true] #tasks-modal :is(p,li,.quest-note,.quest-order-purpose,.quest-order-deliverable){
