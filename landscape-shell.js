@@ -10,7 +10,12 @@
     source.search = location.search;
     source.hash = location.hash;
     source.searchParams.set('canvas', '1');
-    frame.src = source.href;
+    const session = window.PalataProfileSession;
+    session?.start(frame, () => { frame.src = source.href; });
+    document.getElementById('profile-session-reload').addEventListener('click', () => location.reload());
+    // Keep the lock through child pagehide saves. Destruction releases it;
+    // restoring an old document requires a fresh load before it may write.
+    addEventListener('pageshow', event => { if (event.persisted) session?.restored(); });
     function fit() {
         const style = getComputedStyle(screen);
         const width = screen.clientWidth - parseFloat(style.paddingLeft) - parseFloat(style.paddingRight);
@@ -24,7 +29,7 @@
         // Keep the optional fullscreen control in the letterbox, never over gameplay.
         fullscreen.hidden = !matchMedia('(pointer:fine)').matches && !rotate && height - HEIGHT * scale < 96 && width - WIDTH * scale < 96;
         document.body.dataset.rotate = String(rotate);
-        frame.inert = rotate;
+        frame.inert = rotate || session?.state().status !== 'owner';
         frame.setAttribute('aria-hidden', String(rotate));
         // Keep the approved scene at 1280×720, but tell document/map controls
         // their real display size. Compensating only those UI surfaces avoids

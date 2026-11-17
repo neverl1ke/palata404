@@ -29,6 +29,7 @@ function safeStorageGet(key) {
 }
 
 function safeStorageSet(key, value) {
+    if (!profileWritesAllowed()) return false;
     try {
         window.localStorage?.setItem(key, value);
         return Boolean(window.localStorage);
@@ -38,12 +39,21 @@ function safeStorageSet(key, value) {
 }
 
 function safeStorageRemove(key) {
+    if (!profileWritesAllowed()) return false;
     try {
         window.localStorage?.removeItem(key);
         return Boolean(window.localStorage);
     } catch (error) {
         return false;
     }
+}
+
+function profileWritesAllowed() {
+    // Direct isolated unit/browser fixtures do not use the production shell.
+    if (window.__PALATA_TEST_DIRECT__ || typeof window.parent === 'undefined') return true;
+    if (window.__PALATA_PROFILE_STALE__) return false;
+    try { return window.parent !== window && window.parent.PalataProfileSession?.canWrite(window) === true; }
+    catch (_) { return false; }
 }
 
 function getInitialUsername() {
@@ -424,6 +434,7 @@ function normalizeStats(savedStats) {
 }
 
 function saveGameProgress() {
+    if (!profileWritesAllowed()) return false;
     // Journal the entire reward state first. An interrupted write restores snapshots,
     // never re-runs experience gains or increments the boss counter.
     if (!prepareWeaponSave() || !prepareBattleRewardSave() || !prepareStaffRewardSave()) return false;

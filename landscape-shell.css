@@ -13,6 +13,13 @@ p { max-width:38ch; margin:0; line-height:1.5; }
 #fullscreen-note { position:fixed; bottom:52px; right:8px; z-index:3; padding:8px; background:#111710; color:#e0c99d; }
 body[data-rotate=true] #canvas-slot { visibility:hidden; }
 button:focus-visible { outline:2px solid #e0c99d; outline-offset:2px; }
+@font-face { font-family:'Palata Typewriter';src:url('assets/fonts/TT2020StyleE-Regular.woff') format('woff');font-display:swap; }
+#profile-session-notice { position:fixed;z-index:5;left:50%;top:50%;transform:translate(-50%,-50%);width:min(540px,calc(100% - 32px));max-height:calc(100% - 24px);overflow:auto;padding:24px;border:1px solid #8d754e;background:#e4c89b url('assets/ui/documents/weapon-paper-fine-portrait.webp') center/cover;color:#302419;box-shadow:0 8px 42px #000a;font:16px/1.5 'Palata Typewriter','Courier New',monospace;text-align:center; }
+#profile-session-notice[hidden] { display:none; }
+#profile-session-notice img { object-fit:contain;margin:0 auto 10px; }
+#profile-session-notice h1 { max-width:none;font:normal 24px/1.25 'Palata Typewriter','Courier New',monospace;margin:0 0 14px; }
+#profile-session-notice p { max-width:none; }
+#profile-session-notice button { min-height:44px;margin:18px auto 0;padding:9px 18px;background:#d9c49d;color:#302419;border:1px solid #755e3d;font:inherit;cursor:pointer; }
 /* Desktop always has a dedicated control rail, including exact 16:9 windows.
    Reserve its width so fullscreen never covers game controls. */
 @media (pointer:fine) {

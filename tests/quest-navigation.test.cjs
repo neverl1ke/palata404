@@ -91,3 +91,30 @@ test('all directions are read-only and the default map text contains no solved s
  N.story(E,s);const hint=N.mapHint(E,s);
  assert.equal(JSON.stringify(s),copy);assert.doesNotMatch(hint,/прижать.*повернуть|прижмите.*поверните|Б.?17|03:00/);
 });
+
+test('room continuation follows the first real unmet prerequisite across both modes',()=>{
+ const s=state();
+ const point=(room,mode)=>{const g=N.continuation(E,s);assert.equal(g.room,room);assert.equal(g.mode,mode);assert.equal(g.needsModeChange,s.mode!==mode);};
+ point('A','patient');s.flags.doorKnown=true;point('collector','patient');
+ s.flags.reserveKnown=true;point('collector','trip');s.flags.tripHandle=true;point('A','trip');
+ s.flags.unlockB=true;point('procedure','patient');s.flags.cKeyKnown=true;point('doctor','patient');
+ s.flags.cLockKnown=true;point('B','trip');s.flags.unlockC=true;point('doctor','trip');
+});
+
+test('continuation preserves an active chosen job and falls back after hand-in without creating work',()=>{
+ const s=active(state(),'k2');const before=JSON.stringify(s),g=N.continuation(E,s,'k2');
+ assert.equal(g.questId,'k2');assert.equal(g.room,'linen');assert.equal(Object.isFrozen(g),true);
+ assert.equal(JSON.stringify(s),before);
+ s.jobs.k2.active=false;s.jobs.k2.count=1;
+ assert.equal(N.continuation(E,s,'k2').questId,'С1');
+ s.flags.exit=true;assert.equal(N.continuation(E,s),null);assert.equal(N.continuation(E,s,'С5'),null);
+ s.jobs.k2.active=true;assert.equal(N.continuation(E,s,'k2').questId,'k2','optional work remains available after the story ends');
+});
+
+test('room continuation offers directions without exposing solved choices or changing progress',()=>{
+ const s=state();Object.assign(s.flags,{doorKnown:true,reserveKnown:true,tripHandle:true});s.mode='trip';
+ const before=JSON.stringify(s);const g=N.continuation(E,s,'lockB');
+ assert.equal(g.questId,'lockB');assert.equal(g.room,'A');
+ assert.doesNotMatch(g.text,/прижать.*повернуть|прижмите.*поверните|08:00|Б.?17/);
+ assert.equal(JSON.stringify(s),before);assert.equal(s.interactions.unlockB,undefined);
+});

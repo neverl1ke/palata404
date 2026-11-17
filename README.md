@@ -8,6 +8,8 @@
 
 Для локального запуску відкрийте корінь репозиторію через HTTP-сервер, наприклад `python -m http.server 8000`, та перейдіть до `http://localhost:8000/play.html`.
 
+Збереження використовує одну активну вкладку гри. Інша вкладка показує повідомлення й не завантажує старий стан: щоб продовжити в ній, закрийте першу та натисніть «Загрузить игру». Потрібен браузер із Web Locks та HTTPS або localhost. Якщо захищену сесію відкрити неможливо, вихідне збереження не змінюється.
+
 ## Документація
 
 - [Структура проєкту](docs/project-architecture.md)
@@ -26,5 +28,9 @@
 `python tools/prepare-pages.py --check`
 
 `python tools/audit-project.py --check`
+
+`node --test tests/profile-session.test.cjs tests/quest-interaction-feedback.test.cjs tests/quest-navigation.test.cjs`
+
+`python -m unittest tests.test_profile_session -v`
 
 Застарілі звіти, галереї, знімки й невикористані генератори звітів видалено з поточної версії. Оригінали графіки, погоджені майстри та потрібні тестам дані залишені. Попередній стан доступний [в історії Git](https://github.com/neverl1ke/palata404/tree/b48c82d72bc26ed8359ba84d878ecb862bdf239c). Підсумок очищення й контрольні суми — [cleanup-summary.json](docs/cleanup-summary.json).

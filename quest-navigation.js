@@ -177,5 +177,18 @@
   return g.text+(g.needsModeChange?' Продолжение требует режима «'+(g.mode==='trip'?'Трип':'Пациент')+'». Переключатель находится на главном экране.':'');
  }
 
- return Object.freeze({guide,blocked,story,mapHint});
+ // A room can offer the existing next destination without opening the journal.
+ // This projection never starts work, changes mode or skips prerequisites.
+ function continuation(E,s,preferred){
+  if(preferred){
+   const job=E.jobs[preferred],eligible=job?s.jobs?.[preferred]?.active:true;
+   if(eligible){const g=guide(E,s,preferred);if(!g.complete&&!g.pending&&g.room)return Object.freeze({...g,questId:preferred});}
+  }
+  const f=s.flags||{};
+  if(f.exit)return null;
+  const id=f.unlockC?'С4':f.unlockB?'С3':f.doorKnown&&f.reserveKnown?'С2':'С1';
+  return Object.freeze({...guide(E,s,id),questId:id});
+ }
+
+ return Object.freeze({guide,blocked,story,mapHint,continuation});
 });

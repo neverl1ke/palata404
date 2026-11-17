@@ -105,6 +105,7 @@ function discardWardrobeSession() {
     syncLegacyPaperDollSelection(); updateCharacterLayers(); renderWardrobe();
 }
 function applyWardrobeSession() {
+    if (typeof profileWritesAllowed === 'function' && !profileWritesAllowed()) return false;
     if (!wardrobeSession) return true;
     if (isBattleActive) { showCustomToast('Примените комплект после боя.'); return false; }
     const original = wardrobeSession, beforeGear = { ...equippedGear }, beforeStats = { ...stats };

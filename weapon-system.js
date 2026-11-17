@@ -104,6 +104,7 @@ function weaponSaveSnapshot() { return { stats, inventory, equippedGear, paperDo
 function prepareWeaponSave() { return !readWeaponTransaction() || safeStorageSet(WEAPON_TRANSACTION_KEY, JSON.stringify(weaponSaveSnapshot())); }
 function finishWeaponSave(saved) { if (saved && readWeaponTransaction()) safeStorageRemove(WEAPON_TRANSACTION_KEY); return saved; }
 function weaponTransaction(change) {
+    if (typeof profileWritesAllowed === 'function' && !profileWritesAllowed()) return { ok: false, error: 'Загрузите актуальную игровую сессию; ресурсы не списаны.' };
     if (isBattleActive) return { ok: false, error: 'Изменения доступны после боя.' };
     const before = { stats: { ...stats }, inventory: JSON.parse(JSON.stringify(inventory)) };
     const result = change();

@@ -235,3 +235,6 @@
 
 /* Keep a required physical target visible while its instruction sheet is open. */
 #quest-location-screen .scene-paper[data-paper-side=left]{right:auto;left:16px}
+/* Contextual guidance uses the existing room paper and its native touch scale. */
+.quest-room-next{border-top:1px solid #8e7958;margin-top:12px;padding-top:10px}
+.scene-paper [data-interaction-hint] summary{cursor:pointer;min-height:44px;padding-block:10px;box-sizing:border-box}
