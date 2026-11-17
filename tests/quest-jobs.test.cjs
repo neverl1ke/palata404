@@ -22,13 +22,16 @@ function complete(s,id){
  if(id==='k1'){go(s,'procedure');solve(s,'job:tag');}
  if(id==='k2'){go(s,'linen');solve(s,'job:linen');go(s,'ward406');solve(s,'job:deliver');}
  if(id==='k3'){go(s,'procedure');solve(s,'job:copies');}
- if(id==='d1'){go(s,'ward407');solve(s,'job:bell407');go(s,'ward408');solve(s,'job:bell408');}
+ if(id==='d1'){
+  go(s,'ward407');solve(s,'job:bell407');go(s,'ward408');solve(s,'job:bell408');
+  if(s.jobs.d1.revision===4)for(let i=0;i<8&&!E.ready(s,'d1');i++){const route=E.jobStage(s,'d1');a.ok(route?.action,'An unfinished call cycle must expose its next real action.');go(s,route.room);solve(s,route.action);}
+ }
  if(id==='d2')solve(s,'job:log');
  if(id==='d3'){go(s,'A');solve(s,'job:baseline');a.ok(E.apply(s,{type:'switch'}).ok);solve(s,'job:difference');a.ok(E.apply(s,{type:'switch'}).ok);}
  go(s,E.jobs[id].giver);
 }
 for(const id of Object.keys(E.jobs))test('new '+id+' requires its distinct work, produces proof and pays only at submission',()=>{
- let s=E.initial();const j=accept(s,id);a.equal(j.revision,['k2','d1'].includes(id)?3:2);a.equal(s.version,8);const stored=JSON.stringify(s);s=E.restore(JSON.parse(stored));a.equal(JSON.stringify(s.jobs[id]),JSON.stringify(j));
+ let s=E.initial();const j=accept(s,id);a.equal(j.revision,['k2','d1'].includes(id)?4:2);a.equal(s.version,9);const stored=JSON.stringify(s);s=E.restore(JSON.parse(stored));a.equal(JSON.stringify(s.jobs[id]),JSON.stringify(j));
  a.equal(act(s,'claim:'+id).ok,false);complete(s,id);a.ok(E.ready(s,id));a.equal(E.workbench(s,'job:'+E.jobs[id].steps.at(-1)),null);
  const proof=E.requiredCargo[id];for(const cargo of proof){a.ok(s.cargo.includes(cargo));a.ok(E.cargoDescription(s,cargo));}
  const result=act(s,'claim:'+id);a.ok(result.ok,result.message);a.deepEqual(result.reward,{kind:'job',job:id,id:id+':1',...E.payouts[id]});a.equal(s.jobs[id].count,1);a.equal(s.jobs[id].active,false);for(const cargo of proof)a.ok(!s.cargo.includes(cargo));a.equal(act(s,'claim:'+id).ok,false);
@@ -51,8 +54,8 @@ test('partial packing is restored exactly and the parcel is consumed only by del
 test('diagnostics require observed connection and signal; classification is absent before testing',()=>{
  const s=E.initial();accept(s,'d1');go(s,'ward407');let b=E.workbench(s,'job:bell407');a.equal(b.connector,null);a.equal(b.response,null);a.equal(b.indicator,'idle');
  for(const [op,value]of [['test'],['report','working'],['inspect','other']]){const before=JSON.stringify(s);a.equal(work(s,'job:bell407',op,value).ok,false);a.equal(JSON.stringify(s),before);}
- step(s,'job:bell407','inspect','connector');b=E.workbench(s,'job:bell407');a.ok(b.connector.connected);a.equal(b.response,null);step(s,'job:bell407','test');a.match(E.workbench(s,'job:bell407').response,/вызов принят/);
- const before=JSON.stringify(s);a.equal(work(s,'job:bell407','report','disconnected').ok,false);a.equal(JSON.stringify(s),before);step(s,'job:bell407','report','working');a.ok(s.cargo.includes('bell407'));
+ step(s,'job:bell407','inspect','connector');b=E.workbench(s,'job:bell407');a.ok(b.connector.connected);a.equal(b.response,null);step(s,'job:bell407','test');a.match(E.workbench(s,'job:bell407').response,/Ответ поста не поступил/);
+ const before=JSON.stringify(s);a.equal(work(s,'job:bell407','report','disconnected').ok,false);a.equal(JSON.stringify(s),before);step(s,'job:bell407','report','noResponse');a.ok(s.cargo.includes('bell407'));
 });
 test('wrong comparison fields and chronology do not advance or consume evidence',()=>{
  const s=E.initial();accept(s,'k3');go(s,'procedure');step(s,'job:copies','mark','time');let before=JSON.stringify(s);a.equal(work(s,'job:copies','submit').ok,false);a.equal(JSON.stringify(s),before);
@@ -77,7 +80,7 @@ test('engine fallback guidance requires a new observation baseline while legacy 
 test('versions 1–6 retain old active progress and their final legacy step; next repeat uses new work',()=>{
  for(let version=1;version<=6;version++){
   const raw={version,mode:'patient',room:'ward406',jobs:{k2:{active:true,done:{linen:true},count:2,startTrip:0,revision:2,variant:2,work:{selected:['linen-1']}}},cargo:['linen'],flags:{unlockB:true,unlockC:true}};const bytes=JSON.stringify(raw);let s=E.restore(raw);a.equal(JSON.stringify(raw),bytes);a.equal(s.jobs.k2.revision,1);a.equal(s.jobs.k2.count,2);a.equal(s.jobs.k2.done.linen,true);a.equal(E.workbench(s,'job:deliver'),null);
-  a.ok(E.apply(s,{type:'interact',id:'job:deliver',choice:'bed'}).ok);go(s,'nurse');a.ok(act(s,'claim:k2').ok);a.ok(act(s,'accept:k2').ok);a.equal(s.jobs.k2.revision,3);a.equal(s.jobs.k2.count,3);a.equal(s.flags.unlockB,true);a.equal(s.flags.unlockC,true);
+  a.ok(E.apply(s,{type:'interact',id:'job:deliver',choice:'bed'}).ok);go(s,'nurse');a.ok(act(s,'claim:k2').ok);a.ok(act(s,'accept:k2').ok);a.equal(s.jobs.k2.revision,4);a.equal(s.jobs.k2.count,3);a.equal(s.flags.unlockB,true);a.equal(s.flags.unlockC,true);
  }
  const s=E.restore({version:6,mode:'patient',room:'nurse',jobs:{k1:{active:false,done:{tag:true},count:1}},cargo:[]});a.equal(act(s,'accept:k1').ok,false);a.equal(s.jobs.k1.count,1);
 });
@@ -89,7 +92,7 @@ test('new work fields are bounded and cannot auto-complete from unknown or malfo
 });
 
 test('unsupported work revisions and malformed operation IDs are rejected safely',()=>{
- a.equal(E.supportsSave({version:7,jobs:{k1:{revision:3}}}),false);a.equal(E.supportsSave({version:9}),false);a.equal(E.supportsSave({version:6,jobs:{k1:{revision:3}}}),true);a.equal(E.supportsSave({version:7,jobs:{k1:{revision:2,variant:0,work:{}}}}),true);
+ a.equal(E.supportsSave({version:7,jobs:{k1:{revision:3}}}),false);a.equal(E.supportsSave({version:10}),false);a.equal(E.supportsSave({version:6,jobs:{k1:{revision:3}}}),true);a.equal(E.supportsSave({version:7,jobs:{k1:{revision:2,variant:0,work:{}}}}),true);
  a.equal(E.supportsSave({version:7,jobs:{k1:{revision:2,variant:3,work:{}}}}),false);a.equal(E.supportsSave({version:7,jobs:{k1:{revision:2,variant:0}}}),false);
  a.equal(E.supportsSave({version:7,jobs:{futureJob:{revision:1}}}),false);a.equal(E.supportsSave({version:7,jobs:[]}),false);
  const s=E.initial();accept(s,'k1');go(s,'procedure');const before=JSON.stringify(s);for(const id of [null,5,{},[]]){a.equal(E.workbench(s,id),null);a.equal(E.apply(s,{type:'work',id,op:'submit'}).ok,false);a.equal(JSON.stringify(s),before);}
@@ -140,12 +143,20 @@ test('failed checks explain observed evidence without revealing untouched contai
  step(s,'job:linen','select','linen-0');const selected=JSON.stringify(s),incomplete=work(s,'job:linen','submit');a.equal(incomplete.ok,false);a.match(incomplete.message,/выбрано вещей: 1 из 2/);a.equal(JSON.stringify(s),selected);
 });
 
-test('completed work preserves concrete findings alongside the inventory receipt for every commission',()=>{
+test('completed work preserves concrete findings in receipts and durable order records for every commission',()=>{
  for(const id of Object.keys(E.jobs)){
   const s=E.initial();accept(s,id);complete(s,id);
   for(const cargo of E.requiredCargo[id]){
-   const description=E.cargoDescription(s,cargo);a.ok(description);a.ok(s.log.some(message=>message.includes(description)),id+' '+cargo+' must retain observed findings');
-   a.ok(s.log.some(message=>message.includes(E.cargoCatalog[cargo].name)),id+' '+cargo+' must name its receipt');
+   const description=E.cargoDescription(s,cargo);a.ok(description);
+   if(id==='d1'&&s.jobs.d1.revision===4){
+    // A complete service cycle outlives the intentionally transient 12-line log.
+    // Its original observations and actual outcome must survive in durable records.
+    const room='ward'+cargo.slice(-3),copy=E.restore(JSON.parse(JSON.stringify(s)));
+    a.equal(E.cargoDescription(copy,cargo),description);a.deepEqual(copy.world.calls[room],s.world.calls[room]);a.ok(copy.world.calls[room].tested);a.ok(copy.world.calls[room].report);a.equal(copy.world.callEquipment[room].condition,'working');a.equal(copy.world.callEquipment[room].verified,true);
+   }else{
+    a.ok(s.log.some(message=>message.includes(description)),id+' '+cargo+' must retain observed findings');
+    a.ok(s.log.some(message=>message.includes(E.cargoCatalog[cargo].name)),id+' '+cargo+' must name its receipt');
+   }
   }
   a.ok(s.log.every(message=>message.length<=500),'current persisted receipt limit must preserve complete work feedback');
  }

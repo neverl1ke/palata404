@@ -15,6 +15,8 @@ function game(saves={},options={}){
   if(file==='quest-job-model.js'&&options.withoutModel)continue;
   g.run(fs.readFileSync(path.join(__dirname,'..',file),'utf8'));
   if(file==='quest-job-model.js'&&options.staleModel)g.run('PalataQuestJobModel={...PalataQuestJobModel};delete PalataQuestJobModel.supportsRevision;');
+  if(file==='quest-engine.js'&&options.staleEngine==='missingBedAPI')g.run('PalataQuestEngine={...PalataQuestEngine};delete PalataQuestEngine.bedPresentation;');
+  if(file==='quest-engine.js'&&options.staleEngine==='oldVersion')g.run('PalataQuestEngine={...PalataQuestEngine,initial:()=>({...PalataQuestEngine.restore(null),version:8})};');
  }
  // In the browser window is globalThis; the VM fixture deliberately separates them.
  g.run('window.PalataQuestNavigation=PalataQuestNavigation;');
@@ -28,7 +30,7 @@ const progressKey=g=>[...g.storage.keys()].find(k=>k.startsWith('palata404_floor
 const journalKey=g=>progressKey(g).replace('floor10_progress:','floor10_reward:');
 const economicSnapshot=g=>JSON.parse(g.run('JSON.stringify({progress:window.PalataQuestPrototype.snapshot(),stats,inventory})'));
 function operation(g,id){const next=nextOperation(board(g,id));a.ok(next,'Evidence offers a next operation for '+id);if(next.navigate){move(g,next.navigate);interaction(g,next.action);move(g,next.resumeRoom);return next;}a.equal(act(g,{type:'work',id,...next}),true);return next;}
-function untilSubmit(g,id){for(let i=0;i<40;i++){const next=nextOperation(board(g,id));a.ok(next);if(next.navigate){operation(g,id);continue;}if(next.op==='submit'||next.op==='deliver'||next.op==='record')return next;a.equal(act(g,{type:'work',id,...next}),true);}a.fail('No final operation for '+id);}
+function untilSubmit(g,id){for(let i=0;i<40;i++){const next=nextOperation(board(g,id));a.ok(next);if(next.navigate){operation(g,id);continue;}if(['submit','deliver','record','authorize','confirm'].includes(next.op))return next;a.equal(act(g,{type:'work',id,...next}),true);}a.fail('No final operation for '+id);}
 function interaction(g,id){
  if(board(g,id)){
   for(let i=0;i<60&&board(g,id);i++)operation(g,id);
@@ -39,6 +41,11 @@ function interaction(g,id){
 }
 function move(g,room){if(state(g).room===room)return;a.equal(act(g,{type:'move',room}),true);}
 function accept(g,id){move(g,E.jobs[id].giver);a.equal(act(g,{type:'action',id:'accept:'+id}),true);}
+function finishCallCycle(g){
+ if(state(g).jobs.d1.revision!==4)return;
+ for(let i=0;i<8&&!E.ready(state(g),'d1');i++){const route=E.jobStage(state(g),'d1');a.ok(route?.action,'Call cycle provides a next real action');move(g,route.room);interaction(g,route.action);}
+ a.ok(E.ready(state(g),'d1'));
+}
 function complete(g){accept(g,'k2');move(g,'linen');interaction(g,'job:linen');move(g,'ward406');interaction(g,'job:deliver');move(g,'nurse');a.equal(act(g,{type:'action',id:'claim:k2'}),true);}
 
 test('Main entry loads work model before engine and never loads a sandbox',()=>{
@@ -109,7 +116,7 @@ test('An active old parcel can be delivered and claimed before the next revised 
  g=game(saves);a.equal(state(g).jobs.k2.revision,1);a.equal(state(g).jobs.k2.count,3);a.equal(board(g,'job:deliver'),null);a.ok(state(g).cargo.includes('linen'));
  interaction(g,'job:deliver');move(g,'nurse');a.equal(act(g,{type:'action',id:'claim:k2'}),true);a.equal(state(g).jobs.k2.count,4);
  a.equal(g.run('stats.silver'),158);a.equal(g.run('stats.exp'),15);a.ok(state(g).flags.unlockB&&state(g).flags.unlockC);
- a.equal(act(g,{type:'action',id:'accept:k2'}),true);a.equal(state(g).jobs.k2.revision,3);a.equal(state(g).jobs.k2.count,4);
+ a.equal(act(g,{type:'action',id:'accept:k2'}),true);a.equal(state(g).jobs.k2.revision,4);a.equal(state(g).jobs.k2.count,4);
 });
 test('Repeated call reports retain their observed diagnosis rather than a fixed old item label',()=>{
  const g=game();
@@ -117,8 +124,8 @@ test('Repeated call reports retain their observed diagnosis rather than a fixed 
   accept(g,'d1');move(g,'ward407');interaction(g,'job:bell407');
   const report=JSON.parse(g.run('JSON.stringify(inventory.find(i=>i.questCargo==="bell407"))'));
   a.doesNotMatch(report.name,/исправна|неисправна/);
-  if(pass===1)a.match(report.desc,/Разъём отсоединён/);
-  move(g,'ward408');interaction(g,'job:bell408');move(g,'doctor');a.equal(act(g,{type:'action',id:'claim:d1'}),true);
+  if(pass===1)a.match(report.desc,/вызов принят/);
+  move(g,'ward408');interaction(g,'job:bell408');finishCallCycle(g);move(g,'doctor');a.equal(act(g,{type:'action',id:'claim:d1'}),true);
  }
  a.equal(state(g).jobs.d1.count,2);a.equal(g.run('stats.silver'),170);a.equal(g.run('stats.exp'),40);
 });
@@ -131,7 +138,7 @@ test('Unknown future floor save remains byte-for-byte and refuses new economic a
  g=game(saves);move(g,'nurse');a.equal(act(g,{type:'action',id:'accept:k2'}),false);a.equal(act(g,{type:'work',id:'job:linen',op:'submit'}),false);a.equal(g.storage.get(key),raw);a.equal(g.run('stats.silver'),150);
 });
 test('A future work-order revision inside supported floor versions cannot be migrated away',()=>{
- for(const version of [7,8]){let g=game();const key=progressKey(g),saves=Object.fromEntries(g.storage);
+ for(const version of [7,8,9]){let g=game();const key=progressKey(g),saves=Object.fromEntries(g.storage);
   const raw=JSON.stringify({...E.initial(),version,room:'linen',jobs:{k2:{active:true,revision:99,work:{future:'retain'},done:{},count:0,startTrip:0}}});saves[key]=raw;
   g=game(saves);a.equal(g.storage.get(key),raw);a.equal(act(g,{type:'work',id:'job:linen',op:'submit'}),false);a.equal(g.storage.get(key),raw);
  }
@@ -148,13 +155,13 @@ test('Missing work-model resource cannot downgrade a saved work order',()=>{
  g=game(Object.fromEntries(g.storage));a.deepEqual(state(g).jobs.k2,savedJob);a.equal(g.run('stats.silver'),150);
 });
 test('A stale work-model API preserves supported floor saves and a valid pending reward without applying it',()=>{
- for(const version of [7,8]){
+ for(const version of [7,8,9]){
   let g=game();move(g,'collector');const before=JSON.parse(g.run('JSON.stringify({silver:stats.silver,pills:stats.pills,exp:stats.exp})'));
   g.failedKeys.add('palata404_stats');a.equal(act(g,{type:'action',id:'collect'}),true);
   const floorKey=progressKey(g),rewardKey=journalKey(g),saves=Object.fromEntries(g.storage);
-  const floorRaw=JSON.stringify({...JSON.parse(saves[floorKey]),version});
+  const floorState={...JSON.parse(saves[floorKey]),version};if(version===8)floorState.world={version:1,linen406:null,calls:{ward407:null,ward408:null},doctorReview:null};const floorRaw=JSON.stringify(floorState);
   const pending=JSON.parse(saves[rewardKey]);a.equal(pending.receipt.kind,'collector');a.deepEqual(pending.progress.jobs,{});
-  pending.progress.version=version;const rewardRaw=JSON.stringify(pending);saves[floorKey]=floorRaw;saves[rewardKey]=rewardRaw;
+  pending.progress.version=version;if(version===8)pending.progress.world={version:1,linen406:null,calls:{ward407:null,ward408:null},doctorReview:null};const rewardRaw=JSON.stringify(pending);saves[floorKey]=floorRaw;saves[rewardKey]=rewardRaw;
   // Prove this is a legitimate recoverable journal, rather than an invalid fixture.
   const normal=game(saves);a.equal(normal.run('stats.silver'),before.silver+15);a.equal(normal.run('stats.pills'),before.pills+1);a.equal(normal.storage.has(rewardKey),false);
   g=game(saves,{staleModel:true});
@@ -167,7 +174,7 @@ test('A stale work-model API preserves supported floor saves and a valid pending
 });
 
 function parcelForBed(g){accept(g,'k2');move(g,'linen');interaction(g,'job:linen');move(g,'ward406');a.equal(board(g,'job:deliver').kind,'bedmaking');}
-function bedFirstPiece(g){a.equal(act(g,{type:'work',id:'job:deliver',op:'selectPiece',value:'sheet'}),true);a.equal(act(g,{type:'work',id:'job:deliver',op:'place',value:'sheetZone'}),true);}
+function bedFirstPiece(g){a.equal(act(g,{type:'work',id:'job:deliver',op:'startBedPreparation'}),true);a.equal(act(g,{type:'work',id:'job:deliver',op:'startBedPreparation'}),true);a.equal(act(g,{type:'work',id:'job:deliver',op:'selectPiece',value:'sheet'}),true);a.equal(act(g,{type:'work',id:'job:deliver',op:'place',value:'sheetZone'}),true);}
 test('Partial bed placement survives reload; denied final journal preserves parcel, placements and world',()=>{
  let g=game();parcelForBed(g);bedFirstPiece(g);const partial=state(g).jobs.k2;
  a.equal(state(g).world.linen406,null);a.ok(state(g).cargo.includes('linen'));a.ok(!state(g).cargo.includes('delivery'));
@@ -176,7 +183,7 @@ test('Partial bed placement survives reload; denied final journal preserves parc
  g.failedKeys.add(journalKey(g));a.equal(act(g,{type:'work',id:'job:deliver',op:'place',value:'pillowZone'}),false);
  a.deepEqual(economicSnapshot(g),before);a.ok(state(g).cargo.includes('linen'));a.ok(!state(g).cargo.includes('delivery'));
  g.failedKeys.delete(journalKey(g));a.equal(act(g,{type:'work',id:'job:deliver',op:'place',value:'pillowZone'}),true);
- const prepared=state(g).world.linen406;a.equal(prepared.order,'k2:1');a.equal(prepared.prepared,true);a.equal(prepared.delivered,true);a.equal(prepared.revision,3);
+ const prepared=state(g).world.linen406;a.equal(prepared.order,'k2:1');a.equal(prepared.prepared,true);a.equal(prepared.delivered,true);a.equal(prepared.revision,4);
  a.deepEqual(prepared.items.map(x=>x.type).sort(),['Наволочка','Простыня']);a.ok(!state(g).cargo.includes('linen'));a.ok(state(g).cargo.includes('delivery'));
  move(g,'nurse');a.equal(act(g,{type:'action',id:'claim:k2'}),true);const reviewed={...prepared,reviewed:true};a.deepEqual(state(g).world.linen406,reviewed);
  a.equal(act(g,{type:'action',id:'accept:k2'}),true);a.equal(state(g).jobs.k2.variant,1);a.deepEqual(state(g).world.linen406,reviewed);
@@ -192,8 +199,8 @@ test('Interrupted final bed profile write recovers one prepared world, one recei
  g=game(Object.fromEntries(g.storage));a.equal(g.run('stats.silver'),158);a.equal(g.run('stats.exp'),15);a.equal(g.run('inventory.find(i=>i.name===MEDICAL_ITEMS.hp_10.name).count'),1);
  a.equal(act(g,{type:'action',id:'claim:k2'}),false);a.deepEqual(state(g).world.linen406,{...prepared,reviewed:true});a.equal(state(g).jobs.k2.count,1);
 });
-test('Call observations and doctor review are factual, atomic and retained during a later partial repeat',()=>{
- let g=game();accept(g,'d1');move(g,'ward407');a.equal(act(g,{type:'work',id:'job:bell407',op:'inspect',value:'connector'}),true);
+test('Issued revision3 call observations and doctor review remain factual and atomic during migration',()=>{
+ let g=game();const saves=Object.fromEntries(g.storage),key=progressKey(g);saves[key]=JSON.stringify({...E.initial(),version:8,world:{version:1,linen406:null,calls:{ward407:null,ward408:null},doctorReview:null},room:'doctor',jobs:{d1:{active:true,revision:3,variant:0,count:0,startTrip:0,done:{},work:{}}}});g=game(saves);move(g,'ward407');a.equal(act(g,{type:'work',id:'job:bell407',op:'inspect',value:'connector'}),true);
  const beforeTest=economicSnapshot(g);g.failedKeys.add(journalKey(g));a.equal(act(g,{type:'work',id:'job:bell407',op:'test'}),false);a.deepEqual(economicSnapshot(g),beforeTest);
  g.failedKeys.delete(journalKey(g));a.equal(act(g,{type:'work',id:'job:bell407',op:'test'}),true);
  a.equal(state(g).world.calls.ward407.tested,true);a.equal(state(g).world.calls.ward407.responseCode,'acknowledged');a.equal(state(g).world.calls.ward407.reviewed,false);
@@ -213,10 +220,10 @@ test('An issued version-7 revision-2 parcel retains old delivery and records no 
  let g=game();const key=progressKey(g),saves=Object.fromEntries(g.storage);const raw={...E.initial(),version:7,room:'ward406',flags:{unlockB:true,unlockC:true},cargo:['linen'],jobs:{k2:{active:true,revision:2,variant:2,work:{selected:['linen-0','linen-1']},done:{linen:true},count:2,startTrip:0}}};delete raw.world;saves[key]=JSON.stringify(raw);
  g=game(saves);a.equal(state(g).jobs.k2.revision,2);a.equal(board(g,'job:deliver').kind,'delivery');a.equal(state(g).world.linen406,null);
  interaction(g,'job:deliver');a.equal(state(g).world.linen406.delivered,true);a.equal(state(g).world.linen406.prepared,false);a.equal(state(g).world.linen406.revision,2);a.equal(state(g).world.linen406.order,'k2:3');
- move(g,'nurse');a.equal(act(g,{type:'action',id:'claim:k2'}),true);a.equal(state(g).jobs.k2.count,3);a.equal(act(g,{type:'action',id:'accept:k2'}),true);a.equal(state(g).jobs.k2.revision,3);
+ move(g,'nurse');a.equal(act(g,{type:'action',id:'claim:k2'}),true);a.equal(state(g).jobs.k2.count,3);a.equal(act(g,{type:'action',id:'accept:k2'}),true);a.equal(state(g).jobs.k2.revision,4);
 });
 test('Unknown next floor and world formats protect their original bytes and cannot apply rewards',()=>{
- for(const change of [{version:9},{world:{version:99,future:'keep'}}]){
+ for(const change of [{version:10},{world:{version:99,future:'keep'}}]){
   let g=game();const saves=Object.fromEntries(g.storage),key=progressKey(g),raw=JSON.stringify({...E.initial(),...change,room:'nurse'});saves[key]=raw;
   g=game(saves);a.equal(g.storage.get(key),raw);a.equal(act(g,{type:'action',id:'accept:k2'}),false);a.equal(g.storage.get(key),raw);a.equal(g.run('stats.silver'),150);
  }
@@ -231,5 +238,47 @@ for(const boss of ['nurse','doctor'])test('Live '+boss+' raid resumes and awards
   g=game(Object.fromEntries(g.storage));a.equal(g.run('isBattleActive'),true);a.equal(g.run('currentBattleSession.id'),id);a.equal(g.run('bossCurrentHp'),hp);a.deepEqual(state(g).world,world);
   g.run('bossCurrentHp=0;handleVictory()');a.equal(g.run('bossKillsCount.'+boss),pass+1);const silver=g.run('stats.silver');g.run('handleVictory()');a.equal(g.run('stats.silver'),silver);
   g=game(Object.fromEntries(g.storage));a.equal(g.run('bossKillsCount.'+boss),pass+1);a.equal(g.run('stats.silver'),silver);a.equal(state(g).battle,null);a.deepEqual(state(g).world,world);
+ }
+});
+
+
+test('Failed explicit bed start cannot remove the current bedding or persist an unstarted placement',()=>{
+ const g=game();parcelForBed(g);const before=economicSnapshot(g);
+ g.failedKeys.add(journalKey(g));a.equal(act(g,{type:'work',id:'job:deliver',op:'startBedPreparation'}),false);a.deepEqual(economicSnapshot(g),before);
+ g.failedKeys.delete(journalKey(g));a.equal(act(g,{type:'work',id:'job:deliver',op:'selectPiece',value:'sheet'}),false);a.deepEqual(economicSnapshot(g),before);
+ a.equal(act(g,{type:'work',id:'job:deliver',op:'startBedPreparation'}),true);a.equal(state(g).jobs.k2.work.preparationStarted,true);a.equal(g.run('stats.silver'),150);
+});
+
+test('Every new call-cycle stage rolls back a denied journal and reloads before one final existing payout',()=>{
+ let g=game();accept(g,'d1');for(const room of ['ward407','ward408']){move(g,room);interaction(g,'job:bell'+room.slice(-3));}
+ a.equal(act(g,{type:'action',id:'claim:d1'}),false);const phases=[];
+ for(let i=0;i<8&&!E.ready(state(g),'d1');i++){
+  const route=E.jobStage(state(g),'d1');a.ok(route?.action);move(g,route.room);const kind=board(g,route.action).kind;
+  const final=untilSubmit(g,route.action),before=economicSnapshot(g);g.failedKeys.add(journalKey(g));
+  a.equal(act(g,{type:'work',id:route.action,...final}),false);a.deepEqual(economicSnapshot(g),before);
+  g.failedKeys.delete(journalKey(g));a.equal(act(g,{type:'work',id:route.action,...final}),true);
+  phases.push(kind);const saved=state(g);g=game(Object.fromEntries(g.storage));for(const field of ['world','jobs','cargo','transaction','lastReceipt'])a.deepEqual(state(g)[field],saved[field],field+' must survive a phase reload');
+  a.equal(g.run('stats.silver'),150);a.equal(g.run('stats.exp'),0);
+ }
+ a.deepEqual(phases.sort(),['callReview','callService','callService','callRetest','callRetest'].sort());a.ok(E.ready(state(g),'d1'));
+ move(g,'doctor');const before=economicSnapshot(g);g.failedKeys.add(journalKey(g));a.equal(act(g,{type:'action',id:'claim:d1'}),false);a.deepEqual(economicSnapshot(g),before);
+ g.failedKeys.delete(journalKey(g));a.equal(act(g,{type:'action',id:'claim:d1'}),true);a.equal(g.run('stats.silver'),160);a.equal(g.run('stats.exp'),20);
+ const physical=state(g).world.callEquipment;g=game(Object.fromEntries(g.storage));a.equal(act(g,{type:'action',id:'claim:d1'}),false);a.equal(g.run('stats.silver'),160);
+ accept(g,'d1');a.deepEqual(state(g).world.callEquipment,physical);for(const room of ['ward407','ward408']){move(g,room);interaction(g,'job:bell'+room.slice(-3));a.equal(state(g).world.calls[room].report,'working');}
+ finishCallCycle(g);move(g,'doctor');a.equal(act(g,{type:'action',id:'claim:d1'}),true);a.equal(g.run('stats.silver'),170);a.equal(g.run('stats.exp'),40);a.deepEqual(state(g).world.callEquipment,physical);
+});
+
+
+test('A mixed cached old engine and new work model cannot overwrite progress or apply a valid reward journal',()=>{
+ for(const staleEngine of ['missingBedAPI','oldVersion']){
+  let g=game();move(g,'collector');const before=JSON.parse(g.run('JSON.stringify({silver:stats.silver,pills:stats.pills,exp:stats.exp})'));
+  g.failedKeys.add('palata404_stats');a.equal(act(g,{type:'action',id:'collect'}),true);
+  const saves=Object.fromEntries(g.storage),floorKey=progressKey(g),rewardKey=journalKey(g),floorRaw=saves[floorKey],rewardRaw=saves[rewardKey];
+  // The exact saved journal is recoverable with a complete current runtime.
+  const normal=game(saves);a.equal(normal.run('stats.silver'),before.silver+15);a.equal(normal.storage.has(rewardKey),false);
+  g=game(saves,{staleEngine});a.deepEqual(JSON.parse(g.run('JSON.stringify({silver:stats.silver,pills:stats.pills,exp:stats.exp})')),before);
+  a.equal(g.storage.get(floorKey),floorRaw);a.equal(g.storage.get(rewardKey),rewardRaw);
+  a.equal(act(g,{type:'action',id:'collect'}),false);move(g,'nurse');a.equal(act(g,{type:'action',id:'accept:k2'}),false);
+  a.equal(g.storage.get(floorKey),floorRaw);a.equal(g.storage.get(rewardKey),rewardRaw);a.match(g.run('document.getElementById("quest-save").textContent'),/Не удалось загрузить рабочие листы/);
  }
 });

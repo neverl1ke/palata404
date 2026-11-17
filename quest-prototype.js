@@ -3,7 +3,7 @@
 'use strict';
 
 const E=PalataQuestEngine,key='palata404_floor10_progress:'+encodeURIComponent(raidArchiveOwnerId),byId=id=>document.getElementById(id);
-const navigation=window.PalataQuestNavigation,modelReady=typeof PalataQuestJobModel==='object'&&!!PalataQuestJobModel&&['make','restore','board','operate','supportsRevision'].every(name=>typeof PalataQuestJobModel[name]==='function')&&PalataQuestJobModel.supportsRevision('k2',3)&&PalataQuestJobModel.supportsRevision('d1',3);
+const navigation=window.PalataQuestNavigation,modelReady=typeof E.bedPresentation==='function'&&E.initial().version===9&&typeof PalataQuestJobModel==='object'&&!!PalataQuestJobModel&&['make','restore','board','operate','supportsRevision'].every(name=>typeof PalataQuestJobModel[name]==='function')&&PalataQuestJobModel.supportsRevision('k2',4)&&PalataQuestJobModel.supportsRevision('d1',4);
 const guideFor=id=>navigation?navigation.guide(E,state,id):E.guide(state,id);
 let raw,protectedSave=false;const stored=safeStorageGet(key);try{raw=JSON.parse(stored);protectedSave=!modelReady||(!!raw&&!E.supportsSave?.(raw));}catch(_){protectedSave=stored!==null;}let state=E.restore(raw);if(!stored)state.mode=stats.madness>=100?'trip':'patient';let tab='story',taskMode=null,focusQuest=null,focusRoom=null,notice='',workNotice='',locationView=false,interaction=null,travelling=false,saveFailed=false;
 // Keep the existing collector and the approved first-test side-job payouts.
@@ -16,7 +16,7 @@ try{
   const collector=journal.receipt?.kind==='collector'&&Number.isSafeInteger(journal.progress?.collectorCount)&&journal.progress.collectorCount>0&&journal.receipt.id==='collector:'+journal.progress.collectorCount;
   const quest=journal.receipt?.kind==='quest'&&Number.isSafeInteger(journal.progress?.transaction)&&journal.progress.transaction>0&&journal.receipt.id==='transaction:'+journal.progress.transaction;
   const validInventory=Array.isArray(journal.inventory)&&journal.inventory.every(x=>x&&typeof x.name==='string'&&Number.isSafeInteger(x.count)&&x.count>0);
-  if(!protectedSave&&[1,2].includes(journal.version)&&journal.owner===raidArchiveOwnerId&&(collector||journal.version===2&&quest)&&[3,4,5,6,7,8].includes(journal.progress?.version)&&modelReady&&!!E.supportsSave?.(journal.progress)&&journal.stats&&['silver','pills','exp','level'].every(k=>Number.isSafeInteger(journal.stats[k])&&journal.stats[k]>=0)&&(journal.version===1||validInventory)){
+  if(!protectedSave&&[1,2].includes(journal.version)&&journal.owner===raidArchiveOwnerId&&(collector||journal.version===2&&quest)&&[3,4,5,6,7,8,9].includes(journal.progress?.version)&&modelReady&&!!E.supportsSave?.(journal.progress)&&journal.stats&&['silver','pills','exp','level'].every(k=>Number.isSafeInteger(journal.stats[k])&&journal.stats[k]>=0)&&(journal.version===1||validInventory)){
    raw=journal.progress;state=E.restore(raw);Object.assign(stats,normalizeStats(journal.stats));if(journal.version===2)inventory=normalizeInventory(journal.inventory);pendingQuestReward=journal.receipt;
   }else rewardRecoveryError=true;
  }
@@ -121,14 +121,14 @@ function renderTasks(){
   const p=state.jobs[id],tripStep=mode==='trip';
   let detail;
   if(tripStep){detail=!p?.active?(p?.count?'Предыдущая карточка сдана. Новое поручение можно получить у врача в Пациенте.':'Сначала получите поручение у врача.'):p.done.difference?'Наблюдение записано. Передайте карточку врачу в Пациенте.':p.revision===2&&!p.work.baselineCaptured?'Сначала запишите первичные показания коридора A в Пациенте.':'Сравните карточку с новым наблюдением в коридоре A.';}
-  else{const progress=id==='d3'&&p?.revision===2?Number(!!p.work.baselineCaptured)+Number(!!p.done.difference):j.steps.filter(x=>p?.done[x]).length,total=id==='d3'&&p?.revision===2?2:j.steps.length;detail=`${j.repeat?'Повторяемое':'Разовое'} · ${p?.active?'Активно: '+progress+'/'+total:'Взять у '+(tab==='nurse'?'Клары (B)':'врача (C)')} · Сдано: ${p?.count||0}. Награда: ${E.rewardText(id)}.`;}
+  else{const progress=id==='d3'&&p?.revision===2?Number(!!p.work.baselineCaptured)+Number(!!p.done.difference):j.steps.filter(x=>p?.done[x]).length,total=id==='d3'&&p?.revision===2?2:j.steps.length;const active=id==='d1'&&p?.active&&p.revision===4?(E.ready(state,id)?'Готово к сдаче':'Этап: '+(E.jobStage?.(state,id)?.text||'Проверка вызовов')):'Активно: '+progress+'/'+total;detail=`${j.repeat?'Повторяемое':'Разовое'} · ${p?.active?active:'Взять у '+(tab==='nurse'?'Клары (B)':'врача (C)')} · Сдано: ${p?.count||0}. Награда: ${E.rewardText(id)}.`;}
   return {id,title:j.title+(id==='d3'?(tripStep?' · наблюдение':' · карточка и сдача'):''),done:!!p?.count&&!p.active,detail,repeat:j.repeat};
  });
  for(const r of rows){
   const a=document.createElement('article');a.className='quest-card';a.dataset.questId=r.id;
   const h=document.createElement('h4');h.textContent=(r.pending?'Продолжение · ':r.done?'✓ ':'○ ')+r.id+' '+r.title;
   const p=document.createElement('p');p.textContent=r.detail;a.append(h,p);
-  const brief=E.jobBrief?.(r.id);if(brief){const purpose=document.createElement('p');purpose.className='quest-order-purpose';purpose.textContent=brief.giver+': '+brief.purpose;const proof=document.createElement('p');proof.className='quest-order-deliverable';proof.textContent='Подтверждение для сдачи: '+brief.deliverable;a.append(purpose,proof);}
+  const brief=E.jobBrief?.(r.id,state.jobs[r.id]?.revision);if(brief){const purpose=document.createElement('p');purpose.className='quest-order-purpose';purpose.textContent=brief.giver+': '+brief.purpose;const proof=document.createElement('p');proof.className='quest-order-deliverable';proof.textContent='Подтверждение для сдачи: '+brief.deliverable;a.append(purpose,proof);}
   if(r.pending){const pending=document.createElement('p');pending.textContent='Продолжение пока недоступно. Текущие поручения можно завершить на десятом этаже.';a.append(pending);}
   else if(!r.done||r.repeat){
    const g=guideFor(r.id),hint=document.createElement('p');hint.textContent='Следующая точка: '+(E.rooms[g.room]?.[1]||'продолжение маршрута')+'. '+g.text;
@@ -219,7 +219,7 @@ function mountWorkbench(scene,info){
  PalataQuestWorkbench.render(host,{board,feedback:workNotice,act:payload=>{
   const focus=document.activeElement?.dataset.workFocus;
   const ok=dispatch({type:'work',id,op:payload.op,value:payload.value});
-  if(ok&&!E.workbench(state,id)){interaction=null;roomInfoCollapsed=false;renderMap();const receipt=locationScreen.querySelector('.quest-receipt');if(receipt&&receipt.getClientRects().length){receipt.tabIndex=-1;receipt.focus({preventScroll:true});receipt.scrollIntoView({block:'nearest'});}else locationScreen.querySelector('[data-room-info-toggle]')?.focus({preventScroll:true});}
+  if(ok&&!E.workbench(state,id)){interaction=null;roomInfoCollapsed=false;renderMap();const effectId=id==='job:callReview'?'doctorReview':/^job:callRetest40[78]$/.test(id)?'call:ward'+id.slice(-3):id==='job:deliver'?'linen406':null;const outcome=(effectId&&locationScreen.querySelector('[data-world-effect="'+effectId+'"]'))||locationScreen.querySelector('.quest-receipt');if(outcome&&outcome.getClientRects().length){outcome.tabIndex=-1;outcome.focus({preventScroll:true});outcome.scrollIntoView({block:'nearest'});}else locationScreen.querySelector('[data-room-info-toggle]')?.focus({preventScroll:true});}
   else{
    if(!ok)renderMap();
    const controls=[...locationScreen.querySelectorAll('[data-work-focus]')],target=controls.find(e=>e.dataset.workFocus===focus&&!e.disabled)||locationScreen.querySelector('[data-work-heading]');target?.focus({preventScroll:true});

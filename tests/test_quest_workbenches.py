@@ -54,7 +54,7 @@ class QuestWorkbenchTests(unittest.TestCase):
         ui.action(self.page,'accept:'+id)
         job=self.progress()['jobs'][id]
         self.assertTrue(job['active'])
-        self.assertEqual(job['revision'],3 if id in ['k2','d1'] else 2)
+        self.assertEqual(job['revision'],4 if id in ['k2','d1'] else 2)
 
     def reload_home(self):
         self.page.reload(wait_until='networkidle')
@@ -92,6 +92,7 @@ class QuestWorkbenchTests(unittest.TestCase):
                 self.assertGreaterEqual(visible['top'],visible['clipTop'],visible)
                 self.assertLessEqual(visible['bottom'],visible['clipBottom'],visible)
                 ui.complete(self.page,action,open_board=False)
+            ui.complete_call_cycle(self.page)
         elif id=='d2':
             ui.complete(self.page,'job:log')
         elif id=='d3':
@@ -341,7 +342,7 @@ class QuestWorkbenchTests(unittest.TestCase):
         self.reload_home();self.assertEqual(self.ledger(),claimed)
         self.accept('k2')
         repeated=self.progress()['jobs']['k2']
-        self.assertEqual(repeated['revision'],3);self.assertEqual(repeated['count'],4)
+        self.assertEqual(repeated['revision'],4);self.assertEqual(repeated['count'],4)
         self.assertEqual(repeated['variant'],1);self.assertEqual(repeated['done'],{})
         ui.room(self.page,'linen');ui.action(self.page,'job:linen')
         self.assertEqual(ui.board(self.page,'job:linen')['kind'],'packing')

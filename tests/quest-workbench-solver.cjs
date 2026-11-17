@@ -20,6 +20,7 @@ function nextOperation(b){
   }
   case 'delivery':return{op:'deliver'};
   case 'bedmaking':{
+   if(b.revision===4&&!b.preparationStarted)return{op:'startBedPreparation'};
    const item=b.items.find(x=>!b.placed.includes(x.id));if(!item)throw Error('No unplaced item remains in an unfinished bed preparation.');
    return b.selectedPiece===item.id?{op:'place',value:item.id==='sheet'?'sheetZone':'pillowZone'}:{op:'selectPiece',value:item.id};
   }
@@ -31,10 +32,18 @@ function nextOperation(b){
   case 'diagnostic':{
    if(!b.inspected)return{op:'inspect',value:'connector'};
    if(!b.tested)return{op:'test'};
-   const report=!b.connector.connected?'disconnected':b.indicator==='on'&&/вызов принят/.test(b.response||'')?'working':'noResponse';
+   const report=b.connector.connected===null?'unassessed':!b.connector.connected?'disconnected':b.indicator==='on'&&/вызов принят/.test(b.response||'')?'working':'noResponse';
    if(!b.reports.some(x=>x.id===report))throw Error('No report describes the observed call response.');
    return b.selected[0]===report?{op:'submit'}:{op:'select',value:report};
   }
+  case 'callReview':return{op:'authorize'};
+  case 'callService':{
+   if(!b.inspected)return{op:'inspectEvidence'};
+   const choice=b.options.find(x=>['equipmentId','connector','postAddress'].every(key=>x[key]===b.evidence[key]));
+   if(!choice)throw Error('No authorized service matches all observed equipment fields.');
+   return b.selected[0]===choice.id?{op:'submit'}:{op:'select',value:choice.id};
+  }
+  case 'callRetest':return{op:b.tested?'confirm':'test'};
   case 'timeline':{
    const desired=b.cards.slice().sort((a,z)=>a.time.localeCompare(z.time)).map(x=>x.id);
    const mismatch=b.order.findIndex((x,i)=>desired[i]!==x);

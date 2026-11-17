@@ -1,0 +1,41 @@
+{
+  "status": "review-only-not-approved",
+  "originalRoom": "assets/quest-world/ward406-patient.webp",
+  "artMasterRoom": "/workspace/generated_images/exec-47dfaf67-18e0-4939-9741-f5f037741bbf.png",
+  "processing": "Lossless WebP encoding at original dimensions. No resizing, color filtering or painting. Bare mattress source must only be shown inside exact local masks over the unchanged room.",
+  "assets": {
+    "bare-mattress": {
+      "master": "/workspace/generated_images/exec-1b3aaee2-132b-4ff3-bc83-82232f13823c.png",
+      "masterSha256": "6578cb24d5a123a2a67d572c238814d51385154fcdd203323d7615d8455c771d",
+      "path": "assets/quest-bed-review/bare-mattress.webp",
+      "sha256": "f9d755588d54b8064d626427f709420c1974185f6b28a69d392ffc9fdad2db7c",
+      "size": [
+        1536,
+        1024
+      ],
+      "losslessVerified": true
+    },
+    "folded-sheet": {
+      "master": "/workspace/generated_images/exec-f1cc9759-1f97-4da9-87d2-51a2e0886fbc.png",
+      "masterSha256": "79636443a8f7831104467b2032258df76baf7c7809d9bc55a8e48df0b2b0dc12",
+      "path": "assets/quest-bed-review/folded-sheet.webp",
+      "sha256": "7c61526dc100fc6c782e6ba943dcc394a961cf0718828ba9c6d279db6384298d",
+      "size": [
+        1536,
+        1024
+      ],
+      "losslessVerified": true
+    },
+    "empty-pillowcase": {
+      "master": "/workspace/generated_images/exec-6cb7ad6a-7466-4663-a25e-a4559ada9b12.png",
+      "masterSha256": "141dae8d181492d437899c8c490f1324e471d1b22806daaf04050a2c0d56a81e",
+      "path": "assets/quest-bed-review/empty-pillowcase.webp",
+      "sha256": "d6d8a9c81f0718e2e36792b60c08816f6c08ccc79c74ec4101fdca890ef2f9de",
+      "size": [
+        1536,
+        1024
+      ],
+      "losslessVerified": true
+    }
+  }
+}

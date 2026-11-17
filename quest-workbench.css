@@ -56,3 +56,53 @@
 .quest-workbench .workbench-timeline{background:repeating-linear-gradient(0deg,transparent 0 35px,#86715338 35px 36px),var(--paper-material-portrait) center/cover no-repeat}
 
 @media(max-width:1024px){.quest-workbench .workbench-paper{--paper-material-image:var(--paper-material-portrait)}}
+
+/* Revision-four operations remain readable documents, with actual choices and
+   observations separate from a diagnosis or a successful control call. */
+.quest-workbench .workbench-call-review{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.quest-workbench .workbench-review-guidance{grid-column:1/-1;margin:0;font-size:13px}
+.quest-workbench .workbench-review-card,.quest-workbench .workbench-service-evidence{min-width:0;padding:16px;border:1px solid #a28b65;background:#d8b989 var(--paper-material-portrait) center/cover no-repeat}
+.quest-workbench .workbench-review-card h3{text-align:center}
+.quest-workbench .workbench-review-card .workbench-facts{grid-template-columns:minmax(88px,.5fr) minmax(0,1fr);gap:9px 12px}
+.quest-workbench .workbench-review-next{border-left:3px solid #8a7652;padding-left:9px;margin-bottom:0;font-size:12px}
+.quest-workbench[data-work-kind=callService] .workbench-area{grid-template-columns:minmax(250px,.85fr) minmax(320px,1.15fr)}
+.quest-workbench[data-work-kind=callService] .workbench-request{grid-column:1/-1}
+.quest-workbench[data-work-kind=callService] .workbench-area:not(:has(.workbench-service-options)) .workbench-service-evidence{grid-column:1/-1}
+.quest-workbench .workbench-service-evidence>button{margin:5px 0 14px;max-width:100%}
+.quest-workbench .workbench-service-evidence p{font-size:13px}
+.quest-workbench .workbench-service-observation{padding-top:8px;border-top:1px dotted #9c835d}
+.quest-workbench .workbench-service-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;align-content:start;min-width:0}
+.quest-workbench button.workbench-service-option{display:flex;flex-direction:column;align-items:stretch;gap:10px;min-width:0;min-height:44px;text-align:left;padding:14px;background:#d8b989 var(--paper-material-portrait) center/cover no-repeat}
+.quest-workbench .workbench-service-option>strong{font-size:14px;font-weight:normal;overflow-wrap:anywhere}
+.quest-workbench .workbench-service-option .workbench-facts{grid-template-columns:minmax(65px,.65fr) minmax(0,1fr);font-size:12px;gap:6px 8px}
+.quest-workbench button.workbench-service-option[aria-pressed=true]{border-color:#5c7251;box-shadow:inset 3px 0 #5c7251;background-image:linear-gradient(#d4dcc044,#d4dcc044),var(--paper-material-portrait)}
+.quest-workbench button.workbench-service-option[aria-pressed=true]::before,.quest-workbench button.workbench-bed-piece[aria-pressed=true]::before{content:none}
+.quest-workbench[data-work-kind=callRetest] .workbench-area{grid-template-columns:minmax(240px,1fr) minmax(260px,1fr)}
+.quest-workbench[data-work-kind=callRetest] .workbench-test-observation{align-self:start}
+.quest-workbench .workbench-bed-start-note{padding:9px 11px;border-left:3px solid #8c7753;font-size:12px;margin:0 0 10px}
+.quest-workbench[data-bed-explicit-start=true] .workbench-bed-diagram{display:block;aspect-ratio:500/340;max-width:440px}
+.quest-workbench[data-bed-explicit-start=true] .workbench-bed-diagram>svg{display:block}
+.quest-workbench[data-bed-explicit-start=true] button.workbench-bed-target[data-bed-zone]{position:absolute;min-height:44px;font-size:12px}
+.quest-workbench[data-bed-explicit-start=true] button.workbench-bed-target[data-bed-zone=pillowZone]{left:25%;top:15%;width:50%;height:20.6%}
+.quest-workbench[data-bed-explicit-start=true] button.workbench-bed-target[data-bed-zone=sheetZone]{left:21%;top:39.7%;width:58%;height:42.6%}
+.quest-workbench .workbench-bed-diagram.has-bed-art{display:block;aspect-ratio:auto;max-width:none}
+.quest-workbench .has-bed-art>.quest-bed-closeup-art{display:block;width:100%;height:auto}
+.quest-workbench .has-bed-art>button.workbench-bed-target[data-bed-zone]{position:absolute;min-height:44px;padding:4px;font-size:11px;line-height:1.15;background:#f2e9d245;border:1px dashed #655c4288}
+.quest-workbench .has-bed-art>button.workbench-bed-target[data-bed-zone]:disabled{background:transparent}
+@media(min-width:900px){.quest-workbench[data-work-kind=callService] .workbench-request .workbench-facts{grid-template-columns:max-content minmax(90px,1fr) max-content minmax(60px,1fr) max-content minmax(90px,1fr)}}
+@media(max-width:900px){.quest-workbench[data-work-kind=callService] .workbench-area{grid-template-columns:1fr}.quest-workbench .workbench-service-options{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){
+ .quest-workbench .workbench-call-review,.quest-workbench .workbench-service-options,.quest-workbench[data-work-kind=callRetest] .workbench-area{grid-template-columns:1fr}
+ .quest-workbench .workbench-review-card,.quest-workbench .workbench-service-evidence{padding:12px}
+ .quest-workbench[data-bed-preparation=not-started] .workbench-footer,.quest-workbench[data-work-kind=callReview] .workbench-footer,.quest-workbench[data-work-kind=callService] .workbench-footer,.quest-workbench[data-work-kind=callRetest] .workbench-footer{flex-wrap:wrap;gap:7px}
+ .quest-workbench[data-bed-preparation=not-started] .workbench-submit,.quest-workbench[data-work-kind=callReview] .workbench-submit,.quest-workbench[data-work-kind=callService] .workbench-submit,.quest-workbench[data-work-kind=callRetest] .workbench-submit{flex:1 0 100%;max-width:none;min-width:0}
+ .quest-workbench[data-bed-preparation=not-started] .workbench-placement-count{white-space:normal;font-size:12px}
+}
+/* The default short-landscape form keeps its existing four controls together.
+   The optional painted close-up retains its source-native view and scrolls. */
+@media(max-height:600px) and (min-width:601px){
+ .quest-workbench[data-bed-explicit-start=true] .workbench-bed-diagram:not(.has-bed-art){display:flex;flex-direction:column;gap:8px;aspect-ratio:auto;max-width:none}
+ .quest-workbench[data-bed-explicit-start=true] .workbench-bed-diagram:not(.has-bed-art)>svg{display:none}
+ .quest-workbench[data-bed-explicit-start=true] .workbench-bed-diagram:not(.has-bed-art)>button.workbench-bed-target[data-bed-zone]{position:static;width:100%;height:auto;min-height:52px;font-size:12px}
+}
+.quest-workbench .workbench-bed-pieces>.workbench-bed-start-note{grid-column:1/-1}

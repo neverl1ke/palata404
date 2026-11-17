@@ -40,3 +40,16 @@ def return_home(game):
  if game.locator('[data-work-focus="close"]').count():game.locator('[data-work-focus="close"]').click()
  if game.locator('#quest-location-screen').is_visible():game.locator('.quest-room-tools button').first.click()
  if game.locator('#map-modal').is_visible():game.locator('#map-modal .btn-close-map').click()
+
+
+def complete_call_cycle(game):
+ """Finish only the newly authorized service/retest stages via public routing."""
+ for _ in range(8):
+  state=game.evaluate('PalataQuestPrototype.snapshot()')
+  if state['jobs']['d1'].get('revision')!=4:return
+  if game.evaluate('PalataQuestEngine.ready(PalataQuestPrototype.snapshot(),"d1")'):return
+  route=game.evaluate('PalataQuestEngine.jobStage(PalataQuestPrototype.snapshot(),"d1")')
+  if not route or not route.get('action'):
+   raise AssertionError('An unfinished call cycle has no actionable player route: '+repr(route))
+  room(game,route['room']);complete(game,route['action'])
+ raise AssertionError('Authorized call cycle did not reach final verified submission')

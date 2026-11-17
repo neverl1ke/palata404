@@ -63,6 +63,9 @@ class QuestWorldTests(unittest.TestCase):
         self.assertEqual(board['kind'],'bedmaking')
         self.assertEqual({item['id'] for item in board['items']},{'sheet','pillowcase'})
         self.assertEqual(board['placed'],[])
+        self.assertFalse(board['preparationStarted'])
+        ui.operate(self.page,'startBedPreparation')
+        self.assertTrue(ui.board(self.page,'job:deliver')['preparationStarted'])
         self.assertFalse(self.world()['linen406'])
         self.assertEqual(self.page.locator('[data-world-item="pending-bed-linen"]').count(),1)
         self.page.set_viewport_size({'width':844,'height':390})
@@ -201,10 +204,12 @@ class QuestWorldTests(unittest.TestCase):
             self.assertNotEqual(self.page.locator(f'[data-call-room="{room}"]').inner_text(),'✓')
             ui.complete(self.page,action,open_board=False)
             self.assertEqual(self.effect('call:'+room).count(),1)
-            expected='disconnected' if not board['connector']['connected'] else 'working' if 'вызов принят' in board['response'] else 'noResponse'
+            expected='unassessed' if board['connector']['connected'] is None else 'disconnected' if not board['connector']['connected'] else 'working' if 'вызов принят' in board['response'] else 'noResponse'
             self.assertEqual(self.world()['calls'][room]['report'],expected)
             self.assertEqual(self.page.locator(f'[data-call-room="{room}"]').inner_text(),'✓' if expected=='working' else '!')
-        ui.room(self.page,'doctor');ui.action(self.page,'claim:d1')
+        with_proofs=self.ledger()
+        ui.room(self.page,'doctor');ui.complete(self.page,'job:callReview')
+        self.assertEqual(self.ledger(),with_proofs)
         review=copy.deepcopy(self.world()['doctorReview'])
         self.assertEqual(review['order'],'d1:1')
         self.assertTrue(review['maintenance'])
@@ -213,8 +218,12 @@ class QuestWorldTests(unittest.TestCase):
         self.assertGreaterEqual(visible['top'],visible['clipTop'],visible)
         self.assertLessEqual(visible['bottom'],visible['clipBottom'],visible)
         self.assertIn('408',self.effect('doctorReview').inner_text())
-        self.assertEqual(self.world()['calls']['ward408']['connected'],False)
-        self.assertEqual(self.world()['calls']['ward408']['indicator'],'off')
+        self.assertNotEqual(self.world()['callEquipment']['ward408']['condition'],'working')
+        ui.complete_call_cycle(self.page)
+        self.assertEqual(self.world()['doctorReview'],review)
+        self.assertTrue(all(item['condition']=='working' for item in self.world()['callEquipment'].values()))
+        self.assertEqual(self.ledger(),with_proofs)
+        ui.room(self.page,'doctor');ui.action(self.page,'claim:d1')
         after=self.ledger()
         self.assertEqual(after['silver']-before['silver'],10)
         self.assertEqual(after['exp']-before['exp'],20)
@@ -230,6 +239,7 @@ class QuestWorldTests(unittest.TestCase):
     def test_failed_final_placement_rolls_back_world_cargo_and_work_together(self):
         self.load();self.packed_linen();ui.room(self.page,'ward406');ui.action(self.page,'job:deliver')
         # The opposite placement order must show only the actual unused sheet.
+        ui.operate(self.page,'startBedPreparation')
         ui.operate(self.page,'selectPiece','pillowcase');ui.operate(self.page,'place','pillowZone')
         ui.operate(self.page,'selectPiece','sheet')
         self.assertEqual(self.page.locator('[data-world-item="pending-bed-linen"]').get_attribute('data-pending-pieces'),'sheet')
@@ -239,7 +249,9 @@ class QuestWorldTests(unittest.TestCase):
         ui.operate(self.page,'place','sheetZone')
         self.assertIn('Не удалось сохранить',self.page.locator('.workbench-status').inner_text())
         self.assertEqual({'world':self.world(),'work':self.progress()['jobs']['k2']['work'],'ledger':self.ledger()},before)
-        self.assertEqual(self.effect('linen406').count(),0)
+        self.assertEqual(self.effect('linen406').count(),1)
+        self.assertIn('Подготовка кровати продолжается',self.effect('linen406').inner_text())
+        self.assertFalse(self.world()['linen406'])
         self.assertEqual(self.page.locator('[data-world-item="pending-bed-linen"]').count(),1)
         self.assertEqual(self.page.locator('[data-world-item="pending-bed-linen"]').get_attribute('data-pending-pieces'),'sheet')
         self.assertEqual(self.page.locator('[data-world-item="prepared-linen"]').count(),0)
@@ -265,7 +277,7 @@ class QuestWorldTests(unittest.TestCase):
             f'localStorage.setItem({json.dumps(fixture["key"])},{json.dumps(fixture["raw"])});'
             'sessionStorage.setItem("worldLegacyFixtureSeeded","1");}')
         self.reload_home()
-        self.assertEqual(self.progress()['version'],8)
+        self.assertEqual(self.progress()['version'],9)
         self.assertEqual(self.progress()['jobs']['k2']['revision'],2)
         self.assertFalse(self.world()['linen406'])
         before=self.ledger();ui.room(self.page,'ward406');ui.action(self.page,'job:deliver')
@@ -282,7 +294,7 @@ class QuestWorldTests(unittest.TestCase):
         self.assertEqual(self.ledger()['exp']-before['exp'],15)
         self.assertEqual(self.progress()['jobs']['k2']['count'],3)
         self.reload_home();self.assertEqual(self.progress()['jobs']['k2']['revision'],2)
-        self.accept('k2');self.assertEqual(self.progress()['jobs']['k2']['revision'],3)
+        self.accept('k2');self.assertEqual(self.progress()['jobs']['k2']['revision'],4)
 
 
 if __name__=='__main__':

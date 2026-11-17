@@ -10,3 +10,25 @@
 /* Documentary consequences and physical paper tags use the same fine stock. */
 .quest-world-effect,.quest-world-post-response{background:#d8b989 var(--paper-material-landscape) center/cover no-repeat}
 .quest-bed-service-tag,.quest-call-service-tag{background:#d8b989 var(--paper-material-portrait) center/cover no-repeat}
+
+/* Separate remaining pieces; the old duplicated towel crop is never reused. */
+.quest-bed-pending-piece{position:absolute;display:block;pointer-events:none}
+.quest-bed-pending-piece[data-pending-piece=sheet]{left:0;top:36%;width:100%;height:64%}
+.quest-bed-pending-piece[data-pending-piece=pillowcase]{left:15%;top:0;width:73%;height:46%}
+.quest-bed-pending-linen:not(:has([data-pending-piece=sheet])) .quest-bed-pending-piece[data-pending-piece=pillowcase]{top:38%}
+.quest-bed-pending-piece .workbench-object-illustration{display:block;width:100%;height:100%;object-fit:contain;object-position:center;filter:none}
+.quest-bed-pending-linen.has-bed-pieces-art{left:0;top:0;width:100%;height:100%;filter:none}
+.quest-bed-pending-linen.has-bed-pieces-art .quest-bed-pending-piece{filter:drop-shadow(0 2px 1px #211a1440)}
+.quest-bed-service-tag[data-world-item=preparing-linen]{color:#755538;border-color:#8a6e46}
+.quest-call-service-tag[data-call-physical-status=verified]{color:#4e603d;border-color:#71805c}
+.quest-call-service-tag[data-call-physical-status=awaiting-retest]{color:#725b3e;border-color:#8a7654}
+/* Remaining parcel items follow this order's work, independently of historical
+   prepared bedding. The default uses distinct schematic pieces; new painted
+   artwork appears only under the explicit review URL. */
+.quest-bed-pending-piece{position:absolute;display:block;left:0;top:32%;width:100%;height:68%}
+.quest-bed-pending-piece[data-pending-piece=pillowcase]{left:15%;top:0;width:73%;height:47%}
+.quest-bed-pending-piece>.workbench-object-illustration{display:block;width:100%;height:100%;object-fit:contain;pointer-events:none}
+.quest-bed-pending-linen.has-bed-pieces-art{inset:0;width:100%;height:100%}
+.quest-call-service-tag[data-call-physical-status=verified]{color:#425b3c;border-color:#697a51}
+.quest-call-service-tag[data-call-physical-status=awaiting-retest]{color:#765f37;border-color:#8e764b}
+.quest-bed-service-tag[data-world-item=preparing-linen]{color:#755837;border-color:#a07c4e}
