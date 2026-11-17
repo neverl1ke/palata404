@@ -116,7 +116,7 @@ window.addEventListener('raid-weapon-state',save);
 function save(){if(restoringRaid)return false;if(protectedSave||!modelReady){saveFailed=true;return false;}state.raid=checkpoint();saveFailed=rewardRecoveryError||(pendingQuestReward?!saveGameProgress():!safeStorageSet(key,JSON.stringify(state)));return !saveFailed;}
 function sync(){stats.madness=state.mode==='trip'?100:0;if(!wardrobeSession)paperDollState.activeViewMode=state.mode==='trip'?'combat':'patient';currentRoom={id:state.room==='ward404'?'room_404':state.room,name:E.rooms[state.room][1],desc:'10-й этаж · секция '+E.rooms[state.room][0]};}
 function renderTasks(){
- const list=byId('quest-list'),mode=taskMode||state.mode;list.replaceChildren();
+ const list=byId('quest-list'),mode=taskMode||state.mode,openNotes=new Set([...list.querySelectorAll('details[data-quest-notes][open]')].map(note=>note.dataset.questNotes));list.replaceChildren();
  const rows=tab==='story'?(navigation?navigation.story(E,state):E.story(state)).filter(r=>r.mode===mode):Object.entries(E.jobs).filter(([,j])=>j.giver===tab).filter(([id])=>mode==='patient'||id==='d3').map(([id,j])=>{
   const p=state.jobs[id],tripStep=mode==='trip';
   let detail;
@@ -137,12 +137,34 @@ function renderTasks(){
    if(g.room)a.append(button('Показать на карте',()=>{focusQuest=r.id;focusRoom=null;notice='Точка задания подсвечена. ';toggleMapModal(true);requestAnimationFrame(()=>{if(!byId('map-modal').classList.contains('hidden'))map.querySelector('.quest-map-pin.is-target')?.scrollIntoView({block:'center',inline:'center',behavior:'instant'});});}));
    if(g.hint){const detail=document.createElement('details'),summary=document.createElement('summary'),text=document.createElement('p');summary.textContent='Дополнительная подсказка';text.textContent=g.hint;detail.append(summary,text);a.append(detail);}
   }else{const done=document.createElement('p');done.textContent='Завершено. Повторять эти действия не нужно.';a.append(done);}
+  if(!r.pending)appendCollectedNotes(a,r.id,openNotes.has(r.id),r.done);
   list.append(a);
  }
  tasks.querySelectorAll('[data-quest-tab]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.questTab===tab)));
  tasks.querySelectorAll('[data-task-mode]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.taskMode===mode)));
  if(!list.children.length)list.textContent='В этом режиме нет поручений этой категории. Просмотр другого режима не переключает игру.';
  byId('quest-save').textContent=!modelReady?'Не удалось загрузить рабочие листы. Обновите страницу.':saveFailed?'Сохранение недоступно или формат новее этой версии. Исходные данные не заменяются.':'';
+}
+
+function appendCollectedNotes(host,id,open,complete){
+ const projection=window.PalataQuestNotes;
+ if(!projection)return;
+ const records=projection.forQuest(E,window.PalataQuestJobModel,state,id);
+ const detail=document.createElement('details'),summary=document.createElement('summary');
+ detail.dataset.questNotes=id;detail.open=open;
+ summary.textContent='Собранные записи · '+records.length;detail.append(summary);
+ const scope=document.createElement('p');scope.textContent='Копии сохранённых осмотров и актов. Текущая или последняя заявка.';detail.append(scope);
+ if(!records.length){const empty=document.createElement('p');empty.textContent=complete?'Подробные источники в этом сохранении не зафиксированы. Отметка о выполнении остаётся в журнале.':id==='k3'&&state.jobs.k3?.active?'Здесь сохраняются отмеченные поля и итог сверки. Исходные записи находятся в процедурной.':'Записи появятся после осмотра предмета или работы с документом.';detail.append(empty);}
+ for(const record of records){
+  const entry=document.createElement('section');entry.dataset.questNote=record.id;
+  const title=document.createElement('h4');title.textContent=record.title;
+  const origin=document.createElement('p');origin.textContent=record.source+' · '+({draft:'Черновик',recorded:'Записано',confirmed:'Подтверждено'}[record.status]||'Записано');
+  entry.append(title,origin);
+  if(record.text){const text=document.createElement('p');text.textContent=record.text;entry.append(text);}
+  for(const field of record.fields){const line=document.createElement('p'),label=document.createElement('strong');label.textContent=field.label+': ';line.append(label,document.createTextNode(field.value));entry.append(line);}
+  detail.append(entry);
+ }
+ host.append(detail);
 }
 
 function switchHint(host,g){

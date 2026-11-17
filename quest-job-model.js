@@ -64,10 +64,10 @@ function callDiagnosis(s,step){
  return{type:condition,connected:condition==='unassessed'?null:condition!=='disconnected',indicator:condition==='working'||condition==='noResponse'?'on':'off',response:condition==='working'?'Пост: «'+step.slice(4)+', вызов принят».':'Ответ поста не поступил.'};
 }
 function serviceOptions(room,cause,v){const e=callEquipment(room),other=callEquipment(room==='ward407'?'ward408':'ward407');return rotate([
- {label:cause==='noResponse'?'Закрепить адрес палаты на посту':'Штатное обслуживание узла',equipmentId:e.id,connector:e.connector,postAddress:e.postAddress},
- {label:'Заявка на соседний узел',equipmentId:other.id,connector:e.connector,postAddress:e.postAddress},
- {label:cause==='noResponse'?'Другой адрес поста':'Разъём другого типа',equipmentId:e.id,connector:cause==='noResponse'?e.connector:'КС-3',postAddress:cause==='noResponse'?other.postAddress:e.postAddress}
- ],v).map((x,i)=>({id:['service-a','service-b','service-c'][i],...x}));}
+ {equipmentId:e.id,connector:e.connector,postAddress:e.postAddress},
+ {equipmentId:other.id,connector:e.connector,postAddress:e.postAddress},
+ {equipmentId:e.id,connector:cause==='noResponse'?e.connector:'КС-3',postAddress:cause==='noResponse'?other.postAddress:e.postAddress}
+ ],v).map((x,i)=>({id:['service-a','service-b','service-c'][i],...x,label:'Запись №'+room.slice(4)+'-'+String(i+1).padStart(2,'0')}));}
 function serviceReady(s){const j=s.jobs?.d1;if(j?.revision!==4)return false;const w=j.work;if(!w.authorized||!validRecord('d1',j))return false;return callRooms.every(room=>{const step='bell'+room.slice(4),d=w.diagnostics[step],initial=w.initial[room],e=s.world?.callEquipment?.[room];if(!j.done?.[step]||!d.inspected||!d.tested||d.selected[0]!==initial.condition||!e||e.condition!=='working')return false;if(initial.condition==='working')return e.revision===initial.revision;const p=w.services[room];return p.performed&&p.tested&&p.confirmed&&p.serviceRevision===e.revision&&e.verified&&p.responseAddress===callEquipment(room).postAddress;});}
 function inspectionData(v){
  const kit=['Перевязочный','Диагностический','Осмотровой'][v],lot=['Б-17','В-24','А-09'][v],target=[1,3,0][v];
