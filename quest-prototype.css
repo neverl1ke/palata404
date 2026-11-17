@@ -232,3 +232,6 @@
  .quest-map-sheet #map-title-text{position:static;order:1;align-self:stretch;text-align:center;font-size:12px!important}
  .quest-map-sheet .btn-close-map{width:44px;height:44px;min-width:44px;min-height:44px;top:0;right:0}
 }
+
+/* Keep a required physical target visible while its instruction sheet is open. */
+#quest-location-screen .scene-paper[data-paper-side=left]{right:auto;left:16px}

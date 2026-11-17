@@ -3,7 +3,7 @@
 'use strict';
 
 const E=PalataQuestEngine,key='palata404_floor10_progress:'+encodeURIComponent(raidArchiveOwnerId),byId=id=>document.getElementById(id);
-const navigation=window.PalataQuestNavigation,modelReady=typeof E.cargoName==='function'&&typeof E.bedPresentation==='function'&&E.initial().version===10&&typeof PalataQuestJobModel==='object'&&!!PalataQuestJobModel&&['make','restore','board','operate','supportsRevision','captureObservation'].every(name=>typeof PalataQuestJobModel[name]==='function')&&PalataQuestJobModel.supportsRevision('k3',3)&&PalataQuestJobModel.supportsRevision('k2',4)&&PalataQuestJobModel.supportsRevision('d1',4)&&PalataQuestJobModel.supportsRevision('d2',3)&&PalataQuestJobModel.supportsRevision('d3',3);
+const navigation=window.PalataQuestNavigation,modelReady=typeof pendingBossCounters==='function'&&typeof restoreBossCounter==='function'&&typeof queueBossCounter==='function'&&typeof E.cargoName==='function'&&typeof E.bedPresentation==='function'&&E.initial().version===10&&typeof PalataQuestJobModel==='object'&&!!PalataQuestJobModel&&['make','restore','board','operate','supportsRevision','captureObservation'].every(name=>typeof PalataQuestJobModel[name]==='function')&&PalataQuestJobModel.supportsRevision('k3',3)&&PalataQuestJobModel.supportsRevision('k2',4)&&PalataQuestJobModel.supportsRevision('d1',4)&&PalataQuestJobModel.supportsRevision('d2',3)&&PalataQuestJobModel.supportsRevision('d3',3);
 const guideFor=id=>navigation?navigation.guide(E,state,id):E.guide(state,id);
 let raw,protectedSave=false;const stored=safeStorageGet(key);try{raw=JSON.parse(stored);protectedSave=!modelReady||(!!raw&&!E.supportsSave?.(raw));}catch(_){protectedSave=stored!==null;}let state=E.restore(raw);if(!stored)state.mode=stats.madness>=100?'trip':'patient';let tab='story',taskMode=null,focusQuest=null,focusRoom=null,notice='',workNotice='',locationView=false,interaction=null,travelling=false,saveFailed=false;
 // Keep the existing collector and the approved first-test side-job payouts.
@@ -29,7 +29,7 @@ function syncCargo(){
 if(!protectedSave&&!rewardRecoveryError)syncCargo();
 const originalSaveProgress=saveGameProgress;
 saveGameProgress=function(){
- if(restoringRaid)return false;
+ if(restoringRaid||!modelReady)return false;
  if(pendingQuestReward){
   // Keep the pending snapshot current on every ordinary game save, so spending,
   // combat or another update cannot be rolled back by an older reward journal.
@@ -53,7 +53,7 @@ const mapHome=byId('map-modal').querySelector('.map-clipboard-body');const locat
 const officialHeader=document.createElement('div');officialHeader.className='quest-official-header';officialHeader.innerHTML='<document-header variant="left" department="ПЛАН ДЕСЯТОГО ЭТАЖА" scale="compact"></document-header><document-stamp type="service" rotate="-5"></document-stamp><document-stamp type="seal" rotate="8"></document-stamp>';byId('map-modal').querySelector('.map-clipboard-header').append(officialHeader);byId('map-modal').setAttribute('aria-label','Карта этажей');byId('map-modal').querySelector('.btn-close-map').setAttribute('aria-label','Закрыть окно');
 // A single quest checkpoint holds position and the live raid together. Production
 // payouts remain exclusively owned by handleVictory's durable reward journal.
-const counters=new Map();let restoringRaid=false,collectorWake=null;
+let restoringRaid=false,collectorWake=null;
 function checkpoint(){
  if(!state.battle||!currentBattleSession)return null;
  return {version:1,owner:raidArchiveOwnerId,boss:currentBossKey,hp:bossCurrentHp,maxHp:bossMaxHp,playerHp:stats.hp,
@@ -61,7 +61,7 @@ function checkpoint(){
   weapons:typeof battleWeaponSnapshot==='function'?battleWeaponSnapshot():null,
   profile:{...getBattleAttackProfile()},session:{...currentBattleSession,events:[...currentBattleSession.events]},
   members:JSON.parse(JSON.stringify(raidMembers)),inventory:JSON.parse(JSON.stringify(inventory)),
-  counters:[...counters].filter(([id])=>!currentBattleSession.events.has(id+':counter'))};
+  counters:pendingBossCounters()};
 }
 // Checkpoint inventories bypass the normal profile loader. Reject the whole
 // malformed checkpoint instead of replacing a valid profile with partial data.
@@ -78,6 +78,7 @@ function raidInventorySnapshot(items){
 }
 function resumeRaid(r){
  if(!state.battle)return;
+ if(!modelReady){notice='Не удалось загрузить актуальные файлы боя. Обновите страницу; сохранение не заменено.';return;}
  const completed=r?.session?.id&&(lastBattleResult?.battleId===r.session.id?lastBattleResult:readRaidArchive().find(x=>x.battleId===r.session.id));
  if(completed){if(completed.outcome==='victory'&&state.battle==='doctor')state.flags.doctorWon=true;if(completed.outcome!=='victory')state.room='ward404';state.battle=null;return;}
  const finite=n=>Number.isFinite(n)&&n>=0;
@@ -97,23 +98,16 @@ function resumeRaid(r){
  weaponReloadEndsAt=r.reloadAt;
  if(typeof restoreBattleWeapons==='function')restoreBattleWeapons(r.weapons,r);
  else if(r.reloadAt){const generation=battleGeneration;const finish=()=>{if(!isBattleActive||generation!==battleGeneration)return;battleWeaponAmmo=r.profile.capacity;weaponReloadEndsAt=0;renderWeaponBattleState();save();};if(r.reloadAt<=Date.now())finish();else weaponReloadTimer=setTimeout(finish,r.reloadAt-Date.now());}
- for(const [id,at] of r.counters||[]){if(typeof id!=='string'||!finite(at)||currentBattleSession.events.has(id+':counter'))continue;counters.set(id,at);setTimeout(()=>resumeCounter(id),Math.max(0,at-Date.now()));}
+ for(const [id,at] of r.counters||[]){if(typeof id!=='string'||!finite(at)||currentBattleSession.events.has(id+':counter'))continue;restoreBossCounter(id,at);}
  raidTimerInterval=setInterval(updateRaidTimerTick,1000);friendAttackInterval=setInterval(friendsAutoAttackTick,3500);
  restoringRaid=false;updateRaidTimerTick();if(isBattleActive){updateBattleUI();updateRaidListUI();reopenNurseBattle();}
 }
-function resumeCounter(id){
- counters.delete(id);if(!isBattleActive)return;updateRaidTimerTick();if(!isBattleActive)return;
- const damage=Math.max(1,Math.ceil(bossesDatabase[currentBossKey].damage*100/(100+stats.armor)));
- if(!recordBattleEvent(id+':counter',raidMembers.find(m=>m.isPlayer),{damageTaken:Math.min(stats.hp,damage)}))return;
- stats.hp=Math.max(0,stats.hp-damage);
- if(!stats.hp){recordUnrewardedRaid('defeat');isBattleActive=false;stopBattleTimers();stats.hp=stats.maxHp;closeNurseBattle();}
- updateUI();save();
-}
-const attack=performPlayerAttack;performPlayerAttack=function(){const serial=currentBattleSession?.serial;const result=attack.apply(this,arguments);if(isBattleActive&&currentBattleSession?.serial!==serial){const id=currentBattleSession.id+':'+currentBattleSession.serial+':attack';if(currentBattleSession.events.has(id))counters.set(id,Date.now()+500);}save();return result;};
+const attack=performPlayerAttack;performPlayerAttack=function(){const result=attack.apply(this,arguments);save();return result;};
 const helpers=friendsAutoAttackTick;friendsAutoAttackTick=function(){const r=helpers.apply(this,arguments);save();return r;};
 const reload=startWeaponReload;startWeaponReload=function(){const r=reload.apply(this,arguments);save();return r;};
 window.addEventListener('pagehide',save);
 window.addEventListener('raid-weapon-state',save);
+window.addEventListener('raid-counter-state',save);
 function save(){if(restoringRaid)return false;if(protectedSave||!modelReady){saveFailed=true;return false;}state.raid=checkpoint();saveFailed=rewardRecoveryError||(pendingQuestReward?!saveGameProgress():!safeStorageSet(key,JSON.stringify(state)));return !saveFailed;}
 function sync(){stats.madness=state.mode==='trip'?100:0;if(!wardrobeSession)paperDollState.activeViewMode=state.mode==='trip'?'combat':'patient';currentRoom={id:state.room==='ward404'?'room_404':state.room,name:E.rooms[state.room][1],desc:'10-й этаж · секция '+E.rooms[state.room][0]};}
 function renderTasks(){
@@ -138,6 +132,7 @@ function renderTasks(){
    if(g.room)a.append(button('Показать на карте',()=>showQuestTarget(r.id)));
    if(g.hint){const detail=document.createElement('details'),summary=document.createElement('summary'),text=document.createElement('p');summary.textContent='Дополнительная подсказка';text.textContent=g.hint;detail.append(summary,text);a.append(detail);}
   }else{const done=document.createElement('p');done.textContent='Завершено. Повторять эти действия не нужно.';a.append(done);}
+  if(r.id==='d1')appendCallPlan(a);
   if(!r.pending)appendCollectedNotes(a,r.id,openNotes.has(r.id),r.done);
   list.append(a);
  }
@@ -168,6 +163,21 @@ function appendCollectedNotes(host,id,open,complete){
   detail.append(entry);
  }
  host.append(detail);
+}
+
+function appendCallPlan(host){
+ const plan=E.jobStage?.(state,'d1')?.plan;
+ if(!Array.isArray(plan)||!plan.length)return;
+ const detail=document.createElement('details');detail.dataset.callPlan='d1';
+ const summary=document.createElement('summary');summary.textContent='План проверки · '+plan.length;
+ const steps=document.createElement('ol');
+ for(const step of plan){
+  const row=document.createElement('li');row.dataset.callStop=step.action;
+  const place=document.createElement('strong');place.textContent=(step.phase==='service'?'Обслуживание':'Контрольный вызов')+' · '+E.rooms[step.room][1];
+  row.append(place,document.createElement('br'),document.createTextNode(step.text));steps.append(row);
+ }
+ const note=document.createElement('p');note.textContent='После обслуживания соответствующего узла в плане появится контрольный вызов. Проверки выполняются в палатах.';
+ detail.append(summary,steps,note);host.append(detail);
 }
 
 function showQuestTarget(id){
@@ -222,6 +232,7 @@ function renderDossier(){
   control.dataset.dossierRecord=record.id;control.setAttribute('aria-pressed',String(record.id===selected?.id));
   const provenance=document.createElement('small');provenance.textContent=record.status==='draft'?'Черновик · не подтверждён':record.status==='confirmed'?'Подтверждённый акт':'Сохранённый источник';control.append(provenance);sources.append(control);
  }
+ if(id==='d1')appendCallPlan(sources);
  const documentCopy=document.createElement('article');documentCopy.className='quest-dossier-document';documentCopy.tabIndex=-1;documentCopy.setAttribute('aria-label','Копия выбранного материала');
  if(selected){
   documentCopy.dataset.dossierNote=selected.id;
@@ -254,7 +265,7 @@ const roomDescriptions={
  ward404:'Палата пацієнта: ліжко, шафа та перемикач режимів.',ward405:'Сусідня палата з ліжком, стільцем і документом.',collector:'Ординаторська: шафа з господарським резервом та припасами.',gym:'Кімната реабілітації зі скакалкою, турніком, жимовою лавою й матом для вправ.',toilet:'Вбиральня з умивальником і шафкою.',A:'Коридор секції A. Тут розташований механізм проходу до B.',B:'Коридор секції B із проходом та замком до секції C.',C:'Коридор секції C біля лікаря й сходів.',nurse:'Медпункт Клари: лоток, документи та медична шафа.',procedure:'Процедурна з ліжком, лотком і документами.',technical:'Технічна кімната з обладнанням і службовими дверима.',linen:'Білизняна: шафи та комплекти лікарняної білизни.',ward406:'Палата 406 з місцем для передачі білизни.',ward407:'Палата 407 з кнопкою виклику біля ліжка.',ward408:'Палата 408 з кнопкою виклику та документом.',doctor:'Кабінет лікаря з документами, шафою й кріслом.',stairs:'Сходовий майданчик із замком виходу.'
 };
 const doorIcon='<svg viewBox="0 0 24 30" aria-hidden="true"><path d="M3 28V2h18v26M1 28h22" fill="none" stroke="currentColor" stroke-width="2"/><path d="M6 27V5l12-2v24Z" fill="currentColor" fill-opacity=".25" stroke="currentColor" stroke-width="1.5"/><circle cx="15" cy="16" r="1.3" fill="currentColor"/></svg>';
-let selectedRoom=null,roomClickTimer=0,roomInfoCollapsed=state.room==='gym',planScrollLeft=0,planScrollTop=0,lastDoorTap=null;
+let selectedRoom=null,roomClickTimer=0,roomInfoCollapsed=state.room==='gym',planScrollLeft=0,planScrollTop=0,lastDoorTap=null,paperPlacement={key:null,side:'right'};
 function cancelRoomClick(){clearTimeout(roomClickTimer);roomClickTimer=0;}
 function cancelRoomGesture(){cancelRoomClick();lastDoorTap=null;}
 byId('map-modal').addEventListener('palata:map-orient',cancelRoomGesture);
@@ -332,13 +343,56 @@ function renderGiverBriefs(info,scene){
  }
 }
 function roomActions(host){if(interaction){renderInteraction(host);return;}for(const a of E.actions(state)){const b=button(a.label,()=>beginAction(a.id));b.dataset.action=a.id;if(window.PalataQuestScenes)PalataQuestScenes.decorate(b,a.id);host.append(b);}if(state.room==='ward404')host.append(button(state.mode==='trip'?'Выйти из Трипа':'Войти в Трип',switchMode));if(state.mode==='patient'&&state.room==='procedure'){const shop=button('Медицинский шкаф · купить препараты',openProcedureRoom);shop.className='scene-paper-action';shop.dataset.medicalShop='true';host.append(shop);}if(state.room==='collector'){const p=document.createElement('p');p.textContent='Сборщик: 15 серебра и 1 таблетка в ваш профиль. Следующая выдача через '+Math.max(0,Math.ceil((state.collectorAt+60000-Date.now())/1000))+' с. Частота выдачи пока тестовая; запас за время отсутствия не накапливается.';host.append(p);}if(!host.children.length)host.textContent='Сейчас тут нет новых действий. Откройте задания, чтобы найти следующий шаг.';}
-function renderLocation(){if(interaction&&!E.actions(state).some(a=>a.id===interaction))interaction=null;locationScreen.classList.remove('hidden');locationScreen.append(map);byId('map-modal').classList.add('hidden');map.replaceChildren();map.classList.add('quest-location');const info=document.createElement('section');info.className='scene-paper document-paper';info.addEventListener('scroll',()=>info.style.setProperty('--scene-paper-scroll',info.scrollTop+'px'),{passive:true});const header=document.createElement('document-header');header.setAttribute('variant','left');header.setAttribute('department','КАРТОЧКА ЛОКАЦИИ');header.setAttribute('scale','compact');const title=document.createElement('h3');title.textContent=E.rooms[state.room][1];const mode=document.createElement('p');mode.textContent=(state.mode==='trip'?'Трип':'Пациент')+' · секция '+E.rooms[state.room][0];const message=document.createElement('p');message.className='quest-note';message.setAttribute('role','status');message.textContent=matchMedia('(pointer:coarse)').matches?'Коснитесь предмета. Действия — ниже, лист прокручивается ↓':'Выберите предмет. Enter или пробел активируют выбранную цель. Прогресс сохраняется после каждого шага.';const seal=document.createElement('document-stamp');seal.setAttribute('type','seal');seal.setAttribute('rotate','-8');info.append(header,title,mode,message,seal,button('Вернуться к карте',()=>{interaction=null;locationView=false;renderMap();}),button('Открыть задания',openTasks));const bag=document.createElement('section');bag.className='quest-cargo-panel';bag.setAttribute('aria-label','Предметы поручений');const bagTitle=document.createElement('h4');bagTitle.textContent='При себе · инвентарь';bag.append(bagTitle);for(const item of inventory.filter(x=>x.questCargo)){const row=document.createElement('p');row.dataset.cargo=item.questCargo;row.textContent=item.name+' ×'+item.count;bag.append(row);}if(!inventory.some(x=>x.questCargo)){const empty=document.createElement('p');empty.textContent='Предметов поручений пока нет.';bag.append(empty);}const receipt=document.createElement('p');receipt.className='quest-receipt';receipt.setAttribute('role','status');receipt.textContent=state.lastReceipt||'Собирайте предметы в комнатах и используйте их по поручению.';bag.append(receipt,button('Открыть инвентарь',openInventory));const balance=document.createElement('p');balance.textContent='Уровень '+stats.level+' · EXP '+stats.exp+'/'+stats.nextLvlExp+' · Серебро '+stats.silver;bag.append(balance);info.append(bag);window.PalataFloorArt.renderPortrait(info,state.room,state.mode);const scene=document.createElement('section');if(window.PalataQuestScenes)PalataQuestScenes.render(scene,state.room,state.mode,text=>{message.textContent=text;});const acts=document.createElement('div');acts.className='quest-actions scene-actions';roomActions(acts);scene.append(acts);if(window.PalataQuestScenes?.renderCargo)PalataQuestScenes.renderCargo(scene,state,interaction);if(window.PalataQuestScenes?.finish)PalataQuestScenes.finish(scene,info,interaction,state.interactions[interaction]||0);prioritizeRoomTask(info);renderGiverBriefs(info,scene);window.PalataQuestWorldView?.render(scene,info,state);if(state.room==='gym'&&window.PalataRehabUI)PalataRehabUI.render(info,{mode:state.mode,reveal:()=>{roomInfoCollapsed=false;renderMap();},allowed:()=>!protectedSave&&!rewardRecoveryError&&state.room==='gym'&&locationView&&!locationScreen.classList.contains('hidden')&&!interaction&&!isBattleActive&&!travelling&&!wardrobeSession,refresh:()=>renderMap()});const tools=document.createElement('nav');tools.className='quest-room-tools';tools.setAttribute('aria-label','Керування кімнатою');
+// Choose the less obstructive side using actual rendered hit regions. The
+// remembered side belongs to this room/interaction only and never enters saves.
+function positionRoomPaper(scene,info){
+ const action=interaction,key=state.room+':'+state.mode+':'+action;
+ if(!action){info.dataset.paperPosition='room';return;}
+ info.dataset.paperPosition='pending';
+ requestAnimationFrame(()=>{
+  if(action!==interaction||!scene.isConnected||!info.isConnected||info.inert||info.classList.contains('is-collapsed')){info.dataset.paperPosition='inactive';return;}
+  const targets=[...scene.querySelectorAll('.painted-target.choice-object,.scene-key-object.choice-object')]
+   .filter(target=>!target.hidden&&target.getClientRects().length).map(target=>target.getBoundingClientRect());
+  if(!targets.length){info.dataset.paperPosition='no-targets';return;}
+  const score=box=>targets.reduce((sum,target)=>{
+   const width=Math.max(0,Math.min(box.right,target.right)-Math.max(box.left,target.left));
+   const height=Math.max(0,Math.min(box.bottom,target.bottom)-Math.max(box.top,target.top));
+   const x=(target.left+target.right)/2,y=(target.top+target.bottom)/2;
+   return sum+width*height/Math.max(1,target.width*target.height)+(x>=box.left&&x<=box.right&&y>=box.top&&y<=box.bottom?2:0);
+  },0);
+  const current=paperPlacement.key===key?paperPlacement.side:'right',paper=info.getBoundingClientRect(),area=scene.getBoundingClientRect();
+  // Both candidates share size/top. Construct their horizontal bounds directly;
+  // changing an attribute and immediately measuring it can reuse stale style.
+  const touch=document.documentElement.dataset.touchUi==='true';
+  const scale=paper.width/(parseFloat(getComputedStyle(info).width)||paper.width);
+  const margin=touch?8*scale:16;
+  const left=area.left+margin,right=area.right-margin;
+  const scores={left:score({left,right:left+paper.width,top:paper.top,bottom:paper.bottom}),
+   right:score({left:right-paper.width,right,top:paper.top,bottom:paper.bottom})};
+  const other=current==='right'?'left':'right';
+  const side=scores[other]+.01<scores[current]?other:current;
+  info.dataset.paperSide=side;info.dataset.paperPosition='ready';info.dataset.paperScores=JSON.stringify(scores);paperPlacement={key,side};
+  const closeup=scene.querySelector('.scene-key-detail');
+  if(closeup){
+   const edge=side==='left'?left+paper.width:right-paper.width;
+   const freeLeft=side==='left'?edge+margin:area.left+margin;
+   const freeRight=side==='left'?area.right-margin:edge-margin;
+   const width=Math.max(1,Math.min(area.width*.52,freeRight-freeLeft));
+   closeup.style.boxSizing='border-box';closeup.style.width=width+'px';
+   closeup.style.left=(freeLeft-area.left+(freeRight-freeLeft-width)/2)+'px';
+   closeup.dataset.paperDocked=side==='left'?'right':'left';
+  }
+
+ });
+}
+
+function renderLocation(){if(interaction&&!E.actions(state).some(a=>a.id===interaction))interaction=null;locationScreen.classList.remove('hidden');locationScreen.append(map);byId('map-modal').classList.add('hidden');map.replaceChildren();map.classList.add('quest-location');const info=document.createElement('section');info.className='scene-paper document-paper';info.dataset.paperInteraction=String(!!interaction);info.dataset.paperSide=paperPlacement.key===state.room+':'+state.mode+':'+interaction?paperPlacement.side:'right';info.addEventListener('scroll',()=>info.style.setProperty('--scene-paper-scroll',info.scrollTop+'px'),{passive:true});const header=document.createElement('document-header');header.setAttribute('variant','left');header.setAttribute('department','КАРТОЧКА ЛОКАЦИИ');header.setAttribute('scale','compact');const title=document.createElement('h3');title.textContent=E.rooms[state.room][1];const mode=document.createElement('p');mode.textContent=(state.mode==='trip'?'Трип':'Пациент')+' · секция '+E.rooms[state.room][0];const message=document.createElement('p');message.className='quest-note';message.setAttribute('role','status');message.textContent=matchMedia('(pointer:coarse)').matches?'Коснитесь предмета. Действия — ниже, лист прокручивается ↓':'Выберите предмет. Enter или пробел активируют выбранную цель. Прогресс сохраняется после каждого шага.';const seal=document.createElement('document-stamp');seal.setAttribute('type','seal');seal.setAttribute('rotate','-8');info.append(header,title,mode,message,seal,button('Вернуться к карте',()=>{interaction=null;locationView=false;renderMap();}),button('Открыть задания',openTasks));const bag=document.createElement('section');bag.className='quest-cargo-panel';bag.setAttribute('aria-label','Предметы поручений');const bagTitle=document.createElement('h4');bagTitle.textContent='При себе · инвентарь';bag.append(bagTitle);for(const item of inventory.filter(x=>x.questCargo)){const row=document.createElement('p');row.dataset.cargo=item.questCargo;row.textContent=item.name+' ×'+item.count;bag.append(row);}if(!inventory.some(x=>x.questCargo)){const empty=document.createElement('p');empty.textContent='Предметов поручений пока нет.';bag.append(empty);}const receipt=document.createElement('p');receipt.className='quest-receipt';receipt.setAttribute('role','status');receipt.textContent=state.lastReceipt||'Собирайте предметы в комнатах и используйте их по поручению.';bag.append(receipt,button('Открыть инвентарь',openInventory));const balance=document.createElement('p');balance.textContent='Уровень '+stats.level+' · EXP '+stats.exp+'/'+stats.nextLvlExp+' · Серебро '+stats.silver;bag.append(balance);info.append(bag);window.PalataFloorArt.renderPortrait(info,state.room,state.mode);const scene=document.createElement('section');if(window.PalataQuestScenes)PalataQuestScenes.render(scene,state.room,state.mode,text=>{message.textContent=text;});const acts=document.createElement('div');acts.className='quest-actions scene-actions';roomActions(acts);scene.append(acts);if(window.PalataQuestScenes?.renderCargo)PalataQuestScenes.renderCargo(scene,state,interaction);if(window.PalataQuestScenes?.finish)PalataQuestScenes.finish(scene,info,interaction,state.interactions[interaction]||0);prioritizeRoomTask(info);renderGiverBriefs(info,scene);window.PalataQuestWorldView?.render(scene,info,state);if(state.room==='gym'&&window.PalataRehabUI)PalataRehabUI.render(info,{mode:state.mode,reveal:()=>{roomInfoCollapsed=false;renderMap();},allowed:()=>!protectedSave&&!rewardRecoveryError&&state.room==='gym'&&locationView&&!locationScreen.classList.contains('hidden')&&!interaction&&!isBattleActive&&!travelling&&!wardrobeSession,refresh:()=>renderMap()});const tools=document.createElement('nav');tools.className='quest-room-tools';tools.setAttribute('aria-label','Керування кімнатою');
 const back=button('До карти',()=>{interaction=null;locationView=false;renderMap();});
 // Required answers must not remain hidden after an interaction advances.
 if(interaction && info.querySelector('[data-choice],.scene-document-actions'))roomInfoCollapsed=false;
 info.classList.toggle('is-collapsed',roomInfoCollapsed);
-const toggle=button(roomInfoCollapsed?'Опис і завдання':'Згорнути опис',()=>{const collapsed=info.classList.toggle('is-collapsed');roomInfoCollapsed=collapsed;toggle.textContent=collapsed?'Опис і завдання':'Згорнути опис';toggle.setAttribute('aria-expanded',String(!collapsed));});toggle.setAttribute('aria-expanded',String(!roomInfoCollapsed));toggle.dataset.roomInfoToggle='true';
-tools.append(back,toggle);map.append(scene,info,tools);mountWorkbench(scene,info);}
+const toggle=button(roomInfoCollapsed?'Опис і завдання':'Згорнути опис',()=>{const collapsed=info.classList.toggle('is-collapsed');roomInfoCollapsed=collapsed;toggle.textContent=collapsed?'Опис і завдання':'Згорнути опис';toggle.setAttribute('aria-expanded',String(!collapsed));if(!collapsed)positionRoomPaper(scene,info);});toggle.setAttribute('aria-expanded',String(!roomInfoCollapsed));toggle.dataset.roomInfoToggle='true';
+tools.append(back,toggle);map.append(scene,info,tools);mountWorkbench(scene,info);positionRoomPaper(scene,info);}
 
 
 function mountWorkbench(scene,info){
@@ -395,6 +449,7 @@ function dispatch(event){
  const workHasSurface=()=>event.type==='work'&&!!locationScreen.querySelector('.quest-workbench');
  const deny=message=>{if(event.type==='work')workNotice=message;if(!workHasSurface())showCustomToast(message);return false;};
  if(travelling)return deny('Дождитесь прибытия.');
+ if(!modelReady&&event.type==='action'&&event.id?.startsWith('boss:'))return deny('Не удалось загрузить актуальные файлы боя. Обновите страницу.');
  if(isBattleActive&&event.type!=='battleEnd')return deny('Завершите рейд.');
  const economic=(event.type==='action'||event.type==='interact'||event.type==='work')&&(event.id==='collect'||/^(accept:|claim:|job:)/.test(event.id));
  if(economic&&(protectedSave||rewardRecoveryError||pendingQuestReward&&!saveGameProgress()))return deny('Действие приостановлено: сначала восстановите сохранение предметов и награды.');
@@ -424,7 +479,7 @@ function dispatch(event){
   }
   save();refresh();
   reachedLevels.forEach(showLevelNotice);
-  if(event.type==='action'&&event.id.startsWith('boss:')){counters.clear();originalFight(state.battle);save();if(!isBattleActive){state.battle=null;save();refresh();}}
+  if(event.type==='action'&&event.id.startsWith('boss:')){originalFight(state.battle);save();if(!isBattleActive){state.battle=null;save();refresh();}}
  }
  if(event.type!=='work'||!locationView){const accepted=result.ok&&event.type==='action'&&event.id?.startsWith('accept:');showCustomToast(accepted?'Поручение принято: '+E.jobs[event.id.slice(7)].title+'. Подробности — в журнале и рабочем листе.':result.message);}return result.ok;
 }

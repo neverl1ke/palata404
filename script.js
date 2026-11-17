@@ -1384,6 +1384,8 @@ let playerAttackCooldown = false;
 let friendAttackInterval = null;
 let attackCooldownTimeout = null;
 let bossCounterTimeout = null;
+// Own every delayed response, including overlapping player and ally actions.
+const bossCounterQueue = new Map();
 let attackCooldownEndsAt = 0;
 let raidEndsAt = 0;
 let battleGeneration = 0;
@@ -1438,6 +1440,9 @@ function stopBattleTimers() {
     clearInterval(friendAttackInterval);
     clearTimeout(attackCooldownTimeout);
     clearTimeout(bossCounterTimeout);
+    const hadCounters = bossCounterQueue.size > 0;
+    for (const entry of bossCounterQueue.values()) clearTimeout(entry.handle);
+    bossCounterQueue.clear();
     raidTimerInterval = null;
     friendAttackInterval = null;
     attackCooldownTimeout = null;
@@ -1446,6 +1451,9 @@ function stopBattleTimers() {
     attackCooldownEndsAt = 0;
     raidEndsAt = 0;
     battleGeneration += 1;
+    // Terminal handlers commit their result/reward after cleanup. Observers must
+    // not persist a finished checkpoint before that durable result exists.
+    if (hadCounters && isBattleActive && !currentBattleSession?.finished) notifyBossCounterState();
 }
 
 function startBossFight(bossKey) {
@@ -1721,6 +1729,84 @@ function openFleeConfirmModal() {
     }
 }
 
+// Checkpoint observers are optional: the isolated VM and legacy pages do not
+// necessarily provide DOM events. There is no combat action in this notification.
+function notifyBossCounterState() {
+    if (typeof window === 'undefined' || typeof window.dispatchEvent !== 'function') return;
+    const EventType = typeof CustomEvent === 'function' ? CustomEvent : window.CustomEvent;
+    if (typeof EventType === 'function') window.dispatchEvent(new EventType('raid-counter-state'));
+}
+
+function pendingBossCounters() {
+    const session = currentBattleSession;
+    if (!isBattleActive || !session || session.finished) return [];
+    return [...bossCounterQueue].filter(([id, entry]) =>
+        entry.generation === battleGeneration && entry.sessionId === session.id
+        && !session.events.has(`${id}:counter`)
+    ).map(([id, entry]) => [id, entry.dueAt]);
+}
+
+function queueBossCounter(triggerId, dueAt = Date.now() + 500) {
+    const session = currentBattleSession;
+    if (!isBattleActive || !session || session.finished || bossCurrentHp <= 0
+        || typeof triggerId !== 'string' || !triggerId.startsWith(`${session.id}:`)
+        || !/:(?:attack|helper-attack)$/.test(triggerId) || !session.events.has(triggerId)
+        || session.events.has(`${triggerId}:counter`) || bossCounterQueue.has(triggerId)
+        || !Number.isFinite(dueAt) || dueAt < 0) return false;
+    const entry = { dueAt, sessionId: session.id, generation: battleGeneration, handle: null };
+    bossCounterQueue.set(triggerId, entry);
+    entry.handle = setTimeout(() => resolveBossCounter(triggerId, entry), Math.max(0, dueAt - Date.now()));
+    // Retain the old last-handle alias; stopBattleTimers owns the whole queue.
+    bossCounterTimeout = entry.handle;
+    notifyBossCounterState();
+    return true;
+}
+
+function restoreBossCounter(triggerId, dueAt) {
+    if (!Number.isFinite(dueAt) || dueAt < 0) return false;
+    return queueBossCounter(triggerId, dueAt);
+}
+
+function resolveBossCounter(triggerId, entry) {
+    // A cancelled/replaced callback cannot delete a newer entry with the same ID.
+    if (bossCounterQueue.get(triggerId) !== entry) return false;
+    bossCounterQueue.delete(triggerId);
+    if (bossCounterTimeout === entry.handle) bossCounterTimeout = null;
+    try {
+        const session = currentBattleSession;
+        if (entry.generation !== battleGeneration || !isBattleActive || bossCurrentHp <= 0
+            || !session || session.finished || session.id !== entry.sessionId
+            || !session.events.has(triggerId)) return false;
+        updateRaidTimerTick();
+        if (!isBattleActive) return false;
+        const activeBoss = bossesDatabase[currentBossKey];
+        const player = raidMembers.find(member => member.isPlayer);
+        // Preserve the existing armor formula and the existing per-response damage.
+        const counter = Math.max(1, Math.ceil(activeBoss.damage * 100 / (100 + stats.armor)));
+        const actualDamage = Math.min(stats.hp, counter);
+        if (!recordBattleEvent(`${triggerId}:counter`, player, { damageTaken: actualDamage })) return false;
+        triggerBossAttackAnimation();
+        stats.hp = Math.max(0, stats.hp - counter);
+        showFloatingDamage(`-${actualDamage} HP`, true);
+        if (stats.hp <= 0) {
+            recordUnrewardedRaid('defeat');
+            isBattleActive = false;
+            stopBattleTimers();
+            closeFriendInviteModal();
+            alert('Босс одержал верх…');
+            stats.hp = stats.maxHp;
+            closeNurseBattle();
+            updateUI();
+            updateLobbyRaidWidget();
+            return true;
+        }
+        updateUI();
+        return true;
+    } finally {
+        notifyBossCounterState();
+    }
+}
+
 function performPlayerAttack(event) {
     if (!isBattleActive) return;
     updateRaidTimerTick();
@@ -1753,47 +1839,27 @@ function performPlayerAttack(event) {
     attackCooldownTimeout = setTimeout(() => {
         if (generation === battleGeneration) playerAttackCooldown = false;
     }, attackProfile.cooldown * 1000);
-    bossCounterTimeout = setTimeout(() => {
-        if (generation !== battleGeneration || bossCurrentHp <= 0 || !isBattleActive) return;
-        updateRaidTimerTick();
-        if (!isBattleActive) return;
-        triggerBossAttackAnimation();
-        const activeBoss = bossesDatabase[currentBossKey];
-        // Armor reduces incoming damage with diminishing returns; each hit deals at least 1 HP.
-        const counter = Math.max(1, Math.ceil(activeBoss.damage * 100 / (100 + stats.armor)));
-        const actualDamage = Math.min(stats.hp, counter);
-        if (!recordBattleEvent(`${attackId}:counter`, player, { damageTaken: actualDamage })) return;
-        stats.hp = Math.max(0, stats.hp - counter);
-        showFloatingDamage(`-${actualDamage} HP`, true);
-        if (stats.hp <= 0) {
-            recordUnrewardedRaid('defeat');
-            isBattleActive = false;
-            stopBattleTimers();
-            closeFriendInviteModal();
-            alert('Босс одержал верх…');
-            stats.hp = stats.maxHp;
-            closeNurseBattle();
-            updateUI();
-            updateLobbyRaidWidget();
-            return;
-        }
-        updateUI();
-    }, 500);
+    queueBossCounter(attackId);
 }
 
 function friendsAutoAttackTick() {
     if (!isBattleActive || bossCurrentHp <= 0) return;
     updateRaidTimerTick();
     if (!isBattleActive) return;
+    let responseTrigger = null;
     raidMembers.forEach(member => {
         if (!member.isPlayer && member.called && member.active && bossCurrentHp > 0 && isBattleActive) {
             const damage = Math.min(bossCurrentHp, Math.floor(Math.random() * 8) + 4);
-            if (!recordBattleEvent(nextBattleEventId('helper-attack'), member, { damage, turns: 1 })) return;
+            const attackId = nextBattleEventId('helper-attack');
+            if (!recordBattleEvent(attackId, member, { damage, turns: 1 })) return;
+            if (responseTrigger === null) responseTrigger = attackId;
             bossCurrentHp = Math.max(0, bossCurrentHp - damage);
             showFloatingDamage(`${member.name}: -${damage}`, false);
             if (bossCurrentHp <= 0) handleVictory();
         }
     });
+    // One response follows the team volley, not one response per invited ally.
+    if (responseTrigger && isBattleActive && bossCurrentHp > 0) queueBossCounter(responseTrigger);
     updateRaidListUI();
     updateBattleUI();
 }

@@ -314,6 +314,15 @@ class GameTests(unittest.TestCase):
     def use(self, name):
         self.equip(name)
 
+    def go_to_trip_boss(self, boss='nurse'):
+        # Combat now requires the actual Trip location. Opening all sections is
+        # a test fixture convenience, not a bypass of the live fight handler.
+        self.page.locator('#quest-unlock-all').click()
+        self.page.locator('.room-trip-switch').click()
+        self.page.locator('#location-card-box').click()
+        self.page.locator(f'.quest-map-pin[data-room="{boss}"]').dblclick(delay=40)
+        self.page.wait_for_selector(f'[data-scene-room="{boss}"]')
+
     def test_local_resources_markup_and_event_handlers(self):
         self.load()
         duplicates = self.page.evaluate('''() => {
@@ -1761,6 +1770,7 @@ class GameTests(unittest.TestCase):
 
     def test_battle_damage_armor_victory_and_single_reward(self):
         self.load()
+        self.go_to_trip_boss()
         self.equip('Штурмовий АКС-74У')
         self.equip('Побитий шолом санітара')
         self.equip('Бронежилет БР-1')
@@ -2559,6 +2569,7 @@ class GameTests(unittest.TestCase):
             };
         ''')
         self.load()
+        self.go_to_trip_boss()
         self.page.evaluate('''() => {
             stats.baseDamage=300; recalculateEquipmentStats(); startBossFight('nurse');
             window.blockRewardSave=true; performPlayerAttack();

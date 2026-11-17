@@ -52,7 +52,7 @@ test('Task journal clears fullscreen room and inventory',()=>{const css=fs.readF
 // Runtime raid checkpoint recovery regressions.
 const assert=a;
 const code=fs.readFileSync(require('node:path').join(__dirname,'../quest-prototype.js'),'utf8');
-const resumeSource=code.slice(code.indexOf('function raidInventorySnapshot('),code.indexOf('function resumeCounter('));
+const resumeSource=code.slice(code.indexOf('function raidInventorySnapshot('),code.indexOf('const attack=performPlayerAttack;'));
 function checkpoint(){return {
  version:1,owner:'fixture-owner',boss:'nurse',hp:900,maxHp:1000,playerHp:55,endsAt:200000,cooldown:0,ammo:9,reloadAt:0,
  profile:{damage:35,cooldown:4,capacity:10,reload:2.5,critical:.05,miss:.05,criticalMultiplier:1.5},
@@ -60,12 +60,12 @@ function checkpoint(){return {
  members:[{id:'player',damage:35,metrics:{damageTaken:0,healing:0,turns:1,madnessStart:100}}],
  counters:[],inventory:[{name:'Known weapon',category:'weapon',instanceId:'weapon-one',count:1,modules:{aiming:'accuracy'}},{name:'Medicine',category:'meds',count:3}]
 };}
-function harness({backup=true}={}){
+function harness({backup=true,ready=true}={}){
  const writes=new Map(),original=[{name:'Profile weapon',category:'weapon',count:1},{name:'Profile medicine',category:'meds',count:7}];
  const c={state:{battle:'nurse',room:'nurse',flags:{}},inventory:structuredClone(original),stats:{hp:81,maxHp:100},
  raidArchiveOwnerId:'fixture-owner',lastBattleResult:null,readRaidArchive:()=>[],stored:'exact-original-save-bytes',key:'quest-key',
  safeStorageSet:(k,v)=>{if(!backup)return false;writes.set(k,v);return true;},protectedSave:false,saveFailed:false,notice:'',
- restoringRaid:false,originalFight:()=>{c.started++},started:0,stopBattleTimers(){},isBattleActive:false,currentBossKey:null,bossCurrentHp:0,bossMaxHp:0,
+ modelReady:ready,restoringRaid:false,restoreBossCounter(){return true;},originalFight:()=>{c.started++},started:0,stopBattleTimers(){},isBattleActive:false,currentBossKey:null,bossCurrentHp:0,bossMaxHp:0,
  currentBattleSession:null,raidMembers:[{id:'player',damage:0,metrics:{damageTaken:0,healing:0,turns:0,madnessStart:100}}],battleWeaponProfile:null,battleWeaponAmmo:0,
  raidEndsAt:0,attackCooldownEndsAt:0,playerAttackCooldown:false,weaponReloadEndsAt:0,battleGeneration:1,weaponReloadTimer:null,counters:new Map(),
  raidTimerInterval:null,friendAttackInterval:null,setInterval:()=>1,setTimeout:()=>2,Date,Map,Number,
@@ -94,4 +94,11 @@ test('a legitimately empty inventory remains valid',()=>{
 test('failed recovery backup protects original progress instead of overwriting it',()=>{
  const {c,writes,original}=harness({backup:false}),r=checkpoint();r.inventory=[{}];c.resumeRaid(r);
  assert.equal(c.protectedSave,true);assert.equal(c.saveFailed,true);assert.equal(writes.size,0);assert.deepEqual(c.inventory,original);assert.equal(c.started,0);
+});
+
+test('a missing current combat API keeps a valid live checkpoint read-only without starting it',()=>{
+ const {c,writes,original}=harness({ready:false}),r=checkpoint(),raw=JSON.stringify(r);
+ c.resumeRaid(r);assert.equal(c.started,0);assert.equal(c.isBattleActive,false);
+ assert.equal(JSON.stringify(r),raw);assert.deepEqual(c.inventory,original);assert.equal(c.state.battle,'nurse');assert.equal(writes.size,0);
+ assert.match(c.notice,/Обновите страницу/);
 });
