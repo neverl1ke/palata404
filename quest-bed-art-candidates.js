@@ -4,6 +4,7 @@
 'use strict';
 window.PalataQuestBedArtCandidates=Object.freeze({
  barePatient:'assets/quest-bed-review/bare-mattress.webp',
+ bareByPiece:Object.freeze({pillowcase:'assets/quest-bed-review/bare-pillow-v2.webp'}),
  pieces:Object.freeze({sheet:'assets/quest-bed-review/folded-sheet.webp',pillowcase:'assets/quest-bed-review/empty-pillowcase.webp'})
 });
 })();

@@ -36,6 +36,18 @@
         1024
       ],
       "losslessVerified": true
+    },
+    "bare-pillow-v2": {
+      "master": "/workspace/generated_images/exec-500545b9-da4d-4fd5-8414-077b29428b7e.png",
+      "masterSha256": "77800d765630f316325ff358cad3aa41ddcff426a4af1a7ba026ced0b08f5478",
+      "path": "assets/quest-bed-review/bare-pillow-v2.webp",
+      "sha256": "02d966dcd649f0e6db637aaf09a1a1167bb93a352087e0859cec99fc858a4fd2",
+      "size": [
+        1536,
+        1024
+      ],
+      "losslessVerified": true,
+      "purpose": "Only the existing pillowcase mask; clearer inner ticking after user feedback. The mattress and approved covered pillow retain their previous sources."
     }
   }
 }

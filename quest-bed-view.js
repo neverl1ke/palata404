@@ -18,10 +18,10 @@ function build(options,base){
  const svg=svgNode('svg',{viewBox:[crop.x,crop.y,crop.width,crop.height].join(' '),preserveAspectRatio:base?'xMidYMid meet':'none'});
  svg.classList.add(base?'quest-bed-closeup-art':'quest-bed-room-layer');svg.style.setProperty('--bed-crop-aspect',crop.width+'/'+crop.height);svg.dataset.bedArtReview='true';svg.dataset.bedPreparation=options.preparationStarted?'started':'not-started';svg.dataset.bedPlaced=(options.placed||[]).join(',');
  if(base){svg.setAttribute('role','img');svg.setAttribute('aria-label',options.preparationStarted?'Кровать 406 · размещено '+(options.placed||[]).length+' из 2 вещей':'Кровать 406 до начала смены белья');svg.append(svgNode('image',{href:source,width,height}));}else svg.setAttribute('aria-hidden','true');
- const unplaced=options.preparationStarted?remaining(options.placed):[],bare=art().barePatient;
- if(unplaced.length&&bare){
+ const unplaced=options.preparationStarted?remaining(options.placed):[],candidates=art();
+ if(unplaced.length){
   const defs=svgNode('defs');svg.append(defs);
-  for(const part of unplaced){const path=shape(part,g);if(!path)continue;const id='quest-bed-piece-mask-'+(++sequence)+'-'+part,clip=svgNode('clipPath',{id,clipPathUnits:'userSpaceOnUse'});clip.append(svgNode('path',{d:path,'fill-rule':g.fillRule||'evenodd','clip-rule':g.fillRule||'evenodd'}));defs.append(clip);const image=svgNode('image',{href:bare,width,height,'clip-path':'url(#'+id+')'});image.dataset.bedBarePiece=part;image.addEventListener('error',()=>{svg.dataset.bedArtUnavailable='true';image.remove();},{once:true});svg.append(image);}
+  for(const part of unplaced){const path=shape(part,g),bare=candidates.bareByPiece?.[part]||candidates.barePatient;if(!path||!bare)continue;const id='quest-bed-piece-mask-'+(++sequence)+'-'+part,clip=svgNode('clipPath',{id,clipPathUnits:'userSpaceOnUse'});clip.append(svgNode('path',{d:path,'fill-rule':g.fillRule||'evenodd','clip-rule':g.fillRule||'evenodd'}));defs.append(clip);const image=svgNode('image',{href:bare,width,height,'clip-path':'url(#'+id+')'});image.dataset.bedBarePiece=part;image.addEventListener('error',()=>{svg.dataset.bedArtUnavailable='true';image.remove();},{once:true});svg.append(image);}
  }
  return svg;
 }
