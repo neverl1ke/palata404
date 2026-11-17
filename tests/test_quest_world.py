@@ -300,7 +300,7 @@ class QuestWorldTests(unittest.TestCase):
             f'localStorage.setItem({json.dumps(fixture["key"])},{json.dumps(fixture["raw"])});'
             'sessionStorage.setItem("worldLegacyFixtureSeeded","1");}')
         self.reload_home()
-        self.assertEqual(self.progress()['version'],9)
+        self.assertEqual(self.progress()['version'],10)
         self.assertEqual(self.progress()['jobs']['k2']['revision'],2)
         self.assertFalse(self.world()['linen406'])
         before=self.ledger();ui.room(self.page,'ward406');ui.action(self.page,'job:deliver')

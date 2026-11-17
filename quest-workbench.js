@@ -82,7 +82,7 @@ function bedReference(source='assets/quest-scenes/ward406.webp'){
 }
 function render(host,options){
  const {board,act,close}=options;if(!board||!host)return null;
- const section=node('section','quest-workbench');section.setAttribute('role','dialog');section.setAttribute('aria-modal','true');section.dataset.workKind=board.kind;section.dataset.workAction=board.actionId||'';if(board.revision===3&&['d2','d3'].includes(board.jobId))section.dataset.workRevision='3';
+ const section=node('section','quest-workbench');section.setAttribute('role','dialog');section.setAttribute('aria-modal','true');section.dataset.workKind=board.kind;section.dataset.workAction=board.actionId||'';if(board.revision===3&&['k3','d2','d3'].includes(board.jobId))section.dataset.workRevision='3';
  const titleId='quest-workbench-title';section.setAttribute('aria-labelledby',titleId);
  const toolbar=node('nav','workbench-toolbar');toolbar.setAttribute('aria-label','Управление осмотром');
  const key=board.actionId||board.jobId||board.kind;
@@ -92,14 +92,14 @@ function render(host,options){
   b.addEventListener('click',()=>{const scroller=section.querySelector('.workbench-scroll');scrollMemo={key,top:scroller?.scrollTop||0,briefOpen:section.querySelector('.workbench-brief')?.open};let result;try{result=act({op,...(value===undefined?{}:{value})});}finally{scrollMemo=null;}if(result?.message&&section.isConnected)status.textContent=result.message;});return b;
  }
  const back=node('button','workbench-back','К осмотру комнаты');back.type='button';back.dataset.workFocus='close';back.onclick=()=>{scrollMemo=null;close();};
- const caseNumber=node('span','workbench-case-number','Лист поручения · '+String(board.jobId||'').toUpperCase());toolbar.append(back,caseNumber);section.append(toolbar);
+ const caseNumber=node('span','workbench-case-number','Лист поручения · '+String(board.jobId||'').toUpperCase());if(board.kind==='caseCompare')caseNumber.append(node('span','workbench-case-scroll-hint','Лист прокручивается ↓'));toolbar.append(back,caseNumber);section.append(toolbar);
  const scroll=node('div','workbench-scroll');scroll.tabIndex=-1;
  const paper=node('div','workbench-paper document-paper');const masthead=node('div','workbench-masthead');const emblem=node('img','workbench-emblem');emblem.src='assets/ui/wardrobe/requested-header-emblem.webp';emblem.alt='Эмблема учреждения';emblem.draggable=false;
  const name=node('div','workbench-institution');name.append(node('small','','МЕДИЦИНСКАЯ ДОКУМЕНТАЦИЯ'),node('strong','','Центр интенсивного лечения'),node('span','','психических расстройств №404'));const stamp=document.createElement('document-stamp');stamp.setAttribute('type','service');stamp.setAttribute('label','В РАБОТЕ');stamp.setAttribute('rotate','-5');masthead.append(emblem,name,stamp);paper.append(masthead);
  const heading=node('h2','workbench-heading',board.title||'Поручение');heading.id=titleId;heading.tabIndex=-1;heading.dataset.workHeading='';paper.append(heading,node('p','workbench-instruction',board.instruction||'Выполните поручение по наблюдаемым признакам.'));
- if(board.brief){const brief=node('details','workbench-brief');brief.setAttribute('aria-label','Поручение');brief.open=scrollMemo?.key===key&&scrollMemo.briefOpen!==undefined?scrollMemo.briefOpen:false;const summary=node('summary','workbench-brief-summary');if(board.brief.giver)summary.append(node('strong','workbench-brief-giver','От: '+board.brief.giver));if(board.brief.purpose)summary.append(node('span','workbench-brief-purpose',board.brief.purpose));brief.append(summary);if(board.brief.deliverable)brief.append(node('small','workbench-brief-deliverable','Подтверждение: '+board.brief.deliverable));paper.append(brief);}
+ if(board.brief){const brief=node('details','workbench-brief');brief.setAttribute('aria-label','Поручение');brief.open=scrollMemo?.key===key&&scrollMemo.briefOpen!==undefined?scrollMemo.briefOpen:false;const summary=node('summary','workbench-brief-summary');if(board.brief.giver)summary.append(node('strong','workbench-brief-giver','От: '+board.brief.giver));if(board.brief.purpose)summary.append(node('span','workbench-brief-purpose',board.kind==='caseCompare'?'Поручение и подтверждение':board.brief.purpose));brief.append(summary);if(board.kind==='caseCompare'&&board.brief.purpose)brief.append(node('p','workbench-case-brief-detail',board.brief.purpose));if(board.brief.deliverable)brief.append(node('small','workbench-brief-deliverable','Подтверждение: '+board.brief.deliverable));paper.append(brief);}
  const area=node('div','workbench-area');const selected=new Set(board.selected||[]),marked=new Set(board.marked||[]);
- const initialScrollCue=board.revision===3?(board.jobId==='d2'&&board.kind==='timeline'&&!(board.order||[]).length&&!(board.cards||[]).some(card=>card.reverseRead)?'Записи ниже — прокрутите лист':board.jobId==='d3'&&board.kind==='difference'&&board.allowNoChanges===true&&!marked.size&&!board.noChanges?'Сравнение ниже — прокрутите лист':''):'';
+ const initialScrollCue=board.kind==='caseCompare'?'Источники и выводы ниже — прокрутите лист':board.revision===3?(board.jobId==='d2'&&board.kind==='timeline'&&!(board.order||[]).length&&!(board.cards||[]).some(card=>card.reverseRead)?'Записи ниже — прокрутите лист':board.jobId==='d3'&&board.kind==='difference'&&board.allowNoChanges===true&&!marked.size&&!board.noChanges?'Сравнение ниже — прокрутите лист':''):'';
  const footer=node('footer','workbench-footer');const status=node('p','workbench-status',options.feedback||options.message||board.feedback||initialScrollCue||'Изменения сохраняются по мере работы.');status.setAttribute('role','status');status.setAttribute('aria-live','polite');status.setAttribute('aria-atomic','true');
  function request(title,rows){const r=node('aside','workbench-request');r.append(node('h3','',title),facts(rows));return r;}
  function submit(text,disabled=false){footer.append(button(text,'submit',undefined,'submit',{className:'workbench-button workbench-submit',disabled}));}
@@ -169,6 +169,35 @@ function render(host,options){
   const delivery=node('div','workbench-delivery');delivery.append(icon('parcel'),node('h3','','Место передачи · палата '+String(board.request?.destination||'406')));
   delivery.append(node('p','',board.parcel?'Проверьте номер на пакете и передайте принесённое бельё.':'Принесённого комплекта нет в инвентаре.'));
   const receipt=node('div','workbench-receipt');receipt.append(node('span','','КВИТАНЦИЯ ПЕРЕДАЧИ · ЧЕРНОВИК'));const details=board.parcel&&board.parcelDetails;if(details){receipt.append(node('p','','Комплект: '+(details.components||[]).join(', ')),node('p','','Маркировка комплекта: '+label(details.size)));for(const item of details.items||[])receipt.append(node('p','workbench-receipt-item',(item.type||'Вещь')+(item.measure?' · '+label(item.measure):'')));}else receipt.append(node('p','','Принесённый комплект не подтверждён.'));receipt.append(node('p','','Палата: '+String(board.request?.destination||'406')),node('small','','Передача ещё не подтверждена. Подписанная квитанция появится после передачи белья.'));delivery.append(receipt);area.append(delivery);footer.append(button('Передать комплект и получить квитанцию','deliver',undefined,'deliver',{className:'workbench-button workbench-submit',disabled:!board.parcel}));
+ }else if(board.kind==='caseCompare'){
+  const documents=node('div','workbench-case-sources'),sourceCards=new Map();
+  documents.setAttribute('aria-label','Документы одной процедуры');
+  for(const doc of board.documents||[]){
+   const card=node('article','workbench-case-source');card.dataset.caseSource=String(doc.id);card.id='quest-case-source-'+String(doc.id).replace(/[^a-zA-Z0-9_-]/g,'');card.tabIndex=-1;
+   const sourceTitle=node('h3','',doc.title||'Документ');sourceTitle.id=card.id+'-title';card.setAttribute('aria-labelledby',sourceTitle.id);
+   card.append(node('small','workbench-case-source-number','ДОКУМЕНТ '+String(doc.number||'')+' · ДЕЛО №'+String(doc.caseId||board.caseId||'')),sourceTitle,facts((doc.fields||[]).map(f=>[f.label,f.value])));
+   sourceCards.set(doc.id,{card,doc});documents.append(card);
+  }
+  const decisions=node('div','workbench-case-decisions');decisions.setAttribute('aria-label','Выводы по документам');
+  for(const issue of board.issues||[]){
+   const field=node('fieldset','workbench-case-decision');field.dataset.caseField=String(issue.id);field.append(node('legend','',issue.title||'Вывод'));
+   const evidence=node('nav','workbench-case-evidence');evidence.setAttribute('aria-label','Источники: '+String(issue.title||'вывод'));evidence.append(node('span','','Источники:'));
+   for(const id of issue.sources||[]){
+    const source=sourceCards.get(id);if(!source)continue;
+    const link=node('a','workbench-case-source-link',source.doc.number||id);link.href='#'+source.card.id;link.dataset.caseSourceLink=String(id);link.setAttribute('aria-label','Источник '+String(source.doc.number||id)+': '+String(source.doc.title||'Документ'));
+    // Reading a source is navigation within this sheet, never a work operation.
+    link.addEventListener('click',event=>{event.preventDefault();source.card.scrollIntoView({block:'start',inline:'nearest',behavior:'instant'});source.card.focus({preventScroll:true});});evidence.append(link);
+   }
+   field.append(evidence);
+   for(const choice of issue.choices||[]){
+    const control=button(choice.label,'conclude',{field:issue.id,choice:choice.id},'conclude:'+issue.id+':'+choice.id,{pressed:board.conclusions?.[issue.id]===choice.id,className:'workbench-case-choice'});control.dataset.caseChoice=String(choice.id);field.append(control);
+   }
+   decisions.append(field);
+  }
+  area.append(documents,decisions,node('p','workbench-case-read-cue','Лист прокручивается ↓ Источники открываются по номеру; повторно прикреплять их не требуется.'));
+  const chosen=(board.issues||[]).filter(issue=>(issue.choices||[]).some(choice=>choice.id===board.conclusions?.[issue.id])).length;
+  footer.append(node('p','workbench-case-progress','Лист сверки · '+chosen+' из '+String((board.issues||[]).length)+' выводов выбрано'));
+  submit('Оформить лист сверки');
  }else if(board.kind==='compare'){
   area.append(pairedRecords((board.documents||[]).map(doc=>[doc.title||'Запись',doc.fields||[]]),'Лист сверки · отметьте расходящиеся поля'));submit('Оформить лист сверки',!marked.size);
  }else if(board.kind==='diagnostic'){

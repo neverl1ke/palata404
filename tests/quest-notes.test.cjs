@@ -96,7 +96,7 @@ test('K2 notes distinguish selected drafts, packed kit, placed bedding and staff
 });
 
 test('K3 drafts do not expose unseen source values or manufacture a confirmed discrepancy',()=>{
- const s=E.initial();accept(s,'k3');go(s,'procedure');a.deepEqual(notes(s,'k3'),[]);
+ const s=E.restore({version:9,mode:'patient',room:'procedure',jobs:{k3:{active:true,done:{},count:0,startTrip:0,revision:2,variant:0,work:{marked:[]}}}});a.deepEqual(notes(s,'k3'),[]);
  work(s,'job:copies','mark','time');const out=notes(s,'k3');a.equal(out.length,1);a.equal(out[0].status,'draft');a.match(out[0].text,/Время/);
  a.doesNotMatch(text(out),/09:15|Б-17|Клара/);a.equal(out.some(item=>item.status==='confirmed'),false);
  solve(s,'job:copies');const confirmed=notes(s,'k3');a.equal(confirmed.length,1);a.equal(confirmed[0].status,'confirmed');a.match(confirmed[0].text,/подпись/i);

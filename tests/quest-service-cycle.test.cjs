@@ -83,12 +83,12 @@ function packLinen(s){
  work(s,'job:linen','submit');a.ok(s.cargo.includes('linen'));
 }
 
-test('v9 separates persistent equipment from call snapshots and protects future schemas',()=>{
- const s=E.initial();a.equal(s.version,9);a.equal(s.world.version,2);a.equal(E.supportsSave(s),true);
+test('v10 separates persistent equipment from call snapshots and protects future schemas',()=>{
+ const s=E.initial();a.equal(s.version,10);a.equal(s.world.version,2);a.equal(E.supportsSave(s),true);
  a.equal(s.world.callEquipment.ward407.condition,'noResponse');a.equal(s.world.callEquipment.ward408.condition,'disconnected');
  for(const room of rooms){a.equal(s.world.callEquipment[room].revision,0);a.equal(s.world.callEquipment[room].verified,false);}
  accept(s,'d1');a.equal(s.jobs.d1.revision,4);
- for(const edit of [raw=>{raw.version=10;},raw=>{raw.world.version=3;},raw=>{raw.jobs.d1.revision=5;},raw=>{raw.version=8;},raw=>{raw.world.callEquipment.ward407.condition='future-state';},raw=>{raw.jobs.d1.work.order='d1:999';},raw=>{raw.jobs.d1.work.services.ward407.responseAddress='ПОСТ-999';},raw=>{raw.jobs.d1.work.futureServicePhase=true;}]){
+ for(const edit of [raw=>{raw.version=11;},raw=>{raw.world.version=3;},raw=>{raw.jobs.d1.revision=5;},raw=>{raw.version=8;},raw=>{raw.world.callEquipment.ward407.condition='future-state';},raw=>{raw.jobs.d1.work.order='d1:999';},raw=>{raw.jobs.d1.work.services.ward407.responseAddress='ПОСТ-999';},raw=>{raw.jobs.d1.work.futureServicePhase=true;}]){
   const raw=clone(s);edit(raw);const before=clone(raw);a.equal(E.supportsSave(raw),false);a.deepEqual(raw,before);
  }
 });
@@ -162,7 +162,7 @@ test('v8 observed equipment migrates without treating old unknown faults as repa
  const observed=(room,report)=>({order:'d1:2',room,tested:true,connected:report==='faultUnspecified'?null:report!=='disconnected',indicator:['working','noResponse'].includes(report)?'on':'off',responseCode:report==='working'?'acknowledged':'none',report,reviewed:false,revision:report==='faultUnspecified'?1:3});
  for(const [left,right] of [['working','disconnected'],['noResponse','faultUnspecified']]){
   const raw={version:8,mode:'patient',room:'doctor',jobs:{},cargo:[],world:{version:1,linen406:null,calls:{ward407:observed('ward407',left),ward408:observed('ward408',right)},doctorReview:null}};
-  a.equal(E.supportsSave(raw),true);const before=clone(raw),s=E.restore(raw);a.deepEqual(raw,before);a.equal(s.version,9);a.equal(s.world.version,2);
+  a.equal(E.supportsSave(raw),true);const before=clone(raw),s=E.restore(raw);a.deepEqual(raw,before);a.equal(s.version,10);a.equal(s.world.version,2);
   a.deepEqual(s.world.calls,raw.world.calls);a.equal(s.world.callEquipment.ward407.condition,left);a.equal(s.world.callEquipment.ward408.condition,right==='faultUnspecified'?'unassessed':right);
   a.equal(s.world.callEquipment.ward408.verified,false);a.equal(E.supportsSave(s),true);
  }

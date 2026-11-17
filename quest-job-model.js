@@ -18,18 +18,18 @@ const briefs={
  d2:{giver:'Врач',purpose:'Отдельные листки обхода нужно вернуть в журнал в подтверждённом порядке.',deliverable:'Лист обхода, восстановленный по времени записей.'},
  d3:{giver:'Врач',purpose:'Сначала зафиксируйте увиденное, затем сравните. Причины возможного расхождения пока неизвестны.',deliverable:'Карточка сравнения исходных и повторных показаний коридора A.'}
 };
-function brief(id,revision){if(typeof id!=='string'||!Object.hasOwn(briefs,id))return null;const result={...briefs[id]};if(id==='d1'&&(revision===undefined||revision===4)){result.purpose='Проверьте оба вызова, получите разрешение врача для обнаруженных проблем и подтвердите результат после обслуживания персоналом.';result.deliverable='Два первичных акта и подтверждённые контрольные вызовы для обслуженных узлов. Награда одна, при окончательной сдаче.';}if(id==='d2'&&(revision===undefined||revision===3))result.deliverable='Журнал с подтверждённым порядком событий; неразборчивое время остаётся неустановленным.';if(id==='k2'&&(revision===undefined||revision===4))result.deliverable='Квитанция подготовки кровати 406: простыня и наволочка на своих местах.';return result;}
+function brief(id,revision){if(typeof id!=='string'||!Object.hasOwn(briefs,id))return null;const result={...briefs[id]};if(id==='k3'&&(revision===undefined||revision===3)){result.purpose='Сопоставьте направление, лист процедуры и копию одной медицинской записи. Отделите подтверждённое расхождение от различия полей и неподтверждённых сведений.';result.deliverable='Лист сверки палаты, времени проведения и подтверждения имени исполнителя. Неизвестное имя не дописывается.';}if(id==='d1'&&(revision===undefined||revision===4)){result.purpose='Проверьте оба вызова, получите разрешение врача для обнаруженных проблем и подтвердите результат после обслуживания персоналом.';result.deliverable='Два первичных акта и подтверждённые контрольные вызовы для обслуженных узлов. Награда одна, при окончательной сдаче.';}if(id==='d2'&&(revision===undefined||revision===3))result.deliverable='Журнал с подтверждённым порядком событий; неразборчивое время остаётся неустановленным.';if(id==='k2'&&(revision===undefined||revision===4))result.deliverable='Квитанция подготовки кровати 406: простыня и наволочка на своих местах.';return result;}
 const callRooms=['ward407','ward408'];
 const callConditions=['working','disconnected','noResponse','unassessed'];
 const callEquipment=room=>({id:'CALL-'+room.slice(4),connector:'КС-2',postAddress:'ПОСТ-'+room.slice(4)});
-function supportsRevision(id,r){return ids.includes(id)&&(r===2||r===3&&['k2','d1','d2','d3'].includes(id)||r===4&&['k2','d1'].includes(id));}
-function make(id,serial=0,equipment){const r=['k2','d1'].includes(id)?4:['d2','d3'].includes(id)?3:2,work=restoreWork(id,{},variant(serial),r);if(id==='d1'&&r===4){work.order='d1:'+(serial+1);for(const room of callRooms){const source=equipment?.[room];work.initial[room]={condition:callConditions.includes(source?.condition)?source.condition:'unassessed',revision:Number.isSafeInteger(source?.revision)&&source.revision>=0?source.revision:0};}}return{revision:r,variant:variant(serial),work};}
+function supportsRevision(id,r){return ids.includes(id)&&(r===2||r===3&&['k2','k3','d1','d2','d3'].includes(id)||r===4&&['k2','d1'].includes(id));}
+function make(id,serial=0,equipment){const r=['k2','d1'].includes(id)?4:['k3','d2','d3'].includes(id)?3:2,work=restoreWork(id,{},variant(serial),r);if(id==='d1'&&r===4){work.order='d1:'+(serial+1);for(const room of callRooms){const source=equipment?.[room];work.initial[room]={condition:callConditions.includes(source?.condition)?source.condition:'unassessed',revision:Number.isSafeInteger(source?.revision)&&source.revision>=0?source.revision:0};}}return{revision:r,variant:variant(serial),work};}
 function restoreWork(id,raw,v,r=2){
  raw=raw&&typeof raw==='object'&&!Array.isArray(raw)?raw:{};
  const result={};
  if(id==='k1'){result.inspected=safeArray(raw.inspected,['pack-0','pack-1','pack-2','pack-3']);result.selected=safeArray(raw.selected,['pack-0','pack-1','pack-2','pack-3']).slice(0,1);}
  if(id==='k2'){result.selected=safeArray(raw.selected,['linen-0','linen-1','linen-2','linen-3','linen-4','linen-5']);if(r>=3){result.shortageNoted=raw.shortageNoted===true;result.reserveGranted=result.shortageNoted&&raw.reserveGranted===true;result.selectedReserve=safeArray(raw.selectedReserve,['reserve-same-size','reserve-small']).slice(0,1);result.selectedPiece=['sheet','pillowcase'].includes(raw.selectedPiece)?raw.selectedPiece:null;result.placed=safeArray(raw.placed,['sheet','pillowcase']);if(result.placed.includes(result.selectedPiece))result.selectedPiece=null;if(r===4)result.preparationStarted=raw.preparationStarted===true;}}
- if(id==='k3')result.marked=safeArray(raw.marked,['time','ward','signature','lot']);
+ if(id==='k3'){if(r===3){result.sourcesRead=raw.sourcesRead===true;result.conclusions=caseConclusions(raw.conclusions);}else result.marked=safeArray(raw.marked,['time','ward','signature','lot']);}
  if(id==='d1'){
   result.diagnostics={};for(const key of ['bell407','bell408']){const d=raw.diagnostics?.[key]||{};result.diagnostics[key]={inspected:d.inspected===true,tested:d.inspected===true&&d.tested===true,selected:safeArray(d.selected,r===4?callConditions:['working','disconnected','noResponse']).slice(0,1)};}
   if(r===4){result.order=typeof raw.order==='string'?raw.order:'d1:1';result.initial={};result.authorized=raw.authorized===true;result.services={};for(const room of callRooms){const d=raw.initial?.[room]||{},p=raw.services?.[room]||{};result.initial[room]={condition:callConditions.includes(d.condition)?d.condition:'unassessed',revision:Number.isSafeInteger(d.revision)&&d.revision>=0?d.revision:0};result.services[room]={inspected:p.inspected===true,selected:safeArray(p.selected,['service-a','service-b','service-c']).slice(0,1),performed:p.performed===true,tested:p.tested===true,confirmed:p.confirmed===true,authorization:p.authorization&&typeof p.authorization==='object'?clone(p.authorization):null,serviceRevision:Number.isSafeInteger(p.serviceRevision)&&p.serviceRevision>=0?p.serviceRevision:null,responseAddress:typeof p.responseAddress==='string'?p.responseAddress:null};}}
@@ -41,6 +41,13 @@ function restoreWork(id,raw,v,r=2){
 function restore(id,raw){const v=variant(raw?.variant),r=[3,4].includes(raw?.revision)&&supportsRevision(id,raw.revision)?raw.revision:2;return{revision:r,variant:v,work:restoreWork(id,raw?.work,v,r)};}
 function canonical(value){if(value===undefined)return '"__undefined__"';return JSON.stringify(value&&typeof value==='object'&&!Array.isArray(value)?Object.fromEntries(Object.keys(value).sort().map(k=>[k,JSON.parse(canonical(value[k]))])):Array.isArray(value)?value.map(x=>JSON.parse(canonical(x))):value);}
 function validRecord(id,job){
+ if(id==='k3'&&job?.revision===3){
+  if(!job.work||typeof job.work!=='object'||Array.isArray(job.work)||typeof job.active!=='boolean'||!Number.isSafeInteger(job.count)||job.count<0||!Number.isSafeInteger(job.startTrip)||job.startTrip<0||!Number.isInteger(job.variant)||job.variant<0||job.variant>2||Object.keys(job).some(k=>!['active','done','count','startTrip','revision','variant','work'].includes(k))||!job.done||typeof job.done!=='object'||Array.isArray(job.done)||Object.entries(job.done).some(([key,value])=>key!=='copies'||value!==true))return false;
+  const w=job.work;
+  if(!w.conclusions||typeof w.conclusions!=='object'||Array.isArray(w.conclusions)||canonical(w)!==canonical(restoreWork(id,w,job.variant,3)))return false;
+  if(!w.sourcesRead&&Object.keys(w.conclusions).length)return false;
+  return !job.done.copies||caseAnswer(w);
+ }
  if(job?.revision===3&&['d2','d3'].includes(id)){
   if(!job.work||typeof job.work!=='object'||Array.isArray(job.work)||typeof job.active!=='boolean'||!Number.isSafeInteger(job.count)||job.count<0||!Number.isSafeInteger(job.startTrip)||job.startTrip<0||Object.keys(job).some(k=>!['active','done','count','startTrip','revision','variant','work'].includes(k))||!job.done||typeof job.done!=='object'||Array.isArray(job.done)||Object.entries(job.done).some(([k,v])=>k!==(id==='d2'?'log':'difference')||v!==true))return false;
   const w=job.work;if(canonical(w)!==canonical(restoreWork(id,w,variant(job.variant),3)))return false;
@@ -89,6 +96,24 @@ function compareData(v){
  const fieldNames={time:'Время',ward:'Палата',signature:'Подпись',lot:'Комплект'};
  return{documents:[a,b].map((values,i)=>({title:i?'Копия в журнале':'Лист процедурной',fields:Object.entries(values).map(([id,value])=>({id,label:fieldNames[id],value}))}))};
 }
+const caseChoiceIds={room:['matches','differs','unknown'],time:['error','matchesActual','unknown'],author:['clara','other','unknown']};
+function caseConclusions(raw){
+ if(!raw||typeof raw!=='object'||Array.isArray(raw))return{};
+ return Object.fromEntries(Object.entries(caseChoiceIds).filter(([field,choices])=>Object.hasOwn(raw,field)&&choices.includes(raw[field])).map(([field])=>[field,raw[field]]));
+}
+function caseAnswer(w){return w.sourcesRead===true&&w.conclusions?.room==='differs'&&w.conclusions?.time==='matchesActual'&&w.conclusions?.author==='unknown';}
+function caseData(){
+ const document=(number,title,fields)=>({id:'source-'+number,number:String(number),caseId:'46',title,fields:fields.map(([id,label,value])=>({id,label,value}))});
+ return{caseId:'46',documents:[
+  document(1,'Направление',[['ward','Палата','406'],['plan','План','09:15'],['lot','Комплект','Б-17'],['status','Отметка','Назначено']]),
+  document(2,'Лист процедуры',[['ward','Палата','406'],['fact','Факт','09:25'],['lot','Комплект','Б-17'],['signature','Подпись','Неразборчива']]),
+  document(3,'Копия в журнале',[['ward','Палата','407'],['fact','Факт','09:25'],['lot','Комплект','Б-17'],['signature','Подпись','Клара']])
+ ],issues:[
+  {id:'room',title:'Номер палаты в копии',sources:['source-1','source-2','source-3'],choices:[{id:'matches',label:'Совпадает с источниками'},{id:'differs',label:'Есть расхождение'},{id:'unknown',label:'Недостаточно данных'}]},
+  {id:'time',title:'Время в копии',sources:['source-1','source-2','source-3'],choices:[{id:'error',label:'Не совпадает со временем проведения'},{id:'matchesActual',label:'Совпадает со временем проведения'},{id:'unknown',label:'Время проведения не установлено'}]},
+  {id:'author',title:'Имя исполнителя в копии',sources:['source-2','source-3'],choices:[{id:'clara',label:'Подпись Клары подтверждена'},{id:'other',label:'Установлен другой исполнитель'},{id:'unknown',label:'Имя в копии не подтверждено оригиналом'}]}
+ ]};
+}
 function diagnosis(v,step){
  const type=['working','disconnected','noResponse'][(v+(step==='bell408'?1:0))%3];
  return{type,connected:type!=='disconnected',indicator:type==='disconnected'?'off':'on',response:type==='working'?'Пост: «'+step.slice(4)+', вызов принят».':'Ответ поста не поступил.'};
@@ -116,7 +141,7 @@ function board(s,actionId){
  if(step==='deliver'){const parcel=s.cargo.includes('linen'),d=packingData(v,job.revision,w),kit=d.items.filter(x=>w.selected.includes(x.id)&&x.condition==='чистая упаковка').map(x=>({id:x.type==='Простыня'?'sheet':'pillowcase',type:x.type,measure:x.measure})),parcelDetails=parcel?{components:d.request.components.slice(),size:d.request.size,items:(job.revision>=3?kit:d.items.filter(x=>x.size===d.request.size&&x.condition==='чистая упаковка').map(x=>({type:x.type,measure:x.measure})))}:null;
  if(job.revision>=3)return{...base,kind:'bedmaking',title:'Подготовить кровать 406',instruction:'Выберите вещь из принесённого комплекта и положите на соответствующую часть кровати. Завершённая подготовка останется в палате.',request:{destination:'406'},parcel,items:parcel?kit:[],selectedPiece:w.selectedPiece,placed:w.placed,...(job.revision===4?{preparationStarted:w.preparationStarted}:{}),targets:[{id:'sheetZone',label:'Матрас · постелить простыню'},{id:'pillowZone',label:'Подушка · сменить наволочку'}],...(parcelDetails?{parcelDetails}:{})};
  return{...base,kind:'delivery',title:'Передача комплекта',instruction:'Передайте принесённый комплект на отмеченную кровать. Квитанция останется для сдачи поручения.',request:{destination:'406'},parcel,...(parcelDetails?{parcelDetails}:{})};}
- if(step==='copies')return{...base,kind:'compare',title:'Сверка записей',instruction:'Отметьте только поля, в которых записи расходятся. Не дописывайте неизвестные сведения.',...compareData(v),marked:w.marked};
+ if(step==='copies'){if(job.revision===3)return{...base,kind:'caseCompare',title:'Сверка медицинских записей · дело №46',instruction:'Сравните документы одной процедуры. Источники показаны рядом; нечитаемые сведения остаются неизвестными.',...caseData(),sourcesRead:w.sourcesRead,conclusions:{...w.conclusions}};return{...base,kind:'compare',title:'Сверка записей',instruction:'Отметьте только поля, в которых записи расходятся. Не дописывайте неизвестные сведения.',...compareData(v),marked:w.marked};}
  if(step==='bell407'||step==='bell408'){const d=callDiagnosis(s,step),p=w.diagnostics[step];return{...base,kind:'diagnostic',title:'Проверка вызова '+step.slice(4),instruction:'Осмотрите подключение, проверьте вызов и запишите то, что удалось наблюдать.',room:step.slice(4),inspected:p.inspected,tested:p.tested,connector:p.inspected?{connected:d.connected,text:d.connected===null?'Состояние подключения не подтверждено. Нужен осмотр персонала.':d.connected?'Разъём установлен, провод цел.':'Разъём отсоединён от кнопки.'}:null,indicator:p.tested?d.indicator:'idle',response:p.tested?d.response:null,reports:[...(job.revision===4?[{id:'unassessed',label:'Состояние требует обследования персоналом'}]:[]),{id:'working',label:'Сигнал и ответ получены'},{id:'disconnected',label:'Нет подключения кнопки'},{id:'noResponse',label:'Сигнал есть, ответа поста нет'}],selected:p.selected};}
  if(jobId==='d1'&&job.revision===4&&step==='callReview')return{...base,kind:'callReview',title:'Разрешение на обслуживание вызовов',instruction:'Сверьте оба первичных акта. Разрешение привязано к этой заявке и конкретным узлам; награда выдаётся после контрольных вызовов.',authorized:w.authorized,reports:callRooms.map(room=>{const d=callDiagnosis(s,'bell'+room.slice(4));return{room,label:room.slice(4),report:d.type,connected:d.connected,indicator:d.indicator,response:d.response,needsService:d.type!=='working'};})};
  if(jobId==='d1'&&job.revision===4&&/^callService40[78]$/.test(step)){const room='ward'+step.slice(-3),p=w.services[room],cause=w.initial[room].condition,equipment=callEquipment(room);return{...base,kind:'callService',title:'Обслуживание вызова '+room.slice(4),instruction:cause==='noResponse'?'На посту сверяют регистрацию адреса: светящийся индикатор ещё не подтверждает ответ нужной палаты.':'Персонал сверяет узел и штатное соединение по разрешению врача. Не выбирайте детали по одному похожему признаку.',room,label:room.slice(4),cause,equipment,inspected:p.inspected,evidence:p.inspected?{equipmentId:equipment.id,connector:equipment.connector,postAddress:equipment.postAddress,observedRegistration:cause==='noResponse'?'Адрес палаты не закреплён в журнале поста':cause==='unassessed'?'Нужна проверка штатного узла персоналом':'Штатное соединение отсоединено',text:'Разрешение '+w.order+' · палата '+room.slice(4)}:null,options:p.inspected?serviceOptions(room,cause,v):[],selected:p.selected,performed:p.performed};}
@@ -156,6 +181,25 @@ function operate(s,actionId,op,value){
   if(op==='place'){const required={sheet:'sheetZone',pillowcase:'pillowZone'};if(!w.selectedPiece)return fail('Сначала выберите вещь из комплекта.');if(required[w.selectedPiece]!==value)return fail('Это место не соответствует выбранной вещи. Простыня нужна на матрасе, наволочка — на подушке.');w.placed.push(w.selectedPiece);w.selectedPiece=null;return w.placed.length===2?ok(job.revision===4?'Обе вещи размещены. Квитанция для Клары заполнена.':'Кровать 406 подготовлена: чистые простыня и наволочка на своих местах. Квитанция для Клары заполнена.','deliver'):ok('Вещь размещена. Подготовьте оставшуюся часть кровати.');}
  }
  if(b.kind==='delivery'&&(op==='deliver'||op==='submit'))return b.parcel?ok('Комплект передан. Получена квитанция для Клары.','deliver'):fail('Принесите упакованный комплект из бельевой.');
+ if(b.kind==='caseCompare'){
+  if(op==='readSources'){w.sourcesRead=true;return ok('Три исходных документа дела открыты. Их копии доступны в материалах поручения.');}
+  if(!w.sourcesRead)return fail('Сначала откройте исходные документы дела.');
+  if(job.done?.copies)return fail('Лист сверки уже подтверждён.');
+  if(op==='conclude'){
+   if(!value||typeof value!=='object'||Array.isArray(value)||Object.keys(value).sort().join(',')!=='choice,field'||typeof value.field!=='string'||typeof value.choice!=='string'||!Object.hasOwn(caseChoiceIds,value.field)||!caseChoiceIds[value.field].includes(value.choice))return fail('Выберите допустимый вывод для указанного поля дела.');
+   w.conclusions[value.field]=value.choice;return ok('Вывод выбран и сохранён в черновике. Проверьте весь акт, когда будете готовы.');
+  }
+  if(op==='submit'){
+   const missing=b.issues.filter(issue=>!Object.hasOwn(w.conclusions,issue.id));
+   if(missing.length)return fail('Выберите вывод: '+missing.map(issue=>issue.title.toLowerCase()).join(', ')+'. Остальные выбранные выводы сохранены.');
+   if(!caseAnswer(w)){
+    if(w.conclusions.room!=='differs')return fail('Номер палаты: сопоставьте направление, оригинал и копию одного дела. Два исходных документа важны для проверки записи в журнале. Выбранные выводы не сброшены.');
+    if(w.conclusions.time!=='matchesActual')return fail('Время: сопоставьте фактическое время в оригинале и копии. Направление содержит план — это другое поле, оно не заменяет время проведения. Выбранные выводы не сброшены.');
+    return fail('Исполнитель: разборчивое имя в копии не делает подпись в оригинале читаемой. Имя в копии не подтверждено оригиналом; это не означает, что Клара не могла выполнить процедуру. Выбранные выводы не сброшены.');
+   }
+   return ok('Лист сверки обоснован: палата расходится, время проведения перенесено верно, имя в копии не подтверждено оригиналом.','copies');
+  }
+ }
  if(b.kind==='compare'){
   const d=compareData(v),allowed=d.documents[0].fields.map(x=>x.id);
   if(op==='mark'){if(!toggle('marked',value,allowed))return fail('Такого поля в записях нет.');return ok('Отметки сверки сохранены.');}
@@ -207,7 +251,7 @@ function description(s,cargo){
  if(cargo==='tag'){const r=inspectionData(v).request;return 'Проверен '+r.kit.toLowerCase()+' комплект, партия '+r.lot+'. Пломба целая. Передайте лист приёмки Кларе.';}
  if(cargo==='linen'){const placed=j.revision>=3?j.work?.placed||[]:[];return 'Чистый комплект '+packingData(v).request.size+' для палаты 406.'+(placed.length?' Уже использовано: '+placed.map(x=>x==='sheet'?'простыня':'наволочка').join(', ')+'. Оставшаяся вещь ещё в комплекте.':' Простыня и наволочка при себе.');}
  if(cargo==='delivery')return (j.revision>=3?'Кровать 406 подготовлена: простыня и наволочка на своих местах.':'Комплект передан в палату 406.')+' Квитанцию необходимо вернуть Кларе.';
- if(cargo==='copies'){const d=compareData(v),names=d.documents[0].fields.filter((x,i)=>x.value!==d.documents[1].fields[i].value).map(x=>x.label.toLowerCase());return 'Подтверждены расхождения: '+names.join(', ')+'. Неподтверждённые данные не добавлялись.';}
+ if(cargo==='copies'){if(j.revision===3)return j.done?.copies?'Дело №46: подтверждено расхождение палаты 406/407; время проведения 09:25 перенесено верно. Имя в копии не подтверждено оригиналом: подпись в листе процедуры неразборчива. Неизвестное имя не дописывалось.':null;const d=compareData(v),names=d.documents[0].fields.filter((x,i)=>x.value!==d.documents[1].fields[i].value).map(x=>x.label.toLowerCase());return 'Подтверждены расхождения: '+names.join(', ')+'. Неподтверждённые данные не добавлялись.';}
  if(cargo==='bell407'||cargo==='bell408'){const d=callDiagnosis(s,cargo);return 'Палата '+cargo.slice(4)+'. '+(d.connected===null?'Подключение не подтверждено. ':d.connected?'Разъём установлен. ':'Разъём отсоединён. ')+(d.indicator==='on'?'Индикатор загорелся. ':'Индикатор не загорелся. ')+d.response;}
  if(cargo==='log')return j.revision===3?'Порядок подтверждён временем и записью на обороте. Время осмотра 408 не установлено и не дописывалось.':'Записи расположены по указанному времени; неизвестные сведения об исполнителе не добавлялись.';
  const a=j.revision===3&&j.work.baseline||details(v,'patient');if(cargo==='baseline')return 'Записано в коридоре A: '+Object.keys(a).map(k=>labels[k]+': '+a[k]).join('; ')+'.';

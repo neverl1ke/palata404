@@ -16,7 +16,7 @@ function game(saves={},options={}){
   g.run(fs.readFileSync(path.join(__dirname,'..',file),'utf8'));
   if(file==='quest-job-model.js'&&options.staleModel)g.run('PalataQuestJobModel={...PalataQuestJobModel};delete PalataQuestJobModel.supportsRevision;');
   if(file==='quest-engine.js'&&options.staleEngine==='missingBedAPI')g.run('PalataQuestEngine={...PalataQuestEngine};delete PalataQuestEngine.bedPresentation;');
-  if(file==='quest-engine.js'&&options.staleEngine==='oldVersion')g.run('PalataQuestEngine={...PalataQuestEngine,initial:()=>({...PalataQuestEngine.restore(null),version:8})};');
+  if(file==='quest-engine.js'&&options.staleEngine==='oldVersion')g.run('PalataQuestEngine={...PalataQuestEngine,initial:()=>({...PalataQuestEngine.restore(null),version:9})};');
  }
  // In the browser window is globalThis; the VM fixture deliberately separates them.
  g.run('window.PalataQuestNavigation=PalataQuestNavigation;');
@@ -138,7 +138,7 @@ test('Unknown future floor save remains byte-for-byte and refuses new economic a
  g=game(saves);move(g,'nurse');a.equal(act(g,{type:'action',id:'accept:k2'}),false);a.equal(act(g,{type:'work',id:'job:linen',op:'submit'}),false);a.equal(g.storage.get(key),raw);a.equal(g.run('stats.silver'),150);
 });
 test('A future work-order revision inside supported floor versions cannot be migrated away',()=>{
- for(const version of [7,8,9]){let g=game();const key=progressKey(g),saves=Object.fromEntries(g.storage);
+ for(const version of [7,8,9,10]){let g=game();const key=progressKey(g),saves=Object.fromEntries(g.storage);
   const raw=JSON.stringify({...E.initial(),version,room:'linen',jobs:{k2:{active:true,revision:99,work:{future:'retain'},done:{},count:0,startTrip:0}}});saves[key]=raw;
   g=game(saves);a.equal(g.storage.get(key),raw);a.equal(act(g,{type:'work',id:'job:linen',op:'submit'}),false);a.equal(g.storage.get(key),raw);
  }
@@ -155,7 +155,7 @@ test('Missing work-model resource cannot downgrade a saved work order',()=>{
  g=game(Object.fromEntries(g.storage));a.deepEqual(state(g).jobs.k2,savedJob);a.equal(g.run('stats.silver'),150);
 });
 test('A stale work-model API preserves supported floor saves and a valid pending reward without applying it',()=>{
- for(const version of [7,8,9]){
+ for(const version of [7,8,9,10]){
   let g=game();move(g,'collector');const before=JSON.parse(g.run('JSON.stringify({silver:stats.silver,pills:stats.pills,exp:stats.exp})'));
   g.failedKeys.add('palata404_stats');a.equal(act(g,{type:'action',id:'collect'}),true);
   const floorKey=progressKey(g),rewardKey=journalKey(g),saves=Object.fromEntries(g.storage);
@@ -223,7 +223,7 @@ test('An issued version-7 revision-2 parcel retains old delivery and records no 
  move(g,'nurse');a.equal(act(g,{type:'action',id:'claim:k2'}),true);a.equal(state(g).jobs.k2.count,3);a.equal(act(g,{type:'action',id:'accept:k2'}),true);a.equal(state(g).jobs.k2.revision,4);
 });
 test('Unknown next floor and world formats protect their original bytes and cannot apply rewards',()=>{
- for(const change of [{version:10},{world:{version:99,future:'keep'}}]){
+ for(const change of [{version:11},{world:{version:99,future:'keep'}}]){
   let g=game();const saves=Object.fromEntries(g.storage),key=progressKey(g),raw=JSON.stringify({...E.initial(),...change,room:'nurse'});saves[key]=raw;
   g=game(saves);a.equal(g.storage.get(key),raw);a.equal(act(g,{type:'action',id:'accept:k2'}),false);a.equal(g.storage.get(key),raw);a.equal(g.run('stats.silver'),150);
  }

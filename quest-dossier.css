@@ -1,0 +1,74 @@
+/* Approved case-folder layout. Reuses the existing fine paper, institution
+   header and typewriter font; viewing a copy never performs work. */
+.quest-journal-hidden{display:none!important}
+#tasks-modal>.quest-sheet{overflow-anchor:none}
+#tasks-modal>.quest-sheet.has-dossier{
+ width:min(1214px,calc(100vw - 24px))!important;height:calc(100vh - 24px);
+ max-height:calc(100vh - 24px);padding:0!important;overflow:hidden;
+ background-image:var(--paper-material-landscape)!important;background-size:auto!important;
+ container:quest-dossier-frame / size;
+}
+.quest-dossier:not(.hidden){display:flex;flex-direction:column;width:100%;height:100%;min-height:0;min-width:0}
+.quest-dossier-toolbar{display:flex;align-items:center;gap:12px;background:#2d3429;color:#f3e6c8;flex-shrink:0;padding:0 12px;min-height:46px}
+.quest-dossier-toolbar>span{flex:1;text-align:right;font-size:12px}
+.quest-dossier-scroll-cue{display:block;font-size:12px;margin-top:3px}
+.quest-dossier-toolbar button{min-height:46px}
+.quest-dossier-toolbar [data-dossier-close]{min-width:46px;padding:8px}
+.quest-dossier-body{min-height:0;flex:1;overflow:auto;overscroll-behavior:contain;padding:18px 24px;scroll-padding:12px}
+.quest-dossier-masthead{display:flex;align-items:center;justify-content:space-between;gap:16px;border-bottom:1px solid #9c8258;padding-bottom:12px}
+.quest-dossier-masthead document-header{width:360px;max-width:65%;flex:none}
+.quest-dossier-status{border:3px double #98624a;padding:8px;color:#824d3a;font-size:12px;transform:rotate(-4deg);text-align:center}
+.quest-dossier-body>h3{font-size:23px;margin:14px 0 8px;text-align:left}
+.quest-dossier-scope{font-size:12px;margin:0 0 16px!important}
+.quest-dossier-columns{display:grid;grid-template-columns:260px minmax(0,1fr);gap:22px;margin:18px 0;align-items:start}
+.quest-dossier-sources{min-width:0;display:flex;flex-direction:column;gap:6px;border-right:1px solid #ad956e;padding-right:18px}
+.quest-dossier-sources h4{font-size:12px;margin:0 0 10px}
+.quest-dossier-sources button{border:0;border-left:3px solid transparent;border-radius:0;text-align:left;background:transparent;min-height:46px;padding:10px;font-size:14px}
+.quest-dossier-sources button[aria-pressed=true]{background:#f5e7c54d;border-left-color:#778164}
+.quest-dossier-sources small{display:block;font-size:11px;margin-top:6px}
+.quest-dossier-document{min-width:0;border:1px solid #b59b72;background:#efdeb929;padding:20px;outline-offset:3px}
+.quest-dossier-document h4{font-size:20px;margin:0 0 12px}
+.quest-dossier-origin{font-size:12px;margin-bottom:18px!important}
+.quest-dossier-document dl{display:grid;grid-template-columns:minmax(110px,.8fr) minmax(0,2fr);margin:16px 0;font-size:14px}
+.quest-dossier-document dt,.quest-dossier-document dd{border-bottom:1px dotted #b59d78;padding:10px 0;margin:0;overflow-wrap:anywhere}
+.quest-dossier-document dt{padding-right:12px;color:#665338}
+.quest-dossier-copy-note{border-top:1px solid #b59b72;margin-top:20px!important;padding-top:12px;font-size:12px}
+.quest-dossier-footer{flex-shrink:0;display:flex;align-items:center;justify-content:space-between;gap:16px;border-top:1px solid #ac9169;padding:10px 18px;background:#d9bc8c var(--paper-material-strip) center/auto no-repeat}
+.quest-dossier-footer p{margin:0;font-size:12px;line-height:1.4}
+#tasks-modal .quest-dossier .quest-dossier-footer button{flex-shrink:0;min-height:46px;background:#69714c!important;background-image:none!important;color:#fff2d3!important}
+html[data-touch-ui=true] #tasks-modal>.quest-sheet.has-dossier{
+ width:100%!important;height:100%;max-height:100%!important;padding:0!important;overflow:hidden;
+}
+html[data-touch-ui=true] .quest-dossier-toolbar{min-height:44px;padding:0 8px;gap:8px}
+html[data-touch-ui=true] .quest-dossier-toolbar>span{font-size:12px}
+html[data-touch-ui=true] #tasks-modal .quest-dossier-toolbar button{min-height:44px}
+html[data-touch-ui=true] .quest-dossier-body{padding:12px}
+html[data-touch-ui=true] .quest-dossier-masthead{padding-bottom:8px;gap:8px}
+html[data-touch-ui=true] .quest-dossier-masthead document-header{display:none}
+html[data-touch-ui=true] .quest-dossier-status{font-size:12px;padding:4px;transform:none}
+html[data-touch-ui=true] .quest-dossier-body>h3{font-size:18px;line-height:1.25;margin:10px 0 8px}
+html[data-touch-ui=true] .quest-dossier-columns{grid-template-columns:190px minmax(0,1fr);gap:12px;margin:12px 0}
+html[data-touch-ui=true] .quest-dossier-sources{padding-right:10px;gap:6px}
+html[data-touch-ui=true] #tasks-modal .quest-dossier-sources button{min-height:44px;padding:8px;text-align:left}
+html[data-touch-ui=true] .quest-dossier-document{padding:12px}
+html[data-touch-ui=true] .quest-dossier-document h4{font-size:16px;line-height:1.3}
+html[data-touch-ui=true] .quest-dossier-document dl{grid-template-columns:minmax(88px,.8fr) minmax(0,1.2fr);font-size:14px}
+html[data-touch-ui=true] .quest-dossier-sources small{font-size:12px}
+html[data-touch-ui=true] .quest-dossier-footer{padding:8px;gap:12px}
+html[data-touch-ui=true] #tasks-modal .quest-dossier-footer p{font:14px/1.3 var(--document-font)!important}
+@media(max-width:560px){
+ .quest-dossier-columns{grid-template-columns:1fr}
+ .quest-dossier-sources{border-right:0;padding-right:0}
+}
+@container quest-dossier-frame (max-height:450px){
+ html[data-touch-ui=true] .quest-dossier-body{padding:8px 12px}
+ html[data-touch-ui=true] .quest-dossier-masthead{float:right;border:0;padding:0;margin:0 0 6px 12px}
+ html[data-touch-ui=true] .quest-dossier-body>h3{margin:0 0 8px;min-height:32px;font-size:16px}
+ html[data-touch-ui=true] .quest-dossier-scope{display:none}
+ html[data-touch-ui=true] .quest-dossier-columns{clear:both;margin:8px 0}
+ html[data-touch-ui=true] .quest-dossier-document{padding:10px}
+ html[data-touch-ui=true] .quest-dossier-document h4{margin-bottom:6px}
+ html[data-touch-ui=true] .quest-dossier-origin{margin-bottom:8px!important}
+ html[data-touch-ui=true] .quest-dossier-document dl{margin:8px 0}
+ html[data-touch-ui=true] .quest-dossier-document dt,.quest-dossier-document dd{padding-top:6px;padding-bottom:6px}
+}

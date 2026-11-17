@@ -85,7 +85,15 @@
    receipt('deliver','delivery','Подготовка завершена');
   }
   if(id==='k3'){
-   if(!done.copies&&w.marked?.length)add('draft','Отмеченные поля','Черновик сверки','draft',
+   if(job.revision===3&&w.sourcesRead){
+    const b=board('copies');
+    for(const document of b?.documents||[])add(document.id,document.title,'Источники дела №'+b.caseId,'recorded','',
+     document.fields.map(field=>[field.label,field.value]));
+    if(!done.copies)for(const issue of b?.issues||[]){
+     const choice=issue.choices.find(choice=>choice.id===w.conclusions?.[issue.id]);
+     if(choice)add('draft:'+issue.id,issue.title,'Черновик сверки','draft',choice.label+'. Вывод ещё не подтверждён.');
+    }
+   }else if(job.revision!==3&&!done.copies&&w.marked?.length)add('draft','Отмеченные поля','Черновик сверки','draft',
     'Отмечено: '+w.marked.map(key=>fieldNames[key]).filter(Boolean).join(', ')+'. Вывод ещё не подтверждён.');
    receipt('copies','copies','Сверка подтверждена');
   }

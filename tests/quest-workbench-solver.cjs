@@ -29,6 +29,22 @@ function nextOperation(b){
    return b.selected[0]===choice.id?{op:'submit'}:{op:'select',value:choice.id};
   }
   case 'compare':return toggleTowards(b.marked,difference(b.documents[0].fields,b.documents[1].fields),'mark');
+  case 'caseCompare':{
+   if(!b.sourcesRead)return{op:'readSources'};
+   const document=id=>{const source=b.documents.find(item=>item.id===id);if(!source)throw Error('The case is missing an identified source '+id);return Object.fromEntries(source.fields.map(field=>[field.id,field.value]));};
+   const direction=document('source-1'),original=document('source-2'),copy=document('source-3');
+   // An appointment is a plan, not proof of the time the procedure occurred.
+   const room=direction.ward&&original.ward&&copy.ward&&direction.ward===original.ward?(copy.ward===original.ward?'matches':'differs'):'unknown';
+   const time=original.fact&&copy.fact?(original.fact===copy.fact?'matchesActual':'error'):'unknown';
+   const unreadable=value=>!value||/нера[зс]борчив|не установлен|неизвест|^—$/i.test(value);
+   const author=unreadable(original.signature)||unreadable(copy.signature)?'unknown':original.signature===copy.signature&&original.signature==='Клара'?'clara':original.signature!==copy.signature?'other':'unknown';
+   for(const [field,choice]of Object.entries({room,time,author})){
+    const issue=b.issues.find(item=>item.id===field);
+    if(!issue?.choices.some(option=>option.id===choice))throw Error('No case conclusion matches the visible sources for '+field);
+    if(b.conclusions[field]!==choice)return{op:'conclude',value:{field,choice}};
+   }
+   return{op:'submit'};
+  }
   case 'diagnostic':{
    if(!b.inspected)return{op:'inspect',value:'connector'};
    if(!b.tested)return{op:'test'};

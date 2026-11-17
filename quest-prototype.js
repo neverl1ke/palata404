@@ -3,7 +3,7 @@
 'use strict';
 
 const E=PalataQuestEngine,key='palata404_floor10_progress:'+encodeURIComponent(raidArchiveOwnerId),byId=id=>document.getElementById(id);
-const navigation=window.PalataQuestNavigation,modelReady=typeof E.cargoName==='function'&&typeof E.bedPresentation==='function'&&E.initial().version===9&&typeof PalataQuestJobModel==='object'&&!!PalataQuestJobModel&&['make','restore','board','operate','supportsRevision','captureObservation'].every(name=>typeof PalataQuestJobModel[name]==='function')&&PalataQuestJobModel.supportsRevision('k2',4)&&PalataQuestJobModel.supportsRevision('d1',4)&&PalataQuestJobModel.supportsRevision('d2',3)&&PalataQuestJobModel.supportsRevision('d3',3);
+const navigation=window.PalataQuestNavigation,modelReady=typeof E.cargoName==='function'&&typeof E.bedPresentation==='function'&&E.initial().version===10&&typeof PalataQuestJobModel==='object'&&!!PalataQuestJobModel&&['make','restore','board','operate','supportsRevision','captureObservation'].every(name=>typeof PalataQuestJobModel[name]==='function')&&PalataQuestJobModel.supportsRevision('k3',3)&&PalataQuestJobModel.supportsRevision('k2',4)&&PalataQuestJobModel.supportsRevision('d1',4)&&PalataQuestJobModel.supportsRevision('d2',3)&&PalataQuestJobModel.supportsRevision('d3',3);
 const guideFor=id=>navigation?navigation.guide(E,state,id):E.guide(state,id);
 let raw,protectedSave=false;const stored=safeStorageGet(key);try{raw=JSON.parse(stored);protectedSave=!modelReady||(!!raw&&!E.supportsSave?.(raw));}catch(_){protectedSave=stored!==null;}let state=E.restore(raw);if(!stored)state.mode=stats.madness>=100?'trip':'patient';let tab='story',taskMode=null,focusQuest=null,focusRoom=null,notice='',workNotice='',locationView=false,interaction=null,travelling=false,saveFailed=false;
 // Keep the existing collector and the approved first-test side-job payouts.
@@ -16,7 +16,7 @@ try{
   const collector=journal.receipt?.kind==='collector'&&Number.isSafeInteger(journal.progress?.collectorCount)&&journal.progress.collectorCount>0&&journal.receipt.id==='collector:'+journal.progress.collectorCount;
   const quest=journal.receipt?.kind==='quest'&&Number.isSafeInteger(journal.progress?.transaction)&&journal.progress.transaction>0&&journal.receipt.id==='transaction:'+journal.progress.transaction;
   const validInventory=Array.isArray(journal.inventory)&&journal.inventory.every(x=>x&&typeof x.name==='string'&&Number.isSafeInteger(x.count)&&x.count>0);
-  if(!protectedSave&&[1,2].includes(journal.version)&&journal.owner===raidArchiveOwnerId&&(collector||journal.version===2&&quest)&&[3,4,5,6,7,8,9].includes(journal.progress?.version)&&modelReady&&!!E.supportsSave?.(journal.progress)&&journal.stats&&['silver','pills','exp','level'].every(k=>Number.isSafeInteger(journal.stats[k])&&journal.stats[k]>=0)&&(journal.version===1||validInventory)){
+  if(!protectedSave&&[1,2].includes(journal.version)&&journal.owner===raidArchiveOwnerId&&(collector||journal.version===2&&quest)&&[3,4,5,6,7,8,9,10].includes(journal.progress?.version)&&modelReady&&!!E.supportsSave?.(journal.progress)&&journal.stats&&['silver','pills','exp','level'].every(k=>Number.isSafeInteger(journal.stats[k])&&journal.stats[k]>=0)&&(journal.version===1||validInventory)){
    raw=journal.progress;state=E.restore(raw);Object.assign(stats,normalizeStats(journal.stats));if(journal.version===2)inventory=normalizeInventory(journal.inventory);pendingQuestReward=journal.receipt;
   }else rewardRecoveryError=true;
  }
@@ -47,6 +47,7 @@ for(const boss of Object.values(bossesDatabase))if(boss.questItem&&questKeyNotes
 const originalUpdate=updateUI,originalFight=startBossFight,originalVictory=handleVictory,originalUnrewarded=recordUnrewardedRaid;
 const tasks=byId('tasks-modal').querySelector('.modal-content');tasks.classList.remove('tasks-placeholder');tasks.classList.add('quest-sheet');
 tasks.innerHTML='<div class="modal-header"><h3 id="tasks-title">Задания · 10-й этаж</h3><button onclick="closeTasks()" aria-label="Закрыть задания">✕</button></div><p class="quest-note">Награда выдаётся после сдачи.<span class="quest-mobile-scroll-cue"> Лист прокручивается ↓</span></p><div class="quest-filter-row"><nav class="quest-tabs" aria-label="Категории заданий"><button data-quest-tab="story">Сюжет</button><button data-quest-tab="nurse">Клара</button><button data-quest-tab="doctor">Врач</button></nav><nav class="quest-tabs"><button data-task-mode="patient">Пациент</button><button data-task-mode="trip">Трип</button></nav></div><div id="quest-list"></div><p id="quest-save" role="status"></p><button onclick="toggleMapModal(true)">К действиям на этаже</button>';
+const journalParts=[...tasks.children],dossier=document.createElement('section');dossier.className='quest-dossier hidden';tasks.append(dossier);let dossierId=null,dossierSelected=null,journalReturn=null;
 const map=byId('map-floors-view');map.classList.add('quest-floor');byId('map-modal').querySelector('.map-clipboard-body').classList.add('quest-map-sheet');
 const mapHome=byId('map-modal').querySelector('.map-clipboard-body');const locationScreen=document.createElement('main');locationScreen.id='quest-location-screen';locationScreen.classList.add('hidden');locationScreen.setAttribute('aria-label','Локация');document.body.append(locationScreen);
 const officialHeader=document.createElement('div');officialHeader.className='quest-official-header';officialHeader.innerHTML='<document-header variant="left" department="ПЛАН ДЕСЯТОГО ЭТАЖА" scale="compact"></document-header><document-stamp type="service" rotate="-5"></document-stamp><document-stamp type="seal" rotate="8"></document-stamp>';byId('map-modal').querySelector('.map-clipboard-header').append(officialHeader);byId('map-modal').setAttribute('aria-label','Карта этажей');byId('map-modal').querySelector('.btn-close-map').setAttribute('aria-label','Закрыть окно');
@@ -134,7 +135,7 @@ function renderTasks(){
    const g=guideFor(r.id),hint=document.createElement('p');hint.textContent='Следующая точка: '+(E.rooms[g.room]?.[1]||'продолжение маршрута')+'. '+g.text;
    a.append(hint);
    switchHint(a,g);
-   if(g.room)a.append(button('Показать на карте',()=>{focusQuest=r.id;focusRoom=null;notice='Точка задания подсвечена. ';toggleMapModal(true);requestAnimationFrame(()=>{if(!byId('map-modal').classList.contains('hidden'))map.querySelector('.quest-map-pin.is-target')?.scrollIntoView({block:'center',inline:'center',behavior:'instant'});});}));
+   if(g.room)a.append(button('Показать на карте',()=>showQuestTarget(r.id)));
    if(g.hint){const detail=document.createElement('details'),summary=document.createElement('summary'),text=document.createElement('p');summary.textContent='Дополнительная подсказка';text.textContent=g.hint;detail.append(summary,text);a.append(detail);}
   }else{const done=document.createElement('p');done.textContent='Завершено. Повторять эти действия не нужно.';a.append(done);}
   if(!r.pending)appendCollectedNotes(a,r.id,openNotes.has(r.id),r.done);
@@ -144,12 +145,14 @@ function renderTasks(){
  tasks.querySelectorAll('[data-task-mode]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.taskMode===mode)));
  if(!list.children.length)list.textContent='В этом режиме нет поручений этой категории. Просмотр другого режима не переключает игру.';
  byId('quest-save').textContent=!modelReady?'Не удалось загрузить рабочие листы. Обновите страницу.':saveFailed?'Сохранение недоступно или формат новее этой версии. Исходные данные не заменяются.':'';
+ if(dossierId)renderDossier();
 }
 
 function appendCollectedNotes(host,id,open,complete){
  const projection=window.PalataQuestNotes;
  if(!projection)return;
  const records=projection.forQuest(E,window.PalataQuestJobModel,state,id);
+ const launch=button('Дело поручения · '+records.length,()=>openDossier(id));launch.dataset.openDossier=id;launch.className='quest-dossier-launch';host.append(launch);
  const detail=document.createElement('details'),summary=document.createElement('summary');
  detail.dataset.questNotes=id;detail.open=open;
  summary.textContent='Собранные записи · '+records.length;detail.append(summary);
@@ -166,6 +169,79 @@ function appendCollectedNotes(host,id,open,complete){
  }
  host.append(detail);
 }
+
+function showQuestTarget(id){
+ focusQuest=id;focusRoom=null;notice='Точка задания подсвечена. ';toggleMapModal(true);
+ requestAnimationFrame(()=>{if(!byId('map-modal').classList.contains('hidden'))map.querySelector('.quest-map-pin.is-target')?.scrollIntoView({block:'center',inline:'center',behavior:'instant'});});
+}
+function openDossier(id){
+ journalReturn={top:tasks.scrollTop,id};dossierId=id;dossierSelected=null;
+ tasks.classList.add('has-dossier');journalParts.forEach(part=>part.classList.add('quest-journal-hidden'));
+ dossier.classList.remove('hidden');tasks.scrollTop=0;
+ byId('tasks-modal').setAttribute('aria-labelledby','quest-dossier-title');
+ renderDossier();dossier.querySelector('[data-dossier-heading]')?.focus({preventScroll:true});
+}
+function closeDossier(restoreFocus=true){
+ dossierId=null;dossierSelected=null;dossier.classList.add('hidden');tasks.classList.remove('has-dossier');
+ journalParts.forEach(part=>part.classList.remove('quest-journal-hidden'));
+ byId('tasks-modal').setAttribute('aria-labelledby','tasks-title');
+ if(journalReturn){
+  const view=journalReturn;tasks.scrollTop=view.top;
+  if(restoreFocus)requestAnimationFrame(()=>{
+   if(dossierId||byId('tasks-modal').classList.contains('hidden'))return;
+   [...tasks.querySelectorAll('[data-open-dossier]')].find(control=>control.dataset.openDossier===view.id)?.focus({preventScroll:true});tasks.scrollTop=view.top;
+   requestAnimationFrame(()=>{if(!dossierId&&!byId('tasks-modal').classList.contains('hidden'))tasks.scrollTop=view.top;});
+  });
+ }
+}
+function renderDossier(){
+ const id=dossierId;if(!id)return;
+ const records=window.PalataQuestNotes?.forQuest(E,window.PalataQuestJobModel,state,id)||[],previous=dossier.querySelector('.quest-dossier-body'),top=previous?.scrollTop||0;
+ const oldFocus=dossier.contains(document.activeElement)?document.activeElement?.dataset.dossierRecord:null;
+ const selected=records.find(record=>record.id===dossierSelected)||records[0];dossierSelected=selected?.id||null;
+ dossier.replaceChildren();dossier.dataset.questDossier=id;
+ const toolbar=document.createElement('nav');toolbar.className='quest-dossier-toolbar';toolbar.setAttribute('aria-label','Навигация по делу');
+ const back=button('← К журналу',()=>closeDossier());back.dataset.dossierBack='true';
+ const label=document.createElement('span');label.textContent='Дело '+id+' · 10-й этаж · '+(state.mode==='trip'?'Трип':'Пациент');
+ const cue=document.createElement('small');cue.className='quest-dossier-scroll-cue';cue.textContent='Лист прокручивается ↓';label.append(cue);
+ const close=button('✕',()=>{closeDossier(false);closeTasks();});close.setAttribute('aria-label','Закрыть задания');close.dataset.dossierClose='true';toolbar.append(back,label,close);
+ const body=document.createElement('div');body.className='quest-dossier-body';
+ const masthead=document.createElement('div');masthead.className='quest-dossier-masthead';
+ const header=document.createElement('document-header');header.setAttribute('variant','left');header.setAttribute('department','МАТЕРИАЛЫ ПОРУЧЕНИЯ');header.setAttribute('scale','compact');
+ const g=guideFor(id),job=state.jobs[id],complete=job&&!job.active&&job.count>0||g.complete;
+ const status=document.createElement('span');status.className='quest-dossier-status';status.textContent=complete?'ПОРУЧЕНИЕ СДАНО':job&&E.ready(state,id)?'ГОТОВО К СДАЧЕ':'В РАБОТЕ';masthead.append(header,status);
+ const heading=document.createElement('h3');heading.id='quest-dossier-title';heading.dataset.dossierHeading='true';heading.tabIndex=-1;
+ heading.textContent=E.jobs[id]?.title||((navigation?navigation.story(E,state):E.story(state)).find(row=>row.id===id)?.title)||'Сохранённые осмотры';
+ const scope=document.createElement('p');scope.className='quest-dossier-scope';scope.textContent='Копии полученных источников и оформленных актов · текущая или последняя заявка';
+ body.append(masthead,heading,scope);
+ const columns=document.createElement('div');columns.className='quest-dossier-columns';
+ const sources=document.createElement('nav');sources.className='quest-dossier-sources';sources.setAttribute('aria-label','Материалы дела');
+ const sourceTitle=document.createElement('h4');sourceTitle.textContent='МАТЕРИАЛЫ ДЕЛА';sources.append(sourceTitle);
+ for(const record of records){
+  const control=button(record.title,()=>{dossierSelected=record.id;renderDossier();const content=dossier.querySelector('.quest-dossier-document');content?.focus({preventScroll:true});if(matchMedia('(pointer:coarse)').matches)content?.scrollIntoView({block:'start'});});
+  control.dataset.dossierRecord=record.id;control.setAttribute('aria-pressed',String(record.id===selected?.id));
+  const provenance=document.createElement('small');provenance.textContent=record.status==='draft'?'Черновик · не подтверждён':record.status==='confirmed'?'Подтверждённый акт':'Сохранённый источник';control.append(provenance);sources.append(control);
+ }
+ const documentCopy=document.createElement('article');documentCopy.className='quest-dossier-document';documentCopy.tabIndex=-1;documentCopy.setAttribute('aria-label','Копия выбранного материала');
+ if(selected){
+  documentCopy.dataset.dossierNote=selected.id;
+  const title=document.createElement('h4');title.textContent=selected.title;
+  const provenance=document.createElement('p');provenance.className='quest-dossier-origin';provenance.textContent=selected.source+' · '+({draft:'Черновик',recorded:'Записано',confirmed:'Подтверждено'}[selected.status]||'Записано');documentCopy.append(title,provenance);
+  if(selected.text){const text=document.createElement('p');text.textContent=selected.text;documentCopy.append(text);}
+  const facts=document.createElement('dl');for(const field of selected.fields){const label=document.createElement('dt'),value=document.createElement('dd');label.textContent=field.label;value.textContent=field.value;facts.append(label,value);}documentCopy.append(facts);
+  const note=document.createElement('p');note.className='quest-dossier-copy-note';note.textContent=selected.status==='draft'?'Это сохранённый выбор, а не подтверждённый результат. Проверка выполняется в рабочем листе.':'Это копия уже полученных сведений. Осмотр и проверку выполняют у предмета.';documentCopy.append(note);
+ }else{
+  const title=document.createElement('h4');title.textContent='Сохранённых материалов пока нет';const text=document.createElement('p');
+  text.textContent=complete?'В этом сохранении подробные источники не фиксировались. Отметка о выполнении остаётся в журнале.':id==='k3'&&job?.revision!==3?'В старом листе здесь сохраняются пометки и итог. Исходные записи находятся в процедурной.':'Материалы появятся после осмотра предмета или получения документа.';documentCopy.append(title,text);
+ }
+ columns.append(sources,documentCopy);body.append(columns);
+ const footer=document.createElement('footer');footer.className='quest-dossier-footer';
+ const next=document.createElement('p');const nextTitle=document.createElement('strong');nextTitle.textContent=g.complete?'Поручение завершено':'Следующий шаг · '+(E.rooms[g.room]?.[1]||'Журнал')+(g.mode?' · '+(g.mode==='trip'?'Трип':'Пациент'):'');next.append(nextTitle,document.createElement('br'),document.createTextNode(g.text));footer.append(next);
+ if(g.room&&!g.complete){const target=button('Показать на карте →',()=>showQuestTarget(id));target.dataset.dossierMap='true';footer.append(target);}
+ dossier.append(toolbar,body,footer);body.scrollTop=top;
+ if(oldFocus)[...sources.querySelectorAll('[data-dossier-record]')].find(control=>control.dataset.dossierRecord===oldFocus)?.focus({preventScroll:true});
+}
+tasks.addEventListener('keydown',event=>{if(event.key==='Escape'&&dossierId){event.preventDefault();event.stopPropagation();closeDossier();}});
 
 function switchHint(host,g){
  if(!g?.needsModeChange)return;
@@ -228,7 +304,7 @@ function selectRoomDoor(id,event){
  roomClickTimer=setTimeout(()=>{showRoomPreview(id);if(matchMedia('(max-width:900px)').matches)map.querySelector('.quest-room-preview')?.scrollIntoView({block:'nearest'});},280);
 }
 
-function beginAction(id){workNotice='';if(E.workbench?.(state,id)){interaction=id;locationView=true;renderMap();locationScreen.querySelector('[data-work-heading]')?.focus({preventScroll:true});return;}if(!E.interactions[id])return dispatch({type:'action',id});if(id==='unlockB'&&(!state.flags.doorKnown||!state.flags.reserveKnown||!state.flags.tripHandle)){focusQuest='lockB';notice='Нужны знание исправного механизма и аварийная рукоять из ординаторской A. ';locationView=false;renderMap();return;}if(id==='unlockC'&&(!state.flags.cKeyKnown||!state.flags.cLockKnown)){focusQuest='lockC';notice='Нужны опись хранения ключа в процедурной и памятка о замке у врача. ';locationView=false;renderMap();return;}interaction=id;locationView=true;renderMap();}
+function beginAction(id){workNotice='';if(E.workbench?.(state,id)){interaction=id;locationView=true;renderMap();const opened=E.workbench(state,id);if(opened?.kind==='caseCompare'&&!opened.sourcesRead&&locationScreen.querySelector('[data-work-kind=caseCompare]'))dispatch({type:'work',id,op:'readSources'});locationScreen.querySelector('[data-work-heading]')?.focus({preventScroll:true});return;}if(!E.interactions[id])return dispatch({type:'action',id});if(id==='unlockB'&&(!state.flags.doorKnown||!state.flags.reserveKnown||!state.flags.tripHandle)){focusQuest='lockB';notice='Нужны знание исправного механизма и аварийная рукоять из ординаторской A. ';locationView=false;renderMap();return;}if(id==='unlockC'&&(!state.flags.cKeyKnown||!state.flags.cLockKnown)){focusQuest='lockC';notice='Нужны опись хранения ключа в процедурной и памятка о замке у врача. ';locationView=false;renderMap();return;}interaction=id;locationView=true;renderMap();}
 function renderInteraction(host){const board=E.workbench?.(state,interaction);if(board){const note=document.createElement('p');note.textContent=board.title||'Рабочий лист';host.append(note);return;}const spec=E.interactions[interaction];if(!spec){interaction=null;return;}const index=state.interactions[interaction]||0,step=spec.steps[index];if(!step){interaction=null;return;}const h=document.createElement('h4');h.textContent=spec.title+' · шаг '+(index+1)+'/'+spec.steps.length;const p=document.createElement('p');p.textContent=step.text;host.append(h,p);for(const [choice,label] of step.choices){const b=button(label,()=>{const id=interaction;const ok=dispatch({type:'interact',id,choice});if(ok){if((state.interactions[id]||0)===spec.steps.length||id==='exercise'&&state.interactions.exercise===0)interaction=null;renderMap();}else b.setAttribute('aria-invalid','true');});b.dataset.choice=choice;if(window.PalataQuestScenes)PalataQuestScenes.decorateChoice(b,choice);host.append(b);}const feedback=document.createElement('p');feedback.className='interaction-feedback';feedback.setAttribute('role','status');host.append(feedback,button('Отложить осмотр',()=>{interaction=null;renderMap();}));}
 
 // Keep the requested handoff ahead of unrelated offers; preserve its real handler.
@@ -354,7 +430,7 @@ function dispatch(event){
 }
 
 updateUI=refresh;
-openTasks=function(){if(travelling)return false;if(closeOtherModals(['tasks-modal'])===false)return false;taskMode=state.mode;renderTasks();byId('tasks-modal').classList.remove('hidden');return true;};
+openTasks=function(){if(travelling)return false;if(closeOtherModals(['tasks-modal'])===false)return false;if(dossierId)closeDossier(false);taskMode=state.mode;renderTasks();byId('tasks-modal').classList.remove('hidden');return true;};
 toggleMapModal=function(show){cancelRoomGesture();if(travelling){showCustomToast('Дождитесь прибытия.');return;}if(show){interaction=null;locationView=false;if(isBattleActive){reopenNurseBattle();return;}if(closeOtherModals(['map-modal'])===false)return;renderMap();window.PalataCompactUI?.setMapView('plan');}byId('map-modal').classList.toggle('hidden',!show);};
 showFloorsList=renderMap;openFloorMap=()=>toggleMapModal(true);handleLocationClick=()=>toggleMapModal(true);openMedicalHub=()=>toggleMapModal(true);handleNodeClick=()=>toggleMapModal(true);
 // Legacy medical navigation cannot teleport the prototype's authoritative position.

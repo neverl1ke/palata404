@@ -11,10 +11,10 @@ function work(s,id,op,value){return apply(s,{type:'work',id,op,value});}
 function solve(s,id){for(let i=0;i<60;i++){const b=E.workbench(s,id);if(!b)return;const o=nextOperation(b);if(o.navigate){move(s,o.navigate);solve(s,o.action);move(s,o.resumeRoom);}else work(s,id,o.op,o.value);}throw Error('Unfinished '+id);}
 function rejected(s,event){const before=JSON.stringify(s),result=E.apply(s,event);a.equal(result.ok,false);a.equal(JSON.stringify(s),before);return result;}
 
-test('version9 world starts unknown and preserves facts without accepting future schemas',()=>{
- const initial=E.initial();a.equal(initial.version,9);a.equal(E.supportsSave(initial),true);a.deepEqual(E.roomEffects(initial,'ward406'),[]);a.deepEqual(E.roomEffects(initial,'doctor'),[]);
+test('version10 world starts unknown and preserves facts without accepting future schemas',()=>{
+ const initial=E.initial();a.equal(initial.version,10);a.equal(E.supportsSave(initial),true);a.deepEqual(E.roomEffects(initial,'ward406'),[]);a.deepEqual(E.roomEffects(initial,'doctor'),[]);
  for(const version of [1,6,7]){const legacy=E.restore({version,mode:'patient',room:'nurse',jobs:{k2:{active:false,count:12},d1:{active:false,count:9}},world:{version:1,linen406:{prepared:true}},cargo:[]});a.equal(legacy.world.linen406,null);a.deepEqual(legacy.world.calls,{ward407:null,ward408:null});a.equal(legacy.world.doctorReview,null);}
- for(const raw of [{...initial,version:10},{...initial,world:{...initial.world,version:3}},{...initial,world:{...initial.world,futureEffect:true}},{...initial,jobs:{k2:{active:true,revision:4,variant:0,work:{}}}}]){const before=JSON.stringify(raw);a.equal(E.supportsSave(raw),false);a.equal(JSON.stringify(raw),before);}
+ for(const raw of [{...initial,version:11},{...initial,world:{...initial.world,version:3}},{...initial,world:{...initial.world,futureEffect:true}},{...initial,jobs:{k2:{active:true,revision:4,variant:0,work:{}}}}]){const before=JSON.stringify(raw);a.equal(E.supportsSave(raw),false);a.equal(JSON.stringify(raw),before);}
 });
 
 test('new bed preparation needs the right item and zone, survives a partial reload, and consumes one parcel once',()=>{

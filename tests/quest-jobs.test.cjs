@@ -31,7 +31,7 @@ function complete(s,id){
  go(s,E.jobs[id].giver);
 }
 for(const id of Object.keys(E.jobs))test('new '+id+' requires its distinct work, produces proof and pays only at submission',()=>{
- let s=E.initial();const j=accept(s,id);a.equal(j.revision,['k2','d1'].includes(id)?4:['d2','d3'].includes(id)?3:2);a.equal(s.version,9);const stored=JSON.stringify(s);s=E.restore(JSON.parse(stored));a.equal(JSON.stringify(s.jobs[id]),JSON.stringify(j));
+ let s=E.initial();const j=accept(s,id);a.equal(j.revision,['k2','d1'].includes(id)?4:['k3','d2','d3'].includes(id)?3:2);a.equal(s.version,10);const stored=JSON.stringify(s);s=E.restore(JSON.parse(stored));a.equal(JSON.stringify(s.jobs[id]),JSON.stringify(j));
  a.equal(act(s,'claim:'+id).ok,false);complete(s,id);a.ok(E.ready(s,id));a.equal(E.workbench(s,'job:'+E.jobs[id].steps.at(-1)),null);
  const proof=E.requiredCargo[id];for(const cargo of proof){a.ok(s.cargo.includes(cargo));a.ok(E.cargoDescription(s,cargo));}
  const result=act(s,'claim:'+id);a.ok(result.ok,result.message);a.deepEqual(result.reward,{kind:'job',job:id,id:id+':1',...E.payouts[id]});a.equal(s.jobs[id].count,1);a.equal(s.jobs[id].active,false);for(const cargo of proof)a.ok(!s.cargo.includes(cargo));a.equal(act(s,'claim:'+id).ok,false);
@@ -57,8 +57,8 @@ test('diagnostics require observed connection and signal; classification is abse
  step(s,'job:bell407','inspect','connector');b=E.workbench(s,'job:bell407');a.ok(b.connector.connected);a.equal(b.response,null);step(s,'job:bell407','test');a.match(E.workbench(s,'job:bell407').response,/Ответ поста не поступил/);
  const before=JSON.stringify(s);a.equal(work(s,'job:bell407','report','disconnected').ok,false);a.equal(JSON.stringify(s),before);step(s,'job:bell407','report','noResponse');a.ok(s.cargo.includes('bell407'));
 });
-test('wrong comparison fields and chronology do not advance or consume evidence',()=>{
- const s=E.initial();accept(s,'k3');go(s,'procedure');step(s,'job:copies','mark','time');let before=JSON.stringify(s);a.equal(work(s,'job:copies','submit').ok,false);a.equal(JSON.stringify(s),before);
+test('issued legacy comparison fields and current chronology do not advance or consume evidence',()=>{
+ const s=E.restore({...E.initial(),version:9,mode:'patient',room:'procedure',jobs:{k3:{active:true,revision:2,variant:0,count:0,startTrip:0,done:{},work:{marked:[]}}}});a.equal(s.jobs.k3.revision,2);step(s,'job:copies','mark','time');let before=JSON.stringify(s);a.equal(work(s,'job:copies','submit').ok,false);a.equal(JSON.stringify(s),before);
  accept(s,'d2');const b=E.workbench(s,'job:log');for(const card of b.cards)step(s,'job:log','place',card.id);before=JSON.stringify(s);a.equal(work(s,'job:log','submit').ok,false);a.equal(JSON.stringify(s),before);
  const first=b.cards[0].id;step(s,'job:log','move',{id:first,direction:'down'});a.notDeepEqual(E.workbench(s,'job:log').order,b.cards.map(x=>x.id));
 });
@@ -92,7 +92,7 @@ test('new work fields are bounded and cannot auto-complete from unknown or malfo
 });
 
 test('unsupported work revisions and malformed operation IDs are rejected safely',()=>{
- a.equal(E.supportsSave({version:7,jobs:{k1:{revision:3}}}),false);a.equal(E.supportsSave({version:10}),false);a.equal(E.supportsSave({version:6,jobs:{k1:{revision:3}}}),true);a.equal(E.supportsSave({version:7,jobs:{k1:{revision:2,variant:0,work:{}}}}),true);
+ a.equal(E.supportsSave({version:7,jobs:{k1:{revision:3}}}),false);a.equal(E.supportsSave({version:11}),false);a.equal(E.supportsSave({version:6,jobs:{k1:{revision:3}}}),true);a.equal(E.supportsSave({version:7,jobs:{k1:{revision:2,variant:0,work:{}}}}),true);
  a.equal(E.supportsSave({version:7,jobs:{k1:{revision:2,variant:3,work:{}}}}),false);a.equal(E.supportsSave({version:7,jobs:{k1:{revision:2,variant:0}}}),false);
  a.equal(E.supportsSave({version:7,jobs:{futureJob:{revision:1}}}),false);a.equal(E.supportsSave({version:7,jobs:[]}),false);
  const s=E.initial();accept(s,'k1');go(s,'procedure');const before=JSON.stringify(s);for(const id of [null,5,{},[]]){a.equal(E.workbench(s,id),null);a.equal(E.apply(s,{type:'work',id,op:'submit'}).ok,false);a.equal(JSON.stringify(s),before);}
