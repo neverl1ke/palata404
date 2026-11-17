@@ -26,8 +26,17 @@
         document.body.dataset.rotate = String(rotate);
         frame.inert = rotate;
         frame.setAttribute('aria-hidden', String(rotate));
+        // Keep the approved scene at 1280×720, but tell document/map controls
+        // their real display size. Compensating only those UI surfaces avoids
+        // shrinking finger targets and type along with the painted room.
+        frame.contentWindow?.postMessage({
+            type: 'palata:shell-viewport', width: WIDTH * scale,
+            height: HEIGHT * scale, scale,
+            compact: matchMedia('(pointer:coarse)').matches && scale < .85 && !rotate
+        }, location.origin);
     }
     new ResizeObserver(fit).observe(screen);
+    frame.addEventListener('load', fit);
     addEventListener('resize', fit);
     visualViewport?.addEventListener('resize', fit);
     fullscreen.addEventListener('click', async () => {
