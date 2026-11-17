@@ -54,7 +54,7 @@ class QuestWorkbenchTests(unittest.TestCase):
         ui.action(self.page,'accept:'+id)
         job=self.progress()['jobs'][id]
         self.assertTrue(job['active'])
-        self.assertEqual(job['revision'],4 if id in ['k2','d1'] else 2)
+        self.assertEqual(job['revision'],4 if id in ['k2','d1'] else 3 if id in ['d2','d3'] else 2)
 
     def reload_home(self):
         self.page.reload(wait_until='networkidle')

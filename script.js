@@ -778,6 +778,14 @@ function renderMinecraftStash() {
         ? inventory
         : inventory.filter(item => item.category === currentCategory);
 
+    if (!filteredItems.length) {
+        const empty = document.createElement('p');
+        empty.className = 'inventory-empty-state';
+        empty.setAttribute('role', 'status');
+        empty.textContent = currentCategory === 'all' ? 'Инвентарь пока пуст.' : 'В этой категории пока нет предметов.';
+        container.appendChild(empty);
+    }
+
     const TOTAL_SLOTS = Math.max(20, Math.ceil(filteredItems.length / 5) * 5);
     for (let i = 0; i < TOTAL_SLOTS; i++) {
         let slot = document.createElement('div');

@@ -15,7 +15,7 @@ function tag(scene,effect){
  }
 }
 function observation(scene,state){
- if(state.room!=='A'||!state.jobs.d3?.active||state.jobs.d3.revision!==2)return;
+ if(state.room!=='A'||!state.jobs.d3?.active||![2,3].includes(state.jobs.d3.revision))return;
  const mark=window.PalataQuestEngine.observation(state).mark;if(!['Круг','Полоса','Крест'].includes(mark))return;
  const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');svg.setAttribute('viewBox','0 0 40 40');svg.classList.add('quest-observation-physical-mark');svg.dataset.observationMark=mark;svg.setAttribute('role','img');svg.setAttribute('aria-label','Отметка на металлической табличке: '+mark);
  const path=document.createElementNS(svg.namespaceURI,mark==='Круг'?'circle':'path');
@@ -24,6 +24,15 @@ function observation(scene,state){
 }
 function render(scene,info,state){
  observation(scene,state);
+ for(const outcome of window.PalataQuestStateView?.forRoom(window.PalataQuestEngine,state,state.room)||[]){
+  if(!['passage','reserve'].includes(outcome.kind))continue;
+  const card=element('section','quest-world-effect');card.dataset.worldEffect=outcome.id;card.dataset.outcomeStatus=outcome.status;
+  card.append(element('h4','',outcome.label),element('p','',outcome.text));info.insertBefore(card,info.querySelector('.quest-note'));
+  if(outcome.kind==='passage'&&new URLSearchParams(location.search).get('reviewPassageTags')==='1'){
+   const marker=element('span','quest-passage-service-tag',state.room==='A'?'Засов освобождён':'Замок открыт');marker.dataset.artPreview='passage-tags';marker.dataset.passageState='open';marker.dataset.artPreview='passage-tags';marker.dataset.passageRoom=state.room;marker.setAttribute('role','img');marker.setAttribute('aria-label',outcome.label);scene.append(marker);
+  }
+ }
+
  const bed=state.room==='ward406'&&state.mode==='patient'?window.PalataQuestEngine.bedPresentation?.(state):null;
  if(bed){const overlay=window.PalataQuestBedView?.createRoomLayer({mode:state.mode,preparationStarted:bed.preparationStarted,placed:bed.placed||[]});if(overlay)scene.append(overlay);}
  if(state.room==='ward406'&&state.mode==='patient'&&state.cargo.includes('linen')){

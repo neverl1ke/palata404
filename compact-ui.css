@@ -3,6 +3,9 @@
    No scene, character, statistics card, source artwork or gameplay is resized. */
 .compact-map-tabs{display:none}
 .compact-map-help{display:none}
+/* The oversized SVG is an authored crop, never a second scroll surface.
+   Native focus/scrollIntoView must pan only the outer blueprint viewport. */
+.quest-blueprint-viewport>.quest-blueprint{overflow:clip}
 /* On a short phone, the plan gets the space needed for room names. The full
    institutional letterhead stays on the description sheet and on desktop. */
 html[data-touch-ui=true] #map-modal[data-compact-view=plan] .map-clipboard-header{
@@ -124,7 +127,7 @@ html[data-touch-ui=true] #map-modal .quest-blueprint-viewport{
 html[data-touch-ui=true] #map-modal .quest-blueprint-viewport>.quest-blueprint{
     display:block;width:1280px;min-width:1280px;max-width:none;
     height:calc(1280px * 850 / 1610);min-height:calc(1280px * 850 / 1610);
-    aspect-ratio:1610/850;margin:0;border:0;overflow:hidden;
+    aspect-ratio:1610/850;margin:0;border:0;overflow:clip;
 }
 html[data-touch-ui=true] #map-modal .quest-floor .quest-map-pin{
     width:44px;height:44px;min-width:44px;min-height:44px;

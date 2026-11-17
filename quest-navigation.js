@@ -93,7 +93,7 @@
   const stage=E.jobStage?.(s,id);
   if(stage)return target(E,s,stage.room,stage.mode||'patient',stage.text,stage.hint);
   if(id==='d3'){
-   if(job.revision===2&&!job.work?.baselineCaptured)return target(E,s,'A','patient',
+   if([2,3].includes(job.revision)&&!job.work?.baselineCaptured)return target(E,s,'A','patient',
     'Запишите наблюдаемые детали коридора A в карточку.',
     'Сначала нужна собственная исходная запись; готового вывода в карточке нет.');
    if(job.done?.difference)return target(E,s,'doctor','patient',

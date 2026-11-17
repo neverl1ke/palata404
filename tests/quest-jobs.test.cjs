@@ -31,7 +31,7 @@ function complete(s,id){
  go(s,E.jobs[id].giver);
 }
 for(const id of Object.keys(E.jobs))test('new '+id+' requires its distinct work, produces proof and pays only at submission',()=>{
- let s=E.initial();const j=accept(s,id);a.equal(j.revision,['k2','d1'].includes(id)?4:2);a.equal(s.version,9);const stored=JSON.stringify(s);s=E.restore(JSON.parse(stored));a.equal(JSON.stringify(s.jobs[id]),JSON.stringify(j));
+ let s=E.initial();const j=accept(s,id);a.equal(j.revision,['k2','d1'].includes(id)?4:['d2','d3'].includes(id)?3:2);a.equal(s.version,9);const stored=JSON.stringify(s);s=E.restore(JSON.parse(stored));a.equal(JSON.stringify(s.jobs[id]),JSON.stringify(j));
  a.equal(act(s,'claim:'+id).ok,false);complete(s,id);a.ok(E.ready(s,id));a.equal(E.workbench(s,'job:'+E.jobs[id].steps.at(-1)),null);
  const proof=E.requiredCargo[id];for(const cargo of proof){a.ok(s.cargo.includes(cargo));a.ok(E.cargoDescription(s,cargo));}
  const result=act(s,'claim:'+id);a.ok(result.ok,result.message);a.deepEqual(result.reward,{kind:'job',job:id,id:id+':1',...E.payouts[id]});a.equal(s.jobs[id].count,1);a.equal(s.jobs[id].active,false);for(const cargo of proof)a.ok(!s.cargo.includes(cargo));a.equal(act(s,'claim:'+id).ok,false);
@@ -155,7 +155,7 @@ test('completed work preserves concrete findings in receipts and durable order r
     a.equal(E.cargoDescription(copy,cargo),description);a.deepEqual(copy.world.calls[room],s.world.calls[room]);a.ok(copy.world.calls[room].tested);a.ok(copy.world.calls[room].report);a.equal(copy.world.callEquipment[room].condition,'working');a.equal(copy.world.callEquipment[room].verified,true);
    }else{
     a.ok(s.log.some(message=>message.includes(description)),id+' '+cargo+' must retain observed findings');
-    a.ok(s.log.some(message=>message.includes(E.cargoCatalog[cargo].name)),id+' '+cargo+' must name its receipt');
+    a.ok(s.log.some(message=>message.includes(E.cargoName(s,cargo))),id+' '+cargo+' must name its actual issued receipt');
    }
   }
   a.ok(s.log.every(message=>message.length<=500),'current persisted receipt limit must preserve complete work feedback');

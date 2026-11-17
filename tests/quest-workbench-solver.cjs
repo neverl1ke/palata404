@@ -45,13 +45,28 @@ function nextOperation(b){
   }
   case 'callRetest':return{op:b.tested?'confirm':'test'};
   case 'timeline':{
-   const desired=b.cards.slice().sort((a,z)=>a.time.localeCompare(z.time)).map(x=>x.id);
+   const unreadable=b.cards.filter(card=>card.time===null);
+   const unread=unreadable.find(card=>!card.reverseRead);
+   if(unread)return{op:'readReverse',value:unread.id};
+   const readable=b.cards.filter(card=>typeof card.time==='string').sort((a,z)=>a.time.localeCompare(z.time));
+   const desired=readable.map(card=>card.id);
+   for(const card of unreadable){
+    if(typeof card.reverseText!=='string')throw Error('An unreadable time has no inspected ordering source.');
+    const after=readable.filter(item=>card.reverseText.includes(item.room)&&/проверк[аи] сигнала/i.test(item.note));
+    const before=readable.filter(item=>card.reverseText.includes(item.room)&&/передача белья/i.test(item.note));
+    if(after.length!==1||before.length!==1||desired.indexOf(after[0].id)>=desired.indexOf(before[0].id))throw Error('The visible reverse does not establish an unambiguous ordering.');
+    desired.splice(desired.indexOf(after[0].id)+1,0,card.id);
+   }
    const mismatch=b.order.findIndex((x,i)=>desired[i]!==x);
    if(mismatch>=0)return{op:'remove',value:b.order[mismatch]};
    return b.order.length<desired.length?{op:'place',value:desired[b.order.length]}:{op:'submit'};
   }
   case 'baseline':return{op:'record'};
-  case 'difference':return toggleTowards(b.marked,difference(b.baseline,b.current),'mark');
+  case 'difference':{
+   const changed=difference(b.baseline,b.current);
+   if(b.allowNoChanges&&!changed.length)return{op:b.noChanges?'submit':'noChanges'};
+   return toggleTowards(b.marked,changed,'mark');
+  }
   default:throw Error('Unknown workbench kind '+b.kind);
  }
 }

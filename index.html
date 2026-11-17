@@ -27,9 +27,14 @@
     <link rel="stylesheet" href="hud-card.css?v=d64aced52614">
 <link rel="stylesheet" href="quest-prototype.css?v=12aa75896d18">
 <link rel="stylesheet" href="quest-bed-view.css?v=84437fcd20c1">
-<link rel="stylesheet" href="quest-workbench.css?v=74b19cd53bcc">
-<script src="compact-ui.js?v=b6f15af8251b" defer></script>
-<link rel="stylesheet" href="compact-ui.css?v=c7d5c6ef519a">
+<link rel="stylesheet" href="quest-workbench.css?v=4e2ed3c911b7">
+<script src="compact-ui.js?v=b7877f5fe41e" defer></script>
+<link rel="stylesheet" href="compact-documents.css?v=ab6d33b647ca">
+<link rel="stylesheet" href="quest-consequences-ui.css?v=acd5de379c5c">
+<script src="quest-state-view.js?v=36e79c5ed54e" defer></script>
+<link rel="stylesheet" href="compact-ui.css?v=05b5fbf5ef21">
+<link rel="stylesheet" href="floor-map-navigation.css?v=95a9990b036b">
+<script src="floor-map-navigation.js?v=1f78f4c950cf" defer></script>
 <link rel="stylesheet" href="quest-world-view.css?v=73d2f7262005">
 <link rel="stylesheet" href="level-notice.css?v=d789a7fc0171">
 <link rel="stylesheet" href="rehab-training.css?v=911e653bdab2">
@@ -414,7 +419,7 @@
     <script src="wardrobe.js?v=f7526db229ae" defer></script>
     <script src="wardrobe-tablet.js?v=fca32b70b7d1" defer></script>
     <script src="wardrobe-archive.js?v=2cc4980cab6c" defer></script>
-    <script src="script.js?v=bfb0706b1cb2" defer></script>
+    <script src="script.js?v=51cef85fd8ac" defer></script>
     <!-- Модальне вікно: Медичне Досьє пацієнта (Аркуш паперу А4) -->
     <div id="dossier-modal" role="dialog" aria-modal="true" aria-label="Особисте досьє" class="modal center-modal hidden">
         <div class="modal-content dossier-paper">
@@ -745,8 +750,8 @@
 <script src="room-shadows.js?v=71ba9bf014bb" defer></script>
 <script src="room-door-rattle.js?v=bd36015147bc" defer></script>
 <script src="scene-loading.js?v=694da03e74b2" defer></script>
-<script src="quest-job-model.js?v=4dd80ea74a41" defer></script>
-<script src="quest-engine.js?v=9cb43ad2c05b" defer></script>
+<script src="quest-job-model.js?v=4add16fed149" defer></script>
+<script src="quest-engine.js?v=012247f0d327" defer></script>
 <script src="quest-art.js?v=c488b129e9c9" defer></script>
 <script src="rehab-pullup-model.js?v=9c28137fa16e" defer></script>
 <script src="rehab-pullup-renderer.js?v=84a9fc8389a6" defer></script>
@@ -758,15 +763,15 @@
 <script src="rehab-exercises.js?v=c31d29a02c1e" defer></script>
 <script src="rehab-scene-masks.js?v=688b2bc944f1" defer></script>
 <script src="rehab-scene.js?v=63ff2302f83a" defer></script>
-<script src="quest-scenes.js?v=6f0b9b044b7a" defer></script>
+<script src="quest-scenes.js?v=67e640cbc96c" defer></script>
 <script src="rehab-training-ui.js?v=d2f64011f10e" defer></script>
 <script src="assets/quest-bed/geometry.js?v=091c54727fe0" defer></script>
 <script src="quest-bed-art-candidates.js?v=045056e25c80" defer></script>
 <script src="quest-bed-view.js?v=4a7feecda1f6" defer></script>
-<script src="quest-world-view.js?v=5a5608856734" defer></script>
-<script src="quest-navigation.js?v=5cebdc6c2c02" defer></script>
-<script src="quest-workbench.js?v=2aca17353201" defer></script>
-<script src="quest-prototype.js?v=5834922cba20" defer></script>
+<script src="quest-world-view.js?v=b6b1277260b9" defer></script>
+<script src="quest-navigation.js?v=190aa031471d" defer></script>
+<script src="quest-workbench.js?v=472aefff9a17" defer></script>
+<script src="quest-prototype.js?v=71b2ca6f1ef1" defer></script>
 <script src="raid-hud.js?v=47b11ed1f582" defer></script>
 <dialog id="level-notice" aria-labelledby="level-notice-title" oncancel="event.preventDefault();closeLevelNotice()">
 <article class="document-paper"><document-header variant="center" department="ПІДВИЩЕННЯ РІВНЯ"></document-header><h2 id="level-notice-title">Ви отримали новий рівень!</h2><p class="level-notice-number" id="level-notice-number"></p><p>Нагороду вже зараховано</p><ul><li>100 срібла</li><li>50 таблеток</li><li>5 баксів</li></ul><button type="button" onclick="closeLevelNotice()">Продовжити</button></article></dialog>

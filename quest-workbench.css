@@ -106,3 +106,47 @@
  .quest-workbench[data-bed-explicit-start=true] .workbench-bed-diagram:not(.has-bed-art)>button.workbench-bed-target[data-bed-zone]{position:static;width:100%;height:auto;min-height:52px;font-size:12px}
 }
 .quest-workbench .workbench-bed-pieces>.workbench-bed-start-note{grid-column:1/-1}
+
+/* New D2/D3 orders keep their evidence separate from the player's conclusion.
+   Earlier revisions retain their existing work surfaces and operations. */
+.quest-workbench[data-work-revision="3"][data-work-kind=timeline] .workbench-area{grid-template-columns:minmax(0,1fr)}
+.quest-workbench[data-work-revision="3"] .workbench-evidence-pool{
+ display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;
+ padding:0;border:0;background:transparent;color:#30271b;
+}
+.quest-workbench[data-work-revision="3"] .workbench-evidence-pool>h3,
+.quest-workbench[data-work-revision="3"] .workbench-evidence-pool>.workbench-muted{grid-column:1/-1;margin:0}
+.quest-workbench[data-work-revision="3"] .workbench-evidence-slip{
+ display:flex;flex-direction:column;align-items:flex-start;gap:6px;min-width:0;
+ padding:14px;border:1px solid #a09071;
+ background:#d8b989 var(--paper-material-landscape) center/cover no-repeat;
+}
+.quest-workbench[data-work-revision="3"] .workbench-evidence-time{font-size:18px;font-weight:normal;line-height:1.3}
+.quest-workbench[data-work-revision="3"] .workbench-evidence-time[data-time-state=unreadable]{font-size:14px;color:#705b40}
+.quest-workbench[data-work-revision="3"] .workbench-evidence-room{font-size:16px;line-height:1.3}
+.quest-workbench[data-work-revision="3"] .workbench-evidence-note{font-size:14px;margin:0;line-height:1.45;overflow-wrap:anywhere}
+.quest-workbench[data-work-revision="3"] .workbench-slip-reverse{display:flex;flex-direction:column;gap:7px;align-items:flex-start;width:100%;min-width:0;margin-top:4px}
+.quest-workbench[data-work-revision="3"] .workbench-reverse-prompt{font-size:14px;margin:0;color:#6e5d45;line-height:1.45}
+.quest-workbench[data-work-revision="3"] .workbench-reverse-fact{width:100%;padding:9px 11px;border-left:3px solid #8e6f47;background:#f4e6c080;overflow-wrap:anywhere}
+.quest-workbench[data-work-revision="3"] .workbench-reverse-fact strong{display:block;font-size:14px;font-weight:normal;margin-bottom:4px}
+.quest-workbench[data-work-revision="3"] .workbench-reverse-fact p{font-size:14px;line-height:1.45;margin:0}
+.quest-workbench[data-work-revision="3"] :is(.workbench-read-reverse,.workbench-place-slip){font-size:14px;max-width:100%;min-height:44px;white-space:normal}
+.quest-workbench[data-work-revision="3"] .workbench-place-slip{margin-top:auto}
+.quest-workbench[data-work-revision="3"] .workbench-evidence-journal .workbench-timeline-list{padding-left:26px}
+.quest-workbench[data-work-revision="3"] .workbench-evidence-journal .workbench-evidence-slip{border:0;background:transparent;padding:0 0 10px}
+.quest-workbench[data-work-revision="3"] .workbench-uncertain-time-note{border-top:1px solid #a08b68;padding-top:10px;margin:12px 0 0;font-size:14px;line-height:1.45;color:#705b40}
+.quest-workbench[data-work-revision="3"] .workbench-observation-decision{min-width:0;padding:12px;border:1px solid #aa936c;background:#d8b989 var(--paper-material-landscape) center/cover no-repeat}
+.quest-workbench[data-work-revision="3"] button.workbench-no-changes{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;min-height:52px;font-size:14px}
+.quest-workbench[data-work-revision="3"] button.workbench-no-changes[aria-pressed=true]::before{content:none}
+.quest-workbench[data-work-revision="3"] button.workbench-no-changes[aria-pressed=true]::before{content:none}
+.quest-workbench[data-work-revision="3"] button.workbench-no-changes[aria-pressed=true]{border-color:#5c7252;background-image:linear-gradient(#d4dcc066,#d4dcc066),var(--paper-material-strip)}
+.quest-workbench[data-work-revision="3"] .workbench-observation-decision-note{font-size:14px;line-height:1.45;margin:10px 0 0;overflow-wrap:anywhere}
+.quest-workbench[data-work-revision="3"] .workbench-pairing-note{font-size:14px;line-height:1.45}
+html[data-touch-ui=true] #quest-location-screen .quest-workbench[data-work-revision="3"] :is(.workbench-pair-field small,.workbench-pair-value small,.workbench-pairing legend,.workbench-brief-summary,.workbench-brief-deliverable){font-size:14px;line-height:1.4}
+html[data-touch-ui=true] #quest-location-screen .quest-workbench[data-work-revision="3"] button{-webkit-tap-highlight-color:transparent}
+@media(max-width:650px){
+ .quest-workbench[data-work-revision="3"] .workbench-evidence-pool{grid-template-columns:1fr}
+}
+@container compact-workbench (max-width:650px){
+ html[data-touch-ui=true] #quest-location-screen .quest-workbench[data-work-revision="3"] .workbench-evidence-pool{grid-template-columns:1fr}
+}

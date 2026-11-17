@@ -1,0 +1,46 @@
+/* Orientation uses the approved plan and paper. The touch PLAN header keeps
+   its existing single 44px row; this adds no vertical chrome. */
+.floor-map-navigation{position:absolute;right:0;top:100%;z-index:25;width:88px;height:44px}
+.floor-map-navigation[hidden],.floor-map-overview[hidden]{display:none!important}
+.floor-map-overview-toggle,.floor-map-recenter{
+    box-sizing:border-box;min-height:44px;height:44px;min-width:44px;margin:0;
+    padding:6px 10px;border:1px solid #8c714c;border-radius:3px;
+    background:var(--paper-material-strip) center/cover no-repeat;color:var(--document-ink,#30261e);
+    font:14px/1.2 var(--document-font,'Courier New',monospace);text-align:center;
+    white-space:normal;touch-action:manipulation;
+}
+.floor-map-overview-toggle{width:88px}
+.floor-map-overview-toggle[aria-expanded=true]{background:#6b5033;color:#fff1d1;border-color:#4c3927}
+.floor-map-overview{
+    position:absolute;top:calc(100% + 6px);right:0;z-index:26;
+    display:flex;flex-direction:column;gap:8px;width:256px;
+    max-width:calc(var(--touch-ui-width,100vw) - 32px);overflow:auto;
+    box-sizing:border-box;padding:10px;border:1px solid #8c714c;border-radius:4px;
+    background:#e1c28b var(--paper-material-landscape) center/cover no-repeat;
+    color:var(--document-ink,#30261e);box-shadow:0 3px 12px #0007;
+    overscroll-behavior:contain;
+}
+.floor-map-overview-hint{margin:0!important;padding:0!important;font:13px/1.3 var(--document-font,'Courier New',monospace)!important;text-align:center;white-space:normal}
+.floor-map-overview-plan{
+    display:block;flex:0 0 auto;box-sizing:border-box;width:100%;height:auto;aspect-ratio:1610/850;
+    min-height:80px;overflow:hidden;border:1px solid #8c714c;background:#eddfc4;
+    touch-action:none;cursor:crosshair;user-select:none;-webkit-user-select:none;
+}
+.floor-map-overview-plan>svg{pointer-events:none}
+/* The global reduced-motion duration applies to every element, including SVG
+   geometry. An orientation frame must follow the scrollport immediately. */
+.floor-map-overview-plan,.floor-map-overview-plan *{transition:none!important;animation:none!important}
+.floor-map-visible-area{fill:#d0aa5c22;stroke:#6b2524;stroke-width:2;vector-effect:non-scaling-stroke}
+.floor-map-current-marker{fill:#264f63;stroke:#fff3d3;stroke-width:10;pointer-events:none}
+.floor-map-target-marker{fill:#a87321;stroke:#fff3d3;stroke-width:8;pointer-events:none}
+.floor-map-recenter{flex:0 0 auto;width:100%}
+.floor-map-overview-toggle:focus-visible,.floor-map-recenter:focus-visible,.floor-map-overview-plan:focus-visible{outline:2px solid #365b70;outline-offset:2px}
+html[data-touch-ui=true] #map-modal[data-compact-view=plan] .map-clipboard-header:has(>.floor-map-navigation:not([hidden])){
+    grid-template-columns:minmax(0,1fr) 88px 44px;grid-template-rows:44px;
+}
+html[data-touch-ui=true] #map-modal[data-compact-view=plan] .floor-map-navigation{
+    display:block;position:relative;inset:auto;grid-column:2;grid-row:1;align-self:center;
+    min-width:88px;width:88px;height:44px;
+}
+html[data-touch-ui=true] #map-modal[data-compact-view=plan] .map-clipboard-header:has(>.floor-map-navigation:not([hidden])) .btn-close-map{grid-column:3;grid-row:1}
+html[data-touch-ui=true] #map-modal[data-compact-view=details] .floor-map-navigation{display:none}

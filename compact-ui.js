@@ -5,7 +5,38 @@
     const root = document.documentElement;
     let launcher;
     let initialPlanCentered = false;
+    let suspendedPlan = null;
+    let rotationFrame = 0, rotationLayout = '', rotationAttempts = 0;
     const compact = () => root.dataset.touchUi === 'true';
+    function scheduleRotationRestore() {
+        if (!rotationFrame && suspendedPlan && compact() && rotationAttempts < 120) {
+            rotationFrame = requestAnimationFrame(() => {
+                rotationFrame = 0; rotationAttempts++;
+                restorePlanAfterRotation();
+            });
+        }
+    }
+    function restorePlanAfterRotation() {
+        if (!suspendedPlan || !compact()) return;
+        const view = document.querySelector('.quest-blueprint-viewport');
+        if (!view?.getClientRects().length) return;
+        const figure = view.querySelector('.quest-blueprint');
+        const width = parseFloat(root.style.getPropertyValue('--touch-ui-width'));
+        const maxLeft = view.scrollWidth - view.clientWidth, maxTop = view.scrollHeight - view.clientHeight;
+        // The desktop layout temporarily has no horizontal scroll range. Wait
+        // for the native touch geometry to settle before spending the snapshot.
+        if (!figure || figure.offsetWidth !== 1280 || view.clientWidth < 88 || view.clientHeight < 44 ||
+            view.clientWidth > width + 1 || maxLeft <= 0) {
+            scheduleRotationRestore(); return;
+        }
+        const layout = [view.clientWidth, view.clientHeight, view.scrollWidth, view.scrollHeight].join(':');
+        if (layout !== rotationLayout) {rotationLayout = layout; scheduleRotationRestore(); return;}
+        const left = Math.min(suspendedPlan.left, maxLeft), top = Math.min(suspendedPlan.top, maxTop);
+        view.scrollTo({left, top, behavior:'instant'});
+        if (Math.abs(view.scrollLeft-left)<1 && Math.abs(view.scrollTop-top)<1) {
+            suspendedPlan = null; rotationLayout = '';
+        } else scheduleRotationRestore();
+    }
     function setMapView(view, focusPlan = false) {
         const modal = document.getElementById('map-modal');
         if (!modal) return;
@@ -17,6 +48,7 @@
             const plan = modal.querySelector('.quest-blueprint-viewport');
             plan?.focus({preventScroll: true});
         }
+        if (view === 'plan' && suspendedPlan) {rotationAttempts=0; scheduleRotationRestore();}
         if (compact() && view === 'plan' && !initialPlanCentered) {
             requestAnimationFrame(() => {
                 if (!modal.getClientRects().length || modal.dataset.compactView !== 'plan') return;
@@ -73,11 +105,23 @@
         const data = event.data;
         if (data?.type !== 'palata:shell-viewport' || !Number.isFinite(data.scale) || data.scale <= 0 ||
             !Number.isFinite(data.width) || !Number.isFinite(data.height)) return;
+        const wasCompact = compact();
+        if (wasCompact && !data.compact && !suspendedPlan) {
+            const view = document.querySelector('.quest-blueprint-viewport');
+            if (view?.getClientRects().length) {
+                suspendedPlan = {left:view.scrollLeft, top:view.scrollTop};
+                rotationLayout = ''; rotationAttempts = 0;
+            }
+        }
+        if (wasCompact !== Boolean(data.compact)) document.getElementById('map-modal')?.dispatchEvent(new Event('palata:map-orient'));
         if (data.compact) root.dataset.touchUi = 'true';
         else delete root.dataset.touchUi;
         root.style.setProperty('--touch-ui-scale', String(1 / data.scale));
         root.style.setProperty('--touch-ui-width', data.width + 'px');
         root.style.setProperty('--touch-ui-height', data.height + 'px');
+        rotationAttempts = 0;
+        restorePlanAfterRotation();
+        scheduleRotationRestore();
         updateLauncher();
     });
     window.PalataCompactUI = Object.freeze({mapRendered, previewOpened, setMapView});

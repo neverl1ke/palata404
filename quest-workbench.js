@@ -82,7 +82,7 @@ function bedReference(source='assets/quest-scenes/ward406.webp'){
 }
 function render(host,options){
  const {board,act,close}=options;if(!board||!host)return null;
- const section=node('section','quest-workbench');section.setAttribute('role','dialog');section.setAttribute('aria-modal','true');section.dataset.workKind=board.kind;section.dataset.workAction=board.actionId||'';
+ const section=node('section','quest-workbench');section.setAttribute('role','dialog');section.setAttribute('aria-modal','true');section.dataset.workKind=board.kind;section.dataset.workAction=board.actionId||'';if(board.revision===3&&['d2','d3'].includes(board.jobId))section.dataset.workRevision='3';
  const titleId='quest-workbench-title';section.setAttribute('aria-labelledby',titleId);
  const toolbar=node('nav','workbench-toolbar');toolbar.setAttribute('aria-label','Управление осмотром');
  const key=board.actionId||board.jobId||board.kind;
@@ -99,7 +99,8 @@ function render(host,options){
  const heading=node('h2','workbench-heading',board.title||'Поручение');heading.id=titleId;heading.tabIndex=-1;heading.dataset.workHeading='';paper.append(heading,node('p','workbench-instruction',board.instruction||'Выполните поручение по наблюдаемым признакам.'));
  if(board.brief){const brief=node('details','workbench-brief');brief.setAttribute('aria-label','Поручение');brief.open=scrollMemo?.key===key&&scrollMemo.briefOpen!==undefined?scrollMemo.briefOpen:false;const summary=node('summary','workbench-brief-summary');if(board.brief.giver)summary.append(node('strong','workbench-brief-giver','От: '+board.brief.giver));if(board.brief.purpose)summary.append(node('span','workbench-brief-purpose',board.brief.purpose));brief.append(summary);if(board.brief.deliverable)brief.append(node('small','workbench-brief-deliverable','Подтверждение: '+board.brief.deliverable));paper.append(brief);}
  const area=node('div','workbench-area');const selected=new Set(board.selected||[]),marked=new Set(board.marked||[]);
- const footer=node('footer','workbench-footer');const status=node('p','workbench-status',options.feedback||options.message||board.feedback||'Изменения сохраняются по мере работы.');status.setAttribute('role','status');status.setAttribute('aria-live','polite');status.setAttribute('aria-atomic','true');
+ const initialScrollCue=board.revision===3?(board.jobId==='d2'&&board.kind==='timeline'&&!(board.order||[]).length&&!(board.cards||[]).some(card=>card.reverseRead)?'Записи ниже — прокрутите лист':board.jobId==='d3'&&board.kind==='difference'&&board.allowNoChanges===true&&!marked.size&&!board.noChanges?'Сравнение ниже — прокрутите лист':''):'';
+ const footer=node('footer','workbench-footer');const status=node('p','workbench-status',options.feedback||options.message||board.feedback||initialScrollCue||'Изменения сохраняются по мере работы.');status.setAttribute('role','status');status.setAttribute('aria-live','polite');status.setAttribute('aria-atomic','true');
  function request(title,rows){const r=node('aside','workbench-request');r.append(node('h3','',title),facts(rows));return r;}
  function submit(text,disabled=false){footer.append(button(text,'submit',undefined,'submit',{className:'workbench-button workbench-submit',disabled}));}
  function pairedRecords(groups,legend){
@@ -111,6 +112,19 @@ function render(host,options){
    for(const[index,[title]]of groups.entries()){const value=node('span','workbench-pair-value');value.append(node('small','',title),node('span','',label(source[index]?.value)));row.append(value);}comparison.append(row);
   }
   comparison.append(node('p','workbench-muted workbench-pairing-note','Нажмите на строку, чтобы отметить её. Повторное нажатие снимает отметку.'));return comparison;
+ }
+ function timelineEvidence(card,ordered=false){
+  const evidence=node('article','workbench-evidence-slip');evidence.dataset.slipId=card.id;
+  const time=node('strong','workbench-evidence-time',card.time===null?(ordered?'Время не установлено':'Время не читается'):card.time);time.dataset.timeState=card.timeState||'readable';
+  evidence.append(time,node('span','workbench-evidence-room',roomLabel(card.room)),node('p','workbench-evidence-note',card.note||''));
+  if(card.reverseAvailable){
+   const reverse=node('section','workbench-slip-reverse');reverse.append(button(card.reverseRead?'Оборот прочитан':'Прочитать оборот','readReverse',card.id,'readReverse:'+card.id,{className:'workbench-read-reverse',disabled:!!card.reverseRead}));
+   if(card.reverseRead&&typeof card.reverseText==='string'){
+    const fact=node('div','workbench-reverse-fact');fact.append(node('strong','','Запись на обороте'),node('p','',card.reverseText));reverse.append(fact);
+   }else reverse.append(node('p','workbench-reverse-prompt','На обороте сохранилась запись о связанных событиях.'));
+   evidence.append(reverse);
+  }
+  return evidence;
  }
 
  if(board.kind==='inspection'){
@@ -179,6 +193,18 @@ function render(host,options){
  }else if(board.kind==='callRetest'){
   const station=node('section','workbench-call-station');station.append(node('span','workbench-call-number',roomLabel(board.label||String(board.room).replace(/^ward/,''))));const unit=node('div','workbench-bell-unit');unit.append(icon('bell'),button(board.tested?'Контроль выполнен':'Контрольный вызов','test',undefined,'test',{disabled:!!board.tested,className:'workbench-call-trigger',ariaLabel:board.tested?'Контрольный вызов выполнен':'Нажать кнопку контрольного вызова'}));station.append(unit,node('p','workbench-call-hint',board.tested?'Сверьте адрес ответившего поста и подтвердите результат контроля.':'Нажмите кнопку в самой палате. Результат обслуживания ещё нужно проверить.'));
   const observation=node('section','workbench-test-observation');observation.append(node('h3','','Контроль после обслуживания'));const indicator=node('p','workbench-indicator'+(board.indicator==='on'?' is-on':''));indicator.append(node('i','workbench-indicator-lamp'),node('span','',board.tested?(board.indicator==='on'?'Индикатор загорелся':'Индикатор не загорелся'):'Индикатор · контроль не выполнялся'));const response=node('div','workbench-call-response');response.append(node('h3','','Ответ поста'),node('p','',board.tested?(board.response||'Ответ не получен.'):'Сначала выполните контрольный вызов.'));observation.append(indicator,response);if(board.responseAddress)observation.append(facts([['Адрес ответившего поста',board.responseAddress]]));area.append(station,observation);footer.append(button('Подтвердить результат контрольного вызова','confirm',undefined,'confirm',{className:'workbench-button workbench-submit',disabled:!board.tested||!!board.confirmed}));
+ }else if(board.kind==='timeline'&&board.revision===3){
+  const ordered=new Set(board.order||[]),cards=board.cards||[],pool=node('section','workbench-slip-pool workbench-evidence-pool');pool.append(node('h3','','Записи на столе'));
+  for(const card of cards){if(ordered.has(card.id))continue;const slip=timelineEvidence(card);slip.append(button('В журнал','place',card.id,'place:'+card.id,{className:'workbench-place-slip'}));pool.append(slip);}
+  if(cards.every(card=>ordered.has(card.id)))pool.append(node('p','workbench-muted','Все листки в журнале. Проверьте их порядок и записи на обороте.'));
+  const journal=node('section','workbench-timeline workbench-evidence-journal');journal.append(node('h3','','Лист обхода · '+ordered.size+'/'+cards.length));const list=node('ol','workbench-timeline-list');
+  for(const[index,id]of(board.order||[]).entries()){
+   const card=cards.find(card=>card.id===id);if(!card)continue;const row=node('li','workbench-timeline-entry');row.dataset.orderedSlip=id;row.append(timelineEvidence(card,true));const controls=node('div','workbench-order-controls'),name=roomLabel(card.room);
+   controls.append(button('↑','move',{id,direction:'up'},'move:'+id+':up',{disabled:index===0,ariaLabel:'Поднять запись: '+name}),button('↓','move',{id,direction:'down'},'move:'+id+':down',{disabled:index===(board.order||[]).length-1,ariaLabel:'Опустить запись: '+name}),button('На стол','remove',id,'remove:'+id));row.append(controls);list.append(row);
+  }
+  journal.append(list);if(!ordered.size)journal.append(node('p','workbench-muted','Верните листки в подтверждённом порядке. Если время не читается, используйте запись о событиях.'));
+  if(cards.some(card=>card.time===null))journal.append(node('p','workbench-uncertain-time-note','Неразборчивое время не дописывается: в итоговом листе оно останется «не установлено».'));
+  area.append(pool,journal);submit('Подтвердить последовательность',!cards.length||ordered.size!==cards.length||cards.some(card=>card.reverseAvailable&&!card.reverseRead));
  }else if(board.kind==='timeline'){
   const pool=node('section','workbench-slip-pool');pool.append(node('h3','','Записи на столе'));const ordered=new Set(board.order||[]);
   for(const card of board.cards||[]){if(ordered.has(card.id))continue;const slip=button('','place',card.id,'place:'+card.id,{className:'workbench-slip'});slip.append(node('strong','',card.time||'Время не указано'),node('span','',roomLabel(card.room)),node('small','',card.note||''),node('em','','Поместить в журнал'));pool.append(slip);}
@@ -188,6 +214,11 @@ function render(host,options){
  }else if(board.kind==='baseline'){
   const plate=node('div','workbench-observation-plate');plate.append(node('small','','ТАБЛИЧКА КОРИДОРА A'),facts((board.details||[]).map(f=>[f.label,f.value])));
   const card=node('article','workbench-observation-card');card.append(node('h3','','Карточка наблюдения'),node('small','workbench-draft-label',board.recorded?'Запись сохранена':'Черновик · запись ещё не сохранена'),facts((board.details||[]).map(f=>[f.label,f.value])),node('p','','Сверьте переписанные показания с табличкой, затем сохраните карточку.'));if(board.recorded)card.append(node('p','workbench-picked','Наблюдение записано.'));area.append(plate,card);footer.append(button('Записать наблюдение в карточку','record',undefined,'record',{className:'workbench-button workbench-submit',disabled:!!board.recorded}));
+ }else if(board.kind==='difference'&&board.revision===3&&board.allowNoChanges===true){
+  area.append(pairedRecords([['Моя карточка',board.baseline||[]],['Наблюдение на месте',board.current||[]]],'Сверьте наблюдение с карточкой'));
+  const decision=node('section','workbench-observation-decision'),none=button('','noChanges',undefined,'noChanges',{pressed:!!board.noChanges,className:'workbench-no-changes'}),tick=node('i','workbench-pair-tick',board.noChanges?'✓':'');tick.setAttribute('aria-hidden','true');none.append(tick,node('span','','Изменений нет'));
+  decision.append(none,node('p','workbench-observation-decision-note',board.noChanges?'Явно записано отсутствие изменений. Отметки отдельных строк сняты.':'Если все показания совпали, укажите это отдельным ответом. Выбор «Изменений нет» снимает отметки строк; отметка строки отменяет этот ответ.'));area.append(decision);
+  submit('Зафиксировать наблюдение',!marked.size&&!board.noChanges);
  }else if(board.kind==='difference'){
   area.append(pairedRecords([['Моя карточка',board.baseline||[]],['Наблюдение на месте',board.current||[]]],'Что расходится с карточкой?'));submit('Записать наблюдаемое расхождение',!marked.size);
  }else{
