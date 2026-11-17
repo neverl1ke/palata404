@@ -1,4 +1,4 @@
-/* This layer is present only for the explicit artwork review URL. */
+/* Approved K2 artwork shared by the room and the close-up. */
 .quest-bed-room-layer{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
 .quest-bed-closeup-art{display:block;width:100%;height:auto;overflow:hidden}
 .quest-bed-piece-art{object-fit:contain;object-position:center}

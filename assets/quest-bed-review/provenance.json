@@ -1,5 +1,5 @@
 {
-  "status": "review-only-not-approved",
+  "status": "approved-for-current-feature-branch",
   "originalRoom": "assets/quest-world/ward406-patient.webp",
   "artMasterRoom": "/workspace/generated_images/exec-47dfaf67-18e0-4939-9741-f5f037741bbf.png",
   "processing": "Lossless WebP encoding at original dimensions. No resizing, color filtering or painting. Bare mattress source must only be shown inside exact local masks over the unchanged room.",
@@ -49,5 +49,8 @@
       "losslessVerified": true,
       "purpose": "Only the existing pillowcase mask; clearer inner ticking after user feedback. The mattress and approved covered pillow retain their previous sources."
     }
-  }
+  },
+  "approved": true,
+  "approvalDate": "2026-11-17",
+  "approvalScope": "K2 artwork including bare-pillow-v2; current feature branch only. No authorization for main or publication."
 }

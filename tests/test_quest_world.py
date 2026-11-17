@@ -69,12 +69,35 @@ class QuestWorldTests(unittest.TestCase):
         self.assertFalse(self.world()['linen406'])
         self.assertEqual(self.page.locator('[data-world-item="pending-bed-linen"]').count(),1)
         self.page.set_viewport_size({'width':844,'height':390})
-        # The game's viewport/orientation handler rebuilds the compact view
-        # asynchronously. Check its actual ready geometry, not a fixed sleep.
-        self.page.wait_for_function('''()=>{const e=document.querySelector('.quest-workbench');if(!e)return false;const top=e.querySelector('.workbench-scroll').getBoundingClientRect().top,bottom=e.querySelector('.workbench-footer').getBoundingClientRect().top,buttons=[...e.querySelectorAll('[data-work-op="selectPiece"],[data-work-op="place"]')];return buttons.length===4&&buttons.every(b=>{const r=b.getBoundingClientRect();return r.top>=top&&r.bottom<=bottom&&r.left>=0&&r.right<=innerWidth&&r.height>=44})}''',timeout=3000)
-        geometry=self.page.locator('.quest-workbench').evaluate('''e=>{const top=e.querySelector('.workbench-scroll').getBoundingClientRect().top,bottom=e.querySelector('.workbench-footer').getBoundingClientRect().top;return[...e.querySelectorAll('[data-work-op="selectPiece"],[data-work-op="place"]')].map(b=>{const r=b.getBoundingClientRect();return{operation:b.dataset.workOp,top:r.top,bottom:r.bottom,left:r.left,right:r.right,visible:r.top>=top&&r.bottom<=bottom&&r.left>=0&&r.right<=innerWidth,height:r.height}})}''')
+        # The approved close-up keeps the real source camera. On a short screen
+        # its controls may scroll; each must still be fully visible and hittable.
+        self.page.locator('.workbench-bed-diagram.has-bed-art .quest-bed-closeup-art[data-bed-art-approved="true"]').wait_for(state='visible')
+        controls=[
+            '[data-work-op="selectPiece"][data-work-value="sheet"]',
+            '[data-work-op="selectPiece"][data-work-value="pillowcase"]',
+            '[data-work-op="place"][data-work-value="sheetZone"]',
+            '[data-work-op="place"][data-work-value="pillowZone"]',
+        ]
+        geometry=[]
+        for selector in controls:
+            control=self.page.locator(selector)
+            control.scroll_into_view_if_needed()
+            control.evaluate("e=>e.scrollIntoView({block:'center',inline:'nearest'})")
+            self.page.wait_for_function('''selector=>{
+                const b=document.querySelector(selector),board=b?.closest('.quest-workbench');if(!board)return false;
+                const r=b.getBoundingClientRect(),scroll=board.querySelector('.workbench-scroll'),area=scroll.getBoundingClientRect(),footer=board.querySelector('.workbench-footer').getBoundingClientRect();
+                const top=Math.max(0,area.top),bottom=Math.min(innerHeight,area.bottom,footer.top),x=r.left+r.width/2,y=r.top+r.height/2,hit=document.elementFromPoint(x,y);
+                return r.height>=44&&r.top>=top-.5&&r.bottom<=bottom+.5&&r.left>=0&&r.right<=innerWidth&&scroll.scrollWidth<=scroll.clientWidth+1&&!!hit&&(hit===b||b.contains(hit));
+            }''',arg=selector,timeout=3000)
+            geometry.append(control.evaluate('''b=>{
+                const board=b.closest('.quest-workbench'),r=b.getBoundingClientRect(),scroll=board.querySelector('.workbench-scroll'),area=scroll.getBoundingClientRect(),footer=board.querySelector('.workbench-footer').getBoundingClientRect(),x=r.left+r.width/2,y=r.top+r.height/2,hit=document.elementFromPoint(x,y);
+                return {operation:b.dataset.workOp,value:b.dataset.workValue,top:r.top,bottom:r.bottom,left:r.left,right:r.right,height:r.height,
+                    visible:r.top>=Math.max(0,area.top)-.5&&r.bottom<=Math.min(innerHeight,area.bottom,footer.top)+.5,
+                    centerHit:!!hit&&(hit===b||b.contains(hit)),horizontalClip:r.left<0||r.right>innerWidth||scroll.scrollWidth>scroll.clientWidth+1,scrollTop:scroll.scrollTop};
+            }'''))
         self.assertEqual(len(geometry),4,geometry)
-        self.assertTrue(all(button['visible'] and button['height']>=44 for button in geometry),geometry)
+        self.assertTrue(all(button['visible'] and button['centerHit'] and not button['horizontalClip'] and button['height']>=44 for button in geometry),geometry)
+        OUT.joinpath('approved-bed-short-landscape-controls.json').write_text(json.dumps(geometry,ensure_ascii=False,indent=2))
         self.page.set_viewport_size({'width':1280,'height':800})
         ui.operate(self.page,'selectPiece','sheet')
         wrong=ui.board(self.page,'job:deliver');world_before=self.world()

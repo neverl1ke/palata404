@@ -1,4 +1,4 @@
-"""Native browser rendering of isolated, explicitly unapproved K2 artwork.
+"""Native browser rendering of approved K2 artwork enabled in the feature branch.
 
 These tests call the real shared renderer, rather than claiming a screenshot
 montage is gameplay. Quest operations/save progression are covered separately.
@@ -26,7 +26,7 @@ class QuestBedArtReviewBrowserTests(unittest.TestCase):
 
     def ready(self):
         self.page.evaluate('''async()=>{
-            await Promise.all([...document.querySelectorAll('#bed-render-probe image,#bed-render-probe img')].map(element=>{
+            await Promise.all([...document.querySelectorAll('#bed-render-probe image,#bed-render-probe img,#bed-crop-canary image,#bed-crop-canary img')].map(element=>{
                 const image=new Image();image.src=element.getAttribute('href')||element.src;return image.decode();
             }));
             await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));
@@ -57,23 +57,29 @@ class QuestBedArtReviewBrowserTests(unittest.TestCase):
         self.assertEqual(image.size,(1536,1024),'Native source coordinates were rescaled')
         return np.asarray(image)
 
-    def test_unapproved_art_is_disabled_by_default_and_never_changes_trip(self):
+    def test_approved_art_is_enabled_without_a_query_and_never_changes_trip(self):
         self.load()
-        self.assertEqual(self.page.evaluate('''()=>({enabled:PalataQuestBedView.reviewEnabled(),
-            closeup:PalataQuestBedView.create({preparationStarted:true,placed:[]}),
-            layer:PalataQuestBedView.createRoomLayer({preparationStarted:true,placed:[]}),
-            piece:PalataQuestBedView.createPiece('sheet','clean')})'''),
-            {'enabled':False,'closeup':None,'layer':None,'piece':None})
-        self.assertEqual(self.page.locator('[data-bed-art-review=true]').count(),0)
-        self.load(query='?bed-art-review=1')
-        self.assertTrue(self.page.evaluate('PalataQuestBedView.reviewEnabled()'))
-        self.assertEqual(self.page.evaluate('''()=>({
-            closeup:PalataQuestBedView.create({mode:'trip',preparationStarted:true,placed:[]}),
-            layer:PalataQuestBedView.createRoomLayer({mode:'trip',preparationStarted:true,placed:[]})})'''),
-            {'closeup':None,'layer':None})
+        self.assertEqual(self.page.evaluate('''()=>{
+            const options={mode:'patient',preparationStarted:true,placed:[]};
+            const closeup=PalataQuestBedView.create(options),layer=PalataQuestBedView.createRoomLayer(options);
+            const sheet=PalataQuestBedView.createPiece('sheet','clean'),pillowcase=PalataQuestBedView.createPiece('pillowcase','clean');
+            return {approved:PalataQuestBedArtCandidates.approved===true,
+                enabled:PalataQuestBedView.enabled(),legacyAlias:PalataQuestBedView.reviewEnabled(),
+                closeup:closeup?.dataset.bedArtApproved,layer:layer?.dataset.bedArtApproved,
+                sheet:sheet?.getAttribute('src'),pillowcase:pillowcase?.getAttribute('src')};
+        }'''),{'approved':True,'enabled':True,'legacyAlias':True,'closeup':'true','layer':'true',
+            'sheet':'assets/quest-bed-review/folded-sheet.webp',
+            'pillowcase':'assets/quest-bed-review/empty-pillowcase.webp'})
+        for query in ['', '?bed-art-review=1']:
+            if query:self.load(query=query)
+            self.assertTrue(self.page.evaluate('PalataQuestBedView.enabled()'))
+            self.assertEqual(self.page.evaluate('''()=>({
+                closeup:PalataQuestBedView.create({mode:'trip',preparationStarted:true,placed:[]}),
+                layer:PalataQuestBedView.createRoomLayer({mode:'trip',preparationStarted:true,placed:[]})})'''),
+                {'closeup':None,'layer':None})
 
     def test_native_shared_renderer_changes_only_cloth_and_restores_canonical_pixels(self):
-        self.page.set_viewport_size({'width':1536,'height':1024});self.load(query='?bed-art-review=1')
+        self.page.set_viewport_size({'width':1536,'height':1024});self.load()
         geometry=json.loads((ROOT/'assets/quest-bed/geometry.json').read_text())
         source=ROOT/geometry['source']['runtime'];source_hash=hashlib.sha256(source.read_bytes()).hexdigest()
         self.assertEqual(source_hash,geometry['source']['sha256'])
@@ -122,7 +128,7 @@ class QuestBedArtReviewBrowserTests(unittest.TestCase):
             'bothPlacedCanonicalPixelsEqual':bool(np.array_equal(final,canonical)),'states':results},ensure_ascii=False,indent=2)+'\n')
 
     def test_closeup_crop_does_not_paint_over_surrounding_interface(self):
-        self.page.set_viewport_size({'width':1000,'height':600});self.load(query='?bed-art-review=1')
+        self.page.set_viewport_size({'width':1000,'height':600});self.load()
         geometry=json.loads((ROOT/'assets/quest-bed/geometry.json').read_text())
         self.page.evaluate('''()=>{
             const host=document.createElement('div');host.id='bed-crop-canary';

@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "status": "review-candidate; conservative hand trace, inspect generated overlay boundaries before approval",
+  "status": "approved source-native cloth masks; reviewed with the K2 artwork",
   "width": 1536,
   "height": 1024,
   "crop": {
@@ -61,8 +61,8 @@
     "Mask coordinates are source-native; no avatar or room RGB changes.",
     "Sheet path subtracts pillow, brown folded blanket, nightstand edge and authored footboard posts/bars.",
     "No RGB blur; sheet mask sampled at half-pixel precision for stable vector clipping.",
-    "Conservative cloth-edge trace still needs visual review with generated bare mattress; narrow contact-shadow rims may retain original fabric.",
-    "Do not use bare overlays until explicit current-order preparationStarted; never dirty a previously prepared bed merely by accepting a repeat order.",
+    "Source-native cloth contours reviewed with the approved mattress and pillow; contact shadows retain their native registration.",
+    "Use bare overlays only after explicit current-order preparationStarted; accepting a repeat order preserves the previously prepared bed.",
     "Final placement removes overlays to restore the existing canonical base exactly."
   ]
 }

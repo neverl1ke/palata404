@@ -31,8 +31,8 @@ function render(scene,info,state){
   if(remaining.length){
    const parcel=element('div','quest-bed-pending-linen');parcel.dataset.worldItem='pending-bed-linen';parcel.dataset.pendingPieces=remaining.join(',');parcel.setAttribute('role','img');
    parcel.setAttribute('aria-label',remaining.length===2?'Принесённые простыня и наволочка перед сменой белья':remaining[0]==='sheet'?'Принесённая простыня; наволочка уже размещена':'Принесённая наволочка; простыня уже размещена');
-   const review=window.PalataQuestBedView?.reviewEnabled();if(review)parcel.classList.add('has-bed-pieces-art');
-   for(const type of remaining){const holder=element('span','quest-bed-pending-piece');holder.dataset.pendingPiece=type;const image=window.PalataQuestWorkbench?.linenIllustration(type);if(image)holder.append(image);if(review){const style=window.PalataQuestBedView.pendingStyle(type);if(style)for(const[key,value]of Object.entries(style))holder.style[key]=value;}parcel.append(holder);}
+   const artwork=window.PalataQuestBedView?.enabled();if(artwork)parcel.classList.add('has-bed-pieces-art');
+   for(const type of remaining){const holder=element('span','quest-bed-pending-piece');holder.dataset.pendingPiece=type;const image=window.PalataQuestWorkbench?.linenIllustration(type);if(image)holder.append(image);if(artwork){const style=window.PalataQuestBedView.pendingStyle(type);if(style)for(const[key,value]of Object.entries(style))holder.style[key]=value;}parcel.append(holder);}
    scene.append(parcel);
   }
  }

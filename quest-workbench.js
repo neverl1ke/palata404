@@ -144,7 +144,6 @@ function render(host,options){
   const art=explicitStart?window.PalataQuestBedView?.create({source:board.referenceImage,preparationStarted:started,placed:[...placed],mode:'patient',crop:true}):null;
   if(art)pieces.querySelector('.workbench-bed-reference')?.remove();
   const scheme=node('section','workbench-bed-scheme');scheme.append(node('h3','',art?'Кровать 406 · крупный план':'Схема размещения'),node('p','workbench-muted',!started?'До начала смены кровать показана без изменений.':'Выберите принесённую вещь и её место на кровати.'));
-  if(art)scheme.append(node('p','quest-bed-review-note','Художественная примерка для проверки. Этот вариант ещё не включён в обычную игру.'));
   const diagram=node('div','workbench-bed-diagram'+(art?' has-bed-art':''));diagram.append(art||bedDiagram(visualPlaced));
   for(const target of board.targets||[]){if(art&&!started)continue;const part=target.id==='pillowZone'?'pillowcase':target.id==='sheetZone'?'sheet':null,done=part&&placed.has(part),zone=button(art?(done?'Готово':part==='sheet'?'Матрас':'Подушка'):explicitStart?(done?'Размещено':part==='sheet'?'Простыня':'Наволочка'):(target.label||'Место на кровати'),'place',target.id,'zone:'+target.id,{disabled:!board.parcel||!started||!board.selectedPiece||!!done,className:'workbench-bed-target',ariaLabel:target.label||'Место на кровати'});zone.dataset.bedZone=target.id;
    if(art&&part){const style=window.PalataQuestBedView.placementStyle(part);if(style)for(const[key,value]of Object.entries(style))zone.style[key]=value;}
