@@ -115,8 +115,25 @@ function renderTasks(){
  const rows=tab==='story'?(navigation?navigation.story(E,state):E.story(state)).filter(r=>r.mode===mode):Object.entries(E.jobs).filter(([,j])=>j.giver===tab).filter(([id])=>mode==='patient'||id==='d3').map(([id,j])=>{
   const p=state.jobs[id],tripStep=mode==='trip';
   let detail;
-  if(tripStep){detail=!p?.active?(p?.count?'Предыдущая карточка сдана. Новое поручение можно получить у врача в Пациенте.':'Сначала получите поручение у врача.'):p.done.difference?'Наблюдение записано. Передайте карточку врачу в Пациенте.':[2,3].includes(p.revision)&&!p.work.baselineCaptured?'Сначала запишите первичные показания коридора A в Пациенте.':'Сравните карточку с новым наблюдением в коридоре A.';}
-  else{const progress=id==='d3'&&[2,3].includes(p?.revision)?Number(!!p.work.baselineCaptured)+Number(!!p.done.difference):j.steps.filter(x=>p?.done[x]).length,total=id==='d3'&&[2,3].includes(p?.revision)?2:j.steps.length;const active=E.ready(state,id)?'Готово к сдаче':id==='d1'&&p?.active&&p.revision===4?'Этап: '+(E.jobStage?.(state,id)?.text||'Проверка вызовов'):'Активно: '+progress+'/'+total;const status=p?.active?active:!j.repeat&&p?.count?'Поручение выполнено':'Взять у '+(tab==='nurse'?'Клары (B)':'врача (C)');detail=`${j.repeat?'Повторяемое':'Разовое'} · ${status} · Сдано: ${p?.count||0}. Награда: ${E.rewardText(id)}.`;}
+  if(tripStep){
+   if(!p?.active)detail=p?.count?'Предыдущая карточка сдана. Новое поручение можно получить у врача в Пациенте.':'Сначала получите поручение у врача.';
+   else if(p.done.difference)detail='Наблюдение записано. Передайте карточку врачу в Пациенте.';
+   else if(p.revision===4){
+    const stage=E.jobStage(state,id);
+    const place=E.rooms[stage?.room]?.[1];
+    detail=(place?place+'. ':'')+(stage?.text||'Проверьте доступное действие для выбранного предмета.');
+   }else if([2,3].includes(p.revision)&&!p.work.baselineCaptured){
+    detail='Сначала запишите первичные показания коридора A в Пациенте.';
+   }else detail='Сравните карточку с новым наблюдением в коридоре A.';
+  }else{
+   const hasBaseline=id==='d3'&&[2,3,4].includes(p?.revision);
+   const progress=hasBaseline?Number(!!p.work.baselineCaptured)+Number(!!p.done.difference):j.steps.filter(x=>p?.done[x]).length;
+   const total=hasBaseline?2:j.steps.length;
+   const callStage=id==='d1'&&p?.active&&[4,5].includes(p.revision)?E.jobStage(state,id):null;
+   const active=E.ready(state,id)?'Готово к сдаче':callStage?'Этап: '+callStage.text:'Активно: '+progress+'/'+total;
+   const status=p?.active?active:!j.repeat&&p?.count?'Поручение выполнено':'Взять у '+(tab==='nurse'?'Клары (B)':'врача (C)');
+   detail=`${j.repeat?'Повторяемое':'Разовое'} · ${status} · Сдано: ${p?.count||0}. Награда: ${E.rewardText(id)}.`;
+  }
   return {id,title:j.title+(id==='d3'?(tripStep?' · наблюдение':' · карточка и сдача'):''),done:!!p?.count&&!p.active,detail,repeat:j.repeat};
  });
  for(const r of rows){
@@ -171,9 +188,10 @@ function appendCallPlan(host){
  const detail=document.createElement('details');detail.dataset.callPlan='d1';
  const summary=document.createElement('summary');summary.textContent='План проверки · '+plan.length;
  const steps=document.createElement('ol');
+ const labels={diagnosis:'Первичная проверка',service:'Обслуживание',retest:'Контрольный вызов'};
  for(const step of plan){
   const row=document.createElement('li');row.dataset.callStop=step.action;
-  const place=document.createElement('strong');place.textContent=(step.phase==='service'?'Обслуживание':'Контрольный вызов')+' · '+E.rooms[step.room][1];
+  const place=document.createElement('strong');place.textContent=(labels[step.phase]||'Проверка')+' · '+E.rooms[step.room][1];
   row.append(place,document.createElement('br'),document.createTextNode(step.text));steps.append(row);
  }
  const note=document.createElement('p');note.textContent='После обслуживания соответствующего узла в плане появится контрольный вызов. Проверки выполняются в палатах.';

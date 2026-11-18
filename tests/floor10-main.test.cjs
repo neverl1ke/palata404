@@ -5,6 +5,7 @@ const fixture=new Module(path.join(__dirname,'floor10-fixture.cjs'),module);fixt
 let harness=base.slice(0,base.indexOf("test('malformed saves"));
 harness=harness.replace("appendChild(child) {", "append(...items){this.children.push(...items);},replaceChildren(...items){this.children=items;},querySelector(){return element();},cloneNode(){return element();},replaceWith(){},appendChild(child) {");
 harness=harness.replace('querySelectorAll() { return []; },','querySelector(){return element();},querySelectorAll() { return []; },');
+harness=harness.replace('createElement() { return element(); },','createElement() { return element(); }, createTextNode(textContent) { return {textContent}; },');
 harness=harness.replace("return elements.get(id) || null;","if(!elements.has(id)&&id.startsWith('quest-'))elements.set(id,element(id));return elements.get(id)||null;");
 fixture._compile(harness+'\nmodule.exports=game;',fixture.filename);
 const E=require('../quest-engine.js');
@@ -21,7 +22,14 @@ function game(saves={},options={}){
  }
  // In the browser window is globalThis; the VM fixture deliberately separates them.
  g.run('window.PalataQuestNavigation=PalataQuestNavigation;');
- g.run(fs.readFileSync(path.join(__dirname,'..','quest-prototype.js'),'utf8').replace('snapshot:()=>','dispatch, snapshot:()=>'));
+ const journalForTest=`journalForTest(id,mode){
+  tab=E.jobs[id].giver;taskMode=mode;renderTasks();
+  const card=byId('quest-list').children.find(row=>row.dataset.questId===id);
+  const plan=card.children.find(block=>block.dataset.callPlan===id);
+  return {detail:card.children[1].textContent,stages:plan?.children[1].children.map(row=>row.children[0].textContent)||[]};
+ },`;
+ g.run(fs.readFileSync(path.join(__dirname,'..','quest-prototype.js'),'utf8')
+  .replace('snapshot:()=>','dispatch, '+journalForTest+' snapshot:()=>'));
  return g;
 }
 const state=g=>JSON.parse(g.run('JSON.stringify(window.PalataQuestPrototype.snapshot())'));
@@ -320,4 +328,44 @@ test('A mixed cached old engine and new work model cannot overwrite progress or 
   a.equal(act(g,{type:'action',id:'collect'}),false);move(g,'nurse');a.equal(act(g,{type:'action',id:'accept:k2'}),false);
   a.equal(g.storage.get(floorKey),floorRaw);a.equal(g.storage.get(rewardKey),rewardRaw);a.match(g.run('document.getElementById("quest-save").textContent'),/Не удалось загрузить рабочие листы/);
  }
+});
+
+
+test('current journal tracks actual observation, diagnosis and retest stages',()=>{
+ const journal=(g,id,mode='patient')=>JSON.parse(g.run(
+  'JSON.stringify(window.PalataQuestPrototype.journalForTest('+JSON.stringify(id)+','+JSON.stringify(mode)+'))'));
+ const initial=game(),key=progressKey(initial),s=state(initial);
+ s.flags.unlockB=s.flags.unlockC=true;
+ s.world.linen406={order:'k2:1',delivered:true,prepared:true,mark:'М',items:[
+  {type:'Простыня',measure:'150 × 215 см'},{type:'Наволочка',measure:'70 × 70 см'}],reviewed:true,revision:5};
+ s.world.callEquipment.ward407={condition:'working',revision:1,verified:true};
+ const optionalSaves={...Object.fromEntries(initial.storage),[key]:JSON.stringify(s)};
+ for(const [subject,room,op] of [['bed406','ward406','lift'],['call407','ward407','call']]){
+  const g=game(optionalSaves);accept(g,'d3');
+  a.match(journal(g,'d3').detail,/Активно: 0\/2/);
+  a.match(journal(g,'d3','trip').detail,/Выберите у врача предмет наблюдения/);
+  a.equal(act(g,{type:'work',id:'job:baseline',op:'chooseSubject',value:subject}),true);
+  move(g,room);
+  a.equal(act(g,{type:'work',id:'job:baseline',op}),true);
+  a.equal(act(g,{type:'work',id:'job:baseline',op:'record'}),true);
+  const saved=state(g);
+  a.match(journal(g,'d3').detail,/Активно: 1\/2/);
+  const trip=journal(g,'d3','trip').detail;
+  a.ok(trip.startsWith(E.rooms[room][1]));
+  a.doesNotMatch(trip,/коридор.*A/i);
+  a.deepEqual(state(g),saved,'reading the journal cannot advance the order');
+  a.equal(act(g,{type:'switch'}),true);
+  interaction(g,'job:difference');
+  a.match(journal(g,'d3').detail,/Готово к сдаче/);
+  a.match(journal(g,'d3','trip').detail,/Передайте карточку врачу/);
+ }
+ const g=game();accept(g,'d1');
+ a.match(journal(g,'d1').detail,/Этап: Осмотрите подключение/);
+ a.deepEqual(journal(g,'d1').stages,['Первичная проверка · Палата 407','Первичная проверка · Палата 408']);
+ for(const room of ['ward407','ward408']){move(g,room);interaction(g,'job:bell'+room.slice(4));}
+ a.match(journal(g,'d1').detail,/Этап: Техник ждёт/);
+ a.doesNotMatch(journal(g,'d1').detail,/Активно: 2\/2/);
+ interaction(g,'job:callService408');
+ a.match(journal(g,'d1').detail,/Этап: Сделайте контрольный вызов/);
+ a.ok(journal(g,'d1').stages.includes('Контрольный вызов · Палата 408'));
 });
