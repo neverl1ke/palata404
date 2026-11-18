@@ -2,6 +2,7 @@
 const {test}=require('node:test');
 const assert=require('node:assert/strict');
 const E=require('../quest-engine.js');
+const Navigation=require('../quest-navigation.js');
 
 const copy=value=>JSON.parse(JSON.stringify(value));
 function apply(s,event){
@@ -42,13 +43,23 @@ test('D2 r4 preserves all evidence while reordering and rewards the corrected or
  assert.equal(sheet.timelineMap,true);
  const unreadable=sheet.cards.find(card=>card.time===null);
  assert.equal(unreadable.reverseText,null);
+ const beforeReverse=Navigation.guide(E,s,'d2');
+ assert.equal(beforeReverse.room,'doctor');
+ assert.match(beforeReverse.hint,/прочитайте оборот/);
  for(const room of ['407','406','408','Пост'])work(s,'log','place',sheet.cards.find(card=>card.room===room).id);
  assert.match(reject(s,{type:'work',id:'job:log',op:'submit'}),/оборот/);
  work(s,'log','readReverse',unreadable.id);
  sheet=board(s,'log');
  assert.equal(sheet.cards.length,4);
  assert.match(sheet.cards.find(card=>card.id===unreadable.id).reverseText,/407.*406/);
- assert.match(reject(s,{type:'work',id:'job:log',op:'submit'}),/408.*407.*406/);
+ assert.match(Navigation.guide(E,s,'d2').hint,/с учётом событий на обороте/);
+ const misplaced=reject(s,{type:'work',id:'job:log',op:'submit'});
+ assert.match(misplaced,/408.*его обороте/);
+ assert.doesNotMatch(misplaced,/407|406/);
+ const early=sheet.cards.find(card=>card.room==='407').id;
+ work(s,'log','move',{id:early,direction:'down'});
+ assert.match(reject(s,{type:'work',id:'job:log',op:'submit'}),/читаемым временем/);
+ work(s,'log','move',{id:early,direction:'up'});
  s=restore(s);
  work(s,'log','move',{id:unreadable.id,direction:'up'});
  assert.match(work(s,'log','submit').message,/время.*не установлено/i);

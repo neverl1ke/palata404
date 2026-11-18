@@ -193,14 +193,15 @@ class QuestDossierTests(unittest.TestCase):
         dossier = self.open_dossier('k3')
         target = dossier.locator('[data-dossier-map]')
         self.assert_touch_target(target, 'final-dossier-map-contrast')
-        style = target.evaluate(r"""e=>{
+        get_contrast = r"""e=>{
             const css=getComputedStyle(e),rgb=value=>value.match(/[\d.]+/g).slice(0,3).map(Number),
                 luminance=value=>rgb(value).map(x=>{x/=255;return x<=.04045?x/12.92:((x+.055)/1.055)**2.4})
                     .reduce((sum,value,index)=>sum+value*[.2126,.7152,.0722][index],0),
                 foreground=luminance(css.color),background=luminance(css.backgroundColor);
             return{color:css.color,backgroundColor:css.backgroundColor,backgroundImage:css.backgroundImage,
                 contrast:(Math.max(foreground,background)+.05)/(Math.min(foreground,background)+.05)};
-        }""")
+        }"""
+        style = target.evaluate(get_contrast)
         self.notes.append({'finalCtaStyle': style})
         self.assertEqual(style['backgroundImage'], 'none')
         self.assertGreaterEqual(style['contrast'], 4.5)
@@ -217,13 +218,37 @@ class QuestDossierTests(unittest.TestCase):
         self.game.wait_for_function('PalataQuestPrototype.snapshot().jobs.k3.work.sourcesRead===true')
         before = self.progress()
         economic = self.ledger()
-        source = self.game.locator('[data-case-source-link="source-2"]').first
+        self.game.locator('#custom-toast-notification').wait_for(state='hidden')
+        jump = self.game.get_by_role('button', name='К выводам ↓', exact=True)
+        self.assert_touch_target(jump, 'case-jump-to-verdicts')
+        jump_style = jump.evaluate(get_contrast)
+        self.assertEqual(jump_style['backgroundImage'], 'none')
+        self.assertGreaterEqual(jump_style['contrast'], 4.5)
+        jump.tap()
+        self.game.wait_for_function('document.activeElement?.dataset.caseField==="room"')
+        time_verdict = self.game.locator('[data-case-field="time"]')
+        facts = self.source_facts()
+        self.assertEqual(time_verdict.locator('.workbench-case-excerpt').all_text_contents(), [
+            'План · '+facts['source-1']['План'],
+            'Факт · '+facts['source-2']['Факт'],
+            'Факт · '+facts['source-3']['Факт'],
+        ])
+        self.capture('case-evidence-by-verdict')
+        source = time_verdict.locator('[data-case-source-link="source-2"]')
         self.assert_touch_target(source, 'case-source-reference')
         source.tap()
         self.game.wait_for_function('document.activeElement?.dataset.caseSource==="source-2"')
         self.assertEqual(self.progress(), before)
         self.assertEqual(self.ledger(), economic)
         self.capture('case-reference-is-navigation-only')
+        back = self.game.get_by_role('button', name='Вернуться к выводу', exact=True)
+        self.assert_touch_target(back, 'case-return-from-source')
+        self.page.keyboard.press('Tab')
+        self.assertTrue(back.evaluate('button=>document.activeElement===button'))
+        self.page.keyboard.press('Enter')
+        self.assertTrue(source.evaluate('link=>document.activeElement===link'))
+        self.assertEqual(self.progress(), before)
+        self.assertEqual(self.ledger(), economic)
 
     def test_dossier_reading_selection_back_context_and_close_are_native_view_only(self):
         for width, height in [(640, 320), (844, 390)]:

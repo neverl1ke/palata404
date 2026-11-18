@@ -49,7 +49,7 @@
 .quest-workbench .workbench-container-label,.quest-workbench .workbench-container-seal,
 .quest-workbench .workbench-call-number,.quest-workbench .workbench-footer,
 .quest-workbench .workbench-bed-reference figcaption{background-image:var(--paper-material-strip);background-position:center;background-size:cover;background-repeat:no-repeat}
-.quest-workbench button:not(.workbench-call-trigger):not(.workbench-bed-target):not(.workbench-submit):not(.workbench-route-point){background-image:var(--paper-material-strip);background-position:center;background-size:cover;background-repeat:no-repeat}
+.quest-workbench button:not(.workbench-call-trigger):not(.workbench-bed-target):not(.workbench-submit):not(.workbench-route-point):not(.workbench-case-jump){background-image:var(--paper-material-strip);background-position:center;background-size:cover;background-repeat:no-repeat}
 .quest-workbench button.workbench-reserve-option,.quest-workbench button.workbench-bed-piece{background-image:var(--paper-material-landscape)}
 .quest-workbench button.workbench-compare-row[aria-pressed=true],
 .quest-workbench button.workbench-mark[aria-pressed=true]{background-image:linear-gradient(#d4dcc066,#d4dcc066),var(--paper-material-strip)}
@@ -153,7 +153,10 @@ html[data-touch-ui=true] #quest-location-screen .quest-workbench[data-work-revis
 
 /* Approved K3 case: keep the source documents beside one another, with the
    recorded conclusions separated from the facts they concern. */
-.quest-workbench[data-work-kind=caseCompare] .workbench-case-scroll-hint{display:block;font-size:13px;letter-spacing:0;margin-top:2px;line-height:1.3}
+.quest-workbench[data-work-kind=caseCompare] .workbench-case-number{display:flex;align-items:center;gap:8px}
+.quest-workbench[data-work-kind=caseCompare] .workbench-case-jump{min-height:44px;padding:3px 8px;border:1px solid #9a8b6b;border-radius:2px;background:#343b31;color:#f7ecd0;font:inherit;letter-spacing:0;cursor:pointer;box-shadow:none}
+.quest-workbench[data-work-kind=caseCompare] .workbench-case-jump:hover:not(:disabled){background:#41473a;color:#fff4db}
+.quest-workbench[data-work-kind=caseCompare] .workbench-case-jump:focus-visible{outline:2px solid #ead8a6;outline-offset:2px}
 .quest-workbench[data-work-kind=caseCompare] .workbench-case-brief-detail{margin:6px 0;font-size:14px;line-height:1.45}
 .quest-workbench[data-work-kind=caseCompare] .workbench-area{grid-template-columns:minmax(0,1fr);gap:14px}
 .quest-workbench[data-work-kind=caseCompare] .workbench-case-sources,
@@ -165,20 +168,23 @@ html[data-touch-ui=true] #quest-location-screen .quest-workbench[data-work-revis
 .quest-workbench[data-work-kind=caseCompare] .workbench-case-source .workbench-facts{grid-template-columns:minmax(65px,.7fr) minmax(0,1fr);gap:0 10px;font-size:15px}
 .quest-workbench[data-work-kind=caseCompare] .workbench-case-source .workbench-facts :is(dt,dd){margin:0;padding:7px 0;border-bottom:1px dotted #a68b66;overflow-wrap:anywhere;min-width:0;line-height:1.4}
 .quest-workbench[data-work-kind=caseCompare] .workbench-case-source .workbench-facts dt{font-size:13px;color:#6e5b3f}
-.quest-workbench[data-work-kind=caseCompare] .workbench-case-decision{margin:0;min-width:0;padding:8px 11px 11px;border:1px solid #a68b62;background:#d8b989 var(--paper-material-landscape) center/cover no-repeat}
+.quest-workbench[data-work-kind=caseCompare] .workbench-case-decision{margin:0;min-width:0;padding:8px 11px 11px;border:1px solid #a68b62;background:#d8b989 var(--paper-material-landscape) center/cover no-repeat;scroll-margin-top:12px}
+.quest-workbench[data-work-kind=caseCompare] .workbench-case-decision:focus{outline:2px solid #7b714e}
 .quest-workbench[data-work-kind=caseCompare] .workbench-case-decision legend{max-width:100%;padding:0 6px;font-size:15px;line-height:1.4;overflow-wrap:anywhere}
-.quest-workbench[data-work-kind=caseCompare] .workbench-case-evidence{display:flex;flex-wrap:wrap;align-items:center;gap:5px;margin:0 0 7px;font-size:13px;min-width:0}
-.quest-workbench[data-work-kind=caseCompare] .workbench-case-source-link{display:inline-flex;align-items:center;justify-content:center;min-width:46px;min-height:46px;padding:4px 8px;border:1px solid #a68b62;border-radius:2px;color:#51472d;background:#e8d8b744;text-decoration:underline;box-sizing:border-box;touch-action:manipulation}
-.quest-workbench[data-work-kind=caseCompare] .workbench-case-source-link:focus-visible{outline:3px solid #4f7180;outline-offset:2px}
+.quest-workbench[data-work-kind=caseCompare] .workbench-case-evidence{display:grid;gap:4px;margin:0 0 8px;padding:0;list-style:none;font-size:13px;min-width:0}
+.quest-workbench[data-work-kind=caseCompare] .workbench-case-source-link{display:grid;grid-template-columns:max-content minmax(0,1fr);align-items:center;gap:8px;min-width:46px;min-height:44px;padding:5px 8px;border:1px solid #a68b62;border-radius:2px;color:#51472d;background:#e8d8b744;text-decoration:none;box-sizing:border-box;touch-action:manipulation;scroll-margin-top:12px}
+.quest-workbench[data-work-kind=caseCompare] .workbench-case-ref{text-decoration:underline;text-underline-offset:2px}
+.quest-workbench[data-work-kind=caseCompare] .workbench-case-excerpt{min-width:0;overflow-wrap:anywhere}
+.quest-workbench[data-work-kind=caseCompare] .workbench-case-return{width:100%;min-height:44px;margin-bottom:8px;padding:5px 8px;border:1px solid #a68b62;border-radius:2px;background:#e8d8b744;color:#51472d;font:inherit;font-size:13px;cursor:pointer}
+.quest-workbench[data-work-kind=caseCompare] :is(.workbench-case-source-link,.workbench-case-return):focus-visible{outline:3px solid #4f7180;outline-offset:2px}
 .quest-workbench[data-work-kind=caseCompare] button.workbench-case-choice{display:block;width:100%;min-width:0;min-height:46px;margin:6px 0 0;padding:8px 10px;text-align:left;font-size:14px;line-height:1.35;overflow-wrap:anywhere}
 .quest-workbench[data-work-kind=caseCompare] button.workbench-case-choice[aria-pressed=true]{border-color:#53684d;box-shadow:inset 3px 0 #53684d;background-image:linear-gradient(#d4dcc066,#d4dcc066),var(--paper-material-strip)}
 .quest-workbench[data-work-kind=caseCompare] button.workbench-case-choice[aria-pressed=true]::before{content:none}
-.quest-workbench[data-work-kind=caseCompare] .workbench-case-read-cue{font-size:13px;color:#6e5d42;margin:0;line-height:1.45}
 .quest-workbench[data-work-kind=caseCompare] .workbench-footer{display:grid;grid-template-columns:minmax(0,1fr) max-content;gap:4px 16px;align-items:center}
 .quest-workbench[data-work-kind=caseCompare] .workbench-case-progress{grid-column:1;grid-row:1;margin:0;font-size:14px;line-height:1.35}
 .quest-workbench[data-work-kind=caseCompare] .workbench-status{grid-column:1;grid-row:2;min-width:0;margin:0;font-size:13px;line-height:1.4}
 .quest-workbench[data-work-kind=caseCompare] .workbench-submit{grid-column:2;grid-row:1/span 2;max-width:260px;min-width:200px;align-self:center}
-html[data-touch-ui=true] #quest-location-screen .quest-workbench[data-work-kind=caseCompare] :is(.workbench-case-scroll-hint,.workbench-instruction,.workbench-brief-summary,.workbench-brief-deliverable,.workbench-case-read-cue,.workbench-case-progress,.workbench-status){font-size:14px;line-height:1.4}
+html[data-touch-ui=true] #quest-location-screen .quest-workbench[data-work-kind=caseCompare] :is(.workbench-case-jump,.workbench-instruction,.workbench-brief-summary,.workbench-brief-deliverable,.workbench-case-progress,.workbench-status){font-size:14px;line-height:1.4}
 html[data-touch-ui=true] #quest-location-screen .quest-workbench[data-work-kind=caseCompare] .workbench-case-sources,
 html[data-touch-ui=true] #quest-location-screen .quest-workbench[data-work-kind=caseCompare] .workbench-case-decisions{gap:10px}
 html[data-touch-ui=true] #quest-location-screen .quest-workbench[data-work-kind=caseCompare] .workbench-case-source{padding:10px}
@@ -196,7 +202,6 @@ html[data-touch-ui=true] #quest-location-screen .quest-workbench[data-work-kind=
  html[data-touch-ui=true] #quest-location-screen .quest-workbench[data-work-kind=caseCompare] .workbench-case-source .workbench-facts dt{border-bottom:0;padding:7px 0 1px}
  html[data-touch-ui=true] #quest-location-screen .quest-workbench[data-work-kind=caseCompare] .workbench-case-source .workbench-facts dd{padding:1px 0 7px}
  html[data-touch-ui=true] #quest-location-screen .quest-workbench[data-work-kind=caseCompare] .workbench-case-evidence{gap:4px}
- html[data-touch-ui=true] #quest-location-screen .quest-workbench[data-work-kind=caseCompare] .workbench-case-evidence>span{flex-basis:100%}
  html[data-touch-ui=true] #quest-location-screen .quest-workbench[data-work-kind=caseCompare] .workbench-submit{min-width:150px;max-width:190px}
 }
 @container compact-workbench (max-height:450px){
@@ -266,10 +271,10 @@ html #quest-location-screen .quest-workbench[data-timeline-map=true] .workbench-
  opacity:1;color:#fff7df;background:#49634f;border-color:#344a38;
 }
 .quest-workbench .workbench-route-reverse {
- margin-top:8px;padding:8px 10px;border-left:3px solid #8b6e49;background:#f1e4c5;
+ align-self:stretch;margin:3px 0 5px;padding:6px 8px;border-left:3px solid #8b6e49;background:#f1e4c5;
 }
-.quest-workbench .workbench-route-reverse h3 {margin-bottom:5px;font-size:14px}
-.quest-workbench .workbench-route-reverse p {margin:0;font-size:13px}
+.quest-workbench .workbench-route-reverse strong {display:block;font-size:12px;margin-bottom:3px}
+.quest-workbench .workbench-source-slip .workbench-route-reverse p {margin:0}
 .quest-workbench .workbench-current-evidence>h3,
 .quest-workbench .workbench-route-order h3 {margin-bottom:7px}
 .quest-workbench .workbench-source-cards,
@@ -284,11 +289,13 @@ html #quest-location-screen .quest-workbench[data-timeline-map=true] .workbench-
  display:flex;flex-direction:column;align-items:start;gap:3px;
 }
 .quest-workbench .workbench-source-slip[data-source-ordered=true] {border-left:4px solid #637653}
+.quest-workbench .workbench-source-unreadable .workbench-source-time {font-weight:bold;color:#49341d}
 .quest-workbench .workbench-source-time,.quest-workbench .workbench-route-list-row>span {
  display:block;color:#625338;font-size:12px;
 }
 .quest-workbench .workbench-source-slip p {margin:0 0 4px;font-size:13px;overflow-wrap:anywhere}
-.quest-workbench .workbench-source-slip button {margin-top:auto;max-width:100%}
+.quest-workbench .workbench-source-actions {display:flex;flex-wrap:wrap;gap:5px;margin-top:auto;max-width:100%}
+.quest-workbench .workbench-source-actions button {max-width:100%}
 .quest-workbench .workbench-route-order {border-top:1px solid #ac9875;margin-top:9px;padding-top:8px}
 .quest-workbench .workbench-route-list {margin:0;padding-left:20px;column-gap:20px}
 .quest-workbench .workbench-route-list-row .workbench-order-controls {
@@ -328,11 +335,8 @@ html #quest-location-screen .quest-workbench[data-timeline-map=true] .workbench-
  html[data-touch-ui=true] #quest-location-screen .quest-workbench[data-timeline-map=true] .workbench-area {
   grid-template-columns:minmax(0,1fr);
  }
- .quest-workbench .workbench-timeline-guide {
-  display:grid;grid-template-columns:minmax(120px,1fr) minmax(0,1fr);align-items:start;gap:8px;
- }
+ .quest-workbench .workbench-timeline-guide .workbench-route-map {width:min(100%,240px)}
  .quest-workbench .workbench-route-surface {max-width:240px}
- .quest-workbench .workbench-route-reverse {margin-top:0}
 }
 
 /* Give route markers a solid label surface instead of the document-button paper. */
@@ -341,6 +345,95 @@ html #quest-location-screen .quest-workbench[data-timeline-map=true] .workbench-
 }
 .quest-workbench button.workbench-route-point:disabled {
  background-image:none;color:#fff7df;background-color:#49634f;
+}
+
+/* K1: inspect the container on the tray, then read the evidence at that object. */
+.quest-workbench[data-work-kind=inspection] .workbench-container-tray {
+ align-items:start;
+ grid-template-columns:repeat(4,minmax(0,1fr));
+ background:linear-gradient(160deg,#777d70,#414a43);
+ border-color:#969c8f;
+}
+.quest-workbench[data-work-kind=inspection] .workbench-medical-container {
+ padding:9px;
+ gap:6px;
+ border:1px solid #a0a896;
+ background:linear-gradient(150deg,#d4d7c9,#adb5a6);
+ box-shadow:inset 0 1px #eef0e270,0 2px 3px #252c2780;
+}
+.quest-workbench[data-work-kind=inspection] .workbench-medical-container.is-selected {
+ background:linear-gradient(150deg,#e1e6d3,#c4d0b3);
+ outline-color:#455f42;
+}
+.quest-workbench[data-work-kind=inspection] .workbench-medical-container h3 {margin:0}
+.quest-workbench[data-work-kind=inspection] .workbench-container-object {
+ display:flex;
+ flex-direction:column;
+ align-items:stretch;
+ width:100%;
+ min-width:0;
+ margin:0;
+ gap:5px;
+ padding:6px;
+ border:1px solid #828b7b;
+ background:#c2cab9;
+ box-shadow:inset 0 0 12px #4d5b4528;
+}
+.quest-workbench[data-work-kind=inspection] button.workbench-container-object:hover {
+ border-color:#4a6550;
+ background:#d9e2ce;
+}
+.quest-workbench[data-work-kind=inspection] .workbench-container-tray button.workbench-container-object:not(:disabled) {
+ background-image:none;
+}
+.quest-workbench[data-work-kind=inspection] .workbench-container-object:focus-visible {
+ outline:3px solid #4f7180;
+ outline-offset:2px;
+}
+.quest-workbench[data-work-kind=inspection] .workbench-container-object .workbench-object-illustration {
+ display:block;
+ width:100%;
+ height:clamp(56px,9vw,105px);
+}
+.quest-workbench[data-work-kind=inspection] .workbench-container-object>span {
+ padding:4px;
+ color:#25372a;
+ font-size:13px;
+ line-height:1.3;
+}
+.quest-workbench[data-work-kind=inspection] .workbench-container-inspected .workbench-container-label {
+ font-size:13px;
+ gap:4px 6px;
+ grid-template-columns:max-content minmax(0,1fr);
+}
+.quest-workbench[data-work-kind=inspection] .workbench-container-inspected .workbench-container-seal {
+ display:flex;
+ align-items:center;
+ gap:6px;
+ min-width:0;
+ background:#e8e0c9;
+}
+.quest-workbench[data-work-kind=inspection] .workbench-container-seal-tape {
+ flex:0 0 31px;
+ height:12px;
+ border:1px solid #79694b;
+ background:repeating-linear-gradient(120deg,#b29a6c 0 3px,#e7d7b0 3px 7px);
+}
+.quest-workbench[data-work-kind=inspection] [data-seal="повреждена"] .workbench-container-seal-tape {
+ background:linear-gradient(104deg,transparent 42%,#e8e0c9 43% 55%,transparent 56%),
+  repeating-linear-gradient(120deg,#b29a6c 0 3px,#e7d7b0 3px 7px);
+}
+.quest-workbench[data-work-kind=inspection] .workbench-container-select {
+ width:100%;
+ min-height:44px;
+ padding:6px 9px;
+}
+@media(max-width:720px),(max-height:600px) {
+ .quest-workbench[data-work-kind=inspection] .workbench-container-tray {
+  grid-template-columns:repeat(2,minmax(0,1fr));
+ }
+ .quest-workbench[data-work-kind=inspection] .workbench-container-inspected .workbench-container-label,
+ .quest-workbench[data-work-kind=inspection] .workbench-container-object>span {font-size:12px}
 }
 @media(min-width:720px) and (max-height:570px) {
  .quest-workbench[data-timeline-map=true] .workbench-area,

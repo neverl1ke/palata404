@@ -143,12 +143,42 @@ function render(host,options){
 
  if(board.kind==='inspection'){
   area.append(request('Требование процедурной',[['Комплект',board.request?.kit],['Партия',board.request?.lot],['Упаковка','проверить маркировку и пломбу']]));
-  const tray=node('div','workbench-tray');tray.setAttribute('aria-label','Контейнеры на проверку');
+  const tray=node('div','workbench-tray workbench-container-tray');tray.setAttribute('aria-label','Лоток с контейнерами');
   for(const item of board.items||[]){
-   const card=node('article','workbench-item workbench-medical-container'+(selected.has(item.id)?' is-selected':''));card.dataset.workItem=item.id;card.append(icon('medicalCase',item.inspected?item.details?.seal:null),node('h3','',item.name||'Контейнер'),node('span','workbench-item-state',selected.has(item.id)?'Выбран для приёмки':item.inspected?'Осмотрен · не выбран':'Ещё не осмотрен'));
-   if(item.inspected&&item.details){const tag=facts([['Комплект',item.details.kit],['Партия',item.details.lot]]);tag.classList.add('workbench-container-label');const seal=node('p','workbench-container-seal','Пломба: '+label(item.details.seal));seal.dataset.seal=item.details.seal;card.append(tag,seal);}else card.append(node('p','workbench-muted workbench-container-label','Осмотрите контейнер, чтобы прочитать бирку.'));
-   const actions=node('div','workbench-item-actions');actions.append(button(item.inspected?'Осмотрено':'Осмотреть','inspect',item.id,'inspect:'+item.id,{disabled:!!item.inspected}),button(selected.has(item.id)?'Выбран':'Выбрать','select',item.id,'select:'+item.id,{pressed:selected.has(item.id),disabled:!item.inspected}));card.append(actions);tray.append(card);
-  }area.append(tray);submit('Подтвердить проверенный комплект',!selected.size);
+   const name=item.name||'Контейнер',isSelected=selected.has(item.id);
+   const details=item.inspected?item.details:null;
+   const card=node('article','workbench-item workbench-medical-container'+(isSelected?' is-selected':''));
+   card.dataset.workItem=item.id;
+   card.append(node('h3','',name));
+   const container=icon('medicalCase',details?.seal);
+   container.setAttribute('viewBox','17 18 148 86');
+   if(!details){
+    const inspect=button('','inspect',item.id,'inspect:'+item.id,{
+     className:'workbench-container-object',ariaLabel:'Осмотреть: '+name
+    });
+    inspect.append(container,node('span','','Осмотреть бирку и пломбу'));
+    card.append(inspect);
+   }else{
+    const inspected=node('figure','workbench-container-object workbench-container-inspected');
+    inspected.dataset.workFocus='inspect:'+item.id;
+    inspected.tabIndex=0;
+    inspected.setAttribute('aria-label',name+' · бирка и пломба');
+    const plate=facts([['Комплект',details.kit],['Партия',details.lot]]);
+    plate.classList.add('workbench-container-label');
+    const seal=node('p','workbench-container-seal','Пломба: '+label(details.seal));
+    seal.dataset.seal=details.seal;
+    const tape=node('span','workbench-container-seal-tape');
+    tape.setAttribute('aria-hidden','true');
+    seal.prepend(tape);
+    inspected.append(container,plate,seal);
+    card.append(inspected,button(isSelected?'Выбран':'Выбрать для приёмки','select',item.id,'select:'+item.id,{
+     pressed:isSelected,ariaLabel:(isSelected?'Выбран: ':'Выбрать для приёмки: ')+name,className:'workbench-container-select'
+    }));
+   }
+   tray.append(card);
+  }
+  area.append(tray);
+  submit('Подтвердить проверенный комплект',!selected.size);
  }else if(board.kind==='packing'){
   const order=request('Заявка на бельё',[['Палата',board.request?.destination],['Маркировка комплекта',board.request?.size],['В комплекте',(board.request?.components||[]).join(', ')]]);if(board.request?.markingNote)order.append(node('p','workbench-marking-note',board.request.markingNote));area.append(order);
   const shelves=node('div','workbench-tray workbench-linen-shelf');shelves.setAttribute('aria-label','Бельё для комплектации');
@@ -236,14 +266,31 @@ function render(host,options){
    sourceCards.set(doc.id,{card,doc});documents.append(card);
   }
   const decisions=node('div','workbench-case-decisions');decisions.setAttribute('aria-label','Выводы по документам');
+  const returnToVerdict=node('button','workbench-case-return','Вернуться к выводу');returnToVerdict.type='button';
+  function viewCasePart(part){
+   part.scrollIntoView({block:'start',inline:'nearest',behavior:'instant'});
+   part.focus({preventScroll:true});
+  }
   for(const issue of board.issues||[]){
-   const field=node('fieldset','workbench-case-decision');field.dataset.caseField=String(issue.id);field.append(node('legend','',issue.title||'Вывод'));
-   const evidence=node('nav','workbench-case-evidence');evidence.setAttribute('aria-label','Источники: '+String(issue.title||'вывод'));evidence.append(node('span','','Источники:'));
+   const field=node('fieldset','workbench-case-decision');field.dataset.caseField=String(issue.id);field.tabIndex=-1;field.append(node('legend','',issue.title||'Вывод'));
+   const evidence=node('ul','workbench-case-evidence');evidence.setAttribute('aria-label','Строки документов');
    for(const id of issue.sources||[]){
     const source=sourceCards.get(id);if(!source)continue;
-    const link=node('a','workbench-case-source-link',source.doc.number||id);link.href='#'+source.card.id;link.dataset.caseSourceLink=String(id);link.setAttribute('aria-label','Источник '+String(source.doc.number||id)+': '+String(source.doc.title||'Документ'));
-    // Reading a source is navigation within this sheet, never a work operation.
-    link.addEventListener('click',event=>{event.preventDefault();source.card.scrollIntoView({block:'start',inline:'nearest',behavior:'instant'});source.card.focus({preventScroll:true});});evidence.append(link);
+    const number=source.doc.number||id,title=source.doc.title||'Документ';
+    const fact=source.doc.fields?.find(row=>issue.fields?.includes(row.id));
+    const excerpt=fact?fact.label+' · '+label(fact.value):title;
+    const row=node('li'),link=node('a','workbench-case-source-link');
+    link.href='#'+source.card.id;link.dataset.caseSourceLink=String(id);
+    link.setAttribute('aria-label','Документ '+number+', '+title+'. '+excerpt+'. Открыть целиком.');
+    link.append(node('span','workbench-case-ref','№'+number),node('span','workbench-case-excerpt',excerpt));
+    // Both links only navigate inside the visible document.
+    link.addEventListener('click',event=>{
+     event.preventDefault();
+     returnToVerdict.onclick=()=>{returnToVerdict.remove();viewCasePart(link);};
+     source.card.querySelector('h3').after(returnToVerdict);
+     viewCasePart(source.card);
+    });
+    row.append(link);evidence.append(row);
    }
    field.append(evidence);
    for(const choice of issue.choices||[]){
@@ -251,7 +298,10 @@ function render(host,options){
    }
    decisions.append(field);
   }
-  area.append(documents,decisions,node('p','workbench-case-read-cue','Лист прокручивается ↓ Источники открываются по номеру; повторно прикреплять их не требуется.'));
+  const jump=node('button','workbench-case-jump','К выводам ↓');jump.type='button';
+  jump.onclick=()=>{returnToVerdict.remove();const first=decisions.querySelector('fieldset');if(first)viewCasePart(first);};
+  caseNumber.querySelector('.workbench-case-scroll-hint')?.replaceWith(jump);
+  area.append(documents,decisions);
   const chosen=(board.issues||[]).filter(issue=>(issue.choices||[]).some(choice=>choice.id===board.conclusions?.[issue.id])).length;
   footer.append(node('p','workbench-case-progress','Лист сверки · '+chosen+' из '+String((board.issues||[]).length)+' выводов выбрано'));
   submit('Оформить лист сверки');
@@ -314,18 +364,25 @@ function render(host,options){
    const slip=node('article','workbench-source-slip');slip.dataset.slipId=card.id;
    slip.append(node('strong','',roomLabel(card.room)),node('span','workbench-source-time',card.time??'Время не читается'),node('p','',card.note||''));
    if(index>=0)slip.dataset.sourceOrdered='true';
-   slip.append(button(index>=0?'В журнале · '+(index+1):'В журнал','place',card.id,'place:'+card.id,{
+   const actions=node('div','workbench-source-actions');
+   if(card.reverseAvailable){
+    slip.classList.add('workbench-source-unreadable');
+    const focusKey='readReverse:'+card.id;
+    if(card.reverseRead){
+     const reverse=node('div','workbench-route-reverse'),note=node('p','',card.reverseText);
+     note.tabIndex=-1;note.dataset.workFocus=focusKey;
+     reverse.append(node('strong','','Оборот листка'),note);slip.append(reverse);
+    }else{
+     actions.append(button('Читать оборот','readReverse',card.id,focusKey,{
+      className:'workbench-read-reverse',ariaLabel:'Прочитать оборот: '+roomLabel(card.room)
+     }));
+    }
+   }
+   actions.append(button(index>=0?'В журнале · '+(index+1):'В журнал','place',card.id,'place:'+card.id,{
     className:'workbench-place-slip',disabled:index>=0,
     ariaLabel:index>=0?roomLabel(card.room)+' · шаг '+(index+1):'В журнал: '+roomLabel(card.room)
    }));
-   pool.append(slip);
-   if(card.reverseAvailable){
-    const reverse=node('section','workbench-route-reverse');
-    reverse.append(node('h3','','Оборот записи · '+roomLabel(card.room)));
-    if(card.reverseRead)reverse.append(node('p','',card.reverseText));
-    else reverse.append(button('Прочитать оборот','readReverse',card.id,'readReverse:'+card.id));
-    guide.append(reverse);
-   }
+   slip.append(actions);pool.append(slip);
   }
   evidence.append(pool);
   const assembled=node('section','workbench-route-order');
@@ -349,7 +406,10 @@ function render(host,options){
   if(!order.length)assembled.append(node('p','workbench-muted','Добавьте записи с плана или из источников.'));
   evidence.append(assembled);
   area.append(guide,evidence);
-  submit('Подтвердить последовательность',!cards.length||order.length!==cards.length||cards.some(card=>card.reverseAvailable&&!card.reverseRead));
+  const allPlaced=cards.length>0&&order.length===cards.length;
+  const unreadReverse=cards.some(card=>card.reverseAvailable&&!card.reverseRead);
+  if(allPlaced&&unreadReverse)status.textContent='Чтобы подтвердить порядок, прочитайте оборот листка с неразборчивым временем.';
+  submit('Подтвердить последовательность',!allPlaced||unreadReverse);
  }else if(board.kind==='timeline'&&board.revision===3){
   const ordered=new Set(board.order||[]),cards=board.cards||[],pool=node('section','workbench-slip-pool workbench-evidence-pool');pool.append(node('h3','','Записи на столе'));
   for(const card of cards){if(ordered.has(card.id))continue;const slip=timelineEvidence(card);slip.append(button('В журнал','place',card.id,'place:'+card.id,{className:'workbench-place-slip'}));pool.append(slip);}
