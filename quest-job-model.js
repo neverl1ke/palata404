@@ -18,7 +18,7 @@ const briefs={
  d2:{giver:'Врач',purpose:'Отдельные листки обхода нужно вернуть в журнал в подтверждённом порядке.',deliverable:'Лист обхода, восстановленный по времени записей.'},
  d3:{giver:'Врач',purpose:'Сначала зафиксируйте увиденное, затем сравните. Причины возможного расхождения пока неизвестны.',deliverable:'Карточка сравнения исходных и повторных показаний коридора A.'}
 };
-function brief(id,revision){if(typeof id!=='string'||!Object.hasOwn(briefs,id))return null;const result={...briefs[id]};if(id==='k3'&&(revision===undefined||revision===3)){result.purpose='Сопоставьте направление, лист процедуры и копию одной медицинской записи. Отделите подтверждённое расхождение от различия полей и неподтверждённых сведений.';result.deliverable='Лист сверки палаты, времени проведения и подтверждения имени исполнителя. Неизвестное имя не дописывается.';}if(id==='d1'&&(revision===undefined||revision===5)){result.purpose='Проверьте вызовы 407 и 408 в любом порядке. Техник уже на связи и обслужит неисправный узел здесь, после вашего акта.';result.deliverable='Два акта и контрольный ответ поста по каждому обслуженному вызову.';}if(id==='d1'&&revision===4){result.purpose='Проверьте оба вызова, получите разрешение врача для обнаруженных проблем и подтвердите результат после обслуживания персоналом.';result.deliverable='Два первичных акта и подтверждённые контрольные вызовы для обслуженных узлов. Награда одна, при окончательной сдаче.';}if(id==='d2'&&(revision===undefined||revision>=3))result.deliverable='Журнал с подтверждённым порядком событий; неразборчивое время остаётся неустановленным.';if(id==='d3'&&(revision===undefined||revision>=4)){result.purpose='Выберите один предмет и дважды выполните одно и то же наблюдение. Совпадение также является результатом.';result.deliverable='Карточка двух сохранённых наблюдений одного предмета.';}if(id==='k2'&&(revision===undefined||revision===5))result.purpose='Соберите комплект для 406 и помогите подготовить кровать. Если окно открыто, выберите, как удержать край ткани.';if(id==='k2'&&(revision===undefined||revision>=4))result.deliverable='Квитанция подготовки кровати 406: простыня и наволочка на своих местах.';return result;}
+function brief(id,revision){if(typeof id!=='string'||!Object.hasOwn(briefs,id))return null;const result={...briefs[id]};if(id==='k3'&&(revision===undefined||revision===3)){result.purpose='Сопоставьте направление, лист процедуры и копию одной медицинской записи. Отделите подтверждённое расхождение от различия полей и неподтверждённых сведений.';result.deliverable='Лист сверки палаты, времени проведения и подтверждения имени исполнителя. Неизвестное имя не дописывается.';}if(id==='d1'&&(revision===undefined||revision===5)){result.purpose='Проверьте вызовы 407 и 408 в любом порядке. Техник уже на связи и обслужит неисправный узел здесь, после вашего акта.';result.deliverable='Два акта и контрольный ответ поста по каждому обслуженному вызову.';}if(id==='d1'&&revision===4){result.purpose='Проверьте оба вызова, получите разрешение врача для обнаруженных проблем и подтвердите результат после обслуживания персоналом.';result.deliverable='Два первичных акта и подтверждённые контрольные вызовы для обслуженных узлов. Награда одна, при окончательной сдаче.';}if(id==='d2'&&(revision===undefined||revision>=3))result.deliverable='Журнал с подтверждённым порядком событий; неразборчивое время остаётся неустановленным.';if(id==='d3'&&(revision===undefined||revision>=4)){result.purpose='Выберите один предмет и дважды выполните одно и то же наблюдение. Совпадение также является результатом.';result.deliverable='Карточка двух сохранённых наблюдений одного предмета.';}if(id==='k2'&&(revision===undefined||revision===5))result.purpose='Соберите в бельевой чистую простыню и наволочку, затем смените бельё в палате 406.';if(id==='k2'&&(revision===undefined||revision>=4))result.deliverable='Квитанция подготовки кровати 406: простыня и наволочка на своих местах.';return result;}
 const callRooms=['ward407','ward408'];
 const callConditions=['working','disconnected','noResponse','unassessed'];
 const callEquipment=room=>({id:'CALL-'+room.slice(4),connector:'КС-2',postAddress:'ПОСТ-'+room.slice(4)});
@@ -225,15 +225,15 @@ function d3Available(s,id) {
  if(id==='signA')return {available:true,reason:'Доступна без других поручений.'};
  if(id==='bed406'){
   const linen=s.world?.linen406;
-  if(!openB)return {available:false,reason:'Сначала откройте проход в секцию B.'};
+  if(!openB)return {available:false,reason:'Чтобы повторить осмотр в Трипе, откройте проход в секцию B.'};
   const pending=s.jobs?.k2;
-  if(pending?.active&&pending.work?.preparationStarted&&!pending.done?.deliver)return {available:false,reason:'Сначала завершите начатую смену белья.'};
-  if(!linen?.prepared||!linen.reviewed)return {available:false,reason:'Нужна подготовленная и принятая Кларой кровать 406.'};
+  if(pending?.active&&pending.work?.preparationStarted&&!pending.done?.deliver)return {available:false,reason:'Закончите смену белья в палате 406 и сдайте квитанцию Кларе.'};
+  if(!linen?.prepared||!linen.reviewed)return {available:false,reason:'Смените бельё в палате 406 по поручению Клары и передайте ей квитанцию.'};
   return {available:true,reason:'Можно осмотреть внутренний подгиб, не перестилая кровать.'};
  }
  const call=s.world?.callEquipment?.ward407;
- if(!openC)return {available:false,reason:'Сначала откройте проход в секцию C.'};
- if(call?.condition!=='working'||call.verified!==true)return {available:false,reason:'Нужен исправный и подтверждённый вызов палаты 407.'};
+ if(!openC)return {available:false,reason:'Чтобы повторить вызов в Трипе, откройте проход в секцию C.'};
+ if(call?.condition!=='working'||call.verified!==true)return {available:false,reason:'Подтвердите ответ поста из палаты 407 в поручении врача о вызовах. После ремонта нужен контрольный вызов.'};
  return {available:true,reason:'Проверьте индикатор и ответ поста.'};
 }
 function d3Provenance(s,id) {
@@ -630,7 +630,21 @@ function route(s,id){
   if(plan.length)return{...plan[0],plan};
   return{room:'doctor',mode:'patient',action:'claim:d1',text:'Оба результата подтверждены. Передайте врачу итоговые акты и получите прежнюю награду один раз.',plan};
  }
- if(id!=='k2'||j.revision<3)return null;if(j.done?.deliver)return{room:'nurse',mode:'patient',action:'claim:k2',text:'Передайте Кларе квитанцию подготовки кровати 406.'};if(j.done?.linen)return{room:'ward406',mode:'patient',action:'job:deliver',text:j.revision>=4&&!j.work.preparationStarted?'Начните подготовку кровати 406, затем разместите принесённые вещи.':'Разложите принесённые простыню и наволочку на кровати 406.'};if(j.variant===1&&j.work?.shortageNoted&&!j.work?.reserveGranted)return{room:'nurse',mode:'patient',action:'job:linenReserve',text:'Уточните у Клары замену отсутствующей наволочки по физическому размеру.'};return{room:'linen',mode:'patient',action:'job:linen',text:j.variant===1&&j.work?.reserveGranted?'Разрешённая замена записана. Соберите комплект в бельевой.':'Соберите чистые вещи по заявке; недостающую вещь сначала зафиксируйте.'};
+ if(id!=='k2'||j.revision<3)return null;
+ if(j.done?.deliver)return{room:'nurse',mode:'patient',action:'claim:k2',text:'Передайте Кларе квитанцию подготовки кровати 406.'};
+ const w=j.work||{};
+ if(j.done?.linen){
+  let text='Разместите принесённые простыню и наволочку на кровати 406.';
+  if(j.revision>=4&&!w.preparationStarted)text='Начните смену белья на кровати 406.';
+  else if(w.draftScene?.required&&!w.draftScene.method)text='Прикройте окно или попросите Клару придержать дальний край простыни.';
+  else if(w.selectedPiece==='pillowcase'||w.placed?.includes('sheet'))text='Наденьте чистую наволочку на подушку.';
+  else if(w.draftScene?.required&&!w.draftScene.spread)text=w.selectedPiece==='sheet'?'Расправьте выбранную простыню ползунком.':'Выберите простыню и расправьте её ползунком.';
+  else if(w.selectedPiece==='sheet'||w.placed?.includes('pillowcase'))text='Постелите чистую простыню на матрас.';
+  return{room:'ward406',mode:'patient',action:'job:deliver',text};
+ }
+ if(j.variant===1&&w.shortageNoted&&!w.reserveGranted)return{room:'nurse',mode:'patient',action:'job:linenReserve',text:'Уточните у Клары замену отсутствующей наволочки по физическому размеру.'};
+ const text=j.variant!==1?'Соберите чистые вещи по заявке в бельевой.':w.reserveGranted?'Заберите разрешённую наволочку из резерва и соберите комплект в бельевой.':'В бельевой проверьте наличие обеих вещей. Если наволочки нужного комплекта нет, зафиксируйте недостачу.';
+ return{room:'linen',mode:'patient',action:'job:linen',text};
 }
 return Object.freeze({ids,owner,brief,supportsRevision,validRecord,serviceReady,callEquipment,orderServiceRecords,make,restore,board,operate,observation,captureObservation,description,callResult,kitResult,route});
 });

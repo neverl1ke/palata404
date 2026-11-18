@@ -18,15 +18,24 @@ test('version11 world starts unknown and preserves facts without accepting futur
 });
 
 test('new bed preparation needs the right item and zone, survives a partial reload, and consumes one parcel once',()=>{
- let s=E.initial();accept(s,'k2');a.equal(s.jobs.k2.revision,5);move(s,'linen');solve(s,'job:linen');move(s,'ward406');a.equal(E.workbench(s,'job:deliver').kind,'bedmaking');
+ let s=E.initial();accept(s,'k2');a.equal(s.jobs.k2.revision,5);
+ a.doesNotMatch(E.jobStage(s,'k2').text,/недостач|окно/);
+ move(s,'linen');solve(s,'job:linen');move(s,'ward406');a.equal(E.workbench(s,'job:deliver').kind,'bedmaking');
+ a.match(E.jobStage(s,'k2').text,/Начните смену/);
  rejected(s,{type:'work',id:'job:deliver',op:'deliver'});rejected(s,{type:'work',id:'job:deliver',op:'place',value:'sheetZone'});
- rejected(s,{type:'work',id:'job:deliver',op:'selectPiece',value:'sheet'});work(s,'job:deliver','startBedPreparation');work(s,'job:deliver','chooseMethod','window');work(s,'job:deliver','selectPiece','sheet');rejected(s,{type:'work',id:'job:deliver',op:'place',value:'pillowZone'});work(s,'job:deliver','spreadSheet');
+ rejected(s,{type:'work',id:'job:deliver',op:'selectPiece',value:'sheet'});work(s,'job:deliver','startBedPreparation');
+ a.match(E.jobStage(s,'k2').text,/Прикройте окно или попросите Клару/);
+ work(s,'job:deliver','chooseMethod','window');work(s,'job:deliver','selectPiece','sheet');
+ a.match(E.jobStage(s,'k2').text,/Расправьте выбранную простыню ползунком/);
+ rejected(s,{type:'work',id:'job:deliver',op:'place',value:'pillowZone'});work(s,'job:deliver','spreadSheet');
  a.equal(s.world.linen406,null);a.deepEqual(s.jobs.k2.work.placed,['sheet']);a.ok(s.cargo.includes('linen'));a.match(E.cargoDescription(s,'linen'),/Уже использовано: простыня/);
- s=E.restore(clone(s));a.deepEqual(s.jobs.k2.work.placed,['sheet']);rejected(s,{type:'work',id:'job:deliver',op:'selectPiece',value:'sheet'});
+ s=E.restore(clone(s));a.deepEqual(s.jobs.k2.work.placed,['sheet']);a.match(E.jobStage(s,'k2').text,/наволочку/);rejected(s,{type:'work',id:'job:deliver',op:'selectPiece',value:'sheet'});
  work(s,'job:deliver','selectPiece','pillowcase');const result=work(s,'job:deliver','place','pillowZone');a.equal(result.completed,'deliver');a.equal(result.reward,undefined);
  a.ok(!s.cargo.includes('linen'));a.deepEqual(s.cargo.filter(x=>x==='delivery'),['delivery']);a.equal(s.world.linen406.prepared,true);a.equal(s.world.linen406.order,'k2:1');a.equal(s.world.linen406.items.length,2);a.equal(E.supportsSave(s),true);
  rejected(s,{type:'work',id:'job:deliver',op:'place',value:'pillowZone'});move(s,'nurse');const paid=apply(s,{type:'action',id:'claim:k2'});a.deepEqual(paid.reward,{kind:'job',job:'k2',id:'k2:1',...E.payouts.k2});a.match(paid.message,/Клара: подготовку кровати/);
  const fact=clone(s.world.linen406);accept(s,'k2');a.deepEqual(s.world.linen406,fact);s=E.restore(clone(s));a.deepEqual(s.world.linen406,fact);a.equal(E.roomEffects(s,'ward406')[0].prepared,true);a.deepEqual(E.roomEffects(s,'ward406','trip'),[]);
+ const previous=E.roomEffects(s,'nurse').find(effect=>effect.id==='linenReview');
+ a.equal(previous.order,'k2:1');a.match(previous.title,/Предыдущее поручение/);a.doesNotMatch(previous.text,/подтверждаю/);
 });
 
 test('missing linen requires a recorded shortage and an explicitly matching authorized reserve',()=>{
@@ -34,7 +43,10 @@ test('missing linen requires a recorded shortage and an explicitly matching auth
  rejected(s,{type:'work',id:'job:linen',op:'select',value:'linen-1'});move(s,'nurse');a.equal(E.workbench(s,'job:linenReserve'),null);move(s,'linen');work(s,'job:linen','noteShortage');a.equal(E.jobStage(s,'k2').room,'nurse');a.ok(E.workbench(s,'job:linen'));
  move(s,'nurse');b=E.workbench(s,'job:linenReserve');a.equal(b.kind,'clarification');work(s,'job:linenReserve','select','reserve-small');rejected(s,{type:'work',id:'job:linenReserve',op:'submit'});a.equal(s.jobs.k2.work.reserveGranted,false);
  work(s,'job:linenReserve','select','reserve-same-size');const granted=work(s,'job:linenReserve','submit');a.equal(granted.completed,'linenReserve');a.equal(granted.reward,undefined);a.deepEqual(s.cargo,[]);a.equal(s.world.linen406,null);
- a.equal(E.jobStage(s,'k2').room,'linen');move(s,'linen');b=E.workbench(s,'job:linen');a.equal(b.authorizedSubstitution.itemId,'linen-1');a.equal(b.items.find(x=>x.id==='linen-1').unavailable,false);solve(s,'job:linen');move(s,'ward406');work(s,'job:deliver','startBedPreparation');solve(s,'job:deliver');a.equal(s.world.linen406.mark,'Л');a.equal(s.world.linen406.items.find(x=>x.type==='Наволочка').measure,'70 × 70 см');
+ a.equal(E.jobStage(s,'k2').room,'linen');a.match(E.jobStage(s,'k2').text,/разрешённую наволочку/);move(s,'linen');b=E.workbench(s,'job:linen');a.equal(b.authorizedSubstitution.itemId,'linen-1');a.equal(b.items.find(x=>x.id==='linen-1').unavailable,false);solve(s,'job:linen');move(s,'ward406');work(s,'job:deliver','startBedPreparation');
+ a.doesNotMatch(E.workbench(s,'job:deliver').brief.purpose,/окно|сквозняк/);
+ a.doesNotMatch(E.jobStage(s,'k2').text,/окно|сквозняк|ползун/);
+ solve(s,'job:deliver');a.equal(s.world.linen406.mark,'Л');a.equal(s.world.linen406.items.find(x=>x.type==='Наволочка').measure,'70 × 70 см');
 });
 
 test('issued revision3 diagnostic facts and doctor review retain their old contract without automatic repairs',()=>{

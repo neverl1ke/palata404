@@ -53,6 +53,13 @@ function linenIllustration(kind,condition){
 }
 function reportLabel(report){return {working:'Ответ поста получен',disconnected:'Разъём отсоединён',noResponse:'Индикатор горит; ответ поста не получен',unassessed:'Состояние требует нового осмотра'}[report]||'Результат ещё не установлен';}
 function facts(rows){const dl=node('dl','workbench-facts');for(const[k,v]of rows){dl.append(node('dt','',k),node('dd','',label(v)));}return dl;}
+function workbenchFocusPoint(element,key){element.tabIndex=-1;element.dataset.workFocus=key;return element;}
+function workbenchCallObservation(observation,indicator,response){
+ workbenchFocusPoint(observation,'call-observation');
+ observation.setAttribute('role','group');observation.setAttribute('aria-label','Результат вызова');
+ indicator.id='workbench-call-indicator';response.id='workbench-call-response';
+ observation.setAttribute('aria-describedby',indicator.id+' '+response.id);
+}
 function connectorView(connector){
  const figure=node('figure','workbench-connector-view'),s=document.createElementNS(svgNS,'svg');s.setAttribute('viewBox','0 0 240 74');s.setAttribute('aria-hidden','true');
  const add=(tag,attrs)=>{const e=document.createElementNS(svgNS,tag);for(const[k,v]of Object.entries(attrs))e.setAttribute(k,String(v));s.append(e);};
@@ -94,7 +101,8 @@ function render(host,options){
    chooseMethod:'.workbench-bed-pieces',
    spreadSheet:'.workbench-bed-pieces'
   }[op]:null;
-  scrollMemo={key,top:scroller?.scrollTop||0,briefOpen:section.querySelector('.workbench-brief')?.open,nextBed,claraOpen:section.querySelector('.workbench-clara-art')?.open};
+  const showObservation=(board.kind==='subjectBaseline'||board.kind==='subjectDifference')&&op===board.actionOp;
+  scrollMemo={key,top:scroller?.scrollTop||0,briefOpen:section.querySelector('.workbench-brief')?.open,nextBed,showObservation,claraOpen:section.querySelector('.workbench-clara-art')?.open};
   let result;
   try{result=act(value===undefined?{op}:{op,value});}finally{scrollMemo=null;}
   if(result?.message&&section.isConnected)status.textContent=result.message;
@@ -313,7 +321,9 @@ function render(host,options){
   station.append(node('p','workbench-call-hint',board.tested?'Сопоставьте индикатор и ответ поста в акте.':board.inspected?'Нажмите красную кнопку, чтобы проверить вызов.':'Сначала осмотрите подключение кнопки.'),button(board.inspected?'Соединение осмотрено':'Осмотреть соединение','inspect','connector','inspect:connector',{disabled:!!board.inspected}));
   if(board.inspected&&board.connector)station.append(connectorView(board.connector));
   const response=node('div','workbench-call-response');response.append(node('h3','','Ответ поста'),node('p','',board.tested?(board.response||'Ответ не поступил.'):'Сначала выполните проверку вызова.'));
-  const form=node('fieldset','workbench-diagnostic-form'),observation=node('section','workbench-test-observation');observation.append(node('h3','','Наблюдение при проверке'),indicator,response);form.append(node('legend','','Акт проверки'),observation);for(const report of board.reports||[])form.append(button(report.label,'select',report.id,'report:'+report.id,{pressed:selected.has(report.id),disabled:!board.inspected||!board.tested,className:'workbench-mark'}));form.append(node('p','workbench-muted','Запишите вывод по соединению, индикатору и ответу поста.'));area.append(station,form);submit('Подписать акт',!selected.size||!board.inspected||!board.tested);
+  const form=node('fieldset','workbench-diagnostic-form'),observation=node('section','workbench-test-observation');
+  workbenchCallObservation(observation,indicator,response);
+  observation.append(node('h3','','Наблюдение при проверке'),indicator,response);form.append(node('legend','','Акт проверки'),observation);for(const report of board.reports||[])form.append(button(report.label,'select',report.id,'report:'+report.id,{pressed:selected.has(report.id),disabled:!board.inspected||!board.tested,className:'workbench-mark'}));form.append(node('p','workbench-muted','Запишите вывод по соединению, индикатору и ответу поста.'));area.append(station,form);submit('Подписать акт',!selected.size||!board.inspected||!board.tested);
  }else if(board.kind==='callReview'){
   const reports=node('div','workbench-call-review');reports.append(node('p','workbench-review-guidance','Врач рассматривает подписанные наблюдения. Неполученный ответ сам по себе не доказывает неисправность провода.'));
   for(const report of board.reports||[]){const card=node('section','workbench-review-card');card.dataset.callReviewRoom=String(report.room);card.append(node('h3','',roomLabel(report.label||String(report.room).replace(/^ward/,''))),facts([['Акт',reportLabel(report.report)],['Соединение',report.connected===null||report.connected===undefined?'не установлено':report.connected?'подключено':'отсоединено'],['Индикатор',report.indicator==='on'?'загорелся':report.indicator==='off'?'не загорелся':'не проверен'],['Ответ поста',report.response||'не зафиксирован']]));card.append(node('p','workbench-review-next',report.needsService?'Требуется обслуживание по допуску, затем повторный вызов из палаты.':'Наблюдаемый ответ поста получен.'));reports.append(card);}
@@ -322,13 +332,19 @@ function render(host,options){
   const equipment=board.equipment||{},disconnected=board.cause==='disconnected',post=board.cause==='noResponse';
   area.append(request('Допуск · '+String(roomLabel(board.label||String(board.room).replace(/^ward/,''))),[['Оборудование',equipment.id],['Разъём',equipment.connector],['Адрес поста',equipment.postAddress]]));
   const evidence=node('section','workbench-service-evidence');evidence.append(node('h3','',post?'Регистрация вызова на посту':disconnected?'Соединение оборудования':'Проверка идентификатора системы'),node('p','',post?'Проверьте запись об адресе вызова. Не заменяйте проверку догадкой о состоянии провода.':'Сопоставьте маркировку оборудования и разъёма с выданным допуском.'),button(board.inspected?'Сведения проверены':post?'Открыть запись поста':'Осмотреть маркировку','inspectEvidence',undefined,'inspectEvidence',{disabled:!!board.inspected}));
-  if(board.inspected&&board.evidence){const observed=board.evidence;evidence.append(facts([['Оборудование',observed.equipmentId],['Разъём',observed.connector],['Адрес поста',observed.postAddress],['Регистрация',observed.observedRegistration]]));if(observed.text)evidence.append(node('p','workbench-service-observation',observed.text));}
+  if(board.inspected&&board.evidence){const observed=board.evidence;
+   const record=workbenchFocusPoint(facts([['Оборудование',observed.equipmentId],['Разъём',observed.connector],['Адрес поста',observed.postAddress],['Регистрация',observed.observedRegistration]]),'service-evidence');
+   record.setAttribute('aria-label','Сведения об оборудовании и регистрации вызова');evidence.append(record);
+   if(observed.text)evidence.append(node('p','workbench-service-observation',observed.text));
+  }
   area.append(evidence);
   if(board.inspected){const options=node('section','workbench-service-options');options.setAttribute('aria-label',post?'Варианты записи адреса':'Варианты обслуживания');for(const option of board.options||[]){const choice=button('','select',option.id,'service:'+option.id,{pressed:selected.has(option.id),className:'workbench-service-option'});choice.append(node('strong','',option.label||'Вариант обслуживания'),facts([['Оборудование',option.equipmentId],['Разъём',option.connector],['Адрес поста',option.postAddress]]));options.append(choice);}area.append(options);}
   area.append(node('p','workbench-service-warning',board.revision===5?'После обслуживания проверьте ответ поста контрольным вызовом в этой палате.':'Обслуживание не подтверждает успешный вызов. После записи вернитесь в палату и выполните контрольный вызов.'));submit('Зафиксировать обслуживание',!board.inspected||!selected.size);
  }else if(board.kind==='callRetest'){
   const station=node('section','workbench-call-station');station.append(node('span','workbench-call-number',roomLabel(board.label||String(board.room).replace(/^ward/,''))));const unit=node('div','workbench-bell-unit');unit.append(icon('bell'),button(board.tested?'Контроль выполнен':'Контрольный вызов','test',undefined,'test',{disabled:!!board.tested,className:'workbench-call-trigger',ariaLabel:board.tested?'Контрольный вызов выполнен':'Нажать кнопку контрольного вызова'}));station.append(unit,node('p','workbench-call-hint',board.tested?'Сверьте адрес ответившего поста и подтвердите результат контроля.':'Нажмите кнопку в самой палате. Результат обслуживания ещё нужно проверить.'));
-  const observation=node('section','workbench-test-observation');observation.append(node('h3','','Контроль после обслуживания'));const indicator=node('p','workbench-indicator'+(board.indicator==='on'?' is-on':''));indicator.append(node('i','workbench-indicator-lamp'),node('span','',board.tested?(board.indicator==='on'?'Индикатор загорелся':'Индикатор не загорелся'):'Индикатор · контроль не выполнялся'));const response=node('div','workbench-call-response');response.append(node('h3','','Ответ поста'),node('p','',board.tested?(board.response||'Ответ не получен.'):'Сначала выполните контрольный вызов.'));observation.append(indicator,response);if(board.responseAddress)observation.append(facts([['Адрес ответившего поста',board.responseAddress]]));area.append(station,observation);footer.append(button('Подтвердить результат контрольного вызова','confirm',undefined,'confirm',{className:'workbench-button workbench-submit',disabled:!board.tested||!!board.confirmed}));
+  const observation=node('section','workbench-test-observation');observation.append(node('h3','','Контроль после обслуживания'));const indicator=node('p','workbench-indicator'+(board.indicator==='on'?' is-on':''));indicator.append(node('i','workbench-indicator-lamp'),node('span','',board.tested?(board.indicator==='on'?'Индикатор загорелся':'Индикатор не загорелся'):'Индикатор · контроль не выполнялся'));const response=node('div','workbench-call-response');response.append(node('h3','','Ответ поста'),node('p','',board.tested?(board.response||'Ответ не получен.'):'Сначала выполните контрольный вызов.'));
+  workbenchCallObservation(observation,indicator,response);
+  observation.append(indicator,response);if(board.responseAddress)observation.append(facts([['Адрес ответившего поста',board.responseAddress]]));area.append(station,observation);footer.append(button('Подтвердить результат контрольного вызова','confirm',undefined,'confirm',{className:'workbench-button workbench-submit',disabled:!board.tested||!!board.confirmed}));
  }else if(board.kind==='timeline'&&board.timelineMap){
   const cards=board.cards||[],order=board.order||[];
   const guide=node('section','workbench-timeline-guide');
@@ -386,12 +402,12 @@ function render(host,options){
   }
   evidence.append(pool);
   const assembled=node('section','workbench-route-order');
-  assembled.append(node('h3','','Порядок записей · '+order.length+'/'+cards.length));
+  assembled.append(workbenchFocusPoint(node('h3','','Порядок записей · '+order.length+'/'+cards.length),'route-order'));
   const list=node('ol','workbench-route-list');
   for(const [index,id] of order.entries()){
    const card=cards.find(entry=>entry.id===id);
    if(!card)continue;
-   const room=roomLabel(card.room),row=node('li','workbench-route-list-row');
+   const room=roomLabel(card.room),row=workbenchFocusPoint(node('li','workbench-route-list-row'),'ordered:'+id);
    row.dataset.orderedSlip=id;
    row.append(node('strong','',room),node('span','',card.time??'Время не установлено'));
    const controls=node('div','workbench-order-controls');
@@ -444,6 +460,7 @@ function render(host,options){
  }else if(board.kind==='subjectBaseline'||board.kind==='subjectDifference'){
   const repeat=board.kind==='subjectDifference';
   const recorded=repeat?board.observationCaptured:(board.details||[]).length>0;
+  let evidence;
   const subject=node('section','workbench-observation-instrument');
   subject.dataset.subject=board.subjectId;
   const names={signA:'Табличка коридора A',bed406:'Край простыни · палата 406',call407:'Кнопка вызова · палата 407'};
@@ -457,8 +474,10 @@ function render(host,options){
   area.append(subject);
   if(!repeat&&recorded){
    const result=node('article','workbench-observation-card');
-   result.append(node('h3','','Первичные показания'),facts((board.details||[]).map(field=>[field.label,field.value])));
-   area.append(result);
+   const caption=node('h3','','Первичные показания');caption.id='workbench-observation-caption';
+   result.setAttribute('aria-labelledby',caption.id);
+   result.append(caption,facts((board.details||[]).map(field=>[field.label,field.value])));
+   area.classList.add('workbench-observation-layout');area.append(result);evidence=result;
   }
   if(!repeat){
    footer.append(button('Записать наблюдение в карточку','record',undefined,'record',{
@@ -474,13 +493,15 @@ function render(host,options){
    }
    const options=node('div','workbench-reply-options');
    for(const option of board.replies||[])options.append(button(option.label,'selectReply',option.id,'selectReply:'+option.id,{pressed:board.replySelected===option.id}));
-   reply.append(options);area.append(reply);
+   reply.append(options);area.append(reply);evidence=reply;
    submit('Зафиксировать наблюдение',!board.replySelected);
   }else if(recorded){
-   area.append(pairedRecords([['Моя карточка',board.baseline||[]],['Повторное наблюдение',board.current||[]]],'Отметьте наблюдаемые отличия'));
+   evidence=pairedRecords([['Моя карточка',board.baseline||[]],['Повторное наблюдение',board.current||[]]],'Отметьте наблюдаемые отличия');
+   area.append(evidence);
    if(board.allowNoChanges)area.append(button('Изменений нет','noChanges',undefined,'noChanges',{pressed:!!board.noChanges,className:'workbench-no-changes'}));
    submit('Зафиксировать наблюдение',!marked.size&&!board.noChanges);
   }
+  if(evidence){evidence.classList.add('workbench-observation-evidence');evidence.tabIndex=-1;}
  }else if(board.kind==='baseline'){
   const plate=node('div','workbench-observation-plate');plate.append(node('small','','ТАБЛИЧКА КОРИДОРА A'),facts((board.details||[]).map(f=>[f.label,f.value])));
   const card=node('article','workbench-observation-card');card.append(node('h3','','Карточка наблюдения'),node('small','workbench-draft-label',board.recorded?'Запись сохранена':'Черновик · запись ещё не сохранена'),facts((board.details||[]).map(f=>[f.label,f.value])),node('p','','Сверьте переписанные показания с табличкой, затем сохраните карточку.'));if(board.recorded)card.append(node('p','workbench-picked','Наблюдение записано.'));area.append(plate,card);footer.append(button('Записать наблюдение в карточку','record',undefined,'record',{className:'workbench-button workbench-submit',disabled:!!board.recorded}));
@@ -496,10 +517,15 @@ function render(host,options){
  }
  paper.append(area);scroll.append(paper);footer.append(status);section.append(scroll,footer);host.replaceChildren(section);
  if(scrollMemo?.key===key){
-  const {top,nextBed}=scrollMemo;
+  const {top,nextBed,showObservation}=scrollMemo;
   queueMicrotask(()=>{
    if(!section.isConnected)return;
    scroll.scrollTop=top;
+   if(showObservation){
+    const evidence=section.querySelector('.workbench-observation-evidence');
+    evidence?.scrollIntoView({block:'start',inline:'nearest'});
+    evidence?.focus({preventScroll:true});
+   }
    const target=nextBed&&section.querySelector(nextBed);
    if(target){
     target.scrollIntoView({block:'nearest',inline:'nearest'});

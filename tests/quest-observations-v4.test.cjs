@@ -95,6 +95,8 @@ test('D3 r4 sign needs two explicit readings and accepts a match or real differe
   accept(s,'d3');
   const options=board(s,'baseline').options;
   assert.deepEqual(options.filter(x=>x.available).map(x=>x.id),['signA']);
+  assert.match(options.find(x=>x.id==='bed406').reason,/в Трипе.*секцию B/);
+  assert.match(options.find(x=>x.id==='call407').reason,/в Трипе.*секцию C/);
   reject(s,{type:'work',id:'job:baseline',op:'chooseSubject',value:'bed406'});
   const evidence=capture(s,'signA','A','inspect');
   assert.deepEqual(evidence.current.map(x=>[x.id,x.value]),Object.entries(E.observation(s)));
@@ -119,8 +121,9 @@ test('D3 r4 sign needs two explicit readings and accepts a match or real differe
 test('D3 r4 optional bed fixture records a frozen linen order before a replacement',()=>{
  let s=E.initial();
  s.flags.unlockB=true;
- s.world.linen406={order:'k2:1',delivered:true,prepared:true,mark:'М',items:[{type:'Простыня',measure:'150 × 215 см'},{type:'Наволочка',measure:'70 × 70 см'}],reviewed:true,revision:5};
  accept(s,'d3');
+ assert.match(board(s,'baseline').options.find(x=>x.id==='bed406').reason,/поручению Клары.*квитанцию/);
+ s.world.linen406={order:'k2:1',delivered:true,prepared:true,mark:'М',items:[{type:'Простыня',measure:'150 × 215 см'},{type:'Наволочка',measure:'70 × 70 см'}],reviewed:true,revision:5};
  capture(s,'bed406','ward406','lift');
  const prior=copy(s.jobs.d3.work);
  s.world.linen406.order='k2:2';
@@ -135,9 +138,10 @@ test('D3 r4 optional bed fixture records a frozen linen order before a replaceme
 test('D3 r4 call fixture requires selecting no reply from readable text and rejects the wrong address',()=>{
  let s=E.initial();
  s.flags.unlockB=s.flags.unlockC=true;
- s.world.callEquipment.ward407={condition:'working',revision:1,verified:true};
  s.jobs.d3={active:false,count:2,done:{},revision:1,startTrip:0};
  accept(s,'d3');
+ assert.match(board(s,'baseline').options.find(x=>x.id==='call407').reason,/407.*поручении врача.*контрольный вызов/);
+ s.world.callEquipment.ward407={condition:'working',revision:1,verified:true};
  const evidence=capture(s,'call407','ward407','call');
  assert.equal(evidence.current.find(row=>row.id==='reply').value,'Ответа не было');
  assert.equal(evidence.current.find(row=>row.id==='indicator').value,'Горит');

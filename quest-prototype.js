@@ -458,18 +458,43 @@ const toggle=button(roomInfoCollapsed?'Опис і завдання':'Згорн
 tools.append(back,toggle);map.append(scene,info,tools);mountWorkbench(scene,info);positionRoomPaper(scene,info);}
 
 
+function workbenchKeyboardContinuation(current,kind,{op,value},previousFocus){
+ if(!current||!previousFocus)return null;
+ if(kind==='diagnostic'&&op==='inspect')return current.querySelector('[data-work-focus="test"]:not(:disabled)');
+ if((kind==='diagnostic'||kind==='callRetest')&&op==='test')return current.querySelector('[data-work-focus="call-observation"]');
+ if(kind==='callService'&&op==='inspectEvidence')return current.querySelector('[data-work-focus="service-evidence"]');
+ if(kind!=='timeline'||current.dataset.timelineMap!=='true')return null;
+ if(op==='place'){
+  const peerSelector=previousFocus.startsWith('route:')?'.workbench-route-point':'.workbench-place-slip';
+  const peers=[...current.querySelectorAll(peerSelector)];
+  const position=peers.findIndex(control=>control.dataset.workFocus===previousFocus);
+  return peers.slice(position+1).find(control=>!control.disabled)||peers.find(control=>!control.disabled)||
+   current.querySelector('.workbench-read-reverse:not(:disabled), [data-work-focus="route-order"]');
+ }
+ if(op==='move')return [...current.querySelectorAll('[data-ordered-slip]')].find(row=>row.dataset.orderedSlip===value?.id);
+ if(op==='remove')return [...current.querySelectorAll('.workbench-place-slip:not(:disabled)')].find(control=>control.dataset.workValue===value);
+ return null;
+}
+
 function mountWorkbench(scene,info){
  const id=interaction,board=id&&E.workbench?.(state,id);
  if(!board||!window.PalataQuestWorkbench)return;
  if(board.kind==='bedmaking'||board.subjectId==='bed406')board.referenceImage=window.PalataFloorArt.resolve('ward406',state.mode).background;
  const host=document.createElement('div');host.className='quest-workbench-host';map.append(host);scene.inert=true;info.inert=true;const tools=map.querySelector('.quest-room-tools');if(tools)tools.inert=true;
  PalataQuestWorkbench.render(host,{board,feedback:workNotice,act:payload=>{
-  const focus=document.activeElement?.dataset.workFocus;
+  const active=document.activeElement,focus=active?.dataset.workFocus;
+  const keyboard=active?.matches(':focus-visible');
   const ok=dispatch({type:'work',id,op:payload.op,value:payload.value});
   if(ok&&!E.workbench(state,id)){interaction=null;roomInfoCollapsed=false;renderMap();const effectId=id==='job:callReview'?'doctorReview':/^job:callRetest40[78]$/.test(id)?'call:ward'+id.slice(-3):id==='job:deliver'?'linen406':null;const outcome=(effectId&&locationScreen.querySelector('[data-world-effect="'+effectId+'"]'))||locationScreen.querySelector('.quest-receipt');if(outcome&&outcome.getClientRects().length){outcome.tabIndex=-1;outcome.focus({preventScroll:true});outcome.scrollIntoView({block:'nearest'});}else locationScreen.querySelector('[data-room-info-toggle]')?.focus({preventScroll:true});}
   else{
    if(!ok)renderMap();
-   const controls=[...locationScreen.querySelectorAll('[data-work-focus]')],target=controls.find(e=>e.dataset.workFocus===focus&&!e.disabled)||locationScreen.querySelector('[data-work-heading]');target?.focus({preventScroll:true});
+   const current=locationScreen.querySelector('.quest-workbench');
+   const restored=[...(current?.querySelectorAll('[data-work-focus]')||[])].find(e=>e.dataset.workFocus===focus&&!e.disabled);
+   const continuation=ok&&keyboard&&!restored&&workbenchKeyboardContinuation(current,board.kind,payload,focus);
+   if(continuation){
+    // The replacement sheet restores its previous scroll first.
+    queueMicrotask(()=>{if(continuation.isConnected)continuation.focus();});
+   }else (restored||current?.querySelector('[data-work-heading]'))?.focus({preventScroll:true});
   }
   return ok;
  },close:()=>{workNotice='';interaction=null;renderMap();const candidates=['[data-scene-action="'+id+'"]','[data-action="'+id+'"]','[data-room-info-toggle]'].flatMap(selector=>[...locationScreen.querySelectorAll(selector)]);candidates.find(e=>e.getClientRects().length&&!e.closest('[inert]'))?.focus({preventScroll:true});}});

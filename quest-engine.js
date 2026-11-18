@@ -126,7 +126,18 @@ function roomEffects(s,room,mode=s.mode){
   effects.push({id:'call:'+room,kind:'call',...copy(call),response,maintenance,verified,serviced,retested,needsRetest,needsService,title:needsRetest?'Нужен контрольный вызов':verified?'Вызов подтверждён':'Последняя проверка вызова',text:response+status});
  }
  if(room==='doctor'&&s.world.doctorReview){const review=copy(s.world.doctorReview),pending=review.maintenance.filter(r=>s.world.callEquipment[r].condition!=='working'||!s.world.callEquipment[r].verified),legacy=Object.values(review.calls).every(call=>call.revision<4);effects.push({id:'doctorReview',kind:'review',title:'Итог проверки вызовов',...review,unresolved:pending,text:legacy?(review.maintenance.length?'Врач: по палатам '+review.maintenance.map(r=>r.slice(4)).join(' и ')+' зарегистрирована проверка линии. Обслуживание и повторная проверка ещё не подтверждены.':'Врач: оба вызова подтверждены ответом поста. Проверку принимаю.'):review.maintenance.length?pending.length?'Врач: первичные акты сохранены. По палатам '+pending.map(r=>r.slice(4)).join(' и ')+' ещё требуется обслуживание или подтверждение контрольным вызовом.':'Врач: обслуживание и контрольные вызовы подтверждены. Первичные акты сохранены отдельно от результата.':'Врач: оба вызова подтверждены ответом поста. Проверку принимаю.'});}
- if(room==='nurse'&&linen)effects.push({id:'linenReview',kind:'review',order:linen.order,text:bed.preparationStarted?'Клара: новая подготовка кровати 406 ещё не завершена. Предыдущая квитанция остаётся в журнале.':linen.reviewed?(linen.prepared?'Клара: подготовку кровати 406 подтверждаю. Чистое бельё на своих местах.':'Клара: передачу комплекта в 406 подтверждаю.'):linen.prepared?'Клара: кровать 406 подготовлена. Передайте квитанцию, чтобы я закрыла поручение.':'Клара: бельё доставлено в 406. Передайте квитанцию, чтобы я закрыла поручение.'});
+ if(room==='nurse'&&linen){
+  const job=s.jobs.k2,previous=job?.active&&linen.order!=='k2:'+(job.count+1);
+  let text;
+  if(previous){
+   text=bed.preparationStarted?'Клара: новую смену ещё не закончили. Прежняя квитанция осталась в журнале.':linen.prepared?'Клара: прежняя смена записана. Кровать останется застеленной, пока не начнёшь новую.':'Клара: в журнале есть прежняя доставка. Для новой заявки нужен новый комплект.';
+  }else if(linen.reviewed){
+   text=linen.prepared?'Клара: подготовку кровати 406 подтверждаю. Чистое бельё на своих местах.':'Клара: передачу комплекта в 406 подтверждаю.';
+  }else{
+   text=linen.prepared?'Клара: кровать 406 подготовлена. Передайте квитанцию, чтобы я закрыла поручение.':'Клара: бельё доставлено в 406. Передайте квитанцию, чтобы я закрыла поручение.';
+  }
+  effects.push({id:'linenReview',kind:'review',order:linen.order,...(previous?{title:'Предыдущее поручение по белью'}:{}),text});
+ }
  return effects;
 }
 function syncRoute(s){s.flags.route=s.flags.route===true||!!(s.visited.A&&s.visited.B&&s.visited.C&&s.flags.stairsSeen);}

@@ -317,6 +317,28 @@ class QuestWorkbenchTests(unittest.TestCase):
         self.assertEqual(self.page.locator('.quest-workbench').count(),0)
         self.assertEqual(self.page.evaluate('document.activeElement.dataset.action'),'job:tag')
 
+    def test_keyboard_continues_after_diagnostic_and_route_buttons_are_consumed(self):
+        self.load();self.accept('d1');ui.room(self.page,'ward407');ui.action(self.page,'job:bell407')
+
+        def press(source, destination):
+            self.page.locator(f'[data-work-focus="{source}"]').press('Enter')
+            self.assertEqual(self.page.evaluate('document.activeElement.dataset.workFocus'),destination)
+
+        press('inspect:connector','test')
+        press('test','call-observation')
+        self.page.keyboard.press('Tab')
+        self.assertTrue(self.page.evaluate('document.activeElement.dataset.workFocus.startsWith("report:")'))
+        self.page.keyboard.press('Escape')
+
+        self.accept('d2');ui.action(self.page,'job:log')
+        sources=self.page.locator('.workbench-place-slip').evaluate_all('nodes=>nodes.map(node=>node.dataset.workValue)')
+        first,second,third=sources[:3]
+        press('place:'+first,'place:'+second)
+        press('place:'+second,'place:'+third)
+        press('move:'+second+':up','ordered:'+second)
+        self.page.keyboard.press('Tab')
+        self.assertEqual(self.page.evaluate('document.activeElement.dataset.workFocus'),'move:'+second+':down')
+
     def test_legacy_v6_parcel_finishes_old_flow_then_repeat_uses_workbench(self):
         self.load()
         # Explicit compatibility fixture: an existing v6 player already carrying

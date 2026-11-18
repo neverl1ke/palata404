@@ -318,6 +318,12 @@ html #quest-location-screen .quest-workbench[data-timeline-map=true] .workbench-
 .quest-workbench .workbench-observation-instrument[aria-hidden=true] {display:none}
 .quest-workbench .workbench-observation-instrument .workbench-bed-reference {max-width:580px}
 .quest-workbench .workbench-observation-instrument .workbench-object-illustration {width:120px;height:85px}
+.quest-workbench .workbench-observation-layout {
+ grid-template-columns:repeat(auto-fit,minmax(min(290px,100%),1fr));align-items:start;
+}
+.quest-workbench .workbench-observation-layout>.workbench-observation-card {max-width:none;margin:0}
+.quest-workbench .workbench-observation-evidence {scroll-margin-block:8px}
+.quest-workbench .workbench-observation-evidence:focus-visible {outline:2px solid #4f7180;outline-offset:2px}
 .quest-workbench .workbench-observation-reply {
  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;
 }
