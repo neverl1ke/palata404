@@ -89,7 +89,7 @@ class AvatarVisibilityTests(unittest.TestCase):
         self.page.locator('[data-room="ward404"]').dblclick()
         self.assertTrue(self.page.locator('#quest-location-screen').is_visible())
         self.assert_paused()
-        self.page.locator('.quest-room-tools').get_by_role('button', name='До карти', exact=True).click()
+        self.page.locator('.quest-room-tools').get_by_role('button', name='К карте', exact=True).click()
         self.assertTrue(self.page.locator('#map-modal').is_visible())
         self.assert_paused()
         self.page.evaluate('toggleMapModal(false)')

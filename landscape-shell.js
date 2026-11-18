@@ -56,8 +56,9 @@
     document.addEventListener('fullscreenchange', () => {
         const active = Boolean(document.fullscreenElement);
         fullscreen.setAttribute('aria-pressed', String(active));
-        fullscreen.setAttribute('aria-label', active ? 'Вийти з повного екрана' : 'На весь екран');
-        fullscreen.title = active ? 'Вийти з повного екрана' : 'На весь екран';
+        const label = active ? 'Выйти из полноэкранного режима' : 'На весь экран';
+        fullscreen.setAttribute('aria-label', label);
+        fullscreen.title = label;
         fit();
     });
     fit();

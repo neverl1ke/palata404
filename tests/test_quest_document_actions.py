@@ -122,6 +122,29 @@ class QuestDocumentActionTests(unittest.TestCase):
         self.ready()
         self.assertEqual(self.game.evaluate('({silver:stats.silver,exp:stats.exp})'), after)
 
+    def test_observation_offer_is_tappable_when_doctor_patrol_is_selected(self):
+        self.room('doctor')
+        action(self.game, 'accept:d2')
+        paper = self.game.locator('.scene-paper')
+        paper.locator('.scene-paper-nav').get_by_text('Открыть задания', exact=True).tap()
+        self.game.locator('#tasks-modal [data-quest-tab=doctor]').tap()
+        self.game.locator('#tasks-modal [data-quest-id=d2]').get_by_text('Показать на карте', exact=True).tap()
+        self.room('doctor')
+
+        patrol = paper.locator(':is([data-action="job:log"],[data-scene-action="job:log"])')
+        offer = paper.locator(':is([data-action="accept:d3"],[data-scene-action="accept:d3"])')
+        self.assertLess(patrol.bounding_box()['y'], offer.bounding_box()['y'])
+        for control in (patrol, offer):
+            self.assertGreaterEqual(control.bounding_box()['height'], 43.9)
+            self.assertTrue(control.evaluate('''button=>{
+                const box=button.getBoundingClientRect(),paper=button.closest('.scene-paper');
+                return paper.scrollTop===0&&box.bottom<=paper.querySelector('.scene-paper-nav').getBoundingClientRect().top&&
+                    button.contains(document.elementFromPoint(box.x+box.width/2,box.y+box.height/2));
+            }'''))
+        offer.tap()
+        self.assertEqual(self.game.locator('#quest-staff-dialogue').get_attribute('data-job'), 'd3')
+        self.assertEqual(self.game.locator('#quest-staff-dialogue').get_attribute('data-phase'), 'offer')
+
 
 if __name__ == '__main__':
     unittest.main()

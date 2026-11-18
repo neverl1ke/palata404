@@ -96,13 +96,15 @@ function render(host,options){
  const key=board.actionId||board.jobId||board.kind;
  function runWork(op,value){
   const scroller=section.querySelector('.workbench-scroll');
-  const nextBed=board.draftScene?.required?{
+  const draft=board.draftScene;
+  const nextBed=draft?.required?{
    startBedPreparation:'.workbench-draft-methods',
    chooseMethod:'.workbench-bed-pieces',
+   selectPiece:value==='sheet'&&draft.method&&!draft.spread?'.workbench-sheet-spread':null,
    spreadSheet:'.workbench-bed-pieces'
   }[op]:null;
   const showObservation=(board.kind==='subjectBaseline'||board.kind==='subjectDifference')&&op===board.actionOp;
-  scrollMemo={key,top:scroller?.scrollTop||0,briefOpen:section.querySelector('.workbench-brief')?.open,nextBed,showObservation,claraOpen:section.querySelector('.workbench-clara-art')?.open};
+  scrollMemo={key,top:scroller?.scrollTop||0,briefOpen:section.querySelector('.workbench-brief')?.open,nextBed,showObservation};
   let result;
   try{result=act(value===undefined?{op}:{op,value});}finally{scrollMemo=null;}
   if(result?.message&&section.isConnected)status.textContent=result.message;
@@ -212,21 +214,6 @@ function render(host,options){
    context.append(node('h3','','Край простыни поднялся от сквозняка'),node('p','','Клара подошла к дальней стороне кровати. «Прикроем окно или подержу край?»'));
    methods.append(context,button('Прикрыть окно и расправить простыню самому','chooseMethod','window','chooseMethod:window'),button('Попросить Клару придержать дальний край','chooseMethod','assistance','chooseMethod:assistance'));
    area.append(methods);
-  }else if(draft?.method&&!draft.spread){
-   const presence=assisted?'Клара держит дальний край простыни. Вы расправляете её с ближней стороны.':'Окно прикрыто. Простыню можно расправить без помощи.';
-   const state=node('section','workbench-draft-state');
-   state.append(node('p','',presence));
-   if(assisted){
-    const illustration=node('details','workbench-clara-art');
-    illustration.open=scrollMemo?.key===key&&!!scrollMemo.claraOpen;
-    const figure=node('figure','workbench-clara-figure'),portrait=node('img');
-    portrait.width=1024;portrait.height=1536;portrait.decoding='async';
-    portrait.src='assets/quest-living/clara-holds-linen.png';portrait.alt='Клара держит простыню двумя руками';
-    figure.append(portrait);
-    illustration.append(node('summary','','Иллюстрация к сцене'),figure);
-    state.append(illustration);
-   }
-   area.append(state);
   }
   const pieces=node('section','workbench-bed-pieces');pieces.append(bedReference(board.referenceImage),node('h3','','Принесённый комплект'));
   if(explicitStart&&!started)pieces.append(node('p','workbench-bed-start-note','Смена белья ещё не начата. Начните подготовку, затем разместите простыню и наволочку. До начала кровать остаётся без изменений.'));
@@ -239,7 +226,8 @@ function render(host,options){
   const useRange=Boolean(draft?.method&&!draft.spread);
   const diagram=node('div','workbench-bed-diagram'+(art?' has-bed-art':''));diagram.append(art||bedDiagram(visualPlaced));
   if(useRange){
-   const control=node('div','workbench-sheet-spread');
+   const panel=node('div','workbench-sheet-spread');
+   const control=node('div','workbench-sheet-controls');
    const range=node('input','workbench-sheet-range');
    range.type='range';range.min='0';range.max='100';range.step='1';range.value='0';
    range.dataset.sheetSpread='';range.dataset.workFocus='spreadSheet';
@@ -253,8 +241,18 @@ function render(host,options){
    const cloth=node('div','workbench-sheet-track');cloth.setAttribute('aria-hidden','true');
    range.addEventListener('input',()=>cloth.style.setProperty('--sheet-spread',range.value+'%'));
    range.addEventListener('change',()=>{if(range.valueAsNumber===100)runWork('spreadSheet');});
-   control.append(caption,hint,cloth,range);
-   scheme.append(control);
+   const context=assisted?'Клара держит дальний край простыни.':'Окно прикрыто. Простыню можно расправить без помощи.';
+   control.append(node('p','workbench-sheet-context',context),caption,hint,cloth,range);
+   panel.append(control);
+   if(assisted){
+    const figure=node('figure','workbench-clara-figure'),portrait=node('img');
+    portrait.width=1024;portrait.height=1536;portrait.decoding='async';
+    portrait.src='assets/quest-living/clara-holds-linen.png';portrait.alt='Клара держит простыню двумя руками';
+    figure.append(portrait,node('figcaption','','Дальний край'));
+    panel.classList.add('with-clara');
+    panel.append(figure);
+   }
+   scheme.append(panel);
   }
   for(const target of board.targets||[]){if(art&&!started||target.id==='sheetZone'&&useRange)continue;const part=target.id==='pillowZone'?'pillowcase':target.id==='sheetZone'?'sheet':null,done=part&&placed.has(part),zone=button(art?(done?'Готово':part==='sheet'?'Матрас':'Подушка'):explicitStart?(done?'Размещено':part==='sheet'?'Простыня':'Наволочка'):(target.label||'Место на кровати'),'place',target.id,'zone:'+target.id,{disabled:!board.parcel||!started||waitingForMethod||!board.selectedPiece||!!done,className:'workbench-bed-target',ariaLabel:target.label||'Место на кровати'});zone.dataset.bedZone=target.id;
    if(art&&part){const style=window.PalataQuestBedView.placementStyle(part);if(style)for(const[key,value]of Object.entries(style))zone.style[key]=value;}
@@ -532,7 +530,7 @@ function render(host,options){
    const target=nextBed&&section.querySelector(nextBed);
    if(target){
     target.scrollIntoView({block:'nearest',inline:'nearest'});
-    target.querySelector('button:not(:disabled)')?.focus({preventScroll:true});
+    target.querySelector('button:not(:disabled),input:not(:disabled)')?.focus({preventScroll:true});
    }
   });
  }
