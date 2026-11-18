@@ -27,7 +27,7 @@
     <link rel="stylesheet" href="hud-card.css?v=d64aced52614">
 <link rel="stylesheet" href="quest-prototype.css?v=3cda336a3aaa">
 <link rel="stylesheet" href="quest-bed-view.css?v=84437fcd20c1">
-<link rel="stylesheet" href="quest-workbench.css?v=45e7a166158b">
+<link rel="stylesheet" href="quest-workbench.css?v=cff599bcfe36">
 <link rel="stylesheet" href="quest-dialogues.css?v=ef2925c7d7bf">
 <script src="compact-ui.js?v=b7877f5fe41e" defer></script>
 <link rel="stylesheet" href="compact-documents.css?v=fb8aeff56bb4">
@@ -183,21 +183,21 @@
     </div>
 
     <!-- Модальне вікно Інвентаря -->
-    <div id="inventory-modal" role="dialog" aria-modal="true" aria-label="Інвентар" class="modal side-modal hidden">
+    <div id="inventory-modal" role="dialog" aria-modal="true" aria-label="Инвентарь" class="modal side-modal hidden">
         <div class="modal-content side-content">
             <div class="modal-header">
-                <h3><img class="game-icon" src="assets/icons/bag.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"> Інвентар</h3>
-                <button class="btn-close-mini" onclick="closeInventory()" aria-label="Закрити вікно">✕</button>
+                <h3><img class="game-icon" src="assets/icons/bag.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"> Инвентарь</h3>
+                <button class="btn-close-mini" onclick="closeInventory()" aria-label="Закрыть окно">✕</button>
             </div>
 
             <div class="inventory-layout-wrapper">
                 <div class="inventory-filters-column">
-                    <button class="filter-btn active" title="Всі" onclick="setCategoryFilter('all', this)" aria-label="Всі"><img class="game-icon" src="assets/icons/box.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"></button>
-                    <button class="filter-btn" title="Зброя" onclick="setCategoryFilter('weapon', this)" aria-label="Зброя"><img class="game-icon" src="assets/icons/pistol.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"></button>
-                    <button class="filter-btn" title="Шолом" onclick="setCategoryFilter('helmet', this)" aria-label="Шолом"><img class="game-icon" src="assets/icons/helmet.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"></button>
+                    <button class="filter-btn active" title="Все" onclick="setCategoryFilter('all', this)" aria-label="Все"><img class="game-icon" src="assets/icons/box.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"></button>
+                    <button class="filter-btn" title="Оружие" onclick="setCategoryFilter('weapon', this)" aria-label="Оружие"><img class="game-icon" src="assets/icons/pistol.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"></button>
+                    <button class="filter-btn" title="Шлем" onclick="setCategoryFilter('helmet', this)" aria-label="Шлем"><img class="game-icon" src="assets/icons/helmet.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"></button>
                     <button class="filter-btn" title="Броня" onclick="setCategoryFilter('armor', this)" aria-label="Броня"><img class="game-icon" src="assets/icons/shield.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"></button>
-                    <button class="filter-btn" title="Модулі" onclick="setCategoryFilter('mod', this)" aria-label="Модулі"><img class="game-icon" src="assets/icons/puzzle.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"></button>
-                    <button class="filter-btn" title="Медикаменти" onclick="setCategoryFilter('meds', this)" aria-label="Медикаменти"><img class="game-icon" src="assets/icons/flask.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"></button>
+                    <button class="filter-btn" title="Модули" onclick="setCategoryFilter('mod', this)" aria-label="Модули"><img class="game-icon" src="assets/icons/puzzle.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"></button>
+                    <button class="filter-btn" title="Медикаменты" onclick="setCategoryFilter('meds', this)" aria-label="Медикаменты"><img class="game-icon" src="assets/icons/flask.svg" alt="" aria-hidden="true" draggable="false" width="64" height="64"></button>
                 </div>
 
                 <div id="stash-items" class="minecraft-grid"></div>
@@ -210,7 +210,7 @@
         <div class="modal-content" style="width: min(320px, 90vw);">
             <div class="modal-header">
                 <h3 id="item-info-title">Предмет</h3>
-                <button class="btn-close-mini" onclick="closeItemInfo()" aria-label="Закрити вікно">✕</button>
+                <button class="btn-close-mini" onclick="closeItemInfo()" aria-label="Закрыть окно">✕</button>
             </div>
             <div id="item-info-body" style="display: flex; flex-direction: column; gap: 10px; font-size: 13px; margin-bottom: 15px;">
                 <!-- Динамічний опис характеристик предмета -->
@@ -421,7 +421,7 @@
     <script src="wardrobe.js?v=f7526db229ae" defer></script>
     <script src="wardrobe-tablet.js?v=fca32b70b7d1" defer></script>
     <script src="wardrobe-archive.js?v=2cc4980cab6c" defer></script>
-    <script src="script.js?v=dee4d1f8e0e3" defer></script>
+    <script src="script.js?v=c2e86379fe2b" defer></script>
     <!-- Модальне вікно: Медичне Досьє пацієнта (Аркуш паперу А4) -->
     <div id="dossier-modal" role="dialog" aria-modal="true" aria-label="Особисте досьє" class="modal center-modal hidden">
         <div class="modal-content dossier-paper">
@@ -772,12 +772,12 @@
 <script src="quest-bed-view.js?v=4a7feecda1f6" defer></script>
 <script src="quest-world-view.js?v=f377ddc3440a" defer></script>
 <script src="quest-navigation.js?v=f2f09595933a" defer></script>
-<script src="quest-workbench.js?v=a6479906dd18" defer></script>
+<script src="quest-workbench.js?v=c78b72a0a907" defer></script>
 <script src="quest-notes.js?v=afd9f8a87d0f" defer></script>
 <script src="quest-dialogues.js?v=297dfbb197ae" defer></script>
 <script src="quest-prototype.js?v=d1b9c098adbd" defer></script>
 <script src="raid-hud.js?v=47b11ed1f582" defer></script>
 <dialog id="level-notice" aria-labelledby="level-notice-title" oncancel="event.preventDefault();closeLevelNotice()">
-<article class="document-paper"><document-header variant="center" department="ПІДВИЩЕННЯ РІВНЯ"></document-header><h2 id="level-notice-title">Ви отримали новий рівень!</h2><p class="level-notice-number" id="level-notice-number"></p><p>Нагороду вже зараховано</p><ul><li>100 срібла</li><li>50 таблеток</li><li>5 баксів</li></ul><button type="button" onclick="closeLevelNotice()">Продовжити</button></article></dialog>
+<article class="document-paper"><document-header variant="center" department="ПОВЫШЕНИЕ УРОВНЯ"></document-header><h2 id="level-notice-title">Вы получили новый уровень!</h2><p class="level-notice-number" id="level-notice-number"></p><p>Награда уже начислена</p><ul><li>100 серебра</li><li>50 таблеток</li><li>5 баксов</li></ul><button type="button" onclick="closeLevelNotice()">Продолжить</button></article></dialog>
 </body>
 </html>

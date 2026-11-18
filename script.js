@@ -780,6 +780,10 @@ function inventoryItemArt(item) {
         : iconHTML(item.icon);
 }
 
+function inventoryItemLabel(item) {
+    return item.category === 'meds' && item.effectType === 'hp_10' ? 'Малая аптечка' : item.name;
+}
+
 function renderMinecraftStash() {
     const container = document.getElementById('stash-items');
     if (!container) return;
@@ -819,7 +823,7 @@ function renderMinecraftStash() {
             `;
             slot.setAttribute('role', 'button');
             slot.tabIndex = 0;
-            slot.setAttribute('aria-label', item.name);
+            slot.setAttribute('aria-label', inventoryItemLabel(item));
             slot.onclick = () => openItemInfo(item);
         }
         container.appendChild(slot);
@@ -828,10 +832,11 @@ function renderMinecraftStash() {
 
 function openItemInfo(item) {
     selectedItemForAction = item;
+    const smallMedkit = item.category === 'meds' && item.effectType === 'hp_10';
     const titleElem = document.getElementById('item-info-title');
-    if (titleElem) titleElem.innerHTML = `${inventoryItemArt(item)} ${escapeHTML(weaponModelId(item) ? weaponItemLabel(item) : item.name)}`;
+    if (titleElem) titleElem.innerHTML = `${inventoryItemArt(item)} ${escapeHTML(weaponModelId(item) ? weaponItemLabel(item) : inventoryItemLabel(item))}`;
 
-    let bodyHtml = `<p style="color: #a3927d;">${escapeHTML(item.desc || 'Немає опису предмета.')}</p>`;
+    let bodyHtml = smallMedkit && !item.desc ? '' : `<p style="color: #a3927d;">${escapeHTML(item.desc || 'Немає опису предмета.')}</p>`;
 
     const isEquipped = (
         (item.category === 'weapon' && getEquippedItem('weapon') === item) ||
@@ -848,10 +853,12 @@ function openItemInfo(item) {
         bodyHtml += `<div style="color: #3498db; margin-top: 5px;"><strong>${iconHTML('shield')} Бонус до броні:</strong> +${escapeHTML(item.armorBonus || 0)}</div>`;
         if (actionBtn) actionBtn.textContent = isEquipped ? "Зняти" : "Надіти спорядження";
     } else if (item.category === 'meds') {
-        bodyHtml += `<div style="color: #2ecc71; margin-top: 5px;"><strong>${iconHTML('lightning')} Ефект препарату:</strong> ${escapeHTML(item.effectDesc || 'Відновлює стан')}</div>`;
-        if (actionBtn) actionBtn.textContent = "Використати";
+        const effectLabel = smallMedkit ? 'Эффект препарата' : 'Ефект препарату';
+        const effectDescription = smallMedkit ? 'Восстанавливает 10% здоровья' : item.effectDesc || 'Відновлює стан';
+        bodyHtml += `<div style="color: #2ecc71; margin-top: 5px;"><strong>${iconHTML('lightning')} ${effectLabel}:</strong> ${escapeHTML(effectDescription)}</div>`;
+        if (actionBtn) actionBtn.textContent = smallMedkit ? 'Использовать' : 'Використати';
     } else {
-        if (actionBtn) actionBtn.textContent = "Закрити";
+        if (actionBtn) actionBtn.textContent = item.questCargo ? 'Закрыть' : 'Закрити';
     }
 
     if (weaponModelId(item)) bodyHtml += `<p class="rarity-tag" data-rarity="${item.rarity}">${WEAPON_RARITIES[item.rarity].label}</p><button type="button" onclick="closeItemInfo();openCustomization();selectWardrobeCategory('weapons');selectWardrobeItem('${item.paperDollId}')">Открыть карточку оружия</button>`;

@@ -243,6 +243,10 @@ html[data-touch-ui=true] #quest-location-screen .quest-workbench[data-work-kind=
 .quest-workbench .workbench-sheet-spread label {display:block;font-size:16px}
 .quest-workbench .workbench-sheet-spread p {margin:3px 0;font-size:13px}
 .quest-workbench .workbench-sheet-spread .workbench-sheet-context {margin:0 0 7px}
+@container compact-workbench (max-height:440px) {
+ /* When the sheet is selected, keep the titles above its controls in view. */
+ .quest-workbench .workbench-sheet-spread {scroll-margin-block-start:36px}
+}
 .quest-workbench .workbench-sheet-range {
  display:block;width:100%;height:44px;margin:0;accent-color:#4f6452;touch-action:pan-y;
 }

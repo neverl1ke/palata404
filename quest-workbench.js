@@ -236,7 +236,7 @@ function render(host,options){
    range.setAttribute('aria-describedby','workbench-sheet-hint');
    const caption=node('label','',assisted?'Расправить простыню с ближней стороны':'Расправить простыню');
    caption.htmlFor=range.id;
-   const hint=node('p','workbench-muted',range.disabled?'Выберите простыню из комплекта.':'Передвиньте ползунок до упора вправо. С клавиатуры можно нажать End.');
+   const hint=node('p','workbench-muted',range.disabled?'Выберите простыню из комплекта.':'До упора вправо. С клавиатуры — End.');
    hint.id='workbench-sheet-hint';
    const cloth=node('div','workbench-sheet-track');cloth.setAttribute('aria-hidden','true');
    range.addEventListener('input',()=>cloth.style.setProperty('--sheet-spread',range.value+'%'));

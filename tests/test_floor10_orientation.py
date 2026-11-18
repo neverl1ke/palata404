@@ -451,6 +451,32 @@ class Floor10OrientationTests(unittest.TestCase):
                 self.assertEqual(self.ledger(), economic)
                 self.assertEqual(self.game.evaluate('JSON.parse(JSON.stringify(inventory))'), inventory_before)
 
+    def test_k2_assistance_keeps_headings_and_slider_visible_on_short_touch_screen(self):
+        self.open_game(667, 375)
+        self.room('nurse')
+        action(self.game, 'accept:k2')
+        self.room('linen')
+        complete(self.game, 'job:linen')
+        self.room('ward406')
+        action(self.game, 'job:deliver')
+        operate(self.game, 'startBedPreparation')
+        operate(self.game, 'chooseMethod', 'assistance')
+        self.game.locator('[data-work-focus="piece:sheet"]').tap()
+
+        self.game.wait_for_function('''() => {
+            const board = document.querySelector('.quest-workbench[data-work-kind="bedmaking"]');
+            const scroll = board.querySelector('.workbench-scroll').getBoundingClientRect();
+            const selectors = ['.workbench-bed-pieces > h3', '.workbench-bed-scheme > h3',
+                '.workbench-clara-figure', 'input[data-sheet-spread]'];
+            return selectors.every(selector => {
+                const bounds = board.querySelector(selector).getBoundingClientRect();
+                return bounds.top >= scroll.top - .5 && bounds.bottom <= scroll.bottom + .5;
+            });
+        }''')
+        slider = self.game.locator('input[data-sheet-spread]')
+        self.assertTrue(slider.evaluate('input => document.activeElement === input'))
+        self.assert_touch_target(slider, 'k2-assisted-sheet-slider')
+
     def test_linen_and_calls_show_partial_serviced_and_confirmed_world_results(self):
         self.open_game(844, 390)
         self.show_map()
