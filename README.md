@@ -16,6 +16,7 @@
 - [Правила графічних ресурсів і незмінних аватарів](docs/PAPER_DOLL_ASSET_PIPELINE.md)
 - [Одяг, зовнішність і збереження](docs/paper-doll.md)
 - [Поверх, кімнати й завдання](docs/FLOOR10_INTEGRATION.md)
+- [Концепт дев’ятого поверху «Реабілітаційний»](review/floor9-concept/index.html)
 - [Спорядження та розвиток зброї](docs/weapon-progression.md)
 - [Перелік збережених джерел і фікстур](review/README.md)
 
