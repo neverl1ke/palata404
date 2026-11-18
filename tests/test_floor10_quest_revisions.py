@@ -1,4 +1,4 @@
-"""D2/D3 revision3 gameplay solved independently from rendered evidence.
+"""D2/D3 revision4 gameplay solved independently from rendered evidence.
 
 Only the explicitly named historical-save case seeds storage. New orders use
 real scene/map/workbench controls, never E.apply or hidden answer generators.
@@ -78,7 +78,7 @@ class QuestRevisionTests(unittest.TestCase):
     def accept(self, identifier):
         self.room('doctor')
         action(self.game, 'accept:'+identifier)
-        self.assertEqual(self.progress()['jobs'][identifier]['revision'], 3)
+        self.assertEqual(self.progress()['jobs'][identifier]['revision'], 4)
 
     def claim_once(self, identifier, exp, silver, count):
         if self.progress()['mode'] != 'patient':
@@ -95,12 +95,16 @@ class QuestRevisionTests(unittest.TestCase):
         self.assertEqual(self.progress()['jobs'][identifier]['count'], count)
 
     def timeline_sources(self):
-        return self.game.locator('.workbench-evidence-slip').evaluate_all('''nodes=>nodes.map(e=>({
-            id:e.dataset.slipId,time:e.querySelector('.workbench-evidence-time').textContent.trim(),
-            timeState:e.querySelector('.workbench-evidence-time').dataset.timeState,
-            room:e.querySelector('.workbench-evidence-room').textContent.trim(),
-            note:e.querySelector('.workbench-evidence-note').textContent.trim(),
-            reverse:e.querySelector('.workbench-reverse-fact p')?.textContent.trim()||null}))''')
+        return self.game.locator('.workbench-source-slip').evaluate_all('''nodes=>nodes.map(e=>{
+            const time=e.querySelector('.workbench-source-time').textContent.trim();
+            const unreadable=time==='Время не читается';
+            return {
+                id:e.dataset.slipId,time,timeState:unreadable?'unreadable':'readable',
+                room:e.querySelector('strong').textContent.trim(),
+                note:e.querySelector('p').textContent.trim(),
+                reverse:unreadable?e.closest('.quest-workbench').querySelector('.workbench-route-reverse p')?.textContent.trim()||null:null
+            };
+        })''')
 
     def chronological_sources(self, cards):
         readable = sorted((card for card in cards if re.fullmatch(r'\d{2}:\d{2}', card['time'])), key=lambda card: card['time'])
@@ -137,7 +141,7 @@ class QuestRevisionTests(unittest.TestCase):
         self.accept('d2')
         accepted = self.money()
         action(self.game, 'job:log')
-        self.assertEqual(self.game.locator('.quest-workbench').get_attribute('data-work-revision'), '3')
+        self.assertEqual(self.game.locator('.quest-workbench').get_attribute('data-work-revision'), '4')
         sources = self.timeline_sources()
         obscured = [card for card in sources if card['timeState'] == 'unreadable']
         self.assertEqual(len(obscured), 1)
@@ -164,7 +168,7 @@ class QuestRevisionTests(unittest.TestCase):
         self.assertEqual(self.chronological_sources(self.timeline_sources())[0], desired)
         for identifier in desired[2:]:
             operate(self.game, 'place', identifier)
-        unknown = self.game.locator(f'[data-ordered-slip="{unknown_id}"] .workbench-evidence-time')
+        unknown = self.game.locator(f'[data-ordered-slip="{unknown_id}"] > span')
         self.assertEqual(unknown.inner_text(), 'Время не установлено')
         operate(self.game, 'move', {'id': unknown_id, 'direction': 'down'})
         wrong = self.progress()['jobs']['d2']['work']
@@ -173,6 +177,7 @@ class QuestRevisionTests(unittest.TestCase):
         self.assertNotIn('log', self.progress()['cargo'])
         self.assertEqual(self.money(), accepted)
         operate(self.game, 'move', {'id': unknown_id, 'direction': 'up'})
+        self.assertEqual(len(self.timeline_sources()), 4, 'Assembled cards retain their evidence')
         self.capture('all-sources-supported')
         operate(self.game, 'submit')
         self.assertTrue(self.progress()['jobs']['d2']['done']['log'])
@@ -189,10 +194,15 @@ class QuestRevisionTests(unittest.TestCase):
         for cycle, expected_changes in enumerate([0, 1, 3]):
             self.accept('d3')
             unpaid = self.money()
+            action(self.game, 'job:baseline')
+            operate(self.game, 'chooseSubject', 'signA')
+            self.assertNotIn('baseline', self.progress()['cargo'])
             self.room('A')
             baseline = self.scene_fields()
             action(self.game, 'job:baseline')
-            visible_baseline = self.game.locator('.workbench-observation-plate dd').all_text_contents()
+            self.assertTrue(self.game.locator('[data-work-op="record"]').is_disabled())
+            operate(self.game, 'inspect')
+            visible_baseline = self.game.locator('.workbench-observation-card dd').all_text_contents()
             self.assertEqual(visible_baseline, list(baseline.values()))
             operate(self.game, 'record')
             saved_baseline = self.progress()['jobs']['d3']['work']['baseline']
@@ -201,6 +211,8 @@ class QuestRevisionTests(unittest.TestCase):
             self.room('A')
             current = self.scene_fields()
             action(self.game, 'job:difference')
+            self.assertEqual(self.compared_fields(), {})
+            operate(self.game, 'inspect')
             compared = self.compared_fields()
             self.assertEqual({key: row['baseline'] for key, row in compared.items()}, baseline)
             self.assertEqual({key: row['current'] for key, row in compared.items()}, current)
@@ -252,20 +264,25 @@ class QuestRevisionTests(unittest.TestCase):
             receipt = self.game.locator('.quest-cargo-panel [data-cargo="difference"]')
             self.assertIn('Карточка наблюдения · результат', receipt.inner_text())
             if not changed:
-                self.assertRegex(self.game.evaluate('PalataQuestEngine.cargoDescription(PalataQuestPrototype.snapshot(),"difference")'), 'различий не обнаружено')
+                self.assertRegex(self.game.evaluate('PalataQuestEngine.cargoDescription(PalataQuestPrototype.snapshot(),"difference")'), '(?i)различий не обнаружено')
             self.assertEqual(self.money(), unpaid)
             self.claim_once('d3', 20, 10, cycle+1)
 
-    def test_explicit_legacy_issued_r1_r2_fixtures_keep_their_original_flow_and_completed_d2(self):
-        for d2_revision, d3_revision in [(1, 2), (2, 1)]:
+    def test_explicit_legacy_issued_fixtures_keep_their_original_flow_and_completed_d2(self):
+        for d2_revision, d3_revision in [(1, 2), (2, 1), (3, 3)]:
             with self.subTest(d2=d2_revision, d3=d3_revision):
                 self.open_game(844, 390)
                 fixture = self.game.evaluate('''({d2Revision,d3Revision})=>{
-                    const raw={version:8,mode:'patient',room:'doctor',trip:0,jobs:{
-                        d2:{active:true,revision:d2Revision,count:0,startTrip:0,variant:0,done:{},work:{order:['entry-a']}},
-                        d3:{active:true,revision:d3Revision,count:0,startTrip:0,variant:0,done:{},work:{baselineCaptured:false,marked:[]}}},
+                    const revised=d2Revision===3;
+                    const issuedD2={revision:d2Revision,variant:0,work:{order:['entry-a']}};
+                    const issuedD3={revision:d3Revision,variant:0,work:{baselineCaptured:false,marked:[]}};
+                    const envelope={active:true,count:0,startTrip:0,done:{}};
+                    const raw={version:revised?9:8,mode:'patient',room:'doctor',trip:0,jobs:{
+                        d2:{...envelope,...(revised?PalataQuestJobModel.restore('d2',issuedD2):issuedD2)},
+                        d3:{...envelope,...(revised?PalataQuestJobModel.restore('d3',issuedD3):issuedD3)}},
                         cargo:d3Revision===1?['baseline']:[],flags:{unlockB:true,unlockC:true},
-                        world:{version:1,linen406:null,calls:{ward407:null,ward408:null},doctorReview:null}};
+                        world:revised?PalataQuestEngine.initial().world:
+                            {version:1,linen406:null,calls:{ward407:null,ward408:null},doctorReview:null}};
                     return{key:'palata404_floor10_progress:'+encodeURIComponent(raidArchiveOwnerId),raw:JSON.stringify(raw),supported:PalataQuestEngine.supportsSave(raw)};
                 }''', {'d2Revision': d2_revision, 'd3Revision': d3_revision})
                 self.assertTrue(fixture['supported'])
@@ -284,7 +301,7 @@ class QuestRevisionTests(unittest.TestCase):
                 self.claim_once('d2', 10, 5, 1)
                 self.room('doctor')
                 self.assertEqual(self.game.locator('[data-action="accept:d2"],[data-scene-action="accept:d2"]').count(), 0)
-                if d3_revision == 2:
+                if d3_revision >= 2:
                     self.room('A')
                     complete(self.game, 'job:baseline')
                 self.switch_mode('trip')
@@ -296,7 +313,7 @@ class QuestRevisionTests(unittest.TestCase):
                 self.claim_once('d3', 20, 10, 1)
                 self.room('doctor')
                 action(self.game, 'accept:d3')
-                self.assertEqual(self.progress()['jobs']['d3']['revision'], 3)
+                self.assertEqual(self.progress()['jobs']['d3']['revision'], 4)
                 self.assertEqual(self.progress()['jobs']['d3']['count'], 1)
                 self.assertEqual(self.progress()['jobs']['d2']['count'], 1)
                 self.capture('legacy-'+str(d2_revision)+'-'+str(d3_revision))

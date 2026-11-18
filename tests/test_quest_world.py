@@ -24,13 +24,19 @@ class QuestWorldTests(unittest.TestCase):
     setUp=previous.QuestWorkbenchTests.setUp
     tearDown=test_game.GameTests.tearDown
     load=test_game.GameTests.load
-    accept=previous.QuestWorkbenchTests.accept
     progress=previous.QuestWorkbenchTests.progress
     ledger=previous.QuestWorkbenchTests.ledger
     reload_home=previous.QuestWorkbenchTests.reload_home
 
     def world(self):
         return self.progress()['world']
+
+    def accept(self, identifier):
+        ui.room(self.page, 'nurse' if identifier == 'k2' else 'doctor')
+        ui.action(self.page, 'accept:'+identifier)
+        order = self.progress()['jobs'][identifier]
+        self.assertTrue(order['active'])
+        self.assertEqual(order['revision'], 5)
 
     def packed_linen(self):
         self.accept('k2')
@@ -68,6 +74,9 @@ class QuestWorldTests(unittest.TestCase):
         self.assertTrue(ui.board(self.page,'job:deliver')['preparationStarted'])
         self.assertFalse(self.world()['linen406'])
         self.assertEqual(self.page.locator('[data-world-item="pending-bed-linen"]').count(),1)
+        self.assertEqual(self.page.locator('[data-work-op="chooseMethod"]').count(),2)
+        ui.operate(self.page,'chooseMethod','window')
+        ui.operate(self.page,'selectPiece','sheet')
         self.page.set_viewport_size({'width':844,'height':390})
         # The approved close-up keeps the real source camera. On a short screen
         # its controls may scroll; each must still be fully visible and hittable.
@@ -75,7 +84,7 @@ class QuestWorldTests(unittest.TestCase):
         controls=[
             '[data-work-op="selectPiece"][data-work-value="sheet"]',
             '[data-work-op="selectPiece"][data-work-value="pillowcase"]',
-            '[data-work-op="place"][data-work-value="sheetZone"]',
+            'input[data-sheet-spread]',
             '[data-work-op="place"][data-work-value="pillowZone"]',
         ]
         geometry=[]
@@ -99,14 +108,13 @@ class QuestWorldTests(unittest.TestCase):
         self.assertTrue(all(button['visible'] and button['centerHit'] and not button['horizontalClip'] and button['height']>=44 for button in geometry),geometry)
         OUT.joinpath('approved-bed-short-landscape-controls.json').write_text(json.dumps(geometry,ensure_ascii=False,indent=2))
         self.page.set_viewport_size({'width':1280,'height':800})
-        ui.operate(self.page,'selectPiece','sheet')
         wrong=ui.board(self.page,'job:deliver');world_before=self.world()
         ui.operate(self.page,'place','pillowZone')
         self.assertEqual(ui.board(self.page,'job:deliver'),wrong)
         self.assertEqual(self.world(),world_before)
         self.assertEqual(self.ledger(),before)
         self.assertEqual(self.page.locator('[data-world-item="pending-bed-linen"]').get_attribute('data-pending-pieces'),'sheet,pillowcase')
-        ui.operate(self.page,'place','sheetZone')
+        ui.operate(self.page,'spreadSheet')
         self.assertEqual(ui.board(self.page,'job:deliver')['placed'],['sheet'])
         self.assertIn('linen',self.ledger()['cargo'])
         self.assertNotIn('delivery',self.ledger()['cargo'])
@@ -211,14 +219,14 @@ class QuestWorldTests(unittest.TestCase):
         self.assertEqual(self.progress()['jobs']['k2']['count'],2)
         self.assertEqual(self.world()['linen406']['order'],'k2:2')
 
-    def test_doctor_reviews_observed_calls_without_automatically_repairing_them(self):
-        self.load();self.accept('d1');before=self.ledger();observations={}
+    def test_doctor_reviews_original_calls_after_player_confirms_local_retests(self):
+        self.load();self.accept('d1');before=self.ledger()
+        observations={}
         for room in ['ward407','ward408']:
             action='job:bell'+room[-3:]
             ui.room(self.page,room);ui.action(self.page,action)
             ui.operate(self.page,'inspect','connector');ui.operate(self.page,'test')
             board=ui.board(self.page,action)
-            observations[room]=copy.deepcopy(board)
             record=self.world()['calls'][room]
             self.assertTrue(record['tested'])
             self.assertEqual(record['connected'],board['connector']['connected'])
@@ -230,23 +238,29 @@ class QuestWorldTests(unittest.TestCase):
             expected='unassessed' if board['connector']['connected'] is None else 'disconnected' if not board['connector']['connected'] else 'working' if 'вызов принят' in board['response'] else 'noResponse'
             self.assertEqual(self.world()['calls'][room]['report'],expected)
             self.assertEqual(self.page.locator(f'[data-call-room="{room}"]').inner_text(),'✓' if expected=='working' else '!')
+            observations[room]=copy.deepcopy(self.world()['calls'][room])
         with_proofs=self.ledger()
-        ui.room(self.page,'doctor');ui.complete(self.page,'job:callReview')
-        self.assertEqual(self.ledger(),with_proofs)
-        review=copy.deepcopy(self.world()['doctorReview'])
-        self.assertEqual(review['order'],'d1:1')
-        self.assertTrue(review['maintenance'])
-        self.assertEqual(self.effect('doctorReview').count(),1)
-        visible=self.effect('doctorReview').evaluate('''e=>{const r=e.getBoundingClientRect(),paper=e.closest('.scene-paper').getBoundingClientRect();return{top:r.top,bottom:r.bottom,clipTop:Math.max(0,paper.top),clipBottom:Math.min(innerHeight,paper.bottom)}}''')
-        self.assertGreaterEqual(visible['top'],visible['clipTop'],visible)
-        self.assertLessEqual(visible['bottom'],visible['clipBottom'],visible)
-        self.assertIn('408',self.effect('doctorReview').inner_text())
+        ui.room(self.page,'doctor')
+        self.assertEqual(self.page.locator('[data-action="job:callReview"]').count(),0)
+        self.assertFalse(self.world()['doctorReview'])
         self.assertNotEqual(self.world()['callEquipment']['ward408']['condition'],'working')
         ui.complete_call_cycle(self.page)
-        self.assertEqual(self.world()['doctorReview'],review)
-        self.assertTrue(all(item['condition']=='working' for item in self.world()['callEquipment'].values()))
+        self.assertFalse(self.world()['doctorReview'])
+        self.assertTrue(all(item['condition']=='working' and item['verified'] for item in self.world()['callEquipment'].values()))
         self.assertEqual(self.ledger(),with_proofs)
         ui.room(self.page,'doctor');ui.action(self.page,'claim:d1')
+        review=copy.deepcopy(self.world()['doctorReview'])
+        self.assertEqual(review['order'],'d1:1')
+        self.assertEqual(review['maintenance'],['ward407','ward408'])
+        self.assertEqual(review['calls'],{
+            room:{**observation,'reviewed':True} for room,observation in observations.items()
+        })
+        self.assertEqual(self.effect('doctorReview').count(),1)
+        self.effect('doctorReview').scroll_into_view_if_needed()
+        visible=self.effect('doctorReview').evaluate('''e=>{const r=e.getBoundingClientRect(),paper=e.closest('.scene-paper').getBoundingClientRect();return{top:r.top,bottom:r.bottom,clipTop:Math.max(0,paper.top),clipBottom:Math.min(innerHeight,paper.bottom)}}''')
+        self.assertGreaterEqual(visible['top'],visible['clipTop']-.5,visible)
+        self.assertLessEqual(visible['bottom'],visible['clipBottom']+.5,visible)
+        self.assertIn('Первичные акты сохранены',self.effect('doctorReview').inner_text())
         after=self.ledger()
         self.assertEqual(after['silver']-before['silver'],10)
         self.assertEqual(after['exp']-before['exp'],20)
@@ -263,13 +277,14 @@ class QuestWorldTests(unittest.TestCase):
         self.load();self.packed_linen();ui.room(self.page,'ward406');ui.action(self.page,'job:deliver')
         # The opposite placement order must show only the actual unused sheet.
         ui.operate(self.page,'startBedPreparation')
+        ui.operate(self.page,'chooseMethod','assistance')
         ui.operate(self.page,'selectPiece','pillowcase');ui.operate(self.page,'place','pillowZone')
         ui.operate(self.page,'selectPiece','sheet')
         self.assertEqual(self.page.locator('[data-world-item="pending-bed-linen"]').get_attribute('data-pending-pieces'),'sheet')
         self.assertIn('наволочка уже размещена',self.page.locator('[data-world-item="pending-bed-linen"]').get_attribute('aria-label'))
         before={'world':self.world(),'work':self.progress()['jobs']['k2']['work'],'ledger':self.ledger()}
         self.page.evaluate('''()=>{window.worldOriginalSet=safeStorageSet;safeStorageSet=(k,v)=>String(k).startsWith('palata404_floor10_reward:')?false:worldOriginalSet(k,v);}''')
-        ui.operate(self.page,'place','sheetZone')
+        ui.operate(self.page,'spreadSheet')
         self.assertIn('Не удалось сохранить',self.page.locator('.workbench-status').inner_text())
         self.assertEqual({'world':self.world(),'work':self.progress()['jobs']['k2']['work'],'ledger':self.ledger()},before)
         self.assertEqual(self.effect('linen406').count(),1)
@@ -279,7 +294,7 @@ class QuestWorldTests(unittest.TestCase):
         self.assertEqual(self.page.locator('[data-world-item="pending-bed-linen"]').get_attribute('data-pending-pieces'),'sheet')
         self.assertEqual(self.page.locator('[data-world-item="prepared-linen"]').count(),0)
         self.page.evaluate('()=>{safeStorageSet=worldOriginalSet;}')
-        ui.operate(self.page,'place','sheetZone')
+        ui.operate(self.page,'spreadSheet')
         self.assertTrue(self.world()['linen406']['prepared'])
         self.assertEqual(self.page.locator('[data-world-item="pending-bed-linen"]').count(),0)
         self.assertEqual(self.page.locator('[data-world-item="prepared-linen"]').count(),1)
@@ -300,7 +315,7 @@ class QuestWorldTests(unittest.TestCase):
             f'localStorage.setItem({json.dumps(fixture["key"])},{json.dumps(fixture["raw"])});'
             'sessionStorage.setItem("worldLegacyFixtureSeeded","1");}')
         self.reload_home()
-        self.assertEqual(self.progress()['version'],10)
+        self.assertEqual(self.progress()['version'],11)
         self.assertEqual(self.progress()['jobs']['k2']['revision'],2)
         self.assertFalse(self.world()['linen406'])
         before=self.ledger();ui.room(self.page,'ward406');ui.action(self.page,'job:deliver')
@@ -317,7 +332,7 @@ class QuestWorldTests(unittest.TestCase):
         self.assertEqual(self.ledger()['exp']-before['exp'],15)
         self.assertEqual(self.progress()['jobs']['k2']['count'],3)
         self.reload_home();self.assertEqual(self.progress()['jobs']['k2']['revision'],2)
-        self.accept('k2');self.assertEqual(self.progress()['jobs']['k2']['revision'],4)
+        self.accept('k2');self.assertEqual(self.progress()['jobs']['k2']['revision'],5)
 
 
 if __name__=='__main__':

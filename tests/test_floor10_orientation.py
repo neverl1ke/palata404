@@ -468,8 +468,9 @@ class Floor10OrientationTests(unittest.TestCase):
         self.preview_outcome('ward406', 'linen406', 'preparing')
         self.room('ward406')
         action(self.game, 'job:deliver')
+        operate(self.game, 'chooseMethod', 'window')
         operate(self.game, 'selectPiece', 'sheet')
-        operate(self.game, 'place', 'sheetZone')
+        operate(self.game, 'spreadSheet')
         self.map_outcome('ward406', 'linen406', 'preparing', '1/2')
         self.room('ward406')
         complete(self.game, 'job:deliver')
@@ -495,19 +496,21 @@ class Floor10OrientationTests(unittest.TestCase):
 
         self.room('doctor')
         action(self.game, 'accept:d1')
+        initial_calls = {}
         for destination in ['ward407', 'ward408']:
             self.room(destination)
             complete(self.game, 'job:bell'+destination[-3:])
             self.map_outcome(destination, 'call:'+destination, 'attention', '!')
+            initial_calls[destination] = self.progress()['world']['calls'][destination]
         self.room('doctor')
-        complete(self.game, 'job:callReview')
-        history = self.progress()['world']['doctorReview']
-        self.assertTrue(history['maintenance'])
+        self.assertEqual(self.game.locator('[data-action="job:callReview"]').count(), 0)
+        self.assertIsNone(self.progress()['world']['doctorReview'])
         unpaid = self.game.evaluate('({silver:stats.silver,exp:stats.exp})')
         self.map_outcome('ward407', 'call:ward407', 'attention')
         for destination in ['ward407', 'ward408']:
             route = self.game.evaluate('PalataQuestEngine.jobStage(PalataQuestPrototype.snapshot(),"d1")')
             self.assertEqual(route['action'], 'job:callService'+destination[-3:])
+            self.assertEqual(route['room'], destination)
             self.room(route['room'])
             complete(self.game, route['action'])
             self.map_outcome(destination, 'call:'+destination, 'retest', '?')
@@ -523,15 +526,20 @@ class Floor10OrientationTests(unittest.TestCase):
             self.map_outcome(destination, 'call:'+destination, 'verified', '✓')
             self.room(destination)
             self.assertTrue(self.game.locator(f'.quest-world-effect[data-world-effect="call:{destination}"][data-world-verified="true"]').is_visible())
-        self.assertEqual(self.progress()['world']['doctorReview'], history,
-            'The original doctor findings are history rather than live outstanding maintenance')
+        self.assertIsNone(self.progress()['world']['doctorReview'])
         self.assertEqual(self.game.evaluate('({silver:stats.silver,exp:stats.exp})'), unpaid)
         self.room('doctor')
         self.assertTrue(self.game.evaluate('PalataQuestEngine.ready(PalataQuestPrototype.snapshot(),"d1")'))
         action(self.game, 'claim:d1')
+        history = self.progress()['world']['doctorReview']
+        self.assertEqual(history['order'], 'd1:1')
+        self.assertEqual(history['calls'], {
+            room: {**observation, 'reviewed': True} for room, observation in initial_calls.items()
+        }, 'The original doctor findings are history rather than live outstanding maintenance')
         paid = {'silver': unpaid['silver']+10, 'exp': unpaid['exp']+20}
         self.assertEqual(self.game.evaluate('({silver:stats.silver,exp:stats.exp})'), paid)
         self.reload_home()
+        self.assertEqual(self.progress()['world']['doctorReview'], history)
         for destination in ['ward407', 'ward408']:
             self.map_outcome(destination, 'call:'+destination, 'verified')
         self.assertEqual(self.game.evaluate('({silver:stats.silver,exp:stats.exp})'), paid)

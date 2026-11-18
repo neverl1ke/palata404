@@ -1,8 +1,8 @@
 """Actual task work, evidence, submission and save recovery through game controls.
 
 The solver reads only the same public evidence rendered on each work surface.
-Only the explicitly named legacy-save test seeds an old persisted fixture; all
-remaining progress uses real controls, without E.apply calls or forced clicks.
+Only explicitly named legacy-save tests seed old persisted fixtures. All other
+progress uses real controls, without E.apply calls or forced clicks.
 """
 from pathlib import Path
 import json
@@ -54,7 +54,7 @@ class QuestWorkbenchTests(unittest.TestCase):
         ui.action(self.page,'accept:'+id)
         job=self.progress()['jobs'][id]
         self.assertTrue(job['active'])
-        self.assertEqual(job['revision'],4 if id in ['k2','d1'] else 3 if id in ['k3','d2','d3'] else 2)
+        self.assertEqual(job['revision'], {'k1': 2, 'k2': 5, 'k3': 3, 'd1': 5, 'd2': 4, 'd3': 4}[id])
 
     def reload_home(self):
         self.page.reload(wait_until='networkidle')
@@ -63,6 +63,12 @@ class QuestWorkbenchTests(unittest.TestCase):
         self.assertTrue(self.page.locator('#quest-location-screen').is_hidden())
         self.assertTrue(self.page.locator('#map-modal').is_hidden())
         self.assertEqual(self.page.locator('.quest-workbench').count(),0)
+
+    def choose_sign_observation(self):
+        ui.action(self.page, 'job:baseline')
+        ui.operate(self.page, 'chooseSubject', 'signA')
+        self.page.locator('[data-work-focus="close"]').click()
+        ui.room(self.page, 'A')
 
     def switch_mode(self):
         ui.return_home(self.page)
@@ -97,7 +103,7 @@ class QuestWorkbenchTests(unittest.TestCase):
             ui.complete(self.page,'job:log')
         elif id=='d3':
             self.assertNotIn('baseline',self.ledger()['cargo'])
-            ui.room(self.page,'A');ui.complete(self.page,'job:baseline')
+            self.choose_sign_observation();ui.complete(self.page,'job:baseline')
             self.assertIn('baseline',self.ledger()['cargo'])
             self.switch_mode();self.assertEqual(self.progress()['mode'],'trip')
             ui.room(self.page,'A');ui.complete(self.page,'job:difference')
@@ -165,12 +171,14 @@ class QuestWorkbenchTests(unittest.TestCase):
         self.assertEqual(self.progress()['jobs']['k2']['count'],1)
 
     def test_observation_uses_actual_scene_and_journal_guides_mode_and_claim(self):
-        self.load();self.accept('d3');ui.room(self.page,'A')
+        self.load();self.accept('d3');self.choose_sign_observation()
+        ui.action(self.page,'job:baseline')
+        self.assertEqual(ui.board(self.page,'job:baseline')['details'], [])
+        ui.operate(self.page,'inspect')
         initial=ui.board(self.page,'job:baseline')
-        self.assertIsNotNone(initial)
         for field in initial['details']:
             self.assertTrue(self.page.locator(f'[data-observation-field="{field["id"]}"]').inner_text().endswith(field['value']))
-        ui.complete(self.page,'job:baseline')
+        ui.operate(self.page,'record')
         before_trip=self.progress()['jobs']['d3']
         self.assertTrue(before_trip['work']['baselineCaptured'])
         self.assertIn('baseline',self.ledger()['cargo'])
@@ -184,11 +192,13 @@ class QuestWorkbenchTests(unittest.TestCase):
         self.assertEqual(self.page.evaluate('document.activeElement.classList.contains("room-trip-switch")'),True)
         self.assertEqual(self.progress()['mode'],'patient')
         self.page.locator('.room-trip-switch').click();ui.room(self.page,'A')
+        ui.action(self.page,'job:difference')
+        self.assertEqual(ui.board(self.page,'job:difference')['current'], [])
+        ui.operate(self.page,'inspect')
         current=ui.board(self.page,'job:difference')
         self.assertEqual(current['baseline'],initial['details'])
         for field in current['current']:
             self.assertTrue(self.page.locator(f'[data-observation-field="{field["id"]}"]').inner_text().endswith(field['value']))
-        ui.action(self.page,'job:difference')
         self.assert_paired_fields(current['baseline'],current['current'])
         ui.complete(self.page,'job:difference',open_board=False)
         self.assertIn('difference',self.ledger()['cargo']);self.assertNotIn('baseline',self.ledger()['cargo'])
@@ -196,7 +206,7 @@ class QuestWorkbenchTests(unittest.TestCase):
         self.page.locator('[data-quest-tab="doctor"]').click()
         card=self.page.locator('[data-quest-id="d3"]')
         self.assertIn('Наблюдение записано',card.inner_text())
-        self.assertFalse(card.locator('h4').inner_text().startswith('✓'))
+        self.assertFalse(card.locator(':scope > h4').inner_text().startswith('✓'))
         self.assertIn('Пациент',card.locator('.quest-mode-requirement').inner_text())
         card.get_by_role('button',name='К переключателю состояния',exact=True).click()
         self.page.wait_for_function('document.activeElement.classList.contains("room-trip-switch")')
@@ -206,11 +216,11 @@ class QuestWorkbenchTests(unittest.TestCase):
         self.assertEqual(after['exp']-before['exp'],20)
         ui.return_home(self.page);self.page.locator('.hud-task').click()
         self.page.locator('[data-quest-tab="doctor"]').click()
-        self.assertTrue(self.page.locator('[data-quest-id="d3"] h4').inner_text().startswith('✓'))
+        self.assertTrue(self.page.locator('[data-quest-id="d3"] > h4').inner_text().startswith('✓'))
         # The next real order uses the existing stripe/cross variant. Its
         # non-written mark must physically change with the recorded evidence.
         self.page.get_by_role('button',name='Закрыть задания',exact=True).click()
-        self.accept('d3');ui.room(self.page,'A')
+        self.accept('d3');self.choose_sign_observation()
         self.assertEqual(self.page.locator('[data-observation-mark]').get_attribute('data-observation-mark'),'Полоса')
         patient_shape=self.page.locator('[data-observation-mark] path').get_attribute('d')
         ui.complete(self.page,'job:baseline');self.switch_mode();ui.room(self.page,'A')
@@ -218,6 +228,7 @@ class QuestWorkbenchTests(unittest.TestCase):
         trip_shape=self.page.locator('[data-observation-mark] path').get_attribute('d')
         self.assertNotEqual(patient_shape,trip_shape)
         ui.action(self.page,'job:difference')
+        ui.operate(self.page,'inspect')
         physical=ui.board(self.page,'job:difference')
         self.assertEqual(next(field['value'] for field in physical['baseline'] if field['id']=='mark'),'Полоса')
         self.assertEqual(next(field['value'] for field in physical['current'] if field['id']=='mark'),'Крест')
@@ -282,9 +293,9 @@ class QuestWorkbenchTests(unittest.TestCase):
             self.assertTrue(geometry['backVisible'],geometry)
             self.assertTrue(geometry['footerVisible'],geometry)
             self.assertEqual(geometry['smallButtons'],0,geometry)
-            button=self.page.locator('[data-work-op="mark"]').first
+            button=self.page.locator('[data-work-op="conclude"]').first
             field=button.get_attribute('data-work-value');button.focus();self.page.keyboard.press('Space')
-            self.assertEqual(self.page.evaluate('document.activeElement.dataset.workOp'),'mark')
+            self.assertEqual(self.page.evaluate('document.activeElement.dataset.workOp'),'conclude')
             self.assertEqual(self.page.evaluate('document.activeElement.dataset.workValue'),field)
             self.page.keyboard.press('Tab')
             self.assertTrue(self.page.locator('.quest-workbench').evaluate('e=>e.contains(document.activeElement)'))
@@ -342,7 +353,7 @@ class QuestWorkbenchTests(unittest.TestCase):
         self.reload_home();self.assertEqual(self.ledger(),claimed)
         self.accept('k2')
         repeated=self.progress()['jobs']['k2']
-        self.assertEqual(repeated['revision'],4);self.assertEqual(repeated['count'],4)
+        self.assertEqual(repeated['revision'],5);self.assertEqual(repeated['count'],4)
         self.assertEqual(repeated['variant'],1);self.assertEqual(repeated['done'],{})
         ui.room(self.page,'linen');ui.action(self.page,'job:linen')
         self.assertEqual(ui.board(self.page,'job:linen')['kind'],'packing')
@@ -399,16 +410,33 @@ class QuestWorkbenchTests(unittest.TestCase):
         self.assertIn('пломб',receipt.lower())
         self.assertEqual(self.page.locator('[data-room-info-toggle]').get_attribute('aria-expanded'),'true')
         visible=self.page.locator('.quest-receipt').evaluate('''e=>{const r=e.getBoundingClientRect(),paper=e.closest('.scene-paper').getBoundingClientRect();return{top:r.top,bottom:r.bottom,clipTop:Math.max(0,paper.top),clipBottom:Math.min(innerHeight,paper.bottom)}}''')
-        self.assertGreaterEqual(visible['top'],visible['clipTop'],visible)
-        self.assertLessEqual(visible['bottom'],visible['clipBottom'],visible)
+        # A browser scroll position can round to a device pixel, even when the
+        # receipt's borders land on fractional CSS pixels.
+        self.assertGreaterEqual(visible['top'],visible['clipTop']-1,visible)
+        self.assertLessEqual(visible['bottom'],visible['clipBottom']+1,visible)
         self.assertIn(board['request']['lot'],self.page.locator('.quest-receipt').inner_text())
         self.assertTrue(self.page.locator('#custom-toast-notification').is_hidden())
         self.assertIn('tag',self.ledger()['cargo'])
         self.assertEqual(self.ledger()['exp'],before['exp'])
         self.assertEqual(self.ledger()['silver'],before['silver'])
 
-    def test_comparison_pairs_readable_sources_on_phone_and_landscape_without_answer_highlights(self):
-        self.load();self.accept('k3');ui.room(self.page,'procedure');ui.action(self.page,'job:copies')
+    def test_issued_k3_revision2_keeps_accessible_paired_sources_and_selection(self):
+        self.load()
+        # Narrow compatibility fixture: the old two-document K3 contract is
+        # no longer issued. A saved revision 2 must retain these exact controls.
+        fixture = self.page.evaluate('''()=>{
+            const old={...PalataQuestEngine.initial(),version:10,room:'procedure',
+                jobs:{k3:{active:true,revision:2,variant:0,work:{marked:[]},done:{},count:0,startTrip:0}}};
+            return {key:'palata404_floor10_progress:'+encodeURIComponent(raidArchiveOwnerId),
+                    raw:JSON.stringify(old),supported:PalataQuestEngine.supportsSave(old)};
+        }''')
+        self.assertTrue(fixture['supported'])
+        self.context.add_init_script('if(!sessionStorage.getItem("issuedK3FixtureSeeded")){'
+            f'localStorage.setItem({json.dumps(fixture["key"])},{json.dumps(fixture["raw"])});'
+            'sessionStorage.setItem("issuedK3FixtureSeeded","1");}')
+        self.reload_home()
+        self.assertEqual(self.progress()['jobs']['k3']['revision'],2)
+        ui.room(self.page,'procedure');ui.action(self.page,'job:copies')
         board=ui.board(self.page,'job:copies')
         self.page.locator('#custom-toast-notification').wait_for(state='hidden')
         for width,height in [(1280,800),(390,844),(844,390)]:

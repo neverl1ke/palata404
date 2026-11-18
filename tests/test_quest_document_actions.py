@@ -5,7 +5,7 @@ No forced pointer actions, quest-state injection or collapsing-paper workaround.
 import unittest
 
 from tests import test_game
-from tests.quest_ui_support import complete, complete_call_cycle
+from tests.quest_ui_support import action, complete, complete_call_cycle
 
 
 class QuestDocumentActionTests(unittest.TestCase):
@@ -85,7 +85,7 @@ class QuestDocumentActionTests(unittest.TestCase):
 
     def test_call_workbench_opens_from_collapsed_paper_and_redeems_once(self):
         self.room('doctor')
-        self.action('accept:d1')
+        action(self.game, 'accept:d1')
         self.room('ward407')
         self.game.locator('[data-room-info-toggle]').click()
         self.assertEqual(self.game.locator('.scene-paper.is-collapsed').count(), 1)
@@ -98,7 +98,7 @@ class QuestDocumentActionTests(unittest.TestCase):
         complete(self.game,'job:bell408')
         self.room('doctor')
         before = self.game.evaluate('({silver:stats.silver,exp:stats.exp})')
-        # Two primary observations cannot finish a revision4 service order.
+        # Observations alone cannot finish an order with a faulty call point.
         self.assertFalse(self.game.evaluate('PalataQuestEngine.ready(PalataQuestPrototype.snapshot(),"d1")'))
         self.assertEqual(self.game.locator('[data-action="claim:d1"],[data-scene-action="claim:d1"]').count(), 0)
         self.assertFalse(self.game.evaluate('PalataQuestEngine.actions(PalataQuestPrototype.snapshot()).some(a=>a.id==="claim:d1")'))
@@ -106,13 +106,13 @@ class QuestDocumentActionTests(unittest.TestCase):
         self.assertEqual(self.game.evaluate('({silver:stats.silver,exp:stats.exp})'), before)
         self.assertTrue(self.game.evaluate('''()=>{
             const state=PalataQuestPrototype.snapshot(),job=state.jobs.d1;
-            return job.revision===4&&job.active&&job.count===0&&job.work.authorized&&
+            return job.revision===5&&job.active&&job.count===0&&job.work.authorized&&
                 ['ward407','ward408'].every(room=>job.work.initial[room].condition==='working'||
                     job.work.services[room].performed&&job.work.services[room].tested&&job.work.services[room].confirmed)&&
                 PalataQuestEngine.ready(state,'d1');
         }'''))
         self.room('doctor')
-        self.action('claim:d1')
+        action(self.game, 'claim:d1')
         self.assertEqual(self.game.evaluate('PalataQuestPrototype.snapshot().jobs.d1.count'), 1)
         after = self.game.evaluate('({silver:stats.silver,exp:stats.exp})')
         self.assertEqual(after, {'silver': before['silver'] + 10, 'exp': before['exp'] + 20})
