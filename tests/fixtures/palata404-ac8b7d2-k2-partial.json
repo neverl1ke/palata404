@@ -1,0 +1,84 @@
+{
+  "version": 10,
+  "world": {
+    "version": 2,
+    "linen406": null,
+    "calls": {
+      "ward407": null,
+      "ward408": null
+    },
+    "doctorReview": null,
+    "callEquipment": {
+      "ward407": {
+        "condition": "noResponse",
+        "revision": 0,
+        "verified": false
+      },
+      "ward408": {
+        "condition": "disconnected",
+        "revision": 0,
+        "verified": false
+      }
+    }
+  },
+  "cargo": [
+    "linen"
+  ],
+  "transaction": 0,
+  "lastReceipt": "",
+  "interactions": {
+    "job:linen": 1,
+    "job:deliver": 0
+  },
+  "exerciseCount": 0,
+  "allSectionsUnlocked": false,
+  "mode": "patient",
+  "room": "ward406",
+  "flags": {
+    "route": false
+  },
+  "visited": {
+    "A": true,
+    "B": true
+  },
+  "jobs": {
+    "k2": {
+      "active": true,
+      "done": {
+        "linen": true
+      },
+      "count": 0,
+      "startTrip": 0,
+      "revision": 4,
+      "variant": 0,
+      "work": {
+        "selected": [
+          "linen-0",
+          "linen-1"
+        ],
+        "shortageNoted": false,
+        "reserveGranted": false,
+        "selectedReserve": [],
+        "selectedPiece": null,
+        "placed": [
+          "sheet"
+        ],
+        "preparationStarted": true
+      }
+    }
+  },
+  "materials": 0,
+  "trip": 0,
+  "log": [
+    "Поручение принято. Клара: В палате 406 ждут чистое бельё. На полке лежат вещи из разных учётных комплектов. Передайте: Квитанция подготовки кровати 406: простыня и наволочка на своих местах. Награда: 15 EXP + 8 серебра + малая аптечка.",
+    "Состав комплекта сохранён.",
+    "Состав комплекта сохранён.",
+    "Комплект упакован и помечен для палаты 406. Чистый комплект М для палаты 406. Простыня и наволочка при себе. Получено: Комплект белья · 406. Предмет доступен в инвентаре.",
+    "Подготовка начата. Сначала выберите принесённую вещь, затем её место на кровати.",
+    "Выбрано: Простыня. Укажите место на кровати.",
+    "Вещь размещена. Подготовьте оставшуюся часть кровати."
+  ],
+  "collectorAt": 0,
+  "collectorCount": 0,
+  "battle": null
+}

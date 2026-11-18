@@ -3,7 +3,7 @@
 'use strict';
 
 const E=PalataQuestEngine,key='palata404_floor10_progress:'+encodeURIComponent(raidArchiveOwnerId),byId=id=>document.getElementById(id);
-const navigation=window.PalataQuestNavigation,modelReady=typeof pendingBossCounters==='function'&&typeof restoreBossCounter==='function'&&typeof queueBossCounter==='function'&&typeof E.cargoName==='function'&&typeof E.bedPresentation==='function'&&E.initial().version===10&&typeof PalataQuestJobModel==='object'&&!!PalataQuestJobModel&&['make','restore','board','operate','supportsRevision','captureObservation'].every(name=>typeof PalataQuestJobModel[name]==='function')&&PalataQuestJobModel.supportsRevision('k3',3)&&PalataQuestJobModel.supportsRevision('k2',4)&&PalataQuestJobModel.supportsRevision('d1',4)&&PalataQuestJobModel.supportsRevision('d2',3)&&PalataQuestJobModel.supportsRevision('d3',3);
+const navigation=window.PalataQuestNavigation,modelReady=typeof pendingBossCounters==='function'&&typeof restoreBossCounter==='function'&&typeof queueBossCounter==='function'&&typeof E.cargoName==='function'&&typeof E.bedPresentation==='function'&&E.initial().version===11&&typeof PalataQuestJobModel==='object'&&!!PalataQuestJobModel&&['make','restore','board','operate','supportsRevision','captureObservation'].every(name=>typeof PalataQuestJobModel[name]==='function')&&PalataQuestJobModel.supportsRevision('k3',3)&&PalataQuestJobModel.supportsRevision('k2',5)&&PalataQuestJobModel.supportsRevision('d1',5)&&PalataQuestJobModel.supportsRevision('d2',4)&&PalataQuestJobModel.supportsRevision('d3',4);
 const guideFor=id=>navigation?navigation.guide(E,state,id):E.guide(state,id);
 let raw,protectedSave=false;const stored=safeStorageGet(key);try{raw=JSON.parse(stored);protectedSave=!modelReady||(!!raw&&!E.supportsSave?.(raw));}catch(_){protectedSave=stored!==null;}let state=E.restore(raw);if(!stored)state.mode=stats.madness>=100?'trip':'patient';let tab='story',taskMode=null,focusQuest=null,focusRoom=null,notice='',workNotice='',locationView=false,interaction=null,travelling=false,saveFailed=false;
 // Keep the existing collector and the approved first-test side-job payouts.
@@ -16,7 +16,7 @@ try{
   const collector=journal.receipt?.kind==='collector'&&Number.isSafeInteger(journal.progress?.collectorCount)&&journal.progress.collectorCount>0&&journal.receipt.id==='collector:'+journal.progress.collectorCount;
   const quest=journal.receipt?.kind==='quest'&&Number.isSafeInteger(journal.progress?.transaction)&&journal.progress.transaction>0&&journal.receipt.id==='transaction:'+journal.progress.transaction;
   const validInventory=Array.isArray(journal.inventory)&&journal.inventory.every(x=>x&&typeof x.name==='string'&&Number.isSafeInteger(x.count)&&x.count>0);
-  if(!protectedSave&&[1,2].includes(journal.version)&&journal.owner===raidArchiveOwnerId&&(collector||journal.version===2&&quest)&&[3,4,5,6,7,8,9,10].includes(journal.progress?.version)&&modelReady&&!!E.supportsSave?.(journal.progress)&&journal.stats&&['silver','pills','exp','level'].every(k=>Number.isSafeInteger(journal.stats[k])&&journal.stats[k]>=0)&&(journal.version===1||validInventory)){
+  if(!protectedSave&&[1,2].includes(journal.version)&&journal.owner===raidArchiveOwnerId&&(collector||journal.version===2&&quest)&&[3,4,5,6,7,8,9,10,11].includes(journal.progress?.version)&&modelReady&&!!E.supportsSave?.(journal.progress)&&journal.stats&&['silver','pills','exp','level'].every(k=>Number.isSafeInteger(journal.stats[k])&&journal.stats[k]>=0)&&(journal.version===1||validInventory)){
    raw=journal.progress;state=E.restore(raw);Object.assign(stats,normalizeStats(journal.stats));if(journal.version===2)inventory=normalizeInventory(journal.inventory);pendingQuestReward=journal.receipt;
   }else rewardRecoveryError=true;
  }
@@ -315,7 +315,41 @@ function selectRoomDoor(id,event){
  roomClickTimer=setTimeout(()=>{showRoomPreview(id);if(matchMedia('(max-width:900px)').matches)map.querySelector('.quest-room-preview')?.scrollIntoView({block:'nearest'});},280);
 }
 
-function beginAction(id){workNotice='';if(E.workbench?.(state,id)){interaction=id;locationView=true;renderMap();const opened=E.workbench(state,id);if(opened?.kind==='caseCompare'&&!opened.sourcesRead&&locationScreen.querySelector('[data-work-kind=caseCompare]'))dispatch({type:'work',id,op:'readSources'});locationScreen.querySelector('[data-work-heading]')?.focus({preventScroll:true});return;}if(!E.interactions[id])return dispatch({type:'action',id});if(id==='unlockB'&&(!state.flags.doorKnown||!state.flags.reserveKnown||!state.flags.tripHandle)){focusQuest='lockB';notice='Нужны знание исправного механизма и аварийная рукоять из ординаторской A. ';locationView=false;renderMap();return;}if(id==='unlockC'&&(!state.flags.cKeyKnown||!state.flags.cLockKnown)){focusQuest='lockC';notice='Нужны опись хранения ключа в процедурной и памятка о замке у врача. ';locationView=false;renderMap();return;}interaction=id;locationView=true;renderMap();}
+function talkToStaff(action){
+ const [verb,id]=action.split(':');
+ const job=E.jobs[id];
+ if(!job||!E.actions(state).some(candidate=>candidate.id===action))return;
+ if(!window.PalataQuestDialogues?.open){showCustomToast('Разговор не загрузился. Обновите страницу и повторите.');return;}
+ const phase=verb==='accept'?'offer':verb==='claim'?'ready':'active';
+ const stage=()=>E.jobStage(state,id)||guideFor(id);
+ const outcome=()=>{
+  const order=state.jobs[id];
+  return {method:order?.work?.draftScene?.method||order?.work?.draftMethod,
+          result:verb==='claim'&&order?.active===false?state.lastReceipt:'',
+          reward:E.rewardText(id)};
+ };
+ const selector='[data-scene-action="'+action+'"],[data-action="'+action+'"]';
+ window.PalataQuestDialogues?.open({
+  id,phase,revision:state.jobs[id]?.revision||PalataQuestJobModel.make(id,state.jobs[id]?.count||0,state.world.callEquipment,state).revision,
+  stage:stage(),getStage:stage,outcome:outcome(),getOutcome:outcome,
+  anchor:document.activeElement,
+  restoreFocus:()=>Array.from(locationScreen.querySelectorAll(selector)).find(el=>el.getClientRects().length)||
+    locationScreen.querySelector('.quest-room-tools button'),
+  onConfirm:()=>{
+   const previous=focusQuest;
+   focusQuest=verb==='accept'?id:focusQuest===id?null:focusQuest;
+   const ok=dispatch({type:'action',id:action});
+   if(!ok)focusQuest=previous;
+   return ok?{ok:true}:{ok:false,message:'Действие не подтверждено. Проверьте сообщение о сохранении и повторите.'};
+  }
+ });
+}
+function beginAction(id){
+ if(/^(accept:|claim:|talk:)/.test(id))return talkToStaff(id);
+ workNotice='';if(E.workbench?.(state,id)){
+ const owner=PalataQuestJobModel.owner?.[id.slice(4)];
+ if(owner)focusQuest=owner;
+ interaction=id;locationView=true;renderMap();const opened=E.workbench(state,id);if(opened?.kind==='caseCompare'&&!opened.sourcesRead&&locationScreen.querySelector('[data-work-kind=caseCompare]'))dispatch({type:'work',id,op:'readSources'});locationScreen.querySelector('[data-work-heading]')?.focus({preventScroll:true});return;}if(!E.interactions[id])return dispatch({type:'action',id});if(id==='unlockB'&&(!state.flags.doorKnown||!state.flags.reserveKnown||!state.flags.tripHandle)){focusQuest='lockB';notice='Нужны знание исправного механизма и аварийная рукоять из ординаторской A. ';locationView=false;renderMap();return;}if(id==='unlockC'&&(!state.flags.cKeyKnown||!state.flags.cLockKnown)){focusQuest='lockC';notice='Нужны опись хранения ключа в процедурной и памятка о замке у врача. ';locationView=false;renderMap();return;}interaction=id;locationView=true;renderMap();}
 function renderInteraction(host){const board=E.workbench?.(state,interaction);if(board){const note=document.createElement('p');note.textContent=board.title||'Рабочий лист';host.append(note);return;}const spec=E.interactions[interaction];if(!spec){interaction=null;return;}const index=state.interactions[interaction]||0,step=spec.steps[index];if(!step){interaction=null;return;}const h=document.createElement('h4');h.textContent=spec.title+' · шаг '+(index+1)+'/'+spec.steps.length;const p=document.createElement('p');p.textContent=step.text;host.append(h,p);if(step.hint&&state.interactions.inspectDoor>=E.interactions.inspectDoor.steps.length){const hint=document.createElement('details'),summary=document.createElement('summary'),text=document.createElement('p');hint.dataset.interactionHint=interaction;summary.textContent='Вспомнить запись осмотра';text.textContent=step.hint;hint.append(summary,text);host.append(hint);}for(const [choice,label] of step.choices){const b=button(label,()=>{const id=interaction;const ok=dispatch({type:'interact',id,choice});if(ok){if((state.interactions[id]||0)===spec.steps.length||id==='exercise'&&state.interactions.exercise===0)interaction=null;renderMap();}else b.setAttribute('aria-invalid','true');});b.dataset.choice=choice;if(window.PalataQuestScenes)PalataQuestScenes.decorateChoice(b,choice);host.append(b);}const feedback=document.createElement('p');feedback.className='interaction-feedback';feedback.setAttribute('role','status');host.append(feedback,button('Отложить осмотр',()=>{interaction=null;renderMap();}));}
 
 // Keep the requested handoff ahead of unrelated offers; preserve its real handler.
@@ -409,7 +443,7 @@ tools.append(back,toggle);map.append(scene,info,tools);mountWorkbench(scene,info
 function mountWorkbench(scene,info){
  const id=interaction,board=id&&E.workbench?.(state,id);
  if(!board||!window.PalataQuestWorkbench)return;
- if(board.kind==='bedmaking')board.referenceImage=window.PalataFloorArt.resolve('ward406',state.mode).background;
+ if(board.kind==='bedmaking'||board.subjectId==='bed406')board.referenceImage=window.PalataFloorArt.resolve('ward406',state.mode).background;
  const host=document.createElement('div');host.className='quest-workbench-host';map.append(host);scene.inert=true;info.inert=true;const tools=map.querySelector('.quest-room-tools');if(tools)tools.inert=true;
  PalataQuestWorkbench.render(host,{board,feedback:workNotice,act:payload=>{
   const focus=document.activeElement?.dataset.workFocus;

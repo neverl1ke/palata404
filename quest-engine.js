@@ -65,20 +65,20 @@ function migrateWorld(raw){const result=copy(raw);result.version=2;result.callEq
 function orderId(value,job){return typeof value==='string'&&new RegExp('^'+job+':[1-9][0-9]*$').test(value)&&Number.isSafeInteger(Number(value.split(':')[1]));}
 function plain(value){return!!value&&typeof value==='object'&&!Array.isArray(value);}
 function validCall(value,room,worldVersion=1){
- if(!plain(value)||Object.keys(value).some(k=>!['order','room','tested','connected','indicator','responseCode','report','reviewed','revision'].includes(k))||!orderId(value.order,'d1')||value.room!==room||value.tested!==true||![1,2,3,...(worldVersion===2?[4]:[])].includes(value.revision)||![true,false,null].includes(value.connected)||!['on','off'].includes(value.indicator)||!['acknowledged','none'].includes(value.responseCode)||![null,'working','disconnected','noResponse','faultUnspecified',...(worldVersion===2?['unassessed']:[])].includes(value.report)||typeof value.reviewed!=='boolean')return false;
+ if(!plain(value)||Object.keys(value).some(k=>!['order','room','tested','connected','indicator','responseCode','report','reviewed','revision'].includes(k))||!orderId(value.order,'d1')||value.room!==room||value.tested!==true||![1,2,3,...(worldVersion===2?[4,5]:[])].includes(value.revision)||![true,false,null].includes(value.connected)||!['on','off'].includes(value.indicator)||!['acknowledged','none'].includes(value.responseCode)||![null,'working','disconnected','noResponse','faultUnspecified',...(worldVersion===2?['unassessed']:[])].includes(value.report)||typeof value.reviewed!=='boolean')return false;
  if(value.responseCode==='acknowledged'&&(value.connected!==true||value.indicator!=='on'))return false;
  if(value.report==='working'&&(value.connected!==true||value.indicator!=='on'||value.responseCode!=='acknowledged'))return false;
  if(value.report==='disconnected'&&(value.connected!==false||value.indicator!=='off'||value.responseCode!=='none'))return false;
  if(value.report==='noResponse'&&(value.connected!==true||value.indicator!=='on'||value.responseCode!=='none'))return false;
  if(value.report==='faultUnspecified'&&(value.revision!==1||value.connected!==null||value.indicator!=='off'||value.responseCode!=='none'))return false;
- if(value.report==='unassessed'&&(value.revision!==4||value.connected!==null||value.indicator!=='off'||value.responseCode!=='none'))return false;
+ if(value.report==='unassessed'&&(value.revision<4||value.connected!==null||value.indicator!=='off'||value.responseCode!=='none'))return false;
  return true;
 }
 function validWorld(world){
  if(!plain(world)||![1,2].includes(world.version)||!plain(world.calls)||Object.keys(world).some(k=>!['version','linen406','calls','doctorReview',...(world.version===2?['callEquipment']:[])].includes(k))||Object.keys(world.calls).some(k=>!['ward407','ward408'].includes(k)))return false;
  if(!Object.hasOwn(world,'linen406')||!Object.hasOwn(world,'doctorReview')||!['ward407','ward408'].every(r=>Object.hasOwn(world.calls,r)))return false;
  const linen=world.linen406;
- if(linen!==null&&(!plain(linen)||Object.keys(linen).some(k=>!['order','delivered','prepared','mark','items','reviewed','revision'].includes(k))||!orderId(linen.order,'k2')||linen.delivered!==true||typeof linen.prepared!=='boolean'||![1,2,3,...(world.version===2?[4]:[])].includes(linen.revision)||linen.prepared&&!(linen.revision===3||world.version===2&&linen.revision===4)||!['М','Л','С',null].includes(linen.mark)||linen.reviewed!==undefined&&typeof linen.reviewed!=='boolean'||!Array.isArray(linen.items)||linen.items.length>2||linen.items.some(x=>!plain(x)||!['Простыня','Наволочка'].includes(x.type)||typeof x.measure!=='string'||x.measure.length>50)))return false;
+ if(linen!==null&&(!plain(linen)||Object.keys(linen).some(k=>!['order','delivered','prepared','mark','items','reviewed','revision'].includes(k))||!orderId(linen.order,'k2')||linen.delivered!==true||typeof linen.prepared!=='boolean'||![1,2,3,...(world.version===2?[4,5]:[])].includes(linen.revision)||linen.prepared&&!(linen.revision===3||world.version===2&&linen.revision>=4)||!['М','Л','С',null].includes(linen.mark)||linen.reviewed!==undefined&&typeof linen.reviewed!=='boolean'||!Array.isArray(linen.items)||linen.items.length>2||linen.items.some(x=>!plain(x)||!['Простыня','Наволочка'].includes(x.type)||typeof x.measure!=='string'||x.measure.length>50)))return false;
  if(linen?.prepared&&(linen.items.length!==2||new Set(linen.items.map(x=>x.type)).size!==2))return false;
  for(const room of ['ward407','ward408'])if(world.calls[room]!==null&&!validCall(world.calls[room],room,world.version))return false;
  const review=world.doctorReview;
@@ -112,7 +112,7 @@ function reviewWorld(s,id){
 // Current bed presentation is derived independently of the last completed linen
 // ledger: accepting another order must not silently strip the prepared bed.
 function bedPresentation(s){
- const linen=s.world?.linen406,job=s.jobs?.k2,started=job?.active&&job.revision===4&&job.work?.preparationStarted===true&&!job.done?.deliver;
+ const linen=s.world?.linen406,job=s.jobs?.k2,started=job?.active&&job.revision>=4&&job.work?.preparationStarted===true&&!job.done?.deliver;
  const previousPrepared=linen?.prepared===true,placed=started?[...job.work.placed]:previousPrepared?['sheet','pillowcase']:[];
  return Object.freeze({order:started?'k2:'+(job.count+1):linen?.order||null,preparationStarted:!!started,placed:Object.freeze(placed),previousPrepared,prepared:!started&&previousPrepared,remaining:Object.freeze(['sheet','pillowcase'].filter(piece=>!placed.includes(piece)))});
 }
@@ -120,36 +120,48 @@ function roomEffects(s,room,mode=s.mode){
  if(mode!=='patient'||!validWorld(s.world))return[];const effects=[],linen=s.world.linen406,bed=bedPresentation(s);
  if(room==='ward406'&&(linen||bed.preparationStarted))effects.push({id:'linen406',kind:'linen',...bed,delivered:linen?.delivered===true,kitMark:linen?.mark||null,title:bed.preparationStarted?'Подготовка кровати продолжается':bed.prepared?'Кровать подготовлена':'Комплект доставлен',text:bed.preparationStarted?'Новая подготовка начата. На кровати размещено '+bed.placed.length+' из 2 вещей.'+(bed.previousPrepared?' В журнале сохранена предыдущая завершённая смена белья.':''):bed.prepared?'Чистые простыня и наволочка размещены на кровати 406.':'Комплект доставлен в палату 406; подготовка кровати этим поручением не подтверждалась.'});
  if(['ward407','ward408'].includes(room)&&s.world.calls[room]){
-  const call=s.world.calls[room],equipment=s.world.callEquipment[room],job=s.jobs?.d1,current=job?.revision===4&&job.active?job.work.services[room]:null;
+  const call=s.world.calls[room],equipment=s.world.callEquipment[room],job=s.jobs?.d1,current=job?.revision>=4&&job.active?job.work.services[room]:null;
   const response=call.responseCode==='acknowledged'?'Пост: «'+room.slice(4)+', вызов принят».':'Ответ поста не поступил.',verified=equipment.condition==='working'&&equipment.verified,serviced=!!current?.performed,retested=!!current?.confirmed,needsRetest=serviced&&!retested,needsService=equipment.condition!=='working'||!equipment.verified,maintenance=!!s.world.doctorReview?.maintenance?.includes(room)&&needsService;
   const status=needsRetest?' Персонал обслужил узел; нужен контрольный вызов из палаты.':verified?' Работа линии подтверждена контрольным ответом поста.':maintenance?' Требуется согласованное обслуживание и контроль результата.':call.report?' Акт проверки заполнен.':' Вывод для акта ещё не подтверждён.';
   effects.push({id:'call:'+room,kind:'call',...copy(call),response,maintenance,verified,serviced,retested,needsRetest,needsService,title:needsRetest?'Нужен контрольный вызов':verified?'Вызов подтверждён':'Последняя проверка вызова',text:response+status});
  }
- if(room==='doctor'&&s.world.doctorReview){const review=copy(s.world.doctorReview),pending=review.maintenance.filter(r=>s.world.callEquipment[r].condition!=='working'||!s.world.callEquipment[r].verified),legacy=Object.values(review.calls).every(call=>call.revision<4);effects.push({id:'doctorReview',kind:'review',...review,unresolved:pending,text:legacy?(review.maintenance.length?'Врач: по палатам '+review.maintenance.map(r=>r.slice(4)).join(' и ')+' зарегистрирована проверка линии. Обслуживание и повторная проверка ещё не подтверждены.':'Врач: оба вызова подтверждены ответом поста. Проверку принимаю.'):review.maintenance.length?pending.length?'Врач: первичные акты сохранены. По палатам '+pending.map(r=>r.slice(4)).join(' и ')+' ещё требуется обслуживание или подтверждение контрольным вызовом.':'Врач: обслуживание и контрольные вызовы подтверждены. Первичные акты сохранены отдельно от результата.':'Врач: оба вызова подтверждены ответом поста. Проверку принимаю.'});}
+ if(room==='doctor'&&s.world.doctorReview){const review=copy(s.world.doctorReview),pending=review.maintenance.filter(r=>s.world.callEquipment[r].condition!=='working'||!s.world.callEquipment[r].verified),legacy=Object.values(review.calls).every(call=>call.revision<4);effects.push({id:'doctorReview',kind:'review',title:'Итог проверки вызовов',...review,unresolved:pending,text:legacy?(review.maintenance.length?'Врач: по палатам '+review.maintenance.map(r=>r.slice(4)).join(' и ')+' зарегистрирована проверка линии. Обслуживание и повторная проверка ещё не подтверждены.':'Врач: оба вызова подтверждены ответом поста. Проверку принимаю.'):review.maintenance.length?pending.length?'Врач: первичные акты сохранены. По палатам '+pending.map(r=>r.slice(4)).join(' и ')+' ещё требуется обслуживание или подтверждение контрольным вызовом.':'Врач: обслуживание и контрольные вызовы подтверждены. Первичные акты сохранены отдельно от результата.':'Врач: оба вызова подтверждены ответом поста. Проверку принимаю.'});}
  if(room==='nurse'&&linen)effects.push({id:'linenReview',kind:'review',order:linen.order,text:bed.preparationStarted?'Клара: новая подготовка кровати 406 ещё не завершена. Предыдущая квитанция остаётся в журнале.':linen.reviewed?(linen.prepared?'Клара: подготовку кровати 406 подтверждаю. Чистое бельё на своих местах.':'Клара: передачу комплекта в 406 подтверждаю.'):linen.prepared?'Клара: кровать 406 подготовлена. Передайте квитанцию, чтобы я закрыла поручение.':'Клара: бельё доставлено в 406. Передайте квитанцию, чтобы я закрыла поручение.'});
  return effects;
 }
 function syncRoute(s){s.flags.route=s.flags.route===true||!!(s.visited.A&&s.visited.B&&s.visited.C&&s.flags.stairsSeen);}
-function initial(){return {version:10,world:emptyWorld(),cargo:[],transaction:0,lastReceipt:'',interactions:{},exerciseCount:0,allSectionsUnlocked:false,mode:'patient',room:'ward404',flags:{},visited:{A:true},jobs:{},materials:0,trip:0,log:[],collectorAt:0,collectorCount:0,battle:null};}
-function restore(raw){const s=initial();if(!raw||![1,2,3,4,5,6,7,8,9,10].includes(raw.version))return s;if(raw.jobs?.k3?.revision===3&&(raw.version<10||!Work?.supportsRevision?.('k3',3)||!Work.validRecord?.('k3',raw.jobs.k3)))return s;s.world=raw.version>=8?restoreWorld(raw.world):emptyWorld(true);s.allSectionsUnlocked=raw.allSectionsUnlocked===true;for(const f of flags)s.flags[f]=raw.flags?.[f]===true;for(const sec of ['A','B','C'])s.visited[sec]=raw.visited?.[sec]===true;for(const id of Object.keys(jobs)){const j=raw.jobs?.[id];if(j)s.jobs[id]={active:j.active===true,done:Object.fromEntries(jobs[id].steps.filter(x=>j.done?.[x]===true).map(x=>[x,true])),count:integer(j.count),startTrip:integer(j.startTrip),...(raw.version>=7&&Work?.supportsRevision?.(id,j.revision)&&(j.revision!==3||raw.version>=(id==='k3'?10:['d2','d3'].includes(id)?9:8))&&(j.revision!==4||raw.version>=9)?Work.restore(id,j):{revision:1})};}s.interactions=Object.fromEntries(Object.keys(interactions).map(id=>[id,Math.min(interactions[id].steps.length,integer(raw.interactions?.[id]))]));if(raw.version<3&&!s.flags.unlockB)s.interactions.unlockB=0;if(raw.version<4&&!s.flags.unlockC)for(const id of ['record','observation','unlockC'])s.interactions[id]=0;if(raw.version===4&&s.interactions.unlockC>0)s.interactions.unlockC=Math.min(4,s.interactions.unlockC+1);s.exerciseCount=integer(raw.exerciseCount);s.materials=integer(raw.materials);s.trip=integer(raw.trip);s.mode=raw.mode==='trip'?'trip':'patient';s.collectorCount=integer(raw.collectorCount);s.collectorAt=Number.isFinite(raw.collectorAt)?raw.collectorAt:0;s.log=[];s.transaction=integer(raw.transaction);s.lastReceipt=typeof raw.lastReceipt==='string'?raw.lastReceipt.slice(0,500):'';s.cargo=raw.version<6?cargoFromJobs(s):[...new Set((Array.isArray(raw.cargo)?raw.cargo:[]).filter(x=>Object.hasOwn(cargoCatalog,x)))];if(raw.version<6){for(const [id,j] of Object.entries(s.jobs))for(const step of jobs[id].steps)if(!j.done[step])s.interactions['job:'+step]=0;}
+function initial(){return {version:11,world:emptyWorld(),cargo:[],transaction:0,lastReceipt:'',interactions:{},exerciseCount:0,allSectionsUnlocked:false,mode:'patient',room:'ward404',flags:{},visited:{A:true},jobs:{},materials:0,trip:0,log:[],collectorAt:0,collectorCount:0,battle:null};}
+function minimumSaveVersion(id, revision) {
+ if(revision===5)return 11;
+ if(revision===4)return ['d2','d3'].includes(id)?11:9;
+ if(revision===3)return id==='k3'?10:['d2','d3'].includes(id)?9:8;
+ return revision===2?7:1;
+}
+function incompatibleEarlyContract(raw) {
+ return raw.version<7 && Object.entries(raw.jobs||{}).some(([id,j])=>
+  j?.revision>=3 && Work?.supportsRevision?.(id,j.revision));
+}
+function restore(raw){const s=initial();if(!raw||![1,2,3,4,5,6,7,8,9,10,11].includes(raw.version)||incompatibleEarlyContract(raw))return s;if(raw.jobs?.k3?.revision===3&&(raw.version<10||!Work?.supportsRevision?.('k3',3)||!Work.validRecord?.('k3',raw.jobs.k3)))return s;s.world=raw.version>=8?restoreWorld(raw.world):emptyWorld(true);s.allSectionsUnlocked=raw.allSectionsUnlocked===true;for(const f of flags)s.flags[f]=raw.flags?.[f]===true;for(const sec of ['A','B','C'])s.visited[sec]=raw.visited?.[sec]===true;for(const id of Object.keys(jobs)){const j=raw.jobs?.[id];if(j)s.jobs[id]={active:j.active===true,done:Object.fromEntries(jobs[id].steps.filter(x=>j.done?.[x]===true).map(x=>[x,true])),count:integer(j.count),startTrip:integer(j.startTrip),...(raw.version>=7&&Work?.supportsRevision?.(id,j.revision)&&raw.version>=minimumSaveVersion(id,j.revision)?Work.restore(id,j):{revision:1})};}s.interactions=Object.fromEntries(Object.keys(interactions).map(id=>[id,Math.min(interactions[id].steps.length,integer(raw.interactions?.[id]))]));if(raw.version<3&&!s.flags.unlockB)s.interactions.unlockB=0;if(raw.version<4&&!s.flags.unlockC)for(const id of ['record','observation','unlockC'])s.interactions[id]=0;if(raw.version===4&&s.interactions.unlockC>0)s.interactions.unlockC=Math.min(4,s.interactions.unlockC+1);s.exerciseCount=integer(raw.exerciseCount);s.materials=integer(raw.materials);s.trip=integer(raw.trip);s.mode=raw.mode==='trip'?'trip':'patient';s.collectorCount=integer(raw.collectorCount);s.collectorAt=Number.isFinite(raw.collectorAt)?raw.collectorAt:0;s.log=[];s.transaction=integer(raw.transaction);s.lastReceipt=typeof raw.lastReceipt==='string'?raw.lastReceipt.slice(0,500):'';s.cargo=raw.version<6?cargoFromJobs(s):[...new Set((Array.isArray(raw.cargo)?raw.cargo:[]).filter(x=>Object.hasOwn(cargoCatalog,x)))];if(raw.version<6){for(const [id,j] of Object.entries(s.jobs))for(const step of jobs[id].steps)if(!j.done[step])s.interactions['job:'+step]=0;}
 s.room=rooms[raw.room]&&accessible(s,rooms[raw.room][0])?raw.room:'ward404';
 // The adapter validates the actual raid checkpoint against the existing raid ledger.
 s.battle=['nurse','doctor'].includes(raw.battle)&&s.mode==='trip'&&s.room===raw.battle?raw.battle:null;
 syncRoute(s);return s;}
 function supportsSave(raw){
- if(!raw||![1,2,3,4,5,6,7,8,9,10].includes(raw.version))return false;
+ if(!raw||![1,2,3,4,5,6,7,8,9,10,11].includes(raw.version))return false;
+ if(incompatibleEarlyContract(raw))return false;
  if(raw.version>=8&&(!validWorld(raw.world)||raw.world.version!==(raw.version===8?1:2)))return false;
  if(raw.jobs?.k3?.revision===3&&raw.version<10)return false;
+ if(raw.version<11&&raw.version>=8&&[raw.world?.linen406,...Object.values(raw.world?.calls||{}),...Object.values(raw.world?.doctorReview?.calls||{})].some(effect=>effect?.revision===5))return false;
  if(raw.version<7)return true;
  if(raw.jobs!==undefined&&(!raw.jobs||typeof raw.jobs!=='object'||Array.isArray(raw.jobs)))return false;
  if(Object.keys(raw.jobs||{}).some(id=>!Object.hasOwn(jobs,id)))return false;
  for(const id of Object.keys(jobs)){
   if(!Object.hasOwn(raw.jobs||{},id))continue;
   const j=raw.jobs[id];if(!j||typeof j!=='object'||Array.isArray(j))return false;
-  if(j.revision!==undefined&&j.revision!==1&&!Work?.supportsRevision?.(id,j.revision))return false;if(j.revision===3&&raw.version<(id==='k3'?10:['d2','d3'].includes(id)?9:8)||j.revision===4&&raw.version<9)return false;
-  if([2,3,4].includes(j.revision)&&(!Work||!Number.isInteger(j.variant)||j.variant<0||j.variant>2||!j.work||typeof j.work!=='object'||Array.isArray(j.work)))return false;
-  if((j.revision===4||j.revision===3&&['k3','d2','d3'].includes(id))&&!Work.validRecord?.(id,j))return false;
-  if(id==='d3'&&j.revision===3&&(j.startTrip>integer(raw.trip)||j.work.observedTrip!==null&&j.work.observedTrip>integer(raw.trip)))return false;
+  if(j.revision!==undefined&&j.revision!==1&&!Work?.supportsRevision?.(id,j.revision))return false;if(raw.version<minimumSaveVersion(id,j.revision))return false;
+  if([2,3,4,5].includes(j.revision)&&(!Work||!Number.isInteger(j.variant)||j.variant<0||j.variant>2||!j.work||typeof j.work!=='object'||Array.isArray(j.work)))return false;
+  if((j.revision>=4||j.revision===3&&['k3','d2','d3'].includes(id))&&!Work.validRecord?.(id,j))return false;
+  if(id==='d3'&&j.revision>=3&&(j.startTrip>integer(raw.trip)||j.work.observedTrip!==null&&j.work.observedTrip>integer(raw.trip)))return false;
  }
  return true;
 }
@@ -157,24 +169,42 @@ function integer(v){return Number.isSafeInteger(v)&&v>=0?v:0;}
 function accessible(s,sec){return ['A','B','C'].includes(sec)&&(s.mode==='patient'||s.allSectionsUnlocked===true||sec==='A'||(sec==='B'&&s.flags.unlockB===true)||(sec==='C'&&s.flags.unlockB===true&&s.flags.unlockC===true));}
 // A room is reachable only if every intervening section is open.
 function destinations(s){if(s.battle||!rooms[s.room])return [];const from=rooms[s.room][0].charCodeAt(0);return Object.keys(rooms).filter(id=>{if(id===s.room)return false;const to=rooms[id][0].charCodeAt(0);for(let c=Math.min(from,to);c<=Math.max(from,to);c++)if(!accessible(s,String.fromCharCode(c)))return false;return true;});}
-function ready(s,id){const j=s.jobs[id];return j?.active&&jobs[id].steps.every(x=>j.done[x])&&requiredCargo[id].every(x=>s.cargo.includes(x))&&(id!=='d1'||j.revision!==4||Work.serviceReady(s));}
+function ready(s,id){const j=s.jobs[id];return j?.active&&jobs[id].steps.every(x=>j.done[x])&&requiredCargo[id].every(x=>s.cargo.includes(x))&&(id!=='d1'||j.revision<4||Work.serviceReady(s));}
 function actions(s,now=Date.now()){if(s.battle)return [];const a=[];const add=(id,label)=>a.push({id,label});const patient=s.mode==='patient',r=s.room,f=s.flags;
 if(patient){if(r==='gym')add('exercise','Упражнение на координацию · выполнено '+s.exerciseCount);if(r==='A'&&!f.doorKnown)add('inspectDoor','Осмотреть исправный механизм двери A/B');if(r==='collector'&&!f.reserveKnown)add('supplyNote','Проверить хозяйственный резерв для двери A/B');if(r==='stairs'&&!f.stairsSeen)add('stairsPatient','Осмотреть лестницу');if(r==='A'&&s.jobs.d3?.active&&[2,3].includes(s.jobs.d3.revision)&&!s.jobs.d3.work?.baselineCaptured)add('job:baseline','Записать первичное наблюдение');if(r==='procedure'&&!f.cKeyKnown&&!f.unlockC)add('record','Найти в описи место хранения ключа C');if(r==='doctor'&&!f.cLockKnown&&!f.unlockC)add('observation','Прочитать у врача памятку о замке C');
 if(r==='nurse'&&s.jobs.k2?.active&&s.jobs.k2.revision>=3&&s.jobs.k2.variant===1&&s.jobs.k2.work?.shortageNoted&&!s.jobs.k2.work?.reserveGranted&&!s.jobs.k2.done.linen)add('job:linenReserve','Уточнить замену белья для 406');
-for(const [id,j] of Object.entries(jobs)){const p=s.jobs[id];if(j.giver===r){if(!p?.active&&(!p?.count||j.repeat))add('accept:'+id,'Взять поручение: '+j.title);if(ready(s,id))add('claim:'+id,'Сдать: '+j.title);}}
+for(const [id,j] of Object.entries(jobs)){const p=s.jobs[id];if(j.giver===r){if(!p?.active&&(!p?.count||j.repeat))add('accept:'+id,'Обсудить: '+j.title);if(ready(s,id))add('claim:'+id,'Передать результат: '+j.title);else if(p?.active)add('talk:'+id,'Обсудить ход: '+j.title);}}
 const events={procedure:[['tag','Сверить контейнер и забрать бирку'],['copies','Сопоставить записи процедурной']],linen:[['linen','Взять помеченное белье']],ward406:[['deliver','Передать бельё в 406']],ward407:[['bell407','Проверить вызов палаты 407']],ward408:[['bell408','Проверить вызов палаты 408']],doctor:[['log','Восстановить журнал обхода']]};
-for(const [step,label] of events[r]||[]){const current=Object.entries(jobs).find(([id,j])=>s.jobs[id]?.active&&j.steps.includes(step)&&!s.jobs[id].done[step]&&(step!=='deliver'||s.jobs[id].done.linen&&s.cargo.includes('linen')));if(current){const revised=[2,3,4].includes(s.jobs[current[0]].revision);add('job:'+step,revised?({tag:'Проверить контейнеры по заявке',linen:'Собрать комплект белья для 406',deliver:s.jobs[current[0]].revision===4?(s.jobs[current[0]].work.preparationStarted?'Продолжить смену белья в 406':'Начать смену белья на кровати 406'):label,copies:'Сверить две записи'}[step]||label):label);}}
+for(const [step,label] of events[r]||[]){const current=Object.entries(jobs).find(([id,j])=>s.jobs[id]?.active&&j.steps.includes(step)&&!s.jobs[id].done[step]&&(step!=='deliver'||s.jobs[id].done.linen&&s.cargo.includes('linen')));if(current){const revised=s.jobs[current[0]].revision>=2;add('job:'+step,revised?({tag:'Проверить контейнеры по заявке',linen:'Собрать комплект белья для 406',deliver:s.jobs[current[0]].revision>=4?(s.jobs[current[0]].work.preparationStarted?'Продолжить смену белья в 406':'Начать смену белья на кровати 406'):label,copies:'Сверить две записи'}[step]||label):label);}}
+const observationJob=s.jobs.d3;
+if(observationJob?.active&&observationJob.revision===4&&!observationJob.work.baselineCaptured&&
+ (r==='doctor'||Work.route(s,'d3')?.room===r)){
+ if(Work.board(s,'job:baseline'))add('job:baseline',r==='doctor'?'Выбрать предмет наблюдения':'Записать первичное наблюдение');
+}
 const callJob=s.jobs.d1;
+if(callJob?.active&&callJob.revision===5&&['ward407','ward408'].includes(r)){
+ const suffix=r.slice(4),service='job:callService'+suffix,retest='job:callRetest'+suffix;
+ const local=Work.route(s,'d1')?.plan?.find(step=>step.room===r);
+ if(local?.action===service)add(service,'Обслуживание с техником здесь · '+suffix);
+ if(local?.action===retest)add(retest,'Контрольный вызов после обслуживания · '+suffix);
+}
 if(callJob?.active&&callJob.revision===4&&callJob.done.bell407&&callJob.done.bell408){
  if(!callJob.work.authorized){if(r==='doctor')add('job:callReview','Согласовать обслуживание по первичным актам');}
  else for(const room of ['ward407','ward408']){if(callJob.work.initial[room].condition==='working')continue;const service=callJob.work.services[room],staffRoom=callJob.work.initial[room].condition==='noResponse'?'nurse':'technical';if(!service.performed&&r===staffRoom)add('job:callService'+room.slice(4),'Согласованное обслуживание вызова '+room.slice(4));else if(service.performed&&!service.confirmed&&r===room)add('job:callRetest'+room.slice(4),(service.tested?'Подтвердить контрольный вызов ':'Контрольный вызов после обслуживания ')+room.slice(4));}
 }
-}else{if(r==='collector'&&f.reserveKnown&&!f.tripHandle&&!f.unlockB)add('takeHandle','Забрать аварийную рукоять');if(r==='A'&&!f.unlockB)add('unlockB','Освободить заевший привод двери A/B');if(r==='B'&&f.unlockB&&!f.unlockC)add('unlockC','Взять запасной ключ и открыть B/C');if(r==='stairs'){if(!f.exit)add('exit','Сопоставить маршрут и проверить двери');else add('descend','Спуститься на 9-й этаж');}if((r==='nurse'&&accessible(s,'B'))||(r==='doctor'&&accessible(s,'C')))add('boss:'+r,'Начать повторяемый рейд');if(r==='A'&&s.jobs.d3?.active&&(![2,3].includes(s.jobs.d3.revision)||s.jobs.d3.work?.baselineCaptured)&&s.trip>s.jobs.d3.startTrip&&!s.jobs.d3.done.difference&&s.cargo.includes('baseline'))add('job:difference',s.jobs.d3.revision===3?'Сопоставить наблюдение в Трипе':'Записать отличие в Трипе');}
+}else{if(r==='collector'&&f.reserveKnown&&!f.tripHandle&&!f.unlockB)add('takeHandle','Забрать аварийную рукоять');if(r==='A'&&!f.unlockB)add('unlockB','Освободить заевший привод двери A/B');if(r==='B'&&f.unlockB&&!f.unlockC)add('unlockC','Взять запасной ключ и открыть B/C');if(r==='stairs'){if(!f.exit)add('exit','Сопоставить маршрут и проверить двери');else add('descend','Спуститься на 9-й этаж');}if((r==='nurse'&&accessible(s,'B'))||(r==='doctor'&&accessible(s,'C')))add('boss:'+r,'Начать повторяемый рейд');const job=s.jobs.d3;
+ if(job?.active&&!job.done.difference&&s.trip>job.startTrip&&s.cargo.includes('baseline')){
+  if(job.revision===4){
+   if(Work.board(s,'job:difference'))add('job:difference','Повторить действие с выбранным предметом');
+  }else if(r==='A'&&(job.revision<2||job.work?.baselineCaptured)){
+   add('job:difference',job.revision===3?'Сопоставить наблюдение в Трипе':'Записать отличие в Трипе');
+  }
+ }}
 if(r==='collector'&&now-s.collectorAt>=60000)add('collect','Получить припасы сборщика: 15 серебра и 1 таблетка');return a;}
 function workOwner(s,id){const key=Work?.owner?.[typeof id==='string'&&id.startsWith('job:')?id.slice(4):''];return key&&s.jobs[key]?.active&&Work?.supportsRevision?.(key,s.jobs[key].revision)?key:null;}
 function workbench(s,id){return Work&&workOwner(s,id)&&actions(s).some(a=>a.id===id)?Work.board(s,id):null;}
 function observation(s){return Work?Work.observation(s):{time:s.mode==='trip'?'03:00':'08:00',route:'Палаты 404–408',mark:'—'};}
-function cargoName(s,id){if(id==='log'&&s.jobs?.d2?.revision===3)return'Лист обхода · порядок подтверждён';return id==='difference'&&s.jobs?.d3?.revision===3?'Карточка наблюдения · результат':cargoCatalog[id]?.name||'';}
+function cargoName(s,id){if(id==='log'&&s.jobs?.d2?.revision>=3)return'Лист обхода · порядок подтверждён';return id==='difference'&&s.jobs?.d3?.revision>=3?'Карточка наблюдения · результат':cargoCatalog[id]?.name||'';}
 function cargoDescription(s,id){return Work?Work.description(s,id):null;}
 function jobBrief(id,revision){return Work?.brief?.(id,revision)||null;}
 function jobStage(s,id){return Work?.route?.(s,id)||null;}
@@ -194,7 +224,7 @@ if(event.type==='work'){
  if(key==='d1'&&event.op==='test'&&/^job:bell40[78]$/.test(event.id))recordCall(s,event.id.slice(4));
  if(result.effect?.kind==='callServiceAuthorized')reviewWorld(s,'d1');
  if(result.effect?.kind==='callService'){const room=result.effect.room,e=s.world.callEquipment[room],p=s.jobs.d1.work.services[room];e.condition='working';e.revision=p.serviceRevision;e.verified=false;}
- if(['callRetestObserved','callRetestConfirmed'].includes(result.effect?.kind)){const room=result.effect.room,confirmed=result.effect.kind==='callRetestConfirmed';s.world.callEquipment[room].verified=confirmed;s.world.calls[room]={order:s.jobs.d1.work.order,room,tested:true,connected:true,indicator:'on',responseCode:'acknowledged',report:confirmed?'working':null,reviewed:false,revision:4};}
+ if(['callRetestObserved','callRetestConfirmed'].includes(result.effect?.kind)){const room=result.effect.room,confirmed=result.effect.kind==='callRetestConfirmed';s.world.callEquipment[room].verified=confirmed;s.world.calls[room]={order:s.jobs.d1.work.order,room,tested:true,connected:true,indicator:'on',responseCode:'acknowledged',report:confirmed?'working':null,reviewed:false,revision:s.jobs.d1.revision};}
 
  if(result.complete==='baseline'){s.jobs.d3.startTrip=s.trip;if(!s.cargo.includes('baseline'))s.cargo.push('baseline');message+=' '+Work.description(s,'baseline')+' Получено: '+cargoCatalog.baseline.name+'. Предмет доступен в инвентаре.';}
  else if(result.complete&&result.complete!=='linenReserve'){const receipt=finishJobStep(s,result.complete);message+=' '+(Work.description(s,stepCargo[result.complete])||'')+' '+receipt;}
@@ -207,15 +237,25 @@ if(event.type==='move'){if(!destinations(s).includes(event.room))return fail('П
 if(event.type==='unlockAll'){if(s.battle)return fail('Сначала завершите рейд.');s.allSectionsUnlocked=!s.allSectionsUnlocked;if(!accessible(s,rooms[s.room][0]))s.room='ward404';return {ok:true,message:s.allSectionsUnlocked?'Все секции открыты. Задания и награды не изменены.':'Доступ снова зависит от прогресса.'};}
 if(event.type==='switch'){if(s.battle)return fail('Сначала завершите рейд.');s.mode=s.mode==='patient'?'trip':'patient';if(s.mode==='trip'){s.trip++;if(!accessible(s,rooms[s.room][0]))s.room='ward404';}recordRoomObservation(s);return {ok:true,message:s.mode==='trip'?'Трип: доступны только открытые секции.':'Пациент: весь этаж доступен; спуск запрещен.'};}
 if(event.type==='battleEnd'){if(!s.battle)return fail('Нет активного рейда.');if(event.victory&&s.battle==='doctor')s.flags.doctorWon=true;s.battle=null;if(!event.victory)s.room='ward404';return {ok:true,message:event.victory?'Контакт завершён. Рейд можно повторить.':'Возвращение в 404 без боевой награды. Режим сохранён.'};}
-if(event.type!=='action'||!actions(s,now).some(a=>a.id===event.id))return fail('Сейчас это действие недоступно.');const id=event.id,f=s.flags;if(workOwner(s,id))return fail('Сначала завершите рабочий лист поручения.');if(interactions[id]&&(s.interactions[id]||0)<interactions[id].steps.length)return fail('Сначала выполните взаимодействие с предметами.');let reward=null,message='Запись добавлена в задания.';
+if(event.type!=='action'||event.id?.startsWith('talk:')||!actions(s,now).some(a=>a.id===event.id))return fail('Сейчас это действие недоступно.');const id=event.id,f=s.flags;if(workOwner(s,id))return fail('Сначала завершите рабочий лист поручения.');if(interactions[id]&&(s.interactions[id]||0)<interactions[id].steps.length)return fail('Сначала выполните взаимодействие с предметами.');let reward=null,message='Запись добавлена в задания.';
 if(id==='exercise'){s.exerciseCount++;s.interactions.exercise=0;message='Последовательность выполнена. Упражнение можно повторить; сюжет и награды не меняются.';}else if(['inspectDoor','supplyNote','takeHandle'].includes(id))f[{inspectDoor:'doorKnown',supplyNote:'reserveKnown',takeHandle:'tripHandle'}[id]]=true;else if(['record','observation'].includes(id))f[{record:'cKeyKnown',observation:'cLockKnown'}[id]]=true;
 else if(id==='stairsPatient'){f.stairsSeen=true;message='Персонал не разрешает спуск. Маршрут лестницы записан.';}
 else if(id==='unlockB'){if(!f.doorKnown||!f.reserveKnown||!f.tripHandle)return fail('Нужны знание механизма и аварийная рукоять из ординаторской A.');f.unlockB=true;message='Засов отведён. B открыта: аварийная рукоять остаётся в приводе. Дверь C имеет другую причину блокировки.';}
 else if(id==='unlockC'){if(!f.cKeyKnown||!f.cLockKnown)return fail('Нужны опись хранения ключа в процедурной и памятка о замке у врача в Пациенте. Поручения необязательны.');f.unlockC=true;message='Замок отперт ключом из тележки. Створка B/C открыта; можно пройти в C.';}
 else if(id==='exit'){if(!f.doctorWon||!f.route)return fail('Нужны маршрут и первая победа над врачом в Трипе.');f.exit=true;message='Лестница открыта в Трипе. 9-й этаж еще в разработке.';}
 else if(id==='descend')return {ok:true,message:'9-й этаж еще в разработке. Переход и расход предметов не происходят.'};
-else if(id.startsWith('accept:')){const key=id.slice(7);for(const step of jobs[key].steps)s.interactions['job:'+step]=0;s.jobs[key]={active:true,done:{},count:s.jobs[key]?.count||0,startTrip:s.trip,...(Work?Work.make(key,s.jobs[key]?.count||0,s.world.callEquipment):{revision:1})};if(key==='d3'&&!Work&&!s.cargo.includes('baseline'))s.cargo.push('baseline');const brief=jobBrief(key);message='Поручение принято. '+(brief?brief.giver+': '+brief.purpose+' Передайте: '+brief.deliverable+' ':'')+'Награда: '+rewardText(key)+'.'+(key==='d3'?' Сначала запишите показания таблички в коридоре A.':'');}
-else if(id.startsWith('claim:')){const key=id.slice(6),j=s.jobs[key];if(key!=='d1'||j.revision!==4)reviewWorld(s,key);else for(const room of ['ward407','ward408'])if(s.world.calls[room]?.order===j.work.order)s.world.calls[room].reviewed=true;s.cargo=s.cargo.filter(x=>!requiredCargo[key].includes(x));j.active=false;j.count++;reward={kind:'job',job:key,id:key+':'+j.count,...payouts[key]};message='Поручение сдано. Получено: '+rewardText(key)+'. Предметы подтверждения переданы.';const reply=roomEffects(s,jobs[key].giver,'patient').find(x=>x.kind==='review');if(reply?.order===key+':'+j.count)message+=' '+reply.text;}
+else if(id.startsWith('accept:')){const key=id.slice(7);for(const step of jobs[key].steps)s.interactions['job:'+step]=0;s.jobs[key]={active:true,done:{},count:s.jobs[key]?.count||0,startTrip:s.trip,...(Work?Work.make(key,s.jobs[key]?.count||0,s.world.callEquipment,s):{revision:1})};if(key==='d3'&&!Work&&!s.cargo.includes('baseline'))s.cargo.push('baseline');const brief=jobBrief(key);message='Поручение принято. '+(brief?brief.giver+': '+brief.purpose+' Передайте: '+brief.deliverable+' ':'')+'Награда: '+rewardText(key)+'.'+(key==='d3'?(s.jobs.d3.revision>=4?' Выберите у врача предмет наблюдения. Табличка A доступна без других поручений.':' Сначала запишите показания таблички в коридоре A.'):'');}
+else if(id.startsWith('claim:')){const key=id.slice(6),j=s.jobs[key];if(key==='d1'&&j.revision===5){
+ const order=j.work.order,calls={};
+ for(const room of ['ward407','ward408']){
+  const observed=Work.callResult(s,'bell'+room.slice(4));
+  calls[room]={order,room,tested:true,...observed,reviewed:true,revision:5};
+  if(s.world.calls[room]?.order===order)s.world.calls[room].reviewed=true;
+ }
+ const maintenance=Object.keys(calls).filter(room=>calls[room].report!=='working');
+ s.world.doctorReview={order,calls,maintenance,commentCode:maintenance.length?'maintenance':'allWorking'};
+}else if(key!=='d1'||j.revision!==4)reviewWorld(s,key);
+else for(const room of ['ward407','ward408'])if(s.world.calls[room]?.order===j.work.order)s.world.calls[room].reviewed=true;s.cargo=s.cargo.filter(x=>!requiredCargo[key].includes(x));j.active=false;j.count++;reward={kind:'job',job:key,id:key+':'+j.count,...payouts[key]};message='Поручение сдано. Получено: '+rewardText(key)+'. Предметы подтверждения переданы.';const reply=roomEffects(s,jobs[key].giver,'patient').find(x=>x.kind==='review');if(reply?.order===key+':'+j.count)message+=' '+reply.text;}
 else if(id.startsWith('job:')){message=finishJobStep(s,id.slice(4));}
 else if(id.startsWith('boss:')){s.battle=id.slice(5);message='Рейд начат.';}
 else if(id==='collect'){s.collectorAt=now;s.collectorCount++;reward={kind:'collector',id:'collector:'+s.collectorCount};message='Припасы получены: 15 серебра и 1 таблетка. Следующая выдача через минуту; смена режима не ускоряет сбор.';}

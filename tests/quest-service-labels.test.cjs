@@ -3,6 +3,7 @@
 const {test}=require('node:test');
 const a=require('node:assert/strict');
 const E=require('../quest-engine.js');
+const {loadIssuedV4}=require('./quest-issued-v4.cjs');
 const clone=value=>JSON.parse(JSON.stringify(value));
 const rooms=['ward407','ward408'];
 
@@ -28,10 +29,9 @@ function work(s,id,op,value){const result=apply(s,{type:'work',id,op,value});a.e
 function preparedService(variant,room,cause){
  const s=E.initial();
  for(const target of rooms)s.world.callEquipment[target]={condition:target===room?cause:'working',revision:0,verified:target!==room};
- // A prior issued-and-closed order chooses the same stable variant as an old
- // save. Acceptance still goes through the public engine, not private helpers.
- if(variant)s.jobs.d1={active:false,count:variant,done:{}};
- go(s,'doctor');apply(s,{type:'action',id:'accept:d1'});
+ // Earlier builds assign option IDs before persisting an issued order.
+ // Exercise the previously issued contract with the exact earlier variant.
+ go(s,'doctor');loadIssuedV4(s,'d1',variant);
  for(const target of rooms){
   go(s,target);const id='job:bell'+target.slice(4);
   work(s,id,'inspect','connector');work(s,id,'test');

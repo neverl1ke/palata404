@@ -14,15 +14,15 @@ function rejected(s,event){const before=JSON.stringify(s),result=E.apply(s,event
 function conclude(s){work(s,'readSources');for(const [field,choice]of Object.entries({room:'differs',time:'matchesActual',author:'unknown'}))work(s,'conclude',{field,choice});work(s,'submit');}
 function worldAt(version){return version===8?{version:1,linen406:null,calls:{ward407:null,ward408:null},doctorReview:null}:E.initial().world;}
 function historical(version,revision,workState={},done={},count=0){return{version,world:worldAt(version),mode:'patient',room:'procedure',visited:{A:true,B:true},jobs:{k3:{active:true,revision,variant:0,count,startTrip:0,done,work:workState}},cargo:done.copies?['copies']:[],transaction:0};}
-function restoreSupported(raw){const bytes=JSON.stringify(raw);a.equal(E.supportsSave(raw),true);const out=E.restore(raw);a.equal(JSON.stringify(raw),bytes,'restore mutated the original save');a.equal(out.version,10);a.deepEqual(E.restore(clone(out)),out,'restored checkpoint must remain idempotent');return out;}
+function restoreSupported(raw){const bytes=JSON.stringify(raw);a.equal(E.supportsSave(raw),true);const out=E.restore(raw);a.equal(JSON.stringify(raw),bytes,'restore mutated the original save');a.equal(out.version,11);a.deepEqual(E.restore(clone(out)),out,'restored checkpoint must remain idempotent');return out;}
 
-test('save version10 is current while versions1 through9 retain their supported basic progress',()=>{
- a.equal(E.initial().version,10);a.equal(E.supportsSave(E.initial()),true);
- for(let version=1;version<=10;version++){
+test('save version11 is current while versions1 through10 retain their supported basic progress',()=>{
+ a.equal(E.initial().version,11);a.equal(E.supportsSave(E.initial()),true);
+ for(let version=1;version<=11;version++){
   const raw={version,world:worldAt(version),mode:'patient',room:'nurse',visited:{A:true,B:true},flags:{doorKnown:true},cargo:[],transaction:3};
   const out=restoreSupported(raw);a.equal(out.room,'nurse');a.equal(out.flags.doorKnown,true);a.equal(out.transaction,3);
  }
- a.equal(E.supportsSave({...E.initial(),version:11}),false);
+ a.equal(E.supportsSave({...E.initial(),version:12}),false);
 });
 
 test('new K3 orders persist the approved revision and source-backed partial conclusions',()=>{
@@ -92,9 +92,26 @@ test('issued K3 revision1 and previously completed nonrepeat orders never migrat
  const s=restoreSupported(raw);a.equal(s.jobs.k3.revision,2);a.equal(s.jobs.k3.count,1);rejected(s,{type:'action',id:'accept:k3'});rejected(s,{type:'action',id:'claim:k3'});
 });
 
+test('new K2 D1 D2 D3 contracts require schema11 and retain their exact issued work',()=>{
+ for(const id of ['k2','d1','d2','d3']){
+  const s=E.initial();go(s,E.jobs[id].giver);apply(s,{type:'action',id:'accept:'+id});
+  const issued=clone(s.jobs[id]);
+  a.deepEqual(restoreSupported(clone(s)).jobs[id],issued);
+  for(const version of [6,10]){
+   const downgraded={...clone(s),version};
+   a.equal(E.supportsSave(downgraded),false,id+' newer revision cannot become v'+version);
+  }
+ }
+});
+
 test('existing D2 D3 revision3 and K2 D1 revision4 retain their previous minimum save gates',()=>{
  for(const id of ['d2','d3','k2','d1']){
-  const s=E.initial();go(s,E.jobs[id].giver);apply(s,{type:'action',id:'accept:'+id});const raw={...clone(s),version:9};a.equal(E.supportsSave(raw),true,id+' supported v9');a.equal(E.restore(raw).jobs[id].revision,s.jobs[id].revision);
+  const s=E.initial();
+  const previousRevision=['d2','d3'].includes(id)?3:4;
+  const issued=W.restore(id,{...W.make(id,0,s.world.callEquipment),revision:previousRevision});
+  if(id==='d1')issued.work.authorized=false;
+  const raw={...s,version:9,jobs:{[id]:{active:true,done:{},count:0,startTrip:0,...issued}}};
+  a.equal(E.supportsSave(raw),true,id+' supported v9');a.equal(E.restore(raw).jobs[id].revision,previousRevision);
   raw.version=8;raw.world=worldAt(8);a.equal(E.supportsSave(raw),false,id+' newer revision cannot become v8');
  }
  for(const id of ['k2','d1']){

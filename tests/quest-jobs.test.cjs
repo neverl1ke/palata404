@@ -12,7 +12,7 @@ function solve(s,id){
  a.ok(E.workbench(s,id),id+' board should be available');
  for(let count=0;count<60;count++){
   const board=E.workbench(s,id);if(!board)return result;
-  a.deepEqual(board.brief,E.jobBrief(board.jobId));const operation=nextOperation(board);
+  a.deepEqual(board.brief,E.jobBrief(board.jobId,board.revision));const operation=nextOperation(board);
   if(operation.navigate){go(s,operation.navigate);solve(s,operation.action);go(s,operation.resumeRoom);continue;}
   result=step(s,id,operation.op,operation.value);
  }
@@ -24,14 +24,14 @@ function complete(s,id){
  if(id==='k3'){go(s,'procedure');solve(s,'job:copies');}
  if(id==='d1'){
   go(s,'ward407');solve(s,'job:bell407');go(s,'ward408');solve(s,'job:bell408');
-  if(s.jobs.d1.revision===4)for(let i=0;i<8&&!E.ready(s,'d1');i++){const route=E.jobStage(s,'d1');a.ok(route?.action,'An unfinished call cycle must expose its next real action.');go(s,route.room);solve(s,route.action);}
+  if(s.jobs.d1.revision>=4)for(let i=0;i<8&&!E.ready(s,'d1');i++){const route=E.jobStage(s,'d1');a.ok(route?.action,'An unfinished call cycle must expose its next real action.');go(s,route.room);solve(s,route.action);}
  }
  if(id==='d2')solve(s,'job:log');
- if(id==='d3'){go(s,'A');solve(s,'job:baseline');a.ok(E.apply(s,{type:'switch'}).ok);solve(s,'job:difference');a.ok(E.apply(s,{type:'switch'}).ok);}
+ if(id==='d3'){if(s.jobs.d3.revision===4)step(s,'job:baseline','chooseSubject','signA');go(s,'A');solve(s,'job:baseline');a.ok(E.apply(s,{type:'switch'}).ok);solve(s,'job:difference');a.ok(E.apply(s,{type:'switch'}).ok);}
  go(s,E.jobs[id].giver);
 }
 for(const id of Object.keys(E.jobs))test('new '+id+' requires its distinct work, produces proof and pays only at submission',()=>{
- let s=E.initial();const j=accept(s,id);a.equal(j.revision,['k2','d1'].includes(id)?4:['k3','d2','d3'].includes(id)?3:2);a.equal(s.version,10);const stored=JSON.stringify(s);s=E.restore(JSON.parse(stored));a.equal(JSON.stringify(s.jobs[id]),JSON.stringify(j));
+ let s=E.initial();const j=accept(s,id);a.equal(j.revision,['k2','d1'].includes(id)?5:['d2','d3'].includes(id)?4:id==='k3'?3:2);a.equal(s.version,11);const stored=JSON.stringify(s);s=E.restore(JSON.parse(stored));a.equal(JSON.stringify(s.jobs[id]),JSON.stringify(j));
  a.equal(act(s,'claim:'+id).ok,false);complete(s,id);a.ok(E.ready(s,id));a.equal(E.workbench(s,'job:'+E.jobs[id].steps.at(-1)),null);
  const proof=E.requiredCargo[id];for(const cargo of proof){a.ok(s.cargo.includes(cargo));a.ok(E.cargoDescription(s,cargo));}
  const result=act(s,'claim:'+id);a.ok(result.ok,result.message);a.deepEqual(result.reward,{kind:'job',job:id,id:id+':1',...E.payouts[id]});a.equal(s.jobs[id].count,1);a.equal(s.jobs[id].active,false);for(const cargo of proof)a.ok(!s.cargo.includes(cargo));a.equal(act(s,'claim:'+id).ok,false);
@@ -63,14 +63,15 @@ test('issued legacy comparison fields and current chronology do not advance or c
  const first=b.cards[0].id;step(s,'job:log','move',{id:first,direction:'down'});a.notDeepEqual(E.workbench(s,'job:log').order,b.cards.map(x=>x.id));
 });
 test('new observation requires Patient baseline and a later Trip, with actual scene matching both cards',()=>{
- let s=E.initial();accept(s,'d3');a.ok(!s.cargo.includes('baseline'));go(s,'A');let b=E.workbench(s,'job:baseline');a.deepEqual(Object.fromEntries(b.details.map(x=>[x.id,x.value])),E.observation(s));
+ let s=E.initial();accept(s,'d3');a.ok(!s.cargo.includes('baseline'));step(s,'job:baseline','chooseSubject','signA');go(s,'A');step(s,'job:baseline','inspect');let b=E.workbench(s,'job:baseline');a.deepEqual(Object.fromEntries(b.details.map(x=>[x.id,x.value])),E.observation(s));
  E.apply(s,{type:'switch'});a.equal(E.workbench(s,'job:difference'),null);E.apply(s,{type:'switch'});step(s,'job:baseline','record');a.ok(s.cargo.includes('baseline'));a.equal(E.workbench(s,'job:difference'),null);
- s=E.restore(JSON.parse(JSON.stringify(s)));a.ok(s.jobs.d3.work.baselineCaptured);a.match(E.cargoDescription(s,'baseline'),/08:00/);E.apply(s,{type:'switch'});b=E.workbench(s,'job:difference');a.deepEqual(Object.fromEntries(b.current.map(x=>[x.id,x.value])),E.observation(s));
+ s=E.restore(JSON.parse(JSON.stringify(s)));a.ok(s.jobs.d3.work.baselineCaptured);a.match(E.cargoDescription(s,'baseline'),/08:00/);E.apply(s,{type:'switch'});step(s,'job:difference','inspect');b=E.workbench(s,'job:difference');a.deepEqual(Object.fromEntries(b.current.map(x=>[x.id,x.value])),E.observation(s));
  const before=JSON.stringify(s);a.equal(work(s,'job:difference','submit').ok,false);a.equal(JSON.stringify(s),before);solve(s,'job:difference');a.ok(!s.cargo.includes('baseline'));a.ok(s.cargo.includes('difference'));
 });
 test('engine fallback guidance requires a new observation baseline while legacy cards keep their issued baseline',()=>{
  const s=E.initial();accept(s,'d3');
- let guide=E.guide(s,'d3');a.equal(guide.mode,'patient');a.equal(guide.room,'A');a.match(guide.text,/первич|исходн/i);
+ let guide=E.guide(s,'d3');a.equal(guide.mode,'patient');a.equal(guide.room,'doctor');a.match(guide.text,/выберите/i);
+ step(s,'job:baseline','chooseSubject','signA');guide=E.guide(s,'d3');a.equal(guide.room,'A');a.match(guide.text,/исходн/i);
  go(s,'A');solve(s,'job:baseline');guide=E.guide(s,'d3');a.equal(guide.mode,'trip');a.equal(guide.room,'A');
  a.ok(E.apply(s,{type:'switch'}).ok);guide=E.guide(s,'d3');a.equal(guide.mode,'trip');a.equal(guide.room,'A');a.ok(E.workbench(s,'job:difference'));
  const legacy=E.restore({version:6,mode:'patient',room:'doctor',jobs:{d3:{active:true,done:{},count:0,startTrip:0}},cargo:['baseline']});
@@ -80,7 +81,7 @@ test('engine fallback guidance requires a new observation baseline while legacy 
 test('versions 1–6 retain old active progress and their final legacy step; next repeat uses new work',()=>{
  for(let version=1;version<=6;version++){
   const raw={version,mode:'patient',room:'ward406',jobs:{k2:{active:true,done:{linen:true},count:2,startTrip:0,revision:2,variant:2,work:{selected:['linen-1']}}},cargo:['linen'],flags:{unlockB:true,unlockC:true}};const bytes=JSON.stringify(raw);let s=E.restore(raw);a.equal(JSON.stringify(raw),bytes);a.equal(s.jobs.k2.revision,1);a.equal(s.jobs.k2.count,2);a.equal(s.jobs.k2.done.linen,true);a.equal(E.workbench(s,'job:deliver'),null);
-  a.ok(E.apply(s,{type:'interact',id:'job:deliver',choice:'bed'}).ok);go(s,'nurse');a.ok(act(s,'claim:k2').ok);a.ok(act(s,'accept:k2').ok);a.equal(s.jobs.k2.revision,4);a.equal(s.jobs.k2.count,3);a.equal(s.flags.unlockB,true);a.equal(s.flags.unlockC,true);
+  a.ok(E.apply(s,{type:'interact',id:'job:deliver',choice:'bed'}).ok);go(s,'nurse');a.ok(act(s,'claim:k2').ok);a.ok(act(s,'accept:k2').ok);a.equal(s.jobs.k2.revision,5);a.equal(s.jobs.k2.count,3);a.equal(s.flags.unlockB,true);a.equal(s.flags.unlockC,true);
  }
  const s=E.restore({version:6,mode:'patient',room:'nurse',jobs:{k1:{active:false,done:{tag:true},count:1}},cargo:[]});a.equal(act(s,'accept:k1').ok,false);a.equal(s.jobs.k1.count,1);
 });
@@ -92,7 +93,7 @@ test('new work fields are bounded and cannot auto-complete from unknown or malfo
 });
 
 test('unsupported work revisions and malformed operation IDs are rejected safely',()=>{
- a.equal(E.supportsSave({version:7,jobs:{k1:{revision:3}}}),false);a.equal(E.supportsSave({version:11}),false);a.equal(E.supportsSave({version:6,jobs:{k1:{revision:3}}}),true);a.equal(E.supportsSave({version:7,jobs:{k1:{revision:2,variant:0,work:{}}}}),true);
+ a.equal(E.supportsSave({version:7,jobs:{k1:{revision:3}}}),false);a.equal(E.supportsSave({version:12}),false);a.equal(E.supportsSave({version:6,jobs:{k1:{revision:3}}}),true);a.equal(E.supportsSave({version:7,jobs:{k1:{revision:2,variant:0,work:{}}}}),true);
  a.equal(E.supportsSave({version:7,jobs:{k1:{revision:2,variant:3,work:{}}}}),false);a.equal(E.supportsSave({version:7,jobs:{k1:{revision:2,variant:0}}}),false);
  a.equal(E.supportsSave({version:7,jobs:{futureJob:{revision:1}}}),false);a.equal(E.supportsSave({version:7,jobs:[]}),false);
  const s=E.initial();accept(s,'k1');go(s,'procedure');const before=JSON.stringify(s);for(const id of [null,5,{},[]]){a.equal(E.workbench(s,id),null);a.equal(E.apply(s,{type:'work',id,op:'submit'}).ok,false);a.equal(JSON.stringify(s),before);}
@@ -148,7 +149,7 @@ test('completed work preserves concrete findings in receipts and durable order r
   const s=E.initial();accept(s,id);complete(s,id);
   for(const cargo of E.requiredCargo[id]){
    const description=E.cargoDescription(s,cargo);a.ok(description);
-   if(id==='d1'&&s.jobs.d1.revision===4){
+   if(id==='d1'&&s.jobs.d1.revision>=4){
     // A complete service cycle outlives the intentionally transient 12-line log.
     // Its original observations and actual outcome must survive in durable records.
     const room='ward'+cargo.slice(-3),copy=E.restore(JSON.parse(JSON.stringify(s)));

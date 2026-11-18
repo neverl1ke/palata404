@@ -51,8 +51,8 @@ test('D1 connector inspection, actual test and draft diagnosis have separate pro
 
 test('D1 service evidence and retest responses appear only after their real actions',()=>{
  const s=E.initial();accept(s,'d1');
- for(const room of ['ward407','ward408']){go(s,room);solve(s,'job:bell'+room.slice(4));}
- go(s,'doctor');work(s,'job:callReview','authorize');a.ok(record(s,'d1','authorization'));
+ go(s,'ward407');solve(s,'job:bell407');
+ a.equal(record(s,'d1','authorization'),undefined,'local technician does not imply a separately issued doctor order');
  const stage=E.jobStage(s,'d1'),suffix=stage.action.slice(-3);go(s,stage.room);
  a.equal(record(s,'d1','service-source:'+suffix),undefined);
  a.equal(record(s,'d1','retest:'+suffix),undefined);
@@ -75,10 +75,10 @@ test('D2 retains only chosen leaflets or explicitly read reverses and never inve
 });
 
 test('D3 uses actual frozen snapshots and cannot create a repeat observation by reading notes',()=>{
- const s=E.initial();accept(s,'d3');go(s,'A');a.deepEqual(notes(s,'d3'),[]);
- work(s,'job:baseline','record');const initial=notes(s,'d3');a.equal(initial.length,1);a.equal(initial[0].id,'baseline');a.equal(record(s,'d3','observed'),undefined);
+ const s=E.initial();accept(s,'d3');work(s,'job:baseline','chooseSubject','signA');go(s,'A');a.deepEqual(notes(s,'d3'),[]);
+ work(s,'job:baseline','inspect');a.deepEqual(notes(s,'d3'),[]);work(s,'job:baseline','record');const initial=notes(s,'d3');a.equal(initial.length,1);a.equal(initial[0].id,'baseline');a.equal(record(s,'d3','observed'),undefined);
  go(s,'ward404');apply(s,{type:'switch'});a.deepEqual(notes(s,'d3'),initial);a.equal(s.jobs.d3.work.observed,null);
- go(s,'A');const out=notes(s,'d3');a.equal(out.length,2);a.ok(record(s,'d3','observed'));
+ go(s,'A');a.deepEqual(notes(s,'d3'),initial);work(s,'job:difference','inspect');const out=notes(s,'d3');a.equal(out.length,2);a.ok(record(s,'d3','observed'));
  a.deepEqual(Object.values(s.jobs.d3.work.observed).sort(),record(s,'d3','observed').fields.map(field=>field.value).sort());
  a.deepEqual(notes(E.restore(clone(s)),'d3'),out);deepFrozen(out);
 });
@@ -87,7 +87,7 @@ test('K2 notes distinguish selected drafts, packed kit, placed bedding and staff
  const s=E.initial();accept(s,'k2');go(s,'linen');work(s,'job:linen','select','linen-0');
  const selected=record(s,'k2','linen-0');a.ok(selected);a.equal(selected.status,'draft');a.equal(record(s,'k2','result:linen'),undefined);
  solve(s,'job:linen');a.equal(record(s,'k2','linen-0').status,'confirmed');a.ok(record(s,'k2','result:linen'));a.equal(record(s,'k2','result:deliver'),undefined);
- go(s,'ward406');work(s,'job:deliver','startBedPreparation');work(s,'job:deliver','selectPiece','sheet');work(s,'job:deliver','place','sheetZone');
+ go(s,'ward406');work(s,'job:deliver','startBedPreparation');work(s,'job:deliver','chooseMethod','window');work(s,'job:deliver','selectPiece','sheet');work(s,'job:deliver','spreadSheet');
  a.match(record(s,'k2','bed').text,/Простыня/);a.doesNotMatch(record(s,'k2','bed').text,/Наволочка/);a.equal(record(s,'k2','result:deliver'),undefined);
  solve(s,'job:deliver');a.ok(record(s,'k2','result:deliver'));go(s,'nurse');apply(s,{type:'action',id:'claim:k2'});
  accept(s,'k2');a.deepEqual(notes(s,'k2'),[]);go(s,'linen');work(s,'job:linen','noteShortage');a.ok(record(s,'k2','shortage'));a.equal(record(s,'k2','reserve'),undefined);
@@ -111,7 +111,7 @@ test('story notebook follows completed interaction steps, not debug access or un
 });
 
 test('completed current work remains readable after payout; accepting a new repeat replaces it honestly',()=>{
- const s=E.initial();accept(s,'d3');go(s,'A');work(s,'job:baseline','record');apply(s,{type:'switch'});solve(s,'job:difference');apply(s,{type:'switch'});go(s,'doctor');
+ const s=E.initial();accept(s,'d3');work(s,'job:baseline','chooseSubject','signA');go(s,'A');work(s,'job:baseline','inspect');work(s,'job:baseline','record');apply(s,{type:'switch'});work(s,'job:difference','inspect');work(s,'job:difference','noChanges');work(s,'job:difference','submit');apply(s,{type:'switch'});go(s,'doctor');
  const before=notes(s,'d3');a.ok(before.some(item=>item.status==='confirmed'));const paid=apply(s,{type:'action',id:'claim:d3'});a.deepEqual(paid.reward,{kind:'job',job:'d3',id:'d3:1',...E.payouts.d3});
  a.deepEqual(notes(s,'d3'),before);a.deepEqual(notes(E.restore(clone(s)),'d3'),before);
  accept(s,'d3');a.deepEqual(notes(s,'d3'),[]);a.equal(s.jobs.d3.count,1);a.equal(s.jobs.d3.variant,1);

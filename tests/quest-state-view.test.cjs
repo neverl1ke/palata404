@@ -2,6 +2,7 @@
 const {test}=require('node:test');
 const a=require('node:assert/strict');
 const E=require('../quest-engine.js');
+const {loadIssuedV4}=require('./quest-issued-v4.cjs');
 const V=require('../quest-state-view.js');
 const {nextOperation}=require('./quest-workbench-solver.cjs');
 const clone=value=>JSON.parse(JSON.stringify(value));
@@ -65,7 +66,7 @@ test('a new bed preparation supersedes the old finished record only after explic
  const s=E.initial();accept(s,'k2');move(s,'linen');solve(s,'job:linen');move(s,'ward406');
  a.deepEqual(V.forRoom(E,s,'ward406'),[]);work(s,'job:deliver','startBedPreparation');
  a.equal(outcome(s,'ward406','linen').status,'preparing');a.equal(outcome(s,'ward406','linen').mark,'0/2');
- work(s,'job:deliver','selectPiece','sheet');work(s,'job:deliver','place','sheetZone');
+ work(s,'job:deliver','chooseMethod','assistance');work(s,'job:deliver','selectPiece','sheet');work(s,'job:deliver','spreadSheet');
  a.equal(outcome(s,'ward406','linen').mark,'1/2');solve(s,'job:deliver');a.equal(outcome(s,'ward406','linen').status,'prepared');
  move(s,'nurse');apply(s,{type:'action',id:'claim:k2'});const prior=clone(s.world.linen406);accept(s,'k2');
  a.equal(outcome(s,'ward406','linen').status,'prepared');move(s,'linen');solve(s,'job:linen');move(s,'ward406');
@@ -75,7 +76,7 @@ test('a new bed preparation supersedes the old finished record only after explic
 });
 
 test('call badges reflect actual control confirmation rather than doctor permission or historical maintenance',()=>{
- const s=E.initial();accept(s,'d1');diagnose(s);const history=clone(s.world.doctorReview);
+ const s=E.initial();loadIssuedV4(s,'d1');diagnose(s);const history=clone(s.world.doctorReview);
  a.equal(outcome(s,'ward407','call').status,'attention');a.equal(outcome(s,'ward408','call').status,'attention');
  service(s,'ward407');a.equal(s.world.callEquipment.ward407.condition,'working');a.equal(s.world.callEquipment.ward407.verified,false);
  a.equal(outcome(s,'ward407','call').status,'retest');move(s,'ward407');work(s,'job:callRetest407','test');

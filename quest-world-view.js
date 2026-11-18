@@ -15,7 +15,7 @@ function tag(scene,effect){
  }
 }
 function observation(scene,state){
- if(state.room!=='A'||!state.jobs.d3?.active||![2,3].includes(state.jobs.d3.revision))return;
+ if(state.room!=='A'||!state.jobs.d3?.active||!([2,3].includes(state.jobs.d3.revision)||state.jobs.d3.revision===4&&state.jobs.d3.work?.subjectId==='signA'))return;
  const mark=window.PalataQuestEngine.observation(state).mark;if(!['Круг','Полоса','Крест'].includes(mark))return;
  const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');svg.setAttribute('viewBox','0 0 40 40');svg.classList.add('quest-observation-physical-mark');svg.dataset.observationMark=mark;svg.setAttribute('role','img');svg.setAttribute('aria-label','Отметка на металлической табличке: '+mark);
  const path=document.createElementNS(svg.namespaceURI,mark==='Круг'?'circle':'path');

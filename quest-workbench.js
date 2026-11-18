@@ -3,6 +3,7 @@
 'use strict';
 let scrollMemo=null;
 const svgNS='http://www.w3.org/2000/svg';
+const nodeSvg=tag=>document.createElementNS(svgNS,tag);
 function node(tag,className,text){const e=document.createElement(tag);if(className)e.className=className;if(text!==undefined)e.textContent=String(text??'');return e;}
 function label(value){
  const words={true:'да',false:'нет',intact:'целая',broken:'повреждена',sealed:'целая',damaged:'повреждена',clean:'чистая',stained:'пятна на ткани',torn:'надрыв ткани',dirty:'загрязнена',connected:'соединён',disconnected:'отсоединён'};
@@ -82,23 +83,36 @@ function bedReference(source='assets/quest-scenes/ward406.webp'){
 }
 function render(host,options){
  const {board,act,close}=options;if(!board||!host)return null;
- const section=node('section','quest-workbench');section.setAttribute('role','dialog');section.setAttribute('aria-modal','true');section.dataset.workKind=board.kind;section.dataset.workAction=board.actionId||'';if(board.revision===3&&['k3','d2','d3'].includes(board.jobId))section.dataset.workRevision='3';
+ const section=node('section','quest-workbench');section.setAttribute('role','dialog');section.setAttribute('aria-modal','true');section.dataset.workKind=board.kind;section.dataset.workAction=board.actionId||'';section.dataset.workRevision=String(board.revision||1);if(board.timelineMap)section.dataset.timelineMap='true';if(board.kind==='bedmaking'&&board.draftScene?.required)section.dataset.bedDraft='true';
  const titleId='quest-workbench-title';section.setAttribute('aria-labelledby',titleId);
  const toolbar=node('nav','workbench-toolbar');toolbar.setAttribute('aria-label','Управление осмотром');
  const key=board.actionId||board.jobId||board.kind;
+ function runWork(op,value){
+  const scroller=section.querySelector('.workbench-scroll');
+  const nextBed=board.draftScene?.required?{
+   startBedPreparation:'.workbench-draft-methods',
+   chooseMethod:'.workbench-bed-pieces',
+   spreadSheet:'.workbench-bed-pieces'
+  }[op]:null;
+  scrollMemo={key,top:scroller?.scrollTop||0,briefOpen:section.querySelector('.workbench-brief')?.open,nextBed,claraOpen:section.querySelector('.workbench-clara-art')?.open};
+  let result;
+  try{result=act(value===undefined?{op}:{op,value});}finally{scrollMemo=null;}
+  if(result?.message&&section.isConnected)status.textContent=result.message;
+ }
  function button(text,op,value,focusKey,extra={}){
   const b=node('button',extra.className||'workbench-button',text);b.type='button';b.dataset.workFocus=focusKey||[op,typeof value==='object'?value?.id:value].filter(x=>x!==undefined).join(':');b.dataset.workOp=op;if(value!==undefined)b.dataset.workValue=typeof value==='object'?JSON.stringify(value):String(value);
   if(extra.pressed!==undefined)b.setAttribute('aria-pressed',String(extra.pressed));if(extra.disabled)b.disabled=true;if(extra.ariaLabel)b.setAttribute('aria-label',extra.ariaLabel);
-  b.addEventListener('click',()=>{const scroller=section.querySelector('.workbench-scroll');scrollMemo={key,top:scroller?.scrollTop||0,briefOpen:section.querySelector('.workbench-brief')?.open};let result;try{result=act({op,...(value===undefined?{}:{value})});}finally{scrollMemo=null;}if(result?.message&&section.isConnected)status.textContent=result.message;});return b;
+  b.addEventListener('click',()=>runWork(op,value));return b;
  }
  const back=node('button','workbench-back','К осмотру комнаты');back.type='button';back.dataset.workFocus='close';back.onclick=()=>{scrollMemo=null;close();};
- const caseNumber=node('span','workbench-case-number','Лист поручения · '+String(board.jobId||'').toUpperCase());if(board.kind==='caseCompare')caseNumber.append(node('span','workbench-case-scroll-hint','Лист прокручивается ↓'));toolbar.append(back,caseNumber);section.append(toolbar);
+ const caseNumber=node('span','workbench-case-number','Лист поручения · '+String(board.jobId||'').toUpperCase());if(board.kind==='caseCompare'||board.timelineMap||board.draftScene?.required)caseNumber.append(node('span','workbench-case-scroll-hint','Лист прокручивается ↓'));toolbar.append(back,caseNumber);section.append(toolbar);
  const scroll=node('div','workbench-scroll');scroll.tabIndex=-1;
  const paper=node('div','workbench-paper document-paper');const masthead=node('div','workbench-masthead');const emblem=node('img','workbench-emblem');emblem.src='assets/ui/wardrobe/requested-header-emblem.webp';emblem.alt='Эмблема учреждения';emblem.draggable=false;
  const name=node('div','workbench-institution');name.append(node('small','','МЕДИЦИНСКАЯ ДОКУМЕНТАЦИЯ'),node('strong','','Центр интенсивного лечения'),node('span','','психических расстройств №404'));const stamp=document.createElement('document-stamp');stamp.setAttribute('type','service');stamp.setAttribute('label','В РАБОТЕ');stamp.setAttribute('rotate','-5');masthead.append(emblem,name,stamp);paper.append(masthead);
  const heading=node('h2','workbench-heading',board.title||'Поручение');heading.id=titleId;heading.tabIndex=-1;heading.dataset.workHeading='';paper.append(heading,node('p','workbench-instruction',board.instruction||'Выполните поручение по наблюдаемым признакам.'));
  if(board.brief){const brief=node('details','workbench-brief');brief.setAttribute('aria-label','Поручение');brief.open=scrollMemo?.key===key&&scrollMemo.briefOpen!==undefined?scrollMemo.briefOpen:false;const summary=node('summary','workbench-brief-summary');if(board.brief.giver)summary.append(node('strong','workbench-brief-giver','От: '+board.brief.giver));if(board.brief.purpose)summary.append(node('span','workbench-brief-purpose',board.kind==='caseCompare'?'Поручение и подтверждение':board.brief.purpose));brief.append(summary);if(board.kind==='caseCompare'&&board.brief.purpose)brief.append(node('p','workbench-case-brief-detail',board.brief.purpose));if(board.brief.deliverable)brief.append(node('small','workbench-brief-deliverable','Подтверждение: '+board.brief.deliverable));paper.append(brief);}
  const area=node('div','workbench-area');const selected=new Set(board.selected||[]),marked=new Set(board.marked||[]);
+ if(board.escort)area.append(node('p','workbench-local-escort',board.escort));
  const initialScrollCue=board.kind==='caseCompare'?'Источники и выводы ниже — прокрутите лист':board.revision===3?(board.jobId==='d2'&&board.kind==='timeline'&&!(board.order||[]).length&&!(board.cards||[]).some(card=>card.reverseRead)?'Записи ниже — прокрутите лист':board.jobId==='d3'&&board.kind==='difference'&&board.allowNoChanges===true&&!marked.size&&!board.noChanges?'Сравнение ниже — прокрутите лист':''):'';
  const footer=node('footer','workbench-footer');const status=node('p','workbench-status',options.feedback||options.message||board.feedback||initialScrollCue||'Изменения сохраняются по мере работы.');status.setAttribute('role','status');status.setAttribute('aria-live','polite');status.setAttribute('aria-atomic','true');
  function request(title,rows){const r=node('aside','workbench-request');r.append(node('h3','',title),facts(rows));return r;}
@@ -151,15 +165,58 @@ function render(host,options){
  }else if(board.kind==='bedmaking'){
   const placed=new Set(board.placed||[]),explicitStart=Object.hasOwn(board,'preparationStarted'),started=!explicitStart||!!board.preparationStarted;
   if(explicitStart){section.dataset.bedExplicitStart='true';section.dataset.bedPreparation=started?'started':'not-started';}
+  const draft=board.draftScene?.required?board.draftScene:null;
+  const waitingForMethod=Boolean(draft&&started&&!draft.method);
+  if(waitingForMethod){
+   const methods=node('section','workbench-draft-methods');
+   const context=node('div','workbench-draft-context');
+   context.append(node('h3','','Край простыни поднялся от сквозняка'),node('p','','Клара подошла к дальней стороне кровати. «Прикроем окно или подержу край?»'));
+   methods.append(context,button('Прикрыть окно и расправить самому','chooseMethod','window','chooseMethod:window'),button('Оставить окно · Клара придержит край','chooseMethod','assistance','chooseMethod:assistance'));
+   area.append(methods);
+  }else if(draft?.method&&!draft.spread){
+   const presence=draft.method==='assistance'?'Клара придерживает дальний край.':'Окно прикрыто. Край больше не поднимается.';
+   const state=node('section','workbench-draft-state');
+   state.append(node('p','',presence));
+   if(draft.method==='assistance'){
+    const illustration=node('details','workbench-clara-art');
+    illustration.open=scrollMemo?.key===key&&!!scrollMemo.claraOpen;
+    const figure=node('figure','workbench-clara-figure'),portrait=node('img');
+    portrait.src='assets/quest-living/clara-holds-linen.png';portrait.alt='Клара удерживает край простыни обеими руками';portrait.loading='lazy';
+    figure.append(portrait,node('figcaption','','Клара удерживает край. Расправьте ткань со своей стороны.'));
+    illustration.append(node('summary','','Показать помощь Клары'),figure);
+    state.append(illustration);
+   }
+   area.append(state);
+  }
   const pieces=node('section','workbench-bed-pieces');pieces.append(bedReference(board.referenceImage),node('h3','','Принесённый комплект'));
   if(explicitStart&&!started)pieces.append(node('p','workbench-bed-start-note','Смена белья ещё не начата. Начните подготовку, затем разместите простыню и наволочку. До начала кровать остаётся без изменений.'));
-  for(const item of board.items||[]){const done=placed.has(item.id),choice=button('','selectPiece',item.id,'piece:'+item.id,{pressed:board.selectedPiece===item.id,disabled:done||!board.parcel||!started,className:'workbench-bed-piece'});choice.append(linenIllustration(item.id==='pillowcase'?'pillowcase':'sheet'),node('strong','',item.type||item.id),node('span','',label(item.measure)),node('small','',done?'Размещено':!started?'После начала смены':board.selectedPiece===item.id?'Выбрано · укажите место':'Выбрать вещь'));pieces.append(choice);}
+  for(const item of board.items||[]){const done=placed.has(item.id),choice=button('','selectPiece',item.id,'piece:'+item.id,{pressed:board.selectedPiece===item.id,disabled:done||!board.parcel||!started||waitingForMethod,className:'workbench-bed-piece'});choice.append(linenIllustration(item.id==='pillowcase'?'pillowcase':'sheet'),node('strong','',item.type||item.id),node('span','',label(item.measure)),node('small','',done?'Размещено':!started?'После начала смены':waitingForMethod?'Сначала выберите способ':board.selectedPiece===item.id?(item.id==='sheet'&&draft?.method?'Выбрано · расправьте край':'Выбрано · укажите место'):'Выбрать вещь'));pieces.append(choice);}
   const visualPlaced=explicitStart&&!started?new Set(['sheet','pillowcase']):placed;
   const art=explicitStart?window.PalataQuestBedView?.create({source:board.referenceImage,preparationStarted:started,placed:[...placed],mode:'patient',crop:true}):null;
   if(art)pieces.querySelector('.workbench-bed-reference')?.remove();
-  const scheme=node('section','workbench-bed-scheme');scheme.append(node('h3','',art?'Кровать 406 · крупный план':'Схема размещения'),node('p','workbench-muted',!started?'До начала смены кровать показана без изменений.':'Выберите принесённую вещь и её место на кровати.'));
+  const scheme=node('section','workbench-bed-scheme');scheme.append(node('h3','',art?'Кровать 406 · крупный план':'Схема размещения'));
+  if(!draft)scheme.append(node('p','workbench-muted',!started?'До начала смены кровать показана без изменений.':'Выберите принесённую вещь и её место на кровати.'));
+  const useRange=Boolean(draft?.method&&!draft.spread);
   const diagram=node('div','workbench-bed-diagram'+(art?' has-bed-art':''));diagram.append(art||bedDiagram(visualPlaced));
-  for(const target of board.targets||[]){if(art&&!started)continue;const part=target.id==='pillowZone'?'pillowcase':target.id==='sheetZone'?'sheet':null,done=part&&placed.has(part),zone=button(art?(done?'Готово':part==='sheet'?'Матрас':'Подушка'):explicitStart?(done?'Размещено':part==='sheet'?'Простыня':'Наволочка'):(target.label||'Место на кровати'),'place',target.id,'zone:'+target.id,{disabled:!board.parcel||!started||!board.selectedPiece||!!done,className:'workbench-bed-target',ariaLabel:target.label||'Место на кровати'});zone.dataset.bedZone=target.id;
+  if(useRange){
+   const control=node('div','workbench-sheet-spread');
+   const range=node('input','workbench-sheet-range');
+   range.type='range';range.min='0';range.max='100';range.step='1';range.value='0';
+   range.dataset.sheetSpread='';range.dataset.workFocus='spreadSheet';
+   range.id='workbench-sheet-range';
+   range.disabled=board.selectedPiece!=='sheet'||!board.parcel;
+   range.setAttribute('aria-describedby','workbench-sheet-hint');
+   const caption=node('label','','Расправить простыню');
+   caption.htmlFor=range.id;
+   const hint=node('p','workbench-muted',range.disabled?'Выберите простыню из комплекта.':'Проведите ползунок до конца, от изголовья к краю матраца.');
+   hint.id='workbench-sheet-hint';
+   const cloth=node('div','workbench-sheet-track');cloth.setAttribute('aria-hidden','true');
+   range.addEventListener('input',()=>cloth.style.setProperty('--sheet-spread',range.value+'%'));
+   range.addEventListener('change',()=>{if(range.valueAsNumber===100)runWork('spreadSheet');});
+   control.append(caption,hint,cloth,range);
+   scheme.append(control);
+  }
+  for(const target of board.targets||[]){if(art&&!started||target.id==='sheetZone'&&useRange)continue;const part=target.id==='pillowZone'?'pillowcase':target.id==='sheetZone'?'sheet':null,done=part&&placed.has(part),zone=button(art?(done?'Готово':part==='sheet'?'Матрас':'Подушка'):explicitStart?(done?'Размещено':part==='sheet'?'Простыня':'Наволочка'):(target.label||'Место на кровати'),'place',target.id,'zone:'+target.id,{disabled:!board.parcel||!started||waitingForMethod||!board.selectedPiece||!!done,className:'workbench-bed-target',ariaLabel:target.label||'Место на кровати'});zone.dataset.bedZone=target.id;
    if(art&&part){const style=window.PalataQuestBedView.placementStyle(part);if(style)for(const[key,value]of Object.entries(style))zone.style[key]=value;}
    if(done&&!art&&!explicitStart)zone.append(node('small','','Размещено'));diagram.append(zone);
   }
@@ -218,10 +275,81 @@ function render(host,options){
   if(board.inspected&&board.evidence){const observed=board.evidence;evidence.append(facts([['Оборудование',observed.equipmentId],['Разъём',observed.connector],['Адрес поста',observed.postAddress],['Регистрация',observed.observedRegistration]]));if(observed.text)evidence.append(node('p','workbench-service-observation',observed.text));}
   area.append(evidence);
   if(board.inspected){const options=node('section','workbench-service-options');options.setAttribute('aria-label',post?'Варианты записи адреса':'Варианты обслуживания');for(const option of board.options||[]){const choice=button('','select',option.id,'service:'+option.id,{pressed:selected.has(option.id),className:'workbench-service-option'});choice.append(node('strong','',option.label||'Вариант обслуживания'),facts([['Оборудование',option.equipmentId],['Разъём',option.connector],['Адрес поста',option.postAddress]]));options.append(choice);}area.append(options);}
-  area.append(node('p','workbench-service-warning','Обслуживание не подтверждает успешный вызов. После записи вернитесь в палату и выполните контрольный вызов.'));submit('Зафиксировать обслуживание',!board.inspected||!selected.size);
+  area.append(node('p','workbench-service-warning',board.revision===5?'После обслуживания проверьте ответ поста контрольным вызовом в этой палате.':'Обслуживание не подтверждает успешный вызов. После записи вернитесь в палату и выполните контрольный вызов.'));submit('Зафиксировать обслуживание',!board.inspected||!selected.size);
  }else if(board.kind==='callRetest'){
   const station=node('section','workbench-call-station');station.append(node('span','workbench-call-number',roomLabel(board.label||String(board.room).replace(/^ward/,''))));const unit=node('div','workbench-bell-unit');unit.append(icon('bell'),button(board.tested?'Контроль выполнен':'Контрольный вызов','test',undefined,'test',{disabled:!!board.tested,className:'workbench-call-trigger',ariaLabel:board.tested?'Контрольный вызов выполнен':'Нажать кнопку контрольного вызова'}));station.append(unit,node('p','workbench-call-hint',board.tested?'Сверьте адрес ответившего поста и подтвердите результат контроля.':'Нажмите кнопку в самой палате. Результат обслуживания ещё нужно проверить.'));
   const observation=node('section','workbench-test-observation');observation.append(node('h3','','Контроль после обслуживания'));const indicator=node('p','workbench-indicator'+(board.indicator==='on'?' is-on':''));indicator.append(node('i','workbench-indicator-lamp'),node('span','',board.tested?(board.indicator==='on'?'Индикатор загорелся':'Индикатор не загорелся'):'Индикатор · контроль не выполнялся'));const response=node('div','workbench-call-response');response.append(node('h3','','Ответ поста'),node('p','',board.tested?(board.response||'Ответ не получен.'):'Сначала выполните контрольный вызов.'));observation.append(indicator,response);if(board.responseAddress)observation.append(facts([['Адрес ответившего поста',board.responseAddress]]));area.append(station,observation);footer.append(button('Подтвердить результат контрольного вызова','confirm',undefined,'confirm',{className:'workbench-button workbench-submit',disabled:!board.tested||!!board.confirmed}));
+ }else if(board.kind==='timeline'&&board.timelineMap){
+  const cards=board.cards||[],order=board.order||[];
+  const guide=node('section','workbench-timeline-guide');
+  const figure=node('figure','workbench-route-map'),surface=node('div','workbench-route-surface');
+  const bounds=window.PalataQuestEngine?.roomBounds||{};
+  const mapRooms={'407':'ward407','408':'ward408','406':'ward406','Пост':'nurse'};
+  const frame={x:555,y:280,width:745,height:800};
+  const map=nodeSvg('svg'),plan=nodeSvg('image');
+  map.setAttribute('viewBox',[frame.x,frame.y,frame.width,frame.height].join(' '));
+  map.setAttribute('aria-hidden','true');
+  plan.setAttribute('href','quest-plan.svg');plan.setAttribute('width','2200');plan.setAttribute('height','1400');
+  map.append(plan);surface.append(map);
+  for(const card of cards){
+   const room=bounds[mapRooms[card.room]];
+   if(!room)continue;
+   const index=order.indexOf(card.id),short=card.room;
+   const pin=button(short+(index>=0?' · '+(index+1):''),'place',card.id,'route:'+card.id,{
+    className:'workbench-route-point',disabled:index>=0,
+    ariaLabel:index<0?'Добавить на плане: '+roomLabel(short):roomLabel(short)+' · шаг '+(index+1)
+   });
+   pin.style.left=((room[0]+room[2])/2-frame.x)/frame.width*100+'%';
+   // Stagger the adjacent ward labels vertically so their touch targets stay separate.
+   const y=short==='406'?room[3]-96:short==='408'?room[1]+100:(room[1]+room[3])/2;
+   pin.style.top=(y-frame.y)/frame.height*100+'%';
+   surface.append(pin);
+  }
+  figure.append(surface,node('figcaption','','План этажа · порядок определяется записями'));
+  guide.append(figure);
+  const evidence=node('section','workbench-current-evidence');evidence.append(node('h3','','Записи обхода'));
+  const pool=node('div','workbench-source-cards');
+  for(const card of cards){
+   const index=order.indexOf(card.id);
+   const slip=node('article','workbench-source-slip');slip.dataset.slipId=card.id;
+   slip.append(node('strong','',roomLabel(card.room)),node('span','workbench-source-time',card.time??'Время не читается'),node('p','',card.note||''));
+   if(index>=0)slip.dataset.sourceOrdered='true';
+   slip.append(button(index>=0?'В журнале · '+(index+1):'В журнал','place',card.id,'place:'+card.id,{
+    className:'workbench-place-slip',disabled:index>=0,
+    ariaLabel:index>=0?roomLabel(card.room)+' · шаг '+(index+1):'В журнал: '+roomLabel(card.room)
+   }));
+   pool.append(slip);
+   if(card.reverseAvailable){
+    const reverse=node('section','workbench-route-reverse');
+    reverse.append(node('h3','','Оборот записи · '+roomLabel(card.room)));
+    if(card.reverseRead)reverse.append(node('p','',card.reverseText));
+    else reverse.append(button('Прочитать оборот','readReverse',card.id,'readReverse:'+card.id));
+    guide.append(reverse);
+   }
+  }
+  evidence.append(pool);
+  const assembled=node('section','workbench-route-order');
+  assembled.append(node('h3','','Порядок записей · '+order.length+'/'+cards.length));
+  const list=node('ol','workbench-route-list');
+  for(const [index,id] of order.entries()){
+   const card=cards.find(entry=>entry.id===id);
+   if(!card)continue;
+   const room=roomLabel(card.room),row=node('li','workbench-route-list-row');
+   row.dataset.orderedSlip=id;
+   row.append(node('strong','',room),node('span','',card.time??'Время не установлено'));
+   const controls=node('div','workbench-order-controls');
+   controls.append(
+    button('↑','move',{id,direction:'up'},'move:'+id+':up',{disabled:index===0,ariaLabel:'Поднять запись: '+room}),
+    button('↓','move',{id,direction:'down'},'move:'+id+':down',{disabled:index===order.length-1,ariaLabel:'Опустить запись: '+room}),
+    button('×','remove',id,'remove:'+id,{ariaLabel:'Убрать запись: '+room})
+   );
+   row.append(controls);list.append(row);
+  }
+  assembled.append(list);
+  if(!order.length)assembled.append(node('p','workbench-muted','Добавьте записи с плана или из источников.'));
+  evidence.append(assembled);
+  area.append(guide,evidence);
+  submit('Подтвердить последовательность',!cards.length||order.length!==cards.length||cards.some(card=>card.reverseAvailable&&!card.reverseRead));
  }else if(board.kind==='timeline'&&board.revision===3){
   const ordered=new Set(board.order||[]),cards=board.cards||[],pool=node('section','workbench-slip-pool workbench-evidence-pool');pool.append(node('h3','','Записи на столе'));
   for(const card of cards){if(ordered.has(card.id))continue;const slip=timelineEvidence(card);slip.append(button('В журнал','place',card.id,'place:'+card.id,{className:'workbench-place-slip'}));pool.append(slip);}
@@ -240,6 +368,59 @@ function render(host,options){
   if(![...(board.cards||[])].some(x=>!ordered.has(x.id)))pool.append(node('p','workbench-muted','Все записи помещены в журнал. Порядок можно изменить.'));
   const journal=node('section','workbench-timeline');journal.append(node('h3','','Лист обхода · '+(board.order||[]).length+'/'+(board.cards||[]).length));const list=node('ol','workbench-timeline-list');
   for(const[idIndex,id]of(board.order||[]).entries()){const card=(board.cards||[]).find(x=>x.id===id);if(!card)continue;const row=node('li','workbench-timeline-entry');row.append(node('strong','',card.time||'—'),node('span','',roomLabel(card.room)+' · '+String(card.note||'')));const controls=node('div','workbench-order-controls');controls.append(button('↑','move',{id,direction:'up'},'move:'+id+':up',{disabled:idIndex===0,ariaLabel:'Поднять запись '+String(card.time)}),button('↓','move',{id,direction:'down'},'move:'+id+':down',{disabled:idIndex===(board.order||[]).length-1,ariaLabel:'Опустить запись '+String(card.time)}),button('Убрать','remove',id,'remove:'+id));row.append(controls);list.append(row);}journal.append(list);if(!(board.order||[]).length)journal.append(node('p','workbench-muted','Добавляйте записи в порядке обхода.'));area.append(pool,journal);submit('Зафиксировать порядок',!(board.order||[]).length);
+ }else if(board.kind==='subjectChoice'){
+  const alternatives=node('div','workbench-observation-subjects');
+  for(const option of board.options||[]){
+   const card=node('section','workbench-subject-card');
+   card.dataset.subject=option.id;
+   card.append(node('h3','',option.label),node('p','',option.reason||''));
+   const chosen=board.selected===option.id;
+   card.append(button(chosen?'Предмет выбран':'Выбрать предмет','chooseSubject',option.id,'chooseSubject:'+option.id,{
+    disabled:!option.available||chosen,pressed:chosen,ariaLabel:(chosen?'Выбран предмет: ':'Выбрать: ')+option.label
+   }));
+   alternatives.append(card);
+  }
+  area.append(alternatives);
+ }else if(board.kind==='subjectBaseline'||board.kind==='subjectDifference'){
+  const repeat=board.kind==='subjectDifference';
+  const recorded=repeat?board.observationCaptured:(board.details||[]).length>0;
+  const subject=node('section','workbench-observation-instrument');
+  subject.dataset.subject=board.subjectId;
+  const names={signA:'Табличка коридора A',bed406:'Край простыни · палата 406',call407:'Кнопка вызова · палата 407'};
+  subject.append(node('h3','',names[board.subjectId]||'Место наблюдения'));
+  if(board.subjectId==='bed406')subject.append(bedReference(board.referenceImage||'assets/quest-world/ward406-patient.webp'));
+  if(board.subjectId==='call407')subject.append(icon('bell'));
+  if(!recorded){
+   subject.append(button(board.actionLabel||'Осмотреть',board.actionOp,undefined,'observe:'+board.subjectId));
+   if(repeat&&(board.baseline||[]).length)subject.append(node('h3','','Моя сохранённая карточка'),facts(board.baseline.map(field=>[field.label,field.value])));
+  }
+  area.append(subject);
+  if(!repeat&&recorded){
+   const result=node('article','workbench-observation-card');
+   result.append(node('h3','','Первичные показания'),facts((board.details||[]).map(field=>[field.label,field.value])));
+   area.append(result);
+  }
+  if(!repeat){
+   footer.append(button('Записать наблюдение в карточку','record',undefined,'record',{
+    className:'workbench-button workbench-submit',disabled:!recorded||!!board.recorded
+   }));
+  }else if(recorded&&board.subjectId==='call407'){
+   const reply=node('fieldset','workbench-observation-reply');
+   reply.append(node('legend','','Какой ответ был на повторный вызов?'));
+   for(const [title, rows] of [['Моя карточка',board.baseline],['Повторный вызов',board.current]]){
+    const record=node('article','workbench-observation-card');
+    record.append(node('h3','',title),facts((rows||[]).map(field=>[field.label,field.value])));
+    reply.append(record);
+   }
+   const options=node('div','workbench-reply-options');
+   for(const option of board.replies||[])options.append(button(option.label,'selectReply',option.id,'selectReply:'+option.id,{pressed:board.replySelected===option.id}));
+   reply.append(options);area.append(reply);
+   submit('Зафиксировать наблюдение',!board.replySelected);
+  }else if(recorded){
+   area.append(pairedRecords([['Моя карточка',board.baseline||[]],['Повторное наблюдение',board.current||[]]],'Отметьте наблюдаемые отличия'));
+   if(board.allowNoChanges)area.append(button('Изменений нет','noChanges',undefined,'noChanges',{pressed:!!board.noChanges,className:'workbench-no-changes'}));
+   submit('Зафиксировать наблюдение',!marked.size&&!board.noChanges);
+  }
  }else if(board.kind==='baseline'){
   const plate=node('div','workbench-observation-plate');plate.append(node('small','','ТАБЛИЧКА КОРИДОРА A'),facts((board.details||[]).map(f=>[f.label,f.value])));
   const card=node('article','workbench-observation-card');card.append(node('h3','','Карточка наблюдения'),node('small','workbench-draft-label',board.recorded?'Запись сохранена':'Черновик · запись ещё не сохранена'),facts((board.details||[]).map(f=>[f.label,f.value])),node('p','','Сверьте переписанные показания с табличкой, затем сохраните карточку.'));if(board.recorded)card.append(node('p','workbench-picked','Наблюдение записано.'));area.append(plate,card);footer.append(button('Записать наблюдение в карточку','record',undefined,'record',{className:'workbench-button workbench-submit',disabled:!!board.recorded}));
@@ -254,7 +435,18 @@ function render(host,options){
   area.append(node('p','','Этот рабочий лист сейчас недоступен. Вернитесь к осмотру комнаты.'));
  }
  paper.append(area);scroll.append(paper);footer.append(status);section.append(scroll,footer);host.replaceChildren(section);
- if(scrollMemo?.key===key){const top=scrollMemo.top;queueMicrotask(()=>{if(section.isConnected)scroll.scrollTop=top;});}
+ if(scrollMemo?.key===key){
+  const {top,nextBed}=scrollMemo;
+  queueMicrotask(()=>{
+   if(!section.isConnected)return;
+   scroll.scrollTop=top;
+   const target=nextBed&&section.querySelector(nextBed);
+   if(target){
+    target.scrollIntoView({block:'nearest',inline:'nearest'});
+    target.querySelector('button:not(:disabled)')?.focus({preventScroll:true});
+   }
+  });
+ }
  section.addEventListener('keydown',event=>{
   if(event.key==='Escape'){event.preventDefault();event.stopPropagation();scrollMemo=null;close();return;}
   if(event.key!=='Tab')return;

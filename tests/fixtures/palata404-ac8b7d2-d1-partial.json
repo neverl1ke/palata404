@@ -1,0 +1,191 @@
+{
+  "version": 10,
+  "world": {
+    "version": 2,
+    "linen406": null,
+    "calls": {
+      "ward407": {
+        "order": "d1:1",
+        "room": "ward407",
+        "tested": true,
+        "connected": true,
+        "indicator": "on",
+        "responseCode": "acknowledged",
+        "report": null,
+        "reviewed": false,
+        "revision": 4
+      },
+      "ward408": {
+        "order": "d1:1",
+        "room": "ward408",
+        "tested": true,
+        "connected": false,
+        "indicator": "off",
+        "responseCode": "none",
+        "report": "disconnected",
+        "reviewed": true,
+        "revision": 4
+      }
+    },
+    "doctorReview": {
+      "order": "d1:1",
+      "calls": {
+        "ward407": {
+          "order": "d1:1",
+          "room": "ward407",
+          "tested": true,
+          "connected": true,
+          "indicator": "on",
+          "responseCode": "none",
+          "report": "noResponse",
+          "reviewed": true,
+          "revision": 4
+        },
+        "ward408": {
+          "order": "d1:1",
+          "room": "ward408",
+          "tested": true,
+          "connected": false,
+          "indicator": "off",
+          "responseCode": "none",
+          "report": "disconnected",
+          "reviewed": true,
+          "revision": 4
+        }
+      },
+      "maintenance": [
+        "ward407",
+        "ward408"
+      ],
+      "commentCode": "maintenance"
+    },
+    "callEquipment": {
+      "ward407": {
+        "condition": "working",
+        "revision": 1,
+        "verified": false
+      },
+      "ward408": {
+        "condition": "disconnected",
+        "revision": 0,
+        "verified": false
+      }
+    }
+  },
+  "cargo": [
+    "bell407",
+    "bell408"
+  ],
+  "transaction": 0,
+  "lastReceipt": "",
+  "interactions": {
+    "job:bell407": 2,
+    "job:bell408": 2
+  },
+  "exerciseCount": 0,
+  "allSectionsUnlocked": false,
+  "mode": "patient",
+  "room": "ward407",
+  "flags": {
+    "route": false
+  },
+  "visited": {
+    "A": true,
+    "C": true,
+    "B": true
+  },
+  "jobs": {
+    "d1": {
+      "active": true,
+      "done": {
+        "bell407": true,
+        "bell408": true
+      },
+      "count": 0,
+      "startTrip": 0,
+      "revision": 4,
+      "variant": 0,
+      "work": {
+        "diagnostics": {
+          "bell407": {
+            "inspected": true,
+            "tested": true,
+            "selected": [
+              "noResponse"
+            ]
+          },
+          "bell408": {
+            "inspected": true,
+            "tested": true,
+            "selected": [
+              "disconnected"
+            ]
+          }
+        },
+        "order": "d1:1",
+        "initial": {
+          "ward407": {
+            "condition": "noResponse",
+            "revision": 0
+          },
+          "ward408": {
+            "condition": "disconnected",
+            "revision": 0
+          }
+        },
+        "authorized": true,
+        "services": {
+          "ward407": {
+            "inspected": true,
+            "selected": [
+              "service-a"
+            ],
+            "performed": true,
+            "tested": true,
+            "confirmed": false,
+            "authorization": {
+              "order": "d1:1",
+              "room": "ward407",
+              "revision": 0
+            },
+            "serviceRevision": 1,
+            "responseAddress": "ПОСТ-407"
+          },
+          "ward408": {
+            "inspected": false,
+            "selected": [],
+            "performed": false,
+            "tested": false,
+            "confirmed": false,
+            "authorization": {
+              "order": "d1:1",
+              "room": "ward408",
+              "revision": 0
+            },
+            "serviceRevision": null,
+            "responseAddress": null
+          }
+        }
+      }
+    }
+  },
+  "materials": 0,
+  "trip": 0,
+  "log": [
+    "Проверка выполнена. Сверьте индикатор и ответ поста.",
+    "Предварительный вывод сохранён.",
+    "Акт проверки 407 заполнен. Палата 407. Разъём установлен. Индикатор загорелся. Ответ поста не поступил. Получено: Акт проверки вызова · 407. Предмет доступен в инвентаре.",
+    "Разъём отсоединён. Проверьте реакцию кнопки.",
+    "Проверка выполнена. Сверьте индикатор и ответ поста.",
+    "Предварительный вывод сохранён.",
+    "Акт проверки 408 заполнен. Палата 408. Разъём отсоединён. Индикатор не загорелся. Ответ поста не поступил. Получено: Акт проверки вызова · 408. Предмет доступен в инвентаре.",
+    "Врач сверил первичные акты. Обслуживание разрешено только для указанных узлов; затем нужны контрольные вызовы.",
+    "Шильдик узла и запись персонала прочитаны. Сверьте все поля разрешения.",
+    "Вариант указан для согласованного обслуживания.",
+    "Персонал выполнил согласованное обслуживание. Исправность ещё не подтверждена: вернитесь в палату для контрольного вызова.",
+    "Пост ответил: палата 407, вызов принят. Сверьте адрес и подтвердите контроль."
+  ],
+  "collectorAt": 0,
+  "collectorCount": 0,
+  "battle": null
+}

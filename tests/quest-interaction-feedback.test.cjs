@@ -110,7 +110,7 @@ test('the correct A/B flow still opens B on the last physical action without spe
  for(const [id] of route)a.equal(s.interactions[id],expected[id].length);
  for(const flag of ['doorKnown','reserveKnown','tripHandle','unlockB'])a.equal(s.flags[flag],true);
  for(const key of ['cargo','materials','transaction','lastReceipt','collectorCount','collectorAt','world','jobs'])a.deepEqual(s[key],before[key],key);
- a.equal(s.flags.unlockC,undefined);a.equal(s.version,10);
+ a.equal(s.flags.unlockC,undefined);a.equal(s.version,11);
 });
 
 test('saved partial latch progress resumes with the same feedback and completion in supported legacy saves',()=>{

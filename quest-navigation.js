@@ -184,6 +184,12 @@
    const job=E.jobs[preferred],eligible=job?s.jobs?.[preferred]?.active:true;
    if(eligible){const g=guide(E,s,preferred);if(!g.complete&&!g.pending&&g.room)return Object.freeze({...g,questId:preferred});}
   }
+  const actions=E.actions(s);
+  const active=Object.keys(s.jobs||{}).reverse().filter(id=>Object.hasOwn(E.jobs,id)&&s.jobs[id]?.active)
+   .map(id=>({id,g:guide(E,s,id)})).filter(({g})=>g.room&&!g.complete&&!g.pending);
+  const score=({id,g})=>E.ready(s,id)?0:g.room===s.room&&g.mode===s.mode&&actions.some(action=>action.id===g.action)?1:g.mode===s.mode?2:3;
+  active.sort((a,b)=>score(a)-score(b));
+  if(active.length){const {id,g}=active[0];return Object.freeze({...g,questId:id});}
   const f=s.flags||{};
   if(f.exit)return null;
   const id=f.unlockC?'С4':f.unlockB?'С3':f.doorKnown&&f.reserveKnown?'С2':'С1';

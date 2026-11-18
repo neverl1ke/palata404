@@ -6,6 +6,7 @@
 const {test}=require('node:test');
 const a=require('node:assert/strict');
 const E=require('../quest-engine.js');
+const {loadIssuedV4}=require('./quest-issued-v4.cjs');
 const clone=value=>JSON.parse(JSON.stringify(value));
 const rooms=['ward407','ward408'];
 
@@ -83,18 +84,18 @@ function packLinen(s){
  work(s,'job:linen','submit');a.ok(s.cargo.includes('linen'));
 }
 
-test('v10 separates persistent equipment from call snapshots and protects future schemas',()=>{
- const s=E.initial();a.equal(s.version,10);a.equal(s.world.version,2);a.equal(E.supportsSave(s),true);
+test('v11 separates persistent equipment from call snapshots and protects future schemas',()=>{
+ const s=E.initial();a.equal(s.version,11);a.equal(s.world.version,2);a.equal(E.supportsSave(s),true);
  a.equal(s.world.callEquipment.ward407.condition,'noResponse');a.equal(s.world.callEquipment.ward408.condition,'disconnected');
  for(const room of rooms){a.equal(s.world.callEquipment[room].revision,0);a.equal(s.world.callEquipment[room].verified,false);}
- accept(s,'d1');a.equal(s.jobs.d1.revision,4);
- for(const edit of [raw=>{raw.version=11;},raw=>{raw.world.version=3;},raw=>{raw.jobs.d1.revision=5;},raw=>{raw.version=8;},raw=>{raw.world.callEquipment.ward407.condition='future-state';},raw=>{raw.jobs.d1.work.order='d1:999';},raw=>{raw.jobs.d1.work.services.ward407.responseAddress='ПОСТ-999';},raw=>{raw.jobs.d1.work.futureServicePhase=true;}]){
+ accept(s,'d1');a.equal(s.jobs.d1.revision,5);
+ for(const edit of [raw=>{raw.version=12;},raw=>{raw.world.version=3;},raw=>{raw.jobs.d1.revision=6;},raw=>{raw.version=8;},raw=>{raw.world.callEquipment.ward407.condition='future-state';},raw=>{raw.jobs.d1.work.order='d1:999';},raw=>{raw.jobs.d1.work.services.ward407.responseAddress='ПОСТ-999';},raw=>{raw.jobs.d1.work.futureServicePhase=true;}]){
   const raw=clone(s);edit(raw);const before=clone(raw);a.equal(E.supportsSave(raw),false);a.deepEqual(raw,before);
  }
 });
 
 test('D1 needs doctor authorization and a room-matched observed service before its one existing reward',()=>{
- let s=physical({ward407:'disconnected',ward408:'noResponse'});accept(s,'d1');
+ let s=physical({ward407:'disconnected',ward408:'noResponse'});loadIssuedV4(s,'d1');
  go(s,'doctor');rejected(s,{type:'work',id:'job:callReview',op:'authorize'});
  a.deepEqual(initialReports(s),{ward407:'disconnected',ward408:'noResponse'});
  a.equal(E.ready(s,'d1'),false);go(s,'doctor');rejected(s,{type:'action',id:'claim:d1'});
@@ -124,13 +125,13 @@ test('D1 needs doctor authorization and a room-matched observed service before i
 });
 
 test('D1 unassessed equipment requires staff assessment rather than an invented working report',()=>{
- const s=physical({ward407:'unassessed',ward408:'unassessed'});accept(s,'d1');a.deepEqual(initialReports(s),{ward407:'unassessed',ward408:'unassessed'});authorize(s);
+ const s=physical({ward407:'unassessed',ward408:'unassessed'});loadIssuedV4(s,'d1');a.deepEqual(initialReports(s),{ward407:'unassessed',ward408:'unassessed'});authorize(s);
  for(const room of rooms){const selected=serviceEvidence(s,room,'technical');a.ok(selected.b.evidence.observedRegistration!==undefined);work(s,selected.id,'select',selected.correct.id);work(s,selected.id,'submit');retest(s,room);}
  a.equal(E.ready(s,'d1'),true);a.ok(rooms.every(room=>s.world.callEquipment[room].condition==='working'&&s.world.callEquipment[room].verified));
 });
 
 test('healthy initial calls need no fabricated service or extra payment',()=>{
- const s=physical({ward407:'working',ward408:'working'});accept(s,'d1');a.deepEqual(initialReports(s),{ward407:'working',ward408:'working'});
+ const s=physical({ward407:'working',ward408:'working'});loadIssuedV4(s,'d1');a.deepEqual(initialReports(s),{ward407:'working',ward408:'working'});
  a.equal(E.ready(s,'d1'),false);authorize(s);a.equal(E.ready(s,'d1'),true);
  go(s,'technical');a.equal(E.workbench(s,'job:callService407'),null);a.equal(E.workbench(s,'job:callService408'),null);
  go(s,'doctor');const result=apply(s,{type:'action',id:'claim:d1'});a.deepEqual(result.reward,{kind:'job',job:'d1',id:'d1:1',exp:20,silver:10});
@@ -138,17 +139,17 @@ test('healthy initial calls need no fabricated service or extra payment',()=>{
 });
 
 test('later D1 variants cannot spontaneously undo verified service',()=>{
- let s=physical({ward407:'disconnected',ward408:'noResponse'});accept(s,'d1');initialReports(s);authorize(s);
+ let s=physical({ward407:'disconnected',ward408:'noResponse'});loadIssuedV4(s,'d1');initialReports(s);authorize(s);
  service(s,'ward407','technical');retest(s,'ward407');service(s,'ward408','nurse');retest(s,'ward408');go(s,'doctor');apply(s,{type:'action',id:'claim:d1'});
  const repaired=clone(s.world.callEquipment);
  for(let cycle=0;cycle<3;cycle++){
-  s=restore(s);accept(s,'d1');a.deepEqual(s.world.callEquipment,repaired);a.deepEqual(initialReports(s),{ward407:'working',ward408:'working'});authorize(s);a.equal(E.ready(s,'d1'),true);
+  s=restore(s);accept(s,'d1');a.deepEqual(s.world.callEquipment,repaired);a.deepEqual(initialReports(s),{ward407:'working',ward408:'working'});a.equal(E.ready(s,'d1'),true);
   a.deepEqual(s.world.callEquipment,repaired);go(s,'doctor');const result=apply(s,{type:'action',id:'claim:d1'});a.equal(result.reward.exp,20);a.equal(result.reward.silver,10);
  }
 });
 
 test('stale orders, changed equipment revisions and a wrong post address cannot confirm a repair',()=>{
- let s=physical({ward407:'disconnected',ward408:'working'});accept(s,'d1');initialReports(s);authorize(s);
+ let s=physical({ward407:'disconnected',ward408:'working'});loadIssuedV4(s,'d1');initialReports(s);authorize(s);
  const selected=serviceEvidence(s,'ward407','technical');work(s,selected.id,'select',selected.correct.id);
  let stale=clone(s);stale.jobs.d1.work.services.ward407.authorization.order='d1:999';rejected(stale,{type:'work',id:selected.id,op:'submit'});
  stale=clone(s);stale.world.callEquipment.ward407.revision++;rejected(stale,{type:'work',id:selected.id,op:'submit'});
@@ -162,7 +163,7 @@ test('v8 observed equipment migrates without treating old unknown faults as repa
  const observed=(room,report)=>({order:'d1:2',room,tested:true,connected:report==='faultUnspecified'?null:report!=='disconnected',indicator:['working','noResponse'].includes(report)?'on':'off',responseCode:report==='working'?'acknowledged':'none',report,reviewed:false,revision:report==='faultUnspecified'?1:3});
  for(const [left,right] of [['working','disconnected'],['noResponse','faultUnspecified']]){
   const raw={version:8,mode:'patient',room:'doctor',jobs:{},cargo:[],world:{version:1,linen406:null,calls:{ward407:observed('ward407',left),ward408:observed('ward408',right)},doctorReview:null}};
-  a.equal(E.supportsSave(raw),true);const before=clone(raw),s=E.restore(raw);a.deepEqual(raw,before);a.equal(s.version,10);a.equal(s.world.version,2);
+  a.equal(E.supportsSave(raw),true);const before=clone(raw),s=E.restore(raw);a.deepEqual(raw,before);a.equal(s.version,11);a.equal(s.world.version,2);
   a.deepEqual(s.world.calls,raw.world.calls);a.equal(s.world.callEquipment.ward407.condition,left);a.equal(s.world.callEquipment.ward408.condition,right==='faultUnspecified'?'unassessed':right);
   a.equal(s.world.callEquipment.ward408.verified,false);a.equal(E.supportsSave(s),true);
  }
@@ -170,17 +171,17 @@ test('v8 observed equipment migrates without treating old unknown faults as repa
  for(const room of rooms){a.equal(unknown.world.callEquipment[room].condition,'unassessed','migration must not replace absent old observations with the new-player fault seed');a.equal(unknown.world.callEquipment[room].verified,false);}
 });
 
-test('already issued D1 revisions still finish their old paid contract before a new revision4 order',()=>{
+test('already issued D1 revisions still finish their old paid contract before a new revision5 order',()=>{
  for(const revision of [1,2,3]){
   const version=revision===1?6:revision===2?7:8,job={active:true,revision,count:2,done:{bell407:true,bell408:true},startTrip:0,variant:0,work:{diagnostics:{bell407:{inspected:true,tested:true,selected:['working']},bell408:{inspected:true,tested:true,selected:['disconnected']}}}};
   const raw={version,mode:'patient',room:'doctor',jobs:{d1:job},cargo:['bell407','bell408'],...(version===8?{world:{version:1,linen406:null,calls:{ward407:null,ward408:null},doctorReview:null}}:{})};
   let s=E.restore(raw);a.equal(s.jobs.d1.revision,revision);a.equal(E.ready(s,'d1'),true);
-  const paid=apply(s,{type:'action',id:'claim:d1'});a.deepEqual(paid.reward,{kind:'job',job:'d1',id:'d1:3',exp:20,silver:10});s=restore(s);accept(s,'d1');a.equal(s.jobs.d1.revision,4);
+  const paid=apply(s,{type:'action',id:'claim:d1'});a.deepEqual(paid.reward,{kind:'job',job:'d1',id:'d1:3',exp:20,silver:10});s=restore(s);accept(s,'d1');a.equal(s.jobs.d1.revision,5);
  }
 });
 
 test('K2 revision4 requires an explicit start and preserves partial placement through reload',()=>{
- let s=E.initial();accept(s,'k2');a.equal(s.jobs.k2.revision,4);packLinen(s);go(s,'ward406');
+ let s=E.initial();loadIssuedV4(s,'k2');a.equal(s.jobs.k2.revision,4);packLinen(s);go(s,'ward406');
  a.equal(board(s,'job:deliver','bedmaking').preparationStarted,false);
  rejected(s,{type:'work',id:'job:deliver',op:'selectPiece',value:'sheet'});rejected(s,{type:'work',id:'job:deliver',op:'place',value:'sheetZone'});
  work(s,'job:deliver','startBedPreparation');work(s,'job:deliver','selectPiece','sheet');rejected(s,{type:'work',id:'job:deliver',op:'place',value:'pillowZone'});work(s,'job:deliver','place','sheetZone');
@@ -192,7 +193,8 @@ test('K2 revision4 requires an explicit start and preserves partial placement th
 
 test('a repeated K2 order does not dirty the last prepared bed before explicit preparation starts',()=>{
  let s=E.initial();accept(s,'k2');packLinen(s);go(s,'ward406');work(s,'job:deliver','startBedPreparation');
- for(const [piece,zone] of [['sheet','sheetZone'],['pillowcase','pillowZone']]){work(s,'job:deliver','selectPiece',piece);work(s,'job:deliver','place',zone);}
+ work(s,'job:deliver','chooseMethod','window');work(s,'job:deliver','selectPiece','sheet');work(s,'job:deliver','spreadSheet');
+ work(s,'job:deliver','selectPiece','pillowcase');work(s,'job:deliver','place','pillowZone');
  go(s,'nurse');const paid=apply(s,{type:'action',id:'claim:k2'});a.deepEqual(paid.reward,{kind:'job',job:'k2',id:'k2:1',...E.payouts.k2});
  const prepared=clone(s.world.linen406);accept(s,'k2');a.deepEqual(s.world.linen406,prepared);a.equal(s.jobs.k2.work.preparationStarted,false);
  go(s,'ward406');a.equal(E.bedPresentation(s).prepared,true);rejected(s,{type:'work',id:'job:deliver',op:'startBedPreparation'});a.deepEqual(s.world.linen406,prepared);
@@ -207,6 +209,6 @@ test('old revision2 and revision3 linen parcels retain their issued delivery rul
   let s=E.restore(raw);a.equal(s.jobs.k2.revision,revision);
   if(revision===2){a.equal(board(s,'job:deliver').kind,'delivery');work(s,'job:deliver','deliver');a.equal(s.world.linen406.prepared,false);}
   else{a.equal(board(s,'job:deliver').kind,'bedmaking');for(const [piece,zone]of [['sheet','sheetZone'],['pillowcase','pillowZone']]){work(s,'job:deliver','selectPiece',piece);work(s,'job:deliver','place',zone);}a.equal(s.world.linen406.prepared,true);}
-  go(s,'nurse');apply(s,{type:'action',id:'claim:k2'});s=restore(s);accept(s,'k2');a.equal(s.jobs.k2.revision,4);
+  go(s,'nurse');apply(s,{type:'action',id:'claim:k2'});s=restore(s);accept(s,'k2');a.equal(s.jobs.k2.revision,5);
  }
 });

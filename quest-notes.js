@@ -15,7 +15,8 @@
   'П4':['stairsPatient'],
   'С4':['stairsPatient','exit']
  };
- const fieldNames={time:'Время',ward:'Палата',signature:'Подпись',lot:'Комплект',route:'Маршрут',mark:'Отметка'};
+ const d3SubjectNames={signA:'Табличка коридора A',bed406:'Край простыни в палате 406',call407:'Вызов палаты 407'};
+ const fieldNames={time:'Время',ward:'Палата',signature:'Подпись',lot:'Комплект',route:'Маршрут',mark:'Отметка',hem:'Внутренний подгиб',stitch:'Шов',indicator:'Индикатор',reply:'Ответ поста'};
  const pieceNames={sheet:'Простыня',pillowcase:'Наволочка'};
  function freeze(value){
   if(value&&typeof value==='object'){Object.values(value).forEach(freeze);Object.freeze(value);}
@@ -112,10 +113,10 @@
       }
      }
     }
-    if(job.revision===4){
+    if(job.revision>=4){
      const service=w.services?.['ward'+room];
      if(service?.inspected){
-      const b=board('callService'+room),e=b?.evidence;
+      const b=board('callService'+room),fallback=Work.callEquipment?.('ward'+room),e=b?.evidence||(fallback&&{equipmentId:fallback.id,connector:fallback.connector,postAddress:fallback.postAddress,observedRegistration:''});
       if(e)add('service-source:'+room,'Лист обслуживания '+room,'Прочитанный шильдик и запись персонала','recorded',e.observedRegistration,[
        ['Оборудование',e.equipmentId],['Разъём',e.connector],['Адрес поста',e.postAddress]
       ]);
@@ -123,8 +124,9 @@
      if(service?.performed)add('service:'+room,'Обслуживание '+room,'Отметка персонала','confirmed','Обслуживание выполнено. Успешный вызов подтверждается отдельно.');
      if(service?.tested){
       const b=board('callRetest'+room);
-      if(b)add('retest:'+room,'Контрольный вызов '+room,'Ответ поста',service.confirmed?'confirmed':'recorded','',[
-       ['Индикатор',b.indicator==='on'?'Загорелся':'Не загорелся'],['Ответ',b.response]
+      const reply=b?.response||(service.responseAddress?'Пост: «'+room+', вызов принят».':'Ответ нужной палаты не поступил.');
+      add('retest:'+room,'Контрольный вызов '+room,'Ответ поста',service.confirmed?'confirmed':'recorded','',[
+       ['Индикатор',!b||b.indicator==='on'?'Загорелся':'Не загорелся'],['Ответ',reply]
       ]);
      }
     }
@@ -148,12 +150,13 @@
   if(id==='d3'){
    // Revision 3 freezes the actual observation. Earlier orders do not retain
    // enough provenance to reconstruct unseen values in a notebook.
-   if(job.revision===3){
+   if([3,4].includes(job.revision)){
+    const source=job.revision===4?d3SubjectNames[w.subjectId]:'Сохранённые показания коридора A';
     for(const [key,title]of [['baseline','Исходная карточка'],['observed','Повторное наблюдение']]){
      const observed=w[key];
      if(key==='baseline'&&!w.baselineCaptured||!observed)continue;
-     add(key,title,'Сохранённые показания коридора A','recorded','',
-      Object.entries(observed).filter(([field])=>['time','route','mark'].includes(field)).map(([field,value])=>[fieldNames[field],value]));
+     add(key,title,source,'recorded','',
+      Object.entries(observed).filter(([field])=>Object.hasOwn(fieldNames,field)).map(([field,value])=>[fieldNames[field],value]));
     }
     receipt('difference','difference','Карточка сравнения подтверждена');
    }else if(w.baselineCaptured)add('baseline-recorded','Исходная карточка','Ранее выданное поручение','recorded',

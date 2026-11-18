@@ -1,0 +1,119 @@
+/* Staff conversations share the approved document palette and dossier portraits. */
+.quest-staff-dialogue {
+    position: fixed;
+    inset: 0;
+    margin: auto;
+    width: min(610px, calc(100vw - 24px));
+    max-width: none;
+    max-height: calc(100dvh - 24px);
+    padding: 0;
+    border: 0;
+    overflow: auto;
+    background: transparent;
+    color: var(--document-ink, #2b2116);
+    box-shadow: 0 16px 42px #18140e8c;
+}
+.quest-staff-dialogue::backdrop { background: #1718109c; }
+
+.quest-dialogue-paper {
+    --paper-material-image: var(--paper-material-landscape);
+    padding: 23px 26px;
+    box-sizing: border-box;
+    font: 15px/1.48 var(--document-font, 'Courier New', monospace);
+    overflow-wrap: anywhere;
+}
+
+.quest-dialogue-head {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    min-width: 0;
+    margin-bottom: 14px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #634a32;
+}
+.quest-dialogue-portrait {
+    display: block;
+    flex: none;
+    width: 66px;
+    height: 74px;
+    object-fit: cover;
+    object-position: center 25%;
+    border: 1px solid #795b3a;
+}
+.quest-dialogue-titles { min-width: 0; }
+.quest-dialogue-character { margin: 0 0 4px; color: #5c2c22; }
+.quest-dialogue-titles h2 {
+    margin: 0;
+    font: bold 22px/1.2 var(--document-font, 'Courier New', monospace);
+    color: var(--document-ink, #2b2116);
+}
+.quest-dialogue-titles h2:focus { outline: none; }
+
+.quest-dialogue-line { margin: 0 0 12px; }
+.quest-dialogue-guidance, .quest-dialogue-payout {
+    margin: 0 0 12px;
+    padding: 6px 10px;
+    border-left: 2px solid #515d3d;
+    background: #f7ead555;
+}
+.quest-dialogue-topics, .quest-dialogue-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+.quest-dialogue-topics { margin-top: 14px; }
+.quest-dialogue-actions { margin-top: 16px; }
+
+.quest-staff-dialogue button {
+    font: inherit;
+    font-size: 13px;
+    min-height: 44px;
+    min-width: 44px;
+    border: 1px solid #765638;
+    border-radius: 4px;
+    padding: 8px 12px;
+    cursor: pointer;
+    color: #302519;
+    background: #ead4ae var(--paper-material-strip) center/cover no-repeat;
+}
+.quest-staff-dialogue button:hover,
+.quest-staff-dialogue button[aria-expanded=true] { box-shadow: inset 0 0 0 2px #70533369; }
+.quest-staff-dialogue button:focus-visible {
+    outline: 2px solid #334549;
+    outline-offset: 2px;
+}
+.quest-staff-dialogue button.quest-dialogue-primary {
+    color: #fff6de;
+    background: #45513a;
+    border-color: #293920;
+}
+.quest-staff-dialogue button:disabled { opacity: .55; cursor: wait; }
+
+.quest-dialogue-reply, .quest-dialogue-error {
+    margin: 9px 0 0;
+    padding: 8px 10px;
+    background: #ead9b3b5;
+    border: 1px solid #947a58;
+}
+.quest-dialogue-reply:empty { display: none; }
+.quest-dialogue-error { color: #621c1a; border-color: #813a35; }
+.quest-dialogue-error[hidden] { display: none; }
+
+html[data-touch-ui=true] .quest-staff-dialogue {
+    width: min(610px, calc(var(--touch-ui-width) - 18px));
+    max-height: calc(var(--touch-ui-height) - 18px);
+    transform: scale(var(--touch-ui-scale));
+    overscroll-behavior: contain;
+}
+html[data-touch-ui=true] .quest-dialogue-paper { padding: 12px 14px; }
+html[data-touch-ui=true] .quest-dialogue-head { margin-bottom: 9px; padding-bottom: 8px; }
+html[data-touch-ui=true] .quest-dialogue-portrait { width: 44px; height: 50px; }
+html[data-touch-ui=true] .quest-dialogue-titles h2 { font-size: 18px; }
+
+@media (max-width: 450px) {
+    .quest-dialogue-paper { padding: 14px 14px; }
+    .quest-dialogue-head { gap: 10px; }
+    .quest-dialogue-titles h2 { font-size: 18px; }
+    .quest-dialogue-portrait { width: 44px; height: 50px; }
+}

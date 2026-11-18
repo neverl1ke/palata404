@@ -5,13 +5,23 @@
 const {test}=require('node:test');
 const a=require('node:assert/strict');
 const E=require('../quest-engine.js');
+const W=require('../quest-job-model.js');
 const clone=value=>JSON.parse(JSON.stringify(value));
 const fields=list=>Object.fromEntries(list.map(field=>[field.id,field.value]));
 
 function apply(s,event){const result=E.apply(s,event);a.equal(result.ok,true,result.message);return result;}
 function go(s,room){if(s.room!==room)apply(s,{type:'move',room});}
 function patient(s){if(s.mode==='trip')apply(s,{type:'switch'});}
-function accept(s,id){patient(s);go(s,E.jobs[id].giver);apply(s,{type:'action',id:'accept:'+id});return s.jobs[id];}
+function accept(s,id,issuedRevision=3){
+ patient(s);go(s,E.jobs[id].giver);apply(s,{type:'action',id:'accept:'+id});
+ if(issuedRevision===3){
+  // This file verifies contracts already issued by the historical build.
+  // Fresh revision-4 behavior is covered by quest-observations-v4.test.cjs.
+  const j=s.jobs[id];
+  Object.assign(j,W.restore(id,{revision:3,variant:j.variant,work:{}}));
+ }
+ return s.jobs[id];
+}
 function work(s,id,op,value){const result=apply(s,{type:'work',id,op,value});a.ok(!result.reward,'observations and corrections must not award an extra payout');return result;}
 function reject(s,event){const before=clone(s),result=E.apply(s,event);a.equal(result.ok,false,'unsupported or incomplete work must be rejected');a.deepEqual(s,before,'rejection changed the saved work or world');return result;}
 function board(s,id,kind){const result=E.workbench(s,id);a.ok(result,id+' must be available');if(kind)a.equal(result.kind,kind);return result;}
@@ -122,10 +132,10 @@ test('issued revision2 D2 and D3 partial work preserves the former evidence and 
  let d2=historical(8,'d2',2,{order:['entry-a']});a.equal(d2.jobs.d2.revision,2);let b=board(d2,'job:log','timeline');a.ok(b.cards.every(card=>typeof card.time==='string'));reject(d2,{type:'work',id:'job:log',op:'readReverse',value:'entry-b'});
  const order=b.cards.slice().sort((left,right)=>left.time.localeCompare(right.time)).map(card=>card.id);for(const id of order)if(!d2.jobs.d2.work.order.includes(id))work(d2,'job:log','place',id);d2=reload(d2);work(d2,'job:log','submit');paid(d2,'d2');d2=reload(d2);reject(d2,{type:'action',id:'accept:d2'});
  let d3=historical(8,'d3',2,{baselineCaptured:true,marked:[]});a.equal(d3.jobs.d3.revision,2);a.equal(E.cargoName(d3,'difference'),E.cargoCatalog.difference.name);apply(d3,{type:'switch'});b=board(d3,'job:difference','difference');a.equal(changes(b).length,1,'old variant0 must retain its issued time change');reject(d3,{type:'work',id:'job:difference',op:'noChanges'});
- for(const key of changes(b))work(d3,'job:difference','mark',key);d3=reload(d3);work(d3,'job:difference','submit');paid(d3,'d3');accept(d3,'d3');a.equal(d3.jobs.d3.revision,3);
+ for(const key of changes(b))work(d3,'job:difference','mark',key);d3=reload(d3);work(d3,'job:difference','submit');paid(d3,'d3');accept(d3,'d3',4);a.equal(d3.jobs.d3.revision,4);
 });
 
 test('issued revision1 actions and completed nonrepeat journals remain usable after migration',()=>{
  let d2=historical(6,'d2',1,{});a.equal(d2.jobs.d2.revision,1);a.equal(E.workbench(d2,'job:log'),null);const orderChoice=E.interactions['job:log'].steps[0].choices.find(([,label])=>label==='407 → 408');a.ok(orderChoice);apply(d2,{type:'interact',id:'job:log',choice:orderChoice[0]});d2=reload(d2);paid(d2,'d2');d2=reload(d2);reject(d2,{type:'action',id:'accept:d2'});
- let d3=historical(6,'d3',1,{});a.equal(d3.jobs.d3.revision,1);a.equal(E.cargoName(d3,'difference'),E.cargoCatalog.difference.name);apply(d3,{type:'switch'});const changedTime=E.interactions['job:difference'].steps[0].choices.find(([,label])=>/изменилось время/i.test(label));a.ok(changedTime);apply(d3,{type:'interact',id:'job:difference',choice:changedTime[0]});d3=reload(d3);paid(d3,'d3');accept(d3,'d3');a.equal(d3.jobs.d3.revision,3);
+ let d3=historical(6,'d3',1,{});a.equal(d3.jobs.d3.revision,1);a.equal(E.cargoName(d3,'difference'),E.cargoCatalog.difference.name);apply(d3,{type:'switch'});const changedTime=E.interactions['job:difference'].steps[0].choices.find(([,label])=>/изменилось время/i.test(label));a.ok(changedTime);apply(d3,{type:'interact',id:'job:difference',choice:changedTime[0]});d3=reload(d3);paid(d3,'d3');accept(d3,'d3',4);a.equal(d3.jobs.d3.revision,4);
 });

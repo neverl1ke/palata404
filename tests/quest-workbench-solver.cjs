@@ -20,9 +20,12 @@ function nextOperation(b){
   }
   case 'delivery':return{op:'deliver'};
   case 'bedmaking':{
-   if(b.revision===4&&!b.preparationStarted)return{op:'startBedPreparation'};
+   if(b.revision>=4&&!b.preparationStarted)return{op:'startBedPreparation'};
+   if(b.draftScene?.required&&!b.draftScene.method)return{op:'chooseMethod',value:'window'};
    const item=b.items.find(x=>!b.placed.includes(x.id));if(!item)throw Error('No unplaced item remains in an unfinished bed preparation.');
-   return b.selectedPiece===item.id?{op:'place',value:item.id==='sheet'?'sheetZone':'pillowZone'}:{op:'selectPiece',value:item.id};
+   if(b.selectedPiece!==item.id)return{op:'selectPiece',value:item.id};
+   if(item.id==='sheet'&&b.draftScene?.required&&!b.draftScene.spread)return{op:'spreadSheet'};
+   return{op:'place',value:item.id==='sheet'?'sheetZone':'pillowZone'};
   }
   case 'clarification':{
    const choice=b.options.find(x=>x.measure===b.request.neededMeasure);if(!choice)throw Error('No reserve item matches the requested physical size.');
@@ -76,6 +79,29 @@ function nextOperation(b){
    const mismatch=b.order.findIndex((x,i)=>desired[i]!==x);
    if(mismatch>=0)return{op:'remove',value:b.order[mismatch]};
    return b.order.length<desired.length?{op:'place',value:desired[b.order.length]}:{op:'submit'};
+  }
+  case 'subjectChoice':{
+   if(b.selected){
+    const subject=b.options.find(option=>option.id===b.selected);
+    if(!subject)throw Error('Selected observation has no room.');
+    return{navigate:subject.room,action:'job:baseline',completeOnly:true};
+   }
+   const subject=b.options.find(option=>option.available);
+   if(!subject)throw Error('No available observation subject.');
+   return{op:'chooseSubject',value:subject.id};
+  }
+  case 'subjectBaseline':return{op:b.details.length?'record':b.actionOp};
+  case 'subjectDifference':{
+   if(!b.observationCaptured)return{op:b.actionOp};
+   if(b.replies.length){
+    const received=b.current.find(row=>row.id==='reply');
+    const choice=b.replies.find(option=>option.label===received?.value);
+    if(!choice)throw Error('No answer matches the displayed call response.');
+    return b.replySelected===choice.id?{op:'submit'}:{op:'selectReply',value:choice.id};
+   }
+   const changed=difference(b.baseline,b.current);
+   if(!changed.length)return{op:b.noChanges?'submit':'noChanges'};
+   return toggleTowards(b.marked,changed,'mark');
   }
   case 'baseline':return{op:'record'};
   case 'difference':{

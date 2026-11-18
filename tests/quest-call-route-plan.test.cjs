@@ -3,6 +3,7 @@
 const {test}=require('node:test');
 const a=require('node:assert/strict');
 const E=require('../quest-engine.js');
+const {loadIssuedV4}=require('./quest-issued-v4.cjs');
 const {nextOperation}=require('./quest-workbench-solver.cjs');
 const clone=value=>JSON.parse(JSON.stringify(value));
 const rooms=['ward407','ward408'];
@@ -20,7 +21,7 @@ function solve(s,id){
 function start(conditions){
  const s=E.initial();
  if(conditions)for(const room of rooms)s.world.callEquipment[room]={condition:conditions[room],revision:0,verified:conditions[room]==='working'};
- go(s,'doctor');apply(s,{type:'action',id:'accept:d1'});return s;
+ go(s,'doctor');loadIssuedV4(s,'d1');return s;
 }
 function reportBoth(s){for(const room of rooms){go(s,room);solve(s,'job:bell'+room.slice(-3));}go(s,'doctor');}
 function authorized(conditions){const s=start(conditions);reportBoth(s);solve(s,'job:callReview');return s;}
