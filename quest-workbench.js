@@ -84,9 +84,9 @@ function bedDiagram(placed){
  if(placed.has('sheet'))add('path',{d:'M110 148q136-14 281 0M111 258q136 12 279-1M113 156v116m276-116v116',fill:'none',stroke:'#b8b39b','stroke-width':2});
  return s;
 }
-function bedReference(source='assets/quest-scenes/ward406.webp'){
+function bedReference(source='assets/quest-scenes/ward406.webp',caption='Ориентир · койка палаты 406'){
  const figure=node('figure','workbench-bed-reference'),s=document.createElementNS(svgNS,'svg');s.setAttribute('viewBox','140 565 970 290');s.setAttribute('role','img');s.setAttribute('aria-label','Подушка и постель палаты 406');
- const image=document.createElementNS(svgNS,'image');image.setAttribute('href',source);image.setAttribute('width','1536');image.setAttribute('height','1024');s.append(image);figure.append(s,node('figcaption','','Ориентир · койка палаты 406'));return figure;
+ const image=document.createElementNS(svgNS,'image');image.setAttribute('href',source);image.setAttribute('width','1536');image.setAttribute('height','1024');s.append(image);figure.append(s,node('figcaption','',caption));return figure;
 }
 function render(host,options){
  const {board,act,close}=options;if(!board||!host)return null;
@@ -205,23 +205,25 @@ function render(host,options){
   if(explicitStart){section.dataset.bedExplicitStart='true';section.dataset.bedPreparation=started?'started':'not-started';}
   const draft=board.draftScene?.required?board.draftScene:null;
   const waitingForMethod=Boolean(draft&&started&&!draft.method);
+  const assisted=draft?.method==='assistance';
   if(waitingForMethod){
    const methods=node('section','workbench-draft-methods');
    const context=node('div','workbench-draft-context');
    context.append(node('h3','','Край простыни поднялся от сквозняка'),node('p','','Клара подошла к дальней стороне кровати. «Прикроем окно или подержу край?»'));
-   methods.append(context,button('Прикрыть окно и расправить самому','chooseMethod','window','chooseMethod:window'),button('Оставить окно · Клара придержит край','chooseMethod','assistance','chooseMethod:assistance'));
+   methods.append(context,button('Прикрыть окно и расправить простыню самому','chooseMethod','window','chooseMethod:window'),button('Попросить Клару придержать дальний край','chooseMethod','assistance','chooseMethod:assistance'));
    area.append(methods);
   }else if(draft?.method&&!draft.spread){
-   const presence=draft.method==='assistance'?'Клара придерживает дальний край.':'Окно прикрыто. Край больше не поднимается.';
+   const presence=assisted?'Клара держит дальний край простыни. Вы расправляете её с ближней стороны.':'Окно прикрыто. Простыню можно расправить без помощи.';
    const state=node('section','workbench-draft-state');
    state.append(node('p','',presence));
-   if(draft.method==='assistance'){
+   if(assisted){
     const illustration=node('details','workbench-clara-art');
     illustration.open=scrollMemo?.key===key&&!!scrollMemo.claraOpen;
     const figure=node('figure','workbench-clara-figure'),portrait=node('img');
-    portrait.src='assets/quest-living/clara-holds-linen.png';portrait.alt='Клара удерживает край простыни обеими руками';portrait.loading='lazy';
-    figure.append(portrait,node('figcaption','','Клара удерживает край. Расправьте ткань со своей стороны.'));
-    illustration.append(node('summary','','Показать помощь Клары'),figure);
+    portrait.width=1024;portrait.height=1536;portrait.decoding='async';
+    portrait.src='assets/quest-living/clara-holds-linen.png';portrait.alt='Клара держит простыню двумя руками';
+    figure.append(portrait);
+    illustration.append(node('summary','','Иллюстрация к сцене'),figure);
     state.append(illustration);
    }
    area.append(state);
@@ -244,9 +246,9 @@ function render(host,options){
    range.id='workbench-sheet-range';
    range.disabled=board.selectedPiece!=='sheet'||!board.parcel;
    range.setAttribute('aria-describedby','workbench-sheet-hint');
-   const caption=node('label','','Расправить простыню');
+   const caption=node('label','',assisted?'Расправить простыню с ближней стороны':'Расправить простыню');
    caption.htmlFor=range.id;
-   const hint=node('p','workbench-muted',range.disabled?'Выберите простыню из комплекта.':'Проведите ползунок до конца, от изголовья к краю матраца.');
+   const hint=node('p','workbench-muted',range.disabled?'Выберите простыню из комплекта.':'Передвиньте ползунок до упора вправо. С клавиатуры можно нажать End.');
    hint.id='workbench-sheet-hint';
    const cloth=node('div','workbench-sheet-track');cloth.setAttribute('aria-hidden','true');
    range.addEventListener('input',()=>cloth.style.setProperty('--sheet-spread',range.value+'%'));
@@ -462,15 +464,16 @@ function render(host,options){
   const recorded=repeat?board.observationCaptured:(board.details||[]).length>0;
   let evidence;
   const subject=node('section','workbench-observation-instrument');
-  subject.dataset.subject=board.subjectId;
+  subject.dataset.subject=board.subjectId;section.dataset.observationSubject=board.subjectId;
   const names={signA:'Табличка коридора A',bed406:'Край простыни · палата 406',call407:'Кнопка вызова · палата 407'};
   subject.append(node('h3','',names[board.subjectId]||'Место наблюдения'));
-  if(board.subjectId==='bed406')subject.append(bedReference(board.referenceImage||'assets/quest-world/ward406-patient.webp'));
   if(board.subjectId==='call407')subject.append(icon('bell'));
-  if(!recorded){
-   subject.append(button(board.actionLabel||'Осмотреть',board.actionOp,undefined,'observe:'+board.subjectId));
-   if(repeat&&(board.baseline||[]).length)subject.append(node('h3','','Моя сохранённая карточка'),facts(board.baseline.map(field=>[field.label,field.value])));
+  if(!recorded)subject.append(button(board.actionLabel||'Осмотреть',board.actionOp,undefined,'observe:'+board.subjectId));
+  if(board.subjectId==='bed406'){
+   const caption='Койка 406 · ориентир. '+(recorded?'Состояние подгиба и шва — в показаниях.':'После осмотра состояние подгиба и шва появится в показаниях.');
+   subject.append(bedReference(board.referenceImage||'assets/quest-world/ward406-patient.webp',caption));
   }
+  if(!recorded&&repeat&&(board.baseline||[]).length)subject.append(node('h3','','Моя сохранённая карточка'),facts(board.baseline.map(field=>[field.label,field.value])));
   area.append(subject);
   if(!repeat&&recorded){
    const result=node('article','workbench-observation-card');

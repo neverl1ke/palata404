@@ -234,10 +234,8 @@ html[data-touch-ui=true] #quest-location-screen .quest-workbench[data-work-kind=
 }
 .quest-workbench .workbench-clara-art summary:focus-visible,
 .quest-workbench .workbench-sheet-range:focus-visible {outline:3px solid #4f7180;outline-offset:2px}
-.quest-workbench .workbench-clara-figure {
- display:flex;align-items:center;gap:12px;margin:0;padding:8px 0;font-size:13px;
-}
-.quest-workbench .workbench-clara-figure img {height:min(150px,40vh);width:auto;max-width:45%;object-fit:contain}
+.quest-workbench .workbench-clara-figure {margin:0;padding:4px 0 6px}
+.quest-workbench .workbench-clara-figure img {display:block;height:min(170px,40vh);width:auto;max-width:100%;object-fit:contain}
 .quest-workbench .workbench-sheet-spread {
  border:1px solid #90856a;background:#ebe0c7;padding:8px 10px;margin-bottom:8px;
 }
@@ -317,7 +315,17 @@ html #quest-location-screen .quest-workbench[data-timeline-map=true] .workbench-
 .quest-workbench .workbench-subject-card button {margin-top:auto}
 .quest-workbench .workbench-observation-instrument[aria-hidden=true] {display:none}
 .quest-workbench .workbench-observation-instrument .workbench-bed-reference {max-width:580px}
+.quest-workbench .workbench-observation-instrument button + .workbench-bed-reference {margin-top:8px}
 .quest-workbench .workbench-observation-instrument .workbench-object-illustration {width:120px;height:85px}
+html[data-touch-ui=true] #quest-location-screen .quest-workbench[data-observation-subject=bed406] .workbench-bed-reference {
+ display:block;max-width:360px;margin-bottom:0;
+}
+html[data-touch-ui=true] #quest-location-screen .quest-workbench[data-observation-subject=bed406] .workbench-bed-reference figcaption {
+ font-size:13px;line-height:1.3;
+}
+@container compact-workbench (max-height:440px) {
+ html[data-touch-ui=true] #quest-location-screen .quest-workbench:is([data-observation-subject=bed406],[data-observation-subject=call407]) .workbench-masthead {display:none}
+}
 .quest-workbench .workbench-observation-layout {
  grid-template-columns:repeat(auto-fit,minmax(min(290px,100%),1fr));align-items:start;
 }

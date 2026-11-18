@@ -373,6 +373,18 @@ function renderInteraction(host){const board=E.workbench?.(state,interaction);if
 // Keep the requested handoff ahead of unrelated offers; preserve its real handler.
 function prioritizeRoomTask(info){
  if(interaction)return;
+ if(document.documentElement.dataset.touchUi==='true'&&state.jobs.d3?.revision===4){
+  const ward=['ward406','ward407'].includes(state.room),doctor=state.room==='doctor'&&focusQuest==='d3';
+  if(ward||doctor){
+   const ids=ward?['job:baseline','job:difference']:['job:baseline','claim:d3','accept:d3'];
+   const action=info.querySelector(ids.map(id=>'[data-action="'+id+'"],[data-scene-action="'+id+'"]').join(','));
+   if(action){
+    const group=action.closest('.scene-document-actions');
+    info.querySelector(':scope > p').after(action);
+    if(group&&!group.querySelector('button'))group.remove();
+   }
+  }
+ }
  const actions=E.actions(state),requested=focusQuest&&actions.find(a=>a.id==='accept:'+focusQuest||a.id==='claim:'+focusQuest),id=(requested||actions.find(a=>a.id.startsWith('claim:')))?.id;
  if(!id)return;
  const target=[...info.querySelectorAll('[data-action],[data-scene-action]')].find(b=>(b.dataset.action||b.dataset.sceneAction)===id);
